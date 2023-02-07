@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<svg
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    id="svg2"
+    viewBox="0 0 64 64"
+    version="1.1"
+  >
+  <g
+      id="layer1"
+      transform="translate(0 -988.36)"
+    >
+    <g
+        id="g3925"
+      >
+      <path
+          id="path3913"
+          d="m9 990.36v61h47v-61h-47z"
+          fill="#737373"
+      />
+      <path
+          id="path3724"
+          d="m10 991.36v59h45v-59h-45z"
+          fill="#f2f2f2"
+      />
+      <g
+          id="g3896"
+          transform="translate(-7,3)"
+        >
+        <path
+            id="path3886"
+            d="m29.965 34.035-4.965 9.965 10-5-5.035-4.965z"
+            fill="#f9d97b"
+            transform="translate(0 988.36)"
+        />
+        <path
+            id="path3888"
+            fill="#6dc5dd"
+            d="m30 1022.4 15-15 5 5-15 15-5-5z"
+        />
+        <path
+            id="path3890"
+            d="m47 1005.4 5 5 3-3-5-5-3 3z"
+            fill="#f77462"
+        />
+        <path
+            id="path3892"
+            d="m45 19 2-2 5 5-2 2-5-5z"
+            fill="#fff"
+            transform="translate(0 988.36)"
+        />
+        <path
+            id="path3894"
+            d="m25.028 43.901 0.972-1.901l1 1-1.9721 0.90089z"
+            fill="#737373"
+            transform="translate(0 988.36)"
+        />
+      </g
+      >
+      <path
+          id="path3903"
+          d="m18 47 15 15h22v-33l-7-7-20 20-10 5z"
+          fill="#ddd"
+          transform="translate(0 988.36)"
+      />
+    </g
+    >
+  </g
+  >
+  <metadata
+    >
+    <rdf:RDF
+      >
+      <cc:Work
+        >
+        <dc:format
+          >image/svg+xml</dc:format
+        >
+        <dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        />
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        />
+        <dc:publisher
+          >
+          <cc:Agent
+              rdf:about="http://openclipart.org/"
+            >
+            <dc:title
+              >Openclipart</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:publisher
+        >
+        <dc:title
+          >notes</dc:title
+        >
+        <dc:date
+          >2013-08-28T09:24:23</dc:date
+        >
+        <dc:description
+          >sheet and pencil</dc:description
+        >
+        <dc:source
+          >https://openclipart.org/detail/182344/notes-by-crisg-182344</dc:source
+        >
+        <dc:creator
+          >
+          <cc:Agent
+            >
+            <dc:title
+              >crisg</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:creator
+        >
+        <dc:subject
+          >
+          <rdf:Bag
+            >
+            <rdf:li
+              >icon</rdf:li
+            >
+            <rdf:li
+              >note</rdf:li
+            >
+            <rdf:li
+              >notebook</rdf:li
+            >
+            <rdf:li
+              >notepad</rdf:li
+            >
+            <rdf:li
+              >notes</rdf:li
+            >
+            <rdf:li
+              >pencil</rdf:li
+            >
+            <rdf:li
+              >sheet</rdf:li
+            >
+          </rdf:Bag
+          >
+        </dc:subject
+        >
+      </cc:Work
+      >
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        >
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        />
+      </cc:License
+      >
+    </rdf:RDF
+    >
+  </metadata
+  >
+</svg
+>
