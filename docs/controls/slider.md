@@ -78,13 +78,13 @@ style={{"width": "100%", "height":"620px"}}></iframe><br/><br/>
 
 |Progress Bar Themes|
 |-|
-|<ul><li>```ProgressBar.Theme.DEFAULT```</li><li>```ProgressBar.Theme.DANGER```</li><li>```ProgressBar.Theme.GRAY```</li><li>```ProgressBar.Theme.INFO```</li><li>```ProgressBar.Theme.SUCCESS```</li><li>```ProgressBar.Theme.WARNING```</li></ul>|
+|<ul><li>```Slider.Theme.DEFAULT```</li><li>```Slider.Theme.DANGER```</li><li>```Slider.Theme.GRAY```</li><li>```Slider.Theme.INFO```</li><li>```Slider.Theme.SUCCESS```</li><li>```Slider.Theme.WARNING```</li></ul>|
 
 <br/>Theming is supported by use of a built-in enum class. To apply a theme, execute code similar to the following: <br/><br />
 
 ```java
-import org.dwcj.controls.progressbar.ProgressBar;
+import org.dwcj.controls.slider.Slider;
 
-ProgressBar exampleBar = new ProgressBar();      //Creates a new progress bar"
-exampleBar.setTheme(ProgressBar.Theme.DEFAULT);      //Sets the bar's theme to be the default theme.
+Slider exampleBar = new Slider();      //Creates a new slider"
+exampleBar.setTheme(Slider.Theme.DEFAULT);      //Sets the slider's theme to be the default theme.
 ```

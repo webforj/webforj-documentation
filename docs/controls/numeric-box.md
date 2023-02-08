@@ -2,7 +2,7 @@
 sidebar_position: 70
 ---
 
-# NumericBox
+# Numeric Box
 
 ### At a Glance
 
@@ -52,7 +52,7 @@ Use the `setAttribute()` function to set placeholder text. The attribute to be c
 import org.dwcj.controls.numericbox.NumericBox;
 
 NumericBox exampleNumericBox = new NumericBox();      //Creates a new NumericBox
-exampleNumericBox.setAttribute("placeholder", "Example placeholder");     //Gives the numeric box a label with the provided text
+exampleNumericBox.setAttribute("placeholder", "Example placeholder");     //Gives the numeric box a placeholder with the provided text
 ```
 
 ### Masking

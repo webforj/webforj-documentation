@@ -29,12 +29,12 @@ Check boxes can utilize the ```setText(String foo)``` method, which will positio
 DWCJ checkboxes have built-in functionality to set text to be displayed either to the right or left of the box. By default, the text will be displayed to the right of the control. Show below
 are the two settings: <br/>
 
-<!-- ![various button expanses](./_images/button_themes.jpg) -->
+
 <iframe 
 loading="lazy"
 src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.checkboxdemos.CheckboxHorizontalText' 
 style={{"width": "100%"}}></iframe><br/>
-Listed below are the current supported theme options for the button control:<br/><br/>
+Listed below are the current supported theme options for the checkbox control:<br/><br/>
 
 |Chekbox Horizontal Text Positions|
 |-|
@@ -54,7 +54,6 @@ exampleCheckBox.setHorizontalTextPosition(CheckBox.HorizontalTextPosition.RIGHT)
 ### Expanses
 There are five checkbox expanses that are supported in the DWCJ which allow for quick styling without using CSS.
 Below are the expanses supported for the checkbox control: <br/>
-<!-- ![various button expanses](./_images/button_expanses.jpg) -->
 <iframe 
 loading="lazy"
 src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.checkboxdemos.CheckboxExpanseDemo' 
@@ -78,8 +77,6 @@ exampleCheckBox.setExpanse(CheckBox.Expanse.MEDIUM);     //Sets the checkbox's e
 
 ### Sample Program
 
-This code snippet is a small demonstration program that will create two buttons, each of which has an event attached. The first button will display a modal window with the first and last name that have
-been entered into the text boxes, and the second button will clear any text within these boxes.
 
 <iframe
 loading="lazy" 

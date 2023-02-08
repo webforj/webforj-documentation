@@ -51,10 +51,10 @@ src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demo
 style={{"width": "100%", "height":"125px"}}></iframe><br/>
 
 ```java
-import org.dwcj.controls.numericbox.NumericBox;
+import org.dwcj.controls.stringeditbox.StringEditBox;
 
-NumericBox exampleNumericBox = new NumericBox();      //Creates a new NumericBox
-exampleNumericBox.setAttribute("placeholder", "Example Placeholder");
+StringEditBox exampleStringEditBox = new StringEditBox();      //Creates a new StringEditBox
+exampleStringEditBox.setAttribute("placeholder", "Example Placeholder");
 ```
 
 ### Expanses

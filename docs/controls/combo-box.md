@@ -42,12 +42,11 @@ exampleComboBox.setAttribute("label", "Example combo box label!");     //Gives t
 
 DWCJ Combo Box components come with 14 themes built in for quick styling without the use of CSS.
 Shown below are example boxes with each of the supported Themes applied: <br/>
-<!-- ![various button expanses](./_images/button_themes.jpg) -->
 <iframe 
 loading="lazy"
 src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.comboboxdemos.ComboboxThemeDemo' 
 style={{"width": "100%", "height" : "170px"}}></iframe><br/>
-Listed below are the current supported theme options for the button control:<br/><br/>
+Listed below are the current supported theme options for the combo box control:<br/><br/>
 
 |Combo Box Themes|
 |-|
@@ -66,12 +65,11 @@ exampleComboBox.setTheme(ComboBox.Theme.DEFAULT);      //Sets the box's theme to
 ### Expanses
 There are five Combo Box expanses that are supported in the DWCJ which allow for quick styling without using CSS.
 Below are the various expanses supported this control: <br/>
-<!-- ![various button expanses](./_images/button_expanses.jpg) -->
 <iframe 
 loading="lazy"
 src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.comboboxdemos.ComboboxExpanseDemo' 
 style={{"width": "100%", "height" : "120px"}}></iframe><br/>
-Listed below are the current supported expanse options for the button control:<br/><br/>
+Listed below are the current supported expanse options for the combo box control:<br/><br/>
 
 |ComboBox Expanses|
 |-|
@@ -82,6 +80,6 @@ Listed below are the current supported expanse options for the button control:<b
 ```java
 import org.dwcj.controls.combobox.ComboBox;
 
-Button exampleButton = new Button("Example");      //Creates a new button with the text "example"
-exampleButton.setExpanse(Button.Expanse.MEDIUM);     //Sets the button's expanse to the medium size.
+ComboBox exampleComboBox = new ComboBox("Example");      //Creates a new ComboBox with the text "example"
+exampleComboBox.setExpanse(ComboBox.Expanse.MEDIUM);     //Sets the ComboBox's expanse to the medium size.
 ```

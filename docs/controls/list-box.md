@@ -2,7 +2,7 @@
 sidebar_position: 60 
 ---
 
-# ListBox
+# List Box
 
 ### At a Glance
 

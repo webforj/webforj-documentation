@@ -8,43 +8,7 @@ sidebar_position: 30
 
 <!-- | Methods |
 |------------|
-| <ul><li>[`void calendar()`](#)</li>
-<li>[`Integer getCaretPosition()`](#)</li>
-<li>[`String getEditString()`](#)</li>
-<li>[`Integer getError()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-<li>[`void calendar()`](#)</li>
-
-</ul>| -->
+| <ul><li>[`void calendar()`](#)</li></ul>| -->
 
 
 | Events |

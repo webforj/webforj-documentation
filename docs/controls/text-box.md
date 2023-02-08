@@ -21,7 +21,7 @@ sidebar_position: 150
 ### Label
 
 
-The text area control can be easily labeled without the needing to create an extra label control using the `setAttribute()` method and passing the desired label as a string, as shown below: <br/>
+The text box control can be easily labeled without the needing to create an extra label control using the `setAttribute()` method and passing the desired label as a string, as shown below: <br/>
 
 <iframe 
 loading="lazy"
@@ -59,14 +59,14 @@ The text box can also be configured with spellchecking to help the user improve 
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/controlsamples?class=control_demos.textareademos.TextAreaSpellcheck' 
+src='http://localhost:8888/webapp/controlsamples?class=control_demos.textboxdemos.TextBoxSpellcheck' 
 style={{"width": "100%", "height":"125px"}}></iframe><br/>
 
 ```java
-import org.dwcj.controls.textarea.TextArea;
+import org.dwcj.controls.textbox.TextBox;
 
-TextArea exampleTextArea = new TextArea();      //Creates a new TextArea
-exampleTextArea.setAttribute("spellcheck", "true");  
+TextBox exampleTextBox = new TextBox();      //Creates a new TextBox
+exampleTextBox.setAttribute("spellcheck", "true");  
 ```
 
 ### Expanses
@@ -81,13 +81,13 @@ style={{"width": "100%", "height":"125px"}}></iframe><br/>
 
 |Text Box Expanses|
 |-|
-|<ul><li>```TextArea.Expanse.XSMALL```</li><li>```TextArea.Expanse.SMALL```</li><li>```TextArea.Expanse.MEDIUM```</li><li>```TextArea.Expanse.LARGE```</li><li>```TextArea.Expanse.XLARGE```</li></ul>|
+|<ul><li>```TextBox.Expanse.XSMALL```</li><li>```TextBox.Expanse.SMALL```</li><li>```TextBox.Expanse.MEDIUM```</li><li>```TextBox.Expanse.LARGE```</li><li>```TextBox.Expanse.XLARGE```</li></ul>|
 
 <br/>Expanses are supported by use of a built-in enum class. To apply an expanse, execute code similar to the following: <br/><br />
 
 ```java
-import org.dwcj.controls.textarea.TextArea;
+import org.dwcj.controls.textbox.TextBox;
 
-TextArea exampleTextArea = new TextArea();      //Creates a new Text Box
-exampleTextArea.setExpanse(TextArea.Expanse.MEDIUM);    
+TextBox exampleTextBox = new TextBox();      //Creates a new Text Box
+exampleTextBox.setExpanse(TextBox.Expanse.MEDIUM);    
 ```
