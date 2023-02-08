@@ -28,7 +28,7 @@ const FeatureList = [
   },
   {
     title: 'Tutorials',
-    path: 'tutorials',
+    path: 'tutorials/intro',
     Svg: require('@site/static/img/tutorial.svg').default,
     description: (
       <>

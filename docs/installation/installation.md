@@ -11,5 +11,5 @@ sidebar_position: 1
 the [Users installation page](/docs/installation/users) will work perfectly.
 
 - Developers who want to also make changes to the DWCJ itself can follow
-the [Contributors installation page](/docs/installation/developer) to begin making changes to the API.
+the [Contributors installation page](/docs/installation/contributors) to begin making changes to the API.
 
