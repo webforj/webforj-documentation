@@ -20,13 +20,62 @@ sidebar_position: 120
 |------------|
 | <ul><li>[`StringEditBox onEditModify(Consumer<StringEditBoxEditModifyEvent> callback)`](#)</li></ul> |
 
-### Auto Complete and Auto Correct?
-
 
 ### Label
+
+
+The string edit control can be easily labeled without the needing to create an extra label control using the `setAttribute()` method and passing the desired label as a string, as shown below: <br/>
+
+<iframe 
+loading="lazy"
+src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.stringeditdemos.StringEditLabelDemo' 
+style={{"width": "100%", "height":"125px"}}></iframe><br/>
+
+```java
+import org.dwcj.controls.stringeditbox.StringEditBox;
+
+StringEditBox exampleStringEditBox = new StringEditBox();      //Creates a new StringEditBox
+exampleStringEditBox.setAttribute("label", "Example Label");     
+```
+
 
 ### Mask
 
 ### Placeholder
 
+It is also possible to set placeholder text within the control to better help users understand what type of input is expected. Similar to a label, this can be accomplished using the `setAttribute()` method: <br/>
+
+<iframe 
+loading="lazy"
+src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.stringeditdemos.StringEditPlaceholder' 
+style={{"width": "100%", "height":"125px"}}></iframe><br/>
+
+```java
+import org.dwcj.controls.numericbox.NumericBox;
+
+NumericBox exampleNumericBox = new NumericBox();      //Creates a new NumericBox
+exampleNumericBox.setAttribute("placeholder", "Example Placeholder");
+```
+
 ### Expanses
+
+Additionally, the string edit box come with 5 expanses for quick styling without the use of CSS.
+Below are the various expanses supported for the string edit box control: <br/>
+
+<iframe 
+loading="lazy"
+src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.stringeditdemos.StringEditExpanse' 
+style={{"width": "100%", "height":"125px"}}></iframe><br/>
+
+|String Edit Box Expanses|
+|-|
+|<ul><li>```StringEditBox.Expanse.XSMALL```</li><li>```StringEditBox.Expanse.SMALL```</li><li>```StringEditBox.Expanse.MEDIUM```</li><li>```StringEditBox.Expanse.LARGE```</li><li>```StringEditBox.Expanse.XLARGE```</li></ul>|
+
+<br/>Expanses are supported by use of a built-in enum class. To apply an expanse, execute code similar to the following: <br/><br />
+
+```java
+import org.dwcj.controls.stringeditbox.StringEditBox;
+
+StringEditBox exampleStringEditBox = new StringEditBox();      //Creates a new StringEditBox
+exampleStringEditBox.setExpanse(StringEditBox.Expanse.MEDIUM);     
+```

@@ -8,17 +8,18 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'The Dynamic Web Client for Java',
   tagline: 'Develop your Progressive Web App in Java and deploy it to the BBj application server',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://dwcjava.github.io/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/logo.png',
-
+  
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'BASIS Europe', // Usually your GitHub org/user name.
-  projectName: 'Dynamic Web Client for Java', // Usually your repo name.
-
+  organizationName: 'dwcjava', // Usually your GitHub org/user name.
+  projectName: 'dwcjava.github.io', // Usually your repo name.
+  trailingSlash: false,
+  
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
