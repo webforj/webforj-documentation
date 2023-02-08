@@ -21,6 +21,6 @@ jobs:
           node-version: 16.x
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
       - name: Test build website
-        run: yarn build
+        run: npm run build
