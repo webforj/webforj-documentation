@@ -8,7 +8,7 @@ sidebar_position: 140
 
 |Parent Class| Interfaces |
 |------------|------------|
-|[AbstractDwcControl](#)| <ul><li>[HasMouseWheelCondition](#)</li><li>[HasFocus](#)</li><li>[HasTabTraversal](#)</li></ul>|
+|[AbstractDwcControl](#)| <ul><li>[HasReadOnly](#)</li><li>[TextHighlightable](#)</li><li>[Focusable](#)</li><li>[HasMouseWheelCondition](#)</li><li>[Scrollable](#)</li><li>[TabTraversable](#)</li></ul>|
 
 | Methods |
 |------------|
@@ -17,7 +17,7 @@ sidebar_position: 140
 
 | Events |
 |------------|
-| <ul><li>[`public TextArea onEditModify(Consumer<TextAreaOnEditModifyEvent> callback)`](#)</li></ul> |
+| <ul><li>[`TextArea onEditModify(Consumer<TextAreaOnEditModifyEvent> callback)`](#)</li></ul> |
 
 ### Label
 
@@ -81,7 +81,7 @@ loading="lazy"
 src='http://localhost:8888/webapp/controlsamples?class=control_demos.textareademos.TextAreaExpanse' 
 style={{"width": "100%", "height":"125px"}}></iframe><br/>
 
-|String Edit Box Expanses|
+|Text Area Expanses|
 |-|
 |<ul><li>```TextArea.Expanse.XSMALL```</li><li>```TextArea.Expanse.SMALL```</li><li>```TextArea.Expanse.MEDIUM```</li><li>```TextArea.Expanse.LARGE```</li><li>```TextArea.Expanse.XLARGE```</li></ul>|
 
