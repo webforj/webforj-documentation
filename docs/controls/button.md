@@ -192,7 +192,7 @@ public class HelloWorldJava extends App {
 
         AppPanel panel = new AppPanel();
 
-        //Initial styling for the application panel
+        //Initial styling for the application site panel
         panel.setStyle("display", "inline-grid");
         panel.setStyle("grid-template-columns", "1fr 2fr");
         panel.setStyle("gap", "20px");
