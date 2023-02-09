@@ -50,7 +50,7 @@ Shown below are example buttons with each of the supported Themes applied: <br/>
 <!-- ![various button expanses](./_images/button_themes.jpg) -->
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.buttondemos.ButtonDemo' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonDemo' 
 style={{"width": "100%"}}></iframe><br/>
 Listed below are the current supported theme options for the button control:<br/><br/>
 
@@ -74,7 +74,7 @@ Below are the various expanses supported for the button control: <br/>
 <!-- ![various button expanses](./_images/button_expanses.jpg) -->
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.buttondemos.ButtonExpanses' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonExpanses' 
 style={{"width": "100%", "height" : "100px"}}></iframe><br/>
 Listed below are the current supported expanse options for the button control:<br/><br/>
 
@@ -128,7 +128,7 @@ all button themes and expanses. <br/><br/>
 <!-- ![various button expanses](./_images/button_disabled.jpg) -->
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.buttondemos.ButtonDisable' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonDisable' 
 style={{"width": "100%"}}></iframe>
 
 Disabling a button can be done at any time in the code by using the ```setEnabled(boolean foo)``` function. For added convenience, a button can also be disabled when clicked using the built-in ```setDisabledOnClick(boolean foo)``` function.
@@ -146,7 +146,7 @@ In addition to, or instead of having text on a button, it is possible to add an 
 Below are examples of buttons with text to the left and right, as well as a button with only an icon:
 <iframe
 loading="lazy" 
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.buttondemos.ButtonIcon'
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonIcon'
 style={{"width": "450px","height" : "70px"}}></iframe> <br /><br />
 
 To add these icons, set the button's text to have an `<html>` tag, with a `<bbj-icon>` tag inside with the name attribute set accordingly. In addition to an icon, include text to the left or right of the `<bbj-icon>` tag to include a label as well:
@@ -163,7 +163,7 @@ been entered into the text boxes, and the second button will clear any text with
 
 <iframe
 loading="lazy" 
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.buttondemos.ButtonHelloWorld' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonHelloWorld' 
 style={{"width": "450px","height" : "350px"}}></iframe>
 
 <details>

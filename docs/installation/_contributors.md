@@ -1,97 +1,101 @@
----
+<!-- ---
 sidebar_position: 3
 ---
 
-# Contributors
+# Contributors -->
 
 This section of the documentation will cover the steps required not only to 
 utilize the DWCJ for application or web development, but also for active
 contribution to the engine itself.
-
-**NOTE:** This walkthrough will cover installation on a Windows system - installation
-steps may vary for Mac/Linux OS devices.
 <br/>
 
 Installation will be broken down into the following steps:
 
-1. Java and Maven download and configuration
+<!--
+Should each of these have their own sections?
+The bar to the right of the site has a breakdown of the various
+sections, but I could break each of these four up into their own
+options on the left bar.
+ -->
+
+1. IDE download and configuration (this will only cover VS Code for the
+moment)
 2. BBj download and installation
 3. Downloading DWCJ files and building the .jar file
 4. Configuring the application in the Enterprise Manager
 
 
-## 1) Java and Maven Download and Configuration
-This section describes the installation process for Java and Maven, both of which
-will be required for development of applications and the engine itself. If you already
-have Java and Maven downloaded, please skip to [**Step 2**](#section2).
+## 1) VS Code Setup
+This section describes the installation process for the
+VS Code editor. Other IDEs, including Eclipse or 
+IntelliJ can be used as well. If you already have an IDE
+installed, a JDK downloaded and Maven configured, you can
+skip to [**Step 2**](#section2).
 
-### Download Java for OS:
-Begin by installing Java on your computer. You’ll want to select the version that matches your OS. 
-A list of versions can be found [by following this link](https://code.visualstudio.com/download).
+### Download VS Code for your OS:
+You can follow [this link to find the download that's 
+right for your system](https://code.visualstudio.com/download).
 
-### Configure the Java Installation
-After selecting the correct version, follow the installation instructions. Note that you’ll want to 
-set the JAVA_HOME variable. On Windows, this can be done by selecting the “Will be installed on local hard drive” 
-option for the “Set JAVA_HOME variable” option during installation.
+### Install Java Extension Pack
+[This extension pack will come with various tools for Java](https://code.visualstudio.com/docs/java/extensions)
+, including a debugging tool, syntax highlighting, and Maven 
+interface, which will be used later on.
 
-![Java installation options](./_images/contributors/image1.jpg)
+![VS Code extension installation screenshot](./_images/image1.jpg)
 
-With this step completed, Java will be installed on your system.
+### Install Java Development Kit
 
+After installing this resource pack, we’ll be prompted to install a JDK.
+VS Code should give us the option to do this easily; click the “Download”
+option present on the left side of the window, and follow the install 
+instructions. 
+
+![JDK download screenshot](./_images/image2.jpg)
 <br/>
 
-### Install Maven
+Ensure that **Will be installed on local hard drive** is a selected 
+option for the **Set JAVA_HOME variable** menu item during installation.
 
-Next we’ll install Maven in order to allow the creation of a .jar file from the changes made to the engine. 
-Make sure you take note of the location in which you install Maven, as this path will be needed in the next step. 
-Go to [this link and select the correct download for your OS](https://maven.apache.org/download.cgi).
-
+![JAVA_HOME variable Screenshop](./_images/image3.jpg)
 <br/>
 
-### Configure Environment Variables for Maven
 
-After Maven has been installed, various environment variables will need to be set to ensure Maven is used 
-properly. This guide will walk through how to do this in Windows. Start by searching “Environment” from 
-the start menu and select **“Edit the system environment variables”**
+### Download Maven's .cmd file
 
-
-![Windows start menu environment variables option](./_images/contributors/image2.jpg)
-
-
-Once the System Properties window appears, select the **“Environment Variables”** button from the bottom right:
-
-![Environment Variables button](./_images/contributors/image3.jpg)
+You can find the required files available 
+for [download by following this link](https://maven.apache.org/download.cgi).
+Once downloaded, open the zipped folder and prepare to extract them.
+<a name='StepE'></a>
 
 
-This window will allow us to create two new user variables, and to edit the path system variable. Select the **“New”** button
-in the top portion of the window. 
 
-![New button to add environment variable](./_images/contributors/image4.jpg)
+### Extract Files
 
-A window will pop up with two fields, one for a variable name, and one for a variable value. 
-For the name, enter **“MAVEN_HOME”**, and for the value, enter the path you installed your Maven files at. 
-An example path might be **“C:\apache-maven-3.8.6”**. Hit okay to confirm.
+Extract the contents of the .zip folder and note the location you choose.
+Once the extraction is complete, navigate to the **mvn.cmd** file via
+**apache-maven-X.X.X -> bin**, where the X's represent the current 
+release version, and copy the path name. An example path name might be
+**C:\apache-maven-3.8.6\bin\mvn.cmd**.
 
-![Saving the variable name and value](./_images/contributors/image5.jpg)
+![Maven file structure .cmd path screenshot](./_images/image4.jpg)
+<br/>
 
+### Access VS Code's Settings
 
-To finish configuring environment variables, click on the **“Path”** entry in the **“System Variables"** section. 
-Then, select the **“Edit”** option. This will bring up a dialog window with the various Paths your system will check.
+To do this, you can click on **File** at the top left of the window,
+then click **Preferences**, and then **Settings**. The hotkey shortcut
+is **Ctrl** + **,** without the plus.
 
-![Editing the Path variable](./_images/contributors/image6.jpg)
+![VS Code settings menu screenshot](./_images/image5.jpg)
+<br/>
 
+### Configure Maven Executable Path
 
-This will open a dialog window which will allow you to add a path to the list. Select **“New”**, and add the path to your 
-Maven binary (this should be in the folder you downloaded from the Maven website).
+Finally, after opening the settings, type "**maven**" into the settings search
+bar. This will bring up a long list of options. Scroll through these until
+you find the "**Maven > Executable: Path**" setting. Once this has been found,
+enter the path to the **mvn.cmd** that you extracted in **[this step](#StepE)**. 
 
-![Editing the Path variable](./_images/contributors/image7.jpg)
-
-To confirm both of these steps have been completed, open your preferred command line tool, and enter the following command:
-**java -–version && mvn–version**
-
-This should display the versions of both Java and Maven installed on your computer if the above steps were successfully completed:
-
-![Editing the Path variable](./_images/contributors/image8.jpg)
 
 <a name='section2'></a>
 <br/>
@@ -116,13 +120,11 @@ video from **4:13** to **8:23**.
 ## 3) Download/Clone and Package DWCJ
 
 The following steps will explain downloading (or cloning) the files for the 
-DWCJ from GitHub. **We’ll assume that you already have Git and a command line tool, 
-such as Git Bash installed. If not, [please follow this link to set this up.](https://gitforwindows.org/)**
+DWCJ from GitHub. It's assumed that you already have Git and a command 
+line tool, such as Git Bash installed. If not, please follow this link to 
+set this up:
 
-
-This tutorial will use Microsoft’s VS Code as the development IDE. Other IDEs may be used, 
-and may come with other features or functionality. **VS Code can be [downloaded free of charge from this link.](https://code.visualstudio.com/Download)**
-
+https://gitforwindows.org/
 
 ### Clone DWCJ Github Repo
 Navigate to **[this link](https://github.com/DwcJava/engine)**, which should 
@@ -168,50 +170,33 @@ navigate to the "**engine**" folder that was just cloned from GitHub.
 ![Selecting a folder](./_images/image10.jpg)
 <br/>
 
-Once the folder has been opened, you should see the various files and folders 
-open in the panel on the left of your screen. First, navigate to the pom.xml
-file and open this in your editor. 
+Once the folder has been opened, you should see the various files and folders
+open in the panel on the left of your screen. To compile this program, we'll
+need to open the Maven window at the bottom of the left panel.
 
-![pom.xml window](./_images/contributors/image30.jpg)
+![Maven window](./_images/image11.jpg)
 <br/>
 
-Notice the various profiles listed in this file, which specify default directories 
-based on your operating system and BBj installation configuration. **It may be 
-necessary to change the default profile depending on which system and BBj 
-naming convention you are operating with. Alternatively, you can change the 
-profile you use by passing it to the maven command with the -P flag, such as 
-“-P winbbjlib”.**
+Begin the process by running the clean function. If this runs properly,
+you should see "**BUILD SUCCESS**" in VS Code's output console. 
 
-![POM items window](./_images/contributors/image31.jpg)
+![Maven clean command and output](./_images/image12.jpg)
 <br/>
 
-Now Maven will be used to package the engine and create a .jar file. Begin the process 
-by running **“mvn clean”** in the engine directory - this can be done from any CLI, but this 
-tutorial will use a VS Code bash terminal.
+After a successful clean, we can compile out code using Maven's compile
+function as shown below. The output should result in a similar 
+"**BUILD SUCCESS**".
 
-![Maven clean command](./_images/contributors/image32.jpg)
+![Maven compile command and output](./_images/image13.jpg)
 <br/>
-
-If this runs properly, you should see **“BUILD SUCCESS”** in VS Code’s output console:
-
-![Maven clean output](./_images/contributors/image33.jpg)
-<br/>
-
-Finally, we’ll package the code into a .jar file we can use. We’ll do this by running 
-**“mvn package”** from the command line in the engine directory. If this runs correctly, 
-a final **“BUILD SUCCESS”** message should display:
-
-
-![Maven compile command and output](./_images/contributors/image34.jpg)
-<br/>
-
-After completing these steps, you should have a .jar file that you can use in the BASIS 
-enterprise manager. The version of the .jar file will differ as releases are pushed to 
-Github. This file should be found in “engine>target>lib”, as shown below:
-
-![Final packaged JAR](./_images/contributors/image35.jpg)
 
 <a name='packageSection'></a>
+
+Finally, package the code into the .jar file that is required in the next
+section. We'll do this with the package functionality in Maven, and should
+see a final "**BUILD SUCCESS**" message.
+
+![Maven package command and output](./_images/image14.jpg)
 <br/>
 <br/>
 <br/>
@@ -231,21 +216,11 @@ our toolbar.
 ![BBjServices location on the toolbar](./_images/image15.jpg)
 <br/>
 
-**NOTE**: If this service isn’t running, you can restart BBj by restarting the 
-application. On Windows, we’ll hit the Windows key, type “Admin” and select 
-the program from the start menu:
+If this service is not running, you can restart Barista by restarting the 
+application. On Windows, hit the Windows key, type "Barista", and select 
+the program from the start menu.
 
-![Restarting Barista from the Windows start menu](./_images/contributors/image36.jpg)
-<br/>
-
-Select **“Start/Stop the BBjServices”**
-
-![Stop/Start BBj services](./_images/contributors/image37.jpg)
-<br/>
-
-Then select **“Restart BBjServices”**
-
-![Stop/Start BBj services](./_images/contributors/image37.jpg)
+![Restarting Barista from the Windows start menu](./_images/image16.jpg)
 <br/>
 
 After ensuring that Barista is running, open the Enterprise Manager by
@@ -256,9 +231,6 @@ username is ***admin*** and the password is ***admin123***.
 
 ![Restarting Barista from the Windows start menu](./_images/image17.jpg)
 <br/>
-
-
-
 
 <a name='classpathSection'></a>
 
