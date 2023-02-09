@@ -26,7 +26,7 @@ Use the `setMinimum()` and `setMaximum()` methods to determine the upper and low
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.sliderdemos.SliderMaxMinDemo' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.sliderdemos.SliderMaxMinDemo' 
 style={{"width": "100%", "height":"225px"}}></iframe><br/><br />
 
 ### Ticks and Labeling
@@ -35,7 +35,7 @@ Slider controls can be customized to show ticks, or spaces bounded by lines to r
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.sliderdemos.SliderTickDemo' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.sliderdemos.SliderTickDemo' 
 style={{"width": "100%", "height":"250px"}}></iframe><br/><br />
 
 It is also possible to set labels on a slider. These labs may or may not correspond with ticks that have been set. To set the labels, simply create a map with key value pairs, where the keys are the integer values to be labeled, and the values are the desired label string. 
@@ -45,7 +45,7 @@ It is also possible to set labels on a slider. These labs may or may not corresp
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.sliderdemos.SliderLabelDemo' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.sliderdemos.SliderLabelDemo' 
 style={{"width": "100%", "height":"350px"}}></iframe><br/><br />
 
 
@@ -55,14 +55,14 @@ Sliders can be oriented either horizontally or vertically by using the `setOrien
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.sliderdemos.SliderOrientationDemo' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.sliderdemos.SliderOrientationDemo' 
 style={{"width": "100%", "height":"400px"}}></iframe><br/><br />
 
 It is also possible to invert a slider. By default, the minimum value of a vertical slider is at the bottom and the maximum value is at the top. For a horizontal slider, the minimum value is to the left and the maximum value is to the right. The orientation reverses for inverted sliders.
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.sliderdemos.SliderInversionDemo' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.sliderdemos.SliderInversionDemo' 
 style={{"width": "100%", "height":"200px"}}></iframe><br/><br />
 
 
@@ -73,7 +73,7 @@ Shown below are progress bars with each of the supported Themes applied: <br/>
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.sliderdemos.SliderThemesDemo' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.sliderdemos.SliderThemesDemo' 
 style={{"width": "100%", "height":"620px"}}></iframe><br/><br/>
 
 |Progress Bar Themes|

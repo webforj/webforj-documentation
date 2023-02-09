@@ -26,7 +26,7 @@ Labels can be easily added above the component without the need to create a sepa
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.comboboxdemos.ComboboxLabelDemo' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.comboboxdemos.ComboboxLabelDemo' 
 style={{"width": "100%", "height":"100px"}}></iframe><br/><br />
 
 Use the `setAttribute()` function to create a label. The attribute to be changed is `label`, and the value should be the desired label text.  <br/><br />
@@ -44,7 +44,7 @@ DWCJ Combo Box components come with 14 themes built in for quick styling without
 Shown below are example boxes with each of the supported Themes applied: <br/>
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.comboboxdemos.ComboboxThemeDemo' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.comboboxdemos.ComboboxThemeDemo' 
 style={{"width": "100%", "height" : "170px"}}></iframe><br/>
 Listed below are the current supported theme options for the combo box control:<br/><br/>
 
@@ -67,7 +67,7 @@ There are five Combo Box expanses that are supported in the DWCJ which allow for
 Below are the various expanses supported this control: <br/>
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.comboboxdemos.ComboboxExpanseDemo' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.comboboxdemos.ComboboxExpanseDemo' 
 style={{"width": "100%", "height" : "120px"}}></iframe><br/>
 Listed below are the current supported expanse options for the combo box control:<br/><br/>
 

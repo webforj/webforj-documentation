@@ -32,7 +32,7 @@ are the two settings: <br/>
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.checkboxdemos.CheckboxHorizontalText' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxHorizontalText' 
 style={{"width": "100%"}}></iframe><br/>
 Listed below are the current supported theme options for the checkbox control:<br/><br/>
 
@@ -56,7 +56,7 @@ There are five checkbox expanses that are supported in the DWCJ which allow for 
 Below are the expanses supported for the checkbox control: <br/>
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.checkboxdemos.CheckboxExpanseDemo' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxExpanseDemo' 
 style={{"width": "100%", "height" : "100px"}}></iframe><br/>
 Listed below are the current supported expanse options for the checkbox control:<br/><br/>
 
@@ -80,7 +80,7 @@ exampleCheckBox.setExpanse(CheckBox.Expanse.MEDIUM);     //Sets the checkbox's e
 
 <iframe
 loading="lazy" 
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.checkboxdemos.CheckboxDemo' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxDemo' 
 style={{"width": "300px","height" : "200px"}}></iframe>
 
 <details>

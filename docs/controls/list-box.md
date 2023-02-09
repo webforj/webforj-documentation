@@ -25,7 +25,7 @@ Labels can be easily added above the component without the need to create a sepa
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.listboxdemos.ListboxLabel' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.listboxdemos.ListboxLabel' 
 style={{"width": "100%", "height":"170px"}}></iframe><br/><br />
 
 Use the `setAttribute()` function to create a label. The attribute to be changed is `label`, and the value should be the desired label text.  <br/><br />
@@ -44,7 +44,7 @@ items using the `Shift` for contiguous entry selection and `Control` (Windows) o
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.listboxdemos.ListboxMultipleSelection' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.listboxdemos.ListboxMultipleSelection' 
 style={{"width": "100%", "height":"170px"}}></iframe><br/><br/>
 
 
@@ -65,7 +65,7 @@ Below are the various expanses supported for the list box control: <br/>
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.listboxdemos.ListboxExpanses' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.listboxdemos.ListboxExpanses' 
 style={{"width": "100%", "height":"250px"}}></iframe><br/>
 
 |List Box Expanses|

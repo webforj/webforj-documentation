@@ -26,7 +26,7 @@ The text area control can be easily labeled without the needing to create an ext
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/controlsamples?class=control_demos.textareademos.TextAreaLabel' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textareademos.TextAreaLabel' 
 style={{"width": "100%", "height":"125px"}}></iframe><br/>
 
 ```java
@@ -44,7 +44,7 @@ It is also possible to set placeholder text within the control to better help us
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/controlsamples?class=control_demos.textareademos.TextAreaPlaceholder' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textareademos.TextAreaPlaceholder' 
 style={{"width": "100%", "height":"125px"}}></iframe><br/>
 
 ```java
@@ -61,7 +61,7 @@ The text area can also be configured with spellchecking to help the user improve
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/controlsamples?class=control_demos.textareademos.TextAreaSpellcheck' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textareademos.TextAreaSpellcheck' 
 style={{"width": "100%", "height":"125px"}}></iframe><br/>
 
 ```java
@@ -78,7 +78,7 @@ Below are the various expanses supported for the text area control: <br/>
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/controlsamples?class=control_demos.textareademos.TextAreaExpanse' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textareademos.TextAreaExpanse' 
 style={{"width": "100%", "height":"125px"}}></iframe><br/>
 
 |Text Area Expanses|

@@ -27,7 +27,7 @@ The text combo box can be configured to open the menu in various positions relat
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/controlsamples?class=control_demos.textcomboboxdemos.TextComboBoxPlacement' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textcomboboxdemos.TextComboBoxPlacement' 
 style={{"width": "100%", "height":"350px"}}></iframe><br/>
 
 ```java
@@ -43,7 +43,7 @@ The text combo box control can be easily labeled without the needing to create a
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/controlsamples?class=control_demos.textcomboboxdemos.TextComboBoxLabel' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textcomboboxdemos.TextComboBoxLabel' 
 style={{"width": "100%", "height":"200px"}}></iframe><br/>
 
 ```java
@@ -59,7 +59,7 @@ It is also possible to set placeholder text within the control to better help us
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/controlsamples?class=control_demos.textcomboboxdemos.TextComboBoxPlaceholder' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textcomboboxdemos.TextComboBoxPlaceholder' 
 style={{"width": "100%", "height":"200px"}}></iframe><br/>
 
 ```java
@@ -76,7 +76,7 @@ Below are the various expanses supported for the text box control: <br/>
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/controlsamples?class=control_demos.textcomboboxdemos.TextComboBoxExpanses' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textcomboboxdemos.TextComboBoxExpanses' 
 style={{"width": "100%", "height":"250px"}}></iframe><br/>
 
 |Text Box Expanses|

@@ -25,7 +25,7 @@ Labels can be easily added above the control without the need to create a separa
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.numericboxdemos.NumericboxLabel' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.numericboxdemos.NumericboxLabel' 
 style={{"width": "100%", "height":"170px"}}></iframe><br/><br />
 
 Use the `setAttribute()` function to create a label. The attribute to be changed is `label`, and the value should be the desired label text.  <br/><br />
@@ -43,7 +43,7 @@ It is also possible to configure text that appears in the input when it has no v
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.numericboxdemos.NumericboxPlaceholder' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.numericboxdemos.NumericboxPlaceholder' 
 style={{"width": "100%", "height":"170px"}}></iframe><br/><br />
 
 Use the `setAttribute()` function to set placeholder text. The attribute to be changed is `placeholder`, and the value should be the desired text.  <br/><br />
@@ -138,7 +138,7 @@ Below are the various expanses supported for the numeric box control: <br/>
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.numericboxdemos.NumericboxExpanses' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.numericboxdemos.NumericboxExpanses' 
 style={{"width": "100%", "height":"125px"}}></iframe><br/>
 
 |Numeric Box Expanses|

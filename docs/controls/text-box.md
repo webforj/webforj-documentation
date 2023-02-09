@@ -25,7 +25,7 @@ The text box control can be easily labeled without the needing to create an extr
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/controlsamples?class=control_demos.textboxdemos.TextBoxLabel' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textboxdemos.TextBoxLabel' 
 style={{"width": "100%", "height":"125px"}}></iframe><br/>
 
 ```java
@@ -43,7 +43,7 @@ It is also possible to set placeholder text within the control to better help us
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/controlsamples?class=control_demos.textboxdemos.TextBoxPlaceholder' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textboxdemos.TextBoxPlaceholder' 
 style={{"width": "100%", "height":"125px"}}></iframe><br/>
 
 ```java
@@ -59,7 +59,7 @@ The text box can also be configured with spellchecking to help the user improve 
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/controlsamples?class=control_demos.textboxdemos.TextBoxSpellcheck' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textboxdemos.TextBoxSpellcheck' 
 style={{"width": "100%", "height":"125px"}}></iframe><br/>
 
 ```java
@@ -76,7 +76,7 @@ Below are the various expanses supported for the text box control: <br/>
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/controlsamples?class=control_demos.textboxdemos.TextBoxExpanses' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textboxdemos.TextBoxExpanses' 
 style={{"width": "100%", "height":"125px"}}></iframe><br/>
 
 |Text Box Expanses|

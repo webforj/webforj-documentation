@@ -28,7 +28,7 @@ The string edit control can be easily labeled without the needing to create an e
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.stringeditdemos.StringEditLabelDemo' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.stringeditdemos.StringEditLabelDemo' 
 style={{"width": "100%", "height":"125px"}}></iframe><br/>
 
 ```java
@@ -47,7 +47,7 @@ It is also possible to set placeholder text within the control to better help us
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.stringeditdemos.StringEditPlaceholder' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.stringeditdemos.StringEditPlaceholder' 
 style={{"width": "100%", "height":"125px"}}></iframe><br/>
 
 ```java
@@ -64,7 +64,7 @@ Below are the various expanses supported for the string edit box control: <br/>
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.stringeditdemos.StringEditExpanse' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.stringeditdemos.StringEditExpanse' 
 style={{"width": "100%", "height":"125px"}}></iframe><br/>
 
 |String Edit Box Expanses|

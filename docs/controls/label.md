@@ -24,7 +24,7 @@ the label will be replaced with the desired HTML element.
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.labeldemos.LabelDemo' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.labeldemos.LabelDemo' 
 style={{"width": "100%", "height":"250px"}}></iframe><br/>
 
 To achieve the above results, execute code similar to the following:
@@ -41,5 +41,5 @@ Label text can also be aligned using the inherited alignment functionality provi
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.labeldemos.LabelAlignment' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.labeldemos.LabelAlignment' 
 style={{"width": "100%", "height":"400px"}}></iframe><br/>

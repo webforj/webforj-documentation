@@ -22,7 +22,7 @@ The DWCJ's progress bar allows the developer to chose the direction in which the
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.progressbardemos.ProgressbarOrientation' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.progressbardemos.ProgressbarOrientation' 
 style={{"width": "100%", "height":"425px"}}></iframe><br/><br />
 
 
@@ -61,7 +61,7 @@ The progress bar in the DWCJ allows for indeterminate display, displaying an ani
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.progressbardemos.ProgressbarIndeterminate' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.progressbardemos.ProgressbarIndeterminate' 
 style={{"width": "100%", "height":"100px"}}></iframe><br/><br />
 
 ```java
@@ -77,7 +77,7 @@ The progress bar can has minimum and maximum values that can be set, which will 
 
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.progressbardemos.ProgressbarMinMax' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.progressbardemos.ProgressbarMinMax' 
 style={{"width": "100%", "height":"100px"}}></iframe><br/><br />
 
 
@@ -87,7 +87,7 @@ The DWCJ progress bar comes with 6 themes built in for quick styling without the
 Shown below are progress bars with each of the supported Themes applied: <br/>
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.progressbardemos.ProgressbarThemes' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.progressbardemos.ProgressbarThemes' 
 style={{"width": "100%", "height":"320px"}}></iframe><br/><br/>
 
 |Progress Bar Themes|
