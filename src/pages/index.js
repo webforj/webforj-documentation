@@ -4,6 +4,8 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+
+import logo from "../../static/img/logo.png"
 import { css } from '@emotion/react';
 
 import styles from './index.module.css';
@@ -15,7 +17,7 @@ function HomepageHeader() {
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <div className={clsx(styles.test)}>
-        <img className="hero_image" src='https://dwcj.org/assets/img/logo.png' style={{"grid-column": "1"}}></img>
+        <img className="hero_image" src={logo} style={{"grid-column": "1"}}></img>
         <div>
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>

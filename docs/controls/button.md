@@ -101,7 +101,7 @@ Shown below are the three options for vertical alignment of text within a button
 <!-- ![various button expanses](./_images/button_alignments.jpg) -->
 <iframe 
 loading="lazy"
-src='http://localhost:8888/webapp/dwcj_control_demos?class=org.dwcj.control_demos.buttondemos.ButtonAlignment' 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonAlignment' 
 style={{"width": "100%", "height" : "120px"}}></iframe>
 
 Listed below are the current supported vertical text alignments for the button control:
