@@ -84,7 +84,7 @@ const config = {
           {to: '/live_demo', label: 'Live Demo', position: 'left'},
           {to: '/tutorials/intro', label: 'Tutorials', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/DwcJava',
             label: 'GitHub',
             position: 'right',
           },
