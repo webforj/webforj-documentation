@@ -77,6 +77,8 @@ exampleCheckBox.setExpanse(CheckBox.Expanse.MEDIUM);     //Sets the checkbox's e
 
 ### Sample Program
 
+The sample program below is a simple demonstration that will display a message box 
+each time a checkbox is checked on or off.
 
 <iframe
 loading="lazy" 
@@ -88,8 +90,6 @@ style={{"width": "300px","height" : "200px"}}></iframe>
 
 
 ```java
-    package org.dwcj.control_demos.checkboxdemos;
-
     import org.dwcj.App;
     import org.dwcj.controls.panels.AppPanel;
     import org.dwcj.controls.checkbox.CheckBox;

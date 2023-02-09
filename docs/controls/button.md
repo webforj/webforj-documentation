@@ -24,24 +24,45 @@ or webpages. The button's behavior can be modified with the methods and events l
 | <ul><li>[`Button onClick(Consumer<ButtonPushEvent> callback)`](#)</li></ul> |
 
 
-
-<!-- ### Methods
-
-| Method Name | Parameters | Returns | Description |
-|:-----------:|:----------:|:-------:|-------------|
-| <a name='tButton'/>`Button`| `String` | N/A | Parameterized constructor for the Button control which will set the text of the button to the string passed. May be passed no parameters as well.|
-| <a name='tClick'/>`onClick` | `Consumer<ButtonPushEvent>` A function that performs the desired on-click behavior| `Button` | Function that registers a click on the button. Needs to take the function signature of a separate function which can be written to handle the click. An example function signature might be `button.onClick(this::buttonPushHandler)` where the buttonPushHandler is later defined in your program. The signature of that function may look something like this: `buttonPushHandler(ButtonPushEvent ev){...}`  |
-| <a name='tDisableG'/>`isDisableOnClick` | N/A | `Boolean` | Returns whether or not the button will be disabled when clicked on. |
-| <a name='tDisableS'/>`setDisableOnClick` | `Boolean` | `Button` |Sets whether or not the button will be disabled when clicked on.|
-| <a name='tThemeS'/>`setTheme` | `Button.Theme` | `Button` | Sets the vertical alignment for text within a button. To do this, use one of the enums listed in the <b>[Themes section.](###Themes)</b> |
-| <a name='tExpanseS'/>`setExpanse` | `Button.Expanse` | `Button` | Sets the expanse of a button based on predetermined values that can be explored in more detail in the <b>[Expanses section.](###Expanses)</b> |
-| <a name='tVertAlignG'/>`getVerticalAlignment` | N/A | `Button.TextVerticalAlignment` |Returns an enum value representing the vertical alignment of the text within a button. See <b>[Vertical Alignments.](###Vertical-Text-Alignments)</b>|
-| <a name='tVertAlignS'/>`setVerticalAlignment` | `Button.TextVerticalAlignment` | `Button` | Sets the vertical alignment for text within a button. To do this, use one of the enums listed in the <b>[Vertical Alignments.](###Vertical-Text-Alignments)</b>| -->
-
-
 ### Button Text
 
 Buttons come with a parameterized constructor, taking a String argument, which will set the initial text of the button. The ```setText(String foo)``` method can also be called to set the text of the button.  
+
+### Adding Icons to Buttons
+
+In addition to, or instead of having text on a button, it is possible to add an icon to a button as well. Out of the box, the following icon pools can be used:
+
+<ol>
+    <li><a href='https://tabler-icons.io/'> Tabler </a></li>
+    <li><a href='https://feathericons.com/'> Feather </a></li>
+    <li><a href='https://fontawesome.com/'> Font Awesome Free </a></li>
+</ol>
+
+Below are examples of buttons with text to the left and right, as well as a button with only an icon:
+<iframe
+loading="lazy" 
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonIcon'
+style={{"width": "450px","height" : "70px"}}></iframe> <br /><br />
+
+To add these icons, set the button's text to have an `<html>` tag, with a `<bbj-icon>` tag inside with the name attribute set accordingly. In addition to an icon, include text to the left or right of the `<bbj-icon>` tag to include a label as well:
+
+```java
+ Button b1 = new Button ("<html><bbj-icon name=\"alien\"></bbj-icon> Button with Icon and Text</html>");
+```
+
+
+### Disabling a Button
+
+Button controls can be disabled to convey to a user that a certain action is not yet or is no longer available. A disabled button will increase the gray scale of the button, and is available for 
+all button themes and expanses. <br/><br/>
+<!-- ![various button expanses](./_images/button_disabled.jpg) -->
+<iframe 
+loading="lazy"
+src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonDisable' 
+style={{"width": "100%"}}></iframe>
+
+Disabling a button can be done at any time in the code by using the ```setEnabled(boolean foo)``` function. For added convenience, a button can also be disabled when clicked using the built-in ```setDisabledOnClick(boolean foo)``` function.
+
 
 ### Themes
 
@@ -121,39 +142,7 @@ exampleButton.setVerticalAlignment(Button.TextVerticalAlignment.CENTER);  //Sets
 ```
 
 
-### Disabling a Button
 
-Button controls can be disabled to convey to a user that a certain action is not yet or is no longer available. A disabled button will increase the gray scale of the button, and is available for 
-all button themes and expanses. <br/><br/>
-<!-- ![various button expanses](./_images/button_disabled.jpg) -->
-<iframe 
-loading="lazy"
-src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonDisable' 
-style={{"width": "100%"}}></iframe>
-
-Disabling a button can be done at any time in the code by using the ```setEnabled(boolean foo)``` function. For added convenience, a button can also be disabled when clicked using the built-in ```setDisabledOnClick(boolean foo)``` function.
-
-### Adding Icons to Buttons
-
-In addition to, or instead of having text on a button, it is possible to add an icon to a button as well. Out of the box, the following icon pools can be used:
-
-<ol>
-    <li><a href='https://tabler-icons.io/'> Tabler </a></li>
-    <li><a href='https://feathericons.com/'> Feather </a></li>
-    <li><a href='https://fontawesome.com/'> Font Awesome Free </a></li>
-</ol>
-
-Below are examples of buttons with text to the left and right, as well as a button with only an icon:
-<iframe
-loading="lazy" 
-src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonIcon'
-style={{"width": "450px","height" : "70px"}}></iframe> <br /><br />
-
-To add these icons, set the button's text to have an `<html>` tag, with a `<bbj-icon>` tag inside with the name attribute set accordingly. In addition to an icon, include text to the left or right of the `<bbj-icon>` tag to include a label as well:
-
-```java
- Button b1 = new Button ("<html><bbj-icon name=\"alien\"></bbj-icon> Button with Icon and Text</html>");
-```
 
 
 ### Sample Program

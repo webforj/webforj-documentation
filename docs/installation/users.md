@@ -10,55 +10,95 @@ This installation will not allow users to contribute to the DWCJ implementation
 code itself.
 <br/>
 
+**NOTE:** This walkthrough will cover installation on a Windows system - installation
+steps may vary for Mac/Linux OS devices.
+<br/>
 
 Installation will be broken down into the following steps:
 
-<!--
-Should each of these have their own sections?
-The bar to the right of the site has a breakdown of the various
-sections, but I could break each of these four up into their own
-options on the left bar.
- -->
 
-1. IDE download and configuration (this will only cover VS Code for the
-moment)
+1. Java and Maven download and configuration
 2. BBj download and installation
-3. Downloading DWCJ files and building the .jar file
-4. Configuring the application in the Enterprise Manager
+3. Using the BBj Plugin Manager to create your application
+4. Launching your application
 
 
-## 1) VS Code Setup
-This section describes the installation process for the
-VS Code editor. Other IDEs, including Eclipse or 
-IntelliJ can be used as well. If you already have an IDE
-installed, a JDK downloaded and Maven configured, you can
-skip to [**Step 2**](#section2).
+## 1) Java and Maven Download and Configuration
+This section describes the installation process for Java and Maven, both of which
+will be required for development of applications and the engine itself. If you already
+have Java and Maven downloaded, please skip to [**Step 2**](#section2). If you also have BBj installed on your system, please skip to [**Step 3**](#section3).
 
-### Download VS Code for your OS:
-You can follow [this link to find the download that's 
-right for your system](https://code.visualstudio.com/download).
+### Download Java for OS:
+Begin by installing Java on your computer. You’ll want to select the version that matches your OS. 
+A list of versions can be found [by following this link](https://adoptium.net/temurin/releases/).
 
-### Install Java Extension Pack
-[This extension pack will come with various tools for Java](https://code.visualstudio.com/docs/java/extensions)
-, including a debugging tool, syntax highlighting, and Maven 
-interface, which will be used later on.
+### Configure the Java Installation
+After selecting the correct version, follow the installation instructions. Note that you’ll want to 
+set the JAVA_HOME variable. On Windows, this can be done by selecting the “Will be installed on local hard drive” 
+option for the “Set JAVA_HOME variable” option during installation.
 
-![VS Code extension installation screenshot](./_images/image1.jpg)
+![Java installation options](./_images/contributors/image1.jpg)
 
-### Install Java Development Kit
+With this step completed, Java will be installed on your system.
 
-After installing this resource pack, we’ll be prompted to install a JDK.
-VS Code should give us the option to do this easily; click the “Download”
-option present on the left side of the window, and follow the install 
-instructions. 
-
-![JDK download screenshot](./_images/image2.jpg)
 <br/>
 
-Ensure that **"Will be installed on local hard drive"** is a selected 
-option for the **Set JAVA_HOME variable** menu item during installation.
+### Install Maven
 
-![JAVA_HOME variable Screenshop](./_images/image3.jpg)
+Next we’ll install Maven in order to allow the creation of a .jar file from the changes made to the engine. 
+Make sure you take note of the location in which you install Maven, as this path will be needed in the next step. 
+Go to [this link and select the correct download for your OS](https://maven.apache.org/download.cgi).
+
+<br/>
+
+### Configure Environment Variables for Maven
+
+After Maven has been installed, various environment variables will need to be set to ensure Maven is used 
+properly. This guide will walk through how to do this in Windows. Start by searching “Environment” from 
+the start menu and select **“Edit the system environment variables”**
+
+
+![Windows start menu environment variables option](./_images/contributors/image2.jpg)
+
+
+Once the System Properties window appears, select the **“Environment Variables”** button from the bottom right:
+
+![Environment Variables button](./_images/contributors/image3.jpg)
+
+
+This window will allow us to create two new user variables, and to edit the path system variable. Select the **“New”** button
+in the top portion of the window. 
+
+![New button to add environment variable](./_images/contributors/image4.jpg)
+
+A window will pop up with two fields, one for a variable name, and one for a variable value. 
+For the name, enter **“MAVEN_HOME”**, and for the value, enter the path you installed your Maven files at. 
+An example path might be **“C:\apache-maven-3.8.6”**. Hit okay to confirm.
+
+![Saving the variable name and value](./_images/contributors/image5.jpg)
+
+
+To finish configuring environment variables, click on the **“Path”** entry in the **“System Variables"** section. 
+Then, select the **“Edit”** option. This will bring up a dialog window with the various Paths your system will check.
+
+![Editing the Path variable](./_images/contributors/image6.jpg)
+
+
+This will open a dialog window which will allow you to add a path to the list. Select **“New”**, and add the path to your 
+Maven binary (this should be in the folder you downloaded from the Maven website).
+
+![Editing the Path variable](./_images/contributors/image7.jpg)
+
+To confirm both of these steps have been completed, open your preferred command line tool, and enter the following command:
+**java -–version && mvn–version**
+
+This should display the versions of both Java and Maven installed on your computer if the above steps were successfully completed:
+
+![Editing the Path variable](./_images/contributors/image8.jpg)
+
+<a name='section2'></a>
+<br/>
+<br/>
 <br/>
 
 ## 2) BBj Download and Installation
@@ -76,7 +116,7 @@ video from **4:13** to **8:23**.
 <br/>
 <br/>
 
-
+<a name='section3'></a>
 ## 3) Using the BBj Plugin Manager
 
 Once BBj has been installed, we can use the BBj Plugin Manager to give us
@@ -168,9 +208,10 @@ under the **"DWCJ Projects"** window.
 <br/>
 
 This will open a window which will allow the selection of a project template.
-Select **"HelloWorldJava"** from the template list. You'll also be prompted
-to select the location of the project. This walkthrough will use a new folder,
-though this isn't overtly necessary. We'll name the new folder **"dwcj_app"**.
+Select **"HelloWorldJava"** from the template list. This will create a small file with
+a simple program that can be run once configuration is complete.
+You'll also be prompted to select the location of the project. This walkthrough will use 
+a new folder,though this isn't overtly necessary. We'll name the new folder **"dwcj_app"**.
 
 ![JAVA_HOME variable Screenshop](./_images/users/i13.jpg)
 <br/>
@@ -192,7 +233,8 @@ similar to the screenshot below.
 ## 4) Opening Your Project in an IDE
 
 Now that the files we need have been created, the project can be opened in 
-an editor or IDE. Visual Studio code will be used for this walkthrough.
+an editor or IDE. This tutorial will use Microsoft’s VS Code as the development IDE. 
+Other IDEs may be used, and may come with other features or functionality. **VS Code can be [downloaded free of charge from this link.](https://code.visualstudio.com/Download)**
 
 ### Navigating to your files in your IDE
 
@@ -209,34 +251,8 @@ correct folder, click on the **"Select Folder"** button.
 ![JAVA_HOME variable Screenshop](./_images/users/i17.jpg)
 <br/>
 
-### Updating the <systemPath\> Setting
-
-The following steps may not be necessary for all users, but for those using
-VS Code, it's important to specify where the DWCJ .jar file is located. Locate
-the .jar inside **"bbx/plugins/DWCJ/lib"**.
-
-An example file path would be **"C:/bbx/plugins/DWCJ/lib/dwcj-0.006.jar"**
-
-*Note: The version name (0.006) may change as future builds are 
-released.*
-
-![JAVA_HOME variable Screenshop](./_images/users/i18.jpg)
-<br/>
-
-Once you have found the location of the DWCJ .jar file, change the **"<systemPath\>"**
-setting in the **"pom.xml"** file. Replace the ${dwcj-lib} variable with the
-pathname. It should look similar to the screenshot below.
-
-![JAVA_HOME variable Screenshop](./_images/users/i19.jpg)
-<br/>
-
 
 ## 5) Launching Your DWCJ "Hello World" Application
-
-After updating your pom.xml file, you should be ready to launch the built-in
-Hello World DWCJ application
-
-### Launch your application from the Plugin Manager
 
 Navigate back to the Plugin Manager, and select the DWCJ from the installed
 plugins list, and click **"Configure"**. 

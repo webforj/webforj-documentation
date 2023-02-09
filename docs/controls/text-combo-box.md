@@ -77,7 +77,7 @@ Below are the various expanses supported for the text box control: <br/>
 <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textcomboboxdemos.TextComboBoxExpanses' 
-style={{"width": "100%", "height":"250px"}}></iframe><br/>
+style={{"width": "100%", "height":"400px"}}></iframe><br/>
 
 |Text Box Expanses|
 |-|

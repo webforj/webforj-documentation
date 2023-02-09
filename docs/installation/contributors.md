@@ -23,11 +23,12 @@ Installation will be broken down into the following steps:
 ## 1) Java and Maven Download and Configuration
 This section describes the installation process for Java and Maven, both of which
 will be required for development of applications and the engine itself. If you already
-have Java and Maven downloaded, please skip to [**Step 2**](#section2).
+have Java and Maven downloaded, please skip to [**Step 2**](#section2). If you also have 
+BBj installed on your system, please skip to [**Step 3**](#section3).
 
 ### Download Java for OS:
 Begin by installing Java on your computer. You’ll want to select the version that matches your OS. 
-A list of versions can be found [by following this link](https://code.visualstudio.com/download).
+A list of versions can be found [by following this link](https://adoptium.net/temurin/releases/).
 
 ### Configure the Java Installation
 After selecting the correct version, follow the installation instructions. Note that you’ll want to 
@@ -112,6 +113,8 @@ video from **4:13** to **8:23**.
 <br/>
 <br/>
 <br/>
+
+<a name='section3'></a>
 
 ## 3) Download/Clone and Package DWCJ
 

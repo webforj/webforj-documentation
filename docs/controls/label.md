@@ -37,7 +37,7 @@ Label l3 = new Label("<html><ol><li>My First Item</li><li>My Second Item</li><li
 
 ### Text Alignment
 
-Label text can also be aligned using the inherited alignment functionality provided with the [HasTextAlignment](#) interface.
+Label text can also be aligned using the inherited alignment functionality provided with the [TextAlignable](#) interface.
 
 <iframe 
 loading="lazy"
