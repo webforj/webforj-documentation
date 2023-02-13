@@ -15,7 +15,6 @@ The first thing that will be required is the creation of a new Java class - do t
 create a class called **ExampleClass**. 
 
 ```java
-
 public class ExampleClass {
     
 }
