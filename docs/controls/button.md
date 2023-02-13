@@ -2,6 +2,8 @@
 sidebar_position: 0
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Button
 
@@ -23,10 +25,13 @@ or webpages. The button's behavior can be modified with the methods and events l
 |------------|
 | <ul><li>[`Button onClick(Consumer<ButtonPushEvent> callback)`](#)</li></ul> |
 
+<br />
 
 ### Button Text
 
 Buttons come with a parameterized constructor, taking a String argument, which will set the initial text of the button. The ```setText(String foo)``` method can also be called to set the text of the button.  
+
+<br />
 
 ### Adding Icons to Buttons
 
@@ -39,10 +44,14 @@ In addition to, or instead of having text on a button, it is possible to add an 
 </ol>
 
 Below are examples of buttons with text to the left and right, as well as a button with only an icon:
-<iframe
+
+<!-- <iframe
 loading="lazy" 
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonIcon'
-style={{"width": "450px","height" : "70px"}}></iframe> <br /><br />
+style={{"width": "450px","height" : "70px"}}></iframe>  -->
+
+![Adding icons to buttons](./_images/button/button_icons.jpg)
+<br />
 
 To add these icons, set the button's text to have an `<html>` tag, with a `<bbj-icon>` tag inside with the name attribute set accordingly. In addition to an icon, include text to the left or right of the `<bbj-icon>` tag to include a label as well:
 
@@ -50,30 +59,41 @@ To add these icons, set the button's text to have an `<html>` tag, with a `<bbj-
  Button b1 = new Button ("<html><bbj-icon name=\"alien\"></bbj-icon> Button with Icon and Text</html>");
 ```
 
+<br />
 
 ### Disabling a Button
 
 Button controls can be disabled to convey to a user that a certain action is not yet or is no longer available. A disabled button will increase the gray scale of the button, and is available for 
 all button themes and expanses. <br/><br/>
-<!-- ![various button expanses](./_images/button_disabled.jpg) -->
-<iframe 
+
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonDisable' 
-style={{"width": "100%"}}></iframe>
+style={{"width": "100%"}}></iframe> -->
+
+![Disabling a button](./_images/button/button_disable.jpg)
+
+<br />
 
 Disabling a button can be done at any time in the code by using the ```setEnabled(boolean foo)``` function. For added convenience, a button can also be disabled when clicked using the built-in ```setDisabledOnClick(boolean foo)``` function.
 
+<br />
 
 ### Themes
 
 DWCJ button components come with 14 themes built in for quick styling without the use of CSS.
 Shown below are example buttons with each of the supported Themes applied: <br/>
-<!-- ![various button expanses](./_images/button_themes.jpg) -->
-<iframe 
+
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonDemo' 
-style={{"width": "100%"}}></iframe><br/>
-Listed below are the current supported theme options for the button control:<br/><br/>
+style={{"width": "100%"}}></iframe> -->
+
+![Button themes](./_images/button/button_themes.jpg)
+
+<br/>
+
+Listed below are the current supported theme options for the button control:<br/>
 
 |Button Themes|
 |-|
@@ -88,16 +108,19 @@ Button exampleButton = new Button("Example");      //Creates a new button with t
 exampleButton.setTheme(Button.Theme.DEFAULT);      //Sets the button's theme to be the default theme.
 ```
 
+<br />
 
 ### Expanses
 There are five button expanses that are supported in the DWCJ which allow for quick styling without using CSS.
 Below are the various expanses supported for the button control: <br/>
-<!-- ![various button expanses](./_images/button_expanses.jpg) -->
-<iframe 
+
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonExpanses' 
 style={{"width": "100%", "height" : "100px"}}></iframe><br/>
-Listed below are the current supported expanse options for the button control:<br/><br/>
+Listed below are the current supported expanse options for the button control:<br/><br/> -->
+
+![Button expanses](./_images/button/button_expanses.jpg)
 
 |Button Expanses|
 |-|
@@ -113,17 +136,19 @@ exampleButton.setExpanse(Button.Expanse.MEDIUM);     //Sets the button's expanse
 ```
 
 
-
+<br />
 
 ### Vertical Text Alignments
 
 The DWCJ supports alignment of text within a button without having to use CSS to accomplish this.
-Shown below are the three options for vertical alignment of text within a button : <br/><br/>
-<!-- ![various button expanses](./_images/button_alignments.jpg) -->
-<iframe 
+Shown below are the three options for vertical alignment of text within a button : <br/>
+
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonAlignment' 
-style={{"width": "100%", "height" : "120px"}}></iframe>
+style={{"width": "100%", "height" : "120px"}}></iframe> -->
+
+![Button vertical alignments](./_images/button/button_alignment.jpg)
 
 Listed below are the current supported vertical text alignments for the button control:
 
@@ -141,11 +166,13 @@ Button exampleButton = new Button("Example");                             //Crea
 exampleButton.setVerticalAlignment(Button.TextVerticalAlignment.CENTER);  //Sets the button's theme to be the default theme.
 ```
 
+<!--  
 
 
 
 
 ### Sample Program
+
 
 This code snippet is a small demonstration program that will create two buttons, each of which has an event attached. The first button will display a modal window with the first and last name that have
 been entered into the text boxes, and the second button will clear any text within these boxes.
@@ -155,91 +182,103 @@ loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonHelloWorld' 
 style={{"width": "450px","height" : "350px"}}></iframe>
 
+
+
 <details>
     <summary>Show Code</summary> 
 
-    
+
+<Tabs>
+<TabItem value='Java' label='Java' default>
+
 ```java
-import org.dwcj.App;
-import org.dwcj.controls.panels.AppPanel;
-import org.dwcj.controls.label.Label;
-import org.dwcj.controls.textbox.TextBox;
-import org.dwcj.controls.button.Button;
-import org.dwcj.controls.button.events.ButtonClickEvent;
+    import org.dwcj.App;
+    import org.dwcj.controls.panels.AppPanel;
+    import org.dwcj.controls.label.Label;
+    import org.dwcj.controls.textbox.TextBox;
+    import org.dwcj.controls.button.Button;
+    import org.dwcj.controls.button.events.ButtonClickEvent;
 
-import org.dwcj.exceptions.DwcAppInitializeException;
-
-
-public class HelloWorldJava extends App {
-    
-    private TextBox edFirstname;
-    private TextBox edLastname;
-
-    @Override
-    public void run() throws DwcAppInitializeException {
+    import org.dwcj.exceptions.DwcAppInitializeException;
 
 
-        AppPanel panel = new AppPanel();
-
-        //Initial styling for the application site panel
-        panel.setStyle("display", "inline-grid");
-        panel.setStyle("grid-template-columns", "1fr 2fr");
-        panel.setStyle("gap", "20px");
-        panel.setStyle("left", "20px");
-        panel.setStyle("top", "20px");
-        panel.setStyle("border", "1px dotted");
-        panel.setStyle("padding", "10px");
-        // Adding some labels and TextBox controls to use in the demonstration
-        panel.add(new Label("Firstname:"));
-        edFirstname = new TextBox();
-        panel.add(edFirstname);
-        panel.add(new Label("Lastname:"));
-        edLastname = new TextBox("");
-        panel.add(edLastname);
-  
-        //Creating the button and using the parameterized constructor for initial text
-        Button helloBtn = new Button("Display Name");
-
-        //adding the button to our application panel
-        panel.add(helloBtn);
-
-        //Setting the theme, expanse and text alignment using the Button's enum values
-        helloBtn.setTheme(Button.Theme.PRIMARY);
-        helloBtn.setExpanse(Button.Expanse.LARGE);
-        helloBtn.setVerticalAlignment(Button.TextVerticalAlignment.CENTER);
-
-        //Setting a click event for the first button
-        helloBtn.onClick(this::onHelloButtonPush);
-    
-        //Repeating the above functionality for the second button
-        Button deleteBtn = new Button("Clear Text");
-        panel.add(deleteBtn);
-        deleteBtn.setTheme(Button.Theme.DANGER);
-        deleteBtn.setExpanse(Button.Expanse.LARGE);
-        deleteBtn.setVerticalAlignment(Button.TextVerticalAlignment.CENTER);
-        deleteBtn.onClick(this::onDeleteButtonPush);
-        //Styling for both buttons
-        helloBtn.setStyle("grid-column", "1 / span 2");
-        helloBtn.setStyle("width", "100%");
-        deleteBtn.setStyle("grid-column", "1 / span 2");
-        deleteBtn.setStyle("width", "100%");
+    public class HelloWorldJava extends App {
         
+        private TextBox edFirstname;
+        private TextBox edLastname;
+
+        @Override
+        public void run() throws DwcAppInitializeException {
+
+
+            AppPanel panel = new AppPanel();
+
+            //Initial styling for the application site panel
+            panel.setStyle("display", "inline-grid");
+            panel.setStyle("grid-template-columns", "1fr 2fr");
+            panel.setStyle("gap", "20px");
+            panel.setStyle("left", "20px");
+            panel.setStyle("top", "20px");
+            panel.setStyle("border", "1px dotted");
+            panel.setStyle("padding", "10px");
+            // Adding some labels and TextBox controls to use in the demonstration
+            panel.add(new Label("Firstname:"));
+            edFirstname = new TextBox();
+            panel.add(edFirstname);
+            panel.add(new Label("Lastname:"));
+            edLastname = new TextBox("");
+            panel.add(edLastname);
+    
+            //Creating the button and using the parameterized constructor for initial text
+            Button helloBtn = new Button("Display Name");
+
+            //adding the button to our application panel
+            panel.add(helloBtn);
+
+            //Setting the theme, expanse and text alignment using the Button's enum values
+            helloBtn.setTheme(Button.Theme.PRIMARY);
+            helloBtn.setExpanse(Button.Expanse.LARGE);
+            helloBtn.setVerticalAlignment(Button.TextVerticalAlignment.CENTER);
+
+            //Setting a click event for the first button
+            helloBtn.onClick(this::onHelloButtonPush);
+        
+            //Repeating the above functionality for the second button
+            Button deleteBtn = new Button("Clear Text");
+            panel.add(deleteBtn);
+            deleteBtn.setTheme(Button.Theme.DANGER);
+            deleteBtn.setExpanse(Button.Expanse.LARGE);
+            deleteBtn.setVerticalAlignment(Button.TextVerticalAlignment.CENTER);
+            deleteBtn.onClick(this::onDeleteButtonPush);
+            //Styling for both buttons
+            helloBtn.setStyle("grid-column", "1 / span 2");
+            helloBtn.setStyle("width", "100%");
+            deleteBtn.setStyle("grid-column", "1 / span 2");
+            deleteBtn.setStyle("width", "100%");
+            
+        }
+            
+        //Implementing behavior for the first button
+        private void onHelloButtonPush(ButtonClickEvent ev) {
+            String text = edFirstname.getText() + " " + edLastname.getText();
+            App.msgbox(text, 0, "Hello World");
+        } 
+        
+        //Implementing behavior for the second button
+        private void onDeleteButtonPush(ButtonClickEvent ev) {
+            edFirstname.setText("");
+            edLastname.setText("");
+        } 
     }
-        
-    //Implementing behavior for the first button
-    private void onHelloButtonPush(ButtonClickEvent ev) {
-        String text = edFirstname.getText() + " " + edLastname.getText();
-        App.msgbox(text, 0, "Hello World");
-    } 
-    
-    //Implementing behavior for the second button
-    private void onDeleteButtonPush(ButtonClickEvent ev) {
-        edFirstname.setText("");
-        edLastname.setText("");
-    } 
-}
 ```
-
+</TabItem>
+    
+<TabItem value='CSS' label='CSS'>
+</TabItem>
+</Tabs>
 
 </details>
 
+
+
+-->

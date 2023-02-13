@@ -18,15 +18,21 @@ sidebar_position: 150
 |------------|
 | <ul><li>[`TextBox onEditModify(Consumer<TextBoxEditModifyEvent> callback)`](#)</li></ul> |
 
+<br/>
+
 ### Label
 
 
 The text box control can be easily labeled without the needing to create an extra label control using the `setAttribute()` method and passing the desired label as a string, as shown below: <br/>
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textboxdemos.TextBoxLabel' 
-style={{"width": "100%", "height":"125px"}}></iframe><br/>
+style={{"width": "100%", "height":"125px"}}></iframe> -->
+
+![Text box label](./_images/textbox/textbox_label.jpg)
+
+<br/>
 
 ```java
 import org.dwcj.controls.textbox.TextBox;
@@ -35,16 +41,20 @@ TextBox exampleTextBox = new TextBox();      //Creates a new TextBox
 exampleTextBox.setAttribute("label", "Example Label");     
 ```
 
-
+<br/>
 
 ### Placeholder
 
 It is also possible to set placeholder text within the control to better help users understand what type of input is expected. Similar to a label, this can be accomplished using the `setAttribute()` method: <br/>
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textboxdemos.TextBoxPlaceholder' 
-style={{"width": "100%", "height":"125px"}}></iframe><br/>
+style={{"width": "100%", "height":"125px"}}></iframe> -->
+
+![Text box placeholder](./_images/textbox/textbox_placeholder.jpg)
+
+<br/>
 
 ```java
 import org.dwcj.controls.textbox.TextBox;
@@ -52,15 +62,20 @@ import org.dwcj.controls.textbox.TextBox;
 TextBox exampleTextBox = new TextBox();      //Creates a new TextBox
 exampleTextBox.setAttribute("placeholder", "Example Placeholder");  
 ```
+<br/>
 
 ### Spellcheck
 
 The text box can also be configured with spellchecking to help the user improve their input. Use the `setAttribute()` method to do this:
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textboxdemos.TextBoxSpellcheck' 
-style={{"width": "100%", "height":"125px"}}></iframe><br/>
+style={{"width": "100%", "height":"125px"}}></iframe> -->
+
+![Text box spellcheck](./_images/textbox/textbox_spellcheck.jpg)
+
+<br/>
 
 ```java
 import org.dwcj.controls.textbox.TextBox;
@@ -69,15 +84,21 @@ TextBox exampleTextBox = new TextBox();      //Creates a new TextBox
 exampleTextBox.setAttribute("spellcheck", "true");  
 ```
 
+<br/>
+
 ### Expanses
 
 DWCJ's text box comes with 5 expanses for quick styling without the use of CSS.
 Below are the various expanses supported for the text box control: <br/>
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textboxdemos.TextBoxExpanses' 
-style={{"width": "100%", "height":"125px"}}></iframe><br/>
+style={{"width": "100%", "height":"125px"}}></iframe> -->
+
+![Text box expanses](./_images/textbox/textbox_expanses.jpg)
+
+<br/>
 
 |Text Box Expanses|
 |-|

@@ -12,10 +12,9 @@ a demonstration of how to create a new application from scratch will be provided
 ## Create a New Java Class
 
 The first thing that will be required is the creation of a new Java class - do this by creating a file with the .java file extension in your IDE of choice. In this demo, we'll 
-create a class called **ExampleClass** with a package name of **examplepackage**. 
+create a class called **ExampleClass**. 
 
 ```java
-package examplepackage;
 
 public class ExampleClass {
     
@@ -29,8 +28,6 @@ the class that is created will need to extend the ```app``` class.
 Most IDEs will import this automatically, but the snippet below shows the import as well.
 
 ```java
-package examplepackage;
-
 import org.dwcj.App;
 
 public class ExampleClass extends App{
@@ -42,8 +39,6 @@ After this is complete, the ```run()``` method will need to be overridden. This 
 where the instructions for the execution of your application will be contained.
 
 ```java
-package examplepackage;
-
 import org.dwcj.App;
 import org.dwcj.exceptions.DwcAppInitializeException;
 
@@ -65,8 +60,6 @@ controls and components, elements, etc. In the example below, the AppPanel will 
 and a button will be added to the panel.
 
 ```java
-package examplepackage;
-
 import org.dwcj.App;
 import org.dwcj.exceptions.DwcAppInitializeException;
 import org.dwcj.controls.panels.AppPanel;

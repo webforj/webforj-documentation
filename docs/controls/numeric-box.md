@@ -19,14 +19,20 @@ sidebar_position: 70
 |------------|
 | <ul><li>[`NumericBox onEditModify(Consumer<NumericBoxEditModifyEvent> callback`](#)</li></ul> |
 
+<br/>
+
 ### Labeling
 
 Labels can be easily added above the control without the need to create a separate Label component above the control. 
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.numericboxdemos.NumericboxLabel' 
-style={{"width": "100%", "height":"170px"}}></iframe><br/><br />
+style={{"width": "100%", "height":"170px"}}></iframe> -->
+
+![Numeric box labeling](./_images/numericbox/numericbox_label.jpg)
+
+<br />
 
 Use the `setAttribute()` function to create a label. The attribute to be changed is `label`, and the value should be the desired label text.  <br/><br />
 
@@ -37,14 +43,20 @@ NumericBox exampleNumericBox = new NumericBox();      //Creates a new NumericBox
 exampleNumericBox.setAttribute("label", "Example numeric box label!");     //Gives the numeric box a label with the provided text
 ```
 
+<br/>
+
 ### Placeholder
 
 It is also possible to configure text that appears in the input when it has no value set by utilizing the placeholder attribute.
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.numericboxdemos.NumericboxPlaceholder' 
-style={{"width": "100%", "height":"170px"}}></iframe><br/><br />
+style={{"width": "100%", "height":"170px"}}></iframe> -->
+
+![Numeric box placeholder](./_images/numericbox/numericbox_placeholder.jpg)
+
+<br />
 
 Use the `setAttribute()` function to set placeholder text. The attribute to be changed is `placeholder`, and the value should be the desired text.  <br/><br />
 
@@ -54,6 +66,8 @@ import org.dwcj.controls.numericbox.NumericBox;
 NumericBox exampleNumericBox = new NumericBox();      //Creates a new NumericBox
 exampleNumericBox.setAttribute("placeholder", "Example placeholder");     //Gives the numeric box a placeholder with the provided text
 ```
+
+<br/>
 
 ### Masking
 
@@ -131,15 +145,21 @@ In order to enforce certain ruled on numeric input, masking has been implemented
     </tbody>
 </table>
 
+<br/>
+
 ### Expanse
 
 DWCJ Numeric Box components come with 5 expanses for quick styling without the use of CSS.
 Below are the various expanses supported for the numeric box control: <br/>
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.numericboxdemos.NumericboxExpanses' 
-style={{"width": "100%", "height":"125px"}}></iframe><br/>
+style={{"width": "100%", "height":"125px"}}></iframe> -->
+
+![Numeric box expanses](./_images/numericbox/numericbox_expanses.jpg)
+
+<br/>
 
 |Numeric Box Expanses|
 |-|

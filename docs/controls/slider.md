@@ -19,15 +19,20 @@ sidebar_position: 110
 |------------|
 | <ul><li>[`Slider onScroll(Consumer<SliderOnControlScrollEvent> callback)`](#)</li></ul> |
 
+<br/>
 
 ### Upper and Lower Limit
 
 Use the `setMinimum()` and `setMaximum()` methods to determine the upper and lower bound of the slider. Each interval on the slider has a distance of 1, meaning that a slider with maximum 10 and minimum of 0 will have 10 intervals on the slider, whereas a maximum of 100 and minimum of 0 will have 100 intervals. These intervals will evenly distribute on the slider, depending on the height and width dimensions that it has been given by the developer. 
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.sliderdemos.SliderMaxMinDemo' 
-style={{"width": "100%", "height":"225px"}}></iframe><br/><br />
+style={{"width": "100%", "height":"225px"}}></iframe> -->
+
+![Slider min and max](./_images/slider/slider_minmax.jpg)
+
+<br />
 
 ### Ticks and Labeling
 
@@ -36,47 +41,65 @@ Slider controls can be customized to show ticks, or spaces bounded by lines to r
 <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.sliderdemos.SliderTickDemo' 
-style={{"width": "100%", "height":"250px"}}></iframe><br/><br />
+style={{"width": "100%", "height":"250px"}}></iframe>
+
+
+<br />
 
 It is also possible to set labels on a slider. These labs may or may not correspond with ticks that have been set. To set the labels, simply create a map with key value pairs, where the keys are the integer values to be labeled, and the values are the desired label string. 
 <b>NOTE:</b> If tick snapping is enabled, the slider will only snap to ticked spaces specifically. If a non-ticked value has a label, it will not be snapped to by the slider.
 <br />
 <br />
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.sliderdemos.SliderLabelDemo' 
-style={{"width": "100%", "height":"350px"}}></iframe><br/><br />
+style={{"width": "100%", "height":"350px"}}></iframe> -->
+
+![Slider label demo](./_images/slider/slider_label.jpg)
+
+<br />
 
 
 ### Orientation and Inversion
 
 Sliders can be oriented either horizontally or vertically by using the `setOrientation()` method.
-
+<!-- 
 <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.sliderdemos.SliderOrientationDemo' 
-style={{"width": "100%", "height":"400px"}}></iframe><br/><br />
+style={{"width": "100%", "height":"400px"}}></iframe> -->
+
+![Slider orientation demo](./_images/slider/slider_orientation.jpg)
+
+<br />
 
 It is also possible to invert a slider. By default, the minimum value of a vertical slider is at the bottom and the maximum value is at the top. For a horizontal slider, the minimum value is to the left and the maximum value is to the right. The orientation reverses for inverted sliders.
-
+<!-- 
 <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.sliderdemos.SliderInversionDemo' 
-style={{"width": "100%", "height":"200px"}}></iframe><br/><br />
+style={{"width": "100%", "height":"200px"}}></iframe> -->
 
+![Slider orientation demo](./_images/slider/slider_inversion.jpg)
+
+<br />
 
 ### Themes
 
 The slider control comes with 6 themes built in for quick styling without the use of CSS.
-Shown below are progress bars with each of the supported Themes applied: <br/>
+Shown below are sliders with each of the supported Themes applied: <br/>
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.sliderdemos.SliderThemesDemo' 
-style={{"width": "100%", "height":"620px"}}></iframe><br/><br/>
+style={{"width": "100%", "height":"620px"}}></iframe> -->
 
-|Progress Bar Themes|
+![Slider themes](./_images/slider/slider_themes.jpg)
+
+<br/>
+
+|Slider Themes|
 |-|
 |<ul><li>```Slider.Theme.DEFAULT```</li><li>```Slider.Theme.DANGER```</li><li>```Slider.Theme.GRAY```</li><li>```Slider.Theme.INFO```</li><li>```Slider.Theme.SUCCESS```</li><li>```Slider.Theme.WARNING```</li></ul>|
 

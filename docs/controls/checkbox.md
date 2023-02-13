@@ -19,10 +19,13 @@ sidebar_position: 10
 |------------|
 | <ul><li>[`CheckBox onChange(Consumer<CheckBoxChangeEvent> callback)`](#)</li></ul> |
 
+<br/>
 
 ### Checkbox Text
 
 Check boxes can utilize the ```setText(String foo)``` method, which will positioned near the check box according to the built-in `HorizontalTextPosition` property which is detailed below. 
+
+<br/>
 
 ### Horizontal Text Position
 
@@ -30,17 +33,21 @@ DWCJ checkboxes have built-in functionality to set text to be displayed either t
 are the two settings: <br/>
 
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxHorizontalText' 
-style={{"width": "100%"}}></iframe><br/>
+style={{"width": "100%"}}></iframe> -->
+
+![Checkbox horizontal text](./_images/checkbox/checkbox_text.jpg)
+
+<br/>
 Listed below are the current supported theme options for the checkbox control:<br/><br/>
 
-|Chekbox Horizontal Text Positions|
+|Checkbox Horizontal Text Positions|
 |-|
 |<ul><li>```CheckBox.HorizontalTextPosition.LEFT```</li><li>```CheckBox.HorizontalTextPosition.RIGHT```</li></ul>|
 
-<br/>Positioning of the horizontal text is supported by use of a built-in enum class. To set the position, execute code similar to the following: <br/><br />
+Positioning of the horizontal text is supported by use of a built-in enum class. To set the position, execute code similar to the following: <br/><br />
 
 ```java
 import org.dwcj.controls.checkbox.CheckBox;
@@ -50,15 +57,22 @@ exampleCheckBox.setText("This is demonstration text");      //Sets the text to b
 exampleCheckBox.setHorizontalTextPosition(CheckBox.HorizontalTextPosition.RIGHT);      //Sets the text' position to be to the right
 ```
 
+<br/>
 
 ### Expanses
 There are five checkbox expanses that are supported in the DWCJ which allow for quick styling without using CSS.
 Below are the expanses supported for the checkbox control: <br/>
-<iframe 
+
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxExpanseDemo' 
-style={{"width": "100%", "height" : "100px"}}></iframe><br/>
-Listed below are the current supported expanse options for the checkbox control:<br/><br/>
+style={{"width": "100%", "height" : "100px"}}></iframe> -->
+
+![Checkbox expanses](./_images/checkbox/checkbox_expanses.jpg)
+
+<br/>
+
+Listed below are the current supported expanse options for the checkbox control:
 
 |Checkbox Expanses|
 |-|
@@ -74,6 +88,7 @@ exampleCheckBox.setText("This is demonstration text");      //Sets the text to b
 exampleCheckBox.setExpanse(CheckBox.Expanse.MEDIUM);     //Sets the checkbox's expanse to the medium size.
 ```
 
+<!-- 
 
 ### Sample Program
 
@@ -130,4 +145,6 @@ style={{"width": "300px","height" : "200px"}}></iframe>
 
 ```
 
-</details>
+</details> 
+
+-->

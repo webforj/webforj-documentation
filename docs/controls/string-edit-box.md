@@ -20,16 +20,21 @@ sidebar_position: 120
 |------------|
 | <ul><li>[`StringEditBox onEditModify(Consumer<StringEditBoxEditModifyEvent> callback)`](#)</li></ul> |
 
+<br/>
 
 ### Label
 
 
 The string edit control can be easily labeled without the needing to create an extra label control using the `setAttribute()` method and passing the desired label as a string, as shown below: <br/>
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.stringeditdemos.StringEditLabelDemo' 
-style={{"width": "100%", "height":"125px"}}></iframe><br/>
+style={{"width": "100%", "height":"125px"}}></iframe> -->
+
+![String edit box label](./_images/stringeditbox/stringedit_label.jpg)
+
+<br/>
 
 ```java
 import org.dwcj.controls.stringeditbox.StringEditBox;
@@ -38,17 +43,24 @@ StringEditBox exampleStringEditBox = new StringEditBox();      //Creates a new S
 exampleStringEditBox.setAttribute("label", "Example Label");     
 ```
 
+<br/>
 
 ### Mask
+
+<br/>
 
 ### Placeholder
 
 It is also possible to set placeholder text within the control to better help users understand what type of input is expected. Similar to a label, this can be accomplished using the `setAttribute()` method: <br/>
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.stringeditdemos.StringEditPlaceholder' 
-style={{"width": "100%", "height":"125px"}}></iframe><br/>
+style={{"width": "100%", "height":"125px"}}></iframe> -->
+
+![String edit box placeholder](./_images/stringeditbox/stringedit_placeholder.jpg)
+
+<br/>
 
 ```java
 import org.dwcj.controls.stringeditbox.StringEditBox;
@@ -57,15 +69,21 @@ StringEditBox exampleStringEditBox = new StringEditBox();      //Creates a new S
 exampleStringEditBox.setAttribute("placeholder", "Example Placeholder");
 ```
 
+<br/>
+
 ### Expanses
 
 Additionally, the string edit box come with 5 expanses for quick styling without the use of CSS.
 Below are the various expanses supported for the string edit box control: <br/>
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.stringeditdemos.StringEditExpanse' 
-style={{"width": "100%", "height":"125px"}}></iframe><br/>
+style={{"width": "100%", "height":"125px"}}></iframe> -->
+
+![String edit box expanses](./_images/stringeditbox/stringedit_expanses.jpg)
+
+<br/>
 
 |String Edit Box Expanses|
 |-|

@@ -20,15 +20,20 @@ sidebar_position: 160
 |------------|
 | <ul><li>[`onChange(Consumer<TextComboBoxChangeEvent> callback)`](#)</li><li>[`TextComboBox onClose(Consumer<TextComboBoxCloseEvent> callback)`](#)</li><li>[`TextComboBox onEditModify(Consumer<TextComboBoxEditModifyEvent> callback)`](#)</li><li>[`TextComboBox onOpen(Consumer<TextComboBoxOpenEvent> callback)`](#)</li><li>[`TextComboBox onSelect(Consumer<TextComboBoxSelectEvent> callback)`](#)</li></ul> |
 
+<br/>
 
 ### Menu Placement
 
 The text combo box can be configured to open the menu in various positions relative to the position of the control itself.
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textcomboboxdemos.TextComboBoxPlacement' 
-style={{"width": "100%", "height":"350px"}}></iframe><br/>
+style={{"width": "100%", "height":"350px"}}></iframe> -->
+
+![Text combo box menu placement](./_images/textcombobox/textcombobox_placement.jpg)
+
+<br/>
 
 ```java
 import org.dwcj.controls.textcombobox.TextComboBox;
@@ -37,14 +42,20 @@ TextComboBox exampleTextComboBox = new TextComboBox();      //Creates a new Text
 exampleTextComboBox.setAttribute("placement", "left");  
 ```
 
+<br/>
+
 ### Label
 
 The text combo box control can be easily labeled without the needing to create an extra label control using the `setAttribute()` method and passing the desired label as a string, as shown below: <br/>
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textcomboboxdemos.TextComboBoxLabel' 
-style={{"width": "100%", "height":"200px"}}></iframe><br/>
+style={{"width": "100%", "height":"200px"}}></iframe> -->
+
+![Text combo box label](./_images/textcombobox/textcombobox_label.jpg)
+
+<br/>
 
 ```java
 import org.dwcj.controls.textcombobox.TextComboBox;
@@ -53,14 +64,20 @@ TextComboBox exampleTextComboBox = new TextComboBox();      //Creates a new Text
 exampleTextComboBox.setAttribute("label", "Example Label");     
 ```
 
+<br/>
+
 ### Placeholder
 
 It is also possible to set placeholder text within the control to better help users understand what type of input is expected. Similar to a label, this can be accomplished using the `setAttribute()` method: <br/>
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textcomboboxdemos.TextComboBoxPlaceholder' 
-style={{"width": "100%", "height":"200px"}}></iframe><br/>
+style={{"width": "100%", "height":"200px"}}></iframe> -->
+
+![Text combo box placeholder](./_images/textcombobox/textcombobox_placeholder.jpg)
+
+<br/>
 
 ```java
 import org.dwcj.controls.textcombobox.TextComboBox;
@@ -69,15 +86,21 @@ TextComboBox exampleTextComboBox = new TextComboBox();      //Creates a new Text
 exampleTextComboBox.setAttribute("placeholder", "Example Placeholder");  
 ```
 
+<br/>
+
 ### Expanses
 
 DWCJ's text combo box comes with 5 expanses for quick styling without the use of CSS.
 Below are the various expanses supported for the text box control: <br/>
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textcomboboxdemos.TextComboBoxExpanses' 
-style={{"width": "100%", "height":"400px"}}></iframe><br/>
+style={{"width": "100%", "height":"400px"}}></iframe> -->
+
+![Text combo box expanses](./_images/textcombobox/textcombobox_expanses.jpg)
+
+<br/>
 
 |Text Box Expanses|
 |-|

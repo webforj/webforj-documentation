@@ -19,14 +19,20 @@ sidebar_position: 60
 |------------|
 | <ul><li>[`ListBox onSelect(Consumer<ListBoxSelectEvent> callback)`](#)</li><li>[`ListBox onDoubleClick(Consumer<ListBoxDoubleClickEvent> callback)`](#)</li></ul> |
 
+<br/>
+
 ### Labeling
 
 Labels can be easily added above the component without the need to create a separate Label component above the control. 
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.listboxdemos.ListboxLabel' 
-style={{"width": "100%", "height":"170px"}}></iframe><br/><br />
+style={{"width": "100%", "height":"170px"}}></iframe> -->
+
+![Listbox labeling](./_images/listbox/listbox_label.jpg)
+
+<br />
 
 Use the `setAttribute()` function to create a label. The attribute to be changed is `label`, and the value should be the desired label text.  <br/><br />
 
@@ -42,10 +48,12 @@ exampleListBox.setAttribute("label", "Example list box label!");     //Gives the
 By default, the list box is configured to allow selection of a single item at a time. However, this can be easily configured with a built-in method which allows users to select multiple
 items using the `Shift` for contiguous entry selection and `Control` (Windows) or `Command` (Mac) for separate, multiple item selection. 
 
-<iframe 
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.listboxdemos.ListboxMultipleSelection' 
-style={{"width": "100%", "height":"170px"}}></iframe><br/><br/>
+style={{"width": "100%", "height":"170px"}}></iframe> -->
+
+<br/>
 
 
 Use the `setMultipleSelection()` function to change this property. True will enable multiple selection, false disables it. <br/><br />
@@ -57,16 +65,21 @@ ListBox exampleListBox = new ListBox();      //Creates a new ListBox
 exampleListBox.setMultipleSelection(true);     //Sets the multiple selection property
 ```
 
+<br/>
 
 ### Expanses
 
-There are five list box expanses that are supported in the DWCJ which allow for quick styling without using CSS.
 Below are the various expanses supported for the list box control: <br/>
 
-<iframe 
+![Listbox expanses](./_images/listbox/listbox_expanses.jpg)
+<!-- <iframe 
 loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.listboxdemos.ListboxExpanses' 
-style={{"width": "100%", "height":"250px"}}></iframe><br/>
+style={{"width": "100%", "height":"250px"}}></iframe> -->
+
+<br/>
+
+There are five list box expanses that are supported in the DWCJ which allow for quick styling without using CSS.
 
 |List Box Expanses|
 |-|
