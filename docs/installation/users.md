@@ -117,6 +117,7 @@ video from **4:13** to **8:23**.
 <br/>
 
 <a name='section3'></a>
+
 ## 3) Using the BBj Plugin Manager
 
 Once BBj has been installed, we can use the BBj Plugin Manager to give us
