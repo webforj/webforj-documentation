@@ -36,6 +36,11 @@
   min-height: 100vh;
 }
 
+.homepage{
+  flex-direction: column !important;
+}
+
 .mainWrapper{
   flex-direction: row;
 }
+
