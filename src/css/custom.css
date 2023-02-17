@@ -35,3 +35,7 @@
 .docPage_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-styles-module{
   min-height: 100vh;
 }
+
+.mainWrapper{
+  flex-direction: row;
+}
