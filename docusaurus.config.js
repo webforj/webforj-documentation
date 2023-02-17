@@ -50,13 +50,13 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-        googleTagManager: {
-          containerId: 'GTM-NB7VHG4',
-        },
         gtag: {
           trackingID: 'G-84THEWQM3G',
           anonymizeIP: true
-        }
+        },
+        googleTagManager: {
+          containerId: 'GTM-NB7VHG4',
+        },
       }),
     ],
   ],
