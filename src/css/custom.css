@@ -36,11 +36,10 @@
   min-height: 100vh;
 }
 
-.mainWrapper_z2l0{
-  flex-direction: column !important;
-}
-
 .main-wrapper{
   flex-direction: row !important;
 }
 
+.homepage{
+  width: 100%;
+}

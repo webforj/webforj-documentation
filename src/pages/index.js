@@ -38,9 +38,10 @@ function HomepageHeader() {
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <Layout className='homepage'
+    <Layout
       title={`${siteConfig.title}`}
       description="Description will go into a meta tag in <head />">
+        <div className='homepage'>
       <HomepageHeader />
       <main>
         <HomepageFeatures />
@@ -48,6 +49,7 @@ export default function Home() {
         test
       </div> */}
       </main>
+        </div>
     </Layout>
   );
 }
