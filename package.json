@@ -16,6 +16,8 @@
   "dependencies": {
     "@docusaurus/core": "2.1.0",
     "@docusaurus/plugin-content-docs": "^2.1.0",
+    "@docusaurus/plugin-google-gtag": "^2.3.1",
+    "@docusaurus/plugin-google-tag-manager": "^2.3.1",
     "@docusaurus/preset-classic": "2.1.0",
     "@emotion/react": "^11.10.4",
     "@mdx-js/react": "^1.6.22",
