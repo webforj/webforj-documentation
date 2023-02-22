@@ -37,22 +37,6 @@ const Sections = [
     {   
         placement: 'center',
         direction: 'right',
-        header: "PROVEN TRACK RECORD",
-        title: 'A history of performance and reliability.',
-        description: (
-        <>
-            Our team in the United States and Europe have been building tools and technologies to help our clients fulfil their needs for over 35 years. We have consistently produced reliable and
-            innovative technologies to ensure our clients have every tool in their kit needed to tackle modern, ever-changing needs. 
-            <br /><br />
-            The DWCJ helps existing customers ensure they have the most 
-            cutting edge features available, and provides a competitive solution for new customers.
-        </>),
-        image: require('@site/static/img/performance.png').default
-    },
-    
-    {   
-        placement: 'center',
-        direction: 'left',
         header: "COMPREHENSIVE DESIGN KIT",
         title: 'Figma design kit for streamlined design and implementation. ',
         description: (
@@ -66,6 +50,22 @@ const Sections = [
             title: 'See the Design Kit'
         }
     },
+    {   
+        placement: 'center',
+        direction: 'left',
+        header: "PROVEN TRACK RECORD",
+        title: 'A history of performance and reliability.',
+        description: (
+        <>
+            Our team in the United States and Europe have been building tools and technologies to help our clients fulfil their needs for over 35 years. We have consistently produced reliable and
+            innovative technologies to ensure our clients have every tool in their kit needed to tackle modern, ever-changing needs. 
+            <br /><br />
+            The DWCJ helps existing customers ensure they have the most 
+            cutting edge features available, and provides a competitive solution for new customers.
+        </>),
+        image: require('@site/static/img/performance.png').default
+    },
+    
 ];
 
 function Section({ placement, direction, header, title, description, image, link }){

@@ -6,6 +6,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import HomepageSection from '@site/src/components/HomepageFeatures/HomepageSection'
 
 import logo from "../../static/img/logo.png"
 import { css, jsx } from '@emotion/react';
@@ -83,7 +84,7 @@ function HomepageTitle(){
 
   const getStartedStyles = css`
     /* background-color: purple; */
-    background-color: #ae5bc7;
+    /* background-color: #ae5bc7; */
     border: none;
   `
   const buttonStyles = css`
@@ -94,7 +95,7 @@ function HomepageTitle(){
 
   return(
     <div css={headerStyles}>
-      <b css={versionStyles}>BBj Version: 22.XX.? </b>
+      {/* <b css={versionStyles}>BBj Version: 22.XX.? </b> */}
       <h1 css={titleStyles}>
         The Dynamic Web Client for Java
       </h1>
@@ -124,7 +125,7 @@ function HomepageAnnoucement(){
     display: flex;
     flex-direction: row;
     width: 60%;
-    height: 200px;
+    height: fit-content;
     /* border: 2px gray solid;*/
     border-radius: 20px;
     background: rgb(2,0,36);
@@ -132,7 +133,7 @@ function HomepageAnnoucement(){
     align-self: center;
     align-items: center;
     justify-content: space-around;
-    padding: 0 20px 0 20px;
+    padding: 30px;
     margin-bottom: 50px;
   `
 
@@ -144,6 +145,9 @@ function HomepageAnnoucement(){
 
   const logoStyles = css`
     height: 150px;
+    @media screen and (max-width: 992px) {
+      display: none;
+    }
   `
 
   const titleStyles = css`
@@ -159,7 +163,7 @@ function HomepageAnnoucement(){
   return(
     <div css={announcementStyles}>
       <img 
-        src='https://www.javaland.eu/typo3conf/ext/doag/Resources/Public/Images/logo_javaland.png' 
+        src='https://www.basis-europe.eu/wp-content/uploads/Javaland-1-768x461.jpg' 
         css={logoStyles}
       />
       <div css={infoStyles}>
@@ -190,6 +194,7 @@ export default function Home() {
         <div css={mainStyles}>
         <HomepageTitle />
         <HomepageAnnoucement />
+        <HomepageSection />
         </div>
     </Layout>
   );
