@@ -4,7 +4,6 @@
  * work well for content-centric websites.
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
 /* You can override the default Infima variables here. */
 :root {
@@ -17,7 +16,6 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  font-family: 'Rubik', sans-serif;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -42,4 +40,9 @@
 
 .homepage{
   width: 100%;
+}
+
+.navbar__brand{
+  margin-left: 30px;
+  margin-right: 30px;
 }

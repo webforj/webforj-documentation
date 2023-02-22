@@ -143,7 +143,7 @@ const config = {
           //   ],
           // },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} BASIS International Ltd. All rights reserved. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} BASIS International Ltd. All rights reserved.`,
       },
       prism: {
         theme: lightCodeTheme,
