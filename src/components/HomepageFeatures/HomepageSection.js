@@ -74,45 +74,15 @@ function Section({ placement, direction, header, title, description, image, link
         display: flex;
         flex-direction: ${direction == 'left' ? 'row' : 'row-reverse'};
         align-self: ${placement == 'left' ? 'flex-start' : placement == 'right' ? 'flex-end' : 'center'};
-        max-width: 80%;
+        max-width: 90%;
         margin: 7% 0 0 0;
         padding: 25px 50px 25px 50px;
         gap: 50px;
-        /* box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px; */
-        /* box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px; */
-        /* box-shadow: rgba(17, 12, 46, 0.15) 0px 24px 500px 0px; */
-        /* box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
-        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
         @media screen and (max-width: 992px) {
             flex-direction: column;
             padding: 0;
-        }
-        
-        /* border: 1px solid gray;
-        border-radius: 10px;
-        padding: 1.5em;
-        position: relative;
-        
-        ::before {
-        position: absolute;
-        bottom: -1px; 
-        left: ${placement == 'left' ? '25%' : '75%'};
-        content: '';
-        background: #fff;
-        width: 100px;
-        height: 1px;
-        }
-
-        ::after {
-        position: absolute;
-        top: -1px; 
-        left: ${placement == 'left' ? '75%' : '25%'};
-        content: '';
-        background: #fff;
-        width: 100px;
-        height: 1px;
-        } */
+        }    
     
     `
 
@@ -133,7 +103,7 @@ function Section({ placement, direction, header, title, description, image, link
     const descStyles = css`
         font-size: 1.15em;
     
-    `
+        `
     
     const imageStyles = css`
         /* max-width: 35%;
@@ -152,9 +122,14 @@ function Section({ placement, direction, header, title, description, image, link
         }
     `
 
+    const textStyles = css`
+
+        padding: 30px;
+    `
+
     return(
         <div css={sectionStyles}>
-            <div>
+            <div css={textStyles}>
                 <p css={headerStyles}>
                     {header}
                 </p>
