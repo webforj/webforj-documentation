@@ -71,7 +71,7 @@ function HomepageTitle(){
 
   const descriptionStyles = css`
     font-size: 1.6em;
-    color: slategrey;
+    /* color: slategrey; */
     max-width: 60%;
     text-align: center;
 
@@ -90,6 +90,9 @@ function HomepageTitle(){
   const buttonStyles = css`
     display: flex;
     gap: 20px;
+    @media screen and (max-width: 992px) {
+      flex-direction: column;
+    }
   `
 
 
@@ -126,15 +129,17 @@ function HomepageAnnoucement(){
     flex-direction: row;
     width: 60%;
     height: fit-content;
-    /* border: 2px gray solid;*/
     border-radius: 20px;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(69,0,111,1) 100%);
+    background: #1B1B1D;
     align-self: center;
     align-items: center;
     justify-content: space-around;
     padding: 30px;
     margin-bottom: 50px;
+    @media screen and (max-width: 992px) {
+      width: 100%;
+      border-radius: 0px;
+    }
   `
 
   const infoStyles = css`
@@ -163,12 +168,17 @@ function HomepageAnnoucement(){
   return(
     <div css={announcementStyles}>
       <img 
-        src='https://www.basis-europe.eu/wp-content/uploads/Javaland-1-768x461.jpg' 
+        src='https://www.javaland.eu/typo3conf/ext/doag/Resources/Public/Images/logo_javaland.png' 
         css={logoStyles}
       />
       <div css={infoStyles}>
         <h2 css={titleStyles}>Catch us at Javaland 2023!</h2>
-        <p css={descriptionStyles}>Come say hello and tell us what you think about the new Dynamic Web Client for Java at the Javaland conference this March at Phantasialand Brühl</p>
+        <p css={descriptionStyles}>Come say hello and tell us what you think about the new Dynamic Web Client for Java at the Javaland conference this March at Phantasialand Brühl.</p>
+        <Link 
+          className="button button--primary button--lg"
+          to='https://www.javaland.eu/de/home/'>
+          More Information
+        </Link>
       </div>
     </div>
   );

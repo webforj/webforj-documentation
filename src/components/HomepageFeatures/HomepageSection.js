@@ -98,6 +98,9 @@ function Section({ placement, direction, header, title, description, image, link
     const titleStyles = css`
         font-size: 2.15em;
         font-weight: bold;
+        @media screen and (max-width: 992px) {
+            font-size: 1.65em;
+        }
     `
     
     const descStyles = css`
