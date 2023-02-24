@@ -27,7 +27,7 @@ have Java and Maven downloaded, please skip to [**Step 2**](#section2). If you a
 BBj installed on your system, please skip to [**Step 3**](#section3).
 
 ### Download Java for OS:
-Begin by installing Java on your computer. You’ll want to select the version that matches your OS. 
+Begin by installing <b>Java OpenJDK17</b> on your computer. You’ll want to select the version that matches your OS. 
 A list of versions can be found [by following this link](https://adoptium.net/temurin/releases/).
 
 ### Configure the Java Installation
@@ -115,6 +115,16 @@ video from **4:13** to **8:23**.
 <br/>
 
 <a name='section3'></a>
+
+Once BBj has been installed, navigate to the location of your installation and into the lib folder with your chosen command line tool. An example of this location would be `C:\bbx\lib`. Once there, execute the following three lines to install the BBj dependencies required to run the engine:
+
+```bash
+
+mvn install:install-file -Dfile=BBjStartup.jar -DgroupId=com.basis.lib -DartifactId=BBjStartup -Dversion=1.0 -Dpackaging=jar
+mvn install:install-file -Dfile=BBj.jar -DgroupId=com.basis.lib -DartifactId=BBj -Dversion=1.0 -Dpackaging=jar
+mvn install:install-file -Dfile=BBjUtil.jar -DgroupId=com.basis.lib -DartifactId=BBjUtil -Dversion=1.0 -Dpackaging=jar
+
+```
 
 ## 3) Download/Clone and Package DWCJ
 
@@ -366,3 +376,6 @@ in the DWCJ code.
 
 **Congratulations!** You’ve successfully installed and launched the DWCJ. 
 From here, feel free to explore the sample applications that are provided.
+
+<b>Continue to the next section </b> to learn how to create your first application, 
+and how to configure the DWCJ with various debug and default class options.
