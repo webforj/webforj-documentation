@@ -473,6 +473,6 @@ Be default, when the screen width is 800px or less , the drawer will be switched
 The `AppLayout` class supports two events:
 
 <ol>
-    <li>`AppLayoutDrawerOpenedEvent` Fired when the drawer is opened</li>
-    <li>`AppLayoutDrawerClosedEvent` Fired when the drawer is closed</li>
+    <li>AppLayoutDrawerOpenedEvent Fired when the drawer is opened</li>
+    <li>AppLayoutDrawerClosedEvent Fired when the drawer is closed</li>
 </ol>
