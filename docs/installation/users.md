@@ -24,7 +24,7 @@ Installation will be broken down into the following steps:
 
 
 ## 1) Java and Maven Download and Configuration
-This section describes the installation process for Java and Maven, both of which
+<!-- This section describes the installation process for Java and Maven, both of which
 will be required for development of applications and the engine itself. If you already
 have Java and Maven downloaded, please skip to [**Step 2**](#section2). If you also have BBj installed on your system, please skip to [**Step 3**](#section3).
 
@@ -94,12 +94,25 @@ To confirm both of these steps have been completed, open your preferred command 
 
 This should display the versions of both Java and Maven installed on your computer if the above steps were successfully completed:
 
-![Editing the Path variable](./_images/contributors/image8.jpg)
+![Editing the Path variable](./_images/contributors/image8.jpg) -->
+
+In order to use the DWCJ, you must first have Java and Maven installed and properly configured. If you already
+have Java and Maven downloaded, please skip to [**Step 2**](#section2). If you also have 
+BBj installed on your system, please skip to [**Step 3**](#section3).
+
+### Java
+
+<b>Java OpenJDK17</b> can be found [by following this link](https://adoptium.net/temurin/releases/). It is recommended 
+to allow the installation to handle setting the JAVA_HOME variable during installation, where applicable.
+
+### Maven
+
+Maven should also be downloaded, and can be found [at this link](https://maven.apache.org/download.cgi). It is 
+recommended to configure your system environment variables with Maven - a guide for installation and configuration 
+for Windows users can be found [here](https://phoenixnap.com/kb/install-maven-windows).
+
 
 <a name='section2'></a>
-<br/>
-<br/>
-<br/>
 
 ## 2) BBj Download and Installation
 

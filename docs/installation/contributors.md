@@ -21,7 +21,7 @@ Installation will be broken down into the following steps:
 
 
 ## 1) Java and Maven Download and Configuration
-This section describes the installation process for Java and Maven, both of which
+<!-- This section describes the installation process for Java and Maven, both of which
 will be required for development of applications and the engine itself. If you already
 have Java and Maven downloaded, please skip to [**Step 2**](#section2). If you also have 
 BBj installed on your system, please skip to [**Step 3**](#section3).
@@ -97,7 +97,24 @@ This should display the versions of both Java and Maven installed on your comput
 <a name='section2'></a>
 <br/>
 <br/>
-<br/>
+<br/> -->
+
+In order to use the DWCJ, you must first have Java and Maven installed and properly configured. If you already
+have Java and Maven downloaded, please skip to [**Step 2**](#section2). If you also have 
+BBj installed on your system, please skip to [**Step 3**](#section3).
+
+### Java
+
+<b>Java OpenJDK17</b> can be found [by following this link](https://adoptium.net/temurin/releases/). It is recommended 
+to allow the installation to handle setting the JAVA_HOME variable during installation, where applicable.
+
+### Maven
+
+Maven should also be downloaded, and can be found [at this link](https://maven.apache.org/download.cgi). It is 
+recommended to configure your system environment variables with Maven - a guide for installation and configuration 
+for Windows users can be found [here](https://phoenixnap.com/kb/install-maven-windows).
+
+<a name='section2'></a>
 
 ## 2) BBj Download and Installation
 
@@ -114,17 +131,18 @@ video from **4:13** to **8:23**.
 <br/>
 <br/>
 
-<a name='section3'></a>
 
 Once BBj has been installed, navigate to the location of your installation and into the lib folder with your chosen command line tool. An example of this location would be `C:\bbx\lib`. Once there, execute the following three lines to install the BBj dependencies required to run the engine:
 
 ```bash
 
-mvn install:install-file -Dfile=BBjStartup.jar -DgroupId=com.basis.lib -DartifactId=BBjStartup -Dversion=1.0 -Dpackaging=jar
-mvn install:install-file -Dfile=BBj.jar -DgroupId=com.basis.lib -DartifactId=BBj -Dversion=1.0 -Dpackaging=jar
-mvn install:install-file -Dfile=BBjUtil.jar -DgroupId=com.basis.lib -DartifactId=BBjUtil -Dversion=1.0 -Dpackaging=jar
+mvn install:install-file "-Dfile=BBjStartup.jar" "-DgroupId=com.basis.lib" "-DartifactId=BBjStartup" "-Dversion=1.0" "-Dpackaging=jar"
+mvn install:install-file "-Dfile=BBj.jar" "-DgroupId=com.basis.lib" "-DartifactId=BBj" "-Dversion=1.0" "-Dpackaging=jar"
+mvn install:install-file "-Dfile=BBjUtil.jar" "-DgroupId=com.basis.lib" "-DartifactId=BBjUtil" "-Dversion=1.0" "-Dpackaging=jar"
 
 ```
+
+<a name='section3'></a>
 
 ## 3) Download/Clone and Package DWCJ
 
