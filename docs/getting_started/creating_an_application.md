@@ -77,3 +77,20 @@ public class ExampleClass extends App{
 Once this has been done, compile or package your program using Maven, and then navigate to
 the appropriate URL. If done correctly, you should see the entry in your list of available
 applications.
+
+:::info
+
+You can set the application's title, theme and meta tags by using annotations.
+
+```java
+@AppTitle("My app title")
+@AppTheme("system")
+@AppMeta(name = "description", content = "My App")
+@AppMeta(name = "keywords", content = "My, App, Java")
+
+public class HelloWorld extends App {
+//Implementation
+}
+```
+
+:::

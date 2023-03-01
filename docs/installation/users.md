@@ -136,11 +136,13 @@ video from **4:13** to **8:23**.
 ## 3) Using the BBj Plugin Manager
 
 Once BBj has been installed, we can use the BBj Plugin Manager to give us
-access to the DWCJ and start development on our project.
+access to the DWCJ and start development on our project. To do this, run the
+PluginManager application. For windows users, this can be found by typing
+"PluginManager" into the Start menu.
 
-### Launch the BBj Plugin Manager
+![Plugin manager start menu option](./_images/users/pluginmanager.png)
 
-Begin by navigating to the bbx folder you installed in the previous step. An 
+<!-- Begin by navigating to the bbx folder you installed in the previous step. An 
 example path would be **C:\bbx\plugins**. 
 
 ![JAVA_HOME variable Screenshop](./_images/users/i1.jpg)
@@ -177,7 +179,9 @@ look something like **"C:/bbx/bin"**. Select the BBj application, which
 will open the Plugin Manager.
 
 ![JAVA_HOME variable Screenshop](./_images/users/i6.jpg)
-<br/>
+<br/> -->
+
+
 
 Once this is complete, you should see the Plugin Manager window open. It 
 should look something like the screenshot below:

@@ -4,23 +4,6 @@ sidebar_position: 110
 
 # Slider
 
-### At a Glance
-
-|Parent Class| Interfaces |
-|------------|------------|
-|[AbstractDwcControl](#)| <ul><li>[HasMouseWheelCondition](#)</li><li>[HasFocus](#)</li><li>[HasTabTraversal](#)</li></ul>|
-
-| Methods |
-|------------|
-| <ul><li>[`Map<Integer,String> getLabels()`](#)</li><li>[`Integer getMajorTickSpacing()`](#)</li><li>[`Integer getMaximum()`](#)</li><li>[`Integer getMinimum()`](#)</li><li>[`Integer getMinorTickSpacing()`](#)</li><li>[`Integer getOrientation()`](#)</li><li>[`Integer getValue()`](#)</li><li>[`Boolean isInverted()`](#)</li><li>[`Boolean isPaintLabels()`](#)</li><li>[`Boolean isPaintTicks()`](#)</li><li>[`Boolean isSnapToTicks()`](#)</li><li>[`Slider setInverted(Boolean inverted)`](#)</li><li>[`Slider setLabels(Map<Integer,String> labels)`](#)</li><li>[`Slider setMajorTickSpacing(Integer tick)`](#)</li><li>[`Slider setMaximum(Integer maximum)`](#)</li><li>[`Slider setMinimum(Integer minimum)`](#)</li><li>[`Slider setMinorTickSpacing(Integer tick)`](#)</li><li>[`Slider setOrientation(Orientation orientation)`](#)</li><li>[`Slider setPaintLabels(Boolean paint)`](#)</li><li>[`Slider setPaintTicks(Boolean paint)`](#)</li><li>[`Slider setSnapToTicks(Boolean snap)`](#)</li><li>[`Slider setValue(Integer value)`](#)</li></ul>|
-
-
-| Events |
-|------------|
-| <ul><li>[`Slider onScroll(Consumer<SliderOnControlScrollEvent> callback)`](#)</li></ul> |
-
-<br/>
-
 ### Upper and Lower Limit
 
 Use the `setMinimum()` and `setMaximum()` methods to determine the upper and lower bound of the slider. Each interval on the slider has a distance of 1, meaning that a slider with maximum 10 and minimum of 0 will have 10 intervals on the slider, whereas a maximum of 100 and minimum of 0 will have 100 intervals. These intervals will evenly distribute on the slider, depending on the height and width dimensions that it has been given by the developer. 

@@ -6,8 +6,5 @@ sidebar_position: 130
 
 ### Description
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Fusce commodo odio ultricies, auctor nisl eget, venenatis nulla.
-Suspendisse dolor massa, placerat vel lorem ac, gravida venenatis tellus.
+The Tab Control provides an interface for manipulating a UI tab control. The Tab Control can either display tabs associated only with a title/text, or tabs that display text and that are associated with a Div. 
 
-### Methods

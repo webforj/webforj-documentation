@@ -4,24 +4,8 @@ sidebar_position: 10
 
 # Checkbox
 
-### At a Glance
 
-|Parent Class| Interfaces |
-|------------|------------|
-|[AbstractDwcControl](#)| <ul><li>[HasReadOnly](#)</li><li>[HasFocus](#)</li><li>[HasTabTraversal](#)</li><li>[HasTextAlignment](#)</li></ul>|
-
-| Methods |
-|------------|
-| <ul><li>[`ComboBox addItem(Object key, String item)`](#)</li><li>[`HorizontalTextPosition getHorizontalTextPosition()`](#)</li><li>[`Boolean isChecked()`](#)</li><li>[`CheckBox setChecked(Boolean checked)`](#)</li><li>[`CheckBox setExpanse(CheckBox.Expanse expanse)`](#)</li><li>[`CheckBox setHorizontalTextPosition(CheckBox.HorizontalTextPosition position)`](#)</li></ul>|
-
-
-| Events |
-|------------|
-| <ul><li>[`CheckBox onChange(Consumer<CheckBoxChangeEvent> callback)`](#)</li></ul> |
-
-<br/>
-
-### Checkbox Text
+### Text
 
 Check boxes can utilize the ```setText(String foo)``` method, which will positioned near the check box according to the built-in `HorizontalTextPosition` property which is detailed below. 
 

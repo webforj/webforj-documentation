@@ -4,18 +4,6 @@ sidebar_position: 90
 
 # Progress Bar
 
-### At a Glance
-
-|Parent Class|
-|------------|
-|[AbstractDwcControl](#)|
-
-| Methods |
-|------------|
-| <ul><li>[`Integer getMaximum()`](#)</li><li>[`Integer getMinimum()`](#)</li><li>[`Integer getOrientation()`](#)</li><li>[`String getText()`](#)</li><li>[`Integer getValue()`](#)</li><li>[`Boolean isIndeterminate()`](#)</li><li>[`Boolean isStringPainted()`](#)</li><li>[`ProgressBar setIndeterminate(Boolean indeterminate)`](#)</li><li>[`ProgressBar setMaximum(Integer maximum)`](#)</li><li>[`ProgressBar setMinimum(Integer minimum)`](#)</li><li>[`ProgressBar setOrientation(Integer orientation)`](#)</li><li>[`ProgressBar setStringPainted(Boolean stringPainted)`](#)</li><li>[`ProgressBar setProgressBarText(String text)`](#)</li><li>[`ProgressBar setValue(Integer value)`](#)</li></ul>|
-
-<br/>
-
 ### Text and String Painting
 
 By default when created, the progress bar will display the percentage complete in the format "XX%". Using the `setText()` method, you can use the placeholder {{x}} to get the current value as a percentage. Additionally, you can use the placeholder {{value}} to get the raw current value.

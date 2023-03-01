@@ -4,22 +4,6 @@ sidebar_position: 150
 
 # Text Box
 
-### At a Glance
-
-|Parent Class| Interfaces |
-|------------|------------|
-|[AbstractDwcControl](#)| <ul><li>[HasReadOnly](#)</li><li>[HasFocus](#)</li><li>[HasTabTraversal](#)</li><li>[TextAlignable](#)</li><li>[TextHighlightable](#)</li></ul>|
-
-| Methods |
-|------------|
-| <ul><li>[`TextBox(String text)`](#)</li><li>[`String getEditType()`](#)</li><li>[`Integer getMaxLength()`](#)</li><li>[`String getSelectedText()`](#)</li><li>[`String getSelection()`](#)</li><li>[`Boolean isPassHomeDelete()`](#)</li><li>[`boolean isPasswordVisible()`](#)</li><li>[`TextBox select(Integer offset1, Integer offset2)`](#)</li><li>[`TextBox setExpanse(Expanse expanse)`](#)</li><li>[`TextBox setMaxLength(Integer length)`](#)</li><li>[`TextBox setPassHomeDelete(Boolean pass)`](#)</li><li>[`TextBox setPasswordVisible(Boolean visible)`](#)</li></ul>|
-
-| Events |
-|------------|
-| <ul><li>[`TextBox onEditModify(Consumer<TextBoxEditModifyEvent> callback)`](#)</li></ul> |
-
-<br/>
-
 ### Label
 
 

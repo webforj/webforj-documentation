@@ -4,23 +4,6 @@ sidebar_position: 70
 
 # Numeric Box
 
-### At a Glance
-
-|Parent Class| Interfaces |
-|------------|------------|
-|[AbstractDwcControl](#)| <ul><li>[HasReadOnly](#)</li><li>[HasTextHighlight](#)</li><li>[HasFocus](#)</li><li>[HasTabTraversal](#)</li><li>[HasTextAlignment](#)</li></ul>|
-
-| Methods |
-|------------|
-| <ul><li>[`String getCommaCharacter()`](#)</li><li>[`String getDotCharacter()`](#)</li><li>[`String getEditString()`](#)</li><li>[`Integer getError()`](#)</li><li>[`int getLength()`](#)</li><li>[`Integer getMargin()`](#)</li><li>[`String getMask()`](#)</li><li>[`String getRestore()`](#)</li><li>[`BigDecimal getValue()`](#)</li><li>[`Boolean isHighlight()`](#)</li><li>[`Boolean isInsertMode()`](#)</li><li>[`Boolean isNegatable()`](#)</li><li>[`Boolean isPassEnter()`](#)</li><li>[`Boolean isPassTab()`](#)</li><li>[`Boolean isUseEditCommas()`](#)</li><li>[`void restore()`](#)</li><li>[`NumericBox selectAll()`](#)</li><li>[`NumericBox setCommaCharacter(String comma)`](#)</li><li>[`NumericBox setDotCharacter(String dot)`](#)</li><li>[`NumericBox setEditString(String edit)`](#)</li><li>[`NumericBox setExpanse(Expanse expanse)`](#)</li><li>[`NumericBox setHighlight(Boolean highlight)`](#)</li><li>[`NumericBox setInsertMode(Boolean insert)`](#)</li><li>[`NumericBox setLength(Integer len)`](#)</li><li>[`NumericBox setMargin(Integer marginWidth)`](#)</li><li>[`NumericBox setMask(String mask)`](#)</li><li>[`NumericBox setNegatable(boolean negatable)`](#)</li><li>[`NumericBox setPassEnter(Boolean pass)`](#)</li><li>[`NumericBox setPassTab(Boolean pass)`](#)</li><li>[`NumericBox setRestore(float restore)`](#)</li><li>[`NumericBox setUseEditCommas(boolean useCommas)`](#)</li><li>[`NumericBox setValue(BigDecimal value)`](#)</li><li>[`NumericBox setValue(float value)`](#)</li><li>[`NumericBox setValue(int value)`](#)</li></ul>|
-
-
-| Events |
-|------------|
-| <ul><li>[`NumericBox onEditModify(Consumer<NumericBoxEditModifyEvent> callback`](#)</li></ul> |
-
-<br/>
-
 ### Labeling
 
 Labels can be easily added above the control without the need to create a separate Label component above the control. 

@@ -4,19 +4,7 @@ sidebar_position: 50
 
 # Label
 
-### At a Glance
-
-|Parent Class| Interfaces |
-|------------|------------|
-|[AbstractDwcControl](#)| <li>[HasTextAlignment](#)</li>|
-
-| Methods |
-|------------|
-| [`Label(String text)`](#)|
-
-<br />
-
-### Label Text
+### Text
 
 The label's text can be set either at creation using the parameterized constructor, or by utilizing the inherited `setText()` method. 
 

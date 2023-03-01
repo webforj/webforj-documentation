@@ -4,22 +4,6 @@ sidebar_position: 20
 
 # Combo Box
 
-### At a Glance
-
-|Parent Class| Interfaces |
-|------------|------------|
-|[AbstractDwclistControl](#)| <ul><li>[HasReadOnly](#)</li><li>[HasFocus](#)</li><li>[HasTabTraversal](#)</li><li>[HasTextAlignment](#)</li></ul>|
-
-| Methods |
-|------------|
-| <ul><li>[`ComboBox addItem(Object key, String item)`](#)</li><li>[`ComboBox addItems(Map<Object, String> items)`](#)</li><li>[`ComboBox close()`](#)</li><li>[`ComboBox deselect()`](#)</li><li>[`Map<Object, String> getAllItems()`](#)</li><li>[`String getItem(Object key)`](#)</li><li>[`String getItemAt(Integer idx)`](#)</li><li>[`Integer getItemCount()`](#)</li><li>[`Integer getSelectedIndex()`](#)</li><li>[`SimpleEntry<Object, String> getSelectedItem()`](#)</li><li>[`ComboBox insertItemAt(Object key, String item, Integer index)`](#)</li><li>[`ComboBox insertItemsAt(Map<Object, String> items, Integer index)`](#)</li><li>[`ComboBox open()`](#)</li><li>[`ComboBox removeAllItems()`](#)</li><li>[`ComboBox removeItemAt(Integer index)`](#)</li><li>[`ComboBox selectIndex(Integer index)`](#)</li><li>[`ComboBox setItems(Map<Object, String> values)`](#)</li><li>[`ComboBox setMaximumRowCount(Integer max)`](#)</li><li>[`ComboBox setTextAt(Integer idx, String text)`](#)</li></ul>|
-
-
-| Events |
-|------------|
-| <ul><li>[`ComboBox onClose(Consumer<ComboBoxCloseEvent> callback)`](#)</li><li>[`ComboBox onOpen(Consumer<ComboBoxOpenEvent> callback)`](#)</li><li>[`ComboBox onSelect(Consumer<ComboBoxSelectEvent> callback)`](#)</li></ul> |
-
-
 ### Labeling
 
 Labels can be easily added above the component without the need to create a separate Label component above the control. 

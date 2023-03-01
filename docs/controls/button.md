@@ -10,24 +10,7 @@ import TabItem from '@theme/TabItem';
 The button control object provides methods for creating and manipulating a button in applications
 or webpages. The button's behavior can be modified with the methods and events listed below, and is customizable with various themes, styles and expanses.
 
-### At a Glance
-
-|Parent Class| Interfaces |
-|------------|------------|
-|[AbstractDwcControl](#)| <ul><li>[HasFocus](#)</li><li>[HasTabTraversal](#)</li><li>[HasTextAlignment](#)</li></ul>|
-
-| Methods |
-|------------|
-| <ul><li>[`Button(String text)`](#)</li><li>[`Expanse getExpanse()`](#)</li><li>[`Theme getTheme()`](#)</li><li>[`TextVerticalAlignment getVerticalAlignment()`](#)</li><li>[`Boolean isDisableOnClick()`](#)</li><li>[`Button setDisableOnClick(boolean disable)`](#)</li><li>[`Button setExpanse(Button.Expanse expanse)`](#)</li><li>[`Button setTheme(Button.Theme theme)`](#)</li><li>[`Button setVerticalAlignment(Button.TextVerticalAlignment alignment)`](#)</li></ul>|
-
-
-| Events |
-|------------|
-| <ul><li>[`Button onClick(Consumer<ButtonPushEvent> callback)`](#)</li></ul> |
-
-<br />
-
-### Button Text
+### Text
 
 Buttons come with a parameterized constructor, taking a String argument, which will set the initial text of the button. The ```setText(String foo)``` method can also be called to set the text of the button.  
 
