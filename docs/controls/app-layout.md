@@ -4,12 +4,11 @@ sidebar_position: 0
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import AppLayoutViewer from '@site/src/components/DocsTools/AppLayoutViewer';
 
 # App Layout
 
 The DWCJ App Layout is a component which allows for building common application layouts. 
-
-![Example Application Layout](./_images/applayout/app_layout.jpg)
 
 
 ### Features
@@ -26,16 +25,14 @@ It provides a header, footer , drawer, and content section all built into a resp
 Each part of the layout is a Div, which can contain any valid DWCJ control. For best results, the application should include a viewport meta tag which contains viewport-fit=cover. The meta tag causes the viewport to be scaled to fill the device display.
 
 ```java
-@AppMeta(name = "width", content = "device-width")
-@AppMeta(name = "initial-scale", content = "1.0")
-@AppMeta(name = "viewport", content = "fit=cover")
-@AppMeta(name = "user-scalable", content = "no")
+@AppMeta(name = "viewport", content = "width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no")
 ```
 
 ### Overview
 
-The following code sample will result in an application with a collapsible sidebar that contains a logo and tabs for various content options and a header. The demos uses the bbj-icon-button web component to create a drawer toggle button. The button has the data-drawer-toggle attribute which instructs the BBjAppLayout to listen to click events coming from that component to toggle the drawer state.
+The following code sample will result in an application with a collapsible sidebar that contains a logo and tabs for various content options and a header. The demo uses the bbj-icon-button web component to create a drawer toggle button. The button has the data-drawer-toggle attribute which instructs the BBjAppLayout to listen to click events coming from that component to toggle the drawer state.
 
+<AppLayoutViewer url='/app-layout-demos/basis-layout.html' mobile='false' />
 
 
 <details>
@@ -45,17 +42,7 @@ The following code sample will result in an application with a collapsible sideb
 <Tabs>
 <TabItem value='Java' label='Java' default>
 
-```java
-import org.dwcj.App;
-import org.dwcj.util.Assets;
-import org.dwcj.exceptions.DwcAppInitializeException;
-import org.dwcj.controls.applayout.AppLayout;
-import org.dwcj.controls.label.Label;
-import org.dwcj.controls.panels.AppPanel;
-import org.dwcj.controls.panels.Div;
-import org.dwcj.controls.tabcontrol.TabControl;
-import org.dwcj.controls.tabcontrol.events.TabSelectEvent;
-
+```java showLineNumbers
 public class AppLayoutDemo extends App{
 
     Label contentLabel; 
@@ -166,18 +153,23 @@ body,html {overflow: hidden}
 
 By default, the AppLayout renders the header and the footer in the off-screen mode. The off-screen mode means that the header and the footer position will be shifted to fit beside the opened drawer. Disabling this mode will cause the header and footer to take the full available space and shift the drawer top and bottom position to fit with the header and the footer.
 
-```java
+```java showLineNumbers
 AppLayout myApp = new AppLayout();
 
 myApp.setHeaderOffscreen(false);
 myApp.setFooterOffscreen(false);
 ```
 
+<AppLayoutViewer url='/app-layout-demos/full-header.html' mobile='false'/>
+
+
 ### Multiple Toolbars
 
 The navbar has no limit to the number of toolbars you can add. A toolbar is only a Div. To add an additional toolbar, simply add a new Div to the existing header div of the AppLayout.
 
 The following demo shows how to use two toolbars, The first one houses the drawer's toggle button and the application's title. The second toolbar houses a secondary navigation menu.
+
+<AppLayoutViewer url='/app-layout-demos/multi-toolbars.html' mobile='false'/>
 
 <details>
     <summary>Show Code</summary> 
@@ -186,17 +178,7 @@ The following demo shows how to use two toolbars, The first one houses the drawe
 <Tabs>
 <TabItem value='Java' label='Java' default>
 
-```java
-import org.dwcj.App;
-import org.dwcj.util.Assets;
-import org.dwcj.exceptions.DwcAppInitializeException;
-import org.dwcj.controls.applayout.AppLayout;
-import org.dwcj.controls.label.Label;
-import org.dwcj.controls.panels.AppPanel;
-import org.dwcj.controls.panels.Div;
-import org.dwcj.controls.tabcontrol.TabControl;
-import org.dwcj.controls.tabcontrol.events.TabSelectEvent;
-
+```java showLineNumbers
 public class AppLayoutDemo extends App{
     
     Label contentLabel; 
@@ -326,6 +308,8 @@ When `AppLayout.setHeaderReveal(true)` is set called, the header will be visible
 
 With the help of the CSS custom property `--bbj-app-layout-header-collapse-height` it is possible to control how much of the header navbar will be hidden.
 
+<AppLayoutViewer url='/app-layout-demos/sticky-toolbar.html' mobile='false' />
+
 <details>
     <summary>Show Code</summary> 
 
@@ -333,7 +317,7 @@ With the help of the CSS custom property `--bbj-app-layout-header-collapse-heigh
 <Tabs>
 <TabItem value='Java' label='Java' default>
 
-```java
+```java showLineNumbers
 import org.dwcj.App;
 import org.dwcj.util.Assets;
 import org.dwcj.exceptions.DwcAppInitializeException;
@@ -467,12 +451,26 @@ Same as `AppLayout.setHeaderReveal()`, `AppLayout.setFooterReveal()` is supporte
 
 Be default, when the screen width is 800px or less , the drawer will be switched to popover mode. This is called the breakpoint. The popover mode means that the drawer will pop over the content area with an overlay. It is possible to configure the breakpoint by using the BBjAppLayout:setDrawerBreakpoint method and the breakpoint must be a valid [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries).
 
+<AppLayoutViewer url='/app-layout-demos/footer-reveal.html' mobile='true'/>
+
+### Drawer Breakpoint
+
+Be default, when the screen width is 800px or less , the drawer will be switched to popover mode. This is called the breakpoint. Popover mode means that the drawer will pop over the content area with an overlay. It is possible to configure the breakpoint by using the BBjAppLayout:setDrawerBreakpoint method and the breakpoint must be a valid media query.
+
+For instance, in the following sample. we configure the drawer breakpoint to be 500px or less.
+
+```java
+AppLayout demo = new AppLayout();
+demo.setDrawerBreakpoint("(max-width:500px)");
+```
+
+<AppLayoutViewer url='/app-layout-demos/drawer-breakpoint.html' mobile='true'/>
 
 ### Events
 
 The `AppLayout` class supports two events:
 
 <ol>
-    <li>AppLayoutDrawerOpenedEvent Fired when the drawer is opened</li>
-    <li>AppLayoutDrawerClosedEvent Fired when the drawer is closed</li>
+    <li>onDrawerOpen Fired when the drawer is opened</li>
+    <li>onDrawerClose Fired when the drawer is closed</li>
 </ol>

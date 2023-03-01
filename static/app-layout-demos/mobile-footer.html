@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover, user-scalable=no"
+    />
+    <title>BBjAppLayout - Mobile Footer</title>
+    <script
+      type="module"
+      src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.esm.js"
+    ></script>
+    <script nomodule src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.js"></script>
+
+    <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.css" />
+    <style>
+      html,
+      body {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+      }
+
+      .bbj-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .bbj-logo img {
+        max-width: 24px;
+      }
+
+      .bbj-toolbar {
+        display: flex;
+        align-items: center;
+        gap: var(--bbj-space-m);
+        padding: 0 var(--bbj-space-m);
+      }
+
+      @media (max-width: 600px) {
+        bbj-tab span {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <bbj-app-layout fit-viewport drawer-placement="hidden">
+        <div slot="header">
+          <div class="bbj-toolbar">
+            <div class="bbj-logo">
+              <img src="https://i.ibb.co/1n4n1Nh/logo.png" alt="logo" />
+            </div>
+            <h3 data-app-title>DWC Application</h3>
+          </div>
+        </div>
+
+        <div slot="footer">
+          <bbj-tabs-list placement="bottom" alignment="stretch" nobody borderless>
+            <bbj-tab slot="nav" data-name="Dashboard">
+              <bbj-icon expanse="s" name="dashboard"></bbj-icon>
+              <span>Dashboard</span>
+            </bbj-tab>
+            <bbj-tab slot="nav" data-name="Orders">
+              <bbj-icon expanse="s" name="shopping-cart"></bbj-icon>
+              <span>Orders</span>
+            </bbj-tab>
+            <bbj-tab slot="nav" data-name="Customers">
+              <bbj-icon expanse="s" name="users"></bbj-icon>
+              <span>Customers</span>
+            </bbj-tab>
+            <bbj-tab slot="nav" data-name="Products">
+              <bbj-icon expanse="s" name="box"></bbj-icon>
+              <span>Products</span>
+            </bbj-tab>
+            <bbj-tab slot="nav" data-name="Documents">
+              <bbj-icon expanse="s" name="files"></bbj-icon>
+              <span>Documents</span>
+            </bbj-tab>
+          </bbj-tabs-list>
+        </div>
+
+        <h1>Application Title</h1>
+        <p>Content goes here</p>
+      </bbj-app-layout>
+
+      <script>
+        const tabs = document.querySelector(
+          'bbj-tabs-list[placement="bottom"]'
+        );
+        tabs.addEventListener("bbj-tab-selected", (e) => {
+          const content = document.querySelector("p");
+          content.innerHTML = `Content for ${e.detail.tab.dataset.name} goes here`;
+        });
+      </script>
+    </div>
+  </body>
+</html>

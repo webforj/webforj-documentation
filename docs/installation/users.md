@@ -116,6 +116,8 @@ for Windows users can be found [here](https://phoenixnap.com/kb/install-maven-wi
 
 ## 2) BBj Download and Installation
 
+<b>While following this step, be sure to install BBj version 22.14 or newer </b><br/><br/>
+
 The following video describes the steps needed download the tool that will install BBj on your machine. Watch from the beginning until the **1:30** mark. 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Ovk8kznQfGs?end=90" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
