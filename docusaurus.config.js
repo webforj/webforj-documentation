@@ -68,9 +68,14 @@ const config = {
           routeBasePath: 'tutorials',
           sidebarPath: require.resolve('./sidebars.js'),
         }, 
+      ],
+      [
+        require.resolve("@cmfcmf/docusaurus-search-local"),
+        {
+          indexDocs: true,
+        },
       ]
   ],
-
   themeConfig:
     ({
       navbar: {
@@ -151,6 +156,7 @@ const config = {
         additionalLanguages: ['java']
       },
     }),
+    
 };
 
 module.exports = config;
