@@ -2,7 +2,8 @@
     "label": "Annotations",
     "position": 6,
     "link": {
-      "type": "generated-index"
+      "type": "doc",
+      "id" : "supported_annotations"
     }
 }
   

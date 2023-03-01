@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Start Here
+# Installation
 
 <div style={{"display":"grid", "width":"100%"}}>
     <h3 style={{"justify-self" : "end"}}> Current BBj Version Required: 22.14 or newer </h3>
