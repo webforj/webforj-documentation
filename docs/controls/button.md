@@ -4,6 +4,8 @@ sidebar_position: 5
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+
 
 # Button
 
@@ -33,14 +35,32 @@ loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonIcon'
 style={{"width": "450px","height" : "70px"}}></iframe>  -->
 
+<!-- <iframe
+loading="lazy" 
+src='/demos/button-demos/icon-demo.html'
+style={{"width": "450px","height" : "70px"}}></iframe>  -->
+
+
+<ComponentDemo 
+path='/demos/button-demos/icon-demo.html' 
+showCSS='true' 
+javaCode=' Button b1 = new Button ("<html><bbj-icon name=\"alien\"></bbj-icon> Icon Left</html>");
+ Button b2 = new Button ("<html>Icon Right <bbj-icon name=\"alien\"></bbj-icon></html>");
+ Button b3 = new Button ("<html><bbj-icon name=\"alien\"></bbj-icon></html>");'
+/>
+
 ![Adding icons to buttons](./_images/button/button_icons.jpg)
 <br />
 
 To add these icons, set the button's text to have an `<html>` tag, with a `<bbj-icon>` tag inside with the name attribute set accordingly. In addition to an icon, include text to the left or right of the `<bbj-icon>` tag to include a label as well:
 
 ```java
- Button b1 = new Button ("<html><bbj-icon name=\"alien\"></bbj-icon> Button with Icon and Text</html>");
+ Button b1 = new Button ("<html><bbj-icon name=\"alien\"></bbj-icon> Icon Left</html>");
+ Button b2 = new Button ("<html>Icon Right <bbj-icon name=\"alien\"></bbj-icon></html>");
+ Button b3 = new Button ("<html><bbj-icon name=\"alien\"></bbj-icon></html>");
 ```
+
+
 
 <br />
 
