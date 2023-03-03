@@ -41,13 +41,13 @@ src='/demos/button-demos/icon-demo.html'
 style={{"width": "450px","height" : "70px"}}></iframe>  -->
 
 
-<ComponentDemo 
+<!-- <ComponentDemo 
 path='/demos/button-demos/icon-demo.html' 
 showCSS='true' 
 javaCode=' Button b1 = new Button ("<html><bbj-icon name=\"alien\"></bbj-icon> Icon Left</html>");
  Button b2 = new Button ("<html>Icon Right <bbj-icon name=\"alien\"></bbj-icon></html>");
  Button b3 = new Button ("<html><bbj-icon name=\"alien\"></bbj-icon></html>");'
-/>
+/> -->
 
 ![Adding icons to buttons](./_images/button/button_icons.jpg)
 <br />
@@ -59,7 +59,6 @@ To add these icons, set the button's text to have an `<html>` tag, with a `<bbj-
  Button b2 = new Button ("<html>Icon Right <bbj-icon name=\"alien\"></bbj-icon></html>");
  Button b3 = new Button ("<html><bbj-icon name=\"alien\"></bbj-icon></html>");
 ```
-
 
 
 <br />
