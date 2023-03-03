@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Button Icon</title>
+    <script
+      type="module"
+      src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.esm.js"
+    ></script>
+    <script nomodule src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.js"></script>
+
+    <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.css" />
+    <style>
+      body{
+        background-color: white;
+      }
+      
+      .wrapper{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .button__row{
+        display: flex;
+        gap: 20px;
+      }
+
+      bbj-button{
+          width: 150px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="button__row">
+        <bbj-button>DEFAULT</bbj-button>
+        <bbj-button theme="primary">PRIMARY</bbj-button>
+        <bbj-button theme="success">SUCCESS</bbj-button>
+        <bbj-button theme="danger">DANGER</bbj-button>
+      </div>
+      <div class="button__row">
+        <bbj-button>DEFAULT DISABLED</bbj-button>
+        <bbj-button theme="primary" disabled="true">PRIMARY DISABLED</bbj-button>
+        <bbj-button theme="success" disabled="true">SUCCESS DISABLED</bbj-button>
+        <bbj-button theme="danger" disabled="true">DANGER DISABLED</bbj-button>
+      </div>
+    </div>
+  </body>
+</html>

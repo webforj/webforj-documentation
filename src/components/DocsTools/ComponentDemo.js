@@ -1,19 +1,22 @@
 /**@jsx jsx */
 
-import React from 'react'
+import {React, useState} from 'react'
 import { jsx, css } from '@emotion/react';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Details from '@theme/Details';
 import CodeBlock from '@theme/CodeBlock';
 
-export default function ComponentDemo({ path, showCSS, javaCode, cssCode }) {
+export default function ComponentDemo({ path, javaURL, cssURL, javaHighlight }) {
+
+  const [javaCode, setJavaCode] = useState("");
+  const [cssCode, setCssCode] = useState("");
 
 	const mainStyles = css`
 		display: flex;
     flex-direction: column;
     padding: 10px 15px 0 15px;
-    background-color: #F8FAFC;
+    background-color: var(--code-display-color);
 		width: 100%;
     margin-bottom: 16px;
 
@@ -27,7 +30,7 @@ export default function ComponentDemo({ path, showCSS, javaCode, cssCode }) {
   const detailsStyles = css`
     border: none;
     box-shadow: none;
-    background-color: #F8FAFC;
+    background-color: var(--code-display-color);
     margin-bottom: 0px;
     padding: 10px;
 
@@ -36,6 +39,7 @@ export default function ComponentDemo({ path, showCSS, javaCode, cssCode }) {
       width: 100%;
       justify-content: center;
       margin: 0;
+      font-weight: bold;
       ::before{
         left: auto;
         margin-left: -100px;
@@ -44,17 +48,31 @@ export default function ComponentDemo({ path, showCSS, javaCode, cssCode }) {
 
   `
 
-  var code = fetch('../../static/demos/button-demos/test.java')
+  if(javaURL){
+    fetch(javaURL)
+        .then(response => response.text()) 
+        .then(textString => {
+            setJavaCode(textString)
+        });
+  }
+  if(cssURL){
+    fetch(cssURL)
+        .then(response => response.text()) 
+        .then(textString => {
+            setCssCode(textString)
+        });
+  }
 
   return (
     <div css={mainStyles}>
       <iframe
         loading="lazy" 
-        src={path}
+        src={path+'?data-app-theme=\'light\''}
+        data-app-theme='light'
         css={iframeStyles}>
       </iframe>
       <Details css={detailsStyles} summary={<summary>Show Code</summary>}>
-      {cssCode ? 
+      {cssURL ? 
         <Tabs>
           <TabItem value='Java' label='Java' default>
             <CodeBlock
@@ -77,7 +95,9 @@ export default function ComponentDemo({ path, showCSS, javaCode, cssCode }) {
           <TabItem value='Java' label='Java' default>
             <CodeBlock
                 language="java"
-                showLineNumbers>
+                showLineNumbers
+                metastring={javaHighlight}
+                >
                 {javaCode}
               </CodeBlock>
           </TabItem>
