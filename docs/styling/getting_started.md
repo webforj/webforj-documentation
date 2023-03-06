@@ -90,17 +90,18 @@ To annotate the injection of an external CSS file, use the `@StyleSheet()` annot
 
 ```
 
-It is also possible to apply local stylesheets with annotations. Use the `@InlineStyleSheet()` annotation to include an external file. As with the App's API method, the root directory used by this annotation will be the resources directory of a project. Ensure to add the `local = true` parameter in the annotation for a local stylesheet. A file called `styles.css` located in `src/resources/css` would by loaded by the following code:
+It is also possible to apply local stylesheets with annotations. Use the `@InlineStyleSheet()` annotation to include an external file. As with the App's API method, the root directory used by this annotation will be the resources directory of a project. A file called `styles.css` located in `src/resources/css` would by loaded by the following code:
 
 ```java
-@InlineStyleSheet(value = "context://css/style.css")
+@InlineStyleSheet("context://css/style.css")
 ```
 
-### Java Text Block Styling
+:::info
+
 
 It is also possible to use Java Text Blocks to create chunks of CSS that can be applied via HTML class attribute to the class itself. This styling can be applied with either the App API method or using annotations. 
 
-```java
+```java showLineNumbers
 @InlineStyleSheet(value = /* css */ """
    .panel{
         display: flex;
@@ -126,6 +127,7 @@ If you're using VS code, an extension that provides syntax highlighting [can be 
 
 <img src='https://github.com/DwcJava/vscode-java-html/raw/HEAD/docs/demo.png'/>
 
+:::
 
 
 ## Control Theme and Expanse
