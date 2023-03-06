@@ -37,7 +37,8 @@ javaURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/
 javaHighlight='{19-24}'
 />
 
-<!-- ![Adding icons to buttons](./_images/button/button_icons.jpg) -->
+
+<!-- ![Adding icons to buttons](./_images/button/button_icons.jpg) d -->
 <br />
 
 To add these icons, set the button's text to have an `<html>` tag, with a `<bbj-icon>` tag inside with the name attribute set accordingly. In addition to an icon, include text to the left or right of the `<bbj-icon>` tag to include a label as well:
