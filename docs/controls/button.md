@@ -31,7 +31,6 @@ In addition to, or instead of having text on a button, it is possible to add an 
 Below are examples of buttons with text to the left and right, as well as a button with only an icon:
 
 <ComponentDemo 
-path='/demos/button-demos/icon-demo.html' 
 showCSS='true' 
 javaURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonIcon.java'
 javaHighlight='{19-24}'
@@ -63,7 +62,6 @@ src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondem
 style={{"width": "100%"}}></iframe> -->
 
 <ComponentDemo 
-path='/demos/button-demos/button-disabled.html' 
 showCSS='true' 
 javaURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonDisable.java'
 javaHighlight='{47-50}'
