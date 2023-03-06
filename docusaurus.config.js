@@ -69,12 +69,6 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
         }, 
       ],
-      [
-        require.resolve("@cmfcmf/docusaurus-search-local"),
-        {
-          indexDocs: true,
-        },
-      ]
   ],
   themeConfig:
     ({
@@ -156,6 +150,21 @@ const config = {
         additionalLanguages: ['java']
       },
     }),
+    themes: [
+      // ... Your other themes.
+      [
+        require.resolve("@easyops-cn/docusaurus-search-local"),
+        {
+          // ... Your options.
+          // `hashed` is recommended as long-term-cache of index file is possible.
+          hashed: true,
+          // For Docs using Chinese, The `language` is recommended to set to:
+          // ```
+          // language: ["en", "zh"],
+          // ```
+        },
+      ],
+    ],
     
 };
 

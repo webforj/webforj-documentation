@@ -62,13 +62,19 @@ The DWCJ's App class contains functionality to allow stylesheets to be applied t
 The `addStyleSheet()` method will inject an external style sheet from a URL into a page, such as stylesheets hosted on CDNs. 
 
 ```java
-App.addStyleSheet("https://www.w3schools.com/w3css/4/w3.css")
+App.getPage().addStyleSheet("https://www.w3schools.com/w3css/4/w3.css")
 ```
 
-The `addInlineStyleSheet()` method is used when a developer wants to include a local stylesheet. When this method is chosen, it is required to use the `Assets.contentOf()` method to resolve the path to the stylesheet. By default, the resources directory of a project will be used. For example, a file called `styles.css` located in `src/resources/css` would by loaded by the following code:
+This annotation also supports the `webserver://` protocol, and will by default point to the folder of the running application under jetty's htdocs (`bbx/htdocs/myapp`).
 
 ```java
-App.addInlineStyleSheet(Assets.contentOf("css/styles.css"));
+addStyleSheet('webserver://static/css/style.css');
+```
+
+The `addInlineStyleSheet()` method is used when a developer wants to include a local stylesheet. By default, the resources directory of a project will be used. For example, a file called `styles.css` located in `src/resources/css` would by loaded by the following code:
+
+```java
+App.getPage().addInlineStyleSheet("context://css/styles.css");
 ```
 
 ### Using annotations
@@ -78,13 +84,16 @@ Similar to the App class's methods, the DWCJ contains annotations which allow fo
 To annotate the injection of an external CSS file, use the `@StyleSheet()` annotation.
 
 ```java
-@StyleSheet(url = "https://www.w3schools.com/w3css/4/w3.css")
+@StyleSheet("https://www.w3schools.com/w3css/4/w3.css")
+//or
+@StyleSheet(value="https://www.w3schools.com/w3css/4/w3.css")
+
 ```
 
 It is also possible to apply local stylesheets with annotations. Use the `@InlineStyleSheet()` annotation to include an external file. As with the App's API method, the root directory used by this annotation will be the resources directory of a project. Ensure to add the `local = true` parameter in the annotation for a local stylesheet. A file called `styles.css` located in `src/resources/css` would by loaded by the following code:
 
 ```java
-@InlineStyleSheet(value = "css/style.css", local = true)
+@InlineStyleSheet(value = "context://css/style.css")
 ```
 
 ### Java Text Block Styling
