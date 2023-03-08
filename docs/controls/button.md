@@ -64,6 +64,8 @@ style={{"width": "100%"}}></iframe> -->
 <ComponentDemo 
 path='/demos/button-demos/button-disabled.html' 
 showCSS='true' 
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonIcon.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonDisable.java'
 javaHighlight='{47-50}'
 />
 

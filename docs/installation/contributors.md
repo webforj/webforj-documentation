@@ -138,9 +138,9 @@ Once BBj has been installed, navigate to the location of your installation and i
 
 ```bash
 
-mvn install:install-file "-Dfile=BBjStartup.jar" "-DgroupId=com.basis.lib" "-DartifactId=BBjStartup" "-Dversion=1.0" "-Dpackaging=jar"
-mvn install:install-file "-Dfile=BBj.jar" "-DgroupId=com.basis.lib" "-DartifactId=BBj" "-Dversion=1.0" "-Dpackaging=jar"
-mvn install:install-file "-Dfile=BBjUtil.jar" "-DgroupId=com.basis.lib" "-DartifactId=BBjUtil" "-Dversion=1.0" "-Dpackaging=jar"
+mvn install:install-file "-Dfile=BBjStartup.jar" "-DgroupId=com.basis.lib" "-DartifactId=BBjStartup" "-Dversion=22.14" "-Dpackaging=jar"
+mvn install:install-file "-Dfile=BBj.jar" "-DgroupId=com.basis.lib" "-DartifactId=BBj" "-Dversion=22.14" "-Dpackaging=jar"
+mvn install:install-file "-Dfile=BBjUtil.jar" "-DgroupId=com.basis.lib" "-DartifactId=BBjUtil" "-Dversion=22.14" "-Dpackaging=jar"
 
 ```
 
