@@ -7,7 +7,6 @@ import TabItem from '@theme/TabItem';
 import Details from '@theme/Details';
 import CodeBlock from '@theme/CodeBlock';
 
-
 function CodeToggleButton({ collapse, setCollapse }){
 
   const buttonWrapperStyles = css`
@@ -121,30 +120,21 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
   `
 
   if(javaE){
-    fetch(javaE, 
-      {
-        mode: 'no-cors'
-      })
+    fetch(javaE)
         .then(response => response.text()) 
         .then(textString => {
             setJavaExpand(textString)
         });
   }
   if(javaC){
-    fetch(javaC, 
-      {
-        mode: 'no-cors'
-      })
+    fetch(javaC)
         .then(response => response.text()) 
         .then(textString => {
             setJavaCollapse(textString)
         });
   }
   if(cssURL){
-    fetch(cssURL, 
-      {
-        mode: 'no-cors'
-      })
+    fetch(cssURL)
         .then(response => response.text()) 
         .then(textString => {
             setCssCode(textString)

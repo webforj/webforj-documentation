@@ -32,6 +32,7 @@ Below are examples of buttons with text to the left and right, as well as a butt
 
 <ComponentDemo 
 path='/demos/button-demos/icon-demo.html' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonIcon.java'
 showCSS='true' 
 javaHighlight='{19-24}'
 />
@@ -63,8 +64,7 @@ style={{"width": "100%"}}></iframe> -->
 
 <ComponentDemo 
 path='/demos/button-demos/button-disabled.html' 
-showCSS='true' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonIcon.java'
+showCSS='true'
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonDisable.java'
 javaHighlight='{47-50}'
 />
