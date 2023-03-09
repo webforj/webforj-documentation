@@ -56,9 +56,10 @@ public class AppLayoutDemo extends App{
         panel.add(demo);
 
         //Header 
-        demo.getHeader().addClassName("app-layout-header").add(
-            new Label("<html><bbj-icon-button name='menu-2' data-drawer-toggle></bbj-icon-button></html>"),
+        demo.getHeader().addClassName("layout__header")
+            .add(new Label("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>"),
             new Label("DWCJ Application")
+                .addClassName("layout__header")
         );
 
         //Drawer
@@ -66,8 +67,8 @@ public class AppLayoutDemo extends App{
         drawer.addClassName("app-layout-drawer");
 
         //Drawer's logo container and logo
-        drawer.add(new Div().addClassName("drawer-logo-div").add(
-            new Label("<html><img src='" + "https://i.ibb.co/1n4n1Nh/logo.png" + "'</img></html>").addClassName("drawer-logo")
+        drawer.add(new Div().addClassName("drawer__logo").add(
+            new Label("<html><img src='" + "https://i.ibb.co/1n4n1Nh/logo.png" + "'</img></html>")
         ));
 
         //Drawer's Menu
