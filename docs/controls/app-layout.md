@@ -49,7 +49,7 @@ public class AppLayoutDemo extends App{
     
     @Override
     public void run() throws DwcAppInitializeException {
-        App.addInlineStyleSheet(Assets.contentOf("css/apptemplatestyles.css"));
+        App.getPage().addInlineStyleSheet("context://css/apptemplatestyles.css");
         
         AppPanel panel = new AppPanel();
         AppLayout demo = new AppLayout();
@@ -185,7 +185,7 @@ public class AppLayoutDemo extends App{
     
     @Override
     public void run() throws DwcAppInitializeException {
-        App.addInlineStyleSheet(Assets.contentOf("css/apptemplatestyles.css"));
+        App.getPage().addInlineStyleSheet("context://css/apptemplatestyles.css");
         
         AppPanel panel = new AppPanel();
         AppLayout demo = new AppLayout();
@@ -334,7 +334,7 @@ public class AppLayoutDemo extends App{
     
     @Override
     public void run() throws DwcAppInitializeException {
-        App.addInlineStyleSheet(Assets.contentOf("css/apptemplatestyles.css"));
+        App.getPage().addInlineStyleSheet("context://css/apptemplatestyles.css");
         
         AppPanel panel = new AppPanel();
         AppLayout demo = new AppLayout();
