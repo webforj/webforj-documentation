@@ -103,7 +103,7 @@ function HomepageTitle(){
         The Dynamic Web Client for Java
       </h1>
       <p css={descriptionStyles}>
-        The DWCJ provides a robust and flexible framework that can help you deliver a modern and engaging web user interface with ease.
+        The DWCJ provides a robust and flexible framework that can help you deliver a modern and engaging web user interface with ease. In Java.
       </p>
       <div css={buttonStyles}>
         <Link 

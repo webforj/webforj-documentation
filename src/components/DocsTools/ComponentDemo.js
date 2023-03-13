@@ -76,7 +76,7 @@ function CodeToggleButton({ collapse, setCollapse }){
 
 
 
-export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighlight }) {
+export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighlight, height }) {
 
   const [javaCollapse, setJavaCollapse] = useState("");
   const [javaExpand, setJavaExpand] = useState("");
@@ -90,12 +90,13 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
     background-color: var(--code-display-color);
 		width: 100%;
     margin-bottom: 16px;
+    
+    `
 
-	`
-
-  const iframeStyles = css`
+const iframeStyles = css`
     min-height: 100px;
     height: 100%;
+    height: ${height}
   `
 
   const detailsStyles = css`

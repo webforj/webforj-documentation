@@ -9,6 +9,9 @@ displayed_sidebar: documentationSidebar
 
 The DWCJ ships three themes by default, as well as with the ability to create your own, custom theme. The default themes are light, dark and dark-pure. 
 
+### DWC Themer
+To create your own custom theme, check out the [DWC Themer Tool](https://hot.bbx.kitchen/webapp/DWCThemer) which allows a high degree of customization. 
+
 ### Default Themes
 
 To change the theme of your application, you can use the `@AppTheme` annotation. When using this annotation, the theme name should be one of the following: `system`, `light`, `dark`, `dark-pure` or the name of a custom theme.
