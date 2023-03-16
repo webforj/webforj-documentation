@@ -39,12 +39,12 @@ where the instructions for the execution of your application will be contained.
 
 ```java
 import org.dwcj.App;
-import org.dwcj.exceptions.DwcAppInitializeException;
+import org.dwcj.exceptions.DwcException;
 
 public class ExampleClass extends App{
 
     @Override
-    public void run() throws DwcAppInitializeException { 
+    public void run() throws DwcException { 
 
     }
 }
@@ -60,14 +60,14 @@ and a button will be added to the panel.
 
 ```java
 import org.dwcj.App;
-import org.dwcj.exceptions.DwcAppInitializeException;
+import org.dwcj.exceptions.DwcException;
 import org.dwcj.controls.panels.AppPanel;
 import org.dwcj.controls.button.Button;
 
 public class ExampleClass extends App{
 
     @Override
-    public void run() throws DwcAppInitializeException { 
+    public void run() throws DwcException { 
         AppPanel panel = new AppPanel();
         Button myButton = new Button();
         panel.add(myButton);
