@@ -84,6 +84,10 @@ App.getPage().addInlineStyleSheet("context://css/styles.css");
 
 Similar to the App class's methods, the DWCJ contains annotations which allow for the use of external and local stylesheets as well. 
 
+:::caution
+These annotations are only available to classes which extend the `AbstractControl` class, as annotations are processed only when a class is attached to a panel. For classes in which this is not the case, use the previously mentioned `App` class's method.
+:::
+
 To annotate the injection of an external CSS file, use the `@StyleSheet()` annotation.
 
 ```java
