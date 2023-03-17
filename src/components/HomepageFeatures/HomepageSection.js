@@ -18,7 +18,7 @@ const Sections = [
             The DWCJ follows an "all-in-one" process, with UI and backend development all taking place within Java. With the DWCJ, you have access to a comprehensive set of components, 
             features, and tools necessary for building a robust, secure, and user-friendly application.   
         </>),
-        image: require('@site/static/img/development.png').default
+        image: require('@site/static/img/development_t.png').default
     },
 
     {   
@@ -31,7 +31,7 @@ const Sections = [
             The DWCJ framework provides a simple pipeline which makes your application easy to build and easy to deploy. Additionally, it dynamically downloads individual messages, or chunks of
             Javascript on-demand as the application, as is necessary for use in the application. This results in measurable improvements to the initial load time, resulting in an optimal user experience.
         </>),
-        image: require('@site/static/img/dynamic.png').default
+        image: require('@site/static/img/dynamic_t.png').default
     },
     
     {   
@@ -63,7 +63,7 @@ const Sections = [
             The DWCJ helps existing customers ensure they have the most 
             cutting edge features available, and provides a competitive solution for new customers.
         </>),
-        image: require('@site/static/img/performance.png').default
+        image: require('@site/static/img/performance_t.png').default
     },
     
 ];
