@@ -63,7 +63,7 @@ src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondem
 style={{"width": "100%"}}></iframe> -->
 
 <ComponentDemo 
-path='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonDisable.java' 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonDisable' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonDisable.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/disable_styles.css'
 javaHighlight='{47-50}'
@@ -84,7 +84,7 @@ Shown below are example buttons with each of the supported Themes applied: <br/>
 
 
 <ComponentDemo 
-path='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonThemes.java' 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonThemes' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonThemes.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/theme_styles.css'
 javaHighlight='{23-36}'
@@ -107,7 +107,7 @@ There are five button expanses that are supported in the DWCJ which allow for qu
 Below are the various expanses supported for the button control: <br/>
 
 <ComponentDemo 
-path='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonExpanses.java' 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonExpanses' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonExpanses.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/expanse_styles.css'
 javaHighlight='{22-26}'
@@ -134,7 +134,7 @@ src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondem
 style={{"width": "100%", "height" : "120px"}}></iframe> -->
 
 <ComponentDemo 
-path='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonAlignment.java' 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonAlignment' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonAlignment.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/alignment_styles.css'
 javaHighlight='{27-29}'
