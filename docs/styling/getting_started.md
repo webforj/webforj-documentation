@@ -14,11 +14,17 @@ To create your own custom theme, check out the [DWC Themer Tool](https://hot.bbx
 
 ### Default Themes
 
-To change the theme of your application, you can use the `@AppTheme` annotation. When using this annotation, the theme name should be one of the following: `system`, `light`, `dark`, `dark-pure` or the name of a custom theme.
+To change the theme of your application, you can use the `@AppTheme` annotation or the `App.setTheme()` method. When using this annotation, the theme name should be one of the following: `system`, `light`, `dark`, `dark-pure` or the name of a custom theme.
 
 ```java
 @AppTheme("dark-pure")
+//or
+App.setTheme("dark-pure");
 ```
+
+:::info
+Using the `@AppTheme()` annotation will result in compile-time assignment of the application theme, while using the API's `App.setTheme()` results in runtime theme assignment. For users wishing to enable the ability to change themes dynamically while the program is run, the API's `App.setTheme()` method will be the proper tool.
+:::
 
 ### System Theme
 
@@ -103,9 +109,19 @@ It is also possible to apply local stylesheets with annotations. Use the `@Inlin
 @InlineStyleSheet("context://css/style.css")
 ```
 
+These annotations have the required parameter `value`, and optional parameters `id`, `top`, and `once`, and `attributes`.
+
+The required `value` parameter is the CSS content to be injected into the page as a style element. **If no other parameters are given, it is not necessary to add **`value=`** to the annotation.**
+
+The `id` parameter accepts a string which creates a unique resource ID, causing resources with the same ID to be bundled together. This means that the resources will be injected in the same style element in the page.
+
+The `top` parameter accepts a boolean value, is false by default, and specifies that the style should be injected into the top level of the window.
+
+The `once` parameter accepts a boolean value, is false by default, and specifies whether the style should be injected into the page once only. This is useful when creating custom components that come with their own style sheets - multiple instances of the component can be used, but the style sheet will only be injected once. 
+
+The `attributes` parameter is empty by default, and can be specified either as a string in the `attr=value,attr=value` format, or as a hashMap containing key/value pairs. These attributes are a set of [attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style) to be added to the style element.
+
 :::info
-
-
 It is also possible to use Java Text Blocks to create chunks of CSS that can be applied via HTML class attribute to the class itself. This styling can be applied with either the App API method or using annotations. 
 
 ```java showLineNumbers
