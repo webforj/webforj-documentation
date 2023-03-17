@@ -55,7 +55,7 @@ However, information which cannot be changed by the user can be cached to avoid 
 ### Loading Time 
 
 When the user launches a DWCJ app, it loads
-just a tiny chunk (only about 7.4kB) of JavaScript to bootstrap the session.
+just a tiny chunk (only about 2.5kB gzip) of JavaScript to bootstrap the session.
 After that, it dynamically downloads individual messages, or chunks of
 JavaScript, on-demand as the application uses the corresponding
 functionality. For example, the server only sends the client the JavaScript

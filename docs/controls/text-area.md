@@ -1,29 +1,26 @@
 ---
 sidebar_position: 140
+title: Text Area
 ---
 
-# Text Area
+import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 
-### Label
+<div style={{width: "100%" , display: "flex", justifyContent: "flex-end", marginBottom: "-50px"}}>
+<p style={{color: "gray"}} >API:&nbsp;</p>
+<b><a href="https://javadoc.io/static/org.dwcj/dwcj-engine/0.15.0/org/dwcj/controls/textarea/TextArea.html" style={{justifySelf: "flex-end"}}> Java </a></b>
+</div>
 
+### Labeling
 
 The text area control can be easily labeled without the needing to create an extra label control using the `setAttribute()` method and passing the desired label as a string, as shown below: <br/>
 
-<!-- <iframe 
-loading="lazy"
-src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textareademos.TextAreaLabel' 
-style={{"width": "100%", "height":"125px"}}></iframe> -->
-
-![Text area label](./_images/textarea/textarea_label.jpg)
-
-<br/>
-
-```java
-import org.dwcj.controls.textarea.TextArea;
-
-TextArea exampleTextArea = new TextArea();      //Creates a new TextArea
-exampleTextArea.setAttribute("label", "Example Label");     
-```
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textareademos.TextAreaLabel' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/textareademos/TextAreaLabel.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textareastyles/text_area_styles.css' 
+javaHighlight='{15}'
+height = '125px'
+/>
 
 <br/>
 
@@ -31,21 +28,13 @@ exampleTextArea.setAttribute("label", "Example Label");
 
 It is also possible to set placeholder text within the control to better help users understand what type of input is expected. Similar to a label, this can be accomplished using the `setAttribute()` method: <br/>
 
-<!-- <iframe 
-loading="lazy"
-src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textareademos.TextAreaPlaceholder' 
-style={{"width": "100%", "height":"125px"}}></iframe> -->
-
-![Text area placeholder](./_images/textarea/textarea_placeholder.jpg)
-
-<br/>
-
-```java
-import org.dwcj.controls.textarea.TextArea;
-
-TextArea exampleTextArea = new TextArea();      //Creates a new TextArea
-exampleTextArea.setAttribute("placeholder", "Example Placeholder");  
-```
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textareademos.TextAreaPlaceholder' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/textareademos/TextAreaPlaceholder.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textareastyles/text_area_styles.css' 
+javaHighlight='{16}'
+height = '125px'
+/>
 
 <br/>
 
@@ -53,47 +42,29 @@ exampleTextArea.setAttribute("placeholder", "Example Placeholder");
 
 The text area can also be configured with spellchecking to help the user improve their input. Use the `setAttribute()` method to do this:
 
-<!-- <iframe 
-loading="lazy"
-src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textareademos.TextAreaSpellcheck' 
-style={{"width": "100%", "height":"125px"}}></iframe> -->
-
-![Text area spellcheck](./_images/textarea/textarea_spellcheck.jpg)
-
-<br/>
-
-```java
-import org.dwcj.controls.textarea.TextArea;
-
-TextArea exampleTextArea = new TextArea();      //Creates a new TextArea
-exampleTextArea.setAttribute("spellcheck", "true");  
-```
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textareademos.TextAreaSpellcheck' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/textareademos/TextAreaSpellcheck.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textareastyles/text_area_styles.css' 
+javaHighlight='{16}'
+height = '125px'
+/>
 
 <br/>
 
 ### Expanses
 
-DWCJ's text area comes with 5 expanses for quick styling without the use of CSS.
+DWCJ's text area comes with 5 expanses for quick styling without the use of CSS. Expanses are supported by use of a built-in enum class.
 Below are the various expanses supported for the text area control: <br/>
 
-<!-- <iframe 
-loading="lazy"
-src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textareademos.TextAreaExpanse' 
-style={{"width": "100%", "height":"125px"}}></iframe> -->
-
-![Text area expanses](./_images/textarea/textarea_expanses.jpg)
-
-<br/>
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textareademos.TextAreaExpanse' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/textareademos/TextAreaExpanse.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textareastyles/text_area_styles.css' 
+javaHighlight='{19,23,27,31,35}'
+height = '125px'
+/>
 
 |Text Area Expanses|
 |-|
 |<ul><li>```TextArea.Expanse.XSMALL```</li><li>```TextArea.Expanse.SMALL```</li><li>```TextArea.Expanse.MEDIUM```</li><li>```TextArea.Expanse.LARGE```</li><li>```TextArea.Expanse.XLARGE```</li></ul>|
-
-<br/>Expanses are supported by use of a built-in enum class. To apply an expanse, execute code similar to the following: <br/><br />
-
-```java
-import org.dwcj.controls.textarea.TextArea;
-
-TextArea exampleTextArea = new TextArea();      //Creates a new TextArea
-exampleTextArea.setExpanse(TextArea.Expanse.MEDIUM);    
-```

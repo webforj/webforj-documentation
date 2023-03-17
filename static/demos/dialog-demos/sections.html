@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Button Icon</title>
+    <script
+      type="module"
+      src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.esm.js"
+    ></script>
+    <script nomodule src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.js"></script>
+
+    <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.css" />
+    <!-- <style>
+      body{
+        background-color: white;
+    }
+    
+    /* .wrapper{
+      display: flex;
+      gap: 200px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 50px 0 50px;
+    } */
+
+    bbj-dialog::part(focus-trap::part(dialog)){
+        height: 200px;
+        width: 300px;
+    }
+
+    bbj-dialog::part(focus-trap)::part(dialog){
+        height: 200px;
+        width: 300px;
+    }
+    bbj-dialog::part(focus-trap) > div > div{
+        height: 200px;
+        width: 300px;
+    }
+    bbj-dialog::part(focus-trap > div > div){
+        height: 200px;
+        width: 300px;
+    }
+
+    focus-trap > div > div{
+        height: 200px;
+        width: 300px;
+    }
+
+    /* bbj-dialog[slot=header]{
+    } */
+    
+    focus-trap > div > div > slot:nth-child(1){
+        
+        content: Hello;
+    }
+
+    </style> -->
+  </head>
+
+  <body>
+      <bbj-dialog dwcj-component="ad29e289" class="loginForm bbj-opened hydrated" tabindex="0" alignment="center" opened="" theme="default" data-js-focus-visible="" style="--_bbj-dialog-posx:517px; --_bbj-dialog-posy:353px; --_bbj-dialog-bottom:auto; --_bbj-dialog-right:auto;"><div bbj-id="12" id="simple-12" class="BBjSimpleWindow BBjChildWindow BBjWindow BBjControl bbj-2-102" dwcj-slot="ad29e289" bbj-remove="true" slot="header" style="border-style: none;"><div bbj-id="16" id="text-16" class="BBjStaticText BBjControl bbj-2-100" style="text-align: left;">Header</div></div><div bbj-id="14" id="simple-14" class="BBjSimpleWindow BBjChildWindow BBjWindow BBjControl bbj-3-103" dwcj-slot="ad29e289" bbj-remove="true" slot="content" style="border-style: none; overflow: auto;"><div bbj-id="17" id="text-17" class="BBjStaticText BBjControl bbj-3-100" style="text-align: left;">Content</div></div><div bbj-id="10" id="simple-10" class="BBjSimpleWindow BBjChildWindow BBjWindow BBjControl bbj-1-101" dwcj-slot="ad29e289" bbj-remove="true" slot="footer" style="border-style: none;"><div bbj-id="18" id="text-18" class="BBjStaticText BBjControl bbj-1-100" style="text-align: left;">Footer</div></div></bbj-dialog>
+    <!-- <bbj-dialog opened></bbj-dialog> -->
+  </body>
+</html>
+

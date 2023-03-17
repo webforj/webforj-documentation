@@ -13,29 +13,28 @@
     <style>
       body{
         background-color: white;
-        height: 100%;
     }
     
     .wrapper{
       display: flex;
-      gap: 20px;
-      justify-content: center;
+      gap: 200px;
       align-items: center;
-      margin-top: 20px;
-
+      justify-content: center;
+      padding: 0 50px 0 50px;
     }
 
-    bbj-button{
-        width: 125px;
+    .label__wrapper{
+        display: flex;
+        justify-content: center;
     }
     </style>
   </head>
-
   <body>
+    <div class="label__wrapper">
+        <p>Min: 50, Max: 200</p>
+    </div>
     <div class="wrapper">
-      <bbj-button><bbj-icon name="alien"></bbj-icon>Icon Left</bbj-button>
-      <bbj-button>Icon Right<bbj-icon name="alien"></bbj-icon></bbj-button>
-      <bbj-button><bbj-icon name="alien"></bbj-icon></bbj-button>
+      <bbj-progressbar min="50" max="200" value="100" text="{{x}}%" ></bbj-progressbar>
     </div>
   </body>
 </html>

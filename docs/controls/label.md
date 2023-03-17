@@ -1,8 +1,14 @@
 ---
 sidebar_position: 50 
+title: Label
 ---
 
-# Label
+import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+
+<div style={{width: "100%" , display: "flex", justifyContent: "flex-end", marginBottom: "-50px"}}>
+<p style={{color: "gray"}} >API:&nbsp;</p>
+<b><a href="https://javadoc.io/static/org.dwcj/dwcj-engine/0.15.0/org/dwcj/controls/label/Label.html" style={{justifySelf: "flex-end"}}> Java </a></b>
+</div>
 
 ### Text
 
@@ -11,22 +17,12 @@ The label's text can be set either at creation using the parameterized construct
 In addition to using the label as static text, it can also be used as an HTML tag within your code. Simply set the label's text to the desired HTML tag with the various attributes, class names, etc, and
 the label will be replaced with the desired HTML element.
 
-<!-- <iframe 
-loading="lazy"
-src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.labeldemos.LabelDemo' 
-style={{"width": "100%", "height":"250px"}}></iframe> -->
-
-![Label text](./_images/label/label_text.jpg)
-
-<br/>
-
-To achieve the above results, execute code similar to the following:
-
-```java
-Label l1 = new Label("This is a Label component, which renders as static text on a webpage");
-Label l2 = new Label("Below is an example of an HTML ordered list rendered purely using a Label control: ");
-Label l3 = new Label("<html><ol><li>My First Item</li><li>My Second Item</li><li>My Third Item</li></ol><html>");
-```
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.labeldemos.LabelDemo' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/labeldemos/LabelDemo.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/labelstyles/text_styles.css' 
+javaHighlight='{16-18}'
+/>
 
 <br />
 
@@ -34,11 +30,11 @@ Label l3 = new Label("<html><ol><li>My First Item</li><li>My Second Item</li><li
 
 Label text can also be aligned using the inherited alignment functionality provided with the [TextAlignable](#) interface.
 
-<!-- <iframe 
-loading="lazy"
-src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.labeldemos.LabelAlignment' 
-style={{"width": "100%", "height":"400px"}}></iframe> -->
-
-![Label alignments](./_images/label/label_alignment.jpg)
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.labeldemos.LabelAlignment' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/labeldemos/LabelAlignment.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/labelstyles/alignment_styles.css' 
+javaHighlight='{43-45}'
+/>
 
 <br/>

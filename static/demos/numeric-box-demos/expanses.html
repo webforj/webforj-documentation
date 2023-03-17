@@ -13,29 +13,28 @@
     <style>
       body{
         background-color: white;
-        height: 100%;
     }
     
     .wrapper{
       display: flex;
-      gap: 20px;
-      justify-content: center;
+      gap: 50px;
       align-items: center;
+      justify-content: center;
       margin-top: 20px;
-
-    }
-
-    bbj-button{
-        width: 125px;
     }
     </style>
   </head>
-
   <body>
-    <div class="wrapper">
-      <bbj-button><bbj-icon name="alien"></bbj-icon>Icon Left</bbj-button>
-      <bbj-button>Icon Right<bbj-icon name="alien"></bbj-icon></bbj-button>
-      <bbj-button><bbj-icon name="alien"></bbj-icon></bbj-button>
+    <div>
+        <div class="wrapper">
+            <bbj-inputn label="X-SMALL" expanse="xs"></bbj-inputn>
+            <bbj-inputn label="SMALL" expanse="s"></bbj-inputn>
+            <bbj-inputn label="MEDIUM" expanse="m"></bbj-inputn>
+        </div>
+        <div class="wrapper">
+            <bbj-inputn label="LARGE" expanse="l"></bbj-inputn>
+            <bbj-inputn label="X-LARGE" expanse="xl"></bbj-inputn>
+        </div>
     </div>
   </body>
 </html>

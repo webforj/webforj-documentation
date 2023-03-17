@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Button Icon</title>
+    <script
+      type="module"
+      src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.esm.js"
+    ></script>
+    <script nomodule src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.js"></script>
+
+    <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.css" />
+    <style>
+      body{
+        background-color: white;
+    }
+    
+    .wrapper{
+      display: flex;
+      gap: 200px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 50px 0 50px;
+    }
+
+    .label__wrapper{
+        display: flex;
+        justify-content: center;
+    }
+    </style>
+  </head>
+  <body>
+    <div>
+        <div class="label__wrapper">
+            <p>Labels Without Ticks</p>
+        </div>
+        <div class="wrapper">
+          <bbj-slider min="0" max="100" value="50" paint-ticks="false" snap-to-ticks="false" minor-tick-spacing="10"></bbj-slider>
+        </div>
+    </div>
+    <div>
+        <div class="label__wrapper">
+            <p>Labels With Ticks</p>
+        </div>
+        <div class="wrapper">
+          <bbj-slider min="0" max="100" value="50" paint-ticks="true" snap-to-ticks="true" minor-tick-spacing="10"></bbj-slider>
+        </div>
+    </div>
+    <div>
+        <div class="label__wrapper">
+            <p>Labels To Non-Tick Values</p>
+        </div>
+        <div class="wrapper">
+          <bbj-slider min="0" max="100" value="50" paint-ticks="true" snap-to-ticks="true" minor-tick-spacing="10"></bbj-slider>
+        </div>
+    </div>
+  </body>
+</html>

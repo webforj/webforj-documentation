@@ -3,8 +3,6 @@ sidebar_position: 5
 title: Button
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 
 <div style={{width: "100%" , display: "flex", justifyContent: "flex-end", marginBottom: "-50px"}}>
@@ -34,21 +32,14 @@ Below are examples of buttons with text to the left and right, as well as a butt
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonIcon' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonIcon.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/icon_styles.css' 
-javaHighlight='{17-22}'
+javaHighlight='{15,17,19}'
 />
 
 
 <!-- ![Adding icons to buttons](./_images/button/button_icons.jpg) d -->
 <br />
 
-To add these icons, set the button's text to have an `<html>` tag, with a `<bbj-icon>` tag inside with the name attribute set accordingly. In addition to an icon, include text to the left or right of the `<bbj-icon>` tag to include a label as well:
-
-<!-- ```java
- Button b1 = new Button ("<html><bbj-icon name=\"alien\"></bbj-icon> Icon Left</html>");
- Button b2 = new Button ("<html>Icon Right <bbj-icon name=\"alien\"></bbj-icon></html>");
- Button b3 = new Button ("<html><bbj-icon name=\"alien\"></bbj-icon></html>");
-``` -->
-
+To add these icons, set the button's text to have an `<html>` tag, with a `<bbj-icon>` tag inside with the name attribute set accordingly. In addition to an icon, include text to the left or right of the `<bbj-icon>` tag to include a label as well.
 
 <br />
 
@@ -57,16 +48,11 @@ To add these icons, set the button's text to have an `<html>` tag, with a `<bbj-
 Button controls can be disabled to convey to a user that a certain action is not yet or is no longer available. A disabled button will increase the gray scale of the button, and is available for 
 all button themes and expanses. <br/><br/>
 
-<!-- <iframe 
-loading="lazy"
-src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonDisable' 
-style={{"width": "100%"}}></iframe> -->
-
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonDisable' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonDisable.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/disable_styles.css'
-javaHighlight='{47-50}'
+javaHighlight='{49-52}'
 />
 
 <!-- ![Disabling a button](./_images/button/button_disable.jpg) -->
@@ -110,7 +96,7 @@ Below are the various expanses supported for the button control: <br/>
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonExpanses' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonExpanses.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/expanse_styles.css'
-javaHighlight='{22-26}'
+javaHighlight='{18-22}'
 />
 
 <!-- ![Button expanses](./_images/button/button_expanses.jpg) -->
@@ -128,16 +114,11 @@ javaHighlight='{22-26}'
 The DWCJ supports alignment of text within a button without having to use CSS to accomplish this.
 Shown below are the three options for vertical alignment of text within a button : <br/>
 
-<!-- <iframe 
-loading="lazy"
-src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonAlignment' 
-style={{"width": "100%", "height" : "120px"}}></iframe> -->
-
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonAlignment' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonAlignment.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/alignment_styles.css'
-javaHighlight='{27-29}'
+javaHighlight='{24,27,30}'
 />
 
 <!-- ![Button vertical alignments](./_images/button/button_alignment.jpg) -->
@@ -147,121 +128,3 @@ Listed below are the current supported vertical text alignments for the button c
 |Button Vertical Alignments|
 |-|
 |<ul><li>```Button.Expanse.TOP```</li><li>```Button.Expanse.CENTER```</li><li>```Button.Expanse.BOTTOM```</li></ul>|
-
-
-<!--  
-
-
-
-
-### Sample Program
-
-
-This code snippet is a small demonstration program that will create two buttons, each of which has an event attached. The first button will display a modal window with the first and last name that have
-been entered into the text boxes, and the second button will clear any text within these boxes.
-
-<iframe
-loading="lazy" 
-src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonHelloWorld' 
-style={{"width": "450px","height" : "350px"}}></iframe>
-
-
-
-<details>
-    <summary>Show Code</summary> 
-
-
-<Tabs>
-<TabItem value='Java' label='Java' default>
-
-```java
-    import org.dwcj.App;
-    import org.dwcj.controls.panels.AppPanel;
-    import org.dwcj.controls.label.Label;
-    import org.dwcj.controls.textbox.TextBox;
-    import org.dwcj.controls.button.Button;
-    import org.dwcj.controls.button.events.ButtonClickEvent;
-
-    import org.dwcj.exceptions.DwcAppInitializeException;
-
-
-    public class HelloWorldJava extends App {
-        
-        private TextBox edFirstname;
-        private TextBox edLastname;
-
-        @Override
-        public void run() throws DwcAppInitializeException {
-
-
-            AppPanel panel = new AppPanel();
-
-            //Initial styling for the application site panel
-            panel.setStyle("display", "inline-grid");
-            panel.setStyle("grid-template-columns", "1fr 2fr");
-            panel.setStyle("gap", "20px");
-            panel.setStyle("left", "20px");
-            panel.setStyle("top", "20px");
-            panel.setStyle("border", "1px dotted");
-            panel.setStyle("padding", "10px");
-            // Adding some labels and TextBox controls to use in the demonstration
-            panel.add(new Label("Firstname:"));
-            edFirstname = new TextBox();
-            panel.add(edFirstname);
-            panel.add(new Label("Lastname:"));
-            edLastname = new TextBox("");
-            panel.add(edLastname);
-    
-            //Creating the button and using the parameterized constructor for initial text
-            Button helloBtn = new Button("Display Name");
-
-            //adding the button to our application panel
-            panel.add(helloBtn);
-
-            //Setting the theme, expanse and text alignment using the Button's enum values
-            helloBtn.setTheme(Button.Theme.PRIMARY);
-            helloBtn.setExpanse(Button.Expanse.LARGE);
-            helloBtn.setVerticalAlignment(Button.TextVerticalAlignment.CENTER);
-
-            //Setting a click event for the first button
-            helloBtn.onClick(this::onHelloButtonPush);
-        
-            //Repeating the above functionality for the second button
-            Button deleteBtn = new Button("Clear Text");
-            panel.add(deleteBtn);
-            deleteBtn.setTheme(Button.Theme.DANGER);
-            deleteBtn.setExpanse(Button.Expanse.LARGE);
-            deleteBtn.setVerticalAlignment(Button.TextVerticalAlignment.CENTER);
-            deleteBtn.onClick(this::onDeleteButtonPush);
-            //Styling for both buttons
-            helloBtn.setStyle("grid-column", "1 / span 2");
-            helloBtn.setStyle("width", "100%");
-            deleteBtn.setStyle("grid-column", "1 / span 2");
-            deleteBtn.setStyle("width", "100%");
-            
-        }
-            
-        //Implementing behavior for the first button
-        private void onHelloButtonPush(ButtonClickEvent ev) {
-            String text = edFirstname.getText() + " " + edLastname.getText();
-            App.msgbox(text, 0, "Hello World");
-        } 
-        
-        //Implementing behavior for the second button
-        private void onDeleteButtonPush(ButtonClickEvent ev) {
-            edFirstname.setText("");
-            edLastname.setText("");
-        } 
-    }
-```
-</TabItem>
-    
-<TabItem value='CSS' label='CSS'>
-</TabItem>
-</Tabs>
-
-</details>
-
-
-
--->

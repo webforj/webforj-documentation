@@ -13,29 +13,28 @@
     <style>
       body{
         background-color: white;
-        height: 100%;
     }
     
     .wrapper{
       display: flex;
-      gap: 20px;
-      justify-content: center;
+      gap: 200px;
       align-items: center;
+      justify-content: center;
       margin-top: 20px;
-
+      padding: 0 50px 0 50px;
     }
 
-    bbj-button{
-        width: 125px;
+    .vertical{
+      height: 400px;
+      width: 30px;
     }
+
     </style>
   </head>
-
   <body>
     <div class="wrapper">
-      <bbj-button><bbj-icon name="alien"></bbj-icon>Icon Left</bbj-button>
-      <bbj-button>Icon Right<bbj-icon name="alien"></bbj-icon></bbj-button>
-      <bbj-button><bbj-icon name="alien"></bbj-icon></bbj-button>
+      <bbj-progressbar orientation="horizontal" value="75" ></bbj-progressbar>
+      <bbj-progressbar orientation="vertical" value="75" class="vertical" ></bbj-progressbar>
     </div>
   </body>
 </html>

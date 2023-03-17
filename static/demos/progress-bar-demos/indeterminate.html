@@ -13,29 +13,22 @@
     <style>
       body{
         background-color: white;
-        height: 100%;
     }
     
     .wrapper{
       display: flex;
-      gap: 20px;
-      justify-content: center;
+      gap: 200px;
       align-items: center;
-      margin-top: 20px;
-
+      justify-content: center;
+      margin-top: 40px;
+      padding: 0 50px 0 50px;
     }
 
-    bbj-button{
-        width: 125px;
-    }
     </style>
   </head>
-
   <body>
     <div class="wrapper">
-      <bbj-button><bbj-icon name="alien"></bbj-icon>Icon Left</bbj-button>
-      <bbj-button>Icon Right<bbj-icon name="alien"></bbj-icon></bbj-button>
-      <bbj-button><bbj-icon name="alien"></bbj-icon></bbj-button>
+      <bbj-progressbar indeterminate="true" text="Syncing Files" ></bbj-progressbar>
     </div>
   </body>
 </html>
