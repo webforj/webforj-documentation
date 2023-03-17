@@ -93,10 +93,10 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
     
     `
 
-const iframeStyles = css`
+  const iframeStyles = css`
     min-height: 100px;
     height: 100%;
-    height: ${height}
+    height: ${height};
   `
 
   const detailsStyles = css`
@@ -146,8 +146,9 @@ const iframeStyles = css`
     <div css={mainStyles}>
       <iframe
         loading="lazy" 
-        src={path+'?data-app-theme=\'light\''}
-        data-app-theme='light'
+        src={path}
+        // src={path+'?data-app-theme=\'light\''}
+        // data-app-theme='light'
         css={iframeStyles}>
       </iframe>
       <Details css={detailsStyles} summary={<summary>Show Code</summary>}>
@@ -157,7 +158,9 @@ const iframeStyles = css`
             <CodeBlock
               className="codeDemoBlock"
               language="java"
-              showLineNumbers>
+              showLineNumbers
+              metastring={javaHighlight}
+              >
               {collapsed 
               ? javaExpand
               : javaCollapse
