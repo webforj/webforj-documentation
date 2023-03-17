@@ -1,16 +1,16 @@
 ---
 sidebar_position: 5
+title: Button
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 
-
-# Button
-
-The button control object provides methods for creating and manipulating a button in applications
-or webpages. The button's behavior can be modified with the methods and events listed below, and is customizable with various themes, styles and expanses.
+<div style={{width: "100%" , display: "flex", justifyContent: "flex-end", marginBottom: "-50px"}}>
+<p style={{color: "gray"}} >API:&nbsp;</p>
+<b><a href="https://javadoc.io/doc/org.dwcj/dwcj-engine/latest/org/dwcj/controls/button/Button.html" style={{justifySelf: "flex-end"}}> Java </a></b>
+</div>
 
 ### Text
 
@@ -31,10 +31,10 @@ In addition to, or instead of having text on a button, it is possible to add an 
 Below are examples of buttons with text to the left and right, as well as a button with only an icon:
 
 <ComponentDemo 
-path='/demos/button-demos/icon-demo.html' 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonIcon' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonIcon.java'
-showCSS='true' 
-javaHighlight='{19-24}'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/icon_styles.css' 
+javaHighlight='{17-22}'
 />
 
 
@@ -63,9 +63,9 @@ src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondem
 style={{"width": "100%"}}></iframe> -->
 
 <ComponentDemo 
-path='/demos/button-demos/button-disabled.html' 
-showCSS='true'
+path='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonDisable.java' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonDisable.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/disable_styles.css'
 javaHighlight='{47-50}'
 />
 
@@ -82,12 +82,15 @@ Disabling a button can be done at any time in the code by using the ```setEnable
 DWCJ button components come with 14 themes built in for quick styling without the use of CSS.
 Shown below are example buttons with each of the supported Themes applied: <br/>
 
-<!-- <iframe 
-loading="lazy"
-src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonDemo' 
-style={{"width": "100%"}}></iframe> -->
 
-![Button themes](./_images/button/button_themes.jpg)
+<ComponentDemo 
+path='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonThemes.java' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonThemes.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/theme_styles.css'
+javaHighlight='{23-36}'
+/>
+
+<!-- ![Button themes](./_images/button/button_themes.jpg) -->
 
 <br/>
 
@@ -97,41 +100,25 @@ Listed below are the current supported theme options for the button control:<br/
 |-|
 |<ul><li>```Button.Theme.DEFAULT```</li><li>```Button.Theme.DANGER```</li><li>```Button.Theme.GRAY```</li><li>```Button.Theme.INFO```</li><li>```Button.Theme.PRIMARY```</li><li>```Button.Theme.SUCCESS```</li><li>```Button.Theme.WARNING```</li><li>```Button.Theme.OUTLINED_DEFAULT```</li><li>```Button.Theme.OUTLINED_DANGER```</li><li>```Button.Theme.OUTLINED_GRAY```</li><li>```Button.Theme.OUTLINED_INFO```</li><li>```Button.Theme.OUTLINED_PRIMARY```</li><li>```Button.Theme.OUTLINED_SUCCESS```</li><li>```Button.Theme.OUTLINED_WARNING```</li></ul>|
 
-<br/>Theming is supported by use of a built-in enum class. To apply a theme, execute code similar to the following: <br/><br />
-
-```java
-import org.dwcj.controls.button.Button;
-
-Button exampleButton = new Button("Example");      //Creates a new button with the text "example"
-exampleButton.setTheme(Button.Theme.DEFAULT);      //Sets the button's theme to be the default theme.
-```
-
 <br />
 
 ### Expanses
 There are five button expanses that are supported in the DWCJ which allow for quick styling without using CSS.
 Below are the various expanses supported for the button control: <br/>
 
-<!-- <iframe 
-loading="lazy"
-src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonExpanses' 
-style={{"width": "100%", "height" : "100px"}}></iframe><br/>
-Listed below are the current supported expanse options for the button control:<br/><br/> -->
+<ComponentDemo 
+path='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonExpanses.java' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonExpanses.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/expanse_styles.css'
+javaHighlight='{22-26}'
+/>
 
-![Button expanses](./_images/button/button_expanses.jpg)
+<!-- ![Button expanses](./_images/button/button_expanses.jpg) -->
 
 |Button Expanses|
 |-|
 |<ul><li>```Button.Expanse.XSMALL```</li><li>```Button.Expanse.SMALL```</li><li>```Button.Expanse.MEDIUM```</li><li>```Button.Expanse.LARGE```</li><li>```Button.Expanse.XLARGE```</li></ul>|
 
-<br/>Expanses are supported by use of a built-in enum class. To apply an expanse, execute code similar to the following: <br/><br />
-
-```java
-import org.dwcj.controls.button.Button;
-
-Button exampleButton = new Button("Example");      //Creates a new button with the text "example"
-exampleButton.setExpanse(Button.Expanse.MEDIUM);     //Sets the button's expanse to the medium size.
-```
 
 
 <br />
@@ -146,7 +133,14 @@ loading="lazy"
 src='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonAlignment' 
 style={{"width": "100%", "height" : "120px"}}></iframe> -->
 
-![Button vertical alignments](./_images/button/button_alignment.jpg)
+<ComponentDemo 
+path='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonAlignment.java' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonAlignment.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/alignment_styles.css'
+javaHighlight='{27-29}'
+/>
+
+<!-- ![Button vertical alignments](./_images/button/button_alignment.jpg) -->
 
 Listed below are the current supported vertical text alignments for the button control:
 
@@ -154,15 +148,6 @@ Listed below are the current supported vertical text alignments for the button c
 |-|
 |<ul><li>```Button.Expanse.TOP```</li><li>```Button.Expanse.CENTER```</li><li>```Button.Expanse.BOTTOM```</li></ul>|
 
-
-<br/>The various alignments are supported by use of a built-in enum class. To apply an alignment, execute code similar to the following: <br/><br/>
-
-```java
-import org.dwcj.controls.button.Button;                       
-
-Button exampleButton = new Button("Example");                             //Creates a new button with the text "example"
-exampleButton.setVerticalAlignment(Button.TextVerticalAlignment.CENTER);  //Sets the button's theme to be the default theme.
-```
 
 <!--  
 

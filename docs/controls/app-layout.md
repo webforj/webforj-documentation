@@ -1,17 +1,21 @@
 ---
 sidebar_position: 0
+title: App Layout
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import AppLayoutViewer from '@site/src/components/DocsTools/AppLayoutViewer';
 
-# App Layout
-
-The DWCJ App Layout is a component which allows for building common application layouts. 
+<div style={{width: "100%" , display: "flex", justifyContent: "flex-end", marginBottom: "-50px"}}>
+<p style={{color: "gray"}} >API:&nbsp;</p>
+<b><a href="https://javadoc.io/doc/org.dwcj/dwcj-engine/latest/org/dwcj/controls/applayout/AppLayout.html" style={{justifySelf: "flex-end"}}> Java </a></b>
+</div>
 
 
 ### Features
+
+The DWCJ App Layout is a component which allows for building common application layouts.
 
 <ul>
     <li>Easy to use and customize</li>
