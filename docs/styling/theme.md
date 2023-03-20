@@ -15,7 +15,7 @@ App.setTheme("dark-pure");
 ```
 
 :::info
-Using the `@AppTheme()` annotation will result in compile-time assignment of the application theme, while using the API's `App.setTheme()` results in runtime theme assignment. For users wishing to enable the ability to change themes dynamically while the program is run, the API's `App.setTheme()` method will be the proper tool.
+Using the API's `App.setTheme()` results in runtime theme assignment - for users wishing to enable the ability to change themes dynamically while the program is run, the API's `App.setTheme()` method will be the proper tool.
 :::
 
 ### Overriding Themes

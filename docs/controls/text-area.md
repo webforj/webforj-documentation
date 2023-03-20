@@ -62,7 +62,7 @@ path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textarea
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/textareademos/TextAreaExpanse.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textareastyles/text_area_styles.css' 
 javaHighlight='{19,23,27,31,35}'
-height = '125px'
+height = '200px'
 />
 
 |Text Area Expanses|

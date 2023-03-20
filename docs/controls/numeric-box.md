@@ -125,7 +125,7 @@ path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.numericb
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/numericboxdemos/NumericboxExpanses.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/numericboxstyles/expanse_styles.css' 
 javaHighlight='{22,26,30,34,38}'
-height = '300px'
+height = '200px'
 />
 
 <br/>

@@ -17,7 +17,7 @@ The component is built with three sections, each of which are `Div` components: 
 To show the dialog, call the `show()` method on the object itself. This 
 
 <ComponentDemo 
-path='/demos/dialog-demos/sections.html' 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.dialogdemos.DialogSections' 
 showCSS='true'
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/listboxdemos/ListboxLabel.java'
 javaHighlight='{47-50}'

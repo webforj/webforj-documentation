@@ -33,6 +33,7 @@ path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttonde
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonIcon.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/icon_styles.css' 
 javaHighlight='{15,17,19}'
+height="100px"
 />
 
 

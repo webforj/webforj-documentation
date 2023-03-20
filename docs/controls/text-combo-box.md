@@ -62,7 +62,7 @@ path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textcomb
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/textcomboboxdemos/TextComboBoxExpanses.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textcomboboxstyles/expanse_styles.css' 
 javaHighlight='{24,27,30,33,36}'
-height = '400px'
+height = '350px'
 />
 
 |Text Box Expanses|

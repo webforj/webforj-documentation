@@ -22,6 +22,7 @@ path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.labeldem
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/labeldemos/LabelDemo.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/labelstyles/text_styles.css' 
 javaHighlight='{16-18}'
+height="250px"
 />
 
 <br />
