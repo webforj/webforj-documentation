@@ -144,6 +144,8 @@ mvn install:install-file "-Dfile=BBjUtil.jar" "-DgroupId=com.basis.lib" "-Dartif
 
 ```
 
+After running these commands, make sure to perform an "install" using Maven in the engine directory.
+
 <a name='section3'></a>
 
 ## 3) Download/Clone and Package DWCJ

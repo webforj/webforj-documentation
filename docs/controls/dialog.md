@@ -15,26 +15,26 @@ The DWCJ's dialog component is built to allow a developer to quickly and easily 
 The component is built with three sections, each of which are `Div` components: the header, the content, and the footer.
 
 To show the dialog, call the `show()` method on the object itself. This 
-
+<!-- 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.dialogdemos.DialogSections' 
 showCSS='true'
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/listboxdemos/ListboxLabel.java'
 javaHighlight='{47-50}'
 height = '225px'
-/>
+/> -->
 
 ### Backdrop and Blur
 
 By enabling the backdrop attribute of the DWCJ's dialog component, a backdrop will be displayed behind the dialog. Additionally, when enabled, the dialog's blurred attribute will blur the backdrop of the dialog.
 
-<ComponentDemo 
+<!-- <ComponentDemo 
 path='/demos/dialog-demos/backdrop_blur.html' 
 showCSS='true'
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/listboxdemos/ListboxLabel.java'
 javaHighlight='{47-50}'
 height = '225px'
-/>
+/> -->
 
 ### Closing the Dialog
 
