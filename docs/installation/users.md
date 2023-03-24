@@ -289,4 +289,4 @@ the **Launch** button.
 If configured correctly, a welcome window should appear, and you should be able
 to launch your sample application!
 
-**Congratulations!** You're not ready for development in the DWCJ!
+**Congratulations!** You're now ready for development in the DWCJ!
