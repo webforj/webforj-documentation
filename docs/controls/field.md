@@ -1,6 +1,6 @@
 ---
-sidebar_position: 150
-title: Text Box
+sidebar_position: 27
+title: Field
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
@@ -12,7 +12,7 @@ import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 
 ### Labeling
 
-The text box control can be easily labeled without the needing to create an extra label control using the `setAttribute()` method and passing the desired label as a string, as shown below: <br/>
+The Field control can be easily labeled without the needing to create an extra label control using the `setAttribute()` method and passing the desired label as a string, as shown below: <br/>
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textboxdemos.TextBoxLabel' 
@@ -42,7 +42,7 @@ height = '125px'
 
 ### Spellcheck
 
-The text box can also be configured with spellchecking to help the user improve their input. Use the `setAttribute()` method to do this:
+The Field can also be configured with spellchecking to help the user improve their input. Use the `setAttribute()` method to do this:
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textboxdemos.TextBoxSpellcheck' 
@@ -57,8 +57,8 @@ height = '125px'
 
 ### Expanses
 
-DWCJ's text box comes with 5 expanses for quick styling without the use of CSS. Expanses are supported by use of a built-in enum class.
-Below are the various expanses supported for the text box control: <br/>
+DWCJ's Field comes with 5 expanses for quick styling without the use of CSS. Expanses are supported by use of a built-in enum class.
+Below are the various expanses supported for the Field control: <br/>
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textboxdemos.TextBoxExpanses' 
@@ -69,6 +69,6 @@ javaHighlight='{16,19,22,25,28}'
 height = '125px'
 />
 
-|Text Box Expanses|
+|Field Expanses|
 |-|
-|<ul><li>```TextBox.Expanse.XSMALL```</li><li>```TextBox.Expanse.SMALL```</li><li>```TextBox.Expanse.MEDIUM```</li><li>```TextBox.Expanse.LARGE```</li><li>```TextBox.Expanse.XLARGE```</li></ul>|
+|<ul><li>```Field.Expanse.XSMALL```</li><li>```Field.Expanse.SMALL```</li><li>```Field.Expanse.MEDIUM```</li><li>```Field.Expanse.LARGE```</li><li>```Field.Expanse.XLARGE```</li></ul>|

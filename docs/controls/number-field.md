@@ -1,6 +1,6 @@
 ---
 sidebar_position: 70
-title: Numeric Box
+title: Number Field
 ---
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 
@@ -11,7 +11,7 @@ import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 
 ### Labeling
 
-Labels can be easily added above the control without the need to create a separate Label component above the control. Use the `setAttribute()` function to create a label. The attribute to be changed is `label`, and the value should be the desired label text.
+Labels can be easily added above the Number Field without the need to create a separate Label component above the control. Use the `setAttribute()` function to create a label. The attribute to be changed is `label`, and the value should be the desired label text.
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.numericboxdemos.NumericboxLabel' 
@@ -119,8 +119,8 @@ In order to enforce certain ruled on numeric input, masking has been implemented
 
 ### Expanse
 
-DWCJ Numeric Box components come with 5 expanses for quick styling without the use of CSS.
-Below are the various expanses supported for the numeric box control: <br/>
+DWCJ Number Field components come with 5 expanses for quick styling without the use of CSS.
+Below are the various expanses supported for the Number Field control: <br/>
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.numericboxdemos.NumericboxExpanses' 
@@ -133,6 +133,6 @@ height = '200px'
 
 <br/>
 
-|Numeric Box Expanses|
+|Number Field Expanses|
 |-|
-|<ul><li>```NumericBox.Expanse.XSMALL```</li><li>```NumericBox.Expanse.SMALL```</li><li>```NumericBox.Expanse.MEDIUM```</li><li>```NumericBox.Expanse.LARGE```</li><li>```NumericBox.Expanse.XLARGE```</li></ul>|
+|<ul><li>```NumberField.Expanse.XSMALL```</li><li>```NumberField.Expanse.SMALL```</li><li>```NumberField.Expanse.MEDIUM```</li><li>```NumberField.Expanse.LARGE```</li><li>```NumberField.Expanse.XLARGE```</li></ul>|

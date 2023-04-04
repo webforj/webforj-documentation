@@ -1,6 +1,6 @@
 ---
-sidebar_position: 120 
-title: String Edit Box
+sidebar_position: 145 
+title: Text Field
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
@@ -13,7 +13,7 @@ import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 ### Labeling
 
 
-The string edit control can be easily labeled without the needing to create an extra label control using the `setAttribute()` method and passing the desired label as a string, as shown below: <br/>
+The text fieldtrol can be easily labeled without the needing to create an extra label control using the `setAttribute()` method and passing the desired label as a string, as shown below: <br/>
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.stringeditdemos.StringEditLabelDemo' 
@@ -28,7 +28,7 @@ height = '125px'
 
 ### Mask
 
-The DWCJ's string edit control supports masking - the following table describes the various masking behaviors.
+The DWCJ's text fieldtrol supports masking - the following table describes the various masking behaviors.
 
 <table>
 <thead>
@@ -96,8 +96,8 @@ height = '125px'
 
 ### Expanses
 
-Additionally, the string edit box come with 5 expanses for quick styling without the use of CSS. Expanses are supported by use of a built-in enum class.
-Below are the various expanses supported for the string edit box control: <br/>
+Additionally, the text field come with 5 expanses for quick styling without the use of CSS. Expanses are supported by use of a built-in enum class.
+Below are the various expanses supported for the text field control: <br/>
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.stringeditdemos.StringEditExpanse' 
@@ -110,7 +110,7 @@ height = '125px'
 
 <br/>
 
-|String Edit Box Expanses|
+|Text field Expanses|
 |-|
-|<ul><li>```StringEditBox.Expanse.XSMALL```</li><li>```StringEditBox.Expanse.SMALL```</li><li>```StringEditBox.Expanse.MEDIUM```</li><li>```StringEditBox.Expanse.LARGE```</li><li>```StringEditBox.Expanse.XLARGE```</li></ul>|
+|<ul><li>```TextField.Expanse.XSMALL```</li><li>```TextField.Expanse.SMALL```</li><li>```TextField.Expanse.MEDIUM```</li><li>```TextField.Expanse.LARGE```</li><li>```TextField.Expanse.XLARGE```</li></ul>|
 
