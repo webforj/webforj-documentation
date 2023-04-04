@@ -49,13 +49,6 @@ function CodeToggleButton({ collapse, setCollapse }){
       <img src={test1} className="icon-tabler-arrow-bar-up" />
       :
       <img src={test2} className="icon-tabler-arrow-bar-up"/>
-      // <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-bar-up" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="gray" fill="none" strokeLinecap="round" strokeLinejoin="round">
-      //   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      //   <path d="M12 4l0 10"></path>
-      //   <path d="M12 4l4 4"></path>
-      //   <path d="M12 4l-4 4"></path>
-      //   <path d="M4 20l16 0"></path>
-      // </svg>
       }
      </button>
     </div>
@@ -69,9 +62,7 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
   const [javaCollapse, setJavaCollapse] = useState("");
   const [javaExpand, setJavaExpand] = useState("");
   const [cssCode, setCssCode] = useState("");
-  const [collapsed, setCollapsed] = useState(true);
-
-  console.log(collapsedJ)
+  const [collapsed, setCollapsed] = useState(false);
 
 	const mainStyles = css`
 		display: flex;
@@ -137,8 +128,6 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
       <iframe
         loading="lazy" 
         src={path}
-        // src={path+'?data-app-theme=\'light\''}
-        // data-app-theme='light'
         css={iframeStyles}>
       </iframe>
       <Details css={detailsStyles} summary={<summary>Show Code</summary>}>
@@ -159,7 +148,7 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
               metastring={javaHighlight}
               >
               {collapsed 
-              ? collapsedJ
+              ? javaCollapse
               : javaExpand
               }
             </CodeBlock>
@@ -184,7 +173,7 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
                 metastring={javaHighlight}
                 >
                 {collapsed 
-                ? collapsedJ
+                ? javaCollapse
                 : javaExpand
                 }
               </CodeBlock>
