@@ -6,6 +6,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Details from '@theme/Details';
 import CodeBlock from '@theme/CodeBlock';
+import test1 from '../../../static/img/fold.png';
+import test2 from '../../../static/img/expand.png';
 
 function CodeToggleButton({ collapse, setCollapse }){
 
@@ -13,33 +15,25 @@ function CodeToggleButton({ collapse, setCollapse }){
     /* transition: all var(--ifm-transition-fast) ease; */
     display: flex;
     justify-content: end;
-    margin-bottom: -8px;
+    /* margin-bottom: -85px; */
+    margin-bottom: -30px;
+    background-color: transparent;
     `
   
   const buttonStyles = css`
-  opacity: 0;
-
     position: relative;
     cursor: pointer;
     z-index: 10;
     height: 35px;
     width: 35px;
-    border-radius: 5px;
-    border: 1px gray;
+    border: none;
     background-color: none;
     justify-self: flex-end;
-    margin-right: 83px;
+    /* margin-right: 83px; */
+    margin-right: 5px;
     margin-bottom: -50px;
-
-    .icon-tabler-arrow-bar-down{
-      opacity: ${collapse ? 1 : 0}
-
-    }
-
-    .icon-tabler-arrow-bar-up{
-      opacity: ${collapse ? 0 : 1}
-    }
-    
+    background-color: transparent;
+  
   `
   
   return(
@@ -48,26 +42,20 @@ function CodeToggleButton({ collapse, setCollapse }){
       css={buttonStyles}
       onClick={()=>{
         setCollapse(!collapse);
-        console.log(collapse);
       }}
      >
       {collapse
       ?
-      <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-bar-down" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="lightgray" fill="none" strokeLinecap="round" strokeLinejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-        <path d="M12 20l0 -10"></path>
-        <path d="M12 20l4 -4"></path>
-        <path d="M12 20l-4 -4"></path>
-        <path d="M4 4l16 0"></path>
-      </svg>
+      <img src={test1} className="icon-tabler-arrow-bar-up" />
       :
-      <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-bar-up" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="lightgray" fill="none" strokeLinecap="round" strokeLinejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-        <path d="M12 4l0 10"></path>
-        <path d="M12 4l4 4"></path>
-        <path d="M12 4l-4 4"></path>
-        <path d="M4 20l16 0"></path>
-      </svg>
+      <img src={test2} className="icon-tabler-arrow-bar-up"/>
+      // <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-bar-up" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="gray" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      //   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      //   <path d="M12 4l0 10"></path>
+      //   <path d="M12 4l4 4"></path>
+      //   <path d="M12 4l-4 4"></path>
+      //   <path d="M4 20l16 0"></path>
+      // </svg>
       }
      </button>
     </div>
@@ -76,12 +64,14 @@ function CodeToggleButton({ collapse, setCollapse }){
 
 
 
-export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighlight, height }) {
+export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighlight, height, collapsedJ }) {
 
   const [javaCollapse, setJavaCollapse] = useState("");
   const [javaExpand, setJavaExpand] = useState("");
   const [cssCode, setCssCode] = useState("");
   const [collapsed, setCollapsed] = useState(true);
+
+  console.log(collapsedJ)
 
 	const mainStyles = css`
 		display: flex;
@@ -152,6 +142,13 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
         css={iframeStyles}>
       </iframe>
       <Details css={detailsStyles} summary={<summary>Show Code</summary>}>
+      {javaC && javaE
+      ?
+      <CodeToggleButton
+      collapse={collapsed}
+      setCollapse={setCollapsed}
+      />
+      : null}
       {cssURL ? 
         <Tabs>
           <TabItem value='Java' label='Java' default>
@@ -162,8 +159,8 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
               metastring={javaHighlight}
               >
               {collapsed 
-              ? javaExpand
-              : javaCollapse
+              ? collapsedJ
+              : javaExpand
               }
             </CodeBlock>
           </TabItem>
@@ -180,13 +177,6 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
           :
         <Tabs>
           <TabItem value='Java' label='Java' default>
-
-          {/* <CodeToggleButton
-          collapse={collapsed}
-          setCollapse={setCollapsed}
-          hover={hover}
-          /> */}
-            
             <CodeBlock
                 className="codeDemoBlock"
                 language="java"
@@ -194,8 +184,8 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
                 metastring={javaHighlight}
                 >
                 {collapsed 
-                ? javaExpand
-                : javaCollapse
+                ? collapsedJ
+                : javaExpand
                 }
               </CodeBlock>
           </TabItem>
