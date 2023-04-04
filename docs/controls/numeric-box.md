@@ -16,6 +16,7 @@ Labels can be easily added above the control without the need to create a separa
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.numericboxdemos.NumericboxLabel' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/numericboxdemos/NumericboxLabel.java'
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/numericbox/Label.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/numericboxstyles/label_styles.css' 
 javaHighlight='{22}'
 height = '150px'
@@ -30,6 +31,7 @@ It is also possible to configure text that appears in the input when it has no v
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.numericboxdemos.NumericboxPlaceholder' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/numericboxdemos/NumericboxPlaceholder.java'
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/numericbox/Placeholder.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/numericboxstyles/placeholder_styles.css' 
 javaHighlight='{22}'
 height = '150px'
@@ -123,6 +125,7 @@ Below are the various expanses supported for the numeric box control: <br/>
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.numericboxdemos.NumericboxExpanses' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/numericboxdemos/NumericboxExpanses.java'
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/numericbox/Expanse.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/numericboxstyles/expanse_styles.css' 
 javaHighlight='{22,26,30,34,38}'
 height = '200px'

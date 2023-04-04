@@ -17,6 +17,7 @@ By default when created, the progress bar will display the percentage complete i
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.progressbardemos.ProgressbarPlaceholders' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/progressbardemos/ProgressbarPlaceholders.java'
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/progressbar/Placeholders.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/progressbarstyles/placeholder_styles.css' 
 javaHighlight='{25}'
 height = '100px'
@@ -31,6 +32,7 @@ The DWCJ's progress bar allows the developer to chose the direction in which the
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.progressbardemos.ProgressbarOrientation' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/progressbardemos/ProgressbarOrientation.java'
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/progressbar/Orientation.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/progressbarstyles/orientation_styles.css' 
 javaHighlight='{26}'
 height = '435px'
@@ -45,6 +47,7 @@ The progress bar in the DWCJ allows for indeterminate display, displaying an ani
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.progressbardemos.ProgressbarIndeterminate' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/progressbardemos/ProgressbarIndeterminate.java'
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/progressbar/Indeterminate.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/progressbarstyles/indeterminate_styles.css' 
 javaHighlight='{21}'
 height = '100px'
@@ -59,6 +62,7 @@ The progress bar can has minimum and maximum values that can be set, which will 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.progressbardemos.ProgressbarMinMax' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/progressbardemos/ProgressbarMinMax.java'
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/progressbar/MinMax.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/progressbarstyles/minmax_styles.css' 
 javaHighlight='{25-26}'
 height = '120px'
@@ -74,6 +78,7 @@ Shown below are progress bars with each of the supported Themes applied: <br/>
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.progressbardemos.ProgressbarThemes' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/progressbardemos/ProgressbarThemes.java'
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/progressbar/Themes.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/progressbarstyles/theme_styles.css' 
 javaHighlight='{25,30,35,40,45,50}'
 height = '300px'
