@@ -35,6 +35,10 @@ function CodeToggleButton({ collapse, setCollapse }){
     background-color: transparent;
   
   `
+
+  const iconStyles = css`
+      filter: invert(var(--inversion-percentage));
+  `
   
   return(
     <div css={buttonWrapperStyles}>
@@ -46,9 +50,9 @@ function CodeToggleButton({ collapse, setCollapse }){
      >
       {collapse
       ?
-      <img src={test1} className="icon-tabler-arrow-bar-up" />
+      <img css={iconStyles} src={test1} className="icon-tabler-arrow-bar-up" />
       :
-      <img src={test2} className="icon-tabler-arrow-bar-up"/>
+      <img css={iconStyles} src={test2} className="icon-tabler-arrow-bar-up"/>
       }
      </button>
     </div>
