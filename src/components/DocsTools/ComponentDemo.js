@@ -50,9 +50,9 @@ function CodeToggleButton({ collapse, setCollapse }){
      >
       {collapse
       ?
-      <img css={iconStyles} src={test1} className="icon-tabler-arrow-bar-up" />
-      :
       <img css={iconStyles} src={test2} className="icon-tabler-arrow-bar-up"/>
+      :
+      <img css={iconStyles} src={test1} className="icon-tabler-arrow-bar-down" />
       }
      </button>
     </div>
@@ -61,12 +61,12 @@ function CodeToggleButton({ collapse, setCollapse }){
 
 
 
-export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighlight, height, collapsedJ }) {
+export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighlight, height }) {
 
   const [javaCollapse, setJavaCollapse] = useState("");
   const [javaExpand, setJavaExpand] = useState("");
   const [cssCode, setCssCode] = useState("");
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
 
 	const mainStyles = css`
 		display: flex;

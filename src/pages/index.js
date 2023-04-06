@@ -90,6 +90,7 @@ function HomepageTitle(){
   const buttonStyles = css`
     display: flex;
     gap: 20px;
+    padding-top: 50px;
     @media screen and (max-width: 992px) {
       flex-direction: column;
     }
@@ -203,7 +204,7 @@ export default function Home() {
       description="Description will go into a meta tag in <head />">
         <div css={mainStyles}>
         <HomepageTitle />
-        <HomepageAnnoucement />
+        {/* <HomepageAnnoucement /> */}
         <HomepageSection />
         </div>
     </Layout>

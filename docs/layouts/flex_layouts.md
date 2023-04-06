@@ -1,0 +1,151 @@
+---
+sidebar_position: 10
+title: Flex Layout
+---
+
+The DWCJ provides developers with an efficient and intuitive way to layout their various applications and components - the Flex Layout. This toolset allows for items to be displayed either vertically or horizontally. 
+
+The Flex Layout comes with a builder class to help streamline and simplify the creation of a layout. **It is recommended to use the builder to quickly and efficiently configure your layout**, as will be shown in examples below, though methods for the Layout class are also available to customize various attributes once the object is created.
+
+:::tip
+The DWCJ's layout component follows the pattern of [CSS's flexbox layout](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). However, these tools are made to be utilized fully in Java, and do not require the application of CSS outside of the Java API methods provided.
+:::
+
+## Flex Layout Properties
+
+Flex layout's properties can be grouped into two categories: properties that apply to the items within a layout, and properties that apply to the layout itself. The flex layout, or the parent element, is a box/container that can contain one or more components. Everything inside a Flex Layout is called an item or child element. The Flex Layout provides some robust alignment capabilities, which can be achieved with the help of either container or item properties.
+
+### Container Properties
+
+Container properties will apply to all of the components within a control and not the layout itself. They will not affect the orientation or placement of the parent - only the child components within.
+
+#### Direction
+
+The Flex Layout will add controls next to one another according to the direction chosen by the developer - either horizontal or vertical. When using he builder, utilize either the `horizontal()`, `horizontalReverse()`, `vertical()` or `verticalReverse()` methods when calling the `create()` method on a `FlexLayout` object to configure this layout as the object is created.
+
+Alternatively, use the `setDirection()` method. The horizontal options are either `FlexDirection.ROW` (left to right) or `FlexDirection.ROW_REVERSE` (right to left), and the vertical options are either `FlexDirection.COLUMN` (top to bottom) or `FlexDirection.COLUMN_REVERSE` (bottom to top). This is done with the FlexLayout object, as opposed to the builder.
+
+The following demo will create an array of buttons, and use the Flex Layout builder to add these horizontally to an application.
+
+<!-- *Code Snippet* -->
+
+#### Positioning
+
+Controls that are added horizontally can also be positioned both horizontally and vertically. Use the `justify()`, `align()` and `contentAlign()` methods from the Flex Layout Builder to configure the positioning when creating a new Flex Layout.
+
+Alternatively, on the actual FlexLayout object you can use the `setJustifyContent()` method to position items horizontally, and the `setAlignment()` method to configure vertical positioning. To modify the area around controls along the cross axis (y-axis for horizontal layouts), use the `setAlignContent()` method.
+
+:::info
+The `setAlignment()` method controls how items will display along the cross axis as a whole within the container, and is effective for single-line layouts.
+
+The `setAlignContent()` methods controls the space around the cross axis, and will take effect only when a layout has multiple lines.  
+:::
+
+Modifying the previous example, we'll use the builder to apply positioning to the buttons we've added to our layout. 
+
+<!-- Add demo that shows how to do this -->
+<!-- *Code Snippet* -->
+
+#### Wrapping
+
+To further customize the Flex Layout control, you can specify the behavior of the flex layout when components that are added no longer fit within the display. To configure this using the builder, utilize the utilize the - `nowrap()` (default), `wrap()` and `wrapReverse()` methods to configure wrapping.
+
+Alternatively, if your layout already exists, use the `setWrap()` method to dictate how controls will behave once they are no longer able to fit on a single line.
+
+<!-- Add demo that shows how to do this -->
+<!-- *Code Snippet* -->
+
+#### Spacing
+
+In order to apply minimum spacing between items, you can set the gap property. It applies that spacing only between items not on the outer edges. 
+
+:::info
+The gap property's behavior can be thought of as a minimum distance between - this property will only take effect if it is the largest calculated
+space between items. If the space between items would otherwise be larger due to another calculated property, such as due to `setAlignContent(FlexContentAlignment.SPACE_BETWEEN)`, then the gap property will be ignored.
+:::
+
+<!-- Add demo that shows how to do this -->
+<!-- *Code Snippet* -->
+
+#### Flow
+
+Flex flow, which is a combination of both the direction and the wrap properties, can be set using the `setFlow()` method on a Flex Layout object. 
+
+:::info
+To configure this property when creating the layout, use the proper directional and wrap methods. For example, to create a column wrap flow,
+use the `.vertical().wrap()` combination.
+:::
+
+<!-- Add demo that shows how to do this -->
+*Code Snippet*
+
+<!-- BIG CODE SNIPPET SHOWING CONTAINER -->
+### Item Properties
+
+Item properties will not affect any child elements within the Flex Layout, but rather the actual Layout itself. This is useful for styling a single Flex Layout element that is a child of a larger Flex Layout element independent of styles applying to all children.
+
+#### Order
+
+The `ItemOrder` property determines how components are displayed within the Flex Layout, and when used on a Flex Layout will assign an item that layout's specific order number. This overrides the default "source order" that is built into each item (the order in which a component is added to its parent), and means that it will be shown before items with a higher order, and after items with a lower order.
+
+This property accepts a unitless integer value that specifies the relative order of the flex item within the container. The lower the value, the earlier the item appears in the order. For example, an item with an order value of 1 will appear before an item with an order value of 2.
+
+It's important to note that the order property only affects the visual order of the items within the container, not their actual position in the DOM. This means that screen readers and other assistive technologies will still read the items in the order they appear in the source code, not in the visual order.
+
+<!-- Add code demo -->
+
+
+#### Self Alignment
+
+Flex Layout's self-alignment refers to how a single Flex Layout object is aligned within its parent flex container along the cross axis, which is perpendicular to the main axis. The cross axis alignment is controlled by the `Alignment` property.
+
+The align-self property specifies the alignment of a single flex item along the cross axis, overriding the default alignment set by the `AlignContent` property in a Flex Layout object. This allows you to align individual Flex Layout objects differently from the others in the container.
+
+:::info
+Self alignment uses the same values as content alignment
+:::
+
+This property is especially useful when you need to align a specific item differently from the other items in the container.
+
+#### Flex Basis
+
+`Item Basis` is a property that is used in conjunction with Flex Layout's direction to set the initial size of a flex item before any remaining space is distributed.
+
+The `Item Basis` property specifies the default size of a flex item along the main axis, which is either horizontal (for a Row direction) or vertical (for a Column direction). This property sets the width or height of a flex item depending on the value of the flex-direction property.
+
+:::info
+By default, the `Item Basis` property is set to auto, which means that the size of the item is determined by its content. However, you can also set a specific size for the item using various units such as pixels (px), ems (em), percentages (%), or any other CSS length unit.
+:::
+
+For example, if you have a container with a total width of 500 pixels and three Flex Layout objects with `Item Basis` values of 100px, 200px, and auto respectively, the first two items will be assigned their specified sizes, while the third item will expand to fill the remaining space.
+
+#### Flex Grow / Shrink
+
+`Item Grow` and `Item Shrink` are two properties that work in conjunction with each other and with the `Item Basis` property to determine how flex items grow or shrink to fill the available space within a Flex Layout object.
+
+The `Item Grow` property specifies how much the flex item can grow relative to the other items in the container. It takes a unitless value that represents a proportion of the available space that should be allocated to the item. For example, if one item has a `Item Grow` value of 1 and another has a value of 2, the second item will grow twice as much as the first item.
+
+The `Item Shrink` property, on the other hand, specifies how much the flex item can shrink relative to the other items in the container. It also takes a unitless value that represents a proportion of the available space that should be allocated to the item. For example, if one item has a `Item Shrink` value of 1 and another has a value of 2, the second item will shrink twice as much as the first item.
+
+When a container has more space than is needed to accommodate its contents, flex items with a `Item Grow` value greater than 0 will expand to fill the available space. The amount of space each item gets is determined by the ratio of its `Item Grow` value to the total `Item Grow` value of all items in the container.
+
+Similarly, when a container does not have enough space to accommodate its contents, flex items with a `Item Shrink` value greater than 0 will shrink to fit the available space. The amount of space each item gives up is determined by the ratio of its `Item Shrink` value to the total `Item Shrink` value of all items in the container.
+
+<!-- HYYAN CODE SNIPPET SHOWING SINGLE ITEM CHANGES -->
+
+<!-- ## Simple Horizontal and Vertical Layouts
+
+For a quick and simple horizontal or vertical layout, follow the sections below to see how these are built, and how to configure them. These layouts will be constructed with the builder, as is recommended. -->
+
+<!-- ### Horizontal
+
+When creating this layout, we'll set it's `direction`, `contentAlign`, `justify`, and `wrap` properties to easily create a responsive container that can contain various components. 
+
+To begin, create a `FlexLayout` object, and set it equal to `Flexlayout.create()` method. To the create method, we'll chain the `horizontal()` method to configure this layout to be horizontal.
+
+<!-- Code snippet -->
+
+
+<!-- ### Vertical
+
+## Example Form --> -->
