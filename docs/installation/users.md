@@ -4,6 +4,10 @@ sidebar_position: 2
 
 # Users
 
+:::danger
+This process will substantially change with the upcoming BBj version 23.00 release.
+:::
+
 This section of the documentation will cover the steps required only for 
 users who wish to use the DWCJ for web and/or application development.
 This installation will not allow users to contribute to the DWCJ implementation
