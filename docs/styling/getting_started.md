@@ -148,4 +148,4 @@ If you're using VS code, an extension that provides syntax highlighting [can be 
 
 ## Control Theme and Expanse
 
-Many core DWCJ controls come packaged with various Themes and Expanses for easy styling. More about the specific control Themes and Expanses can be found in the [DWCJ Controls](/docs/category/dwcj-controls) section.
+Many core DWCJ controls come packaged with various Themes and Expanses for easy styling. More about the specific control Themes and Expanses can be found in the [DWCJ Components](/docs/category/dwcj-components) section.

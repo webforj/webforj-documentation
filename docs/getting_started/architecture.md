@@ -44,7 +44,7 @@ private void comboBoxSelect(ComboBoxSelectEvent ev){
 }
 ```
 
-In the first snippet, `ComboBox.getSelectedIndex()` being performed on the control forces a round trip back to the client, introducing a delay. In the second version, using the event's `ComboBoxSelectEvent.getSelectedIndex()` method retrieves the value that was delivered to the server as part of the original event.
+In the first snippet, `ComboBox.getSelectedIndex()` being performed on the component forces a round trip back to the client, introducing a delay. In the second version, using the event's `ComboBoxSelectEvent.getSelectedIndex()` method retrieves the value that was delivered to the server as part of the original event.
 
 ### Caching
 
