@@ -42,7 +42,7 @@ height = '125px'
 
 ### Spellcheck
 
-The Field can also be configured with spellchecking to help the user improve their input. Use the `setAttribute()` method to do this:
+The Field can also be configured with spell checking to help the user improve their input. Use the `setAttribute()` method to do this:
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textboxdemos.TextBoxSpellcheck' 
