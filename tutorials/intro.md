@@ -7,5 +7,5 @@ displayed_sidebar: tutorialSidebar
 
 Navigate through the tutorials section using the left sidebar to find
 video tutorials on an array of subjects, including installation demonstrations,
-control usage demos, project construction tutorials, and more.
+component usage demos, project construction tutorials, and more.
 

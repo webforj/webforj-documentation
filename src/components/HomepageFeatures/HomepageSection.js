@@ -14,7 +14,7 @@ const Sections = [
         title: 'Build your modern web applications with the DWCJ.',
         description: (
         <>
-            The DWCJ turns creating your enterprise application into a streamlined and efficient task with its comprehensive set of controls, components, features and functionalities.
+            The DWCJ turns creating your enterprise application into a streamlined and efficient task with its comprehensive set of components, features and functionalities.
             The DWCJ follows an "all-in-one" process, with UI and backend development all taking place within Java. With the DWCJ, you have access to a comprehensive set of components, 
             features, and tools necessary for building a robust, secure, and user-friendly application.   
         </>),
@@ -41,7 +41,7 @@ const Sections = [
         title: 'Figma design kit for streamlined design and implementation. ',
         description: (
         <>
-            Before implementation of your application even begins, the DWCJ's extensive array of controls can be easily used within Figma to help designers make sure the perfect tools is created.
+            Before implementation of your application even begins, the DWCJ's extensive array of components can be easily used within Figma to help designers make sure the perfect tools is created.
         </>),
         image: require('@site/static/img/design_kit.png').default,
         link: {

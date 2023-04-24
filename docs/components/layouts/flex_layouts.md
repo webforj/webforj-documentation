@@ -3,6 +3,9 @@ sidebar_position: 10
 title: Flex Layout
 ---
 
+import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+
+
 The DWCJ provides developers with an efficient and intuitive way to layout their various applications and components - the Flex Layout. This toolset allows for items to be displayed either vertically or horizontally. 
 
 The Flex Layout comes with a builder class to help streamline and simplify the creation of a layout. **It is recommended to use the builder to quickly and efficiently configure your layout**, as will be shown in examples below, though methods for the Layout class are also available to customize various attributes once the object is created.
@@ -17,43 +20,31 @@ Flex layout's properties can be grouped into two categories: properties that app
 
 ### Container Properties
 
-Container properties will apply to all of the components within a control and not the layout itself. They will not affect the orientation or placement of the parent - only the child components within.
+Container properties will apply to all of the components within a component and not the layout itself. They will not affect the orientation or placement of the parent - only the child components within.
 
 #### Direction
 
-The Flex Layout will add controls next to one another according to the direction chosen by the developer - either horizontal or vertical. When using he builder, utilize either the `horizontal()`, `horizontalReverse()`, `vertical()` or `verticalReverse()` methods when calling the `create()` method on a `FlexLayout` object to configure this layout as the object is created.
+The Flex Layout will add components next to one another according to the direction chosen by the developer - either horizontal or vertical. When using he builder, utilize either the `horizontal()`, `horizontalReverse()`, `vertical()` or `verticalReverse()` methods when calling the `create()` method on a `FlexLayout` object to configure this layout as the object is created.
 
 Alternatively, use the `setDirection()` method. The horizontal options are either `FlexDirection.ROW` (left to right) or `FlexDirection.ROW_REVERSE` (right to left), and the vertical options are either `FlexDirection.COLUMN` (top to bottom) or `FlexDirection.COLUMN_REVERSE` (bottom to top). This is done with the FlexLayout object, as opposed to the builder.
 
-The following demo will create an array of buttons, and use the Flex Layout builder to add these horizontally to an application.
-
-<!-- *Code Snippet* -->
-
 #### Positioning
 
-Controls that are added horizontally can also be positioned both horizontally and vertically. Use the `justify()`, `align()` and `contentAlign()` methods from the Flex Layout Builder to configure the positioning when creating a new Flex Layout.
+Components that are added horizontally can also be positioned both horizontally and vertically. Use the `justify()`, `align()` and `contentAlign()` methods from the Flex Layout Builder to configure the positioning when creating a new Flex Layout.
 
-Alternatively, on the actual FlexLayout object you can use the `setJustifyContent()` method to position items horizontally, and the `setAlignment()` method to configure vertical positioning. To modify the area around controls along the cross axis (y-axis for horizontal layouts), use the `setAlignContent()` method.
+Alternatively, on the actual FlexLayout object you can use the `setJustifyContent()` method to position items horizontally, and the `setAlignment()` method to configure vertical positioning. To modify the area around components along the cross axis (y-axis for horizontal layouts), use the `setAlignContent()` method.
 
 :::info
-The `setAlignment()` method controls how items will display along the cross axis as a whole within the container, and is effective for single-line layouts.
+The `setAlignment()` method components how items will display along the cross axis as a whole within the container, and is effective for single-line layouts.
 
-The `setAlignContent()` methods controls the space around the cross axis, and will take effect only when a layout has multiple lines.  
+The `setAlignContent()` methods components the space around the cross axis, and will take effect only when a layout has multiple lines.  
 :::
-
-Modifying the previous example, we'll use the builder to apply positioning to the buttons we've added to our layout. 
-
-<!-- Add demo that shows how to do this -->
-<!-- *Code Snippet* -->
 
 #### Wrapping
 
-To further customize the Flex Layout control, you can specify the behavior of the flex layout when components that are added no longer fit within the display. To configure this using the builder, utilize the utilize the - `nowrap()` (default), `wrap()` and `wrapReverse()` methods to configure wrapping.
+To further customize the Flex Layout component, you can specify the behavior of the flex layout when components that are added no longer fit within the display. To configure this using the builder, utilize the utilize the - `nowrap()` (default), `wrap()` and `wrapReverse()` methods to configure wrapping.
 
-Alternatively, if your layout already exists, use the `setWrap()` method to dictate how controls will behave once they are no longer able to fit on a single line.
-
-<!-- Add demo that shows how to do this -->
-<!-- *Code Snippet* -->
+Alternatively, if your layout already exists, use the `setWrap()` method to dictate how components will behave once they are no longer able to fit on a single line.
 
 #### Spacing
 
@@ -64,9 +55,6 @@ The gap property's behavior can be thought of as a minimum distance between - th
 space between items. If the space between items would otherwise be larger due to another calculated property, such as due to `setAlignContent(FlexContentAlignment.SPACE_BETWEEN)`, then the gap property will be ignored.
 :::
 
-<!-- Add demo that shows how to do this -->
-<!-- *Code Snippet* -->
-
 #### Flow
 
 Flex flow, which is a combination of both the direction and the wrap properties, can be set using the `setFlow()` method on a Flex Layout object. 
@@ -76,8 +64,18 @@ To configure this property when creating the layout, use the proper directional 
 use the `.vertical().wrap()` combination.
 :::
 
-<!-- Add demo that shows how to do this -->
-*Code Snippet*
+### Container Builder
+
+The following demo allows you to build a container with the desired flex properties selected from the various menus. This tool can be used not only to create a visual example of the various methods, but also as a tool to create your own layouts with your desired properties. To use a layout you customize, simply copy the output code and add your desired elements for use in your program!
+
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.container.ContainerDemo' 
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/container/ContainerDemo.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/flexstyles/container_styles.css'
+height="600px"
+/>
+
+
 
 <!-- BIG CODE SNIPPET SHOWING CONTAINER -->
 ### Item Properties

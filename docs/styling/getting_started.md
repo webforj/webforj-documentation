@@ -50,7 +50,7 @@ Styling your DWCJ application can be accomplished in various ways, which include
 
 ### Using the `setStyle()` method
 
-DWCJ core controls will have access to the `setStyle()` method, which takes two strings: the desired style attribute to be changed, and the desired value. 
+Components which extend the `AbstractDwcComponent`, including those shipped with the engine, will have access to the `setStyle()` method, which takes two strings: the desired style attribute to be changed, and the desired value. 
 
 ```java
 Button exampleButton = new Button();
@@ -84,7 +84,7 @@ App.getPage().addInlineStyleSheet("context://css/styles.css");
 Similar to the App class's methods, the DWCJ contains annotations which allow for the use of external and local stylesheets as well. 
 
 :::caution
-These annotations are only available to classes which extend the `AbstractControl` class, as annotations are processed only when a class is attached to a panel. For classes in which this is not the case, use the previously mentioned `App` class's method.
+These annotations are only available to classes which extend the `AbstractComponent` class, as annotations are processed only when a class is attached to a panel. For classes in which this is not the case, use the previously mentioned `App` class's method.
 :::
 
 To annotate the injection of an external CSS file, use the `@StyleSheet()` annotation.
@@ -146,6 +146,6 @@ If you're using VS code, an extension that provides syntax highlighting [can be 
 :::
 
 
-## Control Theme and Expanse
+## Component Theme and Expanse
 
-Many core DWCJ controls come packaged with various Themes and Expanses for easy styling. More about the specific control Themes and Expanses can be found in the [DWCJ Components](/docs/category/components) section.
+Many core DWCJ components come packaged with various Themes and Expanses for easy styling. More about the specific component Themes and Expanses can be found in the [DWCJ Components](/docs/category/components) section.

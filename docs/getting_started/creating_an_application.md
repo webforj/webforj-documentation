@@ -39,12 +39,12 @@ where the instructions for the execution of your application will be contained.
 
 ```java
 import org.dwcj.App;
-import org.dwcj.exceptions.DwcException;
+import org.dwcj.exceptions.DwcjException;
 
 public class ExampleClass extends App{
 
     @Override
-    public void run() throws DwcException { 
+    public void run() throws DwcjException { 
 
     }
 }
@@ -54,23 +54,23 @@ Finally, in most instances, within the ```run()``` method or in another function
 the run method, an ```AppPanel``` will need to be created as a container for the contents
 of the application or webpage.
 
-To this panel, you can add the various controls that come with the DWCJ, or custom
-controls and components, elements, etc. In the example below, the AppPanel will be created
+To this panel, you can add the various components that come with the DWCJ, or custom
+components, elements, etc. In the example below, the AppPanel will be created
 and a button will be added to the panel.
 
 ```java
 import org.dwcj.App;
 import org.dwcj.exceptions.DwcException;
-import org.dwcj.controls.panels.AppPanel;
+import org.dwcj.component.window.Frame;
 import org.dwcj.controls.button.Button;
 
 public class ExampleClass extends App{
 
     @Override
     public void run() throws DwcException { 
-        AppPanel panel = new AppPanel();
+        Frame page = new Frame();
         Button myButton = new Button();
-        panel.add(myButton);
+        page.add(myButton);
     }
 }
 ```

@@ -11,7 +11,7 @@ const FeatureList = [
     description: (
       <>
         View extensive documentation on setting up and using the DWCJ, as well 
-        as its various components, controls, and features. 
+        as its various components and features. 
       </>
     ),
   },
@@ -33,7 +33,7 @@ const FeatureList = [
     description: (
       <>
         View tutorials created to walk you through various aspects of the DWCJ,
-        including installation, control demonstrations, and appliication/web development .
+        including installation, component demonstrations, and appliication/web development .
       </>
     ),
   },
