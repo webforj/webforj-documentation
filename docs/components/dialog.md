@@ -15,14 +15,14 @@ The DWCJ's dialog component is built to allow a developer to quickly and easily 
 The component is built with three sections, each of which are `Div` components: the header, the content, and the footer.
 
 To show the dialog, call the `show()` method on the object itself. This 
-<!-- 
+
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.dialogdemos.DialogSections' 
 showCSS='true'
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/listboxdemos/ListboxLabel.java'
 javaHighlight='{47-50}'
 height = '225px'
-/> -->
+/>
 
 <details>
 
@@ -53,6 +53,7 @@ height = '225px'
 ```
 
 </details>
+
 
 ### Backdrop and Blur
 
