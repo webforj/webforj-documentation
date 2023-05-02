@@ -63,7 +63,7 @@ Below are the various expanses supported for the text area component: <br/>
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textareademos.TextAreaExpanse' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/textareademos/TextAreaExpanse.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textarea/Expanses.txt'
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textarea/Expanse.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textareastyles/text_area_styles.css' 
 javaHighlight='{19,23,27,31,35}'
 height = '200px'
