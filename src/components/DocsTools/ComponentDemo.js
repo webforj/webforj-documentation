@@ -12,10 +12,8 @@ import test2 from '../../../static/img/expand.png';
 function CodeToggleButton({ collapse, setCollapse }){
 
   const buttonWrapperStyles = css`
-    /* transition: all var(--ifm-transition-fast) ease; */
     display: flex;
     justify-content: end;
-    /* margin-bottom: -85px; */
     margin-bottom: -30px;
     background-color: transparent;
     `
@@ -29,7 +27,6 @@ function CodeToggleButton({ collapse, setCollapse }){
     border: none;
     background-color: none;
     justify-self: flex-end;
-    /* margin-right: 83px; */
     margin-right: 5px;
     margin-bottom: -50px;
     background-color: transparent;

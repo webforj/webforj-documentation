@@ -13,7 +13,7 @@ import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 ### Labeling
 
 
-The text fieldtrol can be easily labeled without the needing to create an extra label component using the `setAttribute()` method and passing the desired label as a string, as shown below: <br/>
+The text field can be easily labeled without the needing to create an extra label component using the `setAttribute()` method and passing the desired label as a string, as shown below: <br/>
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.stringeditdemos.StringEditLabelDemo' 
@@ -28,7 +28,7 @@ height = '125px'
 
 ### Mask
 
-The DWCJ's text fieldtrol supports masking - the following table describes the various masking behaviors.
+The DWCJ's text field supports masking - the following table describes the various masking behaviors.
 
 <table>
 <thead>

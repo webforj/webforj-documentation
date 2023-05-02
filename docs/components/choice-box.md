@@ -59,7 +59,7 @@ javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/ja
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/combobox/Expanse.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/expanse_styles.css' 
 javaHighlight='{21,25,29,33,37}'
-height="120px"
+height="150px"
 />
 
 <br/>

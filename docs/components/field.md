@@ -66,7 +66,7 @@ javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/ja
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textbox/Expanses.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textboxstyles/text_box_styles.css' 
 javaHighlight='{16,19,22,25,28}'
-height = '125px'
+height = '160px'
 />
 
 |Field Expanses|
