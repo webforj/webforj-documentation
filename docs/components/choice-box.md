@@ -4,6 +4,7 @@ title: Choice Box
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 
 <div style={{width: "100%" , display: "flex", justifyContent: "flex-end", marginBottom: "-50px"}}>
 <p style={{color: "gray"}} >API:&nbsp;</p>
@@ -68,3 +69,5 @@ Listed below are the current supported expanse options for the choice box compon
 |ChoiceBox Expanses|
 |-|
 |<ul><li>```ChoiceBox.Expanse.XSMALL```</li><li>```ChoiceBox.Expanse.SMALL```</li><li>```ChoiceBox.Expanse.MEDIUM```</li><li>```ChoiceBox.Expanse.LARGE```</li><li>```ChoiceBox.Expanse.XLARGE```</li></ul>|
+
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').ChoiceBox} />

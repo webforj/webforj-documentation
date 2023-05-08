@@ -49,3 +49,12 @@
   margin-left: 30px;
   margin-right: 30px;
 }
+
+.custom--table{
+  display: inline-table;
+  width: 100% !important;
+}
+
+.custom--table td{
+  padding: 5px 7px 5px 8px;
+}

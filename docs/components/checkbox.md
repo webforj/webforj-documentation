@@ -4,6 +4,7 @@ title: Checkbox
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 
 <div style={{width: "100%" , display: "flex", justifyContent: "flex-end", marginBottom: "-50px"}}>
 <p style={{color: "gray"}} >API:&nbsp;</p>
@@ -56,3 +57,5 @@ Listed below are the current supported expanse options for the checkbox componen
 |Checkbox Expanses|
 |-|
 |<ul><li>```CheckBox.Expanse.XSMALL```</li><li>```CheckBox.Expanse.SMALL```</li><li>```CheckBox.Expanse.MEDIUM```</li><li>```CheckBox.Expanse.LARGE```</li><li>```CheckBox.Expanse.XLARGE```</li></ul>|
+
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Checkbox} />

@@ -4,6 +4,8 @@ title: Combo box
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
+
 
 <div style={{width: "100%" , display: "flex", justifyContent: "flex-end", marginBottom: "-50px"}}>
 <p style={{color: "gray"}} >API:&nbsp;</p>
@@ -72,3 +74,5 @@ height = '350px'
 |Combo Box Expanses|
 |-|
 |<ul><li>```ComboBox.Expanse.XSMALL```</li><li>```ComboBox.Expanse.SMALL```</li><li>```ComboBox.Expanse.MEDIUM```</li><li>```ComboBox.Expanse.LARGE```</li><li>```ComboBox.Expanse.XLARGE```</li></ul>|
+
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').ComboBox} />

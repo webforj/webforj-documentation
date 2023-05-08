@@ -3,6 +3,8 @@ sidebar_position: 70
 title: Number Field
 ---
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
+
 
 <div style={{width: "100%" , display: "flex", justifyContent: "flex-end", marginBottom: "-50px"}}>
 <p style={{color: "gray"}} >API:&nbsp;</p>
@@ -136,3 +138,5 @@ height = '200px'
 |Number Field Expanses|
 |-|
 |<ul><li>```NumberField.Expanse.XSMALL```</li><li>```NumberField.Expanse.SMALL```</li><li>```NumberField.Expanse.MEDIUM```</li><li>```NumberField.Expanse.LARGE```</li><li>```NumberField.Expanse.XLARGE```</li></ul>|
+
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').NumberField} />

@@ -28,17 +28,31 @@ The Flex Layout will add components next to one another according to the directi
 
 Alternatively, use the `setDirection()` method. The horizontal options are either `FlexDirection.ROW` (left to right) or `FlexDirection.ROW_REVERSE` (right to left), and the vertical options are either `FlexDirection.COLUMN` (top to bottom) or `FlexDirection.COLUMN_REVERSE` (bottom to top). This is done with the FlexLayout object, as opposed to the builder.
 
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.container.Direction' 
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/container/Direction.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/flexstyles/container_styles.css'
+height="275px"
+/>
+
 #### Positioning
 
 Components that are added horizontally can also be positioned both horizontally and vertically. Use the `justify()`, `align()` and `contentAlign()` methods from the Flex Layout Builder to configure the positioning when creating a new Flex Layout.
 
 Alternatively, on the actual FlexLayout object you can use the `setJustifyContent()` method to position items horizontally, and the `setAlignment()` method to configure vertical positioning. To modify the area around components along the cross axis (y-axis for horizontal layouts), use the `setAlignContent()` method.
 
-:::info
+:::tip
 The `setAlignment()` method components how items will display along the cross axis as a whole within the container, and is effective for single-line layouts.
 
 The `setAlignContent()` methods components the space around the cross axis, and will take effect only when a layout has multiple lines.  
 :::
+
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.container.Positioning' 
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/container/Positioning.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/flexstyles/container_styles.css'
+height="275px"
+/>
 
 #### Wrapping
 
@@ -50,10 +64,9 @@ Alternatively, if your layout already exists, use the `setWrap()` method to dict
 
 In order to apply minimum spacing between items, you can set the gap property. It applies that spacing only between items not on the outer edges. 
 
-:::info
+
 The gap property's behavior can be thought of as a minimum distance between - this property will only take effect if it is the largest calculated
 space between items. If the space between items would otherwise be larger due to another calculated property, such as due to `setAlignContent(FlexContentAlignment.SPACE_BETWEEN)`, then the gap property will be ignored.
-:::
 
 #### Flow
 
@@ -88,7 +101,9 @@ The `ItemOrder` property determines how components are displayed within the Flex
 
 This property accepts a unitless integer value that specifies the relative order of the flex item within the container. The lower the value, the earlier the item appears in the order. For example, an item with an order value of 1 will appear before an item with an order value of 2.
 
+:::caution
 It's important to note that the order property only affects the visual order of the items within the container, not their actual position in the DOM. This means that screen readers and other assistive technologies will still read the items in the order they appear in the source code, not in the visual order.
+:::
 
 <!-- Add code demo -->
 

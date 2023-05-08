@@ -4,6 +4,8 @@ title: Progress Bar
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
+
 
 <div style={{width: "100%" , display: "flex", justifyContent: "flex-end", marginBottom: "-50px"}}>
 <p style={{color: "gray"}} >API:&nbsp;</p>
@@ -87,3 +89,5 @@ height = '300px'
 |Progress Bar Themes|
 |-|
 |<ul><li>```ProgressBar.Theme.DEFAULT```</li><li>```ProgressBar.Theme.DANGER```</li><li>```ProgressBar.Theme.GRAY```</li><li>```ProgressBar.Theme.INFO```</li><li>```ProgressBar.Theme.SUCCESS```</li><li>```ProgressBar.Theme.WARNING```</li></ul>|
+
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').ProgressBar} />

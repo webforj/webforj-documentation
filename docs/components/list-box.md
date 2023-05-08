@@ -3,6 +3,8 @@ sidebar_position: 60
 title: List Box
 ---
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
+
 
 <div style={{width: "100%" , display: "flex", justifyContent: "flex-end", marginBottom: "-50px"}}>
 <p style={{color: "gray"}} >API:&nbsp;</p>
@@ -60,3 +62,5 @@ There are five list box expanses that are supported in the DWCJ which allow for 
 |List Box Expanses|
 |-|
 |<ul><li>```ListBox.Expanse.XSMALL```</li><li>```ListBox.Expanse.SMALL```</li><li>```ListBox.Expanse.MEDIUM```</li><li>```ListBox.Expanse.LARGE```</li><li>```ListBox.Expanse.XLARGE```</li></ul>|
+
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').ListBox} />

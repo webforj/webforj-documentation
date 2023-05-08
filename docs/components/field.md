@@ -4,6 +4,8 @@ title: Field
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
+
 
 <div style={{width: "100%" , display: "flex", justifyContent: "flex-end", marginBottom: "-50px"}}>
 <p style={{color: "gray"}} >API:&nbsp;</p>
@@ -72,3 +74,5 @@ height = '160px'
 |Field Expanses|
 |-|
 |<ul><li>```Field.Expanse.XSMALL```</li><li>```Field.Expanse.SMALL```</li><li>```Field.Expanse.MEDIUM```</li><li>```Field.Expanse.LARGE```</li><li>```Field.Expanse.XLARGE```</li></ul>|
+
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Field} />

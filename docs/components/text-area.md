@@ -4,6 +4,8 @@ title: Text Area
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
+
 
 <div style={{width: "100%" , display: "flex", justifyContent: "flex-end", marginBottom: "-50px"}}>
 <p style={{color: "gray"}} >API:&nbsp;</p>
@@ -72,3 +74,5 @@ height = '200px'
 |Text Area Expanses|
 |-|
 |<ul><li>```TextArea.Expanse.XSMALL```</li><li>```TextArea.Expanse.SMALL```</li><li>```TextArea.Expanse.MEDIUM```</li><li>```TextArea.Expanse.LARGE```</li><li>```TextArea.Expanse.XLARGE```</li></ul>|
+
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').TextArea} />

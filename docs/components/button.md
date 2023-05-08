@@ -4,6 +4,9 @@ title: Button
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
+
+
 
 <div style={{width: "100%" , display: "flex", justifyContent: "flex-end", marginBottom: "-50px"}}>
 <p style={{color: "gray"}} >API:&nbsp;</p>
@@ -134,3 +137,5 @@ Listed below are the current supported vertical text alignments for the button c
 |Button Vertical Alignments|
 |-|
 |<ul><li>```Button.Expanse.TOP```</li><li>```Button.Expanse.CENTER```</li><li>```Button.Expanse.BOTTOM```</li></ul>|
+
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Button} />
