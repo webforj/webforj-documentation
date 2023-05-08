@@ -104,6 +104,39 @@ height = '350px'
 
 The dialog can be set to enter full screen mode. When full screen is enabled, the dialog cannot be moved or positioned. This mode can be manipulated with the breakpoint attribute of the dialog. The breakpoint is a media query which components when the dialog will automatically flip to full screen mode. When the query matches, the dialog changes to full screen - otherwise it is positioned.
 
+## Events
+
+The `Dialog` class provides methods to add and remove event listeners for the following events:
+
+- `DialogOpenEvent`
+- `DialogCloseEvent`
+
+To add an event listener, use the appropriate method:
+
+```java
+myDialog.addOpenListener( e -> {
+  //Executed when the event fires
+});
+```
+
+Additional syntactic sugar methods, or aliases, have been added to allow for alternative addition of events by using the on prefix followed by the event, such as:
+
+```java
+myDialog.onOpen( e -> {
+  //Executed when the event fires
+});
+```
+
+To remove an event listener, use the appropriate method:
+
+```java
+myDialog.removeOpenListener(listener);
+```
+
+:::info
+For a method to be removed via the appropriate removeListener method, the signature of the method must be saved.
+:::
+
 ## Parts and CSS Properties
 
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Dialog} />
