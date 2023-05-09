@@ -97,7 +97,7 @@ In addition to manual assignment of a dialog's X and Y position, it is possible 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.dialogdemos.DialogAlignments' 
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/dialog/Alignments.txt'
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/dialogdemos/DialogAlignments.java'
-height = '350px'
+height = '550px'
 />
 
 #### Full Screen and Breakpoints

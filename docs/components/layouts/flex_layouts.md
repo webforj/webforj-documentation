@@ -8,15 +8,45 @@ import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 
 The DWCJ provides developers with an efficient and intuitive way to layout their various applications and components - the Flex Layout. This toolset allows for items to be displayed either vertically or horizontally. 
 
-The Flex Layout comes with a builder class to help streamline and simplify the creation of a layout. **It is recommended to use the builder to quickly and efficiently configure your layout**, as will be shown in examples below, though methods for the Layout class are also available to customize various attributes once the object is created.
 
-:::tip
-The DWCJ's layout component follows the pattern of [CSS's flexbox layout](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). However, these tools are made to be utilized fully in Java, and do not require the application of CSS outside of the Java API methods provided.
-:::
+## Constructing a Flex Layout
+
+The FlexLayout class has four constructors:
+
+- `FlexLayout()`
+- `FlexLayout(AbstractComponent...)`
+- `FlexLayout(FlexDirection, AbstractComponent...)`
+- `FlexLayout(FlexLayoutBuilder, AbstractComponent...)`
+
+Of note, the Flex Layout comes with a builder class to help streamline and simplify the creation of a layout. **It is recommended to use the builder to quickly and efficiently configure your layout**, as will be shown in examples below, though methods for the Layout class are also available to customize various attributes once the object is created. 
+
+This builder follows a factory pattern, and is intended to allow for full customization of desired attributes of the layout to avoid needing to set individual attributes later on.
+
+It is also possible to use the default in conjunction with the various setter methods available. The following snippet shows how to utilize the various constructors available for the FlexLayout class:
+
+```java
+//Creates a default FlexLayout
+FlexLayout defaultLayout = new FlexLayout();
+
+//Creates a default FlexLayout which one or more existing components
+FlexLayout layoutWithComponent = new FlexLayout(myButton);
+
+//Creates a FlexLayout which one or more existing components and has a specified direction
+FlexLayout layoutWithDirection = new FlexLayout(FlexDirection.COLUMN, myButton);
+
+//Creates a FlexLayout using the various methods available in the FlexLayoutBuilder
+FlexLayout layoutFromBuilder = FlexLayout.create()
+.horizontal()
+.build();
+```
 
 ## Flex Layout Properties
 
 Flex layout's properties can be grouped into two categories: properties that apply to the items within a layout, and properties that apply to the layout itself. The flex layout, or the parent element, is a box/container that can contain one or more components. Everything inside a Flex Layout is called an item or child element. The Flex Layout provides some robust alignment capabilities, which can be achieved with the help of either container or item properties.
+
+:::tip
+The DWCJ's layout component follows the pattern of [CSS's flexbox layout](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). However, these tools are made to be utilized fully in Java, and do not require the application of CSS outside of the Java API methods provided.
+:::
 
 ### Container Properties
 
@@ -51,7 +81,7 @@ The `setAlignContent()` methods components the space around the cross axis, and 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.container.Positioning' 
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/container/Positioning.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/flexstyles/container_styles.css'
-height="275px"
+height="375px"
 />
 
 #### Wrapping
@@ -105,8 +135,11 @@ This property accepts a unitless integer value that specifies the relative order
 It's important to note that the order property only affects the visual order of the items within the container, not their actual position in the DOM. This means that screen readers and other assistive technologies will still read the items in the order they appear in the source code, not in the visual order.
 :::
 
-<!-- Add code demo -->
-
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.item.Order' 
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/item/Order.java'
+height="200px"
+/>
 
 #### Self Alignment
 
@@ -118,7 +151,13 @@ The align-self property specifies the alignment of a single flex item along the 
 Self alignment uses the same values as content alignment
 :::
 
-This property is especially useful when you need to align a specific item differently from the other items in the container.
+This property is especially useful when you need to align a specific item differently from the other items in the container. See the sample below for an example of aligning a single item:
+
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.item.SelfAlign' 
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/item/SelfAlign.java'
+height="200px"
+/>
 
 #### Flex Basis
 
@@ -144,21 +183,11 @@ When a container has more space than is needed to accommodate its contents, flex
 
 Similarly, when a container does not have enough space to accommodate its contents, flex items with a `Item Shrink` value greater than 0 will shrink to fit the available space. The amount of space each item gives up is determined by the ratio of its `Item Shrink` value to the total `Item Shrink` value of all items in the container.
 
-<!-- HYYAN CODE SNIPPET SHOWING SINGLE ITEM CHANGES -->
 
-<!-- ## Simple Horizontal and Vertical Layouts
+## Example Form
 
-For a quick and simple horizontal or vertical layout, follow the sections below to see how these are built, and how to configure them. These layouts will be constructed with the builder, as is recommended. -->
-
-<!-- ### Horizontal
-
-When creating this layout, we'll set it's `direction`, `contentAlign`, `justify`, and `wrap` properties to easily create a responsive container that can contain various components. 
-
-To begin, create a `FlexLayout` object, and set it equal to `Flexlayout.create()` method. To the create method, we'll chain the `horizontal()` method to configure this layout to be horizontal.
-
-<!-- Code snippet -->
-
-
-<!-- ### Vertical
-
-## Example Form --> -->
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.FlexDemo' 
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/FlexDemo.java'
+height="400px"
+/>
