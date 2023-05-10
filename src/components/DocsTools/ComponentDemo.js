@@ -88,6 +88,10 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
     margin-bottom: 0px;
     padding: 10px;
 
+    .tabs{
+      margin-top: 20px;
+    }
+
     summary{
       display: flex;
       width: 100%;
