@@ -6,6 +6,8 @@ title: App Layout
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import AppLayoutViewer from '@site/src/components/DocsTools/AppLayoutViewer';
+import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+
 
 <div style={{width: "100%" , display: "flex", justifyContent: "flex-end", marginBottom: "-50px"}}>
 <p style={{color: "gray"}} >API:&nbsp;</p>
@@ -36,123 +38,13 @@ Each part of the layout is a Div, which can contain any valid DWCJ control. For 
 
 The following code sample will result in an application with a collapsible sidebar that contains a logo and tabs for various content options and a header. The demo uses the bbj-icon-button web component to create a drawer toggle button. The button has the data-drawer-toggle attribute which instructs the BBjAppLayout to listen to click events coming from that component to toggle the drawer state.
 
-<AppLayoutViewer url='/demos/app-layout-demos/basis-layout.html' mobile='false' />
+<AppLayoutViewer url='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.applayout.AppLayoutDemo' mobile='false' />
 
-
-<details>
-    <summary>Show Code</summary> 
-
-
-<Tabs>
-<TabItem value='Java' label='Java' default>
-
-```java showLineNumbers
-public class AppLayoutDemo extends App{
-
-    Label contentLabel; 
-    
-    @Override
-    public void run() throws DwcAppInitializeException {
-        App.getPage().addInlineStyleSheet("context://css/apptemplatestyles.css");
-        
-        AppPanel panel = new AppPanel();
-        AppLayout demo = new AppLayout();
-        panel.add(demo);
-
-        //Header 
-        demo.getHeader().addClassName("layout__header")
-            .add(new Label("<html><bbj-icon-button name='menu-2' data-drawer-toggle><bbj-icon-button></html>"),
-            new Label("DWCJ Application")
-                .addClassName("layout__header")
-        );
-
-        //Drawer
-        Div drawer = demo.getDrawer();
-        drawer.addClassName("app-layout-drawer");
-
-        //Drawer's logo container and logo
-        drawer.add(new Div().addClassName("drawer__logo").add(
-            new Label("<html><img src='" + "https://i.ibb.co/1n4n1Nh/logo.png" + "'</img></html>")
-        ));
-
-        //Drawer's Menu
-        TabControl drawerMenu = new TabControl();
-        drawer.add(drawerMenu);
-        
-        //Setting drawer menu's attributes
-        drawerMenu.setAttribute("nobody","true");
-        drawerMenu.setAttribute("borderless","true");
-        drawerMenu.setAttribute("placement","left");
-
-        //Adding tabs to drawer menu
-        drawerMenu.add("<bbj-icon name='dashboard'></bbj-icon>      Dashboard")
-            .add("<bbj-icon name='shopping-cart'></bbj-icon>  Orders"   )
-            .add("<bbj-icon name='users'></bbj-icon>          Customers")
-            .add("<bbj-icon name='box'></bbj-icon>            Products" )
-            .add("<bbj-icon name='files'></bbj-icon>          Documents")
-            .add("<bbj-icon name='checklist'></bbj-icon>      Tasks"    )
-            .add("<bbj-icon name='chart-dots-2'></bbj-icon>   Analytics");
-        
-        drawerMenu.onSelect(this::onTabChange);
-
-        //Content
-        this.contentLabel = new Label();
-        demo.getContent().add(
-            new Label("<html><h1>Application Title</h1></html>"),
-            this.contentLabel
-        );
-    }
-    
-    private void onTabChange(TabSelectEvent ev){
-        String value = ev.getTitle().replaceAll("<[^>]*>","").trim();
-        contentLabel.setText("<html><p>Content for " + value + " goes here</p></html>");
-    }
-}
-```
-</TabItem>
-    
-<TabItem value='CSS' label='CSS'>
-
-```css
-body,html {overflow: hidden}
-
-.drawer__logo{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--bbj-space-m) 0;
-    margin-bottom: var(--bbj-space-m);
-    border-bottom: thin solid var(--bbj-color-default) !important;
-}
-
-.drawer__logo img {
-    max-width: 100px;
-    border-radius: 10px;
-}
-
-.layout__header {
-    display: flex;
-    align-items: center;
-    gap: var(--bbj-space-m);
-    padding: 0 var(--bbj-space-m);
-}
-
-
-.layout__header--title{
-    display: block;
-    font-size: 1.25em;
-    margin-top: 0.83em;
-    margin-bottom: 0.83em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-}
-
-```
-</TabItem>
-</Tabs>
-
-</details>
+<ComponentDemo 
+frame="hidden"
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutDemo.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_styles.css'
+/>
 
 ### Full-Width Navbars
 
@@ -166,6 +58,13 @@ myApp.setFooterOffscreen(false);
 ```
 
 <AppLayoutViewer url='/demos/app-layout-demos/full-header.html' mobile='false'/>
+
+
+<ComponentDemo 
+frame="hidden"
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutFullNavbar.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_styles.css'
+/>
 
 
 ### Multiple Toolbars

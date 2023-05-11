@@ -11,16 +11,15 @@ The DWCJ provides developers with an efficient and intuitive way to layout their
 
 ## Constructing a Flex Layout
 
-The FlexLayout class has four constructors:
+The FlexLayout class has three constructors and an additional construction utilizing a builder pattern:
 
 - `FlexLayout()`
 - `FlexLayout(AbstractComponent...)`
 - `FlexLayout(FlexDirection, AbstractComponent...)`
-- `FlexLayout(FlexLayoutBuilder, AbstractComponent...)`
 
 Of note, the Flex Layout comes with a builder class to help streamline and simplify the creation of a layout. **It is recommended to use the builder to quickly and efficiently configure your layout**, as will be shown in examples below, though methods for the Layout class are also available to customize various attributes once the object is created. 
 
-This builder follows a factory pattern, and is intended to allow for full customization of desired attributes of the layout to avoid needing to set individual attributes later on.
+This builder follows a builder pattern, and is intended to allow for full customization of desired attributes of the layout to avoid needing to set individual attributes later on.
 
 It is also possible to use the default in conjunction with the various setter methods available. The following snippet shows how to utilize the various constructors available for the FlexLayout class:
 
@@ -156,7 +155,7 @@ This property is especially useful when you need to align a specific item differ
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.item.SelfAlign' 
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/item/SelfAlign.java'
-height="200px"
+height="350px"
 />
 
 #### Flex Basis

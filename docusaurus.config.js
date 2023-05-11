@@ -84,6 +84,20 @@ const config = {
             docId: 'intro',
             position: 'left',
             label: 'Documentation',
+            activeBasePath: '/docs'
+          },
+          {
+            docId: 'intro',
+            position: 'left',
+            label: 'Getting Started',
+            to: '/docs/category/getting-started',
+            activeBasePath: '/docs/category/getting-started'
+          },
+          {
+            docId: 'intro',
+            position: 'left',
+            label: 'Components',
+            to: '/docs/category/components'
           },
           // {to: '/live_demo', label: 'Live Demo', position: 'left'},
           // {to: '/tutorials/intro', label: 'Tutorials', position: 'left'},

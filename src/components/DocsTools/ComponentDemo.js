@@ -58,7 +58,7 @@ function CodeToggleButton({ collapse, setCollapse }){
 
 
 
-export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighlight, height }) {
+export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighlight, height, frame }) {
 
   const [javaCollapse, setJavaCollapse] = useState("");
   const [javaExpand, setJavaExpand] = useState("");
@@ -68,10 +68,11 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
 	const mainStyles = css`
 		display: flex;
     flex-direction: column;
-    padding: 10px 15px 0 15px;
+    /* padding: 10px 15px 0 15px; */
     background-color: var(--code-display-color);
 		width: 100%;
     margin-bottom: 16px;
+    padding: ${frame == "hidden" ? "0 15px 0 15px;" : "10px 15px 0 15px;"};
     
     `
 
@@ -130,11 +131,14 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
 
   return (
     <div css={mainStyles}>
+      {frame != "hidden" ? 
       <iframe
         loading="lazy" 
         src={path}
         css={iframeStyles}>
       </iframe>
+      : null
+      }
       <Details css={detailsStyles} summary={<summary>Show Code</summary>}>
       {javaC && javaE
       ?
