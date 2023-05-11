@@ -10,7 +10,7 @@ import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 <b><a href="https://javadoc.io/static/org.dwcj/dwcj-engine/0.15.0/org/dwcj/controls/label/Label.html" style={{justifySelf: "flex-end"}}> Java </a></b>
 </div>
 
-The Label class is a Java class in the org.dwcj.component.label package. It is used to create a label object. Here's an example of how to create a Label object:
+The Label class is a Java class in the `org.dwcj.component.label` package. It is used to create a label object. Here's an example of how to create a Label object:
 
 ```java
 Label myLabel = new Label("Hello, world!");
