@@ -2,9 +2,7 @@
 sidebar_position: 1
 displayed_sidebar: documentationSidebar
 ---
-import ComponentCard from '@site/src/components/DocsTools/ComponentCard';
-import cardData from '@site/static/card_data.json'
-import image from '@site/static/img/component_images/button.png'
+
 
 # Overview
 

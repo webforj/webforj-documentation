@@ -1,14 +1,34 @@
 /**@jsx jsx */
 import React from 'react';
 import { jsx, css } from '@emotion/react';
+import Link from '@docusaurus/Link';
 
-export default function ComponentCard({ imagePath, title, description}) {
+export default function ComponentCard({ imagePath, title, description, link}) {
 
   const mainStyles = css`
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 250px;
     margin-top: 15px;
+    padding: 20px;
+    border: 1px solid var(--ifm-color-emphasis-200);
+    transition: all var(--ifm-transition-fast) ease;
+    transition-property: border,box-shadow;
+    border-radius: var(--ifm-card-border-radius);
+    text-decoration: none;
+    color: var(--ifm-font-color-base);
+
+    
+    
+    
+    &:hover{
+      border: 1px var(--ifm-color-primary) solid;
+      .bar{
+        background-color: var(--ifm-color-primary);
+      }
+      text-decoration: none;
+      color: var(--ifm-font-color-base);
+    } 
   `
 
   const imageStyles = css`
@@ -16,36 +36,34 @@ export default function ComponentCard({ imagePath, title, description}) {
     height: 150px;
     object-fit: contain;
     margin: 0 0 5px -3px;
-
-    border: 1px solid var(--ifm-color-emphasis-200);
-    transition: all var(--ifm-transition-fast) ease;
-    transition-property: border,box-shadow;
-    border-radius: var(--ifm-card-border-radius);
-    background-image: url(${imagePath});
-
-    
-
-    :hover{
-      border: 1px var(--ifm-color-primary) solid;
-    } 
   `
+
+    const barStyles = css`
+      height: 1px;
+      background-color: lightgray;
+      margin: 5px 0 15px 0;
+      transition: all var(--ifm-transition-fast) ease;
+      transition-property: background-color,box-shadow;
+    `
 
   const descriptionStyles = css`
     p{
       font-size: .75em;
+      margin: 0px !important;
     }
   `
 
 
   return (
-    <div css={mainStyles}>
-      <div css={imageStyles}>
-        {/* <img css={imageStyles}></img> */}
+    <Link to={link} css={mainStyles}>
+      <div>
+        <img src={imagePath.default} css={imageStyles}></img>
       </div>
+      <div css={barStyles} className="bar"></div>
       <div css={descriptionStyles}>
         <h5>{title}</h5>
         <p>{description}</p>
       </div>
-    </div>
+    </Link>
   )
 }

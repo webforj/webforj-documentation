@@ -79,12 +79,18 @@ const config = {
           src: 'img/logo.png',
         },
         items: [
+          // {
+          //   type: 'doc',
+          //   docId: 'intro',
+          //   position: 'left',
+          //   label: 'Documentation'
+          // },
           {
-            type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Documentation',
-            activeBasePath: '/docs'
+            label: 'Installation',
+            to: '/docs/installation',
+            activeBasePath: '/docs/installation'
           },
           {
             docId: 'intro',
@@ -97,7 +103,8 @@ const config = {
             docId: 'intro',
             position: 'left',
             label: 'Components',
-            to: '/docs/category/components'
+            to: '/docs/components/home',
+            activeBasePath: '/docs/components'
           },
           // {to: '/live_demo', label: 'Live Demo', position: 'left'},
           // {to: '/tutorials/intro', label: 'Tutorials', position: 'left'},
