@@ -7,6 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import AppLayoutViewer from '@site/src/components/DocsTools/AppLayoutViewer';
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 
 
 <div style={{width: "100%" , display: "flex", justifyContent: "flex-end", marginBottom: "-50px"}}>
@@ -378,3 +379,5 @@ The `AppLayout` class supports two events:
     <li>onDrawerOpen Fired when the drawer is opened</li>
     <li>onDrawerClose Fired when the drawer is closed</li>
 </ol>
+
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').AppLayout} />
