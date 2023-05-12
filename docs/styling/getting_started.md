@@ -148,4 +148,4 @@ If you're using VS code, an extension that provides syntax highlighting [can be 
 
 ## Component Theme and Expanse
 
-Many core DWCJ components come packaged with various Themes and Expanses for easy styling. More about the specific component Themes and Expanses can be found in the [DWCJ Components](/docs/category/components) section.
+Many core DWCJ components come packaged with various Themes and Expanses for easy styling. More about the specific component Themes and Expanses can be found in the [DWCJ Components](/docs/components/home) section.
