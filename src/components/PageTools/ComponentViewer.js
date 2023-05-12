@@ -19,7 +19,6 @@ export default function ComponentViewer() {
   return (
     <div css={mainStyles}>
       {componentData.map((item) => {
-      {console.log("TEST")}
       return(
         <ComponentCard imagePath={item.image} title={item.title} description={item.description} link={item.link}/>
       );
