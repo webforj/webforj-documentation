@@ -51,7 +51,7 @@ export const componentData =
   {
     "image": require('./img/component_images/flexlayout.png'),
     "title": "Flex Layout",
-    "link" : "./layouts/flex-layout",
+    "link" : "./layouts/flex_layouts",
     "description": "An efficient and intuitive way to layout applications and components - the Flex Layout allows for items to be displayed either vertically or horizontally following the CSS Flexbox rule set."
   },
   {
