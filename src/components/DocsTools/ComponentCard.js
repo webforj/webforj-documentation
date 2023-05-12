@@ -47,8 +47,11 @@ export default function ComponentCard({ imagePath, title, description, link}) {
     `
 
   const descriptionStyles = css`
+    h5{
+      font-size: 1em;
+    }
     p{
-      font-size: .75em;
+      font-size: .9em;
       margin: 0px !important;
     }
   `
