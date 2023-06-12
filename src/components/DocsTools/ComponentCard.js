@@ -8,7 +8,7 @@ export default function ComponentCard({ imagePath, title, description, link}) {
   const mainStyles = css`
     display: flex;
     flex-direction: column;
-    width: 250px;
+    width: 300px;
     margin-top: 15px;
     padding: 20px;
     border: 1px solid var(--ifm-color-emphasis-200);
@@ -59,7 +59,7 @@ export default function ComponentCard({ imagePath, title, description, link}) {
 
   return (
     <Link to={link} css={mainStyles}>
-      <div>
+      <div css={{display: "flex", justifyContent: "center"}}>
         <img src={imagePath.default} css={imageStyles}></img>
       </div>
       <div css={barStyles} className="bar"></div>
