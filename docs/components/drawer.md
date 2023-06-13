@@ -5,8 +5,9 @@ title: Drawer
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
+import AppLayoutViewer from '@site/src/components/DocsTools/AppLayoutViewer';
 
-The Drawer class is a Java component that creates a drawer for a web application. The drawer is a container that slides into the viewport to expose additional options and information. Multiple drawers can be created in an application, and they will be stacked above each other.
+The drawer is a container that slides into the viewport to expose additional options and information. Multiple drawers can be created in an application, and they will be stacked above each other.
 
 ## Constructors
 
@@ -66,7 +67,7 @@ When utilizing the `size` property, developers have the flexibility to define th
 
 Developers can customize the `size` property based on the available screen real estate, the amount of content to be displayed, and the overall design aesthetic. This level of control allows for creating visually balanced and functional interfaces.
 
-The `size` property can be defined using various units such as pixels, percentages, or other appropriate measurements. This versatility ensures that the drawer's size can be adjusted precisely to fit different screen sizes, resolutions, and device types.
+The `size` property can be defined using various units such as pixels, percentages, or other appropriate CSS measurement values. This versatility ensures that the drawer's size can be adjusted precisely to fit different screen sizes, resolutions, and device types.
 
 By utilizing the `size` property effectively, developers can create responsive interfaces that adapt to different viewports and screen orientations. For instance, a smaller size can be chosen for mobile devices to optimize space utilization, while larger sizes can be used for desktop displays to take advantage of the available screen area.
 
@@ -81,9 +82,9 @@ The Drawer max size property is a versatile feature designed to control the maxi
 To set the size of the drawer, modify the `size` property - `maxSize` is used to ensure a drawer never grows larger than a certain value.
 :::
 
-When utilizing the Drawer max size property, developers can set a maximum size value expressed as a percentage. This value represents the maximum width when the drawer is placed on the left or right side of the interface or the maximum height when placed on the top or bottom.
+When utilizing the Drawer max size property, developers can set a maximum size value expressed as pixels, percentages, or other appropriate CSS measurement values. This value represents the maximum width when the drawer is placed on the left or right side of the interface or the maximum height when placed on the top or bottom.
 
-By defining a maximum size for the drawer, developers maintain control over its dimensions and prevent it from becoming excessively wide or tall, which could hinder the overall user experience. The percentage-based approach allows for responsiveness, adapting the size of the drawer dynamically in relation to the available screen space.
+By defining a maximum size for the drawer, developers maintain control over its dimensions and prevent it from becoming excessively wide or tall, which could hinder the overall user experience. The CSS measurement approach allows for responsiveness, adapting the size of the drawer dynamically in relation to the available screen space.
 
 The Drawer's max size property is particularly beneficial when dealing with responsive and adaptive designs. It ensures that the drawer remains visually pleasing and functional across different devices, screen orientations, and viewports.
 
@@ -138,7 +139,7 @@ The Drawer Open Event is triggered when the drawer is initiated to open, either 
 By leveraging the Drawer Open Event, developers can synchronize the opening of the drawer with other UI elements, trigger transitions or animations, and update the interface to reflect the change in state. This event can also be used to initiate fetching data, loading content, or any other necessary operations related to the appearance of the drawer.
 
 :::info
-The `onOpen() method is similarly available for use, and simple calls the addOpenListnter()` method.
+The `onOpen() method is similarly available for use, and simple calls the addOpenListener()` method.
 :::
 
 ### Drawer Close
@@ -157,3 +158,17 @@ The `onClose()` method is similarly available for use, and simple calls the `add
 
 The `toggle()` method allows developers to control the opening and closing behavior of the drawer based on a boolean value. This function provides a programmatic way to toggle the visibility of the drawer. This can be shorthanded by using the `open()` and `close()` methods, which call the `toggle()` method with the appropriate boolean argument.
 <!-- One Example is fine here -->
+
+## Example Usage
+
+The Drawer component can be used in many different situations, such as by providing a navigation menu that can be toggled, a side panel that displays supplementary content, or to optimize usage on a mobile device. The following example will show a mobile application that uses the DWCJ's AppLayout component, and displays a "Welcome Popup" when first loaded.
+
+<AppLayoutViewer url='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.drawerdemos.DrawerWelcome' mobile='true'/>
+
+<ComponentDemo 
+frame="hidden"
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/drawerdemos/DrawerWelcome.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/drawerstyles/drawer_welcome.css'
+/>
+
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Drawer} />

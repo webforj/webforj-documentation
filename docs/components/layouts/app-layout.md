@@ -58,7 +58,7 @@ myApp.setHeaderOffscreen(false);
 myApp.setFooterOffscreen(false);
 ```
 
-<AppLayoutViewer url='/demos/app-layout-demos/full-header.html' mobile='false'/>
+<AppLayoutViewer url='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.applayout.AppLayoutFullNavbar' mobile='false'/>
 
 
 <ComponentDemo 
@@ -74,134 +74,13 @@ The navbar has no limit to the number of toolbars you can add. A toolbar is only
 
 The following demo shows how to use two toolbars, The first one houses the drawer's toggle button and the application's title. The second toolbar houses a secondary navigation menu.
 
-<AppLayoutViewer url='/demos/app-layout-demos/multi-toolbars.html' mobile='false'/>
+<AppLayoutViewer url='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.applayout.AppLayoutMultipleHeaders' mobile='false'/>
 
-<details>
-    <summary>Show Code</summary> 
-
-
-<Tabs>
-<TabItem value='Java' label='Java' default>
-
-```java showLineNumbers
-public class AppLayoutDemo extends App{
-    
-    Label contentLabel; 
-    
-    @Override
-    public void run() throws DwcAppInitializeException {
-        App.getPage().addInlineStyleSheet("context://css/apptemplatestyles.css");
-        
-        AppPanel panel = new AppPanel();
-        AppLayout demo = new AppLayout();
-        panel.add(demo);
-
-        //Header 
-        demo.getHeader().addClassName("app-layout-header").add(
-            new Label("<html><bbj-icon-button name='menu-2' data-drawer-toggle></bbj-icon-button></html>"),
-            new Label("DWCJ Application")
-        );
-        
-        
-        //Drawer
-        Div drawer = demo.getDrawer();
-        drawer.addClassName("app-layout-drawer");
-
-        //Drawer's logo container and logo
-        drawer.add(new Div().addClassName("drawer-logo-div").add(
-            new Label("<html><img src='" + "https://i.ibb.co/1n4n1Nh/logo.png" + "'</img></html>").addClassName("drawer-logo")
-        ));
-        
-        //Drawer's Menu
-        TabControl drawerMenu = new TabControl();
-        drawer.add(drawerMenu);
-        
-        //Setting drawer menu's attributes
-        drawerMenu.setAttribute("nobody","true");
-        drawerMenu.setAttribute("borderless","true");
-        drawerMenu.setAttribute("placement","left");
-        
-        //Adding tabs to drawer menu
-        drawerMenu.add("<bbj-icon name='dashboard'></bbj-icon>      Dashboard")
-        .add("<bbj-icon name='shopping-cart'></bbj-icon>  Orders"   )
-            .add("<bbj-icon name='users'></bbj-icon>          Customers")
-            .add("<bbj-icon name='box'></bbj-icon>            Products" )
-            .add("<bbj-icon name='files'></bbj-icon>          Documents")
-            .add("<bbj-icon name='checklist'></bbj-icon>      Tasks"    )
-            .add("<bbj-icon name='chart-dots-2'></bbj-icon>   Analytics");
-        
-            drawerMenu.onSelect(this::onTabChange);
-            
-            //Content
-            this.contentLabel = new Label();
-            demo.getContent().add(
-                new Label("<html><h1>Application Title</h1></html>"),
-            this.contentLabel
-            );
-
-            // Adding the additional toolbar with menu items
-            Div secondToolbar = new Div();
-            demo.getHeader().add(secondToolbar);
-            TabControl secondMenu = new TabControl();
-            secondToolbar.add(secondMenu);
-            secondMenu.setAttribute("nobody", "true")
-                .setAttribute("borderless", "true")
-                .add("<bbj-icon name='report-money'></bbj-icon> Sales")
-                .add("<bbj-icon name='building'></bbj-icon> Enterprise")
-                .add("<bbj-icon name='credit-card'></bbj-icon> Payments")
-                .add("<bbj-icon name='history'></bbj-icon> History");
-    }
-
-    private void onTabChange(TabSelectEvent ev){
-        String value = ev.getTitle().replaceAll("<[^>]*>","").trim();
-        contentLabel.setText("<html><p>Content for " + value + " goes here</p></html>");
-    }
-}
-```
-</TabItem>
-    
-<TabItem value='CSS' label='CSS'>
-
-```css
-body,html {overflow: hidden}
-
-.drawer__logo{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--bbj-space-m) 0;
-    margin-bottom: var(--bbj-space-m);
-    border-bottom: thin solid var(--bbj-color-default) !important;
-}
-
-.drawer__logo img {
-    max-width: 100px;
-    border-radius: 10px;
-}
-
-.layout__header {
-    display: flex;
-    align-items: center;
-    gap: var(--bbj-space-m);
-    padding: 0 var(--bbj-space-m);
-}
-
-
-.layout__header--title{
-    display: block;
-    font-size: 1.25em;
-    margin-top: 0.83em;
-    margin-bottom: 0.83em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-}
-
-```
-</TabItem>
-</Tabs>
-
-</details>
+<ComponentDemo 
+frame="hidden"
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutMultipleHeaders.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_styles.css'
+/>
 
 ### Sticky Toolbars
 
@@ -213,137 +92,13 @@ When `AppLayout.setHeaderReveal(true)` is set called, the header will be visible
 
 With the help of the CSS custom property `--bbj-app-layout-header-collapse-height` it is possible to control how much of the header navbar will be hidden.
 
-<AppLayoutViewer url='/demos/app-layout-demos/sticky-toolbar.html' mobile='false' />
+<AppLayoutViewer url='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.applayout.AppLayoutStickyToolbar' mobile='false'/>
 
-<details>
-    <summary>Show Code</summary> 
-
-
-<Tabs>
-<TabItem value='Java' label='Java' default>
-
-```java showLineNumbers
-import org.dwcj.App;
-import org.dwcj.util.Assets;
-import org.dwcj.exceptions.DwcAppInitializeException;
-import org.dwcj.controls.applayout.AppLayout;
-import org.dwcj.controls.label.Label;
-import org.dwcj.controls.panels.AppPanel;
-import org.dwcj.controls.panels.Div;
-import org.dwcj.controls.tabcontrol.TabControl;
-import org.dwcj.controls.tabcontrol.events.TabSelectEvent;
-
-public class AppLayoutDemo extends App{
-    
-    Label contentLabel; 
-    
-    @Override
-    public void run() throws DwcAppInitializeException {
-        App.getPage().addInlineStyleSheet("context://css/apptemplatestyles.css");
-        
-        AppPanel panel = new AppPanel();
-        AppLayout demo = new AppLayout();
-        panel.add(demo);
-
-        //Header 
-        demo.getHeader().addClassName("header__toolbar").add(
-        demo.setHeaderReveal(true);
-
-        );
-        Div titleBar = new Div();
-        titleBar.addClassName("header__content");
-        titleBar.add(new Label("<html><bbj-icon-button name='menu-2' data-drawer-toggle></bbj-icon-button></html>"), 
-                     new Label("DWCJ Application").addClassName("header__title")
-        );
-        
-        
-        demo.setDrawerPlacement(DrawerPlacement.HIDDEN);
-        
-        //Drawer's Menu
-        TabControl menu = new TabControl();
-        
-        //Setting menu's attributes
-        menu.setAttribute("nobody","true");
-        menu.setAttribute("borderless","true");
-        
-        //Adding tabs to drawer menu
-        menu.add("<bbj-icon name='dashboard'></bbj-icon>      Dashboard")
-        .add("<bbj-icon name='shopping-cart'></bbj-icon>  Orders"   )
-            .add("<bbj-icon name='users'></bbj-icon>          Customers")
-            .add("<bbj-icon name='box'></bbj-icon>            Products" )
-            .add("<bbj-icon name='files'></bbj-icon>          Documents")
-            .add("<bbj-icon name='checklist'></bbj-icon>      Tasks"    )
-            .add("<bbj-icon name='chart-dots-2'></bbj-icon>   Analytics");
-        
-        demo.getHeader().add(menu);
-
-        menu.onSelect((ev) -> {
-            int idx = ev.getIndex();
-            if(displayList.get(idx).getValue().equals(Boolean.FALSE)){
-                contentDisplay.addPage(String.valueOf(idx), displayList.get(idx).getKey());
-                displayList.get(idx).setValue(Boolean.TRUE);
-            }
-            contentDisplay.displayPage(idx);
-        });
-
-            //Content
-            this.contentLabel = new Label();
-            demo.getContent().add(
-                new Label("<html><h1>Application Title</h1></html>"),
-            this.contentLabel
-            );
-    }
-
-    private void onChange(TabSelectEvent ev){
-        String value = ev.getTitle().replaceAll("<[^>]*>","").trim();
-        contentLabel.setText("<html><p>Content for " + value + " goes here</p></html>");
-    }
-}
-```
-</TabItem>
-    
-<TabItem value='CSS' label='CSS'>
-
-```css
-body,html {overflow: hidden}
-
-:root {   
-  --bbj-app-layout-header-collapse-height: 45px;
-}
-
-.header__toolbar {
-    display: flex;
-    align-items: center;
-    gap: var(--bbj-space-m);
-    padding: 0 var(--bbj-space-m);
-}
-
-.header__title{
-    display: block;
-    font-size: 1.25em;
-    margin-top: 0.83em;
-    margin-bottom: 0.83em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-}
-
-.header__content{
-    display: flex;
-    align-items: center;
-    gap: var(--bbj-space-m);
-    padding: 0 var(--bbj-space-m);
-}
-
-.header__content img{
-    height: 24px;
-}
-
-```
-</TabItem>
-</Tabs>
-
-</details>
+<ComponentDemo 
+frame="hidden"
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutMultipleHeaders.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_sticky_styles.css'
+/>
 
 
 ### Mobile Navigation Layout
@@ -356,7 +111,13 @@ Same as `AppLayout.setHeaderReveal()`, `AppLayout.setFooterReveal()` is supporte
 
 Be default, when the screen width is 800px or less , the drawer will be switched to popover mode. This is called the breakpoint. The popover mode means that the drawer will pop over the content area with an overlay. It is possible to configure the breakpoint by using the BBjAppLayout:setDrawerBreakpoint method and the breakpoint must be a valid [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries).
 
-<AppLayoutViewer url='/demos/app-layout-demos/footer-reveal.html' mobile='true'/>
+<AppLayoutViewer url='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.applayout.AppLayoutMobile' mobile='true'/>
+
+<ComponentDemo 
+frame="hidden"
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutMobile.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_mobile.css'
+/>
 
 ### Drawer Breakpoint
 
@@ -369,7 +130,13 @@ AppLayout demo = new AppLayout();
 demo.setDrawerBreakpoint("(max-width:500px)");
 ```
 
-<AppLayoutViewer url='/demos/app-layout-demos/drawer-breakpoint.html' mobile='true'/>
+<AppLayoutViewer url='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.applayout.AppLayoutMobileDrawer' mobile='true'/>
+
+<ComponentDemo 
+frame="hidden"
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutMobileDrawer.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_mobile.css'
+/>
 
 ### Events
 

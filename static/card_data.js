@@ -25,6 +25,12 @@ export const componentData =
     "description": "Similar to a Choice Box component, but allows users to inert text within an entry field."
   },
   {
+    "image": require('./img/component_images/drawer.png'),
+    "title": "Drawer",
+    "link" : "./drawer",
+    "description": "The DWCJ's Drawer component allow developers to create a container which slides into the viewport to expose additional options and information."
+  },
+  {
     "image": require('./img/component_images/dialog.png'),
     "title": "Dialog",
     "link" : "./dialog",
