@@ -201,7 +201,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="Build your modern web applications with the DWCJ.">
         <div css={mainStyles}>
         <HomepageTitle />
         {/* <HomepageAnnoucement /> */}
