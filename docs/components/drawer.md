@@ -134,7 +134,13 @@ There are two supported events that can be used with the Drawer component, open 
 
 Use the `addOpenListener()` method to add an open event to your Drawer component.
 
-The Drawer Open Event is triggered when the drawer is initiated to open, either through user interaction or programmatically. This event allows developers to execute specific actions, animations, or updates that should occur when the drawer becomes visible and accessible to the user.
+The Drawer Open Event is triggered when the drawer is initiated to open, either through user interaction or programmatically. This event allows developers to execute specific actions, animations, or updates that should occur when the drawer becomes visible and accessible to the user. To add an open event listener, use the appropriate method:
+
+```java
+myDrawer.addOpenListener( e -> {
+  //Executed when the event fires
+});
+```
 
 By leveraging the Drawer Open Event, developers can synchronize the opening of the drawer with other UI elements, trigger transitions or animations, and update the interface to reflect the change in state. This event can also be used to initiate fetching data, loading content, or any other necessary operations related to the appearance of the drawer.
 
@@ -146,7 +152,13 @@ The `onOpen() method is similarly available for use, and simple calls the addOpe
 
 Use the `addCloseListener()` method to add an open event to your Drawer component.
 
-The Drawer Close Event is triggered when the drawer is initiated to close. This event provides developers with the opportunity to perform actions or updates that should take place when the drawer is no longer visible or accessible to the user.
+The Drawer Close Event is triggered when the drawer is initiated to close. This event provides developers with the opportunity to perform actions or updates that should take place when the drawer is no longer visible or accessible to the user. To add a close event listener, use the appropriate method:
+
+```java
+myDrawer.addCloseListener( e -> {
+  //Executed when the event fires
+});
+```
 
 With the Drawer Close Event, developers can synchronize the closing of the drawer with other UI elements, initiate animations or transitions, and update the interface to reflect the change in state. Additionally, this event can be utilized to save user preferences, persist data, or perform any cleanup operations associated with the closure of the drawer.
 
@@ -159,9 +171,18 @@ The `onClose()` method is similarly available for use, and simple calls the `add
 The `toggle()` method allows developers to control the opening and closing behavior of the drawer based on a boolean value. This function provides a programmatic way to toggle the visibility of the drawer. This can be shorthanded by using the `open()` and `close()` methods, which call the `toggle()` method with the appropriate boolean argument.
 <!-- One Example is fine here -->
 
+
+### Removing an Event 
+
+To remove either an open or close event from the Drawer, simply use the appropriate remove event listener method.
+
+```java
+myDrawer.removeOpenListener(listener);
+```
+
 ## Example Usage
 
-The Drawer component can be used in many different situations, such as by providing a navigation menu that can be toggled, a side panel that displays supplementary content, or to optimize usage on a mobile device. The following example will show a mobile application that uses the DWCJ's AppLayout component, and displays a "Welcome Popup" when first loaded.
+The Drawer component can be used in many different situations, such as by providing a navigation menu that can be toggled, a panel that displays supplementary or contexual information, or to optimize usage on a mobile device. The following example will show a mobile application that uses the DWCJ's AppLayout component, and displays a "Welcome Popup" drawer at the bottom when first loaded. Additionally, a navigational Drawer component can be toggled in the application by clicking on the hamburger menu.
 
 <AppLayoutViewer url='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.drawerdemos.DrawerWelcome' mobile='true'/>
 

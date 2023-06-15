@@ -13,7 +13,6 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/logo.png',
-  
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'dwcjava', // Usually your GitHub org/user name.
@@ -78,6 +77,7 @@ const config = {
           alt: 'My Site Logo',
           src: 'img/logo.png',
         },
+        image: '/img/logo.png',
         items: [
           // {
           //   type: 'doc',
