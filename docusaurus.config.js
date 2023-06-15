@@ -71,13 +71,13 @@ const config = {
   ],
   themeConfig:
     ({
+      image: '/img/logo.png',
       navbar: {
         title: 'Dynamic Web Client for Java',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.png',
         },
-        image: '/img/logo.png',
         items: [
           // {
           //   type: 'doc',
