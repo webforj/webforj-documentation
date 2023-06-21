@@ -110,7 +110,7 @@ function HomepageTitle(){
         <Link 
         css={getStartedStyles}
           className="button button--primary button--lg"
-          to='docs/intro'>
+          to='docs/category/getting-started'>
           Get Started
         </Link>
         {/* <Link 
