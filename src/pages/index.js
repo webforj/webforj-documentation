@@ -113,11 +113,11 @@ function HomepageTitle(){
           to='docs/intro'>
           Get Started
         </Link>
-        <Link 
+        {/* <Link 
           className="button button--secondary button--lg"
           to='docs/intro'>
           View Documentation
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
