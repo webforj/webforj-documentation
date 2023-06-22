@@ -80,16 +80,16 @@ javaHighlight='{17,21,25,29,33}'
 
 The `CheckBox` class provides methods to add and remove event listeners for the following events:
 
-- `BlurEvent;`
-- `CheckedEvent;`
-- `EventDispatcher;`
-- `EventListener;`
-- `FocusEvent;`
-- `MouseEnterEvent;`
-- `MouseExitEvent;`
-- `RightMouseDownEvent;`
-- `ToggleEvent;`
-- `UncheckedEvent;`
+- `BlurEvent`
+- `CheckedEvent`
+- `EventDispatcher`
+- `EventListener`
+- `FocusEvent`
+- `MouseEnterEvent`
+- `MouseExitEvent`
+- `RightMouseDownEvent`
+- `ToggleEvent`
+- `UncheckedEvent`
 
 To add an event listener, use the appropriate method:
 
