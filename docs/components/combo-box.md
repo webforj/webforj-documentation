@@ -75,4 +75,6 @@ height = '350px'
 |-|
 |<ul><li>```ComboBox.Expanse.XSMALL```</li><li>```ComboBox.Expanse.SMALL```</li><li>```ComboBox.Expanse.MEDIUM```</li><li>```ComboBox.Expanse.LARGE```</li><li>```ComboBox.Expanse.XLARGE```</li></ul>|
 
+## Parts and CSS Properties
+
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').ComboBox} />

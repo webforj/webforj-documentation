@@ -90,4 +90,6 @@ height = '300px'
 |-|
 |<ul><li>```ProgressBar.Theme.DEFAULT```</li><li>```ProgressBar.Theme.DANGER```</li><li>```ProgressBar.Theme.GRAY```</li><li>```ProgressBar.Theme.INFO```</li><li>```ProgressBar.Theme.SUCCESS```</li><li>```ProgressBar.Theme.WARNING```</li></ul>|
 
+## Parts and CSS Properties
+
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').ProgressBar} />

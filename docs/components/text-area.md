@@ -75,4 +75,6 @@ height = '200px'
 |-|
 |<ul><li>```TextArea.Expanse.XSMALL```</li><li>```TextArea.Expanse.SMALL```</li><li>```TextArea.Expanse.MEDIUM```</li><li>```TextArea.Expanse.LARGE```</li><li>```TextArea.Expanse.XLARGE```</li></ul>|
 
+## Parts and CSS Properties
+
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').TextArea} />

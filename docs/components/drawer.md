@@ -192,4 +192,6 @@ javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/ja
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/drawerstyles/drawer_welcome.css'
 />
 
+## Parts and CSS Properties
+
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Drawer} />

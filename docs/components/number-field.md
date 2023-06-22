@@ -139,4 +139,6 @@ height = '200px'
 |-|
 |<ul><li>```NumberField.Expanse.XSMALL```</li><li>```NumberField.Expanse.SMALL```</li><li>```NumberField.Expanse.MEDIUM```</li><li>```NumberField.Expanse.LARGE```</li><li>```NumberField.Expanse.XLARGE```</li></ul>|
 
+## Parts and CSS Properties
+
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').NumberField} />

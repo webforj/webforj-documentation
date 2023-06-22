@@ -138,4 +138,6 @@ Listed below are the current supported vertical text alignments for the button c
 |-|
 |<ul><li>```Button.Expanse.TOP```</li><li>```Button.Expanse.CENTER```</li><li>```Button.Expanse.BOTTOM```</li></ul>|
 
+## Parts and CSS Properties
+
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Button} />

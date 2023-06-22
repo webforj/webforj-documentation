@@ -116,4 +116,6 @@ height = '125px'
 |-|
 |<ul><li>```TextField.Expanse.XSMALL```</li><li>```TextField.Expanse.SMALL```</li><li>```TextField.Expanse.MEDIUM```</li><li>```TextField.Expanse.LARGE```</li><li>```TextField.Expanse.XLARGE```</li></ul>|
 
+## Parts and CSS Properties
+
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').TextField} />

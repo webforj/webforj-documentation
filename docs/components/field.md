@@ -75,4 +75,6 @@ height = '160px'
 |-|
 |<ul><li>```Field.Expanse.XSMALL```</li><li>```Field.Expanse.SMALL```</li><li>```Field.Expanse.MEDIUM```</li><li>```Field.Expanse.LARGE```</li><li>```Field.Expanse.XLARGE```</li></ul>|
 
+## Parts and CSS Properties
+
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Field} />

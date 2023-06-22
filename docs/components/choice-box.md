@@ -70,4 +70,6 @@ Listed below are the current supported expanse options for the choice box compon
 |-|
 |<ul><li>```ChoiceBox.Expanse.XSMALL```</li><li>```ChoiceBox.Expanse.SMALL```</li><li>```ChoiceBox.Expanse.MEDIUM```</li><li>```ChoiceBox.Expanse.LARGE```</li><li>```ChoiceBox.Expanse.XLARGE```</li></ul>|
 
+## Parts and CSS Properties
+
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').ChoiceBox} />

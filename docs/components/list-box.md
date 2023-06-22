@@ -63,4 +63,6 @@ There are five list box expanses that are supported in the DWCJ which allow for 
 |-|
 |<ul><li>```ListBox.Expanse.XSMALL```</li><li>```ListBox.Expanse.SMALL```</li><li>```ListBox.Expanse.MEDIUM```</li><li>```ListBox.Expanse.LARGE```</li><li>```ListBox.Expanse.XLARGE```</li></ul>|
 
+## Parts and CSS Properties
+
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').ListBox} />
