@@ -5,7 +5,7 @@ displayed_sidebar: documentationSidebar
 
 # Creating an Application
 
-Once the DWCJ and all applicable dependencies have been installed, it's time to start creating! If you followed the [**Users**](../installation/users.md) installation guide, 
+Once the DWCJ and all applicable dependencies have been installed, it's time to start creating! If you followed the installation guide, 
 a sample "Hello World" program should be included already. However, in this section,
 a demonstration of how to create a new application from scratch will be provided.
 
