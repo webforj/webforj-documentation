@@ -21,8 +21,8 @@ Label myLabel = new Label("Hello, world!");
 The `Label` class has three constructors:
 
 1. `Label()`: Creates an empty label.
-2. `Label(String text)`: Creates a label with the specified text.
-3. `Label(String text, boolean wrap)`: Creates a label with the specified text and sets whether or not the text should be wrapped.
+2. `Label(String)`: Creates a label with the specified text.
+3. `Label(String, boolean)`: Creates a label with the specified text and sets whether or not the text should be wrapped.
 
 Here's an example of how to create a Label object using each constructor:
 

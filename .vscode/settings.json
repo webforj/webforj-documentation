@@ -1,5 +1,15 @@
 {
     "cSpell.words": [
         "DWCJ"
-    ]
+    ],
+    "bbj.bui.apps": {
+        "cli.bbj": {
+            "name": "cli",
+            "style": ""
+        },
+        "test.bbj": {
+            "name": "test",
+            "style": ""
+        }
+    }
 }
