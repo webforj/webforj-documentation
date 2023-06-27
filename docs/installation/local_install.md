@@ -51,6 +51,15 @@ for Windows users can be found [here](https://phoenixnap.com/kb/install-maven-wi
 
 [This video](https://www.youtube.com/watch?v=Ovk8kznQfGs&ab_channel=BBxCluesbyBASISEurope) can help with the installation of BBj if you need assistance with setup.
 
+Once BBj has been installed, it is also necessary to install the needed dependencies from the BBj library. This is done by navigating to the `lib` directory inside your bbx folder, and
+running the following commands:
+
+```bash
+mvn install:install-file -Dfile=BBjStartup.jar -DgroupId=com.basis.lib -DartifactId=BBjStartup -Dversion=23.01 -Dpackaging=jar
+mvn install:install-file -Dfile=BBj.jar -DgroupId=com.basis.lib -DartifactId=BBj -Dversion=23.01 -Dpackaging=jar
+mvn install:install-file -Dfile=BBjUtil.jar -DgroupId=com.basis.lib -DartifactId=BBjUtil -Dversion=23.01 -Dpackaging=jar
+```
+
 <a name='section3'></a>
 
 ## 3) Install and Configure the DWCJ Plugin
@@ -69,16 +78,11 @@ On this page, select the DWCJ entry, and click "Install".
 
 Once this has been done, you should be able to switch back to the "Installed Plugins" tab, and see the DWCJ entry listed there.
 
-Now that the plugin has been installed, navigate to the DWCJ plugin folder wherever bbx has been installed. An example filepath
-might be `C:\bbx\plugins\DWCJ`. From this directory, open the `cli-modules` directory. Once there, run the `enable_remote_install.bbj` program.
+Now that the plugin has been installed, navigate to the `bin` directory within your `bbx` folder and run the following command:
 
-![Plugin manager start location](./_images/users/local/i4.png)
-
-:::tip
-If you have not set BBj as the default method of opening files with a .bbj extension, you may need to do this in order to run the program. The 
-needed program is `BBj.exe`, which can be found in the `bin` folder of your `bbx` installation.
-:::
-
+```bbj
+./bbj -tIO DWCJ/cli.bbj - enable_remote_install
+```
 
 
 ## 4) Clone the Repository
