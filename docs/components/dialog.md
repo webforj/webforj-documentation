@@ -15,7 +15,7 @@ The DWCJ's dialog component is built to allow a developer to quickly and easily 
 
 The component is built with three sections, each of which are `Div` components: the header, the content, and the footer.
 
-## Constructors
+### Constructors
 
 The Dialog can be constructed using the default `Dialog()` constructor. Once the object has been instantiated, call the `show()` method on the object itself to display the dialog.
 
@@ -25,10 +25,6 @@ javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/co
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/dialogdemos/DialogSections.java'
 height = '225px'
 />
-
-## Properties
-
-There are various customizable properties that allow for customization of the Dialog's appearance and behavior.
 
 ### Backdrop and Blur
 

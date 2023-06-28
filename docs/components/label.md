@@ -16,7 +16,7 @@ The Label class is a Java class in the `org.dwcj.component.label` package. It is
 Label myLabel = new Label("Hello, world!");
 ```
 
-## Constructors
+### Constructors
 
 The `Label` class has three constructors:
 
@@ -37,10 +37,6 @@ Label textLabel = new Label("Hello, world!");
 Label wrappedLabel = new Label("Lorem ipsum dolor sit amet, consectetur adipiscing elit.", true);
 
 ```
-
-## Properties
-
-The label's text can be set either at creation using the parameterized constructor, or by utilizing the inherited `setText()` method. 
 
 ### HTML Injection
 

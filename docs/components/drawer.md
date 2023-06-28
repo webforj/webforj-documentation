@@ -9,7 +9,7 @@ import AppLayoutViewer from '@site/src/components/DocsTools/AppLayoutViewer';
 
 The drawer is a container that slides into the viewport to expose additional options and information. Multiple drawers can be created in an application, and they will be stacked above each other.
 
-## Constructors
+### Constructors
 
 The Drawer component contains a single default constructor which will create a new instance of the Drawer class.
 
@@ -22,8 +22,6 @@ path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.drawerde
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/drawerdemos/DrawerDemo.java'
 height='600px'
 />
-
-## Properties
 
 Various properties exist that allow for the customization of various attributes of the Drawer component. Below are those properties with examples for their modification.
 

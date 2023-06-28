@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-title: Check Box
+title: CheckBox
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
@@ -10,6 +10,7 @@ import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 <p style={{color: "gray"}} >API:&nbsp;</p>
 <b><a href="https://javadoc.io/static/org.dwcj/dwcj-engine/0.15.0/org/dwcj/controls/checkbox/CheckBox.html" style={{justifySelf: "flex-end"}}> Java </a></b>
 </div>
+<br />
 
 The `CheckBox` class is a java class in `org.dwcj.component.checkbox` package. It creates a component that can be selected or deselected, and which displays its state to the user. When clicked, a check mark appears inside the box, to indicate an affirmative choice (on). When clicked again, the check mark disappears, indicating a negative choice (off).
 
@@ -19,7 +20,7 @@ Here is an example of how to create a `CheckBox` object:
 CheckBox myCheckbox = new CheckBox("Checkbox Text");
 ```
 
-## Constructors
+### Constructors
 
 The `CheckBox` class has three constructors:
 
@@ -27,13 +28,9 @@ The `CheckBox` class has three constructors:
 2. `CheckBox(String)`: Creates a `CheckBox` with an attached label in the unchecked state.
 3. `CheckBox(String, boolean)` Creates a `CheckBox` with an attached label in either the checked or unchecked state, based on the boolean passed (`true` for checked, `false` for unchecked).
 
-## Properties
-
-The `CheckBox` component has various properties that can be manipulated with provided API methods.
-
 ### Text and Positioning
 
-Check boxes can utilize the ```setText(String foo)``` method, which will positioned near the check box according to the built-in `HorizontalTextPosition`.
+Check boxes can utilize the ```setText(String foo)``` method, which will positioned near the check box according to the built-in `Position`.
 DWCJ checkboxes have built-in functionality to set text to be displayed either to the right or left of the box. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of a built-in enum class. Show below are the two settings: <br/>
 
 <ComponentDemo 
@@ -80,16 +77,18 @@ javaHighlight='{17,21,25,29,33}'
 
 The `CheckBox` class provides methods to add and remove event listeners for the following events:
 
-- `BlurEvent`
-- `CheckedEvent`
-- `EventDispatcher`
-- `EventListener`
-- `FocusEvent`
-- `MouseEnterEvent`
-- `MouseExitEvent`
-- `RightMouseDownEvent`
-- `ToggleEvent`
-- `UncheckedEvent`
+| Events | Description |
+|:-:|-|
+|`BlurEvent`| An event that is triggered when an element loses focus. It occurs when the user interacts with an element, such as clicking inside an input field, and then moves the focus away from that element, typically by clicking outside of it or tabbing to another element on the page. |
+|`FocusEvent`| An event that is triggered when an element gains focus, opposite of a blur event. It occurs when the user interacts with an element, typically by clicking inside an input field or navigating to it using the keyboard's tab key, causing the element to become active and ready to receive user input. |
+|`CheckedEvent`| An event that is triggered when the state of a component changes and becomes checked. It occurs when the user interacts with a checkbox element by clicking or tapping on it, causing the checkbox to transition from an unchecked state to a checked state. |
+|`UncheckedEvent`| An event that is triggered when the state of a component changes and becomes unchecked. It occurs when the user interacts with a checkbox element by clicking or tapping on it, causing the checkbox to transition from an checked state to a unchecked state. |
+|`ToggleEvent`| A ToggleEvent fires a CheckBox or a similar UI element changes its state between "on" and "off" or "active" and "inactive." It represents the action of toggling a setting, feature, or state of an element such as a CheckBox or Radio Button. |
+|`MouseEnterEvent`| An event that is triggered when the mouse cursor enters the boundaries of an element. It occurs when the user moves the mouse pointer over the specified element, indicating that the mouse has entered its area. |
+|`MouseExitEvent`| An event that is triggered when the mouse cursor exits the boundaries of an element. It occurs when the user moves the mouse pointer out of the boundaries of the specified element, indicating that the mouse has exited its area. |
+|`RightMouseDownEvent`| An event refers to an event that is triggered when the user presses the right mouse button while the cursor is over an element. It allows you to capture the specific action of the user's right mouse button being pressed down within the boundaries of the element. |
+
+<br />
 
 To add an event listener, use the appropriate method:
 
@@ -116,6 +115,13 @@ myCheckBox.removeCheckedListener(listener);
 :::info
 For a method to be removed via the appropriate removeListener method, the signature of the method must be saved. 
 :::
+
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxEventDemo' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/checkboxdemos/CheckboxEventDemo.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css' 
+javaHighlight='{17,21,25,29,33}'
+/>
 
 ## Parts and CSS Properties
 
