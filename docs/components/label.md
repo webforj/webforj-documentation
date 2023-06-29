@@ -4,11 +4,9 @@ title: Label
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<div style={{width: "100%" , display: "flex", justifyContent: "flex-end"}}>
-<p style={{color: "gray"}} >API:&nbsp;</p>
-<b><a href="https://javadoc.io/static/org.dwcj/dwcj-engine/0.15.0/org/dwcj/controls/label/Label.html" style={{justifySelf: "flex-end"}}> Java </a></b>
-</div>
+<JavadocLink type="engine" location="org/dwcj/component/label/Label"/>
 
 The Label class is a Java class in the `org.dwcj.component.label` package. It is used to create a label object. Here's an example of how to create a Label object:
 

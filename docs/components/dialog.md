@@ -5,11 +5,9 @@ title: Dialog
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
+import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<div style={{width: "100%" , display: "flex", justifyContent: "flex-end"}}>
-<p style={{color: "gray"}} >API:&nbsp;</p>
-<b><a href="https://javadoc.io/static/org.dwcj/dwcj-engine/0.15.0/org/dwcj/controls/dialog/Dialog.html" style={{justifySelf: "flex-end"}}> Java </a></b>
-</div>
+<JavadocLink type="engine" location="org/dwcj/component/dialog/Dialog"/>
 
 The DWCJ's dialog component is built to allow a developer to quickly and easily display a dialog on their application, for instances such as a login menu or information box.
 

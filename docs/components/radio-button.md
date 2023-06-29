@@ -1,34 +1,34 @@
 ---
-sidebar_position: 10
-title: CheckBox
+sidebar_position: 100
+title: RadioButton
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<JavadocLink type="engine" location="org/dwcj/component/checkbox/Checkbox"/>
+<JavadocLink type="engine" location="org/dwcj/component/radiobutton/RadioButton"/>
 
-The `CheckBox` class is a java class in `org.dwcj.component.checkbox` package. It creates a component that can be selected or deselected, and which displays its state to the user. When clicked, a check mark appears inside the box, to indicate an affirmative choice (on). When clicked again, the check mark disappears, indicating a negative choice (off).
+The `RadioButton` class is a java class in `org.dwcj.component.radiobutton` package. n item that can be selected or deselected, and which displays its state to the user. By convention, only one radio button in a group can be selected at a time. Radio buttons are commonly used when mutually exclusive options are available, allowing the user to choose a single option from a set of choices.
 
-Here is an example of how to create a `CheckBox` object:
+Here is an example of how to create a `RadioButton` object:
 
 ```java
-CheckBox myCheckbox = new CheckBox("Checkbox Text");
+RadioButton myRadioButton = new RadioButton("RadioButton Text");
 ```
 
 ### Constructors
 
-The `CheckBox` class has three constructors:
+The `RadioButton` class has three constructors:
 
-1. `CheckBox()`: Creates an empty `CheckBox` in the unchecked state.
-2. `CheckBox(String)`: Creates a `CheckBox` with an attached label in the unchecked state.
-3. `CheckBox(String, boolean)` Creates a `CheckBox` with an attached label in either the checked or unchecked state, based on the boolean passed (`true` for checked, `false` for unchecked).
+1. `RadioButton()`: Creates an empty `RadioButton` in the unchecked state.
+2. `RadioButton(String)`: Creates a `RadioButton` with an attached label in the unchecked state.
+3. `RadioButton(String, boolean)` Creates a `RadioButton` with an attached label in either the checked or unchecked state, based on the boolean passed (`true` for checked, `false` for unchecked).
 
 ### Text and Positioning
 
-Check boxes can utilize the ```setText(String foo)``` method, which will be positioned near the check box according to the built-in `Position`.
-DWCJ checkboxes have built-in functionality to set text to be displayed either to the right or left of the box. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of a built-in enum class. Show below are the two settings: <br/>
+Radio buttons can utilize the ```setText(String foo)``` method, which will be positioned near the radio button according to the built-in `Position`.
+DWCJ radio buttons have built-in functionality to set text to be displayed either to the right or left of the component. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of a built-in enum class. Show below are the two settings: <br/>
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxHorizontalText' 
@@ -40,9 +40,17 @@ javaHighlight='{18}'
 
 <br/>
 
-### Indeterminism
+### Activation
 
-The DWCJ's `CheckBox` component supports indeterminism, which is a UI pattern commonly used in forms and lists to indicate that a group of checkboxes has a mixture of checked and unchecked states. This state is represented by a third visual state, typically displayed as a filled square or a dash inside the checkbox. There are a few common use cases associated with the indeterminate status:
+Radio buttons can be controlled using two types of activation: manual activation and auto activation. These dictate when a `RadioButton` will change its state.
+
+### Manual Activation
+
+- When a radio button is set to manual activation, it means that it will not be automatically checked when it gains focus.
+Manual activation allows the user to navigate through the radio button options using the keyboard or other input methods without immediately changing the selected option.
+
+- If the radio button is part of a group, selecting a different radio button within the group will automatically uncheck the previously selected radio button.
+Manual activation provides finer control over the selection process, requiring an explicit action from the user to change the selected option.
 
 - Selecting multiple items: Indeterminism is useful when users need to select multiple items from a list or a set of options. It allows users to indicate that they want to select some, but not all, of the available choices.
 
@@ -56,6 +64,11 @@ cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/r
 javaHighlight='{18}'
 />
 
+### Radio Button Groups
+
+Radio groups are used to group related radio buttons together, which helps establish the mutual exclusivity among the options within that group. Users can select only one radio button within a given radio group. When a user selects a radio button within a group, any previously selected radio button in the same group automatically becomes deselected. This ensures that only one option can be chosen at a time.
+
+A DWCJ RadioButton component stores the Group to which it belongs, which can be accessed via the `getButtonGroup()` method, and can be assigned to a group using the `setButtonGroup()`. To learn more about Radio Button groups, see the applicable documentation page. 
 ### Expanses
 There are five checkbox expanses that are supported in the DWCJ which allow for quick styling without using CSS.
 Expanses are supported by use of a built-in enum class. Below are the expanses supported for the checkbox component: <br/>
@@ -113,13 +126,8 @@ myCheckBox.removeCheckedListener(listener);
 For a method to be removed via the appropriate removeListener method, the signature of the method must be saved. 
 :::
 
-<ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxEventDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/checkboxdemos/CheckboxEventDemo.java'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css' 
-javaHighlight='{17,21,25,29,33}'
-/>
+
 
 ## Parts and CSS Properties
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Checkbox} />
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').RadioButton} />

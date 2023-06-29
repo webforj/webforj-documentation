@@ -4,12 +4,9 @@ title: Number Field
 ---
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
+import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-
-<div style={{width: "100%" , display: "flex", justifyContent: "flex-end", marginBottom: "-50px"}}>
-<p style={{color: "gray"}} >API:&nbsp;</p>
-<b><a href="https://javadoc.io/static/org.dwcj/dwcj-engine/0.15.0/org/dwcj/controls/numericbox/NumericBox.html" style={{justifySelf: "flex-end"}}> Java </a></b>
-</div>
+<JavadocLink type="engine" location="org/dwcj/component/numberfield/NumberField"/>
 
 ### Labeling
 

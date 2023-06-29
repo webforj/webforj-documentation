@@ -4,6 +4,9 @@ title: Flex Layout
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
+
+<JavadocLink type="engine" location="org/dwcj/component/flexlayout/FlexLayout"/>
 
 
 The DWCJ provides developers with an efficient and intuitive way to layout their various applications and components - the Flex Layout. This toolset allows for items to be displayed either vertically or horizontally. 

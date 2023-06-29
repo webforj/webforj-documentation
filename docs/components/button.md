@@ -5,13 +5,9 @@ title: Button
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
+import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-
-
-<div style={{width: "100%" , display: "flex", justifyContent: "flex-end", marginBottom: "-50px"}}>
-<p style={{color: "gray"}} >API:&nbsp;</p>
-<b><a href="https://javadoc.io/doc/org.dwcj/dwcj-engine/latest/org/dwcj/controls/button/Button.html" style={{justifySelf: "flex-end"}}> Java </a></b>
-</div>
+<JavadocLink type="engine" location="org/dwcj/component/button/Button"/>
 
 ### Text
 
