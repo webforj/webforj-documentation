@@ -79,10 +79,16 @@ export const componentData =
     "description": "The Progress Bar component is fully customizable with various themes, expanses, and options such as orientation and indetermination to provide information to the users of applications."
   },
   {
+    "image": require('./img/component_images/radiobutton.png'),
+    "title": "Radio Button",
+    "link" : "./radiobutton",
+    "description": "The Slider component provides methods to set and retrieve properties such as orientation, minimum and maximum values, tick spacing, and callbacks for scroll events."
+  },
+  {
     "image": require('./img/component_images/slider.png'),
     "title": "Slider",
     "link" : "./slider",
-    "description": "The Slider component provides methods to set and retrieve properties such as orientation, minimum and maximum values, tick spacing, and callbacks for scroll events."
+    "description": "A RadioButton component is a graphical user interface element that allows users to select a single option from a predefined set of mutually exclusive choices by clicking on a small circular button, indicating their selection with a filled dot inside the button."
   },
   {
     "image": require('./img/component_images/textarea.png'),

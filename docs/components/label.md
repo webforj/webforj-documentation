@@ -52,11 +52,15 @@ height="250px"
 
 ### Line Wrapping
 
-To set whether or not the text should be wrapped, use the setWrap method:
+The line wrap method for a `Label` component sets whether or not the component automatically wraps the text within the label onto multiple lines when it exceeds the available width, ensuring that the entire text is visible without overflowing the container. Setting this value to false will truncate any text that falls out of the component's bounds. This helps manipulate readability and truncation of longer text content within the label. The default value for lineWrap is `true`.
 
-```java
-myLabel.setWrap(false);
-```
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.labeldemos.LabelLineWrap' 
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/labeldemos/LabelLineWrap.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/labelstyles/wrap_styles.css' 
+javaHighlight='{16-18}'
+height="250px"
+/>
 
 <br />
 
