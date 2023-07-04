@@ -30,62 +30,49 @@ The `RadioButton` class has three constructors:
 Radio buttons can utilize the ```setText(String foo)``` method, which will be positioned near the radio button according to the built-in `Position`.
 DWCJ radio buttons have built-in functionality to set text to be displayed either to the right or left of the component. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of a built-in enum class. Show below are the two settings: <br/>
 
-<ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxHorizontalText' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/checkboxdemos/CheckboxHorizontalText.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/checkbox/Horizontal.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css' 
-javaHighlight='{18}'
-/>
-
-<br/>
-
 ### Activation
 
 Radio buttons can be controlled using two types of activation: manual activation and auto activation. These dictate when a `RadioButton` will change its state.
 
-### Manual Activation
+#### Manual Activation
 
-- When a radio button is set to manual activation, it means that it will not be automatically checked when it gains focus.
+When a radio button is set to manual activation, it means that it will not be automatically checked when it gains focus.
 Manual activation allows the user to navigate through the radio button options using the keyboard or other input methods without immediately changing the selected option.
 
-- If the radio button is part of a group, selecting a different radio button within the group will automatically uncheck the previously selected radio button.
+If the radio button is part of a group, selecting a different radio button within the group will automatically uncheck the previously selected radio button.
 Manual activation provides finer control over the selection process, requiring an explicit action from the user to change the selected option.
 
-- Selecting multiple items: Indeterminism is useful when users need to select multiple items from a list or a set of options. It allows users to indicate that they want to select some, but not all, of the available choices.
 
-- Hierarchical data: Indeterminism can be employed in scenarios where there is a hierarchical relationship between CheckBoxes. For example, when selecting categories and subcategories, the indeterminate state can represent that some subcategories are selected while others are not, and the parent category is in the indeterminate state.
 
-<ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxHorizontalText' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/checkboxdemos/CheckboxHorizontalText.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/checkbox/Horizontal.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css' 
-javaHighlight='{18}'
-/>
+#### Auto Activation
 
-### Radio Button Groups
+Automatic activation is the default state for a `RadioButton`, and means that the button will be checked on whenever it gains focus for any reason. This means that
+not only clicking, but auto-focus or tab navigation will also check the button.
 
-Radio groups are used to group related radio buttons together, which helps establish the mutual exclusivity among the options within that group. Users can select only one radio button within a given radio group. When a user selects a radio button within a group, any previously selected radio button in the same group automatically becomes deselected. This ensures that only one option can be chosen at a time.
+### Switches
 
-A DWCJ RadioButton component stores the Group to which it belongs, which can be accessed via the `getButtonGroup()` method, and can be assigned to a group using the `setButtonGroup()`. To learn more about Radio Button groups, see the applicable documentation page. 
+A `RadioButton` can also be set to display as a switch provides which provides alternative visual representation for selecting options. Normally, radio buttons are circular or rounded in shape and indicate a single choice from a group of options. However, by calling the `setSwitch(boolean)` method, a `RadioButton` can be transformed into a switch that resembles a toggle switch or slider.
+
+When a `RadioButton` is displayed as a switch, it typically appears as a oblong shape with an indicator that can be toggled on or off. This visual representation gives users a more intuitive and familiar interface, similar to physical switches commonly found in electronic devices. To do this, execute code similar to the following snippet:
+
+```java
+RadioButton myButton = new RadioButton();
+myButton.setSwitch(true);
+```
+
+Setting a radio button to display as a switch can improve user experience by providing a clear and straightforward way to select options. It can enhance the visual appeal and usability of forms, settings panels, or any other interface element that requires multiple choices.
+
+It's important to note that the behavior of the radio button remains the same, meaning only one option can be selected at a time within a group. The switch-like appearance is primarily a visual transformation while retaining the functionality of a radio button.
+
 ### Expanses
 There are five checkbox expanses that are supported in the DWCJ which allow for quick styling without using CSS.
 Expanses are supported by use of a built-in enum class. Below are the expanses supported for the checkbox component: <br/>
 
-<ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxExpanseDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/checkboxdemos/CheckboxExpanseDemo.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/checkbox/Horizontal.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/expanse_styles.css' 
-javaHighlight='{17,21,25,29,33}'
-/>
-
 <br/>
 
-## Events
+### Events
 
-The `CheckBox` class provides methods to add and remove event listeners for the following events:
+The `RadioButton` class provides methods to add and remove event listeners for the following events:
 
 | Events | Description |
 |:-:|-|
@@ -103,7 +90,7 @@ The `CheckBox` class provides methods to add and remove event listeners for the 
 To add an event listener, use the appropriate method:
 
 ```java
-myCheckBox.addCheckedListener( e -> {
+myRadioButton.addCheckedListener( e -> {
   //Executed when the event fires
 });
 ```
@@ -111,7 +98,7 @@ myCheckBox.addCheckedListener( e -> {
 Additional syntactic sugar methods, or aliases, have been added to allow for alternative addition of events by using the `on` prefix followed by the event, such as:
 
 ```java
-myCheckBox.onChecked( e -> {
+myRadioButton.onChecked( e -> {
     //Executed when the event fires
 });
 ```
@@ -119,7 +106,7 @@ myCheckBox.onChecked( e -> {
 To remove an event listener, use the appropriate method:
 
 ```java
-myCheckBox.removeCheckedListener(listener);
+myRadioButton.removeCheckedListener(listener);
 ```
 
 :::info
@@ -128,6 +115,69 @@ For a method to be removed via the appropriate removeListener method, the signat
 
 
 
-## Parts and CSS Properties
+### Parts and CSS Properties
 
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').RadioButton} />
+
+## Radio Button Groups
+
+The `RadioButtonGroup` class is used to group related radio buttons together, which helps establish the mutual exclusivity among the options within that group. Users can select only one radio button within a given radio group. When a user selects a radio button within a group, any previously selected radio button in the same group automatically becomes deselected. This ensures that only one option can be chosen at a time.
+
+### Constructors
+
+The `RadioButtonGroup` class has four constructors:
+
+1. `RadioButtonGroup()`: Creates an empty `RadioButtonGroup` in the unchecked state.
+2. `RadioButtonGroup(String)`: Creates a `RadioButtonGroup` with an name.
+3. `RadioButtonGroup(RadioButton...)`: Creates a `RadioButtonGroup` with one or more `RadioButton` objects assigned to the group.
+4. `RadioButtonGroup(String, RadioButton...)` Creates a `RadioButtonGroup` with both a name and one or more `RadioButton` objects assigned to the group.
+
+A DWCJ RadioButton component stores the Group to which it belongs, which can be accessed via the `getButtonGroup()` method, and can be assigned to a group using the `setButtonGroup()`.
+
+### Adding and Removing RadioButtons
+
+It is possible to add and remove singular or multiple `RadioButton` objects to a group, ensuring that they exhibit mutually-exclusive checking behavior, and are associated with any name
+that may belong to the group.
+
+:::caution
+When removing a `RadioButton`, ensure that the `RadioButtonGroup` still has at least one option. Otherwise, this operation may result in an inconsistent or invalid state.
+:::
+
+### Naming
+
+The name attribute in a RadioButtonGroup is crucial for accessibility as it groups related radio buttons together, allowing users to make a single choice from the options provided. By assigning the same name value to all radio buttons within the group, assistive technologies, such as screen readers, can identify and convey the relationship between the options.
+
+By utilizing the name attribute appropriately, developers ensure that the RadioButtonGroup is accessible to all users, including those who rely on assistive technologies. It promotes a clear and understandable interface, enhancing usability and inclusivity in web applications.
+
+### Events
+
+The `RadioButtonGroup` class provides methods to add and remove change events. These events fire whenever a change is made to an element within the group.
+
+To add an `ChangeEvent` listener, use the appropriate method:
+
+```java
+myRadioButtonGroup.addChangeListener( e -> {
+  //Executed when the event fires
+});
+```
+
+Additional syntactic sugar methods, or aliases, have been added to allow for alternative addition of events by using the `on` prefix followed by the event, such as:
+
+```java
+myRadioButtonGroup.onChange( e -> {
+    //Executed when the event fires
+});
+```
+
+To remove an event listener, use the appropriate method:
+
+```java
+myRadioButton.removeChangeListener(listener);
+```
+<!-- <ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxHorizontalText' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/checkboxdemos/CheckboxHorizontalText.java'
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/checkbox/Horizontal.txt'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css' 
+javaHighlight='{18}'
+/> -->
