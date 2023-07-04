@@ -72,13 +72,13 @@ The `Label` class implements the TextAlignable interface, which allows you to se
 myLabel.setTextAlignment(Alignment.MIDDLE);
 ```
 
-<!-- <ComponentDemo 
+<ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.labeldemos.LabelAlignment' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/labeldemos/LabelAlignment.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/label/Alignment.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/labelstyles/alignment_styles.css' 
-javaHighlight='{43-45}'
-/> -->
+height="450px"
+/>
 
 
 ## Events
