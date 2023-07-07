@@ -42,7 +42,7 @@ In addition to using the label as static text, it can also be used as an HTML ta
 the label will be replaced with the desired HTML element.
 
 <ComponentDemo 
-path='https://us.bbx.kitchen/webapp/controlsamples?class=control_demos.labeldemos.LabelDemo' 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.labeldemos.LabelDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/labeldemos/LabelDemo.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/label/Demo.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/labelstyles/text_styles.css' 
