@@ -3,11 +3,19 @@ sidebar_position: 10
 title: CheckBox
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
+import { useState } from 'react';
 
 <JavadocLink type="engine" location="org/dwcj/component/checkbox/CheckBox"/>
+
+<!-- 
+<Tabs>
+  <TabItem value="Implementation" label="Implementation"> -->
+
 
 The `CheckBox` class is a java class in `org.dwcj.component.checkbox` package. It creates a component that can be selected or deselected, and which displays its state to the user. When clicked, a check mark appears inside the box, to indicate an affirmative choice (on). When clicked again, the check mark disappears, indicating a negative choice (off).
 
@@ -50,24 +58,10 @@ The DWCJ's `CheckBox` component supports indeterminism, which is a UI pattern co
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxIndeterminate' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/checkboxdemos/CheckboxIndeterminate.java'
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/checkboxdemos/CheckboxIndeterminate.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css' 
 height = '225px'
 />
-
-### Expanses
-There are five checkbox expanses that are supported in the DWCJ which allow for quick styling without using CSS.
-Expanses are supported by use of a built-in enum class. Below are the expanses supported for the checkbox component: <br/>
-
-<ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxExpanseDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/checkboxdemos/CheckboxExpanseDemo.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/checkbox/Horizontal.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/expanse_styles.css' 
-javaHighlight='{17,21,25,29,33}'
-/>
-
-<br/>
 
 ## Events
 
@@ -118,6 +112,32 @@ javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/ja
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css'
 />
 
+## Expanses
+There are five checkbox expanses that are supported in the DWCJ which allow for quick styling without using CSS.
+Expanses are supported by use of a built-in enum class. Below are the expanses supported for the checkbox component: <br/>
+
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxExpanseDemo' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/checkboxdemos/CheckboxExpanseDemo.java'
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/checkbox/Horizontal.txt'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/expanse_styles.css' 
+javaHighlight='{17,21,25,29,33}'
+/>
+
+<!-- </TabItem>
+
+<TabItem value="Styling" label="Styling"> -->
+
+
+
+<br/>
+
+
+
 ## Parts and CSS Properties
 
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Checkbox} />
+
+<!-- 
+</TabItem>
+</Tabs> -->
