@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-title: App Layout
+title: AppLayout
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 140
-title: Text Area
+title: TextArea
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';

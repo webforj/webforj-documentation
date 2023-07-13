@@ -1,6 +1,6 @@
 ---
 sidebar_position: 23
-title: Combo Box
+title: ComboBox
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';

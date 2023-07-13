@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-title: Flex Layout
+title: FlexLayout
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';

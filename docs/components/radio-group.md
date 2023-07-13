@@ -1,0 +1,90 @@
+---
+sidebar_position: 100
+title: RadioButtonGroup
+---
+
+import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
+import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
+
+<JavadocLink type="engine" location="org/dwcj/component/radiobutton/RadioButtonGroup"/>
+
+The `RadioButtonGroup` class is used to group related radio buttons together, which helps establish the mutual exclusivity among the options within that group. Users can select only one radio button within a given radio group. When a user selects a radio button within a group, any previously selected radio button in the same group automatically becomes deselected. This ensures that only one option can be chosen at a time.
+
+### Constructors
+
+The `RadioButtonGroup` class has four constructors:
+
+1. `RadioButtonGroup()`: Creates an empty `RadioButtonGroup` in the unchecked state.
+2. `RadioButtonGroup(String)`: Creates a `RadioButtonGroup` with an name.
+3. `RadioButtonGroup(RadioButton...)`: Creates a `RadioButtonGroup` with one or more `RadioButton` objects assigned to the group.
+4. `RadioButtonGroup(String, RadioButton...)` Creates a `RadioButtonGroup` with both a name and one or more `RadioButton` objects assigned to the group.
+
+A DWCJ RadioButton component stores the Group to which it belongs, which can be accessed via the `getButtonGroup()` method, and can be assigned to a group using the `setButtonGroup()`.
+
+### Adding and Removing RadioButtons
+
+It is possible to add and remove singular or multiple `RadioButton` objects to a group, ensuring that they exhibit mutually-exclusive checking behavior, and are associated with any name
+that may belong to the group.
+
+:::caution
+When removing a `RadioButton`, ensure that the `RadioButtonGroup` still has at least one option. Otherwise, this operation may result in an inconsistent or invalid state.
+:::
+
+### Naming
+
+The name attribute in a RadioButtonGroup is crucial for accessibility as it groups related radio buttons together, allowing users to make a single choice from the options provided. By assigning the same name value to all radio buttons within the group, assistive technologies, such as screen readers, can identify and convey the relationship between the options.
+
+By utilizing the name attribute appropriately, developers ensure that the RadioButtonGroup is accessible to all users, including those who rely on assistive technologies. It promotes a clear and understandable interface, enhancing usability and inclusivity in web applications.
+
+### Events
+
+The `RadioButtonGroup` class provides methods to add and remove change events. These events fire whenever a change is made to an element within the group.
+
+To add an `ChangeEvent` listener, use the appropriate method:
+
+```java
+myRadioButtonGroup.addChangeListener( e -> {
+  //Executed when the event fires
+});
+```
+
+Additional syntactic sugar methods, or aliases, have been added to allow for alternative addition of events by using the `on` prefix followed by the event, such as:
+
+```java
+myRadioButtonGroup.onChange( e -> {
+    //Executed when the event fires
+});
+```
+
+To remove an event listener, use the appropriate method:
+
+```java
+myRadioButton.removeChangeListener(listener);
+```
+
+### Usages
+
+The `RadioButtonGroup` is best used in scenarios where users need to make a single selection from a predefined set of options presented as radio buttons. Here are some examples of when to use the `RadioButtonGroup`:
+
+1. **Survey or Questionnaires**: `RadioButtonGroup` components are commonly used in surveys or questionnaires where users need to select a single response from a list of options.
+
+2. **Preference Settings**: Applications that involve preference or settings panels often use RadioButtonGroup component to allow users to choose a single option from a set of mutually exclusive choices.
+
+3. **Filtering or Sorting**: A `RadioButton` can be used in applications that require users to select a single filter or sorting option, such as sorting a list of items by different criteria.
+
+### Best Practices 
+
+To ensure an optimal user experience when using the RadioButton component, consider the following best practices:
+
+1. **Clearly Label Options**: Provide clear and concise labels for each `RadioButton` option to accurately describe the choice. Labels should be easy to understand and distinguish from one another.
+
+2. **Provide Default Selection**: If applicable, consider providing a default selection for Radio buttons to guide users when they first encounter the options. The default selection should align with the most common or preferred choice.
+
+<!-- <ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxHorizontalText' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/checkboxdemos/CheckboxHorizontalText.java'
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/checkbox/Horizontal.txt'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css' 
+javaHighlight='{18}'
+/> -->

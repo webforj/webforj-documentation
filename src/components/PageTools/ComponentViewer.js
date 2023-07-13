@@ -2,11 +2,11 @@
 import React from 'react';
 import { jsx, css } from '@emotion/react';
 import ComponentCard from '../DocsTools/ComponentCard';
-import componentData from '@site/static/card_data.js'
+// import componentData from '@site/static/card_data.js'
 
 
 
-export default function ComponentViewer() {
+export default function ComponentViewer( {componentData} ) {
   
   const mainStyles = css`
     display : flex;

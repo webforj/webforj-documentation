@@ -1,6 +1,6 @@
 ---
 sidebar_position: 90
-title: Progress Bar
+title: ProgressBar
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';

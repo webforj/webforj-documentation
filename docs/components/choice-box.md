@@ -1,6 +1,6 @@
 ---
 sidebar_position: 20 
-title: Choice Box
+title: ChoiceBox
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';

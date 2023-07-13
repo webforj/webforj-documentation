@@ -1,6 +1,6 @@
 ---
 sidebar_position: 60 
-title: List Box
+title: ListBox
 ---
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';

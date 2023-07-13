@@ -63,7 +63,7 @@ cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/r
 height = '225px'
 />
 
-## Events
+### Events
 
 The `CheckBox` class provides methods to add and remove event listeners for the following events:
 
@@ -112,7 +112,7 @@ javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/ja
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css'
 />
 
-## Expanses
+### Expanses
 There are five checkbox expanses that are supported in the DWCJ which allow for quick styling without using CSS.
 Expanses are supported by use of a built-in enum class. Below are the expanses supported for the checkbox component: <br/>
 
@@ -128,13 +128,33 @@ javaHighlight='{17,21,25,29,33}'
 
 <TabItem value="Styling" label="Styling"> -->
 
+### Usages
 
+The `CheckBox` is best used in scenarios where users need to make multiple selections from a list of options. Here are some examples of when to use the `CheckBox`:
+
+1. **Task or Feature Selection**: Checkboxes are commonly used when users need to select multiple tasks or features to perform certain actions or configurations.
+
+2. **Preference Settings**: Applications that involve preference or settings panels often use Checkboxes to allow users to choose multiple options from a set of choices. This is best for options which are not mutually exclusive.
+
+3. **Filtering or Sorting**: A `CheckBox` can be used in applications that require users to select multiple filters or categories, such as filtering search results or selecting multiple items for further actions.
+
+### Best Practices 
+
+To ensure an optimal user experience when using the RadioButton component, consider the following best practices:
+
+1. **Clearly Label Options**: Provide clear and concise labels for each `CheckBox` option to accurately describe the choice. Labels should be easy to understand and distinguish from one another.
+
+2. **Group Radio buttons**: Group related Checkboxes together to indicate their association. This helps users understand that multiple options can be selected within a specific group.
+
+3. **Provide Default Selection**: If applicable, consider providing a default selection for Radio buttons to guide users when they first encounter the options. The default selection should align with the most common or preferred choice.
+
+4. **Indeterminism**: If a parent `CheckBox` component has multiple components belonging to it in a way in which some can be checked on and others checked off, use the indeterminate property to show that not all `CheckBox` components are checked or unchecked.
 
 <br/>
 
 
 
-## Parts and CSS Properties
+### Parts and CSS Properties
 
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Checkbox} />
 
