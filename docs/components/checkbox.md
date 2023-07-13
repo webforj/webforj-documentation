@@ -17,7 +17,7 @@ import { useState } from 'react';
   <TabItem value="Implementation" label="Implementation"> -->
 
 
-The `CheckBox` class is a java class in `org.dwcj.component.checkbox` package. It creates a component that can be selected or deselected, and which displays its state to the user. When clicked, a check mark appears inside the box, to indicate an affirmative choice (on). When clicked again, the check mark disappears, indicating a negative choice (off).
+The `CheckBox` class creates a component that can be selected or deselected, and which displays its state to the user. When clicked, a check mark appears inside the box, to indicate an affirmative choice (on). When clicked again, the check mark disappears, indicating a negative choice (off).
 
 Here is an example of how to create a `CheckBox` object:
 

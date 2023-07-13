@@ -8,7 +8,7 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 <JavadocLink type="engine" location="org/dwcj/component/label/Label"/>
 
-The Label class is a Java class in the `org.dwcj.component.label` package. It is used to create a label object. Here's an example of how to create a Label object:
+The `Label` class is used to create a label object which shows static text. Here's an example of how to create a Label object:
 
 ```java
 Label myLabel = new Label("Hello, world!");
