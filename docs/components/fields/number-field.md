@@ -15,6 +15,18 @@ The `DateTimeField` class is a Field component, and as such shares all of the co
 
 The `NumberField` component can be used to accept numerical input from the user. It ensures that only valid numeric values are entered and provides a convenient interface for inputting numbers.
 
+### Usages
+
+The `NumberField` is best used in scenarios where capturing or manipulating numerical data is crucial to the user interface or application functionality. Here are some examples of when to use the `NumberField`:
+
+1. **Numeric Input Forms**: When designing forms that require numeric inputs, using a `NumberField` simplifies the input process for users. This is particularly useful for applications that collect user data or require numerical values.
+
+2. **Data Analysis and Calculations**: A `NumberField` will be particularly valuable in applications that involve data analysis, calculations, or mathematical operations. They enable users to input or manipulate numeric values accurately.
+
+3. **Financial and Budgeting Applications**: Applications that involve financial calculations, budgeting, or tracking expenses often require precise numeric inputs. A `NumberField` ensures accurate entry of financial figures.
+
+4. **Measurement and Unit Conversion**: In applications that deal with measurements or unit conversions, the `NumberField` is ideal for inputting numerical values with units such as length, weight, or volume.
+
 ### Constructors
 
 The `NumberField` class has three constructors:
@@ -35,17 +47,14 @@ You can use the `setStep` method to specify the granularity that the value must 
 
 You can set placeholder text for the `NumberField` using the `setPlaceholder` method. The placeholder text is displayed when the field is empty, helping to prompt the user to enter appropriate input into the `NumberField`.
 
-### Usages
 
-The `NumberField` is best used in scenarios where capturing or manipulating numerical data is crucial to the user interface or application functionality. Here are some examples of when to use the `NumberField`:
+:::tip
+If the numeric input relates to a specific unit of measurement or has a particular context, provide clear labeling or additional information to guide users and ensure accurate input.
+:::
 
-1. **Numeric Input Forms**: When designing forms that require numeric inputs, using a `NumberField` simplifies the input process for users. This is particularly useful for applications that collect user data or require numerical values.
+### Parts and CSS Properties
 
-2. **Data Analysis and Calculations**: A `NumberField` will be particularly valuable in applications that involve data analysis, calculations, or mathematical operations. They enable users to input or manipulate numeric values accurately.
-
-3. **Financial and Budgeting Applications**: Applications that involve financial calculations, budgeting, or tracking expenses often require precise numeric inputs. A `NumberField` ensures accurate entry of financial figures.
-
-4. **Measurement and Unit Conversion**: In applications that deal with measurements or unit conversions, the `NumberField` is ideal for inputting numerical values with units such as length, weight, or volume.
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Field} />
 
 ### Best Practices
 
@@ -56,11 +65,3 @@ To ensure a seamless integration and optimal user experience, consider the follo
 2. **Utilize Increment/Decrement Buttons**: If appropriate for your application, consider utilizing increment and decrement buttons with the NumberField. This allows users to adjust the numeric value by a specific increment or decrement with a single click.
 
 3. **Handle Minimum and Maximum Values**: If your application requires limiting the numeric input range, incorporate validation and visual cues to indicate the acceptable minimum and maximum values. Prevent users from entering values outside the defined range.
-
-:::tip
-If the numeric input relates to a specific unit of measurement or has a particular context, provide clear labeling or additional information to guide users and ensure accurate input.
-:::
-
-### Parts and CSS Properties
-
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Field} />

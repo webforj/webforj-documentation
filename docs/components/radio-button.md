@@ -11,24 +11,37 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 The `RadioButton` class creates an object that can be selected or deselected, and which displays its state to the user. By convention, only one radio button in a group can be selected at a time. Radio buttons are commonly used when mutually exclusive options are available, allowing the user to choose a single option from a set of choices.
 
-Here is an example of how to create a `RadioButton` object:
+### Usages
 
-```java
-RadioButton myRadioButton = new RadioButton("RadioButton Text");
-```
+The `RadioButton` is best used in scenarios where users need to make a single selection from a predefined set of options. Here are some examples of when to use the `RadioButton`:
+
+1. **Survey or Questionnaires**: Radio buttons are commonly used in surveys or questionnaires where users need to select a single response from a list of options.
+
+2. **Preference Settings**: Applications that involve preference or settings panels often use Radio buttons to allow users to choose a single option from a set of mutually exclusive choices.
+
+3. **Filtering or Sorting**: A `RadioButton` can be used in applications that require users to select a single filter or sorting option, such as sorting a list of items by different criteria.
+
+
+
 
 ### Constructors
 
 The `RadioButton` class has three constructors:
 
 1. `RadioButton()`: Creates an empty `RadioButton` in the unchecked state.
-2. `RadioButton(String)`: Creates a `RadioButton` with an attached label in the unchecked state.
-3. `RadioButton(String, boolean)` Creates a `RadioButton` with an attached label in either the checked or unchecked state, based on the boolean passed (`true` for checked, `false` for unchecked).
+2. `RadioButton(String text)`: Creates a `RadioButton` with an attached label in the unchecked state.
+3. `RadioButton(String text, boolean checked)` Creates a `RadioButton` with an attached label in either the checked or unchecked state, based on the boolean passed (`true` for checked, `false` for unchecked).
+
+Here is an example of how to create a `RadioButton` object:
+
+```java
+RadioButton myRadioButton = new RadioButton("RadioButton Text");
+```
 
 ### Text and Positioning
 
 Radio buttons can utilize the ```setText(String foo)``` method, which will be positioned near the radio button according to the built-in `Position`.
-DWCJ radio buttons have built-in functionality to set text to be displayed either to the right or left of the component. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of a built-in enum class. Show below are the two settings: <br/>
+Radio buttons have built-in functionality to set text to be displayed either to the right or left of the component. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of the `HorizontalAlignment` enum class. Show below are the two settings: <br/>
 
 ### Activation
 
@@ -65,8 +78,8 @@ Setting a radio button to display as a switch can improve user experience by pro
 It's important to note that the behavior of the radio button remains the same, meaning only one option can be selected at a time within a group. The switch-like appearance is primarily a visual transformation while retaining the functionality of a radio button.
 
 ### Expanses
-There are five checkbox expanses that are supported in the DWCJ which allow for quick styling without using CSS.
-Expanses are supported by use of a built-in enum class. Below are the expanses supported for the checkbox component: <br/>
+There are five checkbox expanses that are supported which allow for quick styling without using CSS.
+Expanses are supported by use of the `Expanse` enum class. Below are the expanses supported for the checkbox component: <br/>
 
 <br/>
 
@@ -113,27 +126,16 @@ myRadioButton.removeCheckedListener(listener);
 For a method to be removed via the appropriate removeListener method, the signature of the method must be saved. 
 :::
 
+### Parts and CSS Properties
 
-### Usages
-
-The `RadioButton` is best used in scenarios where users need to make a single selection from a predefined set of options. Here are some examples of when to use the `RadioButton`:
-
-1. **Survey or Questionnaires**: Radio buttons are commonly used in surveys or questionnaires where users need to select a single response from a list of options.
-
-2. **Preference Settings**: Applications that involve preference or settings panels often use Radio buttons to allow users to choose a single option from a set of mutually exclusive choices.
-
-3. **Filtering or Sorting**: A `RadioButton` can be used in applications that require users to select a single filter or sorting option, such as sorting a list of items by different criteria.
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').RadioButton} />
 
 ### Best Practices 
 
 To ensure an optimal user experience when using the RadioButton component, consider the following best practices:
 
-1. **Clearly Label Options**: Provide clear and concise labels for each `RadioButton` option to accurately describe the choice. Labels should be easy to understand and distinguish from one another.
+1. **Clearly Label Options**: Provide clear and concise text for each `RadioButton` option to accurately describe the choice. Text should be easy to understand and distinguish from one another.
 
-2. **Group Radio buttons**: Group related Radio buttons together to indicate their association. This helps users understand that only one option can be selected within a specific group. This can be done effectively using the DWCJ's [`RadioButtonGroup`](/docs/components/radio-group) component
+2. **Group Radio buttons**: Group related Radio buttons together to indicate their association. This helps users understand that only one option can be selected within a specific group. This can be done effectively using the [`RadioButtonGroup`](/docs/components/radio-group) component.
 
 3. **Provide Default Selection**: If applicable, consider providing a default selection for Radio buttons to guide users when they first encounter the options. The default selection should align with the most common or preferred choice.
-
-### Parts and CSS Properties
-
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').RadioButton} />

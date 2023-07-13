@@ -54,9 +54,9 @@ The `TimeField` is best used in scenarios where capturing or manipulating time v
 
 1. **Provide Clear Time Format Examples**: Clearly indicate the expected time format to users within or near the `TimeField`. Use examples or placeholders to guide users in entering time correctly. Consider displaying the time format dynamically based on the user's locale if applicable.
 
-1. **Consider Accessibility**: Utilize the `TimeField` component with accessibility in mind, ensuring it meets accessibility standards such as providing proper labels, sufficient color contrast, and compatibility with assistive technologies.
+2. **Consider Accessibility**: Utilize the `TimeField` component with accessibility in mind, ensuring it meets accessibility standards such as providing proper labels, sufficient color contrast, and compatibility with assistive technologies.
 
-1. **Include Clear Time Clearing Option**: Enable users to clear the selected time easily if needed, providing a way to reset the `TimeField` to an empty state.
+3. **Include Clear Time Clearing Option**: Enable users to clear the selected time easily if needed, providing a way to reset the `TimeField` to an empty state.
 
 
 ### Parts and CSS Properties

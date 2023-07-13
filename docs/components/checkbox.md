@@ -19,24 +19,34 @@ import { useState } from 'react';
 
 The `CheckBox` class creates a component that can be selected or deselected, and which displays its state to the user. When clicked, a check mark appears inside the box, to indicate an affirmative choice (on). When clicked again, the check mark disappears, indicating a negative choice (off).
 
-Here is an example of how to create a `CheckBox` object:
+### Usages
 
-```java
-CheckBox myCheckbox = new CheckBox("Checkbox Text");
-```
+The `CheckBox` is best used in scenarios where users need to make multiple selections from a list of options. Here are some examples of when to use the `CheckBox`:
+
+1. **Task or Feature Selection**: Checkboxes are commonly used when users need to select multiple tasks or features to perform certain actions or configurations.
+
+2. **Preference Settings**: Applications that involve preference or settings panels often use Checkboxes to allow users to choose multiple options from a set of choices. This is best for options which are not mutually exclusive.
+
+3. **Filtering or Sorting**: A `CheckBox` can be used in applications that require users to select multiple filters or categories, such as filtering search results or selecting multiple items for further actions.
+
 
 ### Constructors
 
 The `CheckBox` class has three constructors:
 
 1. `CheckBox()`: Creates an empty `CheckBox` in the unchecked state.
-2. `CheckBox(String)`: Creates a `CheckBox` with an attached label in the unchecked state.
-3. `CheckBox(String, boolean)` Creates a `CheckBox` with an attached label in either the checked or unchecked state, based on the boolean passed (`true` for checked, `false` for unchecked).
+2. `CheckBox(String text)`: Creates a `CheckBox` with an attached label in the unchecked state.
+3. `CheckBox(String text, boolean checked)` Creates a `CheckBox` with an attached label in either the checked or unchecked state, based on the boolean passed (`true` for checked, `false` for unchecked).
+
+Here is an example of how to create a `CheckBox` object:
+
+```java
+CheckBox myCheckbox = new CheckBox("Checkbox Text");
+```
 
 ### Text and Positioning
 
-Check boxes can utilize the ```setText(String foo)``` method, which will be positioned near the check box according to the built-in `Position`.
-DWCJ checkboxes have built-in functionality to set text to be displayed either to the right or left of the box. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of a built-in enum class. Show below are the two settings: <br/>
+Check boxes can utilize the ```setText(String foo)``` method, which will be positioned near the check box according to the built-in `Position`. Checkboxes have built-in functionality to set text to be displayed either to the right or left of the box. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of the `HorizontalAlignment` enum class. Show below are the two settings: <br/>
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxHorizontalText' 
@@ -50,7 +60,7 @@ javaHighlight='{18}'
 
 ### Indeterminism
 
-The DWCJ's `CheckBox` component supports indeterminism, which is a UI pattern commonly used in forms and lists to indicate that a group of checkboxes has a mixture of checked and unchecked states. This state is represented by a third visual state, typically displayed as a filled square or a dash inside the checkbox. There are a few common use cases associated with the indeterminate status:
+The `CheckBox` component supports indeterminism, which is a UI pattern commonly used in forms and lists to indicate that a group of checkboxes has a mixture of checked and unchecked states. This state is represented by a third visual state, typically displayed as a filled square or a dash inside the checkbox. There are a few common use cases associated with the indeterminate status:
 
 - Selecting multiple items: Indeterminism is useful when users need to select multiple items from a list or a set of options. It allows users to indicate that they want to select some, but not all, of the available choices.
 
@@ -113,8 +123,8 @@ cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/r
 />
 
 ### Expanses
-There are five checkbox expanses that are supported in the DWCJ which allow for quick styling without using CSS.
-Expanses are supported by use of a built-in enum class. Below are the expanses supported for the checkbox component: <br/>
+There are five `CheckBox` expanses that are supported which allow for quick styling without using CSS.
+Expanses are supported by use of the `Expanse` enum class. Below are the expanses supported for the checkbox component: <br/>
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxExpanseDemo' 
@@ -128,27 +138,8 @@ javaHighlight='{17,21,25,29,33}'
 
 <TabItem value="Styling" label="Styling"> -->
 
-### Usages
 
-The `CheckBox` is best used in scenarios where users need to make multiple selections from a list of options. Here are some examples of when to use the `CheckBox`:
 
-1. **Task or Feature Selection**: Checkboxes are commonly used when users need to select multiple tasks or features to perform certain actions or configurations.
-
-2. **Preference Settings**: Applications that involve preference or settings panels often use Checkboxes to allow users to choose multiple options from a set of choices. This is best for options which are not mutually exclusive.
-
-3. **Filtering or Sorting**: A `CheckBox` can be used in applications that require users to select multiple filters or categories, such as filtering search results or selecting multiple items for further actions.
-
-### Best Practices 
-
-To ensure an optimal user experience when using the RadioButton component, consider the following best practices:
-
-1. **Clearly Label Options**: Provide clear and concise labels for each `CheckBox` option to accurately describe the choice. Labels should be easy to understand and distinguish from one another.
-
-2. **Group Radio buttons**: Group related Checkboxes together to indicate their association. This helps users understand that multiple options can be selected within a specific group.
-
-3. **Provide Default Selection**: If applicable, consider providing a default selection for Radio buttons to guide users when they first encounter the options. The default selection should align with the most common or preferred choice.
-
-4. **Indeterminism**: If a parent `CheckBox` component has multiple components belonging to it in a way in which some can be checked on and others checked off, use the indeterminate property to show that not all `CheckBox` components are checked or unchecked.
 
 <br/>
 
@@ -161,3 +152,15 @@ To ensure an optimal user experience when using the RadioButton component, consi
 <!-- 
 </TabItem>
 </Tabs> -->
+
+### Best Practices 
+
+To ensure an optimal user experience when using the RadioButton component, consider the following best practices:
+
+1. **Clearly Label Options**: Provide clear and concise labels for each `CheckBox` option to accurately describe the choice. Labels should be easy to understand and distinguish from one another.
+
+2. **Group CheckBoxes**: Group related Checkboxes together to indicate their association. This helps users understand that multiple options can be selected within a specific group.
+
+3. **Provide Default Selection**: If applicable, consider providing a default selection for CheckBoxes to guide users when they first encounter the options. The default selection should align with the most common or preferred choice.
+
+4. **Indeterminism**: If a parent `CheckBox` component has multiple components belonging to it in a way in which some can be checked on and others checked off, use the indeterminate property to show that not all `CheckBox` components are checked or unchecked.

@@ -15,6 +15,16 @@ The `PasswordField` class is a Field component, and as such shares all of the co
 
 The `PasswordField` component provides a way for the user to securely enter a password. The element is presented as a one-line plain text editor control in which the text is obscured so that it cannot be read, usually by replacing each character with a symbol such as the asterisk ("*") or a dot ("•"). This character will vary depending on the user agent and operating system.
 
+### Usages
+
+The `PasswordField` is best used in scenarios where capturing or handling sensitive information, such as passwords or other confidential data, is essential to the user interface or application functionality. Here are some examples of when to use the `PasswordField`:
+
+1. **User Authentication and Registration**: Password fields are crucial in applications that involve user authentication or registration processes, where secure password input is required.
+
+2. **Secure Form Inputs**: When designing forms that require input of sensitive information, such as credit card details or personal identification numbers (PINs), using a `PasswordField` ensures the secure entry of such data.
+
+3. **Account Management and Profile Settings**: Password fields are valuable in applications that involve account management or profile settings, allowing users to change or update their passwords securely.
+
 ### Constructors
 
 The `PasswordField` class has three constructors:
@@ -31,15 +41,9 @@ You can use the `setPasswordReveal` method to control the visibility of the pass
 
 It is possible to interact with the `PasswordField` class to retrieve a user's selected text, and to get information about the user's selection. You can retrieve the selected text in the `PasswordField` using the `getSelectedText` method. This behavior would commonly be used in conjunction with an event. Similarly, it is possible to retrieve the current selection range of the `PasswordField` using the `getSelectionRange` method. This returns a `SelectionRange` object representing the start and end indices of the selected text.
 
-### Usages
+### Parts and CSS Properties
 
-The `PasswordField` is best used in scenarios where capturing or handling sensitive information, such as passwords or other confidential data, is essential to the user interface or application functionality. Here are some examples of when to use the `PasswordField`:
-
-1. **User Authentication and Registration**: Password fields are crucial in applications that involve user authentication or registration processes, where secure password input is required.
-
-2. **Secure Form Inputs**: When designing forms that require input of sensitive information, such as credit card details or personal identification numbers (PINs), using a `PasswordField` ensures the secure entry of such data.
-
-3. **Account Management and Profile Settings**: Password fields are valuable in applications that involve account management or profile settings, allowing users to change or update their passwords securely.
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Field} />
 
 ### Best Practices
 
@@ -54,7 +58,3 @@ As the `PasswordField` component is often associated with sensitive information,
 4. **Allow Password Reset**: If your application involves user accounts, provide an option for users to reset their password. This could be in the form of a "Forgot Password" feature that initiates a password recovery process.
 
 5. **Consider Accessibility**: Utilize the PasswordField with accessibility in mind, ensuring it meets accessibility standards such as providing proper labels, and compatibility with assistive technologies.
-
-### Parts and CSS Properties
-
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Field} />
