@@ -37,14 +37,6 @@ The `PasswordField` class has three constructors:
 
 You can use the `setPasswordReveal` method to control the visibility of the password reveal icon. When set to true, the password reveal icon is visible -  otherwise, it is hidden. You can check whether the password reveal icon is visible using the `isPasswordReveal` method. It returns true if the password reveal icon is visible; otherwise, it returns false. 
 
-### Selected Text
-
-It is possible to interact with the `PasswordField` class to retrieve a user's selected text, and to get information about the user's selection. You can retrieve the selected text in the `PasswordField` using the `getSelectedText` method. This behavior would commonly be used in conjunction with an event. Similarly, it is possible to retrieve the current selection range of the `PasswordField` using the `getSelectionRange` method. This returns a `SelectionRange` object representing the start and end indices of the selected text.
-
-### Parts and CSS Properties
-
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Field} />
-
 ### Best Practices
 
 As the `PasswordField` component is often associated with sensitive information, consider the following best practices when using the `PasswordField`:

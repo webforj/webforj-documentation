@@ -46,21 +46,16 @@ You can use the `setMax()` and `setMin()` methods to specify the acceptable rang
 
 The `DateField` class also provides the following static utility methods:
 
-`fromDate(String dateAsString)`: Convert a date string in yyyy-MM-dd format to a LocalDate object which can then be utilized with this class, or elsewhere.
+- `fromDate(String dateAsString)`: Convert a date string in yyyy-MM-dd format to a LocalDate object which can then be utilized with this class, or elsewhere.
 
-`toDate(LocalDate date)`: Convert a LocalDate object to a date string in yyyy-MM-dd format.
+- `toDate(LocalDate date)`: Convert a LocalDate object to a date string in yyyy-MM-dd format.
 
-`isValidDate(String dateAsString)`: Checks to see if the given string is a valid yyyy-MM-dd date. This will return a boolean value true if so, false otherwise.
-
-### Parts and CSS Properties
-
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Field} />
-
+- `isValidDate(String dateAsString)`: Checks to see if the given string is a valid yyyy-MM-dd date. This will return a boolean value true if so, false otherwise.
 
 ### Best Practices
 
 To ensure an optimal user experience when using the `DateField` component, consider the following best practices:
 
-1. **Consider Accessibility**: Ensure that your utilization of the `DateField` meets accessibility standards, such as providing sufficient color contrast, using proper labels, and being compatible with assistive technologies.
+1. **Consider Accessibility**: Ensure that your utilization of the `DateField` meets accessibility standards, using proper labels, and being compatible with assistive technologies.
 
 2. **Auto-Populate Current Date**: Consider providing an option to auto-populate the current date as a default value in the date field, if appropriate for your application's use case.

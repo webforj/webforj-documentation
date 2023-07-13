@@ -55,7 +55,9 @@ By calling the `setSpellCheck(true)` method, you can enable the spellcheck featu
 
 ## Shared Events
 
-All DWCJ field components share the following methods to add and remove event listeners for the following events:
+:::caution Notice
+All field components share the following methods to add and remove event listeners for the following events
+:::
 
 | Events | Description |
 |:-:|-|
@@ -66,3 +68,13 @@ All DWCJ field components share the following methods to add and remove event li
 |`MouseEnterEvent`| An event that is triggered when the mouse cursor enters the boundaries of an element. It occurs when the user moves the mouse pointer over the specified element, indicating that the mouse has entered its area. |
 |`MouseExitEvent`| An event that is triggered when the mouse cursor exits the boundaries of an element. It occurs when the user moves the mouse pointer out of the boundaries of the specified element, indicating that the mouse has exited its area. |
 |`RightMouseDownEvent`| An event refers to an event that is triggered when the user presses the right mouse button while the cursor is over an element. It allows you to capture the specific action of the user's right mouse button being pressed down within the boundaries of the element. |
+
+## Parts and CSS Properties
+
+:::caution Notice
+As all field components are built from a singular web component, they will all share the
+following Shadow Parts and CSS Property values
+:::
+
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Field} />
+

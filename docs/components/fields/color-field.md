@@ -38,22 +38,24 @@ The `ColorField` class has four constructors:
 
 ### Color Code Format
 
-Currently, the `ColorField` supports #rrggbb hexadecimal format. Only simple colors (without alpha channel) are allowed in the picker interface. Additionally, the `ColorField` comes along with a various methods that interact with the `java.awt.Color` class to add flexibility.
+Currently, the `ColorField` supports `#RRGGBB` hexadecimal format. Only simple colors (without alpha channel) are allowed in the picker interface. Additionally, the `ColorField` comes along with a various methods that interact with the `java.awt.Color` class to add flexibility.
 
 :::info
 The component's presentation may vary substantially from one browser and/or platform to another. It might be a simple textual field that automatically validates to ensure that the color information is entered in the proper format, a platform-standard color picker, or some kind of custom color picker window.
 :::
 
-### Parts and CSS Properties
+### Static Utilities 
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Field} />
+The `ColorField` class also provides the following static utility methods:
+
+- `Color fromHex(String hex)`: Convert a color string in hex format to a `Color` object which can then be utilized with this class, or elsewhere.
+
+- `String toHex(Color color)`: Convert the given value to the corresponding hex representation.
+
+- `boolean isValidHexColor(String hex)`: Check if the given value is a valid 7 character hex color.
 
 ### Best Practices
 
 To ensure an optimal user experience when using the `ColorField` component, consider the following best practices:
 
-1. **Consider Accessibility:** Ensure that the use of the color field meets accessibility standards. Provide sufficient color contrast to ensure readability, especially when the color field is used in conjunction with other UI elements.
-
-2. **Allow Undo/Redo**: If possible, include undo and redo functionality in your application to enable users to revert or repeat color selections, especially when working on complex color schemes or modifications.
-
-3. **Consider Contextual Assistance**: Provide contextual assistance, such as tooltips or inline help, to guide users in understanding the purpose and usage of the color field component.
+ **Consider Contextual Assistance**: Provide contextual assistance, such as tooltips or inline help, to guide users in understanding the purpose and usage of the color field component.

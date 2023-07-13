@@ -58,10 +58,6 @@ You can set placeholder text for the `TextField` using the `setPlaceholder` meth
 
 It is possible to interact with the `TextField` class to retrieve a user's selected text, and to get information about the user's selection. You can retrieve the selected text in the `TextField` using the `getSelectedText` method. This behavior would commonly be used in conjunction with an event. Similarly, it is possible to retrieve the current selection range of the `TextField` using the `getSelectionRange` method. This returns a `SelectionRange` object representing the start and end indices of the selected text.
 
-### Parts and CSS Properties
-
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Field} />
-
 ### Best Practices
 
 The following section outlines some suggested best practices for utilization of the `TextField`.

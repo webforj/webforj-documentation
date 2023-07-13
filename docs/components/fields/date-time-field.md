@@ -44,16 +44,11 @@ You can use the `setMax()` and `setMin()` methods to specify the acceptable rang
 
 The DateTimeField class also provides the following static utility methods:
 
-`fromDateTime(String dateTimeAsString)`: Convert a date and time string in yyyy-MM-ddTHH:mm:ss format to a LocalDateTime object which can then be utilized with this class, or elsewhere.
+- `fromDateTime(String dateTimeAsString)`: Convert a date and time string in yyyy-MM-ddTHH:mm:ss format to a LocalDateTime object which can then be utilized with this class, or elsewhere.
 
-`toDateTime(LocalDateTime dateTime)`: Convert a LocalDateTime object to a date and time string in yyyy-MM-ddTHH:mm:ss format.
+- `toDateTime(LocalDateTime dateTime)`: Convert a LocalDateTime object to a date and time string in yyyy-MM-ddTHH:mm:ss format.
 
-`isValidDateTime(String dateTimeAsString)`: Checks to see if the given string is a valid yyyy-MM-ddTHH:mm:ss date and time. This will return a boolean value true if so, false otherwise.
-
-### Parts and CSS Properties
-
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Field} />
-
+- `isValidDateTime(String dateTimeAsString)`: Checks to see if the given string is a valid yyyy-MM-ddTHH:mm:ss date and time. This will return a boolean value true if so, false otherwise.
 
 ### Best Practices
 

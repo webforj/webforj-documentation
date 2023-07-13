@@ -47,14 +47,9 @@ You can use the `setStep` method to specify the granularity that the value must 
 
 You can set placeholder text for the `NumberField` using the `setPlaceholder` method. The placeholder text is displayed when the field is empty, helping to prompt the user to enter appropriate input into the `NumberField`.
 
-
 :::tip
 If the numeric input relates to a specific unit of measurement or has a particular context, provide clear labeling or additional information to guide users and ensure accurate input.
 :::
-
-### Parts and CSS Properties
-
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Field} />
 
 ### Best Practices
 
