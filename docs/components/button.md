@@ -113,9 +113,10 @@ javaHighlight='{18-22}'
 
 <br />
 
+<!-- 
 ### Vertical Text Alignments
 
-The DWCJ supports alignment of text within a button without having to use CSS to accomplish this.
+<!-- The DWCJ supports alignment of text within a button without having to use CSS to accomplish this.
 Shown below are the three options for vertical alignment of text within a button : <br/>
 
 <ComponentDemo 
@@ -124,15 +125,15 @@ javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/ja
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Alignment.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/alignment_styles.css'
 javaHighlight='{24,27,30}'
-/>
+/> -->
 
 <!-- ![Button vertical alignments](./_images/button/button_alignment.jpg) -->
 
-Listed below are the current supported vertical text alignments for the button component:
+<!-- Listed below are the current supported vertical text alignments for the button component:
 
 |Button Vertical Alignments|
 |-|
-|<ul><li>```Button.Expanse.TOP```</li><li>```Button.Expanse.CENTER```</li><li>```Button.Expanse.BOTTOM```</li></ul>|
+|<ul><li>```Button.Expanse.TOP```</li><li>```Button.Expanse.CENTER```</li><li>```Button.Expanse.BOTTOM```</li></ul>| -->
 
 ## Parts and CSS Properties
 

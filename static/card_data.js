@@ -36,12 +36,12 @@ export const componentData =
     "link" : "./dialog",
     "description": "The DWCJ's dialog component is built to allow a developer to quickly and easily display a dialog on their application, for instances such as a login menu or information box."
   },
-  {
-    "image": require('./img/component_images/field.png'),
-    "title": "Field",
-    "link" : "./field",
-    "description": "An editable text field component with various features such as read-only mode, focus control, tab traversal, and text alignment."
-  },
+  // {
+  //   "image": require('./img/component_images/field.png'),
+  //   "title": "Field",
+  //   "link" : "./field",
+  //   "description": "An editable text field component with various features such as read-only mode, focus control, tab traversal, and text alignment."
+  // },
   {
     "image": require('./img/component_images/label.png'),
     "title": "Label",
@@ -51,13 +51,13 @@ export const componentData =
   {
     "image": require('./img/component_images/applayout.png'),
     "title": "App Layout",
-    "link" : "./layouts/app-layout",
+    "link" : "../layouts/app-layout",
     "description": "A powerful, easy to use and fully customizable layout which provides a header, footer , drawer, and content section all built into a responsive component which can be easily customized to quickly build common application layouts such as a dashboard."
   },
   {
     "image": require('./img/component_images/flexlayout.png'),
     "title": "Flex Layout",
-    "link" : "./layouts/flex_layouts",
+    "link" : "../layouts/flex_layouts",
     "description": "An efficient and intuitive way to layout applications and components - the Flex Layout allows for items to be displayed either vertically or horizontally following the CSS Flexbox rule set."
   },
   {
@@ -66,12 +66,12 @@ export const componentData =
     "link" : "./list-box",
     "description": "The List Box provides functionality for creating and manipulating a list in an application, and includes adding and removing items, selecting and deselecting items, handling events, and setting various properties."
   },
-  {
-    "image": require('./img/component_images/numberfield.png'),
-    "title": "Number Field",
-    "link" : "./number-field",
-    "description": "The Number Field provides numeric-specific functionality that allows developers to set masks and apply rules to the values that are entered to make data entry, retrieval and processing more straightforward."
-  },
+  // {
+  //   "image": require('./img/component_images/numberfield.png'),
+  //   "title": "Number Field",
+  //   "link" : "./number-field",
+  //   "description": "The Number Field provides numeric-specific functionality that allows developers to set masks and apply rules to the values that are entered to make data entry, retrieval and processing more straightforward."
+  // },
   {
     "image": require('./img/component_images/progressbar.png'),
     "title": "Progress Bar",
@@ -96,11 +96,53 @@ export const componentData =
     "link" : "./text-area",
     "description": "The Text Area component is a multi-line edit field that allows for various functionalities such as read-only mode, text highlighting, focus handling, scrolling, and more."
   },
+  // {
+  //   "image": require('./img/component_images/textfield.png'),
+  //   "title": "Text Field",
+  //   "link" : "./text-field",
+  //   "description": "The Text Field is a component with various properties and methods for interacting with the text field, such as setting the text, caret position, insert mode, length, margin, mask, pad character, etc. It also supports event handling for text modification."
+  // },
   {
-    "image": require('./img/component_images/textfield.png'),
-    "title": "Text Field",
-    "link" : "./text-field",
-    "description": "The Text Field is a component with various properties and methods for interacting with the text field, such as setting the text, caret position, insert mode, length, margin, mask, pad character, etc. It also supports event handling for text modification."
+    "image": require('./img/component_images/field_images/color_field.png'),
+    "title": "ColorField",
+    "link" : "./fields/color-field",
+    "description": "The ColorField provides a user interface component that lets a user specify a color, either by using a visual color picker interface or by entering the color into a text field."
+  },
+  {
+    "image": require('./img/component_images/field_images/date_field.png'),
+    "title": "DateField",
+    "link" : "./fields/date-field",
+    "description": "The DateField provides a user interface component that let the user enter a date, either with a field that validates the input or a special date picker interface."
+  },
+  {
+    "image": require('./img/component_images/field_images/date_time_field.png'),
+    "title": "DateTimeField",
+    "link" : "./fields/date-time-field",
+    "description": "The DateTimeField provides a user interface component that allows the user to enter both a date and a time, including the year, month, and day as well as the time in hours and minutes, either with a field that validates the input or a special date-time picker interface."
+  },
+  {
+    "image": require('./img/component_images/field_images/number_field.png'),
+    "title": "NumberField",
+    "link" : "./fields/number-field",
+    "description": "The NumberField provides a user interface component let the user enter a number. They include built-in validation to reject non-numerical entries."
+  },
+  {
+    "image": require('./img/component_images/field_images/password_field.png'),
+    "title": "PasswordField",
+    "link" : "./fields/password-field",
+    "description": "The PasswordField provides a way for the user to securely enter a password and has a toggle for password visibility."
+  },
+  {
+    "image": require('./img/component_images/field_images/text_field.png'),
+    "title": "TextField",
+    "link" : "./fields/text-field",
+    "description": "The TextField provides a user interface component to create a basic single-line text fields."
+  },
+  {
+    "image": require('./img/component_images/field_images/time_field.png'),
+    "title": "TimeField",
+    "link" : "./fields/time-field",
+    "description": "The TimeField provides a user interface component that designed to let the user easily enter a time (hours and minutes, and optionally seconds)."
   },
 ]
 
