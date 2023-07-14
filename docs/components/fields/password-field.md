@@ -1,6 +1,7 @@
 ---
 sidebar_position: 5
 title: PasswordField
+slug: passwordfield
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';

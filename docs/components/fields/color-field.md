@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: ColorField
+slug: colorfield
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 title: NumberField
+slug: numberfield
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';

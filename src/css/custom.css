@@ -58,3 +58,7 @@
 .custom--table td{
   padding: 5px 7px 5px 8px;
 }
+
+.sidebar--item__hidden{
+  display: none;
+}

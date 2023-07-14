@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 title: DateTimeField
+slug: datetimefield
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';

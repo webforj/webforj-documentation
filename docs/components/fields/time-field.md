@@ -1,6 +1,8 @@
 ---
 sidebar_position: 7
 title: TimeField
+sidebar_class_name: sidebar--item__hidden
+slug: timefield
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';

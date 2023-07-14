@@ -1,6 +1,7 @@
 ---
 sidebar_position: 6
 title: TextField
+slug: textfield
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';

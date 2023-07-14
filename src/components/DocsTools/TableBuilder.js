@@ -30,10 +30,12 @@ export default function TableBuilder(props) {
 
   return (
     <>
-      <h4>Shadow Parts</h4>
-      <table className="custom--table">
+    {
+      props.table == "parts" && (
+        <>
+        <table className="custom--table">
         <thead>
-          <tr>
+          <tr key="header">
             <th>Part</th>
             <th>Description</th>
           </tr>
@@ -50,10 +52,16 @@ export default function TableBuilder(props) {
           })}
         </tbody>
       </table>
-      <h4>CSS Properties</h4>
-      <table className="custom--table">
+        </>
+      )
+    }
+      {/* <h4>Shadow Parts</h4> */}
+    {
+      props.table == "properties" && (
+        <>
+        <table className="custom--table">
         <thead>
-          <tr>
+          <tr key="header">
             <th>Name</th>
             <th>Description</th>
           </tr>
@@ -67,6 +75,54 @@ export default function TableBuilder(props) {
           ))}
         </tbody>
       </table>
+        </>
+      )
+    }
+      {/* <h4>CSS Properties</h4> */}
+
+    {
+      props.table != "properties" && props.table != "parts" && (
+        <>
+          <h4>Shadow Parts</h4>
+          <table className="custom--table">
+            <thead>
+              <tr key="header">
+                <th>Part</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {partItems?.map((docTag) => {
+                const [part, description] = docTag.text.split(" - ");
+                return (
+                  <tr key={docTag.id}>
+                    <td>{part}</td>
+                    <td>{description}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          <h4>CSS Properties</h4>
+          <table className="custom--table">
+            <thead>
+              <tr key="header">
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {styleItems?.map((style) => (
+                <tr key={style.name}>
+                  <td>{style.name}</td>
+                  <td>{style.description}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      )
+    }
     </>
   );
 }

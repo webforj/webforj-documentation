@@ -1,6 +1,7 @@
 ---
 sidebar_position: 100
 title: RadioButtonGroup
+slug: radiobuttongroup
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';

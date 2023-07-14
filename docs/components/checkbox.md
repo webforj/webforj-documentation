@@ -8,18 +8,13 @@ import TabItem from '@theme/TabItem';
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
-import { useState } from 'react';
+
 
 <JavadocLink type="engine" location="org/dwcj/component/checkbox/CheckBox"/>
 
-<!-- 
-<Tabs>
-  <TabItem value="Implementation" label="Implementation"> -->
-
-
 The `CheckBox` class creates a component that can be selected or deselected, and which displays its state to the user. When clicked, a check mark appears inside the box, to indicate an affirmative choice (on). When clicked again, the check mark disappears, indicating a negative choice (off).
 
-### Usages
+## Usages
 
 The `CheckBox` is best used in scenarios where users need to make multiple selections from a list of options. Here are some examples of when to use the `CheckBox`:
 
@@ -30,7 +25,7 @@ The `CheckBox` is best used in scenarios where users need to make multiple selec
 3. **Filtering or Sorting**: A `CheckBox` can be used in applications that require users to select multiple filters or categories, such as filtering search results or selecting multiple items for further actions.
 
 
-### Constructors
+## Constructors
 
 The `CheckBox` class has three constructors:
 
@@ -44,7 +39,7 @@ Here is an example of how to create a `CheckBox` object:
 CheckBox myCheckbox = new CheckBox("Checkbox Text");
 ```
 
-### Text and Positioning
+## Text and Positioning
 
 Check boxes can utilize the ```setText(String foo)``` method, which will be positioned near the check box according to the built-in `Position`. Checkboxes have built-in functionality to set text to be displayed either to the right or left of the box. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of the `HorizontalAlignment` enum class. Show below are the two settings: <br/>
 
@@ -58,7 +53,7 @@ javaHighlight='{18}'
 
 <br/>
 
-### Indeterminism
+## Indeterminism
 
 The `CheckBox` component supports indeterminism, which is a UI pattern commonly used in forms and lists to indicate that a group of checkboxes has a mixture of checked and unchecked states. This state is represented by a third visual state, typically displayed as a filled square or a dash inside the checkbox. There are a few common use cases associated with the indeterminate status:
 
@@ -73,7 +68,7 @@ cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/r
 height = '225px'
 />
 
-### Events
+## Events
 
 The `CheckBox` class provides methods to add and remove event listeners for the following events:
 
@@ -122,6 +117,8 @@ javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/ja
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css'
 />
 
+## Styling
+
 ### Expanses
 There are five `CheckBox` expanses that are supported which allow for quick styling without using CSS.
 Expanses are supported by use of the `Expanse` enum class. Below are the expanses supported for the checkbox component: <br/>
@@ -134,26 +131,19 @@ cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/r
 javaHighlight='{17,21,25,29,33}'
 />
 
-<!-- </TabItem>
-
-<TabItem value="Styling" label="Styling"> -->
-
-
-
-
 <br/>
 
 
+### Shadow Parts
 
-### Parts and CSS Properties
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Field} table="parts"/>
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Checkbox} />
+### CSS Properties
 
-<!-- 
-</TabItem>
-</Tabs> -->
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Field} table="properties"/>
 
-### Best Practices 
+
+## Best Practices 
 
 To ensure an optimal user experience when using the RadioButton component, consider the following best practices:
 
