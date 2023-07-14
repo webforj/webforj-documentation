@@ -40,6 +40,14 @@ The `DateTimeField` class has four constructors:
 
 You can use the `setMax()` and `setMin()` methods to specify the acceptable range of dates and times. If the value entered into the component is outside of the specified timestamp, the component fails constraint validation. Also, if there is already a maximum or minimum set, the value given to the other method must be lower or higher respectively.
 
+### Display
+
+The `DateTimeField` will, by default, display its information within the UI element based on the locale the browser is configured to. For example, users with United States configurations will see the date displayed with the month preceding the day, whereas European users will see the day before the month. This does not inhibit manipulation of the `LocalDateTime` object returned by methods from the class, however.
+
+:::info
+When displaying time, the seconds will display by default. However, if the component is given a `LocaleDateTime` object with the seconds set to 0, the seconds are then hidden from the display.
+:::
+
 ### Static Utilities 
 
 The DateTimeField class also provides the following static utility methods:

@@ -40,6 +40,14 @@ The `TimeField` class has four constructors:
 
 You can use the `setMax()` and `setMin()` methods to specify the acceptable time range. If the value entered into the component is outside of the specified value, the component fails constraint validation. Also, if there is already a maximum or minimum set, the value given to the other method must be lower or higher respectively.
 
+### Display
+
+The `TimeField` will, by default, display its information within the UI element based on the locale the browser is configured to. For example, users with United States configurations will see the time displayed with A.M. and P.M. labels, whereas other locales would see the time in 24 hour format. This does not inhibit manipulation of the `LocalTime` object returned by methods from the class, however.
+
+:::info
+When displaying time, the seconds will display by default. However, if the component is given a `LocaleTime` object with the seconds set to 0, the seconds are then hidden from the display.
+:::
+
 ### Static Utilities 
 
 The `TimeField` class also provides the following static utility methods:

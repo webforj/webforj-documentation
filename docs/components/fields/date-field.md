@@ -42,6 +42,10 @@ The `DateField` class has four constructors:
 
 You can use the `setMax()` and `setMin()` methods to specify the acceptable range of dates. If the value entered into the component is outside of the specified value, the component fails constraint validation. Also, if there is already a maximum or minimum set, the value given to the other method must be lower or higher respectively.
 
+### Display
+
+The `DateField` will, by default, display its information within the UI element based on the locale the browser is configured to. For example, users with United States configurations will see the date displayed with the month preceding the day, whereas European users will see the day before the month. This does not inhibit manipulation of the `LocalDate` object returned by methods from the class, however.
+
 ### Static Utilities 
 
 The `DateField` class also provides the following static utility methods:
