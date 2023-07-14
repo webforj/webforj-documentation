@@ -81,7 +81,7 @@ export const componentData =
   {
     "image": require('./img/component_images/radiobutton.png'),
     "title": "Radio Button",
-    "link" : "./radio-button",
+    "link" : "./radiobutton",
     "description": "A RadioButton component is a graphical user interface element that allows users to select a single option from a predefined set of mutually exclusive choices by clicking on a small circular button, indicating their selection with a filled dot inside the button."
   },
   {
@@ -105,43 +105,43 @@ export const componentData =
   {
     "image": require('./img/component_images/field_images/color_field.png'),
     "title": "ColorField",
-    "link" : "./fields/color-field",
+    "link" : "./fields/colorfield",
     "description": "The ColorField provides a user interface component that lets a user specify a color, either by using a visual color picker interface or by entering the color into a text field."
   },
   {
     "image": require('./img/component_images/field_images/date_field.png'),
     "title": "DateField",
-    "link" : "./fields/date-field",
+    "link" : "./fields/datefield",
     "description": "The DateField provides a user interface component that let the user enter a date, either with a field that validates the input or a special date picker interface."
   },
   {
     "image": require('./img/component_images/field_images/date_time_field.png'),
     "title": "DateTimeField",
-    "link" : "./fields/date-time-field",
+    "link" : "./fields/datetimefield",
     "description": "The DateTimeField provides a user interface component that allows the user to enter both a date and a time, including the year, month, and day as well as the time in hours and minutes, either with a field that validates the input or a special date-time picker interface."
   },
   {
     "image": require('./img/component_images/field_images/number_field.png'),
     "title": "NumberField",
-    "link" : "./fields/number-field",
+    "link" : "./fields/numberfield",
     "description": "The NumberField provides a user interface component let the user enter a number. They include built-in validation to reject non-numerical entries."
   },
   {
     "image": require('./img/component_images/field_images/password_field.png'),
     "title": "PasswordField",
-    "link" : "./fields/password-field",
+    "link" : "./fields/passwordfield",
     "description": "The PasswordField provides a way for the user to securely enter a password and has a toggle for password visibility."
   },
   {
     "image": require('./img/component_images/field_images/text_field.png'),
     "title": "TextField",
-    "link" : "./fields/text-field",
+    "link" : "./fields/textfield",
     "description": "The TextField provides a user interface component to create a basic single-line text fields."
   },
   {
     "image": require('./img/component_images/field_images/time_field.png'),
     "title": "TimeField",
-    "link" : "./fields/time-field",
+    "link" : "./fields/timefield",
     "description": "The TimeField provides a user interface component that designed to let the user easily enter a time (hours and minutes, and optionally seconds)."
   },
 ]
