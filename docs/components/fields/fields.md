@@ -24,7 +24,7 @@ This section describes common functionality amongst various field components in 
 
 - [`ColorField`](/docs/components/fields/colorfield)
 - [`DateField`](/docs/components/fields/datefield)
-- [`DateTimeField`](/docs/components/fields/date-timefield)
+- [`DateTimeField`](/docs/components/fields/datetimefield)
 - [`NumberField`](/docs/components/fields/numberfield)
 - [`PasswordField`](/docs/components/fields/passwordfield)
 - [`TextField`](/docs/components/fields/textfield)
