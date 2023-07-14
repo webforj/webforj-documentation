@@ -22,13 +22,13 @@ This section describes common functionality amongst various field components in 
 
 <!-- <ComponentViewer componentData={componentData} /> -->
 
-- [`ColorField`](/docs/components/fields/color-field)
-- [`DateField`](/docs/components/fields/date-field)
-- [`DateTimeField`](/docs/components/fields/date-time-field)
-- [`NumberField`](/docs/components/fields/number-field)
-- [`PasswordField`](/docs/components/fields/password-field)
-- [`TextField`](/docs/components/fields/text-field)
-- [`TimeField`](/docs/components/fields/time-field)
+- [`ColorField`](/docs/components/fields/colorfield)
+- [`DateField`](/docs/components/fields/datefield)
+- [`DateTimeField`](/docs/components/fields/date-timefield)
+- [`NumberField`](/docs/components/fields/numberfield)
+- [`PasswordField`](/docs/components/fields/passwordfield)
+- [`TextField`](/docs/components/fields/textfield)
+- [`TimeField`](/docs/components/fields/timefield)
 
 ## Shared Field Properties 
 
