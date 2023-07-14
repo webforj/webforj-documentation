@@ -45,7 +45,7 @@ export default function TableBuilder(props) {
             const [part, description] = docTag.text.split(" - ");
             return (
               <tr key={docTag.id}>
-                <td>{part}</td>
+                <td><code>{part}</code></td>
                 <td>{description}</td>
               </tr>
             );
@@ -69,7 +69,7 @@ export default function TableBuilder(props) {
         <tbody>
           {styleItems?.map((style) => (
             <tr key={style.name}>
-              <td>{style.name}</td>
+              <td><code>{style.name}</code></td>
               <td>{style.description}</td>
             </tr>
           ))}
@@ -96,7 +96,7 @@ export default function TableBuilder(props) {
                 const [part, description] = docTag.text.split(" - ");
                 return (
                   <tr key={docTag.id}>
-                    <td>{part}</td>
+                    <td><code>{part}</code></td>
                     <td>{description}</td>
                   </tr>
                 );
@@ -114,7 +114,7 @@ export default function TableBuilder(props) {
             <tbody>
               {styleItems?.map((style) => (
                 <tr key={style.name}>
-                  <td>{style.name}</td>
+                  <td><code>{style.name}</code></td>
                   <td>{style.description}</td>
                 </tr>
               ))}
