@@ -88,7 +88,7 @@ javaHighlight='{49-52}'
 
 <br />
 
-Disabling a button can be done at any time in the code by using the ```setEnabled(boolean foo)``` function. For added convenience, a button can also be disabled when clicked using the built-in ```setDisabledOnClick(boolean foo)``` function.
+Disabling a button can be done at any time in the code by using the ```setEnabled(boolean enabled)``` function. For added convenience, a button can also be disabled when clicked using the built-in ```setDisabledOnClick(boolean enabled)``` function.
 
 <br />
 

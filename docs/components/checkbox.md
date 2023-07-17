@@ -41,7 +41,7 @@ CheckBox myCheckbox = new CheckBox("Checkbox Text");
 
 ## Text and Positioning
 
-Check boxes can utilize the ```setText(String foo)``` method, which will be positioned near the check box according to the built-in `Position`. Checkboxes have built-in functionality to set text to be displayed either to the right or left of the box. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of the `HorizontalAlignment` enum class. Show below are the two settings: <br/>
+Check boxes can utilize the ```setText(String text)``` method, which will be positioned near the check box according to the built-in `Position`. Checkboxes have built-in functionality to set text to be displayed either to the right or left of the box. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of the `HorizontalAlignment` enum class. Show below are the two settings: <br/>
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxHorizontalText' 
