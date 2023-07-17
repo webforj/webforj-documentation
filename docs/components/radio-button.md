@@ -88,7 +88,9 @@ When a `RadioButton` is displayed as a switch, it typically appears as a oblong 
 
 Setting a `RadioButton` to display as a switch can improve user experience by providing a clear and straightforward way to select options. It can enhance the visual appeal and usability of forms, settings panels, or any other interface element that requires multiple choices.
 
-It's important to note that the behavior of the `RadioButton` remains the same, meaning only one option can be selected at a time within a group. The switch-like appearance is primarily a visual transformation while retaining the functionality of a `RadioButton`.
+:::info
+The behavior of the `RadioButton` remains the same when being rendered as a Switch, meaning only one option can be selected at a time within a group. The switch-like appearance is a visual transformation which retains the functionality of a `RadioButton`.
+:::
 
 <br/>
 
@@ -152,11 +154,21 @@ Expanses are supported by use of the `Expanse` enum class. Below are the expanse
 
 ### Shadow Parts
 
+These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
+
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').RadioButton} table='parts'/>
 
 ### CSS Properties
 
+These are the various CSS properties that are used in the component, with a short description of their use.
+
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').RadioButton} table='properties'/>
+
+### Reflected Attributes
+
+The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
+
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').RadioButton} table="reflects"/>
 
 ## Best Practices 
 

@@ -27,6 +27,13 @@ export default function TableBuilder(props) {
     name: style.name,
     description: style.docs,
   }));
+  const reflectItems = component.props?.map((prop) => ({
+    display: prop.reflectToAttr,
+    attr: prop.attr,
+    desc: prop.docs,
+    type: prop.type,
+
+  }));
 
   return (
     <>
@@ -78,10 +85,37 @@ export default function TableBuilder(props) {
         </>
       )
     }
+    
+    {
+      props.table == "reflects" && (
+        <>
+        <table className="custom--table">
+        <thead>
+          <tr key="header">
+            <th>Attribute</th>
+            <th>Description</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          {reflectItems?.map((prop) => (
+            prop.attr != null && prop.display == "&#x2714;" && (
+            <tr key={prop.attr}>
+              <td><code>{prop.attr}</code></td>
+              <td>{prop.desc}</td>
+              <td>{prop.type}</td>
+            </tr>
+            )
+          ))}
+        </tbody>
+      </table>
+        </>
+      )
+    }
       {/* <h4>CSS Properties</h4> */}
 
     {
-      props.table != "properties" && props.table != "parts" && (
+      props.table != "properties" && props.table != "parts" && props.table != "reflects" && (
         <>
           <h4>Shadow Parts</h4>
           <table className="custom--table">
@@ -120,6 +154,27 @@ export default function TableBuilder(props) {
               ))}
             </tbody>
           </table>
+          <h4>Reflected Attributes</h4>
+          <table className="custom--table">
+        <thead>
+          <tr key="header">
+            <th>Attribute</th>
+            <th>Description</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          {reflectItems?.map((prop) => (
+            prop.attr != null && prop.display == "&#x2714;" && (
+            <tr key={prop.attr}>
+              <td><code>{prop.attr}</code></td>
+              <td>{prop.desc}</td>
+              <td>{prop.type}</td>
+            </tr>
+            )
+          ))}
+        </tbody>
+      </table>
         </>
       )
     }
