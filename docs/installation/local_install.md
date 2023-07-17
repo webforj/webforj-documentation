@@ -49,7 +49,11 @@ for Windows users can be found [here](https://phoenixnap.com/kb/install-maven-wi
 
 <b>While following this step, be sure to install BBj version 22.14 or newer </b><br/><br/>
 
-[This video](https://www.youtube.com/watch?v=Ovk8kznQfGs&ab_channel=BBxCluesbyBASISEurope) can help with the installation of BBj if you need assistance with setup.
+[This video](https://www.youtube.com/watch?v=Ovk8kznQfGs&ab_channel=BBxCluesbyBASISEurope) can help with the installation of BBj if you need assistance with setup. The installation section of the BASIS website can be found [at this link](https://basis.cloud/download-product)
+
+:::tip
+It is recommended to use the latest stable revision build of BBj, and to select "BBj" from the list of options, without "Barista" or "Addon".
+:::
 
 Once BBj has been installed, it is also necessary to install the needed dependencies from the BBj library. This is done by navigating to the `lib` directory inside your bbx folder, and
 running the following commands:
@@ -71,6 +75,10 @@ Once BBj has been installed, we can access the Plugin Manager in order to instal
 After the plugin manager has been opened, navigate to the "Available Plugins" tab towards the top.
 
 ![Plugin manager start location](./_images/users/local/i2.png)
+
+On this tab, select the "Show versions under development" checkbox near the top left of the window.
+
+![Plugin manager start location](./_images/users/local/i2.5.png)
 
 On this page, select the DWCJ entry, and click "Install".
 

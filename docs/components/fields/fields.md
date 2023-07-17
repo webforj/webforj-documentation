@@ -69,6 +69,10 @@ All field components share the following methods to add and remove event listene
 |`MouseExitEvent`| An event that is triggered when the mouse cursor exits the boundaries of an element. It occurs when the user moves the mouse pointer out of the boundaries of the specified element, indicating that the mouse has exited its area. |
 |`RightMouseDownEvent`| An event refers to an event that is triggered when the user presses the right mouse button while the cursor is over an element. It allows you to capture the specific action of the user's right mouse button being pressed down within the boundaries of the element. |
 
+:::tip
+Using the event payload that comes with various events to attain information reduces the number of round trips made when instead querying the component for the required information. 
+:::
+
 ## Parts and CSS Properties
 
 :::caution Notice

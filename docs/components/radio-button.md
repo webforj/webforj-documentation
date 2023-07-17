@@ -12,7 +12,7 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 The `RadioButton` class creates an object that can be selected or deselected, and which displays its state to the user. By convention, only one radio button in a group can be selected at a time. Radio buttons are commonly used when mutually exclusive options are available, allowing the user to choose a single option from a set of choices.
 
-### Usages
+## Usages
 
 The `RadioButton` is best used in scenarios where users need to make a single selection from a predefined set of options. Here are some examples of when to use the `RadioButton`:
 
@@ -25,7 +25,7 @@ The `RadioButton` is best used in scenarios where users need to make a single se
 
 
 
-### Constructors
+## Constructors
 
 The `RadioButton` class has three constructors:
 
@@ -39,16 +39,16 @@ Here is an example of how to create a `RadioButton` object:
 RadioButton myRadioButton = new RadioButton("RadioButton Text");
 ```
 
-### Text and Positioning
+## Text and Positioning
 
 Radio buttons can utilize the ```setText(String foo)``` method, which will be positioned near the radio button according to the built-in `Position`.
 Radio buttons have built-in functionality to set text to be displayed either to the right or left of the component. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of the `HorizontalAlignment` enum class. Show below are the two settings: <br/>
 
-### Activation
+## Activation
 
 Radio buttons can be controlled using two types of activation: manual activation and auto activation. These dictate when a `RadioButton` will change its state.
 
-#### Manual Activation
+### Manual Activation
 
 When a radio button is set to manual activation, it means that it will not be automatically checked when it gains focus.
 Manual activation allows the user to navigate through the radio button options using the keyboard or other input methods without immediately changing the selected option.
@@ -58,33 +58,41 @@ Manual activation provides finer control over the selection process, requiring a
 
 
 
-#### Auto Activation
+### Auto Activation
 
 Automatic activation is the default state for a `RadioButton`, and means that the button will be checked on whenever it gains focus for any reason. This means that
 not only clicking, but auto-focus or tab navigation will also check the button.
 
-### Switches
+## Switches
 
-A `RadioButton` can also be set to display as a switch provides which provides alternative visual representation for selecting options. Normally, radio buttons are circular or rounded in shape and indicate a single choice from a group of options. However, by calling the `setSwitch(boolean)` method, a `RadioButton` can be transformed into a switch that resembles a toggle switch or slider.
+A `RadioButton` can also be set to display as a switch provides which provides alternative visual representation for selecting options. Normally, radio buttons are circular or rounded in shape and indicate a single choice from a group of options. However, a `RadioButton` can be transformed into a switch that resembles a toggle switch or slider using one of two methods:
 
-When a `RadioButton` is displayed as a switch, it typically appears as a oblong shape with an indicator that can be toggled on or off. This visual representation gives users a more intuitive and familiar interface, similar to physical switches commonly found in electronic devices. To do this, execute code similar to the following snippet:
+1. **The Factory Method**: The RadioButton can be created using the following Factory methods:
 
 ```java
-RadioButton myButton = new RadioButton();
-myButton.setSwitch(true);
+Switch(String text, boolean checked);
+Switch(String text);
+Switch();
 ```
 
-Setting a radio button to display as a switch can improve user experience by providing a clear and straightforward way to select options. It can enhance the visual appeal and usability of forms, settings panels, or any other interface element that requires multiple choices.
+These methods mirror a `RadioButton` constructor, and will create the component with the switch property already toggled on.
 
-It's important to note that the behavior of the radio button remains the same, meaning only one option can be selected at a time within a group. The switch-like appearance is primarily a visual transformation while retaining the functionality of a radio button.
+2. **Setter**: It is also possible to change an already existing `RadioButton` into a switch by using the appropriate setter:
 
-### Expanses
-There are five checkbox expanses that are supported which allow for quick styling without using CSS.
-Expanses are supported by use of the `Expanse` enum class. Below are the expanses supported for the checkbox component: <br/>
+```java
+myRadioButton.setSwitch(true);
+```
+
+
+When a `RadioButton` is displayed as a switch, it typically appears as a oblong shape with an indicator that can be toggled on or off. This visual representation gives users a more intuitive and familiar interface, similar to physical switches commonly found in electronic devices. 
+
+Setting a `RadioButton` to display as a switch can improve user experience by providing a clear and straightforward way to select options. It can enhance the visual appeal and usability of forms, settings panels, or any other interface element that requires multiple choices.
+
+It's important to note that the behavior of the `RadioButton` remains the same, meaning only one option can be selected at a time within a group. The switch-like appearance is primarily a visual transformation while retaining the functionality of a `RadioButton`.
 
 <br/>
 
-### Events
+## Events
 
 The `RadioButton` class provides methods to add and remove event listeners for the following events:
 
@@ -100,6 +108,8 @@ The `RadioButton` class provides methods to add and remove event listeners for t
 |`RightMouseDownEvent`| An event refers to an event that is triggered when the user presses the right mouse button while the cursor is over an element. It allows you to capture the specific action of the user's right mouse button being pressed down within the boundaries of the element. |
 
 <br />
+
+### Adding Events
 
 To add an event listener, use the appropriate method:
 
@@ -117,6 +127,13 @@ myRadioButton.onChecked( e -> {
 });
 ```
 
+:::tip
+Using the event payload that comes with various events to attain information reduces the number of round trips made when instead querying the component for the required information. 
+:::
+
+
+### Removing Events
+
 To remove an event listener, use the appropriate method:
 
 ```java
@@ -127,11 +144,21 @@ myRadioButton.removeCheckedListener(listener);
 For a method to be removed via the appropriate removeListener method, the signature of the method must be saved. 
 :::
 
-### Parts and CSS Properties
+## Styling
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').RadioButton} />
+### Expanses
+There are five checkbox expanses that are supported which allow for quick styling without using CSS.
+Expanses are supported by use of the `Expanse` enum class. Below are the expanses supported for the checkbox component: <br/>
 
-### Best Practices 
+### Shadow Parts
+
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').RadioButton} table='parts'/>
+
+### CSS Properties
+
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').RadioButton} table='properties'/>
+
+## Best Practices 
 
 To ensure an optimal user experience when using the RadioButton component, consider the following best practices:
 

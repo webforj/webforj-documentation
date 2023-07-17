@@ -9,11 +9,40 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 <JavadocLink type="engine" location="org/dwcj/component/button/Button"/>
 
-### Text
+The `Button` class is a component that represents a button element in a user interface. It provides various functionalities and customization options to create interactive buttons.
 
-Buttons come with a parameterized constructor, taking a String argument, which will set the initial text of the button. The ```setText(String foo)``` method can also be called to set the text of the button.  
+## Usages
+
+The `Button` class is a versatile component that is commonly used in various situations where user interactions and actions need to be triggered. Here are some typical scenarios where you might need a button in your application:
+
+1. **Form Submission**: Buttons are often used to submit form data. For example, in a web application, you can use a button labeled "Submit" to send user input to the server for processing.
+
+2. **User Actions**: Buttons are used to allow users to perform specific actions within the application. For instance, you can have a button labeled "Delete" to initiate the deletion of a selected item or a button labeled "Save" to save changes made to a document.
+
+3. **Navigation**: Buttons can be used for navigation purposes, such as moving between different sections or pages within an application. You can create buttons with labels like "Next," "Previous," or "Back" to enable easy navigation for users.
+
+4. **Confirmation Dialogs**: Buttons are often included in confirmation dialogs to provide options for users to confirm or cancel an action. For example, you can have buttons labeled "OK" and "Cancel" to allow users to confirm or cancel a critical operation.
+
+5. **Interaction Triggers**: Buttons can serve as triggers for interactions or events within the application. By clicking a button, users can initiate complex actions or trigger animations, refreshing content, or updating the display.
+
+Feel free to explore the various customization options available in the Button class to tailor the buttons' appearance, behavior, and functionality to suit your application's specific needs.
+
 
 <br />
+
+## Constructors
+
+The `CheckBox` class has three constructors:
+
+1. `Button()`: Creates an empty `Button` without any text inside the component.
+2. `Button(String text)`: Creates a `Button` with text inside the component.
+3. `Button(String text, EventListener<ButtonClickEvent> onClickListener)` Creates a `Button` with text inside the component, and an `EventListener` for a click event which fires when a user clicks on the `Button`.
+
+Here is an example of how to create a `CheckBox` object:
+
+```java
+Button myButton = new Button("Button Text");
+```
 
 ### Adding Icons to Buttons
 
@@ -44,9 +73,9 @@ To add these icons, set the button's text to have an `<html>` tag, with a `<bbj-
 
 <br />
 
-### Disabling a Button
+## Disabling a Button
 
-Button components can be disabled to convey to a user that a certain action is not yet or is no longer available. A disabled button will increase the gray scale of the button, and is available for 
+Button components, like many others, can be disabled to convey to a user that a certain action is not yet or is no longer available. A disabled button will increase the gray scale of the button, and is available for 
 all button themes and expanses. <br/><br/>
 
 <ComponentDemo 
@@ -57,13 +86,63 @@ cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/r
 javaHighlight='{49-52}'
 />
 
-<!-- ![Disabling a button](./_images/button/button_disable.jpg) -->
-
 <br />
 
 Disabling a button can be done at any time in the code by using the ```setEnabled(boolean foo)``` function. For added convenience, a button can also be disabled when clicked using the built-in ```setDisabledOnClick(boolean foo)``` function.
 
 <br />
+
+## Events
+
+The `Button` class provides methods to add and remove event listeners for the following events:
+
+| Events | Description |
+|:-:|-|
+|`BlurEvent`|An event that is triggered when an element loses focus. It occurs when the user interacts with an element, such as clicking inside an input field, and then moves the focus away from that element, typically by clicking outside of it or tabbing to another element on the page.|
+|`ClickEvent`|The click event is triggered when a user interacts with a button by clicking or tapping on it. When a component's click event is triggered, it indicates that the user has performed an action to activate the component.|
+|`FocusEvent`|An event that is triggered when an element gains focus, opposite of a blur event. It occurs when the user interacts with an element, typically by clicking inside an input field or navigating to it using the keyboard's tab key, causing the element to become active and ready to receive user input.|
+|`MouseEnterEvent`|An event that is triggered when the mouse cursor enters the boundaries of an element. It occurs when the user moves the mouse pointer over the specified element, indicating that the mouse has entered its area.|
+|`MouseExitEvent`|An event that is triggered when the mouse cursor exits the boundaries of an element. It occurs when the user moves the mouse pointer out of the boundaries of the specified element, indicating that the mouse has exited its area.|
+|`RightMouseDownEvent`|An event refers to an event that is triggered when the user presses the right mouse button while the cursor is over an element. It allows you to capture the specific action of the user's right mouse button being pressed down within the boundaries of the element.|
+
+<br />
+
+### Adding Events
+
+To add an event listener, use the appropriate method:
+
+```java
+myButton.addClickListener( e -> {
+  //Executed when the event fires
+});
+```
+
+Additional syntactic sugar methods, or aliases, have been added to allow for alternative addition of events by using the `on` prefix followed by the event, such as:
+
+```java
+myButton.onClick( e -> {
+    //Executed when the event fires
+});
+```
+
+:::tip
+Using the event payload that comes with various events to attain information reduces the number of round trips made when instead querying the component for the required information. 
+:::
+
+### Removing Events
+
+To remove an event listener, use the appropriate method:
+
+```java
+myButton.removeClickListener(listener);
+```
+
+:::info
+For a method to be removed via the appropriate removeListener method, the signature of the method must be saved. 
+:::
+
+
+## Styling
 
 ### Themes
 
@@ -79,18 +158,6 @@ cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/r
 javaHighlight='{23-36}'
 />
 
-<!-- ![Button themes](./_images/button/button_themes.jpg) -->
-
-<br/>
-
-Listed below are the current supported theme options for the button control:<br/>
-
-|Button Themes|
-|-|
-|<ul><li>```Button.Theme.DEFAULT```</li><li>```Button.Theme.DANGER```</li><li>```Button.Theme.GRAY```</li><li>```Button.Theme.INFO```</li><li>```Button.Theme.PRIMARY```</li><li>```Button.Theme.SUCCESS```</li><li>```Button.Theme.WARNING```</li><li>```Button.Theme.OUTLINED_DEFAULT```</li><li>```Button.Theme.OUTLINED_DANGER```</li><li>```Button.Theme.OUTLINED_GRAY```</li><li>```Button.Theme.OUTLINED_INFO```</li><li>```Button.Theme.OUTLINED_PRIMARY```</li><li>```Button.Theme.OUTLINED_SUCCESS```</li><li>```Button.Theme.OUTLINED_WARNING```</li></ul>|
-
-<br />
-
 ### Expanses
 There are five button expanses that are supported in the DWCJ which allow for quick styling without using CSS.
 Below are the various expanses supported for the button component: <br/>
@@ -103,38 +170,24 @@ cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/r
 javaHighlight='{18-22}'
 />
 
-<!-- ![Button expanses](./_images/button/button_expanses.jpg) -->
+### Shadow Parts
 
-|Button Expanses|
-|-|
-|<ul><li>```Button.Expanse.XSMALL```</li><li>```Button.Expanse.SMALL```</li><li>```Button.Expanse.MEDIUM```</li><li>```Button.Expanse.LARGE```</li><li>```Button.Expanse.XLARGE```</li></ul>|
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Button}  table='parts'/>
+
+### CSS Properties
+
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Button}  table='properties'/>
 
 
+## Best Practices 
 
-<br />
+To ensure an optimal user experience when using the `Button` component, consider the following best practices:
 
-<!-- 
-### Vertical Text Alignments
+1. **Proper Text**: Use clear and concise text for text within your `Button` component to provide a clear indication of its purpose.
 
-<!-- The DWCJ supports alignment of text within a button without having to use CSS to accomplish this.
-Shown below are the three options for vertical alignment of text within a button : <br/>
+2. **Appropriate Visual Styling**: Consider the visual styling and theme of the `Button` to ensure consistency with your application's design. For example, a "Cancel" `Button` component should be styled differently than a "Confirm" component.
 
-<ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonAlignment' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonAlignment.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Alignment.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/alignment_styles.css'
-javaHighlight='{24,27,30}'
-/> -->
+3. **Efficient Event Handling**: Handle `Button` events efficiently and provide appropriate feedback to users. Refer to [this section](./button/#adding-events) to review efficient event adding behaviors.
 
-<!-- ![Button vertical alignments](./_images/button/button_alignment.jpg) -->
-
-<!-- Listed below are the current supported vertical text alignments for the button component:
-
-|Button Vertical Alignments|
-|-|
-|<ul><li>```Button.Expanse.TOP```</li><li>```Button.Expanse.CENTER```</li><li>```Button.Expanse.BOTTOM```</li></ul>| -->
-
-## Parts and CSS Properties
-
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Button} />
+4. **Testing and Accessibility**: Test the Button's behavior in different scenarios, such as when it is disabled or receives focus, to ensure a smooth user experience.
+Follow accessibility guidelines to make the `Button` usable for all users, including those who rely on assistive technologies.

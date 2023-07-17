@@ -12,7 +12,7 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 The `RadioButtonGroup` class is used to group related radio buttons together, which helps establish the mutual exclusivity among the options within that group. Users can select only one radio button within a given radio group. When a user selects a radio button within a group, any previously selected radio button in the same group automatically becomes deselected. This ensures that only one option can be chosen at a time.
 
-### Usages
+## Usages
 
 The `RadioButtonGroup` is best used in scenarios where users need to make a single selection from a predefined set of options presented as radio buttons. Here are some examples of when to use the `RadioButtonGroup`:
 
@@ -22,28 +22,30 @@ The `RadioButtonGroup` is best used in scenarios where users need to make a sing
 
 3. **Filtering or Sorting**: A `RadioButton` can be used in applications that require users to select a single filter or sorting option, such as sorting a list of items by different criteria.
 
-### Constructors
+## Constructors
 
 The `RadioButtonGroup` class has four constructors:
 
 1. `RadioButtonGroup()`: Creates an empty `RadioButtonGroup` in the unchecked state.
-2. `RadioButtonGroup(String)`: Creates a `RadioButtonGroup` with an name.
-3. `RadioButtonGroup(RadioButton...)`: Creates a `RadioButtonGroup` with one or more `RadioButton` objects assigned to the group.
-4. `RadioButtonGroup(String, RadioButton...)` Creates a `RadioButtonGroup` with both a name and one or more `RadioButton` objects assigned to the group.
+2. `RadioButtonGroup(String name)`: Creates a `RadioButtonGroup` with an name.
+3. `RadioButtonGroup(RadioButton... buttons)`: Creates a `RadioButtonGroup` with one or more `RadioButton` objects assigned to the group.
+4. `RadioButtonGroup(String name, RadioButton... buttons)` Creates a `RadioButtonGroup` with both a name and one or more `RadioButton` objects assigned to the group.
 
 A `RadioButton` component stores the group to which it belongs, which can be accessed via the `getButtonGroup()` method.
 
-### Adding and Removing RadioButtons
+## Adding and Removing RadioButtons
 
 It is possible to add and remove singular or multiple `RadioButton` objects to a group, ensuring that they exhibit mutually-exclusive checking behavior, and are associated with any name that may belong to the group.
 
-### Naming
+## Naming
 
 The name attribute in a `RadioButtonGroup` groups related RadioButtons together, allowing users to make a single choice from the options provided and enforcing exclusivity among the RadioButtons. The name of a group is not reflected in the DOM, however, and is a convenience utility for the Java developer.
 
-### Events
+## Events
 
 The `RadioButtonGroup` class provides methods to add and remove change events. These events fire whenever a change is made to an element within the group.
+
+### Adding Events
 
 To add an `ChangeEvent` listener, use the appropriate method:
 
@@ -60,6 +62,11 @@ myRadioButtonGroup.onChange( e -> {
     //Executed when the event fires
 });
 ```
+:::tip
+Using the event payload that comes with various events to attain information reduces the number of round trips made when instead querying the component for the required information. 
+:::
+
+### Removing Events
 
 To remove an event listener, use the appropriate method:
 
@@ -67,6 +74,9 @@ To remove an event listener, use the appropriate method:
 myRadioButton.removeChangeListener(listener);
 ```
 
+:::info
+For a method to be removed via the appropriate removeListener method, the signature of the method must be saved. 
+:::
 
 <!-- <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.checkboxdemos.CheckboxHorizontalText' 
@@ -76,7 +86,7 @@ cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/r
 javaHighlight='{18}'
 /> -->
 
-### Best Practices 
+## Best Practices 
 
 To ensure an optimal user experience when using the RadioButton component, consider the following best practices:
 

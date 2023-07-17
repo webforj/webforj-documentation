@@ -88,7 +88,7 @@ The `CheckBox` class provides methods to add and remove event listeners for the 
 To add an event listener, use the appropriate method:
 
 ```java
-myCheckBox.addCheckedListener( e -> {
+myCheckBox.addCheckListener( e -> {
   //Executed when the event fires
 });
 ```
@@ -96,15 +96,19 @@ myCheckBox.addCheckedListener( e -> {
 Additional syntactic sugar methods, or aliases, have been added to allow for alternative addition of events by using the `on` prefix followed by the event, such as:
 
 ```java
-myCheckBox.onChecked( e -> {
+myCheckBox.onCheck( e -> {
     //Executed when the event fires
 });
 ```
 
+:::tip
+Using the event payload that comes with various events to attain information reduces the number of round trips made when instead querying the component for the required information. 
+:::
+
 To remove an event listener, use the appropriate method:
 
 ```java
-myCheckBox.removeCheckedListener(listener);
+myCheckBox.removeCheckListener(listener);
 ```
 
 :::info
@@ -145,7 +149,7 @@ javaHighlight='{17,21,25,29,33}'
 
 ## Best Practices 
 
-To ensure an optimal user experience when using the RadioButton component, consider the following best practices:
+To ensure an optimal user experience when using the `Checkbox` component, consider the following best practices:
 
 1. **Clearly Label Options**: Provide clear and concise labels for each `CheckBox` option to accurately describe the choice. Labels should be easy to understand and distinguish from one another.
 
