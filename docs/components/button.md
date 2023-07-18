@@ -9,7 +9,14 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 <JavadocLink type="engine" location="org/dwcj/component/button/Button"/>
 
-The `Button` class is a component that represents a button element in a user interface. It provides various functionalities and customization options to create interactive buttons.
+The `Button` component is a versatile UI element that allows users to trigger actions or interact with your application. Buttons are essential for creating intuitive and interactive user interfaces.
+
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonDemo' 
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonDemo.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/demo_styles.css'
+height='300px'
+/>
 
 ## Usages
 
@@ -32,13 +39,13 @@ Feel free to explore the various customization options available in the Button c
 
 ## Constructors
 
-The `CheckBox` class has three constructors:
+The `Button` class has three constructors:
 
 1. `Button()`: Creates an empty `Button` without any text inside the component.
 2. `Button(String text)`: Creates a `Button` with text inside the component.
 3. `Button(String text, EventListener<ButtonClickEvent> onClickListener)` Creates a `Button` with text inside the component, and an `EventListener` for a click event which fires when a user clicks on the `Button`.
 
-Here is an example of how to create a `CheckBox` object:
+Here is an example of how to create a `Button` object:
 
 ```java
 Button myButton = new Button("Button Text");
@@ -61,7 +68,6 @@ path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttonde
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonIcon.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Icon.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/icon_styles.css' 
-javaHighlight='{15,17,19}'
 height="100px"
 />
 
@@ -83,7 +89,6 @@ path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttonde
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonDisable.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Disable.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/disable_styles.css'
-javaHighlight='{49-52}'
 />
 
 <br />
@@ -125,9 +130,7 @@ myButton.onClick( e -> {
 });
 ```
 
-:::tip
-Using the event payload that comes with various events to attain information reduces the number of round trips made when instead querying the component for the required information. 
-:::
+
 
 ### Removing Events
 
@@ -137,10 +140,17 @@ To remove an event listener, use the appropriate method:
 myButton.removeClickListener(listener);
 ```
 
-:::info
-For a method to be removed via the appropriate removeListener method, the signature of the method must be saved. 
+:::tip
+Below is a simple demonstration using a `ClickEvent` - notice the event payload is used to attain information that is then utilized within the callback, which reduces the number of round trips made between the client and server. This is much more efficient than querying the component for the required information whenever data that is provided in the event payload is needed. 
 :::
 
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonEvent' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonEvent.java'
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Event.txt'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/event_styles.css'
+height='175px'
+/>
 
 ## Styling
 
@@ -155,7 +165,7 @@ path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttonde
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonThemes.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Theme.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/theme_styles.css'
-javaHighlight='{23-36}'
+height='175px'
 />
 
 ### Expanses
@@ -167,7 +177,7 @@ path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttonde
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonExpanses.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Expanses.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/expanse_styles.css'
-javaHighlight='{18-22}'
+height='75px'
 />
 
 ### Shadow Parts
