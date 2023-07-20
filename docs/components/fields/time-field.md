@@ -9,7 +9,7 @@ import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<JavadocLink type="engine" location="org/dwcj/component/field/TimeField"/>
+<JavadocLink type="engine" location="org/dwcj/component/field/TimeField" top='true'/>
 
 :::success **Important**
 The `TimeField` class is a Field component, and as such shares all of the commonalities belonging to a Field. Please refer to the **[Field documentation page](/docs/components/fields)** for an overview of Field properties, events, and other important information.

@@ -7,15 +7,15 @@ import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<JavadocLink type="engine" location="org/dwcj/component/combobox/ComboBox"/>
+<JavadocLink type="engine" location="org/dwcj/component/combobox/ComboBox" top='true'/>
 
 ### Menu Placement
 
 The combo box can be configured to open the menu in various positions relative to the position of the component itself.
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textcomboboxdemos.TextComboBoxPlacement' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/textcomboboxdemos/TextComboBoxPlacement.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.textcomboboxdemos.TextComboBoxPlacement' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/textcomboboxdemos/TextComboBoxPlacement.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textcombobox/Placement.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textcomboboxstyles/placement_styles.css' 
 javaHighlight='{24,29,33,38}'
@@ -29,8 +29,8 @@ height = '350px'
 The combo box component can be easily labeled without the needing to create an extra label component using the `setAttribute()` method and passing the desired label as a string, as shown below: <br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textcomboboxdemos.TextComboBoxLabel' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/textcomboboxdemos/TextComboBoxLabel.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.textcomboboxdemos.TextComboBoxLabel' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/textcomboboxdemos/TextComboBoxLabel.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textcombobox/Label.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textcomboboxstyles/text_combo_styles.css' 
 javaHighlight='{24}'
@@ -44,8 +44,8 @@ height = '200px'
 It is also possible to set placeholder text within the component to better help users understand what type of input is expected. Similar to a label, this can be accomplished using the `setAttribute()` method: <br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textcomboboxdemos.TextComboBoxPlaceholder' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/textcomboboxdemos/TextComboBoxPlaceholder.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.textcomboboxdemos.TextComboBoxPlaceholder' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/textcomboboxdemos/TextComboBoxPlaceholder.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textcombobox/Placeholder.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textcomboboxstyles/text_combo_styles.css' 
 javaHighlight='{24}'
@@ -60,8 +60,8 @@ DWCJ's combo box comes with 5 expanses for quick styling without the use of CSS.
 Below are the various expanses supported for the text box component: <br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.textcomboboxdemos.TextComboBoxExpanses' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/textcomboboxdemos/TextComboBoxExpanses.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.textcomboboxdemos.TextComboBoxExpanses' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/textcomboboxdemos/TextComboBoxExpanses.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textcombobox/Expanses.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textcomboboxstyles/expanse_styles.css' 
 javaHighlight='{24,27,30,33,36}'

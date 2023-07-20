@@ -7,13 +7,14 @@ import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<JavadocLink type="engine" location="org/dwcj/component/button/Button"/>
+<JavadocLink type="engine" location="org/dwcj/component/button/Button" top='true'/>
+
 
 The `Button` component is a versatile UI element that allows users to trigger actions or interact with your application. Buttons are essential for creating intuitive and interactive user interfaces.
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonDemo' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonDemo.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.buttondemos.ButtonDemo' 
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/buttondemos/ButtonDemo.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/demo_styles.css'
 height='300px'
 />
@@ -43,7 +44,7 @@ The `Button` class has three constructors:
 
 1. `Button()`: Creates an empty `Button` without any text inside the component.
 2. `Button(String text)`: Creates a `Button` with text inside the component.
-3. `Button(String text, EventListener<ButtonClickEvent> onClickListener)` Creates a `Button` with text inside the component, and an `EventListener` for a click event which fires when a user clicks on the `Button`.
+3. `Button(String text, EventListener<ButtonClickEvent> onClickListener)` Creates a `Button` with text inside the component, and an <JavadocLink type="engine" location="org/dwcj/component/event/EventListener" code='true'>EventListener</JavadocLink> for a <JavadocLink type="engine" location="org/dwcj/component/button/event/ButtonClickEvent" code='true'>ButtonClickEvent</JavadocLink> which fires when a user clicks on the `Button`.
 
 Here is an example of how to create a `Button` object:
 
@@ -64,8 +65,8 @@ In addition to, or instead of having text on a button, it is possible to add an 
 Below are examples of buttons with text to the left and right, as well as a button with only an icon:
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonIcon' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonIcon.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.buttondemos.ButtonIcon' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/buttondemos/ButtonIcon.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Icon.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/icon_styles.css' 
 height="100px"
@@ -85,15 +86,15 @@ Button components, like many others, can be disabled to convey to a user that a 
 all button themes and expanses. <br/><br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonDisable' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonDisable.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.buttondemos.ButtonDisable' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/buttondemos/ButtonDisable.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Disable.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/disable_styles.css'
 />
 
 <br />
 
-Disabling a button can be done at any time in the code by using the ```setEnabled(boolean enabled)``` function. For added convenience, a button can also be disabled when clicked using the built-in ```setDisabledOnClick(boolean enabled)``` function.
+Disabling a button can be done at any time in the code by using the <JavadocLink type="engine" location="org/dwcj/component/HasEnable" code='true'>setEnabled(boolean enabled)</JavadocLink> function. For added convenience, a button can also be disabled when clicked using the built-in <JavadocLink type="engine" location="org/dwcj/component/button/Button" code='true' suffix='#setDisableOnClick(java.lang.Boolean)'>setDisabledOnClick(boolean enabled)</JavadocLink> function.
 
 <br />
 
@@ -101,14 +102,22 @@ Disabling a button can be done at any time in the code by using the ```setEnable
 
 The `Button` class provides methods to add and remove event listeners for the following events:
 
-| Events | Description |
+<!-- | Events | Description |
 |:-:|-|
-|`BlurEvent`|An event that is triggered when an element loses focus. It occurs when the user interacts with an element, such as clicking inside an input field, and then moves the focus away from that element, typically by clicking outside of it or tabbing to another element on the page.|
-|`ClickEvent`|The click event is triggered when a user interacts with a button by clicking or tapping on it. When a component's click event is triggered, it indicates that the user has performed an action to activate the component.|
-|`FocusEvent`|An event that is triggered when an element gains focus, opposite of a blur event. It occurs when the user interacts with an element, typically by clicking inside an input field or navigating to it using the keyboard's tab key, causing the element to become active and ready to receive user input.|
-|`MouseEnterEvent`|An event that is triggered when the mouse cursor enters the boundaries of an element. It occurs when the user moves the mouse pointer over the specified element, indicating that the mouse has entered its area.|
-|`MouseExitEvent`|An event that is triggered when the mouse cursor exits the boundaries of an element. It occurs when the user moves the mouse pointer out of the boundaries of the specified element, indicating that the mouse has exited its area.|
-|`RightMouseDownEvent`|An event refers to an event that is triggered when the user presses the right mouse button while the cursor is over an element. It allows you to capture the specific action of the user's right mouse button being pressed down within the boundaries of the element.|
+|<JavadocLink type="engine" location="org/dwcj/component/event/BlurEvent" code='true'>BlurEvent</JavadocLink>|An event that is triggered when an element loses focus. It occurs when the user interacts with an element, such as clicking inside an input field, and then moves the focus away from that element, typically by clicking outside of it or tabbing to another element on the page.|
+|<JavadocLink type="engine" location="org/dwcj/component/button/event/ButtonClickEvent" code='true'>ButtonClickEvent</JavadocLink>|The click event is triggered when a user interacts with a button by clicking or tapping on it. When a component's click event is triggered, it indicates that the user has performed an action to activate the component.|
+|<JavadocLink type="engine" location="org/dwcj/component/event/FocusEvent" code='true'>FocusEvent</JavadocLink>|An event that is triggered when an element gains focus, opposite of a blur event. It occurs when the user interacts with an element, typically by clicking inside an input field or navigating to it using the keyboard's tab key, causing the element to become active and ready to receive user input.|
+|<JavadocLink type="engine" location="org/dwcj/component/event/MouseEnterEvent" code='true'>MouseEnterEvent</JavadocLink>|An event that is triggered when the mouse cursor enters the boundaries of an element. It occurs when the user moves the mouse pointer over the specified element, indicating that the mouse has entered its area.|
+|<JavadocLink type="engine" location="org/dwcj/component/event/MouseExitEvent" code='true'>MouseExitEvent</JavadocLink>|An event that is triggered when the mouse cursor exits the boundaries of an element. It occurs when the user moves the mouse pointer out of the boundaries of the specified element, indicating that the mouse has exited its area.|
+|<JavadocLink type="engine" location="org/dwcj/component/event/RightMouseDownEvent" code='true'>RightMouseDownEvent</JavadocLink>|An event refers to an event that is triggered when the user presses the right mouse button while the cursor is over an element. It allows you to capture the specific action of the user's right mouse button being pressed down within the boundaries of the element.| -->
+
+- [`BlurEvent`](../components/events/BlurEvent)
+- [`ButtonClickEvent`](../components/events/ButtonClickEvent)
+- [`FocusEvent`](../components/events/FocusEvent)
+- [`MouseEnterEvent`](../components/events/MouseEnterEvent)
+- [`MouseExitEvent`](../components/events/MouseExitEvent)
+- [`RightMouseDownEvent`](../components/events/RightMouseDownEvent)
+
 
 <br />
 
@@ -145,24 +154,24 @@ Below is a simple demonstration using a `ClickEvent` - notice the event payload 
 :::
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonEvent' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonEvent.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.buttondemos.ButtonEvent' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/buttondemos/ButtonEvent.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Event.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/event_styles.css'
-height='175px'
+height='150px'
 />
 
 ## Styling
 
 ### Themes
 
-DWCJ button components come with 14 themes built in for quick styling without the use of CSS.
+DWCJ button components come with <JavadocLink type="engine" location="org/dwcj/component/button/Button.Theme">14 discrete themes built in for quick styling</JavadocLink> without the use of CSS.
 Shown below are example buttons with each of the supported Themes applied: <br/>
 
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonThemes' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonThemes.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.buttondemos.ButtonThemes' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/buttondemos/ButtonThemes.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Theme.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/theme_styles.css'
 height='175px'
@@ -173,8 +182,8 @@ There are five button expanses that are supported in the DWCJ which allow for qu
 Below are the various expanses supported for the button component: <br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.buttondemos.ButtonExpanses' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/buttondemos/ButtonExpanses.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.buttondemos.ButtonExpanses' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/buttondemos/ButtonExpanses.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Expanses.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/expanse_styles.css'
 height='75px'

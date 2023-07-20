@@ -7,7 +7,7 @@ import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<JavadocLink type="engine" location="org/dwcj/component/choicebox/ChoiceBox"/>
+<JavadocLink type="engine" location="org/dwcj/component/choicebox/ChoiceBox" top='true'/>
 
 ### Labeling
 
@@ -15,8 +15,8 @@ Labels can be easily added above the component without the need to create a sepa
 
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.comboboxdemos.ComboboxLabelDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/comboboxdemos/ComboboxLabelDemo.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.comboboxdemos.ComboboxLabelDemo' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/comboboxdemos/ComboboxLabelDemo.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/combobox/Label.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/label_styles.css' 
 javaHighlight='{33}'
@@ -31,8 +31,8 @@ DWCJ Choice Box components come with 14 themes built in for quick styling withou
 Shown below are example boxes with each of the supported Themes applied: <br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.comboboxdemos.ComboboxThemeDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/comboboxdemos/ComboboxThemeDemo.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.comboboxdemos.ComboboxThemeDemo' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/comboboxdemos/ComboboxThemeDemo.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/combobox/Theme.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/theme_styles.css' 
 height="170px"
@@ -53,8 +53,8 @@ There are five Choice Box expanses that are supported in the DWCJ which allow fo
 Below are the various expanses supported this component: <br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=control_demos.comboboxdemos.ComboboxExpanseDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/control_demos/comboboxdemos/ComboboxExpanseDemo.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.comboboxdemos.ComboboxExpanseDemo' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/comboboxdemos/ComboboxExpanseDemo.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/combobox/Expanse.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/expanse_styles.css' 
 javaHighlight='{21,25,29,33,37}'
