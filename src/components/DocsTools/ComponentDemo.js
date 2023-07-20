@@ -8,6 +8,7 @@ import Details from '@theme/Details';
 import CodeBlock from '@theme/CodeBlock';
 import test1 from '../../../static/img/fold.png';
 import test2 from '../../../static/img/expand.png';
+import test3 from '../../../static/img/window-maximize.png';
 
 function CodeToggleButton({ collapse, setCollapse }){
 
@@ -29,8 +30,7 @@ function CodeToggleButton({ collapse, setCollapse }){
     justify-self: flex-end;
     margin-right: 5px;
     margin-bottom: -50px;
-    background-color: transparent;
-  
+    background-color: transparent;  
   `
 
   const iconStyles = css`
@@ -56,6 +56,42 @@ function CodeToggleButton({ collapse, setCollapse }){
   );
 }
 
+function OpenNewWindowButton({ url }) {
+
+    const buttonStyles = css`
+      position: relative;
+      cursor: pointer;
+      z-index: 10;
+      height: 35px;
+      width: 35px;
+      border: none;
+      background-color: none;
+      justify-self: flex-end;
+      margin-right: 5px;
+      margin-bottom: -50px;
+      background-color: transparent;
+
+      
+    `;
+  
+    const iconStyles = css`
+      filter: invert(var(--inversion-percentage));
+      ::before{
+        mix-blend-mode: lighten; /* The blend mode determines how the overlay interacts with the image */
+        opacity: 0.5;
+      }
+    `;
+
+    const openNewWindow = () => {
+      window.open(url, '_blank'); // '_blank' will open the URL in a new tab
+    };
+
+    return (
+      <button css={buttonStyles} onClick={openNewWindow}>
+        <img css={iconStyles} src={test3}/>
+      </button>
+    );
+}
 
 
 export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighlight, height, frame }) {
@@ -64,11 +100,11 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
   const [javaExpand, setJavaExpand] = useState("");
   const [cssCode, setCssCode] = useState("");
   const [collapsed, setCollapsed] = useState(true);
+  const [buttonVisible, setButtonVisible] = useState(false);
 
 	const mainStyles = css`
 		display: flex;
     flex-direction: column;
-    /* padding: 10px 15px 0 15px; */
     background-color: var(--code-display-color);
 		width: 100%;
     margin-bottom: 16px;
@@ -79,6 +115,7 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
   const iframeStyles = css`
     min-height: 100px;
     height: 100%;
+    width: 100%;
     height: ${height};
   `
 
@@ -107,6 +144,19 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
 
   `
 
+  const testStyles = css`
+  width: 100%;
+  `
+
+  const fadeInButton = css`
+  display: flex;
+  justify-content: flex-end;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    ${buttonVisible && 'opacity: 1;'};
+    
+  `;
+
   if(javaE){
     fetch(javaE)
         .then(response => response.text()) 
@@ -129,14 +179,25 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
         });
   }
 
+
+
   return (
     <div css={mainStyles}>
       {frame != "hidden" ? 
-      <iframe
-        loading="lazy" 
-        src={path}
-        css={iframeStyles}>
-      </iframe>
+      <div 
+        onMouseEnter={() => {setButtonVisible(true)}}
+        onMouseLeave={() => setButtonVisible(false)}
+        css={testStyles}
+      >
+        <div css={fadeInButton}>
+        <OpenNewWindowButton url={path} />
+        </div>
+        <iframe
+          loading="lazy" 
+          src={path}
+          css={iframeStyles}>
+        </iframe>
+      </div>
       : null
       }
       <Details css={detailsStyles} summary={<summary>Show Code</summary>}>

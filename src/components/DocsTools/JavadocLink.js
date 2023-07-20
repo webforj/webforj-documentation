@@ -21,7 +21,6 @@ export default function JavadocLink( { type, location, top, children, code, suff
     };
     
     fetchLatestRelease();
-    console.log(top);
   }, []);
 
   const mainStyles = css`

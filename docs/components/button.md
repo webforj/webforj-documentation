@@ -158,7 +158,7 @@ path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttond
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonEvent.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Event.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/event_styles.css'
-height='150px'
+height='100px'
 />
 
 ## Styling
