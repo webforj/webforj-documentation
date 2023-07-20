@@ -44,8 +44,8 @@ CheckBox myCheckbox = new CheckBox("Checkbox Text");
 Check boxes can utilize the ```setText(String text)``` method, which will be positioned near the check box according to the built-in `Position`. Checkboxes have built-in functionality to set text to be displayed either to the right or left of the box. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of the `HorizontalAlignment` enum class. Show below are the two settings: <br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.checkboxdemos.CheckboxHorizontalText' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/checkboxdemos/CheckboxHorizontalText.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxHorizontalText' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/checkboxdemos/CheckboxHorizontalText.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/checkbox/Horizontal.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css' 
 javaHighlight='{18}'
@@ -62,8 +62,8 @@ The `CheckBox` component supports indeterminism, which is a UI pattern commonly 
 - Hierarchical data: Indeterminism can be employed in scenarios where there is a hierarchical relationship between CheckBoxes. For example, when selecting categories and subcategories, the indeterminate state can represent that some subcategories are selected while others are not, and the parent category is in the indeterminate state.
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.checkboxdemos.CheckboxIndeterminate' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/checkboxdemos/CheckboxIndeterminate.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxIndeterminate' 
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/checkboxdemos/CheckboxIndeterminate.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css' 
 height = '225px'
 />
@@ -116,8 +116,8 @@ For a method to be removed via the appropriate removeListener method, the signat
 :::
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.checkboxdemos.CheckboxEventDemo' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/checkboxdemos/CheckboxEventDemo.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxEventDemo' 
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/checkboxdemos/CheckboxEventDemo.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css'
 />
 
@@ -128,8 +128,8 @@ There are five `CheckBox` expanses that are supported which allow for quick styl
 Expanses are supported by use of the `Expanse` enum class. Below are the expanses supported for the checkbox component: <br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.checkboxdemos.CheckboxExpanseDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/checkboxdemos/CheckboxExpanseDemo.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxExpanseDemo' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/checkboxdemos/CheckboxExpanseDemo.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/checkbox/Expanse.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/expanse_styles.css' 
 javaHighlight='{17,21,25,29,33}'

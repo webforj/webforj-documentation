@@ -79,8 +79,8 @@ For a method to be removed via the appropriate removeListener method, the signat
 :::
 
 <!-- <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.checkboxdemos.CheckboxHorizontalText' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/checkboxdemos/CheckboxHorizontalText.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxHorizontalText' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/checkboxdemos/CheckboxHorizontalText.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/checkbox/Horizontal.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css' 
 javaHighlight='{18}'

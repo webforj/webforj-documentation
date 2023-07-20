@@ -13,8 +13,8 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 The `Button` component is a versatile UI element that allows users to trigger actions or interact with your application. Buttons are essential for creating intuitive and interactive user interfaces.
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.buttondemos.ButtonDemo' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/buttondemos/ButtonDemo.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonDemo' 
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonDemo.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/demo_styles.css'
 height='300px'
 />
@@ -65,8 +65,8 @@ In addition to, or instead of having text on a button, it is possible to add an 
 Below are examples of buttons with text to the left and right, as well as a button with only an icon:
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.buttondemos.ButtonIcon' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/buttondemos/ButtonIcon.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonIcon' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonIcon.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Icon.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/icon_styles.css' 
 height="100px"
@@ -86,8 +86,8 @@ Button components, like many others, can be disabled to convey to a user that a 
 all button themes and expanses. <br/><br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.buttondemos.ButtonDisable' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/buttondemos/ButtonDisable.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonDisable' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonDisable.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Disable.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/disable_styles.css'
 />
@@ -154,8 +154,8 @@ Below is a simple demonstration using a `ClickEvent` - notice the event payload 
 :::
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.buttondemos.ButtonEvent' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/buttondemos/ButtonEvent.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonEvent' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonEvent.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Event.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/event_styles.css'
 height='150px'
@@ -170,8 +170,8 @@ Shown below are example buttons with each of the supported Themes applied: <br/>
 
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.buttondemos.ButtonThemes' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/buttondemos/ButtonThemes.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonThemes' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonThemes.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Theme.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/theme_styles.css'
 height='175px'
@@ -182,8 +182,8 @@ There are five button expanses that are supported in the DWCJ which allow for qu
 Below are the various expanses supported for the button component: <br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=component_demos.buttondemos.ButtonExpanses' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/component_demos/buttondemos/ButtonExpanses.java'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonExpanses' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonExpanses.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Expanses.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/expanse_styles.css'
 height='75px'
