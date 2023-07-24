@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-
 export default function TableBuilder(props) {
 
 
@@ -14,7 +13,9 @@ export default function TableBuilder(props) {
           (component) => component.tag === props.tag
         );
         setComponent(selectedComponent);
+        console.log(props.exclusions)
       });
+
   }, []);
 
   //Shows while the fetch request happens (likely unneeded as the iframes will refocus the window)
@@ -51,10 +52,12 @@ export default function TableBuilder(props) {
           {partItems?.map((docTag) => {
             const [part, description] = docTag.text.split(" - ");
             return (
+              !props.exclusions?.includes(part) && (
               <tr key={docTag.id}>
                 <td><code>{part}</code></td>
                 <td>{description}</td>
               </tr>
+              )
             );
           })}
         </tbody>
@@ -75,10 +78,12 @@ export default function TableBuilder(props) {
         </thead>
         <tbody>
           {styleItems?.map((style) => (
+            !props.exclusions?.includes(style.name) && (
             <tr key={style.name}>
               <td><code>{style.name}</code></td>
               <td>{style.description}</td>
             </tr>
+            )
           ))}
         </tbody>
       </table>
@@ -99,7 +104,7 @@ export default function TableBuilder(props) {
         </thead>
         <tbody>
           {reflectItems?.map((prop) => (
-            prop.attr != null && prop.display == "&#x2714;" && (
+            prop.attr != null && prop.display == "&#x2714;" && !props.exclusions?.includes(prop.attr) && (
             <tr key={prop.attr}>
               <td><code>{prop.attr}</code></td>
               <td>{prop.desc}</td>

@@ -1,0 +1,18 @@
+{ 
+  "button": {
+    "parts":[
+      "dropdown",
+      "dropdown-icon",
+      "dropdown-separator"
+    ],
+    "properties": [
+      "--bbj-button-selected-background",
+      "--bbj-button-selected-color",
+      "--bbj-button-separator-color"
+    ],
+    "reflects": [
+      "toggleable", 
+      "selected"
+    ]
+  }
+}

@@ -17,6 +17,8 @@
   --docusaurus-highlighted-code-line-bg: #DDDFE1;
   --code-display-color: #F8FAFC;
   --inversion-percentage: 0%;
+  --ifm-container-width-xl: calc((3 / 12 * 100%) + 760px);
+  
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -31,10 +33,16 @@
   --docusaurus-highlighted-code-line-bg: #414458;
   --code-display-color: #21222c;
   --inversion-percentage: 100%;
+
 }
 
-.docPage_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-styles-module{
+/* .docPage_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-styles-module{
   min-height: 100vh;
+} */
+
+.container {
+  /* Adjust the padding value as needed */
+  padding-right: 100px; 
 }
 
 .main-wrapper{
@@ -61,4 +69,8 @@
 
 .sidebar--item__hidden{
   display: none;
+}
+
+.MuiChip-root{
+  text-decoration: none !important;
 }

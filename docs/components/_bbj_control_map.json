@@ -32,5 +32,6 @@
 "MenuItem" :"bbj-menuitem",
 "CheckableMenuItem" :"bbj-menuitem",
 "Drawer" :"bbj-drawer",
-"Dialog" :"bbj-dialog"
+"Dialog" :"bbj-dialog",
+"Icon" :"bbj-icon"
 }
