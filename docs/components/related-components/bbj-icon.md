@@ -1,8 +1,8 @@
 ---
 sidebar_position: 0
-title: BBjIcon
+title: bbj-icon
 sidebar_class_name: sidebar--item__hidden
-slug: BBjIcon
+slug: bbj-icon
 ---
 
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
@@ -34,7 +34,7 @@ The default pool name is tabler
 You can use these when adding text to certain components via the `setText()` method by setting text similar to the following:
 
 ```java
-  Button remminder = new Button("<html><bbj-icon name=\"bell\"></bbj-icon> Icon Left</html>");
+  Button reminder = new Button("<html><bbj-icon name=\"bell\"></bbj-icon> Icon Left</html>");
 ```
 
 ## Styling

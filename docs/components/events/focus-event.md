@@ -15,5 +15,4 @@ An event that is triggered when an element gains focus, opposite of a blur event
 
 | Events | Description |
 |:-:|-|
-|`text`|A string containing the text of the component when it loses focus.|
-|`client-validation-valid`|A boolean value indicating whether a focus change is permanent or temporary.|
+|`getText()`|Gets the text of the component.|

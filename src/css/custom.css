@@ -18,7 +18,10 @@
   --code-display-color: #F8FAFC;
   --inversion-percentage: 0%;
   --ifm-container-width-xl: calc((3 / 12 * 100%) + 760px);
-  
+  --chip-background: #e2e2e2;
+  --chip-background-hover: #cfcfcf;
+  --chip-text: #5F6163;
+  --chip-icon-color: #616161;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -33,7 +36,10 @@
   --docusaurus-highlighted-code-line-bg: #414458;
   --code-display-color: #21222c;
   --inversion-percentage: 100%;
-
+  --chip-background: #494C4F;
+  --chip-background-hover: #424242;
+  --chip-text: #E0E0E0;
+  --chip-icon-color: #E0E0E0;
 }
 
 /* .docPage_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-styles-module{
@@ -42,7 +48,17 @@
 
 .container {
   /* Adjust the padding value as needed */
-  padding-right: 100px; 
+  /* padding-right: 100px;  */
+  margin: 0 0 0 20%;
+}
+
+.row{
+  gap: 12%;
+  margin-left: -15%;
+}
+
+.docItemCol_node_modules{
+  background-color: blue !important;
 }
 
 .main-wrapper{

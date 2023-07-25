@@ -18,5 +18,5 @@ The `ButtonClickEvent` is an event type that is triggered when a user clicks on 
 
 | Events | Description |
 |:-:|-|
-|`x`|A string containing the X location of the mouse within the <JavadocLink type="engine" location="org/dwcj/component/button/Button" code='true'>Button</JavadocLink> component at the time the event was fired.|
-|`y`|A string containing the Y location of the mouse within the <JavadocLink type="engine" location="org/dwcj/component/button/Button" code='true'>Button</JavadocLink> component at the time the event was fired.|
+|`getX()`|Returns the X location of the mouse within the <JavadocLink type="engine" location="org/dwcj/component/button/Button" code='true'>Button</JavadocLink> component at the time the event was fired.|
+|`getY()`|Returns the Y location of the mouse within the <JavadocLink type="engine" location="org/dwcj/component/button/Button" code='true'>Button</JavadocLink> component at the time the event was fired.|

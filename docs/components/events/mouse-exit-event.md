@@ -15,12 +15,12 @@ An event that is triggered when the mouse cursor exits the boundaries of an elem
 
 | Events | Description |
 |:-:|-|
-|`mouseButton`|An ID indicating which mouse button was pressed.|
-|`screenX`|The absolute screen X coordinate of the point at which this event occurred.|
-|`screenY`|The absolute screen Y coordinate of the point at which this event occurred.|
-|`x`|The X coordinate of the point at which this event occurred, relative to the parent <JavadocLink type="engine" location="org/dwcj/component/window/Frame" code='true'>Frame</JavadocLink>.|
-|`y`|The Y coordinate of the point at which this event occurred, relative to the parent <JavadocLink type="engine" location="org/dwcj/component/window/Frame" code='true'>Frame</JavadocLink>.|
-|`altDown`|A boolean value indicating whether the `alt` key was pressed at the time this event was generated|
-|`cmdDown`|A boolean value indicating whether the `cmd` key was pressed at the time this event was generated|
-|`controlDown`|A boolean value indicating whether the `ctrl` key was pressed at the time this event was generated|
-|`shiftDown`|A boolean value indicating whether the `shift` key was pressed at the time this event was generated|
+|`getMouseButton()`|Returns whether or not a mouse button was pressed while the event happened.|
+|`getScreenX()`|Returns the absolute abscissa screen coordinate where this event happened.|
+|`getScreenY()`|Returns the absolute ordinate screen coordinate where this event happened.|
+|`getX()`|The X coordinate of the point at which this event occurred, relative to the parent <JavadocLink type="engine" location="org/dwcj/component/window/Frame" code='true'>Frame</JavadocLink>.|
+|`getY()`|The Y coordinate of the point at which this event occurred, relative to the parent <JavadocLink type="engine" location="org/dwcj/component/window/Frame" code='true'>Frame</JavadocLink>.|
+|`isAltDown()`|A boolean value indicating whether the `alt` key was pressed at the time this event was generated|
+|`isCmdDown()`|A boolean value indicating whether the `cmd` key was pressed at the time this event was generated|
+|`isControlDown()`|A boolean value indicating whether the `ctrl` key was pressed at the time this event was generated|
+|`isShiftDown()`|A boolean value indicating whether the `shift` key was pressed at the time this event was generated|
