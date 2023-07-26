@@ -106,7 +106,7 @@ Disabling a button can be done at any time in the code by using the <JavadocLink
 
 In some applications, clicking a button triggers a long-running action. In most cases, the application might want to ensure that only a single click is processed.  This can be an issue in high-latency environments when the user clicks the button multiple times before the application has had a chance to start processing the resulting action. 
 
-:::info
+:::tip
 Disabling on click not only helps optimize the processing of actions, but also prevents the user from needing to implement this behavior on their own, as this method has been optimized to reduce round trip communications.
 :::
 
