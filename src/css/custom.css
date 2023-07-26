@@ -57,6 +57,10 @@
   margin-left: -15%;
 }
 
+.col--3{
+  flex: 1 0 !important;
+}
+
 .docItemCol_node_modules{
   background-color: blue !important;
 }

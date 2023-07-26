@@ -218,9 +218,15 @@ height='75px'
 
 ### Shadow Parts
 
-These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
+These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
 
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Button} table='parts' exclusions={require('@site/static/exclusions.json').button.parts} />
+
+### Slots
+
+Listed below are the slots available for utilization within the `Button` component. These slots act as placeholders within the component that control where the children of a customized element should be inserted within the shadow tree.
+
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Button} table='slots' exclusions={require('@site/static/exclusions.json').button.slots} />
 
 ### CSS Properties
 

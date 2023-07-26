@@ -5,6 +5,9 @@
       "dropdown-icon",
       "dropdown-separator"
     ],
+    "slots": [
+
+    ],
     "properties": [
       "--bbj-button-selected-background",
       "--bbj-button-selected-color",

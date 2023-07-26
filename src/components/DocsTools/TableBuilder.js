@@ -24,6 +24,10 @@ export default function TableBuilder(props) {
   }
 
   const partItems = component.docsTags?.filter((docTag) => docTag.name === "part");
+  const slotItems = component.slots?.map((slots) => ({
+    name: slots.name,
+    desc: slots.docs
+  }));
   const styleItems = component.styles?.map((style) => ({
     name: style.name,
     description: style.docs,
@@ -60,6 +64,30 @@ export default function TableBuilder(props) {
               )
             );
           })}
+        </tbody>
+      </table>
+        </>
+      )
+    }
+    {
+      props.table == "slots" && (
+        <>
+        <table className="custom--table">
+        <thead>
+          <tr key="header">
+            <th>Slot</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {slotItems?.map((slot) => (
+            !props.exclusions?.includes(slot.name) && slot.name != "" && (
+            <tr key={slot.name}>
+              <td><code>{slot.name}</code></td>
+              <td>{slot.desc}</td>
+            </tr>
+            )
+          ))}
         </tbody>
       </table>
         </>
@@ -120,7 +148,7 @@ export default function TableBuilder(props) {
       {/* <h4>CSS Properties</h4> */}
 
     {
-      props.table != "properties" && props.table != "parts" && props.table != "reflects" && (
+      props.table != "properties" && props.table != "parts" && props.table != "slots" && props.table != "reflects" && (
         <>
           <h4>Shadow Parts</h4>
           <table className="custom--table">
