@@ -8,11 +8,17 @@ import TabItem from '@theme/TabItem';
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
+import DocChip from '@site/src/components/DocsTools/DocChip';
 
+<DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
 
-<JavadocLink type="engine" location="org/dwcj/component/checkbox/CheckBox" top='true'/>
+<DocChip tooltipText="The name of the web component that will render in the DOM." label="bbj-checkbox" href="https://basishub.github.io/basis-next/#/web-components/bbj-checkbox" clickable={true} iconName='code'/>
+
+<JavadocLink type="engine" location="org/dwcj/component/optioninput/CheckBox" top='true'/>
 
 The `CheckBox` class creates a component that can be selected or deselected, and which displays its state to the user. When clicked, a check mark appears inside the box, to indicate an affirmative choice (on). When clicked again, the check mark disappears, indicating a negative choice (off).
+
+By providing a clear and straightforward visual indication of selection status, checkboxes enhance user interaction and decision-making, making them an essential element in modern user interfaces.
 
 ## Usages
 
@@ -20,28 +26,41 @@ The `CheckBox` is best used in scenarios where users need to make multiple selec
 
 1. **Task or Feature Selection**: Checkboxes are commonly used when users need to select multiple tasks or features to perform certain actions or configurations.
 
-2. **Preference Settings**: Applications that involve preference or settings panels often use Checkboxes to allow users to choose multiple options from a set of choices. This is best for options which are not mutually exclusive.
+2. **Preference Settings**: Applications that involve preference or settings panels often use Checkboxes to allow users to choose multiple options from a set of choices. This is best for options which are not mutually exclusive. For instance:
+
+ >- Enabling or disabling notifications
+ >- Choosing a dark mode or light mode theme
+ >- Selecting email notification preferences
 
 3. **Filtering or Sorting**: A `CheckBox` can be used in applications that require users to select multiple filters or categories, such as filtering search results or selecting multiple items for further actions.
+
+4. **Form Inputs**: Checkboxes are commonly used in forms to allow users to select multiple options or make binary choices. For example:
+  >- Subscribe to a newsletter
+  >- Agree to terms and conditions
+  >- Select items for purchase or booking
 
 
 ## Constructors
 
 The `CheckBox` class has three constructors:
 
-1. `CheckBox()`: Creates an empty `CheckBox` in the unchecked state.
-2. `CheckBox(String text)`: Creates a `CheckBox` with an attached label in the unchecked state.
-3. `CheckBox(String text, boolean checked)` Creates a `CheckBox` with an attached label in either the checked or unchecked state, based on the boolean passed (`true` for checked, `false` for unchecked).
+1. <JavadocLink type="engine" location="org/dwcj/component/checkbox/CheckBox" code='true' suffix='#<init>()'>Checkbox()</JavadocLink>: Creates an empty <code>CheckBox</code> in the unchecked state.
+2. <JavadocLink type="engine" location="org/dwcj/component/checkbox/CheckBox" code='true' suffix='#<init>(java.lang.String)'>Checkbox(String text)</JavadocLink>: Creates a <code>CheckBox</code> with an attached label in the unchecked state.
+3. <JavadocLink type="engine" location="org/dwcj/component/checkbox/CheckBox" code='true' suffix='#<init>(java.lang.String,boolean)'>Checkbox(String text boolean checked)</JavadocLink>: Creates a <code>CheckBox</code> with an attached label in either the checked or unchecked state, based on the boolean passed (<code>true</code> for checked, <code>false</code> for unchecked).
 
 Here is an example of how to create a `CheckBox` object:
 
 ```java
-CheckBox myCheckbox = new CheckBox("Checkbox Text");
+CheckBox enabled = new CheckBox("Enable Option");
 ```
 
 ## Text and Positioning
 
-Check boxes can utilize the ```setText(String text)``` method, which will be positioned near the check box according to the built-in `Position`. Checkboxes have built-in functionality to set text to be displayed either to the right or left of the box. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of the `HorizontalAlignment` enum class. Show below are the two settings: <br/>
+Check boxes can utilize the <JavadocLink type="engine" location="org/dwcj/component/AbstractOptionInput" code='true' suffix='#setText(java.lang.String)'>setText(String text)</JavadocLink> method, which will be positioned near the check box according to the built-in <JavadocLink type="engine" location="org/dwcj/component/TextPosition" code='true' suffix=''>Position</JavadocLink>. 
+
+Checkboxes have built-in functionality to set text to be displayed either to the right or left of the box. By default, the text will be displayed to the right of the component. 
+
+Positioning of the horizontal text is supported by use of the `HorizontalAlignment` enum class. Show below are the two settings: <br/>
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxHorizontalText' 

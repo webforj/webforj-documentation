@@ -213,7 +213,7 @@ path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttond
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonExpanses.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Expanses.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/expanse_styles.css'
-height='75px'
+height='125px'
 />
 
 ### Shadow Parts
