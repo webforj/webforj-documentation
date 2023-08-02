@@ -43,8 +43,6 @@
 }
 
 .container {
-  /* Adjust the padding value as needed */
-  /* padding-right: 100px;  */
   margin: 0 0 0 20%;
 
   @media only screen and (max-width: 1445px) {
@@ -69,7 +67,6 @@
   
 .docItemCol_node_modules-\@docusaurus-theme-classic-lib-theme-DocItem-Layout-styles-module{
   margin-left: -15%;
-  
 }
 
 
@@ -81,10 +78,10 @@
   media only screen and (max-width: 996px) {
     margin: 0 0 0 0;
    }
-  }
+}
   
-  .col--6{
-    margin-right: 0%;
+.col--6{
+  margin-right: 0% !important;
   
   media only screen and (max-width: 996px) {
     margin: 0 0 0 0;
