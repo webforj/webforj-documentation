@@ -17,7 +17,7 @@ export default function JavadocLink( { type, location, top, children, code, suff
           suffix = ""
         }
         if(!latestTag){
-          latestTag = "23.01"
+          latestTag = "23.02"
         }
         setUrl("https://javadoc.io/static/org.dwcj/dwcj-" + type + "/" + latestTag + "/" + location + ".html" + suffix)
       } catch (error) {

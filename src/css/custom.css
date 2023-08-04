@@ -42,8 +42,8 @@
   --chip-icon-color: #E0E0E0;
 }
 
+/* 
 .container {
-  /* margin: 0 0 0 20%; */
 
   @media only screen and (max-width: 1445px) {
     margin: 0 0 0 20%;
@@ -92,6 +92,12 @@
   @media only screen and (max-width: 996px) {
     margin: 0 0 0 0;
    }
+} */
+
+.docItemCol_node_modules-\@docusaurus-theme-classic-lib-theme-DocItem-Layout-styles-module{
+  @media (min-width: 997px){
+    margin-right: 10%;
+  }
 }
 
 .docItemCol_node_modules{

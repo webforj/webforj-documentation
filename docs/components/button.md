@@ -59,7 +59,7 @@ The `Button` class has three constructors:
 
 1. <JavadocLink type="engine" location="org/dwcj/component/button/Button" code='true' suffix='#<init>()'>Button()</JavadocLink>: Creates an empty <code>Button</code> without any text inside the component.
 2. <JavadocLink type="engine" location="org/dwcj/component/button/Button" code='true' suffix='#<init>(java.lang.String)'>Button(String text)</JavadocLink>: Creates a <code>Button</code> with text inside the component.
-3. `Button(String text, EventListener<ButtonClickEvent> onClickListener)` Creates a `Button` with text inside the component, and an <JavadocLink type="engine" location="org/dwcj/component/event/EventListener" code='true'>EventListener</JavadocLink> for a <JavadocLink type="engine" location="org/dwcj/component/button/event/ButtonClickEvent" code='true'>ButtonClickEvent</JavadocLink> which fires when a user clicks on the `Button`.
+3. <JavadocLink type="engine" location="org/dwcj/component/button/Button" code='true' suffix='#<init>(java.lang.String,org.dwcj.component.event.EventListener)'>Button(String text, EventListener{"<ButtonClickEvent>"} onClickListener)</JavadocLink>: Creates a <code>Button</code> with text inside the component, and an <JavadocLink type="engine" location="org/dwcj/component/event/EventListener" code='true'>EventListener</JavadocLink> for a <JavadocLink type="engine" location="org/dwcj/component/button/event/ButtonClickEvent" code='true'>ButtonClickEvent</JavadocLink> which fires when a user clicks on the <code>Button</code>.
 
 Here is an example of how to create a `Button` object:
 
@@ -176,7 +176,7 @@ height='100px'
 
 ### Themes
 
-`Button` components come with **<JavadocLink type="engine" location="org/dwcj/component/button/Button.Theme">14 discrete themes </JavadocLink>** built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to buttons to change their appearance and visual presentation. They offer a quick and consistent way to customize the look of buttons throughout an application. 
+`Button` components come with <JavadocLink type="engine" location="org/dwcj/component/button/Button.Theme">14 discrete themes </JavadocLink> built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to buttons to change their appearance and visual presentation. They offer a quick and consistent way to customize the look of buttons throughout an application. 
 
 While there are many use cases for each of the various themes, some examples uses are:
 
@@ -199,7 +199,7 @@ height='175px'
 />
 
 ### Expanses
-There are five expanses that are supported which allow for quick styling without using CSS. This allows for manipulation of the Button's dimensions without having to explicitly set it using any styling. In addition to simplifying styling, it also helps create and maintain a uniformity in your application. The default `Button` expanse is `Expanse.MEDIUM`.
+There are <JavadocLink type="engine" location="org/dwcj/component/Expanse">five supported Expanses </JavadocLink> which allow for quick styling without using CSS. This allows for manipulation of the Button's dimensions without having to explicitly set it using any styling. In addition to simplifying styling, it also helps create and maintain a uniformity in your application. The default `Button` expanse is `Expanse.MEDIUM`.
 
 Different sizes are often appropriate for different uses:
   - **Larger** expanse values are suited to buttons which should grab attention, emphasize functionality or are integral to the core functionality of an application or page.

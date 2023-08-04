@@ -13,7 +13,11 @@ export default function ComponentViewer( {componentData} ) {
     flex-direction : row,;
     flex-wrap : wrap;
     gap : 40px;
-    margin-right: -300px;
+    width: 130%;
+
+    @media only screen and (max-width: 996px) {
+      width: 100%;
+    }
   `
 
   return (
