@@ -16,3 +16,8 @@ An event that is triggered when an element gains focus, opposite of a blur event
 | Events | Description |
 |:-:|-|
 |`getText()`|Gets the text of the component.|
+
+## See Also
+
+- [Event](./event)
+- [Blur Event](./BlurEvent)

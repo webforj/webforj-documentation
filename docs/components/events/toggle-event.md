@@ -16,3 +16,11 @@ A "toggle" event occurs when an element or control changes its state between two
 | Events | Description |
 |:-:|-|
 |`isToggled()`|Gets the value of the component to determine whether it was toggled on or off.|
+
+## See Also
+
+- [Event](./event)
+- [Check Event](./CheckEvent)
+- [Uncheck Event](./UncheckEvent)
+- [CheckBox](../checkbox)
+- [RadioButton](../radiobutton)
