@@ -107,7 +107,7 @@ Disabling a button can be done at any time in the code by using the <JavadocLink
 In some applications, clicking a button triggers a long-running action. In most cases, the application might want to ensure that only a single click is processed.  This can be an issue in high-latency environments when the user clicks the button multiple times before the application has had a chance to start processing the resulting action. 
 
 :::tip
-Disabling on click not only helps optimize the processing of actions, but also prevents the user from needing to implement this behavior on their own, as this method has been optimized to reduce round trip communications.
+Disabling on click not only helps optimize the processing of actions, but also prevents the developer from needing to implement this behavior on their own, as this method has been optimized to reduce round trip communications.
 :::
 
 <br />
@@ -160,7 +160,7 @@ myButton.removeClickListener(listener);
 Below is a demonstration showing the addition of a [`ButtonClickEvent`](../components/events/ButtonClickEvent) to a `Button`. This `Button` also uses information coming with the event's payload to display information on the screen.
 
 :::tip
-Below is a simple demonstration using a [`ButtonClickEvent`](../components/events/ButtonClickEvent) - notice the event payload is used to attain information that is then utilized within the callback, which reduces the number of round trips made between the client and server. This is much more efficient than querying the component for the required information whenever data that is provided in the event payload is needed. [This page](../getting_started/architecture) explains this in greater detail.
+Notice the event payload is used to attain information that is then utilized within the callback, which reduces the number of round trips made between the client and server. This is much more efficient than querying the component for the required information whenever data that is provided in the event payload is needed. [This page](../getting_started/architecture) explains this in greater detail.
 :::
 
 <ComponentDemo 
@@ -176,7 +176,7 @@ height='100px'
 
 ### Themes
 
-`Button` components come with <JavadocLink type="engine" location="org/dwcj/component/button/Button.Theme">14 discrete themes </JavadocLink> built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to buttons to change their appearance and visual presentation. They offer a quick and consistent way to customize the look of buttons throughout an application. 
+`Button` components come with <JavadocLink type="engine" location="org/dwcj/component/button/ButtonTheme">14 discrete themes </JavadocLink> built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to buttons to change their appearance and visual presentation. They offer a quick and consistent way to customize the look of buttons throughout an application. 
 
 While there are many use cases for each of the various themes, some examples uses are:
 

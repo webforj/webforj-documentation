@@ -13,7 +13,6 @@ export default function TableBuilder(props) {
           (component) => component.tag === props.tag
         );
         setComponent(selectedComponent);
-        console.log(props.exclusions)
       });
 
   }, []);
@@ -39,6 +38,7 @@ export default function TableBuilder(props) {
     type: prop.type,
 
   }));
+
 
   return (
     <>
@@ -132,7 +132,7 @@ export default function TableBuilder(props) {
         </thead>
         <tbody>
           {reflectItems?.map((prop) => (
-            prop.attr != null && prop.display == "&#x2714;" && !props.exclusions?.includes(prop.attr) && (
+            prop.attr != null && prop.display == false && !props.exclusions?.includes(prop.attr) && (
             <tr key={prop.attr}>
               <td><code>{prop.attr}</code></td>
               <td>{prop.desc}</td>
