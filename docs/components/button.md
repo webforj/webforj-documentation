@@ -199,7 +199,7 @@ height='175px'
 />
 
 ### Expanses
-There are <JavadocLink type="engine" location="org/dwcj/component/Expanse">five supported Expanses </JavadocLink> which allow for quick styling without using CSS. This allows for manipulation of the Button's dimensions without having to explicitly set it using any styling. In addition to simplifying styling, it also helps create and maintain a uniformity in your application. The default `Button` expanse is `Expanse.MEDIUM`.
+The following <JavadocLink type="engine" location="org/dwcj/component/Expanse"> Expanses values </JavadocLink> allow for quick styling without using CSS. This allows for manipulation of the Button's dimensions without having to explicitly set it using any styling. In addition to simplifying styling, it also helps create and maintain a uniformity in your application. The default `Button` expanse is `Expanse.MEDIUM`.
 
 Different sizes are often appropriate for different uses:
   - **Larger** expanse values are suited to buttons which should grab attention, emphasize functionality or are integral to the core functionality of an application or page.

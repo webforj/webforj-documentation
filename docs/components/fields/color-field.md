@@ -7,6 +7,11 @@ slug: colorfield
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
+import DocChip from '@site/src/components/DocsTools/DocChip';
+
+<DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
+
+<DocChip tooltipText="The name of the web component that will render in the DOM." label="bbj-editbox" href="https://basishub.github.io/basis-next/#/web-components/bbj-editbox" clickable={true} iconName='code'/>
 
 <JavadocLink type="engine" location="org/dwcj/component/field/ColorField" top='true'/>
 
@@ -14,13 +19,27 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 The `ColorField` class is a Field component, and as such shares all of the commonalities belonging to a Field. Please refer to the **[Field documentation page](/docs/components/fields)** for an overview of Field properties, events, and other important information.
 :::
 
-The color field is a user interface component that allows users to select colors. It provides an intuitive and visually appealing way to choose colors for various purposes.
+The ColorField component is a powerful and versatile tool designed to provide an intuitive and interactive way to explore and select colors within your application. Whether you're designing a user interface, creating visualizations, or enhancing user experience, the ColorField component offers a seamless and efficient approach to working with colors. 
+
+With a simple drag-and-hover interface, users can effortlessly navigate through the color space to find the exact hue, saturation, and brightness that matches their creative vision. Users can also input color values directly, ensuring precision.
+
+
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.fielddemos.ColorFieldDemo' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/fielddemos/ColorFieldDemo.java'
+javaC=''
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/fieldstyles/color_field_styles.css'
+height='300px'
+/>
 
 ### Usages
 
 The `ColorField` is best used in scenarios where color selection is a crucial part of the user interface or application functionality. This section outlines the best practices and scenarios for using the color field component effectively.
 
-1. **Graphic Design and Image Editing Tools**: Color fields are essential in applications that involve graphic design, image editing, or any task that requires selecting or modifying colors.
+1. **Graphic Design and Image Editing Tools**: Color fields are essential in applications that involve:
+  >- Graphic design elements or functionality 
+  >- Image editing and customization 
+  >- Tasks that require selecting or modifying colors
 
 2. **Theme Customization**: If your application allows users to customize themes, using a color field enables them to choose colors for different UI elements, such as backgrounds, text, buttons, etc.
 

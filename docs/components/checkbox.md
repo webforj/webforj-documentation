@@ -141,7 +141,7 @@ cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/r
 ## Styling
 
 ### Expanses
-There are <JavadocLink type="engine" location="org/dwcj/component/Expanse">five supported Expanses </JavadocLink> that are supported which allow for quick styling without using CSS.
+The following <JavadocLink type="engine" location="org/dwcj/component/Expanse"> Expanses values </JavadocLink> allow for quick styling without using CSS.
 Expanses are supported by use of the `Expanse` enum class. Below are the expanses supported for the checkbox component: <br/>
 
 <ComponentDemo 
