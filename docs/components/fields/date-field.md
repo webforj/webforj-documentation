@@ -9,7 +9,7 @@ import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 import DocChip from '@site/src/components/DocsTools/DocChip';
 
-<DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
+<DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
 
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="bbj-editbox" href="https://basishub.github.io/basis-next/#/web-components/bbj-editbox" clickable={true} iconName='code'/>
 
@@ -20,6 +20,13 @@ The `DateField` class is a Field component, and as such shares all of the common
 :::
 
 The `DateField` is a user interface component that allows users to input or select dates. It provides an intuitive and efficient way to handle date-related information in various applications. This section outlines the best practices for using the `DateField` component effectively.
+
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.fielddemos.DateFieldDemo' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/fielddemos/DateFieldDemo.java'
+javaC=''
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/fieldstyles/date_field_styles.css'
+/>
 
 ### Usages
 

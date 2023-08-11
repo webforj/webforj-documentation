@@ -9,7 +9,7 @@ import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 import DocChip from '@site/src/components/DocsTools/DocChip';
 
-<DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
+<DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
 
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="bbj-editbox" href="https://basishub.github.io/basis-next/#/web-components/bbj-editbox" clickable={true} iconName='code'/>
 
@@ -19,7 +19,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 The `ColorField` class is a Field component, and as such shares all of the commonalities belonging to a Field. Please refer to the **[Field documentation page](/docs/components/fields)** for an overview of Field properties, events, and other important information.
 :::
 
-The ColorField component is a powerful and versatile tool designed to provide an intuitive and interactive way to explore and select colors within your application. Whether you're designing a user interface, creating visualizations, or enhancing user experience, the ColorField component offers a seamless and efficient approach to working with colors. 
+The `ColorField` component is a powerful and versatile tool designed to provide an intuitive and interactive way to explore and select colors within your application. Whether you're designing a user interface, creating visualizations, or enhancing user experience, the `ColorField` component offers a seamless and efficient approach to working with colors. 
 
 With a simple drag-and-hover interface, users can effortlessly navigate through the color space to find the exact hue, saturation, and brightness that matches their creative vision. Users can also input color values directly, ensuring precision.
 

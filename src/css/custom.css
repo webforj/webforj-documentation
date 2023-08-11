@@ -96,3 +96,10 @@
 .MuiChip-root{
   text-decoration: none !important;
 }
+
+
+#script-container{
+  max-width: 90%;
+  margin: 5% 10% 0 10%;
+  /* align-self: center; */
+}
