@@ -190,84 +190,84 @@ function HomepageAnnoucement(){
 
 export default function Home() {
 
-  // useEffect(() => {
-  //   // Create a script element
-  //   const script = document.createElement('script');
-  //   script.charset = 'utf-8';
-  //   script.type = 'text/javascript';
-  //   script.src = '//js.hsforms.net/forms/embed/v2.js';
-
-  //   // Specify the target element where you want to insert the script
-  //   const targetElement = document.getElementById('script-container'); // Replace 'script-container' with the actual ID of the target element
-    
-  //   if (targetElement) {
-  //     // Append the script to the target element
-  //     targetElement.appendChild(script);
-
-  //     // Create the form once the script is loaded
-  //     script.onload = () => {
-  //       hbspt.forms.create({
-  //         region: 'na1',
-  //         portalId: '14494994',
-  //         formId: '3ba0ef89-b572-4fa5-833c-4f63f25586d0',
-  //       });
-  //     };
-
-  //     const customCss = `
-  //     .hs-button{
-  //       background-color: var(--ifm-color-primary) !important;
-  //       border-color: var(--ifm-color-primary) !important;
-  //     }
-  //       `;
-
-  //       const styleElement = document.createElement('style');
-  //       styleElement.type = 'text/css';
-  //       styleElement.appendChild(document.createTextNode(customCss));
-  //       document.head.appendChild(styleElement);
-  //   }
-  // }, []);
-
   useEffect(() => {
+    // Create a script element
     const script = document.createElement('script');
     script.charset = 'utf-8';
     script.type = 'text/javascript';
     script.src = '//js.hsforms.net/forms/embed/v2.js';
 
-    const targetElement = document.getElementById('script-container');
-
+    // Specify the target element where you want to insert the script
+    const targetElement = document.getElementById('script-container'); // Replace 'script-container' with the actual ID of the target element
+    
     if (targetElement) {
+      // Append the script to the target element
       targetElement.appendChild(script);
 
+      // Create the form once the script is loaded
       script.onload = () => {
-
         hbspt.forms.create({
-                  region: 'na1',
-                  portalId: '14494994',
-                  formId: '3ba0ef89-b572-4fa5-833c-4f63f25586d0',
-                });
-
-
-        const iframe = document.querySelector('#script-container iframe');
-        if (iframe) {
-          const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-          console.log("IFRAME FOUND")
-          const styleElement = iframeDocument.createElement('style');
-          styleElement.type = 'text/css';
-
-          const customCss = `
-          .hs-button{
-            background-color: var(--ifm-color-primary) !important;
-            border-color: var(--ifm-color-primary) !important;
-          }
-          `;
-
-          styleElement.appendChild(iframeDocument.createTextNode(customCss));
-
-          iframeDocument.head.appendChild(styleElement);
-        }
+          region: 'na1',
+          portalId: '14494994',
+          formId: '3ba0ef89-b572-4fa5-833c-4f63f25586d0',
+        });
       };
+
+      const customCss = `
+      .hs-button{
+        background-color: var(--ifm-color-primary) !important;
+        border-color: var(--ifm-color-primary) !important;
+      }
+        `;
+
+        const styleElement = document.createElement('style');
+        styleElement.type = 'text/css';
+        styleElement.appendChild(document.createTextNode(customCss));
+        document.head.appendChild(styleElement);
     }
   }, []);
+
+  // useEffect(() => {
+  //   const script = document.createElement('script');
+  //   script.charset = 'utf-8';
+  //   script.type = 'text/javascript';
+  //   script.src = '//js.hsforms.net/forms/embed/v2.js';
+
+  //   const targetElement = document.getElementById('script-container');
+
+  //   if (targetElement) {
+  //     targetElement.appendChild(script);
+
+  //     script.onload = () => {
+
+  //       hbspt.forms.create({
+  //                 region: 'na1',
+  //                 portalId: '14494994',
+  //                 formId: '3ba0ef89-b572-4fa5-833c-4f63f25586d0',
+  //               });
+
+
+  //       const iframe = document.querySelector('#script-container iframe');
+  //       if (iframe) {
+  //         const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+  //         console.log("IFRAME FOUND")
+  //         const styleElement = iframeDocument.createElement('style');
+  //         styleElement.type = 'text/css';
+
+  //         const customCss = `
+  //         .hs-button{
+  //           background-color: var(--ifm-color-primary) !important;
+  //           border-color: var(--ifm-color-primary) !important;
+  //         }
+  //         `;
+
+  //         styleElement.appendChild(iframeDocument.createTextNode(customCss));
+
+  //         iframeDocument.head.appendChild(styleElement);
+  //       }
+  //     };
+  //   }
+  // }, []);
 
 
   const mainStyles = css`
