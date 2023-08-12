@@ -86,21 +86,21 @@ const config = {
           //   label: 'Documentation'
           // },
           {
-            docId: 'intro',
+            docid: 'intro',
             position: 'left',
             label: 'Installation',
             to: '/docs/installation',
             activeBasePath: '/docs/installation'
           },
           {
-            docId: 'intro',
+            docid: 'started',
             position: 'left',
             label: 'Getting Started',
             to: '/docs/category/getting-started',
             activeBasePath: '/docs/category/getting-started'
           },
           {
-            docId: 'intro',
+            docid: 'components',
             position: 'left',
             label: 'Components',
             to: '/docs/components/home',

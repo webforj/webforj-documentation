@@ -24,7 +24,7 @@ export default function ComponentViewer( {componentData} ) {
     <div css={mainStyles}>
       {componentData.map((item) => {
       return(
-        <ComponentCard imagePath={item.image} title={item.title} description={item.description} link={item.link}/>
+        <ComponentCard key={item.title} imagePath={item.image} title={item.title} description={item.description} link={item.link}/>
       );
       })}
     </div>
