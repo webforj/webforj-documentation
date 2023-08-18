@@ -192,24 +192,25 @@ export default function Home() {
 
   useEffect(() => {
     const script = document.createElement('script');
-    script.charset = 'utf-8';
-    script.type = 'text/javascript';
-    script.src = '//js.hsforms.net/forms/embed/v2.js';
-    script.async = true;
+  script.charset = 'utf-8';
+  script.type = 'text/javascript';
+  script.src = '//js.hsforms.net/forms/embed/v2.js';
+
+  const targetElement = document.getElementById('script-container');
   
-    const targetElement = document.getElementById('script-container');
-    
-    if (targetElement) {
-      targetElement.appendChild(script);
-  
-      script.onload = () => {
+  if (targetElement) {
+    targetElement.appendChild(script);
+
+    script.onload = () => {
+      setTimeout(() => {
         hbspt.forms.create({
           region: 'na1',
           portalId: '14494994',
           formId: '3ba0ef89-b572-4fa5-833c-4f63f25586d0',
         });
-      };
-    }
+      }, 100);
+    };
+  }
   }, []);
 
   // useEffect(() => {
