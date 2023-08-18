@@ -203,6 +203,7 @@ export default function Home() {
     if (targetElement) {
       // Append the script to the target element
       targetElement.appendChild(script);
+      targetElement.appendChild(document.createElement("div"))
       console.log("loaded")
       
       // Create the form once the script is loaded
