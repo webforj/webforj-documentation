@@ -191,26 +191,18 @@ function HomepageAnnoucement(){
 export default function Home() {
 
   useEffect(() => {
-    // Create a script element
-    const targetElement = document.getElementById('script-container');
-    
-    
     const script = document.createElement('script');
     script.charset = 'utf-8';
     script.type = 'text/javascript';
     script.src = '//js.hsforms.net/forms/embed/v2.js';
-
-    // Specify the target element where you want to insert the script
+    script.async = true;
+  
+    const targetElement = document.getElementById('script-container');
     
     if (targetElement) {
-      // Append the script to the target element
       targetElement.appendChild(script);
-      targetElement.appendChild(document.createElement("div"))
-      console.log("loaded")
-      
-      // Create the form once the script is loaded
+  
       script.onload = () => {
-        console.log("in onload")
         hbspt.forms.create({
           region: 'na1',
           portalId: '14494994',
