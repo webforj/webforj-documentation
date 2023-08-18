@@ -203,58 +203,16 @@ export default function Home() {
 
     script.onload = () => {
       setTimeout(() => {
+        console.log("Timeout test")
         hbspt.forms.create({
           region: 'na1',
           portalId: '14494994',
           formId: '3ba0ef89-b572-4fa5-833c-4f63f25586d0',
         });
-      }, 100);
+      }, 5000);
     };
   }
   }, []);
-
-  // useEffect(() => {
-  //   const script = document.createElement('script');
-  //   script.charset = 'utf-8';
-  //   script.type = 'text/javascript';
-  //   script.src = '//js.hsforms.net/forms/embed/v2.js';
-
-  //   const targetElement = document.getElementById('script-container');
-
-  //   if (targetElement) {
-  //     targetElement.appendChild(script);
-
-  //     script.onload = () => {
-
-  //       hbspt.forms.create({
-  //                 region: 'na1',
-  //                 portalId: '14494994',
-  //                 formId: '3ba0ef89-b572-4fa5-833c-4f63f25586d0',
-  //               });
-
-
-  //       const iframe = document.querySelector('#script-container iframe');
-  //       if (iframe) {
-  //         const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-  //         console.log("IFRAME FOUND")
-  //         const styleElement = iframeDocument.createElement('style');
-  //         styleElement.type = 'text/css';
-
-  //         const customCss = `
-  //         .hs-button{
-  //           background-color: var(--ifm-color-primary) !important;
-  //           border-color: var(--ifm-color-primary) !important;
-  //         }
-  //         `;
-
-  //         styleElement.appendChild(iframeDocument.createTextNode(customCss));
-
-  //         iframeDocument.head.appendChild(styleElement);
-  //       }
-  //     };
-  //   }
-  // }, []);
-
 
   const mainStyles = css`
     display: flex;
@@ -262,7 +220,6 @@ export default function Home() {
     width: 100%;
   `
 
-  const descriptionStyles = css
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
