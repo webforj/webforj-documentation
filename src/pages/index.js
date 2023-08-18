@@ -192,13 +192,15 @@ export default function Home() {
 
   useEffect(() => {
     // Create a script element
+    const targetElement = document.getElementById('script-container');
+    
+    
     const script = document.createElement('script');
     script.charset = 'utf-8';
     script.type = 'text/javascript';
     script.src = '//js.hsforms.net/forms/embed/v2.js';
 
     // Specify the target element where you want to insert the script
-    const targetElement = document.getElementById('script-container');
     
     if (targetElement) {
       // Append the script to the target element
