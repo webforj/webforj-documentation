@@ -49,7 +49,7 @@ It is recommended to download Windows Subsystem for Linux. More information can 
 ### Linux
 
 ** 1. Install Docker Engine **
->- Visit the Docker Desktop for Mac download page: [Docker for Linux](https://docs.docker.com/engine/insta
+>- Visit the Docker Desktop for Mac download page: [Docker for Linux](https://docs.docker.com/engine/install/)
 
 ** 2. Verify Installation: **
 >- Open a terminal and run the command `docker --version` to verify that Docker is installed and working correctly.
