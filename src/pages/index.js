@@ -195,12 +195,17 @@ export default function Home() {
     script.type = 'text/javascript';
     script.src = '//js.hsforms.net/forms/embed/v2.js';
 
-    hbspt.forms.create({
-      region: 'na1',
-      portalId: '14494994',
-      formId: '3ba0ef89-b572-4fa5-833c-4f63f25586d0',
-      target: `#script-container`,
-    });
+    script.onload = () => {
+      // Now, the hbspt object should be available
+      hbspt.forms.create({
+        region: 'na1',
+        portalId: '14494994',
+        formId: '3ba0ef89-b572-4fa5-833c-4f63f25586d0',
+        target: `#script-container`,
+      });
+    };
+  
+    document.body.appendChild(script);
   }, []);
 
   const mainStyles = css`
