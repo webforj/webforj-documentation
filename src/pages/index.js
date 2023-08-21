@@ -219,7 +219,6 @@ export default function Home() {
         {/* <HomepageAnnoucement /> */}
         <HomepageSection />
         <div id='script-container'>
-        <div ref={formContainerRef}></div>
         </div>
         </div>
     </Layout>
