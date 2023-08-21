@@ -113,11 +113,11 @@ function HomepageTitle(){
           to='docs/category/getting-started'>
           Get Started
         </Link>
-        {/* <Link 
+        <Link 
           className="button button--secondary button--lg"
-          to='docs/intro'>
-          View Documentation
-        </Link> */}
+          to='#script-container'>
+          Contact Us
+        </Link>
       </div>
     </div>
   );
@@ -189,64 +189,19 @@ function HomepageAnnoucement(){
 
 
 export default function Home() {
-
-  const formContainerRef = useRef(null);
-  const [formLoaded, setFormLoaded] = useState(false);
-
   useEffect(() => {
     const script = document.createElement('script');
     script.charset = 'utf-8';
     script.type = 'text/javascript';
     script.src = '//js.hsforms.net/forms/embed/v2.js';
 
-    const targetElement = document.getElementById('script-container');
-
-    if (targetElement) {
-      targetElement.appendChild(script);
-
-      script.onload = () => {
-        setFormLoaded(true);
-      };
-    }
+    hbspt.forms.create({
+      region: 'na1',
+      portalId: '14494994',
+      formId: '3ba0ef89-b572-4fa5-833c-4f63f25586d0',
+      target: `#script-container`,
+    });
   }, []);
-
-  useEffect(() => {
-    if (formLoaded && formContainerRef.current) {
-      // Clear the form container before appending the form
-      formContainerRef.current.innerHTML = '';
-
-      setTimeout(() => {
-        hbspt.forms.create({
-          region: 'na1',
-          portalId: '14494994',
-          formId: '3ba0ef89-b572-4fa5-833c-4f63f25586d0',
-          target: `#script-container`,
-        });
-      }, 100); // Adjust the timeout as needed
-    }
-  }, [formLoaded]);
-
-  // useEffect(() => {
-  //   const script = document.createElement('script');
-  // script.charset = 'utf-8';
-  // script.type = 'text/javascript';
-  // script.src = '//js.hsforms.net/forms/embed/v2.js';
-
-  // const targetElement = document.getElementById('script-container');
-  
-  // if (targetElement) {
-  //   targetElement.appendChild(script);
-
-  //   script.onload = () => {
-  //       console.log("Timeout test")
-  //       hbspt.forms.create({
-  //         region: 'na1',
-  //         portalId: '14494994',
-  //         formId: '3ba0ef89-b572-4fa5-833c-4f63f25586d0',
-  //       });
-  //     };
-  //   }
-  // }, []);
 
   const mainStyles = css`
     display: flex;
