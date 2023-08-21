@@ -196,7 +196,6 @@ export default function Home() {
     script.src = '//js.hsforms.net/forms/embed/v2.js';
 
     script.onload = () => {
-      // Now, the hbspt object should be available
       hbspt.forms.create({
         region: 'na1',
         portalId: '14494994',

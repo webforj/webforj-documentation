@@ -1,0 +1,136 @@
+---
+sidebar_position: 1
+---
+
+import UnderConstruction from '@site/src/components/PageTools/UnderConstruction';
+
+
+
+# Docker Installation
+
+This section of the documentation will cover the steps required for users who wish to develop using Docker. Changes to your code
+will be made on your development machine, and the resulting application will be run in Docker. 
+
+## Downloading Docker
+
+The installation process for Docker will differ slightly between Windows, Mac and Linux users. See the section below that corresponds to your operating system.
+
+
+### Windows
+
+:::info
+It is recommended to download Windows Subsystem for Linux. More information can be found [at this link](https://learn.microsoft.com/en-us/windows/wsl/install)
+:::
+
+** 1. Download Docker Desktop: **
+>- Visit the Docker Desktop for Windows download page: [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/)
+>- Click on the "Get Docker Desktop for Windows" button to download the installer.
+
+** 2. Install Docker Desktop: **
+>- Run the installer you downloaded.
+>- Follow the installation wizard, and make sure to enable Hyper-V (if prompted) as Docker for Windows uses Hyper-V for virtualization.
+>- Once installation is complete, Docker Desktop will start automatically.
+
+** 3. Verify Installation: **
+>- Open a terminal and run the command `docker --version` to verify that Docker is installed and working correctly.
+
+### Mac
+
+** 1. Download Docker Desktop: **
+>- Visit the Docker Desktop for Mac download page: [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop/)
+
+** 2. Install Docker Desktop: **
+>- Run the installer you downloaded.
+>- Once installation is complete, Docker Desktop will start automatically.
+
+** 3. Verify Installation: **
+>- Open a terminal and run the command `docker --version` to verify that Docker is installed and working correctly.
+
+### Linux
+
+** 1. Install Docker Engine **
+>- Visit the Docker Desktop for Mac download page: [Docker for Linux](https://docs.docker.com/engine/insta
+
+** 2. Verify Installation: **
+>- Open a terminal and run the command `docker --version` to verify that Docker is installed and working correctly.
+
+## Configuration
+
+Once Docker has been downloaded, search for the latest DWCJ image, which is currently under the name `dwcjava/sandbox`.
+
+![DWCJ Image Search](./_images/docker/1.png)
+
+Click the `Run` button, which will pop up a configuration window. These settings are optional, but it is highly recommended to
+supply the `Host port` configuration setting, as this will be necessary later when running your application.
+
+![Configuration](./_images/docker/2.png)
+
+Once this is finished, click the `Run` button at the bottom of the window, which will create a new container with your specified settings.
+
+:::success Important!
+Make sure to take note of the custom Host port number you provide, as this will be needed later.
+:::
+
+## Running Your Application
+
+Once the container has been created, DWCJ applications can be run within the container instead of locally. First, it is necessary to configure
+the POM file of your project correctly. Once this is done, going to a specific URL in the browser will show the application.
+
+### Configuring your POM file
+
+Running a DWCJ project in the Docker container will require the use of the DWCJ Install Plugin, which can be configured using your POM file.
+A full summary of the customization options can be found [at this link](https://github.com/DwcJava/dwcj-install-maven-plugin), but the
+following steps are necessary:
+
+
+Create a new `<plugin>` entry in `<plugins>` section of POM. The following code shows a starting entry that can be used and tweaked as 
+needed for your project:
+
+:::important
+If your POM file does not have a `<plugins>` section, create one.
+:::
+
+```xml
+<plugin>
+    <groupId>org.dwcj</groupId>
+    <artifactId>dwcj-install-maven-plugin</artifactId>
+    <version>0.1.0</version>
+    <executions>
+        <execution>
+            <goals>
+                <goal>install</goal>
+            </goals>
+        </execution>
+    </executions>
+    <configuration>
+        <deployurl>http://localhost:8888/dwcj-install</deployurl>
+        <classname>samples.HelloWorldJava</classname>
+        <username>admin</username>
+        <password>admin123</password>
+        <publishname>hworld</publishname>
+        <debug>true</debug>
+    </configuration>
+</plugin>
+```
+
+Once an entry similar to the one above has been created, customize the following information:
+
+- Change the `<deployurl>` entry to use the port number that you match the Host port that you configured for your container
+in the previous step.
+
+- Ensure that the `<classname>` entry matches the name of the application you want to run.
+
+- If your `<username>` and `<password>` credentials are different for your installation of BBj, change these.
+
+
+### Launching the Application
+
+Once this has been done, run a `mvn install` in your project directory. This will run the dwcj install plugin, and allow
+you to access your application. To see the application, you'll want to go to the following URL:
+
+`http://localhost:YourHostPort/webapp/YourPublishName`
+
+Replace `YourHostPort` with the Host port you configured with Docker, and `YourPublishName` is replaced by the text inside the `<publishname>` tag of the POM. 
+If done correctly, you should see your application render!
+
+<!-- <UnderConstruction /> -->
