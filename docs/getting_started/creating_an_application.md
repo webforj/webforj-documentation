@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 displayed_sidebar: documentationSidebar
 ---
 
@@ -67,7 +67,7 @@ import org.dwcj.controls.button.Button;
 public class ExampleClass extends App{
 
     @Override
-    public void run() throws DwcException { 
+    public void run() throws DwcjException { 
         Frame page = new Frame();
         Button myButton = new Button();
         page.add(myButton);
@@ -76,7 +76,7 @@ public class ExampleClass extends App{
 ```
 Once this has been done, compile or package your program using Maven, and then navigate to
 the appropriate URL. If done correctly, you should see the entry in your list of available
-applications.
+applications. To configure a specific class to load, see [this page](../getting_started/configuration.md).
 
 :::info
 

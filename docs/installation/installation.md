@@ -8,8 +8,9 @@ sidebar_position: 1
     <h3 style={{"justify-self" : "end"}}> Current BBj Version Required: 23.00 or newer </h3>
 </div>
 
-- For those who want to develop applications or web tools using the DWCJ,
-follow the [Users installation page](/docs/installation/local_install).
+The DWCJ is best run with one of three methods, each of which will allow the developer to create DWCJ applications quickly and easily. The following three sections outline the processes for each method:
 
-- Developers who want to also make changes to the DWCJ itself can go to the DWCJ's engine repository and clone it to begin making changes to the API.
+- [Local Installation](./local_install.md)
+- [Developing with Docker](./docker_user.md)
+- [Using Github Codespaces ](./github_codespaces.md)
 
