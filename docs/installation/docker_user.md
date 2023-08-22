@@ -1,5 +1,7 @@
 ---
 sidebar_position: 1
+title: Docker
+
 ---
 
 import UnderConstruction from '@site/src/components/PageTools/UnderConstruction';
@@ -19,7 +21,7 @@ The installation process for Docker will differ slightly between Windows, Mac an
 ### Windows
 
 :::info
-It is recommended to download Windows Subsystem for Linux. More information can be found [at this link](https://learn.microsoft.com/en-us/windows/wsl/install)
+It is recommended to download the latest version of Windows Subsystem for Linux. More information can be found [at this link](https://learn.microsoft.com/en-us/windows/wsl/install)
 :::
 
 ** 1. Download Docker Desktop: **
