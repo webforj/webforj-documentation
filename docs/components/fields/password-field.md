@@ -38,6 +38,10 @@ The `PasswordField` class has three constructors:
 
 You can use the `setPasswordReveal` method to control the visibility of the password reveal icon. When set to true, the password reveal icon is visible -  otherwise, it is hidden. You can check whether the password reveal icon is visible using the `isPasswordReveal` method. It returns true if the password reveal icon is visible; otherwise, it returns false. 
 
+### Placeholder Text
+
+You can set placeholder text for the `PasswordField` using the `setPlaceholder` method. The placeholder text is displayed when the field is empty, helping to prompt the user to enter appropriate input into the `PasswordField`.
+
 ### Best Practices
 
 As the `PasswordField` component is often associated with sensitive information, consider the following best practices when using the `PasswordField`:

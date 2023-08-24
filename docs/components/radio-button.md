@@ -72,7 +72,15 @@ not only clicking, but auto-focus or tab navigation will also check the button.
 
 ## Switches
 
-A `RadioButton` can also be set to display as a switch provides which provides alternative visual representation for selecting options. Normally, radio buttons are circular or rounded in shape and indicate a single choice from a group of options. However, a `RadioButton` can be transformed into a switch that resembles a toggle switch or slider using one of two methods:
+A `RadioButton` can also be set to display as a switch provides which provides alternative visual representation for selecting options. Normally, radio buttons are circular or rounded in shape and indicate a single choice from a group of options. 
+
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.radiobuttondemos.RadioButtonSwitch' 
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/radiobuttondemos/buttondemos/RadioButtonSwitch.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/demo_styles.css'
+/>
+
+A `RadioButton` can be transformed into a switch that resembles a toggle switch or slider using one of two methods:
 
 1. **The Factory Method**: The RadioButton can be created using the following Factory methods:
 

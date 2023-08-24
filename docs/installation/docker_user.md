@@ -48,17 +48,17 @@ It is recommended to download the latest version of Windows Subsystem for Linux.
 ** 3. Verify Installation: **
 >- Open a terminal and run the command `docker --version` to verify that Docker is installed and working correctly.
 
-### Linux
+<!-- ### Linux
 
 ** 1. Install Docker Engine **
 >- Visit the Docker Desktop for Mac download page: [Docker for Linux](https://docs.docker.com/engine/install/)
 
 ** 2. Verify Installation: **
->- Open a terminal and run the command `docker --version` to verify that Docker is installed and working correctly.
+>- Open a terminal and run the command `docker --version` to verify that Docker is installed and working correctly. -->
 
 ## Configuration
 
-Once Docker has been downloaded, search for the latest DWCJ image, which is currently under the name `dwcjava/sandbox`.
+Once Docker Desktop has been downloaded, search for the latest DWCJ image, which is currently under the name `dwcjava/sandbox`.
 
 ![DWCJ Image Search](./_images/docker/1.png)
 
@@ -117,13 +117,16 @@ If your POM file does not have a `<plugins>` section, create one.
 
 Once an entry similar to the one above has been created, customize the following information:
 
-- Change the `<deployurl>` entry to use the port number that you match the Host port that you configured for your container
+- Change the `<deployurl>` entry to use the port number that you match the **Host port** that you configured for your container
 in the previous step.
 
 - Ensure that the `<classname>` entry matches the name of the application you want to run.
 
 - If your `<username>` and `<password>` credentials are different for your installation of BBj, change these.
 
+:::info
+The [HelloWorldJava](https://github.com/DwcJava/HelloWorldJava) project will come with the POM file already mostly configured - with other settings remaining the same, only the `<deployurl>` tag will need to be changed.
+:::
 
 ### Launching the Application
 
