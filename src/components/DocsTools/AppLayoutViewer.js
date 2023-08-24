@@ -10,7 +10,8 @@ export default function AppLayoutViewer({url, mobile}) {
         flex-direction: column;
         align-items: center;
         margin: 4rem 0;
-        width: 100%;
+        width: 110%;
+        margin-left: -5%;
     `
     
     const demoPreview = css`
