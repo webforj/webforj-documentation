@@ -63,7 +63,7 @@ All field components share the following methods to add and remove event listene
 |:-:|-|
 |[`BlurEvent`](../components/events/BlurEvent)|An event that is triggered when a component loses focus.|
 |[`FocusEvent`](../components/events/FocusEvent)|An event that is triggered when a component gains focus, opposite of a blur event. |
-|`KeypressEvent`| An event that is triggered when one of "special keys" is pressed while the component has focus. These keys have specific codes, allowing for conditional logic to be implemented based on the key pressed.|
+|[`KeypressEvent`](../components/events/KeypressEvent)| An event that is triggered when one of "special keys" is pressed while the component has focus. These keys have specific codes, allowing for conditional logic to be implemented based on the key pressed.|
 |`ModifyEvent`| An event that is triggered when an is changed or modified. It typically occurs any time a user changes an aspect of the component, such as each time a letter is input or removed from an input component.|
 |[`MouseEnterEvent`](../components/events/MouseEnterEvent)|An event that is triggered when the mouse cursor enters the boundaries of a component. |
 |[`MouseExitEvent`](../components/events/MouseExitEvent)|An event that is triggered when the mouse cursor exits the boundaries of a component. |

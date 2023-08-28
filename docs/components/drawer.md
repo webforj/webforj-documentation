@@ -12,7 +12,27 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 The drawer is a container that slides into the viewport to expose additional options and information. Multiple drawers can be created in an application, and they will be stacked above each other.
 
-### Constructors
+The Drawer component can be used in many different situations, such as by providing a navigation menu that can be toggled, a panel that displays supplementary or contextual information, or to optimize usage on a mobile device. The following example will show a mobile application that uses the DWCJ's AppLayout component, and displays a "Welcome Popup" drawer at the bottom when first loaded. Additionally, a navigational Drawer component can be toggled in the application by clicking on the hamburger menu.
+
+<AppLayoutViewer url='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerWelcome' mobile='true'/>
+
+<ComponentDemo 
+frame="hidden"
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerWelcome.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/drawerstyles/drawer_welcome.css'
+/>
+
+## Usages
+
+1. **Navigation Menu**: One common usage of a drawer component is as a navigation menu. It provides a space-efficient way to display links to various sections or pages of your application, especially in mobile or responsive layouts. Users can open and close the drawer to access navigation options without cluttering the main content area.
+
+2. **Filter and Sidebar**: A drawer can be used as a filter or sidebar in applications that display a list of items. Users can expand the drawer to reveal filter options, sort controls, or additional information related to the list items. This keeps the main content focused on the list while providing advanced features in an accessible way.
+
+3. **User Profile or Settings**: You can use a drawer to show user profile information or application settings. This keeps such information easily accessible but hidden when not needed, maintaining a clean and uncluttered interface. Users can open the drawer to update their profiles or adjust settings.
+
+4. **Notifications**: For applications with notifications or alerts, a drawer can slide in to display new messages or updates. Users can quickly check and dismiss notifications without leaving their current view.
+
+## Constructors
 
 The Drawer component contains a single default constructor which will create a new instance of the Drawer class.
 
@@ -28,7 +48,7 @@ height='600px'
 
 Various properties exist that allow for the customization of various attributes of the Drawer component. Below are those properties with examples for their modification.
 
-### Autofocus
+## Autofocus
 
 The Auto-Focus property is designed to enhance accessibility and usability by automatically focusing on the first item within a drawer when it is opened. This feature eliminates the need for users to manually navigate to the desired item, saving time and effort.
 
@@ -48,7 +68,7 @@ height='600px'
 
 <!-- Example -->
 
-### Label
+## Label
 
 The Drawer Label property is a feature designed to enhance accessibility and provide descriptive context for a drawer within a user interface. This property allows developers to assign a label to a drawer, primarily for accessibility purposes, ensuring that screen readers and other assistive technologies can accurately convey the drawer's purpose and content to users.
 
@@ -60,7 +80,7 @@ The Label property can be customized to suit the specific context and design req
 
 <!-- Example -->
 
-### Size
+## Size
 
 The `size` property of the Drawer component enables developers to control and specify the dimensions of the drawer within the user interface. This property allows for fine-tuning the size of the drawer, ensuring it aligns with the desired layout and design requirements.
 
@@ -97,7 +117,7 @@ javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/ja
 height='600px'
 />
 
-### Placement
+## Placement
 
 The placement property of the Drawer UI Component allows developers to specify the position and alignment of the drawer within the viewport. This property offers a range of enum values that provide flexibility in determining where the drawer appears in relation to the main content.
 
@@ -181,18 +201,34 @@ To remove either an open or close event from the Drawer, simply use the appropri
 myDrawer.removeOpenListener(listener);
 ```
 
-## Example Usage
+## Styling
 
-The Drawer component can be used in many different situations, such as by providing a navigation menu that can be toggled, a panel that displays supplementary or contexual information, or to optimize usage on a mobile device. The following example will show a mobile application that uses the DWCJ's AppLayout component, and displays a "Welcome Popup" drawer at the bottom when first loaded. Additionally, a navigational Drawer component can be toggled in the application by clicking on the hamburger menu.
+<!-- <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Drawer} /> -->
 
-<AppLayoutViewer url='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerWelcome' mobile='true'/>
+### Shadow Parts
 
-<ComponentDemo 
-frame="hidden"
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerWelcome.java'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/drawerstyles/drawer_welcome.css'
-/>
+These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
 
-## Parts and CSS Properties
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Drawer} table='parts' />
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Drawer} />
+### CSS Properties
+
+These are the various CSS properties that are used in the component, with a short description of their use.
+
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Drawer} table='properties'/>
+
+### Reflected Attributes
+
+The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
+
+<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Drawer} table="reflects"/>
+
+## Best Practices 
+
+To ensure an optimal user experience when using the `Drawer` component, consider the following best practices:
+
+1. **Placement**: Decide whether the drawer should slide in from the left, right, top, or bottom, based on your application's layout and user experience considerations. Consider user preferences and design conventions.
+
+2. **Accessibility**: Pay special attention to accessibility. Ensure that users can open and close the drawer using keyboard controls and that screen readers can announce its presence and state. Provide ARIA roles and labels as necessary.
+
+3. **Swipe Gestures**: On touch-enabled devices, support swipe gestures for opening and closing the drawer. This is an intuitive way for users to interact with it.

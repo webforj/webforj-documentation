@@ -198,7 +198,7 @@ export default function TableBuilder(props) {
         </thead>
         <tbody>
           {reflectItems?.map((prop) => (
-            prop.attr != null && prop.display == "&#x2714;" && (
+            prop.attr != null && prop.display == false && !props.exclusions?.includes(prop.attr) && (
             <tr key={prop.attr}>
               <td><code>{prop.attr}</code></td>
               <td>{prop.desc}</td>
