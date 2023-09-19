@@ -112,6 +112,10 @@ The `top` parameter accepts a boolean value, is false by default, and specifies 
 
 The `once` parameter accepts a boolean value, is false by default, and specifies whether the style should be injected into the page once only. This is useful when creating custom components that come with their own style sheets - multiple instances of the component can be used, but the style sheet will only be injected once. 
 
+:::tip Important!
+In order to use the `once` parameter properly, ensure that you have also assigned a unique id using the `id` parameter.
+:::
+
 The `attributes` parameter is empty by default, and can be specified either as a string in the `attr=value,attr=value` format, or as a hashMap containing key/value pairs. These attributes are a set of [attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style) to be added to the style element.
 
 :::info

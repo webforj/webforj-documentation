@@ -13,7 +13,7 @@ import UnderConstruction from '@site/src/components/PageTools/UnderConstruction'
 This section of the documentation will cover the steps required for users who wish to develop using Docker. Changes to your code
 will be made on your development machine, and the resulting application will be run in Docker. 
 
-## Downloading Docker
+## 1. Downloading Docker
 
 The installation process for Docker will differ slightly between Windows, Mac and Linux users. See the section below that corresponds to your operating system.
 
@@ -56,7 +56,7 @@ It is recommended to download the latest version of Windows Subsystem for Linux.
 ** 2. Verify Installation: **
 >- Open a terminal and run the command `docker --version` to verify that Docker is installed and working correctly. -->
 
-## Configuration
+## 2. Configuration
 
 Once Docker Desktop has been downloaded, search for the latest DWCJ image, which is currently under the name `dwcjava/sandbox`.
 
@@ -73,7 +73,7 @@ Once this is finished, click the `Run` button at the bottom of the window, which
 Make sure to take note of the custom Host port number you provide, as this will be needed later.
 :::
 
-## Running Your Application
+## 3. Running Your Application
 
 Once the container has been created, DWCJ applications can be run within the container instead of locally. First, it is necessary to configure
 the POM file of your project correctly. Once this is done, going to a specific URL in the browser will show the application.

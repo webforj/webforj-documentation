@@ -25,7 +25,7 @@ Installation will be broken down into the following steps:
 4. Launching your application
 
 
-## 1) Java and Maven Download and Configuration
+## 1. Java and Maven Download and Configuration
 
 In order to use the DWCJ, you must first have Java and Maven installed and properly configured. If you already
 have Java and Maven downloaded, please skip to [**Step 2**](#section2). If you also have 
@@ -45,7 +45,7 @@ for Windows users can be found [here](https://phoenixnap.com/kb/install-maven-wi
 
 <a name='section2'></a>
 
-## 2) BBj Download and Installation
+## 2. BBj Download and Installation
 
 <b>While following this step, be sure to install BBj version 22.14 or newer </b><br/><br/>
 
@@ -66,7 +66,7 @@ mvn install:install-file -Dfile=BBjUtil.jar -DgroupId=com.basis.lib -DartifactId
 
 <a name='section3'></a>
 
-## 3) Install and Configure the DWCJ Plugin
+## 3. Install and Configure the DWCJ Plugin
 
 Once BBj has been installed, we can access the Plugin Manager in order to install tools needed to configure the DWCJ. To start, type "Plugin Manager" into the start menu or Finder. 
 
@@ -86,14 +86,21 @@ On this page, select the DWCJ entry, and click "Install".
 
 Once this has been done, you should be able to switch back to the "Installed Plugins" tab, and see the DWCJ entry listed there.
 
-Now that the plugin has been installed, navigate to the `bin` directory within your `bbx` folder and run the following command:
+Finally, click on the "Configre" button, which will open a new window. In this window, click the "Enable Maven Remote Install" button.
+
+![Enabling Remote Installation](./_images/users/local/i6.png)
+
+
+:::tip 
+
+Alternatively, navigate to the `bin` directory within your `bbx` folder and run the following command:
 
 ```bbj
 ./bbj -tIO DWCJ/cli.bbj - enable_remote_install
 ```
+:::
 
-
-## 4) Clone the Repository
+## 4. Clone the Repository
 
 Once BBj and the required DWCJ plugin are installed and configured, we can clone the "Hello World" repository from the DWCJ Github page. This project comes with the necessary tools to run your first DWCJ program!
 
