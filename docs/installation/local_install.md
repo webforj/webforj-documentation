@@ -86,7 +86,7 @@ On this page, select the DWCJ entry, and click "Install".
 
 Once this has been done, you should be able to switch back to the "Installed Plugins" tab, and see the DWCJ entry listed there.
 
-Finally, click on the "Configre" button, which will open a new window. In this window, click the "Enable Maven Remote Install" button.
+Finally, click on the "Configure" button, which will open a new window. In this window, click the "Enable Maven Remote Install" button.
 
 ![Enabling Remote Installation](./_images/users/local/i6.png)
 
