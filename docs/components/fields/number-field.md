@@ -18,8 +18,8 @@ The `NumberField` component can be used to accept numerical input from the user.
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.fielddemos.NumberFieldDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/fielddemos/NumberFieldDemo.java'
-javaC=''
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/fielddemos/NumberFieldDemo.java'
+javaE=''
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/fieldstyles/date_field_styles.css'
 />
 

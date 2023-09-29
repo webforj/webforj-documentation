@@ -1,5 +1,5 @@
 ---
-sidebar_position: 0
+sidebar_position: 1000
 title: Glossary
 sidebar_class_name: sidebar--item__hidden
 slug: glossary

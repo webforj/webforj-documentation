@@ -18,8 +18,8 @@ The `PasswordField` component provides a way for the user to securely enter a pa
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.fielddemos.PasswordFieldDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/fielddemos/PasswordFieldDemo.java'
-javaC=''
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/fielddemos/PasswordFieldDemo.java'
+javaE=''
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/fieldstyles/date_field_styles.css'
 />
 

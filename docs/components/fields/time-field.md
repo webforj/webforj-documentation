@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
 title: TimeField
-sidebar_class_name: sidebar--item__hidden
+# sidebar_class_name: sidebar--item__hidden
 slug: timefield
 ---
 
