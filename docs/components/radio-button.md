@@ -13,7 +13,7 @@ import Chip from '@mui/material/Chip';
 
 <DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
 
-<DocChip tooltipText="The name of the web component that will render in the DOM." label="bbj-radio" href="https://basishub.github.io/basis-next/#/dwc/BBjRadioButton" clickable={true} iconName='code'/>
+<DocChip tooltipText="The name of the web component that will render in the DOM." label="bbj-radio" href="https://basishub.github.io/basis-next/#/dwc/BBjRadioButton" clickable={false} iconName='code'/>
 
 <JavadocLink type="engine" location="org/dwcj/component/optioninput/RadioButton" top='true'/>
 

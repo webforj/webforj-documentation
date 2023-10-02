@@ -32,7 +32,7 @@ export default function ComponentCard({ imagePath, title, description, link}) {
   `
 
   const imageStyles = css`
-    width: 200px;
+    width: 250px;
     height: 150px;
     object-fit: contain;
     margin: 0 0 5px -3px;

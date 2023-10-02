@@ -1,6 +1,7 @@
 ---
 sidebar_position: 140
 title: TextArea
+pagination_next: "styling/styling_intro"
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';

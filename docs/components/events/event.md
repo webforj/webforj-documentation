@@ -3,6 +3,7 @@ sidebar_position: 0
 title: Event
 sidebar_class_name: sidebar--item__hidden
 slug: event
+pagination_prev: null
 ---
 
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';

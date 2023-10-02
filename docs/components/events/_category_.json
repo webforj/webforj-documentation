@@ -1,8 +1,9 @@
 {
   "label": "Events",
-  "position": 10,
+  "position": 1000000,
   "link": {
-    "type": "generated-index"
+    "type": "doc",
+    "id": "event"
   },
   "className": "sidebar--item__hidden"
 }

@@ -3,6 +3,7 @@ sidebar_position: 0
 title: UncheckEvent
 sidebar_class_name: sidebar--item__hidden
 slug: UncheckEvent
+pagination_next: null
 ---
 
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
