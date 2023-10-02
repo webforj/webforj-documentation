@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-title: bbj-icon
+title: Icons
 sidebar_class_name: sidebar--item__hidden
 slug: bbj-icon
 ---

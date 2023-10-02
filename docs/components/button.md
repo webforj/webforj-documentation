@@ -71,7 +71,7 @@ Button submit = new Button("Submit");
 
 In addition to, or instead of having text on a button, it is possible to add an icon to a button as well. To add these icons, set the button's text to have an `<html>` tag, with a `<bbj-icon>` tag inside with the name attribute set accordingly. In addition to an icon, include text to the left or right of the `<bbj-icon>` tag to include a label as well. Icons added to the left and/or right of the button should be done using the `prefix` and `suffix` slots.
 
-To read more about customizing, configuring and styling icons, read [**this page**](../components/related-components/bbj-icon).
+To read more about customizing, configuring and styling icons, read [**this page**](../components/bbj-icon).
 
 :::tip
 Icons added in this way will automatically be configured to match the theme of the Button, but need to be manually configured if a different sized icon is desired when changing `Button` expanse.
