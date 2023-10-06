@@ -76,7 +76,7 @@ const config = {
         title: 'Dynamic Web Client for Java',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.v1.png',
+          src: 'img/logo.png',
         },
         items: [
           // {

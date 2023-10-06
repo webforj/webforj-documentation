@@ -8,6 +8,13 @@ import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import HomepageSection from '@site/src/components/HomepageFeatures/HomepageSection'
 
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import CircularProgress from '@mui/material/CircularProgress';
+
 import logo from "../../static/img/logo.png"
 import { css, jsx } from '@emotion/react';
 
@@ -39,7 +46,37 @@ function HomepageHeader() {
 }
 
 function HomepageTitle(){
+
   
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.charset = 'utf-8';
+    script.type = 'text/javascript';
+    script.src = '//js.hsforms.net/forms/embed/v2.js';
+
+    script.onload = () => {
+      hbspt.forms.create({
+        region: 'na1',
+        portalId: '14494994',
+        formId: '3ba0ef89-b572-4fa5-833c-4f63f25586d0',
+        target: `#script-container`,
+      });
+      setLoading(false)
+    };
+    document.body.appendChild(script);
+  }, [open]);
+
   const headerStyles = css`
     display: flex;
     flex-direction: column;
@@ -96,6 +133,15 @@ function HomepageTitle(){
     }
   `
 
+  const dialogStyles = css`
+    /* display: flex; */
+    width: 500px;
+    @media screen and (max-width: 992px) {
+      display: flex;
+      width: unset;
+    }
+  `
+
 
   return(
     <div css={headerStyles}>
@@ -114,11 +160,26 @@ function HomepageTitle(){
           Get Started
         </Link>
         <Link 
+          onClick={handleOpen}
           className="button button--secondary button--lg"
           to='#script-container'>
           Contact Us
         </Link>
       </div>
+      <Dialog open={open} onClose={handleClose}>
+        {/* <DialogTitle>Dialog Title</DialogTitle> */}
+        <DialogContent css={dialogStyles}>
+          <DialogContentText>
+            {loading ? <CircularProgress /> : <div id='script-container'>
+          </div>}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          {/* <Link onClick={handleClose} className="button button--secondary button--lg">
+            Close
+          </Link> */}
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
@@ -189,23 +250,7 @@ function HomepageAnnoucement(){
 
 
 export default function Home() {
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.charset = 'utf-8';
-    script.type = 'text/javascript';
-    script.src = '//js.hsforms.net/forms/embed/v2.js';
-
-    script.onload = () => {
-      hbspt.forms.create({
-        region: 'na1',
-        portalId: '14494994',
-        formId: '3ba0ef89-b572-4fa5-833c-4f63f25586d0',
-        target: `#script-container`,
-      });
-    };
   
-    document.body.appendChild(script);
-  }, []);
 
   const mainStyles = css`
     display: flex;
@@ -222,8 +267,6 @@ export default function Home() {
         <HomepageTitle />
         {/* <HomepageAnnoucement /> */}
         <HomepageSection />
-        <div id='script-container'>
-        </div>
         </div>
     </Layout>
   );
