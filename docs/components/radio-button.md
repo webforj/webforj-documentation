@@ -19,6 +19,14 @@ import Chip from '@mui/material/Chip';
 
 The `RadioButton` class creates an object that can be selected or deselected, and which displays its state to the user. By convention, only one radio button in a group can be selected at a time. Radio buttons are commonly used when mutually exclusive options are available, allowing the user to choose a single option from a set of choices.
 
+
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.radiobuttondemos.RadioButtonGroupDemo' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/radiobuttondemos/RadioButtonGroupDemo.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/radiobuttonstyles/radiobutton_styles.css'
+height="200px"
+/>
+
 ## Usages
 
 The `RadioButton` is best used in scenarios where users need to make a single selection from a predefined set of options. Here are some examples of when to use the `RadioButton`:
@@ -51,9 +59,23 @@ RadioButton myRadioButton = new RadioButton("RadioButton Text");
 Radio buttons can utilize the ```setText(String text)``` method, which will be positioned near the radio button according to the built-in `Position`.
 Radio buttons have built-in functionality to set text to be displayed either to the right or left of the component. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of the `HorizontalAlignment` enum class. Show below are the two settings: <br/>
 
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.radiobuttondemos.RadioButtonText' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/radiobuttondemos/RadioButtonText.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/radiobuttonstyles/radiobutton_styles.css'
+height="100px"
+/>
+
+
 ## Activation
 
 Radio buttons can be controlled using two types of activation: manual activation and auto activation. These dictate when a `RadioButton` will change its state.
+
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.radiobuttondemos.RadioButtonActivation' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/radiobuttondemos/RadioButtonActivation.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/radiobuttonstyles/radiobutton_styles.css'
+/>
 
 ### Manual Activation
 
@@ -70,14 +92,20 @@ Manual activation provides finer control over the selection process, requiring a
 Automatic activation is the default state for a `RadioButton`, and means that the button will be checked on whenever it gains focus for any reason. This means that
 not only clicking, but auto-focus or tab navigation will also check the button.
 
+:::tip Note
+The default activation value is **`MANUAL`** activation.
+:::
+
+
 ## Switches
 
 A `RadioButton` can also be set to display as a switch provides which provides alternative visual representation for selecting options. Normally, radio buttons are circular or rounded in shape and indicate a single choice from a group of options. 
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.radiobuttondemos.RadioButtonSwitch' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/radiobuttondemos/buttondemos/RadioButtonSwitch.java'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/demo_styles.css'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/radiobuttondemos/RadioButtonSwitch.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/radiobuttonstyles/radiobutton_styles.css'
+height="120px"
 />
 
 A `RadioButton` can be transformed into a switch that resembles a toggle switch or slider using one of two methods:
@@ -156,10 +184,6 @@ To remove an event listener, use the appropriate method:
 ```java
 myRadioButton.removeCheckedListener(listener);
 ```
-
-:::info
-For a method to be removed via the appropriate removeListener method, the signature of the method must be saved. 
-:::
 
 ## Styling
 

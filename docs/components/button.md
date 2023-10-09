@@ -23,10 +23,12 @@ The primary purpose of the `Button` component is to provide a clear and intuitiv
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonDemo' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonDemo.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonDemo.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/demo_styles.css'
 height='300px'
 />
+
+<!-- tabs={['ButtonDemo.java', 'demo_styles.css']} -->
 
 ## Usages
 

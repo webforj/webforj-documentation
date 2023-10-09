@@ -146,10 +146,6 @@ To remove an event listener, use the appropriate method:
 myDialog.removeOpenListener(listener);
 ```
 
-:::info
-For a method to be removed via the appropriate removeListener method, the signature of the method must be saved.
-:::
-
 ## Styling
 
 ### Themes
@@ -168,7 +164,7 @@ While there are many use cases for each of the various themes, some examples use
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.dialogdemos.DialogThemes' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogThemes.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogThemes.java'
 height = '500px'
 />
 

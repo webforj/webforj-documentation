@@ -18,7 +18,7 @@ The Drawer component can be used in many different situations, such as by provid
 
 <ComponentDemo 
 frame="hidden"
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerWelcome.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerWelcome.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/drawerstyles/drawer_welcome.css'
 />
 
@@ -42,7 +42,7 @@ Drawer newDrawer = new Drawer()
 
 <ComponentDemo
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerDemo'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerDemo.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerDemo.java'
 height='600px'
 />
 
@@ -62,7 +62,7 @@ This property can also be particularly beneficial for individuals who rely on ke
 
 <ComponentDemo
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerAutoFocus'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerAutoFocus.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerAutoFocus.java'
 height='600px'
 />
 
@@ -113,7 +113,7 @@ When the drawer's content exceeds the defined maximum size, developers can imple
 
 <ComponentDemo
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerSize'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerSize.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerSize.java'
 height='600px'
 />
 
@@ -142,7 +142,7 @@ By leveraging the placement property, developers can create intuitive and effici
 
 <ComponentDemo
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerPlacement'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerPlacement.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerPlacement.java'
 height='600px'
 />
 

@@ -65,7 +65,7 @@ The line wrap method for a `Label` component sets whether or not the component a
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.labeldemos.LabelLineWrap' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/labeldemos/LabelLineWrap.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/labeldemos/LabelLineWrap.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/labelstyles/wrap_styles.css' 
 javaHighlight='{16-18}'
 height="250px"
@@ -126,10 +126,6 @@ To remove an event listener, use the appropriate method:
 ```java
 myLabel.removeMouseEnterListener(listener);
 ```
-
-:::info
-For a method to be removed via the appropriate removeListener method, the signature of the method must be saved. 
-:::
 
 ## Example
 

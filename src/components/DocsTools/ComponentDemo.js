@@ -1,6 +1,6 @@
 /**@jsx jsx */
 
-import {React, useState} from 'react'
+import {React, useState, useEffect} from 'react'
 import { jsx, css } from '@emotion/react';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -9,6 +9,8 @@ import CodeBlock from '@theme/CodeBlock';
 import test1 from '../../../static/img/fold.png';
 import test2 from '../../../static/img/expand.png';
 import test3 from '../../../static/img/window-maximize.png';
+// import useThemeContext from '@theme/hooks/useThemeContext';
+import { useColorMode } from '@docusaurus/theme-common';
 
 function CodeToggleButton({ collapse, setCollapse }){
 
@@ -29,7 +31,6 @@ function CodeToggleButton({ collapse, setCollapse }){
     background-color: none;
     justify-self: flex-end;
     margin-right: 5px;
-    margin-bottom: -50px;
     background-color: transparent;  
   `
 
@@ -95,13 +96,51 @@ function OpenNewWindowButton({ url }) {
 }
 
 
-export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighlight, height, frame }) {
+export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighlight, height, frame, tabs }) {
 
   const [javaCollapse, setJavaCollapse] = useState("");
   const [javaExpand, setJavaExpand] = useState("");
   const [cssCode, setCssCode] = useState("");
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed] = useState(javaC && javaE ? true : false);
   const [buttonVisible, setButtonVisible] = useState(false);
+
+  const [fileNames, setFileNames] = useState({})
+
+  
+  useEffect(() => {
+    if(javaE){
+      fetch(javaE)
+          .then(response => response.text()) 
+          .then(textString => {
+              setJavaExpand(textString)
+              const parsedUrl = new URL(javaE);
+              const pathname = parsedUrl.pathname;
+              const parts = pathname.split('/');
+              const fileName = parts[parts.length - 1];
+              setFileNames((prevFileNames) => ({ ...prevFileNames, javaFile: fileName }))
+          });
+    }
+    if(javaC){
+      fetch(javaC)
+          .then(response => response.text()) 
+          .then(textString => {
+              setJavaCollapse(textString)
+          });
+    }
+    if(cssURL){
+      fetch(cssURL)
+          .then(response => response.text()) 
+          .then(textString => {
+              setCssCode(textString)
+              const parsedUrl = new URL(cssURL);
+              const pathname = parsedUrl.pathname;
+              const parts = pathname.split('/');
+              const fileName = parts[parts.length - 1];
+              setFileNames((prevFileNames) => ({ ...prevFileNames, cssFile: fileName }))
+          });
+    }
+  }, []);
+
 
 	const mainStyles = css`
 		display: flex;
@@ -109,8 +148,8 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
     background-color: var(--code-display-color);
 		width: 100%;
     margin-bottom: 16px;
-    padding: ${frame == "hidden" ? "0 15px 0 15px;" : "10px 15px 0 15px;"};
-    
+    padding: ${frame == "hidden" ? "0 15px 0 15px;" : "7px 15px 0 15px;"};
+    box-shadow: var(--ifm-global-shadow-lw);
     `
 
   const iframeStyles = css`
@@ -158,27 +197,7 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
     
   `;
 
-  if(javaE){
-    fetch(javaE)
-        .then(response => response.text()) 
-        .then(textString => {
-            setJavaExpand(textString)
-        });
-  }
-  if(javaC){
-    fetch(javaC)
-        .then(response => response.text()) 
-        .then(textString => {
-            setJavaCollapse(textString)
-        });
-  }
-  if(cssURL){
-    fetch(cssURL)
-        .then(response => response.text()) 
-        .then(textString => {
-            setCssCode(textString)
-        });
-  }
+
 
 
 
@@ -195,7 +214,7 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
         </div>
         <iframe
           loading="lazy" 
-          src={path}
+          src={path+"&theme="+ (useColorMode().colorMode === "dark" ? "dark" : "light")}
           css={iframeStyles}>
         </iframe>
       </div>
@@ -211,7 +230,7 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
       : null}
       {cssURL ? 
         <Tabs>
-          <TabItem value='Java' label='Java' default>
+          <TabItem value={tabs ? tabs[0] : "Java"} label={tabs ? tabs[0] : fileNames.javaFile} default>
             <CodeBlock
               className="codeDemoBlock"
               language="java"
@@ -224,7 +243,7 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
               }
             </CodeBlock>
           </TabItem>
-          <TabItem value='CSS' label='CSS'>
+          <TabItem value={tabs ? tabs[1] : "CSS"} label={tabs ? tabs[1] : fileNames.cssFile}>
             <CodeBlock
                 className="codeDemoBlock"
               language="css"
@@ -236,7 +255,7 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
         </Tabs>
           :
         <Tabs>
-          <TabItem value='Java' label='Java' default>
+          <TabItem value={tabs ? tabs[0] : "Java"} label={tabs ? tabs[0] : fileNames.javaFile} default>
             <CodeBlock
                 className="codeDemoBlock"
                 language="java"
