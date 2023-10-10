@@ -12,12 +12,18 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 The `RadioButtonGroup` class is used to group related radio buttons together, which helps establish the mutual exclusivity among the options within that group. Users can select only one radio button within a given radio group. When a user selects a radio button within a group, any previously selected radio button in the same group automatically becomes deselected. This ensures that only one option can be chosen at a time.
 
+
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.radiobuttondemos.RadioButtonGroupDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/radiobuttondemos/RadioButtonGroupDemo.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/radiobuttonstyles/radiobutton_styles.css'
 height="200px"
 />
+
+:::important
+The `RadioButtonGroup` component will not render an HTML element on the page. Rather, it is only
+logic that ensures a group of RadioButtons behave as a group instead of individually.
+:::
 
 ## Usages
 

@@ -86,7 +86,6 @@ If the radio button is part of a group, selecting a different radio button withi
 Manual activation provides finer control over the selection process, requiring an explicit action from the user to change the selected option.
 
 
-
 ### Auto Activation
 
 Automatic activation is the default state for a `RadioButton`, and means that the button will be checked on whenever it gains focus for any reason. This means that

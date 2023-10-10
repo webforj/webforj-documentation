@@ -29,7 +29,7 @@ The `Label` class has three constructors:
 
 1. `Label()`: Creates an empty label.
 2. `Label(String text)`: Creates a label with the specified text.
-3. `Label(String text, boolean wrap)`: Creates a label with the specified text and sets whether or not the text should be wrapped.
+3. `Label(String text, boolean wrap)`: Creates a label with the specified text and sets whether or not the text should be wrapped. More detail about line wrapping can be found [here.](#line-wrapping)
 
 Here's an example of how to create a Label object using each constructor:
 
@@ -47,8 +47,7 @@ Label wrappedLabel = new Label("Lorem ipsum dolor sit amet, consectetur adipisci
 
 ## HTML Injection
 
-In addition to using the label as static text, it can also be used as an HTML tag within your code. Simply set the label's text to the desired HTML tag with the various attributes, class names, etc, and
-the label will be replaced with the desired HTML element.
+In addition to using the label as static text, it can also be used as an HTML tag within your code. Simply set the label's content to the desired HTML tag with the various attributes, class names, etc, and the label will be replaced with the desired HTML element.
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.labeldemos.LabelDemo' 
