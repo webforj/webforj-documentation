@@ -40,7 +40,7 @@ The following code sample will result in an application with a collapsible sideb
 
 <ComponentDemo 
 frame="hidden"
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutDemo.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutDemo.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_styles.css'
 />
 
@@ -60,7 +60,7 @@ myApp.setFooterOffscreen(false);
 
 <ComponentDemo 
 frame="hidden"
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutFullNavbar.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutFullNavbar.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_styles.css'
 />
 
@@ -75,7 +75,7 @@ The following demo shows how to use two toolbars, The first one houses the drawe
 
 <ComponentDemo 
 frame="hidden"
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutMultipleHeaders.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutMultipleHeaders.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_styles.css'
 />
 
@@ -93,7 +93,7 @@ With the help of the CSS custom property `--bbj-app-layout-header-collapse-heigh
 
 <ComponentDemo 
 frame="hidden"
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutMultipleHeaders.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutMultipleHeaders.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_sticky_styles.css'
 />
 
@@ -112,7 +112,7 @@ Be default, when the screen width is 800px or less , the drawer will be switched
 
 <ComponentDemo 
 frame="hidden"
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutMobile.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutMobile.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_mobile.css'
 />
 
@@ -131,7 +131,7 @@ demo.setDrawerBreakpoint("(max-width:500px)");
 
 <ComponentDemo 
 frame="hidden"
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutMobileDrawer.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutMobileDrawer.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_mobile.css'
 />
 

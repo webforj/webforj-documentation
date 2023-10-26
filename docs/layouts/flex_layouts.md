@@ -62,7 +62,7 @@ Alternatively, use the `setDirection()` method. The horizontal options are eithe
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.container.Direction' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/container/Direction.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/container/Direction.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/flexstyles/container_styles.css'
 height="275px"
 />
@@ -81,7 +81,7 @@ The `setAlignContent()` methods components the space around the cross axis, and 
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.container.Positioning' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/container/Positioning.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/container/Positioning.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/flexstyles/container_styles.css'
 height="375px"
 />
@@ -115,7 +115,7 @@ The following demo allows you to build a container with the desired flex propert
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.container.ContainerDemo' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/container/ContainerDemo.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/container/ContainerDemo.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/flexstyles/container_styles.css'
 height="600px"
 />
@@ -139,7 +139,7 @@ It's important to note that the order property only affects the visual order of 
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.item.Order' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/item/Order.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/item/Order.java'
 height="200px"
 />
 
@@ -157,7 +157,7 @@ This property is especially useful when you need to align a specific item differ
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.item.SelfAlign' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/item/SelfAlign.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/item/SelfAlign.java'
 height="350px"
 />
 
@@ -190,6 +190,6 @@ Similarly, when a container does not have enough space to accommodate its conten
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=layout_demos.FlexDemo' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/FlexDemo.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/FlexDemo.java'
 height="400px"
 />
