@@ -85,7 +85,7 @@ The `ChoiceBox` class provides methods to add and remove event listeners for the
 |:-:|-|
 |[`OpenEvent`](../events/OpenEvent)|An event that is triggered when a component loses focus.|
 |[`CloseEvent`](../events/CloseEvent)|An event that is triggered when a component gains focus, opposite of a blur event. |
-|[`ClickEvent`](../events/ClickEvent)|An event that is triggered when the mouse cursor enters the boundaries of a component. |
+|[`ListClickEvent`](../events/ListClickEvent)|An event that is triggered when the mouse cursor enters the boundaries of a component. |
 
 :::caution Notice
 For a list of additional events supported by the `ChoiceBox`, see [this section](./lists.md#shared-events) which outlines shared events amongst list components.
@@ -161,7 +161,7 @@ height="170px"
 
 ### Shadow Parts
 
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the `ChoiceBox` component, which will be required when styling via CSS is desired.
+These are the various parts of the [shadow DOM](../../glossary#shadow-dom) for the `ChoiceBox` component, which will be required when styling via CSS is desired.
 
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').ChoiceBox} table='parts' exclusions='' />
 

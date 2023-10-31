@@ -1,15 +1,15 @@
 ---
 sidebar_position: 0
-title: ListSelectEvent
+title: ListClickEvent
 sidebar_class_name: sidebar--item__hidden
-slug: ListSelectEvent
+slug: ListClickEvent
 ---
 
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<JavadocLink type="engine" location="org/dwcj/component/event/ListSelectEvent" top='true' />
+<JavadocLink type="engine" location="org/dwcj/component/event/ListClickEvent" top='true' />
 
-This event is triggered when the user selects an item from a List-based component. It provides essential information about the selected item and allows developers to implement custom actions or responses when an item is chosen.
+This event is triggered when the user clicks an item from a List-based component. It provides essential information about the selected item and allows developers to implement custom actions or responses when an item is chosen.
 
 ## Event Payload
 

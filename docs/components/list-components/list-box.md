@@ -123,7 +123,7 @@ height = '300px'
 
 ### Shadow Parts
 
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the `ListBox` component, which will be required when styling via CSS is desired.
+These are the various parts of the [shadow DOM](../../glossary#shadow-dom) for the `ListBox` component, which will be required when styling via CSS is desired.
 
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').ListBox} table='parts' exclusions='' />
 
