@@ -13,7 +13,7 @@ An event that is triggered when the mouse cursor enters the boundaries of an ele
 
 ## Event Payload
 
-| Events | Description |
+| Method | Description |
 |:-:|-|
 |`getMouseButton()`|Returns whether or not a mouse button was pressed while the event happened.|
 |`getScreenX()`|Returns the absolute abscissa screen coordinate where this event happened.|

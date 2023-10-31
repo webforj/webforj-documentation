@@ -17,7 +17,7 @@ To see a list of keys that trigger this event, <JavadocLink type="engine" locati
 
 ## Event Payload
 
-| Events | Description |
+| Method | Description |
 |:-:|-|
 |`getCode()`|Returns the integer value of the key code.|
 |`getName()`| Returns the name of the key code.|

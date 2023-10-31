@@ -13,7 +13,7 @@ An event that is triggered when an element loses focus. It occurs when the user 
 
 ## Event Payload
 
-| Events | Description |
+| Method | Description |
 |:-:|-|
 |`getText()`|Gets the text of the component.|
 |`isClientValidationValid()`|Returns the result of the client validation function, if any, when the component loses focus.|

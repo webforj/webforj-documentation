@@ -13,7 +13,7 @@ An event which is fired when the user clicks the right mouse button while in the
 
 ## Event Payload
 
-| Events | Description |
+| Method | Description |
 |:-:|-|
 |`getMouseButton()`|Returns whether or not a mouse button was pressed while the event happened.|
 |`getScreenX()`|Returns the absolute abscissa screen coordinate where this event happened.|

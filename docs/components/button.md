@@ -159,6 +159,10 @@ To remove an event listener, use the appropriate method:
 myButton.removeClickListener(listener);
 ```
 
+:::tip
+When adding an event listener, a `ListenerRegistration` object will be returned. This can be used, among other things, to remove the event later on.
+:::
+
 #### Sample
 
 Below is a demonstration showing the addition of a [`ButtonClickEvent`](../components/events/ButtonClickEvent) to a `Button`. This `Button` also uses information coming with the event's payload to display information on the screen.

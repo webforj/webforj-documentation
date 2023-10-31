@@ -14,7 +14,7 @@ This class is the base class for all events fired by the components. It is exten
 
 ## Event Payload
 
-| Events | Description |
+| Method | Description |
 |:-:|-|
 |`getData()`|Get the event map sent by the component.|
 |`getEventMap()`|Alias for the `getData()` method above.|

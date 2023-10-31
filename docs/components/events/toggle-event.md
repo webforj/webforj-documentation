@@ -13,7 +13,7 @@ A "toggle" event occurs when an element or control changes its state between two
 
 ## Event Payload
 
-| Events | Description |
+| Method | Description |
 |:-:|-|
 |`isToggled()`|Gets the value of the component to determine whether it was toggled on or off.|
 

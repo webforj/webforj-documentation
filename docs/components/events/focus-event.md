@@ -13,7 +13,7 @@ An event that is triggered when an element gains focus, opposite of a blur event
 
 ## Event Payload
 
-| Events | Description |
+| Method | Description |
 |:-:|-|
 |`getText()`|Gets the text of the component.|
 

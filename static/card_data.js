@@ -15,13 +15,13 @@ export const componentData =
   {
     "image": require('./img/component_images/choicebox.png'),
     "title": "Choice Box",
-    "link" : "./choice-box",
+    "link" : "./list-components/choice-box",
     "description": "The Choice Box is a responsive component that provides methods for adding, inserting, and selecting items, as well as registering callbacks for selection, opening, and closing events."
   },
   {
     "image": require('./img/component_images/combobox.png'),
     "title": "Combo Box",
-    "link" : "./combo-box",
+    "link" : "./list-components/combo-box",
     "description": "Similar to a Choice Box component, but allows users to inert text within an entry field."
   },
   {
@@ -63,7 +63,7 @@ export const componentData =
   {
     "image": require('./img/component_images/listbox.png'),
     "title": "List Box",
-    "link" : "./list-box",
+    "link" : "./list-components/list-box",
     "description": "The List Box provides functionality for creating and manipulating a list in an application, and includes adding and removing items, selecting and deselecting items, handling events, and setting various properties."
   },
   // {
