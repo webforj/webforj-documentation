@@ -1,8 +1,8 @@
 ---
 sidebar_position: 0
-title: OpenEvent
+title: ListOpenEvent
 sidebar_class_name: sidebar--item__hidden
-slug: OpenEvent
+slug: ListOpenEvent
 ---
 
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
@@ -22,4 +22,11 @@ This event is triggered when the user opens a List-based component. It provides 
 
 ## See Also
 
+### Events
 - [Event](./event)
+- [ListCloseEvent](./ListCloseEvent)
+- [ListSelectEvent](./ListSelectEvent)
+
+### Components
+- [ChoiceBox](../list-components/ChoiceBox)
+- [ComboBox](../list-components/ComboBox)

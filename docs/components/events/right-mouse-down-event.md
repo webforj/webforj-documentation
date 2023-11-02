@@ -28,5 +28,5 @@ An event which is fired when the user clicks the right mouse button while in the
 ## See Also
 
 - [Event](./event)
-- [MouseEnter Event](./MouseEnterEvent)
-- [MouseExit Event](./MouseExitEvent)
+- [MouseEnterEvent](./MouseEnterEvent)
+- [MouseExitEvent](./MouseExitEvent)

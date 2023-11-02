@@ -88,6 +88,10 @@ dropdown using CSS or shadow part selectors from the parent component becomes ch
 
 By default, the number of rows displayed in the dropdown of a `ComboBox` will be increased to fit the content. However, using the `setMaxRowCount()` method allows for control over how many items are displayed.
 
+:::caution
+Using a number that is less than or equal to 0 will result in unsetting this property.
+:::
+
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.textcomboboxdemos.ComboBoxMaxRowDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboBoxMaxRowDemo.java'
@@ -100,7 +104,7 @@ height='250px'
 The `ComboBox` component has methods that allow manipulation of the dropdown dimensions. The **maximum height** and **minimum width** of the dropdown can be set using the `setOpenHeight()` and `setOpenWidth()` methods, respectively. 
 
 :::tip
-Passing a `String` value to either of these methods will allow for any valid CSS styling property to be applied, such as pixels, viewport dimensions, or other valid rules. Passing an `int` will set the value passed in pixels.
+Passing a `String` value to either of these methods will allow for [any valid CSS unit](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units) to be applied, such as pixels, viewport dimensions, or other valid rules. Passing an `int` will set the value passed in pixels.
 :::
 
 ## Events
@@ -109,8 +113,8 @@ The `ComboBox` class provides methods to add and remove event listeners for the 
 
 | Events | Description |
 |:-:|-|
-|[`OpenEvent`](../events/OpenEvent)|An event that is triggered when a component loses focus.|
-|[`CloseEvent`](../events/CloseEvent)|An event that is triggered when a component gains focus, opposite of a blur event. |
+|[`ListOpenEvent`](../events/ListOpenEvent)|An event that is triggered when a component loses focus.|
+|[`ListCloseEvent`](../events/ListCloseEvent)|An event that is triggered when a component gains focus, opposite of a blur event. |
 |[`ListClickEvent`](../events/ListClickEvent)|An event that is triggered when the mouse cursor enters the boundaries of a component. |
 |[`ModifyEvent`](../events/ModifyEvent)|An event that is triggered when the mouse cursor enters the boundaries of a component. |
 |[`KeypressEvent`](../events/KeypressEvent)|An event that is triggered when the mouse cursor enters the boundaries of a component. |
@@ -132,7 +136,7 @@ comboBox.addKeypressEvent(e -> {
 
 comboBox.addKeypressEvent(new ComponentEventListener<KeypressEvent>() {
   @Override
-  public void onComponentEvent(PropertyChangeEvent e){
+  public void onComponentEvent(ComponentEvent e){
     //Executed when the event fires
   }
 });

@@ -22,4 +22,12 @@ This event is triggered when the user selects an item from a List-based componen
 
 ## See Also
 
+### Events
 - [Event](./event)
+- [ListOpenEvent](./ListOpenEvent)
+- [ListCloseEvent](./ListCloseEvent)
+
+### Components
+- [ChoiceBox](../list-components/ChoiceBox)
+- [ComboBox](../list-components/ComboBox)
+- [ListBox](../list-components/ListBox)

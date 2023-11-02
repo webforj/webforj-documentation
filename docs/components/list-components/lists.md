@@ -12,7 +12,7 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 <JavadocLink type="engine" location="org/dwcj/component/list/DwcList"/>
 
-The DWCJ contains three types of lists for use within your applications: [`ListBox`](docs/components/list-components/listbox), [`ChoiceBox`](docs/components/list-components/choicebox) and [`ComboBox`](docs/components/list-components/combobox). These three components all display a list of key value items, and support methods to add, remove, select and manage the items within the list. 
+There are three types of lists for use within your applications: [`ListBox`](docs/components/list-components/listbox), [`ChoiceBox`](docs/components/list-components/choicebox) and [`ComboBox`](docs/components/list-components/combobox). These three components all display a list of key value items, and support methods to add, remove, select and manage the items within the list. 
 
 This section will list the commonalities within each of the aforementioned components, with the specific behaviors belonging to each outlined in their own sections.
 
@@ -20,43 +20,22 @@ This section will list the commonalities within each of the aforementioned compo
 This section describes common functionality amongst all of the list components, and is not itself a class that can be instantiated and used.
 :::
 
+<!-- Add a managing items section -->
+
+<!-- Add vs insert, adding multiple items, iterate over list items, removal, etc -->
+
 ## Using `ListItem`
 
 The `ListItem` class represents individual items within a list. Each ListItem is associated with a key and a display text. Here are the key points regarding the ListItem class:
 
-1. **Item Representation**
+### Item Representation
 
   >- A `ListItem` encapsulates a unique key `Object`, and a text `String` for display within the component. List components are composed of `ListItem` objects.
 
-  >- You can construct a `ListItem` by providing a key and text, or simply by specifying the text, where a random UUID is used as the key.
-
-2. **Property Change**
-
-  >- `ListItem` supports property change events. When the text of a ListItem is modified, it notifies listeners of the change.
-
-  >- You can add property change listeners to monitor text changes using the `addPropertyChangeListener()` method.
-
-```java
-listItem.addPropertyChangeListener(e -> {
-  //Executed when the event fires
-});
-
-//OR
-
-listItem.addPropertyChangeListener(new ComponentEventListener<PropertyChangeEvent>() {
-  @Override
-  public void onComponentEvent(PropertyChangeEvent e){
-    //Executed when the event fires
-  }
-});
-
-//OR
-
-listItem.addPropertyChangeListener(this::propertyChangeMethod); // Consumer method
-```
+  >- You can construct a `ListItem` by providing a key and text, or simply by specifying the text, where a random key is generated.
 
 
-## Shared Field Properties 
+## Shared List Properties 
 
 ### Label
 
@@ -77,3 +56,4 @@ All List components share the following methods to add and remove event listener
 |[`MouseEnterEvent`](../events/MouseEnterEvent)|An event that is triggered when the mouse cursor enters the boundaries of a component. |
 |[`MouseExitEvent`](../events/MouseExitEvent)|An event that is triggered when the mouse cursor exits the boundaries of a component. |
 |[`RightMouseDownEvent`](../events/RightMouseDownEvent)|An event that is triggered when the user presses the right mouse button while the cursor is over a component.|
+|[`ListSelectEvent`](../events/ListSelectEvent)|An event that is triggered when the user presses the right mouse button while the cursor is over a component.|

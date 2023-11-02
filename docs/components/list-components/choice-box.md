@@ -15,7 +15,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <JavadocLink type="engine" location="org/dwcj/component/button/Button" top='true'/>
 
-The `ChoiceBox` component is a user interface element designed to present users with a list of options or choices. Users can select a single option from this list, typically by clicking the `ChoiceBox`, which triggers the display of a dropdown list containing available choices. Users can also interact with the `ChoiceBox` with the arrow keys. When a user makes a selection, the chosen option is then displayed in the `ChoiceBox`. 
+The `ChoiceBox` component is a user interface element designed to present users with a list of options or choices. Users can select a single option from this list, typically by clicking the `ChoiceBox`, which triggers the display of a dropdown list containing available choices. Users can also interact with the `ChoiceBox` with the arrow keys. When a user makes a selection, the chosen option is then displayed in the `ChoiceBox` button. 
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.comboboxdemos.ChoiceBoxDemo' 
@@ -60,7 +60,11 @@ dropdown using CSS or shadow part selectors from the parent component becomes ch
 
 ## Max Row Count
 
-By default, the number of rows displayed in the dropdown of a `ChoiceBox` will be increased to fit the content. However, using the `setMaxRowCount()` method allows for control over how many items are displayed.
+By default, the number of rows displayed in the dropdown of a `ChoiceBox` will be increased to fit the content. However, using the `setMaxRowCount()` method allows for control over how many items are displayed. 
+
+:::caution
+Using a number that is less than or equal to 0 will result in unsetting this property.
+:::
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.comboboxdemos.ChoiceBoxMaxRowDemo' 
@@ -74,7 +78,7 @@ height='250px'
 The `ChoiceBox` component has methods that allow manipulation of the dropdown dimensions. The **maximum height** and **minimum width** of the dropdown can be set using the `setOpenHeight()` and `setOpenWidth()` methods, respectively. 
 
 :::tip
-Passing a `String` value to either of these methods will allow for any valid CSS styling property to be applied, such as pixels, viewport dimensions, or other valid rules. Passing an `int` will set the value passed in pixels.
+Passing a `String` value to either of these methods will allow for [any valid CSS unit](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units) to be applied, such as pixels, viewport dimensions, or other valid rules. Passing an `int` will set the value passed in pixels.
 :::
 
 ## Events
@@ -83,8 +87,8 @@ The `ChoiceBox` class provides methods to add and remove event listeners for the
 
 | Events | Description |
 |:-:|-|
-|[`OpenEvent`](../events/OpenEvent)|An event that is triggered when a component loses focus.|
-|[`CloseEvent`](../events/CloseEvent)|An event that is triggered when a component gains focus, opposite of a blur event. |
+|[`ListOpenEvent`](../events/ListOpenEvent)|An event that is triggered when a component loses focus.|
+|[`ListCloseEvent`](../events/ListCloseEvent)|An event that is triggered when a component gains focus, opposite of a blur event. |
 |[`ListClickEvent`](../events/ListClickEvent)|An event that is triggered when the mouse cursor enters the boundaries of a component. |
 
 :::caution Notice
@@ -102,9 +106,9 @@ choiceBox.addOpenListener(e -> {
 
 //OR
 
-choiceBox.addOpenListener(new ListOpenListener() {
+choiceBox.addOpenListener(new ComponentEventListener<ListOpenEvent>() {
   @Override
-  public void onComponentEvent(PropertyChangeEvent e){
+  public void onComponentEvent(ComponentEvent e){
     //Executed when the event fires
   }
 });
@@ -137,7 +141,7 @@ When adding an event listener, a `ListenerRegistration` object will be returned.
 ## Styling
 
 ### Expanses
-There are five `ChoiceBox` expanses that are supported in the DWCJ which allow for quick styling without using CSS. Expanses are supported by use of a built-in enum class. <br/>
+There are five `ChoiceBox` expanses that are supported which allow for quick styling without using CSS. Expanses are supported by use of a built-in enum class. <br/>
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.comboboxdemos.ComboboxExpanseDemo' 
@@ -154,7 +158,6 @@ The `ChoiceBox` component comes with 14 themes built in for quick styling withou
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.comboboxdemos.ComboboxThemeDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboboxThemeDemo.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/combobox/Theme.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/theme_styles.css' 
 height="170px"
 />

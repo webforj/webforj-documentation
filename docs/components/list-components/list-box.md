@@ -78,7 +78,7 @@ listBox.addSelectListener(e -> {
 
 listBox.addSelectListener(new ComponentEventListener<ListSelectEvent>() {
   @Override
-  public void onComponentEvent(PropertyChangeEvent e){
+  public void onComponentEvent(ComponentEvent e){
     //Executed when the event fires
   }
 });
@@ -111,7 +111,7 @@ When adding an event listener, a `ListenerRegistration` object will be returned.
 ## Styling
 
 ### Expanses
-There are five `ListBox` expanses that are supported in the DWCJ which allow for quick styling without using CSS. Expanses are supported by use of a built-in enum class. <br/>
+There are five `ListBox` expanses that are supported which allow for quick styling without using CSS. Expanses are supported by use of a built-in enum class. <br/>
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxExpanses' 
