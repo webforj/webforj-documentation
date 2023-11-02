@@ -25,7 +25,7 @@ This event is the base class for List-based component related events. inherited 
 ### Events
 - [Event](./event)
 - [ListOpenEvent](./ListOpenEvent)
-- [ListCloseEvent](./LiseCloseEvent)
+- [ListCloseEvent](./ListCloseEvent)
 - [ListSelectEvent](./ListSelectEvent)
 
 ### Components
