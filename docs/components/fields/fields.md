@@ -98,3 +98,9 @@ These are the various CSS properties that are used in the component, with a shor
 The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
 
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Field} table="reflects"/>
+
+### Dependencies
+
+This component relies on the following components - see the related article for more detailed styling information:
+
+<TableBuilder tag='bbj-editbox' table="dependencies"/>

@@ -122,12 +122,12 @@ The `Button` class provides methods to add and remove event listeners for the fo
 
 | Events | Description |
 |:-:|-|
-|[`BlurEvent`](../components/events/BlurEvent)|An event that is triggered when a component loses focus.|
-|[`ButtonClickEvent`](../components/events/ButtonClickEvent)|An event that is triggered when a user interacts with a button by clicking or tapping on it. |
-|[`FocusEvent`](../components/events/FocusEvent)|An event that is triggered when a component gains focus, opposite of a blur event. |
-|[`MouseEnterEvent`](../components/events/MouseEnterEvent)|An event that is triggered when the mouse cursor enters the boundaries of a component. |
-|[`MouseExitEvent`](../components/events/MouseExitEvent)|An event that is triggered when the mouse cursor exits the boundaries of a component. |
-|[`RightMouseDownEvent`](../components/events/RightMouseDownEvent)|An event that is triggered when the user presses the right mouse button while the cursor is over a component.|
+|<JavadocLink type="engine" location="org/dwcj/component/event/BlurEvent" code='true'>BlurEvent</JavadocLink>| An event that is triggered when a component loses focus.|
+|<JavadocLink type="engine" location="org/dwcj/component/button/event/ButtonClickEvent" code='true'>ButtonClickEvent</JavadocLink>|An event that is triggered when a user interacts with a button by clicking or tapping on it. |
+|<JavadocLink type="engine" location="org/dwcj/component/event/FocusEvent" code='true'>FocusEvent</JavadocLink>|An event that is triggered when a component gains focus, opposite of a blur event. |
+|<JavadocLink type="engine" location="org/dwcj/component/event/MouseEnterEvent" code='true'>MouseEnterEvent</JavadocLink>|An event that is triggered when the mouse cursor enters the boundaries of a component. |
+|<JavadocLink type="engine" location="org/dwcj/component/event/MouseExitEvent" code='true'>MouseExitEvent</JavadocLink>|An event that is triggered when the mouse cursor exits the boundaries of a component. |
+|<JavadocLink type="engine" location="org/dwcj/component/event/RightMouseDownEvent" code='true'>RightMouseDownEvent</JavadocLink>|An event that is triggered when the user presses the right mouse button while the cursor is over a component.|
 
 <br />
 
@@ -248,6 +248,11 @@ The reflected attributes of a component will be shown as attributes in the rende
 
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Button} table="reflects" exclusions={require('@site/static/exclusions.json').button.reflects}/>
 
+### Dependencies
+
+This component relies on the following components - see the related article for more detailed styling information:
+
+<TableBuilder tag='bbj-button' table="dependencies"/>
 
 ## Best Practices 
 

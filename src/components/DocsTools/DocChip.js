@@ -32,7 +32,7 @@ export default function DocChip( { label, href, clickable, iconName, tooltipText
 
   let icon;
   if(iconName === 'scoped'){
-    icon = <Biotech css={iconStyles} />
+    icon = <BiotechIcon css={iconStyles} />
   } else if(iconName === 'shadow'){
     icon = <FiberSmartRecordIcon css={iconStyles} />
   } else if(iconName === "code"){

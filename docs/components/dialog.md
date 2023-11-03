@@ -6,6 +6,11 @@ title: Dialog
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
+import DocChip from '@site/src/components/DocsTools/DocChip';
+
+<DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" target="_blank" clickable={false} iconName='shadow' />
+
+<DocChip tooltipText="The name of the web component that will render in the DOM." label="bbj-dialog" clickable={false} iconName='code'/>
 
 <JavadocLink type="engine" location="org/dwcj/component/dialog/Dialog" top='true'/>
 
@@ -121,8 +126,10 @@ The `Dialog` can be set to enter full screen mode. When full screen is enabled, 
 
 The `Dialog` class provides methods to add and remove event listeners for the following events:
 
-- `DialogOpenEvent`
-- `DialogCloseEvent`
+| Events | Description |
+|:-:|-|
+|<JavadocLink type="engine" location="org/dwcj/component/event/DialogOpenEvent" code='true'>DialogOpenEvent</JavadocLink>|An event that is fired when the `Dialog` is opened.|
+|<JavadocLink type="engine" location="org/dwcj/component/event/DialogCloseEvent" code='true'>DialogCloseEvent</JavadocLink>|An event that is fired when the `Dialog` is closed.|
 
 To add an event listener, use the appropriate method:
 

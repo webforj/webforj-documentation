@@ -7,9 +7,11 @@ slug: bbj-icon
 
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import Chip from '@mui/material/Chip';
+import DocChip from '@site/src/components/DocsTools/DocChip';
 
-<Chip  label="Shadow" component="a" href="https://stenciljs.com/docs/styling#what-is-the-shadow-dom" target="_blank" clickable icon={<FiberSmartRecordIcon />} />
+<DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="https://stenciljs.com/docs/styling#what-is-the-shadow-dom" target="_blank" clickable={true} iconName="shadow" />
+
+<DocChip tooltipText="The name of the web component that will render in the DOM." label="bbj-icon" clickable={false} iconName='code'/>
 
 <br />
 <br />

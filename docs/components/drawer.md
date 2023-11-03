@@ -223,6 +223,13 @@ The reflected attributes of a component will be shown as attributes in the rende
 
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Drawer} table="reflects"/>
 
+### Dependencies
+
+This component relies on the following components - see the related article for more detailed styling information:
+
+<TableBuilder tag='bbj-drawer' table="dependencies"/>
+
+
 ## Best Practices 
 
 To ensure an optimal user experience when using the `Drawer` component, consider the following best practices:

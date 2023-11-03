@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import Link from "@docusaurus/Link";
+
 export default function TableBuilder(props) {
 
 
@@ -38,6 +40,8 @@ export default function TableBuilder(props) {
     type: prop.type,
 
   }));
+  const dependencies = component?.dependencies || [];
+
 
 
   return (
@@ -145,10 +149,27 @@ export default function TableBuilder(props) {
         </>
       )
     }
-      {/* <h4>CSS Properties</h4> */}
+    
+    {
+      props.table == "dependencies" && (
+        <>
+          <ul>
+            {dependencies.map((dependency, index) => (
+              <li>
+                <Link to={'/docs/components/client-components/' + dependency.replace("bbj-", "").charAt(0).toUpperCase() + dependency.slice(5)} key={index}>{dependency.replace("bbj-", "").charAt(0).toUpperCase() + dependency.slice(5)}</Link>
+              </li>
+            ))}
+          </ul>
+        </>
+      )
+    }
+
+
+
+
 
     {
-      props.table != "properties" && props.table != "parts" && props.table != "slots" && props.table != "reflects" && (
+      props.table != "properties" && props.table != "parts" && props.table != "slots" && props.table != "reflects" && props.table != "dependencies" && (
         <>
           <h4>Shadow Parts</h4>
           <table className="custom--table">

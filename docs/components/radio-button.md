@@ -142,7 +142,7 @@ The `RadioButton` class provides methods to add and remove event listeners for t
 
 | Events | Description |
 |:-:|-|
-|`BlurEvent`| An event that is triggered when an element loses focus. It occurs when the user interacts with an element, such as clicking inside an input field, and then moves the focus away from that element, typically by clicking outside of it or tabbing to another element on the page. |
+|`BlurEvent`|An event that is triggered when an element loses focus. It occurs when the user interacts with an element, such as clicking inside an input field, and then moves the focus away from that element, typically by clicking outside of it or tabbing to another element on the page.|
 |`FocusEvent`| An event that is triggered when an element gains focus, opposite of a blur event. It occurs when the user interacts with an element, typically by clicking inside an input field or navigating to it using the keyboard's tab key, causing the element to become active and ready to receive user input. |
 |`CheckedEvent`| An event that is triggered when the state of a component changes and becomes checked. It occurs when the user interacts with a checkbox element by clicking or tapping on it, causing the checkbox to transition from an unchecked state to a checked state. |
 |`UncheckedEvent`| An event that is triggered when the state of a component changes and becomes unchecked. It occurs when the user interacts with a checkbox element by clicking or tapping on it, causing the checkbox to transition from an checked state to a unchecked state. |
@@ -207,6 +207,12 @@ These are the various CSS properties that are used in the component, with a shor
 The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
 
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').RadioButton} table="reflects"/>
+
+### Dependencies
+
+This component relies on the following components - see the related article for more detailed styling information:
+
+<TableBuilder tag='bbj-radio' table="dependencies"/>
 
 ## Best Practices 
 

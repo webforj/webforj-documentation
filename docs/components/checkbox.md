@@ -92,14 +92,14 @@ The `CheckBox` class provides methods to add and remove event listeners for the 
 
 | Events | Description |
 |:-:|-|
-|[`BlurEvent`](../components/events/BlurEvent)| An event that is triggered when a component loses focus.|
-|[`FocusEvent`](../components/events/FocusEvent)| An event that is triggered when a component gains focus, opposite of a blur event.|
-|[`CheckEvent`](../components/events/CheckEvent)| An event that is triggered when the state of a component changes and becomes checked.|
-|[`UncheckEvent`](../components/events/UncheckEvent)| An event that is triggered when the state of a component changes and becomes unchecked. |
-|[`ToggleEvent`](../components/events/ToggleEvent)| A ToggleEvent fires a CheckBox or a similar UI element changes its state between "on" and "off" or "active" and "inactive."|
-|[`MouseEnterEvent`](../components/events/MouseEnterEvent)|An event that is triggered when the mouse cursor enters the boundaries of a component. |
-|[`MouseExitEvent`](../components/events/MouseExitEvent)|An event that is triggered when the mouse cursor exits the boundaries of a component. |
-|[`RightMouseDownEvent`](../components/events/RightMouseDownEvent)|An event that is triggered when the user presses the right mouse button while the cursor is over a component.|
+|<JavadocLink type="engine" location="org/dwcj/component/event/BlurEvent" code='true'>BlurEvent</JavadocLink>|An event that is triggered when an element loses focus. It occurs when the user interacts with an element, such as clicking inside an input field, and then moves the focus away from that element, typically by clicking outside of it or tabbing to another element on the page.|
+|<JavadocLink type="engine" location="org/dwcj/component/event/FocusEvent" code='true'>FocusEvent</JavadocLink>| An event that is triggered when an element gains focus, opposite of a blur event. It occurs when the user interacts with an element, typically by clicking inside an input field or navigating to it using the keyboard's tab key, causing the element to become active and ready to receive user input.|
+|<JavadocLink type="engine" location="org/dwcj/component/event/CheckEvent" code='true'>CheckEvent</JavadocLink>| An event that is triggered when the state of a component changes and becomes checked. It occurs when the user interacts with a checkbox element by clicking or tapping on it, causing the checkbox to transition from an unchecked state to a checked state.|
+|<JavadocLink type="engine" location="org/dwcj/component/event/UncheckEvent" code='true'>UncheckEvent</JavadocLink>| An event that is triggered when the state of a component changes and becomes unchecked. |
+|<JavadocLink type="engine" location="org/dwcj/component/event/ToggleEvent" code='true'>ToggleEvent</JavadocLink>| A ToggleEvent fires a CheckBox or a similar UI element changes its state between "on" and "off" or "active" and "inactive."|
+|<JavadocLink type="engine" location="org/dwcj/component/event/MouseEnterEvent" code='true'>MouseEnterEvent</JavadocLink>|An event that is triggered when the mouse cursor enters the boundaries of a component. |
+|<JavadocLink type="engine" location="org/dwcj/component/event/MouseExitEvent" code='true'>MouseExitEvent</JavadocLink>|An event that is triggered when the mouse cursor exits the boundaries of a component. |
+|<JavadocLink type="engine" location="org/dwcj/component/event/RightMouseDownEvent" code='true'>RightMouseDownEvent</JavadocLink>|An event that is triggered when the user presses the right mouse button while the cursor is over a component.|
 
 <br />
 
@@ -173,6 +173,12 @@ The reflected attributes of a component will be shown as attributes in the rende
 
 
 <TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Checkbox} table="reflects"/>
+
+### Dependencies
+
+This component relies on the following components - see the related article for more detailed styling information:
+
+<TableBuilder tag='bbj-checkbox' table="dependencies"/>
 
 
 ## Best Practices 
