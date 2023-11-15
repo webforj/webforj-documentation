@@ -1,8 +1,8 @@
 ---
 sidebar_position: 0
-title: bbj-tab-panel
+title: <bbj-tab-panel>
 sidebar_class_name: sidebar--item__hidden
-slug: Tab-panel
+slug: tab-panel
 // pagination_prev: null
 // pagination_next: null
 ---
@@ -13,12 +13,11 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" target="_blank" clickable={false} iconName='shadow' />
 
-<DocChip tooltipText="The name of the web component that will render in the DOM." label="bbj-tab-panel" clickable={false} iconName='code'/>
+<br />
+<br />
 
-## Styling
-
-:::warning IMPORTANT
-This section outlines various styling information for the **`bbj-tab-panel` client-side** component. This component cannot be instantiated on its own via the API, but may make up part of API components.
+:::info CLIENT COMPONENT
+This section outlines styling information for the **`<bbj-tab-panel>`** component. This component is **client side only** - it cannot be instantiated on its own via the API, but may make up part of API components.
 :::
 
 ### Shadow Parts

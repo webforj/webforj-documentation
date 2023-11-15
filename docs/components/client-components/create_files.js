@@ -26,11 +26,11 @@ jsonData.components.forEach((componentData) => {
   const {  tag, encapsulation, docsTags, styles, props, dependencies } = componentData;
   const partItems = docsTags?.filter((docTag) => docTag.name === "part");
 
-  const formattedTagName = tag.replace("bbj-", "").charAt(0).toUpperCase() + tag.slice(5);
+  const formattedTagName = tag.replace("bbj-", "");
   // Create the markdown content for each component
   const markdownContent = `---
 sidebar_position: 0
-title: ${tag}
+title: <${tag}>
 sidebar_class_name: sidebar--item__hidden
 slug: ${formattedTagName}
 // pagination_prev: null
@@ -43,12 +43,11 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="${(encapsulation[0].toUpperCase()) + encapsulation.substring(1)}" target="_blank" clickable={false} iconName='${encapsulation}' />
 
-<DocChip tooltipText="The name of the web component that will render in the DOM." label="${tag}" clickable={false} iconName='code'/>
+<br />
+<br />
 
-## Styling
-
-:::warning IMPORTANT
-This section outlines various styling information for the **\`${tag}\` client-side** component. This component cannot be instantiated on its own via the API, but may make up part of API components.
+:::info CLIENT COMPONENT
+This section outlines styling information for the **\`<${tag}>\`** component. This component is **client side only** - it cannot be instantiated on its own via the API, but may make up part of API components.
 :::
 
 ${

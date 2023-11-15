@@ -1,8 +1,8 @@
 ---
 sidebar_position: 0
-title: bbj-font-chooser
+title: <bbj-font-chooser>
 sidebar_class_name: sidebar--item__hidden
-slug: Font-chooser
+slug: font-chooser
 // pagination_prev: null
 // pagination_next: null
 ---
@@ -13,12 +13,11 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Scoped" target="_blank" clickable={false} iconName='scoped' />
 
-<DocChip tooltipText="The name of the web component that will render in the DOM." label="bbj-font-chooser" clickable={false} iconName='code'/>
+<br />
+<br />
 
-## Styling
-
-:::warning IMPORTANT
-This section outlines various styling information for the **`bbj-font-chooser` client-side** component. This component cannot be instantiated on its own via the API, but may make up part of API components.
+:::info CLIENT COMPONENT
+This section outlines styling information for the **`<bbj-font-chooser>`** component. This component is **client side only** - it cannot be instantiated on its own via the API, but may make up part of API components.
 :::
 
 
