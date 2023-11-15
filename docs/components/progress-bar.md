@@ -11,7 +11,8 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 ### Text and String Painting
 
-By default when created, the progress bar will display the percentage complete in the format "XX%". Using the `setText()` method, you can use the placeholder {{x}} to get the current value as a percentage. Additionally, you can use the placeholder {{value}} to get the raw current value.
+By default when created, the progress bar will display the percentage complete in the format "XX%". Using the `setText()` method, you can use the placeholder `{{x}}` to get the current value as a percentage. Additionally, you can use the placeholder `{{value}}` to get the raw current value.
+
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.progressbardemos.ProgressbarPlaceholders' 

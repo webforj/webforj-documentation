@@ -1,8 +1,8 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require('prism-react-renderer').themes.github;
+const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -58,19 +58,38 @@ const config = {
       }),
     ],
   ],
-  plugins: [
-      [
-        '@docusaurus/plugin-content-docs',
-        {
-          id: 'tutorials',
-          path: 'tutorials',
-          routeBasePath: 'tutorials',
-          sidebarPath: require.resolve('./sidebars.js'),
-        }, 
-      ],
-  ],
+  plugins: [],
   themeConfig:
     ({
+      algolia: {
+        // The application ID provided by Algolia
+        appId: 'RSLUBH6I28',
+  
+        // Public API key: it is safe to commit it
+        apiKey: '9d34325b39e4c9380cd2396f98f772b6',
+  
+        indexName: 'dwcj',
+  
+        // Optional: see doc section below
+        contextualSearch: true,
+  
+        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+        externalUrlRegex: 'external\\.com|domain\\.com',
+  
+        // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+        replaceSearchResultPathname: {
+          from: '/docs/', // or as RegExp: /\/docs\//
+          to: '/',
+        },
+  
+        // Optional: Algolia search parameters
+        searchParameters: {},
+  
+        // Optional: path for search page that enabled by default (`false` to disable it)
+        searchPagePath: 'search',
+  
+        //... other Algolia params
+      },
       image: '/img/logo.png',
       navbar: {
         title: 'Dynamic Web Client for Java',
@@ -166,27 +185,11 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} BASIS International Ltd. All rights reserved.`,
       },
       prism: {
-        theme: require('prism-react-renderer/themes/vsLight'),
+        theme: require('prism-react-renderer').themes.vsLight,
         darkTheme: darkCodeTheme,
         additionalLanguages: ['java']
       },
-    }),
-    themes: [
-      // ... Your other themes.
-      [
-        require.resolve("@easyops-cn/docusaurus-search-local"),
-        {
-          // ... Your options.
-          // `hashed` is recommended as long-term-cache of index file is possible.
-          hashed: true,
-          // For Docs using Chinese, The `language` is recommended to set to:
-          // ```
-          // language: ["en", "zh"],
-          // ```
-        },
-      ],
-    ],
-    
+    })
 };
 
 module.exports = config;

@@ -8,12 +8,12 @@
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #0063cc;
-  --ifm-color-primary-dark: #005ec2;
-  --ifm-color-primary-darker: #0059b8;
-  --ifm-color-primary-darkest: #0054ad;
-  --ifm-color-primary-light: #0068d6;
-  --ifm-color-primary-lighter: #006de0;
-  --ifm-color-primary-lightest: #0072eb;
+  --ifm-color-primary-dark: #0059b8;
+  --ifm-color-primary-darker: #0054ad;
+  --ifm-color-primary-darkest: #00458f;
+  --ifm-color-primary-light: #006de0;
+  --ifm-color-primary-lighter: #0072eb;
+  --ifm-color-primary-lightest: #1f8bff;
   --docusaurus-highlighted-code-line-bg: #DDDFE1;
   --code-display-color: #F8FAFC;
   --inversion-percentage: 0%;
@@ -27,19 +27,21 @@
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
   --ifm-color-primary: #4299f5;
-  --ifm-color-primary-dark: #3391f4;
-  --ifm-color-primary-darker: #2489f3;
-  --ifm-color-primary-darkest: #1681f3;
-  --ifm-color-primary-light: #51a1f6;
-  --ifm-color-primary-lighter: #60a9f7;
-  --ifm-color-primary-lightest: #6eb1f7;
-  --docusaurus-highlighted-code-line-bg: #414458;
+  --ifm-color-primary-dark: #2489f3;
+  --ifm-color-primary-darker: #1681f3;
+  --ifm-color-primary-darkest: #0b6acf;
+  --ifm-color-primary-light: #60a9f7;
+  --ifm-color-primary-lighter: #6eb1f7;
+  --ifm-color-primary-lightest: #9bc9fa;
+  --docusaurus-highlighted-code-line-bg: #414458 !important;
   --code-display-color: #21222c;
   --inversion-percentage: 100%;
   --chip-background: #494C4F;
   --chip-background-hover: #424242;
   --chip-text: #E0E0E0;
   --chip-icon-color: #E0E0E0;
+  --ifm-navbar-background-color:  #181e25 !important;
+  --ifm-background-color: #101418 !important;
 }
 
 
@@ -48,7 +50,7 @@
     margin-right: 10%;
   }
 } */
-
+/* 
 #__docusaurus [class*=docMainContainer_]>.container>.row>.col {
   display: flex;
   justify-content: center;
@@ -69,7 +71,7 @@
 
 .main-wrapper{
   flex-direction: row !important;
-}
+} */
 
 .homepage{
   width: 100%;
@@ -95,6 +97,20 @@
 
 .MuiChip-root{
   text-decoration: none !important;
+}
+
+.navbar__brand, .navbar__item{
+  /* color: #FFFFFF !important; */
+  /* #101418
+  #14191f
+  #181e25
+  #8928a4 */
+
+}
+
+.clean-btn:hover{
+  color: var(--clean-hover);
+  transition: color var(--ifm-transition-fast)
 }
 
 

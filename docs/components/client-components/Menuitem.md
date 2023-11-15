@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-title: Menuitem
+title: bbj-menuitem
 sidebar_class_name: sidebar--item__hidden
 slug: Menuitem
 // pagination_prev: null
@@ -16,6 +16,10 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="bbj-menuitem" clickable={false} iconName='code'/>
 
 ## Styling
+
+:::warning IMPORTANT
+This section outlines various styling information for the **`bbj-menuitem` client-side** component. This component cannot be instantiated on its own via the API, but may make up part of API components.
+:::
 
 ### Shadow Parts
 These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.

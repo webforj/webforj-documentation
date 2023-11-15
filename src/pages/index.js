@@ -1,5 +1,4 @@
-/** @jsx jsx */
-
+/** @jsxImportSource @emotion/react */
 import { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';

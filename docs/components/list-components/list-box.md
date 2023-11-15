@@ -143,7 +143,7 @@ The reflected attributes of a component will be shown as attributes in the rende
 
 This component relies on the following components - see the related article for more detailed styling information:
 
-<TableBuilder tag='bbj-list-box' table="dependencies"/>
+<TableBuilder tag='bbj-list' table="dependencies"/>
 
 ## Best Practices 
 

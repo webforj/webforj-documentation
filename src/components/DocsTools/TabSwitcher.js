@@ -1,4 +1,4 @@
-/**@jsx jsx */
+/** @jsxImportSource @emotion/react */
 import React, {useEffect, useState } from 'react'
 import { useLocation, withRouter } from '@docusaurus/router';
 import { jsx, css } from '@emotion/react';

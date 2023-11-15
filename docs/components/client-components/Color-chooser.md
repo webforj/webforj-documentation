@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-title: Color-chooser
+title: bbj-color-chooser
 sidebar_class_name: sidebar--item__hidden
 slug: Color-chooser
 // pagination_prev: null
@@ -16,6 +16,10 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="bbj-color-chooser" clickable={false} iconName='code'/>
 
 ## Styling
+
+:::warning IMPORTANT
+This section outlines various styling information for the **`bbj-color-chooser` client-side** component. This component cannot be instantiated on its own via the API, but may make up part of API components.
+:::
 
 
 

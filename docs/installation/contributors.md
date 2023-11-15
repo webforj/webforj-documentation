@@ -1,16 +1,18 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Contributors
 
-This section of the documentation will cover the steps required not only to 
-utilize the DWCJ for application or web development, but also for active
-contribution to the engine itself.
+:::warning WARNING
+This installation guide is aimed at developers wishing to **contribute** to the engine, and thus contains more complex
+setup instructions. For developers simply wishing to use the DWCJ, select one of the other installation methods.
+:::
 
-**NOTE:** This walkthrough will cover installation on a Windows system - installation
+:::info 
+This walkthrough will cover installation on a Windows system - installation
 steps may vary for Mac/Linux OS devices.
-<br/>
+:::
 
 Installation will be broken down into the following steps:
 
@@ -21,83 +23,6 @@ Installation will be broken down into the following steps:
 
 
 ## 1) Java and Maven Download and Configuration
-<!-- This section describes the installation process for Java and Maven, both of which
-will be required for development of applications and the engine itself. If you already
-have Java and Maven downloaded, please skip to [**Step 2**](#section2). If you also have 
-BBj installed on your system, please skip to [**Step 3**](#section3).
-
-### Download Java for OS:
-Begin by installing <b>Java OpenJDK17</b> on your computer. You’ll want to select the version that matches your OS. 
-A list of versions can be found [by following this link](https://adoptium.net/temurin/releases/).
-
-### Configure the Java Installation
-After selecting the correct version, follow the installation instructions. Note that you’ll want to 
-set the JAVA_HOME variable. On Windows, this can be done by selecting the “Will be installed on local hard drive” 
-option for the “Set JAVA_HOME variable” option during installation.
-
-![Java installation options](./_images/contributors/image1.jpg)
-
-With this step completed, Java will be installed on your system.
-
-<br/>
-
-### Install Maven
-
-Next we’ll install Maven in order to allow the creation of a .jar file from the changes made to the engine. 
-Make sure you take note of the location in which you install Maven, as this path will be needed in the next step. 
-Go to [this link and select the correct download for your OS](https://maven.apache.org/download.cgi).
-
-<br/>
-
-### Configure Environment Variables for Maven
-
-After Maven has been installed, various environment variables will need to be set to ensure Maven is used 
-properly. This guide will walk through how to do this in Windows. Start by searching “Environment” from 
-the start menu and select **“Edit the system environment variables”**
-
-
-![Windows start menu environment variables option](./_images/contributors/image2.jpg)
-
-
-Once the System Properties window appears, select the **“Environment Variables”** button from the bottom right:
-
-![Environment Variables button](./_images/contributors/image3.jpg)
-
-
-This window will allow us to create two new user variables, and to edit the path system variable. Select the **“New”** button
-in the top portion of the window. 
-
-![New button to add environment variable](./_images/contributors/image4.jpg)
-
-A window will pop up with two fields, one for a variable name, and one for a variable value. 
-For the name, enter **“MAVEN_HOME”**, and for the value, enter the path you installed your Maven files at. 
-An example path might be **“C:\apache-maven-3.8.6”**. Hit okay to confirm.
-
-![Saving the variable name and value](./_images/contributors/image5.jpg)
-
-
-To finish configuring environment variables, click on the **“Path”** entry in the **“System Variables"** section. 
-Then, select the **“Edit”** option. This will bring up a dialog window with the various Paths your system will check.
-
-![Editing the Path variable](./_images/contributors/image6.jpg)
-
-
-This will open a dialog window which will allow you to add a path to the list. Select **“New”**, and add the path to your 
-Maven binary (this should be in the folder you downloaded from the Maven website).
-
-![Editing the Path variable](./_images/contributors/image7.jpg)
-
-To confirm both of these steps have been completed, open your preferred command line tool, and enter the following command:
-**java -–version && mvn–version**
-
-This should display the versions of both Java and Maven installed on your computer if the above steps were successfully completed:
-
-![Editing the Path variable](./_images/contributors/image8.jpg)
-
-<a name='section2'></a>
-<br/>
-<br/>
-<br/> -->
 
 In order to use the DWCJ, you must first have Java and Maven installed and properly configured. If you already
 have Java and Maven downloaded, please skip to [**Step 2**](#section2). If you also have 
@@ -118,7 +43,7 @@ for Windows users can be found [here](https://phoenixnap.com/kb/install-maven-wi
 
 ## 2) BBj Download and Installation
 
-<b>While following this step, be sure to install BBj version 22.14 or newer </b><br/><br/>
+<!-- <b>While following this step, be sure to install BBj version 22.14 or newer </b><br/><br/>
 
 The following video describes the steps needed download the tool that will install BBj on your machine. Watch from the beginning until the **1:30** mark. 
 
@@ -134,14 +59,27 @@ video from **4:13** to **8:23**.
 <br/>
 
 
-Once BBj has been installed, navigate to the location of your installation and into the lib folder with your chosen command line tool. An example of this location would be `C:\bbx\lib`. Once there, execute the following three lines to install the BBj dependencies required to run the engine:
+Once BBj has been installed, navigate to the location of your installation and into the lib folder with your chosen command line tool. An example of this location would be `C:\bbx\lib`. Once there, execute the following three lines to install the BBj dependencies required to run the engine: -->
+
+
+:::warning important
+While following this step, be sure to install BBj version 22.14 or newer
+:::
+
+[This video](https://www.youtube.com/watch?v=Ovk8kznQfGs&ab_channel=BBxCluesbyBASISEurope) can help with the installation of BBj if you need assistance with setup. The installation section of the BASIS website can be found [at this link](https://basis.cloud/download-product)
+
+:::tip
+It is recommended to use the latest stable revision build of BBj, and to select "BBj" from the list of options, without "Barista" or "Addon".
+:::
+
+Once BBj has been installed, it is also necessary to install the needed dependencies from the BBj library. This is done by navigating to the `lib` directory inside your bbx folder, and
+running the following commands:
 
 ```bash
-
-mvn install:install-file "-Dfile=BBjStartup.jar" "-DgroupId=com.basis.lib" "-DartifactId=BBjStartup" "-Dversion=23.00" "-Dpackaging=jar"
-mvn install:install-file "-Dfile=BBj.jar" "-DgroupId=com.basis.lib" "-DartifactId=BBj" "-Dversion=23.00" "-Dpackaging=jar"
-mvn install:install-file "-Dfile=BBjUtil.jar" "-DgroupId=com.basis.lib" "-DartifactId=BBjUtil" "-Dversion=23.00" "-Dpackaging=jar"
-
+mvn install:install-file "-Dfile=BBjStartup.jar" "-DgroupId=com.basis.lib" "-DartifactId=BBjStartup" "-Dversion=23.05-SNAPSHOT" "-Dpackaging=jar"
+mvn install:install-file "-Dfile=BBj.jar" "-DgroupId=com.basis.lib" "-DartifactId=BBj" "-Dversion=23.05-SNAPSHOT" "-Dpackaging=jar"
+mvn install:install-file "-Dfile=BBjUtil.jar" "-DgroupId=com.basis.lib" "-DartifactId=BBjUtil" "-Dversion=23.05-SNAPSHOT" "-Dpackaging=jar"
+mvn install:install-file "-Dfile=BBjsp.jar  -DgroupId=com.basis.lib -DartifactId=BBjsp -Dversion=23.05-SNAPSHOT -Dpackaging=jar"
 ```
 
 After running these commands, make sure to perform an "install" using Maven in the engine directory.
@@ -165,8 +103,6 @@ take you to the engine section of the DWCJ on GitHub. Clone this folder onto
 your computer - this can be done using the command line and Git, or another 
 Git tool.
 
-<br/>
-
 To start, click on the green "**Code**" button and copy the address to your 
 clipboard:
 
@@ -189,8 +125,6 @@ You should now have a folder named "**engine**" in the location you chose to
 clone the code to. This is where you'll find the files needed to add to the
 classpath later on in the tutorial, so make sure you take note of this location
 for future use.
-
-<br/>
 
 ### Compile and Package Code
 
@@ -247,9 +181,6 @@ Github. This file should be found in “engine>target>lib”, as shown below:
 ![Final packaged JAR](./_images/contributors/image35.jpg)
 
 <a name='packageSection'></a>
-<br/>
-<br/>
-<br/>
 
 ## 4) Configuration in the Enterprise Manager
 

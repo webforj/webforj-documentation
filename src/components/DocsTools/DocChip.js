@@ -1,10 +1,7 @@
-/**@jsx jsx */
-
+/** @jsxImportSource @emotion/react */
 import React from 'react';
 import { jsx, css } from '@emotion/react';
 import { Tooltip, Chip } from '@mui/material';
-
-// import { BiotechIcon, FiberSmartRecordIcon, CodeIcon, DescriptionIcon } from '@mui/icons-material';
 
 import BiotechIcon from '@mui/icons-material/Biotech';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';

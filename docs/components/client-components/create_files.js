@@ -30,7 +30,7 @@ jsonData.components.forEach((componentData) => {
   // Create the markdown content for each component
   const markdownContent = `---
 sidebar_position: 0
-title: ${formattedTagName}
+title: ${tag}
 sidebar_class_name: sidebar--item__hidden
 slug: ${formattedTagName}
 // pagination_prev: null
@@ -46,6 +46,10 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="${tag}" clickable={false} iconName='code'/>
 
 ## Styling
+
+:::warning IMPORTANT
+This section outlines various styling information for the **\`${tag}\` client-side** component. This component cannot be instantiated on its own via the API, but may make up part of API components.
+:::
 
 ${
   encapsulation == 'shadow' ?
