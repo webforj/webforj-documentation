@@ -18,7 +18,7 @@ export default function JavadocLink( { type, location, top, children, code, suff
         if(!latestTag){
           latestTag = "23.04"
         }
-        setUrl("https://javadoc.io/static/org.dwcj/dwcj-" + type + "/" + latestTag + "/" + location + ".html" + suffix)
+        setUrl("https://javadoc.io/doc/org.dwcj/dwcj-" + type + "/" + latestTag + "/" + location + ".html" + suffix)
       } catch (error) {
         console.error('Error fetching latest release:', error);
       }

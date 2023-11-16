@@ -75,6 +75,7 @@ Radio buttons can be controlled using two types of activation: manual activation
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.radiobuttondemos.RadioButtonActivation' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/radiobuttondemos/RadioButtonActivation.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/radiobuttonstyles/radiobutton_styles.css'
+height="175px"
 />
 
 ### Manual Activation

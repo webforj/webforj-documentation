@@ -49,6 +49,8 @@ height = '250px'
 
 By default, the list box is configured to allow selection of a single item at a time. However, this can be easily configured with a built-in method which allows users to select multiple items ***using the `Shift` key*** for contiguous entry selection and ***`Control` (Windows) or `Command` (Mac) key*** for separate, multiple item selection. Use the `setMultipleSelection()` function to change this property. True will enable multiple selection, false disables it. 
 
+Additionally, the arrow keys can be used to navigate the `ListBox`, and typing a letter key while the `ListBox` has focus will select the option that begins with that letter, or cycle through the options beginning with that letter should multiple options exist.
+
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxMultipleSelection' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxMultipleSelection.java'

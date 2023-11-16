@@ -38,12 +38,12 @@ The various List classes offer various methods for managing the list of items an
 By using these methods provided in the classes, you can effectively manage the items within the list component. The API allows you to interact with and manipulate the list to meet your application's requirements.
 
 1. **Adding an Item**:
-  > - To add an item to the list, you can use the `add(ListItem item)` method.
-  > - You can also add an item by specifying the key and text using the `add(Object key, String text)` or `add(String text)` method.
+    > - To add an item to the list, you can use the `add(ListItem item)` method.
+    > - You can also add an item by specifying the key and text using the `add(Object key, String text)` or `add(String text)` method.
 
-  :::tip
-    Using the add method triggers a roundtrip to the server each time it is used. For more efficient usage, create a list of `ListItem` objects, and put them in the list using the `insert(int index, List<ListItem> items)` method outlined below.
-  :::
+    :::tip
+      Using the add method triggers a server-to-client message each time it is used. For more efficient usage, create a list of `ListItem` objects, and put them in the list using the `insert(int index, List<ListItem> items)` method outlined below.
+    :::
 
 2. **Inserting an Item at a Specific Index:**
    > - To insert an item at a specific index, use the `insert(int index, ListItem item)` method.
@@ -62,8 +62,8 @@ By using these methods provided in the classes, you can effectively manage the i
 6. **Selecting an Item:** To select an item within the list, you can use methods such as `select(ListItem item)` or `selectKey(Object key)`.
 
 7. **Retrieving Information about the List:** 
-  >- You can get the size of the list using the `size()` method.
-  >- To check if the list is empty, use the `isEmpty()` method.
+    >- You can get the size of the list using the `size()` method.
+    >- To check if the list is empty, use the `isEmpty()` method.
 
 ## Shared List Properties
 

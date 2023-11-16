@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Contributors
 
-:::warning WARNING
+:::warning IMPORTANT
 This installation guide is aimed at developers wishing to **contribute** to the engine, and thus contains more complex
 setup instructions. For developers simply wishing to use the DWCJ, select one of the other installation methods.
 :::
@@ -63,7 +63,7 @@ Once BBj has been installed, navigate to the location of your installation and i
 
 
 :::warning important
-While following this step, be sure to install BBj version 22.14 or newer
+While following this step, be sure to install BBj version **22.14** or newer
 :::
 
 [This video](https://www.youtube.com/watch?v=Ovk8kznQfGs&ab_channel=BBxCluesbyBASISEurope) can help with the installation of BBj if you need assistance with setup. The installation section of the BASIS website can be found [at this link](https://basis.cloud/download-product)
