@@ -52,11 +52,20 @@ The `ChoiceBox` is intended for use when a preset number of options are availabl
 
 Using the `setDropdownType()` method will assign a value to the `type` attribute of a `ChoiceBox`, and a corresponding value for the `data-dropdown-for` attribute in the dropdown of the `ChoiceBox`. This is helpful for styling, as the dropdown is taken out of its current position in the DOM and relocated to the end of the page body when opened.
 
-![example type](../_images/choicebox/type.png)
-![example type](../_images/choicebox/type_zoomed.png)
+<!-- ![example type](../_images/choicebox/type.png)
+![example type](../_images/choicebox/type_zoomed.png) -->
 
 This detachment creates a situation where directly targeting the
 dropdown using CSS or shadow part selectors from the parent component becomes challenging, unless you make use of the dropdown type attribute.
+
+In the demo below, the Dropdown type is set and used in the CSS file to select the dropdown and change the background color.
+
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.comboboxdemos.ChoiceBoxDropdownType' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ChoiceBoxDropdownType.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/dropdown_styles.css'
+height='100px'
+/>
 
 ## Max Row Count
 
@@ -87,9 +96,9 @@ The `ChoiceBox` class provides methods to add and remove event listeners for the
 
 | Events | Description |
 |:-:|-|
-|[`ListOpenEvent`](../events/ListOpenEvent)|An event that is triggered when a component loses focus.|
-|[`ListCloseEvent`](../events/ListCloseEvent)|An event that is triggered when a component gains focus, opposite of a blur event. |
-|[`ListClickEvent`](../events/ListClickEvent)|An event that is triggered when the mouse cursor enters the boundaries of a component. |
+|<JavadocLink type="engine" location="org/dwcj/component/list/event/ListOpenEvent"  code="true">ListOpenEvent</JavadocLink>|An event which is fired when a list dropdown is opened.|
+|<JavadocLink type="engine" location="org/dwcj/component/list/event/ListCloseEvent"  code="true">ListCloseEvent</JavadocLink>|An event which is fired when a list dropdown is closed.|
+|<JavadocLink type="engine" location="org/dwcj/component/list/event/ListClickEvent"  code="true">ListClickEvent</JavadocLink>|This event is triggered when the user clicks an item from a List-based component.|
 
 :::caution Notice
 For a list of additional events supported by the `ChoiceBox`, see [this section](./lists.md#shared-events) which outlines shared events amongst list components.
