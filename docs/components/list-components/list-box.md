@@ -63,7 +63,7 @@ height = '250px'
 
 The `ListBox` class provides methods to add and remove event listeners for the events common to all list components.
 
-:::caution Notice
+:::tip
 For a list of events supported by the `ListBox`, see [this section](./lists.md#shared-events) which outlines shared events amongst list components.
 :::
 

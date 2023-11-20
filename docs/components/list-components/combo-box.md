@@ -124,7 +124,7 @@ The `ComboBox` class provides methods to add and remove event listeners for the 
 |<JavadocLink type="engine" location="org/dwcj/component/event/ModifyEvent"  code="true">ModifyEvent</JavadocLink>|An event that is fired when a component is edited or modified.|
 |<JavadocLink type="engine" location="org/dwcj/component/event/KeypressEvent"  code="true">KeypressEvent</JavadocLink>|A Keypress event is fired when a user presses a specific key on the keyboard while an element has focus. This event is commonly used to capture and respond to user keyboard interactions. When a Keypress event is triggered,the key that was pressed can be determine using the key code, and a specific action or actions can be performed based on the user's input. For example, it can be used to validate user input in form fields, implement keyboard shortcuts, or trigger certain actions based on specific key combinations.|
 
-:::caution Notice
+:::tip
 For a list of additional events supported by the `ComboBox`, see [this section](./lists.md#shared-events) which outlines shared events amongst list components.
 :::
 

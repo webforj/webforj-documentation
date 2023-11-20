@@ -100,7 +100,7 @@ The `ChoiceBox` class provides methods to add and remove event listeners for the
 |<JavadocLink type="engine" location="org/dwcj/component/list/event/ListCloseEvent"  code="true">ListCloseEvent</JavadocLink>|An event which is fired when a list dropdown is closed.|
 |<JavadocLink type="engine" location="org/dwcj/component/list/event/ListClickEvent"  code="true">ListClickEvent</JavadocLink>|This event is triggered when the user clicks an item from a List-based component.|
 
-:::caution Notice
+:::tip
 For a list of additional events supported by the `ChoiceBox`, see [this section](./lists.md#shared-events) which outlines shared events amongst list components.
 :::
 
