@@ -10,13 +10,14 @@ export default function ComponentViewer( {componentData} ) {
   
   const mainStyles = css`
     display : flex;
-    flex-direction : row,;
+    flex-direction : row;
     flex-wrap : wrap;
     gap : 40px;
     width: 130%;
-
+    
     @media only screen and (max-width: 996px) {
       width: 100%;
+      justify-content: center; 
     }
   `
 
