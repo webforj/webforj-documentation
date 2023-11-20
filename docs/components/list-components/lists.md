@@ -90,4 +90,5 @@ All List components share the following methods to add and remove event listener
 |             <JavadocLink type="engine" location="org/dwcj/component/event/MouseEnterEvent"  code="true">MouseEnterEvent</JavadocLink>              | An event that is triggered when the mouse cursor enters the boundaries of a component.                        |
 |              <JavadocLink type="engine" location="org/dwcj/component/event/MouseExitEvent"  code="true">MouseExitEvent</JavadocLink>               | An event that is triggered when the mouse cursor exits the boundaries of a component.                         |
 |         <JavadocLink type="engine" location="org/dwcj/component/event/RightMouseDownEvent"  code="true">RightMouseDownEvent</JavadocLink>          | An event that is triggered when the user presses the right mouse button while the cursor is over a component. |
-|             <JavadocLink type="engine" location="org/dwcj/component/list/event/ListSelectEvent"  code="true">ListSelectEvent</JavadocLink>              | An event that is triggered when the user presses the right mouse button while the cursor is over a component. |
+|             <JavadocLink type="engine" location="org/dwcj/component/list/event/ListSelectEvent"  code="true">ListSelectEvent</JavadocLink>              | An event which is fired when the user selects an item from a list.
+ |
