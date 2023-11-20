@@ -127,7 +127,7 @@ The `ComboBox` class provides methods to add and remove event listeners for the 
 :::tip
 For a list of additional events supported by the `ComboBox`, see [this section](./lists.md#shared-events) which outlines shared events amongst list components.
 :::
-
+<!-- 
 ### Adding Events
 
 To add an event listener, use one of the following patterns:
@@ -169,7 +169,7 @@ comboBox.removeKeypressEvent(listener);
 
 :::tip
 When adding an event listener, a `ListenerRegistration` object will be returned. This can be used, among other things, to remove the event later on.
-:::
+::: -->
 
 ## Styling
 

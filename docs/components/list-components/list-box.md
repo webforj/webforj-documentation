@@ -66,7 +66,7 @@ The `ListBox` class provides methods to add and remove event listeners for the e
 :::tip
 For a list of events supported by the `ListBox`, see [this section](./lists.md#shared-events) which outlines shared events amongst list components.
 :::
-
+<!-- 
 ### Adding Events
 
 To add an event listener, use one of the following patterns:
@@ -108,7 +108,7 @@ listBox.removeSelectListener(listener);
 
 :::tip
 When adding an event listener, a `ListenerRegistration` object will be returned. This can be used, among other things, to remove the event later on.
-:::
+::: -->
 
 ## Styling
 
