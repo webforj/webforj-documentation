@@ -44,13 +44,13 @@ The `ChoiceBox` is intended for use when a preset number of options are availabl
 
 ## Constructors
 
-1. **`ChoiceBox()`**: Constructs a new `ChoiceBox` without a label.
-2. **`ChoiceBox(String label)`**: Constructs a new `ChoiceBox` with the specified label.
-3. **`ChoiceBox(String label, ComponentEventListener<ListSelectEvent> selectListener)`**: Constructs a new `ChoiceBox` with the given label and a listener to handle item selection events.
+1. <JavadocLink type="engine" location="org/dwcj/component/list/ChoiceBox" code='true' suffix='#<init>()'>ChoiceBox()</JavadocLink>: Constructs a new `ChoiceBox` without a label.
+2. <JavadocLink type="engine" location="org/dwcj/component/list/ChoiceBox" code='true' suffix='#<init>(java.lang.String)'>ChoiceBox(String label)</JavadocLink>: Constructs a new `ChoiceBox` with the specified label.
+3. <JavadocLink type="engine" location="org/dwcj/component/list/ChoiceBox" code='true' suffix='#<init>(java.lang.String,org.dwcj.component.event.ComponentEventListener)'>ChoiceBox(String label, ComponentEventListener< ListSelectEvent> selectListener)</JavadocLink>: Constructs a new `ChoiceBox` with the given label and a listener to handle item selection events.
 
 ## Dropdown Type
 
-Using the `setDropdownType()` method will assign a value to the `type` attribute of a `ChoiceBox`, and a corresponding value for the `data-dropdown-for` attribute in the dropdown of the `ChoiceBox`. This is helpful for styling, as the dropdown is taken out of its current position in the DOM and relocated to the end of the page body when opened.
+Using the <JavadocLink type="engine" location="org/dwcj/component/list/DwcSelectDropdown" code='true' suffix='#setDropdownType(java.lang.String)'>setDropdownType()</JavadocLink> method will assign a value to the `type` attribute of a `ChoiceBox`, and a corresponding value for the `data-dropdown-for` attribute in the dropdown of the `ChoiceBox`. This is helpful for styling, as the dropdown is taken out of its current position in the DOM and relocated to the end of the page body when opened.
 
 <!-- ![example type](../_images/choicebox/type.png)
 ![example type](../_images/choicebox/type_zoomed.png) -->
@@ -69,7 +69,7 @@ height='100px'
 
 ## Max Row Count
 
-By default, the number of rows displayed in the dropdown of a `ChoiceBox` will be increased to fit the content. However, using the `setMaxRowCount()` method allows for control over how many items are displayed. 
+By default, the number of rows displayed in the dropdown of a `ChoiceBox` will be increased to fit the content. However, using the <JavadocLink type="engine" location="org/dwcj/component/list/DwcSelectDropdown" code='true' suffix='#setMaxRowCount(int)'>setMaxRowCount()</JavadocLink> method allows for control over how many items are displayed. 
 
 :::caution
 Using a number that is less than or equal to 0 will result in unsetting this property.
@@ -84,7 +84,7 @@ height='250px'
 
 ## Opening Dimensions
 
-The `ChoiceBox` component has methods that allow manipulation of the dropdown dimensions. The **maximum height** and **minimum width** of the dropdown can be set using the `setOpenHeight()` and `setOpenWidth()` methods, respectively. 
+The `ChoiceBox` component has methods that allow manipulation of the dropdown dimensions. The **maximum height** and **minimum width** of the dropdown can be set using the <JavadocLink type="engine" location="org/dwcj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenHeight(int)'>setOpenHeight()</JavadocLink> and <JavadocLink type="engine" location="org/dwcj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenWidth(int)'>setOpenWidth()</JavadocLink> methods, respectively. 
 
 :::tip
 Passing a `String` value to either of these methods will allow for [any valid CSS unit](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units) to be applied, such as pixels, viewport dimensions, or other valid rules. Passing an `int` will set the value passed in pixels.

@@ -41,13 +41,13 @@ height = '250px'
 
 ## Constructors
 
-1. **`ListBox()`**: Constructs a new `ListBox` without a label.
-2. **`ListBox(String label)`**: Constructs a new `ListBox` with the specified label.
-3. **`ListBox(String label, ComponentEventListener<ListSelectEvent> selectListener)`**: Constructs a new `ListBox` with the given label and a listener to handle item selection events.
+1. <JavadocLink type="engine" location="org/dwcj/component/list/ListBox" code='true' suffix='#<init>()'>ListBox()</JavadocLink>: Constructs a new `ListBox` without a label.
+2. <JavadocLink type="engine" location="org/dwcj/component/list/ListBox" code='true' suffix='#<init>(java.lang.String)'>ListBox(String label)</JavadocLink>: Constructs a new `ListBox` with the specified label.
+3. <JavadocLink type="engine" location="org/dwcj/component/list/ListBox" code='true' suffix='#<init>(java.lang.String,org.dwcj.component.event.ComponentEventListener)'>ListBox(String label, ComponentEventListener< ListSelectEvent> selectListener)</JavadocLink>: Constructs a new `ListBox` with the given label and a listener to handle item selection events.
 
 ## Selection Options
 
-By default, the list box is configured to allow selection of a single item at a time. However, this can be easily configured with a built-in method which allows users to select multiple items ***using the `Shift` key*** for contiguous entry selection and ***`Control` (Windows) or `Command` (Mac) key*** for separate, multiple item selection. Use the `setMultipleSelection()` function to change this property. True will enable multiple selection, false disables it. 
+By default, the list box is configured to allow selection of a single item at a time. However, this can be easily configured with a built-in method which allows users to select multiple items ***using the `Shift` key*** for contiguous entry selection and ***`Control` (Windows) or `Command` (Mac) key*** for separate, multiple item selection. Use the <JavadocLink type="engine" location="org/dwcj/component/list/ListBox" code='true' suffix='#setSelectionMode(org.dwcj.component.list.MultipleSelectableList.SelectionMode)'>setSelectionMode()</JavadocLink> function to change this property. True will enable multiple selection, false disables it. 
 
 Additionally, the arrow keys can be used to navigate the `ListBox`, and typing a letter key while the `ListBox` has focus will select the option that begins with that letter, or cycle through the options beginning with that letter should multiple options exist.
 

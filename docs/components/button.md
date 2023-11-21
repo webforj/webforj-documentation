@@ -114,8 +114,6 @@ In some applications, clicking a button triggers a long-running action. In most 
 Disabling on click not only helps optimize the processing of actions, but also prevents the developer from needing to implement this behavior on their own, as this method has been optimized to reduce round trip communications.
 :::
 
-<br />
-
 ## Events
 
 The `Button` class provides methods to add and remove event listeners for the following events:
@@ -129,9 +127,7 @@ The `Button` class provides methods to add and remove event listeners for the fo
 |<JavadocLink type="engine" location="org/dwcj/component/event/MouseExitEvent" code='true'>MouseExitEvent</JavadocLink>|An event that is triggered when the mouse cursor exits the boundaries of a component. |
 |<JavadocLink type="engine" location="org/dwcj/component/event/RightMouseDownEvent" code='true'>RightMouseDownEvent</JavadocLink>|An event that is triggered when the user presses the right mouse button while the cursor is over a component.|
 
-<br />
-
-### Adding Events
+<!-- ### Adding Events
 
 To add an event listener, use the appropriate method:
 
@@ -177,8 +173,7 @@ javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/ja
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Event.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/event_styles.css'
 height='100px'
-/>
-
+/> -->
 
 ## Styling
 

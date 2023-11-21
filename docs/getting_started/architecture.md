@@ -29,7 +29,7 @@ It is possible to significantly improve application responsiveness by avoiding t
 
 ```java
 private void comboBoxSelect(ComboBoxSelectEvent ev){
-    ComboBox cb = ev.getControl();
+    ComboBox cb = ev.getComponent();
     int selected = cb.getSelectedIndex(); // Goes to the client
     //Do something here
 }

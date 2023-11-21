@@ -8,6 +8,7 @@ draft: true
 ---
 
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
+import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 
 <JavadocLink type="engine" location="org/dwcj/component/event/Event" top='true'/>
 
@@ -94,3 +95,15 @@ myComponent.addEventListener(e -> {
 ```
 
 This approach minimizes the need to query the component for information, as the data is readily available in the event payload. By following this efficient event handling practice, you can enhance the performance and responsiveness of your components. For more information, you can refer to the documentation on [architecture](./getting_started/architecture.md).
+
+### Sample
+
+Below is a demonstration showing the addition of a <JavadocLink type="engine" location="org/dwcj/component/button/event/ButtonClickEvent"  code="true">ButtonClickEvent</JavadocLink> to a [`Button`](./components/button). This  [`Button`](./components/button) also uses information coming with the event's payload to display information on the screen.
+
+<ComponentDemo 
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonEvent' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonEvent.java'
+javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Event.txt'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/event_styles.css'
+height='100px'
+/>

@@ -156,7 +156,7 @@ export default function TableBuilder(props) {
           <ul>
             {dependencies.map((dependency, index) => (
               <li>
-                <Link to={'/docs/components/client-components/' + dependency.replace("bbj-", "").charAt(0).toUpperCase() + dependency.slice(5)} key={index}>{dependency.replace("bbj-", "").charAt(0).toUpperCase() + dependency.slice(5)}</Link>
+                <Link to={'/docs/components/client-components/' + dependency.replace("bbj-", "").charAt(0).toUpperCase() + dependency.slice(5)} key={index}>{dependency}</Link>
               </li>
             ))}
           </ul>
