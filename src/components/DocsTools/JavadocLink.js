@@ -24,7 +24,8 @@ export default function JavadocLink( { type, location, top, children, code, suff
       }
     };
     
-    fetchLatestRelease();
+    // fetchLatestRelease();
+    setUrl("https://javadoc.io/doc/org.dwcj/dwcj-" + type + "/latest/" + location + ".html" + suffix)
   }, []);
 
   const mainStyles = css`

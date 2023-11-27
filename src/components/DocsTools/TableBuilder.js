@@ -48,7 +48,6 @@ export default function TableBuilder(props) {
     <>
     {
       props.table == "parts" && (
-        <>
         <table className="custom--table">
         <thead>
           <tr key="header">
@@ -70,12 +69,10 @@ export default function TableBuilder(props) {
           })}
         </tbody>
       </table>
-        </>
       )
     }
     {
       props.table == "slots" && (
-        <>
         <table className="custom--table">
         <thead>
           <tr key="header">
@@ -94,13 +91,11 @@ export default function TableBuilder(props) {
           ))}
         </tbody>
       </table>
-        </>
       )
     }
       {/* <h4>Shadow Parts</h4> */}
     {
       props.table == "properties" && (
-        <>
         <table className="custom--table">
         <thead>
           <tr key="header">
@@ -119,13 +114,11 @@ export default function TableBuilder(props) {
           ))}
         </tbody>
       </table>
-        </>
       )
     }
     
     {
       props.table == "reflects" && (
-        <>
         <table className="custom--table">
         <thead>
           <tr key="header">
@@ -146,13 +139,11 @@ export default function TableBuilder(props) {
           ))}
         </tbody>
       </table>
-        </>
       )
     }
     
     {
       props.table == "dependencies" && (
-        <>
           <ul>
             {dependencies.map((dependency, index) => (
               <li>
@@ -160,7 +151,6 @@ export default function TableBuilder(props) {
               </li>
             ))}
           </ul>
-        </>
       )
     }
 

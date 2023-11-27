@@ -24,8 +24,8 @@ The `DateTimeField` class provides a user interface component that allows the us
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.fielddemos.DateTimeFieldDemo' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/fielddemos/DateTimeFieldDemo.java'
-javaE=''
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/fielddemos/DateTimeFieldDemo.java'
+javaC=''
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/fieldstyles/date_field_styles.css'
 />
 
