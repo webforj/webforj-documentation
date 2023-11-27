@@ -5,6 +5,7 @@ slug: choicebox
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import AppLayoutViewer from '@site/src/components/DocsTools/AppLayoutViewer';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 import DocChip from '@site/src/components/DocsTools/DocChip';
@@ -17,12 +18,12 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 The `ChoiceBox` component is a user interface element designed to present users with a list of options or choices. Users can select a single option from this list, typically by clicking the `ChoiceBox`, which triggers the display of a dropdown list containing available choices. Users can also interact with the `ChoiceBox` with the arrow keys. When a user makes a selection, the chosen option is then displayed in the `ChoiceBox` button. 
 
-<ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.comboboxdemos.ChoiceBoxDemo' 
+<!-- <AppLayoutViewer url='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.comboboxdemos.ChoiceBoxDemo' mobile='false'/>
+<ComponentDemo
+frame="hidden"
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ChoiceBoxDemo.java'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/demo_styles.css'
-height='250px'
-/>
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_styles.css'
+/> -->
 
 ## Usages
 `ChoiceBox` components are used for various purposes, such as selecting items from a menu, choosing from a list of categories, or picking options from predefined sets. They provide an organized and visually pleasing way for users to make selections, particularly when there are multiple options available. Common usages include:
@@ -63,7 +64,7 @@ In the demo below, the Dropdown type is set and used in the CSS file to select t
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.comboboxdemos.ChoiceBoxDropdownType' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ChoiceBoxDropdownType.java'
-height='100px'
+height='250px'
 />
 
 ## Max Row Count

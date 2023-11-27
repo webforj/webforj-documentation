@@ -17,12 +17,12 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 The `ComboBox` component is a user interface element designed to present users with a list of options or choices, as well as a field for entering their own custom values. Users can select a single option from this list, typically by clicking the `ComboBox`, which triggers the display of a dropdown list containing available choices, or type in a custom value. Users can also interact with the `ComboBox` with the arrow keys. When a user makes a selection, the chosen option is then displayed in the `ComboBox`. 
 
-<ComponentDemo 
+<!-- <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.textcomboboxdemos.ComboBoxDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/textcomboboxdemos/ComboBoxDemo.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textcomboboxstyles/demo_styles.css'
 height = '200px'
-/>
+/> -->
 
 ## Usages
 
