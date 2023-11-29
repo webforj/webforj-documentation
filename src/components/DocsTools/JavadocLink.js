@@ -12,9 +12,6 @@ export default function JavadocLink( { type, location, top, children, code, suff
     const fetchLatestRelease = async () => {
       try {
         let latestTag = await GithubCache.getLatestTag();
-        if(!suffix){
-          suffix = ""
-        }
         if(!latestTag){
           latestTag = "23.05"
         }
@@ -25,6 +22,9 @@ export default function JavadocLink( { type, location, top, children, code, suff
     };
     
     // fetchLatestRelease();
+    if(!suffix){
+      suffix = ""
+    }
     setUrl("https://javadoc.io/doc/org.dwcj/dwcj-" + type + "/latest/" + location + ".html" + suffix)
   }, []);
 
