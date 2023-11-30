@@ -64,6 +64,7 @@ In the demo below, the Dropdown type is set and used in the CSS file to select t
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.comboboxdemos.ChoiceBoxDropdownType' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ChoiceBoxDropdownType.java'
+cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/dropdown_styles.css'
 height='250px'
 />
 
@@ -78,7 +79,6 @@ Using a number that is less than or equal to 0 will result in unsetting this pro
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.comboboxdemos.ChoiceBoxMaxRowDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ChoiceBoxMaxRowDemo.java'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/demo_styles.css'
 height='250px'
 />
 
@@ -148,7 +148,7 @@ When adding an event listener, a `ListenerRegistration` object will be returned.
 ::: -->
 
 ## Styling
-
+<!-- 
 ### Expanses
 There are five `ChoiceBox` expanses that are supported which allow for quick styling without using CSS. Expanses are supported by use of a built-in enum class. <br/>
 
@@ -169,7 +169,7 @@ path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.combobo
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboboxThemeDemo.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/theme_styles.css' 
 height="170px"
-/>
+/> -->
 
 ### Shadow Parts
 

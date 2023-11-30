@@ -16,13 +16,15 @@
   --ifm-color-primary-lightest: #1f8bff;
   --docusaurus-highlighted-code-line-bg: #DDDFE1;
   --code-display-color: #F8FAFC;
+  --code-display-color-background: #e1e3e6;
   --inversion-percentage: 0%;
   --ifm-container-width-xl: calc((3 / 12 * 100%) + 860px);
   --chip-background: #e2e2e2;
   --chip-background-hover: #cfcfcf;
   --chip-text: #5F6163;
   --chip-icon-color: #616161;
-}
+  --ifm-background-color: #FFFFFF !important
+} 
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
@@ -35,6 +37,7 @@
   --ifm-color-primary-lightest: #9bc9fa;
   --docusaurus-highlighted-code-line-bg: #414458 !important;
   --code-display-color: #21222c;
+  --code-display-color-background: #242530;
   --inversion-percentage: 100%;
   --chip-background: #494C4F;
   --chip-background-hover: #424242;

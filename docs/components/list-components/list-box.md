@@ -55,7 +55,6 @@ Additionally, the arrow keys can be used to navigate the `ListBox`, and typing a
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxMultipleSelection' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxMultipleSelection.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/listbox/MultipleSelection.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/listboxstyles/multiple_selection.css'
 height = '250px'
 />
 
@@ -112,7 +111,7 @@ When adding an event listener, a `ListenerRegistration` object will be returned.
 
 ## Styling
 
-### Expanses
+<!-- ### Expanses
 There are five `ListBox` expanses that are supported which allow for quick styling without using CSS. Expanses are supported by use of a built-in enum class. <br/>
 
 <ComponentDemo 
@@ -121,7 +120,7 @@ javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/ja
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/listbox/Expanses.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/listboxstyles/expanse_styles.css' 
 height = '300px'
-/>
+/> -->
 
 ### Shadow Parts
 

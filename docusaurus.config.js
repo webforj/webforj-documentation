@@ -185,7 +185,7 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} BASIS International Ltd. All rights reserved.`,
       },
       prism: {
-        theme: require('prism-react-renderer').themes.vsLight,
+        theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
         additionalLanguages: ['java']
       },

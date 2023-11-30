@@ -55,7 +55,6 @@ Changing the custom value property allows control over whether or not a user is 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.textcomboboxdemos.ComboBoxCustomValue' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/textcomboboxdemos/ComboBoxCustomValue.java'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textcomboboxstyles/demo_styles.css'
 height = '200px'
 />
 
@@ -64,10 +63,8 @@ height = '200px'
 A placeholder can be set for a `ComboBox` which will display in the text field of the component when it is empty to prompt users for the desired entry in the field. This can be done using the <JavadocLink type="engine" location="org/dwcj/component/list/ComboBox" code='true' suffix='#setPlaceholder(java.lang.String)'>setPlaceholder()</JavadocLink> method.
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.textcomboboxdemos.TextComboBoxPlaceholder' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/textcomboboxdemos/TextComboBoxPlaceholder.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textcombobox/Placeholder.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textcomboboxstyles/text_combo_styles.css'
+path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.textcomboboxdemos.ComboBoxPlaceholder' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/textcomboboxdemos/ComboBoxPlaceholder.java'
 height = '200px'
 />
 
@@ -84,7 +81,7 @@ In the demo below, the Dropdown type is set and used in the CSS file to select t
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.textcomboboxdemos.ComboBoxDropdownType' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/textcomboboxdemos/ComboBoxDropdownType.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textcomboboxstyles/dropdown_styles.css'
-height='100px'
+height='250px'
 />
 
 ## Max Row Count
@@ -97,8 +94,7 @@ Using a number that is less than or equal to 0 will result in unsetting this pro
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.textcomboboxdemos.ComboBoxMaxRowDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboBoxMaxRowDemo.java'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/demo_styles.css'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/textcomboboxdemos/ComboBoxMaxRowDemo.java'
 height='250px'
 />
 
@@ -171,9 +167,9 @@ When adding an event listener, a `ListenerRegistration` object will be returned.
 
 ## Styling
 
-### Expanses
+<!-- ### Expanses -->
 
-The `ComboBox` component comes with 5 expanses for quick styling without the use of CSS. Expanses are supported by use of a built-in enum class.
+<!-- The `ComboBox` component comes with 5 expanses for quick styling without the use of CSS. Expanses are supported by use of a built-in enum class.
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.textcomboboxdemos.TextComboBoxExpanses' 
@@ -182,7 +178,7 @@ javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/co
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textcomboboxstyles/expanse_styles.css' 
 javaHighlight='{24,27,30,33,36}'
 height = '350px'
-/>
+/> -->
 
 ### Shadow Parts
 

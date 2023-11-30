@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { jsx, css } from '@emotion/react';
 import { Tooltip, Chip } from '@mui/material'; 
 import StyleIcon from '@mui/icons-material/Style';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import GithubCache from './GithubCache';
 
 export default function JavadocLink( { type, location, top, children, code, suffix } ) {
@@ -42,6 +43,7 @@ export default function JavadocLink( { type, location, top, children, code, suff
 
   const apiStyles = css`
   background-color: #0063CC;
+  padding: 0 0 0 5px;
   :hover{
     color: white;
   }
@@ -56,7 +58,7 @@ export default function JavadocLink( { type, location, top, children, code, suff
       {/* <p css={apiStyles}>API:&nbsp;</p>
       <b><a href={url} target="_blank">Java</a></b> */}
       <Tooltip title="JavaDoc" arrow>
-        <Chip css={apiStyles} label='Java API' component="a" href={url} icon={<StyleIcon />} clickable={true} color='primary' target="_blank" />
+        <Chip css={apiStyles} label='Java API' component="a" href={url} icon={<AutoStoriesIcon />} clickable={true} color='primary' target="_blank" />
       </Tooltip>
     </div>
     )

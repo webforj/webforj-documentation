@@ -8,6 +8,7 @@ draft: true
 ---
 
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
+import EventTable from '@site/src/components/DocsTools/EventTable';
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 
 <JavadocLink type="engine" location="org/dwcj/component/event/Event" top='true'/>
@@ -107,3 +108,5 @@ javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/co
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/event_styles.css'
 height='100px'
 />
+
+<!-- <EventTable base events={['drawerOpen', 'drawerClose']} /> -->
