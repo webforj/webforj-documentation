@@ -211,7 +211,7 @@ const demoFrameStyles = css`
     height: 100%;
     width: 100%;
     height: ${height || '100%'};
-    pointer-events: none;
+    pointer-events: ${isResizing ? 'none' : 'auto'};
   `
 
   const fadeInButton = css`
@@ -306,10 +306,7 @@ const demoFrameStyles = css`
           loading="lazy" 
           // src={path+"&theme="+ (useColorMode().colorMode === "dark" ? "dark" : "light")}
           src={path}
-          css={{
-            ...iframeStyles,
-            pointerEvents: isResizing ? 'none' : 'auto', // Add this line
-          }}
+          css={iframeStyles}
           ref={iframeRef}
           onMouseMove={resize}
           >   
