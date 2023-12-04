@@ -86,7 +86,7 @@ path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttond
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonIcon.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Icon.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/icon_styles.css' 
-height="100px"
+height="200px"
 />
 
 ### Names
