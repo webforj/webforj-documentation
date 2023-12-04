@@ -95,7 +95,7 @@
 }
 
 .sidebar--item__hidden{
-  display: none;
+  display: none !important;
 }
 
 .MuiChip-root{
