@@ -239,7 +239,7 @@ const demoFrameStyles = css`
     background-color: var(--ifm-background-color);
     margin: 0px;
     padding: 0px;
-    border: 1px solid var(--ifm-toc-border-color);
+    border: ${frame == 'hidden' ? 'none' : '1px solid var(--ifm-toc-border-color)'};
     border-top: none;
     border-radius: 0px;
     position: relative;
@@ -248,7 +248,12 @@ const demoFrameStyles = css`
       /* border: none; */
       border-color: var(--ifm-toc-border-color);
       padding: 2px 0px 0px 0px;
-      margin: 0px
+      margin: 0px;
+    }
+
+    > div:first-of-type{
+      border: ${frame == 'hidden' ? '1px solid var(--ifm-toc-border-color)' : 'none'};
+      border-top: none;
     }
 
     summary{
