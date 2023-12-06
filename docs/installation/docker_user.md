@@ -24,36 +24,36 @@ The installation process for Docker will differ slightly between Windows, Mac an
 It is recommended to download the latest version of Windows Subsystem for Linux. More information can be found [at this link](https://learn.microsoft.com/en-us/windows/wsl/install)
 :::
 
-** 1. Download Docker Desktop: **
+**1. Download Docker Desktop:**
 >- Visit the Docker Desktop for Windows download page: [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/)
 >- Click on the "Get Docker Desktop for Windows" button to download the installer.
 
-** 2. Install Docker Desktop: **
+**2. Install Docker Desktop:**
 >- Run the installer you downloaded.
 >- Follow the installation wizard, and make sure to enable Hyper-V (if prompted) as Docker for Windows uses Hyper-V for virtualization.
 >- Once installation is complete, Docker Desktop will start automatically.
 
-** 3. Verify Installation: **
+**3. Verify Installation:**
 >- Open a terminal and run the command `docker --version` to verify that Docker is installed and working correctly.
 
 ### Mac
 
-** 1. Download Docker Desktop: **
+**1. Download Docker Desktop:**
 >- Visit the Docker Desktop for Mac download page: [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop/)
 
-** 2. Install Docker Desktop: **
+**2. Install Docker Desktop:**
 >- Run the installer you downloaded.
 >- Once installation is complete, Docker Desktop will start automatically.
 
-** 3. Verify Installation: **
+**3. Verify Installation:**
 >- Open a terminal and run the command `docker --version` to verify that Docker is installed and working correctly.
 
 <!-- ### Linux
 
-** 1. Install Docker Engine **
+**1. Install Docker Engine**
 >- Visit the Docker Desktop for Mac download page: [Docker for Linux](https://docs.docker.com/engine/install/)
 
-** 2. Verify Installation: **
+**2. Verify Installation:**
 >- Open a terminal and run the command `docker --version` to verify that Docker is installed and working correctly. -->
 
 ## 2. Configuration

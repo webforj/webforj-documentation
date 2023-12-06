@@ -15,6 +15,7 @@ import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 
 Components, whether custom or part of the framework, support event handling. You can add event listeners to capture various types of events, such as user interactions, changes in state, or other custom events. These event listeners can be used to trigger specific actions or behaviors in response to the events.
 
+In the example below, an event is being added using each of the three supported methods: lambda expressions, anonymous classes, and method references.
 ## Adding Events
 
 Adding an event listener is possible use one of the following patterns where:

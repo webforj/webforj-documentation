@@ -156,7 +156,6 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
           });
     }
     setOriginalWidth(iframeRef.current ? iframeRef.current.offsetWidth : 0)
-    console.log(originalWidth)
   }, []);
 
   const startResizing = (e) => {
@@ -165,13 +164,10 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
     setInitialMouseX(e.clientX);
     setInitialWidth(iframeRef.current ? iframeRef.current.offsetWidth : 0);
     setInitialRight(newRight)
-    console.log(codeButtonRef.current.right)
-    console.log("Start Resizing")
   };
 
   const stopResizing = () => {
     setIsResizing(false);
-    console.log("Stop Resizing")
   };
 
   const resize = (e) => {
