@@ -1,9 +1,7 @@
 ---
-sidebar_position: 5
+sidebar_position: 10
 title: Events
 slug: events
-pagination_prev: null
-pagination_next: null
 draft: false
 ---
 
@@ -96,7 +94,7 @@ myComponent.addEventListener(e -> {
 });
 ```
 
-This approach minimizes the need to query the component for information, as the data is readily available in the event payload. By following this efficient event handling practice, you can enhance the performance and responsiveness of your components. For more information, you can refer to the documentation on [architecture](./getting_started/architecture.md).
+This approach minimizes the need to query the component for information, as the data is readily available in the event payload. By following this efficient event handling practice, you can enhance the performance and responsiveness of your components. For more information, you can refer to the documentation on [architecture](../architecture/architecture.md).
 
 ### Sample
 
