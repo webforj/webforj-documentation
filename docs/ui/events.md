@@ -98,7 +98,7 @@ This approach minimizes the need to query the component for information, as the 
 
 ### Sample
 
-Below is a demonstration showing the addition of a <JavadocLink type="engine" location="org/dwcj/component/button/event/ButtonClickEvent"  code="true">ButtonClickEvent</JavadocLink> to a [`Button`](./components/button). This  [`Button`](./components/button) also uses information coming with the event's payload to display information on the screen.
+Below is a demonstration showing the addition of a <JavadocLink type="engine" location="org/dwcj/component/button/event/ButtonClickEvent"  code="true">ButtonClickEvent</JavadocLink> to a [`Button`](./components/button). This  [`Button`](#) also uses information coming with the event's payload to display information on the screen.
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonEvent' 
