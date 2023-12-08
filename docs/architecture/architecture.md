@@ -1,9 +1,7 @@
 ---
-sidebar_position: 4
-displayed_sidebar: documentationSidebar
+sidebar_position: 2
+title: Client/Server Interaction
 ---
-
-# Architecture
 
 The following section discussed various performance qualities and best practices for the DWCJ, as well as implementation details for the framework.
 

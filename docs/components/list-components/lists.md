@@ -51,7 +51,7 @@ By using these methods provided in the classes, you can effectively manage the i
 3. **Inserting Multiple Items:** You can insert multiple items at a specified index using the <JavadocLink type="engine" location="org/dwcj/component/list/DwcList" suffix='l#insert(int,java.util.List)' code="true">insert(int index, List< ListItem > items)</JavadocLink> method.
 
    :::tip
-   Using the add method triggers a server-to-client message each time it is used. For more efficient usage, create a list of <JavadocLink type="engine" location="org/dwcj/component/list/ListItem"  code="true">ListItem</JavadocLink> objects, and put them in the list using the `insert(int index, List<ListItem> items)` method outlined below. For more information, you can refer to the documentation on [architecture](/getting_started/architecture.md).
+   Using the add method triggers a server-to-client message each time it is used. For more efficient usage, create a list of <JavadocLink type="engine" location="org/dwcj/component/list/ListItem"  code="true">ListItem</JavadocLink> objects, and put them in the list using the `insert(int index, List<ListItem> items)` method outlined below. For more information, you can refer to the documentation on [architecture](/architecture/architecture.md).
    :::
 
 4. **Removing an Item:**
