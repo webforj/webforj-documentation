@@ -41,7 +41,7 @@ The `Composite` class is particularly useful for creating container-like compone
     }
     ```
 
-2. **Optionally Implement the `onDidCreate()` Method**: Inside your custom `Composite` class, you can implement the `onDidCreate()` method. This method is called immediately after the bound component is created and added to a window. Use this method to set up your container component and add child components. For example:
+2. **Optionally Implement the `onDidCreate()` Method**: Inside your custom `Composite` class, you can implement the `onDidCreate()` method. This method is called immediately after the bound component is created and added to a window. Use this method to set up your component, modify any configurations needed, and add child components if applicable. For example:
 
 	```java
 	public class ApplicationComponent extends Composite<Div> {
