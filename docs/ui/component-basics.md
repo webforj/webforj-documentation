@@ -7,10 +7,6 @@ draft: false
 
 Components are fundamental building blocks that can be added to a window, providing user interface functionality and custom behavior. In the DWCj, the `Component` class serves as the foundation for all components within the engine.
 
-:::important
-It is not recommended to use the base `Component` class to create custom components, but rather the `Composite` class.
-:::
-
 ## Lifecycle Management
 
 Understanding the component lifecycle is essential for creating, managing, and utilizing components effectively. The following three lifecycle states have methods to manipulate their behavior. These methods should not explicitly be called by the user.
@@ -35,21 +31,6 @@ Destroying components is an essential part of managing resources and ensuring pr
 The `onDestroy()` method is responsible for calling the `destroy()` method on any constituent components. Otherwise, these components will still exist in the DOM, but will not be reachable via the API.
 :::
 
-### Attach
-
-In addition to the `onCreate()` and `onDestroy()`, the `onAttach()` method exists to provide a way to incorporate any changes made to it between its instantiation and actual usage on a window. The following code snippet shows when the `onCreate()` and `onAttach()` methods are called:
-
-```java
-public class Demo extends App {
-  @Override
-  public void run() throws DwcjException {
-    Frame window = new Frame();
-    Button button = new Button(); // onCreate() method is called
-    window.add(button); //onAttach() method is called
-  }
-}
-```
-
 ### Asynchronous Attachment
 
 While the `onAttach()` method is a protected method intended for use internally, the `whenAttached()` method returns a `PendingResult`, which allows for additional specified behavior to execute asynchronously once the component is attached in the DOM. 
@@ -69,7 +50,7 @@ public class Demo extends App {
 
     /* Explicit call to whenAttached() which will display a 
     message box when the button is attached to the Frame.*/
-    button.whenAttached().thenAccept( e -> App.msgbox("I'm attached!")); 
+    button.whenAttached().thenAccept( e -> msgbox("I'm attached!")); 
   
     // onAttach() method is called, which triggers the whenAttached PendingResult to resolve.
     window.add(button); 
@@ -81,7 +62,16 @@ public class Demo extends App {
 
 Observers play a vital role in keeping track of component lifecycle events. Observers can be added and removed using the `addLifecycleObserver()` and `removeLifecycleObserver()` methods, and  receive notifications about events such as creation and destruction of components.
 
-By adding observers, you can take action when a component is created, attached, or destroyed. This is particularly useful for implementing custom logic or handling specific scenarios based on component events.
+By adding observers, you can take action when a component is created, or destroyed. This is particularly useful for implementing custom logic or handling specific scenarios based on component events.
+
+```java
+Button button = new Button();
+button.addLifecycleObserver((button, lifecycleEvent) -> {
+  if (lifecycleEvent == ComponentLifecycleObserver.LifecycleEvent.DESTROY) {
+    //implemented logic to execute when the Button is destroyed
+  }
+});
+```
 
 ## Component Properties
 
@@ -95,13 +85,19 @@ Every component created from the `Component` class is assigned a server-side ide
 
 #### Client-Side Component ID
 
-While server-side component IDs are automatically generated, client-side component IDs need to be implemented by the user. The client-side ID represents the component's counterpart on the client side of your application. 
+While server-side component IDs are automatically generated, client-side component IDs need to be implemented by the user. The client-side ID represents the component's counterpart on the client side of your application.
+
+:::important
+This ID is **not** the ID attribute of the element in the DOM.
+:::
 
 <!-- Need demo from Hyyan on getting the client side ID with JS -->
 
 ### User Data
 
-The `Component` class allows you to include additional information within the component using the `setUserData()` method. This information is accessible only on the server side of the component via the `getUserData()` method, and is not sent to the client.
+The `Component` class allows you to include additional information within the component using the `setUserData()` method. This information is accessible only on the server side of the component via the `getUserData()` method, and is not sent to the client. 
+
+This is quite useful when there is information that should be included with a component, and when that information should be accessible without making a trip to the client to retrieve it.
 
 
 <!-- 
