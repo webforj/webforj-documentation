@@ -14,6 +14,10 @@ Developers will often wish to create components that contain constituent compone
 
 It allows developers to manage a specific type of `Component` instance, providing a way to encapsulate its behavior. It requires any extending subclass to specify the type of `Component` it intends to manage, ensuring a subclass of `Composite` is intrinsically linked to its underlying `Component`.
 
+:::tip
+It's highly recommended to create custom components by utilizing the `Composite` class, rather than extending the base `Component` class.
+:::
+
 ## Component Binding
 
 The `Composite` class requires developers to specify the type of `Component` it manages. This strong association ensures that a `Composite` component is intrinsically linked to its underlying Component. This also provides benefits over traditional inheritance, as it allows the developer to decide exactly what functionality to expose to the public API. 
@@ -32,28 +36,24 @@ The `Composite` class is particularly useful for creating container-like compone
 
 1. **Create a New Composite Class**: Start by creating a new Java class that extends the `Composite` class. Specify the type of Component you want to manage as the generic type parameter.
 
-:::tip
-Binding a component that implements the `HasComponents` interface allows for adding constituent components to the bound component.
-:::
-
-```java
-public class ApplicationComponent extends Composite<Div> {
-}
-```
-
-2. **Implement the `onDidCreate()` Method**: Inside your custom `Composite` class, implement the `onDidCreate()` method. This method is called immediately after the bound component is created and added to a window. Use this method to set up your container component and add child components. For example:
-
-```java
-public class ApplicationComponent extends Composite<Div> {
-    @Override
-    protected void onDidCreate(Div container) {
-        // Add child components to the container
-        container.add(new CheckBox());
-        container.add(new Paragraph());
-        // ...
+    ```java
+    public class ApplicationComponent extends Composite<Div> {
     }
-}
-```
+    ```
+
+2. **Optionally Implement the `onDidCreate()` Method**: Inside your custom `Composite` class, you can implement the `onDidCreate()` method. This method is called immediately after the bound component is created and added to a window. Use this method to set up your component, modify any configurations needed, and add child components if applicable. For example:
+
+	```java
+	public class ApplicationComponent extends Composite<Div> {
+		@Override
+		protected void onDidCreate(Div container) {
+			// Add child components to the container
+			container.add(new CheckBox());
+			container.add(new Paragraph());
+			// ...
+		}
+	}
+	```
 
 3. Create additional methods to implement desired functionality.
 
