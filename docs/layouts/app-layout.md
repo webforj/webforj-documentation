@@ -93,7 +93,7 @@ With the help of the CSS custom property `--bbj-app-layout-header-collapse-heigh
 
 <ComponentDemo 
 frame="hidden"
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutMultipleHeaders.java'
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutStickyToolbar.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_sticky_styles.css'
 />
 
