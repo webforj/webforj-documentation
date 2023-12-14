@@ -44,7 +44,7 @@ javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/ja
 height='175px'
 />
 
-There are also additional options to further customize events by using the (Event Options)[#] configurations.
+There are also additional options to further customize events by using the [Event Options](#) configurations.
 
 ## Slot Manipulation
 
