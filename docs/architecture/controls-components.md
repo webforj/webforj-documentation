@@ -17,7 +17,7 @@ At the heart of DWCj's component architecture lies the DWCComponent base class. 
 However, it's important to note that developers are restricted from extending the DWCComponent class further. Attempting to do so will result in a runtime exception that disallows such extensions. This restriction is in place to maintain the integrity of the underlying BBj control and ensure that developers do not inadvertently manipulate it in ways that could lead to unintended consequences.
 
 ### Final Classes and Extension Restrictions
-In the DWCj, most component classes, with the exception of the built-in HTML Elements are declared as `final`. This means that they are not available for extension or subclassing. This design choice is deliberate and serves multiple purposes:
+In the DWCj, most component classes, with the exception of the built-in HTML Elements and any classes extending these, are declared as `final`. This means that they are not available for extension or subclassing. This design choice is deliberate and serves multiple purposes:
 
 1. **Control Over Underlying BBj Control**: As mentioned earlier, extending DWCj component classes would grant developers control over the underlying BBj control. To maintain the consistency and predictability of component behavior, this level of control is restricted.
 

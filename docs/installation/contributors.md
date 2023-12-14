@@ -79,7 +79,7 @@ running the following commands:
 mvn install:install-file "-Dfile=BBjStartup.jar" "-DgroupId=com.basis.lib" "-DartifactId=BBjStartup" "-Dversion=23.06-SNAPSHOT" "-Dpackaging=jar"
 mvn install:install-file "-Dfile=BBj.jar" "-DgroupId=com.basis.lib" "-DartifactId=BBj" "-Dversion=23.06-SNAPSHOT" "-Dpackaging=jar"
 mvn install:install-file "-Dfile=BBjUtil.jar" "-DgroupId=com.basis.lib" "-DartifactId=BBjUtil" "-Dversion=23.06-SNAPSHOT" "-Dpackaging=jar"
-mvn install:install-file "-Dfile=BBjsp.jar" " -DgroupId=com.basis.lib" "-DartifactId=BBjsp" "-Dversion=23.06-SNAPSHOT" "-Dpackaging=jar"
+mvn install:install-file "-Dfile=BBjsp.jar" "-DgroupId=com.basis.lib" "-DartifactId=BBjsp" "-Dversion=23.06-SNAPSHOT" "-Dpackaging=jar"
 ```
 
 After running these commands, make sure to perform an "install" using Maven in the engine directory.
