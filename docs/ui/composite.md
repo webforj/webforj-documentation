@@ -46,12 +46,12 @@ The `Composite` class is particularly useful for creating container-like compone
 	```java
 	public class ApplicationComponent extends Composite<Div> {
 	  @Override
-	    protected void onDidCreate(Div container) {
-	      // Add child components to the container
-	      container.add(new CheckBox());
-	      container.add(new Paragraph());
-	      // ...
-	    }
+	  protected void onDidCreate(Div container) {
+	    // Add child components to the container
+	    container.add(new CheckBox());
+	    container.add(new Paragraph());
+	    // ...
+	  }
 	}
 	```
 
