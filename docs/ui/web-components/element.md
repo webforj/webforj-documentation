@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Element Class
+title: Element Component
 slug: element
 draft: false
 ---
@@ -8,10 +8,10 @@ draft: false
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 
 
-In DWCj, developers have the option of choosing not only from the rich library of components provided, but also integrating components from elsewhere. To facilitate this, the `Element` class can be used to simplify the integration of anything from simple HTML elements, to more complex custom web components. 
+In DWCj, developers have the option of choosing not only from the rich library of components provided, but also integrating components from elsewhere. To facilitate this, the `Element` component can be used to simplify the integration of anything from simple HTML elements, to more complex custom web components. 
 
 :::important
-The `Element` class cannot be extended, and is not the base class for all components within the DWCj. To read more about the DWCj's class hierarchy, read [this article](../../architecture/controls-components.md).
+The `Element` component cannot be extended, and is not the base component for all components within the DWCj. To read more about the DWCj's component hierarchy, read [this article](../../architecture/controls-components.md).
 :::
 
 ## Creating a Web Element
@@ -34,9 +34,7 @@ height='175px'
 
 ## Adding Events
 
-In order to utilize events that may come with your element, you can use the `Element` component's `addEventListener` methods.
-
-Adding an event requires at least the type/name of the event the component expects, and a listener to be added to the event. 
+In order to utilize events that may come with your element, you can use the `Element` component's `addEventListener` methods. Adding an event requires at least the type/name of the event the component expects, and a listener to be added to the event. There are also additional options to further customize events by using the [Event Options](#) configurations.
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples/DetailsEvent' 
@@ -44,21 +42,20 @@ javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/ja
 height='175px'
 />
 
-There are also additional options to further customize events by using the [Event Options](#) configurations.
+## Component Interaction
 
-## Slot Manipulation
+The `Element` component acts like a container for other components. It's provides a way to organize and retrieve information for child components, and offers a clear set of functions to add or remove these child components as needed.
 
-The `Element` class supports the composition of child components within specified slots. Developers can organize and manage complex UI structures by adding components as children to the `Element`.
 
-### Adding to a Slot
+### Adding Child Components
 
-Three methods exist to set content within the an `Element`:
+The `Element` component supports the composition of child components. Developers can organize and manage complex UI structures by adding components as children to the `Element`. Three methods exist to set content within the an `Element`:
 
-1. **`add()`**: This method will allow one or multiple components to be added to an optional `String` which designates a specified slot. Omitting the slot will add the component between the HTML tags.
+1. **`add(Component... components)`**: This method will allow one or multiple components to be added to an optional `String` which designates a specified slot when used with a Web Component. Omitting the slot will add the component between the HTML tags.
 
-2. **`setHtml()`**: This method take the `String` passed to the method and inject it as HTML within the component. Depending on the `Element`, this may be rendered in different ways.
+2. **`setHtml(String html)`**: This method take the `String` passed to the method and inject it as HTML within the component. Depending on the `Element`, this may be rendered in different ways.
 
-3. **`setText()`**: This method behaves similarly to the `setHtml()` method, but injects literal text into the `Element`.
+3. **`setText(String text)`**: This method behaves similarly to the `setHtml()` method, but injects literal text into the `Element`.
 
 In the demo below, two `detail` HTML elements are created using the `Element` component. The first has its contents set using the `setText()` and `add()` methods, while the second has HTML injected into it directly using the `setHtml()` method.
 
@@ -72,25 +69,44 @@ height='175px'
 Calling `setHtml()` or `setText()` will replace content currently contained between the element's opening and closing tags.
 :::
 
-### Slot Interaction
+### Removing Components
 
-Various methods which allow for interaction with slots and their various contained `Component` objects exist. 
+In addition to adding components to an `Element`, the following methods are implemented for removal of various child components:
 
-1. **`findComponentSlot()`**: This method is used to search for a specific component across all slots in a component system. It returns the name of the slot where the component is located. If the component is not found in any slot, an empty string is returned.
+1. **`remove(Component... components)`**: This method takes one or more components and will remove them as child components.
 
-2. **`getComponentsInSlot()`**: This method retrieves the list of components assigned to a given slot in a component system. Optionally, pass a specific class type to filter the results of the method.
+2. **`removeAll()`**: This method will remove all child components from the `Element`.
 
-3. **`getFirstComponentInSlot()`**: This method is designed to fetch the first component assigned to the slot. Optionally pass a specific class type to filter the results of this method.
+### Accessing Components
+
+To access the various child components present within an `Element`, or information regarding these components, the following methods are available:
+
+1. **`getComponents()`**: This method returns a Java `List` of all children of the `Element`. 
+
+2. **`getComponents(String id)`**: This method is similar to the method above, but will take the server-side ID of a specific component and return it when found.
+
+3. **`getComponentCount()`**: Returns the number of child components present within the `Element`. 
+
 
 ## Calling JavaScript Functions
 
-The `Element` class provides two API methods which allow for JavaScript functions to be called on HTML elements: 
+The `Element` component provides two API methods which allow for JavaScript functions to be called on HTML elements. 
 
-1. **`callJsFunction()`**: This method takes a function name as a string, and optionally takes one or more Objects as parameters for the function. This method is executed synchronously, meaning that the executing thread is blocked until the JS method returns. The results of the function are returned to this 
+1. **`callJsFunction()`**: This method takes a function name as a string, and optionally takes one or more Objects as parameters for the function. This method is executed synchronously, meaning that the **executing thread is blocked** until the JS method returns, and results in a round trip. The results of the function are returned as an `Object`, which can be casted and used in Java. 
 
-2. **`callJsFunctionAsync()`**: As with the previous method, a function name and optional arguments for the function can be passed. This method executes asynchronously and does not block the executing thread. It returns a [`PendingResult`](#), which allows for further interaction with the function and its payload.
+2. **`callJsFunctionAsync()`**: As with the previous method, a function name and optional arguments for the function can be passed. This method executes asynchronously and **does not block the executing thread**. It returns a [`PendingResult`](#), which allows for further interaction with the function and its payload.
 
-In the demo below, an event is added to an HTML `Button`. This event is then fired programmatically by calling the `callJsFunctionAsync()` method. The resulting `PendingResult` is then used to create another message box once the asynchronous function has been completed.
+### Passing Parameters
+
+Arguments that are passed to these methods which are used in the execution of JS functions are serialized as a JSON array. There are two notable arguments types that are handled as follows:
+- `this`: Using the `this` keyword will give the method a reference to the client-side version of the invoking component.
+- `Component`: Any Java component instances passed into one of the JsFunction methods will be replaced with the client-side version of the component.
+
+:::info
+Both synchronous and asynchronous function calling will wait to call a method until the `Element` has been added to the DOM before executing a function, but `callJsFunction()` will not wait for any `component` arguments to attach, which can result in failure. Conversely, invoking `callJsFunctionAsync()` may never complete if a component argument is never attached.
+:::
+
+In the demo below, an event is added to an HTML `Button`. This event is then fired programmatically by calling the `callJsFunctionAsync()` method. The resulting [`PendingResult`](#) is then used to create another message box once the asynchronous function has been completed.
 
 <ComponentDemo 
 path='https://hot.bbx.kitchen/webapp/controlsamples/ButtonFunction' 
@@ -100,10 +116,14 @@ height='175px'
 
 ## Executing JavaScript
 
-In addition to executing JavaScript from the application level, it is also possible to execute JavaScript from the Element level as well. Performing this execution at the element level allows the context of the HTML element to be included. 
+In addition to executing JavaScript from the application level, it is also possible to execute JavaScript from the `Element` level as well. Performing this execution at the `Element` level allows the context of the HTML element to be included in the execution. This is a powerful tool that acts as a developer's conduit to interactive capabilities with client-side environments.
 
-JavaScript can be executed synchronously or asynchronously, with the synchronous version returning an object, and the asynchronous version returning a [`PendingResult`](#). 
+Similar to function execution, executing JavaScript can be done with synchronously or asynchronously with the following methods:
 
-Any JavaScript code executed at the Element level will have access to two special argument types: `this` and `component`. `this` is replaced with the current instance of the client element, while `component` is replaced with its corresponding client component instance, provided it is attached to the DOM.
+1. **`executeJs()`**: This method takes `String`, which will be executed as JavaScript code in the client. This script is executed synchronously, meaning that the **executing thread is blocked** until the JS execution returns and results in a round trip. The results of the function are returned as an `Object`, which can be casted and used in Java.
 
+2. **`executeJsAsync()`**: As with the previous method, a passed `String` parameter will be executed as JavaScript code on the client. This method executes asynchronously and **does not block the executing thread**. It returns a [`PendingResult`](#), which allows for further interaction with the function and its payload.
 
+:::tip
+These methods have access to the `component` keyword, which gives the JavaScript code access to the client-side instance of the component executing the JavaScript.
+:::

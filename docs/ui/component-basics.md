@@ -9,21 +9,33 @@ Components are fundamental building blocks that can be added to a window, provid
 
 ## Lifecycle Management
 
-Understanding the component lifecycle is essential for creating, managing, and utilizing components effectively. The following three lifecycle states have methods to manipulate their behavior. These methods should not explicitly be called by the user.
+Understanding the component lifecycle is essential for creating, managing, and utilizing components effectively. The following two lifecycle states have methods to manipulate their behavior. These methods should not explicitly be called by the user.
 
-### Create and Destroy
+### Create and Destroy Hooks
 
 All classes that extend the `Component` class are responsible for implementing the functionality to be executed when the `Component` is created, and when it is destroyed. This is done by overriding the `onCreate()` and `onDestroy()` methods, respectively.
 
-#### Create
+#### `onCreate()`
 
-`onCreate()` is a method called when the component is created. Creating components involves setting up their initial state and functionality. This is where you define what the component should do when it's first created. Whether it's initializing variables, setting up event listeners, or performing any other setup, the `onCreate()` method is your entry point for customizing component behavior. 
+The `onCreate()` method called when the component is added to a window. Creating components involves setting up their initial state and functionality. This is where you define what the component should do when it's first created. Whether it's initializing variables, setting up event listeners, or performing any other setup, the `onCreate()` method is your entry point for customizing component behavior. 
+
+This hook receives a window instance which allows for the addition of components contained within the component.
+
+```java
+@Override
+protected void onCreate(Window window) {
+  TextField text = new TextField();
+  Button btn = new Button();
+
+  window.add(text, add);
+}
+```
 
 :::tip
 The `onCreate()` method is where the component and any constituents should be added to the window.
 :::
 
-#### Destroy
+#### `onDestroy()`
 
 Destroying components is an essential part of managing resources and ensuring proper cleanup. Destroying a component is necessary when it's no longer needed or when you want to release resources associated with it. It allows a developer to perform cleanup tasks, such as stopping timers, releasing memory, or detaching event listeners. It also allows the `destroy()` method to be called on any constituent components.
 
@@ -33,7 +45,7 @@ The `onDestroy()` method is responsible for calling the `destroy()` method on an
 
 ### Asynchronous Attachment
 
-While the `onAttach()` method is a protected method intended for use internally, the `whenAttached()` method returns a `PendingResult`, which allows for additional specified behavior to execute asynchronously once the component is attached in the DOM. 
+The `whenAttached()` method allows for functionality to be executed after a component has been added to a window. This method returns a `PendingResult`, which allows for additional specified behavior to execute asynchronously once the component is attached in the DOM. 
 
 :::tip
 Unlike the previous three methods, `whenAttached()` is meant to be explicitly called by the user.
@@ -45,14 +57,13 @@ public class Demo extends App {
   public void run() throws DwcjException {
     Frame window = new Frame();
 
-    // onCreate() method is called
     Button button = new Button(); 
 
     /* Explicit call to whenAttached() which will display a 
     message box when the button is attached to the Frame.*/
     button.whenAttached().thenAccept( e -> msgbox("I'm attached!")); 
   
-    // onAttach() method is called, which triggers the whenAttached PendingResult to resolve.
+    // onCreate() method is called
     window.add(button); 
   }
 }
@@ -75,7 +86,7 @@ button.addLifecycleObserver((button, lifecycleEvent) -> {
 
 ## Component Properties
 
-### ID
+### Component Identifiers
 
 Component IDs serve as unique identifiers for components, allowing you to interact with them and manage their state effectively.
 
@@ -83,15 +94,33 @@ Component IDs serve as unique identifiers for components, allowing you to intera
 
 Every component created from the `Component` class is assigned a server-side identifier automatically. Server-side IDs are essential for internal tracking and identification of components within the framework. You can retrieve the server-side component ID using the `getComponentId()` method.
 
+This can be helpful in many situations where having a unique, server-size identifier is necessary, such as querying for a specific component within a container.
+
 #### Client-Side Component ID
 
-While server-side component IDs are automatically generated, client-side component IDs need to be implemented by the user. The client-side ID represents the component's counterpart on the client side of your application.
+Client-Side IDs allow for the user to obtain the client representation of the server component created in Java. All provided DWCj components have an implementation of this ID provided. If you want to obtain access to and use the client-side component, you can execute `object.get()` with the client ID to obtain the desired client component.
 
 :::important
 This ID is **not** the ID attribute of the element in the DOM.
 :::
 
-<!-- Need demo from Hyyan on getting the client side ID with JS -->
+In the below sample, an `onClick` event is added to a button, which is then fired by calling the method on the client component after it is obtained using get `object.get()` method.
+
+```java
+@Override
+public void run() throws DwcjException {
+  Frame frame = new Frame();
+  Button btn = new Button("Click me");
+  btn.onClick(e -> {
+    msgbox("clicked");
+  });
+
+  btn.whenAttached().thenAccept(e -> {
+    getPage().executeJs("objects.get('" + btn.getClientComponentId() + "').click()");
+  });
+  frame.add(btn);
+}
+```
 
 ### User Data
 
