@@ -61,7 +61,7 @@ Check boxes can utilize the <JavadocLink type="engine" location="org/dwcj/compon
 Checkboxes have built-in functionality to set text to be displayed either to the right or left of the box. By default, the text will be displayed to the right of the component. Positioning of the text is supported by use of the  <JavadocLink type="engine" location="org/dwcj/component/TextPosition" code='true' suffix=''>Position</JavadocLink> enum. Show below are the two settings: <br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxHorizontalText' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxHorizontalText' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/checkboxdemos/CheckboxHorizontalText.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/checkbox/Horizontal.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css' 
@@ -79,7 +79,7 @@ The `CheckBox` component supports indeterminism, which is a UI pattern commonly 
 - **Hierarchical data**: Indeterminism can be employed in scenarios where there is a hierarchical relationship between CheckBoxes. For example, when selecting categories and subcategories, indeterminism can represent that some subcategories are selected while others are not, and the parent component is in the indeterminate state.
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxIndeterminate' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxIndeterminate' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/checkboxdemos/CheckboxIndeterminate.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/checkbox/Indeterminate.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css' 
@@ -130,7 +130,7 @@ myCheckBox.removeCheckListener(listener);
 ```
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxEventDemo' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxEventDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/checkboxdemos/CheckboxEventDemo.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/checkbox/Event.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css'
@@ -144,7 +144,7 @@ The following <JavadocLink type="engine" location="org/dwcj/component/Expanse"> 
 Expanses are supported by use of the `Expanse` enum class. Below are the expanses supported for the checkbox component: <br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxExpanseDemo' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxExpanseDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/checkboxdemos/CheckboxExpanseDemo.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/checkbox/Expanse.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/expanse_styles.css' 

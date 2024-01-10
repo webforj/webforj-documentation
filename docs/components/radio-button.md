@@ -21,7 +21,7 @@ The `RadioButton` class creates an object that can be selected or deselected, an
 
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.radiobuttondemos.RadioButtonGroupDemo' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.radiobuttondemos.RadioButtonGroupDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/radiobuttondemos/RadioButtonGroupDemo.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/radiobuttonstyles/radiobutton_styles.css'
 height="200px"
@@ -60,7 +60,7 @@ Radio buttons can utilize the ```setText(String text)``` method, which will be p
 Radio buttons have built-in functionality to set text to be displayed either to the right or left of the component. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of the `HorizontalAlignment` enum class. Show below are the two settings: <br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.radiobuttondemos.RadioButtonText' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.radiobuttondemos.RadioButtonText' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/radiobuttondemos/RadioButtonText.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/radiobuttonstyles/radiobutton_styles.css'
 height="100px"
@@ -72,7 +72,7 @@ height="100px"
 Radio buttons can be controlled using two types of activation: manual activation and auto activation. These dictate when a `RadioButton` will change its state.
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.radiobuttondemos.RadioButtonActivation' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.radiobuttondemos.RadioButtonActivation' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/radiobuttondemos/RadioButtonActivation.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/radiobuttonstyles/radiobutton_styles.css'
 height="175px"
@@ -102,7 +102,7 @@ The default activation value is **`MANUAL`** activation.
 A `RadioButton` can also be set to display as a switch provides which provides alternative visual representation for selecting options. Normally, radio buttons are circular or rounded in shape and indicate a single choice from a group of options. 
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.radiobuttondemos.RadioButtonSwitch' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.radiobuttondemos.RadioButtonSwitch' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/radiobuttondemos/RadioButtonSwitch.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/radiobuttonstyles/radiobutton_styles.css'
 height="120px"

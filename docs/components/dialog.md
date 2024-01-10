@@ -19,7 +19,7 @@ The DWCJ's dialog component is built to allow a developer to quickly and easily 
 The component is built with three sections, each of which are `Panel` components: the **header**, the **content**, and the **footer**.
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.dialogdemos.DialogSections' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.dialogdemos.DialogSections' 
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/dialog/Sections.txt'
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogSections.java'
 height = '225px'
@@ -53,7 +53,7 @@ The Dialog can be constructed using the default `Dialog()` constructor. Once the
 By enabling the backdrop attribute of the DWCJ's `Dialog` component, a backdrop will be displayed behind the `Dialog`. Additionally, when enabled, the Dialog's blurred attribute will blur the backdrop of the `Dialog`. Modifying these settings can help users by providing depths, visual hierarchy, and context, leading to more clear guidance for a user.
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.dialogdemos.DialogBackdropBlur' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.dialogdemos.DialogBackdropBlur' 
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/dialog/Blur.txt'
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogBackdropBlur.java'
 height = '300px'
@@ -65,7 +65,7 @@ The `Dialog` supports multiple cancellation methods for closure of the component
 `setCancelOnEscKey()` and `setCancelOnOutsideClick()`. The `hide()` method allows for the `Dialog` to be closed programmatically, such as by clicking a button on the `Dialog` after saving data. A method to quickly enable or disable users' ability to close the `Dialog`, `setClosable()` will prevent or allow both escape and click closure of the `Dialog`.
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.dialogdemos.DialogClose' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.dialogdemos.DialogClose' 
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/dialog/Close.txt'
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogClose.java'
 height = '350px'
@@ -76,7 +76,7 @@ height = '350px'
 When enabled, auto-focus will automatically give focus to the first element within the dialog that can be focused. This is useful in helping to direct the attention of users, and is customizable via the `setAutoFocus()` method.
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.dialogdemos.DialogAutoFocus' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.dialogdemos.DialogAutoFocus' 
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/dialog/AutoFocus.txt'
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogAutoFocus.java'
 height = '350px'
@@ -90,7 +90,7 @@ The `Dialog` has built in functionality to be draggable, allowing the user to re
 It is also possible to calibrate this behavior to snap to the edge of the screen, meaning the `Dialog` will automatically align itself with the edge of the display when released from its drag and drop date. Snapping can be changed via the `setSnapToEdge()` method. The `setSnapThreshold()` takes a number of pixels, which will set how far the `Dialog` should be from the sides of the screen before it will automatically snap to the edges.  
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.dialogdemos.DialogDraggable' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.dialogdemos.DialogDraggable' 
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/dialog/Draggable.txt'
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogDraggable.java'
 height = '350px'
@@ -101,7 +101,7 @@ height = '350px'
 The dialog's position can be manipulated using the built-in `setPosx()` and `setPosy()` methods. These methods take a string argument which can represent any applicable CSS unit of length, such as pixels or view height/width. A list of these measurements [can be found at this link](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#numbers_lengths_and_percentages).
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.dialogdemos.DialogPositioning' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.dialogdemos.DialogPositioning' 
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/dialog/Positioning.txt'
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogPositioning.java'
 height = '350px'
@@ -112,7 +112,7 @@ height = '350px'
 In addition to manual assignment of a dialog's X and Y position, it is possible to use the dialog's built-in enum class to align the `Dialog`. There are three possible values, `TOP`, `CENTER` and `BOTTOM`, each of which can be used with the `setAlignment()` method. 
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.dialogdemos.DialogAlignments' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.dialogdemos.DialogAlignments' 
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/dialog/Alignments.txt'
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogAlignments.java'
 height = '550px'
@@ -170,7 +170,7 @@ While there are many use cases for each of the various themes, some examples use
   - **Info**: The Info theme is a good choice to provide clarifying, additional information to a user when pushed.
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.dialogdemos.DialogThemes' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.dialogdemos.DialogThemes' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogThemes.java'
 height = '500px'
 />

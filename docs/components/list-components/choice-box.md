@@ -18,7 +18,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 The `ChoiceBox` component is a user interface element designed to present users with a list of options or choices. Users can select a single option from this list, typically by clicking the `ChoiceBox`, which triggers the display of a dropdown list containing available choices. Users can also interact with the `ChoiceBox` with the arrow keys. When a user makes a selection, the chosen option is then displayed in the `ChoiceBox` button. 
 
-<!-- <AppLayoutViewer url='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.choiceboxdemos.ChoiceBoxDemo' mobile='false'/>
+<!-- <AppLayoutViewer url='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.choiceboxdemos.ChoiceBoxDemo' mobile='false'/>
 <ComponentDemo
 frame="hidden"
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/choiceboxdemos/ChoiceBoxDemo.java'
@@ -62,7 +62,7 @@ dropdown using CSS or shadow part selectors from the parent component becomes ch
 In the demo below, the Dropdown type is set and used in the CSS file to select the dropdown and change the background color.
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.choiceboxdemos.ChoiceBoxDropdownType' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.choiceboxdemos.ChoiceBoxDropdownType' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/choiceboxdemos/ChoiceBoxDropdownType.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/choicebox/DropdownType.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/dropdown_styles.css'
@@ -78,7 +78,7 @@ Using a number that is less than or equal to 0 will result in unsetting this pro
 :::
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.choiceboxdemos.ChoiceBoxMaxRowDemo' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.choiceboxdemos.ChoiceBoxMaxRowDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/choiceboxdemos/ChoiceBoxMaxRowDemo.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/choicebox/MaxRow.txt'
 height='250px'
@@ -155,7 +155,7 @@ When adding an event listener, a `ListenerRegistration` object will be returned.
 There are five `ChoiceBox` expanses that are supported which allow for quick styling without using CSS. Expanses are supported by use of a built-in enum class. <br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.choiceboxdemos.ComboboxExpanseDemo' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.choiceboxdemos.ComboboxExpanseDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/choiceboxdemos/ComboboxExpanseDemo.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/combobox/Expanse.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/expanse_styles.css' 
@@ -167,7 +167,7 @@ height="150px"
 The `ChoiceBox` component comes with 14 themes built in for quick styling without the use of CSS. Theming is supported by use of a built-in enum class.
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.choiceboxdemos.ComboboxThemeDemo' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.choiceboxdemos.ComboboxThemeDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/choiceboxdemos/ComboboxThemeDemo.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/theme_styles.css' 
 height="170px"

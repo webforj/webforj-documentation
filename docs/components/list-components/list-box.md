@@ -18,7 +18,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 The `ListBox` component is a user interface element designed to display a scrollable list of objects and allows users to select single or multiple items from the list. Users can also interact with the `ListBox` with the arrow keys. 
 
 <!-- <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxDemo' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxDemo.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/listboxstyles/listbox_demo.css' 
 height = '250px'
@@ -52,7 +52,7 @@ By default, the list box is configured to allow selection of a single item at a 
 Additionally, the arrow keys can be used to navigate the `ListBox`, and typing a letter key while the `ListBox` has focus will select the option that begins with that letter, or cycle through the options beginning with that letter should multiple options exist.
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxMultipleSelection' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxMultipleSelection' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxMultipleSelection.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/listbox/MultipleSelection.txt'
 height = '250px'
@@ -115,7 +115,7 @@ When adding an event listener, a `ListenerRegistration` object will be returned.
 There are five `ListBox` expanses that are supported which allow for quick styling without using CSS. Expanses are supported by use of a built-in enum class. <br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxExpanses' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxExpanses' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxExpanses.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/listbox/Expanses.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/listboxstyles/expanse_styles.css' 

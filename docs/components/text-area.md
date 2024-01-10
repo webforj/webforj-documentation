@@ -15,7 +15,7 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 The text area component can be easily labeled without the needing to create an extra label component using the `setAttribute()` method and passing the desired label as a string, as shown below: <br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.textareademos.TextAreaLabel' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.textareademos.TextAreaLabel' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/textareademos/TextAreaLabel.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textarea/Label.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textareastyles/text_area_styles.css' 
@@ -30,7 +30,7 @@ height = '125px'
 It is also possible to set placeholder text within the component to better help users understand what type of input is expected. Similar to a label, this can be accomplished using the `setAttribute()` method: <br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.textareademos.TextAreaPlaceholder' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.textareademos.TextAreaPlaceholder' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/textareademos/TextAreaPlaceholder.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textarea/Placeholder.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textareastyles/text_area_styles.css' 
@@ -45,7 +45,7 @@ height = '125px'
 The text area can also be configured with spellchecking to help the user improve their input. Use the `setAttribute()` method to do this:
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.textareademos.TextAreaSpellcheck' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.textareademos.TextAreaSpellcheck' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/textareademos/TextAreaSpellcheck.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textarea/Spellcheck.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textareastyles/text_area_styles.css' 
@@ -61,7 +61,7 @@ DWCJ's text area comes with 5 expanses for quick styling without the use of CSS.
 Below are the various expanses supported for the text area component: <br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.textareademos.TextAreaExpanse' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.textareademos.TextAreaExpanse' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/textareademos/TextAreaExpanse.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textarea/Expanse.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textareastyles/text_area_styles.css' 

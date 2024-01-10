@@ -50,7 +50,7 @@ Label wrappedLabel = new Label("Lorem ipsum dolor sit amet, consectetur adipisci
 In addition to using the label as static text, it can also be used as an HTML tag within your code. Simply set the label's content to the desired HTML tag with the various attributes, class names, etc, and the label will be replaced with the desired HTML element.
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.labeldemos.LabelDemo' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.labeldemos.LabelDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/labeldemos/LabelDemo.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/label/Demo.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/labelstyles/text_styles.css' 
@@ -63,7 +63,7 @@ height="250px"
 The line wrap method for a `Label` component sets whether or not the component automatically wraps the text within the label onto multiple lines when it exceeds the available width, ensuring that the entire text is visible without overflowing the container. Setting this value to false will truncate any text that falls out of the component's bounds. This helps manipulate readability and truncation of longer text content within the label. The default value for lineWrap is `true`.
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.labeldemos.LabelLineWrap' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.labeldemos.LabelLineWrap' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/labeldemos/LabelLineWrap.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/labelstyles/wrap_styles.css' 
 javaHighlight='{16-18}'
@@ -77,7 +77,7 @@ height="250px"
 The `Label` class implements the TextAlignable interface, which allows you to set the text alignment of the label. The possible alignment values are Alignment.LEFT, Alignment.MIDDLE, and Alignment.RIGHT. To set the alignment, use the setTextAlignment method:
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.labeldemos.LabelAlignment' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.labeldemos.LabelAlignment' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/labeldemos/LabelAlignment.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/label/Alignment.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/labelstyles/alignment_styles.css' 
@@ -131,7 +131,7 @@ myLabel.removeMouseEnterListener(listener);
 Here is an example of how to use the `Label` class to create a simple UI component which allows the user to hover over the text to change the message:
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.labeldemos.LabelSample' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.labeldemos.LabelSample' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/labeldemos/LabelSample.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/label/Sample.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/labelstyles/text_styles.css' 

@@ -22,7 +22,7 @@ A `Button` component is a fundamental user interface element used in application
 The primary purpose of the `Button` component is to provide a clear and intuitive call-to-action for users, guiding them to perform specific tasks such as submitting a form, navigating to another page, triggering a function, or initiating a process. Buttons are essential for enhancing user interactions, improving accessibility, and creating a more engaging user experience.
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples/ButtonDemo' 
+path='https://eu.bbx.kitchen/webapp/controlsamples/ButtonDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonDemo.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/demo_styles.css'
 height='300px'
@@ -82,7 +82,7 @@ Icons added in this way will automatically be configured to match the theme of t
 Below are examples of buttons with text to the left and right, as well as a button with only an icon:
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonIcon' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonIcon' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonIcon.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Icon.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/icon_styles.css' 
@@ -98,7 +98,7 @@ The `Button` component utilizes naming, which is used for accessibility. When a 
 Button components, like many others, can be disabled to convey to a user that a certain action is not yet or is no longer available. A disabled button will decrease the opacity of the button, and is available for all button themes and expanses.
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonDisable' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonDisable' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonDisable.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Disable.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/disable_styles.css'
@@ -168,7 +168,7 @@ Notice the event payload is used to attain information that is then utilized wit
 :::
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonEvent' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonEvent' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonEvent.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Event.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/event_styles.css'
@@ -194,7 +194,7 @@ While there are many use cases for each of the various themes, some examples use
 Shown below are example buttons with each of the supported Themes applied: <br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonThemes' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonThemes' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonThemes.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Theme.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/theme_styles.css'
@@ -212,7 +212,7 @@ Different sizes are often appropriate for different uses:
 Below are the various expanses supported for the `Button` component: <br/>
 
 <ComponentDemo 
-path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonExpanses' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonExpanses' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonExpanses.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Expanses.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/expanse_styles.css'
