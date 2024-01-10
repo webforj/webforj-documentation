@@ -80,7 +80,7 @@ The Label property can be customized to suit the specific context and design req
 
 <!-- Example -->
 
-## Size
+<!-- ## Size
 
 The `size` property of the Drawer component enables developers to control and specify the dimensions of the drawer within the user interface. This property allows for fine-tuning the size of the drawer, ensuring it aligns with the desired layout and design requirements.
 
@@ -92,10 +92,8 @@ The `size` property can be defined using various units such as pixels, percentag
 
 By utilizing the `size` property effectively, developers can create responsive interfaces that adapt to different viewports and screen orientations. For instance, a smaller size can be chosen for mobile devices to optimize space utilization, while larger sizes can be used for desktop displays to take advantage of the available screen area.
 
-<!-- Example: -->
 
 ### Max Size
-<!-- CAN THIS USE OTHER THAN PERCENTAGES? -->
 
 The Drawer max size property is a versatile feature designed to control the maximum width or height of a drawer within a user interface, based on the specified placement. This property allows developers to define the maximum size of the drawer, ensuring optimal presentation and layout while accommodating varying screen sizes and device resolutions.
 
@@ -109,13 +107,13 @@ By defining a maximum size for the drawer, developers maintain control over its 
 
 The Drawer's max size property is particularly beneficial when dealing with responsive and adaptive designs. It ensures that the drawer remains visually pleasing and functional across different devices, screen orientations, and viewports.
 
-When the drawer's content exceeds the defined maximum size, developers can implement appropriate techniques to handle overflow, such as scrolling within the drawer or utilizing additional UI patterns like tabs or accordions. This helps maintain a clean and organized interface while accommodating larger amounts of content.
-
+When the drawer's content exceeds the defined maximum size, developers can implement appropriate techniques to handle overflow, such as scrolling within the drawer or utilizing additional UI patterns like tabs or accordions. This helps maintain a clean and organized interface while accommodating larger amounts of content. -->
+<!-- 
 <ComponentDemo
 path='https://hot.bbx.kitchen/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerSize'
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerSize.java'
 height='600px'
-/>
+/> -->
 
 ## Placement
 
