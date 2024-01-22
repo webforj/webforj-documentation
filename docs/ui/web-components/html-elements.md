@@ -2,7 +2,6 @@
 sidebar_position: 3
 title: HTML Element Components
 slug: html_components
-draft: true
 ---
 
 While the DWCj's `Element` class allows users to create HTML elements in their applications, a suite of standard HTML elements has been included with the DWCj's core components for ease of use. 

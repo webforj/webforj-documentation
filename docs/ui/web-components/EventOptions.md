@@ -2,7 +2,6 @@
 sidebar_position: 4
 title: Event Options
 slug: event_options
-draft: true
 ---
 <!-- sidebar_class_name: sidebar--item__hidden -->
 
