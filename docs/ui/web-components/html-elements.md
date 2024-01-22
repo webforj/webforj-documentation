@@ -39,4 +39,4 @@ The following components can be used, and map to the corresponding HTML elements
 
 These components have been implemented to provide an API for interaction with the various properties, attributes and functionalities expected from these elements. 
 
-Methods are also provided to add to, remove from, and access components, as outlined in this section of the [`Element`](./element.md#component-interaction) class. 
+Methods are also provided to add to, remove from, and access components, as outlined in this section of the [`Element`](../element.md#component-interaction) class. 
