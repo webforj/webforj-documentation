@@ -12,6 +12,9 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 <JavadocLink type="engine" location="org/dwcj/component/layout/applayout/AppLayout" top='true'/>
 
+The `AppLayout` is a comprehensive responsive layout component that provides a header, a footer, a drawer, and content section. The header and footer are fixed, the drawer slides in and out of the viewport, and the content is scrollable.
+
+This component can be used to build common application layouts, such as a dashboard.
 
 ### Features
 

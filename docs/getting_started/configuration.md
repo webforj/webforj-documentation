@@ -1,11 +1,11 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 displayed_sidebar: documentationSidebar
 ---
 
 # Configuration
 
-Options exist to configure the DWCJ in order to load a default class or enable debug mode.
+The DWCj can be configured using a project's POM file, and a plugin designed to make deploying an application easy. The following sections outline the various options that can be changed in order to achieve the desired result, both with an without the provided DWCj installation plugin. 
 
 ## Using the Install Plugin
 
@@ -13,13 +13,13 @@ Options exist to configure the DWCJ in order to load a default class or enable d
 For most users, especially those who have followed one of the installation guides on this site, this will be the best option.
 :::
 
-In a project using the install plugin, there are various tags that can be changed which will help configure your application's URL. The following lines in the default POM file that comes with the `HelloWorldJava` starting repository can be configured:
+When using the installation plugin, the tags within the `<configuration>` tag can be changed and will help configure your application. Editing the following lines in the default POM file that comes with the [`HelloWorldJava`](https://github.com/DwcJava/HelloWorldJava) starting repository will result in these changes:
 
-```xml {14,17,18}
+```xml {13-16} showLineNumbers
 <plugin>
     <groupId>org.dwcj</groupId>
     <artifactId>dwcj-install-maven-plugin</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <executions>
         <execution>
             <goals>
@@ -30,25 +30,43 @@ In a project using the install plugin, there are various tags that can be change
     <configuration>
         <deployurl>http://localhost:8888/dwcj-install</deployurl>
         <classname>samples.HelloWorldJava</classname>
-        <username>admin</username>
-        <password>admin123</password>
         <publishname>hworld</publishname>
         <debug>true</debug>
     </configuration>
 </plugin>
 ```
 
-1. The `<classname>` tag should contain the name of package and classname of the application you wish to run. This is helpful for projects which may contain multiple classes which extend the App class, and allows you to choose which program should run when the URL is navigated to.
+**`<deployurl>`**: This tag is the URL under which the DWCJ endpoint for the project installation can be reached. For users running their application locally, a default port 8888 is used. For users running Docker, the port should be changed to the port that was entered when [configuring the Docker container](../installation/docker_user.md#2-configuration).
 
-2. The `<publishname>` tag specifies what name the program will take in the final URL. Generally, to run your program, you'll enter a URL similar to `http://localhost:8888/webapp/<publishname>`, where the value within the `<publishname>` tag is entered. When this is done, the class extending application specified in the `<classname>` tag is run.
+**`<classname>`** This tag should contain the name of package and class name of the application you wish to run. This is helpful for projects which may contain multiple classes that extend the `App` class, and allows you to choose which program should run when the base URL is navigated to.
 
-3. The `<debug>` tag can be set to true or false, and will determine whether or not error messages thrown by your program will be displayed in the browser's console or not. 
+2. **`<publishname>`** This tag specifies what name the program will take in the final URL. Generally, to run your program, you'll enter a URL similar to `http://localhost:8888/webapp/<publishname>`, where the value within the `<publishname>` tag is entered. When this is done, the class extending application specified in the `<classname>` tag is run.
 
-It is also possible to start a different class which extends App within your project by modifying the URL in the following format - replace <b>your.class.name.here</b> with the full classname:
+3. **`<debug>`** The debug tag can be set to true or false, and will determine whether or not error messages thrown by your program will be displayed in the browser's console or not. 
 
-`http://localhost:8888/webapp/yourAppName?class=your.class.name.here`
+### Running a Specific Application
+
+
+It is possible to specify which class that extends App within your project is displayed by modifying the URL in one of the following ways - 
+
+**1. Modify the URL Path** - If your application is running on `localhost:8888`, the publish name is `MyProgram` and the Java class that extends the `App` class you want to run is named `MyApp`, the URL would look as follows:
+
+`http://localhost:8888/webapp/MyProgram/MyApp`
+
+**2. Using Query Parameters** - The same result can be achieved using query parameters. Taking the same example, with `localhost:8888` as the port, `MyProgram` as the publish name and `apps.MyApp` as the full name of the class to run, the URL would be:
+
+`http://localhost:8888/webapp/yourAppName?class=apps.MyApp`
+
+:::info
+When using the query parameter method, it is important to include the full name of the desired class, including package names.
+:::
+
 
 ## Without the Install Plugin
+
+:::warning
+This is not the recommended method of configuring your application, and should be used only if needed.
+:::
 
 ### Default Class
 
