@@ -74,7 +74,40 @@ Once BBj has been installed, we can access the Plugin Manager in order to instal
 
 After the plugin manager has been opened, navigate to the "Available Plugins" tab towards the top.
 
-![Plugin manager start location](./_images/users/local/i2.png)
+![Plugin manager configuration](./_images/local/Step_1.png)
+
+Once in this section, check the "Show versions under development" checkbox
+
+![Plugin manager configuration](./_images/local/Step_2.png)
+
+The DWCJ entry should now be visible in the list of available plugins for download. Click on this entry in the list to select it.
+
+![Plugin manager configuration](./_images/local/Step_3.png)
+
+With the DWCJ entry selected, click the "Install" button
+
+![Plugin manager configuration](./_images/local/Step_4.png)
+
+Once the plugin has finished installing, click on the "Installed Plugins" tab at the top.
+
+![Plugin manager configuration](./_images/local/Step_5.png)
+
+This tab displays installed plugins, which should now include the DWCJ entry. Click on the entry within the list.
+
+![Plugin manager configuration](./_images/local/Step_6.png)
+
+With the DWCJ entry selected, click the "Configure" button
+
+![Plugin manager configuration](./_images/local/Step_7.png)
+
+On the window that opens, click the "Enable Maven Remote Install" button at the bottom left of the window.
+
+![Plugin manager configuration](./_images/local/Step_8.png)
+
+A dialog should display that remote installation has been enabled. Click "OK" to close this dialog.
+
+![Plugin manager configuration](./_images/local/Step_9.png)
+<!-- ![Plugin manager start location](./_images/users/local/i2.png)
 
 On this tab, select the "Show versions under development" checkbox near the top left of the window.
 
@@ -88,7 +121,7 @@ Once this has been done, you should be able to switch back to the "Installed Plu
 
 Finally, click on the "Configure" button, which will open a new window. In this window, click the "Enable Maven Remote Install" button.
 
-![Enabling Remote Installation](./_images/users/local/i6.png)
+![Enabling Remote Installation](./_images/users/local/i6.png) -->
 
 
 :::tip 

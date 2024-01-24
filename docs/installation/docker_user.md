@@ -60,14 +60,42 @@ It is recommended to download the latest version of Windows Subsystem for Linux.
 
 Once Docker Desktop has been downloaded, search for the latest DWCJ image, which is currently under the name `dwcjava/sandbox`.
 
-![DWCJ Image Search](./_images/docker/1.png)
+![DWCJ Image Search](./_images/docker/Step_1.png)
 
-Click the `Run` button, which will pop up a configuration window. These settings are optional, but it is highly recommended to
+Click on the list of tags to see the available options
+
+![DWCJ Image Search](./_images/docker/Step_2.png)
+
+For the most recent build, select "rc"
+
+![DWCJ Image Search](./_images/docker/Step_3.png)
+
+Pull the image to start your container
+
+![DWCJ Image Search](./_images/docker/Step_4.png)
+
+Once the download is complete, click the run button, which will open configuration settings
+
+![DWCJ Image Search](./_images/docker/Step_5.png)
+
+Open the "Optional settings" menu
+
+![DWCJ Image Search](./_images/docker/Step_6.png)
+
+Select a desired host port where you can see your application running within Docker
+
+![DWCJ Image Search](./_images/docker/Step_7.png)
+
+Click "Run" to start the container
+
+![DWCJ Image Search](./_images/docker/Step_8.png)
+
+<!-- Click the `Run` button, which will pop up a configuration window. These settings are optional, but it is highly recommended to
 supply the `Host port` configuration setting, as this will be necessary later when running your application.
 
 ![Configuration](./_images/docker/2.png)
 
-Once this is finished, click the `Run` button at the bottom of the window, which will create a new container with your specified settings.
+Once this is finished, click the `Run` button at the bottom of the window, which will create a new container with your specified settings. -->
 
 :::success Important!
 Make sure to take note of the custom Host port number you provide, as this will be needed later.
