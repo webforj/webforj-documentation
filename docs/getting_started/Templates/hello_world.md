@@ -26,7 +26,7 @@ public void run() throws DwcjException {
 
 This is the method that will be executed when your application is rendered. Here, since the sample program is quite small, the entirety of the program's functionality has been built into this singular method. 
 
-Feel free to follow this pattern for exploration purposes or simple applications. For more complex applications, it is advised to split functionality into additional methods and classes.
+This is an ideal pattern for exploration purposes or simple applications. For more complex applications, it is advised to split functionality into additional methods and classes.
 
 ###  CSS
 
@@ -42,4 +42,4 @@ Feel free to follow this pattern for exploration purposes or simple applications
 """)
 ```
 
-This is the inline CSS that will be applied to your application. Feel free to continue adding to this section, or create a separate stylesheet using [this page](../../styling/getting_started.md) as a reference.
+This is the inline CSS that will be applied to your application. Either continue adding to this section, or create a separate stylesheet using [this page](../../styling/getting_started.md) as a reference.

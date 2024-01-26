@@ -328,7 +328,7 @@ in the DWCJ code.
 <br/>
 
 **Congratulations!** You’ve successfully installed and launched the DWCJ. 
-From here, feel free to explore the sample applications that are provided.
+From here, you can explore the sample applications that are provided.
 
 <b>Continue to the next section </b> to learn how to create your first application, 
 and how to configure the DWCJ with various debug and default class options.

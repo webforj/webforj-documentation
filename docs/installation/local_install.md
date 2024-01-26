@@ -102,7 +102,17 @@ With the DWCJ entry selected, click the "Configure" button
 
 On the window that opens, click the "Enable Maven Remote Install" button at the bottom left of the window.
 
+
 ![Plugin manager configuration](./_images/local/Step_8.png)
+
+:::tip 
+
+Alternatively, navigate to the `bin` directory within your `bbx` folder and run the following command:
+
+```bbj
+./bbj -tIO DWCJ/cli.bbj - enable_remote_install
+```
+:::
 
 A dialog should display that remote installation has been enabled. Click "OK" to close this dialog.
 
@@ -124,14 +134,6 @@ Finally, click on the "Configure" button, which will open a new window. In this 
 ![Enabling Remote Installation](./_images/users/local/i6.png) -->
 
 
-:::tip 
-
-Alternatively, navigate to the `bin` directory within your `bbx` folder and run the following command:
-
-```bbj
-./bbj -tIO DWCJ/cli.bbj - enable_remote_install
-```
-:::
 
 ## 4. Clone the Repository
 
