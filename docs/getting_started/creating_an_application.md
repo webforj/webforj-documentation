@@ -74,7 +74,7 @@ public class MyApplication extends App{
 
 ## Customizing your Application
 
-You can then add various components that come with the DWCJ, or custom components, elements, etc to the `Frame`. In the example below, the AppPanel will be created and a button will be added to the panel.
+You can then add various components that come with the DWCJ, or custom components, elements, etc to the `Frame`. In the example below, the `Frame` will be created and a button will be added to the panel.
 
 ```java
 import org.dwcj.App;

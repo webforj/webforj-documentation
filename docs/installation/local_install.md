@@ -70,40 +70,40 @@ mvn install:install-file -Dfile=BBjUtil.jar -DgroupId=com.basis.lib -DartifactId
 
 Once BBj has been installed, we can access the Plugin Manager in order to install tools needed to configure the DWCJ. To start, type "Plugin Manager" into the start menu or Finder. 
 
-![Plugin manager start location](./_images/users/local/i1.png)
+<!-- ![Plugin manager start location](./_images/users/local/i1.png) -->
 
 After the plugin manager has been opened, navigate to the "Available Plugins" tab towards the top.
 
-![Plugin manager configuration](./_images/local/Step_1.png)
+![Plugin manager configuration](./_images/local/Step_1l.png)
 
 Once in this section, check the "Show versions under development" checkbox
 
-![Plugin manager configuration](./_images/local/Step_2.png)
+![Plugin manager configuration](./_images/local/Step_2l.png)
 
 The DWCJ entry should now be visible in the list of available plugins for download. Click on this entry in the list to select it.
 
-![Plugin manager configuration](./_images/local/Step_3.png)
+![Plugin manager configuration](./_images/local/Step_3l.png)
 
 With the DWCJ entry selected, click the "Install" button
 
-![Plugin manager configuration](./_images/local/Step_4.png)
+![Plugin manager configuration](./_images/local/Step_4l.png)
 
 Once the plugin has finished installing, click on the "Installed Plugins" tab at the top.
 
-![Plugin manager configuration](./_images/local/Step_5.png)
+![Plugin manager configuration](./_images/local/Step_5l.png)
 
 This tab displays installed plugins, which should now include the DWCJ entry. Click on the entry within the list.
 
-![Plugin manager configuration](./_images/local/Step_6.png)
+![Plugin manager configuration](./_images/local/Step_6l.png)
 
 With the DWCJ entry selected, click the "Configure" button
 
-![Plugin manager configuration](./_images/local/Step_7.png)
+![Plugin manager configuration](./_images/local/Step_7l.png)
 
 On the window that opens, click the "Enable Maven Remote Install" button at the bottom left of the window.
 
 
-![Plugin manager configuration](./_images/local/Step_8.png)
+![Plugin manager configuration](./_images/local/Step_8l.png)
 
 :::tip 
 
@@ -116,7 +116,7 @@ Alternatively, navigate to the `bin` directory within your `bbx` folder and run 
 
 A dialog should display that remote installation has been enabled. Click "OK" to close this dialog.
 
-![Plugin manager configuration](./_images/local/Step_9.png)
+![Plugin manager configuration](./_images/local/Step_9l.png)
 <!-- ![Plugin manager start location](./_images/users/local/i2.png)
 
 On this tab, select the "Show versions under development" checkbox near the top left of the window.
@@ -141,7 +141,11 @@ Once BBj and the required DWCJ plugin are installed and configured, we can clone
 
 To begin, navigate to the [HelloWorldJava repository](https://github.com/DwcJava/HelloWorldJava) and clone the project to your machine.
 
-![Plugin manager start location](./_images/users/local/i5.png)
+Click on the Code button
+![Plugin manager configuration](./_images/local/Step_10l.png)
+
+Copy the repository URL to your clipboard to clone
+![Plugin manager configuration](./_images/local/Step_11l.png)
 
 <!-- :::info
 You can also opt to use the GitHub Codespace without cloning the project on your local machine, and do all of your development on the cloud!
