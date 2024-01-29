@@ -15,6 +15,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import logo from "../../static/img/logo.png"
+import javaland from "../../static/img/JavaLand_2024.jpg"
 import { css, jsx } from '@emotion/react';
 
 import styles from './index.module.css';
@@ -229,12 +230,13 @@ function HomepageAnnoucement(){
   return(
     <div css={announcementStyles}>
       <img 
-        src='https://www.javaland.eu/typo3conf/ext/doag/Resources/Public/Images/logo_javaland.png' 
+        // src='https://www.javaland.eu/_assets/21d419d44498ff574c15c53ba467c474/Images/logo_javaland.png' 
+        src={javaland}
         css={logoStyles}
       />
       <div css={infoStyles}>
-        <h2 css={titleStyles}>Catch us at Javaland 2023!</h2>
-        <p css={descriptionStyles}>Come say hello and tell us what you think about the new Dynamic Web Client for Java at the Javaland conference this March at Phantasialand Brühl.</p>
+        <h2 css={titleStyles}>Catch us at Javaland 2024!</h2>
+        <p css={descriptionStyles}>Come say hello and tell us what you think about the new Dynamic Web Client for Java at the Javaland conference this April at Nürburgring.</p>
         <Link 
           className="button button--primary button--lg"
           to='https://www.javaland.eu/de/home/'>
@@ -264,7 +266,7 @@ export default function Home() {
       description="Build your modern web applications with the DWCJ.">
         <div css={mainStyles}>
         <HomepageTitle />
-        {/* <HomepageAnnoucement /> */}
+        <HomepageAnnoucement />
         <HomepageSection />
         </div>
     </Layout>

@@ -11,31 +11,31 @@ The following components can be used, and map to the corresponding HTML elements
 <!-- |DWCj Class|HTML Element|MDN Article|
 |:--:|:--:|:------:|
 |`Anchor`|`<a>`|[MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a)| -->
-|DWCj Class|HTML Element|
-|:--:|:--:|
-|`Anchor`|`<a>`|
-|`Article`|`<article>`|
-|`Aside`|`<aside>`|
-|`Break`|`<hr>`|
-|`Div`|`<div>`|
-|`Emphasis`|`<em>`|
-|`Fieldset`|`<fieldset>`|
-|`Footer`|`<footer>`|
-|`FormattedText`|`<pre>`|
-|`H1 - H6`|`<h1> - <h6>`|
-|`Header`|`<header>`|
-|`Iframe`|`<iframe>`|
-|`Img`|`<img>`|
-|`Legend`|`<legend>`|
-|`ListEntry`|`<li>`|
-|`Main`|`<main>`|
-|`Nav`|`<nav>`|
-|`OrderedList`|`<ol>`|
-|`Paragraph`|`<p>`|
-|`Section`|`<section>`|
-|`Span`|`<span>`|
-|`Strong`|`<strong>`|
-|`UnorderedList`|`<ul>`|
+|DWCj Class|HTML Element|Can Add Components?|
+|:--:|:--:|:--:|
+|`Anchor`|`<a>`| ✔️ |
+|`Article`|`<article>`| ✔️ |
+|`Aside`|`<aside>`| ✔️ |
+|`Break`|`<hr>`| ❌ |
+|`Div`|`<div>`| ✔️ |
+|`Emphasis`|`<em>`| ✔️ |
+|`Fieldset`|`<fieldset>`| ✔️ |
+|`Footer`|`<footer>`| ✔️ |
+|`FormattedText`|`<pre>`| ✔️ |
+|`H1 - H6`|`<h1> - <h6>`| ✔️ |
+|`Header`|`<header>`| ✔️ |
+|`Iframe`|`<iframe>`| ❌ |
+|`Img`|`<img>`| ❌ |
+|`Legend`|`<legend>`| ❌ |
+|`ListEntry`|`<li>`| ✔️ |
+|`Main`|`<main>`| ✔️ |
+|`Nav`|`<nav>`| ✔️ |
+|`OrderedList`|`<ol>`| ✔️ |
+|`Paragraph`|`<p>`| ✔️ |
+|`Section`|`<section>`| ✔️ |
+|`Span`|`<span>`| ✔️ |
+|`Strong`|`<strong>`| ✔️ |
+|`UnorderedList`|`<ul>`| ✔️ |
 
 These components have been implemented to provide an API for interaction with the various properties, attributes and functionalities expected from these elements. 
 

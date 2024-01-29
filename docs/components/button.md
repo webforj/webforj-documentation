@@ -5,6 +5,7 @@ title: Button
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
+import EventTable from '@site/src/components/DocsTools/EventTable';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 import DocChip from '@site/src/components/DocsTools/DocChip';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -118,14 +119,8 @@ Disabling on click not only helps optimize the processing of actions, but also p
 
 The `Button` class provides methods to add and remove event listeners for the following events:
 
-| Events | Description |
-|:-:|-|
-|<JavadocLink type="engine" location="org/dwcj/component/event/BlurEvent" code='true'>BlurEvent</JavadocLink>| An event that is triggered when a component loses focus.|
-|<JavadocLink type="engine" location="org/dwcj/component/button/event/ButtonClickEvent" code='true'>ButtonClickEvent</JavadocLink>|An event that is triggered when a user interacts with a button by clicking or tapping on it. |
-|<JavadocLink type="engine" location="org/dwcj/component/event/FocusEvent" code='true'>FocusEvent</JavadocLink>|An event that is triggered when a component gains focus, opposite of a blur event. |
-|<JavadocLink type="engine" location="org/dwcj/component/event/MouseEnterEvent" code='true'>MouseEnterEvent</JavadocLink>|An event that is triggered when the mouse cursor enters the boundaries of a component. |
-|<JavadocLink type="engine" location="org/dwcj/component/event/MouseExitEvent" code='true'>MouseExitEvent</JavadocLink>|An event that is triggered when the mouse cursor exits the boundaries of a component. |
-|<JavadocLink type="engine" location="org/dwcj/component/event/RightMouseDownEvent" code='true'>RightMouseDownEvent</JavadocLink>|An event that is triggered when the user presses the right mouse button while the cursor is over a component.|
+<EventTable base events={['buttonClick']} />
+
 
 <!-- ### Adding Events
 
