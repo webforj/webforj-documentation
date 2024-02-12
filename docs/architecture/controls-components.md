@@ -33,6 +33,6 @@ In the DWCj framework, the concept of composite components plays a pivotal role 
 
 This approach encourages a more modular and flexible development style, enabling developers to build tailored components that meet specific requirements.
 
-
+<!-- 
 ## Component Hierarchy
-TODO: Create and show graphic
+TODO: Create and show graphic -->

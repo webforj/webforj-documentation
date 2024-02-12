@@ -6,7 +6,9 @@ draft: false
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
+<JavadocLink type="engine" location="org/dwcj/component/Composite" top='true'/>
 
 # Composite Components in DWCj
 
