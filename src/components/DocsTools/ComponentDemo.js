@@ -118,7 +118,7 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
   const [originalWidth, setOriginalWidth] = useState (0)
 
   const [showCode, setShowCode] = useState(false)
-  const [docTheme, setDocTheme] = useState(document.documentElement.getAttribute('data-theme'));
+  // const [docTheme, setDocTheme] = useState(document.documentElement.getAttribute('data-theme'));
   
   const iframeRef = useRef(null);
   const codeButtonRef = useRef(null);
@@ -159,19 +159,19 @@ export default function ComponentDemo({ path, javaC, javaE, cssURL, javaHighligh
     setOriginalWidth(iframeRef.current ? iframeRef.current.offsetWidth : 0)
   }, []);
 
-  useEffect(() => {
-    const observer = new MutationObserver((mutationsList) => {
-      const themeMutation = mutationsList.find(mutation => mutation.attributeName === 'data-theme');
-      if (themeMutation) {
-        setDocTheme(document.documentElement.getAttribute('data-theme'));
-      }
-    });
+  // useEffect(() => {
+  //   const observer = new MutationObserver((mutationsList) => {
+  //     const themeMutation = mutationsList.find(mutation => mutation.attributeName === 'data-theme');
+  //     if (themeMutation) {
+  //       setDocTheme(document.documentElement.getAttribute('data-theme'));
+  //     }
+  //   });
 
-    observer.observe(document.documentElement, { attributes: true });
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  //   observer.observe(document.documentElement, { attributes: true });
+  //   return () => {
+  //     observer.disconnect();
+  //   };
+  // }, []);
 
   const startResizing = (e) => {
     e.preventDefault();
@@ -320,8 +320,8 @@ const demoFrameStyles = css`
         <iframe
           onMouseUp={stopResizing}
           loading="lazy" 
-          // src={path+"&__theme__="+ (useColorMode().colorMode === "dark" ? "dark" : "light")}
-          src={path+"&__theme__=" + docTheme}
+          src={path+"&__theme__="+ (useColorMode().colorMode)}
+          // src={path+"&__theme__=" + docTheme}
           // src={path}
           css={iframeStyles}
           ref={iframeRef}
