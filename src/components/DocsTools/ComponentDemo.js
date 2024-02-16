@@ -81,9 +81,9 @@ function OpenNewWindowButton({ url }) {
     `;
   
     const iconStyles = css`
-      /* filter: invert(var(--inversion-percentage)); */ //UNCOMMENT WHEN DMEOS CHANGE COLOR
+      filter: invert(var(--inversion-percentage));
       ::before{
-        mix-blend-mode: lighten; /* The blend mode determines how the overlay interacts with the image */
+        mix-blend-mode: lighten;
         opacity: 0.5;
       }
     `;
