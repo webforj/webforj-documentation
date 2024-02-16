@@ -36,7 +36,7 @@ export default function AppLayoutViewer({url, mobile}) {
   return (
     <div css={demoStyles}>
         <div css={demoPreview}>
-            <iframe src={url+"&__theme__="+ (useColorMode().colorMode === "dark" ? "dark" : "light")} css={demoContent} loading='lazy'>
+            <iframe src={url+"&__theme__="+ (useColorMode().colorMode)} css={demoContent} loading='lazy'>
 
             </iframe>
         </div>
