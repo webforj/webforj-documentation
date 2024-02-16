@@ -25,8 +25,8 @@ In the DWCj, most component classes, with the exception of the built-in HTML Ele
 
 3. **Promoting the Use of Composites**: To extend the functionality of components, the DWCj framework encourages developers to use a composite approach. Composite components are Java classes that contain other DWCj components or standard HTML elements. While traditional inheritance is discouraged, composite components offer a way to create new, customized components that encapsulate existing ones. 
 
-## Adding Components to the DOM
-TODO: Talk about how the DWCj will search for a BBj control - means you can't add something that doesn't have a control
+<!-- ## Adding Components to the DOM
+TODO: Talk about how the DWCj will search for a BBj control - means you can't add something that doesn't have a control -->
 
 ## Composite Components: Extending Through Composition
 In the DWCj framework, the concept of composite components plays a pivotal role in extending component functionality. Composite components are Java classes that are not restricted by the final keyword, allowing developers to create new components that extends the behavior of a single component, or combines multiple components into one, by composing existing components. Classes which facilitate this behavior have been created for developer use. See the `Composite` and `ElementComposite` sections to see how to properly create composite components.
