@@ -2,6 +2,8 @@
 
 import React from 'react'
 import { jsx, css } from '@emotion/react';
+import { useColorMode } from '@docusaurus/theme-common';
+
 
 export default function AppLayoutViewer({url, mobile}) {
     
@@ -34,7 +36,7 @@ export default function AppLayoutViewer({url, mobile}) {
   return (
     <div css={demoStyles}>
         <div css={demoPreview}>
-            <iframe src={url} css={demoContent} loading='lazy'>
+            <iframe src={url+"&__theme__="+ (useColorMode().colorMode === "dark" ? "dark" : "light")} css={demoContent} loading='lazy'>
 
             </iframe>
         </div>

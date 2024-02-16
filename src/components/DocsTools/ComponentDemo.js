@@ -305,8 +305,8 @@ const demoFrameStyles = css`
         <iframe
           onMouseUp={stopResizing}
           loading="lazy" 
-          // src={path+"&theme="+ (useColorMode().colorMode === "dark" ? "dark" : "light")}
-          src={path}
+          src={path+"&__theme__="+ (useColorMode().colorMode === "dark" ? "dark" : "light")}
+          // src={path}
           css={iframeStyles}
           ref={iframeRef}
           onMouseMove={resize}
