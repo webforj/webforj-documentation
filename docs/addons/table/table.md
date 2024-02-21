@@ -29,13 +29,13 @@ height='600px'
 />
 
 
-<!-- ## Column Configuration
+## Column Configuration
 
 To render the `Table` above, use the `addColumn()` method to delineate which columns the `Table` should have, as well as providing data to the `Table` using the `setRepository()` method.
 
-For more information on the `Column`, see [this article](./table_columns.md). -->
+For more information on the `Column`, see [this article](./table_columns.md).
 
-<!-- ## Rich content
+## Rich content
 
 ### Renderers
 
@@ -43,9 +43,9 @@ For more information on the `Column`, see [this article](./table_columns.md). --
 
 ### Available Renderers
 
-### Lodash Renderers -->
+### Lodash Renderers
 
-<!-- ## Selection
+## Selection
 
 The `Table` component provides various selection capabilities. There are methods for selecting a single item, multiple items, or programmatically managing selections, the Table is designed to accommodate diverse selection needs.
 ### Selection Mode
@@ -57,4 +57,4 @@ The `Table` component provides various selection capabilities. There are methods
 ## Editing and refreshing
 
 ## Filtering
- -->
+

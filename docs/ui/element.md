@@ -28,7 +28,7 @@ The `Element` component has three constructors provided to quickly and efficient
 The below example will create an HTML `<input>` tag and give it some styling:
 
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples/InputDemo' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=demos.webcomponents.element.InputDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/demos/webcomponents/element/InputDemo.java'
 />
 
@@ -39,7 +39,7 @@ In order to utilize events that may come with your element, you can use the `Ele
 There are also additional options to further customize events by using the [Event Options](#) configurations.
 
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples/InputEvent' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=demos.webcomponents.element.InputEvent' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/demos/webcomponents/element/InputEvent.java'
 height='175px'
 />
@@ -61,7 +61,7 @@ The `Element` component supports the composition of child components. Developers
 
 
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples/InputText' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=demos.webcomponents.element.InputText' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/demos/webcomponents/element/InputText.java'
 height='175px'
 />
@@ -110,7 +110,7 @@ Both synchronous and asynchronous function calling will wait to call a method un
 In the demo below, an event is added to an HTML `Button`. This event is then fired programmatically by calling the `callJsFunctionAsync()` method. The resulting [`PendingResult`](#) is then used to create another message box once the asynchronous function has been completed.
 
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples/InputFunction' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=demos.webcomponents.element.InputFunction' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/demos/webcomponents/element/InputFunction.java'
 height='175px'
 />

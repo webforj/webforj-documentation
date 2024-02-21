@@ -90,7 +90,7 @@ This could also be implemented in the `onDidCreate()` method, which would give d
 This component is then instantiated and utilized in an Application, and allows for its use throughout various locations, making it a powerful tool in the creation of custom components.
  
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples/CompositeDemo' 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=demos.CompositeDemo' 
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/compositestyles/styles.css'
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/demos/CompositeDemo.java'
 height='500px'
