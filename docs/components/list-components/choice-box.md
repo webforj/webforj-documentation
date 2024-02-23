@@ -14,7 +14,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="bbj-list-button" href="https://basishub.github.io/basis-next/#/web-components/bbj-list-button" clickable={false} iconName='code'/>
 
-<JavadocLink type="engine" location="org/dwcj/component/button/Button" top='true'/>
+<JavadocLink type="engine" location="org/dwcj/component/list/ChoiceBox" top='true'/>
 
 The `ChoiceBox` component is a user interface element designed to present users with a list of options or choices. Users can select a single option from this list, typically by clicking the `ChoiceBox`, which triggers the display of a dropdown list containing available choices. Users can also interact with the `ChoiceBox` with the arrow keys. When a user makes a selection, the chosen option is then displayed in the `ChoiceBox` button. 
 

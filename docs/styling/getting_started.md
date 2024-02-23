@@ -72,7 +72,7 @@ App.getPage().addStyleSheet("https://www.w3schools.com/w3css/4/w3.css")
 This annotation also supports the `webserver://` protocol, and will by default point to the folder of the running application under jetty's htdocs (`bbx/htdocs/myapp`).
 
 ```java
-addStyleSheet('webserver://static/css/style.css');
+addStyleSheet("webserver://static/css/style.css");
 ```
 
 The `addInlineStyleSheet()` method is used when a developer wants to include a local stylesheet. By default, the resources directory of a project will be used. For example, a file called `styles.css` located in `src/resources/css` would by loaded by the following code:

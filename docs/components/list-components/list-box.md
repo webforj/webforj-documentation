@@ -13,7 +13,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="bbj-list-box" href="https://basishub.github.io/basis-next/#/web-components/bbj-list-box" clickable={false} iconName='code'/>
 
-<JavadocLink type="engine" location="org/dwcj/component/button/Button" top='true'/>
+<JavadocLink type="engine" location="org/dwcj/component/list/ListBox" top='true'/>
 
 The `ListBox` component is a user interface element designed to display a scrollable list of objects and allows users to select single or multiple items from the list. Users can also interact with the `ListBox` with the arrow keys. 
 
