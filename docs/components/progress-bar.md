@@ -90,4 +90,4 @@ height = '300px'
 
 ## Parts and CSS Properties
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').ProgressBar} />
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').ProgressBar} />

@@ -1,8 +1,8 @@
 ---
 sidebar_position: 0
-title: <bbj-inpute>
+title: <dwc-textfield>
 sidebar_class_name: sidebar--item__hidden
-slug: inpute
+slug: textfield
 // pagination_prev: null
 // pagination_next: null
 ---
@@ -17,27 +17,27 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info CLIENT COMPONENT
-This section outlines styling information for the **`<bbj-inpute>`** component. This component is **client side only** - it cannot be instantiated on its own via the API, but may make up part of API components.
+This section outlines styling information for the **`<dwc-textfield>`** component. This component is **client side only** - it cannot be instantiated on its own via the API, but may make up part of API components.
 :::
 
 ### Shadow Parts
 These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
-<TableBuilder tag='bbj-inpute' table="parts"/>
+<TableBuilder tag='dwc-textfield' table="parts"/>
 
 ### CSS Properties
 
   These are the various CSS properties that are used in the component, with a short description of their use.
   
-  <TableBuilder tag='bbj-inpute' table="properties"/>
+  <TableBuilder tag='dwc-textfield' table="properties"/>
 
 ### Reflected Attributes
 
   The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
   
-  <TableBuilder tag='bbj-inpute' table="reflects"/>
+  <TableBuilder tag='dwc-textfield' table="reflects"/>
 
 ### Dependencies
 
   This component relies on the following components - see the related article for more detailed styling information:
   
-  <TableBuilder tag='bbj-inpute' table="dependencies"/>
+  <TableBuilder tag='dwc-textfield' table="dependencies"/>

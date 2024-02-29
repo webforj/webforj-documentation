@@ -13,7 +13,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
 
-<DocChip tooltipText="The name of the web component that will render in the DOM." label="bbj-checkbox" href="https://basishub.github.io/basis-next/#/web-components/bbj-checkbox" clickable={false} iconName='code'/>
+<DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-checkbox" href="https://basishub.github.io/basis-next/#/web-components/dwc-checkbox" clickable={false} iconName='code'/>
 
 <JavadocLink type="engine" location="org/dwcj/component/optioninput/CheckBox" top='true'/>
 
@@ -159,27 +159,27 @@ javaHighlight='{17,21,25,29,33}'
 
 These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Checkbox} table="parts"/>
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Checkbox} table="parts"/>
 
 ### CSS Properties
 
 These are the various CSS properties that are used in the component, with a short description of their use.
 
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Checkbox} table="properties"/>
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Checkbox} table="properties"/>
 
 ### Reflected Attributes
 
 The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
 
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Checkbox} table="reflects"/>
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Checkbox} table="reflects"/>
 
 ### Dependencies
 
 This component relies on the following components - see the related article for more detailed styling information:
 
-<TableBuilder tag='bbj-checkbox' table="dependencies"/>
+<TableBuilder tag='dwc-checkbox' table="dependencies"/>
 
 
 ## Best Practices 

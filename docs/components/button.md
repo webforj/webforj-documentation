@@ -13,7 +13,7 @@ import Chip from '@mui/material/Chip';
 
 <DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
 
-<DocChip tooltipText="The name of the web component that will render in the DOM." label="bbj-button" href="https://basishub.github.io/basis-next/#/web-components/bbj-button" clickable={false} iconName='code'/>
+<DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-button" href="https://basishub.github.io/basis-next/#/web-components/dwc-button" clickable={false} iconName='code'/>
 
 
 <JavadocLink type="engine" location="org/dwcj/component/button/Button" top='true'/>
@@ -72,9 +72,9 @@ Button submit = new Button("Submit");
 
 ## Adding Icons to Buttons
 
-In addition to, or instead of having text on a button, it is possible to add an icon to a button as well. To add these icons, set the button's text to have an `<html>` tag, with a `<bbj-icon>` tag inside with the name attribute set accordingly. In addition to an icon, include text to the left or right of the `<bbj-icon>` tag to include a label as well. Icons added to the left and/or right of the button should be done using the `prefix` and `suffix` slots.
+In addition to, or instead of having text on a button, it is possible to add an icon to a button as well. To add these icons, set the button's text to have an `<html>` tag, with a `<dwc-icon>` tag inside with the name attribute set accordingly. In addition to an icon, include text to the left or right of the `<dwc-icon>` tag to include a label as well. Icons added to the left and/or right of the button should be done using the `prefix` and `suffix` slots.
 
-To read more about customizing, configuring and styling icons, read [**this page**](../components/bbj-icon).
+To read more about customizing, configuring and styling icons, read [**this page**](../components/dwc-icon).
 
 :::tip
 Icons added in this way will automatically be configured to match the theme of the Button, but need to be manually configured if a different sized icon is desired when changing `Button` expanse.
@@ -218,31 +218,31 @@ height='125px'
 
 These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Button} table='parts' exclusions={require('@site/static/exclusions.json').button.parts} />
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Button} table='parts' exclusions={require('@site/static/exclusions.json').button.parts} />
 
 ### Slots
 
 Listed below are the slots available for utilization within the `Button` component. These slots act as placeholders within the component that control where the children of a customized element should be inserted within the shadow tree.
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Button} table='slots' exclusions={require('@site/static/exclusions.json').button.slots} />
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Button} table='slots' exclusions={require('@site/static/exclusions.json').button.slots} />
 
 ### CSS Properties
 
 These are the various CSS properties that are used in the component, with a short description of their use.
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Button} exclusions={require('@site/static/exclusions.json').button.properties} table='properties'/>
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Button} exclusions={require('@site/static/exclusions.json').button.properties} table='properties'/>
 
 ### Reflected Attributes
 
 The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Button} table="reflects" exclusions={require('@site/static/exclusions.json').button.reflects}/>
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Button} table="reflects" exclusions={require('@site/static/exclusions.json').button.reflects}/>
 
 ### Dependencies
 
 This component relies on the following components - see the related article for more detailed styling information:
 
-<TableBuilder tag='bbj-button' table="dependencies"/>
+<TableBuilder tag='dwc-button' table="dependencies"/>
 
 ## Best Practices 
 

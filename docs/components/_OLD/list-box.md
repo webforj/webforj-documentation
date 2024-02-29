@@ -62,4 +62,4 @@ There are five list box expanses that are supported in the DWCJ which allow for 
 
 ## Parts and CSS Properties
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').ListBox} />
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').ListBox} />

@@ -30,10 +30,10 @@ An example of this behavior would be as follows:
 
 ```css
 :root {
-  --bbj-color-primary-h: 215;
-  --bbj-color-primary-s: 100%;
-  --bbj-color-primary-c: 50;
-  --bbj-font-size: var(--bbj-font-size-m);
+  --dwc-color-primary-h: 215;
+  --dwc-color-primary-s: 100%;
+  --dwc-color-primary-c: 50;
+  --dwc-font-size: var(--dwc-font-size-m);
 }
 ```
 
@@ -41,8 +41,8 @@ To override the `dark` or `dark-pure` theme, you should define your variables us
 
 ```css
 html[data-app-theme='dark'] {
-  --bbj-color-primary-s: 9%;
-  --bbj-color-white: hsl(210, 17%, 82%);
+  --dwc-color-primary-s: 9%;
+  --dwc-color-white: hsl(210, 17%, 82%);
 }
 ```
 
@@ -54,9 +54,9 @@ New themes should be defined in `html[data-app-theme='THEME_NAME']` in your appl
 
 ```css
 html[data-app-theme='new-theme'] {
-  --bbj-color-primary-h: 280;
-  --bbj-color-primary-s: 100%;
-  --bbj-color-primary-c: 60;
+  --dwc-color-primary-h: 280;
+  --dwc-color-primary-s: 100%;
+  --dwc-color-primary-c: 60;
 }
 ```
 

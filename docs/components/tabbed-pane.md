@@ -14,7 +14,7 @@ import Chip from '@mui/material/Chip';
 
 <DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
 
-<DocChip tooltipText="The name of the web component that will render in the DOM." label="bbj-tabs-list" href="https://basishub.github.io/basis-next/#/web-components/bbj-button" clickable={false} iconName='code'/>
+<DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-tabbed-pane" href="https://basishub.github.io/basis-next/#/web-components/dwc-button" clickable={false} iconName='code'/>
 
 
 <JavadocLink type="engine" location="org/dwcj/component/tabbedpane/TabbedPane" top='true'/>
@@ -212,31 +212,31 @@ height="250px"
 
 These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').TabbedPane} table='parts' />
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TabbedPane} table='parts' />
 
 ### Slots
 
 Listed below are the slots available for utilization within the `Button` component. These slots act as placeholders within the component that control where the children of a customized element should be inserted within the shadow tree.
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').TabbedPane} table='slots' />
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TabbedPane} table='slots' />
 
 ### CSS Properties
 
 These are the various CSS properties that are used in the component, with a short description of their use.
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').TabbedPane} table='properties' />
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TabbedPane} table='properties' />
 
 ### Reflected Attributes
 
 The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').TabbedPane} table="reflects" />
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TabbedPane} table="reflects" />
 
 ### Dependencies
 
 This component relies on the following components - see the related article for more detailed styling information:
 
-<TableBuilder tag='bbj-tabs-list' table="dependencies" />
+<TableBuilder tag='dwc-tabbed-pane' table="dependencies" />
 
 ## Best Practices 
 

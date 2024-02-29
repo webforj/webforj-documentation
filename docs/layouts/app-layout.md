@@ -37,7 +37,7 @@ Each part of the layout is a Div, which can contain any valid DWCJ control. For 
 
 ### Overview
 
-The following code sample will result in an application with a collapsible sidebar that contains a logo and tabs for various content options and a header. The demo uses the bbj-icon-button web component to create a drawer toggle button. The button has the data-drawer-toggle attribute which instructs the BBjAppLayout to listen to click events coming from that component to toggle the drawer state.
+The following code sample will result in an application with a collapsible sidebar that contains a logo and tabs for various content options and a header. The demo uses the dwc-icon-button web component to create a drawer toggle button. The button has the data-drawer-toggle attribute which instructs the DwcAppLayout to listen to click events coming from that component to toggle the drawer state.
 
 <AppLayoutViewer url='https://eu.bbx.kitchen/webapp/controlsamples?class=layout_demos.applayout.AppLayoutDemo' mobile='false' />
 
@@ -86,11 +86,11 @@ cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/r
 
 A sticky toolbar is a toolbar that remains visible at the top of the page when the user scrolls down but the navbar height is collapsed to make more space available for the page's content. Usually this kind of toolbar contains a fixed navigation menu which is relevant to the current page.
 
-It is possible to create a sticky toolbars using the CSS custom property `--bbj-app-layout-header-collapse-height` and the `AppLayout.setHeaderReveal()` option.
+It is possible to create a sticky toolbars using the CSS custom property `--dwc-app-layout-header-collapse-height` and the `AppLayout.setHeaderReveal()` option.
 
 When `AppLayout.setHeaderReveal(true)` is set called, the header will be visible on first render, and then hidden when the user starts scrolling down. Once the user starts scrolling up again the header will be revealed.
 
-With the help of the CSS custom property `--bbj-app-layout-header-collapse-height` it is possible to control how much of the header navbar will be hidden.
+With the help of the CSS custom property `--dwc-app-layout-header-collapse-height` it is possible to control how much of the header navbar will be hidden.
 
 <AppLayoutViewer url='https://eu.bbx.kitchen/webapp/controlsamples?class=layout_demos.applayout.AppLayoutStickyToolbar' mobile='false'/>
 
@@ -109,7 +109,7 @@ Notice how the drawer is hidden in the following demo. The AppLayout widget supp
 
 Same as `AppLayout.setHeaderReveal()`, `AppLayout.setFooterReveal()` is supported. When `AppLayout.setFooterReveal(true)` is called, the footer will be visible at first render then hidden when the user starts scrolling up. Once the user starts scrolling down again the footer will be revealed.
 
-Be default, when the screen width is 800px or less , the drawer will be switched to popover mode. This is called the breakpoint. The popover mode means that the drawer will pop over the content area with an overlay. It is possible to configure the breakpoint by using the BBjAppLayout:setDrawerBreakpoint method and the breakpoint must be a valid [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries).
+Be default, when the screen width is 800px or less , the drawer will be switched to popover mode. This is called the breakpoint. The popover mode means that the drawer will pop over the content area with an overlay. It is possible to configure the breakpoint by using the DwcAppLayout:setDrawerBreakpoint method and the breakpoint must be a valid [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries).
 
 <AppLayoutViewer url='https://eu.bbx.kitchen/webapp/controlsamples?class=layout_demos.applayout.AppLayoutMobile' mobile='true'/>
 
@@ -121,7 +121,7 @@ cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/r
 
 ### Drawer Breakpoint
 
-Be default, when the screen width is 800px or less , the drawer will be switched to popover mode. This is called the breakpoint. Popover mode means that the drawer will pop over the content area with an overlay. It is possible to configure the breakpoint by using the BBjAppLayout:setDrawerBreakpoint method and the breakpoint must be a valid media query.
+Be default, when the screen width is 800px or less , the drawer will be switched to popover mode. This is called the breakpoint. Popover mode means that the drawer will pop over the content area with an overlay. It is possible to configure the breakpoint by using the DwcAppLayout:setDrawerBreakpoint method and the breakpoint must be a valid media query.
 
 For instance, in the following sample. we configure the drawer breakpoint to be 500px or less.
 
@@ -153,29 +153,29 @@ The `AppLayout` class supports two events:
 
 These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').AppLayout} table='parts'/>
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').AppLayout} table='parts'/>
 
 ### Slots
 
 Listed below are the slots available for utilization within the `AppLayout` component. These slots act as placeholders within the component that control where the children of a customized element should be inserted within the shadow tree.
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').AppLayout} table='slots'/>
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').AppLayout} table='slots'/>
 
 ### CSS Properties
 
 These are the various CSS properties that are used in the component, with a short description of their use.
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').AppLayout} table='properties'/>
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').AppLayout} table='properties'/>
 
 ### Reflected Attributes
 
 The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').AppLayout} table="reflects"/>
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').AppLayout} table="reflects"/>
 
 ### Dependencies
 
 This component relies on the following components - see the related article for more detailed styling information:
 
-<TableBuilder tag='bbj-app-layout' table="dependencies"/>
+<TableBuilder tag='dwc-app-layout' table="dependencies"/>
 

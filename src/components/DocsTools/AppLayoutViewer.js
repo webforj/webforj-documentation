@@ -30,7 +30,7 @@ export default function AppLayoutViewer({url, mobile}) {
     const demoContent = css`
         width: 100%;
         height: 100%;
-        background: var(--bbj-surface-3);
+        background: var(--dwc-surface-3);
     `
 
   return (

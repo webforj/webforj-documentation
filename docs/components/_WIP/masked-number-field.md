@@ -59,7 +59,7 @@ In order to enforce certain ruled on numeric input, masking has been implemented
     <tr>
         <td align="center">#</td>
         <td align="center">✓</td>
-        <td align="left">The pound sign is used to suppress leading zeroes. It is replaced by the fill character for leading zeroes to the left of the decimal point. For trailing zeros to the right of the decimal point it is replaced by a space or a zero (see <a href="https://basishub.github.io/bbj-masks/docs/api/class/src/NumberMask/NumberMask.js~NumberMask.html" rel="nofollow">forceTrailingZeros option</a>). Any other time it is replaced by a digit.</td>
+        <td align="left">The pound sign is used to suppress leading zeroes. It is replaced by the fill character for leading zeroes to the left of the decimal point. For trailing zeros to the right of the decimal point it is replaced by a space or a zero (see <a href="https://basishub.github.io/dwc-masks/docs/api/class/src/NumberMask/NumberMask.js~NumberMask.html" rel="nofollow">forceTrailingZeros option</a>). Any other time it is replaced by a digit.</td>
     </tr>
     <tr>
         <td align="center">,</td>
@@ -138,4 +138,4 @@ height = '200px'
 
 ## Parts and CSS Properties
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').NumberField} />
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').NumberField} />

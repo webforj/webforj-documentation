@@ -75,4 +75,4 @@ height = '200px'
 
 ## Parts and CSS Properties
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').TextArea} />
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TextArea} />

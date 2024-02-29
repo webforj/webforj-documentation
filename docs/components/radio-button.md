@@ -13,7 +13,7 @@ import Chip from '@mui/material/Chip';
 
 <DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
 
-<DocChip tooltipText="The name of the web component that will render in the DOM." label="bbj-radio" href="https://basishub.github.io/basis-next/#/dwc/BBjRadioButton" clickable={false} iconName='code'/>
+<DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-radio" href="https://basishub.github.io/basis-next/#/dwc/DwcRadioButton" clickable={false} iconName='code'/>
 
 <JavadocLink type="engine" location="org/dwcj/component/optioninput/RadioButton" top='true'/>
 
@@ -195,25 +195,25 @@ Expanses are supported by use of the `Expanse` enum class. Below are the expanse
 
 These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').RadioButton} table='parts'/>
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').RadioButton} table='parts'/>
 
 ### CSS Properties
 
 These are the various CSS properties that are used in the component, with a short description of their use.
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').RadioButton} table='properties'/>
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').RadioButton} table='properties'/>
 
 ### Reflected Attributes
 
 The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').RadioButton} table="reflects"/>
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').RadioButton} table="reflects"/>
 
 ### Dependencies
 
 This component relies on the following components - see the related article for more detailed styling information:
 
-<TableBuilder tag='bbj-radio' table="dependencies"/>
+<TableBuilder tag='dwc-radio' table="dependencies"/>
 
 ## Best Practices 
 
@@ -229,4 +229,4 @@ To ensure an optimal user experience when using the RadioButton component, consi
 
 This component relies on the following components - see the related article for more detailed styling information:
 
-<TableBuilder tag='bbj-drawer' table="dependencies"/>
+<TableBuilder tag='dwc-drawer' table="dependencies"/>

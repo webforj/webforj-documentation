@@ -1,8 +1,8 @@
 ---
 sidebar_position: 0
-title: <bbj-list-edit>
+title: <dwc-datefield-spinner>
 sidebar_class_name: sidebar--item__hidden
-slug: list-edit
+slug: datefield-spinner
 // pagination_prev: null
 // pagination_next: null
 ---
@@ -17,12 +17,10 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info CLIENT COMPONENT
-This section outlines styling information for the **`<bbj-list-edit>`** component. This component is **client side only** - it cannot be instantiated on its own via the API, but may make up part of API components.
+This section outlines styling information for the **`<dwc-datefield-spinner>`** component. This component is **client side only** - it cannot be instantiated on its own via the API, but may make up part of API components.
 :::
 
-### Shadow Parts
-These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
-<TableBuilder tag='bbj-list-edit' table="parts"/>
+
 
 
 
@@ -30,10 +28,6 @@ These are the various parts of the shadow DOM for the component, which will be r
 
   The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
   
-  <TableBuilder tag='bbj-list-edit' table="reflects"/>
+  <TableBuilder tag='dwc-datefield-spinner' table="reflects"/>
 
-### Dependencies
 
-  This component relies on the following components - see the related article for more detailed styling information:
-  
-  <TableBuilder tag='bbj-list-edit' table="dependencies"/>

@@ -70,4 +70,4 @@ Listed below are the current supported expanse options for the choice box compon
 
 ## Parts and CSS Properties
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').ChoiceBox} />
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').ChoiceBox} />

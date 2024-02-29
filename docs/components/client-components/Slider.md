@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-title: <bbj-slider>
+title: <dwc-slider>
 sidebar_class_name: sidebar--item__hidden
 slug: slider
 // pagination_prev: null
@@ -17,23 +17,23 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info CLIENT COMPONENT
-This section outlines styling information for the **`<bbj-slider>`** component. This component is **client side only** - it cannot be instantiated on its own via the API, but may make up part of API components.
+This section outlines styling information for the **`<dwc-slider>`** component. This component is **client side only** - it cannot be instantiated on its own via the API, but may make up part of API components.
 :::
 
 ### Shadow Parts
 These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
-<TableBuilder tag='bbj-slider' table="parts"/>
+<TableBuilder tag='dwc-slider' table="parts"/>
 
 ### CSS Properties
 
   These are the various CSS properties that are used in the component, with a short description of their use.
   
-  <TableBuilder tag='bbj-slider' table="properties"/>
+  <TableBuilder tag='dwc-slider' table="properties"/>
 
 ### Reflected Attributes
 
   The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
   
-  <TableBuilder tag='bbj-slider' table="reflects"/>
+  <TableBuilder tag='dwc-slider' table="reflects"/>
 
 

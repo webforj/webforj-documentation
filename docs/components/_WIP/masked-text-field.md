@@ -115,4 +115,4 @@ height = '125px'
 
 ## Parts and CSS Properties
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').TextField} />
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TextField} />

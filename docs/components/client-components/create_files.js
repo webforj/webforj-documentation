@@ -6,7 +6,7 @@ if (!fs.existsSync(outputDirectory)) {
 }
 
 // Sample JSON data (replace with your actual data)
-const jsonUrl = 'https://basishub.github.io/basis-next/bbj-components.json';
+const jsonUrl = 'https://basishub.github.io/basis-next/docs/dwc-components.json';
 
 async function fetchData() {
   try {
@@ -26,7 +26,7 @@ jsonData.components.forEach((componentData) => {
   const {  tag, encapsulation, docsTags, styles, props, dependencies } = componentData;
   const partItems = docsTags?.filter((docTag) => docTag.name === "part");
 
-  const formattedTagName = tag.replace("bbj-", "");
+  const formattedTagName = tag.replace("dwc-", "");
   // Create the markdown content for each component
   const markdownContent = `---
 sidebar_position: 0

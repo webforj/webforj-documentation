@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-title: <bbj-popupmenu>
+title: <dwc-popupmenu>
 sidebar_class_name: sidebar--item__hidden
 slug: popupmenu
 // pagination_prev: null
@@ -17,23 +17,23 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info CLIENT COMPONENT
-This section outlines styling information for the **`<bbj-popupmenu>`** component. This component is **client side only** - it cannot be instantiated on its own via the API, but may make up part of API components.
+This section outlines styling information for the **`<dwc-popupmenu>`** component. This component is **client side only** - it cannot be instantiated on its own via the API, but may make up part of API components.
 :::
 
 ### Shadow Parts
 These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
-<TableBuilder tag='bbj-popupmenu' table="parts"/>
+<TableBuilder tag='dwc-popupmenu' table="parts"/>
 
 ### CSS Properties
 
   These are the various CSS properties that are used in the component, with a short description of their use.
   
-  <TableBuilder tag='bbj-popupmenu' table="properties"/>
+  <TableBuilder tag='dwc-popupmenu' table="properties"/>
 
 ### Reflected Attributes
 
   The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
   
-  <TableBuilder tag='bbj-popupmenu' table="reflects"/>
+  <TableBuilder tag='dwc-popupmenu' table="reflects"/>
 
 

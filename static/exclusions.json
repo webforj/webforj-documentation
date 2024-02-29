@@ -9,9 +9,9 @@
 
     ],
     "properties": [
-      "--bbj-button-selected-background",
-      "--bbj-button-selected-color",
-      "--bbj-button-separator-color"
+      "--dwc-button-selected-background",
+      "--dwc-button-selected-color",
+      "--dwc-button-separator-color"
     ],
     "reflects": [
       "toggleable", 

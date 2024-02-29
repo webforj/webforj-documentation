@@ -108,4 +108,4 @@ height = '620px'
 
 ## Parts and CSS Properties
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').Slider} />
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Slider} />

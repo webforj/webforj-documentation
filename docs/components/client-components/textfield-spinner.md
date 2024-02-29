@@ -1,8 +1,8 @@
 ---
 sidebar_position: 0
-title: <bbj-inputt-spinner>
+title: <dwc-textfield-spinner>
 sidebar_class_name: sidebar--item__hidden
-slug: inputt-spinner
+slug: textfield-spinner
 // pagination_prev: null
 // pagination_next: null
 ---
@@ -17,7 +17,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info CLIENT COMPONENT
-This section outlines styling information for the **`<bbj-inputt-spinner>`** component. This component is **client side only** - it cannot be instantiated on its own via the API, but may make up part of API components.
+This section outlines styling information for the **`<dwc-textfield-spinner>`** component. This component is **client side only** - it cannot be instantiated on its own via the API, but may make up part of API components.
 :::
 
 
@@ -28,6 +28,6 @@ This section outlines styling information for the **`<bbj-inputt-spinner>`** com
 
   The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
   
-  <TableBuilder tag='bbj-inputt-spinner' table="reflects"/>
+  <TableBuilder tag='dwc-textfield-spinner' table="reflects"/>
 
 

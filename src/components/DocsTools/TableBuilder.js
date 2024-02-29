@@ -8,7 +8,7 @@ export default function TableBuilder(props) {
   const [component, setComponent] = useState(null);
 
   useEffect(() => {
-    fetch("https://basishub.github.io/basis-next/bbj-components.json")
+    fetch("https://basishub.github.io/basis-next/dwc-components.json")
       .then((response) => response.json())
       .then((data) => {
         const selectedComponent = data.components.find(
@@ -147,7 +147,7 @@ export default function TableBuilder(props) {
           <ul>
             {dependencies.map((dependency, index) => (
               <li>
-                <Link to={'/docs/components/client-components/' + dependency.replace("bbj-", "").charAt(0).toUpperCase() + dependency.slice(5)} key={index}>{dependency}</Link>
+                <Link to={'/docs/components/client-components/' + dependency.replace("dwc-", "").charAt(0).toUpperCase() + dependency.slice(5)} key={index}>{dependency}</Link>
               </li>
             ))}
           </ul>

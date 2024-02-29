@@ -74,4 +74,4 @@ height = '350px'
 
 ## Parts and CSS Properties
 
-<TableBuilder tag={require('@site/docs/components/_bbj_control_map.json').ComboBox} />
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').ComboBox} />
