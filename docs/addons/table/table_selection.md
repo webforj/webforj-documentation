@@ -4,6 +4,23 @@ title: Selection
 draft: true
 ---
 
+The `Table` component provides various selection capabilities. There are methods for selecting a single item, multiple items, or programmatically managing selections.
+
+### Selection Mode
+
+The selection mode in the table determines how items can be selected by the user. It provides options for configuring the behavior of item selection. The Table class provides a method to set the selection mode:
+
+`setSelectionMode(SelectionMode selectionMode)`
+
+Available SelectionMode options include:
+
+>- `SINGLE` - (single selection) 
+>- `MULTI` - (multiple selection)
+>- `NONE` - (no selection).
+### Checkbox Selection
+
+### Selection Event
+
 1. Selection
 The table component provides flexible selection options to enhance user interaction.
 

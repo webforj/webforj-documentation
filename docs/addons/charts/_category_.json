@@ -1,0 +1,9 @@
+{
+  "label": "Google Charts",
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id" : "charts"
+  },
+  "draft": true
+}

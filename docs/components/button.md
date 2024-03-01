@@ -86,7 +86,6 @@ Below are examples of buttons with text to the left and right, as well as a butt
 path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonIcon' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonIcon.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Icon.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/icon_styles.css' 
 height="200px"
 />
 
@@ -102,7 +101,6 @@ Button components, like many others, can be disabled to convey to a user that a 
 path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonDisable' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonDisable.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Disable.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/disable_styles.css'
 />
 
 <br />

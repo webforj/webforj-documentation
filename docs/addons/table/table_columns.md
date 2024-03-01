@@ -10,11 +10,7 @@ The `Table` class utilizes `Column` classes to handle the creation of data colum
 
 ## Constructor
 
-Creating a `Column` can be done using the constructor, which takes a reference to the `Table` it is being added to, and an ID. Note that this ID will be auto generated if it is not provided. 
-
-`Column(Table<T> table, String id)`
-
-In addition to creating a standalone column, the `Table` contains a set of methods which can be used to quickly add new columns to a `Table`:
+To add a `Column` to a `Table`, use one of the set of provided methods:
 
 - `addColumn(Function<T, V> provider)`
 - `addColumn(String id, Function<T, V> provider)`
