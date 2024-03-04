@@ -71,12 +71,11 @@ function OpenNewWindowButton({ url }) {
       height: 35px;
       width: 35px;
       border: none;
-      background-color: none;
       justify-self: flex-end;
       margin-top: -5px;
       margin-bottom: -20px;
       background-color: transparent;
-
+      margin-right: 12px;
       
     `;
   
