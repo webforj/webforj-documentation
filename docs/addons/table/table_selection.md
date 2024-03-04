@@ -1,7 +1,6 @@
 ---
 sidebar_position: 3
 title: Selection
-draft: true
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
