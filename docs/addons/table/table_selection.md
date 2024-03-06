@@ -1,6 +1,7 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 title: Selection
+slug: selection
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
@@ -15,7 +16,7 @@ The `Table` component package emits several events related to row selection. The
 >- `TableItemDeselectEvent` - Emitted when a previously selected table item (row) is deselected. Developers can use this event to handle actions associated with row deselection.
 >- `TableItemSelectionChange` - Emitted when the overall selection in the table changes. This event provides a consolidated view of the selected items, allowing developers to respond to changes in the table's selection state.
 
-In the example below, information about the selected row will be displayed via the `onItemSelect()` method whenever a user selects a row:
+In the example below, a `TableItemSelectEvent` event will be fired whenever a user selects a row. The event can be handled by adding a listener to the table using the `onItemSelect()` method.
 
 <ComponentDemo 
 path='https://eu.bbx.kitchen/webapp/controlsamples?class=addondemos.tabledemos.TableSingleSelection' 
@@ -27,7 +28,9 @@ height='600px'
 
 The selection mode in the table determines how items can be selected by the user. It provides options for configuring the behavior of item selection. The Table class provides a method to set the selection mode:
 
-`setSelectionMode(SelectionMode selectionMode)`
+```java
+setSelectionMode(SelectionMode selectionMode)
+```
 
 Available SelectionMode options include:
 
