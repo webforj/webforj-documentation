@@ -1,13 +1,16 @@
 ---
 sidebar_position: 30
-title: Keyboard Interactions
+title: Interactivity
 slug: Interactivity
 ---
 
 The `Table` component will respond to various keyboard inputs from users to allow for more fine-grained interaction. The following list outlines the various behaviors when the designated key is pressed:
 
+
+## Keyboard Interations
+
 |Key|Behavior|
-|-|-|
+|:-:|-|
 |<kbd>Space</kbd>|Selects the current row.|
 |<kbd>Enter</kbd>|Focuses the cell, or the focusable element if the cell has a renderer.|
 |<kbd>Home</kbd>|Focuses the first cell of the first column and row.|

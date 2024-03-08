@@ -58,10 +58,10 @@ Developers have more control over the logic of server sorting. This allows for t
 
 
 :::info
-Server sorting is a performance-oriented strategy for dealing with datasets that exceed the capabilities of efficient client-side processing.
+Server sorting is a performance-oriented strategy for dealing with datasets that exceed the capabilities of efficient client-side processing, and is the default method used by the `Table`.
 :::
 
-## Comparators
+#### Comparators
 
 The `Column` component allows developers to use Java `Comparators` for dynamic and custom sorting. A `Comparator` is a mechanism used to order two objects of the same class, even if that class is user-defined. This functionality provides developers with the flexibility to customize how data is sorted, providing higher control over the default sorting behavior based on natural ordering.
 
@@ -78,5 +78,5 @@ In the above example, there is a specifies a custom comparator function which ta
 Using Comparators for column sorting is particularly useful when handling non-numeric values. They are also useful for implementing complex sorting algorithms.
 
 :::info
-By default, the `Table` will sort non-primitive values using the `toString()` method of Object, converting them to their string values and then sorting them.
+By default, the `Table` uses server side sorting, and sorts non-primitive values using the `toString()` method of Object, converting them to their string values and then sorting them.
 :::

@@ -12,9 +12,9 @@ The `Table` component provides various selection capabilities. There are methods
 
 The `Table` component package emits several events related to row selection. These events capture  changes in the selection state of `Table` rows. Below are the key selection events along with their descriptions:
 
->- `TableItemSelectEvent` -  Emitted when a table item (row) is selected. This event provides information about the selected item, allowing developers to respond to individual row selections.
->- `TableItemDeselectEvent` - Emitted when a previously selected table item (row) is deselected. Developers can use this event to handle actions associated with row deselection.
->- `TableItemSelectionChange` - Emitted when the overall selection in the table changes. This event provides a consolidated view of the selected items, allowing developers to respond to changes in the table's selection state.
+>- `TableItemSelectEvent` -  Emitted when one table item is selected.
+>- `TableItemDeselectEvent` - Emitted when one table item is deselected.
+>- `TableItemSelectionChange` - Emitted when the overall selection in the table changes, or when an additional selection is chosen in with multiple selection enabled.
 
 In the example below, a `TableItemSelectEvent` event will be fired whenever a user selects a row. The event can be handled by adding a listener to the table using the `onItemSelect()` method.
 

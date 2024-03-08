@@ -11,7 +11,7 @@ The `Table` class utilizes `Column` classes to handle the creation of data colum
 
 ## Factory Methods
 
-To add a `Column` to a `Table`, use one of the set of provided factory methods:
+To add a `Column` to a `Table`, use one of the set of provided `Table` factory methods:
 
 - `addColumn(Function<T, V> provider)`
 - `addColumn(String id, Function<T, V> provider)`
@@ -38,7 +38,7 @@ To set a value provider on a column, use one of the above factory methods that a
     }
 ```
 
-In this example, the "Product Name" column uses a custom value provider to format the product names before display. The `formatProductName()` function dynamically transforms raw data into a more readable representation.
+In this example, a column will attempt to access data from a JSON object, rendering it only if the data is not null.
 
 ## Pin Direction
 
