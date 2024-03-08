@@ -4,6 +4,7 @@ title: Table
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import ComponentDemoMultiple from '@site/src/components/DocsTools/ComponentDemoMultiple';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import EventTable from '@site/src/components/DocsTools/EventTable';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
@@ -17,16 +18,23 @@ import Chip from '@mui/material/Chip';
 
 <JavadocLink type="engine" location="org/dwcj/component/button/Button" top='true'/>
 
-:::warning
-The `Table` component's API may change in future versions.
+:::warning EXPERIMENTAL
+The table component is currently under heavy development and has not reached a stable status. However, any assistance testing would be appreciated.
+:::
+
+:::info
+To use the `Table` in your project, ensure snapshots are enabled, and include the following tag in your POM's dependencies:
+
+```xml
+<dependency>
+    <groupId>org.dwcj</groupId>
+    <artifactId>dwcj-table</artifactId>
+    <version>24.00-SNAPSHOT</version>
+</dependency>
+```
 :::
 
 The `Table` class is a versatile component designed for presenting tabular information in a structured and easily understandable manner. Optimized for handling large datasets with high performance, this component offers advanced visualization and a comprehensive suite of events for dynamic user engagement.
-
-See these sections for more information on:
-- [Columns](./table_columns.md)
-- [Selection](./table_selection.md)
-- [Sorting](./table_sorting.md)
 
 <ComponentDemo 
 path='https://eu.bbx.kitchen/webapp/controlsamples/DataTable?' 
@@ -34,55 +42,82 @@ javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/ja
 height='600px'
 />
 
-<!-- ## Creating and Populating a `Table`
+
+## Creating a `Table` 
+
+In order to create and populate a `Table` in an application, the following steps can be taken:
+
+#### 1. Creating an Entity Class
+
+Define a class to represent the entities (data) you want to display in the table. In the example, this class is MusicRecord.
+
+```java
+public class MusicRecord {
+    // Fields and methods to represent the attributes of each record
+}
+```
+
+#### 2. Create a Repository
+
+Once an entity class has been created, use this to fill a collection of these entities with the desired data.
+
+From this data, a `Repository` needs to be created for use within the `Table`. The `CollectionRepository` class is provided to turn any valid Java collection into a usable `Repository`, forgoing the need to implement your own `Repository` class.
+
+```java
+List<MusicRecord> data = new Gson().fromJson(
+    Assets.contentOf(
+        Assets.resolveContextUrl("context://data/CDStore.json")
+    ), new TypeToken<List<MusicRecord>>() {}
+);
+
+CollectionRepository<MusicRecord> dataRepository = new CollectionRepository<>(data);
+```
+
+#### 3. Instantiate `Table` and Add Columns
+
+Instantiate a new `Table` object, and use one of the provided factory methods to add the desired columns to a newly created `Table`:
+
+```java
+Table<MusicRecord> table = new Table<>();
+table.addColumn("Number", MusicRecord::getNumber);
+table.addColumn("Title", MusicRecord::getTitle);
+table.addColumn("Artist", MusicRecord::getArtist);
+table.addColumn("Genre", MusicRecord::getMusicType);
+table.addColumn("Cost", MusicRecord::getCost);
+```
+
+#### 4. Set the `Table` data
+
+Finally, set the `Repository` for the `Table` created in the previous step:
+
+```java
+table.setRepository(Service.getMusicRecords());
+```
+
+:::info
+Alternatively, the `setItems()` method can be passed any valid Java collection, which will create a `CollectionRepository` under the hood for you. 
+:::
+
+Below is an example of the above steps implemented to create a basic `Table` component:
 
 
-
-
-<ComponentDemo 
+<ComponentDemoMultiple 
 path='https://eu.bbx.kitchen/webapp/controlsamples?class=addondemos.tabledemos.TableBasic' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableBasic.java'
-height='600px'
-/> -->
-
-
-## Column Configuration
-
-To render the `Table` above, use the `addColumn()` method to delineate which columns the `Table` should have, as well as providing data to the `Table` using the `setRepository()` method.
-
-For more information on the `Column`, see **[this article](./table_columns.md)**.
-
-## Rich Content and Client-Side Rendering
-
-Tables in DWCj are also configurable using the following tools to display rich content within cells. This includes various multimedia elements, interactive components, or formatted data within the table cells.
-
-These elements are rendered client-side, meaning the process of generating and displaying rich content is done directly in the browser, using JavaScript only when needed, increasing performance of applications using the `Table`.
-
-### Lodash Renderers
-
-Renderers offer a powerful mechanism for customizing the way data is displayed within a `Table`. The primary class, `Renderer`, is designed to be extended to create custom renderers based on lodash templates, enabling dynamic and interactive content rendering. 
-
-Lodash templates enable the insertion of JavaScript logic directly into HTML, making them highly effective for rendering complex cell data in a table. This approach allows for the dynamic generation of HTML based on cell data, facilitating rich and interactive table cell content.
-
-### Available Renderers
-
-While custom renderers can be created, there are multiple pre-configured renderers available for use within a `Table`. The following are available for developers to use out of the box without the need to create a custom renderer:
-
->- `ButtonRenderer` - Renderer for a DWCj button.
->- `NativeButtonRenderer` - Renderer for a native HTML button.
->- `ElementRenderer` - The base class for all renderers which render an HTML tag **with** content.
->- `VoidElementRenderer` - The base class for all renderers which render a void element, or an HTML tag **without** content.
->- `IconRenderer` - Renderer for an icon - **[see this](../../components/dwc-icon.md)** article for more information on icons.
-
-Renderers currently come with a `RendererClickEvent` available for use by developers, and allow for custom events to be written as well should they be needed.
-
-Below is an example of a `Table` that uses renderers to display rich content:
-
-<ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=addondemos.tabledemos.TableRichContent' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableRichContent.java'
+urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
+'https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
 height='600px'
 />
+
+<!-- 
+## Column Configuration
+
+Various column configurations and tools exist to allow for customizations of a `Table` at the individual `Column` level. For more information on the `Column`, see **[this article](./table_columns.md)**.
+
+## Data Rendering
+
+The `Table` component provides various tools to further customize the display of various data. **[This section](./table_rendering.md)** of the guide goes over the options available when using the `Table` within an application.
+
 
 ## Selection
 
@@ -96,51 +131,15 @@ Sorting is supported out of the box by the `Table` component, allowing for more 
 
 The details of `Table` sorting are outlined in **[this article](./table_sorting.md)**. 
 
-## Virtual Scrolling
+## Large Datasets
 
-The `Table` component is built to efficiently handle large datasets by utilizing virtual scrolling, which renders only the visible rows, thus improving performance and reducing resource consumption. The below `Table` shows all olympic winners - a large dataset that benefits greatly from the table's virtual scrolling functionality:
-
-<ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=addondemos.tabledemos.TableOlympicWinners' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableOlympicWinners.java'
-height='600px'
-/>
-
-### Overscan
-
-Setting the table's `Overscan` property determines how many rows to render outside of the visible area. This setting can be configured with the `setOverscan(double value)` method.
-
-A higher overscan value can reduce the frequency of rendering when scrolling, but at the cost of rendering more rows than are visible at any one time. This can be a trade-off between rendering performance and scroll smoothness.
+The `Table` component handles large datasets efficiently by utilizing virtual scrolling to optimize performance. For more information on virtual scrolling and settings related to this functionality, see **[this article](./table_large_data.md)**.
 
 
 ## Editing and Refreshing
 
-Editing data within the `Table` works via interaction with the `Repository` containing the data for the `Table`. The `Repository` serves as a bridge between the `Table` and the underlying dataset, offering methods for data retrieval, modification, and refreshing. Below is an example which implements behavior to edit the "Title" of a desired row based.
-
-<ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=addondemos.tabledemos.TableEditData' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableEditData.java'
-height='600px'
-/>
-
-In the above example, the `TitleEditorComponent` class facilitates the editing of the "Title" field for a selected `MusicRecord`. The component includes an input field for the new title, along with "Save" and "Cancel" buttons.
-
-To connect the editing component with the `Table`, an "Edit" button is added to the `Table` via a `VoidElementRenderer`. Clicking this button triggers the `edit()` method of the `TitleEditorComponent`, allowing users to modify the "Title".
-
-### Commit Method
-
-Once the user modifies the title and clicks the "Save" button, the `TitleEditorComponent` triggers the `save()` method. This method updates the title of the corresponding `MusicRecord` and dispatches a custom `SaveEvent`.
-
-The real-time update of data in the repository is achieved through the `commit()` method. This method is employed within the `onSave` event listener, ensuring that changes made through the editing component are reflected in the underlying dataset.
+The `Repository` class contains the data for the `Table`, and is responsible for refreshing it when the data changes. For a more in-depth description, see **[this section](./table_edit_refresh.md)**.
 
 ## Filtering
 
-The `Table` component allows you to implement filtering functionality to narrow down displayed data based on specific criteria. Filtering can be achieved by defining a filtering criteria using the `setFilter(Predicate<T> filter)` method provided by the `Repository` associated with the table.
-
-<ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=addondemos.tabledemos.TableFiltering' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableFiltering.java'
-height='600px'
-/>
-
-In the above example, the `setFilter()` method is used to define a filtering criteria based on the title of `MusicRecord`. The filter is then applied when the user modifies the content of the search field, updating the searchTerm and triggering the `commit()` method to refresh the displayed data.
+While the `Table` component itself does not provide filtering, this functionality can be implemented using various methods outlined in **[this section](./table_filtering.md)**. -->

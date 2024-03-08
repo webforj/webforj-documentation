@@ -1,39 +1,46 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 title: Selection
+slug: selection
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 
 The `Table` component provides various selection capabilities. There are methods for selecting a single item, multiple items, or programmatically managing selections.
 
-### Selection Event
-
-The `Table` component package emits several events related to row selection. These events capture  changes in the selection state of `Table` rows. Below are the key selection events along with their descriptions:
-
->- `TableItemSelectEvent` -  Emitted when a table item (row) is selected. This event provides information about the selected item, allowing developers to respond to individual row selections.
->- `TableItemDeselectEvent` - Emitted when a previously selected table item (row) is deselected. Developers can use this event to handle actions associated with row deselection.
->- `TableItemSelectionChange` - Emitted when the overall selection in the table changes. This event provides a consolidated view of the selected items, allowing developers to respond to changes in the table's selection state.
-
-In the example below, information about the selected row will be displayed via the `onItemSelect()` method whenever a user selects a row:
-
-<ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=addondemos.tabledemos.TableSingleSelection' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableSingleSelection.java'
-height='600px'
-/>
-
 ### Selection Mode
 
 The selection mode in the table determines how items can be selected by the user. It provides options for configuring the behavior of item selection. The Table class provides a method to set the selection mode:
 
-`setSelectionMode(SelectionMode selectionMode)`
+```java
+setSelectionMode(SelectionMode selectionMode)
+```
 
 Available SelectionMode options include:
 
 >- `SINGLE` - (single selection) 
 >- `MULTI` - (multiple selection)
 >- `NONE` - (no selection).
+
+### Selection Event
+
+The `Table` component package emits several events related to row selection. These events capture  changes in the selection state of `Table` rows. Below are the key selection events along with their descriptions:
+
+>- `TableItemSelectEvent` -  Emitted when a table item is selected.
+>- `TableItemDeselectEvent` - Emitted when a table item is deselected.
+>- `TableItemSelectionChange` - Emitted when the overall selection in the table changes, or when an additional selection is chosen.
+
+:::info
+The `TableItemSelectEvent` and `TableItemDeselectEvent` are not triggered when multiple selection mode is active, and the selection is made via the header checkbox. In this case, the `TableItemSelectionChange` should be used instead.
+:::
+
+In the example below, a `TableItemSelectEvent` event will be fired whenever a user selects a row. The event can be handled by adding a listener to the table using the `onItemSelect()` method.
+
+<ComponentDemo 
+path='https://eu.bbx.kitchen/webapp/controlsamples?class=addondemos.tabledemos.TableSingleSelection' 
+javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableSingleSelection.java'
+height='600px'
+/>
 
 ### Checkbox Selection
 
