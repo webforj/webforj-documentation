@@ -5,6 +5,7 @@ slug: rendering
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import ComponentDemoMultiple from '@site/src/components/DocsTools/ComponentDemoMultiple';
 
 # Rich Content and Client-Side Rendering
 
@@ -98,9 +99,11 @@ Renderers allow for custom events to be written as well by extending any of the 
 
 Below is an example of a `Table` that uses renderers to display rich content:
 
-<ComponentDemo 
+<ComponentDemoMultiple 
 path='https://eu.bbx.kitchen/webapp/controlsamples?class=addondemos.tabledemos.TableRichContent' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableRichContent.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/tablestyles/richcontent/styles.css'
+urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
+'https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
 height='600px'
 />

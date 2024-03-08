@@ -5,12 +5,15 @@ slug: sorting
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import ComponentDemoMultiple from '@site/src/components/DocsTools/ComponentDemoMultiple';
 
 Sorting enables users to organize data within a column in a specific order, enhancing data readability and analysis. This is useful when users need to quickly find the highest or lowest values in a particular column.
 
-<ComponentDemo 
+<ComponentDemoMultiple 
 path='https://eu.bbx.kitchen/webapp/controlsamples?class=addondemos.tabledemos.TableSorting' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableSorting.java'
+urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
+'https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
 height='600px'
 />
 
@@ -67,9 +70,11 @@ The `Column` component allows developers to use Java `Comparators` for dynamic a
 
 To leverage `Comparator` sorting in a `Column`, you can use the `setComparator()` method. This method allows you to define a custom `Comparator` function that dictates the sorting logic.
 
-<ComponentDemo 
+<ComponentDemoMultiple 
 path='https://eu.bbx.kitchen/webapp/controlsamples?class=addondemos.tabledemos.TableColumnComparator' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableColumnComparator.java'
+urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
+'https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
 height='600px'
 />
 

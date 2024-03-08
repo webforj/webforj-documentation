@@ -36,9 +36,11 @@ To use the `Table` in your project, ensure snapshots are enabled, and include th
 
 The `Table` class is a versatile component designed for presenting tabular information in a structured and easily understandable manner. Optimized for handling large datasets with high performance, this component offers advanced visualization and a comprehensive suite of events for dynamic user engagement.
 
-<ComponentDemo 
+<ComponentDemoMultiple 
 path='https://eu.bbx.kitchen/webapp/controlsamples/DataTable?' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/DataTable.java'
+urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
+'https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
 height='600px'
 />
 
@@ -108,38 +110,3 @@ urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/j
 'https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
 height='600px'
 />
-
-<!-- 
-## Column Configuration
-
-Various column configurations and tools exist to allow for customizations of a `Table` at the individual `Column` level. For more information on the `Column`, see **[this article](./table_columns.md)**.
-
-## Data Rendering
-
-The `Table` component provides various tools to further customize the display of various data. **[This section](./table_rendering.md)** of the guide goes over the options available when using the `Table` within an application.
-
-
-## Selection
-
-The `Table` component provides various selection capabilities, including methods for the configuration of selection type, programmatically managing selections, and events.
-
-The details of `Table` selection are outlined in **[this article](./table_selection.md)**. 
-
-## Sorting
-
-Sorting is supported out of the box by the `Table` component, allowing for more efficient visualization of data for users.
-
-The details of `Table` sorting are outlined in **[this article](./table_sorting.md)**. 
-
-## Large Datasets
-
-The `Table` component handles large datasets efficiently by utilizing virtual scrolling to optimize performance. For more information on virtual scrolling and settings related to this functionality, see **[this article](./table_large_data.md)**.
-
-
-## Editing and Refreshing
-
-The `Repository` class contains the data for the `Table`, and is responsible for refreshing it when the data changes. For a more in-depth description, see **[this section](./table_edit_refresh.md)**.
-
-## Filtering
-
-While the `Table` component itself does not provide filtering, this functionality can be implemented using various methods outlined in **[this section](./table_filtering.md)**. -->
