@@ -26,9 +26,13 @@ Available SelectionMode options include:
 
 The `Table` component package emits several events related to row selection. These events capture  changes in the selection state of `Table` rows. Below are the key selection events along with their descriptions:
 
->- `TableItemSelectEvent` -  Emitted when one table item is selected. This is not triggered when multiple selection mode is active.
->- `TableItemDeselectEvent` - Emitted when one table item is deselected. This is not triggered when multiple selection mode is active.
->- `TableItemSelectionChange` - Emitted when the overall selection in the table changes, or when an additional selection is chosen. This is the event that should be used when multiple selection is enabled.
+>- `TableItemSelectEvent` -  Emitted when a table item is selected.
+>- `TableItemDeselectEvent` - Emitted when a table item is deselected.
+>- `TableItemSelectionChange` - Emitted when the overall selection in the table changes, or when an additional selection is chosen.
+
+:::info
+The `TableItemSelectEvent` and `TableItemDeselectEvent` are not triggered when multiple selection mode is active, and the selection is made via the header checkbox. In this case, the `TableItemSelectionChange` should be used instead.
+:::
 
 In the example below, a `TableItemSelectEvent` event will be fired whenever a user selects a row. The event can be handled by adding a listener to the table using the `onItemSelect()` method.
 
