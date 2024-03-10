@@ -13,7 +13,7 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 Labels can be easily added above the Number Field without the need to create a separate Label component above the component. Use the `setAttribute()` function to create a label. The attribute to be changed is `label`, and the value should be the desired label text.
 
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.numericboxdemos.NumericboxLabel' 
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.numericboxdemos.NumericboxLabel' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/numericboxdemos/NumericboxLabel.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/numericbox/Label.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/numericboxstyles/label_styles.css' 
@@ -28,7 +28,7 @@ height = '150px'
 It is also possible to configure text that appears in the input when it has no value set by utilizing the placeholder attribute. Use the `setAttribute()` function to set placeholder text. The attribute to be changed is `placeholder`, and the value should be the desired text.
 
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.numericboxdemos.NumericboxPlaceholder' 
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.numericboxdemos.NumericboxPlaceholder' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/numericboxdemos/NumericboxPlaceholder.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/numericbox/Placeholder.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/numericboxstyles/placeholder_styles.css' 
@@ -122,7 +122,7 @@ DWCJ Number Field components come with 5 expanses for quick styling without the 
 Below are the various expanses supported for the Number Field component: <br/>
 
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.numericboxdemos.NumericboxExpanses' 
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.numericboxdemos.NumericboxExpanses' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/numericboxdemos/NumericboxExpanses.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/numericbox/Expanse.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/numericboxstyles/expanse_styles.css' 

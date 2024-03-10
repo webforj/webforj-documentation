@@ -20,7 +20,7 @@ It is possible to everything with the `Element` class itself, without using `Ele
 Throughout this guide, we'll be implementing the [Shoelace QR code web component](#) using the `ElementComposite` class.
 
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=demos.webcomponents.elementcomposite.QRDemo' 
+path='https://demo.webforj.com/webapp/controlsamples?class=demos.webcomponents.elementcomposite.QRDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/demos/webcomponents/elementcomposite/QRDemo.java'
 height='175px'
 />
@@ -63,7 +63,7 @@ String title = get(TITLE, false, String);
 In the demo below, properties have been added for the QR code based on the documentation for the web component. Methods have then been implemented which allow users to get and set the various properties that have been implemented.
 
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=demos.webcomponents.elementcomposite.QRProperties' 
+path='https://demo.webforj.com/webapp/controlsamples?class=demos.webcomponents.elementcomposite.QRProperties' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/demos/webcomponents/elementcomposite/QRProperties.java'
 height='250px'
 />
@@ -85,7 +85,7 @@ The `ElementComposite` events are different than `Element` events, in that this 
 
 In the demonstration below, a click event has been created and then added to the QR code component. This event, when fired, will display the "X" coordinate of the mouse at the time of clicking the component, which is provided to the Java event as data. A method is then implemented to allow the user to access this data, which is how it is displayed in the application.
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=demos.webcomponents.elementcomposite.QREvent' 
+path='https://demo.webforj.com/webapp/controlsamples?class=demos.webcomponents.elementcomposite.QREvent' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/demos/webcomponents/elementcomposite/QREvent.java'
 height='300px'
 />

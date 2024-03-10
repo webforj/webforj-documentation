@@ -22,7 +22,7 @@ The `DateField` class is a Field component, and as such shares all of the common
 The `DateField` is a user interface component that allows users to input or select dates. It provides an intuitive and efficient way to handle date-related information in various applications. This section outlines the best practices for using the `DateField` component effectively.
 
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.fielddemos.DateFieldDemo' 
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.fielddemos.DateFieldDemo' 
 javaC=''
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/fielddemos/DateFieldDemo.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/fieldstyles/date_field_styles.css'

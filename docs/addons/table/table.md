@@ -37,7 +37,7 @@ To use the `Table` in your project, ensure snapshots are enabled, and include th
 The `Table` class is a versatile component designed for presenting tabular information in a structured and easily understandable manner. Optimized for handling large datasets with high performance, this component offers advanced visualization and a comprehensive suite of events for dynamic user engagement.
 
 <ComponentDemoMultiple 
-path='https://eu.bbx.kitchen/webapp/controlsamples/DataTable?' 
+path='https://demo.webforj.com/webapp/controlsamples/DataTable?' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/DataTable.java'
 urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
 'https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
@@ -104,7 +104,7 @@ Below is an example of the above steps implemented to create a basic `Table` com
 
 
 <ComponentDemoMultiple 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=addondemos.tabledemos.TableBasic' 
+path='https://demo.webforj.com/webapp/controlsamples?class=addondemos.tabledemos.TableBasic' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableBasic.java'
 urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
 'https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}

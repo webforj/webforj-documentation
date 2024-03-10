@@ -38,7 +38,7 @@ The `TableItemSelectEvent` and `TableItemDeselectEvent` are not triggered when m
 In the example below, a `TableItemSelectEvent` event will be fired whenever a user selects a row. The event can be handled by adding a listener to the table using the `onItemSelect()` method.
 
 <ComponentDemoMultiple 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=addondemos.tabledemos.TableSingleSelection' 
+path='https://demo.webforj.com/webapp/controlsamples?class=addondemos.tabledemos.TableSingleSelection' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableSingleSelection.java'
 urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
 'https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
@@ -52,7 +52,7 @@ Checkbox selection is enabled when the selection mode is `MULTI`, and allows use
 By using the `setCheckboxSelection(boolean checkboxSelection)` method, checkboxes can be configured to be displayed next to each row, allowing users to select items. The program below shows multiple selection and checkbox selection enabled:
 
 <ComponentDemoMultiple 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=addondemos.tabledemos.TableMultiSelection' 
+path='https://demo.webforj.com/webapp/controlsamples?class=addondemos.tabledemos.TableMultiSelection' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableMultiSelection.java'
 urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
 'https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}

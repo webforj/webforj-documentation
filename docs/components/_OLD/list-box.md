@@ -13,7 +13,7 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 Labels can be easily added above the component without the need to create a separate Label component above the component. Use the `setAttribute()` function to create a label. The attribute to be changed is `label`, and the value should be the desired label text.
 
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxLabel' 
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxLabel' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxLabel.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/listbox/Label.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/listboxstyles/label_styles.css' 
@@ -29,7 +29,7 @@ By default, the list box is configured to allow selection of a single item at a 
 items using the `Shift` for contiguous entry selection and `Control` (Windows) or `Command` (Mac) for separate, multiple item selection. Use the `setMultipleSelection()` function to change this property. True will enable multiple selection, false disables it. 
 
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxMultipleSelection' 
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxMultipleSelection' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxMultipleSelection.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/listbox/MultipleSelection.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/listboxstyles/multiple_selection.css' 
@@ -44,7 +44,7 @@ height = '250px'
 Below are the various expanses supported for the list box component: <br/>
 
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxExpanses' 
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxExpanses' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxExpanses.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/listbox/Expanses.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/listboxstyles/expanse_styles.css' 

@@ -22,7 +22,7 @@ The `DateTimeField` class is a Field component, and as such shares all of the co
 The `NumberField` component can be used to accept numerical input from the user. It ensures that only valid numeric values are entered and provides a convenient interface for inputting numbers.
 
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.fielddemos.NumberFieldDemo' 
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.fielddemos.NumberFieldDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/fielddemos/NumberFieldDemo.java'
 javaC=''
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/fieldstyles/date_field_styles.css'

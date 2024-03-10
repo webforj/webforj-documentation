@@ -101,7 +101,7 @@ This approach minimizes the need to query the component for information, as the 
 Below is a demonstration showing the addition of a <JavadocLink type="engine" location="org/dwcj/component/button/event/ButtonClickEvent"  code="true">ButtonClickEvent</JavadocLink> to a [`Button`](#). This  [`Button`](#) also uses information coming with the event's payload to display information on the screen.
 
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.buttondemos.ButtonEvent' 
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.buttondemos.ButtonEvent' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonEvent.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Event.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/event_styles.css'

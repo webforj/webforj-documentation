@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 const config = {
   title: 'The Dynamic Web Client for Java',
   tagline: 'Develop your Progressive Web App in Java and deploy it to the BBj application server',
-  url: 'https://dwcjava.github.io/',
+  url: 'https://webforj.github.io/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -128,7 +128,7 @@ const config = {
           // {to: '/live_demo', label: 'Live Demo', position: 'left'},
           // {to: '/tutorials/intro', label: 'Tutorials', position: 'left'},
           {
-            href: 'https://github.com/DwcJava',
+            href: 'https://github.com/webforj',
             label: 'GitHub',
             position: 'right',
           },

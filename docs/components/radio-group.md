@@ -14,7 +14,7 @@ The `RadioButtonGroup` class is used to group related radio buttons together, wh
 
 
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.radiobuttondemos.RadioButtonGroupDemo' 
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.radiobuttondemos.RadioButtonGroupDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/radiobuttondemos/RadioButtonGroupDemo.java'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/radiobuttonstyles/radiobutton_styles.css'
 height="200px"

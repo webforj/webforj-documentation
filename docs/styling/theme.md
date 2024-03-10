@@ -62,7 +62,7 @@ html[data-app-theme='new-theme'] {
 
 ### Using the Themer
 
-The [Themer tool](https://eu.bbx.kitchen/webapp/DWCThemer) allows you to modify the various palettes and colors supported by the DWCJ to either override an existing theme, or creating your own.
+The [Themer tool](https://demo.webforj.com/webapp/DWCThemer) allows you to modify the various palettes and colors supported by the DWCJ to either override an existing theme, or creating your own.
 
 To do this, open the tool, and modify the various color, typography, spacing and other options to your preferred values. Once this has been done, export the theme by clicking the "Export" button at the top left of the screen.
 

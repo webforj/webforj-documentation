@@ -14,7 +14,7 @@ The drawer is a container that slides into the viewport to expose additional opt
 
 The Drawer component can be used in many different situations, such as by providing a navigation menu that can be toggled, a panel that displays supplementary or contextual information, or to optimize usage on a mobile device. The following example will show a mobile application that uses the DWCJ's AppLayout component, and displays a "Welcome Popup" drawer at the bottom when first loaded. Additionally, a navigational Drawer component can be toggled in the application by clicking on the hamburger menu.
 
-<AppLayoutViewer url='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerWelcome' mobile='true'/>
+<AppLayoutViewer url='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerWelcome' mobile='true'/>
 
 <ComponentDemo 
 frame="hidden"
@@ -41,7 +41,7 @@ Drawer newDrawer = new Drawer()
 ```
 
 <ComponentDemo
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerDemo'
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerDemo'
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerDemo.java'
 height='600px'
 />
@@ -61,7 +61,7 @@ By automatically focusing on the first item, the developer ensures that users ca
 This property can also be particularly beneficial for individuals who rely on keyboard navigation or assistive technologies such as screen readers. It provides a clear starting point within the drawer and allows users to access the desired functionality without unnecessary manual input.
 
 <ComponentDemo
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerAutoFocus'
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerAutoFocus'
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerAutoFocus.java'
 height='600px'
 />
@@ -110,7 +110,7 @@ The Drawer's max size property is particularly beneficial when dealing with resp
 When the drawer's content exceeds the defined maximum size, developers can implement appropriate techniques to handle overflow, such as scrolling within the drawer or utilizing additional UI patterns like tabs or accordions. This helps maintain a clean and organized interface while accommodating larger amounts of content. -->
 <!-- 
 <ComponentDemo
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerSize'
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerSize'
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerSize.java'
 height='600px'
 /> -->
@@ -139,7 +139,7 @@ The placement property allows developers to choose the most appropriate position
 By leveraging the placement property, developers can create intuitive and efficient user interfaces. For example, placing the drawer on the left or right side allows for quick access to additional functionalities or navigation options, while top or bottom placements are well-suited for contextual information or supplementary content.
 
 <ComponentDemo
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerPlacement'
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerPlacement'
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerPlacement.java'
 height='600px'
 />

@@ -15,7 +15,7 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 The text field can be easily labeled without the needing to create an extra label component using the `setAttribute()` method and passing the desired label as a string, as shown below: <br/>
 
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.stringeditdemos.StringEditLabelDemo' 
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.stringeditdemos.StringEditLabelDemo' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/stringeditdemos/StringEditLabelDemo.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/stringedit/Label.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/stringeditboxstyles/string_edit_styles.css' 
@@ -83,7 +83,7 @@ The DWCJ's text field supports masking - the following table describes the vario
 It is also possible to set placeholder text within the component to better help users understand what type of input is expected. Similar to a label, this can be accomplished using the `setAttribute()` method: <br/>
 
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.stringeditdemos.StringEditPlaceholder' 
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.stringeditdemos.StringEditPlaceholder' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/stringeditdemos/StringEditPlaceholder.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/stringedit/Placeholder.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/stringeditboxstyles/string_edit_styles.css' 
@@ -99,7 +99,7 @@ Additionally, the text field come with 5 expanses for quick styling without the 
 Below are the various expanses supported for the text field component: <br/>
 
 <ComponentDemo 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=componentdemos.stringeditdemos.StringEditExpanse' 
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.stringeditdemos.StringEditExpanse' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/stringeditdemos/StringEditExpanse.java'
 javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/stringedit/Expanses.txt'
 cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/stringeditboxstyles/string_edit_styles.css' 

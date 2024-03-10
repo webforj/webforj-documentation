@@ -10,7 +10,7 @@ import ComponentDemoMultiple from '@site/src/components/DocsTools/ComponentDemoM
 Editing data within the `Table` works via interaction with the `Repository` containing the data for the `Table`. The `Repository` serves as a bridge between the `Table` and the underlying dataset, offering methods for data retrieval, modification, and refreshing. Below is an example which implements behavior to edit the "Title" of a desired row based.
 
 <ComponentDemoMultiple 
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=addondemos.tabledemos.TableEditData' 
+path='https://demo.webforj.com/webapp/controlsamples?class=addondemos.tabledemos.TableEditData' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableEditData.java'
 urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TitleEditorComponent.java']}
 height='600px'

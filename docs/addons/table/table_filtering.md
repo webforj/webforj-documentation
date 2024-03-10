@@ -9,7 +9,7 @@ import ComponentDemoMultiple from '@site/src/components/DocsTools/ComponentDemoM
 The `Table` component allows you to implement filtering functionality to narrow down displayed data based on specific criteria. Filtering can be achieved by defining a filtering criteria using the `setFilter(Predicate<T> filter)` method provided by the `Repository` associated with the table.
 
 <ComponentDemoMultiple
-path='https://eu.bbx.kitchen/webapp/controlsamples?class=addondemos.tabledemos.TableFiltering' 
+path='https://demo.webforj.com/webapp/controlsamples?class=addondemos.tabledemos.TableFiltering' 
 javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableFiltering.java'
 height='600px'
 />
