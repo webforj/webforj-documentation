@@ -72,7 +72,7 @@ Button submit = new Button("Submit");
 
 ## Adding Icons to Buttons
 
-In addition to, or instead of having text on a button, it is possible to add an icon to a button as well. To add these icons, set the button's text to have an `<html>` tag, with a `<dwc-icon>` tag inside with the name attribute set accordingly. In addition to an icon, include text to the left or right of the `<dwc-icon>` tag to include a label as well. Icons added to the left and/or right of the button should be done using the `prefix` and `suffix` slots.
+In addition to, or instead of having text on a `Button`, it is possible to add an icon to a button as well. To add these icons, set the button's text to have an `<html>` tag, with a `<dwc-icon>` tag inside with the name attribute set accordingly. In addition to an icon, include text to the left or right of the `<dwc-icon>` tag to include a label as well. Icons added to the left and/or right of the button should be done using the `prefix` and `suffix` slots.
 
 To read more about customizing, configuring and styling icons, read [**this page**](../components/dwc-icon).
 
