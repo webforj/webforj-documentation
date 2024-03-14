@@ -9,7 +9,7 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 <JavadocLink type="engine" location="org/dwcj/component/Component" top='true'/>
 
-Components are fundamental building blocks that can be added to a window, providing user interface functionality and custom behavior. In the DWCj, the `Component` class serves as the foundation for all components within the engine.
+Components are fundamental building blocks that can be added to a window, providing user interface functionality and custom behavior. In Webforj, the `Component` class serves as the foundation for all components within the engine.
 
 ## Lifecycle Management
 
@@ -58,7 +58,7 @@ Unlike the previous three methods, `whenAttached()` is meant to be explicitly ca
 ```java
 public class Demo extends App {
   @Override
-  public void run() throws DwcjException {
+  public void run() throws WebforjException {
     Frame window = new Frame();
 
     Button button = new Button(); 
@@ -102,7 +102,7 @@ This can be helpful in many situations where having a unique, server-size identi
 
 #### Client-Side Component ID
 
-Client-Side IDs allow for the user to obtain the client representation of the server component created in Java. All provided DWCj components have an implementation of this ID provided. If you want to obtain access to and use the client-side component, you can execute `object.get()` with the client ID to obtain the desired client component.
+Client-Side IDs allow for the user to obtain the client representation of the server component created in Java. All provided Webforj components have an implementation of this ID provided. If you want to obtain access to and use the client-side component, you can execute `object.get()` with the client ID to obtain the desired client component.
 
 :::important
 This ID is **not** the ID attribute of the element in the DOM.
@@ -112,7 +112,7 @@ In the below sample, an `onClick` event is added to a button, which is then fire
 
 ```java
 @Override
-public void run() throws DwcjException {
+public void run() throws WebforjException {
   Frame frame = new Frame();
   Button btn = new Button("Click me");
   btn.onClick(e -> {

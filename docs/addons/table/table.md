@@ -27,8 +27,8 @@ To use the `Table` in your project, ensure snapshots are enabled, and include th
 
 ```xml
 <dependency>
-    <groupId>org.dwcj</groupId>
-    <artifactId>dwcj-table</artifactId>
+    <groupId>com.webforj</groupId>
+    <artifactId>webforj-table</artifactId>
     <version>24.00-SNAPSHOT</version>
 </dependency>
 ```
@@ -38,9 +38,9 @@ The `Table` class is a versatile component designed for presenting tabular infor
 
 <ComponentDemoMultiple 
 path='https://demo.webforj.com/webapp/controlsamples/DataTable?' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/DataTable.java'
-urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
-'https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/DataTable.java'
+urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
+'https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
 height='600px'
 />
 
@@ -105,8 +105,8 @@ Below is an example of the above steps implemented to create a basic `Table` com
 
 <ComponentDemoMultiple 
 path='https://demo.webforj.com/webapp/controlsamples?class=addondemos.tabledemos.TableBasic' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableBasic.java'
-urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
-'https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/TableBasic.java'
+urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
+'https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
 height='600px'
 />

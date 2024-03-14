@@ -95,7 +95,7 @@ function HomepageTitle(){
 
   const titleStyles = css`
     max-width: 50%;
-    font-size: 5em;
+    font-size: 4em;
     /* color: black; */
     font-weight: bold;
     text-align: center;
@@ -146,11 +146,11 @@ function HomepageTitle(){
   return(
     <div css={headerStyles}>
       {/* <b css={versionStyles}>BBj Version: 22.XX.? </b> */}
-      <h1 css={titleStyles}>
-        The Dynamic Web Client for Java
-      </h1>
+      <h2 css={titleStyles}>
+        Webforj
+      </h2>
       <p css={descriptionStyles}>
-        The DWCJ provides a robust and flexible framework that can help you deliver a modern and engaging web user interface with ease. In Java.
+        A robust and flexible framework that can help you deliver a modern and engaging web user interface with ease. In Java.
       </p>
       <div css={buttonStyles}>
         <Link 
@@ -236,7 +236,7 @@ function HomepageAnnoucement(){
       />
       <div css={infoStyles}>
         <h2 css={titleStyles}>Catch us at Javaland 2024!</h2>
-        <p css={descriptionStyles}>Come say hello and tell us what you think about the new Dynamic Web Client for Java at the Javaland conference this April at Nürburgring.</p>
+        <p css={descriptionStyles}>Come say hello and tell us what you think about the new Webforj Framework at the Javaland conference this April at Nürburgring.</p>
         <Link 
           className="button button--primary button--lg"
           to='https://www.javaland.eu/de/home/'>
@@ -263,7 +263,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Build your modern web applications with the DWCJ.">
+      description="Build your modern web applications with Webforj.">
         <div css={mainStyles}>
         <HomepageTitle />
         <HomepageAnnoucement />

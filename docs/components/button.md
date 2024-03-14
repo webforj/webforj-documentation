@@ -24,8 +24,8 @@ The primary purpose of the `Button` component is to provide a clear and intuitiv
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.buttondemos.ButtonDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonDemo.java'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/demo_styles.css'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonDemo.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/buttonstyles/demo_styles.css'
 height='300px'
 />
 
@@ -84,8 +84,8 @@ Below are examples of buttons with text to the left and right, as well as a butt
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.buttondemos.ButtonIcon' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonIcon.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Icon.txt'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonIcon.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/button/Icon.txt'
 height="200px"
 />
 
@@ -99,8 +99,8 @@ Button components, like many others, can be disabled to convey to a user that a 
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.buttondemos.ButtonDisable' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonDisable.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Disable.txt'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonDisable.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/button/Disable.txt'
 />
 
 <br />
@@ -162,9 +162,9 @@ Notice the event payload is used to attain information that is then utilized wit
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.buttondemos.ButtonEvent' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonEvent.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Event.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/event_styles.css'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonEvent.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/button/Event.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/buttonstyles/event_styles.css'
 height='100px'
 /> -->
 
@@ -188,9 +188,9 @@ Shown below are example buttons with each of the supported Themes applied: <br/>
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.buttondemos.ButtonThemes' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonThemes.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Theme.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/theme_styles.css'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonThemes.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/button/Theme.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/buttonstyles/theme_styles.css'
 height='175px'
 />
 
@@ -206,9 +206,9 @@ Below are the various expanses supported for the `Button` component: <br/>
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.buttondemos.ButtonExpanses' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonExpanses.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/button/Expanses.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/buttonstyles/expanse_styles.css'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonExpanses.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/button/Expanses.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/buttonstyles/expanse_styles.css'
 height='125px'
 />
 

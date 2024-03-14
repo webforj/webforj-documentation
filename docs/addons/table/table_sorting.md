@@ -11,9 +11,9 @@ Sorting enables users to organize data within a column in a specific order, enha
 
 <ComponentDemoMultiple 
 path='https://demo.webforj.com/webapp/controlsamples?class=addondemos.tabledemos.TableSorting' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableSorting.java'
-urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
-'https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/TableSorting.java'
+urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
+'https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
 height='600px'
 />
 
@@ -72,9 +72,9 @@ To leverage `Comparator` sorting in a `Column`, you can use the `setComparator()
 
 <ComponentDemoMultiple 
 path='https://demo.webforj.com/webapp/controlsamples?class=addondemos.tabledemos.TableColumnComparator' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableColumnComparator.java'
-urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
-'https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/TableColumnComparator.java'
+urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
+'https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
 height='600px'
 />
 

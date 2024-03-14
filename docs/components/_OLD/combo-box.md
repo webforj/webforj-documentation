@@ -15,9 +15,9 @@ The combo box can be configured to open the menu in various positions relative t
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.textcomboboxdemos.TextComboBoxPlacement' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/textcomboboxdemos/TextComboBoxPlacement.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textcombobox/Placement.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textcomboboxstyles/placement_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/textcomboboxdemos/TextComboBoxPlacement.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/textcombobox/Placement.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/textcomboboxstyles/placement_styles.css' 
 javaHighlight='{24,29,33,38}'
 height = '350px'
 />
@@ -30,9 +30,9 @@ The combo box component can be easily labeled without the needing to create an e
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.textcomboboxdemos.TextComboBoxLabel' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/textcomboboxdemos/TextComboBoxLabel.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textcombobox/Label.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textcomboboxstyles/text_combo_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/textcomboboxdemos/TextComboBoxLabel.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/textcombobox/Label.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/textcomboboxstyles/text_combo_styles.css' 
 javaHighlight='{24}'
 height = '200px'
 />
@@ -45,9 +45,9 @@ It is also possible to set placeholder text within the component to better help 
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.textcomboboxdemos.TextComboBoxPlaceholder' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/textcomboboxdemos/TextComboBoxPlaceholder.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textcombobox/Placeholder.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textcomboboxstyles/text_combo_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/textcomboboxdemos/TextComboBoxPlaceholder.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/textcombobox/Placeholder.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/textcomboboxstyles/text_combo_styles.css' 
 javaHighlight='{24}'
 height = '200px'
 />
@@ -56,14 +56,14 @@ height = '200px'
 
 ### Expanses
 
-DWCJ's combo box comes with 5 expanses for quick styling without the use of CSS. Expanses are supported by use of a built-in enum class.
+Webforj's combo box comes with 5 expanses for quick styling without the use of CSS. Expanses are supported by use of a built-in enum class.
 Below are the various expanses supported for the text box component: <br/>
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.textcomboboxdemos.TextComboBoxExpanses' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/textcomboboxdemos/TextComboBoxExpanses.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textcombobox/Expanses.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textcomboboxstyles/expanse_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/textcomboboxdemos/TextComboBoxExpanses.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/textcombobox/Expanses.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/textcomboboxstyles/expanse_styles.css' 
 javaHighlight='{24,27,30,33,36}'
 height = '350px'
 />

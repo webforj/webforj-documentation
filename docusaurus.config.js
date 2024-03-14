@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'The Dynamic Web Client for Java',
-  tagline: 'Develop your Progressive Web App in Java and deploy it to the BBj application server',
+  title: 'Webforj',
+  tagline: 'Develop your Progressive Web App in Java',
   url: 'https://webforj.github.io/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -36,7 +36,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-          "https://github.com/DwcJava/dwcjava.github.io/tree/website/",
+          "https://github.com/webforj/dwcjava.github.io/tree/website/",
         },
         // blog: {
         //   showReadingTime: true,
@@ -92,7 +92,7 @@ const config = {
       },
       image: '/img/logo.png',
       navbar: {
-        title: 'Dynamic Web Client for Java',
+        title: 'Webforj',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.png',

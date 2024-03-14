@@ -10,7 +10,7 @@ const FeatureList = [
     Svg: require('@site/static/img/documentation.svg').default,
     description: (
       <>
-        View extensive documentation on setting up and using the DWCJ, as well 
+        View extensive documentation on setting up and using Webforj, as well 
         as its various components and features. 
       </>
     ),
@@ -21,7 +21,7 @@ const FeatureList = [
     Svg: require('@site/static/img/demo.svg').default,
     description: (
       <>
-        Try out the DWCJ right here using our embedded editor without setting
+        Try out Webforj right here using our embedded editor without setting
         up the tool on your local machine.
       </>
     ),
@@ -32,7 +32,7 @@ const FeatureList = [
     Svg: require('@site/static/img/tutorial.svg').default,
     description: (
       <>
-        View tutorials created to walk you through various aspects of the DWCJ,
+        View tutorials created to walk you through various aspects of Webforj,
         including installation, component demonstrations, and appliication/web development .
       </>
     ),

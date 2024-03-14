@@ -19,8 +19,8 @@ The `ComboBox` component is a user interface element designed to present users w
 
 <!-- <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.comboboxdemos.ComboBoxDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboBoxDemo.java'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textcomboboxstyles/demo_styles.css'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboBoxDemo.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/textcomboboxstyles/demo_styles.css'
 height = '200px'
 /> -->
 
@@ -54,8 +54,8 @@ Changing the custom value property allows control over whether or not a user is 
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.comboboxdemos.ComboBoxCustomValue' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboBoxCustomValue.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/combobox/CustomValue.txt'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboBoxCustomValue.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/combobox/CustomValue.txt'
 height = '200px'
 />
 
@@ -65,8 +65,8 @@ A placeholder can be set for a `ComboBox` which will display in the text field o
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.comboboxdemos.ComboBoxPlaceholder' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboBoxPlaceholder.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/combobox/Placeholder.txt'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboBoxPlaceholder.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/combobox/Placeholder.txt'
 height = '200px'
 />
 
@@ -81,9 +81,9 @@ In the demo below, the Dropdown type is set and used in the CSS file to select t
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.comboboxdemos.ComboBoxDropdownType' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboBoxDropdownType.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/combobox/DropdownType.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textcomboboxstyles/dropdown_styles.css'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboBoxDropdownType.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/combobox/DropdownType.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/textcomboboxstyles/dropdown_styles.css'
 height='250px'
 />
 
@@ -97,8 +97,8 @@ Using a number that is less than or equal to 0 will result in unsetting this pro
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.comboboxdemos.ComboBoxMaxRowDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboBoxMaxRowDemo.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/combobox/MaxRow.txt'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboBoxMaxRowDemo.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/combobox/MaxRow.txt'
 height='250px'
 />
 
@@ -177,9 +177,9 @@ When adding an event listener, a `ListenerRegistration` object will be returned.
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.comboboxdemos.TextComboBoxExpanses' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/TextComboBoxExpanses.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textcombobox/Expanses.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textcomboboxstyles/expanse_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/TextComboBoxExpanses.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/textcombobox/Expanses.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/textcomboboxstyles/expanse_styles.css' 
 javaHighlight='{24,27,30,33,36}'
 height = '350px'
 /> -->

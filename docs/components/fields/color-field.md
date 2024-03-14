@@ -26,9 +26,9 @@ With a simple drag-and-hover interface, users can effortlessly navigate through 
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.fielddemos.ColorFieldDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/fielddemos/ColorFieldDemo.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/fielddemos/ColorFieldDemo.java'
 javaC=''
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/fieldstyles/color_field_styles.css'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/fieldstyles/color_field_styles.css'
 height='300px'
 />
 

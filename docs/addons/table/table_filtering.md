@@ -10,9 +10,9 @@ The `Table` component allows you to implement filtering functionality to narrow 
 
 <ComponentDemoMultiple
 path='https://eu.bbx.kitchen/webapp/controlsamples?class=addondemos.tabledemos.TableFiltering' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableFiltering.java'
-urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
-'https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/TableFiltering.java'
+urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
+'https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
 height='600px'
 />
 

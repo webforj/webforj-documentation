@@ -63,9 +63,9 @@ Checkboxes have built-in functionality to set text to be displayed either to the
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxHorizontalText' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/checkboxdemos/CheckboxHorizontalText.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/checkbox/Horizontal.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/checkboxdemos/CheckboxHorizontalText.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/checkbox/Horizontal.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css' 
 height = '200px'
 />
 
@@ -81,9 +81,9 @@ The `CheckBox` component supports indeterminism, which is a UI pattern commonly 
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxIndeterminate' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/checkboxdemos/CheckboxIndeterminate.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/checkbox/Indeterminate.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/checkboxdemos/CheckboxIndeterminate.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/checkbox/Indeterminate.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css' 
 height = '150px'
 />
 
@@ -132,9 +132,9 @@ myCheckBox.removeCheckListener(listener);
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxEventDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/checkboxdemos/CheckboxEventDemo.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/checkbox/Event.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/checkboxdemos/CheckboxEventDemo.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/checkbox/Event.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css'
 height = '100px'
 />
 
@@ -146,9 +146,9 @@ Expanses are supported by use of the `Expanse` enum class. Below are the expanse
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxExpanseDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/checkboxdemos/CheckboxExpanseDemo.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/checkbox/Expanse.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/checkboxstyles/expanse_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/checkboxdemos/CheckboxExpanseDemo.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/checkbox/Expanse.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/checkboxstyles/expanse_styles.css' 
 javaHighlight='{17,21,25,29,33}'
 />
 

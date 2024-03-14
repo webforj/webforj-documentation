@@ -5,7 +5,7 @@ displayed_sidebar: documentationSidebar
 
 # Configuration
 
-The DWCj can be configured using a project's POM file, and a plugin designed to make deploying an application easy. The following sections outline the various options that can be changed in order to achieve the desired result, both with an without the provided DWCj installation plugin. 
+Webforj can be configured using a project's POM file, and a plugin designed to make deploying an application easy. The following sections outline the various options that can be changed in order to achieve the desired result, both with an without the provided Webforj installation plugin. 
 
 ## Using the Install Plugin
 
@@ -13,30 +13,30 @@ The DWCj can be configured using a project's POM file, and a plugin designed to 
 For most users, especially those who have followed one of the installation guides on this site, this will be the best option.
 :::
 
-When using the installation plugin, the tags within the `<configuration>` tag can be changed and will help configure your application. Editing the following lines in the default POM file that comes with the [`HelloWorldJava`](https://github.com/DwcJava/HelloWorldJava) starting repository will result in these changes:
+When using the installation plugin, the tags within the `<configuration>` tag can be changed and will help configure your application. Editing the following lines in the default POM file that comes with the [`HelloWorldJava`](https://github.com/webforj/HelloWorldJava) starting repository will result in these changes:
 
 ```xml {13-16} showLineNumbers
 <plugin>
-    <groupId>org.dwcj</groupId>
-    <artifactId>dwcj-install-maven-plugin</artifactId>
-    <version>0.2.0</version>
+    <groupId>com.webforj</groupId>
+    <artifactId>webforj-install-maven-plugin</artifactId>
+    <version>${webforj.version}</version>
     <executions>
         <execution>
             <goals>
                 <goal>install</goal>
             </goals>
-        </execution>
+    </execution>
     </executions>
     <configuration>
-        <deployurl>http://localhost:8888/dwcj-install</deployurl>
-        <classname>samples.HelloWorldJava</classname>
-        <publishname>hworld</publishname>
+        <deployurl>http://localhost:8888/webforj-install</deployurl>
+        <classname>samples.HelloWorldApp</classname>
+        <publishname>hello-world</publishname>
         <debug>true</debug>
     </configuration>
 </plugin>
 ```
 
-**`<deployurl>`**: This tag is the URL under which the DWCJ endpoint for the project installation can be reached. For users running their application locally, a default port 8888 is used. For users running Docker, the port should be changed to the port that was entered when [configuring the Docker container](../installation/docker_user.md#2-configuration).
+**`<deployurl>`**: This tag is the URL under which the Webforj endpoint for the project installation can be reached. For users running their application locally, a default port 8888 is used. For users running Docker, the port should be changed to the port that was entered when [configuring the Docker container](../installation/docker_user.md#2-configuration).
 
 **`<classname>`** This tag should contain the name of package and class name of the application you wish to run. This is helpful for projects which may contain multiple classes that extend the `App` class, and allows you to choose which program should run when the base URL is navigated to.
 
@@ -70,7 +70,7 @@ This is not the recommended method of configuring your application, and should b
 
 ### Default Class
 
-It is possible to configure the DWCJ to automatically load an application from the list of available applications that extend the `App` class. 
+It is possible to configure the Webforj to automatically load an application from the list of available applications that extend the `App` class. 
 
 #### Editing the BBj config file
 The second option is to open your config.bbx file, and set the classname within the file itself. This file is found in the cfg directory of your BBj installation, `C:\bbx\cfg\config.bbx` for example. To do so, add the following line and replace <b>your.class.name.here</b> with the full classname as it appears on the list of classes:

@@ -14,9 +14,9 @@ Labels can be easily added above the component without the need to create a sepa
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxLabel' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxLabel.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/listbox/Label.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/listboxstyles/label_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxLabel.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/listbox/Label.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/listboxstyles/label_styles.css' 
 javaHighlight='{32}'
 height = '250px'
 />
@@ -30,9 +30,9 @@ items using the `Shift` for contiguous entry selection and `Control` (Windows) o
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxMultipleSelection' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxMultipleSelection.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/listbox/MultipleSelection.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/listboxstyles/multiple_selection.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxMultipleSelection.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/listbox/MultipleSelection.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/listboxstyles/multiple_selection.css' 
 javaHighlight='{44}'
 height = '250px'
 />
@@ -45,16 +45,16 @@ Below are the various expanses supported for the list box component: <br/>
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxExpanses' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxExpanses.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/listbox/Expanses.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/listboxstyles/expanse_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxExpanses.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/listbox/Expanses.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/listboxstyles/expanse_styles.css' 
 javaHighlight='{18-22}'
 height = '300px'
 />
 
 <br/>
 
-There are five list box expanses that are supported in the DWCJ which allow for quick styling without using CSS. These enums are:
+There are five list box expanses that are supported in Webforj which allow for quick styling without using CSS. These enums are:
 
 |List Box Expanses|
 |-|

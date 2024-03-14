@@ -5,7 +5,7 @@ let lastFetchTime = null;
 
 async function fetchLatestTag() {
   try {
-    const response = await fetch('https://api.github.com/repos/DwcJava/engine/tags');
+    const response = await fetch('https://api.github.com/repos/webforj/engine/tags');
     const data = await response.json();
     latestTag = data[0].name;
     lastFetchTime = Date.now();

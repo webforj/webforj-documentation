@@ -16,9 +16,9 @@ By default when created, the progress bar will display the percentage complete i
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.progressbardemos.ProgressbarPlaceholders' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/progressbardemos/ProgressbarPlaceholders.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/progressbar/Placeholders.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/progressbarstyles/placeholder_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/progressbardemos/ProgressbarPlaceholders.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/progressbar/Placeholders.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/progressbarstyles/placeholder_styles.css' 
 javaHighlight='{25}'
 height = '100px'
 />
@@ -27,13 +27,13 @@ height = '100px'
 
 ### Orientation
 
-The DWCJ's progress bar allows the developer to chose the direction in which the bar will fill as progress is made. The options are either filling vertically from bottom to top, or horizontally from left to right. Setting the orientation <b> does not </b> automatically set the dimensions for the bar, this must be done by the developer. 
+The Webforj progress bar allows the developer to chose the direction in which the bar will fill as progress is made. The options are either filling vertically from bottom to top, or horizontally from left to right. Setting the orientation <b> does not </b> automatically set the dimensions for the bar, this must be done by the developer. 
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.progressbardemos.ProgressbarOrientation' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/progressbardemos/ProgressbarOrientation.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/progressbar/Orientation.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/progressbarstyles/orientation_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/progressbardemos/ProgressbarOrientation.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/progressbar/Orientation.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/progressbarstyles/orientation_styles.css' 
 javaHighlight='{26}'
 height = '435px'
 />
@@ -42,13 +42,13 @@ height = '435px'
 
 ### Indeterminate
 
-The progress bar in the DWCJ allows for indeterminate display, displaying an animation that conveys continuous progress that is not quantified. 
+The progress bar in Webforj allows for indeterminate display, displaying an animation that conveys continuous progress that is not quantified. 
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.progressbardemos.ProgressbarIndeterminate' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/progressbardemos/ProgressbarIndeterminate.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/progressbar/Indeterminate.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/progressbarstyles/indeterminate_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/progressbardemos/ProgressbarIndeterminate.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/progressbar/Indeterminate.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/progressbarstyles/indeterminate_styles.css' 
 javaHighlight='{21}'
 height = '100px'
 />
@@ -61,9 +61,9 @@ The progress bar can has minimum and maximum values that can be set, which will 
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.progressbardemos.ProgressbarMinMax' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/progressbardemos/ProgressbarMinMax.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/progressbar/MinMax.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/progressbarstyles/minmax_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/progressbardemos/ProgressbarMinMax.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/progressbar/MinMax.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/progressbarstyles/minmax_styles.css' 
 javaHighlight='{25-26}'
 height = '120px'
 />
@@ -72,14 +72,14 @@ height = '120px'
 
 ### Themes
 
-The DWCJ progress bar comes with 6 themes built in for quick styling without the use of CSS.
+The Webforj progress bar comes with 6 themes built in for quick styling without the use of CSS.
 Shown below are progress bars with each of the supported Themes applied: <br/>
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.progressbardemos.ProgressbarThemes' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/progressbardemos/ProgressbarThemes.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/progressbar/Themes.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/progressbarstyles/theme_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/progressbardemos/ProgressbarThemes.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/progressbar/Themes.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/progressbarstyles/theme_styles.css' 
 javaHighlight='{25,30,35,40,45,50}'
 height = '300px'
 />

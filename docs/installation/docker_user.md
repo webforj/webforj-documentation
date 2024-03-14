@@ -53,7 +53,7 @@ It is recommended to download the latest version of Windows Subsystem for Linux.
 
 ## 2. Configuration
 
-Once Docker Desktop has been downloaded, search for the latest DWCJ image, which is currently under the name `dwcjava/sandbox`.
+Once Docker Desktop has been downloaded, search for the latest Webforj image, which is currently under the name `webforj/sandbox`.
 
 ![DWCJ Image Search](./_images/docker/Step_1l.png)
 
@@ -98,14 +98,12 @@ Make sure to take note of the custom Host port number you provide, as this will 
 
 ## 3. Running Your Application
 
-Once the container has been created, DWCJ applications can be run within the container instead of locally. First, it is necessary to configure
+Once the container has been created, Webforj applications can be run within the container instead of locally. First, it is necessary to configure
 the POM file of your project correctly. Once this is done, going to a specific URL in the browser will show the application.
 
 ### Configuring your POM file
 
-Running a DWCJ project in the Docker container will require the use of the DWCJ Install Plugin, which can be configured using your POM file.
-A full summary of the customization options can be found [at this link](https://github.com/DwcJava/dwcj-install-maven-plugin), but the
-following steps are necessary:
+Running a Webforj project in the Docker container will require the use of the Webforj Install Plugin, which can be configured using your POM file:
 
 
 Create a new `<plugin>` entry in `<plugins>` section of POM. The following code shows a starting entry that can be used and tweaked as 
@@ -117,24 +115,22 @@ If your POM file does not have a `<plugins>` section, create one.
 
 ```xml
 <plugin>
-    <groupId>org.dwcj</groupId>
-    <artifactId>dwcj-install-maven-plugin</artifactId>
-    <version>0.1.0</version>
-    <executions>
-        <execution>
-            <goals>
-                <goal>install</goal>
-            </goals>
-        </execution>
-    </executions>
-    <configuration>
-        <deployurl>http://localhost:8888/dwcj-install</deployurl>
-        <classname>samples.HelloWorldJava</classname>
-        <username>admin</username>
-        <password>admin123</password>
-        <publishname>hworld</publishname>
-        <debug>true</debug>
-    </configuration>
+<groupId>com.webforj</groupId>
+<artifactId>webforj-install-maven-plugin</artifactId>
+<version>${webforj.version}</version>
+<executions>
+    <execution>
+    <goals>
+        <goal>install</goal>
+    </goals>
+    </execution>
+</executions>
+<configuration>
+    <deployurl>http://localhost:8888/webforj-install</deployurl>
+    <classname>samples.HelloWorldApp</classname>
+    <publishname>hello-world</publishname>
+    <debug>true</debug>
+</configuration>
 </plugin>
 ```
 
@@ -148,12 +144,12 @@ in the previous step.
 - If your `<username>` and `<password>` credentials are different for your installation of BBj, change these.
 
 :::info
-The [HelloWorldJava](https://github.com/DwcJava/HelloWorldJava) project will come with the POM file already mostly configured - with other settings remaining the same, only the `<deployurl>` tag will need to be changed.
+The [webforj-hello-world](https://github.com/webforj/HelloWorldJava) project will come with the POM file already mostly configured - with other settings remaining the same, only the `<deployurl>` tag will need to be changed.
 :::
 
 ### Launching the Application
 
-Once this has been done, run a `mvn install` in your project directory. This will run the dwcj install plugin, and allow
+Once this has been done, run a `mvn install` in your project directory. This will run the Webforj install plugin, and allow
 you to access your application. To see the application, you'll want to go to the following URL:
 
 `http://localhost:YourHostPort/webapp/YourPublishName`

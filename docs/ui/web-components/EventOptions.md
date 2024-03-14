@@ -8,7 +8,7 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 <JavadocLink type="engine" location="org/dwcj/component/element/event/ElementEventOptions" top='true'/>
 
-`ElementEventOptions` is a versatile DWCj tool designed to encapsulate and manage configuration settings for `Element` events within DWCj applications. As a container for various options, it allows developers to precisely dictate how events associated with elements should be processed.
+`ElementEventOptions` is a versatile Webforj tool designed to encapsulate and manage configuration settings for `Element` events within Webforj applications. As a container for various options, it allows developers to precisely dictate how events associated with elements should be processed.
 
 ## Event Data
 

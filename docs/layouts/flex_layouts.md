@@ -9,7 +9,7 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 <JavadocLink type="engine" location="org/dwcj/component/layout/flexlayout/FlexLayout" top='true'/>
 
 
-The DWCJ provides developers with an efficient and intuitive way to layout their various applications and components - the Flex Layout. This toolset allows for items to be displayed either vertically or horizontally. 
+Webforj provides developers with an efficient and intuitive way to layout their various applications and components - the Flex Layout. This toolset allows for items to be displayed either vertically or horizontally. 
 
 
 ## Constructing a Flex Layout
@@ -47,7 +47,7 @@ FlexLayout layoutFromBuilder = FlexLayout.create()
 Flex layout's properties can be grouped into two categories: properties that apply to the items within a layout, and properties that apply to the layout itself. The flex layout, or the parent element, is a box/container that can contain one or more components. Everything inside a Flex Layout is called an item or child element. The Flex Layout provides some robust alignment capabilities, which can be achieved with the help of either container or item properties.
 
 :::tip
-The DWCJ's layout component follows the pattern of [CSS's flexbox layout](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). However, these tools are made to be utilized fully in Java, and do not require the application of CSS outside of the Java API methods provided.
+Webforj's layout component follows the pattern of [CSS's flexbox layout](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). However, these tools are made to be utilized fully in Java, and do not require the application of CSS outside of the Java API methods provided.
 :::
 
 ### Container Properties
@@ -62,8 +62,8 @@ Alternatively, use the `setDirection()` method. The horizontal options are eithe
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=layout_demos.container.Direction' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/container/Direction.java'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/flexstyles/container_styles.css'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/container/Direction.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/flexstyles/container_styles.css'
 height="275px"
 />
 
@@ -81,8 +81,8 @@ The `setAlignContent()` methods components the space around the cross axis, and 
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=layout_demos.container.Positioning' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/container/Positioning.java'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/flexstyles/container_styles.css'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/container/Positioning.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/flexstyles/container_styles.css'
 height="375px"
 />
 
@@ -115,8 +115,8 @@ The following demo allows you to build a container with the desired flex propert
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=layout_demos.container.ContainerDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/container/ContainerDemo.java'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/flexstyles/container_styles.css'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/container/ContainerDemo.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/flexstyles/container_styles.css'
 height="600px"
 />
 
@@ -139,7 +139,7 @@ It's important to note that the order property only affects the visual order of 
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=layout_demos.item.Order' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/item/Order.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/item/Order.java'
 height="200px"
 />
 
@@ -157,7 +157,7 @@ This property is especially useful when you need to align a specific item differ
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=layout_demos.item.SelfAlign' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/item/SelfAlign.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/item/SelfAlign.java'
 height="350px"
 />
 
@@ -190,6 +190,6 @@ Similarly, when a container does not have enough space to accommodate its conten
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=layout_demos.FlexDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/layout_demos/FlexDemo.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/FlexDemo.java'
 height="400px"
 />

@@ -7,13 +7,13 @@ import UnderConstruction from '@site/src/components/PageTools/UnderConstruction'
 
 
 
-# DWCJ in Github Codespaces
+# Webforj in Github Codespaces
 
-The DWCJ's [Hello World Repository](https://github.com/DwcJava/HelloWorldJava) has been configured to run in Github Codespaces. Codespaces is a cloud-based development environment, and allows you to develop and run DWCJ applications directly within your browser. To start developing with this tool, follow the steps below:
+Webforj's [Hello World Repository](https://github.com/webforj/webforj-hello-world) has been configured to run in Github Codespaces. Codespaces is a cloud-based development environment, and allows you to develop and run Webforj applications directly within your browser. To start developing with this tool, follow the steps below:
 
 ## 1. Navigate to the HelloWorldJava Repository
 
-To start, you'll need to go to the HelloWorldJava repository, which can be found [at this link](https://github.com/DwcJava/HelloWorldJava). Once there, click on the green **"Use this template"** button, and then the **"Open in a codespace"** option.
+To start, you'll need to go to the HelloWorldJava repository, which can be found [at this link](https://github.com/webforj/webforj-hello-world). Once there, click on the green **"Use this template"** button, and then the **"Open in a codespace"** option.
 
 ![Codespace buttons](./_images/github/1.png)
 

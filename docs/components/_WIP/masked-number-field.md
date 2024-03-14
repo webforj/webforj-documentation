@@ -14,9 +14,9 @@ Labels can be easily added above the Number Field without the need to create a s
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.numericboxdemos.NumericboxLabel' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/numericboxdemos/NumericboxLabel.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/numericbox/Label.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/numericboxstyles/label_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/numericboxdemos/NumericboxLabel.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/numericbox/Label.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/numericboxstyles/label_styles.css' 
 javaHighlight='{22}'
 height = '150px'
 />
@@ -29,9 +29,9 @@ It is also possible to configure text that appears in the input when it has no v
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.numericboxdemos.NumericboxPlaceholder' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/numericboxdemos/NumericboxPlaceholder.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/numericbox/Placeholder.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/numericboxstyles/placeholder_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/numericboxdemos/NumericboxPlaceholder.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/numericbox/Placeholder.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/numericboxstyles/placeholder_styles.css' 
 javaHighlight='{22}'
 height = '150px'
 />
@@ -118,14 +118,14 @@ In order to enforce certain ruled on numeric input, masking has been implemented
 
 ### Expanse
 
-DWCJ Number Field components come with 5 expanses for quick styling without the use of CSS.
+The Webforj Number Field components come with 5 expanses for quick styling without the use of CSS.
 Below are the various expanses supported for the Number Field component: <br/>
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.numericboxdemos.NumericboxExpanses' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/numericboxdemos/NumericboxExpanses.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/numericbox/Expanse.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/numericboxstyles/expanse_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/numericboxdemos/NumericboxExpanses.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/numericbox/Expanse.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/numericboxstyles/expanse_styles.css' 
 javaHighlight='{22,26,30,34,38}'
 height = '200px'
 />

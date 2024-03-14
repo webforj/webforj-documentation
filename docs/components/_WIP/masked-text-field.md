@@ -16,9 +16,9 @@ The text field can be easily labeled without the needing to create an extra labe
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.stringeditdemos.StringEditLabelDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/stringeditdemos/StringEditLabelDemo.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/stringedit/Label.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/stringeditboxstyles/string_edit_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/stringeditdemos/StringEditLabelDemo.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/stringedit/Label.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/stringeditboxstyles/string_edit_styles.css' 
 javaHighlight='{16}'
 height = '125px'
 />
@@ -27,7 +27,7 @@ height = '125px'
 
 ### Mask
 
-The DWCJ's text field supports masking - the following table describes the various masking behaviors.
+Webforj's text field supports masking - the following table describes the various masking behaviors.
 
 <table>
 <thead>
@@ -84,9 +84,9 @@ It is also possible to set placeholder text within the component to better help 
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.stringeditdemos.StringEditPlaceholder' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/stringeditdemos/StringEditPlaceholder.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/stringedit/Placeholder.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/stringeditboxstyles/string_edit_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/stringeditdemos/StringEditPlaceholder.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/stringedit/Placeholder.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/stringeditboxstyles/string_edit_styles.css' 
 javaHighlight='{17}'
 height = '125px'
 />
@@ -100,9 +100,9 @@ Below are the various expanses supported for the text field component: <br/>
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.stringeditdemos.StringEditExpanse' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/stringeditdemos/StringEditExpanse.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/stringedit/Expanses.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/stringeditboxstyles/string_edit_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/stringeditdemos/StringEditExpanse.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/stringedit/Expanses.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/stringeditboxstyles/string_edit_styles.css' 
 javaHighlight='{16,19,22,25,28}'
 height = '125px'
 />

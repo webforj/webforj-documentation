@@ -4,10 +4,7 @@ sidebar_position: 3
 
 # Local Installation
 
-This section of the documentation will cover the steps required only for 
-users who wish to use the DWCJ for web and/or application development with a local
-BBJ instance on their machine. This installation will not allow users to contribute 
-to the DWCJ implementation code itself.
+This section of the documentation will cover the steps required only for users who wish to use Webforj for web and/or application development with a local BBj instance on their machine. This installation will not allow users to contribute to the Webforj foundation code itself.
 <br/>
 
 :::info
@@ -27,7 +24,7 @@ Installation will be broken down into the following steps:
 
 ## 1. Java and Maven Download and Configuration
 
-In order to use the DWCJ, you must first have Java and Maven installed and properly configured. If you already
+In order to use Webforj, you must first have Java and Maven installed and properly configured. If you already
 have Java and Maven downloaded, please skip to [**Step 2**](#section2). If you also have 
 BBj installed on your system, please skip to [**Step 3**](#section3).
 
@@ -66,9 +63,9 @@ mvn install:install-file -Dfile=BBjUtil.jar -DgroupId=com.basis.lib -DartifactId
 
 <a name='section3'></a>
 
-## 3. Install and Configure the DWCJ Plugin
+## 3. Install and Configure the Webforj Plugin
 
-Once BBj has been installed, we can access the Plugin Manager in order to install tools needed to configure the DWCJ. To start, type "Plugin Manager" into the start menu or Finder. 
+Once BBj has been installed, we can access the Plugin Manager in order to install tools needed to configure Webforj. To start, type "Plugin Manager" into the start menu or Finder. 
 
 <!-- ![Plugin manager start location](./_images/users/local/i1.png) -->
 
@@ -137,9 +134,9 @@ Finally, click on the "Configure" button, which will open a new window. In this 
 
 ## 4. Clone the Repository
 
-Once BBj and the required DWCJ plugin are installed and configured, we can clone the "Hello World" repository from the DWCJ Github page. This project comes with the necessary tools to run your first DWCJ program!
+Once BBj and the required Webforj plugin are installed and configured, we can clone the "Hello World" repository from the Webforj Github page. This project comes with the necessary tools to run your first Webforj program!
 
-To begin, navigate to the [HelloWorldJava repository](https://github.com/DwcJava/HelloWorldJava) and clone the project to your machine.
+To begin, navigate to the [HelloWorldJava repository](https://github.com/webforj/HelloWorldJava) and clone the project to your machine.
 
 Click on the Code button
 ![Plugin manager configuration](./_images/local/Step_10l.png)
@@ -151,7 +148,7 @@ Copy the repository URL to your clipboard to clone
 You can also opt to use the GitHub Codespace without cloning the project on your local machine, and do all of your development on the cloud!
 ::: -->
 
-Once the project is cloned onto your machine, you can open it with your preferred IDE. Within your IDE, navigate to the pom.xml file that comes with the project. Within this file are various tags that can be modified to install your application to your own desired specifications. A detailed guide for these tags can [be found at this link](https://github.com/DwcJava/dwcj-install-maven-plugin).
+Once the project is cloned onto your machine, you can open it with your preferred IDE. Within your IDE, navigate to the pom.xml file that comes with the project. Within this file are various tags that can be modified to install your application to your own desired specifications.
 
 :::tip
 For first time users, it is recommended to use the default settings and avoid changing the pom.xml that comes with the project.

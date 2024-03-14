@@ -16,9 +16,9 @@ Labels can be easily added above the component without the need to create a sepa
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.comboboxdemos.ComboboxLabelDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboboxLabelDemo.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/combobox/Label.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/label_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboboxLabelDemo.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/combobox/Label.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/comboboxstyles/label_styles.css' 
 javaHighlight='{33}'
 height="170px"
 />
@@ -27,14 +27,14 @@ height="170px"
 
 ### Themes
 
-DWCJ Choice Box components come with 14 themes built in for quick styling without the use of CSS. Theming is supported by use of a built-in enum class.
+Webforj's Choice Box components come with 14 themes built in for quick styling without the use of CSS. Theming is supported by use of a built-in enum class.
 Shown below are example boxes with each of the supported Themes applied: <br/>
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.comboboxdemos.ComboboxThemeDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboboxThemeDemo.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/combobox/Theme.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/theme_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboboxThemeDemo.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/combobox/Theme.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/comboboxstyles/theme_styles.css' 
 height="170px"
 />
 
@@ -49,14 +49,14 @@ Listed below are the current supported theme options for the combo box component
 <br />
 
 ### Expanses
-There are five Choice Box expanses that are supported in the DWCJ which allow for quick styling without using CSS. Expanses are supported by use of a built-in enum class.
+There are five Choice Box expanses that are supported in Webforj which allow for quick styling without using CSS. Expanses are supported by use of a built-in enum class.
 Below are the various expanses supported this component: <br/>
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.comboboxdemos.ComboboxExpanseDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboboxExpanseDemo.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/combobox/Expanse.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/expanse_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboboxExpanseDemo.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/combobox/Expanse.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/comboboxstyles/expanse_styles.css' 
 javaHighlight='{21,25,29,33,37}'
 height="150px"
 />

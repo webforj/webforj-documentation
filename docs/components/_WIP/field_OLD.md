@@ -15,9 +15,9 @@ The Field component can be easily labeled without the needing to create an extra
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.textboxdemos.TextBoxLabel' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/textboxdemos/TextBoxLabel.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textbox/Label.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textboxstyles/text_box_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/textboxdemos/TextBoxLabel.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/textbox/Label.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/textboxstyles/text_box_styles.css' 
 javaHighlight='{16}'
 height = '125px'
 />
@@ -30,9 +30,9 @@ It is also possible to set placeholder text within the component to better help 
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.textboxdemos.TextBoxPlaceholder' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/textboxdemos/TextBoxPlaceholder.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textbox/Placeholder.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textboxstyles/text_box_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/textboxdemos/TextBoxPlaceholder.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/textbox/Placeholder.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/textboxstyles/text_box_styles.css' 
 javaHighlight='{16}'
 height = '125px'
 />
@@ -45,9 +45,9 @@ The Field can also be configured with spell checking to help the user improve th
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.textboxdemos.TextBoxSpellcheck' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/textboxdemos/TextBoxSpellcheck.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textbox/Spellcheck.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textboxstyles/text_box_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/textboxdemos/TextBoxSpellcheck.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/textbox/Spellcheck.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/textboxstyles/text_box_styles.css' 
 javaHighlight='{16}'
 height = '125px'
 />
@@ -56,14 +56,14 @@ height = '125px'
 
 ### Expanses
 
-DWCJ's Field comes with 5 expanses for quick styling without the use of CSS. Expanses are supported by use of a built-in enum class.
-Below are the various expanses supported for the Field component: <br/>
+Webforj's `Field` comes with 5 expanses for quick styling without the use of CSS. Expanses are supported by use of a built-in enum class.
+Below are the various expanses supported for the `Field` component: <br/>
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.textboxdemos.TextBoxExpanses' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/textboxdemos/TextBoxExpanses.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/textbox/Expanses.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/textboxstyles/text_box_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/textboxdemos/TextBoxExpanses.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/textbox/Expanses.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/textboxstyles/text_box_styles.css' 
 javaHighlight='{16,19,22,25,28}'
 height = '160px'
 />

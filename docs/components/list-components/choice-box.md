@@ -21,8 +21,8 @@ The `ChoiceBox` component is a user interface element designed to present users 
 <!-- <AppLayoutViewer url='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.choiceboxdemos.ChoiceBoxDemo' mobile='false'/>
 <ComponentDemo
 frame="hidden"
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/choiceboxdemos/ChoiceBoxDemo.java'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_styles.css'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/choiceboxdemos/ChoiceBoxDemo.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_styles.css'
 /> -->
 
 ## Usages
@@ -63,9 +63,9 @@ In the demo below, the Dropdown type is set and used in the CSS file to select t
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.choiceboxdemos.ChoiceBoxDropdownType' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/choiceboxdemos/ChoiceBoxDropdownType.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/choicebox/DropdownType.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/dropdown_styles.css'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/choiceboxdemos/ChoiceBoxDropdownType.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/choicebox/DropdownType.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/comboboxstyles/dropdown_styles.css'
 height='250px'
 />
 
@@ -79,8 +79,8 @@ Using a number that is less than or equal to 0 will result in unsetting this pro
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.choiceboxdemos.ChoiceBoxMaxRowDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/choiceboxdemos/ChoiceBoxMaxRowDemo.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/choicebox/MaxRow.txt'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/choiceboxdemos/ChoiceBoxMaxRowDemo.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/choicebox/MaxRow.txt'
 height='250px'
 />
 
@@ -156,9 +156,9 @@ There are five `ChoiceBox` expanses that are supported which allow for quick sty
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.choiceboxdemos.ComboboxExpanseDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/choiceboxdemos/ComboboxExpanseDemo.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/combobox/Expanse.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/expanse_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/choiceboxdemos/ComboboxExpanseDemo.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/combobox/Expanse.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/comboboxstyles/expanse_styles.css' 
 height="150px"
 />
 
@@ -168,8 +168,8 @@ The `ChoiceBox` component comes with 14 themes built in for quick styling withou
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.choiceboxdemos.ComboboxThemeDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/choiceboxdemos/ComboboxThemeDemo.java'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/comboboxstyles/theme_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/choiceboxdemos/ComboboxThemeDemo.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/comboboxstyles/theme_styles.css' 
 height="170px"
 /> -->
 

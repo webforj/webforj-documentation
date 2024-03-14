@@ -12,14 +12,14 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 The drawer is a container that slides into the viewport to expose additional options and information. Multiple drawers can be created in an application, and they will be stacked above each other.
 
-The Drawer component can be used in many different situations, such as by providing a navigation menu that can be toggled, a panel that displays supplementary or contextual information, or to optimize usage on a mobile device. The following example will show a mobile application that uses the DWCJ's AppLayout component, and displays a "Welcome Popup" drawer at the bottom when first loaded. Additionally, a navigational Drawer component can be toggled in the application by clicking on the hamburger menu.
+The Drawer component can be used in many different situations, such as by providing a navigation menu that can be toggled, a panel that displays supplementary or contextual information, or to optimize usage on a mobile device. The following example will show a mobile application that uses the Webforj AppLayout component, and displays a "Welcome Popup" drawer at the bottom when first loaded. Additionally, a navigational Drawer component can be toggled in the application by clicking on the hamburger menu.
 
 <AppLayoutViewer url='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerWelcome' mobile='true'/>
 
 <ComponentDemo 
 frame="hidden"
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerWelcome.java'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/drawerstyles/drawer_welcome.css'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerWelcome.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/drawerstyles/drawer_welcome.css'
 />
 
 ## Usages
@@ -42,7 +42,7 @@ Drawer newDrawer = new Drawer()
 
 <ComponentDemo
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerDemo'
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerDemo.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerDemo.java'
 height='600px'
 />
 
@@ -62,7 +62,7 @@ This property can also be particularly beneficial for individuals who rely on ke
 
 <ComponentDemo
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerAutoFocus'
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerAutoFocus.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerAutoFocus.java'
 height='600px'
 />
 
@@ -111,7 +111,7 @@ When the drawer's content exceeds the defined maximum size, developers can imple
 <!-- 
 <ComponentDemo
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerSize'
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerSize.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerSize.java'
 height='600px'
 /> -->
 
@@ -140,7 +140,7 @@ By leveraging the placement property, developers can create intuitive and effici
 
 <ComponentDemo
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.drawerdemos.DrawerPlacement'
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerPlacement.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/drawerdemos/DrawerPlacement.java'
 height='600px'
 />
 

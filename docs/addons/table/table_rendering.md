@@ -9,7 +9,7 @@ import ComponentDemoMultiple from '@site/src/components/DocsTools/ComponentDemoM
 
 # Rich Content and Client-Side Rendering
 
-Tables in DWCj are also configurable using the following tools to display rich content within cells. This includes interactive components or formatted data within the table cells.
+Tables in webforj are also configurable using the following tools to display rich content within cells. This includes interactive components or formatted data within the table cells.
 
 These elements are rendered client-side, meaning the process of generating and displaying rich content is done directly in the browser, using JavaScript only when needed, increasing performance of applications using the `Table`.
 
@@ -89,7 +89,7 @@ The renderer has access to detailed cell, row, and column properties in the clie
 
 While custom renderers can be created, there are multiple pre-configured renderers available for use within a `Table`. The following are available for developers to use out of the box without the need to create a custom renderer:
 
->- `ButtonRenderer` - Renderer for a DWCj button.
+>- `ButtonRenderer` - Renderer for a webforj button.
 >- `NativeButtonRenderer` - Renderer for a native HTML button.
 >- `ElementRenderer` - The base class for all renderers which render an HTML tag **with** content.
 >- `VoidElementRenderer` - The base class for all renderers which render a void element, or an HTML tag **without** content.
@@ -101,9 +101,9 @@ Below is an example of a `Table` that uses renderers to display rich content:
 
 <ComponentDemoMultiple 
 path='https://demo.webforj.com/webapp/controlsamples?class=addondemos.tabledemos.TableRichContent' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableRichContent.java'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/tablestyles/richcontent/styles.css'
-urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
-'https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/TableRichContent.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/tablestyles/richcontent/styles.css'
+urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
+'https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
 height='600px'
 />

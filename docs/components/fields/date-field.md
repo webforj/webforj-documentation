@@ -24,8 +24,8 @@ The `DateField` is a user interface component that allows users to input or sele
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.fielddemos.DateFieldDemo' 
 javaC=''
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/fielddemos/DateFieldDemo.java'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/fieldstyles/date_field_styles.css'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/fielddemos/DateFieldDemo.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/fieldstyles/date_field_styles.css'
 />
 
 ### Usages

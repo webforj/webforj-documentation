@@ -10,7 +10,7 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 <JavadocLink type="engine" location="org/dwcj/component/Composite" top='true'/>
 
-# Composite Components in DWCj
+# Composite Components in Webforj
 
 Developers will often wish to create components that contain constituent components for application level use. The `Composite` component gives developers the tools they need to create their own components while maintaining control over what they choose to expose to users. 
 
@@ -91,7 +91,7 @@ This component is then instantiated and utilized in an Application, and allows f
  
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=demos.CompositeDemo' 
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/compositestyles/styles.css'
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/demos/CompositeDemo.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/compositestyles/styles.css'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/demos/CompositeDemo.java'
 height='500px'
 />

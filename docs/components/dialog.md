@@ -14,14 +14,14 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <JavadocLink type="engine" location="org/dwcj/component/dialog/Dialog" top='true'/>
 
-The DWCJ's dialog component is built to allow a developer to quickly and easily display a dialog on their application, for instances such as a login menu or information box.
+The Webforj dialog component is built to allow a developer to quickly and easily display a dialog on their application, for instances such as a login menu or information box.
 
 The component is built with three sections, each of which are `Panel` components: the **header**, the **content**, and the **footer**.
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.dialogdemos.DialogSections' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/dialog/Sections.txt'
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogSections.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/dialog/Sections.txt'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogSections.java'
 height = '225px'
 />
 
@@ -50,12 +50,12 @@ The Dialog can be constructed using the default `Dialog()` constructor. Once the
 
 ## Backdrop and Blur
 
-By enabling the backdrop attribute of the DWCJ's `Dialog` component, a backdrop will be displayed behind the `Dialog`. Additionally, when enabled, the Dialog's blurred attribute will blur the backdrop of the `Dialog`. Modifying these settings can help users by providing depths, visual hierarchy, and context, leading to more clear guidance for a user.
+By enabling the backdrop attribute of the Webforj `Dialog` component, a backdrop will be displayed behind the `Dialog`. Additionally, when enabled, the Dialog's blurred attribute will blur the backdrop of the `Dialog`. Modifying these settings can help users by providing depths, visual hierarchy, and context, leading to more clear guidance for a user.
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.dialogdemos.DialogBackdropBlur' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/dialog/Blur.txt'
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogBackdropBlur.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/dialog/Blur.txt'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogBackdropBlur.java'
 height = '300px'
 />
 
@@ -66,8 +66,8 @@ The `Dialog` supports multiple cancellation methods for closure of the component
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.dialogdemos.DialogClose' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/dialog/Close.txt'
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogClose.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/dialog/Close.txt'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogClose.java'
 height = '350px'
 />
 
@@ -77,8 +77,8 @@ When enabled, auto-focus will automatically give focus to the first element with
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.dialogdemos.DialogAutoFocus' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/dialog/AutoFocus.txt'
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogAutoFocus.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/dialog/AutoFocus.txt'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogAutoFocus.java'
 height = '350px'
 />
 
@@ -91,8 +91,8 @@ It is also possible to calibrate this behavior to snap to the edge of the screen
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.dialogdemos.DialogDraggable' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/dialog/Draggable.txt'
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogDraggable.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/dialog/Draggable.txt'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogDraggable.java'
 height = '350px'
 />
 
@@ -102,8 +102,8 @@ The dialog's position can be manipulated using the built-in `setPosx()` and `set
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.dialogdemos.DialogPositioning' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/dialog/Positioning.txt'
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogPositioning.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/dialog/Positioning.txt'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogPositioning.java'
 height = '350px'
 />
 
@@ -113,8 +113,8 @@ In addition to manual assignment of a dialog's X and Y position, it is possible 
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.dialogdemos.DialogAlignments' 
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/dialog/Alignments.txt'
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogAlignments.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/dialog/Alignments.txt'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogAlignments.java'
 height = '550px'
 />
 
@@ -171,7 +171,7 @@ While there are many use cases for each of the various themes, some examples use
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.dialogdemos.DialogThemes' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogThemes.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/dialogdemos/DialogThemes.java'
 height = '500px'
 />
 

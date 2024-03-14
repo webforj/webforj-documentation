@@ -9,7 +9,7 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 <JavadocLink type="engine" location="org/dwcj/component/element/ElementComposite" top='true'/>
 
-The `ElementComposite` class serves as a versatile foundation for managing composite elements in DWCj applications. Its primary purpose is to facilitate the interaction with HTML elements, represented by the `Element` class, by providing a structured approach to handle properties, attributes, and event listeners. It allows for implementation and reuse of elements in an application. Use the `ElementComposite` class when implementing Web Components for use in DWCj applications.
+The `ElementComposite` class serves as a versatile foundation for managing composite elements in Webforj applications. Its primary purpose is to facilitate the interaction with HTML elements, represented by the `Element` class, by providing a structured approach to handle properties, attributes, and event listeners. It allows for implementation and reuse of elements in an application. Use the `ElementComposite` class when implementing Web Components for use in Webforj applications.
 
 While using the `ElementComposite` class, using the `getElement()` method will give you access to the underlying `Element` component. Similarly, the `getNodeName()` method gives you the name of that node in the DOM. 
 
@@ -21,7 +21,7 @@ Throughout this guide, we'll be implementing the [Shoelace QR code web component
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=demos.webcomponents.elementcomposite.QRDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/demos/webcomponents/elementcomposite/QRDemo.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/demos/webcomponents/elementcomposite/QRDemo.java'
 height='175px'
 />
 
@@ -64,7 +64,7 @@ In the demo below, properties have been added for the QR code based on the docum
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=demos.webcomponents.elementcomposite.QRProperties' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/demos/webcomponents/elementcomposite/QRProperties.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/demos/webcomponents/elementcomposite/QRProperties.java'
 height='250px'
 />
 
@@ -86,7 +86,7 @@ The `ElementComposite` events are different than `Element` events, in that this 
 In the demonstration below, a click event has been created and then added to the QR code component. This event, when fired, will display the "X" coordinate of the mouse at the time of clicking the component, which is provided to the Java event as data. A method is then implemented to allow the user to access this data, which is how it is displayed in the application.
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=demos.webcomponents.elementcomposite.QREvent' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/demos/webcomponents/elementcomposite/QREvent.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/demos/webcomponents/elementcomposite/QREvent.java'
 height='300px'
 />
 

@@ -128,7 +128,7 @@ The `TabbedPane` supports navigating through the various tabs via swiping. This 
 
 <ComponentDemo 
 frame="hidden"
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/tabbedpanedemos/TabbedPaneSwipe.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/tabbedpanedemos/TabbedPaneSwipe.java'
 /> -->
 
 ### Tab Placement 
@@ -138,7 +138,7 @@ The `Tabs` within a `TabbedPane` can be placed in various positions within the c
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.tabbedpanedemos.TabbedPanePlacement' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/tabbedpanedemos/TabbedPanePlacement.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/tabbedpanedemos/TabbedPanePlacement.java'
 height="400px"
 />
 
@@ -150,7 +150,7 @@ The other options are `START`, `END`, `CENTER`, and `STRETCH`. The first three d
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.tabbedpanedemos.TabbedPaneAlignment' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/tabbedpanedemos/TabbedPaneAlignment.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/tabbedpanedemos/TabbedPaneAlignment.java'
 height="250px"
 />
 
@@ -170,7 +170,7 @@ To set the visibility of the active indicator, the `setHideActiveIndicator(boole
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.tabbedpanedemos.TabbedPaneBorder' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/tabbedpanedemos/TabbedPaneBorder.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/tabbedpanedemos/TabbedPaneBorder.java'
 height="300px"
 />
 
@@ -184,7 +184,7 @@ For more fine-grained control over how the `TabbedPane` behaves when being navig
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.tabbedpanedemos.TabbedPaneActivation' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/tabbedpanedemos/TabbedPaneActivation.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/tabbedpanedemos/TabbedPaneActivation.java'
 height="250px"
 />
 
@@ -200,11 +200,11 @@ Individual `Tab` elements can be set to be closable. Closable tabs will have a c
 
 ### Expanse and Theme
 
-The `TabbedPane` comes with built-in `Expanse` and `Theme` options similar to other DWCj components. These can be used to quickly add styling that conveys various meaning to the end user without needing to style the component with CSS.
+The `TabbedPane` comes with built-in `Expanse` and `Theme` options similar to other Webforj components. These can be used to quickly add styling that conveys various meaning to the end user without needing to style the component with CSS.
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.tabbedpanedemos.TabbedPaneExpanseTheme' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/tabbedpanedemos/TabbedPaneExpanseTheme.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/tabbedpanedemos/TabbedPaneExpanseTheme.java'
 height="250px"
 />
 
@@ -253,7 +253,7 @@ The following practices are recommended for utilizing the `TabbedPane` within ap
     >- Labels should reflect the content or purpose, making it easy for users to understand
     >- Utilize icons and distinct colors where applicable
 
-- **Keyboard Navigation** Use the DWCj's `TabbedPane` keyboard navigation support to make interaction with the `TabbedPane` more seamless and intuitive for the end user
+- **Keyboard Navigation** Use Webforj's `TabbedPane` keyboard navigation support to make interaction with the `TabbedPane` more seamless and intuitive for the end user
 
 - **Default Tab**: If the default tab is not placed at the beginning of the `TabbedPane`, consider setting this tab as default for essential or commonly used information.
 

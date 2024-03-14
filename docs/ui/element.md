@@ -9,15 +9,15 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 <JavadocLink type="engine" location="org/dwcj/component/element/Element" top='true'/>
 
-In DWCj, developers have the option of choosing not only from the rich library of components provided, but also integrating components from elsewhere. To facilitate this, the `Element` component can be used to simplify the integration of anything from simple HTML elements, to more complex custom web components. 
+Webforj developers have the option of choosing not only from the rich library of components provided, but also integrating components from elsewhere. To facilitate this, the `Element` component can be used to simplify the integration of anything from simple HTML elements, to more complex custom web components. 
 
 :::important
-The `Element` component cannot be extended, and is not the base component for all components within the DWCj. To read more about the DWCj's component hierarchy, read [this article](../architecture/controls-components.md).
+The `Element` component cannot be extended, and is not the base component for all components within Webforj. To read more about Webforj's component hierarchy, read [this article](../architecture/controls-components.md).
 :::
 
 ## Creating a Web Element
 
-The `Element` component has three constructors provided to quickly and efficiently create web elements in your DWCj program.
+The `Element` component has three constructors provided to quickly and efficiently create web elements in your Webforj program.
 
 1. `Element()` : This parameterless constructor will create a `Div` element that can be added to your application. 
 
@@ -29,7 +29,7 @@ The below example will create an HTML `<input>` tag and give it some styling:
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=demos.webcomponents.element.InputDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/demos/webcomponents/element/InputDemo.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/demos/webcomponents/element/InputDemo.java'
 />
 
 ## Adding Events
@@ -40,7 +40,7 @@ There are also additional options to further customize events by using the [Even
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=demos.webcomponents.element.InputEvent' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/demos/webcomponents/element/InputEvent.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/demos/webcomponents/element/InputEvent.java'
 height='175px'
 />
 
@@ -62,7 +62,7 @@ The `Element` component supports the composition of child components. Developers
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=demos.webcomponents.element.InputText' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/demos/webcomponents/element/InputText.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/demos/webcomponents/element/InputText.java'
 height='175px'
 />
 
@@ -111,7 +111,7 @@ In the demo below, an event is added to an HTML `Button`. This event is then fir
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=demos.webcomponents.element.InputFunction' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/demos/webcomponents/element/InputFunction.java'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/demos/webcomponents/element/InputFunction.java'
 height='175px'
 />
 

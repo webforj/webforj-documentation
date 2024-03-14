@@ -39,9 +39,9 @@ In the example below, a `TableItemSelectEvent` event will be fired whenever a us
 
 <ComponentDemoMultiple 
 path='https://demo.webforj.com/webapp/controlsamples?class=addondemos.tabledemos.TableSingleSelection' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableSingleSelection.java'
-urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
-'https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/TableSingleSelection.java'
+urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
+'https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
 height='600px'
 />
 
@@ -53,9 +53,9 @@ By using the `setCheckboxSelection(boolean checkboxSelection)` method, checkboxe
 
 <ComponentDemoMultiple 
 path='https://demo.webforj.com/webapp/controlsamples?class=addondemos.tabledemos.TableMultiSelection' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableMultiSelection.java'
-urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
-'https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/TableMultiSelection.java'
+urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
+'https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/Service.java']}
 height='600px'
 />
 

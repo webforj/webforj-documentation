@@ -11,8 +11,8 @@ Editing data within the `Table` works via interaction with the `Repository` cont
 
 <ComponentDemoMultiple 
 path='https://demo.webforj.com/webapp/controlsamples?class=addondemos.tabledemos.TableEditData' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TableEditData.java'
-urls={['https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/addondemos/tabledemos/TitleEditorComponent.java']}
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/TableEditData.java'
+urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/TitleEditorComponent.java']}
 height='600px'
 />
 

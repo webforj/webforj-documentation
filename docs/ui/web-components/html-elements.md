@@ -4,14 +4,12 @@ title: HTML Element Components
 slug: html_components
 ---
 
-While the DWCj's `Element` class allows users to create HTML elements in their applications, a suite of standard HTML elements has been included with the DWCj's core components for ease of use. 
+While the Webforj's `Element` class allows users to create HTML elements in their applications, a suite of standard HTML elements has been included with Webforj's core components for ease of use. 
 
 The following components can be used, and map to the corresponding HTML elements:
 
-<!-- |DWCj Class|HTML Element|MDN Article|
-|:--:|:--:|:------:|
-|`Anchor`|`<a>`|[MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a)| -->
-|DWCj Class|HTML Element|Can Add Components?|
+
+|Webforj Class|HTML Element|Can Add Components?|
 |:--:|:--:|:--:|
 |`Anchor`|`<a>`| ✔️ |
 |`Article`|`<article>`| ✔️ |

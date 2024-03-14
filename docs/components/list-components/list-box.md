@@ -19,8 +19,8 @@ The `ListBox` component is a user interface element designed to display a scroll
 
 <!-- <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxDemo' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxDemo.java'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/listboxstyles/listbox_demo.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxDemo.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/listboxstyles/listbox_demo.css' 
 height = '250px'
 /> -->
 
@@ -53,8 +53,8 @@ Additionally, the arrow keys can be used to navigate the `ListBox`, and typing a
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxMultipleSelection' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxMultipleSelection.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/listbox/MultipleSelection.txt'
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxMultipleSelection.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/listbox/MultipleSelection.txt'
 height = '250px'
 />
 
@@ -116,9 +116,9 @@ There are five `ListBox` expanses that are supported which allow for quick styli
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxExpanses' 
-javaE='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxExpanses.java'
-javaC='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/code_snippets/listbox/Expanses.txt'
-cssURL='https://raw.githubusercontent.com/DwcJava/ControlSamples/main/src/main/resources/css/listboxstyles/expanse_styles.css' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxExpanses.java'
+javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/listbox/Expanses.txt'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/listboxstyles/expanse_styles.css' 
 height = '300px'
 /> -->
 

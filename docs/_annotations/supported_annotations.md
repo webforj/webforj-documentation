@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Annotations
 
-The DWCJ supports the use of various annotations for the implementation of various behaviors. The following annotations are currently supported:
+Webforj supports the use of various annotations for the implementation of various behaviors. The following annotations are currently supported:
 
 | Annotation | Description |
 |------------|-------------|
@@ -21,7 +21,7 @@ The DWCJ supports the use of various annotations for the implementation of vario
 |`@Link`| Sets one or more links to be injected into the application, such as font links. |
 
 <br/>
-Annotations should be placed before class, method and field declarations. The following code snippet is an example of how to use the above annotations in the DWCJ:
+Annotations should be placed before class, method and field declarations. The following code snippet is an example of how to use the above annotations in ebforj:
 
 ```java
 @AppTitle("My app title")
