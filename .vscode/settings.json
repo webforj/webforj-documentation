@@ -11,5 +11,9 @@
             "name": "test",
             "style": ""
         }
+    },
+    "sonarlint.connectedMode.project": {
+        "connectionId": "Vscode",
+        "projectKey": "webforj_webforj-docs"
     }
 }
