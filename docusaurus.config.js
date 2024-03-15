@@ -8,15 +8,15 @@ const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 const config = {
   title: 'Webforj',
   tagline: 'Develop your Progressive Web App in Java',
-  url: 'https://webforj.github.io/',
+  url: 'https://documentation.webforj.com/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/logo.png',
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'dwcjava', // Usually your GitHub org/user name.
-  projectName: 'dwcjava.github.io', // Usually your repo name.
+  organizationName: 'webforj', // Usually your GitHub org/user name.
+  projectName: 'webforj-docs', // Usually your repo name.
   trailingSlash: false,
   
   // Even if you don't use internalization, you can use this field to set useful
@@ -36,7 +36,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-          "https://github.com/webforj/dwcjava.github.io/tree/website/",
+          "https://github.com/webforj/webforj-docs/tree/website/",
         },
         // blog: {
         //   showReadingTime: true,
