@@ -31,5 +31,6 @@
 "CheckableMenuItem" :"dwc-menuitem",
 "Drawer" :"dwc-drawer",
 "Dialog" :"dwc-dialog",
-"Icon" :"dwc-icon"
+"Icon" :"dwc-icon",
+"Splitter":"dwc-splitter"
 }
