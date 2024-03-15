@@ -8,22 +8,22 @@ import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import EventTable from '@site/src/components/DocsTools/EventTable';
 
 
-The `Splitter` component provides a flexible way to divide and resize content within your app. It is designed to encapsulate two resizable components, known as the master and detail components. These components are separated by a divider, which allows users to dynamically adjust the size of each component according to their preferences.
+The `Splitter` component, designed to divide and resize content within your app, encapsulates two resizable components, the master and the detail components. A divider separates these components, allowing users to dynamically adjust each component's size according to their preferences.
 
 <ComponentDemoMultiple 
 path='https://demo.webforj.com/webapp/controlsamples/SplitterBasic?' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterBasic.java'
 urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterBox.java',]}
-height='600px'
+height='300px'
 />
 
 ## Constructors
 
-The `Splitter` component has the following parameterized constructors in addition to the default constructor:
+Besides its default constructor, the `Splitter` offers these constructors:
 
 `public Splitter(String id, Component master, Component detail)`: This constructor creates a `Splitter` instance with a specified ID, master component, and detail component.
 
-`public Splitter(Component master, Component detail)`: This constructor is a shorthand version of the previous one, creating a `Splitter` without specifying an ID.
+`public Splitter(Component master, Component detail)`: This constructor acts as a shorthand version of the previous one, creating a Splitter. without specifying an ID.
 
 `public Splitter(String id)`: This constructor allows you to create a `Splitter` instance with a specified ID. 
 
@@ -35,22 +35,20 @@ The `Splitter` component provides methods to set min and max sizes for its panel
 
 ### Setting sizes
 
-The `setMasterMinSize(String masterMinSize)` method specifies the min size for the master panel of the splitter. Similarly, the `setDetailMinSize(String detailMinSize)` method is available for setting the min size of the detail panel.
+The `setMasterMinSize(String masterMinSize)` method specifies the min size for the master panel of the splitter. Likewise, the `setMasterMaxSize(String masterMaxSize)` method allows developers to define the max size for the master panel.
 
-Likewise, the `setMasterMaxSize(String masterMaxSize)` method allows developers to define the max size for the master panel, while the `setDetailMaxSize(String detailMaxSize)` method sets the max size for the detail panel.
-
-Sizes are specified using various units such as pixels (px), percentages (%), or other valid CSS units, as shown below:
+You can specify sizes using various units like pixels or other valid CSS units, as shown below:
 
 <ComponentDemoMultiple 
 path='https://demo.webforj.com/webapp/controlsamples/SplitterMinMax?' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterMinMax.java'
 urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterBox.java',]}
-height='600px'
+height='300px'
 />
 
 ## Orientation
 
-The `Splitter` component offers the flexibility to configure its orientation, allowing developers to create layouts tailored to specific design requirements. By specifying the orientation, the component arranges panels horizontally or vertically, providing versatility in layout design.
+Developers can configure orientation in a `Splitter` component, allowing developers to create layouts tailored to specific design requirements. By specifying the orientation, the component arranges panels horizontally or vertically, providing versatility in layout design.
 
 To configure the orientation use the provided Enum class to specify whether the `Splitter` should render horizontally or vertically:
 
@@ -58,18 +56,18 @@ To configure the orientation use the provided Enum class to specify whether the 
 path='https://demo.webforj.com/webapp/controlsamples/SplitterOrientation?' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterOrientation.java'
 urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterBox.java',]}
-height='600px'
+height='300px'
 />
 
 ## Relative position
 
-To set the initial position of the divider bar in the `Splitter` component, use the `setPositionRelative()`. This method takes a numeric value from 0 to 100 representing the percentage of the given space in the `Splitter`, and displays the divider at the given percentage of total width:
+To set the initial position of the divider bar in the `Splitter` component, use the `setPositionRelative()`. This method takes a numeric value from "0" to "100" representing the percentage of the given space in the `Splitter`, and displays the divider at the given percentage of total width:
 
 <ComponentDemoMultiple 
 path='https://demo.webforj.com/webapp/controlsamples/SplitterPosition?' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterPosition.java'
 urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterBox.java',]}
-height='600px'
+height='300px'
 />
 
 ## Nesting
@@ -82,27 +80,27 @@ To nest Splitter components, instantiate new `Splitter` instances and add them a
 path='https://demo.webforj.com/webapp/controlsamples/SplitterNested?' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterNested.java'
 urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterBox.java',]}
-height='600px'
+height='300px'
 />
 
 ## Auto save
 
 The `Splitter` component includes an AutoSave feature, which saves the state of panel sizes to local storage to keep dimensions consistent between reloads.
 
-When the auto save configuration is set, the `Splitter` component automatically stores the state of panel sizes in the local storage of the web browser. This means that when users resize panels, their chosen sizes are persistently saved across page reloads or browser sessions. This feature reduces the need for manual adjustments.
+When you set the auto-save configuration, the `Splitter` component automatically stores the state of panel sizes in the web browser's local storage. This ensures that the sizes users choose for panels persist across page reloads or browser sessions, reducing the need for manual adjustments.
 
 ### Cleaning the state
 
-To programmatically remove the saved state to revert the splitter back to default settings/dimensions, call the `cleanState()` method to remove any saved state data related to the `Splitter` component from the local storage of the web browser.
+To programmatically remove the saved state to revert the `Splitter` back to default settings/dimensions, call the `cleanState()` method to remove any saved state data related to the `Splitter` component from the local storage of the web browser.
 
 <ComponentDemoMultiple 
 path='https://demo.webforj.com/webapp/controlsamples/SplitterAutoSave?' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterAutoSave.java'
 urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterBox.java',]}
-height='600px'
+height='400px'
 />
 
-In the above demo, the `setAutosave(true)` method is called on each `Splitter` instance to enable the AutoSave feature. This ensures that the state of panel sizes is automatically saved to local storage. When reloading the browser, the size of these splitters remains constant. 
+In the above demo, each Splitter instance activates the AutoSave feature by calling the setAutosave(true) method. This ensures the automatic saving of panel sizes to local storage. Thus, when reloading the browser, the sizes of these splitters remain constant.
 
 Clicking the "Clear State" button calls the `cleanState()` method and refreshes the browser window to display the original dimensions.
 
