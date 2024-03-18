@@ -149,10 +149,6 @@ This component relies on the following components - see the related article for 
 
 To ensure an optimal user experience when using the `Splitter` component, consider the following best practices: 
 
-## Best practices
-
-Effectively incorporating the `Splitter` component into your app ensures both flexibility and usability. Keep the following key points in mind:
-
 - **Adjust Based on Content**: When deciding on the orientation and initial sizes of panels, consider the content's priority. For example, in a layout with a navigation sidebar and a main content area, the sidebar should typically remain narrower with a set min size for clear navigation.
 
 - **Strategic Nesting**: Nesting splitters can create versatile layouts but can complicate the UI and impact performance. Plan your nested layouts to ensure they're intuitive and enhance user experience.
