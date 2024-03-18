@@ -8,8 +8,20 @@ title: Splitter
 import ComponentDemoMultiple from '@site/src/components/DocsTools/ComponentDemoMultiple';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import EventTable from '@site/src/components/DocsTools/EventTable';
+import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
+import DocChip from '@site/src/components/DocsTools/DocChip';
+import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
+import Chip from '@mui/material/Chip';
 
 <!-- vale on -->
+
+
+<DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" href="../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
+
+<DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-splitter" clickable={false} iconName='code'/>
+
+<JavadocLink type="engine" location="com/webforj/component/layout/splitter/Splitter" top='true'/>
+
 
 The `Splitter` component, designed to divide and resize content within your app, encapsulates two resizable components, the master and the detail components. A divider separates these components, allowing users to dynamically adjust each component's size according to their preferences.
 
