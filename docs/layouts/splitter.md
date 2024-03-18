@@ -48,9 +48,9 @@ height='300px'
 
 ## Orientation
 
-Developers can configure orientation in a `Splitter` component, allowing developers to create layouts tailored to specific design requirements. By specifying the orientation, the component arranges panels horizontally or vertically, providing versatility in layout design.
+Developers can configure orientation in the `Splitter` component, allowing to create layouts tailored to specific design requirements. By specifying the orientation, the component arranges panels horizontally or vertically, providing versatility in layout design.
 
-To configure the orientation use the provided Enum class to specify whether the `Splitter` should render horizontally or vertically:
+To configure the orientation use the supported orientations Enum to specify whether the `Splitter` should render horizontally or vertically:
 
 <ComponentDemoMultiple 
 path='https://demo.webforj.com/webapp/controlsamples/SplitterOrientation?' 
@@ -61,7 +61,7 @@ height='300px'
 
 ## Relative position
 
-To set the initial position of the divider bar in the `Splitter` component, use the `setPositionRelative()`. This method takes a numeric value from "0" to "100" representing the percentage of the given space in the `Splitter`, and displays the divider at the given percentage of total width:
+To set the initial position of the divider bar in the `Splitter` component, use the `setPositionRelative`. This method takes a numeric value from `0` to `100` representing the percentage of the given space in the `Splitter`, and displays the divider at the given percentage of total width:
 
 <ComponentDemoMultiple 
 path='https://demo.webforj.com/webapp/controlsamples/SplitterPosition?' 
@@ -72,7 +72,7 @@ height='300px'
 
 ## Nesting
 
-The `Splitter` component supports nesting, allowing developers to create complex layouts with levels of resizable panels. Nesting `Splitter` components enables the creation of sophisticated user interfaces with granular control over the arrangement and resizing of content.
+Splitters nesting allow developers to create complex layouts with levels of resizable panels. It enables the creation of sophisticated user interfaces with granular control over the arrangement and resizing of content.
 
 To nest Splitter components, instantiate new `Splitter` instances and add them as children to existing `Splitter` components. This hierarchical structure allows for the creation of multi-level layouts with flexible resizing capabilities. The program below demonstrates this:
 
@@ -85,7 +85,7 @@ height='300px'
 
 ## Auto save
 
-The `Splitter` component includes an AutoSave feature, which saves the state of panel sizes to local storage to keep dimensions consistent between reloads.
+The `Splitter` component includes an AutoSave option, which saves the state of panel sizes to local storage to keep dimensions consistent between reloads.
 
 When you set the auto-save configuration, the `Splitter` component automatically stores the state of panel sizes in the web browser's local storage. This ensures that the sizes users choose for panels persist across page reloads or browser sessions, reducing the need for manual adjustments.
 
@@ -100,49 +100,33 @@ urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/j
 height='400px'
 />
 
-In the above demo, each Splitter instance activates the AutoSave feature by calling the setAutosave(true) method. This ensures the automatic saving of panel sizes to local storage. Thus, when reloading the browser, the sizes of these splitters remain constant.
+In the above demo, each Splitter instance activates the AutoSave feature by calling the `setAutosave` method. This ensures the automatic saving of panel sizes to local storage. Thus, when reloading the browser, the sizes of these splitters remain constant.
 
 Clicking the "Clear State" button calls the `cleanState()` method and refreshes the browser window to display the original dimensions.
-
-## Resizing event
-
-The `SplitterResizeEvent` provides a mechanism for developers to respond to changes in the size of a `Splitter` component. By handling resize events, developers can implement custom logic to adjust the layout or update UI elements based on changes in `Splitter` dimensions. 
-
-### Listener registration
-
-To respond to splitter resize events, developers need to register event listeners that trigger whenever the splitter's size changes. To do this, add an event listener to the splitter component.
-
-```java
-Splitter splitter = new Splitter();
-splitter.addResizeListener(e -> {
-    // Handle splitter resize event
-    // Perform actions such as adjusting layout or updating UI elements
-});
-```
 
 ## Styling
 
 ### Shadow parts
 
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which are required when styling via CSS.
+These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, necessary for styling via CSS.
 
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Splitter} table='parts'  />
 
 ### Slots
 
-Listed below are the slots available for use within the `Button` component. These slots act as placeholders within the component that control where the children of a customized element should be inserted within the shadow tree.
+These are the available slots within the `Splitter` component. These slots serve as placeholders, guiding the insertion of customized element children into the shadow tree.
 
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Button} table='slots'  />
 
 ### CSS properties
 
-These are the various CSS properties that are used in the component, with a short description of their use.
+Here are the different CSS properties used in the component, along with a brief explanation of their purpose.
 
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Button}  table='properties'/>
 
 ### Reflected attributes
 
-The reflected attributes of a component are shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
+The component's reflected attributes appear as attributes in the rendered HTML element within the DOM, allowing for styling based on these attributes.
 
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Button} table="reflects" />
 
@@ -151,3 +135,22 @@ The reflected attributes of a component are shown as attributes in the rendered 
 This component relies on the following components - see the related article for more detailed styling information:
 
 <TableBuilder tag='dwc-splitter' table="dependencies"/>
+
+## Best practices 
+
+To ensure an optimal user experience when using the `Splitter` component, consider the following best practices: 
+
+
+To streamline the guidance for using the `Splitter` component effectively, here's a condensed section of best practices:
+
+---
+
+## Best practices
+
+Effectively incorporating the `Splitter` component into your app ensures both flexibility and usability. Keep the following key points in mind:
+
+- **Adjust Based on Content**: When deciding on the orientation and initial sizes of panels, consider the content's priority. For example, in a layout with a navigation sidebar and a main content area, the sidebar should typically remain narrower with a set min size for clear navigation.
+
+- **Strategic Nesting**: Nesting splitters can create versatile layouts but can complicate the UI and impact performance. Plan your nested layouts to ensure they're intuitive and enhance user experience.
+
+- **Remember User Preferences**: Use the AutoSave feature to remember user adjustments across sessions, enhancing the user experience. Provide an option to allow users to reset to default settings.
