@@ -21,12 +21,11 @@ height='300px'
 
 Besides its default constructor, the `Splitter` offers these constructors:
 
-`public Splitter(String id, Component master, Component detail)`: This constructor creates a `Splitter` instance with a specified ID, master component, and detail component.
+- `public Splitter(String id, Component master, Component detail)`: This constructor creates a `Splitter` instance with a specified ID, master component, and detail component.
 
-`public Splitter(Component master, Component detail)`: This constructor acts as a shorthand version of the previous one, creating a Splitter. without specifying an ID.
+- `public Splitter(Component master, Component detail)`: This constructor acts as a shorthand version of the previous one, creating a Splitter. without specifying an ID.
 
-`public Splitter(String id)`: This constructor allows you to create a `Splitter` instance with a specified ID. 
-
+- `public Splitter(String id)`: This constructor allows you to create a `Splitter` instance with a specified ID. 
 
 ## Min and max size 
 
@@ -100,7 +99,7 @@ urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/j
 height='400px'
 />
 
-In the above demo, each Splitter instance activates the AutoSave feature by calling the `setAutosave` method. This ensures the automatic saving of panel sizes to local storage. Thus, when reloading the browser, the sizes of these splitters remain constant.
+In the preceding demo, each Splitter instance activates the AutoSave feature by calling the `setAutosave` method. This ensures the automatic saving of panel sizes to local storage. Thus, when reloading the browser, the sizes of these splitters remain constant.
 
 Clicking the "Clear State" button calls the `cleanState()` method and refreshes the browser window to display the original dimensions.
 
@@ -139,11 +138,6 @@ This component relies on the following components - see the related article for 
 ## Best practices 
 
 To ensure an optimal user experience when using the `Splitter` component, consider the following best practices: 
-
-
-To streamline the guidance for using the `Splitter` component effectively, here's a condensed section of best practices:
-
----
 
 ## Best practices
 
