@@ -3,10 +3,11 @@ sidebar_position: 20
 title: Splitter
 ---
 
+<!-- vale off -->
 import ComponentDemoMultiple from '@site/src/components/DocsTools/ComponentDemoMultiple';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import EventTable from '@site/src/components/DocsTools/EventTable';
-
+<!-- vale on -->
 
 The `Splitter` component, designed to divide and resize content within your app, encapsulates two resizable components, the master and the detail components. A divider separates these components, allowing users to dynamically adjust each component's size according to their preferences.
 
@@ -109,25 +110,33 @@ Clicking the "Clear State" button calls the `cleanState()` method and refreshes 
 
 These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, necessary for styling via CSS.
 
+<!-- vale off -->
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Splitter} table='parts'  />
+<!-- vale on -->
 
 ### Slots
 
 These are the available slots within the `Splitter` component. These slots serve as placeholders, guiding the insertion of customized element children into the shadow tree.
 
+<!-- vale off -->
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Button} table='slots'  />
+<!-- vale on -->
 
 ### CSS properties
 
 Here are the different CSS properties used in the component, along with a brief explanation of their purpose.
 
+<!-- vale off -->
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Button}  table='properties'/>
+<!-- vale on -->
 
 ### Reflected attributes
 
 The component's reflected attributes appear as attributes in the rendered HTML element within the DOM, allowing for styling based on these attributes.
 
+<!-- vale off -->
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Button} table="reflects" />
+<!-- vale on -->
 
 ### Dependencies
 
