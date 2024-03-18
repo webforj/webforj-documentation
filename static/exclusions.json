@@ -17,5 +17,10 @@
       "toggleable", 
       "selected"
     ]
+  },
+  "splitter": {
+    "reflects": [
+      "theme"
+    ]
   }
 }

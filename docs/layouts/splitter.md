@@ -4,9 +4,11 @@ title: Splitter
 ---
 
 <!-- vale off -->
+
 import ComponentDemoMultiple from '@site/src/components/DocsTools/ComponentDemoMultiple';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import EventTable from '@site/src/components/DocsTools/EventTable';
+
 <!-- vale on -->
 
 The `Splitter` component, designed to divide and resize content within your app, encapsulates two resizable components, the master and the detail components. A divider separates these components, allowing users to dynamically adjust each component's size according to their preferences.
@@ -119,23 +121,22 @@ These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the 
 These are the available slots within the `Splitter` component. These slots serve as placeholders, guiding the insertion of customized element children into the shadow tree.
 
 <!-- vale off -->
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Button} table='slots'  />
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Splitter} table='slots'  />
 <!-- vale on -->
 
-### CSS properties
+<!-- ### CSS properties
 
 Here are the different CSS properties used in the component, along with a brief explanation of their purpose.
 
-<!-- vale off -->
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Button}  table='properties'/>
-<!-- vale on -->
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Splitter}  table='properties'/> -->
+
 
 ### Reflected attributes
 
 The component's reflected attributes appear as attributes in the rendered HTML element within the DOM, allowing for styling based on these attributes.
 
 <!-- vale off -->
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Button} table="reflects" />
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Splitter} table="reflects" exclusions={require('@site/static/exclusions.json').splitter.reflects}/>
 <!-- vale on -->
 
 ### Dependencies
