@@ -165,6 +165,11 @@ function HomepageTitle(){
           to='#script-container'>
           Contact Us
         </Link>
+        <Link 
+          className="button button--secondary button--lg"
+          href='https://calendly.com/webforj'>
+          Schedule Demo
+        </Link>
       </div>
       <Dialog open={open} onClose={handleClose}>
         {/* <DialogTitle>Dialog Title</DialogTitle> */}
