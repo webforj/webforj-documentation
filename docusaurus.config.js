@@ -12,7 +12,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/logo.png',
+  favicon: 'img/webforj_icon.svg',
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'webforj', // Usually your GitHub org/user name.
@@ -90,12 +90,12 @@ const config = {
   
         //... other Algolia params
       },
-      image: '/img/logo.png',
+      image: '/img/webforj.svg',
       navbar: {
-        title: 'Webforj',
+        title: '',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.png',
+          src: 'img/webforj.svg',
         },
         items: [
           // {
@@ -181,8 +181,21 @@ const config = {
           //     },
           //   ],
           // },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} BASIS International Ltd. All rights reserved.`,
+          // {
+            //   title: `Copyright © ${new Date().getFullYear()} BASIS International Ltd. All rights reserved.`,
+            //   items:
+            //   {
+              //     label: 'BASIS International Ltd',
+              //     href: 'https://basis.cloud/contact/',
+              //   }
+              // }
+              {
+                html: `
+                <p>Copyright © <script>document.write(/\d{4}/.exec(Date())[0])</script> <a href='https://basis.cloud/contact/'> BASIS International Ltd.</a> All rights reserved.</p>
+                `
+              }
+            ],
+        // copyright: `Copyright © ${new Date().getFullYear()} BASIS International Ltd. All rights reserved.`,
       },
       prism: {
         theme: lightCodeTheme,
