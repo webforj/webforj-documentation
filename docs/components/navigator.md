@@ -4,6 +4,8 @@ title: Navigator
 draft: true
 ---
 
+<!-- vale off -->
+
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import EventTable from '@site/src/components/DocsTools/EventTable';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
@@ -11,6 +13,8 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 import DocChip from '@site/src/components/DocsTools/DocChip';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
 import Chip from '@mui/material/Chip';
+
+<!-- vale on -->
 
 <DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
 
@@ -224,7 +228,9 @@ These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the 
 
 Here are the different CSS properties used in the component, along with a brief explanation of their purpose.
 
+<!-- vale off -->
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Navigator}  table='properties'/>
+<!-- vale on -->
 
 
 ### Reflected attributes
