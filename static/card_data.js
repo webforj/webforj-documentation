@@ -43,12 +43,6 @@ export const componentData =
   //   "description": "An editable text field component with various features such as read-only mode, focus control, tab traversal, and text alignment."
   // },
   {
-    "image": require('./img/component_images/label.png'),
-    "title": "Label",
-    "link" : "./label",
-    "description": "A static text element that can be added to pages. In addition to using the label as static text, it can also be used as an HTML tag within your code."
-  },
-  {
     "image": require('./img/component_images/applayout.png'),
     "title": "App Layout",
     "link" : "../layouts/app-layout",
@@ -89,12 +83,6 @@ export const componentData =
     "title": "Slider",
     "link" : "./slider",
     "description": "The Slider component provides methods to set and retrieve properties such as orientation, minimum and maximum values, tick spacing, and callbacks for scroll events."
-  },
-  {
-    "image": require('./img/component_images/textarea.png'),
-    "title": "Text Area",
-    "link" : "./text-area",
-    "description": "The Text Area component is a multi-line edit field that allows for various functionalities such as read-only mode, text highlighting, focus handling, scrolling, and more."
   },
   // {
   //   "image": require('./img/component_images/textfield.png'),

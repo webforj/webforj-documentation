@@ -2,7 +2,7 @@
 sidebar_position: 1
 displayed_sidebar: documentationSidebar
 id: "styling_intro"
-pagination_prev: "components/text-area"
+pagination_prev: "components/tabbed-pane"
 ---
 
 # Styling
