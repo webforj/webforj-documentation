@@ -48,47 +48,26 @@ The `Navigator` component is closely linked with the `Paginator` model class. Wh
 
 This class calculates pagination metadata such as total number of pages, start/end indices of items on the current page, and an array of page numbers for navigation.
 
+When integrating with a `Paginator`, the navigator responds to any changes within the `Paginator`. `Navigator` objects have access to a built-in `Paginator` through use of the `getPaginator()` method. It can also accept a `Paginator` instance via the `setPaginator()` method, or utilization of one of the applicable constructors.
+
 ### Items
 
-In the context of the Paginator, the term "items" denotes the individual paginated elements or data entries. These could be records, entries, or any discrete units within a dataset. The `Paginator` facilitates the navigation and organization of these items across multiple pages.
+The term "items" denotes the individual paginated elements or data entries. These could be records, entries, or any discrete units within a dataset. You can set the total number of items using the `setTotalItems()` method. 
 
-To interact with the items, the `Paginator` provides the following methods to access item position within a page:
-
-#### Setting total items
-
-You can set the total number of items using the `setTotalItems()` method. 
+```java
+navigator.getPaginator().setTotalItems(totalItems);
+```
 
 :::info
 A repository associated with the `Paginator` instance has the total number of items directly managed by the repository and can't be directly set.
 :::
 
-#### Indices
-
-You can obtain the index of the first item on the current page can by using `getStartIndex()`.
-
-```java
-int startIndex = paginator.getStartIndex();
-```
-
-Similarly, you can retrieve the index of the last item on the current page with `getEndIndex()`.
-
-```java
-int endIndex = paginator.getEndIndex();
-```
-Now, developers can use these indices to fetch and display the relevant items within the current page.
-
-### Pages
-
-The concept of pages in the `Paginator` refers to the logical divisions of the entire dataset. Each page contains a specific number of items, and users navigate through these pages to explore the complete dataset.
-
-To enhance the navigation experience, the `Paginator` provides an array of page numbers. Developers can use this array to create a navigation menu or display available pages for the user.
-
-#### Maximum pages
+### Maximum pages
 
 The `setMax()` method allows you to define the maximum number of page links to display in the pagination navigation. This is particularly useful when dealing with a large number of pages, as it controls the number of page links visible to the user at any given time.
 
 ```java
-paginator.setMax(maxPages);
+navigator.getPaginator().setMax(maxPages);
 ```
 
 <ComponentDemoMultiple 
@@ -97,16 +76,15 @@ javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/ja
 height='100px'
 />
 
-#### Page size
+This program shows a maximum of five pages on the `Navigator` at one time by using the `getPaginator()` method to retrieve the `Paginator` associated with the `Navigator` object, and then using the `setMax()` method to specify a desired number of maximum pages displayed.
+
+### Page size
 
 The `setSize()` method allows you to specify the number of items to display on each page of the pagination. When you call this method and provide a new page size, it adjusts the pagination accordingly. 
 
 ```java
-paginator.setSize(pageSize);
+navigator.getPaginator().setSize(pageSize);
 ```
-
-
-This program shows a maximum of five pages on the `Navigator` at one time by using the `getPaginator()` method to retrieve the `Paginator` associated with the `Navigator` object, and then using the `setMax()` method to specify a desired number of maximum pages displayed.
 
 ## Customizing buttons, text and tooltips
 
