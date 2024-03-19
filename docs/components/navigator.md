@@ -6,7 +6,7 @@ draft: true
 
 <!-- vale off -->
 
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import ComponentDemoMultiple from '@site/src/components/DocsTools/ComponentDemoMultiple';
 import EventTable from '@site/src/components/DocsTools/EventTable';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
@@ -18,10 +18,10 @@ import Chip from '@mui/material/Chip';
 
 <DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
 
-<DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-navigator" href="https://basishub.github.io/basis-next/#/web-components/dwc-button" clickable={false} iconName='code'/>
+<DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-navigator" href="https://basishub.github.io/basis-next/#/web-components/dwc-navigator" clickable={false} iconName='code'/>
 
 
-<JavadocLink type="engine" location="com/webforj/component/layout/navigator/Navigator" top='true'/>
+<JavadocLink type="engine" location="com/webforj/component/component/navigator/Navigator" top='true'/>
 
 
 The `Navigator` component is a customizable pagination component designed to navigate through data sets, supporting multiple layouts. You can configure it to display various navigation controls such as first, last, next, and previous buttons, along with page numbers or a quick jump field depending on the layout setting. 
@@ -34,10 +34,10 @@ Often, a `Navigator` component displays information found in a bound `Repository
 
 To do this, simply pass the desired `Repository` object to an applicable `Navigator` object's constructor:
 
-<ComponentDemo 
+<ComponentDemoMultiple 
 path='https://demo.webforj.com/webapp/controlsamples/NavigatorTable?' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/navigatordemos/NavigatorTable.java'
-height='400px'
+height='500px'
 />
 
 This example creates the `Navigator` and [`Table`](../addons/table/) with the same `Repository` instance. This means that when navigating to a new page with the `Navigator`, the [`Table`](../addons/table/) recognizes this change and rerenders.
@@ -79,7 +79,7 @@ Now, developers can use these indices to fetch and display the relevant items wi
 
 ### Pages
 
-The concept of "pages" in the `Paginator` refers to the logical divisions of the entire dataset. Each page contains a specific number of items, and users navigate through these pages to explore the complete dataset.
+The concept of pages in the `Paginator` refers to the logical divisions of the entire dataset. Each page contains a specific number of items, and users navigate through these pages to explore the complete dataset.
 
 To enhance the navigation experience, the `Paginator` provides an array of page numbers. Developers can use this array to create a navigation menu or display available pages for the user.
 
@@ -91,6 +91,12 @@ The `setMax()` method allows you to define the maximum number of page links to d
 paginator.setMax(maxPages);
 ```
 
+<ComponentDemoMultiple 
+path='https://demo.webforj.com/webapp/controlsamples/NavigatorPages?' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/navigatordemos/NavigatorPages.java'
+height='100px'
+/>
+
 #### Page size
 
 The `setSize()` method allows you to specify the number of items to display on each page of the pagination. When you call this method and provide a new page size, it adjusts the pagination accordingly. 
@@ -99,17 +105,18 @@ The `setSize()` method allows you to specify the number of items to display on e
 paginator.setSize(pageSize);
 ```
 
-<ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/NavigatorPages?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/navigatordemos/NavigatorPages.java'
-height='100px'
-/>
 
 This program shows a maximum of five pages on the `Navigator` at one time by using the `getPaginator()` method to retrieve the `Paginator` associated with the `Navigator` object, and then using the `setMax()` method to specify a desired number of maximum pages displayed.
 
 ## Customizing buttons, text and tooltips
 
 The `Navigator` component provides extensive customization options for buttons, text, and tooltips. To change the displayed text on the `Navigator` component, use the `setText()` method. This method takes text, as well as the desired `Part` of the `Navigator`.
+
+<ComponentDemoMultiple 
+path='https://demo.webforj.com/webapp/controlsamples/NavigatorBasic?' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/navigatordemos/NavigatorBasic.java'
+height='100px'
+/>
 
 ### Button and component text
 
@@ -135,7 +142,7 @@ navigator.setText("'Go to page ' + endPage", Navigator.Part.LAST_BUTTON);
 
 ### Tooltip text
 
-You can customize tooltips for various parts of the Navigator component using the setTooltipText() method. Tooltips provide helpful hints to users when they hover over navigation elements.
+You can customize tooltips for various parts of the `Navigator` component using the `setTooltipText()` method. Tooltips provide helpful hints to users when they hover over navigation elements.
 
 :::info
 Tooltip text doesn't evaluate to Javascript, unlike the text used by the `setText()` method
@@ -153,15 +160,17 @@ In the following example, the `setText()` method displays a numeric value to the
 
 See [this section](#events) for more details on the available `Navigator` events. 
 
-<ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/NavigatorBasic?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/navigatordemos/NavigatorBasic.java'
-height='100px'
-/>
+
 
 ## Layouts
 
 Various layout options exist for the `Navigator` component  to provide flexibility in displaying pagination controls. To access these layouts, use the `Navigator.Layout` enum's values. The options are as follows:
+
+<ComponentDemoMultiple 
+path='https://demo.webforj.com/webapp/controlsamples/NavigatorLayout?' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/navigatordemos/NavigatorLayout.java'
+height='200px'
+/>
 
 #### 1. None layout
 
@@ -200,12 +209,6 @@ The quick-jump layout provides a [NumberField](./fields/number-field.md) for use
 ```java
 navigator.setLayout(Navigator.Layout.QUICK_JUMP);
 ```
-
-<ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/NavigatorLayout?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/navigatordemos/NavigatorLayout.java'
-height='200px'
-/>
 
 ## Events 
 
