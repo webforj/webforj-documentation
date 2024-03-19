@@ -147,7 +147,7 @@ function HomepageTitle(){
     <div css={headerStyles}>
       {/* <b css={versionStyles}>BBj Version: 22.XX.? </b> */}
       <h2 css={titleStyles}>
-        Webforj
+        webforJ
       </h2>
       <p css={descriptionStyles}>
         A robust and flexible framework that can help you deliver a modern and engaging web user interface with ease. In Java.
@@ -203,6 +203,7 @@ function HomepageAnnoucement(){
     justify-content: space-around;
     padding: 30px;
     margin-bottom: 50px;
+    gap: 20px;
     @media screen and (max-width: 992px) {
       width: 100%;
       border-radius: 0px;
@@ -241,7 +242,7 @@ function HomepageAnnoucement(){
       />
       <div css={infoStyles}>
         <h2 css={titleStyles}>Catch us at Javaland 2024!</h2>
-        <p css={descriptionStyles}>Come say hello and tell us what you think about the new Webforj Framework at the Javaland conference this April at Nürburgring.</p>
+        <p css={descriptionStyles}>Come say hello and tell us what you think about the new webforJ Framework at the Javaland conference this April at Nürburgring.</p>
         <Link 
           className="button button--primary button--lg"
           to='https://www.javaland.eu/de/home/'>
@@ -268,7 +269,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Build your modern web applications with Webforj.">
+      description="Build your modern web applications with webforJ.">
         <div css={mainStyles}>
         <HomepageTitle />
         <HomepageAnnoucement />

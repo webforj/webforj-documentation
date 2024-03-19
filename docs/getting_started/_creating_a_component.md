@@ -18,7 +18,7 @@ For the example custom component, we'll build a simple entry form that can be re
 
 ### Create a class for your component 
 
-To begin creating our example form component, we'll create a new file in Java with the name of our desired class. For the purposes of this walkthrough, we'll call it `CustomForm.java`. Once this has been done, extend the `AbstractDwcComponent` class, which will allow this class to be added to Webforj's `Panel` and `Frame` components, as well as various Webforj layouts.
+To begin creating our example form component, we'll create a new file in Java with the name of our desired class. For the purposes of this walkthrough, we'll call it `CustomForm.java`. Once this has been done, extend the `AbstractDwcComponent` class, which will allow this class to be added to webforJ's `Panel` and `Frame` components, as well as various webforJ layouts.
 Below is an example snippet for the CustomForm class:
 
 ```java

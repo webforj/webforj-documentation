@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Webforj',
+  title: 'webforJ',
   tagline: 'Develop your Progressive Web App in Java',
   url: 'https://documentation.webforj.com/',
   baseUrl: '/',

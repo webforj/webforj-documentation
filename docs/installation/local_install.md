@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Local Installation
 
-This section of the documentation will cover the steps required only for users who wish to use Webforj for web and/or application development with a local BBj instance on their machine. This installation will not allow users to contribute to the Webforj foundation code itself.
+This section of the documentation will cover the steps required only for users who wish to use webforJ for web and/or application development with a local BBj instance on their machine. This installation will not allow users to contribute to the webforJ foundation code itself.
 <br/>
 
 :::info
@@ -24,7 +24,7 @@ Installation will be broken down into the following steps:
 
 ## 1. Java and Maven Download and Configuration
 
-In order to use Webforj, you must first have Java and Maven installed and properly configured. If you already
+In order to use webforJ, you must first have Java and Maven installed and properly configured. If you already
 have Java and Maven downloaded, please skip to [**Step 2**](#section2). If you also have 
 BBj installed on your system, please skip to [**Step 3**](#section3).
 
@@ -63,9 +63,9 @@ mvn install:install-file -Dfile=BBjUtil.jar -DgroupId=com.basis.lib -DartifactId
 
 <a name='section3'></a>
 
-## 3. Install and Configure the Webforj Plugin
+## 3. Install and Configure the webforJ Plugin
 
-Once BBj has been installed, we can access the Plugin Manager in order to install tools needed to configure Webforj. To start, type "Plugin Manager" into the start menu or Finder. 
+Once BBj has been installed, we can access the Plugin Manager in order to install tools needed to configure webforJ. To start, type "Plugin Manager" into the start menu or Finder. 
 
 <!-- ![Plugin manager start location](./_images/users/local/i1.png) -->
 
@@ -134,7 +134,7 @@ Finally, click on the "Configure" button, which will open a new window. In this 
 
 ## 4. Clone the Repository
 
-Once BBj and the required Webforj plugin are installed and configured, we can clone the "Hello World" repository from the Webforj Github page. This project comes with the necessary tools to run your first Webforj program!
+Once BBj and the required webforJ plugin are installed and configured, we can clone the "Hello World" repository from the webforJ Github page. This project comes with the necessary tools to run your first webforJ program!
 
 To begin, navigate to the [HelloWorldJava repository](https://github.com/webforj/HelloWorldJava) and clone the project to your machine.
 

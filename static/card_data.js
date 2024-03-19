@@ -28,13 +28,13 @@ export const componentData =
     "image": require('./img/component_images/drawer.png'),
     "title": "Drawer",
     "link" : "./drawer",
-    "description": "Webforj's Drawer component allow developers to create a container which slides into the viewport to expose additional options and information."
+    "description": "webforJ's Drawer component allow developers to create a container which slides into the viewport to expose additional options and information."
   },
   {
     "image": require('./img/component_images/dialog.png'),
     "title": "Dialog",
     "link" : "./dialog",
-    "description": "Webforj's dialog component is built to allow a developer to quickly and easily display a dialog on their application, for instances such as a login menu or information box."
+    "description": "webforJ's dialog component is built to allow a developer to quickly and easily display a dialog on their application, for instances such as a login menu or information box."
   },
   // {
   //   "image": require('./img/component_images/field.png'),

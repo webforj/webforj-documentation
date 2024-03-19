@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Annotations
 
-Webforj supports the use of various annotations for the implementation of various behaviors. The following annotations are currently supported:
+webforJ supports the use of various annotations for the implementation of various behaviors. The following annotations are currently supported:
 
 | Annotation | Description |
 |------------|-------------|

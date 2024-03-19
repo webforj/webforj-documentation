@@ -14,7 +14,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <JavadocLink type="engine" location="org/dwcj/component/dialog/Dialog" top='true'/>
 
-The Webforj dialog component is built to allow a developer to quickly and easily display a dialog on their application, for instances such as a login menu or information box.
+The webforJ dialog component is built to allow a developer to quickly and easily display a dialog on their application, for instances such as a login menu or information box.
 
 The component is built with three sections, each of which are `Panel` components: the **header**, the **content**, and the **footer**.
 
@@ -50,7 +50,7 @@ The Dialog can be constructed using the default `Dialog()` constructor. Once the
 
 ## Backdrop and Blur
 
-By enabling the backdrop attribute of the Webforj `Dialog` component, a backdrop will be displayed behind the `Dialog`. Additionally, when enabled, the Dialog's blurred attribute will blur the backdrop of the `Dialog`. Modifying these settings can help users by providing depths, visual hierarchy, and context, leading to more clear guidance for a user.
+By enabling the backdrop attribute of the webforJ `Dialog` component, a backdrop will be displayed behind the `Dialog`. Additionally, when enabled, the Dialog's blurred attribute will blur the backdrop of the `Dialog`. Modifying these settings can help users by providing depths, visual hierarchy, and context, leading to more clear guidance for a user.
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.dialogdemos.DialogBackdropBlur' 

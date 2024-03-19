@@ -9,15 +9,15 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 <JavadocLink type="engine" location="org/dwcj/component/element/Element" top='true'/>
 
-Webforj developers have the option of choosing not only from the rich library of components provided, but also integrating components from elsewhere. To facilitate this, the `Element` component can be used to simplify the integration of anything from simple HTML elements, to more complex custom web components. 
+webforJ developers have the option of choosing not only from the rich library of components provided, but also integrating components from elsewhere. To facilitate this, the `Element` component can be used to simplify the integration of anything from simple HTML elements, to more complex custom web components. 
 
 :::important
-The `Element` component cannot be extended, and is not the base component for all components within Webforj. To read more about Webforj's component hierarchy, read [this article](../architecture/controls-components.md).
+The `Element` component cannot be extended, and is not the base component for all components within webforJ. To read more about webforJ's component hierarchy, read [this article](../architecture/controls-components.md).
 :::
 
 ## Creating a Web Element
 
-The `Element` component has three constructors provided to quickly and efficiently create web elements in your Webforj program.
+The `Element` component has three constructors provided to quickly and efficiently create web elements in your webforJ program.
 
 1. `Element()` : This parameterless constructor will create a `Div` element that can be added to your application. 
 

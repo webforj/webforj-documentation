@@ -54,7 +54,7 @@ height = '300px'
 
 <br/>
 
-There are five list box expanses that are supported in Webforj which allow for quick styling without using CSS. These enums are:
+There are five list box expanses that are supported in webforJ which allow for quick styling without using CSS. These enums are:
 
 |List Box Expanses|
 |-|

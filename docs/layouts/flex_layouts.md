@@ -9,7 +9,7 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 <JavadocLink type="engine" location="org/dwcj/component/layout/flexlayout/FlexLayout" top='true'/>
 
 
-Webforj provides developers with an efficient and intuitive way to layout their various applications and components - the Flex Layout. This toolset allows for items to be displayed either vertically or horizontally. 
+webforJ provides developers with an efficient and intuitive way to layout their various applications and components - the Flex Layout. This toolset allows for items to be displayed either vertically or horizontally. 
 
 
 ## Constructing a Flex Layout
@@ -47,7 +47,7 @@ FlexLayout layoutFromBuilder = FlexLayout.create()
 Flex layout's properties can be grouped into two categories: properties that apply to the items within a layout, and properties that apply to the layout itself. The flex layout, or the parent element, is a box/container that can contain one or more components. Everything inside a Flex Layout is called an item or child element. The Flex Layout provides some robust alignment capabilities, which can be achieved with the help of either container or item properties.
 
 :::tip
-Webforj's layout component follows the pattern of [CSS's flexbox layout](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). However, these tools are made to be utilized fully in Java, and do not require the application of CSS outside of the Java API methods provided.
+webforJ's layout component follows the pattern of [CSS's flexbox layout](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). However, these tools are made to be utilized fully in Java, and do not require the application of CSS outside of the Java API methods provided.
 :::
 
 ### Container Properties

@@ -12,12 +12,12 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 <JavadocLink type="engine" location="org/dwcj/component/field/AbstractField"/>
 
-Webforj supports seven different types of field components, each with various behaviors and implementations that suit various
+webforJ supports seven different types of field components, each with various behaviors and implementations that suit various
 needs. While each of these components have variations in their implementations, there are commonalities amongst all of the 
 field classes that will be described here.
 
 :::info
-This section describes common functionality amongst various field components in Webforj, and is not itself a class that can be instantiated and used.
+This section describes common functionality amongst various field components in webforJ, and is not itself a class that can be instantiated and used.
 :::
 
 <!-- <ComponentViewer componentData={componentData} /> -->

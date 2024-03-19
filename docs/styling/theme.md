@@ -4,7 +4,7 @@ displayed_sidebar: documentationSidebar
 title: Themes
 ---
 
-Webforj ships three themes by default, as well as with the ability to create your own, custom theme. The default themes are light theme, which is the default with a light background, dark which has a dark background tinted with the primary color and dark-pure which has a pure dark background (gray tones, not fully black).
+webforJ ships three themes by default, as well as with the ability to create your own, custom theme. The default themes are light theme, which is the default with a light background, dark which has a dark background tinted with the primary color and dark-pure which has a pure dark background (gray tones, not fully black).
 
 To change the theme of your application, you can use the `@AppTheme` annotation or the `App.setTheme()` method. When using this annotation, the theme name should be one of the following: `system`, `light`, `dark`, `dark-pure` or the name of a custom theme.
 
@@ -48,7 +48,7 @@ html[data-app-theme='dark'] {
 
 ### Creating Custom Themes
 
-In addition to the themes that come with Webforj, it is also possible to create your own application themes. Themes can co-exist in the same application, allowing you to switch between themes dynamically.
+In addition to the themes that come with webforJ, it is also possible to create your own application themes. Themes can co-exist in the same application, allowing you to switch between themes dynamically.
 
 New themes should be defined in `html[data-app-theme='THEME_NAME']` in your application stylesheet:
 
@@ -62,7 +62,7 @@ html[data-app-theme='new-theme'] {
 
 ### Using the Themer
 
-The [Themer tool](https://demo.webforj.com/webapp/DWCThemer) allows you to modify the various palettes and colors supported by Webforj to either override an existing theme, or creating your own.
+The [Themer tool](https://demo.webforj.com/webapp/DWCThemer) allows you to modify the various palettes and colors supported by webforJ to either override an existing theme, or creating your own.
 
 To do this, open the tool, and modify the various color, typography, spacing and other options to your preferred values. Once this has been done, export the theme by clicking the "Export" button at the top left of the screen.
 

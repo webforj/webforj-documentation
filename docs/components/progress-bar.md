@@ -27,7 +27,7 @@ height = '100px'
 
 ### Orientation
 
-The Webforj progress bar allows the developer to chose the direction in which the bar will fill as progress is made. The options are either filling vertically from bottom to top, or horizontally from left to right. Setting the orientation <b> does not </b> automatically set the dimensions for the bar, this must be done by the developer. 
+The webforJ progress bar allows the developer to chose the direction in which the bar will fill as progress is made. The options are either filling vertically from bottom to top, or horizontally from left to right. Setting the orientation <b> does not </b> automatically set the dimensions for the bar, this must be done by the developer. 
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.progressbardemos.ProgressbarOrientation' 
@@ -42,7 +42,7 @@ height = '435px'
 
 ### Indeterminate
 
-The progress bar in Webforj allows for indeterminate display, displaying an animation that conveys continuous progress that is not quantified. 
+The progress bar in webforJ allows for indeterminate display, displaying an animation that conveys continuous progress that is not quantified. 
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.progressbardemos.ProgressbarIndeterminate' 
@@ -72,7 +72,7 @@ height = '120px'
 
 ### Themes
 
-The Webforj progress bar comes with 6 themes built in for quick styling without the use of CSS.
+The webforJ progress bar comes with 6 themes built in for quick styling without the use of CSS.
 Shown below are progress bars with each of the supported Themes applied: <br/>
 
 <ComponentDemo 

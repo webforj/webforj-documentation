@@ -5,7 +5,7 @@ displayed_sidebar: documentationSidebar
 
 # Configuration
 
-Webforj can be configured using a project's POM file, and a plugin designed to make deploying an application easy. The following sections outline the various options that can be changed in order to achieve the desired result, both with an without the provided Webforj installation plugin. 
+webforJ can be configured using a project's POM file, and a plugin designed to make deploying an application easy. The following sections outline the various options that can be changed in order to achieve the desired result, both with an without the provided webforJ installation plugin. 
 
 ## Using the Install Plugin
 
@@ -36,7 +36,7 @@ When using the installation plugin, the tags within the `<configuration>` tag ca
 </plugin>
 ```
 
-**`<deployurl>`**: This tag is the URL under which the Webforj endpoint for the project installation can be reached. For users running their application locally, a default port 8888 is used. For users running Docker, the port should be changed to the port that was entered when [configuring the Docker container](../installation/docker_user.md#2-configuration).
+**`<deployurl>`**: This tag is the URL under which the webforJ endpoint for the project installation can be reached. For users running their application locally, a default port 8888 is used. For users running Docker, the port should be changed to the port that was entered when [configuring the Docker container](../installation/docker_user.md#2-configuration).
 
 **`<classname>`** This tag should contain the name of package and class name of the application you wish to run. This is helpful for projects which may contain multiple classes that extend the `App` class, and allows you to choose which program should run when the base URL is navigated to.
 
@@ -70,7 +70,7 @@ This is not the recommended method of configuring your application, and should b
 
 ### Default Class
 
-It is possible to configure the Webforj to automatically load an application from the list of available applications that extend the `App` class. 
+It is possible to configure the webforJ to automatically load an application from the list of available applications that extend the `App` class. 
 
 #### Editing the BBj config file
 The second option is to open your config.bbx file, and set the classname within the file itself. This file is found in the cfg directory of your BBj installation, `C:\bbx\cfg\config.bbx` for example. To do so, add the following line and replace <b>your.class.name.here</b> with the full classname as it appears on the list of classes:
