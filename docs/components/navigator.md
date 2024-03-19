@@ -158,10 +158,6 @@ navigator.setTooltipText("Go to the last page", Navigator.Part.LAST_BUTTON);
 
 In the following example, the `setText()` method displays a numeric value to the user. Clicking the buttons fires the `onChange` method of the `Navigator`, which comes with a `Direction` value the clicked button. 
 
-See [this section](#events) for more details on the available `Navigator` events. 
-
-
-
 ## Layouts
 
 Various layout options exist for the `Navigator` component  to provide flexibility in displaying pagination controls. To access these layouts, use the `Navigator.Layout` enum's values. The options are as follows:
@@ -209,12 +205,6 @@ The quick-jump layout provides a [NumberField](./fields/number-field.md) for use
 ```java
 navigator.setLayout(Navigator.Layout.QUICK_JUMP);
 ```
-
-## Events 
-
-The `Navigator` component triggers various events, in addition to base events, to notify listeners of navigation actions, providing opportunities for custom handling and synchronization with other components. These events encapsulate changes in pagination state and indicate navigational direction.
-
-<EventTable base events={['navigatorChange','navigatorMoveFirst','navigatorMoveLast','navigatorMoveNext','navigatorMovePrevious']} />
 
 ## Styling
 
