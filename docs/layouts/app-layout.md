@@ -138,14 +138,6 @@ javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/ja
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_mobile.css'
 />
 
-### Events
-
-The `AppLayout` class supports two events:
-
-<ol>
-    <li>onDrawerOpen Fired when the drawer is opened</li>
-    <li>onDrawerClose Fired when the drawer is closed</li>
-</ol>
 
 ## Styling
 

@@ -137,54 +137,6 @@ The behavior of the `RadioButton` remains the same when being rendered as a Swit
 
 <br/>
 
-## Events
-
-The `RadioButton` class provides methods to add and remove event listeners for the following events:
-
-| Events | Description |
-|:-:|-|
-|`BlurEvent`|An event that is triggered when an element loses focus. It occurs when the user interacts with an element, such as clicking inside an input field, and then moves the focus away from that element, typically by clicking outside of it or tabbing to another element on the page.|
-|`FocusEvent`| An event that is triggered when an element gains focus, opposite of a blur event. It occurs when the user interacts with an element, typically by clicking inside an input field or navigating to it using the keyboard's tab key, causing the element to become active and ready to receive user input. |
-|`CheckedEvent`| An event that is triggered when the state of a component changes and becomes checked. It occurs when the user interacts with a checkbox element by clicking or tapping on it, causing the checkbox to transition from an unchecked state to a checked state. |
-|`UncheckedEvent`| An event that is triggered when the state of a component changes and becomes unchecked. It occurs when the user interacts with a checkbox element by clicking or tapping on it, causing the checkbox to transition from an checked state to a unchecked state. |
-|`ToggleEvent`| A ToggleEvent fires a CheckBox or a similar UI element changes its state between "on" and "off" or "active" and "inactive." It represents the action of toggling a setting, feature, or state of an element such as a CheckBox or Radio Button. |
-|`MouseEnterEvent`| An event that is triggered when the mouse cursor enters the boundaries of an element. It occurs when the user moves the mouse pointer over the specified element, indicating that the mouse has entered its area. |
-|`MouseExitEvent`| An event that is triggered when the mouse cursor exits the boundaries of an element. It occurs when the user moves the mouse pointer out of the boundaries of the specified element, indicating that the mouse has exited its area. |
-|`RightMouseDownEvent`| An event refers to an event that is triggered when the user presses the right mouse button while the cursor is over an element. It allows you to capture the specific action of the user's right mouse button being pressed down within the boundaries of the element. |
-
-<br />
-
-### Adding Events
-
-To add an event listener, use the appropriate method:
-
-```java
-myRadioButton.addCheckedListener( e -> {
-  //Executed when the event fires
-});
-```
-
-Additional syntactic sugar methods, or aliases, have been added to allow for alternative addition of events by using the `on` prefix followed by the event, such as:
-
-```java
-myRadioButton.onChecked( e -> {
-    //Executed when the event fires
-});
-```
-
-:::tip
-Using the event payload that comes with various events to attain information reduces the number of round trips made when instead querying the component for the required information. 
-:::
-
-
-### Removing Events
-
-To remove an event listener, use the appropriate method:
-
-```java
-myRadioButton.removeCheckedListener(listener);
-```
-
 ## Styling
 
 ### Expanses

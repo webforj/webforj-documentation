@@ -110,65 +110,6 @@ The `ComboBox` component has methods that allow manipulation of the dropdown dim
 Passing a `String` value to either of these methods will allow for [any valid CSS unit](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units) to be applied, such as pixels, viewport dimensions, or other valid rules. Passing an `int` will set the value passed in pixels.
 :::
 
-## Events
-
-The `ComboBox` class provides methods to add and remove event listeners for the following events, as well as events common to all list components:
-
-| Events | Description |
-|:-:|-|
-|<JavadocLink type="engine" location="org/dwcj/component/list/event/ListOpenEvent"  code="true">ListOpenEvent</JavadocLink>|An event which is fired when a list dropdown is opened.|
-|<JavadocLink type="engine" location="org/dwcj/component/list/event/ListCloseEvent"  code="true">ListCloseEvent</JavadocLink>|An event which is fired when a list dropdown is closed.|
-|<JavadocLink type="engine" location="org/dwcj/component/list/event/ListClickEvent"  code="true">ListClickEvent</JavadocLink>|This event is triggered when the user clicks an item from a List-based component.|
-|<JavadocLink type="engine" location="org/dwcj/component/event/ModifyEvent"  code="true">ModifyEvent</JavadocLink>|An event that is fired when a component is edited or modified.|
-|<JavadocLink type="engine" location="org/dwcj/component/event/KeypressEvent"  code="true">KeypressEvent</JavadocLink>|A Keypress event is fired when a user presses a specific key on the keyboard while an element has focus. This event is commonly used to capture and respond to user keyboard interactions. When a Keypress event is triggered,the key that was pressed can be determine using the key code, and a specific action or actions can be performed based on the user's input. For example, it can be used to validate user input in form fields, implement keyboard shortcuts, or trigger certain actions based on specific key combinations.|
-
-:::tip
-For a list of additional events supported by the `ComboBox`, see [this section](./lists.md#shared-events) which outlines shared events amongst list components.
-:::
-<!-- 
-### Adding Events
-
-To add an event listener, use one of the following patterns:
-
-```java
-comboBox.addKeypressEvent(e -> {
-  //Executed when the event fires
-});
-
-//OR
-
-comboBox.addKeypressEvent(new ComponentEventListener<KeypressEvent>() {
-  @Override
-  public void onComponentEvent(ComponentEvent e){
-    //Executed when the event fires
-  }
-});
-
-//OR
-
-comboBox.addKeypressEvent(this::keypressMethod);
-```
-
-Additional syntactic sugar methods, or aliases, have been added to allow for alternative addition of events by using the `on` prefix followed by the event, such as:
-
-```java
-ComboBox.onOpen(e -> {
-  //Executed when the event fires
-});
-```
-
-### Removing Events
-
-To remove an event listener, use the appropriate method:
-
-```java
-comboBox.removeKeypressEvent(listener);
-```
-
-:::tip
-When adding an event listener, a `ListenerRegistration` object will be returned. This can be used, among other things, to remove the event later on.
-::: -->
-
 ## Styling
 
 <!-- ### Expanses -->

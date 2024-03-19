@@ -53,22 +53,6 @@ Field components contain built-in visual validation which notifies users if a re
 By calling the `setSpellCheck(true)` method, you can enable the spellcheck feature for a field. This means that when a user enters text into the field, the browser or user agent may check the spelling of the entered text for errors.
 
 
-## Shared Events
-
-:::info
-All field components share the following events
-:::
-
-| Events | Description |
-|:-:|-|
-|<JavadocLink type="engine" location="org/dwcj/component/event/BlurEvent"  code="true">BlurEvent</JavadocLink> | An event that is triggered when a component loses focus.|
-|<JavadocLink type="engine" location="org/dwcj/component/event/FocusEvent"  code="true">FocusEvent</JavadocLink>                   | An event that is triggered when a component gains focus, opposite of a blur event. |
-|<JavadocLink type="engine" location="org/dwcj/component/event/KeypressEvent"  code="true">KeypressEvent</JavadocLink>| An event that is triggered when one of "special keys" is pressed while the component has focus. These keys have specific codes, allowing for conditional logic to be implemented based on the key pressed.|
-|<JavadocLink type="engine" location="org/dwcj/component/event/ModifyEvent"  code="true">ModifyEvent</JavadocLink>| An event that is triggered when an is changed or modified. It typically occurs any time a user changes an aspect of the component, such as each time a letter is input or removed from an input component.|
-|<JavadocLink type="engine" location="org/dwcj/component/event/MouseEnterEvent"  code="true">MouseEnterEvent</JavadocLink>              | An event that is triggered when the mouse cursor enters the boundaries of a component. |
-|<JavadocLink type="engine" location="org/dwcj/component/event/MouseExitEvent"  code="true">MouseExitEvent</JavadocLink>               | An event that is triggered when the mouse cursor exits the boundaries of a component. |
-|<JavadocLink type="engine" location="org/dwcj/component/event/RightMouseDownEvent"  code="true">RightMouseDownEvent</JavadocLink>          | An event that is triggered when the user presses the right mouse button while the cursor is over a component.|
-
 ## Parts and CSS Properties
 
 :::info
