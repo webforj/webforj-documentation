@@ -110,6 +110,7 @@ export default function ComponentDemo({
   cssURL,
   javaHighlight,
   height,
+  padding,
   frame,
   tabs,
 }) {
@@ -173,6 +174,7 @@ export default function ComponentDemo({
           }));
         });
     }
+    if (urls) {
     urls.forEach((url) => {
       const parsedUrl = new URL(url);
       const pathname = parsedUrl.pathname;
@@ -191,7 +193,7 @@ export default function ComponentDemo({
           }));
         });
     });
-
+  }
     setOriginalWidth(iframeRef.current ? iframeRef.current.offsetWidth : 0);
   }, []);
 
@@ -261,6 +263,8 @@ export default function ComponentDemo({
     width: 100%;
     height: ${height || "100%"};
     pointer-events: ${isResizing ? "none" : "auto"};
+    background-color: #F8FAFC;
+    padding: ${padding || "1em"};
   `;
 
   const fadeInButton = css`
