@@ -107,6 +107,31 @@ export default function EventTable({ base, events }) {
       description: "This event is triggered when the user clicks an item from a List-based component.",
       link: "org/dwcj/component/list/event/ListClickEvent"
     },
+    navigatorChange : {
+      name: "NavigatorChangeEvent",
+      description: "This event is fired when the navigator direction is changed.",
+      link: "org/dwcj/component/navigator/event/NavigatorChangeEvent"
+    },
+    navigatorMoveFirst : {
+      name: "NavigatorMoveFirstEvent",
+      description: "This event is fired when the user has navigated to the first page.",
+      link: "org/dwcj/component/navigator/event/NavigatorMoveFirstEvent"
+    },
+    navigatorMoveLast : {
+      name: "NavigatorMoveLastEvent",
+      description: "This event is fired when the user has navigated to the last page.",
+      link: "org/dwcj/component/navigator/event/NavigatorMoveLastEvent"
+    },
+    navigatorMoveNext : {
+      name: "NavigatorMoveNextEvent",
+      description: "This event is fired when the user has navigated to the next page.",
+      link: "org/dwcj/component/navigator/event/NavigatorMoveNextEvent"
+    },
+    navigatorMovePrevious : {
+      name: "NavigatorMovePreviousEvent",
+      description: "This event is fired when the user has navigated to the previous page.",
+      link: "org/dwcj/component/navigator/event/NavigatorMovePreviousEvent"
+    }
   };
 
   const nameStyles = css`
