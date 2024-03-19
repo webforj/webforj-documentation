@@ -78,17 +78,3 @@ The various List components can be assigned a label, which is a descriptive text
 
 <!-- ADD DEMO WITH ALL THREE AND A LABEL -->
 
-## Shared Events
-
-:::info
-All List components share the following events
-:::
-
-|                                 Events                                  | Description                                                                                                   |
-| :---------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------------- |
-| <JavadocLink type="engine" location="org/dwcj/component/event/BlurEvent"  code="true">BlurEvent</JavadocLink> | An event that is triggered when a component loses focus.                                                      |
-|                  <JavadocLink type="engine" location="org/dwcj/component/event/FocusEvent"  code="true">FocusEvent</JavadocLink>                   | An event that is triggered when a component gains focus, opposite of a blur event.                            |
-|             <JavadocLink type="engine" location="org/dwcj/component/event/MouseEnterEvent"  code="true">MouseEnterEvent</JavadocLink>              | An event that is triggered when the mouse cursor enters the boundaries of a component.                        |
-|              <JavadocLink type="engine" location="org/dwcj/component/event/MouseExitEvent"  code="true">MouseExitEvent</JavadocLink>               | An event that is triggered when the mouse cursor exits the boundaries of a component.                         |
-|         <JavadocLink type="engine" location="org/dwcj/component/event/RightMouseDownEvent"  code="true">RightMouseDownEvent</JavadocLink>          | An event that is triggered when the user presses the right mouse button while the cursor is over a component. |
-|             <JavadocLink type="engine" location="org/dwcj/component/list/event/ListSelectEvent"  code="true">ListSelectEvent</JavadocLink>              | An event which is fired when the user selects an item from a list.

@@ -122,37 +122,6 @@ height = '550px'
 
 The `Dialog` can be set to enter full screen mode. When full screen is enabled, the `Dialog` cannot be moved or positioned. This mode can be manipulated with the breakpoint attribute of the `Dialog`. The breakpoint is a media query which components when the `Dialog` will automatically flip to full screen mode. When the query matches, the `Dialog` changes to full screen - otherwise it is positioned.
 
-## Events
-
-The `Dialog` class provides methods to add and remove event listeners for the following events:
-
-| Events | Description |
-|:-:|-|
-|<JavadocLink type="engine" location="org/dwcj/component/event/DialogOpenEvent" code='true'>DialogOpenEvent</JavadocLink>|An event that is fired when the `Dialog` is opened.|
-|<JavadocLink type="engine" location="org/dwcj/component/event/DialogCloseEvent" code='true'>DialogCloseEvent</JavadocLink>|An event that is fired when the `Dialog` is closed.|
-
-To add an event listener, use the appropriate method:
-
-```java
-myDialog.addOpenListener( e -> {
-  //Executed when the event fires
-});
-```
-
-Additional syntactic sugar methods, or aliases, have been added to allow for alternative addition of events by using the on prefix followed by the event, such as:
-
-```java
-myDialog.onOpen( e -> {
-  //Executed when the event fires
-});
-```
-
-To remove an event listener, use the appropriate method:
-
-```java
-myDialog.removeOpenListener(listener);
-```
-
 ## Styling
 
 ### Themes

@@ -144,61 +144,6 @@ javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/ja
 height='600px'
 />
 
-## Events
-
-
-There are two supported events that can be used with the Drawer component, open and close events. These events are essential components of the Drawer component, providing developers with the means to respond and react to the opening and closing actions of the drawer within the user interface.
-
-### Drawer Open
-
-Use the `addOpenListener()` method to add an open event to your Drawer component.
-
-The Drawer Open Event is triggered when the drawer is initiated to open, either through user interaction or programmatically. This event allows developers to execute specific actions, animations, or updates that should occur when the drawer becomes visible and accessible to the user. To add an open event listener, use the appropriate method:
-
-```java
-myDrawer.addOpenListener( e -> {
-  //Executed when the event fires
-});
-```
-
-By leveraging the Drawer Open Event, developers can synchronize the opening of the drawer with other UI elements, trigger transitions or animations, and update the interface to reflect the change in state. This event can also be used to initiate fetching data, loading content, or any other necessary operations related to the appearance of the drawer.
-
-:::info
-The `onOpen() method is similarly available for use, and simple calls the addOpenListener()` method.
-:::
-
-### Drawer Close
-
-Use the `addCloseListener()` method to add an open event to your Drawer component.
-
-The Drawer Close Event is triggered when the drawer is initiated to close. This event provides developers with the opportunity to perform actions or updates that should take place when the drawer is no longer visible or accessible to the user. To add a close event listener, use the appropriate method:
-
-```java
-myDrawer.addCloseListener( e -> {
-  //Executed when the event fires
-});
-```
-
-With the Drawer Close Event, developers can synchronize the closing of the drawer with other UI elements, initiate animations or transitions, and update the interface to reflect the change in state. Additionally, this event can be utilized to save user preferences, persist data, or perform any cleanup operations associated with the closure of the drawer.
-
-:::info
-The `onClose()` method is similarly available for use, and simple calls the `addOpenListener()` method.
-:::
-
-### Toggling a Drawer Open or Closed
-
-The `toggle()` method allows developers to control the opening and closing behavior of the drawer based on a boolean value. This function provides a programmatic way to toggle the visibility of the drawer. This can be shorthanded by using the `open()` and `close()` methods, which call the `toggle()` method with the appropriate boolean argument.
-<!-- One Example is fine here -->
-
-
-### Removing an Event 
-
-To remove either an open or close event from the Drawer, simply use the appropriate remove event listener method.
-
-```java
-myDrawer.removeOpenListener(listener);
-```
-
 ## Styling
 
 <!-- <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Drawer} /> -->

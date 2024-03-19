@@ -113,61 +113,6 @@ In some applications, clicking a button triggers a long-running action. In most 
 Disabling on click not only helps optimize the processing of actions, but also prevents the developer from needing to implement this behavior on their own, as this method has been optimized to reduce round trip communications.
 :::
 
-## Events
-
-The `Button` class provides methods to add and remove event listeners for the following events:
-
-<EventTable base events={['buttonClick']} />
-
-
-<!-- ### Adding Events
-
-To add an event listener, use the appropriate method:
-
-```java
-myButton.addClickListener(e -> {
-  //Executed when the event fires
-});
-```
-
-Additional syntactic sugar methods, or aliases, have been added to allow for alternative addition of events by using the `on` prefix followed by the event, such as:
-
-```java
-myButton.onClick(e -> {
-    //Executed when the event fires
-});
-```
-
-
-
-### Removing Events
-
-To remove an event listener, use the appropriate method:
-
-```java
-myButton.removeClickListener(listener);
-```
-
-:::tip
-When adding an event listener, a `ListenerRegistration` object will be returned. This can be used, among other things, to remove the event later on.
-:::
-
-#### Sample
-
-Below is a demonstration showing the addition of a [`ButtonClickEvent`](../components/events/ButtonClickEvent) to a `Button`. This `Button` also uses information coming with the event's payload to display information on the screen.
-
-:::tip
-Notice the event payload is used to attain information that is then utilized within the callback, which reduces the number of round trips made between the client and server. This is much more efficient than querying the component for the required information whenever data that is provided in the event payload is needed. [This page](../getting_started/architecture) explains this in greater detail.
-:::
-
-<ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.buttondemos.ButtonEvent' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonEvent.java'
-javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/button/Event.txt'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/buttonstyles/event_styles.css'
-height='100px'
-/> -->
-
 ## Styling
 
 ### Themes
