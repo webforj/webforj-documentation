@@ -27,7 +27,7 @@ To compile a program, open the terminal in VS Code and run the `mvn install` com
 
 If everything completes successfully, you should see the `BUILD SUCCESS` message.
 
-:::danger WARNING 
+:::warning WARNING 
 Make sure to use the `mvn install` command instead of VS Code's built-in Maven interface for installing your program.
 :::
 
