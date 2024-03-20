@@ -118,7 +118,6 @@ export default function ComponentDemo({
   frame,
   tabs,
 }) {
-
   ComponentDemo.propTypes = {
     path: PropTypes.string.isRequired,
     javaC: PropTypes.string,
@@ -193,20 +192,20 @@ export default function ComponentDemo({
     if (urls) {
       urls.forEach(fetchAndProcessURL);
     }
-    
+
     function fetchAndProcessURL(url) {
       const parsedUrl = new URL(url);
       const pathname = parsedUrl.pathname;
       const parts = pathname.split("/");
       const fileName = parts[parts.length - 1];
-    
+
       fetch(url)
         .then((response) => response.text())
         .then((textString) => {
           setAdditionalFile(fileName, textString);
         });
     }
-    
+
     function setAdditionalFile(fileName, textString) {
       setAdditionalFiles((prevAdditionalFiles) => ({
         ...prevAdditionalFiles,
@@ -218,6 +217,20 @@ export default function ComponentDemo({
     }
     setOriginalWidth(iframeRef.current ? iframeRef.current.offsetWidth : 0);
   }, []);
+
+  function renderCodeBlocks(files, codeBlockStyles, javaHighlight) {
+    return(
+        <CodeBlock
+          css={codeBlockStyles}
+          className="codeDemoBlock"
+          language="java"
+          showLineNumbers
+          metastring={javaHighlight}
+        >
+          {files.code}
+        </CodeBlock>
+    );
+  }
 
   const startResizing = (e) => {
     e.preventDefault();
@@ -411,15 +424,7 @@ export default function ComponentDemo({
             </TabItem>
             {Object.keys(additionalFiles).map((fileName, index) => (
               <TabItem key={"tab" + index} value={fileName} label={fileName}>
-                <CodeBlock
-                  css={codeBlockStyles}
-                  className="codeDemoBlock"
-                  language="java"
-                  showLineNumbers
-                  metastring={javaHighlight}
-                >
-                  {additionalFiles[fileName].code}
-                </CodeBlock>
+                {renderCodeBlocks(additionalFiles[fileName], codeBlockStyles, javaHighlight)}
               </TabItem>
             ))}
             <TabItem
@@ -455,15 +460,7 @@ export default function ComponentDemo({
             </TabItem>
             {Object.keys(additionalFiles).map((fileName, index) => (
               <TabItem key={"tab" + index} value={fileName} label={fileName}>
-                <CodeBlock
-                  css={codeBlockStyles}
-                  className="codeDemoBlock"
-                  language="java"
-                  showLineNumbers
-                  metastring={javaHighlight}
-                >
-                  {additionalFiles[fileName].code}
-                </CodeBlock>
+                {renderCodeBlocks(additionalFiles[fileName], codeBlockStyles, javaHighlight)}
               </TabItem>
             ))}
           </Tabs>
