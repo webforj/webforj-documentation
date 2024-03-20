@@ -4,12 +4,12 @@ title: HTML Element Components
 slug: html_components
 ---
 
-While the Webforj's `Element` class allows users to create HTML elements in their applications, a suite of standard HTML elements has been included with Webforj's core components for ease of use. 
+While the webforJ's `Element` class allows users to create HTML elements in their applications, a suite of standard HTML elements has been included with webforJ's core components for ease of use. 
 
 The following components can be used, and map to the corresponding HTML elements:
 
 
-|Webforj Class|HTML Element|Can Add Components?|
+|webforJ Class|HTML Element|Can Add Components?|
 |:--:|:--:|:--:|
 |`Anchor`|`<a>`| ✔️ |
 |`Article`|`<article>`| ✔️ |

@@ -6,17 +6,17 @@ const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Webforj',
+  title: 'webforJ',
   tagline: 'Develop your Progressive Web App in Java',
-  url: 'https://webforj.github.io/',
+  url: 'https://documentation.webforj.com/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/logo.png',
+  favicon: 'img/webforj_icon.svg',
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'dwcjava', // Usually your GitHub org/user name.
-  projectName: 'dwcjava.github.io', // Usually your repo name.
+  organizationName: 'webforj', // Usually your GitHub org/user name.
+  projectName: 'webforj-docs', // Usually your repo name.
   trailingSlash: false,
   
   // Even if you don't use internalization, you can use this field to set useful
@@ -36,7 +36,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-          "https://github.com/webforj/dwcjava.github.io/tree/website/",
+          "https://github.com/webforj/webforj-docs/tree/website/",
         },
         // blog: {
         //   showReadingTime: true,
@@ -90,12 +90,12 @@ const config = {
   
         //... other Algolia params
       },
-      image: '/img/logo.png',
+      image: '/img/webforj.svg',
       navbar: {
-        title: 'Webforj',
+        title: '',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.png',
+          src: 'img/webforj.svg',
         },
         items: [
           // {
@@ -181,8 +181,21 @@ const config = {
           //     },
           //   ],
           // },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} BASIS International Ltd. All rights reserved.`,
+          // {
+            //   title: `Copyright © ${new Date().getFullYear()} BASIS International Ltd. All rights reserved.`,
+            //   items:
+            //   {
+              //     label: 'BASIS International Ltd',
+              //     href: 'https://basis.cloud/contact/',
+              //   }
+              // }
+              {
+                html: `
+                <p>Copyright © <script>document.write(/\d{4}/.exec(Date())[0])</script> <a href='https://basis.cloud/contact/'> BASIS International Ltd.</a> All rights reserved.</p>
+                `
+              }
+            ],
+        // copyright: `Copyright © ${new Date().getFullYear()} BASIS International Ltd. All rights reserved.`,
       },
       prism: {
         theme: lightCodeTheme,

@@ -53,7 +53,7 @@ It is recommended to download the latest version of Windows Subsystem for Linux.
 
 ## 2. Configuration
 
-Once Docker Desktop has been downloaded, search for the latest Webforj image, which is currently under the name `webforj/sandbox`.
+Once Docker Desktop has been downloaded, search for the latest webforJ image, which is currently under the name `webforj/sandbox`.
 
 ![DWCJ Image Search](./_images/docker/Step_1l.png)
 
@@ -98,12 +98,12 @@ Make sure to take note of the custom Host port number you provide, as this will 
 
 ## 3. Running Your Application
 
-Once the container has been created, Webforj applications can be run within the container instead of locally. First, it is necessary to configure
+Once the container has been created, webforJ applications can be run within the container instead of locally. First, it is necessary to configure
 the POM file of your project correctly. Once this is done, going to a specific URL in the browser will show the application.
 
 ### Configuring your POM file
 
-Running a Webforj project in the Docker container will require the use of the Webforj Install Plugin, which can be configured using your POM file:
+Running a webforJ project in the Docker container will require the use of the webforJ Install Plugin, which can be configured using your POM file:
 
 
 Create a new `<plugin>` entry in `<plugins>` section of POM. The following code shows a starting entry that can be used and tweaked as 
@@ -149,7 +149,7 @@ The [webforj-hello-world](https://github.com/webforj/HelloWorldJava) project wil
 
 ### Launching the Application
 
-Once this has been done, run a `mvn install` in your project directory. This will run the Webforj install plugin, and allow
+Once this has been done, run a `mvn install` in your project directory. This will run the webforJ install plugin, and allow
 you to access your application. To see the application, you'll want to go to the following URL:
 
 `http://localhost:YourHostPort/webapp/YourPublishName`

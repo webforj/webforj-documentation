@@ -18,18 +18,18 @@ This component can be used to build common application layouts, such as a dashbo
 
 ### Features
 
-The Webforj App Layout is a component which allows for building common application layouts.
+The webforJ App Layout is a component which allows for building common application layouts.
 
 <ul>
     <li>Easy to use and customize</li>
     <li>Responsive design</li>
     <li>Multiple layout options</li>
-    <li>Works with Webforj Dark Mode</li>
+    <li>Works with webforJ Dark Mode</li>
 </ul>
 
 It provides a header, footer , drawer, and content section all built into a responsive component which can be easily customized to quickly build common application layouts such as a dashboard. The header and footer are fixed, the drawer slides in and out of the viewport, and the content is scrollable.
 
-Each part of the layout is a `Div`, which can contain any valid Webforj control. For best results, the application should include a viewport meta tag which contains viewport-fit=cover. The meta tag causes the viewport to be scaled to fill the device display.
+Each part of the layout is a `Div`, which can contain any valid webforJ control. For best results, the application should include a viewport meta tag which contains viewport-fit=cover. The meta tag causes the viewport to be scaled to fill the device display.
 
 ```java
 @AppMeta(name = "viewport", content = "width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no")
@@ -138,14 +138,6 @@ javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/ja
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_mobile.css'
 />
 
-### Events
-
-The `AppLayout` class supports two events:
-
-<ol>
-    <li>onDrawerOpen Fired when the drawer is opened</li>
-    <li>onDrawerClose Fired when the drawer is closed</li>
-</ol>
 
 ## Styling
 

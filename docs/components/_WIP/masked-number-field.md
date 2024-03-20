@@ -118,7 +118,7 @@ In order to enforce certain ruled on numeric input, masking has been implemented
 
 ### Expanse
 
-The Webforj Number Field components come with 5 expanses for quick styling without the use of CSS.
+The webforJ Number Field components come with 5 expanses for quick styling without the use of CSS.
 Below are the various expanses supported for the Number Field component: <br/>
 
 <ComponentDemo 

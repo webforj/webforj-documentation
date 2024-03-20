@@ -11,11 +11,11 @@ const Sections = [
         placement: 'center',
         direction: 'right',
         header: "MODERN JAVA WEB FRAMEWORK",
-        title: 'Build your modern web applications with Webforj.',
+        title: 'Build your modern web applications with webforJ.',
         description: (
         <>
-            Webforj turns creating your enterprise application into a streamlined and efficient task with its comprehensive set of components, features and functionalities.
-            Webforj follows an "all-in-one" process, with UI and backend development all taking place within Java. With Webforj, you have access to a comprehensive set of components, 
+            webforJ turns creating your enterprise application into a streamlined and efficient task with its comprehensive set of components, features and functionalities.
+            webforJ follows an "all-in-one" process, with UI and backend development all taking place within Java. With webforJ, you have access to a comprehensive set of components, 
             features, and tools necessary for building a robust, secure, and user-friendly application.   
         </>),
         image: require('@site/static/img/development_t.png').default
@@ -28,7 +28,7 @@ const Sections = [
         title: 'A truly dynamic tool for optimized development and performance.',
         description: (
         <>
-            The Webforj framework provides a simple pipeline which makes your application easy to build and easy to deploy. Additionally, it dynamically downloads individual messages, or chunks of
+            The webforJ framework provides a simple pipeline which makes your application easy to build and easy to deploy. Additionally, it dynamically downloads individual messages, or chunks of
             Javascript on-demand as the application, as is necessary for use in the application. This results in measurable improvements to the initial load time, resulting in an optimal user experience.
         </>),
         image: require('@site/static/img/dynamic_t.png').default
@@ -41,7 +41,7 @@ const Sections = [
         title: 'Figma design kit for streamlined design and implementation. ',
         description: (
         <>
-            Before implementation of your application even begins, Webforj's extensive array of components can be easily used within Figma to help designers make sure the perfect tools is created.
+            Before implementation of your application even begins, webforJ's extensive array of components can be easily used within Figma to help designers make sure the perfect tools is created.
         </>),
         image: require('@site/static/img/design_kit.png').default,
         link: {
@@ -60,7 +60,7 @@ const Sections = [
             Our team in the United States and Europe have been building tools and technologies to help our clients fulfil their needs for over 35 years. We have consistently produced reliable and
             innovative technologies to ensure our clients have every tool in their kit needed to tackle modern, ever-changing needs. 
             <br /><br />
-            Webforj helps existing customers ensure they have the most 
+            webforJ helps existing customers ensure they have the most 
             cutting edge features available, and provides a competitive solution for new customers.
         </>),
         image: require('@site/static/img/performance_t.png').default

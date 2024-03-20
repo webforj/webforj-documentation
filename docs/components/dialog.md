@@ -14,7 +14,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <JavadocLink type="engine" location="org/dwcj/component/dialog/Dialog" top='true'/>
 
-The Webforj dialog component is built to allow a developer to quickly and easily display a dialog on their application, for instances such as a login menu or information box.
+The webforJ dialog component is built to allow a developer to quickly and easily display a dialog on their application, for instances such as a login menu or information box.
 
 The component is built with three sections, each of which are `Panel` components: the **header**, the **content**, and the **footer**.
 
@@ -50,7 +50,7 @@ The Dialog can be constructed using the default `Dialog()` constructor. Once the
 
 ## Backdrop and Blur
 
-By enabling the backdrop attribute of the Webforj `Dialog` component, a backdrop will be displayed behind the `Dialog`. Additionally, when enabled, the Dialog's blurred attribute will blur the backdrop of the `Dialog`. Modifying these settings can help users by providing depths, visual hierarchy, and context, leading to more clear guidance for a user.
+By enabling the backdrop attribute of the webforJ `Dialog` component, a backdrop will be displayed behind the `Dialog`. Additionally, when enabled, the Dialog's blurred attribute will blur the backdrop of the `Dialog`. Modifying these settings can help users by providing depths, visual hierarchy, and context, leading to more clear guidance for a user.
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.dialogdemos.DialogBackdropBlur' 
@@ -121,37 +121,6 @@ height = '550px'
 ### Full Screen and Breakpoints
 
 The `Dialog` can be set to enter full screen mode. When full screen is enabled, the `Dialog` cannot be moved or positioned. This mode can be manipulated with the breakpoint attribute of the `Dialog`. The breakpoint is a media query which components when the `Dialog` will automatically flip to full screen mode. When the query matches, the `Dialog` changes to full screen - otherwise it is positioned.
-
-## Events
-
-The `Dialog` class provides methods to add and remove event listeners for the following events:
-
-| Events | Description |
-|:-:|-|
-|<JavadocLink type="engine" location="org/dwcj/component/event/DialogOpenEvent" code='true'>DialogOpenEvent</JavadocLink>|An event that is fired when the `Dialog` is opened.|
-|<JavadocLink type="engine" location="org/dwcj/component/event/DialogCloseEvent" code='true'>DialogCloseEvent</JavadocLink>|An event that is fired when the `Dialog` is closed.|
-
-To add an event listener, use the appropriate method:
-
-```java
-myDialog.addOpenListener( e -> {
-  //Executed when the event fires
-});
-```
-
-Additional syntactic sugar methods, or aliases, have been added to allow for alternative addition of events by using the on prefix followed by the event, such as:
-
-```java
-myDialog.onOpen( e -> {
-  //Executed when the event fires
-});
-```
-
-To remove an event listener, use the appropriate method:
-
-```java
-myDialog.removeOpenListener(listener);
-```
 
 ## Styling
 

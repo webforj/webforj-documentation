@@ -2,14 +2,14 @@
 sidebar_position: 1
 displayed_sidebar: documentationSidebar
 id: "styling_intro"
-pagination_prev: "components/text-area"
+pagination_prev: "components/tabbed-pane"
 ---
 
 # Styling
 
 ## Application Theme
 
-Webforj ships three themes by default, as well as with the ability to create your own, custom theme. The default themes are light, dark and dark-pure. 
+webforJ ships three themes by default, as well as with the ability to create your own, custom theme. The default themes are light, dark and dark-pure. 
 
 ### Default Themes
 
@@ -42,9 +42,9 @@ If the system's themes have been customized and your application is set to use t
 
 ## Using Custom CSS
 
-Styling your Webforj application can be accomplished in various ways, which include:
+Styling your webforJ application can be accomplished in various ways, which include:
 
-- Using the `setStyle()` method on various elements in the Webforj API
+- Using the `setStyle()` method on various elements in the webforJ API
 
 - Using `App` class API methods to apply a stylesheet for your class
 
@@ -61,7 +61,7 @@ exampleButton.setStyle("width","50px");
 
 ### Using the `App` class's methods
 
-The Webforj App class contains functionality to allow stylesheets to be applied to the application: `addStyleSheet()` and `addInlineStyleSheet()`.
+The webforJ App class contains functionality to allow stylesheets to be applied to the application: `addStyleSheet()` and `addInlineStyleSheet()`.
 
 The `addStyleSheet()` method will inject an external style sheet from a URL into a page, such as stylesheets hosted on CDNs. 
 
@@ -83,7 +83,7 @@ App.getPage().addInlineStyleSheet("context://css/styles.css");
 
 ### Using annotations
 
-Similar to the App class's methods, Webforj contains annotations which allow for the use of external and local stylesheets as well. 
+Similar to the App class's methods, webforJ contains annotations which allow for the use of external and local stylesheets as well. 
 
 :::caution
 These annotations are only available to classes which extend the `Component` class, as annotations are processed only when a class is attached to a panel. For classes in which this is not the case, use the previously mentioned `App` class's method.
@@ -154,4 +154,4 @@ If you're using VS code, an extension that provides syntax highlighting [can be 
 
 ## Component Theme and Expanse
 
-Many core Webforj components come packaged with various Themes and Expanses for easy styling. More about the specific component Themes and Expanses can be found in the [Webforj Components](/docs/components/home) section.
+Many core webforJ components come packaged with various Themes and Expanses for easy styling. More about the specific component Themes and Expanses can be found in the [webforJ Components](/docs/components/home) section.

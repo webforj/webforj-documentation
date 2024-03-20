@@ -58,57 +58,6 @@ javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/co
 height = '250px'
 />
 
-## Events
-
-The `ListBox` class provides methods to add and remove event listeners for the events common to all list components.
-
-:::tip
-For a list of events supported by the `ListBox`, see [this section](./lists.md#shared-events) which outlines shared events amongst list components.
-:::
-<!-- 
-### Adding Events
-
-To add an event listener, use one of the following patterns:
-
-```java
-listBox.addSelectListener(e -> {
-  //Executed when the event fires
-});
-
-//OR
-
-listBox.addSelectListener(new ComponentEventListener<ListSelectEvent>() {
-  @Override
-  public void onComponentEvent(ComponentEvent e){
-    //Executed when the event fires
-  }
-});
-
-//OR
-
-listBox.addSelectListener(this::propertyChangeMethod);
-```
-
-Additional syntactic sugar methods, or aliases, have been added to allow for alternative addition of events by using the `on` prefix followed by the event, such as:
-
-```java
-listBox.onSelect(e -> {
-  //Executed when the event fires
-});
-```
-
-### Removing Events
-
-To remove an event listener, use the appropriate method:
-
-```java
-listBox.removeSelectListener(listener);
-```
-
-:::tip
-When adding an event listener, a `ListenerRegistration` object will be returned. This can be used, among other things, to remove the event later on.
-::: -->
-
 ## Styling
 
 <!-- ### Expanses

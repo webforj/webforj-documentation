@@ -54,39 +54,6 @@ It is possible to add and remove singular or multiple `RadioButton` objects to a
 
 The name attribute in a `RadioButtonGroup` groups related RadioButtons together, allowing users to make a single choice from the options provided and enforcing exclusivity among the RadioButtons. The name of a group is not reflected in the DOM, however, and is a convenience utility for the Java developer.
 
-## Events
-
-The `RadioButtonGroup` class provides methods to add and remove change events. These events fire whenever a change is made to an element within the group.
-
-### Adding Events
-
-To add an `ChangeEvent` listener, use the appropriate method:
-
-```java
-myRadioButtonGroup.addChangeListener( e -> {
-  //Executed when the event fires
-});
-```
-
-Additional syntactic sugar methods, or aliases, have been added to allow for alternative addition of events by using the `on` prefix followed by the event, such as:
-
-```java
-myRadioButtonGroup.onChange( e -> {
-    //Executed when the event fires
-});
-```
-:::tip
-Using the event payload that comes with various events to attain information reduces the number of round trips made when instead querying the component for the required information. 
-:::
-
-### Removing Events
-
-To remove an event listener, use the appropriate method:
-
-```java
-myRadioButton.removeChangeListener(listener);
-```
-
 ## Best Practices 
 
 To ensure an optimal user experience when using the RadioButton component, consider the following best practices:

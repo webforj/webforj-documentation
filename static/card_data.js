@@ -28,13 +28,13 @@ export const componentData =
     "image": require('./img/component_images/drawer.png'),
     "title": "Drawer",
     "link" : "./drawer",
-    "description": "Webforj's Drawer component allow developers to create a container which slides into the viewport to expose additional options and information."
+    "description": "webforJ's Drawer component allow developers to create a container which slides into the viewport to expose additional options and information."
   },
   {
     "image": require('./img/component_images/dialog.png'),
     "title": "Dialog",
     "link" : "./dialog",
-    "description": "Webforj's dialog component is built to allow a developer to quickly and easily display a dialog on their application, for instances such as a login menu or information box."
+    "description": "webforJ's dialog component is built to allow a developer to quickly and easily display a dialog on their application, for instances such as a login menu or information box."
   },
   // {
   //   "image": require('./img/component_images/field.png'),
@@ -42,12 +42,6 @@ export const componentData =
   //   "link" : "./field",
   //   "description": "An editable text field component with various features such as read-only mode, focus control, tab traversal, and text alignment."
   // },
-  {
-    "image": require('./img/component_images/label.png'),
-    "title": "Label",
-    "link" : "./label",
-    "description": "A static text element that can be added to pages. In addition to using the label as static text, it can also be used as an HTML tag within your code."
-  },
   {
     "image": require('./img/component_images/applayout.png'),
     "title": "App Layout",
@@ -89,12 +83,6 @@ export const componentData =
     "title": "Slider",
     "link" : "./slider",
     "description": "The Slider component provides methods to set and retrieve properties such as orientation, minimum and maximum values, tick spacing, and callbacks for scroll events."
-  },
-  {
-    "image": require('./img/component_images/textarea.png'),
-    "title": "Text Area",
-    "link" : "./text-area",
-    "description": "The Text Area component is a multi-line edit field that allows for various functionalities such as read-only mode, text highlighting, focus handling, scrolling, and more."
   },
   // {
   //   "image": require('./img/component_images/textfield.png'),

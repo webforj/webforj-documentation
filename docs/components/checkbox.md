@@ -87,57 +87,6 @@ cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/r
 height = '150px'
 />
 
-## Events
-
-The `CheckBox` class provides methods to add and remove event listeners for the following events:
-
-| Events | Description |
-|:-:|-|
-|<JavadocLink type="engine" location="org/dwcj/component/event/BlurEvent" code='true'>BlurEvent</JavadocLink>|An event that is triggered when an element loses focus. It occurs when the user interacts with an element, such as clicking inside an input field, and then moves the focus away from that element, typically by clicking outside of it or tabbing to another element on the page.|
-|<JavadocLink type="engine" location="org/dwcj/component/event/FocusEvent" code='true'>FocusEvent</JavadocLink>| An event that is triggered when an element gains focus, opposite of a blur event. It occurs when the user interacts with an element, typically by clicking inside an input field or navigating to it using the keyboard's tab key, causing the element to become active and ready to receive user input.|
-|<JavadocLink type="engine" location="org/dwcj/component/event/CheckEvent" code='true'>CheckEvent</JavadocLink>| An event that is triggered when the state of a component changes and becomes checked. It occurs when the user interacts with a checkbox element by clicking or tapping on it, causing the checkbox to transition from an unchecked state to a checked state.|
-|<JavadocLink type="engine" location="org/dwcj/component/event/UncheckEvent" code='true'>UncheckEvent</JavadocLink>| An event that is triggered when the state of a component changes and becomes unchecked. |
-|<JavadocLink type="engine" location="org/dwcj/component/event/ToggleEvent" code='true'>ToggleEvent</JavadocLink>| A ToggleEvent fires a CheckBox or a similar UI element changes its state between "on" and "off" or "active" and "inactive."|
-|<JavadocLink type="engine" location="org/dwcj/component/event/MouseEnterEvent" code='true'>MouseEnterEvent</JavadocLink>|An event that is triggered when the mouse cursor enters the boundaries of a component. |
-|<JavadocLink type="engine" location="org/dwcj/component/event/MouseExitEvent" code='true'>MouseExitEvent</JavadocLink>|An event that is triggered when the mouse cursor exits the boundaries of a component. |
-|<JavadocLink type="engine" location="org/dwcj/component/event/RightMouseDownEvent" code='true'>RightMouseDownEvent</JavadocLink>|An event that is triggered when the user presses the right mouse button while the cursor is over a component.|
-
-<br />
-
-To add an event listener, use the appropriate method:
-
-```java
-myCheckBox.addCheckListener( e -> {
-  //Executed when the event fires
-});
-```
-
-Additional syntactic sugar methods, or aliases, have been added to allow for alternative addition of events by using the `on` prefix followed by the event, such as:
-
-```java
-myCheckBox.onCheck( e -> {
-    //Executed when the event fires
-});
-```
-
-:::tip
-Using the event payload that comes with various events to attain information reduces the number of round trips made when instead querying the component for the required information. 
-:::
-
-To remove an event listener, use the appropriate method:
-
-```java
-myCheckBox.removeCheckListener(listener);
-```
-
-<ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxEventDemo' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/checkboxdemos/CheckboxEventDemo.java'
-javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/checkbox/Event.txt'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css'
-height = '100px'
-/>
-
 ## Styling
 
 ### Expanses

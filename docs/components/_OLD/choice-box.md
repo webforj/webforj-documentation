@@ -27,7 +27,7 @@ height="170px"
 
 ### Themes
 
-Webforj's Choice Box components come with 14 themes built in for quick styling without the use of CSS. Theming is supported by use of a built-in enum class.
+webforJ's Choice Box components come with 14 themes built in for quick styling without the use of CSS. Theming is supported by use of a built-in enum class.
 Shown below are example boxes with each of the supported Themes applied: <br/>
 
 <ComponentDemo 
@@ -49,7 +49,7 @@ Listed below are the current supported theme options for the combo box component
 <br />
 
 ### Expanses
-There are five Choice Box expanses that are supported in Webforj which allow for quick styling without using CSS. Expanses are supported by use of a built-in enum class.
+There are five Choice Box expanses that are supported in webforJ which allow for quick styling without using CSS. Expanses are supported by use of a built-in enum class.
 Below are the various expanses supported this component: <br/>
 
 <ComponentDemo 

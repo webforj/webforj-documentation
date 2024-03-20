@@ -92,63 +92,6 @@ The `ChoiceBox` component has methods that allow manipulation of the dropdown di
 Passing a `String` value to either of these methods will allow for [any valid CSS unit](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units) to be applied, such as pixels, viewport dimensions, or other valid rules. Passing an `int` will set the value passed in pixels.
 :::
 
-## Events
-
-The `ChoiceBox` class provides methods to add and remove event listeners for the following events, as well as events common to all list components:
-
-| Events | Description |
-|:-:|-|
-|<JavadocLink type="engine" location="org/dwcj/component/list/event/ListOpenEvent"  code="true">ListOpenEvent</JavadocLink>|An event which is fired when a list dropdown is opened.|
-|<JavadocLink type="engine" location="org/dwcj/component/list/event/ListCloseEvent"  code="true">ListCloseEvent</JavadocLink>|An event which is fired when a list dropdown is closed.|
-|<JavadocLink type="engine" location="org/dwcj/component/list/event/ListClickEvent"  code="true">ListClickEvent</JavadocLink>|This event is triggered when the user clicks an item from a List-based component.|
-
-:::tip
-For a list of additional events supported by the `ChoiceBox`, see [this section](./lists.md#shared-events) which outlines shared events amongst list components.
-:::
-<!-- 
-### Adding Events
-
-To add an event listener, use one of the following patterns:
-
-```java
-choiceBox.addOpenListener(e -> {
-  //Executed when the event fires
-});
-
-//OR
-
-choiceBox.addOpenListener(new ComponentEventListener<ListOpenEvent>() {
-  @Override
-  public void onComponentEvent(ComponentEvent e){
-    //Executed when the event fires
-  }
-});
-
-//OR
-
-choiceBox.addOpenListener(this::listOpenMethod);
-```
-
-Additional syntactic sugar methods, or aliases, have been added to allow for alternative addition of events by using the `on` prefix followed by the event, such as:
-
-```java
-choiceBox.onOpen(e -> {
-  //Executed when the event fires
-});
-```
-
-### Removing Events
-
-To remove an event listener, use the appropriate method:
-
-```java
-choiceBox.removeOpenListener(listener);
-```
-
-:::tip
-When adding an event listener, a `ListenerRegistration` object will be returned. This can be used, among other things, to remove the event later on.
-::: -->
-
 ## Styling
 <!-- 
 ### Expanses

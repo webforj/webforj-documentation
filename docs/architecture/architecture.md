@@ -9,7 +9,7 @@ When creating an application in webforj, the client and the server work together
 
 ### 1. Server to Client
 
-Webforj methods such as `setText()` are included in this category. Webforj application running on the server sends data to the client without waiting for a response. Webforj automatically optimizes batches of operations in this category to improve performance.   
+webforJ methods such as `setText()` are included in this category. webforJ application running on the server sends data to the client without waiting for a response. webforJ automatically optimizes batches of operations in this category to improve performance.   
 
 ### 2. Client to Server
 
@@ -46,9 +46,9 @@ In the first snippet, `ComboBox.getSelectedIndex()` being performed on the compo
 
 ### Caching
 
-Webforj further optimizes performance by utilizing caching. In general, two types of data exist in this context: data that the user can directly change, and data that cannot be changed by the user. In the first case, when retrieving the information that users will directly interact with, it is necessary to query the server for this information. 
+webforJ further optimizes performance by utilizing caching. In general, two types of data exist in this context: data that the user can directly change, and data that cannot be changed by the user. In the first case, when retrieving the information that users will directly interact with, it is necessary to query the server for this information. 
 
-However, information which cannot be changed by the user can be cached to avoid additional performance hits. This ensures that a round trip does not need to be made unnecessarily, providing a more efficient user experience. Webforj optimizes applications in this manner to ensure optimal performance. 
+However, information which cannot be changed by the user can be cached to avoid additional performance hits. This ensures that a round trip does not need to be made unnecessarily, providing a more efficient user experience. webforJ optimizes applications in this manner to ensure optimal performance. 
 
 ### Loading Time 
 

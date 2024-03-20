@@ -5,14 +5,14 @@ displayed_sidebar: documentationSidebar
 
 # Creating an Application
 
-Once Webforj and all applicable dependencies have been installed and the POM configuration has been completed, it's time to start creating! If you followed the installation guide, a sample "Hello World" program should be included already. However, in this section, a demonstration of how to create **a new application from scratch** will be provided.
+Once webforJ and all applicable dependencies have been installed and the POM configuration has been completed, it's time to start creating! If you followed the installation guide, a sample "Hello World" program should be included already. However, in this section, a demonstration of how to create **a new application from scratch** will be provided.
 
 :::tip
 Using the [HelloWorldJava](./Templates/hello_world.md) program will help expedite the creation of a simple application.
 :::
 
 ## Start a new Application
-Should you decide to create an application from scratch, a few integral steps must be followed in order to get the Webforj application up and running.
+Should you decide to create an application from scratch, a few integral steps must be followed in order to get the webforJ application up and running.
 
 ### Create a Java Class
  
@@ -27,7 +27,7 @@ public class MyApplication {
 ```
 ### Extend the `App` class
 
-In order for Webforj to recognize that a new application is being created, the class that is created will need to extend the ``App`` class. 
+In order for webforJ to recognize that a new application is being created, the class that is created will need to extend the ``App`` class. 
 
 ```java
 import com.webforj.App;
@@ -43,12 +43,12 @@ After this is complete, the ``run()`` method must be overridden. This method is 
 
 ```java
 import com.webforj.App;
-import com.webforj.exceptions.WebforjException;
+import com.webforj.exceptions.webforJException;
 
 public class MyApplication extends App{
 
     @Override
-    public void run() throws WebforjException { 
+    public void run() throws webforJException { 
 
     }
 }
@@ -60,13 +60,13 @@ Finally, in most instances, within the ```run()``` method or in another function
 
 ```java
 import com.webforj.App;
-import com.webforj.exceptions.WebforjException;
+import com.webforj.exceptions.webforJException;
 import com.webforj.component.window.Frame;
 
 public class MyApplication extends App{
 
     @Override
-    public void run() throws WebforjException { 
+    public void run() throws webforJException { 
         Frame mainFrame = new Frame();
     }
 }
@@ -74,11 +74,11 @@ public class MyApplication extends App{
 
 ## Customizing your Application
 
-You can then add various components that come with Webforj, or custom components, elements, etc to the `Frame`. In the example below, the `Frame` will be created and a button will be added to the panel.
+You can then add various components that come with webforJ, or custom components, elements, etc to the `Frame`. In the example below, the `Frame` will be created and a button will be added to the panel.
 
 ```java
 import com.webforj.App;
-import com.webforj.exceptions.WebforjException;
+import com.webforj.exceptions.webforJException;
 import com.webforj.component.window.Frame;
 import com.webforj.component.button.Button;
 
@@ -87,7 +87,7 @@ public class ExampleClass extends App{
     Button myButton = new Button("My Button");
 
     @Override
-    public void run() throws WebforjException { 
+    public void run() throws webforJException { 
         Frame mainFrame = new Frame();
         mainFrame.add(myButton);
     }
@@ -97,7 +97,7 @@ public class ExampleClass extends App{
 Once this has been done, you can use the [installation plugin](./configuration.md) to compile and deploy your application. 
 
 :::tip
-Visit [this section](../components/home) to see the various components that can be used in Webforj. To see how to [create your own components](../ui/home), see this section. You can also explore the [layouts](../category/layouts) designed to help quickly and efficiently create new apps.
+Visit [this section](../components/home) to see the various components that can be used in webforJ. To see how to [create your own components](../ui/home), see this section. You can also explore the [layouts](../category/layouts) designed to help quickly and efficiently create new apps.
 :::
 
 ### App Data

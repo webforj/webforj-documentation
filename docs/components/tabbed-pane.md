@@ -200,7 +200,7 @@ Individual `Tab` elements can be set to be closable. Closable tabs will have a c
 
 ### Expanse and Theme
 
-The `TabbedPane` comes with built-in `Expanse` and `Theme` options similar to other Webforj components. These can be used to quickly add styling that conveys various meaning to the end user without needing to style the component with CSS.
+The `TabbedPane` comes with built-in `Expanse` and `Theme` options similar to other webforJ components. These can be used to quickly add styling that conveys various meaning to the end user without needing to style the component with CSS.
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.tabbedpanedemos.TabbedPaneExpanseTheme' 
@@ -253,7 +253,7 @@ The following practices are recommended for utilizing the `TabbedPane` within ap
     >- Labels should reflect the content or purpose, making it easy for users to understand
     >- Utilize icons and distinct colors where applicable
 
-- **Keyboard Navigation** Use Webforj's `TabbedPane` keyboard navigation support to make interaction with the `TabbedPane` more seamless and intuitive for the end user
+- **Keyboard Navigation** Use webforJ's `TabbedPane` keyboard navigation support to make interaction with the `TabbedPane` more seamless and intuitive for the end user
 
 - **Default Tab**: If the default tab is not placed at the beginning of the `TabbedPane`, consider setting this tab as default for essential or commonly used information.
 

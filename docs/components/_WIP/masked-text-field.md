@@ -27,7 +27,7 @@ height = '125px'
 
 ### Mask
 
-Webforj's text field supports masking - the following table describes the various masking behaviors.
+webforJ's text field supports masking - the following table describes the various masking behaviors.
 
 <table>
 <thead>

@@ -56,7 +56,7 @@ height = '125px'
 
 ### Expanses
 
-Webforj's `Field` comes with 5 expanses for quick styling without the use of CSS. Expanses are supported by use of a built-in enum class.
+webforJ's `Field` comes with 5 expanses for quick styling without the use of CSS. Expanses are supported by use of a built-in enum class.
 Below are the various expanses supported for the `Field` component: <br/>
 
 <ComponentDemo 
