@@ -118,6 +118,19 @@ export default function ComponentDemo({
   frame,
   tabs,
 }) {
+
+  ComponentDemo.propTypes = {
+    path: PropTypes.string.isRequired,
+    javaC: PropTypes.string,
+    javaE: PropTypes.string,
+    urls: PropTypes.arrayOf(PropTypes.string),
+    cssURL: PropTypes.string,
+    javaHighlight: PropTypes.string,
+    height: PropTypes.string,
+    frame: PropTypes.string,
+    tabs: PropTypes.arrayOf(PropTypes.string),
+  };
+
   const [javaCollapse, setJavaCollapse] = useState("");
   const [javaExpand, setJavaExpand] = useState("");
   const [additionalFiles, setAdditionalFiles] = useState({});
@@ -178,24 +191,30 @@ export default function ComponentDemo({
         });
     }
     if (urls) {
-      urls.forEach((url) => {
-        const parsedUrl = new URL(url);
-        const pathname = parsedUrl.pathname;
-        const parts = pathname.split("/");
-        const fileName = parts[parts.length - 1];
-
-        fetch(url)
-          .then((response) => response.text())
-          .then((textString) => {
-            setAdditionalFiles((prevAdditionalFiles) => ({
-              ...prevAdditionalFiles,
-              [fileName]: {
-                fileName: fileName,
-                code: textString,
-              },
-            }));
-          });
-      });
+      urls.forEach(fetchAndProcessURL);
+    }
+    
+    function fetchAndProcessURL(url) {
+      const parsedUrl = new URL(url);
+      const pathname = parsedUrl.pathname;
+      const parts = pathname.split("/");
+      const fileName = parts[parts.length - 1];
+    
+      fetch(url)
+        .then((response) => response.text())
+        .then((textString) => {
+          setAdditionalFile(fileName, textString);
+        });
+    }
+    
+    function setAdditionalFile(fileName, textString) {
+      setAdditionalFiles((prevAdditionalFiles) => ({
+        ...prevAdditionalFiles,
+        [fileName]: {
+          fileName: fileName,
+          code: textString,
+        },
+      }));
     }
     setOriginalWidth(iframeRef.current ? iframeRef.current.offsetWidth : 0);
   }, []);
@@ -391,7 +410,7 @@ export default function ComponentDemo({
               </CodeBlock>
             </TabItem>
             {Object.keys(additionalFiles).map((fileName, index) => (
-              <TabItem key={index} value={fileName} label={fileName}>
+              <TabItem key={"tab" + index} value={fileName} label={fileName}>
                 <CodeBlock
                   css={codeBlockStyles}
                   className="codeDemoBlock"
@@ -435,7 +454,7 @@ export default function ComponentDemo({
               </CodeBlock>
             </TabItem>
             {Object.keys(additionalFiles).map((fileName, index) => (
-              <TabItem key={index} value={fileName} label={fileName}>
+              <TabItem key={"tab" + index} value={fileName} label={fileName}>
                 <CodeBlock
                   css={codeBlockStyles}
                   className="codeDemoBlock"
