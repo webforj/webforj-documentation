@@ -6,7 +6,7 @@ draft: true
 
 <!-- vale off -->
 
-import ComponentDemoMultiple from '@site/src/components/DocsTools/ComponentDemoMultiple';
+import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import EventTable from '@site/src/components/DocsTools/EventTable';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
@@ -34,7 +34,7 @@ Often, a `Navigator` component displays information found in a bound `Repository
 
 To do this, simply pass the desired `Repository` object to an applicable `Navigator` object's constructor:
 
-<ComponentDemoMultiple 
+<ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/NavigatorTable?' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/navigatordemos/NavigatorTable.java'
 height='500px'
@@ -70,7 +70,7 @@ The `setMax()` method allows you to define the maximum number of page links to d
 navigator.getPaginator().setMax(maxPages);
 ```
 
-<ComponentDemoMultiple 
+<ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/NavigatorPages?' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/navigatordemos/NavigatorPages.java'
 height='100px'
@@ -90,7 +90,7 @@ navigator.getPaginator().setSize(pageSize);
 
 The `Navigator` component provides extensive customization options for buttons, text, and tooltips. To change the displayed text on the `Navigator` component, use the `setText()` method. This method takes text, as well as the desired `Part` of the `Navigator`.
 
-<ComponentDemoMultiple 
+<ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/NavigatorBasic?' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/navigatordemos/NavigatorBasic.java'
 height='100px'
@@ -140,7 +140,7 @@ In the following example, the `setText()` method displays a numeric value to the
 
 Various layout options exist for the `Navigator` component  to provide flexibility in displaying pagination controls. To access these layouts, use the `Navigator.Layout` enum's values. The options are as follows:
 
-<ComponentDemoMultiple 
+<ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/NavigatorLayout?' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/navigatordemos/NavigatorLayout.java'
 height='200px'
