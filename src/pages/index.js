@@ -253,27 +253,38 @@ function HomepageAnnoucement() {
   );
 }
 
-function Footer() {
+function LITracking() {
   useEffect(() => {
-    const _linkedin_partner_id = "6908425";
-    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
-    window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.async = true;
+    script.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
 
-    (function (l) {
+    script.onload = () => {
+      initializeLinkedInTracking();
+    };
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  function initializeLinkedInTracking() {
+    window._linkedin_partner_id = "6908425";
+    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+    window._linkedin_data_partner_ids.push(window._linkedin_partner_id);
+
+    (function(l) {
       if (!l) {
-        window.lintrk = function (a, b) {
+        window.lintrk = function(a, b) {
           window.lintrk.q.push([a, b]);
         };
         window.lintrk.q = [];
       }
-      var s = document.getElementsByTagName("script")[0];
-      var b = document.createElement("script");
-      b.type = "text/javascript";
-      b.async = true;
-      b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
-      s.parentNode.insertBefore(b, s);
     })(window.lintrk);
-  }, []);
+  }
 
   return null;
 }
@@ -292,10 +303,10 @@ export default function Home() {
       description="Build your modern web applications with webforJ."
     >
       <div css={mainStyles}>
+        <LITracking />
         <HomepageTitle />
         <HomepageAnnoucement />
         <HomepageSection />
-        <Footer />
       </div>
     </Layout>
   );
