@@ -115,7 +115,6 @@ export default function ComponentDemo({
   cssURL,
   javaHighlight,
   height,
-  padding,
   frame,
   tabs,
 }) {
@@ -249,8 +248,6 @@ export default function ComponentDemo({
     width: 100%;
     height: ${height || "100%"};
     pointer-events: ${isResizing ? "none" : "auto"};
-    background-color: #f8fafc;
-    padding: ${padding || "0px"};
   `;
 
   const fadeInButton = css`
