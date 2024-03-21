@@ -12,7 +12,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
 
-<DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-choicebox" href="https://basishub.github.io/basis-next/#/web-components/dwc-choicebox" clickable={false} iconName='code'/>
+<DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-choicebox" clickable={false} iconName='code'/>
 
 <JavadocLink type="engine" location="org/dwcj/component/list/ChoiceBox" top='true'/>
 
@@ -73,7 +73,7 @@ height='250px'
 
 By default, the number of rows displayed in the dropdown of a `ChoiceBox` will be increased to fit the content. However, using the <JavadocLink type="engine" location="org/dwcj/component/list/DwcSelectDropdown" code='true' suffix='#setMaxRowCount(int)'>setMaxRowCount()</JavadocLink> method allows for control over how many items are displayed. 
 
-:::caution
+:::tip
 Using a number that is less than or equal to 0 will result in unsetting this property.
 :::
 
