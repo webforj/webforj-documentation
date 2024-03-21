@@ -37,7 +37,7 @@ To do this, simply pass the desired `Repository` object to an applicable `Naviga
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/NavigatorTable?' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/navigatordemos/NavigatorTable.java'
-height='500px'
+height='475px'
 />
 
 This example creates the `Navigator` and [`Table`](../addons/table/) with the same `Repository` instance. This means that when navigating to a new page with the `Navigator`, the [`Table`](../addons/table/) recognizes this change and rerenders.
@@ -73,7 +73,7 @@ navigator.getPaginator().setMax(maxPages);
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/NavigatorPages?' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/navigatordemos/NavigatorPages.java'
-height='100px'
+height='125px'
 />
 
 This program shows a maximum of five pages on the `Navigator` at one time by using the `getPaginator()` method to retrieve the `Paginator` associated with the `Navigator` object, and then using the `setMax()` method to specify a desired number of maximum pages displayed.
