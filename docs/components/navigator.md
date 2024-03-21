@@ -1,7 +1,6 @@
 ---
 sidebar_position: 65 
 title: Navigator
-draft: true
 ---
 
 <!-- vale off -->
