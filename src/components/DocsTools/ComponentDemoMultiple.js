@@ -191,7 +191,6 @@ export default function ComponentDemo({
           }));
         });
     });
-
     setOriginalWidth(iframeRef.current ? iframeRef.current.offsetWidth : 0);
   }, []);
 
