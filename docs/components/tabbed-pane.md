@@ -14,7 +14,7 @@ import Chip from '@mui/material/Chip';
 
 <DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
 
-<DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-tabbed-pane" href="https://basishub.github.io/basis-next/#/web-components/dwc-button" clickable={false} iconName='code'/>
+<DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-tabbed-pane" clickable={false} iconName='code'/>
 
 
 <JavadocLink type="engine" location="org/dwcj/component/tabbedpane/TabbedPane" top='true'/>
