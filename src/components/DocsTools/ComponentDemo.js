@@ -2,19 +2,25 @@
 
 import { React, useState, useEffect, useRef } from "react";
 import { jsx, css } from "@emotion/react";
+import PropTypes from "prop-types";
+
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import Details from "@theme/Details";
 import CodeBlock from "@theme/CodeBlock";
-import test1 from "../../../static/img/fold.png";
-import test2 from "../../../static/img/expand.png";
+import arrowUp from "../../../static/img/expand.png";
+import arrowDown from "../../../static/img/fold.png";
 import test3 from "../../../static/img/window-maximize.png";
-// import useThemeContext from '@theme/hooks/useThemeContext';
 import { useColorMode } from "@docusaurus/theme-common";
 
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 
 function CodeToggleButton({ collapse, setCollapse }) {
+  CodeToggleButton.propTypes = {
+    collapse: PropTypes.bool.isRequired,
+    setCollapse: PropTypes.func.isRequired,
+  };
+
   const buttonWrapperStyles = css`
     display: flex;
     justify-content: end;
@@ -24,8 +30,6 @@ function CodeToggleButton({ collapse, setCollapse }) {
   `;
 
   const buttonStyles = css`
-    /* position: absolute;
-    right: 0; */
     cursor: pointer;
     z-index: 10;
     height: 35px;
@@ -52,14 +56,15 @@ function CodeToggleButton({ collapse, setCollapse }) {
       >
         {collapse ? (
           <img
+            alt="collapse_button"
             css={iconStyles}
-            src={test2}
+            src={arrowUp}
             className="icon-tabler-arrow-bar-up"
           />
         ) : (
           <img
             css={iconStyles}
-            src={test1}
+            src={arrowDown}
             className="icon-tabler-arrow-bar-down"
           />
         )}
@@ -106,14 +111,28 @@ export default function ComponentDemo({
   path,
   javaC,
   javaE,
+  urls,
   cssURL,
   javaHighlight,
   height,
   frame,
   tabs,
 }) {
+  ComponentDemo.propTypes = {
+    path: PropTypes.string.isRequired,
+    javaC: PropTypes.string,
+    javaE: PropTypes.string,
+    urls: PropTypes.arrayOf(PropTypes.string),
+    cssURL: PropTypes.string,
+    javaHighlight: PropTypes.string,
+    height: PropTypes.string,
+    frame: PropTypes.string,
+    tabs: PropTypes.arrayOf(PropTypes.string),
+  };
+
   const [javaCollapse, setJavaCollapse] = useState("");
   const [javaExpand, setJavaExpand] = useState("");
+  const [additionalFiles, setAdditionalFiles] = useState({});
   const [cssCode, setCssCode] = useState("");
   const [collapsed, setCollapsed] = useState(!!(javaC && javaE));
   const [buttonVisible, setButtonVisible] = useState(false);
@@ -128,7 +147,6 @@ export default function ComponentDemo({
   const [originalWidth, setOriginalWidth] = useState(0);
 
   const [showCode, setShowCode] = useState(false);
-  // const [docTheme, setDocTheme] = useState(document.documentElement.getAttribute('data-theme'));
 
   const iframeRef = useRef(null);
   const codeButtonRef = useRef(null);
@@ -171,22 +189,48 @@ export default function ComponentDemo({
           }));
         });
     }
+    if (urls) {
+      urls.forEach(fetchAndProcessURL);
+    }
+
+    function fetchAndProcessURL(url) {
+      const parsedUrl = new URL(url);
+      const pathname = parsedUrl.pathname;
+      const parts = pathname.split("/");
+      const fileName = parts[parts.length - 1];
+
+      fetch(url)
+        .then((response) => response.text())
+        .then((textString) => {
+          setAdditionalFile(fileName, textString);
+        });
+    }
+
+    function setAdditionalFile(fileName, textString) {
+      setAdditionalFiles((prevAdditionalFiles) => ({
+        ...prevAdditionalFiles,
+        [fileName]: {
+          fileName: fileName,
+          code: textString,
+        },
+      }));
+    }
     setOriginalWidth(iframeRef.current ? iframeRef.current.offsetWidth : 0);
   }, []);
 
-  // useEffect(() => {
-  //   const observer = new MutationObserver((mutationsList) => {
-  //     const themeMutation = mutationsList.find(mutation => mutation.attributeName === 'data-theme');
-  //     if (themeMutation) {
-  //       setDocTheme(document.documentElement.getAttribute('data-theme'));
-  //     }
-  //   });
-
-  //   observer.observe(document.documentElement, { attributes: true });
-  //   return () => {
-  //     observer.disconnect();
-  //   };
-  // }, []);
+  function renderCodeBlocks(files, codeBlockStyles, javaHighlight) {
+    return(
+        <CodeBlock
+          css={codeBlockStyles}
+          className="codeDemoBlock"
+          language="java"
+          showLineNumbers
+          metastring={javaHighlight}
+        >
+          {files.code}
+        </CodeBlock>
+    );
+  }
 
   const startResizing = (e) => {
     e.preventDefault();
@@ -210,7 +254,6 @@ export default function ComponentDemo({
         }px`;
         setNewRight(initialRight - dx < 25 ? 25 : initialRight - dx);
       }
-      // setInitialMouseX(e.clientX); // Add this line
     }
   };
 
@@ -219,14 +262,11 @@ export default function ComponentDemo({
     flex-direction: column;
     width: 100%;
     margin-bottom: 16px;
-    /* padding: ${frame == "hidden" ? "0 15px 0 15px;" : "7px 15px 0 15px;"}; */
-    /* box-shadow: var(--ifm-global-shadow-lw); */
     background-color: var(--code-display-color-background);
   `;
 
   const demoFrameStyles = css`
     width: 100%;
-    /* padding: 1em; */
     border: 1px solid var(--ifm-toc-border-color);
     border-right: none;
     background-color: transparent;
@@ -275,7 +315,6 @@ export default function ComponentDemo({
     position: relative;
 
     div {
-      /* border: none; */
       border-color: var(--ifm-toc-border-color);
       padding: 2px 0px 0px 0px;
       margin: 0px;
@@ -309,9 +348,6 @@ export default function ComponentDemo({
   `;
 
   const tabStyles = css`
-    /* :first-child{
-      margin-left: 1em;
-    } */
     li[aria-selected="true"] {
       border-color: var(--ifm-color-primary);
     }
@@ -346,8 +382,6 @@ export default function ComponentDemo({
             onMouseUp={stopResizing}
             loading="lazy"
             src={path + "&__theme__=" + useColorMode().colorMode}
-            // src={path+"&__theme__=" + docTheme}
-            // src={path}
             css={iframeStyles}
             ref={iframeRef}
             onMouseMove={resize}
@@ -388,6 +422,11 @@ export default function ComponentDemo({
                 {collapsed ? javaCollapse : javaExpand}
               </CodeBlock>
             </TabItem>
+            {Object.keys(additionalFiles).map((fileName, index) => (
+              <TabItem key={"tab" + index} value={fileName} label={fileName}>
+                {renderCodeBlocks(additionalFiles[fileName], codeBlockStyles, javaHighlight)}
+              </TabItem>
+            ))}
             <TabItem
               value={tabs ? tabs[1] : "CSS"}
               label={tabs ? tabs[1] : fileNames.cssFile}
@@ -419,6 +458,11 @@ export default function ComponentDemo({
                 {collapsed ? javaCollapse : javaExpand}
               </CodeBlock>
             </TabItem>
+            {Object.keys(additionalFiles).map((fileName, index) => (
+              <TabItem key={"tab" + index} value={fileName} label={fileName}>
+                {renderCodeBlocks(additionalFiles[fileName], codeBlockStyles, javaHighlight)}
+              </TabItem>
+            ))}
           </Tabs>
         )}
       </Details>

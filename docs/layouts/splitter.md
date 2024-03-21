@@ -5,7 +5,7 @@ title: Splitter
 
 <!-- vale off -->
 
-import ComponentDemoMultiple from '@site/src/components/DocsTools/ComponentDemoMultiple';
+import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import EventTable from '@site/src/components/DocsTools/EventTable';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
@@ -25,7 +25,7 @@ import Chip from '@mui/material/Chip';
 
 The `Splitter` component, designed to divide and resize content within your app, encapsulates two resizable components, the master and the detail components. A divider separates these components, allowing users to dynamically adjust each component's size according to their preferences.
 
-<ComponentDemoMultiple 
+<ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/SplitterBasic?' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterBasic.java'
 urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterBox.java',]}
@@ -53,7 +53,7 @@ The `setMasterMinSize(String masterMinSize)` method specifies the min size for t
 
 You can specify sizes using various units like pixels or other valid CSS units, as shown below:
 
-<ComponentDemoMultiple 
+<ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/SplitterMinMax?' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterMinMax.java'
 urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterBox.java',]}
@@ -66,7 +66,7 @@ Developers can configure orientation in the `Splitter` component, allowing to cr
 
 To configure the orientation use the supported orientations Enum to specify whether the `Splitter` should render horizontally or vertically:
 
-<ComponentDemoMultiple 
+<ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/SplitterOrientation?' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterOrientation.java'
 urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterBox.java',]}
@@ -77,7 +77,7 @@ height='300px'
 
 To set the initial position of the divider bar in the `Splitter` component, use the `setPositionRelative`. This method takes a numeric value from `0` to `100` representing the percentage of the given space in the `Splitter`, and displays the divider at the given percentage of total width:
 
-<ComponentDemoMultiple 
+<ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/SplitterPosition?' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterPosition.java'
 urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterBox.java',]}
@@ -90,7 +90,7 @@ Splitters nesting allow developers to create complex layouts with levels of resi
 
 To nest Splitter components, instantiate new `Splitter` instances and add them as children to existing `Splitter` components. This hierarchical structure allows for the creation of multi-level layouts with flexible resizing capabilities. The program below demonstrates this:
 
-<ComponentDemoMultiple 
+<ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/SplitterNested?' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterNested.java'
 urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterBox.java',]}
@@ -107,7 +107,7 @@ When you set the auto-save configuration, the `Splitter` component automatically
 
 To programmatically remove the saved state to revert the `Splitter` back to default settings/dimensions, call the `cleanState()` method to remove any saved state data related to the `Splitter` component from the local storage of the web browser.
 
-<ComponentDemoMultiple 
+<ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/SplitterAutoSave?' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterAutoSave.java'
 urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/splitter/SplitterBox.java',]}

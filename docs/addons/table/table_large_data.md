@@ -5,7 +5,6 @@ slug: data
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-import ComponentDemoMultiple from '@site/src/components/DocsTools/ComponentDemoMultiple';
 
 ## Virtual Scrolling
 
@@ -27,7 +26,7 @@ The main advantage of virtual scrolling is improved performance, especially when
 
 The below `Table` shows all olympic winners - a large dataset that benefits greatly from the table's virtual scrolling functionality:
 
-<ComponentDemoMultiple
+<ComponentDemo
 path='https://demo.webforj.com/webapp/controlsamples?class=addondemos.tabledemos.TableOlympicWinners' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/TableOlympicWinners.java'
 urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/tabledemos/MusicRecord.java', 
