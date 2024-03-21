@@ -22,17 +22,6 @@ import Chip from '@mui/material/Chip';
 The table component is currently under heavy development and has not reached a stable status. However, any assistance testing would be appreciated.
 :::
 
-:::info
-To use the `Table` in your project, ensure snapshots are enabled, and include the following tag in your POM's dependencies:
-
-```xml
-<dependency>
-    <groupId>com.webforj</groupId>
-    <artifactId>webforj-table</artifactId>
-    <version>24.00-SNAPSHOT</version>
-</dependency>
-```
-:::
 
 The `Table` class is a versatile component designed for presenting tabular information in a structured and easily understandable manner. Optimized for handling large datasets with high performance, this component offers advanced visualization and a comprehensive suite of events for dynamic user engagement.
 
