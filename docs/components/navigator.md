@@ -44,11 +44,11 @@ This example creates the `Navigator` and [`Table`](../addons/table/) with the sa
 
 ## Pagination 
 
-The `Navigator` component is closely linked with the `Paginator` model class. While not overtly necessary, utilizing the `Paginator` enables the logic behind navigation. 
+The `Navigator` component is closely linked with the `Paginator` model class, calculates pagination metadata such as total number of pages, start/end indices of items on the current page, and an array of page numbers for navigation. 
 
-This class calculates pagination metadata such as total number of pages, start/end indices of items on the current page, and an array of page numbers for navigation.
+While not overtly necessary, utilizing the `Paginator` enables the logic behind navigation. When integrating with a `Paginator`, the navigator responds to any changes within the `Paginator`. `Navigator` objects have access to a built-in `Paginator` through use of the `getPaginator()` method. It can also accept a `Paginator` instance via the `setPaginator()` method, or utilization of one of the applicable constructors.
 
-When integrating with a `Paginator`, the navigator responds to any changes within the `Paginator`. `Navigator` objects have access to a built-in `Paginator` through use of the `getPaginator()` method. It can also accept a `Paginator` instance via the `setPaginator()` method, or utilization of one of the applicable constructors.
+This section includes practical code snippets to illustrate how this integration works in practice.
 
 ### Items
 
@@ -88,7 +88,9 @@ navigator.getPaginator().setSize(pageSize);
 
 ## Customizing buttons, text and tooltips
 
-The `Navigator` component provides extensive customization options for buttons, text, and tooltips. To change the displayed text on the `Navigator` component, use the `setText()` method. This method takes text, as well as the desired `Part` of the `Navigator`.
+The `Navigator` component provides extensive customization options for buttons, text, and tooltips. To change the displayed text on the `Navigator` component, use the `setText()` method. This method takes text, as well as the desired `Part` of the `Navigator`. 
+
+In the following example, the `setText()` method displays a numeric value to the user. Clicking the buttons fires the `onChange` method of the `Navigator`, which comes with a `Direction` value the clicked button. 
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/NavigatorBasic?' 
@@ -96,7 +98,7 @@ javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/ja
 height='100px'
 />
 
-### Button and component text
+### Buttons and component text
 
 The `setText()` method evaluates the text parameter as a JavaScript expression using following parameters:
 
@@ -133,8 +135,6 @@ For example, to set the tooltip text of the last page button in a `Navigator` to
 ```java
 navigator.setTooltipText("Go to the last page", Navigator.Part.LAST_BUTTON);
 ```
-
-In the following example, the `setText()` method displays a numeric value to the user. Clicking the buttons fires the `onChange` method of the `Navigator`, which comes with a `Direction` value the clicked button. 
 
 ## Layouts
 
@@ -222,8 +222,8 @@ This component relies on the following components - see the related article for 
 
 To ensure an optimal user experience when using the `Navigator` component, consider the following best practices: 
 
-- **Understand Dataset**: Before integrating a `Navigator` component into your app, thoroughly understand the data browsing requirements of your users. Consider factors such as the size of the dataset, typical user interactions, and preferred navigation patterns.
+- **Understand dataset**: Before integrating a `Navigator` component into your app, thoroughly understand the data browsing requirements of your users. Consider factors such as the size of the dataset, typical user interactions, and preferred navigation patterns.
 
-- **Choose Appropriate Layout**: Select a layout for the `Navigator` component that aligns with the user experience goals and available screen real estate.
+- **Choose appropriate layout**: Select a layout for the `Navigator` component that aligns with the user experience goals and available screen real estate.
 
-- **Customize Text and Tooltips**: Customize the text and tooltips of the `Navigator` component to match the language and terminology used in your app. Provide descriptive labels and helpful hints to assist users in navigating the dataset effectively.
+- **Customize text and tooltips**: Customize the text and tooltips of the `Navigator` component to match the language and terminology used in your app. Provide descriptive labels and helpful hints to assist users in navigating the dataset effectively.
