@@ -128,9 +128,19 @@ const config = {
           // {to: '/live_demo', label: 'Live Demo', position: 'left'},
           // {to: '/tutorials/intro', label: 'Tutorials', position: 'left'},
           {
-            href: 'https://github.com/webforj',
-            label: 'GitHub',
+            label: "Report Issue",
+            href: 'https://github.com/webforj/webforj/issues',
             position: 'right',
+          },
+          {
+            label: "Javadocs",
+            href: 'https://javadoc.io/doc/com.webforj',
+            position: 'right',
+          },
+          {
+            href: 'https://github.com/webforj',
+            position: 'right',
+            className: "header-github-link"
           },
         ],
       },
