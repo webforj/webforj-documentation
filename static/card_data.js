@@ -45,13 +45,13 @@ export const componentData =
   {
     "image": require('./img/component_images/applayout.png'),
     "title": "App Layout",
-    "link" : "../layouts/app-layout",
+    "link" : "./app-layout",
     "description": "A powerful, easy to use and fully customizable layout which provides a header, footer , drawer, and content section all built into a responsive component which can be easily customized to quickly build common application layouts such as a dashboard."
   },
   {
     "image": require('./img/component_images/flexlayout.png'),
     "title": "Flex Layout",
-    "link" : "../layouts/flex_layouts",
+    "link" : "./flex_layouts",
     "description": "An efficient and intuitive way to layout applications and components - the Flex Layout allows for items to be displayed either vertically or horizontally following the CSS Flexbox rule set."
   },
   {

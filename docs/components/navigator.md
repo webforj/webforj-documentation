@@ -39,7 +39,7 @@ javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/ja
 height='475px'
 />
 
-This example creates the `Navigator` and [`Table`](../addons/table/) with the same `Repository` instance. This means that when navigating to a new page with the `Navigator`, the [`Table`](../addons/table/) recognizes this change and rerenders.
+This example creates the `Navigator` and [`Table`](./table/) with the same `Repository` instance. This means that when navigating to a new page with the `Navigator`, the [`Table`](./table/) recognizes this change and rerenders.
 
 ## Pagination 
 

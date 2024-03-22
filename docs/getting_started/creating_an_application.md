@@ -97,7 +97,7 @@ public class ExampleClass extends App{
 Once this has been done, you can use the [installation plugin](./configuration.md) to compile and deploy your application. 
 
 :::tip
-Visit [this section](../components/home) to see the various components that can be used in webforJ. To see how to [create your own components](../ui/home), see this section. You can also explore the [layouts](../category/layouts) designed to help quickly and efficiently create new apps.
+Visit [this section](../components/home) to see the various components that can be used in webforJ. To see how to [create your own components](../ui/home), see this section.
 :::
 
 ### App Data
