@@ -37,7 +37,7 @@ The `TabbedPane` class is a gives developers a powerful tool for organizing and 
 4. **Task Management**: Task management applications can use a `TabbedPane` to represent various projects or tasks. Each tab could correspond to a specific project, allowing users to manage and track tasks separately.
 
 5. **Program Navigation**: Within an application that needs to run various programs, a `TabbedPane` could:
-    >- Serve as a sidebar which allows for different applications or programs to be run within a single application, such as what is shown in the [`AppLayout`](../layouts/app-layout.md) template
+    >- Serve as a sidebar which allows for different applications or programs to be run within a single application, such as what is shown in the [`AppLayout`](./app-layout.md) template
     >- Create a top bar which can serve a similar purpose, or represent sub-applications within an already selected application.
   
 ## Tabs
