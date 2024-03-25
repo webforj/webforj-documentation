@@ -13,7 +13,7 @@ export default function AppLayoutViewer({url, mobile}) {
         align-items: center;
         margin: 4rem 0;
         /* width: 110%; */
-        margin-left: -5%;
+        /* margin-left: -5%; */
     `
     
     const demoPreview = css`
