@@ -191,5 +191,5 @@ Similarly, when a container does not have enough space to accommodate its conten
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=layout_demos.FlexDemo' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/FlexDemo.java'
-height="400px"
+height="500px"
 />
