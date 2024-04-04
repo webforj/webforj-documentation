@@ -81,7 +81,7 @@ javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/ja
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/slider/Inversion.txt'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/sliderstyles/inversion_styles.css' 
 javaHighlight='{42}'
-height = '200px'
+height = '300px'
 />
 
 <br />
