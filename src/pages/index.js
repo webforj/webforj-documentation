@@ -4,18 +4,17 @@ import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
-import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import HomepageSection from "@site/src/components/HomepageFeatures/HomepageSection";
 
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import logo from "../../static/img/logo.png";
 import javaland from "../../static/img/JavaLand_2024.jpg";
+import devoxx from "../../static/img/devoxx.png";
 import { css, jsx } from "@emotion/react";
 
 import styles from "./index.module.css";
@@ -194,29 +193,33 @@ function HomepageAnnoucement() {
     flex-direction: row;
     width: 60%;
     height: fit-content;
-    border-radius: 20px;
     background: #1b1b1d;
     align-self: center;
     align-items: center;
     justify-content: space-around;
     padding: 30px;
-    margin-bottom: 50px;
     gap: 20px;
-    @media screen and (max-width: 992px) {
+    border-radius: 20px;
+    @media screen and (max-width: 1432px) {
+      flex-direction: column;
       width: 100%;
-      border-radius: 0px;
     }
+    overflow: hidden;
   `;
 
   const infoStyles = css`
     display: flex;
     flex-direction: column;
     max-width: 60%;
+    @media screen and (max-width: 1432px) {
+      max-width: 90%;
+    }
   `;
 
   const logoStyles = css`
     height: 150px;
-    @media screen and (max-width: 992px) {
+    width: 325px;
+    @media screen and (max-width: 600px) {
       display: none;
     }
   `;
@@ -229,25 +232,58 @@ function HomepageAnnoucement() {
     color: white;
   `;
 
+  const bannerStyles = css`
+    display: flex;
+    border-radius: 10px;
+    gap: 30px;
+    margin: 0 5em;
+    background: #1b1b1d;
+    @media screen and (max-width: 992px) {
+      flex-direction: column;
+    }
+  `;
+
   return (
-    <div css={announcementStyles}>
-      <img
-        // src='https://www.javaland.eu/_assets/21d419d44498ff574c15c53ba467c474/Images/logo_javaland.png'
-        src={javaland}
-        css={logoStyles}
-      />
-      <div css={infoStyles}>
-        <h2 css={titleStyles}>Catch us at Javaland 2024!</h2>
-        <p css={descriptionStyles}>
-          Come say hello and tell us what you think about the new webforJ
-          Framework at the Javaland conference this April at Nürburgring.
-        </p>
-        <Link
-          className="button button--primary button--lg"
-          to="https://www.javaland.eu/de/home/"
-        >
-          More Information
-        </Link>
+    <div css={bannerStyles}>
+      <div css={announcementStyles}>
+        <img
+          src={javaland}
+          css={logoStyles}
+        />
+        <div css={infoStyles}>
+          <h2 css={titleStyles}>Catch us at Javaland 2024!</h2>
+          <p css={descriptionStyles}>
+            Come say hello and tell us what you think about the new webforJ
+            Framework at the Javaland conference this April at Nürburgring.
+          </p>
+          <Link
+            className="button button--primary button--lg"
+            to="https://www.javaland.eu/de/home/"
+          >
+            More Information
+          </Link>
+        </div>
+      </div>
+
+      <div css={announcementStyles}>
+        <img
+          // src='https://www.javaland.eu/_assets/21d419d44498ff574c15c53ba467c474/Images/logo_javaland.png'
+          src={devoxx}
+          css={logoStyles}
+        />
+        <div css={infoStyles}>
+          <h2 css={titleStyles}>Say hello at Devoxx 2024!</h2>
+          <p css={descriptionStyles}>
+            We'll be in London talking all about webforJ this year at a global
+            gathering of the developer community at .
+          </p>
+          <Link
+            className="button button--primary button--lg"
+            to="https://www.javaland.eu/de/home/"
+          >
+            More Information
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -276,9 +312,9 @@ function LITracking() {
     window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
     window._linkedin_data_partner_ids.push(window._linkedin_partner_id);
 
-    (function(l) {
+    (function (l) {
       if (!l) {
-        window.lintrk = function(a, b) {
+        window.lintrk = function (a, b) {
           window.lintrk.q.push([a, b]);
         };
         window.lintrk.q = [];
