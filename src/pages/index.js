@@ -274,8 +274,7 @@ function HomepageAnnoucement() {
         <div css={infoStyles}>
           <h2 css={titleStyles}>Say hello at Devoxx 2024!</h2>
           <p css={descriptionStyles}>
-            We'll be in London talking all about webforJ this year at a global
-            gathering of the developer community at .
+            We'll be at Devoxx 2024, a global gathering of the developer community in London talking all about webforJ - come say hi!
           </p>
           <Link
             className="button button--primary button--lg"
