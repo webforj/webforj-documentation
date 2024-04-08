@@ -279,7 +279,7 @@ function HomepageAnnoucement() {
           </p>
           <Link
             className="button button--primary button--lg"
-            to="https://www.javaland.eu/de/home/"
+            to="https://www.devoxx.co.uk/"
           >
             More Information
           </Link>
