@@ -234,18 +234,20 @@ function HomepageAnnoucement() {
 
   const bannerStyles = css`
     display: flex;
+    justify-content: center;
     border-radius: 10px;
     gap: 30px;
     margin: 0 5em;
-    background: #1b1b1d;
+    /* background: #1b1b1d; */
     @media screen and (max-width: 992px) {
       flex-direction: column;
     }
   `;
 
   return (
+    // <div css={bannerStyles}>
     <div css={bannerStyles}>
-      <div css={announcementStyles}>
+      {/* <div css={announcementStyles}>
         <img
           src={javaland}
           css={logoStyles}
@@ -263,7 +265,7 @@ function HomepageAnnoucement() {
             More Information
           </Link>
         </div>
-      </div>
+      </div> */}
 
       <div css={announcementStyles}>
         <img
