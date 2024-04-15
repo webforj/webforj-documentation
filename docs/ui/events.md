@@ -9,7 +9,7 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 import EventTable from '@site/src/components/DocsTools/EventTable';
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 
-<JavadocLink type="engine" location="org/dwcj/component/event/Event" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/event/Event" top='true'/>
 
 Components, whether custom or part of the framework, support event handling. You can add event listeners to capture various types of events, such as user interactions, changes in state, or other custom events. These event listeners can be used to trigger specific actions or behaviors in response to the events.
 
@@ -98,7 +98,7 @@ This approach minimizes the need to query the component for information, as the 
 
 ### Sample
 
-Below is a demonstration showing the addition of a <JavadocLink type="engine" location="org/dwcj/component/button/event/ButtonClickEvent"  code="true">ButtonClickEvent</JavadocLink> to a [`Button`](#). This  [`Button`](#) also uses information coming with the event's payload to display information on the screen.
+Below is a demonstration showing the addition of a <JavadocLink type="foundation" location="com/webforj/component/button/event/ButtonClickEvent"  code="true">ButtonClickEvent</JavadocLink> to a [`Button`](#). This  [`Button`](#) also uses information coming with the event's payload to display information on the screen.
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.buttondemos.ButtonEvent' 

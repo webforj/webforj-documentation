@@ -6,7 +6,7 @@ slug: event_options
 <!-- sidebar_class_name: sidebar--item__hidden -->
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<JavadocLink type="engine" location="org/dwcj/component/element/event/ElementEventOptions" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/element/event/ElementEventOptions" top='true'/>
 
 `ElementEventOptions` is a versatile webforJ tool designed to encapsulate and manage configuration settings for `Element` events within webforJ applications. As a container for various options, it allows developers to precisely dictate how events associated with elements should be processed.
 

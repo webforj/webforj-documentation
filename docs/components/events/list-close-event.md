@@ -7,7 +7,7 @@ slug: ListCloseEvent
 
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<JavadocLink type="engine" location="org/dwcj/component/event/ListCloseEvent" top='true' />
+<JavadocLink type="foundation" location="org/dwcj/component/event/ListCloseEvent" top='true' />
 
 This event inherits from the ListEvent class, and is triggered when the user closes a List-based component. It provides essential information about the selected item and allows developers to implement custom actions or responses when an item is chosen.
 

@@ -7,7 +7,7 @@ slug: ListEvent
 
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<JavadocLink type="engine" location="org/dwcj/component/event/ListEvent" top='true' />
+<JavadocLink type="foundation" location="org/dwcj/component/event/ListEvent" top='true' />
 
 This event is the base class for List-based component related events. inherited methods will provide essential information about the selected item and allow developers to implement custom actions or responses when an inherited event is fired.
 

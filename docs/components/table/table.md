@@ -15,7 +15,7 @@ import Chip from '@mui/material/Chip';
 
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-table" clickable={false} iconName='code'/>
 
-<JavadocLink type="engine" location="org/dwcj/component/button/Button" top='true'/>
+<JavadocLink type="table" location="com/webforj/component/table/Table" top='true'/>
 
 :::warning EXPERIMENTAL
 The table component is currently under heavy development and has not reached a stable status. However, any assistance testing would be appreciated.

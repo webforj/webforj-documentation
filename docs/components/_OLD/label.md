@@ -6,7 +6,7 @@ title: Label
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<JavadocLink type="engine" location="org/dwcj/component/label/Label" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/label/Label" top='true'/>
 
 The `Label` class is used to create a label object which shows static text. 
 
@@ -91,9 +91,9 @@ The `Label` class provides methods to add and remove event listeners for the fol
 
 | Events | Description |
 |:-:|-|
-|<JavadocLink type="engine" location="org/dwcj/component/event/MouseEnterEvent" code='true'>MouseEnterEvent</JavadocLink>|An event that is triggered when the mouse cursor enters the boundaries of a component. |
-|<JavadocLink type="engine" location="org/dwcj/component/event/MouseExitEvent" code='true'>MouseExitEvent</JavadocLink>|An event that is triggered when the mouse cursor exits the boundaries of a component. |
-|<JavadocLink type="engine" location="org/dwcj/component/event/RightMouseDownEvent" code='true'>RightMouseDownEvent</JavadocLink>|An event that is triggered when the user presses the right mouse button while the cursor is over a component.|
+|<JavadocLink type="foundation" location="com/webforj/component/event/MouseEnterEvent" code='true'>MouseEnterEvent</JavadocLink>|An event that is triggered when the mouse cursor enters the boundaries of a component. |
+|<JavadocLink type="foundation" location="com/webforj/component/event/MouseExitEvent" code='true'>MouseExitEvent</JavadocLink>|An event that is triggered when the mouse cursor exits the boundaries of a component. |
+|<JavadocLink type="foundation" location="com/webforj/component/event/RightMouseDownEvent" code='true'>RightMouseDownEvent</JavadocLink>|An event that is triggered when the user presses the right mouse button while the cursor is over a component.|
 
 
 ### Adding Events

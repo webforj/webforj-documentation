@@ -1,5 +1,5 @@
 ---
-sidebar_position: 26 
+sidebar_position: 40 
 title: Drawer
 ---
 
@@ -8,7 +8,7 @@ import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import AppLayoutViewer from '@site/src/components/DocsTools/AppLayoutViewer';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<JavadocLink type="engine" location="org/dwcj/component/drawer/Drawer" top='true'/>
+<JavadocLink type="drawer" location="com/webforj/component/drawer/Drawer" top='true'/>
 
 The drawer is a container that slides into the viewport to expose additional options and information. Multiple drawers can be created in an application, and they will be stacked above each other.
 

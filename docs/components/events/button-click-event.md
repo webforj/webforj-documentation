@@ -7,10 +7,10 @@ slug: ButtonClickEvent
 
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<JavadocLink type="engine" location="org/dwcj/component/button/event/ButtonClickEvent" top='true' />
+<JavadocLink type="foundation" location="com/webforj/component/button/event/ButtonClickEvent" top='true' />
 
 
-The `ButtonClickEvent` is an event type that is triggered when a user clicks on a <JavadocLink type="engine" location="org/dwcj/component/button/Button" code='true'>Button</JavadocLink> element. This event is essential for capturing user interactions with buttons on a web page, such as submitting forms, triggering actions, or navigating to different sections of the site.
+The `ButtonClickEvent` is an event type that is triggered when a user clicks on a <JavadocLink type="foundation" location="com/webforj/component/button/Button" code='true'>Button</JavadocLink> element. This event is essential for capturing user interactions with buttons on a web page, such as submitting forms, triggering actions, or navigating to different sections of the site.
 
 
 
@@ -18,8 +18,8 @@ The `ButtonClickEvent` is an event type that is triggered when a user clicks on 
 
 | Method | Description |
 |:-:|-|
-|`getX()`|Returns the X location of the mouse within the <JavadocLink type="engine" location="org/dwcj/component/button/Button" code='true'>Button</JavadocLink> component at the time the event was fired.|
-|`getY()`|Returns the Y location of the mouse within the <JavadocLink type="engine" location="org/dwcj/component/button/Button" code='true'>Button</JavadocLink> component at the time the event was fired.|
+|`getX()`|Returns the X location of the mouse within the <JavadocLink type="foundation" location="com/webforj/component/button/Button" code='true'>Button</JavadocLink> component at the time the event was fired.|
+|`getY()`|Returns the Y location of the mouse within the <JavadocLink type="foundation" location="com/webforj/component/button/Button" code='true'>Button</JavadocLink> component at the time the event was fired.|
 
 ## See Also
 

@@ -16,7 +16,7 @@ export default function JavadocLink( { type, location, top, children, code, suff
         if(!latestTag){
           latestTag = "23.05"
         }
-        setUrl("https://javadoc.io/doc/org.dwcj/dwcj-" + type + "/" + latestTag + "/" + location + ".html" + suffix)
+        setUrl("https://javadoc.io/doc/com.webforj/webforj-" + type + "/" + latestTag + "/" + location + ".html" + suffix)
       } catch (error) {
         console.error('Error fetching latest release:', error);
       }
@@ -26,7 +26,7 @@ export default function JavadocLink( { type, location, top, children, code, suff
     if(!suffix){
       suffix = ""
     }
-    setUrl("https://javadoc.io/doc/org.dwcj/dwcj-" + type + "/latest/" + location + ".html" + suffix)
+    setUrl("https://javadoc.io/doc/com.webforj/webforj-" + type + "/latest/" + location + ".html" + suffix)
   }, []);
 
   const mainStyles = css`

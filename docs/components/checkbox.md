@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 20
 title: CheckBox
 ---
 
@@ -15,7 +15,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-checkbox" clickable={false} iconName='code'/>
 
-<JavadocLink type="engine" location="org/dwcj/component/optioninput/CheckBox" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/optioninput/CheckBox" top='true'/>
 
 The `CheckBox` class creates a component that can be selected or deselected, and which displays its state to the user. When clicked, a check mark appears inside the box, to indicate an affirmative choice (on). When clicked again, the check mark disappears, indicating a negative choice (off).
 
@@ -45,9 +45,9 @@ The `CheckBox` is best used in scenarios where users need to make multiple selec
 
 The `CheckBox` class has three constructors:
 
-1. <JavadocLink type="engine" location="org/dwcj/component/checkbox/CheckBox" code='true' suffix='#<init>()'>Checkbox()</JavadocLink>: Creates an empty <code>CheckBox</code> in the unchecked state.
-2. <JavadocLink type="engine" location="org/dwcj/component/checkbox/CheckBox" code='true' suffix='#<init>(java.lang.String)'>Checkbox(String text)</JavadocLink>: Creates a <code>CheckBox</code> with an attached label in the unchecked state.
-3. <JavadocLink type="engine" location="org/dwcj/component/checkbox/CheckBox" code='true' suffix='#<init>(java.lang.String,boolean)'>Checkbox(String text boolean checked)</JavadocLink>: Creates a <code>CheckBox</code> with an attached label in either the checked or unchecked state, based on the boolean passed (<code>true</code> for checked, <code>false</code> for unchecked).
+1. <JavadocLink type="foundation" location="com/webforj/component/checkbox/CheckBox" code='true' suffix='#<init>()'>Checkbox()</JavadocLink>: Creates an empty <code>CheckBox</code> in the unchecked state.
+2. <JavadocLink type="foundation" location="com/webforj/component/checkbox/CheckBox" code='true' suffix='#<init>(java.lang.String)'>Checkbox(String text)</JavadocLink>: Creates a <code>CheckBox</code> with an attached label in the unchecked state.
+3. <JavadocLink type="foundation" location="com/webforj/component/checkbox/CheckBox" code='true' suffix='#<init>(java.lang.String,boolean)'>Checkbox(String text boolean checked)</JavadocLink>: Creates a <code>CheckBox</code> with an attached label in either the checked or unchecked state, based on the boolean passed (<code>true</code> for checked, <code>false</code> for unchecked).
 
 Here is an example of how to create a `CheckBox` object:
 
@@ -57,9 +57,9 @@ CheckBox enabled = new CheckBox("Enable Option");
 
 ## Text and Positioning
 
-Check boxes can utilize the <JavadocLink type="engine" location="org/dwcj/component/AbstractOptionInput" code='true' suffix='#setText(java.lang.String)'>setText(String text)</JavadocLink> method, which will be positioned near the check box according to the built-in <JavadocLink type="engine" location="org/dwcj/component/TextPosition" code='true' suffix=''>Position</JavadocLink>. 
+Check boxes can utilize the <JavadocLink type="foundation" location="com/webforj/component/AbstractOptionInput" code='true' suffix='#setText(java.lang.String)'>setText(String text)</JavadocLink> method, which will be positioned near the check box according to the built-in <JavadocLink type="foundation" location="com/webforj/component/TextPosition" code='true' suffix=''>Position</JavadocLink>. 
 
-Checkboxes have built-in functionality to set text to be displayed either to the right or left of the box. By default, the text will be displayed to the right of the component. Positioning of the text is supported by use of the  <JavadocLink type="engine" location="org/dwcj/component/TextPosition" code='true' suffix=''>Position</JavadocLink> enum. Show below are the two settings: <br/>
+Checkboxes have built-in functionality to set text to be displayed either to the right or left of the box. By default, the text will be displayed to the right of the component. Positioning of the text is supported by use of the  <JavadocLink type="foundation" location="com/webforj/component/TextPosition" code='true' suffix=''>Position</JavadocLink> enum. Show below are the two settings: <br/>
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.checkboxdemos.CheckboxHorizontalText' 
@@ -90,7 +90,7 @@ height = '150px'
 ## Styling
 
 ### Expanses
-The following <JavadocLink type="engine" location="org/dwcj/component/Expanse"> Expanses values </JavadocLink> allow for quick styling without using CSS.
+The following <JavadocLink type="foundation" location="com/webforj/component/Expanse"> Expanses values </JavadocLink> allow for quick styling without using CSS.
 Expanses are supported by use of the `Expanse` enum class. Below are the expanses supported for the checkbox component: <br/>
 
 <ComponentDemo 

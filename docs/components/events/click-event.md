@@ -7,7 +7,7 @@ slug: ListClickEvent
 
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<JavadocLink type="engine" location="org/dwcj/component/event/ListClickEvent" top='true' />
+<JavadocLink type="foundation" location="com/webforj/component/event/ListClickEvent" top='true' />
 
 This event is triggered when the user clicks an item from a List-based component. It provides essential information about the selected item and allows developers to implement custom actions or responses when an item is chosen.
 

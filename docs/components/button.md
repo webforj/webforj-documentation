@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 10
 title: Button
 ---
 
@@ -16,7 +16,7 @@ import Chip from '@mui/material/Chip';
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-button" clickable={false} iconName='code'/>
 
 
-<JavadocLink type="engine" location="org/dwcj/component/button/Button" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/button/Button" top='true'/>
 
 A `Button` component is a fundamental user interface element used in application development to create interactive elements that trigger actions or events when clicked or activated. It serves as a clickable element that users can interact with to perform various actions within an application or website. 
 
@@ -60,9 +60,9 @@ The `Button` class is a versatile component that is commonly used in various sit
 
 The `Button` class has three constructors:
 
-1. <JavadocLink type="engine" location="org/dwcj/component/button/Button" code='true' suffix='#<init>()'>Button()</JavadocLink>: Creates an empty <code>Button</code> without any text inside the component.
-2. <JavadocLink type="engine" location="org/dwcj/component/button/Button" code='true' suffix='#<init>(java.lang.String)'>Button(String text)</JavadocLink>: Creates a <code>Button</code> with text inside the component.
-3. <JavadocLink type="engine" location="org/dwcj/component/button/Button" code='true' suffix='#<init>(java.lang.String,org.dwcj.component.event.EventListener)'>Button(String text, EventListener{"<ButtonClickEvent>"} onClickListener)</JavadocLink>: Creates a <code>Button</code> with text inside the component, and an <JavadocLink type="engine" location="org/dwcj/component/event/EventListener" code='true'>EventListener</JavadocLink> for a <JavadocLink type="engine" location="org/dwcj/component/button/event/ButtonClickEvent" code='true'>ButtonClickEvent</JavadocLink> which fires when a user clicks on the <code>Button</code>.
+1. <JavadocLink type="foundation" location="com/webforj/component/button/Button" code='true' suffix='#<init>()'>Button()</JavadocLink>: Creates an empty <code>Button</code> without any text inside the component.
+2. <JavadocLink type="foundation" location="com/webforj/component/button/Button" code='true' suffix='#<init>(java.lang.String)'>Button(String text)</JavadocLink>: Creates a <code>Button</code> with text inside the component.
+3. <JavadocLink type="foundation" location="com/webforj/component/button/Button" code='true' suffix='#<init>(java.lang.String,org.dwcj.component.event.EventListener)'>Button(String text, EventListener{"<ButtonClickEvent>"} onClickListener)</JavadocLink>: Creates a <code>Button</code> with text inside the component, and an <JavadocLink type="foundation" location="com/webforj/component/event/EventListener" code='true'>EventListener</JavadocLink> for a <JavadocLink type="foundation" location="com/webforj/component/button/event/ButtonClickEvent" code='true'>ButtonClickEvent</JavadocLink> which fires when a user clicks on the <code>Button</code>.
 
 Here is an example of how to create a `Button` object:
 
@@ -105,7 +105,7 @@ javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/co
 
 <br />
 
-Disabling a button can be done at any time in the code by using the <JavadocLink type="engine" location="org/dwcj/component/HasEnable" code='true'>setEnabled(boolean enabled)</JavadocLink> function. For added convenience, a button can also be disabled when clicked using the built-in <JavadocLink type="engine" location="org/dwcj/component/button/Button" code='true' suffix='#setDisableOnClick(java.lang.Boolean)'>setDisabledOnClick(boolean enabled)</JavadocLink> function.
+Disabling a button can be done at any time in the code by using the <JavadocLink type="foundation" location="com/webforj/component/HasEnable" code='true'>setEnabled(boolean enabled)</JavadocLink> function. For added convenience, a button can also be disabled when clicked using the built-in <JavadocLink type="foundation" location="com/webforj/component/button/Button" code='true' suffix='#setDisableOnClick(java.lang.Boolean)'>setDisabledOnClick(boolean enabled)</JavadocLink> function.
 
 In some applications, clicking a button triggers a long-running action. In most cases, the application might want to ensure that only a single click is processed.  This can be an issue in high-latency environments when the user clicks the button multiple times before the application has had a chance to start processing the resulting action. 
 
@@ -117,7 +117,7 @@ Disabling on click not only helps optimize the processing of actions, but also p
 
 ### Themes
 
-`Button` components come with <JavadocLink type="engine" location="org/dwcj/component/button/ButtonTheme">14 discrete themes </JavadocLink> built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to buttons to change their appearance and visual presentation. They offer a quick and consistent way to customize the look of buttons throughout an application. 
+`Button` components come with <JavadocLink type="foundation" location="com/webforj/component/button/ButtonTheme">14 discrete themes </JavadocLink> built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to buttons to change their appearance and visual presentation. They offer a quick and consistent way to customize the look of buttons throughout an application. 
 
 While there are many use cases for each of the various themes, some examples uses are:
 
@@ -140,7 +140,7 @@ height='175px'
 />
 
 ### Expanses
-The following <JavadocLink type="engine" location="org/dwcj/component/Expanse"> Expanses values </JavadocLink> allow for quick styling without using CSS. This allows for manipulation of the Button's dimensions without having to explicitly set it using any styling. In addition to simplifying styling, it also helps create and maintain a uniformity in your application. The default `Button` expanse is `Expanse.MEDIUM`.
+The following <JavadocLink type="foundation" location="com/webforj/component/Expanse"> Expanses values </JavadocLink> allow for quick styling without using CSS. This allows for manipulation of the Button's dimensions without having to explicitly set it using any styling. In addition to simplifying styling, it also helps create and maintain a uniformity in your application. The default `Button` expanse is `Expanse.MEDIUM`.
 
 Different sizes are often appropriate for different uses:
   - **Larger** expanse values are suited to buttons which should grab attention, emphasize functionality or are integral to the core functionality of an application or page.

@@ -7,7 +7,7 @@ slug: ModifyEvent
 
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<JavadocLink type="engine" location="org/dwcj/component/event/ModifyEvent" top='true' />
+<JavadocLink type="foundation" location="org/dwcj/component/event/ModifyEvent" top='true' />
 
 An event that is fired when a component is edited. It provides information about the modified text of the component that is sent as part of the event payload.
 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 65 
+sidebar_position: 90 
 title: Navigator
 ---
 
@@ -20,7 +20,7 @@ import Chip from '@mui/material/Chip';
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-navigator" href="https://basishub.github.io/basis-next/#/web-components/dwc-navigator" clickable={false} iconName='code'/>
 
 
-<JavadocLink type="engine" location="com/webforj/component/navigator/Navigator" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/navigator/Navigator" top='true'/>
 
 
 The `Navigator` component is a customizable pagination component designed to navigate through data sets, supporting multiple layouts. You can configure it to display various navigation controls such as first, last, next, and previous buttons, along with page numbers or a quick jump field depending on the layout setting. 

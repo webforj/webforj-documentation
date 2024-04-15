@@ -13,7 +13,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-field" clickable={false} iconName='code'/>
 
-<JavadocLink type="engine" location="org/dwcj/component/field/PasswordField" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/field/PasswordField" top='true'/>
 
 :::success **Important**
 The `PasswordField` class is a Field component, and as such shares all of the commonalities belonging to a Field. Please refer to the **[Field documentation page](/docs/components/fields)** for an overview of Field properties, events, and other important information.

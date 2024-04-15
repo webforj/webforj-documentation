@@ -1,5 +1,5 @@
 ---
-sidebar_position: 100
+sidebar_position: 110
 title: RadioButton
 slug: radiobutton
 ---
@@ -15,7 +15,7 @@ import Chip from '@mui/material/Chip';
 
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-radio" clickable={false} iconName='code'/>
 
-<JavadocLink type="engine" location="org/dwcj/component/optioninput/RadioButton" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/optioninput/RadioButton" top='true'/>
 
 The `RadioButton` class creates an object that can be selected or deselected, and which displays its state to the user. By convention, only one radio button in a group can be selected at a time. Radio buttons are commonly used when mutually exclusive options are available, allowing the user to choose a single option from a set of choices.
 

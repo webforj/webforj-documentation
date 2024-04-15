@@ -13,7 +13,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-combobox" clickable={false} iconName='code'/>
 
-<JavadocLink type="engine" location="org/dwcj/component/list/ComboBox" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" top='true'/>
 
 The `ComboBox` component is a user interface element designed to present users with a list of options or choices, as well as a field for entering their own custom values. Users can select a single option from this list, typically by clicking the `ComboBox`, which triggers the display of a dropdown list containing available choices, or type in a custom value. Users can also interact with the `ComboBox` with the arrow keys. When a user makes a selection, the chosen option is then displayed in the `ComboBox`. 
 
@@ -43,14 +43,14 @@ The ComboBox component is a versatile input element that combines the features o
 
 ## Constructors
 
-1. <JavadocLink type="engine" location="org/dwcj/component/list/ComboBox" code='true' suffix='#<init>()'>ComboBox()</JavadocLink>: Constructs a new `ComboBox` without a label.
-2. <JavadocLink type="engine" location="org/dwcj/component/list/ComboBox" code='true' suffix='#<init>(java.lang.String)'>ComboBox(String label)</JavadocLink>: Constructs a new `ComboBox` with the specified label.
-3. <JavadocLink type="engine" location="org/dwcj/component/list/ComboBox" code='true' suffix='#<init>(java.lang.String,org.dwcj.component.event.ComponentEventListener)'>ComboBox(String label, ComponentEventListener< ListSelectEvent> selectListener)</JavadocLink>: Constructs a new `ComboBox` with the given label and a listener to handle item selection events.
+1. <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#<init>()'>ComboBox()</JavadocLink>: Constructs a new `ComboBox` without a label.
+2. <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#<init>(java.lang.String)'>ComboBox(String label)</JavadocLink>: Constructs a new `ComboBox` with the specified label.
+3. <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#<init>(java.lang.String,org.dwcj.component.event.ComponentEventListener)'>ComboBox(String label, ComponentEventListener< ListSelectEvent> selectListener)</JavadocLink>: Constructs a new `ComboBox` with the given label and a listener to handle item selection events.
 
 
 ## Custom Value
 
-Changing the custom value property allows control over whether or not a user is able to change the value in the `ComboBox` component's input field. If `true`, which is the default, then a user can change the value. If set to `false`, the user won't be able to change the value. This can be set using the <JavadocLink type="engine" location="org/dwcj/component/list/ComboBox" code='true' suffix='#setAllowCustomValue(boolean)'>setAllowCustomValue()</JavadocLink> method.
+Changing the custom value property allows control over whether or not a user is able to change the value in the `ComboBox` component's input field. If `true`, which is the default, then a user can change the value. If set to `false`, the user won't be able to change the value. This can be set using the <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#setAllowCustomValue(boolean)'>setAllowCustomValue()</JavadocLink> method.
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.comboboxdemos.ComboBoxCustomValue' 
@@ -61,7 +61,7 @@ height = '200px'
 
 ## Placeholder
 
-A placeholder can be set for a `ComboBox` which will display in the text field of the component when it is empty to prompt users for the desired entry in the field. This can be done using the <JavadocLink type="engine" location="org/dwcj/component/list/ComboBox" code='true' suffix='#setPlaceholder(java.lang.String)'>setPlaceholder()</JavadocLink> method.
+A placeholder can be set for a `ComboBox` which will display in the text field of the component when it is empty to prompt users for the desired entry in the field. This can be done using the <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#setPlaceholder(java.lang.String)'>setPlaceholder()</JavadocLink> method.
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.comboboxdemos.ComboBoxPlaceholder' 
@@ -72,7 +72,7 @@ height = '200px'
 
 ## Dropdown Type
 
-Using the <JavadocLink type="engine" location="org/dwcj/component/list/DwcSelectDropdown" code='true' suffix='#setDropdownType(java.lang.String)'>setDropdownType()</JavadocLink> method will assign a value to the `type` attribute of a `ComboBox`, and a corresponding value for the `data-dropdown-for` attribute in the dropdown of the `ComboBox`. This is helpful for styling, as the dropdown is taken out of its current position in the DOM and relocated to the end of the page body when opened.
+Using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setDropdownType(java.lang.String)'>setDropdownType()</JavadocLink> method will assign a value to the `type` attribute of a `ComboBox`, and a corresponding value for the `data-dropdown-for` attribute in the dropdown of the `ComboBox`. This is helpful for styling, as the dropdown is taken out of its current position in the DOM and relocated to the end of the page body when opened.
 
 This detachment creates a situation where directly targeting the
 dropdown using CSS or shadow part selectors from the parent component becomes challenging, unless you make use of the dropdown type attribute.
@@ -89,7 +89,7 @@ height='250px'
 
 ## Max Row Count
 
-By default, the number of rows displayed in the dropdown of a `ComboBox` will be increased to fit the content. However, using the <JavadocLink type="engine" location="org/dwcj/component/list/DwcSelectDropdown" code='true' suffix='#setMaxRowCount(int)'>setMaxRowCount()</JavadocLink> method allows for control over how many items are displayed.
+By default, the number of rows displayed in the dropdown of a `ComboBox` will be increased to fit the content. However, using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setMaxRowCount(int)'>setMaxRowCount()</JavadocLink> method allows for control over how many items are displayed.
 
 :::caution
 Using a number that is less than or equal to 0 will result in unsetting this property.
@@ -104,7 +104,7 @@ height='250px'
 
 ## Opening Dimensions
 
-The `ComboBox` component has methods that allow manipulation of the dropdown dimensions. The **maximum height** and **minimum width** of the dropdown can be set using the <JavadocLink type="engine" location="org/dwcj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenHeight(int)'>setOpenHeight()</JavadocLink> and <JavadocLink type="engine" location="org/dwcj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenWidth(int)'>setOpenWidth()</JavadocLink> methods, respectively. 
+The `ComboBox` component has methods that allow manipulation of the dropdown dimensions. The **maximum height** and **minimum width** of the dropdown can be set using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenHeight(int)'>setOpenHeight()</JavadocLink> and <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenWidth(int)'>setOpenWidth()</JavadocLink> methods, respectively. 
 
 :::tip
 Passing a `String` value to either of these methods will allow for [any valid CSS unit](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units) to be applied, such as pixels, viewport dimensions, or other valid rules. Passing an `int` will set the value passed in pixels.

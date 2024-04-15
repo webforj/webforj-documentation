@@ -1,5 +1,5 @@
 ---
-sidebar_position: 90
+sidebar_position: 100
 title: ProgressBar
 ---
 
@@ -7,7 +7,7 @@ import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<JavadocLink type="engine" location="org/dwcj/component/progressbar/ProgressBar" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/progressbar/ProgressBar" top='true'/>
 
 ### Text and String Painting
 

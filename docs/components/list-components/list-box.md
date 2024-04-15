@@ -13,7 +13,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-listbox" clickable={false} iconName='code'/>
 
-<JavadocLink type="engine" location="org/dwcj/component/list/ListBox" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/list/ListBox" top='true'/>
 
 The `ListBox` component is a user interface element designed to display a scrollable list of objects and allows users to select single or multiple items from the list. Users can also interact with the `ListBox` with the arrow keys. 
 
@@ -41,13 +41,13 @@ height = '250px'
 
 ## Constructors
 
-1. <JavadocLink type="engine" location="org/dwcj/component/list/ListBox" code='true' suffix='#<init>()'>ListBox()</JavadocLink>: Constructs a new `ListBox` without a label.
-2. <JavadocLink type="engine" location="org/dwcj/component/list/ListBox" code='true' suffix='#<init>(java.lang.String)'>ListBox(String label)</JavadocLink>: Constructs a new `ListBox` with the specified label.
-3. <JavadocLink type="engine" location="org/dwcj/component/list/ListBox" code='true' suffix='#<init>(java.lang.String,org.dwcj.component.event.ComponentEventListener)'>ListBox(String label, ComponentEventListener< ListSelectEvent> selectListener)</JavadocLink>: Constructs a new `ListBox` with the given label and a listener to handle item selection events.
+1. <JavadocLink type="foundation" location="com/webforj/component/list/ListBox" code='true' suffix='#<init>()'>ListBox()</JavadocLink>: Constructs a new `ListBox` without a label.
+2. <JavadocLink type="foundation" location="com/webforj/component/list/ListBox" code='true' suffix='#<init>(java.lang.String)'>ListBox(String label)</JavadocLink>: Constructs a new `ListBox` with the specified label.
+3. <JavadocLink type="foundation" location="com/webforj/component/list/ListBox" code='true' suffix='#<init>(java.lang.String,org.dwcj.component.event.ComponentEventListener)'>ListBox(String label, ComponentEventListener< ListSelectEvent> selectListener)</JavadocLink>: Constructs a new `ListBox` with the given label and a listener to handle item selection events.
 
 ## Selection Options
 
-By default, the list box is configured to allow selection of a single item at a time. However, this can be easily configured with a built-in method which allows users to select multiple items ***using the `Shift` key*** for contiguous entry selection and ***`Control` (Windows) or `Command` (Mac) key*** for separate, multiple item selection. Use the <JavadocLink type="engine" location="org/dwcj/component/list/ListBox" code='true' suffix='#setSelectionMode(org.dwcj.component.list.MultipleSelectableList.SelectionMode)'>setSelectionMode()</JavadocLink> function to change this property. True will enable multiple selection, false disables it. 
+By default, the list box is configured to allow selection of a single item at a time. However, this can be easily configured with a built-in method which allows users to select multiple items ***using the `Shift` key*** for contiguous entry selection and ***`Control` (Windows) or `Command` (Mac) key*** for separate, multiple item selection. Use the <JavadocLink type="foundation" location="com/webforj/component/list/ListBox" code='true' suffix='#setSelectionMode(org.dwcj.component.list.MultipleSelectableList.SelectionMode)'>setSelectionMode()</JavadocLink> function to change this property. True will enable multiple selection, false disables it. 
 
 Additionally, the arrow keys can be used to navigate the `ListBox`, and typing a letter key while the `ListBox` has focus will select the option that begins with that letter, or cycle through the options beginning with that letter should multiple options exist.
 

@@ -83,7 +83,7 @@ Finally, you can set the default class within the Enterprise Manager by adding t
 
 `class=your.class.name.here`
 
-Replace <b>your.class.name.here</b> with the full class name of your App (implementing [org.dwcj.engine.App](https://javadoc.io/doc/org.dwcj/dwcj-engine/latest/org/dwcj/App.html)), as it appears on the list of classes on the welcome page.
+Replace <b>your.class.name.here</b> with the full class name of your App (implementing [org.dwcj.engine.App](https://javadoc.io/doc/org.dwcj/dwcj-engine/latest/com/webforj/App.html)), as it appears on the list of classes on the welcome page.
 
 Once any of these options have been completed, the specified class will always load instead of displaying a list of available classes.
 

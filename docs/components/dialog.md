@@ -1,5 +1,5 @@
 ---
-sidebar_position: 25 
+sidebar_position: 30 
 title: Dialog
 ---
 
@@ -12,7 +12,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-dialog" clickable={false} iconName='code'/>
 
-<JavadocLink type="engine" location="org/dwcj/component/dialog/Dialog" top='true'/>
+<JavadocLink type="dialog" location="com/webforj/component/dialog/Dialog" top='true'/>
 
 The webforJ dialog component is built to allow a developer to quickly and easily display a dialog on their application, for instances such as a login menu or information box.
 
@@ -126,7 +126,7 @@ The `Dialog` can be set to enter full screen mode. When full screen is enabled, 
 
 ### Themes
 
-`Dialog` components come with <JavadocLink type="engine" location="org/dwcj/component/dialog/Dialog.Theme.html">7 discrete themes </JavadocLink> built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to buttons to change their appearance and visual presentation. They offer a quick and consistent way to customize the look of buttons throughout an application. 
+`Dialog` components come with <JavadocLink type="foundation" location="com/webforj/component/dialog/Dialog.Theme.html">7 discrete themes </JavadocLink> built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to buttons to change their appearance and visual presentation. They offer a quick and consistent way to customize the look of buttons throughout an application. 
 
 While there are many use cases for each of the various themes, some examples uses are:
 

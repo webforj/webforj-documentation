@@ -8,7 +8,7 @@ pagination_prev: null
 
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<JavadocLink type="engine" location="org/dwcj/component/event/Event" top='true' />
+<JavadocLink type="foundation" location="com/webforj/component/event/Event" top='true' />
 
 This class is the base class for all events fired by the components. It is extended by the other events implemented by various components, and can also be extended to create custom events.
 

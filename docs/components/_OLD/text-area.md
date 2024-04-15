@@ -8,7 +8,7 @@ import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<JavadocLink type="engine" location="org/dwcj/component/textarea/TextArea" top='true'/>
+<JavadocLink type="foundation" location="org/dwcj/component/textarea/TextArea" top='true'/>
 
 ### Labeling
 

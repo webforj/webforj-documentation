@@ -7,7 +7,7 @@ slug: element
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<JavadocLink type="engine" location="org/dwcj/component/element/Element" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/element/Element" top='true'/>
 
 webforJ developers have the option of choosing not only from the rich library of components provided, but also integrating components from elsewhere. To facilitate this, the `Element` component can be used to simplify the integration of anything from simple HTML elements, to more complex custom web components. 
 
