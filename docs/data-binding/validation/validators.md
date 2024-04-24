@@ -5,11 +5,11 @@ title: Validators
 
 Validators checks data within your UI components against defined constraints before committing this data to the data model. You can apply validators to ensure that data meets certain criteria, such as being within a specified range, matching a pattern, or not being empty.
 
-You configure validations per binding, allowing specific rules to apply to each data point individually. This setup ensures that each piece of data undergoes validation according to its own requirements.
+Validations are configured per binding, allowing specific rules to apply to each data point individually. This setup ensures that each piece of data undergoes validation according to its own requirements.
 
 ## Adding validators
 
-You add validators to a binding using the `useValidator` method on the `BindingBuilder`.
+Add validators to a binding using the `useValidator` method on the `BindingBuilder`.
 
 ```java
 context.bind(nameTextField, "name")
@@ -18,10 +18,10 @@ context.bind(nameTextField, "name")
     .add();
 ```
 
-In the example preceding, two validators verify that the name isn't empty and that it contains at least three characters.
+In the example above, two validators verify that the name isn't empty and that it contains at least three characters.
 
 :::tip Validators processing
-There is no limit to the number of validators you can add per binding, The binding applies the validators by the order of insertion and it stops at the first violation.
+There is no limit to the number of validators you can add per binding. The binding applies the validators by the order of insertion, and stops at the first violation.
 :::
 
 ## Implementing validators
@@ -75,7 +75,7 @@ context.bind(emailField, "email")
     .add();
 ```
 
-In the example preceding, the code applies the `EmailValidator` to an email field with a custom error message specifically tailored for that field. This allows for a more directed and helpful user experience if the validation fails.
+In the example above, the code applies the `EmailValidator` to an email field with a custom error message specifically tailored for that field. This allows for a more directed and helpful user experience if the validation fails.
 
 :::tip Understanding `Validator.from`
 The `Validator.from` method wraps a passed validator with a new one, allowing you to specify a custom error message in case the validator doesn't support customized messages. This technique is particularly useful when you need to apply the same validation logic across multiple components but with distinct, context-specific error messages for each instance.

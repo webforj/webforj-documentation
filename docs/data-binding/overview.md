@@ -106,13 +106,13 @@ public class Hero {
 
 ## Key features
 
-- **Bidirectional Binding:**  supports bidirectional data binding, allowing changes in the data model to update the UI, and user interactions in the UI to update the data model.
+- **Bidirectional Binding:**  Supports bidirectional data binding, allowing changes in the data model to update the UI, and user interactions in the UI to update the data model.
 
 - **Validation Support:** Integrates comprehensive validation mechanisms that you can customize and extended. Developers can implement their own validation rules or use existing validation frameworks like Jakarta Validation to ensure data integrity before updating the model.
 
 - **Extensibility:** Can be easily extended to support different types of UI components, data transformations, and complex validation scenarios.
 
-- **Annotation-Driven Configuration:**  utilizes annotations to minimize boilerplate code, making the bindings between UI components and data models declarative and easy to manage.
+- **Annotation-Driven Configuration:**  Utilizes annotations to minimize boilerplate code, making the bindings between UI components and data models declarative and easy to manage.
 
 # Topics
 

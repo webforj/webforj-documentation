@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 <!-- vale on -->
 
-By default, bindings automatically revalidate components when users modify their data, such as entering new text, checking a checkbox, or selecting a new option in a radio button. If you prefer to turn off automatic validations and only report them when writing to the data model, you can configure the binding to turn off  them. This gives you control over when and how validations occur, allowing you to manage validations according to specific app needs or user interactions.
+By default, bindings automatically revalidate components when users modify their data, such as entering new text, checking a checkbox, or selecting a new option in a radio button. If you prefer to turn off automatic validations and only report them when writing to the data model, you can configure the binding to turn them off. This gives you control over when and how validations occur, allowing you to manage validations according to specific app needs or user interactions.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);

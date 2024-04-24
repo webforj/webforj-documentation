@@ -49,7 +49,7 @@ public class HeroRegistration extends App {
 }
 ```
 
-In the example preceding, the UI field name is `nameField`, but the bean property is `name`. You can annotate the UI field with the bean property name to ensure proper binding.
+In the example above, the UI field name is `nameField`, but the bean property is `name`. You can annotate the UI field with the bean property name to ensure proper binding.
 
 ### `BindingExclude` annotation
 
@@ -70,7 +70,7 @@ public class HeroRegistration extends App {
 
 ### `UseValidator` annotation
 
-Use the `UseValidator` annotation to declare validators that enforce additional validation rules during binding. validators applied in the order you specify them.
+Use the `UseValidator` annotation to declare validators that enforce additional validation rules during binding. Validators apply in the order you specify them.
 
 ```java
 public class UserRegistration extends App {
@@ -82,7 +82,7 @@ public class UserRegistration extends App {
 
 ### `UseTransformer` annotation
 
-Use the `UseTransformer` annotation to declare a transformer class directly on a UI field. The `BindingContext` can automatically applies the specified transformer.
+Use the `UseTransformer` annotation to declare a transformer class directly on a UI field. The `BindingContext` automatically applies the specified transformer.
 
 ```java
 public class UserRegistration extends App {
@@ -107,7 +107,7 @@ public class UserRegistration extends App {
 
 ### `BindingRequired` annotation
 
-Use the `BindingReadOnly` to mark a binding as required. see also [Required binding detections](#required-binding-detections)
+Use the `BindingReadOnly` to mark a binding as required. See also [required binding detections](#required-binding-detections).
 
 
 ```java
@@ -156,7 +156,7 @@ While `observe` increases the interactivity of applications, it's important to u
 
 ## Required binding detections
 
-When you mark a binding as required, it'll mark the component as required, provided the component supports this state through the `RequiredAware` interface. The binding doesn't enforce this state by itself but rather sets it on the component when applicable.
+When you mark a binding as required, it marks the component as required, provided the component supports this state through the `RequiredAware` interface. The binding doesn't enforce this state by itself, but rather sets it on the component when applicable.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class, true);
@@ -168,7 +168,7 @@ context
 
  When utilizing [Jakarta annotations](./validation/jakarta-validation.md), the binding can be automatically detect required state based on the presence of any of the following annotations on bean properties:
 
-1. `@NotNull`, 
-2. `@NotEmpty`, 
+1. `@NotNull` 
+2. `@NotEmpty` 
 3. `@NotBlank`
-4. `@Size`.
+4. `@Size`

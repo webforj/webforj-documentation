@@ -21,10 +21,10 @@ context.bind(salaryField, "salary")
     .add();
 ```
 
-In the example preceding, the code configures a `CurrencyTransformer` to handle conversions between the model data type (for example, BigDecimal) and the UI representation (for example, a formatted string).
+In the example above, the code configures a `CurrencyTransformer` to handle conversions between the model data type (for example, BigDecimal) and the UI representation (for example, a formatted string).
 
 :::info
-Each binding associates with a single transformer. If transforming a value requires multiple steps, it's recommend to implement your one transformer for the multiple steps.
+Each binding is associated with a single transformer. If transforming a value requires multiple steps, it's recommend to implement your own transformer for these steps.
 :::
 
 ## Implementing a transformer
@@ -81,7 +81,7 @@ In the `bind` method, specifying the type of the bean property as the third para
 
 ## Simplifying transforms with `Transformer.of`
 
-It's possible to simplify the implementation of such transformations using the `Transformer.of` method provided by the `Transformer`
+It's possible to simplify the implementation of such transformations using the `Transformer.of` method provided by the `Transformer`. This method is syntactic sugar, and allows you to write a method that handles transformations inline, rather than passing a class implementing the `Transformer` interface. 
 
 In the following example , the code handles a checkbox interaction within a travel app where users can opt for additional services like car rental. The checkbox state `boolean` needs to be transformed into a string representation `"yes"` or `"no"` that the backend model uses.
 

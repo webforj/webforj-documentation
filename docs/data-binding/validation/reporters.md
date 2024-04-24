@@ -119,4 +119,4 @@ public class User {
 </TabItem>
 </Tabs>
 
-In the preceding code, the email binding incorporates a custom reporter that directly displays validation messages beneath the input field. This setup utilizes the `useReporter` method, which configures how the binding handles and presents validation results. This method effectively links the validation logic to the user interface, ensuring that any validation issues are immediately visible to the user, enhancing the form's interactivity and user experience.
+In the above code, the email binding incorporates a custom reporter that directly displays validation messages beneath the input field. This setup utilizes the `useReporter` method, which configures how the binding handles and presents validation results. This method effectively links the validation logic to the user interface, ensuring that any validation issues are immediately visible to the user, enhancing the form's interactivity and user experience.

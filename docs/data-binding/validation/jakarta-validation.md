@@ -3,13 +3,13 @@ sidebar_position: 6
 title: Jakarta Validation
 ---
 
-The [Java Bean Validation](https://beanvalidation.org/) is widely recognized as the standard for integrating validation logic into Java applications. It utilizes a uniform approach to validation by allowing developers to annotate domain model properties with declarative validation constraints. These constraints are enforced at runtime, with options for both built-in and custom-defined rules.
+[Java Bean Validation](https://beanvalidation.org/) is widely recognized as the standard for integrating validation logic into Java applications. It utilizes a uniform approach to validation by allowing developers to annotate domain model properties with declarative validation constraints. These constraints are enforced at runtime, with options for both built-in and custom-defined rules.
 
-webforJ seamlessly integrates with Bean Validation through the `JakartaValidator` adapter, providing robust support right out of the box.
+webforJ seamlessly integrates with Bean Validation through the `JakartaValidator` adapter, providing robust support out of the box.
 
 ## Installation
 
-it's necessary to include a compatible implementation, such as [Hibernate Validator](https://hibernate.org/validator/), in your classpath. If your environment doesn't come with this implementation by default, you can add it manually using the following Maven dependencies:
+It's necessary to include a compatible implementation, such as [Hibernate Validator](https://hibernate.org/validator/), in your classpath. If your environment doesn't come with this implementation by default, you can add it manually by using the following Maven dependencies:
 
 ```xml
 <dependency>
@@ -26,7 +26,7 @@ it's necessary to include a compatible implementation, such as [Hibernate Valida
 
 ## The `JakartaValidator`
 
-The `JakartaValidator` class serves as an adapter, bridging the webforJ binding context with Jakarta Validation. This integration enables the app of complex validation rules directly via annotations in the bean class.
+The `JakartaValidator` class serves as an adapter, bridging the webforJ binding context with Jakarta Validation. This integration enables the use of complex validation rules directly via annotations in the bean class.
 
 ### Activating `JakartaValidator`
 

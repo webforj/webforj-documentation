@@ -109,7 +109,7 @@ submit.onClick(event -> {
 });
 ```
 
-In the code preceding, when the user clicks the submit button, the `write` method is called. 
+In the code above, when the user clicks the submit button, the `write` method is called. 
 It performs all configured validations and, if the data passes all checks, updates the `Hero` object 
 with new values from the bound components. 
 If the data is valid, you might save to a database or processed further. If there are validation errors, 
@@ -117,7 +117,7 @@ you should handle appropriately, typically by displaying error messages to the u
 
 
 :::tip Validation Errors Reporting
-All core components of webforJ have a default configurations to automatically report validation errors either inline or through a popover. You can customize This behavior using [Reporters](./validation/reporters.md).
+All core components of webforJ have default configurations to automatically report validation errors, either inline or through a popover. You can customize this behavior using [Reporters](./validation/reporters.md).
 :::
 
 <!-- vale off -->
@@ -126,12 +126,12 @@ All core components of webforJ have a default configurations to automatically re
 
 In certain scenarios, you may want your app to display data without allowing the end-user to modify it directly through the UI. 
 This is where read-only data bindings become crucial. webforJ supports the configuration of bindings to be read-only, ensuring that 
-you can display the data but not edited it through the bound UI components.
+you can display data, but not edit it through bound UI components.
 
 ### Configuring readonly bindings
 
-To set up a read-only binding, you can configure the binding to turn off the UI component input or ignore. 
-This ensures that the data remains unchanged from the UI perspective, while you still update programmatically if needed.
+To set up a read-only binding, you can configure the binding to turn off or ignore UI component input. 
+This ensures that the data remains unchanged from the UI perspective, while still updating programmatically if needed.
 
 ```java
 // Configuring a text field to be read-only in the binding context
