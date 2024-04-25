@@ -1,5 +1,4 @@
 ---
-sidebar_position: 140
 title: Splitter
 ---
 

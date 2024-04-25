@@ -122,8 +122,8 @@ const config = {
             docid: 'components',
             position: 'left',
             label: 'Components',
-            to: '/docs/components/home',
-            activeBasePath: '/docs/components'
+            to: '/docs/category/components',
+            activeBasePath: '/docs/category/components'
           },
           // {to: '/live_demo', label: 'Live Demo', position: 'left'},
           // {to: '/tutorials/intro', label: 'Tutorials', position: 'left'},

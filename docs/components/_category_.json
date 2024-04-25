@@ -2,7 +2,6 @@
   "label": "Components",
   "position": 6,
   "link": {
-    "type": "doc",
-    "id" : "home"
+    "type": "generated-index"
   }
 }

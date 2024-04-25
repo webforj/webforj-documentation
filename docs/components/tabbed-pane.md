@@ -1,5 +1,4 @@
 ---
-sidebar_position: 150
 title: TabbedPane
 slug: tabbedpane
 ---

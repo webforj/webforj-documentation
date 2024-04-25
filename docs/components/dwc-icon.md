@@ -1,5 +1,4 @@
 ---
-sidebar_position: 0
 title: Icons
 sidebar_class_name: sidebar--item__hidden
 slug: dwc-icon

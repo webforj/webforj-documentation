@@ -147,7 +147,7 @@ export default function TableBuilder(props) {
           <ul>
             {dependencies.map((dependency, index) => (
               <li>
-                <Link to={'/docs/components/client-components/' + dependency.replace("dwc-", "").charAt(0).toUpperCase() + dependency.slice(5)} key={index}>{dependency}</Link>
+                <Link to={'/docs/client-components/' + dependency.replace("dwc-", "").charAt(0).toUpperCase() + dependency.slice(5)} key={index}>{dependency}</Link>
               </li>
             ))}
           </ul>

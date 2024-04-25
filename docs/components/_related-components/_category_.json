@@ -1,8 +1,0 @@
-{
-  "label": "Related Components",
-  "position": 10,
-  "link": {
-    "type": "generated-index"
-  },
-  "className": "sidebar--item__hidden"
-}
