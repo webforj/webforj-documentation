@@ -1,3 +1,6 @@
+---
+title: Components
+---
 
 <!-- vale off -->
 
