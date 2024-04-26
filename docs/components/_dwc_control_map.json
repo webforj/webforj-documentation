@@ -32,5 +32,6 @@
 "Drawer" :"dwc-drawer",
 "Dialog" :"dwc-dialog",
 "Icon" :"dwc-icon",
-"Splitter":"dwc-splitter"
+"Splitter":"dwc-splitter",
+"Login":"dwc-login"
 }
