@@ -94,7 +94,7 @@ const config = {
       navbar: {
         title: '',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'webforJ Logo',
           src: 'img/webforj.svg',
         },
         items: [
