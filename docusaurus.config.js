@@ -49,11 +49,11 @@ const config = {
           customCss: require.resolve('./src/css/custom.css'),
         },
         gtag: {
-          trackingID: 'G-84THEWQM3G',
+          trackingID: 'G-47SBJTFG20',
           anonymizeIP: true
         },
         googleTagManager: {
-          containerId: 'GTM-NB7VHG4',
+          containerId: 'GTM-T9Q2WZ5J',
         },
       }),
     ],
