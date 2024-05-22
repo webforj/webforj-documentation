@@ -56,7 +56,7 @@ try {
 }
 ```
 :::tip Sanitized Client Name
-Use the getSanitizedClientName method to obtain a sanitized version of the uploaded file's name. This method helps prevent security risks such as directory traversal attacks or invalid characters in file names, ensuring the integrity and security of your file storage system.
+Use the `getSanitizedClientName` method to obtain a sanitized version of the uploaded file's name. This method helps prevent security risks such as directory traversal attacks or invalid characters in file names, ensuring the integrity and security of your file storage system.
 :::
 
 ## Filters
@@ -76,7 +76,7 @@ The server won't validate the uploaded file against the filters. The filters are
 
 ## Max size
 
-It's possible to set the maximum file size for uploads to ensure that users don't upload files that are too large for your app to handle. This can be configured using the setMaxFileSize(long maxSize) method, where maxSize is specified in bytes.
+It's possible to set the maximum file size for uploads to ensure that users don't upload files that are too large for your app to handle. This can be configured using the `setMaxFileSize(long maxSize)` method, where maxSize is specified in bytes.
 
 ```java
 dialog.setMaxFileSize(2 * 1024 * 1024); // Set max size to 2 MB

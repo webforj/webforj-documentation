@@ -107,7 +107,7 @@ The `ConfirmDialog` allows you to specify a default button that is preselected w
 ```java showLineNumbers
 ConfirmDialog dialog = new ConfirmDialog(
     "Are you sure?", "Confirm", ConfirmDialog.OptionType.YES_NO);
-dialog.setDefaultButton(Button.SECOND); // No button
+dialog.setDefaultButton(Button.SECOND); // second button
 dialog.show();
 ```
 
