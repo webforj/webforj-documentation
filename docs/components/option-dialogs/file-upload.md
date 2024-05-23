@@ -36,6 +36,10 @@ The `FileUploadDialog` can be initiated through the `OptionDialog` factory class
 
 The `FileUploadDialog` returns an `UploadedFile` object that contains information about the uploaded file, such as its name, size, and content. If the user closes the dialog without selecting a file, the result will be `null`.
 
+:::important
+The resulting string will be returned from the `show()` method, or the equivalent `OptionDialog` method as shown below. 
+:::
+
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.optiondialog.fileupload.FileUploadDialogBasic' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/optiondialog/fileupload/FileUploadDialogBasic.java'
