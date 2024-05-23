@@ -128,7 +128,7 @@ OptionDialog.showMessageDialog(
 
 ### Shadow parts
 
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
+These are the various parts of the [shadow DOM](../../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
 
 <TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Dialog} table='parts'/>
 
