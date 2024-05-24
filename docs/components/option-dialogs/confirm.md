@@ -79,7 +79,7 @@ height = '350px'
 The `ConfirmDialog` returns a result based on the user's interaction with the dialog. This result indicates which button the user clicked or if the dialog was dismissed due to a timeout.
 
 :::important
-The resulting string will be returned from the `show()` method, or the equivalent `OptionDialog` method as shown below. 
+The result will be returned from the `show()` method, or the equivalent `OptionDialog` method as shown below. 
 :::
 
 The `ConfirmDialog.Result` enum includes the following possible results:
