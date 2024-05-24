@@ -66,7 +66,7 @@ const config = {
         appId: '826LUKOV8E',
   
         // Public API key: it is safe to commit it
-        apiKey: '1864295f6b1959f8b73eca2e407b805e',
+        apiKey: 'f09f3e827b9d2237a7defd864ff67fda',
   
         indexName: 'umentation-webforj',
   
