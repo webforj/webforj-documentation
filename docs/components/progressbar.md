@@ -16,7 +16,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 ProgressBar is component that visually displays the progress of some task. As the task progresses towards completion, the progress bar displays the task's percentage of completion. This percentage is represented visually by a rectangle which starts out empty and gradually becomes filled in as the task progresses. In addition, the progress bar can display a textual representation of this percentage.
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples?class=componentdemos.progressbar.ProgressBarBasic' 
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.progressbar.ProgressBarBasic' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/progressbar/ProgressBarBasic.java'
 height='150px'
 />
@@ -45,7 +45,7 @@ bar.setValue(50);
 The ProgressBar can be oriented horizontally or vertically.
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples?class=componentdemos.progressbar.ProgressBarOrientation' 
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.progressbar.ProgressBarOrientation' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/progressbar/ProgressBarOrientation.java'
 height='175px'
 />
@@ -55,7 +55,7 @@ height='175px'
 The ProgressBar supports an indeterminate state for tasks with unknown completion time.
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples?class=componentdemos.progressbar.ProgressBarDeterminate' 
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.progressbar.ProgressBarDeterminate' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/progressbar/ProgressBarDeterminate.java'
 height='25px'
 />
@@ -77,7 +77,7 @@ ProgressBar bar = new ProgressBar(15, "Downloading: {{x}}%");
 They offer a quick and consistent way to customize the look of ProgressBars throughout an app. 
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples?class=componentdemos.progressbar.ProgressBarThemes' 
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.progressbar.ProgressBarThemes' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/progressbar/ProgressBarThemes.java'
 height='320px'
 />
