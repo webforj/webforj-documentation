@@ -42,7 +42,7 @@ bar.setValue(50);
 
 ## Orientation
 
-The ProgressBar can be oriented horizontally or vertically.
+The `ProgressBar` can be oriented horizontally or vertically.
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.progressbar.ProgressBarOrientation' 
@@ -52,7 +52,7 @@ height='175px'
 
 ## Indeterminate state
 
-The ProgressBar supports an indeterminate state for tasks with unknown completion time.
+The `ProgressBar` supports an indeterminate state for tasks with unknown completion time.
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.progressbar.ProgressBarDeterminate' 
@@ -73,7 +73,7 @@ ProgressBar bar = new ProgressBar(15, "Downloading: {{x}}%");
 
 ### Themes
 
-`ProgressBar` component comes with <JavadocLink type="foundation" location="com/webforj/component/Theme"> themes </JavadocLink> built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to buttons to change their appearance and visual presentation. 
+The `ProgressBar` component comes with <JavadocLink type="foundation" location="com/webforj/component/Theme"> themes </JavadocLink> built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to buttons to change their appearance and visual presentation. 
 They offer a quick and consistent way to customize the look of ProgressBars throughout an app. 
 
 <ComponentDemo 
