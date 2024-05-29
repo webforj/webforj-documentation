@@ -16,7 +16,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-dialog" clickable={false} iconName='code'/>
 
-<JavadocLink type="MessageDialog" location="com/webforj/component/optiondialog/MessageDialog" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/optiondialog/MessageDialog" top='true'/>
 
 A `MessageDialog` is a modal dialog designed to display a message to the user with an `OK` button to dismiss the dialog. It blocks app execution until the user interacts with it or it closes due to a timeout.
 

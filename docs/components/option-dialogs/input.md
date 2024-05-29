@@ -16,7 +16,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-dialog" clickable={false} iconName='code'/>
 
-<JavadocLink type="InputDialog" location="com/webforj/component/optiondialog/InputDialog" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/optiondialog/InputDialog" top='true'/>
 
 An `InputDialog` is a modal dialog designed to prompt the user for input. The dialog blocks app execution until the user provides the input or closes the dialog.
 

@@ -16,7 +16,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-dialog" clickable={false} iconName='code'/>
 
-<JavadocLink type="FileUploadDialog" location="com/webforj/component/optiondialog/FileUploadDialog" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/optiondialog/FileUploadDialog" top='true'/>
 
 A `FileUploadDialog` is a modal dialog designed to allow the user to upload files from their local file system. The dialog blocks app execution until the user selects files to upload or closes the dialog.
 

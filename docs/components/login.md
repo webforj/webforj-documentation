@@ -11,7 +11,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-login" clickable={false} iconName='code'/>
 
-<JavadocLink type="login" location="com/webforj/component/login/Login" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/login/Login" top='true'/>
 
 The Login component is designed to provide a and user-friendly interface for authentication, allowing users to log in using a username and password. It supports various customizations to enhance user experience across different devices and locales.
 
