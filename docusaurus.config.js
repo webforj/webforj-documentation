@@ -59,16 +59,15 @@ const config = {
     ],
   ],
   plugins: [],
-  themeConfig:
-    ({
+  themeConfig: {
       algolia: {
         // The application ID provided by Algolia
-        appId: '826LUKOV8E',
+        appId: 'RSLUBH6I28',
   
         // Public API key: it is safe to commit it
-        apiKey: 'f09f3e827b9d2237a7defd864ff67fda',
+        apiKey: '44c92a25be16822742d83229f9423f45',
   
-        indexName: 'umentation-webforj',
+        indexName: 'dwcj',
   
         // Optional: see doc section below
         contextualSearch: true,
@@ -212,7 +211,7 @@ const config = {
         darkTheme: darkCodeTheme,
         additionalLanguages: ['java']
       },
-    })
+    }
 };
 
 module.exports = config;
