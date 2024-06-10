@@ -62,15 +62,15 @@ const config = {
   themeConfig: {
       algolia: {
         // The application ID provided by Algolia
-        appId: 'RSLUBH6I28',
+        appId: '826LUKOV8E',
   
         // Public API key: it is safe to commit it
-        apiKey: '44c92a25be16822742d83229f9423f45',
+        apiKey: 'a69d79113b838bfc8490ffb56cef78f2',
   
-        indexName: 'dwcj',
+        indexName: 'umentation-webforj',
   
         // Optional: see doc section below
-        contextualSearch: true,
+        contextualSearch: false,
   
         // // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
         // externalUrlRegex: 'external\\.com|domain\\.com',
