@@ -16,7 +16,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-dialog" clickable={false} iconName='code'/>
 
-<JavadocLink type="FileUploadDialog" location="com/webforj/component/optiondialog/FileUploadDialog" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/optiondialog/FileUploadDialog" top='true'/>
 
 A `FileUploadDialog` is a modal dialog designed to allow the user to upload files from their local file system. The dialog blocks app execution until the user selects files to upload or closes the dialog.
 
@@ -91,9 +91,9 @@ dialog.setMaxFileSize(2 * 1024 * 1024); // Set max size to 2 MB
 The titles, descriptions, labels, and messages within the component are fully customizable using the `FileUploadI18n` class. This flexibility allows you to tailor the dialog interface to meet specific localization requirements or personalization preferences.
 
 ```java showLineNumbers
-FileUploadDialog dialog = new FileUploadDialog("Datei hochladen", "/Users/habof/bbx");
-FileChooserI18n i18n = new FileChooserI18n();
-i18n.setChoose("Wählen");
+FileUploadDialog dialog = new FileUploadDialog("Datei hochladen");
+FileUploadI18n i18n = new FileUploadI18n();
+i18n.setUpload("Hochladen");
 i18n.setCancel("Stornieren");
 dialog.setI18n(i18n);
 UploadedFile result = dialog.show();
