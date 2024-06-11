@@ -31,7 +31,7 @@ Cookies are small pieces of data stored on the client side and sent to the serve
 - Sent with every HTTP request
 
 :::info
-webforJ cookies expire after 30 days.
+By default, cookies in webforJ expire after 30 days. This can be change with the `max-age` or `expires` attributes.
 <!-- Is this configurable? -->
 :::
 
