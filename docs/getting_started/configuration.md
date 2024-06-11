@@ -5,7 +5,7 @@ displayed_sidebar: documentationSidebar
 
 # Configuration
 
-webforJ can be configured using a project's POM file, and a plugin designed to make deploying an application easy. The following sections outline the various options that can be changed in order to achieve the desired result, both with an without the provided webforJ installation plugin. 
+webforJ can be configured using a project's POM file and a plugin designed to make deploying an application easy. The following sections outline the various options that can be changed in order to achieve the desired result, both with and without the provided webforJ installation plugin.
 
 ## Using the Install Plugin
 
@@ -13,7 +13,7 @@ webforJ can be configured using a project's POM file, and a plugin designed to m
 For most users, especially those who have followed one of the installation guides on this site, this will be the best option.
 :::
 
-When using the installation plugin, the tags within the `<configuration>` tag can be changed and will help configure your application. Editing the following lines in the default POM file that comes with the [`HelloWorldJava`](https://github.com/webforj/HelloWorldJava) starting repository will result in these changes:
+When using the installation plugin, the tags within the `<configuration>` tag can be changed to configure your application. Editing the following lines in the default POM file that comes with the [`HelloWorldJava`](https://github.com/webforj/HelloWorldJava) starting repository will result in these changes:
 
 ```xml {13-16} showLineNumbers
 <plugin>
@@ -36,18 +36,18 @@ When using the installation plugin, the tags within the `<configuration>` tag ca
 </plugin>
 ```
 
-**`<deployurl>`**: This tag is the URL under which the webforJ endpoint for the project installation can be reached. For users running their application locally, a default port 8888 is used. For users running Docker, the port should be changed to the port that was entered when [configuring the Docker container](../installation/docker_user.md#2-configuration).
+- **`<deployurl>`** This tag is the URL under which the webforJ endpoint for the project installation can be reached. For users running their application locally, a default port 8888 is used. For users running Docker, the port should be changed to the port that was entered when [configuring the Docker container](../installation/docker_user.md#2-configuration).
 
-**`<classname>`** This tag should contain the name of package and class name of the application you wish to run. This is helpful for projects which may contain multiple classes that extend the `App` class, and allows you to choose which program should run when the base URL is navigated to.
+- **`<classname>`** This tag should contain the name of package and class name of the application you wish to run. This is helpful for projects which may contain multiple classes that extend the `App` class, and allows you to choose which program should run when the base URL is navigated to.
 
-2. **`<publishname>`** This tag specifies what name the program will take in the final URL. Generally, to run your program, you'll enter a URL similar to `http://localhost:8888/webapp/<publishname>`, where the value within the `<publishname>` tag is entered. When this is done, the class extending application specified in the `<classname>` tag is run.
+- **`<publishname>`** This tag specifies what name the program will take in the final URL. Generally, to run your program, you'll enter a URL similar to `http://localhost:8888/webapp/<publishname>`, where the value within the `<publishname>` tag is entered. When this is done, the class extending application specified in the `<classname>` tag is run.
 
-3. **`<debug>`** The debug tag can be set to true or false, and will determine whether or not error messages thrown by your program will be displayed in the browser's console or not. 
+- **`<debug>`** The debug tag can be set to true or false, and will determine whether or not error messages thrown by your program will be displayed in the browser's console or not. 
 
 ### Running a Specific Application
 
 
-It is possible to specify which class that extends App within your project is displayed by modifying the URL in one of the following ways - 
+It is possible to specify which class that extends App within your project is displayed by modifying the URL in one of the following ways: 
 
 **1. Modify the URL Path** - If your application is running on `localhost:8888`, the publish name is `MyProgram` and the Java class that extends the `App` class you want to run is named `MyApp`, the URL would look as follows:
 
