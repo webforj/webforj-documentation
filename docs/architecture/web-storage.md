@@ -2,6 +2,10 @@
 sidebar_position: 30
 title: Web Storage
 ---
+import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
+
+
+<JavadocLink type="foundation" location="com/webforj/webstorage/WebStorage" top='true'/>
 
 ## Overview
 [Web storage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) is a fundamental concept in web development that allows websites to store data on the client side. This enables web applications to save state, preferences, and other information locally on the user's browser, enhancing user experience and application performance.
@@ -36,7 +40,9 @@ By default, cookies in webforJ expire after 30 days. This can be change with the
 :::
 
 ### Using Cookies in webforJ
-In the following code snippet, a `CookieStorage` object is obtained using the `CookieStorage.getCurrent()` method to either create a new object or retrieve it if it already exists. A key/value pair with optional attributes is written to the cookie using the `add(key, value, attributes)` method, and the value is obtained using the `get(key)` method. The data can be removed from the Cookie with the `remove(key)` method.
+
+
+In the following code snippet, a <JavadocLink type="foundation" location="com/webforj/webstorage/CookieStorage" code='true' suffix='#<init>()'>CookieStorage</JavadocLink> object is obtained using the `CookieStorage.getCurrent()` method to either create a new object or retrieve it if it already exists. A key/value pair with optional attributes is written to the cookie using the `add(key, value, attributes)` method, and the value is obtained using the `get(key)` method. The data can be removed from the Cookie with the `remove(key)` method.
 
 ```java
 CookieStorage cookieStorage = CookieStorage.getCurrent();
