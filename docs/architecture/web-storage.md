@@ -18,7 +18,7 @@ Web storage can be implemented with [**Cookies**](#cookies), [**Session Storage*
 You can see current cookie, local storage and session storage key-value pairs in your browser's developer tools.
 :::
 
-### Summary of Differences
+### Summary of differences
 | Feature            | Cookies                                      | Session Storage                          | Local Storage                            |
 |--------------------|----------------------------------------------|------------------------------------------|------------------------------------------|
 | **Persistence**    | Configurable expiration date                 | Duration of the page session             | Persistent until explicitly deleted      |
