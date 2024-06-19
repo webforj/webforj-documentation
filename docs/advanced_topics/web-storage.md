@@ -26,19 +26,17 @@ You can see current cookie, local storage and session storage key-value pairs in
 ## Cookies
 Cookies are small pieces of data stored on the client side and sent to the server with each HTTP request. They are often used to remember user sessions, preferences, and authentication information.
 
-### Advantages:
+### Key features:
 - Can store data across different domains
 - Support expiration dates
-
-### Disadvantages:
-- Small storage size (about 4KB)
+- Small storage size, restricted to 4 KB
 - Sent with every HTTP request
 
 :::info Cookie Expiration
 By default, cookies in webforJ expire after 30 days. This can be change with the `max-age` or `expires` attributes.
 :::
 
-### Using cookies in webforJ
+### Using cookies
 
 In the following code snippet, a <JavadocLink type="foundation" location="com/webforj/webstorage/CookieStorage" code='true'>CookieStorage</JavadocLink> object is obtained using the `CookieStorage.getCurrent()` method to access the cookie storage. A key/value pair with optional attributes is written to the cookie using the `add(key, value, attributes)` method, and the value is obtained using the `get(key)` method. The data can be removed from the Cookie with the `remove(key)` method.
 
@@ -65,14 +63,12 @@ The following use cases are well-suited for utilization of cookies:
 
 
 ## Session storage
-Session storage stores data for the duration of a page session. The data is accessible only within the same session and is cleared when the page or tab is closed, but persists for reloads and restores. Session storage is best for storing temporary data during a single page session and maintaining state across different pages in the same session.
+Session storage stores data for the duration of a page session. The data is accessible only within the same session and is cleared when the page or tab is closed. However, the data persists for reloads and restores. Session storage is best for storing temporary data during a single page session and maintaining state across different pages in the same session.
 
-### Advantages
+### Key features
 - Data is not sent with every HTTP request
 - Larger storage size than cookies
-
-### Disadvantages
-- Data is lost when the page or tab is closed
+- Data is cleared when the page or tab is closed
 - Data is not shared across tabs
 
 ### Using session storage in webforJ
@@ -102,16 +98,13 @@ The following use cases are well-suited for utilization of session storage:
 ## Local storage
 Local storage stores data with no expiration date. It persists even after the browser is closed, and can be accessed whenever the user revisits the website. Local storage is best for storing user preferences or settings, caching data to improve performance, and saving application state across sessions.
 
-### Advantages
+### Key features
 
 - Data persists across sessions
 - Data is not sent with every HTTP request.
 - Larger storage size than cookies
-
-### Disadvantages
-
 - Not suitable for sensitive data
-- You must manage data yourself, since it will not ever be deleted automatically
+- You must manage data yourself, since the browser will never automatically delete it
 
 ### Using local storage in webforj
 
