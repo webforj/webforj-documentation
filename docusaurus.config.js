@@ -126,6 +126,7 @@ const config = {
           },
           // {to: '/live_demo', label: 'Live Demo', position: 'left'},
           // {to: '/tutorials/intro', label: 'Tutorials', position: 'left'},
+          {to: 'blog', label: 'Blog', position: 'left'}, // or position: 'right'
           {
             label: "Report Issue",
             href: 'https://github.com/webforj/webforj/issues',
