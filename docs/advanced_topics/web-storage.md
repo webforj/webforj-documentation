@@ -53,6 +53,9 @@ String username = cookieStorage.get("username");
 // Remove a cookie with a given key
 cookieStorage.remove("username");
 ```
+:::info Cookie Security
+Certain cookie attributes, such as `Secure` and `SameSite=None`, require a secure context using HTTPS. These attributes ensure that cookies are only sent over secure connections, protecting them from being intercepted. For more information, see the [MDN documentation on cookie security](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#security).
+:::
 
 ### Use cases
 The following use cases are well-suited for utilization of cookies:
