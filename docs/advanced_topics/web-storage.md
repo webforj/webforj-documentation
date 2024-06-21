@@ -10,7 +10,7 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 webforJ supports three mechanisms for storing client data: [**Cookies**](#cookies), [**Session Storage**](#session-storage), and [**Local Storage**](#local-storage).
 
-:::tip
+:::tip Web Storage in Developer Tools
 You can see current cookie, local storage and session storage key-value pairs in your browser's developer tools.
 :::
 
