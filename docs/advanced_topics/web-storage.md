@@ -22,6 +22,8 @@ You can see current cookie, local storage and session storage key-value pairs in
 | **Use Cases**      | User authentication, preferences, tracking   | Temporary data, form data                | Persistent settings, user preferences    |
 | **Security**       | Vulnerable to XSS, can be secured with flags | Cleared on session end, less risk        | Accessible via JavaScript, potential risk|
 
+### Using web storage
+The <JavadocLink type="foundation" location="com/webforj/webstorage/CookieStorage" code='true'>CookieStorage</JavadocLink>, <JavadocLink type="foundation" location="com/webforj/webstorage/SessionStorage" code='true'>SessionStorage</JavadocLink>, and <JavadocLink type="foundation" location="com/webforj/webstorage/LocalStorage" code='true'>LocalStorage</JavadocLink> classes in webforJ all extend the abstract <JavadocLink type="foundation" location="com/webforj/webstorage/WebStorage" code='true'>WebStorage</JavadocLink> class. To obtain the appropriate object, use the static methods `CookieStorage.getCurrent()`,  `SessionStorage.getCurrent()`, or `LocalStorage.getCurrent()`. To add, get, and remove key-value pairs, use the `add(key, value)`, `get(key)`, and `remove(key)` methods.
 
 ## Cookies
 Cookies are small pieces of data stored on the client side and sent to the server with each HTTP request. They are often used to remember user sessions, preferences, and authentication information.
