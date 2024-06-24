@@ -102,7 +102,7 @@ The following use cases are well-suited for utilization of session storage:
 - **Form Data**: Temporarily save form data for use within the session.
 
 ## Local storage
-Local storage stores data with no expiration date. It persists even after the browser is closed, and can be accessed whenever the user revisits the website. Local storage is best for storing user preferences or settings, caching data to improve performance, and saving application state across sessions.
+Local storage stores data with no expiration date. It persists even after the browser is closed, and can be accessed whenever the user revisits the website. Local storage is best for storing user preferences or settings, caching data to improve performance, and saving app state across sessions.
 
 ### Key features
 
