@@ -12,7 +12,7 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 <JavadocLink type="foundation" location="com/webforj/component/list/DwcList"/>
 
-There are three types of lists for use within your applications: [`ListBox`](docs/components/list-components/listbox), [`ChoiceBox`](docs/components/list-components/choicebox) and [`ComboBox`](docs/components/list-components/combobox). These three components all display a list of key value items, and support methods to add, remove, select and manage the items within the list.
+There are three types of lists for use within your applications: [`ListBox`](listbox), [`ChoiceBox`](choicebox) and [`ComboBox`](combobox). These three components all display a list of key value items, and support methods to add, remove, select and manage the items within the list.
 
 This section will list the commonalities within each of the aforementioned components, with the specific behaviors belonging to each outlined in their own sections.
 
