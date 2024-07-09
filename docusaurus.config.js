@@ -128,7 +128,7 @@ const config = {
           // {to: '/tutorials/intro', label: 'Tutorials', position: 'left'},
           {
             label: "Report Issue",
-            href: 'https://github.com/webforj/webforj/issues',
+            href: 'https://github.com/webforj/webforj/issues/new/choose',
             position: 'right',
           },
           {
