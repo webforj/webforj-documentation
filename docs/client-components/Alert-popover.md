@@ -3,6 +3,7 @@ sidebar_position: 0
 title: <dwc-alert-popover>
 sidebar_class_name: sidebar--item__hidden
 slug: alert-popover
+description: A user guide article for the alert-popover
 // pagination_prev: null
 // pagination_next: null
 ---

@@ -3,6 +3,7 @@ sidebar_position: 0
 title: <dwc-progressbar>
 sidebar_class_name: sidebar--item__hidden
 slug: progressbar
+description: A user guide article for the progressbar
 // pagination_prev: null
 // pagination_next: null
 ---
@@ -24,11 +25,7 @@ This section outlines styling information for the **`<dwc-progressbar>`** compon
 These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
 <TableBuilder tag='dwc-progressbar' table="parts"/>
 
-### CSS Properties
 
-  These are the various CSS properties that are used in the component, with a short description of their use.
-  
-  <TableBuilder tag='dwc-progressbar' table="properties"/>
 
 ### Reflected Attributes
 

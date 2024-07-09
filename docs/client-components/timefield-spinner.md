@@ -3,6 +3,7 @@ sidebar_position: 0
 title: <dwc-timefield-spinner>
 sidebar_class_name: sidebar--item__hidden
 slug: timefield-spinner
+description: A user guide article for the timefield-spinner
 // pagination_prev: null
 // pagination_next: null
 ---

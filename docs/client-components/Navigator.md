@@ -3,6 +3,7 @@ sidebar_position: 0
 title: <dwc-navigator>
 sidebar_class_name: sidebar--item__hidden
 slug: navigator
+description: A user guide article for the navigator
 // pagination_prev: null
 // pagination_next: null
 ---

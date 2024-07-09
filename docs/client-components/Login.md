@@ -3,6 +3,7 @@ sidebar_position: 0
 title: <dwc-login>
 sidebar_class_name: sidebar--item__hidden
 slug: login
+description: A user guide article for the login
 // pagination_prev: null
 // pagination_next: null
 ---

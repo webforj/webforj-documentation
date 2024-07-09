@@ -3,6 +3,7 @@ sidebar_position: 0
 title: <dwc-combobox>
 sidebar_class_name: sidebar--item__hidden
 slug: combobox
+description: A user guide article for the combobox
 // pagination_prev: null
 // pagination_next: null
 ---

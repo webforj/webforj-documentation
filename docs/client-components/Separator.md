@@ -3,6 +3,7 @@ sidebar_position: 0
 title: <dwc-separator>
 sidebar_class_name: sidebar--item__hidden
 slug: separator
+description: A user guide article for the separator
 // pagination_prev: null
 // pagination_next: null
 ---
@@ -24,11 +25,7 @@ This section outlines styling information for the **`<dwc-separator>`** componen
 These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
 <TableBuilder tag='dwc-separator' table="parts"/>
 
-### CSS Properties
 
-  These are the various CSS properties that are used in the component, with a short description of their use.
-  
-  <TableBuilder tag='dwc-separator' table="properties"/>
 
 
 

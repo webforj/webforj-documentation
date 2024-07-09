@@ -3,6 +3,7 @@ sidebar_position: 0
 title: <dwc-upload>
 sidebar_class_name: sidebar--item__hidden
 slug: upload
+description: A user guide article for the upload
 // pagination_prev: null
 // pagination_next: null
 ---

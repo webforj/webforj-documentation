@@ -3,6 +3,7 @@ sidebar_position: 0
 title: <dwc-popover>
 sidebar_class_name: sidebar--item__hidden
 slug: popover
+description: A user guide article for the popover
 // pagination_prev: null
 // pagination_next: null
 ---
@@ -22,11 +23,7 @@ This section outlines styling information for the **`<dwc-popover>`** component.
 
 
 
-### CSS Properties
 
-  These are the various CSS properties that are used in the component, with a short description of their use.
-  
-  <TableBuilder tag='dwc-popover' table="properties"/>
 
 ### Reflected Attributes
 
