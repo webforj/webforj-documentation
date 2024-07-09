@@ -3,6 +3,7 @@ sidebar_position: 0
 title: <dwc-datefield>
 sidebar_class_name: sidebar--item__hidden
 slug: datefield
+description: A user guide article for the datefield
 // pagination_prev: null
 // pagination_next: null
 ---
@@ -24,11 +25,7 @@ This section outlines styling information for the **`<dwc-datefield>`** componen
 These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
 <TableBuilder tag='dwc-datefield' table="parts"/>
 
-### CSS Properties
 
-  These are the various CSS properties that are used in the component, with a short description of their use.
-  
-  <TableBuilder tag='dwc-datefield' table="properties"/>
 
 ### Reflected Attributes
 

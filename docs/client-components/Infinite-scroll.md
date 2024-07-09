@@ -3,6 +3,7 @@ sidebar_position: 0
 title: <dwc-infinite-scroll>
 sidebar_class_name: sidebar--item__hidden
 slug: infinite-scroll
+description: A user guide article for the infinite-scroll
 // pagination_prev: null
 // pagination_next: null
 ---

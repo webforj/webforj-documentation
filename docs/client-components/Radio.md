@@ -3,6 +3,7 @@ sidebar_position: 0
 title: <dwc-radio>
 sidebar_class_name: sidebar--item__hidden
 slug: radio
+description: A user guide article for the radio
 // pagination_prev: null
 // pagination_next: null
 ---

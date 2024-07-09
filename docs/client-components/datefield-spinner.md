@@ -3,6 +3,7 @@ sidebar_position: 0
 title: <dwc-datefield-spinner>
 sidebar_class_name: sidebar--item__hidden
 slug: datefield-spinner
+description: A user guide article for the datefield-spinner
 // pagination_prev: null
 // pagination_next: null
 ---

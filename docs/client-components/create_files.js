@@ -33,6 +33,7 @@ sidebar_position: 0
 title: <${tag}>
 sidebar_class_name: sidebar--item__hidden
 slug: ${formattedTagName}
+description: A user guide article for the ${formattedTagName}
 // pagination_prev: null
 // pagination_next: null
 ---

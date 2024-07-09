@@ -3,6 +3,7 @@ sidebar_position: 0
 title: <dwc-app-layout>
 sidebar_class_name: sidebar--item__hidden
 slug: app-layout
+description: A user guide article for the app-layout
 // pagination_prev: null
 // pagination_next: null
 ---
@@ -24,11 +25,7 @@ This section outlines styling information for the **`<dwc-app-layout>`** compone
 These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
 <TableBuilder tag='dwc-app-layout' table="parts"/>
 
-### CSS Properties
 
-  These are the various CSS properties that are used in the component, with a short description of their use.
-  
-  <TableBuilder tag='dwc-app-layout' table="properties"/>
 
 ### Reflected Attributes
 
