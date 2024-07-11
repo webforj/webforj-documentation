@@ -16,7 +16,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <JavadocLink type="foundation" location="com/webforj/component/field/TextField" top='true'/>
 
 :::success **Important**
-The `DateTimeField` class is a Field component, and as such shares all of the commonalities belonging to a Field. Please refer to the **[Field documentation page](/docs/components/fields)** for an overview of Field properties, events, and other important information.
+The `TextField` class is a Field component, and as such shares all of the commonalities belonging to a Field. Please refer to the **[Field documentation page](/docs/components/fields)** for an overview of Field properties, events, and other important information.
 :::
 
 The `TextField` component allows users to enter and edit text in a single line. It can be configured to display a specific virtual keyboard, such as a numeric keypad, email input, telephone input, or URL input. The component also provides built-in validation to reject values that do not adhere to the specified type.

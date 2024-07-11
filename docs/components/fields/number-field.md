@@ -16,7 +16,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <JavadocLink type="foundation" location="com/webforj/component/field/NumberField" top='true' />
 
 :::success **Important**
-The `DateTimeField` class is a Field component, and as such shares all of the commonalities belonging to a Field. Please refer to the **[Field documentation page](/docs/components/fields)** for an overview of Field properties, events, and other important information.
+The `NumberField` class is a Field component, and as such shares all of the commonalities belonging to a Field. Please refer to the **[Field documentation page](/docs/components/fields)** for an overview of Field properties, events, and other important information.
 :::
 
 The `NumberField` component can be used to accept numerical input from the user. It ensures that only valid numeric values are entered and provides a convenient interface for inputting numbers.
@@ -45,7 +45,7 @@ The `NumberField` is best used in scenarios where capturing or manipulating nume
 The `NumberField` class has three constructors:
 
 1. `NumberField(String label, Double value)`: Creates a `NumberField` with a given label and value.
-2. `NumberField(String label)`: Creates a `NumberField` with a given label but with no pre-populated datetime.
+2. `NumberField(String label)`: Creates a `NumberField` with a given label but with no pre-populated numerical value.
 3. `NumberField()`: Creates a `NumberField` without any provided information.
 
 ### Maximum and Minimum
