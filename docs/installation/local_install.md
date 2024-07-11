@@ -44,7 +44,7 @@ for Windows users can be found [here](https://phoenixnap.com/kb/install-maven-wi
 
 ## 2. BBj Download and Installation
 
-<b>While following this step, be sure to install BBj version 22.14 or newer </b><br/><br/>
+<b>While following this step, be sure that you install the BBj version that corresponds to the same webforJ version. </b><br/><br/>
 
 [This video](https://www.youtube.com/watch?v=Ovk8kznQfGs&ab_channel=BBxCluesbyBASISEurope) can help with the installation of BBj if you need assistance with setup. The installation section of the BASIS website can be found [at this link](https://basis.cloud/download-product)
 
