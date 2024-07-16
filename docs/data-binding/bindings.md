@@ -34,7 +34,7 @@ A binding property is a specific field or attribute of a Java Bean that can be l
 This linkage allows changes in the UI to directly affect the corresponding property of the data model, and vice versa, 
 facilitating a reactive user experience.
 
-When setting up a binding, your should provider the property name as a string. This name must match the field name in the Java Bean class. Here's a simple example:
+When setting up a binding, you should provide the property name as a string. This name must match the field name in the Java Bean class. Here's a simple example:
 
 ```java
 BindingContext<Hero> context = new BindingContext<>(Hero.class, true);
