@@ -89,6 +89,16 @@ const config = {
   
         //... other Algolia params
       },
+      announcementBar: {
+        id: '24.10',
+        content:
+          'We are excited to announce webforJ version 24.10 is live! Read more about the changes and features <a href=/blog/whats-new-24.10>here.</a> ',
+        // backgroundColor: 'var(--announcement-background)',
+        // textColor: '#ebedf0',
+        // backgroundColor: 'var(--chip-background)',
+        // textColor: 'var(--chip-text)',
+        isCloseable: true,
+      },
       image: '/img/webforj.svg',
       navbar: {
         title: '',
@@ -126,6 +136,7 @@ const config = {
           },
           // {to: '/live_demo', label: 'Live Demo', position: 'left'},
           // {to: '/tutorials/intro', label: 'Tutorials', position: 'left'},
+          {to: 'blog', label: 'Blog', position: 'left'}, // or position: 'right'
           {
             label: "Report Issue",
             href: 'https://github.com/webforj/webforj/issues/new/choose',
