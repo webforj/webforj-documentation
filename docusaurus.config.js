@@ -90,11 +90,11 @@ const config = {
         //... other Algolia params
       },
       announcementBar: {
-        id: 'version_release',
+        id: '24.10',
         content:
           'We are excited to announce webforJ version 24.10 is live! Read more about the changes and features <a href=/blog/whats-new-24.10>here.</a> ',
-        backgroundColor: '#303846',
-        textColor: '#ebedf0',
+        // backgroundColor: 'var(--announcement-background)',
+        // textColor: '#ebedf0',
         // backgroundColor: 'var(--chip-background)',
         // textColor: 'var(--chip-text)',
         isCloseable: true,
