@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: Google Charts
-id: charts
+id: Charts
 draft: true
 ---
 
@@ -19,9 +19,10 @@ import Chip from '@mui/material/Chip';
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="google-chart" clickable={false} iconName='code'/>
 
 <!-- Can't find Javadocs for GoogleChart? -->
-<!-- <JavadocLink type="engine" location="org/dwcj/component/button/Button" top='true'/>  -->
+<JavadocLink type="chart" location="com/webforj/googlecharts/GoogleChart" top='true'/>
 
 <!-- Brief overview of the component and what it is/does -->
+
 The `GoogleChart` class is a comprehensive solution for embedding rich, interactive charts within web applications. This class acts as a bridge to the [Google Charts](https://developers.google.com/chart) library, offering a wide variety of chart types suitable for any data visualization task.
 
 <ComponentDemo 
@@ -30,7 +31,6 @@ javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/ja
 height='300px'
 />
 
-<!-- tabs={['ChartDemo.java']} -->
 
 ## Chart Types
 
@@ -45,7 +45,6 @@ cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/r
 height='300px'
 />
 
-<!-- tabs={['ChartGallerydemo.java', 'chartgallery_styles.css']} -->
 
 <!-- Constructors -->
 
@@ -83,6 +82,45 @@ For more information on the options available for specific charts, see the [Goog
 
 Visualizing data with `GoogleChart` requires properly structuring and setting the data. This guide will walk you through preparing your data and applying it to your charts.
 
+### Basic Data Setup
+
+The most straightforward way to define the data is by using `List<Object>`, where each row is a list of values.
+
+```java
+List<Object> data = new ArrayList<>();
+data.add(Arrays.asList("Task", "Hours per Day"));
+data.add(Arrays.asList("Work", 11));
+data.add(Arrays.asList("Eat", 2));
+data.add(Arrays.asList("Commute", 2));
+data.add(Arrays.asList("Watch TV", 2));
+data.add(Arrays.asList("Sleep", 7));
+chart.setData(data);
+```
+
+### Using Maps for More Complex Structures
+
+For more complex data structures, you can use maps to represent rows and then convert them into the required format.
+
+```java
+List<Object> data = new ArrayList<>();
+
+// Header row
+data.add(Arrays.asList("Country", "Revenue"));
+
+// Data rows
+Map<String, Object> row1 = Map.of("Country", "Germany", "Revenue", 1000);
+Map<String, Object> row2 = Map.of("Country", "United States", "Revenue", 1170);
+Map<String, Object> row3 = Map.of("Country", "Brazil", "Revenue", 660);
+
+data.add(new ArrayList<>(row1.values()));
+data.add(new ArrayList<>(row2.values()));
+data.add(new ArrayList<>(row3.values()));
+
+chart.setData(data);
+```
+
+Once the data is prepared, it can be applied to the GoogleChart using the setData method.
+
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=addondemos.chartdemos.ChartDemoSettingData' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/chartdemos/ChartDemoSettingData.java'
@@ -91,9 +129,27 @@ height='300px'
 
 <!-- tabs={['ChartDemoSettingData.java']} -->
 
-### Data Structure
 
-Data for `GoogleChart` should be structured as a list of lists, where each inner list represents a row, and each row element represents a column value. Typically, the first row contains column labels. The `setData()` method is then used to apply the structured data to a chart. The method transforms this data into a format that the underlying Google Charts library can use to render the chart.
+###Loading Data and Options from JSON
+
+You can also load data and options from JSON files using Gson for easier management. This approach helps keep your data and options organized and easy to update.
+
+
+```java
+List<Object> data = new ArrayList<>();
+data.add(Arrays.asList("Year", "Sales", "Expenses"));
+data.add(Arrays.asList("2013", 1000, 400));
+data.add(Arrays.asList("2014", 1170, 460));
+data.add(Arrays.asList("2015", 660, null)); 
+data.add(Arrays.asList("2016", 1030, 540));
+chart.setData(data);
+
+Map<String, Object> options = new Gson().fromJson(
+    Assets.contentOf("options.json"),
+    new TypeToken<Map<String, Object>>() {}.getType()
+);
+chart.setOptions(options);
+```
 
 ## Updating Chart Visuals
 
