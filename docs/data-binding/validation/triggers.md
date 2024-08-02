@@ -50,7 +50,7 @@ public class TripBooking extends App {
   DateTimeField startDateField = new DateTimeField("Start Date");
   DateTimeField endDateField = new DateTimeField("End Date");
   FlexLayout layout = FlexLayout.create(startDateField, endDateField).vertical().build().setStyle("margin", "20px auto")
-      .setStyle("max-width", "400px");
+      .setMaxWidth("400px");
 
   LocalDateTime startDate;
   LocalDateTime endDate;
