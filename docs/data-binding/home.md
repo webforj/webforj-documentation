@@ -32,7 +32,7 @@ public class HeroRegistration extends App {
   private ComboBox power = new ComboBox("Power");
   private Button submit = new Button("Submit Application");
   private FlexLayout layout = FlexLayout.create(name, power, submit).vertical().build()
-      .setStyle("margin", "20px auto").setStyle("max-width", "400px");
+      .setStyle("margin", "20px auto").setMaxWidth("400px");
 
   @Override
   public void run() throws WebforjException {

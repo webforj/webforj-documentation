@@ -56,7 +56,7 @@ Components which extend the `AbstractDwcComponent`, including those shipped with
 
 ```java
 Button exampleButton = new Button();
-exampleButton.setStyle("width","50px");
+exampleButton.setStyle("opacity","0.75");
 ```
 
 ### Using the `App` class's methods
