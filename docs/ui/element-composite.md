@@ -17,7 +17,7 @@ While using the `ElementComposite` class, using the `getElement()` method will g
 It is possible to do everything with the `Element` class itself, without using `ElementComposite` class. However, the provided methods in the `ElementComposite` give users a way to reuse the work that's being done. 
 :::
 
-Throughout this guide, we'll be implementing the [Shoelace QR code web component](#) using the `ElementComposite` class.
+Throughout this guide, we'll be implementing the [Shoelace QR code web component](https://shoelace.style/components/qr-code) using the `ElementComposite` class.
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=demos.webcomponents.elementcomposite.QRDemo' 
