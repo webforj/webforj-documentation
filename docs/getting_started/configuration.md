@@ -10,7 +10,7 @@ webforJ can be configured using a project's POM file and a plugin designed to ma
 ## Using the Install Plugin
 
 :::success Tip! 
-For most users, especially those who have followed one of the installation guides on this site, this will be the best option.
+This is the best option for most users, especially those who have followed one of the installation guides on this site.
 :::
 
 When using the installation plugin, the tags within the `<configuration>` tag can be changed to configure your application. Editing the following lines in the default POM file that comes with the [`HelloWorldJava`](https://github.com/webforj/HelloWorldJava) starting repository will result in these changes:
