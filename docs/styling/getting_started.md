@@ -75,7 +75,7 @@ This annotation also supports the `webserver://` protocol, and will by default p
 addStyleSheet("webserver://static/css/style.css");
 ```
 
-The `addInlineStyleSheet()` method is used when a developer wants to include a local stylesheet. By default, the resources directory of a project will be used. For example, a file called `styles.css` located in `src/resources/css` would by loaded by the following code:
+The `addInlineStyleSheet()` method is used when a developer wants to include a local stylesheet. By default, the resources directory of a project will be used. For example, a file called `styles.css` located in `src/main/resources/css` would by loaded by the following code:
 
 ```java
 App.getPage().addInlineStyleSheet("context://css/styles.css");
