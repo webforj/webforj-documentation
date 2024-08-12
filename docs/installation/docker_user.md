@@ -55,35 +55,35 @@ It is recommended to download the latest version of Windows Subsystem for Linux.
 
 Once Docker Desktop has been downloaded, search for the latest webforJ image, which is currently under the name `webforj/sandbox`.
 
-![DWCJ Image Search](./_images/docker/Step_1l.png)
+![DWCJ Image Search](./_images/docker/Step_1l.png#rounded-border)
 
 Click on the list of tags to see the available options
 
-![DWCJ Image Search](./_images/docker/Step_2l.png)
+![DWCJ Image Search](./_images/docker/Step_2l.png#rounded-border)
 
 For the most recent build, select "rc"
 
-![DWCJ Image Search](./_images/docker/Step_3l.png)
+![DWCJ Image Search](./_images/docker/Step_3l.png#rounded-border)
 
 Pull the image to start your container
 
-![DWCJ Image Search](./_images/docker/Step_4l.png)
+![DWCJ Image Search](./_images/docker/Step_4l.png#rounded-border)
 
 Once the download is complete, click the run button, which will open configuration settings
 
-![DWCJ Image Search](./_images/docker/Step_5l.png)
+![DWCJ Image Search](./_images/docker/Step_5l.png#rounded-border)
 
 Open the "Optional settings" menu
 
-![DWCJ Image Search](./_images/docker/Step_6l.png)
+![DWCJ Image Search](./_images/docker/Step_6l.png#rounded-border)
 
 Select a desired host port where you can see your application running within Docker
 
-![DWCJ Image Search](./_images/docker/Step_7l.png)
+![DWCJ Image Search](./_images/docker/Step_7l.png#rounded-border)
 
 Click "Run" to start the container
 
-![DWCJ Image Search](./_images/docker/Step_8l.png)
+![DWCJ Image Search](./_images/docker/Step_8l.png#rounded-border)
 
 <!-- Click the `Run` button, which will pop up a configuration window. These settings are optional, but it is highly recommended to
 supply the `Host port` configuration setting, as this will be necessary later when running your application.

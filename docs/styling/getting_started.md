@@ -147,7 +147,7 @@ public class Demo extends App{
 
 If you're using VS code, an extension that provides syntax highlighting [can be found here](https://marketplace.visualstudio.com/items?itemName=BEU.vscode-java-html):
 
-<img src='https://github.com/webforj/vscode-java-html/raw/HEAD/docs/demo.png'/>
+![VS Code Syntax](https://github.com/webforj/vscode-java-html/raw/HEAD/docs/demo.png#rounded-border)
 
 :::
 
