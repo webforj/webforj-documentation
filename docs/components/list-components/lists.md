@@ -50,9 +50,9 @@ By using these methods provided in the classes, you can effectively manage the i
 
 3. **Inserting Multiple Items:** You can insert multiple items at a specified index using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='l#insert(int,java.util.List)' code="true">insert(int index, List< ListItem > items)</JavadocLink> method.
 
-   :::tip
+:::tip
 To optimize performance in applications, instead of triggering a server-to-client message each time you use the add method, it's more efficient to compile a list of <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> objects first. Once you have this list, you can add them all at once using the `insert(int index, List<ListItem> items)` method. This approach reduces server-client communication, enhancing overall efficiency. For detailed guidelines on this and other best practices in webforJ [architecture](/architecture/architecture.md), consult the documentation.
-   :::
+:::
 
 4. **Removing an Item:**
 
