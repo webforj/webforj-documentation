@@ -39,7 +39,7 @@ The `GoogleChart` addon offers a comprehensive array of chart types to suit vari
 For more information on the different Chart Types available, see **[this article](./chart_types.md)**.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=addondemos.chartdemos.ChartDemoRedraw' 
+path='https://demo.webforj.com/webapp/controlsamples?class=addondemos.chartdemos.ChartGalleryDemo' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/chartdemos/ChartGalleryDemo.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/chartstyles/chartgallery_styles.css'
 height='300px'
