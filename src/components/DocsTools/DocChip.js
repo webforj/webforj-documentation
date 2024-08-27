@@ -9,7 +9,7 @@ import CodeIcon from '@mui/icons-material/Code';
 import DescriptionIcon from '@mui/icons-material/Description';
 import StyleIcon from '@mui/icons-material/Style';
 
-export default function DocChip( { label, href, clickable, iconName, tooltipText, color  } ) {
+export default function DocChip( { chip, label, href, clickable, iconName, tooltipText, color  } ) {
 
   const mainStyles = css`
     margin-right: 10px;
@@ -28,12 +28,25 @@ export default function DocChip( { label, href, clickable, iconName, tooltipText
   `
 
   let icon;
-  if(iconName === 'scoped'){
-    icon = <BiotechIcon css={iconStyles} />
-  } else if(iconName === 'shadow'){
-    icon = <FiberSmartRecordIcon css={iconStyles} />
-  } else if(iconName === "code"){
+  if(chip === 'shadow'){
+    // A "Shadow DOM" Chip
+    tooltipText = "This component renders with a shadow DOM, an API built into the browser that facilitates encapsulation.";
+    clickable= false;
+    label="Shadow";
+    iconName = 'shadow';
+  } else if (chip === 'name') {
+    // A "DOM Name" chip
+    tooltipText="The name of this web component as it appears in the DOM.";
+    clickable = false;
+    iconName = 'code';
+  } 
+
+  if (iconName === 'shadow'){
+    icon = <FiberSmartRecordIcon css={iconStyles} />;
+  } else if (iconName === 'code'){
     icon = <CodeIcon css={iconStyles} />;
+  } else if(iconName === 'scoped'){
+    icon = <BiotechIcon css={iconStyles} />
   } else{
     icon = <StyleIcon css={iconStyles} />;
   }
