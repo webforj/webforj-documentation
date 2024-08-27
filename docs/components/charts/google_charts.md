@@ -45,22 +45,6 @@ cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/r
 height='300px'
 />
 
-
-<!-- Constructors -->
-
-## Constructors
-
-The `GoogleChart` class provides several constructors to create and initialize charts:
-
-1. `GoogleChart()`: Creates a new `GoogleChart` instance with default settings. This constructor is typically used when you plan to set the chart type separately.
-
-2. `GoogleChart(Type type)`: Instantiates a `GoogleChart` with a specific type provided by the `Type` enumeration. It allows you to define the type of chart right at the point of creation.
-
-Here is an example of how to create a Bar Chart:
-
-    ```java
-    GoogleChart chart = new GoogleChart(GoogleChart.Type.BAR);
-    ```
 ## Options
 
 The `GoogleChart` addon enables extensive customization through a variety of options. These options allow you to tailor the look and functionality of your charts to fit your application's needs. Options are passed as a `Map<String, Object>` to the chart's `setOptions()` method. 
@@ -128,7 +112,6 @@ height='300px'
 />
 
 <!-- tabs={['ChartDemoSettingData.java']} -->
-
 
 ###Loading Data and Options from JSON
 
