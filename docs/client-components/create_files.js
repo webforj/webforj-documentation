@@ -6,7 +6,7 @@ if (!fs.existsSync(outputDirectory)) {
 }
 
 // Sample JSON data (replace with your actual data)
-const jsonUrl = 'https://basishub.github.io/basis-next/docs/dwc-components.json';
+const jsonUrl = 'https://dwc.style/docs/dwc-components.json';
 
 async function fetchData() {
   try {

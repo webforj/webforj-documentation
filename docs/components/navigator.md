@@ -15,7 +15,6 @@ import Chip from '@mui/material/Chip';
 <!-- vale on -->
 
 <DocChip chip='shadow' />
-
 <DocChip chip='name' label="dwc-navigator" />
 
 
