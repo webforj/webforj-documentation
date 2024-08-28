@@ -39,7 +39,12 @@ export default function DocChip( { chip, label, href, clickable, iconName, toolt
     tooltipText="The name of this web component as it appears in the DOM.";
     clickable = false;
     iconName = 'code';
-  } 
+  } else if (chip == 'scoped') {
+    tooltipText = "This component renders with a shadow DOM, an API built into the browser that facilitates encapsulation.";
+    clickable= false;
+    label="Scoped";
+    iconName = 'scoped';  
+  }
 
   if (iconName === 'shadow'){
     icon = <FiberSmartRecordIcon css={iconStyles} />;
