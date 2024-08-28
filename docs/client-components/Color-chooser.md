@@ -12,7 +12,7 @@ import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
 import DocChip from '@site/src/components/DocsTools/DocChip';
 
-<DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Scoped" target="_blank" clickable={false} iconName='scoped' />
+<DocChip chip='scoped' />
 
 <br />
 <br />
