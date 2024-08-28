@@ -9,9 +9,9 @@ import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 import DocChip from '@site/src/components/DocsTools/DocChip';
 
-<DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
+<DocChip chip='shadow' />
 
-<DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-combobox" clickable={false} iconName='code'/>
+<DocChip chip='name' label="dwc-combobox" />
 
 <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" top='true'/>
 
