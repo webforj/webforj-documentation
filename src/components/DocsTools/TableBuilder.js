@@ -8,7 +8,7 @@ export default function TableBuilder(props) {
   const [component, setComponent] = useState(null);
 
   useEffect(() => {
-    fetch("https://basishub.github.io/basis-next/docs/dwc-components.json")
+    fetch("https://dwc.style/docs/dwc-components.json")
       .then((response) => response.json())
       .then((data) => {
         const selectedComponent = data.components.find(
