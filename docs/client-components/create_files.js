@@ -42,7 +42,7 @@ import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
 import DocChip from '@site/src/components/DocsTools/DocChip';
 
-<DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="${(encapsulation[0].toUpperCase()) + encapsulation.substring(1)}" target="_blank" clickable={false} iconName='${encapsulation}' />
+<DocChip chip='${encapsulation}' />
 
 <br />
 <br />

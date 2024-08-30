@@ -32,7 +32,7 @@ export default function DocChip( { chip, label, href, clickable, iconName, toolt
     // A "Shadow DOM" Chip
     tooltipText = "This component renders with a shadow DOM, an API built into the browser that facilitates encapsulation.";
     clickable= false;
-    label="Shadow";
+    label='Shadow';
     iconName = 'shadow';
   } else if (chip === 'name') {
     // A "DOM Name" chip
@@ -40,9 +40,9 @@ export default function DocChip( { chip, label, href, clickable, iconName, toolt
     clickable = false;
     iconName = 'code';
   } else if (chip == 'scoped') {
-    tooltipText = "This component renders with a shadow DOM, an API built into the browser that facilitates encapsulation.";
+    tooltipText = "This component uses scoped components, an alternative approach to the shadow DOM, a browser API that enables encapsulation. These components scope their styles to avoid leaks or conflicts instead of relying on the native shadow DOM.";
     clickable= false;
-    label="Scoped";
+    label='Scoped';
     iconName = 'scoped';  
   }
 
