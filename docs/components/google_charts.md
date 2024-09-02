@@ -12,13 +12,23 @@ import Chip from '@mui/material/Chip';
 
 <DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
 
-<!-- UPDATE THE NAME FOR THE CLIENT COMPONENT HERE (label="???") -->
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="google-chart" clickable={false} iconName='code'/>
 
-<!-- Can't find Javadocs for GoogleChart? -->
-<JavadocLink type="chart" location="com/webforj/googlecharts/GoogleChart" top='true'/>
+<JavadocLink type="googlecharts" location="com/webforj/component/googlecharts/GoogleChart" top='true'/>
 
 <!-- Brief overview of the component and what it is/does -->
+
+:::info Importing Google Charts
+To use the `GoogleChart` class in your app, use the following XML in your POM file:
+
+```xml
+<dependency>
+    <groupId>com.webforj</groupId>
+    <artifactId>webforj-googlecharts</artifactId>
+    <version>${webforj.version}</version>
+</dependency>
+```
+:::
 
 The `GoogleChart` class is a comprehensive solution for embedding rich, interactive charts within web applications. This class acts as a bridge to the [Google Charts](https://developers.google.com/chart) library, offering a wide variety of chart types suitable for any data visualization task.
 
