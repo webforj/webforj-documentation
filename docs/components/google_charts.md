@@ -37,7 +37,7 @@ The `GoogleChart` addon offers a comprehensive array of chart types to suit vari
 path='https://demo.webforj.com/webapp/controlsamples?class=addondemos.chartdemos.ChartGalleryDemo' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/chartdemos/ChartGalleryDemo.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/chartstyles/chartgallery_styles.css'
-height='300px'
+height='600px'
 />
 
 ## Options
@@ -143,7 +143,7 @@ Invoke `redraw()` in scenarios such as:
 path='https://demo.webforj.com/webapp/controlsamples?class=addondemos.chartdemos.ChartDemoRedraw' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/addondemos/chartdemos/ChartDemoRedraw.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/chartstyles/redrawchart_styles.css'
-height='300px'
+height='500px'
 />
 
 <!-- tabs={['ChartDemoRedraw.java', 'redrawchart_styles.css']} -->
