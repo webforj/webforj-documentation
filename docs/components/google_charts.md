@@ -1,8 +1,5 @@
 ---
-sidebar_position: 1
 title: Google Charts
-id: Charts
-draft: true
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
@@ -32,11 +29,9 @@ height='300px'
 />
 
 
-## Chart Types
+## Chart types
 
-The `GoogleChart` addon offers a comprehensive array of chart types to suit various data visualization requirements. Selecting the appropriate chart type is essential for effectively communicating the data's story.
-
-For more information on the different Chart Types available, see **[this article](./chart_types.md)**.
+The `GoogleChart` addon offers a comprehensive array of chart types to suit various data visualization requirements. Selecting the appropriate chart type is essential for effectively communicating the data's story. See the gallery below for examples of common charts that can be used in a webforJ app.
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples?class=addondemos.chartdemos.ChartGalleryDemo' 
@@ -47,7 +42,7 @@ height='300px'
 
 ## Options
 
-The `GoogleChart` addon enables extensive customization through a variety of options. These options allow you to tailor the look and functionality of your charts to fit your application's needs. Options are passed as a `Map<String, Object>` to the chart's `setOptions()` method. 
+The `GoogleChart` addon enables extensive customization through a variety of options. These options allow you to tailor the look and functionality of your charts to fit your app's needs. Options are passed as a `Map<String, Object>` to the chart's `setOptions()` method. 
 
 Here's an example for setting a chart's options:
 
@@ -62,11 +57,11 @@ chart.setOptions(options);
 
 For more information on the options available for specific charts, see the [Google Visualization API reference (Chart Gallery)](https://developers.google.com/chart/interactive/docs/gallery).
 
-## Setting Data
+## Setting data
 
 Visualizing data with `GoogleChart` requires properly structuring and setting the data. This guide will walk you through preparing your data and applying it to your charts.
 
-### Basic Data Setup
+### Basic data setup
 
 The most straightforward way to define the data is by using `List<Object>`, where each row is a list of values.
 
@@ -81,7 +76,7 @@ data.add(Arrays.asList("Sleep", 7));
 chart.setData(data);
 ```
 
-### Using Maps for More Complex Structures
+### Using maps for more complex structures
 
 For more complex data structures, you can use maps to represent rows and then convert them into the required format.
 
@@ -113,7 +108,7 @@ height='300px'
 
 <!-- tabs={['ChartDemoSettingData.java']} -->
 
-###Loading Data and Options from JSON
+### Loading data and options from JSON
 
 You can also load data and options from JSON files using Gson for easier management. This approach helps keep your data and options organized and easy to update.
 
@@ -134,7 +129,7 @@ Map<String, Object> options = new Gson().fromJson(
 chart.setOptions(options);
 ```
 
-## Updating Chart Visuals
+## Updating chart visuals
 
 Refreshing or updating the appearance of your charts in response to data changes, user interactions, or visual option adjustments is straightforward with the `redraw()` method. This method ensures that your charts remain accurate and visually aligned with the underlying data or any modifications to their settings.
 
@@ -153,7 +148,7 @@ height='300px'
 
 <!-- tabs={['ChartDemoRedraw.java', 'redrawchart_styles.css']} -->
 
-## Exporting Charts as Images
+## Exporting charts as images
 
 The `getImageUri()` method provides a way to export your Google Charts as base64-encoded PNG images. This method is particularly useful for sharing charts outside the web environment, embedding them into emails or documents, or simply for archival purposes.
 
