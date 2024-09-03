@@ -120,13 +120,13 @@ Disabling on click not only helps optimize the processing of actions, but also p
 
 While there are many use cases for each of the various themes, some examples uses are:
 
-  - **Danger**: Actions with severe consequences, such as clearing filled-out information, or permanently deleting an account/data is represents a good use case for buttons with the Danger theme.
-  - **Default**: The default theme is appropriate for actions throughout an application that do not require special attention and that are generic, such as toggling a setting.
-  - **Primary**: This theme is appropriate as a main "call-to-action" on a page, such as signing up, saving changes, or continuing to another page.
-  - **Success**: Success themed buttons are excellent for visualizing successful completion of an element in an application, such as the submission of a form or completion of a sign-up process. The success theme can by programmatically applied once a successful action has been completed.
-  - **Warning**: Warning buttons are useful to indicate users they are about to perform a potentially risky action, such as when navigating away from a page with unsaved changes. These actions are often less impactful than those that would use the Danger theme.
+  - **Danger**: Best for actions with severe consequences, such as clearing filled-out information or permanently deleting an account/data.
+  - **Default**: Appropriate for actions throughout an application that don't require special attention and are generic, such as toggling a setting.
+  - **Primary**: Appropriate as a main "call-to-action" on a page, such as signing up, saving changes, or continuing to another page.
+  - **Success**: Excellent for visualizing successful completion of an element in an application, such as the submission of a form or completion of a sign-up process. The success theme can by programmatically applied once a successful action has been completed.
+  - **Warning**: Useful to indicate that a user is about to perform a potentially risky action, such as navigating away from a page with unsaved changes. These actions are often less impactful than those that would use the Danger theme.
   - **Gray**: Good for subtle actions, such as minor settings or actions that are more supplementary to a page, and not part of the main functionality.
-  - **Info**: The Info theme is a good choice to provide clarifying, additional information to a user when pushed.
+  - **Info**: Good for providing additional clarifying information to a user.
 
 Shown below are example buttons with each of the supported Themes applied: <br/>
 
