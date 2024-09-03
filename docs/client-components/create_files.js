@@ -1,6 +1,9 @@
 const fs = require('fs');
 
+// Define the output directory where markdown files will be generated
 const outputDirectory = './';
+
+// Ensure the output directory exists
 if (!fs.existsSync(outputDirectory)) {
   fs.mkdirSync(outputDirectory);
 }
@@ -16,10 +19,6 @@ async function fetchData() {
     }
 
 const jsonData = await response.json();
-
-// Define the output directory where markdown files will be generated
-
-// Ensure the output directory exists
 
 // Iterate through the components in the JSON data
 jsonData.components.forEach((componentData) => {
@@ -44,7 +43,6 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <DocChip chip='${encapsulation}' />
 
-<br />
 <br />
 
 :::info CLIENT COMPONENT
