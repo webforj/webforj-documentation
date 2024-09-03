@@ -15,7 +15,6 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <DocChip chip='shadow' />
 
 <br />
-<br />
 
 :::info CLIENT COMPONENT
 This section outlines styling information for the **`<dwc-listbox>`** component. This component is **client side only** - it cannot be instantiated on its own via the API, but may make up part of API components.
@@ -25,7 +24,11 @@ This section outlines styling information for the **`<dwc-listbox>`** component.
 These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
 <TableBuilder tag='dwc-listbox' table="parts"/>
 
+### CSS Properties
 
+  These are the various CSS properties that are used in the component, with a short description of their use.
+  
+  <TableBuilder tag='dwc-listbox' table="properties"/>
 
 ### Reflected Attributes
 
