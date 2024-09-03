@@ -15,7 +15,6 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <DocChip chip='shadow' />
 
 <br />
-<br />
 
 :::info CLIENT COMPONENT
 This section outlines styling information for the **`<dwc-datefield-spinner>`** component. This component is **client side only** - it cannot be instantiated on its own via the API, but may make up part of API components.
