@@ -92,7 +92,7 @@ const config = {
       announcementBar: {
         id: '24.11',
         content:
-          'We are excited to announce webforJ version 24.11 is live! Read more about the changes and features <a href=/blog/whats-new-24.11>here.</a> ',
+          'We are excited to announce webforJ version 24.11 is live! Read more about the changes and features <a href=/blog/whats-new-v24.11>here.</a> ',
         // backgroundColor: 'var(--announcement-background)',
         // textColor: '#ebedf0',
         // backgroundColor: 'var(--chip-background)',
