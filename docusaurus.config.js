@@ -105,6 +105,7 @@ const config = {
         logo: {
           alt: 'webforJ Logo',
           src: 'img/webforj.svg',
+          href: 'https://webforj.com/',
         },
         items: [
           // {
