@@ -1,0 +1,208 @@
+---
+title: ColumnsLayout
+---
+
+import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
+import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
+import DocChip from '@site/src/components/DocsTools/DocChip';
+
+<DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
+
+<DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-columns-layout" clickable={false} iconName='code'/>
+
+<JavadocLink type="foundation" location="com/webforj/component/layout/columnslayout" top='true'/>
+
+The `ColumnsLayout` components in webforJ allows developers to create layouts using a flexible and responsive vertical layout, which provides dynamic columns that adjust based on the available width. This component simplifies the creation of multi-column layouts by automatically managing breakpoints and alignments.
+
+:::info Horizontal Layouts 
+This can be used in place of, or in combination with, the [`FlexLayout`](./flex_layouts) component - an equally powerful tool for horizontal layouts.
+:::
+
+## Basics
+
+When first instantiated, the `ColumnsLayout` uses two columns to display items added to the layout. By default, it takes the full width of its parent elements, and grows as needed to fit additional content. The display of added items can be further calibrated with the use of [`Breakpoint`](./columns-layout#breakpoints) and `Alignment` settings, which are discussed in following sections in more detail.
+
+<ComponentDemo 
+path='http://localhost:8888/webapp/controlsamples?class=componentdemos.columnslayoutdemos.ColumnsLayoutDemo' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/columnslayoutdemos/ColumnsLayoutDemo.java'
+height="350px"
+/>
+
+## Breakpoints
+
+At its core, the `ColumnsLayout` is designed to provide a fluid, grid-like system that adapts to the width of its parent container. Unlike traditional fixed-grid systems, this layout allows developers to specify a number of columns at a given width, and dynamically calculates the number of displayed columns based on set `Breakpoint` objects. 
+
+This allows a `ColumnsLayout` to smoothly adapt from a more constrained space on small screens to a wider area on larger screens, offering a responsive design to a developer without the need for custom implementation.
+
+### Understanding a `Breakpoint`
+
+A `Breakpoint` can be specified using the `Breakpoint` class, which takes three parameters:
+
+1. **Name (optional)**:
+Naming a breakpoint allows you to reference it in future configurations.
+
+2. **Minimum width**:
+Each breakpoint has a specific range that determines when its layout is applied. The minimum width is defined explicitly, and the next breakpoint determines the maximum width if it exists. You can use an integer to define the minimum width in pixels or use a `String` to specify other units such as vw, %, or em.
+
+3. **Number of columns**:
+Specify how many columns a breakpoint should have with this integer.
+
+
+:::info `Breakpoint` evaluation
+Breakpoints are evaluated in ascending order of the width, meaning the layout will use the first matching breakpoint.
+:::
+
+
+### Applying breakpoints
+
+Breakpoints are applied to a `ColumnsLayout` in one of two ways: during construction, or by using the `addBreakpoint(Breakpoint)` method as shown below. 
+
+```java
+ColumnsLayout layout = new ColumnsLayout()
+    .addBreakpoint(new Breakpoint(0, 1))      // 1 column at widths >= 0px
+    .addBreakpoint(new Breakpoint(600, 2))    // 2 columns at widths >= 600px
+    .addBreakpoint(new Breakpoint(1200, 4));  // 4 columns at widths >= 1200px
+```
+
+The demonstration below shows an example of setting multiple breakpoints at construction, using breakpoints to configure the [`Span`](./columns-layout#spans) of a component, and demonstrates the resizing capabilities of the `ColumnsLayout` when the app is resized:
+
+<ComponentDemo 
+path='http://localhost:8888/webapp/controlsamples?class=componentdemos.columnslayoutdemos.ColumnsLayoutBreakpoints' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/columnslayoutdemos/ColumnsLayoutBreakpoints.java'
+height="350px"
+/>
+
+## Column `Span` and spans per `Breakpoint`
+
+Column spans in `ColumnsLayout` allow you to control how many columns an item occupies, giving you more control over the appearance of your layout at varying widths. This is especially useful when you need certain elements to take up more or less space depending on the screen size or design requirements.
+
+### Managing column spans
+
+By default, each item in the ColumnsLayout takes up exactly one column. However, you can customize this behavior by setting the column span for individual items. A span specifies the number of columns an item should occupy.
+
+```java
+Button button = new Button("Click Me");
+layout.addComponent(button);
+layout.setSpan(button, 2);  // Item spans 2 columns
+```
+
+In the above example, the button occupies two columns instead of the default one. The `setSpan()` method allows you to specify how many columns a component should span within the layout.
+
+### Adjusting column spans with breakpoints
+
+You can also adjust column spans dynamically based on breakpoints. This feature is useful when you want an item to span different numbers of columns depending on the screen size. For instance, you may want an element to occupy a single column on mobile devices but span multiple columns on larger screens.
+
+```java
+TextField email = new TextField("Email");
+//...
+List.of(
+  new ColumnsLayout.Breakpoint("default", 0 , 1),
+  new ColumnsLayout.Breakpoint("small", "20em", 1),
+  new ColumnsLayout.Breakpoint("medium", "40em", 2),
+  new ColumnsLayout.Breakpoint("large", "60em", 3)
+)
+//...
+columnsLayout.setSpan(email, "medium", 2); //email field will span 2 columns when medium breakpoint is active
+//...
+```
+
+This level of customization ensures that your layout remains responsive and appropriately structured across different devices.
+
+## Placing items withing columns
+
+`ColumnsLayout` provides the ability to place items in specific columns, giving more control over the arrangement of elements. You can manually specify where an item should appear within the layout, ensuring important components display as intended.
+
+### Basic column placement
+
+By default, items are placed in the next available column, filling from left to right. However, you can override this behavior and specify the exact column where an item should be placed. To place an item in a specific column, use the `setColumn()` method. In this example, the button is placed in the second column of the layout, regardless of the order in which it was added relative to other components:
+
+```java
+Button button = new Button("Submit");
+layout.addComponent(button);
+layout.setColumn(button, 2);  // Place the item in the second column
+```
+
+### Adjusting Placement per Breakpoint
+
+Just like with column spans, you can adjust the placement of items based on the screen size using breakpoints. This is useful for reordering or relocating elements in the layout as the viewport changes.
+
+```java
+TextField email = new TextField("Email");
+//...
+List.of(
+  new ColumnsLayout.Breakpoint("default", 0 , 1),
+  new ColumnsLayout.Breakpoint("small", "20em", 1),
+  new ColumnsLayout.Breakpoint("medium", "40em", 2),
+  new ColumnsLayout.Breakpoint("large", "60em", 3)
+)
+//...
+columnsLayout.setColumn(email, "medium", 2); //email field will appear in 2nd column when medium breakpoint is active
+//...
+```
+
+In the following demonstration, notice that when the `"medium"` breakpoint is triggered, the `email` field spans both columns, and the `confirmPassword` field is placed into the first column, rather than its default placement in the second column:
+
+<ComponentDemo 
+path='http://localhost:8888/webapp/controlsamples?class=componentdemos.columnslayoutdemos.ColumnsLayoutSpanColumn' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/columnslayoutdemos/ColumnsLayoutSpanColumn.java'
+height="350px"
+/>
+
+:::tip Avoid collisions
+When multiple items are placed in a layout with differing spans and/or column assignments, ensure that the combined spans and placements of items in a row don’t overlap. The layout attempts to gracefully manage spacing automatically, but careful design of spans and breakpoints will prevent unintended display of items.
+:::
+
+## Vertical and horizontal item alignments
+
+In the `ColumnsLayout`, each item can be aligned both horizontally and vertically within its column, giving control over how content is positioned inside the layout.
+
+**Horizontal alignment** of an item is controlled using the `setHorizontalAlignment()` method. This property determines how an item aligns within its column along the horizontal axis.
+
+**Vertical alignment** specifies how an item is positioned within its column along the vertical axis. This is useful when columns have varying heights, and you want to control how items are vertically distributed. 
+
+Available `Alignment` options include:
+
+- `START`: Aligns the item to the left of the column (default).
+- `CENTER`: Centers the item horizontally within the column.
+- `END`: Aligns the item to the right of the column.
+- `STRETCH`: Stretches the component to fill the layout
+- `BASELINE`: Aligns based on the text or content inside the column, aligning items to the text baseline rather than other alignment options.
+- `AUTO`: Auto alignment.
+
+<ComponentDemo 
+path='http://localhost:8888/webapp/controlsamples?class=componentdemos.columnslayoutdemos.ColumnsLayoutAlignment' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/columnslayoutdemos/ColumnsLayoutAlignment.java'
+height="350px"
+/>
+
+In the demo above, the `Submit` button has been given `ColumnsLayout.Alignment.END` to ensure that it appears at the end, or in this case to the right, of its column.
+
+## Item spacing 
+
+Controlling the space between columns in the `ColumnsLayout` between columns (horizontal spacing) and between rows (vertical spacing) helps developers fine-tune the layout.
+
+To set the horizontal spacing of the layout, use the `setHorizontalSpacing()` method:
+
+```java
+layout.setHorizontalSpacing(20);  // Set 20px space between columns
+```
+
+Similarly, use the `setVerticalSpacing()` method to configure the space between rows of the layout:
+
+```java
+layout.setVerticalSpacing("1.5em");  // Set 15px space between rows
+```
+
+:::tip CSS units
+These methods can take a CSS-style value as a string, or an integer which is set as a pixel value.
+:::
+
+## Horizontal and vertical layouts
+
+Building responsive and attractive layouts is possible using both the [`FlexLayout`](./flex_layouts) component and the `ColumnsLayout` component, as well as a combination of the two. Below is a sample of the [form created in the FlexLayout](./flex_layouts#example-form) article, but using a `ColumnLayout` scheme instead:
+
+<ComponentDemo 
+path='http://localhost:8888/webapp/controlsamples?class=componentdemos.columnslayoutdemos.ColumnsLayoutForm' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/columnslayoutdemos/ColumnsLayoutForm.java'
+height="450px"
+/>
