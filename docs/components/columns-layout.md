@@ -10,7 +10,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-columns-layout" clickable={false} iconName='code'/>
 
-<JavadocLink type="foundation" location="com/webforj/component/layout/columnslayout" top='true'/>
+<JavadocLink type="columnslayout" location="com/webforj/component/layout/columnslayout/ColumnsLayout" top='true'/>
 
 The `ColumnsLayout` components in webforJ allows developers to create layouts using a flexible and responsive vertical layout, which provides dynamic columns that adjust based on the available width. This component simplifies the creation of multi-column layouts by automatically managing breakpoints and alignments.
 
@@ -42,7 +42,7 @@ A `Breakpoint` can be specified using the `Breakpoint` class, which takes three 
 Naming a breakpoint allows you to reference it in future configurations.
 
 2. **Minimum width**:
-Each breakpoint has a specific range that determines when its layout is applied. The minimum width is defined explicitly, and the next breakpoint determines the maximum width if it exists. You can use an integer to define the minimum width in pixels or use a `String` to specify other units such as vw, %, or em.
+Each breakpoint has a specific range that determines when its layout is applied. The minimum width is defined explicitly, and the next breakpoint determines the maximum width if it exists. You can use an integer to define the minimum width in pixels or use a `String` to specify other units such as `vw`, `%`, or `em`.
 
 3. **Number of columns**:
 Specify how many columns a breakpoint should have with this integer.
@@ -59,9 +59,12 @@ Breakpoints are applied to a `ColumnsLayout` in one of two ways: during construc
 
 ```java
 ColumnsLayout layout = new ColumnsLayout()
-    .addBreakpoint(new Breakpoint(0, 1))      // 1 column at widths >= 0px
-    .addBreakpoint(new Breakpoint(600, 2))    // 2 columns at widths >= 600px
-    .addBreakpoint(new Breakpoint(1200, 4));  // 4 columns at widths >= 1200px
+    // 1 column at widths >= 0px
+    .addBreakpoint(new Breakpoint(0, 1))
+    // 2 columns at widths >= 600px
+    .addBreakpoint(new Breakpoint(600, 2))
+    // 4 columns at widths >= 1200px
+    .addBreakpoint(new Breakpoint(1200, 4));  
 ```
 
 The demonstration below shows an example of setting multiple breakpoints at construction, using breakpoints to configure the [`Span`](./columns-layout#spans) of a component, and demonstrates the resizing capabilities of the `ColumnsLayout` when the app is resized:
@@ -69,7 +72,7 @@ The demonstration below shows an example of setting multiple breakpoints at cons
 <ComponentDemo 
 path='http://localhost:8888/webapp/controlsamples?class=componentdemos.columnslayoutdemos.ColumnsLayoutBreakpoints' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/columnslayoutdemos/ColumnsLayoutBreakpoints.java'
-height="350px"
+height="375px"
 />
 
 ## Column `Span` and spans per `Breakpoint`
@@ -83,7 +86,8 @@ By default, each item in the ColumnsLayout takes up exactly one column. However,
 ```java
 Button button = new Button("Click Me");
 layout.addComponent(button);
-layout.setSpan(button, 2);  // Item spans 2 columns
+// Item spans 2 columns
+layout.setSpan(button, 2);
 ```
 
 In the above example, the button occupies two columns instead of the default one. The `setSpan()` method allows you to specify how many columns a component should span within the layout.
@@ -102,7 +106,8 @@ List.of(
   new ColumnsLayout.Breakpoint("large", "60em", 3)
 )
 //...
-columnsLayout.setSpan(email, "medium", 2); //email field will span 2 columns when medium breakpoint is active
+//email field will span 2 columns when medium breakpoint is active
+columnsLayout.setSpan(email, "medium", 2);
 //...
 ```
 
@@ -119,7 +124,8 @@ By default, items are placed in the next available column, filling from left to 
 ```java
 Button button = new Button("Submit");
 layout.addComponent(button);
-layout.setColumn(button, 2);  // Place the item in the second column
+// Place the item in the second column
+layout.setColumn(button, 2);  
 ```
 
 ### Adjusting Placement per Breakpoint
@@ -136,7 +142,8 @@ List.of(
   new ColumnsLayout.Breakpoint("large", "60em", 3)
 )
 //...
-columnsLayout.setColumn(email, "medium", 2); //email field will appear in 2nd column when medium breakpoint is active
+//email field will appear in 2nd column when medium breakpoint is active
+columnsLayout.setColumn(email, "medium", 2); 
 //...
 ```
 
@@ -184,17 +191,19 @@ Controlling the space between columns in the `ColumnsLayout` between columns (ho
 To set the horizontal spacing of the layout, use the `setHorizontalSpacing()` method:
 
 ```java
-layout.setHorizontalSpacing(20);  // Set 20px space between columns
+// Set 20px space between columns
+layout.setHorizontalSpacing(20);  
 ```
 
 Similarly, use the `setVerticalSpacing()` method to configure the space between rows of the layout:
 
 ```java
-layout.setVerticalSpacing("1.5em");  // Set 15px space between rows
+// Set 15px space between rows
+layout.setVerticalSpacing("1.5em");  
 ```
 
 :::tip CSS units
-These methods can take a CSS-style value as a string, or an integer which is set as a pixel value.
+You can use an integer to define the minimum width in pixels or use a `String` to specify other units such as `vw`, `%`, or `em`.
 :::
 
 ## Horizontal and vertical layouts
