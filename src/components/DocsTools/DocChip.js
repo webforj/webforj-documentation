@@ -59,7 +59,7 @@ export default function DocChip( { chip, label, href, clickable, iconName, toolt
 
   return (
     <Tooltip title={tooltipText} arrow css={mainStyles}>
-      <Chip label={label} component="a" href={clickable ? href : null} icon={icon} clickable={clickable} color={color} target="_blank" />
+      <Chip label={label} component="a" href={clickable ? href : null} icon={icon} clickable={clickable} color={color} target="_blank" style={{marginBottom: '1em'}} />
     </Tooltip>
   )
 }
