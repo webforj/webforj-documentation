@@ -31,7 +31,8 @@ export default function DocChip( { chip, label, href, clickable, iconName, toolt
   if(chip === 'shadow'){
     // A "Shadow DOM" Chip
     tooltipText = "This component renders with a shadow DOM, an API built into the browser that facilitates encapsulation.";
-    clickable= false;
+    clickable= true;
+    href = "https://documentation.webforj.com/docs/glossary#shadow-dom";
     label='Shadow';
     iconName = 'shadow';
   } else if (chip === 'name') {
