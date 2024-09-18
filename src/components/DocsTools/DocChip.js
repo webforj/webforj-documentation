@@ -12,8 +12,8 @@ import StyleIcon from '@mui/icons-material/Style';
 export default function DocChip( { chip, label, href, clickable, iconName, tooltipText, color  } ) {
 
   const mainStyles = css`
-    margin-right: 10px;
-    padding-left: 5px;
+    margin-right: 0.5em;
+    margin-bottom: 1em;
     background-color: var(--chip-background);
     color: var(--chip-text);
 
@@ -59,7 +59,7 @@ export default function DocChip( { chip, label, href, clickable, iconName, toolt
 
   return (
     <Tooltip title={tooltipText} arrow css={mainStyles}>
-      <Chip label={label} component="a" href={clickable ? href : null} icon={icon} clickable={clickable} color={color} target="_blank" style={{marginBottom: '1em'}} />
+      <Chip label={label} component="a" href={clickable ? href : null} icon={icon} clickable={clickable} color={color} target="_blank" />
     </Tooltip>
   )
 }
