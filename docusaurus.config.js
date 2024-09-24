@@ -106,6 +106,7 @@ const config = {
           alt: 'webforJ Logo',
           src: 'img/webforj.svg',
           href: 'https://webforj.com/',
+          target: '_self'
         },
         items: [
           // {
