@@ -2,7 +2,6 @@
   "label": "Installation",
   "position": 2,
   "link": {
-    "type": "doc",
-    "id": "installation"
+    "type": "generated-index"
   }
 }

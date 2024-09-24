@@ -119,8 +119,8 @@ const config = {
             docid: 'intro',
             position: 'left',
             label: 'Installation',
-            to: '/docs/installation',
-            activeBasePath: '/docs/installation'
+            to: '/docs/category/installation',
+            activeBasePath: '/docs/category/installation'
           },
           {
             docid: 'started',

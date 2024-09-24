@@ -1,7 +1,6 @@
 ---
 sidebar_position: 4
 title: Event Options
-slug: event_options
 ---
 <!-- sidebar_class_name: sidebar--item__hidden -->
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';

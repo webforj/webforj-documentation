@@ -36,7 +36,7 @@ When using the installation plugin, the tags within the `<configuration>` tag ca
 </plugin>
 ```
 
-- **`<deployurl>`** This tag is the URL where the webforJ endpoint for the project installation can be reached. For users running their application locally, a default port of 8888 is used. For users running Docker, the port should be changed to the port that was entered when [configuring the Docker container](../installation/docker_user.md#2-configuration).
+- **`<deployurl>`** This tag is the URL where the webforJ endpoint for the project installation can be reached. For users running their application locally, a default port of 8888 is used. For users running Docker, the port should be changed to the port that was entered when [configuring the Docker container](../installation/docker-user.md#2-configuration).
 
 - **`<classname>`** This tag should contain the package and class name of the application you wish to run. This is helpful for projects that contain multiple classes that extend the `App` class, and allows you to choose which program to run from the base URL.
 

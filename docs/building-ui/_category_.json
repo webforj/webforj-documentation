@@ -2,8 +2,7 @@
   "label": "Building UIs",
   "position": 4,
   "link": {
-    "type": "doc",
-    "id" : "home"
+    "type": "generated-index"
   }
 }
   
