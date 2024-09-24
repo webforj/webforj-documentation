@@ -117,7 +117,7 @@ If this method is used on a `Tab` that is already associated with a `Component`,
 
 ## Configuration and Layout
 
-The `TabbedPane` class has two constituent parts: a `Tab` that is displayed in a specified location, and a component to be displayed. This can be a single component, or a [`Composite`](../ui/composite.md) component, allowing for the display of more complex components within a tab's content section.
+The `TabbedPane` class has two constituent parts: a `Tab` that is displayed in a specified location, and a component to be displayed. This can be a single component, or a [`Composite`](../building-ui/composite-components) component, allowing for the display of more complex components within a tab's content section.
 
 ### Swiping
 

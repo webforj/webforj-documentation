@@ -35,7 +35,7 @@ Click on the small **"Open in Browser"** button, resembling a globe, in the **"L
 
 ![Browser Button](./_images/github/4.png#rounded-border)
 
-When the browser tab is open, you'll want to add to the end of the URL to ensure that your application is run. First, add a `/webapp` to the end of the web address, which will end in `github.dev`. After that, add the correct app and class name (if applicable) to show the desired application. To see how to properly configure the URL, [follow this guide](../getting_started/configuration.md).
+When the browser tab is open, you'll want to add to the end of the URL to ensure that your application is run. First, add a `/webapp` to the end of the web address, which will end in `github.dev`. After that, add the correct app and class name (if applicable) to show the desired application. To see how to properly configure the URL, [follow this guide](../getting-started/configuration).
 
 :::success Tip
 If you want to run the default "Hello World" program, simple add `/hworld` after the `/webapp` in the URL:
