@@ -1,7 +1,6 @@
 ---
 sidebar_position: 2
 title: Composite Components
-slug: composite
 draft: false
 ---
 

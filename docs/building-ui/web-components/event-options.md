@@ -1,7 +1,6 @@
 ---
 sidebar_position: 4
 title: Event Options
-slug: event_options
 ---
 <!-- sidebar_class_name: sidebar--item__hidden -->
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
@@ -17,7 +16,7 @@ Event data is a key feature of `ElementEventOptions`, allowing developers to att
 For instance, consider a scenario where you have a button click event, and you want to pass the current user's username along with the event. Instead on querying a user's username from the client each time, send this information along with the event as data.
 
 :::tip
-For more information, see the [events](../../ui/events.md) and [architecture](../../architecture/architecture.md) pages.
+For more information, see the [events](../../building-ui/events) and [architecture](../../architecture/architecture.md) pages.
 :::
 
 To add data to the event options, you can use the `addData()` method.

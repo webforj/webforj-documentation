@@ -6,7 +6,7 @@ title: Hello World
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 
 
-To start a simple application, it is recommended to use webforJ's [HelloWorldJava repository](https://github.com/webforj/webforj-hello-world) as a template. This can be done using any of the [installation methods](../../installation/installation.md).
+To start a simple application, it is recommended to use webforJ's [HelloWorldJava repository](https://github.com/webforj/webforj-hello-world) as a template. This can be done using any of the [installation methods](../../installation/docker-user).
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/HelloWorldJava?' 
@@ -56,7 +56,7 @@ This is an ideal pattern for exploration purposes or simple applications. For mo
 """)
 ```
 
-This is the inline CSS that will be applied to your application. Either continue adding to this section, or create a separate stylesheet using [this page](../../styling/getting_started.md) as a reference.
+This is the inline CSS that will be applied to your application. Either continue adding to this section, or create a separate stylesheet using [this page](../../styling/getting-started) as a reference.
 
 :::tip
 [This plugin for VS Code](https://marketplace.visualstudio.com/items?itemName=BEU.vscode-java-html&ssr=false#overview) allows you to see syntax highlighting for CSS and HTML within your webforJ code. To do this, install the extension, and add either `/* css */` or `/* html */`, depending on the desired highlighting, before a multiline string in triple quotes. You should then see the contents of the string highlighted depending on the specified language.

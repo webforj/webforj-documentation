@@ -155,7 +155,6 @@ To ensure an optimal user experience when using the `ComboBox` component, consid
 
 4. **Default Selection**: Set a default selection, especially if there is a common or recommended choice. This enhances the user experience by reducing the need for extra clicks.
 
-5. **ComboBox vs. Other List Components**: A `ComboBox` should be used over other List components in the following situations:
-
-  >- Multiple Selection is not needed or required, and all items do not need to be displayed at once.
-  >- A selection of predefined choices, ***as well as custom entry*** is desired, allowing users to enter custom or data or select predetermined, often commonly used items.
+5. **ComboBox vs. Other List Components**: A `ComboBox` is the best choice if you need a single input from the user and you wish to provide them with predetermined choices and the ability to customize their input. Another list component may be better if you need the following behaviors:
+    - Multiple Selection and display all items at once: [ListBox](./list-box.md)
+    - Prevent custom input: [ChoiceBox](./choice-box.md)

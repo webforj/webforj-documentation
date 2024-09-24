@@ -8,7 +8,7 @@ displayed_sidebar: documentationSidebar
 Once webforJ and all applicable dependencies have been installed and the POM configuration has been completed, it's time to start creating! If you followed the installation guide, a sample "Hello World" program should be included already. However, in this section, we will demonstrate how to create **a new application from scratch**.
 
 :::tip
-Using the [HelloWorldJava](./Templates/hello_world.md) program will help expedite the creation of a simple application.
+Using the [HelloWorldJava](./templates/hello-world) program will help expedite the creation of a simple application.
 :::
 
 ## Start a new application
@@ -97,7 +97,7 @@ public class ExampleClass extends App{
 Once you have completed these steps, you can use the [installation plugin](./configuration.md) to compile and deploy your application. 
 
 :::tip
-Visit [this section](../components/home) to see the various components that you can use in webforJ. To see how to [create your own components](../ui/home), see this section.
+Visit [this section](../components/home) to see the various components that you can use in webforJ. To see how to [create your own components](../building-ui/basics), see this section.
 :::
 
 ### App data

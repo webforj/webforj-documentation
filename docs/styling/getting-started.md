@@ -1,11 +1,9 @@
 ---
 sidebar_position: 1
 displayed_sidebar: documentationSidebar
-id: "styling_intro"
 pagination_prev: "components/tabbed-pane"
+title: Getting Started
 ---
-
-# Styling
 
 ## Application Theme
 
