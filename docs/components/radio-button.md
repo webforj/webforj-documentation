@@ -62,7 +62,7 @@ Radio buttons have built-in functionality to set text to be displayed either to 
 path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.radiobuttondemos.RadioButtonText' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/radiobuttondemos/RadioButtonText.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/radiobuttonstyles/radiobutton_styles.css'
-height="100px"
+height="120px"
 />
 
 
