@@ -5,7 +5,6 @@ title: Web Storage
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 
-## Overview
 [Web storage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) is a fundamental concept in web development that allows websites to store data on the client side. This enables web applications to save state, preferences, and other information locally on the user's browser. Web storage provides a way to persist data across page reloads and browser sessions, reducing the need for repeated server requests and enabling offline capabilities.
 
 webforJ supports three mechanisms for storing client data: [**Cookies**](#cookies), [**Session Storage**](#session-storage), and [**Local Storage**](#local-storage).
