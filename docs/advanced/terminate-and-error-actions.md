@@ -4,8 +4,6 @@ title: Terminate and Error Actions
 
 When developing applications with the webforJ, it's essential to define how your app behaves when it terminates or encounters an error. The framework provides mechanisms to customize these behaviors through `terminate` and `error` actions.
 
-This article explains how to configure `terminate` and `error` actions in your app, the default behaviors, and how to customize them to fit your needs.
-
 ## Overview
 
 The `App` class allows you to define actions that execute when the app terminates normally or when it encounters an error. These actions are instances of the `AppCloseAction` interface and can be set using:
