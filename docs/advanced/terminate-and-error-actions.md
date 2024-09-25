@@ -116,7 +116,7 @@ In some cases, you might want to display a custom termination page when your app
 Here's an example of how to create a custom termination page:
 
 ```java
-public class WebforjHelloWorld extends App {
+public class MyApp extends App {
 
   @Override
   public void run() throws WebforjException {
