@@ -192,3 +192,7 @@ path='https://demo.webforj.com/webapp/controlsamples?class=layout_demos.FlexDemo
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/FlexDemo.java'
 height="500px"
 />
+
+:::tip
+Using the [`ColumnsLayout`](../components/columns-layout) class, you can achieve a similar layout.
+:::
