@@ -34,8 +34,7 @@ export default function JavadocLink( { type, location, top, children, code, suff
     ${ top && css`
     margin-bottom: 1em;
     margin-left: 0.5em;
-    /* float: right; */
-    /* display: inline-block; */
+    float: right;
     `}
   `;
 
@@ -51,11 +50,9 @@ export default function JavadocLink( { type, location, top, children, code, suff
     <>
     {
     top === 'true' && (
-    <div css={mainStyles}>
-      <Tooltip title="JavaDoc" arrow>
+      <Tooltip title="JavaDoc" arrow css={mainStyles}>
         <Chip css={apiStyles} label='Java API' component="a" href={url} icon={<AutoStoriesIcon />} clickable={true} color='primary' target="_blank" />
       </Tooltip>
-    </div>
     )
     }
   {

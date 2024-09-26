@@ -7,9 +7,9 @@ draft: false
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-<JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
-
 # Composite Components in webforJ
+
+<JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
 Developers will often wish to create components that contain constituent components for application level use. The `Composite` component gives developers the tools they need to create their own components while maintaining control over what they choose to expose to users. 
 
