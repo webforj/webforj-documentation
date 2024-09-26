@@ -1,5 +1,6 @@
 ---
 title: Spinner
+draft: true
 ---
 
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
