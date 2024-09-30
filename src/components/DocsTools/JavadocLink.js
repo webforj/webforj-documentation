@@ -31,7 +31,7 @@ export default function JavadocLink( { type, location, top, children, code, suff
 
   const mainStyles = css`
 
-    ${ top && css`
+    ${top => top && css`
     margin-bottom: 1em;
     margin-left: 0.5em;
     float: right;
@@ -46,6 +46,14 @@ export default function JavadocLink( { type, location, top, children, code, suff
   }
   `;
 
+  const nextElementRef = useRef(null);
+
+  useEffect(() => {
+    if (nextElementRef.current) {
+      nextElementRef.current.style.clear = "both";
+    }
+  }, []);
+
   return (
     <>
     {
@@ -57,18 +65,14 @@ export default function JavadocLink( { type, location, top, children, code, suff
     }
   {
     top !== 'true' && !code && (
-      <div css={mainStyles}>
         <a href={url} target="_blank">{children}</a>
-      </div>
     )
   }
   {
     top !== 'true' && code && (
-      <div css={mainStyles}>
         <code>
           <a href={url} target="_blank">{children}</a>
         </code>
-      </div>
     )
   }
     </>
