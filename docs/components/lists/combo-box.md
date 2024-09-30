@@ -110,6 +110,31 @@ The `ComboBox` component has methods that allow manipulation of the dropdown dim
 Passing a `String` value to either of these methods will allow for [any valid CSS unit](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units) to be applied, such as pixels, viewport dimensions, or other valid rules. Passing an `int` will set the value passed in pixels.
 :::
 
+## Highlighting
+
+When working with a `ComboBox`, you can customize when the text is highlighted based on how the component gains focus. This feature can reduce input errors when users are completing forms and can improve the overall navigation experience. Change the highlighting behavior using the `setHighlightOnFocus()` method with on of the built-in `HasHighlightOnFocus.Behavior` enums:
+
+- `ALL`
+Contents of the component are always automatically highlighted when the component gets focus.
+- `FOCUS`
+Contents of the component are automatically highlighted when the component gets focus under program control.
+- `FOCUS_OR_KEY`
+Contents of the component are automatically highlighted when the component gets focus under program control or by tabbing into it.
+- `FOCUS_OR_MOUSE`
+Contents of the component are automatically highlighted when the component gets focus under program control or by clicking into it with the mouse.
+- `KEY`
+Contents of the component are automatically highlighted when the component gets focus by tabbing into it.
+- `KEY_MOUSE`
+Contents of the component are automatically highlighted when the component gets focus by tabbing into it or clicking into it with the mouse.
+- `MOUSE`
+Contents of the component are automatically highlighted when the component gets focus by clicking into it with the mouse.
+- `NONE`
+Contents of the component are never automatically highlighted when the component gets focus.
+
+:::note
+If content was highlighted upon losing focus, it will be highlighted again upon regaining focus, regardless of the set behavior.
+:::
+
 ## Styling
 
 <!-- ### Expanses -->
