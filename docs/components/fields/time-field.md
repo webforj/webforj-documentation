@@ -21,8 +21,8 @@ The `TimeField` class is a Field component, and as such shares all of the common
 :::
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.fielddemos.TimeFieldDemo' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/fielddemos/TimeFieldDemo.java'
+path='http://localhost:8888/webapp/controlsamples/timefielddemo?' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/fields/timefield/TimeFieldDemoView.java'
 height='300px'
 />
 
@@ -54,7 +54,7 @@ The `TimeField` class has four constructors:
 You can use the `setMax()` and `setMin()` methods to specify the acceptable time range. If the value entered into the component is outside of the specified value, the component fails constraint validation. Also, if there is already a maximum or minimum set, the value given to the other method must be lower or higher respectively.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.fielddemos.TimeFieldMinMax' 
+path='http://localhost:8888/webapp/controlsamples?class=componentdemos.fielddemos.TimeFieldMinMax' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/fielddemos/TimeFieldMinMax.java'
 height='300px'
 />

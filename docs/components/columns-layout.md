@@ -23,8 +23,8 @@ This can be used in place of, or in combination with, the [`FlexLayout`](./flex_
 When first instantiated, the `ColumnsLayout` uses two columns to display items added to the layout. By default, it takes the full width of its parent elements and grows as needed to fit additional content. The display of added items can be further calibrated with the use of [`Breakpoint`](./columns-layout#breakpoints) and [`Alignment`](./columns-layout#vertical-and-horizontal-item-alignments) settings, which are discussed in the following sections in more detail.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.columnslayoutdemos.ColumnsLayoutDemo' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/columnslayoutdemos/ColumnsLayoutDemo.java'
+path='http://localhost:8888/webapp/controlsamples/columnslayout?' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutView.java'
 height="350px"
 />
 
@@ -70,8 +70,8 @@ ColumnsLayout layout = new ColumnsLayout()
 The demonstration below shows an example of setting multiple breakpoints at construction, using breakpoints to configure the [`Span`](./columns-layout#spans) of a component, and demonstrates the resizing capabilities of the `ColumnsLayout` when the app is resized:
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.columnslayoutdemos.ColumnsLayoutBreakpoints' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/columnslayoutdemos/ColumnsLayoutBreakpoints.java'
+path='http://localhost:8888/webapp/controlsamples/columnslayoutbreakpoints?' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutBreakpointsView.java'
 height="375px"
 />
 
@@ -150,8 +150,8 @@ columnsLayout.setColumn(email, "medium", 2);
 In the following demonstration, notice that when the `"medium"` breakpoint is triggered, the `email` field spans both columns, and the `confirmPassword` field is placed into the first column, rather than its default placement in the second column:
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.columnslayoutdemos.ColumnsLayoutSpanColumn' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/columnslayoutdemos/ColumnsLayoutSpanColumn.java'
+path='http://localhost:8888/webapp/controlsamples/columnslayoutspancolumn?' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutSpanColumnView.java'
 height="350px"
 />
 
@@ -177,8 +177,8 @@ Available `Alignment` options include:
 - `AUTO`: Auto alignment.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.columnslayoutdemos.ColumnsLayoutAlignment' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/columnslayoutdemos/ColumnsLayoutAlignment.java'
+path='http://localhost:8888/webapp/controlsamples/columnslayoutalignment?' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutAlignmentView.java'
 height="350px"
 />
 
@@ -211,7 +211,7 @@ You can use an integer to define the minimum width in pixels or use a `String` t
 Building responsive and attractive layouts is possible using both the [`FlexLayout`](./flex_layouts) component and the `ColumnsLayout` component, as well as a combination of the two. Below is a sample of the [form created in the FlexLayout](./flex_layouts#example-form) article, but using a `ColumnLayout` scheme instead:
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.columnslayoutdemos.ColumnsLayoutForm' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/columnslayoutdemos/ColumnsLayoutForm.java'
+path='http://localhost:8888/webapp/controlsamples/columnslayoutform?' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutFormView.java'
 height="450px"
 />
