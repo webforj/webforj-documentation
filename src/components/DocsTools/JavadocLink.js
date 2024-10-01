@@ -1,10 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import React, { useState, useEffect, useRef } from 'react'
-import { jsx, css } from '@emotion/react';
+import React, { useState, useEffect } from 'react'
+import { css } from '@emotion/react';
 import { Tooltip, Chip } from '@mui/material'; 
-import StyleIcon from '@mui/icons-material/Style';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
-import GithubCache from './GithubCache';
 
 export default function JavadocLink( { type, location, top, children, code, suffix } ) {
   const [url, setUrl] = useState('');
@@ -21,19 +19,6 @@ export default function JavadocLink( { type, location, top, children, code, suff
   }, []);
 
   useEffect(() => {
-    const fetchLatestRelease = async () => {
-      try {
-        let latestTag = await GithubCache.getLatestTag();
-        if(!latestTag){
-          latestTag = "23.05"
-        }
-        setUrl("https://javadoc.io/doc/com.webforj/webforj-" + type + "/" + latestTag + "/" + location + ".html" + suffix)
-      } catch (error) {
-        console.error('Error fetching latest release:', error);
-      }
-    };
-    
-    // fetchLatestRelease();
     if(!suffix){
       suffix = ""
     }
