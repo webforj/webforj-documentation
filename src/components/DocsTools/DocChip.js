@@ -58,8 +58,8 @@ export default function DocChip( { chip, label, href, clickable, iconName, toolt
   }
 
   return (
-    <Tooltip title={tooltipText} arrow css={mainStyles}>
-      <Chip label={label} component="a" href={clickable ? href : null} icon={icon} clickable={clickable} color={color} target="_blank" />
+    <Tooltip title={tooltipText} arrow css={mainStyles} >
+      <Chip className={`doc-chip ${chip.className || ''}`} label={label} component="a" href={clickable ? href : null} icon={icon} clickable={clickable} color={color} target="_blank" />
     </Tooltip>
   )
 }
