@@ -8,6 +8,17 @@ import GithubCache from './GithubCache';
 
 export default function JavadocLink( { type, location, top, children, code, suffix } ) {
   const [url, setUrl] = useState('');
+  const [hasDocChips, setHasDocChips] = useState(false);
+
+  useEffect(() => {
+    // Check if there are any elements with the class 'doc-chip' on the page
+    const docChips = document.querySelectorAll('.doc-chip');
+    if (docChips.length > 0) {
+      setHasDocChips(true);
+    } else {
+      setHasDocChips(false);
+    }
+  }, []);
 
   useEffect(() => {
     const fetchLatestRelease = async () => {
@@ -30,7 +41,6 @@ export default function JavadocLink( { type, location, top, children, code, suff
   }, []);
 
   const mainStyles = css`
-
     ${top => top && css`
     margin-bottom: 1em;
     margin-left: 0.5em;
@@ -38,36 +48,47 @@ export default function JavadocLink( { type, location, top, children, code, suff
     `}
   `;
 
-  const apiStyles = css`
-  background-color: #0063CC;
-  padding: 0 0 0 5px;
-  :hover{
-    color: white;
-  }
+// Styling for the div, if no DocChips are on the page
+  const divStyles = css`
+    width: 100%;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: row-reverse;
   `;
 
-  const nextElementRef = useRef(null);
-
-  useEffect(() => {
-    if (nextElementRef.current) {
-      nextElementRef.current.style.clear = "both";
+  const apiStyles = css`
+    background-color: #0063CC;
+    padding: 0 0 0 5px;
+    :hover{
+      color: white;
     }
-  }, []);
+  `;
 
   return (
     <>
     {
-    top === 'true' && (
-      <Tooltip title="JavaDoc" arrow css={mainStyles}>
-        <Chip css={apiStyles} label='Java API' component="a" href={url} icon={<AutoStoriesIcon />} clickable={true} color='primary' target="_blank" />
-      </Tooltip>
-    )
+      top === 'true' && hasDocChips && (
+        // If there are DocChips, don't wrap in a div
+        <Tooltip title="JavaDoc" arrow css={mainStyles}>
+          <Chip css={apiStyles} label='Java API' component="a" href={url} icon={<AutoStoriesIcon />} clickable={true} color='primary' target="_blank" />
+        </Tooltip>
+      )
     }
-  {
-    top !== 'true' && !code && (
-        <a href={url} target="_blank">{children}</a>
-    )
-  }
+    {
+      top === 'true' && !hasDocChips && (
+        // If there aren't DocChips, wrap in a div
+        <div css={divStyles}>
+          <Tooltip title="JavaDoc" arrow>
+            <Chip css={apiStyles} label='Java API' component="a" href={url} icon={<AutoStoriesIcon />} clickable={true} color='primary' target="_blank" />
+          </Tooltip>
+        </div>
+      )
+    }
+    {
+      top !== 'true' && !code && (
+          <a href={url} target="_blank">{children}</a>
+      )
+    }
   {
     top !== 'true' && code && (
         <code>
