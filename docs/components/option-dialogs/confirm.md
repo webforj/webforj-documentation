@@ -37,8 +37,8 @@ The `ConfirmDialog` provides a way to ask users for confirmation or to choose be
 The `ConfirmDialog` can be initiated through the `OptionDialog` factory class using one of the various `showConfirmDialog` methods to configure its attributes and display the dialog directly. For more control over the configurations, the dialog can also be created using one of its several constructors.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.optiondialog.confirm.ConfirmDialogConstructor' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/optiondialog/confirm/ConfirmDialogConstructor.java'
+path='http://localhost:8888/webapp/controlsamples/confirmdialogconstructor?' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/optiondialog/confirm/ConfirmDialogConstructorView.java'
 height = '350px'
 />
 
@@ -69,8 +69,8 @@ The `ConfirmDialog` supports the following message types. When you configures a 
 In the following sample, the code configures a confirm dialog of type `CUSTOM` with a custom title and message.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.optiondialog.confirm.ConfirmDialogOptionType' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/optiondialog/confirm/ConfirmDialogOptionType.java'
+path='http://localhost:8888/webapp/controlsamples/confirmdialogoptions?' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/optiondialog/confirm/ConfirmDialogOptionsView.java'
 height = '350px'
 />
 

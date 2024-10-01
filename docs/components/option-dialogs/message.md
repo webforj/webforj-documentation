@@ -53,8 +53,8 @@ The `MessageDialog` supports the following message types. When you configures a 
 In the following sample, The code configures a message dialog of type `WARNING`. with a custom title and message.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.optiondialog.message.MessageDialogType' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/optiondialog/message/MessageDialogType.java'
+path='http://localhost:8888/webapp/controlsamples/messagedialogtype?' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/optiondialog/message/MessageDialogTypeView.java'
 height = '350px'
 />
 

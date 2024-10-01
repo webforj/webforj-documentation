@@ -17,13 +17,6 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 The `ListBox` component is a user interface element designed to display a scrollable list of objects and allows users to select single or multiple items from the list. Users can also interact with the `ListBox` with the arrow keys. 
 
-<!-- <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxDemo' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxDemo.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/listboxstyles/listbox_demo.css' 
-height = '250px'
-/> -->
-
 ## Usages
 
 1. **User Role Assignment**: In applications with user access control, administrators can use a `ListBox` to assign roles and permissions to users. Users are selected from a list, and the roles or permissions are assigned based on their selection. This ensures precise and controlled access to different features and data within the application.
@@ -52,24 +45,14 @@ By default, the list box is configured to allow selection of a single item at a 
 Additionally, the arrow keys can be used to navigate the `ListBox`, and typing a letter key while the `ListBox` has focus will select the option that begins with that letter, or cycle through the options beginning with that letter should multiple options exist.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxMultipleSelection' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxMultipleSelection.java'
+path='http://localhost:8888/webapp/controlsamples/listboxmultipleselection?' 
+javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/lists/listbox/ListboxMultipleSelectionView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/listbox/MultipleSelection.txt'
 height = '250px'
 />
 
 ## Styling
 
-<!-- ### Expanses
-There are five `ListBox` expanses that are supported which allow for quick styling without using CSS. Expanses are supported by use of a built-in enum class. <br/>
-
-<ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.listboxdemos.ListboxExpanses' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/listboxdemos/ListboxExpanses.java'
-javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/listbox/Expanses.txt'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/listboxstyles/expanse_styles.css' 
-height = '300px'
-/> -->
 
 ### Shadow Parts
 
