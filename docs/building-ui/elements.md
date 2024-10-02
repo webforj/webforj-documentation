@@ -28,8 +28,8 @@ The `Element` component has three constructors provided to quickly and efficient
 The below example will create an HTML `<input>` tag and give it some styling:
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=demos.webcomponents.element.InputDemo' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/demos/webcomponents/element/InputDemo.java'
+path='https://demo.webforj.com/webapp/controlsamples/elementinputdemo?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputDemoView.java'
 />
 
 ## Adding Events
@@ -39,8 +39,8 @@ In order to utilize events that may come with your element, you can use the `Ele
 There are also additional options to further customize events by using the [Event Options](#) configurations.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=demos.webcomponents.element.InputEvent' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/demos/webcomponents/element/InputEvent.java'
+path='https://demo.webforj.com/webapp/controlsamples/elementinputevent?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputEventView.java'
 height='175px'
 />
 
@@ -61,8 +61,8 @@ The `Element` component supports the composition of child components. Developers
 
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=demos.webcomponents.element.InputText' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/demos/webcomponents/element/InputText.java'
+path='https://demo.webforj.com/webapp/controlsamples/elementinputtext?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputTextView.java'
 height='175px'
 />
 
@@ -110,8 +110,8 @@ Both synchronous and asynchronous function calling will wait to call a method un
 In the demo below, an event is added to an HTML `Button`. This event is then fired programmatically by calling the `callJsFunctionAsync()` method. The resulting [`PendingResult`](#) is then used to create another message box once the asynchronous function has been completed.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=demos.webcomponents.element.InputFunction' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/demos/webcomponents/element/InputFunction.java'
+path='https://demo.webforj.com/webapp/controlsamples/elementinputfunction?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputFunctionView.java'
 height='175px'
 />
 

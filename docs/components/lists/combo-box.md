@@ -17,13 +17,6 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 The `ComboBox` component is a user interface element designed to present users with a list of options or choices, as well as a field for entering their own custom values. Users can select a single option from this list, typically by clicking the `ComboBox`, which triggers the display of a dropdown list containing available choices, or type in a custom value. Users can also interact with the `ComboBox` with the arrow keys. When a user makes a selection, the chosen option is then displayed in the `ComboBox`. 
 
-<!-- <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.comboboxdemos.ComboBoxDemo' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboBoxDemo.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/textcomboboxstyles/demo_styles.css'
-height = '200px'
-/> -->
-
 ## Usages
 
 The ComboBox component is a versatile input element that combines the features of both a dropdown list and a text input field. It allows users to select items from a predefined list or enter custom values as needed. This section explores common usages of the ComboBox component in various scenarios:
@@ -53,8 +46,8 @@ The ComboBox component is a versatile input element that combines the features o
 Changing the custom value property allows control over whether or not a user is able to change the value in the `ComboBox` component's input field. If `true`, which is the default, then a user can change the value. If set to `false`, the user won't be able to change the value. This can be set using the <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#setAllowCustomValue(boolean)'>setAllowCustomValue()</JavadocLink> method.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.comboboxdemos.ComboBoxCustomValue' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboBoxCustomValue.java'
+path='https://demo.webforj.com/webapp/controlsamples/comboboxcustomvalue?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxCustomValueView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/combobox/CustomValue.txt'
 height = '200px'
 />
@@ -64,8 +57,8 @@ height = '200px'
 A placeholder can be set for a `ComboBox` which will display in the text field of the component when it is empty to prompt users for the desired entry in the field. This can be done using the <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#setPlaceholder(java.lang.String)'>setPlaceholder()</JavadocLink> method.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.comboboxdemos.ComboBoxPlaceholder' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboBoxPlaceholder.java'
+path='https://demo.webforj.com/webapp/controlsamples/comboboxplaceholder?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxPlaceholderView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/combobox/Placeholder.txt'
 height = '200px'
 />
@@ -80,8 +73,8 @@ dropdown using CSS or shadow part selectors from the parent component becomes ch
 In the demo below, the Dropdown type is set and used in the CSS file to select the dropdown and change the background color.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.comboboxdemos.ComboBoxDropdownType' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboBoxDropdownType.java'
+path='https://demo.webforj.com/webapp/controlsamples/comboboxdropdowntype?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxDropdownTypeView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/combobox/DropdownType.txt'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/textcomboboxstyles/dropdown_styles.css'
 height='250px'
@@ -96,8 +89,8 @@ Using a number that is less than or equal to 0 will result in unsetting this pro
 :::
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.comboboxdemos.ComboBoxMaxRowDemo' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/ComboBoxMaxRowDemo.java'
+path='https://demo.webforj.com/webapp/controlsamples/comboboxmaxrow?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxMaxRowView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/combobox/MaxRow.txt'
 height='250px'
 />
@@ -148,18 +141,6 @@ ComboBox comboBox = new ComboBox());
 
 ## Styling
 
-<!-- ### Expanses -->
-
-<!-- The `ComboBox` component comes with 5 expanses for quick styling without the use of CSS. Expanses are supported by use of a built-in enum class.
-
-<ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.comboboxdemos.TextComboBoxExpanses' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/comboboxdemos/TextComboBoxExpanses.java'
-javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/textcombobox/Expanses.txt'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/textcomboboxstyles/expanse_styles.css' 
-javaHighlight='{24,27,30,33,36}'
-height = '350px'
-/> -->
 
 ### Shadow Parts
 

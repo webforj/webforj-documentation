@@ -22,8 +22,8 @@ A `Button` component is a fundamental user interface element used in application
 The primary purpose of the `Button` component is to provide a clear and intuitive call-to-action for users, guiding them to perform specific tasks such as submitting a form, navigating to another page, triggering a function, or initiating a process. Buttons are essential for enhancing user interactions, improving accessibility, and creating a more engaging user experience.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.buttondemos.ButtonDemo' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonDemo.java'
+path='https://demo.webforj.com/webapp/controlsamples/buttondemo?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonDemoView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/buttonstyles/demo_styles.css'
 height='300px'
 />
@@ -82,8 +82,8 @@ Icons added in this way will automatically be configured to match the theme of t
 Below are examples of buttons with text to the left and right, as well as a button with only an icon:
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.buttondemos.ButtonIcon' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonIcon.java'
+path='https://demo.webforj.com/webapp/controlsamples/buttonicon?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonIconView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/button/Icon.txt'
 height="200px"
 />
@@ -97,8 +97,8 @@ The `Button` component utilizes naming, which is used for accessibility. When a 
 Button components, like many others, can be disabled to convey to a user that a certain action is not yet or is no longer available. A disabled button will decrease the opacity of the button, and is available for all button themes and expanses.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.buttondemos.ButtonDisable' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonDisable.java'
+path='https://demo.webforj.com/webapp/controlsamples/buttondisable?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonDisableView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/button/Disable.txt'
 />
 
@@ -131,8 +131,8 @@ While there are many use cases for each of the various themes, some examples use
 Shown below are example buttons with each of the supported Themes applied: <br/>
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.buttondemos.ButtonThemes' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonThemes.java'
+path='https://demo.webforj.com/webapp/controlsamples/buttonthemes?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonThemesView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/button/Theme.txt'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/buttonstyles/theme_styles.css'
 height='175px'
@@ -149,11 +149,11 @@ Different sizes are often appropriate for different uses:
 Below are the various expanses supported for the `Button` component: <br/>
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.buttondemos.ButtonExpanses' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonExpanses.java'
+path='https://demo.webforj.com/webapp/controlsamples/buttonexpanses?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonExpansesView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/button/Expanses.txt'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/buttonstyles/expanse_styles.css'
-height='125px'
+height='200px'
 />
 
 ### Shadow Parts

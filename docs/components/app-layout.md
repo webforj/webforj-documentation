@@ -38,11 +38,11 @@ Each part of the layout is a `Div`, which can contain any valid webforJ control.
 
 The following code sample will result in an application with a collapsible sidebar that contains a logo and tabs for various content options and a header. The demo uses the dwc-icon-button web component to create a drawer toggle button. The button has the data-drawer-toggle attribute which instructs the DwcAppLayout to listen to click events coming from that component to toggle the drawer state.
 
-<AppLayoutViewer url='https://demo.webforj.com/webapp/controlsamples?class=layout_demos.applayout.AppLayoutDemo' mobile='false' />
+<AppLayoutViewer url='https://demo.webforj.com/webapp/controlsamples/applayout?' mobile='false' />
 
 <ComponentDemo 
 frame="hidden"
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutDemo.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_styles.css'
 />
 
@@ -57,12 +57,12 @@ myApp.setHeaderOffscreen(false);
 myApp.setFooterOffscreen(false);
 ```
 
-<AppLayoutViewer url='https://demo.webforj.com/webapp/controlsamples?class=layout_demos.applayout.AppLayoutFullNavbar' mobile='false'/>
+<AppLayoutViewer url='https://demo.webforj.com/webapp/controlsamples/applayoutfullnavbar?' mobile='false'/>
 
 
 <ComponentDemo 
 frame="hidden"
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutFullNavbar.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutFullNavbarView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_styles.css'
 />
 
@@ -73,11 +73,11 @@ The navbar has no limit to the number of toolbars you can add. A toolbar is only
 
 The following demo shows how to use two toolbars, The first one houses the drawer's toggle button and the application's title. The second toolbar houses a secondary navigation menu.
 
-<AppLayoutViewer url='https://demo.webforj.com/webapp/controlsamples?class=layout_demos.applayout.AppLayoutMultipleHeaders' mobile='false'/>
+<AppLayoutViewer url='https://demo.webforj.com/webapp/controlsamples/applayoutmultipleheaders?' mobile='false'/>
 
 <ComponentDemo 
 frame="hidden"
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutMultipleHeaders.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutMultipleHeadersView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_styles.css'
 />
 
@@ -91,11 +91,11 @@ When `AppLayout.setHeaderReveal(true)` is set called, the header will be visible
 
 With the help of the CSS custom property `--dwc-app-layout-header-collapse-height` it is possible to control how much of the header navbar will be hidden.
 
-<AppLayoutViewer url='https://demo.webforj.com/webapp/controlsamples?class=layout_demos.applayout.AppLayoutStickyToolbar' mobile='false'/>
+<AppLayoutViewer url='https://demo.webforj.com/webapp/controlsamples/applayoutstickytoolbar?' mobile='false'/>
 
 <ComponentDemo 
 frame="hidden"
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutStickyToolbar.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutStickyToolbarView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_sticky_styles.css'
 />
 
@@ -110,11 +110,11 @@ Same as `AppLayout.setHeaderReveal()`, `AppLayout.setFooterReveal()` is supporte
 
 Be default, when the screen width is 800px or less , the drawer will be switched to popover mode. This is called the breakpoint. The popover mode means that the drawer will pop over the content area with an overlay. It is possible to configure the breakpoint by using the DwcAppLayout:setDrawerBreakpoint method and the breakpoint must be a valid [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries).
 
-<AppLayoutViewer url='https://demo.webforj.com/webapp/controlsamples?class=layout_demos.applayout.AppLayoutMobile' mobile='true'/>
+<AppLayoutViewer url='https://demo.webforj.com/webapp/controlsamples/applayoutmobile?' mobile='true'/>
 
 <ComponentDemo 
 frame="hidden"
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutMobile.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutMobileView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_mobile.css'
 />
 
@@ -129,11 +129,11 @@ AppLayout demo = new AppLayout();
 demo.setDrawerBreakpoint("(max-width:500px)");
 ```
 
-<AppLayoutViewer url='https://demo.webforj.com/webapp/controlsamples?class=layout_demos.applayout.AppLayoutMobileDrawer' mobile='true'/>
+<AppLayoutViewer url='https://demo.webforj.com/webapp/controlsamples/applayoutmobiledrawer?' mobile='true'/>
 
 <ComponentDemo 
 frame="hidden"
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/layout_demos/applayout/AppLayoutMobileDrawer.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutMobileDrawerView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_mobile.css'
 />
 

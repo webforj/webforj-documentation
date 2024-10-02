@@ -21,8 +21,8 @@ The `TimeField` class is a Field component, and as such shares all of the common
 :::
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.fielddemos.TimeFieldDemo' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/fielddemos/TimeFieldDemo.java'
+path='https://demo.webforj.com/webapp/controlsamples/timefielddemo?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/fields/timefield/TimeFieldDemoView.java'
 height='300px'
 />
 

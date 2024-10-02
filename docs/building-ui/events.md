@@ -101,10 +101,9 @@ This approach minimizes the need to query the component for information, as the 
 Below is a demonstration showing the addition of a <JavadocLink type="foundation" location="com/webforj/component/button/event/ButtonClickEvent"  code="true">ButtonClickEvent</JavadocLink> to a [`Button`](#). This  [`Button`](#) also uses information coming with the event's payload to display information on the screen.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.buttondemos.ButtonEvent' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/buttondemos/ButtonEvent.java'
+path='https://demo.webforj.com/webapp/controlsamples/buttonevent?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonEventView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/button/Event.txt'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/buttonstyles/event_styles.css'
 height='100px'
 />
 

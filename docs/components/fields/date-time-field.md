@@ -23,9 +23,8 @@ The `DateTimeField` class is a Field component, and as such shares all of the co
 The `DateTimeField` class provides a user interface component that allows the user to enter both a date and a time, including the year, month, and day, as well as the time in hours and minutes. It offers the flexibility to validate the input or use a special date-time picker interface.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.fielddemos.DateTimeFieldDemo' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/fielddemos/DateTimeFieldDemo.java'
-javaC=''
+path='https://demo.webforj.com/webapp/controlsamples/datetimefielddemo?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/fields/datetimefield/DateTimeFieldDemoView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/fieldstyles/date_field_styles.css'
 />
 

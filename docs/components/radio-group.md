@@ -13,8 +13,8 @@ The `RadioButtonGroup` class is used to group related radio buttons together, wh
 
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.radiobuttondemos.RadioButtonGroupDemo' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/radiobuttondemos/RadioButtonGroupDemo.java'
+path='https://demo.webforj.com/webapp/controlsamples/radiobuttongroup?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonGroupView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/radiobuttonstyles/radiobutton_styles.css'
 height="200px"
 />

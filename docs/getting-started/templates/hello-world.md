@@ -9,8 +9,8 @@ import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 To start a simple application, it is recommended to use webforJ's [HelloWorldJava repository](https://github.com/webforj/webforj-hello-world) as a template. This can be done using any of the [installation methods](../../installation/docker-user).
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/HelloWorldJava?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/demos/HelloWorldJava.java'
+path='https://demo.webforj.com/webapp/controlsamples?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/HelloWorldJavaView.java'
 height='300px'
 />
 
