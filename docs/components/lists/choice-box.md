@@ -61,8 +61,8 @@ dropdown using CSS or shadow part selectors from the parent component becomes ch
 In the demo below, the Dropdown type is set and used in the CSS file to select the dropdown and change the background color.
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples/choiceboxdropdowntype?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/lists/choicebox/ChoiceboxDropdownTypeView.java'
+path='https://demo.webforj.com/webapp/controlsamples/choiceboxdropdowntype?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/lists/choicebox/ChoiceboxDropdownTypeView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/choicebox/DropdownType.txt'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/comboboxstyles/dropdown_styles.css'
 height='250px'
@@ -77,8 +77,8 @@ Using a number that is less than or equal to 0 will result in unsetting this pro
 :::
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples/choiceboxmaxrow?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/lists/choicebox/ChoiceboxMaxRowView.java'
+path='https://demo.webforj.com/webapp/controlsamples/choiceboxmaxrow?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/lists/choicebox/ChoiceboxMaxRowView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/choicebox/MaxRow.txt'
 height='250px'
 />

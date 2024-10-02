@@ -33,8 +33,8 @@ Often, a `Navigator` component displays information found in a bound `Repository
 To do this, simply pass the desired `Repository` object to an applicable `Navigator` object's constructor:
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples/navigatortable?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/navigator/NavigatorTableView.java'
+path='https://demo.webforj.com/webapp/controlsamples/navigatortable?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/navigator/NavigatorTableView.java'
 height='475px'
 />
 
@@ -69,8 +69,8 @@ navigator.getPaginator().setMax(maxPages);
 ```
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples/navigatorpages?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/navigator/NavigatorPagesView.java'
+path='https://demo.webforj.com/webapp/controlsamples/navigatorpages?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/navigator/NavigatorPagesView.java'
 height='125px'
 />
 
@@ -91,8 +91,8 @@ The `Navigator` component provides extensive customization options for buttons, 
 In the following example, the `setText()` method displays a numeric value to the user. Clicking the buttons fires the `onChange` method of the `Navigator`, which comes with a `Direction` value the clicked button. 
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples/navigatorbasic?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/navigator/NavigatorBasicView.java'
+path='https://demo.webforj.com/webapp/controlsamples/navigatorbasic?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/navigator/NavigatorBasicView.java'
 height='100px'
 />
 
@@ -139,8 +139,8 @@ navigator.setTooltipText("Go to the last page", Navigator.Part.LAST_BUTTON);
 Various layout options exist for the `Navigator` component  to provide flexibility in displaying pagination controls. To access these layouts, use the `Navigator.Layout` enum's values. The options are as follows:
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples/navigatorlayout?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/navigator/NavigatorLayoutView.java'
+path='https://demo.webforj.com/webapp/controlsamples/navigatorlayout?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/navigator/NavigatorLayoutView.java'
 height='200px'
 />
 

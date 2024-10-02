@@ -45,10 +45,10 @@ In this example, a column will attempt to access data from a JSON object, render
 Column pinning is a feature that allows users to affix or "pin" a column to a specific side of the table, enhancing visibility and accessibility. This is useful when certain columns, such as identifiers or essential information, need to remain visible while scrolling horizontally through a table.
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples/tablecolumnpinning?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/table/TableColumnPinningView.java'
-urls={['https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/table/Service.java']}
+path='https://demo.webforj.com/webapp/controlsamples/tablecolumnpinning?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnPinningView.java'
+urls={['https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
+'https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
 height='600px'
 />
 
@@ -66,10 +66,10 @@ Pinning can be set programmatically, allowing users to change the pin direction 
 Column alignment defines the horizontal positioning of data within a column. It influences how data values are displayed, providing a visual guide to users about the nature of the information. 
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples/tablecolumnalignment?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/table/TableColumnAlignmentView.java'
-urls={['https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/table/Service.java']}
+path='https://demo.webforj.com/webapp/controlsamples/tablecolumnalignment?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnAlignmentView.java'
+urls={['https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
+'https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
 height='600px'
 />
 

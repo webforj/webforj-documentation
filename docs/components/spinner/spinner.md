@@ -27,7 +27,7 @@ webforJ's `Spinner` and its variants are highly customizable, allowing developer
 To create a basic `Spinner`, you can use the `Spinner` class, which offers constructors that allow you to specify the `Theme` and `Expanse`. These configurations allow developers to fine tune how a spinner should appear in color and size to best fit the `Spinner` component's intended use case.
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples?class=componentdemos.spinnerdemos.SpinnerDemo' 
+path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.spinnerdemos.SpinnerDemo' 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/spinnerdemos/SpinnerDemo.java'
 height = '225px'
 />

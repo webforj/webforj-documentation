@@ -22,8 +22,8 @@ The `NumberField` class is a Field component, and as such shares all of the comm
 The `NumberField` component can be used to accept numerical input from the user. It ensures that only valid numeric values are entered and provides a convenient interface for inputting numbers.
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples/numberfielddemo?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/fields/numberfield/NumberFieldDemoView.java'
+path='https://demo.webforj.com/webapp/controlsamples/numberfielddemo?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/fields/numberfield/NumberFieldDemoView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/fieldstyles/date_field_styles.css'
 />
 

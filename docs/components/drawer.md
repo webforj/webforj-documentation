@@ -17,7 +17,7 @@ The Drawer component can be used in many different situations, such as by provid
 
 <ComponentDemo 
 frame="hidden"
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/drawerstyles/drawer_welcome.css'
 />
 
@@ -40,8 +40,8 @@ Drawer newDrawer = new Drawer()
 ```
 
 <ComponentDemo
-path='http://localhost:8888/webapp/controlsamples/drawerdemo?'
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/drawer/DrawerDemoView.java'
+path='https://demo.webforj.com/webapp/controlsamples/drawerdemo?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerDemoView.java'
 height='600px'
 />
 
@@ -60,8 +60,8 @@ By automatically focusing on the first item, the developer ensures that users ca
 This property can also be particularly beneficial for individuals who rely on keyboard navigation or assistive technologies such as screen readers. It provides a clear starting point within the drawer and allows users to access the desired functionality without unnecessary manual input.
 
 <ComponentDemo
-path='http://localhost:8888/webapp/controlsamples/drawerautofocus?'
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/drawer/DrawerAutoFocusView.java'
+path='https://demo.webforj.com/webapp/controlsamples/drawerautofocus?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerAutoFocusView.java'
 height='600px'
 />
 
@@ -132,8 +132,8 @@ The placement property allows developers to choose the most appropriate position
 By leveraging the placement property, developers can create intuitive and efficient user interfaces. For example, placing the drawer on the left or right side allows for quick access to additional functionalities or navigation options, while top or bottom placements are well-suited for contextual information or supplementary content.
 
 <ComponentDemo
-path='http://localhost:8888/webapp/controlsamples/drawerplacement?'
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/drawer/DrawerPlacementView.java'
+path='https://demo.webforj.com/webapp/controlsamples/drawerplacement?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerPlacementView.java'
 height='600px'
 />
 

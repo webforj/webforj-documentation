@@ -61,8 +61,8 @@ Check boxes can utilize the <JavadocLink type="foundation" location="com/webforj
 Checkboxes have built-in functionality to set text to be displayed either to the right or left of the box. By default, the text will be displayed to the right of the component. Positioning of the text is supported by use of the  <JavadocLink type="foundation" location="com/webforj/component/TextPosition" code='true' suffix=''>Position</JavadocLink> enum. Show below are the two settings: <br/>
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples/checkboxhorizontaltext?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/checkbox/CheckboxHorizontalTextView.java'
+path='https://demo.webforj.com/webapp/controlsamples/checkboxhorizontaltext?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/checkbox/CheckboxHorizontalTextView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/checkbox/Horizontal.txt'
 height = '200px'
 />
@@ -78,8 +78,8 @@ The `CheckBox` component supports indeterminism, which is a UI pattern commonly 
 - **Hierarchical data**: Indeterminism can be employed in scenarios where there is a hierarchical relationship between CheckBoxes. For example, when selecting categories and subcategories, indeterminism can represent that some subcategories are selected while others are not, and the parent component is in the indeterminate state.
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples/checkboxindeterminate?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/checkbox/CheckboxIndeterminateView.java'
+path='https://demo.webforj.com/webapp/controlsamples/checkboxindeterminate?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/checkbox/CheckboxIndeterminateView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/checkbox/Indeterminate.txt'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css' 
 height = '150px'
@@ -92,8 +92,8 @@ The following <JavadocLink type="foundation" location="com/webforj/component/Exp
 Expanses are supported by use of the `Expanse` enum class. Below are the expanses supported for the checkbox component: <br/>
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples/checkboxexpanse?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/checkbox/CheckboxExpanseView.java'
+path='https://demo.webforj.com/webapp/controlsamples/checkboxexpanse?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/checkbox/CheckboxExpanseView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/checkbox/Expanse.txt'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/checkboxstyles/expanse_styles.css' 
 height = '100px'

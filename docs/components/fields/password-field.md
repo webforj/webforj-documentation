@@ -22,8 +22,8 @@ The `PasswordField` class is a Field component, and as such shares all of the co
 The `PasswordField` component provides a way for the user to securely enter a password. The element is presented as a one-line plain text editor control in which the text is obscured so that it cannot be read, usually by replacing each character with a symbol such as the asterisk ("*") or a dot ("•"). This character will vary depending on the user agent and operating system.
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples/passwordfielddemo?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/fields/passwordfield/PasswordFieldDemoView.java'
+path='https://demo.webforj.com/webapp/controlsamples/passwordfielddemo?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/fields/passwordfield/PasswordFieldDemoView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/fieldstyles/date_field_styles.css'
 />
 

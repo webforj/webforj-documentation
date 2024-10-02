@@ -45,8 +45,8 @@ By default, the list box is configured to allow selection of a single item at a 
 Additionally, the arrow keys can be used to navigate the `ListBox`, and typing a letter key while the `ListBox` has focus will select the option that begins with that letter, or cycle through the options beginning with that letter should multiple options exist.
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples/listboxmultipleselection?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/lists/listbox/ListboxMultipleSelectionView.java'
+path='https://demo.webforj.com/webapp/controlsamples/listboxmultipleselection?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/lists/listbox/ListboxMultipleSelectionView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/listbox/MultipleSelection.txt'
 height = '250px'
 />

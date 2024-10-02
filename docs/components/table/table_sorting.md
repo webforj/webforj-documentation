@@ -9,10 +9,10 @@ import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 Sorting enables users to organize data within a column in a specific order, enhancing data readability and analysis. This is useful when users need to quickly find the highest or lowest values in a particular column.
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples/tablesorting?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/table/TableSortingView.java'
-urls={['https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/table/Service.java']}
+path='https://demo.webforj.com/webapp/controlsamples/tablesorting?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableSortingView.java'
+urls={['https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
+'https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
 height='600px'
 />
 
@@ -70,10 +70,10 @@ The `Column` component allows developers to use Java `Comparators` for dynamic a
 To leverage `Comparator` sorting in a `Column`, you can use the `setComparator()` method. This method allows you to define a custom `Comparator` function that dictates the sorting logic.
 
 <ComponentDemo 
-path='http://localhost:8888/webapp/controlsamples/tablecolumncomparator?' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/table/TableColumnComparatorView.java'
-urls={['https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/ControlSamples/refs/heads/routing/src/main/java/com/webforj/samples/views/table/Service.java']}
+path='https://demo.webforj.com/webapp/controlsamples/tablecolumncomparator?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableColumnComparatorView.java'
+urls={['https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
+'https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
 height='600px'
 />
 
