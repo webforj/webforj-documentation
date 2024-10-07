@@ -42,12 +42,6 @@ cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/r
 The `ChoiceBox` is intended for use when a preset number of options are available, and custom options should not be allowed or included. If allowing users to enter custom values is desired, use a [`ComboBox`](./combo-box.md) instead
 :::
 
-## Constructors
-
-1. <JavadocLink type="foundation" location="com/webforj/component/list/ChoiceBox" code='true' suffix='#<init>()'>ChoiceBox()</JavadocLink>: Constructs a new `ChoiceBox` without a label.
-2. <JavadocLink type="foundation" location="com/webforj/component/list/ChoiceBox" code='true' suffix='#<init>(java.lang.String)'>ChoiceBox(String label)</JavadocLink>: Constructs a new `ChoiceBox` with the specified label.
-3. <JavadocLink type="foundation" location="com/webforj/component/list/ChoiceBox" code='true' suffix='#<init>(java.lang.String,org.dwcj.component.event.ComponentEventListener)'>ChoiceBox(String label, ComponentEventListener< ListSelectEvent> selectListener)</JavadocLink>: Constructs a new `ChoiceBox` with the given label and a listener to handle item selection events.
-
 ## Dropdown Type
 
 Using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setDropdownType(java.lang.String)'>setDropdownType()</JavadocLink> method will assign a value to the `type` attribute of a `ChoiceBox`, and a corresponding value for the `data-dropdown-for` attribute in the dropdown of the `ChoiceBox`. This is helpful for styling, as the dropdown is taken out of its current position in the DOM and relocated to the end of the page body when opened.

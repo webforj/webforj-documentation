@@ -39,6 +39,7 @@ The `Button` class is a versatile component that is commonly used in various sit
   > - A "Submit" button to send data to the server
   > - A "Clear" button to remove any information already present in the form
 
+
 2. **User Actions**: Buttons are used to allow users to perform specific actions within the application. For instance, you can have a button labeled:
 
   > - "Delete" to initiate the deletion of a selected item
@@ -55,19 +56,6 @@ The `Button` class is a versatile component that is commonly used in various sit
   > - "Back" Returns the user to the first part of the application or page they're in.
 
 
-## Constructors
-
-The `Button` class has three constructors:
-
-1. <JavadocLink type="foundation" location="com/webforj/component/button/Button" code='true' suffix='#<init>()'>Button()</JavadocLink>: Creates an empty <code>Button</code> without any text inside the component.
-2. <JavadocLink type="foundation" location="com/webforj/component/button/Button" code='true' suffix='#<init>(java.lang.String)'>Button(String text)</JavadocLink>: Creates a <code>Button</code> with text inside the component.
-3. <JavadocLink type="foundation" location="com/webforj/component/button/Button" code='true' suffix='#<init>(java.lang.String,org.dwcj.component.event.EventListener)'>Button(String text, EventListener{"<ButtonClickEvent>"} onClickListener)</JavadocLink>: Creates a <code>Button</code> with text inside the component, and an <JavadocLink type="foundation" location="com/webforj/component/event/EventListener" code='true'>EventListener</JavadocLink> for a <JavadocLink type="foundation" location="com/webforj/component/button/event/ButtonClickEvent" code='true'>ButtonClickEvent</JavadocLink> which fires when a user clicks on the <code>Button</code>.
-
-Here is an example of how to create a `Button` object:
-
-```java
-Button submit = new Button("Submit");
-```
 
 ## Adding Icons to Buttons
 

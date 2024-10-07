@@ -31,10 +31,6 @@ height = '500px'
 
 The `InputDialog` provides a way to request input from users, such as text, numbers, or other data, ensuring that they provide necessary information before proceeding.
 
-## Constructors
-
-The `InputDialog` can be initiated through the `OptionDialog` factory class using one of the various `showInputDialog` methods to configure its attributes and display the dialog directly. For more control over the configurations, the dialog can also be created using one of its several constructors.
-
 ## Types
 
 ### Input types

@@ -31,16 +31,6 @@ urls={['https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/j
 height='300px'
 />
 
-## Constructors
-
-Besides its default constructor, the `Splitter` offers these constructors:
-
-- `public Splitter(String id, Component master, Component detail)`: This constructor creates a `Splitter` instance with a specified ID, master component, and detail component.
-
-- `public Splitter(Component master, Component detail)`: This constructor acts as a shorthand version of the previous one, creating a Splitter. without specifying an ID.
-
-- `public Splitter(String id)`: This constructor allows you to create a `Splitter` instance with a specified ID. 
-
 ## Min and max size 
 
 The `Splitter` component provides methods to set minimum and maximum sizes for its panels, allowing you to control the resizing behavior of the components within the `Splitter`. When users attempt to resize panels beyond the specified min or max sizes, the splitter component enforces these constraints, ensuring that panels remain within the defined boundaries.

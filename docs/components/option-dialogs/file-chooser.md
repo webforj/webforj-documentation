@@ -28,10 +28,6 @@ OptionDialog.showFileChooserDialog("Select a file");
 
 The `FileChooserDialog` provides a way to select files or directories from the file system, enabling users to choose directories for saving data, or perform file operations.
 
-## Constructors
-
-The `FileChooserDialog` can be initiated through the `OptionDialog` factory class using one of the various `showFileChooserDialog` methods to configure its attributes and display the dialog directly. For more control over the configurations, the dialog can also be created using one of its several constructors.
-
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/filechooserdialogbasic?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/filechooser/FileChooserDialogBasicView.java'

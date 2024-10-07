@@ -11,6 +11,9 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 The `RadioButtonGroup` class is used to group related radio buttons together, which helps establish the mutual exclusivity among the options within that group. Users can select only one radio button within a given radio group. When a user selects a radio button within a group, any previously selected radio button in the same group automatically becomes deselected. This ensures that only one option can be chosen at a time.
 
+:::tip
+A `RadioButton` component stores the group to which it belongs, which can be accessed via the `getButtonGroup()` method.
+:::
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/radiobuttongroup?' 
@@ -20,7 +23,7 @@ height="200px"
 />
 
 :::important
-The `RadioButtonGroup` component will not render an HTML element on the page. Rather, it is only
+The `RadioButtonGroup` component does not render an HTML element on the page. Rather, it is only
 logic that ensures a group of RadioButtons behave as a group instead of individually.
 :::
 
@@ -34,20 +37,9 @@ The `RadioButtonGroup` is best used in scenarios where users need to make a sing
 
 3. **Filtering or Sorting**: A `RadioButton` can be used in applications that require users to select a single filter or sorting option, such as sorting a list of items by different criteria.
 
-## Constructors
-
-The `RadioButtonGroup` class has four constructors:
-
-1. `RadioButtonGroup()`: Creates an empty `RadioButtonGroup` in the unchecked state.
-2. `RadioButtonGroup(String name)`: Creates a `RadioButtonGroup` with an name.
-3. `RadioButtonGroup(RadioButton... buttons)`: Creates a `RadioButtonGroup` with one or more `RadioButton` objects assigned to the group.
-4. `RadioButtonGroup(String name, RadioButton... buttons)` Creates a `RadioButtonGroup` with both a name and one or more `RadioButton` objects assigned to the group.
-
-A `RadioButton` component stores the group to which it belongs, which can be accessed via the `getButtonGroup()` method.
-
 ## Adding and Removing RadioButtons
 
-It is possible to add and remove singular or multiple `RadioButton` objects to a group, ensuring that they exhibit mutually-exclusive checking behavior, and are associated with any name that may belong to the group.
+It is possible to add and remove singular or multiple `RadioButton` objects to a group, ensuring that they exhibit mutually exclusive checking behavior, and are associated with any name that may belong to the group.
 
 ## Naming
 

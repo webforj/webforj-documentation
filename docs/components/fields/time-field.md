@@ -40,15 +40,6 @@ The `TimeField` is best used in scenarios where capturing or manipulating time v
 
 The `TimeField` class provides a user interface component that allows the user to enter both a time; hours, minutes, and optionally seconds. The value of the time field is always in 24-hour format that includes leading zeros: HH:mm, regardless of the UI field format, which is likely to be selected based on the user's locale (or by the user agent). If the time includes seconds, the format is always HH:mm:ss
 
-### Constructors
-
-The `TimeField` class has four constructors:
-
-1. `TimeField(String label, LocalTime time)`: Creates a `TimeField` with a given label and time.
-2. `TimeField(String label)`: Creates a `TimeField` with a given label but with no pre-populated time.
-3. `TimeField(LocalTime time)`: Creates a `TimeField` with a given time, but without a label.
-4. `TimeField()`: Creates a `TimeField` without any provided information.
-
 ### Maximum and Minimum
 
 You can use the `setMax()` and `setMin()` methods to specify the acceptable time range. If the value entered into the component is outside of the specified value, the component fails constraint validation. Also, if there is already a maximum or minimum set, the value given to the other method must be lower or higher respectively.

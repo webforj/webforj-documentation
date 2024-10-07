@@ -31,21 +31,15 @@ cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/r
 
 4. **Notifications**: For applications with notifications or alerts, a drawer can slide in to display new messages or updates. Users can quickly check and dismiss notifications without leaving their current view.
 
-## Constructors
-
-The Drawer component contains a single default constructor which will create a new instance of the Drawer class.
-
-```java
-Drawer newDrawer = new Drawer()
-```
-
 <ComponentDemo
 path='https://demo.webforj.com/webapp/controlsamples/drawerdemo?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerDemoView.java'
 height='600px'
 />
 
-Various properties exist that allow for the customization of various attributes of the Drawer component. Below are those properties with examples for their modification.
+## Customization
+
+Various properties exist that allow for the customization of various attributes of the Drawer component. This section outlines those properties with examples for their modification.
 
 ## Autofocus
 

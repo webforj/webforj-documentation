@@ -36,23 +36,6 @@ The `RadioButton` is best used in scenarios where users need to make a single se
 
 3. **Filtering or Sorting**: A `RadioButton` can be used in applications that require users to select a single filter or sorting option, such as sorting a list of items by different criteria.
 
-
-
-
-## Constructors
-
-The `RadioButton` class has three constructors:
-
-1. `RadioButton()`: Creates an empty `RadioButton` in the unchecked state.
-2. `RadioButton(String text)`: Creates a `RadioButton` with an attached label in the unchecked state.
-3. `RadioButton(String text, boolean checked)` Creates a `RadioButton` with an attached label in either the checked or unchecked state, based on the boolean passed (`true` for checked, `false` for unchecked).
-
-Here is an example of how to create a `RadioButton` object:
-
-```java
-RadioButton myRadioButton = new RadioButton("RadioButton Text");
-```
-
 ## Text and Positioning
 
 Radio buttons can utilize the ```setText(String text)``` method, which will be positioned near the radio button according to the built-in `Position`.

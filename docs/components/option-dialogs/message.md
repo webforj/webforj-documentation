@@ -28,10 +28,6 @@ OptionDialog.showMessageDialog("Hello World!");
 
 The Message Dialog provides a way to display informational alerts, such as notifications, updates, or simple messages that only require the user to acknowledge them without providing any input.
 
-## Constructors
-
-The `MessageDialog` can be initiated through the `OptionDialog` factory class using one of the various `showMessageDialog` methods to configure its attributes and display the dialog directly. For more control over the configurations, the dialog can also be created using one of its several constructors.
-
 ```java showLineNumbers
 MessageDialog dialog = new MessageDialog(
     "Hello World", "Hello World", MessageDialog.MessageType.INFO);

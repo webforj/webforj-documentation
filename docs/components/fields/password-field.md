@@ -37,14 +37,6 @@ The `PasswordField` is best used in scenarios where capturing or handling sensit
 
 3. **Account Management and Profile Settings**: Password fields are valuable in applications that involve account management or profile settings, allowing users to change or update their passwords securely.
 
-### Constructors
-
-The `PasswordField` class has three constructors:
-
-1. `PasswordField(String label, String password)`: Creates a `PasswordField` with a given label and password.
-2. `PasswordField(String label)`: Creates a `PasswordField` with a given label but with no pre-populated datetime.
-3. `PasswordField()`: Creates a `PasswordField` without any provided information.
-
 ### Password Visibility
 
 You can use the `setPasswordReveal` method to control the visibility of the password reveal icon. When set to true, the password reveal icon is visible -  otherwise, it is hidden. You can check whether the password reveal icon is visible using the `isPasswordReveal` method. It returns true if the password reveal icon is visible; otherwise, it returns false. 

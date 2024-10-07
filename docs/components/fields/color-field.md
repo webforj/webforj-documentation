@@ -46,15 +46,6 @@ The `ColorField` is best used in scenarios where color selection is a crucial pa
 
 4. **Form Inputs**: When designing forms that require color inputs, using a color field simplifies the color selection process for users.
 
-### Constructors
-
-The `ColorField` class has four constructors:
-
-1. `ColorField(String label, Color color)`: Creates a `ColorField` with a given label and color.
-2. `ColorField(String label)`: Creates a `ColorField` with a given label but with no pre-populated color.
-3. `ColorField(Color color)`: Creates a `ColorField` with a given color, but without a label.
-4. `ColorField()`: Creates a `ColorField` without any provided information.
-
 ### Color Code Format
 
 Currently, the `ColorField` supports `#RRGGBB` hexadecimal format. Only simple colors (without alpha channel) are allowed in the picker interface. Additionally, the `ColorField` comes along with a various methods that interact with the `java.awt.Color` class to add flexibility.

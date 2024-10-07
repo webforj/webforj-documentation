@@ -34,13 +34,6 @@ The ComboBox component is a versatile input element that combines the features o
     The `ComboBox` should be used when users are allowed to enter custom values. If only preset values are desired, use a [`ChoiceBox`](./choice-box.md) instead.
     :::
 
-## Constructors
-
-1. <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#<init>()'>ComboBox()</JavadocLink>: Constructs a new `ComboBox` without a label.
-2. <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#<init>(java.lang.String)'>ComboBox(String label)</JavadocLink>: Constructs a new `ComboBox` with the specified label.
-3. <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#<init>(java.lang.String,org.dwcj.component.event.ComponentEventListener)'>ComboBox(String label, ComponentEventListener< ListSelectEvent> selectListener)</JavadocLink>: Constructs a new `ComboBox` with the given label and a listener to handle item selection events.
-
-
 ## Custom Value
 
 Changing the custom value property allows control over whether or not a user is able to change the value in the `ComboBox` component's input field. If `true`, which is the default, then a user can change the value. If set to `false`, the user won't be able to change the value. This can be set using the <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#setAllowCustomValue(boolean)'>setAllowCustomValue()</JavadocLink> method.

@@ -41,12 +41,6 @@ height = '225px'
   >- Videos
   >- Other media
 
-
-## Constructors
-
-The Dialog can be constructed using the default `Dialog()` constructor. Once the object has been instantiated, call the `show()` method on the object itself to display the dialog.
-
-
 ## Backdrop and Blur
 
 By enabling the backdrop attribute of the webforJ `Dialog` component, a backdrop will be displayed behind the `Dialog`. Additionally, when enabled, the Dialog's blurred attribute will blur the backdrop of the `Dialog`. Modifying these settings can help users by providing depths, visual hierarchy, and context, leading to more clear guidance for a user.
@@ -58,7 +52,9 @@ javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/co
 height = '300px'
 />
 
-## Closing the Dialog
+## Opening and closing the `Dialog`
+
+After creating a new `Dialog` object, use the `show()` method to display the dialog.
 
 The `Dialog` supports multiple cancellation methods for closure of the component: hitting the `ESC` key, clicking outside of the `Dialog`, or using the `hide()` method. The first two properties are customizable via their respective methods:
 `setCancelOnEscKey()` and `setCancelOnOutsideClick()`. The `hide()` method allows for the `Dialog` to be closed programmatically, such as by clicking a button on the `Dialog` after saving data. A method to quickly enable or disable users' ability to close the `Dialog`, `setClosable()` will prevent or allow both escape and click closure of the `Dialog`.

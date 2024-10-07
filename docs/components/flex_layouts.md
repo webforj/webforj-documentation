@@ -10,37 +10,6 @@ import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 webforJ provides developers with an efficient and intuitive way to layout their various applications and components - the Flex Layout. This toolset allows for items to be displayed either vertically or horizontally. 
 
-
-## Constructing a Flex Layout
-
-The FlexLayout class has three constructors and an additional construction utilizing a builder pattern:
-
-- `FlexLayout()`
-- `FlexLayout(AbstractComponent...)`
-- `FlexLayout(FlexDirection, AbstractComponent...)`
-
-Of note, the Flex Layout comes with a builder class to help streamline and simplify the creation of a layout. **It is recommended to use the builder to quickly and efficiently configure your layout**, as will be shown in examples below, though methods for the Layout class are also available to customize various attributes once the object is created. 
-
-This builder follows a builder pattern, and is intended to allow for full customization of desired attributes of the layout to avoid needing to set individual attributes later on.
-
-It is also possible to use the default in conjunction with the various setter methods available. The following snippet shows how to utilize the various constructors available for the FlexLayout class:
-
-```java
-//Creates a default FlexLayout
-FlexLayout defaultLayout = new FlexLayout();
-
-//Creates a default FlexLayout which one or more existing components
-FlexLayout layoutWithComponent = new FlexLayout(myButton);
-
-//Creates a FlexLayout which one or more existing components and has a specified direction
-FlexLayout layoutWithDirection = new FlexLayout(FlexDirection.COLUMN, myButton);
-
-//Creates a FlexLayout using the various methods available in the FlexLayoutBuilder
-FlexLayout layoutFromBuilder = FlexLayout.create()
-.horizontal()
-.build();
-```
-
 ## Flex Layout Properties
 
 Flex layout's properties can be grouped into two categories: properties that apply to the items within a layout, and properties that apply to the layout itself. The flex layout, or the parent element, is a box/container that can contain one or more components. Everything inside a Flex Layout is called an item or child element. The Flex Layout provides some robust alignment capabilities, which can be achieved with the help of either container or item properties.

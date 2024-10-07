@@ -61,11 +61,6 @@ Tabs are comprised of the following properties, which are then used when adding 
 
 5. **Closeable(`boolean`)**: Represents whether the `Tab` can be closed. Can be modified with the `setCloseable(boolean enabled)` method. This will add a close button on the `Tab` which can be clicked on by the user, and fires a removal event. The     `TabbedPane` component dictates how to handle the removal.
 
-### Constructor
-
-[`Tab(String text)`](#) : Constructs a `Tab` with the given text.
-
-
 ## `Tab` Manipulation
 
 Various methods exist to allow developers to add, insert, remove and manipulate various properties of `Tab` elements within the `TabbedPane`.

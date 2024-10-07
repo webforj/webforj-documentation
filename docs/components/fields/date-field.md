@@ -40,15 +40,6 @@ The `DateField` is best used in scenarios where capturing or displaying dates is
 
 The `DateField` class provides a user interface component that allows the user to enter a date, including the year, month, and day. It offers the flexibility to validate the input or use a special date picker interface.
 
-### Constructors
-
-The `DateField` class has four constructors:
-
-1. `DateField(String label, LocalDate date)`: Creates a `DateField` with a given label and date.
-2. `DateField(String label)`: Creates a `DateField` with a given label but with no pre-populated date.
-3. `DateField(LocalDate date)`: Creates a `DateField` with a given date, but without a label.
-4. `DateField()`: Creates a `DateField` without any provided information.
-
 ### Maximum and Minimum
 
 You can use the `setMax()` and `setMin()` methods to specify the acceptable range of dates. If the value entered into the component is outside of the specified value, the component fails constraint validation. Also, if there is already a maximum or minimum set, the value given to the other method must be lower or higher respectively.

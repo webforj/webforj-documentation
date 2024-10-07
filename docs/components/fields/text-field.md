@@ -31,17 +31,6 @@ The `TextField` is suitable for a wide range of scenarios where text input or ed
 
 3. **Text Editing**: A `TextField` is ideal for applications that require text editing or content creation, such as document editors, chat applications, or note-taking apps.
 
-### Constructors
-
-The `TextField` class has three constructors:
-
-1. `TextField(Type type, String label, String value)`: Creates a `TextField` with a given applicable type, a label, and a value.
-2. `TextField(Type type, String label)`: Creates a `TextField` with a given applicable type and label.
-3. `TextField(String label, String value)`: Creates a `TextField` with a given label and a value.
-4. `TextField(Type type)`: Creates a `TextField` with a given applicable type.
-5. `TextField(String label)`: Creates a `TextField` with a given label.
-6. `TextField()`: Creates a `TextField` without any provided information.
-
 ### Types
 
 You can specify the type of the TextField using the `setType` method. Similarly, the type can be retrieved using the `getType` method, which will return an enum value.

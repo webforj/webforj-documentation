@@ -7,22 +7,13 @@ slug: columns
 import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 
 The `Table` class utilizes `Column` classes to handle the creation of data columns within it. This class has a wide range of functionality that allows a user to thoroughly customize what is displayed within each of the columns.
-
-
-## Factory Methods
-
-To add a `Column` to a `Table`, use one of the set of provided `Table` factory methods:
-
-- `addColumn(Function<T, V> provider)`
-- `addColumn(String id, Function<T, V> provider)`
-- `addColumn(Renderer<T> renderer)`
-- `addColumn(String id, Renderer<T> renderer)`
+To add a `Column` to a `Table`, use one of the `addColumn` factory methods.
 
 ## Value Providers
 
-Value Provider is a function responsible for translating raw data from the underlying dataset into a format suitable for display within a specific column. The function, defined by the user, takes an instance of the row data type (T) and returns the value to be showcased in the associated column for that particular row.
+A Value Provider is a function responsible for translating raw data from the underlying dataset into a format suitable for display within a specific column. The function, defined by the user, takes an instance of the row data type (T) and returns the value to be showcased in the associated column for that particular row.
 
-To set a value provider on a column, use one of the above factory methods that accept a provider as an argument:
+To set a value provider on a column, use one of the `addColumn` factory methods that accept a provider as an argument:
 
 ```java
     List<String> columnsList = Arrays.asList("athlete", "age", "country", "year", "sport", "gold", "silver", "bronze", "total");

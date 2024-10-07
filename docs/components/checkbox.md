@@ -39,21 +39,6 @@ The `CheckBox` is best used in scenarios where users need to make multiple selec
   >- Agree to terms and conditions
   >- Select items for purchase or booking
 
-
-## Constructors
-
-The `CheckBox` class has three constructors:
-
-1. <JavadocLink type="foundation" location="com/webforj/component/checkbox/CheckBox" code='true' suffix='#<init>()'>Checkbox()</JavadocLink>: Creates an empty <code>CheckBox</code> in the unchecked state.
-2. <JavadocLink type="foundation" location="com/webforj/component/checkbox/CheckBox" code='true' suffix='#<init>(java.lang.String)'>Checkbox(String text)</JavadocLink>: Creates a <code>CheckBox</code> with an attached label in the unchecked state.
-3. <JavadocLink type="foundation" location="com/webforj/component/checkbox/CheckBox" code='true' suffix='#<init>(java.lang.String,boolean)'>Checkbox(String text boolean checked)</JavadocLink>: Creates a <code>CheckBox</code> with an attached label in either the checked or unchecked state, based on the boolean passed (<code>true</code> for checked, <code>false</code> for unchecked).
-
-Here is an example of how to create a `CheckBox` object:
-
-```java
-CheckBox enabled = new CheckBox("Enable Option");
-```
-
 ## Text and Positioning
 
 Check boxes can utilize the <JavadocLink type="foundation" location="com/webforj/component/AbstractOptionInput" code='true' suffix='#setText(java.lang.String)'>setText(String text)</JavadocLink> method, which will be positioned near the check box according to the built-in <JavadocLink type="foundation" location="com/webforj/component/TextPosition" code='true' suffix=''>Position</JavadocLink>. 

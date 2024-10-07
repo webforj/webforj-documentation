@@ -28,11 +28,6 @@ The Login component provides a user-friendly login form interface within a dialo
    >- Visibility toggle for password to verify input.
    >- Input validation feedback to prompt correct format before submission.
 
-## Constructors
-
-You can construct the `Login` component using the default `Login()` constructor. Once the component has been instantiated, call the `open()` method on the component itself to display the login dialog.
-
-
 ## Login submission
 
 When users enter their username and password, the login component validates these inputs as required fields. Once the validation passes, a form submission event is triggered, delivering the entered credentials. To prevent multiple submissions, the `Signin` button is immediately disabled.
