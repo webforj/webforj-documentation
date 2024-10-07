@@ -61,6 +61,15 @@ Tabs are comprised of the following properties, which are then used when adding 
 
 5. **Closeable(`boolean`)**: Represents whether the `Tab` can be closed. Can be modified with the `setCloseable(boolean enabled)` method. This will add a close button on the `Tab` which can be clicked on by the user, and fires a removal event. The     `TabbedPane` component dictates how to handle the removal.
 
+6. **Slot(`Component`)**: 
+    Slots provide flexible options for improving the capability of a `Tab`. You can have icons, labels, loading spinners, clear/reset capability, avatar/profile pictures, and other beneficial components nested within a `Tab` to further clarify intended meaning to users.
+    You can add a component to the `prefix` slot of a `Tab` during construction. Alternatively, you can use the `setPrefixComponent()` and `setSuffixComponent()` methods to insert various components before and after the displayed option within a `Tab`.
+
+        ```java
+        TabbedPane pane = new TabbedPane();
+        pane.addTab(new Tab("Documents", TablerIcon.create("files")));
+        ```
+
 ## `Tab` Manipulation
 
 Various methods exist to allow developers to add, insert, remove and manipulate various properties of `Tab` elements within the `TabbedPane`.
