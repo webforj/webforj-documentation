@@ -4,10 +4,6 @@ title: AppLayout
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import AppLayoutViewer from '@site/src/components/DocsTools/AppLayoutViewer';
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 <JavadocLink type="applayout" location="com/webforj/component/layout/applayout/AppLayout" top='true'/>
 

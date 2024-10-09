@@ -4,16 +4,13 @@ title: ListBox
 slug: listbox
 ---
 
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
 
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-listbox" clickable={false} iconName='code'/>
 
 <JavadocLink type="foundation" location="com/webforj/component/list/ListBox" top='true'/>
+
+<ParentLink parent="List" />
 
 The `ListBox` component is a user interface element designed to display a scrollable list of objects and allows users to select single or multiple items from the list. Users can also interact with the `ListBox` with the arrow keys. 
 

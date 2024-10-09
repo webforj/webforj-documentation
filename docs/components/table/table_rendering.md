@@ -4,8 +4,6 @@ title: Rendering
 slug: rendering
 ---
 
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-
 # Rich Content and Client-Side Rendering
 
 Tables in webforj are also configurable using the following tools to display rich content within cells. This includes interactive components or formatted data within the table cells.

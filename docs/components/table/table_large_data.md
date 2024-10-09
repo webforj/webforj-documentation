@@ -4,8 +4,6 @@ title: Large Data Sets
 slug: data
 ---
 
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-
 ## Virtual Scrolling
 
 The `Table` component is built to efficiently handle large datasets by utilizing virtual scrolling, which  is a technique used in web applications to optimize the rendering and performance of large lists or tables by rendering only the visible items on the screen.

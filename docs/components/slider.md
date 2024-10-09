@@ -2,10 +2,6 @@
 title: Slider
 ---
 
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
-
 <JavadocLink type="foundation" location="com/webforj/component/slider/Slider" top='true'/>
 
 ### Upper and Lower Limit

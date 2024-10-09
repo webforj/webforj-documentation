@@ -5,10 +5,6 @@ slug: events
 draft: false
 ---
 
-import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
-import EventTable from '@site/src/components/DocsTools/EventTable';
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-
 <JavadocLink type="foundation" location="com/webforj/component/event/Event" top='true'/>
 
 Components, whether custom or part of the framework, support event handling. You can add event listeners to capture various types of events, such as user interactions, changes in state, or other custom events. These event listeners can be used to trigger specific actions or behaviors in response to the events.

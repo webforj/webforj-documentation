@@ -4,8 +4,6 @@ title: Selection
 slug: selection
 ---
 
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-
 The `Table` component provides various selection capabilities. There are methods for selecting a single item, multiple items, or programmatically managing selections.
 
 ### Selection Mode

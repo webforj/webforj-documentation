@@ -4,8 +4,6 @@ title: Columns
 slug: columns
 ---
 
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-
 The `Table` class utilizes `Column` classes to handle the creation of data columns within it. This class has a wide range of functionality that allows a user to thoroughly customize what is displayed within each of the columns.
 To add a `Column` to a `Table`, use one of the `addColumn` factory methods.
 

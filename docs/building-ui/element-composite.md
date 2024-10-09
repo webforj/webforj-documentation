@@ -4,9 +4,6 @@ title: Element Composite
 slug: element_composite
 ---
 
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
-
 <JavadocLink type="foundation" location="com/webforj/component/element/ElementComposite" top='true'/>
 
 The `ElementComposite` class serves as a versatile foundation for managing composite elements in webforJ applications. Its primary purpose is to facilitate the interaction with HTML elements, represented by the `Element` class, by providing a structured approach to handle properties, attributes, and event listeners. It allows for implementation and reuse of elements in an application. Use the `ElementComposite` class when implementing Web Components for use in webforJ applications.

@@ -4,9 +4,8 @@ sidebar_class_name: sidebar--item__hidden
 slug: dwc-icon
 ---
 
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import DocChip from '@site/src/components/DocsTools/DocChip';
+
 
 <DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="https://stenciljs.com/docs/styling#what-is-the-shadow-dom" target="_blank" clickable={true} iconName="shadow" />
 

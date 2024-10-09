@@ -6,10 +6,6 @@ title: Lists
 import componentData from '@site/static/field_data.js'
 import ComponentViewer from '@site/src/components/PageTools/ComponentViewer'
 
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
-
 <JavadocLink type="foundation" location="com/webforj/component/list/DwcList"/>
 
 There are three types of lists for use within your applications: [`ListBox`](./lists/listbox), [`ChoiceBox`](./lists/choicebox) and [`ComboBox`](./lists/combobox). These three components all display a list of key value items, and support methods to add, remove, select and manage the items within the list.
@@ -78,3 +74,6 @@ The various List components can be assigned a label, which is a descriptive text
 
 <!-- ADD DEMO WITH ALL THREE AND A LABEL -->
 
+## Topics
+
+<DocCardList className="topics-section" />
