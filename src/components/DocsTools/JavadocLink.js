@@ -42,11 +42,13 @@ export default function JavadocLink( { type, location, top, children, code, suff
   `;
 
   const apiStyles = css`
-    background-color: #0063CC;
+    background-color: var(--javadoclink-bg);
+    color: var(--javadoclink-color);
     padding: 0 0 0 5px;
-    :hover{
-      color: white;
-    }
+    :hover {
+      background-color: var(--javadoclink-hover-bg);
+      color: var(--javadoclink-hover-color);
+    } 
   `;
 
   return (

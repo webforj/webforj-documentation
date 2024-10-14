@@ -1,0 +1,8 @@
+@import "./mixins/content-block.scss";
+
+.blog-wrapper {
+  [itemtype="https://schema.org/Blog"]
+  {
+    @include content-block;
+  }
+}

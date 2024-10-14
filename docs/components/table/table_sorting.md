@@ -4,8 +4,6 @@ title: Sorting
 slug: sorting
 ---
 
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-
 Sorting enables users to organize data within a column in a specific order, enhancing data readability and analysis. This is useful when users need to quickly find the highest or lowest values in a particular column.
 
 <ComponentDemo 

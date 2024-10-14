@@ -5,8 +5,6 @@ slug: basics
 draft: false
 ---
 
-import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
-
 <JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/>
 
 Components are fundamental building blocks that can be added to a window, providing user interface functionality and custom behavior. In webforJ, the `Component` class serves as the foundation for all components within the engine.

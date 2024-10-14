@@ -2,10 +2,6 @@
 title: ColumnsLayout
 ---
 
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
 
 <DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-columns-layout" clickable={false} iconName='code'/>
@@ -15,7 +11,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 The `ColumnsLayout` component in webforJ allows developers to create layouts using a flexible and responsive vertical layout. This layout provides dynamic columns that adjust based on the available width. This component simplifies the creation of multi-column layouts by automatically managing breakpoints and alignments.
 
 :::info Horizontal Layouts 
-This can be used in place of, or in combination with, the [`FlexLayout`](./flex_layouts) component - an equally powerful tool for horizontal layouts.
+This can be used in place of, or in combination with, the [`FlexLayout`](./flex-layout) component - an equally powerful tool for horizontal layouts.
 :::
 
 ## Basics
@@ -208,7 +204,7 @@ You can use an integer to define the minimum width in pixels or use a `String` t
 
 ## Horizontal and vertical layouts
 
-Building responsive and attractive layouts is possible using both the [`FlexLayout`](./flex_layouts) component and the `ColumnsLayout` component, as well as a combination of the two. Below is a sample of the [form created in the FlexLayout](./flex_layouts#example-form) article, but using a `ColumnLayout` scheme instead:
+Building responsive and attractive layouts is possible using both the [`FlexLayout`](./flex-layout) component and the `ColumnsLayout` component, as well as a combination of the two. Below is a sample of the [form created in the FlexLayout](./flex-layout#example-form) article, but using a `ColumnLayout` scheme instead:
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/columnslayoutform?' 

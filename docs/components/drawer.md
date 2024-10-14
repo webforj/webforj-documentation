@@ -2,18 +2,13 @@
 title: Drawer
 ---
 
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import AppLayoutViewer from '@site/src/components/DocsTools/AppLayoutViewer';
-import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
-
 <JavadocLink type="drawer" location="com/webforj/component/drawer/Drawer" top='true'/>
 
 The drawer is a container that slides into the viewport to expose additional options and information. Multiple drawers can be created in an application, and they will be stacked above each other.
 
 The Drawer component can be used in many different situations, such as by providing a navigation menu that can be toggled, a panel that displays supplementary or contextual information, or to optimize usage on a mobile device. The following example will show a mobile application that uses the webforJ AppLayout component, and displays a "Welcome Popup" drawer at the bottom when first loaded. Additionally, a navigational Drawer component can be toggled in the application by clicking on the hamburger menu.
 
-<AppLayoutViewer url='http://localhost:8888/webapp/controlsamples/drawerwelcome?' mobile='true'/>
+<AppLayoutViewer url='https://demo.webforj.com/webapp/controlsamples/drawerwelcome?' mobile='true'/>
 
 <ComponentDemo 
 frame="hidden"

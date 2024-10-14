@@ -2,6 +2,7 @@
   "label": "Advanced Topics",
   "position": 8,
   "link": {
-        "type": "generated-index"
+    "type": "doc",
+    "id": "overview"
   }
 }

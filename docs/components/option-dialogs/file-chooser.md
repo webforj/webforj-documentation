@@ -3,14 +3,7 @@ sidebar_position: 5
 title: File Chooser
 ---
 
-<!-- vale off -->
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 # File Chooser Dialog
-<!-- vale on -->
 
 <DocChip chip='shadow' />
 

@@ -152,4 +152,4 @@ If you're using VS code, an extension that provides syntax highlighting [can be 
 
 ## Component Theme and Expanse
 
-Many core webforJ components come packaged with various Themes and Expanses for easy styling. More about the specific component Themes and Expanses can be found in the [webforJ Components](/docs/components/home) section.
+Many core webforJ components come packaged with various Themes and Expanses for easy styling. More about the specific component Themes and Expanses can be found in the [webforJ Components](/docs/components/overview) section.

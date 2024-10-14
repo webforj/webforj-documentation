@@ -4,12 +4,9 @@ title: Composite Components
 draft: false
 ---
 
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
+<JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
 # Composite Components in webforJ
-
-<JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
 Developers will often wish to create components that contain constituent components for application level use. The `Composite` component gives developers the tools they need to create their own components while maintaining control over what they choose to expose to users. 
 
@@ -33,7 +30,7 @@ The `Composite` class requires developers to specify the type of `Component` it 
 
 By default, the `Composite` component utilizes the generic type parameter of its subclass to identify and instantiate the bound component type. This is based on the assumption that the component class has a parameter-less constructor. Developers can customize the component initialization process by overriding the `initBoundComponent()` method. This allows for greater flexibility in creating and managing the bound component, including invoking parameterized constructors.
 
-The following snippet overrides the initBoundComponent method to use a parameterized constructor for the [FlexLayout](../components/flex_layouts.md) class:
+The following snippet overrides the initBoundComponent method to use a parameterized constructor for the [FlexLayout](../components/flex-layout.md) class:
 
 ```java
 public static class OverrideComposite extends Composite<FlexLayout> {
@@ -83,7 +80,7 @@ In the demo below, a simple ToDo application has been created, where each item a
 The logic for this component is set up in the constructor, which sets styling and adds constituent components to the bound component using the `getBoundComponent` method, and adds event logic.
 
 :::tip
-This could also be implemented in the `onDidCreate()` method, which would give direct access to the bound [`FlexLayout`](../components/flex_layouts.md) component.
+This could also be implemented in the `onDidCreate()` method, which would give direct access to the bound [`FlexLayout`](../components/flex-layout.md) component.
 :::
 
 This component is then instantiated and utilized in an Application, and allows for its use throughout various locations, making it a powerful tool in the creation of custom components.

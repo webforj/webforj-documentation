@@ -3,7 +3,6 @@ sidebar_position: 15
 title: Filtering
 slug: filtering
 ---
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
 
 The `Table` component allows you to implement filtering functionality to narrow down displayed data based on specific criteria. Filtering can be achieved by defining a filtering criteria using the `setFilter(Predicate<T> filter)` method provided by the `Repository` associated with the table.
 

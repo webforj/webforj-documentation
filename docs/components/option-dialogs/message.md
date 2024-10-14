@@ -3,14 +3,7 @@ sidebar_position: 2
 title: Message
 ---
 
-<!-- vale off -->
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 # Message Dialog
-<!-- vale on -->
 
 <DocChip chip='shadow' />
 

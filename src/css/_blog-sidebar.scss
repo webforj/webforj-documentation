@@ -1,0 +1,8 @@
+.blog-wrapper {
+  [class^="sidebar"]:not([class^="sidebarItem"]) {
+    background-color: var(--dwc-surface-3);
+    padding: var(--ifm-toc-padding-horizontal) var(--ifm-spacing-horizontal);
+    border: 1px solid var(--dwc-border-color);
+    border-radius: var(--ifm-global-radius);
+  }
+}

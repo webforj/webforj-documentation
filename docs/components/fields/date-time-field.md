@@ -4,21 +4,13 @@ title: DateTimeField
 slug: datetimefield
 ---
 
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 <DocChip chip='shadow' />
 
 <DocChip chip='name' label="dwc-field" />
 
-
 <JavadocLink type="foundation" location="com/webforj/component/field/DateTimeField" top='true'/>
 
-:::success **Important**
-The `DateTimeField` class is a Field component, and as such shares all of the commonalities belonging to a Field. Please refer to the **[Field documentation page](/docs/components/fields)** for an overview of Field properties, events, and other important information.
-:::
+<ParentLink parent="Field" />
 
 The `DateTimeField` class provides a user interface component that allows the user to enter both a date and a time, including the year, month, and day, as well as the time in hours and minutes. It offers the flexibility to validate the input or use a special date-time picker interface.
 

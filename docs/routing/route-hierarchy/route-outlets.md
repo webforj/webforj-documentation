@@ -7,7 +7,7 @@ An **outlet** is a designated component, either a [route layout](./route-types#l
 
 ## Defining an outlet
 
-Outlets are typically implemented using container components that can hold and manage child content. In webforJ, any component that implements the `HasComponents` interface, or a composite of such components, can serve as an outlet. For example, [`FlexLayout`](../../components/flex_layouts) implements the `HasComponents` interface, making it a valid outlet for child routes.
+Outlets are typically implemented using container components that can hold and manage child content. In webforJ, any component that implements the `HasComponents` interface, or a composite of such components, can serve as an outlet. For example, [`FlexLayout`](../../components/flex-layout) implements the `HasComponents` interface, making it a valid outlet for child routes.
 
 If no outlet is explicitly defined for a route, the first `Frame` of the app is used as the default outlet. This behavior ensures that every child route has a place to be rendered.
 
