@@ -52,5 +52,11 @@
     border: thin solid var(--dwc-border-color);
     --ifm-dropdown-hover-background-color: var(--dwc-color-primary-alt);
   }
+
+  @media (max-width: 1000px) {
+    .separator {
+      display: none;
+    }
+  }
 }
 
