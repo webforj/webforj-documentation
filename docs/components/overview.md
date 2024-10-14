@@ -93,7 +93,7 @@ Data entry components provide essential tools for capturing user input and manag
     <p>A component that provides a default browser-based date picker for selecting a date through an input field.</p>
   </GalleryCard>
 
-  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Masked</span>dDateField" href="#" image="/img/components/MaskedDateField.png">
+  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Masked</span>DateField" href="#" image="/img/components/MaskedDateField.png">
     <p>A date input component that enforces a specific date format or pattern, ensuring the user enters a valid date according to the defined mask</p>
   </GalleryCard>
 
