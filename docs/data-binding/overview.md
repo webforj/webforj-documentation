@@ -1,7 +1,16 @@
 ---
 sidebar_position: 1
 title: Data Binding
+hide_table_of_contents: true
 ---
+
+<Head>
+  <style>{`
+  .container {
+    max-width: 65em !important;
+  }
+  `}</style>
+</Head>
 
 <!-- vale off -->
 import Tabs from '@theme/Tabs';

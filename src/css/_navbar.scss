@@ -1,0 +1,56 @@
+#__docusaurus {
+  .navbar {
+    border-bottom: 1px solid var(--dwc-border-color);
+  }
+
+  .navbar--dark {
+    --ifm-navbar-background-color: hsl(
+      var(--dwc-color-default-h),
+      var(--dwc-color-default-s),
+      12%
+    );
+    --ifm-navbar-link-hover-color: #8fc5ff;
+    --ifm-menu-color-background-active: rgba(255, 255, 255, 0.05);
+    --ifm-navbar-search-input-color: var(--ifm-color-white);
+    .navbar__link--active {
+      color: #8fc5ff;
+    }
+  }
+
+  .header-github-link::before {
+    background: var(--header-github-link) no-repeat;
+    content: "";
+    display: flex;
+    height: 24px;
+    width: 24px;
+  }
+
+  .separator {
+    background: hsl(
+      360,
+      0%,
+      40%
+    );
+    height: 1.75rem;
+    width: 1px;
+  }
+
+  .navbar__logo img {
+    filter: brightness(0) invert(1);
+  }
+
+  [class^="navbarSearchContainer"]{
+    --docsearch-text-color: #f5f6f7;
+    --docsearch-searchbox-background: #090a11 !important;
+    --docsearch-searchbox-focus-background: #000 !important;
+    --docsearch-muted-color: #7f8497;
+    --docsearch-key-gradient: linear-gradient(-26.5deg, #565872, #31355b);
+    --docsearch-key-shadow: inset 0 -2px 0 0 #282d55, inset 0 0 1px 1px #51577d, 0 2px 2px 0 rgba(3, 4, 9, 0.3);
+  }
+
+  .dropdown__menu{
+    border: thin solid var(--dwc-border-color);
+    --ifm-dropdown-hover-background-color: var(--dwc-color-primary-alt);
+  }
+}
+

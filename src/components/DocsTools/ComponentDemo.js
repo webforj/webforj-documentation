@@ -262,7 +262,7 @@ export default function ComponentDemo({
     flex-direction: column;
     width: 100%;
     margin-bottom: 16px;
-    background-color: var(--code-display-color-background);
+    background-color: var(--dwc-surface-1);
   `;
 
   const demoFrameStyles = css`
@@ -299,12 +299,12 @@ export default function ComponentDemo({
     cursor: ew-resize;
     border-left: 1px solid var(--ifm-toc-border-color);
     border-right: 1px solid var(--ifm-toc-border-color);
-    background-color: var(--ifm-background-color);
+    background-color: var(--dwc-surface-3);
   `;
 
   const detailsStyles = css`
     box-shadow: none;
-    background-color: var(--ifm-background-color);
+    background-color: var(--dwc-surface-3);
     margin: 0px;
     padding: 0px;
     border: ${frame == "hidden"
