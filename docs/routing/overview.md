@@ -1,7 +1,16 @@
 ---
 sidebar_position: 1
 title: Routing
+hide_table_of_contents: true
 ---
+
+<Head>
+  <style>{`
+  .container {
+    max-width: 65em !important;
+  }
+  `}</style>
+</Head>
 
 <!-- vale off -->
 import DocCardList from '@theme/DocCardList';

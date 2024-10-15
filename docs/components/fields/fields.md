@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-title: Field
+title: Fields
 ---
 
 import componentData from '@site/static/field_data.js'

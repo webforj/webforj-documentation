@@ -31,7 +31,7 @@ The ComboBox component is a versatile input element that combines the features o
     The `ComboBox` should be used when users are allowed to enter custom values. If only preset values are desired, use a [`ChoiceBox`](./choice-box.md) instead.
     :::
 
-## Custom Value
+## Custom value
 
 Changing the custom value property allows control over whether or not a user is able to change the value in the `ComboBox` component's input field. If `true`, which is the default, then a user can change the value. If set to `false`, the user won't be able to change the value. This can be set using the <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#setAllowCustomValue(boolean)'>setAllowCustomValue()</JavadocLink> method.
 
@@ -53,7 +53,7 @@ javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/co
 height = '200px'
 />
 
-## Dropdown Type
+## Dropdown type
 
 Using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setDropdownType(java.lang.String)'>setDropdownType()</JavadocLink> method will assign a value to the `type` attribute of a `ComboBox`, and a corresponding value for the `data-dropdown-for` attribute in the dropdown of the `ComboBox`. This is helpful for styling, as the dropdown is taken out of its current position in the DOM and relocated to the end of the page body when opened.
 
@@ -70,7 +70,7 @@ cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/r
 height='250px'
 />
 
-## Max Row Count
+## Max row count
 
 By default, the number of rows displayed in the dropdown of a `ComboBox` will be increased to fit the content. However, using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setMaxRowCount(int)'>setMaxRowCount()</JavadocLink> method allows for control over how many items are displayed.
 
@@ -85,7 +85,31 @@ javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/co
 height='250px'
 />
 
-## Opening Dimensions
+## Opening and closing
+
+The visibility of the options for a `ComboBox` can be programmatically controlled with the `open()` and `close()` methods.
+These methods allow you to display the list of options for selection or hide it as needed, providing greater flexibility in managing the behavior of a `ComboBox`.
+
+Additionally, webforJ has event listeners for when the `ComboBox` is closed and when it's opened, giving you more control to trigger specific actions.
+
+```Java
+//Focus or open the next component in a form
+ComboBox university = new ComboBox("University");
+ComboBox major = new ComboBox("Major");
+Button submit = new Button("Submit");
+
+//... Add lists of universities and majors
+
+university.onClose( e ->{
+  major.open();
+});
+
+major.onClose( e ->{
+  submit.focus();
+});
+```
+
+## Opening dimensions
 
 The `ComboBox` component has methods that allow manipulation of the dropdown dimensions. The **maximum height** and **minimum width** of the dropdown can be set using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenHeight(int)'>setOpenHeight()</JavadocLink> and <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenWidth(int)'>setOpenWidth()</JavadocLink> methods, respectively. 
 
@@ -132,13 +156,13 @@ ComboBox comboBox = new ComboBox());
 ## Styling
 
 
-### Shadow Parts
+### Shadow parts
 
 These are the various parts of the [shadow DOM](../../glossary#shadow-dom) for the `ComboBox` component, which will be required when styling via CSS is desired.
 
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').ComboBox} table='parts' exclusions='' />
 
-### Reflected Attributes
+### Reflected attributes
 
 The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
 
@@ -150,7 +174,7 @@ This component relies on the following components - see the related article for 
 
 <TableBuilder tag='dwc-list-edit' table="dependencies"/>
 
-## Best Practices 
+## Best practices 
 
 To ensure an optimal user experience when using the `ComboBox` component, consider the following best practices:
 

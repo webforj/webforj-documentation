@@ -11,7 +11,7 @@ title: ColumnsLayout
 The `ColumnsLayout` component in webforJ allows developers to create layouts using a flexible and responsive vertical layout. This layout provides dynamic columns that adjust based on the available width. This component simplifies the creation of multi-column layouts by automatically managing breakpoints and alignments.
 
 :::info Horizontal Layouts 
-This can be used in place of, or in combination with, the [`FlexLayout`](./flex_layouts) component - an equally powerful tool for horizontal layouts.
+This can be used in place of, or in combination with, the [`FlexLayout`](./flex-layout) component - an equally powerful tool for horizontal layouts.
 :::
 
 ## Basics
@@ -204,7 +204,7 @@ You can use an integer to define the minimum width in pixels or use a `String` t
 
 ## Horizontal and vertical layouts
 
-Building responsive and attractive layouts is possible using both the [`FlexLayout`](./flex_layouts) component and the `ColumnsLayout` component, as well as a combination of the two. Below is a sample of the [form created in the FlexLayout](./flex_layouts#example-form) article, but using a `ColumnLayout` scheme instead:
+Building responsive and attractive layouts is possible using both the [`FlexLayout`](./flex-layout) component and the `ColumnsLayout` component, as well as a combination of the two. Below is a sample of the [form created in the FlexLayout](./flex-layout#example-form) article, but using a `ColumnLayout` scheme instead:
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/columnslayoutform?' 

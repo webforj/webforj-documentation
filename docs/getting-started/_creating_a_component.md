@@ -14,7 +14,7 @@ In this section, we'll walk you through the process of creating custom component
 
 For the example custom component, we'll build a simple entry form that can be reused in multiple places in an application. To do this, we'll use the following components:
 
-- [FlexLayout](../layouts/flex_layouts.md)
+- [FlexLayout](../layouts/flex-layout.md)
 
 ### Create a class for your component 
 
