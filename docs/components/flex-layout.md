@@ -28,7 +28,7 @@ Alternatively, use the `setDirection()` method. The horizontal options are eithe
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/flexdirection?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/container/FlexDirectionView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/flexstyles/container_styles.css'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/flexlayout/container/flexContainerBuilder.css'
 height="275px"
 />
 
@@ -47,7 +47,7 @@ The `setAlignContent()` methods components the space around the cross axis, and 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/flexpositioning?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/container/FlexPositioningView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/flexstyles/container_styles.css'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/flexlayout/container/flexContainerBuilder.css'
 height="375px"
 />
 
@@ -81,7 +81,7 @@ The following demo allows you to build a container with the desired flex propert
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/flexcontainerbuilder?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/container/FlexContainerBuilderView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/flexstyles/container_styles.css'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/flexlayout/container/flexContainerBuilder.css'
 height="600px"
 />
 

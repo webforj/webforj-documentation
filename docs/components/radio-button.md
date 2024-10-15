@@ -18,7 +18,6 @@ The `RadioButton` class creates an object that can be selected or deselected, an
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/radiobuttongroup?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonGroupView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/radiobuttonstyles/radiobutton_styles.css'
 height="200px"
 />
 
@@ -40,7 +39,6 @@ Radio buttons have built-in functionality to set text to be displayed either to 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/radiobuttontext?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonTextView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/radiobuttonstyles/radiobutton_styles.css'
 height="120px"
 />
 
@@ -52,7 +50,6 @@ Radio buttons can be controlled using two types of activation: manual activation
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/radiobuttonactivation?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonActivationView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/radiobuttonstyles/radiobutton_styles.css'
 height="175px"
 />
 
@@ -82,7 +79,6 @@ A `RadioButton` can also be set to display as a switch provides which provides a
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/radiobuttonswitch?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonSwitchView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/radiobuttonstyles/radiobutton_styles.css'
 height="120px"
 />
 

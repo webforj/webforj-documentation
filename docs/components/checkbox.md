@@ -23,22 +23,22 @@ The `CheckBox` is best used in scenarios where users need to make multiple selec
 
 2. **Preference Settings**: Applications that involve preference or settings panels often use Checkboxes to allow users to choose multiple options from a set of choices. This is best for options which are not mutually exclusive. For instance:
 
- >- Enabling or disabling notifications
- >- Choosing a dark mode or light mode theme
- >- Selecting email notification preferences
+> - Enabling or disabling notifications
+> - Choosing a dark mode or light mode theme
+> - Selecting email notification preferences
 
 3. **Filtering or Sorting**: A `CheckBox` can be used in applications that require users to select multiple filters or categories, such as filtering search results or selecting multiple items for further actions.
 
 4. **Form Inputs**: Checkboxes are commonly used in forms to allow users to select multiple options or make binary choices. For example:
-  >- Subscribe to a newsletter
-  >- Agree to terms and conditions
-  >- Select items for purchase or booking
+   > - Subscribe to a newsletter
+   > - Agree to terms and conditions
+   > - Select items for purchase or booking
 
 ## Text and Positioning
 
-Check boxes can utilize the <JavadocLink type="foundation" location="com/webforj/component/AbstractOptionInput" code='true' suffix='#setText(java.lang.String)'>setText(String text)</JavadocLink> method, which will be positioned near the check box according to the built-in <JavadocLink type="foundation" location="com/webforj/component/TextPosition" code='true' suffix=''>Position</JavadocLink>. 
+Check boxes can utilize the <JavadocLink type="foundation" location="com/webforj/component/AbstractOptionInput" code='true' suffix='#setText(java.lang.String)'>setText(String text)</JavadocLink> method, which will be positioned near the check box according to the built-in <JavadocLink type="foundation" location="com/webforj/component/TextPosition" code='true' suffix=''>Position</JavadocLink>.
 
-Checkboxes have built-in functionality to set text to be displayed either to the right or left of the box. By default, the text will be displayed to the right of the component. Positioning of the text is supported by use of the  <JavadocLink type="foundation" location="com/webforj/component/TextPosition" code='true' suffix=''>Position</JavadocLink> enum. Show below are the two settings: <br/>
+Checkboxes have built-in functionality to set text to be displayed either to the right or left of the box. By default, the text will be displayed to the right of the component. Positioning of the text is supported by use of the <JavadocLink type="foundation" location="com/webforj/component/TextPosition" code='true' suffix=''>Position</JavadocLink> enum. Show below are the two settings: <br/>
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/checkboxhorizontaltext?' 
@@ -61,13 +61,14 @@ The `CheckBox` component supports indeterminism, which is a UI pattern commonly 
 path='https://demo.webforj.com/webapp/controlsamples/checkboxindeterminate?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/checkbox/CheckboxIndeterminateView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/checkbox/Indeterminate.txt'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/checkboxstyles/text_styles.css' 
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/checkbox/checkboxIndeterminate.css' 
 height = '150px'
 />
 
 ## Styling
 
 ### Expanses
+
 The following <JavadocLink type="foundation" location="com/webforj/component/Expanse"> Expanses values </JavadocLink> allow for quick styling without using CSS.
 Expanses are supported by use of the `Expanse` enum class. Below are the expanses supported for the checkbox component: <br/>
 
@@ -75,32 +76,29 @@ Expanses are supported by use of the `Expanse` enum class. Below are the expanse
 path='https://demo.webforj.com/webapp/controlsamples/checkboxexpanse?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/checkbox/CheckboxExpanseView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/checkbox/Expanse.txt'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/checkboxstyles/expanse_styles.css' 
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/checkbox/checkboxExpanse.css' 
 height = '100px'
 />
 
 <br/>
 
-
 ### Shadow Parts
 
 These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
 
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Checkbox} table="parts"/>
+<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Checkbox} table="parts"/>
 
 ### CSS Properties
 
 These are the various CSS properties that are used in the component, with a short description of their use.
 
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Checkbox} table="properties"/>
+<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Checkbox} table="properties"/>
 
 ### Reflected Attributes
 
 The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
 
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Checkbox} table="reflects"/>
+<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Checkbox} table="reflects"/>
 
 ### Dependencies
 
@@ -108,8 +106,7 @@ This component relies on the following components - see the related article for 
 
 <TableBuilder tag='dwc-checkbox' table="dependencies"/>
 
-
-## Best Practices 
+## Best Practices
 
 To ensure an optimal user experience when using the `Checkbox` component, consider the following best practices:
 

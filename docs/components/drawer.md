@@ -13,7 +13,7 @@ The Drawer component can be used in many different situations, such as by provid
 <ComponentDemo 
 frame="hidden"
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/drawerstyles/drawer_welcome.css'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/drawer/drawerWelcome.css'
 />
 
 ## Usages

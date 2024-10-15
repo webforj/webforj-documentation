@@ -17,7 +17,7 @@ The `DateTimeField` class provides a user interface component that allows the us
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/datetimefielddemo?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/fields/datetimefield/DateTimeFieldDemoView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/fieldstyles/date_field_styles.css'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/fields/datefield/dateFieldDemo.css'
 />
 
 
