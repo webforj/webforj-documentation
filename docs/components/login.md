@@ -64,7 +64,7 @@ In the example below, a Customer ID field is added to the login form. Users must
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/logincustomfields?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/login/LoginCustomFieldsView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/login/LoginCustomFields/style.css'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/login/loginCustomFields.css'
 height = '700px'
 />
 

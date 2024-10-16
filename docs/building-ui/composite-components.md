@@ -87,7 +87,7 @@ This component is then instantiated and utilized in an Application, and allows f
  
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/compositedemo?' 
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/compositestyles/styles.css'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/compositeDemo.css'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeDemoView.java'
 height='500px'
 />

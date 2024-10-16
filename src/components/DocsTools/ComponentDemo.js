@@ -73,7 +73,7 @@ function CodeToggleButton({ collapse, setCollapse }) {
   );
 }
 
-function OpenNewWindowButton({ url }) {
+export function OpenNewWindowButton({ url }) {
   const buttonStyles = css`
     position: relative;
     cursor: pointer;
