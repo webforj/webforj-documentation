@@ -30,6 +30,11 @@ export default function JavadocLink( { type, location, top, children, code, suff
     margin-bottom: 1em;
     margin-left: 0.5em;
     float: right;
+    @media (max-width: 500px){
+    margin-bottom: 1em;
+    float: none;
+    margin-left: -.25em;
+    }
     `}
   `;
 
