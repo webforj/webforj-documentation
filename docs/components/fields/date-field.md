@@ -17,6 +17,7 @@ The `DateField` is a user interface component that allows users to input or sele
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/datefielddemo?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/fields/datefield/DateFieldDemoView.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/fields/datefield/dateFieldDemo.css'
 />
 
 ### Usages
@@ -41,7 +42,7 @@ You can use the `setMax()` and `setMin()` methods to specify the acceptable rang
 
 The `DateField` will, by default, display its information within the UI element based on the locale the browser is configured to. For example, users with United States configurations will see the date displayed with the month preceding the day, whereas European users will see the day before the month. This does not inhibit manipulation of the `LocalDate` object returned by methods from the class, however.
 
-### Static Utilities 
+### Static Utilities
 
 The `DateField` class also provides the following static utility methods:
 

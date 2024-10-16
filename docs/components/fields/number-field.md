@@ -18,7 +18,7 @@ The `NumberField` component can be used to accept numerical input from the user.
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/numberfielddemo?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/fields/numberfield/NumberFieldDemoView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/fieldstyles/date_field_styles.css'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/fields/datefield/dateFieldDemo.css'
 />
 
 ### Usages

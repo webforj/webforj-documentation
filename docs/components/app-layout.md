@@ -39,7 +39,7 @@ The following code sample will result in an application with a collapsible sideb
 <ComponentDemo 
 frame="hidden"
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_styles.css'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayout/applayout.css'
 />
 
 ### Full-Width Navbars
@@ -59,8 +59,7 @@ myApp.setFooterOffscreen(false);
 <ComponentDemo 
 frame="hidden"
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutFullNavbarView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_styles.css'
-/>
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayout/applayout.css'/>
 
 
 ### Multiple Toolbars
@@ -74,8 +73,7 @@ The following demo shows how to use two toolbars, The first one houses the drawe
 <ComponentDemo 
 frame="hidden"
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutMultipleHeadersView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_styles.css'
-/>
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayout/applayout.css'/>
 
 ### Sticky Toolbars
 
@@ -92,8 +90,7 @@ With the help of the CSS custom property `--dwc-app-layout-header-collapse-heigh
 <ComponentDemo 
 frame="hidden"
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutStickyToolbarView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_sticky_styles.css'
-/>
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayout/applayout.css'/>
 
 
 ### Mobile Navigation Layout
@@ -111,7 +108,7 @@ Be default, when the screen width is 800px or less , the drawer will be switched
 <ComponentDemo 
 frame="hidden"
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutMobileView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_mobile.css'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayout/applayoutMobile.css'
 />
 
 ### Drawer Breakpoint
@@ -130,7 +127,7 @@ demo.setDrawerBreakpoint("(max-width:500px)");
 <ComponentDemo 
 frame="hidden"
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutMobileDrawerView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayoutstyles/applayout_mobile.css'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayout/applayoutMobile.css'
 />
 
 
