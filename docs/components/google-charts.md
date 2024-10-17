@@ -5,9 +5,10 @@ title: Google Charts
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
 import Chip from '@mui/material/Chip';
 
-<DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" component="a" href="../../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
+<DocChip chip='shadow' />
 
-<DocChip tooltipText="The name of the web component that will render in the DOM." label="google-chart" clickable={false} iconName='code'/>
+<!-- UPDATE THE NAME FOR THE CLIENT COMPONENT HERE (label="???") -->
+<DocChip chip='name' label="google-chart" />
 
 <JavadocLink type="googlecharts" location="com/webforj/component/googlecharts/GoogleChart" top='true'/>
 

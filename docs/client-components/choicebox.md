@@ -12,9 +12,8 @@ import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
 import DocChip from '@site/src/components/DocsTools/DocChip';
 
-<DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" target="_blank" clickable={false} iconName='shadow' />
+<DocChip chip='shadow' />
 
-<br />
 <br />
 
 :::info CLIENT COMPONENT
@@ -25,7 +24,11 @@ This section outlines styling information for the **`<dwc-choicebox>`** componen
 These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
 <TableBuilder tag='dwc-choicebox' table="parts"/>
 
+### CSS Properties
 
+  These are the various CSS properties that are used in the component, with a short description of their use.
+  
+  <TableBuilder tag='dwc-choicebox' table="properties"/>
 
 ### Reflected Attributes
 

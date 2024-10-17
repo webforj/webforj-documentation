@@ -2,9 +2,9 @@
 title: Login
 ---
 
-<DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" target="_blank" clickable={false} iconName='shadow' />
+<DocChip chip='shadow' />
 
-<DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-login" clickable={false} iconName='code'/>
+<DocChip chip='name' label="dwc-login" />
 
 <JavadocLink type="foundation" location="com/webforj/component/login/Login" top='true'/>
 

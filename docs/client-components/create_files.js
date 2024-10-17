@@ -1,6 +1,9 @@
 const fs = require('fs');
 
+// Define the output directory where markdown files will be generated
 const outputDirectory = './';
+
+// Ensure the output directory exists
 if (!fs.existsSync(outputDirectory)) {
   fs.mkdirSync(outputDirectory);
 }
@@ -16,10 +19,6 @@ async function fetchData() {
     }
 
 const jsonData = await response.json();
-
-// Define the output directory where markdown files will be generated
-
-// Ensure the output directory exists
 
 // Iterate through the components in the JSON data
 jsonData.components.forEach((componentData) => {
@@ -42,9 +41,8 @@ import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
 import DocChip from '@site/src/components/DocsTools/DocChip';
 
-<DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="${(encapsulation[0].toUpperCase()) + encapsulation.substring(1)}" target="_blank" clickable={false} iconName='${encapsulation}' />
+<DocChip chip='${encapsulation}' />
 
-<br />
 <br />
 
 :::info CLIENT COMPONENT

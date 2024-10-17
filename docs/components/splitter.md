@@ -10,9 +10,9 @@ import Chip from '@mui/material/Chip';
 <!-- vale on -->
 
 
-<DocChip tooltipText="This component will render with a shadow DOM, an API built into the browser that facilitates encapsulation." label="Shadow" href="../glossary#shadow-dom" target="_blank" clickable={true} iconName="shadow" />
+<DocChip chip='shadow' />
 
-<DocChip tooltipText="The name of the web component that will render in the DOM." label="dwc-splitter" clickable={false} iconName='code'/>
+<DocChip chip='name' label="dwc-splitter" />
 
 <JavadocLink type="foundation" location="com/webforj/component/layout/splitter/Splitter" top='true'/>
 
