@@ -201,15 +201,15 @@ This category includes components that facilitate user interactions and visually
     <p>A component that allows users to select a value from a defined range by dragging a handle along a track.</p>
   </GalleryCard>
 
-  <GalleryCard header="BusyIndicator" href="#" image="/img/components/BusyIndicator.png">
+  <GalleryCard header="BusyIndicator" href="busyindicator" image="/img/components/BusyIndicator.png">
     <p> An app-wide visual indicator, typically a spinner, signaling that a global process is ongoing.</p>
   </GalleryCard>
 
-  <GalleryCard header="Loading" href="#" image="/img/components/Loading.png">
+  <GalleryCard header="Loading" href="loading" image="/img/components/Loading.png">
     <p>A scoped loading indicator that shows within a specific parent component, indicating that content or data is being loaded in that section.</p>
   </GalleryCard>
 
-  <GalleryCard header="Spinner" href="#" image="/img/components/Spinner.png">
+  <GalleryCard header="Spinner" href="spinner" image="/img/components/Spinner.png">
     <p>A component that displays a rotating animation, typically used to indicate that a process or action is in progress.</p>
   </GalleryCard>
 
