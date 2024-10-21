@@ -50,16 +50,16 @@ The `Button` class is a versatile component that is commonly used in various sit
   > - "Previous" - Returns the user to the previous page of the application or section they're in.
   > - "Back" Returns the user to the first part of the application or page they're in.
 
-
-
 ## Adding icons to buttons
 
-In addition to, or instead of having text on a `Button`, it is possible to add an icon to a button as well. To add these icons, set the button's text to have an `<html>` tag, with a `<dwc-icon>` tag inside with the name attribute set accordingly. In addition to an icon, include text to the left or right of the `<dwc-icon>` tag to include a label as well. Icons added to the left and/or right of the button should be done using the `prefix` and `suffix` slots.
+Incorporating an icon into a button can greatly improve your app's design, allowing users to quickly identify actionable items on the screen. The `Icon` component provides a wide selection of icons to choose from.
 
-To read more about customizing, configuring, and styling icons, read [**this page**](../components/dwc-icon).
+By utilizing the `setPrefixComponent()` and `setSuffixComponent()` methods, you have the flexibility to determine whether an `Icon` should appear before or after the text on a button. Alternatively, the `setIcon()` method can be used to add an `Icon` after the text, but before the button's `suffix` slot.
+
+Refer to the [Icon component](../components/icon) page for more information on configuring and customizing icons.
 
 :::tip
-Icons added in this way will automatically be configured to match the theme of the Button, but need to be manually configured if a different sized icon is desired when changing `Button` expanse.
+By default, an `Icon` inherits the button's theme and expanse.
 :::
 
 Below are examples of buttons with text to the left and right, as well as a button with only an icon:
