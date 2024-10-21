@@ -23,6 +23,6 @@ The navigation process is governed by a series of events that are triggered duri
 
 These events provide granular control over the navigation lifecycle, making it easier to manage complex transitions and ensure smooth interactions across routes.
 
-# Topics
+## Topics
 
 <DocCardList className="topics-section" />

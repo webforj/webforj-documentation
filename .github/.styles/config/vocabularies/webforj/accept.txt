@@ -1,4 +1,5 @@
 CSS
+JavaScript
 JSR
 classpath
 HTML
@@ -9,3 +10,4 @@ WillLeaveEvent
 DidLeaveEvent
 Auto-Detection
 CLI
+POM

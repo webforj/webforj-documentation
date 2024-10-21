@@ -24,7 +24,7 @@ cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/r
 height='300px'
 />
 
-### Usages
+## Usages
 
 The `ColorField` is best used in scenarios where color selection is a crucial part of the user interface or application functionality. This section outlines the best practices and scenarios for using the color field component effectively.
 
@@ -39,7 +39,7 @@ The `ColorField` is best used in scenarios where color selection is a crucial pa
 
 4. **Form Inputs**: When designing forms that require color inputs, using a color field simplifies the color selection process for users.
 
-### Color Code Format
+## Color code format
 
 Currently, the `ColorField` supports `#RRGGBB` hexadecimal format. Only simple colors (without alpha channel) are allowed in the picker interface. Additionally, the `ColorField` comes along with a various methods that interact with the `java.awt.Color` class to add flexibility.
 
@@ -47,7 +47,7 @@ Currently, the `ColorField` supports `#RRGGBB` hexadecimal format. Only simple c
 The component's presentation may vary substantially from one browser and/or platform to another. It might be a simple textual field that automatically validates to ensure that the color information is entered in the proper format, a platform-standard color picker, or some kind of custom color picker window.
 :::
 
-### Static Utilities 
+## Static utilities 
 
 The `ColorField` class also provides the following static utility methods:
 
@@ -57,7 +57,7 @@ The `ColorField` class also provides the following static utility methods:
 
 - `boolean isValidHexColor(String hex)`: Check if the given value is a valid 7 character hex color.
 
-### Best Practices
+## Best practices
 
 To ensure an optimal user experience when using the `ColorField` component, consider the following best practices:
 

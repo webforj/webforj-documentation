@@ -22,7 +22,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 height='175px'
 />
 
-## Property and Attribute Descriptors
+## Property and attribute descriptors
 
 Properties and attributes in web components represent the state of the component. They are often used to manage data or configuration. The `ElementComposite` class provides a convenient way to work with properties and attributes.
 
@@ -65,7 +65,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 height='250px'
 />
 
-## Event Registration
+## Event registration
 
 Events are a crucial part of web components, allowing communication between different parts of an application. The `ElementComposite` class simplifies event registration and handling. To register an event listener, use the `addEventListener()` method to register event listeners for specific event types. Specify the event class, the listener, and optional event options.
 

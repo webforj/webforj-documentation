@@ -10,7 +10,7 @@ draft: false
 Components, whether custom or part of the framework, support event handling. You can add event listeners to capture various types of events, such as user interactions, changes in state, or other custom events. These event listeners can be used to trigger specific actions or behaviors in response to the events.
 
 In the example below, an event is being added using each of the three supported methods: lambda expressions, anonymous classes, and method references.
-## Adding Events
+## Adding events
 
 Adding an event listener is possible use one of the following patterns where:
 
@@ -47,7 +47,7 @@ myComponent.onEvent(e -> {
 });
 ```
 
-## Removing an Event
+## Removing an event
 
 When adding an event listener, a `ListenerRegistration` object will be returned. This can be used, among other things, to remove the event later on.
 
@@ -61,7 +61,7 @@ ListenerRegistration listenerRegistration = myComponent.addEventListener(e -> {
 listenerRegistration.remove();
 ```
 
-## Using Event Payload
+## Using event payload
 
 It's important to note that events often come with a payload, which contains additional information related to the event. You can efficiently utilize this payload within the event handler to access relevant data without making unnecessary round trips between the client and server. By doing so, you can improve the performance of your application.
 

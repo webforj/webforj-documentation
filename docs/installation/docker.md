@@ -3,14 +3,14 @@ sidebar_position: 1
 title: Docker
 ---
 
-# Docker Installation
+# Docker installation
 
 This section of the documentation will cover the steps required for users who wish to develop using Docker. Changes to your code
 will be made on your development machine, and the resulting application will be run in Docker. 
 
 ## 1. Downloading Docker
 
-The installation process for Docker will differ slightly between Windows, Mac and Linux users. See the section below that corresponds to your operating system.
+The installation process for Docker will differ slightly between Windows, Mac, and Linux users. See the section below that corresponds to your operating system.
 
 
 ### Windows
@@ -96,7 +96,7 @@ Once this is finished, click the `Run` button at the bottom of the window, which
 Make sure to take note of the custom Host port number you provide, as this will be needed later.
 :::
 
-## 3. Running Your Application
+## 3. Running your app
 
 Once the container has been created, webforJ applications can be run within the container instead of locally. First, it is necessary to configure
 the POM file of your project correctly. Once this is done, going to a specific URL in the browser will show the application.
@@ -147,7 +147,7 @@ in the previous step.
 The [webforj-hello-world](https://github.com/webforj/HelloWorldJava) project will come with the POM file already mostly configured - with other settings remaining the same, only the `<deployurl>` tag will need to be changed.
 :::
 
-### Launching the Application
+### Launching the application
 
 Once this has been done, run a `mvn install` in your project directory. This will run the webforJ install plugin, and allow
 you to access your application. To see the application, you'll want to go to the following URL:

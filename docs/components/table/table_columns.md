@@ -7,9 +7,9 @@ slug: columns
 The `Table` class utilizes `Column` classes to handle the creation of data columns within it. This class has a wide range of functionality that allows a user to thoroughly customize what is displayed within each of the columns.
 To add a `Column` to a `Table`, use one of the `addColumn` factory methods.
 
-## Value Providers
+## Value providers
 
-A Value Provider is a function responsible for translating raw data from the underlying dataset into a format suitable for display within a specific column. The function, defined by the user, takes an instance of the row data type (T) and returns the value to be showcased in the associated column for that particular row.
+A value provider is a function responsible for translating raw data from the underlying dataset into a format suitable for display within a specific column. The function, defined by the user, takes an instance of the row data type (T) and returns the value to be showcased in the associated column for that particular row.
 
 To set a value provider on a column, use one of the `addColumn` factory methods that accept a provider as an argument:
 
@@ -98,7 +98,7 @@ By default, the label will be the same as the column ID
 table.addColumn("Product ID", Product::getProductId).setLabel("ID");
 ```
 
-## Minimum Width
+## Minimum width
 
  The `setMinWidth()` method allows you to define the minimum width of a column, ensuring consistent and aesthetically pleasing layout.
 

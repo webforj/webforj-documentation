@@ -21,7 +21,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/fields/datefield/dateFieldDemo.css'
 />
 
-### Usages
+## Usages
 
 The `NumberField` is best used in scenarios where capturing or manipulating numerical data is crucial to the user interface or application functionality. Here are some examples of when to use the `NumberField`:
 
@@ -34,15 +34,15 @@ The `NumberField` is best used in scenarios where capturing or manipulating nume
 4. **Measurement and Unit Conversion**: In applications that deal with measurements or unit conversions, the `NumberField` is ideal for inputting numerical values with units such as length, weight, or volume.
 
 
-### Maximum and Minimum
+## Maximum and minimum
 
 You can use the `setMax()` and `setMin()` methods to specify the acceptable time range. If the value entered into the component is outside of the specified value, the component fails constraint validation. Also, if there is already a maximum or minimum set, the value given to the other method must be lower or higher respectively.
 
-### Granularity
+## Granularity
 
 You can use the `setStep` method to specify the granularity that the value must adhere to when using arrow keys to modify the value. This will increment or decrement the component's value by a certain step each time. This does not apply when a user enters a value directly, but only when interacting with the `NumberField` using the arrow keys.
 
-### Placeholder Text
+## Placeholder text
 
 You can set placeholder text for the `NumberField` using the `setPlaceholder` method. The placeholder text is displayed when the field is empty, helping to prompt the user to enter appropriate input into the `NumberField`.
 
@@ -50,7 +50,7 @@ You can set placeholder text for the `NumberField` using the `setPlaceholder` me
 If the numeric input relates to a specific unit of measurement or has a particular context, provide clear labeling or additional information to guide users and ensure accurate input.
 :::
 
-### Best Practices
+## Best practices
 
 To ensure a seamless integration and optimal user experience, consider the following best practices when using the `NumberField`:
 

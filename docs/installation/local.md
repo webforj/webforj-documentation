@@ -22,7 +22,7 @@ Installation will be broken down into the following steps:
 4. Launching your application
 
 
-## 1. Java and Maven Download and Configuration
+## 1. Java and Maven download and configuration
 
 In order to use webforJ, you must first have Java and Maven installed and properly configured. If you already
 have Java and Maven downloaded, please skip to [**Step 2**](#section2). If you also have 
@@ -42,7 +42,7 @@ for Windows users can be found [here](https://phoenixnap.com/kb/install-maven-wi
 
 <a name='section2'></a>
 
-## 2. BBj Download and Installation
+## 2. BBj download and installation
 
 <b>While following this step, be sure that you install the BBj version that corresponds to the same webforJ version. </b><br/><br/>
 
@@ -63,7 +63,7 @@ mvn install:install-file -Dfile=BBjUtil.jar -DgroupId=com.basis.lib -DartifactId
 
 <a name='section3'></a>
 
-## 3. Install and Configure the webforJ Plugin
+## 3. Install and configure the webforJ plugin
 
 Once BBj has been installed, we can access the Plugin Manager in order to install tools needed to configure webforJ. To start, type "Plugin Manager" into the start menu or Finder. 
 
@@ -132,7 +132,7 @@ Finally, click on the "Configure" button, which will open a new window. In this 
 
 
 
-## 4. Clone the Repository
+## 4. Clone the repository
 
 Once BBj and the required webforJ plugin are installed and configured, we can clone the "Hello World" repository from the webforJ Github page. This project comes with the necessary tools to run your first webforJ program!
 

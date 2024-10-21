@@ -11,7 +11,7 @@ The `AppLayout` is a comprehensive responsive layout component that provides a h
 
 This component can be used to build common application layouts, such as a dashboard.
 
-### Features
+## Features
 
 The webforJ App Layout is a component which allows for building common application layouts.
 
@@ -30,7 +30,7 @@ Each part of the layout is a `Div`, which can contain any valid webforJ control.
 @AppMeta(name = "viewport", content = "width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no")
 ```
 
-### Overview
+## Overview
 
 The following code sample will result in an application with a collapsible sidebar that contains a logo and tabs for various content options and a header. The demo uses the dwc-icon-button web component to create a drawer toggle button. The button has the data-drawer-toggle attribute which instructs the DwcAppLayout to listen to click events coming from that component to toggle the drawer state.
 
@@ -39,7 +39,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayout/applayout.css'
 />
 
-### Full-Width Navbars
+## Full width navbar
 
 By default, the AppLayout renders the header and the footer in the off-screen mode. The off-screen mode means that the header and the footer position will be shifted to fit beside the opened drawer. Disabling this mode will cause the header and footer to take the full available space and shift the drawer top and bottom position to fit with the header and the footer.
 
@@ -55,7 +55,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayout/applayout.css'/>
 
 
-### Multiple Toolbars
+## Multiple toolbars
 
 The navbar has no limit to the number of toolbars you can add. A toolbar is only a Div. To add an additional toolbar, simply add a new Div to the existing header div of the AppLayout.
 
@@ -65,7 +65,7 @@ The following demo shows how to use two toolbars, The first one houses the drawe
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutMultipleHeadersView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayout/applayout.css'/>
 
-### Sticky Toolbars
+## Sticky toolbars
 
 A sticky toolbar is a toolbar that remains visible at the top of the page when the user scrolls down but the navbar height is collapsed to make more space available for the page's content. Usually this kind of toolbar contains a fixed navigation menu which is relevant to the current page.
 
@@ -79,7 +79,7 @@ With the help of the CSS custom property `--dwc-app-layout-header-collapse-heigh
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutStickyToolbarView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayout/applayout.css'/>
 
-### Mobile Navigation Layout
+## Mobile navigation layout
 
 The bottom navbar can be used to provide a different version of the navigation at the bottom of application. This type of navigation is specifically popular in mobile apps.
 
@@ -94,7 +94,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayout/applayoutMobile.css'
 />
 
-### Drawer Breakpoint
+## Drawer breakpoint
 
 Be default, when the screen width is 800px or less , the drawer will be switched to popover mode. This is called the breakpoint. Popover mode means that the drawer will pop over the content area with an overlay. It is possible to configure the breakpoint by using the DwcAppLayout:setDrawerBreakpoint method and the breakpoint must be a valid media query.
 
@@ -112,7 +112,7 @@ cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/r
 
 ## Styling
 
-### Shadow Parts
+### Shadow parts
 
 These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
 
@@ -124,13 +124,13 @@ Listed below are the slots available for utilization within the `AppLayout` comp
 
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').AppLayout} table='slots'/>
 
-### CSS Properties
+### CSS properties
 
 These are the various CSS properties that are used in the component, with a short description of their use.
 
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').AppLayout} table='properties'/>
 
-### Reflected Attributes
+### Reflected attributes
 
 The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
 

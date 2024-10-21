@@ -10,7 +10,6 @@ import Chip from '@mui/material/Chip';
 
 <DocChip chip='name' label="dwc-tabbed-pane" />
 
-
 <JavadocLink type="foundation" location="com/webforj/component/tabbedpane/TabbedPane" top='true'/>
 
 The `TabbedPane` class provides a compact and organized way of displaying content that is divided into multiple sections, each associated with a `Tab`. Users can switch between these sections by clicking on the respective tabs, often labeled with text and/or icons. This class simplifies the creation of multifaceted interfaces where different content or forms need to be accessible but not simultaneously visible.
@@ -65,11 +64,11 @@ Tabs are comprised of the following properties, which are then used when adding 
         pane.addTab(new Tab("Documents", TablerIcon.create("files")));
         ```
 
-## `Tab` Manipulation
+## `Tab` manipulation
 
 Various methods exist to allow developers to add, insert, remove and manipulate various properties of `Tab` elements within the `TabbedPane`.
 
-### Adding a Tab
+### Adding a `Tab`
 
 The `addTab()` and `add()` methods exist in different overloaded capacities to allow developers flexibility in adding new tabs to the `TabbedPane`. Adding a `Tab` will place it after any previously existing tabs.
 
@@ -83,7 +82,7 @@ The `addTab()` and `add()` methods exist in different overloaded capacities to a
 The `add(Component... component)` determines the name of the passed `Component` by calling the `component.getName()` on the passed argument.
 :::
 
-### Inserting a Tab
+### Inserting a `Tab`
 
 In addition to adding a `Tab` at the end of the existing tabs, it is also possible to create a new one at a designated position. To do this, multiple overloaded versions of the `insertTab()`. 
 
@@ -92,7 +91,7 @@ In addition to adding a `Tab` at the end of the existing tabs, it is also possib
 3. **`insertTab(int index, String text, Component component)`** - Inserts a `Tab` with the given `String` as the text of the `Tab`, and the provided `Component` displayed in the content section of the `TabbedPane`.
 4. **`insertTab(int index, Tab tab, Component component)`** - Inserts the provided `Tab` and displays the provided `Component` in the content section of the `TabbedPane`.
 
-### Removing a Tab
+### Removing a `Tab`
 
 To remove a single `Tab` from the `TabbedPane`, use one of the following methods:
 
@@ -106,7 +105,7 @@ In addition to the two above methods for removal of a single `Tab`, use the **`r
 The `remove()` and `removeAll()` methods do not remove tabs within the component.
 :::
 
-### Tab/Component Association
+### Tab/Component association
 
 To change the `Component` to be displayed for a given `Tab`, call the `setComponentFor()` method, and pass either the instance of the `Tab`, or the index of that Tab within the `TabbedPane`.
 
@@ -114,7 +113,7 @@ To change the `Component` to be displayed for a given `Tab`, call the `setCompon
 If this method is used on a `Tab` that is already associated with a `Component`, the previously associated `Component` will be destroyed.
 :::
 
-## Configuration and Layout
+## Configuration and layout
 
 The `TabbedPane` class has two constituent parts: a `Tab` that is displayed in a specified location, and a component to be displayed. This can be a single component, or a [`Composite`](../building-ui/composite-components) component, allowing for the display of more complex components within a tab's content section.
 
@@ -126,7 +125,7 @@ The `TabbedPane` supports navigating through the various tabs via swiping. This 
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/tabbedpanedemos/TabbedPaneSwipe.java'
 /> -->
 
-### Tab Placement 
+### Tab placement 
 
 The `Tabs` within a `TabbedPane` can be placed in various positions within the component based on the application developers preference. Provided options are set using the provided enum, which has the values of `TOP`, `BOTTOM`, `LEFT`, `RIGHT`, or `HIDDEN`. The default setting is `TOP`.
 
@@ -149,7 +148,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 height="250px"
 />
 
-### Border and Activity Indicator
+### Border and activity indicator
 
 The `TabbedPane` will have a border displayed for the tabs within it by default, placed dependant on which `Placement` has been set. This border helps to visualize the space that the various tabs within the pane take up. 
 
@@ -169,7 +168,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 height="300px"
 />
 
-### Activation Modes 
+### Activation modes 
 
 For more fine-grained control over how the `TabbedPane` behaves when being navigated by the keyboard, the `Activation` mode can be set to specify how the component should behave.
 
@@ -183,7 +182,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 height="250px"
 />
 
-### Removal Options
+### Removal options
 
 Individual `Tab` elements can be set to be closable. Closable tabs will have a close button added to the tab, which fires a close event when clicked. The `TabbedPane` dictates how this behavior is handled.
 
@@ -193,7 +192,7 @@ Individual `Tab` elements can be set to be closable. Closable tabs will have a c
 
 ## Styling
 
-### Expanse and Theme
+### Expanse and theme
 
 The `TabbedPane` comes with built-in `Expanse` and `Theme` options similar to other webforJ components. These can be used to quickly add styling that conveys various meaning to the end user without needing to style the component with CSS.
 
@@ -203,7 +202,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 height="250px"
 />
 
-### Shadow Parts
+### Shadow parts
 
 These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
 
@@ -215,13 +214,13 @@ Listed below are the slots available for utilization within the `Button` compone
 
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TabbedPane} table='slots' />
 
-### CSS Properties
+### CSS properties
 
 These are the various CSS properties that are used in the component, with a short description of their use.
 
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TabbedPane} table='properties' />
 
-### Reflected Attributes
+### Reflected attributes
 
 The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
 
@@ -233,7 +232,7 @@ This component relies on the following components - see the related article for 
 
 <TableBuilder tag='dwc-tabbed-pane' table="dependencies" />
 
-## Best Practices 
+## Best practices 
 
 The following practices are recommended for utilizing the `TabbedPane` within applications:
 

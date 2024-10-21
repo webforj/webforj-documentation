@@ -4,7 +4,7 @@ title: Slider
 
 <JavadocLink type="foundation" location="com/webforj/component/slider/Slider" top='true'/>
 
-### Upper and Lower Limit
+## Upper and lower limit
 
 Use the `setMinimum()` and `setMaximum()` methods to determine the upper and lower bound of the slider. Each interval on the slider has a distance of 1, meaning that a slider with maximum 10 and minimum of 0 will have 10 intervals on the slider, whereas a maximum of 100 and minimum of 0 will have 100 intervals. These intervals will evenly distribute on the slider, depending on the height and width dimensions that it has been given by the developer. 
 
@@ -19,7 +19,7 @@ height = '225px'
 
 <br />
 
-### Ticks and Labeling
+## Ticks and labeling
 
 Slider components can be customized to show ticks, or spaces bounded by lines to represent distances. Major ticks will be larger and more noticeable than minor ticks, and both can be configured to appear at the desired intervals. It is also possible to set the slider to snap to the tick values using the `setSnapToTicks()` method.
 
@@ -53,7 +53,7 @@ height = '225px'
 
 <br />
 
-### Orientation and Inversion
+## Orientation and inversion
 
 Sliders can be oriented either horizontally or vertically by using the `setOrientation()` method.
 
@@ -81,7 +81,7 @@ height = '300px'
 
 <br />
 
-### Themes
+## Themes
 
 The slider component comes with 6 themes built in for quick styling without the use of CSS. Theming is supported by use of a built-in enum class.
 Shown below are sliders with each of the supported Themes applied: <br/>
@@ -101,6 +101,6 @@ height = '620px'
 |-|
 |<ul><li>```Slider.Theme.DEFAULT```</li><li>```Slider.Theme.DANGER```</li><li>```Slider.Theme.GRAY```</li><li>```Slider.Theme.INFO```</li><li>```Slider.Theme.SUCCESS```</li><li>```Slider.Theme.WARNING```</li></ul>|
 
-## Parts and CSS Properties
+## Parts and CSS properties
 
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Slider} />

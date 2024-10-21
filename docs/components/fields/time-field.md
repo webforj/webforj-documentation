@@ -21,7 +21,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 height='300px'
 />
 
-### Usages
+## Usages
 
 The `TimeField` is best used in scenarios where capturing or manipulating time values is crucial to the user interface or application functionality. Here are some examples of when to use the `TimeField`:
 
@@ -35,7 +35,7 @@ The `TimeField` is best used in scenarios where capturing or manipulating time v
 
 The `TimeField` class provides a user interface component that allows the user to enter both a time; hours, minutes, and optionally seconds. The value of the time field is always in 24-hour format that includes leading zeros: HH:mm, regardless of the UI field format, which is likely to be selected based on the user's locale (or by the user agent). If the time includes seconds, the format is always HH:mm:ss
 
-### Maximum and Minimum
+## Maximum and minimum
 
 You can use the `setMax()` and `setMin()` methods to specify the acceptable time range. If the value entered into the component is outside of the specified value, the component fails constraint validation. Also, if there is already a maximum or minimum set, the value given to the other method must be lower or higher respectively.
 
@@ -45,7 +45,7 @@ javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/ja
 height='300px'
 />
 
-### Display
+## Display
 
 The `TimeField` will, by default, display its information within the UI element based on the locale the browser is configured to. For example, users with United States configurations will see the time displayed with A.M. and P.M. labels, whereas other locales would see the time in 24 hour format. This does not inhibit manipulation of the `LocalTime` object returned by methods from the class, however.
 
@@ -53,7 +53,7 @@ The `TimeField` will, by default, display its information within the UI element 
 When displaying time, the seconds will display by default. However, if the component is given a `LocaleTime` object with the seconds set to 0, the seconds are then hidden from the display.
 :::
 
-### Static Utilities 
+## Static utilities 
 
 The `TimeField` class also provides the following static utility methods:
 
@@ -63,7 +63,7 @@ The `TimeField` class also provides the following static utility methods:
 
 - `isValidTime(String timeAsString)`: Check if the given string is a valid HH:mm:ss time. This will return a boolean value true if so, false otherwise.
 
-### Best Practices
+## Best practices
 
 1. **Provide Clear Time Format Examples**: Clearly indicate the expected time format to users within or near the `TimeField`. Use examples or placeholders to guide users in entering time correctly. Consider displaying the time format dynamically based on the user's locale if applicable.
 

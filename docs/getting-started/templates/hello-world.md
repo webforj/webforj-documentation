@@ -42,7 +42,7 @@ This is the method that will be executed when your application is rendered. Here
 
 This is an ideal pattern for exploration purposes or simple applications. For more complex applications, it is advised to split functionality into additional methods and classes.
 
-###  CSS
+##  CSS
 
 ```java
 @InlineStyleSheet(/* css */"""

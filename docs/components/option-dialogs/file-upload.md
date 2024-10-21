@@ -99,13 +99,13 @@ UploadedFile result = dialog.show();
 
 ## Styling
 
-### Shadow Parts
+### Shadow parts
 
 These are the various parts of the [shadow DOM](../../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
 
 <TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Dialog} table='parts'/>
 
-### Reflected Attributes
+### Reflected attributes
 
 The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
 

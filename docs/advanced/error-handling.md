@@ -28,7 +28,7 @@ webforJ uses Java's Service Provider Interface (SPI) to discover and load error 
 
 The `ErrorHandler` interface is designed to handle errors that occur during the execution of a webforJ app. Applications that want to manage specific exceptions should implement this interface.
 
-#### Methods
+### Methods
 
 - **`onError(Throwable throwable, boolean debug)`**: Called when an error occurs. This method should contain the logic for handling the exception.
 - **`showErrorPage(String title, String content)`**: A default method that displays the error page with the given title and content.

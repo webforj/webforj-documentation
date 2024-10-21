@@ -14,7 +14,7 @@ slug: textfield
 
 The `TextField` component allows users to enter and edit text in a single line. It can be configured to display a specific virtual keyboard, such as a numeric keypad, email input, telephone input, or URL input. The component also provides built-in validation to reject values that do not adhere to the specified type.
 
-### Usages
+## Usages
 
 The `TextField` is suitable for a wide range of scenarios where text input or editing is required. Here are some examples of when to use the `TextField`:
 
@@ -24,7 +24,7 @@ The `TextField` is suitable for a wide range of scenarios where text input or ed
 
 3. **Text Editing**: A `TextField` is ideal for applications that require text editing or content creation, such as document editors, chat applications, or note-taking apps.
 
-### Types
+## Types
 
 You can specify the type of the TextField using the `setType` method. Similarly, the type can be retrieved using the `getType` method, which will return an enum value.
 
@@ -38,15 +38,15 @@ You can specify the type of the TextField using the `setType` method. Similarly,
 
 - `Type.SEARCH`: A single-line text field for entering search strings. Line-breaks are automatically removed from the input value.
 
-### Placeholder Text
+## Placeholder text
 
 You can set placeholder text for the `TextField` using the `setPlaceholder` method. The placeholder text is displayed when the field is empty, helping to prompt the user to enter appropriate input into the `TextField`.
 
-### Selected Text
+## Selected text
 
 It is possible to interact with the `TextField` class to retrieve a user's selected text, and to get information about the user's selection. You can retrieve the selected text in the `TextField` using the `getSelectedText` method. This behavior would commonly be used in conjunction with an event. Similarly, it is possible to retrieve the current selection range of the `TextField` using the `getSelectionRange` method. This returns a `SelectionRange` object representing the start and end indices of the selected text.
 
-### Best Practices
+## Best practices
 
 The following section outlines some suggested best practices for utilization of the `TextField`.
 

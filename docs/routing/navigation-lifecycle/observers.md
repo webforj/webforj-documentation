@@ -5,14 +5,14 @@ title: Lifecycle Observers
 
 Observers allow components to react to lifecycle events by implementing interfaces for specific stages. This pattern ensures a clean separation of concerns and simplifies handling navigation logic.
 
-### Available observers
+## Available observers
 
 - **`WillEnterObserver`**: Allows you to handle tasks before a route is entered, such as fetching necessary data or blocking navigation.
 - **`DidEnterObserver`**: Ideal for handling actions after the component has been attached, such as rendering data or triggering animations.
 - **`WillLeaveObserver`**: Provides a way to manage logic before a user leaves a route, such as checking for unsaved changes.
 - **`DidLeaveObserver`**: Used for cleanup actions or other tasks that should run after a component is detached from the DOM.
 
-### Example: Authentication with `WillEnterObserver`
+## Example: authentication with `WillEnterObserver`
 
 ```java
 @Route(value = "dashboard")
@@ -38,7 +38,7 @@ This **Isn't** an example how you'd write a production-level authentication syst
 You'll need to take the concepts and patterns used in this example and adapt then to work with your authentication flow/system for your app.
 :::
 
-### Example: fetching data on route entry with `DidEnterObserver`
+## Example: fetching data on route entry with `DidEnterObserver`
 
 ```java
 @Route(value = "profile")
@@ -59,7 +59,7 @@ public class ProfileView extends Composite<Div> implements DidEnterObserver {
 
 This example demonstrates using `DidEnterObserver` to fetch and display profile data once the component is attached to the DOM.
 
-### Example: Handling unsaved changes with `WillLeaveObserver`
+## Example: Handling unsaved changes with `WillLeaveObserver`
 
 ```java
 @Route(value = "edit-profile")
@@ -91,7 +91,7 @@ In this example, `onWillLeave` prompts the user with a confirmation dialog if th
 For more information about blocking navigation, see [Navigation Blocking and Veto Handling](./navigation-blocking)
 :::
 
-### Example: Cleanup with `DidLeaveObserver`
+## Example: Cleanup with `DidLeaveObserver`
 
 ```java
 @Route(value = "notifications")

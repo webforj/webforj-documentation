@@ -5,11 +5,11 @@ pagination_prev: "components/tabbed-pane"
 title: Getting Started
 ---
 
-## Application Theme
+## Application theme
 
 webforJ ships three themes by default, as well as with the ability to create your own, custom theme. The default themes are light, dark and dark-pure. 
 
-### Default Themes
+### Default themes
 
 To change the theme of your application, you can use the `@AppTheme` annotation or the `App.setTheme()` method. When using this annotation, the theme name should be one of the following: `system`, `light`, `dark`, `dark-pure` or the name of a custom theme.
 
@@ -19,7 +19,7 @@ To change the theme of your application, you can use the `@AppTheme` annotation 
 App.setTheme("dark-pure");
 ```
 
-### System Theme
+### System theme
 
 The `system` theme option allows for a theme to be set based on the operating system user preferences. Operating systems that support a dark mode or dark theme typically have an option to activate it somewhere in the settings. 
 
@@ -38,7 +38,7 @@ If the system's themes have been customized and your application is set to use t
 @AppDarkTheme("my-dark-theme")
 ```
 
-## Using Custom CSS
+## Using custom CSS
 
 Styling your webforJ application can be accomplished in various ways, which include:
 
@@ -150,6 +150,6 @@ If you're using VS code, an extension that provides syntax highlighting [can be 
 :::
 
 
-## Component Theme and Expanse
+## Component theme and expanse
 
 Many core webforJ components come packaged with various Themes and Expanses for easy styling. More about the specific component Themes and Expanses can be found in the [webforJ Components](/docs/components/overview) section.

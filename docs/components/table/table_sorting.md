@@ -16,7 +16,7 @@ height='600px'
 
 By default, a column will not be set as sortable. To change this, you can use the `setSortable(boolean sortable)` method. 
 
-## Sort Direction
+## Sort direction
 
 There are three available settings for the direction in which a column can be sorted:
 
@@ -29,11 +29,11 @@ When a column has sorting enabled, you will see a set of vertical arrow indicato
 When ascending order is selected, a `^` will be displayed, whereas descending order will display a `v`.
 
 
-## Client vs. Server-side Sorting
+## Client vs. server-side sorting
 
 Sorting of data plays can be broadly categorized into two main approaches: **Client Sorting** and **Server Sorting**.
 
-### Client Sorting
+### Client sorting
 
 Client sorting involves arranging and displaying data directly within the user interface of the client application. It's the sorting users interact with when they click on column headers, influencing the visual representation of data on the screen.
 
@@ -50,7 +50,7 @@ The developer has no direct control over client-side sorting, but rather is dete
 Client sorting does not work when only a portion of the data is available in the client.
 :::
 
-### Server Sorting
+### Server sorting
 
 In contrast to client-side sorting, server sorting entails arranging and organizing data on the server before transmitting it to the client. This approach is particularly beneficial when dealing with large datasets that might be impractical to transfer entirely to the client.
 

@@ -5,7 +5,7 @@ title: Navigation Events
 
 In addition to component-specific lifecycle events, you can register **global event listeners** at the router level. This allows for tracking navigation globally across the entire app, making it useful for logging, analytics, or other cross-cutting concerns.
 
-### Example: Global navigation listener
+## Example: Global navigation listener
 
 ```java
 Router.getCurrent().addNavigateListener(event -> {
@@ -16,7 +16,7 @@ Router.getCurrent().addNavigateListener(event -> {
 
 In this example, a global listener is registered to log every navigation event in the app. This is useful for auditing or tracking page views.
 
-### Registering Global lifecycle event listeners
+## Registering global lifecycle event listeners
 
 Global listeners can be attached to various lifecycle events, including:
 
@@ -30,7 +30,7 @@ Global listeners can be attached to various lifecycle events, including:
 You can also hook into the lifecycle events using observers. For more details, refer to the [Lifecycle Observers](./observers).
 :::
 
-### Example: Global `WillLeaveEvent` listener
+## Example: Global `WillLeaveEvent` listener
 
 ```java
 Router.getCurrent().addWillLeaveListener(event -> {

@@ -42,7 +42,7 @@ If the app title is set, the frame title will incorporate it. For example, if th
 
 In cases where the frame title needs to change dynamically based on the state of the app or route parameters, webforJ provides an interface called `HasFrameTitle`. This interface allows components to provide a frame title based on the current navigation context and route parameters.
 
-### Implementing the `HasFrameTitle` Interface
+### Implementing the `HasFrameTitle` interface
 
 The `HasFrameTitle` interface contains a single method `getFrameTitle()`, which is invoked before the frame's title is updated. This method provides the flexibility to generate a title dynamically based on the navigation context or other dynamic factors.
 

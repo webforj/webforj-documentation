@@ -20,7 +20,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/fields/datefield/dateFieldDemo.css'
 />
 
-### Usages
+## Usages
 
 The `DateField` is best used in scenarios where capturing or displaying dates is a crucial part of the user interface or application functionality. Here are some examples of when to use the date field
 
@@ -34,15 +34,15 @@ The `DateField` is best used in scenarios where capturing or displaying dates is
 
 The `DateField` class provides a user interface component that allows the user to enter a date, including the year, month, and day. It offers the flexibility to validate the input or use a special date picker interface.
 
-### Maximum and Minimum
+## Maximum and minimum
 
 You can use the `setMax()` and `setMin()` methods to specify the acceptable range of dates. If the value entered into the component is outside of the specified value, the component fails constraint validation. Also, if there is already a maximum or minimum set, the value given to the other method must be lower or higher respectively.
 
-### Display
+## Display
 
 The `DateField` will, by default, display its information within the UI element based on the locale the browser is configured to. For example, users with United States configurations will see the date displayed with the month preceding the day, whereas European users will see the day before the month. This does not inhibit manipulation of the `LocalDate` object returned by methods from the class, however.
 
-### Static Utilities
+## Static utilities
 
 The `DateField` class also provides the following static utility methods:
 
@@ -52,7 +52,7 @@ The `DateField` class also provides the following static utility methods:
 
 - `isValidDate(String dateAsString)`: Checks to see if the given string is a valid yyyy-MM-dd date. This will return a boolean value true if so, false otherwise.
 
-### Best Practices
+## Best practices
 
 To ensure an optimal user experience when using the `DateField` component, consider the following best practices:
 

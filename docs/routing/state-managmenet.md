@@ -5,7 +5,7 @@ title: State Management
 
 Creating seamless, dynamic user experiences often requires that the state of your web app be reflected in the URL and retained across browser navigation events. You can achieve this without reloading the page by leveraging URL parameter updates and browser history state management. This ensures that users can share, bookmark, or return to specific views with the app fully aware of their prior interactions.
 
-### Updating the URL
+## Updating the URL
 
 When the state of a web page changes, like filtering a product list or navigating through different views, you often need the URL to reflect those changes. You can use the `replaceState` or `pushState` methods provided by the `BrowserHistory` class to manipulate the URL without reloading the page:
 
