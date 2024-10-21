@@ -56,7 +56,8 @@ Incorporating an icon into a button can greatly improve your app's design, allow
 
 By utilizing the `setPrefixComponent()` and `setSuffixComponent()` methods, you have the flexibility to determine whether an `Icon` should appear before or after the text on a button. Alternatively, the `setIcon()` method can be used to add an `Icon` after the text, but before the button's `suffix` slot.
 
-Refer to the [Icon component](../components/icon) page for more information on configuring and customizing icons.
+<!-- Add this back in once Icon has been merged -->
+<!-- Refer to the [Icon component](../components/icon) page for more information on configuring and customizing icons. -->
 
 :::tip
 By default, an `Icon` inherits the button's theme and expanse.
