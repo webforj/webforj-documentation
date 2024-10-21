@@ -6,7 +6,7 @@ slug: selection
 
 The `Table` component provides various selection capabilities. There are methods for selecting a single item, multiple items, or programmatically managing selections.
 
-### Selection Mode
+## Selection mode
 
 The selection mode in the table determines how items can be selected by the user. It provides options for configuring the behavior of item selection. The Table class provides a method to set the selection mode:
 
@@ -20,7 +20,7 @@ Available SelectionMode options include:
 >- `MULTI` - (multiple selection)
 >- `NONE` - (no selection).
 
-### Selection Event
+## Selection event
 
 The `Table` component package emits several events related to row selection. These events capture  changes in the selection state of `Table` rows. Below are the key selection events along with their descriptions:
 
@@ -42,7 +42,7 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/head
 height='600px'
 />
 
-### Checkbox Selection
+## Checkbox selection
 
 Checkbox selection is enabled when the selection mode is `MULTI`, and allows users to conveniently select one or more items using checkboxes associated with each row. This feature is particularly useful for scenarios where users need to perform bulk actions on selected items. The Table class provides methods to enable and customize checkbox selection.
 
@@ -56,18 +56,18 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/head
 height='600px'
 />
 
-### Programatic Selection
+## Programatic selection
 
 The `Table` component provides programmatic selection methods, allowing you to manipulate selected items either by their keys or by the entire items. 
 
-#### Select by Key
+### Select by key
 
 The `selectKey(Object... keys)` method enables you to programmatically select items using their keys. You can pass one or more keys to this method, and it will update the selection accordingly.
 
-#### Select by Index
+### Select by Index
 
 Using the `selectIndex(int... indices)` method allows you to pass one or more indices to the method and updates the selected items accordingly.
 
-#### Selecting Entire Items
+### Selecting entire items
 
 Finally, the `select(T... items)` method allows you to programmatically select items by passing one or more items themselves to this method to update the selection accordingly.

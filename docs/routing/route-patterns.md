@@ -46,7 +46,7 @@ In this example:
 
 Named parameters are defined by prefixing a colon `:` to the parameter name in the pattern. They're required unless marked as optional. Named parameters can also have regular expression [constraints](#regular-expression-constraints) to validate the values.
 
-**Example:**
+### Example:
 
 ```java
 @Route("product/:id")
@@ -61,7 +61,7 @@ This pattern matches URLs like `/product/123` where `id` is `123`
 
 Optional parameters are indicated by adding a `?` after the parameter name. These segments aren't required and can be omitted from the URL.
 
-**Example:**
+### Example:
 
 ```java
 @Route("order/:id?<[0-9]+>")
@@ -83,7 +83,7 @@ This pattern matches both `/order/123` to include a numeric value to be included
 
 You can apply regular expression constraints to parameters by adding them within angle brackets `<>`. This allows you to specify stricter matching rules for parameters.
 
-**Example:**
+### Example:
 
 ```java
 @Route("product/:code<[A-Z]{3}-[0-9]{4}>")
@@ -104,7 +104,7 @@ This pattern only matches product codes in the format `ABC-1234`. For example, `
 
 Wildcards can be used to capture entire paths following a specific route segment, but they can only appear as the final segment in the pattern, resolving all subsequent values in the URL. For better readability, wildcard segments can be named. However, unlike named parameters, wildcard segments can't have any constraints.
 
-**Example:**
+### Example:
 
 ```java
 @Route("files/:pathname*")

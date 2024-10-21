@@ -3,7 +3,7 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
-# Route Hierarchy
+# Route hierarchy
 
 Routes are organized into a hierarchical tree structure that enables developers to define layouts, manage views, and dynamically render components across various parts of the app. 
 
@@ -15,6 +15,6 @@ The key concepts you’ll encounter when building a webforJ routable app include
 - **Outlets**: Components where child views are dynamically injected into parent layouts.
 - **Layouts**: Special routes that wrap child components without contributing to the URL, providing shared UI elements such as headers, footers, or sidebars.
 
-# Topics
+## Topics
 
 <DocCardList className="topics-section" />

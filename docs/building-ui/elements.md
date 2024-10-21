@@ -17,7 +17,7 @@ path='https://demo.webforj.com/webapp/controlsamples/elementinputdemo?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputDemoView.java'
 />
 
-## Adding Events
+## Adding events
 
 In order to utilize events that may come with your element, you can use the `Element` component's `addEventListener` methods. Adding an event requires at least the type/name of the event the component expects, and a listener to be added to the event. 
 
@@ -29,12 +29,12 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 height='175px'
 />
 
-## Component Interaction
+## Component interaction
 
 The `Element` component acts like a container for other components. It's provides a way to organize and retrieve information for child components, and offers a clear set of functions to add or remove these child components as needed.
 
 
-### Adding Child Components
+### Adding child components
 
 The `Element` component supports the composition of child components. Developers can organize and manage complex UI structures by adding components as children to the `Element`. Three methods exist to set content within the an `Element`:
 
@@ -55,7 +55,7 @@ height='175px'
 Calling `setHtml()` or `setText()` will replace content currently contained between the element's opening and closing tags.
 :::
 
-### Removing Components
+### Removing components
 
 In addition to adding components to an `Element`, the following methods are implemented for removal of various child components:
 
@@ -63,7 +63,7 @@ In addition to adding components to an `Element`, the following methods are impl
 
 2. **`removeAll()`**: This method will remove all child components from the `Element`.
 
-### Accessing Components
+### Accessing components
 
 To access the various child components present within an `Element`, or information regarding these components, the following methods are available:
 
@@ -74,7 +74,7 @@ To access the various child components present within an `Element`, or informati
 3. **`getComponentCount()`**: Returns the number of child components present within the `Element`. 
 
 
-## Calling JavaScript Functions
+## Calling JavaScript functions
 
 The `Element` component provides two API methods which allow for JavaScript functions to be called on HTML elements. 
 
@@ -82,7 +82,7 @@ The `Element` component provides two API methods which allow for JavaScript func
 
 2. **`callJsFunctionAsync(String functionName, Object... arguments)`**: As with the previous method, a function name and optional arguments for the function can be passed. This method executes asynchronously and **does not block the executing thread**. It returns a [`PendingResult`](#), which allows for further interaction with the function and its payload.
 
-### Passing Parameters
+### Passing parameters
 
 Arguments that are passed to these methods which are used in the execution of JS functions are serialized as a JSON array. There are two notable arguments types that are handled as follows:
 - `this`: Using the `this` keyword will give the method a reference to the client-side version of the invoking component.

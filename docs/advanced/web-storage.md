@@ -13,7 +13,7 @@ webforJ supports three mechanisms for storing client data: [**Cookies**](#cookie
 You can see current cookie, local storage and session storage key-value pairs in your browser's developer tools.
 :::
 
-### Summary of differences
+## Summary of differences
 | Feature            | Cookies                                      | Session Storage                          | Local Storage                            |
 |--------------------|----------------------------------------------|------------------------------------------|------------------------------------------|
 | **Persistence**    | Configurable expiration date                 | Duration of the page session             | Persistent until explicitly deleted      |
@@ -21,7 +21,7 @@ You can see current cookie, local storage and session storage key-value pairs in
 | **Use Cases**      | User authentication, preferences, tracking   | Temporary data, form data                | Persistent settings, user preferences    |
 | **Security**       | Vulnerable to XSS, can be secured with flags | Cleared on session end, less risk        | Accessible via JavaScript, potential risk|
 
-### Using web storage
+## Using web storage
 The <JavadocLink type="foundation" location="com/webforj/webstorage/CookieStorage" code='true'>CookieStorage</JavadocLink>, <JavadocLink type="foundation" location="com/webforj/webstorage/SessionStorage" code='true'>SessionStorage</JavadocLink>, and <JavadocLink type="foundation" location="com/webforj/webstorage/LocalStorage" code='true'>LocalStorage</JavadocLink> classes in webforJ all extend the abstract <JavadocLink type="foundation" location="com/webforj/webstorage/WebStorage" code='true'>WebStorage</JavadocLink> class. To obtain the appropriate object, use the static methods `CookieStorage.getCurrent()`,  `SessionStorage.getCurrent()`, or `LocalStorage.getCurrent()`. To add, get, and remove key-value pairs, use the `add(key, value)`, `get(key)`, and `remove(key)` methods.
 
 ## Cookies

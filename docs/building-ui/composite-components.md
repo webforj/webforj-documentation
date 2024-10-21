@@ -6,8 +6,6 @@ draft: false
 
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
-# Composite Components in webforJ
-
 Developers will often wish to create components that contain constituent components for application level use. The `Composite` component gives developers the tools they need to create their own components while maintaining control over what they choose to expose to users. 
 
 It allows developers to manage a specific type of `Component` instance, providing a way to encapsulate its behavior. It requires any extending subclass to specify the type of `Component` it intends to manage, ensuring a subclass of `Composite` is intrinsically linked to its underlying `Component`.
@@ -24,7 +22,7 @@ public class ApplicationComponent extends Composite<Div> {
 }
 ```
 
-## Component Binding
+## Component binding
 
 The `Composite` class requires developers to specify the type of `Component` it manages. This strong association ensures that a `Composite` component is intrinsically linked to its underlying Component. This also provides benefits over traditional inheritance, as it allows the developer to decide exactly what functionality to expose to the public API. 
 
@@ -47,7 +45,7 @@ public static class OverrideComposite extends Composite<FlexLayout> {
 }
 ```
 
-## Lifecycle Management
+## Lifecycle management
 
 Unlike with the `Component`, developers do not need to implement the `onCreate()` and `onDestroy()` methods when working with the `Composite` component. The `Composite` component takes care of these aspects for you.
 
@@ -73,7 +71,7 @@ This logic can also be implemented in the constructor, by calling `getBoundCompo
 
 Similarly, the `onDidDestroy()` method fires once the bound component has been destroyed, and allows for additional behavior to be fired on destruction should it be desired.
 
-### Example `Composite` Component
+### Example `Composite` component
 
 In the demo below, a simple ToDo application has been created, where each item added to the list is a `Composite` component, consisting of a [`RadioButton`](../components/radio-button.md) styled as a switch, and a [`Div`](#) with text.
 

@@ -4,19 +4,19 @@ title: Rendering
 slug: rendering
 ---
 
-# Rich Content and Client-Side Rendering
+# Rich content and client-side rendering
 
 Tables in webforj are also configurable using the following tools to display rich content within cells. This includes interactive components or formatted data within the table cells.
 
 These elements are rendered client-side, meaning the process of generating and displaying rich content is done directly in the browser, using JavaScript only when needed, increasing performance of applications using the `Table`.
 
-## Lodash Renderers
+## Lodash renderers
 
 Renderers offer a powerful mechanism for customizing the way data is displayed within a `Table`. The primary class, `Renderer`, is designed to be extended to create custom renderers based on lodash templates, enabling dynamic and interactive content rendering. 
 
 Lodash templates enable the insertion of HTML directly into table cells, making them highly effective for rendering complex cell data in a `Table`. This approach allows for the dynamic generation of HTML based on cell data, facilitating rich and interactive table cell content.
 
-### Lodash Syntax
+### Lodash syntax
 
 The following section outlines the basics of Lodash syntax. While this is not an exhaustive or comprehensive overview, it can be used to help start using Lodash within the `Table` component. 
 
@@ -82,7 +82,7 @@ The renderer has access to detailed cell, row, and column properties in the clie
 |type|ColumnType|The type of the column (text, number, boolean, etc.).
 |minWidth|number|The minimum width of the column in pixels.
 
-## Available Renderers
+## Available renderers
 
 While custom renderers can be created, there are multiple pre-configured renderers available for use within a `Table`. The following are available for developers to use out of the box without the need to create a custom renderer:
 

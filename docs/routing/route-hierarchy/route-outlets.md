@@ -15,7 +15,7 @@ If no outlet is explicitly defined for a route, the first `Frame` of the app is 
 In applications with multiple frames, you can specify which frame to use as the outlet for child routes by setting the `frame` attribute in the `@Route` annotation. The `frame` attribute accepts the name of the frame to be used for rendering.
 :::
 
-#### Example:
+### Example:
 
 ```java
 @Route

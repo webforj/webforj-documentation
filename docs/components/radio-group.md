@@ -32,7 +32,9 @@ The `RadioButtonGroup` is best used in scenarios where users need to make a sing
 
 3. **Filtering or Sorting**: A `RadioButton` can be used in applications that require users to select a single filter or sorting option, such as sorting a list of items by different criteria.
 
-## Adding and Removing RadioButtons
+<!-- vale off -->
+## Adding and removing RadioButtons
+<!-- vale on -->
 
 It is possible to add and remove singular or multiple `RadioButton` objects to a group, ensuring that they exhibit mutually exclusive checking behavior, and are associated with any name that may belong to the group.
 
@@ -40,7 +42,7 @@ It is possible to add and remove singular or multiple `RadioButton` objects to a
 
 The name attribute in a `RadioButtonGroup` groups related RadioButtons together, allowing users to make a single choice from the options provided and enforcing exclusivity among the RadioButtons. The name of a group is not reflected in the DOM, however, and is a convenience utility for the Java developer.
 
-## Best Practices 
+## Best practices 
 
 To ensure an optimal user experience when using the RadioButton component, consider the following best practices:
 

@@ -29,7 +29,7 @@ In this example, the `/settings` route is dynamically registered, and the app na
 
 Often, routes need to be added or removed based on specific conditions such as user roles or the app's state. With dynamic routing, you can register or unregister routes conditionally at runtime.
 
-### Example: Conditional registration based on user role
+### Example: conditional registration based on user role
 
 ```java
 Router router = Router.getCurrent();
@@ -73,7 +73,7 @@ registry.unregister(SettingsView.class);
 
 In this example, the `/settings` route is removed dynamically when it's no longer required.
 
-## Registering Routes at app startup
+## Registering routes at app startup
 
 You can register dynamic routes during app initialization, allowing certain views to be available based on the environment or configuration at startup.
 

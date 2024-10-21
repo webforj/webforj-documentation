@@ -21,7 +21,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/fields/datefield/dateFieldDemo.css'
 />
 
-### Usages
+## Usages
 
 The `PasswordField` is best used in scenarios where capturing or handling sensitive information, such as passwords or other confidential data, is essential to the user interface or application functionality. Here are some examples of when to use the `PasswordField`:
 
@@ -31,15 +31,15 @@ The `PasswordField` is best used in scenarios where capturing or handling sensit
 
 3. **Account Management and Profile Settings**: Password fields are valuable in applications that involve account management or profile settings, allowing users to change or update their passwords securely.
 
-### Password Visibility
+## Password visibility
 
 You can use the `setPasswordReveal` method to control the visibility of the password reveal icon. When set to true, the password reveal icon is visible -  otherwise, it is hidden. You can check whether the password reveal icon is visible using the `isPasswordReveal` method. It returns true if the password reveal icon is visible; otherwise, it returns false. 
 
-### Placeholder Text
+## Placeholder text
 
 You can set placeholder text for the `PasswordField` using the `setPlaceholder` method. The placeholder text is displayed when the field is empty, helping to prompt the user to enter appropriate input into the `PasswordField`.
 
-### Best Practices
+## Best practices
 
 As the `PasswordField` component is often associated with sensitive information, consider the following best practices when using the `PasswordField`:
 

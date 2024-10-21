@@ -20,8 +20,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/fields/datefield/dateFieldDemo.css'
 />
 
-
-### Usages
+## Usages
 
 The `DateTimeField` is best used in scenarios where capturing or displaying both date **and** time is essential to the user interface or application functionality. Here are some examples of when to use the `DateTimeField`:
 
@@ -34,11 +33,11 @@ The `DateTimeField` is best used in scenarios where capturing or displaying both
 4. **Task Management and Deadlines**: `DateTimeFields` are valuable in applications that involve task management or setting deadlines where both the date and time are relevant for accurate scheduling.
 
 
-### Maximum and Minimum
+## Maximum and minimum
 
 You can use the `setMax()` and `setMin()` methods to specify the acceptable range of dates and times. If the value entered into the component is outside of the specified timestamp, the component fails constraint validation. Also, if there is already a maximum or minimum set, the value given to the other method must be lower or higher respectively.
 
-### Display
+## Display
 
 The `DateTimeField` will, by default, display its information within the UI element based on the locale the browser is configured to. For example, users with United States configurations will see the date displayed with the month preceding the day, whereas European users will see the day before the month. This does not inhibit manipulation of the `LocalDateTime` object returned by methods from the class, however.
 
@@ -46,7 +45,7 @@ The `DateTimeField` will, by default, display its information within the UI elem
 When displaying time, the seconds will display by default. However, if the component is given a `LocaleDateTime` object with the seconds set to 0, the seconds are then hidden from the display.
 :::
 
-### Static Utilities 
+## Static utilities 
 
 The DateTimeField class also provides the following static utility methods:
 
@@ -56,7 +55,7 @@ The DateTimeField class also provides the following static utility methods:
 
 - `isValidDateTime(String dateTimeAsString)`: Checks to see if the given string is a valid yyyy-MM-ddTHH:mm:ss date and time. This will return a boolean value true if so, false otherwise.
 
-### Best Practices
+### Best practices
 
 To ensure an optimal user experience when using the `DateField` component, consider the following best practices:
 

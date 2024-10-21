@@ -19,7 +19,7 @@ import DocCardList from '@theme/DocCardList';
 
 In modern web applications, **routing** refers to the process of managing navigation between different views or components based on the current URL or path. In webforJ, routing establishes a sophisticated framework for **client-side navigation**, where UI updates happen dynamically without requiring full page reloads, enhancing the performance of your app.
 
-### Traditional vs client-side routing
+## Traditional vs client-side routing
 
 In traditional server-side routing, when a user clicks a link, the browser sends a request to the server for a new document. The server responds by sending a fresh HTML page, which forces the browser to re-evaluate CSS and JavaScript, re-render the entire document, and reset the app state. This cycle introduces delays and inefficiencies, as the browser must reload resources and the page state. The process typically involves:
 
@@ -38,13 +38,13 @@ This approach can lead to performance bottlenecks and suboptimal user experience
 
 This design enables **deep linking** and **URL-driven state management**, allowing users to bookmark and share specific pages within the app while enjoying a smooth, single-page experience.
 
-### Core principles
+## Core principles
 
 - **URL-Based Component Mapping**: In webforJ, routes are directly tied to UI components. A URL pattern is mapped to a specific component, dictating what content is displayed based on the current path.
 - **Declarative Routing**: Routes are defined declaratively, typically using annotations. Each route corresponds to a component that is rendered when the route is matched.
 - **Dynamic Navigation**: The router dynamically switches between views without reloading the page, keeping the app responsive and fast.
 
-### Example of client-side routing in webforJ
+## Example of client-side routing in webforJ
 
 Here’s an example of defining a route for a `UserProfileView` component to display user details based on the `id` parameter in the URL:
 
@@ -65,6 +65,6 @@ In this setup:
 - Navigating to `/user/john` would render the `UserProfileView` component.
 - The `id` parameter would capture `john` from the URL and allow you to use it within the component to fetch and display user data.
 
-# Topics
+## Topics
 
 <DocCardList className="topics-section" />

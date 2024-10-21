@@ -42,7 +42,7 @@ Once a console message prints, any styling applied won't carry over to subsequen
 Use the `setStyle` method to change the properties of the `BrowserConsole` log not specified by the builders.
 :::
 
-### Background Color 
+### Background color 
 
 Set the background color with the `background()` method, which returns the <JavadocLink type="foundation" location="com/webforj/BrowserConsole.BackgroundColorBuilder" code='true'>BackgroundColorBuilder</JavadocLink>.
 Use methods named by color, like `blue()`, or choose a specific value with `colored(String color)`.
@@ -53,7 +53,7 @@ console().background().blue().log("Blue background");
 console().background().colored("#031f8f").log("Custom blue background");
 ```
 
-### Text Color
+### Text color
 
 Set the text color with the `color()` method, which returns the <JavadocLink type="foundation" location="com/webforj/BrowserConsole.ColorBuilder" code='true'>ColorBuilder</JavadocLink>.
 Use methods named by color, like `red()`, or choose a specific value with `colored(String color)`.
@@ -64,7 +64,7 @@ console().background().red().log("Red text");
 console().color().colored("#becad2").log("Custom light bluish-gray text");
 ```
 
-### Font Size
+### Font size
 
 Set the font size with the `size()` method, which returns the <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontSizeBuilder" code='true'>FontSizeBuilder</JavadocLink>.
 Use methods named by a size, like `small()`, or choose a specific value with `from(String value)`.
@@ -78,7 +78,7 @@ console().size().from("30px").log("30px font");
 The `from(String value)` method can take other font size values, such as rem and vw.
 :::
 
-### Font Style
+### Font style
 
 Set the font style with the `style()` method, which returns the <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontStyleBuilder" code='true'>FontStyleBuilder</JavadocLink>.
 For example, use the `italic()` method to make the console log italicized.
@@ -89,7 +89,7 @@ console().style().italic().log("Italic font");
 console().style().normal().log("Normal font");
 ```
 
-### Text Transformation
+### Text transformation
 
 Control the capitalization of the characters in a message with the `transform()` method, which returns the <JavadocLink type="foundation" location="com/webforj/BrowserConsole.TextTransformBuilder" code='true'>TextTransformBuilder</JavadocLink>.
 For example, use the `capitalize()` method to transform the first letter of each word to uppercase.
@@ -102,7 +102,7 @@ console().transform().capitalize().log("Capitalize text transformation");
 console().transform().uppercase().log("Uppercase text transformation");
 ```
 
-### Font Weight
+### Font weight
 
 Set how thick the text is with the `weight()` method, which returns the <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontWeightBuilder" code='true'>FontWeightBuilder</JavadocLink>.
 For example, use the `ligther()` method to make the font lighter than normal.
@@ -113,7 +113,7 @@ console().weight().bold().log("Bold font");
 console().weight().lighter().log("Lighter font");
 ```
 
-## Mixing Styles
+## Mixing styles
 It's possible to mix and match methods for a custom logging display.
 
 ```java

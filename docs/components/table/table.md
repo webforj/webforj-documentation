@@ -27,7 +27,7 @@ height='600px'
 
 In order to create and populate a `Table` in an application, the following steps can be taken:
 
-#### 1. Creating an Entity Class
+### 1. Create an entity class
 
 Define a class to represent the entities (data) you want to display in the table. In the example, this class is MusicRecord.
 
@@ -37,7 +37,7 @@ public class MusicRecord {
 }
 ```
 
-#### 2. Create a Repository
+### 2. Create a repository
 
 Once an entity class has been created, use this to fill a collection of these entities with the desired data.
 
@@ -53,7 +53,7 @@ List<MusicRecord> data = new Gson().fromJson(
 CollectionRepository<MusicRecord> dataRepository = new CollectionRepository<>(data);
 ```
 
-#### 3. Instantiate `Table` and Add Columns
+### 3. Instantiate `Table` and add columns
 
 Instantiate a new `Table` object, and use one of the provided factory methods to add the desired columns to a newly created `Table`:
 
@@ -66,7 +66,7 @@ table.addColumn("Genre", MusicRecord::getMusicType);
 table.addColumn("Cost", MusicRecord::getCost);
 ```
 
-#### 4. Set the `Table` data
+### 4. Set the `Table` data
 
 Finally, set the `Repository` for the `Table` created in the previous step:
 

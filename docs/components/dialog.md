@@ -36,7 +36,7 @@ height = '225px'
   >- Videos
   >- Other media
 
-## Backdrop and Blur
+## Backdrop and blur
 
 By enabling the backdrop attribute of the webforJ `Dialog` component, a backdrop will be displayed behind the `Dialog`. Additionally, when enabled, the Dialog's blurred attribute will blur the backdrop of the `Dialog`. Modifying these settings can help users by providing depths, visual hierarchy, and context, leading to more clear guidance for a user.
 
@@ -61,7 +61,7 @@ javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/co
 height = '350px'
 />
 
-## Auto-Focus
+## Auto-focus
 
 When enabled, auto-focus will automatically give focus to the first element within the dialog that can be focused. This is useful in helping to direct the attention of users, and is customizable via the `setAutoFocus()` method.
 
@@ -76,7 +76,7 @@ height = '350px'
 
 The `Dialog` has built in functionality to be draggable, allowing the user to relocate the `Dialog` window by clicking and dragging. The position of the `Dialog` can be manipulated from any of the fields within it: the header, content or footer.
 
-### Snap to Edge
+### Snap to edge
 It is also possible to calibrate this behavior to snap to the edge of the screen, meaning the `Dialog` will automatically align itself with the edge of the display when released from its drag and drop date. Snapping can be changed via the `setSnapToEdge()` method. The `setSnapThreshold()` takes a number of pixels, which will set how far the `Dialog` should be from the sides of the screen before it will automatically snap to the edges.  
 
 <ComponentDemo 
@@ -97,7 +97,7 @@ javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/co
 height = '350px'
 />
 
-### Vertical Alignment
+### Vertical alignment
 
 In addition to manual assignment of a dialog's X and Y position, it is possible to use the dialog's built-in enum class to align the `Dialog`. There are three possible values, `TOP`, `CENTER` and `BOTTOM`, each of which can be used with the `setAlignment()` method. 
 
@@ -108,7 +108,7 @@ javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/co
 height = '550px'
 />
 
-### Full Screen and Breakpoints
+### Full screen and breakpoints
 
 The `Dialog` can be set to enter full screen mode. When full screen is enabled, the `Dialog` cannot be moved or positioned. This mode can be manipulated with the breakpoint attribute of the `Dialog`. The breakpoint is a media query which components when the `Dialog` will automatically flip to full screen mode. When the query matches, the `Dialog` changes to full screen - otherwise it is positioned.
 
@@ -134,7 +134,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 height = '500px'
 />
 
-### Shadow Parts
+### Shadow parts
 
 These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
 
@@ -146,13 +146,13 @@ Listed below are the slots available for utilization within the `Button` compone
 
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Dialog} table='slots' />
 
-### CSS Properties
+### CSS properties
 
 These are the various CSS properties that are used in the component, with a short description of their use.
 
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Dialog} table='properties'/>
 
-### Reflected Attributes
+### Reflected attributes
 
 The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
 

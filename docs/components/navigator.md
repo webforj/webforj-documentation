@@ -139,7 +139,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 height='200px'
 />
 
-#### 1. None layout
+### 1. None layout
 
 The `NONE` layout renders no text within the `Navigator`, displaying only the navigation buttons without a default textual display. To activate this layout, use:
 
@@ -147,7 +147,7 @@ The `NONE` layout renders no text within the `Navigator`, displaying only the na
 navigator.setLayout(Navigator.Layout.NONE);
 ```
 
-#### 2. Numbered layout
+### 2. Numbered layout
 
 The numbered layout displays numbered chips corresponding to each page within the display area of the `Navigator`. Using this layout is ideal for scenarios where users prefer direct navigation to specific pages. To activate this layout, use:
 
@@ -155,7 +155,7 @@ The numbered layout displays numbered chips corresponding to each page within th
 navigator.setLayout(Navigator.Layout.PAGES);
 ```
 
-#### 3. Preview layout
+### 3. Preview layout
 
 The preview layout shows the current page number and the total number of pages, and is suitable for compact pagination interfaces with limited space.
 
@@ -169,7 +169,7 @@ To activate this layout, use:
 navigator.setLayout(Navigator.Layout.PREVIEW);
 ```
 
-#### 4. Quick jump layout
+### 4. Quick jump layout
 
 The quick-jump layout provides a [NumberField](./fields/number-field.md) for users to enter a page number for quick navigation. This is useful when users need to navigate to a specific page quickly, especially for large datasets To activate this layout, use:
 

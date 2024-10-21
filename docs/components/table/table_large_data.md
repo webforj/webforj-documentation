@@ -4,21 +4,21 @@ title: Large Data Sets
 slug: data
 ---
 
-## Virtual Scrolling
+## Virtual scrolling
 
 The `Table` component is built to efficiently handle large datasets by utilizing virtual scrolling, which  is a technique used in web applications to optimize the rendering and performance of large lists or tables by rendering only the visible items on the screen.
 
-#### Initial Render
+### Initial render
 
 Virtual scrolling is a design pattern in which, initially, only a small subset of items that fit within the visible area of the scrollable container is rendered. This minimizes the amount of DOM elements created and speeds up the initial rendering process.
 
-#### Dynamic Loading
+### Dynamic loading
 As the user scrolls down or up, new items are dynamically loaded into the view. These items are typically fetched from the data source based on the current scroll position.
 
-#### Item Recycling
+### Item recycling
 Instead of creating a new DOM element for each item, virtual scrolling often reuses existing DOM elements. As an item moves out of the visible area, its DOM element is recycled and repurposed for a new item entering the visible area. This recycling process helps to reduce memory usage and improves performance.
 
-#### Performance Benefits:
+### Performance benefits:
 
 The main advantage of virtual scrolling is improved performance, especially when dealing with a large number of items. It reduces the amount of DOM manipulation and enhances the overall responsiveness of the user interface.
 
@@ -32,7 +32,7 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/head
 height='600px'
 />
 
-### Overscan
+## Overscan
 
 Setting the table's `Overscan` property determines how many rows to render outside of the visible area. This setting can be configured with the `setOverscan(double value)` method.
 

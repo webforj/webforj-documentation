@@ -22,6 +22,6 @@ options.setCode("""
 Page.getCurrent().addEventListener("beforeunload", e -> {}, options);
 ```
 
-## Browser back button?
+## Browser back button
 
 The back button operates outside the control of web applications, making it difficult to intercept or prevent its action across all browsers consistently. Instead of trying to block the back button, it's more effective to design your UI/UX in a way that mitigates the impact. Consider strategies like saving unsaved data in [session storage](../../advanced/web-storage#session-storage), so if a user navigates away and returns, their progress is safely restored. This approach ensures data protection without relying on unreliable browser behavior.

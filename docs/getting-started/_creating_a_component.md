@@ -4,13 +4,13 @@ displayed_sidebar: documentationSidebar
 draft: true
 ---
 
-# Creating a Custom Component
+# Creating a custom component
 
 Building custom components is a fundamental part of modern software development, allowing developers to create specific functionalities that can be reused across different projects. By creating these components, developers can save time and effort, while also improving the quality and consistency of their code.
 
 In this section, we'll walk you through the process of creating custom components step by step. We'll  cover the key concepts and techniques needed to create your own reusable components, and how to import them into your project.
 
-## Building a Reusable Entry Form
+## Building a reusable entry form
 
 For the example custom component, we'll build a simple entry form that can be reused in multiple places in an application. To do this, we'll use the following components:
 
@@ -36,4 +36,4 @@ Once your class's file has been created and extends the proper class, you'll nee
 
 ### Add the desired components to your class
 
-## Import your Form
+## Import your form

@@ -75,7 +75,7 @@ height="200px"
 
 The `Button` component utilizes naming, which is used for accessibility. When a name is not explicitly set, the label of the `Button` will be used instead. However, some icons do not have labels, and only display non-text elements, such as icons. In this case, it is expedient to use the `setName()` method to ensure that the `Button` component created complies with accessibility standards.
 
-## Disabling a Button
+## Disabling a button
 
 Button components, like many others, can be disabled to convey to a user that a certain action is not yet or is no longer available. A disabled button will decrease the opacity of the button, and is available for all button themes and expanses.
 
@@ -139,7 +139,7 @@ cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/r
 height='200px'
 />
 
-### Shadow Parts
+### Shadow parts
 
 These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
 
@@ -151,13 +151,13 @@ Listed below are the slots available for utilization within the `Button` compone
 
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Button} table='slots' exclusions={require('@site/static/exclusions.json').button.slots} />
 
-### CSS Properties
+### CSS properties
 
 These are the various CSS properties that are used in the component, with a short description of their use.
 
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Button} exclusions={require('@site/static/exclusions.json').button.properties} table='properties'/>
 
-### Reflected Attributes
+### Reflected attributes
 
 The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
 
@@ -169,7 +169,7 @@ This component relies on the following components - see the related article for 
 
 <TableBuilder tag='dwc-button' table="dependencies"/>
 
-## Best Practices 
+## Best practices 
 
 To ensure an optimal user experience when using the `Button` component, consider the following best practices:
 

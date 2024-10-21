@@ -17,6 +17,6 @@ Option dialogs in webforJ are similar to the `JOptionPane` in Swing, solving a f
 When using option dialogs to create modal dialogs in webforJ, the dialog blocks user input to other parts of the app and processes events solely for the modal dialog. This ensures the dialog remains responsive while preventing interactions with other parts, enhancing the user experience and maintaining app flow. The server stops processing any further requests until the dialog is dismissed or a value is returned from it.
 :::
 
-# Topics
+## Topics
 
 <DocCardList className="topics-section" />

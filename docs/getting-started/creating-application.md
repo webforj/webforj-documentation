@@ -1,9 +1,8 @@
 ---
 sidebar_position: 2
 displayed_sidebar: documentationSidebar
+title: Creating an Application
 ---
-
-# Creating an application
 
 Once webforJ and all applicable dependencies have been installed and the POM configuration has been completed, it's time to start creating! If you followed the installation guide, a sample "Hello World" program should be included already. However, in this section, we will demonstrate how to create **a new application from scratch**.
 

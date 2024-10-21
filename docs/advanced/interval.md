@@ -19,10 +19,10 @@ The `Interval` class triggers event(s) at a fixed time delay. Leveraging Interva
 
 3. **Live Data**: Refresh data on your app, such as stock prices, news feeds, or weather updates, on each Interval to keep the data current.
 
-## Managing Interval States: Starting, Stopping, and Restart
+## Managing `Interval` states: starting, stopping, and restart
 An Interval requires manual activation; use the `start()` method to initiate it. To stop an Interval, use the `stop()` method. The `restart()` method can be used to restart the Interval.
 
-## Adjusting the Interval Delay
+## Adjusting the `Interval` delay
 
 To modify the delay of an Interval, use the `setDelay(float delay)` method. The new delay value is applied after the Interval is either stopped or restarted.
 
@@ -37,7 +37,7 @@ Interval.restart();
 The delay can be fractional seconds to millisecond in resolution, but a very small timeout value causes a flood of events faster than the program can respond to them.
 :::
 
-## Adding Listeners
+## Adding listeners
 
 You can attach additional listeners to an Interval using the `addElapsedListener(EventListener\<Interval.ElapsedEvent\> listener)` method. Once a listener is added, it automatically triggers on the next interval if the Interval is already running.
 

@@ -9,7 +9,7 @@ Defining routes is essential for mapping URLs to specific components. This allow
 Routes can be registered statically using the `@Route` annotation or dynamically through the `RouteRegistry` API. For more information, refer to the [Routes Registration documentation](./routes-registration).
 :::
 
-### Defining a route with `@Route`
+## Defining a route with `@Route`
 
 The `@Route` annotation is used to bind a URL path to a specific component. This allows the component to be rendered whenever the app navigates to that URL. Here’s a simple example:
 
@@ -24,7 +24,7 @@ In this example:
 - The `DashboardView` component is bound to the `/dashboard` URL.
 - When a user navigates to `/dashboard`, the `DashboardView` will be dynamically rendered by the framework.
 
-#### The `value` parameter
+### The `value` parameter
 
 The `value` parameter in the `@Route` annotation defines the URL path. This can be a static path like `"dashboard"` or more dynamic, allowing for flexible routing.
 
@@ -41,7 +41,7 @@ In this case, navigating to `/user/123` will display the `UserView`.
 The `user/:id` is known as a route pattern. The router can handle both simple patterns, which match a single static segment, and complex patterns, which can match multiple static, required, and optional segments. For more information on configuring patterns, refer to the [deep dive into route patterns](./route-patterns).
 :::
 
-### Defining route aliases
+## Defining route aliases
 
 In some cases, you might want to allow multiple URLs to point to the same component. For instance, you might want users to be able to access their profile through either `/profile` or `/user/me`. webforJ allows this through the **`@RouteAlias`** annotation, enabling you to define multiple aliases for a single route.
 

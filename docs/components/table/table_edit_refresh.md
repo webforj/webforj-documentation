@@ -17,7 +17,7 @@ In the above example, the `TitleEditorComponent` class facilitates the editing o
 
 To connect the editing component with the `Table`, an "Edit" button is added to the `Table` via a `VoidElementRenderer`. Clicking this button triggers the `edit()` method of the `TitleEditorComponent`, allowing users to modify the "Title".
 
-### Commit Method
+## Commit method
 
 Once the user modifies the title and clicks the "Save" button, the `TitleEditorComponent` triggers the `save()` method. This method updates the title of the corresponding `MusicRecord` and dispatches a custom `SaveEvent`.
 

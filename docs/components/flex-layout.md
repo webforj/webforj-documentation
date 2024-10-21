@@ -7,7 +7,7 @@ title: FlexLayout
 
 webforJ provides developers with an efficient and intuitive way to layout their various applications and components - the Flex Layout. This toolset allows for items to be displayed either vertically or horizontally. 
 
-## Flex Layout Properties
+## Flex layout properties
 
 Flex layout's properties can be grouped into two categories: properties that apply to the items within a layout, and properties that apply to the layout itself. The flex layout, or the parent element, is a box/container that can contain one or more components. Everything inside a Flex Layout is called an item or child element. The Flex Layout provides some robust alignment capabilities, which can be achieved with the help of either container or item properties.
 
@@ -15,7 +15,7 @@ Flex layout's properties can be grouped into two categories: properties that app
 webforJ's layout component follows the pattern of [CSS's flexbox layout](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). However, these tools are made to be utilized fully in Java, and do not require the application of CSS outside of the Java API methods provided.
 :::
 
-### Container Properties
+### Container properties
 
 Container properties will apply to all of the components within a component and not the layout itself. They will not affect the orientation or placement of the parent - only the child components within.
 
@@ -74,7 +74,7 @@ To configure this property when creating the layout, use the proper directional 
 use the `.vertical().wrap()` combination.
 :::
 
-### Container Builder
+### Container builder
 
 The following demo allows you to build a container with the desired flex properties selected from the various menus. This tool can be used not only to create a visual example of the various methods, but also as a tool to create your own layouts with your desired properties. To use a layout you customize, simply copy the output code and add your desired elements for use in your program.
 
@@ -88,7 +88,7 @@ height="600px"
 
 
 <!-- BIG CODE SNIPPET SHOWING CONTAINER -->
-### Item Properties
+### Item properties
 
 Item properties will not affect any child elements within the Flex Layout, but rather the actual Layout itself. This is useful for styling a single Flex Layout element that is a child of a larger Flex Layout element independent of styles applying to all children.
 
@@ -108,7 +108,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 height="200px"
 />
 
-#### Self Alignment
+#### Self alignment
 
 Flex Layout's self-alignment refers to how a single Flex Layout object is aligned within its parent flex container along the cross axis, which is perpendicular to the main axis. The cross axis alignment is controlled by the `Alignment` property.
 
@@ -126,7 +126,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 height="350px"
 />
 
-#### Flex Basis
+#### Flex basis
 
 `Item Basis` is a property that is used in conjunction with Flex Layout's direction to set the initial size of a flex item before any remaining space is distributed.
 
@@ -138,7 +138,7 @@ By default, the `Item Basis` property is set to auto, which means that the size 
 
 For example, if you have a container with a total width of 500 pixels and three Flex Layout objects with `Item Basis` values of 100px, 200px, and auto respectively, the first two items will be assigned their specified sizes, while the third item will expand to fill the remaining space.
 
-#### Flex Grow / Shrink
+#### Flex grow / shrink
 
 `Item Grow` and `Item Shrink` are two properties that work in conjunction with each other and with the `Item Basis` property to determine how flex items grow or shrink to fill the available space within a Flex Layout object.
 
@@ -151,7 +151,7 @@ When a container has more space than is needed to accommodate its contents, flex
 Similarly, when a container does not have enough space to accommodate its contents, flex items with a `Item Shrink` value greater than 0 will shrink to fit the available space. The amount of space each item gives up is determined by the ratio of its `Item Shrink` value to the total `Item Shrink` value of all items in the container.
 
 
-## Example Form
+## Example form
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/flexlayout?' 

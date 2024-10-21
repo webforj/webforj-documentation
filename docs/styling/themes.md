@@ -18,7 +18,7 @@ App.setTheme("dark-pure");
 Using the API's `App.setTheme()` results in runtime theme assignment - for users wishing to enable the ability to change themes dynamically while the program is run, the API's `App.setTheme()` method will be the proper tool.
 :::
 
-### Overriding Themes
+## Overriding themes
 
 It is possible to override the light theme of your application by overriding the CSS Properties defined in [`:root`](https://developer.mozilla.org/en-US/docs/Web/CSS/:root).
 
@@ -46,7 +46,7 @@ html[data-app-theme='dark'] {
 }
 ```
 
-### Creating Custom Themes
+## Creating custom themes
 
 In addition to the themes that come with webforJ, it is also possible to create your own application themes. Themes can co-exist in the same application, allowing you to switch between themes dynamically.
 
@@ -60,7 +60,7 @@ html[data-app-theme='new-theme'] {
 }
 ```
 
-### Using the Themer
+## Using the themer
 
 The [Themer tool](https://demo.webforj.com/webapp/DWCThemer) allows you to modify the various palettes and colors supported by webforJ to either override an existing theme, or creating your own.
 
