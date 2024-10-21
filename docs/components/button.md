@@ -52,7 +52,7 @@ The `Button` class is a versatile component that is commonly used in various sit
 
 ## Adding icons to buttons
 
-Incorporating an icon into a button can greatly improve your app's design, allowing users to quickly identify actionable items on the screen. The `Icon` component provides a wide selection of icons to choose from.
+Incorporating an icon into a button can greatly improve your app's design, allowing users to quickly identify actionable items on the screen. The [`Icon`](./icon.md) component provides a wide selection of icons to choose from.
 
 By utilizing the `setPrefixComponent()` and `setSuffixComponent()` methods, you have the flexibility to determine whether an `Icon` should appear before or after the text on a button. Alternatively, the `setIcon()` method can be used to add an `Icon` after the text, but before the button's `suffix` slot.
 

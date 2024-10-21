@@ -2,15 +2,12 @@
 title: Icon
 ---
 
-import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import Chip from '@mui/material/Chip';
 
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-icon" />
 <JavadocLink type="foundation" location="com/webforj/component/icons/Icon" top='true'/>
 
-The weborJ `Icon` component allows you to effortlessly include icons in your user interface. 
+The weborJ `Icon` component allows you to effortlessly include icons in your user interface.
 Icons are a fundamental part of enhancing the design of the user interface, making it faster for users to scan the screen for actionable items.
 Using icons in your app creates visual cues for navigation and actions, which can reduce the amount of text needed and simplify the user interface. You can choose from three existing icon pools and webforJ also gives you the option to create new ones from scratch.
 
@@ -35,7 +32,8 @@ Some icons also offer the choice between an outlined or a filled version via [va
 An icon pool is a collection of commonly used icons that enables easy access and reuse. By using icons from an icon pool, you can ensure that the icons in your app are recognizable and share a consistent style.
 Using webforJ allows you to choose from three pools, or implement a custom pool.
 Each pool has an extensive collection of open source icons that are free to use.
-WebforJ gives you the flexibility to choose from three pools and use them as unique classes, without the hassle of downloading any of the icons directly.
+Using webforJ gives you the flexibility to choose from three pools and use them as unique classes, without the hassle of downloading any of the icons directly.
+
 
 | Icon Pool                                         | webforJ Class |
 | --------                                          | ------- |
@@ -58,7 +56,7 @@ Additionally, you have the option to create the icons through enums for the `Fea
 
 ```java
 // Create an icon from a String name
-Icon image = FeatherIcon.create("image");
+Icon image = TablerIcon.create("image");
 // Create an icon from an enum
 Icon image = FeatherIcon.IMAGE.create();
 ```
@@ -87,13 +85,8 @@ Icon music = FontAwesomeIcon.create("user", FontAwesomeIcon.Variate.SOLID);
 ## Adding icons to components
 
 Integrate icons into your components using slots. Slots provide flexible options for improving the functionality of a component. It's beneficial to add an `Icon` to a component to further clarify intended meaning to users.
-Icons can be incorporated into various components to enhance the overall design and user experience. Here's a list of components you can add icons to:
+Components that implement the `HasPrefixAndSuffix` interface can include an `Icon` or other valid components. The added components can be placed in the `prefix` and `suffix` slots and can enhance both overall design and user experience.
 
-- [Button](../../docs/components/button)
-- [ChoiceBox](../../docs/components/list-components/choicebox)
-- [ComboBox](../../docs/components/list-components/combobox)
-- [TabbedPane](../../docs/components/tabbedpane)
-- [All Field Types](../../docs/components/fields)
 
 Using `prefix` and `suffix` slots, you can determine if you want the icon before or after the text using the `setPrefixComponent()` and `setSuffixComponent()` methods.
 Deciding whether to place an icon before or after the text on a component largely depends on the purpose and design context.
@@ -139,15 +132,8 @@ Make sure to design icons with equal width and height, as `Icon` components are 
 An `Icon` component is nonselectable, but for actions that are best represented with just an icon, such as notifications or alerts, you can use the `IconButton`.
 
  ```java
- FlexLayout layout = FlexLayout.create().horizontal().build().setMargin("var(--dwc-space-m)");
-
 IconButton bell = new IconButton(FeatherIcon.BELL.create());
 bell.onClick(e -> showMessageDialog("You have a new message!", "Ding Dong!"));
-
-layout.add(bell);
-
-Frame mainFrame = new Frame();
-mainFrame.add(layout);
 ```
 
 ## Best practices
@@ -172,8 +158,6 @@ While there are many use cases for each of the various themes, some examples use
 - `GRAY`: Good for subtle actions, such as minor settings or actions that are more supplementary to a page, and not part of the main functionality.
 - `INFO`: Good for providing additional clarifying information to a user.
 
-### Expanses
-When styling icons, it is possible to use the `theme` and `expanse` attributes to modify the icons, especially when using them with other components that are utilizing themes and expanses. Below is information on the attributes, as well as parts and properties required for customizing icons with CSS.
 
 ### Shadow parts
 
