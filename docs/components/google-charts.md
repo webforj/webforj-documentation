@@ -166,3 +166,48 @@ chart.addReadyListener(e -> {
     // Now you can use the imageUri, for example, as the src attribute of an img tag
 });
 ```
+
+## `GoogleChartSelectedEvent`
+
+The `GoogleChartSelectedEvent` is triggered whenever a user selects a data point or segment in a Google Chart component. This event enables interaction with the selected chart data, providing details about what was selected. The event can be listened for by using the `addSelectedListener()` method on the `GoogleChart` instance.
+
+The `GoogleChartSelectedEvent` is useful in applications where user interaction with the chart is necessary. 
+
+```java
+GoogleChart chart = new GoogleChart(GoogleChart.Type.BAR);
+
+// Add the selected listener to the chart
+chart.addSelectedListener(event -> {
+    // Get the selection
+    List<Object> selection = chart.getSelection();
+    
+    // Handle the selected event
+    if (!selection.isEmpty()) {
+        System.out.println("Selected Row: " + selection.get(0));
+        // Further processing based on the row/column of selection
+    }
+});
+```
+
+### Payload
+The `GoogleChartSelectedEvent` provides access to the selection data, which can be retrieved using the `getSelection()` method on the chart object. This method returns a list of objects, where each object contains the following properties:
+
+- **row**: The index of the row in the chart’s data table that was selected.
+- **column**: The index of the column in the data table, which is optional and applies to charts that allow selection of individual cells, such as a table chart.
+  
+For charts like pie charts or bar charts, only the `row` is typically provided, indicating the selected data point.
+
+Here's an example of payload:
+```java
+[
+  {
+    "row": 3,  // The selected row index in the data
+    "column": 2  // (Optional) The selected column index
+  }
+]
+```
+
+:::info Selecting Multiple Data Points
+If the user selects multiple data points, the `getSelection()` method will return an array of objects, each representing a selected element. The payload can vary based on the chart type and the interaction the user performs.
+:::
+
