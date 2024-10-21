@@ -38,29 +38,43 @@ When using the installation plugin, the tags within the `<configuration>` tag ca
 
 - **`<deployurl>`** This tag is the URL where the webforJ endpoint for the project installation can be reached. For users running their application locally, a default port of 8888 is used. For users running Docker, the port should be changed to the port that was entered when [configuring the Docker container](../installation/docker.md#2-configuration).
 
-- **`<classname>`** This tag should contain the package and class name of the application you wish to run. This is helpful for projects that contain multiple classes that extend the `App` class, and allows you to choose which program to run from the base URL.
+- **`<classname>`** This tag should contain the package and class name of the application you wish to run. This will be the single class in your project that extends the `App` class and runs from the base URL.
 
 - **`<publishname>`** This tag specifies the name of the application in the published URL. Generally, to run your program, you'll navigate to a URL similar to `http://localhost:8888/webapp/<publishname>`, replacing `<publishname>` with the value in the `<publishname>` tag. Then, the program specified by the `<classname>` tag is run.
 
 - **`<debug>`** The debug tag can be set to true or false, and will determine whether or not the browser's console displays error messages thrown by your program. 
 
-### Running a specific application
+### Running a specific program
 
+Utilze the `Routify` and `Route` annotations in your application to define different paths/routes within your app.
 
-It is possible to specify which class that extends `App` within your project is displayed by modifying the URL in one of the following ways: 
+To start using routing in your project, include the `Routify` annotation in the class extending the `App` class:
 
-**1. Modify the URL Path.** For example, if your application is running on `localhost:8888`, the publish name is `MyProgram`, and you want to run the Java class `MyApp` that extends the `App` class, the URL would look as follows:
+```java
+@Routify(packages = "com.webforj.samples.views", debug = true)
+@AppTitle("webforJ Samples")
+public class Application extends App {
+  @Override
+  public void run() throws WebforjException {
+    console().log("Test");
+  }
+}
+```
 
-`http://localhost:8888/webapp/MyProgram/MyApp`
+To register a `Route` in webforJ, developers can manually specify the route type by setting `Route.Type` in the `@Route` annotation, or omit the type if classes end in `View` or `Layout`. 
 
-**2. Use Query Parameters.** The same result can be achieved using query parameters. Taking the same example, with `localhost:8888` as the port, `MyProgram` as the publish name and `apps.MyApp` as the full name of the class to run, the URL would be:
+```java
+@Route
+@FrameTitle("Example View")
+public class ExampleClassView extends Composite<Div> {
+  //...
+}
+```
+So if you had a publish name that was `hello-world` and wanted to run the example class above, the URL would look like:
 
-`http://localhost:8888/webapp/MyProgram?class=apps.MyApp`
+`http://localhost:8888/webapp/hello-world/exampleclass?`
 
-:::info
-When using the query parameter method, it is important to include the full name of the desired class, including package names.
-:::
-
+Routing in webforJ has many uses, and a [more comprehensive overview](../../docs/routing/overview) of these use cases, as well as the various features and capabilities available to developers.
 
 ## Without the installation plugin
 
@@ -70,22 +84,12 @@ This is not the recommended method of configuring your application, and should b
 
 ### Default class
 
-It is possible to configure webforJ to automatically load an application from the list of available applications that extend the `App` class. 
+The default class in an application will be the single class that extends the `App` class. If multiple classes extend `App`, the system looks for the `com.webforj.annotation.AppEntry` annotation. If any of the discovered classes are annotated with @AppEntry, the first one encountered is considered the entry point.
 
-#### Editing the BBj config file
-One option is to set the classname within your `config.bbx` file, located in the `cfg/` directory of your BBj installation. To do so, add the following line, replacing `your.class.name.here` with the full classname as it appears on the list of classes:
-
-`SET DWCJCLASSNAME=your.class.name.here`
-
-#### Using the Enterprise Manager
-
-Another option is to set the default class within the Enterprise Manager by adding the following line as a program argument within your Application:
-
-`class=your.class.name.here`
-
-Replace `your.class.name.here` with the full class name of your App as it appears on the list of classes on the welcome page.
-
-Once either of these options have been completed, the specified class will always load instead of displaying a list of available classes.
+- If a class is annotated with @AppEntry, that class is selected as the entry point.
+- If multiple classes are annotated with @AppEntry, an exception is thrown, listing all the discovered classes.
+- If no class is annotated and only one subclass of App is found, that class is selected as the entry point.
+- If no class is annotated and multiple subclasses of App are found, an exception is thrown, detailing each subclass.
 
 ### Debug mode
 
