@@ -29,8 +29,8 @@ toast.open();
 ```
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.toastdemos.ToastDemo' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/demos/componentdemos/toastdemos/ToastDemo.java'
+path='https://demo.webforj.com/webapp/controlsamples/toastdemo?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastDemoView.java'
 height='200px'
 />
 
@@ -45,9 +45,9 @@ The `Toast` component provides a subtle, non-intrusive notification to inform us
 One common use case is a **Cookies Consent Notification**, where users can interact with the notification to accept or customize their cookie preferences.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.toastdemos.ToastCookiesDemo' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/demos/componentdemos/toastdemos/ToastCookiesDemo.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toaststyles/toastcookiesdemo.css'
+path='https://demo.webforj.com/webapp/controlsamples/toastcookiesdemo?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastCookiesDemoView.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toaststyles/toastdemo.css'
 height='350px'
 />
 
@@ -100,8 +100,8 @@ toast.open();
 ```
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.toastdemos.ToastPlacementDemo' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/demos/componentdemos/toastdemos/ToastPlacementDemo.java'
+path='https://demo.webforj.com/webapp/controlsamples/toastplacementdemo?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastPlacementDemoView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toaststyles/toastplacementdemo.css'
 height='300px'
 />
@@ -119,8 +119,8 @@ Although `Toast` notifications don't require user interaction by default, webfor
 By adding this kind of interactivity, you can give users the ability to handle tasks and perform actions without navigating away from their current screen, transforming a `Toast` notification into a valuable channel of interaction and engagement. 
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.toastdemos.ToastInteractiveDemo' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/demos/componentdemos/toastdemos/ToastInteractiveDemo.java'
+path='https://demo.webforj.com/webapp/controlsamples/toastinteractivedemo?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastInteractiveDemoView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toaststyles/toastinteractivedemo.css'
 height='300px'
 />
@@ -149,8 +149,8 @@ Since the `Toast` isn't located in a specific position in the DOM, you can targe
 :::
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.toastdemos.ToastThemeDemo' 
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/demos/componentdemos/toastdemos/ToastThemeDemo.java'
+path='https://demo.webforj.com/webapp/controlsamples/toastthemedemo?'  
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastThemeDemoView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toaststyles/toastthemedemo.css'
 height='200px'
 />
