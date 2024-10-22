@@ -138,7 +138,7 @@ Toast toast = new Toast("Sample Notification");
 toast.setTheme(Theme.INFO);
 ```
 
-### Custom Themes
+### Custom themes
 
 In addition to using built-in themes, you can create your own custom themes for `Toast` notifications. This allows for a more personalized and branded user experience, giving you full control over the overall styling of the `Toast`.
 
