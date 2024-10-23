@@ -34,22 +34,15 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 height='200px'
 />
 
-## Usages
+:::info Default Behavior
+Unlike other components, a `Toast` doesn't need to be explicitly added to a container like a `Frame`. When you call the `open()` method, the `Toast` is automatically attached to the first app `Frame`.
+:::
 
-The `Toast` component provides a subtle, non-intrusive notification to inform users of various system states or actions. It enhances the user experience by offering:
+Toasts are versatile and provide subtle notifications for real-time feedback. For instance:
 
 - **Real-time feedback** for actions like form submissions, data saves, or errors.
 - **Customizable themes** for differentiating between success, error, warning, or informational messages.
 - **Flexible placement** options to show notifications in different areas of the screen without interrupting the user’s workflow.
-
-One common use case is a **Cookies Consent Notification**, where users can interact with the notification to accept or customize their cookie preferences.
-
-<ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/toastcookiesdemo?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastCookiesDemoView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toaststyles/toastdemo.css'
-height='350px'
-/>
 
 ## Duration
 
@@ -106,15 +99,22 @@ cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/r
 height='300px'
 />
 
-By customizing the placement of your `Toast` notifications, you can ensure that users receive information in a way that's appropriate for any given app, screen layout, and context.
+By customizing the placement of your `Toast` notifications, you can ensure that users receive information in a way that is appropriate for any given app, screen layout, and context.
 
-### Stacking
+## Stacking
 
 The `Toast` component can display multiple notifications simultaneously, stacking them vertically based on their placement. Newer notifications appear closer to the placement edge, pushing older notifications farther away. This ensures that users don't miss important information, even when there is a lot going on.
 
 ## Actions and Interactivity
 
 Although `Toast` notifications don't require user interaction by default, webforJ allows you to add buttons or other interactive elements to make them more useful than simple notifications. 
+
+<ComponentDemo 
+path='https://demo.webforj.com/webapp/controlsamples/toastcookiesdemo?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastCookiesDemoView.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toaststyles/toastdemo.css'
+height='350px'
+/>
 
 By adding this kind of interactivity, you can give users the ability to handle tasks and perform actions without navigating away from their current screen, transforming a `Toast` notification into a valuable channel of interaction and engagement. 
 
@@ -155,13 +155,19 @@ cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/r
 height='200px'
 />
 
-### Shadow parts
+### Shadow Parts
 
 These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
 
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Toast} table='parts'/>
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Toast} table='parts' exclusions=''/>
 
-### Reflected attributes
+### CSS properties
+
+These are the various CSS properties that are used in the component, with a short description of their use.
+
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Toast} exclusions='' table='properties'/>
+
+### Reflected Attributes
 
 The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
 
