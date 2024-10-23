@@ -118,13 +118,6 @@ height='350px'
 
 By adding this kind of interactivity, you can give users the ability to handle tasks and perform actions without navigating away from their current screen, transforming a `Toast` notification into a valuable channel of interaction and engagement. 
 
-<ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/toastinteractive?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastInteractiveView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toast/toastinteractive.css'
-height='300px'
-/>
-
 ## Styling
 
 You can style `Toast` notifications with themes just like other webforJ components, providing users with valuable context about the type of information being shown, and creating a consistent style throughout your app. You can either set the theme when you create the Toast or use the `setTheme()` method.
