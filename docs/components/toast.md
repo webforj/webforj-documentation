@@ -29,8 +29,8 @@ toast.open();
 ```
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/toastdemo?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastDemoView.java'
+path='https://demo.webforj.com/webapp/controlsamples/toast?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastView.java'
 height='200px'
 />
 
@@ -93,9 +93,9 @@ toast.open();
 ```
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/toastplacementdemo?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastPlacementDemoView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toaststyles/toastplacementdemo.css'
+path='https://demo.webforj.com/webapp/controlsamples/toastplacement?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastPlacementView.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toast/toastplacement.css'
 height='300px'
 />
 
@@ -110,18 +110,18 @@ The `Toast` component can display multiple notifications simultaneously, stackin
 Although `Toast` notifications don't require user interaction by default, webforJ allows you to add buttons or other interactive elements to make them more useful than simple notifications. 
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/toastcookiesdemo?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastCookiesDemoView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toaststyles/toastdemo.css'
+path='https://demo.webforj.com/webapp/controlsamples/toastcookies?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastCookiesView.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toast/toast.css'
 height='350px'
 />
 
 By adding this kind of interactivity, you can give users the ability to handle tasks and perform actions without navigating away from their current screen, transforming a `Toast` notification into a valuable channel of interaction and engagement. 
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/toastinteractivedemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastInteractiveDemoView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toaststyles/toastinteractivedemo.css'
+path='https://demo.webforj.com/webapp/controlsamples/toastinteractive?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastInteractiveView.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toast/toastinteractive.css'
 height='300px'
 />
 
@@ -149,9 +149,9 @@ Since the `Toast` isn't located in a specific position in the DOM, you can targe
 :::
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/toastthemedemo?'  
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastThemeDemoView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toaststyles/toastthemedemo.css'
+path='https://demo.webforj.com/webapp/controlsamples/toasttheme?'  
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastThemeView.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toast/toasttheme.css'
 height='200px'
 />
 
