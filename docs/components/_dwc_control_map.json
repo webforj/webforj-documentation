@@ -36,5 +36,6 @@
 "Login":"dwc-login",
 "Spinner": "dwc-spinner",
 "Loading": "dwc-loading",
-"BusyIndicator": "dwc-loading"
+"BusyIndicator": "dwc-loading",
+"Toast": "dwc-toast"
 }
