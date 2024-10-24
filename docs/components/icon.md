@@ -89,10 +89,9 @@ Icon music = FontAwesomeIcon.create("user", FontAwesomeIcon.Variate.SOLID);
 The following demo illustrates how to use icons from different pools, apply variations, and seamlessly integrate them into components.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/iconitemcard?'  
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconItemCardView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/icon/iconItemCard.css'
-height='300px'
+path='https://demo.webforj.com/webapp/controlsamples/iconactionbuttons?'  
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconActionButtonsView.java'
+height='200px'
 />
 
 ## Adding icons to components
