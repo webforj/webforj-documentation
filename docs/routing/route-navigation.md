@@ -127,7 +127,7 @@ Here are the main configuration options available within `NavigationOptions`:
    When set to `false`, this option prevents the history location from being updated. This is useful when you want to change the view without affecting the browser’s back or forward navigation. It only affects history management, not the component lifecycle or route handling.
 
 5. **State Object (`setState`)**  
-   [The state object](./state-managmenet#saving-and-restoring-state-in-browser-history) allows you to pass additional information when updating the browser’s history. This object is stored in the browser's history state and can be used later for custom purposes, like saving the state of the app during navigation.
+   [The state object](./state-management#saving-and-restoring-state-in-browser-history) allows you to pass additional information when updating the browser’s history. This object is stored in the browser's history state and can be used later for custom purposes, like saving the state of the app during navigation.
 
 ## Generating locations for views
 
