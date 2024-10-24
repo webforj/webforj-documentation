@@ -95,7 +95,6 @@ toast.open();
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/toastplacement?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastPlacementView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toast/toastplacement.css'
 height='300px'
 />
 
@@ -112,7 +111,7 @@ Although `Toast` notifications don't require user interaction by default, webfor
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/toastcookies?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastCookiesView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toast/toast.css'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toast/toastCookies.css'
 height='350px'
 />
 
@@ -144,7 +143,7 @@ Since the `Toast` isn't located in a specific position in the DOM, you can targe
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/toasttheme?'  
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastThemeView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toast/toasttheme.css'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toast/toastTheme.css'
 height='200px'
 />
 
