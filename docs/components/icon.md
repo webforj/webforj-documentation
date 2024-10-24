@@ -25,7 +25,11 @@ Additionally, `Icon` components are loaded on demand from a content delivery net
 When creating an `Icon`, you'll need to identify a specific pool and the name of the icon itself.
 Some icons also offer the choice between an outlined or a filled version via [variations](#variations).
 
-<!-- IconMenu.java -->
+<ComponentDemo 
+path='https://demo.webforj.com/webapp/controlsamples/iconmenu?'  
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconMenuView.java'
+height='200px'
+/>
 
 ### Pools
 
@@ -82,6 +86,15 @@ Certain icons allow you to choose between an outlined or a filled version, allow
 Icon music = FontAwesomeIcon.create("user", FontAwesomeIcon.Variate.SOLID);
 ```
 
+The following demo illustrates how to use icons from different pools, apply variations, and seamlessly integrate them into components.
+
+<ComponentDemo 
+path='https://demo.webforj.com/webapp/controlsamples/iconitemcard?'  
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconItemCardView.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/icon/iconItemCard.css'
+height='300px'
+/>
+
 ## Adding icons to components
 
 Integrate icons into your components using slots. Slots provide flexible options for improving the functionality of a component. It's beneficial to add an `Icon` to a component to further clarify intended meaning to users.
@@ -125,8 +138,6 @@ Custom pools can be created from a folder containing SVG images and by using the
 :::tip
 Make sure to design icons with equal width and height, as `Icon` components are designed to occupy a square space.
 :::
-
-<!-- IconCustomPool.java -->
 
 ## Icon buttons
 An `Icon` component is nonselectable, but for actions that are best represented with just an icon, such as notifications or alerts, you can use the `IconButton`.
