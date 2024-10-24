@@ -8,6 +8,25 @@ The `BrowserHistory` class in webforJ provides a high-level API to interact with
 
 Managing the browser's history is a core feature for of most web apps. The `BrowserHistory` API enables developers to control how users navigate through the pages and states of their applications, mimicking or altering the standard browser behavior.
 
+### Initializing or retrieving a history instance
+
+To use the `BrowserHistory` API, you have two main options for obtaining a history instance:
+
+1) **Creating a new history object**: If you are working independently of a routing context, you can create a new instance of the `BrowserHistory` class directly.
+
+```java
+BrowserHistory history = new BrowserHistory();
+```
+This approach is suitable for scenarios where you need to manage history explicitly outside of a routing framework.
+
+2) **Retrieving the history from the `Router`** : If your app uses webforJ's [routing solution](../routing/overview), the `Router` component creates and manages a shared `BrowserHistory` instance. You can access this instance directly from the router, ensuring a consistent history management approach across your app.
+
+```java
+BrowserHistory history = Router.getCurrent().getHistory();
+```
+This method is recommended when your app relies on routing, as it maintains consistency in history management across all views and navigation actions.
+
+### Managing history
 The following methods can be used for history navigation in a webforJ app:
 
 - `back()`: Moves the browser history back by one step, simulating a user pressing the back button in their browser. If there are no more entries in the history stack, it stays on the current page.
@@ -22,7 +41,7 @@ history.back();
   history.forward();
   ```
 
-- `go(int index)`: Navigates to a specific point in the history stack based on an index. A positive number moves forward, a negative number moves backward, and zero reloads the current page. This method provides more granular control compared to back() and forward().
+- `go(int index)`: Navigates to a specific point in the history stack based on an index. A positive number moves forward, a negative number moves backward, and zero reloads the current page. This method provides more granular control compared to `back()` and `forward()`.
 
   ```java
   history.go(-2); // Moves back by two entries in the history stack
@@ -35,7 +54,7 @@ history.back();
   System.out.println("History Length: " + historySize);
   ```
 
-- `getLocation()`: Returns the current URL path relative to the application's origin. This method helps developers fetch the current path, which is useful for managing URL-based routing in single-page applications.
+- `getLocation()`: Returns the current URL path relative to the apps's origin. This method helps developers fetch the current path, which is useful for managing URL-based routing in single-page applications.
 
   ```java
   Optional<Location> location = history.getLocation();
@@ -86,7 +105,7 @@ Optional<MyState> currentState = history.getState(MyState.class);
 currentState.ifPresent(state -> System.out.println("Current Page: " + state.getViewName()));
 ```
 
-### Listening for State Changes
+### Listening for state changes
 The `BrowserHistory` class provides the ability to register event listeners that respond to changes in the history state.
 
 The `addHistoryStateChangeListener(EventListener<HistoryStateChangeEvent> listener)` registers a listener that gets triggered when the state changes, such as when the user clicks the browser's back or forward buttons. This method sets up a listener for the browser's `popstate` event, allowing your app to respond to user actions or programmatically triggered state changes.
