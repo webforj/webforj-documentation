@@ -46,35 +46,10 @@ When using the installation plugin, the tags within the `<configuration>` tag ca
 
 ### Running a specific program
 
-Utilze the `Routify` and `Route` annotations in your application to define different paths/routes within your app.
+There are two ways to run a specific program in your app:
 
-To start using routing in your project, include the `Routify` annotation in the class extending the `App` class:
-
-```java
-@Routify(packages = "com.webforj.samples.views", debug = true)
-@AppTitle("webforJ Samples")
-public class Application extends App {
-  @Override
-  public void run() throws WebforjException {
-    console().log("Test");
-  }
-}
-```
-
-To register a `Route` in webforJ, developers can manually specify the route type by setting `Route.Type` in the `@Route` annotation, or omit the type if classes end in `View` or `Layout`. 
-
-```java
-@Route
-@FrameTitle("Example View")
-public class ExampleClassView extends Composite<Div> {
-  //...
-}
-```
-So if you had a publish name that was `hello-world` and wanted to run the example class above, the URL would look like:
-
-`http://localhost:8888/webapp/hello-world/exampleclass?`
-
-Routing in webforJ has many uses, and a [more comprehensive overview](../../docs/routing/overview) of these use cases, as well as the various features and capabilities available to developers.
+1. Place the program within the `run()` method of the class that extends `App`.
+2. Utilze [routing](../../docs/routing/overview) in your webforJ app to give the program a dedicated URL.
 
 ## Without the installation plugin
 
