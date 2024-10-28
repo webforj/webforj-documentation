@@ -31,9 +31,9 @@ The following methods can be used for history navigation in a webforJ app:
 
 - `back()`: Moves the browser history back by one step, simulating a user pressing the back button in their browser. If there are no more entries in the history stack, it stays on the current page.
 
-```java
-history.back();
-```
+  ```java
+  history.back();
+  ```
 
 - `forward()`: Moves the browser history forward by one step, simulating a user pressing the forward button in their browser. This works only if there’s an entry ahead in the history stack.
 
@@ -47,7 +47,7 @@ history.back();
   history.go(-2); // Moves back by two entries in the history stack
   ```
 
-- `size()`: Retrieves the total number of entries in the history stack. This can be useful for understanding the user's navigation path or for implementing custom navigation controls.
+- `size()`: Retrieves the total number of entries in the session history stack including the currently loaded page. This can be useful for understanding the user's navigation path or for implementing custom navigation controls.
 
   ```java
   int historySize = history.size();
@@ -77,8 +77,6 @@ See the [`Router` article](../routing/overview) to learn more about comprehensiv
 Optional<Location> location = history.getLocation();
 location.ifPresent(loc -> System.out.println("Current Path: " + loc.getFullURI()));
 ```
-
-Accessing and manipulating URLs programmatically can help maintain the integrity of your app's navigation logic and support deep linking. With a clear understanding of URL management, the next step is to focus on effectively managing the state associated with these URLs.
 
 ## Managing state
 
