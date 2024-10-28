@@ -99,7 +99,6 @@ height='200px'
 Integrate icons into your components using slots. Slots provide flexible options for improving the functionality of a component. It's beneficial to add an `Icon` to a component to further clarify intended meaning to users.
 Components that implement the `HasPrefixAndSuffix` interface can include an `Icon` or other valid components. The added components can be placed in the `prefix` and `suffix` slots and can enhance both overall design and user experience.
 
-
 Using `prefix` and `suffix` slots, you can determine if you want the icon before or after the text using the `setPrefixComponent()` and `setSuffixComponent()` methods.
 Deciding whether to place an icon before or after the text on a component largely depends on the purpose and design context.
 
@@ -133,6 +132,13 @@ A custom pool of icons can be stored in a centralized directory or in the resour
 Having a custom pool makes app creation more consistent and reduces maintenance across different components and modules.
 
 Custom pools can be created from a folder containing SVG images and by using the `IconPoolBuilder` class. From there, you can choose the name of your custom pool and use that with the SVG file names to create custom icon components.
+
+```java
+// Creating a custom pool called "app-pool" that has images for a logo and an avatar.
+IconPoolBuilder.fromDirectory("app-pool", "context://icons");
+Icon customLogo = new Icon("logo", "app-pool");
+Icon customAvatar = new Icon("avatar-default", "app-pool");
+```
 
 :::tip
 Make sure to design icons with equal width and height, as `Icon` components are designed to occupy a square space.
