@@ -100,30 +100,28 @@ Integrate icons into your components using slots. Slots provide flexible options
 Components that implement the `HasPrefixAndSuffix` interface can include an `Icon` or other valid components. The added components can be placed in the `prefix` and `suffix` slots and can enhance both overall design and user experience.
 
 Using `prefix` and `suffix` slots, you can determine if you want the icon before or after the text using the `setPrefixComponent()` and `setSuffixComponent()` methods.
+
 Deciding whether to place an icon before or after the text on a component largely depends on the purpose and design context.
 
-### Icons before component text
+### Icon placement: before VS after
 
-    Placing icons before a component allows users to quickly understand the component's purpose, especially for more universally understood icons like the save icon.
-    Seeing the icon first helps users process the information in a logical flow.
-    If the button's primary function is an action, putting the icon first signals the action more clearly, especially when users are scanning quickly.
+Icons positioned before the component text help users quickly understand the primary action or purpose of the component, especially for universally recognized icons like the save icon.
+Icons before a component's text offers a logical processing order, guiding users naturally through the intended action, which is beneficial for buttons whose primary function is an immediate action.
 
-   **Examples**
+On the other hand, placing icons after the component text is effective for actions that provide additional context or options, enhancing clarity and cues for navigation.
+Icons after a component's text is ideal for components that either offer supplementary information or guide users in a directional flow.
+
+Ultimately, consistency is key. Once you choose a style, maintain it across your site for a cohesive and user-friendly design.
+
+   **Examples before text**
    - 💾 Save
    - ✏️ Edit
    - 🗑️ Delete
 
-### Icons after component text
-
-   Icons after components is effective place for buttons that provide contextual cues or extra information.
-   Placing icons after text is most suitable for actions that provide extra information or options, as well as for components that guide directional flow.
-
-   **Examples**
+   **Examples after text**
    - Next ➡️
    - Options ☰
    - Download ⬇️
-
-Ultimately, consistency is key. Once you choose a style, maintain it across your site for a cohesive and user-friendly design.
 
 ## Creating custom pools
 
