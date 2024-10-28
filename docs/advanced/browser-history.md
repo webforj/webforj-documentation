@@ -91,7 +91,8 @@ Location location = new Location("/new-page");
 history.pushState(myStateObject, location);
 ```
 
-- `replaceState(Object state, Location location)`: Replaces the current history entry. This doesn't create a new entry in the stack like the above method.
+
+- `replaceState(Object state, Location location)`: Replaces the current history entry. This doesn't create a new entry in the stack like the <!-- valeoff -->above<!-- valeon --> method.
 
 ```java
 Location location = new Location("/updated-page");
@@ -118,15 +119,3 @@ history.addHistoryStateChangeListener(event -> {
 ```
 
 Effectively managing state allows you to create apps that respond dynamically to user actions. Users can navigate through your app without losing context, making for a smoother and more intuitive experience. Additionally, saving state enables advanced features like restoring view positions, maintaining filter or sort settings, and supporting deep linking—all of which contribute to a more engaging and reliable app.
-
-
-## History size
-
-Understanding the size of the browser’s history stack can be useful when building features that depend on the user's navigation path. For example, you may want to <!-- vale off -->disable <!-- vale on -->certain navigation actions if there are no more entries to navigate to, or display a breadcrumb trail based on the history size.
-
-The `size()` method retrieves the total number of entries in the history stack.
-
-```java
-int historySize = history.size();
-System.out.println("History Length: " + historySize);
-```
