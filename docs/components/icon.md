@@ -26,9 +26,9 @@ When creating an `Icon`, you'll need to identify a specific pool and the name of
 Some icons also offer the choice between an outlined or a filled version via [variations](#variations).
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/iconmenu?'  
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconMenuView.java'
-height='200px'
+path='https://demo.webforj.com/webapp/controlsamples/iconbasics?'  
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconBasicsView.java'
+height='100px'
 />
 
 ### Pools
@@ -89,9 +89,9 @@ Icon music = FontAwesomeIcon.create("user", FontAwesomeIcon.Variate.SOLID);
 The following demo illustrates how to use icons from different pools, apply variations, and seamlessly integrate them into components.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/iconactionbuttons?'  
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconActionButtonsView.java'
-height='200px'
+path='https://demo.webforj.com/webapp/controlsamples/iconvariations?'  
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconVariationsView.java'
+height='100px'
 />
 
 ## Adding icons to components
@@ -121,7 +121,13 @@ Ultimately, consistency is key. Once you choose a style, maintain it across your
    **Examples after text**
    - Next ➡️
    - Options ☰
-   - Download ⬇️
+   - Download ⬇
+   
+<ComponentDemo 
+path='https://demo.webforj.com/webapp/controlsamples/iconprefixsuffix?'  
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconPrefixSuffixView.java'
+height='100px'
+/>️
 
 ## Creating custom pools
 
