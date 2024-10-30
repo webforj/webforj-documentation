@@ -112,16 +112,6 @@ On the other hand, placing icons after the component text is effective for actio
 Icons after a component's text is ideal for components that either offer supplementary information or guide users in a directional flow.
 
 Ultimately, consistency is key. Once you choose a style, maintain it across your site for a cohesive and user-friendly design.
-
-   **Examples before text**
-   - 💾 Save
-   - ✏️ Edit
-   - 🗑️ Delete
-
-   **Examples after text**
-   - Next ➡️
-   - Options ☰
-   - Download ⬇
    
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/iconprefixsuffix?'  
@@ -147,6 +137,51 @@ Icon customAvatar = new Icon("avatar-default", "app-pool");
 :::tip
 Make sure to design icons with equal width and height, as `Icon` components are designed to occupy a square space.
 :::
+
+### Custom pool factory
+
+You can also create a factory class for a custom pool in webforJ, just like `FeatherIcon`. This enables you to create and manage icon resources within a specified pool and allow for code completion.
+Each icon can be instantiated through the `create()` method, which returns an `Icon`. The factory class should provide pool-specific metadata, such as the pool name and the icon's identifier, formatted to the image's file name.
+This design allows easy, standardized access to icon assets from the custom pool using enum constants, supporting scalability and maintainability in icon management.
+
+```java
+/// Creating a custom pool factory for app-pool
+public enum AppPoolIcon implements IconFactory {
+  LOGO, AVATAR_DEFAULT;
+
+  public Icon create() {
+    return new Icon(String.valueOf(this), this.getPool());
+  }
+
+  /**
+   * @return the pool name for the icons
+   */
+  @Override
+  public String getPool() {
+    return "app-pool";
+  }
+
+  /**
+   * @return the icon name
+   */
+  @Override
+  public String toString() {
+    return this.name().toLowerCase(Locale.ENGLISH).replace('_', '-');
+  }
+}
+```
+
+The following snippet shows the two different ways of using a custom pool.
+
+```java
+IconPoolBuilder.fromDirectory("app-pool", "context://icons");
+
+// Create an Icon using the names of the custom pool and image file
+Icon customLogo = new Icon("logo", "app-pool");
+
+// Create an Icon using the custom pool factory from the previous snippet
+Icon customLogo = AppPoolIcon.LOGO.create();
+```
 
 ## Icon buttons
 An `Icon` component is nonselectable, but for actions that are best represented with just an icon, such as notifications or alerts, you can use the `IconButton`.
