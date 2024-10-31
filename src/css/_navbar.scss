@@ -58,5 +58,12 @@
       display: none;
     }
   }
+
+  @media (max-width: 1180px){
+    .dropdown--right{
+      display: none;
+    }
+  }
+
 }
 
