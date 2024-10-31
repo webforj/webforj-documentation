@@ -128,7 +128,7 @@ height="350px"
 
 #### Flex basis
 
-`Item Basis` is a property that is used in conjunction with Flex Layout's direction to set the initial size of a flex item before any remaining space is distributed.
+`Item Basis` is a property that's used in conjunction with Flex Layout's direction to set the initial size of a flex item before any remaining space is distributed.
 
 The `Item Basis` property specifies the default size of a flex item along the main axis, which is either horizontal (for a Row direction) or vertical (for a Column direction). This property sets the width or height of a flex item depending on the value of the flex-direction property.
 
@@ -136,7 +136,13 @@ The `Item Basis` property specifies the default size of a flex item along the ma
 By default, the `Item Basis` property is set to auto, which means that the size of the item is determined by its content. However, you can also set a specific size for the item using various units such as pixels (px), ems (em), percentages (%), or any other CSS length unit.
 :::
 
-For example, if you have a container with a total width of 500 pixels and three Flex Layout objects with `Item Basis` values of 100px, 200px, and auto respectively, the first two items will be assigned their specified sizes, while the third item will expand to fill the remaining space.
+The following demo allows you to select one or more boxes and change the `Item Basis` for the selected items.
+
+<ComponentDemo 
+path='https://demo.webforj.com/webapp/controlsamples/flexbasis?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/FlexBasisView.java'
+height="250px"
+/>
 
 #### Flex grow / shrink
 
