@@ -201,14 +201,14 @@ bell.onClick(e -> showMessageDialog("You have a new message!", "Ding Dong!"));
 An Icon inherits the theme of its direct parent component, but you can override this by applying a theme to an `Icon` directly.
 
 ### Themes
-Icon components come with 7 discrete themes built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to icons to change their appearance and visual presentation. They offer a quick and consistent way to customize the look of icons throughout an application.
+Icon components come with 7 discrete themes built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to icons to change their appearance and visual presentation. They offer a quick and consistent way to customize the look of icons throughout an app.
 
 While there are many use cases for each of the various themes, some examples uses are:
 
 - `DANGER`: Best for actions with severe consequences, such as clearing filled-out information or permanently deleting an account/data.
-- `DEFAULT`: Appropriate for actions throughout an application that don't require special attention and are generic, such as toggling a setting.
+- `DEFAULT`: Appropriate for actions throughout an app that don't require special attention and are generic, such as toggling a setting.
 - `PRIMARY`: Appropriate as a main "call-to-action" on a page, such as signing up, saving changes, or continuing to another page.
-- `SUCCESS`: Excellent for visualizing successful completion of an element in an application, such as the submission of a form or completion of a sign-up process. The success theme can by programmatically applied once a successful action has been completed.
+- `SUCCESS`: Excellent for visualizing successful completion of an element in an app, such as the submission of a form or completion of a sign-up process. The success theme can by programmatically applied once a successful action has been completed.
 - `WARNING`: Useful to indicate that a user is about to perform a potentially risky action, such as navigating away from a page with unsaved changes. These actions are often less impactful than those that would use the Danger theme.
 - `GRAY`: Good for subtle actions, such as minor settings or actions that are more supplementary to a page, and not part of the main functionality.
 - `INFO`: Good for providing additional clarifying information to a user.
