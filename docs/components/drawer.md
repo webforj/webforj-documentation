@@ -1,7 +1,8 @@
 ---
 title: Drawer
 ---
-
+<DocChip chip="shadow" />
+<DocChip chip="name" label="dwc-drawer" />
 <JavadocLink type="drawer" location="com/webforj/component/drawer/Drawer" top='true'/>
 
 The drawer is a container that slides into the viewport to expose additional options and information. Multiple drawers can be created in an application, and they will be stacked above each other.
