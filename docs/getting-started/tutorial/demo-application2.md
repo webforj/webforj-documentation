@@ -1,91 +1,127 @@
-# Demo Application Documentation
+# Second step
+## Goals and resources
 
-## Overview
+By completing this step, you will:
 
-This documentation provides an in-depth look at the `webforJ Demo Application`, focusing on the data model, the structure of the data folder, and the repository pattern implementation. We also explain how components like `ObjectTable`, context URLs, and `HasEntityKey` integrate into this setup, and highlight differences from the previous application version.
+- Implement a `Table` to display data in the demo app.
+- Integrate a data model with the `Table`, using the repository pattern for organized data access and management.
+- Understand how to use `ObjectTable` for single-instance management, context URLs for dynamic resource paths, and `HasEntityKey` to assign unique identifiers to model instances.
 
-## Model Class
+The following articles will explain in detail some of the concepts discussed in this step:
 
-### `Customer` Model
+<!-- TODO add list of articles -->
 
-The `Customer` class, found in `src/main/java/com/webforj/demos/Customer.java`, represents the application's core data model, encapsulating key attributes such as `customerId`, `name`, and contact information. This model is mapped to the database and plays a crucial role in organizing customer-related data for the demo.
+## `Customer` model
+
+Create the `Customer` class in `src/main/java/com/webforj/demos/Customer.java`. It represents the app's core data model, encapsulating key attributes such as `firstName`, `lastName`, `company` and `country`. This model could be mapped to a database in a more complex app, and plays a crucial role in organizing customer-related data for the demo.
 
 ```java title="Customer.java"
-package com.webforj.demos;
+public class Customer implements HasEntityKey {
+  private String firstName = "";
+  private String lastName = "";
+  private String company = "";
+  private Country country = Country.UNKNOWN;
+  private UUID uuid = UUID.randomUUID();
 
-public class Customer {
-    private String customerId;
-    private String name;
-    private String email;
-    private String phone;
-    
     // Getters and Setters
+
+  @Override
+  public Object getEntityKey() {
+    return uuid;
+  }
 }
 ```
 
-### Purpose of the Model
+### `HasEntityKey` Implementation
 
-The `Customer` model encapsulates all the necessary information about a customer in a structured format, providing a unified way to access and manipulate customer data within the application. This structure allows us to simplify data storage, retrieval, and management, supporting scalability and readability.
+- **Usage**:
+  - `HasEntityKey` provides a mechanism to assign a unique entity key to each model, simplifying data access.
+  - Since the `Customer` model is not based on a database it utilizes the java UUID as an entity key.
 
-## Data Folder
+:::tip
+When using `HasEntityKey`, it’s recommended to use the primary key of the database to ensure consistency across database transactions.
+:::
 
-The `data` folder, located in `src/main/resources/data`, contains essential configuration files and data used by the application. This folder is organized to support seamless access to external resources, such as configuration files, data files, or assets required for the app’s operation.
+## `Service` class
 
-- **Why Use a Data Folder?**
-  - Centralizes data resources and configuration files.
-  - Supports easier management and maintenance of external files.
-  - Ensures that external resources are logically separated from code, enhancing modularity and organization.
+Next create the `Service.java` class. This class serves as a way to access necessary data in various places throughout your app without needing to manually pass it between 
+interested parties.
 
-## ObjectTable
+In this case the service will grab the data from the `src/main/resources/data/customers.json` and map it onto customer objects, which it will use to fill an `ArrayList`. This 
+`ArrayList` is then used as a basis for a `Repository` which is covered later in this article.
 
-The `ObjectTable` is used in this application to manage object instances dynamically instead of using static data. By leveraging `ObjectTable`, we maintain flexibility and ensure that our data is not restricted to a single state or instance, allowing for more dynamic data interactions.
+The `Service` class uses a singleton-like pattern to manage customer data efficiently within the app. Instead of creating multiple instances, the app retrieves a single instance of `Service` using the `getCurrent()` method. This method utilizes `ObjectTable` to store the service instance under a unique key, ensuring only one instance exists throughout the app’s lifecycle.
 
-- **Why Use `ObjectTable` Instead of Static Instances?**
-  - Dynamic object management: Avoids limitations of static instances, allowing the application to manage multiple objects more effectively.
-  - Enhanced data persistence: Improves data storage by providing an organized structure for managing data instances.
-  - Extensibility: Offers flexibility to adapt data models and structures as the application scales or as additional functionality is introduced.
+<!-- TODO implement react component -->
+<Details
+        
+        summary={
+          <summary>Service.java
+          </summary>
+        }
+      >
+      </Details>
+
+
+### Using the `ObjectTable`
+
+The above class uses an `ObjectTable` to manage object instances dynamically instead of using static data. Using the `ObjectTable`, ensures that data isn't restricted to a single state or instance, allowing for more dynamic data interactions. It also helps with scalability of the app and makes it easy to include and extend the objects in question.
+
+```java 
+public static Service getCurrent() {
+    String key = "com.webforj.demos.data.service.instance";
+    if (ObjectTable.contains(key)) {
+      return (Service) ObjectTable.get(key);
+    }
+
+    Service instance = new Service();
+    ObjectTable.put(key, instance);
+    return instance;
+  }
+  ```
+
+
+
+### Storing data in a `Repository`
+
+:::info Data folder
+The `data` folder, located in `src/main/resources/data`, contains essential configuration files and data used by the app. This folder is organized to support access to external resources, such as configuration files, data files, or assets required for the app’s operation.
+:::
 
 ## Context URLs
 
-The `contextURL` in webforJ refers to paths that are dynamically resolved at runtime, enabling the application to adaptively load resources based on the current context. This approach is used to manage URLs for data and other resources flexibly.
+The `contextURL` in webforJ refers to paths that are dynamically resolved at runtime, enabling the app to adaptively load resources based on the current context. This approach is used to manage URLs for data and other resources flexibly.
 
 - **How to Resolve `contextURL` Paths**:
   - Use webforJ’s URL resolver methods to dynamically load assets or data files.
   - Resolve paths based on the current environment, supporting multiple deployment configurations or runtime changes.
   - Access data based on context URL definitions, which provides flexibility to adapt the resource paths without changing code.
 
-## HasEntityKey and Repository Pattern
+In `Service.java` the `contextUrl`is utilized to load the customer data out of a JSON as follows:
 
-The application’s repository pattern uses `HasEntityKey` to map models directly to database entities, allowing each model to be represented by a unique identifier, such as a primary database key. This pattern enables consistent data retrieval and manipulation, facilitating a more structured data access layer.
+```java
+private List<Customer> buildDemoList() {
+    ObjectMapper mapper = new ObjectMapper();
 
-### `HasEntityKey` Implementation
+    try {
+      return mapper.readValue(Assets.contentOf(Assets.resolveContextUrl("context://data/customers.json")),
+          new TypeReference<List<Customer>>() {
+          });
+    } catch (IOException e) {
+      return new ArrayList<>();
+    }
 
-- **Usage**:
-  - `HasEntityKey` provides a mechanism to assign a unique entity key to each model, simplifying data access.
-  - For example, the `Customer` model can utilize its primary key in the database as its `entityKey`.
+  }
+```
 
-:::tip
-When using `HasEntityKey`, it’s recommended to use the primary key of the database to ensure consistency across database transactions.
-:::
+### Updated `DemoApplication.java`
 
-### Updated Code - `DemoApplication.java`
+Since the data for the `Table` is handled fully through the `Service` class the only thing necessary in the `DemoApplication.java` is to configure the `Table` and set the `Repository` available via the `Service`. 
+
+To configure the `Table`, set an initial width and height and specify which columns the `Table` should have. Columns are comprised of the name of the column and the method to populate it.
 
 ```java title="DemoApplication.java"
-package com.webforj.demos;
-
-import static com.webforj.component.optiondialog.OptionDialog.showMessageDialog;
-
-import com.webforj.App;
-import com.webforj.annotation.AppTitle;
-import com.webforj.annotation.InlineStyleSheet;
-import com.webforj.component.button.Button;
-import com.webforj.component.button.ButtonTheme;
-import com.webforj.component.html.elements.Paragraph;
-import com.webforj.component.table.Table;
-import com.webforj.component.window.Frame;
-import com.webforj.demos.data.Service;
-import com.webforj.demos.models.Customer;
-import com.webforj.exceptions.WebforjException;
+// Imports
 
 @InlineStyleSheet("context://css/demoApplication.css")
 @AppTitle("Demo Step 2")
@@ -96,12 +132,8 @@ public class DemoApplication extends App {
 
   @Override
   public void run() throws WebforjException {
-    Frame mainFrame = new Frame();
-    mainFrame.addClassName("mainFrame");
+    // Previous implementation of step one
     buildTable();
-    btn.setTheme(ButtonTheme.PRIMARY).setWidth(100)
-        .addClickListener(e -> showMessageDialog("This is a demo with a table!", "Info"));
-
     mainFrame.add(demo, btn, table);
   }
 
@@ -119,16 +151,3 @@ public class DemoApplication extends App {
 }
 ```
 
-- **Key Components**:
-  - **Frame**: The main container for application components.
-  - **Button**: Configured with a primary theme and click listener to show an info dialog.
-  - **Table**: Displays customer data with dynamically populated columns.
-
-### Differences from Previous Versions
-
-In this version, `DemoApplication` is enhanced with:
-- **Dynamic Data Handling**: Through `ObjectTable` instead of static data instances, improving flexibility.
-- **Repository and `HasEntityKey` Integration**: Directly linking model classes to database entities, simplifying data management.
-- **Context URL Resolution**: Enabling dynamic loading of resources based on environment and runtime context.
-
-This setup allows `DemoApplication` to efficiently manage resources, supporting a more adaptable and scalable application structure.

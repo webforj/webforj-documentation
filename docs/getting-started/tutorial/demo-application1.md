@@ -1,6 +1,6 @@
-# Demo app documentation
+# First step
 
-## Goals and content
+## Goals and resources
 
 In this step, you'll setup your project structure, create, and style a simple intro app. The following topics will be covered in this section:
 
