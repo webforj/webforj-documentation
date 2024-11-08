@@ -2,9 +2,8 @@
 title: AppLayout
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
+<DocChip chip='shadow' />
+<DocChip chip='name' label="dwc-app-layout" />
 <JavadocLink type="applayout" location="com/webforj/component/layout/applayout/AppLayout" top='true'/>
 
 The `AppLayout` is a comprehensive responsive layout component that provides a header, a footer, a drawer, and content section. The header and footer are fixed, the drawer slides in and out of the viewport, and the content is scrollable.
