@@ -11,3 +11,4 @@ DidLeaveEvent
 Auto-Detection
 CLI
 POM
+disabled
