@@ -94,6 +94,9 @@ for (ListItem item : list) {
 
 All List components can be assigned a label, which is a descriptive text or title associated with the component. Labels provide a brief explanation or prompt to help users understand the purpose or expected selection for that particular list. In addition to their importance for usability, list labels also play a crucial role in accessibility, enabling screen readers and assistive technologies to provide accurate information and facilitate keyboard navigation.
 
+### Helper text
+
+Each List component can display helper text beneath the list using the `setHelperText()` method. This helper text offers additional context or explanations about the available options, ensuring users have the necessary information to make informed selections.
 <!-- ADD DEMO WITH ALL THREE AND A LABEL -->
 
 ## Topics

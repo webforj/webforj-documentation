@@ -28,6 +28,10 @@ Specifies the browser's behavior regarding automatic form filling and completion
 
 A field label is a descriptive text or title that is associated with the field. It provides a brief explanation or prompt to help users understand the purpose or expected input for that particular field. Field labels are not only important for usability but also play a crucial role in accessibility, as they enable screen readers and assistive technologies to provide accurate information and facilitate keyboard navigation.
 
+### Helper text
+
+Each field can display helper text beneath the input using the `setHelperText()` method. This helper text offers additional context or explanations about the available inputs, ensuring users have the necessary information to make informed selections.
+
 ### Required
 
 A field is required when the user must provide a value before submitting a form. This is mainly used in conjunction with `setLabel(String)` to provide a visual indication to users that the field is required. 
