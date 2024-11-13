@@ -24,7 +24,8 @@ webforj-demo-application/
 │   │   │           └── demos/
 │   │   │               └── DemoApplication.java
 │   │   └── resources/
-│   │       └── demoApplication.css
+│   │       └── css/
+|   |           └── demoApplication.css
 ```
 
 - **`pom.xml`**: The Maven Project Object Model file that defines project dependencies, plugins, and configuration settings.

@@ -18,14 +18,35 @@ For successful data binding, it’s important that the setter methods in the `Cu
 
 ### Binding the fields
 
-The first thing you need to facilitate databinding in your form 
+The data binding setup begins with initializing a `BindingContext` for the `Customer` model. The `BindingContext` links the model properties to the form fields, enabling automatic data synchronization. This is set up in the `FormView` constructor.
 
+```java title="FormView.java"
+BindingContext<Customer> context;
+context = BindingContext.of(this, Customer.class, true);
+```
+
+- `BindingContext.of(this, Customer.class, true)` initializes the binding context for the `Customer` class. The third parameter, `true`, enables immediate validation, meaning the data in each field is validated as soon as it changes.
+
+:::info
+This implementation uses autobinding as described in the data binding article. This works if the field in the datamodel `Customer` are named the same as the fields in the `FormView` which correspond to them.
+:::
 ### Validation
 
-The validation process ensures that only complete and correct data can be submitted. Key steps are:
+Through annotations in the customer class you can give jakarta validation parameters to the field.
 
-1. **Real-time Validation**: Validation is performed as data is entered into each field, checking for completeness and correctness.
-2. **Submit Button Control**: The `Submit` button is off when any fields have invalid data, preventing submission until all fields are valid.
+```java
+  @NotEmpty(message = "Name cannot be empty")
+  @Pattern(regexp = "[a-zA-Z]*", message = "Invalid characters")
+  private String firstName = "";
+```
+
+The `onValidate` method is then added to control the `Submit` button's state based on the validity of the form fields. This ensures that only valid data can be submitted.
+
+```java title="FormView.java"
+context.onValidate(e -> submit.setEnabled(e.isValid()));
+```
+
+- `e.isValid()` checks the validation status of each field. If all fields are valid, the `Submit` button is enabled; otherwise, it remains turned off, preventing submission until corrections are made.
 
 #### Adding and editing entries with validation
 
@@ -45,36 +66,3 @@ private void submitCustomer() {
     }
 }
 ```
-
-### Logic for adding entries
-
-In add mode, the form initializes with an empty `Customer` instance. When `submitCustomer()` is called, it validates the data through `context.write(customer)`. If the data is valid, it calls `Service.getCurrent().addCustomer(customer)` to add the new customer to the repository.
-
-```java title="FormView.java"
-private void submitCustomer() {
-    ValidationResult results = context.write(customer);
-    if (results.isValid()) {
-        if (customerId.isEmpty()) {
-            Service.getCurrent().addCustomer(customer);
-        }
-        Router.getCurrent().navigate(DemoView.class);
-    }
-}
-```
-
-### Logic for editing entries
-
-When editing an entry, `FormView` retrieves the existing customer data using the `id` parameter in the route. The `onDidEnter` method handles this by calling `context.read(customer)`, which populates the form fields with the customer’s data, enabling seamless editing.
-
-```java title="FormView.java"
-@Override
-public void onDidEnter(DidEnterEvent event, ParametersBag parameters) {
-    parameters.get("id").ifPresent(id -> {
-        customer = Service.getCurrent().getCustomerByKey(UUID.fromString(id));
-        customerId = id;
-    });
-    context.read(customer);
-}
-```
-
-By using data binding, validation, and automated updates between the form and model, this version of `FormView` is more efficient and reduces the potential for manual errors.

@@ -7,9 +7,29 @@ By completing this step, you will:
 - Integrate a data model with the `Table`, using the repository pattern for organized data access and management.
 - Understand how to use `ObjectTable` for single-instance management, context URLs for dynamic resource paths, and `HasEntityKey` to assign unique identifiers to model instances.
 
-The following articles will explain in detail some of the concepts discussed in this step:
+```plaintext
+webforj-demo-application/
+├── pom.xml
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── webforj/
+│   │   │           └── demos/
+│   │   │               |── DemoApplication.java
+|   |   |               |── data/
+|   |   |               |   └── Service.java
+|   |   |               └── models/
+|   |   |                   └── Customer.java
+│   │   └── resources/
+│   │       |── css/
+|   |       |   └── demoApplication.css
+│   │       └── data/
+|   |           └── customers.json
+```
 
-<!-- TODO add list of articles -->
+The following articles will explain in detail some of the concepts discussed in this step:
+  - [Table](../../components/table/table)
 
 ## `Customer` model
 
@@ -23,6 +43,24 @@ public class Customer implements HasEntityKey {
   private Country country = Country.UNKNOWN;
   private UUID uuid = UUID.randomUUID();
 
+  public enum Country {
+
+    @SerializedName("Unknown")
+    UNKNOWN,
+
+    @SerializedName("Germany")
+    GERMANY,
+
+    @SerializedName("England")
+    ENGLAND,
+
+    @SerializedName("Italy")
+    ITALY,
+
+    @SerializedName("USA")
+    USA,
+
+  }
     // Getters and Setters
 
   @Override
@@ -36,7 +74,7 @@ public class Customer implements HasEntityKey {
 
 - **Usage**:
   - `HasEntityKey` provides a mechanism to assign a unique entity key to each model, simplifying data access.
-  - Since the `Customer` model is not based on a database it utilizes the java UUID as an entity key.
+  - Since the `Customer` model isn't based on a database it utilizes the java UUID as an entity key.
 
 :::tip
 When using `HasEntityKey`, it’s recommended to use the primary key of the database to ensure consistency across database transactions.
