@@ -217,7 +217,7 @@ This category includes components that facilitate user interactions and visually
     <p>A component that provides a navigation menu for the app, typically used for listing links or navigation items for switching between different sections or views.</p>
   </GalleryCard>
 
-  <GalleryCard header="Icon" href="#" image="/img/components/Icons.png">
+  <GalleryCard header="Icon" href="icon" image="/img/components/Icons.png">
     <p>A component that displays a graphical symbol or image, often used to represent an action, status, or category in the user interface.</p>
   </GalleryCard>
 
