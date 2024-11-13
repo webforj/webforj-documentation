@@ -90,7 +90,7 @@ While custom renderers can be created, there are multiple pre-configured rendere
 >- `NativeButtonRenderer` - Renderer for a native HTML button.
 >- `ElementRenderer` - The base class for all renderers which render an HTML tag **with** content.
 >- `VoidElementRenderer` - The base class for all renderers which render a void element, or an HTML tag **without** content.
->- `IconRenderer` - Renderer for an icon - **[see this](../../components/dwc-icon.md)** article for more information on icons.
+>- `IconRenderer` - Renderer for an icon - **[see this](../../components/icon)** article for more information on icons.
 
 Renderers allow for custom events to be written as well by extending any of the supported base renderer. Currently, renderers come with a `RendererClickEvent` available for use by developers.
 
