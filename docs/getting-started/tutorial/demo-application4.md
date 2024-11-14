@@ -30,6 +30,21 @@ context = BindingContext.of(this, Customer.class, true);
 :::info
 This implementation uses autobinding as described in the data binding article. This works if the field in the datamodel `Customer` are named the same as the fields in the `FormView` which correspond to them.
 :::
+
+### `OnDidEnter()` changes
+
+The method to load the data if an id is provided now automatically sinchronizes the data through databinding. Therefore no manual updating of the fields is necessary.
+
+```java
+@Override
+  public void onDidEnter(DidEnterEvent event, ParametersBag parameters) {
+    parameters.get("id").ifPresent(id -> {
+      customer = Service.getCurrent().getCustomerByKey(UUID.fromString(id));
+      customerId = id;
+    });
+    context.read(customer);
+  }
+```
 ### Validation
 
 Through annotations in the customer class you can give jakarta validation parameters to the field.
