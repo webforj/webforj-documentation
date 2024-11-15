@@ -1,13 +1,17 @@
-# First step
+---
+title: Creating a Basic App
+---
 
-## Goals and resources
+## Goals
 
-In this step, you'll setup your project structure, create, and style a simple intro app. The following topics will be covered in this section:
+This first step lays the foundation for the customer management app by creating a simple, interactive interface. This demonstrates how to set up a basic webforJ app, with a single button that opens a dialog when clicked. It’s a straightforward implementation that introduces key components and gives you a feel for how webforJ works.
 
-  - [Styling](../../styling/getting-started)
-  - [Buttons](../../components/button)
-  - [Paragraph](../../building-ui/web-components/html-elements)
-  - [Logging](../../advanced/browser-console)
+This step leverages the base app class provided by webforJ to define the structure and behavior of the app. Following through to later steps will transition to a more advanced setup using routing to manage multiple screens, introduced in Step 3.
+
+By the end of this step, you’ll have a functioning app that demonstrates basic interaction with components and event handling in webforJ.
+
+<img src={require('@site/static/img/tutorial_images/step1.png').default} alt="Screenshot of first app" className="tutorial-image" />
+
 
 ## Project structure
 
