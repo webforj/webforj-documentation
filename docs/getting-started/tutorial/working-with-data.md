@@ -1,39 +1,33 @@
-# Second step
-## Goals and resources
+---
+title: Working With Data
+sidebar_-_position: 3
+---
 
-By completing this step, you will:
+This step focuses on adding data management and display capabilities to the demo app. To do this, dummy data about various `Customer` objects will be created, and the app will be updated to handle this data and display it in a `Table` added to the previous app.
 
-- Implement a `Table` to display data in the demo app.
-- Integrate a data model with the `Table`, using the repository pattern for organized data access and management.
-- Understand how to use `ObjectTable` for single-instance management, context URLs for dynamic resource paths, and `HasEntityKey` to assign unique identifiers to model instances.
+It will outline creating a `Customer` model class, and integrating it with a `Service` class to access and manage the necessary data using the repository pattern. Then, it will detail how to use the retrieved data to implement a `Table` component in the app, displaying customer information in an interactive and structured format. 
 
-```plaintext
-webforj-demo-application/
-├── pom.xml
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/
-│   │   │       └── webforj/
-│   │   │           └── demos/
-│   │   │               |── DemoApplication.java
-|   |   |               |── data/
-|   |   |               |   └── Service.java
-|   |   |               └── models/
-|   |   |                   └── Customer.java
-│   │   └── resources/
-│   │       |── css/
-|   |       |   └── demoApplication.css
-│   │       └── data/
-|   |           └── customers.json
-```
+By the end of this step, the app created in the [previous step](./basic-app) will display a table with the created data that can then be expanded on in the following steps.
 
-The following articles will explain in detail some of the concepts discussed in this step:
-  - [Table](../../components/table/table)
+<img src={require('@site/static/img/tutorial_images/step2.png').default} alt="Screenshot of second app" className="tutorial-image" />
 
 ## `Customer` model
 
-Create the `Customer` class in `src/main/java/com/webforj/demos/Customer.java`. It represents the app's core data model, encapsulating key attributes such as `firstName`, `lastName`, `company` and `country`. This model could be mapped to a database in a more complex app, and plays a crucial role in organizing customer-related data for the demo.
+In order to create a `Table` that displays data in the main app, you'll first need to create a Java bean class that can be used with the `Table` to display data. 
+
+Create the `Customer` class in `src/main/java/com/webforj/demos/data/Customer.java`. class serves as the core data model for the app, encapsulating customer-related attributes such as `firstName`, `lastName`, `company`, and `country`. In a more complex app, this model could also map to a database, but for this demo, it uses a simple structure that makes it easy to represent customer information.
+
+### `HasEntityKey`
+
+The `HasEntityKey` interface is essential for managing unique identifiers in models used with a `Table`. Implementing this interface ensures that every instance of the model has a unique key, which the `Table` uses to identify and manage rows.
+
+By implementing `HasEntityKey`, you can control how unique keys are generated for your model. In this demo, the `getEntityKey()` method returns a UUID for each customer, ensuring each instance is uniquely identifiable. While this demo uses a UUID for simplicity, most real-world apps would typically use a key from a database, such as a primary key.
+
+:::info Omitting `HasEntityKey`
+If you don't implement `HasEntityKey`, the `Table` will fall back to using the Java hash code of the object as the key. However, Java allows different objects to have the same hash code, which can lead to conflicts when managing data in the Table.
+:::
+
+Once implemented, each instance of the class will call `UUID.randomUUID()`, and override the `getEntityKey()` method to return this unique identifier when needed:
 
 ```java title="Customer.java"
 public class Customer implements HasEntityKey {
@@ -45,22 +39,12 @@ public class Customer implements HasEntityKey {
 
   public enum Country {
 
-    @SerializedName("Unknown")
-    UNKNOWN,
-
     @SerializedName("Germany")
     GERMANY,
-
-    @SerializedName("England")
-    ENGLAND,
-
-    @SerializedName("Italy")
-    ITALY,
-
-    @SerializedName("USA")
-    USA,
-
+    
+    // Remaining countries
   }
+
     // Getters and Setters
 
   @Override
@@ -69,16 +53,6 @@ public class Customer implements HasEntityKey {
   }
 }
 ```
-
-### `HasEntityKey` Implementation
-
-- **Usage**:
-  - `HasEntityKey` provides a mechanism to assign a unique entity key to each model, simplifying data access.
-  - Since the `Customer` model isn't based on a database it utilizes the java UUID as an entity key.
-
-:::tip
-When using `HasEntityKey`, it’s recommended to use the primary key of the database to ensure consistency across database transactions.
-:::
 
 ## `Service` class
 
@@ -89,17 +63,6 @@ In this case the service will grab the data from the `src/main/resources/data/cu
 `ArrayList` is then used as a basis for a `Repository` which is covered later in this article.
 
 The `Service` class uses a singleton-like pattern to manage customer data efficiently within the app. Instead of creating multiple instances, the app retrieves a single instance of `Service` using the `getCurrent()` method. This method utilizes `ObjectTable` to store the service instance under a unique key, ensuring only one instance exists throughout the app’s lifecycle.
-
-<!-- TODO implement react component -->
-<Details
-        
-        summary={
-          <summary>Service.java
-          </summary>
-        }
-      >
-      </Details>
-
 
 ### Using the `ObjectTable`
 

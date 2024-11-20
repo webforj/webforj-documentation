@@ -1,8 +1,7 @@
 ---
 title: Creating a Basic App
+sidebar_position: 2
 ---
-
-## Goals
 
 This first step lays the foundation for the customer management app by creating a simple, interactive interface. This demonstrates how to set up a basic webforJ app, with a single button that opens a dialog when clicked. It’s a straightforward implementation that introduces key components and gives you a feel for how webforJ works.
 
