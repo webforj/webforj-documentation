@@ -8,8 +8,11 @@ Each step in the tutorial will result in a program that compiles into a WAR file
 
 ## App basics in `webforJ`
 
+<!-- TODO figure out exactly what we want this section to say, create graphic -->
 
 ## Tutorial app features
+
+<!-- TODO Eric list all of the features here -->
 
 
 ## Prerequisites
@@ -22,7 +25,9 @@ The following tools/resources should be present on your development machine
 - Maven
 - A Java IDE
 - A web browser
+<!-- vale off -->
 - Git (recommended but not required)
+<!-- vale on -->
 
 ## Sections
 
