@@ -1,6 +1,6 @@
 ---
 title: Project Setup
-sidebar_-_position: 3
+sidebar_position: 1
 ---
 
 In this tutorial, the app will be structured into **four steps**, each introducing new features as the project progresses. By following along, you’ll gain a clear understanding of how the app evolves and how each feature is implemented.

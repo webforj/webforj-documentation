@@ -7,7 +7,9 @@ This first step lays the foundation for the customer management app by creating 
 
 This step leverages the base app class provided by webforJ to define the structure and behavior of the app. Following through to later steps will transition to a more advanced setup using routing to manage multiple screens, introduced in Step 3.
 
-By the end of this step, you’ll have a functioning app that demonstrates basic interaction with components and event handling in webforJ.
+By the end of this step, you’ll have a functioning app that demonstrates basic interaction with components and event handling in webforJ. 
+
+To begin, go to the `1-step-1` directory, and run `mvn jetty:run`
 
 <img src={require('@site/static/img/tutorial_images/step1.png').default} alt="Screenshot of first app" className="tutorial-image" />
 
