@@ -44,7 +44,7 @@ The `onDidEnter` method leverages the data binding setup to streamline the proce
 ```
 ## Validation
 
-Validation ensures that the data entered into the form adheres to specified rules, improving data quality and preventing invalid submissions. With data binding, validation is seamlessly integrated, allowing real-time feedback on user inputs.
+Validation ensures that the data entered into the form adheres to specified rules, improving data quality and preventing invalid submissions. With data binding, validation no longer needs to be manually implemented but instead simply configured, allowing real-time feedback on user inputs.
 
 
 ### Defining valdiation rules
@@ -74,7 +74,9 @@ The `submitCustomer()` method now validates data using the `BindingContext` befo
 - **Add Mode**: If no `id` is provided, the form is in add mode. The validated data is written to the `Customer` model and added to the repository via `Service.getCurrent().addCustomer(customer)`.
 - **Edit Mode**: If an `id` is present, the method retrieves the corresponding customer data, updates it with validated inputs, and commits the changes to the repository.
 
-Using `context.write(customer)` ensures that all changes are validated and automatically applied to the model before being processed.
+Calling `context.write(customer)` will return an instance of a `ValidationResult`. This class indicates whether or not the validation was successful, and stores any messages associated with this result. 
+
+In this code we check to see if this result was valid before adding a customer. This ensures that all changes are validated and automatically applied to the model before being processed.
 
 ```java title="FormView.java"
 private void submitCustomer() {

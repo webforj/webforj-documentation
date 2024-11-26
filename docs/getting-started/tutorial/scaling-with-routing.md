@@ -3,14 +3,12 @@ title: Scaling with Routing and Composites
 sidebar_position: 4
 ---
 
-This step focuses on implementing routing to enhance the scalability and organization of the app structure. To achieve this, the app will be updated to handle multiple views, allowing navigation between different functionalities such as editing and creating customer entries.
+This step focuses on implementing routing to enhance the scalability and organization of the app structure. To achieve this, the app will be updated to handle multiple views, allowing navigation between different functionalities such as editing and creating customer entries. It will outline creating views for these functionalities, using components like `Composite` to build modular and reusable layouts.
 
-It will outline creating views for these functionalities, using components like `Composite<Div>` to build modular and reusable layouts. Additionally, the app will be updated to integrate dynamic data handling, ensuring that data interactions remain adaptable as the app grows.
-
-By the end of this step, the app created in the [previous step](./working-with-data) will have a robust routing setup that supports multiple views, enabling users to manage customer data more effectively while maintaining a clean and scalable codebase.
+The app created in the [previous step](./working-with-data) will have a robust routing setup that supports multiple views, enabling users to manage customer data more effectively while maintaining a clean and scalable codebase.
 
 ## Routing
-
+<!-- TODO quick very broad intro whats routing -->
 Routing allows your app to manage multiple views and scale effectively. This step focuses on changing the `App` class, creating files for the views, and configuring routes to enable smooth navigation between different parts of your app.
 
 ### Changing the `App` class
@@ -30,12 +28,11 @@ public class DemoApplication extends App {
 
 Once routing has been enabled, create separate Java files for each view, the app will contain. In this case, `DemoView.java` and `FormView.java`. Assign unique routes to these views using the `@Route` annotation. This ensures that each view is accessible through a specific URL.
 
+There are two suffixes webforJ looks for by default which are *View and *Layout. Using either of these suffixes at the end of a classname of a component associated with a route is advised as best practice.
 
-When the `@Route` annotation is left blank, webforJ automatically assigns the class's name without the suffix as the route. For example, `DemoView` would use the route `/demo` by default.
+When the `@Route` annotation is left blank above a class with one of these suffixes, webforJ automatically assigns the class's name without the suffix as the route. For example, `DemoView` would use the route `/demo` by default.
 
-There are two suffixes webforJ looks for by default which are *View and *Layout.
-
-For example, in `FormView.java`:
+See this in `FormView.java`:
 
 ```java title="FormView.java"
 @Route("customer/:id?")
@@ -51,8 +48,6 @@ The route `customer/:id?` uses an optional parameter `id` to determine the mode 
 
 - **Add Mode**: When `id` isn't provided, `FormView` initializes with a blank form for adding new customer data.
 - **Edit Mode**: When `id` is provided, `FormView` fetches the corresponding customer’s data using `Service` and pre-fills the form, allowing edits to be made to the existing entry.
-
----
 
 ## Using `Composite` components to display pages
 
@@ -88,15 +83,6 @@ Instead of placing all logic within the `run()` method of `App`, views like `Dem
 
 After configuring routing and setting up views, connect the views and data using event listeners and service methods. The first step is to add one or more
 UI elements to navigate from one view to the other.
-
-### Button navigation
-
-Use the `Router` class to navigate between views:
-
-```java title="DemoView.java"
-private Button add = new Button("Add Customer", ButtonTheme.PRIMARY,
-    e -> Router.getCurrent().navigate(FormView.class));
-```
 
 ### Button navigation
 
