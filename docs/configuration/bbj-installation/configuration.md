@@ -1,11 +1,30 @@
 ---
-sidebar_position: 1
+title: Install Plugin
+sidebar_position: 4
 displayed_sidebar: documentationSidebar
 ---
 
-# Configuration
-
 You can configure webforJ using a project's POM file, which is designed to make deploying an app easy. The following sections outline the various options you can change to achieve a desired result.
+
+## Engine exclusion
+
+When running with `BBjServices`, the `webforj-engine` dependency should be excluded, as the features provided by the engine are already available.
+
+```xml
+<dependencies>
+  <dependency>
+    <groupId>com.webforj</groupId>
+    <artifactId>webforj</artifactId>
+    <version>${webforj.version}</version>
+    <exclusions>
+      <exclusion>
+        <groupId>com.webforj</groupId>
+        <artifactId>webforj-engine</artifactId>
+      </exclusion>
+    </exclusions> 
+  </dependency>
+</dependencies>
+```
 
 ## POM file tags
 
@@ -32,7 +51,7 @@ Tags within the `<configuration>` tag can be changed to configure your app. Edit
 </plugin>
 ```
 
-- **`<deployurl>`** This tag is the URL where the webforJ endpoint for the project installation can be reached. For users running their app locally, a default port of 8888 is used. For users running Docker, the port should be changed to the port that was entered when [configuring the Docker container](../installation/docker.md#2-configuration).
+- **`<deployurl>`** This tag is the URL where the webforJ endpoint for the project installation can be reached. For users running their app locally, a default port of 8888 is used. For users running Docker, the port should be changed to the port that was entered when [configuring the Docker container](./docker#2-configuration).
 
 - **`<classname>`** This tag should contain the package and class name of the app you wish to run. This will be the single class in your project that extends the `App` class and runs from the base URL.
 
@@ -45,7 +64,7 @@ Tags within the `<configuration>` tag can be changed to configure your app. Edit
 There are two ways to run a specific program in your app:
 
 1. Place the program within the `run()` method of the class that extends `App`.
-2. Utilze [routing](../../docs/routing/overview) in your webforJ app to give the program a dedicated URL.
+2. Utilze [routing](../../routing/overview) in your webforJ app to give the program a dedicated URL.
 
 ## How webforJ selects an entry point
 

@@ -40,7 +40,21 @@ const config = {
       }),
     ],
   ],
-  plugins: ['docusaurus-plugin-sass'],
+  plugins: [
+    'docusaurus-plugin-sass',
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          // /docs/oldDoc -> /docs/newDoc
+          {
+            from: '/docs/installation/docker',
+            to: '/docs/introduction/getting-started',
+          },
+        ],
+      },
+    ]
+  ],
   themeConfig: {
     algolia: {
       appId: '826LUKOV8E',
@@ -49,9 +63,9 @@ const config = {
       contextualSearch: false,
     },
     announcementBar: {
-      id: '24.12',
+      id: '24.20',
       content:
-        'We are excited to announce webforJ version 24.12 is live! Read more about the changes and features <a href=/blog/whats-new-v24.12>here.</a> ',
+        'We are excited to announce webforJ version 24.20 is live! Read more about the changes and features <a href=/blog/whats-new-v24.20>here.</a> ',
       isCloseable: true,
     },
     image: '/img/webforj.svg',
@@ -66,30 +80,9 @@ const config = {
       items: [
         {
           position: 'left',
-          label: 'Installation',
-          items: [
-            {
-              label: "Docker",
-              to: '/docs/installation/docker',
-              activeBasePath: '/docs/installation/docker'
-            },
-            {
-              label: "GitHub Codespaces",
-              to: '/docs/installation/github-codespaces',
-              activeBasePath: '/docs/installation/github-codespaces'
-            },
-            {
-              label: "Local",
-              to: '/docs/installation/local',
-              activeBasePath: '/docs/installation/local'
-            }
-          ]
-        },
-        {
-          position: 'left',
-          label: 'Quick start',
-          to: '/docs/getting-started/overview',
-          activeBasePath: '/docs/getting-started/overview'
+          label: 'Getting Started',
+          to: '/docs/introduction/getting-started',
+          activeBasePath: '/docs/introduction/getting-started'
         },
         {
           position: 'left',
@@ -128,7 +121,7 @@ const config = {
             },
             {
               label: "Quick Template",
-              href: 'https://github.com/webforj/webforj-hello-world',
+              href: 'https://github.com/webforj/skeleton-starter-hello-world',
               target: '_blank',
               rel: null,
             },
@@ -198,7 +191,7 @@ const config = {
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
-      additionalLanguages: ['java']
+      additionalLanguages: ['java', 'Ini', 'bash']
     },
   }
 };

@@ -1,6 +1,6 @@
 {
-  "label": "Components",
-  "position": 35,
+  "label": "Configuration",
+  "position": 42,
   "link": {
     "type": "doc",
     "id": "overview"

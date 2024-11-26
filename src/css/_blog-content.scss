@@ -1,7 +1,7 @@
 @import "./mixins/content-block.scss";
 
 .blog-wrapper {
-  [itemtype="https://schema.org/Blog"]
+  main
   {
     @include content-block;
   }

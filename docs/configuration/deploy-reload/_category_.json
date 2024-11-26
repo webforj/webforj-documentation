@@ -1,6 +1,6 @@
 {
-  "label": "Components",
-  "position": 35,
+  "label": "Redeployment and Live Reload",
+  "position": 5,
   "link": {
     "type": "doc",
     "id": "overview"
