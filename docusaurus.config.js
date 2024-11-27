@@ -119,12 +119,12 @@ const config = {
               href: 'https://javadoc.io/doc/com.webforj',
               rel: null,
             },
-            {
-              label: "Quick Template",
-              href: 'https://github.com/webforj/skeleton-starter-hello-world',
-              target: '_blank',
-              rel: null,
-            },
+            // {
+            //   label: "Quick Template",
+            //   href: 'https://github.com/webforj/skeleton-starter-hello-world',
+            //   target: '_blank',
+            //   rel: null,
+            // },
             {
               label: "Client Components",
               to: '/docs/client-components/overview',
