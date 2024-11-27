@@ -17,9 +17,8 @@ A `Button` component is a fundamental user interface element used in application
 The primary purpose of the `Button` component is to provide a clear and intuitive call-to-action for users, guiding them to perform specific tasks such as submitting a form, navigating to another page, triggering a function, or initiating a process. Buttons are essential for enhancing user interactions, improving accessibility, and creating a more engaging user experience.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/buttondemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonDemoView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/button/buttonDemo.css'
+path='https://demo.webforj.com/webapp/controlsamples/button?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonView.java'
 height='300px'
 />
 
