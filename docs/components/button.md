@@ -179,7 +179,7 @@ To ensure an optimal user experience when using the `Button` component, consider
   > - A "Cancel" `Button` component should be styled with the appropriate theme or CSS styling to ensure users are sure they want to cancel an action
   > - A "Confirm" `Button` would have a different styling from a "Cancel" button, but would similarly stand out to ensure that users know this is a special action.
 
-3. **Efficient Event Handling**: Handle `Button` events efficiently and provide appropriate feedback to users. Refer to [**this section**](./button/#adding-events) to review efficient event adding behaviors.
+3. **Efficient Event Handling**: Handle `Button` events efficiently and provide appropriate feedback to users. Refer to [Events](../building-ui/events) to review efficient event adding behaviors.
 
 4. **Testing and Accessibility**: Test the Button's behavior in different scenarios, such as when it is disabled or receives focus, to ensure a smooth user experience.
 Follow accessibility guidelines to make the `Button` usable for all users, including those who rely on assistive technologies.

@@ -6,7 +6,7 @@ title: Transformation
 Data transformations are a pivotal feature, facilitating seamless conversion between the data types used in UI components and those in your data model. This capability ensures that data types are compatible and appropriately formatted when moving data between the frontend and backend of your applications.
 
 :::tip
-The transformer setting is best used when the data type of the bean property doesn't match the data type handled by the UI components. If you simply need to transform data of the same type, configuring [the bindings' getters and setters](./bindings.md#bindings-getters-and-setters) is the preferred approach.
+The transformer setting is best used when the data type of the bean property doesn't match the data type handled by the UI components. If you simply need to transform data of the same type, configuring [the bindings' getters and setters](bindings#binding-getters-and-setters) is the preferred approach.
 :::
 
 ## Configuring transformers

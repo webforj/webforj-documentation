@@ -25,8 +25,8 @@ Installation will be broken down into the following steps:
 ## 1. Java and Maven download and configuration
 
 In order to use webforJ, you must first have Java and Maven installed and properly configured. If you already
-have Java and Maven downloaded, please skip to [**Step 2**](#section2). If you also have 
-BBj installed on your system, please skip to [**Step 3**](#section3).
+have Java and Maven downloaded, please skip to [**Step 2**](#2-bbj-download-and-installation). If you also have 
+BBj installed on your system, please skip to [**Step 3**](#3-install-and-configure-the-webforj-plugin).
 
 ### Java
 
@@ -131,7 +131,7 @@ Finally, click on the "Configure" button, which will open a new window. In this 
 ![Enabling Remote Installation](./_images/users/local/i6.png#rounded-border) -->
 
 
-4. ### Using the starter project
+## 4. Using the starter project
 Once BBj and the required webforJ plugin are installed and configured, you can create a new, scaffolded project from the command line. This project comes with the necessary tools to run your first webforJ program.
 
 To create and scaffold a new project, follow these steps:
@@ -153,7 +153,7 @@ mvn -B archetype:generate \
 
 After running the command, Maven will generate the project files necessary to run the starter project.
 
-### 5. Launching the app
+## 5. Launching the app
 
 Once this has been done, run a `mvn install` in your project directory. This will run the webforJ install plugin, and allow
 you to access your app. To see the app, you'll want to go to the following URL:

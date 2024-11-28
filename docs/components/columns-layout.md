@@ -63,7 +63,7 @@ ColumnsLayout layout = new ColumnsLayout()
     .addBreakpoint(new Breakpoint(1200, 4));  
 ```
 
-The demonstration below shows an example of setting multiple breakpoints at construction, using breakpoints to configure the [`Span`](./columns-layout#spans) of a component, and demonstrates the resizing capabilities of the `ColumnsLayout` when the app is resized:
+The demonstration below shows an example of setting multiple breakpoints at construction, using breakpoints to configure the [`Span`](#column-span-and-spans-per-breakpoint) of a component, and demonstrates the resizing capabilities of the `ColumnsLayout` when the app is resized:
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/columnslayoutbreakpoints?' 
