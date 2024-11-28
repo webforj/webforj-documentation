@@ -3,30 +3,20 @@ sidebar_position: 0
 title: Fields
 ---
 
-import componentData from '@site/static/field_data.js'
-import ComponentViewer from '@site/src/components/PageTools/ComponentViewer'
-
 <JavadocLink type="foundation" location="com/webforj/component/field/AbstractField"/>
 
-WebforJ supports seven different types of field components, each with different behaviors and implementations that suit various
-needs. While each of these components have variations in their implementations, this article describes commonalities among all of the 
-field classes.
+The webforJ framework supports seven different types of field components, each with different behaviors and implementations that suit various needs for inputs.
+While each of these components has variations in their implementations, this article describes the shared properties among all of the field classes.
 
 :::info
 This section describes common features of various field components in webforJ, and isn't itself a class that can be instantiated and used.
 :::
 
-<!-- <ComponentViewer componentData={componentData} /> -->
-
-## Shared field properties 
-
-<!-- ### Autocomplete
-
-Specifies the browser's behavior regarding automatic form filling and completion. The available options include OFF, ON, and specific values for different types of autocomplete data such as names, addresses, and email addresses. The complete list of Enum values can be found in the Javadoc. -->
+## Shared field properties
 
 ### Label
 
-A field label is a descriptive text or title that is associated with the field. It provides a brief explanation or prompt to help users understand the purpose or expected input for that particular field. Field labels are not only important for usability but also play a crucial role in accessibility, as they enable screen readers and assistive technologies to provide accurate information and facilitate keyboard navigation.
+A field label is a descriptive text or title that's associated with the field that can be defined in the constructor or by using the `setLabel()` method. Labels provide a brief explanation or prompt to help users understand the purpose or expected input for that particular field. Field labels are important for usability and play a crucial role in accessibility, as they allow screen readers and assistive technologies to provide accurate information and facilitate keyboard navigation.
 
 ### Helper text
 
@@ -34,15 +24,15 @@ Each field can display helper text beneath the input using the `setHelperText()`
 
 ### Required
 
-A field is required when the user must provide a value before submitting a form. This is mainly used in conjunction with `setLabel(String)` to provide a visual indication to users that the field is required. 
+You can call the `setRequired(true)` method to require users to provide a value before submitting a form. This property works in tandem with the field label, providing a visual indication that a field is necessary. This visual cue helps individuals complete forms accurately.
 
 :::info
-Field components contain built-in visual validation which notifies users if a required field is empty, or has had values removed.
+Field components contain built-in visual validation to notify users when a required field is empty or if a user removed a value.
 :::
 
 ### Spellcheck
 
-By calling the `setSpellCheck(true)` method, you can enable the spellcheck feature for a field. This means that when a user enters text into the field, the browser or user agent may check the spelling of the entered text for errors.
+By using `setSpellCheck(true)`, you can allow the browser or user agent to verify the spelling of the text entered by the user and identify any errors.
 
 ### Slots
 
@@ -55,14 +45,12 @@ textField.setPrefixComponent(TablerIcon.create("box"));
 textField.setSuffixComponent(TablerIcon.create("box"));
 ```
 
-
-## Parts and CSS properties
+## Styling
 
 :::info
 Because all field components are built from a singular web component, they all share the
 following Shadow Parts and CSS Property values
 :::
-
 
 ### Shadow parts
 

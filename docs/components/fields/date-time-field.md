@@ -1,48 +1,45 @@
 ---
-sidebar_position: 3
+sidebar_position: 10
 title: DateTimeField
 slug: datetimefield
+description: A component that provides a default browser-based date and time picker for selecting both date and time through a single input field.
 ---
 
 <DocChip chip='shadow' />
-
 <DocChip chip='name' label="dwc-field" />
-
 <JavadocLink type="foundation" location="com/webforj/component/field/DateTimeField" top='true'/>
 
 <ParentLink parent="Field" />
 
-The `DateTimeField` class provides a user interface component that allows the user to enter both a date and a time, including the year, month, and day, as well as the time in hours and minutes. It offers the flexibility to validate the input or use a special date-time picker interface.
+The `DateTimeField` component is designed to allow users to input both a date and a time. This includes specifying the year, month, and day, along with the time in hours and minutes. It provides users with the option to validate their input for accuracy or utilize a dedicated date-time picker interface to streamline the selection process.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/datetimefielddemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/fields/datetimefield/DateTimeFieldDemoView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/fields/datefield/dateFieldDemo.css'
+path='https://demo.webforj.com/webapp/controlsamples/datetimefield?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/fields/datetimefield/DateTimeFieldView.java'
 />
 
 ## Usages
 
-The `DateTimeField` is best used in scenarios where capturing or displaying both date **and** time is essential to the user interface or application functionality. Here are some examples of when to use the `DateTimeField`:
+The `DateTimeField` is best used in scenarios where capturing or displaying both date **and** time is essential to your app. Here are some examples of when to use the `DateTimeField`:
 
-1. **Event Scheduling and Calendars**: If time of day is in important factor in applications that involve event scheduling, appointment booking, or managing calendars then a `DateTimeField` is the proper component to use.
+1. **Event Scheduling and Calendars**: Let users efficiently schedule events, book appointments, and manage their calendars by giving them a single component that allows them to choose the date and time.
 
-2. **Form Inputs**: When designing forms that require date and time inputs, using a `DateTimeField` simplifies the selection process for users. This is particularly useful for applications that collect user data or require scheduling with specific times.
+2. **Check-in and check-out**: Facilitate user selection of check-in and check-out times when the period can span multiple days.
 
-3. **Data Logging and Timestamps**: Applications that involve data logging or capturing timestamps require `DateTimeFields` to record the date and time when events occur or when data is submitted.
+3. **Data Logging and Timestamps**: Utilize `DateTimeFields` for apps that involve recording the date and time of when events occur or when a user submits data.
 
 4. **Task Management and Deadlines**: `DateTimeFields` are valuable in applications that involve task management or setting deadlines where both the date and time are relevant for accurate scheduling.
-
 
 ## Maximum and minimum
 
 You can use the `setMax()` and `setMin()` methods to specify the acceptable range of dates and times. If the value entered into the component is outside of the specified timestamp, the component fails constraint validation. Also, if there is already a maximum or minimum set, the value given to the other method must be lower or higher respectively.
 
-## Display
+## Localized display
 
-The `DateTimeField` will, by default, display its information within the UI element based on the locale the browser is configured to. For example, users with United States configurations will see the date displayed with the month preceding the day, whereas European users will see the day before the month. This does not inhibit manipulation of the `LocalDateTime` object returned by methods from the class, however.
+By default, the `DateTimeField` displays its information within the UI element based on the locale the browser is configured to. For example, users with United States configurations will see the date displayed with the month preceding the day, whereas European users will see the day before the month. Still, this doesn't stop you from manipulating the `LocalDateTime` object returned by the methods from the `DataTimeField` class.
 
-:::info
-When displaying time, the seconds will display by default. However, if the component is given a `LocaleDateTime` object with the seconds set to 0, the seconds are then hidden from the display.
+:::tip
+To hide seconds from the display, give the `DateTimeField` a `LocaleDateTime` object with the seconds set to 0.
 :::
 
 ## Static utilities 
@@ -55,14 +52,14 @@ The DateTimeField class also provides the following static utility methods:
 
 - `isValidDateTime(String dateTimeAsString)`: Checks to see if the given string is a valid yyyy-MM-ddTHH:mm:ss date and time. This will return a boolean value true if so, false otherwise.
 
-### Best practices
+## Best practices
 
-To ensure an optimal user experience when using the `DateField` component, consider the following best practices:
+To ensure an optimal user experience when using the `DateTimeField` component, consider the following best practices:
 
-1. **Consider Localized Date Display**: When displaying dates, consider localizing the date format and incorporating regional preferences. This enhances usability and ensures dates are presented in a familiar format to the user.
+- **Localized Date Display**: Localizing the date format and incorporating regional preferences ensures dates are presented in a familiar format to the user.
 
-2. **Include Timezone Considerations**: If your application deals with time-sensitive information across different time zones, consider incorporating timezone selection alongside the date field to ensure accurate date-time representation.
+- **Include Timezones**: If your app deals with time-sensitive information across different time zones, consider incorporating timezone selection alongside the date field to ensure accurate date-time representation.
 
-3. **Consider Accessibility**: Utilize the `DateField` with accessibility in mind. Ensure that it meets accessibility standards, such as providing proper labels, and being compatible with assistive technologies.
+- **Accessibility**: Utilize the `DateTimeField` with accessibility in mind. Ensure that it meets accessibility standards, such as providing proper labels and being compatible with assistive technologies.
 
-4. **Auto-Populate Current Date**: Consider providing an option to auto-populate the current date as a default value in the date field, if appropriate for your application's use case.
+- **Auto-Populate Current Date**: Consider providing an option to auto-populate the current date and time as a default value in the date time field, if appropriate for your app's use case.
