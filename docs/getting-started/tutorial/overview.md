@@ -6,14 +6,12 @@ This tutorial is designed to guide you step by step through the process of creat
 
 Each step in the tutorial will result in a program that compiles into a WAR file, which can be deployed to any Java web app server. For this tutorial, the Maven Jetty plugin will be used to deploy the app locally. This lightweight setup ensures the app can quickly run, and that changes will be seen in real time during development.
 
-## App basics in `webforJ`
-
-<!-- TODO figure out exactly what we want this section to say, create graphic -->
-
 ## Tutorial app features
 
-<!-- TODO Eric list all of the features here -->
-
+ - Working with data in a table.
+ - Using the objecttable and asset management.
+ - Routing and navigation
+ - Databinding and validation
 
 ## Prerequisites
 

@@ -47,7 +47,7 @@ More information on configuring a webforJ project can be found here
 
 For now, focus on the following key configuration properties:
 
-#### App Entry `(webforj.entry)`
+#### App entry `(webforj.entry)`
 
 This property specifies the main entry point of the app by defining the fully qualified name of the class that extends the `App` class. 
 
@@ -59,7 +59,7 @@ Set the entry point is set to `com.webforj.demos.DemoApplication`. This ensures 
 webforj.entry = com.webforj.demos.DemoApplication
 ```
 
-#### Debug Mode `(webforj.debug)`
+#### Debug mode `(webforj.debug)`
 
 Setting `webforj.debug` to true enables debug mode, which provides insights during development:
     - Detailed logs are printed to the console.
@@ -82,8 +82,8 @@ After ensuring correct configuration for the project, override the `run()` metho
 The run method is the core of your app in webforJ. It defines what happens after the app is initialized and is the main entry point for your app's features. By overriding the `run()` method, you can implement the logic that creates and manages your app's user interface and behavior. 
 
 :::tip Using routing
-<!-- TODO link -->
-When implementing routing within an app, the `run()` is called after the initial route resolution and `Frame` creation. Otherwise, it's where non-routable app logic can be executed. This tutorial will go further into depth on implementing routing in step 3.
+When implementing routing within an app, the `run()` is called after the initial route resolution and `Frame` creation. Otherwise, it's where non-routable app logic can be executed. This tutorial will go further into depth on implementing routing in step 3. More information is also available
+in the [Routing Article](../../routing/overview).
 :::
 
 For now, add a logging statement, which can be viewed in the browser console, to the method.
@@ -130,8 +130,8 @@ Each of these [server-side component](../../components/overview) created in webf
 - **Separation of Concerns**: This separation ensures that your server-side Java logic is easy to maintain, while the client-side remains efficient and lightweight.
 
 :::tip Composite components
-<!-- TODO link -->
-Alongside the core components provided by webforJ, you can design custom composite components by grouping multiple elements into a single reusable unit. This concept will be covered in this step of the tutorial.
+
+Alongside the core components provided by webforJ, you can design custom composite components by grouping multiple elements into a single reusable unit. This concept will be covered in this step of the tutorial. More information is available in the [Composite Article](../../building-ui/composite-components.md)
 :::
 
 Components need to be added to a container class that implements the `HasComponents` interface. The `Frame` is one such class - for this step, add a `Paragraph` and a `Button` to the `Frame`, which will render in the UI in the browser:
@@ -169,7 +169,6 @@ mainFrame.addClassName("mainFrame");
 
 To style your app, you can inject CSS files into your project using annotations, along with other methods [outlined here](../../styling/getting-started#using-custom-css). webforJ supports two main annotations for this purpose:
 
-<!-- TODO ask hyyan to review -->
 ### `@InlineStyleSheet`
 Use the `@InlineStyleSheet` annotation to include CSS files located in your project’s context directory. The framework maps the path you specify to the context of your app. When the app runs, the web server serves this file using the `/static` route within the `resources` directory, allowing it to be accessed in the browser.
 
@@ -177,7 +176,7 @@ Use the `@InlineStyleSheet` annotation to include CSS files located in your proj
 Specify the directory from which static files should be served. Use the `<webApp>` in the `pom.xml` configuration to point to your static directory.
 :::
 
-The following code would import a stylesheet found in the following directory structure:
+The following code would import a style sheet found in the following directory structure:
 ```
 resources/
   static/
@@ -197,7 +196,7 @@ public class DemoApplication extends App {
 ```
 
 ### `@StyleSheet`
-Use the `@StyleSheet` annotation to include CSS files hosted at external URLs. This is useful for integrating third-party stylesheets. When referencing external URLs, the framework fetches and applies the stylesheet directly from the specified URL. Make sure the resource is accessible and uses the correct protocol (http or https).
+Use the `@StyleSheet` annotation to include CSS files hosted at external URLs. This is useful for integrating third-party stylesheets. When referencing external URLs, the framework fetches and applies the style sheet directly from the specified URL. Make sure the resource is accessible and uses the correct protocol (http or https).
 
 ```java
 @StyleSheet("https://cdn.example.com/styles/library.css")

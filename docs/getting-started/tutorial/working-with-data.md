@@ -66,9 +66,9 @@ In this demo, the `Service` class reads customer data from a JSON file located a
 The `Service` class uses the `ObjectTable` to manage instances dynamically, instead of relying on static fields. This approach addresses a key limitation when using servelets: static fields are tied to the server’s lifecycle and can lead to issues in environments with multiple requests or concurrent sessions. The `ObjectTable` is scoped to the user session, and using it ensures a singleton-like behavior without these limitations, enabling consistent and scalable data management.
 :::
 
-<!-- TODO ask whether context or ws here -->
+
 :::tip Loading the data
-TODO
+To load assets and data in webforJ, use context URLs with the `Assets` utility. Context URLs allow you to define resource paths dynamically, making your app adaptable across different environments. For example, you can load a JSON file with customer data.
 :::
 
 ```java

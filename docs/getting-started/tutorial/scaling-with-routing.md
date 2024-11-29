@@ -7,8 +7,11 @@ This step focuses on implementing routing to enhance the scalability and organiz
 
 The app created in the [previous step](./working-with-data) will have a robust routing setup that supports multiple views, enabling users to manage customer data more effectively while maintaining a clean and scalable codebase.
 
+<img src={require('@site/static/img/tutorial_images/step3-1.png').default} alt="Screenshot of first app" className="tutorial-image" />
+
+<img src={require('@site/static/img/tutorial_images/step3-2.png').default} alt="Screenshot of first app" className="tutorial-image" />
+
 ## Routing
-<!-- TODO quick very broad intro whats routing -->
 Routing allows your app to manage multiple views and scale effectively. This step focuses on changing the `App` class, creating files for the views, and configuring routes to enable smooth navigation between different parts of your app.
 
 ### Changing the `App` class
