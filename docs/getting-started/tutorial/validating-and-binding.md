@@ -76,7 +76,7 @@ The `submitCustomer()` method now validates data using the `BindingContext` befo
 
 Calling `context.write(customer)` will return an instance of a `ValidationResult`. This class indicates whether or not the validation was successful, and stores any messages associated with this result. 
 
-In this code you make sure this result was valid before adding a customer. This ensures that all changes are validated and automatically applied to the model before being processed.
+In this code you make sure this result was valid before adding a customer. This ensures that all changes are validated and automatically applied to the model before being processed.her.)
 
 ```java title="FormView.java"
 private void submitCustomer() {
