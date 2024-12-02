@@ -3,7 +3,7 @@ title: Getting Started
 sidebar_position: 2
 ---
 
-This article outlines the steps to scaffold a new webforJ app using the webforj archetypes. This archetypes provide a pre-configured project structure and starter code to quickly get a project up and running.
+This article outlines the steps to scaffold a new webforJ app using the webforJ archetypes. This archetypes provide a pre-configured project structure and starter code to quickly get a project up and running.
 
 :::tip Prerequisites
 Before you begin, ensure you have read about the necessary [prerequisites](./prerequisites) for setting up and using webforJ. 

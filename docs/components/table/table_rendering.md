@@ -6,7 +6,7 @@ slug: rendering
 
 # Rich content and client-side rendering
 
-Tables in webforj are also configurable using the following tools to display rich content within cells. This includes interactive components or formatted data within the table cells.
+Tables in webforJ are also configurable using the following tools to display rich content within cells. This includes interactive components or formatted data within the table cells.
 
 These elements are rendered client-side, meaning the process of generating and displaying rich content is done directly in the browser, using JavaScript only when needed, increasing performance of applications using the `Table`.
 
@@ -86,7 +86,7 @@ The renderer has access to detailed cell, row, and column properties in the clie
 
 While custom renderers can be created, there are multiple pre-configured renderers available for use within a `Table`. The following are available for developers to use out of the box without the need to create a custom renderer:
 
->- `ButtonRenderer` - Renderer for a webforj button.
+>- `ButtonRenderer` - Renderer for a webforJ button.
 >- `NativeButtonRenderer` - Renderer for a native HTML button.
 >- `ElementRenderer` - The base class for all renderers which render an HTML tag **with** content.
 >- `VoidElementRenderer` - The base class for all renderers which render a void element, or an HTML tag **without** content.

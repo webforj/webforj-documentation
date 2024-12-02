@@ -111,7 +111,7 @@ Local storage stores data with no expiration date. It persists even after the br
 - Not suitable for sensitive data
 - You must manage data yourself, since the browser never automatically deletes it
 
-### Using local storage in webforj
+### Using local storage in webforJ
 
 The following code snippet demonstrates the use of the <JavadocLink type="foundation" location="com/webforj/webstorage/LocalStorage" code='true'>LocalStorage</JavadocLink> object.
 
