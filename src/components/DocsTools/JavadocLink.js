@@ -28,6 +28,20 @@ export default function JavadocLink({
   useEffect(() => {
     async function fetchLatestVersion() {
       const resolvedSuffix = suffix || "";
+      const cacheKey = "webforj_latest_version";
+      const cacheExpiry = 24 * 60 * 60 * 1000; // 24 hours
+
+      const cachedData = localStorage.getItem(cacheKey);
+      const cachedTimestamp = localStorage.getItem(`${cacheKey}_timestamp`);
+
+      if (cachedData && cachedTimestamp && (Date.now() - cachedTimestamp) < cacheExpiry) {
+        const latestVersion = cachedData;
+        setUrl(
+          `https://javadoc.io/doc/com.webforj/webforj-${type}/${latestVersion}/${location}.html${resolvedSuffix}`
+        );
+        return;
+      }
+
       try {
         const response = await fetch(
           "https://api.github.com/repos/webforj/webforj/releases/latest"
@@ -39,6 +53,9 @@ export default function JavadocLink({
         const data = await response.json();
         const latestVersion = data.tag_name;
         console.log(latestVersion);
+
+        localStorage.setItem(cacheKey, latestVersion);
+        localStorage.setItem(`${cacheKey}_timestamp`, Date.now());
 
         setUrl(
           `https://javadoc.io/doc/com.webforj/webforj-${type}/${latestVersion}/${location}.html${resolvedSuffix}`
