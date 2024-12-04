@@ -28,14 +28,13 @@ The `TimeField` is ideal for choosing and displaying times in your app. Here are
 
 3. **Reminders and Alarms**: Using a time field simplifies the input process for users setting reminders or alarms in your app.
 
-## Maximum and minimum
+## Min and max value
 
-With the `setMax()` and `setMin()` methods, you can specify a range of acceptable times. If a user manually enters a value into the time field outside the specified range, the component will let the user know what's acceptable. Also, if a maximum or minimum is already set, the value for the other method must be lower or higher respectively.
+With the `setMin()` and `setMax()` methods, you can specify a range of acceptable times.
 
-<ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/timefieldminmax'
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/fielddemos/TimeFieldMinMax.java'
-/>
+- **For `setMin()`**: If the value entered into the component is earlier than the specified minimum time, the component will fail constraint validation. When both the min and max values are set, the min value must be a time that's the same as or earlier than the max value.
+
+- **For `setMax()`**: If the value entered into the component is later than the specified maximum time, the component will fail constraint validation. When both the min and max values are set, the max value must be a time that's the same as or later than the min value. 
 
 ## Localized display
 
