@@ -11,9 +11,9 @@ description: A component that provides a default browser-based color picker, all
 
 <ParentLink parent="Field" />
 
-The `ColorField` component is a powerful and versatile tool that provides an intuitive and interactive way to explore and select colors within your app. Whether you're designing a user interface or creating visualizations, the `ColorField` component offers a seamless and efficient approach to working with colors. 
+The `ColorField` component is a versatile tool that allows users to explore and select colors interactively within your app. It offers a seamless approach so users can find the perfect hue, saturation, and brightness to match their creative vision.
 
-With a simple drag-and-hover interface, users can effortlessly navigate through the color space to find the exact hue, saturation, and brightness that matches their creative vision. Users can also input color values directly, ensuring precision.
+The `ColorField` component is implemented as a native browser feature, so the presentation can differ greatly depending on the browser and platform. However, this variation is beneficial, as it aligns with the user’s familiar environment. It might appear as a simple text input to ensure a properly formatted color value, a platform-standard color picker, or even a custom color picker interface.
 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/colorfield?' 
@@ -36,10 +36,6 @@ The `ColorField` is best used in scenarios where color selection is a crucial pa
 
 The `ColorField` works seamlessly with the `java.awt.Color` class for setting the color and retrieving colors the user picks with the `setValue()` and `getValue()` methods. The `ColorField` only allows basic colors, which means that it will ignore any provided alpha value for a `Color`.
 Alternatively, you use the #RRGGBB hexadecimal format by using the `setText()` and `getText()` methods.
-
-:::note
-The component's presentation may vary substantially from one browser and/or platform to another. It might be a simple textual field that automatically validates to ensure that the color information is entered in the proper format, a platform-standard color picker, or some kind of custom color picker window.
-:::
 
 ## Static utilities 
 
