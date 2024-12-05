@@ -1,13 +1,13 @@
-@use './announcement';
-@use './navbar';
-@use './sidebar';
-@use './footer';
-@use './category';
-@use './content';
-@use './toc';
-@use './pagination';
-@use './blog-sidebar';
-@use './blog-content';
+@use "./announcement";
+@use "./navbar";
+@use "./sidebar";
+@use "./footer";
+@use "./category";
+@use "./content";
+@use "./toc";
+@use "./pagination";
+@use "./blog-sidebar";
+@use "./blog-content";
 
 :root {
   /* DWC */
@@ -62,7 +62,7 @@
 
   /* code */
   --code-display-color-background: var(--dwc-surface-2);
-  --docusaurus-highlighted-code-line-bg: #DDDFE1;
+  --docusaurus-highlighted-code-line-bg: #dddfe1;
 
   /* chips */
   --chip-background: var(--dwc-surface-1);
@@ -71,9 +71,36 @@
   --chip-icon-color: var(--ifm-color-primary);
 
   /* Announcement */
-  --announcement-background: linear-gradient(90deg, #00164f, #002596 25%, #000 50%, #002596 75%, #00164f);
+  --announcement-background: linear-gradient(
+    90deg,
+    #00164f,
+    #002596 25%,
+    #000 50%,
+    #002596 75%,
+    #00164f
+  );
   --announcement-bar-height: 3.5rem;
   --announcement-color: #fff;
+
+  /* Menus */
+  --menu-level-indicator-color: hsl(0, 0%, 80%);
+
+
+  /* Navbar Dark */
+  --navbar-dark-background-color: hsl(
+    var(--dwc-color-default-h),
+    var(--dwc-color-default-s),
+    12%
+  );
+
+  --navbar-dark-link-hover-color: #8fc5ff;
+  --navbar-dark-background-active: hsl(
+    var(--dwc-color-default-h),
+    var(--dwc-color-default-s),
+    10%
+  );
+
+  --navbar-dark-sidebar-level-indicator-color: hsl(0, 0%, 35%);
 }
 
 [data-theme="dark"] {
@@ -121,4 +148,7 @@
 
   /* code */
   --docusaurus-highlighted-code-line-bg: #414458;
+
+  /* Menus */
+  --menu-level-indicator-color: hsl(0,0%, 35%);
 }
