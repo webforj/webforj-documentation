@@ -3,12 +3,12 @@ sidebar_position: 2
 title: Testing with Playwright
 ---
 
-This documentation outlines the process for testing `webforJ` applications using Playwright, specifically focusing on the `HelloWorldView` from the `webforj-archetype-hello-world`.
+This documentation outlines the process for testing webforJ applications using Playwright, specifically focusing on the `HelloWorldView` from the `webforj-archetype-hello-world`.
 
 ## Prerequisites
 
 Before running the Playwright tests, ensure the following:
-- The `webforJ` app is correctly set up and running on your local server.
+- The webforJ app is correctly set up and running on your local server.
 - You have installed:
   - Playwright Java bindings.
   - A compatible browser (Playwright can automatically install browsers during setup).
@@ -98,7 +98,7 @@ class HelloWorldViewTest {
 
 ### Running tests
 
-1. Start the `webforJ` server:
+1. Start the webforJ server:
    ```bash
    mvn jetty:run
    ```
@@ -111,5 +111,5 @@ class HelloWorldViewTest {
 ## Expected behavior
 
 - On visiting `http://localhost:<port>/`, the `HelloWorldView` page loads.
-- Input `webforJ` into the text field and click the `Say Hello` button.
+- Input webforJ into the text field and click the `Say Hello` button.
 - A toast message should appear with the text: `Welcome to webforJ Starter webforJ!`.

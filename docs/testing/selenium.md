@@ -3,13 +3,13 @@ sidebar_position: 3
 title: Testing with Selenium
 ---
 
-This documentation outlines the process for testing a `webforJ` apps using Selenium, specifically focusing on the `HelloWorldView` from
+This documentation outlines the process for testing a webforJ apps using Selenium, specifically focusing on the `HelloWorldView` from
 the `webforj-archetype-hello-world`.
 
 ## Prerequisites
 
 Before running the Selenium tests, ensure the following:
-- `webforJ` app is correctly set up and running on your local server.
+- webforJ app is correctly set up and running on your local server.
 - You have installed:
   - Selenium Java bindings.
   - A compatible WebDriver for your browser (e.g., `ChromeDriver` or `GeckoDriver`).
@@ -117,7 +117,7 @@ class HelloWorldViewTest {
 
 ### Running tests
 
-1. Start the `webforJ` server:
+1. Start the webforJ server:
    ```bash
    mvn jetty:run
    ```
