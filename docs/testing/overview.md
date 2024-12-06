@@ -15,7 +15,7 @@ hide_table_of_contents: true
 
 # Testing in webforJ
 
-Testing in `webforJ` applications combines traditional Java unit testing with end-to-end (E2E) testing to ensure robust functionality and user experience.
+Testing in webforJ applications combines traditional Java unit testing with end-to-end (E2E) testing to ensure robust functionality and user experience.
 
 ## Unit testing
 
@@ -23,7 +23,7 @@ Unit tests in webforJ follow standard Java practices using frameworks like JUnit
 
 ## End-to-End testing
 
-Since `webforJ` generates dynamic, single-page web applications, end-to-end testing is essential for validating user interactions and UI behavior. Tools like Selenium and Playwright allow you to:
+Since webforJ generates dynamic, single-page web applications, end-to-end testing is essential for validating user interactions and UI behavior. Tools like Selenium and Playwright allow you to:
 - Automate browser interactions (e.g., button clicks, form submissions).
 - Verify the rendering and functionality of dynamic components.
 - Ensure consistent behavior across different browsers.
