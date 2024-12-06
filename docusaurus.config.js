@@ -51,6 +51,14 @@ const config = {
             from: '/docs/installation/docker',
             to: '/docs/introduction/getting-started',
           },
+          {
+            from: '/docs/intro/getting-started',
+            to: '/docs/introduction/getting-started',
+          },
+          {
+            from: '/docs/intro/basics',
+            to: '/docs/introduction/basics',
+          },
         ],
       },
     ]
