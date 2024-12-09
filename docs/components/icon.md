@@ -7,13 +7,13 @@ title: Icon
 <DocChip chip="name" label="dwc-icon" />
 <JavadocLink type="foundation" location="com/webforj/component/icons/Icon" top='true'/>
 
-The weborJ `Icon` component allows you to effortlessly include icons in your user interface.
+The webforJ `Icon` component allows you to include icons effortlessly in your user interface
 Icons are a fundamental part of enhancing the design of the user interface, making it faster for users to scan the screen for actionable items.
 Using icons in your app creates visual cues for navigation and actions, which can reduce the amount of text needed and simplify the user interface. You can choose from three existing icon pools and webforJ also gives you the option to create new ones from scratch.
 
 :::tip Did you know?
 
-Some components, like `PasswordField` and `TimeField`, have built-in icons to help convey meaning for end users.
+Some components, like `PasswordField` and `TimeField`, have built-in icons to help convey meaning to end users.
 
 :::
 
@@ -56,7 +56,7 @@ Once you have selected the pool or pools to include in your app, the next step i
 ### Names
 
 To include an icon in your app, all you need is the icon pool and the icon name. Browse the icon pool website for the icon you wish to use, and use the icon name as the parameter of the `create()` method.
-Additionally, you have the option to create the icons through enums for the `FeatherIcon` and `DwcIcon` classes, allowing them to appear in code completion.
+Additionally, you can to create the icons through enums for the `FeatherIcon` and `DwcIcon` classes, allowing them to appear in code completion.
 
 ```java
 // Create an icon from a String name
@@ -68,18 +68,18 @@ Icon image = FeatherIcon.IMAGE.create();
 ### Variations
 
 You can personalize icons even more by utilizing variations.
-Certain icons allow you to choose between an outlined or a filled version, allowing you to put emphasis on a specific icon based on your preference. `FontAwesomeIcon` and `Tabler` icons offer variations.
+Certain icons allow you to choose between an outlined or a filled version, allowing you to emphasize a specific icon based on your preference. `FontAwesomeIcon` and `Tabler` icons offer variations.
 
 #### `FontAwesomeIcon` variations
 
-1. `REGULAR`: The outlined variate of icons. This is the default.
-2. `SOLID`: The filled variate of icons.
-3. `BRAND`: The variate for when you're using the icons of brands.
+1. `REGULAR`: The outlined variation of icons. This is the default.
+2. `SOLID`: The filled variation of icons.
+3. `BRAND`: The variation for when you're using the icons of brands.
 
 #### `TablerIcon` variations
 
-1. `OUTLINE`: The outlined variate of icons. This is the default.
-2. `FILLED`: The filled variate of icons.
+1. `OUTLINE`: The outlined variation of icons. This is the default.
+2. `FILLED`: The filled variation of icons.
 
 ```java
 // A filled variation of an icon from Font Awesome
@@ -96,8 +96,8 @@ height='100px'
 
 ## Adding icons to components
 
-Integrate icons into your components using slots. Slots provide flexible options for improving the functionality of a component. It's beneficial to add an `Icon` to a component to further clarify intended meaning to users.
-Components that implement the `HasPrefixAndSuffix` interface can include an `Icon` or other valid components. The added components can be placed in the `prefix` and `suffix` slots and can enhance both overall design and user experience.
+Integrate icons into your components using slots. Slots provide flexible options to make components more useful. It's beneficial to add an `Icon` to a component to further clarify intended meaning to users.
+Components implementing the `HasPrefixAndSuffix` interface can include an `Icon` or other valid components. The added components can be placed in the `prefix` and `suffix` slots and can enhance both overall design and user experience.
 
 Using `prefix` and `suffix` slots, you can determine if you want the icon before or after the text using the `setPrefixComponent()` and `setSuffixComponent()` methods.
 
@@ -141,7 +141,7 @@ Make sure to design icons with equal width and height, as `Icon` components are 
 ### Custom pool factory
 
 You can also create a factory class for a custom pool in webforJ, just like `FeatherIcon`. This enables you to create and manage icon resources within a specified pool and allow for code completion.
-Each icon can be instantiated through the `create()` method, which returns an `Icon`. The factory class should provide pool-specific metadata, such as the pool name and the icon's identifier, formatted to the image's file name.
+Each icon can be instantiated through the `create()` method, which returns an `Icon`. The factory class should provide pool-specific metadata, such as the pool name and the icon's identifier, formatted to the image's filename.
 This design allows easy, standardized access to icon assets from the custom pool using enum constants, supporting scalability and maintainability in icon management.
 
 ```java
@@ -201,14 +201,14 @@ bell.onClick(e -> showMessageDialog("You have a new message!", "Ding Dong!"));
 An Icon inherits the theme of its direct parent component, but you can override this by applying a theme to an `Icon` directly.
 
 ### Themes
-Icon components come with 7 discrete themes built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to icons to change their appearance and visual presentation. They offer a quick and consistent way to customize the look of icons throughout an app.
+Icon components come with seven discrete themes built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to icons to change their appearance and visual presentation. They offer a quick and consistent way to customize the look of icons throughout an app.
 
 While there are many use cases for each of the various themes, some examples uses are:
 
 - `DANGER`: Best for actions with severe consequences, such as clearing filled-out information or permanently deleting an account/data.
 - `DEFAULT`: Appropriate for actions throughout an app that don't require special attention and are generic, such as toggling a setting.
 - `PRIMARY`: Appropriate as a main "call-to-action" on a page, such as signing up, saving changes, or continuing to another page.
-- `SUCCESS`: Excellent for visualizing successful completion of an element in an app, such as the submission of a form or completion of a sign-up process. The success theme can by programmatically applied once a successful action has been completed.
+- `SUCCESS`: Excellent for visualizing the successful completion of an element in an app, such as the submission of a form or completion of a sign-up process. The success theme can by programmatically applied once a successful action has been completed.
 - `WARNING`: Useful to indicate that a user is about to perform a potentially risky action, such as navigating away from a page with unsaved changes. These actions are often less impactful than those that would use the Danger theme.
 - `GRAY`: Good for subtle actions, such as minor settings or actions that are more supplementary to a page, and not part of the main functionality.
 - `INFO`: Good for providing additional clarifying information to a user.
