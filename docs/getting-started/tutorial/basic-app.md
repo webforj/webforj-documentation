@@ -5,11 +5,13 @@ sidebar_position: 2
 
 This first step lays the foundation for the customer management app by creating a simple, interactive interface. This demonstrates how to set up a basic webforJ app, with a single button that opens a dialog when clicked. It’s a straightforward implementation that introduces key components and gives you a feel for how webforJ works.
 
-This step leverages the base app class provided by webforJ to define the structure and behavior of the app. Following through to later steps will transition to a more advanced setup using routing to manage multiple screens, introduced in Step 3.
+This step leverages the base app class provided by webforJ to define the structure and behavior of the app. Following through to later steps will transition to a more advanced setup using routing to manage multiple screens, introduced in [Scaling with routing](./scaling-with-routing).
 
 By the end of this step, you’ll have a functioning app that demonstrates basic interaction with components and event handling in webforJ. 
 
-To begin, go to the `1-step-1` directory, and run `mvn jetty:run`
+To begin: 
+  - go to the `1-step-1` directory
+  - run `mvn jetty:run`
 
 <img src={require('@site/static/img/tutorial_images/step1.png').default} alt="Screenshot of first app" className="tutorial-image" />
 
@@ -26,54 +28,30 @@ In webforJ, an `App` represents the central hub for defining and managing your p
 
 For this step, create a class called DemoApplication.java and extend the `App` class. Do this in the `demos` directory.
 
-```java
+```java title="DemoApplication.java"
 public class DemoApplication extends App {
-
-    @Override
-    public void run() {
-        // Core app logic will go here
-    }
+  @Override
+  public void run() {
+      // Core app logic will go here
+  }
 }
 ```
 
-### Configuring your app
+:::tip Key Configuration Properties
 
-Once a foundational `App` class has been created, it's necessary to set this as the entry point for your project. This is done in the `webforj.conf` file in a webforJ project. The `webforj.conf` file is the central configuration file for a webforJ app. It defines key properties that control how the app runs and behaves.
+To properly configure your webforJ app, focus on these two essential properties in the `webforj.conf` file:
 
-:::tip Learn more
-<!-- TODO add link -->
-More information on configuring a webforJ project can be found here
+- **`webforj.entry`**: Specifies the fully qualified name of the class extending `App` that acts as the main entry point for your project. For this tutorial, set it to `com.webforj.demos.DemoApplication` to avoid ambiguity during initialization.
+    ```hocon
+    webforj.entry = com.webforj.demos.DemoApplication
+    ```
+- **`webforj.debug`**: Enables debug mode for detailed logs and error visibility during development. Make sure this is set to `true` while working on this tutorial:
+    ```hocon
+    webforj.debug = true
+    ```
+
+For more details on additional configuration options, see the [Configuration Guide](../../configuration/overview).
 :::
-
-For now, focus on the following key configuration properties:
-
-#### App entry `(webforj.entry)`
-
-This property specifies the main entry point of the app by defining the fully qualified name of the class that extends the `App` class. 
-
-If the `webforj.entry` property isn't set webforJ will automatically scan the classpath for classes extending `App`. If multiple such classes are found, an error occurs. Avoid ambiguity by explicitly setting this property in your configuration.
-
-Set the entry point is set to `com.webforj.demos.DemoApplication`. This ensures the framework knows which class to initialize as the app when it starts.
-
-```hocon
-webforj.entry = com.webforj.demos.DemoApplication
-```
-
-#### Debug mode `(webforj.debug)`
-
-Setting `webforj.debug` to true enables debug mode, which provides insights during development:
-    - Detailed logs are printed to the console.
-    - Exceptions and errors are displayed directly in the browser for easier troubleshooting.
-
-:::info Using debug mode
-Debug mode should only be enabled in development environments, as it may expose sensitive information.
-:::
-
-Ensure that debug mode is enabled in this project, to ensure that errors are visible while working through the tutorial:
-
-```hocon
-webforj.debug = true
-```
 
 ### Overriding the `run()` method
 
@@ -88,14 +66,22 @@ in the [Routing Article](../../routing/overview).
 
 For now, add a logging statement, which can be viewed in the browser console, to the method.
 
-```java
+```java title="DemoApplication.java"
 public class DemoApplication extends App {
-    @Override
-    public void run() throws WebforjException {
-        console().log("Demo Application Running");
-    }
+  @Override
+  public void run() throws WebforjException {
+      console().log("Demo Application Running");
+  }
 }
 ```
+
+This should output a simple "Demo Application Running" into your browser console.
+
+## Adding components 
+
+In webforJ, components are the building blocks of your app’s user interface. These components represent discrete pieces of your app's UI, such as buttons, text fields, dialogs, or tables. 
+
+You can think of a UI as a tree of components, with a Frame serving as the root. Each component added to the frame becomes a branch or leaf in this tree, contributing to the overall structure and behavior of your app.
 
 ### App `Frame`
 
@@ -105,38 +91,28 @@ Create a `Frame` within the `run()` method - later on, components will be added 
 
 <!-- Any other content here I'm missing? -->
 
-```java
+```java title="DemoApplication.java"
 public class DemoApplication extends App {
-    @Override
-    public void run() throws WebforjException {
-        Frame mainFrame = new Frame();
-        console().log("Demo Application Running");
-    }
+  @Override
+  public void run() throws WebforjException {
+      Frame mainFrame = new Frame();
+      console().log("Demo Application Running");
+  }
 }
 ```
 
-## Adding components 
-
-In webforJ, components are the building blocks of your app’s user interface. These components represent discrete pieces of your app's UI, such as buttons, text fields, dialogs, or tables. 
-
-You can think of a UI as a tree of components, with a Frame serving as the root. Each component added to the frame becomes a branch or leaf in this tree, contributing to the overall structure and behavior of your app.
-
 ### Server and client side components
 
-Each of these [server-side component](../../components/overview) created in webforJ has a corresponding [client-side web component](../../client-components/overview). These client-side components are web components, implemented by webforJ's design system called DWC. When viewing information about the various components available in the webforJ documentation, each page will like the relevant information needed to style the client components.
-
-- **Server-Side Logic**: Components like `Button` and `Dialog` define behavior, such as events, and interact with the backend logic.
-- **Client-Side Rendering**: Each component has a matching web component on the frontend, like `dwc-button` and `dwc-dialog`. These are implemented using HTML 5 web component standards which ensure maintainability agnostic of a specific web framework.
-- **Separation of Concerns**: This separation ensures that your server-side Java logic is easy to maintain, while the client-side remains efficient and lightweight.
+Each server-side component in webforJ has a matching client-side web component implemented by the DWC design system. Server-side components handle logic and backend interactions, while client-side components like `dwc-button` and `dwc-dialog` manage frontend rendering and styling.
 
 :::tip Composite components
 
-Alongside the core components provided by webforJ, you can design custom composite components by grouping multiple elements into a single reusable unit. This concept will be covered in this step of the tutorial. More information is available in the [Composite Article](../../building-ui/composite-components.md)
+Alongside the core components provided by webforJ, you can design custom composite components by grouping multiple elements into a single reusable unit. This concept will be covered in this step of the tutorial. More information is available in the [Composite Article](../../building-ui/composite-components)
 :::
 
 Components need to be added to a container class that implements the `HasComponents` interface. The `Frame` is one such class - for this step, add a `Paragraph` and a `Button` to the `Frame`, which will render in the UI in the browser:
 
-```java
+```java title="DemoApplication.java"
 public class DemoApplication extends App {
   Paragraph demo = new Paragraph("Demo Application!");
   Button btn = new Button("Info");
@@ -150,6 +126,8 @@ public class DemoApplication extends App {
   }
 }
 ```
+
+Running this should give you a simple styled button enabling a message popping up saying "This is a demo!"
 
 ## Styling with CSS
 
@@ -165,52 +143,21 @@ You can dynamically add or remove class names to components using the `addClassN
 mainFrame.addClassName("mainFrame");
 ```
 
-### Injecting CSS files
+### Attaching CSS files
 
-To style your app, you can inject CSS files into your project using annotations, along with other methods [outlined here](../../styling/getting-started#using-custom-css). webforJ supports two main annotations for this purpose:
+To style your app, you can inject CSS files into your project using annotations, along with other methods [outlined here](../../styling/getting-started#using-custom-css). webforJ
 
-### `@InlineStyleSheet`
-Use the `@InlineStyleSheet` annotation to include CSS files located in your project’s context directory. The framework maps the path you specify to the context of your app. When the app runs, the web server serves this file using the `/static` route within the `resources` directory, allowing it to be accessed in the browser.
+The primary purpose of the `@StyleSheet` annotation is to include styles located in the resources/static directory. It automatically builds a URL for the specified file and injects it into the DOM, ensuring the styles are applied to your app. Note that files outside the static directory aren't accessible.
 
-:::tip Configuring the `/static` directory
-Specify the directory from which static files should be served. Use the `<webApp>` in the `pom.xml` configuration to point to your static directory.
-:::
-
-The following code would import a style sheet found in the following directory structure:
-```
-resources/
-  static/
-    styles/
-      app-styles.css
-    images/
-```
-
-```java
-@InlineStyleSheet("context://styles/styles.css")
+```java title="DemoApplication.java"
+@StyleSheet("ws://styles/library.css")
 public class DemoApplication extends App {
-    @Override
-    public void run() {
-        // App logic here
-    }
+  @Override
+  public void run() {
+      // App logic here
+  }
 }
 ```
-
-### `@StyleSheet`
-Use the `@StyleSheet` annotation to include CSS files hosted at external URLs. This is useful for integrating third-party stylesheets. When referencing external URLs, the framework fetches and applies the style sheet directly from the specified URL. Make sure the resource is accessible and uses the correct protocol (http or https).
-
-```java
-@StyleSheet("https://cdn.example.com/styles/library.css")
-public class DemoApplication extends App {
-    @Override
-    public void run() {
-        // App logic here
-    }
-}
-```
-
-It's recommended to use this annotation in combination with the `webserver` protocol to inject your custom stylesheets into an app. 
-
-The `webserver` protocol in the context of webforJ refers to the mechanism by which the framework’s built-in or external web server serves static assets and handles requests for app resources like stylesheets, scripts, images, and API endpoints.
 
 ### Sample CSS code
 
@@ -229,7 +176,7 @@ Complete the last part of this step by creating a CSS file in your project at `r
 
 Once this is done, the following annotation should be added to your `App` class:
 
-```java
+```java title="DemoApplication.java"
 @StyleSheet("ws://css/demoApplication.css")
 @AppTitle("Demo Step 1")
 public class DemoApplication extends App {

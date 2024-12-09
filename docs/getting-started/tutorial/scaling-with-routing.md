@@ -14,13 +14,18 @@ The app created in the [previous step](./working-with-data) will have a robust r
 ## Routing
 Routing allows your app to manage multiple views and scale effectively. This step focuses on changing the `App` class, creating files for the views, and configuring routes to enable smooth navigation between different parts of your app.
 
+Instead of placing all logic within the `run()` method of `App`, views like `DemoView` and `FormView` are implemented as separate classes. This approach more closely aligns with standard Java practices.
+
+- **DemoView**: Handles displaying the table and navigating to `FormView`.
+- **FormView**: Manages adding and editing customer data.
+
 ### Changing the `App` class
 
 To enable routing in your app, update the `App` class with the `@Routify` annotation. This tells webforJ to activate routing and scan specified packages for route-enabled views.
 
-```java title="DemoApplication.java"
+```java title="DemoApplication.java" {1}
 @Routify(packages = "com.webforj.demos.views", debug = true)
-public class DemoApplication extends App {
+public class DemoApplication extends App {  
 }
 ```
 
@@ -31,13 +36,28 @@ public class DemoApplication extends App {
 
 Once routing has been enabled, create separate Java files for each view, the app will contain. In this case, `DemoView.java` and `FormView.java`. Assign unique routes to these views using the `@Route` annotation. This ensures that each view is accessible through a specific URL.
 
-There are two suffixes webforJ looks for by default which are *View and *Layout. Using either of these suffixes at the end of a classname of a component associated with a route is advised as best practice.
+When the `@Route` annotation is left blank above a class with one of these suffixes, webforJ automatically assigns the class's name without the suffix as the route. For example, `DemoView` would use the route `/demo` by default. Since in this case `DemoView` is supposed to be the default route tho you will assign it a route.
 
-When the `@Route` annotation is left blank above a class with one of these suffixes, webforJ automatically assigns the class's name without the suffix as the route. For example, `DemoView` would use the route `/demo` by default.
+The `/` route serves as the default entry point for your app. Assigning this route to a view ensures that it's the first page users see when accessing the app. In most cases, a dashboard or summary view is assigned to `/`.
 
-See this in `FormView.java`:
+```java title="DemoView.java" {1}
+@Route("/")
+@FrameTitle("Demo")
+public class DemoView extends Composite<Div> {
+    // DemoView logic
+}
+```
 
-```java title="FormView.java"
+:::info 
+More information regarding the different route types is available [here](../../routing/defining-routes).
+:::
+
+For the `FormView` the route `customer/:id?` uses an optional parameter `id` to determine the mode of the `FormView`. 
+
+- **Add Mode**: When `id` isn't provided, `FormView` initializes with a blank form for adding new customer data.
+- **Edit Mode**: When `id` is provided, `FormView` fetches the corresponding customer’s data using `Service` and pre-fills the form, allowing edits to be made to the existing entry.
+
+```java title="FormView.java" {1}
 @Route("customer/:id?")
 @FrameTitle("Customer Form")
 public class FormView extends Composite<Div> implements DidEnterObserver {
@@ -45,12 +65,9 @@ public class FormView extends Composite<Div> implements DidEnterObserver {
 }
 ```
 
-The `/` route serves as the default entry point for your app. Assigning this route to a view ensures that it's the first page users see when accessing the app. In most cases, a dashboard or summary view is assigned to `/`.
-
-The route `customer/:id?` uses an optional parameter `id` to determine the mode of the `FormView`. 
-
-- **Add Mode**: When `id` isn't provided, `FormView` initializes with a blank form for adding new customer data.
-- **Edit Mode**: When `id` is provided, `FormView` fetches the corresponding customer’s data using `Service` and pre-fills the form, allowing edits to be made to the existing entry.
+:::info 
+More information regarding the different ways to implement those route patterns is available [here](../../routing/route-patterns).
+:::
 
 ## Using `Composite` components to display pages
 
@@ -60,27 +77,20 @@ For example, `DemoView` extends `Composite<Div>` instead of directly extending `
 
 ```java title="DemoView.java"
 public class DemoView extends Composite<Div> {
-    private Table<Customer> table = new Table<>();
-    private Button add = new Button("Add Customer", ButtonTheme.PRIMARY);
+  private Table<Customer> table = new Table<>();
+  private Button add = new Button("Add Customer", ButtonTheme.PRIMARY);  
 
-    public DemoView() {
-        setupLayout();
-    }
+  public DemoView() {
+      setupLayout();
+  }
 
-    private void setupLayout() {
-        FlexLayout layout = FlexLayout.create(table, add)
-            .vertical().contentAlign().center().build().setPadding("var(--dwc-space-l)");
-        getBoundComponent().add(layout);
-    }
+  private void setupLayout() {
+      FlexLayout layout = FlexLayout.create(table, add)
+          .vertical().contentAlign().center().build().setPadding("var(--dwc-space-l)");
+      getBoundComponent().add(layout);
+  }
 }
 ```
-
-### How to implement pages outside of the `run` method
-
-Instead of placing all logic within the `run()` method of `App`, views like `DemoView` and `FormView` are implemented as separate classes. This approach more closely aligns with standard Java practices.
-
-- **DemoView**: Handles displaying the table and navigating to `FormView`.
-- **FormView**: Manages adding and editing customer data.
 
 ## Connecting the routes
 
@@ -93,28 +103,37 @@ The `Button` component triggers a navigation event to transition from one view t
 
 ```java title="DemoView.java"
 private Button add = new Button("Add Customer", ButtonTheme.PRIMARY,
-    e -> Router.getCurrent().navigate(FormView.class));
+  e -> Router.getCurrent().navigate(FormView.class));
 ```
 
-For more details on navigation, see the [Routing Overview](../../routing/overview).
+:::info
+The Router class uses the given class to resolve the route and build an URL to navigate to. All browser navigation is then handled so that history management
+and view initialization is of no concern.
+For more details on navigation, see the [Route Navigation Article](../../routing/route-navigation).
+:::
 
 ### Table editing
 
-Item clicks in `DemoView` are handled by the `TableItemClickEvent<Customer>` listener, which passes the selected customer’s `id` to the `FormView`:
+Item clicks in the table are handled by the `TableItemClickEvent<Customer>` listener. The event contains the `id` of the clicked customer, which it passes to the `FormView`
+by utilizing the `navigate()` method with a `ParametersBag`:
 
-```java title="DemoView.java"
+```java title="DemoView.java" 
 private void editCustomer(TableItemClickEvent<Customer> e) {
-    Router.getCurrent().navigate(FormView.class,
-        ParametersBag.of("id=" + e.getItemKey()));
+  Router.getCurrent().navigate(FormView.class,
+    ParametersBag.of("id=" + e.getItemKey()));
 }
 ```
 
-This enables a smooth transition to edit mode, where customer data is pre-filled in the form. For more on event handling, see the [Table Documentation](../../components/table).
+### Handling initialization with `onDidEnter`
 
+The `onDidEnter` method in webforJ is part of the routing lifecycle and is triggered when a view becomes active. 
 
-### Handling Initialization with `onDidEnter`
+When the `Router` navigates to a view, `onDidEnter` is triggered as part of the lifecycle to:
+- **Load Data**: Initialize or fetch data required for the view based on route parameters.
+- **Set Up the View**: Update UI elements dynamically based on the context.
+- **React to State Changes**: Perform actions that depend on the view being active, such as resetting forms or highlighting components.
 
-The `onDidEnter` method in `FormView` is triggered when the view is loaded. It checks for the presence of an `id` parameter in the route and adjusts the form's behavior accordingly:
+The `onDidEnter` method in `FormView` checks for the presence of an `id` parameter in the route and adjusts the form's behavior accordingly:
 
 - **Edit Mode**: If an `id` is provided, the method fetches the corresponding customer’s data using `Service` and pre-fills the form fields. The `Submit` button is configured to update the existing entry.
 - **Add Mode**: If no `id` is present, the form remains blank, and the `Submit` button is configured to create a new customer.
@@ -134,23 +153,50 @@ The `onDidEnter` method in `FormView` is triggered when the view is loaded. It c
 ```
 
 
-### Service Integration
+### Submitting data 
 
-The `Service` class you already set up in the previous step of this tutorial
-now needs to be enhanced with additional methods, allowing you to add and edit customers. Since you are using the `Repository` for data they're fairly simple.
+When you are done editing the data, it is necessary to submit it to the service handling the repository. Therefore the 
+`Service` class you already set up in the previous step of this tutorial
+now needs to be enhanced with additional methods, allowing you to add and edit customers. 
+
+Since you are using the `Repository` for data they're fairly simple.
 
 ```java title="Service.java"
 public void addCustomer(Customer newCustomer) {
-    data.add(newCustomer);
-    repository.commit(newCustomer);
+  data.add(newCustomer);
+  repository.commit(newCustomer);
 }
 
 public void editCustomer(Customer editedCustomer) {
-    repository.commit(editedCustomer);
+  repository.commit(editedCustomer);
 }
 ```
 
----
+### Using `commit()`
+
+The `commit()` method in the `Repository` class keeps your app’s data and UI in sync. It provides a mechanism to refresh the data stored in the `Repository`, ensuring the latest state is reflected in the app.
+
+This method can be used in two ways:
+
+1) **Refreshing all data:**
+  Calling `commit()` without arguments reloads all entities from the repository's underlying data source, such as a database or a service class.
+
+2) **Refreshing a single sntity:**
+  Calling `commit(T entity)` reloads a specific entity, ensuring its state matches the latest data source changes.
+
+Call `commit()` when data in the `Repository` changes, such as after adding or modifying entities in the data source.
+
+```java
+// Refresh all customer data in the repository
+customerRepository.commit();
+
+// Refresh a single customer entity
+Customer updatedCustomer = ...; // Updated from an external source
+customerRepository.commit(updatedCustomer);
+
+```
+
+
 
 With your changes you now have achieved the following goals:
 

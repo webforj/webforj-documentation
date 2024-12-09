@@ -9,9 +9,9 @@ Each step in the tutorial will result in a program that compiles into a WAR file
 ## Tutorial app features
 
  - Working with data in a table.
- - Using the objecttable and asset management.
+ - Using the [`ObjectTable`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/environment/ObjectTable.html) and asset management.
  - Routing and navigation
- - Databinding and validation
+ - [Data Bindings](../../data-binding/overview) and validation
 
 ## Prerequisites
 
@@ -19,8 +19,8 @@ To get the most out of this tutorial, it’s assumed that you have a basic under
 
 The following tools/resources should be present on your development machine
 
-- Java 17 or higher
-- Maven
+- [Java 17 or higher](../../installation/local.md#java)
+- [Maven](../../installation/local.md#maven)
 - A Java IDE
 - A web browser
 <!-- vale off -->

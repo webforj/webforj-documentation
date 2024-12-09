@@ -28,6 +28,9 @@ webforj-demo-application/
   step-2/
   step-3/
   step-4/
+  LICENSE
+  Readme.md
+  .gitignore
 ```
 
 ### Running the app
