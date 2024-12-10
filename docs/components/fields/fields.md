@@ -34,7 +34,7 @@ Field components contain built-in visual validation to notify users when a requi
 
 By using `setSpellCheck(true)`, you can allow the browser or user agent to verify the spelling of the text entered by the user and identify any errors.
 
-### Slots
+### Prefix and suffix
 
 Slots provide flexible options for improving the capability of field components. You can have icons, labels, loading spinners, clear/reset capability, avatar/profile pictures, and other beneficial components nested within a field to further clarify intended meaning to users.
 Fields have two slots: the `prefix` and `suffix` slots. Use the `setPrefixComponent()` and `setSuffixComponent()` methods to insert various components before and after the displayed option within a field. Here's an example using the `TextField` field:
