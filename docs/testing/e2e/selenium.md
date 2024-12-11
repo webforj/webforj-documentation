@@ -6,20 +6,24 @@ title: Testing with Selenium
 This documentation outlines the process for testing a webforJ apps using Selenium, specifically focusing on the `HelloWorldView` from
 the `webforj-archetype-hello-world`.
 
+:::info App Basics
+To learn more about the `webforj-archetype-hello-world`, refer to the [App Basics Introduction](../../introduction/basics) section.
+:::
+
 ## Prerequisites
 
 Before running the Selenium tests, ensure the following:
 - webforJ app is correctly set up and running on your local server.
 - You have installed:
   - Selenium Java bindings.
-  - A compatible WebDriver for your browser (e.g., `ChromeDriver` or `GeckoDriver`).
+  - A compatible WebDriver for your browser.
   - Maven for project dependencies.
 
 ## Maven configuration
 
 Add the necessary dependencies in your `pom.xml` for Selenium and other testing libraries:
 
-```xml
+```xml title="pom.xml"
 <dependencies>
   <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
@@ -41,9 +45,9 @@ Add the necessary dependencies in your `pom.xml` for Selenium and other testing 
 
 ## Testing example: `HelloWorldView`
 
-The following code demonstrates a Selenium-based test for the `HelloWorldView` component.
+The following code demonstrates a Selenium based test for the `HelloWorldView` component.
 
-```java
+```java title="HelloWorldViewTest.java"
 package com.example.views;
 
 import org.junit.jupiter.api.AfterEach;
@@ -107,10 +111,10 @@ class HelloWorldViewTest {
 3. **Interact with Elements**:
    - Locate elements using `By.tagName`, `By.id`, or other Selenium locators.
    - Verify expected behaviors like button clicks or text changes.
-
-    :::info
-    Because webforJ produces a single-page web app, Selenium isn’t aware of DOM manipulation after the initial page has been loaded. You can use Selenium’s WebDriverWait API to wait until the DOM has been compiled.
-    :::
+    
+  :::info
+  Because webforJ produces a single-page web app, Selenium isn’t aware of DOM manipulation after the initial page has been loaded. You can use Selenium’s [WebDriverWait API](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/WebDriverWait.html) to wait until the DOM has been compiled.
+  :::
 
 4. **Teardown**:
    - Quit the WebDriver session to release resources.

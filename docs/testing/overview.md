@@ -12,23 +12,30 @@ hide_table_of_contents: true
   `}</style>
 </Head>
 
+# webforJ Testing
 
-# Testing in webforJ
-
-Testing in webforJ applications combines traditional Java unit testing with end-to-end (E2E) testing to ensure robust functionality and user experience.
+Testing in webforJ apps involves a combination of unit and end-to-end (E2E) testing to ensure a stable and reliable app. Each type of testing serves a distinct purpose in maintaining app quality.
 
 ## Unit testing
 
-Unit tests in webforJ follow standard Java practices using frameworks like JUnit. These tests focus on backend logic and individual components, ensuring each unit functions as expected.
+Unit testing focuses on verifying individual components or backend logic in isolation. By following standard Java testing practices, such as using [JUnit](https://junit.org/junit5/), developers can efficiently validate specific app logic and ensure that each "unit" performs as expected.
 
-## End-to-End testing
+## End-to-End (E2E) testing
 
-Since webforJ generates dynamic, single-page web applications, end-to-end testing is essential for validating user interactions and UI behavior. Tools like Selenium and Playwright allow you to:
-- Automate browser interactions (e.g., button clicks, form submissions).
-- Verify the rendering and functionality of dynamic components.
-- Ensure consistent behavior across different browsers.
+End-to-end testing is important for validating the user experience in webforJ apps, which generate dynamic, single-page web interfaces. These tests simulate user interactions and verify the features of the entire app.
 
-By combining unit and E2E testing, you can build reliable, well-tested webforJ applications.
+Using tools like [**Selenium**](https://www.selenium.dev/) and [**Playwright**](https://playwright.dev/java/docs/intro), you can:
+
+- Automate browser interactions, such as button clicks and form submissions.
+- Verify consistent rendering and interactivity of dynamic UI components.
+- Ensure behavior consistency across different browsers and devices.
+
+## Combining testing strategies
+
+By combining unit and E2E testing:
+
+1. **Isolate Issues**: Detect and resolve component-level bugs early with unit testing.
+2. **Ensure Reliability**: Validate complete user journeys and system integrations with E2E testing.
 
 ## Topics
 

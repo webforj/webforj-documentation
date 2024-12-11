@@ -5,9 +5,13 @@ title: Testing with Playwright
 
 This documentation outlines the process for testing webforJ applications using Playwright, specifically focusing on the `HelloWorldView` from the `webforj-archetype-hello-world`.
 
+:::info App Basics
+To learn more about the `webforj-archetype-hello-world`, refer to the [App Basics Introduction](../../introduction/basics) section.
+:::
+
 ## Prerequisites
 
-Before running the Playwright tests, ensure the following:
+Before writing and running the Playwright tests, ensure the following:
 - The webforJ app is correctly set up and running on your local server.
 - You have installed:
   - Playwright Java bindings.
@@ -16,9 +20,9 @@ Before running the Playwright tests, ensure the following:
 
 ## Maven configuration
 
-Add the necessary dependencies in your `pom.xml` for Playwright and other testing libraries:
+Add the necessary dependencies in your `pom.xml` for Playwright:
 
-```xml
+```xml title="pom.xml"
 <dependencies>
   <dependency>
     <groupId>com.microsoft.playwright</groupId>
@@ -36,9 +40,9 @@ Add the necessary dependencies in your `pom.xml` for Playwright and other testin
 
 ## Testing example: `HelloWorldView`
 
-The following code demonstrates a Playwright-based test for the `HelloWorldView` component.
+The following code demonstrates a Playwright based test for the `HelloWorldView` component.
 
-```java
+```java title="HelloWorldViewTest.java"
 package com.example.views;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
