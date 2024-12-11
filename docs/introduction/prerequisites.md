@@ -5,7 +5,7 @@ sidebar_position: 1
 
 ## Setting up your development environment
 
-Getting started with webforJ is simple, because there are only a couple prerequisites. Use this guide to set up your development environment with the essential tools you will need to get up and running with webforJ. 
+Getting started with webforJ is simple, because there are only a couple of prerequisites. Use this guide to set up your development environment with the essential tools you will need to get up and running with webforJ. 
 
 <!-- vale off -->
 ## Java Development Kit (JDK) 17 or higher
@@ -13,16 +13,16 @@ Getting started with webforJ is simple, because there are only a couple prerequi
 <!-- vale on -->
 
 A Java Development Kit (JDK) is the most important requirement for developing with webforJ, providing the necessary tools to compile, run, and manage Java apps.
-WebforJ requires Java 17 or higher to ensure compatibility with webforJ and access to the latest features and security updates of the Java ecosystem. WebforJ is compatible with official Oracle JDKs and the open-source Eclipse Temurin JDKs.
+WebforJ requires Java 17 or higher to ensure compatibility with webforJ and access to the latest features and security updates of the Java ecosystem. WebforJ is compatible with official Oracle JDKs and the open source Eclipse Temurin JDKs.
 <!-- vale off -->
 ### JDK installation links:
 <!-- vale on -->
-- Official Oracle JDKs can be found at Oracle's [Java Downloads](https://www.oracle.com/java/technologies/downloads/) page. 
+- Official Oracle JDKs can be found on Oracle's [Java Downloads](https://www.oracle.com/java/technologies/downloads/) page. 
   - Select Java version 17 or higher.
   - Click the tab for Linux, macOS, or Windows.
   - Click the link that corresponds to your computer's architecture. 
   - See Oracle's [JDK Installation Guide](https://docs.oracle.com/en/java/javase/23/install/overview-jdk-installation.html) for complete information on installing an Oracle JDK.
-- Open-source JDKs can be found at Adoptium's [Eclipse Temurin™ Latest Releases](https://adoptium.net/temurin/releases/) page. 
+- Open source JDKs can be found on Adoptium's [Eclipse Temurin™ Latest Releases](https://adoptium.net/temurin/releases/) page. 
   - Use the dropdown menus to select the operating system, architecture, package type, and JDK version 17 or higher. 
   - Click the link in the table for the archive type you wish to download.
   - See Adoptium's [Installation Guide](https://adoptium.net/installation/) for complete information on installing an Eclipse Temurin JDK.
