@@ -10,8 +10,8 @@ Each step in the tutorial will result in a program that compiles into a WAR file
 
  - Working with data in a table.
  - Using the [`ObjectTable`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/environment/ObjectTable.html) and asset management.
- - Routing and navigation
- - [Data Bindings](../../data-binding/overview) and validation
+ - [Routing](../../routing/overview) and [navigation](../../routing/route-navigation)
+ - [Data Bindings](../../data-binding/overview) and [validation](../../data-binding/validation/overview)
 
 ## Prerequisites
 
