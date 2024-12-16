@@ -12,3 +12,5 @@ Auto-Detection
 CLI
 POM
 disabled
+E2E
+End-to-End
