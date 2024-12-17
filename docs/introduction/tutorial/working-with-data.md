@@ -7,7 +7,7 @@ This step focuses on adding data management and display capabilities to the demo
 
 It will outline creating a `Customer` model class, and integrating it with a `Service` class to access and manage the necessary data using the implementation of a repository. Then, it will detail how to use the retrieved data to implement a `Table` component in the app, displaying customer information in an interactive and structured format.
 
-By the end of this step, the app created in the [previous step](./basic-app) will display a table with the created data that can then be expanded on in the following steps. To run the app:
+By the end of this step, the app created in the [previous step](./creating-a-basic-app) will display a table with the created data that can then be expanded on in the following steps. To run the app:
 
 - Go to the `2-step-2` directory
 - Run `mvn jetty:run`
@@ -128,7 +128,7 @@ public class Service {
 Now that the data needed has been properly created via the `Customer` class, and can is returned as a `Repository` via the `Service` class, the final task in this step is to integrate the `Table` component into the app to display customer data.
 
 :::tip More about the `Table`
-For a more detailed overview of the various features of behaviors of the `Table`, see [this article](../../components/table/table).
+For a more detailed overview of the various features of behaviors of the `Table`, see [this article](../../components/table).
 :::
 
 The `Table` provides a dynamic and flexible way to display structured data in your app. It's designed to integrate with the `Repository` class, enabling features like data querying, pagination, and efficient updates. A `Table` is highly configurable, allowing you to define columns, control its appearance, and bind it to data repositories with minimal effort.
