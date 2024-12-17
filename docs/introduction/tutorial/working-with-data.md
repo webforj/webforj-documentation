@@ -3,7 +3,7 @@ title: Working With Data
 sidebar_position: 3
 ---
 
-This step focuses on adding data management and display capabilities to the demo app. To do this, dummy data about various `Customer` objects will be created, and the app will be updated to handle this data and display it in a [`Table`](../../components/table/table) added to the previous app.
+This step focuses on adding data management and display capabilities to the demo app. To do this, dummy data about various `Customer` objects will be created, and the app will be updated to handle this data and display it in a [`Table`](../../components/table) added to the previous app.
 
 It will outline creating a `Customer` model class, and integrating it with a `Service` class to access and manage the necessary data using the implementation of a repository. Then, it will detail how to use the retrieved data to implement a `Table` component in the app, displaying customer information in an interactive and structured format.
 
