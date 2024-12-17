@@ -57,16 +57,47 @@ To optimize performance, instead of triggering a server-to-client message each t
 - **Removing all items:**
    - You can remove all items from the list using <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#removeAll()' code="true">removeAll()</JavadocLink>.
 
+### Selecting items
+
+All of the list types implement the `SelectableList` interface. This interface allows multiple different ways of selecting the current `ListItem`.
+
+#### With a given `ListItem`
+
+<JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#select(com.webforj.component.list.ListItem)' code="true">select(ListItem item)</JavadocLink> takes a `ListItem` as parameter to select.
+
+```java {4}
+List demoList = new List();
+ListItem demoItem = new ListItem("demo","Demo Item");
+demoList.add(demoItem);
+demoList.select(demoItem);
+```
+
+#### With a given key of a `ListItem`
+
+<JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#selectKey(java.lang.Object)' code="true">selectKey(Object key)</JavadocLink> takes a key to a `ListItem` as parameter to select.
+
+```java {3}
+List demoList = new List();
+demoList.add("demo","Demo Item");
+demoList.selectKey("demo");
+```
+
+#### With a given index of a `ListItem`
+
+<JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#selectIndex(int)' code="true">selectIndex(int index)</JavadocLink> takes an index to a `ListItem`as a parameter to select.
+
+```java {3}
+List demoList = new List();
+demoList.add("demo","Demo Item");
+demoList.selectKey(0);
+```
+
 ### Other list operations
 
 - **Accessing and updating items:**
 
    - To access items by key or index, use <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#getByKey(java.lang.Object)' code="true">getByKey(Object key)</JavadocLink> or <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#getByIndex(int)' code="true">getByIndex(int index)</JavadocLink>.
    - You can update the text of an item using the <JavadocLink type="foundation" location="com/webforj/component/list/ListItem" suffix='#setText(java.lang.String)' code="true">setText(String text)</JavadocLink> method within the <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> class.
-
-- **Selecting an item:** 
-
-   - To select an item within the list, you can use methods such as <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#select(com.webforj.component.list.ListItem)' code="true">select(ListItem item)</JavadocLink> or <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#selectKey(java.lang.Object)' code="true">selectKey(Object key)</JavadocLink>.
 
 - **Retrieving information about the list:**
    - You can get the size of the list using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#size()' code="true">size()</JavadocLink> method.
