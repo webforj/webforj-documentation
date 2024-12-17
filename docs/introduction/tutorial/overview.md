@@ -28,7 +28,7 @@ The following tools/resources should be present on your development machine
 <!-- vale on -->
 
 :::tip webforJ Prerequisites
-See [this article](../prerequisites) for a more detailed overview of required tools outlined above.
+See [this article](../prerequisites) for a more detailed overview of the required tools.
 :::
 
 ## Sections
