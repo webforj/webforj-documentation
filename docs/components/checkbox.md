@@ -61,7 +61,6 @@ The `CheckBox` component supports indeterminism, which is a UI pattern commonly 
 path='https://demo.webforj.com/webapp/controlsamples/checkboxindeterminate?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/checkbox/CheckboxIndeterminateView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/checkbox/Indeterminate.txt'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/checkbox/checkboxIndeterminate.css' 
 height = '150px'
 />
 
@@ -76,8 +75,7 @@ Expanses are supported by use of the `Expanse` enum class. Below are the expanse
 path='https://demo.webforj.com/webapp/controlsamples/checkboxexpanse?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/checkbox/CheckboxExpanseView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/checkbox/Expanse.txt'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/checkbox/checkboxExpanse.css' 
-height = '100px'
+height = '150px'
 />
 
 <br/>
