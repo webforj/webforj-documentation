@@ -15,3 +15,5 @@ disabled
 webforJ
 webforj
 UUID
+E2E
+End-to-End
