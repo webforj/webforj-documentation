@@ -1,5 +1,5 @@
 ---
-title: Validating and Binding Data 
+title: Validating and Binding Data
 sidebar_position: 5
 ---
 
@@ -9,7 +9,7 @@ Validation, in this context, ensures that the data entered into the form adheres
 
 For more information on data binding reference [this article.](../../data-binding/overview)
 
-<img src={require('@site/static/img/tutorial_images/step4.png').default} alt="Screenshot of first app" className="tutorial-image" />
+![Data binding and validation screenshot](../../../static/img/tutorial_images/step4.png)
 
 ### Binding the fields
 
@@ -23,9 +23,9 @@ context = BindingContext.of(this, Customer.class, true);
 `BindingContext.of(this, Customer.class, true)` initializes the binding context for the `Customer` class. The third parameter, `true`, enables [jakarta validation](https://beanvalidation.org/).
 
 :::info
-This implementation uses autobinding as described in the [Data Binding Article](../../data-binding/automatic-binding). This works if the fields in the data model `Customer` are named the same as the corresponding fields in the `FormView`. 
+This implementation uses auto-binding as described in the [Data Binding Article](../../data-binding/automatic-binding). This works if the fields in the data model `Customer` are named the same as the corresponding fields in the `FormView`.
 
-Should the fields not be named the same you can add the `UseProperty` annotation in the form over the field you want to bind so they know which datafields to refer to.
+Should the fields not be named the same you can add the `UseProperty` annotation in the form over the field you want to bind so they know which data fields to refer to.
 :::
 
 ### Data binding with `onDidEnter()`
@@ -49,9 +49,9 @@ The `context.read` method in webforJ's data binding system synchronizes the fiel
 
 Validation ensures that the data entered into the form adheres to specified rules, improving data quality and preventing invalid submissions. With data binding, validation no longer needs to be manually implemented but instead simply configured, allowing real-time feedback on user inputs.
 
-### Defining valdiation rules
+### Defining validation rules
 
-Using [Jakarta](https://beanvalidation.org) and regular expressions, you can enforce a multitude of rules on a field. Often used examples would be ensuring the field 
+Using [Jakarta](https://beanvalidation.org) and regular expressions, you can enforce a multitude of rules on a field. Often used examples would be ensuring the field
 isn't empty or null, or follows a certain pattern.
 Through annotations in the customer class you can give jakarta validation parameters to the field.
 
@@ -80,20 +80,20 @@ The `submitCustomer()` method now validates data using the `BindingContext` befo
 - **Add Mode**: If no `id` is provided, the form is in add mode. The validated data is written to the `Customer` model and added to the repository via `Service.getCurrent().addCustomer(customer)`.
 - **Edit Mode**: If an `id` is present, the method retrieves the corresponding customer data, updates it with validated inputs, and commits the changes to the repository.
 
-Calling `context.write(customer)` will return an instance of a `ValidationResult`. This class indicates whether or not the validation was successful, and stores any messages associated with this result. 
+Calling `context.write(customer)` will return an instance of a `ValidationResult`. This class indicates whether or not the validation was successful, and stores any messages associated with this result.
 
-In this code you make sure this result was valid before adding a customer. This ensures that all changes are validated and automatically applied to the model before being processed.her.)
+This code ensures that all changes are validated and automatically applied to the model before being adding a new or editing an existing `Customer`.
 
 ```java title="FormView.java"
 private void submitCustomer() {
-    ValidationResult results = context.write(customer);
-    if (results.isValid()) {
-        if (customerId.isEmpty()) {
-            Service.getCurrent().addCustomer(customer);
-        }
-        Router.getCurrent().navigate(DemoView.class);
+  ValidationResult results = context.write(customer);
+  if (results.isValid()) {
+    if (customerId.isEmpty()) {
+      Service.getCurrent().addCustomer(customer);
     }
+    Router.getCurrent().navigate(DemoView.class);
+  }
 }
 ```
 
-By completing this step, the app now supports data binding and validation, ensuring that form inputs are synchronized with the model and adhere to predefined rules. 
+By completing this step, the app now supports data binding and validation, ensuring that form inputs are synchronized with the model and adhere to predefined rules.

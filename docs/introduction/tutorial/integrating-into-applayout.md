@@ -1,6 +1,7 @@
 ---
 title: Integrating the AppLayout
 sidebar_position: 6
+draft: true
 ---
 
 In this step, you will integrate the features implemented in previous steps, such as routing and views, into a cohesive app layout. This structure will provide a unified navigation system and dynamic content areas.

@@ -5,14 +5,20 @@ sidebar_position: 4
 
 This step focuses on implementing routing to enhance the scalability and organization of the app structure. To achieve this, the app will be updated to handle multiple views, allowing navigation between different functionalities such as editing and creating customer entries. It will outline creating views for these functionalities, using components like `Composite` to build modular and reusable layouts.
 
-The app created in the [previous step](./working-with-data) will have a robust routing setup that supports multiple views, enabling users to manage customer data more effectively while maintaining a clean and scalable codebase.
+The app created in the [previous step](./working-with-data) will have a routing setup that supports multiple views, enabling users to manage customer data more effectively while maintaining a clean and scalable codebase.
 
-<img src={require('@site/static/img/tutorial_images/step3-1.png').default} alt="Screenshot of first app" className="tutorial-image" />
+![Routing app first frame](../../../static/img/tutorial_images/step3-1.png)
+<br />
 
-<img src={require('@site/static/img/tutorial_images/step3-2.png').default} alt="Screenshot of first app" className="tutorial-image" />
+![Routing app second frame](../../../static/img/tutorial_images/step3-2.png)
 
 ## Routing
-Routing allows your app to manage multiple views and scale effectively. This step focuses on changing the `App` class, creating files for the views, and configuring routes to enable smooth navigation between different parts of your app.
+
+[Routing](../../routing/overview) is the mechanism that allows your app to manage navigation between different views or pages. Instead of keeping all logic and behavior in a single location, routing enables you to break your app into smaller, focused component. 
+
+At its core, routing connects specific URLs to the views or components that handle those URLs. When a user interacts with your app—such as clicking a button or entering a URL directly in their browser—the router resolves the URL to the appropriate view, initializes it, and displays it on the screen. This approach makes it easy to manage navigation and maintain the app's state.
+
+This step focuses on changing the `App` class, creating files for the views, and configuring routes to enable smooth navigation between different parts of your app.
 
 Instead of placing all logic within the `run()` method of `App`, views like `DemoView` and `FormView` are implemented as separate classes. This approach more closely aligns with standard Java practices.
 
@@ -34,9 +40,9 @@ public class DemoApplication extends App {
 
 ### Creating files for the views and configuring routes
 
-Once routing has been enabled, create separate Java files for each view, the app will contain. In this case, `DemoView.java` and `FormView.java`. Assign unique routes to these views using the `@Route` annotation. This ensures that each view is accessible through a specific URL.
+Once routing has been enabled, separate Java files for each view the app will contain are created, in this case, `DemoView.java` and `FormView.java`. Unique routes are assigned to these views using the `@Route` annotation. This ensures that each view is accessible through a specific URL.
 
-When the `@Route` annotation is left blank above a class with one of these suffixes, webforJ automatically assigns the class's name without the suffix as the route. For example, `DemoView` would use the route `/demo` by default. Since in this case `DemoView` is supposed to be the default route tho you will assign it a route.
+When the `@Route` annotation has no value above a class with one of these suffixes, webforJ automatically assigns the class's name without the suffix as the route. For example, `DemoView` will map the route `/demo` by default. Since in this case `DemoView` is supposed to be the default route tho you will assign it a route.
 
 The `/` route serves as the default entry point for your app. Assigning this route to a view ensures that it's the first page users see when accessing the app. In most cases, a dashboard or summary view is assigned to `/`.
 
@@ -44,7 +50,7 @@ The `/` route serves as the default entry point for your app. Assigning this rou
 @Route("/")
 @FrameTitle("Demo")
 public class DemoView extends Composite<Div> {
-    // DemoView logic
+  // DemoView logic
 }
 ```
 
@@ -61,7 +67,7 @@ For the `FormView` the route `customer/:id?` uses an optional parameter `id` to 
 @Route("customer/:id?")
 @FrameTitle("Customer Form")
 public class FormView extends Composite<Div> implements DidEnterObserver {
-    // FormView logic
+  // FormView logic
 }
 ```
 
@@ -81,13 +87,13 @@ public class DemoView extends Composite<Div> {
   private Button add = new Button("Add Customer", ButtonTheme.PRIMARY);  
 
   public DemoView() {
-      setupLayout();
+    setupLayout();
   }
 
   private void setupLayout() {
-      FlexLayout layout = FlexLayout.create(table, add)
-          .vertical().contentAlign().center().build().setPadding("var(--dwc-space-l)");
-      getBoundComponent().add(layout);
+    FlexLayout layout = FlexLayout.create(table, add)
+        .vertical().contentAlign().center().build().setPadding("var(--dwc-space-l)");
+    getBoundComponent().add(layout);
   }
 }
 ```
@@ -114,8 +120,11 @@ For more details on navigation, see the [Route Navigation Article](../../routing
 
 ### Table editing
 
-Item clicks in the table are handled by the `TableItemClickEvent<Customer>` listener. The event contains the `id` of the clicked customer, which it passes to the `FormView`
-by utilizing the `navigate()` method with a `ParametersBag`:
+In addition to navigation via button click, many apps also allow for navigation to other parts of an app when a `Table` is double clicked. The following changes are made to allow users to double-click an item in the table to navigate to a form pre-filled with the item's details.
+
+Once the details have been edited on the appropriate screen, the changes are saved, and the `Table` is updated to display the changed data from the selected item.
+
+To facilitate this navigation, item clicks in the table are handled by the `TableItemClickEvent<Customer>` listener. The event contains the `id` of the clicked customer, which it passes to the `FormView` by utilizing the `navigate()` method with a `ParametersBag`:
 
 ```java title="DemoView.java" 
 private void editCustomer(TableItemClickEvent<Customer> e) {
@@ -155,11 +164,11 @@ The `onDidEnter` method in `FormView` checks for the presence of an `id` paramet
 
 ### Submitting data 
 
-When you are done editing the data, it is necessary to submit it to the service handling the repository. Therefore the 
-`Service` class you already set up in the previous step of this tutorial
-now needs to be enhanced with additional methods, allowing you to add and edit customers. 
+When finished editing the data, it's necessary to submit it to the service handling the repository. Therefore the 
+`Service` class that has been already set up in the previous step of this tutorial
+now needs to be enhanced with additional methods, allowing users to add and edit customers. 
 
-Since you are using the `Repository` for data they're fairly simple.
+The snippet below shows how to accomplish this:
 
 ```java title="Service.java"
 public void addCustomer(Customer newCustomer) {
@@ -174,14 +183,14 @@ public void editCustomer(Customer editedCustomer) {
 
 ### Using `commit()`
 
-The `commit()` method in the `Repository` class keeps your app’s data and UI in sync. It provides a mechanism to refresh the data stored in the `Repository`, ensuring the latest state is reflected in the app.
+The `commit()` method in the `Repository` class keeps the app’s data and UI in sync. It provides a mechanism to refresh the data stored in the `Repository`, ensuring the latest state is reflected in the app.
 
 This method can be used in two ways:
 
 1) **Refreshing all data:**
   Calling `commit()` without arguments reloads all entities from the repository's underlying data source, such as a database or a service class.
 
-2) **Refreshing a single sntity:**
+2) **Refreshing a single entity:**
   Calling `commit(T entity)` reloads a specific entity, ensuring its state matches the latest data source changes.
 
 Call `commit()` when data in the `Repository` changes, such as after adding or modifying entities in the data source.
@@ -196,13 +205,11 @@ customerRepository.commit(updatedCustomer);
 
 ```
 
+With these changes, the following goals have been achieved:
 
+  1. Implemented routing and set it up so future views can be integrated with little effort.
+  2. Removed UI implementations out of the `App` and into a separate view.
+  3. Added an additional view to manipulate the data that's displayed in the customer table.
 
-With your changes you now have achieved the following goals:
-
-    1. Implemented routing and set it up so future views can be integrated with little effort.
-    2. Removed UI implementations out of your `App` and into a separate view.
-    3. Added an additional view to manipulate the data that is displayed in the customer table.
-
-With you now being able to modify the customer details and having setup routing the next step will focus on
-implementing databinding and using it to facilitate validation.
+With the modification of the customer details and routing accomplished, the next step will focus on
+implementing data binding and using it to facilitate validation.

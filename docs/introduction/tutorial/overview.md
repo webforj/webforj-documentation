@@ -19,13 +19,17 @@ To get the most out of this tutorial, it’s assumed that you have a basic under
 
 The following tools/resources should be present on your development machine
 
-- [Java 17 or higher](../../installation/local.md#java)
-- [Maven](../../installation/local.md#maven)
+- Java 17 or higher
+- Maven
 - A Java IDE
 - A web browser
 <!-- vale off -->
 - Git (recommended but not required)
 <!-- vale on -->
+
+:::tip webforJ Prerequisites
+See [this article](../prerequisites) for a more detailed overview of required tools outlined above.
+:::
 
 ## Sections
 
