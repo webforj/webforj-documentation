@@ -105,7 +105,8 @@ It's important to note that the order property only affects the visual order of 
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/flexorder?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/item/FlexOrderView.java'
-height="200px"
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/flexlayout/container/flexContainerBuilder.css'
+height="320px"
 />
 
 #### Self alignment
@@ -123,6 +124,7 @@ This property is especially useful when you need to align a specific item differ
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/flexselfalign?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/item/FlexSelfAlignView.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/flexlayout/container/flexContainerBuilder.css'
 height="350px"
 />
 
@@ -141,7 +143,7 @@ The following demo allows you to select one or more boxes and change the `Item B
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/flexbasis?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/FlexBasisView.java'
-height="250px"
+height="300px"
 />
 
 #### Flex grow / shrink
@@ -162,7 +164,8 @@ Similarly, when a container does not have enough space to accommodate its conten
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/flexlayout?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/FlexLayoutView.java'
-height="500px"
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/flexlayout/flexLayout.css'
+height="620px"
 />
 
 :::tip
