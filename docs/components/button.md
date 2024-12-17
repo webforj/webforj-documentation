@@ -117,7 +117,7 @@ Shown below are example buttons with each of the supported Themes applied: <br/>
 path='https://demo.webforj.com/webapp/controlsamples/buttonthemes?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonThemesView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/button/Theme.txt'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/button/buttonThemes.css'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/button/buttonThemes.css'
 height='175px'
 />
 
@@ -135,7 +135,6 @@ Below are the various expanses supported for the `Button` component: <br/>
 path='https://demo.webforj.com/webapp/controlsamples/buttonexpanses?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonExpansesView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/button/Expanses.txt'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/button/buttonExpanses.css'
 height='200px'
 />
 
