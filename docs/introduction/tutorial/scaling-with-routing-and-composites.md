@@ -5,7 +5,10 @@ sidebar_position: 4
 
 This step focuses on implementing routing to enhance the scalability and organization of the app structure. To achieve this, the app will be updated to handle multiple views, allowing navigation between different functionalities such as editing and creating customer entries. It will outline creating views for these functionalities, using components like `Composite` to build modular and reusable layouts.
 
-The app created in the [previous step](./working-with-data) will have a routing setup that supports multiple views, enabling users to manage customer data more effectively while maintaining a clean and scalable codebase.
+The app created in the [previous step](./working-with-data) will have a routing setup that supports multiple views, enabling users to manage customer data more effectively while maintaining a clean and scalable codebase. To run the app:
+
+- Go to the `3-scaling-with-routing-and-composites` directory
+- Run the `mvn jetty:run` command
 
 ![Routing app first frame](../../../static/img/tutorial_images/step3-1.png)
 <br />

@@ -29,10 +29,10 @@ webforj-demo-application
 │   README.md
 │   tree.txt
 │
-├───1-step-one    
-├───2-step-two   
-├───3-step-three
-└───4-step-four
+├───1-creating-a-basic-app  
+├───2-working-with-data
+├───3-scaling-with-routing-and-composites
+└───4-validating-and-binding-data
 ```
 
 ### Running the app

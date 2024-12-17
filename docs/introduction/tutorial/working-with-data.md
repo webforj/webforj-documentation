@@ -9,7 +9,7 @@ It will outline creating a `Customer` model class, and integrating it with a `Se
 
 By the end of this step, the app created in the [previous step](./creating-a-basic-app) will display a table with the created data that can then be expanded on in the following steps. To run the app:
 
-- Go to the `2-step-2` directory
+- Go to the `2-working-with-data` directory
 - Run `mvn jetty:run`
 
 <!-- vale off -->

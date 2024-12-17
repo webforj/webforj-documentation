@@ -9,7 +9,7 @@ This step leverages the base app class provided by webforJ to define the structu
 
 By the end of this step, you’ll have a functioning app that demonstrates basic interaction with components and event handling in webforJ. To run the app:
 
-- Go to the `1-step-1` directory
+- Go to the `1-creating-a-basic-app` directory
 - Run the `mvn jetty:run` command
 
 ![Step 1 screenshot](../../../static/img/tutorial_images/step1.png)

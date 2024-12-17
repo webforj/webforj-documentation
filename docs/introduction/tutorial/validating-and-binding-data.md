@@ -7,7 +7,10 @@ Data binding is a mechanism that connects the UI components of your app directly
 
 Validation, in this context, ensures that the data entered into the form adheres to predefined rules, such as being non-empty or following a specific format. By combining data binding with validation, you can streamline the user experience while maintaining data integrity without writing extensive manual checks.
 
-For more information on data binding reference [this article.](../../data-binding/overview)
+For more information on data binding reference [this article.](../../data-binding/overview) To run the app:
+
+- Go to the `4-validating-and-binding-data` directory
+- Run the `mvn jetty:run` command
 
 ![Data binding and validation screenshot](../../../static/img/tutorial_images/step4.png)
 
