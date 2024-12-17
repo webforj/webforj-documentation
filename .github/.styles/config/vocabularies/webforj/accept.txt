@@ -12,5 +12,9 @@ Auto-Detection
 CLI
 POM
 disabled
+webforJ
+webforj
+UUID
 E2E
 End-to-End
+WAR

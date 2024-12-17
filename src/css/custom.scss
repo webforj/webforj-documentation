@@ -1,13 +1,14 @@
-@use "./announcement";
-@use "./navbar";
-@use "./sidebar";
-@use "./footer";
-@use "./category";
-@use "./content";
-@use "./toc";
-@use "./pagination";
-@use "./blog-sidebar";
-@use "./blog-content";
+@use './announcement';
+@use './navbar';
+@use './sidebar';
+@use './footer';
+@use './category';
+@use './content';
+@use './toc';
+@use './pagination';
+@use './blog-sidebar';
+@use './blog-content';
+@use './tutorial-content';
 
 :root {
   /* DWC */
