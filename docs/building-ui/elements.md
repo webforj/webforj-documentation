@@ -15,6 +15,7 @@ The `Element` component cannot be extended, and is not the base component for al
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/elementinputdemo?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputDemoView.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/element/elementInput.css'
 />
 
 ## Adding events
@@ -26,7 +27,8 @@ There are also additional options to further customize events by using the Event
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/elementinputevent?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputEventView.java'
-height='175px'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/element/elementInputEvent.css'
+height='240px'
 />
 
 ## Component interaction
@@ -48,6 +50,7 @@ The `Element` component supports the composition of child components. Developers
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/elementinputtext?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputTextView.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/element/elementInput.css'
 height='175px'
 />
 
@@ -97,7 +100,8 @@ In the demo below, an event is added to an HTML `Button`. This event is then fir
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/elementinputfunction?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputFunctionView.java'
-height='175px'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/element/elementInput.css'
+height='240px'
 />
 
 ## Executing JavaScript

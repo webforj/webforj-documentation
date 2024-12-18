@@ -31,6 +31,7 @@ The `GoogleChart` class is a comprehensive solution for embedding rich, interact
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/chart?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartView.java'
+cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/googlecharts/chart.css'
 height='300px'
 />
 
@@ -149,7 +150,7 @@ Invoke `redraw()` in scenarios such as:
 path='https://demo.webforj.com/webapp/controlsamples/chartredraw?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartRedrawView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/googlecharts/chartRedraw.css'
-height='500px'
+height='650px'
 />
 
 <!-- tabs={['ChartDemoRedraw.java', 'redrawchart_styles.css']} -->

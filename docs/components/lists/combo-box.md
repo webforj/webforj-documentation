@@ -82,7 +82,7 @@ Using a number that is less than or equal to 0 will result in unsetting this pro
 path='https://demo.webforj.com/webapp/controlsamples/comboboxmaxrow?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxMaxRowView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/combobox/MaxRow.txt'
-height='250px'
+height='450px'
 />
 
 ## Opening and closing

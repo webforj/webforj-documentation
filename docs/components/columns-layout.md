@@ -21,7 +21,7 @@ When first instantiated, the `ColumnsLayout` uses two columns to display items a
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/columnslayout?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutView.java'
-height="350px"
+height="450px"
 />
 
 ## Breakpoints
@@ -148,7 +148,7 @@ In the following demonstration, notice that when the `"medium"` breakpoint is tr
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/columnslayoutspancolumn?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutSpanColumnView.java'
-height="350px"
+height="375px"
 />
 
 :::tip Avoid collisions
@@ -175,7 +175,7 @@ Available `Alignment` options include:
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/columnslayoutalignment?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutAlignmentView.java'
-height="350px"
+height="500px"
 />
 
 In the demo above, the `Submit` button has been given `ColumnsLayout.Alignment.END` to ensure that it appears at the end, or in this case to the right, of its column.
@@ -209,5 +209,5 @@ Building responsive and attractive layouts is possible using both the [`FlexLayo
 <ComponentDemo 
 path='https://demo.webforj.com/webapp/controlsamples/columnslayoutform?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutFormView.java'
-height="450px"
+height="700px"
 />
