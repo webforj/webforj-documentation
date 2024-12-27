@@ -42,7 +42,7 @@ You can use the `setStep()` method to specify the granularity that the value mus
 
 You can set placeholder text for the `NumberField` using the `setPlaceholder()` method. The placeholder text is displayed when the field is empty, helping to prompt the user to enter appropriate input into the `NumberField`.
 
-:::tip
+:::tip Give clear context for accuracy
 If the numeric input relates to a specific unit of measurement or has a particular context, provide clear labeling or additional information to guide users and ensure accurate input.
 :::
 
