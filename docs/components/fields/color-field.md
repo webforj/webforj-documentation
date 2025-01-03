@@ -32,10 +32,13 @@ The `ColorField` is best used in scenarios where color selection is a crucial pa
 
 3. **Data Visualization**: Provide users a color field to select colors for charts, graphs, heatmaps, and other visual representations.
 
-## Color code format
+## Value
 
-The `ColorField` works seamlessly with the `java.awt.Color` class for setting the color and retrieving colors the user picks with the `setValue()` and `getValue()` methods. The `ColorField` only allows basic colors, which means that it will ignore any provided alpha value for a `Color`.
-Alternatively, you use the #RRGGBB hexadecimal format by using the `setText()` and `getText()` methods.
+The `ColorField` uses the [`java.awt.Color`](https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Color.html) class for setting and retrieving colors via the `setValue()` and `getValue()` methods. While the client-side component exclusively handles fully opaque RGB colors in hexadecimal notation, webforJ streamlines the process by automatically converting `Color` values into the correct format.
+
+:::tip Hexadecimal parsing
+When using the `setText()` method to assign a value, the `ColorField` will attempt to parse the input as a hexadecimal color. If parsing fails, an `IllegalArgumentException` will be thrown.
+:::
 
 ## Static utilities 
 
