@@ -56,7 +56,7 @@ Unlike the previous three methods, `whenAttached()` is meant to be explicitly ca
 ```java
 public class Demo extends App {
   @Override
-  public void run() throws webforJException {
+  public void run() throws WebforjException {
     Frame window = new Frame();
 
     Button button = new Button(); 
@@ -110,7 +110,7 @@ In the below sample, an `onClick` event is added to a button, which is then fire
 
 ```java
 @Override
-public void run() throws webforJException {
+public void run() throws WebforjException {
   Frame frame = new Frame();
   Button btn = new Button("Click me");
   btn.onClick(e -> {
