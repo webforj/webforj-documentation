@@ -18,3 +18,4 @@ UUID
 E2E
 End-to-End
 WAR
+RGB
