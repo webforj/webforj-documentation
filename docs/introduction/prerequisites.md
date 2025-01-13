@@ -3,8 +3,6 @@ title: Prerequisites
 sidebar_position: 1
 ---
 
-## Setting up your development environment
-
 Getting started with webforJ is simple, because there are only a couple of prerequisites. Use this guide to set up your development environment with the essential tools you will need to get up and running with webforJ. 
 
 <!-- vale off -->
@@ -13,7 +11,7 @@ Getting started with webforJ is simple, because there are only a couple of prere
 <!-- vale on -->
 
 A Java Development Kit (JDK) is the most important requirement for developing with webforJ, providing the necessary tools to compile, run, and manage Java apps.
-WebforJ requires Java 17 or higher to ensure compatibility with webforJ and access to the latest features and security updates of the Java ecosystem. WebforJ is compatible with official Oracle JDKs and the open source Eclipse Temurin JDKs.
+Java 17 or higher is required to ensure compatibility with webforJ and access to the latest features and security updates of the Java ecosystem. The webforJ framework is compatible with official Oracle JDKs and the open source Eclipse Temurin JDKs.
 <!-- vale off -->
 ### JDK installation links:
 <!-- vale on -->
