@@ -39,7 +39,7 @@ mvn -B archetype:generate \
 |----------------------|-----------------------------------------------------------------------------|
 | `archetypeGroupId` | The group ID of the archetype is `com.webforj` for webforJ archetypes.|
 | `archetypeArtifactId` | Specifies the name of the archetype to use. |
-| `archetypeVersion` | archetypeVersion: Specifies the version of the archetype to use. This ensures that the generated project is compatible with a specific archetype version. Using LATEST selects the most recent version available.|
+| `archetypeVersion` | Specifies the version of the archetype to use. This ensures that the generated project is compatible with a specific archetype version. Using LATEST selects the most recent version available.|
 | `groupId`          | Represents the namespace for the generated project. Typically structured like a Java package, such as `org.example` and is used to uniquely identify your organization or project domain.|
 | `artifactId`       | Specifies the name of the generated project. This will be the name of the resulting artifact and the project folder.|
 | `version`          | Defines the version of the generated project. A common convention is MAJOR.MINOR-SNAPSHOT, like `1.0-SNAPSHOT`, where SNAPSHOT denotes that the project is still in development.|
