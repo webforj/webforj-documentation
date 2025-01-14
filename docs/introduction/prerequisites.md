@@ -3,57 +3,67 @@ title: Prerequisites
 sidebar_position: 1
 ---
 
-Before you start building apps with webforJ, make sure your development environment is set up with the following essential tools. This section overviews each of the requirements and includes links to installation guides for macOS, Windows, and Linux.
+Getting started with webforJ is simple, because there are only a couple of prerequisites. Use this guide to set up your development environment with the essential tools you will need to get up and running with webforJ. 
 
 <!-- vale off -->
 ## Java Development Kit (JDK) 17 or higher
 
 <!-- vale on -->
 
+A Java Development Kit (JDK) is the most important requirement for developing with webforJ, providing the necessary tools to compile, run, and manage Java apps.
+Java 17 or higher is required to ensure compatibility with webforJ and access to the latest features and security updates of the Java ecosystem. The webforJ framework is compatible with official Oracle JDKs and the open source Eclipse Temurin JDKs.
+<!-- vale off -->
+### JDK installation links:
+<!-- vale on -->
+- Official Oracle JDKs can be found on Oracle's [Java Downloads](https://www.oracle.com/java/technologies/downloads/) page. 
+  - Select Java version 17 or higher.
+  - Click the tab for Linux, macOS, or Windows.
+  - Click the link that corresponds to your computer's architecture. 
+  - See Oracle's [JDK Installation Guide](https://docs.oracle.com/en/java/javase/23/install/overview-jdk-installation.html) for complete information on installing an Oracle JDK.
+- Open source JDKs can be found on Adoptium's [Eclipse Temurin™ Latest Releases](https://adoptium.net/temurin/releases/) page. 
+  - Use the dropdown menus to select the operating system, architecture, package type, and JDK version 17 or higher. 
+  - Click the link in the table for the archive type you wish to download.
+  - See Adoptium's [Installation Guide](https://adoptium.net/installation/) for complete information on installing an Eclipse Temurin JDK.
 
-webforJ requires `Java 17` or a newer version to ensure compatibility and access to the latest features of the Java ecosystem. The JDK provides the tools needed to compile, run, and manage Java apps. You can choose between Oracle JDK and the open source OpenJDK.
-
-**Installation links:**
-The official Oracle versions of the JDK can be found at [this link](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html). Alternatively, open source versions of the various JDK versions can be found at [here](https://adoptium.net/temurin/releases/).
-
-:::tip Java versions
-Newer versions of the JDK can also be found and can be used with webforJ as well
-:::
-
-### How to verify your JDK installation
+<!-- vale off -->
+### Verify your JDK installation
+<!-- vale on -->
 After installing the JDK, verify the installation by running the following command in your terminal or command prompt:
 
 ```bash
 java -version
 ```
-If installed correctly, you should see a response with version details indicating `Java 17` or higher.
 
+If your JDK is installed correctly, you will see output with your JDK version details, indicating version 17 or higher.
 <!-- vale off -->
-## Installing Maven
-
+## Apache Maven
 <!-- vale on -->
 
-Apache Maven is a build automation and dependency management tool that simplifies the process of including external libraries (like webforJ) in your project. Maven helps you manage project dependencies, compile code, run tests, and package applications.
+[Apache Maven](https://maven.apache.org/index.html) is a build automation and dependency management tool that simplifies the process of including external libraries such as webforJ in your project. 
+In addition to helping with dependency management, Maven can automate tasks like compiling code, running tests, and packaging applications.
 
-To install Maven, follow this link to the [download site](https://maven.apache.org/download.cgi). For detailed instructions on installation across various OSs, follow [this link to a guide](https://www.baeldung.com/install-maven-on-windows-linux-mac) detailing the required steps. 
+### Maven installation links
+- To install the latest version of Maven, go to the [Apache Maven Download Page](https://maven.apache.org/download.cgi). 
+  - Maven's [Installing Apache Maven](https://maven.apache.org/install.html) page has an overview of the installation process. 
+  - Baeldung's [How to Install Maven on Windows, Linux, and Mac](https://www.baeldung.com/install-maven-on-windows-linux-mac) is a more in-depth installation guide for each operating system.
 
 <!-- vale off -->
 ### Verify your Maven installation
 
 <!-- vale on -->
 
-After installing Maven, verify the installation by running:
+After installing Maven, verify the installation by running the following command in your terminal or command prompt:
 
 ```bash
 mvn -v
 ```
 
-The output should show the Maven version, Java version, and operating system information if Maven is installed correctly.
+If Maven is installed correctly, the output should show the Maven version, Java version, and operating system information.
 
 ## Java IDE
 
-A Java IDE provides a comprehensive environment for writing, testing, and debugging your code. Some popular choices for Java development include:
+A Java IDE provides a comprehensive environment for writing, testing, and debugging your code. There are many IDEs to choose from, so you can choose whichever one fits your workflow. Some popular choices for Java development include:
 
-- **[IntelliJ IDEA](https://www.jetbrains.com/idea/download/)**: Known for its powerful Java support and rich plugin ecosystem.
 - **[Visual Studio Code](https://code.visualstudio.com/Download)**: A lightweight, extensible code editor with Java support through plugins.
+- **[IntelliJ IDEA](https://www.jetbrains.com/idea/download/)**: Known for its powerful Java support and rich plugin ecosystem.
 - **[NetBeans](https://netbeans.apache.org/download/index.html)**: A free, open source IDE for Java and other languages, known for its ease of use and built-in project templates.
