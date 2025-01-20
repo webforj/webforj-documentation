@@ -9,7 +9,7 @@ import CodeIcon from '@mui/icons-material/Code';
 import DescriptionIcon from '@mui/icons-material/Description';
 import StyleIcon from '@mui/icons-material/Style';
 
-export default function DocChip( { chip, label, href, clickable, iconName, tooltipText, color  } ) {
+export default function DocChip( { chip, label, href, exclude, iconName, tooltipText, color  } ) {
 
   const mainStyles = css`
     margin-right: 0.5em;
@@ -31,18 +31,21 @@ export default function DocChip( { chip, label, href, clickable, iconName, toolt
   if(chip === 'shadow'){
     // A "Shadow DOM" Chip
     tooltipText = "This component renders with a shadow DOM, an API built into the browser that facilitates encapsulation.";
-    clickable= true;
     href = "https://documentation.webforj.com/docs/glossary#shadow-dom";
     label='Shadow';
     iconName = 'shadow';
   } else if (chip === 'name') {
     // A "DOM Name" chip
     tooltipText="The name of this web component as it appears in the DOM.";
-    clickable = false;
+      if (!(exclude)){
+        const path = "https://docs.webforj.com/docs/client-components/";
+        const clientPage = label.replace("dwc-", "");
+        href = path.concat(clientPage);
+      }
     iconName = 'code';
   } else if (chip == 'scoped') {
     tooltipText = "This component uses scoped components, an alternative approach to the shadow DOM, a browser API that enables encapsulation. These components scope their styles to avoid leaks or conflicts instead of relying on the native shadow DOM.";
-    clickable= false;
+    exclude= 'true';
     label='Scoped';
     iconName = 'scoped';  
   }
@@ -59,7 +62,7 @@ export default function DocChip( { chip, label, href, clickable, iconName, toolt
 
   return (
     <Tooltip title={tooltipText} arrow css={mainStyles} >
-      <Chip className={`doc-chip ${chip.className || ''}`} label={label} component="a" href={clickable ? href : null} icon={icon} clickable={clickable} color={color} target="_blank" />
+      <Chip className={`doc-chip ${chip.className || ''}`} label={label} component="a" href={ !exclude ? href : null} icon={icon} clickable={!exclude} color={color} target="_blank" />
     </Tooltip>
   )
 }

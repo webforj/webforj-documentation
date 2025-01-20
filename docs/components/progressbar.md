@@ -4,7 +4,7 @@ title: ProgressBar
 
 <DocChip chip='shadow' />
 
-<DocChip chip='name' label="dwc-progress-bar" />
+<DocChip chip='name' label="dwc-progressbar" />
 
 <JavadocLink type="foundation" location="com/webforj/component/progressbar/ProgressBar" top='true'/>
 

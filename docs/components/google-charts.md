@@ -7,8 +7,7 @@ import Chip from '@mui/material/Chip';
 
 <DocChip chip='shadow' />
 
-<!-- UPDATE THE NAME FOR THE CLIENT COMPONENT HERE (label="???") -->
-<DocChip chip='name' label="google-chart" />
+<DocChip chip='name' label="google-chart" exclude= 'true' />
 
 <JavadocLink type="googlecharts" location="com/webforj/component/googlecharts/GoogleChart" top='true'/>
 
