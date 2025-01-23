@@ -7,8 +7,6 @@ title: Message
 
 <DocChip chip='shadow' />
 
-<DocChip chip='name' label="dwc-dialog" />
-
 <JavadocLink type="foundation" location="com/webforj/component/optiondialog/MessageDialog" top='true'/>
 
 A `MessageDialog` is a modal dialog designed to display a message to the user with an `OK` button to dismiss the dialog. It blocks app execution until the user interacts with it or it closes due to a timeout.
@@ -92,17 +90,3 @@ dialog.show();
 3. **Consistent Theming**: Align dialog and button themes with your apps's design.
 4. **Judicious Use of Timeout**: Set timeouts for non-critical notifications and ensure users have enough time to read the message.
 5. **Avoid Overuse**: Use dialogs sparingly to prevent user frustration and reserve for important messages requiring user action or acknowledgment.
-
-## Styling
-
-### Shadow parts
-
-These are the various parts of the [shadow DOM](../../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Dialog} table='parts'/>
-
-### Reflected attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Dialog} table="reflects" />

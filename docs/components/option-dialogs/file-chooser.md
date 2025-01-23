@@ -7,8 +7,6 @@ title: File Chooser
 
 <DocChip chip='shadow' />
 
-<DocChip chip='name' label="dwc-dialog" />
-
 <JavadocLink type="foundation" location="com/webforj/component/optiondialog/FileChooserDialog" top='true'/>
 
 `FileChooserDialog` is a modal dialog designed to allow the user to select a file or a directory from the server file system. The dialog blocks app execution until the user makes a selection or closes the dialog.
@@ -31,7 +29,7 @@ height = '600px'
 
 The `FileChooserDialog` returns the selected file or directory as a string. If the user closes the dialog without making a selection, the result will be `null`.
 
-:::important
+:::info
 The resulting string will be returned from the `show()` method, or the equivalent `OptionDialog` method as shown below. 
 :::
 
@@ -112,17 +110,3 @@ dialog.setI18n(i18n);
 2. **Appropriate Selection Modes**: Choose selection modes that match the required user action to ensure accurate and relevant selections.
 3. **Logical Initial Paths**: Set initial paths that provide users with a useful starting point for their selection.
 4. **Restrict Directory Navigation**: Restrict the dialog to a specific directory when necessary to prevent users from navigating to unauthorized areas.
-
-## Styling
-
-### Shadow parts
-
-These are the various parts of the [shadow DOM](../../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Dialog} table='parts'/>
-
-### Reflected attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Dialog} table="reflects" />

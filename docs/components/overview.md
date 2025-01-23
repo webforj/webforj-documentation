@@ -166,6 +166,10 @@ Option dialogs provide a way to present users with choices or prompt them for co
   <GalleryCard header="FileUploadDialog" href="option-dialogs/file-upload" image="/img/components/FileUploadDialog.png">
     <p>A dialog component that enables users to upload files from their local filesystem to the app.</p>
   </GalleryCard>
+
+  <GalleryCard header="FileSaveDialog" href="option-dialogs/file-save" image="/img/components/FileSaveDialog.png">
+    <p>A dialog component that allows users to save a file to a specified location on the server file system.</p>
+  </GalleryCard>
 </GalleryGrid>
 
 ## Interaction and display

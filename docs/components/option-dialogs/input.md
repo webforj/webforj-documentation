@@ -7,8 +7,6 @@ title: Input
 
 <DocChip chip='shadow' />
 
-<DocChip chip='name' label="dwc-dialog" />
-
 <JavadocLink type="foundation" location="com/webforj/component/optiondialog/InputDialog" top='true'/>
 
 An `InputDialog` is a modal dialog designed to prompt the user for input. The dialog blocks app execution until the user provides the input or closes the dialog.
@@ -112,17 +110,3 @@ OptionDialog.showMessageDialog(
 3. **Logical Default Values**: Set default values that provide useful suggestions or previous entries to streamline user input.
 5. **Judicious Use of Timeout**: Set timeouts for non-critical input requests, ensuring users have enough time to provide the required information.
 6. **Minimize Overuse**: Use input dialogs sparingly to avoid user frustration. Reserve them for actions requiring specific user input.
-
-## Styling
-
-### Shadow parts
-
-These are the various parts of the [shadow DOM](../../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Dialog} table='parts'/>
-
-### Reflected attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Dialog} table="reflects" />

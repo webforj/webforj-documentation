@@ -7,8 +7,6 @@ title: File Upload
 
 <DocChip chip='shadow' />
 
-<DocChip chip='name' label="dwc-dialog" />
-
 <JavadocLink type="foundation" location="com/webforj/component/optiondialog/FileUploadDialog" top='true'/>
 
 A `FileUploadDialog` is a modal dialog designed to allow the user to upload files from their local file system. The dialog blocks app execution until the user selects files to upload or closes the dialog.
@@ -96,17 +94,3 @@ UploadedFile result = dialog.show();
 4. **Restrict Directory Navigation**: Restrict the dialog to a specific directory when necessary to prevent users from navigating to unauthorized areas.
 5. **Consistent Theming**: Align the dialog and upload field themes with your app's design for a cohesive user experience.
 6. **Minimize Overuse**: Use file upload dialogs sparingly to avoid user frustration. Reserve them for actions requiring specific user file uploads.
-
-## Styling
-
-### Shadow parts
-
-These are the various parts of the [shadow DOM](../../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Dialog} table='parts'/>
-
-### Reflected attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Dialog} table="reflects" />

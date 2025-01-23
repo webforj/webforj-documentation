@@ -7,8 +7,6 @@ title: Confirm
 
 <DocChip chip='shadow' />
 
-<DocChip chip='name' label="dwc-dialog" />
-
 <JavadocLink type="ConfirmDialog" location="com/webforj/component/optiondialog/ConfirmDialog" top='true'/>
 
 A `ConfirmDialog` is a modal dialog designed to allow the user to choose one of a set of up to 3 options. The dialog blocks app execution until the user interacts with it or it closes due to a timeout.
@@ -170,17 +168,3 @@ switch (result) {
 4. **Consistent Theming**: Align the dialog and button themes with your app's design for a cohesive user experience.
 5. **Judicious Use of Timeout**: Set timeouts for non-critical confirmations, ensuring users have enough time to read and understand the prompt.
 6. **Minimize Overuse**: Use confirm dialogs sparingly to avoid user frustration. Reserve them for critical actions requiring explicit user confirmation.
-
-## Styling
-
-### Shadow parts
-
-These are the various parts of the [shadow DOM](../../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Dialog} table='parts'/>
-
-### Reflected attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Dialog} table="reflects" />
