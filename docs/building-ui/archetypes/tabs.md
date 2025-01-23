@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # Tabs archetype
 
-A starting project with a simple tabbed interface. Ideal for applications that require multiple views or sections accessible via tabs. This archetype provides a clean and organized way to manage different parts of your application, making it easy to navigate between various sections without cluttering the user interface.
+The `tabs` starting project generates an app with a simple tabbed interface. Ideal for projects that require multiple views or sections accessible via tabs, this archetype provides a clean and organized way to manage different parts of your app, making it easy to navigate between various sections without cluttering the user interface.
 
 ## Using the `tabs` archetype
 

@@ -2,10 +2,11 @@
 title: SideMenu
 sidebar_position: 3
 ---
-
+<!-- vale off -->
 # SideMenu archetype
+<!-- vale on -->
 
-A starting project with a side menu and navigation in the content area. Perfect for applications that need a structured navigation system. This archetype is designed to help you create applications with a clear and intuitive navigation structure, making it easier for users to find and access different parts of your application.
+For projects that need a structured navigation system, the `sidemenu` archetype is a great starting place. This archetype contains a side menu and a content area, and is designed to help you create apps with a clear and intuitive navigation structure, making it easier for users to find and access different parts of your app.
 
 ## Using the `sidemenu` archetype
 

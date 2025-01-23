@@ -3,10 +3,15 @@ title: HelloWorld
 sidebar_position: 4
 ---
 
-
+<!-- vale off -->
 # HelloWorld archetype
+<!-- vale on -->
 
-A simple hello world project to demonstrate the basics of building a UI with webforJ. This template is great for beginners to get started quickly. It provides a straightforward example of how to set up and run a basic webforJ application, making it an excellent starting point for new developers.
+This archetype creates a simple hello world app to demonstrate the basics of building a UI with webforJ. This template is great for beginners to get started quickly. It provides a straightforward example of how to set up and run a basic webforJ app, making it an excellent starting point for new developers.
+
+:::tip Starting from scratch
+This archetype creates a minimalistic app with a few components and some styling. For developers wishing to create a project with minimal scaffolding, see the [`blank` archetype](./blank).
+::: 
 
 ## Using the `hello-world` archetype
 

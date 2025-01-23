@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # Blank archetype
 
-A blank starter project for webforJ applications. This template provides a clean slate for you to build your app from scratch. It is ideal for developers who want complete control over the structure and components of their application without any predefined constraints.
+The `blank` archetype is a foundational starter project for webforJ applications. This template provides a clean slate for you to build your app from scratch. It's ideal for developers who want complete control over the structure and components of their app without any predefined constraints.
 
 ## Using the `blank` archetype
 
