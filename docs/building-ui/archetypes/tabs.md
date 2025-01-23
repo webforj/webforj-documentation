@@ -1,23 +1,15 @@
 ---
-title: Getting Started
+title: Tabs
 sidebar_position: 2
 ---
 
-This article outlines the steps to scaffold a new webforJ app using the webforJ archetypes. This archetypes provide a pre-configured project structure and starter code to quickly get a project up and running.
+# Tabs archetype
 
-:::tip Prerequisites
-Before you begin, make sure you have reviewed the necessary [prerequisites](./prerequisites) for setting up and using webforJ. This will ensure that you have all the required tools and configurations in place before starting your project.
-:::
+A starting project with a simple tabbed interface. Ideal for applications that require multiple views or sections accessible via tabs. This archetype provides a clean and organized way to manage different parts of your application, making it easy to navigate between various sections without cluttering the user interface.
 
-<!-- vale off -->
-import DocCardList from '@theme/DocCardList';
+## Using the `tabs` archetype
 
-<!-- vale on -->
-
-
-## Using the `hello-world` archetype
-
-To create and scaffold a new `hello-world` project, follow these steps:
+To create and scaffold a new `tabs` project, follow these steps:
 
 1) **Navigate to the proper directory**:
 Open a terminal and move to the folder where you want to create your new project.
@@ -31,10 +23,10 @@ Use the Maven command below, and customize the `groupId`, `artifactId`, and `ver
   ```bash
   mvn -B archetype:generate \
   -DarchetypeGroupId=com.webforj \
-  -DarchetypeArtifactId=webforj-archetype-hello-world \
+  -DarchetypeArtifactId=webforj-archetype-tabs \
   -DgroupId=org.example \
   -DarchetypeVersion=LATEST \
-  -DartifactId=my-hello-world-app \
+  -DartifactId=my-app \
   -Dversion=1.0-SNAPSHOT
   ```
   </TabItem>
@@ -42,10 +34,10 @@ Use the Maven command below, and customize the `groupId`, `artifactId`, and `ver
   ```powershell
   mvn -B archetype:generate `
   -DarchetypeGroupId="com.webforj" `
-  -DarchetypeArtifactId="webforj-archetype-hello-world" `
+  -DarchetypeArtifactId="webforj-archetype-tabs" `
   -DarchetypeVersion="LATEST" `
   -DgroupId="org.example" `
-  -DartifactId="my-hello-world-app" `
+  -DartifactId="my-app" `
   -Dversion="1.0-SNAPSHOT" 
   ```
   </TabItem>
@@ -53,10 +45,10 @@ Use the Maven command below, and customize the `groupId`, `artifactId`, and `ver
   ```
   mvn -B archetype:generate ^
   -DarchetypeGroupId=com.webforj ^
-  -DarchetypeArtifactId=webforj-archetype-hello-world ^
+  -DarchetypeArtifactId=webforj-archetype-tabs ^
   -DgroupId=org.example ^
   -DarchetypeVersion=LATEST ^
-  -DartifactId=my-hello-world-app ^
+  -DartifactId=my-app ^
   -Dversion=1.0-SNAPSHOT
   ```
   </TabItem>
@@ -72,13 +64,7 @@ Use the Maven command below, and customize the `groupId`, `artifactId`, and `ver
 | `artifactId`       | Specifies the name of the generated project. This will be the name of the resulting artifact and the project folder.|
 | `version`          | Defines the version of the generated project. A common convention is MAJOR.MINOR-SNAPSHOT, like `1.0-SNAPSHOT`, where SNAPSHOT denotes that the project is still in development.|
 
-
 After running the command, Maven will generate the project files necessary to run the project.
-
-
-:::tip
-webforJ comes with several predefined archetypes that help you quickly start your webforJ development. To see a complete list of available archetypes, please refer to the [archetypes catalog](../building-ui/archetypes/overview).
-:::
 
 ### Run the app
 
@@ -89,7 +75,3 @@ mvn jetty:run
 ```
 
 This command uses the Jetty maven plugin to start a Jetty server. Once the server is running, open your browser and go to [http://localhost:8080](http://localhost:8080) to view the app.
-
-:::info Licensing and watermark
-For information on the licensing and the watermark present in unlicensed projects, see [this article](../configuration/licensing-and-watermark).
-:::
