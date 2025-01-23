@@ -25,15 +25,43 @@ Open a terminal and move to the folder where you want to create your new project
 2) **Run the `archetype:generate` command**:
 Use the Maven command below, and customize the `groupId`, `artifactId`, and `version` as needed for your project.
 
-```bash
-mvn -B archetype:generate \
--DarchetypeGroupId=com.webforj \
--DarchetypeArtifactId=webforj-archetype-hello-world \
--DgroupId=org.example \
--DarchetypeVersion=LATEST \
--DartifactId=my-hello-world-app \
--Dversion=1.0-SNAPSHOT
-```
+<!-- vale off -->
+<Tabs>
+  <TabItem value="bash" label="Bash/Zsh" default>
+  ```bash
+  mvn -B archetype:generate \
+  -DarchetypeGroupId=com.webforj \
+  -DarchetypeArtifactId=webforj-archetype-hello-world \
+  -DgroupId=org.example \
+  -DarchetypeVersion=LATEST \
+  -DartifactId=my-hello-world-app \
+  -Dversion=1.0-SNAPSHOT
+  ```
+  </TabItem>
+  <TabItem value="powershell" label="PowerShell">
+  ```powershell
+  mvn -B archetype:generate `
+  -DarchetypeGroupId="com.webforj" `
+  -DarchetypeArtifactId="webforj-archetype-hello-world" `
+  -DarchetypeVersion="LATEST" `
+  -DgroupId="org.example" `
+  -DartifactId="my-hello-world-app" `
+  -Dversion="1.0-SNAPSHOT" 
+  ```
+  </TabItem>
+  <TabItem value="cmd" label="Command Prompt">
+  ```
+  mvn -B archetype:generate ^
+  -DarchetypeGroupId=com.webforj ^
+  -DarchetypeArtifactId=webforj-archetype-hello-world ^
+  -DgroupId=org.example ^
+  -DarchetypeVersion=LATEST ^
+  -DartifactId=my-hello-world-app ^
+  -Dversion=1.0-SNAPSHOT
+  ```
+  </TabItem>
+</Tabs>
+<!-- vale on -->
 
 | Argument             | Explanation                                                                 |
 |----------------------|-----------------------------------------------------------------------------|
