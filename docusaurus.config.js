@@ -71,9 +71,9 @@ const config = {
       contextualSearch: false,
     },
     announcementBar: {
-      id: '24.20',
+      id: '24.21',
       content:
-        'We are excited to announce webforJ version 24.20 is live! Read more about the changes and features <a href=/blog/whats-new-v24.20>here.</a> ',
+        'We are excited to announce webforJ version 24.21 is live! Read more about the changes and features <a href=/blog/whats-new-v24.21>here.</a> ',
       isCloseable: true,
     },
     image: '/img/webforj.svg',
