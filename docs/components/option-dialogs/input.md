@@ -13,7 +13,7 @@ An `InputDialog` is a modal dialog designed to prompt the user for input. The di
 
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/inputdialogbasic?' 
+path='https://demo.webforj.com/inputdialogbasic?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/input/InputDialogBasicView.java'
 height = '500px'
 />
@@ -53,7 +53,7 @@ In the following sample, The user is prompted to enter its password to access th
 again.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/inputdialogtype?' 
+path='https://demo.webforj.com/inputdialogtype?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/input/InputDialogTypeView.java'
 height = '350px'
 />

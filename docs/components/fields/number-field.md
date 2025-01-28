@@ -14,7 +14,7 @@ description: A component that provides a default browser-based input field for e
 You can use the `NumberField` component to accept numerical input from a user. It ensures that only valid numeric values are entered and provides a convenient interface for inputting numbers.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/numberfield?'
+path='https://demo.webforj.com/numberfield?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/fields/numberfield/NumberFieldView.java'
 />
 

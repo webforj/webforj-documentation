@@ -16,7 +16,7 @@ The `RadioButton` class creates an object that can be selected or deselected, an
 
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/radiobuttongroup?' 
+path='https://demo.webforj.com/radiobuttongroup?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonGroupView.java'
 height="200px"
 />
@@ -37,7 +37,7 @@ Radio buttons can utilize the ```setText(String text)``` method, which will be p
 Radio buttons have built-in functionality to set text to be displayed either to the right or left of the component. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of the `HorizontalAlignment` enum class. Show below are the two settings: <br/>
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/radiobuttontext?' 
+path='https://demo.webforj.com/radiobuttontext?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonTextView.java'
 height="120px"
 />
@@ -48,7 +48,7 @@ height="120px"
 Radio buttons can be controlled using two types of activation: manual activation and auto activation. These dictate when a `RadioButton` will change its state.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/radiobuttonactivation?' 
+path='https://demo.webforj.com/radiobuttonactivation?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonActivationView.java'
 height="175px"
 />
@@ -77,7 +77,7 @@ The default activation value is **`MANUAL`** activation.
 A `RadioButton` can also be set to display as a switch provides which provides alternative visual representation for selecting options. Normally, radio buttons are circular or rounded in shape and indicate a single choice from a group of options. 
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/radiobuttonswitch?' 
+path='https://demo.webforj.com/radiobuttonswitch?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonSwitchView.java'
 height="120px"
 />

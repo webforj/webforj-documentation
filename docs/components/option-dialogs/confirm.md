@@ -24,7 +24,7 @@ ConfirmDialog.Result result = OptionDialog.showConfirmDialog(
 The `ConfirmDialog` provides a way to ask users for confirmation or to choose between multiple options, such as `Yes/No` or `OK/Cancel`, ensuring that they acknowledge and confirm their actions.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/confirmdialogconstructor?' 
+path='https://demo.webforj.com/confirmdialogconstructor?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/confirm/ConfirmDialogConstructorView.java'
 height = '350px'
 />
@@ -56,7 +56,7 @@ The `ConfirmDialog` supports the following message types. When you configures a 
 In the following sample, the code configures a confirm dialog of type `CUSTOM` with a custom title and message.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/confirmdialogoptions?' 
+path='https://demo.webforj.com/confirmdialogoptions?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/confirm/ConfirmDialogOptionsView.java'
 height = '350px'
 />

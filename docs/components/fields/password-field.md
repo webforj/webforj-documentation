@@ -14,7 +14,7 @@ description: A single-line input component for securely entering and masking pas
 The `PasswordField` component allows users to input a password securely. It's displayed as a single-line text editor where the entered text is obscured, typically replaced with symbols like asterisks (”*”) or dots (”•”). The exact symbol may vary based on the browser and operating system.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/passwordfield?' 
+path='https://demo.webforj.com/passwordfield?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/fields/passwordfield/PasswordFieldView.java'
 />
 

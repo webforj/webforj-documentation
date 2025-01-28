@@ -121,7 +121,7 @@ The `TabbedPane` class has two constituent parts: a `Tab` that is displayed in a
 
 The `TabbedPane` supports navigating through the various tabs via swiping. This is ideal for a mobile application, but can also be configured via a built-in method to support mouse swiping. Both swiping and mouse swipping are disabled by default, but can be enabled with the `setSwipable(boolean)` and `setSwipableWithMouse(boolean)` methods, respectively. 
 
-<!-- <AppLayoutViewer path='https://demo.webforj.com/webapp/controlsamples?class=componentdemos.tabbedpanedemos.TabbedPaneSwipe&platform=mobile' mobile='true'
+<!-- <AppLayoutViewer path='https://demo.webforj.com?class=componentdemos.tabbedpanedemos.TabbedPaneSwipe&platform=mobile' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/tabbedpanedemos/TabbedPaneSwipe.java'
 /> -->
 
@@ -131,7 +131,7 @@ The `Tabs` within a `TabbedPane` can be placed in various positions within the c
 
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/tabbedpaneplacement?' 
+path='https://demo.webforj.com/tabbedpaneplacement?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPanePlacementView.java'
 height="400px"
 />
@@ -143,7 +143,7 @@ In addition to changing the placement of the `Tab` elements within the `TabbedPa
 The other options are `START`, `END`, `CENTER`, and `STRETCH`. The first three describe the position relative to the component, with `STRETCH` making the tabs fill the available space.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/tabbedpanealignment?' 
+path='https://demo.webforj.com/tabbedpanealignment?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneAlignmentView.java'
 height="250px"
 />
@@ -163,7 +163,7 @@ This border doesn't apply to the entirety of the `TabbedPane` component, and mer
 To set the visibility of the active indicator, the `setHideActiveIndicator(boolean)` method can be used. Passing `true` to this method will hide the active indicator beneath an active `Tab`, whereas `false`, the default, keeps the indicator displayed.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/tabbedpaneborder?' 
+path='https://demo.webforj.com/tabbedpaneborder?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneBorderView.java'
 height="300px"
 />
@@ -177,7 +177,7 @@ For more fine-grained control over how the `TabbedPane` behaves when being navig
 - **`Manual`**: When set to manual, the tab will receive focus but will not show until the user presses space or enter.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/tabbedpaneactivation?' 
+path='https://demo.webforj.com/tabbedpaneactivation?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneActivationView.java'
 height="250px"
 />
@@ -197,7 +197,7 @@ Individual `Tab` elements can be set to be closable. Closable tabs will have a c
 The `TabbedPane` comes with built-in `Expanse` and `Theme` options similar to other webforJ components. These can be used to quickly add styling that conveys various meaning to the end user without needing to style the component with CSS.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/tabbedpaneexpansetheme?' 
+path='https://demo.webforj.com/tabbedpaneexpansetheme?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneExpanseThemeView.java'
 height="250px"
 />

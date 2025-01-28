@@ -20,7 +20,7 @@ OptionDialog.showFileSaveDialog("Save your file");
 The `FileSaveDialog` provides a streamlined method for saving files to the file system, offering user-configurable options for file naming and handling existing files.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/filesavedialogbasic?' 
+path='https://demo.webforj.com/filesavedialogbasic?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/filesave/FileSaveDialogBasicView.java'
 height = '800px'
 />
@@ -120,7 +120,7 @@ dialog.setI18n(i18n);
 The `FileSaveDialog` allows you to set filters to limit the types of files that can be saved using the `setFilters(List<FileSaveFilter> filters)` method.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/filesavedialogfilters?' 
+path='https://demo.webforj.com/filesavedialogfilters?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/filesave/FileSaveDialogFiltersView.java'
 height = '800px'
 />

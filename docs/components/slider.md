@@ -9,7 +9,7 @@ title: Slider
 Use the `setMinimum()` and `setMaximum()` methods to determine the upper and lower bound of the slider. Each interval on the slider has a distance of 1, meaning that a slider with maximum 10 and minimum of 0 will have 10 intervals on the slider, whereas a maximum of 100 and minimum of 0 will have 100 intervals. These intervals will evenly distribute on the slider, depending on the height and width dimensions that it has been given by the developer. 
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/slidermaxmindemo?' 
+path='https://demo.webforj.com/slidermaxmindemo?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderMaxMinDemoView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/slider/MinMax.txt'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/slider/sliderMaxMinDemo.css' 
@@ -24,7 +24,7 @@ height = '225px'
 Slider components can be customized to show ticks, or spaces bounded by lines to represent distances. Major ticks will be larger and more noticeable than minor ticks, and both can be configured to appear at the desired intervals. It is also possible to set the slider to snap to the tick values using the `setSnapToTicks()` method.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/sliderlabeldemo?' 
+path='https://demo.webforj.com/sliderlabeldemo?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderLabelDemoView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/slider/Label.txt'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/slider/sliderLabelDemo.css' 
@@ -43,7 +43,7 @@ If tick snapping is enabled, the slider will only snap to ticked spaces specific
 <br />
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/slidertickdemo?' 
+path='https://demo.webforj.com/slidertickdemo?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderTickDemoView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/slider/Ticks.txt'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/slider/sliderTickDemo.css' 
@@ -58,7 +58,7 @@ height = '225px'
 Sliders can be oriented either horizontally or vertically by using the `setOrientation()` method.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/sliderorientationdemo?' 
+path='https://demo.webforj.com/sliderorientationdemo?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderOrientationDemoView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/slider/Orientation.txt'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/slider/sliderOrientationDemo.css' 
@@ -71,7 +71,7 @@ height = '400px'
 It is also possible to invert a slider. By default, the minimum value of a vertical slider is at the bottom and the maximum value is at the top. For a horizontal slider, the minimum value is to the left and the maximum value is to the right. The orientation reverses for inverted sliders.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/sliderinversiondemo?' 
+path='https://demo.webforj.com/sliderinversiondemo?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderInversionDemoView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/slider/Inversion.txt'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/slider/sliderInversionDemo.css' 
@@ -87,7 +87,7 @@ The slider component comes with 6 themes built in for quick styling without the 
 Shown below are sliders with each of the supported Themes applied: <br/>
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/sliderthemesdemo?' 
+path='https://demo.webforj.com/sliderthemesdemo?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderThemesDemoView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/slider/Themes.txt'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/slider/sliderThemesDemo.css' 

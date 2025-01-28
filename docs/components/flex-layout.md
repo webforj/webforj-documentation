@@ -26,7 +26,7 @@ The Flex Layout will add components next to one another according to the directi
 Alternatively, use the `setDirection()` method. The horizontal options are either `FlexDirection.ROW` (left to right) or `FlexDirection.ROW_REVERSE` (right to left), and the vertical options are either `FlexDirection.COLUMN` (top to bottom) or `FlexDirection.COLUMN_REVERSE` (bottom to top). This is done with the FlexLayout object, as opposed to the builder.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/flexdirection?' 
+path='https://demo.webforj.com/flexdirection?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/container/FlexDirectionView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/flexlayout/container/flexContainerBuilder.css'
 height="275px"
@@ -45,7 +45,7 @@ The `setAlignContent()` methods components the space around the cross axis, and 
 :::
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/flexpositioning?' 
+path='https://demo.webforj.com/flexpositioning?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/container/FlexPositioningView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/flexlayout/container/flexContainerBuilder.css'
 height="375px"
@@ -79,7 +79,7 @@ use the `.vertical().wrap()` combination.
 The following demo allows you to build a container with the desired flex properties selected from the various menus. This tool can be used not only to create a visual example of the various methods, but also as a tool to create your own layouts with your desired properties. To use a layout you customize, simply copy the output code and add your desired elements for use in your program.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/flexcontainerbuilder?' 
+path='https://demo.webforj.com/flexcontainerbuilder?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/container/FlexContainerBuilderView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/flexlayout/container/flexContainerBuilder.css'
 height="600px"
@@ -103,7 +103,7 @@ It's important to note that the order property only affects the visual order of 
 :::
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/flexorder?' 
+path='https://demo.webforj.com/flexorder?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/item/FlexOrderView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/flexlayout/container/flexContainerBuilder.css'
 height="320px"
@@ -122,7 +122,7 @@ Self alignment uses the same values as content alignment
 This property is especially useful when you need to align a specific item differently from the other items in the container. See the sample below for an example of aligning a single item:
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/flexselfalign?' 
+path='https://demo.webforj.com/flexselfalign?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/item/FlexSelfAlignView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/flexlayout/container/flexContainerBuilder.css'
 height="350px"
@@ -141,7 +141,7 @@ By default, the `Item Basis` property is set to auto, which means that the size 
 The following demo allows you to select one or more boxes and change the `Item Basis` for the selected items.
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/flexbasis?' 
+path='https://demo.webforj.com/flexbasis?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/FlexBasisView.java'
 height="300px"
 />
@@ -162,7 +162,7 @@ Similarly, when a container does not have enough space to accommodate its conten
 ## Example form
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/flexlayout?' 
+path='https://demo.webforj.com/flexlayout?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/FlexLayoutView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/flexlayout/flexLayout.css'
 height="620px"

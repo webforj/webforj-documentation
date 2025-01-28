@@ -33,7 +33,7 @@ Each part of the layout is a `Div`, which can contain any valid webforJ control.
 
 The following code sample will result in an application with a collapsible sidebar that contains a logo and tabs for various content options and a header. The demo uses the dwc-icon-button web component to create a drawer toggle button. The button has the data-drawer-toggle attribute which instructs the DwcAppLayout to listen to click events coming from that component to toggle the drawer state.
 
-<AppLayoutViewer path='https://demo.webforj.com/webapp/controlsamples/applayout?' mobile='false'
+<AppLayoutViewer path='https://demo.webforj.com/applayout?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayout/applayout.css'
 />
@@ -49,7 +49,7 @@ myApp.setHeaderOffscreen(false);
 myApp.setFooterOffscreen(false);
 ```
 
-<AppLayoutViewer path='https://demo.webforj.com/webapp/controlsamples/applayoutfullnavbar?' mobile='false'
+<AppLayoutViewer path='https://demo.webforj.com/applayoutfullnavbar?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutFullNavbarView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayout/applayout.css'/>
 
@@ -60,7 +60,7 @@ The navbar has no limit to the number of toolbars you can add. A toolbar is only
 
 The following demo shows how to use two toolbars, The first one houses the drawer's toggle button and the application's title. The second toolbar houses a secondary navigation menu.
 
-<AppLayoutViewer path='https://demo.webforj.com/webapp/controlsamples/applayoutmultipleheaders?' mobile='false'
+<AppLayoutViewer path='https://demo.webforj.com/applayoutmultipleheaders?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutMultipleHeadersView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayout/applayout.css'/>
 
@@ -74,7 +74,7 @@ When `AppLayout.setHeaderReveal(true)` is set called, the header will be visible
 
 With the help of the CSS custom property `--dwc-app-layout-header-collapse-height` it is possible to control how much of the header navbar will be hidden.
 
-<AppLayoutViewer path='https://demo.webforj.com/webapp/controlsamples/applayoutstickytoolbar?' mobile='false'
+<AppLayoutViewer path='https://demo.webforj.com/applayoutstickytoolbar?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutStickyToolbarView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayout/applayout.css'/>
 
@@ -88,7 +88,7 @@ Same as `AppLayout.setHeaderReveal()`, `AppLayout.setFooterReveal()` is supporte
 
 Be default, when the screen width is 800px or less , the drawer will be switched to popover mode. This is called the breakpoint. The popover mode means that the drawer will pop over the content area with an overlay. It is possible to configure the breakpoint by using the DwcAppLayout:setDrawerBreakpoint method and the breakpoint must be a valid [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries).
 
-<AppLayoutViewer path='https://demo.webforj.com/webapp/controlsamples/applayoutmobile?' mobile='true'
+<AppLayoutViewer path='https://demo.webforj.com/applayoutmobile?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutMobileView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayout/applayoutMobile.css'
 />
@@ -104,7 +104,7 @@ AppLayout demo = new AppLayout();
 demo.setDrawerBreakpoint("(max-width:500px)");
 ```
 
-<AppLayoutViewer path='https://demo.webforj.com/webapp/controlsamples/applayoutmobiledrawer?' mobile='true'
+<AppLayoutViewer path='https://demo.webforj.com/applayoutmobiledrawer?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutMobileDrawerView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/applayout/applayoutMobile.css'
 />

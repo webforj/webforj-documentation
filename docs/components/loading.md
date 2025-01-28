@@ -18,7 +18,7 @@ The simplest way to create a `Loading` component is by initializing it without a
 Here's an example of creating a `Loading` component with a message:
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/loadingdemo?' 
+path='https://demo.webforj.com/loadingdemo?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/loading/LoadingDemoView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/loadingstyles/loadingdemo.css'
 height = '300px'
@@ -60,7 +60,7 @@ The `Loading` component in webforJ includes a `Spinner` that visually indicates 
 Here's an example of how you can customize the spinner within a `Loading` component:
 
 <ComponentDemo 
-path='https://demo.webforj.com/webapp/controlsamples/loadingspinnerdemo?' 
+path='https://demo.webforj.com/loadingspinnerdemo?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/loading/LoadingSpinnerDemoView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/loadingstyles/loadingspinnerdemo.css'
 height = '300px'
