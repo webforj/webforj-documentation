@@ -1,0 +1,11 @@
+#__docusaurus {
+  [class^="tableOfContents"]{
+    background-color: var(--dwc-surface-3);
+    border-radius: var(--ifm-global-radius);
+    border: 1px solid var(--dwc-border-color);
+
+    ul {
+      border: none;
+    }
+  }
+}

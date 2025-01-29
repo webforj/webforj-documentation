@@ -1,0 +1,8 @@
+@import "./mixins/content-block.scss";
+
+.blog-wrapper {
+  main
+  {
+    @include content-block;
+  }
+}

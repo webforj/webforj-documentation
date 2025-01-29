@@ -1,0 +1,18 @@
+#__docusaurus {
+  .theme-doc-sidebar-container {
+    background-color: var(--dwc-surface-3);
+  }
+
+  .sidebar--item__hidden {
+    display: none !important;
+  }
+
+  .menu {
+    padding: .5rem !important;
+  }
+
+  .menu__list:not(.theme-doc-sidebar-menu) {
+    margin-left: var(--ifm-menu-link-padding-horizontal);
+    border-left: thin dotted var(--menu-level-indicator-color);
+  }
+}

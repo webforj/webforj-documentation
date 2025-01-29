@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Button Icon</title>
+    <script
+      type="module"
+      src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.esm.js"
+    ></script>
+    <script nomodule src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.js"></script>
+
+    <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.css" />
+
+    <style>
+        .loginBlur{
+            backdrop-filter: blur(10px);
+        }
+    </style>
+  </head>
+
+  <body>
+    <bbj-dialog dwcj-component="7639896b" class="loginForm bbj-opened hydrated" tabindex="0" alignment="center" opened="" theme="default" data-js-focus-visible="" style="background-image: url('https://images.pling.com/img/00/00/59/97/06/1588511/1c58fba17fc4c48cd52cf17dd3f36556396e73e34a3d37e5aec6098ccdb01f3d1867.jpg'); background-size: 100% 100%; background-repeat: no-repeat"><div bbj-id="12" id="simple-12" class="BBjSimpleWindow BBjChildWindow BBjWindow BBjControl bbj-2-102" dwcj-slot="7639896b" bbj-remove="true" slot="header" style="border-style: none;"><div bbj-id="16" id="text-16" class="BBjStaticText BBjControl bbj-2-100" style="text-align: left;">Header</div></div><div bbj-id="14" id="simple-14" class="BBjSimpleWindow BBjChildWindow BBjWindow BBjControl bbj-3-103" dwcj-slot="7639896b" bbj-remove="true" slot="content" style="border-style: none; overflow: auto;">
+        <bbj-button id="bbj-button-17" bbj-id="17" expanse="" accesskey="" class="bbj-3-100 BBjControl BBjButton hydrated" theme="default" data-js-focus-visible="">Toggle Background Blur</bbj-button>
+        <script>
+            document.querySelector('#bbj-button-17').addEventListener('click', () => {
+                document.querySelector('.loginForm').style.filter = "blur(10px)";
+            }); 
+        </script>
+    </div><div bbj-id="10" id="simple-10" class="BBjSimpleWindow BBjChildWindow BBjWindow BBjControl bbj-1-101" dwcj-slot="7639896b" bbj-remove="true" slot="footer" style="border-style: none;"><div bbj-id="18" id="text-18" class="BBjStaticText BBjControl bbj-1-100" style="text-align: left;">Footer</div></div></bbj-dialog>    </body>
+</html>
+

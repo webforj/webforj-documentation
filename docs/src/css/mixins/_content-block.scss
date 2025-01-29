@@ -1,0 +1,6 @@
+@mixin content-block() {
+  background-color: var(--dwc-surface-3);
+  padding: 2rem;
+  border: 1px solid var(--dwc-border-color);
+  border-radius: var(--ifm-global-radius);
+}

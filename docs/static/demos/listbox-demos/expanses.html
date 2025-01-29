@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Button Icon</title>
+    <script
+      type="module"
+      src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.esm.js"
+    ></script>
+    <script nomodule src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.js"></script>
+
+    <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.css" />
+    <style>
+      body{
+        background-color: white;
+    }
+    
+    .wrapper{
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <bbj-list label="X-SMALL" item-label="Example Data" expanse="xs"></bbj-list>
+      <bbj-list label="SMALL" item-label="Example Data" expanse="s"></bbj-list>
+      <bbj-list label="MEDIUM" item-label="Example Data" expanse="m"></bbj-list>
+      <bbj-list label="LARGE" item-label="Example Data" expanse="l"></bbj-list>
+      <bbj-list label="X-LARGE" item-label="Example Data" expanse="xl"></bbj-list>
+    </div>
+      <script>
+          var list = document.querySelectorAll('bbj-list');
+          var data = [];
+          for(var i = 0; i < 5; i++){
+            data.push({
+                label: "Item " + i.toString(),
+                value: "Item " + i.toString()
+            })
+          }
+          list.forEach(i => {
+            i.items = data
+          });
+          </script>
+  </body>
+</html>

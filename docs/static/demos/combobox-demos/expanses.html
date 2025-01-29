@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Button Icon</title>
+    <script
+      type="module"
+      src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.esm.js"
+    ></script>
+    <script nomodule src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.js"></script>
+
+    <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.css" />
+    <style>
+      body{
+        background-color: white;
+    }
+    
+    .wrapper{
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <bbj-list-button expanse="xs" item-label="X-SMALL">X-SMALL</bbj-list-button>
+      <bbj-list-button expanse="s" item-label="SMALL">SMALL</bbj-list-button>
+      <bbj-list-button expanse="m" item-label="MEDIUM">MEDIUM</bbj-list-button>
+      <bbj-list-button expanse="l" item-label="LARGE">LARGE</bbj-list-button>
+      <bbj-list-button expanse="xl" item-label="X-LARGE">X-LARGE</bbj-list-button>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Button Icon</title>
+    <script
+      type="module"
+      src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.esm.js"
+    ></script>
+    <script nomodule src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.js"></script>
+
+    <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.css" />
+    <style>
+      body{
+        background-color: white;
+    }
+    
+    .wrapper{
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    </style>
+  </head>
+  <body>
+    <div>
+        <div class="wrapper">
+            <bbj-inputn label="X-SMALL" expanse="xs"></bbj-inputn>
+            <bbj-inputn label="SMALL" expanse="s"></bbj-inputn>
+            <bbj-inputn label="MEDIUM" expanse="m"></bbj-inputn>
+        </div>
+        <div class="wrapper">
+            <bbj-inputn label="LARGE" expanse="l"></bbj-inputn>
+            <bbj-inputn label="X-LARGE" expanse="xl"></bbj-inputn>
+        </div>
+    </div>
+  </body>
+</html>

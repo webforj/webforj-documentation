@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Button Icon</title>
+    <script
+      type="module"
+      src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.esm.js"
+    ></script>
+    <script nomodule src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.js"></script>
+
+    <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.css" />
+    <style>
+      body{
+        background-color: white;
+    }
+    
+    .wrapper{
+      display: flex;
+      gap: 200px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 50px 0 50px;
+    }
+
+    .label__wrapper{
+        display: flex;
+        justify-content: center;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="label__wrapper">
+        <p>Min: 50, Max: 200</p>
+    </div>
+    <div class="wrapper">
+      <bbj-progressbar min="50" max="200" value="100" text="{{x}}%" ></bbj-progressbar>
+    </div>
+  </body>
+</html>

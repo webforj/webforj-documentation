@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Button Icon</title>
+    <script
+      type="module"
+      src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.esm.js"
+    ></script>
+    <script nomodule src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.js"></script>
+
+    <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.css" />
+    <style>
+      body{
+        background-color: white;
+    }
+    
+    .wrapper{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 100px 0 100px;
+    }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <bbj-progressbar theme="default" value="80" text="DEFAULT" ></bbj-progressbar>
+      <bbj-progressbar theme="danger" value="70" text="DANGER" ></bbj-progressbar>
+      <bbj-progressbar theme="gray" value="60" text="GRAY" ></bbj-progressbar>
+      <bbj-progressbar theme="info" value="50" text="INFO" ></bbj-progressbar>
+      <bbj-progressbar theme="success" value="40" text="SUCCESS" ></bbj-progressbar>
+      <bbj-progressbar theme="warning" value="30" text="WARNING" ></bbj-progressbar>
+    </div>
+  </body>
+</html>

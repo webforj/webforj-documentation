@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover, user-scalable=no"
+    />
+    <title>BBjAppLayout - Multi Toolbars</title>
+    <script
+      type="module"
+      src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.esm.js"
+    ></script>
+    <script nomodule src="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.js"></script>
+
+    <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/cdn.bbx.kitchen/next/bbj-ui.css" />
+    <style>
+      html,
+      body {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+      }
+
+      .bbj-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--bbj-space-m) 0;
+        margin-bottom: var(--bbj-space-m);
+        border-bottom: thin solid var(--bbj-color-default);
+      }
+
+      .bbj-logo img {
+        max-width: 100px;
+      }
+
+      .bbj-toolbar {
+        display: flex;
+        align-items: center;
+        gap: var(--bbj-space-m);
+        padding: 0 var(--bbj-space-m);
+      }
+
+      hr {
+        border: thin solid var(--bbj-color-default-light);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <bbj-app-layout fit-viewport>
+        <div slot="header">
+          <div class="bbj-toolbar">
+            <bbj-icon-button name="menu-2" data-drawer-toggle></bbj-icon-button>
+            <h3 data-app-title>DWC Application</h3>
+          </div>
+          <div>
+            <bbj-tabs-list nobody borderless>
+              <bbj-tab slot="nav">
+                <bbj-icon name="report-money"></bbj-icon>
+                Sales
+              </bbj-tab>
+              <bbj-tab slot="nav">
+                <bbj-icon name="building"></bbj-icon>
+                Enterprise
+              </bbj-tab>
+              <bbj-tab slot="nav" data-name="Customers">
+                <bbj-icon name="credit-card"></bbj-icon>
+                Payments
+              </bbj-tab>
+              <bbj-tab slot="nav">
+                <bbj-icon name="history"></bbj-icon>
+                History
+              </bbj-tab>
+            </bbj-tabs-list>
+          </div>
+        </div>
+
+        <div slot="drawer">
+          <div class="bbj-logo">
+            <img src="https://i.ibb.co/1n4n1Nh/logo.png" alt="logo" />
+          </div>
+          <bbj-tabs-list placement="left" nobody borderless>
+            <bbj-tab slot="nav" data-name="Dashboard">
+              <bbj-icon name="dashboard"></bbj-icon>
+              Dashboard
+            </bbj-tab>
+            <bbj-tab slot="nav" data-name="Orders">
+              <bbj-icon name="shopping-cart"></bbj-icon>
+              Orders
+            </bbj-tab>
+            <bbj-tab slot="nav" data-name="Customers">
+              <bbj-icon name="users"></bbj-icon>
+              Customers
+            </bbj-tab>
+            <bbj-tab slot="nav" data-name="Products">
+              <bbj-icon name="box"></bbj-icon>
+              Products
+            </bbj-tab>
+            <bbj-tab slot="nav" data-name="Documents">
+              <bbj-icon name="files"></bbj-icon>
+              Documents
+            </bbj-tab>
+            <bbj-tab slot="nav" data-name="Tasks">
+              <bbj-icon name="checklist"></bbj-icon>
+              Tasks
+            </bbj-tab>
+            <bbj-tab slot="nav" data-name="Analytics">
+              <bbj-icon name="chart-dots-2"></bbj-icon>
+              Analytics
+            </bbj-tab>
+          </bbj-tabs-list>
+        </div>
+
+        <h1>Application Title</h1>
+        <p>Content goes here</p>
+      </bbj-app-layout>
+
+      <script>
+        const tabs = document.querySelector('bbj-tabs-list[placement="left"]');
+        tabs.addEventListener("bbj-tab-selected", (e) => {
+          const content = document.querySelector("p");
+          content.innerHTML = `Content for ${e.detail.tab.dataset.name} goes here`;
+        });
+      </script>
+    </div>
+  </body>
+</html>

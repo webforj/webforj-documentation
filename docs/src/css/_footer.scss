@@ -1,0 +1,21 @@
+#__docusaurus {
+  .footer {
+    padding: 0;
+    border-top: 1px solid var(--dwc-border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .footer__links {
+      margin: 0;
+    }
+
+    .footer__link-item {
+      display: block !important;
+
+      p {
+        margin: 0.5rem 0;
+      }
+    }
+  }
+}

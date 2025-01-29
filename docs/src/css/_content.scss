@@ -1,0 +1,30 @@
+@import "./mixins/content-block.scss";
+
+#__docusaurus {
+  [class^="docItemContainer"],
+  [class^="generatedIndexPage"]
+  {
+    @include content-block;
+  }
+
+  img[src$="#rounded-border"]{
+    border-radius: 4px;
+    border: 1px solid hsl(
+      var(--dwc-color-default-h),
+      var(--dwc-color-default-s),
+      80%
+    );
+  }
+}
+
+[data-theme="dark"] {
+  #__docusaurus {
+    img[src$="#rounded-border"]{
+      border-color: hsl(
+        var(--dwc-color-default-h),
+        var(--dwc-color-default-s),
+        40%
+      );
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{ 
+  "button": {
+    "parts":[
+      "dropdown",
+      "dropdown-icon",
+      "dropdown-separator"
+    ],
+    "slots": [
+
+    ],
+    "properties": [
+      "--dwc-button-selected-background",
+      "--dwc-button-selected-color",
+      "--dwc-button-separator-color"
+    ],
+    "reflects": [
+      "toggleable", 
+      "selected"
+    ]
+  },
+  "splitter": {
+    "reflects": [
+      "theme"
+    ]
+  }
+}

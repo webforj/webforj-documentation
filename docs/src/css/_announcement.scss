@@ -1,0 +1,15 @@
+#__docusaurus {
+  div[class^="announcementBar_"] {
+    background: var(--announcement-background);
+    color: var(--announcement-color);
+    height: var(--announcement-bar-height);
+    font-size: 1.04rem;
+    font-weight: 500;
+    letter-spacing: 0.01em !important;
+    border-bottom: 0;
+
+    button {
+      color: inherit;
+    }
+  }
+}

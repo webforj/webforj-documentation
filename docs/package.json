@@ -1,0 +1,55 @@
+{
+  "name": "dwcj-documentation",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "serve": "docusaurus serve",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids"
+  },
+  "dependencies": {
+    "@docusaurus/core": "^3.6.3",
+    "@docusaurus/plugin-client-redirects": "^3.6.3",
+    "@docusaurus/plugin-content-docs": "^3.6.3",
+    "@docusaurus/plugin-google-gtag": "^3.6.3",
+    "@docusaurus/plugin-google-tag-manager": "^3.6.3",
+    "@docusaurus/preset-classic": "^3.6.3",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mdx-js/react": "^3.0.0",
+    "@mui/icons-material": "^5.14.1",
+    "@mui/material": "^5.14.11",
+    "clsx": "^1.2.1",
+    "docusaurus-plugin-sass": "^0.2.5",
+    "prism-react-renderer": "^2.1.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-material-ui-carousel": "^3.4.2",
+    "sass": "^1.79.4"
+  },
+  "devDependencies": {
+    "@docusaurus/module-type-aliases": "^3.6.3",
+    "@docusaurus/types": "^3.6.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0"
+  }
+}
