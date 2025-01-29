@@ -11,7 +11,7 @@ title: ProgressBar
 ProgressBar is component that visually displays the progress of some task. As the task progresses towards completion, the progress bar displays the task's percentage of completion. This percentage is represented visually by a rectangle which starts out empty and gradually becomes filled in as the task progresses. In addition, the progress bar can display a textual representation of this percentage.
 
 <ComponentDemo 
-path='https://demo.webforj.com/progressbarbasic?' 
+path='/webforj/progressbarbasic?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarBasicView.java'
 height='150px'
 />
@@ -40,7 +40,7 @@ bar.setValue(50);
 The `ProgressBar` can be oriented horizontally or vertically.
 
 <ComponentDemo 
-path='https://demo.webforj.com/progressbarorientation?' 
+path='/webforj/progressbarorientation?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarOrientationView.java'
 height='175px'
 />
@@ -50,7 +50,7 @@ height='175px'
 The `ProgressBar` supports an indeterminate state for tasks with unknown completion time.
 
 <ComponentDemo 
-path='https://demo.webforj.com/progressbardeterminate?' 
+path='/webforj/progressbardeterminate?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarDeterminateView.java'
 height='25px'
 />
@@ -72,7 +72,7 @@ The `ProgressBar` component comes with <JavadocLink type="foundation" location="
 They offer a quick and consistent way to customize the look of ProgressBars throughout an app. 
 
 <ComponentDemo 
-path='https://demo.webforj.com/progressbarthemes?' 
+path='/webforj/progressbarthemes?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarThemesView.java'
 height='320px'
 />

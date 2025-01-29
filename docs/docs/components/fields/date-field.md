@@ -14,7 +14,7 @@ description: A component that provides a default browser-based date picker for s
 The `DateField` is a field component that allows users to input or select dates by the year, month, and day. It provides an intuitive and efficient way to handle date-related information in various apps, and offers the flexibility to validate a user's input.
 
 <ComponentDemo 
-path='https://demo.webforj.com/datefield?'
+path='/webforj/datefield?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/fields/datefield/DateFieldView.java'
 />
 

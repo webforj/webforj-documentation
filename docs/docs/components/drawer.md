@@ -9,7 +9,7 @@ The drawer is a container that slides into the viewport to expose additional opt
 
 The Drawer component can be used in many different situations, such as by providing a navigation menu that can be toggled, a panel that displays supplementary or contextual information, or to optimize usage on a mobile device. The following example will show a mobile application that uses the webforJ AppLayout component, and displays a "Welcome Popup" drawer at the bottom when first loaded. Additionally, a navigational Drawer component can be toggled in the application by clicking on the hamburger menu.
 
-<AppLayoutViewer path='https://demo.webforj.com/drawerwelcome?' mobile='true'
+<AppLayoutViewer path='/webforj/drawerwelcome?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/drawer/drawerWelcome.css'
 />
@@ -25,7 +25,7 @@ cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/r
 4. **Notifications**: For applications with notifications or alerts, a drawer can slide in to display new messages or updates. Users can quickly check and dismiss notifications without leaving their current view.
 
 <ComponentDemo
-path='https://demo.webforj.com/drawerdemo?'
+path='/webforj/drawerdemo?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerDemoView.java'
 height='600px'
 />
@@ -47,7 +47,7 @@ By automatically focusing on the first item, the developer ensures that users ca
 This property can also be particularly beneficial for individuals who rely on keyboard navigation or assistive technologies such as screen readers. It provides a clear starting point within the drawer and allows users to access the desired functionality without unnecessary manual input.
 
 <ComponentDemo
-path='https://demo.webforj.com/drawerautofocus?'
+path='/webforj/drawerautofocus?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerAutoFocusView.java'
 height='600px'
 />
@@ -119,7 +119,7 @@ The placement property allows developers to choose the most appropriate position
 By leveraging the placement property, developers can create intuitive and efficient user interfaces. For example, placing the drawer on the left or right side allows for quick access to additional functionalities or navigation options, while top or bottom placements are well-suited for contextual information or supplementary content.
 
 <ComponentDemo
-path='https://demo.webforj.com/drawerplacement?'
+path='/webforj/drawerplacement?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerPlacementView.java'
 height='600px'
 />

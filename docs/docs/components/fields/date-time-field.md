@@ -14,7 +14,7 @@ description: A component that provides a default browser-based date and time pic
 The `DateTimeField` component is designed to allow users to input both a date and a time. This includes specifying the year, month, and day, along with the time in hours and minutes. It provides users with the option to validate their input for accuracy or utilize a dedicated date-time picker interface to streamline the selection process.
 
 <ComponentDemo 
-path='https://demo.webforj.com/datetimefield?' 
+path='/webforj/datetimefield?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/fields/datetimefield/DateTimeFieldView.java'
 />
 

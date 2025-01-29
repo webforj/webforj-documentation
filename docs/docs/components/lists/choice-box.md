@@ -44,7 +44,7 @@ dropdown using CSS or shadow part selectors from the parent component becomes ch
 In the demo below, the Dropdown type is set and used in the CSS file to select the dropdown and change the background color.
 
 <ComponentDemo 
-path='https://demo.webforj.com/choiceboxdropdowntype?' 
+path='/webforj/choiceboxdropdowntype?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/lists/choicebox/ChoiceboxDropdownTypeView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/choicebox/DropdownType.txt'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/lists/combobox/comboBoxDropDownType.css'
@@ -60,7 +60,7 @@ Using a number that is less than or equal to 0 will result in unsetting this pro
 :::
 
 <ComponentDemo 
-path='https://demo.webforj.com/choiceboxmaxrow?' 
+path='/webforj/choiceboxmaxrow?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/lists/choicebox/ChoiceboxMaxRowView.java'
 javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/choicebox/MaxRow.txt'
 height='450px'

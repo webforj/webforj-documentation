@@ -7,7 +7,7 @@ slug: filtering
 The `Table` component allows you to implement filtering functionality to narrow down displayed data based on specific criteria. Filtering can be achieved by defining a filtering criteria using the `setFilter(Predicate<T> filter)` method provided by the `Repository` associated with the table.
 
 <ComponentDemo
-path='https://demo.webforj.com/tablefiltering?' 
+path='/webforj/tablefiltering?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableFilteringView.java'
 urls={['https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
 'https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}

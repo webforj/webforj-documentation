@@ -84,7 +84,7 @@ This could also be implemented in the `onDidCreate()` method, which would give d
 This component is then instantiated and utilized in an Application, and allows for its use throughout various locations, making it a powerful tool in the creation of custom components.
  
 <ComponentDemo 
-path='https://demo.webforj.com/compositedemo?' 
+path='/webforj/compositedemo?' 
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/compositeDemo.css'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeDemoView.java'
 height='550px'

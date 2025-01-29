@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
   <groupId>com.webforj.samples</groupId>
   <artifactId>webforj-samples</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
-
-    <webforj.version>24.21-SNAPSHOT</webforj.version>
-
+    <webforj.version>24.21</webforj.version>
     <jetty.version>12.0.14</jetty.version>
     <!--
       Configures automatic reload of Jetty server
@@ -27,7 +20,6 @@
     <jetty.port>8080</jetty.port>
     <jetty.stopPort>9966</jetty.stopPort>
   </properties>
-
   <repositories>
     <repository>
       <id>snapshots-repo</id>
@@ -39,7 +31,6 @@
       </snapshots>
     </repository>
   </repositories>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -49,7 +40,6 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
@@ -59,7 +49,6 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
   <dependencies>
     <dependency>
       <groupId>com.webforj</groupId>
@@ -74,13 +63,11 @@
       <groupId>com.webforj</groupId>
       <artifactId>webforj-terminal</artifactId>
     </dependency>
-
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
       <version>2.0.16</version>
     </dependency>
-
     <dependency>
       <groupId>com.microsoft.playwright</groupId>
       <artifactId>playwright</artifactId>
@@ -93,9 +80,66 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
   <build>
     <plugins>
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>1.15.1</version>
+        <executions>
+          <execution>
+            <id>install node and npm</id>
+            <goals>
+              <goal>install-node-and-npm</goal>
+            </goals>
+            <phase>generate-resources</phase>
+          </execution>
+          <execution>
+            <id>npm install</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>generate-resources</phase>
+          </execution>
+          <execution>
+            <id>npm run build</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>generate-resources</phase>
+            <configuration>
+              <arguments>run build</arguments>
+            </configuration>
+          </execution>
+        </executions>
+        <configuration>
+          <nodeVersion>v23.5.0</nodeVersion>
+          <npmVersion>10.9.2</npmVersion>
+          <workingDirectory>docs</workingDirectory>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.3.1</version>
+        <executions>
+          <execution>
+            <id>copy static docs</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.outputDirectory}/static</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>docs/build</directory>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
@@ -112,7 +156,6 @@
           </webResources>
         </configuration>
       </plugin>
-
       <plugin>
         <groupId>org.eclipse.jetty.ee8</groupId>
         <artifactId>jetty-ee8-maven-plugin</artifactId>
@@ -145,7 +188,6 @@
           </execution>
         </executions>
       </plugin>
-
       <!-- Runs the integration tests (*IT) after the server is started -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -163,7 +205,6 @@
           <trimStackTrace>false</trimStackTrace>
         </configuration>
       </plugin>
-
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
@@ -174,8 +215,7 @@
             <phase>process-resources</phase>
             <configuration>
               <target>
-                <copy file="src/main/resources/${config.file}"
-                  tofile="${project.build.outputDirectory}/webforj.conf" />
+                <copy file="src/main/resources/${config.file}" tofile="${project.build.outputDirectory}/webforj.conf"/>
               </target>
             </configuration>
             <goals>
@@ -186,7 +226,6 @@
       </plugin>
     </plugins>
   </build>
-
   <profiles>
     <profile>
       <id>prod</id>

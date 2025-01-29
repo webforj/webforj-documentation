@@ -13,7 +13,7 @@ The `Element` component cannot be extended, and is not the base component for al
 :::
 
 <ComponentDemo 
-path='https://demo.webforj.com/elementinputdemo?' 
+path='/webforj/elementinputdemo?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputDemoView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/element/elementInput.css'
 />
@@ -25,7 +25,7 @@ In order to utilize events that may come with your element, you can use the `Ele
 There are also additional options to further customize events by using the Event Options configurations.
 
 <ComponentDemo 
-path='https://demo.webforj.com/elementinputevent?' 
+path='/webforj/elementinputevent?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputEventView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/element/elementInputEvent.css'
 height='240px'
@@ -48,7 +48,7 @@ The `Element` component supports the composition of child components. Developers
 
 
 <ComponentDemo 
-path='https://demo.webforj.com/elementinputtext?' 
+path='/webforj/elementinputtext?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputTextView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/element/elementInput.css'
 height='175px'
@@ -98,7 +98,7 @@ Both synchronous and asynchronous function calling will wait to call a method un
 In the demo below, an event is added to an HTML `Button`. This event is then fired programmatically by calling the `callJsFunctionAsync()` method. The resulting [`PendingResult`](#) is then used to create another message box once the asynchronous function has been completed.
 
 <ComponentDemo 
-path='https://demo.webforj.com/elementinputfunction?' 
+path='/webforj/elementinputfunction?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/element/ElementInputFunctionView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/element/elementInput.css'
 height='240px'

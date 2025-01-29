@@ -12,7 +12,7 @@ A `RadioButton` component stores the group to which it belongs, which can be acc
 :::
 
 <ComponentDemo 
-path='https://demo.webforj.com/radiobuttongroup?' 
+path='/webforj/radiobuttongroup?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonGroupView.java'
 height="200px"
 />

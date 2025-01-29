@@ -29,7 +29,7 @@ toast.open();
 ```
 
 <ComponentDemo 
-path='https://demo.webforj.com/toast?'
+path='/webforj/toast?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastView.java'
 height='200px'
 />
@@ -93,7 +93,7 @@ toast.open();
 ```
 
 <ComponentDemo 
-path='https://demo.webforj.com/toastplacement?'
+path='/webforj/toastplacement?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastPlacementView.java'
 height='320px'
 />
@@ -109,7 +109,7 @@ The `Toast` component can display multiple notifications simultaneously, stackin
 Although `Toast` notifications don't require user interaction by default, webforJ allows you to add buttons or other interactive elements to make them more useful than simple notifications. 
 
 <ComponentDemo 
-path='https://demo.webforj.com/toastcookies?'
+path='/webforj/toastcookies?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastCookiesView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toast/toastCookies.css'
 height='350px'
@@ -141,7 +141,7 @@ Since the `Toast` isn't located in a specific position in the DOM, you can targe
 :::
 
 <ComponentDemo 
-path='https://demo.webforj.com/toasttheme?'  
+path='/webforj/toasttheme?'  
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastThemeView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toast/toastTheme.css'
 height='200px'

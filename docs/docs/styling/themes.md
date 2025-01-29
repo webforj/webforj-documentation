@@ -40,7 +40,7 @@ An example of this behavior would be as follows:
 To override the `dark` or `dark-pure` theme, you should define your variables using the `html[data-app-theme='dark']` and `html[data-app-theme='dark-pure']` rules respectively. For example:
 
 ```css
-html[data-app-theme='dark'] {
+html[data-app-theme="dark"] {
   --dwc-color-primary-s: 9%;
   --dwc-color-white: hsl(210, 17%, 82%);
 }
@@ -53,7 +53,7 @@ In addition to the themes that come with webforJ, it is also possible to create 
 New themes should be defined in `html[data-app-theme='THEME_NAME']` in your application stylesheet:
 
 ```css
-html[data-app-theme='new-theme'] {
+html[data-app-theme="new-theme"] {
   --dwc-color-primary-h: 280;
   --dwc-color-primary-s: 100%;
   --dwc-color-primary-c: 60;
@@ -66,7 +66,6 @@ The [Themer tool](https://demo.webforj.com/webapp/DWCThemer) allows you to modif
 
 To do this, open the tool, and modify the various color, typography, spacing and other options to your preferred values. Once this has been done, export the theme by clicking the "Export" button at the top left of the screen.
 
-This will open a dialog with various options which will allow you to change the name of the generated `.css` file, give the theme a name, etc. 
+This will open a dialog with various options which will allow you to change the name of the generated `.css` file, give the theme a name, etc.
 
-In particular, note the **"Output Format"** section - this section allows the user to decide whether to override the current theme, or generate a new one that can be switched to dynamically. If the **"root"** option is chosen, the corresponding CSS that is generated will apply to the `:root` CSS pseudo-class and override existing theme rules. Selecting **named_html** will instead create a new theme in the `html[data-app-theme='YOUR-THEME']` format.  
-
+In particular, note the **"Output Format"** section - this section allows the user to decide whether to override the current theme, or generate a new one that can be switched to dynamically. If the **"root"** option is chosen, the corresponding CSS that is generated will apply to the `:root` CSS pseudo-class and override existing theme rules. Selecting **named_html** will instead create a new theme in the `html[data-app-theme='YOUR-THEME']` format.

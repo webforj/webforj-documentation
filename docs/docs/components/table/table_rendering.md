@@ -97,7 +97,7 @@ Renderers allow for custom events to be written as well by extending any of the 
 Below is an example of a `Table` that uses renderers to display rich content:
 
 <ComponentDemo 
-path='https://demo.webforj.com/tablerichcontent?' 
+path='/webforj/tablerichcontent?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableRichContentView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/table/tableRichContent.css'
 urls={['https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 

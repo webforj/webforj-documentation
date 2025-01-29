@@ -28,7 +28,7 @@ The resulting string will be returned from the `show()` method, or the equivalen
 :::
 
 <ComponentDemo 
-path='https://demo.webforj.com/fileuploaddialogbasic?' 
+path='/webforj/fileuploaddialogbasic?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/fileupload/FileUploadDialogBasicView.java'
 height = '400px'
 />

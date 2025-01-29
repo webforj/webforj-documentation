@@ -28,7 +28,7 @@ To use the `GoogleChart` class in your app, use the following XML in your POM fi
 The `GoogleChart` class is a comprehensive solution for embedding rich, interactive charts within web applications. This class acts as a bridge to the [Google Charts](https://developers.google.com/chart) library, offering a wide variety of chart types suitable for any data visualization task.
 
 <ComponentDemo 
-path='https://demo.webforj.com/chart?' 
+path='/webforj/chart?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/googlecharts/chart.css'
 height='300px'
@@ -40,7 +40,7 @@ height='300px'
 The `GoogleChart` addon offers a comprehensive array of chart types to suit various data visualization requirements. Selecting the appropriate chart type is essential for effectively communicating the data's story. See the gallery below for examples of common charts that can be used in a webforJ app.
 
 <ComponentDemo 
-path='https://demo.webforj.com/chartgallery?' 
+path='/webforj/chartgallery?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartGalleryView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/googlecharts/chartGallery.css'
 height='600px'
@@ -107,7 +107,7 @@ chart.setData(data);
 Once the data is prepared, it can be applied to the GoogleChart using the setData method.
 
 <ComponentDemo 
-path='https://demo.webforj.com/chartsettingdata?' 
+path='/webforj/chartsettingdata?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartSettingDataView.java'
 height='300px'
 />
@@ -146,7 +146,7 @@ Invoke `redraw()` in scenarios such as:
 - **For Responsive Adjustments**: Adjusts the chart's layout or size when the container's dimensions change, ensuring optimal display across devices.
 
 <ComponentDemo 
-path='https://demo.webforj.com/chartredraw?' 
+path='/webforj/chartredraw?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartRedrawView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/googlecharts/chartRedraw.css'
 height='650px'

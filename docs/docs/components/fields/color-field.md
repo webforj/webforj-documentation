@@ -16,7 +16,7 @@ The `ColorField` component is a versatile tool that allows users to explore and 
 The `ColorField` component is implemented as a native browser feature, so the presentation can differ greatly depending on the browser and platform. However, this variation is beneficial, as it aligns with the user’s familiar environment. It might appear as a simple text input to ensure a properly formatted color value, a platform-standard color picker, or even a custom color picker interface.
 
 <ComponentDemo 
-path='https://demo.webforj.com/colorfield?' 
+path='/webforj/colorfield?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/fields/colorfield/ColorFieldView.java'
 cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/fields/colorfield/colorFieldDemo.css'
 height='300px'
