@@ -12,6 +12,7 @@ import arrowUp from "../../../static/img/expand.png";
 import arrowDown from "../../../static/img/fold.png";
 import test3 from "../../../static/img/window-maximize.png";
 import { useColorMode } from "@docusaurus/theme-common";
+import GLOBALS from "../../../siteConfig";
 
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 
@@ -151,6 +152,9 @@ export default function ComponentDemo({
   const iframeRef = useRef(null);
   const codeButtonRef = useRef(null);
 
+  const isLocalhost = typeof window !== "undefined" &&
+  window.location.hostname === "localhost" &&
+  window.location.port === "3000";
   useEffect(() => {
     if (javaE) {
       fetch(javaE)
@@ -381,13 +385,13 @@ export default function ComponentDemo({
           <iframe
             onMouseUp={stopResizing}
             loading="lazy"
-            src={path + "&__theme__=" + useColorMode().colorMode}
+            src={(isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path + "&__theme__=" + useColorMode().colorMode}
             css={iframeStyles}
             ref={iframeRef}
             onMouseMove={resize}
           ></iframe>
           <div css={fadeInButton} ref={codeButtonRef}>
-            <OpenNewWindowButton url={path} />
+            <OpenNewWindowButton url={(isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path} />
           </div>
           <div css={resizeBarStyles} onMouseDown={startResizing}>
             <DragIndicatorIcon />

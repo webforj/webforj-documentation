@@ -14,6 +14,7 @@ import TabSwitcher from '@site/src/components/DocsTools/TabSwitcher';
 import DocCardList from '@theme/DocCardList';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import GLOBALS from '../../siteConfig';
 
 
 export default {
