@@ -107,14 +107,14 @@ const config = {
           position: 'right',
           items: [
             {
-              to: 'blog',
-              label: 'Blog'
-            },
-            {
               label: "Events",
               href: 'https://webforj.com/events/',
               target: '_blank',
               rel: null,
+            },
+            {
+              to: 'blog',
+              label: 'Blog'
             }
           ]
         },
