@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.webforj.samples</groupId>
   <artifactId>webforj-samples</artifactId>
@@ -78,6 +80,11 @@
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.tuckey</groupId>
+      <artifactId>urlrewritefilter</artifactId>
+      <version>4.0.4</version>
     </dependency>
   </dependencies>
   <build>
@@ -215,7 +222,8 @@
             <phase>process-resources</phase>
             <configuration>
               <target>
-                <copy file="src/main/resources/${config.file}" tofile="${project.build.outputDirectory}/webforj.conf"/>
+                <copy file="src/main/resources/${config.file}"
+                  tofile="${project.build.outputDirectory}/webforj.conf" />
               </target>
             </configuration>
             <goals>

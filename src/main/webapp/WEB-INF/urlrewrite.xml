@@ -1,0 +1,6 @@
+<urlrewrite>
+    <rule>
+        <from>^/docs/.*$</from>
+        <to>/index.html</to>
+    </rule>
+</urlrewrite>
