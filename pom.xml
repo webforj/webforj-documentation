@@ -12,6 +12,7 @@
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
     <webforj.version>24.21</webforj.version>
+    <warFileName>${artifactId}-${version}</warFileName>
     <jetty.version>12.0.14</jetty.version>
     <!--
       Configures automatic reload of Jetty server
@@ -21,6 +22,7 @@
     <jetty.scan>1</jetty.scan>
     <jetty.port>8080</jetty.port>
     <jetty.stopPort>9966</jetty.stopPort>
+
   </properties>
   <repositories>
     <repository>
@@ -88,6 +90,7 @@
     </dependency>
   </dependencies>
   <build>
+    <finalName>${warFileName}</finalName>
     <plugins>
       <plugin>
         <groupId>com.github.eirslett</groupId>
