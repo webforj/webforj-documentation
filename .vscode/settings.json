@@ -1,5 +1,28 @@
 {
-    "java.configuration.updateBuildConfiguration": "automatic",
-    "java.checkstyle.version": "10.12.1",
-    "java.checkstyle.configuration": "${workspaceFolder}\\target\\checkstyle-checker.xml"
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "java.checkstyle.version": "10.12.1",
+  "java.checkstyle.configuration": "${workspaceFolder}\\target\\checkstyle-checker.xml",
+  "java.completion.favoriteStaticMembers": [
+    "org.junit.Assert.*",
+    "org.junit.Assume.*",
+    "org.junit.jupiter.api.Assertions.*",
+    "org.junit.jupiter.api.Assumptions.*",
+    "org.junit.jupiter.api.DynamicContainer.*",
+    "org.junit.jupiter.api.DynamicTest.*",
+    "org.mockito.Mockito.*",
+    "org.mockito.ArgumentMatchers.*",
+    "org.mockito.Answers.*",
+    "com.webforj.component.optiondialog.OptionDialog.*",
+    "com.webforj.App.console",
+  ],
+  "java.completion.filteredTypes": [
+    "java.awt.*",
+    "com.sun.*",
+    "sun.*",
+    "jdk.*",
+    "org.graalvm.*",
+    "io.micrometer.shaded.*",
+    "com.basis.*",
+    "javax.swing.*",
+  ],
 }
