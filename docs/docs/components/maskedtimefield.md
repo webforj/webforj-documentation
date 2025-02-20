@@ -61,21 +61,8 @@ timeField.setMax(LocalTime.of(18, 0));
 
 The `MaskedTimeFieldSpinner` extends `MaskedTimeField` by introducing **spinner controls**, allowing users to **increment** or **decrement** the time.
 
-### Example: time selection with spinner
-```java
-MaskedTimeFieldSpinner spinner = new MaskedTimeFieldSpinner("Meeting Time", LocalTime.of(10, 0));
-
-spinner.setMask("%h:%m %p"); 
-
-spinner.setStep(Duration.ofMinutes(15)); 
-
-container.add(spinner);
-```
-
 ### Spinner features
 - **Step Control:** Adjust time by increments (`setStep(Duration.ofMinutes(30))`).
 - **Min/Max Boundaries:** Restrict selectable time ranges.
 - **Formatted Output:** Uses `MaskedTimeField`'s masking rules.
 
-
-The `MaskedTimeField` is an essential tool for structured **time input**, ensuring correctness while enhancing usability. 🚀
