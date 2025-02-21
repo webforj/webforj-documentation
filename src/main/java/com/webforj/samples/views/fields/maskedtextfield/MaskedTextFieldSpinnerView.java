@@ -27,7 +27,7 @@ public class MaskedTextFieldSpinnerView extends Composite<FlexLayout>{
                 spinner.setTooltipText("Current status:");
                 spinner.setOptions(List.of("Active","Busy", "Away"));
 
-                spinner.setValue("Monday");
+                spinner.setValue("Active");
   
     
         self.add(spinner);
