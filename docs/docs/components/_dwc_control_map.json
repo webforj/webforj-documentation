@@ -38,5 +38,7 @@
 "Loading": "dwc-loading",
 "BusyIndicator": "dwc-loading",
 "Toast": "dwc-toast",
-"Alert": "dwc-alert"
+"Alert": "dwc-alert",
+"AppNav": "dwc-app-nav",
+"AppNavItem": "dwc-app-nav-item"
 }
