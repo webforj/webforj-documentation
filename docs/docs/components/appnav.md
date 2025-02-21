@@ -67,7 +67,11 @@ The `AppNav` component's navigation feature relies on each `AppNavItem` being co
 
 Each `AppNavItem` requires a path or route that specifies where the navigation item will take users. This can be configured in two main ways:
 
+<<<<<<< HEAD
 **Direct Path**: you can assign a direct URL or path to an `AppNavItem`. This is helpful for static routes or URLs.
+=======
+**Direct Path**: You can assign a direct URL or path to an `AppNavItem`. This is helpful for static routes or URLs.
+>>>>>>> 5bcec13e (new appnav article and demos)
 
 ```java
 AppNavItem dashboardItem = new AppNavItem("Dashboard", "/dashboard");
@@ -77,7 +81,11 @@ appNav.addItem(dashboardItem);
 appNav.addItem(helpItem);
 ```
 
+<<<<<<< HEAD
 **Registered View Class**: alternatively, if you have views registered with your app’s router, you can pass a class reference for the view. This approach provides flexibility, as it allows navigation to specific views without hardcoding URLs. The router automatically resolves the view’s path based on the registered configuration.
+=======
+**Registered View Class**: Alternatively, if you have views registered with your app’s router, you can pass a class reference for the view. This approach provides flexibility, as it allows navigation to specific views without hardcoding URLs. The router automatically resolves the view’s path based on the registered configuration.
+>>>>>>> 5bcec13e (new appnav article and demos)
 
 ```java
 AppNavItem settingsItem = new AppNavItem("Settings", SettingsView.class);
