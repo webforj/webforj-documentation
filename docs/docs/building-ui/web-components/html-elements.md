@@ -26,6 +26,7 @@ The following components can be used, and map to the corresponding HTML elements
 |`Legend`|`<legend>`| ❌ |
 |`ListEntry`|`<li>`| ✔️ |
 |`Main`|`<main>`| ✔️ |
+|`NativeButton`|`<button>`| ✔️ |
 |`Nav`|`<nav>`| ✔️ |
 |`OrderedList`|`<ol>`| ✔️ |
 |`Paragraph`|`<p>`| ✔️ |
