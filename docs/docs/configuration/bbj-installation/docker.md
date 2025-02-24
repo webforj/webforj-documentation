@@ -145,24 +145,10 @@ in the previous step.
 
 
 ### Using the starter project
-To create and scaffold a new project, follow these steps:
 
-1) **Navigate to the proper directory**:
-Open a terminal and move to the folder where you want to create your new project.
-
-2) **Run the archetype command**:
-Use the Maven command below, and customize the `groupId`, `artifactId`, and `version` as needed for your project. To proceed with the webforJ starter project, use the following command:
-
-```bash
-mvn -B archetype:generate \
--DarchetypeGroupId=com.webforj \
--DarchetypeArtifactId=webforj-archetype-bbj-hello-world \
--DgroupId=org.example \
--DartifactId=my-hello-world-app \
--Dversion=1.0-SNAPSHOT
-```
-
-After running the command, Maven will generate the project files necessary to run the starter project.
+<ComponentArchetype
+project="hello-world"
+/>
 
 ### Launching the app
 
