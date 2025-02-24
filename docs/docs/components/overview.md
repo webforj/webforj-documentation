@@ -31,7 +31,7 @@ The following layout components are designed to handle a wide range of use cases
     <p>A container component that provides a structured layout for top-level app navigation and content organization.</p>
   </GalleryCard>
 
-  <GalleryCard header="Toolbar" href="#" image="/img/components/Toolbar.png">
+  <GalleryCard header="Toolbar" href="toolbar" image="/img/components/Toolbar.png">
     <p>A horizontal container component that holds a set of action buttons, icons, or other controls, typically used for performing tasks related to the current context.</p>
   </GalleryCard>
 
