@@ -25,7 +25,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
-            "https://github.com/webforj/webforj-docs/tree/website/",
+            'https://github.com/webforj/webforj-documentation/tree/main/docs/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),
