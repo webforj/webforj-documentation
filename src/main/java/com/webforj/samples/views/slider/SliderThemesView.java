@@ -1,21 +1,25 @@
 package com.webforj.samples.views.slider;
 
-import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.text.Label;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
-import com.webforj.component.html.elements.Div;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
+import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.slider.Slider;
 
-@InlineStyleSheet("context://css/slider/sliderThemesDemo.css")
 @Route
 @FrameTitle("Slider Themes")
-public class SliderThemesDemoView extends Composite<Div> {
+public class SliderThemesView extends Composite<FlexLayout> {
   
-    public SliderThemesDemoView() {
-    getBoundComponent().addClassName("Frame");
+  FlexLayout layout = getBoundComponent();
+  
+    public SliderThemesView() {
+    getBoundComponent().setDirection(FlexDirection.COLUMN)
+      .setAlignment(FlexAlignment.CENTER)
+      .setMargin("var(--dwc-space-l)");
 
     Slider sl1 = new Slider().setMax(100)
         .setMin(0)

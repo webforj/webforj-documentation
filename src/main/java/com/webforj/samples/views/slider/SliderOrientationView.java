@@ -2,22 +2,24 @@ package com.webforj.samples.views.slider;
 
 import java.util.Map;
 import static java.util.Map.entry;
-import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.component.Composite;
-import com.webforj.component.html.elements.Div;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
+import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.slider.Slider;
 import com.webforj.component.slider.Slider.Orientation;
 
-@InlineStyleSheet("context://css/slider/sliderOrientationDemo.css")
 @Route
 @FrameTitle("Slider Orientation")
-public class SliderOrientationDemoView extends Composite<Div> {
+public class SliderOrientationView extends Composite<FlexLayout> {
   
-    public SliderOrientationDemoView() {
-    getBoundComponent().addClassName("Frame");
-
+  FlexLayout layout = getBoundComponent();
+  
+  public SliderOrientationView() {
+    layout.setDirection(FlexDirection.COLUMN).setAlignment(FlexAlignment.CENTER).setHeight("100%");
+    
     Map<Integer, String> mapMatch = Map.ofEntries(
         entry(0, "0"),
         entry(50, "50"),
@@ -28,16 +30,15 @@ public class SliderOrientationDemoView extends Composite<Div> {
     Slider sl2 = new Slider().setMax(100)
         .setMin(0);
 
-    getBoundComponent().add(sl1, sl2);
+    layout.add(sl1, sl2);
 
-    sl1.setWidth("400px")
+    sl1.setWidth("300px")
         .setTicksVisible(true)
         .setMinorTickSpacing(10)
         .setLabelsVisible(true)
         .setLabels(mapMatch);
 
     sl2.setOrientation(Orientation.VERTICAL)
-        .setStyle("padding-left", "40px")
         .setTicksVisible(true)
         .setMinorTickSpacing(10)
         .setLabelsVisible(true)
