@@ -46,15 +46,15 @@ Toasts are versatile and provide subtle notifications for real-time feedback. Fo
 
 ## Duration
 
-You can configure `Toast` notifications to disappear after a set duration or persist on the screen until they're dismissed, depending on your needs. By default, a `Toast` closes automatically after 3000 milliseconds. You can customize the duration with the `setDuration()` method, or simply supply a duration parameter to the constructor or the `show()` method.
+You can configure `Toast` notifications to disappear after a set duration or persist on the screen until they're dismissed, depending on your needs. You can customize the duration with the `setDuration()` method, or simply supply a duration parameter to the constructor or the `show()` method.
 
 :::info Default Duration
-By default, the `Toast` will have a duration of 3000 milliseconds.
+By default, a `Toast` closes automatically after 5000 milliseconds.
 :::
 
 ```java
 Toast toast = new Toast("Sample Notification");
-toast.setDuration(5000);
+toast.setDuration(10000);
 toast.open();
 ```
 
