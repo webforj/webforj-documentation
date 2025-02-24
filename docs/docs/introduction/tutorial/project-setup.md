@@ -7,7 +7,7 @@ In this tutorial, the app will be structured into **four steps**, each introduci
 
 To get started, you can download the entire project or clone it from GitHub:
 <!-- vale off -->
-- Download ZIP: [webforj-demo-application.zip](../../../static/files/webforj-demo-application.zip)
+- Download ZIP: [webforj-demo-application.zip](https://github.com/webforj/webforj-demo-application/archive/refs/heads/main.zip)
 - GitHub Repository: Clone the project [directly from GitHub](https://github.com/webforj/webforj-demo-application)
 <!-- vale on -->
 ```bash
