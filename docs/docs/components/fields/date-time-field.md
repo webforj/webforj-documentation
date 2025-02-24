@@ -15,7 +15,7 @@ The `DateTimeField` component is designed to allow users to input both a date an
 
 <ComponentDemo 
 path='/webforj/datetimefield?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/fields/datetimefield/DateTimeFieldView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/datetimefield/DateTimeFieldView.java'
 />
 
 ## Usages

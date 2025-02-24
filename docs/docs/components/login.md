@@ -12,7 +12,7 @@ The Login component is designed to provide a and user-friendly interface for aut
 
 <ComponentDemo 
 path='/webforj/loginbasic?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/login/LoginBasicView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/login/LoginBasicView.java'
 height = '450px'
 />
 
@@ -31,7 +31,7 @@ The demo below illustrates a basic form submission process. If the username and 
 
 <ComponentDemo 
 path='/webforj/loginsubmission?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/login/LoginSubmissionView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/login/LoginSubmissionView.java'
 height = '450px'
 />
 
@@ -51,7 +51,7 @@ The demo below illustrates how to provide a German translation for the login dia
 
 <ComponentDemo 
 path='/webforj/logininternationalization?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/login/LoginInternationalizationView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/login/LoginInternationalizationView.java'
 height = '500px'
 />
 
@@ -63,8 +63,8 @@ In the example below, a Customer ID field is added to the login form. Users must
 
 <ComponentDemo 
 path='/webforj/logincustomfields?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/login/LoginCustomFieldsView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/login/loginCustomFields.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/login/LoginCustomFieldsView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/login/loginCustomFields.css'
 height = '700px'
 />
 
@@ -80,7 +80,7 @@ To make the cancel button visible, you must provide a label for it - once labele
 
 <ComponentDemo 
 path='/webforj/logincancelbutton?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/login/LoginCancelButtonView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/login/LoginCancelButtonView.java'
 height = '450px'
 />
 

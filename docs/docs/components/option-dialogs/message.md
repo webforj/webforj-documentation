@@ -41,7 +41,7 @@ In the following sample, The code configures a message dialog of type `WARNING`.
 
 <ComponentDemo 
 path='/webforj/messagedialogtype?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/message/MessageDialogTypeView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/message/MessageDialogTypeView.java'
 height = '350px'
 />
 

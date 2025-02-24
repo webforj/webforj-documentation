@@ -27,7 +27,7 @@ Some icons also offer the choice between an outlined or a filled version via [va
 
 <ComponentDemo 
 path='/webforj/iconbasics?'  
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconBasicsView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconBasicsView.java'
 height='100px'
 />
 
@@ -90,7 +90,7 @@ The following demo illustrates how to use icons from different pools, apply vari
 
 <ComponentDemo 
 path='/webforj/iconvariations?'  
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconVariationsView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconVariationsView.java'
 height='100px'
 />
 
@@ -115,7 +115,7 @@ Ultimately, consistency is key. Once you choose a style, maintain it across your
    
 <ComponentDemo 
 path='/webforj/iconprefixsuffix?'  
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconPrefixSuffixView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconPrefixSuffixView.java'
 height='100px'
 />️
 

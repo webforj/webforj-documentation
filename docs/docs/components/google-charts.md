@@ -29,8 +29,8 @@ The `GoogleChart` class is a comprehensive solution for embedding rich, interact
 
 <ComponentDemo 
 path='/webforj/chart?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/googlecharts/chart.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/googlecharts/chart.css'
 height='300px'
 />
 
@@ -41,8 +41,8 @@ The `GoogleChart` addon offers a comprehensive array of chart types to suit vari
 
 <ComponentDemo 
 path='/webforj/chartgallery?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartGalleryView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/googlecharts/chartGallery.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartGalleryView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/googlecharts/chartGallery.css'
 height='600px'
 />
 
@@ -108,7 +108,7 @@ Once the data is prepared, it can be applied to the GoogleChart using the setDat
 
 <ComponentDemo 
 path='/webforj/chartsettingdata?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartSettingDataView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartSettingDataView.java'
 height='300px'
 />
 
@@ -147,8 +147,8 @@ Invoke `redraw()` in scenarios such as:
 
 <ComponentDemo 
 path='/webforj/chartredraw?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartRedrawView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/googlecharts/chartRedraw.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartRedrawView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/googlecharts/chartRedraw.css'
 height='650px'
 />
 

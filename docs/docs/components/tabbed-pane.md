@@ -122,7 +122,7 @@ The `TabbedPane` class has two constituent parts: a `Tab` that is displayed in a
 The `TabbedPane` supports navigating through the various tabs via swiping. This is ideal for a mobile application, but can also be configured via a built-in method to support mouse swiping. Both swiping and mouse swipping are disabled by default, but can be enabled with the `setSwipable(boolean)` and `setSwipableWithMouse(boolean)` methods, respectively. 
 
 <!-- <AppLayoutViewer path='https://demo.webforj.com?class=componentdemos.tabbedpanedemos.TabbedPaneSwipe&platform=mobile' mobile='true'
-javaE='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/java/componentdemos/tabbedpanedemos/TabbedPaneSwipe.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/java/componentdemos/tabbedpanedemos/TabbedPaneSwipe.java'
 /> -->
 
 ### Tab placement 
@@ -132,7 +132,7 @@ The `Tabs` within a `TabbedPane` can be placed in various positions within the c
 
 <ComponentDemo 
 path='/webforj/tabbedpaneplacement?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPanePlacementView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPanePlacementView.java'
 height="400px"
 />
 
@@ -144,7 +144,7 @@ The other options are `START`, `END`, `CENTER`, and `STRETCH`. The first three d
 
 <ComponentDemo 
 path='/webforj/tabbedpanealignment?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneAlignmentView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneAlignmentView.java'
 height="250px"
 />
 
@@ -164,7 +164,7 @@ To set the visibility of the active indicator, the `setHideActiveIndicator(boole
 
 <ComponentDemo 
 path='/webforj/tabbedpaneborder?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneBorderView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneBorderView.java'
 height="300px"
 />
 
@@ -178,7 +178,7 @@ For more fine-grained control over how the `TabbedPane` behaves when being navig
 
 <ComponentDemo 
 path='/webforj/tabbedpaneactivation?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneActivationView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneActivationView.java'
 height="250px"
 />
 
@@ -198,7 +198,7 @@ The `TabbedPane` comes with built-in `Expanse` and `Theme` options similar to ot
 
 <ComponentDemo 
 path='/webforj/tabbedpaneexpansetheme?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneExpanseThemeView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneExpanseThemeView.java'
 height="250px"
 />
 

@@ -15,7 +15,7 @@ The `DateField` is a field component that allows users to input or select dates 
 
 <ComponentDemo 
 path='/webforj/datefield?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/fields/datefield/DateFieldView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/datefield/DateFieldView.java'
 />
 
 ## Usages

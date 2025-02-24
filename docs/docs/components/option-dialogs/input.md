@@ -14,7 +14,7 @@ An `InputDialog` is a modal dialog designed to prompt the user for input. The di
 
 <ComponentDemo 
 path='/webforj/inputdialogbasic?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/input/InputDialogBasicView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/input/InputDialogBasicView.java'
 height = '500px'
 />
 
@@ -54,7 +54,7 @@ again.
 
 <ComponentDemo 
 path='/webforj/inputdialogtype?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/input/InputDialogTypeView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/input/InputDialogTypeView.java'
 height = '350px'
 />
 

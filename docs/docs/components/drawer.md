@@ -10,8 +10,8 @@ The drawer is a container that slides into the viewport to expose additional opt
 The Drawer component can be used in many different situations, such as by providing a navigation menu that can be toggled, a panel that displays supplementary or contextual information, or to optimize usage on a mobile device. The following example will show a mobile application that uses the webforJ AppLayout component, and displays a "Welcome Popup" drawer at the bottom when first loaded. Additionally, a navigational Drawer component can be toggled in the application by clicking on the hamburger menu.
 
 <AppLayoutViewer path='/webforj/drawerwelcome?' mobile='true'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/drawer/drawerWelcome.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/drawer/drawerWelcome.css'
 />
 
 ## Usages
@@ -26,7 +26,7 @@ cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/r
 
 <ComponentDemo
 path='/webforj/drawerdemo?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerDemoView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerDemoView.java'
 height='600px'
 />
 
@@ -48,7 +48,7 @@ This property can also be particularly beneficial for individuals who rely on ke
 
 <ComponentDemo
 path='/webforj/drawerautofocus?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerAutoFocusView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerAutoFocusView.java'
 height='600px'
 />
 
@@ -120,7 +120,7 @@ By leveraging the placement property, developers can create intuitive and effici
 
 <ComponentDemo
 path='/webforj/drawerplacement?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerPlacementView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerPlacementView.java'
 height='600px'
 />
 

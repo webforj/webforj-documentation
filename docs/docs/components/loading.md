@@ -19,8 +19,8 @@ Here's an example of creating a `Loading` component with a message:
 
 <ComponentDemo 
 path='/webforj/loadingdemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/loading/LoadingDemoView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/loadingstyles/loadingdemo.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/loading/LoadingDemoView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/loadingstyles/loadingdemo.css'
 height = '300px'
 />
 
@@ -61,8 +61,8 @@ Here's an example of how you can customize the spinner within a `Loading` compon
 
 <ComponentDemo 
 path='/webforj/loadingspinnerdemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/loading/LoadingSpinnerDemoView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/loadingstyles/loadingspinnerdemo.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/loading/LoadingSpinnerDemoView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/loadingstyles/loadingspinnerdemo.css'
 height = '300px'
 />
 

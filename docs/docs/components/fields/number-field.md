@@ -15,7 +15,7 @@ You can use the `NumberField` component to accept numerical input from a user. I
 
 <ComponentDemo 
 path='/webforj/numberfield?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/fields/numberfield/NumberFieldView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/numberfield/NumberFieldView.java'
 />
 
 ## Usages

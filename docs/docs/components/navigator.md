@@ -29,7 +29,7 @@ To do this, simply pass the desired `Repository` object to an applicable `Naviga
 
 <ComponentDemo 
 path='/webforj/navigatortable?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/navigator/NavigatorTableView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/navigator/NavigatorTableView.java'
 height='475px'
 />
 
@@ -65,7 +65,7 @@ navigator.getPaginator().setMax(maxPages);
 
 <ComponentDemo 
 path='/webforj/navigatorpages?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/navigator/NavigatorPagesView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/navigator/NavigatorPagesView.java'
 height='125px'
 />
 
@@ -87,7 +87,7 @@ In the following example, the `setText()` method displays a numeric value to the
 
 <ComponentDemo 
 path='/webforj/navigatorbasic?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/navigator/NavigatorBasicView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/navigator/NavigatorBasicView.java'
 height='100px'
 />
 
@@ -135,7 +135,7 @@ Various layout options exist for the `Navigator` component  to provide flexibili
 
 <ComponentDemo 
 path='/webforj/navigatorlayout?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/navigator/NavigatorLayoutView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/navigator/NavigatorLayoutView.java'
 height='200px'
 />
 

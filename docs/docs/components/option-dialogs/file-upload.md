@@ -29,7 +29,7 @@ The resulting string will be returned from the `show()` method, or the equivalen
 
 <ComponentDemo 
 path='/webforj/fileuploaddialogbasic?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/fileupload/FileUploadDialogBasicView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/fileupload/FileUploadDialogBasicView.java'
 height = '400px'
 />
 

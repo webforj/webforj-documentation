@@ -21,7 +21,7 @@ In this example, the `BusyIndicator` prevents any user actions across the entire
 
 <ComponentDemo 
 path='/webforj/busydemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/busyindicator/BusyDemoView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/busyindicator/BusyDemoView.java'
 height = '300px'
 />
 
@@ -48,7 +48,7 @@ Here's an example of how you can customize the spinner within a `BusyIndicator` 
 
 <ComponentDemo 
 path='/webforj/busyspinnerdemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/busyindicator/BusySpinnerDemoView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/busyindicator/BusySpinnerDemoView.java'
 height = '200px'
 />
 

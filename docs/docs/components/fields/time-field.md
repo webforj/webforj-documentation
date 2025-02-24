@@ -15,7 +15,7 @@ description: A component that provides a default browser-based time picker for s
 
 <ComponentDemo 
 path='/webforj/timefield?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/fields/timefield/TimeFieldView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/timefield/TimeFieldView.java'
 />
 
 ## Usages

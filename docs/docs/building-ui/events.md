@@ -98,8 +98,8 @@ Below is a demonstration showing the addition of a <JavadocLink type="foundation
 
 <ComponentDemo 
 path='/webforj/buttonevent?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonEventView.java'
-javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/button/Event.txt'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonEventView.java'
+javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/button/Event.txt'
 height='100px'
 />
 

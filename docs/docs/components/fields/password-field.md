@@ -15,7 +15,7 @@ The `PasswordField` component allows users to input a password securely. It's di
 
 <ComponentDemo 
 path='/webforj/passwordfield?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/fields/passwordfield/PasswordFieldView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/passwordfield/PasswordFieldView.java'
 />
 
 ## Usages

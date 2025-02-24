@@ -20,7 +20,7 @@ When first instantiated, the `ColumnsLayout` uses two columns to display items a
 
 <ComponentDemo 
 path='/webforj/columnslayout?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutView.java'
 height="450px"
 />
 
@@ -67,7 +67,7 @@ The demonstration below shows an example of setting multiple breakpoints at cons
 
 <ComponentDemo 
 path='/webforj/columnslayoutbreakpoints?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutBreakpointsView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutBreakpointsView.java'
 height="375px"
 />
 
@@ -147,7 +147,7 @@ In the following demonstration, notice that when the `"medium"` breakpoint is tr
 
 <ComponentDemo 
 path='/webforj/columnslayoutspancolumn?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutSpanColumnView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutSpanColumnView.java'
 height="375px"
 />
 
@@ -174,7 +174,7 @@ Available `Alignment` options include:
 
 <ComponentDemo 
 path='/webforj/columnslayoutalignment?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutAlignmentView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutAlignmentView.java'
 height="500px"
 />
 
@@ -208,6 +208,6 @@ Building responsive and attractive layouts is possible using both the [`FlexLayo
 
 <ComponentDemo 
 path='/webforj/columnslayoutform?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutFormView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutFormView.java'
 height="700px"
 />

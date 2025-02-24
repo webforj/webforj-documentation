@@ -12,7 +12,7 @@ ProgressBar is component that visually displays the progress of some task. As th
 
 <ComponentDemo 
 path='/webforj/progressbarbasic?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarBasicView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarBasicView.java'
 height='150px'
 />
 
@@ -41,7 +41,7 @@ The `ProgressBar` can be oriented horizontally or vertically.
 
 <ComponentDemo 
 path='/webforj/progressbarorientation?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarOrientationView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarOrientationView.java'
 height='175px'
 />
 
@@ -51,7 +51,7 @@ The `ProgressBar` supports an indeterminate state for tasks with unknown complet
 
 <ComponentDemo 
 path='/webforj/progressbardeterminate?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarDeterminateView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarDeterminateView.java'
 height='25px'
 />
 
@@ -73,7 +73,7 @@ They offer a quick and consistent way to customize the look of ProgressBars thro
 
 <ComponentDemo 
 path='/webforj/progressbarthemes?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarThemesView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/progressbar/ProgressBarThemesView.java'
 height='320px'
 />
 

@@ -42,8 +42,8 @@ Checkboxes have built-in functionality to set text to be displayed either to the
 
 <ComponentDemo 
 path='/webforj/checkboxhorizontaltext?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/checkbox/CheckboxHorizontalTextView.java'
-javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/checkbox/Horizontal.txt'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/checkbox/CheckboxHorizontalTextView.java'
+javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/checkbox/Horizontal.txt'
 height = '200px'
 />
 
@@ -59,8 +59,8 @@ The `CheckBox` component supports indeterminism, which is a UI pattern commonly 
 
 <ComponentDemo 
 path='/webforj/checkboxindeterminate?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/checkbox/CheckboxIndeterminateView.java'
-javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/checkbox/Indeterminate.txt'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/checkbox/CheckboxIndeterminateView.java'
+javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/checkbox/Indeterminate.txt'
 height = '150px'
 />
 
@@ -73,8 +73,8 @@ Expanses are supported by use of the `Expanse` enum class. Below are the expanse
 
 <ComponentDemo 
 path='/webforj/checkboxexpanse?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/checkbox/CheckboxExpanseView.java'
-javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/checkbox/Expanse.txt'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/checkbox/CheckboxExpanseView.java'
+javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/checkbox/Expanse.txt'
 height = '150px'
 />
 

@@ -37,8 +37,8 @@ Changing the custom value property allows control over whether or not a user is 
 
 <ComponentDemo 
 path='/webforj/comboboxcustomvalue?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxCustomValueView.java'
-javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/combobox/CustomValue.txt'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxCustomValueView.java'
+javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/combobox/CustomValue.txt'
 height = '200px'
 />
 
@@ -48,8 +48,8 @@ A placeholder can be set for a `ComboBox` which will display in the text field o
 
 <ComponentDemo 
 path='/webforj/comboboxplaceholder?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxPlaceholderView.java'
-javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/combobox/Placeholder.txt'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxPlaceholderView.java'
+javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/combobox/Placeholder.txt'
 height = '200px'
 />
 
@@ -64,9 +64,9 @@ In the demo below, the Dropdown type is set and used in the CSS file to select t
 
 <ComponentDemo 
 path='/webforj/comboboxdropdowntype?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxDropdownTypeView.java'
-javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/combobox/DropdownType.txt'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/lists/combobox/comboBoxDropDownType.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxDropdownTypeView.java'
+javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/combobox/DropdownType.txt'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/lists/combobox/comboBoxDropDownType.css'
 height='250px'
 />
 
@@ -80,8 +80,8 @@ Using a number that is less than or equal to 0 will result in unsetting this pro
 
 <ComponentDemo 
 path='/webforj/comboboxmaxrow?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxMaxRowView.java'
-javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/combobox/MaxRow.txt'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxMaxRowView.java'
+javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/combobox/MaxRow.txt'
 height='450px'
 />
 

@@ -10,9 +10,9 @@ Use the `setMinimum()` and `setMaximum()` methods to determine the upper and low
 
 <ComponentDemo 
 path='/webforj/slidermaxmindemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderMaxMinDemoView.java'
-javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/slider/MinMax.txt'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/slider/sliderMaxMinDemo.css' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderMaxMinDemoView.java'
+javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/slider/MinMax.txt'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/slider/sliderMaxMinDemo.css' 
 javaHighlight='{17,21}'
 height = '225px'
 />
@@ -25,9 +25,9 @@ Slider components can be customized to show ticks, or spaces bounded by lines to
 
 <ComponentDemo 
 path='/webforj/sliderlabeldemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderLabelDemoView.java'
-javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/slider/Label.txt'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/slider/sliderLabelDemo.css' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderLabelDemoView.java'
+javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/slider/Label.txt'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/slider/sliderLabelDemo.css' 
 javaHighlight='{62-78}'
 height = '325px'
 />
@@ -44,9 +44,9 @@ If tick snapping is enabled, the slider will only snap to ticked spaces specific
 
 <ComponentDemo 
 path='/webforj/slidertickdemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderTickDemoView.java'
-javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/slider/Ticks.txt'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/slider/sliderTickDemo.css' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderTickDemoView.java'
+javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/slider/Ticks.txt'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/slider/sliderTickDemo.css' 
 javaHighlight='{24-31}'
 height = '225px'
 />
@@ -59,9 +59,9 @@ Sliders can be oriented either horizontally or vertically by using the `setOrien
 
 <ComponentDemo 
 path='/webforj/sliderorientationdemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderOrientationDemoView.java'
-javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/slider/Orientation.txt'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/slider/sliderOrientationDemo.css' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderOrientationDemoView.java'
+javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/slider/Orientation.txt'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/slider/sliderOrientationDemo.css' 
 javaHighlight='{37}'
 height = '400px'
 />
@@ -72,9 +72,9 @@ It is also possible to invert a slider. By default, the minimum value of a verti
 
 <ComponentDemo 
 path='/webforj/sliderinversiondemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderInversionDemoView.java'
-javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/slider/Inversion.txt'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/slider/sliderInversionDemo.css' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderInversionDemoView.java'
+javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/slider/Inversion.txt'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/slider/sliderInversionDemo.css' 
 javaHighlight='{42}'
 height = '300px'
 />
@@ -88,9 +88,9 @@ Shown below are sliders with each of the supported Themes applied: <br/>
 
 <ComponentDemo 
 path='/webforj/sliderthemesdemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderThemesDemoView.java'
-javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/slider/Themes.txt'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/slider/sliderThemesDemo.css' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderThemesDemoView.java'
+javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/slider/Themes.txt'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/slider/sliderThemesDemo.css' 
 javaHighlight='{20,25,30,35,40,45}'
 height = '620px'
 />

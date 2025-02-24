@@ -37,8 +37,8 @@ Additionally, the arrow keys can be used to navigate the `ListBox`, and typing a
 
 <ComponentDemo 
 path='/webforj/listboxmultipleselection?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/lists/listbox/ListboxMultipleSelectionView.java'
-javaC='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/code_snippets/listbox/MultipleSelection.txt'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/listbox/ListboxMultipleSelectionView.java'
+javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/listbox/MultipleSelection.txt'
 height = '250px'
 />
 

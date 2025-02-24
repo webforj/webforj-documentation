@@ -21,7 +21,7 @@ The `FileChooserDialog` provides a way to select files or directories from the f
 
 <ComponentDemo 
 path='/webforj/filechooserdialogbasic?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/filechooser/FileChooserDialogBasicView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/filechooser/FileChooserDialogBasicView.java'
 height = '600px'
 />
 
@@ -77,7 +77,7 @@ When the seletion mode is `FILES`, The `FileChooserDialog` allows you to set fil
 
 <ComponentDemo 
 path='/webforj/filechooserdialogfilters?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/filechooser/FileChooserDialogFiltersView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/filechooser/FileChooserDialogFiltersView.java'
 height = '600px'
 />
 

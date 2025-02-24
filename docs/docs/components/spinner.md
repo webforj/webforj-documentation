@@ -17,8 +17,8 @@ To create a `Spinner`, you can specify the theme and expanse. The basic syntax i
 
 <ComponentDemo 
 path='/webforj/spinnerdemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/spinner/SpinnerDemoView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/spinnerstyles/spinnerdemo.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/spinner/SpinnerDemoView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/spinnerstyles/spinnerdemo.css'
 height = '225px'
 />
 
@@ -55,8 +55,8 @@ This example shows how to go about setting the speed and how to pause/resume the
 
 <ComponentDemo 
 path='/webforj/spinnerspeeddemo?'  
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/spinner/SpinnerSpeedDemoView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/spinnerstyles/spinnerspeeddemo.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/spinner/SpinnerSpeedDemoView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/spinnerstyles/spinnerspeeddemo.css'
 height = '150px'
 />
 
@@ -73,7 +73,7 @@ This option visually indicates a special state or serves as a unique design choi
 
 <ComponentDemo 
 path='/webforj/spinnerdirectiondemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/spinner/SpinnerDirectionDemoView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/spinner/SpinnerDirectionDemoView.java'
 height = '150px'
 />
 
@@ -103,8 +103,8 @@ You can specify this behavior using the `setTheme()` method.
 
 <ComponentDemo 
 path='/webforj/spinnerthemedemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/spinner/SpinnerThemeDemoView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/spinnerstyles/spinnerthemedemo.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/spinner/SpinnerThemeDemoView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/spinnerstyles/spinnerthemedemo.css'
 height = '100px'
 />
 
@@ -114,8 +114,8 @@ You can adjust the size of the spinner, known as **expanse**, to fit the visual 
 
 <ComponentDemo 
 path= '/webforj/spinnerexpansedemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/spinner/SpinnerExpanseDemoView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/spinnerstyles/spinnerexpansedemo.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/spinner/SpinnerExpanseDemoView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/spinnerstyles/spinnerexpansedemo.css'
 height = '100px'
 />
 

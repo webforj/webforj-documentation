@@ -17,7 +17,7 @@ The `RadioButton` class creates an object that can be selected or deselected, an
 
 <ComponentDemo 
 path='/webforj/radiobuttongroup?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonGroupView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonGroupView.java'
 height="200px"
 />
 
@@ -38,7 +38,7 @@ Radio buttons have built-in functionality to set text to be displayed either to 
 
 <ComponentDemo 
 path='/webforj/radiobuttontext?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonTextView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonTextView.java'
 height="120px"
 />
 
@@ -49,7 +49,7 @@ Radio buttons can be controlled using two types of activation: manual activation
 
 <ComponentDemo 
 path='/webforj/radiobuttonactivation?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonActivationView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonActivationView.java'
 height="175px"
 />
 
@@ -78,7 +78,7 @@ A `RadioButton` can also be set to display as a switch provides which provides a
 
 <ComponentDemo 
 path='/webforj/radiobuttonswitch?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonSwitchView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonSwitchView.java'
 height="120px"
 />
 

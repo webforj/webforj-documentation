@@ -30,7 +30,7 @@ toast.open();
 
 <ComponentDemo 
 path='/webforj/toast?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastView.java'
 height='200px'
 />
 
@@ -94,7 +94,7 @@ toast.open();
 
 <ComponentDemo 
 path='/webforj/toastplacement?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastPlacementView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastPlacementView.java'
 height='320px'
 />
 
@@ -110,8 +110,8 @@ Although `Toast` notifications don't require user interaction by default, webfor
 
 <ComponentDemo 
 path='/webforj/toastcookies?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastCookiesView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toast/toastCookies.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastCookiesView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/toast/toastCookies.css'
 height='350px'
 />
 
@@ -142,8 +142,8 @@ Since the `Toast` isn't located in a specific position in the DOM, you can targe
 
 <ComponentDemo 
 path='/webforj/toasttheme?'  
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastThemeView.java'
-cssURL='https://raw.githubusercontent.com/webforj/ControlSamples/main/src/main/resources/css/toast/toastTheme.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastThemeView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/toast/toastTheme.css'
 height='200px'
 />
 
