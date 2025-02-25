@@ -30,8 +30,6 @@ The `MaskedTextField` supports various mask patterns to format text input in a s
 
 Any characters other than these, when used in a mask, represent themselves. For example, setting the mask to "XX@XX" would expect an "@" in the middle. Input mismatches, for example entering a letter in a digit-only position, are ignored. Input longer than the mask is truncated, and shorter input is padded with spaces.
 
-
-
 ## Combining masks with patterns
 
 In addition to the above rules for masking you can combine them with patterns to utilize regular expressions instead of just masks.
@@ -46,6 +44,12 @@ This ensures additional flexibility for scenarios requiring complex formatting a
 The pattern must be a valid JavaScript regular expression, as used by the RegExp type and as documented in the [regular expressions guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions). For more information about patterns see [this guide](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern#overview).
 :::
 
+<ComponentDemo 
+path='/webforj/maskedtextfield?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtextfield/MaskedTextFieldView.java'
+height='250px'
+/>
+
 ## Restore method
 
 The `MaskedTextField` provides a restore feature, allowing users to reset the field’s value to its original state:
@@ -59,8 +63,18 @@ It's possible to utilize `setrestorevalue()` to programmatically set what value 
 The restore key is "ESC" by default, unless overwritten specifically with event listeners reacting to keystrokes. 
 :::
 
+<ComponentDemo 
+path='/webforj/maskedtextfieldrestore?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtextfield/MaskedTextFieldRestoreView.java'
+height='200px'
+/>
+
 ## `MaskedTextFieldSpinner`
 
 The `MaskedTextFieldSpinner` extends the `MaskedTextField` by introducing spinner controls, allowing users to spin through a predefined set of options. 
 
-
+<ComponentDemo 
+path='/webforj/maskedtextfieldspinner?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtextfield/MaskedTextFieldSpinnerView.java'
+height='100px'
+/>
