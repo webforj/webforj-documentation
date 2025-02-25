@@ -7,7 +7,6 @@ on:
   pull_request:
     branches:
       - main
-
 jobs:
   build-war:
     name: Build Java WAR File
@@ -32,3 +31,29 @@ jobs:
         with:
           name: webapp
           path: target/*.war
+
+  deploy-s3:
+    name: Deploy to AWS S3
+    runs-on: ubuntu-latest
+    needs: build-war  # Runs only after the build job succeeds
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download WAR Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: webapp
+          path: target/
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          # aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }} # Don't yet have this
+          aws-region: eu-west-1
+
+      - name: Upload WAR to S3
+        run: |
+          aws s3 cp target/*.war s3://webforj-docs-deployments/ROOT.war --acl public-read
