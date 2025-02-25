@@ -2,6 +2,10 @@
 title: MaskedDateField
 ---
 
+<DocChip chip='shadow' />
+
+<JavadocLink type="foundation" location="com/webforj/component/field/MaskedDateField" top='true'/>
+
 The `MaskedDateField` component is a specialized input field that ensures structured **date entry**. It automatically formats user input according to a specified **date mask**, ensuring consistency across different locales and formats. This is particularly useful for forms requiring standardized date input, such as registrations, scheduling, and booking systems.
 
 ## Basics
@@ -30,13 +34,13 @@ Modifiers allow for finer control of the displayed format.
 | `p`      | Packed number                  |
 | `d`      | Decimal (default format)       |
 
-### Example masks
+With these combined it is possible to built a multitude of different masks, two examples can be seen below.
 
-| Mask         | Input        | Display Output  |
-|-------------|-------------|----------------|
-| `%M/%D/%Y`  | `070423`    | `07/04/2023`  |
-| `%Y-%M-%D`  | `20230715`  | `2023-07-15`  |
-| `%D %M %Y`  | `15 July 23` | `15 July 2023` |
+<ComponentDemo 
+path='/webforj/maskeddatefield?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldView.java'
+height='200px'
+/>
 
 ## Date format localization
 
@@ -53,6 +57,9 @@ You can **set the locale** for regional formatting:
 ```java
 dateField.setLocale(Locale.FRANCE); 
 ```
+:::tip
+The `setLocale()` method expects a [`java.util.Locale`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Locale.html) as parameter and uses it to localize your dates.
+:::
 
 ## Date parsing logic
 
@@ -60,7 +67,7 @@ The date parser interprets input based on the **defined mask**. It accepts vario
 
 ### Example parsing scenarios
 
-Assuming the mask is **`%Mz/%Dz/%Yz`** (US format), the following inputs are interpreted as:
+Assuming the mask is **`%Mz/%Dz/%Yz`** (US format), the `MaskedDateField` will automatically parse the inputs to fit as best as possible. The following inputs are examples of how the parsing would interprete inputs that dont fully fill the mask:
 
 | Input  | Interpreted Date |
 |--------|----------------|
@@ -81,6 +88,16 @@ You can restrict input values to a specific date range using `setMin()` and `set
 dateField.setMin(LocalDate.of(2020, 1, 1)); 
 dateField.setMax(LocalDate.of(2030, 12, 31)); 
 ```
+
+:::tip
+The `setLocale()` method expects a [`java.time.LocalDate`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html) as parameter and uses it to set the minimum or maximum of your date range.
+:::
+
+<ComponentDemo 
+path='/webforj/maskeddatefieldminmax?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldMinMaxView.java'
+height='100px'
+/>
 
 ## Custom patterns for validation
 
@@ -115,21 +132,21 @@ dateField.setRestoreValue(LocalDate.of(2025, 1, 1));
 The restore key is `"ESC"` by default unless overridden with event listeners reacting to keystrokes.
 :::
 
+<ComponentDemo 
+path='/webforj/maskeddatefieldrestore?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldRestoreView.java'
+height='150px'
+/>
+
 ## `MaskedDateFieldSpinner`
 
-The `MaskedDateFieldSpinner` extends `MaskedDateField` by introducing **spinner controls**, allowing users to **increment** or **decrement** the date.
+The `MaskedDateFieldSpinner` extends `MaskedDateField` by introducing **spinner controls**, allowing users to **increment** or **decrement** the date. As seen here one of the use cases for this would be allowing users to spin through dates for appointments.
 
-### Example: Date selection with spinner
-
-```java
-MaskedDateFieldSpinner spinner = new MaskedDateFieldSpinner("Event Date", LocalDate.of(2024, 6, 15));
-
-spinner.setMask("%Y-%M-%D"); 
-
-spinner.setStep(Period.ofDays(1));
-
-container.add(spinner);
-```
+<ComponentDemo 
+path='/webforj/maskeddatefieldspinner?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldSpinnerView.java'
+height='150px'
+/>
 
 ### Spinner features
 - **Step Control:** Adjust date by increments (`setStep(Period.ofWeeks(1))` for weekly changes).
