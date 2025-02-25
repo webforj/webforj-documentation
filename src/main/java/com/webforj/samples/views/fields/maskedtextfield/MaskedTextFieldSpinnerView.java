@@ -13,7 +13,7 @@ import com.webforj.router.annotation.Route;
 @Route
 public class MaskedTextFieldSpinnerView extends Composite<FlexLayout>{
 
-    MaskedTextFieldSpinner spinner = new MaskedTextFieldSpinner();
+    MaskedTextFieldSpinner spinner = new MaskedTextFieldSpinner("Current Status:");
 
     public MaskedTextFieldSpinnerView() {
         FlexLayout self = getBoundComponent();
