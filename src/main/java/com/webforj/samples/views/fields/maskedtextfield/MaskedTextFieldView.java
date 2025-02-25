@@ -11,13 +11,14 @@ import com.webforj.router.annotation.Route;
 @Route
 public class MaskedTextFieldView extends Composite<FlexLayout> {
 
-    MaskedTextField phoneField = new MaskedTextField();
-    MaskedTextField dobField = new MaskedTextField();
-    MaskedTextField emailField = new MaskedTextField();
+    MaskedTextField phoneField = new MaskedTextField("Phone number:");
+    MaskedTextField dobField = new MaskedTextField("Date of birth:");
+    MaskedTextField emailField = new MaskedTextField("EMail:");
 
     public MaskedTextFieldView() {
         FlexLayout self = getBoundComponent();
         phoneField.setMask("(000) 000-0000");
+        phoneField.setPlaceholder("(000) 000-0000");
         dobField.setMask("00/00/0000");
         emailField.setPattern("[A-Za-z]*@[A-Za-z]*\\.[A-Za-z]*");
         self.setDirection(FlexDirection.COLUMN)
