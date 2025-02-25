@@ -5,7 +5,7 @@ title: Icon
 
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-icon" />
-<JavadocLink type="foundation" location="com/webforj/component/icons/Icon" top='true'/>
+<JavadocLink type="icons" location="com/webforj/component/icons/Icon" top='true'/>
 
 The webforJ `Icon` component allows you to include icons effortlessly in your user interface
 Icons are a fundamental part of enhancing the design of the user interface, making it faster for users to scan the screen for actionable items.
