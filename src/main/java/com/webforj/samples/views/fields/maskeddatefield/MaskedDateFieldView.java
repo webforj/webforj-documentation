@@ -13,6 +13,7 @@ import com.webforj.router.annotation.Route;
 @Route
 public class MaskedDateFieldView extends Composite<FlexLayout> {
     MaskedDateField birthdayField = new MaskedDateField("Date of birth");
+    MaskedDateField graduationField = new MaskedDateField("Date of graduation");
 
     public MaskedDateFieldView() {
         FlexLayout self = getBoundComponent();
@@ -23,6 +24,8 @@ public class MaskedDateFieldView extends Composite<FlexLayout> {
                 .setMargin("var(--dwc-space-m)");
         birthdayField.setMask("%Mz/%Dz/%Yz");
         birthdayField.setMax(LocalDate.now());
-        self.add(birthdayField);
+        graduationField.setMask("%Y-%M-%D");
+        graduationField.setMax(LocalDate.now());
+        self.add(birthdayField,graduationField);
     }
 }
