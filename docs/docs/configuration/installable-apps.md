@@ -72,7 +72,7 @@ The following table lists all properties supported by the `@AppProfile` annotati
 | `display`         | `Display` **_Enum_**                               | The display mode of the app (e.g., `FULLSCREEN`, `STANDALONE`, `BROWSER`).                                | `STANDALONE`          |
 | `orientation`     | `Orientation` **_Enum_**                           | The default orientation of the app (e.g., `PORTRAIT`, `LANDSCAPE`, `NATURAL`).                            | `NATURAL`             |
 | `icons`           | [`Icon[]`](#appprofileicon-properties)             | An array of icons representing the app at different resolutions.                                          | `[]`                  |
-| `defaultIcon`     | [`DefaultIcon`](#appprofiledefaulticon-properties) | Specifies a default icon for the app. Automatically generates icon paths in multiple sizes if configured. | `ws://icons/icon.png` |
+| `defaultIcon`     | [`DefaultIcon`](#appprofiledefaulticon-properties) | Specifies a default icon for the app. Automatically generates icon paths in multiple sizes if configured. | `icons://icon.png` |
 | `screenshots`     | [`Screenshot[]`](#appprofilescreenshot-properties) | An array of screenshots for the app, used in installation dialogs.                                        | `[]`                  |
 | `categories`      | `String[]`                                         | Categories to classify the app (e.g., `Finance`, `Shopping`).                                             | `[]`                  |
 
@@ -108,11 +108,17 @@ This is particularly useful for ensuring compatibility across devices with varyi
 | `sizes`      | `int[]`  | An array of sizes to generate, specified as integers (e.g., `{144, 192, 512}`). | `{144, 192, 512}` |
 
 :::info Icon File Requirements
-This configuration doesn't generate the actual icon files for the app on the fly. Instead, it uses the `@AppProfile.DefaultIcon` annotation to generate corresponding [`@AppProfile.Icon`](#appprofileicon-properties) for each specified size.
-You are expected to provide a base `icon.png` file in the `static/icons` folder and include additional variations named `icon-144x144.png`, `icon-192x192.png`, and `icon-512x512.png`.
-These sizes ensure compatibility with various devices and resolutions.
+This configuration does not generate the actual icon files for the app automatically. Instead, it uses the `@AppProfile.DefaultIcon` annotation to generate corresponding [`@AppProfile.Icon`](#appprofileicon-properties) entries for each specified size.
 
-Make sure the icons are properly optimized and meet the required dimensions. webforJ dynamically includes these icons in the manifest and serves them when the app is accessed.
+#### If using the [webserver protocol](../managing-resources/assets-protocols#the-webserver-protocol)
+- You must provide a base `icon.png` file in the `static/icons` folder.
+- You are expected to include additional icon variations named `icon-144x144.png`, `icon-192x192.png`, and `icon-512x512.png`.
+- These specific sizes ensure compatibility with various devices and resolutions.
+
+#### If using the [icons protocol](../managing-resources/assets-protocols#the-icons-protocol)
+
+- You are expected to provide a base `icon.png` file in the `/icons` folder.
+- The `icons` endpoint dynamically provides different icon sizes on demand when they're requested.
 :::
 
 ### `@AppProfile.Screenshot` properties
