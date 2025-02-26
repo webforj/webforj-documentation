@@ -7,7 +7,7 @@ title: Confirm
 
 <DocChip chip='shadow' />
 
-<JavadocLink type="ConfirmDialog" location="com/webforj/component/optiondialog/ConfirmDialog" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/optiondialog/ConfirmDialog" top='true'/>
 
 A `ConfirmDialog` is a modal dialog designed to allow the user to choose one of a set of up to 3 options. The dialog blocks app execution until the user interacts with it or it closes due to a timeout.
 

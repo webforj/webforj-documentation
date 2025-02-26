@@ -14,7 +14,7 @@ import Chip from '@mui/material/Chip';
 
 <DocChip chip='name' label="dwc-splitter" />
 
-<JavadocLink type="foundation" location="com/webforj/component/layout/splitter/Splitter" top='true'/>
+<JavadocLink type="splitter" location="com/webforj/component/layout/splitter/Splitter" top='true'/>
 
 
 The `Splitter` component, designed to divide and resize content within your app, encapsulates two resizable components: the master and the detail components. A divider separates these components, allowing users to dynamically adjust each component's size according to their preferences.

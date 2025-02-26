@@ -6,7 +6,7 @@ title: Login
 
 <DocChip chip='name' label="dwc-login" />
 
-<JavadocLink type="foundation" location="com/webforj/component/login/Login" top='true'/>
+<JavadocLink type="login" location="com/webforj/component/login/Login" top='true'/>
 
 The Login component is designed to provide a and user-friendly interface for authentication, allowing users to log in using a username and password. It supports various customizations to enhance user experience across different devices and locales.
 
