@@ -3,11 +3,13 @@ sidebar_position: 3
 title: Downloading Files
 ---
 
-webforJ provides methods to initiate file downloads, making it easy to deliver files to users through the browser. The [`Page`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/Page.html) class offers several ways to download files, whether they come from input streams, byte arrays, physical files, or resources.
+<JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page</JavadocLink>
+
+webforJ provides methods to initiate file downloads, making it easy to deliver files to users through the browser. The <JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page</JavadocLink> class offers several ways to download files, whether they come from input streams, byte arrays, physical files, or resources.
 
 ## Downloading files using `InputStream`
 
-The [`download(InputStream inputStream, String fileName)`](https://javadoc.io/static/com.webforj/webforj-foundation/24.21/com/webforj/Page.html#download(java.io.InputStream,java.lang.String)) method allows you to send a file to the client using an input stream. This is particularly useful when the file content is generated dynamically or read from an external source.
+The <JavadocLink type="foundation" location="com/webforj/Page" code='true' suffix='#download(java.io.InputStream,java.lang.String)'>download(InputStream inputStream, String fileName)</JavadocLink> method allows you to send a file to the client using an input stream. This is particularly useful when the file content is generated dynamically or read from an external source.
 
 ```java
 InputStream inputStream = new FileInputStream("path/to/sample.pdf");
@@ -17,9 +19,9 @@ Page.getCurrent().download(inputStream, "sample.pdf");
 - **inputStream**: The input stream representing the file content.
 - **fileName**: The name under which the file will be downloaded by the client.
 
-## Downloading files using Byte Arrays
+## Downloading files using byte arrays
 
-The [`download(byte[] content, String fileName)`](https://javadoc.io/static/com.webforj/webforj-foundation/24.21/com/webforj/Page.html#download(byte%5B%5D,java.lang.String)) method allows downloading files using a byte array that represents the file's content. This method is useful when file content is generated or processed in memory.
+The <JavadocLink type="foundation" location="com/webforj/Page" code='true' suffix='#download(byte%5B%5D,java.lang.String)'>download(byte[] content, String fileName)</JavadocLink> method allows downloading files using a byte array that represents the file's content. This method is useful when file content is generated or processed in memory.
 
 ```java
 byte[] content = Files.readAllBytes(Paths.get("path/to/document.txt"));
@@ -31,7 +33,7 @@ Page.getCurrent().download(content, "document.txt");
 
 ## Downloading physical files
 
-The [`download(File file, String fileName)`](https://javadoc.io/static/com.webforj/webforj-foundation/24.21/com/webforj/Page.html#download(java.io.File,java.lang.String)) method is used to download a file that exists on the server.
+The <JavadocLink type="foundation" location="com/webforj/Page" code='true' suffix='#download(java.io.File,java.lang.String)'>download(File file, String fileName)</JavadocLink> method is used to download a file that exists on the server.
 
 ```java
 File file = new File("path/to/image.png");
@@ -48,7 +50,7 @@ Page.getCurrent().download(new File("path/to/report.pdf"));
 
 ## Downloading resources
 
-The [`download(String path, String fileName)`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/Page.html) method enables downloading resources located within the app's context or specified by a path.
+The <JavadocLink type="foundation" location="com/webforj/Page" code='true' suffix='#download(java.lang.String,java.lang.String)'>download(String path, String fileName)</JavadocLink> method enables downloading resources located within the app's context or specified by a path.
 
 ```java
 Page.getCurrent().download("context://resources/manual.pdf", "user-manual.pdf");
