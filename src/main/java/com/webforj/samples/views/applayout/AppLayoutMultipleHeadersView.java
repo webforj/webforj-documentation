@@ -12,60 +12,64 @@ import com.webforj.component.icons.Icon;
 import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.applayout.AppDrawerToggle;
 import com.webforj.component.layout.applayout.AppLayout;
+import com.webforj.component.layout.appnav.AppNav;
+import com.webforj.component.layout.appnav.AppNavItem;
+import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.component.tabbedpane.Tab;
 import com.webforj.component.tabbedpane.TabbedPane;
-import com.webforj.component.tabbedpane.TabbedPane.Placement;
-import com.webforj.component.tabbedpane.event.TabSelectEvent;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.views.applayout.applayoutmultipleheaders.AnalyticsView;
+import com.webforj.samples.views.applayout.applayoutmultipleheaders.CustomersView;
+import com.webforj.samples.views.applayout.applayoutmultipleheaders.DashboardView;
+import com.webforj.samples.views.applayout.applayoutmultipleheaders.DocumentsView;
+import com.webforj.samples.views.applayout.applayoutmultipleheaders.OrdersView;
+import com.webforj.samples.views.applayout.applayoutmultipleheaders.ProductsView;
+import com.webforj.samples.views.applayout.applayoutmultipleheaders.TasksView;
 
 @InlineStyleSheet("context://css/applayout/applayout.css")
 @Route
 @FrameTitle("AppLayout Multiple Headers")
 public class AppLayoutMultipleHeadersView extends Composite<AppLayout> {
 
-	AppLayout demo = getBoundComponent();
-	Paragraph contentLabel = new Paragraph();
+  AppLayout demo = getBoundComponent();
+  Paragraph contentLabel = new Paragraph();
 
-	Div header = new Div();
-	Div drawer = new Div();
+  Toolbar header = new Toolbar();
+  Div drawer = new Div();
 
-	public AppLayoutMultipleHeadersView() {
+  public AppLayoutMultipleHeadersView() {
 
-		demo.setDrawerHeaderVisible(true);
-		demo.setDrawerFooterVisible(true);
+    demo.setDrawerHeaderVisible(true);
+    demo.setDrawerFooterVisible(true);
 
-		demo.addToDrawerTitle(new Div("Menu"));
-		demo.addToDrawerHeaderActions(new Element("dwc-icon-button")
-				.setAttribute("name", "pin"));
-		demo.addToDrawerFooter(new Paragraph("All rights reserved"));
+    demo.addToDrawerTitle(new Div("Menu"));
+    demo.addToDrawerHeaderActions(new Element("dwc-icon-button")
+        .setAttribute("name", "pin"));
+    demo.addToDrawerFooter(new Paragraph("All rights reserved"));
 
-		// Header
-		header.addClassName("layout__header").add(
-				new AppDrawerToggle(),
-				new H3("DWCJ Application"));
-		demo.addToHeader(header);
+    // Header
+    header.addClassName("layout__header").addToStart(
+        new AppDrawerToggle()).addToTitle(
+            new H3("Application"));
 
-		// Drawer
-		drawer.addClassName("app-layout-drawer");
-		demo.addToDrawer(drawer);
+    demo.addToHeader(header);
 
-		// Drawer's logo container and logo
+    // Drawer
+    drawer.addClassName("app-layout-drawer");
+    demo.addToDrawer(drawer);
+
+    // Drawer's logo container and logo
 		Div drawerLogo = new Div();
 		drawerLogo.addClassName("drawer__logo")
 				.add(new Img("https://documentation.webforj.com/img/webforj_icon.svg", "logo"));
 		drawer.add(drawerLogo);
 
-		// Drawer's Menu
-		TabbedPane drawerMenu = new TabbedPane();
-		drawer.add(drawerMenu);
+    // Drawer's Menu
+    AppNav drawerMenu = new AppNav();
+    drawer.add(drawerMenu);
 
-		// Setting drawer menu's attributes
-		drawerMenu.setBodyHidden(true);
-		drawerMenu.setBorderless(true);
-		drawerMenu.setPlacement(Placement.LEFT);
-
-		// Adding tabs to drawer menu
+    // Adding tabs to drawer menu
     Icon dashboardIcon = TablerIcon.create("dashboard");
     Icon ordersIcon = TablerIcon.create("shopping-cart");
     Icon customersIcon = TablerIcon.create("users");
@@ -74,28 +78,29 @@ public class AppLayoutMultipleHeadersView extends Composite<AppLayout> {
     Icon tasksIcon = TablerIcon.create("checklist");
     Icon analyticsIcon = TablerIcon.create("chart-dots-2");
 
-    drawerMenu.addTab(new Tab("Dashboard", dashboardIcon));
-    drawerMenu.addTab(new Tab("Orders", ordersIcon));
-    drawerMenu.addTab(new Tab("Customers", customersIcon));
-		drawerMenu.addTab(new Tab("Products", productsIcon));
-    drawerMenu.addTab(new Tab("Documents", documentsIcon));
-    drawerMenu.addTab(new Tab("Tasks", tasksIcon));
-    drawerMenu.addTab(new Tab("Analytics", analyticsIcon));
+    drawerMenu.addItem(new AppNavItem("Dashboard", DashboardView.class, dashboardIcon));
+    drawerMenu.addItem(new AppNavItem("Orders", OrdersView.class, ordersIcon));
+    drawerMenu.addItem(new AppNavItem("Customers", CustomersView.class, customersIcon));
+    drawerMenu.addItem(new AppNavItem("Products", ProductsView.class, productsIcon));
+    drawerMenu.addItem(new AppNavItem("Documents", DocumentsView.class, documentsIcon));
+    drawerMenu.addItem(new AppNavItem("Tasks", TasksView.class, tasksIcon));
+    drawerMenu.addItem(new AppNavItem("Analytics", AnalyticsView.class, analyticsIcon));
 
-		drawerMenu.onSelect(this::onTabChange);
-		// Content
-		demo.addToContent(new H1("Application Title"), this.contentLabel);
+    // Content
+    demo.addToContent(new H1("Application Title"), this.contentLabel);
 
-		// Adding the additional toolbar with menu items
-		Div secondToolbar = new Div();
-		secondToolbar.addClassName("layout__second__header");
-		demo.addToHeader(secondToolbar);
-		TabbedPane secondMenu = new TabbedPane();
-		secondToolbar.add(secondMenu);
-		secondMenu.setBodyHidden(true);
-		secondMenu.setBorderless(true);
+    // Adding the additional toolbar with menu items
+    Toolbar secondToolbar = new Toolbar();
+    secondToolbar.setCompact(true);
+    secondToolbar.addClassName("layout__second__header");
+    demo.addToHeader(secondToolbar);
+    demo.setHeaderFixed(true);
+    TabbedPane secondMenu = new TabbedPane();
+    secondToolbar.addToStart(secondMenu);
+    secondMenu.setBodyHidden(true);
+    secondMenu.setBorderless(true);
 
-		Icon salesIcon = TablerIcon.create("report-money");
+    Icon salesIcon = TablerIcon.create("report-money");
     Icon enterpriseIcon = TablerIcon.create("building");
     Icon paymentsIcon = TablerIcon.create("credit-card");
     Icon historyIcon = TablerIcon.create("history");
@@ -103,12 +108,7 @@ public class AppLayoutMultipleHeadersView extends Composite<AppLayout> {
     secondMenu.addTab(new Tab("Sales", salesIcon));
     secondMenu.addTab(new Tab("Enterprise", enterpriseIcon));
     secondMenu.addTab(new Tab("Payments", paymentsIcon));
-		secondMenu.addTab(new Tab("History", historyIcon));
+    secondMenu.addTab(new Tab("History", historyIcon));
 
-	}
-
-	private void onTabChange(TabSelectEvent ev) {
-		String value = ev.getTab().getText().replaceAll("<[^>]*>", "").trim();
-		contentLabel.setText("Content for " + value + " goes here");
-	}
+  }
 }
