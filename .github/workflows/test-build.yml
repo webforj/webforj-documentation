@@ -1,0 +1,37 @@
+name: Test WAR Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test-build-war:
+    name: Test WAR Build (No Deployment)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'maven'
+
+      - name: Build WAR with Maven
+        run: mvn clean package -Pprod
+
+      - name: Verify WAR File Exists
+        run: ls -lh target/*.war || (echo "WAR file not found!" && exit 1)
+
+      - name: Upload WAR as an Artifact (For Debugging)
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-war
+          path: target/*.war
