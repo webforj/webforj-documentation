@@ -9,13 +9,13 @@ webforJ supports custom assets protocols that enable structured and efficient re
 
 The **`ws://`** protocol allows you to retrieve assets hosted in the static folder of a webforJ app. All files located within the app classpath `src/main/resources/static` are directly accessible from the browser. For example, if you have a file named **css/app.css** inside **resources/static**, it can be accessed at: **`/static/css/app.css`**  
 
-The **ws://** protocol removes the need to hardcode the `static` prefix in your resource URLs. Because, the prefix may change depending on the deployment context. If the web app is deployed under a context other than the root, such as **/mycontext**, the URL for **css/app.css** would be: **`/mycontext/static/css/app.css`**  
+The **ws://** protocol removes the need to hardcode the `static` prefix in your resource URLs, safeguarding against changed prefixes depending on the deployment context. If the web app is deployed under a context other than the root, such as **/mycontext**, the URL for **css/app.css** would be: **`/mycontext/static/css/app.css`**  
 
 :::tip Configuring the static prefix
 You can control the `static` prefix using the [webforj configuration](../configuration/properties#configuration-options) option `webforj.assetsDir`. This setting specifies the route name used to serve static files, while **the physical folder remains named `static`**. it's particularly useful if the default static route conflicts with a route in your app, as it allows you to change the route name without renaming the folder.
 :::
 
-You can use the [`Assets`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/utilities/Assets.html) utilities class to resolve a given web server URL. This can be useful if you have a custom component that needs to support that protocol.
+You can use the <JavadocLink type="foundation" location="com/webforj/utilities/Assets" code='true'>Assets</JavadocLink> utilities class to resolve a given web server URL. This can be useful if you have a custom component that needs to support that protocol.
 
 ```java
 String url = Assets.resolveWebServerUrl("ws://js/app.js");
@@ -41,7 +41,7 @@ The **`icons://`** protocol provides a dynamic approach to icon management, maki
 Img icon = new Img("icons://icon-192x192.png")
 ```
 
-### Base Icon
+### Base icon
 
 When an icon is requested using the `icons://` protocol, a base image is dynamically derived from the requested icon filename. This ensures consistency in icon design and allows for automatic fallback to a default image if no base icon is provided.
 
@@ -60,7 +60,7 @@ You can override specific icon sizes by placing pre-generated images in the `res
 
 - **Example:** If `resources/icons/icon-192x192.png` exists, it will be served directly instead of being dynamically generated.
 
-### Customizing Icon appearance
+### Customizing icon appearance
 
 The `icons://` protocol supports additional parameters that allow you to customize the appearance of dynamically generated icons. This includes options for padding and background color.
 
@@ -69,7 +69,9 @@ The `icons://` protocol supports additional parameters that allow you to customi
   
 - **Background Color**: The `background` parameter allows you to set the background color of the icon. It supports the following values:
   - **`transparent`**: No background color.
+  <!-- vale off -->
   - **Hexadecimal Color Codes**: Custom background colors (e.g., `FFFFFF` for white).
+  <!-- vale on -->
   - **`auto`**: Attempts to detect the background color of the icon automatically.
 
   For instance: 
