@@ -3,8 +3,6 @@ sidebar_position: 3
 title: Downloading Files
 ---
 
-<JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page</JavadocLink>
-
 webforJ provides methods to initiate file downloads, making it easy to deliver files to users through the browser. The <JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page</JavadocLink> class offers several ways to download files, whether they come from input streams, byte arrays, physical files, or resources.
 
 ## Downloading files using `InputStream`
