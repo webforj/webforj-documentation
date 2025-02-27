@@ -14,11 +14,16 @@ public class NavigatorPagesView extends Composite<Div> {
 
   public NavigatorPagesView() {
     Paragraph text = new Paragraph("Navigate with the buttons below");
-    Navigator nav = new Navigator(100, Layout.PAGES);
+    Navigator nav = new Navigator(0, Layout.PAGES);
     nav.getPaginator().setMax(5);
     nav.onChange(e -> {
-      String fromattedText =
-          String.format("Showing %d to %d of 100", e.getStartIndex(), e.getEndIndex());
+      int start = e.getStartIndex();
+      int end = e.getEndIndex();
+      if (end != 0) {
+        start = start + 1;
+        end = end + 1;
+      }
+      String fromattedText = String.format("Showing %d to %d of 100", start, end);
       text.setText(fromattedText);
     });
 
