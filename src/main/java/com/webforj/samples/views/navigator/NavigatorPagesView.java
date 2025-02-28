@@ -14,7 +14,7 @@ public class NavigatorPagesView extends Composite<Div> {
 
   public NavigatorPagesView() {
     Paragraph text = new Paragraph("Navigate with the buttons below");
-    Navigator nav = new Navigator(0, Layout.PAGES);
+    Navigator nav = new Navigator(100, Layout.PAGES);
     nav.getPaginator().setMax(5);
     nav.onChange(e -> {
       int start = e.getStartIndex();
