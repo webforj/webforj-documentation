@@ -1,5 +1,0 @@
-ListBox l1 = new ListBox().setExpanse(ListBox.Expanse.XSMALL);
-ListBox l2 = new ListBox().setExpanse(ListBox.Expanse.SMALL);
-ListBox l3 = new ListBox().setExpanse(ListBox.Expanse.MEDIUM);
-ListBox l4 = new ListBox().setExpanse(ListBox.Expanse.LARGE);
-ListBox l5 = new ListBox().setExpanse(ListBox.Expanse.XLARGE);

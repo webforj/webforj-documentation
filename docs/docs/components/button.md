@@ -67,7 +67,6 @@ Below are examples of buttons with text to the left and right, as well as a butt
 <ComponentDemo 
 path='/webforj/buttonicon?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonIconView.java'
-javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/button/Icon.txt'
 height="200px"
 />
 
@@ -82,7 +81,6 @@ Button components, like many others, can be disabled to convey to a user that a 
 <ComponentDemo 
 path='/webforj/buttondisable?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonDisableView.java'
-javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/button/Disable.txt'
 />
 
 <br />
@@ -116,7 +114,6 @@ Shown below are example buttons with each of the supported Themes applied: <br/>
 <ComponentDemo 
 path='/webforj/buttonthemes?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonThemesView.java'
-javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/button/Theme.txt'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/button/buttonThemes.css'
 height='175px'
 />
@@ -134,7 +131,6 @@ Below are the various expanses supported for the `Button` component: <br/>
 <ComponentDemo 
 path='/webforj/buttonexpanses?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonExpansesView.java'
-javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/button/Expanses.txt'
 height='200px'
 />
 

@@ -1,3 +1,0 @@
-Dialog dialog = new Dialog();
-dialog.show();
-dialog.setAutoFocus(true);
