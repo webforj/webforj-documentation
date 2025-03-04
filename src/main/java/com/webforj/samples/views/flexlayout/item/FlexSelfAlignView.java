@@ -56,6 +56,7 @@ public class FlexSelfAlignView extends Composite<Div> {
                   .substring(1));
     }
     alignment.selectIndex(0);
+    alignment.setMaxRowCount(FlexAlignment.values().length);
 
     boxLayout.setItemAlignment(FlexAlignment.START, alignButton);
     getBoundComponent().add(mainLayout);

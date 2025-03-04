@@ -53,6 +53,7 @@ public class FlexDirectionView extends Composite<Div> {
                   .substring(1));
     }
     directions.selectIndex(0);
+    directions.setMaxRowCount(FlexDirection.values().length);
     getBoundComponent().add(mainLayout);
     mainLayout.add(directions, boxLayout);
   }

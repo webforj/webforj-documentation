@@ -55,6 +55,7 @@ public class FlexPositioningView extends Composite<Div> {
                   .substring(1));
     }
     horizontal.selectIndex(0);
+    horizontal.setMaxRowCount(FlexJustifyContent.values().length);
 
     ChoiceBox vertical = new ChoiceBox();
     vertical.onSelect(this::selectAlignment);
@@ -71,6 +72,7 @@ public class FlexPositioningView extends Composite<Div> {
                   .substring(1));
     }
     vertical.selectIndex(0);
+    vertical.setMaxRowCount(FlexAlignment.values().length);
 
     FlexLayout choices = FlexLayout.create(horizontal, vertical)
         .vertical()
