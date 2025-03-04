@@ -41,11 +41,11 @@ public class FlexOrderView extends Composite<Div> {
 
     MaskedNumberField order = new MaskedNumberField("5")
         .setLabel("Order:")
-        .setWidth("200px");
+        .setWidth("100px");
     Button submit = new Button("Set Order");
     order.setInvalidMessage("Order can not be empty.");
     order.setNegateable(false);
-    submit.setHeight("34px")
+    submit.setSize("100px","34px")
         .onClick(e -> {
           if (order.getText().isEmpty()) {
             order.setInvalid(true);
