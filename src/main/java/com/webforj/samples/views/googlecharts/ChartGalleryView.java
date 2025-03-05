@@ -17,7 +17,7 @@ import java.util.List;
 @FrameTitle("Chart Gallery")
 public class ChartGalleryView extends Composite<Div> {
 
-  private static final String GITHUB_BASE_URL = "https://github.com/webforj/webforj-docs-samples/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/";
+  private static final String GITHUB_BASE_URL = "https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/";
 
   public ChartGalleryView() {
     getBoundComponent().addClassName("chart-gallery");
