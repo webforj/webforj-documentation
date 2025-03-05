@@ -31,7 +31,7 @@ public class TableColumnPinningView extends Composite<Div> {
     }).setAlignment(Column.Alignment.RIGHT);
 
     ButtonRenderer<MusicRecord> editRenderer = new ButtonRenderer<>("Edit", e -> {
-      showMessageDialog("You asked to edit the record" + 0 + "Edit Record");
+      showMessageDialog("You asked to edit record number <b>" + e.getItem().getNumber() + "</b>.","Edit Record");
     });
     table.addColumn(editRenderer).setAlignment(Column.Alignment.CENTER)
         .setPinDirection(Column.PinDirection.RIGHT);
