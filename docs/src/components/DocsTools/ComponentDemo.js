@@ -267,6 +267,11 @@ export default function ComponentDemo({
     width: 100%;
     margin-bottom: 16px;
     background-color: var(--dwc-surface-1);
+
+    @media screen and (max-width: 768px) {
+      width: 100vw;
+      margin-left: -1em;
+    }
   `;
 
   const demoFrameStyles = css`
@@ -304,6 +309,10 @@ export default function ComponentDemo({
     border-left: 1px solid var(--ifm-toc-border-color);
     border-right: 1px solid var(--ifm-toc-border-color);
     background-color: var(--dwc-surface-3);
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
   `;
 
   const detailsStyles = css`
