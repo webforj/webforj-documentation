@@ -1,8 +1,0 @@
-buttonTop.setTheme(Button.Theme.DEFAULT)
-  .setVerticalAlignment(TextVerticalAlignment.TOP);
-
-buttonCenter.setTheme(Button.Theme.DEFAULT)
-  .setVerticalAlignment(TextVerticalAlignment.CENTER);
-
-buttonBottom.setTheme(Button.Theme.DEFAULT)
-  .setVerticalAlignment(TextVerticalAlignment.BOTTOM);

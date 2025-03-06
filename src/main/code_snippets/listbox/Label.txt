@@ -1,1 +1,0 @@
-l1.setAttribute("label","Built-in Label for a list box!");

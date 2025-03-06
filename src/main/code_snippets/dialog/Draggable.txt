@@ -1,5 +1,0 @@
-Dialog dialog = new Dialog();
-dialog.show();
-
-dialog.setSnapToEdge(true);
-dialog.setSnapThreshold(100);
