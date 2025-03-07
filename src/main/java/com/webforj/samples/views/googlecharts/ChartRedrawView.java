@@ -7,10 +7,12 @@ import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.field.NumberField;
 import com.webforj.component.googlecharts.GoogleChart;
 import com.webforj.component.html.elements.Div;
+import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.layout.flexlayout.FlexWrap;
+import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,9 +27,8 @@ public class ChartRedrawView extends Composite<Div> {
   private static final String TEXT_STYLE = "textStyle";
   private static final String TITLE = "title";
 
-  private GoogleChart chart = new GoogleChart(GoogleChart.Type.COLUMN);
-  private Button redrawButton = new Button("Redraw Chart");
-  private FlexLayout inputGroup = new FlexLayout();
+  private final GoogleChart chart = new GoogleChart(GoogleChart.Type.COLUMN);
+  private final Button redrawButton = new Button("Redraw Chart");
 
   public ChartRedrawView() {
     getBoundComponent().addClassName("window");
@@ -47,55 +48,66 @@ public class ChartRedrawView extends Composite<Div> {
     chart.setOptions(options);
 
     List<Object> data = new ArrayList<>();
-    data.add(List.of("Category", "Number of Followers in Thousands"));
+    List<String> columns = List.of("Category", "Number of Followers in Thousands");
+    data.add(columns);
 
-    inputGroup.addClassName("input-group");
+    FlexLayout inputContainer = new FlexLayout();
+    inputContainer.addClassName("input-container");
+    inputContainer.setJustifyContent(FlexJustifyContent.CENTER);
+    inputContainer.setWrap(FlexWrap.WRAP);
+    inputContainer.setSpacing("10px");
 
-    String[] categories = { "Instagram", "Twitter", "Facebook", "LinkedIn" };
+    String[] categories = {"Instagram", "Twitter", "Facebook", "LinkedIn"};
     Map<String, NumberField> valueFields = new HashMap<>();
 
     for (String category : categories) {
-      data.add(List.of(category, 100));
+      List<Object> row = new ArrayList<>();
+      row.add(category);
+      row.add(100);
+      data.add(row);
+
       NumberField valueField = new NumberField("Value for " + category);
       valueField.setPlaceholder("");
       valueField.setStep(1.0);
       valueField.addClassName("number-field");
       valueField.setText("100");
-      inputGroup.add(valueField);
+      inputContainer.add(valueField);
       valueFields.put(category, valueField);
     }
+
     chart.setData(data);
+
+    Div buttonContainer = new Div();
+    buttonContainer.addClassName("redraw-button-container");
+    buttonContainer.add(redrawButton.setTheme(ButtonTheme.PRIMARY));
 
     redrawButton.addClassName("redraw-button");
     redrawButton.addClickListener(e -> {
       List<Object> newData = new ArrayList<>();
-      newData.add(List.of("Category", "Followers"));
+      newData.add(columns);
       boolean allValuesValid = true;
+
       for (String category : categories) {
         NumberField valueField = valueFields.get(category);
         String fieldValue = valueField.getText();
-        Double value = null;
 
-        if (!fieldValue.isEmpty()) {
-          try {
-            value = Double.parseDouble(fieldValue);
-          } catch (NumberFormatException ex) {
-            allValuesValid = false;
-            break;
-          }
+        if (!fieldValue.matches("^[1-9]\\d*$")) { 
+          allValuesValid = false;
+          break;
         }
 
-        newData.add(List.of(category, value != null ? value.intValue() : null));
+        int value = Integer.parseInt(fieldValue);
+        newData.add(List.of(category, value));
       }
 
-      if (allValuesValid) {
+      if (!allValuesValid) {
+        Toast.show("Enter a valid number", 3000);
+      } else {
         chart.setData(newData);
         chart.redraw();
       }
     });
 
-    inputGroup.add(redrawButton.setTheme(ButtonTheme.PRIMARY));
-    getBoundComponent().add(chartContainer);
-    getBoundComponent().add(inputGroup);
+    getBoundComponent().add(chartContainer, inputContainer, buttonContainer);
   }
 }
