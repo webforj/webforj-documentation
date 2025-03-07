@@ -3,6 +3,10 @@
   flex-direction: column;
   align-items: center;
   margin: 20px;
+  overflow-y: auto;
+  max-height: 100vh;
+  width: 100%;
+  overflow-y: auto;
 }
 
 .chart-container {
@@ -10,32 +14,28 @@
   justify-content: center;
   width: 100%;
   max-width: 1000px;
+  overflow: hidden;
 }
 
 .input-group {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 10px;
-  width: 100%;
-  max-width: 800px;
-  margin: 20px;
 }
 
 .number-field {
-  flex: 1 1 150px;
+  margin: 10px;
+  max-width: 300px;
 }
 
-.redraw-button {
-  flex: 1 1 150px;
+.redraw-button-container {
+  margin-top: 10px;
 }
 
-@media (max-width: 768px) {
-  .input-group {
-    flex-direction: column;
-  }
+.window > * {
+  flex-shrink: 0;
+}
 
-  .number-field, .redraw-button {
-    width: 100%;
-  }
+.chart-container, .input-group, .redraw-button-container {
+  min-height: 100px;
 }
