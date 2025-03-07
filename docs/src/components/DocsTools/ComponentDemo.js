@@ -108,6 +108,10 @@ export function OpenNewWindowButton({ url }) {
   );
 }
 
+export const isLocalhost = typeof window !== "undefined" &&
+window.location.hostname === "localhost" &&
+window.location.port === "3000";
+
 export default function ComponentDemo({
   path,
   javaC,
@@ -152,9 +156,6 @@ export default function ComponentDemo({
   const iframeRef = useRef(null);
   const codeButtonRef = useRef(null);
 
-  const isLocalhost = typeof window !== "undefined" &&
-  window.location.hostname === "localhost" &&
-  window.location.port === "3000";
   useEffect(() => {
     if (javaE) {
       fetch(javaE)
