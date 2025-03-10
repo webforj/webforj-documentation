@@ -1,6 +1,6 @@
 ---
-sidebar_position: 4
-title: Input
+sidebar_position: 25
+title: Input Dialog
 ---
 
 # Input Dialog

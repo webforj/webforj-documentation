@@ -1,5 +1,5 @@
 ---
-sidebar_position: 11
+sidebar_position: 5
 title: ColorField
 slug: colorfield
 description: A component that provides a default browser-based color picker, allowing users to select a color from an input field.
