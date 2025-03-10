@@ -1,5 +1,6 @@
 {
   "label": "Table",
+  "position": 120,
   "link": {
     "type": "doc",
     "id" : "table"

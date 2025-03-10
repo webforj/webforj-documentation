@@ -1,5 +1,6 @@
 ---
 title: Navigator
+sidebar_position: 75
 ---
 
 <!-- vale off -->

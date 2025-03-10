@@ -1,5 +1,6 @@
 ---
 title: BusyIndicator
+sidebar_position: 10
 ---
 
 <DocChip chip="shadow" />

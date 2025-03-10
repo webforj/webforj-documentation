@@ -1,5 +1,6 @@
 ---
 title: Google Charts
+sidebar_position: 50
 ---
 
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';

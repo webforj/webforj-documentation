@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 25
 title: NumberField
 slug: numberfield
 description: A component that provides a default browser-based input field for entering numeric values, with built-in controls for incrementing or decrementing the value.

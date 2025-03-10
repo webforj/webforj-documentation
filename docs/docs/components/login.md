@@ -1,5 +1,6 @@
 ---
 title: Login
+sidebar_position: 70
 ---
 
 <DocChip chip='shadow' />

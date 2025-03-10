@@ -1,5 +1,6 @@
 ---
 title: Loading
+sidebar_position: 65
 ---
 
 <DocChip chip="shadow" />

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 10
 title: DateField
 slug: datefield
 description: A component that provides a default browser-based date picker for selecting a date through an input field.

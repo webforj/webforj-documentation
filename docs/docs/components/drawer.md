@@ -1,5 +1,6 @@
 ---
 title: Drawer
+sidebar_position: 35
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-drawer" />

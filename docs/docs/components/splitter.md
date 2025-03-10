@@ -1,5 +1,6 @@
 ---
 title: Splitter
+sidebar_position: 115
 ---
 
 <!-- vale off -->

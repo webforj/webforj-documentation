@@ -1,5 +1,6 @@
 ---
 title: ColumnsLayout
+sidebar_position: 25
 ---
 
 <DocChip chip="shadow" />

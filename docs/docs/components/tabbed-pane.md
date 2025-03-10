@@ -1,6 +1,7 @@
 ---
 title: TabbedPane
 slug: tabbedpane
+sidebar_position: 125
 ---
 
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
