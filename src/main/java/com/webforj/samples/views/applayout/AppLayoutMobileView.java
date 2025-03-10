@@ -11,6 +11,7 @@ import com.webforj.component.html.elements.Strong;
 import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.applayout.AppLayout;
 import com.webforj.component.layout.applayout.AppLayout.DrawerPlacement;
+import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.component.tabbedpane.Tab;
 import com.webforj.component.tabbedpane.TabbedPane;
 import com.webforj.component.tabbedpane.TabbedPane.Placement;
@@ -25,16 +26,16 @@ public class AppLayoutMobileView extends Composite<AppLayout> {
 
   AppLayout demo = getBoundComponent();
   Div contentLabel = new Div();
-  Div header = new Div();
+  Toolbar header = new Toolbar();
 
   public AppLayoutMobileView() {
     // Header
     Div logo = new Div();
     logo.addClassName("dwc-logo")
         .add(new Img("https://documentation.webforj.com/img/webforj_icon.svg", "logo"));
-    Strong title = new Strong("DWCJ Application");
+    Strong title = new Strong("Application");
 
-    header.add(logo, title);
+    header.addToStart(logo).addToTitle(title);
     header.addClassName("dwc-toolbar");
 
     demo.addToHeader(header);
