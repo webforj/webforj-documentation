@@ -11,7 +11,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
-    <webforj.version>24.22</webforj.version>
+    <webforj.version>25.00-SNAPSHOT</webforj.version>
     <warFileName>${artifactId}-${version}</warFileName>
     <jetty.version>12.0.14</jetty.version>
     <!--
@@ -40,7 +40,7 @@
       <dependency>
         <groupId>com.webforj</groupId>
         <artifactId>webforj-bom</artifactId>
-        <version>24.21-SNAPSHOT</version>
+        <version>${webforj.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -167,8 +167,8 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.eclipse.jetty.ee8</groupId>
-        <artifactId>jetty-ee8-maven-plugin</artifactId>
+        <groupId>org.eclipse.jetty.ee10</groupId>
+        <artifactId>jetty-ee10-maven-plugin</artifactId>
         <version>${jetty.version}</version>
         <configuration>
           <scan>${jetty.scan}</scan>
