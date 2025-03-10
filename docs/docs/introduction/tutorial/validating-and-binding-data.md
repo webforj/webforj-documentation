@@ -13,7 +13,11 @@ For more information on data binding reference [this article.](../../data-bindin
 - Go to the `4-validating-and-binding-data` directory
 - Run the `mvn jetty:run` command
 
-![Data binding and validation screenshot](../../../static/img/tutorial_images/step4.png)
+<div class="videos-container">
+  <video controls>
+    <source src="/video/demo-videos/step-4-video.mp4" type="video/mp4"/>
+  </video>
+</div>
 
 ### Binding the fields
 

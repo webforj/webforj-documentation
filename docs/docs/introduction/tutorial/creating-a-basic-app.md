@@ -12,12 +12,11 @@ By the end of this step, you’ll have a functioning app that demonstrates basic
 - Go to the `1-creating-a-basic-app` directory
 - Run the `mvn jetty:run` command
 
-
-<video controls width="800">
-  <source src="/video/demo-step-1.mp4" type="video/mp4"/>
-  Your browser does not support the video tag.
-</video>
-
+<div class="videos-container">
+  <video controls>
+    <source src="/video/demo-videos/step-1-video.mp4" type="video/mp4"/>
+  </video>
+</div>
 ## Creating a webforJ app
 
 In webforJ, an `App` represents the central hub for defining and managing your project. Every webforJ app starts by creating one class that extends the foundational `App` class, which serves as the core framework to:
