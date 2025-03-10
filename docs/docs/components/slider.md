@@ -1,5 +1,6 @@
 ---
 title: Slider
+sidebar_position: 105
 ---
 
 <JavadocLink type="foundation" location="com/webforj/component/slider/Slider" top='true'/>

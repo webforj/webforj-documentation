@@ -1,5 +1,6 @@
 ---
 title: FlexLayout
+sidebar_position: 45
 ---
 
 <JavadocLink type="flexlayout" location="com/webforj/component/layout/flexlayout/FlexLayout" top='true'/>

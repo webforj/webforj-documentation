@@ -1,5 +1,6 @@
 ---
 title: Dialog
+sidebar_position: 30
 ---
 
 <DocChip chip='shadow' />

@@ -1,5 +1,6 @@
 {
   "label": "Fields",
+  "position": 40,
   "link": {
     "type": "doc",
     "id" : "fields"

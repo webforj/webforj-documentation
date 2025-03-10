@@ -1,6 +1,7 @@
 ---
 title: RadioButtonGroup
 slug: radiobuttongroup
+sidebar_position: 100
 ---
 
 <JavadocLink type="foundation" location="com/webforj/component/optioninput/RadioButtonGroup" top='true'/>

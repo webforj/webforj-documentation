@@ -1,5 +1,6 @@
 ---
 title: UI Components
+sidebar_position: 85
 hide_table_of_contents: true
 ---
 

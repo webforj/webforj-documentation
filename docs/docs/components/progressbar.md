@@ -1,5 +1,6 @@
 ---
 title: ProgressBar
+sidebar_position: 90
 ---
 
 <DocChip chip='shadow' />

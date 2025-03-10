@@ -1,5 +1,6 @@
 ---
 title: Spinner
+sidebar_position: 110
 ---
 
 <DocChip chip="shadow" />

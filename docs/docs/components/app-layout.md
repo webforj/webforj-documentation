@@ -1,5 +1,6 @@
 ---
 title: AppLayout
+sidebar_position: 5
 ---
 
 <DocChip chip='shadow' />

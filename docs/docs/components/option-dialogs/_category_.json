@@ -1,5 +1,6 @@
 {
   "label": "Option Dialogs",
+  "position": 80,
   "link": {
     "type": "doc",
     "id" : "option-dialogs"
