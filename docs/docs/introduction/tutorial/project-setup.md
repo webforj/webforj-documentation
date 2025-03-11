@@ -16,6 +16,12 @@ git clone https://github.com/webforj/webforj-demo-application.git
 
 Both the ZIP file and GitHub repository contain the complete project structure with all four steps, so you can start at any point or follow along step by step.
 
+<div class="videos-container">
+  <video controls>
+    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/project-setup.mp4" type="video/mp4"/>
+  </video>
+</div>
+
 ## Project structure
 
 The project is broken into four discrete directories, each representing a specific stage of the app’s development. These steps allow you to see how the app evolves from a basic setup to a fully functional customer management system.

@@ -10,10 +10,11 @@ The app created in the [previous step](./working-with-data) will have a routing 
 - Go to the `3-scaling-with-routing-and-composites` directory
 - Run the `mvn jetty:run` command
 
-![Routing app first frame](../../../static/img/tutorial_images/step3-1.png)
-<br />
-
-![Routing app second frame](../../../static/img/tutorial_images/step3-2.png)
+<div class="videos-container">
+  <video controls>
+    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/scaling-with-routing-and-composites.mp4" type="video/mp4"/>
+  </video>
+</div>
 
 ## Routing
 
