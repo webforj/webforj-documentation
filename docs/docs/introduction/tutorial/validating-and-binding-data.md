@@ -15,7 +15,7 @@ For more information on data binding reference [this article.](../../data-bindin
 
 <div class="videos-container">
   <video controls>
-    <source src="/video/tutorials/validating-and-binding-data.mp4" type="video/mp4"/>
+    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/validating-and-binding-data.mp4" type="video/mp4"/>
   </video>
 </div>
 

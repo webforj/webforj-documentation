@@ -18,7 +18,7 @@ Both the ZIP file and GitHub repository contain the complete project structure w
 
 <div class="videos-container">
   <video controls>
-    <source src="/video/tutorials/project-setup.mp4" type="video/mp4"/>
+    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/project-setup.mp4" type="video/mp4"/>
   </video>
 </div>
 

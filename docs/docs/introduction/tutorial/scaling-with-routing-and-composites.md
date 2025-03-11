@@ -12,7 +12,7 @@ The app created in the [previous step](./working-with-data) will have a routing 
 
 <div class="videos-container">
   <video controls>
-    <source src="/video/tutorials/scaling-with-routing-and-composites.mp4" type="video/mp4"/>
+    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/scaling-with-routing-and-composites.mp4" type="video/mp4"/>
   </video>
 </div>
 

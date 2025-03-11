@@ -14,7 +14,7 @@ By the end of this step, you’ll have a functioning app that demonstrates basic
 
 <div class="videos-container">
   <video controls>
-    <source src="/video/tutorials/creating-a-basic-app.mp4" type="video/mp4"/>
+    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/creating-a-basic-app.mp4" type="video/mp4"/>
   </video>
 </div>
 
