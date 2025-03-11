@@ -16,7 +16,7 @@ By the end of this step, the app created in the [previous step](./creating-a-bas
 
 <div class="videos-container">
   <video controls>
-    <source src="/video/demo-videos/step-2-video.mp4" type="video/mp4"/>
+    <source src="/video/tutorials/working-with-data.mp4" type="video/mp4"/>
   </video>
 </div>
 

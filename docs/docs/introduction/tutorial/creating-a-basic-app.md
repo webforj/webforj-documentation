@@ -14,9 +14,10 @@ By the end of this step, you’ll have a functioning app that demonstrates basic
 
 <div class="videos-container">
   <video controls>
-    <source src="/video/demo-videos/step-1-video.mp4" type="video/mp4"/>
+    <source src="/video/tutorials/creating-a-basic-app.mp4" type="video/mp4"/>
   </video>
 </div>
+
 ## Creating a webforJ app
 
 In webforJ, an `App` represents the central hub for defining and managing your project. Every webforJ app starts by creating one class that extends the foundational `App` class, which serves as the core framework to:
