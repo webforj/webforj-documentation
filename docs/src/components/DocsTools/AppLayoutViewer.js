@@ -3,7 +3,8 @@
 import { React, useState} from 'react'
 import { jsx, css } from '@emotion/react';
 import { useColorMode } from '@docusaurus/theme-common';
-import ComponentDemo, {OpenNewWindowButton} from './ComponentDemo';
+import ComponentDemo, {OpenNewWindowButton, isLocalhost} from './ComponentDemo';
+import GLOBALS from "../../../siteConfig";
 
 export default function AppLayoutViewer({path, mobile, javaE, cssURL}) {
     
@@ -52,9 +53,9 @@ export default function AppLayoutViewer({path, mobile, javaE, cssURL}) {
           onMouseEnter={() => setButtonVisible(true)}
           onMouseLeave={() => setButtonVisible(false)}>
         <div css={fadeInButton}>
-                {OpenNewWindowButton({ url: path })}
+                {OpenNewWindowButton({ url: (isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path })}
         </div>
-            <iframe src={path+"&__theme__="+ (useColorMode().colorMode)} css={demoContent} loading='lazy'>
+            <iframe src={(isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path + "&__theme__=" + (useColorMode().colorMode)} css={demoContent} loading='lazy'>
             </iframe>
         </div>
         <br/>
