@@ -29,7 +29,7 @@ protected void onCreate(Window window) {
   TextField text = new TextField();
   Button btn = new Button();
 
-  window.add(text, add);
+  window.add(text, btn);
 }
 ```
 
