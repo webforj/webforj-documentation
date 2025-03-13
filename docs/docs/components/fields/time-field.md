@@ -46,6 +46,10 @@ The value of the time field is always in 24-hour format that includes leading ze
 To hide seconds from the display, give the `TimeField` a `LocaleTime` object with the seconds set to 0.
 :::
 
+:::note
+Not only the display is depending on the locale but also the appearance of the time picker input UI is depending on the browser and operating system used. This ensures there is automatic conformity with what the user is normally adjusted to.
+:::
+
 ## Static utilities
 
 The `TimeField` class also provides the following static utility methods:
