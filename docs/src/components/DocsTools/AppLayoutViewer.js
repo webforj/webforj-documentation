@@ -78,7 +78,6 @@ export default function AppLayoutViewer({path, mobile, javaE, cssURL}) {
                 {OpenNewWindowButton({ url: (isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path })}
         </div>
             <iframe src={(isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path} css={demoContent} loading='lazy' ref={iframeRef}>
-            {/* <iframe src={(isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path + "&__theme__=" + (useColorMode().colorMode)} css={demoContent} loading='lazy'> */}
             </iframe>
         </div>
         <br/>
