@@ -46,7 +46,7 @@ public class CompositeDemoView extends Composite<Div> {
         new TodoItem("Exercise"));
   }
 
-  public static class TodoItem extends Composite<FlexLayout> {
+  public class TodoItem extends Composite<FlexLayout> {
 
     RadioButton radioButton = RadioButton.Switch();
     Div text = new Div();
