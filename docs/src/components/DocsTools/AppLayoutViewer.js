@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import { React, useState} from 'react'
+import { React, useState, useEffect, useRef } from 'react'
 import { jsx, css } from '@emotion/react';
 import { useColorMode } from '@docusaurus/theme-common';
 import ComponentDemo, {OpenNewWindowButton, isLocalhost} from './ComponentDemo';
@@ -9,6 +9,28 @@ import GLOBALS from "../../../siteConfig";
 export default function AppLayoutViewer({path, mobile, javaE, cssURL}) {
     
   const [buttonVisible, setButtonVisible] = useState(false);
+  const iframeRef = useRef(null);
+  const { colorMode } = useColorMode()
+  
+  
+  useEffect(() => {
+      if (!iframeRef.current) return;
+    
+      const applyThemeToIframe = () => {
+        try {
+          const iframeDoc = iframeRef.current.contentDocument || iframeRef.current.contentWindow.document;
+          if (iframeDoc) {
+            iframeDoc.documentElement.setAttribute("data-app-theme", colorMode);
+          }
+        } catch (error) {
+          console.error("Failed to apply theme to iframe:", error);
+        }
+      };
+    
+      applyThemeToIframe();
+      iframeRef.current.onload = applyThemeToIframe;
+  
+    }, [colorMode]);
 
     const demoStyles = css`
         display: flex;
@@ -55,7 +77,8 @@ export default function AppLayoutViewer({path, mobile, javaE, cssURL}) {
         <div css={fadeInButton}>
                 {OpenNewWindowButton({ url: (isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path })}
         </div>
-            <iframe src={(isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path + "&__theme__=" + (useColorMode().colorMode)} css={demoContent} loading='lazy'>
+            <iframe src={(isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path} css={demoContent} loading='lazy' ref={iframeRef}>
+            {/* <iframe src={(isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path + "&__theme__=" + (useColorMode().colorMode)} css={demoContent} loading='lazy'> */}
             </iframe>
         </div>
         <br/>
