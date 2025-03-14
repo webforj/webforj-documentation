@@ -38,6 +38,10 @@ With the `setMax()` and `setMin()` methods, you can specify a range of acceptabl
 
 By default, the `DateField` displays information within the UI element based on the locale the browser is configured to. For example, users with United States configurations will see MM/dd/yyyy, whereas European users will see dd/MM/yyyy. Still, this doesn't stop you from manipulating the `LocalDate` object returned by the methods from the `DataField` class.
 
+:::note
+Not only the display is depending on the locale but also the appearance of the date picker input UI is depending on the browser and operating system used. This ensures there is automatic conformity with what the user is normally adjusted to.
+:::
+
 ## Static utilities
 
 The `DateField` class also provides the following static utility methods:
