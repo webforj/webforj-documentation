@@ -1,3 +1,0 @@
-Label l1 = new Label("This is a Label component, which renders as static text on a webpage");
-Label l2 = new Label("Below is an example of an HTML ordered list rendered  using a Label: ");
-Label l3 = new Label().setHtml("<ol><li>My First Item</li><li>My Second Item</li><li>My Third Item</li></ol>");

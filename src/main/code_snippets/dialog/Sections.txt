@@ -1,3 +1,0 @@
-Dialog dialog = new Dialog();
-p.add(dialog);
-dialog.show();
