@@ -1,5 +1,6 @@
 ---
 title: MaskedTextField
+sidebar_position: 2
 ---
 
 <DocChip chip='shadow' />
@@ -15,7 +16,7 @@ The `MaskedTextField` component aims to deliver a configurable and easily valida
 
 The `MaskedTextField` can be instantiated with or without parameters. You can define an initial value, label, a placeholder text, and a listener in case the value changes.
 
-## Supported masks
+## Mask rules
 
 The `MaskedTextField` supports various mask patterns to format text input in a structured way. These masks allow for flexibility in defining acceptable input types. Key supported mask characters include:
 
@@ -28,7 +29,29 @@ The `MaskedTextField` supports various mask patterns to format text input in a s
 | `z`        | Any digit or alphabetic character.                                                           |
 | `Z`        | Any digit or alphabetic character. Converts lower-case alphabetic characters to upper case.  |
 
-Any characters other than these, when used in a mask, represent themselves. For example, setting the mask to "XX@XX" would expect an "@" in the middle. Input mismatches, for example entering a letter in a digit-only position, are ignored. Input longer than the mask is truncated, and shorter input is padded with spaces.
+Any characters other than these, when used in a mask, represent themselves. For example, setting the mask to `XX@XX` would expect an `@` in the middle. Input mismatches, for example entering a letter in a digit-only position, are ignored. Input longer than the mask is truncated, and shorter input is padded with spaces.
+
+```java
+MaskedTextField field = new MaskedTextField();
+field.setMask("(ooo) ooo-oooo"); // Example: (123) 456-7890
+field.setMask("Aoo ooo"); // Example: A1B 2C3 (Canadian postal code format)
+field.setMask("ZZZZ-oooo"); // Example: ABCD-1234
+field.setMask("oooo-oooo-oooo-oooo"); // Example: 1234-5678-9012-3456
+```
+
+:::tip
+If a mask consists of only `X` it behaves like a standard textfield.
+:::
+
+<ComponentDemo 
+path='/webforj/maskedtextfield?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtextfield/MaskedTextFieldView.java'
+height='250px'
+/>
+
+:::note
+As seen in this program, masks can be combined with patterns. This will be explained in Detail in the following section.
+:::
 
 ## Combining masks with patterns
 
@@ -44,12 +67,6 @@ This ensures additional flexibility for scenarios requiring complex formatting a
 The pattern must be a valid JavaScript regular expression, as used by the RegExp type and as documented in the [regular expressions guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions). For more information about patterns see [this guide](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern#overview).
 :::
 
-<ComponentDemo 
-path='/webforj/maskedtextfield?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtextfield/MaskedTextFieldView.java'
-height='250px'
-/>
-
 ## Restore method
 
 The `MaskedTextField` provides a restore feature, allowing users to reset the field’s value to its original state:
@@ -57,10 +74,10 @@ The `MaskedTextField` provides a restore feature, allowing users to reset the fi
 - **Programmatically**: Call the `restoreValue()` method to reset the field.
 - **Keyboard Interaction**: Press the restore key to revert the value.
 
-It's possible to utilize `setrestorevalue()` to programmatically set what value should be restored instead of the default behaviour using the start value of the field before editing. This feature is particularly useful for scenarios where users may want to undo changes or return to the default input state.
+It's possible to utilize `setRestoreValue()` to programmatically set what value should be restored instead of the default behaviour using the start value of the field before editing. This feature is particularly useful for scenarios where users may want to undo changes or return to the default input state.
 
 :::info Default restore key
-The restore key is "ESC" by default, unless overwritten specifically with event listeners reacting to keystrokes. 
+The restore key is <kbd>ESC</kbd> by default, unless overwritten specifically with event listeners reacting to keystrokes. 
 :::
 
 <ComponentDemo 
