@@ -63,7 +63,7 @@ public class Demo extends App {
 
     /* Explicit call to whenAttached() which will display a 
     message box when the button is attached to the Frame.*/
-    button.whenAttached().thenAccept( e -> msgbox("I'm attached!")); 
+    button.whenAttached().thenAccept( e -> showMessageDialog("I'm attached!")); 
   
     // onCreate() method is called
     window.add(button); 
@@ -114,7 +114,7 @@ public void run() throws WebforjException {
   Frame frame = new Frame();
   Button btn = new Button("Click me");
   btn.onClick(e -> {
-    msgbox("clicked");
+    showMessageDialog("clicked");
   });
 
   btn.whenAttached().thenAccept(e -> {

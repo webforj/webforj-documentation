@@ -3,6 +3,7 @@ package com.webforj.samples.components;
 import java.util.HashSet;
 
 import com.webforj.App;
+import com.webforj.Page;
 import com.webforj.annotation.JavaScript;
 import com.webforj.annotation.StyleSheet;
 import com.webforj.component.element.Element;
@@ -66,13 +67,13 @@ public class CodeDisplay extends ElementComposite implements HasText<CodeDisplay
       String url = PRISM_LANG_URL.replace("%%language%%", language);
 
       String scr = "function whenPrismLoaded (callback) {if (typeof Prism === 'undefined') {setTimeout (function () {whenPrismLoaded (callback);}, 100);} else { callback (); }}";
-      App.getPage().addInlineJavaScript(scr);
+      Page.getCurrent().addInlineJavaScript(scr);
 
       scr = "function whenPrismLang" + language + "Loaded (callback) { if (typeof Prism.languages."
           + language
           + " === 'undefined' || typeof Prism === 'undefined') {setTimeout (function () {whenPrismLang"
           + language + "Loaded (callback);}, 100);} else { callback (); }}";
-      App.getPage().addInlineJavaScript(scr);
+      Page.getCurrent().addInlineJavaScript(scr);
 
       scr = "whenPrismLoaded(function() {var link2 =  document.createElement('script');link2.setAttribute('type','module');link2.setAttribute('src','"
           + url + "');" + "document.head.appendChild(link2);whenPrismLang" + language
