@@ -16,11 +16,11 @@ Flex layout's properties can be grouped into two categories: properties that app
 webforJ's layout component follows the pattern of [CSS's flexbox layout](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). However, these tools are made to be utilized fully in Java, and do not require the application of CSS outside of the Java API methods provided.
 :::
 
-### Container properties
+## Container properties
 
 Container properties will apply to all of the components within a component and not the layout itself. They will not affect the orientation or placement of the parent - only the child components within.
 
-#### Direction
+### Direction
 
 The Flex Layout will add components next to one another according to the direction chosen by the developer - either horizontal or vertical. When using he builder, utilize either the `horizontal()`, `horizontalReverse()`, `vertical()` or `verticalReverse()` methods when calling the `create()` method on a `FlexLayout` object to configure this layout as the object is created.
 
@@ -33,7 +33,7 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 height="275px"
 />
 
-#### Positioning
+### Positioning
 
 Components that are added horizontally can also be positioned both horizontally and vertically. Use the `justify()`, `align()` and `contentAlign()` methods from the Flex Layout Builder to configure the positioning when creating a new Flex Layout.
 
@@ -52,13 +52,13 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 height="375px"
 />
 
-#### Wrapping
+### Wrapping
 
 To further customize the Flex Layout component, you can specify the behavior of the flex layout when components that are added no longer fit within the display. To configure this using the builder, utilize the utilize the - `nowrap()` (default), `wrap()` and `wrapReverse()` methods to configure wrapping.
 
 Alternatively, if your layout already exists, use the `setWrap()` method to dictate how components will behave once they are no longer able to fit on a single line.
 
-#### Spacing
+### Spacing
 
 In order to apply minimum spacing between items, you can set the gap property. It applies that spacing only between items not on the outer edges. 
 
@@ -66,7 +66,7 @@ In order to apply minimum spacing between items, you can set the gap property. I
 The gap property's behavior can be thought of as a minimum distance between - this property will only take effect if it is the largest calculated
 space between items. If the space between items would otherwise be larger due to another calculated property, such as due to `setAlignContent(FlexContentAlignment.SPACE_BETWEEN)`, then the gap property will be ignored.
 
-#### Flow
+### Flow
 
 Flex flow, which is a combination of both the direction and the wrap properties, can be set using the `setFlow()` method on a Flex Layout object. 
 
@@ -89,11 +89,11 @@ height="600px"
 
 
 <!-- BIG CODE SNIPPET SHOWING CONTAINER -->
-### Item properties
+## Item properties
 
 Item properties will not affect any child elements within the Flex Layout, but rather the actual Layout itself. This is useful for styling a single Flex Layout element that is a child of a larger Flex Layout element independent of styles applying to all children.
 
-#### Order
+### Order
 
 The `ItemOrder` property determines how components are displayed within the Flex Layout, and when used on a Flex Layout will assign an item that layout's specific order number. This overrides the default "source order" that is built into each item (the order in which a component is added to its parent), and means that it will be shown before items with a higher order, and after items with a lower order.
 
@@ -110,7 +110,7 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 height="320px"
 />
 
-#### Self alignment
+### Self alignment
 
 Flex Layout's self-alignment refers to how a single Flex Layout object is aligned within its parent flex container along the cross axis, which is perpendicular to the main axis. The cross axis alignment is controlled by the `Alignment` property.
 
@@ -129,7 +129,7 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 height="350px"
 />
 
-#### Flex basis
+### Flex basis
 
 `Item Basis` is a property that's used in conjunction with Flex Layout's direction to set the initial size of a flex item before any remaining space is distributed.
 
@@ -147,7 +147,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="300px"
 />
 
-#### Flex grow / shrink
+### Flex grow / shrink
 
 `Item Grow` and `Item Shrink` are two properties that work in conjunction with each other and with the `Item Basis` property to determine how flex items grow or shrink to fill the available space within a Flex Layout object.
 
@@ -161,6 +161,11 @@ Similarly, when a container does not have enough space to accommodate its conten
 
 
 ## Example form
+The form below demonstrates how `FlexLayout` organizes input fields into a structured layout. 
+
+:::tip
+If you prefer a column-based structure, check out the ColumnsLayout version of this form in the [`ColumnsLayout`](../components/columns-layout) article to see how it compares.
+:::
 
 <ComponentDemo 
 path='/webforj/flexlayout?' 
@@ -168,7 +173,3 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/flexlayout/flexLayout.css'
 height="620px"
 />
-
-:::tip
-Using the [`ColumnsLayout`](../components/columns-layout) class, you can achieve a similar layout.
-:::
