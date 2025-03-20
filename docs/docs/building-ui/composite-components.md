@@ -31,7 +31,7 @@ By default, the `Composite` component utilizes the generic type parameter of its
 The following snippet overrides the initBoundComponent method to use a parameterized constructor for the [FlexLayout](../components/flex-layout.md) class:
 
 ```java
-public static class OverrideComposite extends Composite<FlexLayout> {
+public class OverrideComposite extends Composite<FlexLayout> {
 	
 	TextField nameField;
 	Button submit;
