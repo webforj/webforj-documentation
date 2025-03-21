@@ -1,1 +1,0 @@
-sl2.setOrientation(Orientation.VERTICAL);

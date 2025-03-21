@@ -1,5 +1,0 @@
-ComboBox tcb1 = new ComboBox().setExpanse(ComboBox.Expanse.XSMALL);
-ComboBox tcb2 = new ComboBox().setExpanse(ComboBox.Expanse.SMALL);
-ComboBox tcb3 = new ComboBox().setExpanse(ComboBox.Expanse.MEDIUM);
-ComboBox tcb4 = new ComboBox().setExpanse(ComboBox.Expanse.LARGE);
-ComboBox tcb5 = new ComboBox().setExpanse(ComboBox.Expanse.XLARGE);
