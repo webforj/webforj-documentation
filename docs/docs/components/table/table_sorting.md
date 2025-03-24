@@ -14,13 +14,13 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/hea
 height='600px'
 />
 
-By default, a column is not sortable unless explicitly enabled. To allow sorting on a specific column, use the `setSortable(true)` method:
+By default, a column isn't sortable unless explicitly enabled. To allow sorting on a specific column, use the `setSortable(true)` method:
 
 ```java 
 table.getColumn("Age").setSortable(true);
 ```
 
-## Multi-Sorting
+## Multi-sorting
 
 If multi-sorting is needed, `setMultiSorting(true)` must be applied to the table. This allows users to sort multiple columns in sequence:
 
