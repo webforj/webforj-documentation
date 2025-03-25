@@ -16,13 +16,13 @@ import java.util.List;
 
 @Route
 @FrameTitle("Terminal Basics")
-public class TerminalDemoView extends Composite<Div> {
+public class TerminalView extends Composite<Div> {
 
   private String commandBuffer = "";
   private List<String> commandHistory = new ArrayList<>();
   private int historyIndex = -1;
 
-  public TerminalDemoView() {
+  public TerminalView() {
     Terminal terminal = new Terminal();
     terminal.addDataListener(this::handleDataEvent);
     terminal.setAutoFit(true);
