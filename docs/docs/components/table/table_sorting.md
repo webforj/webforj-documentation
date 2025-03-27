@@ -4,7 +4,7 @@ title: Sorting
 slug: sorting
 ---
 
-Sorting enables users to organize data within a column in a specific order, enhancing data readability and analysis. This is useful when users need to quickly find the highest or lowest values in a particular column.
+Sorting lets users arrange data in columns by order, making information easier to read and analyze. This is useful when users need to quickly find the highest or lowest values in a particular column.
 
 <ComponentDemo 
 path='/webforj/tablesorting?' 
@@ -14,7 +14,33 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/hea
 height='600px'
 />
 
-By default, a column will not be set as sortable. To change this, you can use the `setSortable(boolean sortable)` method. 
+By default, a column isn't sortable unless explicitly enabled. To allow sorting on a specific column, use the `setSortable(true)` method:
+
+```java 
+table.getColumn("Age").setSortable(true);
+```
+
+## Multi-sorting
+
+:::warning Multi-Column Sorting Disabled by Default in webforJ `25.00`
+Before webforj `25.00`, tables supported multi-column sorting by default. Starting with version `25.00`, this behavior changed—developers now need to explicitly enable multi-column sorting.
+:::
+
+If multi-sorting is needed, `setMultiSorting(true)` must be applied to the table. This allows users to sort multiple columns in sequence:
+
+```java
+table.setMultiSorting(true);
+```
+
+With multi-sorting enabled, clicking multiple column headers will sort them sequentially. The sorting priority is visually indicated in the table UI.
+
+<ComponentDemo 
+path='/webforj/tablemultisorting?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableMultiSortingView.java'
+urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+height='600px'
+/>
 
 ## Sort direction
 
@@ -37,7 +63,7 @@ Sorting of data plays can be broadly categorized into two main approaches: **Cli
 
 Client sorting involves arranging and displaying data directly within the user interface of the client application. It's the sorting users interact with when they click on column headers, influencing the visual representation of data on the screen.
 
-The developer has no direct control over client-side sorting, but rather is determined by the column [`Type`](#) provided in Java. The following types are currently supported:
+The developer has no direct control over client-side sorting, but rather is determined by the column type provided in Java. The following types are currently supported:
 
 - TEXT
 - NUMBER

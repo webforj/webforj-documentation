@@ -108,6 +108,10 @@ export function OpenNewWindowButton({ url }) {
   );
 }
 
+export const isLocalhost = typeof window !== "undefined" &&
+window.location.hostname === "localhost" &&
+window.location.port === "3000";
+
 export default function ComponentDemo({
   path,
   javaC,
@@ -151,10 +155,8 @@ export default function ComponentDemo({
 
   const iframeRef = useRef(null);
   const codeButtonRef = useRef(null);
+  const { colorMode } = useColorMode()
 
-  const isLocalhost = typeof window !== "undefined" &&
-  window.location.hostname === "localhost" &&
-  window.location.port === "3000";
   useEffect(() => {
     if (javaE) {
       fetch(javaE)
@@ -221,6 +223,26 @@ export default function ComponentDemo({
     }
     setOriginalWidth(iframeRef.current ? iframeRef.current.offsetWidth : 0);
   }, []);
+
+  useEffect(() => {
+    if (!iframeRef.current) return;
+  
+    const applyThemeToIframe = () => {
+      try {
+        const iframeDoc = iframeRef.current.contentDocument || iframeRef.current.contentWindow.document;
+        if (iframeDoc) {
+          iframeDoc.documentElement.setAttribute("data-app-theme", colorMode);
+        }
+      } catch (error) {
+        console.error("Failed to apply theme to iframe:", error);
+      }
+    };
+  
+    applyThemeToIframe();
+    iframeRef.current.onload = applyThemeToIframe;
+
+  }, [colorMode]);
+  
 
   function renderCodeBlocks(files, codeBlockStyles, javaHighlight) {
     return(
@@ -394,7 +416,7 @@ export default function ComponentDemo({
           <iframe
             onMouseUp={stopResizing}
             loading="lazy"
-            src={(isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path + "&__theme__=" + useColorMode().colorMode}
+            src={(isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path}
             css={iframeStyles}
             ref={iframeRef}
             onMouseMove={resize}

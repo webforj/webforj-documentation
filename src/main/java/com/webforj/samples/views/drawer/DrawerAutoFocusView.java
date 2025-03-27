@@ -22,6 +22,6 @@ public class DrawerAutoFocusView extends Composite<FlexLayout> {
     drawer.open();
     drawer.add(checkbox);
     drawer.addClassName("drawer");
-    drawer.setAutofocus(true);
+    drawer.setAutoFocus(true);
   }
 }

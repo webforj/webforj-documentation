@@ -14,7 +14,11 @@ By the end of this step, the app created in the [previous step](./creating-a-bas
 
 <!-- vale off -->
 
-![Working with data screenshot](../../../static/img/tutorial_images/step2.png)
+<div class="videos-container">
+  <video controls>
+    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/working-with-data.mp4" type="video/mp4"/>
+  </video>
+</div>
 
 <!-- vale on -->
 

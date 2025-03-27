@@ -12,7 +12,11 @@ By the end of this step, you’ll have a functioning app that demonstrates basic
 - Go to the `1-creating-a-basic-app` directory
 - Run the `mvn jetty:run` command
 
-![Step 1 screenshot](../../../static/img/tutorial_images/step1.png)
+<div class="videos-container">
+  <video controls>
+    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/creating-a-basic-app.mp4" type="video/mp4"/>
+  </video>
+</div>
 
 ## Creating a webforJ app
 

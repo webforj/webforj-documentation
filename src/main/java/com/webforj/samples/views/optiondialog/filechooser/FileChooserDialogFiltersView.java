@@ -25,7 +25,7 @@ public class FileChooserDialogFiltersView extends Composite<Div> {
     filters.add(new FileChooserFilter("Image Files (*.png, *.jpg, *.jpeg)",
         "*.png;*.jpg;*.jpeg"));
 
-    dialog = new FileChooserDialog("Choose a file to download", "/usr2/bbx/demos", filters);
+    dialog = new FileChooserDialog("Choose a file to download", System.getProperty("filechooser-files.path"), filters);
     dialog.setRestricted(true);
     dialog.setGridView(true);
 

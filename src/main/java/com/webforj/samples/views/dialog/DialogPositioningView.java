@@ -30,17 +30,17 @@ public class DialogPositioningView extends Composite<FlexLayout> {
     setPosition.onClick(e -> {
       Double xValue = xPos.getValue();
       Double yValue = yPos.getValue();
-  
+
       if (xValue != null && yValue != null && xValue >= 0 && yValue >= 0) {
           dialog.setPosx(xValue + "px");
           dialog.setPosy(yValue + "px");
-      } 
+      }
   });
 
     dialog.addToHeader(new Div("Positioning"));
     dialog.addToContent(xPos, yPos);
     dialog.addToFooter(setPosition);
-    dialog.setAutofocus(true);
+    dialog.setAutoFocus(true);
     dialog.open();
     dialog.setCloseable(false);
     dialog.setMaxWidth("200px");

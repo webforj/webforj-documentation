@@ -8,7 +8,7 @@ import com.webforj.component.list.ChoiceBox;
 import com.webforj.component.field.MaskedNumberField;
 import com.webforj.component.field.PasswordField;
 import com.webforj.component.field.TextField;
-import com.webforj.component.html.elements.Div;
+import com.webforj.component.html.elements.Div; 
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
@@ -37,6 +37,7 @@ public class FlexLayoutView extends Composite<Div> {
     lastName = new TextField().setLabel("Last Name");
     address = new TextField().setLabel("Address");
     city = new TextField().setLabel("City");
+    states = new ChoiceBox().setLabel("State").setMaxRowCount(7);
     zip = new MaskedNumberField().setLabel("Zip");
 
     populateStates();
@@ -50,32 +51,37 @@ public class FlexLayoutView extends Composite<Div> {
 
     FlexLayout rowOne = FlexLayout.create(email, password)
         .horizontal()
-        .wrap().wrap()
+        .wrap()
         .build();
 
     FlexLayout rowTwo = FlexLayout.create(firstName, lastName)
         .horizontal()
-        .wrap().wrap()
+        .wrap()
         .build();
 
-    FlexLayout rowThree = FlexLayout.create(city, states, zip)
+    FlexLayout addressRow = FlexLayout.create(address)
         .horizontal()
-        .wrap().wrap()
+        .wrap()
         .build();
-    rowThree.setItemBasis("50%", city);
-    rowThree.setItemBasis("30%", states);
+
+    FlexLayout cityStateZipRow = FlexLayout.create(city, states, zip)
+        .horizontal()
+        .justify().between()
+        .build();
+    cityStateZipRow.setItemBasis("40%", city);
+    cityStateZipRow.setItemBasis("20%", states);
+    cityStateZipRow.setItemBasis("40%", zip);
     zip.setWidth("150px");
 
     FlexLayout rowFour = FlexLayout.create(cancel, submit)
         .horizontalReverse()
         .build();
 
-    mainLayout.add(rowOne, rowTwo, address, rowThree, rowFour);
+    mainLayout.add(rowOne, rowTwo, addressRow, cityStateZipRow, rowFour);
     getBoundComponent().add(mainLayout);
   }
 
   private void populateStates() {
-    states = new ChoiceBox().setLabel("State").setMaxRowCount(7);
     states.add("AL", "Alabama");
     states.add("AK", "Alaska");
     states.add("AZ", "Arizona");

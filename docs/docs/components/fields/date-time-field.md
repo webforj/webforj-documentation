@@ -42,6 +42,10 @@ By default, the `DateTimeField` displays its information within the UI element b
 To hide seconds from the display, give the `DateTimeField` a `LocaleDateTime` object with the seconds set to 0.
 :::
 
+:::info Picker UI 
+The appearance of the datetime picker input UI depends not only on the selected locale but also on the browser and operating system being used. This ensures automatic consistency with the interface users are already familiar with.
+:::
+
 ## Static utilities 
 
 The DateTimeField class also provides the following static utility methods:
