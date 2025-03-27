@@ -22,6 +22,10 @@ table.getColumn("Age").setSortable(true);
 
 ## Multi-sorting
 
+:::warning Multi-Column Sorting Disabled by Default in webforJ `25.00`
+Before webforj `25.00`, tables supported multi-column sorting by default. Starting with version `25.00`, this behavior changed—developers now need to explicitly enable multi-column sorting.
+:::
+
 If multi-sorting is needed, `setMultiSorting(true)` must be applied to the table. This allows users to sort multiple columns in sequence:
 
 ```java
