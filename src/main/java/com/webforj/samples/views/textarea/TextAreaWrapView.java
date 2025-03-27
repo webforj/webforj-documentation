@@ -16,7 +16,8 @@ import com.webforj.router.annotation.Route;
 public class TextAreaWrapView extends Composite<FlexLayout> {
 
   FlexLayout layout = getBoundComponent();
-  TextArea textArea = new TextArea("");
+  TextArea textArea = new TextArea("")
+    .setMaxWidth("800px");
   boolean isWordWrap = true;
   Button toggleWrapButton = new Button("Switch to CHARACTER_BOUNDARIES");
 
