@@ -47,8 +47,10 @@ public class TextAreaLineLimitView extends Composite<FlexLayout> {
 
     Button submitButton = new Button("Submit Feedback").setTheme(ButtonTheme.PRIMARY);
     submitButton.onClick(event -> {
-      showToast("Feedback Submitted", "Thank you for your feedback!");
-      feedbackArea.setValue("");
+      if (!feedbackArea.getValue().trim().isEmpty()) {
+        showToast("Feedback Submitted", "Thank you for your feedback!");
+        feedbackArea.setValue("");
+      }
     });
 
     layout.add(instructionText, feedbackArea, submitButton);
