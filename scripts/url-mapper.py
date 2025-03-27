@@ -3,15 +3,15 @@ import re
 
 # This is a script to generate a list of URLs from Java files in a directory.
 # The script extracts class names from Java files and converts them to URLs.
-# In order to run this script you need to have Python installed on your machine. 
+# In order to run this script you need to have Python installed on your machine.
 # After that simply run the script using the command `python url-mapper.py`.
 
 # Define the root directory for scanning
 # Replace this with the path to your WebForJ documentation project
-views_dir = r"path-to-your-webforj-documentation\src\main\java\com\webforj\samples\views"
+views_dir = r"../src/main/java/com/webforj/samples/views"
 
 # Markdown file output
-output_file = "generated_urls.md"
+output_file = "../generated_urls.md"
 
 # Base URLs
 base_urls = [
@@ -36,13 +36,13 @@ def extract_class_names(file_path):
 def generate_markdown():
     """Generate a Markdown list of full URLs from the views folder."""
     urls = []
-    
+
     for root, _, files in os.walk(views_dir):
         for file in files:
             if file.endswith(".java"):
                 file_path = os.path.join(root, file)
                 class_name = extract_class_names(file_path)
-                
+
                 if class_name:
                     urls.append(convert_to_url(class_name))
 
