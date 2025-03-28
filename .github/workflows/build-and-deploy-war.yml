@@ -48,9 +48,9 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AMAZON_S3_SECRET }}
-          aws-region: eu-west-1
+          aws-access-key-id: ${{ secrets.S3_WEBAPPS_KEY }}
+          aws-secret-access-key: ${{ secrets.S3_WEBAPPS_SECRET }}
+          aws-region: us-west-2
 
       - name: Upload WAR to S3
         run: |
