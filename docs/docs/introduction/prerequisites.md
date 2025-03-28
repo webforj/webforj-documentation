@@ -15,6 +15,12 @@ Java **17.0.3** or higher is required to ensure compatibility with webforJ and a
 <!-- vale off -->
 ### JDK installation links:
 <!-- vale on -->
+:::tip  
+If you're using a UNIX-based operating system, it's recommended to use [SDKMAN!](https://sdkman.io/) to manage your Java environment. It lets you easily switch between different Java vendors without any extra hassle.  
+
+Alternatively, you can use [Jabba](https://github.com/shyiko/jabba), which works on both UNIX-based systems and Windows. It's a solid cross-platform solution for managing Java versions.  
+:::
+
 - Official Oracle JDKs can be found on Oracle's [Java Downloads](https://www.oracle.com/java/technologies/downloads/) page. 
   - Select Java version **17.0.3** or higher.
   - Click the tab for Linux, macOS, or Windows.
