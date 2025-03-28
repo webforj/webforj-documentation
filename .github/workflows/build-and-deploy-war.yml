@@ -54,4 +54,4 @@ jobs:
 
       - name: Upload WAR to S3
         run: |
-          aws s3 cp target/*.war s3://webforj-docs-deployments/ROOT.war --acl public-read
+          aws s3 cp target/*.war s3://webforj-webapps/ROOT.war --acl public-read
