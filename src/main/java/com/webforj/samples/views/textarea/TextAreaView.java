@@ -27,12 +27,14 @@ public class TextAreaView extends Composite<FlexLayout> {
 
   public TextAreaView() {
     layout.setDirection(FlexDirection.COLUMN)
+      .setJustifyContent(FlexJustifyContent.CENTER)
       .setAlignment(FlexAlignment.CENTER)
       .setMaxHeight("400px")
       .setHeight("100vh");
 
     feedbackArea.setPlaceholder("Enter your feedback here...")
       .setWidth("100%")
+      .setMaxWidth("800px")
       .setMaxLength(maxCharacters)
       .setLineWrap(true)
       .setWrapStyle(TextArea.WrapStyle.WORD_BOUNDARIES);

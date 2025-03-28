@@ -22,65 +22,48 @@ height = '150px'
 
 The `TextArea` component provides features for handling text paragraphs, making it ideal for applications that require document editing or structured text input.
 
-### Adding paragraphs
+**addParagraph(int index, String paragraph)**: Inserts a paragraph at the specified index.
+**addParagraph(String paragraph)**: Appends a paragraph to the end.
+**removeParagraph(int index)**: Removes the paragraph at the given index.
+**appendToParagraph(int index, String text)**: Appends text to the specified paragraph.
+**getParagraphs()**: Returns a list of all paragraphs.
 
-The `addParagraph()` method allows you to add paragraphs to the `TextArea`. You can insert a paragraph at a specific position or append it to the end of the text.
-
-- `addParagraph(int index, String paragraph)`: Inserts a paragraph at the specified index. The index starts from 0, where 0 represents the first paragraph. If the index is less than 0, the paragraph is added at the end.
-- `addParagraph(String paragraph)`: Appends a paragraph to the end of the TextArea.
-
-```java
-// Add a paragraph at a specific position
-textArea.addParagraph(0, "This is the first paragraph.");
-
-// Append a paragraph to the end
-textArea.addParagraph("This is another paragraph added to the end.");
-```
-
-These methods are useful for adding content dynamically based on user input or programmatic actions.
-
-### Removing paragraphs
-
-To manage text efficiently, the `TextArea` component includes the `removeParagraph()` method, which enables the removal of specific paragraphs by index.
-
-```java
-// Add multiple paragraphs
-textArea.addParagraph("Paragraph 1");
-textArea.addParagraph("Paragraph 2");
-textArea.addParagraph("Paragraph 3");
-
-// Remove the second paragraph
-textArea.removeParagraph(1);
-```
-
-:::tip Invalid Indexes
-If the specified index does not exist, the method simply does nothing, preventing unintended errors. 
+:::note Method Indexing
+All paragraph indexes are 0-based, which means indexing starts at 0 rather than 1. 
 :::
 
-### Appending text to paragraphs
-
-The `appendToParagraph()` method enables you to add additional content to an existing paragraph while preserving its original structure. Using `appendToParagraph()`, you can append specified text to the paragraph at the given index, which must be 0 or greater. This capability is useful in scenarios where existing paragraphs need to be updated with supplementary information.
-
 ```java
-// Append text to the existing paragraph
-textArea.appendToParagraph(0, " Additional content for the first paragraph.");
-```
+// Adding paragraphs
+textArea.addParagraph(0, "This is the first paragraph.");
+textArea.addParagraph("This is another paragraph.");
 
-### Fetching all paragraphs
+// Appending text to a paragraph
+textArea.appendToParagraph(0, " Appended text.");
 
-The `getParagraphs()` method retrieves all the paragraphs currently in the `TextArea`, providing a structured view of the text content. This method is particularly useful for extracting and processing the text entered by users.
+// Removing a paragraph
+textArea.removeParagraph(1);
 
-```java
-// Add multiple paragraphs
-textArea.addParagraph("First paragraph.");
-textArea.addParagraph("Second paragraph.");
-
-// Fetch and print all paragraphs
+// Getting all paragraphs
 List<String> paragraphs = textArea.getParagraphs();
 System.out.println("Paragraphs: " + paragraphs);
 ```
-
 ## Validation
+
+The `TextArea` component offers two types of input validation:
+
+**Structure validation**:
+- **setLineCountLimit()** - Restricts the maximum number of lines allowed
+- **setParagraphLengthLimit()** - Limits characters per line in paragraphs
+
+**Content validation**:
+- **setMaxLength()** - Caps the total characters across all text
+- **setMinLength()** - Requires a minimum character count
+
+These methods work together to ensure input is properly formatted and contains an appropriate amount of content.
+
+:::tip Key Difference
+Structure controls affect visual formatting, while length controls validate overall content amount regardless of distribution.
+:::
 
 ### Line count and paragraph length
 
@@ -106,10 +89,13 @@ height = '250px'
 
 **setMinLength()** - Ensures users provide enough information before proceeding, useful for feedback forms or comments.
 
-:::tip Key Difference
-- **Line Count and Paragraph Length**: Control text structure visually - limiting number of lines and characters per line
-- **Maximum and Minimum Length**: Control content amount - restricting total character count across all lines
-:::
+This interactive demo allows users to adjust validation limits—such as maximum character count, paragraph length, and line count—in real time and see how the `TextArea` responds.
+	
+<ComponentDemo 
+path='/webforj/textareavalidation?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaValidationView.java'
+height = '400px'
+/>
 
 ## Word wrap and line wrapping
 
