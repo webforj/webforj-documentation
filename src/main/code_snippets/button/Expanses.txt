@@ -1,3 +1,0 @@
-for(int i = Expanse.values().length - 1; i >= 0; i--){
-  container.add(new Button(Expanse.values()[i].name()).setExpanse(Expanse.values()[i]));
-}

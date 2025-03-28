@@ -1,6 +1,0 @@
-dialog = new Dialog();
-dialog.getContent().add(new Button("Close Dialog").onClick(this::closeDialog));
-
-private void closeDialog(ButtonClickEvent ev) {
-  dialog.hide();
-}
