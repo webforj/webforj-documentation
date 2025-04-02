@@ -3,13 +3,13 @@ sidebar_position: 1
 title: CSS Variables
 ---
 
-CSS Variables play a central role in customizing the appearance of webforJ components. these variables store reusable values—such as colors, font sizes, and spacing—that can be applied consistently across your app.
+CSS Variables play a central role in customizing the appearance of webforJ components. These variables store reusable values such as colors, font sizes, and spacing, that can be applied consistently across your app.
 
 Unlike traditional approaches that relied on CSS preprocessors like [SASS](https://sass-lang.com/) or [LESS](https://lesscss.org/), CSS variables allow for **dynamic styling at runtime**. They reduce repetition, improve maintainability, and make stylesheets easier to read and manage.
 
 ## Defining CSS variables
 
-CSS variables are defined using a double-dash (`--`) prefix and can be scoped within any CSS selector. However, the most common practice is to define them in the `:root` selector, which scopes them globally.
+CSS variables are defined using a double-dash (`--`) prefix, and can be scoped within any CSS selector. However, the most common practice is to define them in the `:root` selector, which scopes them globally.
 
 ```css
 :root {
@@ -21,7 +21,7 @@ CSS variables are defined using a double-dash (`--`) prefix and can be scoped wi
 The [`:root`](https://developer.mozilla.org/en-US/docs/Web/CSS/:root) pseudo-class targets the root element of the document—typically `<html>` in HTML. It behaves like `html`, but with higher specificity.
 :::
 
-CSS variables can hold any string—not just valid CSS values. This flexibility is particularly useful when working with JavaScript.
+CSS variables can hold any string, not just valid CSS values. This flexibility is particularly useful when working with JavaScript.
 
 ```css
 html {
@@ -40,7 +40,7 @@ dwc-button {
 ```
 
 :::tip Component-Specific Styling Reference
-Each component or webforJ components supports a specific set of CSS variables that control its appearance. These are documented under the **Styling > CSS properties** section for each component. 
+Each webforJ component supports a specific set of CSS variables that control its appearance. These are documented under the **Styling > CSS properties** section for each component. 
 :::
 
 
@@ -57,7 +57,7 @@ Use the [`var()`](https://developer.mozilla.org/en-US/docs/Web/CSS/var()) functi
 You can also specify a fallback value in case the variable isn't defined:
 
 ```css
-.panel {
+.frame {
   background-color: var(--app-background, red);
 }
 ```
@@ -72,7 +72,7 @@ button.setStyle('--dwc-button-font-weight', '400');
 ```
 
 :::tip Manipulating CSS Variables with JavaScript
-WebforJ allows you to execute JavaScript on the client side using the Page or Element API. This means you can dynamically manipulate CSS variables at runtime just like you would in standard web applications.
+webforJ allows you to execute JavaScript on the client side using the Page or Element API. This means you can dynamically manipulate CSS variables at runtime just like you would in standard web applications.
 
 ```javascript
 // Set a CSS variable

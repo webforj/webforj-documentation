@@ -5,8 +5,9 @@ title: State
 
 State tokens define how components visually respond to user interaction—such as when they’re disabled or focused. These variables help ensure consistent behavior and styling across all UI elements, and can be easily customized to match your design system.
 
+<!-- vale off -->
 ## Disabled state
-
+<!-- vale on -->
 The disabled state properties are used to make an element appear visually inactive and non-interactive.
 
 ### Example

@@ -5,7 +5,7 @@ title: Colors
 
 import ColorPalette from '@site/src/components/DWCTheme/ColorPalette/ColorPalette';
 
-WebforJ provides a flexible and consistent color system built on CSS custom properties. These color variables ensure visual consistency across your app while giving you full control to customize palettes according to your design needs.
+webforJ provides a color system built on CSS custom properties. These color variables keep consistent visual style across your app while giving you full control to customize palettes according to your design needs.
 
 You can reference any color using the `--dwc-color-{palette}-{shade}` syntax, where `{palette}` is the name of the color group (e.g., `primary`, `danger`, ..) and `{shade}` is a number from `5` to `95` in increments of `5`, representing the color’s lightness.
 
@@ -22,7 +22,7 @@ Shade values range from `5` (darkest) to `95` (lightest), increasing in steps of
 
 ## Color palettes
 
-WebforJ includes several built-in color palettes, each designed for semantic use cases such as branding, success messages, warnings, and more. Each palette is composed of dynamically generated tints and shades based on three key properties: `hue`, `saturation`, and `contrast-threshold`.
+There are several built-in color palettes, each designed for semantic use cases such as branding, success messages, warnings, and more. Each palette is composed of dynamically generated tints and shades based on three key properties: `hue`, `saturation`, and `contrast-threshold`.
 
 ### Available palettes
 
@@ -50,8 +50,7 @@ Your component code stays the same, regardless of the theme. For example:
 }
 ```
 
-In light mode, this gives a mid-tone background. In dark mode, it still gives a mid-tone, but flipped visually to work on dark surfaces.
-This approach avoids duplication, keeps your styles consistent, and ensures seamless visual transitions when switching between light and dark themes.
+In light mode, this gives a mid-tone background. In dark mode, it still gives a mid-tone, but flipped visually to work on dark surfaces. This approach avoids duplication, keeps your styles consistent, and keeps visual transitions smooth when switching between light and dark themes.
 
 ### Palette configuration variables
 
@@ -75,7 +74,7 @@ You can adjust a palette by redefining these variables in your root styles. For 
 
 ## Theming components with abstract variables
 
-To simplify styling and ensure consistency across components, WebforJ introduces an abstraction layer over the base color palettes. This layer is built on **abstract theme variables**—CSS custom properties that refer to specific shades within a color palette.
+To simplify styling and consistency across components, webforJ introduces an abstraction layer over the base color palettes. This layer is built on **abstract theme variables** - CSS custom properties that refer to specific shades within a color palette.
 
 These variables make it easier to apply themes across all components without directly referencing raw color values or swatches. You can think of them as *semantic styling shortcuts* that reflect your app's intent rather than its implementation details.
 
@@ -106,23 +105,23 @@ Changing the palette values in one place will update the look of all components 
 <TabItem value="Default / Tone">
 
 ```css
-  --dwc-color-default-dark: var(--dwc-color-default-85);
-  --dwc-color-on-default-text-dark: var(--dwc-color-default-text-85);
-  --dwc-color-default-text-dark: var(--dwc-color-default-35);
+--dwc-color-default-dark: var(--dwc-color-default-85);
+--dwc-color-on-default-text-dark: var(--dwc-color-default-text-85);
+--dwc-color-default-text-dark: var(--dwc-color-default-35);
 
-  --dwc-color-default: var(--dwc-color-default-90);
-  --dwc-color-on-default-text: var(--dwc-color-default-text-90);
-  --dwc-color-default-text: var(--dwc-color-default-40);
+--dwc-color-default: var(--dwc-color-default-90);
+--dwc-color-on-default-text: var(--dwc-color-default-text-90);
+--dwc-color-default-text: var(--dwc-color-default-40);
 
-  --dwc-color-default-light: var(--dwc-color-default-95);
-  --dwc-color-on-default-text-light: var(--dwc-color-default-text-95);
-  --dwc-color-default-text-light: var(--dwc-color-default-45);
+--dwc-color-default-light: var(--dwc-color-default-95);
+--dwc-color-on-default-text-light: var(--dwc-color-default-text-95);
+--dwc-color-default-text-light: var(--dwc-color-default-45);
 
-  --dwc-color-default-alt: var(--dwc-color-primary-alt);
-  --dwc-color-on-default-text-alt: var(--dwc-color-on-primary-text-alt);
+--dwc-color-default-alt: var(--dwc-color-primary-alt);
+--dwc-color-on-default-text-alt: var(--dwc-color-on-primary-text-alt);
 
-  --dwc-border-color-default: var(--dwc-border-color-primary);
-  --dwc-focus-ring-default: var(--dwc-focus-ring-primary);
+--dwc-border-color-default: var(--dwc-border-color-primary);
+--dwc-focus-ring-default: var(--dwc-focus-ring-primary);
 ```
 
 </TabItem>
@@ -130,28 +129,28 @@ Changing the palette values in one place will update the look of all components 
 <TabItem value="Primary">
 
 ```css
-  --dwc-color-primary-dark: var(--dwc-color-primary-35);
-  --dwc-color-on-primary-text-dark: var(--dwc-color-primary-text-35);
-  --dwc-color-primary-text-dark: var(--dwc-color-primary-30);
+--dwc-color-primary-dark: var(--dwc-color-primary-35);
+--dwc-color-on-primary-text-dark: var(--dwc-color-primary-text-35);
+--dwc-color-primary-text-dark: var(--dwc-color-primary-30);
 
-  --dwc-color-primary: var(--dwc-color-primary-40);
-  --dwc-color-on-primary-text: var(--dwc-color-primary-text-40);
-  --dwc-color-primary-text: var(--dwc-color-primary-35);
+--dwc-color-primary: var(--dwc-color-primary-40);
+--dwc-color-on-primary-text: var(--dwc-color-primary-text-40);
+--dwc-color-primary-text: var(--dwc-color-primary-35);
 
-  --dwc-color-primary-light: var(--dwc-color-primary-45);
-  --dwc-color-on-primary-text-light: var(--dwc-color-primary-text-45);
-  --dwc-color-primary-text-light: var(--dwc-color-primary-40);
+--dwc-color-primary-light: var(--dwc-color-primary-45);
+--dwc-color-on-primary-text-light: var(--dwc-color-primary-text-45);
+--dwc-color-primary-text-light: var(--dwc-color-primary-40);
 
-  --dwc-color-primary-alt: var(--dwc-color-primary-95);
-  --dwc-color-on-primary-text-alt: var(--dwc-color-primary-text-95);
+--dwc-color-primary-alt: var(--dwc-color-primary-95);
+--dwc-color-on-primary-text-alt: var(--dwc-color-primary-text-95);
 
-  --dwc-border-color-primary: var(--dwc-color-primary);
-  --dwc-focus-ring-primary: 0 0 0 var(--dwc-focus-ring-width) hsla(
-      var(--dwc-color-primary-h),
-      var(--dwc-color-primary-s),
-      var(--dwc-focus-ring-l),
-      var(--dwc-focus-ring-a)
-    );
+--dwc-border-color-primary: var(--dwc-color-primary);
+--dwc-focus-ring-primary: 0 0 0 var(--dwc-focus-ring-width) hsla(
+    var(--dwc-color-primary-h),
+    var(--dwc-color-primary-s),
+    var(--dwc-focus-ring-l),
+    var(--dwc-focus-ring-a)
+  );
 ```
 
 </TabItem>
@@ -159,28 +158,28 @@ Changing the palette values in one place will update the look of all components 
 <TabItem value="Success">
 
 ```css
-  --dwc-color-success-dark: var(--dwc-color-success-20);
-  --dwc-color-on-success-text-dark: var(--dwc-color-success-text-20);
-  --dwc-color-success-text-dark: var(--dwc-color-success-15);
+--dwc-color-success-dark: var(--dwc-color-success-20);
+--dwc-color-on-success-text-dark: var(--dwc-color-success-text-20);
+--dwc-color-success-text-dark: var(--dwc-color-success-15);
 
-  --dwc-color-success: var(--dwc-color-success-25);
-  --dwc-color-on-success-text: var(--dwc-color-success-text-25);
-  --dwc-color-success-text: var(--dwc-color-success-20);
+--dwc-color-success: var(--dwc-color-success-25);
+--dwc-color-on-success-text: var(--dwc-color-success-text-25);
+--dwc-color-success-text: var(--dwc-color-success-20);
 
-  --dwc-color-success-light: var(--dwc-color-success-30);
-  --dwc-color-on-success-text-light: var(--dwc-color-success-text-30);
-  --dwc-color-success-text-light: var(--dwc-color-success-25);
+--dwc-color-success-light: var(--dwc-color-success-30);
+--dwc-color-on-success-text-light: var(--dwc-color-success-text-30);
+--dwc-color-success-text-light: var(--dwc-color-success-25);
 
-  --dwc-color-success-alt: var(--dwc-color-success-95);
-  --dwc-color-on-success-text-alt: var(--dwc-color-success-text-95);
+--dwc-color-success-alt: var(--dwc-color-success-95);
+--dwc-color-on-success-text-alt: var(--dwc-color-success-text-95);
 
-  --dwc-border-color-success: var(--dwc-color-success);
-  --dwc-focus-ring-success: 0 0 0 var(--dwc-focus-ring-width) hsla(
-      var(--dwc-color-success-h),
-      var(--dwc-color-success-s),
-      var(--dwc-focus-ring-l),
-      var(--dwc-focus-ring-a)
-    );
+--dwc-border-color-success: var(--dwc-color-success);
+--dwc-focus-ring-success: 0 0 0 var(--dwc-focus-ring-width) hsla(
+    var(--dwc-color-success-h),
+    var(--dwc-color-success-s),
+    var(--dwc-focus-ring-l),
+    var(--dwc-focus-ring-a)
+  );
 ```
 
 </TabItem>

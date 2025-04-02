@@ -22,7 +22,7 @@ The border properties are used to control the component border style and width. 
 | `--dwc-border-width` | 1px               |
 | `--dwc-border-style` | solid             |
 
-## Border Radius
+## Border radius
 
 Border radius variables define how rounded the corners of a component are. All values are defined in `em`, so they scale with the font size.
 

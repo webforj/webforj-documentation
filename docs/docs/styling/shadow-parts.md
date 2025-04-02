@@ -3,7 +3,7 @@ sidebar_position: 2
 title: Shadow Parts
 ---
 
-CSS Shadow Parts give developers a way to style elements inside a component’s shadow DOM from the outside, while still preserving encapsulation.
+CSS **Shadow Parts** give developers a way to style elements inside a component’s shadow DOM from the outside, while still preserving encapsulation.
 
 ## Introduction
 
@@ -23,7 +23,7 @@ However, because of this encapsulation, you **can't directly style** elements in
 
 For example, the `dwc-button` component renders the following structure:
 
-```html
+```html {2}
 <dwc-button>
   #shadow-root (open)
   <span class="control__prefix">...</span>
@@ -48,7 +48,7 @@ This is where **CSS Shadow Parts** come in.
 
 ## Styling with shadow parts
 
-Shadow parts allow external stylesheets to target specific elements inside a shadow tree—but **only if** those elements are explicitly marked as “exposed” by the component.
+Shadow parts allow external stylesheets to target specific elements inside a shadow tree, but **only if** those elements are explicitly marked as “exposed” by the component.
 
 ### How parts are exposed
 

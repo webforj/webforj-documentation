@@ -64,7 +64,7 @@ The font size properties define a set of font sizes to choose from. `s` is the s
 | `--dwc-font-size-3xl` | 2.25rem                  | <span style={{ fontSize: "var(--dwc-font-size-3xl)" }}>Aa</span> |
 | `--dwc-font-size`     | `var(--dwc-font-size-s)` | <span style={{ fontSize: "var(--dwc-font-size)" }}>Aa</span>     |
 
-## Font Weight
+## Font weight
 
 The [font-weight](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight) CSS property sets the weight (or boldness) of the font.
 
