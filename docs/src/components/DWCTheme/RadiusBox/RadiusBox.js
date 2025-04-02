@@ -3,7 +3,7 @@ import React from 'react';
 export default function RadiusBox({ radius }) {
   return (
     <div style={{
-      width: '3rem',
+      width: radius.includes('pill') ? '6rem' : '3rem',
       height: '3rem',
       display: 'inline-block',
       margin: '0.5rem',

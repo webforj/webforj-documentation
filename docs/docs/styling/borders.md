@@ -1,11 +1,9 @@
 ---
 sidebar_position: 6
-title: Borders
+title: Border
 ---
 
 import RadiusBox from '@site/src/components/DWCTheme/RadiusBox/RadiusBox';
-
-## Borders
 
 The border properties are used to control the component border style and width. See [available border styles](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style).
 
@@ -28,7 +26,9 @@ The border properties are used to control the component border style and width. 
 
 Border radius variables define how rounded the corners of a component are. All values are defined in `em`, so they scale with the font size.
 
-> **Note:** `em` is a relative unit that scales with the [font size](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) of the parent.
+:::info EM Unit
+`em` is a relative unit that scales with the [font size](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) of the parent.
+:::
 
 ### Example
 

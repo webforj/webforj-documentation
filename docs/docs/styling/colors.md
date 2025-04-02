@@ -35,6 +35,24 @@ WebforJ includes several built-in color palettes, each designed for semantic use
 
 <ColorPalette></ColorPalette>
 
+### Dark mode behavior
+
+webforJ supports a flipped color strategy in dark mode. Rather than using entirely separate color palettes, it inverts the way lightness values are interpreted.
+
+This means that in **dark themes**, lower shade values (e.g., `--dwc-color-primary-5`) become light and higher values (e.g., `--dwc-color-primary-95`) become dark. The logic is reversed to ensure optimal contrast and readability across backgrounds.
+
+Your component code stays the same, regardless of the theme. For example:
+
+```css
+.button {
+  background-color: var(--dwc-color-primary-40);
+  color: var(--dwc-color-primary-text-40);
+}
+```
+
+In light mode, this gives a mid-tone background. In dark mode, it still gives a mid-tone, but flipped visually to work on dark surfaces.
+This approach avoids duplication, keeps your styles consistent, and ensures seamless visual transitions when switching between light and dark themes.
+
 ### Palette configuration variables
 
 Each palette is generated based on the following variables:
