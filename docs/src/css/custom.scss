@@ -154,3 +154,16 @@
   /* Menus */
   --menu-level-indicator-color: hsl(0,0%, 35%);
 }
+
+
+html {
+  visibility: visible;
+}
+
+body {
+  background-color: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font-family: var(--ifm-font-family-base);
+  font-size: var(--ifm-font-size-base);
+  line-height: var(--ifm-line-height-base);
+}

@@ -18,6 +18,21 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+  scripts: [
+    {
+      src: '/dwc-theme-switcher.js',
+      async: false,
+    },
+  ],
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'stylesheet',
+        href: 'https://cdn.jsdelivr.net/gh/webforj/dwc-dist@latest/dwc-ui.css',
+      },
+    },
+  ],
   presets: [
     [
       'classic',
