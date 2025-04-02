@@ -20,3 +20,5 @@ End-to-End
 WAR
 RGB
 MDN
+IDEA
+JVM

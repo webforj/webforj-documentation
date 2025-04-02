@@ -1,9 +1,6 @@
 ---
-title: "Java Debugging in WebforJ"
-description: "Learn how to debug Java applications in WebforJ using Visual Studio Code, IntelliJ IDEA, and Eclipse."
+title: "Java Debug Setup"
 ---
-
-# Java debugging in WebforJ
 
 Debugging is an essential part of Java development, helping developers identify and fix issues efficiently. This guide explains how to configure debugging in WebforJ for Visual Studio Code, IntelliJ IDEA, and Eclipse.
 
@@ -42,7 +39,7 @@ Debugging is an essential part of Java development, helping developers identify 
 
 1. Open your project in IntelliJ IDEA.
 2. Navigate to Run → Edit Configurations.
-3. Click the + button and select Remote JVM Debug.
+3. Click the <kbd>+</kbd> button and select Remote JVM Debug.
 4. Set the host to `localhost` and port to `8000`.
 5. Save the configuration and click Debug to attach to the running app.
 
@@ -65,10 +62,12 @@ Debugging is an essential part of Java development, helping developers identify 
 ## Running the debugger
 
 Once you’ve configured your IDE:
-1. Start your WebforJ app using `mvnDebug jetty:run`.
+
+1. Start your webforJ app using `mvnDebug jetty:run`.
 2. Run the debug configuration in your IDE.
 3. Set breakpoints and begin debugging
 
-:::tip Debugging Tip
-Ensure port 8000 is available and not blocked by any firewall.
+:::tip Debugging Tips
+1. Ensure port 8000 is available and not blocked by any firewall.
+2. If you are using any of the WebforJ archetypes and have changed the port number in the pom.xml file, make sure the port used for debugging matches the updated value.
 :::
