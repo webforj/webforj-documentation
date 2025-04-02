@@ -2,14 +2,14 @@
 title: "Java Debug Setup"
 ---
 
-Debugging is an essential part of Java development, helping developers identify and fix issues efficiently. This guide explains how to configure debugging in WebforJ for Visual Studio Code, IntelliJ IDEA, and Eclipse.
+Debugging is an essential part of Java development, helping developers identify and fix issues efficiently. This guide explains how to configure debugging in webforJ for Visual Studio Code, IntelliJ IDEA, and Eclipse.
 
 <Tabs>
 <TabItem value="vscode" label="Visual Studio Code">
 
 ### Debugging in Visual Studio Code
 
-1. Open your WebforJ project in VS Code.
+1. Open your webforJ project in VS Code.
 2. Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> (or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> on Mac) to open the Run and Debug panel.
 3. Click "create a launch.json file"
 4. Select Java as the environment.
@@ -69,5 +69,5 @@ Once you’ve configured your IDE:
 
 :::tip Debugging Tips
 1. Ensure port 8000 is available and not blocked by any firewall.
-2. If you are using any of the WebforJ archetypes and have changed the port number in the pom.xml file, make sure the port used for debugging matches the updated value.
+2. If you are using any of the webforJ archetypes and have changed the port number in the pom.xml file, make sure the port used for debugging matches the updated value.
 :::
