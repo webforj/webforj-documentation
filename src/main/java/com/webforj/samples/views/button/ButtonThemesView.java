@@ -13,14 +13,15 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Button Themes")
 public class ButtonThemesView extends Composite<FlexLayout> {
+  
+  FlexLayout layout = getBoundComponent();
+  Div scrollWrapper = new Div();
 
   public ButtonThemesView() {
-    FlexLayout layout = getBoundComponent();
     layout.setDirection(FlexDirection.COLUMN)
           .setSpacing("var(--dwc-space-l)")
           .setMargin("var(--dwc-space-l)");
 
-    Div scrollWrapper = new Div();
     scrollWrapper.setStyle("overflow-x", "auto");
     scrollWrapper.setStyle("white-space", "nowrap");
     
