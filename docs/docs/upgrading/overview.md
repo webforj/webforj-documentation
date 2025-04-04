@@ -24,7 +24,7 @@ webforJ follows a structured release model that includes the following types of 
 - Identified with versioning such as **webforJ 20.00, webforJ 21.00, etc.**
 
 ### 2. Minor releases
-- Occur multiple times throughout the year (approximately every six-eight weeks).
+- Occur multiple times throughout the year (approximately every six to eight weeks).
 - Provide incremental improvements, optimizations, and minor new features.
 - Identified with versioning such as **webforJ 20.01, webforJ 20.02, etc.**
 
@@ -35,20 +35,20 @@ webforJ follows a structured release model that includes the following types of 
 
 ## What to expect with each release
 
-### Feature ehancements
+### Feature enhancements
 - Major and minor releases introduce new capabilities, optimizations, and integrations.
 - Feature roadmaps are shared in release notes to help users plan ahead.
 
-### Backward compatibility
-- While efforts are made to maintain compatibility, major releases may include changes that require adjustments to apps.
-- Users are encouraged to review release notes for deprecated features.
+:::info Backward compatibility
+While efforts are made to maintain compatibility, major releases may include changes that require adjustments to apps. Users are encouraged to review release notes for deprecated features.
+:::
 
 ### Security updates
 - Security is a priority, and critical vulnerabilities are addressed in patch releases as soon as possible.
 
-### Quality assurance and testing
-- Snapshots are provided before major and minor releases for testing.
-- Users can participate in early testing to provide feedback.
+:::tip Snapshot builds
+Snapshot builds are available before most releases. Users are encouraged to test against them to identify issues early and provide feedback.
+:::
 
 ## How to stay updated
 
@@ -56,9 +56,9 @@ webforJ follows a structured release model that includes the following types of 
 - Every release is accompanied by detailed [release notes](https://github.com/webforj/webforj/releases) that outline new features, bug fixes, and any required actions.
 - Users should subscribe to webforJ [blog](../../blog) for timely updates.
 
-### Upgrade recommendations
-- Customers should plan upgrades based on business needs and stability requirements.
-- Users are encouraged to stay on the latest release to benefit from performance enhancements and new features.
+:::tip Upgrade recommendations
+Customers should plan upgrades based on business needs and stability requirements Users are encouraged to stay on the latest release to benefit from performance enhancements and new features.
+:::
 
 ### Support and compatibility
 - webforJ provides documentation and upgrade guides for major releases.
