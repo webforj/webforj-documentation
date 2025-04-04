@@ -1,6 +1,7 @@
 ---
 title: Upgrade to 25.00
 description: Upgrade from 24.00 to 25.00
+pagination_next: null
 ---
 
 This documentation serves as a guide to upgrade webforJ apps from 24.00 to 25.00.
@@ -70,7 +71,7 @@ The `getPage()` method is replaced with `Page.getCurrent()` to get the current p
 
 ### Option dialogs
 
-Instead of using the `msgbox()` method, use `OptionDialog.showMessageDialog()` to create message dialogs.
+Instead of using the `msgbox()` method, use [`OptionDialog.showMessageDialog()`](../components/option-dialogs/message) to create message dialogs.
 
 ### App termination
 
@@ -78,22 +79,9 @@ The `cleanup()` method has been removed. There are now two methods for terminati
 
 See [Hooks for termination](../advanced/terminate-and-error-actions.md#hooks-for-termination) for more information.
 
-## Removal of the `Icon` model class
-
-The `Icon` model class is removed in 25.00. Use the [`Icon`](../components/icon.md) component instead.
-
-## Removed legacy interfaces
-
-As the name implies, legacy interfaces were always planned for removal. Here are the ones removed in 25.00, and how to adapt for future webforJ apps: 
-
-- **`LegacyHasScrollability`:** Use component-specific methods, like ones for the `TextArea` component. `ChoiceBox` and `ComboBox` components each have a `setMaxRowCount()` method to change the [max row count](../components/lists/choice-box.md#max-row-count).
-      Finally, there's the [overflow](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow) property. That property is used in the [Example `Composite` component](../building-ui/composite-components.md#example-composite-component) section.
-- **`LegacyHasReadOnly`:** Use `HasReadOnly` instead.
-<!-- - **`LegacyHasPopupMenu`:** -->
-
 ## Table sorting
 
-For webforJ 25.00 and higher, tables use single-column sorting by default. Columns will only be sorted by the most recently selected column header. To make a table use multi-column sorting, invoke the `setMultiSorting()` method:
+For webforJ 25.00 and higher, tables use single-column sorting by default. Columns will only be sorted by the most recently selected column header. To make a table use multi-column sorting, invoke the [`setMultiSorting()`](../components/table/sorting#multi-sorting) method:
 
 ```java
 table.setMultiSorting(true);
@@ -126,10 +114,7 @@ home.setText("Home");
 ```java
 // Invalid uses of setText() and setHtml()
 Button home = new Button();
-
 home.setText("<h1>Home</h1>");
-
-home.setHtml("Home");
 ```
 
 ## HTML containers
