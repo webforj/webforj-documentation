@@ -13,6 +13,7 @@ import com.webforj.component.layout.flexlayout.FlexWrap;
 import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +27,7 @@ public class ChartRedrawView extends Composite<Div> {
   private static final String COLOR = "color";
   private static final String TEXT_STYLE = "textStyle";
   private static final String TITLE = "title";
+  private static final long MAX_ALLOWED = 1_000_000L;
 
   private final GoogleChart chart = new GoogleChart(GoogleChart.Type.COLUMN);
   private final Button redrawButton = new Button("Redraw Chart");
@@ -69,8 +71,11 @@ public class ChartRedrawView extends Composite<Div> {
       NumberField valueField = new NumberField("Value for " + category);
       valueField.setPlaceholder("");
       valueField.setStep(1.0);
-      valueField.addClassName("number-field");
+      valueField.setMin(1.0);
+      valueField.setMax((double) MAX_ALLOWED);
       valueField.setText("100");
+      valueField.addClassName("number-field");
+
       inputContainer.add(valueField);
       valueFields.put(category, valueField);
     }
@@ -91,17 +96,21 @@ public class ChartRedrawView extends Composite<Div> {
         NumberField valueField = valueFields.get(category);
         String fieldValue = valueField.getText();
 
-        if (!fieldValue.matches("^[1-9]\\d*$")) { 
+        try {
+          long value = Long.parseLong(fieldValue);
+          if (value <= 0 || value > MAX_ALLOWED) {
+            allValuesValid = false;
+            break;
+          }
+          newData.add(List.of(category, value));
+        } catch (NumberFormatException ex) {
           allValuesValid = false;
           break;
         }
-
-        int value = Integer.parseInt(fieldValue);
-        newData.add(List.of(category, value));
       }
 
       if (!allValuesValid) {
-        Toast.show("Enter a valid number", 3000);
+        Toast.show("Enter a valid number between 1 and " + MAX_ALLOWED, 3000);
       } else {
         chart.setData(newData);
         chart.redraw();
