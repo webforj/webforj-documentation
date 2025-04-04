@@ -42,9 +42,6 @@ The `TimeField` will, by default, display its information within the UI element 
 
 The value of the time field is always in 24-hour format that includes leading zeros: HH:mm, regardless of the UI field format, which is likely to be selected based on the user's locale (or by the user agent). If the time includes seconds, the format is always HH:mm:ss
 
-:::tip
-To hide seconds from the display, give the `TimeField` a `LocaleTime` object with the seconds set to 0.
-:::
 
 :::info Picker UI 
 The appearance of the time picker input UI depends not only on the selected locale but also on the browser and operating system being used. This ensures automatic consistency with the interface users are already familiar with.
