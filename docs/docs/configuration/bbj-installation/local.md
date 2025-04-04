@@ -135,7 +135,7 @@ Finally, click on the "Configure" button, which will open a new window. In this 
 Once BBj and the required webforJ plugin are installed and configured, you can create a new, scaffolded project from the command line. This project comes with the necessary tools to run your first webforJ program.
 
 <ComponentArchetype
-project="hello-world"
+project="bbj-hello-world"
 />
 
 ## 5. Launching the app
