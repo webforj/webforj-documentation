@@ -21,3 +21,7 @@ WAR
 RGB
 MDN
 UNIX
+aka
+DWC
+REM
+EM

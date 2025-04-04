@@ -1,0 +1,67 @@
+/* src/components/ColorPalette.css */
+
+.color-palettes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: flex-start;
+}
+
+.color-palette {
+  flex: 1;
+  min-width: 250px;
+  max-width: 100%;
+  padding: 10px;
+  border: 1px solid var(--dwc-color-default);
+  border-radius: 8px;
+  background-color: var(--dwc-surface-2);
+}
+
+.palette-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+.colors {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.color-box {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.color-label {
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  font-size: 0.75rem;
+}
+
+.color-box.black,
+.color-box.white {
+  width: 50px;
+  height: 30px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .color-box {
+    width: 25px;
+    height: 25px;
+  }
+
+  .color-label {
+    font-size: 0.6rem;
+  }
+}

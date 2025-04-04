@@ -129,6 +129,6 @@ Finally, the hello text field and btn button are added to the [`FlexLayout`](../
 
 ## Styling the app
 
-The `styles.css` file provides custom styling for your webforJ app. This CSS file is referenced in the Application class using the [`@StyleSheet`](../styling/getting-started#using-annotations) annotation, which allows the app to apply styles to components within the app.
+The `styles.css` file provides custom styling for your webforJ app. This CSS file is referenced in the Application class using the [`@StyleSheet`](../managing-resources/importing-assets#importing-css-files) annotation, which allows the app to apply styles to components within the app.
 
 This file is located in the `resources/static` directory of the project, and can be referenced using the web server URL `ws://app.css`.

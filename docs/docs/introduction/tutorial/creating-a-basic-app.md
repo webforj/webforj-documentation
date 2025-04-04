@@ -144,7 +144,7 @@ mainFrame.addClassName("mainFrame");
 
 ### Attaching CSS files
 
-To style your app, you can include CSS files in your project either by using asset annotations or by utilizing the webforJ <JavadocLink type="foundation" location="com/webforj/Page" >asset API</JavadocLink> at runtime. [See this article](../../styling/getting-started#using-custom-css) for more information. 
+To style your app, you can include CSS files in your project either by using asset annotations or by utilizing the webforJ <JavadocLink type="foundation" location="com/webforj/Page" >asset API</JavadocLink> at runtime. [See this article](../../managing-resources/importing-assets) for more information. 
 
 For instance, The @StyleSheet annotation is used to include styles from the resources/static directory. It automatically generates a URL for the specified file and injects it into the DOM, ensuring the styles are applied to your app. Note that files outside the static directory aren't accessible.
 
