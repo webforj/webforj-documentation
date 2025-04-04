@@ -100,6 +100,53 @@ For example, instead of directly using `--dwc-color-primary-40`, you can apply `
 
 Changing the palette values in one place will update the look of all components that rely on these abstract variables.
 
+### Normal state
+
+Used for the base, neutral appearance of a component—when it’s idle and not being interacted with.
+
+| Variable                           | Description                                                             |
+| ---------------------------------- | ----------------------------------------------------------------------- |
+| `--dwc-color-${name}`              | The default background color. Also used for borders in many components. |
+| `--dwc-color-on-${name}-text`      | The text color shown on top of the default background.                 |
+| `--dwc-color-${name}-text`         | The text color when the component is placed on the surface background. |
+| `--dwc-border-color-${name}`       | Border color, mainly used for hover, focus, and active states.         |
+| `--dwc-focus-ring-${name}`         | Focus ring shadow when the component receives focus-visible styling.   |
+
+---
+
+### Darker variant
+
+Used for selected or active states—usually a deeper tone for stronger contrast and emphasis.
+
+| Variable                                | Description                                                              |
+| --------------------------------------- | ------------------------------------------------------------------------ |
+| `--dwc-color-${name}-dark`              | A darker version of the base color. Often used for pressed or selected states. |
+| `--dwc-color-on-${name}-text-dark`      | Text color when used on a dark background.                               |
+| `--dwc-color-${name}-text-dark`         | A slightly darker text alternative when shown on the surface.            |
+
+---
+
+### Lighter variant
+
+Used for hover, focus, and less dominant visual cues. These are soft tones designed for subtle interaction feedback.
+
+| Variable                                | Description                                                              |
+| --------------------------------------- | ------------------------------------------------------------------------ |
+| `--dwc-color-${name}-light`             | A lighter version of the base color. Typically used for hover/focus backgrounds. |
+| `--dwc-color-on-${name}-text-light`     | Text color when shown on a light background.                             |
+| `--dwc-color-${name}-text-light`        | A lighter text tone for use in less prominent states.                    |
+
+---
+
+### Alt variant
+
+Used for secondary emphasis or UI highlights—such as keyboard navigation focus outlines or auxiliary indicators.
+
+| Variable                                | Description                                                              |
+| --------------------------------------- | ------------------------------------------------------------------------ |
+| `--dwc-color-${name}-alt`               | A very light version of the color, mainly used for highlights or background glows. |
+| `--dwc-color-on-${name}-text-alt`       | Text color when the background is the alternate (`alt`) color.           |
+
 <Tabs>
 
 <TabItem value="Default / Tone">
@@ -300,50 +347,3 @@ Changing the palette values in one place will update the look of all components 
 </TabItem>
 
 </Tabs>
-
-### Normal state
-
-Used for the base, neutral appearance of a component—when it’s idle and not being interacted with.
-
-| Variable                           | Description                                                             |
-| ---------------------------------- | ----------------------------------------------------------------------- |
-| `--dwc-color-${name}`              | The default background color. Also used for borders in many components. |
-| `--dwc-color-on-${name}-text`      | The text color shown on top of the default background.                 |
-| `--dwc-color-${name}-text`         | The text color when the component is placed on the surface background. |
-| `--dwc-border-color-${name}`       | Border color, mainly used for hover, focus, and active states.         |
-| `--dwc-focus-ring-${name}`         | Focus ring shadow when the component receives focus-visible styling.   |
-
----
-
-### Darker variant
-
-Used for selected or active states—usually a deeper tone for stronger contrast and emphasis.
-
-| Variable                                | Description                                                              |
-| --------------------------------------- | ------------------------------------------------------------------------ |
-| `--dwc-color-${name}-dark`              | A darker version of the base color. Often used for pressed or selected states. |
-| `--dwc-color-on-${name}-text-dark`      | Text color when used on a dark background.                               |
-| `--dwc-color-${name}-text-dark`         | A slightly darker text alternative when shown on the surface.            |
-
----
-
-### Lighter variant
-
-Used for hover, focus, and less dominant visual cues. These are soft tones designed for subtle interaction feedback.
-
-| Variable                                | Description                                                              |
-| --------------------------------------- | ------------------------------------------------------------------------ |
-| `--dwc-color-${name}-light`             | A lighter version of the base color. Typically used for hover/focus backgrounds. |
-| `--dwc-color-on-${name}-text-light`     | Text color when shown on a light background.                             |
-| `--dwc-color-${name}-text-light`        | A lighter text tone for use in less prominent states.                    |
-
----
-
-### Alt variant
-
-Used for secondary emphasis or UI highlights—such as keyboard navigation focus outlines or auxiliary indicators.
-
-| Variable                                | Description                                                              |
-| --------------------------------------- | ------------------------------------------------------------------------ |
-| `--dwc-color-${name}-alt`               | A very light version of the color, mainly used for highlights or background glows. |
-| `--dwc-color-on-${name}-text-alt`       | Text color when the background is the alternate (`alt`) color.           |
