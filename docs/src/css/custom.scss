@@ -1,55 +1,29 @@
-@use './announcement';
-@use './navbar';
-@use './sidebar';
-@use './footer';
-@use './category';
-@use './content';
-@use './toc';
-@use './pagination';
-@use './blog-sidebar';
-@use './blog-content';
-@use './tutorial-content';
-@use './utils';
+@use "./alerts";
+@use "./announcement";
+@use "./navbar";
+@use "./sidebar";
+@use "./footer";
+@use "./category";
+@use "./content";
+@use "./toc";
+@use "./pagination";
+@use "./blog-sidebar";
+@use "./blog-content";
+@use "./tutorial-content";
+@use "./utils";
 
 :root {
   /* DWC */
-  --dwc-color-primary-h: 211;
-  --dwc-color-primary-s: 100%;
-  --dwc-color-primary-c: 50;
-  --dwc-color-default-h: var(--dwc-color-primary-h);
-  --dwc-color-default-s: 38%;
-  --dwc-color-default-c: 50;
-  --dwc-surface-1: hsl(
-    var(--dwc-color-default-h),
-    var(--dwc-color-default-s),
-    96%
-  );
-  --dwc-surface-2: hsl(
-    var(--dwc-color-default-h),
-    var(--dwc-color-default-s),
-    98%
-  );
-  --dwc-surface-3: hsl(0, 0%, 100%);
-  --dwc-border-color: hsl(
-    var(--dwc-color-default-h),
-    var(--dwc-color-default-s),
-    90%
-  );
-
-  --dwc-color-primary-alt: hsl(
-    var(--dwc-color-primary-h),
-    var(--dwc-color-primary-s),
-    95%
-  );
+  --dwc-border-color: var(--dwc-color-default);
 
   /* Infima */
-  --ifm-color-primary: #0063cc;
-  --ifm-color-primary-dark: #0059b8;
-  --ifm-color-primary-darker: #0054ad;
-  --ifm-color-primary-darkest: #00458f;
-  --ifm-color-primary-light: #0068d6;
-  --ifm-color-primary-lighter: #006de0;
-  --ifm-color-primary-lightest: #0a81ff;
+  --ifm-color-primary: var(--dwc-color-primary);
+  --ifm-color-primary-dark: var(--dwc-color-primary-dark);
+  --ifm-color-primary-darker: var(--dwc-color-primary-30);
+  --ifm-color-primary-darkest: var(--dwc-color-primary-25);
+  --ifm-color-primary-light: var(--dwc-color-primary-light);
+  --ifm-color-primary-lighter: var(--dwc-color-primary-50);
+  --ifm-color-primary-lightest: var(--dwc-color-primary-55);
   --ifm-background-color: var(--dwc-surface-2);
   --ifm-toc-border-color: var(--dwc-border-color);
   --ifm-footer-background-color: var(--dwc-surface-3);
@@ -85,8 +59,7 @@
   --announcement-color: #fff;
 
   /* Menus */
-  --menu-level-indicator-color: hsl(0, 0%, 80%);
-
+  --menu-level-indicator-color: hsl(0, 0%, 35%);
 
   /* Navbar Dark */
   --navbar-dark-background-color: hsl(
@@ -95,54 +68,14 @@
     12%
   );
 
-  --navbar-dark-link-hover-color: #8fc5ff;
-  --navbar-dark-background-active: hsl(
-    var(--dwc-color-default-h),
-    var(--dwc-color-default-s),
-    10%
-  );
+  --navbar-dark-link-hover-color: var(--dwc-color-primary-70);
+  --navbar-dark-background-active: var(--dwc-color-primary-65);
 
   --navbar-dark-sidebar-level-indicator-color: hsl(0, 0%, 35%);
 }
 
 [data-theme="dark"] {
-  /* DWC */
-  --dwc-color-primary-alt: hsl(
-    var(--dwc-color-primary-h),
-    var(--dwc-color-primary-s),
-    5%
-  );
-
-  --dwc-color-default-s: 20%;
-  --dwc-surface-1: hsl(
-    var(--dwc-color-default-h),
-    var(--dwc-color-default-s),
-    8%
-  );
-  --dwc-surface-2: hsl(
-    var(--dwc-color-default-h),
-    var(--dwc-color-default-s),
-    10%
-  );
-  --dwc-surface-3: hsl(
-    var(--dwc-color-default-h),
-    var(--dwc-color-default-s),
-    12%
-  );
-  --dwc-border-color: hsl(
-    var(--dwc-color-default-h),
-    var(--dwc-color-default-s),
-    20%
-  );
-
   /* Infima */
-  --ifm-color-primary: #3396ff;
-  --ifm-color-primary-dark: #1486ff;
-  --ifm-color-primary-darker: #057eff;
-  --ifm-color-primary-darkest: #0068d6;
-  --ifm-color-primary-light: #429eff;
-  --ifm-color-primary-lighter: #52a6ff;
-  --ifm-color-primary-lightest: #8fc5ff;
   --ifm-background-color: var(--dwc-surface-1) !important;
 
   /* github-icon */
@@ -151,10 +84,10 @@
   /* code */
   --docusaurus-highlighted-code-line-bg: #414458;
 
-  /* Menus */
-  --menu-level-indicator-color: hsl(0,0%, 35%);
+  /* Navbar Dark */
+  --navbar-dark-link-hover-color: var(--dwc-color-primary-30);
+  --navbar-dark-background-active: var(--dwc-color-primary-25);
 }
-
 
 html {
   visibility: visible;
@@ -166,4 +99,9 @@ body {
   font-family: var(--ifm-font-family-base);
   font-size: var(--ifm-font-size-base);
   line-height: var(--ifm-line-height-base);
+}
+
+b,
+strong {
+  color: inherit;
 }
