@@ -1,3 +1,0 @@
-CheckBox checkbox = new CheckBox()
-checkbox.onCheck(e -> checkbox.setText("You have accepted the Terms and Conditions"));
-checkbox.onUncheck(e -> checkbox.setText("Please check to accept the Terms and Conditions"));

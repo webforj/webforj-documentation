@@ -1,5 +1,0 @@
-MaskedTextField s1 = new MaskedTextField().setExpanse(MaskedTextField.Expanse.XSMALL);
-MaskedTextField s2 = new MaskedTextField().setExpanse(MaskedTextField.Expanse.SMALL);
-MaskedTextField s3 = new MaskedTextField().setExpanse(MaskedTextField.Expanse.MEDIUM);
-MaskedTextField s4 = new MaskedTextField().setExpanse(MaskedTextField.Expanse.LARGE);
-MaskedTextField s5 = new MaskedTextField().setExpanse(MaskedTextField.Expanse.XLARGE);
