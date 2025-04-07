@@ -2,6 +2,7 @@ package com.webforj.samples.views.googlecharts;
 
 import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
+import com.webforj.component.Theme;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.field.NumberField;
@@ -110,7 +111,7 @@ public class ChartRedrawView extends Composite<Div> {
       }
 
       if (!allValuesValid) {
-        Toast.show("Enter a valid number between 1 and " + MAX_ALLOWED, 3000);
+        Toast.show("Enter a valid number between 1 and " + MAX_ALLOWED, 3000, Theme.DANGER);
       } else {
         chart.setData(newData);
         chart.redraw();
