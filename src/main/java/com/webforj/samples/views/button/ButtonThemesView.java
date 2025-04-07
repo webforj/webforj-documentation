@@ -24,6 +24,7 @@ public class ButtonThemesView extends Composite<FlexLayout> {
 
     scrollWrapper.setStyle("overflow-x", "auto");
     scrollWrapper.setStyle("white-space", "nowrap");
+    scrollWrapper.setStyle("margin","var(--dwc-space-l)");
     
     FlexLayout scrollContent = new FlexLayout();
     scrollContent.setDirection(FlexDirection.COLUMN)
@@ -38,7 +39,8 @@ public class ButtonThemesView extends Composite<FlexLayout> {
     FlexLayout outlinedRow = new FlexLayout();
     outlinedRow.setDirection(FlexDirection.ROW)
                .setWrap(FlexWrap.NOWRAP)
-               .setSpacing("var(--dwc-space-s)");
+               .setSpacing("var(--dwc-space-s)")
+               .setStyle("margin-bottom","var(--dwc-space-l)");
 
     for (ButtonTheme theme : ButtonTheme.values()) {
       if (!theme.name().contains("OUTLINE")) {
