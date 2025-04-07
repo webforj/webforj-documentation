@@ -3,61 +3,50 @@ package com.webforj.samples.views.textarea;
 import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.field.TextArea;
-import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
-import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-
-import java.util.Arrays;
-import java.util.List;
 
 @InlineStyleSheet("dwc-textarea::part(input) { text-transform: capitalize; }")
 @Route
 @FrameTitle("Predicted Text Demo")
 public class TextAreaPredictedTextView extends Composite<FlexLayout> {
-
-  private final FlexLayout layout = getBoundComponent();
-  private final TextArea textArea = new TextArea("Enter a US state:");
-  private final List<String> states = Arrays.asList(
-      "Alabama", "Alaska", "Arizona", "Arkansas", "California",
-      "Colorado", "Connecticut", "Delaware", "Florida", "Georgia",
-      "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
-      "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",
-      "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri",
-      "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey",
-      "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio",
-      "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina",
-      "South Dakota", "Tennessee", "Texas", "Utah", "Vermont",
-      "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
-  );
+  private final FlexLayout self = getBoundComponent();
+  private final TextArea textArea = new TextArea("Predicted Text");
 
   public TextAreaPredictedTextView() {
-    layout.setDirection(FlexDirection.COLUMN)
-          .setJustifyContent(FlexJustifyContent.CENTER)
-          .setAlignment(FlexAlignment.CENTER)
-          .setSpacing("var(--dwc-space-m)")
-          .setMargin("var(--dwc-space-m)");
+    self.setDirection(FlexDirection.COLUMN)
+        .setSpacing("var(--dwc-space-m)")
+        .setMargin("50px auto")
+        .setMaxWidth("400px");
 
-    textArea.setPlaceholder("Start typing a state name...")
-            .setWidth("100%")
-            .onValueChange(event -> predictText(event.getValue()));
+    textArea
+        .setHeight("200px")
+        .setHelperText("Type something to see suggestions, for instance, type 'Sky is'. "
+            + "Then wait for a few seconds to see the suggestions. You can insert the suggestion"
+            + "by pressing Tab or ArrowRight key or simply ignore it by typing further.")
+        .setPlaceholder("Start typing to see suggestions...")
+        .onValueChange(event -> {
+          try {
+            String input = event.getValue();
+            if (input.isEmpty()) {
+              textArea.setPredictedText("");
+              return;
+            }
 
-    layout.add(textArea);
-  }
+            String bestSuggestion = TextPredictionService.predict(input);
+            String predictedValue = "";
+            if (!bestSuggestion.isEmpty() && bestSuggestion.length() >= input.length()) {
+              predictedValue = input + bestSuggestion.substring(input.length());
+            }
 
-  private void predictText(String input) {
-    if (input == null || input.isEmpty()) {
-      textArea.setPredictedText("");
-      return;
-    }
+            textArea.setPredictedText(predictedValue);
+          } catch (Exception e) {
+            textArea.setPredictedText("");
+          }
+        });
 
-    String prediction = states.stream()
-        .filter(state -> state.toLowerCase().startsWith(input.toLowerCase()))
-        .findFirst()
-        .orElse("");
-
-    textArea.setPredictedText(prediction);
+    self.add(textArea);
   }
 }
