@@ -21,6 +21,8 @@ WAR
 RGB
 MDN
 UNIX
+IDEA
+JVM
 aka
 DWC
 REM
