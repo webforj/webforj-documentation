@@ -88,7 +88,6 @@ or
 source ~/.zshrc
 ```
 
-
 **5. Check It Works**
 
 Type:
@@ -98,7 +97,6 @@ mvn -v
 ```
 
 You should see Maven’s version info.
-
 
 <a name='section2'></a>
 
