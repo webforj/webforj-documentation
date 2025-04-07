@@ -1,13 +1,11 @@
 ---
-title: "Java Debug Setup"
+title: Debugging
 ---
 
 Debugging is an essential part of Java development, helping developers identify and fix issues efficiently. This guide explains how to configure debugging in webforJ for Visual Studio Code, IntelliJ IDEA, and Eclipse.
 
 <Tabs>
 <TabItem value="vscode" label="Visual Studio Code">
-
-### Debugging in Visual Studio Code
 
 <div class="videos-container">
       <video controls>
@@ -41,8 +39,6 @@ Debugging is an essential part of Java development, helping developers identify 
 </TabItem>
 <TabItem value="intellij" label="IntelliJ IDEA">
 
-### Debugging in IntelliJ IDEA
-
 <div class="videos-container">
       <video controls>
         <source src="https://cdn.webforj.com/webforj-documentation/video/debug/intellij.mp4" type="video/mp4" />
@@ -57,8 +53,6 @@ Debugging is an essential part of Java development, helping developers identify 
 
 </TabItem>
 <TabItem value="eclipse" label="Eclipse">
-
-### Debugging in eclipse
 
 <div class="videos-container">
       <video controls>
