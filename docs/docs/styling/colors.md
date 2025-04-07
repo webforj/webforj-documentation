@@ -35,6 +35,14 @@ There are several built-in color palettes, each designed for semantic use cases 
 
 <ColorPalette></ColorPalette>
 
+
+<br/>
+
+:::tip  DWC HueCraft
+To simplify the process of generating WCAG-compliant palettes for your webforJ applications, you can use the [DWC HueCraft](https://webforj.github.io/huecraft/) tool. It supports palette creation based on brand colors or logos and allows quick CSS export.
+:::
+
+
 ### Dark mode behavior
 
 webforJ supports a flipped color strategy in dark mode. Rather than using entirely separate color palettes, it inverts the way lightness values are interpreted.
