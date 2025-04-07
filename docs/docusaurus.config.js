@@ -18,6 +18,21 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+  scripts: [
+    {
+      src: '/dwc-theme-switcher.js',
+      async: false,
+    },
+  ],
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'stylesheet',
+        href: 'https://cdn.jsdelivr.net/gh/webforj/dwc-dist@latest/dwc-ui.css',
+      },
+    },
+  ],
   presets: [
     [
       'classic',
@@ -137,6 +152,12 @@ const config = {
               label: "Client Components",
               to: '/docs/client-components/overview',
               activeBasePath: 'docs/client-components/overview'
+            },
+            {
+              label: "DWC HueCraft",
+              href: 'https://webforj.github.io/huecraft/',
+              target: '_blank',
+              rel: null,
             },
             {
               label: "DWC Design Kit",

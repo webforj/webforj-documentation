@@ -1,32 +1,35 @@
 ---
 sidebar_position: 2
-displayed_sidebar: documentationSidebar
 title: Themes
 ---
 
-webforJ ships three themes by default, as well as with the ability to create your own, custom theme. The default themes are light theme, which is the default with a light background, dark which has a dark background tinted with the primary color and dark-pure which has a pure dark background (gray tones, not fully black).
+webforJ includes three built-in app themes and supports defining your own custom themes. The default themes are:
 
-To change the theme of your application, you can use the `@AppTheme` annotation or the `App.setTheme()` method. When using this annotation, the theme name should be one of the following: `system`, `light`, `dark`, `dark-pure` or the name of a custom theme.
+- **light**: A bright theme with a light background (default).
+- **dark**: A dark background tinted with the primary color.
+- **dark-pure**: A fully neutral dark theme based on gray tones.
+
+To apply a theme in your app, use the `@AppTheme` annotation or the `App.setTheme()` method. The theme name must be one of: `system`, `light`, `dark`, `dark-pure`, or a custom theme name.
 
 ```java
 @AppTheme("dark-pure")
-//or
+class MyApp extends App {
+  // app code
+}
+
+// or programmatically
 App.setTheme("dark-pure");
 ```
 
-:::info
-Using the API's `App.setTheme()` results in runtime theme assignment - for users wishing to enable the ability to change themes dynamically while the program is run, the API's `App.setTheme()` method will be the proper tool.
+## Overriding default themes
+
+You can override the **light** theme by redefining CSS custom properties in the `:root` selector.
+
+:::info `:root` pseudo-class
+The `:root` CSS pseudo-class targets the root element of the document. In HTML, it represents the `<html>` element and has higher specificity than the plain `html` selector.
 :::
 
-## Overriding themes
-
-It is possible to override the light theme of your application by overriding the CSS Properties defined in [`:root`](https://developer.mozilla.org/en-US/docs/Web/CSS/:root).
-
-:::note
-The `:root` CSS pseudo-class matches the root element of a tree representing the document. In HTML, `:root` represents the element and is identical to the selector html, except that its specificity is higher.
-:::
-
-An example of this behavior would be as follows:
+Example:
 
 ```css
 :root {
@@ -37,7 +40,7 @@ An example of this behavior would be as follows:
 }
 ```
 
-To override the `dark` or `dark-pure` theme, you should define your variables using the `html[data-app-theme='dark']` and `html[data-app-theme='dark-pure']` rules respectively. For example:
+To override the **dark** or **dark-pure** themes, use attribute selectors on the `<html>` element:
 
 ```css
 html[data-app-theme="dark"] {
@@ -48,9 +51,7 @@ html[data-app-theme="dark"] {
 
 ## Creating custom themes
 
-In addition to the themes that come with webforJ, it is also possible to create your own application themes. Themes can co-exist in the same application, allowing you to switch between themes dynamically.
-
-New themes should be defined in `html[data-app-theme='THEME_NAME']` in your application stylesheet:
+You can define your own themes using the `html[data-app-theme='THEME_NAME']` selector. Custom themes can coexist with the default ones, and you can switch between them dynamically at runtime.
 
 ```css
 html[data-app-theme="new-theme"] {
@@ -60,12 +61,20 @@ html[data-app-theme="new-theme"] {
 }
 ```
 
-## Using the themer
+Then in your app:
 
-The [Themer tool](https://demo.webforj.com/webapp/DWCThemer) allows you to modify the various palettes and colors supported by webforJ to either override an existing theme, or creating your own.
+```java
+@AppTheme("new-theme")
+class MyApp extends App {
+  // app code
+}
 
-To do this, open the tool, and modify the various color, typography, spacing and other options to your preferred values. Once this has been done, export the theme by clicking the "Export" button at the top left of the screen.
+// or programmatically
+App.setTheme("new-theme");
+```
 
-This will open a dialog with various options which will allow you to change the name of the generated `.css` file, give the theme a name, etc.
+## Component themes
 
-In particular, note the **"Output Format"** section - this section allows the user to decide whether to override the current theme, or generate a new one that can be switched to dynamically. If the **"root"** option is chosen, the corresponding CSS that is generated will apply to the `:root` CSS pseudo-class and override existing theme rules. Selecting **named_html** will instead create a new theme in the `html[data-app-theme='YOUR-THEME']` format.
+In addition to app-level themes, webforJ components support a set of **component themes** based on the default color palettes: `default`, `primary`, `success`, `warning`, `danger`, `info`, and `gray`.
+
+Each component documents its supported themes under the **Styling → Themes** section.

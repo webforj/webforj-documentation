@@ -1,0 +1,41 @@
+.alert--primary {
+  --ifm-alert-background-color: var(--dwc-color-primary-95);
+  --ifm-alert-background-color-highlight: var(--dwc-color-primary-90);
+  --ifm-alert-foreground-color: var(--dwc-color-primary-text-95);
+  --ifm-alert-border-color: var(--dwc-color-primary);
+}
+
+.alert--secondary {
+  --ifm-alert-background-color: var(--dwc-color-default-95);
+  --ifm-alert-background-color-highlight: var(--dwc-color-default-90);
+  --ifm-alert-foreground-color: var(--dwc-color-default-text-95);
+  --ifm-alert-border-color: var(--dwc-color-default);
+}
+
+.alert--success {
+  --ifm-alert-background-color: var(--dwc-color-success-95);
+  --ifm-alert-background-color-highlight: var(--dwc-color-success-90);
+  --ifm-alert-foreground-color: var(--dwc-color-success-text-95);
+  --ifm-alert-border-color: var(--dwc-color-success);
+}
+
+.alert--info {
+  --ifm-alert-background-color: var(--dwc-color-info-95);
+  --ifm-alert-background-color-highlight: var(--dwc-color-info-90);
+  --ifm-alert-foreground-color: var(--dwc-color-info-text-95);
+  --ifm-alert-border-color: var(--dwc-color-info);
+}
+
+.alert--warning {
+  --ifm-alert-background-color: var(--dwc-color-warning-95);
+  --ifm-alert-background-color-highlight: var(--dwc-color-warning-90);
+  --ifm-alert-foreground-color: var(--dwc-color-warning-text-95);
+  --ifm-alert-border-color: var(--dwc-color-warning);
+}
+
+.alert--danger {
+  --ifm-alert-background-color: var(--dwc-color-danger-95);
+  --ifm-alert-background-color-highlight: var(--dwc-color-danger-90);
+  --ifm-alert-foreground-color: var(--dwc-color-danger-text-95);
+  --ifm-alert-border-color: var(--dwc-color-danger);
+}

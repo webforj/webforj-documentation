@@ -23,4 +23,8 @@ MDN
 UNIX
 IDEA
 JVM
-
+aka
+DWC
+REM
+EM
+WCAG
