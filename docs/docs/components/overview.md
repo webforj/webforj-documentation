@@ -114,7 +114,7 @@ Data entry components provide essential tools for capturing user input and manag
     <p>A component that provides a default browser-based color picker, allowing users to select a color from an input field.</p>
   </GalleryCard>
 
-  <GalleryCard header="TextArea" href="#" image="/img/components/TextArea.png">
+  <GalleryCard header="TextArea" href="textarea" image="/img/components/TextArea.png">
     <p>A multi-line text input component that allows users to enter or edit larger blocks of text.</p>
   </GalleryCard>
 
