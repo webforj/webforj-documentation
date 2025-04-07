@@ -154,6 +154,12 @@ const config = {
               activeBasePath: 'docs/client-components/overview'
             },
             {
+              label: "DWC HueCraft",
+              href: 'https://webforj.github.io/huecraft/',
+              target: '_blank',
+              rel: null,
+            },
+            {
               label: "DWC Design Kit",
               href: 'https://www.figma.com/community/file/1144573845612007198/dwc-design-kit',
               target: '_blank',
