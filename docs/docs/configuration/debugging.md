@@ -9,6 +9,12 @@ Debugging is an essential part of Java development, helping developers identify 
 
 ### Debugging in Visual Studio Code
 
+<div class="videos-container">
+      <video controls>
+        <source src="https://cdn.webforj.com/webforj-documentation/video/debug/vscode.mp4" type="video/mp4" />
+      </video>
+</div>
+
 1. Open your webforJ project in VS Code.
 2. Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> (or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> on Mac) to open the Run and Debug panel.
 3. Click "create a launch.json file"
@@ -37,6 +43,12 @@ Debugging is an essential part of Java development, helping developers identify 
 
 ### Debugging in IntelliJ IDEA
 
+<div class="videos-container">
+      <video controls>
+        <source src="https://cdn.webforj.com/webforj-documentation/video/debug/intellij.mp4" type="video/mp4" />
+      </video>
+</div>
+
 1. Open your project in IntelliJ IDEA.
 2. Navigate to Run → Edit Configurations.
 3. Click the <kbd>+</kbd> button and select Remote JVM Debug.
@@ -47,6 +59,12 @@ Debugging is an essential part of Java development, helping developers identify 
 <TabItem value="eclipse" label="Eclipse">
 
 ### Debugging in eclipse
+
+<div class="videos-container">
+      <video controls>
+        <source src="https://cdn.webforj.com/webforj-documentation/video/debug/eclipse.mp4" type="video/mp4" />
+      </video>
+</div>
 
 1. Open your project in Eclipse.
 2. Go to Run → Edit Configurations.
