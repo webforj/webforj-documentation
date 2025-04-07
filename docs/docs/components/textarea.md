@@ -15,7 +15,7 @@ Here's an example of a `TextArea` for entering multi-line text:
 
 <ComponentDemo 
 path='/webforj/textarea?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaView.java'
 height = '300px'
 />
 
@@ -63,7 +63,7 @@ The following demo allows users to adjust validation limits—such as maximum ch
 	
 <ComponentDemo 
 path='/webforj/textareavalidation?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaValidationView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaValidationView.java'
 height = '550px'
 />
 
@@ -79,7 +79,7 @@ These wrapping options work hand-in-hand with structural constraints like line c
 
 <ComponentDemo 
 path='/webforj/textareawrap?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaWrapView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaWrapView.java'
 height = '400px'
 />
 
@@ -93,7 +93,7 @@ This predictive behavior enhances both speed and accuracy, especially in repetit
 
 <ComponentDemo 
 path='/webforj/textareapredictedtext?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaPredictedTextView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaPredictedTextView.java'
 height = '400px'
 />
 
@@ -113,7 +113,7 @@ Use read-only mode when the content is relevant but immutable, and disabled mode
 
 <ComponentDemo 
 path='/webforj/textareastates?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaStatesView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/textarea/TextAreaStatesView.java'
 height = '300px'
 />
 
