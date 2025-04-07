@@ -33,11 +33,71 @@ BBj installed on your system, please skip to [**Step 3**](#3-install-and-configu
 Java **OpenJDK17** can be found [by following this link](https://adoptium.net/temurin/releases/). It is recommended 
 to allow the installation to handle setting the JAVA_HOME variable during installation, where applicable.
 
-### Maven
+### Maven (Windows)
 
 Maven should also be downloaded, and can be found [at this link](https://maven.apache.org/download.cgi). It is 
 recommended to configure your system environment variables with Maven - a guide for installation and configuration 
 for Windows users can be found [here](https://phoenixnap.com/kb/install-maven-windows).
+
+### Maven (macOS)
+
+Below is a guide for downloading and installing Maven on Mac:
+
+**1. Download Maven**
+	- Go to the [Apache Maven Downloads Page](https://maven.apache.org/download.cgi).
+	- Under “Files,” click the link for the latest version’s Binary tar.gz archive (e.g., apache-maven-3.9.9-bin.tar.gz).
+	- Save the file to your Downloads folder.
+
+**2. Unzip the File**
+	- In Finder, go to your Downloads folder.
+	- Double-click the .tar.gz file to extract it. You’ll get a folder named something like apache-maven-3.9.6.
+
+**3. Move Maven to a Safe Location**
+	- Drag the extracted apache-maven-3.9.6 folder to a permanent location, such as your Applications folder or create a new folder like DeveloperTools in your home directory.
+
+**4. Set Up the Environment**
+	- Open Terminal.
+	- Run the following command to open your profile file (for Zsh, which is default on modern Macs):
+
+```bash 
+open -e ~/.zprofile
+```
+
+If that file doesn’t exist, use this instead:
+
+```bash 
+open -e ~/.zshrc
+```
+
+	- In the file that opens, paste the following (adjust path if you placed Maven somewhere else):
+
+```bash
+export MAVEN_HOME=~/DeveloperTools/apache-maven-3.9.6
+export PATH=$MAVEN_HOME/bin:$PATH
+```
+
+	- Save and close the file, then go back to Terminal and run:
+
+```bash 
+source ~/.zprofile
+```
+
+or
+
+```bash
+source ~/.zshrc
+```
+
+
+**5. Check It Works**
+
+Type:
+
+```bash 
+mvn -v
+```
+
+You should see Maven’s version info.
 
 
 <a name='section2'></a>
