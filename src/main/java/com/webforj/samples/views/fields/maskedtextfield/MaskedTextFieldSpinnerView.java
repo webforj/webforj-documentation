@@ -28,7 +28,6 @@ public class MaskedTextFieldSpinnerView extends Composite<FlexLayout>{
                 spinner.setOptions(List.of("Active","Busy", "Away"));
 
                 spinner.setValue("Active");
-  
     
         self.add(spinner);
     }
