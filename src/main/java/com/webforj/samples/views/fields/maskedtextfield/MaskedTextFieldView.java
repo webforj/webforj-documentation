@@ -11,9 +11,9 @@ import com.webforj.router.annotation.Route;
 @Route
 public class MaskedTextFieldView extends Composite<FlexLayout> {
 
-    MaskedTextField phoneField = new MaskedTextField();
-    MaskedTextField dobField = new MaskedTextField();
-    MaskedTextField emailField = new MaskedTextField();
+    MaskedTextField phoneField = new MaskedTextField("Phone Number", "", "Enter your phone number");
+    MaskedTextField dobField = new MaskedTextField("Date of Birth", "", "MM/DD/YYYY");
+    MaskedTextField emailField = new MaskedTextField("EMail", "", "example@gov.de");
 
     public MaskedTextFieldView() {
         FlexLayout self = getBoundComponent();
