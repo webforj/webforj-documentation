@@ -74,7 +74,7 @@ Data entry components provide essential tools for capturing user input and manag
     <p>A single-line input component for entering and editing text data.</p>
   </GalleryCard>
 
-  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Masked</span>TextField" href="#" image="/img/components/MaskedTextField.png">
+  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Masked</span>TextField" href="fields/maskedtextfield" image="/img/components/MaskedTextField.png">
     <p>A text input component that restricts user input to a specific format or pattern, typically used for fields like phone numbers, dates, or credit card numbers.</p>
   </GalleryCard>
 

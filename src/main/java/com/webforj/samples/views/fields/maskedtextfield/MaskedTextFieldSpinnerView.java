@@ -13,22 +13,23 @@ import com.webforj.router.annotation.Route;
 @Route
 public class MaskedTextFieldSpinnerView extends Composite<FlexLayout>{
 
-    MaskedTextFieldSpinner spinner = new MaskedTextFieldSpinner("Current Status:");
+    MaskedTextFieldSpinner prioritySpinner = new MaskedTextFieldSpinner("Current Priority:");
 
     public MaskedTextFieldSpinnerView() {
         FlexLayout self = getBoundComponent();
         self.setDirection(FlexDirection.COLUMN)
-                .setJustifyContent(FlexJustifyContent.CENTER)
-                .setAlignment(FlexAlignment.CENTER)
+                .setJustifyContent(FlexJustifyContent.START)
+                .setAlignment(FlexAlignment.START)
                 .setSpacing("var(--dwc-space-m)")
                 .setMargin("var(--dwc-space-m)");
 
-                spinner.setPattern("[A-Za-z]*");
-                spinner.setTooltipText("Current status:");
-                spinner.setOptions(List.of("Active","Busy", "Away"));
+                prioritySpinner.setPattern("[A-Za-z+]{3,10}");
+                prioritySpinner.setTooltipText("Priority:");
+                prioritySpinner.setOptions(List.of("Low", "Normal", "High", "Critical"));
 
-                spinner.setValue("Active");
-    
-        self.add(spinner);
+                prioritySpinner.setValue("Normal");
+            
+        self.add(prioritySpinner);
+        
     }
 }

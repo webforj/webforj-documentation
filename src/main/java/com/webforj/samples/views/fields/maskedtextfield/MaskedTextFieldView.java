@@ -22,8 +22,8 @@ public class MaskedTextFieldView extends Composite<FlexLayout> {
         dobField.setMask("00/00/0000");
         emailField.setPattern("[A-Za-z]*@[A-Za-z]*\\.[A-Za-z]*");
         self.setDirection(FlexDirection.COLUMN)
-                .setJustifyContent(FlexJustifyContent.CENTER)
-                .setAlignment(FlexAlignment.CENTER)
+                .setJustifyContent(FlexJustifyContent.START)
+                .setAlignment(FlexAlignment.START)
                 .setSpacing("var(--dwc-space-m)")
                 .setMargin("var(--dwc-space-m)");
 

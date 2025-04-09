@@ -5,7 +5,7 @@ sidebar_position: 2
 
 <DocChip chip='shadow' />
 
-<DocChip chip='name' label="dwc-masked-textfield" />
+<DocChip chip='name' label="dwc-textfield" />
 
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedTextField" top='true'/>
 
@@ -88,7 +88,7 @@ height='200px'
 
 ## `MaskedTextFieldSpinner`
 
-The `MaskedTextFieldSpinner` extends the `MaskedTextField` by introducing spinner controls, allowing users to spin through a predefined set of options. 
+The `MaskedTextFieldSpinner` extends the `MaskedTextField` by introducing spinner controls, allowing users to spin through a predefined set of options. It's also possible to spin through these options programmatically using either `spinUp()` or `spinDown()`.
 
 <ComponentDemo 
 path='/webforj/maskedtextfieldspinner?' 
