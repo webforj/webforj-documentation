@@ -18,11 +18,11 @@ public class MaskedTextFieldRestoreView extends Composite<FlexLayout>{
         FlexLayout self = getBoundComponent();
         usernameField.setRestoreValue("WebforJUser");
         self.setDirection(FlexDirection.COLUMN)
-                .setJustifyContent(FlexJustifyContent.CENTER)
-                .setAlignment(FlexAlignment.CENTER)
+                .setJustifyContent(FlexJustifyContent.START)
+                .setAlignment(FlexAlignment.START)
                 .setSpacing("var(--dwc-space-m)")
                 .setMargin("var(--dwc-space-m)");
-
+                usernameField.setPattern("[a-zA-Z0-9._]{3,20}");
                 Button restoreButton = new Button("Reset Username", event -> {
                     usernameField.restoreValue();
                 });
