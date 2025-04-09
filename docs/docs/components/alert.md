@@ -17,7 +17,7 @@ height = '100px'
 
 ## Dismissing alerts
 
-To allow users to dismiss the `Alert`, you can make it closable by passing true in the constructor or by calling `setClosable()`:
+If you’d like to give users the option to dismiss the `Alert`, you can make it closable either by calling the `setClosable()` method.
 
 ```java 
 Alert alert = new Alert("Heads up! This alert can be dismissed.");
@@ -36,7 +36,7 @@ Closing the alert only hides it—it doesn’t destroy the component, so you can
 
 ### Close event
 
-In many applications, alerts aren’t just for display—they often trigger follow-up logic once dismissed. Whether you need to log user actions, display another message, or reset the UI state, the `AlertCloseEvent` gives you a reliable hook to respond when the user closes the alert.
+In many applications, alerts aren’t just for display—they often trigger follow-up logic once dismissed. Whether you need to log user actions, display another message, or reset the UI state, the `AlertCloseEvent` gives you a reliable hook to respond when the user closes the `Alert`.
 
 <ComponentDemo 
 path='http://localhost:8080/webforj/alertcloseevent?' 
