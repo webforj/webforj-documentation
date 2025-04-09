@@ -6,12 +6,15 @@ sidebar_position: 5
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-alert" />
 
-The `Alert` component provides contextual feedback messages for users. It's a versatile way to display important information, warnings, or notifications in your app.
+The `Alert` component in webforJ provides contextual feedback messages for users. It's a versatile way to display important information, warnings, or notifications in your app.
+
+Alerts help draw attention to key information without disrupting the user's workflow. They're perfect for system messages, form validation feedback, or status updates that need to be clearly visible but not intrusive.
 
 Here's an example of an alert component:
 
 <ComponentDemo 
-path='http://localhost:8080/webforj/alert?' 
+path='/webforj/alert?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/alert/AlertView.java'
 height = '100px'
 />
 
@@ -25,7 +28,8 @@ closableAlert.setClosable(true);
 ```
 
 <ComponentDemo 
-path='http://localhost:8080/webforj/closablealert?' 
+path='/webforj/closablealert?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/alert/ClosableAlertView.java'
 height = '125px'
 />
 
@@ -39,7 +43,8 @@ Closing the alert only hides it—it doesn’t destroy the component, so you can
 In many applications, alerts aren’t just for display—they often trigger follow-up logic once dismissed. Whether you need to log user actions, display another message, or reset the UI state, the `AlertCloseEvent` gives you a reliable hook to respond when the user closes the `Alert`.
 
 <ComponentDemo 
-path='http://localhost:8080/webforj/alertcloseevent?' 
+path='/webforj/alertcloseevent?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/alert/AlertCloseEventView.java'
 height = '300px'
 />
 
@@ -50,7 +55,8 @@ height = '300px'
 The `Alert` component supports multiple <JavadocLink type="foundation" location="com/webforj/component/Theme"> themes </JavadocLink> to visually distinguish different types of messages—such as success, error, warning, or info. These themes can be applied using the `setTheme()` method or directly in the constructor.
 
 <ComponentDemo 
-path='http://localhost:8080/webforj/alertthemes?' 
+path='/webforj/alertthemes?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/alert/AlertThemesView.java' 
 height = '500px'
 />
 
@@ -60,13 +66,15 @@ height = '500px'
 The expanse defines the visual size of the `Alert` component. You can set it using the `setExpanse()` method or pass it directly to the constructor. The available options come from the Expanse enum: `XSMALL`, `SMALL`, `MEDIUM`, `LARGE`, and `XLARGE`.
 
 <ComponentDemo 
-path='http://localhost:8080/webforj/alertexpanses?' 
+path='/webforj/alertexpanses?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/alert/AlertExpansesView.java'
 height = '425px'
 />
 
 
 ### Shadow Parts
 These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
+
 <TableBuilder tag='dwc-alert' table="parts"/>
 
 
