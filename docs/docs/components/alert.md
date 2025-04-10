@@ -20,33 +20,24 @@ height = '100px'
 
 ## Dismissing alerts
 
-If you’d like to give users the option to dismiss the `Alert`, you can make it closable either by calling the `setClosable()` method.
+If you’d like to give users the option to dismiss the `Alert`, you can make it closable either by calling the `setClosable()` method. 
 
 ```java 
 Alert alert = new Alert("Heads up! This alert can be dismissed.");
 closableAlert.setClosable(true);
 ```
+Alerts often do more than display messages—they can trigger follow-up actions when dismissed. Use the `AlertCloseEvent` to handle these cases and respond when the user dismisses the `Alert`.
 
 <ComponentDemo 
 path='/webforj/closablealert?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/alert/ClosableAlertView.java'
-height = '125px'
+height = '100px'
 />
-
 
 :::tip
 Closing the alert only hides it—it doesn’t destroy the component, so you can reuse it later if needed.
 :::
 
-### Close event
-
-In many applications, alerts aren’t just for display—they often trigger follow-up logic once dismissed. Whether you need to log user actions, display another message, or reset the UI state, the `AlertCloseEvent` gives you a reliable hook to respond when the user closes the `Alert`.
-
-<ComponentDemo 
-path='/webforj/alertcloseevent?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/alert/AlertCloseEventView.java'
-height = '300px'
-/>
 
 ## Styling
 
@@ -57,7 +48,7 @@ The `Alert` component supports multiple <JavadocLink type="foundation" location=
 <ComponentDemo 
 path='/webforj/alertthemes?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/alert/AlertThemesView.java' 
-height = '500px'
+height = '475px'
 />
 
 
