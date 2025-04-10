@@ -49,7 +49,7 @@ public class ButtonView extends Composite<FlexLayout> {
         .justify().center()
         .wrap()
         .build()
-        .setSpacing("20px")
+        .setSpacing("var(--dwc-space-l)")
         .setWidth("50%")
         .addClassName("row");
 
@@ -57,7 +57,7 @@ public class ButtonView extends Composite<FlexLayout> {
         .justify().center()
         .wrap()
         .build()
-        .setSpacing("20px")
+        .setSpacing("var(--dwc-space-l)")
         .setWidth("50%")
         .addClassName("row");
 
@@ -65,7 +65,7 @@ public class ButtonView extends Composite<FlexLayout> {
         .justify().end()
         .wrap()
         .build()
-        .setSpacing("20px")
+        .setSpacing("var(--dwc-space-l)")
         .setWidth("50%")
         .addClassName("row", "buttons");
 
