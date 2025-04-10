@@ -1,6 +1,5 @@
 package com.webforj.samples.views.alert;
 
-import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.alert.Alert;
@@ -14,11 +13,6 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@InlineStyleSheet(/*css*/"""      
-  dwc-alert::part(control) {    
-     justify-content: start;       
-  }
-    """)
 @Route
 @FrameTitle("Alert Themes")
 public class AlertThemesView extends Composite<FlexLayout> {
@@ -33,11 +27,11 @@ public class AlertThemesView extends Composite<FlexLayout> {
           .setWidth("100%");
 
     for (Theme theme : Theme.values()) {
-      Icon icon = TablerIcon.create("alert-square-rounded"); 
+      Icon icon = TablerIcon.create("alert-square-rounded");
       Paragraph text = new Paragraph("This is an alert with the " + theme.name() + " theme!");
 
       Alert alert = new Alert()
-          .addToContent(icon, text)
+          .addToContent(FlexLayout.create(icon, text).horizontal().align().center().build())
           .setTheme(theme)
           .setClosable(false)
           .setWidth("325px");

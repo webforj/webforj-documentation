@@ -5,6 +5,7 @@ sidebar_position: 5
 
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-alert" />
+<JavadocLink type="alert" location="com/webforj/component/alert/Alert" top='true'/>
 
 The `Alert` component in webforJ provides contextual feedback messages for users. It's a versatile way to display important information, warnings, or notifications in your app.
 
@@ -20,7 +21,7 @@ height = '100px'
 
 ## Dismissing alerts
 
-If you’d like to give users the option to dismiss the `Alert`, you can make it closable either by calling the `setClosable()` method. 
+If you’d like to give users the option to dismiss the `Alert`, you can make it closable by calling the `setClosable()` method. 
 
 ```java 
 Alert alert = new Alert("Heads up! This alert can be dismissed.");
@@ -59,7 +60,7 @@ The expanse defines the visual size of the `Alert` component. You can set it usi
 <ComponentDemo 
 path='/webforj/alertexpanses?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/alert/AlertExpansesView.java'
-height = '425px'
+height = '400px'
 />
 
 

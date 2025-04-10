@@ -3,7 +3,6 @@ package com.webforj.samples.views.alert;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.alert.Alert;
-import com.webforj.component.alert.event.AlertCloseEvent;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.html.elements.Paragraph;
@@ -31,7 +30,7 @@ public class AlertView extends Composite<FlexLayout> {
           .setMargin("var(--dwc-space-l)");
 
     Button viewButton = new Button("View", ButtonTheme.PRIMARY);
-    
+
     alert.add(new Paragraph("The requested information is ready to be viewed."));
     alert.addToContent(viewButton);
 
