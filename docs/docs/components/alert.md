@@ -34,7 +34,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '100px'
 />
 
-:::tip
+:::tip Reusable Alert Component
 Closing the alert only hides it—it doesn’t destroy the component, so you can reuse it later if needed.
 :::
 

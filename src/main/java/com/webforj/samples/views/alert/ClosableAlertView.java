@@ -30,12 +30,11 @@ public class ClosableAlertView extends Composite<FlexLayout> {
         .setClosable(true)
         .setMaxWidth("400px");
 
-    Button reopenButton = new Button("Show Alert").setTheme(ButtonTheme.PRIMARY);
+    Button reopenButton = new Button("Show Alert");
+    reopenButton.setTheme(ButtonTheme.PRIMARY);
     reopenButton.setVisible(false);
 
-    alert.onClose((AlertCloseEvent e) -> {
-      reopenButton.setVisible(true);
-    });
+    alert.onClose((AlertCloseEvent e) -> reopenButton.setVisible(true));
 
     reopenButton.addClickListener(e -> {
       alert.open();
