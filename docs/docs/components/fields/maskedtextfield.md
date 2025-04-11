@@ -39,7 +39,7 @@ field.setMask("ZZZZ-oooo"); // Example: ABCD-1234
 field.setMask("oooo-oooo-oooo-oooo"); // Example: 1234-5678-9012-3456
 ```
 
-:::tip
+:::info Unrestricted Input
 If a mask consists of only `X` it behaves like a standard textfield.
 :::
 
@@ -49,14 +49,10 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='250px'
 />
 
-:::note
-As seen in this program, masks can be combined with patterns. This will be explained in Detail in the following section.
-:::
-
 ## Combining masks with patterns
 
 In addition to the above rules for masking you can combine them with patterns to utilize regular expressions instead of just masks.
-Regular expressions allow you to create custom patterns for advanced input validation. You can define a custom pattern using the setPattern() method. For example:
+Regular expressions allow you to create custom patterns for advanced input validation. You can define a custom pattern using the `setPattern()` method. For example:
 
 ```java
 field.setPattern("[A-Za-z0-9]{10}"); // Enforces a 10-character alphanumeric code
@@ -95,3 +91,23 @@ path='/webforj/maskedtextfieldspinner?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtextfield/MaskedTextFieldSpinnerView.java'
 height='100px'
 />
+
+## Styling
+
+### Shadow Parts
+
+These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
+
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TextField} table='parts' exclusions=''/>
+
+### CSS properties
+
+These are the various CSS properties that are used in the component, with a short description of their use.
+
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TextField} exclusions='' table='properties'/>
+
+### Reflected Attributes
+
+The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
+
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TextField} table="reflects" />

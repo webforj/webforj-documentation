@@ -11,22 +11,24 @@ import com.webforj.router.annotation.Route;
 @Route
 public class MaskedTextFieldView extends Composite<FlexLayout> {
 
-    MaskedTextField phoneField = new MaskedTextField("Phone number:");
-    MaskedTextField dobField = new MaskedTextField("Date of birth:");
-    MaskedTextField emailField = new MaskedTextField("EMail:");
+  MaskedTextField recordCode = new MaskedTextField("Record Code", "", "NE-24-0934");
+  MaskedTextField couponCode = new MaskedTextField("Coupon Code", "", "ZZZZ-0000");
 
-    public MaskedTextFieldView() {
-        FlexLayout self = getBoundComponent();
-        phoneField.setMask("(000) 000-0000");
-        phoneField.setPlaceholder("(000) 000-0000");
-        dobField.setMask("00/00/0000");
-        emailField.setPattern("[A-Za-z]*@[A-Za-z]*\\.[A-Za-z]*");
-        self.setDirection(FlexDirection.COLUMN)
-                .setJustifyContent(FlexJustifyContent.START)
-                .setAlignment(FlexAlignment.START)
-                .setSpacing("var(--dwc-space-m)")
-                .setMargin("var(--dwc-space-m)");
+  public MaskedTextFieldView() {
+    FlexLayout self = getBoundComponent();
 
-        self.add(dobField, phoneField, emailField);
-    }
+    recordCode.setMask("AA-00-0000");
+    recordCode.setHelperText("Mask: AA-00-0000 - for example: NE-24-0934");
+
+    couponCode.setMask("ZZZZ-0000");
+    couponCode.setHelperText("Mask: ZZZZ-0000 - for example: SAVE-2025");
+
+    self.setDirection(FlexDirection.COLUMN)
+        .setJustifyContent(FlexJustifyContent.START)
+        .setAlignment(FlexAlignment.START)
+        .setSpacing("var(--dwc-space-m)")
+        .setMargin("var(--dwc-space-m)");
+
+    self.add(couponCode, recordCode);
+  }
 }
