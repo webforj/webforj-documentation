@@ -11,25 +11,23 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.Route;
 
 @Route
-public class MaskedTextFieldSpinnerView extends Composite<FlexLayout>{
+public class MaskedTextFieldSpinnerView extends Composite<FlexLayout> {
 
-    MaskedTextFieldSpinner prioritySpinner = new MaskedTextFieldSpinner("Current Priority:");
+  MaskedTextFieldSpinner prioritySpinner = new MaskedTextFieldSpinner("Current Priority:");
 
-    public MaskedTextFieldSpinnerView() {
-        FlexLayout self = getBoundComponent();
-        self.setDirection(FlexDirection.COLUMN)
-                .setJustifyContent(FlexJustifyContent.START)
-                .setAlignment(FlexAlignment.START)
-                .setSpacing("var(--dwc-space-m)")
-                .setMargin("var(--dwc-space-m)");
+  public MaskedTextFieldSpinnerView() {
+    FlexLayout self = getBoundComponent();
+    self.setDirection(FlexDirection.COLUMN)
+        .setJustifyContent(FlexJustifyContent.START)
+        .setAlignment(FlexAlignment.START)
+        .setSpacing("var(--dwc-space-m)")
+        .setMargin("var(--dwc-space-m)");
 
-                prioritySpinner.setPattern("[A-Za-z+]{3,10}");
-                prioritySpinner.setTooltipText("Priority:");
-                prioritySpinner.setOptions(List.of("Low", "Normal", "High", "Critical"));
+    prioritySpinner.setTooltipText("Priority:");
+    prioritySpinner.setOptions(List.of("Low", "Normal", "High", "Critical"));
 
-                prioritySpinner.setValue("Normal");
-            
-        self.add(prioritySpinner);
-        
-    }
+    prioritySpinner.setValue("Normal");
+
+    self.add(prioritySpinner);
+  }
 }
