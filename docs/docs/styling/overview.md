@@ -16,14 +16,22 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
+webforJ ships with a comprehensive design system named **DWC**. It’s more than just a theme, it’s a structured, extensible system that governs the visual language of your app. DWC is built to help developers and designers create consistent, brand-aligned interfaces quickly and confidently.
 
-webforJ includes a flexible and evolving default theme called **DWC**, designed to make it easy to customize the look and feel of any app or component to match your visual style and brand identity. The UI is built with CSS and comes with pre-baked styles that are straightforward to adjust and keep a consistent and professional appearance across your projects.
+At its core, DWC provides a set of carefully designed CSS variables (design tokens) that cover key visual elements like colors, typography, borders, and spacing. These tokens serve as the foundational building blocks for all component styles and allow global customization with minimal effort.
 
-The DWC theme defines a set of CSS variables - also known as design tokens. These variables cover key visual aspects like colors, typography, borders, and spacing, and serve as the foundational building blocks for all component styles. By modifying these variables, you can adapt the entire UI to your specific design needs with minimal effort.
+To support more advanced styling, webforJ leverages CSS Shadow Parts, allowing component internals to be selectively styled without breaking encapsulation. This gives teams fine-grained control over how components appear, even across larger applications.
 
-To give developers even more control, webforJ leverages CSS Shadow Parts. These allow elements inside a component’s shadow DOM to be selectively exposed and styled from the outside, enabling deeper customization without breaking encapsulation.
+DWC also includes a customizable color palette and defaults to a clean, light visual theme, but every aspect can be adapted to your brand or product style.
 
-DWC also provides a customizable color palette to help align your app's look with your brand or preferred color scheme. While the default appearance uses a light background, every part of the theme can be customized.
+## Figma Design Kit
+
+The [DWC Figma library](https://www.figma.com/community/file/1144573845612007198/dwc-design-kit) is the official design resource for creating modern, enterprise-grade web applications. It includes a comprehensive set of components, typography styles, and color tokens that align with the DWC design system. With this library, designers and developers can build visually consistent, user-friendly interfaces that balance functionality with a refined user experience.
+
+<img src="/img/dwc.png" alt="Figma Design Kit" style={{borderRadius: '8px', border: '1px solid var(--dwc-color-default)'}} />
+
+>  
+<!-- > ![Figma Design Kit Screenshot](./path-to-your-screenshot.png) -->
 
 ## Topics
 
