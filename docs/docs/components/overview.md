@@ -190,8 +190,12 @@ This category includes components that facilitate user interactions and visually
     <p>A clickable component that triggers an action or event when pressed.</p>
   </GalleryCard>
 
-  <GalleryCard header="Toast" href="#" image="/img/components/Toast.png"  effect="slideUp">
+  <GalleryCard header="Toast" href="toast" image="/img/components/Toast.png"  effect="slideUp">
     <p>A lightweight, non-blocking notification component that briefly displays a message to the user before automatically disappearing.</p>
+  </GalleryCard>
+
+  <GalleryCard header="Alert" href="alert" image="/img/components/Alert.png">
+    <p>A component that displays important messages or warnings in a noticeable format to capture user attention.</p>
   </GalleryCard>
   
   <GalleryCard header="Navigator" href="navigator" image="/img/components/Navigator.png">
