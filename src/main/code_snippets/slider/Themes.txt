@@ -1,6 +1,0 @@
-Slider sl1 = new Slider().setTheme(Slider.Theme.DEFAULT);
-Slider sl2 = new Slider().setTheme(Slider.Theme.DANGER);
-Slider sl3 = new Slider().setTheme(Slider.Theme.GRAY);
-Slider sl4 = new Slider().setTheme(Slider.Theme.INFO);
-Slider sl5 = new Slider().setTheme(Slider.Theme.SUCCESS);
-Slider sl6 = new Slider().setTheme(Slider.Theme.WARNING);

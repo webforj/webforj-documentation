@@ -1,2 +1,0 @@
-CheckBox indeterminate = new CheckBox();
-indeterminate.setIndeterminate(true);
