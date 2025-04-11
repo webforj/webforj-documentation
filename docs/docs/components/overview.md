@@ -193,6 +193,10 @@ This category includes components that facilitate user interactions and visually
   <GalleryCard header="Toast" href="#" image="/img/components/Toast.png"  effect="slideUp">
     <p>A lightweight, non-blocking notification component that briefly displays a message to the user before automatically disappearing.</p>
   </GalleryCard>
+
+  <GalleryCard header="DesktopNotification" href="desktop-notification" image="/img/components/DesktopNotification.png">
+    <p>A component that leverages the browser’s native Notification API to alert users with custom desktop notifications.</p>
+  </GalleryCard>
   
   <GalleryCard header="Navigator" href="navigator" image="/img/components/Navigator.png">
     <p>A customizable pagination component for navigating through data sets, supporting layouts with first, last, next, previous buttons, and quick jump fields.</p>
