@@ -57,7 +57,7 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 
 ## Multiple toolbars
 
-The navbar has no limit to the number of toolbars you can add. A toolbar is only a Div. To add an additional toolbar, simply add a new Div to the existing header div of the AppLayout.
+The navbar has no limit to the number of toolbars you can add. A `Toolbar` is a horizontal container component that holds a set of action buttons, icons, or other controls. To add an additional toolbar, simply use the `addToHeader()` method to add another `Toolbar` component.
 
 The following demo shows how to use two toolbars, The first one houses the drawer's toggle button and the application's title. The second toolbar houses a secondary navigation menu.
 
