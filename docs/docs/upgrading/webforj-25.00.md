@@ -61,7 +61,7 @@ See [Web Storage](../advanced/web-storage.md) for more information.
 
 The `Request` class is now responsible for getting an app's URL, port, host, and protocol. So instead of using `App.getUrl()`, use `App.getCurrent().getUrl()`. The `getCurrent()` method also replaces the `getRequest()` method to get an instance of the `Request` class.
 
-:::note
+:::info
 The `Request` class also has removed methods, jump to [`Request`](#request-changes) to see them.
 :::
 
