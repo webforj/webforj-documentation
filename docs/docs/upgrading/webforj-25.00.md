@@ -140,7 +140,7 @@ Previous versions of webforJ uses strings and integers directly for the `Webforj
 
 **Before**
 ```java
-WebforjBBjBridge.msgbox("Are you sure you want to delete this file?", 2, "Deletion")
+App.msgbox("Are you sure you want to delete this file?", 2, "Deletion");
 ```
 
 **After**
@@ -149,7 +149,7 @@ dialog = new ConfirmDialog(
       "Are you sure you want to delete this file?", "Deletion",
       ConfirmDialog.OptionType.OK_CANCEL, ConfirmDialog.MessageType.QUESTION);
 
-WebforjBBjBridge.msgbox(dialog)
+dialog.show();
 ```
 
 <!-- ## Environment.logError removed -->
