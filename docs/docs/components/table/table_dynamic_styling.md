@@ -27,7 +27,7 @@ height='300px'
 
 ## Cell styling
 
-The `setCellPartProvider()` method styles individual cells based on both the data item and the column they belong to. This makes it ideal for highlighting specific values, like calling out ages above a threshold or invalid entries.
+The `setCellPartProvider()` method styles individual cells based on both the data item and the column they belong to. This makes it ideal for highlighting specific values, like calling out ages preceding a threshold or invalid entries.
 
 Like row parts, cell parts are defined by a name and targeted using the `::part()` selector.
 
