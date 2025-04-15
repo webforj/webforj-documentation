@@ -14,8 +14,8 @@ import java.util.List;
 @Route
 @InlineStyleSheet(/* css */ """
   dwc-table::part(cell-highlight) {
-    background-color: var(--dwc-color-warning);
-    color: var(--dwc-color-on-warning-text);
+    background-color: var(--dwc-color-warning-alt);
+    color: var(--dwc-color-warning-text);
     font-weight: bold;
   }
 """)
@@ -54,29 +54,5 @@ public class TableCellStylingView extends Composite<FlexLayout> {
     });
 
     self.add(table);
-  }
-
-  public static class Person {
-    private final String name;
-    private final int age;
-    private final String city;
-
-    public Person(String name, int age, String city) {
-      this.name = name;
-      this.age = age;
-      this.city = city;
-    }
-
-    public String getName() {
-      return name;
-    }
-
-    public int getAge() {
-      return age;
-    }
-
-    public String getCity() {
-      return city;
-    }
   }
 }

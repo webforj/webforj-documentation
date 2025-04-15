@@ -12,16 +12,12 @@ import java.util.List;
 
 @Route
 @InlineStyleSheet(/* css */ """
-  dwc-table::part(row-even) {
-    background-color: var(--dwc-color-surface-2);
-  }
-
-  dwc-table::part(row-highlight) {
-    background-color: var(--dwc-color-info);
-    color: var(--dwc-color-on-info-text);
-    font-weight: bold;
-  }
-""")
+      dwc-table::part(row-highlight) {
+        background-color: var(--dwc-color-info-alt);
+        color: var(--dwc-color-info-text);
+        font-weight: bold;
+      }
+    """)
 public class TableRowStylingView extends Composite<FlexLayout> {
 
   private final FlexLayout self = getBoundComponent();
@@ -38,8 +34,7 @@ public class TableRowStylingView extends Composite<FlexLayout> {
         new Person("Charlie", 25, "Los Angeles"),
         new Person("David", 40, "San Francisco"),
         new Person("Eve", 30, "Boston"),
-        new Person("Frank", 45, "Miami")
-    );
+        new Person("Frank", 45, "Miami"));
 
     table.addColumn("Name", Person::getName).setSortable(true);
     table.addColumn("Age", Person::getAge).setSortable(true);
@@ -53,36 +48,10 @@ public class TableRowStylingView extends Composite<FlexLayout> {
       if (person.getAge() > 30) {
         parts.add("row-highlight");
       }
-      if (data.indexOf(person) % 2 == 0) {
-        parts.add("row-even");
-      }
+
       return parts;
     });
 
     self.add(table);
   }
-
-  public static class Person {
-    private final String name;
-    private final int age;
-    private final String city;
-
-    public Person(String name, int age, String city) {
-      this.name = name;
-      this.age = age;
-      this.city = city;
-    }
-
-    public String getName() {
-      return name;
-    }
-
-    public int getAge() {
-      return age;
-    }
-
-    public String getCity() {
-      return city;
-    }
-  }
-} 
+}
