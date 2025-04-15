@@ -5,7 +5,7 @@ sidebar_position: 29
 
 <JavadocLink type="desktopnotification" location="com/webforj/component/desktopnotification/DesktopNotification" top='true'/>
 
-The **DesktopNotification** component provides a simple interface for creating, displaying, and managing desktop notifications. With a focus on minimal configuration and built-in event handling, the component can be used when needing to notify users about real-time events (such as new messages, alerts, or system events) while they're browsing your app.
+In webforj 25.00 and higher, The **DesktopNotification** component provides a simple interface for creating, displaying, and managing desktop notifications. With a focus on minimal configuration and built-in event handling, the component can be used when needing to notify users about real-time events (such as new messages, alerts, or system events) while they're browsing your app.
 
 :::warning experimental feature
 The `DesktopNotification` component is still evolving, and its API may experience changes as it matures. To start using this feature, ensure that you include the following dependency in your pom.xml.
