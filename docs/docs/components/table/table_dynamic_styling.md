@@ -4,7 +4,7 @@ title: Dynamic Styling
 slug: styling
 ---
 
-The `Table` component lets you style specific rows or cells using custom part names. You can apply these names based on your app's needs, giving you control over how different parts of your table look.
+in webforJ 25 and higher, it's possible to style individual rows and cells in the Table using custom part names. These names can be assigned dynamically based on your app's logic, giving you fine-grained control over the table’s appearance.
 
 ## Row styling
 
