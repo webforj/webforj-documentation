@@ -2,7 +2,7 @@
 title: Namespaces
 ---
 
-Namespaces in webforJ provide a mechanism for storing and retrieving shared data across different scopes in a web app. They enable seamless inter-component and cross-session data communication without relying on traditional storage techniques like session attributes or static fields. This abstraction allows developers to encapsulate and access state in a controlled, thread-safe manner. Whether you’re building multi-user collaboration tools or simply need consistent global settings, namespaces let you coordinate data safely and efficiently.
+Namespaces in webforJ provide a mechanism for storing and retrieving shared data across different scopes in a web app. They enable inter-component and cross-session data communication without relying on traditional storage techniques like session attributes or static fields. This abstraction allows developers to encapsulate and access state in a controlled, thread-safe manner. Namespaces are ideal for building multi-user collaboration tools or simply maintaining consistent global settings, and let you coordinate data safely and efficiently.
 
 ## What's a namespace?
 
@@ -33,7 +33,7 @@ webforJ offers three types of namespaces:
 When in doubt, use a `PrivateNamespace`. It offers safe, scoped sharing between related sessions without impacting global or server-wide state. This makes it a reliable default for most applications. 
 :::
 
-## Creating and Using a namespace
+## Creating and using a namespace
 
 Namespaces are created by instantiating one of the available types. Each type defines how and where the data is shared. The examples below demonstrate how to create a namespace and interact with its values.
 
