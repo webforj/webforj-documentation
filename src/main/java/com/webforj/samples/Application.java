@@ -31,8 +31,8 @@ public class Application extends App{
         try {
           HttpClient client = HttpClient.newHttpClient();
           HttpRequest request = HttpRequest.newBuilder(currentUri).build();
-          HttpResponse<String> respone = client.send(request, HttpResponse.BodyHandlers.ofString());
-          if (respone.statusCode() != 404)
+          HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+          if (response.statusCode() != 404)
           setTerminateAction(new RedirectAction(currentUrl));
         } catch (InterruptedException e) {
           e.printStackTrace();
