@@ -1,5 +1,12 @@
 package com.webforj.samples;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
 import com.webforj.App;
 import com.webforj.RedirectAction;
 import com.webforj.Request;
@@ -15,9 +22,28 @@ public class Application extends App{
   public void run() throws WebforjException {
   }
 
-  public Application(){
+  @Override
+  protected void onWillTerminate() {
     String currentUrl = Request.getCurrent().getUrl();
-    setTerminateAction(new RedirectAction(currentUrl));
+    if (currentUrl.contains("/webforj/")) {
+      try {
+        URI currentUri = new URI(currentUrl);
+        try {
+          HttpClient client = HttpClient.newHttpClient();
+          HttpRequest request = HttpRequest.newBuilder(currentUri).build();
+          HttpResponse<String> respone = client.send(request, HttpResponse.BodyHandlers.ofString());
+          if (respone.statusCode() != 404)
+          setTerminateAction(new RedirectAction(currentUrl));
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+      } catch (URISyntaxException e) {
+        e.printStackTrace();
+      }
+    }
+
   }
 
 }
