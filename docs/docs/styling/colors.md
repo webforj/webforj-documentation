@@ -90,10 +90,10 @@ These variables make it easier to apply themes across all components without dir
 
 Abstract theme variables are organized into four groups:
 
-1. [Normal](#normal) Used for the default appearance, such as backgrounds and text on inactive components.
-2. [Dark](#darker-variation) Used for active or selected states.
-3. [Light](#lighter-variation) Used for hover and focus states.
-4. [Alt](#alt-variation) Used for secondary highlights, such as keyboard focus or subtle UI accents.
+1. [Normal](#normal-state) Used for the default appearance, such as backgrounds and text on inactive components.
+2. [Dark](#darker-variant) Used for active or selected states.
+3. [Light](#lighter-variant) Used for hover and focus states.
+4. [Alt](#alt-variant) Used for secondary highlights, such as keyboard focus or subtle UI accents.
 
 Each group defines:
 
