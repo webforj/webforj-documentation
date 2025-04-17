@@ -22,7 +22,7 @@ Installation will be broken down into the following steps:
 
 
 :::tip Prerequisites
-Before you begin, make sure you have reviewed the necessary [prerequisites](./prerequisites) for setting up and using webforJ. This ensures you have all the required tools and configurations in place before starting your project.
+Before you begin, make sure you have reviewed the necessary [prerequisites](../../introduction/prerequisites) for setting up and using webforJ. This ensures you have all the required tools and configurations in place before starting your project.
 :::
 
 
