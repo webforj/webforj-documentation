@@ -8,8 +8,6 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import Details from "@theme/Details";
 import CodeBlock from "@theme/CodeBlock";
-import arrowUp from "../../../static/img/expand.png";
-import arrowDown from "../../../static/img/fold.png";
 import test3 from "../../../static/img/window-maximize.png";
 import { useColorMode } from "@docusaurus/theme-common";
 import GLOBALS from "../../../siteConfig";
@@ -114,7 +112,6 @@ window.location.port === "3000";
 
 export default function ComponentDemo({
   path,
-  javaC,
   javaE,
   urls,
   cssURL,
@@ -125,7 +122,6 @@ export default function ComponentDemo({
 }) {
   ComponentDemo.propTypes = {
     path: PropTypes.string.isRequired,
-    javaC: PropTypes.string,
     javaE: PropTypes.string,
     urls: PropTypes.arrayOf(PropTypes.string),
     cssURL: PropTypes.string,
@@ -135,11 +131,9 @@ export default function ComponentDemo({
     tabs: PropTypes.arrayOf(PropTypes.string),
   };
 
-  const [javaCollapse, setJavaCollapse] = useState("");
   const [javaExpand, setJavaExpand] = useState("");
   const [additionalFiles, setAdditionalFiles] = useState({});
   const [cssCode, setCssCode] = useState("");
-  const [collapsed, setCollapsed] = useState(!!(javaC && javaE));
   const [buttonVisible, setButtonVisible] = useState(false);
   const [fileNames, setFileNames] = useState({});
 
@@ -171,13 +165,6 @@ export default function ComponentDemo({
             ...prevFileNames,
             javaFile: fileName,
           }));
-        });
-    }
-    if (javaC) {
-      fetch(javaC)
-        .then((response) => response.text())
-        .then((textString) => {
-          setJavaCollapse(textString);
         });
     }
     if (cssURL) {
@@ -437,9 +424,6 @@ export default function ComponentDemo({
           </summary>
         }
       >
-        {javaC && javaE ? (
-          <CodeToggleButton collapse={collapsed} setCollapse={setCollapsed} />
-        ) : null}
         {cssURL ? (
           <Tabs css={tabStyles}>
             <TabItem
@@ -454,7 +438,7 @@ export default function ComponentDemo({
                 showLineNumbers
                 metastring={javaHighlight}
               >
-                {collapsed ? javaCollapse : javaExpand}
+                {javaExpand}
               </CodeBlock>
             </TabItem>
             {Object.keys(additionalFiles).map((fileName, index) => (
@@ -490,7 +474,7 @@ export default function ComponentDemo({
                 showLineNumbers
                 metastring={javaHighlight}
               >
-                {collapsed ? javaCollapse : javaExpand}
+                {javaExpand}
               </CodeBlock>
             </TabItem>
             {Object.keys(additionalFiles).map((fileName, index) => (

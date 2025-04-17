@@ -1,5 +1,0 @@
-MaskedNumberField nb1 = new MaskedNumberField().setExpanse(MaskedNumberField.Expanse.XSMALL);
-MaskedNumberField nb2 = new MaskedNumberField().setExpanse(MaskedNumberField.Expanse.SMALL);
-MaskedNumberField nb3 = new MaskedNumberField().setExpanse(MaskedNumberField.Expanse.MEDIUM);
-MaskedNumberField nb4 = new MaskedNumberField().setExpanse(MaskedNumberField.Expanse.LARGE);
-MaskedNumberField nb5 = new MaskedNumberField().setExpanse(MaskedNumberField.Expanse.XLARGE);

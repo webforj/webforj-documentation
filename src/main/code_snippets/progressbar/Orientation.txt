@@ -1,1 +1,0 @@
-pb.setAttribute("orientation", "vertical");
