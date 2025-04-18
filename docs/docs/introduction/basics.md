@@ -23,9 +23,24 @@ public class Application extends App {
 - `@AppTitle`: Defines the title displayed on the app's browser tab.
 - `@StyleSheet`: Links an external CSS file, `app.css`, allowing custom styling for the app.
 
-The Application class doesn't contain any additional methods because the configurations are set through annotations, and webforJ handles the app initialization.
+The `Application` class doesn't contain any additional methods because the configurations are set through annotations, and webforJ handles the app initialization.
 
 With `Application.java` set up, the app is now configured with a title and routes pointing to the views package. Next, an overview of the `HomeView` class gives insight into what's displayed when the app is run.
+
+### Discovering an `App`
+
+A single <JavadocLink type="foundation" location="com/webforj/App" code='true'>App</JavadocLink> limit is enforced in webforJ, which shifts all error handling responsibilities to the Java side and gives developers full control over error management.
+
+During the webforJ bootstrap process, all classes that extend <JavadocLink type="foundation" location="com/webforj/App" code='true'>com.webforj.App</JavadocLink> are scanned. If multiple apps are found, the system looks for the <JavadocLink type="foundation" location="com/webforj/annotation/AppEntry" code='true'>com.webforj.annotation.AppEntry</JavadocLink> annotation. If any of the discovered classes are annotated with <JavadocLink type="foundation" location="com/webforj/annotation/AppEntry" code='true' >@AppEntry</JavadocLink>, the first one encountered is considered the entry point.
+
+- If a class is annotated with `@AppEntry`, that class is selected as the entry point.
+- If multiple classes are annotated with `@AppEntry`, an exception is thrown, listing all the discovered classes.
+- If no class is annotated and only one subclass of `App` is found, that class is selected as the entry point.
+- If no class is annotated and multiple subclasses of `App` are found, an exception is thrown, detailing each subclass.
+
+:::tip Error Handling
+For more information on how errors are handled in webforJ, see [this article](../advanced/error-handling).
+:::
 
 ## Main view class: `HomeView.java`
 
