@@ -31,7 +31,9 @@ The `ListBox` component is a user interface element designed to display a scroll
 
 ## Selection Options
 
-By default, the list box is configured to allow selection of a single item at a time. However, this can be easily configured with a built-in method which allows users to select multiple items ***using the `Shift` key*** for contiguous entry selection and ***`Control` (Windows) or `Command` (Mac) key*** for separate, multiple item selection. Use the <JavadocLink type="foundation" location="com/webforj/component/list/ListBox" code='true' suffix='#setSelectionMode(org.dwcj.component.list.MultipleSelectableList.SelectionMode)'>setSelectionMode()</JavadocLink> function to change this property. True will enable multiple selection, false disables it. 
+By default, the list box is configured to allow selection of a single item at a time. However, the `ListBox` implements the <JavadocLink type="foundation" location="com/webforj/component/list/MultipleSelectableList" code='true'>MultipleSelectableList</JavadocLink> interface, which can be configured with a built-in method which allows users to select multiple items ***using the `Shift` key*** for contiguous entry selection and ***`Control` (Windows) or `Command` (Mac) key*** for separate, multiple item selection. 
+
+Use the <JavadocLink type="foundation" location="com/webforj/component/list/ListBox" code='true' suffix='#setSelectionMode(org.dwcj.component.list.MultipleSelectableList.SelectionMode)'>setSelectionMode()</JavadocLink> function to change this property. This method accepts either `SelectionMode.SINGLE` or `SelectionMode.MULTIPLE`.
 
 :::info Touch device behavior
 On touch devices, when multiple selection is enabled, users can select multiple items without holding the shift key.
