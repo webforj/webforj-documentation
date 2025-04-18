@@ -155,12 +155,27 @@ All list components in webforJ also implement the <JavadocLink type="foundation"
 
 Use the `setExpanse()` method to set the expanse level. Options include:
 
--`Expanse.NONE`
--`Expanse.XSMALL`
--`Expanse.SMALL`
--`Expanse.MEDIUM` (default)
--`Expanse.LARGE`
--`Expanse.XLARGE`
+- `Expanse.NONE`
+- `Expanse.XSMALL`
+- `Expanse.SMALL`
+- `Expanse.MEDIUM` (default)
+- `Expanse.LARGE`
+- `Expanse.XLARGE`
+
+```java
+ListBox<String> listBox = new ListBox<>();
+listBox.setExpanse(Expanse.LARGE);
+```
+
+You can retrieve the current setting using:
+```java
+Expanse current = listBox.getExpanse();
+```
+
+
+:::tip Styling
+To read more about styling component, see [this section](../../styling/overview) for more info.
+:::
 
 ## Topics
 
