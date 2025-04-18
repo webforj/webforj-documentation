@@ -79,6 +79,9 @@ const config = {
     ]
   ],
   themeConfig: {
+    metadata: [
+      {name: 'og:image', content: 'https://docs.webforj.com/img/social-cover.png'}
+    ],
     algolia: {
       appId: '826LUKOV8E',
       apiKey: 'a69d79113b838bfc8490ffb56cef78f2',
