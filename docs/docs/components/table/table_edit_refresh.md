@@ -24,3 +24,7 @@ Once the user modifies the title and clicks the "Save" button, the `TitleEditorC
 The real-time update of data in the repository is achieved through the `commit()` method. This method is employed within the `onSave` event listener, ensuring that changes made through the editing component are reflected in the underlying dataset.
 
 The `commit()` method is called to notify all interested components that the data has been changed. The `Table` catches the `RepositoryCommitEvent`, and updates based on the new data. 
+
+:::tip Updating and creating entries
+Calling the `commit()` method both updates existing entries, and **inserts any new entries that have been created**.
+:::
