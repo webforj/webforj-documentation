@@ -174,7 +174,7 @@ Expanse current = listBox.getExpanse();
 
 
 :::tip Styling
-To read more about styling component, see [this section](../../styling/overview) for more info.
+To read more about styling component, see [this section](../../styling/overview.md) for more info.
 :::
 
 ## Topics
