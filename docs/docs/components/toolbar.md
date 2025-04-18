@@ -105,3 +105,21 @@ To read more about implementing toolbars within an `AppLayout`, go to [Sticky to
   - **Warning**
   - **Gray**
   - **Info**
+
+### Shadow parts
+
+These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
+
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Toolbar} table='parts'/>
+
+### Slots
+
+Listed below are the slots available for utilization within the `Toolbar` component. These slots act as placeholders within the component that control where the children of a customized element should be inserted within the shadow tree.
+
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Toolbar} table='slots'/>
+
+### Reflected attributes
+
+The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
+
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Toolbar} table="reflects"/>
