@@ -79,9 +79,6 @@ const config = {
     ]
   ],
   themeConfig: {
-    metadata: [
-      {name: 'og:image', content: 'https://docs.webforj.com/img/social-cover.png'}
-    ],
     algolia: {
       appId: '826LUKOV8E',
       apiKey: 'a69d79113b838bfc8490ffb56cef78f2',
@@ -94,7 +91,7 @@ const config = {
         'We are excited to announce webforJ version 24.22 is live! Read more about the changes and features <a href=/blog/whats-new-v24.22>here.</a> ',
       isCloseable: true,
     },
-    image: '/img/webforj.svg',
+    image: 'https://docs.webforj.com/img/social-cover.png',
     navbar: {
       style: 'dark',
       logo: {
