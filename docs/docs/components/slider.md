@@ -1,11 +1,10 @@
 ---
 title: Slider
+sidebar_position: 101
 ---
 
 <DocChip chip="shadow" />
-
 <DocChip chip="name" label="dwc-slider" />
-
 <JavadocLink type="foundation" location="com/webforj/component/slider/Slider" top='true'/>
 
 The `Slider` component in webforJ provides an interactive control that allows users to select a value within a specific range by moving a knob. This feature is particularly useful for apps requiring precise or intuitive input, such as selecting volumes, percentages, or other adjustable values.
@@ -30,25 +29,17 @@ The `Slider` value represents the current position of the knob on the slider and
 By default, the `Slider` starts with a value of 50, assuming the default range of 0 to 100.
 :::
 
-### Setting the value
+### Setting and getting the value
 
-You can set the `Slider`'s initial value during initialization using the constructor or update it programmatically using the `setValue()` method:
+You can set the `Slider`'s value during initialization or update it later using the `setValue()` method. To retrieve the current value, use the `getValue()` method.
 
 ```java
 Slider slider = new Slider();  
-slider.setValue(25); // Sets the slider to 25  
-System.out.println("Current Slider Value: " + slider.getValue());
+slider.setValue(25); // Sets the slider to 25
+
+Integer value = slider.getValue();  
+System.out.println("Current Slider Value: " + value);
 ```
-
-### Getting the value
-
-Retrieve the current value of the `Slider` using the `getValue()` method:
-
-```java
-Integer value = slider.getValue();
-System.out.println("The slider is currently at: " + value);
-```
-
 
 ## Minimum and maximum values
 
@@ -107,74 +98,68 @@ Here’s an example of a fully configured `Slider` showing major and minor tick 
 <ComponentDemo 
 path='/webforj/slidertickspacing?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderTickSpacingView.java'  
-height = '300px'
+height = '350px'
 />
 
-## Orientation
+## Orientation and inversion
 
-The `Slider` component supports two orientations: horizontal and vertical. By default, the `Slider` is set to a horizontal orientation, but you can easily configure it to be vertical if needed. This flexibility allows the `Slider `to adapt to various UI designs and app requirements.
+The `Slider` component supports two orientations: horizontal (default) and vertical. You can change the orientation to suit your UI layout and app requirements.
+
+In addition to orientation, the `Slider` can also be inverted. By default:
+
+- A horizontal `Slider` goes from minimum (left) to maximum (right).
+- A vertical `Slider` goes from minimum (bottom) to maximum (top).
+
+When inverted, this direction is reversed. Use the `setInverted(true)` method to enable inversion.
 
 <ComponentDemo 
 path='/webforj/sliderorientation?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderOrientationView.java'
-height = '400px'
-/>
-
-It's also possible to invert a `Slider`. By default, the minimum value of a vertical `Slider` is at the bottom and the maximum value is at the top. For a horizontal slider, the minimum value is to the left and the maximum value is to the right. The orientation reverses for inverted sliders.
-
-<ComponentDemo 
-path='/webforj/sliderinversion?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderInversionView.java'
-height = '150px'
+height = '420px'
 />
 
 ## Labels
 
-webforJ's `Slider` component provides options for adding labels to tick marks, making it easier for users to understand the values represented on the slider. Labels can be customized for specific tick values or toggled on and off based on the app's needs. 
+The `Slider` component supports labels on tick marks to help users interpret the values more easily. You can use default numeric labels or provide custom ones, and you can toggle their visibility as needed.
 
-Here is an example that demonstrates how labels can be applied to different `Slider` configurations. This includes a `Slider` with no ticks, a `Slider` with labels applied to tick values, and a `Slider` with labels applied to non-tick values:
+### Default Labels
 
-<ComponentDemo 
-path='/webforj/sliderticknontick?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderTickNonTickView.java'
-height = '150px'
-/>
-
-### Default labels
-
-By default, the `Slider` can display numeric labels that correspond to the values of major tick marks. These labels are automatically derived from the `setMajorTickSpacing()` configuration. To show the default labels, enable them with the `setLabelsVisible()` method:
-
-
-### Custom labels
-
-You can replace the default labels with custom text using the `setLabels()` method. This is useful for providing more meaningful context for the slider values, such as labeling temperatures or dollar amounts.
+By default, the slider can display numeric labels at major tick marks. These values are determined by the `setMajorTickSpacing()` setting. To enable default labels, use:
 
 ```java
-// Define custom labels
+slider.setLabelsVisible(true);
+```
+
+### Custom Labels
+
+You can replace the default numeric labels with custom text using the `setLabels()` method. This is helpful when you want to display more meaningful values (e.g., temperature, currency, or categories).
+
+```java
 Map<Integer, String> customLabels = Map.of(
     0, "Cold",
-    25, "Cool",
+    30, "Cool",
     50, "Moderate",
-    75, "Warm",
+    80, "Warm",
     100, "Hot"
 );
 
-// Apply custom labels to the slider
-slider.setLabels(customLabels)
+slider.setLabels(customLabels);
+slider.setLabelsVisible(true);
 ```
 
-### Show or hide labels
+### Toggling Label Visibility
 
-Regardless of whether you are using default or custom labels, you can toggle their visibility using the `setLabelsVisible()` method:
+Whether you're using default or custom labels, you can control their visibility with `setLabelsVisible(true)` or hide them with `setLabelsVisible(false)`.
 
-```java
-slider.setLabelsVisible(true); // Show labels
-slider.setLabelsVisible(false); // Hide labels
-```
+<ComponentDemo 
+path='/webforj/sliderlabels?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderLabelsView.java'
+height = '150px'
+/>
 
 ## Tooltips
 
-Tooltips enhance usability by displaying the `Slider`’s value directly above the knob, helping users make more precise adjustments. You can configure the tooltip’s behavior, visibility, and format to suit your needs.
+Tooltips enhance usability by displaying the `Slider`’s value directly above or under the knob, helping users make more precise adjustments. You can configure the tooltip’s behavior, visibility, and format to suit your needs.
 
 To enable tooltips, use the `setTooltipVisible()` method. By default, tooltips are disabled:
 
@@ -187,20 +172,29 @@ Tooltips can also be configured to appear only when the user interacts with the 
 
 Here’s an example of a fully configured `Slider` with tooltips:
 
-<ComponentDemo 
-path='/webforj/slidertemp?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderTempView.java'
-height = '100px'
-/>
 
-By default, tooltips display the `Slider`’s current value. To customize the tooltip text, use the `setTooltipText()` method. This method is ideal for cases where you want the tooltip to display static or descriptive text instead of dynamic values.
+### Tooltip Customization
+
+By default, the `Slider` shows a tooltip with its current value. If you want to customize this text, use the `setTooltipText()` method. This is useful when you want the tooltip to show static or descriptive text instead of the live value.
+
+You can also use a JavaScript expression to format the tooltip dynamically. If your expression includes the `return` keyword, it's used as-is. If not, it's automatically wrapped with `return` and `;` to form a valid function. For example:
 
 ```java
-slider.setTooltipText("Adjust the volume"); // Set a custom static tooltip
-slider.setTooltipVisible(true);
+// Shows value followed by a dollar sign
+slider.setTooltipText("return x + '$'"); 
 ```
 
-## Themes
+Or simply:
+
+```java
+// Interpreted as: return x + ' units';
+slider.setTooltipText("x + ' units'"); 
+```
+
+
+## Styling
+
+### Themes
 
 The `Slider` comes with 6 themes built in for quick styling without the use of CSS. Theming is supported by use of a built-in enum class.
 Shown below are sliders with each of the supported Themes applied:
@@ -208,13 +202,17 @@ Shown below are sliders with each of the supported Themes applied:
 <ComponentDemo 
 path='/webforj/sliderthemes?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderThemesView.java'
-height = '620px'
+height = '460px'
 />
 
-|Slider Themes|
-|-|
-|<ul><li>```Slider.Theme.DEFAULT```</li><li>```Slider.Theme.DANGER```</li><li>```Slider.Theme.GRAY```</li><li>```Slider.Theme.INFO```</li><li>```Slider.Theme.SUCCESS```</li><li>```Slider.Theme.WARNING```</li></ul>|
 
-## Parts and CSS properties
+### Shadow Parts
+These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
 
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Slider} />
+<TableBuilder tag='dwc-slider' table="parts"/>
+
+### Reflected Attributes
+
+  The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
+  
+  <TableBuilder tag='dwc-slider' table="reflects"/>

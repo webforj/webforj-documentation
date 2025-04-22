@@ -1,102 +1,85 @@
 package com.webforj.samples.views.slider;
 
+import java.util.Optional;
+
 import com.webforj.component.Composite;
-import com.webforj.component.button.Button;
-import com.webforj.component.button.ButtonTheme;
-import com.webforj.component.field.TextField;
+import com.webforj.component.field.NumberField;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
-import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.optioninput.RadioButton;
 import com.webforj.component.slider.Slider;
-import com.webforj.component.toast.Toast;
-import com.webforj.component.toast.Toast.Placement;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("Slider Major and Minor Tick Spacing Demo")
 public class SliderTickSpacingView extends Composite<FlexLayout> {
-
+  FlexLayout self = getBoundComponent();
   Slider slider = new Slider(0, 100, 50);
-  TextField majorTickInput = new TextField("Major Tick Spacing");
-  TextField minorTickInput = new TextField("Minor Tick Spacing");
-  Button applyTickSpacingButton = new Button("Apply Tick Spacing").setTheme(ButtonTheme.PRIMARY);
-  Button toggleSnapToTicksButton = new Button("Enable Snap to Ticks").setTheme(ButtonTheme.PRIMARY);
-  Button toggleTicksVisibilityButton = new Button("Hide Ticks").setTheme(ButtonTheme.PRIMARY);
+  NumberField majorTickInput = new NumberField("Major Tick", 20d);
+  NumberField minorTickInput = new NumberField("Minor Tick", 10d);
+  RadioButton snapToTicks = RadioButton.Switch("Snap to Ticks", false);
+  RadioButton showTicks = RadioButton.Switch("Show Ticks", true);
 
-  private boolean isSnapToTicksEnabled = false;
-  private boolean areTicksVisible = true;
+  boolean isSnapToTicksEnabled = false;
+  boolean areTicksVisible = true;
 
   public SliderTickSpacingView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN)
-          .setJustifyContent(FlexJustifyContent.CENTER)
-          .setSpacing("var(--dwc-space-m)")
-          .setMargin("var(--dwc-space-m)")
-          .setAlignment(FlexAlignment.CENTER);
+    self.setDirection(FlexDirection.COLUMN)
+        .setMaxWidth("400px")
+        .setSpacing("var(--dwc-space-m)")
+        .setMargin("var(--dwc-space-m) auto");
 
     slider.setMin(0)
-          .setMax(100)
-          .setValue(0)
-          .setTicksVisible(true)
-          .setMajorTickSpacing(20)
-          .setMinorTickSpacing(10)
-          .setLabelsVisible(true)
-          .setTooltipVisibleOnSlideOnly(true)
-          .setWidth("400px");
+        .setMax(100)
+        .setValue(0)
+        .setFilled(true)
+        .setTicksVisible(true)
+        .setMajorTickSpacing(20)
+        .setMinorTickSpacing(10)
+        .setLabelsVisible(true)
+        .setTooltipVisibleOnSlideOnly(true)
+        .setStyle("padding", "var(--dwc-space-m) 0");
 
-    majorTickInput.setPlaceholder("Enter major tick spacing (e.g., 10)")
-                  .setWidth("300px");
-    minorTickInput.setPlaceholder("Enter minor tick spacing (e.g., 2)")
-                  .setWidth("300px");
+    majorTickInput
+        .setHelperText("Enter major tick spacing (e.g., 10)")
+        .setHorizontalAlignment(NumberField.Alignment.LEFT)
+        .setMin(0d)
+        .onValueChange(ev -> updateTickSpacing());
+    minorTickInput
+        .setHelperText("Enter minor tick spacing (e.g., 2)")
+        .setHorizontalAlignment(NumberField.Alignment.LEFT)
+        .setMin(0d)
+        .onValueChange(ev -> updateTickSpacing());
 
-    applyTickSpacingButton.onClick(event -> applyTickSpacing());
-    toggleSnapToTicksButton.onClick(event -> toggleSnapToTicks());
-    toggleTicksVisibilityButton.onClick(event -> toggleTicksVisibility());
+    snapToTicks.onToggle(ev -> {
+      isSnapToTicksEnabled = ev.isToggled();
+      slider.setSnapToTicks(isSnapToTicksEnabled);
+    });
 
-    FlexLayout buttonLayout = new FlexLayout()
-        .setDirection(FlexDirection.ROW)
-        .setSpacing("var(--dwc-space-s)")
-        .setMargin("var(--dwc-space-s)")
-        .setJustifyContent(FlexJustifyContent.CENTER)
-        .setAlignment(FlexAlignment.CENTER);
+    showTicks.onToggle(ev -> {
+      areTicksVisible = ev.isToggled();
+      slider.setTicksVisible(areTicksVisible);
+    });
 
-    buttonLayout.add(applyTickSpacingButton, toggleSnapToTicksButton, toggleTicksVisibilityButton);
-
-    layout.add(slider, majorTickInput, minorTickInput, buttonLayout);
+    self.add(
+        slider,
+        FlexLayout.create(
+            majorTickInput,
+            minorTickInput,
+            FlexLayout.create(snapToTicks, showTicks).horizontal().build()).vertical().build());
   }
 
-  private void applyTickSpacing() {
-    try {
-      int majorSpacing = Integer.parseInt(majorTickInput.getValue());
-      int minorSpacing = Integer.parseInt(minorTickInput.getValue());
+  private void updateTickSpacing() {
+    int majorSpacing = Optional.ofNullable(majorTickInput.getValue()).map(Double::intValue).orElse(0);
+    int minorSpacing = Optional.ofNullable(minorTickInput.getValue()).map(Double::intValue).orElse(0);
 
-      if (majorSpacing <= 0 || minorSpacing <= 0) {
-        Toast.show("Tick spacing values must be greater than 0.")
-               .setPlacement(Placement.CENTER);
-        return;
-      }
-
-      slider.setMajorTickSpacing(majorSpacing);
-      slider.setMinorTickSpacing(minorSpacing);
-    } catch (NumberFormatException | NullPointerException e) {
-      Toast.show("Invalid input for tick spacing. Please enter valid numbers.")
-           .setPlacement(Placement.CENTER);
+    if (majorSpacing <= 0 || minorSpacing <= 0) {
+      return;
     }
-  }
 
-  private void toggleSnapToTicks() {
-    isSnapToTicksEnabled = !isSnapToTicksEnabled;
-    slider.setSnapToTicks(isSnapToTicksEnabled);
-    toggleSnapToTicksButton.setText(isSnapToTicksEnabled 
-        ? "Disable Snap to Ticks" : "Enable Snap to Ticks");
-  }
-
-  private void toggleTicksVisibility() {
-    areTicksVisible = !areTicksVisible;
-    slider.setTicksVisible(areTicksVisible);
-    toggleTicksVisibilityButton.setText(areTicksVisible 
-        ? "Hide Ticks" : "Show Ticks");
+    slider.setMajorTickSpacing(majorSpacing);
+    slider.setMinorTickSpacing(minorSpacing);
   }
 }
