@@ -172,11 +172,6 @@ You can retrieve the current setting using:
 Expanse current = listBox.getExpanse();
 ```
 
-
-:::tip Styling
-To read more about styling component, see [this section](../../styling/overview.md) for more info.
-:::
-
 ## Topics
 
 <DocCardList className="topics-section" />
