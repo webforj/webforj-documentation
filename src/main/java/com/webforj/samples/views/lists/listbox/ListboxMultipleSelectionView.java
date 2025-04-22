@@ -13,12 +13,16 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Listbox Multiple Selection")
 public class ListboxMultipleSelectionView extends Composite<FlexLayout> {
 
+  FlexLayout self = getBoundComponent();
   ListBox listBox = new ListBox();
   RadioButton selectionModeToggle = RadioButton.Switch("Multiple Selection");
 
   public ListboxMultipleSelectionView() {
-    getBoundComponent().setDirection(FlexDirection.COLUMN).setWidth(200).setMargin("20px 0 0 20px").setSpacing("20px");
-    getBoundComponent().add(listBox, selectionModeToggle);
+    self.setDirection(FlexDirection.COLUMN)
+        .setWidth(200)
+        .setMargin("20px 0 0 20px")
+        .setSpacing("20px");
+    self.add(listBox, selectionModeToggle);
 
     String[] departments = { "Marketing and Sales", "IT Support", "Management and Admin", "Finance and HR" };
     listBox.insert(departments);
