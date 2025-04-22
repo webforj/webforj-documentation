@@ -38,10 +38,10 @@ public class SliderTempView extends Composite<FlexLayout> {
         .setMajorTickSpacing(10)
         .setMinorTickSpacing(5)
         .setLabels(Map.ofEntries(
-            entry(60, "60°F"),
-            entry(70, "70°F"),
-            entry(80, "80°F"),
-            entry(90, "90°F")
+            entry(60, "60&deg;F"),
+            entry(70, "70&deg;F"),
+            entry(80, "80&deg;F"),
+            entry(90, "90&deg;F")
         ))
         .setLabelsVisible(true)
         .setTooltipVisibleOnSlideOnly(true)

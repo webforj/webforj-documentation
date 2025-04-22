@@ -4,6 +4,7 @@ import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
+import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexJustifyContent;
@@ -19,26 +20,27 @@ import static java.util.Map.entry;
 @Route
 @FrameTitle("Donation Slider Demo")
 public class DonationSliderView extends Composite<FlexLayout> {
-
+  FlexLayout self = getBoundComponent();
   Slider donationSlider = new Slider();
   Integer currentDonationValue = 50;
 
   public DonationSliderView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.ROW)
-      .setJustifyContent(FlexJustifyContent.CENTER)
-      .setSpacing("var(--dwc-space-l)")
-      .setMargin("var(--dwc-space-l)")
-      .setAlignment(FlexAlignment.CENTER);
+    self.setDirection(FlexDirection.COLUMN)
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .setSpacing("var(--dwc-space-l)")
+        .setMargin("var(--dwc-space-l)")
+        .setAlignment(FlexAlignment.CENTER);
 
-    donationSlider.setMax(80)
-    .setMin(0)
-    .setTicksVisible(true)
-    .setMajorTickSpacing(10)
-    .setMinorTickSpacing(5)
-    .setLabelsVisible(true)
-    .setSnapToTicks(true)
-    .setWidth("300px");
+    donationSlider
+        .setMax(80)
+        .setMin(0)
+        .setTicksVisible(true)
+        .setMajorTickSpacing(10)
+        .setMinorTickSpacing(5)
+        .setLabelsVisible(true)
+        .setSnapToTicks(true)
+        .setTheme(Theme.GRAY)
+        .setWidth("500px");
 
     Map<Integer, String> labels = Map.ofEntries(
         entry(0, "$0"),
@@ -49,26 +51,26 @@ public class DonationSliderView extends Composite<FlexLayout> {
         entry(50, "$50"),
         entry(60, "$60"),
         entry(70, "$70"),
-        entry(80, "$80")
-    );
+        entry(80, "$80"));
 
     donationSlider.setLabels(labels);
-    donationSlider.addValueChangeListener(event -> {
-      currentDonationValue = event.getValue();
-    });
+    donationSlider.addValueChangeListener(event -> currentDonationValue = event.getValue());
 
-    Button confirmButton = new Button("Confirm Donation").setTheme(ButtonTheme.PRIMARY);
-    confirmButton.onClick(e -> showToastMessage(currentDonationValue));
+    Button confirmButton = new Button(
+        "Confirm Donation",
+        ButtonTheme.GRAY,
+        e -> showToastMessage(currentDonationValue));
+    confirmButton.setPrefixComponent(TablerIcon.create("tip-jar-euro"));
 
-    layout.add(donationSlider, confirmButton);
+    self.add(donationSlider, confirmButton);
   }
 
   private void showToastMessage(Integer value) {
     Toast toast = new Toast();
     toast.setText("Thank you for your generous contribution of $" + value + "!")
-         .setPlacement(Placement.BOTTOM)
-         .setTheme(Theme.SUCCESS)
-         .setDuration(1000);
+        .setPlacement(Placement.BOTTOM)
+        .setTheme(Theme.SUCCESS)
+        .setDuration(1000);
     toast.open();
   }
 }

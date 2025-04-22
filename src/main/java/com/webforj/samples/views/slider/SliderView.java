@@ -4,7 +4,7 @@ import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.icons.IconButton;
 import com.webforj.component.icons.TablerIcon;
-import com.webforj.component.layout.flexlayout.FlexContentAlignment;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
@@ -13,6 +13,8 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 import java.util.Map;
+
+import org.checkerframework.checker.units.qual.t;
 
 import static java.util.Map.entry;
 
@@ -27,9 +29,9 @@ public class SliderView extends Composite<FlexLayout> {
   public SliderView() {
     layout.setDirection(FlexDirection.COLUMN)
         .setJustifyContent(FlexJustifyContent.CENTER)
+        .setAlignment(FlexAlignment.CENTER)
         .setSpacing("var(--dwc-space-l)")
-        .setMargin("var(--dwc-space-l)")
-        .setAlignContent(FlexContentAlignment.CENTER);
+        .setMargin("var(--dwc-space-l)");
 
     volumeSlider.setMin(0)
         .setMax(100)
@@ -43,10 +45,10 @@ public class SliderView extends Composite<FlexLayout> {
             entry(40, "40%"),
             entry(60, "60%"),
             entry(80, "80%"),
-            entry(100, "Max")
-        ))
+            entry(100, "Max")))
         .setLabelsVisible(true)
         .setTooltipVisible(true)
+        .setTooltipVisibleOnSlideOnly(true)
         .setWidth("300px");
 
     IconButton muteButton = new IconButton(TablerIcon.create("volume-off"));
@@ -65,7 +67,7 @@ public class SliderView extends Composite<FlexLayout> {
     FlexLayout sliderContainer = new FlexLayout();
     sliderContainer.setDirection(FlexDirection.ROW)
         .setJustifyContent(FlexJustifyContent.CENTER)
-        .setAlignContent(FlexContentAlignment.CENTER)
+        .setAlignment(FlexAlignment.CENTER)
         .setSpacing("var(--dwc-space-m)");
     sliderContainer.add(muteButton, volumeSlider, maxVolumeButton);
 
