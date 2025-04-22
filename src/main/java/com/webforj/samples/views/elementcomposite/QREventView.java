@@ -38,7 +38,7 @@ public class QREventView extends Composite<FlexLayout> {
     qrCode.setColor("#000");
 
     /* Adding an onClick event */
-    qrCode.onClick(e -> showMessageDialog("Client X:" + e.getClientX()));
+    qrCode.onClick(e -> showMessageDialog("Client X:" + e.getClientX(), "You clicked the QR code"));
   }
 
   /**

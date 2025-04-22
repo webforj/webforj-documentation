@@ -71,9 +71,9 @@ String result = OptionDialog.showInputDialog(
     "Please enter your age:", "Age Input", "", InputDialog.InputType.NUMBER);
 
 if (result != null) {
-    OptionDialog.showMessageDialog("You entered: " + result, "Input Received", "OK");
+    OptionDialog.showMessageDialog("You entered: " + result, "Input Received");
 } else {
-    OptionDialog.showMessageDialog("No input received", "Input Canceled", "OK");
+    OptionDialog.showMessageDialog("No input received", "Input Canceled");
 }
 ```
 
@@ -100,7 +100,7 @@ dialog.setTimeout(5);
 String result = dialog.show();
 
 OptionDialog.showMessageDialog(
-        "You entered: " + result, "Input Received", "OK", MessageDialog.MessageType.INFO);
+    "You entered: " + result, "Input Received", "OK", MessageDialog.MessageType.INFO);
 ```
 
 ## Best practices
