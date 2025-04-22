@@ -3,9 +3,6 @@ sidebar_position: 20
 title: Lists
 ---
 
-import componentData from '@site/static/field_data.js'
-import ComponentViewer from '@site/src/components/PageTools/ComponentViewer'
-
 <JavadocLink type="foundation" location="com/webforj/component/list/DwcList"/>
 
 :::info
