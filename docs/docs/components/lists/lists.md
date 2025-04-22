@@ -12,7 +12,7 @@ import ComponentViewer from '@site/src/components/PageTools/ComponentViewer'
 This section describes common features of all list components, and isn't a class that can be instantiated or used directly.
 :::
 
-There are three types of lists available for use within your applications: [`ListBox`](./lists/listbox), [`ChoiceBox`](./lists/choicebox), and [`ComboBox`](./lists/combobox). These components all display a list of key-value items, and provide methods to add, remove, select, and manage the items within the list.
+There are three types of lists available for use within your apps: [`ListBox`](./lists/listbox), [`ChoiceBox`](./lists/choicebox), and [`ComboBox`](./lists/combobox). These components all display a list of key-value items, and provide methods to add, remove, select, and manage the items within the list.
 
 This page outlines the shared features and behavior of all list components, while specific details for each are covered in their respective pages.
 
@@ -128,7 +128,49 @@ All List components can be assigned a label, which is a descriptive text or titl
 ### Helper text
 
 Each List component can display helper text beneath the list using the `setHelperText()` method. This helper text offers additional context or explanations about the available options, ensuring users have the necessary information to make informed selections.
-<!-- ADD DEMO WITH ALL THREE AND A LABEL -->
+
+### Horizontal alignment
+
+All list components implement the <JavadocLink type="foundation" location="com/webforj/concern/HasHorizontalAlignment" code='true'>HasHorizontalAlignment</JavadocLink> interface, giving you control over how text and content are aligned inside the component.
+
+Use the `setHorizontalAlignment()` method to set alignment:
+
+- `HorizontalAlignment.LEFT` (default)
+- `HorizontalAlignment.MIDDLE`
+- `HorizontalAlignment.RIGHT`
+
+```java
+ListBox<String> listBox = new ListBox<>();
+listBox.setHorizontalAlignment(HorizontalAlignment.LEFT);
+```
+
+To get the current alignment:
+```java
+HorizontalAlignment alignment = listBox.getHorizontalAlignment();
+```
+
+### Expanses
+
+All list components in webforJ also implement the <JavadocLink type="foundation" location="com/webforj/concern/HasExpanse" code='true'>HasExpanse</JavadocLink> interface, allowing you to adjust the overall sizing and visual weight of the component. This is useful for adapting the component to various UI contexts, such as forms, dialogs, sidebars, etc.
+
+Use the `setExpanse()` method to set the expanse level. Options include:
+
+- `Expanse.NONE`
+- `Expanse.XSMALL`
+- `Expanse.SMALL`
+- `Expanse.MEDIUM` (default)
+- `Expanse.LARGE`
+- `Expanse.XLARGE`
+
+```java
+ListBox<String> listBox = new ListBox<>();
+listBox.setExpanse(Expanse.LARGE);
+```
+
+You can retrieve the current setting using:
+```java
+Expanse current = listBox.getExpanse();
+```
 
 ## Topics
 
