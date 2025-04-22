@@ -43,8 +43,8 @@ body:
         - label: Update or reorganize existing content
         - label: Structural or navigation improvement
         - label: Other
-      validations:
-        required: true
+    validations:
+      required: true
 
   - type: textarea
     id: notes
