@@ -91,7 +91,7 @@ const config = {
         'We are excited to announce webforJ version 25.00 is live! Read more about the changes and features <a href=/blog/whats-new-v25.00>here.</a> ',
       isCloseable: true,
     },
-    image: '/img/webforj.svg',
+    image: 'https://docs.webforj.com/img/social-cover.png',
     navbar: {
       style: 'dark',
       logo: {
