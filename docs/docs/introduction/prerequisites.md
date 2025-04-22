@@ -6,12 +6,12 @@ sidebar_position: 1
 Getting started with webforJ is simple, because there are only a couple of prerequisites. Use this guide to set up your development environment with the essential tools you will need to get up and running with webforJ. 
 
 <!-- vale off -->
-## Java Development Kit (JDK) 17.0.3 or **21**
+## Java Development Kit (JDK) 21
 
 <!-- vale on -->
 
 A Java Development Kit (JDK) is the most important requirement for developing with webforJ, providing the necessary tools to compile, run, and manage Java apps.
-Java **17.0.3** or **21** is required to ensure compatibility with webforJ and access to the latest features and security updates of the Java ecosystem. The webforJ framework is compatible with official Oracle JDKs and the open source Eclipse Temurin JDKs.
+Java **21** is required to ensure compatibility with webforJ and access to the latest features and security updates of the Java ecosystem. The webforJ framework is compatible with official Oracle JDKs and the open source Eclipse Temurin JDKs.
 <!-- vale off -->
 ### JDK installation links:
 <!-- vale on -->
@@ -22,12 +22,12 @@ Alternatively, you can use [Jabba](https://github.com/shyiko/jabba), which works
 :::
 
 - Official Oracle JDKs can be found on Oracle's [Java Downloads](https://www.oracle.com/java/technologies/downloads/) page. 
-  - Select Java version **17.0.3** or **21**.
+  - Select Java version **21**.
   - Click the tab for Linux, macOS, or Windows.
   - Click the link that corresponds to your computer's architecture. 
   - See Oracle's [JDK Installation Guide](https://docs.oracle.com/en/java/javase/23/install/overview-jdk-installation.html) for complete information on installing an Oracle JDK.
 - Open source JDKs can be found on Adoptium's [Eclipse Temurin™ Latest Releases](https://adoptium.net/temurin/releases/) page. 
-  - Use the dropdown menus to select the operating system, architecture, package type, and JDK version **17.0.3** or **21**. 
+  - Use the dropdown menus to select the operating system, architecture, package type, and JDK version **21**. 
   - Click the link in the table for the archive type you wish to download.
   - See Adoptium's [Installation Guide](https://adoptium.net/installation/) for complete information on installing an Eclipse Temurin JDK.
 
@@ -40,7 +40,7 @@ After installing the JDK, verify the installation by running the following comma
 java -version
 ```
 
-If your JDK is installed correctly, you will see output with your JDK version details, indicating version **17.0.3** or **21**.
+If your JDK is installed correctly, you will see output with your JDK version details, indicating version **21**.
 <!-- vale off -->
 ## Apache Maven
 <!-- vale on -->

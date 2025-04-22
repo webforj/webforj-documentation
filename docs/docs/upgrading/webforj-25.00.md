@@ -140,16 +140,22 @@ Previous versions of webforJ uses strings and integers directly for the `Webforj
 
 **Before**
 ```java
-App.msgbox("Are you sure you want to delete this file?", 2, "Deletion");
+Environment environment = Environment.getCurrent();
+WebforjBBjBridge bridge = environment.getWebforjHelper();
+
+int msgboxResult = bridge.msgbox("Are you sure you want to delete this file?", 1, "Deletion");
 ```
 
 **After**
 ```java
-dialog = new ConfirmDialog(
+Environment environment = Environment.getCurrent();
+WebforjBBjBridge bridge = environment.getBridge();
+
+ConfirmDialog dialog = new ConfirmDialog(
       "Are you sure you want to delete this file?", "Deletion",
       ConfirmDialog.OptionType.OK_CANCEL, ConfirmDialog.MessageType.QUESTION);
 
-dialog.show();
+int msgboxResult = bridge.msgbox(dialog);
 ```
 
 <!-- ## Environment.logError removed -->

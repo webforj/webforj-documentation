@@ -16,33 +16,17 @@ steps may vary for Mac/Linux OS devices.
 Installation will be broken down into the following steps:
 
 
-1. Java and Maven download and configuration
-2. BBj download and installation
-3. Using the BBj Plugin Manager to create your app
-4. Launching your app
+1. BBj download and installation
+2. Using the BBj Plugin Manager to create your app
+3. Launching your app
 
 
-## 1. Java and Maven download and configuration
-
-In order to use webforJ, you must first have Java and Maven installed and properly configured. If you already
-have Java and Maven downloaded, please skip to [**Step 2**](#2-bbj-download-and-installation). If you also have 
-BBj installed on your system, please skip to [**Step 3**](#3-install-and-configure-the-webforj-plugin).
-
-### Java
-
-Java **OpenJDK17** can be found [by following this link](https://adoptium.net/temurin/releases/). It is recommended 
-to allow the installation to handle setting the JAVA_HOME variable during installation, where applicable.
-
-### Maven
-
-Maven should also be downloaded, and can be found [at this link](https://maven.apache.org/download.cgi). It is 
-recommended to configure your system environment variables with Maven - a guide for installation and configuration 
-for Windows users can be found [here](https://phoenixnap.com/kb/install-maven-windows).
+:::tip Prerequisites
+Before you begin, make sure you have reviewed the necessary [prerequisites](../../introduction/prerequisites) for setting up and using webforJ. This ensures you have all the required tools and configurations in place before starting your project.
+:::
 
 
-<a name='section2'></a>
-
-## 2. BBj download and installation
+## 1. BBj download and installation
 
 <b>While following this step, be sure that you install the BBj version that corresponds to the same webforJ version. </b><br/><br/>
 
@@ -63,7 +47,7 @@ mvn install:install-file -Dfile=BBjUtil.jar -DgroupId=com.basis.lib -DartifactId
 
 <a name='section3'></a>
 
-## 3. Install and configure the webforJ plugin
+## 2. Install and configure the webforJ plugin
 
 Once BBj has been installed, the Plugin Manager can be accessed to install tools needed to configure webforJ. To start, type "Plugin Manager" into the start menu or Finder. 
 
@@ -131,14 +115,14 @@ Finally, click on the "Configure" button, which will open a new window. In this 
 ![Enabling Remote Installation](./_images/users/local/i6.png#rounded-border) -->
 
 
-## 4. Using the starter project
+## 3. Using the starter project
 Once BBj and the required webforJ plugin are installed and configured, you can create a new, scaffolded project from the command line. This project comes with the necessary tools to run your first webforJ program.
 
 <ComponentArchetype
 project="bbj-hello-world"
 />
 
-## 5. Launching the app
+## 4. Launching the app
 
 Once this has been done, run a `mvn install` in your project directory. This will run the webforJ install plugin, and allow
 you to access your app. To see the app, you'll want to go to the following URL:
