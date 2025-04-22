@@ -58,13 +58,17 @@ It's possible to interact with the `TextField` class to retrieve a user's select
 TextField textField = new TextField("Enter something...");
 Button getSelectionBtn = new Button("Get Selected Text");
 
-getSelectionBtn.addClickListener(e -> {
+getSelectionBtn.onClick(e -> {
   String selected = textField.getSelectedText();
   System.out.println("Selected text: " + selected);
 });
 ```
 
 Similarly, it's possible to retrieve the current selection range of the `TextField` using the `getSelectionRange()` method. This returns a `SelectionRange` object representing the start and end indices of the selected text.
+
+:::tip Using `getSelectedText()` vs event payload
+While you can call `getSelectedText()` manually inside an event handler, it’s more efficient to use the selection data provided in the event’s payload—such as in a `SelectionChangeEvent`—to avoid additional lookups.
+:::
 
 
 ## Best practices
