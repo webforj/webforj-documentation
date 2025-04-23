@@ -7,7 +7,6 @@ import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.field.MaskedDateField;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
-import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.Route;
 
@@ -18,9 +17,7 @@ public class MaskedDateFieldRestoreView extends Composite<FlexLayout> {
   public MaskedDateFieldRestoreView() {
     FlexLayout self = getBoundComponent();
     eventField.setRestoreValue(LocalDate.now());
-    self.setDirection(FlexDirection.COLUMN)
-        .setAlignment(FlexAlignment.CENTER)
-        .setSpacing("var(--dwc-space-m)")
+    self.setAlignment(FlexAlignment.CENTER)
         .setMargin("var(--dwc-space-m)");
 
     eventField
@@ -33,10 +30,10 @@ public class MaskedDateFieldRestoreView extends Composite<FlexLayout> {
         .setIconVisible(false);
 
     Button restoreButton = new Button(
-      "Reset value",
-      ButtonTheme.PRIMARY,
-      event -> eventField.restoreValue()
-    );
+        "Reset value",
+        ButtonTheme.PRIMARY,
+        event -> eventField.restoreValue());
+
     self.add(eventField, restoreButton);
   }
 }

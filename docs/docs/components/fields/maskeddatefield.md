@@ -128,7 +128,10 @@ dateField.setPattern("^\\d{2}/\\d{2}/\\d{4}$");
 ```
 
 This pattern ensures that only values matching the `MM/DD/YYYY` format (two digits, slash, two digits, slash, four digits) are considered valid.
+
+:::tip Regular Expression Format
 The pattern must follow JavaScript RegExp syntax as documented [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions).
+:::
 
 :::warning Notes on Input Handling
 The field attempts to parse and format numeric date inputs based on the current mask. However, users can still manually enter values that don't match the expected format. If the input is syntactically valid but semantically incorrect or unparseable (e.g. `99/99/9999`), it may pass pattern checks but fail logical validation.

@@ -17,15 +17,21 @@ public class MaskedTextFieldView extends Composite<FlexLayout> {
   public MaskedTextFieldView() {
     FlexLayout self = getBoundComponent();
 
-    recordCode.setMask("AA-00-0000");
-    recordCode.setHelperText("Mask: AA-00-0000 - for example: NE-24-0934");
+    recordCode
+        .setMask("AA-00-0000")
+        .setValue("NE240934")
+        .setHelperText("Mask: AA-00-0000 - for example: NE-24-0934")
+        .setWidth(300);
 
-    couponCode.setMask("ZZZZ-0000");
-    couponCode.setHelperText("Mask: ZZZZ-0000 - for example: SAVE-2025");
+    couponCode
+        .setMask("ZZZZ-0000")
+        .setValue("SAVE2025")
+        .setHelperText("Mask: ZZZZ-0000 - for example: SAVE-2025")
+        .setWidth(300);
 
     self.setDirection(FlexDirection.COLUMN)
         .setJustifyContent(FlexJustifyContent.START)
-        .setAlignment(FlexAlignment.START)
+        .setAlignment(FlexAlignment.CENTER)
         .setSpacing("var(--dwc-space-m)")
         .setMargin("var(--dwc-space-m)");
 

@@ -16,31 +16,46 @@ The `MaskedTextField` component aims to deliver a configurable and easily valida
 
 The `MaskedTextField` can be instantiated with or without parameters. You can define an initial value, label, a placeholder text, and a listener in case the value changes.
 
-## Mask rules
-
-The `MaskedTextField` supports various mask patterns to format text input in a structured way. Masking allows for very specific sets of rules to be applied to input. Key supported mask characters include:
-
-| Character  | Description                                                                                  |
-|------------|----------------------------------------------------------------------------------------------|
-| `X`        | Any printable character.                                                                     |
-| `a`        | Any alphabetic character.                                                                    |
-| `A`        | Any alphabetic character. Converts lower-case alphabetic characters to upper case.           |
-| `o`        | Any digit.                                                                                   |
-| `z`        | Any digit or alphabetic character.                                                           |
-| `Z`        | Any digit or alphabetic character. Converts lower-case alphabetic characters to upper case.  |
-
-Any characters other than these, when used in a mask, represent themselves. For example, setting the mask to `XX@XX` would expect an `@` in the middle. Input mismatches, for example entering a letter in a digit-only position, are ignored. Input longer than the mask is truncated, and shorter input is padded with spaces.
-
 ```java
-MaskedTextField field = new MaskedTextField();
-field.setMask("(ooo) ooo-oooo"); // Example: (123) 456-7890
-field.setMask("Aoo ooo"); // Example: A1B 2C3 (Canadian postal code format)
-field.setMask("ZZZZ-oooo"); // Example: ABCD-1234
-field.setMask("oooo-oooo-oooo-oooo"); // Example: 1234-5678-9012-3456
+MaskedTextField field = new MaskedTextField("Account ID");
+field.setMask("ZZZZ-0000")
+  .setHelperText("Mask: ZZZZ-0000 - for example: SAVE-2025")
 ```
 
-:::info Unrestricted Input
-If a mask consists of only `X` it behaves like a standard [Textfield](./text-field.md).
+## Mask Rules
+
+The `MaskedTextField` formats text input using a mask — a string that defines what characters are allowed at each position. This ensures consistent, structured input for things like phone numbers, postal codes, and ID formats.
+
+### Supported mask characters
+
+| Character | Description                                                                                 |
+|-----------|---------------------------------------------------------------------------------------------|
+| `X`       | Any printable character                                                                     |
+| `a`       | Any alphabetic character (uppercase or lowercase)                                           |
+| `A`       | Any alphabetic character; lowercase letters are converted to uppercase                      |
+| `0`       | Any digit (0–9)                                                                             |
+| `z`       | Any digit or letter (uppercase or lowercase)                                                |
+| `Z`       | Any digit or letter; lowercase letters are converted to uppercase                           |
+
+All other characters in the mask are treated as literals and must be typed exactly. 
+For example, a mask like `XX@XX` requires the user to enter an `@` in the middle.
+
+- **Invalid characters** are silently ignored.
+- **Short input** is padded with spaces.
+- **Long input** is truncated to fit the mask.
+
+### Examples
+
+```java
+field.setMask("(000) 000-0000");     // Example: (123) 456-7890
+field.setMask("A00 000");            // Example: A1B 2C3 (Canadian postal code)
+field.setMask("ZZZZ-0000");          // Example: ABCD-1234
+field.setMask("0000-0000-0000-0000");// Example: 1234-5678-9012-3456
+```
+
+:::tip Full Input Allowed
+If the mask only contains `X`, the field behaves like a regular [`TextField`](./text-field.md), allowing any printable input.
+This is useful when you want to reserve the ability to format without applying strict character rules.
 :::
 
 <ComponentDemo 
@@ -49,34 +64,45 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='250px'
 />
 
-## Combining masks with patterns
+## Validation patterns
 
-In addition to the above rules for masking you can combine them with patterns to utilize regular expressions instead of just masks.
-Regular expressions allow you to create custom patterns for advanced input validation. You can define a custom pattern using the `setPattern()` method. For example:
+While masks define the structure of the input, you can combine them with validation patterns to enforce more specific input rules. This adds an extra layer of client-side validation using regular expressions.
+
+Use the `setPattern()` method to apply a custom regex:
 
 ```java
 field.setPattern("[A-Za-z0-9]{10}"); // Enforces a 10-character alphanumeric code
 ```
-This ensures additional flexibility for scenarios requiring complex formatting and validation.
 
-:::info Regular expression conventions
-The pattern must be a valid JavaScript regular expression, as used by the RegExp type and as documented in the [regular expressions guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions). For more information about patterns see [this guide](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern#overview).
+This ensures that input not only matches the mask but also conforms to a defined structure, such as length or allowed characters.
+
+This is especially useful when:
+
+- The mask allows too much flexibility
+- You want to enforce exact length or a specific format (e.g. hex, Base64, UUID)
+
+:::tip Regular Expression Format
+The pattern must be a valid [JavaScript regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions), as used by the `RegExp` type. You can find more details in the [HTML pattern attribute documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern#overview).
 :::
 
-## Restore method
+Got it — here’s the rewritten **Restore Method** section for `MaskedTextField`, fully aligned with the structure and flow used in the `MaskedDateField` docs:
 
-The `MaskedTextField` provides a restore feature, allowing users to reset the field’s value to its original state.
+## Restoring the Value
 
-It's possible to utilize `setRestoreValue()` to programmatically set what value should be restored instead of the default behaviour using the start value of the field before editing. This feature is particularly useful for scenarios where users may want to undo changes or return to the default input state.
+The `MaskedTextField` includes a restore feature that resets the field’s value to a predefined or original state. 
+This can be useful for undoing user changes or reverting to a default input.
 
-There are two ways to trigger the restore:
+```java
+field.setRestoreValue("ABC123");
+field.restoreValue();
+```
 
-- **Programmatically**: Call the `restoreValue()` method to reset the field.
-- **Keyboard Interaction**: Press the restore key to revert the value.
+### Ways to Restore the Value
 
-:::info Default restore key
-The restore key is <kbd>ESC</kbd> by default, unless overwritten specifically with event listeners reacting to keystrokes. 
-:::
+- **Programmatically**, by calling `restoreValue()`
+- **Via keyboard**, by pressing <kbd>ESC</kbd> (this is the default restore key unless overridden by an event listener)
+
+You can set the value to restore with `setRestoreValue()`. If no restore value is set, the field will revert to the initial value at the time it was rendered.
 
 <ComponentDemo 
 path='/webforj/maskedtextfieldrestore?' 
@@ -86,13 +112,42 @@ height='200px'
 
 ## `MaskedTextFieldSpinner`
 
-The `MaskedTextFieldSpinner` extends the `MaskedTextField` by introducing spinner controls, allowing users to spin through a predefined set of options. It's also possible to spin through these options programmatically using either `spinUp()` or `spinDown()`.
+The `MaskedTextFieldSpinner` extends [`MaskedTextField`](#maskedtextfield) by adding spinner controls that let users cycle through a list of predefined values. 
+This improves the user experience in situations where the input should be constrained to a fixed set of valid options.
 
 <ComponentDemo 
 path='/webforj/maskedtextfieldspinner?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtextfield/MaskedTextFieldSpinnerView.java'
-height='100px'
+height='120px'
 />
+
+### Key Features
+
+- **Option List Support**  
+  Populate the spinner with a list of valid string values using `setOptions()`:
+
+  ```java
+  spinner.setOptions(List.of("Option A", "Option B", "Option C"));
+  ```
+
+- **Programmatic Spinning**  
+  Use `spinUp()` and `spinDown()` to move through options:
+
+  ```java
+  spinner.spinUp();   // Selects the next option
+  spinner.spinDown(); // Selects the previous option
+  ```
+
+- **Index Control**  
+  Set or retrieve the current selection index with:
+
+  ```java
+  spinner.setOptionIndex(1);
+  int current = spinner.getOptionIndex();
+  ```
+
+- **Mask Compatibility**  
+  Fully inherits all formatting, mask rules, and pattern validation from `MaskedTextField`.
 
 ## Styling
 

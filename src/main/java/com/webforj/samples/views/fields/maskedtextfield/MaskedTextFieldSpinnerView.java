@@ -6,28 +6,27 @@ import com.webforj.component.Composite;
 import com.webforj.component.field.MaskedTextFieldSpinner;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
-import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.Route;
 
 @Route
 public class MaskedTextFieldSpinnerView extends Composite<FlexLayout> {
 
-  MaskedTextFieldSpinner prioritySpinner = new MaskedTextFieldSpinner("Current Priority:");
+  private final MaskedTextFieldSpinner field = new MaskedTextFieldSpinner("Project Code:");
 
   public MaskedTextFieldSpinnerView() {
-    FlexLayout self = getBoundComponent();
-    self.setDirection(FlexDirection.COLUMN)
-        .setJustifyContent(FlexJustifyContent.START)
-        .setAlignment(FlexAlignment.START)
-        .setSpacing("var(--dwc-space-m)")
+    FlexLayout layout = getBoundComponent();
+    layout.setDirection(FlexDirection.COLUMN)
+        .setAlignment(FlexAlignment.CENTER)
         .setMargin("var(--dwc-space-m)");
 
-    prioritySpinner.setTooltipText("Priority:");
-    prioritySpinner.setOptions(List.of("Low", "Normal", "High", "Critical"));
+    field.setOptions(List.of(
+        "PRJ001", "PRJ002", "PRJ003", "PRJ004"));
+    field
+        .setMask("AAA-000")
+        .setValue("PRJ-002")
+        .setHelperText("Select or spin through project codes");
 
-    prioritySpinner.setValue("Normal");
-
-    self.add(prioritySpinner);
+    layout.add(field);
   }
 }
