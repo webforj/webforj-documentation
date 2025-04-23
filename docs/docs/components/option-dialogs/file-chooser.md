@@ -38,9 +38,9 @@ String result = OptionDialog.showFileChooserDialog(
     "Select a file", "/home/user", FileChooserDialog.SelectionMode.FILES);
 
 if (result != null) {
-    OptionDialog.showMessageDialog("You selected: " + result, "Selection Made", "OK");
+    OptionDialog.showMessageDialog("You selected: " + result, "Selection Made");
 } else {
-    OptionDialog.showMessageDialog("No selection made", "Selection Canceled", "OK");
+    OptionDialog.showMessageDialog("No selection made", "Selection Canceled");
 }
 ```
 

@@ -1,0 +1,67 @@
+name: "Bug Report or Suggestion"
+description: Report a problem with the documentation or suggest an improvement
+labels: [bug, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping us improve the webforJ documentation!
+        Please complete the fields below to help us understand and address the issue.
+
+  - type: input
+    id: doc-url
+    attributes:
+      label: URL or Location
+      description: The page or section where the issue occurs (paste the full URL or file path)
+      placeholder: https://docs.webforj.com/docs/introduction/tutorial/overview
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: What's wrong or missing?
+      description: Tell us what's incorrect, unclear, or could be improved.
+      placeholder: The heading format is inconsistent with other tutorials...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: What should be updated or changed?
+      description: Describe how you think this should be fixed or improved.
+      placeholder: The title should use sentence case and match the other tutorial titles.
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How significant is this issue?
+      options:
+        - Critical - prevents understanding or using the product
+        - High - major confusion or inconsistency
+        - Medium - minor wording, structure, or formatting
+        - Low - typo, spacing, or cosmetic issue
+
+  - type: checkboxes
+    id: browser
+    attributes:
+      label: Browser
+      description: Which browsers did you observe the issue in? Check all that apply.
+      options:
+        - label: Chrome
+        - label: Firefox
+        - label: Safari
+        - label: Microsoft Edge
+        - label: Brave
+        - label: Opera
+        - label: Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional context
+      description: Anything else we should know? Screenshots or markdown snippets welcome!

@@ -75,7 +75,7 @@ The `MessageDialog` allows you to set a timeout duration after which the dialog 
 You can configure the timeout for the dialog using the `setTimeout(int timeout)` method. The timeout duration is in seconds. If the specified time elapses without any user interaction, the dialog closes automatically.
 
 ```java showLineNumbers
-MessageDialog dialog = new MessageDialog("Hello World", "Title");
+MessageDialog dialog = new MessageDialog("This dialog will timeout soon", "Timeout");
 dialog.setTimeout(2);
 dialog.show();
 ```

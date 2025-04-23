@@ -6,7 +6,6 @@ import com.webforj.component.Theme;
 import com.webforj.component.alert.Alert;
 import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.icons.Icon;
-import com.webforj.component.icons.IconExpanse;
 import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
@@ -25,7 +24,7 @@ public class AlertExpansesView extends Composite<FlexLayout> {
           .setJustifyContent(FlexJustifyContent.CENTER)
           .setAlignment(FlexAlignment.CENTER)
           .setSpacing("var(--dwc-space-m)")
-          .setMargin("var(--dwc-space-xl)")
+          .setMargin("var(--dwc-space-xl) auto")
           .setWidth("100%");
 
     for (int i = Expanse.values().length - 1; i >= 0; i--) {

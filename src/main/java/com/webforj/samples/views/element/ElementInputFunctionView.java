@@ -22,11 +22,15 @@ public class ElementInputFunctionView extends Composite<Div> {
     getBoundComponent().add(input);
 
     input.addClassName("element--input");
-    input.addEventListener("click", e -> showMessageDialog("Input click fired"));
+    input.addEventListener("click", e -> {
+      showMessageDialog("Input click fired", "Event listener");
+    });
     
     /* Clicks the input, and stores the result in a Pending result. This then displays a
     message box when it resolves. */
     PendingResult<Object> result = input.callJsFunctionAsync("click");
-    result.thenAccept( e -> showMessageDialog("Will display after programmatically clicking the input."));
+    result.thenAccept( e -> {
+      showMessageDialog("This message displays after programmatically clicking the input", "Asynchronous JavaScript function");
+    });
   }
 }
