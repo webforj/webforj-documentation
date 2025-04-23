@@ -1,6 +1,6 @@
 ---
 title: MaskedNumberField
-sidebar_position: 17
+sidebar_position: 10
 ---
 
 <DocChip chip='shadow' />

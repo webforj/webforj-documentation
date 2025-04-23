@@ -1,6 +1,6 @@
 ---
 title: MaskedDateField
-sidebar_position: 16
+sidebar_position: 5
 ---
 
 <DocChip chip='shadow' />
@@ -10,6 +10,10 @@ sidebar_position: 16
 The `MaskedDateField` is a text input control designed for structured date entry. It lets users enter dates as **numbers** and automatically formats the input based on a defined mask when the field loses focus. The mask is a string that specifies the expected date format, guiding both input and display.
 
 This component supports flexible parsing, validation, localization, and value restoration. It's especially useful in forms like registrations, bookings, and scheduling, where consistent and region-specific date formats are required.
+
+:::tip Looking for time input?
+The `MaskedDateField` is focused solely on **date** values. If you need a similar component for entering and formatting **time**, check out the [`MaskedTimeField`](./timefield) instead.
+:::
 
 ## Basics
 
