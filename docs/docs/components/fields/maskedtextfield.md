@@ -22,7 +22,7 @@ field.setMask("ZZZZ-0000")
   .setHelperText("Mask: ZZZZ-0000 - for example: SAVE-2025")
 ```
 
-## Mask Rules
+## Mask rules
 
 The `MaskedTextField` formats text input using a mask — a string that defines what characters are allowed at each position. This ensures consistent, structured input for things like phone numbers, postal codes, and ID formats.
 
@@ -87,7 +87,7 @@ The pattern must be a valid [JavaScript regular expression](https://developer.mo
 
 Got it — here’s the rewritten **Restore Method** section for `MaskedTextField`, fully aligned with the structure and flow used in the `MaskedDateField` docs:
 
-## Restoring the Value
+## Restoring the value
 
 The `MaskedTextField` includes a restore feature that resets the field’s value to a predefined or original state. 
 This can be useful for undoing user changes or reverting to a default input.
@@ -97,7 +97,7 @@ field.setRestoreValue("ABC123");
 field.restoreValue();
 ```
 
-### Ways to Restore the Value
+### Ways to restore the value
 
 - **Programmatically**, by calling `restoreValue()`
 - **Via keyboard**, by pressing <kbd>ESC</kbd> (this is the default restore key unless overridden by an event listener)
@@ -121,7 +121,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='120px'
 />
 
-### Key Features
+### Key features
 
 - **Option List Support**  
   Populate the spinner with a list of valid string values using `setOptions()`:

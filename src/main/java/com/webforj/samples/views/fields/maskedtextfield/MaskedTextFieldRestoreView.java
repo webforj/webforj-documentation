@@ -5,6 +5,7 @@ import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.field.MaskedTextField;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
+import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.Route;
 
@@ -14,7 +15,8 @@ public class MaskedTextFieldRestoreView extends Composite<FlexLayout> {
 
   public MaskedTextFieldRestoreView() {
     self.setAlignment(FlexAlignment.CENTER)
-        .setMargin("var(--dwc-space-m)");
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .setMargin("var(--dwc-space-m) auto");
 
     MaskedTextField usernameField = new MaskedTextField(
         "Postal Code", "85001 PHX", "ex: 85001 PHX");

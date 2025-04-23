@@ -4,104 +4,142 @@ sidebar_position: 17
 ---
 
 <DocChip chip='shadow' />
-
 <DocChip chip='name' label="dwc-masked-numberfield" />
-
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedNumberField" top='true'/>
 
-The `MaskedNumberField` component in webforJ provides a user-friendly solution for numeric input, making it ideal for financial applications, data entry forms, and measurement tools. It allows for structured numeric input and can be instantiated with or without parameters, supporting an initial value, label, or placeholder text to guide users.
+The `MaskedNumberField` is a text input designed for structured numeric entry. It ensures numbers are formatted consistently based on a defined mask, making it especially useful for financial forms, pricing fields, or any input where precision and readability matter.
 
-This demo showcases a Tip Calculator that leverages `MaskedNumberField` for intuitive input. One field accepts a formatted bill amount, while the other captures a whole-number tip percentage:
+This component supports number formatting, localization of decimal/grouping characters, and optional value constraints like minimums or maximums.
+
+## Basics
+
+The `MaskedNumberField` can be instantiated with or without parameters. It supports setting an initial value, a label, a placeholder, and an event listener to react to value changes.
+
+This following demo showcases a **Tip Calculator** that uses `MaskedNumberField` for intuitive numeric input. One field is configured to accept a formatted bill amount, while the other captures a whole-number tip percentage. Both fields apply numeric masks to ensure consistent and predictable formatting.
 
 <ComponentDemo 
 path='/webforj/maskednumberfield?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumberFieldView.java'
-height = '150px'
+height = '270px'
 />
 
-## Supported masks
+Here’s the improved **Supported Masks** section, rewritten to match the structure and tone of your `MaskedDateField` and `MaskedTextField` documentation:
 
-Masks define how numeric input is displayed and processed in the `MaskedNumberField`. Each character in the mask serves a specific purpose, allowing developers to enforce structured, consistent input formats. The table below outlines the available mask characters and their behaviors:
+## Mask rules
 
-| Character  | Description                                                                 |
-|------------|-----------------------------------------------------------------------------|
-| `0`        | Replaced by a digit, 0-9.                                                 |
-| `#`        | Suppresses leading zeroes. Fills trailing zeroes or spaces.                |
-| `,`        | Adds a grouping character, such as a comma for thousands.                     |
-| `.`        | Represents the decimal point.                                              |
-| `-`        | Adds a minus sign for negative numbers.                                    |
-| `+`        | Adds a plus or minus sign depending on the value.                          |
-| `$`        | Adds a dollar sign.                                                       |
-| `(`, `)`   | Encloses negative numbers in parentheses.                                  |
-| `CR`/`DR`  | Adds "CR" or "DR" for credit or debit representation.                      |
-| `*`        | Adds an asterisk to the number.                                            |
-| `B`        | Always becomes a space.                                                   |
+The `MaskedNumberField` uses a mask string to control how numeric input is formatted and displayed. 
+Each character in the mask defines a specific formatting behavior, allowing precise control over how numbers appear.
 
-## Group and decimal separators 
+### Mask characters
 
-The `MaskedNumberField` provides flexibility for internationalization by supporting custom characters for grouping and decimal separators. These separators define how numbers are formatted for better readability. 
+| Character | Description |
+|-----------|-------------|
+| `0`       | Always replaced by a digit (0–9). |
+| `#`       | Suppresses leading zeroes. Replaced by the fill character to the left of the decimal point. For trailing digits, replaced by a space or zero. Otherwise, replaced by a digit. |
+| `,`       | Used as a grouping separator (e.g. thousands). Replaced by the fill character if no digits precede it. Otherwise, shown as a comma. |
+| `-`       | Displays a minus sign (`-`) if the number is negative. Replaced by the fill character if positive. |
+| `+`       | Displays `+` for positive or `-` for negative numbers. |
+| `$`       | Always results in a dollar sign. |
+| `(`       | Inserts a left parenthesis `(` for negative values. Replaced by the fill character if positive. |
+| `)`       | Inserts a right parenthesis `)` for negative values. Replaced by the fill character if positive. |
+| `CR`      | Displays `CR` for negative numbers. Displays two spaces if the number is positive. |
+| `DR`      | Displays `CR` for negative numbers. Displays `DR` for positive numbers. |
+| `*`       | Inserts an asterisk `*`. |
+| `.`       | Marks the decimal point. If no digits appear in the output, replaced by the fill character. After the decimal, fill characters are treated as spaces. |
+| `B`       | Always becomes a space. Any other literal character is shown as-is. |
 
-For example, the group separator is used to divide thousands, and the decimal separator indicates the fractional part of a number. 
+Some of the above characters may possibly Double within the mask. These are `-`, `+`, `$`, and
+`(`. If any of these characters is present in the mask, the first one encountered will be moved
+to the last position where a `#` or `,` was replaced by the fill character. If no such position
+exists, the Double character is left where it is.
 
-```java 
-field.setGroupCharacter(".");
-field.setDecimalCharacter(",");
-```
-
-:::tip Default Separators
-By default, the component applies characters based on the app's locale.
+:::info No Automatic Rounding
+A mask within a field does **NOT** round. For example, when placing a value such as `12.34567`
+into a field that is masked with `###0.00`, you'll get `12.34`.
 :::
 
-## Negatable
+## Group and decimal separators
 
-By default, the `MaskedNumberField` allows negative values. When the negatable property is enabled, users can input numbers with a negative sign at the beginning. However, if negatable is disabled, any attempts to input a negative number are blocked, ensuring only positive values can be entered.
+The `MaskedNumberField` supports customization of **grouping** and **decimal** characters, making it easy to adapt number formatting to different locales or business conventions.
+
+- The **group separator** is used to visually separate thousands (e.g. `1,000,000`).
+- The **decimal separator** indicates the fractional part of a number (e.g. `123.45`).
+
+This is useful in international applications where different regions use different characters (e.g. `.` vs `,`).
 
 ```java
-MaskedNumberField field = new MaskedNumberField();
-field.setNegateable(false); // Restricts input to positive numbers only
+field.setGroupCharacter(".");   // e.g. 1.000.000
+field.setDecimalCharacter(","); // e.g. 123,45
 ```
 
+:::tip Default Behavior
+By default, `MaskedNumberField` applies group and decimal separators based on the application's current locale. You can override them at any time using the provided setters.
+:::
+
+## Negateable
+
+The `MaskedNumberField` supports an option to control whether negative numbers are allowed.
+
+By default, negative input is enabled, allowing users to enter values like `-123.45`. 
+You can disable this behavior using the `setNegateable(false)` method to restrict the field to positive values only.
+
+This is useful in business scenarios where values like quantities, totals, or percentages must always be non-negative.
+
+```java
+field.setNegateable(false);
+```
+
+When `negatable` is set to `false`, the field blocks any attempts to enter a minus sign or otherwise input negative values.
+
 <ComponentDemo 
-path='/webforj/maskednumberfield/?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumberFieldNegatableView.java'
+path='/webforj/maskednumnegatable/?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumNegatableView.java'
 height = '150px'
 />
 
 ## Min and max values
 
-To ensure valid numeric input, the `MaskedNumberField` allows developers to set minimum and maximum values.
+The `MaskedNumberField` supports setting numeric boundaries using `setMin()` and `setMax()`. 
+These constraints help ensure that user input stays within a valid, expected range.
 
-The setMin() method defines the lowest acceptable number. If a user enters a value below this limit, the field either rejects it or adjusts it based on the implementation.
+- **Minimum Value**  
+  Use `setMin()` to define the lowest acceptable number:
+
+  ```java
+  field.setMin(10.0); // Minimum value: 10
+  ```
+
+  If the user enters a number below this threshold, it will be considered invalid.
+
+- **Maximum Value**  
+  Use `setMax()` to define the highest acceptable number:
+
+  ```java
+  field.setMax(100.0); // Maximum value: 100
+  ```
+
+  Values above this limit will be flagged as invalid.
+
+## Restoring the value
+
+The `MaskedNumberField` supports a restore feature that resets the field’s value to a predefined state. 
+This can be useful when users need to undo changes, revert accidental edits, or return to a known default value.
+
+To enable this behavior, define the target value using `setRestoreValue()`. 
+When needed, the field can be reset programmatically using `restoreValue()`.
 
 ```java
-MaskedNumberField field = new MaskedNumberField();
-field.setMin(10.0); // Sets the minimum value to 10
+numberField.setRestoreValue(1500.00);
+numberField.restoreValue();
 ```
 
-The `setMax()` method defines the largest acceptable value. Inputs exceeding this value are similarly restricted.
+### Ways to Restore the Value
 
-```java
-MaskedNumberField field = new MaskedNumberField();
-field.setMax(100.0); // Sets the maximum value to 100
-```
+- **Programmatically** using `restoreValue()`
+- **Via keyboard**, by pressing <kbd>ESC</kbd> (this is the default restore key unless overridden)
 
-<ComponentDemo 
-path='/webforj/maskednumminmax?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumberFieldMinMaxView.java'
-height = '150px'
-/>
+The restore value must be explicitly set. If not defined, the feature will not revert the field.
 
-## Restoring value
-
-The `MaskedNumberField` includes a `restoreValue()` method that allows you to programmatically reset the field’s value to its initial state. This feature is useful in scenarios where users might make unintentional changes or need to quickly revert to the original value for validation or comparison purposes.
-
-To enable the restore feature, you must define the value to be restored using the `setRestoreValue()` method. This ensures that the field knows which value to revert to when the `restoreValue()` method is called. Here's an example:
-
-```java
-MaskedNumberField numberField = new MaskedNumberField("Enter Amount", 1500.00);
-numberField.setRestoreValue(1500.00); // Sets the restore value
-numberField.restoreValue(); // Reverts the field to the specified value
-```
 <ComponentDemo 
 path='/webforj/maskednumrestore?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumberFieldRestoreView.java'
@@ -110,20 +148,46 @@ height = '150px'
 
 ## `MaskedNumberFieldSpinner`
 
-For a more interactive input experience, `MaskedNumberFieldSpinner` extends `MaskedNumberField` by introducing spinner controls. These allow users to increment or decrement values using predefined steps, making it ideal for quantity selection, numerical adjustments, or time settings.
-
-The step size can be controlled using setStep(), defining how much the value changes with each interaction.
+The `MaskedNumberFieldSpinner` extends [`MaskedNumberField`](#maskednumberfield) by adding spinner controls that let users increase or decrease the value using step buttons or arrow keys. 
+This is ideal for inputs like quantities, pricing adjustments, rating controls, or any scenario where users make incremental changes.
 
 <ComponentDemo 
 path='/webforj/maskednumspinner?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumberFieldSpinnerView.java'
-height = '100px'
+height = '120px'
 />
 
-:::tip Default Step
-By default, the increment is set to 1.0.
-:::
+### Key Features
 
-## Parts and CSS properties
+- **Step Increments**  
+  Use `setStep()` to define how much the value should change with each spin:
 
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').NumberField} />
+  ```java
+  spinner.setStep(5.0); // Each spin adds or subtracts 5
+  ```
+
+- **Interactive Controls**  
+  Users can click spinner buttons or use keyboard input to adjust the value.
+
+- **All Features from MaskedNumberField**  
+  Fully supports masks, formatting, grouping/decimal characters, min/max constraints, and restore logic.
+
+## Styling
+
+### Shadow parts
+
+These are the various parts of the [shadow DOM](../../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
+
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').NumberField} table='parts' exclusions=''/>
+
+### CSS properties
+
+These are the various CSS properties that are used in the component, with a short description of their use.
+
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').NumberField} exclusions='' table='properties'/>
+
+### Reflected attributes
+
+The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
+
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').NumberField} table="reflects" />

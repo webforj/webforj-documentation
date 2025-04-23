@@ -8,6 +8,7 @@ import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.optioninput.RadioButton;
 import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
@@ -15,40 +16,24 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Temperature Input")
 public class MaskedNumNegatableView extends Composite<FlexLayout> {
-
-  MaskedNumberField temperatureField = new MaskedNumberField("Temperature (�C)")
-      .setMask("###�")
-      .setNegateable(true);
+  FlexLayout self = getBoundComponent();
+  MaskedNumberField field = new MaskedNumberField("Credits");
+  RadioButton negateable = RadioButton.Switch("Negateable", true);
 
   public MaskedNumNegatableView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN)
+    self.setDirection(FlexDirection.COLUMN)
         .setJustifyContent(FlexJustifyContent.START)
-        .setAlignment(FlexAlignment.START)
-        .setSpacing("var(--dwc-space-m)")
-        .setMargin("var(--dwc-space-m)");
+        .setMaxWidth(300)
+        .setMargin("var(--dwc-space-m) auto");
 
-    Button submitButton = new Button("Submit").setTheme(ButtonTheme.PRIMARY);
-    submitButton.onClick(event -> handleTemperatureInput());
+    field.setMask("-$###,###,##0.00")
+        .setNegateable(true)
+        .setValue(123d);
 
-    layout.add(temperatureField, submitButton);
-  }
+    negateable.onToggle(event -> {
+      field.setNegateable(event.isToggled());
+    });
 
-  private void handleTemperatureInput() {
-    try {
-      Integer temperature = temperatureField.getValue() != null 
-          ? temperatureField.getValue().intValue() : null;
-
-      if (temperature == null) {
-        Toast.show("Please enter a valid temperature.")
-            .setPlacement(Toast.Placement.CENTER);
-        return;
-      }
-
-      Toast.show("Temperature: " + temperature + "�C");
-    } catch (NumberFormatException e) {
-      Toast.show("Invalid input. Please enter a valid number.")
-          .setPlacement(Toast.Placement.CENTER);
-    }
+    self.add(field, negateable);
   }
 }

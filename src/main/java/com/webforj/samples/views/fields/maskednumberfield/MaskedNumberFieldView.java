@@ -1,9 +1,11 @@
 package com.webforj.samples.views.fields.maskednumberfield;
 
 import com.webforj.component.Composite;
+import com.webforj.component.Theme;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.field.MaskedNumberField;
+import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexJustifyContent;
@@ -15,33 +17,35 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Tip Calculator")
 public class MaskedNumberFieldView extends Composite<FlexLayout> {
-
-  MaskedNumberField billAmountField = new MaskedNumberField("Bill Amount")
-      .setMask("$######.##");
-
-  MaskedNumberField tipPercentageField = new MaskedNumberField("Tip Percentage (%)")
-      .setMask("###%");
+  FlexLayout self = getBoundComponent();
+  MaskedNumberField billAmountField = new MaskedNumberField("Bill Amount");
+  MaskedNumberField tipPercentageField = new MaskedNumberField("Tip Percentage (%)");
 
   public MaskedNumberFieldView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN)
+    self.setDirection(FlexDirection.COLUMN)
         .setJustifyContent(FlexJustifyContent.CENTER)
-        .setAlignment(FlexAlignment.START)
-        .setSpacing("var(--dwc-space-m)")
+        .setAlignment(FlexAlignment.CENTER)
         .setMargin("var(--dwc-space-m)");
 
-    FlexLayout fieldsLayout = new FlexLayout()
-        .setDirection(FlexDirection.ROW)
-        .setJustifyContent(FlexJustifyContent.CENTER)
-        .setAlignment(FlexAlignment.START)
-        .setSpacing("var(--dwc-space-m)");
-   
-    fieldsLayout.add(billAmountField, tipPercentageField);
+    billAmountField
+        .setMask("$######.##")
+        .setValue(300d)
+        .setWidth(250)
+        .setPrefixComponent(TablerIcon.create("file-invoice"));
+    tipPercentageField
+        .setMask("###%")
+        .setValue(15d)
+        .setWidth(250)
+        .setPrefixComponent(TablerIcon.create("circle-percentage"));
 
-    Button calculateTipButton = new Button("Calculate Tip").setTheme(ButtonTheme.PRIMARY);
-    calculateTipButton.onClick(event -> handleCalculation());
+    Button calculateTipButton = new Button(
+        "Calculate Tip",
+        ButtonTheme.PRIMARY,
+        event -> handleCalculation());
+    calculateTipButton.setPrefixComponent(
+        TablerIcon.create("calculator"));
 
-    layout.add(fieldsLayout, calculateTipButton);
+    self.add(billAmountField, tipPercentageField, calculateTipButton);
   }
 
   private void handleCalculation() {
@@ -57,17 +61,17 @@ public class MaskedNumberFieldView extends Composite<FlexLayout> {
       }
 
       if (billAmount <= 0 || tipPercentage <= 0) {
-        Toast.show("Please enter valid positive values.");
+        Toast.show("Please enter valid positive values.", Theme.DANGER);
         return;
       }
 
       double tipAmount = billAmount * (tipPercentage / 100);
       double totalAmount = billAmount + tipAmount;
 
-      Toast.show("Tip: $" + String.format("%.2f", tipAmount) 
-        + "\nTotal: $" + String.format("%.2f", totalAmount));
+      Toast.show("Tip: $" + String.format("%.2f", tipAmount)
+          + "\nTotal: $" + String.format("%.2f", totalAmount), Theme.GRAY);
     } catch (NumberFormatException e) {
-      Toast.show("Please enter valid numbers.");
+      Toast.show("Please enter valid numbers.", Theme.DANGER);
     }
   }
 }

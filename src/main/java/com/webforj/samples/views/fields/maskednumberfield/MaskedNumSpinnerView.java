@@ -4,32 +4,32 @@ import com.webforj.component.Composite;
 import com.webforj.component.field.MaskedNumberFieldSpinner;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
-import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
-@FrameTitle("Spinner Quantity Demo")
+@FrameTitle("Spinner Tip Percentage")
 public class MaskedNumSpinnerView extends Composite<FlexLayout> {
-
-  MaskedNumberFieldSpinner quantitySpinner = new MaskedNumberFieldSpinner("Item Quantity");
-
+  FlexLayout self = getBoundComponent();
+  MaskedNumberFieldSpinner field = new MaskedNumberFieldSpinner("Tip Percentage (%)");
 
   public MaskedNumSpinnerView() {
-    quantitySpinner.setValue(0.0); 
-    quantitySpinner.setMin(1.0);   
-    quantitySpinner.setMax(50.0); 
-    quantitySpinner.setStep(10.0);  
-    quantitySpinner.setTooltipText("Adjust quantity using the spinner.");
+    self.setDirection(FlexDirection.COLUMN)
+        .setAlignment(FlexAlignment.CENTER)
+        .setSpacing("var(--dwc-space-m)")
+        .setMargin("var(--dwc-space-m)");
 
-    FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN)
-          .setJustifyContent(FlexJustifyContent.START)
-          .setAlignment(FlexAlignment.START)
-          .setSpacing("var(--dwc-space-m)")
-          .setMargin("var(--dwc-space-m)");
+    field
+        .setStep(5d)
+        .setValue(15d)
+        .setWidth(250)
+        .setMin(0d)
+        .setMax(100d)
+        .setMask("###%")
+        .setHelperText("<b>Min:</b> 0% <b>Max:</b> 100%")
+        .setMaxWidth("300px");
 
-    layout.add(quantitySpinner);
+    self.add(field);
   }
 }

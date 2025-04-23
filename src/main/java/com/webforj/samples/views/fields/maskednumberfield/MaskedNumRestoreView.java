@@ -5,60 +5,35 @@ import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.field.MaskedNumberField;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
-import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
-import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("Restore Value Demo")
 public class MaskedNumRestoreView extends Composite<FlexLayout> {
-
-  MaskedNumberField budgetField = new MaskedNumberField("Project Budget ($)")
-      .setMask("$###,###.##")
-      .setValue(5000.00)
-      .setRestoreValue(5000.00);
+  FlexLayout self = getBoundComponent();
+  MaskedNumberField field = new MaskedNumberField("Project Budget:");
 
   public MaskedNumRestoreView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN)
-        .setJustifyContent(FlexJustifyContent.START)
-        .setAlignment(FlexAlignment.START)
-        .setSpacing("var(--dwc-space-m)")
-        .setMargin("var(--dwc-space-m)");
-
-    Button restoreButton = new Button("Restore Budget").setTheme(ButtonTheme.PRIMARY);
-    restoreButton.onClick(event -> handleRestore());
-
-    Button submitButton = new Button("Submit Budget").setTheme(ButtonTheme.PRIMARY);
-    submitButton.onClick(event -> handleSubmit());
-
-    FlexLayout buttonLayout = new FlexLayout()
-        .setDirection(FlexDirection.ROW)
-        .setSpacing("var(--dwc-space-s)")
+    self.setAlignment(FlexAlignment.CENTER)
         .setJustifyContent(FlexJustifyContent.CENTER)
-        .setAlignment(FlexAlignment.CENTER);
+        .setMargin("var(--dwc-space-m) auto");
 
-    buttonLayout.add(restoreButton, submitButton);
+    field
+        .setMask("$###,###,##0.00")
+        .setValue(1234567d)
+        .setRestoreValue(1234567d)
+        .setRestoreValue(1234567d)
+        .setHelperText("Press <kbd>ESC</kbd> to restore the value to default.")
+        .setMaxWidth("300px");
 
-    layout.add(budgetField, buttonLayout);
-  }
+    Button restoreButton = new Button(
+        "Reset value",
+        ButtonTheme.PRIMARY,
+        event -> field.restoreValue());
 
-  private void handleRestore() {
-    budgetField.restoreValue();
-    Toast.show("Budget restored to: $" + String.format("%.2f", budgetField.getValue()))
-        .setPlacement(Toast.Placement.CENTER);
-  }
-
-  private void handleSubmit() {
-    Double budget = budgetField.getValue();
-    if (budget == null || budget <= 0) {
-      Toast.show("Please enter a valid budget.").setPlacement(Toast.Placement.CENTER);
-    } else {
-      Toast.show("Budget submitted: $" 
-        + String.format("%.2f", budget)).setPlacement(Toast.Placement.CENTER);
-    }
+    self.add(field, restoreButton);
   }
 }
