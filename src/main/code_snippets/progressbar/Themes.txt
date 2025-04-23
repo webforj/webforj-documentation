@@ -1,6 +1,0 @@
-pb1.setAttribute("theme", "default")
-pb2.setAttribute("theme", "danger")
-pb3.setAttribute("theme", "gray")
-pb4.setAttribute("theme", "info")
-pb5.setAttribute("theme", "success")
-pb5.setAttribute("theme", "warning")

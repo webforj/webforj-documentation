@@ -36,8 +36,9 @@ public class ButtonView extends Composite<FlexLayout> {
       email.setText("");
     });
 
-    submit = new Button("Submit", ButtonTheme.PRIMARY,
-        e -> showMessageDialog("Welcome to the application " + firstName.getText() + " " + lastName.getText() + "!"));
+    submit = new Button("Submit", ButtonTheme.PRIMARY, e -> {
+      showMessageDialog("Welcome to the app " + firstName.getText() + " " + lastName.getText() + "!", "Welcome");
+    });
 
     firstName = new TextField(Type.TEXT, "First Name", "Jason").setWidth("25%");
     firstName.setStyle("flex", "1");
