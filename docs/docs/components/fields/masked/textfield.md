@@ -9,12 +9,12 @@ sidebar_position: 15
 
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedTextField" top='true'/>
 
-The `MaskedTextField` component aims to deliver a configurable and easily validatable text input. It's suited well for apps requiring formatted input, such as financial, e-commerce, and healthcare apps.
+The `MaskedTextField` component aims to deliver a configurable and easily validatable text input. It's well-suited for apps requiring formatted input, such as financial, e-commerce, and healthcare apps.
 
 
 ## Basics
 
-The `MaskedTextField` can be instantiated with or without parameters. You can define an initial value, label, a placeholder text, and a listener in case the value changes.
+The `MaskedTextField` can be instantiated with or without parameters. You can define an initial value, a label, a placeholder text, and a listener in case the value changes.
 
 ```java
 MaskedTextField field = new MaskedTextField("Account ID");
@@ -54,7 +54,7 @@ field.setMask("0000-0000-0000-0000");// Example: 1234-5678-9012-3456
 ```
 
 :::tip Full Input Allowed
-If the mask only contains `X`, the field behaves like a regular [`TextField`](../text-field.md), allowing any printable input.
+If the mask only contains `X`, the field behaves like a standard [`TextField`](../text-field.md), allowing any printable input.
 This is useful when you want to reserve the ability to format without applying strict character rules.
 :::
 

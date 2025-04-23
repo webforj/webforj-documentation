@@ -7,7 +7,7 @@ sidebar_position: 20
 <DocChip chip='name' label="dwc-timefield" />
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedTimeField" top='true'/>
 
-The `MaskedTimeField` is a text input control designed for structured time entry. It lets users enter times as **numbers** and automatically formats the input based on a defined mask when the field loses focus. The mask is a string that specifies the expected time format, guiding both input and display.
+The `MaskedTimeField` is a text input control designed for precise, structured time entry. It lets users enter times as **numbers** and automatically formats the input based on a defined mask when the field loses focus. The mask is a string that specifies the expected time format, guiding both input and display.
 
 This component supports flexible parsing, validation, localization, and value restoration. It's especially useful in time-sensitive forms like schedules, timesheets, and reservations.
 
@@ -57,7 +57,7 @@ The `MaskedTimeField` supports localization by setting the appropriate locale. T
 field.setLocale(Locale.GERMANY);
 ```
 
-This affects how AM/PM is displayed, separators are chosen, and how values are parsed.
+This affects how AM/PM indicators are displayed, how separators are handled, and how values are parsed.
 
 ## Parsing logic
 
@@ -66,12 +66,12 @@ Parsing behavior depends on the format order defined by the mask (e.g., `%Hz:%mz
 
 ### Example parsing scenarios
 
-| Entry  | Mask          | Parsed as   |
-|--------|---------------|-------------|
-| `900`  | `%Hz:%mz`     | `09:00`     |
-| `1345` | `%Hz:%mz`     | `13:45`     |
-| `0230` | `%hz:%mz %p`  | `02:30 AM`  |
-| `1830` | `%hz:%mz %p`  | `06:30 PM`  |
+| Entry  | Mask          | Interpreted As|
+|--------|---------------|---------------|
+| `900`  | `%Hz:%mz`     | `09:00`       |
+| `1345` | `%Hz:%mz`     | `13:45`       |
+| `0230` | `%hz:%mz %p`  | `02:30 AM`    |
+| `1830` | `%hz:%mz %p`  | `06:30 PM`    |
 
 ## Setting min/max constraints
 
@@ -82,7 +82,7 @@ field.setMin(LocalTime.of(8, 0));
 field.setMax(LocalTime.of(18, 0));
 ```
 
-Both methods accept values of type [`java.time.LocalTime`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalTime.html). Input outside the defined range will be considered invalid.
+Both methods accept values of type [`java.time.LocalTime`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalTime.html). Inputs outside the defined range are considered invalid.
 
 ## Restoring the value
 

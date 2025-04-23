@@ -104,7 +104,7 @@ Both methods accept values of type [`java.time.LocalDate`](https://docs.oracle.c
 
 ## Restoring the value
 
-The `MaskedDateField` includes a restore feature that resets the field’s value to a predefined or original state. This can be useful for undoing changes or returning to a default date.
+The `MaskedDateField` includes a restore feature that resets the field’s value to a predefined or original state. This is useful for reverting user input or resetting to a default date.
 
 ```java
 dateField.setRestoreValue(LocalDate.of(2025, 1, 1));
@@ -138,7 +138,7 @@ The pattern must follow JavaScript RegExp syntax as documented [here](https://de
 :::
 
 :::warning Notes on Input Handling
-The field attempts to parse and format numeric date inputs based on the current mask. However, users can still manually enter values that don't match the expected format. If the input is syntactically valid but semantically incorrect or unparseable (e.g. `99/99/9999`), it may pass pattern checks but fail logical validation.
+The field attempts to parse and format numeric date inputs based on the current mask. However, users can still manually enter values that don't match the expected format. If the input is syntactically valid but semantically incorrect or unparsable (e.g. `99/99/9999`), it may pass pattern checks but fail logical validation.
 You should always validate the input value in your app logic, even if a regular expression pattern is set, to ensure the date is both correctly formatted and meaningful.
 ::::
 
@@ -169,7 +169,7 @@ picker.setIconVisible(true); // shows the icon
 
 ### Auto-open behavior
 
-You can configure the picker to open automatically when the user interacts with the field (e.g. clicks, presses Enter or arrow keys):
+You can configure the picker to open automatically when the user interacts with the field (e.g., clicks, presses Enter or arrow keys):
 
 ```java
 picker.setAutoOpen(true);

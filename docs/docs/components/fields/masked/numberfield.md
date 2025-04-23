@@ -15,7 +15,7 @@ This component supports number formatting, localization of decimal/grouping char
 
 The `MaskedNumberField` can be instantiated with or without parameters. It supports setting an initial value, a label, a placeholder, and an event listener to react to value changes.
 
-This following demo showcases a **Tip Calculator** that uses `MaskedNumberField` for intuitive numeric input. One field is configured to accept a formatted bill amount, while the other captures a whole-number tip percentage. Both fields apply numeric masks to ensure consistent and predictable formatting.
+This demo showcases a **Tip Calculator** that uses `MaskedNumberField` for intuitive numeric input. One field is configured to accept a formatted bill amount, while the other captures a whole-number tip percentage. Both fields apply numeric masks to ensure consistent and predictable formatting.
 
 <ComponentDemo 
 path='/webforj/maskednumberfield?' 
@@ -46,7 +46,7 @@ Each character in the mask defines a specific formatting behavior, allowing prec
 | `.`       | Marks the decimal point. If no digits appear in the output, replaced by the fill character. After the decimal, fill characters are treated as spaces. |
 | `B`       | Always becomes a space. Any other literal character is shown as-is. |
 
-Some of the above characters may possibly Double within the mask. These are `-`, `+`, `$`, and
+Some of the above characters can appear more than once in the mask for formatting. These include `-`, `+`, `$`, and
 `(`. If any of these characters is present in the mask, the first one encountered will be moved
 to the last position where a `#` or `,` was replaced by the fill character. If no such position
 exists, the Double character is left where it is.
@@ -78,8 +78,7 @@ By default, `MaskedNumberField` applies group and decimal separators based on th
 
 The `MaskedNumberField` supports an option to control whether negative numbers are allowed.
 
-By default, negative input is enabled, allowing users to enter values like `-123.45`. 
-You can turn off this behavior using the `setNegateable(false)` method to restrict the field to positive values only.
+By default, negative values like` -123.45` are allowed. To prevent this, use `setNegateable(false)` to restrict input to positive values only.
 
 This is useful in business scenarios where values like quantities, totals, or percentages must always be non-negative.
 
