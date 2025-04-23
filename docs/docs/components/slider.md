@@ -17,7 +17,7 @@ Here’s an example of a `Slider` that allows users to adjust volume levels with
 
 <ComponentDemo 
 path='/webforj/slider?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderView.java'
 height = '100px'
 />
 
@@ -55,7 +55,7 @@ Below is an example of creating a `Slider` with a custom range:
 
 <ComponentDemo 
 path='/webforj/donationslider?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/DonationSliderView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/DonationSliderView.java'
 height = '200px'
 />
 
@@ -97,7 +97,7 @@ Here’s an example of a fully configured `Slider` showing major and minor tick 
 
 <ComponentDemo 
 path='/webforj/slidertickspacing?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderTickSpacingView.java'  
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderTickSpacingView.java'  
 height = '350px'
 />
 
@@ -114,7 +114,7 @@ When inverted, this direction is reversed. Use the `setInverted(true)` method to
 
 <ComponentDemo 
 path='/webforj/sliderorientation?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderOrientationView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderOrientationView.java'
 height = '420px'
 />
 
@@ -153,7 +153,7 @@ Whether you're using default or custom labels, you can control their visibility 
 
 <ComponentDemo 
 path='/webforj/sliderlabels?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderLabelsView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderLabelsView.java'
 height = '150px'
 />
 
@@ -201,7 +201,7 @@ Shown below are sliders with each of the supported Themes applied:
 
 <ComponentDemo 
 path='/webforj/sliderthemes?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderThemesView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderThemesView.java'
 height = '460px'
 />
 
