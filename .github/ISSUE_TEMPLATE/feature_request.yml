@@ -1,0 +1,53 @@
+name: "Propose New Content or Features"
+description: Suggest a new page, guide, or improvement to the structure/content
+labels: [enhancement, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have an idea to improve our documentation? We'd love to hear it!
+        Use this form to propose new content or larger structure changes.
+
+  - type: input
+    id: title
+    attributes:
+      label: Suggested or Current Title
+      description: Provide a concise and descriptive title for the new content or feature, or the existing title if this is an enhancement for an existing article.
+      placeholder: e.g. Building Custom Components with webforJ
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-and-why
+    attributes:
+      label: What's the idea and why does it help?
+      description: Clearly explain what the new content is and how it helps users.
+      placeholder: e.g. This guide would explain how to compose multiple UI components into a reusable unit...
+    validations:
+      required: true
+
+  - type: textarea
+    id: related-docs
+    attributes:
+      label: Related Docs or Topics
+      description: Link to existing sections that this would extend, replace, or reference.
+      placeholder: e.g. Related to `/data-binding/overview`, builds on `/introduction/tutorial/step-3`
+
+  - type: checkboxes
+    id: proposal-type
+    attributes:
+      label: Type of proposal
+      options:
+        - label: New tutorial or how-to guide
+        - label: New reference page (e.g., API usage, component behavior)
+        - label: Update or reorganize existing content
+        - label: Structural or navigation improvement
+        - label: Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else?
+      description: Share early drafts, markdown snippets, or ideas you've already started.

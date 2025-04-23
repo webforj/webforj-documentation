@@ -1,1 +1,0 @@
-demoBox.setDropdownType("demo-dropdown-type");

@@ -34,7 +34,7 @@ public class HelloWorldJavaView extends Composite<FlexLayout> {
   public HelloWorldJavaView() {
     btn.setTheme(ButtonTheme.SUCCESS)
         .setExpanse(Expanse.XLARGE)
-        .addClickListener(e -> showMessageDialog("Hello World!"));
+        .addClickListener(e -> showMessageDialog("Hello World!", "Do it all in Java"));
 
     getBoundComponent().setDirection(FlexDirection.COLUMN)
         .addClassName("mainFrame")

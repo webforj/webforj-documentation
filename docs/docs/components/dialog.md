@@ -16,7 +16,6 @@ The component is built with three sections, each of which are `Panel` components
 <ComponentDemo 
 path='/webforj/dialogsections?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogSectionsView.java'
-javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/dialog/Sections.txt'
 height = '225px'
 />
 
@@ -44,21 +43,21 @@ By enabling the backdrop attribute of the webforJ `Dialog` component, a backdrop
 <ComponentDemo 
 path='/webforj/dialogbackdropblur?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogBackdropBlurView.java'
-javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/dialog/Blur.txt'
 height = '300px'
 />
 
 ## Opening and closing the `Dialog`
 
-After creating a new `Dialog` object, use the `show()` method to display the dialog.
+After creating a new `Dialog` object, use the `open()` method to display the dialog. Then, the `Dialog` component can close from one of these actions:
+- Using the `close()` method
+- Hitting the <kbd>ESC</kbd> key
+- Clicking outside of the `Dialog`
 
-The `Dialog` supports multiple cancellation methods for closure of the component: hitting the `ESC` key, clicking outside of the `Dialog`, or using the `hide()` method. The first two properties are customizable via their respective methods:
-`setCancelOnEscKey()` and `setCancelOnOutsideClick()`. The `hide()` method allows for the `Dialog` to be closed programmatically, such as by clicking a button on the `Dialog` after saving data. A method to quickly enable or disable users' ability to close the `Dialog`, `setClosable()` will prevent or allow both escape and click closure of the `Dialog`.
+Developers can choose which interactions close the `Dialog` with `setCancelOnEscKey()` and `setCancelOnOutsideClick()`. Additionally, the `setClosable()` method can prevent or allow both hitting the <kbd>ESC</kbd> key and clicking outside the `Dialog` to close the component.
 
 <ComponentDemo 
 path='/webforj/dialogclose?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogCloseView.java'
-javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/dialog/Close.txt'
 height = '350px'
 />
 
@@ -69,7 +68,6 @@ When enabled, auto-focus will automatically give focus to the first element with
 <ComponentDemo 
 path='/webforj/dialogautofocus?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogAutoFocusView.java'
-javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/dialog/AutoFocus.txt'
 height = '350px'
 />
 
@@ -83,7 +81,6 @@ It is also possible to calibrate this behavior to snap to the edge of the screen
 <ComponentDemo 
 path='/webforj/dialogdraggable?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogDraggableView.java'
-javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/dialog/Draggable.txt'
 height = '350px'
 />
 
@@ -94,7 +91,6 @@ The dialog's position can be manipulated using the built-in `setPosx()` and `set
 <ComponentDemo 
 path='/webforj/dialogpositioning?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogPositioningView.java'
-javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/dialog/Positioning.txt'
 height = '350px'
 />
 
@@ -105,7 +101,6 @@ In addition to manual assignment of a dialog's X and Y position, it is possible 
 <ComponentDemo 
 path='/webforj/dialogalignments?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogAlignmentsView.java'
-javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/dialog/Alignments.txt'
 height = '550px'
 />
 

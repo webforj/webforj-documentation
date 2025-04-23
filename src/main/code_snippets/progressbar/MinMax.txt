@@ -1,2 +1,0 @@
-pb.setMinimum(50)
-    .setMaximum(200)
