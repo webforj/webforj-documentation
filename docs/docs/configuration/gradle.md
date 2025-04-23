@@ -1,12 +1,12 @@
 ---
 title: Converting a WebforJ Maven Project to Gradle
 sidebar_position: 3
-description: Learn how to migrate a WebforJ project from Maven to Gradle using Groovy DSL.
+description: Learn how to migrate a WebforJ project from Maven to Gradle using Groovy Domain Specific Language.
 ---
 
 # Converting a WebforJ maven project to gradle
 
-If you're working with a WebforJ project and looking to switch from Maven to Gradle, this guide walks you through the key changes required to translate a typical `pom.xml` file into a working `build.gradle` script using Groovy DSL. The examples are tailored specifically for WebforJ setups, including Jetty integration, WAR packaging, and profile-based configuration.
+If you're working with a WebforJ project and looking to switch from Maven to Gradle, this guide walks you through the key changes required to translate a typical `pom.xml` file into a working `build.gradle` script using Groovy Domain Specific Language. The examples are tailored specifically for WebforJ setups, including Jetty integration, WAR packaging, and profile-based configuration.
 
 ## 1. Apply required plugins
 
@@ -126,8 +126,9 @@ test {
 - Install the Buildship Gradle plugin if not already installed.
 - Go to File → Import → Gradle → Existing Gradle Project.
 - Select your project directory and finish.
-
+<!-- vale off -->
 ### VS Code
+<!-- vale on -->
 - Install the Java Extension Pack.
 - Open the folder, and VS Code will detect the Gradle project.
 - Use the Gradle Tasks tab or command palette to build or run tasks.
