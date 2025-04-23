@@ -28,8 +28,8 @@ public class TableSingleSelectionView extends Composite<Div> {
     table.setSelectionMode(Table.SelectionMode.SINGLE);
 
     table.onItemSelect(ev -> showMessageDialog(
-        "You have selected " + ev.getItem().getTitle() + " by " + ev.getItem().getArtist() + 0 +
-            "Record Selection"));
+        "You have selected " + ev.getItem().getTitle() + " by " + ev.getItem().getArtist(),
+        "Record Number " + ev.getItem().getNumber()));
 
     getBoundComponent().add(table);
   }

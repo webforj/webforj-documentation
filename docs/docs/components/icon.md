@@ -189,7 +189,9 @@ An `Icon` component is nonselectable, but for actions that are best represented 
 
  ```java
 IconButton bell = new IconButton(FeatherIcon.BELL.create());
-bell.onClick(e -> showMessageDialog("You have a new message!", "Ding Dong!"));
+bell.onClick(e -> {
+  showMessageDialog("You have a new message!", "Ding Dong!")
+  });
 ```
 
 ## Best practices
