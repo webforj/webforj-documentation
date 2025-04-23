@@ -117,7 +117,7 @@ You can set the value to restore with `setRestoreValue()`, passing a [`LocalDate
 <ComponentDemo 
 path='/webforj/maskeddatefieldrestore?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldRestoreView.java' 
-height='200px'/>
+height='120px'/>
 
 ## Validation Patterns
 

@@ -4,157 +4,238 @@ sidebar_position: 19
 ---
 
 <DocChip chip='shadow' />
-
 <DocChip chip='name' label="dwc-timefield" />
-
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedTimeField" top='true'/>
 
-The `MaskedTimeField` component provides a structured and mask-driven way to input and validate time values. It is ideal for applications involving scheduling, booking systems, logging interfaces, or time-sensitive data entry. When the field loses focus, it formats the input based on the specified time mask, enhancing both consistency and readability.
+The `MaskedTimeField` is a text input control designed for structured time entry. It lets users enter times as **numbers** and automatically formats the input based on a defined mask when the field loses focus. The mask is a string that specifies the expected time format, guiding both input and display.
 
----
+This component supports flexible parsing, validation, localization, and value restoration. It's especially useful in time-sensitive forms like schedules, timesheets, and reservations.
 
 ## Basics
 
 The `MaskedTimeField` can be instantiated with or without parameters. You can define an initial value, a label, a placeholder, and an event listener for value changes.
 
-<ComponentDemo
-path='/webforj/maskedtimefield?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldView.java'
-height='250px'
-/>
-
----
+<ComponentDemo path='/webforj/maskedtimefield?' javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldView.java' height='120px'/>
 
 ## Mask rules
 
-The `MaskedTimeField` uses time format indicators, all of which begin with `%`, to define the input structure.
+The `MaskedTimeField` uses format indicators to define how time is parsed and displayed. Each format indicator begins with a `%` followed by a letter that represents a time component.
 
 ### Time format indicators
 
-| Format  | Description               |
-|---------|---------------------------|
-| `%H`    | Hour (24-hour clock)      |
-| `%h`    | Hour (12-hour clock)      |
-| `%m`    | Minute                    |
-| `%s`    | Second                    |
-| `%p`    | AM/PM indicator           |
+| Format | Description         |
+|--------|---------------------|
+| `%H`   | Hour (24-hour)      |
+| `%h`   | Hour (12-hour)      |
+| `%m`   | Minute              |
+| `%s`   | Second              |
+| `%p`   | AM/PM               |
 
 ### Modifiers
 
-Format indicators can be extended using modifiers to customize formatting:
+Modifiers refine the display of time components:
 
-| Modifier | Description                     |
-|----------|---------------------------------|
-| `z`      | Zero-fill                       |
-| `s`      | Short text representation       |
-| `l`      | Long text representation        |
-| `p`      | Packed number                   |
-| `d`      | Decimal (default format)        |
+| Modifier | Description               |
+|----------|---------------------------|
+| `z`      | Zero-fill                 |
+| `s`      | Short text representation |
+| `l`      | Long text representation  |
+| `p`      | Packed number             |
+| `d`      | Decimal (default format)  |
 
-### Examples
+These allow for flexible and locale-friendly time formatting.
 
-| Mask         | Input   | Display Output |
-|--------------|---------|----------------|
-| `%H:%mz`     | `1430`  | `14:30`        |
-| `%h:%mz %p`  | `230`   | `2:30 AM`      |
-| `%H:%mz:%sz` | `91545` | `09:15:45`     |
+## Time format localization
 
----
-
-## Locale support
-
-You can localize time display and parsing by specifying a locale:
+The `MaskedTimeField` supports localization by setting the appropriate locale. This ensures that time input and output match regional conventions.
 
 ```java
-timeField.setLocale(Locale.GERMANY);
+field.setLocale(Locale.GERMANY);
 ```
 
----
+This affects how AM/PM is displayed, separators are chosen, and how values are parsed.
 
-## Time constraints
+## Parsing logic
 
-You can enforce valid input ranges by setting a minimum and maximum allowed time:
+The `MaskedTimeField` parses user input based on the defined time mask. It accepts both complete and abbreviated numeric inputs, with or without delimiters, allowing flexible entry while ensuring valid times.
+Parsing behavior depends on the format order defined by the mask (e.g., `%Hz:%mz` for hour/minute). This format determines how numeric sequences are interpreted.
+
+### Example parsing scenarios
+
+| Entry  | Mask          | Parsed as   |
+|--------|---------------|-------------|
+| `900`  | `%Hz:%mz`     | `09:00`     |
+| `1345` | `%Hz:%mz`     | `13:45`     |
+| `0230` | `%hz:%mz %p`  | `02:30 AM`  |
+| `1830` | `%hz:%mz %p`  | `06:30 PM`  |
+
+## Setting Min/Max constraints
+
+You can restrict the allowed time range in a `MaskedTimeField` using the `setMin()` and `setMax()` methods:
 
 ```java
-timeField.setMin(LocalTime.of(8, 0));  
-timeField.setMax(LocalTime.of(18, 0));
+field.setMin(LocalTime.of(8, 0));
+field.setMax(LocalTime.of(18, 0));
 ```
 
-This ensures users can't enter values outside the defined window.
+Both methods accept values of type [`java.time.LocalTime`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalTime.html). Input outside the defined range will be considered invalid.
 
-<ComponentDemo
-path='/webforj/maskedtimefieldminmax?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldMinMaxView.java'
-height='200px'
-/>
+## Restoring the value
 
----
-
-## Restore method
-
-The `MaskedTimeField` provides a restore mechanism to reset the field’s value to a known initial state. This is useful for reverting accidental edits.
-
-You can define a restore target using `setRestoreValue()` and revert using either a method call or a keyboard key.
+The `MaskedTimeField` includes a restore feature that resets the field’s value to a predefined or original state. This can be useful for undoing changes or returning to a default time.
 
 ```java
-timeField.setRestoreValue(LocalTime.of(10, 0));
-timeField.restoreValue(); // Restores the value to 10:00
+field.setRestoreValue(LocalTime.of(12, 0));
+field.restoreValue();
 ```
 
-### Triggering restore
+### Ways to Restore the Value
 
-- **Programmatically**: Using `restoreValue()`
-- **Keyboard**: Press <kbd>ESC</kbd> (default restore key)
+- **Programmatically**, by calling `restoreValue()`
+- **Via keyboard**, by pressing <kbd>ESC</kbd> (this is the default restore key unless overridden by an event listener)
 
-:::info Default restore key
-The restore key is <kbd>ESC</kbd> unless overridden by a key listener.
+<ComponentDemo 
+path='/webforj/maskedtimefieldrestore?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldRestoreView.java' 
+height='120px'/>
+
+## Validation Patterns
+
+You can apply client-side validation rules using regular expressions with the `setPattern()` method:
+
+```java
+field.setPattern("^\\d{2}:\\d{2}$");
+```
+
+This pattern ensures that only values matching the `HH:mm` format (two digits, colon, two digits) are considered valid.
+
+:::tip Regular Expression Format
+The pattern must follow JavaScript RegExp syntax as documented [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions).
 :::
 
----
+:::warning Notes on Input Handling
+The field attempts to parse and format numeric time inputs based on the current mask. However, users can still manually enter values that don't match the expected format. If the input is syntactically valid but semantically incorrect or unparseable (e.g. `99:99`), it may pass pattern checks but fail logical validation.
+You should always validate the input value in your app logic, even if a regex pattern is set, to ensure the time is both correctly formatted and meaningful.
+:::
+
+## Time picker
+
+The `MaskedTimeField` includes a built-in time picker that lets users select a time visually, rather than typing it. This enhances usability for less technical users or when precise input is required.
+
+<ComponentDemo 
+path='/webforj/maskedtimefieldpicker?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldPickerView.java' 
+height='450px'/>
+
+### Accessing the picker
+
+You can access the time picker using `getPicker()`:
+
+```java
+TimePicker picker = field.getPicker();
+```
+
+### Show/Hide the picker icon
+
+Use `setIconVisible()` to show or hide the clock icon next to the field:
+
+```java
+picker.setIconVisible(true); // shows the icon
+```
+
+### Auto-Open Behavior
+
+You can configure the picker to open automatically when the user interacts with the field (e.g. clicks, presses Enter or arrow keys):
+
+```java
+picker.setAutoOpen(true);
+```
+
+:::tip Enforce Selection Through the Picker
+To ensure users can only select a time using the picker (and not manually type one), combine the following two settings:
+
+```java
+field.getPicker().setAutoOpen(true); // Opens the picker on user interaction
+field.setAllowCustomValue(false);    // Disables manual text input
+```
+
+This setup guarantees that all time input comes through the picker UI, which is useful when you want strict format control and eliminate parsing issues from typed input.
+:::
+
+### Manually open the picker
+
+To open the time picker programmatically:
+
+```java
+picker.open();
+```
+
+Or use the alias:
+
+```java
+picker.show(); // same as open()
+```
+
+### Setting the picker step
+
+You can define the interval between selectable times in the picker using `setStep()`. This allows you to control how granular the time options are—ideal for scenarios like scheduling in 15-minute blocks.
+
+```java
+field.getPicker().setStep(Duration.ofMinutes(15));
+```
+
+:::warning Step Constraint
+The step must evenly divide an hour or a full day. Otherwise, an exception will be thrown.
+:::
+
+This ensures the dropdown list contains predictable, evenly spaced values like `09:00`, `09:15`, `09:30`, etc.
 
 ## `MaskedTimeFieldSpinner`
 
-The `MaskedTimeFieldSpinner` extends the `MaskedTimeField` by adding spinner controls, allowing users to increment or decrement time values interactively.
+The `MaskedTimeFieldSpinner` extends [`MaskedTimeField`](#maskedtimefield) by adding spinner controls that let users increment or decrement the time using arrow keys or UI buttons. It provides a more guided interaction style, especially useful in desktop-style applications.
 
-### Features
+<ComponentDemo 
+path='/webforj/maskedtimefieldspinner?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldSpinnerView.java' 
+height='450px'/>
 
-- Inherits all mask and validation logic from `MaskedTimeField`
-- Supports programmatic `spinUp()` / `spinDown()`
-- Honors min/max constraints and step durations
+### Key Features
+
+- **Interactive Time Stepping:**  
+  Use arrow keys or spin buttons to increment or decrement the time value.
+
+- **Customizable Spin Unit:**  
+  Choose which part of the time to modify using `setSpinField()`:
+
+  ```java
+  spinner.setSpinField(MaskedTimeFieldSpinner.SpinField.MINUTE);
+  ```
+
+  Options include `HOUR`, `MINUTE`, `SECOND`, and `MILLISECOND`.
+
+- **Min/Max Boundaries:**  
+  Inherits support for minimum and maximum allowed times using `setMin()` and `setMax()`.
+
+- **Formatted Output:**  
+  Fully compatible with masks and localization settings from `MaskedTimeField`.
+
+### Example: Configure stepping by hour
 
 ```java
-MaskedTimeFieldSpinner spinner = new MaskedTimeFieldSpinner("Check-In");
-spinner.setMask("%Hz:%mz");
-spinner.setStep(Duration.ofMinutes(15));
-spinner.setMin(LocalTime.of(7, 0));
-spinner.setMax(LocalTime.of(10, 0));
+MaskedTimeFieldSpinner spinner = new MaskedTimeFieldSpinner();
+spinner.setSpinField(MaskedTimeFieldSpinner.SpinField.HOUR);
 ```
-
-<ComponentDemo
-path='/webforj/maskedtimefieldspinner?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldSpinnerView.java'
-height='120px'
-/>
-
----
 
 ## Styling
 
 ### Shadow parts
 
-These are the customizable shadow DOM parts of the component.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TimeField} table='parts' exclusions=''/>
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TimeField} table='parts' exclusions='' />
 
 ### CSS properties
 
-These CSS properties can be used to customize the component's appearance.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TimeField} exclusions='' table='properties'/>
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TimeField} exclusions='' table='properties' />
 
 ### Reflected attributes
 
-These attributes are reflected in the DOM and can be used for styling via CSS selectors.
-
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TimeField} table="reflects" />
-
