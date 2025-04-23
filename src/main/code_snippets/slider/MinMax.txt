@@ -1,2 +1,0 @@
-Slider sl1 = new Slider().setMaximum(10)
-    .setMinimum(0);

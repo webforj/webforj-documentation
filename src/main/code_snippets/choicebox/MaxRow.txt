@@ -1,1 +1,0 @@
-demoBox.setMaxRowCount(Integer.valueOf(numberField.getText()));

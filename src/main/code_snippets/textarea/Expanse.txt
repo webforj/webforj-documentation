@@ -1,5 +1,0 @@
-TextArea t1 = new TextArea().setExpanse(TextArea.Expanse.XSMALL);
-TextArea t2 = new TextArea().setExpanse(TextArea.Expanse.SMALL);
-TextArea t3 = new TextArea().setExpanse(TextArea.Expanse.MEDIUM);
-TextArea t4 = new TextArea().setExpanse(TextArea.Expanse.LARGE);
-TextArea t5 = new TextArea().setExpanse(TextArea.Expanse.XLARGE);

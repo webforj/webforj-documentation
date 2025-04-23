@@ -16,7 +16,6 @@ The component is built with three sections, each of which are `Panel` components
 <ComponentDemo 
 path='/webforj/dialogsections?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogSectionsView.java'
-javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/dialog/Sections.txt'
 height = '225px'
 />
 
@@ -44,7 +43,6 @@ By enabling the backdrop attribute of the webforJ `Dialog` component, a backdrop
 <ComponentDemo 
 path='/webforj/dialogbackdropblur?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogBackdropBlurView.java'
-javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/dialog/Blur.txt'
 height = '300px'
 />
 
@@ -70,7 +68,6 @@ When enabled, auto-focus will automatically give focus to the first element with
 <ComponentDemo 
 path='/webforj/dialogautofocus?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogAutoFocusView.java'
-javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/dialog/AutoFocus.txt'
 height = '350px'
 />
 
@@ -84,7 +81,6 @@ It is also possible to calibrate this behavior to snap to the edge of the screen
 <ComponentDemo 
 path='/webforj/dialogdraggable?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogDraggableView.java'
-javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/dialog/Draggable.txt'
 height = '350px'
 />
 
@@ -95,7 +91,6 @@ The dialog's position can be manipulated using the built-in `setPosx()` and `set
 <ComponentDemo 
 path='/webforj/dialogpositioning?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogPositioningView.java'
-javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/dialog/Positioning.txt'
 height = '350px'
 />
 
@@ -106,7 +101,6 @@ In addition to manual assignment of a dialog's X and Y position, it is possible 
 <ComponentDemo 
 path='/webforj/dialogalignments?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/dialog/DialogAlignmentsView.java'
-javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/dialog/Alignments.txt'
 height = '550px'
 />
 
