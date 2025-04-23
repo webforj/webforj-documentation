@@ -11,7 +11,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
-@FrameTitle("Restore Value Demo")
+@FrameTitle("Masked Number Field with Restore Value")
 public class MaskedNumRestoreView extends Composite<FlexLayout> {
   FlexLayout self = getBoundComponent();
   MaskedNumberField field = new MaskedNumberField("Project Budget:");

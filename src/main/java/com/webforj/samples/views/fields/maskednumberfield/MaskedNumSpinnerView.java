@@ -9,7 +9,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
-@FrameTitle("Spinner Tip Percentage")
+@FrameTitle("Masked Number Field Spinner")
 public class MaskedNumSpinnerView extends Composite<FlexLayout> {
   FlexLayout self = getBoundComponent();
   MaskedNumberFieldSpinner field = new MaskedNumberFieldSpinner("Tip Percentage (%)");

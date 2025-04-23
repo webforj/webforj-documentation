@@ -9,9 +9,11 @@ import com.webforj.component.field.MaskedDateField;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
+@FrameTitle("Masked Date Field with Restore")
 public class MaskedDateFieldRestoreView extends Composite<FlexLayout> {
   FlexLayout self = getBoundComponent();
   MaskedDateField eventField = new MaskedDateField("Meeting Date:");

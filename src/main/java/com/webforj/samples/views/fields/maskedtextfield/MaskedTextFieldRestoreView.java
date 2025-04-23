@@ -7,9 +7,11 @@ import com.webforj.component.field.MaskedTextField;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
+@FrameTitle("Masked Text Field with Restore Value")
 public class MaskedTextFieldRestoreView extends Composite<FlexLayout> {
   FlexLayout self = getBoundComponent();
 

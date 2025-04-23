@@ -7,9 +7,11 @@ import com.webforj.component.field.MaskedDateField;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
+@FrameTitle("Masked Date Field with Picker")
 public class MaskedDateFieldPickerView extends Composite<FlexLayout> {
   FlexLayout self = getBoundComponent();
   MaskedDateField field = new MaskedDateField("Meeting Date");
