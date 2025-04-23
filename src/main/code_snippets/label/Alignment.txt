@@ -1,3 +1,0 @@
-l1.setTextAlignment(TextAlignable.Alignment.LEFT);
-l2.setTextAlignment(TextAlignable.Alignment.MIDDLE);
-l3.setTextAlignment(TextAlignable.Alignment.RIGHT);

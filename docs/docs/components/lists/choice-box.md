@@ -46,7 +46,6 @@ In the demo below, the Dropdown type is set and used in the CSS file to select t
 <ComponentDemo 
 path='/webforj/choiceboxdropdowntype?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/choicebox/ChoiceboxDropdownTypeView.java'
-javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/choicebox/DropdownType.txt'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/lists/combobox/comboBoxDropDownType.css'
 height='250px'
 />
@@ -62,7 +61,6 @@ Using a number that is less than or equal to 0 will result in unsetting this pro
 <ComponentDemo 
 path='/webforj/choiceboxmaxrow?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/choicebox/ChoiceboxMaxRowView.java'
-javaC='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/code_snippets/choicebox/MaxRow.txt'
 height='450px'
 />
 

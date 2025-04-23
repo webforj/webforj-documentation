@@ -1,1 +1,0 @@
-MaskedTextField t1 = new MaskedTextField().setAttribute("Placeholder", "Example Placeholder");
