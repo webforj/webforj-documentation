@@ -73,7 +73,7 @@ field.setDecimalCharacter(","); // e.g. 123,45
 ```
 
 :::tip Default Behavior
-By default, `MaskedNumberField` applies group and decimal separators based on the application's current locale. You can override them at any time using the provided setters.
+By default, `MaskedNumberField` applies group and decimal separators based on the app's current locale. You can override them at any time using the provided setters.
 :::
 
 ## Negateable
@@ -81,7 +81,7 @@ By default, `MaskedNumberField` applies group and decimal separators based on th
 The `MaskedNumberField` supports an option to control whether negative numbers are allowed.
 
 By default, negative input is enabled, allowing users to enter values like `-123.45`. 
-You can disable this behavior using the `setNegateable(false)` method to restrict the field to positive values only.
+You can turn off this behavior using the `setNegateable(false)` method to restrict the field to positive values only.
 
 This is useful in business scenarios where values like quantities, totals, or percentages must always be non-negative.
 
@@ -133,7 +133,7 @@ numberField.setRestoreValue(1500.00);
 numberField.restoreValue();
 ```
 
-### Ways to Restore the Value
+### Ways to restore the value
 
 - **Programmatically** using `restoreValue()`
 - **Via keyboard**, by pressing <kbd>ESC</kbd> (this is the default restore key unless overridden)
@@ -148,7 +148,7 @@ height = '150px'
 
 ## `MaskedNumberFieldSpinner`
 
-The `MaskedNumberFieldSpinner` extends [`MaskedNumberField`](#maskednumberfield) by adding spinner controls that let users increase or decrease the value using step buttons or arrow keys. 
+The `MaskedNumberFieldSpinner` extends [`MaskedNumberField`](#basics) by adding spinner controls that let users increase or decrease the value using step buttons or arrow keys. 
 This is ideal for inputs like quantities, pricing adjustments, rating controls, or any scenario where users make incremental changes.
 
 <ComponentDemo 
@@ -157,7 +157,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '120px'
 />
 
-### Key Features
+### Key features
 
 - **Step Increments**  
   Use `setStep()` to define how much the value should change with each spin:
@@ -176,7 +176,7 @@ height = '120px'
 
 ### Shadow parts
 
-These are the various parts of the [shadow DOM](../../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
+These are the various parts of the [shadow DOM](../../../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
 
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').NumberField} table='parts' exclusions=''/>
 

@@ -12,7 +12,7 @@ The `MaskedDateField` is a text input control designed for structured date entry
 This component supports flexible parsing, validation, localization, and value restoration. It's especially useful in forms like registrations, bookings, and scheduling, where consistent and region-specific date formats are required.
 
 :::tip Looking for time input?
-The `MaskedDateField` is focused solely on **date** values. If you need a similar component for entering and formatting **time**, check out the [`MaskedTimeField`](./timefield) instead.
+The `MaskedDateField` is focused solely on **date** values. If you need a similar component for entering and formatting **time**, look into the [`MaskedTimeField`](./timefield) instead.
 :::
 
 ## Basics
@@ -73,7 +73,7 @@ dateField.setLocale(Locale.FRANCE);
 
 ## Parsing logic
 
-The `MaskedDateField` parses user input based on the defined date mask. It accepts both complete and abbreviated numeric inputs, with or without delimiters, allowing flexible entry while ensuring valid dates.
+The `MaskedDateField` parses user input based on the defined date mask. It accepts both complete and abbreviated numeric inputs with or without delimiters, allowing flexible entry while ensuring valid dates.
 Parsing behavior depends on the format order defined by the mask (e.g., `%Mz/%Dz/%Yz` for month/day/year). This format determines how numeric sequences are interpreted.
 
 For example, assuming that today is `September 15, 2012`, this is how various inputs would be interpreted:
@@ -84,14 +84,14 @@ For example, assuming that today is `September 15, 2012`, this is how various in
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | <div align="center">`1`</div>        | A single digit is always interpreted as a day number within the current month, so this would be September 1, 2012.                                                                                 | Same as YMD                                                                         | Same as YMD                                                                                                                  |
 | <div align="center">`12`</div>       | Two digits are always interpreted as a day number within the current month, so this would be September 12, 2012.                                                                                   | Same as YMD                                                                         | Same as YMD                                                                                                                  |
-| <div align="center">`112`</div>      | Three digits are interpreted as a 1-digit month number followed by a 2-digit day number, so this would be January 12, 2012.                                                                        | Same as YMD                                                                         | Three digits are interpreted as a 1-digit day number followed by a two-digit month number, so this would be 1 December 2012. |
-| <div align="center">`1004`</div>     | Four digits are interpreted as MMDD, so this would be October 4, 2012.                                                                                                                             | Same as YMD                                                                         | Four digits are interpreted as DDMM, so this would be 10 April 2012.                                                         |
-| <div align="center">`020304`</div>   | Six digits are interpreted as YYMMDD, so this would be March 4, 2002.                                                                                                                              | Six digits are interpreted as MMDDYY, so this would be February 3, 2004.            | Six digits are interpreted as DDMMYY, so this would be 2 March 2004.                                                         |
-| <div align="center">`8 digits`</div> | Eight digits are interpreted as YYYYMMDD. For example, `20040612` is June 12, 2004.                                                                                                                | Eight digits are interpreted as MMDDYYYY. For example, `06122004` is June 12, 2004. | Eight digits are interpreted as DDMMYYYY. For example, `06122004` is 6 December 2004.                                        |
-| <div align="center">`12/6`</div>     | Two numbers separated by any valid delimiter is interpreted as MM/DD, so this would be December 6, 2012. <br />Note: All characters except for letters and digits are considered valid delimiters. | Same as YMD                                                                         | Two numbers separated by any delimiter is interpreted as DD/MM, so this would be 12 June 2012.                               |
-| <div align="center">`3/4/5`</div>    | April 5, 2012                                                                                                                                                                                      | March 4, 2005                                                                       | 3 April 2005                                                                                                                 |
+| <div align="center">`112`</div>      | Three digits are interpreted as a 1-digit month number followed by a 2-digit day number, so this would be January 12, 2012.                                                                        | Same as YMD                                                                         | Three digits are interpreted as a 1-digit day number followed by a two-digit month number, so this would be December 1, 2012. |
+| <div align="center">`1004`</div>     | Four digits are interpreted as MMDD, so this would be October 4, 2012.                                                                                                                             | Same as YMD                                                                         | Four digits are interpreted as DDMM, so this would be April 10, 2012.                                                         |
+| <div align="center">`020304`</div>   | Six digits are interpreted as YYMMDD, so this would be March 4, 2002.                                                                                                                              | Six digits are interpreted as MMDDYY, so this would be February 3, 2004.            | Six digits are interpreted as DDMMYY, so this would be March 2, 2004.                                                         |
+| <div align="center">`8 digits`</div> | Eight digits are interpreted as YYYYMMDD. For example, `20040612` is June 12, 2004.                                                                                                                | Eight digits are interpreted as MMDDYYYY. For example, `06122004` is June 12, 2004. | Eight digits are interpreted as DDMMYYYY. For example, `06122004` is December 6, 2004.                                        |
+| <div align="center">`12/6`</div>     | Two numbers separated by any valid delimiter is interpreted as MM/DD, so this would be December 6, 2012. <br />Note: All characters except for letters and digits are considered valid delimiters. | Same as YMD                                                                         | Two numbers separated by any delimiter is interpreted as DD/MM, so this would be June 12, 2012.                               |
+| <div align="center">`3/4/5`</div>    | April 5, 2012                                                                                                                                                                                      | March 4, 2005                                                                       | April 3, 2005                                                                                                                 |
 
-## Setting Min/Max constraints
+## Setting min/max constraints
 
 You can restrict the allowed date range in a `MaskedDateField` using the `setMin()` and `setMax()` methods:
 
@@ -111,7 +111,7 @@ dateField.setRestoreValue(LocalDate.of(2025, 1, 1));
 dateField.restoreValue();
 ```
 
-### Ways to Restore the Value
+### Ways to restore the value
 
 - **Programmatically**, by calling `restoreValue()`
 - **Via keyboard**, by pressing <kbd>ESC</kbd> (this is the default restore key unless overridden by an event listener)
@@ -123,7 +123,7 @@ path='/webforj/maskeddatefieldrestore?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldRestoreView.java' 
 height='120px'/>
 
-## Validation Patterns
+## Validation patterns
 
 You can apply client-side validation rules using regular expressions with the `setPattern()` method:
 
@@ -139,7 +139,7 @@ The pattern must follow JavaScript RegExp syntax as documented [here](https://de
 
 :::warning Notes on Input Handling
 The field attempts to parse and format numeric date inputs based on the current mask. However, users can still manually enter values that don't match the expected format. If the input is syntactically valid but semantically incorrect or unparseable (e.g. `99/99/9999`), it may pass pattern checks but fail logical validation.
-You should always validate the input value in your app logic, even if a regex pattern is set, to ensure the date is both correctly formatted and meaningful.
+You should always validate the input value in your app logic, even if a regular expression pattern is set, to ensure the date is both correctly formatted and meaningful.
 ::::
 
 Here’s a documentation section for the **Date Picker** part of the `MaskedDateField`, written in a style consistent with your previous sections:
@@ -161,7 +161,7 @@ You can access the date picker using `getPicker()`:
 DatePicker picker = dateField.getPicker();
 ```
 
-### Show/Hide the picker icon
+### Show/hide the picker icon
 
 Use `setIconVisible()` to show or hide the calendar icon next to the field:
 
@@ -169,7 +169,7 @@ Use `setIconVisible()` to show or hide the calendar icon next to the field:
 picker.setIconVisible(true); // shows the icon
 ```
 
-### Auto-Open Behavior
+### Auto-open behavior
 
 You can configure the picker to open automatically when the user interacts with the field (e.g. clicks, presses Enter or arrow keys):
 
@@ -202,7 +202,7 @@ Or use the alias:
 picker.show(); // same as open()
 ```
 
-### Show Weeks in the Calendar
+### Show weeks in the calendar
 
 The picker can optionally display week numbers in the calendar view:
 
@@ -212,14 +212,14 @@ picker.setShowWeeks(true);
 
 ## `MaskedDateFieldSpinner`
 
-The `MaskedDateFieldSpinner` extends [`MaskedDateField`](#maskeddatefield) by adding spinner controls that let users increment or decrement the date using arrow keys or UI buttons. It provides a more guided interaction style, especially useful in desktop-style applications.
+The `MaskedDateFieldSpinner` extends [`MaskedDateField`](#basics) by adding spinner controls that let users increment or decrement the date using arrow keys or UI buttons. It provides a more guided interaction style, especially useful in desktop-style applications.
 
 <ComponentDemo 
 path='/webforj/maskeddatefieldspinner?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldSpinnerView.java' 
 height='450px'/>
 
-### Key Features
+### Key features
 
 - **Interactive Date Stepping:**  
   Use arrow keys or spin buttons to increment or decrement the date value.

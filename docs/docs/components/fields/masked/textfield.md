@@ -24,7 +24,7 @@ field.setMask("ZZZZ-0000")
 
 ## Mask rules
 
-The `MaskedTextField` formats text input using a mask — a string that defines what characters are allowed at each position. This ensures consistent, structured input for things like phone numbers, postal codes, and ID formats.
+The `MaskedTextField` formats text input using a mask - a string that defines what characters are allowed at each position. This ensures consistent, structured input for things like phone numbers, postal codes, and ID formats.
 
 ### Supported mask characters
 
@@ -54,7 +54,7 @@ field.setMask("0000-0000-0000-0000");// Example: 1234-5678-9012-3456
 ```
 
 :::tip Full Input Allowed
-If the mask only contains `X`, the field behaves like a regular [`TextField`](./text-field.md), allowing any printable input.
+If the mask only contains `X`, the field behaves like a regular [`TextField`](../text-field.md), allowing any printable input.
 This is useful when you want to reserve the ability to format without applying strict character rules.
 :::
 
@@ -68,7 +68,7 @@ height='250px'
 
 While masks define the structure of the input, you can combine them with validation patterns to enforce more specific input rules. This adds an extra layer of client-side validation using regular expressions.
 
-Use the `setPattern()` method to apply a custom regex:
+Use the `setPattern()` method to apply a custom regular expression:
 
 ```java
 field.setPattern("[A-Za-z0-9]{10}"); // Enforces a 10-character alphanumeric code
@@ -84,8 +84,6 @@ This is especially useful when:
 :::tip Regular Expression Format
 The pattern must be a valid [JavaScript regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions), as used by the `RegExp` type. You can find more details in the [HTML pattern attribute documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern#overview).
 :::
-
-Got it — here’s the rewritten **Restore Method** section for `MaskedTextField`, fully aligned with the structure and flow used in the `MaskedDateField` docs:
 
 ## Restoring the value
 
@@ -112,7 +110,7 @@ height='200px'
 
 ## `MaskedTextFieldSpinner`
 
-The `MaskedTextFieldSpinner` extends [`MaskedTextField`](#maskedtextfield) by adding spinner controls that let users cycle through a list of predefined values. 
+The `MaskedTextFieldSpinner` extends [`MaskedTextField`](#basics) by adding spinner controls that let users cycle through a list of predefined values. 
 This improves the user experience in situations where the input should be constrained to a fixed set of valid options.
 
 <ComponentDemo 
@@ -153,7 +151,7 @@ height='120px'
 
 ### Shadow parts
 
-These are the various parts of the [shadow DOM](../../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
+These are the various parts of the [shadow DOM](../../../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
 
 <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TextField} table='parts' exclusions=''/>
 

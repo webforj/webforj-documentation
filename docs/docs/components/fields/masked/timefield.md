@@ -61,7 +61,7 @@ This affects how AM/PM is displayed, separators are chosen, and how values are p
 
 ## Parsing logic
 
-The `MaskedTimeField` parses user input based on the defined time mask. It accepts both complete and abbreviated numeric inputs, with or without delimiters, allowing flexible entry while ensuring valid times.
+The `MaskedTimeField` parses user input based on the defined time mask. It accepts both complete and abbreviated numeric inputs with or without delimiters, allowing flexible entry while ensuring valid times.
 Parsing behavior depends on the format order defined by the mask (e.g., `%Hz:%mz` for hour/minute). This format determines how numeric sequences are interpreted.
 
 ### Example parsing scenarios
@@ -73,7 +73,7 @@ Parsing behavior depends on the format order defined by the mask (e.g., `%Hz:%mz
 | `0230` | `%hz:%mz %p`  | `02:30 AM`  |
 | `1830` | `%hz:%mz %p`  | `06:30 PM`  |
 
-## Setting Min/Max constraints
+## Setting min/max constraints
 
 You can restrict the allowed time range in a `MaskedTimeField` using the `setMin()` and `setMax()` methods:
 
@@ -93,7 +93,7 @@ field.setRestoreValue(LocalTime.of(12, 0));
 field.restoreValue();
 ```
 
-### Ways to Restore the Value
+### Ways to restore the value
 
 - **Programmatically**, by calling `restoreValue()`
 - **Via keyboard**, by pressing <kbd>ESC</kbd> (this is the default restore key unless overridden by an event listener)
@@ -103,7 +103,7 @@ path='/webforj/maskedtimefieldrestore?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldRestoreView.java' 
 height='120px'/>
 
-## Validation Patterns
+## Validation patterns
 
 You can apply client-side validation rules using regular expressions with the `setPattern()` method:
 
@@ -119,7 +119,7 @@ The pattern must follow JavaScript RegExp syntax as documented [here](https://de
 
 :::warning Notes on Input Handling
 The field attempts to parse and format numeric time inputs based on the current mask. However, users can still manually enter values that don't match the expected format. If the input is syntactically valid but semantically incorrect or unparseable (e.g. `99:99`), it may pass pattern checks but fail logical validation.
-You should always validate the input value in your app logic, even if a regex pattern is set, to ensure the time is both correctly formatted and meaningful.
+You should always validate the input value in your app logic, even if a regular expression pattern is set, to ensure the time is both correctly formatted and meaningful.
 :::
 
 ## Time picker
@@ -139,7 +139,7 @@ You can access the time picker using `getPicker()`:
 TimePicker picker = field.getPicker();
 ```
 
-### Show/Hide the picker icon
+### Show/hide the picker icon
 
 Use `setIconVisible()` to show or hide the clock icon next to the field:
 
@@ -147,7 +147,7 @@ Use `setIconVisible()` to show or hide the clock icon next to the field:
 picker.setIconVisible(true); // shows the icon
 ```
 
-### Auto-Open Behavior
+### Auto-open behavior
 
 You can configure the picker to open automatically when the user interacts with the field (e.g. clicks, presses Enter or arrow keys):
 
@@ -196,14 +196,14 @@ This ensures the dropdown list contains predictable, evenly spaced values like `
 
 ## `MaskedTimeFieldSpinner`
 
-The `MaskedTimeFieldSpinner` extends [`MaskedTimeField`](#maskedtimefield) by adding spinner controls that let users increment or decrement the time using arrow keys or UI buttons. It provides a more guided interaction style, especially useful in desktop-style applications.
+The `MaskedTimeFieldSpinner` extends [`MaskedTimeField`](#basics) by adding spinner controls that let users increment or decrement the time using arrow keys or UI buttons. It provides a more guided interaction style, especially useful in desktop-style applications.
 
 <ComponentDemo 
 path='/webforj/maskedtimefieldspinner?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskedtimefield/MaskedTimeFieldSpinnerView.java' 
 height='450px'/>
 
-### Key Features
+### Key features
 
 - **Interactive Time Stepping:**  
   Use arrow keys or spin buttons to increment or decrement the time value.
