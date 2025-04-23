@@ -62,7 +62,7 @@ field.setNegateable(false); // Restricts input to positive numbers only
 ```
 
 <ComponentDemo 
-path='/webforj/maskednumberfield/maskednumnegatable?' 
+path='/webforj/maskednumberfield/?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumberFieldNegatableView.java'
 height = '150px'
 />

@@ -4,150 +4,253 @@ sidebar_position: 16
 ---
 
 <DocChip chip='shadow' />
-
 <DocChip chip='name' label="dwc-datefield" />
-
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedDateField" top='true'/>
 
-The `MaskedDateField` component is a structured input control for date entry. It ensures user input is formatted according to a defined date mask and allows flexible parsing, validation, localization, and restoration of values. It's especially useful in forms for registrations, bookings, and scheduling where consistent and regionalized date formats are important.
+The `MaskedDateField` is a text input control designed for structured date entry. It lets users enter dates as **numbers** and automatically formats the input based on a defined mask when the field loses focus. The mask is a string that specifies the expected date format, guiding both input and display.
+
+This component supports flexible parsing, validation, localization, and value restoration. It's especially useful in forms like registrations, bookings, and scheduling, where consistent and region-specific date formats are required.
 
 ## Basics
 
 The `MaskedDateField` can be instantiated with or without parameters. You can define an initial value, a label, a placeholder, and an event listener for value changes.
 
-<ComponentDemo path='/webforj/maskeddatefield?' javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldView.java' height='200px'/>
+<ComponentDemo path='/webforj/maskeddatefield?' javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldView.java' height='120px'/>
 
 ## Mask rules
 
-The `MaskedDateField` uses format indicators, prefixed with `%`, to control how date input is interpreted.
+The `MaskedDateField` supports multiple date formats used around the world, which vary by the order of day, month, and year. Common patterns include:
+
+- **Day/Month/Year** (used across most of Europe)
+- **Month/Day/Year** (used in the United States)
+- **Year/Month/Day** (used in China, Japan, and Korea; also the ISO standard: `YYYY-MM-DD`)
+
+Within these formats, local variations include the choice of separator (e.g., `-`, `/`, or `.`), whether years are two or four digits, and whether single-digit months or days are padded with leading zeros.
+
+To handle this diversity, the `MaskedDateField` uses format indicators, each starting with `%`, followed by a letter that represents a specific part of the date. These indicators define how input is parsed and how the date is displayed.
 
 ### Date format indicators
 
-| Format  | Description |
-|---------|-------------|
-| `%Y`    | Year        |
-| `%M`    | Month       |
-| `%D`    | Day         |
+| Format | Description |
+| ------ | ----------- |
+| `%Y`   | Year        |
+| `%M`   | Month       |
+| `%D`   | Day         |
 
 ### Modifiers
 
 Modifiers allow more control over how components of the date are formatted:
 
-| Modifier | Description                  |
-|----------|------------------------------|
-| `z`      | Zero-fill                    |
-| `s`      | Short text representation    |
-| `l`      | Long text representation     |
-| `p`      | Packed number                |
-| `d`      | Decimal (default format)     |
+| Modifier | Description               |
+| -------- | ------------------------- |
+| `z`      | Zero-fill                 |
+| `s`      | Short text representation |
+| `l`      | Long text representation  |
+| `p`      | Packed number             |
+| `d`      | Decimal (default format)  |
 
 These can be combined to build a wide variety of date masks.
 
 ## Date format localization
 
-The `MaskedDateField` supports localization, allowing the date format to match the user's region.
+The `MaskedDateField` adapts to regional date formats by setting the appropriate locale. This ensures that dates are displayed and parsed in a way that matches user expectations.
 
-| Region        | Common Format | Example        |
-|---------------|----------------|----------------|
-| United States | MM/DD/YYYY     | `07/04/2023`   |
-| Europe        | DD/MM/YYYY     | `04/07/2023`   |
-| ISO Standard  | YYYY-MM-DD     | `2023-07-04`   |
+| Region        | Format     | Example      |
+| ------------- | ---------- | ------------ |
+| United States | MM/DD/YYYY | `07/04/2023` |
+| Europe        | DD/MM/YYYY | `04/07/2023` |
+| ISO Standard  | YYYY-MM-DD | `2023-07-04` |
+
+To apply localization, use the `setLocale()` method. It accepts a [`java.util.Locale`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Locale.html) and automatically adjusts both formatting and parsing:
 
 ```java
 dateField.setLocale(Locale.FRANCE);
 ```
 
-:::tip
-The `setLocale()` method expects a [`java.util.Locale`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Locale.html).
-:::
+## Parsing logic
 
-## Date parsing logic
+The `MaskedDateField` parses user input based on the defined date mask. It accepts both complete and abbreviated numeric inputs, with or without delimiters, allowing flexible entry while ensuring valid dates.
+Parsing behavior depends on the format order defined by the mask (e.g., `%Mz/%Dz/%Yz` for month/day/year). This format determines how numeric sequences are interpreted.
 
-Date input is parsed based on the defined mask. The parser accepts both complete and abbreviated numeric values with or without delimiters.
+For example, assuming that today is `September 15, 2012`, this is how various inputs would be interpreted:
 
 ### Example parsing scenarios
 
-| Input       | Interpreted Date                        |
-|-------------|------------------------------------------|
-| `1`         | first day of current month & year          |
-| `12`        | twelvth day of current month & year         |
-| `112`       | January 12 of current year               |
-| `1004`      | October 4 of current year                |
-| `020304`    | March 4, 2002                            |
-| `20230715`  | July 15, 2023                            |
-| `12/4`      | April 12 of current year (with delimiter)|
-| `01.01`     | January 1 of current year (dot-separated)|
+| Entry                                | YMD (ISO)                                                                                                                                                                                          | MDY (US)                                                                            | DMY (EU)                                                                                                                     |
+| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| <div align="center">`1`</div>        | A single digit is always interpreted as a day number within the current month, so this would be September 1, 2012.                                                                                 | Same as YMD                                                                         | Same as YMD                                                                                                                  |
+| <div align="center">`12`</div>       | Two digits are always interpreted as a day number within the current month, so this would be September 12, 2012.                                                                                   | Same as YMD                                                                         | Same as YMD                                                                                                                  |
+| <div align="center">`112`</div>      | Three digits are interpreted as a 1-digit month number followed by a 2-digit day number, so this would be January 12, 2012.                                                                        | Same as YMD                                                                         | Three digits are interpreted as a 1-digit day number followed by a two-digit month number, so this would be 1 December 2012. |
+| <div align="center">`1004`</div>     | Four digits are interpreted as MMDD, so this would be October 4, 2012.                                                                                                                             | Same as YMD                                                                         | Four digits are interpreted as DDMM, so this would be 10 April 2012.                                                         |
+| <div align="center">`020304`</div>   | Six digits are interpreted as YYMMDD, so this would be March 4, 2002.                                                                                                                              | Six digits are interpreted as MMDDYY, so this would be February 3, 2004.            | Six digits are interpreted as DDMMYY, so this would be 2 March 2004.                                                         |
+| <div align="center">`8 digits`</div> | Eight digits are interpreted as YYYYMMDD. For example, `20040612` is June 12, 2004.                                                                                                                | Eight digits are interpreted as MMDDYYYY. For example, `06122004` is June 12, 2004. | Eight digits are interpreted as DDMMYYYY. For example, `06122004` is 6 December 2004.                                        |
+| <div align="center">`12/6`</div>     | Two numbers separated by any valid delimiter is interpreted as MM/DD, so this would be December 6, 2012. <br />Note: All characters except for letters and digits are considered valid delimiters. | Same as YMD                                                                         | Two numbers separated by any delimiter is interpreted as DD/MM, so this would be 12 June 2012.                               |
+| <div align="center">`3/4/5`</div>    | April 5, 2012                                                                                                                                                                                      | March 4, 2005                                                                       | 3 April 2005                                                                                                                 |
 
-This flexibility supports natural input while still ensuring correctness.
+## Setting Min/Max constraints
 
-## Setting min/max date constraints
-
-You can restrict input to a specific date range using `setMin()` and `setMax()`:
+You can restrict the allowed date range in a `MaskedDateField` using the `setMin()` and `setMax()` methods:
 
 ```java
 dateField.setMin(LocalDate.of(2020, 1, 1));
 dateField.setMax(LocalDate.of(2030, 12, 31));
 ```
 
-:::tip
-The values passed to `setMin()` and `setMax()` must be instances of [`java.time.LocalDate`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html).
-:::
+Both methods accept values of type [`java.time.LocalDate`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html). Input outside the defined range will be considered invalid.
 
-<ComponentDemo path='/webforj/maskeddatefieldminmax?' javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldMinMaxView.java' height='100px'/>
+## Restoring the value
 
-## Restore method
-
-The `MaskedDateField` supports a **restore feature** that resets the field’s value to a predefined or original state.
+The `MaskedDateField` includes a restore feature that resets the field’s value to a predefined or original state. This can be useful for undoing changes or returning to a default date.
 
 ```java
 dateField.setRestoreValue(LocalDate.of(2025, 1, 1));
 dateField.restoreValue();
 ```
 
-### Ways to restore
-- **Programmatically** via `restoreValue()`
-- **Keyboard Shortcut**: Pressing <kbd>ESC</kbd>
+### Ways to Restore the Value
 
-:::info Default restore key
-The restore key is <kbd>ESC</kbd> unless overridden by event listeners.
-:::
+- **Programmatically**, by calling `restoreValue()`
+- **Via keyboard**, by pressing <kbd>ESC</kbd> (this is the default restore key unless overridden by an event listener)
 
-<ComponentDemo path='/webforj/maskeddatefieldrestore?' javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldRestoreView.java' height='150px'/>
+You can set the value to restore with `setRestoreValue()`, passing a [`LocalDate`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html) instance.
 
-## Custom patterns for validation
+<ComponentDemo 
+path='/webforj/maskeddatefieldrestore?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldRestoreView.java' 
+height='200px'/>
 
-Use regular expressions with `setPattern()` to apply custom client-side validation:
+## Validation Patterns
+
+You can apply client-side validation rules using regular expressions with the `setPattern()` method:
 
 ```java
 dateField.setPattern("^\\d{2}/\\d{2}/\\d{4}$");
 ```
 
-:::info Regular expression conventions
+This pattern ensures that only values matching the `MM/DD/YYYY` format (two digits, slash, two digits, slash, four digits) are considered valid.
 The pattern must follow JavaScript RegExp syntax as documented [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions).
+
+:::warning Notes on Input Handling
+The field attempts to parse and format numeric date inputs based on the current mask. However, users can still manually enter values that don't match the expected format. If the input is syntactically valid but semantically incorrect or unparseable (e.g. `99/99/9999`), it may pass pattern checks but fail logical validation.
+You should always validate the input value in your app logic, even if a regex pattern is set, to ensure the date is both correctly formatted and meaningful.
+::::
+
+Here’s a documentation section for the **Date Picker** part of the `MaskedDateField`, written in a style consistent with your previous sections:
+
+## Date picker
+
+The `MaskedDateField` includes a built-in calendar picker that lets users select a date visually, rather than typing it. This enhances usability for less technical users or when precise input is required.
+
+<ComponentDemo 
+path='/webforj/maskeddatefieldpicker?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldPickerView.java' 
+height='450px'/>
+
+### Accessing the picker
+
+You can access the date picker using `getPicker()`:
+
+```java
+DatePicker picker = dateField.getPicker();
+```
+
+### Show/Hide the picker icon
+
+Use `setIconVisible()` to show or hide the calendar icon next to the field:
+
+```java
+picker.setIconVisible(true); // shows the icon
+```
+
+### Auto-Open Behavior
+
+You can configure the picker to open automatically when the user interacts with the field (e.g. clicks, presses Enter or arrow keys):
+
+```java
+picker.setAutoOpen(true);
+```
+
+:::tip Enforce Selection Through the Picker
+To ensure users can only select a date using the calendar picker (and not manually type one), combine the following two settings:
+
+```java
+dateField.getPicker().setAutoOpen(true); // Opens the picker on user interaction
+dateField.setAllowCustomValue(false);    // Disables manual text input
+```
+
+This setup guarantees that all date input comes through the picker UI, which is useful when you want strict format control and eliminate parsing issues from typed input.
 :::
+
+### Manually open the calendar
+
+To open the calendar programmatically:
+
+```java
+picker.open();
+```
+
+Or use the alias:
+
+```java
+picker.show(); // same as open()
+```
+
+### Show Weeks in the Calendar
+
+The picker can optionally display week numbers in the calendar view:
+
+```java
+picker.setShowWeeks(true);
+```
 
 ## `MaskedDateFieldSpinner`
 
-The `MaskedDateFieldSpinner` extends `MaskedDateField` by adding spinner controls to increment or decrement dates interactively.
+The `MaskedDateFieldSpinner` extends [`MaskedDateField`](#maskeddatefield) by adding spinner controls that let users increment or decrement the date using arrow keys or UI buttons. It provides a more guided interaction style, especially useful in desktop-style applications.
 
-<ComponentDemo path='/webforj/maskeddatefieldspinner?' javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldSpinnerView.java' height='150px'/>
+<ComponentDemo 
+path='/webforj/maskeddatefieldspinner?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldSpinnerView.java' 
+height='450px'/>
 
-### Spinner features
-- **Step Control:** Adjust date by step (e.g. `setStep(Period.ofWeeks(1))`)
-- **Min/Max Boundaries:** Enforce allowed range
-- **Formatted Output:** Fully compatible with date masks
+### Key Features
+
+- **Interactive Date Stepping:**  
+  Use arrow keys or spin buttons to increment or decrement the date value.
+
+- **Customizable Step Unit:**  
+  Choose which part of the date to modify using `setSpinField()`:
+
+  ```java
+  spinner.setSpinField(MaskedDateFieldSpinner.SpinField.MONTH);
+  ```
+
+  Options include `DAY`, `WEEK`, `MONTH`, and `YEAR`.
+
+- **Min/Max Boundaries:**  
+  Inherits support for minimum and maximum allowed dates using `setMin()` and `setMax()`.
+
+- **Formatted Output:**  
+  Fully compatible with masks and localization settings from `MaskedDateField`.
+
+### Example: Configure weekly stepping
+
+```java
+MaskedDateFieldSpinner spinner = new MaskedDateFieldSpinner();
+spinner.setSpinField(MaskedDateFieldSpinner.SpinField.WEEK);
+```
+
+This makes each spin step advance or rewind the date by one week.
 
 ## Styling
 
 ### Shadow parts
 
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').DateField} table='parts' exclusions='' />
+<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').DateField} table='parts' exclusions='' />
 
 ### CSS properties
 
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').DateField} exclusions='' table='properties' />
+<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').DateField} exclusions='' table='properties' />
 
 ### Reflected attributes
 
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').DateField} table="reflects" />
-
+<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').DateField} table="reflects" />

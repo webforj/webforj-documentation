@@ -10,23 +10,27 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.Route;
 
 @Route
-public class MaskedDateFieldView extends Composite<FlexLayout> {
+public class MaskedDateFieldPickerView extends Composite<FlexLayout> {
   FlexLayout self = getBoundComponent();
   MaskedDateField field = new MaskedDateField("Meeting Date");
 
-  public MaskedDateFieldView() {
+  public MaskedDateFieldPickerView() {
     self.setDirection(FlexDirection.COLUMN)
         .setAlignment(FlexAlignment.CENTER)
         .setMargin("var(--dwc-space-m)");
 
     field
-        .setMask("%Mz/%Dz/%Yz")
+        .setMask("%Dz/%Mz/%Yl")
         .setValue(LocalDate.now())
         .setMaxWidth("300px")
-        .setHelperText("Meeting Date is formatted as %Mz/%Dz/%Yz.")
+        .setHelperText("Click the icon to open the date picker.")
+        .setAllowCustomValue(false)
         .getPicker()
-        .setIconVisible(false);
+        .setIconVisible(true)
+        .setAutoOpen(true)
+        .setShowWeeks(true);
 
     self.add(field);
+    whenAttached().thenAccept(c -> field.getPicker().open());
   }
 }

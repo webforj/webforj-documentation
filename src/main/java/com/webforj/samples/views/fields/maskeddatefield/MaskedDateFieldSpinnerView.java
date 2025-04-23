@@ -7,26 +7,32 @@ import com.webforj.component.field.MaskedDateFieldSpinner;
 import com.webforj.component.field.MaskedDateFieldSpinner.SpinField;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
-import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.Route;
 
 @Route
 public class MaskedDateFieldSpinnerView extends Composite<FlexLayout> {
-    MaskedDateFieldSpinner appointmentField = new MaskedDateFieldSpinner("Available Appointments");
+  MaskedDateFieldSpinner appointmentField = new MaskedDateFieldSpinner("Available Appointments");
 
-    public MaskedDateFieldSpinnerView() {
-        FlexLayout self = getBoundComponent();
-        self.setDirection(FlexDirection.COLUMN)
-                .setJustifyContent(FlexJustifyContent.START)
-                .setAlignment(FlexAlignment.START)
-                .setSpacing("var(--dwc-space-m)")
-                .setMargin("var(--dwc-space-m)");
-        appointmentField.setMask("%Mz/%Dz/%Yz");
-        appointmentField.setValue(LocalDate.now());
-        appointmentField.setMin(LocalDate.now());
-        appointmentField.setMax(LocalDate.now().plusMonths(6));
-        appointmentField.setSpinField(SpinField.DAY);
-        self.add(appointmentField);
-    }
+  public MaskedDateFieldSpinnerView() {
+    FlexLayout self = getBoundComponent();
+    self.setDirection(FlexDirection.COLUMN)
+        .setAlignment(FlexAlignment.CENTER)
+        .setSpacing("var(--dwc-space-m)")
+        .setMargin("var(--dwc-space-m)");
+
+    appointmentField
+        .setSpinField(SpinField.DAY)
+        .setMask("%Dz/%Mz/%Yl")
+        .setValue(LocalDate.now())
+        .setMin(LocalDate.now())
+        .setMax(LocalDate.now().plusMonths(6))
+        .setHelperText("<b>Min:</b> today, <b>Max:</b> 6 months from now. Use the spinner to select a date.")
+        .setPlaceholder("DD/MM/YYYY")
+        .setAllowCustomValue(false);
+
+    self.add(appointmentField);
+
+    whenAttached().thenAccept(c -> appointmentField.getPicker().open());
+  }
 }
