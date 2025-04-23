@@ -122,7 +122,7 @@ height = '420px'
 
 The `Slider` component supports labels on tick marks to help users interpret the values more easily. You can use default numeric labels or provide custom ones, and you can toggle their visibility as needed.
 
-### Default Labels
+### Default labels
 
 By default, the slider can display numeric labels at major tick marks. These values are determined by the `setMajorTickSpacing()` setting. To enable default labels, use:
 
@@ -130,7 +130,7 @@ By default, the slider can display numeric labels at major tick marks. These val
 slider.setLabelsVisible(true);
 ```
 
-### Custom Labels
+### Custom labels
 
 You can replace the default numeric labels with custom text using the `setLabels()` method. This is helpful when you want to display more meaningful values (e.g., temperature, currency, or categories).
 
@@ -147,7 +147,7 @@ slider.setLabels(customLabels);
 slider.setLabelsVisible(true);
 ```
 
-### Toggling Label Visibility
+### Toggling label visibility
 
 Whether you're using default or custom labels, you can control their visibility with `setLabelsVisible(true)` or hide them with `setLabelsVisible(false)`.
 
@@ -173,7 +173,7 @@ Tooltips can also be configured to appear only when the user interacts with the 
 Here’s an example of a fully configured `Slider` with tooltips:
 
 
-### Tooltip Customization
+### Tooltip customization
 
 By default, the `Slider` shows a tooltip with its current value. If you want to customize this text, use the `setTooltipText()` method. This is useful when you want the tooltip to show static or descriptive text instead of the live value.
 
