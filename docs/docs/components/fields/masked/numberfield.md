@@ -23,8 +23,6 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '270px'
 />
 
-Here’s the improved **Supported Masks** section, rewritten to match the structure and tone of your `MaskedDateField` and `MaskedTextField` documentation:
-
 ## Mask rules
 
 The `MaskedNumberField` uses a mask string to control how numeric input is formatted and displayed. 

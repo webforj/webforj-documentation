@@ -142,8 +142,6 @@ The field attempts to parse and format numeric date inputs based on the current 
 You should always validate the input value in your app logic, even if a regular expression pattern is set, to ensure the date is both correctly formatted and meaningful.
 ::::
 
-Here’s a documentation section for the **Date Picker** part of the `MaskedDateField`, written in a style consistent with your previous sections:
-
 ## Date picker
 
 The `MaskedDateField` includes a built-in calendar picker that lets users select a date visually, rather than typing it. This enhances usability for less technical users or when precise input is required.
