@@ -74,7 +74,7 @@ Data entry components provide essential tools for capturing user input and manag
     <p>A single-line input component for entering and editing text data.</p>
   </GalleryCard>
 
-  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Masked</span>TextField" href="#" image="/img/components/MaskedTextField.png">
+  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Masked</span>TextField" href="fields/masked/textfield" image="/img/components/MaskedTextField.png">
     <p>A text input component that restricts user input to a specific format or pattern, typically used for fields like phone numbers, dates, or credit card numbers.</p>
   </GalleryCard>
 
@@ -82,7 +82,7 @@ Data entry components provide essential tools for capturing user input and manag
     <p>A component that provides a default browser-based input field for entering numeric values, with built-in controls for incrementing or decrementing the value.</p>
   </GalleryCard>
 
-  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Masked</span>NumberField" href="#" image="/img/components/MaskedNumberField.png">
+  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Masked</span>NumberField" href="fields/masked/numberfield" image="/img/components/MaskedNumberField.png">
     <p>A numeric input component that restricts user input to a specific numeric format or pattern, ensuring valid number entry such as for currency, percentages, or other formatted numbers.</p>
   </GalleryCard>
 
@@ -94,7 +94,7 @@ Data entry components provide essential tools for capturing user input and manag
     <p>A component that provides a default browser-based date picker for selecting a date through an input field.</p>
   </GalleryCard>
 
-  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Masked</span>DateField" href="#" image="/img/components/MaskedDateField.png">
+  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Masked</span>DateField" href="fields/masked/datefield" image="/img/components/MaskedDateField.png">
     <p>A date input component that enforces a specific date format or pattern, ensuring the user enters a valid date according to the defined mask</p>
   </GalleryCard>
 
@@ -102,7 +102,7 @@ Data entry components provide essential tools for capturing user input and manag
     <p>A component that provides a default browser-based time picker for selecting a time value through an input field.</p>
   </GalleryCard>
 
-  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Masked</span>TimeField" href="#" image="/img/components/MaskedTimeField.png">
+  <GalleryCard header="<span style='color: var(--ifm-color-primary)'>Masked</span>TimeField" href="fields/masked/timefield" image="/img/components/MaskedTimeField.png">
     <p>A time input component that enforces a specific time format or pattern, ensuring the user inputs a valid time according to the defined mask</p>
   </GalleryCard>
 
