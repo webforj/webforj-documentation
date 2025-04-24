@@ -2,17 +2,17 @@ package com.webforj.samples.views.applayout;
 
 import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
-import com.webforj.component.element.Element;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H1;
-import com.webforj.component.html.elements.H2;
 import com.webforj.component.html.elements.Img;
-import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.html.elements.Strong;
 import com.webforj.component.icons.Icon;
 import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.applayout.AppDrawerToggle;
 import com.webforj.component.layout.applayout.AppLayout;
+import com.webforj.component.layout.appnav.AppNav;
+import com.webforj.component.layout.appnav.AppNavItem;
+import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.component.tabbedpane.Tab;
 import com.webforj.component.tabbedpane.TabbedPane;
 import com.webforj.component.tabbedpane.TabbedPane.Placement;
@@ -27,20 +27,18 @@ public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
 
   AppLayout demo = getBoundComponent();
   Div contentLabel = new Div();
-  Div header = new Div();
+  Toolbar header = new Toolbar();
   Div drawer = new Div();
 
   public AppLayoutMobileDrawerView() {
-    demo.addToDrawerHeaderActions(new Element("dwc-icon-button")
-        .setAttribute("name", "pin"));
     // Header
     AppDrawerToggle toggle = new AppDrawerToggle();
     Div logo = new Div();
     logo.addClassName("dwc-logo").add(
         new Img("https://documentation.webforj.com/img/webforj_icon.svg", "logo"));
-    Strong title = new Strong("DWCJ Application");
+    Strong title = new Strong("WebforJ Application");
 
-    header.add(toggle, logo, title);
+    header.addToStart(toggle).addToTitle(logo, title);
     header.addClassName("drawer__dwc-toolbar");
 
     demo.addToHeader(header);
@@ -57,12 +55,8 @@ public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
     drawer.add(drawerLogo);
 
     // Drawer's Menu
-    TabbedPane drawerMenu = new TabbedPane();
+    AppNav drawerMenu = new AppNav();
     drawer.add(drawerMenu);
-
-    drawerMenu.setBodyHidden(true);
-    drawerMenu.setBorderless(true);
-    drawerMenu.setPlacement(Placement.LEFT);
 
     // Adding tabs to drawer menu
     Icon dashboardIcon = TablerIcon.create("dashboard");
@@ -73,33 +67,18 @@ public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
     Icon tasksIcon = TablerIcon.create("checklist");
     Icon analyticsIcon = TablerIcon.create("chart-dots-2");
 
-    drawerMenu.addTab(new Tab("Dashboard", dashboardIcon));
-    drawerMenu.addTab(new Tab("Orders", ordersIcon));
-    drawerMenu.addTab(new Tab("Customers", customersIcon));
-		drawerMenu.addTab(new Tab("Products", productsIcon));
-    drawerMenu.addTab(new Tab("Documents", documentsIcon));
-    drawerMenu.addTab(new Tab("Tasks", tasksIcon));
-    drawerMenu.addTab(new Tab("Analytics", analyticsIcon));
-
+    drawerMenu.addItem(new AppNavItem("Dashboard", "webforj/applayoutmobiledrawer/content/Dashboard", dashboardIcon));
+    drawerMenu.addItem(new AppNavItem("Orders", "webforj/applayoutmobiledrawer/content/Orders", ordersIcon));
+    drawerMenu.addItem(new AppNavItem("Customers", "webforj/applayoutmobiledrawer/content/Customers", customersIcon));
+    drawerMenu.addItem(new AppNavItem("Products", "webforj/applayoutmobiledrawer/content/Products", productsIcon));
+    drawerMenu.addItem(new AppNavItem("Documents", "webforj/applayoutmobiledrawer/content/Documents", documentsIcon));
+    drawerMenu.addItem(new AppNavItem("Tasks", "webforj/applayoutmobiledrawer/content/Tasks", tasksIcon));
+    drawerMenu.addItem(new AppNavItem("Analytics", "webforj/applayoutmobiledrawer/content/Analytics", analyticsIcon));
+    
     // Content
     demo.addToContent(
         new H1("Application Title"),
         this.contentLabel);
-    for (int i = 0; i < 5; i++) {
-      Div content = new Div().addClassName("card");
-      content.add(
-          new H2("What is Lorem Ipsum " + i + "?"),
-          new Paragraph("Lorem Ipsum is simply dummy text of the printing and typesetting " +
-              "industry. Lorem Ipsum has been the industry's standard dummy text " +
-              "ever since the 1500s when an unknown printer took a galley of type " +
-              "and scrambled it to make a type specimen book. It has survived not " +
-              "only five centuries, but also the leap into electronic " +
-              "typesetting, remaining essentially unchanged. It was popularized " +
-              "in the 1960s with the release of Letraset sheets containing Lorem " +
-              "Ipsum passages, and more recently with desktop publishing software " +
-              "like Aldus PageMaker including versions of Lorem Ipsum."));
-      demo.addToContent(content);
-    }
 
     TabbedPane footerMenu = new TabbedPane();
     demo.addToFooter(footerMenu);
