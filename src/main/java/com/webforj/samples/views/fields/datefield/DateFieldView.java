@@ -1,7 +1,6 @@
 package com.webforj.samples.views.fields.datefield;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 
 import com.webforj.component.Composite;
 import com.webforj.component.field.DateField;
@@ -56,7 +55,7 @@ public class DateFieldView extends Composite<FlexLayout> {
       }
 
       returnField.setMin(departure);
-    } catch (DateTimeParseException | NullPointerException ignored) {}
+    } catch (Exception ignored) {}
   }
 
   private void onReturnChange(ValueChangeEvent<LocalDate> e) {
@@ -73,6 +72,6 @@ public class DateFieldView extends Composite<FlexLayout> {
       }
 
       departureField.setMax(returnDate);
-    } catch (DateTimeParseException | NullPointerException ignored) {}
+    } catch (Exception ignored) {}
   }
 }
