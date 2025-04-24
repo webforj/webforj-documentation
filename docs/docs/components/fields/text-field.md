@@ -52,7 +52,24 @@ You can set placeholder text for the `TextField` using the `setPlaceholder()` me
 
 ## Selected text
 
-It's possible to interact with the `TextField` class to retrieve a user's selected text, and to get information about the user's selection. You can retrieve the selected text in the `TextField` using the `getSelectedText()` method. This behavior would commonly be used in conjunction with an event. Similarly, it's possible to retrieve the current selection range of the `TextField` using the `getSelectionRange()` method. This returns a `SelectionRange` object representing the start and end indices of the selected text.
+It's possible to interact with the `TextField` class to retrieve a user's selected text, and to get information about the user's selection. You can retrieve the selected text in the `TextField` using the `getSelectedText()` method. This behavior would commonly be used in conjunction with an event. 
+
+```java
+TextField textField = new TextField("Enter something...");
+Button getSelectionBtn = new Button("Get Selected Text");
+
+getSelectionBtn.onClick(e -> {
+  String selected = textField.getSelectedText();
+  System.out.println("Selected text: " + selected);
+});
+```
+
+Similarly, it's possible to retrieve the current selection range of the `TextField` using the `getSelectionRange()` method. This returns a `SelectionRange` object representing the start and end indices of the selected text.
+
+:::tip Using `getSelectedText()` vs event payload
+While you can call `getSelectedText()` manually inside an event handler, it’s more efficient to use the selection data provided in the event’s payload—such as in a `SelectionChangeEvent`—to avoid additional lookups.
+:::
+
 
 ## Best practices
 
