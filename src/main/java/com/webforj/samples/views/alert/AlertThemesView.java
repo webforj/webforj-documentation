@@ -23,7 +23,7 @@ public class AlertThemesView extends Composite<FlexLayout> {
           .setJustifyContent(FlexJustifyContent.CENTER)
           .setAlignment(FlexAlignment.CENTER)
           .setSpacing("var(--dwc-space-m)")
-          .setMargin("var(--dwc-space-xl)")
+          .setMargin("var(--dwc-space-xl) auto")
           .setWidth("100%");
 
     for (Theme theme : Theme.values()) {

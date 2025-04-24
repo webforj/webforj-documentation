@@ -31,6 +31,8 @@ public class ElementInputEventView extends Composite<Div> {
     options.setFilter("event.key == 'Enter'");
     options.setCode("event.preventDefault();");
 
-    input.addEventListener("keypress", e -> showMessageDialog(e.getEventMap().get("theValue") + ""), options);
+    input.addEventListener("keypress", e -> {
+      showMessageDialog(e.getEventMap().get("theValue"),"Input Event");
+    }, options);
   }
 }

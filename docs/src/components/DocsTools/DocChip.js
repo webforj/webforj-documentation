@@ -31,14 +31,14 @@ export default function DocChip( { chip, label, href, exclude, iconName, tooltip
   if(chip === 'shadow'){
     // A "Shadow DOM" Chip
     tooltipText = "This component renders with a shadow DOM, an API built into the browser that facilitates encapsulation.";
-    href = "https://documentation.webforj.com/docs/glossary#shadow-dom";
+    href = "/docs/glossary#shadow-dom";
     label='Shadow';
     iconName = 'shadow';
   } else if (chip === 'name') {
     // A "DOM Name" chip
     tooltipText="The name of this web component as it appears in the DOM.";
       if (!(exclude)){
-        const path = "https://docs.webforj.com/docs/client-components/";
+        const path = "/docs/client-components/";
         const clientPage = label.replace("dwc-", "");
         href = path.concat(clientPage);
       }

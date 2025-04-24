@@ -1,5 +1,0 @@
-ChoiceBox cb1 = new ChoiceBox().setExpanse(Expanse.XSMALL);
-ChoiceBox cb2 = new ChoiceBox().setExpanse(Expanse.SMALL);
-ChoiceBox cb3 = new ChoiceBox().setExpanse(Expanse.MEDIUM);
-ChoiceBox cb4 = new ChoiceBox().setExpanse(Expanse.LARGE);
-ChoiceBox cb5 = new ChoiceBox().setExpanse(Expanse.XLARGE);

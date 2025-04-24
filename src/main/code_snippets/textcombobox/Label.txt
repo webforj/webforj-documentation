@@ -1,1 +1,0 @@
-ComboBox tcb1 = new ComboBox().setAttribute("label", "Example Label");
