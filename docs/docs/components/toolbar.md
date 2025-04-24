@@ -1,6 +1,6 @@
 ---
 title: Toolbar
-description: A horizontal container component that holds a set of action buttons, icons, or other controls, typically used for performing tasks related to the current context.
+sidebar_position: 145
 ---
 
 <DocChip chip="shadow" />
@@ -9,44 +9,21 @@ description: A horizontal container component that holds a set of action buttons
 
 Toolbars offer users quick access to core actions and navigation elements. The webforJ `Toolbar` component is a horizontal container that can hold a set of action buttons, icons, or other components. It's well-suited for managing page controls and housing key functions like a search bar or a notification button.
 
-:::tip Sectioned Content
-Consider using the [`TabbedPane`](./tabbedpane) component for sectioned content, such as a document viewer.
-:::
+## Organizing toolbar content
 
-## Basics
+The `Toolbar` saves time by organizing essential components in an easily accessible and consistent layout. By default, it takes the full width of its parent element and provides four placement areas—or _slots_—for organizing components:
 
-The `Toolbar` saves time by organizing essential components in an easily accessible and consistent layout. By default, a `Toolbar` takes the full width of its parent element.
+- **Start**: Usually contains an <JavadocLink type="applayout" location="com/webforj/component/layout/applayout/AppDrawerToggle" code='true'>AppDrawerToggle</JavadocLink> or a home button.
+- **Title**: Used for app names or logos.
+- **Content**: For high-attention actions like search or navigation.
+- **End**: Less frequent actions, such as user profile or help.
 
-Components can be added to a `Toolbar` in one of four slots: start, title, content, and end. Each slot has a corresponding method for adding components: `addToStart()`, `addToTitle()`, `addToContent()`, and `addToEnd()`. Additionally, each slot can have multiple components.
+Each slot has a method for adding components: `addToStart()`, `addToTitle()`, `addToContent()`, and `addToEnd()`.
 
-```Java
-Toolbar toolbar = new Toolbar();
-IconButton settings = new IconButton(TablerIcon.create("settings"));
-IconButton profile = new IconButton(TablerIcon.create("user-circle"));
+The following demo shows how to add a `Toolbar` to an [AppLayout](./app-layout) and utilize all supported slots effectively.
+To read more about implementing toolbars within an `AppLayout`, see [Sticky toolbars](./app-layout#sticky-toolbars) and [Mobile navigation layout](./app-layout#mobile-navigation-layout).
 
-toolbar.addToTitle(new H1("webforJ App"));
-toolbar.addToEnd(settings, profile);
-```
-
-### Toolbar slots
-
-To create a well-organized `Toolbar`, consider the purpose of each component added and determine which slot would be best suited for it:
-
-- **Start**: The most leftmost slot of a `Toolbar`. It's an ideal place for an `AppDrawerToggle` for apps that have a `Drawer`, or for a home button using an `IconButton`.
-
-- **Title**: The slot that comes after the start slot. It could be used for an app's name or a company logo.
-
-- **Content**: The content slot takes up the majority of the `Toolbar`. This slot is for attention seeking actions, such as site navigation or a search bar.
-
-  :::tip Center Alignment
-  The components inside the content slot can be aligned center by also adding a component to the title slot.
-  :::
-
-- **End**: The rightmost slot of a `Toolbar`. This is a spot for components that won't have as much interaction as those inside other slots, like access to profile settings, a help button, or a link to additional resources.
-
-By thoughtfully choosing the slot for each component, developers can create a well-structured `Toolbar` that makes an app easy to navigate.
-
-<ComponentDemo
+<AppLayoutViewer
 path='/webforj/toolbarslots?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toolbar/ToolbarSlotsView.java'
 height='300px'
@@ -54,72 +31,53 @@ height='300px'
 
 ## Compact mode
 
-Screen space is a valuable resource for any app. So, developers who want to use multi-row options with multiple `Toolbar` components can use the compact mode. By using the `setCompact()` method, the vertical whitespace is eliminated around a `Toolbar`, effectively freeing up screen space for additional content.
+Use `setCompact(true)` to reduce the padding around a `Toolbar`. This is helpful when you need to fit more content on screen, especially in apps with stacked toolbars or limited space. The toolbar still behaves the same—only the height is reduced. This mode is commonly used in headers, sidebars, or layouts where space is tight.
 
-```Java
+```java
 Toolbar toolbar = new Toolbar();
 toolbar.setCompact(true);
 ```
-
-### Using a `ProgressBar`
-
-Compact mode can also compartmentalize components. The following example shows a `ProgressBar` inside a `Toolbar` that's using compact mode.
-This can be helpful in an app to provide visual cues for a process running in the background, downloading files, or tracking multi-step forms.
 
 <AppLayoutViewer path='/webforj/toolbarcompact?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toolbar/ToolbarCompactView.java'
 />
 
-## Inside an `AppLayout`
+## `ProgressBar` in toolbars
 
-Incorporating a `Toolbar` within an `AppLayout` can strengthen an app's cohesion. 
+A `ProgressBar` serves as a visual indicator for ongoing processes, such as loading data, uploading files, or completing steps in a flow. When placed inside a `Toolbar`, the `ProgressBar` aligns neatly along the bottom edge, making it unobtrusive while still clearly communicating progress to users.
 
-One of the primary benefits is ideal placement. A `Toolbar` can be positioned in either the header or footer of an `Applayout`, allowing for flexibility based on the app's design and user workflow. This strategic positioning can allow key actions and navigational elements to always be within reach, especially for mobile users.
+You can combine it with other components in the toolbar like buttons or labels without disrupting the layout.
 
-```Java
-AppLayout layout = new AppLayout();
-Toolbar headerToolbar = new Toolbar();
-Toolbar footerToolbar = new Toolbar();
-AppDrawerToggle toggle = new AppDrawerToggle();
-
-headerToolbar.addToStart(toggle);
-footerToolbar.addToContent(new H1("webforJ"));
-
-layout.addToHeader(headerToolbar);
-layout.addToFooter(footerToolbar);
-```
-
-Another significant advantage of using a `Toolbar` within an `AppLayout` is changing visibility based on scrolling behavior. Hiding the `Toolbar` while scrolling can give the user more screen space and reduce cognitive load.
-
-To read more about implementing toolbars within an `AppLayout`, go to [Sticky toolbars](./app-layout#sticky-toolbars) and [Mobile navigation layout](./app-layout#mobile-navigation-layout).
+<AppLayoutViewer path='/webforj/toolbarprogressbar?' mobile='false'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toolbar/ToolbarProgressbarView.java'
+/>
 
 ## Styling
 
-### Toolbar themes
-`Toolbar` components come with <JavadocLink type="foundation" location="com/webforj/component/Theme">seven discrete themes </JavadocLink> built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to a `Toolbar` to change its appearance and visual presentation. They offer a quick and consistent way to customize the look of a `Toolbar` within an app.
+### Themes
 
-  - **Danger**
-  - **Default**
-  - **Primary**
-  - **Success**
-  - **Warning**
-  - **Gray**
-  - **Info**
+`Toolbar` components include <JavadocLink type="foundation" location="com/webforj/component/Theme">seven built-in themes</JavadocLink> for quick visual customization:
+
+<ComponentDemo 
+path='/webforj/toolbartheme?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toolbar/ToolbarThemeView.java' 
+height = '475px'
+/>
 
 ### Shadow parts
 
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
+These are the parts of the [shadow DOM](../glossary#shadow-dom) that can be targeted via CSS:
 
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Toolbar} table='parts'/>
+<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Toolbar} table='parts'/>
 
 ### Slots
 
-Listed below are the slots available for utilization within the `Toolbar` component. These slots act as placeholders within the component that control where the children of a customized element should be inserted within the shadow tree.
+Available slots within the `Toolbar` component:
 
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Toolbar} table='slots'/>
+<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Toolbar} table='slots'/>
 
 ### Reflected attributes
 
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
+These are attributes visible in the DOM, allowing styling via attribute selectors:
 
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Toolbar} table="reflects"/>
+<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Toolbar} table="reflects"/>

@@ -1,78 +1,51 @@
 package com.webforj.samples.views.toolbar;
 
-import com.webforj.Interval;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.component.html.elements.H1;
-import com.webforj.component.html.elements.Img;
+
 import com.webforj.component.Composite;
-import com.webforj.component.Expanse;
-import com.webforj.component.Theme;
-import com.webforj.component.button.Button;
-import com.webforj.component.button.event.ButtonClickEvent;
-import com.webforj.component.progressbar.ProgressBar;
+import com.webforj.component.html.elements.H1;
+import com.webforj.component.html.elements.H3;
+import com.webforj.component.html.elements.Paragraph;
+import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.applayout.AppDrawerToggle;
 import com.webforj.component.layout.applayout.AppLayout;
-import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.layout.toolbar.Toolbar;
-import com.webforj.component.optiondialog.MessageDialog;
-import com.webforj.component.optiondialog.OptionDialog;
+import com.webforj.component.tabbedpane.Tab;
+import com.webforj.component.tabbedpane.TabbedPane;
 
 @Route
 @FrameTitle("Toolbar Compact")
 public class ToolbarCompactView extends Composite<AppLayout> {
 
-  AppLayout appLayout = getBoundComponent();
-  Button analyzeButton = new Button("Analyze data", this::analyze);
-  ProgressBar bar = new ProgressBar();
-
-  Toolbar mainToolbar = new Toolbar();
-  Toolbar progressToolbar = new Toolbar();
-  int delayStart = -2;
-  Interval interval = new Interval(0.1f, this::progressLoad);
+  AppLayout self = getBoundComponent();
 
   public ToolbarCompactView() {
+    self
+        .setDrawerPlacement(AppLayout.DrawerPlacement.HIDDEN)
+        .setStyle("--dwc-app-layout-header-height", "80px")
+        .add(new H1("Application Title"), new Paragraph("Content goes here"));
 
-    mainToolbar.addToStart(new AppDrawerToggle());
-    mainToolbar.addToTitle(new H1("webforJ App"));
+    Toolbar mainToolbar = new Toolbar();
+    mainToolbar
+        .addToTitle(new H3("Application"))
+        .addToStart(new AppDrawerToggle());
 
-    bar.setHeight("clamp(3px, calc(-0.01 * 100vw + 15px), 12px)");
+    Toolbar secondToolbar = new Toolbar();
+    secondToolbar.setCompact(true);
 
-    progressToolbar.addToContent(bar);
-    progressToolbar.setCompact(true);
+    TabbedPane menu = new TabbedPane();
+    menu
+        .setBorderless(true)
+        .setBodyHidden(true);
 
-    analyzeButton.setDisableOnClick(true);
-    analyzeButton.setExpanse(Expanse.XLARGE);
+    menu.addTab(new Tab("Sales", TablerIcon.create("report-money")));
+    menu.addTab(new Tab("Enterprise", TablerIcon.create("building")));
+    menu.addTab(new Tab("Payments", TablerIcon.create("credit-card")));
+    menu.addTab(new Tab("History", TablerIcon.create("history")));
 
-    FlexLayout flexLayout = FlexLayout.create(analyzeButton)
-        .justify().center()
-        .build();
+    secondToolbar.add(menu);
 
-    appLayout.setDrawerHeaderVisible(true)
-        .addToDrawerTitle(new Img("https://docs.webforj.com/img/webforj_icon.svg"))
-        .addToHeader(mainToolbar, progressToolbar)
-        .addToContent(flexLayout)
-        .setDrawerOpened(false);
+    self.addToHeader(mainToolbar, secondToolbar);
   }
-
-  private void analyze(ButtonClickEvent e) {
-    delayStart = -2;
-    bar.setTheme(Theme.PRIMARY);
-    interval.restart();
-  }
-
-  private void progressLoad(Interval.ElapsedEvent e) {
-    Integer progress = bar.getValue() + ++delayStart;
-    bar.setValue(progress);
-
-    if (progress >= bar.getMax()) {
-      e.getInterval().stop();
-      bar.setAnimated(false);
-      bar.setTheme(Theme.WARNING);
-      OptionDialog.showMessageDialog("No data to analyze!","Error", MessageDialog.MessageType.WARNING);
-      analyzeButton.setEnabled(true);
-      bar.setValue(0);
-    }
-  }
-
 }
