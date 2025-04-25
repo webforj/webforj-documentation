@@ -1,13 +1,14 @@
-package com.webforj.samples.views.applayout;
+package com.webforj.samples.views.applayout.mobiledrawer;
 
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H2;
 import com.webforj.component.html.elements.Paragraph;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.views.applayout.AbstractContentView;
 
-@Route(value = "/content/:name", outlet = AppLayoutConferenceDemoView.class)
-public class AppLayoutConferenceContentView extends AbstractContentView{
-    public AppLayoutConferenceContentView(){
+@Route(value = "/content/:name", outlet = AppLayoutMobileDrawerView.class)
+public class AppLayoutMobileDrawerContentView extends AbstractContentView{
+    public AppLayoutMobileDrawerContentView(){
         for (int i = 0; i < 5; i++) {
             Div content = new Div().addClassName("card");
             content.add(

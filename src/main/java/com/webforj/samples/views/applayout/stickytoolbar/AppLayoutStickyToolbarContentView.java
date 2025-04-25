@@ -1,9 +1,10 @@
-package com.webforj.samples.views.applayout;
+package com.webforj.samples.views.applayout.stickytoolbar;
 
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H2;
 import com.webforj.component.html.elements.Paragraph;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.views.applayout.AbstractContentView;
 
 @Route(value = "/content/:name", outlet = AppLayoutStickyToolbarView.class)
 public class AppLayoutStickyToolbarContentView extends AbstractContentView{
