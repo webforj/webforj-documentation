@@ -92,7 +92,7 @@ help.setTarget(AppNavItem.NavigationTarget.BLANK);
 
 ## Prefix and suffix
 
-`AppNavItem` supports prefix and suffix components. Use these to enhance visual clarity with icons, badges, or buttons.
+`AppNavItem` supports prefix and suffix components. Use these to provide visual clarity with icons, badges, or buttons.
 
 - **Prefix**: appears before the label, useful for icons.
 - **Suffix**: appears after the label, great for badges or actions.
