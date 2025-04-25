@@ -40,5 +40,6 @@
 "Toast": "dwc-toast",
 "TimeField": "dwc-timefield",
 "Alert": "dwc-alert",
+"Toolbar": "dwc-toolbar",
 "AppNavItem": "dwc-app-nav-item"
 }
