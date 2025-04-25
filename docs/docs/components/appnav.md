@@ -1,143 +1,127 @@
 ---
 title: AppNav
+sidebar_position: 6
 ---
 
 <DocChip chip="shadow" />
-
 <DocChip chip="name" label="dwc-app-nav" />
-
 <DocChip chip="name" label="dwc-app-nav-item" />
-
 <JavadocLink type="appnav" location="com/webforj/component/appnav/AppNav" top='true'/> 
 
-The `AppNav` component in webforJ provides a flexible and organized navigation container to structure menus, sidebars, or other navigational elements. Each menu item is represented by an `AppNavItem`, allowing developers to configure paths, customize appearance, and organize items into hierarchical structures.
+The `AppNav` component in webforJ provides a flexible and organized side navigation menu with support for both flat and hierarchical structures. Each entry is an `AppNavItem`, which can represent a simple link or a group containing sub-items. Items can be linked to internal views or external resources, enhanced with icons, badges, or other components.
 
-## Basics
+## Adding and nesting items
 
-The `AppNav` component supports creating intuitive navigation menus with a combination of `AppNav` and `AppNavItem` elements. Developers can easily add items, configure their behavior, and customize their appearance to fit the app’s requirements.
+`AppNavItem` instances are used to populate the `AppNav` structure. These items can be simple links or nested group headers that contain child items. Group headers without links act as expandable containers.
+
+Use `addItem()` to include items in the nav:
+
+```java
+AppNavItem dashboard = new AppNavItem("Dashboard", "/dashboard");
+AppNavItem admin = new AppNavItem("Admin");
+admin.addItem(new AppNavItem("Users", "/admin/users"));
+admin.addItem(new AppNavItem("Settings", "/admin/settings"));
+
+AppNav nav = new AppNav();
+nav.addItem(dashboard);
+nav.addItem(admin);
+```
+
+:::tip Linking Group Items
+Top-level items in a navigation tree are typically meant to be expandable—not clickable links. Setting a `path` on such items can confuse users who expect them to reveal sub-items instead of navigating elsewhere.
+
+If you want the group header to trigger a custom action (such as opening external docs), keep the group path empty and instead add an interactive control like an [`IconButton`](./icon#icon-buttons) to the item's suffix. This keeps the UX consistent and clean.
+:::
 
 <AppLayoutViewer 
-path='/webforj/appnav?'  
+path='/webforj/appnav/Social?'  
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/appnav/AppNavView.java'
-height='200px'
 />
 
-## Adding and organizing items
+## Linking Items
 
-`AppNav` allows you to add navigation items and organize them into hierarchical structures. Each `AppNavItem` can represent a standalone link or a container for nested items.
+Each `AppNavItem` can navigate to an internal view or an external link. You can define this using static paths or registered view classes.
 
-### Adding items
+### Static paths
 
-You can create navigation items by initializing `AppNavItem` instances and adding them to an AppNav:
-
-```java
-AppNavItem homeItem = new AppNavItem("Home", "/home");
-AppNavItem profileItem = new AppNavItem("Profile", "/profile");
-
-appNav.addItem(homeItem);
-appNav.addItem(profileItem);
-```
-
-### Organizing nested items
-
-For hierarchical navigation, use `AppNavItem` to create groups of sub-items. The parent item acts as a container, and its sub-items can be expanded or collapsed dynamically.
-
-:::warning URLs on Top-Level Items with Nested Children 
-Leave the parent item’s path empty when adding nested items to avoid unintended navigation.
-:::
-
-<AppLayoutViewer 
-path='/webforj/appnavhierarchy?'  
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/appnav/AppNavHierarchyView.java'
-height='200px'
-/>
-
-## Automatic group expansion
-With `setAutoOpen()`, the `AppNav` component will automatically expand groups of items when the user navigates. This behavior is helpful for hierarchical menus where you want to expose sub-items dynamically.
+Use string paths to define links directly:
 
 ```java
-appNav.setAutoOpen(true); // Automatically opens selected groups
+AppNavItem docs = new AppNavItem("Docs", "/docs");
+AppNavItem help = new AppNavItem("Help", "https://support.example.com");
 ```
 
-## Linking items
+### Registered views
 
-The `AppNav` component's navigation feature relies on each `AppNavItem` being configured with a specific path or route, which enables it to link to different sections or views within an app. 
-
-### Defining paths
-
-Each `AppNavItem` requires a path or route that specifies where the navigation item will take users. This can be configured in two main ways:
-
-<<<<<<< HEAD
-**Direct Path**: you can assign a direct URL or path to an `AppNavItem`. This is helpful for static routes or URLs.
-=======
-**Direct Path**: You can assign a direct URL or path to an `AppNavItem`. This is helpful for static routes or URLs.
->>>>>>> 5bcec13e (new appnav article and demos)
+If your views are registered with the [router](../routing/overview), you can pass the class instead of a hardcoded URL:
 
 ```java
-AppNavItem dashboardItem = new AppNavItem("Dashboard", "/dashboard");
-AppNavItem helpItem = new AppNavItem("Help", "https://support.example.com");
-
-appNav.addItem(dashboardItem);
-appNav.addItem(helpItem);
+AppNavItem settings = new AppNavItem("Settings", SettingsView.class);
 ```
 
-<<<<<<< HEAD
-**Registered View Class**: alternatively, if you have views registered with your app’s router, you can pass a class reference for the view. This approach provides flexibility, as it allows navigation to specific views without hardcoding URLs. The router automatically resolves the view’s path based on the registered configuration.
-=======
-**Registered View Class**: Alternatively, if you have views registered with your app’s router, you can pass a class reference for the view. This approach provides flexibility, as it allows navigation to specific views without hardcoding URLs. The router automatically resolves the view’s path based on the registered configuration.
->>>>>>> 5bcec13e (new appnav article and demos)
+If your annotated route supports [route parameters](../routing/route-patterns#named-parameters), you can also pass a `ParametersBag`:
 
 ```java
-AppNavItem settingsItem = new AppNavItem("Settings", SettingsView.class);
-appNav.addItem(settingsItem);
+ParametersBag params = ParametersBag.of("id=123");
+AppNavItem advanced = new AppNavItem("User", UserView.class, params);
 ```
 
-:::tip Query Parameters
-To navigate to specific sections, use the `setQueryParameters()` method with a `ParametersBag` to define key-value pairs. 
-:::
- 
+### With query parameters
 
-## Setting navigation targets
-
-The `AppNavItem` component provides the `setTarget()` method, which allows you to control the behavior of each navigation item when it's clicked. By default, items open in the current browsing context, but you can customize this with the `NavigationTarget` options:
-
-- **SELF**: This is the default option and opens in the current browsing context.
-- **BLANK**: Opens the item in a new tab or window based on browser settings.
-- **PARENT**: Opens in the parent browsing context; if there’s no parent, it behaves like SELF.
-- **TOP**: Opens in the top-level browsing context. If there’s no higher-level context, it also behaves like SELF.
+Pass a `ParametersBag` to include query strings:
 
 ```java
-AppNavItem dashboardItem = new AppNavItem("Dashboard", "/dashboard");
-dashboardItem.setTarget(AppNavItem.NavigationTarget.SELF); // Opens in the current view
-
-AppNavItem helpItem = new AppNavItem("Help", "https://support.example.com");
-helpItem.setTarget(AppNavItem.NavigationTarget.BLANK); // Opens in a new tab
-
-AppNavItem parentItem = new AppNavItem("Parent View", "/parent");
-parentItem.setTarget(AppNavItem.NavigationTarget.PARENT); // Opens in the parent context
-
-AppNavItem topItem = new AppNavItem("Top View", "/top");
-topItem.setTarget(AppNavItem.NavigationTarget.TOP); // Opens in the top-level context
+ParametersBag params = ParametersBag.of("param1=value1&param2=value2");
+AppNavItem advanced = new AppNavItem("Advanced", SettingsView.class, params);
+advanced.setQueryParameters(params);
 ```
 
-## Item prefix and suffix
+## Target behavior
 
-The `AppNavItem` component allows you to customize its appearance by adding prefixes and suffixes. These are useful for enhancing the visual design or providing additional context, such as icons, badges, or other indicators, alongside the item's text.
+Control how links open using `setTarget()`. This is especially useful for external links or pop-out views.
 
-- **Prefixes**: Add elements or icons to appear before the item's label. For example, you can use an icon to represent the item's purpose visually.
-
-- **Suffixes**: Add elements or icons to appear after the item's label. This is often used for secondary information, such as a badge showing a count or a status indicator.
-
-Here's an example of adding a prefix and suffix:
+- **SELF** (default): Opens in the current view.
+- **BLANK**: Opens in a new tab or window.
+- **PARENT**: Opens in the parent browsing context.
+- **TOP**: Opens in the top-level browsing context.
 
 ```java
-AppNavItem notificationsItem = new AppNavItem("Notifications");
-notificationsItem.setPrefix(new Icon(TablerIcon.BELL));
-notificationsItem.setSuffix(new Badge("3", Badge.Theme.INFO));
+AppNavItem help = new AppNavItem("Help", "https://support.example.com");
+help.setTarget(AppNavItem.NavigationTarget.BLANK);
 ```
 
-Prefixes and suffixes improve clarity, ensuring a more intuitive user experience for your app's navigation.
+## Prefix and suffix
 
-## Parts and CSS properties
+`AppNavItem` supports prefix and suffix components. Use these to enhance visual clarity with icons, badges, or buttons.
 
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').AppNavItem} />
+- **Prefix**: appears before the label, useful for icons.
+- **Suffix**: appears after the label, great for badges or actions.
+
+```java
+AppNavItem notifications = new AppNavItem("Alerts");
+notifications.setPrefixComponent(TablerIcon.create("alert");
+notifications.setSuffixComponent(TablerIcon.create("link"));
+```
+
+## Auto-opening groups
+
+Use `setAutoOpen(true)` on the `AppNav` component to automatically expand nested groups when the app is refreshed.
+
+```java
+nav.setAutoOpen(true);
+```
+
+## Styling `AppNavItem`
+
+### Shadow Parts
+
+These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
+
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').AppNavItem} table='parts' exclusions=''/>
+
+### Reflected Attributes
+
+The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
+
+<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').AppNavItem} table="reflects" />
+
