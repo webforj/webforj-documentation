@@ -39,7 +39,8 @@ public class AppNavView extends Composite<AppLayout> {
     AppNav appNav = new AppNav();
     appNav.setAutoOpen(true);
 
-    AppNavItem inbox = new AppNavItem("Inbox", "", TablerIcon.create("inbox"));
+    AppNavItem inbox = new AppNavItem("Inbox");
+    inbox.setPrefixComponent(TablerIcon.create("inbox"));
     inbox.setSuffixComponent(new Strong("54"));
     inbox.addItem(new AppNavItem("Primary", AppNavPageView.class, ParametersBag.of("id=Primary"), TablerIcon.create("mailbox")));
     inbox.addItem(new AppNavItem("Promotions", AppNavPageView.class, ParametersBag.of("id=Promotions"), TablerIcon.create("tag")));
