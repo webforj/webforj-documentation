@@ -11,7 +11,7 @@ Toolbars offer users quick access to core actions and navigation elements. The w
 
 ## Organizing toolbar content
 
-The `Toolbar` saves time by organizing essential components in an easily accessible and consistent layout. By default, it takes the full width of its parent element and provides four placement areas—or _slots_—for organizing components:
+The `Toolbar` organizes essential components in an easily accessible and consistent layout. By default, it takes the full width of its parent element and provides four placement areas, or _slots_, for organizing components:
 
 - **Start**: Usually contains an <JavadocLink type="applayout" location="com/webforj/component/layout/applayout/AppDrawerToggle" code='true'>AppDrawerToggle</JavadocLink> or a home button.
 - **Title**: Used for app names or logos.
