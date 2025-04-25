@@ -226,7 +226,7 @@ This category includes components that facilitate user interactions and visually
     <p>A component that displays a rotating animation, typically used to indicate that a process or action is in progress.</p>
   </GalleryCard>
 
-  <GalleryCard header="AppNav" href="#" image="/img/components/AppNav.png" effect="slideFromLeft">
+  <GalleryCard header="AppNav" href="appnav" image="/img/components/AppNav.png" effect="slideFromLeft">
     <p>A component that provides a navigation menu for the app, typically used for listing links or navigation items for switching between different sections or views.</p>
   </GalleryCard>
 
