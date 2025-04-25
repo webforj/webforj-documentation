@@ -80,10 +80,10 @@ advanced.setQueryParameters(params);
 
 Control how links open using `setTarget()`. This is especially useful for external links or pop-out views.
 
-- **SELF** (default): Opens in the current view.
-- **BLANK**: Opens in a new tab or window.
-- **PARENT**: Opens in the parent browsing context.
-- **TOP**: Opens in the top-level browsing context.
+- **`SELF`** (default): Opens in the current view.
+- **`BLANK`**: Opens in a new tab or window.
+- **`PARENT`**: Opens in the parent browsing context.
+- **`TOP`**: Opens in the top-level browsing context.
 
 ```java
 AppNavItem help = new AppNavItem("Help", "https://support.example.com");
