@@ -139,7 +139,7 @@ The restore value must be explicitly set. If not defined, the feature will not r
 
 <ComponentDemo 
 path='/webforj/maskednumrestore?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumberFieldRestoreView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumRestoreView.java'
 height = '150px'
 />
 
@@ -150,7 +150,7 @@ This is ideal for inputs like quantities, pricing adjustments, rating controls, 
 
 <ComponentDemo 
 path='/webforj/maskednumspinner?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumberFieldSpinnerView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskednumberfield/MaskedNumSpinnerView.java'
 height = '120px'
 />
 
