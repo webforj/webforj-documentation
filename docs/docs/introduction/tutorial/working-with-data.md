@@ -3,7 +3,7 @@ title: Working With Data
 sidebar_position: 3
 ---
 
-This step focuses on adding data management and display capabilities to the demo app. To do this, dummy data about various `Customer` objects will be created, and the app will be updated to handle this data and display it in a [`Table`](../../components/table) added to the previous app.
+This step focuses on adding data management and display capabilities to the demo app. To do this, dummy data about various `Customer` objects will be created, and the app will be updated to handle this data and display it in a [`Table`](../../components/table/overview) added to the previous app.
 
 It will outline creating a `Customer` model class, and integrating it with a `Service` class to access and manage the necessary data using the implementation of a repository. Then, it will detail how to use the retrieved data to implement a `Table` component in the app, displaying customer information in an interactive and structured format.
 
@@ -132,7 +132,7 @@ public class Service {
 Now that the data needed has been properly created via the `Customer` class, and can is returned as a `Repository` via the `Service` class, the final task in this step is to integrate the `Table` component into the app to display customer data.
 
 :::tip More about the `Table`
-For a more detailed overview of the various features of behaviors of the `Table`, see [this article](../../components/table).
+For a more detailed overview of the various features of behaviors of the `Table`, see [this article](../../components/table/overview).
 :::
 
 The `Table` provides a dynamic and flexible way to display structured data in your app. It's designed to integrate with the `Repository` class, enabling features like data querying, pagination, and efficient updates. A `Table` is highly configurable, allowing you to define columns, control its appearance, and bind it to data repositories with minimal effort.
