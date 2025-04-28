@@ -19,7 +19,7 @@
       (with 1 second timeout) when new classes are compiled.
       Should be disabled when using a live reload system, such as JRebel.
       -->
-    <jetty.scan>1</jetty.scan>
+    <jetty.scan>0</jetty.scan>
     <jetty.port>8080</jetty.port>
     <jetty.stopPort>9966</jetty.stopPort>
 
