@@ -172,7 +172,7 @@ terminal.setOptions(options);
 You can style the terminal using `TerminalTheme`, which defines:
 
 - Background and foreground colors.
-- Standard ANSI color palette.
+- Standard `ANSI` color palette.
 - Cursor and selection background colors.
 
 Example:
