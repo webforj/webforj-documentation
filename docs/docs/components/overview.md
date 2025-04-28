@@ -178,7 +178,7 @@ Option dialogs provide a way to present users with choices or prompt them for co
 This category includes components that facilitate user interactions and visually display data or app states. These components help users navigate the app, trigger actions, and understand progress or results through dynamic visual elements.
 
 <GalleryGrid>
-  <GalleryCard header="Table" href="table" image="/img/components/Table.png">
+  <GalleryCard header="Table" href="table/overview" image="/img/components/Table.png">
     <p> A component used to display data in a structured, tabular format with rows and columns, supporting features like sorting and pagination.</p>
   </GalleryCard>
 

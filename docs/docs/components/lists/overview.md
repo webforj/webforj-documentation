@@ -9,7 +9,7 @@ title: Lists
 This section describes common features of all list components, and isn't a class that can be instantiated or used directly.
 :::
 
-There are three types of lists available for use within your apps: [`ListBox`](./lists/listbox), [`ChoiceBox`](./lists/choicebox), and [`ComboBox`](./lists/combobox). These components all display a list of key-value items, and provide methods to add, remove, select, and manage the items within the list.
+There are three types of lists available for use within your apps: [`ListBox`](listbox), [`ChoiceBox`](choicebox), and [`ComboBox`](combobox). These components all display a list of key-value items, and provide methods to add, remove, select, and manage the items within the list.
 
 This page outlines the shared features and behavior of all list components, while specific details for each are covered in their respective pages.
 
@@ -42,7 +42,7 @@ The various List components offer several methods for managing the list of items
    - You can insert multiple items at a specified index using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#insert(int,java.util.List)' code="true">insert(int index, List< ListItem > items)</JavadocLink> method.
 
 :::tip
-To optimize performance, instead of triggering a server-to-client message each time you use the `add()` method, it's more efficient to create a List of <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> objects first. Once you have this list, you can add them all at once using the `insert(int index, List<ListItem> items)` method. This approach reduces server-client communication, enhancing overall efficiency. For detailed guidelines on this and other best practices in webforJ architecture, refer to [Client/Server Interaction](/architecture/architecture.md).
+To optimize performance, instead of triggering a server-to-client message each time you use the `add()` method, it's more efficient to create a List of <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> objects first. Once you have this list, you can add them all at once using the `insert(int index, List<ListItem> items)` method. This approach reduces server-client communication, enhancing overall efficiency. For detailed guidelines on this and other best practices in webforJ architecture, refer to [Client/Server Interaction](/docs/architecture/client-server).
 :::
 
 ### Removing items

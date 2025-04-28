@@ -34,7 +34,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='475px'
 />
 
-This example creates the `Navigator` and [`Table`](./table/) with the same `Repository` instance. This means that when navigating to a new page with the `Navigator`, the [`Table`](./table/) recognizes this change and rerenders.
+This example creates the `Navigator` and [`Table`](table/overview) with the same `Repository` instance. This means that when navigating to a new page with the `Navigator`, the [`Table`](table/overview) recognizes this change and rerenders.
 
 ## Pagination 
 
