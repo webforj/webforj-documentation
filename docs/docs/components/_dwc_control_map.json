@@ -42,5 +42,6 @@
 "Alert": "dwc-alert",
 "Toolbar": "dwc-toolbar",
 "AppNavItem": "dwc-app-nav-item",
-"Terminal": "dwc-terminal"
+"Terminal": "dwc-terminal",
+"AppNav": "dwc-app-nav"
 }
