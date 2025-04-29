@@ -42,7 +42,7 @@ public class TerminalView extends Composite<Terminal> {
         .setStyle("margin", "var(--dwc-space-m)")
         .addDataListener(this::onData);
 
-    self.writeln("\u001B[1;32mWelcome 👋  to the webforj terminal!\u001B[0m");
+    self.writeln("\u001B[1;32mWelcome 👋  to the webforJ terminal!\u001B[0m");
     self.writeln("Type \u001B[1;33m`help`\u001B[0m to see a list of supported commands.");
     self.write("$ ");
 
