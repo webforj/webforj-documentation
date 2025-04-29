@@ -1,0 +1,38 @@
+.is-canvas {
+  margin: 0 auto;
+  padding: 1rem;
+  max-width: 600px;
+}
+
+.item-name {
+  font-size: 20px;
+  font-weight: bold;
+  padding: .5rem 0 0 0;
+  color: var(--dwc-color-primary-text);
+}
+
+.item-excerpt {
+  font-size: 14px;
+  color: var(--dwc-color-gray-text-light);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--dwc-color-default);
+}
+
+.custom-loading {
+  padding: 1rem;
+  text-align: center;
+  color: var(--dwc-color-primary);
+  font-size: 16px;
+}
+
+.loading-icon {
+  display: block;
+  margin: 0 auto 0.5rem auto;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; transform: scale(1); color: var(--dwc-color-primary); }
+  50% { opacity: 0.6; transform: scale(1.2); color: var(--dwc-color-primary-dark); }
+  100% { opacity: 1; transform: scale(1); color: var(--dwc-color-primary); }
+}

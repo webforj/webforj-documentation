@@ -1,0 +1,19 @@
+.is-canvas {
+   margin: 0 auto;
+   padding: 1rem;
+   max-width: 600px;
+}
+
+.item-name {
+  font-size: 20px;
+  font-weight: bold;
+  padding: .5rem 0 0 0;
+  color: var(--dwc-color-primary-text);
+}
+
+.item-excerpt {
+  font-size: 14px;
+  color: var(--dwc-color-gray-text-light);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--dwc-color-default);
+  }
