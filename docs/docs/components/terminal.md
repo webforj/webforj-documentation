@@ -11,6 +11,17 @@ The `Terminal` component provides an interactive terminal emulator that behaves 
 
 This terminal is designed to deliver reliable behavior across a range of use cases, such as building remote access tools, text dashboards, embedded command shells, or interactive debug consoles.
 
+:::info Importing Terminal
+To use the `Terminal` component in your app, ensure that you include the following dependency in your pom.xml.
+
+```xml
+<dependency>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-terminal</artifactId>
+</dependency>
+```
+:::
+
 <ComponentDemo 
 path='/webforj/terminal?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/terminal/TerminalView.java'
