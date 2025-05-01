@@ -41,5 +41,6 @@
 "TimeField": "dwc-timefield",
 "Alert": "dwc-alert",
 "Toolbar": "dwc-toolbar",
-"AppNavItem": "dwc-app-nav-item"
+"AppNavItem": "dwc-app-nav-item",
+"Terminal": "dwc-terminal"
 }

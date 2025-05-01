@@ -234,7 +234,7 @@ This category includes components that facilitate user interactions and visually
     <p>A component that displays a graphical symbol or image, often used to represent an action, status, or category in the user interface.</p>
   </GalleryCard>
 
-  <GalleryCard header="Terminal" href="#" image="/img/components/Terminal.png">
+  <GalleryCard header="Terminal" href="terminal" image="/img/components/Terminal.png">
     <p>A component that simulates a command-line interface (CLI) within the app, allowing users to input and execute text-based commands.</p>
   </GalleryCard>
 </GalleryGrid>
