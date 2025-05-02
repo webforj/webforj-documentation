@@ -309,7 +309,10 @@ export default function ComponentDemo({
     margin: 10px 0 0 0;
     position: absolute;
     right: 25px;
-  `;
+    img {
+    filter: ${colorMode === "dark" ? "invert(1)" : "none"};
+  }  `
+  ;
 
   const resizeBarStyles = css`
     display: flex;
