@@ -237,4 +237,8 @@ This category includes components that facilitate user interactions and visually
   <GalleryCard header="Terminal" href="#" image="/img/components/Terminal.png">
     <p>A component that simulates a command-line interface (CLI) within the app, allowing users to input and execute text-based commands.</p>
   </GalleryCard>
+  
+  <GalleryCard header="InfiniteScroll" href="infinitescroll" image="/img/components/InfiniteScroll.png">
+    <p>A component that dynamically loads more content as the user scrolls. Commonly used for feeds or long lists, it supports scroll event handling, loading indicators, and completion state control.</p>
+  </GalleryCard>
 </GalleryGrid>

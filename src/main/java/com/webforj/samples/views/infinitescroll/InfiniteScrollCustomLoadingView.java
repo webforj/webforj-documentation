@@ -25,7 +25,8 @@ public class InfiniteScrollCustomLoadingView extends Composite<Div> {
 
     AtomicInteger index = new AtomicInteger();
 
-    Div canvas = new Div().addClassName("is-canvas");
+    Div canvas = new Div().setMaxWidth("600px")
+        .addClassName("is-canvas");
 
     InfiniteScroll infiniteScroll = new InfiniteScroll();
     infiniteScroll.addClassName("is");

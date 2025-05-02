@@ -23,7 +23,8 @@ public class InfiniteScrollView extends Composite<Div> {
 
     AtomicInteger index = new AtomicInteger();
 
-    Div canvas = new Div().addClassName("is-canvas");
+    Div canvas = new Div().setMaxWidth("600px")
+        .addClassName("is-canvas");
 
     InfiniteScroll infiniteScroll = new InfiniteScroll();
     infiniteScroll.setHeight("100%");
@@ -55,7 +56,7 @@ public class InfiniteScrollView extends Composite<Div> {
     };
 
     public Item() {
-      Div self = getBoundComponent();
+      Div self = getBoundComponent().addClassName("self");
 
       String name = names[random.nextInt(names.length)];
 

@@ -39,5 +39,6 @@
 "BusyIndicator": "dwc-loading",
 "Toast": "dwc-toast",
 "TimeField": "dwc-timefield",
-"Alert": "dwc-alert"
+"Alert": "dwc-alert",
+"InfiniteScroll": "dwc-infinite-scroll"
 }
