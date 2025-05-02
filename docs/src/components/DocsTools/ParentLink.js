@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Admonition from '@theme/Admonition';
 
-export default function ParentLink({parent, url = "./"}){
+export default function ParentLink({parent}){
   const defaultChildValue = "This class";
   const [child, setChild] = useState(defaultChildValue);
 
@@ -17,7 +17,7 @@ export default function ParentLink({parent, url = "./"}){
     <div>
       <Admonition type="info" title="Inheritance">
         <p>{child !== defaultChildValue ? <code>{child}</code> : child} is a {parent} component, and inherits its features and behaviors. 
-        For an overview of {parent} properties, events, and other important information, please refer to the <a href={url}>{parent} documentation</a>.</p>
+        For an overview of {parent} properties, events, and other important information, please refer to the <a href="overview">{parent} documentation</a>.</p>
       </Admonition>
     </div>
   )

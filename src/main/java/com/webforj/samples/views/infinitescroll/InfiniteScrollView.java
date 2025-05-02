@@ -56,7 +56,7 @@ public class InfiniteScrollView extends Composite<Div> {
     };
 
     public Item() {
-      Div self = getBoundComponent().addClassName("self");
+      Div self = getBoundComponent();
 
       String name = names[random.nextInt(names.length)];
 

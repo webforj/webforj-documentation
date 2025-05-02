@@ -32,7 +32,7 @@ The following layout components are designed to handle a wide range of use cases
     <p>A container component that provides a structured layout for top-level app navigation and content organization.</p>
   </GalleryCard>
 
-  <GalleryCard header="Toolbar" href="#" image="/img/components/Toolbar.png">
+  <GalleryCard header="Toolbar" href="toolbar" image="/img/components/Toolbar.png">
     <p>A horizontal container component that holds a set of action buttons, icons, or other controls, typically used for performing tasks related to the current context.</p>
   </GalleryCard>
 
@@ -178,7 +178,7 @@ Option dialogs provide a way to present users with choices or prompt them for co
 This category includes components that facilitate user interactions and visually display data or app states. These components help users navigate the app, trigger actions, and understand progress or results through dynamic visual elements.
 
 <GalleryGrid>
-  <GalleryCard header="Table" href="table" image="/img/components/Table.png">
+  <GalleryCard header="Table" href="table/overview" image="/img/components/Table.png">
     <p> A component used to display data in a structured, tabular format with rows and columns, supporting features like sorting and pagination.</p>
   </GalleryCard>
 
@@ -226,7 +226,7 @@ This category includes components that facilitate user interactions and visually
     <p>A component that displays a rotating animation, typically used to indicate that a process or action is in progress.</p>
   </GalleryCard>
 
-  <GalleryCard header="AppNav" href="#" image="/img/components/AppNav.png" effect="slideFromLeft">
+  <GalleryCard header="AppNav" href="appnav" image="/img/components/AppNav.png" effect="slideFromLeft">
     <p>A component that provides a navigation menu for the app, typically used for listing links or navigation items for switching between different sections or views.</p>
   </GalleryCard>
 
