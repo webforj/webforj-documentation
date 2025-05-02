@@ -14,65 +14,9 @@ import GLOBALS from "../../../siteConfig";
 
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 
-function CodeToggleButton({ collapse, setCollapse }) {
-  CodeToggleButton.propTypes = {
-    collapse: PropTypes.bool.isRequired,
-    setCollapse: PropTypes.func.isRequired,
-  };
-
-  const buttonWrapperStyles = css`
-    display: flex;
-    justify-content: end;
-    align-items: flex-end;
-    background-color: transparent;
-    margin-bottom: -10px;
-  `;
-
-  const buttonStyles = css`
-    cursor: pointer;
-    z-index: 10;
-    height: 35px;
-    width: 35px;
-    border: none;
-    background-color: none;
-    justify-self: flex-end;
-    background-color: transparent;
-    margin-right: 5px;
-    margin-bottom: -50px !important;
-  `;
-
-  const iconStyles = css`
-    filter: invert(var(--inversion-percentage));
-  `;
-
-  return (
-    <div css={buttonWrapperStyles}>
-      <button
-        css={buttonStyles}
-        onClick={() => {
-          setCollapse(!collapse);
-        }}
-      >
-        {collapse ? (
-          <img
-            alt="collapse_button"
-            css={iconStyles}
-            src={arrowUp}
-            className="icon-tabler-arrow-bar-up"
-          />
-        ) : (
-          <img
-            css={iconStyles}
-            src={arrowDown}
-            className="icon-tabler-arrow-bar-down"
-          />
-        )}
-      </button>
-    </div>
-  );
-}
 
 export function OpenNewWindowButton({ url }) {
+  const { colorMode } = useColorMode()
   const buttonStyles = css`
     position: relative;
     cursor: pointer;
@@ -88,11 +32,7 @@ export function OpenNewWindowButton({ url }) {
   `;
 
   const iconStyles = css`
-    filter: invert(var(--inversion-percentage));
-    ::before {
-      mix-blend-mode: lighten;
-      opacity: 0.5;
-    }
+  filter: ${colorMode === "dark" ? "invert(1)" : "none"};
   `;
 
   const openNewWindow = () => {
@@ -309,10 +249,7 @@ export default function ComponentDemo({
     margin: 10px 0 0 0;
     position: absolute;
     right: 25px;
-    img {
-    filter: ${colorMode === "dark" ? "invert(1)" : "none"};
-  }  `
-  ;
+    `;
 
   const resizeBarStyles = css`
     display: flex;
