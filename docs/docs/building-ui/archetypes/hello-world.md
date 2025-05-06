@@ -11,7 +11,11 @@ This archetype creates a simple hello world app to demonstrate the basics of bui
 
 :::tip Starting from scratch
 This archetype creates a minimalistic app with a few components and some styling. For developers wishing to create a project with minimal scaffolding, see the [`blank` archetype](./blank).
-::: 
+:::
+
+:::tip Using startforJ
+For more control over customization and configuration, you can use [startforJ](https://docs.webforj.com/startforj/) to create your project - just select the `HelloWorld` archetype when choosing configuration options.
+:::
 
 ## Using the `hello-world` archetype
 
