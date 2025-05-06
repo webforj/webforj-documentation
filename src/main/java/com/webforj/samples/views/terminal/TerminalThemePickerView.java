@@ -34,8 +34,8 @@ public class TerminalThemePickerView extends Composite<FlexLayout> {
         .setMaxWidth("800px");
 
     terminal
-        .setStyle("margin", "0px var(--dwc-space-m)")
-        .setStyle("border", "1px solid var(--dwc-color-default)")
+        // .setStyle("margin", "0px var(--dwc-space-m)")
+        // .setStyle("border", "1px solid var(--dwc-color-default)")
         .setSize("100%", "400px")
         .writeln(
             """

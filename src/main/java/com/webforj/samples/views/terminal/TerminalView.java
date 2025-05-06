@@ -39,7 +39,7 @@ public class TerminalView extends Composite<Terminal> {
   public TerminalView() {
     self.setAutoFit(true)
         .setSize("95%", "95%")
-        .setStyle("margin", "var(--dwc-space-m)")
+        // .setStyle("margin", "var(--dwc-space-m)")
         .addDataListener(this::onData);
 
     self.writeln("\u001B[1;32mWelcome 👋  to the webforJ terminal!\u001B[0m");

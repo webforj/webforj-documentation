@@ -42,7 +42,7 @@ public class ServerLogsView extends Composite<FlexLayout> {
     printHelp();
 
     terminal.setAutoFit(true)
-        .setStyle("margin", "0px var(--dwc-space-m)")
+        // .setStyle("margin", "0px var(--dwc-space-m)")
         .setSize("95%", "85vh");
 
     startButton
