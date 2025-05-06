@@ -17,13 +17,17 @@ import DocCardList from '@theme/DocCardList';
 
 ## Using StartforJ
 
-**StartforJ** provides the simplest way to set up a new webforJ application. It generates a minimal starter project based on various available archetypes that includes all required dependencies, configuration files, and a pre-wired layout - ready to build on. 
+[StartforJ](https://docs.webforj.com/startforj) provides the simplest way to set up a new webforJ app. It generates a minimal starter project based on various available archetypes that includes all required dependencies, configuration files, and a pre-wired layout - ready to build on. 
 
-![star](../../static/img/startforj-dark.png)
+<div class="videos-container">
+  <video controls>
+    <source src="https://cdn.webforj.com/webforj-documentation/video/archetypes/starforj.mov" type="video/mp4" />
+  </video>
+</div>
 
 Using StartforJ:
 
-- Generates a Maven-based project with all necessary configuration  
+- Generates a project with all necessary configuration  
 - Prompts you for basic project metadata (e.g., `groupId`, `artifactId`, project name)  
 - Allows you to choose your desired webforJ and Java version
 - Lets you select a **theme color**, **icon**, and **archetype**  
@@ -31,9 +35,9 @@ Using StartforJ:
 
 Visit: [https://docs.webforj.com/startforj](https://docs.webforj.com/startforj)
 
-Once downloaded, unzip the project and open the folder in your IDE or terminal.
+Once downloaded, unzip the project and open the folder in your IDE.
 
-:::tip
+:::tip Available Archetypes
 webforJ comes with several predefined archetypes that help you quickly start your webforJ development. To see a complete list of available archetypes, please refer to the [archetypes catalog](../building-ui/archetypes/overview).
 :::
 
