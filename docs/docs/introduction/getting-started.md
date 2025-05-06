@@ -3,6 +3,7 @@ title: Getting Started
 sidebar_position: 2
 ---
 
+
 This article outlines the steps to scaffold a new webforJ app using the webforJ archetypes. This archetypes provide a pre-configured project structure and starter code to quickly get a project up and running.
 
 :::tip Prerequisites
@@ -14,18 +15,37 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
+## Using StartforJ
 
-## Using the `hello-world` archetype
+**StartforJ** provides the simplest way to set up a new webforJ application. It generates a minimal starter project based on various available archetypes that includes all required dependencies, configuration files, and a pre-wired layout - ready to build on. 
 
-<ComponentArchetype
-project="hello-world"
-/>
+![star](../../static/img/startforj-dark.png)
+
+Using StartforJ:
+
+- Generates a Maven-based project with all necessary configuration  
+- Prompts you for basic project metadata (e.g., `groupId`, `artifactId`, project name)  
+- Allows you to choose your desired webforJ and Java version
+- Lets you select a **theme color**, **icon**, and **archetype**  
+- Produces a downloadable ZIP, or publishes the project directly to GitHub  
+
+Visit: [https://docs.webforj.com/startforj](https://docs.webforj.com/startforj)
+
+Once downloaded, unzip the project and open the folder in your IDE or terminal.
 
 :::tip
 webforJ comes with several predefined archetypes that help you quickly start your webforJ development. To see a complete list of available archetypes, please refer to the [archetypes catalog](../building-ui/archetypes/overview).
 :::
 
-### Run the app
+## Using the command line
+
+For those who prefer using the coomand line, you can also generate a project directly using the Maven archetype:
+
+<ComponentArchetype
+project="hello-world"
+/>
+
+## Run the app
 
 Navigate into the newly created directory, and run the following command from the project’s root directory:
 
