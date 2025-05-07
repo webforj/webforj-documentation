@@ -2,6 +2,7 @@
 sidebar_position: 1
 title: Managing Resources
 hide_table_of_contents: true
+sidebar_class_name: new-content
 ---
 
 <Head>
