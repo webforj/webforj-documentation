@@ -1,3 +1,7 @@
+:root{
+  --dwc-app-layout-footer-height: 40px;
+}
+
 body {
   overflow: hidden;
   margin: 0;

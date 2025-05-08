@@ -1,13 +1,10 @@
 package com.webforj.samples.views.applayout.fullnavbar;
 
-
 import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
-import com.webforj.component.element.Element;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H1;
 import com.webforj.component.html.elements.H3;
-import com.webforj.component.html.elements.Img;
 import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.icons.Icon;
 import com.webforj.component.icons.TablerIcon;
@@ -18,6 +15,7 @@ import com.webforj.component.layout.appnav.AppNavItem;
 import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.router.history.ParametersBag;
 
 @InlineStyleSheet("context://css/applayout/applayout.css")
 @Route
@@ -31,11 +29,9 @@ public class AppLayoutFullNavbarView extends Composite<AppLayout> {
   Div drawer = new Div();
 
   public AppLayoutFullNavbarView() {
-    demo.setDrawerHeaderVisible(true);
+    demo.setDrawerHeaderVisible(false);
     demo.setDrawerFooterVisible(true);
-    demo.addToDrawerTitle(new Div("Menu"));
-    demo.addToDrawerHeaderActions(new Element("dwc-icon-button")
-        .setAttribute("name", "pin"));
+
     demo.addToDrawerFooter(new Paragraph("All rights reserved"));
 
     // Header
@@ -48,12 +44,6 @@ public class AppLayoutFullNavbarView extends Composite<AppLayout> {
     // Drawer
     demo.addToDrawer(drawer);
     drawer.addClassName("app-layout-drawer");
-
-    // Drawer's logo container and logo
-    Div drawerLogo = new Div();
-    drawerLogo.addClassName("drawer__logo")
-        .add(new Img("https://documentation.webforj.com/img/webforj_icon.svg"));
-    drawer.add(drawerLogo);
 
     // Drawer's Menu
     AppNav drawerMenu = new AppNav();
@@ -68,17 +58,30 @@ public class AppLayoutFullNavbarView extends Composite<AppLayout> {
     Icon tasksIcon = TablerIcon.create("checklist");
     Icon analyticsIcon = TablerIcon.create("chart-dots-2");
 
-    drawerMenu.addItem(new AppNavItem("Dashboard", "webforj/applayoutfullnavbar/content/Dashboard", dashboardIcon));
-    drawerMenu.addItem(new AppNavItem("Orders", "webforj/applayoutfullnavbar/content/Orders", ordersIcon));
-    drawerMenu.addItem(new AppNavItem("Customers", "webforj/applayoutfullnavbar/content/Customers", customersIcon));
-    drawerMenu.addItem(new AppNavItem("Products", "webforj/applayoutfullnavbar/content/Products", productsIcon));
-    drawerMenu.addItem(new AppNavItem("Documents", "webforj/applayoutfullnavbar/content/Documents", documentsIcon));
-    drawerMenu.addItem(new AppNavItem("Tasks", "webforj/applayoutfullnavbar/content/Tasks", tasksIcon));
-    drawerMenu.addItem(new AppNavItem("Analytics", "webforj/applayoutfullnavbar/content/Analytics", analyticsIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Dashboard", AppLayoutFullNavbarContentView.class, ParametersBag.of("name=Dashboard"),
+            dashboardIcon));
+    drawerMenu
+        .addItem(new AppNavItem("Orders", AppLayoutFullNavbarContentView.class, ParametersBag.of("name=Orders"),
+            ordersIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Customers", AppLayoutFullNavbarContentView.class, ParametersBag.of("name=Customers"),
+            customersIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Products", AppLayoutFullNavbarContentView.class, ParametersBag.of("name=Products"),
+            productsIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Documents", AppLayoutFullNavbarContentView.class, ParametersBag.of("name=Documents"),
+            documentsIcon));
+    drawerMenu
+        .addItem(
+            new AppNavItem("Tasks", AppLayoutFullNavbarContentView.class, ParametersBag.of("name=Tasks"), tasksIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Analytics", AppLayoutFullNavbarContentView.class, ParametersBag.of("name=Analytics"),
+            analyticsIcon));
 
     // Content
     demo.addToContent(new H1("Application Title"), this.contentLabel);
   }
 
 }
-

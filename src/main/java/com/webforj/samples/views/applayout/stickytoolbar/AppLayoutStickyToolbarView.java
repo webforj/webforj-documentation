@@ -2,7 +2,6 @@ package com.webforj.samples.views.applayout.stickytoolbar;
 
 import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
-import com.webforj.component.element.Element;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H1;
 import com.webforj.component.html.elements.H3;
@@ -19,6 +18,7 @@ import com.webforj.component.tabbedpane.Tab;
 import com.webforj.component.tabbedpane.TabbedPane;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.router.history.ParametersBag;
 
 @InlineStyleSheet("context://css/applayout/applayout.css")
 @Route
@@ -33,18 +33,16 @@ public class AppLayoutStickyToolbarView extends Composite<AppLayout> {
 
   public AppLayoutStickyToolbarView() {
 
-    demo.addToDrawerTitle(new Div("Menu"));
-    demo.addToDrawerHeaderActions(new Element("dwc-icon-button")
-        .setAttribute("name", "pin"));
     demo.addToDrawerFooter(new Paragraph("All rights reserved"));
-    demo.setDrawerHeaderVisible(true);
-    
+    demo.setDrawerHeaderVisible(false);
+    demo.addClassName("layout_header_collapse");
     // Header
     header.addClassName("layout__header").addToStart(
         new AppDrawerToggle()).addToTitle(
             new H3("Application"));
     demo.addToHeader(header);
     demo.setHeaderFixed(false);
+    demo.setHeaderReveal(true);
 
     // Drawer
     demo.addToDrawer(drawer);
@@ -53,7 +51,7 @@ public class AppLayoutStickyToolbarView extends Composite<AppLayout> {
     // Drawer's logo container and logo
     Div drawerLogo = new Div();
     drawerLogo.addClassName("drawer__logo")
-        .add(new Img("https://documentation.webforj.com/img/webforj_icon.svg", "logo"));
+        .add(new Img("../img/webforj_icon.svg", "logo"));
     drawer.add(drawerLogo);
 
     // Drawer's Menu
@@ -61,23 +59,35 @@ public class AppLayoutStickyToolbarView extends Composite<AppLayout> {
     drawer.add(drawerMenu);
 
     // Adding tabs to drawer menu
-	 Icon dashboardIcon = TablerIcon.create("dashboard");
-	 Icon ordersIcon = TablerIcon.create("shopping-cart");
-	 Icon customersIcon = TablerIcon.create("users");
-	 Icon productsIcon = TablerIcon.create("box");
-	 Icon documentsIcon = TablerIcon.create("files");
-	 Icon tasksIcon = TablerIcon.create("checklist");
-	 Icon analyticsIcon = TablerIcon.create("chart-dots-2");
- 
-	 drawerMenu.addItem(new AppNavItem("Dashboard", "webforj/applayoutstickytoolbar/content/Dashboard", dashboardIcon));
-	 drawerMenu.addItem(new AppNavItem("Orders", "webforj/applayoutstickytoolbar/content/Orders", ordersIcon));
-	 drawerMenu.addItem(new AppNavItem("Customers", "webforj/applayoutstickytoolbar/content/Customers", customersIcon));
-	 drawerMenu.addItem(new AppNavItem("Products", "webforj/applayoutstickytoolbar/content/Products", productsIcon));
-	 drawerMenu.addItem(new AppNavItem("Documents", "webforj/applayoutstickytoolbar/content/Documents", documentsIcon));
-	 drawerMenu.addItem(new AppNavItem("Tasks", "webforj/applayoutstickytoolbar/content/Tasks", tasksIcon));
-	 drawerMenu.addItem(new AppNavItem("Analytics", "webforj/applayoutstickytoolbar/content/Analytics", analyticsIcon));
-	 
+    Icon dashboardIcon = TablerIcon.create("dashboard");
+    Icon ordersIcon = TablerIcon.create("shopping-cart");
+    Icon customersIcon = TablerIcon.create("users");
+    Icon productsIcon = TablerIcon.create("box");
+    Icon documentsIcon = TablerIcon.create("files");
+    Icon tasksIcon = TablerIcon.create("checklist");
+    Icon analyticsIcon = TablerIcon.create("chart-dots-2");
 
+    drawerMenu.addItem(
+        new AppNavItem("Dashboard", AppLayoutStickyToolbarContentView.class, ParametersBag.of("name=Dashboard"),
+            dashboardIcon));
+    drawerMenu
+        .addItem(new AppNavItem("Orders", AppLayoutStickyToolbarContentView.class, ParametersBag.of("name=Orders"),
+            ordersIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Customers", AppLayoutStickyToolbarContentView.class, ParametersBag.of("name=Customers"),
+            customersIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Products", AppLayoutStickyToolbarContentView.class, ParametersBag.of("name=Products"),
+            productsIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Documents", AppLayoutStickyToolbarContentView.class, ParametersBag.of("name=Documents"),
+            documentsIcon));
+    drawerMenu
+        .addItem(new AppNavItem("Tasks", AppLayoutStickyToolbarContentView.class, ParametersBag.of("name=Tasks"),
+            tasksIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Analytics", AppLayoutStickyToolbarContentView.class, ParametersBag.of("name=Analytics"),
+            analyticsIcon));
 
     // Content
     demo.addToContent(

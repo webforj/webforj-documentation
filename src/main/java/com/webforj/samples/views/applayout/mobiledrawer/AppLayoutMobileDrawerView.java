@@ -19,6 +19,7 @@ import com.webforj.component.tabbedpane.TabbedPane.Placement;
 import com.webforj.component.tabbedpane.TabbedPane.Alignment;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.router.history.ParametersBag;
 
 @InlineStyleSheet("context://css/applayout/applayoutMobile.css")
 @Route
@@ -35,7 +36,7 @@ public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
     AppDrawerToggle toggle = new AppDrawerToggle();
     Div logo = new Div();
     logo.addClassName("dwc-logo").add(
-        new Img("https://documentation.webforj.com/img/webforj_icon.svg", "logo"));
+        new Img("../img/webforj_icon.svg", "logo"));
     Strong title = new Strong("WebforJ Application");
 
     header.addToStart(toggle).addToTitle(logo, title);
@@ -51,7 +52,7 @@ public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
     // Drawer's logo container and logo
     Div drawerLogo = new Div();
     drawerLogo.addClassName("drawer__logo")
-        .add(new Img("https://documentation.webforj.com/img/webforj_icon.svg", "logo"));
+        .add(new Img("../img/webforj_icon.svg", "logo"));
     drawer.add(drawerLogo);
 
     // Drawer's Menu
@@ -67,14 +68,28 @@ public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
     Icon tasksIcon = TablerIcon.create("checklist");
     Icon analyticsIcon = TablerIcon.create("chart-dots-2");
 
-    drawerMenu.addItem(new AppNavItem("Dashboard", "webforj/applayoutmobiledrawer/content/Dashboard", dashboardIcon));
-    drawerMenu.addItem(new AppNavItem("Orders", "webforj/applayoutmobiledrawer/content/Orders", ordersIcon));
-    drawerMenu.addItem(new AppNavItem("Customers", "webforj/applayoutmobiledrawer/content/Customers", customersIcon));
-    drawerMenu.addItem(new AppNavItem("Products", "webforj/applayoutmobiledrawer/content/Products", productsIcon));
-    drawerMenu.addItem(new AppNavItem("Documents", "webforj/applayoutmobiledrawer/content/Documents", documentsIcon));
-    drawerMenu.addItem(new AppNavItem("Tasks", "webforj/applayoutmobiledrawer/content/Tasks", tasksIcon));
-    drawerMenu.addItem(new AppNavItem("Analytics", "webforj/applayoutmobiledrawer/content/Analytics", analyticsIcon));
-    
+    drawerMenu.addItem(
+        new AppNavItem("Dashboard", AppLayoutMobileDrawerContentView.class, ParametersBag.of("name=Dashboard"),
+            dashboardIcon));
+    drawerMenu
+        .addItem(new AppNavItem("Orders", AppLayoutMobileDrawerContentView.class, ParametersBag.of("name=Orders"),
+            ordersIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Customers", AppLayoutMobileDrawerContentView.class, ParametersBag.of("name=Customers"),
+            customersIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Products", AppLayoutMobileDrawerContentView.class, ParametersBag.of("name=Products"),
+            productsIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Documents", AppLayoutMobileDrawerContentView.class, ParametersBag.of("name=Documents"),
+            documentsIcon));
+    drawerMenu
+        .addItem(
+            new AppNavItem("Tasks", AppLayoutMobileDrawerContentView.class, ParametersBag.of("name=Tasks"), tasksIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Analytics", AppLayoutMobileDrawerContentView.class, ParametersBag.of("name=Analytics"),
+            analyticsIcon));
+
     // Content
     demo.addToContent(
         new H1("Application Title"),
@@ -83,6 +98,7 @@ public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
     TabbedPane footerMenu = new TabbedPane();
     demo.addToFooter(footerMenu);
     demo.setFooterReveal(true);
+
 
     footerMenu.setBodyHidden(true);
     footerMenu.setBorderless(true);

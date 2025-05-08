@@ -40,6 +40,10 @@ html {
   margin: calc(-1 * var(--dwc-space-m) 0 0 0);
 }
 
+.layout_header_collapse {
+  --dwc-app-layout-header-collapse-height: 45px;
+}
+
 .card {
   padding: var(--dwc-space-m);
   margin: var(--dwc-space-m) 0;

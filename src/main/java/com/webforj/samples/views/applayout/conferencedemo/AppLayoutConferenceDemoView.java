@@ -6,7 +6,6 @@ import java.util.Arrays;
 
 import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
-import com.webforj.component.element.Element;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H1;
 import com.webforj.component.html.elements.Img;
@@ -25,6 +24,8 @@ import com.webforj.component.tabbedpane.event.TabSelectEvent;
 import com.webforj.component.tabbedpane.TabbedPane.Alignment;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.router.history.ParametersBag;
+
 @InlineStyleSheet("context://css/applayout/applayoutMobile.css")
 @Route
 @FrameTitle("AppLayout Conference Demo")
@@ -43,14 +44,11 @@ public class AppLayoutConferenceDemoView extends Composite<AppLayout> {
   TabbedPane footerMenu = new TabbedPane();
 
   public AppLayoutConferenceDemoView() {
-    demo.addToDrawerHeaderActions(new Element("dwc-icon-button")
-        .setAttribute("name", "pin"));
-
     // Header
     AppDrawerToggle toggle = new AppDrawerToggle();
     Div logo = new Div();
     logo.addClassName("dwc-logo").add(
-        new Img("https://documentation.webforj.com/img/webforj_icon.svg", "logo"));
+        new Img("../img/webforj_icon.svg", "logo"));
     Strong title = new Strong("WebforJ Application");
     header.addToStart(toggle);
     header.addToTitle(logo, title);
@@ -66,7 +64,7 @@ public class AppLayoutConferenceDemoView extends Composite<AppLayout> {
     // Drawer's logo container and logo
     Div drawerLogo = new Div();
     drawerLogo.addClassName("drawer__logo")
-        .add(new Img("https://documentation.webforj.com/img/webforj_icon.svg", "logo"));
+        .add(new Img("../img/webforj_icon.svg", "logo"));
     drawer.add(drawerLogo);
 
     // Drawer's Menu
@@ -81,19 +79,32 @@ public class AppLayoutConferenceDemoView extends Composite<AppLayout> {
     Icon tasksIcon = TablerIcon.create("checklist");
     Icon analyticsIcon = TablerIcon.create("chart-dots-2");
 
-    drawerMenu.addItem(new AppNavItem("Dashboard", "webforj/applayoutconferencedemo/content/Dashboard", dashboardIcon));
-    drawerMenu.addItem(new AppNavItem("Orders", "webforj/applayoutconferencedemo/content/Orders", ordersIcon));
-    drawerMenu.addItem(new AppNavItem("Customers", "webforj/applayoutconferencedemo/content/Customers", customersIcon));
-    drawerMenu.addItem(new AppNavItem("Products", "webforj/applayoutconferencedemo/content/Products", productsIcon));
-    drawerMenu.addItem(new AppNavItem("Documents", "webforj/applayoutconferencedemo/content/Documents", documentsIcon));
-    drawerMenu.addItem(new AppNavItem("Tasks", "webforj/applayoutconferencedemo/content/Tasks", tasksIcon));
-    drawerMenu.addItem(new AppNavItem("Analytics", "webforj/applayoutconferencedemo/content/Analytics", analyticsIcon));
-  
+    drawerMenu.addItem(
+        new AppNavItem("Dashboard", AppLayoutConferenceContentView.class, ParametersBag.of("name=Dashboard"),
+            dashboardIcon));
+    drawerMenu
+        .addItem(new AppNavItem("Orders", AppLayoutConferenceContentView.class, ParametersBag.of("name=Orders"),
+            ordersIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Customers", AppLayoutConferenceContentView.class, ParametersBag.of("name=Customers"),
+            customersIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Products", AppLayoutConferenceContentView.class, ParametersBag.of("name=Products"),
+            productsIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Documents", AppLayoutConferenceContentView.class, ParametersBag.of("name=Documents"),
+            documentsIcon));
+    drawerMenu
+        .addItem(
+            new AppNavItem("Tasks", AppLayoutConferenceContentView.class, ParametersBag.of("name=Tasks"), tasksIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Analytics", AppLayoutConferenceContentView.class, ParametersBag.of("name=Analytics"),
+            analyticsIcon));
+
     // Content
     demo.addToContent(
         appTitle,
         this.contentLabel);
-    
 
     demo.addToFooter(footerMenu);
     demo.setFooterReveal(true);
@@ -118,4 +129,3 @@ public class AppLayoutConferenceDemoView extends Composite<AppLayout> {
   }
 
 }
-

@@ -2,7 +2,6 @@ package com.webforj.samples.views.applayout.applayout;
 
 import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
-import com.webforj.component.element.Element;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H1;
 import com.webforj.component.html.elements.H3;
@@ -17,6 +16,7 @@ import com.webforj.component.layout.appnav.AppNavItem;
 import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.router.history.ParametersBag;
 
 @InlineStyleSheet("context://css/applayout/applayout.css")
 @Route
@@ -31,17 +31,11 @@ public class AppLayoutView extends Composite<AppLayout> {
 
   public AppLayoutView() {
 
-    demo.addToDrawerTitle(new Div("Menu"));
-    demo.addToDrawerHeaderActions(new Element("dwc-icon-button")
-        .setAttribute("name", "pin"));
-    demo.addToDrawerFooter(new Paragraph("All rights reserved"));
-    demo.setDrawerHeaderVisible(true);
-
     // Header
     header.addClassName("layout__header").addToStart(
         new AppDrawerToggle()).addToTitle(
-            new H3("Application"));
-    demo.addToHeader(header);
+            new H3("WebforJ Application"));
+            demo.addToHeader(header);
 
     // Drawer
     demo.addToDrawer(drawer);
@@ -50,7 +44,7 @@ public class AppLayoutView extends Composite<AppLayout> {
     // Drawer's logo container and logo
     Div drawerLogo = new Div();
     drawerLogo.addClassName("drawer__logo")
-        .add(new Img("https://documentation.webforj.com/img/webforj_icon.svg", "logo"));
+        .add(new Img("../img/webforj_icon.svg", "logo"));
     drawer.add(drawerLogo);
 
     // Drawer's Menu
@@ -66,14 +60,20 @@ public class AppLayoutView extends Composite<AppLayout> {
     Icon tasksIcon = TablerIcon.create("checklist");
     Icon analyticsIcon = TablerIcon.create("chart-dots-2");
 
-    drawerMenu.addItem(new AppNavItem("Dashboard", "webforj/applayout/content/Dashboard", dashboardIcon));
-    drawerMenu.addItem(new AppNavItem("Orders", "webforj/applayout/content/Orders", ordersIcon));
-    drawerMenu.addItem(new AppNavItem("Customers", "webforj/applayout/content/Customers", customersIcon));
-    drawerMenu.addItem(new AppNavItem("Products", "webforj/applayout/content/Products", productsIcon));
-    drawerMenu.addItem(new AppNavItem("Documents", "webforj/applayout/content/Documents", documentsIcon));
-    drawerMenu.addItem(new AppNavItem("Tasks", "webforj/applayout/content/Tasks", tasksIcon));
-    drawerMenu.addItem(new AppNavItem("Analytics", "webforj/applayout/content/Analytics", analyticsIcon));
-  
+    drawerMenu.addItem(
+        new AppNavItem("Dashboard", AppLayoutContentView.class, ParametersBag.of("name=Dashboard"), dashboardIcon));
+    drawerMenu
+        .addItem(new AppNavItem("Orders", AppLayoutContentView.class, ParametersBag.of("name=Orders"), ordersIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Customers", AppLayoutContentView.class, ParametersBag.of("name=Customers"), customersIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Products", AppLayoutContentView.class, ParametersBag.of("name=Products"), productsIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Documents", AppLayoutContentView.class, ParametersBag.of("name=Documents"), documentsIcon));
+    drawerMenu
+        .addItem(new AppNavItem("Tasks", AppLayoutContentView.class, ParametersBag.of("name=Tasks"), tasksIcon));
+    drawerMenu.addItem(
+        new AppNavItem("Analytics", AppLayoutContentView.class, ParametersBag.of("name=Analytics"), analyticsIcon));
 
     // Content
     demo.addToContent(new H1("Application Title"), this.contentLabel);
