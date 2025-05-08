@@ -42,5 +42,6 @@
 "Alert": "dwc-alert",
 "InfiniteScroll": "dwc-infinite-scroll",
 "Toolbar": "dwc-toolbar",
-"AppNavItem": "dwc-app-nav-item"
+"AppNavItem": "dwc-app-nav-item",
+"Refresher": "dwc-refresher"
 }
