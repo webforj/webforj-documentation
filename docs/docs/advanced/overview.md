@@ -1,6 +1,7 @@
 ---
 title: Advanced Topics
 hide_table_of_contents: true
+sidebar_class_name: has-new-content
 ---
 
 

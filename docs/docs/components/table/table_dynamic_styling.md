@@ -2,6 +2,7 @@
 sidebar_position: 21
 title: Dynamic Styling
 slug: styling
+sidebar_class_name: new-content
 ---
 
 in webforJ 25 and higher, it's possible to style individual rows and cells in the Table using custom part names. These names can be assigned dynamically based on your app's logic, giving you fine-grained control over the table’s appearance.
