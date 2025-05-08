@@ -11,6 +11,7 @@ import com.webforj.component.html.elements.Strong;
 import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.applayout.AppLayout;
 import com.webforj.component.layout.applayout.AppLayout.DrawerPlacement;
+import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.component.tabbedpane.Tab;
 import com.webforj.component.tabbedpane.TabbedPane;
 import com.webforj.component.tabbedpane.TabbedPane.Placement;
@@ -25,21 +26,37 @@ public class AppLayoutMobileView extends Composite<AppLayout> {
 
   AppLayout demo = getBoundComponent();
   Div contentLabel = new Div();
-  Div header = new Div();
+  Toolbar header = new Toolbar();
 
   public AppLayoutMobileView() {
     // Header
     Div logo = new Div();
     logo.addClassName("dwc-logo")
-        .add(new Img("https://documentation.webforj.com/img/webforj_icon.svg", "logo"));
-    Strong title = new Strong("DWCJ Application");
+        .add(new Img("../img/webforj_icon.svg", "logo"));
+    Strong title = new Strong("WebforJ Application");
 
-    header.add(logo, title);
-    header.addClassName("dwc-toolbar");
+    header.addToStart(logo).addToTitle(title);
+    header.addClassName("drawer__dwc-toolbar");
 
     demo.addToHeader(header);
     demo.setHeaderReveal(true);
     demo.setDrawerPlacement(DrawerPlacement.HIDDEN);
+
+    TabbedPane footerMenu = new TabbedPane();
+    demo.addToFooter(footerMenu);
+    demo.setFooterReveal(true);
+
+    footerMenu.setBodyHidden(true);
+    footerMenu.setBorderless(true);
+    footerMenu.setPlacement(Placement.BOTTOM);
+    footerMenu.setAlignment(Alignment.STRETCH);
+
+    // Adding tabs to drawer menu
+    footerMenu.addTab(new Tab("", TablerIcon.create("dashboard")));
+    footerMenu.addTab(new Tab("", TablerIcon.create("shopping-cart")));
+    footerMenu.addTab(new Tab("", TablerIcon.create("users")));
+    footerMenu.addTab(new Tab("", TablerIcon.create("box")));
+    footerMenu.addTab(new Tab("", TablerIcon.create("files")));
 
     // Content
     demo.addToContent(
@@ -60,22 +77,5 @@ public class AppLayoutMobileView extends Composite<AppLayout> {
               "like Aldus PageMaker including versions of Lorem Ipsum."));
       demo.addToContent(content);
     }
-
-    TabbedPane footerMenu = new TabbedPane();
-    demo.addToFooter(footerMenu);
-    demo.setFooterReveal(true);
-
-    footerMenu.setBodyHidden(true);
-    footerMenu.setBorderless(true);
-    footerMenu.setPlacement(Placement.BOTTOM);
-    footerMenu.setAlignment(Alignment.STRETCH);
-
-    // Adding tabs to drawer menu
-    footerMenu.addTab(new Tab("", TablerIcon.create("dashboard")));
-    footerMenu.addTab(new Tab("", TablerIcon.create("shopping-cart")));
-    footerMenu.addTab(new Tab("", TablerIcon.create("users")));
-    footerMenu.addTab(new Tab("", TablerIcon.create("box")));
-    footerMenu.addTab(new Tab("", TablerIcon.create("files")));
   }
-
 }
