@@ -51,8 +51,8 @@ public class InfiniteScrollView extends Composite<Div> {
   static class Item extends Composite<Div> {
     private final Random random = new Random();
     private final String[] names = {
-      "John", "Jane", "Alice", "Bob", "Charlie", "Diana",
-      "Ethan", "Fiona", "George", "Hannah", "Ian", "Jill"
+        "John", "Jane", "Alice", "Bob", "Charlie", "Diana",
+        "Ethan", "Fiona", "George", "Hannah", "Ian", "Jill"
     };
 
     public Item() {

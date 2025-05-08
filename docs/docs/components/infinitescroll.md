@@ -39,20 +39,17 @@ infiniteScroll.update();
 ```
 This disables further infinite scrolling behavior.
 
-:::tip 
+:::tip Reset the Load Flag
 You can reset this flag using `setCompleted(false)` if you later allow the user to load more content (e.g., after a refresh).
 :::
 
 
 ## Loading indicator customization
 
-By default, `InfiniteScroll` shows a built-in loading indicator — a small animated [`Spinner`](../components/spinner) along with a “Loading data” text.
-
-You can change the displayed text by passing a custom message to the `InfiniteScroll` constructor or by using `setText()`.
+By default, `InfiniteScroll` shows a built-in loading indicator — a small animated [`Spinner`](../components/spinner) along with a “Loading data” text. You can change the displayed text by passing a custom message to the `InfiniteScroll` constructor or by using `setText()`.
 
 ```java
 InfiniteScroll infiniteScroll = new InfiniteScroll("Fetching more records...");
-
 infiniteScroll.setText("Loading more items...");
 ```
 
@@ -64,10 +61,6 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/infinitescroll/infinitescroll.css'
 height = '400px'
 />
-
-:::info
-See the [`Icon`](../components/icon) component for more information about managing [`Icons`](../components/icon) and custom images.
-:::
 
 ### Full customization
 
