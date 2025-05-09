@@ -111,6 +111,20 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayoutMobile.css'
 />
 
+## AppDrawerToggle
+
+The `AppDrawerToggle` component is a server-side WebforJ class that represents a button used to toggle the visibility of a navigation drawer in an [`AppLayout`](./app-layout.md). It maps to the client-side `<dwc-app-drawer-toggle>` element and is styled to behave like a traditional hamburger menu icon.
+
+### Overview
+
+This component extends `IconButton` and uses the "menu-2" icon from the Tabler icon set by default. It automatically applies the `data-drawer-toggle` attribute to integrate with the client-side drawer behavior.
+
+### Behavior
+
+- Toggles visibility of a `dwc-drawer`.
+- Should be used inside or associated with an `AppLayout`.
+- Integrates automatically by setting `data-drawer-toggle`.
+
 ## Styling
 
 <TableBuilder name="AppLayout" />
