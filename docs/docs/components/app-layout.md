@@ -110,6 +110,45 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayoutMobile.css'
 />
 
+## Drawer actions in `AppLayout`
+
+The `AppLayout` component allows you to place custom components such as buttons or icons into the **drawer header actions area** using the `addToDrawerHeaderActions(...)` method.
+
+This is useful for adding:
+- Settings or preferences buttons
+- Notifications
+- Profile or logout actions
+
+### Multiple actions
+
+You can pass multiple components as arguments:
+
+```java
+layout.addToDrawerHeaderActions(
+    new IconButton(TablerIcon.create("bell")),
+    new Button("Profile")
+);
+```
+
+### Visual placement
+
+Drawer actions appear in the **right-aligned section** of the drawer’s header, while the toggle appears on the left.
+
+
+## `AppDrawerToggle`
+
+The `AppDrawerToggle` component is a server-side WebforJ class that represents a button used to toggle the visibility of a navigation drawer in an [`AppLayout`](./app-layout.md). It maps to the client-side `<dwc-app-drawer-toggle>` element and is styled to behave like a traditional hamburger menu icon.
+
+### Overview
+
+This component extends `IconButton` and uses the "menu-2" icon from the Tabler icon set by default. It automatically applies the `data-drawer-toggle` attribute to integrate with the client-side drawer behavior.
+
+### Behavior
+
+- Toggles visibility of a `dwc-drawer`.
+- Should be used inside or associated with an `AppLayout`.
+- Integrates automatically by setting `data-drawer-toggle`.
+
 ## Styling
 
 ### Shadow parts
