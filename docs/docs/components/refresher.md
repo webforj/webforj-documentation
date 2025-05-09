@@ -24,6 +24,7 @@ path='/webforj/refresher?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/refresher/refresher.css'
 height = '400px'
+mobile='true'
 />
 
 This approach is commonly used to refresh paginated lists or restart infinite scroll loading.
@@ -43,6 +44,7 @@ path='/webforj/refresheri18n?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherI18nView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/refresher/refresher.css'
 height = '400px'
+mobile='true'
 />
 
 ## Icon customization
@@ -54,6 +56,7 @@ path='/webforj/refreshericon?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherIconView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/refresher/refresher.css'
 height = '400px'
+mobile='true'
 />
 
 ## Pull behavior configuration
@@ -110,6 +113,7 @@ path='/webforj/refresherthemes?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherThemesView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/refresher/refresher.css'
 height = '400px'
+mobile='true'
 />
 
 ### Shadow parts
