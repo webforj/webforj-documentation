@@ -14,8 +14,8 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Date Field Demo")
 public class DateFieldView extends Composite<FlexLayout> {
 
-  private static final LocalDate MAX_DATE = LocalDate.of(9999, 12, 31);
-  private static final LocalDate TODAY = LocalDate.of(2025, 4, 23);
+  private static final LocalDate TODAY = LocalDate.now();
+  private static final LocalDate MAX_DATE = TODAY.plusYears(1);
 
   private final DateField departureField = new DateField(TODAY);
   private final DateField returnField = new DateField(TODAY);
@@ -30,48 +30,41 @@ public class DateFieldView extends Composite<FlexLayout> {
         .setWidth("200px")
         .setMin(TODAY)
         .setMax(MAX_DATE)
-        .addValueChangeListener(this::onDepartureChange);
+        .addValueChangeListener(this::syncDates);
 
     returnField.setLabel("Return Date:")
         .setWidth("200px")
         .setMin(TODAY)
         .setMax(MAX_DATE)
-        .addValueChangeListener(this::onReturnChange);
+        .addValueChangeListener(this::syncDates);
 
     getBoundComponent().add(departureField, returnField);
   }
 
-  private void onDepartureChange(ValueChangeEvent<LocalDate> e) {
-    try {
-      String input = departureField.getText();
-      if (input == null || input.length() < 10) return;
+  private void syncDates(ValueChangeEvent<LocalDate> e) {
+    LocalDate rawDep = departureField.getValue();
+    LocalDate rawRet = returnField.getValue();
 
-      LocalDate departure = e.getValue();
-      if (departure == null || String.valueOf(departure.getYear()).length() < 4) return;
+    LocalDate dep = clamp(rawDep);
+    LocalDate ret = clamp(rawRet);
 
-      LocalDate returnDate = returnField.getValue();
-      if (returnDate != null && returnDate.isBefore(departure)) {
-        returnField.setValue(departure);
-      }
+    if (dep == null || ret == null) {
+      return;
+    }
 
-      returnField.setMin(departure);
-    } catch (Exception ignored) {}
+    if (ret.isBefore(dep)) {
+      if (e.getSource() == departureField)
+        returnField.setValue(dep);
+      else
+        departureField.setValue(ret);
+    }
   }
 
-  private void onReturnChange(ValueChangeEvent<LocalDate> e) {
-    try {
-      String input = returnField.getText();
-      if (input == null || input.length() < 10) return;
-
-      LocalDate returnDate = e.getValue();
-      if (returnDate == null || String.valueOf(returnDate.getYear()).length() < 4) return;
-
-      LocalDate departure = departureField.getValue();
-      if (departure != null && returnDate.isBefore(departure)) {
-        departureField.setValue(returnDate);
-      }
-
-      departureField.setMax(returnDate);
-    } catch (Exception ignored) {}
+  private LocalDate clamp(LocalDate date) {
+    if (date == null)
+      return null;
+    return date.isBefore(TODAY) ? TODAY
+        : date.isAfter(MAX_DATE) ? MAX_DATE
+            : date;
   }
 }
