@@ -27,10 +27,10 @@ import com.webforj.router.annotation.Route;
 public class QREventView extends Composite<FlexLayout> {
 
   Div label = new Div("Click Me!");
-  QRCode qrCode = new QRCode("www.dwcj.org");
+  QRCode qrCode = new QRCode("https://www.webforj.com");
 
   public QREventView() {
-    getBoundComponent().setSpacing("10px").setMargin("20px");
+    getBoundComponent().setSpacing("10px").setMargin("20px").setWidth(200);
     getBoundComponent().setDirection(FlexDirection.COLUMN);
 
     getBoundComponent().add(label, qrCode);
