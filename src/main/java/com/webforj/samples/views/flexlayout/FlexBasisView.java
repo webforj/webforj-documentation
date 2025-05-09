@@ -47,8 +47,10 @@ public class FlexBasisView extends Composite<Div> {
 
     for (int i = 1; i <= 5; i++) {
       Button newButton = new Button("Box " + i, ButtonTheme.OUTLINED_PRIMARY, this::onButtonSelect);
+      newButton.setStyle("transition","flex-basis var(--dwc-transition-medium) var(--dwc-ease-inOutExpo)");
       buttons.add(newButton);
       boxLayout.add(buttons.get(i - 1));
+      boxLayout.setItemBasis("75px", buttons.get(i - 1));
     }
 
     this.numberField = new NumberField("Basis")
@@ -87,7 +89,7 @@ public class FlexBasisView extends Composite<Div> {
         if (buttons.get(i).getTheme() == ButtonTheme.PRIMARY) {
           boxLayout.setItemBasis(numberField.getValue().toString() + "px", buttons.get(i));
         } else {
-          boxLayout.setItemBasis("auto", buttons.get(i));
+          boxLayout.setItemBasis("75px", buttons.get(i));
         }
       }
     }
@@ -98,7 +100,7 @@ public class FlexBasisView extends Composite<Div> {
     selected = 0;
     for (int i = 0; i <= buttons.size() - 1; i++) {
       buttons.get(i).setTheme(ButtonTheme.OUTLINED_PRIMARY);
-      boxLayout.setItemBasis("auto", buttons.get(i));
+      boxLayout.setItemBasis("75px", buttons.get(i));
     }
   }
 }
