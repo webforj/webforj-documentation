@@ -1,6 +1,7 @@
 package com.webforj.samples.views.fields.datefield;
 
 import java.time.LocalDate;
+
 import com.webforj.component.Composite;
 import com.webforj.component.field.DateField;
 import com.webforj.component.layout.flexlayout.FlexDirection;
@@ -13,33 +14,57 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Date Field Demo")
 public class DateFieldView extends Composite<FlexLayout> {
 
-  DateField returnField = new DateField(LocalDate.now());
-  DateField departure = new DateField(LocalDate.now());
+  private static final LocalDate TODAY = LocalDate.now();
+  private static final LocalDate MAX_DATE = TODAY.plusYears(1);
+
+  private final DateField departureField = new DateField(TODAY);
+  private final DateField returnField = new DateField(TODAY);
 
   public DateFieldView() {
-    getBoundComponent().setDirection(FlexDirection.ROW).setSpacing("var(--dwc-space-l")
-    .setMargin("var(--dwc-space-m)");
+    getBoundComponent()
+        .setDirection(FlexDirection.ROW)
+        .setSpacing("var(--dwc-space-l)")
+        .setMargin("var(--dwc-space-m)");
 
-    departure.setLabel("Departure Date:")
+    departureField.setLabel("Departure Date:")
         .setWidth("200px")
-        .setMin(LocalDate.now())
-        .addValueChangeListener(this::setMinReturn);
+        .setMin(TODAY)
+        .setMax(MAX_DATE)
+        .addValueChangeListener(this::syncDates);
 
     returnField.setLabel("Return Date:")
         .setWidth("200px")
-        .setMin(LocalDate.now());
+        .setMin(TODAY)
+        .setMax(MAX_DATE)
+        .addValueChangeListener(this::syncDates);
 
-    getBoundComponent().add(departure, returnField);
+    getBoundComponent().add(departureField, returnField);
   }
 
-  private void setMinReturn(ValueChangeEvent e) {
-    LocalDate departureDate = (LocalDate) e.getValue();
-    LocalDate arrivalDate = returnField.getValue();
+  private void syncDates(ValueChangeEvent<LocalDate> e) {
+    LocalDate rawDep = departureField.getValue();
+    LocalDate rawRet = returnField.getValue();
 
-    if (departureDate.isAfter(arrivalDate)) {
-      returnField.setValue(departureDate);
+    LocalDate dep = clamp(rawDep);
+    LocalDate ret = clamp(rawRet);
+
+    if (dep == null || ret == null) {
+      return;
     }
 
-    returnField.setMin(departureDate);
+    if (ret.isBefore(dep)) {
+      if (e.getSource() == departureField)
+        returnField.setValue(dep);
+      else
+        departureField.setValue(ret);
+    }
+  }
+
+  private LocalDate clamp(LocalDate date) {
+    if (date == null)
+      return null;
+    return date.isBefore(TODAY) ? TODAY
+        : date.isAfter(MAX_DATE) ? MAX_DATE
+            : date;
   }
 }
