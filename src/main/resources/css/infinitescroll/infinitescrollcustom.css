@@ -1,3 +1,7 @@
+dwc-frame {
+  background-color: var(--dwc-color-white);
+}
+
 .is-canvas {
   margin: 0 auto;
   padding: 1rem;

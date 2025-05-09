@@ -7,6 +7,7 @@ import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.icons.FeatherIcon;
 import com.webforj.component.icons.Icon;
+import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.refresher.Refresher;
 import com.webforj.router.annotation.Route;
@@ -28,8 +29,8 @@ public class RefresherIconView extends Composite<Div> {
     self.add(canvas);
 
     Refresher refresher = new Refresher()
-        .setArrowIcon(FeatherIcon.CHEVRON_DOWN.create())
-        .setRefreshIcon(FeatherIcon.ROTATE_CW.create()); 
+        .setArrowIcon(TablerIcon.create("arrow-down-to-arc"))
+        .setRefreshIcon(TablerIcon.create("skateboarding"));
 
     refresher.onRefresh(e -> {
       canvas.removeAll();

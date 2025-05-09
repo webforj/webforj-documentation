@@ -17,7 +17,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @FrameTitle("Custom Loading Indicator")
 @InlineStyleSheet("context://css/infinitescroll/infinitescroll.css")
 public class InfiniteScrollLoadingView extends Composite<Div> {
- 
 
   public InfiniteScrollLoadingView() {
     Div self = getBoundComponent();
@@ -58,8 +57,8 @@ public class InfiniteScrollLoadingView extends Composite<Div> {
   public static class Item extends Composite<Div> {
     private final Random random = new Random();
     private final String[] names = {
-      "John", "Jane", "Alice", "Bob", "Charlie", "Diana",
-      "Ethan", "Fiona", "George", "Hannah", "Ian", "Jill"
+        "John", "Jane", "Alice", "Bob", "Charlie", "Diana",
+        "Ethan", "Fiona", "George", "Hannah", "Ian", "Jill"
     };
 
     public Item() {

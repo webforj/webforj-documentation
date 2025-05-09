@@ -38,7 +38,7 @@ public class InfiniteScrollCustomLoadingView extends Composite<Div> {
 
     Icon cloudIcon = FeatherIcon.CLOUD.create();
     cloudIcon.setSize("32px", "32px");
-    cloudIcon.addClassName("loading-icon"); 
+    cloudIcon.addClassName("loading-icon");
 
     Span loadingText = new Span("Loading awesome content...");
     customLoadingContent.add(cloudIcon, loadingText);
@@ -66,8 +66,8 @@ public class InfiniteScrollCustomLoadingView extends Composite<Div> {
   public static class Item extends Composite<Div> {
     private final Random random = new Random();
     private final String[] names = {
-      "John", "Jane", "Alice", "Bob", "Charlie", "Diana",
-      "Ethan", "Fiona", "George", "Hannah", "Ian", "Jill"
+        "John", "Jane", "Alice", "Bob", "Charlie", "Diana",
+        "Ethan", "Fiona", "George", "Hannah", "Ian", "Jill"
     };
 
     public Item() {
@@ -85,13 +85,11 @@ public class InfiniteScrollCustomLoadingView extends Composite<Div> {
 
       self.add(FlexLayout.create(
           FlexLayout.create(nameDiv, excerpt).vertical().build(),
-          arrowIcon
-        )
+          arrowIcon)
           .horizontal()
           .justify().between()
           .align().center()
-          .build()
-      );
+          .build());
     }
   }
 }

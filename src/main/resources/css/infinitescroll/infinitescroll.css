@@ -1,12 +1,16 @@
+dwc-frame {
+  background-color: var(--dwc-color-white);
+}
+
 .is-canvas {
-   margin: 0 auto;
-   padding: 1rem;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
 .item-name {
   font-size: var(--dwc-font-size-xl);
   font-weight: bold;
-  padding: .5rem 0 0 0;
+  padding: 0.5rem 0 0 0;
   color: var(--dwc-color-primary-text);
 }
 

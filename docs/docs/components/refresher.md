@@ -7,7 +7,7 @@ sidebar_position: 101
 <DocChip chip="name" label="dwc-refresher" />
 <JavadocLink type="refresher" location="com/webforj/component/refresher/Refresher" top='true'/>
 
-The `Refresher` component in webforJ enables a pull-to-refresh interaction within scrollable containers—ideal for dynamic data loading in mobile or tap-friendly interfaces. As users swipe downward past a configurable threshold, the refresher transitions through visual states: pull, release, and refreshing. Each state presents a customizable icon and localized text to clearly communicate feedback.
+The `Refresher` component in webforJ enables a pull-to-refresh interaction within scrollable containers—ideal for dynamic data loading in mobile or tap-friendly interfaces. As users swipe downward past a configurable threshold, the refresher transitions through visual states: `pull`, `release`, and `refreshing`. Each state presents a customizable icon and localized text to clearly communicate feedback.
 
 You can use `Refresher` in tandem with components like [`InfiniteScroll`](../components/infinitescroll) to reload content or reset state via simple gesture-based input. The component is fully configurable in terms of interaction behavior, appearance, localization, and integration with the rest of your UI.
 
@@ -33,9 +33,7 @@ This approach is commonly used to refresh paginated lists or restart infinite sc
 Each state label can also be localized using the `RefresherI18n` object. The three states are:
 
 - Pull: Initial gesture text (e.g., "Pull down to refresh")
-
 - Release: Trigger threshold reached (e.g., "Release to refresh")
-
 - Refresh: Loading state (e.g., "Refreshing")
 
 This allows multilingual support and branding adjustments as needed.
@@ -49,7 +47,7 @@ height = '400px'
 
 ## Icon customization
 
-You can change the [`Icons`](../components/icon) used for the pull/release and refreshing stages using either a predefined [`Icon`](../components/icon) or an [Icon URL](../managing-resources/assets-protocols). These are useful when you want to apply branding or a custom animation.
+You can change the [`Icons`](../components/icon) used for the `pull`/`release` and `refreshing` stages using either a predefined [`Icon`](../components/icon) or an [Icon URL](../managing-resources/assets-protocols). These are useful when you want to apply branding or a custom animation.
 
 <AppLayoutViewer 
 path='/webforj/refreshericon?' 
@@ -87,8 +85,8 @@ Inside this listener, you’re expected to perform whatever operation is require
 ```java
 refresher.finish();
 ```
-:::warning 
-If you forget to call finish(), the refresher will remain in the loading state indefinitely.
+:::warning Missing `finish()`
+If you forget to call `finish()`, the refresher will remain in the loading state indefinitely.
 :::
 
 You can also programmatically disable the `Refresher` at any time to prevent the user from triggering refresh behavior:
@@ -98,7 +96,6 @@ refresher.setEnabled(false);
 ```
 
 This is useful when refreshes should be temporarily disallowed—for instance, during a loading screen or while another critical process is running.
-
 
 ## Styling
 
