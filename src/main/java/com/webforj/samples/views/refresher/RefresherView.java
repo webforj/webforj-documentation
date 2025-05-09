@@ -23,7 +23,6 @@ public class RefresherView extends Composite<Div> {
 
   public RefresherView() {
     Div self = getBoundComponent();
-    self.addClassName("refresher-container");
 
     Div canvas = new Div().addClassName("is-canvas");
     self.add(canvas);

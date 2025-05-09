@@ -13,11 +13,15 @@ You can use `Refresher` in tandem with components like [`InfiniteScroll`](../com
 
 ## Instantiation and internationalization
 
-Add a `Refresher` by instantiating it and registering a refresh listener. When refresh operations complete, call `finish()` to reset the component to its idle state:
+Add a `Refresher` by instantiating it and registering a refresh listener. When refresh operations complete, call `finish()` to reset the component to its idle state.
 
-<ComponentDemo 
+:::info How to activate the `Refresher`
+To activate the `Refresher`, **click and drag downward** from the top of the scrollable area. While this gesture is familiar on mobile, it's less common on desktop—make sure to hold and pull with your mouse.
+:::
+
+<AppLayoutViewer
 path='/webforj/refresher?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/infinitescroll/RefresherView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/refresher/refresher.css'
 height = '400px'
 />
@@ -36,20 +40,20 @@ Each state label can also be localized using the `RefresherI18n` object. The thr
 
 This allows multilingual support and branding adjustments as needed.
 
-<ComponentDemo 
+<AppLayoutViewer 
 path='/webforj/refresheri18n?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/infinitescroll/RefresherI18View.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherI18nView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/refresher/refresher.css'
 height = '400px'
 />
 
 ## Icon customization
 
-You can change the [`Icons`](../components/icon) used for the pull/release and refreshing stages using either a predefined [`Icon`](../components/icon) or an [`Icon URL`](../components/icon). These are useful when you want to apply branding or a custom animation.
+You can change the [`Icons`](../components/icon) used for the pull/release and refreshing stages using either a predefined [`Icon`](../components/icon) or an [Icon URL](../managing-resources/assets-protocols). These are useful when you want to apply branding or a custom animation.
 
-<ComponentDemo 
+<AppLayoutViewer 
 path='/webforj/refreshericon?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/infinitescroll/RefresherIconView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherIconView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/refresher/refresher.css'
 height = '400px'
 />
@@ -102,11 +106,11 @@ This is useful when refreshes should be temporarily disallowed—for instance, d
 
 The `Refresher` component supports multiple themes to visually distinguish different states or to match your app's look and feel. Themes can be applied using the `setTheme()` method.
 
-The demo below cycles through all available themes each time you pull to refresh, giving you a live preview of how the `Refresher` looks across different themes:
+The following sample cycles through all available themes each time you pull to refresh, giving you a live preview of how the `Refresher` looks across different themes:
 
-<ComponentDemo 
+<AppLayoutViewer 
 path='/webforj/refresherthemes?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/infinitescroll/RefresherThemesView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherThemesView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/refresher/refresher.css'
 height = '400px'
 />

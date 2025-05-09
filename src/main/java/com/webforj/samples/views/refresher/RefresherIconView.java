@@ -23,7 +23,6 @@ public class RefresherIconView extends Composite<Div> {
 
   public RefresherIconView() {
     Div self = getBoundComponent();
-    self.addClassName("refresher-container");
 
     Div canvas = new Div().addClassName("is-canvas");
     self.add(canvas);
@@ -34,7 +33,7 @@ public class RefresherIconView extends Composite<Div> {
 
     refresher.onRefresh(e -> {
       canvas.removeAll();
-      for (int i = 0; i < 5; i++) {
+      for (int i = 0; i < 8; i++) {
         canvas.add(new Item());
       }
       refresher.finish();
@@ -42,8 +41,7 @@ public class RefresherIconView extends Composite<Div> {
 
     self.add(refresher);
 
-    // Initial content
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 8; i++) {
       canvas.add(new Item());
     }
   }

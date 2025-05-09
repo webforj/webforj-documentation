@@ -32,7 +32,6 @@ public class RefresherThemesView extends Composite<Div> {
 
   public RefresherThemesView() {
     Div self = getBoundComponent();
-    self.addClassName("theme-container");
 
     Div canvas = new Div().addClassName("is-canvas");
     self.add(canvas);
@@ -42,7 +41,7 @@ public class RefresherThemesView extends Composite<Div> {
 
     refresher.onRefresh(e -> {
       canvas.removeAll();
-      for (int i = 0; i < 6; i++) {
+      for (int i = 0; i < 8; i++) {
         canvas.add(new Item());
       }
 
@@ -54,7 +53,7 @@ public class RefresherThemesView extends Composite<Div> {
 
     self.add(refresher);
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 8; i++) {
       canvas.add(new Item());
     }
   }

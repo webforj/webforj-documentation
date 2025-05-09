@@ -24,14 +24,12 @@ public class RefresherI18nView extends Composite<Div> {
 
   public RefresherI18nView() {
     Div self = getBoundComponent();
-    self.addClassName("refresher-container");
 
     Div canvas = new Div().addClassName("is-canvas");
     self.add(canvas);
 
     Refresher refresher = new Refresher();
 
-    // Apply custom internationalized labels
     RefresherI18n i18n = new RefresherI18n();
     i18n.setPull("Tirez pour actualiser");
     i18n.setRelease("Relâchez pour actualiser");
