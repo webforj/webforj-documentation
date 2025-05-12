@@ -111,6 +111,14 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayoutMobile.css'
 />
 
+## Drawer title in `AppLayout`
+
+The `AppLayout` component provides a method `addToDrawerTitle(...)` for defining a custom title to display in the drawer header. 
+
+```java
+layout.addToDrawerTitle(new Div("Menu"));
+```
+
 ## Drawer actions in `AppLayout`
 
 The `AppLayout` component allows you to place custom components such as buttons or icons into the **drawer header actions area** using the `addToDrawerHeaderActions(...)` method.
