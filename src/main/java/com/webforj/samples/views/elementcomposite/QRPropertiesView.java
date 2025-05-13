@@ -16,7 +16,7 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("QR Properties")
 public class QRPropertiesView extends Composite<FlexLayout> {
 
-  QRCode qrCode = new QRCode("www.dwcj.org");
+  QRCode qrCode = new QRCode("https://www.webforj.com");
 
   public QRPropertiesView() {
     getBoundComponent().setMargin("var(--dwc-space-m)");
