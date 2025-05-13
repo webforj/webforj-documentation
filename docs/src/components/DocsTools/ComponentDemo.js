@@ -33,6 +33,8 @@ export function OpenNewWindowButton({ url }) {
 
   const iconStyles = css`
   filter: ${colorMode === "dark" ? "invert(1)" : "none"};
+    background-color: #ffffff80;
+    border-radius: var(--dwc-border-radius-s);
   `;
 
   const openNewWindow = () => {
