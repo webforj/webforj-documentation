@@ -42,6 +42,26 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/hea
 height='600px'
 />
 
+You can also define sorting priority programmatically for server-side sorting. Use `setSortOrder()` on the columns you want to sort, in order of priority:
+
+```java
+// Server-side sort order
+nameColumn.setSortOrder(1);
+ageColumn.setSortOrder(2);
+```
+
+<ComponentDemo 
+path='/webforj/tablesortorder?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableMultiSortingView.java'
+urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+height='600px'
+/>
+
+:::info Column Order Matters
+Unless `setSortOrder()` is used, the table defaults to sorting by the order in which columns are declared.
+:::
+
 ## Sort direction
 
 There are three available settings for the direction in which a column can be sorted:
