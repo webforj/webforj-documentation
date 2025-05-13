@@ -16,6 +16,7 @@ WebforJ typically packages the app as a WAR file and runs using Jetty. Enable th
 plugins {
     id 'java'
     id 'war'
+    id 'org.gretty'
 }
 ```
 
@@ -83,27 +84,17 @@ tasks.register('copyWebforjConfig', Copy) {
 processResources.dependsOn copyWebforjConfig
 ```
 
-## 7. Jetty server integration
+## 7. Gretty integration
 
-If you're using Jetty for local development like in the Maven Jetty plugin setup:
+Configure your gretty setup, its going to handle the jetty deployment:
 
 ```groovy
-tasks.register('startJetty', JavaExec) {
-    mainClass = 'org.eclipse.jetty.start.Main'
-    args = ['jetty:run']
-    classpath = sourceSets.main.runtimeClasspath
-}
-
-tasks.register('stopJetty', JavaExec) {
-    mainClass = 'org.eclipse.jetty.start.Main'
-    args = ['jetty:stop']
-    classpath = sourceSets.main.runtimeClasspath
+gretty {
+    httpPort = 8080
+    contextPath = '/'
+    servletContainer = 'jetty11'
 }
 ```
-
-:::tip
-Replace `org.eclipse.jetty.start.Main` with your embedded Jetty class if applicable.
-:::
 
 ## 8. Testing
 
@@ -133,6 +124,69 @@ test {
 - Open the folder, and VS Code will detect the Gradle project.
 - Use the Gradle Tasks tab or command palette to build or run tasks.
 
+
+## 10. Running the app
+
+Since you are using gretty you will need to build a gradle wrapper first. For this purpose run `gradle wrapper`.
+Now you can use `./gradlew appRun` and the task will utilize the jetty deployment automatically.
+
+The completed `build.gradle` should look similar to this:
+
+```groovy
+plugins {
+    id 'java'
+    id 'war'
+    id 'org.gretty' version '4.1.1'
+}
+
+group = 'com.gradletest'
+version = '1.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
+
+gretty {
+    httpPort = 8080
+    contextPath = '/'
+    servletContainer = 'jetty11'
+}
+
+def webforjVersion = '25.00'
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://s01.oss.sonatype.org/content/repositories/snapshots'
+        mavenContent { snapshotsOnly() }
+    }
+}
+
+dependencies {
+    implementation "com.webforj:webforj:$webforjVersion"
+    implementation 'org.slf4j:slf4j-simple:2.0.16'
+
+    testImplementation 'com.microsoft.playwright:playwright:1.49.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.3'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+def configFile = project.hasProperty('prod') ? 'webforj-prod.conf' : 'webforj-dev.conf'
+
+tasks.register('copyWebforjConfig', Copy) {
+    from "src/main/resources/${configFile}"
+    into "$buildDir/resources/main"
+    rename { 'webforj.conf' }
+}
+
+processResources.dependsOn 'copyWebforjConfig'
+
+``` 
 ---
 
 
