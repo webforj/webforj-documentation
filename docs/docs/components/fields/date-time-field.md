@@ -24,16 +24,22 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 The `DateTimeField` is best used in scenarios where capturing or displaying both date **and** time is essential to your app. Here are some examples of when to use the `DateTimeField`:
 
 1. **Event Scheduling and Calendars**: Let users efficiently schedule events, book appointments, and manage their calendars by giving them a single component that allows them to choose the date and time.
-
+<!-- vale off -->
 2. **Check-in and check-out**: Facilitate user selection of check-in and check-out times when the period can span multiple days.
-
+<!-- vale on -->
 3. **Data Logging and Timestamps**: Utilize `DateTimeFields` for apps that involve recording the date and time of when events occur or when a user submits data.
 
 4. **Task Management and Deadlines**: `DateTimeFields` are valuable in applications that involve task management or setting deadlines where both the date and time are relevant for accurate scheduling.
 
-## Maximum and minimum
+## Min and max value
 
-You can use the `setMax()` and `setMin()` methods to specify the acceptable range of dates and times. If the value entered into the component is outside of the specified timestamp, the component fails constraint validation. Also, if there is already a maximum or minimum set, the value given to the other method must be lower or higher respectively.
+### `setMax`
+
+If the value entered into the component is later than the specified maximum timestamp, the component will fail constraint validation. When both the min and max values are set, the max value must be a timestamp that's the same as or later than the min value.
+
+### `setMin`
+
+If the value entered into the component is earlier than the specified minimum timestamp, the component will fail constraint validation. When both the min and max values are set, the min value must be a timestamp that's the same as or earlier than the max value.
 
 ## Localized display
 
