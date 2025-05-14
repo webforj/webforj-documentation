@@ -71,6 +71,24 @@ Similarly, it's possible to retrieve the current selection range of the `TextFie
 While you can call `getSelectedText()` manually inside an event handler, it’s more efficient to use the selection data provided in the event’s payload—such as in a `SelectionChangeEvent`—to avoid additional lookups.
 :::
 
+## Pattern matching
+
+You can use the `setPattern()` method to define a validation rule for the `TextField` using a regular expression. This enables constraint validation on the input value, requiring it to match the specified pattern.
+
+The pattern must be a valid [JavaScript regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions), as interpreted by the browser. The `u` (Unicode) flag is applied internally to ensure accurate matching of Unicode code points. Don't wrap the pattern in forward slashes (`/`), as those aren't required and will be treated as literal characters.
+
+```java
+textField.setPattern("[A-Za-z]{3}\\d{2}"); // e.g. ABC12
+```
+
+If no pattern is provided, or the syntax is invalid, the validation rule is ignored.
+
+:::tip
+You can use `setTitle()` to specify a tooltip that explains the pattern's requirements to the user. It’s also recommended to include additional hints or guidance next to the input when using complex patterns.
+:::
+
+
+
 
 ## Best practices
 
