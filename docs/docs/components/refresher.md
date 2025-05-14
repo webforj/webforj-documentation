@@ -1,6 +1,7 @@
 ---
 title: Refresher
 sidebar_position: 101
+sidebar_class_name: new-content
 ---
 
 <DocChip chip="shadow" />

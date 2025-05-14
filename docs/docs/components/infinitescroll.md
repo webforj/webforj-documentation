@@ -1,6 +1,7 @@
 ---
 title: InfiniteScroll
 sidebar_position: 60
+sidebar_class_name: new-content
 ---
 
 <DocChip chip="shadow" />
