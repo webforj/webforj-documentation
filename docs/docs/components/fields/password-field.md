@@ -59,6 +59,33 @@ You can provide a tooltip with `setTitle()` to help users understand the passwor
 Using a pattern is strongly recommended for password fields to ensure users create secure and compliant credentials. Patterns allow you to enforce character rules and structural requirements. See the [Validation](#best-practices) section for more context.
 :::
 
+## Minimum and maximum length
+
+You can control the allowed length of the password input by using `setMinLength()` and `setMaxLength()` on the `PasswordField`.
+
+### `setMaxLength()`
+
+Sets the **maximum number of characters** that can be entered into the field. The value must be a non-negative integer (0 or greater). If no `maxLength` is defined or an invalid value is provided, the field will have no upper limit.
+
+```java
+passwordField.setMaxLength(20); // Maximum 20 characters
+```
+
+The field fails constraint validation if the entered text exceeds this limit. This validation is triggered only when the user changes the field’s value.
+
+### `setMinLength()`
+
+Defines the **minimum number of characters** that must be entered to pass validation. This value must be a non-negative integer and less than or equal to the `maxLength`.
+
+```java
+passwordField.setMinLength(8); // Minimum 8 characters
+```
+
+The field fails constraint validation if the user inputs fewer characters than required. Like with `maxLength`, this only applies on user interaction.
+
+:::tip
+Use both `setMinLength()` and `setMaxLength()` together to create effective input boundaries. See the [HTML length constraints documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#minlength) for more reference.
+:::
 
 
 ## Best practices
