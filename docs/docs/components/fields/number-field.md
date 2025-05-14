@@ -57,7 +57,7 @@ The `NumberField` is best used in scenarios where capturing, displaying, or mani
 
 4. **Measurement and Unit Conversion**: In apps that deal with measurements or unit conversions, the `NumberField` is ideal for inputting numerical values with units such as length, weight, or volume.
 
-## Maximum and minimum
+## Min and max value
 
 With the `setMax()` and `setMin()` methods, you can specify a range of acceptable numbers. If a user manually enters a value into the number field outside the specified range, the component will let the user know what's acceptable. Also, if a maximum or minimum is already set, the value for the other method must be lower or higher respectively.
 
