@@ -30,7 +30,7 @@ public class RefresherIconView extends Composite<Div> {
 
     Refresher refresher = new Refresher()
         .setArrowIcon(TablerIcon.create("arrow-down-to-arc"))
-        .setRefreshIcon(TablerIcon.create("skateboarding"));
+        .setRefreshIcon("ws://spinner.svg");
 
     refresher.onRefresh(e -> {
       canvas.removeAll();
