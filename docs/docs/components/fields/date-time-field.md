@@ -41,16 +41,36 @@ If the value entered into the component is later than the specified maximum time
 
 If the value entered into the component is earlier than the specified minimum timestamp, the component will fail constraint validation. When both the min and max values are set, the min value must be a timestamp that's the same as or earlier than the max value.
 
-## Localized display
+## Field value (`LocalDateTime`)
 
-By default, the `DateTimeField` displays its information within the UI element based on the locale the browser is configured to. For example, users with United States configurations will see the date displayed with the month preceding the day, whereas European users will see the day before the month. Still, this doesn't stop you from manipulating the `LocalDateTime` object returned by the methods from the `DataTimeField` class.
+Internally, the `DateTimeField` component represents its value using a `LocalDateTime` object from the `java.time` package. This provides precise control over both the date and time components of the input.
+
+While the **client-side input is rendered based on the user's browser locale** (e.g., date and time formats that match local conventions), the internal parsing and formatting follow a strict and predictable structure: **`yyyy-MM-ddTHH:mm:ss`**.
+
+### Getting and setting the value
+
+To retrieve the current value:
+
+```java
+LocalDateTime value = dateTimeField.getValue();
+```
+
+To programmatically set the value:
+
+```java
+dateTimeField.setValue(LocalDateTime.of(2024, 4, 27, 14, 30, 0));
+```
+
+### Using `setText()`
+
+If you prefer to set the value via a raw string, it must follow the full format `yyyy-MM-ddTHH:mm:ss`:
+
+```java
+dateTimeField.setText("2024-04-27T14:30:00"); // valid
+```
 
 :::tip
-To hide seconds from the display, give the `DateTimeField` a `LocaleDateTime` object with the seconds set to 0.
-:::
-
-:::info Picker UI 
-The appearance of the datetime picker input UI depends not only on the selected locale but also on the browser and operating system being used. This ensures automatic consistency with the interface users are already familiar with.
+When using `setText(...)`, the component will attempt to parse the input string in the `yyyy-MM-ddTHH:mm:ss` format. If the input doesn't match this format, an `IllegalArgumentException` will be thrown.
 :::
 
 ## Static utilities 
