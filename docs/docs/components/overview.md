@@ -237,4 +237,12 @@ This category includes components that facilitate user interactions and visually
   <GalleryCard header="Terminal" href="terminal" image="/img/components/Terminal.png">
     <p>A component that simulates a command-line interface (CLI) within the app, allowing users to input and execute text-based commands.</p>
   </GalleryCard>
+  
+  <GalleryCard header="InfiniteScroll" href="infinitescroll" image="/img/components/InfiniteScroll.png">
+    <p>A component that loads more items on scroll, shows a loader, and tracks when all content is fetched.</p>
+  </GalleryCard>
+
+  <GalleryCard header="Refresher" href="refresher" image="/img/components/Refresher.png">
+    <p>A component that allows a pull-to-refresh interaction within scrollable containers—ideal for dynamic data loading.</p>
+  </GalleryCard>
 </GalleryGrid>
