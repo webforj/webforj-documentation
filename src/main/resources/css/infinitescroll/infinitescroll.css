@@ -4,7 +4,8 @@ dwc-frame {
 
 .is-canvas {
   margin: 0 auto;
-  padding: 1rem;
+  padding: 2rem;
+  max-width: 600px;
 }
 
 .item-name {

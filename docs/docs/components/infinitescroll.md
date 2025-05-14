@@ -11,11 +11,12 @@ The `InfiniteScroll` component in webforJ automatically loads more content as us
 
 When users reach the bottom of scrollable content, `InfiniteScroll` triggers an event for loading more data. While new content loads, it displays a [`Spinner`](../components/spinner) with customizable text to indicate more items are on the way.
 
-<ComponentDemo 
+<AppLayoutViewer
 path='/webforj/infinitescroll?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/infinitescroll/InfiniteScrollView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/infinitescroll/infinitescroll.css'
 height = '400px'
+mobile='true'
 />
 
 ## State management
@@ -55,11 +56,12 @@ infiniteScroll.setText("Loading more items...");
 
 Similarly, you can customize the [`Icon`](../components/icon) displayed during loading by using `setIcon()`.
 
-<ComponentDemo 
+<AppLayoutViewer
 path='/webforj/infinitescrollloading?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/infinitescroll/InfiniteScrollLoadingView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/infinitescroll/infinitescroll.css'
 height = '400px'
+mobile='true'
 />
 
 ### Full customization
@@ -69,13 +71,13 @@ you can add content directly into the special content slot using `addToContent()
 
 When you populate the content slot, it replaces the default loading layout entirely.
 
-<ComponentDemo 
+<AppLayoutViewer
 path='/webforj/infinitescrollcustomloading?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/infinitescroll/InfiniteScrollCustomLoadingView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/infinitescroll/infinitescrollcustom.css'
 height = '400px'
+mobile='true'
 />
-
 
 ## Styling
 

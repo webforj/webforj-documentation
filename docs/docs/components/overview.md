@@ -239,7 +239,7 @@ This category includes components that facilitate user interactions and visually
   </GalleryCard>
   
   <GalleryCard header="InfiniteScroll" href="infinitescroll" image="/img/components/InfiniteScroll.png">
-    <p>A component that dynamically loads more content as the user scrolls. Commonly used for feeds or long lists, it supports scroll event handling, loading indicators, and completion state control.</p>
+    <p>A component that loads more items on scroll, shows a loader, and tracks when all content is fetched.</p>
   </GalleryCard>
 
   <GalleryCard header="Refresher" href="refresher" image="/img/components/Refresher.png">

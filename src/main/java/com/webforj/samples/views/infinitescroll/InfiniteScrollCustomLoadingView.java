@@ -20,7 +20,7 @@ public class InfiniteScrollCustomLoadingView extends Composite<Div> {
 
   public InfiniteScrollCustomLoadingView() {
     Div self = getBoundComponent();
-    self.setHeight("400px");
+    self.setHeight("100vh");
     self.setStyle("overflow", "auto");
 
     AtomicInteger index = new AtomicInteger();

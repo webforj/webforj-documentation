@@ -18,7 +18,7 @@ public class InfiniteScrollView extends Composite<Div> {
 
   public InfiniteScrollView() {
     Div self = getBoundComponent();
-    self.setHeight("400px");
+    self.setHeight("100vh");
     self.setStyle("overflow", "auto");
 
     AtomicInteger index = new AtomicInteger();
