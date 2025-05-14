@@ -31,9 +31,16 @@ The `DateField` is ideal for choosing and displaying dates in your app. Here are
 
 4. **Task Management and Deadlines**: Date fields are valuable in apps that involve task management or setting deadlines. Users can easily specify due dates, start dates, or other time-sensitive information.
 
-## Maximum and minimum
+## Min and max value
 
-With the `setMax()` and `setMin()` methods, you can specify a range of acceptable dates. If a user manually enters a value into the date field outside the specified range, the component will let the user know what's acceptable. Also, if a maximum or minimum is already set, the value for the other method must be lower or higher respectively.
+### `setMax`
+
+If the value entered into the component is later than the specified maximum date, the component will fail constraint validation. When both the min and max values are set, the max value must be a date that's the same as or later than the min value.
+
+### `setMin`
+
+If the value entered into the component is earlier than the specified minimum date, the component will fail constraint validation. When both the min and max values are set, the min value must be a date that's the same as or earlier than the max value.
+
 
 ## Localized display
 
