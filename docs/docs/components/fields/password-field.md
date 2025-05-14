@@ -19,6 +19,32 @@ path='/webforj/passwordfield?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/passwordfield/PasswordFieldView.java'
 />
 
+## Field value
+
+The `PasswordField` component stores and retrieves its value as a plain `String`, similar to a `TextField`, but with obscured visual rendering to hide the characters from view.
+
+You can retrieve the current value using:
+
+```java
+String password = passwordField.getValue();
+```
+
+To set or reset the value programmatically:
+
+```java
+passwordField.setValue("MySecret123!");
+```
+
+If no value has been entered by the user and no default is set, the field will return an empty string (`""`).
+
+This behavior mimics that of the native HTML `<input type="password">`, where the `.value` property holds the current input.
+
+
+:::tip
+Although the field visually masks the content, the returned value from `getValue()` is still stored as a plain string. Be mindful of this when handling sensitive data.
+:::
+
+
 ## Usages
 
 The `PasswordField` is best used in scenarios where capturing or handling sensitive information, such as passwords or other confidential data, is essential to your app. Here are some examples of when to use the `PasswordField`:
