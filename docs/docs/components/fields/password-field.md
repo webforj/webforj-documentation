@@ -37,6 +37,30 @@ Users can reveal the value of the `PasswordField` by clicking on the reveal icon
 
 You can set placeholder text for the `PasswordField` using the `setPlaceholder()` method. The placeholder text is displayed when the field is empty, helping to prompt the user to enter appropriate input into the `PasswordField`.
 
+## Pattern matching
+
+You can apply a regular expression pattern to the `PasswordField` using the `setPattern()` method. This is especially useful when enforcing strong password rules, such as requiring a mix of uppercase and lowercase letters, numbers, and symbols.
+
+The pattern must follow the syntax of a [JavaScript regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions), as interpreted by the browser. The `u` (Unicode) flag is used internally to ensure accurate validation across all Unicode code points. Do **not** include forward slashes (`/`) around the pattern.
+
+```java
+passwordField.setPattern("(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}");
+```
+
+In this example, the pattern requires at least one lowercase letter, one uppercase letter, one number, and a minimum length of 8 characters.
+
+If the pattern is missing or invalid, no validation will be applied.
+
+:::tip
+You can provide a tooltip with `setTitle()` to help users understand the password requirements. Consider also placing helper text nearby to visually communicate what makes a valid password.
+:::
+
+:::note
+Using a pattern is strongly recommended for password fields to ensure users create secure and compliant credentials. Patterns allow you to enforce character rules and structural requirements. See the [Validation](#best-practices) section for more context.
+:::
+
+
+
 ## Best practices
 
 As the `PasswordField` component is often associated with sensitive information, consider the following best practices when using the `PasswordField`:
