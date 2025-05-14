@@ -36,12 +36,21 @@ With the `setMin()` and `setMax()` methods, you can specify a range of acceptabl
 
 - **For `setMax()`**: If the value entered into the component is later than the specified maximum time, the component will fail constraint validation. When both the min and max values are set, the max value must be a time that's the same as or later than the min value. 
 
-## Localized display
+## Field value (`LocalTime`)
 
-The `TimeField` will, by default, display its information within the UI element based on the locale the browser is configured to. For example, users with United States configurations will see the time displayed with A.M. and P.M. labels, whereas other locales would see the time in 24-hour format. Still, this doesn't stop you from manipulating the `LocalTime` object returned by the methods from the `TimeField` class.
+Internally, the `TimeField` component represents its value using a `LocalTime` object from the `java.time` package. This allows developers to interact with precise time values regardless of how they're visually rendered.
 
-The value of the time field is always in 24-hour format that includes leading zeros: HH:mm, regardless of the UI field format, which is likely to be selected based on the user's locale (or by the user agent). If the time includes seconds, the format is always HH:mm:ss
+While the **client-side component displays the time using the user's browser locale**, the parsed and stored format is always standardized as `HH:mm:ss`.
 
+If setting a raw string value, use the `setText()` method carefully:
+
+```java
+timeField.setText("09:15:00"); // valid
+```
+
+:::tip
+When using `setText(...)`, the input must conform to the `HH:mm:ss` format. If parsing fails, an `IllegalArgumentException` will be thrown.
+:::
 
 :::info Picker UI 
 The appearance of the time picker input UI depends not only on the selected locale but also on the browser and operating system being used. This ensures automatic consistency with the interface users are already familiar with.
