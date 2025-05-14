@@ -19,6 +19,32 @@ path='/webforj/numberfield?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/numberfield/NumberFieldView.java'
 />
 
+## Field value
+
+The `NumberField` component stores its value as a `Double`, allowing accurate handling of both integers and decimal numbers.
+
+### Getting the current value
+
+You can retrieve the numeric value entered by the user using:
+
+```java
+Double currentValue = numberField.getValue();
+```
+
+### Setting a new value
+
+To set the field programmatically:
+
+```java
+numberField.setValue(42.5);
+```
+
+If no value has been entered and no default value is set, `getValue()` will return `null`.
+
+:::tip
+While the field is designed to accept valid numeric input only, keep in mind that the underlying value is nullable. Always test for null before using the result.
+:::
+
 ## Usages
 
 The `NumberField` is best used in scenarios where capturing, displaying, or manipulating numerical data is essential to your app. Here are some examples of when to use the `NumberField`:
