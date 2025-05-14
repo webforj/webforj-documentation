@@ -3,10 +3,7 @@ package com.webforj.samples.views.applayout.applayout;
 import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
-import com.webforj.component.html.elements.H1;
 import com.webforj.component.html.elements.H3;
-import com.webforj.component.html.elements.Img;
-import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.icons.Icon;
 import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.applayout.AppDrawerToggle;
@@ -17,35 +14,29 @@ import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
+import com.webforj.samples.views.applayout.DrawerLogo;
 
-@InlineStyleSheet("context://css/applayout/applayout.css")
 @Route
+@InlineStyleSheet("context://css/applayout/applayout.css")
 @FrameTitle("AppLayout")
 public class AppLayoutView extends Composite<AppLayout> {
 
-  AppLayout demo = getBoundComponent();
-  Paragraph contentLabel = new Paragraph();
-
+  AppLayout self = getBoundComponent();
   Toolbar header = new Toolbar();
   Div drawer = new Div();
 
   public AppLayoutView() {
 
     // Header
-    header.addClassName("layout__header").addToStart(
-        new AppDrawerToggle()).addToTitle(
-            new H3("WebforJ Application"));
-            demo.addToHeader(header);
+    header.addToStart(new AppDrawerToggle())
+        .addToTitle(new H3("Application"));
+    self.addToHeader(header);
 
     // Drawer
-    demo.addToDrawer(drawer);
-    drawer.addClassName("app-layout-drawer");
+    self.addToDrawer(drawer);
 
     // Drawer's logo container and logo
-    Div drawerLogo = new Div();
-    drawerLogo.addClassName("drawer__logo")
-        .add(new Img("../img/webforj_icon.svg", "logo"));
-    drawer.add(drawerLogo);
+    drawer.add(new DrawerLogo());
 
     // Drawer's Menu
     AppNav drawerMenu = new AppNav();
@@ -74,8 +65,5 @@ public class AppLayoutView extends Composite<AppLayout> {
         .addItem(new AppNavItem("Tasks", AppLayoutContentView.class, ParametersBag.of("name=Tasks"), tasksIcon));
     drawerMenu.addItem(
         new AppNavItem("Analytics", AppLayoutContentView.class, ParametersBag.of("name=Analytics"), analyticsIcon));
-
-    // Content
-    demo.addToContent(new H1("Application Title"), this.contentLabel);
   }
 }

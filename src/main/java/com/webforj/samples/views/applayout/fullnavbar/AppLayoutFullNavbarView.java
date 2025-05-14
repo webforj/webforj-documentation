@@ -2,8 +2,6 @@ package com.webforj.samples.views.applayout.fullnavbar;
 
 import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
-import com.webforj.component.html.elements.Div;
-import com.webforj.component.html.elements.H1;
 import com.webforj.component.html.elements.H3;
 import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.icons.Icon;
@@ -17,37 +15,26 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
 
-@InlineStyleSheet("context://css/applayout/applayout.css")
 @Route
+@InlineStyleSheet("context://css/applayout/applayout.css")
 @FrameTitle("AppLayout Full Navbar")
 public class AppLayoutFullNavbarView extends Composite<AppLayout> {
 
-  AppLayout demo = getBoundComponent();
-  Paragraph contentLabel = new Paragraph();
-
+  AppLayout self = getBoundComponent();
   Toolbar header = new Toolbar();
-  Div drawer = new Div();
 
   public AppLayoutFullNavbarView() {
-    demo.setDrawerHeaderVisible(false);
-    demo.setDrawerFooterVisible(true);
-
-    demo.addToDrawerFooter(new Paragraph("All rights reserved"));
-
+    self.setDrawerHeaderVisible(false);
+    self.setDrawerFooterVisible(true);
     // Header
-    header.addClassName("layout__header").addToStart(
-        new AppDrawerToggle()).addToTitle(
-            new H3("WebforJ Application"));
-    demo.addToHeader(header);
-    demo.setHeaderOffscreen(false);
-
-    // Drawer
-    demo.addToDrawer(drawer);
-    drawer.addClassName("app-layout-drawer");
+    header.addToStart(new AppDrawerToggle())
+        .addToTitle(new H3(" Application"));
+    self.addToHeader(header);
+    self.setHeaderOffscreen(false);
 
     // Drawer's Menu
     AppNav drawerMenu = new AppNav();
-    drawer.add(drawerMenu);
+    self.addToDrawer(drawerMenu);
 
     // Adding tabs to drawer menu
     Icon dashboardIcon = TablerIcon.create("dashboard");
@@ -79,9 +66,5 @@ public class AppLayoutFullNavbarView extends Composite<AppLayout> {
     drawerMenu.addItem(
         new AppNavItem("Analytics", AppLayoutFullNavbarContentView.class, ParametersBag.of("name=Analytics"),
             analyticsIcon));
-
-    // Content
-    demo.addToContent(new H1("Application Title"), this.contentLabel);
   }
-
 }

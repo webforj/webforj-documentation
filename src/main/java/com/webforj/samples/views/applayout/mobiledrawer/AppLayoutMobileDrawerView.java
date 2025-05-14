@@ -4,8 +4,8 @@ import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H1;
-import com.webforj.component.html.elements.Img;
-import com.webforj.component.html.elements.Strong;
+import com.webforj.component.html.elements.H3;
+import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.icons.Icon;
 import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.applayout.AppDrawerToggle;
@@ -20,40 +20,30 @@ import com.webforj.component.tabbedpane.TabbedPane.Alignment;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
+import com.webforj.samples.views.applayout.DrawerLogo;
 
-@InlineStyleSheet("context://css/applayout/applayoutMobile.css")
 @Route
+@InlineStyleSheet("context://css/applayout/applayout.css")
 @FrameTitle("AppLayout Mobile Drawer")
 public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
-
-  AppLayout demo = getBoundComponent();
-  Div contentLabel = new Div();
+  AppLayout self = getBoundComponent();
   Toolbar header = new Toolbar();
   Div drawer = new Div();
 
   public AppLayoutMobileDrawerView() {
     // Header
-    AppDrawerToggle toggle = new AppDrawerToggle();
-    Div logo = new Div();
-    logo.addClassName("dwc-logo").add(
-        new Img("../img/webforj_icon.svg", "logo"));
-    Strong title = new Strong("WebforJ Application");
+    header.addToStart(new AppDrawerToggle())
+        .addToTitle(new H3("Application"));
 
-    header.addToStart(toggle).addToTitle(logo, title);
-    header.addClassName("drawer__dwc-toolbar");
-
-    demo.addToHeader(header);
-    demo.setHeaderReveal(true);
+    self.addToHeader(header);
+    self.setHeaderReveal(true);
 
     // Drawer
-    demo.addToDrawer(drawer);
+    self.addToDrawer(drawer);
     drawer.addClassName("app-layout-drawer");
 
     // Drawer's logo container and logo
-    Div drawerLogo = new Div();
-    drawerLogo.addClassName("drawer__logo")
-        .add(new Img("../img/webforj_icon.svg", "logo"));
-    drawer.add(drawerLogo);
+    drawer.add(new DrawerLogo());
 
     // Drawer's Menu
     AppNav drawerMenu = new AppNav();
@@ -91,14 +81,13 @@ public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
             analyticsIcon));
 
     // Content
-    demo.addToContent(
+    self.addToContent(
         new H1("Application Title"),
-        this.contentLabel);
+        new Paragraph("Content goes here..."));
 
     TabbedPane footerMenu = new TabbedPane();
-    demo.addToFooter(footerMenu);
-    demo.setFooterReveal(true);
-
+    self.addToFooter(footerMenu);
+    self.setFooterReveal(true);
 
     footerMenu.setBodyHidden(true);
     footerMenu.setBorderless(true);
@@ -112,5 +101,4 @@ public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
     footerMenu.addTab(new Tab("", TablerIcon.create("box")));
     footerMenu.addTab(new Tab("", TablerIcon.create("files")));
   }
-
 }

@@ -3,10 +3,7 @@ package com.webforj.samples.views.applayout.stickytoolbar;
 import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
-import com.webforj.component.html.elements.H1;
 import com.webforj.component.html.elements.H3;
-import com.webforj.component.html.elements.Img;
-import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.icons.Icon;
 import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.applayout.AppDrawerToggle;
@@ -19,40 +16,29 @@ import com.webforj.component.tabbedpane.TabbedPane;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
+import com.webforj.samples.views.applayout.DrawerLogo;
 
 @InlineStyleSheet("context://css/applayout/applayout.css")
 @Route
 @FrameTitle("AppLayout Sticky Toolbar")
 public class AppLayoutStickyToolbarView extends Composite<AppLayout> {
-
-  AppLayout demo = getBoundComponent();
-  Paragraph contentLabel = new Paragraph();
-
+  AppLayout self = getBoundComponent();
   Toolbar header = new Toolbar();
   Div drawer = new Div();
 
   public AppLayoutStickyToolbarView() {
+    self.setDrawerHeaderVisible(false);
+    self.addClassName("layout--collapse");
 
-    demo.addToDrawerFooter(new Paragraph("All rights reserved"));
-    demo.setDrawerHeaderVisible(false);
-    demo.addClassName("layout_header_collapse");
     // Header
-    header.addClassName("layout__header").addToStart(
-        new AppDrawerToggle()).addToTitle(
-            new H3("Application"));
-    demo.addToHeader(header);
-    demo.setHeaderFixed(false);
-    demo.setHeaderReveal(true);
+    header.addToStart(new AppDrawerToggle())
+        .addToTitle(new H3("Application"));
+    self.addToHeader(header);
+    self.setHeaderFixed(false);
+    self.setHeaderReveal(true);
 
     // Drawer
-    demo.addToDrawer(drawer);
-    drawer.addClassName("app-layout-drawer");
-
-    // Drawer's logo container and logo
-    Div drawerLogo = new Div();
-    drawerLogo.addClassName("drawer__logo")
-        .add(new Img("../img/webforj_icon.svg", "logo"));
-    drawer.add(drawerLogo);
+    self.addToDrawer(new DrawerLogo(), drawer);
 
     // Drawer's Menu
     AppNav drawerMenu = new AppNav();
@@ -89,19 +75,15 @@ public class AppLayoutStickyToolbarView extends Composite<AppLayout> {
         new AppNavItem("Analytics", AppLayoutStickyToolbarContentView.class, ParametersBag.of("name=Analytics"),
             analyticsIcon));
 
-    // Content
-    demo.addToContent(
-        new H1("Application Title"),
-        this.contentLabel);
-
     // Adding the additional toolbar with menu items
     Toolbar secondToolbar = new Toolbar();
-    secondToolbar.addClassName("layout__second__header");
-    demo.addToHeader(secondToolbar);
+    secondToolbar.setCompact(true);
+    self.addToHeader(secondToolbar);
+
     TabbedPane secondMenu = new TabbedPane();
-    secondToolbar.add(secondMenu);
+    secondToolbar.addToStart(secondMenu);
     secondMenu.setBorderless(true);
-    secondToolbar.setAttribute("position", "sticky");
+    secondMenu.setBodyHidden(true);
 
     Icon salesIcon = TablerIcon.create("report-money");
     Icon enterpriseIcon = TablerIcon.create("building");
@@ -112,6 +94,5 @@ public class AppLayoutStickyToolbarView extends Composite<AppLayout> {
     secondMenu.addTab(new Tab("Enterprise", enterpriseIcon));
     secondMenu.addTab(new Tab("Payments", paymentsIcon));
     secondMenu.addTab(new Tab("History", historyIcon));
-
   }
 }

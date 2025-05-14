@@ -3,10 +3,7 @@ package com.webforj.samples.views.applayout.multipleheaders;
 import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
-import com.webforj.component.html.elements.H1;
 import com.webforj.component.html.elements.H3;
-import com.webforj.component.html.elements.Img;
-import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.icons.Icon;
 import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.applayout.AppDrawerToggle;
@@ -19,41 +16,34 @@ import com.webforj.component.tabbedpane.TabbedPane;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
+import com.webforj.samples.views.applayout.DrawerLogo;
 
-@InlineStyleSheet("context://css/applayout/applayout.css")
 @Route
+@InlineStyleSheet("context://css/applayout/applayout.css")
 @FrameTitle("AppLayout Multiple Headers")
 public class AppLayoutMultipleHeadersView extends Composite<AppLayout> {
 
-  AppLayout demo = getBoundComponent();
-  Paragraph contentLabel = new Paragraph();
-
+  AppLayout self = getBoundComponent();
   Toolbar header = new Toolbar();
   Div drawer = new Div();
 
   public AppLayoutMultipleHeadersView() {
 
-    demo.setDrawerHeaderVisible(false);
-    demo.setDrawerFooterVisible(true);
-    demo.setHeaderReveal(true);
-    demo.addToDrawerFooter(new Paragraph("All rights reserved"));
+    self.setDrawerHeaderVisible(false);
+    self.setDrawerFooterVisible(true);
+    self.setHeaderReveal(true);
 
     // Header
-    header.addToStart(
-        new AppDrawerToggle()).addToTitle(
-            new H3("WebforJ Application"));
+    header.addToStart(new AppDrawerToggle())
+        .addToTitle(new H3("Application"));
 
-    demo.addToHeader(header);
+    self.addToHeader(header);
 
     // Drawer
     drawer.addClassName("app-layout-drawer");
-    demo.addToDrawer(drawer);
+    self.addToDrawer(drawer);
 
-    // Drawer's logo container and logo
-    Div drawerLogo = new Div();
-    drawerLogo.addClassName("drawer__logo")
-        .add(new Img("../img/webforj_icon.svg", "logo"));
-    drawer.add(drawerLogo);
+    drawer.add(new DrawerLogo());
 
     // Drawer's Menu
     AppNav drawerMenu = new AppNav();
@@ -93,11 +83,12 @@ public class AppLayoutMultipleHeadersView extends Composite<AppLayout> {
     // Adding the additional toolbar with menu items
     Toolbar secondToolbar = new Toolbar();
     secondToolbar.setCompact(true);
-    secondToolbar.addClassName("layout__second__header");
-    demo.addToHeader(secondToolbar);
+    self.addToHeader(secondToolbar);
+
     TabbedPane secondMenu = new TabbedPane();
     secondToolbar.addToStart(secondMenu);
     secondMenu.setBorderless(true);
+    secondMenu.setBodyHidden(true);
 
     Icon salesIcon = TablerIcon.create("report-money");
     Icon enterpriseIcon = TablerIcon.create("building");
@@ -108,9 +99,5 @@ public class AppLayoutMultipleHeadersView extends Composite<AppLayout> {
     secondMenu.addTab(new Tab("Enterprise", enterpriseIcon));
     secondMenu.addTab(new Tab("Payments", paymentsIcon));
     secondMenu.addTab(new Tab("History", historyIcon));
-
-    // Content
-    demo.addToContent(new H1("Application Title"), this.contentLabel);
-
   }
 }
