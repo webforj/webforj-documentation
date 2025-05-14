@@ -19,6 +19,39 @@ path='/webforj/datefield?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/datefield/DateFieldView.java'
 />
 
+## Field value (`LocalDate`)
+
+The `DateField` component stores its value internally as a `LocalDate` object, representing a date without time or timezone information. This allows for accurate handling of calendar-based input across different systems.
+
+While the **visual display adapts to the user's browser locale**, ensuring regionally familiar formatting (e.g., MM/DD/YYYY in the USA or DD.MM.YYYY in Europe), the internal parsing and programmatic interaction always rely on the fixed format: **`yyyy-MM-dd`**.
+
+### Getting and setting the value
+
+To retrieve the current value:
+
+```java
+LocalDate value = dateField.getValue();
+```
+
+To set the value programmatically:
+
+```java
+dateField.setValue(LocalDate.of(2024, 4, 27));
+```
+
+### Using `setText()`
+
+You can also assign a value using a raw string, but it must follow the exact `yyyy-MM-dd` format:
+
+```java
+dateField.setText("2024-04-27"); // valid
+```
+
+:::tip
+When using `setText(...)`, the input must strictly follow the `yyyy-MM-dd` format. If parsing fails, an `IllegalArgumentException` will be thrown.
+:::
+
+
 ## Usages
 
 The `DateField` is ideal for choosing and displaying dates in your app. Here are some examples of when to use the `DateField`:
