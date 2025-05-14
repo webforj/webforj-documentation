@@ -87,6 +87,34 @@ If no pattern is provided, or the syntax is invalid, the validation rule is igno
 You can use `setTitle()` to specify a tooltip that explains the pattern's requirements to the user. It’s also recommended to include additional hints or guidance next to the input when using complex patterns.
 :::
 
+## Minimum and maximum length
+
+The `TextField` component supports constraint validation based on the number of characters entered by the user. This can be controlled using the `setMinLength()` and `setMaxLength()` methods.
+
+### `setMaxLength()`
+
+This method sets the **maximum number of UTF-16 code units** allowed in the text field. The value must be `0` or greater. If not set, or set to an invalid value, no maximum is enforced.
+
+```java
+textField.setMaxLength(20); // User cannot enter more than 20 characters
+```
+
+The field fails constraint validation if the input length exceeds the `maxLength`. This validation is only triggered when the value is changed by the user.
+
+### `setMinLength()`
+
+This method sets the **minimum number of UTF-16 code units** that must be entered for the field to be considered valid. The value must be a non-negative integer and shouldn't exceed the configured `maxLength`.
+
+```java
+textField.setMinLength(5); // User must enter at least 5 characters
+```
+
+If the input contains fewer characters than the minimum required, the input will fail constraint validation. Like with `maxLength`, this rule only applies when the user changes the field's value.
+
+:::tip
+Use `setMinLength()` and `setMaxLength()` together to enforce consistent length boundaries for user input. Consider pairing them with a `setTitle()` tooltip or inline hint to inform users about length requirements.
+:::
+
 
 
 
