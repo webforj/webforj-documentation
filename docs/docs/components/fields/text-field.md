@@ -47,6 +47,26 @@ path='/webforj/textfield?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/textfield/TextFieldView.java'
 />
 
+## Field value
+
+The value of a `TextField` represents the current user input as a string. In WebforJ, this can be accessed or updated programmatically using `getValue()` and `setValue(String)`.
+
+```java
+String text = textField.getValue();
+```
+
+```java
+textField.setValue("Initial content");
+```
+
+If no value has been entered by the user, and no default value is set, the field returns an empty string (`""`).
+
+This behavior is consistent with how the HTML `<input type="text">` element exposes its value via JavaScript.
+
+:::tip
+To combine value handling with validation, ensure constraints such as [pattern](#pattern-matching), [minLength](#setminlength), or [maxlength](#setmaxlength) are used. This ensures the value is only considered valid when it meets those conditions.
+:::
+
 ## Placeholder text
 
 You can set placeholder text for the `TextField` using the `setPlaceholder()` method. The placeholder text is displayed when the field is empty, helping to prompt the user to enter appropriate input into the `TextField`.
