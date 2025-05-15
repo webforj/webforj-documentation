@@ -23,7 +23,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 
 The `DateField` component stores its value internally as a `LocalDate` object, representing a date without time or timezone information. This allows for accurate handling of calendar-based input across different systems.
 
-While the **visual display adapts to the user's browser locale**, ensuring regionally familiar formatting (e.g., MM/DD/YYYY in the USA or DD.MM.YYYY in Europe), the internal parsing and programmatic interaction always rely on the fixed format: **`yyyy-MM-dd`**.
+While the **visual display adapts to the user's browser locale**, ensuring regionally familiar formatting (e.g., `MM/DD/YYYY` in the `USA` or `DD.MM.YYYY` in Europe), the internal parsing and programmatic interaction always rely on the fixed format: **`yyyy-MM-dd`**.
 
 ### Getting and setting the value
 
