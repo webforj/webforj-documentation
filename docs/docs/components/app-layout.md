@@ -1,6 +1,7 @@
 ---
 title: AppLayout
 sidebar_position: 5
+sidebar_class_name: updated-content
 ---
 
 <DocChip chip='shadow' />
@@ -149,7 +150,7 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 
 ## `AppDrawerToggle`
 
-The `AppDrawerToggle` component is a server-side WebforJ class that represents a button used to toggle the visibility of a navigation drawer in an [`AppLayout`](./app-layout.md). It maps to the client-side `<dwc-app-drawer-toggle>` element and is styled to behave like a traditional hamburger menu icon.
+The `AppDrawerToggle` component is a server-side webforJ class that represents a button used to toggle the visibility of a navigation drawer in an [`AppLayout`](./app-layout.md). It maps to the client-side `<dwc-app-drawer-toggle>` element and is styled to behave like a traditional hamburger menu icon.
 
 ### Overview
 
