@@ -13,7 +13,6 @@ CLI
 POM
 disabled
 webforJ
-webforj
 UUID
 E2E
 End-to-End
@@ -29,4 +28,4 @@ REM
 EM
 WCAG
 REST
-StartforJ
+startforJ

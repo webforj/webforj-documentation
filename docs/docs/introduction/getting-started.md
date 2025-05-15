@@ -15,9 +15,9 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
-## Using StartforJ
+## Using startforJ
 
-[StartforJ](https://docs.webforj.com/startforj) provides the simplest way to set up a new webforJ app. It generates a minimal starter project based on various available archetypes that includes all required dependencies, configuration files, and a pre-wired layout - ready to build on. 
+The simplest way to set up a new webforJ app is by utilizing [startforJ](https://docs.webforj.com/startforj). It generates a minimal starter project based on various available archetypes that includes all required dependencies, configuration files, and a pre-wired layout - ready to build on.
 
 <div class="videos-container">
   <video controls>
@@ -25,7 +25,7 @@ import DocCardList from '@theme/DocCardList';
   </video>
 </div>
 
-Using StartforJ:
+Using startforJ:
 
 - Generates a project with all necessary configuration  
 - Prompts you for basic project metadata (e.g., `groupId`, `artifactId`, project name)  
