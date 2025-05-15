@@ -1,5 +1,6 @@
 ---
 title: Licensing and Watermark
+sidebar_position: 20
 ---
 
 By default, webforJ projects can be run but won't have a license certificate associated with them. When running an unlicensed project, a watermark will display on the running app's UI until a valid license has been entered.
