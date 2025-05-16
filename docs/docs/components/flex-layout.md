@@ -4,7 +4,7 @@ sidebar_position: 45
 ---
 
 <JavadocLink type="flexlayout" location="com/webforj/component/layout/flexlayout/FlexLayout" top='true'/>
-
+<DocChip chip='since' label='24.00' />
 
 webforJ provides developers with an efficient and intuitive way to layout their various applications and components - the Flex Layout. This toolset allows for items to be displayed either vertically or horizontally. 
 

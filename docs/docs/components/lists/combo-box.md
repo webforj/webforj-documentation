@@ -5,9 +5,8 @@ slug: combobox
 ---
 
 <DocChip chip='shadow' />
-
 <DocChip chip='name' label="dwc-combobox" />
-
+<DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" top='true'/>
 
 <ParentLink parent="List" />

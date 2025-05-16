@@ -4,8 +4,11 @@ title: Dynamic Styling
 slug: styling
 sidebar_class_name: new-content
 ---
+<!-- vale off -->
+# Dynamic Styling <DocChip chip='since' label='25.00' />
+<!-- vale on -->
 
-in webforJ 25 and higher, it's possible to style individual rows and cells in the Table using custom part names. These names can be assigned dynamically based on your app's logic, giving you fine-grained control over the table’s appearance.
+In webforJ 25 and higher, it's possible to style individual rows and cells in the Table using custom part names. These names can be assigned dynamically based on your app's logic, giving you fine-grained control over the table’s appearance.
 
 ## Row styling
 

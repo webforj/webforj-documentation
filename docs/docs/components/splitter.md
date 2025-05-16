@@ -3,18 +3,9 @@ title: Splitter
 sidebar_position: 115
 ---
 
-<!-- vale off -->
-
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import Chip from '@mui/material/Chip';
-
-<!-- vale on -->
-
-
 <DocChip chip='shadow' />
-
 <DocChip chip='name' label="dwc-splitter" />
-
+<DocChip chip='since' label='24.00' />
 <JavadocLink type="splitter" location="com/webforj/component/layout/splitter/Splitter" top='true'/>
 
 

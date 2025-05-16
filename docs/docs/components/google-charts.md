@@ -3,13 +3,9 @@ title: Google Charts
 sidebar_position: 50
 ---
 
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import Chip from '@mui/material/Chip';
-
 <DocChip chip='shadow' />
-
 <DocChip chip='name' label="google-chart" exclude= 'true' />
-
+<DocChip chip='since' label='23.06' />
 <JavadocLink type="googlecharts" location="com/webforj/component/googlecharts/GoogleChart" top='true'/>
 
 <!-- Brief overview of the component and what it is/does -->

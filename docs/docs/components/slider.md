@@ -6,6 +6,7 @@ sidebar_class_name: updated-content
 
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-slider" />
+<DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/slider/Slider" top='true'/>
 
 The `Slider` component in webforJ provides an interactive control that allows users to select a value within a specific range by moving a knob. This feature is particularly useful for apps requiring precise or intuitive input, such as selecting volumes, percentages, or other adjustable values.

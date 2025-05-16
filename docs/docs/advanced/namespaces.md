@@ -3,6 +3,9 @@ title: Namespaces
 sidebar_class_name: new-content
 ---
 
+<DocChip chip='since' label='24.22' />
+<JavadocLink type="foundation" location="com/webforj/environment/namespace/Namespace" top='true'/>
+
 Namespaces in webforJ provide a mechanism for storing and retrieving shared data across different scopes in a web app. They enable inter-component and cross-session data communication without relying on traditional storage techniques like session attributes or static fields. This abstraction allows developers to encapsulate and access state in a controlled, thread-safe manner. Namespaces are ideal for building multi-user collaboration tools or simply maintaining consistent global settings, and let you coordinate data safely and efficiently.
 
 ## What's a namespace?

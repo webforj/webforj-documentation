@@ -3,14 +3,9 @@ title: Button
 sidebar_position: 15
 ---
 
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import Chip from '@mui/material/Chip';
-
 <DocChip chip="shadow" />
-
 <DocChip chip="name" label="dwc-button" />
-
-
+<DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/button/Button" top='true'/>
 
 A `Button` component is a fundamental user interface element used in application development to create interactive elements that trigger actions or events when clicked or activated. It serves as a clickable element that users can interact with to perform various actions within an application or website. 
@@ -50,7 +45,7 @@ The `Button` class is a versatile component that is commonly used in various sit
   > - "Previous" - Returns the user to the previous page of the application or section they're in.
   > - "Back" Returns the user to the first part of the application or page they're in.
 
-## Adding icons to buttons
+## Adding icons to buttons <DocChip chip='since' label='24.11' />
 
 Incorporating an icon into a button can greatly improve your app's design, allowing users to quickly identify actionable items on the screen. The [`Icon`](./icon.md) component provides a wide selection of icons to choose from.
 

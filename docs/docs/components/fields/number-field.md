@@ -7,6 +7,7 @@ description: A component that provides a default browser-based input field for e
 
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-field" />
+<DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/NumberField" top='true' />
 
 <ParentLink parent="Field" />
