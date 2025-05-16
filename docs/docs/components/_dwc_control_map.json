@@ -45,5 +45,6 @@
 "AppNavItem": "dwc-app-nav-item",
 "Refresher": "dwc-refresher",
 "Terminal": "dwc-terminal",
-"AppNav": "dwc-app-nav"
+"AppNav": "dwc-app-nav",
+"Tree": "dwc-tree"
 }
