@@ -1,6 +1,6 @@
 ---
 title: Installable Apps
-sidebar_position: 1
+sidebar_position: 10
 ---
 
 The `@AppProfile` annotation in webforJ enables you to make your app installable on supported platforms. 

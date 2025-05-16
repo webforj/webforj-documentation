@@ -1,6 +1,7 @@
 ---
 title: DesktopNotification
 sidebar_position: 29
+sidebar_class_name: new-content
 ---
 
 <JavadocLink type="desktopnotification" location="com/webforj/component/desktopnotification/DesktopNotification" top='true'/>

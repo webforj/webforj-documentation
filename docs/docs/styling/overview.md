@@ -1,6 +1,7 @@
 ---
 title: Styling
 hide_table_of_contents: true
+sidebar_class_name: new-content
 ---
 
 <Head>
