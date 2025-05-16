@@ -6,7 +6,7 @@ title: Input Dialog
 # Input Dialog
 
 <DocChip chip='shadow' />
-
+<DocChip chip='since' label='24.02' />
 <JavadocLink type="foundation" location="com/webforj/component/optiondialog/InputDialog" top='true'/>
 
 An `InputDialog` is a modal dialog designed to prompt the user for input. The dialog blocks app execution until the user provides the input or closes the dialog.

@@ -4,6 +4,7 @@ title: Composite Components
 draft: false
 ---
 
+<DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
 Developers will often wish to create components that contain constituent components for application level use. The `Composite` component gives developers the tools they need to create their own components while maintaining control over what they choose to expose to users. 

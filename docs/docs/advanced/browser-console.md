@@ -3,8 +3,8 @@ sidebar_position: 15
 title: Browser Console
 ---
 
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
+<DocChip chip='since' label='24.10' />
+<JavadocLink type="foundation" location="com/webforj/BrowserConsole" top='true'/>
 
 Using the browser's console to print valuable program information is an integral part of the development process. The <JavadocLink type="foundation" location="com/webforj/BrowserConsole" code='true'>BrowserConsole</JavadocLink> utility class comes with a slew of features to enhance logging capabilities.
 

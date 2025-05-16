@@ -4,6 +4,9 @@ title: Columns
 slug: columns
 ---
 
+<DocChip chip='since' label='24.00' />
+<JavadocLink type="table" location="com/webforj/component/table/Column" top='true'/>
+
 The `Table` class utilizes `Column` classes to handle the creation of data columns within it. This class has a wide range of functionality that allows a user to thoroughly customize what is displayed within each of the columns.
 To add a `Column` to a `Table`, use one of the `addColumn` factory methods.
 

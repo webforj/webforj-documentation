@@ -6,6 +6,7 @@ sidebar_class_name: new-content
 
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-alert" />
+<DocChip chip='since' label='25.00' />
 <JavadocLink type="alert" location="com/webforj/component/alert/Alert" top='true'/>
 
 The `Alert` component in webforJ provides contextual feedback messages for users. It's a versatile way to display important information, warnings, or notifications in your app.

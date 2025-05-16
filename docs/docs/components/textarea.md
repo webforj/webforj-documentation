@@ -4,9 +4,8 @@ sidebar_position: 130
 ---
 
 <DocChip chip="shadow" />
-
 <DocChip chip="name" label="dwc-textarea" />
-
+<DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/TextArea" top='true'/>
 
 The `TextArea` component in webforJ offers a solution for multi-line text input. End-users can freely type and edit text, while developers can set reasonable boundaries using features like maximum character limits, paragraph structure, and validation rules.

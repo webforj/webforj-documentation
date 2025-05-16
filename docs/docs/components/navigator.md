@@ -3,20 +3,10 @@ title: Navigator
 sidebar_position: 75
 ---
 
-<!-- vale off -->
-
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import Chip from '@mui/material/Chip';
-
-<!-- vale on -->
-
 <DocChip chip='shadow' />
-
 <DocChip chip='name' label="dwc-navigator" />
-
-
+<DocChip chip='since' label='24.00' />
 <JavadocLink type="foundation" location="com/webforj/component/navigator/Navigator" top='true'/>
-
 
 The `Navigator` component is a customizable pagination component designed to navigate through data sets, supporting multiple layouts. You can configure it to display various navigation controls such as first, last, next, and previous buttons, along with page numbers or a quick jump field depending on the layout setting. 
 
