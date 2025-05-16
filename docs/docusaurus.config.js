@@ -19,10 +19,8 @@ const config = {
     locales: ['en'],
   },
   scripts: [
-    {
-      src: '/dwc-theme-switcher.js',
-      async: false,
-    },
+    { src: '/js/dwc-theme-switcher.js', async: false },
+    { src: '/js/link-decorator.js'}
   ],
   headTags: [
     {
