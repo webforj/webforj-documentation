@@ -7,6 +7,7 @@ sidebar_class_name: new-content
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-app-nav" />
 <DocChip chip="name" label="dwc-app-nav-item" />
+<DocChip chip='since' label='24.12' />
 <JavadocLink type="appnav" location="com/webforj/component/appnav/AppNav" top='true'/> 
 
 The `AppNav` component in webforJ provides a flexible and organized side navigation menu with support for both flat and hierarchical structures. Each entry is an `AppNavItem`, which can represent a simple link or a group containing sub-items. Items can be linked to internal views or external resources, enhanced with icons, badges, or other components.

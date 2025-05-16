@@ -5,6 +5,7 @@ sidebar_position: 5
 
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-datefield" />
+<DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedDateField" top='true'/>
 
 The `MaskedDateField` is a text input control designed for structured date entry. It lets users enter dates as **numbers** and automatically formats the input based on a defined mask when the field loses focus. The mask is a string that specifies the expected date format, guiding both input and display.

@@ -4,10 +4,8 @@ sidebar_position: 10
 ---
 
 <DocChip chip="shadow" />
-
 <DocChip chip="name" label="dwc-loading" />
-
-
+<DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/BusyIndicator" top='true'/>
 
 The `BusyIndicator` provides visual cues to ensure that users are aware of ongoing processes, preventing them from interacting with the system prematurely. It typically covers the entire app interface for global operations.

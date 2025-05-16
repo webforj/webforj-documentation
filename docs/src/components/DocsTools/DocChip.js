@@ -4,19 +4,20 @@ import { jsx, css } from '@emotion/react';
 import { Tooltip, Chip } from '@mui/material';
 
 import BiotechIcon from '@mui/icons-material/Biotech';
+import AddTaskIcon from '@mui/icons-material/AddTask';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
 import CodeIcon from '@mui/icons-material/Code';
 import DescriptionIcon from '@mui/icons-material/Description';
-import StyleIcon from '@mui/icons-material/Style';
 
-export default function DocChip( { chip, label, href, exclude, iconName, tooltipText, color  } ) {
+export default function DocChip( { chip, label, href, exclude, tooltipText, color } ) {
 
   const mainStyles = css`
     margin-right: 0.5em;
     margin-bottom: 1em;
     background-color: var(--chip-background);
     color: var(--chip-text);
-
+    position: relative;
+    top: 0.3rem;
     :hover{
       color: inherit;
       background-color: var(--chip-background-hover);
@@ -28,36 +29,41 @@ export default function DocChip( { chip, label, href, exclude, iconName, tooltip
   `
 
   let icon;
-  if(chip === 'shadow'){
-    // A "Shadow DOM" Chip
-    tooltipText = "This component renders with a shadow DOM, an API built into the browser that facilitates encapsulation.";
-    href = "/docs/glossary#shadow-dom";
-    label='Shadow';
-    iconName = 'shadow';
-  } else if (chip === 'name') {
+  switch(chip){
+    // A "Shadow DOM" chip
+    case 'shadow':
+      tooltipText = "This component renders with a shadow DOM, an API built into the browser that facilitates encapsulation.";
+      href = "/docs/glossary#shadow-dom";
+      label = 'Shadow';
+      icon = <FiberSmartRecordIcon css={iconStyles} />;
+    break;
     // A "DOM Name" chip
-    tooltipText="The name of this web component as it appears in the DOM.";
-      if (!(exclude)){
-        const path = "/docs/client-components/";
-        const clientPage = label.replace("dwc-", "");
-        href = path.concat(clientPage);
-      }
-    iconName = 'code';
-  } else if (chip == 'scoped') {
-    tooltipText = "This component uses scoped components, an alternative approach to the shadow DOM, a browser API that enables encapsulation. These components scope their styles to avoid leaks or conflicts instead of relying on the native shadow DOM.";
-    exclude= 'true';
-    label='Scoped';
-    iconName = 'scoped';  
-  }
-
-  if (iconName === 'shadow'){
-    icon = <FiberSmartRecordIcon css={iconStyles} />;
-  } else if (iconName === 'code'){
-    icon = <CodeIcon css={iconStyles} />;
-  } else if(iconName === 'scoped'){
-    icon = <BiotechIcon css={iconStyles} />
-  } else{
-    icon = <StyleIcon css={iconStyles} />;
+    case 'name':
+      tooltipText="The name of this web component as it appears in the DOM.";
+        if (!(exclude)){
+          const path = "/docs/client-components/";
+          const clientPage = label.replace("dwc-", "");
+          href = path.concat(clientPage);
+        }
+      icon = <CodeIcon css={iconStyles} />;
+    break;
+    // A "Version" chip    
+    case 'since':
+      tooltipText = "This feature is available for webforJ " + label + " and higher.";
+      exclude= 'true';
+      icon = <AddTaskIcon css={iconStyles} />
+    break;
+    // A "Scoped" chip
+    case 'scoped':
+      tooltipText = "This component uses scoped components, an alternative approach to the shadow DOM, a browser API that enables encapsulation. These components scope their styles to avoid leaks or conflicts instead of relying on the native shadow DOM.";
+      exclude= 'true';
+      label='Scoped';
+      icon = <BiotechIcon css={iconStyles} />
+    break;
+    default:
+      console.warn("Uknown chip type:", chip);
+      icon = <DescriptionIcon css={iconStyles} />;
+      exclude= 'true';
   }
 
   return (

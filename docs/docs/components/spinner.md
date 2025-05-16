@@ -4,10 +4,8 @@ sidebar_position: 110
 ---
 
 <DocChip chip="shadow" />
-
 <DocChip chip="name" label="dwc-spinner" />
-
-
+<DocChip chip='since' label='24.10' />
 <JavadocLink type="spinner" location="com/webforj/component/spinner/Spinner" top='true'/>
 
 The `Spinner` component provides a visual indicator that indicates ongoing processing or loading in the background. It's often used to show that the system is fetching data or when a process takes time to complete. The spinner offers user feedback, signaling that the system is actively working.

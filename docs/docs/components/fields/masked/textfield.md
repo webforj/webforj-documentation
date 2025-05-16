@@ -4,9 +4,8 @@ sidebar_position: 15
 ---
 
 <DocChip chip='shadow' />
-
 <DocChip chip='name' label="dwc-textfield" />
-
+<DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedTextField" top='true'/>
 
 The `MaskedTextField` component aims to deliver a configurable and easily validatable text input. It's well-suited for apps requiring formatted input, such as financial, e-commerce, and healthcare apps.

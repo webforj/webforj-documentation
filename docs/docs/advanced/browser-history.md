@@ -2,6 +2,9 @@
 title: Browser History
 ---
 
+<DocChip chip='since' label='24.12' />
+<JavadocLink type="foundation" location="com/webforj/router/history/BrowserHistory" top='true'/>
+
 The `BrowserHistory` class in webforJ provides a high-level API to interact with the browser's history. Browser history allows web applications to keep track of the user's navigation within the app. By leveraging browser history, developers can enable features like back and forward navigation, state preservation, and dynamic URL management without requiring full-page reloads.
 
 ## Navigating through history

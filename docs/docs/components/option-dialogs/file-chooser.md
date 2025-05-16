@@ -6,7 +6,7 @@ title: File Chooser
 # File Chooser Dialog
 
 <DocChip chip='shadow' />
-
+<DocChip chip='since' label='24.02' />
 <JavadocLink type="foundation" location="com/webforj/component/optiondialog/FileChooserDialog" top='true'/>
 
 `FileChooserDialog` is a modal dialog designed to allow the user to select a file or a directory from the server file system. The dialog blocks app execution until the user makes a selection or closes the dialog.

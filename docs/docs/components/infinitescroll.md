@@ -6,6 +6,7 @@ sidebar_class_name: new-content
 
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-infinite-scroll" />
+<DocChip chip='since' label='25.00' />
 <JavadocLink type="infinite-scroll" location="com/webforj/component/infinitescroll/InfiniteScroll" top='true'/>
 
 The `InfiniteScroll` component in webforJ automatically loads more content as users scroll down, eliminating the need for pagination. This creates a smooth experience for lists, feeds, and data-heavy views by loading content only when needed.

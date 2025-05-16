@@ -6,6 +6,7 @@ sidebar_class_name: new-content
 
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-toolbar" />
+<DocChip chip='since' label='24.12' />
 <JavadocLink type="toolbar" location="com/webforj/component/layout/toolbar/Toolbar" top='true'/>
 
 Toolbars offer users quick access to core actions and navigation elements. The webforJ `Toolbar` component is a horizontal container that can hold a set of action buttons, icons, or other components. It's well-suited for managing page controls and housing key functions like a search bar or a notification button.

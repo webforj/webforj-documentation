@@ -7,6 +7,7 @@ description: A single-line input component for securely entering and masking pas
 
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-field" />
+<DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/PasswordField" top='true'/>
 
 <ParentLink parent="Field" />

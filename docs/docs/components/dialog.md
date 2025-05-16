@@ -4,9 +4,8 @@ sidebar_position: 30
 ---
 
 <DocChip chip='shadow' />
-
 <DocChip chip='name' label="dwc-dialog" />
-
+<DocChip chip='since' label='23.06' />
 <JavadocLink type="dialog" location="com/webforj/component/dialog/Dialog" top='true'/>
 
 The webforJ dialog component is built to allow a developer to quickly and easily display a dialog on their application, for instances such as a login menu or information box.

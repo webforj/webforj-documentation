@@ -6,6 +6,7 @@ sidebar_class_name: new-content
 
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-refresher" />
+<DocChip chip='since' label='25.00' />
 <JavadocLink type="refresher" location="com/webforj/component/refresher/Refresher" top='true'/>
 
 The `Refresher` component in webforJ enables a pull-to-refresh interaction within scrollable containers—ideal for dynamic data loading in mobile or tap-friendly interfaces. As users swipe downward past a configurable threshold, the refresher transitions through visual states: `pull`, `release`, and `refreshing`. Each state presents a customizable icon and localized text to clearly communicate feedback.

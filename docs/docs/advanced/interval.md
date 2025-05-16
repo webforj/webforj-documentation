@@ -2,8 +2,9 @@
 sidebar_position: 45
 title: Interval
 ---
-import ComponentDemo from '@site/src/components/DocsTools/ComponentDemo';
-import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
+
+<DocChip chip='since' label='24.02' />
+<JavadocLink type="foundation" location="com/webforj/Interval" top='true'/>
 
 The <JavadocLink type="foundation" location="com/webforj/Interval" code='true' >Interval</JavadocLink> class represents a timer that triggers an [event](../building-ui/events) with a fixed time delay between each triggering.
 
