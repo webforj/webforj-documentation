@@ -192,7 +192,7 @@ tree.deselectChildren(parentNode);
 
 ### Selection state retrieval
 
-You can get the current selection:
+You can get the current selection by utilizing the code displayed below:
 
 ```java
 // get the reference of selected node
