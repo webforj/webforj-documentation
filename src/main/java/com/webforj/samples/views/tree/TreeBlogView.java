@@ -12,12 +12,12 @@ import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("Tree")
-public class TreeView extends Composite<FlexLayout> {
+public class TreeBlogView extends Composite<FlexLayout> {
 
   FlexLayout self = getBoundComponent();
   Tree tree = new Tree();
 
-  public TreeView() {
+  public TreeBlogView() {
     self.setStyle("margin", "1em auto")
         .setPadding("1em");
     tree.setConnected(false);
