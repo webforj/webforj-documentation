@@ -1,5 +1,6 @@
 ---
 title: Opening URLs 
+sidebar_class_name: new-content
 ---
 
 The <JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page</JavadocLink> utility class comes with a few options to open URL's. 

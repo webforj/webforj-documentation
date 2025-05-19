@@ -3,6 +3,7 @@ sidebar_position: 10
 title: Events
 slug: events
 draft: false
+sidebar_class_name: updated-content
 ---
 
 <JavadocLink type="foundation" location="com/webforj/component/event/Event" top='true'/>
@@ -63,9 +64,9 @@ listenerRegistration.remove();
 
 ## Using event payload
 
-It's important to note that events often come with a payload, which contains additional information related to the event. You can efficiently utilize this payload within the event handler to access relevant data without making unnecessary round trips between the client and server. By doing so, you can improve the performance of your application.
+It's important to note that events often come with a payload, which contains additional information related to the event. You can efficiently utilize this payload within the event handler to access relevant data without making unnecessary round trips between the client and server. By doing so, you can improve the performance of your app.
 
-The following code snippet queries the component to get information that, for our demonstration's purposes, is already included in the event payload, representing inefficient code:
+The following code snippet queries the component to get information that, for the demonstration's purposes, is already included in the event payload, representing inefficient code:
 
 ```java
 myComponent.addEventListener(e -> {
@@ -103,3 +104,22 @@ height='100px'
 />
 
 <!-- <EventTable base events={['drawerOpen', 'drawerClose']} /> -->
+
+### Page-level event registration
+
+In addition to attaching event listeners to specific UI components, the <JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page</JavadocLink> utility class itself supports global HTML event registration. This enables use cases where an event should be captured across the entire page, without requiring a specific element reference.
+
+For example, the following registers a page-wide click event listener that logs the cursor position on click:
+
+```java
+PageEventOptions options = new PageEventOptions();
+options.addData("clientX", "event.clientX");
+options.addData("clientY", "event.clientY");
+
+Page.getCurrent().addEventListener("click", event -> {
+  int x = (int) event.getData().get("clientX");
+  int y = (int) event.getData().get("clientY");
+
+  console().log("Clicked at x: " + x + ", y: " + y);
+}, options);
+```
