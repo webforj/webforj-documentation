@@ -20,7 +20,7 @@ const config = {
   },
   scripts: [
     { src: '/js/dwc-theme-switcher.js', async: false },
-    { src: '/js/link-decorator.js'}
+    { src: '/js/link-decorator.js' }
   ],
   headTags: [
     {
@@ -136,20 +136,10 @@ const config = {
           position: 'right',
           items: [
             {
-              label: "JavaDocs",
-              href: 'https://javadoc.io/doc/com.webforj',
+              label: "startforJ",
+              href: 'https://docs.webforj.com/startforj/',
+              target: '_blank',
               rel: null,
-            },
-            // {
-            //   label: "Quick Template",
-            //   href: 'https://github.com/webforj/skeleton-starter-hello-world',
-            //   target: '_blank',
-            //   rel: null,
-            // },
-            {
-              label: "Client Components",
-              to: '/docs/client-components/overview',
-              activeBasePath: 'docs/client-components/overview'
             },
             {
               label: "DWC HueCraft",
@@ -162,6 +152,16 @@ const config = {
               href: 'https://www.figma.com/community/file/1144573845612007198/dwc-design-kit',
               target: '_blank',
               rel: null,
+            },
+            {
+              label: "JavaDocs",
+              href: 'https://javadoc.io/doc/com.webforj',
+              rel: null,
+            },
+            {
+              label: "Client Components",
+              to: '/docs/client-components/overview',
+              activeBasePath: 'docs/client-components/overview'
             },
             {
               label: "Contribution Guide",
