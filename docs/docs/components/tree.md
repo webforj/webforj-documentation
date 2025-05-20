@@ -6,7 +6,7 @@ sidebar_class_name: new-content
 
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-tree" />
-<JavadocLink type="tree" location="com/webforj/component/layout/tree/Tree" top='true'/>
+<JavadocLink type="foundation" location="com/webforj/component/tree/Tree" top='true'/>
 
 The `Tree` component organizes data as a hierarchy of nodes. Each node holds a unique key and a label. Nodes connect to form parent-child relationships. You can expand or collapse nodes to show or hide their children. Icons clarify what kind of node you’re looking at and whether it’s selected. Selection supports choosing one node or many at once.
 
