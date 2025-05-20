@@ -246,4 +246,8 @@ This category includes components that facilitate user interactions and visually
   <GalleryCard header="Refresher" href="refresher" image="/img/components/Refresher.png">
     <p>A component that allows a pull-to-refresh interaction within scrollable containers—ideal for dynamic data loading.</p>
   </GalleryCard>
+
+  <GalleryCard header="Tree" href="tree" image="/img/components/Tree.png">
+    <p>A component for displaying hierarchical data, letting users expand, collapse, and interact with nested items.</p>
+  </GalleryCard>
 </GalleryGrid>
