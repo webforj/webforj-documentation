@@ -62,7 +62,7 @@
     <dependency>
       <groupId>com.webforj</groupId>
       <artifactId>webforj-engine</artifactId>
-      <version>25.00</version>
+      <version>${webforj.version}</version>
     </dependency>
     <dependency>
       <groupId>com.webforj</groupId>
