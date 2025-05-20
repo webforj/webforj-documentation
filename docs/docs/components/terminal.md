@@ -1,6 +1,7 @@
 ---
 title: Terminal
 sidebar_position: 126
+sidebar_class_name: new-content
 ---
 
 <DocChip chip="shadow" />  

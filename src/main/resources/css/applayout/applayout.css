@@ -1,6 +1,9 @@
-body,
-html {
-  overflow: hidden;
+.layout--collapse {
+  --dwc-app-layout-header-collapse-height: 45px;
+}
+
+.layout--collapse h1 {
+  text-align: center;
 }
 
 .drawer__logo {
@@ -17,37 +20,16 @@ html {
   border-radius: 10px;
 }
 
-.layout__header {
-  display: flex;
-  align-items: center;
-  gap: var(--dwc-space-m);
-  padding: 0 var(--dwc-space-m);
-  flex-wrap: wrap;
-}
-
-.layout__header--title {
-  display: block;
-  font-size: 1.25em;
-  margin-top: 0.83em;
-  margin-bottom: 0.83em;
-  margin-left: 0;
-  margin-right: 0;
-  font-weight: bold;
-}
-
-.layout__second__header {
-  flex-basis: 100%;
-  margin: calc(-1 * var(--dwc-space-m) 0 0 0);
-}
-
 .card {
   padding: var(--dwc-space-m);
-  margin: var(--dwc-space-m) 0;
+  margin: var(--dwc-space-m) auto;
   border: thin solid var(--dwc-color-default);
   border-radius: var(--dwc-border-radius-m);
   background-color: var(--dwc-surface-3);
+  max-width: 600px;
 }
 
 dwc-tab::part(prefix) {
-  --dwc-icon-size: var(--dwc-size-xs);
+  --dwc-icon-size: var(--dwc-size-s);
+  cursor: pointer;
 }

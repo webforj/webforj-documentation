@@ -2,6 +2,7 @@
 title: UI Components
 sidebar_position: 85
 hide_table_of_contents: true
+sidebar_class_name: has-new-content
 ---
 
 <Head>
@@ -236,5 +237,17 @@ This category includes components that facilitate user interactions and visually
 
   <GalleryCard header="Terminal" href="terminal" image="/img/components/Terminal.png">
     <p>A component that simulates a command-line interface (CLI) within the app, allowing users to input and execute text-based commands.</p>
+  </GalleryCard>
+  
+  <GalleryCard header="InfiniteScroll" href="infinitescroll" image="/img/components/InfiniteScroll.png">
+    <p>A component that loads more items on scroll, shows a loader, and tracks when all content is fetched.</p>
+  </GalleryCard>
+
+  <GalleryCard header="Refresher" href="refresher" image="/img/components/Refresher.png">
+    <p>A component that allows a pull-to-refresh interaction within scrollable containers—ideal for dynamic data loading.</p>
+  </GalleryCard>
+
+  <GalleryCard header="Tree" href="tree" image="/img/components/Tree.png">
+    <p>A component for displaying hierarchical data, letting users expand, collapse, and interact with nested items.</p>
   </GalleryCard>
 </GalleryGrid>

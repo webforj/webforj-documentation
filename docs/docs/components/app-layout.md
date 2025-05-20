@@ -34,8 +34,8 @@ Each part of the layout is a `Div`, which can contain any valid webforJ control.
 
 The following code sample will result in an application with a collapsible sidebar that contains a logo and tabs for various content options and a header. The demo uses the dwc-icon-button web component to create a drawer toggle button. The button has the data-drawer-toggle attribute which instructs the DwcAppLayout to listen to click events coming from that component to toggle the drawer state.
 
-<AppLayoutViewer path='/webforj/applayout?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutView.java'
+<AppLayoutViewer path='/webforj/applayout/content/Dashboard?' mobile='false'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/applayout/AppLayoutView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayout.css'
 />
 
@@ -50,8 +50,8 @@ myApp.setHeaderOffscreen(false);
 myApp.setFooterOffscreen(false);
 ```
 
-<AppLayoutViewer path='/webforj/applayoutfullnavbar?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutFullNavbarView.java'
+<AppLayoutViewer path='/webforj/applayoutfullnavbar/content/Dashboard?' mobile='false'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/fullnavbar/AppLayoutFullNavbarView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayout.css'/>
 
 
@@ -61,8 +61,8 @@ The navbar has no limit to the number of toolbars you can add. A `Toolbar` is a 
 
 The following demo shows how to use two toolbars, The first one houses the drawer's toggle button and the application's title. The second toolbar houses a secondary navigation menu.
 
-<AppLayoutViewer path='/webforj/applayoutmultipleheaders?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutMultipleHeadersView.java'
+<AppLayoutViewer path='/webforj/applayoutmultipleheaders/content/Dashboard?' mobile='false'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/multipleheaders/AppLayoutMultipleHeadersView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayout.css'/>
 
 ## Sticky toolbars
@@ -75,8 +75,8 @@ When `AppLayout.setHeaderReveal(true)` is set called, the header will be visible
 
 With the help of the CSS custom property `--dwc-app-layout-header-collapse-height` it is possible to control how much of the header navbar will be hidden.
 
-<AppLayoutViewer path='/webforj/applayoutstickytoolbar?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutStickyToolbarView.java'
+<AppLayoutViewer path='/webforj/applayoutstickytoolbar/content/Dashboard?' mobile='false'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/stickytoolbar/AppLayoutStickyToolbarView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayout.css'/>
 
 ## Mobile navigation layout
@@ -105,8 +105,8 @@ AppLayout demo = new AppLayout();
 demo.setDrawerBreakpoint("(max-width:500px)");
 ```
 
-<AppLayoutViewer path='/webforj/applayoutmobiledrawer?' mobile='true'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutMobileDrawerView.java'
+<AppLayoutViewer path='/webforj/applayoutmobiledrawer/?' mobile='true'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/mobiledrawer/AppLayoutMobileDrawerView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayoutMobile.css'
 />
 
