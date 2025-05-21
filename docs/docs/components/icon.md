@@ -216,21 +216,4 @@ While there are many use cases for each of the various themes, some examples use
 - `GRAY`: Good for subtle actions, such as minor settings or actions that are more supplementary to a page, and not part of the main functionality.
 - `INFO`: Good for providing additional clarifying information to a user.
 
-
-### Shadow parts
-
-These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Icon} table="parts"/>
-
-### CSS properties
-
-These are the various CSS properties that are used in the component, with a short description of their use.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Icon} table="properties"/>
-
-### Reflected attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Icon} table="reflects"/>
+<TableBuilder name="Icon" />
