@@ -6,13 +6,13 @@ import PropTypes from "prop-types";
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import Details from "@theme/Details";
 import CodeBlock from "@theme/CodeBlock";
 import test3 from "../../../static/img/window-maximize.png";
 import { useColorMode } from "@docusaurus/theme-common";
 import GLOBALS from "../../../siteConfig";
 
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 
 export function OpenNewWindowButton({ url }) {
@@ -217,8 +217,6 @@ export default function ComponentDemo({
     flex-direction: column;
     width: 100%;
     margin-bottom: 16px;
-    background-color: var(--dwc-surface-1);
-
     @media screen and (max-width: 768px) {
       width: 100vw;
       margin-left: -1em;
@@ -267,15 +265,14 @@ export default function ComponentDemo({
   `;
 
   const detailsStyles = css`
-    box-shadow: none;
+    overflow: hidden;
     background-color: var(--dwc-surface-3);
-    margin: 0px;
+    border: 1px solid var(--ifm-toc-border-color);
+    ${frame !== "hidden" && "border-top: none;"}
+    margin: ${frame == "hidden"
+      ? "40px 0px 0px 0px"
+      : "0px"};
     padding: 0px;
-    border: ${frame == "hidden"
-      ? "none"
-      : "1px solid var(--ifm-toc-border-color)"};
-    border-top: none;
-    border-radius: 0px;
     position: relative;
 
     div {
@@ -284,31 +281,36 @@ export default function ComponentDemo({
       margin: 0px;
     }
 
-    > div:first-of-type {
-      border: ${frame == "hidden"
-        ? "1px solid var(--ifm-toc-border-color)"
-        : "none"};
-      border-top: none;
+    summary {
+      cursor: pointer;
+      border-bottom: ${showCode ? "1px solid var(--ifm-toc-border-color)" : "none"};
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      font-weight: bold;
     }
 
-    summary {
-      display: flex;
-      width: 100%;
-      justify-content: center;
-      margin: 10px 0;
-      font-weight: bold;
-      ::before {
-        left: auto;
-        margin-left: -100px;
-        --docusaurus-details-decoration-color: var(--ifm-color-primary);
-      }
+    &::details-content {
+      block-size: auto;
+      block-size: ${showCode ? "calc-size(auto, size)" : "0"};
+      transition:
+        block-size var(--dwc-transition-slow),
+        content-visibility var(--dwc-transition-slow);
+      transition-behavior: allow-discrete;
     }
+
     .margin-top--md {
       margin-top: 0px !important;
     }
     ul {
       margin: -4px 0px !important;
     }
+  `;
+
+  const showCodeIconStyles = css`
+    transition: transform var(--dwc-transition-medium);
+    transform: rotate(${showCode ? "90": "0)"}deg);
+    margin-top: 2px;
   `;
 
   const tabStyles = css`
@@ -358,14 +360,12 @@ export default function ComponentDemo({
           </div>
         </div>
       ) : null}
-      <Details
-        css={detailsStyles}
-        summary={
+      <details
+        css={detailsStyles}>
           <summary onClick={() => setShowCode(!showCode)}>
             {showCode ? "Hide Code" : "Show Code"}
+            <ChevronRightIcon css={showCodeIconStyles}/>
           </summary>
-        }
-      >
         {cssURL ? (
           <Tabs css={tabStyles}>
             <TabItem
@@ -426,7 +426,7 @@ export default function ComponentDemo({
             ))}
           </Tabs>
         )}
-      </Details>
+      </details>
     </div>
   );
 }
