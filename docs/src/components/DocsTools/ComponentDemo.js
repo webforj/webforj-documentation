@@ -310,6 +310,7 @@ export default function ComponentDemo({
   const showCodeIconStyles = css`
     transition: transform var(--dwc-transition-medium);
     transform: rotate(${showCode ? "90": "0)"}deg);
+    margin-top: 2px;
   `;
 
   const tabStyles = css`
