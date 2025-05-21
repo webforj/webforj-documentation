@@ -12,6 +12,7 @@ import exclusions from '@site/static/exclusions.json';
  *   <TableBuilder name="dwc-alert" tables={["parts", "dependencies"]};
  * @param {Object} props - Component props
  * @param {String} props.name - The name of the component
+ * @param {Boolean} props.noFilter - Whether to filter the component tables
  * @param {Array<string>} [props.tables] - (optional) Names of the tables to render
  * @returns {React.ReactElement} - Rendered tables of data for the component
  */
@@ -30,6 +31,8 @@ export default function TableBuilder(props) {
 
   // If no tables are provided, try to generate all of them. Empty tables won't render anything.
   const tables = props.tables ? props.tables : ["parts", "slots", "properties", "reflects", "dependencies"];
+
+  const noFilter = props.noFilter ? props.noFilter : false;
 
   useEffect(() => {
     fetch("https://dwc.style/docs/dwc-components.json")
@@ -62,12 +65,22 @@ export default function TableBuilder(props) {
     name: style.name,
     desc: style.docs,
   }));
-  // Only include Reflected Attributes if reflectToAttr is true
-  const reflectItems = componentData.props?.filter(prop => prop.reflectToAttr).map((prop) => ({
-    attr: prop.attr,
-    desc: prop.docs,
-    type: prop.type,
-  }));
+  // If we filter the table, only include Reflected Attributes if reflectToAttr is true
+  let reflectItems;
+  
+  if (noFilter){
+    reflectItems = componentData.props?.map((prop) => ({
+      attr: prop.attr,
+      desc: prop.docs,
+      type: prop.type,
+    }));
+  } else {
+    reflectItems = componentData.props?.filter(prop => prop.reflectToAttr).map((prop) => ({
+      attr: prop.attr,
+      desc: prop.docs,
+      type: prop.type,
+    }));
+  }
   const dependencies = componentData?.dependencies || [];
 
 
