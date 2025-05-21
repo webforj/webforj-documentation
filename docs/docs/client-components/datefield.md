@@ -20,20 +20,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 This section outlines styling information for the **`<dwc-datefield>`** component. This component is **client side only** - it cannot be instantiated on its own via the API, but may make up part of API components.
 :::
 
-### Shadow Parts
-These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
-<TableBuilder tag='dwc-datefield' table="parts"/>
+## Styling
 
+<TableBuilder name="dwc-datefield" noFilter />
 
-
-### Reflected Attributes
-
-  The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-  
-  <TableBuilder tag='dwc-datefield' table="reflects"/>
-
-### Dependencies
-
-  This component relies on the following components - see the related article for more detailed styling information:
-  
-  <TableBuilder tag='dwc-datefield' table="dependencies"/>
