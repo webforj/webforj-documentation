@@ -219,11 +219,6 @@ Some exotic sequence types like `APC`,`PM`, and `SOS` are recognized but silentl
 Custom sequences can be supported through integrations if needed.
 :::
 
-
 ## Styling
 
-### Shadow parts
-
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Terminal} table='parts' />
+<TableBuilder name="Terminal" />
