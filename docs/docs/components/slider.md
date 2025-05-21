@@ -207,14 +207,4 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '460px'
 />
 
-
-### Shadow Parts
-These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag='dwc-slider' table="parts"/>
-
-### Reflected Attributes
-
-  The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-  
-  <TableBuilder tag='dwc-slider' table="reflects"/>
+<TableBuilder name="Slider" />
