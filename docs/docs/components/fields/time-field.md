@@ -7,6 +7,7 @@ description: A component that provides a default browser-based time picker for s
 
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-field" />
+<DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/TimeField" top='true'/>
 
 <ParentLink parent="Field" />

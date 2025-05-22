@@ -1,6 +1,9 @@
 ---
 title: Terminate and Error Actions
 ---
+<!-- vale off -->
+# Terminate and Error Actions <DocChip chip='since' label='23.06' />
+<!-- vale on -->
 
 When developing applications with the webforJ, it's essential to define how your app behaves when it terminates or encounters an error. The framework provides mechanisms to customize these behaviors through `terminate` and `error` actions.
 

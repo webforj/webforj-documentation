@@ -5,6 +5,7 @@ sidebar_position: 5
 
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-app-layout" />
+<DocChip chip='since' label='23.06' />
 <JavadocLink type="applayout" location="com/webforj/component/layout/applayout/AppLayout" top='true'/>
 
 The `AppLayout` is a comprehensive responsive layout component that provides a header, a footer, a drawer, and content section. The header and footer are fixed, the drawer slides in and out of the viewport, and the content is scrollable.

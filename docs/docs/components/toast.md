@@ -4,9 +4,8 @@ sidebar_position: 140
 ---
 
 <DocChip chip="shadow" />
-
 <DocChip chip="name" label="dwc-toast" />
-
+<DocChip chip='since' label='24.10' />
 <JavadocLink type="toast" location="com/webforj/component/toast/Toast" top='true'/>
 
 A `Toast` notification is a subtle and unobtrusive pop-up notification designed to provide users with real-time feedback and information. These notifications are typically used to inform users about operations such as successful actions, warnings, or errors without interrupting their workflow. `Toast` notifications typically disappear after a set amount of time and don't require a user response.

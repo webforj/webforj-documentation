@@ -3,9 +3,9 @@ title: Icon
 sidebar_position: 55
 ---
 
-
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-icon" />
+<DocChip chip='since' label='24.11' />
 <JavadocLink type="icons" location="com/webforj/component/icons/Icon" top='true'/>
 
 The webforJ `Icon` component allows you to include icons effortlessly in your user interface

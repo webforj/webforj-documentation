@@ -5,6 +5,7 @@ sidebar_position: 10
 
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-numberfield" />
+<DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedNumberField" top='true'/>
 
 The `MaskedNumberField` is a text input designed for structured numeric entry. It ensures numbers are formatted consistently based on a defined mask, making it especially useful for financial forms, pricing fields, or any input where precision and readability matter.

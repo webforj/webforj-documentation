@@ -6,7 +6,7 @@ title: Message
 # Message Dialog
 
 <DocChip chip='shadow' />
-
+<DocChip chip='since' label='24.02' />
 <JavadocLink type="foundation" location="com/webforj/component/optiondialog/MessageDialog" top='true'/>
 
 A `MessageDialog` is a modal dialog designed to display a message to the user with an `OK` button to dismiss the dialog. It blocks app execution until the user interacts with it or it closes due to a timeout.

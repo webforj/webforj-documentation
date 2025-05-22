@@ -4,7 +4,8 @@ sidebar_position: 29
 sidebar_class_name: new-content
 ---
 
-<JavadocLink type="desktopnotification" location="com/webforj/component/desktopnotification/DesktopNotification" top='true'/>
+<DocChip chip='since' label='25.00' />
+<JavadocLink type="desktop-notification" location="com/webforj/component/desktopnotification/DesktopNotification" top='true'/>
 
 In webforj 25.00 and higher, The **DesktopNotification** component provides a simple interface for creating, displaying, and managing desktop notifications. With a focus on minimal configuration and built-in event handling, the component can be used when needing to notify users about real-time events (such as new messages, alerts, or system events) while they're browsing your app.
 
