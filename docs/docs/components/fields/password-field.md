@@ -19,6 +19,32 @@ path='/webforj/passwordfield?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/passwordfield/PasswordFieldView.java'
 />
 
+## Field value
+
+The `PasswordField` component stores and retrieves its value as a plain `String`, similar to a `TextField`, but with obscured visual rendering to hide the characters from view.
+
+You can retrieve the current value using:
+
+```java
+String password = passwordField.getValue();
+```
+
+To set or reset the value programmatically:
+
+```java
+passwordField.setValue("MySecret123!");
+```
+
+If no value has been entered by the user and no default is set, the field will return an empty string (`""`).
+
+This behavior mimics that of the native HTML `<input type="password">`, where the `.value` property holds the current input.
+
+
+:::tip
+Although the field visually masks the content, the returned value from `getValue()` is still stored as a plain string. Be mindful of this when handling sensitive data.
+:::
+
+
 ## Usages
 
 The `PasswordField` is best used in scenarios where capturing or handling sensitive information, such as passwords or other confidential data, is essential to your app. Here are some examples of when to use the `PasswordField`:
@@ -36,6 +62,57 @@ Users can reveal the value of the `PasswordField` by clicking on the reveal icon
 ## Placeholder text
 
 You can set placeholder text for the `PasswordField` using the `setPlaceholder()` method. The placeholder text is displayed when the field is empty, helping to prompt the user to enter appropriate input into the `PasswordField`.
+
+## Pattern matching
+
+You can apply a regular expression pattern to the `PasswordField` using the `setPattern()` method. This is especially useful when enforcing strong password rules, such as requiring a mix of uppercase and lowercase letters, numbers, and symbols.
+
+The pattern must follow the syntax of a [JavaScript regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions), as interpreted by the browser. The `u` (Unicode) flag is used internally to ensure accurate validation across all Unicode code points. Do **not** include forward slashes (`/`) around the pattern.
+
+```java
+passwordField.setPattern("(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}");
+```
+
+In this example, the pattern requires at least one lowercase letter, one uppercase letter, one number, and a minimum length of 8 characters.
+
+If the pattern is missing or invalid, no validation will be applied.
+
+:::tip
+You can provide a tooltip with `setTitle()` to help users understand the password requirements. Consider also placing helper text nearby to visually communicate what makes a valid password.
+:::
+
+:::note
+Using a pattern is strongly recommended for password fields to ensure users create secure and compliant credentials. Patterns allow you to enforce character rules and structural requirements. See the [Validation](#best-practices) section for more context.
+:::
+
+## Minimum and maximum length
+
+You can control the allowed length of the password input by using `setMinLength()` and `setMaxLength()` on the `PasswordField`.
+
+### `setMaxLength()`
+
+Sets the **maximum number of characters** that can be entered into the field. The value must be a non-negative integer (0 or greater). If no `maxLength` is defined or an invalid value is provided, the field will have no upper limit.
+
+```java
+passwordField.setMaxLength(20); // Maximum 20 characters
+```
+
+The field fails constraint validation if the entered text exceeds this limit. This validation is triggered only when the user changes the field’s value.
+
+### `setMinLength()`
+
+Defines the **minimum number of characters** that must be entered to pass validation. This value must be a non-negative integer and less than or equal to the `maxLength`.
+
+```java
+passwordField.setMinLength(8); // Minimum 8 characters
+```
+
+The field fails constraint validation if the user inputs fewer characters than required. Like with `maxLength`, this only applies on user interaction.
+
+:::tip
+Use both `setMinLength()` and `setMaxLength()` together to create effective input boundaries. See the [HTML length constraints documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#minlength) for more reference.
+:::
+
 
 ## Best practices
 
