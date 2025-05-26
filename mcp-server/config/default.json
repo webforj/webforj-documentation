@@ -1,0 +1,30 @@
+{
+  "server": {
+    "name": "webforj-docs",
+    "version": "1.0.0",
+    "description": "MCP server for webforJ documentation and code samples"
+  },
+  "paths": {
+    "docsRoot": "../docs/docs",
+    "blogRoot": "../docs/blog",
+    "demoRoot": "../src/main/java/com/webforj/samples",
+    "contextRoot": "../mcp-context",
+    "cacheFile": "./cache/mcp-index.json"
+  },
+  "scanning": {
+    "includePatterns": {
+      "docs": ["**/*.md", "**/*.mdx"],
+      "demos": ["**/*.java"],
+      "context": ["**/*.md", "**/*.java"]
+    },
+    "excludePatterns": ["**/node_modules/**", "**/dist/**", "**/build/**"]
+  },
+  "production": {
+    "baseUrl": "https://docs.webforj.com",
+    "demoBaseUrl": "https://docs.webforj.com/webforj"
+  },
+  "development": {
+    "baseUrl": "http://localhost:3000",
+    "demoBaseUrl": "http://localhost:8080/webforj"
+  }
+}

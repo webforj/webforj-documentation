@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "webforj-docs": {
+      "command": "node",
+      "args": ["./dist/index.js"],
+      "cwd": "/Users/beff/webforj-documentation/mcp-server",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
+  }
+}
