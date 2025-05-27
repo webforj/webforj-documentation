@@ -77,6 +77,14 @@ The DateTimeField class also provides the following static utility methods:
 
 The `setMin()` and `setMax()` methods define the valid range for timestamp values accepted by the component. If the input is earlier than the minimum or later than the maximum, it will fail constraint validation. When both values are set, the minimum must be less than or equal to the maximum, and the maximum must be greater than or equal to the minimum.
 
+```java
+// Set minimum allowed timestamp: January 1, 2023 at 08:00
+dateTimeField.setMin(LocalDateTime.of(2023, 1, 1, 8, 0));
+
+// Set maximum allowed timestamp: December 31, 2023 at 18:00
+dateTimeField.setMax(LocalDateTime.of(2023, 12, 31, 18, 0));
+```
+
 ## Best practices
 
 To ensure an optimal user experience when using the `DateTimeField` component, consider the following best practices:
