@@ -31,16 +31,6 @@ The `DateTimeField` is best used in scenarios where capturing or displaying both
 
 4. **Task Management and Deadlines**: `DateTimeFields` are valuable in applications that involve task management or setting deadlines where both the date and time are relevant for accurate scheduling.
 
-## Min and max value
-
-### `setMax`
-
-If the value entered into the component is later than the specified maximum timestamp, the component will fail constraint validation. When both the min and max values are set, the max value must be a timestamp that's the same as or later than the min value.
-
-### `setMin`
-
-If the value entered into the component is earlier than the specified minimum timestamp, the component will fail constraint validation. When both the min and max values are set, the min value must be a timestamp that's the same as or earlier than the max value.
-
 ## Field value (`LocalDateTime`)
 
 Internally, the `DateTimeField` component represents its value using a `LocalDateTime` object from the `java.time` package. This provides precise control over both the date and time components of the input.
@@ -82,6 +72,10 @@ The DateTimeField class also provides the following static utility methods:
 - `toDateTime(LocalDateTime dateTime)`: Convert a LocalDateTime object to a date and time string in yyyy-MM-ddTHH:mm:ss format.
 
 - `isValidDateTime(String dateTimeAsString)`: Checks to see if the given string is a valid yyyy-MM-ddTHH:mm:ss date and time. This will return a boolean value true if so, false otherwise.
+
+## Min and max value
+
+The `setMin()` and `setMax()` methods define the valid range for timestamp values accepted by the component. If the input is earlier than the minimum or later than the maximum, it will fail constraint validation. When both values are set, the minimum must be less than or equal to the maximum, and the maximum must be greater than or equal to the minimum.
 
 ## Best practices
 
