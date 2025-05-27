@@ -41,6 +41,35 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
+## Striped rows
+
+Enable alternating background colors for rows to improve readability:
+
+```java
+// Apply striped row styling
+table.setStriped(true);
+```
+
+## Borders
+
+Configure which borders are shown around the `Table`, columns, and rows:
+
+```java
+// Enable all borders
+table.setBordersVisible(EnumSet.of(Table.Border.AROUND, Table.Border.COLUMNS, Table.Border.ROWS));
+
+// Remove all borders
+table.setBordersVisible(EnumSet.noneOf(Table.Border.class));
+```
+
+These settings provide a simple way to align your `Table's` visual appearance with the rest of your app.
+
+<ComponentDemo 
+path='/webforj/tablelayoutstyling?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableLayoutStylingView.java'
+height='300px'
+/>
+
 
 ## Reacting to data updates
 
