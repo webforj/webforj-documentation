@@ -59,7 +59,20 @@ The `NumberField` is best used in scenarios where capturing, displaying, or mani
 
 ## Min and max value
 
-With the `setMax()` and `setMin()` methods, you can specify a range of acceptable numbers. If a user manually enters a value into the number field outside the specified range, the component will let the user know what's acceptable. Also, if a maximum or minimum is already set, the value for the other method must be lower or higher respectively.
+With the `setMin()` method, you can specify the minimum acceptable value in the number field. If a user enters a value lower than this threshold, the component will fail constraint validation and provide appropriate feedback.
+
+```java
+NumberField numberField = new NumberField();
+numberField.setMin(0.0); // Minimum allowed: 0.0
+```
+
+Separately, the `setMax()` method allows you to define the maximum acceptable value. If a user enters a value higher than this limit, the input will be rejected. When both minimum and maximum values are set, the maximum must be greater than or equal to the minimum.
+
+```java
+numberField.setMax(100.0); // Maximum allowed: 100.0
+```
+
+In this configuration, entering a value like -5 or 150 would be invalid, while values between 0 and 100 are accepted.
 
 ## Granularity
 
