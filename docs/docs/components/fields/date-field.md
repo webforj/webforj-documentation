@@ -66,13 +66,17 @@ The `DateField` is ideal for choosing and displaying dates in your app. Here are
 
 ## Min and max value
 
-### `setMax`
+The `setMin()` method defines the earliest date a user can enter into the component. If the input is earlier than the specified minimum, it will fail constraint validation. When used alongside `setMax()`, the minimum must be a date that's the same as or earlier than the maximum.
 
-If the value entered into the component is later than the specified maximum date, the component will fail constraint validation. When both the min and max values are set, the max value must be a date that's the same as or later than the min value.
+```java
+dateField.setMin(LocalDate.of(2023, 1, 1)); // Minimum allowed: January 1, 2023
+```
 
-### `setMin`
+The `setMax()` method defines the latest date the component accepts. If the entered date is later than the specified maximum, the input is invalid. When both values are defined, the maximum must be a date that's the same as or later than the minimum.
 
-If the value entered into the component is earlier than the specified minimum date, the component will fail constraint validation. When both the min and max values are set, the min value must be a date that's the same as or earlier than the max value.
+```java
+dateField.setMax(LocalDate.of(2023, 12, 31)); // Maximum allowed: December 31, 2023
+```
 
 
 ## Localized display
