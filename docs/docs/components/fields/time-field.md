@@ -36,7 +36,7 @@ With the `setMin()` and `setMax()` methods, you can specify a range of acceptabl
 
 - **For `setMax()`**: If the value entered into the component is later than the specified maximum time, the component will fail constraint validation. When both the min and max values are set, the max value must be a time that's the same as or later than the min value. 
 
-## Field value (`LocalTime`)
+## Value handling and localization
 
 Internally, the `TimeField` component represents its value using a `LocalTime` object from the `java.time` package. This allows developers to interact with precise time values regardless of how they're visually rendered.
 
