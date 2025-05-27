@@ -62,7 +62,7 @@ table.setBordersVisible(EnumSet.of(Table.Border.AROUND, Table.Border.COLUMNS, Ta
 table.setBordersVisible(EnumSet.noneOf(Table.Border.class));
 ```
 
-These settings provide a simple way to align your `Table's` visual appearance with the rest of your app.
+The demo below showcases a simple way to align your `Table's` visual appearance with the rest of your app using `setStriped()` and `setBordersVisible()`.
 
 <ComponentDemo 
 path='/webforj/tablelayoutstyling?' 
