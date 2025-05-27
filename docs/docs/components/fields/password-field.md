@@ -89,25 +89,21 @@ Using a pattern is strongly recommended for password fields to ensure users crea
 
 You can control the allowed length of the password input by using `setMinLength()` and `setMaxLength()` on the `PasswordField`.
 
-### `setMaxLength()`
-
-Sets the **maximum number of characters** that can be entered into the field. The value must be a non-negative integer (0 or greater). If no `maxLength` is defined or an invalid value is provided, the field will have no upper limit.
-
-```java
-passwordField.setMaxLength(20); // Maximum 20 characters
-```
-
-The field fails constraint validation if the entered text exceeds this limit. This validation is triggered only when the user changes the field’s value.
-
-### `setMinLength()`
-
-Defines the **minimum number of characters** that must be entered to pass validation. This value must be a non-negative integer and less than or equal to the `maxLength`.
+The `setMinLength()` method defines the minimum number of characters a user must enter in the field to pass validation. This value must be a non-negative integer and should not exceed the maximum length if one is set.
 
 ```java
 passwordField.setMinLength(8); // Minimum 8 characters
 ```
 
-The field fails constraint validation if the user inputs fewer characters than required. Like with `maxLength`, this only applies on user interaction.
+If the user enters fewer characters than the minimum, the input fails constraint validation. This validation is only applied when the field's value is modified by the user.
+
+The `setMaxLength()` method sets the maximum number of characters allowed in the field. The value must be 0 or greater. If it's not defined or is set to an invalid value, the field has no upper character limit.
+
+```java
+passwordField.setMaxLength(20); // Maximum 20 characters
+```
+
+If the input exceeds the maximum character limit, the field fails constraint validation. Like the minimum, this rule only applies when the user updates the field’s value.
 
 :::tip
 Use both `setMinLength()` and `setMaxLength()` together to create effective input boundaries. See the [HTML length constraints documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#minlength) for more reference.
