@@ -89,7 +89,7 @@ Using a pattern is strongly recommended for password fields to ensure users crea
 
 You can control the allowed length of the password input by using `setMinLength()` and `setMaxLength()` on the `PasswordField`.
 
-The `setMinLength()` method defines the minimum number of characters a user must enter in the field to pass validation. This value must be a non-negative integer and should not exceed the maximum length if one is set.
+The `setMinLength()` method defines the minimum number of characters a user must enter in the field to pass validation. This value must be a non-negative integer and shouldn't exceed the maximum length if one is set.
 
 ```java
 passwordField.setMinLength(8); // Minimum 8 characters
