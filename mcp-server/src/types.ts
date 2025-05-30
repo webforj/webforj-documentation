@@ -20,6 +20,12 @@ export interface DemoMetadata {
   highlighted?: boolean;
   className: string;
   filePath?: string;
+  repository?: {
+    owner: string;
+    repo: string;
+    branch: string;
+    url: string;
+  };
 }
 
 export interface PropertyMetadata {
@@ -69,6 +75,8 @@ export interface MCPIndex {
   docs: Map<string, DocumentMetadata>;
   demos: Map<string, DemoMetadata>;
   javadocClasses: Map<string, JavaDocClass>;
+  antipatterns?: Map<string, AntipatternExample>;
+  trainingExamples?: Map<string, TrainingExample>;
 }
 
 export interface JavaDocClass {
@@ -105,4 +113,24 @@ export interface JavaDocConstructor {
   description?: string;
   parameters: Array<{name: string, type: string, description?: string}>;
   modifiers: string[];
+}
+
+export interface AntipatternExample {
+  id: string;
+  category: string;
+  name: string;
+  incorrectCode: string;
+  correctCode: string;
+  explanation: string;
+  frameworks: string[];
+  tags: string[];
+}
+
+export interface TrainingExample {
+  id: string;
+  path: string;
+  category: string;
+  content: string;
+  concepts: string[];
+  dependencies: string[];
 }

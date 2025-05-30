@@ -61,7 +61,7 @@ export function getConfig(): Config {
       contextRoot: process.env.CONTEXT_ROOT || defaultConfig.paths.contextRoot,
       cacheFile: process.env.CACHE_FILE || defaultConfig.paths.cacheFile,
       javadocRoot: process.env.JAVADOC_ROOT || defaultConfig.paths.javadocRoot,
-      cache: process.env.CACHE_DIR || '.mcp-cache',
+      cache: process.env.CACHE_DIR || join(__dirname, '..', '.mcp-cache'),
       resourceRoot: process.env.RESOURCE_ROOT || join(process.cwd(), 'src/main/resources'),
     },
     production: {

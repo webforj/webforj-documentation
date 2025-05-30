@@ -14,6 +14,8 @@ import { watch } from 'chokidar';
 import { DocumentationScanner } from './scanners/documentation-scanner.js';
 import { JavaDemoScanner } from './scanners/java-demo-scanner.js';
 import { JavaDocScanner } from './scanners/javadoc-scanner.js';
+import { GitHubRepoScanner } from './scanners/github-repo-scanner.js';
+import { TrainingDataScanner } from './scanners/training-data-scanner.js';
 import { ComponentAnalyzer } from './analyzers/component-analyzer.js';
 import { getConfig, getBaseUrls, type Config } from './config.js';
 import { debounce } from './utils/debounce.js';
@@ -21,6 +23,7 @@ import { IndexCache } from './cache/index-cache.js';
 import { DemoCodeRetriever } from './tools/demo-code-retriever.js';
 import { EnhancedSearch } from './search/enhanced-search.js';
 import { MarkdownTableParser } from './extractors/markdown-table-parser.js';
+import { AntipatternChecker } from './tools/antipattern-checker.js';
 import type { MCPIndex } from './types.js';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
@@ -95,6 +98,12 @@ export class WebForJMCPServer {
           name: 'Documentation Pages',
           description: 'All documentation content',
           mimeType: 'application/json'
+        },
+        {
+          uri: 'webforj://antipatterns',
+          name: 'webforJ Antipatterns',
+          description: 'Common incorrect patterns and their corrections',
+          mimeType: 'application/json'
         }
       ];
 
@@ -159,6 +168,17 @@ export class WebForJMCPServer {
             uri,
             mimeType: 'application/json',
             text: JSON.stringify(docs, null, 2)
+          }]
+        };
+      }
+      
+      if (uri === 'webforj://antipatterns') {
+        const antipatterns = Array.from(this.index!.antipatterns?.values() || []);
+        return {
+          contents: [{
+            uri,
+            mimeType: 'application/json',
+            text: JSON.stringify(antipatterns, null, 2)
           }]
         };
       }
@@ -285,6 +305,53 @@ export class WebForJMCPServer {
               type: 'object',
               properties: {}
             }
+          },
+          {
+            name: 'check_antipatterns',
+            description: 'Check code for common webforJ antipatterns and get corrections',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                code: {
+                  type: 'string',
+                  description: 'The code to check for antipatterns'
+                }
+              },
+              required: ['code']
+            }
+          },
+          {
+            name: 'get_antipattern',
+            description: 'Get details about a specific antipattern with correct implementation',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                category: {
+                  type: 'string',
+                  description: 'Antipattern category',
+                  enum: ['lifecycle', 'events', 'state', 'routing', 'styling', 'async']
+                },
+                framework: {
+                  type: 'string',
+                  description: 'Source framework of confusion',
+                  enum: ['React', 'Vue', 'JavaFX', 'DOM-style']
+                }
+              }
+            }
+          },
+          {
+            name: 'get_correct_pattern',
+            description: 'Get the correct webforJ pattern for a concept',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                concept: {
+                  type: 'string',
+                  description: 'The concept to get correct pattern for (e.g., "lifecycle", "event handling", "state management")'
+                }
+              },
+              required: ['concept']
+            }
           }
         ]
       };
@@ -395,9 +462,86 @@ export class WebForJMCPServer {
                 components: this.index!.components.size,
                 demos: this.index!.demos.size,
                 docs: this.index!.docs.size,
-                javadocClasses: this.index!.javadocClasses.size
+                javadocClasses: this.index!.javadocClasses.size,
+                antipatterns: this.index!.antipatterns?.size || 0,
+                trainingExamples: this.index!.trainingExamples?.size || 0
               }
             }, null, 2)
+          }]
+        };
+      }
+      
+      if (name === 'check_antipatterns') {
+        const { code } = args as any;
+        if (!code) {
+          throw new McpError(ErrorCode.InvalidParams, 'Code parameter is required');
+        }
+        
+        const checker = new AntipatternChecker(this.index!.antipatterns || new Map());
+        const results = checker.checkCode(code);
+        
+        return {
+          content: [{
+            type: 'text',
+            text: JSON.stringify(results, null, 2)
+          }]
+        };
+      }
+      
+      if (name === 'get_antipattern') {
+        const { category, framework } = args as any;
+        const antipatterns = this.index!.antipatterns || new Map();
+        const checker = new AntipatternChecker(antipatterns);
+        
+        let results;
+        if (category) {
+          results = checker.getAntipatternsByCategory(category);
+        } else if (framework) {
+          results = checker.getAntipatternsByFramework(framework);
+        } else {
+          results = Array.from(antipatterns.values());
+        }
+        
+        return {
+          content: [{
+            type: 'text',
+            text: JSON.stringify(results, null, 2)
+          }]
+        };
+      }
+      
+      if (name === 'get_correct_pattern') {
+        const { concept } = args as any;
+        if (!concept) {
+          throw new McpError(ErrorCode.InvalidParams, 'Concept parameter is required');
+        }
+        
+        const antipatterns = Array.from(this.index!.antipatterns?.values() || []);
+        const relevant = antipatterns.filter(ap => 
+          ap.category.toLowerCase().includes(concept.toLowerCase()) ||
+          ap.tags.some(tag => tag.toLowerCase().includes(concept.toLowerCase()))
+        );
+        
+        if (relevant.length === 0) {
+          return {
+            content: [{
+              type: 'text',
+              text: `No patterns found for concept: ${concept}`
+            }]
+          };
+        }
+        
+        const response = relevant.map(ap => ({
+          category: ap.category,
+          explanation: ap.explanation,
+          correctPattern: ap.correctCode,
+          avoidPatterns: ap.frameworks
+        }));
+        
+        return {
+          content: [{
+            type: 'text',
+            text: JSON.stringify(response, null, 2)
           }]
         };
       }
@@ -430,6 +574,30 @@ export class WebForJMCPServer {
     const demoScanner = new JavaDemoScanner(demoPath);
     const demos = await demoScanner.scan();
     
+    // Scan GitHub repositories (if configured)
+    try {
+      const githubConfigPath = join(__dirname, '../config/github-repos.json');
+      const githubConfig = JSON.parse(readFileSync(githubConfigPath, 'utf-8'));
+      
+      if (githubConfig.repositories && githubConfig.repositories.length > 0) {
+        console.error('Scanning GitHub repositories...');
+        const githubScanner = new GitHubRepoScanner(
+          githubConfig.repositories,
+          join(__dirname, '../../target/github-repos-cache')
+        );
+        const githubDemos = await githubScanner.scan();
+        
+        // Merge GitHub demos with local demos
+        githubDemos.forEach((demo, key) => {
+          demos.set(key, demo);
+        });
+        
+        console.error(`Added ${githubDemos.size} demos from GitHub repositories`);
+      }
+    } catch (error) {
+      console.error('GitHub repository scanning failed (optional):', error);
+    }
+    
     // Scan JavaDocs (if available)
     let javadocClasses = new Map();
     try {
@@ -440,6 +608,19 @@ export class WebForJMCPServer {
       console.error('JavaDoc scanning failed (this is expected if not built yet):', error);
     }
     
+    // Scan training data (antipatterns and examples)
+    let antipatterns = new Map();
+    let trainingExamples = new Map();
+    try {
+      const trainingScanner = new TrainingDataScanner(join(__dirname, '..'));
+      const trainingData = await trainingScanner.scan();
+      antipatterns = trainingData.antipatterns;
+      trainingExamples = trainingData.examples;
+      console.error(`Found ${antipatterns.size} antipatterns and ${trainingExamples.size} training examples`);
+    } catch (error) {
+      console.error('Training data scanning failed:', error);
+    }
+    
     // Analyze components from documentation
     const componentAnalyzer = new ComponentAnalyzer(docs, demos, javadocClasses);
     const components = componentAnalyzer.analyze();
@@ -448,7 +629,9 @@ export class WebForJMCPServer {
       components,
       docs,
       demos,
-      javadocClasses
+      javadocClasses,
+      antipatterns,
+      trainingExamples
     };
     
     // Initialize search index

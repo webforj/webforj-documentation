@@ -1,0 +1,23 @@
+{
+  "repositories": [
+    {
+      "owner": "webforj",
+      "repo": "built-with-webforj",
+      "branch": "main",
+      "paths": ["webforj-howdy/src/main/java", "webforj-tictactoe/src/main/java"],
+      "description": "Sample applications demonstrating webforJ framework capabilities"
+    }
+  ],
+  "additionalRepos": [
+    {
+      "comment": "Add more repositories here as needed",
+      "example": {
+        "owner": "webforj",
+        "repo": "webforj-examples",
+        "branch": "main",
+        "paths": ["src/main/java"],
+        "description": "Additional webforJ examples"
+      }
+    }
+  ]
+}

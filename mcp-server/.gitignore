@@ -18,6 +18,7 @@ dist/
 
 # Cache
 cache/
+.mcp-cache/
 *.cache
 mcp-index.json
 
