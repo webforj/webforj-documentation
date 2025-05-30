@@ -7,6 +7,7 @@ import { mdxjs } from 'micromark-extension-mdxjs';
 import { mdxFromMarkdown } from 'mdast-util-mdx';
 import type { DocumentMetadata, CodeBlock } from '../types.js';
 import { MarkdownTableParser } from '../extractors/markdown-table-parser.js';
+import { MDXCleanser } from '../utils/mdx-cleanser.js';
 
 export class DocumentationScanner {
   constructor(
@@ -44,22 +45,34 @@ export class DocumentationScanner {
     const content = readFileSync(filePath, 'utf-8');
     const { data: frontmatter, content: markdownContent } = matter(content);
     
-    // Parse MDX/Markdown to AST
-    const tree = fromMarkdown(markdownContent, {
-      extensions: [mdxjs()],
-      mdastExtensions: [mdxFromMarkdown()]
-    });
-
-    // Extract code blocks
-    const codeBlocks = this.extractCodeBlocks(tree);
-    
-    // Extract component references (ComponentDemo usage)
+    // Extract component references before cleansing
     const componentRefs = this.extractComponentRefs(markdownContent);
     
-    // Extract title from frontmatter or first heading
-    const title = frontmatter.title || this.extractTitle(tree) || 'Untitled';
+    // Cleanse MDX content to remove problematic components
+    const { cleansedContent, extractedComponents } = MDXCleanser.cleanse(markdownContent);
     
-    // Extract structured data using table parser
+    let tree;
+    let codeBlocks: CodeBlock[] = [];
+    let title = frontmatter.title || 'Untitled';
+    
+    try {
+      // Parse cleansed MDX/Markdown to AST
+      tree = fromMarkdown(cleansedContent, {
+        extensions: [mdxjs()],
+        mdastExtensions: [mdxFromMarkdown()]
+      });
+      
+      // Extract code blocks
+      codeBlocks = this.extractCodeBlocks(tree);
+      
+      // Extract title from frontmatter or first heading
+      title = frontmatter.title || this.extractTitle(tree) || 'Untitled';
+    } catch (parseError: any) {
+      // If parsing still fails, log but continue with what we have
+      console.error(`Warning: Parse error in ${filePath} even after cleansing:`, parseError?.message || parseError);
+    }
+    
+    // Extract structured data using table parser (use original content for accurate table extraction)
     const properties = this.tableParser!.extractProperties(markdownContent);
     const methods = this.tableParser!.extractMethods(markdownContent);
     const events = this.tableParser!.extractEvents(markdownContent);
@@ -68,7 +81,7 @@ export class DocumentationScanner {
     return {
       path: filePath,
       title,
-      content: markdownContent,
+      content: markdownContent, // Store original content for full-text search
       frontmatter: {
         ...frontmatter,
         ...componentMetadata

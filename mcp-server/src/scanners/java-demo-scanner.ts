@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 import { glob } from 'glob';
-import { join, basename, relative } from 'path';
+import { join, basename, relative, dirname } from 'path';
 import type { DemoMetadata } from '../types.js';
 
 export class JavaDemoScanner {
@@ -12,6 +12,7 @@ export class JavaDemoScanner {
     // Find all Java view files
     const pattern = join(this.demoRoot, '**/views/**/*View.java');
     const files = await glob(pattern);
+    console.error(`JavaDemoScanner: Found ${files.length} Java view files`);
 
     for (const file of files) {
       try {
@@ -24,6 +25,7 @@ export class JavaDemoScanner {
       }
     }
 
+    console.error(`JavaDemoScanner: Parsed ${demos.size} demos with routes`);
     return demos;
   }
 
@@ -31,10 +33,24 @@ export class JavaDemoScanner {
     const content = readFileSync(filePath, 'utf-8');
     const fileName = basename(filePath, '.java');
     
-    // Extract @Route annotation
-    const routeMatch = content.match(/@Route\s*\(\s*"([^"]+)"\s*\)/);
-    if (!routeMatch) {
+    // Check if file has @Route annotation (with or without parameters)
+    const hasRoute = /@Route(\s*\(|\s|$)/.test(content);
+    if (!hasRoute) {
       return null;
+    }
+    
+    // Extract @Route annotation with explicit value
+    const explicitRouteMatch = content.match(/@Route\s*\(\s*"([^"]+)"\s*\)/);
+    
+    // Generate route based on annotation and class name
+    let route: string;
+    if (explicitRouteMatch) {
+      route = explicitRouteMatch[1];
+    } else {
+      // When @Route has no parameters, use the class name as the route
+      // Convert class name from PascalCase to kebab-case and remove 'View' suffix
+      // e.g., ButtonView -> button, ButtonThemesView -> button-themes
+      route = this.camelToKebab(fileName.replace(/View$/, ''));
     }
     
     // Extract @FrameTitle annotation
@@ -50,13 +66,12 @@ export class JavaDemoScanner {
         .trim();
     }
     
-    // Find related files (CSS, other Java files in same package)
+    // Get relative path for source file reference
     const relativePath = relative(this.demoRoot, filePath);
-    const packagePath = relativePath.substring(0, relativePath.lastIndexOf('/'));
     
     return {
       name: fileName,
-      route: routeMatch[1],
+      route,
       title: titleMatch?.[1] || this.humanizeClassName(fileName),
       description,
       sourceFiles: [relativePath],
@@ -72,5 +87,11 @@ export class JavaDemoScanner {
       .replace(/View$/, '')
       .replace(/([A-Z])/g, ' $1')
       .trim();
+  }
+  
+  private camelToKebab(str: string): string {
+    return str
+      .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+      .toLowerCase();
   }
 }
