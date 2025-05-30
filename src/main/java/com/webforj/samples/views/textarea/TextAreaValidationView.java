@@ -115,7 +115,7 @@ public class TextAreaValidationView extends Composite<FlexLayout> {
     }
 
     String paragraphSizes = sb.toString();
-    status.setValue("Current Length: " + text.length() +
+    status.setValue("Current Length (including \n): " + text.length() +
         "\nCurrent Line Count: " + paragraphs.size() +
         "\nParagraph Sizes: " + (paragraphSizes.isEmpty() ? "[]" : paragraphSizes));
   }
