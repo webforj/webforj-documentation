@@ -32,3 +32,4 @@ hs_err_pid*
 .settings/org.eclipse.m2e.core.prefs
 .theia/settings.json
 generated_urls.md
+/.claude/

@@ -8,11 +8,19 @@ import {
   ErrorCode,
   McpError
 } from '@modelcontextprotocol/sdk/types.js';
+import { glob } from 'glob';
+import { readFileSync } from 'fs';
+import { watch } from 'chokidar';
 import { DocumentationScanner } from './scanners/documentation-scanner.js';
 import { JavaDemoScanner } from './scanners/java-demo-scanner.js';
 import { JavaDocScanner } from './scanners/javadoc-scanner.js';
 import { ComponentAnalyzer } from './analyzers/component-analyzer.js';
 import { getConfig, getBaseUrls, type Config } from './config.js';
+import { debounce } from './utils/debounce.js';
+import { IndexCache } from './cache/index-cache.js';
+import { DemoCodeRetriever } from './tools/demo-code-retriever.js';
+import { EnhancedSearch } from './search/enhanced-search.js';
+import { MarkdownTableParser } from './extractors/markdown-table-parser.js';
 import type { MCPIndex } from './types.js';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
@@ -24,9 +32,24 @@ export class WebForJMCPServer {
   private server: Server;
   private config: Config;
   private index: MCPIndex | null = null;
+  private cache: IndexCache;
+  private search: EnhancedSearch;
+  private demoRetriever: DemoCodeRetriever;
+  private tableParser: MarkdownTableParser;
+  private watcher?: any;
 
   constructor() {
     this.config = getConfig();
+    
+    // Initialize enhanced components
+    this.cache = new IndexCache(this.config.paths.cache, this.config.features.cacheTTL);
+    this.search = new EnhancedSearch();
+    this.tableParser = new MarkdownTableParser();
+    this.demoRetriever = new DemoCodeRetriever(
+      join(__dirname, '..', this.config.paths.demoRoot),
+      join(__dirname, '..', this.config.paths.resourceRoot)
+    );
+    
     this.server = new Server(
       {
         name: this.config.server.name,
@@ -41,6 +64,10 @@ export class WebForJMCPServer {
     );
 
     this.setupHandlers();
+    
+    if (this.config.features.watchFiles) {
+      this.setupFileWatcher();
+    }
   }
 
   private setupHandlers() {
@@ -121,7 +148,7 @@ export class WebForJMCPServer {
       }
 
       if (uri === 'webforj://docs') {
-        const docs = Array.from(this.index!.documents.entries()).map(([path, doc]) => ({
+        const docs = Array.from(this.index!.docs.entries()).map(([path, doc]) => ({
           path,
           title: doc.title,
           url: `${urls.docs}/${path}`,
@@ -202,6 +229,60 @@ export class WebForJMCPServer {
             description: 'Rebuild the MCP index by rescanning all files',
             inputSchema: {
               type: 'object',
+              properties: {
+                clearCache: {
+                  type: 'boolean',
+                  description: 'Clear cache before rebuilding',
+                  default: false
+                }
+              }
+            }
+          },
+          {
+            name: 'search_advanced',
+            description: 'Advanced search with filters and options',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                query: {
+                  type: 'string',
+                  description: 'Search query'
+                },
+                category: {
+                  type: 'string',
+                  description: 'Filter by category',
+                  enum: ['components', 'fields', 'lists', 'dialogs', 'layouts']
+                },
+                hasDemo: {
+                  type: 'boolean',
+                  description: 'Filter components that have demos'
+                },
+                hasJavadoc: {
+                  type: 'boolean',
+                  description: 'Filter components that have JavaDoc'
+                },
+                searchIn: {
+                  type: 'array',
+                  description: 'Where to search',
+                  items: {
+                    type: 'string',
+                    enum: ['name', 'description', 'content', 'code']
+                  }
+                },
+                limit: {
+                  type: 'number',
+                  description: 'Maximum number of results',
+                  default: 50
+                }
+              },
+              required: ['query']
+            }
+          },
+          {
+            name: 'get_cache_stats',
+            description: 'Get cache statistics',
+            inputSchema: {
+              type: 'object',
               properties: {}
             }
           }
@@ -222,17 +303,17 @@ export class WebForJMCPServer {
         if (!query) {
           throw new McpError(ErrorCode.InvalidParams, 'Query parameter is required');
         }
-        const results = Array.from(this.index!.components.values()).filter(
-          comp => 
-            comp.name.toLowerCase().includes(query) ||
-            comp.displayName.toLowerCase().includes(query) ||
-            (comp.description && comp.description.toLowerCase().includes(query))
-        );
+        
+        // Use enhanced search for better results
+        const results = this.search.search({ query, limit: 20 });
+        const componentResults = results
+          .filter(r => r.type === 'component')
+          .map(r => r.item);
         
         return {
           content: [{
             type: 'text',
-            text: JSON.stringify(results, null, 2)
+            text: JSON.stringify(componentResults, null, 2)
           }]
         };
       }
@@ -247,22 +328,76 @@ export class WebForJMCPServer {
           throw new McpError(ErrorCode.InvalidParams, `Demo ${route} not found`);
         }
         
-        // In a real implementation, we would read the actual source files
-        // For now, return the metadata
+        // Get complete source code
+        const sourceCode = await this.demoRetriever.getCompleteDemo(demo);
+        
+        const response = {
+          ...demo,
+          sourceCode: {
+            java: sourceCode.java,
+            css: sourceCode.css,
+            resources: sourceCode.resources,
+            imports: sourceCode.imports
+          }
+        };
+        
         return {
           content: [{
             type: 'text',
-            text: JSON.stringify(demo, null, 2)
+            text: JSON.stringify(response, null, 2)
           }]
         };
       }
 
       if (name === 'rebuild_index') {
+        const { clearCache } = args as any;
+        
+        if (clearCache) {
+          this.cache.clearCache();
+        }
+        
         await this.buildIndex();
         return {
           content: [{
             type: 'text',
             text: 'Index rebuilt successfully'
+          }]
+        };
+      }
+      
+      if (name === 'search_advanced') {
+        const options = args as any;
+        if (!options.query) {
+          throw new McpError(ErrorCode.InvalidParams, 'Query parameter is required');
+        }
+        
+        const results = this.search.search(options);
+        
+        return {
+          content: [{
+            type: 'text',
+            text: JSON.stringify(results, null, 2)
+          }]
+        };
+      }
+      
+      if (name === 'get_cache_stats') {
+        const stats = this.cache.getCacheStats();
+        const categoryStats = this.search.getCategoryStats();
+        
+        return {
+          content: [{
+            type: 'text',
+            text: JSON.stringify({
+              cache: stats,
+              categories: categoryStats,
+              indexSize: {
+                components: this.index!.components.size,
+                demos: this.index!.demos.size,
+                docs: this.index!.docs.size,
+                javadocClasses: this.index!.javadocClasses.size
+              }
+            }, null, 2)
           }]
         };
       }
@@ -272,43 +407,137 @@ export class WebForJMCPServer {
   }
 
   private async buildIndex() {
+    // Check cache first
+    if (this.config.features.cacheEnabled) {
+      const cachedIndex = await this.loadFromCache();
+      if (cachedIndex) {
+        this.index = cachedIndex;
+        return;
+      }
+    }
+    
     console.error('Building MCP index...');
     
     const docsPath = join(__dirname, '..', this.config.paths.docsRoot);
     const demoPath = join(__dirname, '..', this.config.paths.demoRoot);
     const javadocPath = join(__dirname, '..', this.config.paths.javadocRoot);
     
-    // Scan documentation
-    const docScanner = new DocumentationScanner(docsPath);
-    const documents = await docScanner.scan();
+    // Scan documentation with enhanced parser
+    const docScanner = new DocumentationScanner(docsPath, this.tableParser);
+    const docs = await docScanner.scan();
     
     // Scan Java demos
     const demoScanner = new JavaDemoScanner(demoPath);
     const demos = await demoScanner.scan();
     
     // Scan JavaDocs (if available)
-    let javadocs = new Map();
+    let javadocClasses = new Map();
     try {
       const javadocScanner = new JavaDocScanner(javadocPath);
-      javadocs = await javadocScanner.scan();
-      console.error(`Found ${javadocs.size} JavaDoc classes`);
+      javadocClasses = await javadocScanner.scan();
+      console.error(`Found ${javadocClasses.size} JavaDoc classes`);
     } catch (error) {
       console.error('JavaDoc scanning failed (this is expected if not built yet):', error);
     }
     
     // Analyze components from documentation
-    const componentAnalyzer = new ComponentAnalyzer(documents, demos, javadocs);
+    const componentAnalyzer = new ComponentAnalyzer(docs, demos, javadocClasses);
     const components = componentAnalyzer.analyze();
     
     this.index = {
       components,
-      documents,
+      docs,
       demos,
-      lastBuilt: new Date(),
-      version: '1.0.0'
+      javadocClasses
     };
     
-    console.error(`Index built: ${components.size} components, ${demos.size} demos, ${documents.size} documents, ${javadocs.size} javadoc classes`);
+    // Initialize search index
+    this.search.initialize(components, demos, docs);
+    
+    // Save to cache
+    if (this.config.features.cacheEnabled) {
+      await this.saveToCache();
+    }
+    
+    console.error(`Index built: ${components.size} components, ${demos.size} demos, ${docs.size} documents, ${javadocClasses.size} javadoc classes`);
+  }
+
+  private async loadFromCache(): Promise<MCPIndex | null> {
+    // Get all files that would be scanned
+    const docFiles = await glob('**/*.{md,mdx}', { 
+      cwd: join(__dirname, '..', this.config.paths.docsRoot) 
+    });
+    const demoFiles = await glob('**/*View.java', { 
+      cwd: join(__dirname, '..', this.config.paths.demoRoot) 
+    });
+    
+    const allFiles = [
+      ...docFiles.map(f => join(__dirname, '..', this.config.paths.docsRoot, f)),
+      ...demoFiles.map(f => join(__dirname, '..', this.config.paths.demoRoot, f))
+    ];
+    
+    // Check if cache is valid
+    if (await this.cache.isCacheValid(allFiles)) {
+      const cached = this.cache.loadIndex();
+      if (cached) {
+        console.error('Loaded index from cache');
+        // Re-initialize search with cached data
+        this.search.initialize(cached.components, cached.demos, cached.docs);
+        return cached;
+      }
+    }
+    
+    return null;
+  }
+  
+  private async saveToCache(): Promise<void> {
+    if (!this.index) return;
+    
+    // Get all files that were scanned
+    const docFiles = await glob('**/*.{md,mdx}', { 
+      cwd: join(__dirname, '..', this.config.paths.docsRoot) 
+    });
+    const demoFiles = await glob('**/*View.java', { 
+      cwd: join(__dirname, '..', this.config.paths.demoRoot) 
+    });
+    
+    const allFiles = [
+      ...docFiles.map(f => join(__dirname, '..', this.config.paths.docsRoot, f)),
+      ...demoFiles.map(f => join(__dirname, '..', this.config.paths.demoRoot, f))
+    ];
+    
+    await this.cache.saveIndex(this.index, allFiles);
+  }
+  
+  private setupFileWatcher(): void {
+    const docsPath = join(__dirname, '..', this.config.paths.docsRoot);
+    const demoPath = join(__dirname, '..', this.config.paths.demoRoot);
+    const resourcePath = join(__dirname, '..', this.config.paths.resourceRoot);
+    
+    const watchPaths = [
+      `${docsPath}/**/*.{md,mdx}`,
+      `${demoPath}/**/*.java`,
+      `${resourcePath}/**/*.css`
+    ];
+    
+    this.watcher = watch(watchPaths, {
+      ignored: /node_modules/,
+      persistent: true,
+      ignoreInitial: true
+    });
+    
+    const rebuildDebounced = debounce(async () => {
+      console.error('Files changed, rebuilding index...');
+      this.cache.clearCache();
+      await this.buildIndex();
+    }, 1000);
+    
+    this.watcher
+      .on('add', rebuildDebounced)
+      .on('change', rebuildDebounced)
+      .on('unlink', rebuildDebounced);
+    
+    console.error('File watcher initialized');
   }
 
   async start() {

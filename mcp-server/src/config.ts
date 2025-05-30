@@ -22,6 +22,8 @@ export interface Config {
     contextRoot: string;
     cacheFile: string;
     javadocRoot: string;
+    cache: string;
+    resourceRoot: string;
   };
   scanning: {
     includePatterns: {
@@ -40,6 +42,11 @@ export interface Config {
     demoBaseUrl: string;
   };
   currentEnv: 'development' | 'production';
+  features: {
+    watchFiles: boolean;
+    cacheEnabled: boolean;
+    cacheTTL: number;
+  };
 }
 
 export function getConfig(): Config {
@@ -54,12 +61,19 @@ export function getConfig(): Config {
       contextRoot: process.env.CONTEXT_ROOT || defaultConfig.paths.contextRoot,
       cacheFile: process.env.CACHE_FILE || defaultConfig.paths.cacheFile,
       javadocRoot: process.env.JAVADOC_ROOT || defaultConfig.paths.javadocRoot,
+      cache: process.env.CACHE_DIR || '.mcp-cache',
+      resourceRoot: process.env.RESOURCE_ROOT || join(process.cwd(), 'src/main/resources'),
     },
     production: {
       baseUrl: process.env.PROD_BASE_URL || defaultConfig.production.baseUrl,
       demoBaseUrl: process.env.PROD_DEMO_URL || defaultConfig.production.demoBaseUrl,
     },
-    currentEnv: env
+    currentEnv: env,
+    features: {
+      watchFiles: process.env.MCP_WATCH_FILES !== 'false',
+      cacheEnabled: process.env.MCP_CACHE_ENABLED !== 'false',
+      cacheTTL: parseInt(process.env.MCP_CACHE_TTL || '3600000', 10),
+    }
   };
 }
 
@@ -70,3 +84,6 @@ export function getBaseUrls(config: Config) {
     demos: config[env].demoBaseUrl
   };
 }
+
+const config = getConfig();
+export default config;

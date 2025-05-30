@@ -222,14 +222,23 @@ export class JavaDocScanner {
     const parametersStr = methodMatch[2];
     
     // Parse parameters
-    const parameters: string[] = [];
+    const parameters: Array<{name: string, type?: string}> = [];
     if (parametersStr.trim()) {
       // Simple parameter parsing - could be enhanced
       const paramParts = parametersStr.split(',');
       paramParts.forEach(param => {
         const cleanParam = param.trim();
         if (cleanParam) {
-          parameters.push(cleanParam);
+          // Try to parse type and name
+          const parts = cleanParam.split(/\s+/);
+          if (parts.length >= 2) {
+            parameters.push({
+              type: parts[0],
+              name: parts[1]
+            });
+          } else {
+            parameters.push({ name: cleanParam });
+          }
         }
       });
     }

@@ -6,9 +6,17 @@ import { fromMarkdown } from 'mdast-util-from-markdown';
 import { mdxjs } from 'micromark-extension-mdxjs';
 import { mdxFromMarkdown } from 'mdast-util-mdx';
 import type { DocumentMetadata, CodeBlock } from '../types.js';
+import { MarkdownTableParser } from '../extractors/markdown-table-parser.js';
 
 export class DocumentationScanner {
-  constructor(private docsRoot: string) {}
+  constructor(
+    private docsRoot: string,
+    private tableParser?: MarkdownTableParser
+  ) {
+    if (!this.tableParser) {
+      this.tableParser = new MarkdownTableParser();
+    }
+  }
 
   async scan(): Promise<Map<string, DocumentMetadata>> {
     const documents = new Map<string, DocumentMetadata>();
@@ -50,14 +58,28 @@ export class DocumentationScanner {
     
     // Extract title from frontmatter or first heading
     const title = frontmatter.title || this.extractTitle(tree) || 'Untitled';
+    
+    // Extract structured data using table parser
+    const properties = this.tableParser!.extractProperties(markdownContent);
+    const methods = this.tableParser!.extractMethods(markdownContent);
+    const events = this.tableParser!.extractEvents(markdownContent);
+    const componentMetadata = this.tableParser!.extractComponentMetadata(markdownContent);
 
     return {
       path: filePath,
       title,
       content: markdownContent,
-      frontmatter,
+      frontmatter: {
+        ...frontmatter,
+        ...componentMetadata
+      },
       codeBlocks,
-      componentRefs
+      componentRefs,
+      extractedData: {
+        properties,
+        methods,
+        events
+      }
     };
   }
 

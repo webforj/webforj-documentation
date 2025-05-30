@@ -18,6 +18,8 @@ export interface DemoMetadata {
   sourceFiles: string[];
   liveUrl?: string;
   highlighted?: boolean;
+  className: string;
+  filePath?: string;
 }
 
 export interface PropertyMetadata {
@@ -36,7 +38,7 @@ export interface EventMetadata {
 export interface MethodMetadata {
   name: string;
   description?: string;
-  parameters?: string[];
+  parameters?: Array<{name: string, type?: string}>;
   returnType?: string;
 }
 
@@ -47,6 +49,12 @@ export interface DocumentMetadata {
   frontmatter?: Record<string, any>;
   codeBlocks: CodeBlock[];
   componentRefs: string[];
+  headings?: string[];
+  extractedData?: {
+    properties: PropertyMetadata[];
+    methods: MethodMetadata[];
+    events: EventMetadata[];
+  };
 }
 
 export interface CodeBlock {
@@ -58,8 +66,43 @@ export interface CodeBlock {
 
 export interface MCPIndex {
   components: Map<string, ComponentMetadata>;
-  documents: Map<string, DocumentMetadata>;
+  docs: Map<string, DocumentMetadata>;
   demos: Map<string, DemoMetadata>;
-  lastBuilt: Date;
-  version: string;
+  javadocClasses: Map<string, JavaDocClass>;
+}
+
+export interface JavaDocClass {
+  name: string;
+  qualifiedName: string;
+  packageName: string;
+  description?: string;
+  methods: JavaDocMethod[];
+  fields: JavaDocField[];
+  constructors: JavaDocConstructor[];
+  extends?: string;
+  implements?: string[];
+}
+
+export interface JavaDocMethod {
+  name: string;
+  signature: string;
+  description?: string;
+  parameters: Array<{name: string, type: string, description?: string}>;
+  returnType: string;
+  returnDescription?: string;
+  modifiers: string[];
+}
+
+export interface JavaDocField {
+  name: string;
+  type: string;
+  description?: string;
+  modifiers: string[];
+}
+
+export interface JavaDocConstructor {
+  signature: string;
+  description?: string;
+  parameters: Array<{name: string, type: string, description?: string}>;
+  modifiers: string[];
 }

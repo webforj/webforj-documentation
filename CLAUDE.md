@@ -4,82 +4,96 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is the official documentation website for the webforJ framework. It combines:
-- A Docusaurus-based documentation site (in `/docs`)
-- Java-based interactive demo applications (in `/src/main/java/com/webforj/samples`)
+This is the official documentation website for the webforJ framework. It's a sophisticated system combining:
+- **Docusaurus-based documentation site** (`/docs`) - Static site with MDX support
+- **Java-based interactive demos** (`/src/main/java/com/webforj/samples`) - Live component examples
+- **MCP server** (`/mcp-server`) - AI-powered documentation access and search
 
-## Common Development Commands
+## Development Commands
 
-### Documentation Development
+### Quick Start (Recommended)
 ```bash
-# From the docs/ directory
-npm install          # Install dependencies (first time setup)
-npm start            # Start Docusaurus dev server (http://localhost:3000)
-npm run build        # Build static documentation site
-npm run serve        # Serve the built documentation
-```
-
-### Demo Application Development
-```bash
-# From root directory
-mvn clean install    # Build the entire project
-mvn jetty:run        # Run demo server on http://localhost:8080
-mvn verify           # Run all tests including integration tests
-mvn test             # Run unit tests only
-```
-
-### Combined Development (Recommended)
-```bash
-# Terminal 1: Run the Java demos
+# Terminal 1: Run Java demos with hot reload
 mvn jetty:run
 
-# Terminal 2: Run the documentation site
+# Terminal 2: Run documentation site with hot reload
 cd docs && npm start
 ```
 
-## Architecture & Structure
+### Documentation Development
+```bash
+cd docs
+npm install          # Install dependencies (first time only)
+npm start           # Start dev server at http://localhost:3000
+npm run build       # Build static site
+npm run serve       # Serve built documentation
+```
 
-### Documentation (`/docs`)
-- **Content**: MDX/Markdown files in `/docs/docs/`
-- **Blog**: Release notes and articles in `/docs/blog/`
-- **Components**: React components in `/docs/src/components/`
-- **Styling**: SCSS files in `/docs/src/css/`
-- **Configuration**: `docusaurus.config.js` and `sidebars.js`
+### Java Demo Development
+```bash
+mvn clean install    # Build entire project
+mvn jetty:run       # Run demos at http://localhost:8080
+mvn jetty:run -Pprod # Run with production profile
+mvn verify          # Run all tests including integration
+mvn test            # Run unit tests only
+```
 
-### Demo Applications (`/src/main/java/com/webforj/samples`)
-- **Views**: Individual component demos in `/views/` subdirectories
-- **Components**: Reusable demo components in `/components/`
-- **Resources**: CSS, config files in `/src/main/resources/`
-- **Application.java**: Main application entry point with routing
+### MCP Server Development
+```bash
+cd mcp-server
+npm install         # Install dependencies
+npm run build       # Build TypeScript
+npm start          # Start in stdio mode
+npm run gateway    # Start HTTP gateway at http://localhost:3001
+```
 
-### Key Integration Points
-1. **URL Mapping**: `/src/webapp/WEB-INF/urlrewrite.xml` handles routing between docs and demos
-2. **Static Assets**: Documentation builds are copied to `/target/classes/static/`
-3. **Hot Reload**: Jetty configured with 1-second scan interval for Java changes
+## Architecture
+
+### Build Pipeline
+Maven orchestrates both Java and Node.js builds:
+1. **Frontend Maven Plugin** downloads Node.js 23.5.0 and npm 10.9.2
+2. Runs `npm install` and `npm run build` in `/docs`
+3. Copies built documentation to `/target/classes/static`
+4. Downloads and extracts JavaDoc JARs for component API documentation
+
+### Routing and Integration
+- **Java Routes**: Automatic discovery via `@Routify` annotation
+- **Demo Views**: Each component demo uses `@Route` annotation
+- **Static Assets**: Documentation served from `/target/classes/static`
+- **URL Rewriting**: Basic redirects in `/src/webapp/WEB-INF/urlrewrite.xml`
+
+### Component Demo Structure
+```
+/src/main/java/com/webforj/samples/views/{component}/
+├── {Component}View.java          # Basic demo
+├── {Component}ThemesView.java    # Theme variations
+├── {Component}ExpansesView.java  # Size variations
+└── {Component}EventView.java     # Event handling demo
+
+/src/main/resources/css/{component}/
+└── {feature}.css                 # Corresponding styles
+```
+
+### MCP Server Integration
+The MCP server provides AI-powered documentation access:
+- **Indexes**: Documentation content, Java demos, and JavaDoc
+- **Search**: Component discovery and code examples
+- **Deployment**: Stdio mode for Claude, HTTP gateway for web access
 
 ## Code Standards
 
-### Java Code
-- Java 17+ required
-- Follow Google Java Style Guide
-- Use meaningful variable and method names
-- Add Javadoc for public methods
-- Demo views should extend appropriate base classes
+### Java
+- **Version**: Java 17+ required
+- **Framework**: webforJ 25.01
+- **Style**: Google Java Style Guide
+- **Demo Pattern**: Extend `DemoPanel` or appropriate base class
+- **Annotations**: Use `@Route` for routing, `@Routify` for package scanning
 
 ### Documentation
-- Use MDX for interactive content
-- Follow Vale prose linting rules (`.vale.ini`)
-- Link to Javadoc when referencing API: https://javadoc.io/doc/com.webforj
-- Use custom components from `/docs/src/components/DocsTools/`
-
-## Component Demo Pattern
-
-When creating new component demos:
-1. Create a view class in `/src/main/java/com/webforj/samples/views/{component}/`
-2. Extend appropriate base class (e.g., `DemoPanel`)
-3. Register route in `Application.java`
-4. Add corresponding CSS in `/src/main/resources/css/{component}/`
-5. Create documentation page in `/docs/docs/components/{component}.md`
+- **Format**: MDX for interactive content
+- **Linting**: Vale prose linting (`.vale.ini`)
+- **Components**: Custom React components in `/docs/src/components/DocsTools/`
+- **JavaDoc Links**: Use https://javadoc.io/doc/com.webforj
 
 ## Testing
 
@@ -87,21 +101,34 @@ When creating new component demos:
 - Broken link checking during build
 - Vale prose linting for content quality
 
-### Java Demos
-- Unit tests with JUnit 5
-- Integration tests with Maven Failsafe
-- Run with `mvn verify`
+### Java
+- JUnit 5 for unit tests
+- Maven Failsafe for integration tests
+- Test discovery: `*Test.java` (unit), `*IT.java` (integration)
 
-## Deployment Profiles
+## Configuration Files
 
-- **dev** (default): Uses `webforj-dev.conf`, includes development tools
-- **prod**: Uses `webforj-prod.conf`, optimized for production
+### Key Files
+- `pom.xml` - Maven configuration with profiles and plugins
+- `docusaurus.config.js` - Documentation site configuration
+- `sidebars.js` - Documentation navigation structure
+- `webforj-{profile}.conf` - BBj runtime configuration
 
-Switch profiles with: `mvn jetty:run -Pprod`
+### Maven Profiles
+- **dev** (default): Development mode with debugging enabled
+- **prod**: Production optimizations
+
+## Creating New Component Documentation
+
+1. **Create Java demo** in `/src/main/java/com/webforj/samples/views/{component}/`
+2. **Add route** with `@Route("{component}")` annotation
+3. **Create CSS** in `/src/main/resources/css/{component}/`
+4. **Write docs** in `/docs/docs/components/{component}.md`
+5. **Update sidebar** in `/docs/sidebars.js`
 
 ## Important URLs
 
-- **Live Documentation**: https://docs.webforj.com
-- **GitHub Repo**: https://github.com/webforj/webforj-documentation
-- **Main webforJ Repo**: https://github.com/webforj/webforj
-- **Javadoc**: https://javadoc.io/doc/com.webforj
+- **Live Site**: https://docs.webforj.com
+- **GitHub**: https://github.com/webforj/webforj-documentation
+- **JavaDoc**: https://javadoc.io/doc/com.webforj
+- **Main Framework**: https://github.com/webforj/webforj

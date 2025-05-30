@@ -60,7 +60,9 @@ export class JavaDemoScanner {
       title: titleMatch?.[1] || this.humanizeClassName(fileName),
       description,
       sourceFiles: [relativePath],
-      highlighted: false
+      highlighted: false,
+      className: fileName,
+      filePath: relativePath
     };
   }
 
