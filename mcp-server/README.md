@@ -10,6 +10,7 @@ This MCP (Model Context Protocol) server provides structured access to webforJ d
 - [Installation](#installation)
 - [Deployment Options](#deployment-options)
   - [Local Development](#local-development)
+  - [Local Claude CLI](#local-claude-cli)
   - [Local Claude Desktop](#local-claude-desktop)
   - [Hosted Gateway Server](#hosted-gateway-server)
   - [Production Deployment](#production-deployment)
@@ -117,6 +118,32 @@ The server listens on stdio - use the test script to verify:
 ```bash
 node test-mcp.js
 ```
+
+### Local Claude CLI
+
+Use the MCP server with Claude CLI (claude.ai/code) for enhanced webforJ assistance directly from your terminal.
+
+#### Prerequisites
+
+- Claude CLI installed
+- MCP server built (`npm run build` completed)
+
+#### Setup
+
+Add the MCP server to your Claude CLI configuration:
+
+```bash
+claude mcp add webforj-docs node <path-to-repo>/webforj-documentation/mcp-server/dist/index.js
+```
+
+Replace `<path-to-repo>` with your actual path to the webforj-documentation repository.
+
+#### Verification
+
+After adding the MCP server, you can verify it's working in Claude CLI:
+- Start a new Claude session
+- Ask questions like "What webforJ components are available?"
+- The assistant should have access to component metadata and documentation
 
 ### Local Claude Desktop
 

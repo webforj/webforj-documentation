@@ -1,4 +1,4 @@
-import express from 'express';
+|@,kimport express from 'express';
 import { spawn, ChildProcess } from 'child_process';
 import { v4 as uuidv4 } from 'uuid';
 import cors from 'cors';
@@ -28,7 +28,7 @@ export class MCPGatewayServer {
   private setupMiddleware() {
     this.app.use(cors());
     this.app.use(express.json());
-    
+
     // Rate limiting
     const limiter = rateLimit({
       windowMs: 15 * 60 * 1000, // 15 minutes
@@ -79,8 +79,8 @@ export class MCPGatewayServer {
         });
 
         this.sessions.set(sessionId, session);
-        
-        res.json({ 
+
+        res.json({
           sessionId,
           expiresIn: 300 // 5 minutes
         });
@@ -95,7 +95,8 @@ export class MCPGatewayServer {
       const session = this.sessions.get(sessionId);
 
       if (!session) {
-        return res.status(404).json({ error: 'Session not found or expired' });
+        res.status(404).json({ error: 'Session not found or expired' });
+        return;
       }
 
       try {
@@ -103,7 +104,7 @@ export class MCPGatewayServer {
         const response = await this.sendRequest(session, req.body);
         res.json(response);
       } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
       }
     });
 
@@ -125,7 +126,7 @@ export class MCPGatewayServer {
       try {
         // Create temporary session for single request
         const tempSession = await this.createTempSession();
-        
+
         // Initialize MCP
         await this.sendRequest(tempSession, {
           jsonrpc: '2.0',
@@ -151,22 +152,22 @@ export class MCPGatewayServer {
 
         // Clean up
         tempSession.process.kill();
-        
+
         res.json(response.result);
       } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error' });
       }
     });
   }
 
   private authenticate = (req: any, res: any, next: any) => {
-    const apiKey = req.headers['x-api-key'] || 
+    const apiKey = req.headers['x-api-key'] ||
                    req.headers.authorization?.replace('Bearer ', '');
-    
+
     if (!apiKey || !this.apiKeys.has(apiKey)) {
       return res.status(401).json({ error: 'Invalid or missing API key' });
     }
-    
+
     req.apiKey = apiKey;
     next();
   };
@@ -203,7 +204,7 @@ export class MCPGatewayServer {
       // Wait for response
       const checkBuffer = setInterval(() => {
         const lines = session.buffer.split('\n');
-        
+
         for (const line of lines) {
           if (line.trim()) {
             try {
@@ -222,7 +223,11 @@ export class MCPGatewayServer {
       }, 10);
 
       // Send request
-      session.process.stdin.write(JSON.stringify(request) + '\n');
+      if (session.process.stdin) {
+        session.process.stdin.write(JSON.stringify(request) + '\n');
+      } else {
+        reject(new Error('Process stdin not available'));
+      }
     });
   }
 

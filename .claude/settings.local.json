@@ -1,21 +1,27 @@
 {
   "permissions": {
     "allow": [
-      "Bash(find:*)",
-      "Bash(mkdir:*)",
-      "Bash(chmod:*)",
-      "Bash(grep:*)",
-      "Bash(npm install)",
-      "Bash(npm run build:*)",
-      "Bash(timeout 5 npm start:*)",
-      "Bash(true)",
-      "Bash(node:*)",
-      "Bash(rm:*)",
-      "Bash(git add:*)",
       "Bash(mvn clean:*)",
-      "Bash(mvn dependency:copy:*)",
-      "Bash(npm run setup:claude:*)"
-    ],
-    "deny": []
+      "Bash(mvn:*)",
+      "Bash(grep:*)",
+      "Bash(psql:*)",
+      "Bash(rm:*)",
+      "Bash(java:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "WebFetch(domain:docs.webforj.com)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "mcpServers": {
+    "webforj-docs": {
+      "command": "node",
+      "args": [
+        "/Users/beff/webforj-documentation/mcp-server/dist/index.js"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
   }
 }
