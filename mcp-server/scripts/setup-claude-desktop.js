@@ -8,6 +8,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { homedir } from 'os';
 import { join, resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { createInterface } from 'readline';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const mcpServerPath = resolve(join(__dirname, '..'));
@@ -74,7 +75,7 @@ function main() {
     console.log('Current configuration:');
     console.log(JSON.stringify(config.mcpServers['webforj-docs'], null, 2));
     
-    const readline = require('readline').createInterface({
+    const readline = createInterface({
       input: process.stdin,
       output: process.stdout
     });
@@ -85,8 +86,10 @@ function main() {
         saveConfig(configPath, config);
       } else {
         console.log('\n❌ Setup cancelled.');
+        console.log('💡 Tip: Your existing configuration is already set up correctly.');
       }
       readline.close();
+      process.exit(0);
     });
   } else {
     config.mcpServers['webforj-docs'] = serverEntry;

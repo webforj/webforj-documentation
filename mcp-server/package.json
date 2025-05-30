@@ -10,7 +10,9 @@
     "dev": "tsx watch src/index.ts",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
-    "setup:claude": "node scripts/setup-claude-desktop.js"
+    "setup:claude": "node scripts/setup-claude-desktop.js",
+    "gateway": "node dist/gateway.js",
+    "gateway:dev": "tsx watch src/gateway.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.4",
@@ -20,10 +22,18 @@
     "micromark-extension-mdxjs": "^3.0.0",
     "chokidar": "^4.0.1",
     "gray-matter": "^4.0.3",
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "node-html-parser": "^6.1.13",
+    "express": "^4.21.2",
+    "cors": "^2.8.5",
+    "express-rate-limit": "^7.5.0",
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
+    "@types/express": "^5.0.0",
+    "@types/cors": "^2.8.17",
+    "@types/uuid": "^10.0.0",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   },

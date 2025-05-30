@@ -233,6 +233,51 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.8.0</version>
+        <executions>
+          <execution>
+            <id>copy-javadoc-jars</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>com.webforj</groupId>
+                  <artifactId>webforj-foundation</artifactId>
+                  <version>${webforj.version}</version>
+                  <classifier>javadoc</classifier>
+                  <type>jar</type>
+                  <outputDirectory>${project.build.directory}/javadocs</outputDirectory>
+                  <destFileName>webforj-foundation-javadoc.jar</destFileName>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>com.webforj</groupId>
+                  <artifactId>webforj-data</artifactId>
+                  <version>${webforj.version}</version>
+                  <classifier>javadoc</classifier>
+                  <type>jar</type>
+                  <outputDirectory>${project.build.directory}/javadocs</outputDirectory>
+                  <destFileName>webforj-data-javadoc.jar</destFileName>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>com.webforj</groupId>
+                  <artifactId>webforj-components</artifactId>
+                  <version>${webforj.version}</version>
+                  <classifier>javadoc</classifier>
+                  <type>jar</type>
+                  <outputDirectory>${project.build.directory}/javadocs</outputDirectory>
+                  <destFileName>webforj-components-javadoc.jar</destFileName>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
         <version>3.1.0</version>
         <executions>
@@ -243,6 +288,24 @@
               <target>
                 <copy file="src/main/resources/${config.file}"
                   tofile="${project.build.outputDirectory}/webforj.conf" />
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>extract-javadocs</id>
+            <phase>prepare-package</phase>
+            <configuration>
+              <target>
+                <mkdir dir="${project.build.directory}/javadocs-extracted" />
+                <unzip src="${project.build.directory}/javadocs/webforj-foundation-javadoc.jar" 
+                       dest="${project.build.directory}/javadocs-extracted/foundation" />
+                <unzip src="${project.build.directory}/javadocs/webforj-data-javadoc.jar" 
+                       dest="${project.build.directory}/javadocs-extracted/data" />
+                <unzip src="${project.build.directory}/javadocs/webforj-components-javadoc.jar" 
+                       dest="${project.build.directory}/javadocs-extracted/components" />
               </target>
             </configuration>
             <goals>

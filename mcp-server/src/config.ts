@@ -21,6 +21,7 @@ export interface Config {
     demoRoot: string;
     contextRoot: string;
     cacheFile: string;
+    javadocRoot: string;
   };
   scanning: {
     includePatterns: {
@@ -52,6 +53,7 @@ export function getConfig(): Config {
       demoRoot: process.env.DEMO_ROOT || defaultConfig.paths.demoRoot,
       contextRoot: process.env.CONTEXT_ROOT || defaultConfig.paths.contextRoot,
       cacheFile: process.env.CACHE_FILE || defaultConfig.paths.cacheFile,
+      javadocRoot: process.env.JAVADOC_ROOT || defaultConfig.paths.javadocRoot,
     },
     production: {
       baseUrl: process.env.PROD_BASE_URL || defaultConfig.production.baseUrl,

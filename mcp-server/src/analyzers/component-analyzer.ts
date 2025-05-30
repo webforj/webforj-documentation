@@ -1,9 +1,11 @@
 import type { ComponentMetadata, DocumentMetadata, DemoMetadata } from '../types.js';
+import type { JavaDocClass } from '../scanners/javadoc-scanner.js';
 
 export class ComponentAnalyzer {
   constructor(
     private documents: Map<string, DocumentMetadata>,
-    private demos: Map<string, DemoMetadata>
+    private demos: Map<string, DemoMetadata>,
+    private javadocs: Map<string, JavaDocClass> = new Map()
   ) {}
 
   analyze(): Map<string, ComponentMetadata> {
@@ -78,16 +80,19 @@ export class ComponentAnalyzer {
                    path.includes('option-dialogs/') ? 'dialogs' :
                    'components';
     
+    // Try to find corresponding JavaDoc
+    const javadocClass = this.findJavaDocForComponent(componentName);
+    
     return {
       name: componentName,
       displayName: doc.title,
-      description,
+      description: description || javadocClass?.description,
       category,
       javadocUrl,
       demos: relatedDemos,
-      properties: this.extractProperties(content),
+      properties: this.mergeProperties(this.extractProperties(content), javadocClass?.fields || []),
       events: this.extractEvents(content),
-      methods: this.extractMethods(content)
+      methods: this.mergeMethods(this.extractMethods(content), javadocClass?.methods || [])
     };
   }
 
@@ -155,5 +160,103 @@ export class ComponentAnalyzer {
     }
     
     return methods;
+  }
+
+  private findJavaDocForComponent(componentName: string): JavaDocClass | null {
+    // Try different variations of component names that might match JavaDoc classes
+    const variations = [
+      componentName,
+      componentName.charAt(0).toUpperCase() + componentName.slice(1),
+      this.camelCase(componentName),
+      this.pascalCase(componentName)
+    ];
+    
+    for (const variation of variations) {
+      const found = this.javadocs.get(variation);
+      if (found) {
+        return found;
+      }
+      
+      // Also search by class name in full name
+      for (const [_, classInfo] of this.javadocs) {
+        if (classInfo.name === variation || 
+            classInfo.fullName.endsWith('.' + variation) ||
+            classInfo.name.toLowerCase() === variation.toLowerCase()) {
+          return classInfo;
+        }
+      }
+    }
+    
+    return null;
+  }
+
+  private camelCase(str: string): string {
+    return str.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
+  }
+
+  private pascalCase(str: string): string {
+    const camel = this.camelCase(str);
+    return camel.charAt(0).toUpperCase() + camel.slice(1);
+  }
+
+  private mergeProperties(docProps: any[], javadocFields: any[]): any[] {
+    const merged = [...docProps];
+    
+    // Add JavaDoc fields that aren't already covered by documentation
+    for (const field of javadocFields) {
+      const exists = merged.some(p => p.name === field.name);
+      if (!exists) {
+        merged.push({
+          name: field.name,
+          type: field.type,
+          description: field.description || `Field from JavaDoc: ${field.name}`,
+          source: 'javadoc'
+        });
+      }
+    }
+    
+    return merged;
+  }
+
+  private mergeMethods(docMethods: any[], javadocMethods: any[]): any[] {
+    const merged = [...docMethods];
+    
+    // Add important JavaDoc methods (setters, getters, event handlers, etc.)
+    for (const method of javadocMethods) {
+      const exists = merged.some(m => m.name === method.name);
+      if (!exists && this.isImportantMethod(method)) {
+        merged.push({
+          name: method.name,
+          description: method.description || `Method from JavaDoc: ${method.name}`,
+          parameters: method.parameters || [],
+          returnType: method.returnType || 'void',
+          source: 'javadoc'
+        });
+      }
+    }
+    
+    return merged;
+  }
+
+  private isImportantMethod(method: any): boolean {
+    const name = method.name;
+    
+    // Include common API methods
+    if (name.startsWith('set') || name.startsWith('get') || name.startsWith('is')) {
+      return true;
+    }
+    
+    // Include event-related methods
+    if (name.includes('Event') || name.includes('Listener') || name.startsWith('on')) {
+      return true;
+    }
+    
+    // Include component lifecycle methods
+    const lifecycleMethods = ['show', 'hide', 'enable', 'disable', 'focus', 'blur', 'refresh', 'update'];
+    if (lifecycleMethods.some(lifecycle => name.toLowerCase().includes(lifecycle))) {
+      return true;
+    }
+    
+    return false;
   }
 }

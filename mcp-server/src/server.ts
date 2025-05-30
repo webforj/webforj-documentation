@@ -10,6 +10,7 @@ import {
 } from '@modelcontextprotocol/sdk/types.js';
 import { DocumentationScanner } from './scanners/documentation-scanner.js';
 import { JavaDemoScanner } from './scanners/java-demo-scanner.js';
+import { JavaDocScanner } from './scanners/javadoc-scanner.js';
 import { ComponentAnalyzer } from './analyzers/component-analyzer.js';
 import { getConfig, getBaseUrls, type Config } from './config.js';
 import type { MCPIndex } from './types.js';
@@ -275,6 +276,7 @@ export class WebForJMCPServer {
     
     const docsPath = join(__dirname, '..', this.config.paths.docsRoot);
     const demoPath = join(__dirname, '..', this.config.paths.demoRoot);
+    const javadocPath = join(__dirname, '..', this.config.paths.javadocRoot);
     
     // Scan documentation
     const docScanner = new DocumentationScanner(docsPath);
@@ -284,8 +286,18 @@ export class WebForJMCPServer {
     const demoScanner = new JavaDemoScanner(demoPath);
     const demos = await demoScanner.scan();
     
+    // Scan JavaDocs (if available)
+    let javadocs = new Map();
+    try {
+      const javadocScanner = new JavaDocScanner(javadocPath);
+      javadocs = await javadocScanner.scan();
+      console.error(`Found ${javadocs.size} JavaDoc classes`);
+    } catch (error) {
+      console.error('JavaDoc scanning failed (this is expected if not built yet):', error);
+    }
+    
     // Analyze components from documentation
-    const componentAnalyzer = new ComponentAnalyzer(documents, demos);
+    const componentAnalyzer = new ComponentAnalyzer(documents, demos, javadocs);
     const components = componentAnalyzer.analyze();
     
     this.index = {
@@ -296,7 +308,7 @@ export class WebForJMCPServer {
       version: '1.0.0'
     };
     
-    console.error(`Index built: ${components.size} components, ${demos.size} demos, ${documents.size} documents`);
+    console.error(`Index built: ${components.size} components, ${demos.size} demos, ${documents.size} documents, ${javadocs.size} javadoc classes`);
   }
 
   async start() {

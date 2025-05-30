@@ -9,7 +9,8 @@
     "blogRoot": "../docs/blog",
     "demoRoot": "../src/main/java/com/webforj/samples",
     "contextRoot": "../mcp-context",
-    "cacheFile": "./cache/mcp-index.json"
+    "cacheFile": "./cache/mcp-index.json",
+    "javadocRoot": "../target/javadocs-extracted"
   },
   "scanning": {
     "includePatterns": {

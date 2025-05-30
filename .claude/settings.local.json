@@ -11,7 +11,10 @@
       "Bash(true)",
       "Bash(node:*)",
       "Bash(rm:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(mvn clean:*)",
+      "Bash(mvn dependency:copy:*)",
+      "Bash(npm run setup:claude:*)"
     ],
     "deny": []
   }
