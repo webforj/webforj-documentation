@@ -43,7 +43,7 @@ webforJ comes with several predefined archetypes that help you quickly start you
 
 ## Using the command line
 
-For those who prefer using the coomand line, you can also generate a project directly using the Maven archetype:
+For those who prefer using the command line, you can also generate a project directly using the Maven archetype:
 
 <ComponentArchetype
 project="hello-world"
