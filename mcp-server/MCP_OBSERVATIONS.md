@@ -46,6 +46,14 @@ This document tracks observations, issues, and improvement opportunities for the
 | Date | Component/Feature | Missing Information | Impact | Status | Added Location |
 |------|------------------|-------------------|---------|---------|----------------|
 | 2025-05-30 | Lifecycle Management | AI doesn't understand interface-based lifecycle pattern | High - Generates incorrect code | Documented | AI_ANTIPATTERNS.md |
+| 2025-05-31 | Focus Management | AI incorrectly uses JavaScript focus() methods instead of webforJ component focus() method | Medium - Generates non-functional code | New | Pending |
+| 2025-05-31 | Element Visibility | AI uses JavaScript/HTML show/hide methods instead of webforJ setVisible(true/false) | Medium - Generates non-functional code | New | Pending |
+| 2025-05-31 | Component Styling | AI adds custom HTML/CSS styling instead of using webforJ's built-in theming system | Medium - Overrides framework defaults unnecessarily | New | Pending |
+| 2025-05-31 | Link Implementation | AI implements JavaScript-based links instead of using webforJ's Link class | Medium - Generates non-functional code | New | Pending |
+| 2025-05-31 | Component Caching | AI puts webforJ components in cache structures causing runtime errors when components are destroyed | High - Causes application crashes | New | Pending |
+| 2025-05-31 | Application Initialization | AI searches for init() method in app class but webforJ uses run() method for initialization | Medium - Generates incorrect code structure | New | Pending |
+| 2025-06-01 | Class Hierarchy | AI incorrectly extends App for views instead of Composite (App is entry point, Composite is for views/components) | High - Generates non-functional view structure | New | Pending |
+| 2025-06-01 | Async Operations | AI incorrectly suggests JavaScript async patterns instead of Java CompletableFuture for non-blocking operations | Medium - Generates non-functional code that doesn't leverage Java's proper async handling | New | Pending |
 | | | | | | |
 
 ### 🤝 Integration Issues

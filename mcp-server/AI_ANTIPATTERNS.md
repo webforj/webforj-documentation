@@ -35,7 +35,7 @@ public class MyView extends App {
 
 **✅ CORRECT PATTERN:**
 ```java
-public class MyView extends App implements DidEnterObserver, DidLeaveObserver {
+public class MyView extends Composite implements DidEnterObserver, DidLeaveObserver {
     @Override
     public void run() {
         // Component setup
@@ -323,7 +323,7 @@ public class IncorrectView extends App {
 ```java
 // CORRECT: This is the proper webforJ pattern
 // Use interfaces for lifecycle management
-public class CorrectView extends App implements DidEnterObserver {
+public class CorrectView extends Composite implements DidEnterObserver {
     @Override
     public void run() {
         // Setup UI components
@@ -367,7 +367,7 @@ public class CorrectView extends App implements DidEnterObserver {
 ### JavaFX → webforJ
 | JavaFX Pattern | webforJ Equivalent |
 |---------------|-------------------|
-| `Stage/Scene` | `App` class |
+| `Stage/Scene` | `App` class (entry point) / `Composite` (views) |
 | `FXML` | Java code or HTML templates |
 | `@FXML` | Direct field references |
 | `initialize()` | `run()` method |
