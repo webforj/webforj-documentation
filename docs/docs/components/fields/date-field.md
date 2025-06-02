@@ -19,6 +19,39 @@ path='/webforj/datefield?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/datefield/DateFieldView.java'
 />
 
+## Field value (`LocalDate`)
+
+The `DateField` component stores its value internally as a `LocalDate` object, representing a date without time or timezone information. This allows for accurate handling of calendar-based input across different systems.
+
+While the **visual display adapts to the user's browser locale**, ensuring regionally familiar formatting (e.g., `MM/DD/YYYY` in the `USA` or `DD.MM.YYYY` in Europe), the internal parsing and programmatic interaction always rely on the fixed format: **`yyyy-MM-dd`**.
+
+### Getting and setting the value
+
+To retrieve the current value:
+
+```java
+LocalDate value = dateField.getValue();
+```
+
+To set the value programmatically:
+
+```java
+dateField.setValue(LocalDate.of(2024, 4, 27));
+```
+
+### Using `setText()`
+
+You can also assign a value using a raw string, but it must follow the exact `yyyy-MM-dd` format:
+
+```java
+dateField.setText("2024-04-27"); // valid
+```
+
+:::tip
+When using `setText(...)`, the input must strictly follow the `yyyy-MM-dd` format. If parsing fails, an `IllegalArgumentException` will be thrown.
+:::
+
+
 ## Usages
 
 The `DateField` is ideal for choosing and displaying dates in your app. Here are some examples of when to use the `DateField`:
@@ -31,9 +64,20 @@ The `DateField` is ideal for choosing and displaying dates in your app. Here are
 
 4. **Task Management and Deadlines**: Date fields are valuable in apps that involve task management or setting deadlines. Users can easily specify due dates, start dates, or other time-sensitive information.
 
-## Maximum and minimum
+## Min and max value
 
-With the `setMax()` and `setMin()` methods, you can specify a range of acceptable dates. If a user manually enters a value into the date field outside the specified range, the component will let the user know what's acceptable. Also, if a maximum or minimum is already set, the value for the other method must be lower or higher respectively.
+The `setMin()` method defines the earliest date a user can enter into the component. If the input is earlier than the specified minimum, it will fail constraint validation. When used alongside `setMax()`, the minimum must be a date that's the same as or earlier than the maximum.
+
+```java
+dateField.setMin(LocalDate.of(2023, 1, 1)); // Minimum allowed: January 1, 2023
+```
+
+The `setMax()` method defines the latest date the component accepts. If the entered date is later than the specified maximum, the input is invalid. When both values are defined, the maximum must be a date that's the same as or later than the minimum.
+
+```java
+dateField.setMax(LocalDate.of(2023, 12, 31)); // Maximum allowed: December 31, 2023
+```
+
 
 ## Localized display
 
