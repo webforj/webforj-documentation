@@ -17,7 +17,7 @@ dist/
 !test-mcp.js
 
 # Cache
-cache/
+dist/cache/
 .mcp-cache/
 *.cache
 mcp-index.json
