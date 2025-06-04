@@ -41,6 +41,16 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
+## Reacting to data updates
+
+If your app modifies data programmatically, such as updating a user's age, the table will automatically re-evaluate and reapply any associated row or cell styles once the updated item is committed in the repository 
+
+<ComponentDemo 
+path='/webforj/tabledynamicstyling?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableDynamicStylingView.java'
+height='475px'
+/>
+
 ## Striped rows
 
 Enable alternating background colors for rows to improve readability:
@@ -69,15 +79,3 @@ path='/webforj/tablelayoutstyling?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableLayoutStylingView.java'
 height='300px'
 />
-
-
-## Reacting to data updates
-
-If your app modifies data programmatically, such as updating a user's age, the table will automatically re-evaluate and reapply any associated row or cell styles once the updated item is committed in the repository 
-
-<ComponentDemo 
-path='/webforj/tabledynamicstyling?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableDynamicStylingView.java'
-height='475px'
-/>
-
