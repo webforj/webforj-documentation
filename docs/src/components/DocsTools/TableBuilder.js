@@ -228,15 +228,24 @@ export default function TableBuilder(props) {
 
 /**
  * formatText formats some limited Markdown and HTML syntax that appears in the data.
- * It changes <br> elements to line breaks, and changes text wrapped in backticks
- * to text wrapped in <code> tags.
+ * It changes <br>, <div>, <ol>, and <li> elements to line breaks, removes URLs,
+ * and changes text wrapped in backticks to <code> tags.
  * @param {string} text 
  * @returns React fragments of processed text
  */
 function formatText(text) {
   if (!text) return null;
-  const lines = text.split(/<br>/);
+  // Remove closing </ol> and <li>, remove <b> and </b>:
+  text = text.replace(/<\/ol>/gi, '')
+    .replace(/<\/li>/gi, '')
+    .replace(/<\/?b>/gi, '')
+    .replace(/<\/div>/gi, '');
+  // For simplicity, remove URLs:
+  text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
+  // New lines at every <br>, <li>, and <ol>:
+  const lines = text.split(/<br>|<li>|<ol>|<div[^>]*>/);
 
+  // Render backticks as <code> tags:
   return lines.map((line, lineIndex) => {
     const parts = line.split(/(`[^`]+`)/); 
 
@@ -258,7 +267,6 @@ function formatText(text) {
       </React.Fragment>
     );
   });
-
 }
 
 /**
