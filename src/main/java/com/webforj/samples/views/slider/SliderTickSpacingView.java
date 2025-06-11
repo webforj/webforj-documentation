@@ -1,10 +1,7 @@
 package com.webforj.samples.views.slider;
 
-import java.util.Optional;
-
 import com.webforj.component.Composite;
 import com.webforj.component.field.NumberField;
-import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.optioninput.RadioButton;
@@ -72,12 +69,30 @@ public class SliderTickSpacingView extends Composite<FlexLayout> {
   }
 
   private void updateTickSpacing() {
-    int majorSpacing = Optional.ofNullable(majorTickInput.getValue()).map(Double::intValue).orElse(0);
-    int minorSpacing = Optional.ofNullable(minorTickInput.getValue()).map(Double::intValue).orElse(0);
+    Double majorVal = majorTickInput.getValue();
+    Double minorVal = minorTickInput.getValue();
 
-    if (majorSpacing <= 0 || minorSpacing <= 0) {
+    int range = slider.getMax() - slider.getMin();
+
+    if (majorVal == null || minorVal == null) {
       return;
     }
+
+    int majorSpacing = majorVal.intValue();
+    int minorSpacing = minorVal.intValue();
+
+    if (majorSpacing <= 0 || majorSpacing > range) {
+      majorTickInput.setHelperText("Must be between 1 and " + range);
+      return;
+    }
+
+    if (minorSpacing <= 0 || minorSpacing > range) {
+      minorTickInput.setHelperText("Must be between 1 and " + range);
+      return;
+    }
+
+    majorTickInput.setHelperText("Enter major tick spacing (e.g., 10)");
+    minorTickInput.setHelperText("Enter minor tick spacing (e.g., 2)");
 
     slider.setMajorTickSpacing(majorSpacing);
     slider.setMinorTickSpacing(minorSpacing);
