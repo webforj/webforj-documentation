@@ -47,6 +47,26 @@ path='/webforj/textfield?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/textfield/TextFieldView.java'
 />
 
+## Field value
+
+The value of a `TextField` represents the current user input as a string. In WebforJ, this can be accessed or updated programmatically using `getValue()` and `setValue(String)`.
+
+```java
+String text = textField.getValue();
+```
+
+```java
+textField.setValue("Initial content");
+```
+
+If no value has been entered by the user, and no default value is set, the field returns an empty string (`""`).
+
+This behavior is consistent with how the HTML `<input type="text">` element exposes its value via JavaScript.
+
+:::tip
+To combine value handling with validation, ensure constraints such as [pattern](#pattern-matching), [minLength](#setminlength), or [maxlength](#setmaxlength) are used. This ensures the value is only considered valid when it meets those conditions.
+:::
+
 ## Placeholder text
 
 You can set placeholder text for the `TextField` using the `setPlaceholder()` method. The placeholder text is displayed when the field is empty, helping to prompt the user to enter appropriate input into the `TextField`.
@@ -70,6 +90,52 @@ Similarly, it's possible to retrieve the current selection range of the `TextFie
 :::tip Using `getSelectedText()` vs event payload
 While you can call `getSelectedText()` manually inside an event handler, it’s more efficient to use the selection data provided in the event’s payload—such as in a `SelectionChangeEvent`—to avoid additional lookups.
 :::
+
+## Pattern matching
+
+You can use the `setPattern()` method to define a validation rule for the `TextField` using a regular expression. This enables constraint validation on the input value, requiring it to match the specified pattern.
+
+The pattern must be a valid [JavaScript regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions), as interpreted by the browser. The `u` (Unicode) flag is applied internally to ensure accurate matching of Unicode code points. Don't wrap the pattern in forward slashes (`/`), as those aren't required and will be treated as literal characters.
+
+```java
+textField.setPattern("[A-Za-z]{3}\\d{2}"); // e.g. ABC12
+```
+
+If no pattern is provided, or the syntax is invalid, the validation rule is ignored.
+
+:::tip
+You can use `setTitle()` to specify a tooltip that explains the pattern's requirements to the user. It’s also recommended to include additional hints or guidance next to the input when using complex patterns.
+:::
+
+## Minimum and maximum length
+
+The `TextField` component supports constraint validation based on the number of characters entered by the user. This can be controlled using the `setMinLength()` and `setMaxLength()` methods.
+
+### `setMaxLength()`
+
+This method sets the **maximum number of UTF-16 code units** allowed in the text field. The value must be `0` or greater. If not set, or set to an invalid value, no maximum is enforced.
+
+```java
+textField.setMaxLength(20); // User cannot enter more than 20 characters
+```
+
+The field fails constraint validation if the input length exceeds the `maxLength`. This validation is only triggered when the value is changed by the user.
+
+### `setMinLength()`
+
+This method sets the **minimum number of UTF-16 code units** that must be entered for the field to be considered valid. The value must be a non-negative integer and shouldn't exceed the configured `maxLength`.
+
+```java
+textField.setMinLength(5); // User must enter at least 5 characters
+```
+
+If the input contains fewer characters than the minimum required, the input will fail constraint validation. Like with `maxLength`, this rule only applies when the user changes the field's value.
+
+:::tip
+Use `setMinLength()` and `setMaxLength()` together to enforce consistent length boundaries for user input. Consider pairing them with a `setTitle()` tooltip or inline hint to inform users about length requirements.
+:::
+
+
 
 
 ## Best practices
