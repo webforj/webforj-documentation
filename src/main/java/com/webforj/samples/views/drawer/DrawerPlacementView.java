@@ -1,33 +1,60 @@
 package com.webforj.samples.views.drawer;
 
-import com.webforj.annotation.InlineStyleSheet;
-import com.webforj.component.list.ComboBox;
 import com.webforj.component.Composite;
 import com.webforj.component.drawer.Drawer;
 import com.webforj.component.drawer.Drawer.Placement;
+import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.optioninput.RadioButton;
+import com.webforj.component.optioninput.RadioButtonGroup;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@InlineStyleSheet("context://css/drawer/drawerDemo.css")
 @Route
 @FrameTitle("Drawer Placement")
 public class DrawerPlacementView extends Composite<FlexLayout> {
 
+  FlexLayout layout = getBoundComponent();
   Drawer drawer = new Drawer();
-  ComboBox placements = new ComboBox();
 
   public DrawerPlacementView() {
-    getBoundComponent().add(drawer);
-    drawer.add(placements);
-    drawer.open();
+    drawer.setLabel("Drawer Placement Options");
     drawer.addClassName("drawer");
+    drawer.open();
 
-    for (Placement placement : Drawer.Placement.values()) {
-      placements.add(placement,
-          placement.toString().substring(0, 1).toUpperCase() + placement.toString().substring(1).toLowerCase());
-    }
-    placements.selectIndex(4);
-    placements.onSelect(e -> drawer.setPlacement((Placement) placements.getSelectedItem().getKey()));
+    RadioButton topOption = new RadioButton("Top");
+    RadioButton bottomOption = new RadioButton("Bottom");
+    RadioButton leftOption = new RadioButton("Left", true);
+    RadioButton rightOption = new RadioButton("Right");
+
+    RadioButtonGroup placementGroup = new RadioButtonGroup("Placement Options", topOption, bottomOption, leftOption, rightOption);
+
+    FlexLayout groupLayout = new FlexLayout();
+    groupLayout.setDirection(FlexDirection.COLUMN);
+    groupLayout.setSpacing("var(--dwc-space-s)");
+    groupLayout.add(placementGroup, topOption, bottomOption, leftOption, rightOption);
+
+    placementGroup.onValueChange(event -> {
+      RadioButton selected = placementGroup.getChecked();
+      if (selected != null) {
+        switch (selected.getText()) {
+          case "Top":
+            drawer.setPlacement(Placement.TOP);
+            break;
+          case "Bottom":
+            drawer.setPlacement(Placement.BOTTOM);
+            break;
+          case "Right":
+            drawer.setPlacement(Placement.RIGHT);
+            break;
+          default:
+            drawer.setPlacement(Placement.LEFT);
+            break;
+        }
+      }
+    });
+
+    drawer.add(groupLayout);
+    layout.add(drawer);
   }
 }

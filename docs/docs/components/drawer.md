@@ -27,8 +27,8 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 4. **Notifications**: For applications with notifications or alerts, a drawer can slide in to display new messages or updates. Users can quickly check and dismiss notifications without leaving their current view.
 
 <ComponentDemo
-path='/webforj/drawerdemo?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerDemoView.java'
+path='/webforj/drawer?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerView.java'
 height='600px'
 />
 
