@@ -118,23 +118,4 @@ height = '400px'
 mobile='true'
 />
 
-### Shadow parts
-
-These are the parts of the shadow DOM available for targeted styling.
-
- <TableBuilder tag='dwc-refresher' table="parts"/>
-
-### Reflected attributes
-
-These attributes appear in the DOM and can be styled directly:
-
- <TableBuilder tag='dwc-refresher' table="reflects"/>
-
-### Dependencies
-
-This component relies on the following base components:
-
-<TableBuilder tag='dwc-refresher' table="dependencies"/>
-
-
-
+<TableBuilder name="Refresher" />
