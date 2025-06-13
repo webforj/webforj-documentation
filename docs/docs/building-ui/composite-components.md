@@ -74,7 +74,7 @@ Similarly, the `onDidDestroy()` method fires once the bound component has been d
 
 ### Example `Composite` component
 
-In the demo below, a simple ToDo application has been created, where each item added to the list is a `Composite` component, consisting of a [`RadioButton`](../components/radio-button.md) styled as a switch, and a [`Div`](#) with text.
+In the following example, a simple ToDo application has been created, where each item added to the list is a `Composite` component, consisting of a [`RadioButton`](../components/radio-button.md) styled as a switch, and a [`Div`](#) with text.
 
 The logic for this component is set up in the constructor, which sets styling and adds constituent components to the bound component using the `getBoundComponent` method, and adds event logic.
 
@@ -85,8 +85,8 @@ This could also be implemented in the `onDidCreate()` method, which would give d
 This component is then instantiated and utilized in an Application, and allows for its use throughout various locations, making it a powerful tool in the creation of custom components.
  
 <ComponentDemo 
-path='/webforj/compositedemo?' 
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/compositeDemo.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeDemoView.java'
+path='/webforj/composite?' 
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/composite.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeView.java'
 height='550px'
 />
