@@ -29,10 +29,15 @@ export default function TableBuilder(props) {
   // This allows you to set the tag directly with something like name="dwc-alert"
   const tag = controlMap[props.name] ?? props.name;
 
-  // If no tables are provided, try to generate all of them. Empty tables won't render anything.
-  const tables = props.tables ? props.tables : ["parts", "slots", "properties", "reflects", "dependencies"];
-
   const clientComponent = props.clientComponent ? props.clientComponent : false;
+
+  // Different list of default tables depending on if this is a client component page:
+  const defaultTables = clientComponent
+    ? ["parts", "slots", "properties", "reflects", "events", "dependents", "dependencies"]
+    : ["parts", "slots", "properties", "reflects", "dependencies"];
+
+  // If no tables are provided, try to generate the defaults. Empty tables won't render anything.
+  let tables = props.tables || defaultTables;
 
   useEffect(() => {
     fetch("https://dwc.style/docs/dwc-components.json")
@@ -72,9 +77,12 @@ export default function TableBuilder(props) {
   
   if (clientComponent){
     reflectItems = componentData.props?.map((prop) => ({
+      name: prop.name,
       attr: prop.attr,
       desc: prop.docs,
       type: prop.type,
+      reflects: prop.reflectToAttr.toString(),
+      default: prop.default,
     }));
   } else {
     reflectItems = componentData.props?.filter(prop => prop.reflectToAttr).map((prop) => ({
@@ -83,8 +91,16 @@ export default function TableBuilder(props) {
       type: prop.type,
     }));
   }
-  const dependencies = componentData?.dependencies || [];
 
+  const eventItems = componentData.events?.map((events) => ({
+    event: events.event,
+    desc: events.docs,
+    type: events.detail,
+  }));
+
+  const dependents = componentData?.dependents || [];
+
+  const dependencies = componentData?.dependencies || [];
 
   const renderTable = (table) => {
     let items, headers, sectionHeading, sectionDescription;
@@ -132,6 +148,7 @@ export default function TableBuilder(props) {
         sectionHeading = "Reflected attributes";
         if (clientComponent) {
           sectionHeading = "Properties";
+          headers = ["Name", "Attribute", "Description", "Type", "Reflects", "Default"];
         }
 
         sectionDescription = (
@@ -156,12 +173,31 @@ export default function TableBuilder(props) {
           );
         }
         break;
+      case "events":
+        items = eventItems;
+        headers = ["Event", "Description", "Type"];
+        sectionHeading = "Events";
+        sectionDescription = (
+          <>
+          These are the events for the <code>{props.name}</code> component.
+          </>
+        )
+        break;
+      case "dependents":
+        items = dependents;
+        sectionHeading = "Dependent Components";
+        sectionDescription = (
+          <>
+          The following components depend on the <code>{props.name}</code> component.</>
+        )
+        break;
       case "dependencies":
         items = dependencies;
         sectionHeading = "Dependencies"
         sectionDescription = (
         <>
-        The <code>{props.name}</code> component relies on the following components. 
+        The <code>{props.name}</code> component relies on the following client components. 
+        Client components are client-side only, and cannot be instantiated directly.
         See the related article for more detailed styling information.
         </>
         )
@@ -181,13 +217,13 @@ export default function TableBuilder(props) {
     // Now that we know there is content for this section, add to the mini TOC
     addTocEntry(sectionHeading);
 
-    if (table == "dependencies"){
+    if (table == "dependencies" || table == "dependents"){
       return (
         <>
         <h3 class={headerClasses} id={sectionHeading}>{sectionHeading}</h3>
         <p>{sectionDescription}</p>
         <ul>
-          {dependencies.map((dependency) => {
+          {items.map((dependency) => {
             const clientLink = '/docs/client-components/' + 
               dependency.replace("dwc-", "")
               .replace(/^[a-z]/, (char) => char.toUpperCase());
@@ -222,7 +258,13 @@ export default function TableBuilder(props) {
             <tr key={key}>
               <td><code>{key}</code></td>
               {values.map((value, idx) => (
-                <td key={`${key}-${idx}`}>{formatText(value)}</td>
+                <td key={`${key}-${idx}`}>
+                  {headers[idx + 1] === "Attribute" ? (
+                    <code>{formatText(value)}</code>
+                  ) : (
+                    formatText(value)
+                  )}
+                </td>
               ))}
             </tr>
             );
