@@ -66,20 +66,4 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '475px'
 />
 
-### Shadow parts
-
-These are the parts of the [shadow DOM](../glossary#shadow-dom) that can be targeted via CSS:
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Toolbar} table='parts'/>
-
-### Slots
-
-Available slots within the `Toolbar` component:
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Toolbar} table='slots'/>
-
-### Reflected attributes
-
-These are attributes visible in the DOM, allowing styling via attribute selectors:
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Toolbar} table="reflects"/>
+<TableBuilder name="Toolbar" />
