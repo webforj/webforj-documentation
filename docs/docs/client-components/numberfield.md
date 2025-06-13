@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-numberfield>`** compon
 
 ## Styling
 
-<TableBuilder name="dwc-numberfield" noFilter />
+<TableBuilder name="dwc-numberfield" clientComponent />
 

@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-field>`** component. T
 
 ## Styling
 
-<TableBuilder name="dwc-field" noFilter />
+<TableBuilder name="dwc-field" clientComponent />
 

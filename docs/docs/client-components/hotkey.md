@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-hotkey>`** component. 
 
 ## Styling
 
-<TableBuilder name="dwc-hotkey" noFilter />
+<TableBuilder name="dwc-hotkey" clientComponent />
 

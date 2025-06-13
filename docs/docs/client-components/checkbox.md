@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-checkbox>`** component
 
 ## Styling
 
-<TableBuilder name="dwc-checkbox" noFilter />
+<TableBuilder name="dwc-checkbox" clientComponent />
 

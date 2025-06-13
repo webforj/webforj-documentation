@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-upload>`** component. 
 
 ## Styling
 
-<TableBuilder name="dwc-upload" noFilter />
+<TableBuilder name="dwc-upload" clientComponent />
 

@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-listbox>`** component.
 
 ## Styling
 
-<TableBuilder name="dwc-listbox" noFilter />
+<TableBuilder name="dwc-listbox" clientComponent />
 

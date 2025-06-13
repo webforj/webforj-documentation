@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-icon-button>`** compon
 
 ## Styling
 
-<TableBuilder name="dwc-icon-button" noFilter />
+<TableBuilder name="dwc-icon-button" clientComponent />
 

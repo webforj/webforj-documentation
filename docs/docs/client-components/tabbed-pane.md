@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-tabbed-pane>`** compon
 
 ## Styling
 
-<TableBuilder name="dwc-tabbed-pane" noFilter />
+<TableBuilder name="dwc-tabbed-pane" clientComponent />
 

@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-spinner>`** component.
 
 ## Styling
 
-<TableBuilder name="dwc-spinner" noFilter />
+<TableBuilder name="dwc-spinner" clientComponent />
 

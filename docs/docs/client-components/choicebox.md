@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-choicebox>`** componen
 
 ## Styling
 
-<TableBuilder name="dwc-choicebox" noFilter />
+<TableBuilder name="dwc-choicebox" clientComponent />
 

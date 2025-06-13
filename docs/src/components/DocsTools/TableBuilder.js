@@ -12,7 +12,7 @@ import exclusions from '@site/static/exclusions.json';
  *   <TableBuilder name="dwc-alert" tables={["parts", "dependencies"]};
  * @param {Object} props - Component props
  * @param {String} props.name - The name of the component
- * @param {Boolean} props.noFilter - Whether to filter the component tables
+ * @param {Boolean} props.clientComponent - Whether the tables are for client components, which show more information
  * @param {Array<string>} [props.tables] - (optional) Names of the tables to render
  * @returns {React.ReactElement} - Rendered tables of data for the component
  */
@@ -32,7 +32,7 @@ export default function TableBuilder(props) {
   // If no tables are provided, try to generate all of them. Empty tables won't render anything.
   const tables = props.tables ? props.tables : ["parts", "slots", "properties", "reflects", "dependencies"];
 
-  const noFilter = props.noFilter ? props.noFilter : false;
+  const clientComponent = props.clientComponent ? props.clientComponent : false;
 
   useEffect(() => {
     fetch("https://dwc.style/docs/dwc-components.json")
@@ -66,9 +66,11 @@ export default function TableBuilder(props) {
     desc: style.docs,
   }));
   // If we filter the table, only include Reflected Attributes if reflectToAttr is true
+  // Note:  reflectItems is not a great name for this table. They are only reflected attributes
+  // when they are not a client component.
   let reflectItems;
   
-  if (noFilter){
+  if (clientComponent){
     reflectItems = componentData.props?.map((prop) => ({
       attr: prop.attr,
       desc: prop.docs,
@@ -128,6 +130,10 @@ export default function TableBuilder(props) {
         items = reflectItems;
         headers = ["Attribute", "Description", "Type"];
         sectionHeading = "Reflected attributes";
+        if (clientComponent) {
+          sectionHeading = "Properties";
+        }
+
         sectionDescription = (
           <>
           These are the reflected attributes for the <code>{props.name}</code> component.
@@ -135,6 +141,20 @@ export default function TableBuilder(props) {
           for the component in the DOM. This means that styling can be applied using these attributes.
           </>
         )
+
+        // Use "Properties" description for client components.
+        if (clientComponent) {
+          sectionDescription = (
+            <>
+            These are the properties for the <code>{props.name}</code> component.
+            Properties are JavaScript variables associated with client web components. 
+            They are useful for storing data and controlling behavior, and make web components more reusable and easier to configure. 
+
+            Some properties reflect their values to attributes and vice versa. 
+            This means that if you set a property, the corresponding attribute is set automatically, and if you set an attribute, the corresponding property is set automatically.
+            </>
+          );
+        }
         break;
       case "dependencies":
         items = dependencies;

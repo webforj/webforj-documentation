@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-app-layout>`** compone
 
 ## Styling
 
-<TableBuilder name="dwc-app-layout" noFilter />
+<TableBuilder name="dwc-app-layout" clientComponent />
 

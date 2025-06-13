@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-numberfield-spinner>`*
 
 ## Styling
 
-<TableBuilder name="dwc-numberfield-spinner" noFilter />
+<TableBuilder name="dwc-numberfield-spinner" clientComponent />
 

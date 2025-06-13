@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-separator>`** componen
 
 ## Styling
 
-<TableBuilder name="dwc-separator" noFilter />
+<TableBuilder name="dwc-separator" clientComponent />
 

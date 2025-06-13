@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-popupmenu>`** componen
 
 ## Styling
 
-<TableBuilder name="dwc-popupmenu" noFilter />
+<TableBuilder name="dwc-popupmenu" clientComponent />
 

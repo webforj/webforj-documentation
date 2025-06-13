@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-drawer>`** component. 
 
 ## Styling
 
-<TableBuilder name="dwc-drawer" noFilter />
+<TableBuilder name="dwc-drawer" clientComponent />
 

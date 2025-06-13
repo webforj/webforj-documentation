@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-loading>`** component.
 
 ## Styling
 
-<TableBuilder name="dwc-loading" noFilter />
+<TableBuilder name="dwc-loading" clientComponent />
 

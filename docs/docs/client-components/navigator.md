@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-navigator>`** componen
 
 ## Styling
 
-<TableBuilder name="dwc-navigator" noFilter />
+<TableBuilder name="dwc-navigator" clientComponent />
 
