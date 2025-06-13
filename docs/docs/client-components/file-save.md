@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-file-save>`** componen
 
 ## Styling
 
-<TableBuilder name="dwc-file-save" noFilter />
+<TableBuilder name="dwc-file-save" clientComponent />
 

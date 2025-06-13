@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-infinite-scroll>`** co
 
 ## Styling
 
-<TableBuilder name="dwc-infinite-scroll" noFilter />
+<TableBuilder name="dwc-infinite-scroll" clientComponent />
 

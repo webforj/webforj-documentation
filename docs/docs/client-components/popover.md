@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-popover>`** component.
 
 ## Styling
 
-<TableBuilder name="dwc-popover" noFilter />
+<TableBuilder name="dwc-popover" clientComponent />
 

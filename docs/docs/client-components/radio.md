@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-radio>`** component. T
 
 ## Styling
 
-<TableBuilder name="dwc-radio" noFilter />
+<TableBuilder name="dwc-radio" clientComponent />
 

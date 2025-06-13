@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-alert-popover>`** comp
 
 ## Styling
 
-<TableBuilder name="dwc-alert-popover" noFilter />
+<TableBuilder name="dwc-alert-popover" clientComponent />
 

@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-textfield-spinner>`** 
 
 ## Styling
 
-<TableBuilder name="dwc-textfield-spinner" noFilter />
+<TableBuilder name="dwc-textfield-spinner" clientComponent />
 

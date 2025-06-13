@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-datefield>`** componen
 
 ## Styling
 
-<TableBuilder name="dwc-datefield" noFilter />
+<TableBuilder name="dwc-datefield" clientComponent />
 

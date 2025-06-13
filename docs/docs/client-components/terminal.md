@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-terminal>`** component
 
 ## Styling
 
-<TableBuilder name="dwc-terminal" noFilter />
+<TableBuilder name="dwc-terminal" clientComponent />
 

@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-app-nav>`** component.
 
 ## Styling
 
-<TableBuilder name="dwc-app-nav" noFilter />
+<TableBuilder name="dwc-app-nav" clientComponent />
 

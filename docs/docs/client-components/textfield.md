@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-textfield>`** componen
 
 ## Styling
 
-<TableBuilder name="dwc-textfield" noFilter />
+<TableBuilder name="dwc-textfield" clientComponent />
 

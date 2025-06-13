@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-color-chooser>`** comp
 
 ## Styling
 
-<TableBuilder name="dwc-color-chooser" noFilter />
+<TableBuilder name="dwc-color-chooser" clientComponent />
 

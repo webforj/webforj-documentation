@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-refresher>`** componen
 
 ## Styling
 
-<TableBuilder name="dwc-refresher" noFilter />
+<TableBuilder name="dwc-refresher" clientComponent />
 

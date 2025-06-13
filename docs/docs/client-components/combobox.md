@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-combobox>`** component
 
 ## Styling
 
-<TableBuilder name="dwc-combobox" noFilter />
+<TableBuilder name="dwc-combobox" clientComponent />
 

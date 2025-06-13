@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-file-chooser>`** compo
 
 ## Styling
 
-<TableBuilder name="dwc-file-chooser" noFilter />
+<TableBuilder name="dwc-file-chooser" clientComponent />
 

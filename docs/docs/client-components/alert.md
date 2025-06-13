@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-alert>`** component. T
 
 ## Styling
 
-<TableBuilder name="dwc-alert" noFilter />
+<TableBuilder name="dwc-alert" clientComponent />
 

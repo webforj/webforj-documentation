@@ -1,3 +1,8 @@
+// This file is used to generate all the files in the client-components directory.
+// To run this program and re-generate the files, navigate to the client-components
+// directory and run the following command:
+// node ./create_files.js
+
 const fs = require('fs');
 
 // Define the output directory where markdown files will be generated
@@ -51,7 +56,7 @@ This section outlines styling information for the **\`<${tag}>\`** component. Th
 
 ## Styling
 
-<TableBuilder name="${tag}" noFilter />
+<TableBuilder name="${tag}" clientComponent />
 
 `;
 

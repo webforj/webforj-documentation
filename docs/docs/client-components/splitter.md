@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-splitter>`** component
 
 ## Styling
 
-<TableBuilder name="dwc-splitter" noFilter />
+<TableBuilder name="dwc-splitter" clientComponent />
 

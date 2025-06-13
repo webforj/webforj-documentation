@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-progressbar>`** compon
 
 ## Styling
 
-<TableBuilder name="dwc-progressbar" noFilter />
+<TableBuilder name="dwc-progressbar" clientComponent />
 

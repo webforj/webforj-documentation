@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-font-chooser>`** compo
 
 ## Styling
 
-<TableBuilder name="dwc-font-chooser" noFilter />
+<TableBuilder name="dwc-font-chooser" clientComponent />
 

@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-dialog>`** component. 
 
 ## Styling
 
-<TableBuilder name="dwc-dialog" noFilter />
+<TableBuilder name="dwc-dialog" clientComponent />
 

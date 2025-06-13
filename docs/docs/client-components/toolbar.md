@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-toolbar>`** component.
 
 ## Styling
 
-<TableBuilder name="dwc-toolbar" noFilter />
+<TableBuilder name="dwc-toolbar" clientComponent />
 

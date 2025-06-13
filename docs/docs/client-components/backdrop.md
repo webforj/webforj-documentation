@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-backdrop>`** component
 
 ## Styling
 
-<TableBuilder name="dwc-backdrop" noFilter />
+<TableBuilder name="dwc-backdrop" clientComponent />
 

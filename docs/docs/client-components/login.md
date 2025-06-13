@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-login>`** component. T
 
 ## Styling
 
-<TableBuilder name="dwc-login" noFilter />
+<TableBuilder name="dwc-login" clientComponent />
 

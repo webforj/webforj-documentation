@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-toast>`** component. T
 
 ## Styling
 
-<TableBuilder name="dwc-toast" noFilter />
+<TableBuilder name="dwc-toast" clientComponent />
 

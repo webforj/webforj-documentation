@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-slider>`** component. 
 
 ## Styling
 
-<TableBuilder name="dwc-slider" noFilter />
+<TableBuilder name="dwc-slider" clientComponent />
 

@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-menuitem>`** component
 
 ## Styling
 
-<TableBuilder name="dwc-menuitem" noFilter />
+<TableBuilder name="dwc-menuitem" clientComponent />
 

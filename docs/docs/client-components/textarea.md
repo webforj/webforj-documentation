@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-textarea>`** component
 
 ## Styling
 
-<TableBuilder name="dwc-textarea" noFilter />
+<TableBuilder name="dwc-textarea" clientComponent />
 

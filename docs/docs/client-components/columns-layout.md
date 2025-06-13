@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-columns-layout>`** com
 
 ## Styling
 
-<TableBuilder name="dwc-columns-layout" noFilter />
+<TableBuilder name="dwc-columns-layout" clientComponent />
 

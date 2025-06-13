@@ -22,5 +22,5 @@ This section outlines styling information for the **`<dwc-tab>`** component. Thi
 
 ## Styling
 
-<TableBuilder name="dwc-tab" noFilter />
+<TableBuilder name="dwc-tab" clientComponent />
 
