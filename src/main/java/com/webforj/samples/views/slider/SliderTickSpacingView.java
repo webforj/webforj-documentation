@@ -42,12 +42,14 @@ public class SliderTickSpacingView extends Composite<FlexLayout> {
         .setMin(1d)
         .setMax((double) range)
         .setInvalidMessage("Must be between 1 and " + range)
+        .setPlaceholder("Enter major tick spacing (e.g., 10)")
         .onValueChange(ev -> updateTickSpacing());
 
     minorTickInput
         .setMin(1d)
         .setMax((double) range)
         .setInvalidMessage("Must be between 1 and " + range)
+        .setPlaceholder("Enter minor tick spacing (e.g., 2)")
         .onValueChange(ev -> updateTickSpacing());
 
     snapToTicks.onToggle(ev -> slider.setSnapToTicks(ev.isToggled()));
