@@ -213,15 +213,4 @@ height='400px'
 
 ## Styling
 
-### Shadow parts
-
-These are the parts of the [shadow DOM](../glossary#shadow-dom) that can be targeted via CSS:
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Tree} table='parts'/>
-
-### Reflected attributes
-
-These are attributes visible in the DOM, allowing styling via attribute selectors:
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Tree} table="reflects"/>
-
+<TableBuilder name="Tree" />

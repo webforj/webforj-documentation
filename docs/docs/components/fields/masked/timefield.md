@@ -233,14 +233,4 @@ spinner.setSpinField(MaskedTimeFieldSpinner.SpinField.HOUR);
 
 ## Styling
 
-### Shadow parts
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TimeField} table='parts' exclusions='' />
-
-### CSS properties
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TimeField} exclusions='' table='properties' />
-
-### Reflected attributes
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TimeField} table="reflects" />
+<TableBuilder name="MaskedTimeField" />
