@@ -5,7 +5,7 @@ import exclusions from '@site/static/exclusions.json';
 
 /**
  * TableBuilder creates tables of data for webforJ components. It can create the following tables:
- * Shadow Parts, Slots, CSS Properties, Reflected Attributes, Client Component Properties, Events, Hosted Classes, Dependents, Dependencies, and Methods
+ * Shadow Parts, Slots, CSS Properties, Reflected Attributes, Client Component Properties, Events, Dependents, Dependencies, and Methods
  * It pulls this data from https://dwc.style/docs/dwc-components.json
  * Example usage:
  *   <TableBuilder name="Button" />
@@ -34,7 +34,7 @@ export default function TableBuilder(props) {
 
   // Use a different list of default tables for client component pages:
   const defaultTables = clientComponent
-    ? ["properties", "events", "slots", "parts", "hosted", "css", "dependents", "dependencies", "methods"]
+    ? ["properties", "events", "slots", "parts", "css", "dependents", "dependencies", "methods"]
     : ["parts", "slots", "css", "reflects", "dependencies"];
 
   // If no tables are provided, generate the defaults. Empty tables won't render anything.
@@ -93,10 +93,6 @@ export default function TableBuilder(props) {
   const methodItems = componentData.methods?.map((methods) => ({
     signature: methods.signature,
     desc: methods.docs,
-  }));
-  const hostedItems = componentData.docsTags?.filter((docTag) => docTag.name === "hostClass").map((part) => ({
-    hostClass: part.text.split(" - ")[0],
-    desc: part.text.split(" - ")[1]
   }));
 
   const dependents = componentData?.dependents || [];
@@ -186,20 +182,6 @@ export default function TableBuilder(props) {
         sectionDescription = (
           <>
           These are the methods for the <code>{props.name}</code> component.
-          </>
-        )
-        break;
-      case "hosted":
-        items = hostedItems;
-        headers = ["CSS Class", "Description"];
-        sectionHeading = "Hosted Classes";
-        sectionDescription = (
-          <>
-          Hosted Classes are CSS classes that are applied to the host element of a component. 
-          They are useful for styling the host element from outside the component's own CSS. 
-          They can either reflect the component's state, such as "disabled" or "active," or provide options to alter the component's style based on user interaction or other conditions.
-
-          These are the hosted classes for the <code>{props.name}</code> component.
           </>
         )
         break;
