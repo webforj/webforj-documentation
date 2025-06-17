@@ -5,7 +5,6 @@ import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.drawer.Drawer;
 import com.webforj.component.layout.flexlayout.FlexDirection;
-import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.optioninput.CheckBox;
 import com.webforj.router.annotation.FrameTitle;
@@ -35,12 +34,8 @@ public class DrawerAutoFocusView extends Composite<FlexLayout> {
         .setTheme(ButtonTheme.PRIMARY)
         .setWidth("100%");
 
-    FlexLayout drawerContent = new FlexLayout(checkBoxContainer, saveButton)
-        .setDirection(FlexDirection.COLUMN)
-        .setJustifyContent(FlexJustifyContent.BETWEEN)
-        .setHeight("100%");
-
-    drawer.add(drawerContent);
+    drawer.add(checkBoxContainer);
+    drawer.addToFooter(saveButton);
 
     Button openDrawerButton = new Button("Open Preferences");
     openDrawerButton.onClick(e -> drawer.open());

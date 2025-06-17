@@ -29,6 +29,7 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 <ComponentDemo
 path='/webforj/drawer?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/drawer/drawer.css'
 height='600px'
 />
 

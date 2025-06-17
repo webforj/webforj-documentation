@@ -38,7 +38,7 @@ public class DrawerWelcomeView extends Composite<FlexLayout> {
     layout.add(demo);
 
     // Header
-    H3 title = new H3("WebforJ Application");
+    H3 title = new H3("webforJ Application");
     header.add(new AppDrawerToggle(), title);
     header.addClassName("dwc__toolbar-drawer");
 
@@ -51,7 +51,7 @@ public class DrawerWelcomeView extends Composite<FlexLayout> {
     // Drawer's logo container and logo
     Toolbar drawerLogo = new Toolbar();
     drawerLogo.addClassName("dwc-logo").setWidth("100%")
-        .add(new Img("https://documentation.webforj.com/img/webforj_icon.svg"));
+        .add(new Img("https://docs.webforj.com/img/webforj_icon.svg"));
     navigation.add(drawerLogo);
 
     // Drawer's Menu with AppNav
