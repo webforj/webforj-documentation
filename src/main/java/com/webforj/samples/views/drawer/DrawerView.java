@@ -13,6 +13,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.optioninput.CheckBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -41,7 +42,7 @@ public class DrawerView extends Composite<FlexLayout> {
     taskContainer.setStyle("overflow-y", "auto")
       .setStyle("max-height", "60vh")
       .add(tasks);
-    
+
     TextField newTaskField = new TextField("New Task", "");
 
     Button addTaskButton = new Button("Add Task", ButtonTheme.PRIMARY);
@@ -78,18 +79,9 @@ public class DrawerView extends Composite<FlexLayout> {
 
   private void addTask(String taskText) {
     CheckBox task = new CheckBox(taskText);
-
     taskList.add(task);
     tasks.add(task);
-    
-    task.onValueChange(event -> {
-      if (task.isChecked()) {
-          task.addClassName("task-completed");
-      } else {
-          task.removeClassName("task-completed");
-      }
-  });
-}
+  }
 
   private void clearCompletedTasks() {
     Iterator<CheckBox> iterator = taskList.iterator();

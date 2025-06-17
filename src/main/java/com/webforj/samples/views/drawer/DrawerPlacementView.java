@@ -1,6 +1,7 @@
 package com.webforj.samples.views.drawer;
 
 import com.webforj.component.Composite;
+import com.webforj.component.button.Button;
 import com.webforj.component.drawer.Drawer;
 import com.webforj.component.drawer.Drawer.Placement;
 import com.webforj.component.layout.flexlayout.FlexDirection;
@@ -18,21 +19,25 @@ public class DrawerPlacementView extends Composite<FlexLayout> {
   Drawer drawer = new Drawer();
 
   public DrawerPlacementView() {
+    layout.setMargin("var(--dwc-space-l)");
+
     drawer.setLabel("Drawer Placement Options");
-    drawer.addClassName("drawer");
-    drawer.open();
 
     RadioButton topOption = new RadioButton("Top");
+    RadioButton topCenterOption = new RadioButton("Top Center");
     RadioButton bottomOption = new RadioButton("Bottom");
+    RadioButton bottomCenterOption = new RadioButton("Bottom Center");
     RadioButton leftOption = new RadioButton("Left", true);
     RadioButton rightOption = new RadioButton("Right");
 
-    RadioButtonGroup placementGroup = new RadioButtonGroup("Placement Options", topOption, bottomOption, leftOption, rightOption);
+    RadioButtonGroup placementGroup = new RadioButtonGroup("Placement Options", 
+        topOption, topCenterOption, bottomOption, bottomCenterOption, leftOption, rightOption);
 
     FlexLayout groupLayout = new FlexLayout();
-    groupLayout.setDirection(FlexDirection.COLUMN);
-    groupLayout.setSpacing("var(--dwc-space-s)");
-    groupLayout.add(placementGroup, topOption, bottomOption, leftOption, rightOption);
+    groupLayout.setDirection(FlexDirection.COLUMN)
+            .setSpacing("var(--dwc-space-s)")
+            .add(placementGroup, topOption, topCenterOption, bottomOption, bottomCenterOption, 
+                leftOption, rightOption);
 
     placementGroup.onValueChange(event -> {
       RadioButton selected = placementGroup.getChecked();
@@ -41,8 +46,14 @@ public class DrawerPlacementView extends Composite<FlexLayout> {
           case "Top":
             drawer.setPlacement(Placement.TOP);
             break;
+          case "Top Center":
+            drawer.setPlacement(Placement.TOP_CENTER);
+            break;
           case "Bottom":
             drawer.setPlacement(Placement.BOTTOM);
+            break;
+          case "Bottom Center":
+            drawer.setPlacement(Placement.BOTTOM_CENTER);
             break;
           case "Right":
             drawer.setPlacement(Placement.RIGHT);
@@ -55,6 +66,11 @@ public class DrawerPlacementView extends Composite<FlexLayout> {
     });
 
     drawer.add(groupLayout);
-    layout.add(drawer);
+
+    Button openDrawer = new Button("Open Placement");
+    openDrawer.onClick(e -> drawer.open());
+
+    layout.add(openDrawer, drawer);    
+    drawer.open();
   }
 }
