@@ -3,6 +3,7 @@ sidebar_position: 35
 title: TextField
 slug: textfield
 description: A single-line input component for entering and editing text data.
+sidebar_class_name: updated-content
 ---
 
 <DocChip chip='shadow' />
@@ -49,22 +50,22 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 
 ## Field value
 
-The value of a `TextField` represents the current user input as a string. In WebforJ, this can be accessed or updated programmatically using `getValue()` and `setValue(String)`.
+The value of a `TextField` represents the current user input as a string. In webforJ, this can be accessed using the `getValue()` method, or updated programmatically with `setValue(String)`.
 
 ```java
+//Set the inital content
+textField.setValue("Initial content");
+
+//Retrieve the current value
 String text = textField.getValue();
 ```
 
-```java
-textField.setValue("Initial content");
-```
-
-If no value has been entered by the user, and no default value is set, the field returns an empty string (`""`).
+If the `getValue()` method is used on a field without a current value, it returns an empty string (`""`).
 
 This behavior is consistent with how the HTML `<input type="text">` element exposes its value via JavaScript.
 
-:::tip
-To combine value handling with validation, ensure constraints such as [pattern](#pattern-matching), [minLength](#setminlength), or [maxlength](#setmaxlength) are used. This ensures the value is only considered valid when it meets those conditions.
+:::tip Combine value handling with validation
+Apply constraints like a [pattern](#pattern-matching), [minimum length](#setminlength), or a [maximum length](#setmaxlength) to define when a value is considered valid. 
 :::
 
 ## Placeholder text
@@ -93,7 +94,7 @@ While you can call `getSelectedText()` manually inside an event handler, it’s 
 
 ## Pattern matching
 
-You can use the `setPattern()` method to define a validation rule for the `TextField` using a regular expression. This enables constraint validation on the input value, requiring it to match the specified pattern.
+You can use the `setPattern()` method to define a validation rule for the `TextField` using a regular expression. Setting a pattern adds a constraint validation that requires the input value to match the specified pattern.
 
 The pattern must be a valid [JavaScript regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions), as interpreted by the browser. The `u` (Unicode) flag is applied internally to ensure accurate matching of Unicode code points. Don't wrap the pattern in forward slashes (`/`), as those aren't required and will be treated as literal characters.
 
@@ -103,13 +104,28 @@ textField.setPattern("[A-Za-z]{3}\\d{2}"); // e.g. ABC12
 
 If no pattern is provided, or the syntax is invalid, the validation rule is ignored.
 
-:::tip
-You can use `setTitle()` to specify a tooltip that explains the pattern's requirements to the user. It’s also recommended to include additional hints or guidance next to the input when using complex patterns.
+:::tip Contextual help
+When using complex patterns for a `TextField`, consider using a combination of the `setLabel()`, `setHelperText()`, and `setTooltipText()` methods
+to provide additional hints and guidance.
 :::
 
 ## Minimum and maximum length
 
-The `TextField` component supports constraint validation based on the number of characters entered by the user. This can be controlled using the `setMinLength()` and `setMaxLength()` methods.
+The `TextField` component supports constraint validation based on the number of characters entered by the user. This can be controlled using the `setMinLength()` and `setMaxLength()` methods. Use both methods to define a clear boundary of acceptable input lengths.
+
+:::info Length requirements
+By default, the field displays a message when the input value is out of range, indicating to the user whether they need to shorten or lengthen their input. This message can be overridden with the `setInvalidMessage()` method.
+:::
+
+### `setMinLength()`
+
+This method sets the **minimum number of UTF-16 code units** that must be entered for the field to be considered valid. The value must be a whole number, and shouldn't exceed the configured maximum length.
+
+```java
+textField.setMinLength(5); // User must enter at least 5 characters
+```
+
+If the input contains fewer characters than the minimum required, the input will fail constraint validation. This rule only applies when the user changes the field's value.
 
 ### `setMaxLength()`
 
@@ -119,24 +135,7 @@ This method sets the **maximum number of UTF-16 code units** allowed in the text
 textField.setMaxLength(20); // User cannot enter more than 20 characters
 ```
 
-The field fails constraint validation if the input length exceeds the `maxLength`. This validation is only triggered when the value is changed by the user.
-
-### `setMinLength()`
-
-This method sets the **minimum number of UTF-16 code units** that must be entered for the field to be considered valid. The value must be a non-negative integer and shouldn't exceed the configured `maxLength`.
-
-```java
-textField.setMinLength(5); // User must enter at least 5 characters
-```
-
-If the input contains fewer characters than the minimum required, the input will fail constraint validation. Like with `maxLength`, this rule only applies when the user changes the field's value.
-
-:::tip
-Use `setMinLength()` and `setMaxLength()` together to enforce consistent length boundaries for user input. Consider pairing them with a `setTitle()` tooltip or inline hint to inform users about length requirements.
-:::
-
-
-
+The field fails constraint validation if the input length exceeds the minimum length. Like with `setMinLength()`, this validation is only triggered when the value is changed by the user.
 
 ## Best practices
 
