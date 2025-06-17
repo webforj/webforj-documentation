@@ -5,14 +5,15 @@ import exclusions from '@site/static/exclusions.json';
 
 /**
  * TableBuilder creates tables of data for webforJ components. It can create the following tables:
- * Shadow Parts, Slots, CSS Properties, Reflected Attributes, and Dependencies
+ * Shadow Parts, Slots, CSS Properties, Reflected Attributes, Client Component Properties, Events, Hosted Classes, Dependents, Dependencies, and Methods
  * It pulls this data from https://dwc.style/docs/dwc-components.json
  * Example usage:
  *   <TableBuilder name="Button" />
- *   <TableBuilder name="dwc-alert" tables={["parts", "dependencies"]};
+ *   <TableBuilder name="dwc-checkbox" clientComponent />
+ *   <TableBuilder name="dwc-alert" tables={["parts", "dependencies"]} />
  * @param {Object} props - Component props
  * @param {String} props.name - The name of the component
- * @param {Boolean} props.clientComponent - Whether the tables are for client components, which show more information
+ * @param {Boolean} props.clientComponent - Whether the tables are for client components, which have different default tables
  * @param {Array<string>} [props.tables] - (optional) Names of the tables to render
  * @returns {React.ReactElement} - Rendered tables of data for the component
  */
@@ -39,6 +40,7 @@ export default function TableBuilder(props) {
   // If no tables are provided, generate the defaults. Empty tables won't render anything.
   let tables = props.tables || defaultTables;
 
+  // Load relevant data from the JSON file into componentData
   useEffect(() => {
     fetch("https://dwc.style/docs/dwc-components.json")
       .then((response) => response.json())
@@ -271,10 +273,10 @@ export default function TableBuilder(props) {
         <tbody>
           {items?.map((item) => {
             const [key, ...values] = Object.values(item);
-            if (tableExclusions?.includes(key) || !key) return null;
+            if (tableExclusions?.includes(key) ) return null;
             return (
             <tr key={key}>
-              <td><code>{key}</code></td>
+              {key ? (<td><code>{key}</code></td>) : (<td></td>) }
               {values.map((value, idx) => (
                 <td key={`${key}-${idx}`}>
                   {headers[idx + 1] === "Attribute" ? (
