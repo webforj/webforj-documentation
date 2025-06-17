@@ -24,27 +24,43 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 The `DateTimeField` is best used in scenarios where capturing or displaying both date **and** time is essential to your app. Here are some examples of when to use the `DateTimeField`:
 
 1. **Event Scheduling and Calendars**: Let users efficiently schedule events, book appointments, and manage their calendars by giving them a single component that allows them to choose the date and time.
-
+<!-- vale off -->
 2. **Check-in and check-out**: Facilitate user selection of check-in and check-out times when the period can span multiple days.
-
+<!-- vale on -->
 3. **Data Logging and Timestamps**: Utilize `DateTimeFields` for apps that involve recording the date and time of when events occur or when a user submits data.
 
 4. **Task Management and Deadlines**: `DateTimeFields` are valuable in applications that involve task management or setting deadlines where both the date and time are relevant for accurate scheduling.
 
-## Maximum and minimum
+## Field value (`LocalDateTime`)
 
-You can use the `setMax()` and `setMin()` methods to specify the acceptable range of dates and times. If the value entered into the component is outside of the specified timestamp, the component fails constraint validation. Also, if there is already a maximum or minimum set, the value given to the other method must be lower or higher respectively.
+Internally, the `DateTimeField` component represents its value using a `LocalDateTime` object from the `java.time` package. This provides precise control over both the date and time components of the input.
 
-## Localized display
+While the **client-side input is rendered based on the user's browser locale** (e.g., date and time formats that match local conventions), the internal parsing and formatting follow a strict and predictable structure: **`yyyy-MM-ddTHH:mm:ss`**.
 
-By default, the `DateTimeField` displays its information within the UI element based on the locale the browser is configured to. For example, users with United States configurations will see the date displayed with the month preceding the day, whereas European users will see the day before the month. Still, this doesn't stop you from manipulating the `LocalDateTime` object returned by the methods from the `DataTimeField` class.
+### Getting and setting the value
+
+To retrieve the current value:
+
+```java
+LocalDateTime value = dateTimeField.getValue();
+```
+
+To programmatically set the value:
+
+```java
+dateTimeField.setValue(LocalDateTime.of(2024, 4, 27, 14, 30, 0));
+```
+
+### Using `setText()`
+
+If you prefer to set the value via a raw string, it must follow the full format `yyyy-MM-ddTHH:mm:ss`:
+
+```java
+dateTimeField.setText("2024-04-27T14:30:00"); // valid
+```
 
 :::tip
-To hide seconds from the display, give the `DateTimeField` a `LocaleDateTime` object with the seconds set to 0.
-:::
-
-:::info Picker UI 
-The appearance of the datetime picker input UI depends not only on the selected locale but also on the browser and operating system being used. This ensures automatic consistency with the interface users are already familiar with.
+When using `setText(...)`, the component will attempt to parse the input string in the `yyyy-MM-ddTHH:mm:ss` format. If the input doesn't match this format, an `IllegalArgumentException` will be thrown.
 :::
 
 ## Static utilities 
@@ -56,6 +72,18 @@ The DateTimeField class also provides the following static utility methods:
 - `toDateTime(LocalDateTime dateTime)`: Convert a LocalDateTime object to a date and time string in yyyy-MM-ddTHH:mm:ss format.
 
 - `isValidDateTime(String dateTimeAsString)`: Checks to see if the given string is a valid yyyy-MM-ddTHH:mm:ss date and time. This will return a boolean value true if so, false otherwise.
+
+## Min and max value
+
+The `setMin()` and `setMax()` methods define the valid range for timestamp values accepted by the component. If the input is earlier than the minimum or later than the maximum, it will fail constraint validation. When both values are set, the minimum must be less than or equal to the maximum, and the maximum must be greater than or equal to the minimum.
+
+```java
+// Set minimum allowed timestamp: January 1, 2023 at 08:00
+dateTimeField.setMin(LocalDateTime.of(2023, 1, 1, 8, 0));
+
+// Set maximum allowed timestamp: December 31, 2023 at 18:00
+dateTimeField.setMax(LocalDateTime.of(2023, 12, 31, 18, 0));
+```
 
 ## Best practices
 
