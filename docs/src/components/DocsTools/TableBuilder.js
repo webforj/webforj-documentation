@@ -25,18 +25,18 @@ export default function TableBuilder(props) {
   const headerClasses = "anchor anchorWithStickyNavbar_LWe7";
   const componentExclusions = exclusions[props.name?.toLowerCase()];
 
-  // If the name isn't in the controlMap, we just use the name as-is. 
+  // If the name isn't in the controlMap, use the name as-is. 
   // This allows you to set the tag directly with something like name="dwc-alert"
   const tag = controlMap[props.name] ?? props.name;
 
   const clientComponent = props.clientComponent ? props.clientComponent : false;
 
-  // Different list of default tables depending on if this is a client component page:
+  // Use a different list of default tables for client component pages:
   const defaultTables = clientComponent
-    ? ["parts", "slots", "properties", "reflects", "events", "dependents", "dependencies"]
-    : ["parts", "slots", "properties", "reflects", "dependencies"];
+    ? ["properties", "events", "slots", "parts", "hosted", "css", "dependents", "dependencies", "methods"]
+    : ["parts", "slots", "css", "reflects", "dependencies"];
 
-  // If no tables are provided, try to generate the defaults. Empty tables won't render anything.
+  // If no tables are provided, generate the defaults. Empty tables won't render anything.
   let tables = props.tables || defaultTables;
 
   useEffect(() => {
@@ -70,36 +70,34 @@ export default function TableBuilder(props) {
     name: style.name,
     desc: style.docs,
   }));
-  // If we filter the table, only include Reflected Attributes if reflectToAttr is true
-  // Note:  reflectItems is not a great name for this table. They are only reflected attributes
-  // when they are not a client component.
-  let reflectItems;
-  
-  if (clientComponent){
-    reflectItems = componentData.props?.map((prop) => ({
-      name: prop.name,
-      attr: prop.attr,
-      desc: prop.docs,
-      type: prop.type,
-      reflects: prop.reflectToAttr.toString(),
-      default: prop.default,
-    }));
-  } else {
-    reflectItems = componentData.props?.filter(prop => prop.reflectToAttr).map((prop) => ({
-      attr: prop.attr,
-      desc: prop.docs,
-      type: prop.type,
-    }));
-  }
-
+  const propItems = componentData.props?.map((prop) => ({
+    name: prop.name,
+    attr: prop.attr,
+    desc: prop.docs,
+    type: prop.type,
+    reflects: prop.reflectToAttr.toString(),
+    default: prop.default,
+  }));
+  const reflectItems = componentData.props?.filter(prop => prop.reflectToAttr).map((prop) => ({
+    attr: prop.attr,
+    desc: prop.docs,
+    type: prop.type,
+  }));
   const eventItems = componentData.events?.map((events) => ({
     event: events.event,
     desc: events.docs,
     type: events.detail,
   }));
+  const methodItems = componentData.methods?.map((methods) => ({
+    signature: methods.signature,
+    desc: methods.docs,
+  }));
+  const hostedItems = componentData.docsTags?.filter((docTag) => docTag.name === "hostClass").map((part) => ({
+    hostClass: part.text.split(" - ")[0],
+    desc: part.text.split(" - ")[1]
+  }));
 
   const dependents = componentData?.dependents || [];
-
   const dependencies = componentData?.dependencies || [];
 
   const renderTable = (table) => {
@@ -131,7 +129,7 @@ export default function TableBuilder(props) {
           </>
         )
         break;
-      case "properties":
+      case "css":
         items = styleItems;
         headers = ["Property", "Description"];
         sectionHeading = "CSS properties";
@@ -142,15 +140,25 @@ export default function TableBuilder(props) {
           </>
         )
         break;
+      case "properties":
+        items = propItems;
+        sectionHeading = "Properties";
+        headers = ["Name", "Attribute", "Description", "Type", "Reflects", "Default"];
+        sectionDescription = (
+          <>
+          These are the properties for the <code>{props.name}</code> component.
+          Properties are JavaScript variables associated with client web components. 
+          They are useful for storing data and controlling behavior, and make web components more reusable and easier to configure. 
+
+          Some properties reflect their values to attributes and vice versa. 
+          This means that if you set a property, the corresponding attribute is set automatically, and if you set an attribute, the corresponding property is set automatically.
+          </>
+        );
+        break;
       case "reflects":
         items = reflectItems;
         headers = ["Attribute", "Description", "Type"];
         sectionHeading = "Reflected attributes";
-        if (clientComponent) {
-          sectionHeading = "Properties";
-          headers = ["Name", "Attribute", "Description", "Type", "Reflects", "Default"];
-        }
-
         sectionDescription = (
           <>
           These are the reflected attributes for the <code>{props.name}</code> component.
@@ -158,20 +166,6 @@ export default function TableBuilder(props) {
           for the component in the DOM. This means that styling can be applied using these attributes.
           </>
         )
-
-        // Use "Properties" description for client components.
-        if (clientComponent) {
-          sectionDescription = (
-            <>
-            These are the properties for the <code>{props.name}</code> component.
-            Properties are JavaScript variables associated with client web components. 
-            They are useful for storing data and controlling behavior, and make web components more reusable and easier to configure. 
-
-            Some properties reflect their values to attributes and vice versa. 
-            This means that if you set a property, the corresponding attribute is set automatically, and if you set an attribute, the corresponding property is set automatically.
-            </>
-          );
-        }
         break;
       case "events":
         items = eventItems;
@@ -180,6 +174,30 @@ export default function TableBuilder(props) {
         sectionDescription = (
           <>
           These are the events for the <code>{props.name}</code> component.
+          </>
+        )
+        break;
+      case "methods":
+        items = methodItems;
+        headers = ["Method Signature", "Description"];
+        sectionHeading = "Methods";
+        sectionDescription = (
+          <>
+          These are the methods for the <code>{props.name}</code> component.
+          </>
+        )
+        break;
+      case "hosted":
+        items = hostedItems;
+        headers = ["CSS Class", "Description"];
+        sectionHeading = "Hosted Classes";
+        sectionDescription = (
+          <>
+          Hosted Classes are CSS classes that are applied to the host element of a component. 
+          They are useful for styling the host element from outside the component's own CSS. 
+          They can either reflect the component's state, such as "disabled" or "active," or provide options to alter the component's style based on user interaction or other conditions.
+
+          These are the hosted classes for the <code>{props.name}</code> component.
           </>
         )
         break;
@@ -209,8 +227,8 @@ export default function TableBuilder(props) {
     // Don't render anything if there is nothing in the table
     // Or if there is only one element without a name (sometimes the case with slots)
     if (items.length == 0 || items.length == 1 && items[0].name == ""){
-      // Theoretically, if everything in the table was excluded, it should also return null.
-      // Exclusions are currently pretty minor, so we're not handling that case.
+      // This doesn't check if all entries were excluded from the Reflected Attributes table.
+      // Exclusions are currently pretty minor, but if that ever happens this will need to be updated.
       return null;
     }
 
