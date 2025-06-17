@@ -18,11 +18,11 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 
 ## Usages
 
-1. **Navigation Menu**: One common usage of a `Drawer` component is as a navigation menu. It provides a space-efficient way to display links to various sections or pages of your application, especially in mobile or responsive layouts. Users can open and close the `Drawer` to access navigation options without cluttering the main content area.
+1. **Navigation Menu**: One common usage of a `Drawer` component is as a navigation menu. It provides a space-efficient way to display links to various sections or pages of your app, especially in mobile or responsive layouts. Users can open and close the `Drawer` to access navigation options without cluttering the main content area.
 
 2. **Filter and Sidebar**: A `Drawer` can be used as a filter or sidebar in applications that display a list of items. Users can expand the `Drawer` to reveal filter options, sort controls, or additional information related to the list items. This keeps the main content focused on the list while providing advanced features in an accessible way.
 
-3. **User Profile or Settings**: You can use a `Drawer` to show user profile information or application settings. This keeps such information easily accessible but hidden when not needed, maintaining a clean and uncluttered interface. Users can open the `Drawer` to update their profiles or adjust settings.
+3. **User Profile or Settings**: You can use a `Drawer` to show user profile information or app settings. This keeps such information easily accessible but hidden when not needed, maintaining a clean and uncluttered interface. Users can open the `Drawer` to update their profiles or adjust settings.
 
 4. **Notifications**: For applications with notifications or alerts, a `Drawer` can slide in to display new messages or updates. Users can quickly check and dismiss notifications without leaving their current view.
 
@@ -39,7 +39,7 @@ Various properties exist that allow for the customization of various attributes 
 
 ### Autofocus
 
-The Auto-Focus property is designed to enhance accessibility and usability by automatically focusing on the first item within a `Drawer` when it is opened. This feature eliminates the need for users to manually navigate to the desired item, saving time and effort.
+The Auto-Focus property is designed to enhance accessibility and usability by automatically focusing on the first item within a `Drawer` when it's opened. This feature eliminates the need for users to manually navigate to the desired item, saving time and effort.
 
 When the `Drawer` is triggered to open, either through an event, by default or any other interaction, the user's focus is directed to the first item within the `Drawer`. This first item could be a button, a link, a menu option, or any other focusable element.
 
