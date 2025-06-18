@@ -54,8 +54,8 @@ This override allows you to inject constructor parameters, predefine children, o
 
 Unlike the `Component` class, the `Composite` component manages its own lifecycle. You don’t need to implement `onCreate()` or `onDestroy()`. Instead, webforJ offers two lifecycle methods you can optionally override:
 
--`onDidCreate(T component)` – called immediately after the bound component is instantiated and added to the view.
--`onDidDestroy(T component)` – called after the component is removed and cleaned up.
+- `onDidCreate(T component)` – Called immediately after the bound component is instantiated and added to the view.
+- `onDidDestroy(T component)` – Called after the component is removed and cleaned up.
 
 ```java
 public class ApplicationComponent extends Composite<Div> {
