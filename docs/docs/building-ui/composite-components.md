@@ -7,9 +7,9 @@ draft: false
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
-Developers often need to build custom components that encapsulate multiple UI elements into a single reusable unit. The `Composite` component in webforJ provides a clean and structured way to create such components, giving you full control over what functionality is exposed while encouraging encapsulation and reuse.
+Developers often need to build custom components that encapsulate multiple UI elements into a single reusable unit. The `Composite` component in webforJ provides a clean and structured way to create such components, giving you full control over what is exposed while encouraging encapsulation and reuse.
 
-A `Composite` manages a single, strongly-typed child component that serves as its internal content. This ensures a clear separation between internal logic and external behavior.
+A `Composite` manages a single, strongly typed child component that serves as its internal content. This ensures a clear separation between internal logic and external behavior.
 
 :::tip
 It's highly recommended to create custom components by utilizing the `Composite` component, rather than extending the base `Component` component.
@@ -50,8 +50,8 @@ public class OverrideComposite extends Composite<FlexLayout> {
 
 Unlike the `Component` class, the `Composite` component manages its own lifecycle. You don’t need to implement `onCreate()` or `onDestroy()`. Instead, webforJ offers two lifecycle methods you can optionally override:
 
-- `onDidCreate(T component)` – called immediately after the bound component is instantiated and added to the view.
-- `onDidDestroy(T component)` – called after the component is removed and cleaned up.
+-`onDidCreate(T component)` – called immediately after the bound component is instantiated and added to the view.
+-`onDidDestroy(T component)` – called after the component is removed and cleaned up.
 
 ```java
 public class ApplicationComponent extends Composite<Div> {
