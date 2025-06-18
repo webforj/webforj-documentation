@@ -30,23 +30,23 @@ public class DrawerWelcomeView extends Composite<FlexLayout> {
 
   FlexLayout layout = getBoundComponent();
   Drawer welcomeDrawer;
-  AppLayout demo = new AppLayout();
-  Div header = new Div();
+  AppLayout appLayout = new AppLayout();
+  Toolbar header = new Toolbar();
   Div navigation = new Div();
 
   public DrawerWelcomeView() {
-    layout.add(demo);
+    layout.add(appLayout);
 
     // Header
     H3 title = new H3("webforJ Application");
-    header.add(new AppDrawerToggle(), title);
-    header.addClassName("dwc__toolbar-drawer");
+    header.addToStart(new AppDrawerToggle());
+    header.addToTitle(title);
 
-    demo.addToHeader(header);
-    demo.setHeaderReveal(true);
+    appLayout.addToHeader(header);
+    appLayout.setHeaderReveal(true);
 
-    demo.addToDrawer(navigation);
-    demo.setDrawerPlacement(DrawerPlacement.LEFT);
+    appLayout.addToDrawer(navigation);
+    appLayout.setDrawerPlacement(DrawerPlacement.LEFT);
 
     // Drawer's logo container and logo
     Toolbar drawerLogo = new Toolbar();
@@ -105,6 +105,6 @@ public class DrawerWelcomeView extends Composite<FlexLayout> {
     Button openWelcome = new Button("Open Welcome Drawer");
     openWelcome.onClick(e -> welcomeDrawer.open());
 
-    demo.addToContent(new H1("Application Title"), openWelcome);
+    appLayout.addToContent(new H1("Application Title"), openWelcome);
   }
 }

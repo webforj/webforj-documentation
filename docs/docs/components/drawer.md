@@ -9,7 +9,7 @@ sidebar_position: 35
 
 The `Drawer` component creates a sliding panel that appears from the edge of the screen to show additional content or options. When you have multiple drawers open, they stack on top of each other automatically.
 
-`Drawers` are handy for different interface needs: toggleable navigation menus, panels with extra information, or mobile-friendly layouts. The example below shows a mobile app using the webforJ [`AppLayout`](../components/app-layout) component, with a welcome popup `Drawer` at the bottom and a navigation `Drawer` that opens from the hamburger menu.
+`Drawers` are handy for different interface needs: toggleable navigation menus, panels with extra information, or mobile-friendly layouts. The following mobile app example uses two `Drawer` components, one as a standalone welcome popup at the bottom, and one as a navigation menu that’s part of the  [`AppLayout`](../components/app-layout) component.
 
 <AppLayoutViewer path='/webforj/drawerwelcome?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java'
@@ -107,24 +107,17 @@ When the drawer's content exceeds the defined maximum size, developers can imple
 
 ### Placement
 
-The Placement property of the `Drawer` component defines where the `Drawer` appears in the viewport. It accepts a range of enum values, giving developers control over both vertical and horizontal positioning to best fit the layout and user flow.
-
-Available Placement Options:
+The `Placement` property of the `Drawer` component defines where the `Drawer` appears in the viewport. It accepts a range of enum values, giving developers control over both vertical and horizontal positioning to best fit the layout and user flow. The available `Placement` options are:
 
 - **TOP**: Positions the drawer at the top edge of the viewport.
-
 - **TOP_CENTER**: Aligns the drawer horizontally centered at the top of the viewport.
-
 - **BOTTOM**: Places the drawer at the bottom of the viewport.
-
 - **BOTTOM_CENTER**: Horizontally centers the drawer at the bottom of the viewport.
-
 - **LEFT**: Positions the drawer along the left edge of the viewport.
-
 - **RIGHT**: Positions the drawer along the right edge of the viewport.
 
 
-By leveraging the Placement property, developers can create intuitive and efficient user interfaces. For example, placing the `Drawer` on the left or right side allows for quick access to additional functionalities or navigation options, while top or bottom placements are well-suited for contextual information or supplementary content.
+By leveraging the `Placement` property, developers can create intuitive and efficient user interfaces. For example, placing the `Drawer` on the left or right side allows for quick access to additional functionalities or navigation options, while top or bottom placements are well-suited for contextual information or supplementary content.
 
 <ComponentDemo
 path='/webforj/drawerplacement?'

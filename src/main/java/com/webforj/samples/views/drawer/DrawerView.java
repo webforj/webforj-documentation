@@ -25,6 +25,8 @@ public class DrawerView extends Composite<FlexLayout> {
   Drawer drawer = new Drawer();
   List<CheckBox> taskList = new ArrayList<>();
   FlexLayout tasks = new FlexLayout();
+  Button addTaskButton = new Button("Add Task", ButtonTheme.PRIMARY);
+  int taskAmount = 0;
 
   public DrawerView() {
     drawer.setLabel("Task Manager");
@@ -33,6 +35,7 @@ public class DrawerView extends Composite<FlexLayout> {
     tasks.setDirection(FlexDirection.COLUMN)
     .setSpacing("var(--dwc-space-s)")
     .setStyle("overflow-y", "auto")
+    .setMinHeight("10vh")
     .setMaxHeight("60vh");
 
     addTask("Finish project documentation");
@@ -40,11 +43,11 @@ public class DrawerView extends Composite<FlexLayout> {
     addTask("Prepare slides for tomorrow");
 
     TextField newTaskField = new TextField("New Task", "");
+    newTaskField.setMaxLength(50);
 
-    Button addTaskButton = new Button("Add Task", ButtonTheme.PRIMARY);
     addTaskButton.onClick(e -> {
       String taskText = newTaskField.getValue();
-      if (!taskText.isBlank()) {
+      if (!taskText.isBlank() && !newTaskField.isInvalid()) {
         addTask(taskText);
         newTaskField.setValue("");
       }
@@ -72,6 +75,8 @@ public class DrawerView extends Composite<FlexLayout> {
     CheckBox task = new CheckBox(taskText);
     taskList.add(task);
     tasks.add(task);
+    taskAmount = taskAmount + 1;
+    checkTaskLimit();
   }
 
   private void clearCompletedTasks() {
@@ -81,7 +86,17 @@ public class DrawerView extends Composite<FlexLayout> {
       if (task.isChecked()) {
         iterator.remove();
         tasks.remove(task);
+        taskAmount = taskAmount - 1;
       }
+    }
+    checkTaskLimit();
+  }
+
+  private void checkTaskLimit() {
+    if (taskAmount >= 50) {
+      addTaskButton.setEnabled(false);
+    } else {
+      addTaskButton.setEnabled(true);
     }
   }
 }
