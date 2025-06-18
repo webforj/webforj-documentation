@@ -7,9 +7,9 @@ draft: false
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
-Developers will often wish to create components that contain constituent components for application level use. The `Composite` component gives developers the tools they need to create their own components while maintaining control over what they choose to expose to users. 
+Developers often need to build custom components that encapsulate multiple UI elements into a single reusable unit. The `Composite` component in webforJ provides a clean and structured way to create such components, giving you full control over what functionality is exposed while encouraging encapsulation and reuse.
 
-It allows developers to manage a specific type of `Component` instance, providing a way to encapsulate its behavior. It requires any extending subclass to specify the type of `Component` it intends to manage, ensuring a subclass of `Composite` is intrinsically linked to its underlying `Component`.
+A `Composite` manages a single, strongly-typed child component that serves as its internal content. This ensures a clear separation between internal logic and external behavior.
 
 :::tip
 It's highly recommended to create custom components by utilizing the `Composite` component, rather than extending the base `Component` component.
@@ -25,11 +25,11 @@ public class ApplicationComponent extends Composite<Div> {
 
 ## Component binding {#component-binding}
 
-The `Composite` class requires developers to specify the type of `Component` it manages. This strong association ensures that a `Composite` component is intrinsically linked to its underlying Component. This also provides benefits over traditional inheritance, as it allows the developer to decide exactly what functionality to expose to the public API. 
+The `Composite` class requires the specification of a managed component type. This provides a tight link between your composite and its underlying component, making the component structure clear and consistent.
 
-By default, the `Composite` component utilizes the generic type parameter of its subclass to identify and instantiate the bound component type. This is based on the assumption that the component class has a parameter-less constructor. Developers can customize the component initialization process by overriding the `initBoundComponent()` method. This allows for greater flexibility in creating and managing the bound component, including invoking parameterized constructors.
+By default, the `Composite` uses the default (parameter-less) constructor of the specified component type to create its bound component. You can override this behavior by implementing the `initBoundComponent()` method.
 
-The following snippet overrides the initBoundComponent method to use a parameterized constructor for the [FlexLayout](../components/flex-layout.md) class:
+The following snippet overrides the `initBoundComponent()` method to use a parameterized constructor for the [FlexLayout](../components/flex-layout.md) class:
 
 ```java
 public class OverrideComposite extends Composite<FlexLayout> {
@@ -48,11 +48,10 @@ public class OverrideComposite extends Composite<FlexLayout> {
 
 ## Lifecycle management {#lifecycle-management}
 
-Unlike with the `Component`, developers do not need to implement the `onCreate()` and `onDestroy()` methods when working with the `Composite` component. The `Composite` component takes care of these aspects for you.
+Unlike the `Component` class, the `Composite` component manages its own lifecycle. You don’t need to implement `onCreate()` or `onDestroy()`. Instead, webforJ offers two lifecycle methods you can optionally override:
 
-Should you need to access the bound components at the various stages of its lifecycle, the `onDidCreate()` and `onDidDestroy()` hooks allow developers access to these lifecycle stages to perform additional functionality. Utilization of these hooks is optional.
-
-The `onDidCreate()` method is called immediately after the bound component is created and added to a window. Use this method to set up your component, modify any configurations needed, and add child components if applicable. While the `Component` class's `onCreate()` method takes a [Window](#) instance, the `onDidCreate()` method instead takes the bound component, removing the need to call the `getBoundComponent()` method directly. For example:
+- `onDidCreate(T component)` – called immediately after the bound component is instantiated and added to the view.
+- `onDidDestroy(T component)` – called after the component is removed and cleaned up.
 
 ```java
 public class ApplicationComponent extends Composite<Div> {
@@ -66,23 +65,27 @@ public class ApplicationComponent extends Composite<Div> {
 }
 ```
 
-:::tip
-This logic can also be implemented in the constructor, by calling `getBoundComponent()`.
+:::tip Using `getBoundComponent()`
+Alternatively, you can use `getBoundComponent()` inside the constructor for setup, which is a common pattern.
 :::
 
 Similarly, the `onDidDestroy()` method fires once the bound component has been destroyed, and allows for additional behavior to be fired on destruction should it be desired.
 
 ### Example `Composite` component {#example-composite-component}
 
-In the following example, a simple ToDo application has been created, where each item added to the list is a `Composite` component, consisting of a [`RadioButton`](../components/radio-button.md) styled as a switch, and a [`Div`](#) with text.
+In the following example, a custom analytics card is created using the `Composite` component. This card is designed for use in a business dashboard and showcases how to encapsulate layout, styling, and behavior into a single reusable component.
 
-The logic for this component is set up in the constructor, which sets styling and adds constituent components to the bound component using the `getBoundComponent` method, and adds event logic.
+The card displays:
+	-	A title and total value,
+	-	A summary of change since the last month with an arrow icon,
+	-	A progress bar with a label,
+	-	A Google Chart visualizing monthly sales data.
 
-:::tip
-This could also be implemented in the `onDidCreate()` method, which would give direct access to the bound [`FlexLayout`](../components/flex-layout.md) component.
+All logic and component composition are handled inside the constructor using `getBoundComponent()`. This approach works well for components whose layout and content are known at initialization time and don’t require dynamic setup post-render.
+
+:::tip When to Use `onDidCreate()`
+You can still choose to use `onDidCreate()` if your logic needs to respond after rendering or if you prefer separating setup from construction.
 :::
-
-This component is then instantiated and utilized in an Application, and allows for its use throughout various locations, making it a powerful tool in the creation of custom components.
  
 <ComponentDemo 
 path='/webforj/composite?' 
@@ -90,3 +93,5 @@ cssURL='/css/composite.css'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeView.java'
 height='550px'
 />
+
+This shows how `Composite` can be used to group multiple webforJ components into one encapsulated unit, making it easier to reuse and maintain across larger applications.
