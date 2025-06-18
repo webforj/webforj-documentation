@@ -24,7 +24,7 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 
 3. **User Profile or Settings**: You can use a `Drawer` to show user profile information or app settings. This keeps such information easily accessible but hidden when not needed, maintaining a clean and uncluttered interface. Users can open the `Drawer` to update their profiles or adjust settings.
 
-4. **Notifications**: For applications with notifications or alerts, a `Drawer` can slide in to display new messages or updates. Users can quickly check and dismiss notifications without leaving their current view.
+4. **Notifications**: For applications with notifications or alerts, a `Drawer` can slide in to display new messages or updates. Users can quickly interact with and dismiss notifications without leaving their current view.
 
 <ComponentDemo
 path='/webforj/drawer?'
@@ -47,7 +47,7 @@ When the `Drawer` is triggered to open, either through an event, by default or a
 By automatically focusing on the first item, the developer ensures that users can immediately engage with the most relevant or frequently used option without having to tab or scroll through the entire `Drawer`. This behavior streamlines the user experience and promotes efficient navigation within the UI.
 :::
 
-This property can also be particularly beneficial for individuals who rely on keyboard navigation or assistive technologies such as screen readers. It provides a clear starting point within the drawer and allows users to access the desired functionality without unnecessary manual input.
+This property can also be particularly beneficial for individuals who rely on keyboard navigation or assistive technologies such as screen readers. It provides a clear starting point within the drawer and allows users to access the desired functions without unnecessary manual input.
 
 <ComponentDemo
 path='/webforj/drawerautofocus?'
@@ -109,13 +109,14 @@ When the drawer's content exceeds the defined maximum size, developers can imple
 
 The `Placement` property of the `Drawer` component defines where the `Drawer` appears in the viewport. It accepts a range of enum values, giving developers control over both vertical and horizontal positioning to best fit the layout and user flow. The available `Placement` options are:
 
+<!-- vale off -->
 - **TOP**: Positions the drawer at the top edge of the viewport.
 - **TOP_CENTER**: Aligns the drawer horizontally centered at the top of the viewport.
 - **BOTTOM**: Places the drawer at the bottom of the viewport.
 - **BOTTOM_CENTER**: Horizontally centers the drawer at the bottom of the viewport.
 - **LEFT**: Positions the drawer along the left edge of the viewport.
 - **RIGHT**: Positions the drawer along the right edge of the viewport.
-
+<!-- vale on -->
 
 By leveraging the `Placement` property, developers can create intuitive and efficient user interfaces. For example, placing the `Drawer` on the left or right side allows for quick access to additional functionalities or navigation options, while top or bottom placements are well-suited for contextual information or supplementary content.
 
@@ -157,8 +158,8 @@ This component relies on the following components - see the related article for 
 
 To ensure an optimal user experience when using the `Drawer` component, consider the following best practices:
 
-1. **Placement**: Decide whether the drawer should slide in from the left, right, top, or bottom, based on your application's layout and user experience considerations. Consider user preferences and design conventions.
+1. **Placement**: Decide whether the drawer should slide in from the left, right, top, or bottom, based on your app's layout and user experience considerations. Consider user preferences and design conventions.
 
-2. **Accessibility**: Pay special attention to accessibility. Ensure that users can open and close the drawer using keyboard controls and that screen readers can announce its presence and state. Provide ARIA roles and labels as necessary.
+2. **Accessibility**: Pay special attention to accessibility. Ensure that users can open and close the drawer using keyboard controls and that screen readers can announce its presence and state. Provide Accessible Rich Internet Applications (ARIA) roles and labels as necessary.
 
-3. **Swipe Gestures**: On touch-enabled devices, support swipe gestures for opening and closing the drawer. This is an intuitive way for users to interact with it.
+3. **Swipe Gestures**: On touchscreens, support swipe gestures for opening and closing the drawer. This is an intuitive way for users to interact with it.
