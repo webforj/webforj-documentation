@@ -75,12 +75,6 @@ Similarly, the `onDidDestroy()` method fires once the bound component has been d
 
 In the following example, a custom analytics card is created using the `Composite` component. This card is designed for use in a business dashboard and showcases how to encapsulate layout, styling, and behavior into a single reusable component.
 
-The card displays:
-	-	A title and total value,
-	-	A summary of change since the last month with an arrow icon,
-	-	A progress bar with a label,
-	-	A Google Chart visualizing monthly sales data.
-
 All logic and component composition are handled inside the constructor using `getBoundComponent()`. This approach works well for components whose layout and content are known at initialization time and don’t require dynamic setup post-render.
 
 :::tip When to Use `onDidCreate()`
