@@ -1,82 +1,96 @@
 package com.webforj.samples.views;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
-import com.webforj.component.googlecharts.GoogleChart;
+import com.webforj.component.Expanse;
+import com.webforj.component.event.KeypressEvent;
+import com.webforj.component.field.TextField;
 import com.webforj.component.html.elements.Div;
+import com.webforj.component.html.elements.H1;
 import com.webforj.component.html.elements.Paragraph;
-import com.webforj.component.html.elements.Span;
-import com.webforj.component.icons.Icon;
-import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
-import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.optioninput.RadioButton;
 import com.webforj.component.progressbar.ProgressBar;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
-@FrameTitle("Analytics Card")
 @InlineStyleSheet("context://css/composite.css")
+@FrameTitle("Composite Demo")
 public class CompositeView extends Composite<Div> {
 
-  private final Paragraph title = new Paragraph("Monthly Sales");
-  private final Span value = new Span("$45,000");
-  private final ProgressBar progress = new ProgressBar("75% of monthly goal reached");
+  TextField text = new TextField();
+  FlexLayout todoDisplay;
+  H1 title = new H1("To-do List");
+  Paragraph progressLabel = new Paragraph();
+  ProgressBar progressBar = new ProgressBar();
+  int total = 3;
+  int completed = 0;
 
   public CompositeView() {
-    getBoundComponent().addClassName("analytics-card");
+    getBoundComponent().addClassName("frame");
 
-    FlexLayout content = new FlexLayout()
-      .setDirection(FlexDirection.COLUMN)
-      .setSpacing("var(--dwc-space-m)")
-      .setAlignment(FlexAlignment.START);
+    text.setExpanse(Expanse.XLARGE);
+    text.setPlaceholder("Add To-do item. Press Enter to save.");
 
-    title.addClassName("analytics-title");
-    value.addClassName("analytics-value");
-    
-    FlexLayout changeRow = new FlexLayout();
-    changeRow.setSpacing("var(--dwc-space-xs)")
-             .setAlignment(FlexAlignment.CENTER);
+    progressLabel.addClassName("todo-progress-label");
+    updateProgress();
 
-    Span changeText = new Span("12% from last month");
-    changeText.setStyle("color", "var(--dwc-color-success-600)")
-              .setStyle("font-size", "0.9rem");
+    progressBar.setValue(0).addClassName("todo-progress-bar");
 
-    Icon upArrow = TablerIcon.create("arrow-up");
+    todoDisplay = FlexLayout.create()
+      .vertical()
+      .build()
+      .addClassName("todo--display");
 
-    changeRow.add(upArrow, changeText);
+    getBoundComponent().add(title, text, todoDisplay, progressLabel, progressBar);
 
-    Span progressLabel = new Span("75% of target achieved");
-    progressLabel.setStyle("font-size", "0.85rem")
-                 .setStyle("color", "var(--dwc-color-neutral-600)");
+    text.onKeypress(e -> {
+      if (e.getKeyCode().equals(KeypressEvent.Key.ENTER) && !text.getText().isEmpty()) {
+        total++;
+        todoDisplay.add(new TodoItem(text.getText()));
+        updateProgress();
+        text.setText("");
+      }
+    });
 
-    progress.setValue(75);
-    progress.setStyle("margin-top", "var(--dwc-space-xs)");
-    
-    GoogleChart chart = new GoogleChart(GoogleChart.Type.LINE);
-    chart.setStyle("height", "250px").setStyle("width", "100%");
+    todoDisplay.add(new TodoItem("Groceries"),
+        new TodoItem("Water Plants"),
+        new TodoItem("Exercise"));
+  }
 
-    List<Object> data = new ArrayList<>();
-    data.add(List.of("Month", "Sales"));
-    data.add(List.of("Jan", 25000));
-    data.add(List.of("Feb", 32000));
-    data.add(List.of("Mar", 27000));
-    data.add(List.of("Apr", 35000));
-    data.add(List.of("May", 45000));
+  private void updateProgress() {
+    progressLabel.setText(completed + " of " + total + " completed");
+    int percent = (int)((double) completed / total * 100);
+    progressBar.setValue(percent);
+  }
 
-    chart.setData(data);
-    
-    Map<String, Object> options = new HashMap<>();
-    options.put("backgroundColor", "transparent");
-    
-    chart.setOptions(options);
+  public class TodoItem extends Composite<FlexLayout> {
 
-    content.add(title, value, changeRow, progress, chart);
-    getBoundComponent().add(content);
+    RadioButton radioButton = RadioButton.Switch();
+    Div text = new Div();
+
+    TodoItem(String todoText) {
+      this.text.setText(todoText);
+      this.text.addClassName("todo-text");
+
+      getBoundComponent()
+        .setSpacing("var(--dwc-space-s)")
+        .setAlignment(FlexAlignment.CENTER)
+        .addClassName("item__todo--display")
+        .add(radioButton, text);
+
+      radioButton.onToggle(e -> {
+        if (e.isToggled()) {
+          completed++;
+          text.setStyle("text-decoration", "line-through");
+        } else {
+          completed--;
+          text.setStyle("text-decoration", "unset");
+        }
+        updateProgress();
+      });
+    }
   }
 }

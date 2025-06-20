@@ -7,15 +7,27 @@ draft: false
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
-Developers often need to build custom components that encapsulate multiple UI elements into a single reusable unit. The `Composite` component in webforJ provides a clean and structured way to create such components, giving you full control over what is exposed while encouraging encapsulation and reuse.
+The `Composite` component in webforJ lets developers create custom, self-contained components by wrapping internal components into a single reusable unit. This approach provides flexibility to encapsulate logic, layout, and styling while maintaining precise control over the component's public interface.
 
-A `Composite` manages a single, strongly typed child component that serves as its internal content. This ensures a clear separation between internal logic and external behavior.
+Use a `Composite` when you want to:
+	-	Reuse component patterns throughout your application
+	-	Encapsulate layout and behavior into a single, maintainable unit
+	-	Compose multiple components without exposing implementation details
 
 :::tip
 It's highly recommended to create custom components by utilizing the `Composite` component, rather than extending the base `Component` component.
 :::
 
-To utilize the `Composite` component, start by creating a new Java class that extends the `Composite` component. Specify the type of Component you want to manage as the generic type parameter.
+<ComponentDemo 
+path='/webforj/composite?' 
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/composite.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeView.java'
+height='550px'
+/>
+
+## Defining a `Composite`
+
+To define a `Composite` component, extend the `Composite` class and specify the type of component it manages. This becomes your bound component, which is the root container that holds your internal structure.
 
 ```java
 public class ApplicationComponent extends Composite<Div> {
@@ -23,15 +35,13 @@ public class ApplicationComponent extends Composite<Div> {
 }
 ```
 
-The internal component can be accessed using the `getBoundComponent()` method. This is where you typically configure layout, add children, and define interactions.
+Use `getBoundComponent()` inside the constructor or `onDidCreate()` method to build your internal layout and logic.
 
 ## Component binding
 
-The `Composite` class requires the specification of a managed component type. This provides a tight link between your composite and its underlying component, making the component structure clear and consistent.
+The `Composite` class enforces a strong link between the custom component and its underlying component. By default, it instantiates the bound component using its no-argument constructor. If you need more control, you can override this behavior.
 
-By default, the `Composite` uses the default (parameter-less) constructor of the specified component type to create its bound component. You can override this behavior by implementing the `initBoundComponent()` method.
-
-The following snippet overrides the `initBoundComponent()` method to use a parameterized constructor for the [FlexLayout](../components/flex-layout.md) class:
+To create the bound component manually with custom parameters or default children, override the `initBoundComponent()` method.
 
 ```java
 public class OverrideComposite extends Composite<FlexLayout> {
@@ -48,7 +58,7 @@ public class OverrideComposite extends Composite<FlexLayout> {
 }
 ```
 
-This override allows you to inject constructor parameters, predefine children, or initialize layout behavior more flexibly.
+This override allows you to inject constructor parameters, predefine children, or initialize layout behavior with more flexibility.
 
 ## Lifecycle management
 
@@ -75,16 +85,14 @@ Alternatively, you can use `getBoundComponent()` inside the constructor for setu
 
 ### Example `Composite` component
 
-In the following example, a custom analytics card is created using the `Composite` component. This card is designed for use in a business dashboard and showcases how to encapsulate layout, styling, and behavior into a single reusable component.
-
-All logic and component composition are handled inside the constructor using `getBoundComponent()`. This approach works well for components whose layout and content are known at initialization time and don’t require dynamic setup post-render.
+The primary strength of the Composite component is reusability. In this example, a single to-do item is modeled as a `Composite<FlexLayout>`. It includes a toggle and a label, and can be reused as a building block in any to-do list.
 
 :::tip When to Use `onDidCreate()`
 You can still choose to use `onDidCreate()` if your logic needs to respond after rendering or if you prefer separating setup from construction.
 :::
  
 <ComponentDemo 
-path='/webforj/composite?' 
+path='/webforj/analyticscardcomposite?' 
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/composite.css'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeView.java'
 height='550px'
