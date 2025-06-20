@@ -7,15 +7,20 @@ draft: false
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
-Developers will often wish to create components that contain constituent components for application level use. The `Composite` component gives developers the tools they need to create their own components while maintaining control over what they choose to expose to users. 
+The `Composite` component in webforJ lets developers create custom, self-contained components by wrapping internal components into a single reusable unit. This approach provides flexibility to encapsulate logic, layout, and styling while maintaining precise control over the component's public interface.
 
-It allows developers to manage a specific type of `Component` instance, providing a way to encapsulate its behavior. It requires any extending subclass to specify the type of `Component` it intends to manage, ensuring a subclass of `Composite` is intrinsically linked to its underlying `Component`.
+Use a `Composite` when you want to:
+	-	Reuse component patterns throughout your application
+	-	Encapsulate layout and behavior into a single, maintainable unit
+	-	Compose multiple components without exposing implementation details
 
 :::tip
 It's highly recommended to create custom components by utilizing the `Composite` component, rather than extending the base `Component` component.
 :::
 
-To utilize the `Composite` component, start by creating a new Java class that extends the `Composite` component. Specify the type of Component you want to manage as the generic type parameter.
+## Defining a `Composite`
+
+To define a `Composite` component, extend the `Composite` class and specify the type of component it manages. This becomes your bound component, which is the root container that holds your internal structure.
 
 ```java
 public class ApplicationComponent extends Composite<Div> {
@@ -23,13 +28,13 @@ public class ApplicationComponent extends Composite<Div> {
 }
 ```
 
+Use `getBoundComponent()` inside the constructor or `onDidCreate()` method to build your internal layout and logic.
+
 ## Component binding
 
-The `Composite` class requires developers to specify the type of `Component` it manages. This strong association ensures that a `Composite` component is intrinsically linked to its underlying Component. This also provides benefits over traditional inheritance, as it allows the developer to decide exactly what functionality to expose to the public API. 
+The `Composite` class enforces a strong link between the custom component and its underlying component. By default, it instantiates the bound component using its no-argument constructor. If you need more control, you can override this behavior.
 
-By default, the `Composite` component utilizes the generic type parameter of its subclass to identify and instantiate the bound component type. This is based on the assumption that the component class has a parameter-less constructor. Developers can customize the component initialization process by overriding the `initBoundComponent()` method. This allows for greater flexibility in creating and managing the bound component, including invoking parameterized constructors.
-
-The following snippet overrides the initBoundComponent method to use a parameterized constructor for the [FlexLayout](../components/flex-layout.md) class:
+To create the bound component manually with custom parameters or default children, override the `initBoundComponent()` method.
 
 ```java
 public class OverrideComposite extends Composite<FlexLayout> {
@@ -46,13 +51,14 @@ public class OverrideComposite extends Composite<FlexLayout> {
 }
 ```
 
+This override allows you to inject constructor parameters, predefine children, or initialize layout behavior with more flexibility.
+
 ## Lifecycle management
 
-Unlike with the `Component`, developers do not need to implement the `onCreate()` and `onDestroy()` methods when working with the `Composite` component. The `Composite` component takes care of these aspects for you.
+Unlike the `Component` class, the `Composite` component manages its own lifecycle. You don’t need to implement `onCreate()` or `onDestroy()`. Instead, webforJ offers two lifecycle methods you can optionally override:
 
-Should you need to access the bound components at the various stages of its lifecycle, the `onDidCreate()` and `onDidDestroy()` hooks allow developers access to these lifecycle stages to perform additional functionality. Utilization of these hooks is optional.
-
-The `onDidCreate()` method is called immediately after the bound component is created and added to a window. Use this method to set up your component, modify any configurations needed, and add child components if applicable. While the `Component` class's `onCreate()` method takes a [Window](#) instance, the `onDidCreate()` method instead takes the bound component, removing the need to call the `getBoundComponent()` method directly. For example:
+- `onDidCreate(T component)` – Called immediately after the bound component is instantiated and added to the view.
+- `onDidDestroy(T component)` – Called after the component is removed and cleaned up.
 
 ```java
 public class ApplicationComponent extends Composite<Div> {
@@ -66,27 +72,34 @@ public class ApplicationComponent extends Composite<Div> {
 }
 ```
 
-:::tip
-This logic can also be implemented in the constructor, by calling `getBoundComponent()`.
+:::tip Using `getBoundComponent()`
+Alternatively, you can use `getBoundComponent()` inside the constructor for setup, which is a common pattern.
 :::
 
-Similarly, the `onDidDestroy()` method fires once the bound component has been destroyed, and allows for additional behavior to be fired on destruction should it be desired.
+## Example `Composite` components
 
-### Example `Composite` component
+### Example 1: Analytics Card — Grouped UI
 
-In the following example, a simple ToDo application has been created, where each item added to the list is a `Composite` component, consisting of a [`RadioButton`](../components/radio-button.md) styled as a switch, and a [`Div`](#) with text.
+Sometimes, you may want to use a `Composite` not for reuse, but simply to group related components together into a presentable unit. The following analytics card brings together a title, value, progress indicator, and chart into one visually consistent UI.
 
-The logic for this component is set up in the constructor, which sets styling and adds constituent components to the bound component using the `getBoundComponent` method, and adds event logic.
+This is useful when you want layout encapsulation, but don’t necessarily need the component to be reused in other contexts.
 
-:::tip
-This could also be implemented in the `onDidCreate()` method, which would give direct access to the bound [`FlexLayout`](../components/flex-layout.md) component.
-:::
+<ComponentDemo 
+path='/webforj/analyticscardcomposite?' 
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/composite.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeView.java'
+height='550px'
+/>
 
-This component is then instantiated and utilized in an Application, and allows for its use throughout various locations, making it a powerful tool in the creation of custom components.
- 
+### Example 2: To-do List — Reusable Custom Component
+
+The true power of `Composite` shines when building reusable UI components. In this example, a single to-do item is modeled as a `Composite<FlexLayout>`. It includes a toggle and label, and can be reused in any task list, dashboard, or form.
+
 <ComponentDemo 
 path='/webforj/composite?' 
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/composite.css'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeView.java'
 height='550px'
 />
+
+This shows how `Composite` can be used to group multiple webforJ components into one encapsulated unit, making it easier to reuse and maintain across larger applications.
