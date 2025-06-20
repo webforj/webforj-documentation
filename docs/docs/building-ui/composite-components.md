@@ -18,13 +18,6 @@ Use a `Composite` when you want to:
 It's highly recommended to create custom components by utilizing the `Composite` component, rather than extending the base `Component` component.
 :::
 
-<ComponentDemo 
-path='/webforj/composite?' 
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/composite.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeView.java'
-height='550px'
-/>
-
 ## Defining a `Composite`
 
 To define a `Composite` component, extend the `Composite` class and specify the type of component it manages. This becomes your bound component, which is the root container that holds your internal structure.
@@ -83,14 +76,25 @@ Similarly, the `onDidDestroy()` method fires once the bound component has been d
 
 ### Example `Composite` component {#example-composite-component}
 
-The primary strength of the Composite component is reusability. In this example, a single to-do item is modeled as a `Composite<FlexLayout>`. It includes a toggle and a label, and can be reused as a building block in any to-do list.
+### Example 1: Analytics Card — Grouped UI
 
-:::tip When to Use `onDidCreate()`
-You can still choose to use `onDidCreate()` if your logic needs to respond after rendering or if you prefer separating setup from construction.
-:::
- 
+Sometimes, you may want to use a `Composite` not for reuse, but simply to group related components together into a presentable unit. The following analytics card brings together a title, value, progress indicator, and chart into one visually consistent UI.
+
+This is useful when you want layout encapsulation, but don’t necessarily need the component to be reused in other contexts.
+
 <ComponentDemo 
 path='/webforj/analyticscardcomposite?' 
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/composite.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeView.java'
+height='550px'
+/>
+
+### Example 2: To-do List — Reusable Custom Component
+
+The true power of `Composite` shines when building reusable UI components. In this example, a single to-do item is modeled as a `Composite<FlexLayout>`. It includes a toggle and label, and can be reused in any task list, dashboard, or form.
+
+<ComponentDemo 
+path='/webforj/composite?' 
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/composite.css'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeView.java'
 height='550px'
