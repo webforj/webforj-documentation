@@ -70,7 +70,7 @@ public class DrawerWelcomeView extends Composite<FlexLayout> {
     productsItem.setPrefixComponent(TablerIcon.create("box"));
     AppNavItem documentsItem = new AppNavItem("Documents", "/drawerwelcome");
     documentsItem.setPrefixComponent(TablerIcon.create("files"));
-    
+
     appNav.addItem(dashboardItem);
     appNav.addItem(ordersItem);
     appNav.addItem(customersItem);
@@ -81,13 +81,13 @@ public class DrawerWelcomeView extends Composite<FlexLayout> {
     welcomeDrawer = new Drawer();
     layout.add(welcomeDrawer);
 
-    welcomeDrawer.setPlacement(Placement.BOTTOM)
+    welcomeDrawer.setPlacement(Placement.BOTTOM_CENTER)
       .addClassName("welcome__drawer")
         .open();
 
     Button getStarted = new Button("Get Started").setTheme(ButtonTheme.PRIMARY);
     getStarted.onClick(e -> welcomeDrawer.close());
-    
+
     FlexLayout layout = FlexLayout.create(new Img("/fun.svg")
         .setSize("200px", "200px"),
       new H2("Welcome to webforJ"),
@@ -98,9 +98,9 @@ public class DrawerWelcomeView extends Composite<FlexLayout> {
         .align().center()
         .justify().center()
         .build();
-    
+
     welcomeDrawer.add(layout);
-    
+
     // Content
     Button openWelcome = new Button("Open Welcome Drawer");
     openWelcome.onClick(e -> welcomeDrawer.open());
