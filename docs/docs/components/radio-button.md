@@ -114,29 +114,7 @@ The behavior of the `RadioButton` remains the same when being rendered as a Swit
 There are five checkbox expanses that are supported which allow for quick styling without using CSS.
 Expanses are supported by use of the `Expanse` enum class. Below are the expanses supported for the checkbox component: <br/>
 
-### Shadow parts
-
-These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').RadioButton} table='parts'/>
-
-### CSS properties
-
-These are the various CSS properties that are used in the component, with a short description of their use.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').RadioButton} table='properties'/>
-
-### Reflected attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').RadioButton} table="reflects"/>
-
-### Dependencies
-
-This component relies on the following components - see the related article for more detailed styling information:
-
-<TableBuilder tag='dwc-radio' table="dependencies"/>
+<TableBuilder name="RadioButton" />
 
 ## Best practices 
 
@@ -147,9 +125,3 @@ To ensure an optimal user experience when using the RadioButton component, consi
 2. **Group Radio buttons**: Group related Radio buttons together to indicate their association. This helps users understand that only one option can be selected within a specific group. This can be done effectively using the [`RadioButtonGroup`](/docs/components/radiobuttongroup) component.
 
 3. **Provide Default Selection**: If applicable, consider providing a default selection for Radio buttons to guide users when they first encounter the options. The default selection should align with the most common or preferred choice.
-
-### Dependencies
-
-This component relies on the following components - see the related article for more detailed styling information:
-
-<TableBuilder tag='dwc-drawer' table="dependencies"/>

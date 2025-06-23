@@ -249,14 +249,4 @@ This makes each spin step advance or rewind the date by one week.
 
 ## Styling
 
-### Shadow parts
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').DateField} table='parts' exclusions='' />
-
-### CSS properties
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').DateField} exclusions='' table='properties' />
-
-### Reflected attributes
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').DateField} table="reflects" />
+<TableBuilder name="MaskedDateField" />
