@@ -3,6 +3,7 @@ sidebar_position: 15
 title: DateTimeField
 slug: datetimefield
 description: A component that provides a default browser-based date and time picker for selecting both date and time through a single input field.
+sidebar_class_name: updated-content
 ---
 
 <DocChip chip='shadow' />
@@ -35,17 +36,17 @@ The `DateTimeField` is best used in scenarios where capturing or displaying both
 
 Internally, the `DateTimeField` component represents its value using a `LocalDateTime` object from the `java.time` package. This provides precise control over both the date and time components of the input.
 
-While the **client-side input is rendered based on the user's browser locale** (e.g., date and time formats that match local conventions), the internal parsing and formatting follow a strict and predictable structure: **`yyyy-MM-ddTHH:mm:ss`**.
+While the **client-side** value is rendered based on the user's browser locale (e.g., date and time formats that match local conventions), the **parsed** value follows a strict and predictable structure: **`yyyy-MM-ddTHH:mm:ss`**.
 
 ### Getting and setting the value
 
-To retrieve the current value:
+To retrieve the current value, use the `getValue()` method:
 
 ```java
 LocalDateTime value = dateTimeField.getValue();
 ```
 
-To programmatically set the value:
+To programmatically set the value, use the `setValue()` method:
 
 ```java
 dateTimeField.setValue(LocalDateTime.of(2024, 4, 27, 14, 30, 0));
@@ -53,34 +54,44 @@ dateTimeField.setValue(LocalDateTime.of(2024, 4, 27, 14, 30, 0));
 
 ### Using `setText()`
 
-If you prefer to set the value via a raw string, it must follow the full format `yyyy-MM-ddTHH:mm:ss`:
+If you prefer to set the value via a raw string, it must follow the exact format of `yyyy-MM-ddTHH:mm:ss`.
 
 ```java
 dateTimeField.setText("2024-04-27T14:30:00"); // valid
+
+dateTimeField.setText("24-04-27T14:30:00"); // invalid
 ```
 
-:::tip
-When using `setText(...)`, the component will attempt to parse the input string in the `yyyy-MM-ddTHH:mm:ss` format. If the input doesn't match this format, an `IllegalArgumentException` will be thrown.
+:::warning
+ When using the `setText()` method, an `IllegalArgumentException` will be thrown if the component can't parse the input in the `yyyy-MM-ddTHH:mm:ss` format.
 :::
 
 ## Static utilities 
 
 The DateTimeField class also provides the following static utility methods:
 
-- `fromDateTime(String dateTimeAsString)`: Convert a date and time string in yyyy-MM-ddTHH:mm:ss format to a LocalDateTime object which can then be utilized with this class, or elsewhere.
+- `fromDateTime(String dateTimeAsString)`: Convert a date and time string in `yyyy-MM-ddTHH:mm:ss` format to a LocalDateTime object which can then be utilized with this class, or elsewhere.
 
-- `toDateTime(LocalDateTime dateTime)`: Convert a LocalDateTime object to a date and time string in yyyy-MM-ddTHH:mm:ss format.
+- `toDateTime(LocalDateTime dateTime)`: Convert a LocalDateTime object to a date and time string in `yyyy-MM-ddTHH:mm:ss` format.
 
-- `isValidDateTime(String dateTimeAsString)`: Checks to see if the given string is a valid yyyy-MM-ddTHH:mm:ss date and time. This will return a boolean value true if so, false otherwise.
+- `isValidDateTime(String dateTimeAsString)`: Checks to see if the given string is a valid `yyyy-MM-ddTHH:mm:ss` date and time. This will return a boolean value true if so, false otherwise.
 
 ## Min and max value
 
-The `setMin()` and `setMax()` methods define the valid range for timestamp values accepted by the component. If the input is earlier than the minimum or later than the maximum, it will fail constraint validation. When both values are set, the minimum must be less than or equal to the maximum, and the maximum must be greater than or equal to the minimum.
+### The min value
+
+If the value entered into the component is earlier than the specified minimum timestamp, the component will fail constraint validation. When both the min and max values are set, the min value must be a timestamp that's the same as or earlier than the max value.
 
 ```java
 // Set minimum allowed timestamp: January 1, 2023 at 08:00
 dateTimeField.setMin(LocalDateTime.of(2023, 1, 1, 8, 0));
+```
 
+### The max value
+
+If the value entered into the component is later than the specified maximum timestamp, the component will fail constraint validation. When both the min and max values are set, the max value must be a timestamp that's the same as or later than the min value.
+
+```java
 // Set maximum allowed timestamp: December 31, 2023 at 18:00
 dateTimeField.setMax(LocalDateTime.of(2023, 12, 31, 18, 0));
 ```
