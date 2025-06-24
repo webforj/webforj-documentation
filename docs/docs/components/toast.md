@@ -147,20 +147,4 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 height='200px'
 />
 
-### Shadow Parts
-
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Toast} table='parts' exclusions=''/>
-
-### CSS properties
-
-These are the various CSS properties that are used in the component, with a short description of their use.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Toast} exclusions='' table='properties'/>
-
-### Reflected Attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Toast} table="reflects" />
+<TableBuilder name="Toast" />

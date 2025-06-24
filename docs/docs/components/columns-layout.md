@@ -211,3 +211,7 @@ path='/webforj/columnslayoutform?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutFormView.java'
 height="700px"
 />
+
+## Styling
+
+<TableBuilder name="ColumnsLayout" clientComponent />

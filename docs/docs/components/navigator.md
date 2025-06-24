@@ -170,37 +170,7 @@ navigator.setLayout(Navigator.Layout.QUICK_JUMP);
 
 ## Styling
 
-### Shadow parts
-
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, necessary for styling via CSS.
-
-<!-- vale off -->
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Navigator} table='parts'  />
-<!-- vale on -->
-
-
-### CSS properties
-
-Here are the different CSS properties used in the component, along with a brief explanation of their purpose.
-
-<!-- vale off -->
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Navigator}  table='properties'/>
-<!-- vale on -->
-
-
-### Reflected attributes
-
-The component's reflected attributes appear as attributes in the rendered HTML element within the DOM, allowing for styling based on these attributes.
-
-<!-- vale off -->
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Navigator} table="reflects" />
-<!-- vale on -->
-
-### Dependencies
-
-This component relies on the following components - see the related article for more detailed styling information:
-
-<TableBuilder tag='dwc-navigator' table="dependencies"/>
+<TableBuilder name="Navigator" />
 
 ## Best practices 
 
