@@ -10,12 +10,8 @@ body {
   justify-content: center;
 }
 
-.dwc__toolbar-drawer {
-  display: flex;
-  align-items: center;
-  gap: var(--dwc-space-m);
-  padding: 0 var(--dwc-space-m);
-  height: 54.21875px;
+html[data-app-theme="dark"] .dwc-logo{
+filter: brightness(0) invert(1);
 }
 
 .drawer__logo {

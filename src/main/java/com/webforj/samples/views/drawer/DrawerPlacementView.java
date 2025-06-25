@@ -66,6 +66,7 @@ public class DrawerPlacementView extends Composite<FlexLayout> {
     });
 
     drawer.add(groupLayout);
+    drawer.setStyle("--dwc-drawer-max-width", "fit-content");
 
     Button openDrawer = new Button("Open Placement");
     openDrawer.onClick(e -> drawer.open());
