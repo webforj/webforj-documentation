@@ -9,6 +9,7 @@ import com.webforj.component.field.TextField;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.optioninput.CheckBox;
+import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
@@ -19,21 +20,25 @@ import java.util.List;
 @InlineStyleSheet("context://css/drawer/drawer.css")
 @Route
 @FrameTitle("Task Manager Drawer")
-public class DrawerView extends Composite<FlexLayout> {
+public class DrawerEventView extends Composite<FlexLayout> {
 
   FlexLayout layout = getBoundComponent();
   Drawer drawer = new Drawer();
   List<CheckBox> taskList = new ArrayList<>();
   FlexLayout tasks = new FlexLayout();
 
-  public DrawerView() {
+  public DrawerEventView() {
     drawer.setLabel("Task Manager");
+
+    drawer.onOpen(e -> Toast.show("Drawer Opened", 3000));
+    drawer.onClose(e -> Toast.show("Drawer Closed", 3000));
+
     drawer.open();
 
     tasks.setDirection(FlexDirection.COLUMN)
-    .setSpacing("var(--dwc-space-s)")
-    .setStyle("overflow-y", "auto")
-    .setMaxHeight("60vh");
+      .setSpacing("var(--dwc-space-s)")
+      .setStyle("overflow-y", "auto")
+      .setMaxHeight("60vh");
 
     addTask("Finish project documentation");
     addTask("Call John about the meeting");

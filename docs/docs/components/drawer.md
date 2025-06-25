@@ -7,47 +7,20 @@ sidebar_position: 35
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="drawer" location="com/webforj/component/drawer/Drawer" top='true'/>
 
-The `Drawer` component creates a sliding panel that appears from the edge of the screen to show additional content or options. When you have multiple drawers open, they stack on top of each other automatically.
+The `Drawer` component in webforJ creates a sliding panel that appears from the edge of the screen, revealing additional content without leaving the current view. It's commonly used for side navigation, filter menus, user settings, or compact notifications.
 
-`Drawers` are handy for different interface needs: toggleable navigation menus, panels with extra information, or mobile-friendly layouts. The example below shows a mobile app using the webforJ [`AppLayout`](../components/app-layout) component, with a welcome popup `Drawer` at the bottom and a navigation `Drawer` that opens from the hamburger menu.
+`Drawers` stack automatically when multiple are opened, making them a flexible choice for interfaces where space is limited or context-specific content needs to appear temporarily.
+
+The example below shows a mobile app using the webforJ [`AppLayout`](../components/app-layout) component, with a welcome popup `Drawer` at the bottom and a navigation `Drawer` that opens from the hamburger menu.
 
 <AppLayoutViewer path='/webforj/drawerwelcome?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/drawer/drawerWelcome.css'
 />
 
-## Usages
+## Autofocus
 
-1. **Navigation Menu**: One common usage of a `Drawer` component is as a navigation menu. It provides a space-efficient way to display links to various sections or pages of your app, especially in mobile or responsive layouts. Users can open and close the `Drawer` to access navigation options without cluttering the main content area.
-
-2. **Filter and Sidebar**: A `Drawer` can be used as a filter or sidebar in applications that display a list of items. Users can expand the `Drawer` to reveal filter options, sort controls, or additional information related to the list items. This keeps the main content focused on the list while providing advanced features in an accessible way.
-
-3. **User Profile or Settings**: You can use a `Drawer` to show user profile information or app settings. This keeps such information easily accessible but hidden when not needed, maintaining a clean and uncluttered interface. Users can open the `Drawer` to update their profiles or adjust settings.
-
-4. **Notifications**: For applications with notifications or alerts, a `Drawer` can slide in to display new messages or updates. Users can quickly check and dismiss notifications without leaving their current view.
-
-<ComponentDemo
-path='/webforj/drawer?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/drawer/drawer.css'
-height='600px'
-/>
-
-## Customization
-
-Various properties exist that allow for the customization of various attributes of the `Drawer` component. This section outlines those properties with examples for their modification.
-
-### Autofocus
-
-The Auto-Focus property is designed to enhance accessibility and usability by automatically focusing on the first item within a `Drawer` when it's opened. This feature eliminates the need for users to manually navigate to the desired item, saving time and effort.
-
-When the `Drawer` is triggered to open, either through an event, by default or any other interaction, the user's focus is directed to the first item within the `Drawer`. This first item could be a button, a link, a menu option, or any other focusable element.
-
-:::tip
-By automatically focusing on the first item, the developer ensures that users can immediately engage with the most relevant or frequently used option without having to tab or scroll through the entire `Drawer`. This behavior streamlines the user experience and promotes efficient navigation within the UI.
-:::
-
-This property can also be particularly beneficial for individuals who rely on keyboard navigation or assistive technologies such as screen readers. It provides a clear starting point within the drawer and allows users to access the desired functionality without unnecessary manual input.
+The `Drawer` component supports autofocus, which automatically places the cursor on the first focusable element when the `Drawer` opens. This improves usability and accessibility—especially for keyboard users and screen readers—by eliminating the need to manually tab through the `Drawer’s` contents.
 
 <ComponentDemo
 path='/webforj/drawerautofocus?'
@@ -57,18 +30,14 @@ height='600px'
 
 <!-- Example -->
 
-### Label
+## Label
 
 The `setLabel()` method improves accessibility by providing a meaningful description of the `Drawer’s` content. When a label is set, assistive technologies like screen readers can announce it, helping users understand the purpose of the `Drawer` without seeing its visual contents.
-
-This is especially useful in applications where `Drawers` contain dynamic or contextual information. A good label offers clarity without overwhelming detail.
 
 ```java
 Drawer drawer = new Drawer();
 drawer.setLabel("Task Manager");
 ```
-
-This label helps screen readers announce the `Drawer` as a “Task Manager,” making the interface more accessible for users with visual impairments.
 
 :::tip Descriptive Labels
 Use concise and descriptive labels that reflect the `Drawer’s` purpose. Avoid generic terms like “Menu” or “Panel” when a more specific name can be used.
@@ -105,11 +74,11 @@ The Drawer's max size property is particularly beneficial when dealing with resp
 
 When the drawer's content exceeds the defined maximum size, developers can implement appropriate techniques to handle overflow, such as scrolling within the drawer or utilizing additional UI patterns like tabs or accordions. This helps maintain a clean and organized interface while accommodating larger amounts of content. -->
 
-### Placement
+## Placement
 
-The Placement property of the `Drawer` component defines where the `Drawer` appears in the viewport. It accepts a range of enum values, giving developers control over both vertical and horizontal positioning to best fit the layout and user flow.
+The `setPlacement()` method controls where the `Drawer` appears in the viewport.
 
-Available Placement Options:
+Available placement options:
 
 - **TOP**: Positions the drawer at the top edge of the viewport.
 
@@ -123,14 +92,44 @@ Available Placement Options:
 
 - **RIGHT**: Positions the drawer along the right edge of the viewport.
 
-
-By leveraging the Placement property, developers can create intuitive and efficient user interfaces. For example, placing the `Drawer` on the left or right side allows for quick access to additional functionalities or navigation options, while top or bottom placements are well-suited for contextual information or supplementary content.
-
 <ComponentDemo
 path='/webforj/drawerplacement?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerPlacementView.java'
 height='600px'
 />
+
+## Event handling
+
+The `Drawer` component emits lifecycle events that can be used to trigger application logic in response to changes in its open or closed state. 
+
+Supported events:
+
+- `ON_OPENED`: Fired when the drawer is fully opened.
+- `ON_CLOSED`: Fired when the drawer is fully closed.
+- `ON_TOGGLED`: Fired whenever the drawer changes state (either opened or closed).
+
+You can attach listeners to these events to run logic when the `Drawer’s` state changes:
+
+<ComponentDemo
+path='/webforj/drawerevent?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerEventView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/drawer/drawer.css'
+height='600px'
+/>
+
+## Example: Contact picker
+
+The `Drawer` component exposes additional content without disrupting the current view. This example places a drawer at the bottom center, containing a scrollable contact list.
+
+Each contact displays an avatar, name, location, and action button for quick access to details or communication. This approach works well for building compact tools like contact pickers, settings panels, or notifications.
+
+<ComponentDemo
+path='/webforj/drawercontact?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerContactView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/drawer/drawerContact.css'
+height='600px'
+/>
+
 
 ## Styling
 
@@ -164,8 +163,8 @@ This component relies on the following components - see the related article for 
 
 To ensure an optimal user experience when using the `Drawer` component, consider the following best practices:
 
-1. **Placement**: Decide whether the drawer should slide in from the left, right, top, or bottom, based on your application's layout and user experience considerations. Consider user preferences and design conventions.
+1. **Placement**: Decide whether the `Drawer` should slide in from the left, right, top, or bottom, based on your application's layout and user experience considerations. Consider user preferences and design conventions.
 
-2. **Accessibility**: Pay special attention to accessibility. Ensure that users can open and close the drawer using keyboard controls and that screen readers can announce its presence and state. Provide ARIA roles and labels as necessary.
+2. **Accessibility**: Pay special attention to accessibility. Ensure that users can open and close the `Drawer` using keyboard controls and that screen readers can announce its presence and state. Provide ARIA roles and labels as necessary.
 
-3. **Swipe Gestures**: On touch-enabled devices, support swipe gestures for opening and closing the drawer. This is an intuitive way for users to interact with it.
+3. **Swipe Gestures**: On touch-enabled devices, support swipe gestures for opening and closing the `Drawer`. This is an intuitive way for users to interact with it.
