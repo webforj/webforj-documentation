@@ -130,31 +130,7 @@ height='600px'
 
 ## Styling
 
-<!-- <TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Drawer} /> -->
-
-### Shadow parts
-
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Drawer} table='parts' />
-
-### CSS properties
-
-These are the various CSS properties that are used in the component, with a short description of their use.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Drawer} table='properties'/>
-
-### Reflected attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Drawer} table="reflects"/>
-
-### Dependencies
-
-This component relies on the following components - see the related article for more detailed styling information:
-
-<TableBuilder tag='dwc-drawer' table="dependencies"/>
+<TableBuilder name="Drawer" />
 
 ## Best practices 
 
