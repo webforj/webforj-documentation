@@ -83,15 +83,4 @@ mobile='true'
 
 ## Styling
 
-### Shadow parts
-
-<TableBuilder tag='dwc-infinite-scroll' table="parts"/>
-
-### Reflected Attributes
-
-<TableBuilder tag='dwc-infinite-scroll' table='reflects'/>
-
-### Dependencies
-
-<TableBuilder tag='dwc-infinite-scroll' table="dependencies"/>
-
+<TableBuilder name="InfiniteScroll" />
