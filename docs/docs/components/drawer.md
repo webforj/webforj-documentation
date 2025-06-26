@@ -9,7 +9,9 @@ sidebar_position: 35
 
 The `Drawer` component in webforJ creates a sliding panel that appears from the edge of the screen, revealing additional content without leaving the current view. It's commonly used for side navigation, filter menus, user settings, or compact notifications that need to appear temporarily without disrupting the main interface.
 
-`Drawers` stack automatically when multiple are opened, making them a flexible choice for space-constrained interfaces. The example below shows a mobile app using the webforJ [`AppLayout`](../components/app-layout) component, with a welcome popup `Drawer` at the bottom and a navigation `Drawer` that opens from the hamburger menu.
+`Drawers` stack automatically when multiple are opened, making them a flexible choice for space-constrained interfaces.
+
+The example below shows this behavior within the [`AppLayout`](../components/app-layout) component. The navigation drawer triggered by the hamburger menu is built into [`AppLayout`](../components/app-layout), while the welcome popup at the bottom uses a standalone `Drawer` instance. Both coexist and stack independently, demonstrating how drawers can be integrated within layout components or used as standalone elements.
 
 <AppLayoutViewer path='/webforj/drawerwelcome?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java'
