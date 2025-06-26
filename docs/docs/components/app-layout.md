@@ -89,23 +89,12 @@ Notice how the drawer is hidden in the following demo. The AppLayout widget supp
 
 Same as `AppLayout.setHeaderReveal()`, `AppLayout.setFooterReveal()` is supported. When `AppLayout.setFooterReveal(true)` is called, the footer will be visible at first render then hidden when the user starts scrolling up. Once the user starts scrolling down again the footer will be revealed.
 
-Be default, when the screen width is 800px or less , the drawer will be switched to popover mode. This is called the breakpoint. The popover mode means that the drawer will pop over the content area with an overlay. It's possible to configure the breakpoint by using the DwcAppLayout:setDrawerBreakpoint method and the breakpoint must be a valid [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries).
+By default, when the screen width is 800px or less , the drawer will be switched to popover mode. This is called the breakpoint. The popover mode means that the drawer will pop over the content area with an overlay. It's possible to configure the breakpoint by using the `setDrawerBreakpoint()` method and the breakpoint must be a valid [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries).
 
 <!-- <AppLayoutViewer path='/webforj/applayoutmobile?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutMobileView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayoutMobile.css'
 /> -->
-
-## Drawer breakpoint
-
-Be default, when the screen width is 800px or less , the drawer will be switched to popover mode. This is called the breakpoint. Popover mode means that the drawer will pop over the content area with an overlay. It's possible to configure the breakpoint by using the DwcAppLayout:setDrawerBreakpoint method and the breakpoint must be a valid media query.
-
-For instance, in the following sample the drawer breakpoint is configured to be 500px or less.
-
-```java
-AppLayout demo = new AppLayout();
-demo.setDrawerBreakpoint("(max-width:500px)");
-```
 
 <AppLayoutViewer path='/webforj/applayoutmobiledrawer/?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/mobiledrawer/AppLayoutMobileDrawerView.java'
@@ -114,9 +103,22 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 
 ## Drawer utilities
 
+The AppLayout drawer utility is designed for integrated navigation and contextual menus within the main app layout, while standalone Drawer components offer flexible, independent sliding panels that can be used anywhere in your app for additional content, filters, or notifications. This section focuses on the built-in drawer features and utilities provided by AppLayout.
+
+### Drawer breakpoint
+
+By default, when the screen width is 800px or less , the drawer will be switched to popover mode. This is called the breakpoint. Popover mode means that the drawer will pop over the content area with an overlay. It's possible to configure the breakpoint by using the `setDrawerBreakpoint()` method and the breakpoint must be a valid media query.
+
+For instance, in the following sample the drawer breakpoint is configured to be 500px or less.
+
+```java
+AppLayout demo = new AppLayout();
+demo.setDrawerBreakpoint("(max-width:500px)");
+```
+
 ### Drawer title
 
-The `AppLayout` component provides a method `addToDrawerTitle(...)` for defining a custom title to display in the drawer header. 
+The `AppLayout` component provides a `addToDrawerTitle()` method for defining a custom title to display in the drawer header. 
 
 ```java
 layout.addToDrawerTitle(new Div("Menu"));
@@ -148,20 +150,20 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayout.css'
 />
 
-## `AppDrawerToggle`
+## `AppDrawerToggle` <DocChip chip='since' label='24.12' />
 
-The `AppDrawerToggle` component is a server-side webforJ class that represents a button used to toggle the visibility of a navigation drawer in an [`AppLayout`](./app-layout.md). It maps to the client-side `<dwc-app-drawer-toggle>` element and is styled to behave like a traditional hamburger menu icon.
+The [`AppDrawerToggle`](https://javadoc.io/doc/com.webforj/webforj-applayout/latest/com/webforj/component/layout/applayout/AppDrawerToggle.html) component is a server-side webforJ class that represents a button used to toggle the visibility of a navigation drawer in an `AppLayout`. It maps to the client-side `<dwc-app-drawer-toggle>` element and is styled by default to behave like a traditional hamburger menu icon, this behaviour can be customized.
 
 ### Overview
 
-This component extends `IconButton` and uses the "menu-2" icon from the Tabler icon set by default. It automatically applies the `data-drawer-toggle` attribute to integrate with the client-side drawer behavior.
+The `AppDrawerToggle` extends `IconButton` and uses the "menu-2" icon from the Tabler icon set by default. It automatically applies the `data-drawer-toggle` attribute to integrate with the client-side drawer behavior.
 
-### Behavior
-
-- Toggles visibility of a `dwc-drawer`.
-- Should be used inside or associated with an `AppLayout`.
-- Integrates automatically by setting `data-drawer-toggle`.
-
+```java
+// No event registration required:
+AppLayout layout = new AppLayout();
+layout.addToHeader(new AppDrawerToggle());
+// The drawer toggle will work out of the box—no manual event listeners needed.
+```
 ## Styling
 
 <TableBuilder name="AppLayout" />
