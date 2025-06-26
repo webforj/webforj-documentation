@@ -4,9 +4,8 @@ sidebar_position: 25
 ---
 
 <DocChip chip="shadow" />
-
 <DocChip chip="name" label="dwc-columns-layout" />
-
+<DocChip chip='since' label='24.10' />
 <JavadocLink type="columnslayout" location="com/webforj/component/layout/columnslayout/ColumnsLayout" top='true'/>
 
 The `ColumnsLayout` component in webforJ allows developers to create layouts using a flexible and responsive vertical layout. This layout provides dynamic columns that adjust based on the available width. This component simplifies the creation of multi-column layouts by automatically managing breakpoints and alignments.
@@ -212,3 +211,7 @@ path='/webforj/columnslayoutform?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutFormView.java'
 height="700px"
 />
+
+## Styling
+
+<TableBuilder name="ColumnsLayout" clientComponent />

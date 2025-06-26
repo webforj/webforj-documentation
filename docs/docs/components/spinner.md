@@ -4,10 +4,8 @@ sidebar_position: 110
 ---
 
 <DocChip chip="shadow" />
-
 <DocChip chip="name" label="dwc-spinner" />
-
-
+<DocChip chip='since' label='24.10' />
 <JavadocLink type="spinner" location="com/webforj/component/spinner/Spinner" top='true'/>
 
 The `Spinner` component provides a visual indicator that indicates ongoing processing or loading in the background. It's often used to show that the system is fetching data or when a process takes time to complete. The spinner offers user feedback, signaling that the system is actively working.
@@ -120,22 +118,4 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 height = '100px'
 />
 
-### Shadow parts
-
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Spinner} table='parts' exclusions=''/>
-
-### CSS properties
-
-These are the various CSS properties that are used in the component, with a short description of their use.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Spinner} exclusions='' table='properties'/>
-
-### Reflected attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Spinner} table="reflects"/>
-
+<TableBuilder name="Spinner" />

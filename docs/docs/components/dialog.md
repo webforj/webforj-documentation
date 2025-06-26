@@ -4,9 +4,8 @@ sidebar_position: 30
 ---
 
 <DocChip chip='shadow' />
-
 <DocChip chip='name' label="dwc-dialog" />
-
+<DocChip chip='since' label='23.06' />
 <JavadocLink type="dialog" location="com/webforj/component/dialog/Dialog" top='true'/>
 
 The webforJ dialog component is built to allow a developer to quickly and easily display a dialog on their application, for instances such as a login menu or information box.
@@ -130,26 +129,4 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '500px'
 />
 
-### Shadow parts
-
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Dialog} table='parts'/>
-
-### Slots
-
-Listed below are the slots available for utilization within the `Button` component. These slots act as placeholders within the component that control where the children of a customized element should be inserted within the shadow tree.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Dialog} table='slots' />
-
-### CSS properties
-
-These are the various CSS properties that are used in the component, with a short description of their use.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Dialog} table='properties'/>
-
-### Reflected attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Dialog} table="reflects" />
+<TableBuilder name="Dialog" />

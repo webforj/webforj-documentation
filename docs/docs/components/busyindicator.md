@@ -4,10 +4,8 @@ sidebar_position: 10
 ---
 
 <DocChip chip="shadow" />
-
 <DocChip chip="name" label="dwc-loading" />
-
-
+<DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/BusyIndicator" top='true'/>
 
 The `BusyIndicator` provides visual cues to ensure that users are aware of ongoing processes, preventing them from interacting with the system prematurely. It typically covers the entire app interface for global operations.
@@ -65,23 +63,4 @@ height = '200px'
 
 ## Styling 
 
-### Shadow parts
-
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').BusyIndicator} table='parts' exclusions=''/>
-
-### CSS properties
-
-These are the various CSS properties that are used in the component, with a short description of their use.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').BusyIndicator} exclusions='' table='properties'/>
-
-### Reflected attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').BusyIndicator} table="reflects"/>
-
-
+<TableBuilder name="BusyIndicator" />

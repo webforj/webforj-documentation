@@ -1,5 +1,6 @@
 ---
 title: Debugging
+sidebar_position: 1
 ---
 
 Debugging is an essential part of Java development, helping developers identify and fix issues efficiently. This guide explains how to configure debugging in webforJ for Visual Studio Code, IntelliJ IDEA, and Eclipse.

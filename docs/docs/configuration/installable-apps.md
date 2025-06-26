@@ -1,7 +1,10 @@
 ---
 title: Installable Apps
-sidebar_position: 1
+sidebar_position: 10
 ---
+
+<DocChip chip='since' label='24.21' />
+<JavadocLink type="foundation" location="com/webforj/annotation/AppProfile" top='true'/>
 
 The `@AppProfile` annotation in webforJ enables you to make your app installable on supported platforms. 
 Installable web apps integrate seamlessly with the device's operating system. 

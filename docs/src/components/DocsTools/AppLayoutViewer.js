@@ -80,7 +80,6 @@ export default function AppLayoutViewer({path, mobile, javaE, cssURL}) {
             <iframe src={(isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path} css={demoContent} loading='lazy' ref={iframeRef}>
             </iframe>
         </div>
-        <br/>
         <ComponentDemo frame="hidden" javaE={javaE} cssURL={cssURL}/>
     </div>
   );

@@ -4,9 +4,8 @@ sidebar_position: 140
 ---
 
 <DocChip chip="shadow" />
-
 <DocChip chip="name" label="dwc-toast" />
-
+<DocChip chip='since' label='24.10' />
 <JavadocLink type="toast" location="com/webforj/component/toast/Toast" top='true'/>
 
 A `Toast` notification is a subtle and unobtrusive pop-up notification designed to provide users with real-time feedback and information. These notifications are typically used to inform users about operations such as successful actions, warnings, or errors without interrupting their workflow. `Toast` notifications typically disappear after a set amount of time and don't require a user response.
@@ -148,20 +147,4 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 height='200px'
 />
 
-### Shadow Parts
-
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Toast} table='parts' exclusions=''/>
-
-### CSS properties
-
-These are the various CSS properties that are used in the component, with a short description of their use.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Toast} exclusions='' table='properties'/>
-
-### Reflected Attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Toast} table="reflects" />
+<TableBuilder name="Toast" />

@@ -3,10 +3,12 @@ sidebar_position: 10
 title: DateField
 slug: datefield
 description: A component that provides a default browser-based date picker for selecting a date through an input field.
+sidebar_class_name: updated-content
 ---
 
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-field" />
+<DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/DateField" top='true'/>
 
 <ParentLink parent="Field" />
@@ -17,6 +19,42 @@ The `DateField` is a field component that allows users to input or select dates 
 path='/webforj/datefield?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/datefield/DateFieldView.java'
 />
+
+## Field value (`LocalDate`)
+
+The `DateField` component stores its value internally as a `LocalDate` object, representing a date without time or timezone information. This allows for accurate handling of calendar-based inputs across different systems.
+
+:::info Displayed value VS parsed value 
+While the **displayed value** adapts to the user's browser locale, ensuring regionally familiar formatting (e.g., `MM/DD/YYYY` in the United States or `DD.MM.YYYY` in Europe), the **parsed value** always relies on the fixed format of `yyyy-MM-dd`.
+:::
+
+### Getting and setting the `LocalDate` value
+
+To retrieve the current value, use the `getValue()` method:
+
+```java
+LocalDate value = dateField.getValue();
+```
+
+To set the value programmatically, use the `setValue()` method:
+
+```java
+dateField.setValue(LocalDate.of(2024, 4, 27));
+```
+
+### Using `setText()`
+
+You can also assign a value using a raw string, but it must follow the exact `yyyy-MM-dd` format:
+
+```java
+dateField.setText("2024-04-27"); // valid
+
+dateField.setText("04/27/2024"); // invalid
+```
+
+:::warning
+ When using the `setText()` method, an `IllegalArgumentException` will be thrown if the component can't parse the input in the `yyyy-MM-dd` format.
+:::
 
 ## Usages
 
@@ -30,27 +68,31 @@ The `DateField` is ideal for choosing and displaying dates in your app. Here are
 
 4. **Task Management and Deadlines**: Date fields are valuable in apps that involve task management or setting deadlines. Users can easily specify due dates, start dates, or other time-sensitive information.
 
-## Maximum and minimum
+## Min and max value
 
-With the `setMax()` and `setMin()` methods, you can specify a range of acceptable dates. If a user manually enters a value into the date field outside the specified range, the component will let the user know what's acceptable. Also, if a maximum or minimum is already set, the value for the other method must be lower or higher respectively.
+### The min value
+The `setMin()` method defines the earliest date a user can enter into the component. If the input is earlier than the specified minimum, it will fail constraint validation. When used alongside `setMax()`, the minimum must be a date that's the same as or earlier than the maximum.
 
-## Localized display
+```java
+dateField.setMin(LocalDate.of(2023, 1, 1)); // Minimum allowed: January 1, 2023
+```
 
-By default, the `DateField` displays information within the UI element based on the locale the browser is configured to. For example, users with United States configurations will see MM/dd/yyyy, whereas European users will see dd/MM/yyyy. Still, this doesn't stop you from manipulating the `LocalDate` object returned by the methods from the `DataField` class.
+### The max value
+The `setMax()` method defines the latest date the component accepts. If the entered date is later than the specified maximum, the input is invalid. When both values are defined, the maximum must be a date that's the same as or later than the minimum.
 
-:::info Picker UI 
-The appearance of the date picker input UI depends not only on the selected locale but also on the browser and operating system being used. This ensures automatic consistency with the interface users are already familiar with.
-:::
+```java
+dateField.setMax(LocalDate.of(2023, 12, 31)); // Maximum allowed: December 31, 2023
+```
 
 ## Static utilities
 
 The `DateField` class also provides the following static utility methods:
 
-- `fromDate(String dateAsString)`: Convert a date string in yyyy-MM-dd format to a `LocalDate` object which can then be utilized with this field, or elsewhere.
+- `fromDate(String dateAsString)`: Convert a date string in `yyyy-MM-dd` format to a `LocalDate` object which can then be utilized with this field, or elsewhere.
 
-- `toDate(LocalDate date)`: Convert a `LocalDate` object to a date string in yyyy-MM-dd format.
+- `toDate(LocalDate date)`: Convert a `LocalDate` object to a date string in `yyyy-MM-dd` format.
 
-- `isValidDate(String dateAsString)`: Checks to see if the given string is a valid yyyy-MM-dd date.
+- `isValidDate(String dateAsString)`: Checks to see if the given string is a valid `yyyy-MM-dd` date.
 
 ## Best practices
 

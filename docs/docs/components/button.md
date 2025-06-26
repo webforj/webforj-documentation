@@ -3,14 +3,9 @@ title: Button
 sidebar_position: 15
 ---
 
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import Chip from '@mui/material/Chip';
-
 <DocChip chip="shadow" />
-
 <DocChip chip="name" label="dwc-button" />
-
-
+<DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/button/Button" top='true'/>
 
 A `Button` component is a fundamental user interface element used in application development to create interactive elements that trigger actions or events when clicked or activated. It serves as a clickable element that users can interact with to perform various actions within an application or website. 
@@ -50,7 +45,7 @@ The `Button` class is a versatile component that is commonly used in various sit
   > - "Previous" - Returns the user to the previous page of the application or section they're in.
   > - "Back" Returns the user to the first part of the application or page they're in.
 
-## Adding icons to buttons
+## Adding icons to buttons <DocChip chip='since' label='24.11' />
 
 Incorporating an icon into a button can greatly improve your app's design, allowing users to quickly identify actionable items on the screen. The [`Icon`](./icon.md) component provides a wide selection of icons to choose from.
 
@@ -135,35 +130,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='200px'
 />
 
-### Shadow parts
-
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Button} table='parts' exclusions={require('@site/static/exclusions.json').button.parts} />
-
-### Slots
-
-Listed below are the slots available for utilization within the `Button` component. These slots act as placeholders within the component that control where the children of a customized element should be inserted within the shadow tree.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Button} table='slots' exclusions={require('@site/static/exclusions.json').button.slots} />
-
-### CSS properties
-
-These are the various CSS properties that are used in the component, with a short description of their use.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Button} exclusions={require('@site/static/exclusions.json').button.properties} table='properties'/>
-
-### Reflected attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Button} table="reflects" exclusions={require('@site/static/exclusions.json').button.reflects}/>
-
-### Dependencies
-
-This component relies on the following components - see the related article for more detailed styling information:
-
-<TableBuilder tag='dwc-button' table="dependencies"/>
+<TableBuilder name="Button" />
 
 ## Best practices 
 

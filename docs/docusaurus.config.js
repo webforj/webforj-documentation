@@ -19,10 +19,8 @@ const config = {
     locales: ['en'],
   },
   scripts: [
-    {
-      src: '/dwc-theme-switcher.js',
-      async: false,
-    },
+    { src: '/js/dwc-theme-switcher.js', async: false },
+    { src: '/js/link-decorator.js' }
   ],
   headTags: [
     {
@@ -86,9 +84,9 @@ const config = {
       contextualSearch: false,
     },
     announcementBar: {
-      id: '25.00',
+      id: '25.01',
       content:
-        'We are excited to announce webforJ version 25.00 is live! Read more about the changes and features <a href=/blog/whats-new-v25.00>here.</a> ',
+        'We are excited to announce webforJ version 25.01 is live! Read more about the changes and features <a href=/blog/whats-new-v25.01>here.</a> ',
       isCloseable: true,
     },
     image: 'https://docs.webforj.com/img/social-cover.png',
@@ -138,20 +136,10 @@ const config = {
           position: 'right',
           items: [
             {
-              label: "JavaDocs",
-              href: 'https://javadoc.io/doc/com.webforj',
+              label: "startforJ",
+              href: 'https://docs.webforj.com/startforj/',
+              target: '_blank',
               rel: null,
-            },
-            // {
-            //   label: "Quick Template",
-            //   href: 'https://github.com/webforj/skeleton-starter-hello-world',
-            //   target: '_blank',
-            //   rel: null,
-            // },
-            {
-              label: "Client Components",
-              to: '/docs/client-components/overview',
-              activeBasePath: 'docs/client-components/overview'
             },
             {
               label: "DWC HueCraft",
@@ -164,6 +152,16 @@ const config = {
               href: 'https://www.figma.com/community/file/1144573845612007198/dwc-design-kit',
               target: '_blank',
               rel: null,
+            },
+            {
+              label: "JavaDocs",
+              href: 'https://javadoc.io/doc/com.webforj',
+              rel: null,
+            },
+            {
+              label: "Client Components",
+              to: '/docs/client-components/overview',
+              activeBasePath: 'docs/client-components/overview'
             },
             {
               label: "Contribution Guide",

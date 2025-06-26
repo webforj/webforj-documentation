@@ -4,10 +4,8 @@ sidebar_position: 65
 ---
 
 <DocChip chip="shadow" />
-
 <DocChip chip="name" label="dwc-loading" />
-
-
+<DocChip chip='since' label='24.10' />
 <JavadocLink type="loading" location="com/webforj/component/loading/Loading" top='true'/>
 
 The `Loading` component in webforJ displays an overlay that signals the processing of an operation, temporarily preventing user interaction until the task is complete. This feature improves the user experience, especially in situations where tasks like data loading, computations, or background processes may take some time. For global, app-wide processes, consider using the [`BusyIndicator`](../components/busyindicator) component, which blocks interaction across the entire interface.
@@ -79,21 +77,4 @@ height = '300px'
 
 ## Styling 
 
-### Shadow parts
-
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Loading} table='parts' exclusions=''/>
-
-### CSS properties
-
-These are the various CSS properties that are used in the component, with a short description of their use.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Loading} exclusions='' table='properties'/>
-
-### Reflected attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Loading} table="reflects"/>
+<TableBuilder name="Loading" />
