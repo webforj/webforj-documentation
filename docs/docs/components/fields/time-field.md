@@ -3,6 +3,7 @@ sidebar_position: 40
 title: TimeField
 slug: timefield
 description: A component that provides a default browser-based time picker for selecting a time value through an input field.
+sidebar_class_name: updated-content
 ---
 
 <DocChip chip='shadow' />
@@ -48,9 +49,10 @@ If setting a raw string value, use the `setText()` method carefully:
 timeField.setText("09:15:00"); // valid
 ```
 
-:::tip
-When using `setText(...)`, the input must conform to the `HH:mm:ss` format. If parsing fails, an `IllegalArgumentException` will be thrown.
+:::warning
+ When using the `setText()` method, an `IllegalArgumentException` will be thrown if the component can't parse the input in the `HH:mm:ss` format.
 :::
+
 
 :::info Picker UI 
 The appearance of the time picker input UI depends not only on the selected locale but also on the browser and operating system being used. This ensures automatic consistency with the interface users are already familiar with.
