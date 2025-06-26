@@ -3,6 +3,7 @@ sidebar_position: 30
 title: PasswordField
 slug: passwordfield
 description: A single-line input component for securely entering and masking password data.
+sidebar_class_name: updated-content
 ---
 
 <DocChip chip='shadow' />
@@ -37,7 +38,7 @@ passwordField.setValue("MySecret123!");
 
 If no value has been entered by the user and no default is set, the field will return an empty string (`""`).
 
-This behavior mimics that of the native HTML `<input type="password">`, where the `.value` property holds the current input.
+This behavior mimics that of the native HTML `<input type="password">`, where the `value` property holds the current input.
 
 
 :::tip
@@ -59,31 +60,24 @@ The `PasswordField` is best used in scenarios where capturing or handling sensit
 
 Users can reveal the value of the `PasswordField` by clicking on the reveal icon. This allows users to verify what they’ve entered, or copy the information to their clipboard. However, for high-security environments, you can use `setPasswordReveal()` to remove the reveal icon and prevent users from seeing the value. You can verify if a user can use the reveal icon to show the value with the `isPasswordReveal()` method.
 
-## Placeholder text
-
-You can set placeholder text for the `PasswordField` using the `setPlaceholder()` method. The placeholder text is displayed when the field is empty, helping to prompt the user to enter appropriate input into the `PasswordField`.
-
 ## Pattern matching
 
-You can apply a regular expression pattern to the `PasswordField` using the `setPattern()` method. This is especially useful when enforcing strong password rules, such as requiring a mix of uppercase and lowercase letters, numbers, and symbols.
+Applying a regular expression pattern to the `PasswordField` using the `setPattern()` method is strongly recommended. This allows you to enforce character rules and structural requirements, ensuring users create secure and compliant credentials. Pattern matching is especially useful when enforcing strong password rules, such as requiring a mix of uppercase and lowercase letters, numbers, and symbols.
 
 The pattern must follow the syntax of a [JavaScript regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions), as interpreted by the browser. The `u` (Unicode) flag is used internally to ensure accurate validation across all Unicode code points. Do **not** include forward slashes (`/`) around the pattern.
+
+In the following snippet, the pattern requires at least one lowercase letter, one uppercase letter, one number, and a minimum length of 8 characters.
 
 ```java
 passwordField.setPattern("(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}");
 ```
 
-In this example, the pattern requires at least one lowercase letter, one uppercase letter, one number, and a minimum length of 8 characters.
-
 If the pattern is missing or invalid, no validation will be applied.
 
 :::tip
-You can provide a tooltip with `setTitle()` to help users understand the password requirements. Consider also placing helper text nearby to visually communicate what makes a valid password.
+Use `setLabel()` to provide a clear label describing the password field's purpose. To help users understand password requirements, use `setHelperText()` to display guidance or rules directly beneath the field.
 :::
 
-:::note
-Using a pattern is strongly recommended for password fields to ensure users create secure and compliant credentials. Patterns allow you to enforce character rules and structural requirements. See the [Validation](#best-practices) section for more context.
-:::
 
 ## Minimum and maximum length
 
