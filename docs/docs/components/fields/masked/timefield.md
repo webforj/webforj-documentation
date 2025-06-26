@@ -5,6 +5,7 @@ sidebar_position: 20
 
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-timefield" />
+<DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedTimeField" top='true'/>
 
 The `MaskedTimeField` is a text input control designed for precise, structured time entry. It lets users enter times as **numbers** and automatically formats the input based on a defined mask when the field loses focus. The mask is a string that specifies the expected time format, guiding both input and display.
@@ -232,14 +233,4 @@ spinner.setSpinField(MaskedTimeFieldSpinner.SpinField.HOUR);
 
 ## Styling
 
-### Shadow parts
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TimeField} table='parts' exclusions='' />
-
-### CSS properties
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TimeField} exclusions='' table='properties' />
-
-### Reflected attributes
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TimeField} table="reflects" />
+<TableBuilder name="MaskedTimeField" />

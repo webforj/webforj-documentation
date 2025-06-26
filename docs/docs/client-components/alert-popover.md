@@ -17,21 +17,10 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info CLIENT COMPONENT
-This section outlines styling information for the **`<dwc-alert-popover>`** component. This component is **client side only** - it cannot be instantiated on its own via the API, but may make up part of API components.
+This section outlines styling information for the **`<dwc-alert-popover>`** component. This component is **client side only** - it can't be instantiated on its own via the API, but may make up part of API components.
 :::
 
+## Styling
 
+<TableBuilder name="dwc-alert-popover" clientComponent />
 
-
-
-### Reflected Attributes
-
-  The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-  
-  <TableBuilder tag='dwc-alert-popover' table="reflects"/>
-
-### Dependencies
-
-  This component relies on the following components - see the related article for more detailed styling information:
-  
-  <TableBuilder tag='dwc-alert-popover' table="dependencies"/>

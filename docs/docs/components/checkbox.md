@@ -3,13 +3,9 @@ title: CheckBox
 sidebar_position: 20
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 <DocChip chip="shadow" />
-
 <DocChip chip="name" label="dwc-checkbox" />
-
+<DocChip chip='since' label='23.01' />
 <JavadocLink type="foundation" location="com/webforj/component/optioninput/CheckBox" top='true'/>
 
 The `CheckBox` class creates a component that can be selected or deselected, and which displays its state to the user. When clicked, a check mark appears inside the box, to indicate an affirmative choice (on). When clicked again, the check mark disappears, indicating a negative choice (off).
@@ -78,29 +74,7 @@ height = '150px'
 
 <br/>
 
-### Shadow parts
-
-These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Checkbox} table="parts"/>
-
-### CSS properties
-
-These are the various CSS properties that are used in the component, with a short description of their use.
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Checkbox} table="properties"/>
-
-### Reflected attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Checkbox} table="reflects"/>
-
-### Dependencies
-
-This component relies on the following components - see the related article for more detailed styling information:
-
-<TableBuilder tag='dwc-checkbox' table="dependencies"/>
+<TableBuilder name="Checkbox" />
 
 ## Best practices
 

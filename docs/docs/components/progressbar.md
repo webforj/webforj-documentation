@@ -4,9 +4,8 @@ sidebar_position: 90
 ---
 
 <DocChip chip='shadow' />
-
 <DocChip chip='name' label="dwc-progressbar" />
-
+<DocChip chip='since' label='24.02' />
 <JavadocLink type="foundation" location="com/webforj/component/progressbar/ProgressBar" top='true'/>
 
 ProgressBar is component that visually displays the progress of some task. As the task progresses towards completion, the progress bar displays the task's percentage of completion. This percentage is represented visually by a rectangle which starts out empty and gradually becomes filled in as the task progresses. In addition, the progress bar can display a textual representation of this percentage.
@@ -78,24 +77,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='320px'
 />
 
-### Shadow parts
-
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').ProgressBar} table='parts' />
-
-### CSS properties
-
-These are the various CSS properties that are used in the component, with a short description of their use.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').ProgressBar} table='properties'/>
-
-### Reflected attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').ProgressBar} table="reflects" />
-
+<TableBuilder name="ProgressBar" />
 
 ## Best practices 
 

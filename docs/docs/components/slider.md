@@ -6,6 +6,7 @@ sidebar_class_name: updated-content
 
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-slider" />
+<DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/slider/Slider" top='true'/>
 
 The `Slider` component in webforJ provides an interactive control that allows users to select a value within a specific range by moving a knob. This feature is particularly useful for apps requiring precise or intuitive input, such as selecting volumes, percentages, or other adjustable values.
@@ -206,14 +207,4 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '460px'
 />
 
-
-### Shadow Parts
-These are the various parts of the shadow DOM for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag='dwc-slider' table="parts"/>
-
-### Reflected Attributes
-
-  The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-  
-  <TableBuilder tag='dwc-slider' table="reflects"/>
+<TableBuilder name="Slider" />

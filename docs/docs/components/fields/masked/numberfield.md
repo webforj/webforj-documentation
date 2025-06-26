@@ -5,6 +5,7 @@ sidebar_position: 10
 
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-numberfield" />
+<DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedNumberField" top='true'/>
 
 The `MaskedNumberField` is a text input designed for structured numeric entry. It ensures numbers are formatted consistently based on a defined mask, making it especially useful for financial forms, pricing fields, or any input where precision and readability matter.
@@ -171,20 +172,4 @@ height = '120px'
 
 ## Styling
 
-### Shadow parts
-
-These are the various parts of the [shadow DOM](../../../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').NumberField} table='parts' exclusions=''/>
-
-### CSS properties
-
-These are the various CSS properties that are used in the component, with a short description of their use.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').NumberField} exclusions='' table='properties'/>
-
-### Reflected attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').NumberField} table="reflects" />
+<TableBuilder name="MaskedNumberField" />

@@ -4,13 +4,9 @@ slug: tabbedpane
 sidebar_position: 125
 ---
 
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import Chip from '@mui/material/Chip';
-
 <DocChip chip='shadow' />
-
 <DocChip chip='name' label="dwc-tabbed-pane" />
-
+<DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/tabbedpane/TabbedPane" top='true'/>
 
 The `TabbedPane` class provides a compact and organized way of displaying content that is divided into multiple sections, each associated with a `Tab`. Users can switch between these sections by clicking on the respective tabs, often labeled with text and/or icons. This class simplifies the creation of multifaceted interfaces where different content or forms need to be accessible but not simultaneously visible.
@@ -203,35 +199,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="250px"
 />
 
-### Shadow parts
-
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TabbedPane} table='parts' />
-
-### Slots
-
-Listed below are the slots available for utilization within the `Button` component. These slots act as placeholders within the component that control where the children of a customized element should be inserted within the shadow tree.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TabbedPane} table='slots' />
-
-### CSS properties
-
-These are the various CSS properties that are used in the component, with a short description of their use.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TabbedPane} table='properties' />
-
-### Reflected attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TabbedPane} table="reflects" />
-
-### Dependencies
-
-This component relies on the following components - see the related article for more detailed styling information:
-
-<TableBuilder tag='dwc-tabbed-pane' table="dependencies" />
+<TableBuilder name="TabbedPane" />
 
 ## Best practices 
 

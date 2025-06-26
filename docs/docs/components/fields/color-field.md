@@ -7,6 +7,7 @@ description: A component that provides a default browser-based color picker, all
 
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-color-chooser" />
+<DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/ColorField" top='true'/>
 
 <ParentLink parent="Field" />

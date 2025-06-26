@@ -6,6 +6,7 @@ sidebar_class_name: new-content
 
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-toolbar" />
+<DocChip chip='since' label='24.12' />
 <JavadocLink type="toolbar" location="com/webforj/component/layout/toolbar/Toolbar" top='true'/>
 
 Toolbars offer users quick access to core actions and navigation elements. The webforJ `Toolbar` component is a horizontal container that can hold a set of action buttons, icons, or other components. It's well-suited for managing page controls and housing key functions like a search bar or a notification button.
@@ -65,20 +66,4 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '475px'
 />
 
-### Shadow parts
-
-These are the parts of the [shadow DOM](../glossary#shadow-dom) that can be targeted via CSS:
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Toolbar} table='parts'/>
-
-### Slots
-
-Available slots within the `Toolbar` component:
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Toolbar} table='slots'/>
-
-### Reflected attributes
-
-These are attributes visible in the DOM, allowing styling via attribute selectors:
-
-<TableBuilder tag={require('@site/docs/components/\_dwc_control_map.json').Toolbar} table="reflects"/>
+<TableBuilder name="Toolbar" />

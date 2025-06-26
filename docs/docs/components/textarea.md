@@ -4,9 +4,8 @@ sidebar_position: 130
 ---
 
 <DocChip chip="shadow" />
-
 <DocChip chip="name" label="dwc-textarea" />
-
+<DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/TextArea" top='true'/>
 
 The `TextArea` component in webforJ offers a solution for multi-line text input. End-users can freely type and edit text, while developers can set reasonable boundaries using features like maximum character limits, paragraph structure, and validation rules.
@@ -119,32 +118,4 @@ height = '300px'
 
 ## Styling
 
-### Shadow parts
-
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TextArea} table='parts' />
-
-### Slots
-
-Listed below are the slots available for utilization within the component. These slots act as placeholders within the component that control where the children of a customized element should be inserted within the shadow tree.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TextArea} table='slots'/>
-
-### CSS properties
-
-These are the various CSS properties that are used in the component, with a short description of their use.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TextArea} table='properties'/>
-
-### Reflected attributes
-
-The reflected attributes of a component will be shown as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').TextArea} table="reflects"/>
-
-### Dependencies
-
-This component relies on the following components - see the related article for more detailed styling information:
-
-<TableBuilder tag='dwc-button' table="dependencies"/>
+<TableBuilder name="TextArea" />

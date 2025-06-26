@@ -5,7 +5,8 @@ sidebar_class_name: new-content
 ---
 
 <DocChip chip="shadow" />  
-<DocChip chip="name" label="dwc-terminal" />  
+<DocChip chip="name" label="dwc-terminal" />
+<DocChip chip='since' label='24.10' />
 <JavadocLink type="terminal" location="com/webforj/component/terminal/Terminal" top='true'/>
 
 The `Terminal` component provides an interactive terminal emulator that behaves much like a traditional system console. It allows applications to display and manipulate a text-based interface, handling text output, receiving user input, interpreting control sequences, and maintaining screen buffers.
@@ -218,11 +219,6 @@ Some exotic sequence types like `APC`,`PM`, and `SOS` are recognized but silentl
 Custom sequences can be supported through integrations if needed.
 :::
 
-
 ## Styling
 
-### Shadow parts
-
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, which will be required when styling via CSS is desired.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Terminal} table='parts' />
+<TableBuilder name="Terminal" />

@@ -4,6 +4,7 @@ title: Elements
 slug: element
 ---
 
+<DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/element/Element" top='true'/>
 
 webforJ developers have the option of choosing not only from the rich library of components provided, but also integrating components from elsewhere. To facilitate this, the `Element` component can be used to simplify the integration of anything from simple HTML elements, to more complex custom web components. 

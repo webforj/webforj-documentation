@@ -3,18 +3,9 @@ title: Splitter
 sidebar_position: 115
 ---
 
-<!-- vale off -->
-
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
-import Chip from '@mui/material/Chip';
-
-<!-- vale on -->
-
-
 <DocChip chip='shadow' />
-
 <DocChip chip='name' label="dwc-splitter" />
-
+<DocChip chip='since' label='24.00' />
 <JavadocLink type="splitter" location="com/webforj/component/layout/splitter/Splitter" top='true'/>
 
 
@@ -98,42 +89,7 @@ Clicking the "Clear State" button calls the `cleanState()` method and refreshes 
 
 ## Styling
 
-### Shadow parts
-
-These are the various parts of the [shadow DOM](../glossary#shadow-dom) for the component, necessary for styling via CSS.
-
-<!-- vale off -->
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Splitter} table='parts'  />
-<!-- vale on -->
-
-### Slots
-
-These are the available slots within the `Splitter` component. These slots serve as placeholders, guiding the insertion of customized element children into the shadow tree.
-
-<!-- vale off -->
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Splitter} table='slots'  />
-<!-- vale on -->
-
-<!-- ### CSS properties
-
-Here are the different CSS properties used in the component, along with a brief explanation of their purpose.
-
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Splitter}  table='properties'/> -->
-
-
-### Reflected attributes
-
-The component's reflected attributes appear as attributes in the rendered HTML element within the DOM, allowing for styling based on these attributes.
-
-<!-- vale off -->
-<TableBuilder tag={require('@site/docs/components/_dwc_control_map.json').Splitter} table="reflects" exclusions={require('@site/static/exclusions.json').splitter.reflects}/>
-<!-- vale on -->
-
-### Dependencies
-
-This component relies on the following components - see the related article for more detailed styling information:
-
-<TableBuilder tag='dwc-splitter' table="dependencies"/>
+<TableBuilder name="Splitter" />
 
 ## Best practices 
 

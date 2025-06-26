@@ -4,8 +4,11 @@ title: Dynamic Styling
 slug: styling
 sidebar_class_name: new-content
 ---
+<!-- vale off -->
+# Dynamic Styling <DocChip chip='since' label='25.00' />
+<!-- vale on -->
 
-in webforJ 25 and higher, it's possible to style individual rows and cells in the Table using custom part names. These names can be assigned dynamically based on your app's logic, giving you fine-grained control over the table’s appearance.
+In webforJ 25 and higher, it's possible to style individual rows and cells in the Table using custom part names. These names can be assigned dynamically based on your app's logic, giving you fine-grained control over the table’s appearance.
 
 ## Row styling
 
@@ -38,7 +41,6 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-
 ## Reacting to data updates
 
 If your app modifies data programmatically, such as updating a user's age, the table will automatically re-evaluate and reapply any associated row or cell styles once the updated item is committed in the repository 
@@ -49,3 +51,31 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='475px'
 />
 
+## Striped rows
+
+Enable alternating background colors for rows to improve readability:
+
+```java
+// Apply striped row styling
+table.setStriped(true);
+```
+
+## Borders
+
+Configure which borders are shown around the `Table`, columns, and rows:
+
+```java
+// Enable all borders
+table.setBordersVisible(EnumSet.of(Table.Border.AROUND, Table.Border.COLUMNS, Table.Border.ROWS));
+
+// Remove all borders
+table.setBordersVisible(EnumSet.noneOf(Table.Border.class));
+```
+
+The demo below showcases a simple way to align your `Table's` visual appearance with the rest of your app using `setStriped()` and `setBordersVisible()`.
+
+<ComponentDemo 
+path='/webforj/tablelayoutstyling?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableLayoutStylingView.java'
+height='300px'
+/>

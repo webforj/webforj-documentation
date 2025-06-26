@@ -77,7 +77,7 @@ export default function JavadocLink({
         margin-bottom: 1em;
         margin-left: 0.5em;
         float: right;
-        @media (max-width: 500px) {
+        @media (max-width: 1250px) {
           margin-bottom: 1em;
           float: none;
           margin-left: -0.25em;
@@ -101,6 +101,8 @@ export default function JavadocLink({
       background-color: var(--javadoclink-hover-bg);
       color: var(--javadoclink-hover-color);
     }
+    position: relative;
+    top: 0.3rem;
   `;
 
   return (
