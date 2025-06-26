@@ -1,5 +1,6 @@
 package com.webforj.samples.views.drawer;
 
+import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -15,6 +16,7 @@ import com.webforj.router.annotation.Route;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 
 @Route
 @FrameTitle("Task Manager Drawer")

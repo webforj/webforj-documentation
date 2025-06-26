@@ -10,7 +10,6 @@ import com.webforj.component.optioninput.CheckBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-
 @Route
 @FrameTitle("Drawer AutoFocus")
 public class DrawerAutoFocusView extends Composite<FlexLayout> {

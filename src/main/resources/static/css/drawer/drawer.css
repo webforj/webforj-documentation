@@ -1,0 +1,13 @@
+.drawer::part(control){
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+dwc-checkbox[checked] {
+  opacity: 0.6;
+}
