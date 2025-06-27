@@ -16,9 +16,6 @@ public class TimeFieldView extends Composite<FlexLayout> {
   
   public TimeFieldView() {
     getBoundComponent().setMargin("var(--dwc-space-m)");
-
-    reminder.addClassName("date__input");
-
     getBoundComponent().add(reminder);
   }
 
