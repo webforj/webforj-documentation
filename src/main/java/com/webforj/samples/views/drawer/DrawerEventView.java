@@ -1,6 +1,5 @@
 package com.webforj.samples.views.drawer;
 
-import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -17,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@InlineStyleSheet("context://css/drawer/drawer.css")
 @Route
 @FrameTitle("Task Manager Drawer")
 public class DrawerEventView extends Composite<FlexLayout> {
@@ -32,8 +30,8 @@ public class DrawerEventView extends Composite<FlexLayout> {
   public DrawerEventView() {
     drawer.setLabel("Task Manager");
 
-    drawer.onOpen(e -> Toast.show("Drawer Opened", 3000));
-    drawer.onClose(e -> Toast.show("Drawer Closed", 3000));
+    drawer.addOpenListener(e -> Toast.show("Drawer Opened", 3000));
+    drawer.addCloseListener(e -> Toast.show("Drawer Closed", 3000));
 
     drawer.open();
 

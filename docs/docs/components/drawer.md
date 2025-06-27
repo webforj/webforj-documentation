@@ -20,7 +20,7 @@ cssURL='/css/drawer/drawerWelcome.css'
 
 ## Autofocus
 
-The `Drawer` component supports autofocus, which automatically places the cursor on the first focusable element when the `Drawer` opens. This improves usability and accessibility—especially for keyboard users and screen readers—by eliminating the need to manually tab through the `Drawer’s` contents.
+The `Drawer` component supports autofocus, which automatically sets focus on the first focusable element when the `Drawer` opens. This enhances usability by bringing attention directly to the first actionable element.
 
 <ComponentDemo
 path='/webforj/drawerautofocus?'
@@ -32,7 +32,7 @@ height='600px'
 
 ## Label
 
-The `setLabel()` method improves accessibility by providing a meaningful description of the `Drawer’s` content. When a label is set, assistive technologies like screen readers can announce it, helping users understand the purpose of the `Drawer` without seeing its visual contents.
+The `setLabel()` method can provide a meaningful description of the `Drawer’s` content. When a label is set, assistive technologies like screen readers can announce it, helping users understand the purpose of the `Drawer` without seeing its visual contents.
 
 ```java
 Drawer drawer = new Drawer();
@@ -97,13 +97,12 @@ height='600px'
 
 ## Event handling
 
-The `Drawer` component emits lifecycle events that can be used to trigger application logic in response to changes in its open or closed state. 
+The `Drawer` component emits lifecycle events that can be used to trigger app logic in response to changes in its open or closed state. 
 
 Supported events:
 
-- `ON_OPENED`: Fired when the drawer is fully opened.
-- `ON_CLOSED`: Fired when the drawer is fully closed.
-- `ON_TOGGLED`: Fired whenever the drawer changes state (either opened or closed).
+- `DrawerOpenEvent`: Fired when the drawer is fully opened.
+- `DrawerCloseEvent`: Fired when the drawer is fully closed.
 
 You can attach listeners to these events to run logic when the `Drawer’s` state changes:
 
@@ -136,8 +135,8 @@ height='600px'
 
 To ensure an optimal user experience when using the `Drawer` component, consider the following best practices:
 
-1. **Placement**: Decide whether the `Drawer` should slide in from the left, right, top, or bottom, based on your application's layout and user experience considerations. Consider user preferences and design conventions.
+1. **Placement**: Decide whether the `Drawer` should slide in from the left, right, top, or bottom, based on your app's layout and user experience considerations. Consider user preferences and design conventions.
 
-2. **Accessibility**: Pay special attention to accessibility. Ensure that users can open and close the `Drawer` using keyboard controls and that screen readers can announce its presence and state. Provide ARIA roles and labels as necessary.
+2. **Accessibility**: Pay special attention to accessibility. Ensure that users can open and close the `Drawer` using keyboard controls and that screen readers can announce its presence and state. Provide ARIA (Accessible Rich Internet Applications) roles and labels as necessary.
 
-3. **Swipe Gestures**: On touch-enabled devices, support swipe gestures for opening and closing the `Drawer`. This is an intuitive way for users to interact with it.
+3. **Swipe Gestures**: On tap-enabled devices, support swipe gestures for opening and closing the `Drawer`. This is an intuitive way for users to interact with it.
