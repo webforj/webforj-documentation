@@ -1,0 +1,6 @@
+extends: existence
+message: "Avoid using '%s'. Focus more on explicitly defining what the feature does to improve 'x'."
+level: warning
+ignorecase: true
+raw:
+  - enhanc(e|ed|es|ing)? (the (\w+|and \w+)?|\w+)?( and \w+)?
