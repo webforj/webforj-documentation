@@ -6,6 +6,7 @@ import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.optioninput.RadioButton;
 import com.webforj.component.slider.Slider;
+import com.webforj.data.event.ValueChangeEvent;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
@@ -43,14 +44,14 @@ public class SliderTickSpacingView extends Composite<FlexLayout> {
         .setMax((double) range)
         .setInvalidMessage("Must be between 1 and " + range)
         .setPlaceholder("Enter major tick spacing (e.g., 10)")
-        .onValueChange(ev -> updateTickSpacing());
+        .onValueChange(this::updateTickSpacing);
 
     minorTickInput
         .setMin(1d)
         .setMax((double) range)
         .setInvalidMessage("Must be between 1 and " + range)
         .setPlaceholder("Enter minor tick spacing (e.g., 2)")
-        .onValueChange(ev -> updateTickSpacing());
+        .onValueChange(this::updateTickSpacing);
 
     snapToTicks.onToggle(ev -> slider.setSnapToTicks(ev.isToggled()));
     showTicks.onToggle(ev -> slider.setTicksVisible(ev.isToggled()));
@@ -65,16 +66,19 @@ public class SliderTickSpacingView extends Composite<FlexLayout> {
     );
   }
 
-  private void updateTickSpacing() {
-    Double majorVal = majorTickInput.getValue();
-    Double minorVal = minorTickInput.getValue();
+  private void updateTickSpacing(ValueChangeEvent<Double> ev) {
+    Double eventVal = ev.getValue();
+    Object source = ev.getSource();
 
-    if (!majorTickInput.isInvalid() && majorVal != null) {
-      slider.setMajorTickSpacing(majorVal.intValue());
-    }
-
-    if (!minorTickInput.isInvalid() && minorVal != null) {
-      slider.setMinorTickSpacing(minorVal.intValue());
+    if (eventVal != null) {
+      int spacingVal = eventVal.intValue();
+      if (source == majorTickInput && !majorTickInput.isInvalid()) {
+        slider.setMajorTickSpacing(spacingVal);
+      } else if (source == minorTickInput && !minorTickInput.isInvalid()) {
+        slider.setMinorTickSpacing(spacingVal);
+      }
+    } else {
+      return;
     }
   }
 }
