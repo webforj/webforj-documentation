@@ -44,14 +44,3 @@
   font-size: 1rem;
   color: var(--dwc-color-text);
 }
-
-.todo-progress {
-  display: flex;
-  flex-direction: column;
-  gap: var(--dwc-space-xs);
-}
-
-.todo-progress-label {
-  font-size: 0.85rem;
-  color: var(--dwc-color-neutral-600);
-}
