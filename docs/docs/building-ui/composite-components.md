@@ -7,7 +7,7 @@ draft: false
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
-The `Composite` component in webforJ lets developers create custom, self-contained components by wrapping internal components into a single reusable unit. You can encapsulate logic, layout, and styling while controlling exactly what methods and data are exposed.
+The `Composite` component in webforJ lets developers create custom, self-contained components by wrapping internal components into a single reusable unit. You can encapsulate logic, layout, and styling while controlling exactly what methods and data is exposed.
 
 Use a `Composite` when you want to:
 	-	Reuse component patterns throughout your application
@@ -201,7 +201,7 @@ public class ThemedPanel extends Composite<FlexLayout> {
 
 ### Slot-based layouts
 
-Create flexible layout components with predefined areas (slots) where other components can be placed. This pattern is common in application shells, card layouts, and dashboard widgets.
+Create flexible layout components with predefined areas (slots) where other components can be placed. This pattern is common in app shells, card layouts, and dashboard widgets.
 
 ```java
 public class SlottedLayout extends Composite<FlexLayout> {
