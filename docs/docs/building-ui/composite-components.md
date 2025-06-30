@@ -7,16 +7,14 @@ draft: false
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
-The `Composite` component in webforJ lets developers create custom, self-contained components by wrapping internal components into a single reusable unit. This approach provides flexibility to encapsulate logic, layout, and styling while maintaining precise control over the component's public interface.
+The `Composite` component in webforJ lets developers create custom, self-contained components by wrapping internal components into a single reusable unit. You can encapsulate logic, layout, and styling while controlling exactly what methods and data are exposed.
 
 Use a `Composite` when you want to:
 	-	Reuse component patterns throughout your application
 	-	Encapsulate layout and behavior into a single, maintainable unit
 	-	Compose multiple components without exposing implementation details
 
-:::tip
 It's highly recommended to create custom components by utilizing the `Composite` component, rather than extending the base `Component` component.
-:::
 
 ## Defining a `Composite`
 
@@ -36,18 +34,93 @@ To create the bound component manually with custom parameters or default childre
 
 ```java
 public class OverrideComposite extends Composite<FlexLayout> {
-	
-	TextField nameField;
-	Button submit;
+    TextField nameField;
+    Button submit;
 
-	@Override
-	protected FlexLayout initBoundComponent() {
-		nameField = new TextField();
-		submit = new Button("Submit");
-		return new FlexLayout(nameField, submit);
-	}
+    @Override
+    protected FlexLayout initBoundComponent() {
+        nameField = new TextField();
+        submit = new Button("Submit");
+        return new FlexLayout(nameField, submit);
+    }
 }
 ```
+
+This override lets you pass parameters to the constructor, add default children, or set up custom layout behavior.
+
+## Fluent API design
+
+A fluent API lets you chain method calls together for cleaner, more readable code. Setter methods return `this` instead of `void`, so you can link multiple method calls in a single statement.
+
+### Creating fluent methods
+
+To make your `Composite` components fluent, follow this pattern:
+
+```java
+public class UserForm extends Composite<FlexLayout> {
+    private TextField nameField;
+    private TextField emailField;
+    
+    // ... constructor and setup code ...
+
+    // Fluent setter methods - return 'this' for chaining
+    public UserForm setUserName(String name) {
+        nameField.setValue(name);
+        return this; // ← This enables chaining
+    }
+    
+    public UserForm setUserEmail(String email) {
+        emailField.setValue(email);
+        return this; // ← This too
+    }
+    
+    public UserForm setRequired(boolean required) {
+        nameField.setRequired(required);
+        emailField.setRequired(required);
+        return this; // ← And this
+    }
+}
+```
+
+### Using fluent APIs
+
+With fluent methods, you can configure components like this:
+
+```java
+// Instead of this verbose approach:
+UserForm form = new UserForm();
+form.setUserName("John Doe");
+form.setUserEmail("john@example.com");
+form.setRequired(true);
+
+// You can write this concise, chainable version:
+UserForm form = new UserForm()
+    .setUserName("John Doe")
+    .setUserEmail("john@example.com")
+    .setRequired(true);
+```
+
+The demo below shows a working example of a `Composite` component with fluent API methods. Notice how the form is configured using method chaining when it's instantiated.
+
+<ComponentDemo 
+path='/webforj/compositefluentapi?' 
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/composite.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeFluentAPIView.java'
+height='350px'
+/>
+
+## Custom events
+
+Create domain-specific events for important state changes in your `Composite` components. Custom events allow your components to communicate important actions or data changes to parent components or listeners.
+
+Custom events extend `ComponentEvent` and can carry specific data relevant to your business logic:
+
+<ComponentDemo 
+path='/webforj/compositecustomevent?' 
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/composite.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeCustomEventView.java'
+height='350px'
+/>
 
 ## Lifecycle management {#lifecycle-management}
 
@@ -69,35 +142,100 @@ public class ApplicationComponent extends Composite<Div> {
 ```
 
 :::tip Using `getBoundComponent()`
-Alternatively, you can use `getBoundComponent()` inside the constructor for setup, which is a common pattern.
+Alternatively, you can use getBoundComponent() inside the constructor for setup, which is the preferred pattern.
 :::
 
 Similarly, the `onDidDestroy()` method fires once the bound component has been destroyed, and allows for additional behavior to be fired on destruction should it be desired.
 
-### Example `Composite` component {#example-composite-component}
-
-### Example 1: Analytics Card — Grouped UI
+## Component grouping
 
 Sometimes, you may want to use a `Composite` not for reuse, but simply to group related components together into a presentable unit. The following analytics card brings together a title, value, progress indicator, and chart into one visually consistent UI.
 
-This is useful when you want layout encapsulation, but don’t necessarily need the component to be reused in other contexts.
+Use this when you want to organize components together without worrying about reusing them elsewhere.
 
-<ComponentDemo 
-path='/webforj/analyticscardcomposite?' 
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/composite.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeView.java'
+<ComponentDemo
+path='/webforj/analyticscardcomposite?'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/analyticscomposite.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/AnalyticsCardCompositeView.java'
 height='550px'
 />
 
-### Example 2: To-do List — Reusable Custom Component
+## Advanced patterns
 
-The true power of `Composite` shines when building reusable UI components. In this example, a single to-do item is modeled as a `Composite<FlexLayout>`. It includes a toggle and label, and can be reused in any task list, dashboard, or form.
+### Theme-aware composites
 
-<ComponentDemo 
-path='/webforj/composite?' 
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/composite.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeView.java'
-height='550px'
-/>
+Create components that can switch between different visual themes. For example, a panel that can be styled as primary, secondary, success, or danger depending on its purpose.
 
-This shows how `Composite` can be used to group multiple webforJ components into one encapsulated unit, making it easier to reuse and maintain across larger applications.
+```java
+public class ThemedPanel extends Composite<FlexLayout> {
+    public enum PanelTheme {
+        DEFAULT,
+        PRIMARY,
+        SUCCESS
+    }
+    
+    private PanelTheme theme = PanelTheme.DEFAULT;
+    
+    public ThemedPanel() {
+        // Apply initial theme
+        applyTheme();
+    }
+    
+    public ThemedPanel setTheme(PanelTheme theme) {
+        // Remove old theme CSS class
+        getBoundComponent().removeClassName("theme-" + this.theme.toString().toLowerCase());
+        
+        this.theme = theme;
+        
+        // Add new theme CSS class
+        getBoundComponent().addClassName("theme-" + theme.toString().toLowerCase());
+        return this;
+    }
+    
+    private void applyTheme() {
+        getBoundComponent().addClassName("themed-panel");
+        getBoundComponent().addClassName("theme-" + theme.toString().toLowerCase());
+    }
+}
+```
+
+### Slot-based layouts
+
+Create flexible layout components with predefined areas (slots) where other components can be placed. This pattern is common in application shells, card layouts, and dashboard widgets.
+
+```java
+public class SlottedLayout extends Composite<FlexLayout> {
+    private FlexLayout header;
+    private FlexLayout content;
+    private FlexLayout footer;
+    
+    public SlottedLayout() {
+        initializeSlots();
+    }
+    
+    private void initializeSlots() {
+        header = new FlexLayout().addClassName("slot-header");
+        content = new FlexLayout().addClassName("slot-content");
+        footer = new FlexLayout().addClassName("slot-footer");
+            
+        getBoundComponent()
+            .setDirection(FlexDirection.COLUMN)
+            .add(header, content, footer);
+    }
+    
+    public SlottedLayout addToHeader(Component... components) {
+        header.add(components);
+        return this;
+    }
+    
+    public SlottedLayout addToContent(Component... components) {
+        content.add(components);
+        return this;
+    }
+    
+    public SlottedLayout addToFooter(Component... components) {
+        footer.add(components);
+        return this;
+    }
+}
+```
