@@ -11,7 +11,7 @@ import com.webforj.component.optioninput.RadioButtonGroup;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route
+@Route("drawerplacement")
 @FrameTitle("Drawer Placement")
 public class DrawerPlacementView extends Composite<FlexLayout> {
 

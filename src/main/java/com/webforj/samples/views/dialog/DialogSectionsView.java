@@ -9,7 +9,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @InlineStyleSheet("context://css/dialog/dialog.css")
-@Route
+@Route("dialogsectionsview")
 @FrameTitle("Dialog Sections")
 public class DialogSectionsView extends Composite<FlexLayout> {
 

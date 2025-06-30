@@ -14,7 +14,7 @@ import com.webforj.router.annotation.Route;
 
 import java.util.ArrayList;
 
-@Route
+@Route("columnslayoutform")
 @FrameTitle("Columns Layout Form")
 public class ColumnsLayoutFormView extends Composite<Div> {
   TextField firstName = new TextField("First Name");

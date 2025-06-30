@@ -15,7 +15,7 @@ import com.webforj.router.annotation.Route;
 /**
  * Demo to show BusyIndicator basics.
  */
-@Route
+@Route("busydemo")
 @FrameTitle("Busy Basics")
 public class BusyDemoView extends Composite<FlexLayout> {
 

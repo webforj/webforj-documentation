@@ -10,7 +10,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @InlineStyleSheet("context://css/dialog/dialog.css")
-@Route
+@Route("dialogcloseview")
 @FrameTitle("Dialog Close")
 public class DialogCloseView extends Composite<FlexLayout> {
 

@@ -14,7 +14,7 @@ import com.webforj.router.annotation.Route;
  * Demo to showcase the different customization options for the spinner in the BusyIndicator.
  */
 
-@Route
+@Route("busyspinners")
 @FrameTitle("Busy Spinners")
 public class BusySpinnerDemoView extends Composite<Div> {
 

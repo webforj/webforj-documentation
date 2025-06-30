@@ -10,7 +10,7 @@ import com.webforj.component.layout.flexlayout.FlexWrap;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route
+@Route("buttonthemes")
 @FrameTitle("Button Themes")
 public class ButtonThemesView extends Composite<FlexLayout> {
   

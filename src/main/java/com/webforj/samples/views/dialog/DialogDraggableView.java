@@ -9,7 +9,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @InlineStyleSheet("context://css/dialog/dialog.css")
-@Route
+@Route("dialogdraggableview")
 @FrameTitle("Dialog Dragging")
 public class DialogDraggableView extends Composite<FlexLayout> {
 

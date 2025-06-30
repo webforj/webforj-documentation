@@ -13,7 +13,7 @@ import com.webforj.router.annotation.Route;
 /**
  * Simple program to demonstrate the various Button expanse values.
  */
-@Route
+@Route("buttonexpanses")
 @FrameTitle("Button Expanses")
 public class ButtonExpansesView extends Composite<FlexLayout> {
 	

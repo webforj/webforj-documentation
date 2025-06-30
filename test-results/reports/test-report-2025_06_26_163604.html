@@ -1,0 +1,1147 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Playwright Test Execution Report</title>
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@ce8b10435bcbae260c334c0d0c6b61d2c19b6168/spark/css/spark-style.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@7cc78ce/spark/js/jsontree.js"></script>
+<style type="text/css">.test-detail-body { font-size: 14px; }
+.step-details { background-color: #f8f9fa; padding: 10px; margin: 5px 0; border-radius: 5px; }
+.browser-info { background-color: #e3f2fd; padding: 8px; border-radius: 4px; margin-bottom: 10px; }
+.error-details { background-color: #ffebee; padding: 10px; border-radius: 5px; }
+.test-step { margin: 5px 0; padding: 5px; }
+.step-pass { color: #4caf50; }
+.step-fail { color: #f44336; }
+.step-info { color: #2196f3; }
+</style></head><body class="spa -report dark">
+  <div class="app">
+    <div class="layout">
+<div class="header navbar">
+<div class="vheader">
+<div class="nav-logo">
+<a href="#">
+<div class="logo" style="background-image: url('https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png')"></div>
+</a>
+</div>
+<ul class="nav-left">
+<li class="search-box">
+<a class="search-toggle" href="#">
+<i class="search-icon fa fa-search"></i>
+<i class="search-icon-close fa fa-close"></i>
+</a>
+</li>
+<li class="search-input"><input id="search-tests" class="form-control" type="text" placeholder="Search..."></li>
+</ul>
+<ul class="nav-right">
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">WebForJ Component Testing Report</span></a>
+</li>
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">2025-06-26 16:36:04</span></a>
+</li>
+</ul>
+</div>
+</div><div class="side-nav">
+<div class="side-nav-inner">
+<ul class="side-nav-menu">
+<li class="nav-item dropdown" onclick="toggleView('test-view')">
+<a id="nav-test" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('category-view')">
+<a id="nav-category" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-tag"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+<a id="nav-dashboard" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bar-chart"></i></span>
+</a>
+</li>
+</ul>
+</div>
+</div>      <div class="vcontainer">
+        <div class="main-content">
+<div class="test-wrapper row view test-view">
+  <div class="test-list">
+    <div class="test-list-tools">
+<ul class="tools pull-left">
+<li><a href="#"><span class="font-size-14">Tests</span></a></li>
+</ul>
+<ul class="tools text-right">
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<div class="dropdown-divider"></div>
+<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
+<ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">WEBKIT</a><a class="dropdown-item" href="#">DrawerPlacementIT</a><a class="dropdown-item" href="#">CHROMIUM</a><a class="dropdown-item" href="#">FIREFOX</a>
+</ul>
+</li>
+</ul>
+</div>    <div class="test-list-wrapper scrollable">
+      <ul class="test-list-item">
+        <li class="test-item"  status="fail" test-id="1"
+          author=""
+          tag="DrawerPlacementIT CHROMIUM"
+          device="">
+          <div class="test-detail">
+            <p class="name">Browser: chromium [chromium]</p>
+            <p class="text-sm">
+              <span>4:36:04 PM</span> / <span>00:00:43:524</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">Browser: chromium [chromium]</h5>
+<span class='badge badge-success'>06.26.2025 4:36:04 PM</span>
+<span class='badge badge-danger'>06.26.2025 4:36:48 PM</span>
+<span class='badge badge-default'>00:00:43:524</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">DrawerPlacementIT</span>
+<span class="badge badge-pill badge-default">CHROMIUM</span></div>
+<div class="m-t-10 m-l-5"><div class='browser-info' style='color: black;'><strong>Browser:</strong> CHROMIUM<br><strong>Test Class:</strong> DrawerPlacementIT<br><strong>Description:</strong> Automated browser test for WebForJ components</div></div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:04 PM</td>
+        <td>
+          [16:36:04] 🚀 Starting test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:04 PM</td>
+        <td>
+          [16:36:04] Browser: CHROMIUM
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:04 PM</td>
+        <td>
+          [16:36:04] Test Class: DrawerPlacementIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:04 PM</td>
+        <td>
+          [16:36:04] 📱 Launching chromium browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:04 PM</td>
+        <td>
+          [16:36:04] Browser Configuration - Headless: true, SlowMo: 50ms
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>4:36:17 PM</td>
+        <td>
+          [16:36:17] ✅ Browser launched successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:17 PM</td>
+        <td>
+          [16:36:17] 🔧 Creating browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>4:36:17 PM</td>
+        <td>
+          [16:36:17] ✅ Browser context created
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:17 PM</td>
+        <td>
+          [16:36:17] 📄 Creating new page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>4:36:17 PM</td>
+        <td>
+          [16:36:17] ✅ Page created successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:17 PM</td>
+        <td>
+          [16:36:17] ✅ Browser setup completed - Ready for test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:17 PM</td>
+        <td>
+          <div class='test-step'><strong>Action:</strong> Navigate<br><strong>Element:</strong> URL<br><strong>Value:</strong> http://localhost:8080/drawerplacement</div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>4:36:17 PM</td>
+        <td>
+          [16:36:17] ✅ Successfully navigated to: http://localhost:8080/drawerplacement
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>4:36:48 PM</td>
+        <td>
+          <div class='error-details'><h4>Test Failure Details</h4><strong>Current Step:</strong> Navigation to http://localhost:8080/drawerplacement<br><strong>Current URL:</strong> http://localhost:8080/drawerplacement<br><strong>Error Type:</strong> TimeoutError<br><strong>Error Message:</strong> Error {
+  message='Timeout 30000ms exceeded.
+  name='TimeoutError
+  stack='TimeoutError: Timeout 30000ms exceeded.
+    at ProgressController.run (C:\Users\jturf\AppData\Local\Temp\playwright-java-8294644900015219226\package\lib\server\progress.js:75:26)
+    at Frame.click (C:\Users\jturf\AppData\Local\Temp\playwright-java-8294644900015219226\package\lib\server\frames.js:1021:23)
+    at FrameDispatcher.click (C:\Users\jturf\AppData\Local\Temp\playwright-java-8294644900015219226\package\lib\server\dispatchers\frameDispatcher.js:159:30)
+    at FrameDispatcher._handleCommand (C:\Users\jturf\AppData\Local\Temp\playwright-java-8294644900015219226\package\lib\server\dispatchers\dispatcher.js:94:40)
+    at DispatcherConnection.dispatch (C:\Users\jturf\AppData\Local\Temp\playwright-java-8294644900015219226\package\lib\server\dispatchers\dispatcher.js:361:39)
+}
+Call log:
+-   - waiting for locator("dwc-dropdown").locator("dwc-icon[part='suffix-icon']")
+<br><strong>Stack Trace:</strong><br><pre>com.microsoft.playwright.impl.WaitableResult.get(WaitableResult.java:52)
+com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:132)
+com.microsoft.playwright.impl.Connection.sendMessage(Connection.java:130)
+com.microsoft.playwright.impl.ChannelOwner.sendMessage(ChannelOwner.java:118)
+com.microsoft.playwright.impl.FrameImpl.clickImpl(FrameImpl.java:252)
+com.microsoft.playwright.impl.FrameImpl.lambda$click$8(FrameImpl.java:243)
+com.microsoft.playwright.impl.LoggingSupport.lambda$withLogging$0(LoggingSupport.java:36)
+com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:47)
+com.microsoft.playwright.impl.ChannelOwner.withLogging(ChannelOwner.java:97)
+com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:35)
+com.microsoft.playwright.impl.FrameImpl.click(FrameImpl.java:243)
+com.microsoft.playwright.impl.LocatorImpl.click(LocatorImpl.java:175)
+com.microsoft.playwright.Locator.click(Locator.java:2493)
+tests.DrawerTest.DrawerPlacementIT.testDrawerAppearsInEachPlacementAndCloseWithX(DrawerPlacementIT.java:23)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+java.base/java.lang.reflect.Method.invoke(Method.java:569)
+org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestTemplateMethod(TimeoutExtension.java:94)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+... (truncated)</pre></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log warning-bg">Warning</span></td>
+        <td>4:36:48 PM</td>
+        <td>
+          [16:36:48] ⚠️ Error during failure handling: Illegal char <:> at index 52: test-results\screenshots\screenshot_chromium_Browser: chromium_1750977408016_20250626_163648.png
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:48 PM</td>
+        <td>
+          [16:36:48] 🧹 Starting browser cleanup...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:48 PM</td>
+        <td>
+          [16:36:48] Closing page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:48 PM</td>
+        <td>
+          [16:36:48] Closing browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:48 PM</td>
+        <td>
+          [16:36:48] Closing browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>4:36:48 PM</td>
+        <td>
+          [16:36:48] ✅ Browser cleanup completed successfully
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="2"
+          author=""
+          tag="DrawerPlacementIT FIREFOX"
+          device="">
+          <div class="test-detail">
+            <p class="name">Browser: firefox [firefox]</p>
+            <p class="text-sm">
+              <span>4:36:48 PM</span> / <span>00:00:31:526</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">Browser: firefox [firefox]</h5>
+<span class='badge badge-success'>06.26.2025 4:36:48 PM</span>
+<span class='badge badge-danger'>06.26.2025 4:37:19 PM</span>
+<span class='badge badge-default'>00:00:31:526</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">DrawerPlacementIT</span>
+<span class="badge badge-pill badge-default">FIREFOX</span></div>
+<div class="m-t-10 m-l-5"><div class='browser-info' style='color: black;'><strong>Browser:</strong> FIREFOX<br><strong>Test Class:</strong> DrawerPlacementIT<br><strong>Description:</strong> Automated browser test for WebForJ components</div></div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:48 PM</td>
+        <td>
+          [16:36:48] 🚀 Starting test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:48 PM</td>
+        <td>
+          [16:36:48] Browser: FIREFOX
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:48 PM</td>
+        <td>
+          [16:36:48] Test Class: DrawerPlacementIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:48 PM</td>
+        <td>
+          [16:36:48] 📱 Launching firefox browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:48 PM</td>
+        <td>
+          [16:36:48] Browser Configuration - Headless: true, SlowMo: 50ms
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>4:36:48 PM</td>
+        <td>
+          [16:36:48] ✅ Browser launched successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:48 PM</td>
+        <td>
+          [16:36:48] 🔧 Creating browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>4:36:48 PM</td>
+        <td>
+          [16:36:48] ✅ Browser context created
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:48 PM</td>
+        <td>
+          [16:36:48] 📄 Creating new page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>4:36:48 PM</td>
+        <td>
+          [16:36:48] ✅ Page created successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:48 PM</td>
+        <td>
+          [16:36:48] ✅ Browser setup completed - Ready for test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:36:48 PM</td>
+        <td>
+          <div class='test-step'><strong>Action:</strong> Navigate<br><strong>Element:</strong> URL<br><strong>Value:</strong> http://localhost:8080/drawerplacement</div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>4:36:49 PM</td>
+        <td>
+          [16:36:49] ✅ Successfully navigated to: http://localhost:8080/drawerplacement
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          <div class='error-details'><h4>Test Failure Details</h4><strong>Current Step:</strong> Navigation to http://localhost:8080/drawerplacement<br><strong>Current URL:</strong> http://localhost:8080/drawerplacement<br><strong>Error Type:</strong> TimeoutError<br><strong>Error Message:</strong> Error {
+  message='Timeout 30000ms exceeded.
+  name='TimeoutError
+  stack='TimeoutError: Timeout 30000ms exceeded.
+    at ProgressController.run (C:\Users\jturf\AppData\Local\Temp\playwright-java-8294644900015219226\package\lib\server\progress.js:75:26)
+    at Frame.click (C:\Users\jturf\AppData\Local\Temp\playwright-java-8294644900015219226\package\lib\server\frames.js:1021:23)
+    at FrameDispatcher.click (C:\Users\jturf\AppData\Local\Temp\playwright-java-8294644900015219226\package\lib\server\dispatchers\frameDispatcher.js:159:30)
+    at FrameDispatcher._handleCommand (C:\Users\jturf\AppData\Local\Temp\playwright-java-8294644900015219226\package\lib\server\dispatchers\dispatcher.js:94:40)
+    at DispatcherConnection.dispatch (C:\Users\jturf\AppData\Local\Temp\playwright-java-8294644900015219226\package\lib\server\dispatchers\dispatcher.js:361:39)
+}
+Call log:
+-   - waiting for locator("dwc-dropdown").locator("dwc-icon[part='suffix-icon']")
+<br><strong>Stack Trace:</strong><br><pre>com.microsoft.playwright.impl.WaitableResult.get(WaitableResult.java:52)
+com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:132)
+com.microsoft.playwright.impl.Connection.sendMessage(Connection.java:130)
+com.microsoft.playwright.impl.ChannelOwner.sendMessage(ChannelOwner.java:118)
+com.microsoft.playwright.impl.FrameImpl.clickImpl(FrameImpl.java:252)
+com.microsoft.playwright.impl.FrameImpl.lambda$click$8(FrameImpl.java:243)
+com.microsoft.playwright.impl.LoggingSupport.lambda$withLogging$0(LoggingSupport.java:36)
+com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:47)
+com.microsoft.playwright.impl.ChannelOwner.withLogging(ChannelOwner.java:97)
+com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:35)
+com.microsoft.playwright.impl.FrameImpl.click(FrameImpl.java:243)
+com.microsoft.playwright.impl.LocatorImpl.click(LocatorImpl.java:175)
+com.microsoft.playwright.Locator.click(Locator.java:2493)
+tests.DrawerTest.DrawerPlacementIT.testDrawerAppearsInEachPlacementAndCloseWithX(DrawerPlacementIT.java:23)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+java.base/java.lang.reflect.Method.invoke(Method.java:569)
+org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestTemplateMethod(TimeoutExtension.java:94)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+... (truncated)</pre></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log warning-bg">Warning</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          [16:37:19] ⚠️ Error during failure handling: Illegal char <:> at index 51: test-results\screenshots\screenshot_firefox_Browser: firefox_1750977439212_20250626_163719.png
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          [16:37:19] 🧹 Starting browser cleanup...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          [16:37:19] Closing page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          [16:37:19] Closing browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          [16:37:19] Closing browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          [16:37:19] ✅ Browser cleanup completed successfully
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="3"
+          author=""
+          tag="DrawerPlacementIT WEBKIT"
+          device="">
+          <div class="test-detail">
+            <p class="name">Browser: webkit [webkit]</p>
+            <p class="text-sm">
+              <span>4:37:19 PM</span> / <span>00:00:30:326</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">Browser: webkit [webkit]</h5>
+<span class='badge badge-success'>06.26.2025 4:37:19 PM</span>
+<span class='badge badge-danger'>06.26.2025 4:37:49 PM</span>
+<span class='badge badge-default'>00:00:30:326</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">DrawerPlacementIT</span>
+<span class="badge badge-pill badge-default">WEBKIT</span></div>
+<div class="m-t-10 m-l-5"><div class='browser-info' style='color: black;'><strong>Browser:</strong> WEBKIT<br><strong>Test Class:</strong> DrawerPlacementIT<br><strong>Description:</strong> Automated browser test for WebForJ components</div></div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          [16:37:19] 🚀 Starting test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          [16:37:19] Browser: WEBKIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          [16:37:19] Test Class: DrawerPlacementIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          [16:37:19] 📱 Launching webkit browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          [16:37:19] Browser Configuration - Headless: true, SlowMo: 50ms
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          [16:37:19] ✅ Browser launched successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          [16:37:19] 🔧 Creating browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          [16:37:19] ✅ Browser context created
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          [16:37:19] 📄 Creating new page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          [16:37:19] ✅ Page created successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          [16:37:19] ✅ Browser setup completed - Ready for test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          <div class='test-step'><strong>Action:</strong> Navigate<br><strong>Element:</strong> URL<br><strong>Value:</strong> http://localhost:8080/drawerplacement</div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>4:37:19 PM</td>
+        <td>
+          [16:37:19] ✅ Successfully navigated to: http://localhost:8080/drawerplacement
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>4:37:49 PM</td>
+        <td>
+          <div class='error-details'><h4>Test Failure Details</h4><strong>Current Step:</strong> Navigation to http://localhost:8080/drawerplacement<br><strong>Current URL:</strong> http://localhost:8080/drawerplacement<br><strong>Error Type:</strong> TimeoutError<br><strong>Error Message:</strong> Error {
+  message='Timeout 30000ms exceeded.
+  name='TimeoutError
+  stack='TimeoutError: Timeout 30000ms exceeded.
+    at ProgressController.run (C:\Users\jturf\AppData\Local\Temp\playwright-java-8294644900015219226\package\lib\server\progress.js:75:26)
+    at Frame.click (C:\Users\jturf\AppData\Local\Temp\playwright-java-8294644900015219226\package\lib\server\frames.js:1021:23)
+    at FrameDispatcher.click (C:\Users\jturf\AppData\Local\Temp\playwright-java-8294644900015219226\package\lib\server\dispatchers\frameDispatcher.js:159:30)
+    at FrameDispatcher._handleCommand (C:\Users\jturf\AppData\Local\Temp\playwright-java-8294644900015219226\package\lib\server\dispatchers\dispatcher.js:94:40)
+    at DispatcherConnection.dispatch (C:\Users\jturf\AppData\Local\Temp\playwright-java-8294644900015219226\package\lib\server\dispatchers\dispatcher.js:361:39)
+}
+Call log:
+-   - waiting for locator("dwc-dropdown").locator("dwc-icon[part='suffix-icon']")
+<br><strong>Stack Trace:</strong><br><pre>com.microsoft.playwright.impl.WaitableResult.get(WaitableResult.java:52)
+com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:132)
+com.microsoft.playwright.impl.Connection.sendMessage(Connection.java:130)
+com.microsoft.playwright.impl.ChannelOwner.sendMessage(ChannelOwner.java:118)
+com.microsoft.playwright.impl.FrameImpl.clickImpl(FrameImpl.java:252)
+com.microsoft.playwright.impl.FrameImpl.lambda$click$8(FrameImpl.java:243)
+com.microsoft.playwright.impl.LoggingSupport.lambda$withLogging$0(LoggingSupport.java:36)
+com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:47)
+com.microsoft.playwright.impl.ChannelOwner.withLogging(ChannelOwner.java:97)
+com.microsoft.playwright.impl.LoggingSupport.withLogging(LoggingSupport.java:35)
+com.microsoft.playwright.impl.FrameImpl.click(FrameImpl.java:243)
+com.microsoft.playwright.impl.LocatorImpl.click(LocatorImpl.java:175)
+com.microsoft.playwright.Locator.click(Locator.java:2493)
+tests.DrawerTest.DrawerPlacementIT.testDrawerAppearsInEachPlacementAndCloseWithX(DrawerPlacementIT.java:23)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+java.base/java.lang.reflect.Method.invoke(Method.java:569)
+org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestTemplateMethod(TimeoutExtension.java:94)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+... (truncated)</pre></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log warning-bg">Warning</span></td>
+        <td>4:37:49 PM</td>
+        <td>
+          [16:37:49] ⚠️ Error during failure handling: Illegal char <:> at index 50: test-results\screenshots\screenshot_webkit_Browser: webkit_1750977469912_20250626_163749.png
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:37:49 PM</td>
+        <td>
+          [16:37:49] 🧹 Starting browser cleanup...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:37:49 PM</td>
+        <td>
+          [16:37:49] Closing page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:37:49 PM</td>
+        <td>
+          [16:37:49] Closing browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>4:37:49 PM</td>
+        <td>
+          [16:37:49] Closing browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>4:37:49 PM</td>
+        <td>
+          [16:37:49] ✅ Browser cleanup completed successfully
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+<div class="test-content scrollable">
+<div class="test-content-tools">
+<ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+</div>
+<div class="test-content-detail"><div class="detail-body"></div></div>
+</div></div>
+<div class="test-wrapper row view category-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">4</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">WEBKIT</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>WEBKIT</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:37:19 PM</td>
+<td>
+<a href="#" class="linked" test-id='3' id='3'>Browser: webkit [webkit]</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>3</span>
+</span>
+<p class="name">DrawerPlacementIT</p>
+<p class="duration text-sm">3 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>DrawerPlacementIT</h4>
+<span status="fail" class='badge log badge-danger'>3 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:36:04 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='1'>Browser: chromium [chromium]</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:36:48 PM</td>
+<td>
+<a href="#" class="linked" test-id='2' id='2'>Browser: firefox [firefox]</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:37:19 PM</td>
+<td>
+<a href="#" class="linked" test-id='3' id='3'>Browser: webkit [webkit]</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">CHROMIUM</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>CHROMIUM</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:36:04 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='1'>Browser: chromium [chromium]</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">FIREFOX</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>FIREFOX</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:36:48 PM</td>
+<td>
+<a href="#" class="linked" test-id='2' id='2'>Browser: firefox [firefox]</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="container-fluid p-4 view dashboard-view">
+<div class="row">
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Started</p>
+<h3>2025-06-26 16:36:04</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Ended</p>
+<h3>2025-06-26 16:37:49</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-pass">Tests Passed</p>
+<h3>0</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-fail">Tests Failed</p>
+<h3>3</h3>
+</div></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Tests</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='parent-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='0%'>
+<b>0</b> tests passed
+</small>
+</div>
+<div>
+<small data-tooltip='100%'><b>3</b> tests failed,
+<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Log events</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='events-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='25%'><b>15</b> events passed</small></div>
+<div>
+<small data-tooltip='5%'><b>3</b> events failed,
+<b data-tooltip='%'>42</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-md-12">
+<div class="card"><div class="card-header"><p>Timeline</p></div>
+<div class="card-body pt-0"><div>
+<canvas id="timeline" height="120"></canvas>
+</div></div>
+</div>
+</div></div>
+<script>
+var timeline = {
+"Browser: chromium [chromium]":43.524,"Browser: firefox [firefox]":31.526,"Browser: webkit [webkit]":30.326
+};
+</script>
+<div class="row">
+<div class="col-lg-6 col-md-12 category-container">
+<div class="card">
+<div class="card-header"><p>Tags</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
+<tr>
+<td>WEBKIT</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>DrawerPlacementIT</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>CHROMIUM</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>FIREFOX</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="col-lg-6 col-md-12 sysenv-container">
+<div class="card">
+<div class="card-header"><p>System/Environment</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Value</th></tr></thead>
+<tbody>
+<tr>
+<td>Operating System</td>
+<td>Windows 11 10.0</td>
+</tr>
+<tr>
+<td>Java Version</td>
+<td>17.0.15</td>
+</tr>
+<tr>
+<td>Java Vendor</td>
+<td>Azul Systems, Inc.</td>
+</tr>
+<tr>
+<td>Playwright Version</td>
+<td>1.50.0</td>
+</tr>
+<tr>
+<td>Test Framework</td>
+<td>JUnit 5</td>
+</tr>
+<tr>
+<td>Execution Time</td>
+<td>2025-06-26 16:36:04</td>
+</tr>
+<tr>
+<td>User</td>
+<td>jturf</td>
+</tr>
+<tr>
+<td>Working Directory</td>
+<td>C:\Users\jturf\OneDrive\Desktop\webforj-documentation</td>
+</tr>
+<tr>
+<td>Configured Browsers</td>
+<td>chromium, firefox, webkit</td>
+</tr>
+<tr>
+<td>Headless Mode</td>
+<td>true</td>
+</tr>
+<tr>
+<td>Slow Motion</td>
+<td>50ms</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+var statusGroup = {
+parentCount: 5,
+passParent: 0,
+failParent: 3,
+warningParent: 0,
+skipParent: 0,
+childCount: 5,
+passChild: 0,
+failChild: 0,
+warningChild: 0,
+skipChild: 0,
+infoChild: 0,
+grandChildCount: 5,
+passGrandChild: 0,
+failGrandChild: 0,
+warningGrandChild: 0,
+skipGrandChild: 0,
+infoGrandChild: 0,
+eventsCount: 5,
+passEvents: 15,
+failEvents: 3,
+warningEvents: 3,
+skipEvents: 0,
+infoEvents: 39
+};
+</script>        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@c05cd28cde1617b9d0c05a831daff6cb97fd9fd5/spark/js/spark-script.js"></script>
+<script type="text/javascript"></script></body>
+</html>

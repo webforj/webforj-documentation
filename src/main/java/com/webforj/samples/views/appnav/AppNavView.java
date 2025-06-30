@@ -13,7 +13,7 @@ import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
 
-@Route
+@Route("appnav")
 public class AppNavView extends Composite<AppLayout> {
  private AppLayout self = getBoundComponent();
 

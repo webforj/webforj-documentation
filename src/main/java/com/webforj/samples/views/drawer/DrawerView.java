@@ -17,7 +17,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @InlineStyleSheet("context://css/drawer/drawer.css")
-@Route
+@Route("drawerdemo")
 @FrameTitle("Task Manager Drawer")
 public class DrawerView extends Composite<FlexLayout> {
 
