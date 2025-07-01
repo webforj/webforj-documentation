@@ -1,0 +1,12 @@
+extends: existence
+message: "Avoid using '%s'. Focus more on explicitly giving details about the feature."
+ignorecase: true
+level: warning
+# This style is for avoiding the following linking verbs:
+# - enhance
+# - ensure
+# - optimize
+# - improve (for performance)
+raw:
+  - (?:enhanc|ensur|optimiz)(?:e|ed|es|ing) (the user |the |user )?\w+( and \w+)?|
+  - improv(?:e|ed|es|ing) (the )?(?:performance|scalability)
