@@ -14,28 +14,28 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
-@InlineStyleSheet("context://css/compositeDemo.css")
-@FrameTitle("Composite Demo")
-public class CompositeDemoView extends Composite<Div> {
+@InlineStyleSheet("context://css/composite.css")
+@FrameTitle("Composite Component")
+public class CompositeView extends Composite<Div> {
 
   TextField text = new TextField();
   FlexLayout todoDisplay;
   H1 title = new H1("Todos");
 
-  public CompositeDemoView() {
+  public CompositeView() {
     getBoundComponent().addClassName("frame");
 
     text.setExpanse(Expanse.XLARGE);
     todoDisplay = FlexLayout.create(text)
-    .vertical()
-    .build()
-    .setSpacing("5px")
-    .addClassName("todo--display");
+        .vertical()
+        .build()
+        .setSpacing("5px")
+        .addClassName("todo--display");
     getBoundComponent().add(title, todoDisplay);
 
     text.setPlaceholder("Add Todo item. Press Enter to save.")
         .onKeypress(e -> {
-          if (e.getKeyCode().equals(KeypressEvent.Key.ENTER) && !text.getText().isEmpty()) {
+          if (e.getKeyCode().equals(KeypressEvent.Key.ENTER) && !text.getText().isBlank()) {
             todoDisplay.add(new TodoItem(text.getText()));
             text.setText("");
           }
