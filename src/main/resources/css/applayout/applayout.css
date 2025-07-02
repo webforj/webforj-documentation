@@ -20,6 +20,10 @@
   border-radius: 10px;
 }
 
+html[data-app-theme="dark"] .drawer__logo img {
+filter: brightness(0) invert(1);
+}
+
 .card {
   padding: var(--dwc-space-m);
   margin: var(--dwc-space-m) auto;
