@@ -155,7 +155,7 @@ public class ApplicationComponent extends Composite<Div> {
 ```
 
 :::tip Using `getBoundComponent()`
-You can use `getBoundComponent()` inside the constructor for setup, which is the preferred pattern. This ensures your component is fully configured and ready to use immediately when created, without needing lifecycle methods or additional setup calls.
+You can use `getBoundComponent()` inside the constructor for setup, which is the preferred pattern. Your component will be fully configured and ready to use immediately when created, without needing lifecycle methods or additional setup calls.
 :::
 
 Similarly, the `onDidDestroy()` method fires once the bound component has been destroyed, and allows for additional behavior to be fired on destruction should it be desired.
