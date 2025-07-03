@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.webforj.Page;
 import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.googlecharts.GoogleChart;
@@ -60,7 +59,7 @@ public class AnalyticsCardCompositeView extends Composite<Div> {
     progress.setStyle("margin-top", "var(--dwc-space-xs)");
     
     GoogleChart chart = new GoogleChart(GoogleChart.Type.LINE);
-    chart.setSize("100%", "250px").setStyle("width", "100%");
+    chart.setSize("100%", "250px");
 
     List<Object> data = new ArrayList<>();
     data.add(List.of("Month", "Sales"));

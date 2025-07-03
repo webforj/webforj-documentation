@@ -17,7 +17,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 @Route
-@FrameTitle("Custom Events Demo")
+@FrameTitle("Custom Events")
 @StyleSheet("ws://composite/composite.css")
 public class CompositeCustomEventView extends Composite<Div> {
 
