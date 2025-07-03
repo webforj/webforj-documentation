@@ -1,0 +1,11 @@
+extends: substitution
+message: "Consider '%s' instead of '%s'."
+level: warning
+ignorecase: true
+action:
+  name: replace
+swap:
+  "(?:leverage|utilize)": use
+  "(?:leveraged|utilized)": used
+  "(?:leverages|utilizes)": uses
+  "(?:leveraging|utilizing)": using
