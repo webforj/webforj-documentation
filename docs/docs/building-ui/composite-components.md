@@ -10,7 +10,7 @@ sidebar_class_name: updated-content
 The `Composite` component in webforJ lets you create custom, self-contained components by wrapping internal components into a single reusable unit. You can encapsulate logic, layout, and styling while controlling exactly what methods and data is exposed.
 
 Use a `Composite` when you want to:
-	-	Reuse component patterns throughout your application
+	-	Reuse component patterns throughout your app
 	-	Encapsulate layout and behavior into a single, maintainable unit
 	-	Compose multiple components without exposing implementation details
 
@@ -32,8 +32,8 @@ The recommended approach is to configure everything in the constructor. Use `get
 
 <ComponentDemo 
 path='/webforj/composite?' 
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/composite.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/composite/CompositeView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/composite/composite.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/composite/CompositeView.java'
 height='400px'
 />
 
@@ -117,8 +117,8 @@ The demo below shows a working example of a `Composite` component with fluent AP
 
 <ComponentDemo 
 path='/webforj/compositefluentapi?' 
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/composite.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeFluentAPIView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/composite/composite.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/composite/CompositeFluentAPIView.java'
 height='350px'
 />
 
@@ -130,8 +130,8 @@ Custom events extend `ComponentEvent` and can carry specific data relevant to yo
 
 <ComponentDemo 
 path='/webforj/compositecustomevent?' 
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/composite.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeCustomEventView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/composite/composite.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/composite/CompositeCustomEventView.java'
 height='350px'
 />
 
@@ -139,8 +139,8 @@ height='350px'
 
 Unlike the `Component` class, the `Composite` component manages its own lifecycle. You don’t need to implement `onCreate()` or `onDestroy()`. Instead, webforJ offers two lifecycle methods you can optionally override:
 
-- `onDidCreate(T component)` – Called immediately after the bound component is instantiated and added to the view.
-- `onDidDestroy(T component)` – Called after the component is removed and cleaned up.
+- `onDidCreate(T component)`: Called immediately after the bound component is instantiated and added to the view.
+- `onDidDestroy(T component)`: Called after the component is removed and cleaned up.
 
 ```java
 public class ApplicationComponent extends Composite<Div> {
@@ -168,8 +168,8 @@ Use this when you want to organize components together without worrying about re
 
 <ComponentDemo
 path='/webforj/analyticscardcomposite?'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/analyticscomposite.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/AnalyticsCardCompositeView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/composite/analyticscomposite.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/composite/AnalyticsCardCompositeView.java'
 height='550px'
 />
 
