@@ -11,8 +11,9 @@ import com.webforj.component.optiondialog.FileChooserDialog;
 import com.webforj.component.optiondialog.FileChooserFilter;
 import com.webforj.component.optiondialog.OptionDialog;
 import com.webforj.component.optiondialog.MessageDialog;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.FILE_CHOOSER_DIALOG_FILTERS)
 @FrameTitle("File Chooser Filters")
 public class FileChooserDialogFiltersView extends Composite<Div> {
   private FileChooserDialog dialog;

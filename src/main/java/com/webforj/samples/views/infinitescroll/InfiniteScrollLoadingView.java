@@ -12,8 +12,9 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.INFINITE_SCROLL_LOADING)
 @FrameTitle("Custom Loading Indicator")
 @InlineStyleSheet("context://css/infinitescroll/infinitescroll.css")
 public class InfiniteScrollLoadingView extends Composite<Div> {

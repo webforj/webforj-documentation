@@ -4,49 +4,49 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 
-import pages.LoginPage;
+import pages.LoginPage.LoginBasicPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class LoginBasicsIT extends BaseTest {
 
-    private LoginPage loginPage;
+    private LoginBasicPage loginBasicPage;
 
     @BeforeEach
     public void setupLoginBasics() {
-        page.navigate("https://docs.webforj.com/webforj/loginbasic?");
-        loginPage = new LoginPage(page);
+        navigateToRoute(LoginBasicPage.getRoute());
+        loginBasicPage = new LoginBasicPage(page);
     }
 
     @BrowserTest
     public void testUsernameAndPassword() {
-        loginPage.getUsername().fill("admin");
-        loginPage.getPasswordReveal().click();
-        loginPage.getPassword().fill("admin");
-        loginPage.getSignInButton().click();
+        loginBasicPage.getUsername().fill("admin");
+        loginBasicPage.getPasswordReveal().click();
+        loginBasicPage.getPassword().fill("admin");
+        loginBasicPage.getSignInButton().click();
 
-        assertThat(loginPage.getHeader()).hasText("Authentication");
-        assertThat(loginPage.getUsername()).hasValue("admin");
-        assertThat(loginPage.getPassword()).hasValue("admin");
-        assertThat(loginPage.getSignInButton()).hasAttribute("disabled", "");
+        assertThat(loginBasicPage.getHeader()).hasText("Authentication");
+        assertThat(loginBasicPage.getUsername()).hasValue("admin");
+        assertThat(loginBasicPage.getPassword()).hasValue("admin");
+        assertThat(loginBasicPage.getSignInButton()).hasAttribute("disabled", "");
     }
 
     @BrowserTest
     public void testEmptyInput() {
-        loginPage.getSignInButton().click();
+        loginBasicPage.getSignInButton().click();
 
-        assertThat(loginPage.getDwcUsernameField()).hasAttribute("invalid", "");
-        assertThat(loginPage.getDwcPasswordField()).hasAttribute("invalid", "");
+        assertThat(loginBasicPage.getDwcUsernameField()).hasAttribute("invalid", "");
+        assertThat(loginBasicPage.getDwcPasswordField()).hasAttribute("invalid", "");
 
     }
 
     @BrowserTest
     public void testRememberMe() {
-        loginPage.getRememberMe().click();
-        assertThat(loginPage.getRememberMe()).hasAttribute("aria-checked", "false");
+        loginBasicPage.getRememberMe().click();
+        assertThat(loginBasicPage.getRememberMe()).hasAttribute("aria-checked", "false");
 
-        loginPage.getRememberMe().click();
-        assertThat(loginPage.getRememberMe()).hasAttribute("aria-checked", "true");
+        loginBasicPage.getRememberMe().click();
+        assertThat(loginBasicPage.getRememberMe()).hasAttribute("aria-checked", "true");
 
     }
-} 
+}

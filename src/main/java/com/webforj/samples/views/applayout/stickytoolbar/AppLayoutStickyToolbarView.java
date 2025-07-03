@@ -16,10 +16,11 @@ import com.webforj.component.tabbedpane.TabbedPane;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
+import com.webforj.samples.config.RouteConfig;
 import com.webforj.samples.views.applayout.DrawerLogo;
 
 @InlineStyleSheet("context://css/applayout/applayout.css")
-@Route
+@Route(RouteConfig.APP_LAYOUT_STICKY_TOOLBAR)
 @FrameTitle("AppLayout Sticky Toolbar")
 public class AppLayoutStickyToolbarView extends Composite<AppLayout> {
   AppLayout self = getBoundComponent();

@@ -2,11 +2,12 @@ package pages.ColumnsLayoutPage;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.config.RouteConfig;
 import pages.BasePage;
 
 public class ColumnsLayoutBreakpointsPage extends BasePage {
 
-    private static final String ROUTE = "columnslayoutbreakpoints";
+    private static final String ROUTE = RouteConfig.COLUMNS_LAYOUT_BREAKPOINTS;
 
     private final Locator dwcColumnsLayout;
 
@@ -22,4 +23,4 @@ public class ColumnsLayoutBreakpointsPage extends BasePage {
     public Locator getDwcColumnsLayout() {
         return dwcColumnsLayout;
     }
-} 
+}

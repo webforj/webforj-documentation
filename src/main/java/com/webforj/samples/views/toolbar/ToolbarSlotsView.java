@@ -12,7 +12,9 @@ import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.applayout.AppLayout;
 import com.webforj.component.layout.toolbar.Toolbar;
 
-@Route
+import com.webforj.samples.config.RouteConfig;
+
+@Route(RouteConfig.TOOLBAR_SLOTS)
 @FrameTitle("Toolbar Slots")
 @InlineStyleSheet(
 /* css */"""

@@ -6,18 +6,19 @@ import org.junit.jupiter.api.BeforeEach;
 
 import com.microsoft.playwright.assertions.LocatorAssertions.HasAttributeOptions;
 
-import pages.ProgressBarPage;
+import pages.ProgressBarPage.ProgressBarBasicsPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class ProgressBarBasicsIT extends BaseTest {
 
-    private ProgressBarPage progressBar;
+    private ProgressBarBasicsPage progressBar;
 
     @BeforeEach
     public void setupProgressBarBasics() {
-        page.navigate("https://docs.webforj.com/webforj/progressbarbasic?");
-        progressBar = new ProgressBarPage(page);
+        navigateToRoute(ProgressBarBasicsPage.getRoute());
+        page.waitForLoadState();
+        progressBar = new ProgressBarBasicsPage(page);
     }
 
     @BrowserTest
@@ -58,4 +59,4 @@ public class ProgressBarBasicsIT extends BaseTest {
         assertThat(progressBar.getProgressBar()).hasAttribute("animated", "true");
 
     }
-} 
+}

@@ -66,4 +66,4 @@ public class IconVariationsIT extends BaseTest {
             assertTrue(response.body().contains("<svg"));
         }
     }
-} 
+}

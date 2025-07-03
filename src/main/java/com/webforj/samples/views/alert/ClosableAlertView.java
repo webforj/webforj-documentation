@@ -12,8 +12,9 @@ import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route("closablealert")
+@Route(RouteConfig.CLOSABLE_ALERT)
 @FrameTitle("Closable Alert")
 public class ClosableAlertView extends Composite<FlexLayout> {
 

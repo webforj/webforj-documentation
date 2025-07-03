@@ -6,18 +6,18 @@ import org.junit.jupiter.api.BeforeEach;
 
 import com.microsoft.playwright.Locator.DragToOptions;
 
-import pages.SplitterPage;
+import pages.SplitterPage.SplitterOrientationPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class SplitterOrientationIT extends BaseTest {
 
-    private SplitterPage splitterPage;
+    private SplitterOrientationPage splitterPage;
 
     @BeforeEach
     public void setupSplitterOrientation() {
-        page.navigate("https://docs.webforj.com/webforj/splitterorientation?");
-        splitterPage = new SplitterPage(page);
+        page.navigate(SplitterOrientationPage.getRoute());
+        splitterPage = new SplitterOrientationPage(page);
     }
 
     @BrowserTest
@@ -34,4 +34,4 @@ public class SplitterOrientationIT extends BaseTest {
 
         assertNotEquals(finalStyle, initialStyle);
     }
-} 
+}

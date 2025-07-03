@@ -4,29 +4,29 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 
-import pages.ToolbarPage;
+import pages.ToolbarPage.ToolbarThemesPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class ToolbarThemesIT extends BaseTest {
 
-    private ToolbarPage toolbarPage;
+    private ToolbarThemesPage toolbarThemesPage;
 
     @BeforeEach
     public void setupToolbarThemes() {
-        page.navigate("https://docs.webforj.com/webforj/toolbartheme?");
-        toolbarPage = new ToolbarPage(page);
+        navigateToRoute(ToolbarThemesPage.getRoute());
+        toolbarThemesPage = new ToolbarThemesPage(page);
     }
 
     @BrowserTest
     public void testThemes() {
-        assertThat(toolbarPage.getDangerToolbar()).hasAttribute("theme", "danger");
-        assertThat(toolbarPage.getDefaultToolbar()).hasAttribute("theme", "default");
-        assertThat(toolbarPage.getGrayToolbar()).hasAttribute("theme", "gray");
-        assertThat(toolbarPage.getInfoToolbar()).hasAttribute("theme", "info");
-        assertThat(toolbarPage.getPrimaryToolbar()).hasAttribute("theme", "primary");
-        assertThat(toolbarPage.getSuccessToolbar()).hasAttribute("theme", "success");
-        assertThat(toolbarPage.getWarningToolbar()).hasAttribute("theme", "warning");
+        assertThat(toolbarThemesPage.getDangerToolbar()).hasAttribute("theme", "danger");
+        assertThat(toolbarThemesPage.getDefaultToolbar()).hasAttribute("theme", "default");
+        assertThat(toolbarThemesPage.getGrayToolbar()).hasAttribute("theme", "gray");
+        assertThat(toolbarThemesPage.getInfoToolbar()).hasAttribute("theme", "info");
+        assertThat(toolbarThemesPage.getPrimaryToolbar()).hasAttribute("theme", "primary");
+        assertThat(toolbarThemesPage.getSuccessToolbar()).hasAttribute("theme", "success");
+        assertThat(toolbarThemesPage.getWarningToolbar()).hasAttribute("theme", "warning");
 
     }
-} 
+}

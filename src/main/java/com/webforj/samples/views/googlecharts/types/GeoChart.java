@@ -8,11 +8,11 @@ import java.util.Map;
 import java.util.Arrays;
 
 public class GeoChart {
-  
+
   private final GoogleChart chart = new GoogleChart(GoogleChart.Type.GEO);
 
   public GeoChart() {
-    
+
     Map<String, Object> options = new HashMap<>();
     options.put("title", "Geo Chart");
     options.put("colorAxis", Map.of("colors", List.of("#4285f4", "#ab48bc")));

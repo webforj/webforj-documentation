@@ -16,9 +16,10 @@ import com.webforj.component.tabbedpane.TabbedPane;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
+import com.webforj.samples.config.RouteConfig;
 import com.webforj.samples.views.applayout.DrawerLogo;
 
-@Route
+@Route(RouteConfig.APP_LAYOUT_MULTIPLE_HEADERS)
 @InlineStyleSheet("context://css/applayout/applayout.css")
 @FrameTitle("AppLayout Multiple Headers")
 public class AppLayoutMultipleHeadersView extends Composite<AppLayout> {

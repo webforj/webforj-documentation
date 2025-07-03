@@ -12,11 +12,12 @@ import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
 /**
  * Simple demo application to display button functionality.
  */
-@Route("buttondemo")
+@Route(RouteConfig.BUTTON_DEMO)
 @FrameTitle("Button Demo")
 public class ButtonView extends Composite<FlexLayout> {
 

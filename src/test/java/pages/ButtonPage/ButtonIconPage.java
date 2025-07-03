@@ -2,11 +2,12 @@ package pages.ButtonPage;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.config.RouteConfig;
 import pages.BasePage;
 
 public class ButtonIconPage extends BasePage {
 
-    private static final String ROUTE = "buttonicon";
+    private static final String ROUTE = RouteConfig.BUTTON_ICON;
 
     private final Locator notificationButton;
     private final Locator searchButton;
@@ -17,11 +18,11 @@ public class ButtonIconPage extends BasePage {
     public ButtonIconPage(Page page) {
         super(page);
 
-        notificationButton = page.locator("dwc-button[dwc-id='11']");
-        searchButton = page.locator("dwc-button[dwc-id='13']");
-        webforJButton = page.locator("dwc-button[dwc-id='15']");
-        notificationIcon = page.locator("dwc-icon[dwc-id='12']");
-        searchIcon = page.locator("dwc-icon[dwc-id='14']");
+        notificationButton = page.locator("dwc-button:has-text('Notifications')");
+        searchButton = page.locator("dwc-button:has-text('Search')");
+        webforJButton = page.locator("dwc-button >> img");
+        notificationIcon = page.locator(".icon-tabler-bell");
+        searchIcon = page.locator(".icon-tabler-external-link");
 
     }
 
@@ -48,4 +49,4 @@ public class ButtonIconPage extends BasePage {
     public Locator getSearchIcon() {
         return searchIcon;
     }
-} 
+}

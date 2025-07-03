@@ -7,23 +7,23 @@ import org.junit.jupiter.api.BeforeEach;
 
 import com.microsoft.playwright.PlaywrightException;
 
-import pages.TextAreaPage;
+import pages.TextAreaPage.TextAreaValidationPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class TextAreaValidationIT extends BaseTest {
 
-    private TextAreaPage textAreaPage;
+    private TextAreaValidationPage textAreaValidationPage;
 
     @BeforeEach
     public void setupTextAreaValidation() {
-        page.navigate("https://docs.webforj.com/webforj/textareavalidation?");
-        textAreaPage = new TextAreaPage(page);
+        navigateToRoute(TextAreaValidationPage.getRoute());
+        textAreaValidationPage = new TextAreaValidationPage(page);
     }
 
     @BrowserTest
     public void testInitialContent() {
-        String textAreaValue = textAreaPage.getValidationTextArea().inputValue();
+        String textAreaValue = textAreaValidationPage.getValidationTextArea().inputValue();
 
         assertTrue(textAreaValue.contains("The quick brown fox jumps over the lazy dog."));
     }
@@ -31,80 +31,80 @@ public class TextAreaValidationIT extends BaseTest {
     @BrowserTest
     public void testEdgeValues() {
         try {
-            textAreaPage.getMaxLinesInput().click();
+            textAreaValidationPage.getMaxLinesInput().click();
             page.keyboard().press("Control+A");
             page.keyboard().press("Delete");
-            textAreaPage.getMaxLinesInput().fill("2");
+            textAreaValidationPage.getMaxLinesInput().fill("2");
         } catch (PlaywrightException e) {
             System.err.println("Input handling failed: " + e.getMessage());
         }
 
-        textAreaPage.getValidationTextArea().click();
+        textAreaValidationPage.getValidationTextArea().click();
         page.keyboard().press("Control+A");
         page.keyboard().press("Delete");
         // 1st line
-        textAreaPage.getValidationTextArea().fill("Hello");
+        textAreaValidationPage.getValidationTextArea().fill("Hello");
         page.keyboard().press("Enter");
         // 2nd line
-        textAreaPage.getValidationTextArea().type("Hello");
+        textAreaValidationPage.getValidationTextArea().type("Hello");
         page.keyboard().press("Enter");
         // 3rd line
-        textAreaPage.getValidationTextArea().type("Hello");
+        textAreaValidationPage.getValidationTextArea().type("Hello");
 
-        assertThat(textAreaPage.getValidationTextArea()).hasValue("Hello\nHelloHello");
+        assertThat(textAreaValidationPage.getValidationTextArea()).hasValue("Hello\nHelloHello");
 
     }
 
     @BrowserTest
     public void testNegativeNumber() {
         try {
-            textAreaPage.getMaxLengthInput().click();
+            textAreaValidationPage.getMaxLengthInput().click();
             page.keyboard().press("Control+A");
             page.keyboard().press("Delete");
-            textAreaPage.getMaxLengthInput().fill("-5");
+            textAreaValidationPage.getMaxLengthInput().fill("-5");
         } catch (PlaywrightException e) {
             System.err.println("Input handling failed: " + e.getMessage());
         }
 
-        assertThat(textAreaPage.getMaxLengthField()).hasAttribute("invalid", "");
+        assertThat(textAreaValidationPage.getMaxLengthField()).hasAttribute("invalid", "");
     }
 
     @BrowserTest
     public void testInvalidCharsHandled() {
-        textAreaPage.getValidationTextArea().click();
+        textAreaValidationPage.getValidationTextArea().click();
         page.keyboard().press("Control+A");
         page.keyboard().press("Delete");
 
-        textAreaPage.getValidationTextArea().fill("Hello");
+        textAreaValidationPage.getValidationTextArea().fill("Hello");
 
         try {
-            textAreaPage.getMaxLengthInput().click();
+            textAreaValidationPage.getMaxLengthInput().click();
             page.keyboard().press("Control+A");
             page.keyboard().press("Delete");
-            textAreaPage.getMaxLengthInput().fill("Hi");
+            textAreaValidationPage.getMaxLengthInput().fill("Hi");
         } catch (PlaywrightException e) {
             System.err.println("Input handling failed: " + e.getMessage());
         }
 
         try {
-            textAreaPage.getMaxLinesInput().click();
+            textAreaValidationPage.getMaxLinesInput().click();
             page.keyboard().press("Control+A");
             page.keyboard().press("Delete");
-            textAreaPage.getMaxLinesInput().fill("!@#$");
+            textAreaValidationPage.getMaxLinesInput().fill("!@#$");
         } catch (PlaywrightException e) {
             System.err.println("Input handling failed: " + e.getMessage());
         }
 
         try {
-            textAreaPage.getMaxParagraphLengthInput().click();
+            textAreaValidationPage.getMaxParagraphLengthInput().click();
             page.keyboard().press("Control+A");
             page.keyboard().press("Delete");
-            textAreaPage.getMaxParagraphLengthInput().fill(" ");
+            textAreaValidationPage.getMaxParagraphLengthInput().fill(" ");
         } catch (PlaywrightException e) {
             System.err.println("Input handling failed: " + e.getMessage());
         }
 
-        assertThat(textAreaPage.getValidationTextArea()).hasValue("Hello");
+        assertThat(textAreaValidationPage.getValidationTextArea()).hasValue("Hello");
 
     }
-} 
+}

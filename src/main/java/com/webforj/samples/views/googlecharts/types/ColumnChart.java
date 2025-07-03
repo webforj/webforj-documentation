@@ -14,7 +14,7 @@ public class ColumnChart {
   private final GoogleChart chart = new GoogleChart(GoogleChart.Type.COLUMN);
 
   public ColumnChart() {
-    
+
     Map<String, Object> options = new HashMap<>();
     options.put(TITLE, "Annual Sales");
     options.put("hAxis", Map.of(

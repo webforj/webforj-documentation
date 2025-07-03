@@ -13,7 +13,9 @@ import com.webforj.component.tree.event.TreeDoubleClickEvent;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route
+import com.webforj.samples.config.RouteConfig;
+
+@Route(RouteConfig.TREE_MODIFY)
 @FrameTitle("Tree Modify View")
 @InlineStyleSheet( /* css */"""
   :root {

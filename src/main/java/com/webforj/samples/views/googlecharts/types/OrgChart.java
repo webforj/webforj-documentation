@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class OrgChart {
-  
+
   private static final String PRESIDENT = "President";
   private static final String SALESVP = "VP of Sales";
   private static final String MARKETINGVP = "VP of Marketing";

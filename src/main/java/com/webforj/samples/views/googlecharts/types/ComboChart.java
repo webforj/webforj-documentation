@@ -14,7 +14,7 @@ public class ComboChart {
   private final GoogleChart chart = new GoogleChart(GoogleChart.Type.COMBO);
 
   public ComboChart() {
-    
+
     Map<String, Object> options = new HashMap<>();
     options.put(TITLE, "Revenue vs. Expenses");
     options.put("vAxes", Map.of(

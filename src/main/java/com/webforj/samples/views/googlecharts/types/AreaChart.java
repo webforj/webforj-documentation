@@ -1,6 +1,7 @@
 package com.webforj.samples.views.googlecharts.types;
 
 import com.webforj.component.googlecharts.GoogleChart;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -44,7 +45,7 @@ public class AreaChart {
     data.add(Arrays.asList("Year", "Sales", "Expenses"));
     data.add(Arrays.asList("2013", 1000, 400));
     data.add(Arrays.asList("2014", 1170, 460));
-    data.add(Arrays.asList("2015", 660, 600)); 
+    data.add(Arrays.asList("2015", 660, 600));
     data.add(Arrays.asList("2016", 1030, 540));
     chart.setData(data);
   }

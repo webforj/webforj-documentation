@@ -2,11 +2,12 @@ package pages.CheckboxPage;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.config.RouteConfig;
 import pages.BasePage;
 
 public class CheckboxIndeterminatePage extends BasePage {
 
-    private static final String ROUTE = "checkboxindeterminate";
+    private static final String ROUTE = RouteConfig.CHECKBOX_INDETERMINATE;
 
     private final Locator parentCheckbox;
     private final Locator child1CheckboxInput;
@@ -15,9 +16,9 @@ public class CheckboxIndeterminatePage extends BasePage {
     public CheckboxIndeterminatePage(Page page) {
         super(page);
 
-        parentCheckbox = page.locator("dwc-checkbox[dwc-id='12']");
-        child1CheckboxInput = page.locator("dwc-checkbox[dwc-id='14'] >> input");
-        child2CheckboxInput = page.locator("dwc-checkbox[dwc-id='16'] >> input");
+        parentCheckbox = page.locator("dwc-checkbox:has-text('Parent')");
+        child1CheckboxInput = page.locator("dwc-checkbox:has-text('Child 1') >> input");
+        child2CheckboxInput = page.locator("dwc-checkbox:has-text('Child 2') >> input");
     }
 
     public static String getRoute() {
@@ -35,4 +36,4 @@ public class CheckboxIndeterminatePage extends BasePage {
     public Locator getChild2CheckboxInput() {
         return child2CheckboxInput;
     }
-} 
+}

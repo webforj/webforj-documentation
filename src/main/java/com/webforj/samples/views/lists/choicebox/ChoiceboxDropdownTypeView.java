@@ -6,9 +6,10 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.list.ChoiceBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet("context://css/lists/combobox/comboBoxDropDownType.css")
-@Route
+@Route(RouteConfig.CHOICE_BOX_DROPDOWN)
 @FrameTitle("Choicebox Dropdown Type")
 public class ChoiceboxDropdownTypeView extends Composite<Div> {
 

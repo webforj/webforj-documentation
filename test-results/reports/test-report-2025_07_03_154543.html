@@ -1,0 +1,2693 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Playwright Test Execution Report</title>
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@ce8b10435bcbae260c334c0d0c6b61d2c19b6168/spark/css/spark-style.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@7cc78ce/spark/js/jsontree.js"></script>
+<style type="text/css">.test-detail-body { font-size: 14px; }
+.step-details { background-color: #f8f9fa; padding: 10px; margin: 5px 0; border-radius: 5px; }
+.browser-info { background-color: #e3f2fd; padding: 8px; border-radius: 4px; margin-bottom: 10px; }
+.error-details { background-color: #ffebee; padding: 10px; border-radius: 5px; }
+.test-step { margin: 5px 0; padding: 5px; }
+.step-pass { color: #4caf50; }
+.step-fail { color: #f44336; }
+.step-info { color: #2196f3; }
+</style></head><body class="spa -report dark">
+  <div class="app">
+    <div class="layout">
+<div class="header navbar">
+<div class="vheader">
+<div class="nav-logo">
+<a href="#">
+<div class="logo" style="background-image: url('https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png')"></div>
+</a>
+</div>
+<ul class="nav-left">
+<li class="search-box">
+<a class="search-toggle" href="#">
+<i class="search-icon fa fa-search"></i>
+<i class="search-icon-close fa fa-close"></i>
+</a>
+</li>
+<li class="search-input"><input id="search-tests" class="form-control" type="text" placeholder="Search..."></li>
+</ul>
+<ul class="nav-right">
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">WebForJ Component Testing Report</span></a>
+</li>
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">2025-07-03 15:45:43</span></a>
+</li>
+</ul>
+</div>
+</div><div class="side-nav">
+<div class="side-nav-inner">
+<ul class="side-nav-menu">
+<li class="nav-item dropdown" onclick="toggleView('test-view')">
+<a id="nav-test" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('category-view')">
+<a id="nav-category" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-tag"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+<a id="nav-dashboard" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bar-chart"></i></span>
+</a>
+</li>
+</ul>
+</div>
+</div>      <div class="vcontainer">
+        <div class="main-content">
+<div class="test-wrapper row view test-view">
+  <div class="test-list">
+    <div class="test-list-tools">
+<ul class="tools pull-left">
+<li><a href="#"><span class="font-size-14">Tests</span></a></li>
+</ul>
+<ul class="tools text-right">
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<div class="dropdown-divider"></div>
+<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
+<ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">RadioButtonGroupIT</a><a class="dropdown-item" href="#">RadioButtonTextIT</a><a class="dropdown-item" href="#">CHROMIUM</a><a class="dropdown-item" href="#">WEBKIT</a><a class="dropdown-item" href="#">FIREFOX</a><a class="dropdown-item" href="#">RadioButtonActivationIT</a><a class="dropdown-item" href="#">RadioButtonSwitchIT</a>
+</ul>
+</li>
+</ul>
+</div>    <div class="test-list-wrapper scrollable">
+      <ul class="test-list-item">
+        <li class="test-item"  status="fail" test-id="1"
+          author=""
+          tag="CHROMIUM RadioButtonActivationIT"
+          device="">
+          <div class="test-detail">
+            <p class="name">Browser: chromium [chromium]</p>
+            <p class="text-sm">
+              <span>3:45:43 PM</span> / <span>00:00:18:856</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">Browser: chromium [chromium]</h5>
+<span class='badge badge-success'>07.03.2025 3:45:43 PM</span>
+<span class='badge badge-danger'>07.03.2025 3:46:02 PM</span>
+<span class='badge badge-default'>00:00:18:856</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">CHROMIUM</span>
+<span class="badge badge-pill badge-default">RadioButtonActivationIT</span></div>
+<div class="m-t-10 m-l-5"><div class='browser-info' style='color: black;'><strong>Browser:</strong> CHROMIUM<br><strong>Test Class:</strong> RadioButtonActivationIT<br><strong>Description:</strong> Automated browser test for WebForJ components</div></div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:45:43 PM</td>
+        <td>
+          [15:45:43] 🚀 Starting test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:45:43 PM</td>
+        <td>
+          [15:45:43] Browser: CHROMIUM
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:45:43 PM</td>
+        <td>
+          [15:45:43] Test Class: RadioButtonActivationIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:45:43 PM</td>
+        <td>
+          [15:45:43] 📱 Launching chromium browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:45:43 PM</td>
+        <td>
+          [15:45:43] Browser Configuration - Headless: true, SlowMo: 50ms
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:45:57 PM</td>
+        <td>
+          [15:45:57] ✅ Browser launched successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:45:57 PM</td>
+        <td>
+          [15:45:57] 🔧 Creating browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:45:57 PM</td>
+        <td>
+          [15:45:57] ✅ Browser context created
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:45:57 PM</td>
+        <td>
+          [15:45:57] 📄 Creating new page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:45:57 PM</td>
+        <td>
+          [15:45:57] ✅ Page created successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:45:57 PM</td>
+        <td>
+          [15:45:57] ✅ Browser setup completed - Ready for test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:45:57 PM</td>
+        <td>
+          <div class='test-step'><strong>Action:</strong> Navigate<br><strong>Element:</strong> URL<br><strong>Value:</strong> http://localhost:8080/radiobuttonactivation</div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:45:57 PM</td>
+        <td>
+          [15:45:57] ✅ Successfully navigated to: http://localhost:8080/radiobuttonactivation
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>3:46:02 PM</td>
+        <td>
+          <div class='error-details'><h4>Test Failure Details</h4><strong>Current Step:</strong> Navigation to http://localhost:8080/radiobuttonactivation<br><strong>Current URL:</strong> http://localhost:8080/radiobuttonactivation<br><strong>Error Type:</strong> AssertionFailedError<br><strong>Error Message:</strong> Locator expected to have attribute 'aria-checked': true
+Received: <element(s) not found>
+
+Call log:
+  - Locator.expect with timeout 5000ms
+  - waiting for locator("dwc-radio:has-text('Auto-activated')").locator("input")<br><strong>Stack Trace:</strong><br><pre>com.microsoft.playwright.impl.AssertionsBase.expectImpl(AssertionsBase.java:74)
+com.microsoft.playwright.impl.AssertionsBase.expectImpl(AssertionsBase.java:50)
+com.microsoft.playwright.impl.AssertionsBase.expectImpl(AssertionsBase.java:42)
+com.microsoft.playwright.impl.LocatorAssertionsImpl.hasAttribute(LocatorAssertionsImpl.java:164)
+com.microsoft.playwright.impl.LocatorAssertionsImpl.hasAttribute(LocatorAssertionsImpl.java:144)
+com.microsoft.playwright.assertions.LocatorAssertions.hasAttribute(LocatorAssertions.java:1403)
+tests.RadioButtonTest.RadioButtonActivationIT.testAutoSelection(RadioButtonActivationIT.java:25)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+java.base/java.lang.reflect.Method.invoke(Method.java:569)
+org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestTemplateMethod(TimeoutExtension.java:94)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+... (truncated)</pre></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log warning-bg">Warning</span></td>
+        <td>3:46:02 PM</td>
+        <td>
+          [15:46:02] ⚠️ Error during failure handling: Illegal char <:> at index 52: test-results\screenshots\screenshot_chromium_Browser: chromium_1751579162614_20250703_154602.png
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:02 PM</td>
+        <td>
+          [15:46:02] 🧹 Starting browser cleanup...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:02 PM</td>
+        <td>
+          [15:46:02] Closing page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:02 PM</td>
+        <td>
+          [15:46:02] Closing browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:02 PM</td>
+        <td>
+          [15:46:02] Closing browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:02 PM</td>
+        <td>
+          [15:46:02] ✅ Browser cleanup completed successfully
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="2"
+          author=""
+          tag="FIREFOX RadioButtonActivationIT"
+          device="">
+          <div class="test-detail">
+            <p class="name">Browser: firefox [firefox]</p>
+            <p class="text-sm">
+              <span>3:46:02 PM</span> / <span>00:00:07:129</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">Browser: firefox [firefox]</h5>
+<span class='badge badge-success'>07.03.2025 3:46:02 PM</span>
+<span class='badge badge-danger'>07.03.2025 3:46:09 PM</span>
+<span class='badge badge-default'>00:00:07:129</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">FIREFOX</span>
+<span class="badge badge-pill badge-default">RadioButtonActivationIT</span></div>
+<div class="m-t-10 m-l-5"><div class='browser-info' style='color: black;'><strong>Browser:</strong> FIREFOX<br><strong>Test Class:</strong> RadioButtonActivationIT<br><strong>Description:</strong> Automated browser test for WebForJ components</div></div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:02 PM</td>
+        <td>
+          [15:46:02] 🚀 Starting test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:02 PM</td>
+        <td>
+          [15:46:02] Browser: FIREFOX
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:02 PM</td>
+        <td>
+          [15:46:02] Test Class: RadioButtonActivationIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:02 PM</td>
+        <td>
+          [15:46:02] 📱 Launching firefox browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:02 PM</td>
+        <td>
+          [15:46:02] Browser Configuration - Headless: true, SlowMo: 50ms
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:03 PM</td>
+        <td>
+          [15:46:03] ✅ Browser launched successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:03 PM</td>
+        <td>
+          [15:46:03] 🔧 Creating browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:03 PM</td>
+        <td>
+          [15:46:03] ✅ Browser context created
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:03 PM</td>
+        <td>
+          [15:46:03] 📄 Creating new page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:03 PM</td>
+        <td>
+          [15:46:03] ✅ Page created successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:03 PM</td>
+        <td>
+          [15:46:03] ✅ Browser setup completed - Ready for test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:03 PM</td>
+        <td>
+          <div class='test-step'><strong>Action:</strong> Navigate<br><strong>Element:</strong> URL<br><strong>Value:</strong> http://localhost:8080/radiobuttonactivation</div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:04 PM</td>
+        <td>
+          [15:46:04] ✅ Successfully navigated to: http://localhost:8080/radiobuttonactivation
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>3:46:09 PM</td>
+        <td>
+          <div class='error-details'><h4>Test Failure Details</h4><strong>Current Step:</strong> Navigation to http://localhost:8080/radiobuttonactivation<br><strong>Current URL:</strong> http://localhost:8080/radiobuttonactivation<br><strong>Error Type:</strong> AssertionFailedError<br><strong>Error Message:</strong> Locator expected to have attribute 'aria-checked': true
+Received: <element(s) not found>
+
+Call log:
+  - Locator.expect with timeout 5000ms
+  - waiting for locator("dwc-radio:has-text('Auto-activated')").locator("input")<br><strong>Stack Trace:</strong><br><pre>com.microsoft.playwright.impl.AssertionsBase.expectImpl(AssertionsBase.java:74)
+com.microsoft.playwright.impl.AssertionsBase.expectImpl(AssertionsBase.java:50)
+com.microsoft.playwright.impl.AssertionsBase.expectImpl(AssertionsBase.java:42)
+com.microsoft.playwright.impl.LocatorAssertionsImpl.hasAttribute(LocatorAssertionsImpl.java:164)
+com.microsoft.playwright.impl.LocatorAssertionsImpl.hasAttribute(LocatorAssertionsImpl.java:144)
+com.microsoft.playwright.assertions.LocatorAssertions.hasAttribute(LocatorAssertions.java:1403)
+tests.RadioButtonTest.RadioButtonActivationIT.testAutoSelection(RadioButtonActivationIT.java:25)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+java.base/java.lang.reflect.Method.invoke(Method.java:569)
+org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestTemplateMethod(TimeoutExtension.java:94)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+... (truncated)</pre></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log warning-bg">Warning</span></td>
+        <td>3:46:09 PM</td>
+        <td>
+          [15:46:09] ⚠️ Error during failure handling: Illegal char <:> at index 51: test-results\screenshots\screenshot_firefox_Browser: firefox_1751579169131_20250703_154609.png
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:09 PM</td>
+        <td>
+          [15:46:09] 🧹 Starting browser cleanup...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:09 PM</td>
+        <td>
+          [15:46:09] Closing page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:09 PM</td>
+        <td>
+          [15:46:09] Closing browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:09 PM</td>
+        <td>
+          [15:46:09] Closing browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:09 PM</td>
+        <td>
+          [15:46:09] ✅ Browser cleanup completed successfully
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="3"
+          author=""
+          tag="WEBKIT RadioButtonActivationIT"
+          device="">
+          <div class="test-detail">
+            <p class="name">Browser: webkit [webkit]</p>
+            <p class="text-sm">
+              <span>3:46:09 PM</span> / <span>00:00:05:852</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">Browser: webkit [webkit]</h5>
+<span class='badge badge-success'>07.03.2025 3:46:09 PM</span>
+<span class='badge badge-danger'>07.03.2025 3:46:15 PM</span>
+<span class='badge badge-default'>00:00:05:852</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">WEBKIT</span>
+<span class="badge badge-pill badge-default">RadioButtonActivationIT</span></div>
+<div class="m-t-10 m-l-5"><div class='browser-info' style='color: black;'><strong>Browser:</strong> WEBKIT<br><strong>Test Class:</strong> RadioButtonActivationIT<br><strong>Description:</strong> Automated browser test for WebForJ components</div></div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:09 PM</td>
+        <td>
+          [15:46:09] 🚀 Starting test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:09 PM</td>
+        <td>
+          [15:46:09] Browser: WEBKIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:09 PM</td>
+        <td>
+          [15:46:09] Test Class: RadioButtonActivationIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:09 PM</td>
+        <td>
+          [15:46:09] 📱 Launching webkit browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:09 PM</td>
+        <td>
+          [15:46:09] Browser Configuration - Headless: true, SlowMo: 50ms
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:10 PM</td>
+        <td>
+          [15:46:10] ✅ Browser launched successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:10 PM</td>
+        <td>
+          [15:46:10] 🔧 Creating browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:10 PM</td>
+        <td>
+          [15:46:10] ✅ Browser context created
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:10 PM</td>
+        <td>
+          [15:46:10] 📄 Creating new page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:10 PM</td>
+        <td>
+          [15:46:10] ✅ Page created successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:10 PM</td>
+        <td>
+          [15:46:10] ✅ Browser setup completed - Ready for test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:10 PM</td>
+        <td>
+          <div class='test-step'><strong>Action:</strong> Navigate<br><strong>Element:</strong> URL<br><strong>Value:</strong> http://localhost:8080/radiobuttonactivation</div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:10 PM</td>
+        <td>
+          [15:46:10] ✅ Successfully navigated to: http://localhost:8080/radiobuttonactivation
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>3:46:15 PM</td>
+        <td>
+          <div class='error-details'><h4>Test Failure Details</h4><strong>Current Step:</strong> Navigation to http://localhost:8080/radiobuttonactivation<br><strong>Current URL:</strong> http://localhost:8080/radiobuttonactivation<br><strong>Error Type:</strong> AssertionFailedError<br><strong>Error Message:</strong> Locator expected to have attribute 'aria-checked': true
+Received: <element(s) not found>
+
+Call log:
+  - Locator.expect with timeout 5000ms
+  - waiting for locator("dwc-radio:has-text('Auto-activated')").locator("input")<br><strong>Stack Trace:</strong><br><pre>com.microsoft.playwright.impl.AssertionsBase.expectImpl(AssertionsBase.java:74)
+com.microsoft.playwright.impl.AssertionsBase.expectImpl(AssertionsBase.java:50)
+com.microsoft.playwright.impl.AssertionsBase.expectImpl(AssertionsBase.java:42)
+com.microsoft.playwright.impl.LocatorAssertionsImpl.hasAttribute(LocatorAssertionsImpl.java:164)
+com.microsoft.playwright.impl.LocatorAssertionsImpl.hasAttribute(LocatorAssertionsImpl.java:144)
+com.microsoft.playwright.assertions.LocatorAssertions.hasAttribute(LocatorAssertions.java:1403)
+tests.RadioButtonTest.RadioButtonActivationIT.testAutoSelection(RadioButtonActivationIT.java:25)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+java.base/java.lang.reflect.Method.invoke(Method.java:569)
+org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestTemplateMethod(TimeoutExtension.java:94)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+... (truncated)</pre></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log warning-bg">Warning</span></td>
+        <td>3:46:15 PM</td>
+        <td>
+          [15:46:15] ⚠️ Error during failure handling: Illegal char <:> at index 50: test-results\screenshots\screenshot_webkit_Browser: webkit_1751579175655_20250703_154615.png
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:15 PM</td>
+        <td>
+          [15:46:15] 🧹 Starting browser cleanup...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:15 PM</td>
+        <td>
+          [15:46:15] Closing page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:15 PM</td>
+        <td>
+          [15:46:15] Closing browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:15 PM</td>
+        <td>
+          [15:46:15] Closing browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:15 PM</td>
+        <td>
+          [15:46:15] ✅ Browser cleanup completed successfully
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="4"
+          author=""
+          tag="RadioButtonSwitchIT CHROMIUM"
+          device="">
+          <div class="test-detail">
+            <p class="name">Browser: chromium [chromium]</p>
+            <p class="text-sm">
+              <span>3:46:15 PM</span> / <span>00:00:00:708</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Browser: chromium [chromium]</h5>
+<span class='badge badge-success'>07.03.2025 3:46:15 PM</span>
+<span class='badge badge-danger'>07.03.2025 3:46:16 PM</span>
+<span class='badge badge-default'>00:00:00:708</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=4</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">RadioButtonSwitchIT</span>
+<span class="badge badge-pill badge-default">CHROMIUM</span></div>
+<div class="m-t-10 m-l-5"><div class='browser-info' style='color: black;'><strong>Browser:</strong> CHROMIUM<br><strong>Test Class:</strong> RadioButtonSwitchIT<br><strong>Description:</strong> Automated browser test for WebForJ components</div></div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:15 PM</td>
+        <td>
+          [15:46:15] 🚀 Starting test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:15 PM</td>
+        <td>
+          [15:46:15] Browser: CHROMIUM
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:15 PM</td>
+        <td>
+          [15:46:15] Test Class: RadioButtonSwitchIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:15 PM</td>
+        <td>
+          [15:46:15] 📱 Launching chromium browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:15 PM</td>
+        <td>
+          [15:46:15] Browser Configuration - Headless: true, SlowMo: 50ms
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] ✅ Browser launched successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] 🔧 Creating browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] ✅ Browser context created
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] 📄 Creating new page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] ✅ Page created successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] ✅ Browser setup completed - Ready for test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] 🧹 Starting browser cleanup...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] Closing page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] Closing browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] Closing browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] ✅ Browser cleanup completed successfully
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="5"
+          author=""
+          tag="RadioButtonSwitchIT FIREFOX"
+          device="">
+          <div class="test-detail">
+            <p class="name">Browser: firefox [firefox]</p>
+            <p class="text-sm">
+              <span>3:46:16 PM</span> / <span>00:00:01:693</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Browser: firefox [firefox]</h5>
+<span class='badge badge-success'>07.03.2025 3:46:16 PM</span>
+<span class='badge badge-danger'>07.03.2025 3:46:18 PM</span>
+<span class='badge badge-default'>00:00:01:693</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=5</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">RadioButtonSwitchIT</span>
+<span class="badge badge-pill badge-default">FIREFOX</span></div>
+<div class="m-t-10 m-l-5"><div class='browser-info' style='color: black;'><strong>Browser:</strong> FIREFOX<br><strong>Test Class:</strong> RadioButtonSwitchIT<br><strong>Description:</strong> Automated browser test for WebForJ components</div></div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] 🚀 Starting test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] Browser: FIREFOX
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] Test Class: RadioButtonSwitchIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] 📱 Launching firefox browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] Browser Configuration - Headless: true, SlowMo: 50ms
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] ✅ Browser launched successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] 🔧 Creating browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] ✅ Browser context created
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:16 PM</td>
+        <td>
+          [15:46:16] 📄 Creating new page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:17 PM</td>
+        <td>
+          [15:46:17] ✅ Page created successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:17 PM</td>
+        <td>
+          [15:46:17] ✅ Browser setup completed - Ready for test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:17 PM</td>
+        <td>
+          [15:46:17] 🧹 Starting browser cleanup...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:17 PM</td>
+        <td>
+          [15:46:17] Closing page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:17 PM</td>
+        <td>
+          [15:46:17] Closing browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:17 PM</td>
+        <td>
+          [15:46:17] Closing browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] ✅ Browser cleanup completed successfully
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="6"
+          author=""
+          tag="RadioButtonSwitchIT WEBKIT"
+          device="">
+          <div class="test-detail">
+            <p class="name">Browser: webkit [webkit]</p>
+            <p class="text-sm">
+              <span>3:46:18 PM</span> / <span>00:00:00:323</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Browser: webkit [webkit]</h5>
+<span class='badge badge-success'>07.03.2025 3:46:18 PM</span>
+<span class='badge badge-danger'>07.03.2025 3:46:18 PM</span>
+<span class='badge badge-default'>00:00:00:323</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=6</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">RadioButtonSwitchIT</span>
+<span class="badge badge-pill badge-default">WEBKIT</span></div>
+<div class="m-t-10 m-l-5"><div class='browser-info' style='color: black;'><strong>Browser:</strong> WEBKIT<br><strong>Test Class:</strong> RadioButtonSwitchIT<br><strong>Description:</strong> Automated browser test for WebForJ components</div></div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] 🚀 Starting test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] Browser: WEBKIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] Test Class: RadioButtonSwitchIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] 📱 Launching webkit browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] Browser Configuration - Headless: true, SlowMo: 50ms
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] ✅ Browser launched successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] 🔧 Creating browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] ✅ Browser context created
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] 📄 Creating new page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] ✅ Page created successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] ✅ Browser setup completed - Ready for test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] 🧹 Starting browser cleanup...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] Closing page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] Closing browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] Closing browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] ✅ Browser cleanup completed successfully
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="7"
+          author=""
+          tag="RadioButtonGroupIT CHROMIUM"
+          device="">
+          <div class="test-detail">
+            <p class="name">Browser: chromium [chromium]</p>
+            <p class="text-sm">
+              <span>3:46:18 PM</span> / <span>00:00:00:735</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Browser: chromium [chromium]</h5>
+<span class='badge badge-success'>07.03.2025 3:46:18 PM</span>
+<span class='badge badge-danger'>07.03.2025 3:46:19 PM</span>
+<span class='badge badge-default'>00:00:00:735</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=7</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">RadioButtonGroupIT</span>
+<span class="badge badge-pill badge-default">CHROMIUM</span></div>
+<div class="m-t-10 m-l-5"><div class='browser-info' style='color: black;'><strong>Browser:</strong> CHROMIUM<br><strong>Test Class:</strong> RadioButtonGroupIT<br><strong>Description:</strong> Automated browser test for WebForJ components</div></div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] 🚀 Starting test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] Browser: CHROMIUM
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] Test Class: RadioButtonGroupIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] 📱 Launching chromium browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] Browser Configuration - Headless: true, SlowMo: 50ms
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] ✅ Browser launched successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] 🔧 Creating browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] ✅ Browser context created
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:18 PM</td>
+        <td>
+          [15:46:18] 📄 Creating new page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:19 PM</td>
+        <td>
+          [15:46:19] ✅ Page created successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:19 PM</td>
+        <td>
+          [15:46:19] ✅ Browser setup completed - Ready for test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:19 PM</td>
+        <td>
+          [15:46:19] 🧹 Starting browser cleanup...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:19 PM</td>
+        <td>
+          [15:46:19] Closing page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:19 PM</td>
+        <td>
+          [15:46:19] Closing browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:19 PM</td>
+        <td>
+          [15:46:19] Closing browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:19 PM</td>
+        <td>
+          [15:46:19] ✅ Browser cleanup completed successfully
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="8"
+          author=""
+          tag="RadioButtonGroupIT FIREFOX"
+          device="">
+          <div class="test-detail">
+            <p class="name">Browser: firefox [firefox]</p>
+            <p class="text-sm">
+              <span>3:46:19 PM</span> / <span>00:00:02:184</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Browser: firefox [firefox]</h5>
+<span class='badge badge-success'>07.03.2025 3:46:19 PM</span>
+<span class='badge badge-danger'>07.03.2025 3:46:21 PM</span>
+<span class='badge badge-default'>00:00:02:184</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=8</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">RadioButtonGroupIT</span>
+<span class="badge badge-pill badge-default">FIREFOX</span></div>
+<div class="m-t-10 m-l-5"><div class='browser-info' style='color: black;'><strong>Browser:</strong> FIREFOX<br><strong>Test Class:</strong> RadioButtonGroupIT<br><strong>Description:</strong> Automated browser test for WebForJ components</div></div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:19 PM</td>
+        <td>
+          [15:46:19] 🚀 Starting test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:19 PM</td>
+        <td>
+          [15:46:19] Browser: FIREFOX
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:19 PM</td>
+        <td>
+          [15:46:19] Test Class: RadioButtonGroupIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:19 PM</td>
+        <td>
+          [15:46:19] 📱 Launching firefox browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:19 PM</td>
+        <td>
+          [15:46:19] Browser Configuration - Headless: true, SlowMo: 50ms
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:19 PM</td>
+        <td>
+          [15:46:19] ✅ Browser launched successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:19 PM</td>
+        <td>
+          [15:46:19] 🔧 Creating browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:19 PM</td>
+        <td>
+          [15:46:19] ✅ Browser context created
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:19 PM</td>
+        <td>
+          [15:46:19] 📄 Creating new page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:20 PM</td>
+        <td>
+          [15:46:20] ✅ Page created successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:20 PM</td>
+        <td>
+          [15:46:20] ✅ Browser setup completed - Ready for test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:20 PM</td>
+        <td>
+          [15:46:20] 🧹 Starting browser cleanup...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:20 PM</td>
+        <td>
+          [15:46:20] Closing page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:20 PM</td>
+        <td>
+          [15:46:20] Closing browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:20 PM</td>
+        <td>
+          [15:46:20] Closing browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] ✅ Browser cleanup completed successfully
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="9"
+          author=""
+          tag="RadioButtonGroupIT WEBKIT"
+          device="">
+          <div class="test-detail">
+            <p class="name">Browser: webkit [webkit]</p>
+            <p class="text-sm">
+              <span>3:46:21 PM</span> / <span>00:00:00:387</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Browser: webkit [webkit]</h5>
+<span class='badge badge-success'>07.03.2025 3:46:21 PM</span>
+<span class='badge badge-danger'>07.03.2025 3:46:21 PM</span>
+<span class='badge badge-default'>00:00:00:387</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=9</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">RadioButtonGroupIT</span>
+<span class="badge badge-pill badge-default">WEBKIT</span></div>
+<div class="m-t-10 m-l-5"><div class='browser-info' style='color: black;'><strong>Browser:</strong> WEBKIT<br><strong>Test Class:</strong> RadioButtonGroupIT<br><strong>Description:</strong> Automated browser test for WebForJ components</div></div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] 🚀 Starting test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] Browser: WEBKIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] Test Class: RadioButtonGroupIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] 📱 Launching webkit browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] Browser Configuration - Headless: true, SlowMo: 50ms
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] ✅ Browser launched successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] 🔧 Creating browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] ✅ Browser context created
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] 📄 Creating new page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] ✅ Page created successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] ✅ Browser setup completed - Ready for test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] 🧹 Starting browser cleanup...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] Closing page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] Closing browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] Closing browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] ✅ Browser cleanup completed successfully
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="10"
+          author=""
+          tag="RadioButtonTextIT CHROMIUM"
+          device="">
+          <div class="test-detail">
+            <p class="name">Browser: chromium [chromium]</p>
+            <p class="text-sm">
+              <span>3:46:21 PM</span> / <span>00:00:00:803</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Browser: chromium [chromium]</h5>
+<span class='badge badge-success'>07.03.2025 3:46:21 PM</span>
+<span class='badge badge-danger'>07.03.2025 3:46:22 PM</span>
+<span class='badge badge-default'>00:00:00:803</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=10</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">RadioButtonTextIT</span>
+<span class="badge badge-pill badge-default">CHROMIUM</span></div>
+<div class="m-t-10 m-l-5"><div class='browser-info' style='color: black;'><strong>Browser:</strong> CHROMIUM<br><strong>Test Class:</strong> RadioButtonTextIT<br><strong>Description:</strong> Automated browser test for WebForJ components</div></div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] 🚀 Starting test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] Browser: CHROMIUM
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] Test Class: RadioButtonTextIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] 📱 Launching chromium browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:21 PM</td>
+        <td>
+          [15:46:21] Browser Configuration - Headless: true, SlowMo: 50ms
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:22 PM</td>
+        <td>
+          [15:46:22] ✅ Browser launched successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:22 PM</td>
+        <td>
+          [15:46:22] 🔧 Creating browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:22 PM</td>
+        <td>
+          [15:46:22] ✅ Browser context created
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:22 PM</td>
+        <td>
+          [15:46:22] 📄 Creating new page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:22 PM</td>
+        <td>
+          [15:46:22] ✅ Page created successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:22 PM</td>
+        <td>
+          [15:46:22] ✅ Browser setup completed - Ready for test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:22 PM</td>
+        <td>
+          [15:46:22] 🧹 Starting browser cleanup...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:22 PM</td>
+        <td>
+          [15:46:22] Closing page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:22 PM</td>
+        <td>
+          [15:46:22] Closing browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:22 PM</td>
+        <td>
+          [15:46:22] Closing browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:22 PM</td>
+        <td>
+          [15:46:22] ✅ Browser cleanup completed successfully
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="11"
+          author=""
+          tag="RadioButtonTextIT FIREFOX"
+          device="">
+          <div class="test-detail">
+            <p class="name">Browser: firefox [firefox]</p>
+            <p class="text-sm">
+              <span>3:46:22 PM</span> / <span>00:00:04:962</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Browser: firefox [firefox]</h5>
+<span class='badge badge-success'>07.03.2025 3:46:22 PM</span>
+<span class='badge badge-danger'>07.03.2025 3:46:27 PM</span>
+<span class='badge badge-default'>00:00:04:962</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=11</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">RadioButtonTextIT</span>
+<span class="badge badge-pill badge-default">FIREFOX</span></div>
+<div class="m-t-10 m-l-5"><div class='browser-info' style='color: black;'><strong>Browser:</strong> FIREFOX<br><strong>Test Class:</strong> RadioButtonTextIT<br><strong>Description:</strong> Automated browser test for WebForJ components</div></div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:22 PM</td>
+        <td>
+          [15:46:22] 🚀 Starting test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:22 PM</td>
+        <td>
+          [15:46:22] Browser: FIREFOX
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:22 PM</td>
+        <td>
+          [15:46:22] Test Class: RadioButtonTextIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:22 PM</td>
+        <td>
+          [15:46:22] 📱 Launching firefox browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:22 PM</td>
+        <td>
+          [15:46:22] Browser Configuration - Headless: true, SlowMo: 50ms
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:23 PM</td>
+        <td>
+          [15:46:23] ✅ Browser launched successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:23 PM</td>
+        <td>
+          [15:46:23] 🔧 Creating browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:23 PM</td>
+        <td>
+          [15:46:23] ✅ Browser context created
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:23 PM</td>
+        <td>
+          [15:46:23] 📄 Creating new page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:26 PM</td>
+        <td>
+          [15:46:26] ✅ Page created successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:26 PM</td>
+        <td>
+          [15:46:26] ✅ Browser setup completed - Ready for test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:26 PM</td>
+        <td>
+          [15:46:26] 🧹 Starting browser cleanup...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:26 PM</td>
+        <td>
+          [15:46:26] Closing page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:26 PM</td>
+        <td>
+          [15:46:26] Closing browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:26 PM</td>
+        <td>
+          [15:46:26] Closing browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:27 PM</td>
+        <td>
+          [15:46:27] ✅ Browser cleanup completed successfully
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="12"
+          author=""
+          tag="RadioButtonTextIT WEBKIT"
+          device="">
+          <div class="test-detail">
+            <p class="name">Browser: webkit [webkit]</p>
+            <p class="text-sm">
+              <span>3:46:27 PM</span> / <span>00:00:00:378</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Browser: webkit [webkit]</h5>
+<span class='badge badge-success'>07.03.2025 3:46:27 PM</span>
+<span class='badge badge-danger'>07.03.2025 3:46:27 PM</span>
+<span class='badge badge-default'>00:00:00:378</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=12</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">RadioButtonTextIT</span>
+<span class="badge badge-pill badge-default">WEBKIT</span></div>
+<div class="m-t-10 m-l-5"><div class='browser-info' style='color: black;'><strong>Browser:</strong> WEBKIT<br><strong>Test Class:</strong> RadioButtonTextIT<br><strong>Description:</strong> Automated browser test for WebForJ components</div></div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:27 PM</td>
+        <td>
+          [15:46:27] 🚀 Starting test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:27 PM</td>
+        <td>
+          [15:46:27] Browser: WEBKIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:27 PM</td>
+        <td>
+          [15:46:27] Test Class: RadioButtonTextIT
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:27 PM</td>
+        <td>
+          [15:46:27] 📱 Launching webkit browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:27 PM</td>
+        <td>
+          [15:46:27] Browser Configuration - Headless: true, SlowMo: 50ms
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:27 PM</td>
+        <td>
+          [15:46:27] ✅ Browser launched successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:27 PM</td>
+        <td>
+          [15:46:27] 🔧 Creating browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:27 PM</td>
+        <td>
+          [15:46:27] ✅ Browser context created
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:27 PM</td>
+        <td>
+          [15:46:27] 📄 Creating new page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:27 PM</td>
+        <td>
+          [15:46:27] ✅ Page created successfully
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:27 PM</td>
+        <td>
+          [15:46:27] ✅ Browser setup completed - Ready for test execution
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:27 PM</td>
+        <td>
+          [15:46:27] 🧹 Starting browser cleanup...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:27 PM</td>
+        <td>
+          [15:46:27] Closing page...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:27 PM</td>
+        <td>
+          [15:46:27] Closing browser context...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>3:46:27 PM</td>
+        <td>
+          [15:46:27] Closing browser...
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>3:46:27 PM</td>
+        <td>
+          [15:46:27] ✅ Browser cleanup completed successfully
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+<div class="test-content scrollable">
+<div class="test-content-tools">
+<ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+</div>
+<div class="test-content-detail"><div class="detail-body"></div></div>
+</div></div>
+<div class="test-wrapper row view category-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">7</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>3</span>
+</span>
+<p class="name">RadioButtonGroupIT</p>
+<p class="duration text-sm">3 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>RadioButtonGroupIT</h4>
+<span status="pass" class='badge log pass-bg'>3 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>15:46:18 PM</td>
+<td>
+<a href="#" class="linked" test-id='7' id='7'>Browser: chromium [chromium]</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>15:46:19 PM</td>
+<td>
+<a href="#" class="linked" test-id='8' id='8'>Browser: firefox [firefox]</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>15:46:21 PM</td>
+<td>
+<a href="#" class="linked" test-id='9' id='9'>Browser: webkit [webkit]</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>3</span>
+</span>
+<p class="name">RadioButtonTextIT</p>
+<p class="duration text-sm">3 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>RadioButtonTextIT</h4>
+<span status="pass" class='badge log pass-bg'>3 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>15:46:21 PM</td>
+<td>
+<a href="#" class="linked" test-id='10' id='10'>Browser: chromium [chromium]</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>15:46:22 PM</td>
+<td>
+<a href="#" class="linked" test-id='11' id='11'>Browser: firefox [firefox]</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>15:46:27 PM</td>
+<td>
+<a href="#" class="linked" test-id='12' id='12'>Browser: webkit [webkit]</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>3</span>
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">CHROMIUM</p>
+<p class="duration text-sm">4 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>CHROMIUM</h4>
+<span status="pass" class='badge log pass-bg'>3 passed</span>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>15:45:43 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='1'>Browser: chromium [chromium]</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>15:46:15 PM</td>
+<td>
+<a href="#" class="linked" test-id='4' id='4'>Browser: chromium [chromium]</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>15:46:18 PM</td>
+<td>
+<a href="#" class="linked" test-id='7' id='7'>Browser: chromium [chromium]</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>15:46:21 PM</td>
+<td>
+<a href="#" class="linked" test-id='10' id='10'>Browser: chromium [chromium]</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>3</span>
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">WEBKIT</p>
+<p class="duration text-sm">4 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>WEBKIT</h4>
+<span status="pass" class='badge log pass-bg'>3 passed</span>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>15:46:09 PM</td>
+<td>
+<a href="#" class="linked" test-id='3' id='3'>Browser: webkit [webkit]</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>15:46:18 PM</td>
+<td>
+<a href="#" class="linked" test-id='6' id='6'>Browser: webkit [webkit]</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>15:46:21 PM</td>
+<td>
+<a href="#" class="linked" test-id='9' id='9'>Browser: webkit [webkit]</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>15:46:27 PM</td>
+<td>
+<a href="#" class="linked" test-id='12' id='12'>Browser: webkit [webkit]</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>3</span>
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">FIREFOX</p>
+<p class="duration text-sm">4 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>FIREFOX</h4>
+<span status="pass" class='badge log pass-bg'>3 passed</span>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>15:46:02 PM</td>
+<td>
+<a href="#" class="linked" test-id='2' id='2'>Browser: firefox [firefox]</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>15:46:16 PM</td>
+<td>
+<a href="#" class="linked" test-id='5' id='5'>Browser: firefox [firefox]</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>15:46:19 PM</td>
+<td>
+<a href="#" class="linked" test-id='8' id='8'>Browser: firefox [firefox]</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>15:46:22 PM</td>
+<td>
+<a href="#" class="linked" test-id='11' id='11'>Browser: firefox [firefox]</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>3</span>
+</span>
+<p class="name">RadioButtonActivationIT</p>
+<p class="duration text-sm">3 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>RadioButtonActivationIT</h4>
+<span status="fail" class='badge log badge-danger'>3 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>15:45:43 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='1'>Browser: chromium [chromium]</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>15:46:02 PM</td>
+<td>
+<a href="#" class="linked" test-id='2' id='2'>Browser: firefox [firefox]</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>15:46:09 PM</td>
+<td>
+<a href="#" class="linked" test-id='3' id='3'>Browser: webkit [webkit]</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>3</span>
+</span>
+<p class="name">RadioButtonSwitchIT</p>
+<p class="duration text-sm">3 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>RadioButtonSwitchIT</h4>
+<span status="pass" class='badge log pass-bg'>3 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>15:46:15 PM</td>
+<td>
+<a href="#" class="linked" test-id='4' id='4'>Browser: chromium [chromium]</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>15:46:16 PM</td>
+<td>
+<a href="#" class="linked" test-id='5' id='5'>Browser: firefox [firefox]</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>15:46:18 PM</td>
+<td>
+<a href="#" class="linked" test-id='6' id='6'>Browser: webkit [webkit]</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="container-fluid p-4 view dashboard-view">
+<div class="row">
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Started</p>
+<h3>2025-07-03 15:45:43</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Ended</p>
+<h3>2025-07-03 15:46:27</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-pass">Tests Passed</p>
+<h3>9</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-fail">Tests Failed</p>
+<h3>3</h3>
+</div></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Tests</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='parent-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='75%'>
+<b>9</b> tests passed
+</small>
+</div>
+<div>
+<small data-tooltip='25%'><b>3</b> tests failed,
+<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Log events</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='events-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='25%'><b>51</b> events passed</small></div>
+<div>
+<small data-tooltip='1%'><b>3</b> events failed,
+<b data-tooltip='%'>150</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-md-12">
+<div class="card"><div class="card-header"><p>Timeline</p></div>
+<div class="card-body pt-0"><div>
+<canvas id="timeline" height="120"></canvas>
+</div></div>
+</div>
+</div></div>
+<script>
+var timeline = {
+"Browser: chromium [chromium]":18.856,"Browser: firefox [firefox]":7.129,"Browser: webkit [webkit]":5.852,"Browser: chromium [chromium]":0.708,"Browser: firefox [firefox]":1.693,"Browser: webkit [webkit]":0.323,"Browser: chromium [chromium]":0.735,"Browser: firefox [firefox]":2.184,"Browser: webkit [webkit]":0.387,"Browser: chromium [chromium]":0.803,"Browser: firefox [firefox]":4.962,"Browser: webkit [webkit]":0.378
+};
+</script>
+<div class="row">
+<div class="col-lg-6 col-md-12 category-container">
+<div class="card">
+<div class="card-header"><p>Tags</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
+<tr>
+<td>RadioButtonGroupIT</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>RadioButtonTextIT</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>CHROMIUM</td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>75%</td>
+</tr>
+<tr>
+<td>WEBKIT</td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>75%</td>
+</tr>
+<tr>
+<td>FIREFOX</td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>75%</td>
+</tr>
+<tr>
+<td>RadioButtonActivationIT</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>RadioButtonSwitchIT</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="col-lg-6 col-md-12 sysenv-container">
+<div class="card">
+<div class="card-header"><p>System/Environment</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Value</th></tr></thead>
+<tbody>
+<tr>
+<td>Operating System</td>
+<td>Windows 11 10.0</td>
+</tr>
+<tr>
+<td>Java Version</td>
+<td>17.0.15</td>
+</tr>
+<tr>
+<td>Java Vendor</td>
+<td>Azul Systems, Inc.</td>
+</tr>
+<tr>
+<td>Playwright Version</td>
+<td>1.50.0</td>
+</tr>
+<tr>
+<td>Test Framework</td>
+<td>JUnit 5</td>
+</tr>
+<tr>
+<td>Execution Time</td>
+<td>2025-07-03 15:45:43</td>
+</tr>
+<tr>
+<td>User</td>
+<td>jturf</td>
+</tr>
+<tr>
+<td>Working Directory</td>
+<td>C:\Users\jturf\OneDrive\Desktop\webforj-documentation</td>
+</tr>
+<tr>
+<td>Configured Browsers</td>
+<td>chromium, firefox, webkit</td>
+</tr>
+<tr>
+<td>Headless Mode</td>
+<td>true</td>
+</tr>
+<tr>
+<td>Slow Motion</td>
+<td>50ms</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+var statusGroup = {
+parentCount: 5,
+passParent: 9,
+failParent: 3,
+warningParent: 0,
+skipParent: 0,
+childCount: 5,
+passChild: 0,
+failChild: 0,
+warningChild: 0,
+skipChild: 0,
+infoChild: 0,
+grandChildCount: 5,
+passGrandChild: 0,
+failGrandChild: 0,
+warningGrandChild: 0,
+skipGrandChild: 0,
+infoGrandChild: 0,
+eventsCount: 5,
+passEvents: 51,
+failEvents: 3,
+warningEvents: 3,
+skipEvents: 0,
+infoEvents: 147
+};
+</script>        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@c05cd28cde1617b9d0c05a831daff6cb97fd9fd5/spark/js/spark-script.js"></script>
+<script type="text/javascript"></script></body>
+</html>

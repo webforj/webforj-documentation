@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 
-import pages.LoginPage;
+import pages.LoginPage.LoginSubmissionPage;
 import tests.BaseTest;
 import utils.CookiesUtil;
 import utils.WaitUtil;
@@ -15,58 +15,58 @@ import utils.annotations.BrowserTest;
 
 public class LoginSubmissionIT extends BaseTest {
 
-    private LoginPage loginPage;
+    private LoginSubmissionPage loginSubmissionPage;
 
     @BeforeEach
     public void setupLoginSubmission() {
-        page.navigate("https://docs.webforj.com/webforj/loginsubmission?");
-        loginPage = new LoginPage(page);
+        navigateToRoute(LoginSubmissionPage.getRoute());
+        loginSubmissionPage = new LoginSubmissionPage(page);
     }
 
     @BrowserTest
     public void testInvalidUsernameAndInvalidPassword() {
-        loginPage.getUsername().fill("admin12");
-        loginPage.getPassword().fill("wrongpass");
-        loginPage.getSignInButton().click();
+        loginSubmissionPage.getUsername().fill("admin12");
+        loginSubmissionPage.getPassword().fill("wrongpass");
+        loginSubmissionPage.getSignInButton().click();
 
-        assertThat(loginPage.getErrorMessage()).isVisible();
+        assertThat(loginSubmissionPage.getErrorMessage()).isVisible();
 
     }
 
     @BrowserTest
     public void testValidUsernmaeAndValidPassword() {
-        loginPage.getUsername().fill("admin");
-        loginPage.getPassword().fill("admin");
-        loginPage.getSignInButton().click();
+        loginSubmissionPage.getUsername().fill("admin");
+        loginSubmissionPage.getPassword().fill("admin");
+        loginSubmissionPage.getSignInButton().click();
 
-        WaitUtil.waitForVisible(loginPage.getLogoutButton());
-        loginPage.getLogoutButton().click();
+        WaitUtil.waitForVisible(loginSubmissionPage.getLogoutButton());
+        loginSubmissionPage.getLogoutButton().click();
 
-        WaitUtil.waitForVisible(loginPage.getHeader());
-        assertThat(loginPage.getHeader()).containsText("Authentication");
+        WaitUtil.waitForVisible(loginSubmissionPage.getHeader());
+        assertThat(loginSubmissionPage.getHeader()).containsText("Authentication");
     }
 
     @BrowserTest
     public void testCookies() {
-        loginPage.getUsername().waitFor();
-        loginPage.getUsername().fill("admin");
-        loginPage.getPassword().fill("admin");
-        loginPage.getSignInButton().click();
+        loginSubmissionPage.getUsername().waitFor();
+        loginSubmissionPage.getUsername().fill("admin");
+        loginSubmissionPage.getPassword().fill("admin");
+        loginSubmissionPage.getSignInButton().click();
 
-        WaitUtil.waitForVisible(loginPage.getLogoutButton(), 10000);
+        WaitUtil.waitForVisible(loginSubmissionPage.getLogoutButton(), 10000);
 
         Map<String, String> localStorageItems = CookiesUtil.getLocalStorage(page);
         assertEquals("on", localStorageItems.get("dwc-login-rememberme"));
 
-        loginPage.getLogoutButton().click();
+        loginSubmissionPage.getLogoutButton().click();
 
-        loginPage.getUsername().fill("admin");
-        loginPage.getPassword().fill("admin");
-        loginPage.getRememberMe().click();
+        loginSubmissionPage.getUsername().fill("admin");
+        loginSubmissionPage.getPassword().fill("admin");
+        loginSubmissionPage.getRememberMe().click();
 
-        assertThat(loginPage.getRememberMe()).hasAttribute("aria-checked", "false");
+        assertThat(loginSubmissionPage.getRememberMe()).hasAttribute("aria-checked", "false");
 
-        loginPage.getSignInButton().click();
+        loginSubmissionPage.getSignInButton().click();
 
         Map<String, String> localStorageAfterRememberMe = CookiesUtil.getLocalStorage(page);
 
@@ -75,37 +75,37 @@ public class LoginSubmissionIT extends BaseTest {
 
     @BrowserTest
     public void testValidUsernameInvalidPassword() {
-        loginPage.getUsername().fill("admin");
-        loginPage.getPassword().fill("admin123");
-        loginPage.getSignInButton().click();
+        loginSubmissionPage.getUsername().fill("admin");
+        loginSubmissionPage.getPassword().fill("admin123");
+        loginSubmissionPage.getSignInButton().click();
 
-        assertThat(loginPage.getErrorMessage()).isVisible();
+        assertThat(loginSubmissionPage.getErrorMessage()).isVisible();
     }
 
     @BrowserTest
     public void testInvalidUsernameValidPassword() {
-        loginPage.getUsername().fill("admin123");
-        loginPage.getPassword().fill("admin");
-        loginPage.getSignInButton().click();
+        loginSubmissionPage.getUsername().fill("admin123");
+        loginSubmissionPage.getPassword().fill("admin");
+        loginSubmissionPage.getSignInButton().click();
 
-        assertThat(loginPage.getErrorMessage()).isVisible();
+        assertThat(loginSubmissionPage.getErrorMessage()).isVisible();
     }
 
     @BrowserTest
     public void testBlankUsernameBlankPassword() {
-        loginPage.getUsername().fill(" ");
-        loginPage.getPassword().fill(" ");
-        loginPage.getSignInButton().click();
+        loginSubmissionPage.getUsername().fill(" ");
+        loginSubmissionPage.getPassword().fill(" ");
+        loginSubmissionPage.getSignInButton().click();
 
-        assertThat(loginPage.getErrorMessage()).isVisible();
+        assertThat(loginSubmissionPage.getErrorMessage()).isVisible();
     }
 
     @BrowserTest
     public void testSpecialCharUsernameAndPassword() {
-        loginPage.getUsername().fill("!@#$%^&*");
-        loginPage.getPassword().fill("<>?[]{}~");
-        loginPage.getSignInButton().click();
+        loginSubmissionPage.getUsername().fill("!@#$%^&*");
+        loginSubmissionPage.getPassword().fill("<>?[]{}~");
+        loginSubmissionPage.getSignInButton().click();
 
-        assertThat(loginPage.getErrorMessage()).isVisible();
+        assertThat(loginSubmissionPage.getErrorMessage()).isVisible();
     }
-} 
+}

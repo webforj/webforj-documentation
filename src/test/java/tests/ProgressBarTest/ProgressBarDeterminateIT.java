@@ -4,18 +4,19 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 
-import pages.ProgressBarPage;
+import pages.ProgressBarPage.ProgressBarDeterminatePage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class ProgressBarDeterminateIT extends BaseTest {
 
-    private ProgressBarPage progressBar;
+    private ProgressBarDeterminatePage progressBar;
 
     @BeforeEach
     public void setupProgressBarDeterminate() {
-        page.navigate("https://docs.webforj.com/webforj/progressbardeterminate?");
-        progressBar = new ProgressBarPage(page);
+        navigateToRoute(ProgressBarDeterminatePage.getRoute());
+        page.waitForLoadState();
+        progressBar = new ProgressBarDeterminatePage(page);
     }
 
     @BrowserTest
@@ -25,4 +26,4 @@ public class ProgressBarDeterminateIT extends BaseTest {
         assertThat(progressBar.getDeterminateProgressBar()).hasAttribute("animated", "true");
 
     }
-} 
+}

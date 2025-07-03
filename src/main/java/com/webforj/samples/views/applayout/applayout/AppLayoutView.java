@@ -14,9 +14,10 @@ import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
+import com.webforj.samples.config.RouteConfig;
 import com.webforj.samples.views.applayout.DrawerLogo;
 
-@Route
+@Route(RouteConfig.APP_LAYOUT)
 @InlineStyleSheet("context://css/applayout/applayout.css")
 @FrameTitle("AppLayout")
 public class AppLayoutView extends Composite<AppLayout> {

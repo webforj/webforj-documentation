@@ -2,13 +2,13 @@ package pages.IconPage;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.config.RouteConfig;
 import pages.BasePage;
 
 public class IconActionsButtonsPage extends BasePage {
 
-    private static final String ROUTE = "iconprefixsuffix";
+    private static final String ROUTE = RouteConfig.ICON_ACTIONS_BUTTONS;
 
-    // IconActionsButtons locators
     private final Locator nextButton;
     private final Locator nextIcon;
     private final Locator filterButton;
@@ -16,8 +16,7 @@ public class IconActionsButtonsPage extends BasePage {
 
     public IconActionsButtonsPage(Page page) {
         super(page);
-        
-        // Initialize IconActionsButtons locators
+
         nextButton = page.locator("dwc-button[dwc-id='11']");
         nextIcon = page.locator("dwc-icon[dwc-id='12']");
         filterButton = page.locator("dwc-button[dwc-id='13']");
@@ -28,7 +27,6 @@ public class IconActionsButtonsPage extends BasePage {
         return ROUTE;
     }
 
-    // IconActionsButtons getters
     public Locator getNextButton() {
         return nextButton;
     }
@@ -62,4 +60,4 @@ public class IconActionsButtonsPage extends BasePage {
     public Locator getFilterIconSvg() {
         return filterButton.locator("dwc-icon[dwc-id='14']").locator("svg");
     }
-} 
+}

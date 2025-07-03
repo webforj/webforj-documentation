@@ -10,8 +10,9 @@ import com.webforj.component.spinner.Spinner;
 import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.TOAST_BASIC)
 @FrameTitle("Toast Basics")
 public class ToastView extends Composite<Div> {
 

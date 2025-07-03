@@ -22,7 +22,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-@Route
+import com.webforj.samples.config.RouteConfig;
+
+@Route(RouteConfig.TERMINAL)
 @FrameTitle("Custom Terminal")
 @InlineStyleSheet("""
   dwc-window-center {

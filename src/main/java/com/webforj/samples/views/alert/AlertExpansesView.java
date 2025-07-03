@@ -13,19 +13,20 @@ import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route("alertexpanses")
+@Route(RouteConfig.ALERT_EXPANSES)
 @FrameTitle("Alert Expanses")
 public class AlertExpansesView extends Composite<FlexLayout> {
 
   public AlertExpansesView() {
     FlexLayout layout = getBoundComponent();
     layout.setDirection(FlexDirection.COLUMN)
-          .setJustifyContent(FlexJustifyContent.CENTER)
-          .setAlignment(FlexAlignment.CENTER)
-          .setSpacing("var(--dwc-space-m)")
-          .setMargin("var(--dwc-space-xl) auto")
-          .setWidth("100%");
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .setAlignment(FlexAlignment.CENTER)
+        .setSpacing("var(--dwc-space-m)")
+        .setMargin("var(--dwc-space-xl) auto")
+        .setWidth("100%");
 
     for (int i = Expanse.values().length - 1; i >= 0; i--) {
       Icon icon = TablerIcon.create("alert-square-rounded");
@@ -33,11 +34,11 @@ public class AlertExpansesView extends Composite<FlexLayout> {
           + " expanse.");
 
       Alert alert = new Alert()
-            .addToContent(FlexLayout.create(icon, text).horizontal().align().center().build())
-            .setExpanse(Expanse.values()[i])
-            .setClosable(false)
-            .setTheme(Theme.SUCCESS)
-            .setWidth("380px");
+          .addToContent(FlexLayout.create(icon, text).horizontal().align().center().build())
+          .setExpanse(Expanse.values()[i])
+          .setClosable(false)
+          .setTheme(Theme.SUCCESS)
+          .setWidth("380px");
       layout.add(alert);
 
     }

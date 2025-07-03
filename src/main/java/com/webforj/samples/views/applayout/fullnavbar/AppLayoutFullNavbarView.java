@@ -14,8 +14,9 @@ import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.APP_LAYOUT_FULL_NAVBAR)
 @InlineStyleSheet("context://css/applayout/applayout.css")
 @FrameTitle("AppLayout Full Navbar")
 public class AppLayoutFullNavbarView extends Composite<AppLayout> {

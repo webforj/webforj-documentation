@@ -11,10 +11,11 @@ import com.webforj.component.list.ChoiceBox;
 import com.webforj.component.list.ListItem;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
 import java.util.ArrayList;
 
-@Route("columnslayoutform")
+@Route(RouteConfig.COLUMNS_LAYOUT_FORM)
 @FrameTitle("Columns Layout Form")
 public class ColumnsLayoutFormView extends Composite<Div> {
   TextField firstName = new TextField("First Name");

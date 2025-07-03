@@ -4,18 +4,19 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 
-import pages.ProgressBarPage;
+import pages.ProgressBarPage.ProgressBarThemesPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class ProgressBarThemesIT extends BaseTest {
 
-    private ProgressBarPage progressBar;
+    private ProgressBarThemesPage progressBar;
 
     @BeforeEach
     public void setupProgressBarThemes() {
-        page.navigate("https://docs.webforj.com/webforj/progressbarthemes?");
-        progressBar = new ProgressBarPage(page);
+        navigateToRoute(ProgressBarThemesPage.getRoute());
+        page.waitForLoadState();
+        progressBar = new ProgressBarThemesPage(page);
     }
 
     @BrowserTest
@@ -28,4 +29,4 @@ public class ProgressBarThemesIT extends BaseTest {
         assertThat(progressBar.getSuccessBar()).hasAttribute("theme", "success");
         assertThat(progressBar.getWarningBar()).hasAttribute("theme", "warning");
     }
-} 
+}

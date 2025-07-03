@@ -2,22 +2,23 @@ package pages.CheckboxPage;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.config.RouteConfig;
 import pages.BasePage;
 
 public class CheckboxHorizontalTextPage extends BasePage {
 
-    private static final String ROUTE = "checkboxhorizontaltext";
+    private static final String ROUTE = RouteConfig.CHECKBOX_HORIZONTAL_TEXT;
 
     private final Locator leftAlignedCheckbox;
-    private final Locator weeklyCheckboxLabel;
-    private final Locator weeklyCheckboxInput;
+    private final Locator monthlyCheckboxLabel;
+    private final Locator monthlyCheckboxInput;
 
     public CheckboxHorizontalTextPage(Page page) {
         super(page);
 
-        leftAlignedCheckbox = page.locator("dwc-checkbox[dwc-id='18']");
-        weeklyCheckboxLabel = page.locator("dwc-checkbox[dwc-id='19'] >> label[part='label']");
-        weeklyCheckboxInput = page.locator("dwc-checkbox[dwc-id='19'] >> input");
+        leftAlignedCheckbox = page.locator("dwc-checkbox.bbj-reverse-order:has-text('Daily')");
+        monthlyCheckboxLabel = page.locator("dwc-checkbox.bbj-reverse-order:has-text('Monthly') >> label[part='label']");
+        monthlyCheckboxInput = page.locator("dwc-checkbox.bbj-reverse-order:has-text('Monthly') >> input");
     }
 
     public static String getRoute() {
@@ -28,11 +29,11 @@ public class CheckboxHorizontalTextPage extends BasePage {
         return leftAlignedCheckbox;
     }
 
-    public Locator getWeeklyCheckboxLabel() {
-        return weeklyCheckboxLabel;
+    public Locator getMonthlyCheckboxLabel() {
+        return monthlyCheckboxLabel;
     }
 
-    public Locator getWeeklyCheckboxInput() {
-        return weeklyCheckboxInput;
+    public Locator getMonthlyCheckboxInput() {
+        return monthlyCheckboxInput;
     }
-} 
+}

@@ -4,29 +4,25 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 
-import com.microsoft.playwright.Locator;
-
-import pages.ElementsPage;
+import pages.ElementsPage.ElementInputTextPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class ElementInputTextIT extends BaseTest {
 
-    private ElementsPage elements;
+    private ElementInputTextPage elementInputTextPage;
 
     @BeforeEach
     public void setupElementInputText() {
-        page.navigate("https://docs.webforj.com/webforj/elementinputtext?");
-        elements = new ElementsPage(page);
+        navigateToRoute(ElementInputTextPage.getRoute());
+        elementInputTextPage = new ElementInputTextPage(page);
     }
 
     @BrowserTest
     public void testInputText() {
-        Locator input = page.locator("input.element--input");
+        assertThat(elementInputTextPage.getInput()).hasValue("Here is the set text");
 
-        assertThat(input).hasValue("Here is the set text");
-
-        input.clear();
-        assertThat(input).hasValue("");
+        elementInputTextPage.getInput().clear();
+        assertThat(elementInputTextPage.getInput()).hasValue("");
     }
-} 
+}

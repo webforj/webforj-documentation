@@ -15,7 +15,9 @@ import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route
+import com.webforj.samples.config.RouteConfig;
+
+@Route(RouteConfig.TEXT_AREA)
 @FrameTitle("Feedback TextArea Demo")
 public class TextAreaView extends Composite<FlexLayout> {
 

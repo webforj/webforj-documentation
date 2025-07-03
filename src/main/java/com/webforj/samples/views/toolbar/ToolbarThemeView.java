@@ -12,7 +12,9 @@ import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.layout.toolbar.Toolbar;
 
-@Route
+import com.webforj.samples.config.RouteConfig;
+
+@Route(RouteConfig.TOOLBAR_THEMES)
 @FrameTitle("Toolbar Themes")
 public class ToolbarThemeView extends Composite<FlexLayout> {
 

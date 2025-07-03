@@ -8,11 +8,11 @@ import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.icons.Icon;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-
+import com.webforj.samples.config.RouteConfig;
 /**
  * Demo application to display icon addition to buttons.
  */
-@Route("buttonicon")
+@Route(RouteConfig.BUTTON_ICON)
 @FrameTitle("Button Icon")
 public class ButtonIconView extends Composite<FlexLayout> {
   FlexLayout self = getBoundComponent();

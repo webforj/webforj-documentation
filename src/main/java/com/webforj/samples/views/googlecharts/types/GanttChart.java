@@ -15,7 +15,7 @@ public class GanttChart {
   private final GoogleChart chart = new GoogleChart(GoogleChart.Type.GANTT);
 
   public GanttChart() {
-    
+
     Map<String, Object> options = new HashMap<>();
     options.put(TITLE, "Project Schedule");
     options.put("gantt", Map.of(
@@ -28,11 +28,11 @@ public class GanttChart {
     chart.setOptions(options);
 
     List<Object> data = new ArrayList<>();
-    data.add(Arrays.asList("Task ID", "Task Name", 
-        Map.of("type", "date", LABEL, "Start Date"), 
-        Map.of("type", "date", LABEL, "End Date"), 
-        Map.of("type", "number", LABEL, "Duration"), 
-        Map.of("type", "number", LABEL, "Percent Complete"), 
+    data.add(Arrays.asList("Task ID", "Task Name",
+        Map.of("type", "date", LABEL, "Start Date"),
+        Map.of("type", "date", LABEL, "End Date"),
+        Map.of("type", "number", LABEL, "Duration"),
+        Map.of("type", "number", LABEL, "Percent Complete"),
         Map.of("type", "string", LABEL, "Dependencies")
     ));
     data.add(Arrays.asList(

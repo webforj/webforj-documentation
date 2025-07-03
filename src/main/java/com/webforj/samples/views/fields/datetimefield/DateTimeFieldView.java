@@ -5,13 +5,14 @@ import com.webforj.component.field.DateTimeField;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.DATE_TIME_FIELD)
 @FrameTitle("Date Time Field Demo")
 public class DateTimeFieldView extends Composite<FlexLayout> {
 
   DateTimeField departure = new DateTimeField();
-  
+
   public DateTimeFieldView() {
     getBoundComponent().setMargin("var(--dwc-space-m)");
 

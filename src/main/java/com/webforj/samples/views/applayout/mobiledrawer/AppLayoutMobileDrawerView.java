@@ -20,9 +20,10 @@ import com.webforj.component.tabbedpane.TabbedPane.Alignment;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
+import com.webforj.samples.config.RouteConfig;
 import com.webforj.samples.views.applayout.DrawerLogo;
 
-@Route
+@Route(RouteConfig.APP_LAYOUT_MOBILE_DRAWER)
 @InlineStyleSheet("context://css/applayout/applayout.css")
 @FrameTitle("AppLayout Mobile Drawer")
 public class AppLayoutMobileDrawerView extends Composite<AppLayout> {

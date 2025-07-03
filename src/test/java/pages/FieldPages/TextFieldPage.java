@@ -2,9 +2,13 @@ package pages.FieldPages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.config.RouteConfig;
+
 import pages.BasePage;
 
 public class TextFieldPage extends BasePage {
+
+    private static final String ROUTE = RouteConfig.TEXT_FIELD;
 
     private final Locator usernameInput;
     private final Locator emailInput;
@@ -15,12 +19,16 @@ public class TextFieldPage extends BasePage {
 
     public TextFieldPage(Page page) {
         super(page);
-        usernameInput = page.locator("dwc-field[dwc-id='11'] >> input");
-        emailInput = page.locator("dwc-field[dwc-id='12'] >> input");
-        phoneInput = page.locator("dwc-field[dwc-id='13'] >> input");
-        urlInput = page.locator("dwc-field[dwc-id='14'] >> input");
-        searchInput = page.locator("dwc-field[dwc-id='15'] >> input");
+        usernameInput = page.locator("dwc-field:has-text('Enter Name') >> input");
+        emailInput = page.locator("dwc-field:has-text('Enter Email') >> input");
+        phoneInput = page.locator("dwc-field:has-text('Enter Phone Number') >> input");
+        urlInput = page.locator("dwc-field:has-text('Enter URL') >> input");
+        searchInput = page.locator("dwc-field:has-text('Enter Your Search') >> input");
         alertPopover = page.locator("div[class*='dwc-positioner']");
+    }
+
+    public static String getRoute() {
+        return ROUTE;
     }
 
     public Locator getUsernameInput() {
@@ -46,4 +54,4 @@ public class TextFieldPage extends BasePage {
     public Locator getAlertPopover() {
         return alertPopover;
     }
-} 
+}

@@ -30,8 +30,8 @@ public class TreemapChart {
     chart.setOptions(options);
 
     List<Object> data = new ArrayList<>();
-    data.add(Arrays.asList("Location", "Parent", 
-        "Market trade volume (size)", 
+    data.add(Arrays.asList("Location", "Parent",
+        "Market trade volume (size)",
         "Market increase/decrease (color)"));
     data.add(Arrays.asList(GLOBAL, null, 0, 0)); // Allow null
     data.add(Arrays.asList(AMERICA, GLOBAL, 0, 0));
@@ -52,7 +52,7 @@ public class TreemapChart {
     data.add(Arrays.asList("Japan", "Asia", 20, -12));
     data.add(Arrays.asList("India", "Asia", 40, 63));
     data.add(Arrays.asList("Laos", "Asia", 4, 34));
-    data.add(Arrays.asList("Australia2", AUSTRALIA, 19, 0)); 
+    data.add(Arrays.asList("Australia2", AUSTRALIA, 19, 0));
     data.add(Arrays.asList("New Zealand", AUSTRALIA, 13, -2));
     data.add(Arrays.asList("Egypt", AFRICA, 21, 0));
     data.add(Arrays.asList("South Africa", AFRICA, 30, -23));

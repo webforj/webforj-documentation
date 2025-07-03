@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class HistogramChart {
 
   private static final String TITLE = "title";
-  
+
   private final GoogleChart chart = new GoogleChart(GoogleChart.Type.HISTOGRAM);
 
   public HistogramChart() {
@@ -49,7 +49,7 @@ public class HistogramChart {
     data.add(Arrays.asList(28));
     data.add(Arrays.asList(30));
     chart.setData(data);
-    
+
   }
 
   public GoogleChart getChart() {

@@ -10,9 +10,12 @@ import com.webforj.component.icons.FeatherIcon;
 import com.webforj.component.icons.Icon;
 import com.webforj.component.infinitescroll.InfiniteScroll;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.INFINITE_SCROLL_VIEW)
+@FrameTitle("Infinite Scroll")
 @InlineStyleSheet("context://css/infinitescroll/infinitescroll.css")
 public class InfiniteScrollView extends Composite<Div> {
 

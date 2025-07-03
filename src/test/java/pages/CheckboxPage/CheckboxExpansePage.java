@@ -2,11 +2,12 @@ package pages.CheckboxPage;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.config.RouteConfig;
 import pages.BasePage;
 
 public class CheckboxExpansePage extends BasePage {
 
-    private static final String ROUTE = "checkboxexpanse";
+    private static final String ROUTE = RouteConfig.CHECKBOX_EXPANSE;
 
     private final Locator noneCheckbox;
     private final Locator xsmallCheckbox;
@@ -18,12 +19,12 @@ public class CheckboxExpansePage extends BasePage {
     public CheckboxExpansePage(Page page) {
         super(page);
 
-        noneCheckbox = page.locator("dwc-checkbox[dwc-id='11']");
-        xsmallCheckbox = page.locator("dwc-checkbox[dwc-id='12']");
-        smallCheckbox = page.locator("dwc-checkbox[dwc-id='13']");
-        mediumCheckbox = page.locator("dwc-checkbox[dwc-id='14']");
-        largeCheckbox = page.locator("dwc-checkbox[dwc-id='15']");
-        xlargeCheckbox = page.locator("dwc-checkbox[dwc-id='16']");
+        noneCheckbox = page.locator("dwc-checkbox[expanse='']");
+        xsmallCheckbox = page.locator("dwc-checkbox[expanse='xs']");
+        smallCheckbox = page.locator("dwc-checkbox[expanse='s']");
+        mediumCheckbox = page.locator("dwc-checkbox[expanse='m']");
+        largeCheckbox = page.locator("dwc-checkbox[expanse='l']");
+        xlargeCheckbox = page.locator("dwc-checkbox[expanse='xl']");
     }
 
     public static String getRoute() {
@@ -53,4 +54,4 @@ public class CheckboxExpansePage extends BasePage {
     public Locator getXLargeExpanseCheckbox() {
         return xlargeCheckbox;
     }
-} 
+}

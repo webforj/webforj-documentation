@@ -3,15 +3,12 @@ package pages.BusyIndicatorPage;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import pages.BasePage;
+import com.webforj.samples.config.RouteConfig;
 
-/**
- * Page Object for Busy Basics functionality
- */
 public class BusyDemoPage extends BasePage {
 
-    private static final String ROUTE = "busydemo";
+    private static final String ROUTE = RouteConfig.BUSY_DEMO;
 
-    // BusyDemo locators
     private final Locator busyIndicator;
     private final Locator nameInput;
     private final Locator passwordInput;
@@ -19,19 +16,17 @@ public class BusyDemoPage extends BasePage {
 
     public BusyDemoPage(Page page) {
         super(page);
-        
-        // Initialize BusyDemo locators
-        busyIndicator = page.locator("dwc-loading[dwc-id='10']");
+
+        busyIndicator = page.locator("dwc-loading:has-text('Submitting form... Please wait.')");
         nameInput = page.locator("#field-1");
         passwordInput = page.locator("#field-2");
-        submitButton = page.locator("dwc-button[dwc-id='15']");
+        submitButton = page.locator("dwc-button:has-text('Submit')");
     }
 
     public static String getRoute() {
         return ROUTE;
     }
 
-    // BusyDemo getters
     public Locator getBusyIndicator() {
         return busyIndicator;
     }
@@ -47,4 +42,4 @@ public class BusyDemoPage extends BasePage {
     public Locator getSubmitButton() {
         return submitButton;
     }
-} 
+}

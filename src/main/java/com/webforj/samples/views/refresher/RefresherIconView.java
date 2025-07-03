@@ -11,8 +11,9 @@ import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.refresher.Refresher;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.REFRESHER_ICON)
 @InlineStyleSheet("context://css/refresher/refresher.css")
 public class RefresherIconView extends Composite<Div> {
 

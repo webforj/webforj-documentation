@@ -12,8 +12,9 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.table.Column;
 import com.webforj.component.table.Table;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.TABLE_DYNAMIC_STYLING)
 @InlineStyleSheet(/* css */ """
   dwc-table::part(row-even) {
     background-color: var(--dwc-color-gray-alt);

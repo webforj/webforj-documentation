@@ -4,15 +4,15 @@ import java.util.Optional;
 
 import com.webforj.component.Composite;
 import com.webforj.component.field.NumberField;
-import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.optioninput.RadioButton;
 import com.webforj.component.slider.Slider;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.SLIDER_TICK_SPACING)
 @FrameTitle("Slider Major and Minor Tick Spacing Demo")
 public class SliderTickSpacingView extends Composite<FlexLayout> {
   FlexLayout self = getBoundComponent();

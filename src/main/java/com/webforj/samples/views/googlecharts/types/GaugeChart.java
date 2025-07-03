@@ -14,7 +14,7 @@ public class GaugeChart {
   private final GoogleChart chart = new GoogleChart(GoogleChart.Type.GAUGE);
 
   public GaugeChart() {
-    
+
     Map<String, Object> options = new HashMap<>();
     options.put(TITLE, "Performance Metrics");
     options.put("greenFrom", 75);

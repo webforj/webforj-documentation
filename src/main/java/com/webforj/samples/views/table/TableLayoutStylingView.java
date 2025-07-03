@@ -11,7 +11,9 @@ import com.webforj.router.annotation.Route;
 import java.util.EnumSet;
 import java.util.List;
 
-@Route
+import com.webforj.samples.config.RouteConfig;
+
+@Route(RouteConfig.TABLE_LAYOUT_STYLING)
 @FrameTitle("Table Layout Styling")
 public class TableLayoutStylingView extends Composite<FlexLayout> {
 

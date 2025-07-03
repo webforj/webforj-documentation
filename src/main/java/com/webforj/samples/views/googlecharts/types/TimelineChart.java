@@ -21,8 +21,8 @@ public class TimelineChart {
     chart.setOptions(options);
 
     List<Object> data = new ArrayList<>();
-    data.add(Arrays.asList("Term", "President", 
-        Map.of("type", "date", "label", "Start"), 
+    data.add(Arrays.asList("Term", "President",
+        Map.of("type", "date", "label", "Start"),
         Map.of("type", "date", "label", "End")
     ));
     data.add(Arrays.asList("1", "George Washington", "Date(1789, 3, 30)", "Date(1797, 2, 4)"));

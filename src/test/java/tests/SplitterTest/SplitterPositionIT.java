@@ -6,18 +6,18 @@ import org.junit.jupiter.api.BeforeEach;
 
 import com.microsoft.playwright.options.BoundingBox;
 
-import pages.SplitterPage;
+import pages.SplitterPage.SplitterPositionPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class SplitterPositionIT extends BaseTest {
 
-    private SplitterPage splitterPage;
+    private SplitterPositionPage splitterPage;
 
     @BeforeEach
     public void setupSplitterPosition() {
-        page.navigate("https://docs.webforj.com/webforj/splitterposition?");
-        splitterPage = new SplitterPage(page);
+        page.navigate(SplitterPositionPage.getRoute());
+        splitterPage = new SplitterPositionPage(page);
     }
 
     @BrowserTest
@@ -32,4 +32,4 @@ public class SplitterPositionIT extends BaseTest {
 
         assertTrue(ratio > 2.5 && ratio < 3.5);
     }
-} 
+}

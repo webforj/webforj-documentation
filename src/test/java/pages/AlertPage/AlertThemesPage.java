@@ -2,6 +2,8 @@ package pages.AlertPage;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.config.RouteConfig;
+
 import pages.BasePage;
 
 /**
@@ -9,7 +11,7 @@ import pages.BasePage;
  */
 public class AlertThemesPage extends BasePage {
 
-    private static final String ROUTE = "alertthemes";
+    private static final String ROUTE = RouteConfig.ALERT_THEMES;
 
     // AlertThemes locators
     private final Locator dangerAlert;
@@ -22,15 +24,15 @@ public class AlertThemesPage extends BasePage {
 
     public AlertThemesPage(Page page) {
         super(page);
-        
+
         // Initialize AlertThemes locators
-        dangerAlert = page.locator("dwc-alert[dwc-id='11']");
-        defaultAlert = page.locator("dwc-alert[dwc-id='15']");
-        grayAlert = page.locator("dwc-alert[dwc-id='19']");
-        infoAlert = page.locator("dwc-alert[dwc-id='23']");
-        primaryAlert = page.locator("dwc-alert[dwc-id='27']");
-        successAlert = page.locator("dwc-alert[dwc-id='31']");
-        warningAlert = page.locator("dwc-alert[dwc-id='35']");
+        dangerAlert = page.locator("dwc-alert[theme='danger']");
+        defaultAlert = page.locator("dwc-alert[theme='default']");
+        grayAlert = page.locator("dwc-alert[theme='gray']");
+        infoAlert = page.locator("dwc-alert[theme='info']");
+        primaryAlert = page.locator("dwc-alert[theme='primary']");
+        successAlert = page.locator("dwc-alert[theme='success']");
+        warningAlert = page.locator("dwc-alert[theme='warning']");
     }
 
     public static String getRoute() {
@@ -65,4 +67,4 @@ public class AlertThemesPage extends BasePage {
     public Locator getWarningAlert() {
         return warningAlert;
     }
-} 
+}

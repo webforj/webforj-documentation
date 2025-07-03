@@ -7,8 +7,9 @@ import com.webforj.component.navigator.Navigator;
 import com.webforj.component.navigator.Navigator.Layout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.NAVIGATOR_PAGES)
 @FrameTitle("Navigator Pagination")
 public class NavigatorPagesView extends Composite<Div> {
 

@@ -4,6 +4,7 @@ import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.googlecharts.GoogleChart;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 
@@ -20,7 +21,7 @@ import java.util.Map;
       align-items: center;
     }
 """)
-@Route
+@Route(RouteConfig.CHART_SETTING_DATA)
 @FrameTitle("Chart Setting Data")
 public class ChartSettingDataView extends Composite<Div> {
 

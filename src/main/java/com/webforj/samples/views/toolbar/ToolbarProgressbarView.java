@@ -13,7 +13,9 @@ import com.webforj.component.layout.applayout.AppLayout;
 import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.component.progressbar.ProgressBar;
 
-@Route
+import com.webforj.samples.config.RouteConfig;
+
+@Route(RouteConfig.TOOLBAR_PROGRESS_BAR)
 @FrameTitle("Progressbar in Toolbar")
 public class ToolbarProgressbarView extends Composite<AppLayout> {
 

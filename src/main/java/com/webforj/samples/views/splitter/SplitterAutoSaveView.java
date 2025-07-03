@@ -11,8 +11,9 @@ import com.webforj.component.layout.splitter.Splitter;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.samples.components.SplitterBox;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.SPLITTER_AUTO_SAVE)
 @FrameTitle("Splitter Auto Save")
 public class SplitterAutoSaveView extends Composite<Div> {
 
@@ -22,7 +23,7 @@ public class SplitterAutoSaveView extends Composite<Div> {
     Splitter topSplitter = new Splitter("topSplitter", topLeft, topRight);
     topSplitter.setPositionRelative(30);
     topSplitter.setAutosave(true);
-    
+
 
     SplitterBox bottomLeft = new SplitterBox("Bottom Left", SplitterBox.Theme.SUCCESS);
     SplitterBox bottomRight = new SplitterBox("Bottom Right", SplitterBox.Theme.WARNING);
@@ -51,7 +52,7 @@ public class SplitterAutoSaveView extends Composite<Div> {
     FlexLayout layout = FlexLayout.create(toolbar, masterSplitter).vertical().build();
     layout.setStyle("padding", "var(--dwc-space-m)");
     layout.setItemAlignment(FlexAlignment.END, toolbar);
-    
+
     getBoundComponent().add(layout);
   }
 }

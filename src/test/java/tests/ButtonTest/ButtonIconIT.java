@@ -14,35 +14,35 @@ import utils.annotations.BrowserTest;
 
 public class ButtonIconIT extends BaseTest {
 
-    private ButtonIconPage buttonPage;
+    private ButtonIconPage buttonIconPage;
 
     @BeforeEach
     public void setupButtonIcon() {
         navigateToRoute(ButtonIconPage.getRoute());
-        buttonPage = new ButtonIconPage(page);
+        buttonIconPage = new ButtonIconPage(page);
 
     }
 
     @BrowserTest
     public void testNotificationsAndSearchButtonsHaveIconsAndClickable() {
-        
-        buttonPage.getNotificationButton().click();
-        assertThat(buttonPage.getNotificationIcon()).isVisible();
-        assertThat(buttonPage.getNotificationButton()).hasAttribute("has-focus", "");
 
-        buttonPage.getSearchButton().click();
-        assertThat(buttonPage.getSearchIcon()).isVisible();
-        assertThat(buttonPage.getSearchButton()).hasAttribute("has-focus", "");
+        buttonIconPage.getNotificationButton().click();
+        assertThat(buttonIconPage.getNotificationIcon()).isVisible();
+        assertThat(buttonIconPage.getNotificationButton()).hasAttribute("has-focus", "");
+
+        buttonIconPage.getSearchButton().click();
+        assertThat(buttonIconPage.getSearchIcon()).isVisible();
+        assertThat(buttonIconPage.getSearchButton()).hasAttribute("has-focus", "");
 
     }
 
     @BrowserTest
     public void testWebforjButtonImageNotBroken() {
-        String imageUrl = page.locator("dwc-button[dwc-id='15'] >>> img").getAttribute("src");
+        String imageUrl = buttonIconPage.getWebforJButton().getAttribute("src");
         assertNotNull(imageUrl, "Image src should not be null");
 
         APIResponse response = page.context().request().get(imageUrl);
         assertEquals(200, response.status());
 
     }
-} 
+}

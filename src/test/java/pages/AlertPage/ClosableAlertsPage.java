@@ -2,6 +2,8 @@ package pages.AlertPage;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.config.RouteConfig;
+
 import pages.BasePage;
 
 /**
@@ -9,7 +11,7 @@ import pages.BasePage;
  */
 public class ClosableAlertsPage extends BasePage {
 
-    private static final String ROUTE = "closablealert";
+    private static final String ROUTE = RouteConfig.CLOSABLE_ALERT;
 
     // ClosableAlerts locators
     private final Locator closableAlert;
@@ -19,12 +21,12 @@ public class ClosableAlertsPage extends BasePage {
 
     public ClosableAlertsPage(Page page) {
         super(page);
-        
+
         // Initialize ClosableAlerts locators
-        closableAlert = page.locator("dwc-alert[dwc-id='11']");
+        closableAlert = page.locator("dwc-alert[theme='info']");
         closableAlertText = page.locator("text='Heads up! This alert can be dismissed.'");
         closableAlertButton = page.locator("dwc-icon-button.hydrated");
-        showAlertButton = page.locator("dwc-button[dwc-id='12']");
+        showAlertButton = page.locator("dwc-button:has-text('Show alert')");
     }
 
     public static String getRoute() {
@@ -47,4 +49,4 @@ public class ClosableAlertsPage extends BasePage {
     public Locator getShowAlertButton() {
         return showAlertButton;
     }
-} 
+}

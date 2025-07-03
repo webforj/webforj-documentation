@@ -7,11 +7,12 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.table.Column;
 import com.webforj.component.table.Table;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Route
+@Route(RouteConfig.TABLE_CELL_STYLING)
 @InlineStyleSheet(/* css */ """
   dwc-table::part(cell-highlight) {
     background-color: var(--dwc-color-warning-alt);

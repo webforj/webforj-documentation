@@ -4,18 +4,18 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 
-import pages.SliderPage;
+import pages.SliderPage.DonationSliderPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class DonationSliderIT extends BaseTest {
 
-    private SliderPage sliderPage;
+    private DonationSliderPage sliderPage;
 
     @BeforeEach
     public void setupDonationSlider() {
-        page.navigate("https://docs.webforj.com/webforj/donationslider?");
-        sliderPage = new SliderPage(page);
+        page.navigate(DonationSliderPage.getRoute());
+        sliderPage = new DonationSliderPage(page);
     }
 
     @BrowserTest
@@ -28,4 +28,4 @@ public class DonationSliderIT extends BaseTest {
         sliderPage.getDonationButton().click();
         assertThat(sliderPage.getConfirmationToast()).isVisible();
     }
-} 
+}

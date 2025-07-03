@@ -2,8 +2,6 @@ package com.webforj.samples.views.slider;
 
 import java.util.Map;
 
-import org.checkerframework.checker.units.qual.t;
-
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
@@ -16,7 +14,9 @@ import com.webforj.router.annotation.Route;
 
 import static java.util.Map.entry;
 
-@Route
+import com.webforj.samples.config.RouteConfig;
+
+@Route(RouteConfig.SLIDER_LABELS)
 @FrameTitle("Slider Tick and Non-Tick Demo")
 public class SliderLabelsView extends Composite<FlexLayout> {
 

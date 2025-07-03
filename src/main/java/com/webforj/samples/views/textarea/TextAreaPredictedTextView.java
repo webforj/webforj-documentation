@@ -7,9 +7,10 @@ import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet("dwc-textarea::part(input) { text-transform: capitalize; }")
-@Route
+@Route(RouteConfig.TEXT_AREA_PREDICTED_TEXT)
 @FrameTitle("Predicted Text Demo")
 public class TextAreaPredictedTextView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();

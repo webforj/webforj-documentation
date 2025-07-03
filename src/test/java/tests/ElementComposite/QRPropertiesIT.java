@@ -19,13 +19,13 @@ import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 
-import pages.ElementCompositePage;
+import pages.ElementCompositePage.QRCodePropertiesPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class QRPropertiesIT extends BaseTest {
 
-    private ElementCompositePage elementCompositePage;
+    private QRCodePropertiesPage qrCodePropertiesPage;
 
     private static String decodeQRCode(byte[] imageData) throws IOException, NotFoundException {
         BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(imageData));
@@ -39,17 +39,17 @@ public class QRPropertiesIT extends BaseTest {
 
     @BeforeEach
     public void setupQRProperties() {
-        page.navigate("https://docs.webforj.com/webforj/qrproperties?");
-        elementCompositePage = new ElementCompositePage(page);
+        navigateToRoute(QRCodePropertiesPage.getRoute());
+        qrCodePropertiesPage = new QRCodePropertiesPage(page);
     }
 
     @BrowserTest
     public void testQRProperties() throws IOException, NotFoundException {
-        byte[] screenshot = elementCompositePage.getQrPropertiesCanvas().screenshot();
+        byte[] screenshot = qrCodePropertiesPage.getQrPropertiesCanvas().screenshot();
 
         String decodedText = decodeQRCode(screenshot);
 
         assertEquals("https://www.webforj.com", decodedText);
-        assertThat(elementCompositePage.getQrPropertiesCanvas()).hasAttribute("style", "width:200px;height:200px;");
+        assertThat(qrCodePropertiesPage.getQrPropertiesCanvas()).hasAttribute("style", "width:200px;height:200px;");
     }
-} 
+}

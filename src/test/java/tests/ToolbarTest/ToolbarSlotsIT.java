@@ -4,32 +4,32 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 
-import pages.ToolbarPage;
+import pages.ToolbarPage.ToolbarSlotsPage;
 import tests.BaseTest;
 import utils.WaitUtil;
 import utils.annotations.BrowserTest;
 
 public class ToolbarSlotsIT extends BaseTest {
 
-    private ToolbarPage toolbarPage;
+    private ToolbarSlotsPage toolbarSlotsPage;
 
     @BeforeEach
     public void setupToolbarSlots() {
-        page.navigate("https://docs.webforj.com/webforj/toolbarslots?");
-        toolbarPage = new ToolbarPage(page);
+        navigateToRoute(ToolbarSlotsPage.getRoute());
+        toolbarSlotsPage = new ToolbarSlotsPage(page);
     }
 
     @BrowserTest
     public void testUIElemets() {
-        WaitUtil.waitForVisible(toolbarPage.getSlotsToolbar());
+        WaitUtil.waitForVisible(toolbarSlotsPage.getSlotsToolbar());
 
-        assertThat(toolbarPage.getSlotsTablerIcon()).isVisible();
-        assertThat(toolbarPage.getSlotsApplicationTitle()).isVisible();
-        assertThat(toolbarPage.getToolbarTitle()).isVisible();
-        assertThat(toolbarPage.getSettingsButton()).isVisible();
-        assertThat(toolbarPage.getProfileButton()).isVisible();
-        assertThat(toolbarPage.getSlotsMainTitle()).isVisible();
-        assertThat(toolbarPage.getSlotsParagraph()).isVisible();
+        assertThat(toolbarSlotsPage.getSlotsTablerIcon()).isVisible();
+        assertThat(toolbarSlotsPage.getSlotsApplicationTitle()).isVisible();
+        assertThat(toolbarSlotsPage.getToolbarTitle()).isVisible();
+        assertThat(toolbarSlotsPage.getSettingsButton()).isVisible();
+        assertThat(toolbarSlotsPage.getProfileButton()).isVisible();
+        assertThat(toolbarSlotsPage.getSlotsMainTitle()).isVisible();
+        assertThat(toolbarSlotsPage.getSlotsParagraph()).isVisible();
 
     }
-} 
+}

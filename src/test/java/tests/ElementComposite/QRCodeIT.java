@@ -4,22 +4,22 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 
-import pages.ElementCompositePage;
+import pages.ElementCompositePage.QRCodeBasicPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class QRCodeIT extends BaseTest {
 
-    private ElementCompositePage elementCompositePage;
+    private QRCodeBasicPage qrCodeBasicPage;
 
     @BeforeEach
     public void setupQRCodePage() {
-        page.navigate("https://docs.webforj.com/webforj/qrdemo?");
-        elementCompositePage = new ElementCompositePage(page);
+        navigateToRoute(QRCodeBasicPage.getRoute());
+        qrCodeBasicPage = new QRCodeBasicPage(page);
     }
 
     @BrowserTest
     public void testQRCode() {
-        assertThat(elementCompositePage.getQrCodeCanvas()).isVisible();
+        assertThat(qrCodeBasicPage.getQrCodeCanvas()).isVisible();
     }
-} 
+}

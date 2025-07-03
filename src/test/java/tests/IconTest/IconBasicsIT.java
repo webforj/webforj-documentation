@@ -60,4 +60,4 @@ public class IconBasicsIT extends BaseTest {
             assertTrue(response.body().contains("<svg"));
         }
     }
-} 
+}

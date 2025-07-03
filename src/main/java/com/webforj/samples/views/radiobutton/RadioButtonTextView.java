@@ -8,8 +8,9 @@ import com.webforj.component.optioninput.CheckBox;
 import com.webforj.component.optioninput.RadioButton;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.RADIO_BUTTON_TEXT)
 @FrameTitle("Radio Button Text")
 public class RadioButtonTextView extends Composite<FlexLayout> {
 

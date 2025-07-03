@@ -2,11 +2,12 @@ package pages.ColumnsLayoutPage;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.config.RouteConfig;
 import pages.BasePage;
 
 public class ColumnsLayoutFormPage extends BasePage {
 
-    private static final String ROUTE = "columnslayoutform";
+    private static final String ROUTE = RouteConfig.COLUMNS_LAYOUT_FORM;
 
     private final Locator dwcColumnsLayout;
     private final Locator firstName;
@@ -22,15 +23,15 @@ public class ColumnsLayoutFormPage extends BasePage {
     public ColumnsLayoutFormPage(Page page) {
         super(page);
         this.dwcColumnsLayout = page.locator("dwc-columns-layout");
-        this.firstName = page.locator("dwc-field[dwc-id='12']");
-        this.lastName = page.locator("dwc-field[dwc-id='13']");
-        this.email = page.locator("dwc-field[dwc-id='14']");
-        this.password = page.locator("dwc-field[dwc-id='15']");
-        this.confirmPassword = page.locator("dwc-field[dwc-id='16']");
+        this.firstName = page.locator("dwc-field:has-text('First Name')");
+        this.lastName = page.locator("dwc-field:has-text('Last Name')");
+        this.email = page.locator("dwc-field:has-text('Email')");
+        this.password = page.locator("dwc-field:has-text('Password')", new Page.LocatorOptions().setHasNotText("Confirm"));
+        this.confirmPassword = page.locator("dwc-field:has-text('Confirm Password')");
         this.stateDropdown = page.locator("dwc-dropdown[part='dropdown']");
-        this.zipCode = page.locator("dwc-field[dwc-id='19']");
-        this.cancelButton = page.locator("dwc-button[dwc-id='20']:has-text('Cancel')");
-        this.submitButtonLayoutForm = page.locator("dwc-button[dwc-id='21']:has-text('Submit')");
+        this.zipCode = page.locator("dwc-field:has-text('Zip')");
+        this.cancelButton = page.locator("dwc-button:has-text('Cancel')");
+        this.submitButtonLayoutForm = page.locator("dwc-button:has-text('Submit')");
     }
 
     public static String getRoute() {
@@ -76,4 +77,4 @@ public class ColumnsLayoutFormPage extends BasePage {
     public Locator getSubmitButtonLayoutForm() {
         return submitButtonLayoutForm;
     }
-} 
+}

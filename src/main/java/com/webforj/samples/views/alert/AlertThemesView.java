@@ -12,8 +12,9 @@ import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route("alertthemes")
+@Route(RouteConfig.ALERT_THEMES)
 @FrameTitle("Alert Themes")
 public class AlertThemesView extends Composite<FlexLayout> {
 

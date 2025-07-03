@@ -4,41 +4,41 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 
-import pages.TabbedPanePage;
+import pages.TabbedPanePage.TabbedPanePlacementPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class TabbedPanePlacementIT extends BaseTest {
 
-    private TabbedPanePage tabbedPanePage;
+    private TabbedPanePlacementPage tabbedPanePlacementPage;
 
     @BeforeEach
     public void setupTabbedPanePlacement() {
         page.navigate("https://docs.webforj.com/webforj/tabbedpaneplacement?");
-        tabbedPanePage = new TabbedPanePage(page);
+        tabbedPanePlacementPage = new TabbedPanePlacementPage(page);
     }
 
     @BrowserTest
     public void testPlacement() {
-        tabbedPanePage.getPlacementDropdown().click();
-        tabbedPanePage.getPlacementListBox().locator("text=TOP").click();
-        assertThat(tabbedPanePage.getPlacementTabbedPane()).hasAttribute("placement", "top");
+        tabbedPanePlacementPage.getPlacementDropdown().click();
+        tabbedPanePlacementPage.getPlacementListBox().locator("text=TOP").click();
+        assertThat(tabbedPanePlacementPage.getPlacementTabbedPane()).hasAttribute("placement", "top");
 
-        tabbedPanePage.getPlacementDropdown().click();
-        tabbedPanePage.getPlacementListBox().locator("text=BOTTOM").click();
-        assertThat(tabbedPanePage.getPlacementTabbedPane()).hasAttribute("placement", "bottom");
+        tabbedPanePlacementPage.getPlacementDropdown().click();
+        tabbedPanePlacementPage.getPlacementListBox().locator("text=BOTTOM").click();
+        assertThat(tabbedPanePlacementPage.getPlacementTabbedPane()).hasAttribute("placement", "bottom");
 
-        tabbedPanePage.getPlacementDropdown().click();
-        tabbedPanePage.getPlacementListBox().locator("text=LEFT").click();
-        assertThat(tabbedPanePage.getPlacementTabbedPane()).hasAttribute("placement", "left");
+        tabbedPanePlacementPage.getPlacementDropdown().click();
+        tabbedPanePlacementPage.getPlacementListBox().locator("text=LEFT").click();
+        assertThat(tabbedPanePlacementPage.getPlacementTabbedPane()).hasAttribute("placement", "left");
 
-        tabbedPanePage.getPlacementDropdown().click();
-        tabbedPanePage.getPlacementListBox().locator("text=RIGHT").click();
-        assertThat(tabbedPanePage.getPlacementTabbedPane()).hasAttribute("placement", "right");
+        tabbedPanePlacementPage.getPlacementDropdown().click();
+        tabbedPanePlacementPage.getPlacementListBox().locator("text=RIGHT").click();
+        assertThat(tabbedPanePlacementPage.getPlacementTabbedPane()).hasAttribute("placement", "right");
 
-        tabbedPanePage.getPlacementDropdown().click();
-        tabbedPanePage.getPlacementListBox().locator("text=HIDDEN").click();
-        assertThat(tabbedPanePage.getPlacementTabbedPane()).hasAttribute("placement", "hidden");
+        tabbedPanePlacementPage.getPlacementDropdown().click();
+        tabbedPanePlacementPage.getPlacementListBox().locator("text=HIDDEN").click();
+        assertThat(tabbedPanePlacementPage.getPlacementTabbedPane()).hasAttribute("placement", "hidden");
 
     }
-} 
+}

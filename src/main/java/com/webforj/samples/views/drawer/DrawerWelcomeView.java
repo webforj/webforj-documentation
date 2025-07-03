@@ -22,9 +22,10 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet("context://css/drawer/drawerWelcome.css")
-@Route("drawerwelcome")
+@Route(RouteConfig.DRAWER_WELCOME)
 @FrameTitle("Drawer Welcome App")
 public class DrawerWelcomeView extends Composite<FlexLayout> {
 
@@ -70,7 +71,7 @@ public class DrawerWelcomeView extends Composite<FlexLayout> {
     productsItem.setPrefixComponent(TablerIcon.create("box"));
     AppNavItem documentsItem = new AppNavItem("Documents", "/drawerwelcome");
     documentsItem.setPrefixComponent(TablerIcon.create("files"));
-    
+
     appNav.addItem(dashboardItem);
     appNav.addItem(ordersItem);
     appNav.addItem(customersItem);
@@ -87,7 +88,7 @@ public class DrawerWelcomeView extends Composite<FlexLayout> {
 
     Button getStarted = new Button("Get Started").setTheme(ButtonTheme.PRIMARY);
     getStarted.onClick(e -> welcomeDrawer.close());
-    
+
     FlexLayout layout = FlexLayout.create(new Img("/fun.svg")
         .setSize("200px", "200px"),
       new H2("Welcome to webforJ"),
@@ -98,9 +99,9 @@ public class DrawerWelcomeView extends Composite<FlexLayout> {
         .align().center()
         .justify().center()
         .build();
-    
+
     welcomeDrawer.add(layout);
-    
+
     // Content
     Button openWelcome = new Button("Open Welcome Drawer");
     openWelcome.onClick(e -> welcomeDrawer.open());

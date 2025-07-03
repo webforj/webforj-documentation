@@ -17,8 +17,9 @@ import com.webforj.component.tabbedpane.TabbedPane.Placement;
 import com.webforj.component.tabbedpane.TabbedPane.Alignment;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.APP_LAYOUT_MOBILE_DRAWER)
 @InlineStyleSheet("context://css/applayout/applayoutMobile.css")
 @FrameTitle("AppLayout Mobile")
 public class AppLayoutMobileView extends Composite<AppLayout> {

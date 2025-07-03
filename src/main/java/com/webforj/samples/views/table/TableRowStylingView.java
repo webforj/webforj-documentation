@@ -10,7 +10,9 @@ import com.webforj.router.annotation.Route;
 import java.util.ArrayList;
 import java.util.List;
 
-@Route
+import com.webforj.samples.config.RouteConfig;
+
+@Route(RouteConfig.TABLE_ROW_STYLING)
 @InlineStyleSheet(/* css */ """
       dwc-table::part(row-highlight) {
         background-color: var(--dwc-color-info-alt);

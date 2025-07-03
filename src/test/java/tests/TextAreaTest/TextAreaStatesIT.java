@@ -4,30 +4,30 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 
-import pages.TextAreaPage;
+import pages.TextAreaPage.TextAreaStatesPage;
 
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class TextAreaStatesIT extends BaseTest {
 
-    private TextAreaPage textAreaPage;
+    private TextAreaStatesPage textAreaStatesPage;
 
     @BeforeEach
     public void setupTextAreaStates() {
-        page.navigate("https://docs.webforj.com/webforj/textareastates?");
-        textAreaPage = new TextAreaPage(page);
+        navigateToRoute(TextAreaStatesPage.getRoute());
+        textAreaStatesPage = new TextAreaStatesPage(page);
     }
 
     @BrowserTest
     public void testTextAreaStates() {
-        assertThat(textAreaPage.getReadOnlyArea()).isVisible();
-        assertThat(textAreaPage.getDisabledArea()).isVisible();
+        assertThat(textAreaStatesPage.getReadOnlyArea()).isVisible();
+        assertThat(textAreaStatesPage.getDisabledArea()).isVisible();
 
-        textAreaPage.getReadOnlyArea().click();
-        assertThat(textAreaPage.getReadOnlyArea()).hasAttribute("has-focus", "");
+        textAreaStatesPage.getReadOnlyArea().click();
+        assertThat(textAreaStatesPage.getReadOnlyArea()).hasAttribute("has-focus", "");
 
-        assertThat(textAreaPage.getDisabledArea()).isDisabled();
+        assertThat(textAreaStatesPage.getDisabledArea()).isDisabled();
 
     }
-} 
+}

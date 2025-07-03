@@ -28,4 +28,4 @@ public class CheckboxExpansesIT extends BaseTest {
         assertThat(checkBox.getXLargeExpanseCheckbox()).hasAttribute("expanse", "xl");
 
     }
-} 
+}

@@ -11,8 +11,9 @@ import com.webforj.component.layout.columnslayout.ColumnsLayout;
 import com.webforj.component.optioninput.CheckBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route("columnslayoutalignment")
+@Route(RouteConfig.COLUMNS_LAYOUT_ALIGNMENT)
 @FrameTitle("Columns Layout Alignment")
 public class ColumnsLayoutAlignmentView extends Composite<Div> {
 

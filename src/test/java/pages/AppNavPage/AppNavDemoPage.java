@@ -3,28 +3,24 @@ package pages.AppNavPage;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import pages.BasePage;
+import com.webforj.samples.config.RouteConfig;
 
 public class AppNavDemoPage extends BasePage {
 
-    private static final String ROUTE = "appnav";
+    private static final String ROUTE = RouteConfig.APP_NAV;
 
-    // Main layout and menu elements
     private final Locator tablerIcon;
     private final Locator sideMenu;
     private final Locator appLayout;
     private final Locator paragraph;
-    private final Locator mainTitle;
 
-    // Navigation items - Inbox dropdown
     private final Locator inboxDropdown;
     private final Locator sidebarPrimaryTab;
     private final Locator sidebarSocialTab;
 
-    // Navigation items - Main tabs
     private final Locator sidebarArchivedTab;
     private final Locator sidebarTrashTab;
 
-    // About dropdown items
     private final Locator aboutDropdown;
     private final Locator sidebarWebforJ;
     private final Locator sidebarGitHub;
@@ -33,34 +29,28 @@ public class AppNavDemoPage extends BasePage {
     public AppNavDemoPage(Page page) {
         super(page);
 
-        // Main layout and menu elements
-        tablerIcon = page.locator("dwc-icon-button[dwc-id='12']");
-        sideMenu = page.locator("dwc-app-layout[dwc-id='10']");
-        appLayout = page.locator("dwc-app-layout[dwc-id='10']");
-        paragraph = page.locator("dwc-app-layout[dwc-id='10'] >> p");
-        mainTitle = page.locator("dwc-app-layout[dwc-id='10'] >> h1[dwc-id='45']");
+        tablerIcon = page.locator("dwc-icon-button[class='menu-2 hydrated']");
+        sideMenu = page.locator("dwc-app-layout");
+        appLayout = page.locator("dwc-app-layout");
+        paragraph = page.locator("dwc-app-layout >> p");
 
-        // Navigation items - Inbox dropdown
-        inboxDropdown = page.locator("dwc-app-nav-item[dwc-id='15']");
-        sidebarPrimaryTab = inboxDropdown.locator("dwc-app-nav-item[dwc-id='18']");
-        sidebarSocialTab = page.locator("dwc-app-nav-item[dwc-id='22']");
+        inboxDropdown = page.locator("dwc-app-nav-item:has-text('Inbox')");
+        sidebarPrimaryTab = inboxDropdown.locator("dwc-app-nav-item:has-text('Primary')");
+        sidebarSocialTab = inboxDropdown.locator("dwc-app-nav-item:has-text('Social')");
 
-        // Navigation items - Main tabs
-        sidebarArchivedTab = page.locator("dwc-app-nav-item[dwc-id='30']");
-        sidebarTrashTab = page.locator("dwc-app-nav-item[dwc-id='32']");
+        sidebarArchivedTab = page.locator("dwc-app-nav-item:has-text('Archived')");
+        sidebarTrashTab = page.locator("dwc-app-nav-item:has-text('Trash')");
 
-        // About dropdown items
-        aboutDropdown = page.locator("dwc-app-nav-item[dwc-id='36']");
-        sidebarWebforJ = aboutDropdown.locator("dwc-app-nav-item[dwc-id='38']");
-        sidebarGitHub = aboutDropdown.locator("dwc-app-nav-item[dwc-id='40']");
-        sidebarDocumentation = aboutDropdown.locator("dwc-app-nav-item[dwc-id='42']");
+        aboutDropdown = page.locator("dwc-app-nav-item:has-text('About')");
+        sidebarWebforJ = aboutDropdown.locator("dwc-app-nav-item:has-text('WebforJ')");
+        sidebarGitHub = aboutDropdown.locator("dwc-app-nav-item:has-text('GitHub')");
+        sidebarDocumentation = aboutDropdown.locator("dwc-app-nav-item:has-text('Documentation')");
     }
 
     public static String getRoute() {
         return ROUTE;
     }
 
-    // Main layout and menu elements getters
     public Locator getTablerIcon() {
         return tablerIcon;
     }
@@ -77,11 +67,6 @@ public class AppNavDemoPage extends BasePage {
         return paragraph;
     }
 
-    public Locator getMainTitle() {
-        return mainTitle;
-    }
-
-    // Navigation items - Inbox dropdown getters
     public Locator getInboxDropdown() {
         return inboxDropdown;
     }
@@ -94,7 +79,6 @@ public class AppNavDemoPage extends BasePage {
         return sidebarSocialTab;
     }
 
-    // Navigation items - Main tabs getters
     public Locator getSidebarArchivedTab() {
         return sidebarArchivedTab;
     }
@@ -103,7 +87,6 @@ public class AppNavDemoPage extends BasePage {
         return sidebarTrashTab;
     }
 
-    // About dropdown items getters
     public Locator getAboutDropdown() {
         return aboutDropdown;
     }
@@ -119,4 +102,4 @@ public class AppNavDemoPage extends BasePage {
     public Locator getSidebarDocumentation() {
         return sidebarDocumentation;
     }
-} 
+}

@@ -4,71 +4,71 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 
-import pages.LoginPage;
+import pages.LoginPage.LoginCustomFieldsPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class LoginCustomFieldsIT extends BaseTest {
 
-    private LoginPage loginPage;
+    private LoginCustomFieldsPage loginCustomFieldsPage;
 
     @BeforeEach
     public void setupLoginCustomFields() {
-        page.navigate("https://docs.webforj.com/webforj/logincustomfields?");
-        loginPage = new LoginPage(page);
+        navigateToRoute(LoginCustomFieldsPage.getRoute());
+        loginCustomFieldsPage = new LoginCustomFieldsPage(page);
     }
 
     @BrowserTest
     public void testSuccessfulLogin() {
-        loginPage.getCustomderID().fill("Tesla");
-        loginPage.getUsername().fill("admin");
-        loginPage.getPassword().fill("admin");
-        loginPage.getSignInButton().click();
+        loginCustomFieldsPage.getCustomderID().fill("Tesla");
+        loginCustomFieldsPage.getUsername().fill("admin");
+        loginCustomFieldsPage.getPassword().fill("admin");
+        loginCustomFieldsPage.getSignInButton().click();
 
-        assertThat(loginPage.getLogoutButton()).isVisible();
-        loginPage.getLogoutButton().click();
+        assertThat(loginCustomFieldsPage.getLogoutButton()).isVisible();
+        loginCustomFieldsPage.getLogoutButton().click();
 
-        assertThat(loginPage.getHeader()).isVisible();
+        assertThat(loginCustomFieldsPage.getHeader()).isVisible();
     }
 
     @BrowserTest
     public void testInvalidCustomerID() {
 
-        loginPage.getCustomderID().fill("Toyota");
-        loginPage.getUsername().fill("admin");
-        loginPage.getPassword().fill("admin");
-        loginPage.getSignInButton().click();
+        loginCustomFieldsPage.getCustomderID().fill("Toyota");
+        loginCustomFieldsPage.getUsername().fill("admin");
+        loginCustomFieldsPage.getPassword().fill("admin");
+        loginCustomFieldsPage.getSignInButton().click();
 
-        assertThat(loginPage.getErrorMessage()).isVisible();
+        assertThat(loginCustomFieldsPage.getErrorMessage()).isVisible();
     }
 
     @BrowserTest
     public void testValidCustomerIDAndBlankInput() {
-        loginPage.getCustomderID().fill("Tesla");
-        loginPage.getUsername().fill(" ");
-        loginPage.getPassword().fill(" ");
-        loginPage.getSignInButton().click();
+        loginCustomFieldsPage.getCustomderID().fill("Tesla");
+        loginCustomFieldsPage.getUsername().fill(" ");
+        loginCustomFieldsPage.getPassword().fill(" ");
+        loginCustomFieldsPage.getSignInButton().click();
 
-        assertThat(loginPage.getErrorMessage()).isVisible();
+        assertThat(loginCustomFieldsPage.getErrorMessage()).isVisible();
     }
 
     @BrowserTest
     public void testValidCustomerIDAndInvalidInput() {
-        loginPage.getCustomderID().fill("Tesla");
-        loginPage.getUsername().fill("user1");
-        loginPage.getPassword().fill("wrongpass");
-        loginPage.getSignInButton().click();
+        loginCustomFieldsPage.getCustomderID().fill("Tesla");
+        loginCustomFieldsPage.getUsername().fill("user1");
+        loginCustomFieldsPage.getPassword().fill("wrongpass");
+        loginCustomFieldsPage.getSignInButton().click();
 
-        assertThat(loginPage.getErrorMessage()).isVisible();
+        assertThat(loginCustomFieldsPage.getErrorMessage()).isVisible();
     }
 
     @BrowserTest
     public void testBlankCustomerIDAndValidInput() {
-        loginPage.getCustomderID().fill(" ");
-        loginPage.getUsername().fill("admin");
-        loginPage.getPassword().fill("admin");
-        loginPage.getSignInButton().click();
+        loginCustomFieldsPage.getCustomderID().fill(" ");
+        loginCustomFieldsPage.getUsername().fill("admin");
+        loginCustomFieldsPage.getPassword().fill("admin");
+        loginCustomFieldsPage.getSignInButton().click();
 
-        assertThat(loginPage.getErrorMessage()).isVisible();
+        assertThat(loginCustomFieldsPage.getErrorMessage()).isVisible();
     }
-} 
+}

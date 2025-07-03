@@ -4,18 +4,18 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 
-import pages.RadioButtonPage;
+import pages.RadioButtonPage.RadioButtonTextPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class RadioButtonTextIT extends BaseTest {
 
-    private RadioButtonPage radioButton;
+    private RadioButtonTextPage radioButton;
 
     @BeforeEach
     public void setupRadioButtonText() {
-        page.navigate("https://docs.webforj.com/webforj/radiobuttontext?");
-        radioButton = new RadioButtonPage(page);
+        page.navigate(RadioButtonTextPage.getRoute());
+        radioButton = new RadioButtonTextPage(page);
     }
 
     @BrowserTest
@@ -27,4 +27,4 @@ public class RadioButtonTextIT extends BaseTest {
         assertThat(radioButton.getLeftAlignedInput()).hasAttribute("aria-checked", "true");
 
     }
-} 
+}

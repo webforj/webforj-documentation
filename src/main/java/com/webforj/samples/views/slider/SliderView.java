@@ -14,11 +14,12 @@ import com.webforj.router.annotation.Route;
 
 import java.util.Map;
 
-import org.checkerframework.checker.units.qual.t;
 
 import static java.util.Map.entry;
 
-@Route
+import com.webforj.samples.config.RouteConfig;
+
+@Route(RouteConfig.SLIDER_VIEW)
 @FrameTitle("Volume Control Demo")
 public class SliderView extends Composite<FlexLayout> {
 

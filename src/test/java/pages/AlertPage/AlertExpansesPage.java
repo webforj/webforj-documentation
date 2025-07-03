@@ -2,11 +2,13 @@ package pages.AlertPage;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.config.RouteConfig;
+
 import pages.BasePage;
 
 public class AlertExpansesPage extends BasePage {
 
-    private static final String ROUTE = "alertexpanses";
+    private static final String ROUTE = RouteConfig.ALERT_EXPANSES;
 
     private final Locator noneExpanseAlert;
     private final Locator xsmallExpanseAlert;
@@ -17,13 +19,13 @@ public class AlertExpansesPage extends BasePage {
 
     public AlertExpansesPage(Page page) {
         super(page);
-        
-        noneExpanseAlert = page.locator("dwc-alert[dwc-id='11']");
-        xsmallExpanseAlert = page.locator("dwc-alert[dwc-id='15']");
-        smallExpanseAlert = page.locator("dwc-alert[dwc-id='19']");
-        mediumExpanseAlert = page.locator("dwc-alert[dwc-id='23']");
-        largeExpanseAlert = page.locator("dwc-alert[dwc-id='27']");
-        xlargeExpanseAlert = page.locator("dwc-alert[dwc-id='31']");
+
+        noneExpanseAlert = page.locator("dwc-alert[expanse='']");
+        xsmallExpanseAlert = page.locator("dwc-alert[expanse='xs']");
+        smallExpanseAlert = page.locator("dwc-alert[expanse='s']");
+        mediumExpanseAlert = page.locator("dwc-alert[expanse='m']");
+        largeExpanseAlert = page.locator("dwc-alert[expanse='l']");
+        xlargeExpanseAlert = page.locator("dwc-alert[expanse='xl']");
     }
 
     public static String getRoute() {
@@ -54,4 +56,4 @@ public class AlertExpansesPage extends BasePage {
         return xlargeExpanseAlert;
     }
 
-} 
+}

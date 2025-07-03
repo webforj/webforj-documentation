@@ -4,48 +4,47 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 
-import pages.ToolbarPage;
+import pages.ToolbarPage.ToolbarCompactPage;
 import tests.BaseTest;
-import utils.WaitUtil;
 import utils.annotations.BrowserTest;
 
 public class ToolbarCompactIT extends BaseTest {
 
-    private ToolbarPage toolbarPage;
+    private ToolbarCompactPage toolbarCompactPage;
 
     @BeforeEach
     public void setupToolbarCompact() {
-        page.navigate("https://docs.webforj.com/webforj/toolbarcompact?");
-        toolbarPage = new ToolbarPage(page);
+        navigateToRoute(ToolbarCompactPage.getRoute());
+        toolbarCompactPage = new ToolbarCompactPage(page);
     }
 
     @BrowserTest
     public void testToolbarComponents() {
 
-        assertThat(toolbarPage.getTablerIcon()).isVisible();
-        assertThat(toolbarPage.getApplicationTitle()).isVisible();
-        assertThat(toolbarPage.getSalesTab()).isVisible();
-        assertThat(toolbarPage.getEnterpriseTab()).isVisible();
-        assertThat(toolbarPage.getPaymentTab()).isVisible();
-        assertThat(toolbarPage.getHistoryTab()).isVisible();
+        assertThat(toolbarCompactPage.getTablerIcon()).isVisible();
+        assertThat(toolbarCompactPage.getApplicationTitle()).isVisible();
+        assertThat(toolbarCompactPage.getSalesTab()).isVisible();
+        assertThat(toolbarCompactPage.getEnterpriseTab()).isVisible();
+        assertThat(toolbarCompactPage.getPaymentTab()).isVisible();
+        assertThat(toolbarCompactPage.getHistoryTab()).isVisible();
 
-        assertThat(toolbarPage.getMainTitle()).hasText("Application Title");
-        assertThat(toolbarPage.getParagraph()).hasText("Content goes here");
+        assertThat(toolbarCompactPage.getMainTitle()).hasText("Application Title");
+        assertThat(toolbarCompactPage.getParagraph()).hasText("Content goes here");
     }
 
     @BrowserTest
     public void testVisualHighlight() {
 
-        toolbarPage.getSalesTab().click();
-        assertThat(toolbarPage.getSalesTab()).hasAttribute("active", "");
+        toolbarCompactPage.getSalesTab().click();
+        assertThat(toolbarCompactPage.getSalesTab()).hasAttribute("active", "");
 
-        toolbarPage.getEnterpriseTab().click();
-        assertThat(toolbarPage.getEnterpriseTab()).hasAttribute("active", "");
+        toolbarCompactPage.getEnterpriseTab().click();
+        assertThat(toolbarCompactPage.getEnterpriseTab()).hasAttribute("active", "");
 
-        toolbarPage.getPaymentTab().click();
-        assertThat(toolbarPage.getPaymentTab()).hasAttribute("active", "");
+        toolbarCompactPage.getPaymentTab().click();
+        assertThat(toolbarCompactPage.getPaymentTab()).hasAttribute("active", "");
 
-        toolbarPage.getHistoryTab().click();
-        assertThat(toolbarPage.getHistoryTab()).hasAttribute("active", "");
+        toolbarCompactPage.getHistoryTab().click();
+        assertThat(toolbarCompactPage.getHistoryTab()).hasAttribute("active", "");
     }
-} 
+}

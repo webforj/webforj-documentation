@@ -17,7 +17,9 @@ import com.webforj.router.annotation.Route;
 import java.util.Map;
 import static java.util.Map.entry;
 
-@Route
+import com.webforj.samples.config.RouteConfig;
+
+@Route(RouteConfig.DONATION_SLIDER)
 @FrameTitle("Donation Slider Demo")
 public class DonationSliderView extends Composite<FlexLayout> {
   FlexLayout self = getBoundComponent();

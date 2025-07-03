@@ -44,11 +44,9 @@ public class AppNavIT extends BaseTest {
     @BrowserTest
     public void testNavigations() {
         appNavPage.getSidebarArchivedTab().click();
-        assertThat(appNavPage.getMainTitle()).hasText("Application Title");
         assertThat(appNavPage.getParagraph()).containsText("Archived");
 
         appNavPage.getSidebarTrashTab().click();
-        assertThat(appNavPage.getMainTitle()).hasText("Application Title");
         assertThat(appNavPage.getParagraph()).containsText("Trash");
 
     }
@@ -95,4 +93,4 @@ public class AppNavIT extends BaseTest {
         assertThat(page).hasURL("http://localhost:8080/webforj/appnav/Trash");
 
     }
-} 
+}

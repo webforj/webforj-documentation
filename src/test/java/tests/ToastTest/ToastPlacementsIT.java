@@ -4,7 +4,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 
-import pages.ToastPage;
+import pages.ToastPage.ToastPlacementsPage;
 
 import tests.BaseTest;
 import utils.WaitUtil;
@@ -12,23 +12,23 @@ import utils.annotations.BrowserTest;
 
 public class ToastPlacementsIT extends BaseTest {
 
-    private ToastPage toastPage;
+    private ToastPlacementsPage toastPlacementsPage;
 
     @BeforeEach
     public void setupToastPlacements() {
-        page.navigate("https://docs.webforj.com/webforj/toastplacement?");
-        toastPage = new ToastPage(page);
+        navigateToRoute(ToastPlacementsPage.getRoute());
+        toastPlacementsPage = new ToastPlacementsPage(page);
     }
 
     @BrowserTest
     public void testToastPlacements() {
-        toastPage.getPlacementDropdown().click();
-        toastPage.getTopListItem().waitFor();
-        toastPage.getTopListItem().click();
+        toastPlacementsPage.getPlacementDropdown().click();
+        toastPlacementsPage.getTopListItem().waitFor();
+        toastPlacementsPage.getTopListItem().click();
 
-        toastPage.getPlacementButton().click();
+        toastPlacementsPage.getPlacementButton().click();
 
-        WaitUtil.waitForVisible(toastPage.getTopToastGroup());
-        assertThat(toastPage.getTopToastGroup()).isVisible();
+        WaitUtil.waitForVisible(toastPlacementsPage.getTopToastGroup());
+        assertThat(toastPlacementsPage.getTopToastGroup()).isVisible();
     }
-} 
+}

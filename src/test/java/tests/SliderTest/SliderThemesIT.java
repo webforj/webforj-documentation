@@ -4,18 +4,18 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 
-import pages.SliderPage;
+import pages.SliderPage.SliderThemesPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class SliderThemesIT extends BaseTest {
 
-    private SliderPage sliderPage;
+    private SliderThemesPage sliderPage;
 
     @BeforeEach
     public void setupSliderThemes() {
-        page.navigate("https://docs.webforj.com/webforj/sliderthemes?");
-        sliderPage = new SliderPage(page);
+        page.navigate(SliderThemesPage.getRoute());
+        sliderPage = new SliderThemesPage(page);
     }
 
     @BrowserTest
@@ -27,4 +27,4 @@ public class SliderThemesIT extends BaseTest {
         assertThat(sliderPage.getSuccessThemeSlider()).hasAttribute("theme", "success");
         assertThat(sliderPage.getWarningThemeSlider()).hasAttribute("theme", "warning");
     }
-} 
+}

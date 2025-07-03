@@ -8,13 +8,14 @@ import com.webforj.component.list.ChoiceBox;
 import com.webforj.component.field.MaskedNumberField;
 import com.webforj.component.field.PasswordField;
 import com.webforj.component.field.TextField;
-import com.webforj.component.html.elements.Div; 
+import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet("context://css/flexlayout/flexLayout.css")
-@Route
+@Route(RouteConfig.FLEX_LAYOUT_VIEW)  
 @FrameTitle("Flex Layout")
 public class FlexLayoutView extends Composite<Div> {
 

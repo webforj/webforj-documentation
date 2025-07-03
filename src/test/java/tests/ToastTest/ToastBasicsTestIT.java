@@ -1,23 +1,22 @@
 package tests.ToastTest;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.BeforeEach;
 
-import pages.ToastPage;
+import pages.ToastPage.ToastBasicsPage;
 import tests.BaseTest;
 import utils.WaitUtil;
 import utils.annotations.BrowserTest;
 
 public class ToastBasicsTestIT extends BaseTest {
 
-    private ToastPage toastPage;
+    private ToastBasicsPage toastBasicsPage;
 
     @BeforeEach
     public void setupToastBasics() {
-        page.navigate("https://docs.webforj.com/webforj/toast?");
-        toastPage = new ToastPage(page);
+        navigateToRoute(ToastBasicsPage.getRoute());
+        toastBasicsPage = new ToastBasicsPage(page);
     }
 
     @BrowserTest
@@ -26,16 +25,16 @@ public class ToastBasicsTestIT extends BaseTest {
     }
 
     public void testToastBasics() {
-        WaitUtil.waitForVisible(toastPage.getBasicToast());
+        WaitUtil.waitForVisible(toastBasicsPage.getBasicToast());
 
-        WaitUtil.waitForAttached(toastPage.getSpinner());
-        WaitUtil.waitForAttached(toastPage.getBasicMessage());
-        WaitUtil.waitForAttached(toastPage.getBasicButton());
+        WaitUtil.waitForAttached(toastBasicsPage.getSpinner());
+        WaitUtil.waitForAttached(toastBasicsPage.getBasicMessage());
+        WaitUtil.waitForAttached(toastBasicsPage.getBasicButton());
 
-        toastPage.getBasicButton().click();
+        toastBasicsPage.getBasicButton().click();
 
         page.waitForTimeout(500);
 
-        assertFalse(toastPage.getBasicToast().isVisible());
+        assertFalse(toastBasicsPage.getBasicToast().isVisible());
     }
-} 
+}

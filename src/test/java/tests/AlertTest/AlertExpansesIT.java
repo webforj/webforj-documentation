@@ -26,6 +26,5 @@ public class AlertExpansesIT extends BaseTest {
         assertThat(alertExpansesPage.getMediumExpanseAlert()).hasAttribute("expanse", "m");
         assertThat(alertExpansesPage.getLargeExpanseAlert()).hasAttribute("expanse", "l");
         assertThat(alertExpansesPage.getXlargeExpanseAlert()).hasAttribute("expanse", "xl");
-
     }
-} 
+}

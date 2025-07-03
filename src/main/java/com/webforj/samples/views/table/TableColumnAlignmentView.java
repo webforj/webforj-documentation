@@ -6,8 +6,9 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.table.Column;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.TABLE_COLUMN_ALIGNMENT)
 @FrameTitle("Table Column Alignment")
 public class TableColumnAlignmentView extends Composite<Div> {
 

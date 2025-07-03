@@ -8,8 +8,9 @@ import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.slider.Slider;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.SLIDER_THEMES)
 @FrameTitle("Slider Themes")
 public class SliderThemesView extends Composite<FlexLayout> {
 

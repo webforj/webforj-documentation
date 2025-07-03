@@ -16,7 +16,9 @@ import com.webforj.component.toast.Toast.Placement;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route
+import com.webforj.samples.config.RouteConfig;
+
+@Route(RouteConfig.TOAST_COOKIES)
 @FrameTitle("Toast Cookies")
 @InlineStyleSheet("context://css/toast/toastCookies.css")
 public class ToastCookiesView extends Composite<Div> {

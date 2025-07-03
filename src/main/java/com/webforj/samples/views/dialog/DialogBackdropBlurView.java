@@ -8,6 +8,7 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet(id = "login-form", value = /* css */"""
   .loginForm {
@@ -17,7 +18,7 @@ import com.webforj.router.annotation.Route;
     background-repeat: no-repeat;
   }
 """)
-@Route("dialogbackdropblurview")
+@Route(RouteConfig.DIALOG_BACKDROP_BLUR)
 @FrameTitle("Dialog Backdrop Blur")
 @InlineStyleSheet("context://css/dialog/dialog.css")
 public class DialogBackdropBlurView extends Composite<FlexLayout> {

@@ -10,21 +10,21 @@ import utils.annotations.BrowserTest;
 
 public class ButtonDisableIT extends BaseTest {
 
-    private ButtonDisablePage buttonPage;
+    private ButtonDisablePage buttonDisablePage;
 
     @BeforeEach
     public void setupButtonDisable() {
         navigateToRoute(ButtonDisablePage.getRoute());
-        buttonPage = new ButtonDisablePage(page);
+        buttonDisablePage = new ButtonDisablePage(page);
 
     }
 
     @BrowserTest
     public void testValidEmailEnablesSubmitButton() {
-        assertThat(buttonPage.getDisabledButton()).isDisabled();
+        assertThat(buttonDisablePage.getDisabledButton()).isDisabled();
 
-        buttonPage.getEmailField().fill("example@email.com");
+        buttonDisablePage.getEmailField().fill("example@email.com");
 
-        assertThat(buttonPage.getDisabledButton()).isEnabled();
+        assertThat(buttonDisablePage.getDisabledButton()).isEnabled();
     }
-} 
+}

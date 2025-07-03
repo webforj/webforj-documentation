@@ -10,23 +10,23 @@ import utils.annotations.BrowserTest;
 
 public class ButtonExpansesIT extends BaseTest {
 
-    private ButtonExpansesPage buttonPage;
+    private ButtonExpansesPage buttonExpansesPage;
 
     @BeforeEach
     public void setupButtonExpanses() {
         navigateToRoute(ButtonExpansesPage.getRoute());
-        buttonPage = new ButtonExpansesPage(page);
+        buttonExpansesPage = new ButtonExpansesPage(page);
 
     }
 
     @BrowserTest
     public void testInitialButtonValueNoneAndDropdownSelectionUpdatesLabel() {
-        assertThat(buttonPage.getExpanseButton()).hasText("None");
+        assertThat(buttonExpansesPage.getExpanseButton()).hasText("None");
 
-        buttonPage.getExpanseDropdown().click();
-        buttonPage.getExpanseChoiceBox().getByText("XLARGE").click();
+        buttonExpansesPage.getExpanseDropdown().click();
+        buttonExpansesPage.getExpanseChoiceBox().getByText("XLARGE").click();
 
-        assertThat(buttonPage.getExpanseButton()).hasText("XLARGE");
-        assertThat(buttonPage.getExpanseButton()).hasAttribute("expanse", "xl");
+        assertThat(buttonExpansesPage.getExpanseButton()).hasText("XLARGE");
+        assertThat(buttonExpansesPage.getExpanseButton()).hasAttribute("expanse", "xl");
     }
-} 
+}

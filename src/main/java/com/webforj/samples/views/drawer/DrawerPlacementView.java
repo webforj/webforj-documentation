@@ -10,8 +10,9 @@ import com.webforj.component.optioninput.RadioButton;
 import com.webforj.component.optioninput.RadioButtonGroup;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route("drawerplacement")
+@Route(RouteConfig.DRAWER_PLACEMENT)
 @FrameTitle("Drawer Placement")
 public class DrawerPlacementView extends Composite<FlexLayout> {
 
@@ -30,13 +31,13 @@ public class DrawerPlacementView extends Composite<FlexLayout> {
     RadioButton leftOption = new RadioButton("Left", true);
     RadioButton rightOption = new RadioButton("Right");
 
-    RadioButtonGroup placementGroup = new RadioButtonGroup("Placement Options", 
+    RadioButtonGroup placementGroup = new RadioButtonGroup("Placement Options",
         topOption, topCenterOption, bottomOption, bottomCenterOption, leftOption, rightOption);
 
     FlexLayout groupLayout = new FlexLayout();
     groupLayout.setDirection(FlexDirection.COLUMN)
             .setSpacing("var(--dwc-space-s)")
-            .add(placementGroup, topOption, topCenterOption, bottomOption, bottomCenterOption, 
+            .add(placementGroup, topOption, topCenterOption, bottomOption, bottomCenterOption,
                 leftOption, rightOption);
 
     placementGroup.onValueChange(event -> {
@@ -70,7 +71,7 @@ public class DrawerPlacementView extends Composite<FlexLayout> {
     Button openDrawer = new Button("Open Placement");
     openDrawer.onClick(e -> drawer.open());
 
-    layout.add(openDrawer, drawer);    
+    layout.add(openDrawer, drawer);
     drawer.open();
   }
 }

@@ -57,4 +57,4 @@ public class IconActionButtonsIT extends BaseTest {
             assertTrue(response.body().contains("<svg"));
         }
     }
-} 
+}

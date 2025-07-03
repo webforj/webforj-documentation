@@ -29,9 +29,9 @@ public class CheckboxHorizontalTextIT extends BaseTest {
 
     @BrowserTest
     public void testLabels() {
-        checkBox.getWeeklyCheckboxLabel().click();
+        checkBox.getMonthlyCheckboxInput().click();
 
-        assertThat(checkBox.getWeeklyCheckboxInput()).hasAttribute("aria-checked", "true");
+        assertThat(checkBox.getMonthlyCheckboxInput()).hasAttribute("aria-checked", "true");
 
     }
-} 
+}

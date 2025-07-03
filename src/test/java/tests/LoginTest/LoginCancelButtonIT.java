@@ -4,23 +4,23 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 
-import pages.LoginPage;
+import pages.LoginPage.LoginCancelButtonPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class LoginCancelButtonIT extends BaseTest {
 
-    private LoginPage loginPage;
+    private LoginCancelButtonPage loginCancelButtonPage;
 
     @BeforeEach
     public void setupLoginCancelButton() {
-        page.navigate("https://docs.webforj.com/webforj/logincancelbutton?");
-        loginPage = new LoginPage(page);
+        navigateToRoute(LoginCancelButtonPage.getRoute());
+        loginCancelButtonPage = new LoginCancelButtonPage(page);
     }
 
     @BrowserTest
     public void testCancelButton() {
-        loginPage.getCancelButton().click();
-        assertThat(loginPage.getSignInButton()).hasAttribute("disabled", "");
+        loginCancelButtonPage.getCancelButton().click();
+        assertThat(loginCancelButtonPage.getSignInButton()).hasAttribute("disabled", "");
     }
-} 
+}

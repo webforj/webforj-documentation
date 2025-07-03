@@ -4,46 +4,40 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 
-import com.microsoft.playwright.Locator;
-
-import pages.RadioButtonPage;
+import pages.RadioButtonPage.RadioButtonGroupBasicPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class RadioButtonGroupIT extends BaseTest {
 
-    private RadioButtonPage radioButton;
+    private RadioButtonGroupBasicPage radioButtonGroupPage;
 
     @BeforeEach
     public void setupRadioButtonGroup() {
-        page.navigate("https://docs.webforj.com/webforj/radiobuttongroup?");
-        radioButton = new RadioButtonPage(page);
+        page.navigate(RadioButtonGroupBasicPage.getRoute());
+        radioButtonGroupPage = new RadioButtonGroupBasicPage(page);
     }
 
     @BrowserTest
-    public void testButtonVisibility() {
-        radioButton.getStronglyDisagreeInput().click();
-        assertThat(radioButton.getStronglyDisagreeInput()).hasAttribute("aria-checked", "true");
+    public void testRadioButtonGroup() {
+        radioButtonGroupPage.getStronglyDisagreeRB().click();
+        assertThat(radioButtonGroupPage.getStronglyDisagreeRB()).isChecked();
 
-        Locator agreeButton = page.locator("dwc-radio[dwc-id=\"16\"] >> input");
-        agreeButton.click();
-        assertThat(agreeButton).hasAttribute("aria-checked", "true");
+        radioButtonGroupPage.getDisagreeRB().click();
+        assertThat(radioButtonGroupPage.getDisagreeRB()).isChecked();
+        assertThat(radioButtonGroupPage.getStronglyDisagreeRB()).not().isChecked();
 
-    }
+        radioButtonGroupPage.getNeutralRB().click();
+        assertThat(radioButtonGroupPage.getNeutralRB()).isChecked();
+        assertThat(radioButtonGroupPage.getDisagreeRB()).not().isChecked();
 
-    @BrowserTest
-    public void testButtonRealibility() {
-        radioButton.getStronglyDisagreeInput().click();
+        radioButtonGroupPage.getAgreeRB().click();
+        assertThat(radioButtonGroupPage.getAgreeRB()).isChecked();
+        assertThat(radioButtonGroupPage.getNeutralRB()).not().isChecked();
 
-        int width = page.viewportSize().width;
-        int height = page.viewportSize().height;
-
-        int centerX = width / 2;
-        int centerY = height / 2;
-
-        page.mouse().click(centerX, centerY);
-
-        assertThat(radioButton.getStronglyDisagreeInput()).hasAttribute("aria-checked", "true");
+        radioButtonGroupPage.getStronglyAgreeRB().click();
+        assertThat(radioButtonGroupPage.getStronglyAgreeRB()).isChecked();
+        assertThat(radioButtonGroupPage.getAgreeRB()).not().isChecked();
 
     }
-} 
+}

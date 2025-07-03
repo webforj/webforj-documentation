@@ -2,19 +2,20 @@ package pages.ColumnsLayoutPage;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.config.RouteConfig;
 import pages.BasePage;
 
 public class ColumnsLayoutAlignmentPage extends BasePage {
 
-    private static final String ROUTE = "columnslayoutalignment";
+    private static final String ROUTE = RouteConfig.COLUMNS_LAYOUT_ALIGNMENT;
 
     private final Locator dwcColumnsLayout;
     private final Locator submitButton;
-    
+
     public ColumnsLayoutAlignmentPage(Page page) {
         super(page);
         this.dwcColumnsLayout = page.locator("dwc-columns-layout");
-        this.submitButton = page.locator("dwc-button[dwc-id='19']");
+        this.submitButton = page.locator("dwc-button:has-text('Submit')");
     }
 
     public static String getRoute() {
@@ -28,4 +29,4 @@ public class ColumnsLayoutAlignmentPage extends BasePage {
     public Locator getSubmitButton() {
         return submitButton;
     }
-} 
+}

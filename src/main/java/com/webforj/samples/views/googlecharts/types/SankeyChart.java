@@ -8,10 +8,8 @@ import java.util.Map;
 import java.util.Arrays;
 
 public class SankeyChart {
-  
   private static final String BRAZIL = "Brazil";
   private static final String CANADA = "Canada";
-  
   private final GoogleChart chart = new GoogleChart(GoogleChart.Type.SANKEY);
 
   public SankeyChart() {

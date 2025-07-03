@@ -8,13 +8,13 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class WordtreeChart {
-  
+
   private static final String CATSEATMICE = "cats eat mice";
 
   private final GoogleChart chart = new GoogleChart(GoogleChart.Type.WORDTREE);
 
   public WordtreeChart() {
-    
+
     Map<String, Object> options = new HashMap<>();
     options.put("title", "Word Usage Tree");
     options.put("backgroundColor", "transparent");

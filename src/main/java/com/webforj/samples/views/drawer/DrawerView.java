@@ -11,13 +11,14 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.optioninput.CheckBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 @InlineStyleSheet("context://css/drawer/drawer.css")
-@Route("drawerdemo")
+@Route(RouteConfig.DRAWER)
 @FrameTitle("Task Manager Drawer")
 public class DrawerView extends Composite<FlexLayout> {
 

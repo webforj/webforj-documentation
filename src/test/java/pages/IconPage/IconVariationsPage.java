@@ -2,11 +2,12 @@ package pages.IconPage;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.config.RouteConfig;
 import pages.BasePage;
 
 public class IconVariationsPage extends BasePage {
 
-    private static final String ROUTE = "iconvariations";
+    private static final String ROUTE = RouteConfig.ICON_VARIATIONS;
 
     // IconVariations locators
     private final Locator envelopeIcon;
@@ -17,7 +18,7 @@ public class IconVariationsPage extends BasePage {
 
     public IconVariationsPage(Page page) {
         super(page);
-        
+
         // Initialize IconVariations locators
         envelopeIcon = page.locator("dwc-icon[dwc-id='11']");
         solidEnvelopeIcon = page.locator("dwc-icon[dwc-id='12']");
@@ -81,4 +82,4 @@ public class IconVariationsPage extends BasePage {
     public Locator getFilledCalendarIconSvg() {
         return filledCalendarIcon.locator("svg");
     }
-} 
+}
