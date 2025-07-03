@@ -13,7 +13,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
-@FrameTitle("Fluent API Demo")
+@FrameTitle("Fluent API")
 @StyleSheet("ws://composite/composite.css")
 public class CompositeFluentAPIView extends Composite<Div> {
 
