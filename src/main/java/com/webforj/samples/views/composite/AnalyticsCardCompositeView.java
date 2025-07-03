@@ -1,10 +1,11 @@
-package com.webforj.samples.views;
+package com.webforj.samples.views.composite;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.Page;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.googlecharts.GoogleChart;
 import com.webforj.component.html.elements.Div;
@@ -21,7 +22,7 @@ import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("Analytics Card")
-@InlineStyleSheet("context://css/analyticscomposite.css")
+@StyleSheet("ws://composite/analyticscomposite.css")
 public class AnalyticsCardCompositeView extends Composite<Div> {
 
   private final Paragraph title = new Paragraph("Monthly Sales");
@@ -59,7 +60,7 @@ public class AnalyticsCardCompositeView extends Composite<Div> {
     progress.setStyle("margin-top", "var(--dwc-space-xs)");
     
     GoogleChart chart = new GoogleChart(GoogleChart.Type.LINE);
-    chart.setStyle("height", "250px").setStyle("width", "100%");
+    chart.setSize("100%", "250px").setStyle("width", "100%");
 
     List<Object> data = new ArrayList<>();
     data.add(List.of("Month", "Sales"));
@@ -73,6 +74,12 @@ public class AnalyticsCardCompositeView extends Composite<Div> {
     
     Map<String, Object> options = new HashMap<>();
     options.put("backgroundColor", "transparent");
+
+    Map<String, Object> textStyle = Map.of("color", "#666666");
+    options.put("titleTextStyle", textStyle);
+    options.put("hAxis", Map.of("textStyle", textStyle));
+    options.put("vAxis", Map.of("textStyle", textStyle));
+    options.put("legendTextStyle", textStyle);
     
     chart.setOptions(options);
 

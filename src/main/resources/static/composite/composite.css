@@ -43,4 +43,7 @@
 .todo-text {
   font-size: 1rem;
   color: var(--dwc-color-text);
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
