@@ -1,6 +1,6 @@
-package com.webforj.samples.views;
+package com.webforj.samples.views.composite;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -13,8 +13,8 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
-@InlineStyleSheet("context://css/composite.css")
 @FrameTitle("Fluent API Demo")
+@StyleSheet("ws://composite/composite.css")
 public class CompositeFluentAPIView extends Composite<Div> {
 
   H1 title = new H1("User Profile Form");

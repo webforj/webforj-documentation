@@ -1,6 +1,6 @@
-package com.webforj.samples.views;
+package com.webforj.samples.views.composite;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.Expanse;
 import com.webforj.component.button.Button;
@@ -17,8 +17,8 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
-@InlineStyleSheet("context://css/composite.css")
 @FrameTitle("Constructor Setup Demo")
+@StyleSheet("ws://composite/composite.css")
 public class CompositeView extends Composite<Div> {
 
   private TextField taskInput;

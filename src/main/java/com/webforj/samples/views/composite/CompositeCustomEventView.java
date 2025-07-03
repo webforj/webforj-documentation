@@ -1,6 +1,6 @@
-package com.webforj.samples.views;
+package com.webforj.samples.views.composite;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -17,8 +17,8 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 @Route
-@InlineStyleSheet("context://css/composite.css")
 @FrameTitle("Custom Events Demo")
+@StyleSheet("ws://composite/composite.css")
 public class CompositeCustomEventView extends Composite<Div> {
 
   H1 title = new H1("Product Order Form");

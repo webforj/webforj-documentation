@@ -1,13 +1,13 @@
 ---
 sidebar_position: 2
 title: Composite Components
-draft: false
+sidebar_class_name: updated-content
 ---
 
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
-The `Composite` component in webforJ lets developers create custom, self-contained components by wrapping internal components into a single reusable unit. You can encapsulate logic, layout, and styling while controlling exactly what methods and data is exposed.
+The `Composite` component in webforJ lets you create custom, self-contained components by wrapping internal components into a single reusable unit. You can encapsulate logic, layout, and styling while controlling exactly what methods and data is exposed.
 
 Use a `Composite` when you want to:
 	-	Reuse component patterns throughout your application
@@ -18,13 +18,26 @@ It's highly recommended to create custom components by utilizing the `Composite`
 
 ## Defining a `Composite`
 
-To define a `Composite` component, extend the `Composite` class and specify the type of component it manages. This becomes your bound component, which is the root container that holds your internal structure.
+To define a `Composite` component, extend the `Composite` class and specify the type of component it manages. This becomes your bound component, which is the root container that holds your internal structure. The bound component can be any [webforJ component](../components/overview) or [HTML element component](/docs/building-ui/web-components/html-elements).
 
 ```java
 public class ApplicationComponent extends Composite<Div> {
 	//Implementation
 }
 ```
+
+## Constructor setup (Recommended)
+
+The recommended approach is to configure everything in the constructor. Use `getBoundComponent()` to build your internal layout and logic directly.
+
+<ComponentDemo 
+path='/webforj/composite?' 
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/composite.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/composite/CompositeView.java'
+height='400px'
+/>
+
+`getBoundComponent()` works perfectly in the constructor - no lifecycle methods needed for most use cases.
 
 ## Component binding {#component-binding}
 
@@ -142,7 +155,7 @@ public class ApplicationComponent extends Composite<Div> {
 ```
 
 :::tip Using `getBoundComponent()`
-Alternatively, you can use getBoundComponent() inside the constructor for setup, which is the preferred pattern.
+You can use `getBoundComponent()` inside the constructor for setup, which is the preferred pattern. This ensures your component is fully configured and ready to use immediately when created, without needing lifecycle methods or additional setup calls.
 :::
 
 Similarly, the `onDidDestroy()` method fires once the bound component has been destroyed, and allows for additional behavior to be fired on destruction should it be desired.
@@ -199,6 +212,10 @@ public class ThemedPanel extends Composite<FlexLayout> {
 }
 ```
 
+:::note Styling Integration
+Theme-aware `Composites` work well with webforJ's built-in styling system. See the [Styling overview](../styling/overview) and [Colors](../styling/colors) documentation to learn how to create themes that match webforJ components and automatically support dark mode.
+:::
+
 ### Slot-based layouts
 
 Create flexible layout components with predefined areas (slots) where other components can be placed. This pattern is common in app shells, card layouts, and dashboard widgets.
@@ -238,4 +255,12 @@ public class SlottedLayout extends Composite<FlexLayout> {
         return this;
     }
 }
+```
+
+Once defined, you can use the slot methods to organize content into specific areas:
+
+```java
+SlottedLayout layout = new SlottedLayout();
+layout.addToHeader(new H1("Dedicated place for a header"));
+layout.addToFooter(new Button("This button will always be at the bottom"));
 ```
