@@ -146,7 +146,7 @@ Tasks submitted from background threads are processed in **strict FIFO order**, 
 
 ## Task cancellation
 
-The `PendingResult` returned by `Environment.runLater()` supports cancellation, allowing you to prevent queued tasks from executing. By cancelling pending tasks, you can avoid memory leaks and prevent long-running operations from updating the UI after they are no longer needed.
+The `PendingResult` returned by `Environment.runLater()` supports cancellation, allowing you to prevent queued tasks from executing. By cancelling pending tasks, you can avoid memory leaks and prevent long-running operations from updating the UI after they're no longer needed.
 
 ### Basic cancellation
 
