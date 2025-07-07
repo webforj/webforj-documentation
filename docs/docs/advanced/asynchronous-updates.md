@@ -22,7 +22,7 @@ webforJ enforces a strict threading model where all UI operations must occur on 
 2. **Component thread affinity**: UI components maintain state that's not thread-safe
 3. **Event dispatch**: All UI events are processed sequentially on a single thread
 
-This single-threaded model prevents race conditions and maintains a consistent state for all UI components, but creates challenges when integrating with and asynchronous Long-running computation task.
+This single-threaded model prevents race conditions and maintains a consistent state for all UI components, but creates challenges when integrating with asynchronous, long-running computation tasks.
 
 ## `RunLater` API
 
