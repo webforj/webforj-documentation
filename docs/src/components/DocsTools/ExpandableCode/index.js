@@ -49,6 +49,8 @@ export default function ExpandableCode({
           <button 
             className={styles.expandButton}
             onClick={() => setIsExpanded(!isExpanded)}
+            aria-expanded={isExpanded}
+            aria-controls="expandable-code-content"
           >
             <span>{isExpanded ? 'Hide Code' : `Show all ${lines.length} lines`}</span>
             <ChevronRightIcon className={`${styles.chevron} ${isExpanded ? styles.chevronExpanded : ''}`} />
