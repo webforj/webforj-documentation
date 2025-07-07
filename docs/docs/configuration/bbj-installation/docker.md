@@ -147,7 +147,7 @@ in the previous step.
 ### Using the starter project
 
 <ComponentArchetype
-project="hello-world"
+project="bbj-hello-world"
 />
 
 ### Launching the app
