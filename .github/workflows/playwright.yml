@@ -9,18 +9,18 @@ on:
 
 jobs:
   test:
-    name: 'Playwright Tests - Java'
-    runs-on: ubuntu-22.04   # or use ubuntu-latest if preferred
+    name: 'Playwright Tests'
+    runs-on: ubuntu-latest
     timeout-minutes: 120
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up JDK 21
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
+          java-version: '17'
           distribution: 'temurin'
           cache: maven
           java-package: jdk
@@ -36,7 +36,7 @@ jobs:
         run: mvn clean install -DskipTests
 
       - name: Install Playwright browsers
-        run: mvn exec:java -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install --with-deps"
+        run: mvn exec:java -e -Dexec.mainClass="com.microsoft.playwright.CLI" -Dexec.args="install --with-deps" -Dexec.classpathScope=test
 
       - name: Run tests
         run: mvn verify
@@ -45,7 +45,7 @@ jobs:
 
       - name: Upload HTML report
         uses: actions/upload-artifact@v4
-        if: always()
+        if: failure()
         with:
           name: playwright-test-results
           path: test-results/reports/
