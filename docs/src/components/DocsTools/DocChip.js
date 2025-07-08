@@ -62,7 +62,7 @@ export default function DocChip( { chip, label, href, exclude, tooltipText, colo
       icon = <BiotechIcon css={iconStyles} />
     break;
     case 'experimental':
-      tooltipText = "This is currently an experimental feature and may change in future releases.";
+      tooltipText = "This is an experimental feature and may change in future releases.";
       exclude= 'true';
       label='Experimental';
       icon = <ExperimentIcon css={iconStyles}/>
