@@ -139,3 +139,5 @@ To ensure an optimal user experience when using the `Drawer` component, consider
 2. **Accessibility**: Pay special attention to accessibility. Ensure that users can open and close the drawer using keyboard controls and that screen readers can announce its presence and state. Provide ARIA roles and labels as necessary.
 
 3. **Swipe Gestures**: On touch-enabled devices, support swipe gestures for opening and closing the drawer. This is an intuitive way for users to interact with it.
+
+<GiscusComments />

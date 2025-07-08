@@ -90,3 +90,5 @@ dialog.show();
 3. **Consistent Theming**: Align dialog and button themes with your apps's design.
 4. **Judicious Use of Timeout**: Set timeouts for non-critical notifications and ensure users have enough time to read the message.
 5. **Avoid Overuse**: Use dialogs sparingly to prevent user frustration and reserve for important messages requiring user action or acknowledgment.
+
+<GiscusComments />

@@ -101,3 +101,5 @@ Web components often use slots to allow developers to define the structure of a 
 It is also possible to use the `add()` method with a `String` parameter to specify the desired slot in which to add the passed component.
 
 These interactions allow developers to harness the power of web components by providing a clean and straightforward API for manipulating slots, properties, and handling events within the `ElementComposite` class.
+
+<GiscusComments />

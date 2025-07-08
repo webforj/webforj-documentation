@@ -47,3 +47,5 @@ context.setAutoFocusFirstViolation(true);
 :::info Focus Aware
 This feature works only for the components the implements the `FocusAcceptorAware` concern.
 :::
+
+<GiscusComments />

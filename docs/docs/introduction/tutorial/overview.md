@@ -40,3 +40,5 @@ For those looking to skip ahead to specific topics, it's recommended to first re
 :::
 
 <DocCardList className="topics-section" />
+
+<GiscusComments />

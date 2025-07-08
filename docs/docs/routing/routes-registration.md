@@ -178,3 +178,5 @@ registry.register("/help", ContactView.class);
 ```
 
 In this example, the `ContactView` is accessible via three different paths: `/contact`, `/support`, and `/help`.
+
+<GiscusComments />

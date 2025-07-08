@@ -208,3 +208,5 @@ height = '460px'
 />
 
 <TableBuilder name="Slider" />
+
+<GiscusComments />

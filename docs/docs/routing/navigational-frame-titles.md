@@ -71,3 +71,5 @@ In this example:
 :::tip Combining annotations and dynamic titles
 You can combine both static and dynamic methods. If a route component has both a `@FrameTitle` annotation and implements the `HasFrameTitle` interface, the dynamically provided title from `getFrameTitle()` will take precedence over the static value from the annotation.
 :::
+
+<GiscusComments />

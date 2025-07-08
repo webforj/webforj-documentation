@@ -167,3 +167,5 @@ To ensure an optimal user experience when using the `ComboBox` component, consid
 5. **ComboBox vs. Other List Components**: A `ComboBox` is the best choice if you need a single input from the user and you wish to provide them with predetermined choices and the ability to customize their input. Another list component may be better if you need the following behaviors:
     - Multiple Selection and display all items at once: [ListBox](./list-box.md)
     - Prevent custom input: [ChoiceBox](./choice-box.md)
+
+<GiscusComments />

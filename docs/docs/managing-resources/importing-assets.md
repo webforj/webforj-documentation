@@ -142,4 +142,6 @@ page.addInlineStyleSheet("h1 { font-size: 24px; color: navy; }");
 | ------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `stylesheet` | The URL or inline StyleSheet content to inject. URLs starting with `context://` resolve to the app's root resources folder. |
 | `top`        | Determines whether the StyleSheet should be injected at the top of the page.                                                |
-| `attributes` | A map of attributes to set for the StyleSheet.                                                                              |
+| `attributes` | A map of attributes to set for the StyleSheet.                                                                              
+
+<GiscusComments />|

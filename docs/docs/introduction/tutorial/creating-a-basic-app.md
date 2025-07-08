@@ -185,3 +185,5 @@ public class DemoApplication extends App {
 ```
 
 The CSS styles are applied to the main `Frame` and provide structure by arranging components with a [grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout), and adding margin, padding, and border styles to make the UI visually organized.
+
+<GiscusComments />

@@ -94,3 +94,5 @@ UploadedFile result = dialog.show();
 4. **Restrict Directory Navigation**: Restrict the dialog to a specific directory when necessary to prevent users from navigating to unauthorized areas.
 5. **Consistent Theming**: Align the dialog and upload field themes with your app's design for a cohesive user experience.
 6. **Minimize Overuse**: Use file upload dialogs sparingly to avoid user frustration. Reserve them for actions requiring specific user file uploads.
+
+<GiscusComments />

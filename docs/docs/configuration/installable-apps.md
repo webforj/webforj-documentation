@@ -151,3 +151,5 @@ Screenshots provide a preview of the app in installation dialogs or app stores. 
     <source src="/video/install-android.mp4" type="video/mp4"/>
   </video>
 </div>
+
+<GiscusComments />

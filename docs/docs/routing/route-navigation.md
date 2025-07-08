@@ -144,3 +144,5 @@ console().log(location.get());
 ```
 
 This generates a `Location` object with the path `/user/JohnDoe`, the complete URI as a string.
+
+<GiscusComments />

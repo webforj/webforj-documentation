@@ -62,3 +62,5 @@ This command uses the Jetty maven plugin to start a Jetty server. Once the serve
 :::info Licensing and watermark
 For information on the licensing and the watermark present in unlicensed projects, see [this article](../configuration/licensing-and-watermark).
 :::
+
+<GiscusComments />

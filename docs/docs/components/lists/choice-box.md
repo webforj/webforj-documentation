@@ -123,3 +123,5 @@ To ensure an optimal user experience when using the `ChoiceBox` component, consi
 4. **ChoiceBox vs. Other List Components**: A `ChoiceBox` is the best choice if you need to restrict user input to a single choice from a list of predetermined options. Another list component may be better if you need the following behaviors:
     - Multiple Selection and display all items at once: [`ListBox`](./list-box.md)
     - Allow custom input: [`ComboBox`](./combo-box.md)
+    
+<GiscusComments />

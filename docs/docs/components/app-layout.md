@@ -114,3 +114,5 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 ## Styling
 
 <TableBuilder name="AppLayout" />
+
+<GiscusComments />
