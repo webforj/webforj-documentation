@@ -24,11 +24,16 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 
 The `PasswordField` component stores and retrieves its value as a plain `String`, similar to a `TextField`, but with obscured visual rendering to hide the characters from view.
 
+
 You can retrieve the current value using:
 
 ```java
-String password = passwordField.getValue();
+passwordField.getValue();
 ```
+
+:::tip
+Although the field visually masks the content, the returned value from `getValue()` is still a plain string. Be mindful of this when handling sensitive data. And encrypt or transform it before storage.
+:::
 
 To set or reset the value programmatically:
 
@@ -41,18 +46,13 @@ If no value has been entered by the user and no default is set, the field will r
 This behavior mimics that of the native HTML `<input type="password">`, where the `value` property holds the current input.
 
 
-:::tip
-Although the field visually masks the content, the returned value from `getValue()` is still stored as a plain string. Be mindful of this when handling sensitive data.
-:::
-
-
 ## Usages
 
 The `PasswordField` is best used in scenarios where capturing or handling sensitive information, such as passwords or other confidential data, is essential to your app. Here are some examples of when to use the `PasswordField`:
 
 1. **User Authentication and Registration**: Password fields are crucial in apps that involve user authentication or registration processes, where secure password input is required.
 
-2. **Secure Form Inputs**: When designing forms that require input of sensitive information, such as credit card details or personal identification numbers (PINs), using a `PasswordField` ensures the secure entry of such data.
+2. **Secure Form Inputs**: When designing forms that require input of sensitive information, such as credit card details or personal identification numbers (PINs), using a `PasswordField` secures the entry of such data.
 
 3. **Account Management and Profile Settings**: Password fields are valuable in apps that involve account management or profile settings, allowing users to change or update their passwords securely.
 
@@ -62,9 +62,9 @@ Users can reveal the value of the `PasswordField` by clicking on the reveal icon
 
 ## Pattern matching
 
-Applying a regular expression pattern to the `PasswordField` using the `setPattern()` method is strongly recommended. This allows you to enforce character rules and structural requirements, ensuring users create secure and compliant credentials. Pattern matching is especially useful when enforcing strong password rules, such as requiring a mix of uppercase and lowercase letters, numbers, and symbols.
+Applying a regular expression pattern to the `PasswordField` using the `setPattern()` method is strongly recommended. This allows you to enforce character rules and structural requirements, forcing users to create secure and compliant credentials. Pattern matching is especially useful when enforcing strong password rules, such as requiring a mix of uppercase and lowercase letters, numbers, and symbols.
 
-The pattern must follow the syntax of a [JavaScript regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions), as interpreted by the browser. The `u` (Unicode) flag is used internally to ensure accurate validation across all Unicode code points. Do **not** include forward slashes (`/`) around the pattern.
+The pattern must follow the syntax of a [JavaScript regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions), as interpreted by the browser. The `u` (Unicode) flag is used internally to guarantee validation across all Unicode code points. Do **not** include forward slashes (`/`) around the pattern.
 
 In the following snippet, the pattern requires at least one lowercase letter, one uppercase letter, one number, and a minimum length of 8 characters.
 
@@ -110,10 +110,10 @@ As the `PasswordField` component is often associated with sensitive information,
 
 - **Provide Password Strength Feedback**: Incorporate password strength indicators or feedback mechanisms to help users create strong and secure passwords. Evaluate factors such as length, complexity, and a mix of uppercase and lowercase letters, numbers, and special characters.
 
-- **Ensure Secure Password Storage**: Never store passwords in plain text. Instead, implement proper security measures to handle and store passwords securely in your app. Utilize industry-standard encryption algorithms for passwords and other sensitive data.
+- **Enforce Password Storage**: Never store passwords in plain text. Instead, implement proper security measures to handle and store passwords securely in your app. Use industry-standard encryption algorithms for passwords and other sensitive data.
 
-- **Password Confirmation**: Include an additional confirmation field when a user changes or creates a password. This measure helps minimize the likelihood of typos and ensures that users accurately enter their desired password.
+- **Password Confirmation**: Include an additional confirmation field when a user changes or creates a password. This measure helps minimize the likelihood of typos and makes sure users accurately enter their desired password.
 
 - **Allow Password Reset**: If your app involves user accounts, provide an option for users to reset their password. This could be in the form of a "Forgot Password" feature that initiates a password recovery process.
 
-- **Accessibility**: Utilize the `PasswordField` with accessibility in mind, ensuring it meets accessibility standards such as providing proper labels, and compatibility with assistive technologies.
+- **Accessibility**: Set up the `PasswordField` with accessibility in mind, so that it meets accessibility standards such as providing proper labels, and compatibility with assistive technologies.
