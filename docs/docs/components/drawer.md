@@ -121,7 +121,7 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 height='600px'
 />
 
-## Example: Task Manager
+## Example: Task manager
 
 This example uses a `Drawer` as a task manager. You can add tasks, check them off, and clear completed ones. The `Drawer` footer includes form controls to interact with the task list, and the “Add Task” [`Button`](../components/button) disables itself if 50 tasks are reached.
 
