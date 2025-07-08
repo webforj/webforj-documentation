@@ -410,7 +410,7 @@ public class LongTaskView extends Composite<FlexLayout> {
         pendingUIUpdates.add(updateResult);
       }
 
-      // Final update with result (this code is only reached if task completed without
+      // Final update with result (this code is only reached if the task completed without
       // cancellation)
       if (!isCancelled) {
         final double finalResult = result;
