@@ -21,7 +21,7 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 
 ## Autofocus
 
-The `Drawer` component supports autofocus, which automatically sets focus on the first focusable element when the `Drawer` opens. This enhances usability by bringing attention directly to the first actionable element.
+The `Drawer` component supports autofocus, which automatically sets focus on the first focusable element when the `Drawer` opens. This improves usability by bringing attention directly to the first actionable element.
 
 <ComponentDemo
 path='/webforj/drawerautofocus?'

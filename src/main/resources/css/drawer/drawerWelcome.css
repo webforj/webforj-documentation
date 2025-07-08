@@ -34,7 +34,6 @@ html[data-app-theme="dark"] .dwc-logo{
   align-items: center;
   justify-content: center;
   padding: var(--dwc-space-2xl);
-  
 }
 
 .welcome__drawer::part(header) {
