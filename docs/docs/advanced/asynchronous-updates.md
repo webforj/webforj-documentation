@@ -44,7 +44,7 @@ A critical feature of `Environment.runLater()` is automatic context inheritance.
 
 ### How inheritance works
 
-Any thread created from within an Environment thread automatically has access to that Environment. This inheritance happens transparently - you don't need to pass any context or configure anything.
+Any thread created from within an Environment thread automatically has access to that Environment. This inheritance happens automatically, so you don't need to pass any context or configure anything.
 
 ```java title="DataView.java"
 @Route
