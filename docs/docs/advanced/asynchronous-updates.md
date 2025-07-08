@@ -113,7 +113,6 @@ button.onClick(e -> {
     });
     
     System.out.println("After: " + result.isDone());  // true
-    System.out.println("Result: " + result.get());    // "completed"
 });
 ```
 
