@@ -141,7 +141,7 @@ public void onCreate() {
 }
 ```
 
-Tasks submitted from background threads are processed in **strict FIFO order**, preserving the sequence of operations even when submitted from multiple threads concurrently. With this ordering guarantee, UI updates are applied in the exact order they were submitted—if thread A submits task 1, and then thread B submits task 2, task 1 will always execute before task 2 on the UI thread. This approach prevents inconsistencies in the user interface.
+webforJ processes tasks submitted from background threads in **strict FIFO order**, preserving the sequence of operations even when submitted from multiple threads concurrently. With this ordering guarantee, UI updates are applied in the exact order they were submitted. So if thread A submits task 1, and then thread B submits task 2, task 1 will always execute before task 2 on the UI thread. Processing tasks in FIFO order prevents inconsistencies in the UI.
 
 ## Task cancellation
 
