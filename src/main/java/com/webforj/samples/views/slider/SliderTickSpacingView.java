@@ -1,14 +1,12 @@
 package com.webforj.samples.views.slider;
 
-import java.util.Optional;
-
 import com.webforj.component.Composite;
 import com.webforj.component.field.NumberField;
-import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.optioninput.RadioButton;
 import com.webforj.component.slider.Slider;
+import com.webforj.data.event.ValueChangeEvent;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
@@ -21,9 +19,6 @@ public class SliderTickSpacingView extends Composite<FlexLayout> {
   NumberField minorTickInput = new NumberField("Minor Tick", 10d);
   RadioButton snapToTicks = RadioButton.Switch("Snap to Ticks", false);
   RadioButton showTicks = RadioButton.Switch("Show Ticks", true);
-
-  boolean isSnapToTicksEnabled = false;
-  boolean areTicksVisible = true;
 
   public SliderTickSpacingView() {
     self.setDirection(FlexDirection.COLUMN)
@@ -42,44 +37,48 @@ public class SliderTickSpacingView extends Composite<FlexLayout> {
         .setTooltipVisibleOnSlideOnly(true)
         .setStyle("padding", "var(--dwc-space-m) 0");
 
+    int range = slider.getMax() - slider.getMin();
+
     majorTickInput
-        .setHelperText("Enter major tick spacing (e.g., 10)")
-        .setHorizontalAlignment(NumberField.Alignment.LEFT)
-        .setMin(0d)
-        .onValueChange(ev -> updateTickSpacing());
+        .setMin(1d)
+        .setMax((double) range)
+        .setInvalidMessage("Must be between 1 and " + range)
+        .setPlaceholder("Enter major tick spacing (e.g., 10)")
+        .onValueChange(this::updateTickSpacing);
+
     minorTickInput
-        .setHelperText("Enter minor tick spacing (e.g., 2)")
-        .setHorizontalAlignment(NumberField.Alignment.LEFT)
-        .setMin(0d)
-        .onValueChange(ev -> updateTickSpacing());
+        .setMin(1d)
+        .setMax((double) range)
+        .setInvalidMessage("Must be between 1 and " + range)
+        .setPlaceholder("Enter minor tick spacing (e.g., 2)")
+        .onValueChange(this::updateTickSpacing);
 
-    snapToTicks.onToggle(ev -> {
-      isSnapToTicksEnabled = ev.isToggled();
-      slider.setSnapToTicks(isSnapToTicksEnabled);
-    });
-
-    showTicks.onToggle(ev -> {
-      areTicksVisible = ev.isToggled();
-      slider.setTicksVisible(areTicksVisible);
-    });
+    snapToTicks.onToggle(ev -> slider.setSnapToTicks(ev.isToggled()));
+    showTicks.onToggle(ev -> slider.setTicksVisible(ev.isToggled()));
 
     self.add(
         slider,
         FlexLayout.create(
             majorTickInput,
             minorTickInput,
-            FlexLayout.create(snapToTicks, showTicks).horizontal().build()).vertical().build());
+            FlexLayout.create(snapToTicks, showTicks).horizontal().build()
+        ).vertical().build()
+    );
   }
 
-  private void updateTickSpacing() {
-    int majorSpacing = Optional.ofNullable(majorTickInput.getValue()).map(Double::intValue).orElse(0);
-    int minorSpacing = Optional.ofNullable(minorTickInput.getValue()).map(Double::intValue).orElse(0);
+  private void updateTickSpacing(ValueChangeEvent<Double> ev) {
+    Double eventVal = ev.getValue();
+    Object source = ev.getSource();
 
-    if (majorSpacing <= 0 || minorSpacing <= 0) {
+    if (eventVal != null) {
+      int spacingVal = eventVal.intValue();
+      if (source == majorTickInput && !majorTickInput.isInvalid()) {
+        slider.setMajorTickSpacing(spacingVal);
+      } else if (source == minorTickInput && !minorTickInput.isInvalid()) {
+        slider.setMinorTickSpacing(spacingVal);
+      }
+    } else {
       return;
     }
-
-    slider.setMajorTickSpacing(majorSpacing);
-    slider.setMinorTickSpacing(minorSpacing);
   }
 }

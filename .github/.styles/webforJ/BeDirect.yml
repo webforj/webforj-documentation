@@ -1,0 +1,15 @@
+extends: existence
+message: "Avoid using '%s'. Focus more on explicitly giving details about the feature."
+ignorecase: true
+level: warning
+# This style is for avoiding the following:
+# - enhance "x"
+# - ensure "x"
+# - crucial for "x"
+# - optimize "x"
+# - "x" user experience
+# - improve (for performance)
+raw:
+  - (?:enhanc|ensur|optimiz|crucial for)(?:e|ed|es|ing)? (the user |the |user )?\w+( and \w+)?|
+  - improv(?:e|ed|es|ing) (the )?(?:performance|scalability)|
+  - \w+ user experience
