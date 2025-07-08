@@ -22,3 +22,5 @@ There are three levels of surfaces used to organize the UI hierarchy, often comb
 | `--dwc-surface-1` | The darkest surface. Used for body background.                         | <SurfaceBox surface="--dwc-surface-1" /> |
 | `--dwc-surface-2` | Used for components (e.g. cards).                                       | <SurfaceBox surface="--dwc-surface-2" /> |
 | `--dwc-surface-3` | The lightest and highest surface. Used for menus, popovers, dialogs ... | <SurfaceBox surface="--dwc-surface-3" /> |
+
+<GiscusComments />

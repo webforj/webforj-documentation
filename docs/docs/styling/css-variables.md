@@ -88,3 +88,5 @@ const value = el.style.getPropertyValue('--dwc-font-size-m');
 
 - [Using CSS Custom Properties (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)  
 - [A Complete Guide to Custom Properties (CSS-Tricks)](https://css-tricks.com/a-complete-guide-to-custom-properties/)
+
+<GiscusComments />

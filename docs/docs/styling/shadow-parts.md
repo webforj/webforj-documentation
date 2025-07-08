@@ -100,3 +100,5 @@ dwc-button::part(label) span {
 }
 ```
 :::
+
+<GiscusComments />

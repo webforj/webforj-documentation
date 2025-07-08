@@ -30,3 +30,5 @@ While the Jetty Plugin is highly effective for development, it has a few potenti
 - **Limited production use**: The Jetty Plugin is designed for development, not for production environments. It lacks the performance optimization and security configurations required for production, making it better suited to local testing.
 
 - **Session management**: During hot redeployment, user sessions may not be preserved, especially when large structural changes occur in the code. This can disrupt tests involving user session data, requiring manual session management or workaround configurations for development.
+
+<GiscusComments />

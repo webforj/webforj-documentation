@@ -135,3 +135,5 @@ class HelloWorldViewTest {
 
 - On visiting `http://localhost:<port>/`, the `HelloWorldView` page loads.
 - The `dwc-button` element with the text `Say Hello` should be present.
+
+<GiscusComments />

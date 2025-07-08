@@ -40,3 +40,5 @@ You control the shadow color by setting the `--dwc-shadow-color` variable. By de
 | `--dwc-shadow-xl`  | <ShadowBox shadow="--dwc-shadow-xl" />  |
 | `--dwc-shadow-2xl` | <ShadowBox shadow="--dwc-shadow-2xl" /> |
 | `--dwc-shadow`     | <ShadowBox shadow="--dwc-shadow" />     |
+
+<GiscusComments />
