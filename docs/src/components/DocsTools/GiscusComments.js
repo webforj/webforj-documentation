@@ -32,7 +32,7 @@ export default function GiscusComments() {
       script.setAttribute('data-category', 'Comments');
       script.setAttribute('data-category-id', 'DIC_kwDONxZPws4CspSY');
       script.setAttribute('data-mapping', 'title');
-      script.setAttribute('data-strict', '1');
+      script.setAttribute('data-strict', '0');
       script.setAttribute('data-reactions-enabled', '1');
       script.setAttribute('data-emit-metadata', '0');
       script.setAttribute('data-input-position', 'bottom');
