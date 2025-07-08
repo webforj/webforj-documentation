@@ -5,7 +5,7 @@ sidebar_class_name: new-content
 ---
 
 <DocChip chip='since' label='25.02' />
-<DocChip chip='status' label='experimental' />
+<DocChip chip='experimental' />
 <JavadocLink type="foundation" location="com/webforj/Environment" anchor="runLater(java.lang.Runnable)" top='true'/>
 
 The `Environment.runLater()` API provides a mechanism for safely updating the UI from background threads in webforJ applications. This experimental feature enables asynchronous operations while maintaining thread safety for UI modifications.
