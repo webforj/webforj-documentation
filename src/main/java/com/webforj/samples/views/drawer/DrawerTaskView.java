@@ -1,5 +1,7 @@
 package com.webforj.samples.views.drawer;
 
+import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -8,7 +10,6 @@ import com.webforj.component.field.TextField;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.optioninput.CheckBox;
-import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
@@ -18,7 +19,14 @@ import java.util.List;
 
 @Route
 @FrameTitle("Task Manager Drawer")
-public class DrawerEventView extends Composite<FlexLayout> {
+@InlineStyleSheet("""
+     dwc-checkbox[checked]::part(label) {
+      text-decoration: line-through;
+      opacity: 0.6;
+     }
+""")
+
+public class DrawerTaskView extends Composite<FlexLayout> {
 
   FlexLayout layout = getBoundComponent();
   Drawer drawer = new Drawer();
@@ -27,11 +35,8 @@ public class DrawerEventView extends Composite<FlexLayout> {
   Button addTaskButton = new Button("Add Task", ButtonTheme.PRIMARY);
   int taskAmount = 0;
 
-  public DrawerEventView() {
+  public DrawerTaskView() {
     drawer.setLabel("Task Manager");
-
-    drawer.addOpenListener(e -> Toast.show("Drawer Opened", 3000));
-    drawer.addCloseListener(e -> Toast.show("Drawer Closed", 3000));
 
     drawer.open();
 
@@ -75,6 +80,7 @@ public class DrawerEventView extends Composite<FlexLayout> {
 
   private void addTask(String taskText) {
     CheckBox task = new CheckBox(taskText);
+    
     taskList.add(task);
     tasks.add(task);
     taskAmount = taskAmount + 1;

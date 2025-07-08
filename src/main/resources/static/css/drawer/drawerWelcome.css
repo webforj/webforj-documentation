@@ -11,7 +11,7 @@ body {
 }
 
 html[data-app-theme="dark"] .dwc-logo{
-filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);
 }
 
 .drawer__logo {
@@ -34,9 +34,13 @@ filter: brightness(0) invert(1);
   align-items: center;
   justify-content: center;
   padding: var(--dwc-space-2xl);
-  height: 35em;
+  
 }
 
 .welcome__drawer::part(header) {
   display: none;
+}
+
+.welcome__drawer {
+  --dwc-drawer-size: 35em;
 }

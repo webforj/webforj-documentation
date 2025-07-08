@@ -1,6 +1,7 @@
 ---
 title: Drawer
 sidebar_position: 35
+sidebar_class_name: updated-content
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-drawer" />
@@ -43,36 +44,26 @@ drawer.setLabel("Task Manager");
 Use concise and descriptive labels that reflect the `Drawer’s` purpose. Avoid generic terms like “Menu” or “Panel” when a more specific name can be used.
 :::
 
-<!-- Example -->
+## Size
 
-<!-- ### Size
+To control the size of a `Drawer`, apply the `--dwc-drawer-size` CSS custom property. This sets the `Drawer’s` width for left/right placement or height for top/bottom placement.
 
-The `size` property of the `Drawer` component enables developers to control and specify the dimensions of the drawer within the user interface. This property allows for fine-tuning the size of the drawer, ensuring it aligns with the desired layout and design requirements.
+You can define the value using any valid CSS unit such as a percentage, pixels, or vw/vh.
 
-When utilizing the `size` property, developers have the flexibility to define the width and height of the drawer based on their specific needs. Unlike the `maxSize` property, which sets a maximum limit, the `size` property provides explicit control over the actual size of the drawer.
+```java
+.my-drawer::part(control) {
+  --dwc-drawer-size: 40%;
+}
+```
 
-Developers can customize the `size` property based on the available screen real estate, the amount of content to be displayed, and the overall design aesthetic. This level of control allows for creating visually balanced and functional interfaces.
+To prevent the `Drawer` from growing too large, use `--dwc-drawer-max-size` alongside it:
 
-The `size` property can be defined using various units such as pixels, percentages, or other appropriate CSS measurement values. This versatility ensures that the drawer's size can be adjusted precisely to fit different screen sizes, resolutions, and device types.
-
-By utilizing the `size` property effectively, developers can create responsive interfaces that adapt to different viewports and screen orientations. For instance, a smaller size can be chosen for mobile devices to optimize space utilization, while larger sizes can be used for desktop displays to take advantage of the available screen area.
-
-
-### Max Size
-
-The Drawer max size property is a versatile feature designed to control the maximum width or height of a drawer within a user interface, based on the specified placement. This property allows developers to define the maximum size of the drawer, ensuring optimal presentation and layout while accommodating varying screen sizes and device resolutions.
-
-:::info
-To set the size of the drawer, modify the `size` property - `maxSize` is used to ensure a drawer never grows larger than a certain value.
-:::
-
-When utilizing the Drawer max size property, developers can set a maximum size value expressed as pixels, percentages, or other appropriate CSS measurement values. This value represents the maximum width when the drawer is placed on the left or right side of the interface or the maximum height when placed on the top or bottom.
-
-By defining a maximum size for the drawer, developers maintain control over its dimensions and prevent it from becoming excessively wide or tall, which could hinder the overall user experience. The CSS measurement approach allows for responsiveness, adapting the size of the drawer dynamically in relation to the available screen space.
-
-The Drawer's max size property is particularly beneficial when dealing with responsive and adaptive designs. It ensures that the drawer remains visually pleasing and functional across different devices, screen orientations, and viewports.
-
-When the drawer's content exceeds the defined maximum size, developers can implement appropriate techniques to handle overflow, such as scrolling within the drawer or utilizing additional UI patterns like tabs or accordions. This helps maintain a clean and organized interface while accommodating larger amounts of content. -->
+```java
+.my-drawer::part(control) {
+  --dwc-drawer-size: 40%;
+  --dwc-drawer-max-size: 800px;
+}
+```
 
 ## Placement
 
@@ -104,14 +95,19 @@ Supported events:
 - `DrawerOpenEvent`: Fired when the drawer is fully opened.
 - `DrawerCloseEvent`: Fired when the drawer is fully closed.
 
-You can attach listeners to these events to run logic when the `Drawer’s` state changes:
+You can attach listeners to these events to run logic when the `Drawer’s` state changes.
 
-<ComponentDemo
-path='/webforj/drawerevent?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerEventView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/drawer/drawer.css'
-height='600px'
-/>
+```java
+Drawer drawer = new Drawer();
+
+drawer.addOpenListener(e -> {
+  // Handle drawer opened event
+});
+
+drawer.addCloseListener(e -> {
+  // Handle drawer closed event
+});
+```
 
 ## Example: Contact picker
 
@@ -126,17 +122,16 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 height='600px'
 />
 
+## Example: Task Manager
+
+This example uses a `Drawer` as a task manager. You can add tasks, check them off, and clear completed ones. The `Drawer` footer includes form controls to interact with the task list, and the “Add Task” [`Button`](../components/button) disables itself if 50 tasks are reached.
+
+<ComponentDemo
+path='/webforj/drawertask?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerTaskView.java'
+height='600px'
+/>
 
 ## Styling
 
 <TableBuilder name="Drawer" />
-
-## Best practices 
-
-To ensure an optimal user experience when using the `Drawer` component, consider the following best practices:
-
-1. **Placement**: Decide whether the `Drawer` should slide in from the left, right, top, or bottom, based on your app's layout and user experience considerations. Consider user preferences and design conventions.
-
-2. **Accessibility**: Pay special attention to accessibility. Ensure that users can open and close the `Drawer` using keyboard controls and that screen readers can announce its presence and state. Provide ARIA (Accessible Rich Internet Applications) roles and labels as necessary.
-
-3. **Swipe Gestures**: On tap-enabled devices, support swipe gestures for opening and closing the `Drawer`. This is an intuitive way for users to interact with it.
