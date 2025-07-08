@@ -67,3 +67,5 @@ Try hovering over each easing preview to see its animation effect.
 | `--dwc-ease-inBack` | [cubic-bezier(0.36, 0, 0.66, -0.56)](https://cubic-bezier.com/#0.36,0,0.66,-0.56) | <TransitionBox easing="--dwc-ease-inBack" /> |
 | `--dwc-ease-outBack` | [cubic-bezier(0.34, 1.56, 0.64, 1)](https://cubic-bezier.com/#0.34,1.56,0.64,1) | <TransitionBox easing="--dwc-ease-outBack" /> |
 | `--dwc-ease-inOutBack` | [cubic-bezier(0.68, -0.6, 0.32, 1.6)](https://cubic-bezier.com/#0.68,-0.6,0.32,1.6) | <TransitionBox easing="--dwc-ease-inOutBack" /> |
+
+<GiscusComments />
