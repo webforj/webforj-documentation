@@ -103,7 +103,7 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 
 ## Drawer utilities
 
-The AppLayout drawer utility is designed for integrated navigation and contextual menus within the main app layout, while standalone Drawer components offer flexible, independent sliding panels that can be used anywhere in your app for additional content, filters, or notifications. This section focuses on the built-in drawer features and utilities provided by AppLayout.
+The `AppLayout` drawer utilities are designed for integrated navigation and contextual menus within the main app layout, while standalone [`Drawer`](https://docs.webforj.com/docs/components/drawer) components offer flexible, independent sliding panels that can be used anywhere in your app for additional content, filters, or notifications. This section focuses on the built-in drawer features and utilities provided by AppLayout.
 
 ### Drawer breakpoint
 
@@ -126,7 +126,7 @@ layout.addToDrawerTitle(new Div("Menu"));
 
 ### Drawer actions
 
-The `AppLayout` component allows you to place custom components such as buttons or icons into the **drawer header actions area** using the `addToDrawerHeaderActions(...)` method.
+The `AppLayout` component allows you to place custom components such as buttons or icons into the **drawer header actions area** using the `addToDrawerHeaderActions()` method.
 
 ```java
 layout.addToDrawerHeaderActions(
