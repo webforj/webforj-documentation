@@ -9,7 +9,6 @@
   justify-content: space-between;
   gap: var(--dwc-space-m);
   padding: var(--dwc-space-xs) 0;
-  border-bottom: 1px solid var(--dwc-color-neutral-100);
 }
 
 .contact-avatar {
@@ -36,7 +35,6 @@
 
 .contact-location {
   margin: 0;
-  color: var(--dwc-color-neutral-500);
   font-size: var(--dwc-font-size-s);
 }
 
