@@ -138,3 +138,5 @@ This is quite useful when there is information that should be included with a co
 - Need an idea for a demo fro the lifecycle observer
 - Need demo from Hyyan on getting the client side ID with JS
  -->
+
+ <GiscusComments />

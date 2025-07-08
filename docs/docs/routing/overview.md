@@ -68,3 +68,5 @@ In this setup:
 ## Topics
 
 <DocCardList className="topics-section" />
+
+<GiscusComments />

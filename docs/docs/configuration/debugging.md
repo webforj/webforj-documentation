@@ -84,3 +84,5 @@ Once you’ve configured your IDE:
 1. Ensure port 8000 is available and not blocked by any firewall.
 2. If you are using any of the webforJ archetypes and have changed the port number in the pom.xml file, make sure the port used for debugging matches the updated value.
 :::
+
+<GiscusComments />

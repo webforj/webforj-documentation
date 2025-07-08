@@ -81,3 +81,5 @@ Once the server is running, open your browser and go to [http://localhost:8080](
 :::info Licensing and watermark
 For information on the watermark present in unlicensed projects, see [Licensing and Watermark](../configuration/licensing-and-watermark).
 :::
+
+<GiscusComments />

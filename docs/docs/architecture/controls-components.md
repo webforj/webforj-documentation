@@ -36,3 +36,5 @@ This approach encourages a more modular and flexible development style, enabling
 <!-- 
 ## Component Hierarchy
 TODO: Create and show graphic -->
+
+<GiscusComments />

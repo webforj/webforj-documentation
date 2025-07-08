@@ -130,3 +130,5 @@ height = '500px'
 />
 
 <TableBuilder name="Dialog" />
+
+<GiscusComments />

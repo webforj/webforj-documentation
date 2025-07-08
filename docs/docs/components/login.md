@@ -99,3 +99,5 @@ The login component is designed to be compatible with browser-based password man
 ## Styling
 
 <TableBuilder name="Login" />
+
+<GiscusComments />

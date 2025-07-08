@@ -217,3 +217,5 @@ While there are many use cases for each of the various themes, some examples use
 - `INFO`: Good for providing additional clarifying information to a user.
 
 <TableBuilder name="Icon" />
+
+<GiscusComments />

@@ -181,3 +181,5 @@ To ensure an optimal user experience when using the `Navigator` component, consi
 - **Choose appropriate layout**: Select a layout for the `Navigator` component that aligns with the user experience goals and available screen real estate.
 
 - **Customize text and tooltips**: Customize the text and tooltips of the `Navigator` component to match the language and terminology used in your app. Provide descriptive labels and helpful hints to assist users in navigating the dataset effectively.
+
+<GiscusComments />

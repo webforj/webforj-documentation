@@ -70,3 +70,5 @@ public class DashboardView extends Composite<Div> {
   }
 }
 ```
+
+<GiscusComments />

@@ -105,3 +105,5 @@ public class NotificationsView extends Composite<Div> implements DidLeaveObserve
 ```
 
 This example clears notifications after the user leaves the `NotificationsView`, using the `DidLeaveObserver` for cleanup.
+
+<GiscusComments />

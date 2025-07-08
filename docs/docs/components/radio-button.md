@@ -125,3 +125,5 @@ To ensure an optimal user experience when using the RadioButton component, consi
 2. **Group Radio buttons**: Group related Radio buttons together to indicate their association. This helps users understand that only one option can be selected within a specific group. This can be done effectively using the [`RadioButtonGroup`](/docs/components/radiobuttongroup) component.
 
 3. **Provide Default Selection**: If applicable, consider providing a default selection for Radio buttons to guide users when they first encounter the options. The default selection should align with the most common or preferred choice.
+
+<GiscusComments />

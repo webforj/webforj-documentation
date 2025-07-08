@@ -90,3 +90,5 @@ cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeView.java'
 height='550px'
 />
+
+<GiscusComments />

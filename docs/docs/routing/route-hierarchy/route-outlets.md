@@ -125,3 +125,5 @@ public class MainLayout extends Composite<AppLayout> implements RouteOutlet {
 ```
 
 In this example, `MainLayout` uses `PersistentRouteOutlet` to manage its child routes. When navigating between routes, components aren't removed from the DOM but instead hidden, ensuring that they remain available for quick re-rendering when the user navigates back. This approach significantly enhances performance, especially for views with complex content or heavy resource usage.
+
+<GiscusComments />

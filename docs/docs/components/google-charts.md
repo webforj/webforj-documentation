@@ -208,3 +208,4 @@ Here's an example of payload:
 If the user selects multiple data points, the `getSelection()` method will return an array of objects, each representing a selected element. The payload can vary based on the chart type and the interaction the user performs.
 :::
 
+<GiscusComments />

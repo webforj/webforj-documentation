@@ -110,3 +110,5 @@ dialog.setI18n(i18n);
 2. **Appropriate Selection Modes**: Choose selection modes that match the required user action to ensure accurate and relevant selections.
 3. **Logical Initial Paths**: Set initial paths that provide users with a useful starting point for their selection.
 4. **Restrict Directory Navigation**: Restrict the dialog to a specific directory when necessary to prevent users from navigating to unauthorized areas.
+
+<GiscusComments />

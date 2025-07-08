@@ -56,3 +56,5 @@ mvn jetty:run
 3) Open your browser and navigate to http://localhost:8080 to view the app.
 
 Repeat this process for each step as you follow along with the tutorial, allowing you to explore the app’s features as they're added.
+
+<GiscusComments />

@@ -83,3 +83,5 @@ mobile='true'
 ## Styling
 
 <TableBuilder name="InfiniteScroll" />
+
+<GiscusComments />

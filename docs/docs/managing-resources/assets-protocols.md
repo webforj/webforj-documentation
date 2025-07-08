@@ -79,3 +79,4 @@ The `icons://` protocol supports additional parameters that allow you to customi
   - **Example 1:** `/icons/icon-192x192.png?background=000000`
   - **Example 2:** `/icons/icon-192x192.png?background=auto`
 
+<GiscusComments />

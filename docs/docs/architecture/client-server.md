@@ -62,5 +62,6 @@ necessary to build a webforJ `Button` once — when the application creates its
 first `Button` component. This results in measurable improvements to the initial
 load time, which results in a better user experience.
 
+<GiscusComments />
 
 

@@ -97,3 +97,5 @@ By default, the `getList()` method uses a comma (`,`) as the delimiter. You can 
 - **Sorting data**: You can pass sorting preferences via query parameters, such as sorting by price, rating, or date.
 - **Handling optional parameters**: When you need to pass data that isn't part of the required route structure, query parameters offer flexibility.
 - **Passing multiple values**: Query parameters allow you to send multiple values for a single key, which is useful when users select multiple options, like product categories or filters.
+
+<GiscusComments />

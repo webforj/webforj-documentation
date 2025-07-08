@@ -90,3 +90,5 @@ The first option is to change the `config.bbx` file, found in the `cfg/` directo
 Additionally, in the Enterprise Manager, you can add the following as a program argument: `DEBUG`
 
 Completing either of these allows the browser console to print error messages.
+
+<GiscusComments />

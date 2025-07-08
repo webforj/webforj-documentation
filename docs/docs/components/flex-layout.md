@@ -173,3 +173,5 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/flexlayout/flexLayout.css'
 height="620px"
 />
+
+<GiscusComments />

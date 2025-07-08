@@ -215,3 +215,5 @@ height="700px"
 ## Styling
 
 <TableBuilder name="ColumnsLayout" clientComponent />
+
+<GiscusComments />

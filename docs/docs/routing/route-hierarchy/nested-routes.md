@@ -53,3 +53,5 @@ This hierarchical structure is reflected in the URL, where each segment represen
   - `SettingsView`: View Route
 
 This structure ensures consistent shared UI components (such as headers or navigation menus) while allowing the content within those layouts to change dynamically.
+
+<GiscusComments />

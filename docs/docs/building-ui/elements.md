@@ -118,3 +118,5 @@ Similar to function execution, executing JavaScript can be done with synchronous
 :::tip
 These methods have access to the `component` keyword, which gives the JavaScript code access to the client-side instance of the component executing the JavaScript.
 :::
+
+<GiscusComments />

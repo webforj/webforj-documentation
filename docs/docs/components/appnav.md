@@ -115,3 +115,5 @@ nav.setAutoOpen(true);
 ## Styling `AppNavItem`
 
 <TableBuilder name="AppNavItem" />
+
+<GiscusComments />
