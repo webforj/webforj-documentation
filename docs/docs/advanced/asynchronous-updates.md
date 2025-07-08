@@ -40,7 +40,7 @@ Both methods return a `PendingResult` that tracks task completion and provides a
 
 ## Thread context inheritance
 
-A critical feature of `Environment.runLater()` is automatic context inheritance. When a thread running in an Environment creates child threads, those children automatically inherit the ability to use `runLater()`.
+Automatic context inheritance is a critical feature of `Environment.runLater()`. When a thread running in an Environment creates child threads, those children automatically inherit the ability to use `runLater()`.
 
 ### How inheritance works
 
