@@ -52,5 +52,3 @@ Border radius variables define how rounded the corners of a component are. All v
 | `--dwc-border-radius-round` | 50%                        | <RadiusBox radius="--dwc-border-radius-round" /> |
 | `--dwc-border-radius-pill`  | 9999px                     | <RadiusBox radius="--dwc-border-radius-pill" /> |
 | `--dwc-border-radius`       | var(--dwc-border-radius-s) | <RadiusBox radius="--dwc-border-radius" />     |
-
-<GiscusComments />

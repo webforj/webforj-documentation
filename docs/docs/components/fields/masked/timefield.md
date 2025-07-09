@@ -234,5 +234,3 @@ spinner.setSpinField(MaskedTimeFieldSpinner.SpinField.HOUR);
 ## Styling
 
 <TableBuilder name="MaskedTimeField" />
-
-<GiscusComments />

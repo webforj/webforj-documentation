@@ -70,5 +70,3 @@ Use these properties to adjust the inter-component spacing (margin, padding).
 | `--dwc-space-2xl` | 1.75rem            | <SpacingBox space="--dwc-space-2xl" /> |
 | `--dwc-space-3xl` | 2rem               | <SpacingBox space="--dwc-space-3xl" /> |
 | `--dwc-space`     | var(--dwc-space-s) | <SpacingBox space="--dwc-space" />     |
-
-<GiscusComments />

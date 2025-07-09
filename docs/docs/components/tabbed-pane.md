@@ -220,4 +220,3 @@ The following practices are recommended for utilizing the `TabbedPane` within ap
 
 - **Default Tab**: If the default tab is not placed at the beginning of the `TabbedPane`, consider setting this tab as default for essential or commonly used information.
 
-<GiscusComments />

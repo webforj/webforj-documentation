@@ -119,5 +119,3 @@ height = '300px'
 ## Styling
 
 <TableBuilder name="TextArea" />
-
-<GiscusComments />

@@ -50,5 +50,3 @@ As the `PasswordField` component is often associated with sensitive information,
 - **Allow Password Reset**: If your app involves user accounts, provide an option for users to reset their password. This could be in the form of a "Forgot Password" feature that initiates a password recovery process.
 
 - **Accessibility**: Utilize the `PasswordField` with accessibility in mind, ensuring it meets accessibility standards such as providing proper labels, and compatibility with assistive technologies.
-
-<GiscusComments />

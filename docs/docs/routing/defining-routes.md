@@ -57,4 +57,3 @@ public class UserProfileView extends Composite<Div> {
 
 Defining route aliases increases flexibility in your navigation design, allowing users to access the same content through different URLs.
 
-<GiscusComments />

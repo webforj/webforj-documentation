@@ -117,5 +117,3 @@ class HelloWorldViewTest {
 - On visiting `http://localhost:<port>/`, the `HelloWorldView` page loads.
 - Input webforJ into the text field and click the `Say Hello` button.
 - A toast message should appear with the text: `Welcome to webforJ Starter webforJ!`.
-
-<GiscusComments />

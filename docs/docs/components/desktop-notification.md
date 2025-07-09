@@ -117,5 +117,3 @@ Keep the following best practices in mind while using the `DesktopNotification` 
 - **Inform Your Users:** Let users know why notifications are needed and how they can benefit from them.
 - **Provide Fallbacks:** Since some browsers may restrict notifications, consider alternative ways of alerting users (e.g., in-app messages).
 - **Error Handling:** Always register an error listener to gracefully manage scenarios where notifications fail to display.
-
-<GiscusComments />

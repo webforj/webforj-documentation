@@ -68,4 +68,3 @@ public class DemoView extends Composite<Div> {
 
 A `RouteOutlet` dynamically displays views based on the active route. In the layout, views like `DemoView` are rendered through the `RouteOutlet`. While the `RouteOutlet` is implicitly handled by the outlet specification in the route annotations.
 
-<GiscusComments />

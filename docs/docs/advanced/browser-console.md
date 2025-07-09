@@ -127,5 +127,3 @@ console()
     .background().blue()
     .warn("Mixing styles");
 ```
-
-<GiscusComments />

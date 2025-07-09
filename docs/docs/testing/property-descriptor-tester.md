@@ -103,5 +103,3 @@ Define custom getter, setter, or target class when the default naming convention
 private final PropertyDescriptor<String> customProperty =
     PropertyDescriptor.property("customProperty", "Default Value");
 ```
-
-<GiscusComments />

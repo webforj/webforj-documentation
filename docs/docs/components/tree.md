@@ -213,5 +213,3 @@ height='400px'
 ## Styling
 
 <TableBuilder name="Tree" />
-
-<GiscusComments />

@@ -171,5 +171,3 @@ To keep webforJ consistent, methods like `setAutofocus()` and `isAutofocus()` no
 ## `BBjWindowAdapter` and `Panel` marked as `final`
 
 The `BBjWindowAdapter` and `Panel` classes are now declared as `final`, meaning they can no longer be subclassed. This change improves stability and enforces consistent usage patterns.
-
-<GiscusComments />

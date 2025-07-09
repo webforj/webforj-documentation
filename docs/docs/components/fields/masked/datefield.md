@@ -250,5 +250,3 @@ This makes each spin step advance or rewind the date by one week.
 ## Styling
 
 <TableBuilder name="MaskedDateField" />
-
-<GiscusComments />

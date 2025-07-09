@@ -117,5 +117,3 @@ public class ProfileView extends Composite<Div> implements DidEnterObserver {
 1. **TabbedPane Component**: The view consists of a `TabbedPane` component, which has three tabs: Profile, Orders, and Settings.
 2. **State Saving on Tab Change**: Each time a tab is selected, the current section index is saved in the browser’s history using the `replaceState` method.
 3. **Restoring State on Navigation**: When the user navigates back to the `ProfileView`, the app retrieves the saved section from the history using `event.getState()` and restores the correct tab selection.
-
-<GiscusComments />

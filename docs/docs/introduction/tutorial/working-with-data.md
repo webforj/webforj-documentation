@@ -190,5 +190,3 @@ With the completed changes to the app implemented, the following steps will happ
 With the `Table` now displaying `Customer` data, the next step will focus on creating a new screen to modify customer details and integrating routing into the app.
 
 This will allow organization of the app’s logic more effectively by moving it out of the main `App` class, and into constituent screens access via routes.
-
-<GiscusComments />

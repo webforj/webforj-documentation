@@ -105,5 +105,3 @@ private void submitCustomer() {
 ```
 
 By completing this step, the app now supports data binding and validation, ensuring that form inputs are synchronized with the model and adhere to predefined rules.
-
-<GiscusComments />

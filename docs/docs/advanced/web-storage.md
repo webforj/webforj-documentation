@@ -135,5 +135,3 @@ The following use cases are well-suited for utilization of local storage:
 
 - **Persistent Data**: Store data that should be available across multiple sessions.
 - **Preferences**: Save user settings and preferences that persist over time.
-
-<GiscusComments />

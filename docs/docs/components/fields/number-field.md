@@ -93,5 +93,3 @@ To ensure a seamless integration and optimal user experience, consider the follo
 - **Accessibility**: Utilize the `NumberField` component with accessibility in mind, adhering to accessibility standards such as proper labeling, keyboard navigation support, and compatibility with assistive technologies. Ensure that users with disabilities can interact with the `NumberField` effectively.
 
 - **Utilize Increment/Decrement Buttons**: If appropriate for your app, consider utilizing increment and decrement buttons with the `NumberField`. This allows users to adjust the numeric value by a specific increment or decrement with a single click.
-
-<GiscusComments />

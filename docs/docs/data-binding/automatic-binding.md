@@ -172,5 +172,3 @@ context
 2. `@NotEmpty` 
 3. `@NotBlank`
 4. `@Size`
-
-<GiscusComments />

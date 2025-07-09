@@ -119,5 +119,3 @@ To define a global error handler, you need to create a new error handler named `
 :::info
 If multiple `WebforjGlobalErrorHandler` are registerd then webforJ selects the first one 
 :::
-
-<GiscusComments />

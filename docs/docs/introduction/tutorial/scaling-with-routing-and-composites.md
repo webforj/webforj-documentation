@@ -217,5 +217,3 @@ With these changes, the following goals have been achieved:
 
 With the modification of the customer details and routing accomplished, the next step will focus on
 implementing data binding and using it to facilitate validation.
-
-<GiscusComments />

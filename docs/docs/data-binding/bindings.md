@@ -200,5 +200,3 @@ context
         hero.setName(name); // Additional operation: logging
     });
 ```
-
-<GiscusComments />

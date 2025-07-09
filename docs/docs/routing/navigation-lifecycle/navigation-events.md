@@ -45,5 +45,3 @@ Router.getCurrent().addWillLeaveListener(event -> {
 ```
 
 In this case, the `WillLeaveEvent` is used globally to show a confirmation dialog before the user navigates away from any view.
-
-<GiscusComments />

@@ -107,5 +107,3 @@ To ensure an optimal user experience when using the `DateTimeField` component, c
 - **Accessibility**: Utilize the `DateTimeField` with accessibility in mind. Ensure that it meets accessibility standards, such as providing proper labels and being compatible with assistive technologies.
 
 - **Auto-Populate Current Date**: Consider providing an option to auto-populate the current date and time as a default value in the date time field, if appropriate for your app's use case.
-
-<GiscusComments />

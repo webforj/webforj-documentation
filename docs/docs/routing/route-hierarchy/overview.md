@@ -1,3 +1,9 @@
+---
+sidebar_position: 1
+title: Route Hierarchy
+hide_giscus_comments: true
+---
+
 <!-- vale off -->
 import DocCardList from '@theme/DocCardList';
 

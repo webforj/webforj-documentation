@@ -58,5 +58,3 @@ EventListener<Interval.ElapsedEvent> secondListener = (e -> {
 
 interval.addElapsedListener(secondListener);
 ```
-
-<GiscusComments />

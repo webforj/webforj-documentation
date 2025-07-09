@@ -161,5 +161,3 @@ layout.addToHeader(new AppDrawerToggle());
 ## Styling
 
 <TableBuilder name="AppLayout" />
-
-<GiscusComments />

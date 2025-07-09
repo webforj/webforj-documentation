@@ -146,5 +146,3 @@ To ensure an optimal user experience when using the `Button` component, consider
 
 4. **Testing and Accessibility**: Test the Button's behavior in different scenarios, such as when it is disabled or receives focus, to ensure a smooth user experience.
 Follow accessibility guidelines to make the `Button` usable for all users, including those who rely on assistive technologies.
-
-<GiscusComments />

@@ -121,5 +121,3 @@ history.addHistoryStateChangeListener(event -> {
 ```
 
 Effectively managing state allows you to create apps that respond dynamically to user actions. Users can navigate through your app without losing context, making for a smoother and more intuitive experience. Additionally, saving state enables advanced features like restoring view positions, maintaining filter or sort settings, and supporting deep linking—all of which contribute to a more engaging and reliable app.
-
-<GiscusComments />
