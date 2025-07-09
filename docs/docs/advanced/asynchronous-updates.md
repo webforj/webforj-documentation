@@ -16,7 +16,7 @@ This API is marked as experimental since 25.02 and may change in future releases
 
 ## Understanding the thread model
 
-webforJ enforces a strict threading model where all UI operations must occur on the Environment thread. This restriction exists because:
+webforJ enforces a strict threading model where all UI operations must occur on the `Environment` thread. This restriction exists because:
 
 1. **webforJ API constraints**: The underlying webforJ API binds to the thread that created the session
 2. **Component thread affinity**: UI components maintain state that's not thread-safe
@@ -40,11 +40,11 @@ Both methods return a `PendingResult` that tracks task completion and provides a
 
 ## Thread context inheritance
 
-Automatic context inheritance is a critical feature of `Environment.runLater()`. When a thread running in an Environment creates child threads, those children automatically inherit the ability to use `runLater()`.
+Automatic context inheritance is a critical feature of `Environment.runLater()`. When a thread running in an `Environment` creates child threads, those children automatically inherit the ability to use `runLater()`.
 
 ### How inheritance works
 
-Any thread created from within an Environment thread automatically has access to that Environment. This inheritance happens automatically, so you don't need to pass any context or configure anything.
+Any thread created from within an `Environment` thread automatically has access to that `Environment`. This inheritance happens automatically, so you don't need to pass any context or configure anything.
 
 ```java title="DataView.java"
 @Route
@@ -70,7 +70,7 @@ public class DataView extends Composite<Div> {
 
 ### Threads without context
 
-Threads created outside the Environment context can't use `runLater()` and will throw an `IllegalStateException`:
+Threads created outside the `Environment` context can't use `runLater()` and will throw an `IllegalStateException`:
 
 ```java title="NoEnvironmentContext.java"
 // Static initializer - no Environment context
@@ -101,7 +101,7 @@ The execution behavior of `runLater()` depends on which thread calls it:
 
 ### From the UI thread
 
-When called from the Environment thread itself, tasks execute **synchronously and immediately**:
+When called from the `Environment` thread itself, tasks execute **synchronously and immediately**:
 
 ```java title="SynchronousExecution.java"
 button.onClick(e -> {
@@ -227,7 +227,7 @@ public class ViewWithCleanup extends Composite<Div> {
 
 ## Design considerations
 
-1. **Context requirement**: Threads must have inherited an Environment context. External library threads, system timers, and static initializers can't use this API.
+1. **Context requirement**: Threads must have inherited an `Environment` context. External library threads, system timers, and static initializers can't use this API.
 
 2. **Memory leak prevention**: Always track and cancel `PendingResult` objects in component lifecycle methods. Queued lambdas capture references to UI components, preventing garbage collection if not cancelled.
 
