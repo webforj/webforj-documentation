@@ -1,6 +1,7 @@
 ---
 title: End-to-End (E2E) Testing
 hide_table_of_contents: true
+hide_giscus_comments: true
 ---
 
 

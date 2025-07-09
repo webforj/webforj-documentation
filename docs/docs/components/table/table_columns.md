@@ -114,3 +114,4 @@ table.addColumn("Price", Product::getPrice).setMinWidth(100.0);
 :::info
 The value passed represents the desired minimum width in pixels.  
 :::
+

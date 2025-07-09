@@ -26,5 +26,3 @@ mvn jetty:run
 ```
 
 This command uses the Jetty maven plugin to start a Jetty server. Once the server is running, open your browser and go to [http://localhost:8080](http://localhost:8080) to view the app.
-
-<GiscusComments />

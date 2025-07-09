@@ -119,5 +119,3 @@ height = '100px'
 />
 
 <TableBuilder name="Spinner" />
-
-<GiscusComments />

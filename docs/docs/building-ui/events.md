@@ -103,5 +103,3 @@ height='100px'
 />
 
 <!-- <EventTable base events={['drawerOpen', 'drawerClose']} /> -->
-
-<GiscusComments />

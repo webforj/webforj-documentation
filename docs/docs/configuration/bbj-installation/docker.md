@@ -161,5 +161,3 @@ Replace `YourHostPort` with the Host port you configured with Docker, and `YourP
 If done correctly, you should see your app render.
 
 <!-- <UnderConstruction /> -->
-
-<GiscusComments />

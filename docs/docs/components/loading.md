@@ -78,5 +78,3 @@ height = '300px'
 ## Styling 
 
 <TableBuilder name="Loading" />
-
-<GiscusComments />

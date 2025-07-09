@@ -2,6 +2,8 @@
 title: Styling
 hide_table_of_contents: true
 sidebar_class_name: new-content
+sidebar_position: 1
+hide_giscus_comments: true
 ---
 
 <Head>

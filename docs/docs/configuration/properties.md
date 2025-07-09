@@ -56,5 +56,3 @@ The web.xml file is an essential configuration file for Java web apps, and in we
 <!-- | **`<filter>` and `<filter-mapping>`**   | Configures the `WebforjCacheControlFilter` to control caching for JavaScript files. This filter prevents caching of `.js` files by setting specific HTTP headers, improving development flow. | `WebforjCacheControlFilter` | -->
 
 <!-- ## Configuring `blsclient.conf` -->
-
-<GiscusComments />

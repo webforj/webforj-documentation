@@ -84,5 +84,3 @@ if (StringTable.contains("COMPANY")) {
 ```java
 StringTable.clear("COMPANY");
 ```
-
-<GiscusComments />

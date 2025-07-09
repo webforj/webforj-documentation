@@ -39,5 +39,3 @@ When an component receives focus, a focus ring will be shown around it to indica
 | `--dwc-focus-ring-l`      | 45%               |
 | `--dwc-focus-ring-a`      | 0.4               |
 | `--dwc-focus-ring-width`  | 3px               |
-
-<GiscusComments />

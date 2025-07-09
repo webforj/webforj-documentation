@@ -38,6 +38,7 @@ export default function GiscusComments() {
       script.setAttribute('data-input-position', 'bottom');
       script.setAttribute('data-theme', colorMode === 'dark' ? 'https://cdn.webforj.com/webforj-documentation/comment-theme-dark.css' : 'https://cdn.webforj.com/webforj-documentation/comment-theme.css');
       script.setAttribute('data-lang', 'en');
+      script.setAttribute('data-loading', 'lazy');
       script.crossOrigin = 'anonymous';
       script.async = true;
       ref.current.appendChild(script);

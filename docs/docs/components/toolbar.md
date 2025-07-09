@@ -67,5 +67,3 @@ height = '475px'
 />
 
 <TableBuilder name="Toolbar" />
-
-<GiscusComments />

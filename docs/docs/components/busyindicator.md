@@ -64,5 +64,3 @@ height = '200px'
 ## Styling 
 
 <TableBuilder name="BusyIndicator" />
-
-<GiscusComments />

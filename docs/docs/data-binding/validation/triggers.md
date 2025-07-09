@@ -116,5 +116,3 @@ public class Trip {
 
 </TabItem>
 </Tabs>
-
-<GiscusComments />

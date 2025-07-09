@@ -73,5 +73,3 @@ A Java IDE provides a comprehensive environment for writing, testing, and debugg
 - **[Visual Studio Code](https://code.visualstudio.com/Download)**: A lightweight, extensible code editor with Java support through plugins.
 - **[IntelliJ IDEA](https://www.jetbrains.com/idea/download/)**: Known for its powerful Java support and rich plugin ecosystem.
 - **[NetBeans](https://netbeans.apache.org/download/index.html)**: A free, open source IDE for Java and other languages, known for its ease of use and built-in project templates.
-
-<GiscusComments />

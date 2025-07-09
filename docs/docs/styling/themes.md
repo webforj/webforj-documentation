@@ -78,5 +78,3 @@ App.setTheme("new-theme");
 In addition to app-level themes, webforJ components support a set of **component themes** based on the default color palettes: `default`, `primary`, `success`, `warning`, `danger`, `info`, and `gray`.
 
 Each component documents its supported themes under the **Styling → Themes** section.
-
-<GiscusComments />

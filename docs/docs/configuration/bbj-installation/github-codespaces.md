@@ -46,5 +46,3 @@ If you want to run the default "Hello World" program, simple add `/hworld` after
 
 
 Once this is done, you should see your app running in the browser, and can modify it in the VS Code instance running within codespaces.
-
-<GiscusComments />

@@ -66,5 +66,3 @@ height = '400px'
 />
 
 <TableBuilder name="Alert" />
-
-<GiscusComments />

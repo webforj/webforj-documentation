@@ -2,6 +2,7 @@
 sidebar_position: 1
 title: Routing
 hide_table_of_contents: true
+hide_giscus_comments: true
 ---
 
 <Head>
@@ -68,5 +69,3 @@ In this setup:
 ## Topics
 
 <DocCardList className="topics-section" />
-
-<GiscusComments />

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Validation
+hide_giscus_comments: true
 ---
 
 <!-- vale off -->

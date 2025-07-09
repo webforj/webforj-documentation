@@ -222,5 +222,3 @@ Custom sequences can be supported through integrations if needed.
 ## Styling
 
 <TableBuilder name="Terminal" />
-
-<GiscusComments />

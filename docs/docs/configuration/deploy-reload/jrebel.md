@@ -21,5 +21,3 @@ If done properly, JRebel will output logging information to the terminal, and ch
 :::info Seeing your changes
 If a change is made to a view or component that's already being displayed, JRebel won't force a reload of the page, as the server isn't restarted.
 :::
-
-<GiscusComments />

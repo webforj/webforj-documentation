@@ -101,5 +101,3 @@ To ensure an optimal user experience when using the `DateField` component, consi
 - **Accessibility**: Utilize appropriate labels to ensure users with assistive technologies can easily navigate to and use the date fields in your app.
 
 - **Auto-Populate Current Date**: If appropriate for your app's use case, auto-populate with the date field with the current date.
-
-<GiscusComments />

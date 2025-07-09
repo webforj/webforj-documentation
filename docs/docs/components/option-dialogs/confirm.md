@@ -168,5 +168,3 @@ switch (result) {
 4. **Consistent Theming**: Align the dialog and button themes with your app's design for a cohesive user experience.
 5. **Judicious Use of Timeout**: Set timeouts for non-critical confirmations, ensuring users have enough time to read and understand the prompt.
 6. **Minimize Overuse**: Use confirm dialogs sparingly to avoid user frustration. Reserve them for critical actions requiring explicit user confirmation.
-
-<GiscusComments />

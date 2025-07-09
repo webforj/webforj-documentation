@@ -60,5 +60,3 @@ To ensure an optimal user experience when using the `ColorField` component, cons
 - **Provide a Default Color**: Have a default color that makes sense for your app's context.
 
 - **Offer Preset Colors**: Include a palette of commonly used or on-brand colors alongside the color field for quick selection.
-
-<GiscusComments />

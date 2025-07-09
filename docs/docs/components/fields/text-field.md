@@ -146,5 +146,3 @@ The following section outlines some suggested best practices for utilization of 
 - **Spell Checking and Auto-Complete**: When applicable, consider utilizing spellchecking with `setSpellCheck()` and/or using autocomplete in a `TextField`. These features can help users input information faster and reduce errors by providing suggested values based on previous inputs or predefined options.
 
 - **Accessibility**: Utilize the `TextField` component with accessibility in mind, adhering to accessibility standards such as proper labeling, keyboard navigation support, and compatibility with assistive technologies. Ensure that users with disabilities can interact with the `TextField` effectively.
-
-<GiscusComments />

@@ -250,5 +250,3 @@ Explore the code: [webforj/webforj-tictactoe](https://github.com/webforj/webforj
     <source src="https://cdn.webforj.com/webforj-documentation/video/tic-tac-toe.mp4" type="video/mp4"/>
   </video>
 </div>
-
-<GiscusComments />

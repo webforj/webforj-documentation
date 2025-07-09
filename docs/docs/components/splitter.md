@@ -100,5 +100,3 @@ To ensure an optimal user experience when using the `Splitter` component, consid
 - **Strategic Nesting**: Nesting splitters can create versatile layouts but can complicate the UI and impact performance. Plan your nested layouts to ensure they're intuitive and enhance user experience.
 
 - **Remember User Preferences**: Use the AutoSave feature to remember user adjustments across sessions, enhancing the user experience. Provide an option to allow users to reset to default settings.
-
-<GiscusComments />

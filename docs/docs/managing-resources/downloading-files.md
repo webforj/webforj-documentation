@@ -56,5 +56,3 @@ Page.getCurrent().download("context://resources/manual.pdf", "user-manual.pdf");
 
 - **path**: The path to a physical file or a [context URL](./assets-protocols#the-context-protocol).
 - **fileName**: The name under which the file will be downloaded by the client.
-
-<GiscusComments />
