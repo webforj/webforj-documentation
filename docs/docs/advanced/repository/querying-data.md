@@ -7,7 +7,7 @@ sidebar_position: 3
 # Querying data <DocChip chip='since' label='25.02' />
 <!-- vale on -->
 
-The <JavadocLink type="data" location="com/webforj/data/repository/QueryableRepository" code="true">QueryableRepository</JavadocLink> interface extends Repository with advanced querying through <JavadocLink type="data" location="com/webforj/data/repository/RepositoryCriteria" code="true">RepositoryCriteria</JavadocLink>. Unlike basic repositories that only support simple filtering, queryable repositories provide structured querying with custom filter types, sorting, and pagination.
+The <JavadocLink type="data" location="com/webforj/data/repository/QueryableRepository" code="true">QueryableRepository</JavadocLink> interface extends `Repository` with advanced querying through <JavadocLink type="data" location="com/webforj/data/repository/RepositoryCriteria" code="true">RepositoryCriteria</JavadocLink>. Unlike basic repositories that only support simple filtering, queryable repositories provide structured querying with custom filter types, sorting, and pagination.
 
 ## Understanding filter types
 
@@ -29,7 +29,7 @@ QueryableRepository<Document, String> searchRepo =
     new DelegatingRepository<>(/* implementation */);
 ```
 
-CollectionRepository uses `Predicate<Product>` because it filters Java objects in memory. The REST API repository uses `UserFilter` - a custom class with fields like `department` and `status` that map to query parameters. The search repository uses plain strings for full-text queries.
+`CollectionRepository` uses `Predicate<Product>` because it filters Java objects in memory. The REST API repository uses `UserFilter` - a custom class with fields like `department` and `status` that map to query parameters. The search repository uses plain strings for full-text queries.
 
 UI components don't care about these differences. They call `setBaseFilter()` with whatever filter type the repository expects, and the repository handles the translation.
 
@@ -125,7 +125,7 @@ Inside your custom repository's `findBy()` method, you'd translate this filter o
 - For SQL: Build a where clause like `WHERE category = ? AND price <= ? AND stock > 0`
 - For GraphQL: Construct a query with the appropriate field selections
 
-The repository implementation should handle this translation, keeping your UI code clean.
+The `Repository` implementation should handle this translation, keeping your UI code clean.
 
 ## Sorting data
 
@@ -159,7 +159,7 @@ OrderCriteria<Employee, String> byName = new OrderCriteria<>(
 );
 ```
 
-CollectionRepository uses the value provider to sort Java objects. DelegatingRepository implementations can use the property name to build order clauses in SQL or `sort=name:asc` in REST APIs.
+`CollectionRepository` uses the value provider to sort Java objects. `DelegatingRepository` implementations can use the property name to build order clauses in SQL or `sort=name:asc` in REST APIs.
 
 ## Controlling pagination
 

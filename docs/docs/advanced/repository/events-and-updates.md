@@ -7,9 +7,9 @@ sidebar_position: 5
 # Events and updates <DocChip chip='since' label='24.00' />
 <!-- vale on -->
 
-Repository events let you react to data changes. Beyond the automatic UI updates, you can listen for changes to trigger custom logic.
+`Repository` events let you react to data changes. Beyond the automatic UI updates, you can listen for changes to trigger custom logic.
 
-## Repository event lifecycle
+## `Repository` event lifecycle
 
 Every `commit()` call fires a <JavadocLink type="data" location="com/webforj/data/repository/event/RepositoryCommitEvent" code="true">RepositoryCommitEvent</JavadocLink>. This event carries information about what changed:
 
@@ -49,7 +49,7 @@ products.addAll(loadProductsFromCsv());
 repository.commit();
 ```
 
-Single-entity commits are surgical - they tell connected components exactly which row changed. The Table can update just that row's cells without touching anything else.
+Single-entity commits are surgical - they tell connected components exactly which row changed. The [`Table`](../../components/table/overview) can update just that row's cells without touching anything else.
 
 Bulk commits refresh everything. Use them when:
 - Multiple entities changed
@@ -58,7 +58,7 @@ Bulk commits refresh everything. Use them when:
 
 ## Reactive UI patterns
 
-Repository events let you keep summary displays in sync with your data:
+`Repository` events let you keep summary displays in sync with your data:
 
 ```java
 // Auto-updating labels
@@ -79,7 +79,7 @@ These listeners fire on every commit, whether from user actions, data imports, o
 
 ## Memory management
 
-Event listeners hold references to your components. If you don't remove them, the repository keeps your components in memory even after they're no longer displayed:
+Event listeners hold references to your components. If you don't remove them, the `Repository` keeps your components in memory even after they're no longer displayed:
 
 ```java
 // Keep reference to remove later
@@ -94,4 +94,4 @@ if (registration != null) {
 }
 ```
 
-The `onCommit()` method returns a ListenerRegistration. Store this reference and call `remove()` when your component is destroyed or no longer needs updates. This prevents memory leaks in long-running applications.
+The `onCommit()` method returns a `ListenerRegistration`. Store this reference and call `remove()` when your component is destroyed or no longer needs updates. This prevents memory leaks in long-running applications.
