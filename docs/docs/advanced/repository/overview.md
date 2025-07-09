@@ -9,11 +9,11 @@ sidebar_class_name: new-content
 <!-- vale on -->
 
 
-The Repository pattern in webforJ provides a standardized way to manage and query collections of entities. It acts as an abstraction layer between your UI components and data, making it easy to work with different data sources while maintaining consistent behavior.
+The `Repository` pattern in webforJ provides a standardized way to manage and query collections of entities. It acts as an abstraction layer between your UI components and data, making it easy to work with different data sources while maintaining consistent behavior.
 
 ## Why use repository
 
-Repository eliminates manual updates while keeping your original data intact:
+`Repository` eliminates manual updates while keeping your original data intact:
 
 ```java
 // Without Repository - manual updates
@@ -41,7 +41,7 @@ repository.commit(newCustomer); // Only updates what changed
 
 ## Collection repository
 
-The <JavadocLink type="data" location="com/webforj/data/repository/CollectionRepository" code="true">CollectionRepository</JavadocLink> is the most common implementation wraps any Java Collection:
+The <JavadocLink type="data" location="com/webforj/data/repository/CollectionRepository" code="true">CollectionRepository</JavadocLink> is the most common implementation, and wraps any Java Collection:
 
 ```java
 // From ArrayList
@@ -60,7 +60,7 @@ CollectionRepository<Employee> employeeRepo = new CollectionRepository<>(employe
 
 ## Data synchronization
 
-The repository acts as a bridge between your data and UI components. When data changes, you notify the repository through the `commit()` method:
+The `Repository` acts as a bridge between your data and UI components. When data changes, you notify the repository through the `commit()` method:
 
 ```java
 List<Product> products = new ArrayList<>();
@@ -84,8 +84,9 @@ The commit method has two signatures:
 - `commit()` - Tells the repository to refresh everything. It triggers a `RepositoryCommitEvent` with all current data
 - `commit(entity)` - Targets a specific entity. The repository finds this entity by its key and updates only the affected UI elements
 
+:::important Commiting single entities
 This distinction matters for performance. When you update one field in a 1000-row table, `commit(entity)` updates just that cell while `commit()` would refresh all rows.
-
+:::
 
 ## Filtering data
 
@@ -109,7 +110,7 @@ repository.setBaseFilter(product ->
 repository.setBaseFilter(null);
 ```
 
-When you set a filter, the repository:
+When you set a filter, the `Repository`:
 1. Applies the predicate to each item in your collection
 2. Creates a filtered stream of matching items
 3. Notifies connected components to update their display
@@ -145,7 +146,7 @@ customer.ifPresent(c -> {
 });
 ```
 
-Without HasEntityKey:
+Without `HasEntityKey`:
 - `repository.find("C001")` won't find your customer - it looks for an object that equals "C001"
 - `repository.commit(entity)` still works but relies on object equality
 - UI components can't select items by ID, only by object reference
@@ -153,7 +154,7 @@ Without HasEntityKey:
 
 ## UI integration
 
-Repository integrates with data-aware components:
+`Repository` integrates with data-aware components:
 
 ```java
 // Create repository and table
