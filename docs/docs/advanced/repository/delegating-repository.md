@@ -111,7 +111,7 @@ ORDER BY created_date DESC, name ASC
 LIMIT ? OFFSET ?
 ```
 
-Your filter object properties map to WHERE clause conditions, while pagination and sorting are handled through LIMIT/OFFSET and ORDER BY clauses.
+Your filter object properties map to `WHERE` clause conditions, while pagination and sorting are handled through LIMIT/OFFSET and ORDER BY clauses.
 
 ## Using with UI components
 
@@ -131,7 +131,7 @@ table.setRepository(repository);
 // Table automatically displays filtered engineering users
 ```
 
-When users interact with the table (sorting columns, changing pages), the table calls your repository functions with updated criteria. Your functions translate these to API calls or SQL queries, and the table updates automatically with the results.
+When users interact with the [`Table`](../../components/table/overview) (sorting columns, changing pages), the `Table` calls your repository functions with updated criteria. Your functions translate these to API calls or SQL queries, and the table updates automatically with the results.
 
 ## When to extend `AbstractQueryableRepository`
 
