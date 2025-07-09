@@ -84,7 +84,7 @@ The `Element` component provides two API methods which allow for JavaScript func
 
 1. **`callJsFunction(String functionName, Object... arguments)`**: This method takes a function name as a string, and optionally takes one or more Objects as parameters for the function. This method is executed synchronously, meaning that the **executing thread is blocked** until the JS method returns, and results in a round trip. The results of the function are returned as an `Object`, which can be casted and used in Java. 
 
-2. **`callJsFunctionAsync(String functionName, Object... arguments)`**: As with the previous method, a function name and optional arguments for the function can be passed. This method executes asynchronously and **does not block the executing thread**. It returns a [`PendingResult`](#), which allows for further interaction with the function and its payload.
+2. **`callJsFunctionAsync(String functionName, Object... arguments)`**: As with the previous method, a function name and optional arguments for the function can be passed. This method executes asynchronously and **doesn't block the executing thread**. It returns a <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>, which allows for further interaction with the function and its payload.
 
 ### Passing parameters
 
@@ -96,7 +96,7 @@ Arguments that are passed to these methods which are used in the execution of JS
 Both synchronous and asynchronous function calling will wait to call a method until the `Element` has been added to the DOM before executing a function, but `callJsFunction()` will not wait for any `component` arguments to attach, which can result in failure. Conversely, invoking `callJsFunctionAsync()` may never complete if a component argument is never attached.
 :::
 
-In the demo below, an event is added to an HTML `Button`. This event is then fired programmatically by calling the `callJsFunctionAsync()` method. The resulting [`PendingResult`](#) is then used to create another message box once the asynchronous function has been completed.
+In the demo below, an event is added to an HTML `Button`. This event is then fired programmatically by calling the `callJsFunctionAsync()` method. The resulting <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> is then used to create another message box once the asynchronous function has been completed.
 
 <ComponentDemo 
 path='/webforj/elementinputfunction?' 
@@ -113,7 +113,7 @@ Similar to function execution, executing JavaScript can be done with synchronous
 
 1. **`executeJs(String script)`**: This method takes `String`, which will be executed as JavaScript code in the client. This script is executed synchronously, meaning that the **executing thread is blocked** until the JS execution returns and results in a round trip. The results of the function are returned as an `Object`, which can be casted and used in Java.
 
-2. **`executeJsAsync(String script)`**: As with the previous method, a passed `String` parameter will be executed as JavaScript code on the client. This method executes asynchronously and **does not block the executing thread**. It returns a [`PendingResult`](#), which allows for further interaction with the function and its payload.
+2. **`executeJsAsync(String script)`**: As with the previous method, a passed `String` parameter will be executed as JavaScript code on the client. This method executes asynchronously and **doesn't block the executing thread**. It returns a <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>, which allows for further interaction with the function and its payload.
 
 :::tip
 These methods have access to the `component` keyword, which gives the JavaScript code access to the client-side instance of the component executing the JavaScript.
