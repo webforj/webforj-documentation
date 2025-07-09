@@ -1,5 +1,6 @@
 ---
 title: Error Handling
+sidebar_position: 25
 ---
 
 Error handling is a crucial aspect of developing robust web apps. In webforJ, error handling is designed to be flexible and customizable, allowing developers to handle exceptions in a way that best suits their app's needs.

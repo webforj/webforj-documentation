@@ -1,6 +1,7 @@
 ---
 title: Object and String Tables
 sidebar_class_name: new-content
+sidebar_position: 35
 ---
 
 The `ObjectTable` and `StringTable` provide static access to shared data in a webforJ environment. Both are accessible from anywhere in your app and serve different purposes:
