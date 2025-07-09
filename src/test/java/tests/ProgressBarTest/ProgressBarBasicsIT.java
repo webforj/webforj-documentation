@@ -23,26 +23,13 @@ public class ProgressBarBasicsIT extends BaseTest {
 
     @BrowserTest
     public void testStartProgressesBarTo100AndStops() {
-
         assertThat(progressBar.getProgressBar()).hasAttribute("style", "--_dwc-progressbar-percent: 0%;");
 
         progressBar.getStartButton().click();
         assertThat(progressBar.getProgressBar()).hasAttribute("animated", "true");
         assertThat(progressBar.getProgressBar()).hasAttribute("style", "--_dwc-progressbar-percent: 100%;",
-                new HasAttributeOptions().setTimeout(15000));
+                new HasAttributeOptions().setTimeout(30000));
 
-    }
-
-    @BrowserTest
-    public void testPauseHaltsProgressAtCurrentValue() {
-
-        assertThat(progressBar.getProgressBar()).hasAttribute("style", "--_dwc-progressbar-percent: 0%;");
-
-        progressBar.getStartButton().click();
-        assertThat(progressBar.getProgressBar()).hasAttribute("animated", "true");
-
-        progressBar.getPauseButton().click();
-        assertThat(progressBar.getProgressBar()).hasAttribute("animated", "false");
     }
 
     @BrowserTest

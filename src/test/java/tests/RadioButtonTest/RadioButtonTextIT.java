@@ -14,7 +14,7 @@ public class RadioButtonTextIT extends BaseTest {
 
     @BeforeEach
     public void setupRadioButtonText() {
-        page.navigate(RadioButtonTextPage.getRoute());
+        navigateToRoute(RadioButtonTextPage.getRoute());
         radioButton = new RadioButtonTextPage(page);
     }
 

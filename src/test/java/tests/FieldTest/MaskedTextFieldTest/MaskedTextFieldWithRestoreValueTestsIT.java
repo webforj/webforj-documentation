@@ -19,7 +19,7 @@ public class MaskedTextFieldWithRestoreValueTestsIT extends BaseTest {
     void setupMaskedTextFieldWithRestoreValueTests() {
         navigateToRoute(MaskedTextFieldPage.getRouteRestore());
         maskedTextField = new MaskedTextFieldPage(page);
-    }   
+    }
 
     @BrowserTest
     void testRestoreWorksAfterManualChange() {
@@ -55,7 +55,7 @@ public class MaskedTextFieldWithRestoreValueTestsIT extends BaseTest {
     void testRestoreValueWithSpecialCharsOrInvalidFormat() {
         maskedTextField.cleanField(maskedTextField.getPostalCode());
         page.keyboard().type("!@#$% !#@");
-        Locator parentElement = page.locator("dwc-textfield[dwc-id='11']");
+        Locator parentElement = page.locator("dwc-textfield:has-text('Postal Code')");
         assertThat(parentElement).hasAttribute("invalid", "");
     }
 }

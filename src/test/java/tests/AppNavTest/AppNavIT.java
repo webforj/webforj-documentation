@@ -9,6 +9,7 @@ import pages.AppNavPage.AppNavDemoPage;
 import tests.BaseTest;
 import utils.WaitUtil;
 import utils.annotations.BrowserTest;
+import utils.annotations.RetryTest;
 
 public class AppNavIT extends BaseTest {
 
@@ -39,10 +40,6 @@ public class AppNavIT extends BaseTest {
         appNavPage.getSidebarSocialTab().click();
         assertThat(appNavPage.getParagraph()).containsText("Social");
 
-    }
-
-    @BrowserTest
-    public void testNavigations() {
         appNavPage.getSidebarArchivedTab().click();
         assertThat(appNavPage.getParagraph()).containsText("Archived");
 
@@ -51,26 +48,25 @@ public class AppNavIT extends BaseTest {
 
     }
 
-    @Disabled("Bug Report #307")
     @BrowserTest
     public void testAboutDropdown() {
         appNavPage.getAboutDropdown().click();
         appNavPage.getSidebarWebforJ().click();
         assertThat(page).hasURL("https://webforj.com/");
         page.goBack();
-        WaitUtil.waitForVisible(appNavPage.getAboutDropdown());
+        assertThat(appNavPage.getAboutDropdown()).isVisible();
 
         appNavPage.getAboutDropdown().click();
         appNavPage.getSidebarGitHub().click();
         assertThat(page).hasURL("https://github.com/webforj/webforj");
         page.goBack();
-        WaitUtil.waitForVisible(appNavPage.getAboutDropdown());
+        assertThat(appNavPage.getAboutDropdown()).isVisible();
 
         appNavPage.getAboutDropdown().click();
         appNavPage.getSidebarDocumentation().click();
         assertThat(page).hasURL("https://docs.webforj.com/");
         page.goBack();
-        WaitUtil.waitForVisible(appNavPage.getAboutDropdown());
+        assertThat(appNavPage.getAboutDropdown()).isVisible();
 
     }
 

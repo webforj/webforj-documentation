@@ -10,24 +10,24 @@ public class SpinnerDirectionPage extends BasePage {
 
     private static final String ROUTE = RouteConfig.SPINNER_DIRECTION_DEMO;
 
-    private final Locator spinner11;
+    private final Locator spinner;
     private final Locator clockwiseButton;
     private final Locator counterClockwiseButton;
 
     public SpinnerDirectionPage(Page page) {
         super(page);
 
-        spinner11 = page.locator("dwc-spinner[dwc-id='11']");
-        clockwiseButton = page.locator("dwc-button[dwc-id='13']");
-        counterClockwiseButton = page.locator("dwc-button[dwc-id='14']");
+        spinner = page.locator("dwc-spinner.hydrated");
+        clockwiseButton = page.locator("dwc-button:has-text('Clockwise') >> button").first();
+        counterClockwiseButton = page.locator("dwc-button:has-text('Counterclockwise') >> button").first();
     }
 
     public static String getRoute() {
         return ROUTE;
     }
 
-    public Locator getSpinner11() {
-        return spinner11;
+    public Locator getSpinner() {
+        return spinner;
     }
 
     public Locator getClockwiseButton() {

@@ -14,7 +14,7 @@ public class TabbedPaneAlignmentIT extends BaseTest {
 
     @BeforeEach
     public void setupAlignment() {
-        page.navigate("https://docs.webforj.com/webforj/tabbedpanealignment?");
+        navigateToRoute(TabbedPaneAlignmentPage.getRoute());
         tabbedPaneAlignmentPage = new TabbedPaneAlignmentPage(page);
     }
 

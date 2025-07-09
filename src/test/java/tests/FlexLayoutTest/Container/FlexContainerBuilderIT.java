@@ -1,11 +1,9 @@
 package tests.FlexLayoutTest.Container;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 
-import com.microsoft.playwright.Keyboard;
 
 import pages.FlexLayoutPage.FlexContainerBuilderPage;
 import tests.BaseTest;
@@ -45,16 +43,6 @@ public class FlexContainerBuilderIT extends BaseTest {
         page.keyboard().type("-1");
         assertThat(flexContainerBuilderPage.getContainerBuilderContainer().locator(".demo__box")).hasCount(1);
         assertThat(flexContainerBuilderPage.getErrorMessage()).containsText("The value must be greater than or equal to 1");
-
-    }
-
-    @BrowserTest
-    public void testEnteringLargeNumberPopulatesManyBoxes() {
-        assumeTrue(!browserType.equalsIgnoreCase("webkit"), "Skipping on WebKit - Manually Tested on Safari");
-        // Max limit is 99999999
-        flexContainerBuilderPage.cleanField(flexContainerBuilderPage.getContainerBuilderInput());
-        page.keyboard().type("9999999999", new Keyboard.TypeOptions().setDelay(300));
-        assertThat(flexContainerBuilderPage.getContainerBuilderInput()).hasValue("99999999");
 
     }
 

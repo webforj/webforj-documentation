@@ -34,7 +34,4 @@ public class NavigatorPagesViewPage extends BasePage {
         return page.locator("div[part='layout layout-numbered'] > button");
     }
 
-    public Locator getPageRangeMessage() {
-        return page.locator("div:has-text('Navigate with the buttons below') > p");
-    }
 }

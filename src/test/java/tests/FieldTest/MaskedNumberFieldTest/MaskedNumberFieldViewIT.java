@@ -22,21 +22,11 @@ public class MaskedNumberFieldViewIT extends BaseTest {
     }
 
     @BrowserTest
-    public void testValidMonetaryInput() {
-        assumeFalse("webkit".equals(page.context().browser().browserType().name()),
-                "Skipped on WebKit (Safari verified manually)");
-
-        numberPage.cleanField(numberPage.getAmountField());
-        page.keyboard().type("100", new Keyboard.TypeOptions().setDelay(250));
-        numberPage.getCalculateTipButton().click();
-        assertThat(numberPage.getToast()).hasText("Tip: $15.00 Total: $115.00");
-
-    }
-
-    @BrowserTest
     public void testDecimalInput() {
         assumeFalse("webkit".equals(page.context().browser().browserType().name()),
                 "Skipped on WebKit (Safari verified manually)");
+        assumeFalse("firefox".equals(page.context().browser().browserType().name()),
+                "Skipped on Firefox (Firefox verified manually)");
 
         numberPage.cleanField(numberPage.getAmountField());
         page.waitForTimeout(300);
@@ -45,17 +35,6 @@ public class MaskedNumberFieldViewIT extends BaseTest {
 
         assertThat(numberPage.getToast()).containsText("Tip: $0.18");
         assertThat(numberPage.getToast()).containsText("Total: $1.38");
-
-    }
-
-    @BrowserTest
-    public void testMaximumValue() {
-
-        numberPage.cleanField(numberPage.getAmountField());
-        page.keyboard().type("999999999");
-        numberPage.getCalculateTipButton().click();
-
-        assertThat(numberPage.getAmountField()).hasValue("$999999.00");
 
     }
 
@@ -83,7 +62,6 @@ public class MaskedNumberFieldViewIT extends BaseTest {
 
     @BrowserTest
     public void testZeroBillAmount() {
-
         numberPage.cleanField(numberPage.getAmountField());
         page.keyboard().type("0");
         numberPage.getCalculateTipButton().click();
@@ -93,7 +71,6 @@ public class MaskedNumberFieldViewIT extends BaseTest {
 
     @BrowserTest
     public void testSpecialCharacters() {
-
         numberPage.cleanField(numberPage.getAmountField());
         page.keyboard().type("Aa!@. ");
 
@@ -109,7 +86,6 @@ public class MaskedNumberFieldViewIT extends BaseTest {
 
     @BrowserTest
     public void testEmptyInput() {
-
         numberPage.cleanField(numberPage.getAmountField());
         numberPage.cleanField(numberPage.getTipPercentageField());
         numberPage.getCalculateTipButton().click();

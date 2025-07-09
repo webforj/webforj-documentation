@@ -5,7 +5,6 @@ import com.aventstack.extentreports.ExtentTest;
 import com.microsoft.playwright.*;
 import config.RunConfig;
 
-import java.io.File;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -13,7 +12,6 @@ import org.junit.jupiter.api.*;
 
 import utils.ExtentReportManager;
 import utils.LoggerUtil;
-import utils.ScreenshotUtil;
 import utils.WaitUtil;
 
 /**
@@ -225,21 +223,6 @@ public class BaseTest {
                 // Log failure with comprehensive context
                 ExtentReportManager.logFailureWithContext(testReport, throwable, currentUrl, currentTestStep);
 
-                // Take screenshot
-                String screenshotPath = ScreenshotUtil.takeScreenshot(
-                        page,
-                        browserType + "_" + currentTestName + "_" + System.currentTimeMillis());
-
-                File screenshotFile = new File(screenshotPath);
-
-                if (screenshotFile.exists()) {
-                    String absolutePath = screenshotFile.getAbsolutePath();
-                    testReport.addScreenCaptureFromPath(absolutePath, "💥 Failure Screenshot - " + currentTestStep);
-                    ExtentReportManager.logInfo(testReport, "📸 Screenshot captured: " + absolutePath);
-                } else {
-                    ExtentReportManager.logWarning(testReport, "⚠️ Failed to capture screenshot");
-                    LoggerUtil.error("Screenshot file does not exist: " + screenshotPath);
-                }
             } catch (Exception e) {
                 ExtentReportManager.logWarning(testReport, "⚠️ Error during failure handling: " + e.getMessage());
                 LoggerUtil.error("Failed to handle test failure", e);

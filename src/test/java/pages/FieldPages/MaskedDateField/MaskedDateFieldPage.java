@@ -28,7 +28,7 @@ public class MaskedDateFieldPage extends BasePage {
         super(page);
 
         dateField = page.locator("input[aria-describedby='helper-text']");
-        helperText = page.locator("dwc-datefield[dwc-id] >> div[part='helper-text']");
+        helperText = page.locator("dwc-datefield >> div[part='helper-text']");
         resetValueButton = page.locator("dwc-button >> text=Reset Value");
         calendar = page.locator("div.flatpickr-calendar");
         spinnerUp = page.locator("dwc-icon-button[part='up-button']");

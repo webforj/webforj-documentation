@@ -4,9 +4,15 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.*;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.config.RouteConfig;
+
 import pages.BasePage;
 
 public class TableMultiSelectionPage extends BasePage {
+
+    private static final String ROUTE = RouteConfig.TABLE_MULTI_SELECTION;
+
     private final Locator masterCheckbox;
     private final Locator checkboxes;
     private final Locator headerText;
@@ -16,15 +22,18 @@ public class TableMultiSelectionPage extends BasePage {
 
     public TableMultiSelectionPage(Page page) {
         super(page);
-        this.pageUrl = "https://docs.webforj.com/tablemultiselection?";
-        this.pageTitle = "Table Multiple Selection";
+        pageTitle = "Table Multiple Selection";
 
-        this.masterCheckbox = page.locator("#checkbox-1");
-        this.checkboxes = page.locator("dwc-checkbox input[type='checkbox']");
-        this.headerText = page.locator("dwc-dialog header[slot='header']");
-        this.recordItems = page.locator("dwc-dialog ul li");
-        this.okButton = page.locator("dwc-button >> button[part='control']");
-        this.noRecordsMessage = page.locator("dwc-dialog >> text=There are no records selected");
+        masterCheckbox = page.locator("#checkbox-1");
+        checkboxes = page.locator("dwc-checkbox input[type='checkbox']");
+        headerText = page.locator("dwc-dialog header[slot='header']");
+        recordItems = page.locator("dwc-dialog ul li");
+        okButton = page.getByRole(AriaRole.CONTENTINFO).getByText("OK");
+        noRecordsMessage = page.locator("dwc-dialog >> text=There are no records selected");
+    }
+
+    public static String getRoute() {
+        return ROUTE;
     }
 
     public void verifyRecordItems(String text, boolean shouldBeVisible) {

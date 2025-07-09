@@ -20,18 +20,17 @@ public class TextAreaValidationPage extends BasePage {
         super(page);
 
         // TextArea Validation (elements from TextAreaValidationIT)
-        validationTextArea = page.locator("dwc-textarea[dwc-id='12'] >> textarea");
-        maxLengthField = page.locator("dwc-field[dwc-id='14']");
-        maxLengthInput = page.locator("dwc-field[dwc-id='14'] >> input");
-        maxLinesInput = page.locator("dwc-field[dwc-id='16'] >> input");
-        maxParagraphLengthInput = page.locator("dwc-field[dwc-id='18'] >> input");
+        validationTextArea = page.locator("dwc-textarea:has-text('Validation Playground') >> textarea");
+        maxLengthField = page.locator("dwc-field:has-text('Max Length')");
+        maxLengthInput = page.locator("dwc-field:has-text('Max Length') >> input");
+        maxLinesInput = page.locator("dwc-field:has-text('Max Lines') >> input");
+        maxParagraphLengthInput = page.locator("dwc-field:has-text('Max Paragraph Length') >> input");
     }
 
     public static String getRoute() {
         return ROUTE;
     }
 
-    // TextArea Validation Getters
     public Locator getValidationTextArea() {
         return validationTextArea;
     }

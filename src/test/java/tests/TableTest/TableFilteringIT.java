@@ -14,7 +14,7 @@ public class TableFilteringIT extends BaseTest {
 
     @BeforeEach
     public void setupTableFiltering() {
-        page.navigate("https://docs.webforj.com/tablefiltering?");
+        navigateToRoute(TableFilteringPage.getRoute());
         tableFiltering = new TableFilteringPage(page);
     }
 
@@ -63,4 +63,4 @@ public class TableFilteringIT extends BaseTest {
 
         assertThat(tableFiltering.getTableRows()).hasCount(0);
     }
-} 
+}

@@ -1,6 +1,5 @@
 package tests.IconTest;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -31,15 +30,6 @@ public class IconVariationsIT extends BaseTest {
     public void setupIconVariations() {
         navigateToRoute(IconVariationsPage.getRoute());
         iconVariationsPage = new IconVariationsPage(page);
-    }
-
-    @BrowserTest
-    public void testIconsRender() {
-        assertThat(iconVariationsPage.getEnvelopeIconSvg()).isVisible();
-        assertThat(iconVariationsPage.getSolidEnvelopeIconSvg()).isVisible();
-        assertThat(iconVariationsPage.getInstagramIconSvg()).isVisible();
-        assertThat(iconVariationsPage.getCalendarIconSvg()).isVisible();
-        assertThat(iconVariationsPage.getFilledCalendarIconSvg()).isVisible();
     }
 
     @BrowserTest

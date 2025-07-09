@@ -16,7 +16,7 @@ public class PredictedTextAreaPage extends BasePage {
         super(page);
 
         // Predicted Text Demo (elements from PredictedTextDemoIT)
-        predictedTextArea = page.locator("#cedit-1");
+        predictedTextArea = page.locator("dwc-textarea:has-text('Predicted Text') >> textarea");
     }
 
     public static String getRoute() {

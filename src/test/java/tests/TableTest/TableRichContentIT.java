@@ -11,26 +11,29 @@ import com.microsoft.playwright.Locator;
 
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
+import pages.TablePages.TableRichContentViewPage;
 
 public class TableRichContentIT extends BaseTest {
 
+    private TableRichContentViewPage tableRichContent;
+
     @BeforeEach
     public void setupTableRichContent() {
-        page.navigate("https://docs.webforj.com/tablerichcontent?");
+        navigateToRoute(TableRichContentViewPage.getRoute());
+        tableRichContent = new TableRichContentViewPage(page);
     }
 
     @BrowserTest
     public void testMasterCheckbox() {
-        Locator masterCheckBox = page.locator("thead input[type='checkbox']");
 
-        masterCheckBox.click();
+        tableRichContent.getMasterCheckBox().click();
 
         List<Locator> checkboxes = page.locator("tbody div[part='cell-content-checkbox']").all();
 
         for (Locator checkbox : checkboxes) {
             assertThat(checkbox).isChecked();
         }
-        masterCheckBox.click();
+        tableRichContent.getMasterCheckBox().click();
 
         for (Locator checkbox : checkboxes) {
             assertThat(checkbox).not().isChecked();
@@ -38,24 +41,21 @@ public class TableRichContentIT extends BaseTest {
     }
 
     @BrowserTest
-    public void testIndividualCheckbox() {
-        Locator firstCheckbox = page.locator("dwc-checkbox").first();
-        Locator checkboxInput = firstCheckbox.locator("input[type='checkbox']");
-        checkboxInput.click();
+        public void testIndividualCheckbox() {
+        tableRichContent.getCheckboxInput().click();
 
-        assertThat(checkboxInput).isChecked();
+        assertThat(tableRichContent.getCheckboxInput()).isChecked();
     }
 
     @BrowserTest
     public void testTableImages() {
-        Locator images = page.locator("img[part='avatar-img']");
 
-        for (int i = 0; i < images.count(); i++) {
-            Locator image = images.nth(i);
+        for (int i = 0; i < tableRichContent.getImages().count(); i++) {
+            Locator image = tableRichContent.getImages().nth(i);
 
             boolean isBroken = (boolean) image.evaluate(
                     "img => !img.loaded || img.width < 32 || img.height < 32");
             assertFalse(isBroken);
         }
     }
-} 
+}

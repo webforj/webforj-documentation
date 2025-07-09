@@ -14,7 +14,7 @@ public class RadioButtonGroupIT extends BaseTest {
 
     @BeforeEach
     public void setupRadioButtonGroup() {
-        page.navigate(RadioButtonGroupBasicPage.getRoute());
+        navigateToRoute(RadioButtonGroupBasicPage.getRoute());
         radioButtonGroupPage = new RadioButtonGroupBasicPage(page);
     }
 

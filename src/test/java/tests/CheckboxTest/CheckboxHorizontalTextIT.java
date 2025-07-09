@@ -21,17 +21,15 @@ public class CheckboxHorizontalTextIT extends BaseTest {
     }
 
     @BrowserTest
-    public void testLeftAlignment() {
+    public void testLeftAlignmentAndCheckedState() {
         assertThat(checkBox.getLeftAlignedCheckbox()).hasAttribute("class",
                 Pattern.compile(".*bbj-reverse-order.*"));
 
-    }
-
-    @BrowserTest
-    public void testLabels() {
         checkBox.getMonthlyCheckboxInput().click();
-
         assertThat(checkBox.getMonthlyCheckboxInput()).hasAttribute("aria-checked", "true");
+
+        checkBox.getMonthlyCheckboxInput().click();
+        assertThat(checkBox.getMonthlyCheckboxInput()).hasAttribute("aria-checked", "false");
 
     }
 }

@@ -24,16 +24,13 @@ public class MaskedDateFieldSpinnerIT extends BaseTest {
 
     @BrowserTest
     public void testManualInput() {
-
         maskedDateField.getDateField().click();
         String originalValue = maskedDateField.getDateField().inputValue();
 
-        maskedDateField.getDateField().type("01012030");
+        maskedDateField.getDateField().pressSequentially("01012030");
 
         assertThat(maskedDateField.getDateField()).hasValue(originalValue);
-
         assertThat(maskedDateField.getDateField()).hasAttribute("readonly", "");
-
     }
 
     @BrowserTest
@@ -47,12 +44,10 @@ public class MaskedDateFieldSpinnerIT extends BaseTest {
         maskedDateField.getSpinnerDown().click();
 
         assertThat(maskedDateField.getDateField()).hasValue(today);
-
     }
 
     @BrowserTest
     public void testFutureDateLimitation() {
-
         maskedDateField.getDateFieldIcon().click();
 
         for (int i = 0; i < 6; i++) {
@@ -61,6 +56,5 @@ public class MaskedDateFieldSpinnerIT extends BaseTest {
 
         assertThat(maskedDateField.getNextMonthNavigator()).hasAttribute("class",
                 Pattern.compile(".*flatpickr-disabled.*"));
-
     }
 }

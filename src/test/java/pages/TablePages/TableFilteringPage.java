@@ -2,9 +2,12 @@ package pages.TablePages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.config.RouteConfig;
 import pages.BasePage;
 
 public class TableFilteringPage extends BasePage {
+
+    private static final String ROUTE = RouteConfig.TABLE_FILTERING;
 
     private final Locator titleFilterInput;
     private final Locator tableRows;
@@ -12,10 +15,14 @@ public class TableFilteringPage extends BasePage {
 
     public TableFilteringPage(Page page) {
         super(page);
-        
+
         titleFilterInput = page.locator("#field-1");
         tableRows = page.locator("tbody tr[part*='row']");
         firstTitleCell = page.locator("tr td").first();
+    }
+
+    public static String getRoute() {
+        return ROUTE;
     }
 
     public Locator getTitleFilterInput() {

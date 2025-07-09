@@ -21,62 +21,62 @@ public class MaskedNumSpinnerViewIT extends BaseTest {
 
     @BrowserTest
     public void testSpinnerButtonsIncrementDecrementByStep() {
-        String initialValue = numberPage.getAmountField().inputValue(); // 15%
+        String initialValue = numberPage.getTipPercentageField().inputValue(); // 15%
         int initialValueInt = Integer.parseInt(initialValue.replaceAll("[^0-9]", ""));
 
         numberPage.getSpinnerUp().click();
-        assertThat(numberPage.getAmountField()).hasValue(String.valueOf(initialValueInt + 5) + "%");
+        assertThat(numberPage.getTipPercentageField()).hasValue(String.valueOf(initialValueInt + 5) + "%");
 
         numberPage.getSpinnerDown().click();
-        assertThat(numberPage.getAmountField()).hasValue(initialValue);
+        assertThat(numberPage.getTipPercentageField()).hasValue(initialValue);
     }
 
     @BrowserTest
     public void testKeyboardArrowKeysIncrementDecrementByStepFive() {
-        String initialValue = numberPage.getAmountField().inputValue();
+        String initialValue = numberPage.getTipPercentageField().inputValue();
         int initialValueInt = Integer.parseInt(initialValue.replaceAll("[^0-9]", ""));
 
-        numberPage.getAmountField().click();
+        numberPage.getTipPercentageField().click();
         page.keyboard().press("ArrowUp");
-        assertThat(numberPage.getAmountField()).hasValue(String.valueOf(initialValueInt + 5) + "%");
+        assertThat(numberPage.getTipPercentageField()).hasValue(String.valueOf(initialValueInt + 5) + "%");
 
         page.keyboard().press("ArrowDown");
-        assertThat(numberPage.getAmountField()).hasValue(initialValue);
+        assertThat(numberPage.getTipPercentageField()).hasValue(initialValue);
     }
 
     @BrowserTest
     public void testValidNumericInputWithinMinMaxAccepted() {
 
-        numberPage.cleanField(numberPage.getAmountField());
+        numberPage.cleanField(numberPage.getTipPercentageField());
         page.keyboard().type("5");
         page.keyboard().type("0");
 
-        assertThat(numberPage.getAmountField()).hasValue("50%");
+        assertThat(numberPage.getTipPercentageField()).hasValue("50%");
     }
 
     @BrowserTest
     public void testDecimalValuesRejectedIfRestricted() {
 
-        numberPage.cleanField(numberPage.getAmountField());
+        numberPage.cleanField(numberPage.getTipPercentageField());
         page.keyboard().type("1");
         page.keyboard().type(".");
         page.keyboard().type("2");
 
-        assertThat(numberPage.getAmountField()).hasValue("12%");
+        assertThat(numberPage.getTipPercentageField()).hasValue("12%");
     }
 
     @BrowserTest
     public void testInvalidCharactersAreRejected() {
-        numberPage.cleanField(numberPage.getAmountField());
+        numberPage.cleanField(numberPage.getTipPercentageField());
         page.keyboard().type("Aa!@. ");
 
-        assertThat(numberPage.getAmountField()).hasValue("");
+        assertThat(numberPage.getTipPercentageField()).hasValue("");
     }
 
     @BrowserTest
     public void testBoundaryBehaviorForValuesOutsideMinMax() {
 
-        numberPage.cleanField(numberPage.getAmountField());
+        numberPage.cleanField(numberPage.getTipPercentageField());
         page.keyboard().type("1");
         page.keyboard().type("0");
         page.keyboard().type("1");
@@ -87,46 +87,46 @@ public class MaskedNumSpinnerViewIT extends BaseTest {
 
     @BrowserTest
     public void testEmptyInputFieldBehavior() {
-        numberPage.cleanField(numberPage.getAmountField());
-        assertThat(numberPage.getAmountField()).hasValue("");
+        numberPage.cleanField(numberPage.getTipPercentageField());
+        assertThat(numberPage.getTipPercentageField()).hasValue("");
 
         numberPage.getSpinnerUp().click();
-        assertThat(numberPage.getAmountField()).hasValue("5%");
+        assertThat(numberPage.getTipPercentageField()).hasValue("5%");
     }
 
     @BrowserTest
     public void testDefaultStepSizeAndDynamicStepChange() {
-        numberPage.cleanField(numberPage.getAmountField());
+        numberPage.cleanField(numberPage.getTipPercentageField());
         page.keyboard().type("1");
         page.keyboard().type("3");
         numberPage.getSpinnerUp().click();
-        assertThat(numberPage.getAmountField()).hasValue("18%");
+        assertThat(numberPage.getTipPercentageField()).hasValue("18%");
 
         numberPage.getSpinnerDown().click();
-        assertThat(numberPage.getAmountField()).hasValue("13%");
+        assertThat(numberPage.getTipPercentageField()).hasValue("13%");
     }
 
     @BrowserTest
     public void testSpinnerPreventsValueAboveMax() {
 
-        numberPage.cleanField(numberPage.getAmountField());
+        numberPage.cleanField(numberPage.getTipPercentageField());
         page.keyboard().type("1");
         page.keyboard().type("0");
         page.keyboard().type("0");
 
         numberPage.getSpinnerUp().click();
-        assertThat(numberPage.getAmountField()).hasValue("100%");
+        assertThat(numberPage.getTipPercentageField()).hasValue("100%");
     }
 
     @BrowserTest
     public void testMaskAppliedCorrectlyOnManualAndSpinnerInput() {
 
-        numberPage.cleanField(numberPage.getAmountField());
+        numberPage.cleanField(numberPage.getTipPercentageField());
         page.keyboard().type("1");
         page.keyboard().type("0");
         page.keyboard().type("0");
         page.keyboard().type("0");
 
-        assertThat(numberPage.getAmountField()).hasValue("100%");
+        assertThat(numberPage.getTipPercentageField()).hasValue("100%");
     }
 }

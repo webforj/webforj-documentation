@@ -19,19 +19,17 @@ public class IconVariationsPage extends BasePage {
     public IconVariationsPage(Page page) {
         super(page);
 
-        // Initialize IconVariations locators
-        envelopeIcon = page.locator("dwc-icon[dwc-id='11']");
-        solidEnvelopeIcon = page.locator("dwc-icon[dwc-id='12']");
-        instagramIcon = page.locator("dwc-icon[dwc-id='13']");
-        calendarIcon = page.locator("dwc-icon[dwc-id='14']");
-        filledCalendarIcon = page.locator("dwc-icon[dwc-id='15']");
+        envelopeIcon = page.locator("dwc-icon.envelope");
+        solidEnvelopeIcon = page.locator("dwc-icon.fas-envelope");
+        instagramIcon = page.locator("dwc-icon.instagram");
+        calendarIcon = page.locator("dwc-icon.calendar");
+        filledCalendarIcon = page.locator("dwc-icon.filled-calendar");
     }
 
     public static String getRoute() {
         return ROUTE;
     }
 
-    // IconVariations getters
     public Locator getEnvelopeIcon() {
         return envelopeIcon;
     }
@@ -48,7 +46,6 @@ public class IconVariationsPage extends BasePage {
         return calendarIcon;
     }
 
-    // Alternative getter with the typo from original test for compatibility
     public Locator getCalenderIcon() {
         return calendarIcon;
     }
@@ -57,12 +54,10 @@ public class IconVariationsPage extends BasePage {
         return filledCalendarIcon;
     }
 
-    // Alternative getter with the typo from original test for compatibility
     public Locator getFilledCalenderIcon() {
         return filledCalendarIcon;
     }
 
-    // Convenience methods for SVG elements within icons
     public Locator getEnvelopeIconSvg() {
         return envelopeIcon.locator("svg");
     }

@@ -15,14 +15,12 @@ public class TabbedPaneBorderIT extends BaseTest {
 
     @BeforeEach
     public void setupBorder() {
-        page.navigate("https://docs.webforj.com/webforj/tabbedpaneborder?");
+        navigateToRoute(TabbedPaneBorderPage.getRoute());
         tabbedPaneBorderPage = new TabbedPaneBorderPage(page);
     }
 
     @BrowserTest
     public void testBorder() {
-        WaitUtil.waitForVisible(tabbedPaneBorderPage.getBorderTabbedPane());
-
         tabbedPaneBorderPage.getHideBorderToggle().click();
         assertThat(tabbedPaneBorderPage.getBorderTabbedPane()).hasAttribute("borderless", "");
         tabbedPaneBorderPage.getBorderOrdersTab().click();

@@ -20,10 +20,10 @@ public class SplitterOrientationPage extends BasePage {
     public SplitterOrientationPage(Page page) {
         super(page);
 
-        splitter = page.locator("dwc-splitter[dwc-id='11']");
-        splitterIcon = page.locator("dwc-splitter[dwc-id='11'] >> div > dwc-icon");
-        masterPanel = page.locator("dwc-splitter >> div[dwc-id='12']");
-        detailPanel = page.locator("dwc-splitter >> div[dwc-id='13']");
+        splitter = page.locator("dwc-splitter[orientation='vertical']");
+        splitterIcon = page.locator("dwc-splitter[orientation='vertical'] >> div > dwc-icon");
+        masterPanel = page.locator("dwc-splitter >> div.splitter-box.splitter-box--info");
+        detailPanel = page.locator("dwc-splitter >> div.splitter-box.splitter-box--success");
         horizontalSplitter = page.locator("dwc-splitter[orientation='horizontal']");
         verticalSplitter = page.locator("dwc-splitter[orientation='vertical']");
     }

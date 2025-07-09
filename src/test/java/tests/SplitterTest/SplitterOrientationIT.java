@@ -16,7 +16,7 @@ public class SplitterOrientationIT extends BaseTest {
 
     @BeforeEach
     public void setupSplitterOrientation() {
-        page.navigate(SplitterOrientationPage.getRoute());
+        navigateToRoute(SplitterOrientationPage.getRoute());
         splitterPage = new SplitterOrientationPage(page);
     }
 

@@ -6,27 +6,26 @@ import java.util.regex.Pattern;
 
 import org.junit.jupiter.api.BeforeEach;
 
-import com.microsoft.playwright.Locator;
-
+import pages.TablePages.TableColumnPinningViewPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class TableColumnPinningViewIT extends BaseTest {
 
+    private TableColumnPinningViewPage tablePage;
+
     @BeforeEach
     public void setupTableColumnPinning() {
-        page.navigate("https://docs.webforj.com/tablecolumnpinning?");
+        navigateToRoute(TableColumnPinningViewPage.getRoute());
+        tablePage = new TableColumnPinningViewPage(page);
     }
 
     @BrowserTest
     public void testEditButton() {
-        Locator editButtonPosition = page.locator("td[part~='cell-pinned-right']").first();
-        Locator editButton = page.locator("td dwc-button").first();
 
-        assertThat(editButtonPosition).hasAttribute("style", Pattern.compile(".*sticky; right: 0px;.*"));
+        assertThat(tablePage.getEditButtonPosition()).hasAttribute("style", Pattern.compile(".*sticky; right: 0px;.*"));
 
-        editButton.click();
-        Locator dialogBox = page.locator("dwc-dialog[type='msgbox'] >> section");
-        assertThat(dialogBox).hasText("You asked to edit record number 000001.");
+        tablePage.getEditButton().click();
+        assertThat(tablePage.getDialogBox()).hasText("You asked to edit record number 000001.");
     }
-} 
+}

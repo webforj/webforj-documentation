@@ -20,7 +20,7 @@ public class TabbedPaneAlignmentPage extends BasePage {
 
         alignmentDropdown = page.locator("dwc-dropdown.hydrated");
         alignmentListBox = page.locator("dwc-listbox");
-        alignmentTabbedPane = page.locator("dwc-tabbed-pane[dwc-id='12']");
+        alignmentTabbedPane = page.locator("dwc-tabbed-pane[placement='top']");
     }
 
     public static String getRoute() {

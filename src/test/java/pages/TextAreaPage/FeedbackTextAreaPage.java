@@ -19,11 +19,10 @@ public class FeedbackTextAreaPage extends BasePage {
     public FeedbackTextAreaPage(Page page) {
         super(page);
 
-        // Feedback TextArea (elements from FeedbackTextAreaIT)
-        mainLabel = page.locator("dwc-textarea[dwc-id='12'] >> label");
-        feedbackArea = page.locator("dwc-textarea[dwc-id='12'] >> textarea");
-        charactersCount = page.locator("div[dwc-id='13'] > p[dwc-id='14']");
-        submitButton = page.locator("div[dwc-id='13'] > dwc-button[dwc-id='15']");
+        mainLabel = page.locator("dwc-textarea >> label");
+        feedbackArea = page.locator("dwc-textarea >> textarea");
+        charactersCount = page.locator("div[style*='place-content: center'] > p");
+        submitButton = page.locator("dwc-button:has-text('Submit Feedback')");
         donationToaster = page.locator("dwc-toast-group");
     }
 
@@ -31,7 +30,6 @@ public class FeedbackTextAreaPage extends BasePage {
         return ROUTE;
     }
 
-    // Feedback TextArea Getters
     public Locator getMainLabel() {
         return mainLabel;
     }

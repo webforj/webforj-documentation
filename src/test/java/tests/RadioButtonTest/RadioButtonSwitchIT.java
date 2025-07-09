@@ -14,7 +14,7 @@ public class RadioButtonSwitchIT extends BaseTest {
 
     @BeforeEach
     public void setupRadioButtonSwitch() {
-        page.navigate(RadioButtonSwitchPage.getRoute());
+        navigateToRoute(RadioButtonSwitchPage.getRoute());
         radioButton = new RadioButtonSwitchPage(page);
     }
 

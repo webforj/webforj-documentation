@@ -22,15 +22,10 @@ public class MaskedDateFieldViewIT extends BaseTest {
     }
 
     @BrowserTest
-    public void testInitialValue() {
-
-        String today = LocalDate.now().format(DateTimeFormatter.ofPattern("MM/dd/yy"));
-
-        assertThat(maskedDateField.getDateField()).hasValue(today);
-    }
-
-    @BrowserTest
     public void testValidDate() {
+        String today = LocalDate.now().format(DateTimeFormatter.ofPattern("MM/dd/yy"));
+        assertThat(maskedDateField.getDateField()).hasValue(today);
+
         maskedDateField.cleanDateField();
         maskedDateField.getDateField().fill("1/1/25");
 

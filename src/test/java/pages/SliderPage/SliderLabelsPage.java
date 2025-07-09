@@ -23,7 +23,7 @@ public class SliderLabelsPage extends BasePage {
         fortyDegreeOption = page.locator("div[data-value='40']");
         sixtyDegreeOption = page.locator("div[data-value='60']");
         ninetyDegreeOption = page.locator("div[data-value='90']");
-        labelsSlider = page.locator("dwc-slider[dwc-id='11']");
+        labelsSlider = page.locator("dwc-slider[orientation='horizontal']");
     }
 
     public static String getRoute() {

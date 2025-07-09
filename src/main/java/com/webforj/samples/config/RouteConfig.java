@@ -247,6 +247,7 @@ public final class RouteConfig {
     public static final String TABLE_SINGLE_SELECTION  = "tablesingleselection";
     public static final String TABLE_SORTING           = "tablesorting";
     public static final String TABLE_SORT_ORDER        = "tablesortorder";
+    public static final String TITLE_EDITOR            = "titleeditor";
 
     // Terminal routes
     public static final String SERVER_LOGS            = "serverlogs";

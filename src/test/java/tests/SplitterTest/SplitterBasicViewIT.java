@@ -16,7 +16,7 @@ public class SplitterBasicViewIT extends BaseTest {
 
     @BeforeEach
     public void setupSplitterBasics() {
-        page.navigate(SplitterBasicsPage.getRoute());
+        navigateToRoute(SplitterBasicsPage.getRoute()); 
         splitterPage = new SplitterBasicsPage(page);
     }
 

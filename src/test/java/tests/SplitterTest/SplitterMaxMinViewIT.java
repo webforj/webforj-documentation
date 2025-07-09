@@ -14,7 +14,7 @@ public class SplitterMaxMinViewIT extends BaseTest {
 
     @BeforeEach
     public void setupSplitterMaxMin() {
-        page.navigate(SplitterMaxMinPage.getRoute());
+        navigateToRoute(SplitterMaxMinPage.getRoute());
         splitterPage = new SplitterMaxMinPage(page);
     }
 

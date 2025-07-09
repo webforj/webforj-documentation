@@ -16,7 +16,7 @@ public class SliderTickSpacingIT extends BaseTest {
 
     @BeforeEach
     public void setupMajorandMinorTick() {
-        page.navigate(SliderTickSpacingPage.getRoute());
+        navigateToRoute(SliderTickSpacingPage.getRoute());
         sliderPage = new SliderTickSpacingPage(page);
     }
 

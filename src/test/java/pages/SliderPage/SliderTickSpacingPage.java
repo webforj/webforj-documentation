@@ -23,13 +23,13 @@ public class SliderTickSpacingPage extends BasePage {
     public SliderTickSpacingPage(Page page) {
         super(page);
 
-        majorTickInput = page.locator("dwc-field[dwc-id='13'] >> input");
-        minorTickInput = page.locator("dwc-field[dwc-id='14'] >> input");
+        majorTickInput = page.locator("dwc-field:has-text('Major Tick') >> input");
+        minorTickInput = page.locator("dwc-field:has-text('Minor Tick') >> input");
         majorTicks = page.locator(".noUi-value-horizontal");
         minorTicks = page.locator(".noUi-marker-horizontal");
-        tickSpacingControl = page.locator("dwc-slider[dwc-id='11'] >> div[part='control']");
-        tickToggle = page.locator("dwc-radio[dwc-id='17']");
-        snapToggle = page.locator("dwc-radio[dwc-id='16']");
+        tickSpacingControl = page.locator("dwc-slider >> div[part='control']");
+        tickToggle = page.locator("dwc-radio:has-text('Show Ticks')");
+        snapToggle = page.locator("dwc-radio:has-text('Snap to Ticks')");
         snapThumb = page.locator(".noUi-touch-area");
         lowerHandle = page.locator(".noUi-handle-lower");
     }

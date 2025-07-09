@@ -22,7 +22,6 @@ public class ClosableAlertsPage extends BasePage {
     public ClosableAlertsPage(Page page) {
         super(page);
 
-        // Initialize ClosableAlerts locators
         closableAlert = page.locator("dwc-alert[theme='info']");
         closableAlertText = page.locator("text='Heads up! This alert can be dismissed.'");
         closableAlertButton = page.locator("dwc-icon-button.hydrated");
@@ -33,7 +32,6 @@ public class ClosableAlertsPage extends BasePage {
         return ROUTE;
     }
 
-    // ClosableAlerts getters
     public Locator getClosableAlert() {
         return closableAlert;
     }

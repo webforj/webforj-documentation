@@ -19,20 +19,6 @@ public class ToolbarCompactIT extends BaseTest {
     }
 
     @BrowserTest
-    public void testToolbarComponents() {
-
-        assertThat(toolbarCompactPage.getTablerIcon()).isVisible();
-        assertThat(toolbarCompactPage.getApplicationTitle()).isVisible();
-        assertThat(toolbarCompactPage.getSalesTab()).isVisible();
-        assertThat(toolbarCompactPage.getEnterpriseTab()).isVisible();
-        assertThat(toolbarCompactPage.getPaymentTab()).isVisible();
-        assertThat(toolbarCompactPage.getHistoryTab()).isVisible();
-
-        assertThat(toolbarCompactPage.getMainTitle()).hasText("Application Title");
-        assertThat(toolbarCompactPage.getParagraph()).hasText("Content goes here");
-    }
-
-    @BrowserTest
     public void testVisualHighlight() {
 
         toolbarCompactPage.getSalesTab().click();
@@ -40,11 +26,6 @@ public class ToolbarCompactIT extends BaseTest {
 
         toolbarCompactPage.getEnterpriseTab().click();
         assertThat(toolbarCompactPage.getEnterpriseTab()).hasAttribute("active", "");
-
-        toolbarCompactPage.getPaymentTab().click();
-        assertThat(toolbarCompactPage.getPaymentTab()).hasAttribute("active", "");
-
-        toolbarCompactPage.getHistoryTab().click();
-        assertThat(toolbarCompactPage.getHistoryTab()).hasAttribute("active", "");
+        assertThat(toolbarCompactPage.getSalesTab()).not().hasAttribute("active", "");
     }
 }

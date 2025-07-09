@@ -14,7 +14,7 @@ public class SliderViewIT extends BaseTest {
 
     @BeforeEach
     public void setupSliderView() {
-        page.navigate(SliderViewPage.getRoute());
+        navigateToRoute(SliderViewPage.getRoute());
         sliderPage = new SliderViewPage(page);
     }
 

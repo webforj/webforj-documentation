@@ -16,6 +16,8 @@ public class MaskedNumberFieldPage extends BasePage {
 
     private final Locator amountField;
     private final Locator tipPercentageField;
+    private final Locator creditField;
+    private final Locator projectBudgetField;
     private final Locator calculateTipButton;
     private final Locator toast;
     private final Locator toastTheme;
@@ -28,8 +30,10 @@ public class MaskedNumberFieldPage extends BasePage {
     public MaskedNumberFieldPage(Page page) {
         super(page);
 
-        amountField = page.locator("dwc-numberfield >> input[type='text']");
-        tipPercentageField = page.locator("dwc-numberfield >> input[part='input input-masked']");
+        amountField = page.locator("dwc-numberfield:has-text('Bill Amount') >> input").first();
+        tipPercentageField = page.locator("dwc-numberfield:has-text('Tip Percentage (%)') >> input").first();
+        creditField = page.locator("dwc-numberfield:has-text('Credits') >> input").first();
+        projectBudgetField = page.locator("dwc-numberfield:has-text('Project Budget') >> input").first();
         calculateTipButton = page.locator("dwc-button:has-text('Calculate Tip')");
         toast = page.locator("dwc-toast-group[placement='bottom']");
         toastTheme = page.locator("dwc-toast-group[placement='bottom'] > dwc-toast");
@@ -62,6 +66,14 @@ public class MaskedNumberFieldPage extends BasePage {
 
     public Locator getTipPercentageField() {
         return tipPercentageField;
+    }
+
+    public Locator getCreditField() {
+        return creditField;
+    }
+
+    public Locator getProjectBudgetField() {
+        return projectBudgetField;
     }
 
     public Locator getCalculateTipButton() {

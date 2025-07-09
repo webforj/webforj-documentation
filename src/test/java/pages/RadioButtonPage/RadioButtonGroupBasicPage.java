@@ -19,11 +19,11 @@ public class RadioButtonGroupBasicPage extends BasePage {
     public RadioButtonGroupBasicPage(Page page) {
         super(page);
 
-        stronglyDisagreeRB = page.locator("dwc-radio:has-text('Strongly disagree') >> label");
-        disagreeRB = page.locator("dwc-radio:has-text('Disagree') >> label");
-        neutralRB = page.locator("dwc-radio:has-text('Neutral') >> label");
-        agreeRB = page.locator("dwc-radio:has-text('Agree') >> label");
-        stronglyAgreeRB = page.locator("dwc-radio:has-text('Strongly agree') >> label");
+        stronglyDisagreeRB = page.locator("label:has-text('Strongly disagree')");
+        disagreeRB = page.locator("label:text-is('Disagree')");
+        neutralRB = page.locator("label:has-text('Neutral')");
+        agreeRB = page.locator("label:text-is('Agree')");
+        stronglyAgreeRB = page.locator("label:has-text('Strongly agree')");
     }
 
     public static String getRoute() {

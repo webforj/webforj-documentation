@@ -18,7 +18,7 @@ public class TableMultipleSelectionIT extends BaseTest {
 
     @BeforeEach
     public void setupTableMultiSelection() {
-        page.navigate("https://docs.webforj.com/tablemultiselection?");
+        navigateToRoute(TableMultiSelectionPage.getRoute());
         multipleSelection = new TableMultiSelectionPage(page);
     }
 
@@ -64,4 +64,4 @@ public class TableMultipleSelectionIT extends BaseTest {
         multipleSelection.getCheckboxes().nth(2).click();
         multipleSelection.verifyRecordItems("Gold - Greatest Hits", false);
     }
-} 
+}

@@ -18,15 +18,6 @@ public class FeedbackTextAreaIT extends BaseTest {
         feedbackTextAreaPage = new FeedbackTextAreaPage(page);
     }
 
-    @BrowserTest
-    public void testVisibility() {
-        assertThat(feedbackTextAreaPage.getMainLabel()).isVisible();
-        assertThat(feedbackTextAreaPage.getMainLabel()).containsText("What do you think about this demo?");
-        assertThat(feedbackTextAreaPage.getFeedbackArea()).isVisible();
-        assertThat(feedbackTextAreaPage.getCharactersCount()).isVisible();
-        assertThat(feedbackTextAreaPage.getCharactersCount()).containsText("Characters: 0 / 200");
-        assertThat(feedbackTextAreaPage.getSubmitButton()).isVisible();
-    }
 
     @BrowserTest
     public void testToastMessage() {

@@ -32,9 +32,6 @@ public class TestListener implements BeforeTestExecutionCallback, AfterTestExecu
     @Override
     public void testFailed(ExtensionContext context, Throwable cause) {
         LoggerUtil.error("Test failed: " + context.getDisplayName() + " - " + cause.getMessage());
-
-        // Here you could implement additional failure handling like taking screenshots
-        // or updating the ExtentReports with failure information
     }
 
     @Override

@@ -8,26 +8,25 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 
-import com.microsoft.playwright.Locator;
-
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
+import pages.TablePages.TableColumnComparatorViewPage;
 
 public class TableColumnComparatorIT extends BaseTest {
 
+    private TableColumnComparatorViewPage tableColumnComparator;
+
     @BeforeEach
     public void setupTableColumnComparator() {
-        page.navigate("https://docs.webforj.com/tablecolumncomparator?");
+        navigateToRoute(TableColumnComparatorViewPage.getRoute());
+        tableColumnComparator = new TableColumnComparatorViewPage(page);
     }
 
     @BrowserTest
     public void testComparatorFunctionality() {
-        Locator numberColumnHeader = page.locator("th[data-column='Number']");
-        Locator numberCells = page.locator("td[data-cell*='-Number'] div[part='cell-label']");
+        tableColumnComparator.getNumberColumnHeader().click();
 
-        numberColumnHeader.click();
-
-        List<String> ascNumbersText = numberCells.allTextContents();
+        List<String> ascNumbersText = tableColumnComparator.getNumberCells().allTextContents();
         List<Integer> ascNumbers = ascNumbersText.stream()
                 .limit(3)
                 .map(num -> Integer.parseInt(num.trim()))
@@ -37,10 +36,10 @@ public class TableColumnComparatorIT extends BaseTest {
         Collections.sort(ascNumbersSorted);
         Assertions.assertEquals(ascNumbersSorted, ascNumbers, "Numbers are not in ascending order!");
 
-        numberColumnHeader.click();
+        tableColumnComparator.getNumberColumnHeader().click();
         page.waitForTimeout(500);
 
-        List<String> descNumbersText = numberCells.allTextContents();
+        List<String> descNumbersText = tableColumnComparator.getNumberCells().allTextContents();
         List<Integer> descNumbers = descNumbersText.stream()
                 .limit(3)
                 .map(num -> Integer.parseInt(num.trim()))
@@ -50,4 +49,4 @@ public class TableColumnComparatorIT extends BaseTest {
         descNumbersSorted.sort(Collections.reverseOrder());
         Assertions.assertEquals(descNumbersSorted, descNumbers, "Numbers are not in descending order!");
     }
-} 
+}

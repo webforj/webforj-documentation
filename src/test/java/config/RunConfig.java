@@ -13,7 +13,6 @@ public class RunConfig {
     private static final boolean DEFAULT_HEADLESS = true;
     private static final int DEFAULT_TIMEOUT = 30000;
     private static final int DEFAULT_RETRY_COUNT = 3;
-    private static final String DEFAULT_SCREENSHOTS_DIR = "test-results/screenshots";
     private static final String DEFAULT_REPORTS_DIR = "test-results/reports";
     private static final int DEFAULT_SLOW_MO = 50;
     private static final int DEFAULT_PORT = 8080;
@@ -89,10 +88,6 @@ public class RunConfig {
         return getStringProperty("reports.dir", DEFAULT_REPORTS_DIR);
     }
 
-    public static String getScreenshotsDir() {
-        return getStringProperty("screenshots.dir", DEFAULT_SCREENSHOTS_DIR);
-    }
-    
     public static int getPort() {
         return getIntProperty("port", DEFAULT_PORT);
     }

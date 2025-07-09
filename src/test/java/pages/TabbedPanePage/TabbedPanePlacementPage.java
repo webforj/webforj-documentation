@@ -19,7 +19,7 @@ public class TabbedPanePlacementPage extends BasePage {
 
         placementDropdown = page.locator("dwc-dropdown.hydrated");
         placementListBox = page.locator("dwc-listbox");
-        placementTabbedPane = page.locator("dwc-tabbed-pane[dwc-id='12']");
+        placementTabbedPane = page.locator("dwc-tabbed-pane[theme='default']");
     }
 
     public static String getRoute() {

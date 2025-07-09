@@ -14,18 +14,21 @@ public class DonationSliderIT extends BaseTest {
 
     @BeforeEach
     public void setupDonationSlider() {
-        page.navigate(DonationSliderPage.getRoute());
+        navigateToRoute(DonationSliderPage.getRoute());
         sliderPage = new DonationSliderPage(page);
     }
 
     @BrowserTest
     public void testDonation() {
         assertThat(sliderPage.getDonationLowerHandle()).hasAttribute("aria-valuenow", "50.0");
+        sliderPage.getDonationButton().click();
+        assertThat(sliderPage.getConfirmationToast()).hasText("Thank you for your generous contribution of $50!");
 
         sliderPage.getTwentyDollarsOption().click();
         assertThat(sliderPage.getDonationLowerHandle()).hasAttribute("aria-valuenow", "20.0");
 
         sliderPage.getDonationButton().click();
         assertThat(sliderPage.getConfirmationToast()).isVisible();
+        assertThat(sliderPage.getConfirmationToast()).hasText("Thank you for your generous contribution of $20!");
     }
 }

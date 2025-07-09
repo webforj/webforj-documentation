@@ -27,7 +27,7 @@ public class DataTableIT extends BaseTest {
 
     @BeforeEach
     public void setupDataTable() {
-        page.navigate("https://docs.webforj.com/datatable?");
+        navigateToRoute(DataTablePage.getRoute());
         dataTable = new DataTablePage(page);
     }
 
@@ -165,4 +165,4 @@ public class DataTableIT extends BaseTest {
 
         assertTrue(isScrollable, "Window should be scrollable on small screen size");
     }
-} 
+}

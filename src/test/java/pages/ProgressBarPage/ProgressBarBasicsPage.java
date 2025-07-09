@@ -18,7 +18,7 @@ public class ProgressBarBasicsPage extends BasePage {
     public ProgressBarBasicsPage(Page page) {
         super(page);
 
-        progressBar = page.locator("dwc-progressbar[style='--_dwc-progressbar-percent: 0%;']");
+        progressBar = page.locator("dwc-progressbar");
         startButton = page.locator("dwc-button:has-text('Start')");
         pauseButton = page.locator("dwc-button:has-text('Pause')");
         resetButton = page.locator("dwc-button:has-text('Reset')");

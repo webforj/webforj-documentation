@@ -27,70 +27,66 @@ public class MaskedNumNegetableViewIT extends BaseTest {
         assumeFalse("webkit".equals(page.context().browser().browserType().name()),
                 "Skipped on WebKit (Safari verified manually)");
 
-        numberPage.cleanField(numberPage.getAmountField());
+        numberPage.cleanField(numberPage.getCreditField());
         page.keyboard().type("-123", new Keyboard.TypeOptions().setDelay(300));
-        assertThat(numberPage.getAmountField()).hasValue("-$123.00");
+        assertThat(numberPage.getCreditField()).hasValue("-$123.00");
 
         page.mouse().click(0, 0);
-        numberPage.cleanField(numberPage.getAmountField());
+        numberPage.cleanField(numberPage.getCreditField());
         page.keyboard().type("123", new Keyboard.TypeOptions().setDelay(250));
-        assertThat(numberPage.getAmountField()).hasValue("$123.00");
+        assertThat(numberPage.getCreditField()).hasValue("$123.00");
 
         page.mouse().click(0, 0);
-        numberPage.cleanField(numberPage.getAmountField());
+        numberPage.cleanField(numberPage.getCreditField());
         page.keyboard().type("0", new Keyboard.TypeOptions().setDelay(250));
-        assertThat(numberPage.getAmountField()).hasValue("$0.00");
+        assertThat(numberPage.getCreditField()).hasValue("$0.00");
 
     }
 
     @BrowserTest
-    public void testInvalidCharsWhenNegetableOn() {
-
-        numberPage.cleanField(numberPage.getAmountField());
+    public void testInvalidCharsWhenNegetableOnAndOff() {
+        //negetable off
+        numberPage.cleanField(numberPage.getCreditField());
         page.keyboard().type("Aa!@. ");
+        assertThat(numberPage.getCreditField()).hasValue("");
 
-        assertThat(numberPage.getAmountField()).hasValue("");
-    }
-
-    @BrowserTest
-    public void testNegativeNumbersWhenNegetableOff() {
-
+        //negetable on
         numberPage.getNegatableToggle().click();
-        numberPage.cleanField(numberPage.getAmountField());
+        numberPage.cleanField(numberPage.getCreditField());
         page.keyboard().type("-");
         page.keyboard().type("1");
-        assertThat(numberPage.getAmountField()).hasValue("$1.00");
+        assertThat(numberPage.getCreditField()).hasValue("$1.00");
     }
 
     @BrowserTest
     public void testZeroWhenNegetableOff() {
-        numberPage.cleanField(numberPage.getAmountField());
+        numberPage.cleanField(numberPage.getCreditField());
         page.keyboard().type("0");
-        assertThat(numberPage.getAmountField()).hasValue("$0.00");
+        assertThat(numberPage.getCreditField()).hasValue("$0.00");
     }
 
     @BrowserTest
     public void testSpecialCharsWhenToggleOff() {
         numberPage.getNegatableToggle().click();
 
-        numberPage.cleanField(numberPage.getAmountField());
+        numberPage.cleanField(numberPage.getCreditField());
         page.keyboard().type("Aa!@. ");
 
-        assertThat(numberPage.getAmountField()).hasValue("");
+        assertThat(numberPage.getCreditField()).hasValue("");
     }
 
     @BrowserTest
     public void testMultipleMinusSigns() {
 
-        numberPage.cleanField(numberPage.getAmountField());
+        numberPage.cleanField(numberPage.getCreditField());
         page.keyboard().type("---");
 
-        assertThat(numberPage.getAmountField()).hasValue("");
+        assertThat(numberPage.getCreditField()).hasValue("");
 
         numberPage.getNegatableToggle().click();
 
         page.keyboard().type("-");
 
-        assertThat(numberPage.getAmountField()).hasValue("");
+        assertThat(numberPage.getCreditField()).hasValue("");
     }
 }

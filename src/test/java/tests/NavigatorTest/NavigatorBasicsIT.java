@@ -20,7 +20,7 @@ public class NavigatorBasicsIT extends BaseTest {
     }
 
     @BrowserTest
-    public void testRangeConsistencyTC008() {
+    public void testRangeConsistency() {
         assertThat(navigatorBasicPage.getNavigatorValue()).hasText("Value: 0");
 
         navigatorBasicPage.clickNext();
@@ -34,17 +34,16 @@ public class NavigatorBasicsIT extends BaseTest {
 
         navigatorBasicPage.clickFirst();
         assertThat(navigatorBasicPage.getNavigatorValue()).hasText("Value: 0");
-    }
 
-    @BrowserTest
-    public void testRangeConsistencyTC009() {
         navigatorBasicPage.clickPrev();
         assertThat(navigatorBasicPage.getNavigatorValue()).hasText("Value: 0");
+
         navigatorBasicPage.clickFirst();
         assertThat(navigatorBasicPage.getNavigatorValue()).hasText("Value: 0");
 
         navigatorBasicPage.clickLast();
         assertThat(navigatorBasicPage.getNavigatorValue()).hasText("Value: 10");
+
         navigatorBasicPage.clickNext();
         assertThat(navigatorBasicPage.getNavigatorValue()).hasText("Value: 10");
     }

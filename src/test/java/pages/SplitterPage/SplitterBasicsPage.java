@@ -18,10 +18,10 @@ public class SplitterBasicsPage extends BasePage {
     public SplitterBasicsPage(Page page) {
         super(page);
 
-        splitter = page.locator("dwc-splitter[dwc-id='11']");
-        splitterIcon = page.locator("dwc-splitter[dwc-id='11'] >> div > dwc-icon");
-        masterPanel = page.locator("dwc-splitter >> div[dwc-id='12']");
-        detailPanel = page.locator("dwc-splitter >> div[dwc-id='13']");
+        splitter = page.locator("dwc-splitter[orientation='horizontal']");
+        splitterIcon = page.locator("dwc-splitter[orientation='horizontal'] >> div > dwc-icon");
+        masterPanel = page.locator("dwc-splitter >> div.splitter-box.splitter-box--info");
+        detailPanel = page.locator("dwc-splitter >> div.splitter-box.splitter-box--success");
     }
 
     public static String getRoute() {

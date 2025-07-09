@@ -28,7 +28,6 @@ public class ToastPlacementsIT extends BaseTest {
 
         toastPlacementsPage.getPlacementButton().click();
 
-        WaitUtil.waitForVisible(toastPlacementsPage.getTopToastGroup());
         assertThat(toastPlacementsPage.getTopToastGroup()).isVisible();
     }
 }

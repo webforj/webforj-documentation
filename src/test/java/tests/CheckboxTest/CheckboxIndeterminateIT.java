@@ -19,23 +19,10 @@ public class CheckboxIndeterminateIT extends BaseTest {
     }
 
     @BrowserTest
-    public void testIndeterminateState() {
-        assertThat(checkBox.getChild2CheckboxInput()).hasAttribute("aria-checked", "true");
-        assertThat(checkBox.getChild1CheckboxInput()).hasAttribute("aria-checked", "false");
-        assertThat(checkBox.getParentCheckbox()).hasAttribute("indeterminate", "");
-    }
-
-    @BrowserTest
     public void testParentCheckbox() {
+        assertThat(checkBox.getParentCheckbox()).hasAttribute("indeterminate", "");
+
         checkBox.getChild1CheckboxInput().click();
-
-        assertThat(checkBox.getParentCheckbox()).hasAttribute("checked", "");
-    }
-
-    @BrowserTest
-    public void testDeselectingAllChildren() {
-        checkBox.getChild1CheckboxInput().click();
-
         assertThat(checkBox.getParentCheckbox()).hasAttribute("checked", "");
 
         checkBox.getChild1CheckboxInput().click();
@@ -43,6 +30,5 @@ public class CheckboxIndeterminateIT extends BaseTest {
 
         assertThat(checkBox.getParentCheckbox()).not().hasAttribute("checked", "");
         assertThat(checkBox.getParentCheckbox()).not().hasAttribute("indeterminate", "");
-
     }
-} 
+}

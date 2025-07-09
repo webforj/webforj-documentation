@@ -14,8 +14,8 @@ public class ChartGalleryViewPage extends BasePage {
 
     public ChartGalleryViewPage(Page page) {
         super(page);
-        ganttChart = page.locator("div[dwc-id='92']");
-        links = page.locator("div[dwc-id='10'].chart-gallery a");
+        ganttChart = page.locator("div.chart-div > p:has-text('Gantt Chart')");
+        links = page.locator(".chart-gallery a");
    }
 
     public static String getRoute() {

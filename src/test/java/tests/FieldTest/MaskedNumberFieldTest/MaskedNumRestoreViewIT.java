@@ -21,47 +21,47 @@ public class MaskedNumRestoreViewIT extends BaseTest {
     @BrowserTest
     public void testResetValueButtonResetsToDefaultAfterNumberChange() {
 
-        String initialBudgetValue = numberPage.getAmountField().inputValue();
+        String initialBudgetValue = numberPage.getProjectBudgetField().inputValue();
 
-        numberPage.cleanField(numberPage.getAmountField());
+        numberPage.cleanField(numberPage.getProjectBudgetField());
         page.keyboard().type("123");
         numberPage.getResetValueButton().click();
-        assertThat(numberPage.getAmountField()).hasValue(initialBudgetValue);
+        assertThat(numberPage.getProjectBudgetField()).hasValue(initialBudgetValue);
 
     }
 
     @BrowserTest
     public void testEscKeyResetsToDefaultAfterNumberChange() {
-        String initialBudgetValue = numberPage.getAmountField().inputValue();
+        String initialBudgetValue = numberPage.getProjectBudgetField().inputValue();
 
-        numberPage.cleanField(numberPage.getAmountField());
+        numberPage.cleanField(numberPage.getProjectBudgetField());
         page.keyboard().type("123");
 
         page.keyboard().press("Escape");
 
-        assertThat(numberPage.getAmountField()).hasValue(initialBudgetValue);
+        assertThat(numberPage.getProjectBudgetField()).hasValue(initialBudgetValue);
     }
 
     @BrowserTest
     public void testResetValueButtonResetsToDefaultAfterNegativeNumberChange() {
 
-        String initialBudgetValue = numberPage.getAmountField().inputValue();
+        String initialBudgetValue = numberPage.getProjectBudgetField().inputValue();
 
-        numberPage.cleanField(numberPage.getAmountField());
+        numberPage.cleanField(numberPage.getProjectBudgetField());
         page.keyboard().type("-");
         page.keyboard().type("1");
         numberPage.getResetValueButton().click();
 
-        assertThat(numberPage.getAmountField()).hasValue(initialBudgetValue);
+        assertThat(numberPage.getProjectBudgetField()).hasValue(initialBudgetValue);
     }
 
     @BrowserTest
     public void testResetValueButtonResetsToDefaultAfterClearingInput() {
 
-        String initialBudgetValue = numberPage.getAmountField().inputValue();
-        numberPage.cleanField(numberPage.getAmountField());
+        String initialBudgetValue = numberPage.getProjectBudgetField().inputValue();
+        numberPage.cleanField(numberPage.getProjectBudgetField());
         numberPage.getResetValueButton().click();
 
-        assertThat(numberPage.getAmountField()).hasValue(initialBudgetValue);
+        assertThat(numberPage.getProjectBudgetField()).hasValue(initialBudgetValue);
     }
 }

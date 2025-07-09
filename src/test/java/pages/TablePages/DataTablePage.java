@@ -3,10 +3,13 @@ package pages.TablePages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.config.RouteConfig;
 
 import pages.BasePage;
 
 public class DataTablePage extends BasePage {
+    private static final String ROUTE = RouteConfig.DATA_TABLE;
+
     private final Locator searchInput;
     private final Locator tableRows;
     private final Locator entriesDropdown;
@@ -26,27 +29,25 @@ public class DataTablePage extends BasePage {
 
     public DataTablePage(Page page) {
         super(page);
-        this.pageUrl = "https://docs.webforj.com/datatable?";
-        this.pageTitle = "Data Table";
 
-        this.searchInput = page.locator("input[type=\"search\"]");
-        this.tableRows = page.locator("tbody tr[data-row]");
-        this.entriesDropdown = page.locator("dwc-button[part=\"button\"]");
-        this.entriesTen = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("10").setExact(true));
-        this.entriesTwentyfive = page.getByRole(AriaRole.OPTION,
-                new Page.GetByRoleOptions().setName("25").setExact(true));
-        this.entriesFifty = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("50").setExact(true));
-        this.entriesHundred = page.getByRole(AriaRole.OPTION,
-                new Page.GetByRoleOptions().setName("100").setExact(true));
-        this.paginator = page.locator("dwc-navigator[dwc-id=\"17\"]");
-        this.paginatorLastPage = page.locator("button[part=\"button button-last\"]");
-        this.paginatorNextPage = page.locator("button[part=\"button button-next\"]");
-        this.paginatorFirstPage = page.locator("button[part=\"button button-first\"]");
-        this.paginatorPreviousPage = page.locator("button[part=\"button button-previous\"]");
-        this.currentPageNavigator = page.locator("dwc-navigator[dwc-id=\"18\"]");
-        this.paginationText = page.locator("div[part='layout layout-preview']");
-        this.firstCheckbox = page.locator("input[type=\"checkbox\"]").first();
-        this.lastPageNumber = page.locator("div[part=\"layout layout-numbered\"]").locator("button").last();
+        searchInput = page.locator("input[type='search']");
+        tableRows = page.locator("tbody tr[data-row]");
+        entriesDropdown = page.locator("dwc-button[part='button']");
+        entriesTen = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("10").setExact(true));
+        entriesTwentyfive = page.getByRole(AriaRole.OPTION,
+           new Page.GetByRoleOptions().setName("25").setExact(true));
+        entriesFifty = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("50").setExact(true));
+        entriesHundred = page.getByRole(AriaRole.OPTION,
+           new Page.GetByRoleOptions().setName("100").setExact(true));
+        paginator = page.locator("dwc-navigator.data-scrollable-right");
+        paginatorLastPage = page.locator("button[part='button button-last']");
+        paginatorNextPage = page.locator("button[part='button button-next']");
+        paginatorFirstPage = page.locator("button[part='button button-first']");
+        paginatorPreviousPage = page.locator("button[part='button button-previous']");
+        currentPageNavigator = page.locator("dwc-navigator:has-text('Showing')");
+        paginationText = page.locator("div[part='layout layout-preview']");
+        firstCheckbox = page.locator("input[type='checkbox']").first();
+        lastPageNumber = page.locator("div[part='layout layout-numbered']").locator("button").last();
     }
 
     public void searchAthlete(String athleteName) {
@@ -130,5 +131,9 @@ public class DataTablePage extends BasePage {
                         .setExact(true));
 
         return pageNavigationButton;
+    }
+
+    public static String getRoute() {
+        return ROUTE;
     }
 }

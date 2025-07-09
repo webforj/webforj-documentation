@@ -15,7 +15,7 @@ public class RadioButtonActivationPage extends BasePage {
     public RadioButtonActivationPage(Page page) {
         super(page);
 
-        autoActivatedInput = page.locator("dwc-radio:has-text('Auto-activated') >> input");
+        autoActivatedInput = page.locator("dwc-radio:has-text('Auto Activated')").nth(0).locator("input");
     }
 
     public static String getRoute() {

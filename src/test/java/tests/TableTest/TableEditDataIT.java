@@ -4,30 +4,28 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 
-import com.microsoft.playwright.Locator;
-
+import pages.TablePages.TableEditDataViewPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class TableEditDataIT extends BaseTest {
 
+    private TableEditDataViewPage tablePage;
+
     @BeforeEach
     public void setupTableEditData() {
-        page.navigate("https://docs.webforj.com/tableeditdata?");
+        navigateToRoute(TableEditDataViewPage.getRoute());
+        tablePage = new TableEditDataViewPage(page);
     }
 
     @BrowserTest
     public void testEditButton() {
-        Locator editButton = page.locator("dwc-icon-button[name='pencil-pin'] >> button").first();
-        editButton.click();
+        tablePage.getEditButton().click();
 
-        Locator input = page.locator("#field-1");
-        input.clear();
-        input.fill("Somebody I Used To Know");
-        Locator saveButton = page.locator("dwc-button[dwc-id='16']");
-        saveButton.click();
+        tablePage.getInput().clear();
+        tablePage.getInput().fill("Somebody I Used To Know");
+        tablePage.getSaveButton().click();
 
-        Locator title = page.locator("tr td").nth(1).first();
-        assertThat(title).hasText("Somebody I Used To Know");
+        assertThat(tablePage.getTitle()).hasText("Somebody I Used To Know");
     }
-} 
+}

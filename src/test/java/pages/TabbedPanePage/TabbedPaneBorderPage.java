@@ -19,9 +19,9 @@ public class TabbedPaneBorderPage extends BasePage {
     public TabbedPaneBorderPage(Page page) {
         super(page);
 
-        hideBorderToggle = page.locator("#radio-1");
-        hideActiveIndicatorToggle = page.locator("#radio-2");
-        borderTabbedPane = page.locator("dwc-tabbed-pane[dwc-id='13']");
+        hideBorderToggle = page.locator("dwc-radio:has-text('Hide Border') >> input");
+        hideActiveIndicatorToggle = page.locator("dwc-radio:has-text('Hide Active Indicator') >> input");
+        borderTabbedPane = page.locator("dwc-tabbed-pane[placement='top']");
         borderDashboardTab = borderTabbedPane.locator("dwc-tab").nth(0);
         borderOrdersTab = borderTabbedPane.locator("dwc-tab").nth(1);
     }

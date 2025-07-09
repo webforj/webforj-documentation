@@ -20,13 +20,10 @@ public class BusyDemoIT extends BaseTest {
     }
 
     @BrowserTest
-    public void testBusyIndicatorVisibility() {
-        assertThat(busyDemoPage.getBusyIndicator()).isVisible();
-    }
-
-    @BrowserTest
     public void testUIBlocked() {
-        WaitUtil.assertClickTimeout(busyDemoPage.getNameInput(), "Name input");
+        assertThat(busyDemoPage.getBusyIndicator()).isVisible();
+
+        WaitUtil.assertClickTimeout(busyDemoPage.getNameInput(), "Name");
         WaitUtil.assertClickTimeout(busyDemoPage.getPasswordInput(), "Password input");
         WaitUtil.assertClickTimeout(busyDemoPage.getSubmitButton(), "Submit button");
 

@@ -8,12 +8,13 @@ import com.microsoft.playwright.options.AriaRole;
 
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
+import pages.TablePages.TableSingleSelectionViewPage;
 
 public class TableSingleSelectionIT extends BaseTest {
 
     @BeforeEach
     public void setupTableSingleSelection() {
-        page.navigate("https://docs.webforj.com/tablesingleselection?");
+        navigateToRoute(TableSingleSelectionViewPage.getRoute());
     }
 
     @BrowserTest
@@ -23,4 +24,4 @@ public class TableSingleSelectionIT extends BaseTest {
         assertThat(page.locator("section"))
                 .hasText("You have selected Mississippi Blues by John Hurt & The Ramblers");
     }
-} 
+}

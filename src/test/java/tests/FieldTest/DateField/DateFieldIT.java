@@ -68,7 +68,6 @@ public class DateFieldIT extends BaseTest {
 
     }
 
-    @Disabled("LocalDate issue Reported #366 WebforJ Documentation")
     @BrowserTest
     public void testInvalidString() {
         assumeTrue(!browserType.equalsIgnoreCase("webkit"), "Skipping on WebKit");
@@ -101,7 +100,6 @@ public class DateFieldIT extends BaseTest {
         assertThat(dateFieldPage.getDepartureInput()).hasAttribute("invalid", "");
     }
 
-    @Disabled("LocalDate issue Reported #366 WebforJ Documentation")
     @BrowserTest
     public void testSpecialChar() {
         // Webkit has issue, this is not related the feature. Skip the webkit.
@@ -121,7 +119,6 @@ public class DateFieldIT extends BaseTest {
 
     @BrowserTest
     public void testInvalidZeroDate() {
-        // Webkit has issue, this is not related the feature. Skip the webkit.
         assumeTrue(!browserType.equalsIgnoreCase("webkit"), "Skipping on WebKit");
 
         page.keyboard().press("Tab");

@@ -19,7 +19,7 @@ public class DonationSliderPage extends BasePage {
         super(page);
 
         donationLowerHandle = page.locator(".noUi-handle-lower");
-        donationButton = page.locator("dwc-button[dwc-id='12']");
+        donationButton = page.locator("dwc-button:has-text('Confirm Donation')");
         confirmationToast = page.locator("dwc-toast-group");
         twentyDollarsOption = page.locator("text=$20");
     }

@@ -24,17 +24,14 @@ public class ChartRedrawIT extends BaseTest {
     }
 
     @BrowserTest
-    public void testChartRedraw() {
+    public void testChartUpdating() {
         assertThat(chartRedraw.getTitle()).hasText("Social Media Following");
 
         assertThat(chartRedraw.getValueForInstagram()).hasValue("100");
         assertThat(chartRedraw.getValueForTwitter()).hasValue("100");
         assertThat(chartRedraw.getValueForFacebook()).hasValue("100");
         assertThat(chartRedraw.getValueForLinkedIn()).hasValue("100");
-    }
 
-    @BrowserTest
-    public void testChartUpdating() {
         chartRedraw.updateChart(140, 120, 100, 80);
         assertThat(chartRedraw.getValueForInstagram()).hasValue("140");
         assertThat(chartRedraw.getValueForTwitter()).hasValue("120");

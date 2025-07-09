@@ -9,24 +9,17 @@ public class ToastPlacementsPage extends BasePage {
 
     private static final String ROUTE = RouteConfig.TOAST_PLACEMENT;
 
-    // Toast Placements Elements
     private final Locator placementDropdown;
     private final Locator topListItem;
     private final Locator placementButton;
     private final Locator topToastGroup;
 
-    /**
-     * Constructor for ToastPlacementsPage.
-     *
-     * @param page the Playwright Page object
-     */
     public ToastPlacementsPage(Page page) {
         super(page);
 
-        // Toast Placements (elements from ToastPlacementsIT)
-        placementDropdown = page.locator("dwc-dropdown[part=\"dropdown\"]");
+        placementDropdown = page.locator("dwc-dropdown[part='dropdown']");
         topListItem = page.locator("span[slot='label']:text('TOP')").nth(0);
-        placementButton = page.locator("dwc-button[dwc-id='12']");
+        placementButton = page.locator("dwc-button:has-text('Show Toast')");
         topToastGroup = page.locator("dwc-toast-group[placement='top']");
     }
 
@@ -34,7 +27,6 @@ public class ToastPlacementsPage extends BasePage {
         return ROUTE;
     }
 
-    // Toast Placements Getters
     public Locator getPlacementDropdown() {
         return placementDropdown;
     }

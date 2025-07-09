@@ -14,7 +14,7 @@ public class TabbedPanePlacementIT extends BaseTest {
 
     @BeforeEach
     public void setupTabbedPanePlacement() {
-        page.navigate("https://docs.webforj.com/webforj/tabbedpaneplacement?");
+        navigateToRoute(TabbedPanePlacementPage.getRoute());
         tabbedPanePlacementPage = new TabbedPanePlacementPage(page);
     }
 

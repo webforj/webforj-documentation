@@ -16,8 +16,8 @@ public class SplitterMaxMinPage extends BasePage {
     public SplitterMaxMinPage(Page page) {
         super(page);
 
-        masterPanelWithConstraints = page.locator("dwc-splitter >> div[dwc-id='12']");
-        detailPanelWithConstraints = page.locator("dwc-splitter >> div[dwc-id='13']");
+        masterPanelWithConstraints = page.locator("dwc-splitter >> div.splitter-box.splitter-box--info");
+        detailPanelWithConstraints = page.locator("dwc-splitter >> div.splitter-box.splitter-box--success");
     }
 
     public static String getRoute() {

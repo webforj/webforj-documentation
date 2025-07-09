@@ -19,12 +19,6 @@ public class PasswordFieldIT extends BaseTest {
     }
 
     @BrowserTest
-    public void testInputAndMasking() {
-        passwordFieldPage.getPasswordField().fill("Password123!");
-        assertThat(passwordFieldPage.getPasswordField()).hasAttribute("type", "password");
-    }
-
-    @BrowserTest
     public void testVisibilityToggle() {
         passwordFieldPage.getPasswordField().fill("Password123!");
         assertThat(passwordFieldPage.getPasswordField()).hasAttribute("type", "password");

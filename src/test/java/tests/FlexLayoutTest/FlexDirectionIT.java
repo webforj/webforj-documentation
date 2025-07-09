@@ -21,39 +21,28 @@ public class FlexDirectionIT extends BaseTest {
     }
 
     @BrowserTest
-    public void testRowArrangesBoxesHorizontallyInOrder() {
+    public void testFlexDirectionOptions() {
+        // Test "Row"
         flexDirectionPage.getFlexDirectionDropdown().click();
         flexDirectionPage.getListBox("Row").click();
-
         assertThat(flexDirectionPage.getFlexDirectionContainer()).hasAttribute("style",
                 Pattern.compile(".*flex-direction: row;.*"));
 
-    }
-
-    @BrowserTest
-    public void testRowReverseArrangesBoxesHorizontallyInReverseOrder() {
+        // Test "Row-reverse"
         flexDirectionPage.getFlexDirectionDropdown().click();
         flexDirectionPage.getListBox("Row-reverse").click();
-
         assertThat(flexDirectionPage.getFlexDirectionContainer()).hasAttribute("style",
                 Pattern.compile(".*flex-direction: row-reverse;.*"));
 
-    }
-
-    @BrowserTest
-    public void testColumnArrangesBoxesVerticallyInOrder() {
+        // Test "Column"
         flexDirectionPage.getFlexDirectionDropdown().click();
         flexDirectionPage.getListBox("Column").click();
-
         assertThat(flexDirectionPage.getFlexDirectionContainer()).hasAttribute("style",
                 Pattern.compile(".*flex-direction: column;.*"));
-    }
 
-    @BrowserTest
-    public void testColumnReverseArrangesBoxesVerticallyInReverseOrder() {
+        // Test "Column-reverse"
         flexDirectionPage.getFlexDirectionDropdown().click();
         flexDirectionPage.getListBox("Column-reverse").click();
-
         assertThat(flexDirectionPage.getFlexDirectionContainer()).hasAttribute("style",
                 Pattern.compile(".*flex-direction: column-reverse;.*"));
     }

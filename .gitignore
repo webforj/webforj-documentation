@@ -33,4 +33,4 @@ hs_err_pid*
 .theia/settings.json
 generated_urls.md
 
-/test-result
+/test-results

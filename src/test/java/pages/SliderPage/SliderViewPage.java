@@ -17,8 +17,8 @@ public class SliderViewPage extends BasePage {
     public SliderViewPage(Page page) {
         super(page);
 
-        muteIcon = page.locator("dwc-icon-button[dwc-id='12']");
-        unmuteIcon = page.locator("dwc-icon-button[dwc-id='14']");
+        muteIcon = page.locator(".volume-off");
+        unmuteIcon = page.locator("dwc-icon-button.volume-2");
         lowerHandle = page.locator(".noUi-handle-lower");
     }
 

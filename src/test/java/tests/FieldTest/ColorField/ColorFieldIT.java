@@ -1,6 +1,5 @@
 package tests.FieldTest.ColorField;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
@@ -10,7 +9,6 @@ import com.microsoft.playwright.Locator;
 
 import pages.FieldPages.ColorFieldPage;
 import tests.BaseTest;
-import utils.WaitUtil;
 import utils.annotations.BrowserTest;
 
 public class ColorFieldIT extends BaseTest {
@@ -20,13 +18,11 @@ public class ColorFieldIT extends BaseTest {
     public void setupColorField() {
         navigateToRoute(ColorFieldPage.getRoute());
         colorFieldPage = new ColorFieldPage(page);
-    }   
+    }
 
     @BrowserTest
     public void testTetradicComplementaryColorBlocks() {
-        WaitUtil.waitForVisible(colorFieldPage.getColorField());
-
-        assertEquals(4, colorFieldPage.getColorBlocks().count());
+        assertThat(colorFieldPage.getColorBlocks()).hasCount(4);
 
         String[] expectedColors = {
                 "rgb(255, 0, 0)",

@@ -16,7 +16,7 @@ public class SplitterPositionIT extends BaseTest {
 
     @BeforeEach
     public void setupSplitterPosition() {
-        page.navigate(SplitterPositionPage.getRoute());
+        navigateToRoute(SplitterPositionPage.getRoute());
         splitterPage = new SplitterPositionPage(page);
     }
 

@@ -20,7 +20,6 @@ public class NavigatorPagesViewIT extends BaseTest {
         navigateToRoute(NavigatorPagesViewPage.getRoute());
         page.waitForLoadState();
         navigatorPaginationPage = new NavigatorPagesViewPage(page);
-
     }
 
     @BrowserTest
@@ -57,11 +56,7 @@ public class NavigatorPagesViewIT extends BaseTest {
     public void testVerifyPageDataMessage() {
 
         navigatorPaginationPage.assertCurrentPage(1);
-
-        Locator rangeMessage = navigatorPaginationPage.getPageRangeMessage();
-
         navigatorPaginationPage.goToPage(2);
-
-        assertThat(rangeMessage).hasText("Showing 11 to 20 of 100");
+        assertThat(page.locator("p:has-text('Showing 11 to 20 of 100')")).isVisible();
     }
 }

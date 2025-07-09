@@ -22,4 +22,6 @@ public @interface RetryTest {
      * Defaults to the value in FrameworkConfig
      */
     int value() default 0;
+
+    int maxRetries();
 }

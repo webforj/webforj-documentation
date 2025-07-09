@@ -50,11 +50,3 @@ jobs:
           name: playwright-test-results
           path: test-results/reports/
           retention-days: 14
-
-      - name: Upload failure screenshots
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: failure-screenshots
-          path: test-results/screenshots/
-          retention-days: 14
