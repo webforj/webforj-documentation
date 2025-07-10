@@ -4,6 +4,7 @@ title: PropertyDescriptorTester
 ---
 
 <DocChip chip='since' label='23.06' />
+<DocChip chip='experimental' />
 <JavadocLink type="foundation" location="com/webforj/component/element/PropertyDescriptorTester" top='true'/>
 
 The `PropertyDescriptorTester` in webforJ simplifies testing for **third-party web components** integrated into your app. It validates that properties defined with [`PropertyDescriptor`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/PropertyDescriptor.html) are correctly linked to their getter and setter methods and ensures that default behaviors are handled consistently. This tool is especially useful for verifying the functionality of properties exposed by third-party components without requiring repetitive test logic.
