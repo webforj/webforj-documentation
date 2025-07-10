@@ -46,7 +46,7 @@ Automatic context inheritance is a critical feature of `Environment.runLater()`.
 
 Any thread created from within an `Environment` thread automatically has access to that `Environment`. This inheritance happens automatically, so you don't need to pass any context or configure anything.
 
-```java title="DataView.java"
+```java
 @Route
 public class DataView extends Composite<Div> {
     private final ExecutorService executor = Executors.newCachedThreadPool();
@@ -72,7 +72,7 @@ public class DataView extends Composite<Div> {
 
 Threads created outside the `Environment` context can't use `runLater()` and will throw an `IllegalStateException`:
 
-```java title="NoEnvironmentContext.java"
+```java
 // Static initializer - no Environment context
 static {
     new Thread(() -> {
@@ -103,7 +103,7 @@ The execution behavior of `runLater()` depends on which thread calls it:
 
 When called from the `Environment` thread itself, tasks execute **synchronously and immediately**:
 
-```java title="SynchronousExecution.java"
+```java
 button.onClick(e -> {
     System.out.println("Before: " + Thread.currentThread().getName());
     
@@ -122,7 +122,7 @@ With this synchronous behavior, UI updates from event handlers are applied immed
 
 When called from a background thread, tasks are **queued for asynchronous execution**:
 
-```java title="AsynchronousExecution.java"
+```java
 @Override
 public void onCreate() {
     CompletableFuture.runAsync(() -> {
@@ -149,7 +149,7 @@ The `PendingResult` returned by `Environment.runLater()` supports cancellation, 
 
 ### Basic cancellation
 
-```java title="BasicCancellation.java"
+```java
 PendingResult<Void> result = Environment.runLater(() -> {
     updateUI();
 });
@@ -164,7 +164,7 @@ if (!result.isDone()) {
 
 When performing long-running operations with frequent UI updates, track all pending results:
 
-```java title="LongRunningTask.java"
+```java
 public class LongRunningTask {
     private final List<PendingResult<?>> pendingUpdates = new ArrayList<>();
     private volatile boolean isCancelled = false;
@@ -205,9 +205,9 @@ public class LongRunningTask {
 
 When components are destroyed (e.g., during navigation), cancel all pending updates to prevent memory leaks:
 
-```java title="ViewWithCleanup.java"
+```java
 @Route
-public class ViewWithCleanup extends Composite<Div> {
+public class CleanupView extends Composite<Div> {
     private final List<PendingResult<?>> pendingUpdates = new ArrayList<>();
     
     @Override
@@ -243,30 +243,6 @@ The following is a complete, production-ready implementation demonstrating all b
 
 <ExpandableCode title="LongTaskView.java" language="java" startLine={114} endLine={180}>
 {`
-package com.asynchronousupdates.views;
-
-import com.webforj.Environment;
-import com.webforj.PendingResult;
-import com.webforj.component.Composite;
-import com.webforj.component.button.Button;
-import com.webforj.component.button.ButtonTheme;
-import com.webforj.component.field.TextField;
-import com.webforj.component.layout.flexlayout.FlexDirection;
-import com.webforj.component.layout.flexlayout.FlexLayout;
-import com.webforj.component.toast.Toast;
-import com.webforj.component.Theme;
-import com.webforj.component.progressbar.ProgressBar;
-import com.webforj.component.html.elements.Paragraph;
-import com.webforj.component.html.elements.H2;
-import com.webforj.router.annotation.Route;
-
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ExecutorService;
-import java.util.List;
-import java.util.ArrayList;
-
 @Route("/")
 public class LongTaskView extends Composite<FlexLayout> {
   // Use a single thread executor to prevent resource exhaustion
@@ -441,10 +417,12 @@ public class LongTaskView extends Composite<FlexLayout> {
         }
       }
 
-      statusField.setValue("Cancelling task...");
-      cancelButton.setEnabled(false);
+      if (!statusField.isDestroyed() && !cancelButton.isDestroyed()) {
+        statusField.setValue("Cancelling task...");
+        cancelButton.setEnabled(false);
 
-      showToast("Cancellation requested", Theme.GRAY);
+        showToast("Cancellation requested", Theme.GRAY);
+      }
     }
   }
 
