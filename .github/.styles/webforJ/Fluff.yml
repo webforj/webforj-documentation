@@ -1,0 +1,7 @@
+extends: existence
+message: "Avoid using words like '%s' that don't add value to the content."
+level: warning
+tokens:
+- seamless
+- seamlessly
+- robust

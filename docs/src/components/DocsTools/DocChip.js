@@ -7,6 +7,7 @@ import BiotechIcon from '@mui/icons-material/Biotech';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
 import CodeIcon from '@mui/icons-material/Code';
+import ExperimentIcon from '@mui/icons-material/ScienceOutlined';
 import DescriptionIcon from '@mui/icons-material/Description';
 
 export default function DocChip( { chip, label, href, exclude, tooltipText, color } ) {
@@ -59,6 +60,12 @@ export default function DocChip( { chip, label, href, exclude, tooltipText, colo
       exclude= 'true';
       label='Scoped';
       icon = <BiotechIcon css={iconStyles} />
+    break;
+    case 'experimental':
+      tooltipText = "This is an experimental feature and may change in future releases.";
+      exclude= 'true';
+      label='Experimental';
+      icon = <ExperimentIcon css={iconStyles}/>
     break;
     default:
       console.warn("Uknown chip type:", chip);
