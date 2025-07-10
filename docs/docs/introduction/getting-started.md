@@ -3,11 +3,11 @@ title: Getting Started
 sidebar_position: 2
 ---
 
-
-This article outlines the steps to scaffold a new webforJ app using the webforJ archetypes. This archetypes provide a pre-configured project structure and starter code to quickly get a project up and running.
+This article outlines the steps to create a new webforJ app using webforJ [archetypes](../building-ui/archetypes/overview.md). Archetypes provide pre-configured project structures and starter code so you can get a project up and running quickly.
+To create a new webforJ app from an archetype, you can use [startforJ](#using-startforj) or the [command line](#using-the-command-line). 
 
 :::tip Prerequisites
-Before you begin, make sure you have reviewed the necessary [prerequisites](./prerequisites) for setting up and using webforJ. This will ensure that you have all the required tools and configurations in place before starting your project.
+Before you begin, review the necessary [prerequisites](./prerequisites) for setting up and using webforJ.
 :::
 
 <!-- vale off -->
@@ -17,7 +17,7 @@ import DocCardList from '@theme/DocCardList';
 
 ## Using startforJ
 
-The simplest way to set up a new webforJ app is by utilizing [startforJ](https://docs.webforj.com/startforj). It generates a minimal starter project based on various available archetypes that includes all required dependencies, configuration files, and a pre-wired layout - ready to build on.
+The simplest way to create a new webforJ app is [startforJ](https://docs.webforj.com/startforj), which generates a minimal starter project based on a chosen webforJ archetype. This starter project includes all required dependencies, configuration files, and a pre-made layout, so you can start building on it right away.
 
 <div class="videos-container">
   <video controls>
@@ -25,40 +25,43 @@ The simplest way to set up a new webforJ app is by utilizing [startforJ](https:/
   </video>
 </div>
 
-Using startforJ:
+### Customizing with startforJ
 
-- Generates a project with all necessary configuration  
-- Prompts you for basic project metadata (e.g., `groupId`, `artifactId`, project name)  
-- Allows you to choose your desired webforJ and Java version
-- Lets you select a **theme color**, **icon**, and **archetype**  
-- Produces a downloadable ZIP, or publishes the project directly to GitHub  
+When you create an app with [startforJ](https://docs.webforj.com/startforj), you can customize it by providing the following information:
 
-Visit: [https://docs.webforj.com/startforj](https://docs.webforj.com/startforj)
-
-Once downloaded, unzip the project and open the folder in your IDE.
+- Basic project metadata (App Name, Group ID, Artifact ID)  
+- webforJ version and Java version
+- Theme Color and Icon
+- Archetype 
 
 :::tip Available Archetypes
-webforJ comes with several predefined archetypes that help you quickly start your webforJ development. To see a complete list of available archetypes, please refer to the [archetypes catalog](../building-ui/archetypes/overview).
+webforJ comes with several predefined archetypes to help you get started quickly. For a complete list of available archetypes, see the [archetypes catalog](../building-ui/archetypes/overview).
 :::
+
+Using this information, startforJ will create a basic project from your chosen archetype with your chosen customizations.
+You can choose to download your project as a ZIP file or publish it directly to GitHub.
+
+Once you have downloaded your project, open the project folder in your IDE and move on to [running the app](#running-the-app).
 
 ## Using the command line
 
-For those who prefer using the command line, you can also generate a project directly using the Maven archetype:
+If you prefer to use the command line, you can generate a project directly using the Maven archetype:
 
 <ComponentArchetype
 project="hello-world"
 />
 
-## Run the app
+## Running the app
 
-Navigate into the newly created directory, and run the following command from the project’s root directory:
+Before running your app, install the [prerequisites](./prerequisites.md) if you haven't yet. 
+Then, navigate to the project's root directory and run the following command:
 
 ```bash
 mvn jetty:run
 ```
 
-This command uses the Jetty maven plugin to start a Jetty server. Once the server is running, open your browser and go to [http://localhost:8080](http://localhost:8080) to view the app.
+This command uses the Jetty Maven plugin to start a Jetty server. Once the server is running, open your browser and go to [http://localhost:8080](http://localhost:8080) to view the app.
 
 :::info Licensing and watermark
-For information on the licensing and the watermark present in unlicensed projects, see [this article](../configuration/licensing-and-watermark).
+For information on the watermark present in unlicensed projects, see [Licensing and Watermark](../configuration/licensing-and-watermark).
 :::

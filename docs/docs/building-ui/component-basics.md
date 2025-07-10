@@ -48,7 +48,7 @@ The `onDestroy()` method is responsible for calling the `destroy()` method on an
 
 ### Asynchronous attachment
 
-The `whenAttached()` method allows for functionality to be executed after a component has been added to a window. This method returns a `PendingResult`, which allows for additional specified behavior to execute asynchronously once the component is attached in the DOM. 
+The `whenAttached()` method allows for functionality to be executed after a component has been added to a window. This method returns a <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>, which allows for additional specified behavior to execute asynchronously once the component is attached in the DOM. 
 
 :::tip
 Unlike the previous three methods, `whenAttached()` is meant to be explicitly called by the user.
