@@ -17,7 +17,7 @@ Lifecycle listeners are automatically discovered and loaded at runtime through s
 Use lifecycle listeners when you need to:
 - Initialize resources or services before an app runs
 - Clean up resources when an app terminates  
-- Add cross-cutting concerns without modifying app code
+- Add cross-cutting concerns without modifying the `App` class
 - Build plugin architectures
 
 ## The `AppLifecycleListener` interface
