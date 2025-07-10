@@ -36,7 +36,7 @@ public static PendingResult<Void> runLater(Runnable task)
 public static <T> PendingResult<T> runLater(Supplier<T> supplier)
 ```
 
-Both methods return a `PendingResult` that tracks task completion and provides access to the result or any exceptions that occurred.
+Both methods return a <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> that tracks task completion and provides access to the result or any exceptions that occurred.
 
 ## Thread context inheritance
 
@@ -145,7 +145,7 @@ webforJ processes tasks submitted from background threads in **strict FIFO order
 
 ## Task cancellation
 
-The `PendingResult` returned by `Environment.runLater()` supports cancellation, allowing you to prevent queued tasks from executing. By cancelling pending tasks, you can avoid memory leaks and prevent long-running operations from updating the UI after they're no longer needed.
+The <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> returned by `Environment.runLater()` supports cancellation, allowing you to prevent queued tasks from executing. By cancelling pending tasks, you can avoid memory leaks and prevent long-running operations from updating the UI after they're no longer needed.
 
 ### Basic cancellation
 
@@ -241,7 +241,7 @@ The following is a complete, production-ready implementation demonstrating all b
 
 <!-- vale off -->
 
-<ExpandableCode title="LongTaskView.java" language="java" startLine={114} endLine={180}>
+<ExpandableCode title="LongTaskView.java" language="java" startLine={91} endLine={159}>
 {`
 @Route("/")
 public class LongTaskView extends Composite<FlexLayout> {
