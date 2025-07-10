@@ -124,7 +124,7 @@ When called from a background thread, tasks are **queued for asynchronous execut
 
 ```java
 @Override
-public void onCreate() {
+public void onDidCreate() {
     CompletableFuture.runAsync(() -> {
         // This runs on ForkJoinPool thread
         System.out.println("Background: " + Thread.currentThread().getName());
