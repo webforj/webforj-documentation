@@ -118,6 +118,17 @@ public class LoggingListener implements AppLifecycleListener {
 }
 ```
 
+### `AppLifecycleListener` listeners VS `App` hooks  
+
+The following table shows when an `AppLifecycleListener` listener goes before or after an `App` hook with the same name: 
+
+| Name | Before | After |
+|-------|-------------|-------------|
+| `onWillRun` | `App` | `AppLifecycleListener` |
+| `onDidRun` | `AppLifecycleListener` | `App` |
+| `onWillTerminate` | `App` | `AppLifecycleListener` |
+| `onDidTerminate` | `AppLifecycleListener` | `App` |
+
 ## Error handling
 
 Exceptions thrown by listeners are logged but don't prevent other listeners from executing or the app from running. Always handle exceptions within your listeners:
