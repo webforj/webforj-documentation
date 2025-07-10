@@ -77,5 +77,4 @@ myComponent.addEventListener("input", event -> {
 - Always remove listeners when they're no longer needed to avoid memory leaks.
 - Use the provided event payload methods to access event data efficiently, avoiding unnecessary client-server round-trips.
 - Prefer using component APIs for event handling unless you have advanced requirements.
-- Use registration options (payload, debounce, filter) to optimize performance and event data handling.
-
+- Use registration options to control event data and handler behavior.
