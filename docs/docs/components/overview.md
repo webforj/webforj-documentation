@@ -3,6 +3,7 @@ title: UI Components
 sidebar_position: 85
 hide_table_of_contents: true
 sidebar_class_name: has-new-content
+hide_giscus_comments: true
 ---
 
 <Head>

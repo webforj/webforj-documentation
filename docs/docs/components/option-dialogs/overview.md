@@ -1,6 +1,7 @@
 ---
 sidebar_position: 35
 title: Option Dialogs
+hide_giscus_comments: true
 ---
 
 <!-- vale off -->

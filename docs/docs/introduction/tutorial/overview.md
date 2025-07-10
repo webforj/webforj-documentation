@@ -1,5 +1,6 @@
 ---
 title: Overview
+hide_giscus_comments: true
 ---
 
 This tutorial is designed to guide you step by step through the process of creating the app. This app, designed to manage customer information, demonstrates how to use webforJ to build a functional and user-friendly interface with features for viewing, adding, and editing customer data. Each section will build upon the last, but feel free to skip ahead as needed.
