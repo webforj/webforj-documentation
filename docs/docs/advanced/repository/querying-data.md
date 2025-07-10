@@ -129,7 +129,7 @@ The `Repository` implementation should handle this translation, keeping your UI 
 
 ## Sorting data
 
-<JavadocLink type="data" location="com/webforj/data/repository/OrderCriteria" code="true">OrderCriteria</JavadocLink> defines how to sort your data. Each OrderCriteria needs a value provider (how to get the value from your entity) and a direction:
+<JavadocLink type="data" location="com/webforj/data/repository/OrderCriteria" code="true">OrderCriteria</JavadocLink> defines how to sort your data. Each `OrderCriteria` needs a value provider (how to get the value from your entity) and a direction:
 
 ```java
 // Single field sorting

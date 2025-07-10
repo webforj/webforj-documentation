@@ -90,7 +90,7 @@ This distinction matters for performance. When you update one field in a 1000-ro
 
 ## Filtering data
 
-The repository's filter controls what data flows to connected components. Your underlying collection stays unchanged - the filter acts as a lens:
+The repository's filter controls what data flows to connected components. Your underlying collection stays unchanged because the filter acts as a lens:
 
 ```java
 // Filter by stock availability
@@ -147,8 +147,8 @@ customer.ifPresent(c -> {
 ```
 
 Without `HasEntityKey`:
-- `repository.find("C001")` won't find your customer - it looks for an object that equals "C001"
-- `repository.commit(entity)` still works but relies on object equality
+- `repository.find("C001")` won't find your customer because it looks for an object that equals "C001"
+- `repository.commit(entity)` still works, but relies on object equality
 - UI components can't select items by ID, only by object reference
 
 
@@ -175,6 +175,4 @@ repository.commit();
 
 ## Next steps
 
-- **Advanced querying**: See [Advanced querying capabilities](./querying-data) for RepositoryCriteria and complex queries
-- **Custom data sources**: See [Custom data sources](./delegating-repository) for integrating external APIs and databases  
-- **Reactive programming**: See [Reactive data patterns](./events-and-updates) for event-driven UI updates
+<DocCardList className="topics-section" />

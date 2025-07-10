@@ -75,7 +75,7 @@ DelegatingRepository<User, UserFilter> apiRepository = new DelegatingRepository<
 );
 ```
 
-The `buildParams` method would extract values from the criteria and convert them to query parameters like `?department=Sales&status=active&offset=20&limit=10`. Your REST client then makes the actual HTTP request and deserializes the response.
+The `buildParams()` method would extract values from the criteria and convert them to query parameters like `?department=Sales&status=active&offset=20&limit=10`. Your REST client then makes the actual HTTP request and deserializes the response.
 
 ## Database example
 
@@ -103,7 +103,7 @@ DelegatingRepository<Customer, CustomerFilter> dbRepository = new DelegatingRepo
 );
 ```
 
-The `buildQuery` method would construct SQL like:
+The `buildQuery()` method would construct SQL like:
 ```sql
 SELECT * FROM customers 
 WHERE status = ? AND region = ?
@@ -111,7 +111,7 @@ ORDER BY created_date DESC, name ASC
 LIMIT ? OFFSET ?
 ```
 
-Your filter object properties map to `WHERE` clause conditions, while pagination and sorting are handled through LIMIT/OFFSET and ORDER BY clauses.
+Your filter object properties map to `WHERE` clause conditions, while pagination and sorting are handled through `LIMIT/OFFSET` and `ORDER BY` clauses.
 
 ## Using with UI components
 
