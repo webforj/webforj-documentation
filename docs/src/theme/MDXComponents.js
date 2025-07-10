@@ -12,6 +12,7 @@ import ParentLink from '@site/src/components/DocsTools/ParentLink';
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import TabSwitcher from '@site/src/components/DocsTools/TabSwitcher';
 import ComponentArchetype from '@site/src/components/DocsTools/ComponentArchetype';
+import ExpandableCode from '@site/src/components/DocsTools/ExpandableCode';
 import DocCardList from '@theme/DocCardList';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -33,5 +34,6 @@ export default {
   ComponentArchetype,
   Tabs,
   TabItem,
+  ExpandableCode
 };
 
