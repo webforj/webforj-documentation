@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="950" font-family="SFMono-Regular, monospace" font-size="15">
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#7b83a6" />
+    </marker>
+    <marker id="arrow-dark" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#212431" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="330" y="40" font-weight="bold" font-size="20" fill="#212431" text-anchor="middle">App Lifecycle Execution Order</text>
+
+  <!-- onWillRun Hook -->
+  <rect x="70" y="80" width="250" height="48" rx="24" ry="24" fill="#212431" />
+  <text x="195" y="110" fill="#fff" text-anchor="middle">onWillRun Hook</text>
+
+  <!-- Arrow down -->
+  <line x1="195" y1="128" x2="195" y2="158" stroke="#212431" stroke-width="2" marker-end="url(#arrow-dark)" />
+
+  <!-- onWillRun Listener -->
+  <rect x="340" y="160" width="250" height="48" rx="24" ry="24" fill="#7b83a6" />
+  <text x="465" y="190" fill="#fff" text-anchor="middle">onWillRun Listener</text>
+
+  <!-- Arrow down -->
+  <line x1="465" y1="208" x2="465" y2="238" stroke="#7b83a6" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- Run (App execution) -->
+  <rect x="190" y="250" width="280" height="48" rx="24" ry="24" fill="#39b54a" />
+  <text x="330" y="280" fill="#fff" text-anchor="middle">Run (App execution)</text>
+
+  <!-- Arrow down -->
+  <line x1="330" y1="298" x2="330" y2="328" stroke="#39b54a" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- onDidRun Listener -->
+  <rect x="340" y="340" width="250" height="48" rx="24" ry="24" fill="#7b83a6" />
+  <text x="465" y="370" fill="#fff" text-anchor="middle">onDidRun Listener</text>
+
+  <!-- Arrow down -->
+  <line x1="465" y1="388" x2="465" y2="418" stroke="#7b83a6" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- onDidRun Hook -->
+  <rect x="70" y="430" width="250" height="48" rx="24" ry="24" fill="#212431" />
+  <text x="195" y="460" fill="#fff" text-anchor="middle">onDidRun Hook</text>
+
+  <!-- Separator line -->
+  <line x1="60" y1="510" x2="600" y2="510" stroke="#b3b6c5" stroke-dasharray="6,6" />
+
+  <!-- onWillTerminate Hook -->
+  <rect x="70" y="540" width="250" height="48" rx="24" ry="24" fill="#212431" />
+  <text x="195" y="570" fill="#fff" text-anchor="middle">onWillTerminate Hook</text>
+
+  <!-- Arrow down -->
+  <line x1="195" y1="588" x2="195" y2="618" stroke="#212431" stroke-width="2" marker-end="url(#arrow-dark)" />
+
+  <!-- onWillTerminate Listener -->
+  <rect x="340" y="620" width="250" height="48" rx="24" ry="24" fill="#7b83a6" />
+  <text x="465" y="650" fill="#fff" text-anchor="middle">onWillTerminate Listener</text>
+
+  <!-- Arrow down -->
+  <line x1="465" y1="668" x2="465" y2="698" stroke="#7b83a6" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- Terminate (App termination) -->
+  <rect x="190" y="710" width="280" height="48" rx="24" ry="24" fill="#e57373" />
+  <text x="330" y="740" fill="#fff" text-anchor="middle">Terminate (App termination)</text>
+
+  <!-- Arrow down -->
+  <line x1="330" y1="758" x2="330" y2="788" stroke="#e57373" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- onDidTerminate Listener -->
+  <rect x="340" y="800" width="250" height="48" rx="24" ry="24" fill="#7b83a6" />
+  <text x="465" y="830" fill="#fff" text-anchor="middle">onDidTerminate Listener</text>
+
+  <!-- Arrow down -->
+  <line x1="465" y1="848" x2="465" y2="878" stroke="#7b83a6" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- onDidTerminate Hook -->
+  <rect x="70" y="890" width="250" height="48" rx="24" ry="24" fill="#212431" />
+  <text x="195" y="920" fill="#fff" text-anchor="middle">onDidTerminate Hook</text>
+
+</svg>
