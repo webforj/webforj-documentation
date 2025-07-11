@@ -1,0 +1,8 @@
+{
+  "label": "Spring Framework",
+  "position": 5,
+  "link": {
+    "type": "doc",
+    "id": "overview"
+  }
+}
