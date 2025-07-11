@@ -10,7 +10,7 @@
   </defs>
 
   <!-- Title -->
-  <text x="330" y="40" font-weight="bold" font-size="20" fill="#212431" text-anchor="middle">App Lifecycle Execution Order</text>
+  <text x="330" y="40" font-weight="bold" font-size="20" fill="#7b83a6" text-anchor="middle">App Lifecycle Execution Order</text>
 
   <!-- onWillRun Hook -->
   <rect x="70" y="80" width="250" height="48" rx="24" ry="24" fill="#212431" />
