@@ -30,3 +30,8 @@ WCAG
 REST
 startforJ
 FIFO
+Spring
+Spring Boot
+Spring Data
+JPA
+DevTools
