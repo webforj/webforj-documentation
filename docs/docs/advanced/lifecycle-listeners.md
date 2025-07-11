@@ -96,11 +96,13 @@ public class StartupListener implements AppLifecycleListener {
 
 ## Controlling execution order
 
-Use `@AppListenerPriority` to control the order when multiple listeners are registered. Lower priority values execute first, with a default priority of 10.
+When multiple listeners are registered, you can control their execution order using the `@AppListenerPriority` annotation. This is particularly important when listeners have dependencies on each other or when certain initialization must happen before others.
+
+Priority values work in ascending order - **lower numbers execute first**. The default priority is 10, so listeners without explicit priority annotations will execute after those with lower priority values.
 
 ```java title="SecurityListener.java"
 @AutoService(AppLifecycleListener.class)
-@AppListenerPriority(1)  // Executes first
+@AppListenerPriority(1)  // Executes first - critical security setup
 public class SecurityListener implements AppLifecycleListener {
     @Override
     public void onWillRun(App app) {
@@ -109,7 +111,7 @@ public class SecurityListener implements AppLifecycleListener {
 }
 
 @AutoService(AppLifecycleListener.class)
-@AppListenerPriority(10) // Default priority
+@AppListenerPriority(10) // Default priority - general logging
 public class LoggingListener implements AppLifecycleListener {
     @Override
     public void onWillRun(App app) {
@@ -118,16 +120,18 @@ public class LoggingListener implements AppLifecycleListener {
 }
 ```
 
-### `AppLifecycleListener` listeners VS `App` hooks  
+### Execution flow with App hooks
 
-The following table shows when an `AppLifecycleListener` listener goes before or after an `App` hook with the same name: 
+Beyond controlling the order between multiple listeners, it's important to understand how listeners interact with the `App` class's own lifecycle hooks. For each lifecycle event, the framework follows a specific execution sequence that determines when your listeners run relative to the app's built-in hooks.
 
-| Name | Before | After |
-|-------|-------------|-------------|
-| `onWillRun` | `App` | `AppLifecycleListener` |
-| `onDidRun` | `AppLifecycleListener` | `App` |
-| `onWillTerminate` | `App` | `AppLifecycleListener` |
-| `onDidTerminate` | `AppLifecycleListener` | `App` |
+The diagram below illustrates this execution flow, showing the precise timing of when `AppLifecycleListener` methods are called in relation to the corresponding `App` hooks: 
+
+<div align="center">
+
+![AppLifecycleListener listeners VS `App` hooks  ](/img/lifecycle-listeners.svg)
+
+</div>
+
 
 ## Error handling
 
