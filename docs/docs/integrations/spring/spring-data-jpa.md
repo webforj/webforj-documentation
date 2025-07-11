@@ -72,9 +72,9 @@ For production, replace H2 with your database:
 
 ## Entity setup
 
-SpringDataRepository works with standard JPA entities without requiring any webforJ-specific interfaces or annotations. Your existing JPA entities integrate with webforJ components through the repository pattern.
+`SpringDataRepository` works with standard JPA entities without requiring any webforJ-specific interfaces or annotations. Your existing JPA entities integrate with webforJ components through the repository pattern.
 
-Spring Data JPA handles entity identification through the `@Id` field, while SpringDataRepository passes entities as-is to webforJ components:
+Spring Data JPA handles entity identification through the `@Id` field, while `SpringDataRepository` passes entities as-is to webforJ components:
 
 :::tip
 The validation annotations provide both database constraints and UI validation when used with webforJ's data binding. See [Jakarta Validation](../../data-binding/validation/jakarta-validation) for configuring automatic UI validation with these annotations.
