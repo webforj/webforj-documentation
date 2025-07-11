@@ -10,7 +10,7 @@ sidebar_class_name: updated-content
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/tabbedpane/TabbedPane" top='true'/>
 
-The `TabbedPane` class provides an organized way of displaying content that is divided into multiple sections, each associated with a `Tab`. Users can switch between them by clicking labeled headers. It’s ideal when you want multiple panels accessible in one place, but only need to show one at a time.
+The `TabbedPane` class provides an organized way of displaying content that's divided into multiple sections, each associated with a `Tab`. Users can switch between them by clicking labeled headers. It’s ideal when you want multiple panels accessible in one place, but only need to show one at a time.
 
 <ComponentDemo 
 path='/webforj/tabbedpane?' 
@@ -23,7 +23,7 @@ height="400px"
 `Tabs` are the clickable headers that organize and control content switching in a `TabbedPane`. Each `Tab` represents a different section of content that users can access.
 
 :::important
-`Tabs` are not intended to be used as standalone components. They are meant to be used in conjunction with `TabbedPanes`. This class is not a `Component` and should not be used as such.
+`Tabs` aren't intended to be used as standalone components. They're meant to be used in conjunction with `TabbedPanes`. This class isn't a `Component` and shouldn't be used as such.
 :::
 
 ### Properties {#properties}
@@ -41,7 +41,7 @@ height="400px"
 5. **Closeable(`boolean`)**: Represents whether the `Tab` can be closed. Can be modified with the `setCloseable(boolean enabled)` method. This will add a close button on the `Tab` which can be clicked on by the user, and fires a removal event. The     `TabbedPane` component dictates how to handle the removal.
 
 6. **Slot(`Component`)**: 
-    Slots let you enhance a `Tab` with extra elements like icons, labels, spinners, avatars, or even reset buttons. These additions help convey meaning more clearly and give you room to customize the `Tab’s` appearance and behavior.
+    Slots let you add extra elements to a `Tab` like icons, labels, spinners, avatars, or even reset buttons. These additions help convey meaning more clearly and give you room to customize the `Tab’s` appearance and behavior.
     
     You can add a component to the `prefix` slot of a `Tab` during construction. Alternatively, you can use the `setPrefixComponent()` and `setSuffixComponent()` methods to insert various components before and after the displayed option within a `Tab`.
 
@@ -136,7 +136,7 @@ The `TabbedPane` handles content visibility based on tab selection:
 - Switching `Tabs` hides the previous content and displays the new one
 - Keyboard navigation is supported after focusing the tab list. Use the `Tab` key to focus the `Tabs,` then arrow keys to navigate between them. The visible content updates automatically as you switch `Tabs`.
 
-## `Tab` Events
+## `Tab` events
 
 The `TabbedPane` fires events when users interact with `Tabs`:
 
@@ -207,7 +207,7 @@ Both of these features can be customized:
 - Use `setHideActiveIndicator(true)` to remove the activity indicator from the active Tab. The default value is false.
 
 :::info
-The `Tab` border applies exclusively to the area occupied by the `Tabs` themselves. It does not extend around the full `TabbedPane`, and serves solely to delineate the `Tabs` from the content section.
+The `Tab` border applies exclusively to the area occupied by the `Tabs` themselves. It doesn't extend around the full `TabbedPane`, and serves solely to delineate the `Tabs` from the content section.
 :::
 
 <ComponentDemo 
@@ -222,7 +222,7 @@ For more fine-grained control over how the `TabbedPane` behaves when being navig
 
 - **`Auto`**: When set to auto, navigating `Tabs` with the arrow keys will instantly show the corresponding tab component.
 
-- **`Manual`**: When set to manual, the `Tab` will receive focus but will not show until the user presses `Space` or `Enter`.
+- **`Manual`**: When set to manual, the `Tab` will receive focus but won't show until the user presses `Space` or `Enter`.
 
 <ComponentDemo 
 path='/webforj/tabbedpaneactivation?' 
