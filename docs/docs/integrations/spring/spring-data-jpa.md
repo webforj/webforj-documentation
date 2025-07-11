@@ -118,7 +118,7 @@ public class Person {
 
 ## Table integration
 
-SpringDataRepository wraps your Spring Data repository to work with webforJ components:
+`SpringDataRepository` wraps your Spring Data repository to work with webforJ components:
 
 :::tip
 For advanced table configuration options like virtualization, row selection, and custom renderers, see the [Table component](../../components/table/overview) documentation.
@@ -157,7 +157,7 @@ The repository handles pagination, sorting, and filtering automatically. Changes
 
 ## Filtering with JPA specifications  
 
-SpringDataRepository uses JPA Specifications for dynamic queries an they applied to the repository `findBy`, `count` operations.
+`SpringDataRepository` uses JPA Specifications for dynamic queries an they applied to the repository `findBy`, `count` operations.
 
 :::tip
 To understand how filtering works with the repository pattern in webforJ, including base filters and filter composition, see [Repository patterns](../../advanced/repository/overview).
