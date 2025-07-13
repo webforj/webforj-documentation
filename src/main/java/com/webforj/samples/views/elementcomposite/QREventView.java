@@ -21,8 +21,9 @@ import com.webforj.dispatcher.EventListener;
 import com.webforj.dispatcher.ListenerRegistration;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.QR_CODE_EVENTS)
 @FrameTitle("QR Events")
 public class QREventView extends Composite<FlexLayout> {
 

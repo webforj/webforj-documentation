@@ -5,8 +5,9 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.table.Table;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.TABLE_BASIC)
 @FrameTitle("Table")
 public class TableBasicView extends Composite<Div> {
 
@@ -23,7 +24,7 @@ public class TableBasicView extends Composite<Div> {
     table.addColumn("Cost", MusicRecord::getCost);
 
     table.setRepository(Service.getMusicRecords());
-    
+
     getBoundComponent().add(table);
   }
 }

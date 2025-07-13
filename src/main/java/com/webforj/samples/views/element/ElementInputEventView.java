@@ -9,9 +9,10 @@ import com.webforj.component.element.event.ElementEventOptions;
 import com.webforj.component.html.elements.Div;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet("context://css/element/elementInputEvent.css")
-@Route
+@Route(RouteConfig.ELEMENT_INPUT_EVENT)
 @FrameTitle("Input Event")
 public class ElementInputEventView extends Composite<Div> {
 

@@ -7,8 +7,9 @@ import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.MASKED_NUMBER_FIELD_SPINNER)
 @FrameTitle("Masked Number Field Spinner")
 public class MaskedNumSpinnerView extends Composite<FlexLayout> {
   FlexLayout self = getBoundComponent();

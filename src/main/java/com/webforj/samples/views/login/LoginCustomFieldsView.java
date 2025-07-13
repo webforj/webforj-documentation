@@ -11,9 +11,10 @@ import com.webforj.component.login.Login;
 import com.webforj.component.login.LoginI18n;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet(id = "login-custom-fields", value = "context://css/login/loginCustomFields.css")
-@Route
+@Route(RouteConfig.LOGIN_CUSTOM_FIELDS)
 @FrameTitle("Login Custom Fields")
 public class LoginCustomFieldsView extends Composite<Div> {
   TextField customerId = new TextField("Customer ID");

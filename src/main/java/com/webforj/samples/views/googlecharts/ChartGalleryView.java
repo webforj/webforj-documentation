@@ -8,12 +8,13 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.Paragraph;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 import com.webforj.samples.views.googlecharts.types.*;
 import java.util.Arrays;
 import java.util.List;
 
 @InlineStyleSheet("context://css/googlecharts/chartGallery.css")
-@Route
+@Route(RouteConfig.CHART_GALLERY)
 @FrameTitle("Chart Gallery")
 public class ChartGalleryView extends Composite<Div> {
 

@@ -11,11 +11,12 @@ import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
 /**
  * Demo to show BusyIndicator basics.
  */
-@Route
+@Route(RouteConfig.BUSY_DEMO)
 @FrameTitle("Busy Basics")
 public class BusyDemoView extends Composite<FlexLayout> {
 
@@ -27,20 +28,20 @@ public class BusyDemoView extends Composite<FlexLayout> {
   public BusyDemoView() {
     getBoundComponent().setJustifyContent(FlexJustifyContent.CENTER)
         .setMargin("var(--dwc-space-l)");
-    
+
     nameField = new TextField("Name").setWidth("500px");
-    
+
     emailField = new TextField("Email").setWidth("500px");
-    
+
     submitButton = new Button("Submit", e -> showBusyIndicator())
         .setTheme(ButtonTheme.PRIMARY);
-    
+
     busyIndicator = App.getBusyIndicator();
 
     FlexLayout form = FlexLayout.create(nameField, emailField, submitButton)
         .vertical()
         .build();
-   
+
     getBoundComponent().add(form);
 
     showBusyIndicator();

@@ -11,8 +11,9 @@ import com.webforj.component.spinner.Spinner;
 import com.webforj.component.spinner.SpinnerExpanse;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.SPINNER_DIRECTION_DEMO)
 @FrameTitle("Spinner Directions")
 public class SpinnerDirectionDemoView extends Composite<FlexLayout> {
 
@@ -30,7 +31,7 @@ public class SpinnerDirectionDemoView extends Composite<FlexLayout> {
     clockwiseButton = new Button("Clockwise", e -> spinner.setClockwise(true)).setWidth("200px");
     counterClockwiseButton = new Button("Counterclockwise", e -> spinner.setClockwise(false))
         .setWidth("200px");
-    
+
     buttonContainer = new FlexLayout(clockwiseButton, counterClockwiseButton);
     buttonContainer.setMargin("var(--dwc-space-s)");
 

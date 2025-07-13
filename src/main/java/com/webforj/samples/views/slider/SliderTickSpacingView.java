@@ -9,8 +9,9 @@ import com.webforj.component.slider.Slider;
 import com.webforj.data.event.ValueChangeEvent;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.SLIDER_TICK_SPACING)
 @FrameTitle("Slider Major and Minor Tick Spacing Demo")
 public class SliderTickSpacingView extends Composite<FlexLayout> {
   FlexLayout self = getBoundComponent();

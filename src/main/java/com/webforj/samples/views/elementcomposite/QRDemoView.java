@@ -10,8 +10,9 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.QR_CODE)
 @FrameTitle("QR Code")
 public class QRDemoView extends Composite<FlexLayout> {
 

@@ -7,10 +7,11 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.columnslayout.ColumnsLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
 import java.util.List;
 
-@Route
+@Route(RouteConfig.COLUMNS_LAYOUT_BREAKPOINTS)
 @FrameTitle("Columns Layout Breakpoints")
 public class ColumnsLayoutBreakpointsView extends Composite<Div> {
   TextField firstName = new TextField("First Name");

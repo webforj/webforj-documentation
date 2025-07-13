@@ -11,6 +11,7 @@ import com.webforj.component.tabbedpane.TabbedPane;
 import com.webforj.component.tabbedpane.TabbedPane.Alignment;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet(/*css */"""
   .window {
@@ -20,7 +21,7 @@ import com.webforj.router.annotation.Route;
     margin: 20px;
   }
 """)
-@Route
+@Route(RouteConfig.TABBED_PANE_ALIGNMENT)
 @FrameTitle("Tabbed Pane Alignment")
 public class TabbedPaneAlignmentView extends Composite<Div> {
 
@@ -42,7 +43,7 @@ public class TabbedPaneAlignmentView extends Composite<Div> {
     pane.addTab(new Tab("Customers", customersIcon));
 		pane.addTab(new Tab("Products", productsIcon));
     pane.addTab(new Tab("Documents", documentsIcon));
-    
+
     for(Alignment alignment : Alignment.values()){
       alignments.add(alignment.toString());
     }

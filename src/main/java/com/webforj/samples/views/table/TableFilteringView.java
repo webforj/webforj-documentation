@@ -9,8 +9,9 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.data.repository.Repository;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.TABLE_FILTERING)
 @FrameTitle("Table Filtering")
 public class TableFilteringView extends Composite<Div> {
   private String searchTerm = "";

@@ -8,8 +8,9 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.optiondialog.InputDialog;
 import com.webforj.component.optiondialog.OptionDialog;
 import com.webforj.component.optiondialog.MessageDialog;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.INPUT_DIALOG_TYPE)
 @FrameTitle("Input Dialog Type")
 public class InputDialogTypeView extends Composite<Div> {
   InputDialog dialog;

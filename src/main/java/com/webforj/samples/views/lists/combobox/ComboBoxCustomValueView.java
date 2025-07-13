@@ -7,8 +7,9 @@ import com.webforj.component.list.ComboBox;
 import com.webforj.component.optioninput.RadioButton;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.COMBO_BOX_CUSTOM_VALUE)
 @FrameTitle("ComboBox Custom Value")
 public class ComboBoxCustomValueView extends Composite<FlexLayout> {
 

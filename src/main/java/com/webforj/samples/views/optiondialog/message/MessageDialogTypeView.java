@@ -6,8 +6,9 @@ import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.optiondialog.MessageDialog;
 import com.webforj.component.optiondialog.OptionDialog;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.MESSAGE_DIALOG_TYPE)
 @FrameTitle("Message Dialog Types")
 public class MessageDialogTypeView extends Composite<Div> {
 

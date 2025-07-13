@@ -7,8 +7,9 @@ import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.BOUND_COMPONENT_DEMO)
 @FrameTitle("Bound Component")
 public class BoundComponentDemoView extends Composite<FlexLayout> {
 

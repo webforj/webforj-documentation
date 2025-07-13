@@ -9,8 +9,9 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.list.ChoiceBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.CHOICE_BOX_MAX_ROW)
 @FrameTitle("Choicebox Max Rows")
 public class ChoiceboxMaxRowView extends Composite<FlexLayout> {
 

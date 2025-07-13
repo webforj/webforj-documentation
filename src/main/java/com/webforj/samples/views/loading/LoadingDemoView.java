@@ -14,16 +14,17 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.loading.Loading;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
 /**
  * Demo to show Loading basics.
  */
 
-@Route
+@Route(RouteConfig.LOADING_DEMO)
 @FrameTitle("Loading Basics")
 @InlineStyleSheet("context://css/loadingstyles/loadingdemo.css")
 public class LoadingDemoView extends Composite<FlexLayout> {
-  
+
   Div card1;
   Div card2;
   Icon guideIcon;
@@ -31,26 +32,26 @@ public class LoadingDemoView extends Composite<FlexLayout> {
   Button buyButton1;
   Button buyButton2;
   Loading loading;
-  
+
   public LoadingDemoView() {
     getBoundComponent().setDirection(FlexDirection.ROW)
         .setMargin("var(--dwc-space-l)");
 
     card1 = new Div()
         .addClassName("card");
-    
+
     guideIcon = FeatherIcon.BOOK.create()
         .addClassName("icon");
-    
+
     buyButton1 = new Button("Buy")
         .setTheme(ButtonTheme.PRIMARY);
-    
+
     card2 = new Div()
         .addClassName("card");
-    
+
     videoIcon = FeatherIcon.YOUTUBE.create()
         .addClassName("icon");
-    
+
     buyButton2 = new Button("Buy")
         .setTheme(ButtonTheme.PRIMARY);
 
@@ -60,9 +61,9 @@ public class LoadingDemoView extends Composite<FlexLayout> {
 
     card1.add(new Paragraph("User Guide"), guideIcon, buyButton1);
     card2.add(new Paragraph("Video Lessons"), videoIcon, buyButton2, loading);
-    
+
     loading.open();
-    
+
     getBoundComponent().add(card1, card2);
   }
 }

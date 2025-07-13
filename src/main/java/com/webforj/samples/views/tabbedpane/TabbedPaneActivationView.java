@@ -11,6 +11,7 @@ import com.webforj.component.tabbedpane.TabbedPane;
 import com.webforj.component.tabbedpane.TabbedPane.Activation;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet(/*css */"""
   .window {
@@ -20,7 +21,7 @@ import com.webforj.router.annotation.Route;
     margin: 20px;
   }
 """)
-@Route
+@Route(RouteConfig.TABBED_PANE_ACTIVATION)
 @FrameTitle("Tabbed Pane Activation")
 public class TabbedPaneActivationView extends Composite<Div> {
 
@@ -42,12 +43,12 @@ public class TabbedPaneActivationView extends Composite<Div> {
     pane.addTab(new Tab("Customers", customersIcon));
 		pane.addTab(new Tab("Products", productsIcon));
     pane.addTab(new Tab("Documents", documentsIcon));
-    
+
     activation.onCheck( e -> {
       activation.setText("Automatic");
       pane.setActivation(Activation.AUTO);
     });
-    
+
     activation.onUncheck( e -> {
       activation.setText("Manual");
       pane.setActivation(Activation.MANUAL);

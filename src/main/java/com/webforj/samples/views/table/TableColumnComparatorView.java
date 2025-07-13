@@ -5,8 +5,9 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.table.Table;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.TABLE_COLUMN_COMPARATOR)
 @FrameTitle("Table Column Comparator")
 public class TableColumnComparatorView extends Composite<Div> {
 

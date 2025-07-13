@@ -12,6 +12,7 @@ import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
 /**
  * A simple HelloWorld app.
@@ -24,7 +25,7 @@ import com.webforj.router.annotation.Route;
     width: 150px;
   }
 """)
-@Route("/")
+@Route(RouteConfig.HELLO_WORLD)
 @FrameTitle("Hello World Java")
 public class HelloWorldJavaView extends Composite<FlexLayout> {
 

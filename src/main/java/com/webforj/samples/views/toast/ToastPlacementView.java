@@ -15,14 +15,15 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import java.util.ArrayList;
 import java.util.List;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.TOAST_PLACEMENT)
 @FrameTitle("Toast Placements")
 public class ToastPlacementView extends Composite<FlexLayout> {
 
   ChoiceBox placementChoiceBox;
   Button showToastButton;
-  
+
   public ToastPlacementView() {
     getBoundComponent().setDirection(FlexDirection.ROW).setAlignment(FlexAlignment.CENTER)
         .setJustifyContent(FlexJustifyContent.CENTER).setMargin("150px 20px")
@@ -47,7 +48,7 @@ public class ToastPlacementView extends Composite<FlexLayout> {
       Placement selectedPlacement = Placement.valueOf(placementChoiceBox.getText());
       Toast.show("This is a toast notification", selectedPlacement);
     });
-    
+
     getBoundComponent().add(placementChoiceBox, showToastButton);
   }
 }

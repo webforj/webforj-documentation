@@ -10,8 +10,9 @@ import com.webforj.component.spinner.SpinnerExpanse;
 import com.webforj.dispatcher.EventListener;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.BUSY_INDICATOR)
 @FrameTitle("Busy Indicator")
 public class BusyIndicatorView extends Composite<Div> {
   private int retry = 1;

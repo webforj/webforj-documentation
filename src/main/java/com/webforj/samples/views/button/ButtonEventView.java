@@ -8,8 +8,9 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.layout.flexlayout.FlexLayoutBuilder;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.BUTTON_EVENT)
 @FrameTitle("Button Event")
 public class ButtonEventView extends Composite<FlexLayout> {
 

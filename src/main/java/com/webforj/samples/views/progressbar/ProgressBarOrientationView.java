@@ -13,14 +13,15 @@ import com.webforj.component.progressbar.ProgressBar.Orientation;
 import com.webforj.dispatcher.EventListener;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.PROGRESS_BAR_ORIENTATION)
 @FrameTitle("Progress Bar Orientation")
 public class ProgressBarOrientationView extends Composite<Div> {
-  Button start = new Button("Start"); 
+  Button start = new Button("Start");
 	Button pause = new Button("Pause");
 	Button reset = new Button("Reset");
-  
+
 	Icon startIcon = TablerIcon.create("player-play");
 	Icon pauseIcon = TablerIcon.create("player-pause");
 	Icon resetIcon = TablerIcon.create("refresh");
@@ -33,7 +34,7 @@ public class ProgressBarOrientationView extends Composite<Div> {
       .setStyle("padding", "20px");
 
   public ProgressBarOrientationView() {
-    
+
     start.setPrefixComponent(startIcon);
 		pause.setPrefixComponent(pauseIcon);
 		reset.setPrefixComponent(resetIcon);

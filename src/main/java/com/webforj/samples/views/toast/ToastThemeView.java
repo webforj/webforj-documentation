@@ -8,19 +8,20 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.TOAST_THEME)
 @FrameTitle("Toast Themes")
 @InlineStyleSheet("context://css/toast/toastTheme.css")
 public class ToastThemeView extends Composite<FlexLayout> {
-  
+
   Toast updateToast;
   Button laterButton;
   Button updateButton;
 
   public ToastThemeView() {
     getBoundComponent().setMargin("var(--dwc-space-l)");
-    
+
     updateToast = new Toast("The application has a new update available", -1, Theme.DEFAULT);
     updateToast.addClassName("custom-theme");
     updateToast.open();

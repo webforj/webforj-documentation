@@ -13,8 +13,9 @@ import com.webforj.component.icons.Icon;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.refresher.Refresher;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.REFRESHER_THEMES)
 @InlineStyleSheet("context://css/refresher/refresher.css")
 public class RefresherThemesView extends Composite<Div> {
 

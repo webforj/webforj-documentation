@@ -7,8 +7,9 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.table.Table;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.TABLE_SINGLE_SELECTION)
 @FrameTitle("Table Single Selection")
 public class TableSingleSelectionView extends Composite<Div> {
 

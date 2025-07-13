@@ -10,8 +10,9 @@ import com.webforj.component.tree.Tree;
 import com.webforj.component.tree.TreeNode;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.TREE_LAZY_LOAD)
 @FrameTitle("Lazy Load Tree View")
 public class TreeLazyLoadView extends Composite<FlexLayout> {
   private static final String SPINNER_FLAG = "spinner";

@@ -12,8 +12,9 @@ import com.webforj.component.list.ChoiceBox;
 import com.webforj.component.list.ListItem;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.samples.config.RouteConfig;
 
-@Route
+@Route(RouteConfig.TEXT_AREA_WRAP)
 @FrameTitle("Word Wrap and Line Wrapping Demo")
 public class TextAreaWrapView extends Composite<FlexLayout> {
 
