@@ -2,7 +2,6 @@
 sidebar_position: 1
 title: Masked Fields
 hide_table_of_contents: true
-sidebar_class_name: new-content
 ---
 
 <Head>

@@ -1,7 +1,6 @@
 ---
 title: Tree
 sidebar_position: 150
-sidebar_class_name: new-content
 ---
 
 <DocChip chip="shadow" />
