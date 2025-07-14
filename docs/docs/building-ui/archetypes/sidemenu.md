@@ -16,6 +16,7 @@ For more control over customization and configuration, you can use [startforJ](h
 
 <ComponentArchetype
 project="sidemenu"
+flavor="webforj"
 />
 
 ### Run the app

@@ -21,6 +21,7 @@ For more control over customization and configuration, you can use [startforJ](h
 
 <ComponentArchetype
 project="hello-world"
+flavor="webforj"
 />
 
 ### Run the app

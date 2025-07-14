@@ -25,6 +25,7 @@ The simplest way to create a new webforJ app is [startforJ](https://docs.webforj
   </video>
 </div>
 
+
 ### Customizing with startforJ
 
 When you create an app with [startforJ](https://docs.webforj.com/startforj), you can customize it by providing the following information:
@@ -32,7 +33,16 @@ When you create an app with [startforJ](https://docs.webforj.com/startforj), you
 - Basic project metadata (App Name, Group ID, Artifact ID)  
 - webforJ version and Java version
 - Theme Color and Icon
-- Archetype 
+- Archetype
+- Flavor
+
+There are two flavor options to choose from with "webforJ Only" being the default:
+  - **webforJ Only**: Standard webforJ app (no Spring dependencies)
+  - **webforJ + Spring Boot**: webforJ app with Spring Boot integration and dependency injection
+
+:::caution Spring Boot support
+Spring Boot flavor is only available in webforJ version 25.02 and above. If you select this option, make sure to choose a compatible version.
+:::
 
 :::tip Available Archetypes
 webforJ comes with several predefined archetypes to help you get started quickly. For a complete list of available archetypes, see the [archetypes catalog](../building-ui/archetypes/overview).
@@ -45,10 +55,12 @@ Once you have downloaded your project, open the project folder in your IDE and m
 
 ## Using the command line
 
+
 If you prefer to use the command line, you can generate a project directly using the Maven archetype:
 
 <ComponentArchetype
 project="hello-world"
+flavor="webforj"
 />
 
 ## Running the app
