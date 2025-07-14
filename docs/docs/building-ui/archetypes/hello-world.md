@@ -25,7 +25,7 @@ project="hello-world"
 
 ## Running the app
 
-Before running your app, install the [prerequisites](./prerequisites.md) if you haven't yet. 
+Before running your app, install the [prerequisites](../../introduction/prerequisites) if you haven't yet. 
 Then, navigate to the project's root directory and run the following command:
 
 ```bash
