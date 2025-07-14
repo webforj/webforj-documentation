@@ -1,6 +1,5 @@
 ---
 title: Object and String Tables
-sidebar_class_name: new-content
 sidebar_position: 35
 ---
 

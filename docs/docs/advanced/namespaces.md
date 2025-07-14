@@ -1,6 +1,5 @@
 ---
 title: Namespaces
-sidebar_class_name: new-content
 sidebar_position: 30
 ---
 
