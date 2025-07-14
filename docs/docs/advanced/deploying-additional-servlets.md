@@ -1,6 +1,7 @@
 ---
 sidebar_position: 50
 title: Deploying Additional Servlets
+sidebar_class_name: new-content
 ---
 
 webforJ routes all requests through `WebforjServlet`, which is mapped to `/*` in web.xml by default. This servlet manages the component lifecycle, routing, and UI updates that power your webforJ app.
