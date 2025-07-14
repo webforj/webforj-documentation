@@ -2,6 +2,7 @@
 sidebar_position: 21
 title: Dynamic Styling
 slug: styling
+sidebar_class_name: updated-content
 ---
 <!-- vale off -->
 # Dynamic Styling <DocChip chip='since' label='25.00' />
