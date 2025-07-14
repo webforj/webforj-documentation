@@ -41,7 +41,7 @@ There are two flavor options to choose from with "webforJ Only" being the defaul
   - **webforJ + Spring Boot**: webforJ app with Spring Boot integration and dependency injection
 
 :::caution Spring Boot support
-Spring Boot flavor is only available in webforJ version 25.02 and above. If you select this option, make sure to choose a compatible version.
+Spring Boot flavor is only available in webforJ version 25.02 and higher. If you select this option, make sure to choose a compatible version.
 :::
 
 :::tip Available Archetypes
