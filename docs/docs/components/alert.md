@@ -1,7 +1,6 @@
 ---
 title: Alert
 sidebar_position: 5
-sidebar_class_name: new-content
 ---
 
 <DocChip chip='shadow' />

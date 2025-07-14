@@ -1,7 +1,6 @@
 ---
 title: DesktopNotification
 sidebar_position: 29
-sidebar_class_name: new-content
 ---
 
 <DocChip chip='since' label='25.00' />
