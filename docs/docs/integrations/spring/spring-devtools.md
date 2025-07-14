@@ -3,15 +3,13 @@ title: Spring DevTools
 sidebar_position: 30
 ---
 
-This article explains how to configure Spring DevTools with webforJ for automatic browser refresh during development. The integration provides reload behavior - full page refresh for Java changes and hot updates for static resources like CSS and images.
+Spring DevTools provides automatic app restarts when code changes. webforJ DevTools adds automatic browser refresh - when Spring restarts your app, the browser refreshes automatically through webforJ's LiveReload server.
+
+Different file types trigger different reload behavior. Java code changes cause a full Spring restart and browser refresh. CSS and image changes update without a page reload, preserving form data and app state.
 
 ## Understanding webforJ DevTools
 
-webforJ extends Spring DevTools with browser synchronization through WebSocket connections. When Spring detects file changes, webforJ DevTools automatically refreshes your browser, eliminating manual refreshes during development.
-
-:::tip
-If you're new to Spring Boot integration with webforJ, start with the [Spring Boot setup](setup) guide to configure your project correctly.
-:::
+webforJ extends Spring DevTools with browser synchronization. When Spring detects file changes and restarts, webforJ DevTools automatically refreshes your browser.
 
 ### Reload behavior
 

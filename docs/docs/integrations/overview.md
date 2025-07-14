@@ -17,10 +17,22 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
-webforJ provides everything needed to build web applications - components, routing, data binding, and more. You don't need any other framework to create complete applications.
+webforJ is designed as a framework-agnostic UI layer for Java applications. It focuses exclusively on building rich, component-based user interfaces while leaving backend architecture decisions entirely up to you. This clear separation of concerns allows webforJ to work seamlessly with any Java technology stack, from traditional servlets to modern microservices.
 
-However, many teams already use frameworks like [Spring Boot](https://spring.io/projects/spring-boot) for dependency injection, database access, security, and other enterprise features. Rather than forcing you to choose between webforJ and your existing tools, webforJ provides integrations that let you use both together.
+## Architecture philosophy
 
-These integrations maintain clear separation - webforJ handles the UI layer while your chosen framework manages services, data, and business logic. Your webforJ components can access framework features when needed through dependency injection and service layers.
+webforJ maintains a deliberate boundary between UI and backend concerns. Unlike full-stack frameworks that dictate your entire application structure, webforJ provides only what you need for building sophisticated user interfaces. Your choice of persistence layer, dependency injection framework, security implementation, and service architecture remains completely independent of your UI technology.
+
+This approach recognizes that most organizations have established backend patterns, existing service layers, and preferred technology stacks. webforJ enhances these applications with a modern UI framework without requiring architectural changes or technology migrations. Your domain logic, data access patterns, and security implementations continue working exactly as before.
+
+## Backend framework compatibility
+
+webforJ works with any Java backend framework or architecture pattern you're already using. Whether you're building on Jakarta EE, using a microservices architecture, or working with a custom framework, webforJ provides the UI layer without interfering with your backend design.
+
+For certain popular frameworks, webforJ offers specific integrations that reduce boilerplate code and streamline development. These integrations provide conveniences like automatic dependency injection into UI components, simplified configuration, and framework-specific tooling support. If you don't see your framework listed below, it doesn't mean webforJ won't work with it - it simply means you'll configure the connection using your framework's standard patterns rather than using a pre-built integration.
+
+The integrations below are entirely optional. They exist to enhance developer experience when using specific frameworks, but webforJ's core functionality works identically whether you use an integration or not. Your backend framework continues to manage services, data access, and business logic while webforJ handles the presentation layer.
+
+## Topics
 
 <DocCardList className="topics-section" />

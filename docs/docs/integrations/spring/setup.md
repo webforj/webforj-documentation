@@ -1,11 +1,11 @@
 ---
-title: Spring Boot setup
+title: Spring Boot Setup
 sidebar_position: 10
 ---
 
-import ComponentArchetype from '@site/src/components/DocsTools/ComponentArchetype';
+Spring Boot is a popular choice for building Java apps, providing dependency injection, auto-configuration, and an embedded server model. When using Spring Boot with webforJ, you can inject services, repositories, and other Spring-managed beans directly into your UI components through constructor injection.
 
-This article explains how to create a new webforJ app with Spring Boot integration or add Spring Boot to an existing webforJ project.
+When you use Spring Boot with webforJ, your app runs as an executable JAR with an embedded Tomcat server instead of deploying a WAR file to an external app server. This packaging model simplifies deployment and aligns with cloud-native deployment practices. webforJ's component model and routing work alongside Spring's app context for managing dependencies and configuration.
 
 ## Create a Spring Boot app
 
@@ -23,15 +23,14 @@ When you create an app with [startforJ](https://docs.webforj.com/startforj), you
 - Archetype
 - **Flavor** - Select **webforJ Spring** to create a Spring Boot project
 
-Using this information, startforJ will create a basic project from your chosen archetype with Spring Boot integration.
+Using this information, startforJ will create a basic project from your chosen archetype configured for Spring Boot.
 You can choose to download your project as a ZIP file or publish it directly to GitHub.
 
 ### Option 2: Using the command line
 
-If you prefer to use the command line, generate a Spring Boot webforJ project directly using the [webforJ archetypes](../../building-ui/archetypes/overview):
+If you prefer to use the command line, generate a Spring Boot webforJ project directly using the official webforJ archetypes:
 
-
-```bash
+```bash {8}
 mvn -B archetype:generate \
   -DarchetypeGroupId=com.webforj \
   -DarchetypeArtifactId=webforj-archetype-hello-world \
@@ -42,32 +41,46 @@ mvn -B archetype:generate \
   -Dflavor=webforj-spring
 ```
 
-
 The `flavor` parameter tells the archetype to generate a Spring Boot project instead of a standard webforJ project.
 
 This creates a complete Spring Boot project with:
 - Spring Boot parent POM configuration
 - webforJ Spring Boot starter dependency
 - Main app class with `@SpringBootApplication` and `@Routify`
-- Example views showing Spring integration
+- Example views
 - Configuration files for both Spring and webforJ
 
 ## Add Spring Boot to existing projects
 
-If you have an existing webforJ app, you can add Spring Boot integration by modifying your project configuration. This process involves updating your Maven configuration, adding Spring dependencies, and converting your main app class.
+If you have an existing webforJ app, you can add Spring Boot by modifying your project configuration. This process involves updating your Maven configuration, adding Spring dependencies, and converting your main app class.
+
+:::info[For existing projects only]
+Skip this section if you're creating a new project from scratch.
+:::
 
 ### Step 1: Update Maven configuration
 
-First, change your POM to use Spring Boot as the parent. Replace any existing parent configuration with:
+Make the following changes to your POM file:
 
-```xml title="pom.xml"
-<parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.5.3</version>
-    <relativePath/>
-</parent>
-```
+1. Change the packaging from WAR to JAR:
+   ```xml title="pom.xml"
+   <packaging>jar</packaging>
+   ```
+
+2. Set Spring Boot as the parent POM:
+   ```xml title="pom.xml"
+   <parent>
+       <groupId>org.springframework.boot</groupId>
+       <artifactId>spring-boot-starter-parent</artifactId>
+       <version>3.5.3</version>
+       <relativePath/>
+   </parent>
+   ```
+
+3. Remove any WAR-specific configuration such as:
+   - `maven-war-plugin`
+   - `webapp` directory references
+   - `web.xml` related configuration
 
 If you already have a parent POM, you'll need to import the Spring Boot Bill of Materials (BOM) instead:
 
@@ -89,10 +102,6 @@ If you already have a parent POM, you'll need to import the Spring Boot Bill of 
 
 Add the webforJ Spring Boot starter to your dependencies. Keep your existing webforJ dependency:
 
-:::tip
-After configuring Spring Boot, you can use [Spring Data JPA](spring-data-jpa) for database integration and [Spring DevTools](spring-devtools) for automatic browser refresh during development.
-:::
-
 ```xml title="pom.xml"
 <dependencies>
     <!-- Your existing webforJ dependency -->
@@ -102,7 +111,7 @@ After configuring Spring Boot, you can use [Spring Data JPA](spring-data-jpa) fo
         <version>${webforj.version}</version>
     </dependency>
     
-    <!-- Add Spring Boot integration -->
+    <!-- Add Spring Boot starter -->
     <dependency>
         <groupId>com.webforj</groupId>
         <artifactId>webforj-spring-boot-starter</artifactId>
@@ -123,6 +132,10 @@ After configuring Spring Boot, you can use [Spring Data JPA](spring-data-jpa) fo
     </dependency>
 </dependencies>
 ```
+
+:::tip[webforJ DevTools for automatic browser refresh]
+The `webforj-spring-devtools` dependency extends Spring DevTools with automatic browser refresh. When you save changes in your IDE, the browser automatically reloads without manual intervention. See the [Spring DevTools](spring-devtools) guide for configuration details.
+:::
 
 ### Step 3: Update build plugins
 
@@ -176,7 +189,7 @@ The `@SpringBootApplication` annotation enables Spring's auto-configuration and 
 
 Create `application.properties` in `src/main/resources`:
 
-```Ini application.properties
+```Ini title="application.properties"
 # App Name
 spring.application.name=Hello World Spring
 
@@ -192,19 +205,9 @@ webforj.devtools.livereload.static-resources-enabled=true
 
 Your existing `webforj.conf` file continues to work. Point it to your main class:
 
-```Ini webforj.conf
+```Ini title="webforj.conf"
 webforj.entry = org.example.Application
 ```
-
-### Step 6: Update packaging configuration
-
-Change your packaging from WAR to JAR in your POM:
- 
-```xml title="pom.xml"
-<packaging>jar</packaging>
-```
-
-Remove any WAR-specific configuration like the `maven-war-plugin` and `webapp` directory references.
 
 ## Run the Spring Boot app
 
@@ -228,53 +231,3 @@ When you switch to Spring Boot, several configuration aspects change:
 | **Main config** | `webforj.conf` only | `webforj.conf` + `application.properties` |
 | **Profiles** | `webforj-dev.conf`, `webforj-prod.conf` | Spring profiles with `application-{profile}.properties` |
 | **Port config** | In plugin configuration | `server.port` in properties |
-
-## Using Spring features
-
-With Spring Boot integration active, your webforJ components can now:
-
-- Inject Spring beans
-- Access Spring-managed services and repositories  
-- Use Spring's transaction management
-- Integrate with Spring Security (when added)
-- Benefit from Spring's extensive ecosystem
-
-:::tip
-For comprehensive Spring Boot features beyond basic dependency injection, refer to [Spring Boot's official documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/).
-:::
-
-Example of a webforJ view with Spring dependency injection:
-
-```java title="RandomNumberService.java"
-@Service
-public class RandomNumberService {
-
-  public Integer getRandomNumber() {
-    return (int) (Math.random() * 100);
-  }
-}
-```
-
-```java title="HelloWorldView.java"
-@Route("/")
-public class HelloWorldView extends Composite<FlexLayout> {
-
-  private FlexLayout self = getBoundComponent();
-  private Button btn = new Button("Generate Random Number");
-
-  public HelloWorldView(RandomNumberService service) {
-    self.setDirection(FlexDirection.COLUMN);
-    self.setMaxWidth(300);
-    self.setStyle("margin", "1em auto");
-
-    btn.setPrefixComponent(TablerIcon.create("dice"))
-        .setTheme(ButtonTheme.GRAY)
-        .addClickListener(e -> {
-          Toast.show("The new random number is " + service.getRandomNumber(), Theme.SUCCESS);
-        });
-
-    self.add(btn);
-  }
-}
-```
-

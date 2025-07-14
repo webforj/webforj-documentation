@@ -5,23 +5,61 @@ sidebar_position: 20
 
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
-This article explains how to use Spring Data JPA repositories with webforJ components through the `SpringDataRepository` adapter. This integration allows you to connect your Spring Data repositories directly to webforJ tables and other data-aware components while maintaining the full power of Java Persistence API specifications for filtering and querying.
+Spring Data JPA is the de facto standard for data access in Spring applications, providing repository abstractions, query methods, and specifications for complex queries. The webforJ `SpringDataRepository` adapter bridges Spring Data repositories with webforJ's UI components, enabling you to bind JPA entities directly to UI components, implement dynamic filtering with JPA Specifications, and handle pagination.
 
-## Understanding SpringDataRepository
+The adapter detects which Spring Data interfaces your repository implements - whether it's `CrudRepository`, `PagingAndSortingRepository`, or `JpaSpecificationExecutor` - and automatically provides the corresponding features in your UI. This means your existing Spring Data repositories work with webforJ components without modification, while maintaining type safety and using your existing domain model.
 
-The `SpringDataRepository` class bridges webforJ's repository interface with Spring Data repositories. It wraps your existing Spring Data repository and automatically detects which interfaces it implements to provide corresponding features.
+:::tip[Learn more about Spring Data JPA]
+For a comprehensive understanding of Spring Data JPA features and query methods, see [Spring Data JPA Reference Documentation](https://docs.spring.io/spring-data/jpa/reference/).
+:::
 
-### Supported interfaces
+## Using SpringDataRepository
 
-Your Spring Data repository can implement any combination of:
+The `SpringDataRepository` class bridges Spring Data JPA repositories with webforJ's Repository interface, making them compatible with UI components like [`Table`](../../components/table/overview) while retaining all Spring Data features.
 
-- **CrudRepository** - Enables basic Create, Read, Update, Delete operations like finding by ID
-- **PagingAndSortingRepository** - Adds pagination and sorting capabilities
-- **JpaSpecificationExecutor** - Enables Java Persistence API Specification queries with filtering
+```java
+// Your Spring Data repository
+@Autowired
+private PersonRepository personRepository;
 
-### Recommended repository setup
+// Wrap it with SpringDataRepository
+SpringDataRepository<Person, Long> adapter = new SpringDataRepository<>(personRepository);
 
-For all features with optimal performance, extend `JpaRepository` (which includes both CrudRepository and PagingAndSortingRepository) and add `JpaSpecificationExecutor`:
+// Use with webforJ Table
+Table<Person> table = new Table<>();
+table.setRepository(adapter);
+```
+
+### Interface detection
+
+Spring Data repositories use interface inheritance to add capabilities. You start with basic CRUD operations and add interfaces for features like pagination or specifications:
+
+```java
+// Basic CRUD only
+public interface CustomerRepository extends CrudRepository<Customer, Long> {}
+
+// CRUD + Pagination + Sorting
+public interface CustomerRepository extends PagingAndSortingRepository<Customer, Long> {}
+
+// Full featured repository
+public interface CustomerRepository extends JpaRepository<Customer, Long>, 
+                                           JpaSpecificationExecutor<Customer> {}
+```
+
+`SpringDataRepository` examines which interfaces your repository implements and adapts its behavior accordingly. If your repository supports pagination, the adapter enables paginated queries. If it implements `JpaSpecificationExecutor`, you can use dynamic filtering with specifications.
+
+### Repository capabilities
+
+Each Spring Data interface adds specific capabilities that `SpringDataRepository` can use:
+
+- **CrudRepository** - Basic operations: save, delete, findById, findAll
+- **PagingAndSortingRepository** - Adds paginated queries and sorting
+- **JpaRepository** - Combines CRUD and paging/sorting with batch operations
+- **JpaSpecificationExecutor** - Dynamic queries using JPA Specifications
+
+### Creating a Spring Data repository
+
+For maximum compatibility with webforJ components, create repositories that implement both `JpaRepository` and `JpaSpecificationExecutor`:
 
 ```java title="PersonRepository.java"
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -44,85 +82,9 @@ This combination provides:
 - Java Persistence API Specification filtering
 - Count operations with and without filters
 
-## Dependencies
+## Working with `Table`
 
-Add Spring Data JPA to your project. This starter includes Hibernate, Spring Data, and all required transaction management:
-
-```xml title="pom.xml"
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-data-jpa</artifactId>
-</dependency>
-<dependency>
-    <groupId>com.h2database</groupId>
-    <artifactId>h2</artifactId>
-    <scope>runtime</scope>
-</dependency>
-```
-
-For production, replace H2 with your database:
-
-```xml title="pom.xml"
-<dependency>
-    <groupId>org.postgresql</groupId>
-    <artifactId>postgresql</artifactId>
-    <scope>runtime</scope>
-</dependency>
-```
-
-## Entity setup
-
-`SpringDataRepository` works with standard JPA entities without requiring any webforJ-specific interfaces or annotations. Your existing JPA entities integrate with webforJ components through the repository pattern.
-
-Spring Data JPA handles entity identification through the `@Id` field, while `SpringDataRepository` passes entities as-is to webforJ components:
-
-:::tip
-The validation annotations provide both database constraints and UI validation when used with webforJ's data binding. See [Jakarta Validation](../../data-binding/validation/jakarta-validation) for configuring automatic UI validation with these annotations.
-:::
-
-```java title="Person.java"
-@Entity
-@Table(name = "person")
-public class Person {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    @NotBlank(message = "First name is required")
-    @Column(name = "first_name", nullable = false)
-    private String firstName;
-    
-    @NotBlank(message = "Last name is required")
-    @Column(name = "last_name", nullable = false)
-    private String lastName;
-    
-    @Email(message = "Email should be valid")
-    @Column(name = "email", unique = true)
-    private String email;
-    
-    @Min(value = 0, message = "Age should not be less than 0")
-    @Max(value = 150, message = "Age should not be greater than 150")
-    private Integer age;
-    
-    private String city;
-    private String profession;
-    
-    // Computed properties work with table columns
-    public String getFullName() {
-        return firstName + " " + lastName;
-    }
-    
-    // Standard constructors, getters and setters
-}
-```
-
-## Table integration
-
-`SpringDataRepository` wraps your Spring Data repository to work with webforJ components:
-
-:::tip
-For advanced table configuration options like virtualization, row selection, and custom renderers, see the [Table component](../../components/table/overview) documentation.
-:::
+The following example uses a `PersonRepository` that extends `JpaRepository` and `JpaSpecificationExecutor`. This combination enables sorting through column headers and dynamic filtering with specifications.
 
 ```java title="TableView.java"
 @Route
@@ -134,7 +96,7 @@ public class TableView extends Composite<Div> {
     // Wrap Spring Data repository for webforJ
     repository = new SpringDataRepository<>(personRepository);
     
-    // Connect to table - handles all data synchronization
+    // Connect to table
     table.setRepository(repository);
     
     // Define columns
@@ -146,21 +108,20 @@ public class TableView extends Composite<Div> {
     table.addColumn("city", Person::getCity);
     table.addColumn("profession", Person::getProfession);
     
-    // Enable features
-    table.setSelectionMode(Table.SelectionMode.MULTIPLE);
+    // Enable sorting
     table.getColumns().forEach(column -> column.setSortable(true));
   }
 }
 ```
 
-The repository handles pagination, sorting, and filtering automatically. Changes in the database reflect immediately in the UI through the repository's event system.
+The `setPropertyName()` method is important for sorting - it tells the adapter which JPA property to use in the `ORDER BY` clause when sorting by that column. Without it, sorting won't work for computed properties like `getFullName()`.
 
 ## Filtering with JPA specifications  
 
 `SpringDataRepository` uses JPA Specifications for dynamic queries an they applied to the repository `findBy`, `count` operations.
 
-:::tip
-To understand how filtering works with the repository pattern in webforJ, including base filters and filter composition, see [Repository patterns](../../advanced/repository/overview).
+:::tip[Learn more about filtering]
+To understand how filtering works with webforJ repositories, including base filters and filter composition, see the [Repository documentation](../../advanced/repository/overview).
 ::: 
 
 ```java
