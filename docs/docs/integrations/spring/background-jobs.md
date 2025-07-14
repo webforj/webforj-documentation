@@ -54,7 +54,7 @@ public class BackgroundService {
       }
 
       return CompletableFuture.completedFuture(
-        "Task completed successfully from back ground service!");
+        "Task completed successfully from background service!");
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
       return CompletableFuture.failedFuture(e);
