@@ -3,15 +3,19 @@ sidebar_position: 50
 title: Deploying Additional Servlets
 ---
 
-webforJ routes all requests through `WebforjServlet`, which is mapped to `/*` in web.xml. This servlet handles the component lifecycle, routing, and UI updates for your webforJ app. 
+webforJ routes all requests through `WebforjServlet`, which is mapped to `/*` in web.xml by default. This servlet manages the component lifecycle, routing, and UI updates that power your webforJ app.
 
-Sometimes you need to deploy additional servlets alongside your webforJ app - for example, when integrating third-party libraries that provide their own servlets, or when you need servlet features that operate outside of webforJ's component model.
+In some scenarios, you may need to deploy additional servlets alongside your webforJ app:
+- Integrating third-party libraries that provide their own servlets
+- Implementing REST APIs or webhooks
+- Handling file uploads with custom processing
+- Supporting legacy servlet-based code
 
-webforJ supports two approaches for deploying custom servlets:
+webforJ provides two approaches for deploying custom servlets alongside your app:
 
 ## Approach 1: Remapping `WebforjServlet`
 
-By remapping WebforjServlet from `/*` to a specific path like `/ui/*`, you free up the URL namespace for custom servlets. This approach requires modifying `web.xml` but gives custom servlets direct access to their URL patterns.
+This approach remaps the `WebforjServlet` from `/*` to a specific path like `/ui/*`, freeing up the URL namespace for custom servlets. While this requires modifying `web.xml`, it gives custom servlets direct access to their URL patterns without any proxy overhead.
 
 ```xml
 <web-app>
@@ -55,7 +59,7 @@ This property remaps `WebforjServlet` from the default `/*` to `/ui/*`, freeing 
 
 ## Approach 2: `WebforjServlet` proxy configuration
 
-Keep `WebforjServlet` at `/*` and configure custom servlets in `webforJ.conf`. `WebforjServlet` will intercept all requests and proxy matching patterns to your custom servlets.
+This approach keeps `WebforjServlet` at `/*` and configures custom servlets in `webforJ.conf`. The `WebforjServlet` intercepts all requests and proxies matching patterns to your custom servlets.
 
 ### Standard web.xml configuration
 
