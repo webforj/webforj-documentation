@@ -118,7 +118,7 @@ The `setPropertyName()` method is important for sorting - it tells the adapter w
 
 ## Filtering with JPA specifications  
 
-`SpringDataRepository` uses JPA Specifications for dynamic queries an they applied to the repository `findBy`, `count` operations.
+`SpringDataRepository` uses JPA Specifications for dynamic queries and they are applied to the repository `findBy` and `count` operations.
 
 :::tip[Learn more about filtering]
 To understand how filtering works with webforJ repositories, including base filters and filter composition, see the [Repository documentation](../../advanced/repository/overview).
