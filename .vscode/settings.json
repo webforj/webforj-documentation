@@ -25,4 +25,10 @@
     "com.basis.*",
     "javax.swing.*",
   ],
+  "cSpell.words": [
+    "startforJ",
+    "webforJ",
+    "Pprod",
+    "frontmatter"
+  ]
 }

@@ -1,7 +1,6 @@
 ---
 sidebar_position: 1
 title: Table
-sidebar_class_name: has-new-content
 ---
 
 <DocChip chip='shadow' />

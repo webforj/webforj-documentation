@@ -1,7 +1,6 @@
 ---
 title: InfiniteScroll
 sidebar_position: 60
-sidebar_class_name: new-content
 ---
 
 <DocChip chip="shadow" />
@@ -49,7 +48,7 @@ You can reset this flag using `setCompleted(false)` if you later allow the user 
 
 ## Loading indicator customization
 
-By default, `InfiniteScroll` shows a built-in loading indicator — a small animated [`Spinner`](../components/spinner) along with a “Loading data” text. You can change the displayed text by passing a custom message to the `InfiniteScroll` constructor or by using `setText()`.
+By default, `InfiniteScroll` shows a built-in loading indicator - a small animated [`Spinner`](../components/spinner) along with a “Loading data” text. You can change the displayed text by passing a custom message to the `InfiniteScroll` constructor or by using `setText()`.
 
 ```java
 InfiniteScroll infiniteScroll = new InfiniteScroll("Fetching more records...");
