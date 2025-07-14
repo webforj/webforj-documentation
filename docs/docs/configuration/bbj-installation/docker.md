@@ -148,7 +148,6 @@ in the previous step.
 
 <ComponentArchetype
 project="bbj-hello-world"
-flavor="webforj"
 />
 
 ### Launching the app

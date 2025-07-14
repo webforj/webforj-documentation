@@ -4,7 +4,7 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import CodeBlock from "@theme/CodeBlock";
 
-export default function ComponentArchetype({ project,flavor }) {
+export default function ComponentArchetype({ project, flavor = "webforj" }) {
   return (<>
     <p>To create and scaffold a new <code>{project}</code> project, follow these steps:
     </p>
@@ -30,8 +30,8 @@ export default function ComponentArchetype({ project,flavor }) {
 -DarchetypeVersion=LATEST \\
 -DgroupId=org.example \\
 -DartifactId=my-app \\
--Dversion=1.0-SNAPSHOT \\
--Dflavor=${flavor}\\
+-Dversion=1.0-SNAPSHOT ${project !== 'bbj-hello-world' ? `\\
+-Dflavor=${flavor}` : ''}\\
 -DappName=MyApp`}
         </CodeBlock>
       </TabItem>
@@ -43,8 +43,8 @@ export default function ComponentArchetype({ project,flavor }) {
 -DarchetypeVersion="LATEST" \`
 -DgroupId="org.example" \`
 -DartifactId="my-app" \`
--Dversion="1.0-SNAPSHOT" \`
--Dflavor=${flavor}\`
+-Dversion="1.0-SNAPSHOT" ${project !== 'bbj-hello-world' ? `\`
+-Dflavor=${flavor}` : ''}\`
 -DappName="MyApp"`}
         </CodeBlock>
       </TabItem>
@@ -56,8 +56,8 @@ export default function ComponentArchetype({ project,flavor }) {
 -DarchetypeVersion="LATEST" ^
 -DgroupId="org.example" ^
 -DartifactId="my-app" ^
--Dversion="1.0-SNAPSHOT" ^
--Dflavor=${flavor} ^
+-Dversion="1.0-SNAPSHOT" ${project !== 'bbj-hello-world' ? `^
+-Dflavor=${flavor}` : ''} ^
 -DappName="MyApp"`}
         </CodeBlock>
       </TabItem>
@@ -96,8 +96,8 @@ export default function ComponentArchetype({ project,flavor }) {
           <td><code>flavor</code></td>
           <td>
             Selects the project flavor. Options:<br/>
-            <strong>webforJ</strong> – Standard webforJ app (no Spring dependencies).<br/>
-            <strong>webforJ-spring</strong> – webforJ app with Spring Boot integration and dependency injection (requires webforJ 25.02 or later).
+            <strong>webforJ</strong> - Standard webforJ app.<br/>
+            <strong>webforJ-spring</strong> - webforJ app with Spring Boot support (requires webforJ 25.02 or later).
           </td>
         </tr>
         <tr>

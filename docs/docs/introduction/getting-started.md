@@ -37,8 +37,8 @@ When you create an app with [startforJ](https://docs.webforj.com/startforj), you
 - Flavor
 
 There are two flavor options to choose from with "webforJ Only" being the default:
-  - **webforJ Only**: Standard webforJ app (no Spring dependencies)
-  - **webforJ + Spring Boot**: webforJ app with Spring Boot integration and dependency injection
+  - **webforJ Only**: Standard webforJ app
+  - **webforJ + Spring Boot**: webforJ app with Spring Boot support
 
 :::caution Spring Boot support
 Spring Boot flavor is only available in webforJ version 25.02 and higher. If you select this option, make sure to choose a compatible version.
@@ -69,10 +69,14 @@ Before running your app, install the [prerequisites](./prerequisites.md) if you 
 Then, navigate to the project's root directory and run the following command:
 
 ```bash
+# for standard webforj app
 mvn jetty:run
+
+# for webforj + Spring Boot
+mvn spring-boot:run
 ```
 
-This command uses the Jetty Maven plugin to start a Jetty server. Once the server is running, open your browser and go to [http://localhost:8080](http://localhost:8080) to view the app.
+Once the server is running, open your browser and go to [http://localhost:8080](http://localhost:8080) to view the app.
 
 :::info Licensing and watermark
 For information on the watermark present in unlicensed projects, see [Licensing and Watermark](../configuration/licensing-and-watermark).

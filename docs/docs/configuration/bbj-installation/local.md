@@ -120,7 +120,6 @@ Once BBj and the required webforJ plugin are installed and configured, you can c
 
 <ComponentArchetype
 project="bbj-hello-world"
-flavor="webforj"
 />
 
 ## 4. Launching the app
