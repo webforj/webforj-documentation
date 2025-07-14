@@ -35,3 +35,4 @@ Spring Boot
 Spring Data
 JPA
 DevTools
+CRUD
