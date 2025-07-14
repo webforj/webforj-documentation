@@ -29,10 +29,10 @@ Before running your app, install the [prerequisites](../../introduction/prerequi
 Then, navigate to the project's root directory and run the following command:
 
 ```bash
-# for standard webforj app
+# for standard webforJ app
 mvn jetty:run
 
-# for webforj + Spring Boot
+# for webforJ + Spring Boot
 mvn spring-boot:run
 ```
 
