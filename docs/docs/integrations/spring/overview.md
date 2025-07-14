@@ -2,6 +2,7 @@
 title: Spring Framework
 sidebar_position: 0
 hide_table_of_contents: true
+hide_giscus_comments: true
 ---
 
 <Head>
@@ -11,11 +12,6 @@ hide_table_of_contents: true
   }
   `}</style>
 </Head>
-
-<!-- vale off -->
-import DocCardList from '@theme/DocCardList';
-
-<!-- vale on -->
 
 Many Java teams already use [Spring Boot](https://spring.io/projects/spring-boot) for building applications. Spring integration with webforJ now lets you add webforJ's UI components to existing Spring applications, or use Spring's features in new webforJ projects.
 

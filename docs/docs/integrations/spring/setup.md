@@ -157,7 +157,7 @@ Replace the Jetty plugin with the Spring Boot Maven plugin. Remove any existing 
 
 ### Step 4: Convert your app class
 
-Transform your main App class into a Spring Boot app by adding the necessary Spring annotations and a main method:
+Transform your main `App` class into a Spring Boot app by adding the necessary Spring annotations and a main method:
 
 ```java title="Application.java"
 package com.example;

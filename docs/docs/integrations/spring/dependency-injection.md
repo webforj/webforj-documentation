@@ -15,7 +15,7 @@ For a comprehensive understanding of dependency injection patterns and Spring's 
 
 webforJ handles route creation differently when Spring is present. The framework's object creation mechanism detects Spring Boot on the classpath and delegates to Spring's `AutowireCapableBeanFactory` for creating instances with dependency injection.
 
-For classes discovered through `@Routify` scanning, webforJ always creates fresh instances - never reusing existing Spring beans. Each user navigation receives a clean route instance with no shared state. The creation process:
+For classes discovered through `@Routify` scanning, webforJ always creates fresh instances and never reuses existing Spring beans. Each user navigation receives a clean route instance with no shared state. The creation process:
 
 1. User navigates to a route
 2. webforJ requests a new instance (ignoring any existing Spring bean definitions)

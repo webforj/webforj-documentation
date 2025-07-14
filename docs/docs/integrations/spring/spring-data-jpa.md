@@ -3,14 +3,12 @@ title: Spring Data JPA
 sidebar_position: 20
 ---
 
-import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
-
 Spring Data JPA is the de facto standard for data access in Spring applications, providing repository abstractions, query methods, and specifications for complex queries. The webforJ `SpringDataRepository` adapter bridges Spring Data repositories with webforJ's UI components, enabling you to bind JPA entities directly to UI components, implement dynamic filtering with JPA Specifications, and handle pagination.
 
 The adapter detects which Spring Data interfaces your repository implements - whether it's `CrudRepository`, `PagingAndSortingRepository`, or `JpaSpecificationExecutor` - and automatically provides the corresponding features in your UI. This means your existing Spring Data repositories work with webforJ components without modification, while maintaining type safety and using your existing domain model.
 
 :::tip[Learn more about Spring Data JPA]
-For a comprehensive understanding of Spring Data JPA features and query methods, see [Spring Data JPA Reference Documentation](https://docs.spring.io/spring-data/jpa/reference/).
+For a comprehensive understanding of Spring Data JPA features and query methods, see [Spring Data JPA documentation](https://docs.spring.io/spring-data/jpa/reference/).
 :::
 
 ## Using SpringDataRepository
@@ -52,7 +50,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long>,
 
 Each Spring Data interface adds specific capabilities that `SpringDataRepository` can use:
 
-- **CrudRepository** - Basic operations: save, delete, findById, findAll
+- **CrudRepository** - Basic operations: `save`, `delete`, `findById`, `findAll`
 - **PagingAndSortingRepository** - Adds paginated queries and sorting
 - **JpaRepository** - Combines CRUD and paging/sorting with batch operations
 - **JpaSpecificationExecutor** - Dynamic queries using JPA Specifications
