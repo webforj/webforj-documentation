@@ -21,7 +21,7 @@ The simplest way to create a new webforJ app is [startforJ](https://docs.webforj
 
 <div class="videos-container">
   <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/archetypes/starforj.mov" type="video/mp4" />
+    <source src="https://cdn.webforj.com/webforj-documentation/video/archetypes/startforj.mp4" type="video/mp4" />
   </video>
 </div>
 
