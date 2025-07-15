@@ -1,6 +1,5 @@
 package com.webforj.samples.views.toast;
 
-import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.button.Button;
@@ -18,7 +17,6 @@ import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("Toast Cookies")
-@InlineStyleSheet("context://css/toast/toastCookies.css")
 public class ToastCookiesView extends Composite<Div> {
 
   private Toast cookiesToast;
@@ -39,12 +37,10 @@ public class ToastCookiesView extends Composite<Div> {
     cookieIcon = TablerIcon.create("cookie");
     cookieIcon.setStyle("width", "100px");
     cookieIcon.setStyle("height", "100px");
-    cookiesToast.add(cookieIcon);
 
     toastText = new Paragraph("We use cookies to improve your experience. "
         + "By clicking 'Accept all cookies', you agree to our ");
     toastText.add(new Anchor("#", "Cookie Policy"));
-    cookiesToast.add(toastText);
 
     acceptButton = new Button("Accept all cookies").setTheme(ButtonTheme.PRIMARY);
     acceptButton.addClassName("acceptbutton");
@@ -63,9 +59,15 @@ public class ToastCookiesView extends Composite<Div> {
     buttons = FlexLayout.create(acceptButton, necessaryButton)
         .horizontal()
         .build();
-    buttons.setSpacing("var(--dwc-space-l)").setWidth("100%");
+    buttons.setSpacing("var(--dwc-space-l)");
 
-    cookiesToast.add(buttons);
+    FlexLayout toastContent = FlexLayout.create(cookieIcon, toastText, buttons)
+        .vertical()
+        .align().center()
+        .build();
+    toastContent.setSpacing("var(--dwc-space-m)");
+
+    cookiesToast.addToMessage(toastContent);
     cookiesToast.open();
   }
 }

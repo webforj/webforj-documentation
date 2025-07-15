@@ -24,8 +24,10 @@ public class ToastPlacementView extends Composite<FlexLayout> {
   Button showToastButton;
   
   public ToastPlacementView() {
-    getBoundComponent().setDirection(FlexDirection.ROW).setAlignment(FlexAlignment.CENTER)
-        .setJustifyContent(FlexJustifyContent.CENTER).setMargin("150px 20px")
+    getBoundComponent().setDirection(FlexDirection.ROW)
+        .setAlignment(FlexAlignment.CENTER)
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .setHeight("100vh")
         .setSpacing("var(--dwc-space-m)");
 
     placementChoiceBox = new ChoiceBox();
