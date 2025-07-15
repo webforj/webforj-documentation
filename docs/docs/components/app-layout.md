@@ -56,7 +56,6 @@ myApp.setFooterOffscreen(false);
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/fullnavbar/AppLayoutFullNavbarView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayout.css'/>
 
- -->
 ## Multiple toolbars
 
 The navbar has no limit to the number of toolbars you can add. A `Toolbar` is a horizontal container component that holds a set of action buttons, icons, or other controls. To add an additional toolbar, simply use the `addToHeader()` method to add another `Toolbar` component.
@@ -66,7 +65,7 @@ The following demo shows how to use two toolbars, The first one houses the drawe
 <AppLayoutViewer path='/webforj/applayoutmultipleheaders/content/Dashboard?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/multipleheaders/AppLayoutMultipleHeadersView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayout.css'/>
- -->
+
 ## Sticky toolbars
 
 A sticky toolbar is a toolbar that remains visible at the top of the page when the user scrolls down but the navbar height is collapsed to make more space available for the page's content. Usually this kind of toolbar contains a fixed navigation menu which is relevant to the current page.
@@ -80,7 +79,7 @@ With the help of the CSS custom property `--dwc-app-layout-header-collapse-heigh
 <AppLayoutViewer path='/webforj/applayoutstickytoolbar/content/Dashboard?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/stickytoolbar/AppLayoutStickyToolbarView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayout.css'/>
- -->
+
 ## Mobile navigation layout
 
 The bottom navbar can be used to provide a different version of the navigation at the bottom of app. This type of navigation is specifically popular in mobile apps.
@@ -91,15 +90,10 @@ Same as `AppLayout.setHeaderReveal()`, `AppLayout.setFooterReveal()` is supporte
 
 By default, when the screen width is 800px or less , the drawer will be switched to popover mode. This is called the breakpoint. The popover mode means that the drawer will pop over the content area with an overlay. It's possible to configure the breakpoint by using the `setDrawerBreakpoint()` method and the breakpoint must be a valid [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries).
 
-<!-- <AppLayoutViewer path='/webforj/applayoutmobile?' mobile='true'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AppLayoutMobileView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayoutMobile.css'
-/> -->
-
 <AppLayoutViewer path='/webforj/applayoutmobiledrawer/?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/mobiledrawer/AppLayoutMobileDrawerView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayoutMobile.css'
-/> -->
+/>
 
 ## Drawer utilities
 
