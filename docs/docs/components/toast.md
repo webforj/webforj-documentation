@@ -111,7 +111,6 @@ Although `Toast` notifications don't require user interaction by default, webfor
 <ComponentDemo 
 path='/webforj/toastcookies?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastCookiesView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/toast/toastCookies.css'
 height='350px'
 />
 
