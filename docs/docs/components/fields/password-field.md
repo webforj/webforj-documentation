@@ -31,8 +31,8 @@ You can retrieve the current value using:
 passwordField.getValue();
 ```
 
-:::tip
-Although the field visually masks the content, the returned value from `getValue()` is still a plain string. Be mindful of this when handling sensitive data. And encrypt or transform it before storage.
+:::warning sensitive data
+Although the field visually masks the content, the returned value from `getValue()` is still a plain string. Be mindful of this when handling sensitive data and encrypt or transform it before storage.
 :::
 
 To set or reset the value programmatically:
