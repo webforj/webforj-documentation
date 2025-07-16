@@ -1,31 +1,11 @@
-body {
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-}
-
-.dwc-logo::part(content) {
+.webforJ-logo::part(content) {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-html[data-app-theme="dark"] .dwc-logo{
+html[data-app-theme="dark"] .webforJ-logo{
   filter: brightness(0) invert(1);
-}
-
-.drawer__logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--dwc-space-m) 0;
-  margin-bottom: var(--dwc-space-m);
-  border-bottom: thin solid var(--dwc-color-default) !important;
-}
-
-.drawer__logo img {
-  max-width: 100px;
-  border-radius: 10px;
 }
 
 .welcome__drawer::part(control) {
