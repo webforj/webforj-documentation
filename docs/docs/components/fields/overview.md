@@ -1,6 +1,7 @@
 ---
 sidebar_position: 20
 title: Fields
+hide_giscus_comments: true
 ---
 
 <JavadocLink type="foundation" location="com/webforj/component/field/AbstractField"/>
