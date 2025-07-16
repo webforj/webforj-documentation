@@ -140,7 +140,7 @@ layout.addToDrawerHeaderActions(
 Drawer actions appear in the **right-aligned section** of the drawer’s header.
 
 <AppLayoutViewer path='/webforj/applayoutdrawerutility/content/Dashboard/?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/applayoutdrawerutility/applayoutdrawerutility/AppLayoutDrawerUtilityView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/applayoutdrawerutility/AppLayoutDrawerUtilityView.java'
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayout.css'
 />
 
