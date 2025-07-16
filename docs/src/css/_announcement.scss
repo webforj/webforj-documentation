@@ -1,5 +1,5 @@
 #__docusaurus {
-  div[class^="announcementBar_"] {
+  div[class*="announcementBar_"] {
     background: var(--announcement-background);
     color: var(--announcement-color);
     height: var(--announcement-bar-height);
