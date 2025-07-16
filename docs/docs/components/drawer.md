@@ -33,7 +33,7 @@ height='600px'
 
 ## Label
 
-The `setLabel()` method can provide a meaningful description of the `Drawer’s` content. When a label is set, assistive technologies like screen readers can announce it, helping users understand the purpose of the `Drawer` without seeing its visual contents.
+The `setLabel()` method can provide a meaningful description of the content inside a `Drawer`. When a label is set, assistive technologies like screen readers can announce it, helping users understand the purpose of the `Drawer` without seeing its visual contents.
 
 ```java
 Drawer drawer = new Drawer();
@@ -41,16 +41,23 @@ drawer.setLabel("Task Manager");
 ```
 
 :::tip Descriptive Labels
-Use concise and descriptive labels that reflect the `Drawer’s` purpose. Avoid generic terms like “Menu” or “Panel” when a more specific name can be used.
+Use concise and descriptive labels that reflect the purpose of the `Drawer`. Avoid generic terms like “Menu” or “Panel” when a more specific name can be used.
+:::
 
 ## Size
 
-To control the size of a `Drawer`, apply the `--dwc-drawer-size` CSS custom property. This sets the `Drawer’s` width for left/right placement or height for top/bottom placement.
+To control the size of a `Drawer`, set a value for the CSS custom property `--dwc-drawer-size`. This sets the width of the `Drawer` for left/right placement or height for top/bottom placement.
 
-You can define the value using any valid CSS unit such as a percentage, pixels, or vw/vh.
+You can define the value using any valid CSS unit such as a percentage, pixels, or vw/vh, using either Java or CSS:
 
 ```java
-.my-drawer::part(control) {
+// Java
+drawer.setStyle("--dwc-drawer-size", "40%");
+```
+
+```css
+/* CSS */
+dwc-drawer {
   --dwc-drawer-size: 40%;
 }
 ```
@@ -58,7 +65,14 @@ You can define the value using any valid CSS unit such as a percentage, pixels, 
 To prevent the `Drawer` from growing too large, use `--dwc-drawer-max-size` alongside it:
 
 ```java
-.my-drawer::part(control) {
+// Java
+drawer.setStyle("--dwc-drawer-size", "40%");
+drawer.setStyle("--dwc-drawer-max-size", "800px");
+```
+
+```css
+/* CSS */
+dwc-drawer {
   --dwc-drawer-size: 40%;
   --dwc-drawer-max-size: 800px;
 }
@@ -94,7 +108,7 @@ Supported events:
 - `DrawerOpenEvent`: Fired when the drawer is fully opened.
 - `DrawerCloseEvent`: Fired when the drawer is fully closed.
 
-You can attach listeners to these events to run logic when the `Drawer’s` state changes.
+You can attach listeners to these events to run logic when the state of the `Drawer` changes.
 
 ```java
 Drawer drawer = new Drawer();

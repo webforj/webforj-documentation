@@ -50,8 +50,8 @@ public class DrawerWelcomeView extends Composite<FlexLayout> {
 
     // Drawer's logo container and logo
     Toolbar drawerLogo = new Toolbar();
-    drawerLogo.addClassName("dwc-logo").setWidth("100%")
-        .add(new Img("https://docs.webforj.com/img/webforj_icon.svg"));
+    drawerLogo.addClassName("webforJ-logo").setWidth("100%")
+        .add(new Img("ws://img/webforj_icon.svg", "logo"));
     navigation.add(drawerLogo);
 
     // Drawer's Menu with AppNav
@@ -88,7 +88,7 @@ public class DrawerWelcomeView extends Composite<FlexLayout> {
     Button getStarted = new Button("Get Started").setTheme(ButtonTheme.PRIMARY);
     getStarted.onClick(e -> welcomeDrawer.close());
 
-    FlexLayout layout = FlexLayout.create(new Img("/fun.svg")
+    FlexLayout layout = FlexLayout.create(new Img("/fun.svg", "A gathering of people.")
         .setSize("200px", "200px"),
       new H2("Welcome to webforJ"),
       new Paragraph("Lorem Ipsum is simply dummy text of the printing and typesetting industry")
