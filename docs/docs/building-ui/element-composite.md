@@ -31,7 +31,7 @@ The `ElementComposite` class supports several annotations to simplify integratio
   @StyleSheet("https://cdn.example.com/library.css")
   ```
 
-These annotations are typically placed on your `ElementComposite` subclass to ensure resources are loaded automatically when the component is used.
+These annotations are typically placed on your `ElementComposite` subclass to make sure resources are loaded automatically when the component is used.
 
 
 This guide demonstrates integration of the [Shoelace QR code web component](https://shoelace.style/components/qr-code) using the `ElementComposite` class.
@@ -114,7 +114,7 @@ private final PropertyDescriptor<Type> ATTRIBUTE_NAME = PropertyDescriptor.attri
 
 ### Defining the type of properties
 
-The generic type parameter `<Type>` specifies the Java type of the property or attribute. This ensures type safety when setting or getting values.
+The generic type parameter `<Type>` specifies the Java type of the property or attribute. This guarantees type safety when setting or getting values.
 
 **Example:**
 ```java
@@ -137,7 +137,7 @@ String title = get(TITLE, false, String.class);
 
 ### Best practices for validating properties
 
-To ensure valid values, add validation logic in your setter methods or before calling `set()`. For example:
+To make sure only valid values are used, add validation logic in your setter methods or before calling `set()`. For example:
 ```java
 public void setCount(int count) {
     if (count < 0) {
@@ -146,7 +146,6 @@ public void setCount(int count) {
     set(COUNT, count);
 }
 ```
-This approach helps prevent invalid state and makes your components more robust.
 
 ### Enum-style properties
 
@@ -163,8 +162,6 @@ private final PropertyDescriptor<Status> STATUS = PropertyDescriptor.attribute("
 set(STATUS, Status.INACTIVE);
 Status status = get(STATUS);
 ```
-
-This pattern ensures only valid values are used and improves code readability.
 
 <ComponentDemo 
 path='/webforj/qrproperties?' 
