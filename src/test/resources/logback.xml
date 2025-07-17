@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
@@ -23,11 +26,14 @@
     <logger name="org.apache.maven" level="WARN"/>
     <logger name="com.microsoft.playwright" level="WARN"/>
     <logger name="org.junit" level="WARN"/>
+    
+    <logger name="com.webforj.App" level="ERROR"/>
+    <logger name="com.webforj" level="WARN"/>
+    <logger name="PlaywrightFramework" level="ERROR"/>
+    
+    <logger name="utils" level="WARN"/>
 
-    <logger name="PlaywrightFramework" level="INFO"/>
-    <logger name="utils" level="INFO"/>
-
-    <root level="WARN">
+    <root level="ERROR">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
     </root>

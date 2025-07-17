@@ -46,7 +46,7 @@ public class BaseTest {
     }
 
     @BeforeEach
-public void setupTest(TestInfo testInfo) {
+    public void setupTest(TestInfo testInfo) {
     try {
         String displayName = testInfo.getDisplayName();
         currentTestName = displayName;
