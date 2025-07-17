@@ -1,7 +1,7 @@
 package com.webforj.samples.views.fields.colorfield;
 
 import java.awt.Color;
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.event.ModifyEvent;
 import com.webforj.component.field.ColorField;
@@ -14,7 +14,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@InlineStyleSheet("context://css/fields/colorfield/colorFieldDemo.css")
+@StyleSheet("context://css/fields/colorfield/colorFieldDemo.css")
 @Route
 @FrameTitle("Color Field Demo")
 public class ColorFieldView extends Composite<FlexLayout> {
@@ -44,7 +44,7 @@ public class ColorFieldView extends Composite<FlexLayout> {
         .justify().center()
         .align().center()
         .build();
-    
+
     colorDisplay.setSpacing("20px");
 
     Paragraph title = new Paragraph("Tetradic complementary colors:");

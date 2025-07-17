@@ -3,7 +3,7 @@ package com.webforj.samples.views.table;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -13,8 +13,8 @@ import com.webforj.component.table.Column;
 import com.webforj.component.table.Table;
 import com.webforj.router.annotation.Route;
 
-@Route
-@InlineStyleSheet(/* css */ """
+// TODO refactor css.
+@StyleSheet(/* css */ """
   dwc-table::part(row-even) {
     background-color: var(--dwc-color-gray-alt);
   }
@@ -29,6 +29,7 @@ import com.webforj.router.annotation.Route;
     color: var(--dwc-color-danger-text);
   }
 """)
+@Route
 public class TableDynamicStylingView extends Composite<FlexLayout> {
 
   private final FlexLayout self = getBoundComponent();

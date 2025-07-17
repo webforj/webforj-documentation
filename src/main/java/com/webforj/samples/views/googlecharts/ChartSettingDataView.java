@@ -1,6 +1,6 @@
 package com.webforj.samples.views.googlecharts;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.googlecharts.GoogleChart;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
@@ -13,7 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@InlineStyleSheet(/*css*/ """
+// TODO refactor css.
+@StyleSheet(/*css*/ """
     .window {
       display: flex;
       flex-direction: column;

@@ -2,7 +2,7 @@ package com.webforj.samples.views.tree;
 
 import static com.webforj.component.tree.Tree.node;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.layout.flexlayout.FlexDirection;
@@ -13,9 +13,10 @@ import com.webforj.component.tree.event.TreeDoubleClickEvent;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
+// TODO refactor css.
 @Route
 @FrameTitle("Tree Modify View")
-@InlineStyleSheet( /* css */"""
+@StyleSheet( /* css */"""
   :root {
     --dwc-tree-icon-fill: var(--dwc-color-primary);
   }

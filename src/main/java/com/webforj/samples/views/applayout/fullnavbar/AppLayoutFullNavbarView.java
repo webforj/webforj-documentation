@@ -1,9 +1,8 @@
 package com.webforj.samples.views.applayout.fullnavbar;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.H3;
-import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.icons.Icon;
 import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.applayout.AppDrawerToggle;
@@ -16,7 +15,7 @@ import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
 
 @Route
-@InlineStyleSheet("context://css/applayout/applayout.css")
+@StyleSheet("ws://css/applayout/applayout.css")
 @FrameTitle("AppLayout Full Navbar")
 public class AppLayoutFullNavbarView extends Composite<AppLayout> {
 

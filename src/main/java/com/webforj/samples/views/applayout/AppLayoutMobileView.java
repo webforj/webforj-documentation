@@ -1,6 +1,6 @@
 package com.webforj.samples.views.applayout;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.html.elements.Div;
@@ -18,8 +18,9 @@ import com.webforj.component.tabbedpane.TabbedPane.Alignment;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
+// TODO refactor css.
+@StyleSheet("context://css/applayout/applayoutMobile.css")
 @Route
-@InlineStyleSheet("context://css/applayout/applayoutMobile.css")
 @FrameTitle("AppLayout Mobile")
 public class AppLayoutMobileView extends Composite<AppLayout> {
   AppLayout self = getBoundComponent();

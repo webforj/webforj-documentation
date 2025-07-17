@@ -1,6 +1,6 @@
 package com.webforj.samples.views.tabbedpane;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.Expanse;
 import com.webforj.component.Theme;
@@ -14,7 +14,7 @@ import com.webforj.component.tabbedpane.TabbedPane;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@InlineStyleSheet(/*css */"""
+@StyleSheet(/*css */"""
   .window {
     display: flex;
     flex-direction: column;
@@ -46,9 +46,9 @@ public class TabbedPaneExpanseThemeView extends Composite<Div> {
     pane.addTab(new Tab("Dashboard", dashboardIcon));
     pane.addTab(new Tab("Orders", ordersIcon));
     pane.addTab(new Tab("Customers", customersIcon));
-		pane.addTab(new Tab("Products", productsIcon));
+    pane.addTab(new Tab("Products", productsIcon));
     pane.addTab(new Tab("Documents", documentsIcon));
-    
+
     for(Theme theme : Theme.values()){
       themes.add(theme.toString());
     }

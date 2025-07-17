@@ -2,7 +2,7 @@ package com.webforj.samples.views.toolbar;
 
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.H1;
 import com.webforj.component.html.elements.H3;
@@ -14,7 +14,7 @@ import com.webforj.component.layout.toolbar.Toolbar;
 
 @Route
 @FrameTitle("Toolbar Slots")
-@InlineStyleSheet(
+@StyleSheet(
 /* css */"""
       dwc-toolbar {
       --dwc-toolbar-background: hsl(265, 100%, 47%);

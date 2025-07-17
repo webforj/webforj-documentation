@@ -1,6 +1,6 @@
 package com.webforj.samples.views.terminal;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.terminal.Terminal;
 import com.webforj.component.terminal.event.TerminalDataEvent;
@@ -24,7 +24,7 @@ import java.util.Queue;
 
 @Route
 @FrameTitle("Custom Terminal")
-@InlineStyleSheet("""
+@StyleSheet("""
   dwc-window-center {
     background-color: #1e1e1e;
   }

@@ -1,6 +1,6 @@
 package com.webforj.samples.views.applayout.mobiledrawer;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H1;
@@ -22,8 +22,9 @@ import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
 import com.webforj.samples.views.applayout.DrawerLogo;
 
+// TODO refactor css.
+@StyleSheet("context://css/applayout/applayout.css")
 @Route
-@InlineStyleSheet("context://css/applayout/applayout.css")
 @FrameTitle("AppLayout Mobile Drawer")
 public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
   AppLayout self = getBoundComponent();

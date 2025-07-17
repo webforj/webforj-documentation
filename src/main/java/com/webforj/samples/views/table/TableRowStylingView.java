@@ -1,6 +1,6 @@
 package com.webforj.samples.views.table;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
@@ -10,14 +10,15 @@ import com.webforj.router.annotation.Route;
 import java.util.ArrayList;
 import java.util.List;
 
-@Route
-@InlineStyleSheet(/* css */ """
+// TODO refactor css.
+@StyleSheet(/* css */ """
       dwc-table::part(row-highlight) {
         background-color: var(--dwc-color-info-alt);
         color: var(--dwc-color-info-text);
         font-weight: bold;
       }
     """)
+@Route
 public class TableRowStylingView extends Composite<FlexLayout> {
 
   private final FlexLayout self = getBoundComponent();

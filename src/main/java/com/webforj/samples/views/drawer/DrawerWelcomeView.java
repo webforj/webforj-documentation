@@ -1,7 +1,7 @@
 package com.webforj.samples.views.drawer;
 
 import com.webforj.App;
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.Expanse;
 import com.webforj.component.button.Button;
@@ -27,7 +27,7 @@ import com.webforj.exceptions.WebforjException;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@InlineStyleSheet("context://css/drawer/drawerWelcome.css")
+@StyleSheet("context://css/drawer/drawerWelcome.css")
 @Route
 @FrameTitle("Drawer Welcome App")
 public class DrawerWelcomeView extends Composite<FlexLayout> {
@@ -65,22 +65,22 @@ public class DrawerWelcomeView extends Composite<FlexLayout> {
 		TabbedPane drawerMenu = new TabbedPane();
 		drawer.add(drawerMenu);
 
-	
+
 		drawerMenu.setBorderless(true);
 		drawerMenu.setPlacement(TabbedPane.Placement.LEFT);
 
 		// Adding tabs to drawer menu
 		Icon dashboardIcon = TablerIcon.create("dashboard");
-    Icon ordersIcon = TablerIcon.create("shopping-cart");
-    Icon customersIcon = TablerIcon.create("users");
-    Icon productsIcon = TablerIcon.create("box");
-    Icon documentsIcon = TablerIcon.create("files");
+	Icon ordersIcon = TablerIcon.create("shopping-cart");
+	Icon customersIcon = TablerIcon.create("users");
+	Icon productsIcon = TablerIcon.create("box");
+	Icon documentsIcon = TablerIcon.create("files");
 
-    drawerMenu.addTab(new Tab("Dashboard", dashboardIcon));
-    drawerMenu.addTab(new Tab("Orders", ordersIcon));
-    drawerMenu.addTab(new Tab("Customers", customersIcon));
+	drawerMenu.addTab(new Tab("Dashboard", dashboardIcon));
+	drawerMenu.addTab(new Tab("Orders", ordersIcon));
+	drawerMenu.addTab(new Tab("Customers", customersIcon));
 		drawerMenu.addTab(new Tab("Products", productsIcon));
-    drawerMenu.addTab(new Tab("Documents", documentsIcon));
+	drawerMenu.addTab(new Tab("Documents", documentsIcon));
 
 		// Welcome Drawer
 

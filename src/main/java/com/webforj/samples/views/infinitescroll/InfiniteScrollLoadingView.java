@@ -1,6 +1,6 @@
 package com.webforj.samples.views.infinitescroll;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.icons.FeatherIcon;
@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Route
 @FrameTitle("Custom Loading Indicator")
-@InlineStyleSheet("context://css/infinitescroll/infinitescroll.css")
+@StyleSheet("context://css/infinitescroll/infinitescroll.css")
 public class InfiniteScrollLoadingView extends Composite<Div> {
 
   public InfiniteScrollLoadingView() {
