@@ -8,9 +8,8 @@ import com.webforj.component.layout.flexlayout.FlexWrap;
 import com.webforj.component.optioninput.CheckBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.CHECKBOX_HORIZONTAL_TEXT)
+@Route("checkboxhorizontaltext")
 @FrameTitle("Checkbox Horizontal Text")
 public class CheckboxHorizontalTextView extends Composite<FlexLayout> {
 

@@ -11,9 +11,8 @@ import com.webforj.component.optiondialog.FileChooserFilter;
 import com.webforj.component.optiondialog.FileSaveDialog;
 import com.webforj.component.optiondialog.OptionDialog;
 import com.webforj.component.optiondialog.MessageDialog;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.FILE_SAVE_DIALOG_FILTERS)
+@Route("filesavedialogfilters")
 @FrameTitle("File Save Filters")
 public class FileSaveDialogFiltersView extends Composite<Div> {
   private FileSaveDialog dialog;

@@ -9,13 +9,12 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.spinner.SpinnerExpanse;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 /**
  * Demo to showcase the different customization options for the spinner in the BusyIndicator.
  */
 
-@Route(RouteConfig.BUSY_SPINNERS)
+@Route("busyspeeders")
 @FrameTitle("Busy Spinners")
 public class BusySpinnerDemoView extends Composite<Div> {
 

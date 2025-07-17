@@ -15,7 +15,6 @@ public class RadioButtonActivationIT extends BaseTest {
     @BeforeEach
     public void setupRadioButtonActivation() {
         navigateToRoute(RadioButtonActivationPage.getRoute());
-        page.waitForLoadState();
         radioButton = new RadioButtonActivationPage(page);
 
     }

@@ -7,9 +7,8 @@ import com.webforj.component.optioninput.RadioButton;
 import com.webforj.component.optioninput.RadioButton.Activation;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.RADIO_BUTTON_ACTIVATION)
+@Route("radiobuttonactivation")
 @FrameTitle("Radio Button Activation")
 public class RadioButtonActivationView extends Composite<FlexLayout> {
 

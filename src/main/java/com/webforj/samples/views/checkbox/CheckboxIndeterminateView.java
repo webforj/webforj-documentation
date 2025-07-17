@@ -7,9 +7,8 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.optioninput.CheckBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.CHECKBOX_INDETERMINATE)
+@Route("checkboxindeterminate") 
 @FrameTitle("Checkbox Indeterminate")
 public class CheckboxIndeterminateView extends Composite<FlexLayout> {
 

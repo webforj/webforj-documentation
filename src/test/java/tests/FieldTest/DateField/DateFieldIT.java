@@ -6,10 +6,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import pages.FieldPages.DateFieldPage;
 import tests.BaseTest;
+import utils.annotations.BrowserTest;
 
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
@@ -24,7 +24,7 @@ public class DateFieldIT extends BaseTest {
         dateFieldPage = new DateFieldPage(page);
     }
 
-    @Test
+    @BrowserTest
     public void testValidDates() {
         assumeTrue(!browserType.equalsIgnoreCase("webkit"), "Skipping on WebKit");
 
@@ -44,7 +44,7 @@ public class DateFieldIT extends BaseTest {
 
     }
 
-    @Test
+    @BrowserTest
     public void testEarlierReturnDate() {
         assumeTrue(!browserType.equalsIgnoreCase("webkit"), "Skipping on WebKit - Manually Tested on Safari");
         assumeTrue(!browserType.equalsIgnoreCase("firefox"), "Skipping on Firefox - Manually Tested on Firefox");
@@ -66,7 +66,7 @@ public class DateFieldIT extends BaseTest {
 
     }
 
-    @Test
+    @BrowserTest
     public void testInvalidString() {
         assumeTrue(!browserType.equalsIgnoreCase("webkit"), "Skipping on WebKit");
 
@@ -83,7 +83,7 @@ public class DateFieldIT extends BaseTest {
 
     }
 
-    @Test
+    @BrowserTest
     public void testExcessiveDate() {
         assumeTrue(!browserType.equalsIgnoreCase("webkit"), "Skipping on WebKit");
 
@@ -98,7 +98,7 @@ public class DateFieldIT extends BaseTest {
         assertThat(dateFieldPage.getDepartureInput()).hasAttribute("invalid", "");
     }
 
-    @Test
+    @BrowserTest
     public void testSpecialChar() {
         // Webkit has issue, this is not related the feature. Skip the webkit.
         assumeTrue(!browserType.equalsIgnoreCase("webkit"), "Skipping on WebKit");
@@ -115,7 +115,7 @@ public class DateFieldIT extends BaseTest {
         assertThat(dateFieldPage.getReturnInput().locator("input")).hasValue(today.toString());
     }
 
-    @Test
+    @BrowserTest
     public void testInvalidZeroDate() {
         assumeTrue(!browserType.equalsIgnoreCase("webkit"), "Skipping on WebKit");
 

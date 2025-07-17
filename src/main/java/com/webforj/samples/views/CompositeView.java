@@ -12,9 +12,8 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.optioninput.RadioButton;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.COMPOSITE_VIEW)
+@Route("composite")
 @InlineStyleSheet("context://css/composite.css")
 @FrameTitle("Composite Component")
 public class CompositeView extends Composite<Div> {

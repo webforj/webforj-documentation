@@ -10,7 +10,6 @@ import com.webforj.component.tabbedpane.Tab;
 import com.webforj.component.tabbedpane.TabbedPane;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet(/*css */"""
   .window {
@@ -20,7 +19,7 @@ import com.webforj.samples.config.RouteConfig;
     margin: 20px;
   }
 """)
-@Route(RouteConfig.TABBED_PANE_BORDER)
+@Route("tabbedpaneborder")
 @FrameTitle("Tabbed Pane Border")
 public class TabbedPaneBorderView extends Composite<Div> {
 

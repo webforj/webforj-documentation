@@ -7,9 +7,8 @@ import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.TEXT_AREA_STATES)
+@Route("textareastates")
 @FrameTitle("TextArea States")
 public class TextAreaStatesView extends Composite<FlexLayout> {
 

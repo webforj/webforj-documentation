@@ -6,10 +6,9 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.list.ComboBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet("context://css/lists/combobox/comboBoxDropDownType.css")
-@Route(RouteConfig.COMBO_BOX_DROPDOWN)
+@Route("comboboxdropdown")
 @FrameTitle("ComboBox Dropdown Type")
 public class ComboBoxDropdownTypeView extends Composite<Div> {
 

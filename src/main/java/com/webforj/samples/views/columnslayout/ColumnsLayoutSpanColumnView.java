@@ -7,11 +7,10 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.columnslayout.ColumnsLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 import java.util.List;
 
-@Route(RouteConfig.COLUMNS_LAYOUT_SPAN_COLUMN)
+@Route("columnslayoutspancolumn")
 @FrameTitle("Columns Layout Spans")
 public class ColumnsLayoutSpanColumnView extends Composite<Div> {
   TextField firstName = new TextField("First Name");

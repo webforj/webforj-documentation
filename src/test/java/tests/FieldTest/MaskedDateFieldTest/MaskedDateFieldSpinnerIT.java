@@ -7,10 +7,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.regex.Pattern;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import pages.FieldPages.MaskedDateField.MaskedDateFieldPage;
 import tests.BaseTest;
+import utils.annotations.BrowserTest;
+
 public class MaskedDateFieldSpinnerIT extends BaseTest {
 
     private MaskedDateFieldPage maskedDateField;
@@ -21,7 +22,7 @@ public class MaskedDateFieldSpinnerIT extends BaseTest {
         maskedDateField = new MaskedDateFieldPage(page);
     }
 
-    @Test
+    @BrowserTest
     public void testManualInput() {
         maskedDateField.getDateField().click();
         String originalValue = maskedDateField.getDateField().inputValue();
@@ -32,7 +33,7 @@ public class MaskedDateFieldSpinnerIT extends BaseTest {
         assertThat(maskedDateField.getDateField()).hasAttribute("readonly", "");
     }
 
-    @Test
+    @BrowserTest
     public void testSpinner() {
         String today = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         String tomorrow = LocalDate.now().plusDays(1).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
@@ -45,7 +46,7 @@ public class MaskedDateFieldSpinnerIT extends BaseTest {
         assertThat(maskedDateField.getDateField()).hasValue(today);
     }
 
-    @Test
+    @BrowserTest
     public void testFutureDateLimitation() {
         maskedDateField.getDateFieldIcon().click();
 

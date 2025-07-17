@@ -13,9 +13,8 @@ import com.webforj.component.table.Table;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.utilities.Assets;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.TABLE_OLYMPIC_WINNERS)
+@Route("tableolympicwinners")
 @FrameTitle("Olympic Winners Table")
 public class TableOlympicWinnersView extends Composite<Div> {
 

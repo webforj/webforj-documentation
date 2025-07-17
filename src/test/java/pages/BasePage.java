@@ -25,19 +25,12 @@ public abstract class BasePage {
 
     /**
      * Check if the current page title matches the expected title
-     * 
+     *
      * @return true if the title matches, false otherwise
      */
     public boolean isPageTitleCorrect() {
         String actualTitle = page.title();
         LoggerUtil.info("Checking page title. Expected: " + pageTitle + ", Actual: " + actualTitle);
         return actualTitle.contains(pageTitle);
-    }
-
-    /**
-     * Wait for the page to load completely
-     */
-    public void waitForPageLoad() {
-        page.waitForLoadState();
     }
 }

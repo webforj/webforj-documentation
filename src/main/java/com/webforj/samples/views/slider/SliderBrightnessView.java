@@ -16,9 +16,7 @@ import java.util.Map;
 
 import static java.util.Map.entry;
 
-import com.webforj.samples.config.RouteConfig;
-
-@Route(RouteConfig.SLIDER_BRIGHTNESS)
+@Route("sliderbrightness")
 @FrameTitle("Brightness Adjustment Demo")
 public class SliderBrightnessView extends Composite<FlexLayout> {
 

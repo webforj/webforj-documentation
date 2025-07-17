@@ -5,9 +5,8 @@ import com.webforj.component.field.DateTimeField;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.DATE_TIME_FIELD)
+@Route("datetimefield")
 @FrameTitle("Date Time Field Demo")
 public class DateTimeFieldView extends Composite<FlexLayout> {
 

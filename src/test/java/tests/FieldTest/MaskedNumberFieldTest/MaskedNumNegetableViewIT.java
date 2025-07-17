@@ -4,12 +4,12 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.Keyboard;
 
 import pages.FieldPages.MaskedNumberField.MaskedNumberFieldPage;
 import tests.BaseTest;
+import utils.annotations.BrowserTest;
 
 public class MaskedNumNegetableViewIT extends BaseTest {
 
@@ -22,7 +22,7 @@ public class MaskedNumNegetableViewIT extends BaseTest {
 
     }
 
-    @Test
+    @BrowserTest
     public void testNegetableOn() {
         assumeFalse("webkit".equals(page.context().browser().browserType().name()),
                 "Skipped on WebKit (Safari verified manually)");
@@ -43,7 +43,7 @@ public class MaskedNumNegetableViewIT extends BaseTest {
 
     }
 
-    @Test
+    @BrowserTest
     public void testInvalidCharsWhenNegetableOnAndOff() {
         //negetable off
         numberPage.cleanField(numberPage.getCreditField());
@@ -58,14 +58,14 @@ public class MaskedNumNegetableViewIT extends BaseTest {
         assertThat(numberPage.getCreditField()).hasValue("$1.00");
     }
 
-    @Test
+    @BrowserTest
     public void testZeroWhenNegetableOff() {
         numberPage.cleanField(numberPage.getCreditField());
         page.keyboard().type("0");
         assertThat(numberPage.getCreditField()).hasValue("$0.00");
     }
 
-    @Test
+    @BrowserTest
     public void testSpecialCharsWhenToggleOff() {
         numberPage.getNegatableToggle().click();
 
@@ -75,7 +75,7 @@ public class MaskedNumNegetableViewIT extends BaseTest {
         assertThat(numberPage.getCreditField()).hasValue("");
     }
 
-    @Test
+    @BrowserTest
     public void testMultipleMinusSigns() {
 
         numberPage.cleanField(numberPage.getCreditField());

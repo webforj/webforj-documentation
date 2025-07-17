@@ -6,12 +6,11 @@ import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.table.Table;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Route(RouteConfig.TABLE_ROW_STYLING)
+@Route("tablerowstyling")
 @InlineStyleSheet(/* css */ """
       dwc-table::part(row-highlight) {
         background-color: var(--dwc-color-info-alt);

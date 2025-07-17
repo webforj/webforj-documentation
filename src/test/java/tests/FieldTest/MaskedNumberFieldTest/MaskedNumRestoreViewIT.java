@@ -3,10 +3,10 @@ package tests.FieldTest.MaskedNumberFieldTest;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import pages.FieldPages.MaskedNumberField.MaskedNumberFieldPage;
 import tests.BaseTest;
+import utils.annotations.BrowserTest;
 
 public class MaskedNumRestoreViewIT extends BaseTest {
 
@@ -18,7 +18,7 @@ public class MaskedNumRestoreViewIT extends BaseTest {
         numberPage = new MaskedNumberFieldPage(page);
     }
 
-    @Test
+    @BrowserTest
     public void testResetValueButtonResetsToDefaultAfterNumberChange() {
 
         String initialBudgetValue = numberPage.getProjectBudgetField().inputValue();
@@ -30,7 +30,7 @@ public class MaskedNumRestoreViewIT extends BaseTest {
 
     }
 
-    @Test
+    @BrowserTest
     public void testEscKeyResetsToDefaultAfterNumberChange() {
         String initialBudgetValue = numberPage.getProjectBudgetField().inputValue();
 
@@ -42,7 +42,7 @@ public class MaskedNumRestoreViewIT extends BaseTest {
         assertThat(numberPage.getProjectBudgetField()).hasValue(initialBudgetValue);
     }
 
-    @Test
+    @BrowserTest
     public void testResetValueButtonResetsToDefaultAfterNegativeNumberChange() {
 
         String initialBudgetValue = numberPage.getProjectBudgetField().inputValue();
@@ -55,7 +55,7 @@ public class MaskedNumRestoreViewIT extends BaseTest {
         assertThat(numberPage.getProjectBudgetField()).hasValue(initialBudgetValue);
     }
 
-    @Test
+    @BrowserTest
     public void testResetValueButtonResetsToDefaultAfterClearingInput() {
 
         String initialBudgetValue = numberPage.getProjectBudgetField().inputValue();

@@ -2,14 +2,14 @@ package pages.TablePages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.webforj.samples.config.RouteConfig;
+import config.RouteConfig;
 import pages.BasePage;
 
 public class TableColumnPinningViewPage extends BasePage {
     private static final String ROUTE = RouteConfig.TABLE_COLUMN_PINNING;
 
     private final Locator editButtonPosition;
-    private final Locator editButton;   
+    private final Locator editButton;
     private final Locator dialogBox;
 
     public TableColumnPinningViewPage(Page page) {

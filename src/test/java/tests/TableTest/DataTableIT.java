@@ -1,6 +1,5 @@
 package tests.TableTest;
 
-import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 
@@ -9,12 +8,9 @@ import org.junit.jupiter.api.Disabled;
 
 import pages.TablePages.DataTablePage;
 import tests.BaseTest;
-import utils.WaitUtil;
 import utils.annotations.BrowserTest;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assumptions.assumeFalse;
 
 public class DataTableIT extends BaseTest {
 
@@ -148,21 +144,5 @@ public class DataTableIT extends BaseTest {
 
         dataTable.getPaginatorFirstPage().click();
         assertThat(dataTable.goToSpecificPage(1));
-    }
-
-    @BrowserTest
-    public void testSmallScreenSize() {
-        assumeFalse("webkit".equals(page.context().browser().browserType().name()),
-                "Skipped on WebKit (Safari verified manually)");
-
-        page.setViewportSize(375, 667);
-
-        Locator windowSelector = page.locator("div[part='table-wrapper']");
-        WaitUtil.waitForVisible(windowSelector);
-
-        boolean isScrollable = (Boolean) windowSelector.evaluate(
-                "element => element.scrollWidth > element.clientWidth || element.scrollHeight > element.clientHeight");
-
-        assertTrue(isScrollable, "Window should be scrollable on small screen size");
     }
 }

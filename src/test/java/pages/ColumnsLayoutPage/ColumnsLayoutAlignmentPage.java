@@ -2,7 +2,7 @@ package pages.ColumnsLayoutPage;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.webforj.samples.config.RouteConfig;
+import config.RouteConfig;
 import pages.BasePage;
 
 public class ColumnsLayoutAlignmentPage extends BasePage {

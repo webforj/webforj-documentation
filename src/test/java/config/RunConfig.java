@@ -9,8 +9,8 @@ public class RunConfig {
     private static final Properties properties = new Properties();
     private static boolean isInitialized = false;
 
-    private static final String DEFAULT_BROWSERS = "chromium";
-    private static final boolean DEFAULT_HEADLESS = true;
+    private static final String DEFAULT_BROWSERS = "chromium, firefox, webkit";
+    private static final boolean DEFAULT_HEADLESS = false;
     private static final int DEFAULT_TIMEOUT = 30000;
     private static final int DEFAULT_RETRY_COUNT = 3;
     private static final String DEFAULT_REPORTS_DIR = "test-results/reports";
@@ -23,15 +23,32 @@ public class RunConfig {
         }
 
         try {
-            var inputStream = RunConfig.class.getClassLoader().getResourceAsStream("config.properties");
+            String configFile = getConfigFileName();
+
+            var inputStream = RunConfig.class.getClassLoader().getResourceAsStream(configFile);
             if (inputStream != null) {
                 properties.load(inputStream);
                 inputStream.close();
+                System.out.println("✅ Loaded configuration from: " + configFile);
+
+            } else {
+                System.out.println("⚠️  Config file not found: " + configFile + ", using defaults");
             }
             isInitialized = true;
         } catch (IOException e) {
-            System.out.println("❌ Error loading config.properties: " + e.getMessage() + ", using defaults");
+            System.out.println("❌ Error loading config file: " + e.getMessage() + ", using defaults");
         }
+    }
+
+    private static String getConfigFileName() {
+        String ciEnv = System.getenv("CI");
+        String testEnv = System.getenv("TEST_ENV");
+
+        if ("true".equals(ciEnv) || "ci".equalsIgnoreCase(testEnv)) {
+            return "config-ci.properties";
+        }
+
+        return "config-dev.properties";
     }
 
     public static String getStringProperty(String key, String defaultValue) {
@@ -101,9 +118,4 @@ public class RunConfig {
         return getIntProperty("port", DEFAULT_PORT);
     }
 
-    public static boolean isDevelopmentMode() {
-        String ciEnv = System.getenv("CI");
-        String testEnv = System.getenv("TEST_ENV");
-        return !"true".equals(ciEnv) && !"ci".equalsIgnoreCase(testEnv);
-    }
 }

@@ -13,7 +13,6 @@ import com.webforj.component.tabbedpane.Tab;
 import com.webforj.component.tabbedpane.TabbedPane;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet(/*css */"""
   .window {
@@ -23,7 +22,7 @@ import com.webforj.samples.config.RouteConfig;
     margin: 20px;
   }
 """)
-@Route(RouteConfig.TABBED_PANE_EXPANSE_THEME)
+@Route("tabbedpaneexpansetheme")
 @FrameTitle("Tabbed Pane Expanses and Themes")
 public class TabbedPaneExpanseThemeView extends Composite<Div> {
 

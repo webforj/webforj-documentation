@@ -5,9 +5,8 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.table.Table;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.TABLE_SORTING)
+@Route("tablesorting")
 @FrameTitle("Table Sorting")
 public class TableSortingView extends Composite<Div> {
 

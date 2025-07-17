@@ -10,9 +10,8 @@ import com.webforj.component.spinner.Spinner;
 import com.webforj.component.spinner.SpinnerExpanse;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.SPINNER_EXPANSE_DEMO)
+@Route("spinnerexpansedemo")
 @FrameTitle("Spinner Expanses")
 public class SpinnerExpanseDemoView extends Composite<FlexLayout> {
 

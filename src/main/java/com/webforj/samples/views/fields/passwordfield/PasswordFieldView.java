@@ -5,9 +5,8 @@ import com.webforj.component.field.PasswordField;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.PASSWORD_FIELD)  
+@Route("passwordfield")
 @FrameTitle("Password Field Demo")
 public class PasswordFieldView extends Composite<FlexLayout> {
 

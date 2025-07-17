@@ -11,7 +11,6 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.slider.Slider;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 import java.util.Map;
 
@@ -19,7 +18,7 @@ import org.checkerframework.checker.units.qual.t;
 
 import static java.util.Map.entry;
 
-@Route(RouteConfig.SLIDER_VIEW)
+@Route("slider")
 @FrameTitle("Volume Control Demo")
 public class SliderView extends Composite<FlexLayout> {
 

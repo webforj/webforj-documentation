@@ -8,10 +8,9 @@ import com.webforj.component.drawer.Drawer.Placement;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet("context://css/drawer/drawerDemo.css")
-@Route(RouteConfig.DRAWER_PLACEMENT)
+@Route("drawerplacement")
 @FrameTitle("Drawer Placement")
 public class DrawerPlacementView extends Composite<FlexLayout> {
 

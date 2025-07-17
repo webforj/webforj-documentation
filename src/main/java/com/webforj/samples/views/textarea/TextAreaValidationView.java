@@ -11,9 +11,7 @@ import com.webforj.router.annotation.Route;
 
 import java.util.List;
 
-import com.webforj.samples.config.RouteConfig;
-
-@Route(RouteConfig.TEXT_AREA_VALIDATION)
+@Route("textareavalidation")
 @StyleSheet("TextAreaValidationView.css")
 public class TextAreaValidationView extends Composite<FlexLayout> {
   private FlexLayout self = getBoundComponent();

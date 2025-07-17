@@ -13,10 +13,9 @@ import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet("context://css/fields/colorfield/colorFieldDemo.css")
-@Route(RouteConfig.COLOR_FIELD)
+@Route("colorfield")
 @FrameTitle("Color Field Demo")
 public class ColorFieldView extends Composite<FlexLayout> {
 

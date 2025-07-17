@@ -18,31 +18,23 @@ import utils.LoggerUtil;
  */
 public class BaseTest {
 
-    // Thread-local Playwright instances - one per thread
     private static final ThreadLocal<Playwright> threadPlaywright = new ThreadLocal<>();
 
-    // Per-test resources
     protected Browser browser;
     protected BrowserContext context;
     protected Page page;
 
-    // Reporting
     protected static ExtentReports extentReports;
     protected static final ConcurrentHashMap<String, ExtentTest> testReports = new ConcurrentHashMap<>();
     protected ExtentTest testReport;
 
-    // Current browser type and test tracking
     protected String browserType;
     protected String currentTestName;
 
-    // Static initializer for shared resources
     static {
         extentReports = ExtentReportManager.getInstance();
     }
 
-    /**
-     * Get or create Playwright instance for current thread
-     */
     protected Playwright getPlaywright() {
         Playwright playwright = threadPlaywright.get();
         if (playwright == null) {
@@ -53,56 +45,51 @@ public class BaseTest {
         return playwright;
     }
 
-    /**
-     * Fast setup - creates new browser for each test but reuses Playwright instance
-     */
     @BeforeEach
-    public void setupTest(TestInfo testInfo) {
-        try {
-            String displayName = testInfo.getDisplayName();
-            currentTestName = displayName;
+public void setupTest(TestInfo testInfo) {
+    try {
+        String displayName = testInfo.getDisplayName();
+        currentTestName = displayName;
 
-            // Create lightweight test report
-            String testClassName = testInfo.getTestClass().map(Class::getSimpleName).orElse("Unknown");
-            testReport = ExtentReportManager.createTest(
-                    displayName,
-                    "Fast browser test for WebForJ components",
-                    browserType != null ? browserType : "chromium",
-                    testClassName);
+        List<String> browsers = RunConfig.getBrowsers();
+        browserType = browsers.isEmpty() ? "chromium" : browsers.get(0);
 
-            String testId = displayName + "_" + Thread.currentThread().getId();
-            testReports.put(testId, testReport);
-
-            // Get browser type from configuration
-            List<String> browsers = RunConfig.getBrowsers();
-            browserType = browsers.isEmpty() ? "chromium" : browsers.get(0);
-
-            // Launch browser (no reuse)
-            browser = launchBrowser(browserType);
-            context = browser.newContext();
-            page = context.newPage();
-
-            ExtentReportManager.logInfo(testReport, "✅ Fast test setup completed");
-
-        } catch (Exception e) {
-            if (testReport != null) {
-                ExtentReportManager.logFailureWithContext(testReport, e, "N/A", "Test Setup");
+        for (String browser : browsers) {
+            if (displayName.contains(browser)) {
+                browserType = browser;
+                break;
             }
-            throw e;
         }
-    }
 
-    /**
-     * Fast teardown - closes browser after each test
-     */
+        String testClassName = testInfo.getTestClass().map(Class::getSimpleName).orElse("Unknown");
+        testReport = ExtentReportManager.createTest(
+                displayName,
+                "Test for WebForJ components",
+                browserType,
+                testClassName);
+
+        String testId = displayName + "_" + Thread.currentThread().getId();
+        testReports.put(testId, testReport);
+
+        browser = launchBrowser(browserType);
+        context = browser.newContext();
+        page = context.newPage();
+
+    } catch (Exception e) {
+        if (testReport != null) {
+            ExtentReportManager.logFailureWithContext(testReport, e, "N/A", "Test Setup");
+        }
+        throw e;
+    }
+}
+
     @AfterEach
     public void teardownTest(TestInfo testInfo) {
         try {
             if (testReport != null) {
-                ExtentReportManager.logInfo(testReport, "🧹 Fast cleanup...");
+                ExtentReportManager.logInfo(testReport, "🧹  Cleanup...");
             }
 
-            // Close page, context and browser
             if (page != null) {
                 page.close();
             }
@@ -116,14 +103,13 @@ public class BaseTest {
             }
 
             if (testReport != null) {
-                ExtentReportManager.logPass(testReport, "✅ Fast cleanup completed");
+                ExtentReportManager.logPass(testReport, "✅ Cleanup completed");
             }
 
-            // Clean up test report
             testReports.remove(testInfo.getDisplayName() + "_" + Thread.currentThread().getId());
 
         } catch (Exception e) {
-            LoggerUtil.warn("Exception during fast teardown: " + e.getMessage());
+            LoggerUtil.warn("Exception during teardown: " + e.getMessage());
         }
     }
 
@@ -147,7 +133,7 @@ public class BaseTest {
 
         BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions()
                 .setHeadless(RunConfig.isHeadless())
-                .setSlowMo(50)
+                .setSlowMo(RunConfig.getSlowMo())
                 .setArgs(List.of(
                     "--no-sandbox",
                     "--disable-dev-shm-usage",

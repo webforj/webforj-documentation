@@ -6,7 +6,6 @@ import com.webforj.component.googlecharts.GoogleChart;
 import com.webforj.component.html.elements.Div;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @InlineStyleSheet("context://css/googlecharts/chart.css")
-@Route(RouteConfig.CHART_VIEW)
+@Route("chart")
 @FrameTitle("Google Charts")
 public class ChartView extends Composite<Div> {
 

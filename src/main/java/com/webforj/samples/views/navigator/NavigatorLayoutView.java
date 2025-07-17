@@ -8,9 +8,8 @@ import com.webforj.component.navigator.Navigator;
 import com.webforj.component.navigator.Navigator.Layout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.NAVIGATOR_LAYOUT)
+@Route("navigatorlayout")
 @FrameTitle("Navigator Layout")
 public class NavigatorLayoutView extends Composite<Div> {
   private Navigator nav = new Navigator(100);

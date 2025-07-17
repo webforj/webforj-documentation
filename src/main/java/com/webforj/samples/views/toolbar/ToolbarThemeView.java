@@ -11,9 +11,8 @@ import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.layout.toolbar.Toolbar;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.TOOLBAR_THEMES)
+@Route("toolbarthemes")
 @FrameTitle("Toolbar Themes")
 public class ToolbarThemeView extends Composite<FlexLayout> {
 

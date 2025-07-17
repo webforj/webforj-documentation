@@ -3,10 +3,10 @@ package tests.FieldTest.MaskedTimeFieldTest;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import pages.FieldPages.MaskedTimeField.MaskedTimeFieldPage;
 import tests.BaseTest;
+import utils.annotations.BrowserTest;
 
 public class MaskedTimeFieldIT extends BaseTest {
 
@@ -18,54 +18,55 @@ public class MaskedTimeFieldIT extends BaseTest {
         maskedTime = new MaskedTimeFieldPage(page);
     }
 
-    @Test
+    @BrowserTest
     public void testAcceptsValidTimeFormat() {
         maskedTime.cleanField(maskedTime.getMeetingTime());
-        maskedTime.getMeetingTime().fill("12:34 PM");
+        maskedTime.getMeetingTime().pressSequentially("12:34 PM");
 
         assertThat(maskedTime.getMeetingTime()).hasValue("12:34 PM");
     }
 
-    @Test
+    @BrowserTest
     public void testHourMaskSupportsValidAndInvalid() {
         maskedTime.cleanField(maskedTime.getMeetingTime());
-        maskedTime.getMeetingTime().fill("15:30 PM");
+        maskedTime.getMeetingTime().pressSequentially("15:30 PM");
         page.keyboard().press("Enter");
 
         assertThat(maskedTime.getMeetingTime()).hasValue("3:30 pm");
     }
 
-    @Test
+    @BrowserTest
     public void testMinuteZeroFill() {
         maskedTime.cleanField(maskedTime.getMeetingTime());
-        maskedTime.getMeetingTime().fill("12:3 PM");
+        maskedTime.getMeetingTime().clear();
+        maskedTime.getMeetingTime().pressSequentially("12:3 PM");
         page.keyboard().press("Enter");
 
         assertThat(maskedTime.getMeetingTime()).hasValue("12:03 pm");
     }
 
-    @Test
+    @BrowserTest
     public void testSeparatorEnforcement() {
         maskedTime.cleanField(maskedTime.getMeetingTime());
-        maskedTime.getMeetingTime().fill("1230pm");
+        maskedTime.getMeetingTime().pressSequentially("1230pm");
         page.keyboard().press("Enter");
 
         assertThat(maskedTime.getMeetingTime()).hasValue("12:30 pm");
     }
 
-    @Test
+    @BrowserTest
     public void testInvalidMinutesCorrection() {
         maskedTime.cleanField(maskedTime.getMeetingTime());
-        maskedTime.getMeetingTime().fill("12:61 pm");
+        maskedTime.getMeetingTime().pressSequentially("12:61 pm");
         page.keyboard().press("Enter");
 
         assertThat(maskedTime.getMeetingTime()).hasValue("1:01 pm");
     }
 
-    @Test
+    @BrowserTest
     public void testInvalidCharactersBlocked() {
         maskedTime.cleanField(maskedTime.getMeetingTime());
-        maskedTime.getMeetingTime().fill("!:00 AM");
+        maskedTime.getMeetingTime().pressSequentially("!:00 AM");
         page.keyboard().press("Enter");
 
         assertThat(maskedTime.getMeetingTime()).hasValue("12:00 am");

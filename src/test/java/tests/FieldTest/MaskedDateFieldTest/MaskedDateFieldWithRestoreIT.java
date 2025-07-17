@@ -6,10 +6,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import pages.FieldPages.MaskedDateField.MaskedDateFieldPage;
 import tests.BaseTest;
+import utils.annotations.BrowserTest;
 
 public class MaskedDateFieldWithRestoreIT extends BaseTest {
 
@@ -21,7 +21,7 @@ public class MaskedDateFieldWithRestoreIT extends BaseTest {
         maskedDateField = new MaskedDateFieldPage(page);
     }
 
-    @Test
+    @BrowserTest
     public void testResetValue() {
         String today = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         String yesterday = LocalDate.now().minusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));

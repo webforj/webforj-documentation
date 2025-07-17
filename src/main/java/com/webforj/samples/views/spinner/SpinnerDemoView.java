@@ -14,9 +14,7 @@ import com.webforj.router.annotation.Route;
 import com.webforj.component.icons.Icon;
 import com.webforj.component.icons.TablerIcon;
 
-import com.webforj.samples.config.RouteConfig;
-
-@Route(RouteConfig.SPINNER_DEMO)
+@Route("spinnerdemo")
 @FrameTitle("Spinner Basics")
 @InlineStyleSheet("context://css/spinnerstyles/spinnerdemo.css")
 public class SpinnerDemoView extends Composite<Div> {

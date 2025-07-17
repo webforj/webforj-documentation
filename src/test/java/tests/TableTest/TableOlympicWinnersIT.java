@@ -9,7 +9,6 @@ import com.microsoft.playwright.Locator;
 
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
-import com.webforj.samples.config.RouteConfig;
 import pages.TablePages.TableOlympicWinnersViewPage;
 
 public class TableOlympicWinnersIT extends BaseTest {
@@ -18,7 +17,7 @@ public class TableOlympicWinnersIT extends BaseTest {
 
     @BeforeEach
     public void setupTableOlympicWinners() {
-        navigateToRoute(RouteConfig.TABLE_OLYMPIC_WINNERS);
+        navigateToRoute(TableOlympicWinnersViewPage.getRoute());
         tableOlympicWinnersViewPage = new TableOlympicWinnersViewPage(page);
     }
 

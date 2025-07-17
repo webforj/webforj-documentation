@@ -3,10 +3,10 @@ package tests.FieldTest.MaskedTimeFieldTest;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import pages.FieldPages.MaskedTimeField.MaskedTimeFieldPage;
 import tests.BaseTest;
+import utils.annotations.BrowserTest;
 
 public class MaskedTimeFieldRestoreIT extends BaseTest {
 
@@ -18,7 +18,7 @@ public class MaskedTimeFieldRestoreIT extends BaseTest {
         maskedTime = new MaskedTimeFieldPage(page);
     }
 
-    @Test
+    @BrowserTest
     public void testRestoreOnClickButton() {
         maskedTime.cleanField(maskedTime.getMeetingTime());
         maskedTime.getMeetingTime().fill("12:34 PM");
@@ -27,7 +27,7 @@ public class MaskedTimeFieldRestoreIT extends BaseTest {
         assertThat(maskedTime.getMeetingTime()).hasValue("02:00 pm");
     }
 
-    @Test
+    @BrowserTest
     public void testRestoreOnPressEsc() {
         maskedTime.cleanField(maskedTime.getMeetingTime());
         maskedTime.getMeetingTime().fill("12:34 PM");
@@ -36,7 +36,7 @@ public class MaskedTimeFieldRestoreIT extends BaseTest {
         assertThat(maskedTime.getMeetingTime()).hasValue("02:00 pm");
     }
 
-    @Test
+    @BrowserTest
     public void testClearAndRestoreOnClick() {
         maskedTime.cleanField(maskedTime.getMeetingTime());
         maskedTime.getResetValueButton().click();

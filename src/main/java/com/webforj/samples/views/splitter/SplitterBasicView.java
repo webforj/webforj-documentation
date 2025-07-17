@@ -7,9 +7,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.samples.components.SplitterBox;
 
-import com.webforj.samples.config.RouteConfig;
-
-@Route(RouteConfig.SPLITTER_BASIC)
+@Route("splitterbasic")
 @FrameTitle("Splitter Basics")
 public class SplitterBasicView extends Composite<Div> {
 

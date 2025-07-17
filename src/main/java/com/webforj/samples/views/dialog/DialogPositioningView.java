@@ -9,9 +9,8 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.DIALOG_POSITIONING)
+@Route("dialogpositioning")
 @FrameTitle("Dialog Positioning")
 public class DialogPositioningView extends Composite<FlexLayout> {
 

@@ -12,9 +12,8 @@ import com.webforj.component.layout.flexlayout.FlexWrap;
 import com.webforj.component.window.Frame;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.TEXT_FIELD)
+@Route("textfield")
 @FrameTitle("Text Field Form")
 public class TextFieldView extends Composite<FlexLayout> {
 

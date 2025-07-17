@@ -11,9 +11,8 @@ import com.webforj.component.element.annotation.NodeName;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.QR_CODE_PROPERTIES)
+@Route("qrproperties")
 @FrameTitle("QR Properties")
 public class QRPropertiesView extends Composite<FlexLayout> {
 

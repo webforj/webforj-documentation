@@ -11,13 +11,12 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.slider.Slider;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 import java.util.Map;
 
 import static java.util.Map.entry;
 
-@Route(RouteConfig.SLIDER_TEMP)
+@Route("slidertemp")
 @FrameTitle("Temperature Selector Demo")
 public class SliderTempView extends Composite<FlexLayout> {
 

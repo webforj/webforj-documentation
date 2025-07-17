@@ -3,12 +3,12 @@ package tests.FieldTest.MaskedTextFieldTest;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.Keyboard;
 
 import pages.FieldPages.MaskedTextField.MaskedTextFieldPage;
 import tests.BaseTest;
+import utils.annotations.BrowserTest;
 
 public class MaskedTextFieldSpinnerTestsIT extends BaseTest {
 
@@ -20,7 +20,7 @@ public class MaskedTextFieldSpinnerTestsIT extends BaseTest {
         maskedTextField = new MaskedTextFieldPage(page);
     }
 
-    @Test
+    @BrowserTest
     void testInitialValueAndSpinnerUpandDownCycle() {
         assertThat(maskedTextField.getProjectCode()).hasValue("PRJ-001");
         maskedTextField.getSpinnerUp().click();
@@ -30,7 +30,7 @@ public class MaskedTextFieldSpinnerTestsIT extends BaseTest {
         assertThat(maskedTextField.getProjectCode()).hasValue("PRJ-004");
     }
 
-    @Test
+    @BrowserTest
     void testMaskPatternEnforcementAAA000() {
         // AAA - Any alphabetic character; lowercase letters are converted to uppercase.
         // 000 - Always digit.

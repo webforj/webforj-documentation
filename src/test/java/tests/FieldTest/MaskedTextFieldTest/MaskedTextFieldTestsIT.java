@@ -5,12 +5,12 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import java.util.regex.Pattern;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.Keyboard;
 
 import pages.FieldPages.MaskedTextField.MaskedTextFieldPage;
 import tests.BaseTest;
+import utils.annotations.BrowserTest;
 
 public class MaskedTextFieldTestsIT extends BaseTest {
 
@@ -22,7 +22,7 @@ public class MaskedTextFieldTestsIT extends BaseTest {
         maskedTextField = new MaskedTextFieldPage(page);
     }
 
-    @Test
+    @BrowserTest
     void testInputAcceptsCharactersPerMask() {
 
         maskedTextField.cleanField(maskedTextField.getCouponCode());
@@ -35,7 +35,7 @@ public class MaskedTextFieldTestsIT extends BaseTest {
 
     }
 
-    @Test
+    @BrowserTest
     void testLowercaseToUppercaseConversion() {
         maskedTextField.cleanField(maskedTextField.getCouponCode());
         page.keyboard().type("abcd-1234", new Keyboard.TypeOptions().setDelay(300));
@@ -46,7 +46,7 @@ public class MaskedTextFieldTestsIT extends BaseTest {
         assertThat(maskedTextField.getRecordCode()).hasValue("AA-12-1131");
     }
 
-    @Test
+    @BrowserTest
     void testOnlyDigitsAcceptedForDigitMask() {
         maskedTextField.cleanField(maskedTextField.getCouponCode());
         page.keyboard().type("ZZZZ-Z! y", new Keyboard.TypeOptions().setDelay(300));
@@ -57,14 +57,14 @@ public class MaskedTextFieldTestsIT extends BaseTest {
         assertThat(maskedTextField.getRecordCode()).hasValue("AA-  -    ");
     }
 
-    @Test
+    @BrowserTest
     void testAlphanumericAcceptedForZMask() {
         maskedTextField.cleanField(maskedTextField.getCouponCode());
         page.keyboard().type("ST10-2025", new Keyboard.TypeOptions().setDelay(300));
         assertThat(maskedTextField.getCouponCode()).hasValue("ST10-2025");
     }
 
-    @Test
+    @BrowserTest
     void testMaximumInputLengthEnforced() {
         // Coupon code mask = "AAAA-9999" → max length = 9 characters
         maskedTextField.cleanField(maskedTextField.getCouponCode());
@@ -77,7 +77,7 @@ public class MaskedTextFieldTestsIT extends BaseTest {
         assertThat(maskedTextField.getRecordCode()).hasValue(Pattern.compile("^.{10}$"));
     }
 
-    @Test
+    @BrowserTest
     void testSpecialCharactersRejected() {
         maskedTextField.cleanField(maskedTextField.getCouponCode());
         page.keyboard().type("!@#$-!@#$", new Keyboard.TypeOptions().setDelay(300));
@@ -88,7 +88,7 @@ public class MaskedTextFieldTestsIT extends BaseTest {
         assertThat(maskedTextField.getRecordCode()).hasValue("  -  -    ");
     }
 
-    @Test
+    @BrowserTest
     void testBehaviorOnFullDeletion() {
         maskedTextField.cleanField(maskedTextField.getCouponCode());
         assertThat(maskedTextField.getCouponCode()).hasValue("    -    ");

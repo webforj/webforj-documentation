@@ -15,7 +15,6 @@ public class NavigatorTableIT extends BaseTest {
     @BeforeEach
     public void setupNavigatorTest() {
         navigateToRoute(NavigatorTablePage.getRoute());
-        page.waitForLoadState();
         navigatorTablePage = new NavigatorTablePage(page);
 
     }

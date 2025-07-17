@@ -3,12 +3,12 @@ package tests.FieldTest.MaskedTextFieldTest;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.Locator;
 
 import pages.FieldPages.MaskedTextField.MaskedTextFieldPage;
 import tests.BaseTest;
+import utils.annotations.BrowserTest;
 
 public class MaskedTextFieldWithRestoreValueTestsIT extends BaseTest {
 
@@ -21,14 +21,14 @@ public class MaskedTextFieldWithRestoreValueTestsIT extends BaseTest {
         maskedTextField = new MaskedTextFieldPage(page);
     }
 
-    @Test
+    @BrowserTest
     void testRestoreWorksAfterManualChange() {
         maskedTextField.cleanField(maskedTextField.getPostalCode());
         page.keyboard().type("94131 SFO");
         assertThat(maskedTextField.getPostalCode()).hasValue("94131 SFO");
     }
 
-    @Test
+    @BrowserTest
     void testESCRestoresToSetValue() {
 
         maskedTextField.cleanField(maskedTextField.getPostalCode());
@@ -39,7 +39,7 @@ public class MaskedTextFieldWithRestoreValueTestsIT extends BaseTest {
         assertThat(maskedTextField.getPostalCode()).hasValue(INITIAL_ZIP_VALUE);
     }
 
-    @Test
+    @BrowserTest
     void testRestoreWithEmptyOrNullRestoreValue() {
 
         maskedTextField.cleanField(maskedTextField.getPostalCode());
@@ -51,7 +51,7 @@ public class MaskedTextFieldWithRestoreValueTestsIT extends BaseTest {
         assertThat(maskedTextField.getPostalCode()).hasValue(INITIAL_ZIP_VALUE);
     }
 
-    @Test
+    @BrowserTest
     void testRestoreValueWithSpecialCharsOrInvalidFormat() {
         maskedTextField.cleanField(maskedTextField.getPostalCode());
         page.keyboard().type("!@#$% !#@");

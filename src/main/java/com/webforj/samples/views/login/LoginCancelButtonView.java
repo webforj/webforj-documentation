@@ -6,9 +6,8 @@ import com.webforj.component.login.Login;
 import com.webforj.component.login.LoginI18n;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.LOGIN_CANCEL_BUTTON)
+@Route("logincancelbutton")
 @FrameTitle("Login Cancel Button")
 public class LoginCancelButtonView extends Composite<Div> {
 

@@ -14,13 +14,12 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.loading.Loading;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 /**
  * Demo to show Loading basics.
  */
 
-@Route(RouteConfig.LOADING_DEMO)
+@Route("loadingdemo")
 @FrameTitle("Loading Basics")
 @InlineStyleSheet("context://css/loadingstyles/loadingdemo.css")
 public class LoadingDemoView extends Composite<FlexLayout> {

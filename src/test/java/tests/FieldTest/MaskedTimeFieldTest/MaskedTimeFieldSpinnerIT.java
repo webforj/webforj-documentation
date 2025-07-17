@@ -4,11 +4,11 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
 
 import pages.FieldPages.MaskedTimeField.MaskedTimeFieldPage;
 import tests.BaseTest;
 import utils.WaitUtil;
+import utils.annotations.BrowserTest;
 
 public class MaskedTimeFieldSpinnerIT extends BaseTest {
 
@@ -20,7 +20,7 @@ public class MaskedTimeFieldSpinnerIT extends BaseTest {
         maskedTime = new MaskedTimeFieldPage(page);
     }
 
-    @Test
+    @BrowserTest
     public void testSpinnerIncrementDecrement() {
         // click ESC the field to ensure focus is lost
         WaitUtil.waitForVisible(maskedTime.getTimeOptionDropdown());
@@ -36,7 +36,7 @@ public class MaskedTimeFieldSpinnerIT extends BaseTest {
 
     }
 
-    @Test
+    @BrowserTest
     public void testSpinnerRespectsMinMaxBoundaries() {
         // click ESC the field to ensure focus is lost
         WaitUtil.waitForVisible(maskedTime.getTimeOptionDropdown());
@@ -57,7 +57,7 @@ public class MaskedTimeFieldSpinnerIT extends BaseTest {
     }
 
     @Disabled("Bug report #988")
-    @Test
+    @BrowserTest
     public void testDisallowManualInputWhenNotAllowed() {
         maskedTime.cleanField(maskedTime.getMeetingTime());
         maskedTime.getMeetingTime().fill("12:00 pm");

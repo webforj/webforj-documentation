@@ -3,13 +3,13 @@ package tests.FieldTest.MaskedTimeFieldTest;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.PlaywrightException;
 
 import pages.FieldPages.MaskedTimeField.MaskedTimeFieldPage;
 import tests.BaseTest;
 import utils.WaitUtil;
+import utils.annotations.BrowserTest;
 
 public class MaskedTimeFieldPickerIT extends BaseTest {
 
@@ -21,14 +21,14 @@ public class MaskedTimeFieldPickerIT extends BaseTest {
         maskedTime = new MaskedTimeFieldPage(page);
     }
 
-    @Test
+    @BrowserTest
     public void testSelection() {
         maskedTime.getTimeOptionDropdown().locator("text=10:00 am").click();
         assertThat(maskedTime.getMeetingTime()).hasValue("10:00 am");
 
     }
 
-    @Test
+    @BrowserTest
     public void testPickerClosesOnOutsideClickOrSelection() {
         assertThat(maskedTime.getMeetingTime()).hasValue("09:30 am");
 
@@ -43,7 +43,7 @@ public class MaskedTimeFieldPickerIT extends BaseTest {
 
     }
 
-    @Test
+    @BrowserTest
     public void testRestrictManualInputNotInPickerOptions() {
         try {
             maskedTime.getMeetingTime().fill("12:00 pm");

@@ -2,13 +2,13 @@ package tests.FieldTest.NumberField;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;    
 
 import com.microsoft.playwright.PlaywrightException;
 
 import pages.FieldPages.NumberFieldPage;
 import tests.BaseTest;
+import utils.annotations.BrowserTest;
 
 public class NumberFieldIT extends BaseTest {
 
@@ -20,13 +20,13 @@ public class NumberFieldIT extends BaseTest {
         numberFieldPage = new NumberFieldPage(page);
     }
 
-    @Test
+    @BrowserTest
     public void testNumericNumber() {
         numberFieldPage.getNumberField().fill("1234567890");
         assertThat(numberFieldPage.getNumberField()).hasValue("1234567890");
     }
 
-    @Test
+    @BrowserTest
     public void testNonNumericNumber() {
         try {
             numberFieldPage.getNumberField().fill("abcd");

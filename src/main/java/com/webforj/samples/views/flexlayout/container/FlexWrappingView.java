@@ -8,9 +8,8 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.window.Panel;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.FLEX_WRAPPING)
+@Route("flexwrapping")
 @FrameTitle("Flex Wrapping")
 public class FlexWrappingView extends Composite<Div> {
   public FlexWrappingView() {

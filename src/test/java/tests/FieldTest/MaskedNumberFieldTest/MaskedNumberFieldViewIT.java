@@ -4,12 +4,12 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.Keyboard;
 
 import pages.FieldPages.MaskedNumberField.MaskedNumberFieldPage;
 import tests.BaseTest;
+import utils.annotations.BrowserTest;
 
 public class MaskedNumberFieldViewIT extends BaseTest {
 
@@ -21,7 +21,7 @@ public class MaskedNumberFieldViewIT extends BaseTest {
         numberPage = new MaskedNumberFieldPage(page);
     }
 
-    @Test
+    @BrowserTest
     public void testDecimalInput() {
         assumeFalse("webkit".equals(page.context().browser().browserType().name()),
                 "Skipped on WebKit (Safari verified manually)");
@@ -38,7 +38,7 @@ public class MaskedNumberFieldViewIT extends BaseTest {
 
     }
 
-    @Test
+    @BrowserTest
     public void testNegativeInput() {
 
         numberPage.cleanField(numberPage.getTipPercentageField());
@@ -49,7 +49,7 @@ public class MaskedNumberFieldViewIT extends BaseTest {
 
     }
 
-    @Test
+    @BrowserTest
     public void testZeroTip() {
 
         numberPage.cleanField(numberPage.getTipPercentageField());
@@ -60,7 +60,7 @@ public class MaskedNumberFieldViewIT extends BaseTest {
 
     }
 
-    @Test
+    @BrowserTest
     public void testZeroBillAmount() {
         numberPage.cleanField(numberPage.getAmountField());
         page.keyboard().type("0");
@@ -69,7 +69,7 @@ public class MaskedNumberFieldViewIT extends BaseTest {
         assertThat(numberPage.getToastTheme()).hasAttribute("theme", "danger");
     }
 
-    @Test
+    @BrowserTest
     public void testSpecialCharacters() {
         numberPage.cleanField(numberPage.getAmountField());
         page.keyboard().type("Aa!@. ");
@@ -84,7 +84,7 @@ public class MaskedNumberFieldViewIT extends BaseTest {
 
     }
 
-    @Test
+    @BrowserTest
     public void testEmptyInput() {
         numberPage.cleanField(numberPage.getAmountField());
         numberPage.cleanField(numberPage.getTipPercentageField());

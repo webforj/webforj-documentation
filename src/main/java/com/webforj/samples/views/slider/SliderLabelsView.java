@@ -16,9 +16,7 @@ import com.webforj.router.annotation.Route;
 
 import static java.util.Map.entry;
 
-import com.webforj.samples.config.RouteConfig;
-
-@Route(RouteConfig.SLIDER_LABELS)
+@Route("sliderlabels")
 @FrameTitle("Slider Tick and Non-Tick Demo")
 public class SliderLabelsView extends Composite<FlexLayout> {
 

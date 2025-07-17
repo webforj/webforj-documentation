@@ -11,9 +11,8 @@ import com.webforj.component.progressbar.ProgressBar;
 import com.webforj.dispatcher.EventListener;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.PROGRESS_BAR_BASIC)
+@Route("progressbarbasic")
 @FrameTitle("Progress Bar Basics")
 public class ProgressBarBasicView extends Composite<Div> {
 

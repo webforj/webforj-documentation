@@ -9,12 +9,11 @@ import com.webforj.component.list.ChoiceBox;
 import com.webforj.component.list.ListItem;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 /**
  * Simple program to demonstrate the various Button expanse values.
  */
-@Route(RouteConfig.BUTTON_EXPANSES)
+@Route("buttonexpanses")
 @FrameTitle("Button Expanses")
 public class ButtonExpansesView extends Composite<FlexLayout> {
 

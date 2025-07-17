@@ -11,12 +11,11 @@ import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 /**
  * Demo to show BusyIndicator basics.
  */
-@Route(RouteConfig.BUSY_DEMO)
+@Route("busydemo")
 @FrameTitle("Busy Basics")
 public class BusyDemoView extends Composite<FlexLayout> {
 

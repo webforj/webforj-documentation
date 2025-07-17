@@ -3,7 +3,7 @@ package pages.BusyIndicatorPage;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import pages.BasePage;
-import com.webforj.samples.config.RouteConfig;
+import config.RouteConfig;
 
 public class BusyDemoPage extends BasePage {
 

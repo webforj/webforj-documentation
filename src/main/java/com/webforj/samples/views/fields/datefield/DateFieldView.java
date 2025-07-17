@@ -9,9 +9,8 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.data.event.ValueChangeEvent;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.DATE_FIELD)
+@Route("datefield")
 @FrameTitle("Date Field Demo")
 public class DateFieldView extends Composite<FlexLayout> {
 

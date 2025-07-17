@@ -19,9 +19,7 @@ import java.lang.reflect.Type;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import com.webforj.samples.config.RouteConfig;
-
-@Route(RouteConfig.TERMINAL_THEME_PICKER)
+@Route("terminalthemepicker")
 @FrameTitle("Terminal Theme Picker")
 public class TerminalThemePickerView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();

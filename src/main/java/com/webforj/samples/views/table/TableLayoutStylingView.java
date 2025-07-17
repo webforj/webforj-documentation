@@ -7,12 +7,11 @@ import com.webforj.component.table.Table;
 import com.webforj.component.table.Table.Border;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 import java.util.EnumSet;
 import java.util.List;
 
-@Route(RouteConfig.TABLE_LAYOUT_STYLING)
+@Route("tablelayoutstyling")
 @FrameTitle("Table Layout Styling")
 public class TableLayoutStylingView extends Composite<FlexLayout> {
 

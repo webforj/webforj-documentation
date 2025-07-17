@@ -10,12 +10,11 @@ import com.webforj.component.infinitescroll.InfiniteScroll;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Route(RouteConfig.INFINITE_SCROLL_CUSTOM_LOADING)
+@Route("infinitescrollcustomloading")
 @FrameTitle("Fully Customized Loading")
 @InlineStyleSheet("context://css/infinitescroll/infinitescrollcustom.css")
 public class InfiniteScrollCustomLoadingView extends Composite<Div> {

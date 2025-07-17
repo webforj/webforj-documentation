@@ -15,9 +15,8 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import java.util.ArrayList;
 import java.util.List;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.TOAST_PLACEMENT)
+@Route("toastplacement")
 @FrameTitle("Toast Placements")
 public class ToastPlacementView extends Composite<FlexLayout> {
 

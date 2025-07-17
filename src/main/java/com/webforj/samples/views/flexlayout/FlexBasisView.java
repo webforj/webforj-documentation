@@ -11,12 +11,11 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Route(RouteConfig.FLEX_BASIS_VIEW)
+@Route("flexbasis")
 @FrameTitle("Flex Basis")
 public class FlexBasisView extends Composite<Div> {
 

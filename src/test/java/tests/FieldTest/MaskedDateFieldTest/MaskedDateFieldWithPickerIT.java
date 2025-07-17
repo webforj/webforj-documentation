@@ -5,12 +5,12 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import java.util.regex.Pattern;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.Locator;
 
 import pages.FieldPages.MaskedDateField.MaskedDateFieldPage;
 import tests.BaseTest;
+import utils.annotations.BrowserTest;
 
 public class MaskedDateFieldWithPickerIT extends BaseTest {
 
@@ -22,7 +22,7 @@ public class MaskedDateFieldWithPickerIT extends BaseTest {
         maskedDateField = new MaskedDateFieldPage(page);
     }
 
-    @Test
+    @BrowserTest
     public void testCalenderAccessibility() {
         Locator weekWrapper = page.locator(".flatpickr-weeks");
         maskedDateField.getDateField().click();

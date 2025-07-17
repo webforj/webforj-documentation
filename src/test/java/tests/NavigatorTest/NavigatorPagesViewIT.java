@@ -18,7 +18,6 @@ public class NavigatorPagesViewIT extends BaseTest {
     @BeforeEach
     public void setupNavigatorPage() {
         navigateToRoute(NavigatorPagesViewPage.getRoute());
-        page.waitForLoadState();
         navigatorPaginationPage = new NavigatorPagesViewPage(page);
     }
 

@@ -19,13 +19,11 @@ import java.util.concurrent.ConcurrentHashMap;
  * reporting capabilities
  */
 public class ExtentReportManager {
-    // Single static instance for the entire JVM
     private static final ExtentReports extentReports;
+    private static final int MAX_REPORTS_TO_KEEP = 10;
 
-    // Thread-safe storage for test instances
     private static final ConcurrentHashMap<String, ExtentTest> activeTests = new ConcurrentHashMap<>();
 
-    // Static initializer block - runs once when class is loaded
     static {
         File reportsDir = new File(RunConfig.getReportsDir());
         if (!reportsDir.exists()) {
@@ -37,18 +35,14 @@ public class ExtentReportManager {
         String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy_MM_dd_HHmmss"));
         String reportPath = RunConfig.getReportsDir() + "/test-report-" + timestamp + ".html";
 
-        // Create the reporter with enhanced configuration
         ExtentSparkReporter sparkReporter = new ExtentSparkReporter(reportPath);
         configureSparkReporter(sparkReporter);
 
-        // Create and configure the reports
         extentReports = new ExtentReports();
         extentReports.attachReporter(sparkReporter);
 
-        // Enhanced system information
         setSystemInformation();
 
-        // Add shutdown hook for final flush
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             LoggerUtil.info("Flushing ExtentReports on JVM shutdown...");
             extentReports.flush();
@@ -57,16 +51,12 @@ public class ExtentReportManager {
         LoggerUtil.info("Enhanced Extent Reports initialized at: " + reportPath);
     }
 
-    /**
-     * Configure the Spark Reporter with enhanced settings
-     */
     private static void configureSparkReporter(ExtentSparkReporter sparkReporter) {
         sparkReporter.config().setDocumentTitle("Playwright Test Execution Report");
         sparkReporter.config().setReportName("WebForJ Component Testing Report");
         sparkReporter.config().setTheme(Theme.DARK);
         sparkReporter.config().setTimeStampFormat("yyyy-MM-dd HH:mm:ss");
 
-        // Enhanced HTML configuration
         sparkReporter.config().setCss("""
                 .test-detail-body { font-size: 14px; }
                 .step-details { background-color: #f8f9fa; padding: 10px; margin: 5px 0; border-radius: 5px; }
@@ -79,9 +69,6 @@ public class ExtentReportManager {
                 """);
     }
 
-    /**
-     * Set comprehensive system information
-     */
     private static void setSystemInformation() {
         extentReports.setSystemInfo("Operating System",
                 System.getProperty("os.name") + " " + System.getProperty("os.version"));
@@ -94,22 +81,17 @@ public class ExtentReportManager {
         extentReports.setSystemInfo("User", System.getProperty("user.name"));
         extentReports.setSystemInfo("Working Directory", System.getProperty("user.dir"));
 
-        // Add browser configuration info
         extentReports.setSystemInfo("Configured Browsers", String.join(", ", RunConfig.getBrowsers()));
         extentReports.setSystemInfo("Headless Mode", String.valueOf(RunConfig.isHeadless()));
         extentReports.setSystemInfo("Slow Motion", RunConfig.getSlowMo() + "ms");
+        extentReports.setSystemInfo("Retry Count", RunConfig.getRetryCount() + " times");
+
     }
 
-    /**
-     * Get the ExtentReports instance
-     */
     public static ExtentReports getInstance() {
         return extentReports;
     }
 
-    /**
-     * Create a test with enhanced information
-     */
     public static ExtentTest createTest(String testName, String description, String browserType, String testClass) {
         String enhancedDescription = String.format(
                 "<div class='browser-info' style='color: black;'>" +
@@ -129,25 +111,16 @@ public class ExtentReportManager {
         return test;
     }
 
-    /**
-     * Get current test for the thread
-     */
     public static ExtentTest getCurrentTest(String testName) {
         String testKey = Thread.currentThread().getId() + "_" + testName;
         return activeTests.get(testKey);
     }
 
-    /**
-     * Remove test from active tests
-     */
     public static void removeTest(String testName) {
         String testKey = Thread.currentThread().getId() + "_" + testName;
         activeTests.remove(testKey);
     }
 
-    /**
-     * Enhanced step logging methods
-     */
     public static void logStep(ExtentTest test, Status status, String stepDescription) {
         if (test != null) {
             String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
@@ -172,9 +145,6 @@ public class ExtentReportManager {
         logStep(test, Status.WARNING, message);
     }
 
-    /**
-     * Log browser action with details
-     */
     public static void logBrowserAction(ExtentTest test, String action, String element, String value) {
         if (test != null) {
             String message = String.format(
@@ -190,9 +160,6 @@ public class ExtentReportManager {
         }
     }
 
-    /**
-     * Log assertion with expected and actual values
-     */
     public static void logAssertion(ExtentTest test, String assertion, String expected, String actual, boolean passed) {
         if (test != null) {
             Status status = passed ? Status.PASS : Status.FAIL;
@@ -214,30 +181,18 @@ public class ExtentReportManager {
         }
     }
 
-    /**
-     * Log navigation action
-     */
     public static void logNavigation(ExtentTest test, String url) {
         logBrowserAction(test, "Navigate", "URL", url);
     }
 
-    /**
-     * Log element interaction
-     */
     public static void logElementAction(ExtentTest test, String action, String locator) {
         logBrowserAction(test, action, locator, null);
     }
 
-    /**
-     * Log wait action
-     */
     public static void logWait(ExtentTest test, String waitType, String element) {
         logBrowserAction(test, "Wait for " + waitType, element, null);
     }
 
-    /**
-     * Enhanced failure logging with context
-     */
     public static void logFailureWithContext(ExtentTest test, Throwable throwable, String currentUrl, String testStep) {
         if (test != null) {
             String errorMessage = String.format(
@@ -259,9 +214,6 @@ public class ExtentReportManager {
         }
     }
 
-    /**
-     * Convert stack trace to string
-     */
     private static String getStackTraceAsString(Throwable throwable) {
         StringBuilder sb = new StringBuilder();
         for (StackTraceElement element : throwable.getStackTrace()) {
@@ -275,26 +227,27 @@ public class ExtentReportManager {
         return sb.toString();
     }
 
-    /**
-     * Clean up old reports, keeping only the most recent ones
-     */
     private static void cleanupOldReports() {
         File reportsDir = new File(RunConfig.getReportsDir());
         File[] reportFiles = reportsDir.listFiles((dir, name) -> name.endsWith(".html"));
 
-        if (reportFiles == null ) {
+        if (reportFiles == null || reportFiles.length <= MAX_REPORTS_TO_KEEP) {
             return;
         }
-
         Arrays.sort(reportFiles, Comparator.comparingLong(File::lastModified).reversed());
 
+        for (int i = MAX_REPORTS_TO_KEEP; i < reportFiles.length; i++) {
+            if (reportFiles[i].delete()) {
+                LoggerUtil.info("Deleted old report: " + reportFiles[i].getName());
+            } else {
+                LoggerUtil.warn("Failed to delete old report: " + reportFiles[i].getName());
+            }
+        }
+
+        LoggerUtil.info("Report cleanup completed. Keeping " + MAX_REPORTS_TO_KEEP + " most recent reports.");
     }
 
-    /**
-     * Forces a flush of the report.
-     */
     public static void flushReport() {
         extentReports.flush();
-        LoggerUtil.info("Manually flushed extent report");
     }
 }

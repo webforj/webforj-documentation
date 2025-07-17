@@ -3,10 +3,10 @@ package tests.FieldTest.MaskedNumberFieldTest;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import pages.FieldPages.MaskedNumberField.MaskedNumberFieldPage;
 import tests.BaseTest;
+import utils.annotations.BrowserTest;
 
 public class MaskedNumSpinnerViewIT extends BaseTest {
 
@@ -19,7 +19,7 @@ public class MaskedNumSpinnerViewIT extends BaseTest {
 
     }
 
-    @Test
+    @BrowserTest
     public void testSpinnerButtonsIncrementDecrementByStep() {
         String initialValue = numberPage.getTipPercentageField().inputValue(); // 15%
         int initialValueInt = Integer.parseInt(initialValue.replaceAll("[^0-9]", ""));
@@ -31,7 +31,7 @@ public class MaskedNumSpinnerViewIT extends BaseTest {
         assertThat(numberPage.getTipPercentageField()).hasValue(initialValue);
     }
 
-    @Test
+    @BrowserTest
     public void testKeyboardArrowKeysIncrementDecrementByStepFive() {
         String initialValue = numberPage.getTipPercentageField().inputValue();
         int initialValueInt = Integer.parseInt(initialValue.replaceAll("[^0-9]", ""));
@@ -44,7 +44,7 @@ public class MaskedNumSpinnerViewIT extends BaseTest {
         assertThat(numberPage.getTipPercentageField()).hasValue(initialValue);
     }
 
-    @Test
+    @BrowserTest
     public void testValidNumericInputWithinMinMaxAccepted() {
 
         numberPage.cleanField(numberPage.getTipPercentageField());
@@ -54,7 +54,7 @@ public class MaskedNumSpinnerViewIT extends BaseTest {
         assertThat(numberPage.getTipPercentageField()).hasValue("50%");
     }
 
-    @Test
+    @BrowserTest
     public void testDecimalValuesRejectedIfRestricted() {
 
         numberPage.cleanField(numberPage.getTipPercentageField());
@@ -65,7 +65,7 @@ public class MaskedNumSpinnerViewIT extends BaseTest {
         assertThat(numberPage.getTipPercentageField()).hasValue("12%");
     }
 
-    @Test
+    @BrowserTest
     public void testInvalidCharactersAreRejected() {
         numberPage.cleanField(numberPage.getTipPercentageField());
         page.keyboard().type("Aa!@. ");
@@ -73,7 +73,7 @@ public class MaskedNumSpinnerViewIT extends BaseTest {
         assertThat(numberPage.getTipPercentageField()).hasValue("");
     }
 
-    @Test
+    @BrowserTest
     public void testBoundaryBehaviorForValuesOutsideMinMax() {
 
         numberPage.cleanField(numberPage.getTipPercentageField());
@@ -85,7 +85,7 @@ public class MaskedNumSpinnerViewIT extends BaseTest {
 
     }
 
-    @Test
+    @BrowserTest
     public void testEmptyInputFieldBehavior() {
         numberPage.cleanField(numberPage.getTipPercentageField());
         assertThat(numberPage.getTipPercentageField()).hasValue("");
@@ -94,7 +94,7 @@ public class MaskedNumSpinnerViewIT extends BaseTest {
         assertThat(numberPage.getTipPercentageField()).hasValue("5%");
     }
 
-    @Test
+    @BrowserTest
     public void testDefaultStepSizeAndDynamicStepChange() {
         numberPage.cleanField(numberPage.getTipPercentageField());
         page.keyboard().type("1");
@@ -106,7 +106,7 @@ public class MaskedNumSpinnerViewIT extends BaseTest {
         assertThat(numberPage.getTipPercentageField()).hasValue("13%");
     }
 
-    @Test
+    @BrowserTest
     public void testSpinnerPreventsValueAboveMax() {
 
         numberPage.cleanField(numberPage.getTipPercentageField());
@@ -118,7 +118,7 @@ public class MaskedNumSpinnerViewIT extends BaseTest {
         assertThat(numberPage.getTipPercentageField()).hasValue("100%");
     }
 
-    @Test
+    @BrowserTest
     public void testMaskAppliedCorrectlyOnManualAndSpinnerInput() {
 
         numberPage.cleanField(numberPage.getTipPercentageField());

@@ -4,12 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.Locator;
 
 import pages.FieldPages.ColorFieldPage;
 import tests.BaseTest;
+import utils.annotations.BrowserTest;
 
 public class ColorFieldIT extends BaseTest {
     private ColorFieldPage colorFieldPage;
@@ -20,7 +20,7 @@ public class ColorFieldIT extends BaseTest {
         colorFieldPage = new ColorFieldPage(page);
     }
 
-    @Test
+    @BrowserTest
     public void testTetradicComplementaryColorBlocks() {
         assertThat(colorFieldPage.getColorBlocks()).hasCount(4);
 

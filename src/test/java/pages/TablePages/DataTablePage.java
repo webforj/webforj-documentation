@@ -3,7 +3,7 @@ package pages.TablePages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.config.RouteConfig;
+import config.RouteConfig;
 
 import pages.BasePage;
 

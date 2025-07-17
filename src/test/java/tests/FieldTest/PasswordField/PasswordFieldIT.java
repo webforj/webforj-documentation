@@ -3,10 +3,10 @@ package tests.FieldTest.PasswordField;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import pages.FieldPages.PasswordFieldPage;
 import tests.BaseTest;
+import utils.annotations.BrowserTest;
 
 public class PasswordFieldIT extends BaseTest {
 
@@ -18,7 +18,7 @@ public class PasswordFieldIT extends BaseTest {
         passwordFieldPage = new PasswordFieldPage(page);
     }
 
-    @Test
+    @BrowserTest
     public void testVisibilityToggle() {
         passwordFieldPage.getPasswordField().fill("Password123!");
         assertThat(passwordFieldPage.getPasswordField()).hasAttribute("type", "password");

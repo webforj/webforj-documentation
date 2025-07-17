@@ -11,7 +11,6 @@ import com.webforj.component.tabbedpane.TabbedPane;
 import com.webforj.component.tabbedpane.TabbedPane.Alignment;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet(/*css */"""
   .window {
@@ -21,7 +20,7 @@ import com.webforj.samples.config.RouteConfig;
     margin: 20px;
   }
 """)
-@Route(RouteConfig.TABBED_PANE_ALIGNMENT)
+@Route("tabbedpanealignment")
 @FrameTitle("Tabbed Pane Alignment")
 public class TabbedPaneAlignmentView extends Composite<Div> {
 

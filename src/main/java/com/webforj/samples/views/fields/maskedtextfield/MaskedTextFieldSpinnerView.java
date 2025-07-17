@@ -9,9 +9,8 @@ import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.MASKED_TEXT_FIELD_SPINNER)
+@Route("maskedtextfieldspinner")
 @FrameTitle("Masked Text Field Spinner")
 public class MaskedTextFieldSpinnerView extends Composite<FlexLayout> {
 

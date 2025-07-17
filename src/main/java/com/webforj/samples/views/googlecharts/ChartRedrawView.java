@@ -14,7 +14,6 @@ import com.webforj.component.layout.flexlayout.FlexWrap;
 import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @InlineStyleSheet("context://css/googlecharts/chartRedraw.css")
-@Route(RouteConfig.CHART_REDRAW)
+@Route("chartredraw")
 @FrameTitle("Chart Redraw")
 public class ChartRedrawView extends Composite<Div> {
 

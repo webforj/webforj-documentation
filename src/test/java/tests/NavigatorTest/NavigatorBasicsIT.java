@@ -15,7 +15,6 @@ public class NavigatorBasicsIT extends BaseTest {
     @BeforeEach
     public void setupNavigatorBasics() {
         navigateToRoute(NavigatorBasicPage.getRoute());
-        page.waitForLoadState();
         navigatorBasicPage = new NavigatorBasicPage(page);
     }
 

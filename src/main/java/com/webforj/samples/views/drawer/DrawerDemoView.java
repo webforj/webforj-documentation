@@ -7,10 +7,9 @@ import com.webforj.component.element.Element;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet("context://css/drawer/drawerDemo.css")
-@Route(RouteConfig.DRAWER_DEMO) 
+@Route("drawerdemo")
 @FrameTitle("Drawer Demo")
 public class DrawerDemoView extends Composite<FlexLayout> {
 

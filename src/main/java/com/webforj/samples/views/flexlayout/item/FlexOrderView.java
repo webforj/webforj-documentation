@@ -9,10 +9,9 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet("context://css/flexlayout/container/flexContainerBuilder.css")
-@Route(RouteConfig.FLEX_ORDER)
+@Route("flexorder")
 @FrameTitle("Flex Order")
 public class FlexOrderView extends Composite<Div> {
 

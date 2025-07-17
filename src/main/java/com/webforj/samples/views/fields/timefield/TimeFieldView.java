@@ -5,11 +5,10 @@ import com.webforj.component.field.TimeField;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 import java.time.LocalTime;
 
-@Route(RouteConfig.TIME_FIELD)
+@Route("timefield")
 @FrameTitle("Time Field Demo")
 public class TimeFieldView extends Composite<FlexLayout> {
 

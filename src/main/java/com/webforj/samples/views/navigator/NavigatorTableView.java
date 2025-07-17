@@ -10,11 +10,10 @@ import com.webforj.component.navigator.Navigator.Layout;
 import com.webforj.data.repository.Repository;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 import com.webforj.samples.views.table.MusicRecord;
 import com.webforj.samples.views.table.Service;
 
-@Route(RouteConfig.NAVIGATOR_TABLE)
+@Route("navigatortable")
 @FrameTitle("Navigator Table")
 public class NavigatorTableView extends Composite<Div> {
 

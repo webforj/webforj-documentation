@@ -10,10 +10,9 @@ import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet("context://css/flexlayout/container/flexContainerBuilder.css")
-@Route(RouteConfig.FLEX_SELF_ALIGN)
+@Route("flexselfalign")
 @FrameTitle("Flex Item Self Align")
 public class FlexSelfAlignView extends Composite<Div> {
 

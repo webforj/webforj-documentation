@@ -6,7 +6,6 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
-import com.webforj.samples.config.RouteConfig;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +20,7 @@ import java.util.Map;
       align-items: center;
     }
 """)
-@Route(RouteConfig.CHART_SETTING_DATA)
+@Route("chartsettingdata")
 @FrameTitle("Chart Setting Data")
 public class ChartSettingDataView extends Composite<Div> {
 

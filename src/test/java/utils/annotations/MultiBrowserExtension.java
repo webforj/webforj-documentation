@@ -3,7 +3,6 @@ package utils.annotations;
 import config.RunConfig;
 
 import org.junit.jupiter.api.extension.*;
-import utils.LoggerUtil;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +13,6 @@ import java.util.stream.Stream;
  * JUnit 5 extension for running tests against multiple browsers
  */
 public class MultiBrowserExtension implements TestTemplateInvocationContextProvider {
-    // Semaphore to limit concurrent browser instances to 8
     private static final Semaphore BROWSER_SEMAPHORE = new Semaphore(8, true);
 
     @Override
@@ -34,7 +32,6 @@ public class MultiBrowserExtension implements TestTemplateInvocationContextProvi
 
     @Override
     public Stream<TestTemplateInvocationContext> provideTestTemplateInvocationContexts(ExtensionContext context) {
-        LoggerUtil.info("Setting up multi-browser test contexts");
 
         BrowserTest browserTest = context.getRequiredTestMethod().getAnnotation(BrowserTest.class);
         List<String> browsers = getBrowsers(browserTest);

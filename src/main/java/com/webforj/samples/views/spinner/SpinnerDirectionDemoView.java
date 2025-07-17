@@ -11,9 +11,8 @@ import com.webforj.component.spinner.Spinner;
 import com.webforj.component.spinner.SpinnerExpanse;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.SPINNER_DIRECTION_DEMO)
+@Route("spinnerdirectiondemo")
 @FrameTitle("Spinner Directions")
 public class SpinnerDirectionDemoView extends Composite<FlexLayout> {
 

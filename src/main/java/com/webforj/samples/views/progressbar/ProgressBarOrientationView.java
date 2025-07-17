@@ -13,9 +13,8 @@ import com.webforj.component.progressbar.ProgressBar.Orientation;
 import com.webforj.dispatcher.EventListener;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
-@Route(RouteConfig.PROGRESS_BAR_ORIENTATION)
+@Route("progressbarorientation")
 @FrameTitle("Progress Bar Orientation")
 public class ProgressBarOrientationView extends Composite<Div> {
   Button start = new Button("Start");

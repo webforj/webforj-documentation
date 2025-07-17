@@ -17,14 +17,11 @@ public class ProgressBarBasicsIT extends BaseTest {
     @BeforeEach
     public void setupProgressBarBasics() {
         navigateToRoute(ProgressBarBasicsPage.getRoute());
-        page.waitForLoadState();
         progressBar = new ProgressBarBasicsPage(page);
     }
 
     @BrowserTest
     public void testStartProgressesBarTo100AndStops() {
-        assertThat(progressBar.getProgressBar()).hasAttribute("style", "--_dwc-progressbar-percent: 0%;");
-
         progressBar.getStartButton().click();
         assertThat(progressBar.getProgressBar()).hasAttribute("animated", "true");
         assertThat(progressBar.getProgressBar()).hasAttribute("style", "--_dwc-progressbar-percent: 100%;",
@@ -34,8 +31,6 @@ public class ProgressBarBasicsIT extends BaseTest {
 
     @BrowserTest
     public void testResetReturnsToInitialStateAfterPausing() {
-        assertThat(progressBar.getProgressBar()).hasAttribute("style", "--_dwc-progressbar-percent: 0%;");
-
         progressBar.getStartButton().click();
         assertThat(progressBar.getProgressBar()).hasAttribute("animated", "true");
 

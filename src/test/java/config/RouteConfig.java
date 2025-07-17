@@ -1,4 +1,4 @@
-package com.webforj.samples.config;
+package config;
 
 /**
  * Centralized route configuration for the WebforJ application.
@@ -43,7 +43,7 @@ public final class RouteConfig {
     public static final String CHECKBOX_HORIZONTAL_TEXT = "checkboxhorizontaltext";
 
     // Composite routes
-    public static final String COMPOSITE_VIEW = "compositeview";
+    public static final String COMPOSITE_VIEW = "composite";
     public static final String BOUND_COMPONENT_DEMO = "boundcomponentdemo";
 
     // ColumnsLayout routes
@@ -71,8 +71,8 @@ public final class RouteConfig {
 
     // Element Composite
     public static final String QR_CODE = "qrcode";
-    public static final String QR_CODE_EVENTS = "qrcodeevents";
-    public static final String QR_CODE_PROPERTIES = "qrcodeproperties";
+    public static final String QR_CODE_EVENTS = "qrevent";
+    public static final String QR_CODE_PROPERTIES = "qrproperties";
 
     // Element Input
     public static final String ELEMENT_INPUT_TEXT = "elementinputtext";
@@ -97,7 +97,7 @@ public final class RouteConfig {
     public static final String MASKED_NUMBER_FIELD_RESTORE = "maskednumberfieldrestore";
     public static final String MASKED_NUMBER_FIELD_SPINNER = "maskednumberfieldspinner";
     public static final String MASKED_NUMBER_FIELD_NEGATABLE = "maskednumberfieldnegatable";
-    public static final String MASKED_NUMBER_FIELD_VIEW = "maskednumberfieldview";
+    public static final String MASKED_NUMBER_FIELD_VIEW = "maskednumberfield";
 
     public static final String MASKED_TEXT_FIELD = "maskedtextfield";
     public static final String MASKED_TEXT_FIELD_RESTORE = "maskedtextfieldrestore";
@@ -106,7 +106,7 @@ public final class RouteConfig {
     public static final String MASKED_TIME_FIELD_RESTORE = "maskedtimefieldrestore";
     public static final String MASKED_TIME_FIELD_SPINNER = "maskedtimefieldspinner";
     public static final String MASKED_TIME_FIELD_PICKER = "maskedtimefieldpicker";
-    public static final String MASKED_TIME_FIELD_VIEW = "maskedtimefieldview";
+    public static final String MASKED_TIME_FIELD_VIEW = "maskedtimefield";
 
     //Flexy Layout
     public static final String FLEX_CONTAINER_BUILDER = "flexcontainerbuilder";
@@ -115,11 +115,11 @@ public final class RouteConfig {
     public static final String FLEX_WRAPPING = "flexwrapping";
     public static final String FLEX_ORDER = "flexorder";
     public static final String FLEX_SELF_ALIGN = "flexselfalign";
-    public static final String FLEX_BASIS_VIEW = "flexbasisview";
-    public static final String FLEX_LAYOUT_VIEW = "flexlayoutview";
+    public static final String FLEX_BASIS_VIEW = "flexbasis";
+    public static final String FLEX_LAYOUT_VIEW = "flexlayout";
 
     // GoogleCharts routes
-    public static final String CHART_VIEW = "chartview";
+    public static final String CHART_VIEW = "chart";
     public static final String CHART_GALLERY = "chartgallery";
     public static final String CHART_REDRAW = "chartredraw";
     public static final String CHART_SETTING_DATA = "chartsettingdata";
@@ -132,7 +132,7 @@ public final class RouteConfig {
     //Infiniti Scroll
     public static final String INFINITE_SCROLL_CUSTOM_LOADING = "infinitescrollcustomloading";
     public static final String INFINITE_SCROLL_LOADING = "infinitescrollloading";
-    public static final String INFINITE_SCROLL_VIEW = "infinitescrollview";
+    public static final String INFINITE_SCROLL_VIEW = "infinitescroll";
 
     //List
     public static final String CHOICE_BOX_DROPDOWN = "choiceboxdropdown";
@@ -208,7 +208,7 @@ public final class RouteConfig {
     public static final String SLIDER_TEMP          = "slidertemp";
     public static final String SLIDER_THEMES        = "sliderthemes";
     public static final String SLIDER_TICK_SPACING  = "slidertickspacing";
-    public static final String SLIDER_VIEW = "sliderview";
+    public static final String SLIDER_VIEW = "slider";
 
     // Spinner routes
     public static final String SPINNER_DEMO             = "spinnerdemo";
@@ -269,7 +269,7 @@ public final class RouteConfig {
     public static final String TOAST_COOKIES   = "toastcookies";
     public static final String TOAST_PLACEMENT = "toastplacement";
     public static final String TOAST_THEME     = "toasttheme";
-    public static final String TOAST_VIEW    = "toastview";
+    public static final String TOAST_VIEW    = "toast";
 
     // Toolbar routes
     public static final String TOOLBAR_COMPACT      = "toolbarcompact";
@@ -281,7 +281,7 @@ public final class RouteConfig {
     public static final String TREE_SELECTION = "treeselection";
     public static final String TREE_ICONS = "treeicons";
     public static final String TREE_LAZY_LOAD = "treelazyload";
-    public static final String TREE_VIEW = "treeview";
+    public static final String TREE_VIEW = "tree";
     public static final String TREE_MODIFY = "treemodify";
 
 

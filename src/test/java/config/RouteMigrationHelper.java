@@ -1,4 +1,4 @@
-package com.webforj.samples.config;
+package config;
 
 import java.io.IOException;
 import java.nio.file.Files;

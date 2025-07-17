@@ -26,10 +26,9 @@ import com.webforj.component.tabbedpane.TabbedPane;
 import com.webforj.exceptions.WebforjException;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet("context://css/drawer/drawerWelcome.css")
-@Route(RouteConfig.DRAWER_WELCOME)
+@Route("drawerwelcome")
 @FrameTitle("Drawer Welcome App")
 public class DrawerWelcomeView extends Composite<FlexLayout> {
 

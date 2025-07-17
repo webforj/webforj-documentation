@@ -20,10 +20,9 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.samples.components.Box;
 import com.webforj.samples.components.CodeDisplay;
-import com.webforj.samples.config.RouteConfig;
 
 @InlineStyleSheet("context://css/flexlayout/container/flexContainerBuilder.css")
-@Route(RouteConfig.FLEX_CONTAINER_BUILDER)
+@Route("flexcontainerbuilder")
 @FrameTitle("Container Builder")
 public class FlexContainerBuilderView extends Composite<Div> {
 
