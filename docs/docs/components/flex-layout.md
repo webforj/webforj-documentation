@@ -29,7 +29,7 @@ Alternatively, use the `setDirection()` method. The horizontal options are eithe
 <ComponentDemo 
 path='/webforj/flexdirection?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/container/FlexDirectionView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/flexlayout/container/flexContainerBuilder.css'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css'
 height="275px"
 />
 
@@ -48,7 +48,7 @@ The `setAlignContent()` methods components the space around the cross axis, and 
 <ComponentDemo 
 path='/webforj/flexpositioning?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/container/FlexPositioningView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/flexlayout/container/flexContainerBuilder.css'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css'
 height="375px"
 />
 
@@ -82,7 +82,7 @@ The following demo allows you to build a container with the desired flex propert
 <ComponentDemo 
 path='/webforj/flexcontainerbuilder?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/container/FlexContainerBuilderView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/flexlayout/container/flexContainerBuilder.css'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css'
 height="600px"
 />
 
@@ -106,7 +106,7 @@ It's important to note that the order property only affects the visual order of 
 <ComponentDemo 
 path='/webforj/flexorder?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/item/FlexOrderView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/flexlayout/container/flexContainerBuilder.css'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css'
 height="320px"
 />
 
@@ -125,7 +125,7 @@ This property is especially useful when you need to align a specific item differ
 <ComponentDemo 
 path='/webforj/flexselfalign?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/item/FlexSelfAlignView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/flexlayout/container/flexContainerBuilder.css'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/css/flexlayout/container/flexContainerBuilder.css'
 height="350px"
 />
 
@@ -170,6 +170,6 @@ If you prefer a column-based structure, check out the ColumnsLayout version of t
 <ComponentDemo 
 path='/webforj/flexlayout?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/flexlayout/FlexLayoutView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/flexlayout/flexLayout.css'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/css/flexlayout/flexLayout.css'
 height="620px"
 />

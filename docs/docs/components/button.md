@@ -110,7 +110,7 @@ Shown below are example buttons with each of the supported Themes applied: <br/>
 <ComponentDemo 
 path='/webforj/buttonthemes?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonThemesView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/button/buttonThemes.css'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/css/button/buttonThemes.css'
 height='175px'
 />
 
