@@ -3,7 +3,7 @@ package com.webforj.samples.views.infinitescroll;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.icons.FeatherIcon;
@@ -13,7 +13,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.Route;
 
 @Route
-@InlineStyleSheet("context://css/infinitescroll/infinitescroll.css")
+@StyleSheet("ws://css/infinitescroll/infinitescroll.css")
 public class InfiniteScrollView extends Composite<Div> {
 
   public InfiniteScrollView() {

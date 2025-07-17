@@ -2,7 +2,7 @@ package com.webforj.samples.views.refresher;
 
 import java.util.Random;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.icons.FeatherIcon;
@@ -13,7 +13,7 @@ import com.webforj.component.refresher.Refresher;
 import com.webforj.router.annotation.Route;
 
 @Route
-@InlineStyleSheet("context://css/refresher/refresher.css")
+@StyleSheet("ws://css/refresher/refresher.css")
 public class RefresherIconView extends Composite<Div> {
 
   private final Random random = new Random();
