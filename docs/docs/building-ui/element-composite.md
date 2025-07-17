@@ -138,7 +138,7 @@ String title = get(TITLE, false, String.class);
 ### Best practices for validating properties
 
 To make sure only valid values are used, add validation logic in your setter methods or before calling `set()`. For example:
-```java
+
 public void setCount(int count) {
     if (count < 0) {
         throw new IllegalArgumentException("Count must be non-negative");
