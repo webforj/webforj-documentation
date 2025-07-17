@@ -187,7 +187,7 @@ addEventListener(ClickEvent.class, event -> {
 The `ElementComposite` events are different than `Element` events, in that this doesn't allow any class, but only specified `Event` classes.
 :::
 
-In the demonstration below, a click event has been created and then added to the QR code component. This event, when fired, will display the "X" coordinate of the mouse at the time of clicking the component, which is provided to the Java event as data. A method is then implemented to allow the user to access this data, which is how it is displayed in the app.
+In the demonstration below, a click event has been created and then added to the QR code component. This event, when fired, will display the "X" coordinate of the mouse at the time of clicking the component, which is provided to the Java event as data. A method is then implemented to allow the user to access this data, which is how it's displayed in the app.
 <ComponentDemo 
 path='/webforj/qrevent?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/QREventView.java'
@@ -198,12 +198,12 @@ height='300px'
 
 Web components often use slots to allow developers to define the structure of a component from the outside. A slot is a placeholder inside a web component that can be filled with content when using the component. In the context of the `ElementComposite` class, slots provide a way to customize the content within a component. The following methods are provided to allow developers to interact with and manipulate slots:
 
-1. **`findComponentSlot()`**: This method is used to search for a specific component across all slots in a component system. It returns the name of the slot where the component is located. If the component is not found in any slot, an empty string is returned.
+1. **`findComponentSlot()`**: This method is used to search for a specific component across all slots in a component system. It returns the name of the slot where the component is located. If the component isn't found in any slot, an empty string is returned.
 
 2. **`getComponentsInSlot()`**: This method retrieves the list of components assigned to a given slot in a component system. Optionally, pass a specific class type to filter the results of the method.
 
 3. **`getFirstComponentInSlot()`**: This method is designed to fetch the first component assigned to the slot. Optionally pass a specific class type to filter the results of this method.
 
-It is also possible to use the `add()` method with a `String` parameter to specify the desired slot in which to add the passed component.
+It's also possible to use the `add()` method with a `String` parameter to specify the desired slot in which to add the passed component.
 
 These interactions allow developers to harness the power of web components by providing a clean and straightforward API for manipulating slots, properties, and handling events within the `ElementComposite` class.
