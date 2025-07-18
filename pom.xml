@@ -269,27 +269,20 @@
           </execution>
         </executions>
         <configuration>
-          <trimStackTrace>true</trimStackTrace>
+          <trimStackTrace>false</trimStackTrace>
           <parallel>both</parallel>
           <threadCount>8</threadCount>
-          <perCoreThreadCount>false</perCoreThreadCount>
+          <perCoreThreadCount>true</perCoreThreadCount>
           <rerunFailingTestsCount>2</rerunFailingTestsCount>
           <useFile>false</useFile>
-          <disableXmlReport>false</disableXmlReport>
-      
-          <printSummary>true</printSummary>
-          <reportFormat>brief</reportFormat>
-          <redirectTestOutputToFile>false</redirectTestOutputToFile>
-        
+          <disableXmlReport>true</disableXmlReport>
           <consoleOutputReporter>
             <disable>false</disable>
           </consoleOutputReporter>
-        
           <summaryFile>target/failsafe-reports/summary.txt</summaryFile>
           <includes>
             <include>**/*IT.java</include>
           </includes>
-        
           <systemPropertyVariables>
             <logback.configurationFile>src/test/resources/logback.xml</logback.configurationFile>
           </systemPropertyVariables>

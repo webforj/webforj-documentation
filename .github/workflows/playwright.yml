@@ -2,9 +2,9 @@ name: Java Playwright Tests
 
 on:
   push:
-    branches: [ playwright ]
+    branches: [ playwright-test ]
   pull_request:
-    branches: [ playwright ]
+    branches: [ playwright-test ]
   workflow_dispatch:
 
 jobs:
@@ -39,7 +39,7 @@ jobs:
         run: mvn exec:java -e -Dexec.mainClass="com.microsoft.playwright.CLI" -Dexec.args="install --with-deps" -Dexec.classpathScope=test
 
       - name: Run errata-ai/vale-action@reviewdog
-        if: false  # Temporarily disable Vale
+        if: false
         uses: errata-ai/vale-action@reviewdog
 
       - name: Run tests
