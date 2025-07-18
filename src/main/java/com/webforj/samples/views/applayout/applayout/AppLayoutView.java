@@ -1,6 +1,6 @@
 package com.webforj.samples.views.applayout.applayout;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H3;
@@ -17,7 +17,7 @@ import com.webforj.router.history.ParametersBag;
 import com.webforj.samples.views.applayout.DrawerLogo;
 
 @Route
-@InlineStyleSheet("context://css/applayout/applayout.css")
+@StyleSheet("ws://css/applayout/applayout.css")
 @FrameTitle("AppLayout")
 public class AppLayoutView extends Composite<AppLayout> {
 

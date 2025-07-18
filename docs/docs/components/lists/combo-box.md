@@ -62,7 +62,7 @@ In the demo below, the Dropdown type is set and used in the CSS file to select t
 <ComponentDemo 
 path='/webforj/comboboxdropdowntype?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/lists/combobox/ComboBoxDropdownTypeView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/lists/combobox/comboBoxDropDownType.css'
+cssURL='/css/lists/combobox/comboBoxDropDownType.css'
 height='250px'
 />
 

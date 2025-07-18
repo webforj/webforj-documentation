@@ -2,7 +2,7 @@ package com.webforj.samples.views.element;
 
 import static com.webforj.component.optiondialog.OptionDialog.showMessageDialog;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.element.Element;
 import com.webforj.component.element.event.ElementEventOptions;
@@ -10,7 +10,7 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@InlineStyleSheet("context://css/element/elementInputEvent.css")
+@StyleSheet("ws://css/element/elementInputEvent.css")
 @Route
 @FrameTitle("Input Event")
 public class ElementInputEventView extends Composite<Div> {

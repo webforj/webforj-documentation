@@ -110,11 +110,14 @@ export default function ComponentDemo({
         });
     }
     if (cssURL) {
-      fetch(cssURL)
+      const rootPath = isLocalhost
+      ? 'https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static'
+      : GLOBALS.IFRAME_SRC_LIVE;
+      fetch(rootPath + cssURL)
         .then((response) => response.text())
         .then((textString) => {
           setCssCode(textString);
-          const parsedUrl = new URL(cssURL);
+          const parsedUrl = new URL(rootPath + cssURL);
           const pathname = parsedUrl.pathname;
           const parts = pathname.split("/");
           const fileName = parts[parts.length - 1];

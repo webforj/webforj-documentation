@@ -1,6 +1,6 @@
 package com.webforj.samples.views.spinner;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.html.elements.Div;
@@ -16,7 +16,7 @@ import com.webforj.component.icons.TablerIcon;
 
 @Route
 @FrameTitle("Spinner Basics")
-@InlineStyleSheet("context://css/spinnerstyles/spinnerdemo.css")
+@StyleSheet("ws://css/spinnerstyles/spinnerdemo.css")
 public class SpinnerDemoView extends Composite<Div> {
 
   Spinner spinner;
@@ -27,7 +27,7 @@ public class SpinnerDemoView extends Composite<Div> {
 
   public SpinnerDemoView() {
     getBoundComponent().setStyle("margin-left", "20px");
-    
+
     spinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.XXXSMALL);
     title = new H3("Complete your job application:");
     position = TablerIcon.create("checks");
@@ -42,7 +42,7 @@ public class SpinnerDemoView extends Composite<Div> {
     .vertical()
     .justify().center()
     .build();
-    
+
     getBoundComponent().add(items);
   }
 }
