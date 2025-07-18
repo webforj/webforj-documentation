@@ -19,7 +19,7 @@ The `ColorField` component is implemented as a native browser feature, so the pr
 <ComponentDemo 
 path='/webforj/colorfield?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/colorfield/ColorFieldView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/css/fields/colorfield/colorFieldDemo.css'
+cssURL='/css/fields/colorfield/colorFieldDemo.css'
 height='300px'
 />
 

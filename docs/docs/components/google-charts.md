@@ -27,7 +27,7 @@ The `GoogleChart` class is a comprehensive solution for embedding rich, interact
 <ComponentDemo 
 path='/webforj/chart?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/css/googlecharts/chart.css'
+cssURL='/css/googlecharts/chart.css'
 height='300px'
 />
 
@@ -39,7 +39,7 @@ The `GoogleChart` addon offers a comprehensive array of chart types to suit vari
 <ComponentDemo 
 path='/webforj/chartgallery?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartGalleryView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/css/googlecharts/chartGallery.css'
+cssURL='/css/googlecharts/chartGallery.css'
 height='600px'
 />
 
@@ -145,7 +145,7 @@ Invoke `redraw()` in scenarios such as:
 <ComponentDemo 
 path='/webforj/chartredraw?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/googlecharts/ChartRedrawView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/css/googlecharts/chartRedraw.css'
+cssURL='/css/googlecharts/chartRedraw.css'
 height='650px'
 />
 
