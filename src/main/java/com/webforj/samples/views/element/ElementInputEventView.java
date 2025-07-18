@@ -11,7 +11,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @InlineStyleSheet("context://css/element/elementInputEvent.css")
-@Route
+@Route("elementinputevent")
 @FrameTitle("Input Event")
 public class ElementInputEventView extends Composite<Div> {
 

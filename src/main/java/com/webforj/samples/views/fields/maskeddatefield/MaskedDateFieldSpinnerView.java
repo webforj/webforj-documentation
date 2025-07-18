@@ -11,7 +11,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route
+@Route("maskeddatefieldspinner")
 @FrameTitle("Masked Date Field Spinner")
 public class MaskedDateFieldSpinnerView extends Composite<FlexLayout> {
   MaskedDateFieldSpinner appointmentField = new MaskedDateFieldSpinner("Available Appointments");

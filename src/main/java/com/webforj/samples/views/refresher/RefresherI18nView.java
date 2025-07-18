@@ -12,7 +12,7 @@ import com.webforj.component.refresher.Refresher;
 import com.webforj.component.refresher.RefresherI18n;
 import com.webforj.router.annotation.Route;
 
-@Route
+@Route("refresheri18n")
 @InlineStyleSheet("context://css/refresher/refresher.css")
 public class RefresherI18nView extends Composite<Div> {
 

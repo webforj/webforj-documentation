@@ -12,7 +12,7 @@ import com.webforj.router.annotation.Route;
 import com.webforj.samples.components.Box;
 
 @InlineStyleSheet("context://css/flexlayout/container/flexContainerBuilder.css")
-@Route
+@Route("flexdirection")
 @FrameTitle("Flex Direction")
 public class FlexDirectionView extends Composite<Div> {
 

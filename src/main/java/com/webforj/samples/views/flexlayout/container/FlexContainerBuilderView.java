@@ -22,7 +22,7 @@ import com.webforj.samples.components.Box;
 import com.webforj.samples.components.CodeDisplay;
 
 @InlineStyleSheet("context://css/flexlayout/container/flexContainerBuilder.css")
-@Route
+@Route("flexcontainerbuilder")
 @FrameTitle("Container Builder")
 public class FlexContainerBuilderView extends Composite<Div> {
 

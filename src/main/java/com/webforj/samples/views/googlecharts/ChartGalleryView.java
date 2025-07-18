@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @InlineStyleSheet("context://css/googlecharts/chartGallery.css")
-@Route
+@Route("chartgallery")
 @FrameTitle("Chart Gallery")
 public class ChartGalleryView extends Composite<Div> {
 

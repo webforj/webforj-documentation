@@ -8,7 +8,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @InlineStyleSheet("context://css/lists/combobox/comboBoxDropDownType.css")
-@Route
+@Route("choiceboxdropdown")
 @FrameTitle("Choicebox Dropdown Type")
 public class ChoiceboxDropdownTypeView extends Composite<Div> {
 

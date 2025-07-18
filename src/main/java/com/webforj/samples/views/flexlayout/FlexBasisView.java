@@ -15,7 +15,7 @@ import com.webforj.router.annotation.Route;
 import java.util.ArrayList;
 import java.util.List;
 
-@Route
+@Route("flexbasis")
 @FrameTitle("Flex Basis")
 public class FlexBasisView extends Composite<Div> {
 

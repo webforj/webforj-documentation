@@ -11,7 +11,7 @@ import com.webforj.component.table.renderer.ButtonRenderer;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route
+@Route("tablecolumnpinning")
 @FrameTitle("Table Column Pinning")
 public class TableColumnPinningView extends Composite<Div> {
 

@@ -14,7 +14,7 @@ import com.webforj.router.annotation.Route;
  * Demo to showcase the different customization options for the LoadingSpinner.
  */
 
-@Route
+@Route("loadingspinnerdemo")
 @FrameTitle("Loading Spinners")
 @InlineStyleSheet("context://css/loadingstyles/loadingspinnerdemo.css")
 public class LoadingSpinnerDemoView extends Composite<Div> {
@@ -23,11 +23,11 @@ public class LoadingSpinnerDemoView extends Composite<Div> {
   Div parentDiv;
   Loading loading;
   Interval interval;
-  
+
   public LoadingSpinnerDemoView() {
-    
+
     parentDiv = new Div().addClassName("card");
-    
+
     loading = new Loading("Displaying spinner with all themes...").setBackdropVisible(false);
 
     interval = new Interval(3f, event ->  {
@@ -75,7 +75,7 @@ public class LoadingSpinnerDemoView extends Composite<Div> {
     }
       state++;
     });
-    
+
     getBoundComponent().add(parentDiv);
     parentDiv.add(loading);
 

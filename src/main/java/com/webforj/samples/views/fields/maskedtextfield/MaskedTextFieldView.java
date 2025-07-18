@@ -9,7 +9,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route
+@Route("maskedtextfield")
 @FrameTitle("Masked Text Field")
 public class MaskedTextFieldView extends Composite<FlexLayout> {
 

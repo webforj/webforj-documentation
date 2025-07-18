@@ -7,7 +7,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.samples.components.SplitterBox;
 
-@Route
+@Route("splitterminmax")
 @FrameTitle("Splitter Min/Max")
 public class SplitterMinMaxView extends Composite<Div> {
 

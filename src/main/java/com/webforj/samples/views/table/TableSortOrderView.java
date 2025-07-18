@@ -7,7 +7,7 @@ import com.webforj.component.table.Table;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route
+@Route("tablesortorder")
 @FrameTitle("Table Multi Sorting with Sort Order")
 public class TableSortOrderView extends Composite<Div> {
 

@@ -24,7 +24,7 @@ import com.webforj.router.annotation.Route;
     width: 150px;
   }
 """)
-@Route("/")
+@Route("helloworld")
 @FrameTitle("Hello World Java")
 public class HelloWorldJavaView extends Composite<FlexLayout> {
 

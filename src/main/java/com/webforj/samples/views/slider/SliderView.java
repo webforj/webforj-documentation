@@ -18,7 +18,7 @@ import org.checkerframework.checker.units.qual.t;
 
 import static java.util.Map.entry;
 
-@Route
+@Route("slider")
 @FrameTitle("Volume Control Demo")
 public class SliderView extends Composite<FlexLayout> {
 

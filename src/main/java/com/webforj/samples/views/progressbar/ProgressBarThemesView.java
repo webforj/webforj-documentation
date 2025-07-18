@@ -8,7 +8,7 @@ import com.webforj.component.progressbar.ProgressBar;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route
+@Route("progressbarthemes")
 @FrameTitle("Progress Bar Themes")
 public class ProgressBarThemesView extends Composite<Div> {
 

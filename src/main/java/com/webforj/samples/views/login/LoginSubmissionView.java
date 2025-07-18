@@ -8,7 +8,7 @@ import com.webforj.component.login.Login;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route
+@Route("loginsubmission")
 @FrameTitle("Login Submission")
 public class LoginSubmissionView extends Composite<Div> {
 

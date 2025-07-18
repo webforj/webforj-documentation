@@ -14,7 +14,7 @@ import com.webforj.router.annotation.Route;
 import com.webforj.component.icons.Icon;
 import com.webforj.component.icons.TablerIcon;
 
-@Route
+@Route("spinnerdemo")
 @FrameTitle("Spinner Basics")
 @InlineStyleSheet("context://css/spinnerstyles/spinnerdemo.css")
 public class SpinnerDemoView extends Composite<Div> {
@@ -27,7 +27,7 @@ public class SpinnerDemoView extends Composite<Div> {
 
   public SpinnerDemoView() {
     getBoundComponent().setStyle("margin-left", "20px");
-    
+
     spinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.XXXSMALL);
     title = new H3("Complete your job application:");
     position = TablerIcon.create("checks");
@@ -42,7 +42,7 @@ public class SpinnerDemoView extends Composite<Div> {
     .vertical()
     .justify().center()
     .build();
-    
+
     getBoundComponent().add(items);
   }
 }

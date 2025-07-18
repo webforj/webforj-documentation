@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @InlineStyleSheet("context://css/googlecharts/chartRedraw.css")
-@Route
+@Route("chartredraw")
 @FrameTitle("Chart Redraw")
 public class ChartRedrawView extends Composite<Div> {
 

@@ -16,7 +16,7 @@ import com.webforj.router.annotation.Route;
 /**
  * Simple demo application to display button functionality.
  */
-@Route
+@Route("buttondemo")
 @FrameTitle("Button Demo")
 public class ButtonView extends Composite<FlexLayout> {
 

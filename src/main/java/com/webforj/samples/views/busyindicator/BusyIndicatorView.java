@@ -11,7 +11,7 @@ import com.webforj.dispatcher.EventListener;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route
+@Route("busyindicator")
 @FrameTitle("Busy Indicator")
 public class BusyIndicatorView extends Composite<Div> {
   private int retry = 1;

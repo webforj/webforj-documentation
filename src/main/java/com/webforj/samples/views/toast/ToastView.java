@@ -11,7 +11,7 @@ import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route
+@Route("toast")
 @FrameTitle("Toast Basics")
 public class ToastView extends Composite<Div> {
 

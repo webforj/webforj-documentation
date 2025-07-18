@@ -9,7 +9,7 @@ import com.webforj.component.optiondialog.InputDialog;
 import com.webforj.component.optiondialog.OptionDialog;
 import com.webforj.component.optiondialog.MessageDialog;
 
-@Route
+@Route("inputdialogtype")
 @FrameTitle("Input Dialog Type")
 public class InputDialogTypeView extends Composite<Div> {
   InputDialog dialog;

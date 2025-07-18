@@ -7,7 +7,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.samples.components.SplitterBox;
 
-@Route
+@Route("splitterposition")
 @FrameTitle("Splitter Position")
 public class SplitterPositionView extends Composite<Div> {
 

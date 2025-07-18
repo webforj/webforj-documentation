@@ -20,7 +20,7 @@ import java.util.Map;
       align-items: center;
     }
 """)
-@Route
+@Route("chartsettingdata")
 @FrameTitle("Chart Setting Data")
 public class ChartSettingDataView extends Composite<Div> {
 

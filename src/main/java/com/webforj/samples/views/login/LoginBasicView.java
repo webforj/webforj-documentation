@@ -6,7 +6,7 @@ import com.webforj.component.login.Login;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route
+@Route("loginbasic")
 @FrameTitle("Login Basics")
 public class LoginBasicView extends Composite<Div> {
 

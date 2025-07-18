@@ -11,7 +11,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @InlineStyleSheet("context://css/flexlayout/container/flexContainerBuilder.css")
-@Route
+@Route("flexorder")
 @FrameTitle("Flex Order")
 public class FlexOrderView extends Composite<Div> {
 

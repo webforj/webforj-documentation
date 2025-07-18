@@ -9,7 +9,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @InlineStyleSheet("context://css/drawer/drawerDemo.css")
-@Route
+@Route("drawerdemo")
 @FrameTitle("Drawer Demo")
 public class DrawerDemoView extends Composite<FlexLayout> {
 
