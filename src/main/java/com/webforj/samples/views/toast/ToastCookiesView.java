@@ -1,6 +1,6 @@
 package com.webforj.samples.views.toast;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.button.Button;
@@ -18,7 +18,7 @@ import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("Toast Cookies")
-@InlineStyleSheet("context://css/toast/toastCookies.css")
+@StyleSheet("ws://css/toast/toastCookies.css")
 public class ToastCookiesView extends Composite<Div> {
 
   private Toast cookiesToast;
