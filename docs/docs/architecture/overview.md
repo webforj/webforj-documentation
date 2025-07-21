@@ -1,6 +1,7 @@
 ---
 title: Architecture
 hide_table_of_contents: true
+hide_giscus_comments: true
 ---
 
 <Head>

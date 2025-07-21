@@ -1,6 +1,6 @@
 package com.webforj.samples.views.flexlayout.container;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.list.ChoiceBox;
 import com.webforj.component.list.event.ListSelectEvent;
 import com.webforj.component.Composite;
@@ -12,7 +12,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.samples.components.Box;
 
-@InlineStyleSheet("context://css/flexlayout/container/flexContainerBuilder.css")
+@StyleSheet("ws://css/flexlayout/container/flexContainerBuilder.css")
 @Route
 @FrameTitle("Flex Positioning")
 public class FlexPositioningView extends Composite<Div> {

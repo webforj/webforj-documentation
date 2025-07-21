@@ -1,7 +1,7 @@
 package com.webforj.samples.views.drawer;
 
 import com.webforj.App;
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.Expanse;
 import com.webforj.component.button.Button;
@@ -27,7 +27,7 @@ import com.webforj.exceptions.WebforjException;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@InlineStyleSheet("context://css/drawer/drawerWelcome.css")
+@StyleSheet("ws://css/drawer/drawerWelcome.css")
 @Route
 @FrameTitle("Drawer Welcome App")
 public class DrawerWelcomeView extends Composite<FlexLayout> {

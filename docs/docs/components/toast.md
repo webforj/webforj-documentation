@@ -142,7 +142,7 @@ Since the `Toast` isn't located in a specific position in the DOM, you can targe
 <ComponentDemo 
 path='/webforj/toasttheme?'  
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toast/ToastThemeView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/toast/toastTheme.css'
+cssURL='/css/toast/toastTheme.css'
 height='200px'
 />
 

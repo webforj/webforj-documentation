@@ -177,8 +177,8 @@ public class Application extends App {
     
     // Keep your existing run() method if you have one
     @Override
-    public void run() {
-        // Your existing initialization code
+    public void run() throws WebforjException {
+      // Your existing initialization code 
     }
 }
 ```
