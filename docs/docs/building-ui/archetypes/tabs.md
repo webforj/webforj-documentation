@@ -1,7 +1,16 @@
 ---
 title: Tabs
 sidebar_position: 2
+hide_table_of_contents: true
 ---
+
+<Head>
+  <style>{`
+  .container {
+    max-width: 65em !important;
+  }
+  `}</style>
+</Head>
 
 # Tabs archetype
 

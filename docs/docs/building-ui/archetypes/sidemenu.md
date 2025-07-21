@@ -1,7 +1,17 @@
 ---
 title: SideMenu
 sidebar_position: 3
+hide_table_of_contents: true
 ---
+
+<Head>
+  <style>{`
+  .container {
+    max-width: 65em !important;
+  }
+  `}</style>
+</Head>
+
 <!-- vale off -->
 # SideMenu archetype
 <!-- vale on -->
