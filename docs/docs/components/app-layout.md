@@ -38,7 +38,7 @@ The following code sample will result in an app with a collapsible sidebar that 
 
 <AppLayoutViewer path='/webforj/applayout/content/Dashboard?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/applayout/AppLayoutView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayout.css'
+cssURL='/css/applayout/applayout.css'
 />
 
 ## Full width navbar
@@ -54,7 +54,7 @@ myApp.setFooterOffscreen(false);
 
 <AppLayoutViewer path='/webforj/applayoutfullnavbar/content/Dashboard?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/fullnavbar/AppLayoutFullNavbarView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayout.css'/>
+cssURL='/css/applayout/applayout.css'/>
 
 ## Multiple toolbars
 
@@ -64,7 +64,7 @@ The following demo shows how to use two toolbars, The first one houses the drawe
 
 <AppLayoutViewer path='/webforj/applayoutmultipleheaders/content/Dashboard?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/multipleheaders/AppLayoutMultipleHeadersView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayout.css'/>
+cssURL='/css/applayout/applayout.css'/>
 
 ## Sticky toolbars
 
@@ -78,7 +78,7 @@ With the help of the CSS custom property `--dwc-app-layout-header-collapse-heigh
 
 <AppLayoutViewer path='/webforj/applayoutstickytoolbar/content/Dashboard?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/stickytoolbar/AppLayoutStickyToolbarView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayout.css'/>
+cssURL='/css/applayout/applayout.css'/>
 
 ## Mobile navigation layout
 
@@ -92,7 +92,7 @@ By default, when the screen width is 800px or less , the drawer will be switched
 
 <AppLayoutViewer path='/webforj/applayoutmobiledrawer/?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/mobiledrawer/AppLayoutMobileDrawerView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayoutMobile.css'
+cssURL='/css/applayout/applayoutMobile.css'
 />
 
 ## Drawer utilities
@@ -140,8 +140,8 @@ layout.addToDrawerHeaderActions(
 Drawer actions appear in the **right-aligned section** of the drawer’s header.
 
 <AppLayoutViewer path='/webforj/applayoutdrawerutility/content/Dashboard/?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/applayoutdrawerutility/applayoutdrawerutility/AppLayoutDrawerUtilityView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/applayout/applayout.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/applayoutdrawerutility/AppLayoutDrawerUtilityView.java'
+cssURL='/css/applayout/applayout.css'
 />
 
 ## `AppDrawerToggle` <DocChip chip='since' label='24.12' />

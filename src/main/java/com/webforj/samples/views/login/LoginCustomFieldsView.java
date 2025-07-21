@@ -1,7 +1,7 @@
 package com.webforj.samples.views.login;
 
 import com.webforj.Page;
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.field.TextField;
@@ -12,7 +12,7 @@ import com.webforj.component.login.LoginI18n;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@InlineStyleSheet(id = "login-custom-fields", value = "context://css/login/loginCustomFields.css")
+@StyleSheet("ws://css/login/loginCustomFields.css")
 @Route
 @FrameTitle("Login Custom Fields")
 public class LoginCustomFieldsView extends Composite<Div> {
