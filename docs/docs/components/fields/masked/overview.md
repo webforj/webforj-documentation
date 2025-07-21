@@ -2,6 +2,7 @@
 sidebar_position: 1
 title: Masked Fields
 hide_table_of_contents: true
+hide_giscus_comments: true
 ---
 
 <Head>

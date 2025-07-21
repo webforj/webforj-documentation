@@ -1,0 +1,9 @@
+.necessarybutton, .acceptbutton {
+  flex: 1;
+}
+
+dwc-toast::part(buttons) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--dwc-space-m);
+}

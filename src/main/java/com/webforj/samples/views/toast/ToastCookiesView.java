@@ -43,14 +43,12 @@ public class ToastCookiesView extends Composite<Div> {
     toastText.add(new Anchor("#", "Cookie Policy"));
 
     acceptButton = new Button("Accept all cookies").setTheme(ButtonTheme.PRIMARY);
-    acceptButton.addClassName("acceptbutton");
     acceptButton.addClickListener(event -> {
       cookiesToast.close();
       createAndOpenToast();
     });
 
     necessaryButton = new Button("Necessary cookies only").setTheme(ButtonTheme.OUTLINED_PRIMARY);
-    necessaryButton.addClassName("necessarybutton");
     necessaryButton.addClickListener(event -> {
       cookiesToast.close();
       createAndOpenToast();
