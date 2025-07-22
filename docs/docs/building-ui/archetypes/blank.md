@@ -1,7 +1,16 @@
 ---
 title: Blank
 sidebar_position: 1
+hide_table_of_contents: true
 ---
+
+<Head>
+  <style>{`
+  .container {
+    max-width: 65em !important;
+  }
+  `}</style>
+</Head>
 
 # Blank archetype
 
