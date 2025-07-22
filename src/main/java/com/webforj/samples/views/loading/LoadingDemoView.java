@@ -1,6 +1,6 @@
 package com.webforj.samples.views.loading;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.button.Button;
@@ -21,7 +21,7 @@ import com.webforj.router.annotation.Route;
 
 @Route("loadingdemo")
 @FrameTitle("Loading Basics")
-@InlineStyleSheet("context://css/loadingstyles/loadingdemo.css")
+@StyleSheet("ws://css/loadingstyles/loadingdemo.css")
 public class LoadingDemoView extends Composite<FlexLayout> {
 
   Div card1;

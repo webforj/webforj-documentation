@@ -1,6 +1,6 @@
 package com.webforj.samples.views.toast;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.button.Button;
@@ -11,7 +11,7 @@ import com.webforj.router.annotation.Route;
 
 @Route("toasttheme")
 @FrameTitle("Toast Themes")
-@InlineStyleSheet("context://css/toast/toastTheme.css")
+@StyleSheet("ws://css/toast/toastTheme.css")
 public class ToastThemeView extends Composite<FlexLayout> {
 
   Toast updateToast;

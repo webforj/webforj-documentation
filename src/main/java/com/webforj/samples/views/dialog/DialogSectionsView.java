@@ -1,6 +1,5 @@
 package com.webforj.samples.views.dialog;
 
-import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.dialog.Dialog;
 import com.webforj.component.html.elements.Div;

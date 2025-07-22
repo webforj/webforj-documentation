@@ -6,6 +6,9 @@ import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.Paragraph;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
+import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.spinner.Spinner;
 import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
@@ -14,14 +17,21 @@ import com.webforj.router.annotation.Route;
 @Route("toast")
 @FrameTitle("Toast Basics")
 public class ToastView extends Composite<Div> {
-
   Toast t = new Toast("", -1, Theme.GRAY);
-
+  
   public ToastView() {
-    t.add(
+    FlexLayout toastContent = new FlexLayout()
+        .setDirection(FlexDirection.ROW)
+        .setAlignment(FlexAlignment.CENTER)
+        .setSpacing("var(--dwc-space-m)");
+    
+    toastContent.add(
         new Spinner(),
         new Paragraph("System update failed. Restoring to the previous state."),
-        new Button("Stop", ButtonTheme.DANGER, e -> t.close()));
+        new Button("Stop", ButtonTheme.DANGER, e -> t.close())
+    );
+    
+    t.add(toastContent);
     t.open();
   }
 }

@@ -1,6 +1,6 @@
 package com.webforj.samples.views;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.Expanse;
 import com.webforj.component.event.KeypressEvent;
@@ -14,7 +14,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route("composite")
-@InlineStyleSheet("context://css/composite.css")
+@StyleSheet("ws://css/composite.css")
 @FrameTitle("Composite Component")
 public class CompositeView extends Composite<Div> {
 

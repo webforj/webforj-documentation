@@ -1,6 +1,6 @@
 package com.webforj.samples.views.spinner;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.html.elements.Div;
@@ -16,7 +16,7 @@ import com.webforj.component.icons.TablerIcon;
 
 @Route("spinnerdemo")
 @FrameTitle("Spinner Basics")
-@InlineStyleSheet("context://css/spinnerstyles/spinnerdemo.css")
+@StyleSheet("ws://css/spinnerstyles/spinnerdemo.css")
 public class SpinnerDemoView extends Composite<Div> {
 
   Spinner spinner;
@@ -38,10 +38,10 @@ public class SpinnerDemoView extends Composite<Div> {
     FlexLayout locationLayout = new FlexLayout(location, new Paragraph("Provide your current location details"));
     FlexLayout spinnerLayout = new FlexLayout(spinner, resume);
 
-    FlexLayout items =  FlexLayout.create(title, positionLayout, locationLayout, spinnerLayout)
-    .vertical()
-    .justify().center()
-    .build();
+    FlexLayout items = FlexLayout.create(title, positionLayout, locationLayout, spinnerLayout)
+        .vertical()
+        .justify().center()
+        .build();
 
     getBoundComponent().add(items);
   }

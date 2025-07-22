@@ -7,7 +7,7 @@ import com.webforj.component.Composite;
 import com.webforj.component.event.ModifyEvent;
 import com.webforj.component.field.MaskedNumberFieldSpinner;
 import com.webforj.component.html.elements.Div;
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.list.ChoiceBox;
 import com.webforj.component.list.event.ListSelectEvent;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
@@ -21,7 +21,7 @@ import com.webforj.router.annotation.Route;
 import com.webforj.samples.components.Box;
 import com.webforj.samples.components.CodeDisplay;
 
-@InlineStyleSheet("context://css/flexlayout/container/flexContainerBuilder.css")
+@StyleSheet("ws://css/flexlayout/container/flexContainerBuilder.css")
 @Route("flexcontainerbuilder")
 @FrameTitle("Container Builder")
 public class FlexContainerBuilderView extends Composite<Div> {

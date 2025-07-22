@@ -1,6 +1,6 @@
 package com.webforj.samples.views.googlecharts;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.button.Button;
@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@InlineStyleSheet("context://css/googlecharts/chartRedraw.css")
+@StyleSheet("ws://css/googlecharts/chartRedraw.css")
 @Route("chartredraw")
 @FrameTitle("Chart Redraw")
 public class ChartRedrawView extends Composite<Div> {

@@ -1,6 +1,6 @@
 package com.webforj.samples.views.infinitescroll;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.Span;
@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Route("infinitescrollcustomloading")
 @FrameTitle("Fully Customized Loading")
-@InlineStyleSheet("context://css/infinitescroll/infinitescrollcustom.css")
+@StyleSheet("ws://css/infinitescroll/infinitescrollcustom.css")
 public class InfiniteScrollCustomLoadingView extends Composite<Div> {
 
   public InfiniteScrollCustomLoadingView() {

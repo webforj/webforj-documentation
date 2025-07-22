@@ -1,7 +1,7 @@
 package com.webforj.samples.views.drawer;
 
 import com.webforj.App;
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.Expanse;
 import com.webforj.component.button.Button;
