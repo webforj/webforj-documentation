@@ -18,8 +18,6 @@ import utils.annotations.BrowserTest;
 
 public class IconVariationsIT extends BaseTest {
 
-    private IconVariationsPage iconVariationsPage;
-
     private final String CALENDAR_ICON_URL = "https://cdn.jsdelivr.net/npm/@tabler/icons@latest/icons/outline/calendar.svg";
     private final String FILLED_CALENDAR_ICON_URL = "https://cdn.jsdelivr.net/npm/@tabler/icons@latest/icons/filled/calendar.svg";
     private final String ENVELOPE_ICON_URL = "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/svgs/regular/envelope.svg";
@@ -29,7 +27,6 @@ public class IconVariationsIT extends BaseTest {
     @BeforeEach
     public void setupIconVariations() {
         navigateToRoute(IconVariationsPage.getRoute());
-        iconVariationsPage = new IconVariationsPage(page);
     }
 
     @BrowserTest
