@@ -25,7 +25,7 @@ import com.webforj.utilities.Assets;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route
+@Route("datatable")
 @FrameTitle("Data Table")
 public class DataTableView extends Composite<Div> {
   private String searchTerm = "";

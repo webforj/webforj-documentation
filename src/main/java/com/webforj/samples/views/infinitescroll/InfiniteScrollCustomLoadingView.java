@@ -10,7 +10,6 @@ import com.webforj.component.infinitescroll.InfiniteScroll;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
