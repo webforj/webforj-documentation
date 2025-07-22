@@ -11,10 +11,10 @@ import com.webforj.component.spinner.SpinnerExpanse;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("spinnerexpansedemo")
+@Route
 @FrameTitle("Spinner Expanses")
 public class SpinnerExpanseDemoView extends Composite<FlexLayout> {
-
+  
   Spinner smallSpinner;
   Spinner mediumSpinner;
   Spinner largeSpinner;
@@ -23,7 +23,7 @@ public class SpinnerExpanseDemoView extends Composite<FlexLayout> {
     smallSpinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.SMALL);
     mediumSpinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.MEDIUM);
     largeSpinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.LARGE);
-
+    
     getBoundComponent().setDirection(FlexDirection.ROW).setAlignment(FlexAlignment.CENTER)
         .setJustifyContent(FlexJustifyContent.CENTER).setSpacing("var(--dwc-space-m)")
         .setMargin("var(--dwc-space-l)");

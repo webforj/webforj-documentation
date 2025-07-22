@@ -8,7 +8,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("dialogsections")
+@Route
 @FrameTitle("Dialog Themes")
 public class DialogThemesView extends Composite<FlexLayout> {
 

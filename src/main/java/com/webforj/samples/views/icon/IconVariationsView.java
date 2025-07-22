@@ -9,7 +9,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("iconvariations")
+@Route
 @FrameTitle("Icon Variations")
 public class IconVariationsView extends Composite<FlexLayout> {
 
@@ -17,13 +17,13 @@ public class IconVariationsView extends Composite<FlexLayout> {
     getBoundComponent().setDirection(FlexDirection.ROW).setMargin("var(--dwc-space-l)")
     .setSpacing("var(--dwc-space-m)");
 
-    Icon mail = FontAwesomeIcon.create("envelope");
+    Icon mail = FontAwesomeIcon.create("envelope");        
     Icon mailsolid = FontAwesomeIcon.create("envelope", FontAwesomeIcon.Variate.SOLID);
-
+        
     Icon instagram = FontAwesomeIcon.create("instagram", FontAwesomeIcon.Variate.BRAND);
-
-    Icon calendar = TablerIcon.create("calendar");
-    Icon calendarfilled = TablerIcon.create("calendar", TablerIcon.Variate.FILLED);
+        
+    Icon calendar = TablerIcon.create("calendar");       
+    Icon calendarfilled = TablerIcon.create("calendar", TablerIcon.Variate.FILLED);    
 
     getBoundComponent().add(mail, mailsolid, instagram, calendar, calendarfilled);
   }

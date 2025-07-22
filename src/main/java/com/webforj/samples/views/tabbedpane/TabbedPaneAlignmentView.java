@@ -20,7 +20,7 @@ import com.webforj.router.annotation.Route;
     margin: 20px;
   }
 """)
-@Route("tabbedpanealignment")
+@Route
 @FrameTitle("Tabbed Pane Alignment")
 public class TabbedPaneAlignmentView extends Composite<Div> {
 
@@ -42,7 +42,7 @@ public class TabbedPaneAlignmentView extends Composite<Div> {
     pane.addTab(new Tab("Customers", customersIcon));
 		pane.addTab(new Tab("Products", productsIcon));
     pane.addTab(new Tab("Documents", documentsIcon));
-
+    
     for(Alignment alignment : Alignment.values()){
       alignments.add(alignment.toString());
     }

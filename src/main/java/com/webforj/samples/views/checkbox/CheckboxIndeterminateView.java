@@ -8,7 +8,7 @@ import com.webforj.component.optioninput.CheckBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("checkboxindeterminate") 
+@Route
 @FrameTitle("Checkbox Indeterminate")
 public class CheckboxIndeterminateView extends Composite<FlexLayout> {
 
@@ -25,10 +25,10 @@ public class CheckboxIndeterminateView extends Composite<FlexLayout> {
     FlexLayout firstRow = FlexLayout.create(indeterminate)
         .horizontal()
         .build();
-
+    
     child1.setChecked(false)
         .addToggleListener(this::onCheck);
-
+    
     FlexLayout secondRow = FlexLayout.create(child1)
         .horizontal()
         .build()
@@ -36,7 +36,7 @@ public class CheckboxIndeterminateView extends Composite<FlexLayout> {
 
     child2.setChecked(true)
         .addToggleListener(this::onCheck);
-
+    
     FlexLayout thirdRow = FlexLayout.create(child2)
         .horizontal()
         .build()

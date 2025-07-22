@@ -6,7 +6,7 @@ import com.webforj.component.list.ComboBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("comboboxplaceholder") 
+@Route
 @FrameTitle("ComboBox Placeholders")
 public class ComboBoxPlaceholderView extends Composite<FlexLayout> {
 

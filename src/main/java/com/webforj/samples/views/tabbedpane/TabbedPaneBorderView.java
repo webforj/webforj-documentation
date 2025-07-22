@@ -19,7 +19,7 @@ import com.webforj.router.annotation.Route;
     margin: 20px;
   }
 """)
-@Route("tabbedpaneborder")
+@Route
 @FrameTitle("Tabbed Pane Border")
 public class TabbedPaneBorderView extends Composite<Div> {
 

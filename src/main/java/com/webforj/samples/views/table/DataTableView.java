@@ -25,7 +25,7 @@ import com.webforj.utilities.Assets;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("datatable")
+@Route
 @FrameTitle("Data Table")
 public class DataTableView extends Composite<Div> {
   private String searchTerm = "";
@@ -93,8 +93,8 @@ public class DataTableView extends Composite<Div> {
     table.getColumns().forEach(column -> column.setSortable(true));
     table.getColumnById("athlete").setPinDirection(PinDirection.LEFT).setMinWidth(200f);
     table.getColumnById("total").setPinDirection(PinDirection.RIGHT);
-
-
+    
+    
 
     table.setRepository(repository);
 

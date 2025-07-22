@@ -27,7 +27,7 @@ import com.webforj.exceptions.WebforjException;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@InlineStyleSheet("context://css/drawer/drawerWelcome.css")
+@StyleSheet("ws://css/drawer/drawerWelcome.css")
 @Route("drawerwelcome")
 @FrameTitle("Drawer Welcome App")
 public class DrawerWelcomeView extends Composite<FlexLayout> {

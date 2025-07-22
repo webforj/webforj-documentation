@@ -13,29 +13,29 @@ import com.webforj.component.spinner.SpinnerExpanse;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("spinnerspeeddemo")
+@Route
 @FrameTitle("Spinner Speeds")
 public class SpinnerSpeedDemoView extends Composite<FlexLayout> {
-
+  
   Spinner spinner;
   Button slowButton;
   Button mediumButton;
   Button fastButton;
-
+  
   Button pauseResumeButton;
 
   public SpinnerSpeedDemoView() {
     getBoundComponent().setDirection(FlexDirection.COLUMN).setAlignment(FlexAlignment.CENTER)
     .setJustifyContent(FlexJustifyContent.CENTER).setSpacing("var(--dwc-space-m)")
     .setMargin("var(--dwc-space-l)");
-
+    
     spinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.MEDIUM);
     slowButton = new Button("Slow", e -> setSpinnerSpeed(spinner, 1000));
     mediumButton = new Button("Medium", e -> setSpinnerSpeed(spinner, 500));
     fastButton = new Button("Fast", e -> setSpinnerSpeed(spinner, 200));
     pauseResumeButton = new Button("Pause", e ->  spinner.setPaused(true))
         .setTheme(ButtonTheme.PRIMARY);
-
+    
     FlexLayout buttons = new FlexLayout(slowButton, mediumButton, fastButton, pauseResumeButton);
     buttons.setMargin("var(--dwc-space-s)");
 

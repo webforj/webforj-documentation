@@ -22,7 +22,7 @@ import com.webforj.router.annotation.Route;
     margin: 20px;
   }
 """)
-@Route("tabbedpaneexpansetheme")
+@Route
 @FrameTitle("Tabbed Pane Expanses and Themes")
 public class TabbedPaneExpanseThemeView extends Composite<Div> {
 
@@ -48,7 +48,7 @@ public class TabbedPaneExpanseThemeView extends Composite<Div> {
     pane.addTab(new Tab("Customers", customersIcon));
 		pane.addTab(new Tab("Products", productsIcon));
     pane.addTab(new Tab("Documents", documentsIcon));
-
+    
     for(Theme theme : Theme.values()){
       themes.add(theme.toString());
     }

@@ -20,7 +20,7 @@ import com.webforj.router.annotation.Route;
     margin: 20px;
   }
 """)
-@Route("tabbedpaneactivation")
+@Route
 @FrameTitle("Tabbed Pane Activation")
 public class TabbedPaneActivationView extends Composite<Div> {
 
@@ -42,12 +42,12 @@ public class TabbedPaneActivationView extends Composite<Div> {
     pane.addTab(new Tab("Customers", customersIcon));
 		pane.addTab(new Tab("Products", productsIcon));
     pane.addTab(new Tab("Documents", documentsIcon));
-
+    
     activation.onCheck( e -> {
       activation.setText("Automatic");
       pane.setActivation(Activation.AUTO);
     });
-
+    
     activation.onUncheck( e -> {
       activation.setText("Manual");
       pane.setActivation(Activation.MANUAL);

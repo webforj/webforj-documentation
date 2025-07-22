@@ -14,7 +14,7 @@ import com.webforj.router.annotation.Route;
 import com.webforj.component.icons.Icon;
 import com.webforj.component.icons.TablerIcon;
 
-@Route("spinnerdemo")
+@Route
 @FrameTitle("Spinner Basics")
 @StyleSheet("ws://css/spinnerstyles/spinnerdemo.css")
 public class SpinnerDemoView extends Composite<Div> {
@@ -38,10 +38,10 @@ public class SpinnerDemoView extends Composite<Div> {
     FlexLayout locationLayout = new FlexLayout(location, new Paragraph("Provide your current location details"));
     FlexLayout spinnerLayout = new FlexLayout(spinner, resume);
 
-    FlexLayout items = FlexLayout.create(title, positionLayout, locationLayout, spinnerLayout)
-        .vertical()
-        .justify().center()
-        .build();
+    FlexLayout items =  FlexLayout.create(title, positionLayout, locationLayout, spinnerLayout)
+    .vertical()
+    .justify().center()
+    .build();
 
     getBoundComponent().add(items);
   }
