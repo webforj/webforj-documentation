@@ -112,7 +112,7 @@ public class MyApp extends App {
 ```
 
 :::tip External lifecycle listeners
-For more advanced lifecycle management, consider using `AppLifecycleListener` to handle termination events from external components without modifying the `App` class. This is particularly useful for plugin architectures or when multiple components need to respond to app termination. Learn more about [Lifecycle Listeners](./lifecycle-listeners.md).
+For more advanced lifecycle management, consider using `AppLifecycleListener` to handle termination events from external components without modifying the `App` class. This is particularly useful for plugin architectures or when multiple components need to respond to app termination. Learn more about [Lifecycle Listeners](lifecycle-listeners.md).
 :::
 
 ### Custom termination page 
