@@ -7,7 +7,7 @@ import com.webforj.component.login.LoginI18n;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("logininternationalization")
+@Route
 @FrameTitle("Login Internationalization")
 public class LoginInternationalizationView extends Composite<Div> {
 

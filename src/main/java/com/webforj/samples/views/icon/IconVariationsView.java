@@ -9,7 +9,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("iconvariations")
+@Route
 @FrameTitle("Icon Variations")
 public class IconVariationsView extends Composite<FlexLayout> {
 

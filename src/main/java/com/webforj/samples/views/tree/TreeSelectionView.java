@@ -17,7 +17,7 @@ import com.webforj.component.tree.TreeNode;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("treeselection")
+@Route()
 @FrameTitle("Tree Selection Example")
 public class TreeSelectionView extends Composite<FlexLayout> {
 

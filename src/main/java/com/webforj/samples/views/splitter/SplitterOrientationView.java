@@ -7,7 +7,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.samples.components.SplitterBox;
 
-@Route("splitterorientation")
+@Route
 @FrameTitle("Splitter Orientation")
 public class SplitterOrientationView extends Composite<Div> {
 

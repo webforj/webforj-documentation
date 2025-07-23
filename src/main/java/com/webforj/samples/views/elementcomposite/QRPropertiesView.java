@@ -12,7 +12,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("qrproperties")
+@Route
 @FrameTitle("QR Properties")
 public class QRPropertiesView extends Composite<FlexLayout> {
 

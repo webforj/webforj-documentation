@@ -10,7 +10,7 @@ import com.webforj.component.list.ComboBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("comboboxmaxrow")
+@Route
 @FrameTitle("ComboBox Max Row")
 public class ComboBoxMaxRowView extends Composite<FlexLayout> {
 

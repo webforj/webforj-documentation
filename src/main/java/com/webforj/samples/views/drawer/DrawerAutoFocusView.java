@@ -9,7 +9,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @StyleSheet("ws://css/drawer/drawerDemo.css")
-@Route("drawerautofocus")
+@Route
 @FrameTitle("Drawer Auto-Focus")
 public class DrawerAutoFocusView extends Composite<FlexLayout> {
 

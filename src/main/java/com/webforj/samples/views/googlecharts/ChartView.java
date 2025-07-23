@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @StyleSheet("ws://css/googlecharts/chart.css")
-@Route("chart")
+@Route
 @FrameTitle("Google Charts")
 public class ChartView extends Composite<Div> {
 

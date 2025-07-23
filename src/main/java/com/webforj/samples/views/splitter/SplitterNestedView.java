@@ -7,7 +7,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.samples.components.SplitterBox;
 
-@Route("splitternested")
+@Route
 @FrameTitle("Splitter Nested")
 public class SplitterNestedView extends Composite<Div> {
 

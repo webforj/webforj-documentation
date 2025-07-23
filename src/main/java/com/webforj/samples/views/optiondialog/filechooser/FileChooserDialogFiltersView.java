@@ -12,7 +12,7 @@ import com.webforj.component.optiondialog.FileChooserFilter;
 import com.webforj.component.optiondialog.OptionDialog;
 import com.webforj.component.optiondialog.MessageDialog;
 
-@Route("filechooserdialogfilters")
+@Route
 @FrameTitle("File Chooser Filters")
 public class FileChooserDialogFiltersView extends Composite<Div> {
   private FileChooserDialog dialog;

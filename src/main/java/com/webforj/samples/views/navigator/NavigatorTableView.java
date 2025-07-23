@@ -13,7 +13,7 @@ import com.webforj.router.annotation.Route;
 import com.webforj.samples.views.table.MusicRecord;
 import com.webforj.samples.views.table.Service;
 
-@Route("navigatortable")
+@Route
 @FrameTitle("Navigator Table")
 public class NavigatorTableView extends Composite<Div> {
 

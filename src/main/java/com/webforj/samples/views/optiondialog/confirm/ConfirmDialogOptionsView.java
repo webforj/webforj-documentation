@@ -8,7 +8,7 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.optiondialog.ConfirmDialog;
 import com.webforj.component.optiondialog.OptionDialog;
 
-@Route("confirmdialogoptions")
+@Route
 @FrameTitle("Confirm Dialog Options")
 public class ConfirmDialogOptionsView extends Composite<Div> {
   private ConfirmDialog dialog;

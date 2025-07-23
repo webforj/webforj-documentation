@@ -12,7 +12,7 @@ import com.webforj.component.infinitescroll.InfiniteScroll;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.Route;
 
-@Route("infinitescroll")
+@Route
 @StyleSheet("ws://css/infinitescroll/infinitescroll.css")
 public class InfiniteScrollView extends Composite<Div> {
 

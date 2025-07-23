@@ -14,7 +14,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.utilities.Assets;
 
-@Route("tableolympicwinners")
+@Route
 @FrameTitle("Olympic Winners Table")
 public class TableOlympicWinnersView extends Composite<Div> {
 

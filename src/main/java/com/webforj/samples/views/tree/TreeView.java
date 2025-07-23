@@ -8,7 +8,7 @@ import com.webforj.component.tree.Tree;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("tree")
+@Route
 @FrameTitle("Tree View")
 public class TreeView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();

@@ -13,7 +13,7 @@ import com.webforj.router.annotation.Route;
 import com.webforj.samples.components.Box;
 
 @StyleSheet("ws://css/flexlayout/container/flexContainerBuilder.css")
-@Route("flexpositioning")
+@Route
 @FrameTitle("Flex Positioning")
 public class FlexPositioningView extends Composite<Div> {
 

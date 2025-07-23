@@ -12,7 +12,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @StyleSheet("ws://css/flexlayout/container/flexContainerBuilder.css")
-@Route("flexselfalign")
+@Route
 @FrameTitle("Flex Item Self Align")
 public class FlexSelfAlignView extends Composite<Div> {
 

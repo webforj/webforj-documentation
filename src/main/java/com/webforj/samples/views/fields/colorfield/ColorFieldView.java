@@ -15,7 +15,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @StyleSheet("ws://css/fields/colorfield/colorFieldDemo.css")
-@Route("colorfield")
+@Route
 @FrameTitle("Color Field Demo")
 public class ColorFieldView extends Composite<FlexLayout> {
 
@@ -44,7 +44,7 @@ public class ColorFieldView extends Composite<FlexLayout> {
         .justify().center()
         .align().center()
         .build();
-
+    
     colorDisplay.setSpacing("20px");
 
     Paragraph title = new Paragraph("Tetradic complementary colors:");

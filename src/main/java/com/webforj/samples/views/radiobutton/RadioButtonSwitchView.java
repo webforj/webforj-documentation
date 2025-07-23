@@ -8,7 +8,7 @@ import com.webforj.component.optioninput.RadioButton;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("radiobuttonswitch")
+@Route
 @FrameTitle("Radio Button Switch")
 public class RadioButtonSwitchView extends Composite<FlexLayout> {
 

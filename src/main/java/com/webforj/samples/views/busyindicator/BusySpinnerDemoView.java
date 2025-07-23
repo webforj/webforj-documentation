@@ -14,16 +14,16 @@ import com.webforj.router.annotation.Route;
  * Demo to showcase the different customization options for the spinner in the BusyIndicator.
  */
 
-@Route("busyspeeders")
+@Route
 @FrameTitle("Busy Spinners")
 public class BusySpinnerDemoView extends Composite<Div> {
 
-  int state = 1;
+  int state = 1;  
   BusyIndicator indicator;
   Interval interval;
-
+  
   public BusySpinnerDemoView() {
-
+    
     indicator  = App.getBusyIndicator().setText("Displaying spinner with all themes...");
 
     interval = new Interval(3f, event -> {

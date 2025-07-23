@@ -11,7 +11,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("maskedtimefieldspinner")
+@Route
 @FrameTitle("Masked Time Field Spinner")
 public class MaskedTimeFieldSpinnerView extends Composite<FlexLayout> {
   MaskedTimeFieldSpinner appointmentField = new MaskedTimeFieldSpinner("Available Time Slots");

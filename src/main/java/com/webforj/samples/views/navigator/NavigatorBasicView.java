@@ -7,7 +7,7 @@ import com.webforj.component.navigator.event.NavigatorChangeEvent;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("navigatorbasic")
+@Route
 @FrameTitle("Navigator Basics")
 public class NavigatorBasicView extends Composite<Div> {
   private int count = 0;

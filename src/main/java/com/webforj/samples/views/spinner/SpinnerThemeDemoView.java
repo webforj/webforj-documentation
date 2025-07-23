@@ -11,7 +11,7 @@ import com.webforj.component.spinner.SpinnerExpanse;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("spinnerthemedemo")
+@Route
 @FrameTitle("Spinner Themes")
 public class SpinnerThemeDemoView extends Composite<FlexLayout> {
   

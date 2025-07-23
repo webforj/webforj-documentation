@@ -9,7 +9,7 @@ import com.webforj.component.optiondialog.FileUploadDialog;
 import com.webforj.component.optiondialog.OptionDialog;
 import com.webforj.component.optiondialog.MessageDialog;
 
-@Route("fileuploaddialogbasic")
+@Route
 @FrameTitle("File Upload Basics")
 public class FileUploadDialogBasicView extends Composite<Div> {
   private FileUploadDialog dialog;

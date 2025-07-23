@@ -13,17 +13,17 @@ import com.webforj.router.annotation.Route;
 /**
  * Simple program to demonstrate the various Button expanse values.
  */
-@Route("buttonexpanses")
+@Route
 @FrameTitle("Button Expanses")
 public class ButtonExpansesView extends Composite<FlexLayout> {
-
+	
   ChoiceBox expanses = new ChoiceBox();
   Button demoButton = new Button("None");
-
+	
   public ButtonExpansesView() {
     getBoundComponent().setSpacing("var(--dwc-space-l)")
     .setMargin("var(--dwc-space-l)");
-
+    
     ArrayList<ListItem> categories = new ArrayList<>();
     categories.add(new ListItem("XSMALL", "XSMALL"));
     categories.add(new ListItem("SMALL", "SMALL"));
@@ -43,6 +43,6 @@ public class ButtonExpansesView extends Composite<FlexLayout> {
     });
 
     getBoundComponent().add(expanses, demoButton);
-
+   
   }
 }

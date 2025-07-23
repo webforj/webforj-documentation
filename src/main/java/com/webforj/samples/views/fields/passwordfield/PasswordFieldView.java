@@ -6,10 +6,10 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("passwordfield")
+@Route
 @FrameTitle("Password Field Demo")
 public class PasswordFieldView extends Composite<FlexLayout> {
-
+  
   PasswordField passwordField = new PasswordField();
 
   public PasswordFieldView() {

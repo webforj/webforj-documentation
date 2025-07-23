@@ -14,7 +14,7 @@ import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.component.tabbedpane.Tab;
 import com.webforj.component.tabbedpane.TabbedPane;
 
-@Route("toolbarcompact")
+@Route
 @FrameTitle("Toolbar Compact")
 public class ToolbarCompactView extends Composite<AppLayout> {
 

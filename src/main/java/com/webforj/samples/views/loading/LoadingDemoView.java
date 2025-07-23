@@ -19,7 +19,7 @@ import com.webforj.router.annotation.Route;
  * Demo to show Loading basics.
  */
 
-@Route("loadingdemo")
+@Route
 @FrameTitle("Loading Basics")
 @StyleSheet("ws://css/loadingstyles/loadingdemo.css")
 public class LoadingDemoView extends Composite<FlexLayout> {

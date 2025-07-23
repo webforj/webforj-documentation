@@ -12,7 +12,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.samples.components.SplitterBox;
 
-@Route("splitterautosave")
+@Route
 @FrameTitle("Splitter Auto Save")
 public class SplitterAutoSaveView extends Composite<Div> {
 

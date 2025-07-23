@@ -10,7 +10,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("maskednumberfieldrestore")
+@Route
 @FrameTitle("Masked Number Field with Restore Value")
 public class MaskedNumRestoreView extends Composite<FlexLayout> {
   FlexLayout self = getBoundComponent();

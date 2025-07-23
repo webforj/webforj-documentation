@@ -12,7 +12,7 @@ import com.webforj.component.optioninput.CheckBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("columnslayoutalignment")  
+@Route
 @FrameTitle("Columns Layout Alignment")
 public class ColumnsLayoutAlignmentView extends Composite<Div> {
 

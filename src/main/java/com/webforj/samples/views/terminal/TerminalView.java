@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-@Route("terminal")
+@Route
 @FrameTitle("Custom Terminal")
 @InlineStyleSheet("""
   dwc-window-center {

@@ -10,7 +10,7 @@ import com.webforj.component.layout.columnslayout.ColumnsLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("columnslayout")
+@Route
 @FrameTitle("Columns Layout")
 public class ColumnsLayoutView extends Composite<Div> {
   TextField firstName = new TextField("First Name");

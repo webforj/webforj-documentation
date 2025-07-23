@@ -11,10 +11,10 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @StyleSheet("ws://css/element/elementInput.css")
-@Route("elementinputfunction")
+@Route
 @FrameTitle("Input Function")
 public class ElementInputFunctionView extends Composite<Div> {
-
+  
   Element input = new Element("input");
 
   public ElementInputFunctionView() {
@@ -25,7 +25,7 @@ public class ElementInputFunctionView extends Composite<Div> {
     input.addEventListener("click", e -> {
       showMessageDialog("Input click fired", "Event listener");
     });
-
+    
     /* Clicks the input, and stores the result in a Pending result. This then displays a
     message box when it resolves. */
     PendingResult<Object> result = input.callJsFunctionAsync("click");

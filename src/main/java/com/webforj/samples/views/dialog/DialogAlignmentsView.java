@@ -8,7 +8,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("dialogalignments")
+@Route
 @FrameTitle("Dialog Alignments")
 public class DialogAlignmentsView extends Composite<FlexLayout> {
 

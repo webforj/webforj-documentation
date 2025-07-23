@@ -10,7 +10,7 @@ import com.webforj.router.annotation.Route;
 
 import java.util.List;
 
-@Route("columnslayoutbreakpoints")
+@Route
 @FrameTitle("Columns Layout Breakpoints")
 public class ColumnsLayoutBreakpointsView extends Composite<Div> {
   TextField firstName = new TextField("First Name");

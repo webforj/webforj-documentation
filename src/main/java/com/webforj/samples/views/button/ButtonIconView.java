@@ -12,7 +12,7 @@ import com.webforj.router.annotation.Route;
 /**
  * Demo application to display icon addition to buttons.
  */
-@Route("buttonicon")
+@Route
 @FrameTitle("Button Icon")
 public class ButtonIconView extends Composite<FlexLayout> {
   FlexLayout self = getBoundComponent();

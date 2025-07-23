@@ -9,7 +9,7 @@ import com.webforj.component.optioninput.CheckBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("checkboxexpanses")  
+@Route
 @FrameTitle("Checkbox Expanses")
 public class CheckboxExpanseView extends Composite<FlexLayout> {
 

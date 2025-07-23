@@ -13,7 +13,7 @@ import com.webforj.component.optioninput.RadioButton;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("composite")
+@Route
 @StyleSheet("ws://css/composite.css")
 @FrameTitle("Composite Component")
 public class CompositeView extends Composite<Div> {

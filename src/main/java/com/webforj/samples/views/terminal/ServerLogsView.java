@@ -15,7 +15,7 @@ import com.webforj.component.terminal.Terminal;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.annotation.FrameTitle;
 
-@Route("serverlogs")
+@Route
 @FrameTitle("Server Logs Stream")
 public class ServerLogsView extends Composite<FlexLayout> {
   private FlexLayout self = getBoundComponent();

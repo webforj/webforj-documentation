@@ -9,7 +9,7 @@ import com.webforj.component.navigator.Navigator.Layout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("navigatorlayout")
+@Route
 @FrameTitle("Navigator Layout")
 public class NavigatorLayoutView extends Composite<Div> {
   private Navigator nav = new Navigator(100);
@@ -17,11 +17,11 @@ public class NavigatorLayoutView extends Composite<Div> {
   private FlexLayout layout = FlexLayout.create(navLayout, nav).vertical().build();
 
   public NavigatorLayoutView() {
-
+    
     layout.setMaxWidth("400px");
     nav.getPaginator().setMax(5);
     nav.addClassName("nav");
-
+    
     navLayout.insert("NONE", "PAGES", "PREVIEW", "QUICK_JUMP");
     navLayout.selectIndex(2);
     navLayout.onSelect(ev -> {
@@ -43,7 +43,7 @@ public class NavigatorLayoutView extends Composite<Div> {
         break;
       }
     });
-
+    
     getBoundComponent().setStyle("padding", "20px");
     getBoundComponent().add(layout);
   }

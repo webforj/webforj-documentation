@@ -9,7 +9,7 @@ import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.slider.Slider;
 
-@Route("sliderthemes")
+@Route
 @FrameTitle("Slider Themes")
 public class SliderThemesView extends Composite<FlexLayout> {
 

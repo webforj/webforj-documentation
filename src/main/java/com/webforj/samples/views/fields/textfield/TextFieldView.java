@@ -13,7 +13,7 @@ import com.webforj.component.window.Frame;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("textfield")
+@Route
 @FrameTitle("Text Field Form")
 public class TextFieldView extends Composite<FlexLayout> {
 

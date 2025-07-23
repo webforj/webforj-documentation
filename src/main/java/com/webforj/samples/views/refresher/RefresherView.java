@@ -11,7 +11,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.refresher.Refresher;
 import com.webforj.router.annotation.Route;
 
-@Route("refresher")
+@Route
 @StyleSheet("ws://css/refresher/refresher.css")
 public class RefresherView extends Composite<Div> {
 

@@ -8,7 +8,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.optioninput.RadioButton;
 import com.webforj.component.optioninput.RadioButtonGroup;
 
-@Route("radiobuttongroup")
+@Route
 @FrameTitle("Radio Button Group")
 public class RadioButtonGroupView extends Composite<FlexLayout> {
 

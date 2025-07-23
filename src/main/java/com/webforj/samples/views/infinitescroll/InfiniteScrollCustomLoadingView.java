@@ -13,7 +13,7 @@ import com.webforj.router.annotation.Route;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Route("infinitescrollcustomloading")
+@Route
 @FrameTitle("Fully Customized Loading")
 @StyleSheet("ws://css/infinitescroll/infinitescrollcustom.css")
 public class InfiniteScrollCustomLoadingView extends Composite<Div> {

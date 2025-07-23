@@ -6,7 +6,7 @@ import com.webforj.component.progressbar.ProgressBar;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("progressbardeterminate")
+@Route
 @FrameTitle("Progress Bar Determinate")
 public class ProgressBarDeterminateView extends Composite<Div> {
 

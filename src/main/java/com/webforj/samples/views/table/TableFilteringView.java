@@ -10,7 +10,7 @@ import com.webforj.data.repository.Repository;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("tablefiltering")
+@Route
 @FrameTitle("Table Filtering")
 public class TableFilteringView extends Composite<Div> {
   private String searchTerm = "";

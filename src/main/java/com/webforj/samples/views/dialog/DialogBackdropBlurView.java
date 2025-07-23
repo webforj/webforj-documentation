@@ -17,7 +17,7 @@ import com.webforj.router.annotation.Route;
     background-repeat: no-repeat;
   }
 """)
-@Route("dialogbackdropblur")
+@Route
 @FrameTitle("Dialog Backdrop Blur")
 public class DialogBackdropBlurView extends Composite<FlexLayout> {
 

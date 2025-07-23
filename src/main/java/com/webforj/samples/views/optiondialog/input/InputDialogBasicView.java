@@ -9,7 +9,7 @@ import com.webforj.component.optiondialog.InputDialog;
 import com.webforj.component.optiondialog.OptionDialog;
 import com.webforj.component.optiondialog.MessageDialog;
 
-@Route("inputdialogbasic")
+@Route
 @FrameTitle("Input Dialog Basics")
 public class InputDialogBasicView extends Composite<Div> {
 
@@ -46,5 +46,5 @@ public class InputDialogBasicView extends Composite<Div> {
         }
       }
     }
-    }
+    } 
 }

@@ -12,14 +12,14 @@ import com.webforj.dispatcher.EventListener;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("progressbarbasic")
+@Route
 @FrameTitle("Progress Bar Basics")
 public class ProgressBarBasicView extends Composite<Div> {
 
-  Button start = new Button("Start");
+  Button start = new Button("Start"); 
 	Button pause = new Button("Pause");
 	Button reset = new Button("Reset");
-
+  
 	Icon startIcon = TablerIcon.create("player-play");
 	Icon pauseIcon = TablerIcon.create("player-pause");
 	Icon resetIcon = TablerIcon.create("refresh");
@@ -43,7 +43,7 @@ public class ProgressBarBasicView extends Composite<Div> {
 
         Integer progress = bar.getValue() + 1;
         bar.setValue(progress);
-
+        
         if (progress >= bar.getMax()) {
           event.getInterval().stop();
           start.setEnabled(false);

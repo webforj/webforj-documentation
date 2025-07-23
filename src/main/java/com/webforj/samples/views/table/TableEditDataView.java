@@ -8,7 +8,7 @@ import com.webforj.component.table.renderer.VoidElementRenderer;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("tableeditdata")
+@Route
 @FrameTitle("Table Edit Data")
 public class TableEditDataView extends Composite<Div> {
   TitleEditorComponent editor = new TitleEditorComponent();

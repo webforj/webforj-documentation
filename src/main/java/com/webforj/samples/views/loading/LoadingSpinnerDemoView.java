@@ -14,7 +14,7 @@ import com.webforj.router.annotation.Route;
  * Demo to showcase the different customization options for the LoadingSpinner.
  */
 
-@Route("loadingspinnerdemo")
+@Route
 @FrameTitle("Loading Spinners")
 @StyleSheet("ws://css/loadingstyles/loadingspinnerdemo.css")
 public class LoadingSpinnerDemoView extends Composite<Div> {

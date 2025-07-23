@@ -28,7 +28,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @StyleSheet("ws://css/drawer/drawerWelcome.css")
-@Route("drawerwelcome")
+@Route
 @FrameTitle("Drawer Welcome App")
 public class DrawerWelcomeView extends Composite<FlexLayout> {
 
@@ -65,7 +65,7 @@ public class DrawerWelcomeView extends Composite<FlexLayout> {
 		TabbedPane drawerMenu = new TabbedPane();
 		drawer.add(drawerMenu);
 
-
+	
 		drawerMenu.setBorderless(true);
 		drawerMenu.setPlacement(TabbedPane.Placement.LEFT);
 

@@ -14,7 +14,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @StyleSheet("ws://css/flexlayout/flexLayout.css")
-@Route("flexlayout")
+@Route
 @FrameTitle("Flex Layout")
 public class FlexLayoutView extends Composite<Div> {
 

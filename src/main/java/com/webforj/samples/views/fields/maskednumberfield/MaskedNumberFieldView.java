@@ -14,7 +14,7 @@ import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("maskednumberfield")
+@Route
 @FrameTitle("Tip Calculator")
 public class MaskedNumberFieldView extends Composite<FlexLayout> {
   FlexLayout self = getBoundComponent();

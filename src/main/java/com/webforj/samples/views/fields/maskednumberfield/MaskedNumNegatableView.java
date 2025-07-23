@@ -9,7 +9,7 @@ import com.webforj.component.optioninput.RadioButton;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("maskednumberfieldnegatable")
+@Route
 @FrameTitle("Masked Number Field with Negateable Option")
 public class MaskedNumNegatableView extends Composite<FlexLayout> {
   FlexLayout self = getBoundComponent();

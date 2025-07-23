@@ -9,7 +9,7 @@ import com.webforj.component.optioninput.RadioButton;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("listboxmultiple")
+@Route
 @FrameTitle("Listbox Multiple Selection")
 public class ListboxMultipleSelectionView extends Composite<FlexLayout> {
 

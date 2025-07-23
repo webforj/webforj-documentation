@@ -11,7 +11,7 @@ import com.webforj.component.tree.TreeNode;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("treelazyload")
+@Route
 @FrameTitle("Lazy Load Tree View")
 public class TreeLazyLoadView extends Composite<FlexLayout> {
   private static final String SPINNER_FLAG = "spinner";

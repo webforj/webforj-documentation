@@ -11,7 +11,7 @@ import com.webforj.router.annotation.Route;
 import java.util.ArrayList;
 import java.util.List;
 
-@Route("tablecellstyling")
+@Route
 @InlineStyleSheet(/* css */ """
   dwc-table::part(cell-highlight) {
     background-color: var(--dwc-color-warning-alt);

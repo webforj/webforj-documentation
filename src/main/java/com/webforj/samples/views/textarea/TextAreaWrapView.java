@@ -13,7 +13,7 @@ import com.webforj.component.list.ListItem;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("textareawrap")
+@Route
 @FrameTitle("Word Wrap and Line Wrapping Demo")
 public class TextAreaWrapView extends Composite<FlexLayout> {
 

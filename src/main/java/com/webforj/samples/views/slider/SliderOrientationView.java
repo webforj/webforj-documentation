@@ -14,7 +14,7 @@ import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.slider.Slider;
 
-@Route("sliderorientation")
+@Route
 @FrameTitle("Slider Orientation")
 public class SliderOrientationView extends Composite<FlexLayout> {
 

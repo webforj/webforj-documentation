@@ -10,7 +10,7 @@ import com.webforj.component.table.Table;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("tablemultiselection")
+@Route
 @FrameTitle("Table Multiple Selection")
 public class TableMultiSelectionView extends Composite<Div> {
 

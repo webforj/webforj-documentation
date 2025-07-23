@@ -12,7 +12,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("maskeddatefieldrestore")
+@Route
 @FrameTitle("Masked Date Field with Restore")
 public class MaskedDateFieldRestoreView extends Composite<FlexLayout> {
   FlexLayout self = getBoundComponent();

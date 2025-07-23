@@ -9,7 +9,7 @@ import com.webforj.component.icons.FeatherIcon;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("treeicons")
+@Route
 @FrameTitle("Tree Icons View")
 public class TreeIconsView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();

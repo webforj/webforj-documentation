@@ -16,7 +16,7 @@ import java.util.Map;
 
 import static java.util.Map.entry;
 
-@Route("slidertemp")
+@Route
 @FrameTitle("Temperature Selector Demo")
 public class SliderTempView extends Composite<FlexLayout> {
 

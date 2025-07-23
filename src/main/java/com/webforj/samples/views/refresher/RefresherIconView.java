@@ -12,7 +12,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.refresher.Refresher;
 import com.webforj.router.annotation.Route;
 
-@Route("refreshericon")
+@Route
 @StyleSheet("ws://css/refresher/refresher.css")
 public class RefresherIconView extends Composite<Div> {
 

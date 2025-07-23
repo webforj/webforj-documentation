@@ -10,7 +10,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @StyleSheet("ws://css/drawer/drawerDemo.css")
-@Route("drawerplacement")
+@Route
 @FrameTitle("Drawer Placement")
 public class DrawerPlacementView extends Composite<FlexLayout> {
 

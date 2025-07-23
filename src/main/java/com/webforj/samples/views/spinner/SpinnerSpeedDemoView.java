@@ -13,7 +13,7 @@ import com.webforj.component.spinner.SpinnerExpanse;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("spinnerspeeddemo")
+@Route
 @FrameTitle("Spinner Speeds")
 public class SpinnerSpeedDemoView extends Composite<FlexLayout> {
   

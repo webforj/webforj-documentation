@@ -9,7 +9,7 @@ import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("toasttheme")
+@Route
 @FrameTitle("Toast Themes")
 @StyleSheet("ws://css/toast/toastTheme.css")
 public class ToastThemeView extends Composite<FlexLayout> {

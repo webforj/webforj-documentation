@@ -8,7 +8,7 @@ import com.webforj.component.optiondialog.OptionDialog;
 import com.webforj.component.optiondialog.FileSaveDialog;
 import com.webforj.component.optiondialog.MessageDialog;
 
-@Route("filesavedialogbasic")
+@Route
 @FrameTitle("File Save Basics")
 public class FileSaveDialogBasicView extends Composite<Div> {
   private FileSaveDialog dialog;

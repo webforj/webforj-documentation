@@ -22,7 +22,7 @@ import com.webforj.dispatcher.ListenerRegistration;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("qrevent")
+@Route
 @FrameTitle("QR Events")
 public class QREventView extends Composite<FlexLayout> {
 

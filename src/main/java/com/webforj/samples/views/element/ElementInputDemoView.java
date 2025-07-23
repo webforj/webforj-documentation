@@ -8,10 +8,10 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @StyleSheet("ws://css/element/elementInput.css")
-@Route("elementinputdemo")
+@Route
 @FrameTitle("Input Demo")
 public class ElementInputDemoView extends Composite<Div> {
-
+  
   Element input = new Element("input");
 
   public ElementInputDemoView() {

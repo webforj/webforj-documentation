@@ -10,7 +10,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("iconprefixsuffix")
+@Route
 @FrameTitle("Icon Action Buttons")
 public class IconPrefixSuffixView extends Composite<FlexLayout> {
   

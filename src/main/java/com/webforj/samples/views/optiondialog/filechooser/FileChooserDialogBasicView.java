@@ -8,7 +8,7 @@ import com.webforj.component.optiondialog.FileChooserDialog;
 import com.webforj.component.optiondialog.OptionDialog;
 import com.webforj.component.optiondialog.MessageDialog;
 
-@Route("filechooserdialogbasic")
+@Route
 @FrameTitle("File Chooser Basics")
 public class FileChooserDialogBasicView extends Composite<Div> {
   private FileChooserDialog dialog;

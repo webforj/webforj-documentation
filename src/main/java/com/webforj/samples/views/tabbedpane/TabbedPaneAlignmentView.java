@@ -20,7 +20,7 @@ import com.webforj.router.annotation.Route;
     margin: 20px;
   }
 """)
-@Route("tabbedpanealignment")
+@Route
 @FrameTitle("Tabbed Pane Alignment")
 public class TabbedPaneAlignmentView extends Composite<Div> {
 
