@@ -1,4 +1,12 @@
-# "What's a Bean?" to Full-Stack Development
+---
+title: From "What's a Bean?" to Full-Stack App
+description: My first foray into full stack development with webforJ
+slug: Full stack development with webforJ
+date: 2025-07-24
+authors: Matthew Hawkins
+tags: [webforJ, Spring, Spring Boot, Full Stack, Web Development]
+hide_table_of_contents: false
+---
 
 ---
 
