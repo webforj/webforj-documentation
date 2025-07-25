@@ -1,8 +1,8 @@
 
 
 import React, { useState, useRef, useEffect } from "react";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 function ComboButton() {
   const [open, setOpen] = useState(false);
@@ -16,7 +16,7 @@ function ComboButton() {
     {
       key: "chatgpt",
       label: "Open in ChatGPT",
-      href: `https://chat.openai.com/?model=gpt-4&hints=search&prompt=Read%20from%20${encodeURIComponent(currentUrl)}%20so%20i%20can%20ask%20questions%20about%20it`,
+      href: `https://chat.openai.com/?model=gpt-4&hints=search&prompt=Read%20from%20${encodeURIComponent(currentUrl)}%20so%20I%20can%20ask%20questions%20about%20it`,
     },
     {
       key: "claude",
@@ -45,7 +45,6 @@ function ComboButton() {
   }, [open]);
 
   const btnStyle = {
-    display: "inline-block",
     padding: "0.3em 0.7em",
     background: "var(--ifm-background-color)",
     border: "1px solid var(--ifm-color-emphasis-300)",
@@ -55,14 +54,19 @@ function ComboButton() {
     boxSizing: "border-box",
     height: "32px",
     color: "var(--ifm-font-color-base)",
-
   };
+  
 
   return (
     <>
       <style>{`
         .ai-combobutton a::after {
           content: none !important;
+        }
+        .ai-combobutton {
+        margin-bottom: calc(var(--ifm-h1-vertical-rhythm-bottom) * var(--ifm-leading)) !important;
+        text-wrap: nowrap;
+        max-height: 32px;
         }
         .material-icons {
           font-family: 'Material Icons';
@@ -79,7 +83,7 @@ function ComboButton() {
           -webkit-font-smoothing: antialiased;
         }
       `}</style>
-      <div className="ai-combobutton" style={{ position: "relative", display: "none" }} ref={buttonRef}>
+      <div className="ai-combobutton"  ref={buttonRef}>
         <div style={{ display: "flex", alignItems: "stretch" }}>
           <a
             href={options[0].href}
@@ -110,27 +114,20 @@ function ComboButton() {
               width: 32,
             }}
           >
-            {open ? (
-              <ExpandLessIcon style={{ fontSize: 20 }} />
-            ) : (
-              <ExpandMoreIcon style={{ fontSize: 20 }} />
-            )}
+            <ChevronRightIcon style={{ transform: open ? "rotate(90deg)" : "rotate(0deg)", transition: "transform var(--dwc-transition-medium)" }} />
           </button>
         </div>
         {open && (
           <ul
             style={{
-              position: "absolute",
-              top: "100%",
-              left: 0,
+              position: "relative",
+              zIndex: 1000,
               background: "var(--ifm-background-color)",
               border: "1px solid var(--ifm-color-emphasis-300)",
               listStyle: "none",
               margin: 0,
               padding: "0.5em 0",
-              minWidth: dropdownWidth || "220px",
-              width: dropdownWidth || "auto",
-              zIndex: 1000,
+              minWidth: 32,
               boxShadow: "0 2px 8px var(--ifm-color-emphasis-200, rgba(0,0,0,0.08))",
             }}
           >
