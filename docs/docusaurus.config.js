@@ -20,7 +20,8 @@ const config = {
   },
   scripts: [
     { src: '/js/dwc-theme-switcher.js', async: false },
-    { src: '/js/link-decorator.js' }
+    { src: '/js/link-decorator.js' },
+    {src: '/js/ai-button-locator.js'}
   ],
   headTags: [
     {
