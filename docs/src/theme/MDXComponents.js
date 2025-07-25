@@ -14,6 +14,7 @@ import TabSwitcher from '@site/src/components/DocsTools/TabSwitcher';
 import ComponentArchetype from '@site/src/components/DocsTools/ComponentArchetype';
 import ExpandableCode from '@site/src/components/DocsTools/ExpandableCode';
 import GiscusComments from '@site/src/components/DocsTools/GiscusComments';
+import ComboButton from '../components/DocsTools/ComboButton';
 import DocCardList from '@theme/DocCardList';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -36,6 +37,7 @@ export default {
   Tabs,
   TabItem,
   ExpandableCode,
-  GiscusComments
+  GiscusComments,
+  ComboButton
 };
 
