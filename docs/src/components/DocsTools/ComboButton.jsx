@@ -121,7 +121,7 @@ function ComboButton() {
           <ul
             style={{
               position: "relative",
-              zIndex: 1000,
+              zIndex: "var(--ifm-z-index-fixed)-1",
               background: "var(--ifm-background-color)",
               border: "1px solid var(--ifm-color-emphasis-300)",
               listStyle: "none",
