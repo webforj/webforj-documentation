@@ -13,6 +13,11 @@
   .askMenu {
     margin-top: 0;
   }
+
+  .dropdown {
+    right: auto;
+    left: 0;
+  }
 }
 
 .buttonContainer {
@@ -130,7 +135,6 @@
   color: var(--ifm-font-color-base);
   transition: background-color 0.15s ease;
   box-sizing: border-box;
-  font-family: inherit;
   -webkit-font-smoothing: antialiased;
   gap: 8px;
 }
