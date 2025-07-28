@@ -1,67 +1,70 @@
 ---
-title: From "What's a Bean?" to Full-Stack App
-description: My first foray into full stack development with webforJ
-slug: Full stack development with webforJ
+title: From "What's a Bean" to Full-Stack App
+description: My first foray into full-stack development with webforJ
+slug: Full-stack development with webforJ
 date: 2025-07-24
 authors: Matthew Hawkins
-tags: [webforJ, Spring, Spring Boot, Full Stack, Web Development]
+tags: [webforJ, Spring, Spring Boot, Full-Stack, Web Development]
 hide_table_of_contents: false
 ---
 
----
+As I went through my computer science education at Oregon State, I realized pretty quickly that I enjoyed the UI side of things. Messing around with CSS (yes, even trying to center a div) and making pages that looked nice appealed to me way more than databases and business logic.
 
-As I went through my computer science education at Oregon State, I realized pretty quickly that I enjoyed the UI side of things. Messing around with CSS (yes, even trying to center a div) and making pages that looked nice appealed to me way more than databases and business logic. 
+Somehow, I ended up working at a company that primarily used Java. Lucky for me, the project I ended up on was a Java web framework - back in my comfort zone!
 
-Somehow, I ended up working at a company that primarily used Java. Lucky for me, the project I ended up on was a Java web framework - back in my comfort zone!  
+I've been able to keep myself pretty much in UI land since then, in my comfort zone and happy to let my colleagues deal with all that back end stuff.
 
-I've been able to keep myself pretty much in UI land since then, in my comfort zone and happy to let me colleagues deal with all that back end stuff.
-
-Recently our company's framework, **webforJ**, released Spring integration, and with that, my blissful isolation in UI land came to an end. As my first foray into full stack development, I was asked to build a (very, very simple) CRUD application using Spring and webforJ both so I could learn more about the back end, and also showcase webforJ and Spring together in one project.  
+Recently our framework, **webforJ**, released Spring integration, and with that, my blissful isolation in UI land came to an end. As my first foray into full-stack development, I was asked to build a (very, very simple) CRUD application using Spring and webforJ both so I could learn more about the back end, and also showcase webforJ and Spring together in one project.
 
 TLDR: It went well.
+
+<!-- truncate -->
 
 ![Screenshot of CRUD app](../../static/img/CRUD_SS.png)
 
 ## The Mission: A Music Artist Management System
 
 The task seemed simple enough - build an app to manage music artists, fairly basic stuff:
+
 - Show artists in a nice-looking table (I can do tables!)
 - Let users add, edit, and delete artists using Spring
-- Use webforJ's [table filtering](https://docs.webforj.com/docs/components/table/filtering) 
+- Use webforJ's [table filtering](https://docs.webforj.com/docs/components/table/filtering)
 - Make it look professional, but nothing over the top (finally, my territory!)
 
-I started off watching a few tutorial videos, and starting hearing things like "dependency injection" and "beans" thrown around. Thankfully, I remembered that I'm living in the AI age, and instead started to ask various chat models to help me learn more about Spring.
+I started off watching a few tutorial videos, and started hearing things like "dependency injection" and "beans" thrown around. Thankfully, I remembered that I'm living in the AI age, and instead started to ask various chat models to help me learn more about Spring.
 
-I'm happy to say, everything was straightforward - I managed to (fairly easily) build a simple CRUD app using Spring Boot and webforJ. For those curious about what I did and in what steps, here's the process I followed:
+I'm happy to say, everything was straightforward - I managed to (fairly easily) build a simple CRUD app using Spring Boot and webforJ. For those curious about what I did and in what order, here's the process I followed:
 
 ### The Back End
 
-Creating my data layer took exactly three files. I've written CSS files longer than my entire backend. Of course, this is a simple app, but with the help of my AI buddy, I was able to not only get these files created, but finally understood the relationship between my data model/entity, my repository, and my service layer.
+Creating my data layer took exactly three files. I've written CSS files longer than my entire backend. Of course, this is a simple app, but with the help of my AI buddy, I was able to not only get these files created, but finally understand the relationship between my [data model/entity](https://spring.io/guides/gs/accessing-data-jpa) defines the structure of my data and maps it to the database, my [repository](https://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html) provides an interface for CRUD operations and database queries, and my [service layer](https://docs.spring.io/spring-roo/reference/html/base-layers.html) contains business logic and orchestrates communication between controllers and repositories.
 
 **File #1 - The Entity**:
+
 ```java
 @Entity
 public class MusicArtist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @NotBlank(message = "Artist name is required")
     private String name;
-    
+
     private String genre;
     private Boolean isActive = true;
     // ... more fields
 }
 ```
 
-Learning about these annotations, and the work they're doing for me that I didn't have to inplement myself was pretty great. The model was also quite  small, but I didn't mind learning via something simple to start.
+Learning about these annotations, and the work they're doing for me that I didn't have to inplement myself was pretty great. The model was also quite small, but I didn't mind learning via something simple to start.
 
 **File #2 - The Repository**:
+
 ```java
 @Repository
 public interface MusicArtistRepository extends JpaRepository<MusicArtist, Long> {
-    // That's it. That's the whole file. 
+    // That's it. That's the whole file.
     // Spring writes all the CRUD operations for you.
 }
 ```
@@ -69,17 +72,18 @@ public interface MusicArtistRepository extends JpaRepository<MusicArtist, Long> 
 When I realized this interface was complete and fully functional, that started to really show me how powerful Spring is.
 
 **File #3 - The Service** (where you put your business logic):
+
 ```java
 @Service
 public class MusicArtistService {
     @Autowired
     private MusicArtistRepository repository;
-    
-    public MusicArtist createArtist(MusicArtist artist) { 
+
+    public MusicArtist createArtist(MusicArtist artist) {
         if (artist.getIsActive() == null) { //Simple business logic/checks built around my CRUD operations
             artist.setIsActive(true);
         }
-        
+
         return repository.save(artist);
     }
 
@@ -89,7 +93,7 @@ public class MusicArtistService {
 }
 ```
 
-And like that, I had a working backend. No SQL queries or complex steps to learn. 
+And like that, I had a working backend. No SQL queries or complex steps to learn.
 
 ## webforJ Integration
 
@@ -100,9 +104,9 @@ But this was all it took:
 ```java
 @Route("/artists")
 public class MusicArtistsView extends Composite<FlexLayout> {
-    
+
     private final MusicArtistService artistService;
-    
+
     public MusicArtistsView(MusicArtistService artistService) {
         this.artistService = artistService;  // Spring just... provides this
         setupMyBeautifulUI();
@@ -110,7 +114,7 @@ public class MusicArtistsView extends Composite<FlexLayout> {
 }
 ```
 
-That's it. Spring automatically knew to provide my service to webforJ, and then I was back to what made sense to me - UI creation. 
+That's it. Spring automatically knew to provide my service to webforJ, and then I was back to what made sense to me - UI creation.
 
 ## Making It Look Decent (My Happy Place)
 
@@ -118,23 +122,32 @@ With the scary backend stuff handled, I could focus on what I love - making thin
 
 ### Renderers
 
-I wanted those trendy Gmail-style avatars with initials to display in my table. There are examples of other renderers on our [docs page](https://docs.webforj.com/docs/components/table/rendering), but a simple renderer was quite easily accomplished. Here's how simple it was:
+I wanted those trendy Gmail-style avatars with initials to display in my table. There are examples of other renderers on our [docs page](https://docs.webforj.com/docs/components/table/rendering), but a simple renderer was quite easily accomplished. Here's how it works:
 
 ```java
 public class ArtistAvatarRenderer extends Renderer<MusicArtist> {
     @Override
     public String build() {
-        return """
-            <div part='artist-avatar-renderer'>
-                <div part='artist-avatar'>
-                    <%= getInitials(artist.getName()) %>
-                </div>
-                <div part='artist-info'>
-                    <div><%= artist.getName() %></div>
-                    <div><%= artist.getIsActive() ? "Still rockin'" : "Taking a break" %></div>
-                </div>
-            </div>
-            """;
+			return /* html */"""
+				<%
+				const artist = cell.value;
+				const name = cell.row.getValue("Name");
+				const yearFormed = cell.row.getValue("Year Formed");
+				const isActive = cell.row.getValue("Active");
+				const initials = name ? name.split(' ').map(word => word.charAt(0)).join('').substring(0, 2).toUpperCase() : '?';
+				const yearText = yearFormed ? (isActive ? 'Active since ' + yearFormed : 'Formed in ' + yearFormed) : 'Status unknown';
+				%>
+
+				<div part='artist-avatar-renderer'>
+				    <div part='artist-avatar'>
+				        <%= initials %>
+				    </div>
+				    <div part='artist-text'>
+				        <div part='artist-name'><%= name %></div>
+				        <div part='artist-year'><%= yearText %></div>
+				    </div>
+				</div>
+				""";
     }
 }
 ```
@@ -148,19 +161,15 @@ The other thing that took me by surprise was using webforJ's automatic data bind
 While data binding is by no means a revolutionary invention, using webforJ's automatic data binding was a one liner that let be both bind my data and automatically apply Jakarta validation rules (set in my model) to the UI fields.
 
 ```java
-Dialog dialog = new Dialog()
-    .setTitle(isNewArtist ? "Add Artist" : "Edit Artist")
-    .setContent(createForm());
-
 // This one line handles ALL the form binding
-BindingContext bindingContext = new BindingContext(dialog, artist);
+BindingContext.of(this, MusicArtist.class, true);
 ```
 
 One line. Truly, I spent more time choosing the button themes than setting up data binding.
 
 ## Wrapping up
 
-All in all, my first foray into the Spring world and coupling it with webforJ ended up being way more straightforward and stress free than I'd originally thought. 
+All in all, my first foray into the Spring world and coupling it with webforJ ended up being way more straightforward and stress free than I'd originally thought.
 
 Both Spring Boot and webforJ seem designed by people who've had to deal with complicated frameworks before. Everything has sensible defaults. A lot of the work I expected to do was done for me. The documentation has real examples.
 
@@ -174,14 +183,13 @@ Of course, it wasn't all rainbows and auto-configuration. Here's what tripped me
 
 ## The Verdict
 
-The term "full stack" has always intimidated me a bit, mostly because I gravitated so heavily towards the front end, and neglected learning as much as I should have about the rest of the stack. But here's the thing building this little web app in Java with Spring Boot and webforJ felt just as straightforward as using one of the big names in web development.
+The term "full-stack" has always intimidated me a bit, mostly because I gravitated so heavily towards the front end, and neglected learning as much as I should have about the rest of the stack. But here's the thing: building this little web app in Java with Spring Boot and webforJ felt just as straightforward as using one of the big names in web development.
 
 I spent most of my time:
+
 - Writing the code I actually needed (not boilerplate)
-- Leveraging the frameworks ability to do the right things by default
+- Leveraging the framework's ability to do the right things by default
 - Spending time on development instead of configuration
 - Actually enjoying full-stack development, and learning about it, too!
 
-For developers who want to build full-stack applications, especially those of you coming from or living in the Java world, this combination is worth trying. You might surprise yourself.
-
----
+For developers who want to build full-stack applications, especially those of you coming from or living in the Java world, this combination is worth trying. You might surprise yourself!
