@@ -1,10 +1,14 @@
 webforJ:
   name: webforJ Team
-  url: https://github.com/webforj
   image_url: /img/webforj_icon.svg
   title: webforJ Development Team
+  page: true
+  socials:
+    github: webforj
 Matthew Hawkins:
   name: Matthew Hawkins
-  url: https://github.com/MatthewHawkins
   image_url: https://media.licdn.com/dms/image/v2/C4E03AQFljoM_H1quFw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1580784422162?e=1756339200&v=beta&t=RT8iII-yXZcPCTXcdQjduvp9iuqKVeLGBND4uSAOh7I
   title: Software Developer
+  page: true
+  socials:
+    github: MatthewHawkins
