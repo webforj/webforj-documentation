@@ -1,21 +1,19 @@
 import React from 'react';
 import Heading from '@theme-original/Heading';
-import ComboButton from '@site/src/components/DocsTools/ComboButton';
-
-const alignStyles = {
-  display: "flex",
-  alignItems: "center",
-  flexWrap: "wrap",
-  justifyContent: "space-between"
-};
+import AskMenu from '@site/src/components/DocsTools/AskMenu';
+import styles from './styles.module.css';
 
 export default function HeadingWrapper(props) {
   return (
     <>
-      <div style={props.as === "h1" ? alignStyles : undefined}>
-      <Heading {...props} />
-      {props.as === "h1" && <ComboButton />}
-      </div>
+      {props.as === "h1" ? (
+        <div className={styles.headingWrapper}>
+          <Heading {...props} className={styles.heading} />
+          <AskMenu />
+        </div>
+      ) : (
+        <Heading {...props} />
+      )}
     </>
   );
 }
