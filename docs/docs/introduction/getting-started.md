@@ -3,7 +3,6 @@ title: Getting Started
 sidebar_position: 2
 ---
 
-
 This article outlines the steps to create a new webforJ app using webforJ [archetypes](../building-ui/archetypes/overview.md). Archetypes provide pre-configured project structures and starter code so you can get a project up and running quickly.
 To create a new webforJ app from an archetype, you can use [startforJ](#using-startforj) or the [command line](#using-the-command-line). 
 
