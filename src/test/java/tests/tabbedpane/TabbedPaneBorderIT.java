@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 
 import pages.tabbedpane.TabbedPaneBorderPage;
 import tests.BaseTest;
-import utils.WaitUtil;
 import utils.annotations.BrowserTest;
 
 public class TabbedPaneBorderIT extends BaseTest {
