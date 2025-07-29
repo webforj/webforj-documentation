@@ -196,3 +196,11 @@ I spent most of my time:
 - Actually enjoying full-stack development, and learning about it, too!
 
 For developers who want to build full-stack applications, especially those of you coming from or living in the Java world, this combination is worth trying. You might surprise yourself!
+
+## Get the Source Code
+
+Want to explore the complete application? The full source code for this Music Artist Management System is available on GitHub:
+
+🔗 **[View the source code on GitHub](https://github.com/webforj/built-with-webforj/tree/main/webforj-crud)**
+
+Feel free to clone it, play around with it, and see how webforJ and Spring Boot work together in action!
