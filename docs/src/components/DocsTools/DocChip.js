@@ -18,6 +18,7 @@ export default function DocChip( { chip, label, href, exclude, tooltipText, colo
     background-color: var(--chip-background);
     color: var(--chip-text);
     position: relative;
+    z-index: 0;
     top: 0.3rem;
     :hover{
       color: inherit;
