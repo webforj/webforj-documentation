@@ -38,12 +38,6 @@ jobs:
       - name: Install Playwright browsers
         run: mvn exec:java -e -Dexec.mainClass="com.microsoft.playwright.CLI" -Dexec.args="install --with-deps" -Dexec.classpathScope=test
 
-      # Skip Vale action for playwright tests
-      - name: Run errata-ai/vale-action@reviewdog
-        if: github.ref_name != 'playwright-test' && contains(github.event.head_commit.message, 'playwright') == false
-        uses: errata-ai/vale-action@reviewdog
-        continue-on-error: true
-
       - name: Run tests
         run: mvn verify
         env:
