@@ -1,13 +1,15 @@
 ---
-title: From "What's a Bean" to Full-Stack App
+title: My First Foray into Full-Stack with webforJ
 description: My first foray into full-stack development with webforJ
 slug: Full-stack development with webforJ
-date: 2025-07-24
+date: 2025-07-29
 authors: Matthew Hawkins
 image: "https://cdn.webforj.com/webforj-documentation/blogs/2025-07-24-webforj-crud-spring.png"
 tags: [webforJ, Spring, Spring Boot, Full-Stack, Web Development]
 hide_table_of_contents: false
 ---
+
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2025-07-29-webforj-crud-spring/cover.png)
 
 As I went through my computer science education at Oregon State, I realized pretty quickly that I enjoyed the UI side of things. Messing around with CSS (yes, even trying to center a div) and making pages that looked nice appealed to me way more than databases and business logic.
 
@@ -21,7 +23,7 @@ TLDR: It went well.
 
 <!-- truncate -->
 
-![Screenshot of CRUD app](../../static/img/CRUD_SS.png)
+![Screenshot of CRUD app](https://cdn.webforj.com/webforj-documentation/blogs/2025-07-29-webforj-crud-spring/app-preview.png)
 
 ## The Mission: A Music Artist Management System
 
@@ -38,23 +40,23 @@ I'm happy to say, everything was straightforward - I managed to (fairly easily) 
 
 ### The Back End
 
-Creating my data layer took exactly three files. I've written CSS files longer than my entire backend. Of course, this is a simple app, but with the help of my AI buddy, I was able to not only get these files created, but finally understand the relationship between my [data model/entity](https://spring.io/guides/gs/accessing-data-jpa) defines the structure of my data and maps it to the database, my [repository](https://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html) provides an interface for CRUD operations and database queries, and my [service layer](https://docs.spring.io/spring-roo/reference/html/base-layers.html) contains business logic and orchestrates communication between controllers and repositories.
+Creating my data layer took exactly three files. I've written CSS files longer than my entire backend. Of course, this is a simple app, but with the help of my AI buddy, I was able to not only get these files created, but finally understand the relationship between my [data model/entity](https://spring.io/guides/gs/accessing-data-jpa) defines the structure of my data and maps it to the database, my repository provides an interface for CRUD operations and database queries, and my service layer contains business logic and orchestrates communication between controllers and repositories.
 
 **File #1 - The Entity**:
 
 ```java
 @Entity
 public class MusicArtist {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @NotBlank(message = "Artist name is required")
-    private String name;
+  @NotBlank(message = "Artist name is required")
+  private String name;
 
-    private String genre;
-    private Boolean isActive = true;
-    // ... more fields
+  private String genre;
+  private Boolean isActive = true;
+  // ... more fields
 }
 ```
 
@@ -77,20 +79,20 @@ When I realized this interface was complete and fully functional, that started t
 ```java
 @Service
 public class MusicArtistService {
-    @Autowired
-    private MusicArtistRepository repository;
+  @Autowired
+  private MusicArtistRepository repository;
 
-    public MusicArtist createArtist(MusicArtist artist) {
-        if (artist.getIsActive() == null) { //Simple business logic/checks built around my CRUD operations
-            artist.setIsActive(true);
-        }
+  public MusicArtist createArtist(MusicArtist artist) {
+      if (artist.getIsActive() == null) { //Simple business logic/checks built around my CRUD operations
+          artist.setIsActive(true);
+      }
 
-        return repository.save(artist);
-    }
+      return repository.save(artist);
+  }
 
-    public SpringDataRepository<MusicArtist, Long> getFilterableRepository() {
-        return new SpringDataRepository<>(repository); //Simple method to make sure my Table can efficiently filter data
-    }
+  public SpringDataRepository<MusicArtist, Long> getFilterableRepository() {
+      return new SpringDataRepository<>(repository); //Simple method to make sure my Table can efficiently filter data
+  }
 }
 ```
 
@@ -127,29 +129,29 @@ I wanted those trendy Gmail-style avatars with initials to display in my table. 
 
 ```java
 public class ArtistAvatarRenderer extends Renderer<MusicArtist> {
-    @Override
-    public String build() {
-			return /* html */"""
-				<%
-				const artist = cell.value;
-				const name = cell.row.getValue("Name");
-				const yearFormed = cell.row.getValue("Year Formed");
-				const isActive = cell.row.getValue("Active");
-				const initials = name ? name.split(' ').map(word => word.charAt(0)).join('').substring(0, 2).toUpperCase() : '?';
-				const yearText = yearFormed ? (isActive ? 'Active since ' + yearFormed : 'Formed in ' + yearFormed) : 'Status unknown';
-				%>
+  @Override
+  public String build() {
+    return /* html */"""
+      <%
+      const artist = cell.value;
+      const name = cell.row.getValue("Name");
+      const yearFormed = cell.row.getValue("Year Formed");
+      const isActive = cell.row.getValue("Active");
+      const initials = name ? name.split(' ').map(word => word.charAt(0)).join('').substring(0, 2).toUpperCase() : '?';
+      const yearText = yearFormed ? (isActive ? 'Active since ' + yearFormed : 'Formed in ' + yearFormed) : 'Status unknown';
+      %>
 
-				<div part='artist-avatar-renderer'>
-				    <div part='artist-avatar'>
-				        <%= initials %>
-				    </div>
-				    <div part='artist-text'>
-				        <div part='artist-name'><%= name %></div>
-				        <div part='artist-year'><%= yearText %></div>
-				    </div>
-				</div>
-				""";
-    }
+      <div part='artist-avatar-renderer'>
+          <div part='artist-avatar'>
+              <%= initials %>
+          </div>
+          <div part='artist-text'>
+              <div part='artist-name'><%= name %></div>
+              <div part='artist-year'><%= yearText %></div>
+          </div>
+      </div>
+      """;
+  }
 }
 ```
 
@@ -178,7 +180,7 @@ Both Spring Boot and webforJ seem designed by people who've had to deal with com
 
 Of course, it wasn't all rainbows and auto-configuration. Here's what tripped me up:
 
-**The Bean Mystery of Day 1**: I spent more time than I should have wondering why my service was null. Started with `@Autowired` on a field and tried using it in my constructor. The service wasn't injected yet - so I added `@PostConstruct` to initialize things after Spring injection. It worked, but then someone showed me I could just use constructor injection instead. One simple change from field injection to constructor parameter, and suddenly everything worked without the lifecycle issues. Sometimes the simplest solution is the right one.
+**The Bean Mystery of Day 1**: I spent more time than I should have wondering why my service was `null`. Started with `@Autowired` on a field and tried using it in my constructor. The service wasn't injected yet - so I added `@PostConstruct` to initialize things after Spring injection. It worked, but then someone showed me I could just use constructor injection instead. One simple change from field injection to constructor parameter, and suddenly everything worked without the lifecycle issues. Sometimes the simplest solution is the right one.
 
 **The Disappearing Table**: My table wouldn't show up. Why? Because I forgot to set a height. The Table component needs dimensions, weirdly enough :)
 
