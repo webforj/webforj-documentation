@@ -1,10 +1,10 @@
-package tests.TabbedPane;
+package tests.tabbedpane;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
 
-import pages.TabbedPanePage.TabbedPaneBorderPage;
+import pages.tabbedpane.TabbedPaneBorderPage;
 import tests.BaseTest;
 import utils.WaitUtil;
 import utils.annotations.BrowserTest;

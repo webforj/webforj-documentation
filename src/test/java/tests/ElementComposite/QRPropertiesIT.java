@@ -1,4 +1,4 @@
-package tests.ElementComposite;
+package tests.elementcomposite;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,13 +19,13 @@ import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 
-import pages.ElementCompositePage.QRCodePropertiesPage;
+import pages.elementcomposite.QRPropertiesPage;
 import tests.BaseTest;
 import utils.annotations.BrowserTest;
 
 public class QRPropertiesIT extends BaseTest {
 
-    private QRCodePropertiesPage qrCodePropertiesPage;
+    private QRPropertiesPage qrCodePropertiesPage;
 
     private static String decodeQRCode(byte[] imageData) throws IOException, NotFoundException {
         BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(imageData));
@@ -39,8 +39,8 @@ public class QRPropertiesIT extends BaseTest {
 
     @BeforeEach
     public void setupQRProperties() {
-        navigateToRoute(QRCodePropertiesPage.getRoute());
-        qrCodePropertiesPage = new QRCodePropertiesPage(page);
+        navigateToRoute(QRPropertiesPage.getRoute());
+        qrCodePropertiesPage = new QRPropertiesPage(page);
     }
 
     @BrowserTest
