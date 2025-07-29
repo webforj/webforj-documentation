@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import pages.login.LoginCustomFieldsPage;
 import tests.BaseTest;
+import utils.WaitUtil;
 import utils.annotations.BrowserTest;
 
 public class LoginCustomFieldsIT extends BaseTest {
@@ -25,7 +26,7 @@ public class LoginCustomFieldsIT extends BaseTest {
         loginCustomFieldsPage.getPassword().fill("admin");
         loginCustomFieldsPage.getSignInButton().click();
 
-        assertThat(loginCustomFieldsPage.getLogoutButton()).isVisible();
+        WaitUtil.waitForVisible(loginCustomFieldsPage.getLogoutButton(), 10000);
         loginCustomFieldsPage.getLogoutButton().click();
 
         assertThat(loginCustomFieldsPage.getHeader()).isVisible();
@@ -39,6 +40,7 @@ public class LoginCustomFieldsIT extends BaseTest {
         loginCustomFieldsPage.getPassword().fill("admin");
         loginCustomFieldsPage.getSignInButton().click();
 
+        WaitUtil.waitForVisible(loginCustomFieldsPage.getErrorMessage(), 10000);
         assertThat(loginCustomFieldsPage.getErrorMessage()).isVisible();
     }
 
@@ -49,6 +51,7 @@ public class LoginCustomFieldsIT extends BaseTest {
         loginCustomFieldsPage.getPassword().fill(" ");
         loginCustomFieldsPage.getSignInButton().click();
 
+        WaitUtil.waitForVisible(loginCustomFieldsPage.getErrorMessage(), 10000);
         assertThat(loginCustomFieldsPage.getErrorMessage()).isVisible();
     }
 
@@ -59,6 +62,7 @@ public class LoginCustomFieldsIT extends BaseTest {
         loginCustomFieldsPage.getPassword().fill("wrongpass");
         loginCustomFieldsPage.getSignInButton().click();
 
+        WaitUtil.waitForVisible(loginCustomFieldsPage.getErrorMessage(), 10000);
         assertThat(loginCustomFieldsPage.getErrorMessage()).isVisible();
     }
 
@@ -69,6 +73,7 @@ public class LoginCustomFieldsIT extends BaseTest {
         loginCustomFieldsPage.getPassword().fill("admin");
         loginCustomFieldsPage.getSignInButton().click();
 
+        WaitUtil.waitForVisible(loginCustomFieldsPage.getErrorMessage(), 10000);
         assertThat(loginCustomFieldsPage.getErrorMessage()).isVisible();
     }
 }

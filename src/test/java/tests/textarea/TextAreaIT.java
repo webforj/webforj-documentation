@@ -18,7 +18,6 @@ public class TextAreaIT extends BaseTest {
         feedbackTextAreaPage = new TextAreaPage(page);
     }
 
-
     @BrowserTest
     public void testToastMessage() {
         feedbackTextAreaPage.getFeedbackArea().fill("Hello World");
@@ -34,7 +33,7 @@ public class TextAreaIT extends BaseTest {
         // "HelloWorld" repeated 21 times is 210 characters, but we still expect the
         // result to be 200 characters.
         for (int i = 0; i < 22; i++) {
-            feedbackTextAreaPage.getFeedbackArea().type("Hello World");
+            feedbackTextAreaPage.getFeedbackArea().pressSequentially("Hello World");
         }
         assertThat(feedbackTextAreaPage.getCharactersCount()).containsText("200 / 200");
 

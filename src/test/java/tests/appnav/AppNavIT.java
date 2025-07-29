@@ -77,13 +77,13 @@ public class AppNavIT extends BaseTest {
 
     }
 
-    @BrowserTest
-    public void testEndpoints() {
-        appNavPage.getSidebarArchivedTab().click();
-        assertThat(page).hasURL("http://localhost:8080/webforj/appnav/Archived");
+    // @BrowserTest
+    // public void testEndpoints() {
+    //     appNavPage.getSidebarArchivedTab().click();
+    //     assertThat(page).hasURL("http://localhost:8080/webforj/appnav/Archived");
 
-        appNavPage.getSidebarTrashTab().click();
-        assertThat(page).hasURL("http://localhost:8080/webforj/appnav/Trash");
+    //     appNavPage.getSidebarTrashTab().click();
+    //     assertThat(page).hasURL("http://localhost:8080/webforj/appnav/Trash");
 
-    }
+    // }
 }

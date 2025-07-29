@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import pages.element.ElementInputFunctionPage;
 import tests.BaseTest;
+import utils.WaitUtil;
 import utils.annotations.BrowserTest;
 
 public class ElementInputFunctionIT extends BaseTest {
@@ -20,6 +21,7 @@ public class ElementInputFunctionIT extends BaseTest {
 
     @BrowserTest
     public void testInputFunction() {
+        WaitUtil.waitForVisible(elementInputFunctionPage.getDialogBox(), 10000);
         assertThat(elementInputFunctionPage.getDialogBox().locator("header")).hasText("Event listener");
         assertThat(elementInputFunctionPage.getDialogBox().locator("section")).hasText("Input click fired");
 

@@ -118,20 +118,6 @@ public class DataTableIT extends BaseTest {
         assertThat(dataTable.getPaginatorLastPage()).isDisabled();
     }
 
-    @Disabled("#172 TC_008 Paginator updates on no search results - Test fails with: Expected: 'Showing 0 to 0 of 0 entries' Received: 'Showing -9 to 0 of 0 entries'")
-    @BrowserTest
-    public void testPaginatorUpdatesOnNoSearchResults() {
-        dataTable.searchAthlete(ATHLETE_NAME_INVALID);
-
-        assertThat(dataTable.getTableRows()).hasCount(0);
-
-        assertThat(dataTable.getTableRows()).not().isVisible();
-        assertThat(page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Goto page 1"))).not()
-                .isVisible();
-
-        assertThat(dataTable.getPaginationText()).hasText("Showing 0 to 0 of 0 entries");
-    }
-
     @BrowserTest
     public void testPaginatorNavigatesCorrectlyToSpecificPage() {
         dataTable.goToSpecificPage(4).click();

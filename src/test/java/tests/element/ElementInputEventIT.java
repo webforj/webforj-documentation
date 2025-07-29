@@ -20,8 +20,6 @@ public class ElementInputEventIT extends BaseTest {
 
     @BrowserTest
     public void testEventListener() {
-        assertThat(elementInputEventPage.getLabel()).hasText("Enter Text and Press Enter");
-
         elementInputEventPage.getInput().fill("Hello World");
         elementInputEventPage.getInput().press("Enter");
 

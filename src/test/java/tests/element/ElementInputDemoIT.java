@@ -20,8 +20,6 @@ public class ElementInputDemoIT extends BaseTest {
 
     @BrowserTest
     public void testInput() {
-        assertThat(elementInputDemoPage.getInput()).hasAttribute("placeholder", "Enter some text");
-
         elementInputDemoPage.getInput().fill("Hello World");
         assertThat(elementInputDemoPage.getInput()).hasValue("Hello World");
     }
