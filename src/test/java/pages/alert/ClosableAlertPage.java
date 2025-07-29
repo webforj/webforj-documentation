@@ -7,7 +7,7 @@ import pages.BasePage;
 
 public class ClosableAlertPage extends BasePage {
 
-    private static final String ROUTE = "alert";
+    private static final String ROUTE = "closablealert";
 
     private final Locator closableAlert;
     private final Locator closableAlertText;

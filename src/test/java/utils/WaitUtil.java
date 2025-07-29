@@ -130,7 +130,7 @@ public class WaitUtil {
      */
     public static void assertClickTimeout(Locator locator, String elementDescription) {
         PlaywrightException exception = assertThrows(PlaywrightException.class, () -> {
-            locator.click(new Locator.ClickOptions().setTimeout(1000));
+            locator.click(new Locator.ClickOptions().setTimeout(5000));
         }, "Expected timeout when clicking: " + elementDescription);
 
         assertTrue(exception.getMessage().contains("Timeout"),
