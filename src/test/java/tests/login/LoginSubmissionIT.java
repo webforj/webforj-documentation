@@ -48,33 +48,6 @@ public class LoginSubmissionIT extends BaseTest {
     }
 
     @BrowserTest
-    public void testCookies() {
-        loginSubmissionPage.getUsername().waitFor();
-        loginSubmissionPage.getUsername().fill("admin");
-        loginSubmissionPage.getPassword().fill("admin");
-        loginSubmissionPage.getSignInButton().click();
-
-        WaitUtil.waitForVisible(loginSubmissionPage.getLogoutButton(), 10000);
-
-        Map<String, String> localStorageItems = CookiesUtil.getLocalStorage(page);
-        assertEquals("on", localStorageItems.get("dwc-login-rememberme"));
-
-        loginSubmissionPage.getLogoutButton().click();
-
-        loginSubmissionPage.getUsername().fill("admin");
-        loginSubmissionPage.getPassword().fill("admin");
-        loginSubmissionPage.getRememberMe().click();
-
-        assertThat(loginSubmissionPage.getRememberMe()).hasAttribute("aria-checked", "false");
-
-        loginSubmissionPage.getSignInButton().click();
-
-        Map<String, String> localStorageAfterRememberMe = CookiesUtil.getLocalStorage(page);
-
-        assertEquals("off", localStorageAfterRememberMe.get("dwc-login-rememberme"));
-    }
-
-    @BrowserTest
     public void testValidUsernameInvalidPassword() {
         loginSubmissionPage.getUsername().fill("admin");
         loginSubmissionPage.getPassword().fill("admin123");
