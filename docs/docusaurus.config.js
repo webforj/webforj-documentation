@@ -16,7 +16,34 @@ const config = {
   trailingSlash: false,
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'es', 'fr', 'de', 'nl'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+        htmlLang: 'en-US',
+      },
+      es: {
+        label: 'Español',
+        direction: 'ltr',
+        htmlLang: 'es-ES',
+      },
+      fr: {
+        label: 'Français',
+        direction: 'ltr',
+        htmlLang: 'fr-FR',
+      },
+      de: {
+        label: 'Deutsch',
+        direction: 'ltr',
+        htmlLang: 'de-DE',
+      },
+      nl: {
+        label: 'Nederlands',
+        direction: 'ltr',
+        htmlLang: 'nl-NL',
+      },
+    },
   },
   scripts: [
     { src: '/js/dwc-theme-switcher.js', async: false },

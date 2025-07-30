@@ -11,7 +11,8 @@
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "translate": "tsx tools/i18n-translator/index.ts"
   },
   "dependencies": {
     "@docusaurus/core": "^3.8.1",
@@ -35,7 +36,17 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.6.3",
-    "@docusaurus/types": "^3.6.3"
+    "@docusaurus/types": "^3.6.3",
+    "@types/md5": "^2.3.5",
+    "commander": "^11.1.0",
+    "fast-glob": "^3.3.2",
+    "fs-extra": "^11.2.0",
+    "gray-matter": "^4.0.3",
+    "jiti": "^1.21.0",
+    "md5": "^2.3.0",
+    "openai": "^4.0.0",
+    "proxy-agent": "^6.0.0",
+    "tsx": "^4.7.0"
   },
   "browserslist": {
     "production": [
