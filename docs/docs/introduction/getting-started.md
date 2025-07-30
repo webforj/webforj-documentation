@@ -21,9 +21,10 @@ The simplest way to create a new webforJ app is [startforJ](https://docs.webforj
 
 <div class="videos-container">
   <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/archetypes/starforj.mov" type="video/mp4" />
+    <source src="https://cdn.webforj.com/webforj-documentation/video/archetypes/startforj.mp4" type="video/mp4" />
   </video>
 </div>
+
 
 ### Customizing with startforJ
 
@@ -32,7 +33,16 @@ When you create an app with [startforJ](https://docs.webforj.com/startforj), you
 - Basic project metadata (App Name, Group ID, Artifact ID)  
 - webforJ version and Java version
 - Theme Color and Icon
-- Archetype 
+- Archetype
+- Flavor
+
+There are two flavor options to choose from with "webforJ Only" being the default:
+  - **webforJ Only**: Standard webforJ app
+  - **webforJ + Spring Boot**: webforJ app with Spring Boot support
+
+:::caution Spring Boot support
+Spring Boot flavor is only available in webforJ version 25.02 and higher. If you select this option, make sure to choose a compatible version.
+:::
 
 :::tip Available Archetypes
 webforJ comes with several predefined archetypes to help you get started quickly. For a complete list of available archetypes, see the [archetypes catalog](../building-ui/archetypes/overview).
@@ -45,10 +55,12 @@ Once you have downloaded your project, open the project folder in your IDE and m
 
 ## Using the command line
 
+
 If you prefer to use the command line, you can generate a project directly using the Maven archetype:
 
 <ComponentArchetype
 project="hello-world"
+flavor="webforj"
 />
 
 ## Running the app
@@ -57,10 +69,14 @@ Before running your app, install the [prerequisites](./prerequisites.md) if you 
 Then, navigate to the project's root directory and run the following command:
 
 ```bash
+# for standard webforj app
 mvn jetty:run
+
+# for webforj + Spring Boot
+mvn spring-boot:run
 ```
 
-This command uses the Jetty Maven plugin to start a Jetty server. Once the server is running, open your browser and go to [http://localhost:8080](http://localhost:8080) to view the app.
+Once the server is running, open your browser and go to [http://localhost:8080](http://localhost:8080) to view the app.
 
 :::info Licensing and watermark
 For information on the watermark present in unlicensed projects, see [Licensing and Watermark](../configuration/licensing-and-watermark).

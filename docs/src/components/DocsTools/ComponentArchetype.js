@@ -4,7 +4,7 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import CodeBlock from "@theme/CodeBlock";
 
-export default function ComponentArchetype({ project }) {
+export default function ComponentArchetype({ project, flavor = "webforj" }) {
   return (<>
     <p>To create and scaffold a new <code>{project}</code> project, follow these steps:
     </p>
@@ -30,7 +30,8 @@ export default function ComponentArchetype({ project }) {
 -DarchetypeVersion=LATEST \\
 -DgroupId=org.example \\
 -DartifactId=my-app \\
--Dversion=1.0-SNAPSHOT \\
+-Dversion=1.0-SNAPSHOT ${project !== 'bbj-hello-world' ? `\\
+-Dflavor=${flavor}` : ''} \\
 -DappName=MyApp`}
         </CodeBlock>
       </TabItem>
@@ -42,7 +43,8 @@ export default function ComponentArchetype({ project }) {
 -DarchetypeVersion="LATEST" \`
 -DgroupId="org.example" \`
 -DartifactId="my-app" \`
--Dversion="1.0-SNAPSHOT" \`
+-Dversion="1.0-SNAPSHOT" ${project !== 'bbj-hello-world' ? `\`
+-Dflavor="${flavor}` : ''}" \`
 -DappName="MyApp"`}
         </CodeBlock>
       </TabItem>
@@ -54,7 +56,8 @@ export default function ComponentArchetype({ project }) {
 -DarchetypeVersion="LATEST" ^
 -DgroupId="org.example" ^
 -DartifactId="my-app" ^
--Dversion="1.0-SNAPSHOT" ^
+-Dversion="1.0-SNAPSHOT" ${project !== 'bbj-hello-world' ? `^
+-Dflavor="${flavor}` : ''}" ^
 -DappName="MyApp"`}
         </CodeBlock>
       </TabItem>
@@ -89,6 +92,18 @@ export default function ComponentArchetype({ project }) {
           <td><code>version</code></td>
           <td>Defines the version of the generated project. A common convention is MAJOR.MINOR-SNAPSHOT, like <code>1.0-SNAPSHOT</code>, where SNAPSHOT denotes that the project is still in development.</td>
         </tr>
+        {project !== 'bbj-hello-world' && (
+        <tr>
+          <td><code>flavor</code></td>
+          <td>
+            Selects a project flavor:
+            <ul>
+            <li><code>webforj</code> - Standard webforJ app.</li>
+            <li><code>webforj-spring</code> - webforJ app with Spring Boot support (requires webforJ 25.02 or higher).</li>
+            </ul>
+          </td>
+        </tr>
+        )}
         <tr>
           <td><code>appName</code></td>
           <td>An optional parameter that can be used in the generated project's POM file. Depending on the used webforJ archetype, it can be utilized as a default title for the application. </td>

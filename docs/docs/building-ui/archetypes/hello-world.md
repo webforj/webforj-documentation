@@ -1,7 +1,16 @@
 ---
 title: HelloWorld
 sidebar_position: 4
+hide_table_of_contents: true
 ---
+
+<Head>
+  <style>{`
+  .container {
+    max-width: 65em !important;
+  }
+  `}</style>
+</Head>
 
 <!-- vale off -->
 # HelloWorld archetype
@@ -23,12 +32,17 @@ For more control over customization and configuration, you can use [startforJ](h
 project="hello-world"
 />
 
-### Run the app
+## Running the app
 
-Navigate into the newly created directory, and run the following command from the project’s root directory:
+Before running your app, install the [prerequisites](../../introduction/prerequisites) if you haven't yet. 
+Then, navigate to the project's root directory and run the following command:
 
 ```bash
+# for standard webforJ app
 mvn jetty:run
+
+# for webforJ + Spring Boot
+mvn spring-boot:run
 ```
 
-This command uses the Jetty maven plugin to start a Jetty server. Once the server is running, open your browser and go to [http://localhost:8080](http://localhost:8080) to view the app.
+Once the server is running, open your browser and go to [http://localhost:8080](http://localhost:8080) to view the app.

@@ -1,0 +1,96 @@
+.expandableCode {
+  margin: 1rem 0;
+  border: 1px solid var(--ifm-toc-border-color);
+  background-color: var(--dwc-surface-3);
+  overflow: hidden;
+}
+
+.codeWrapper {
+  position: relative;
+}
+
+.codeContainer {
+  position: relative;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.collapsed {
+  max-height: 400px;
+}
+
+.expanded {
+  max-height: none;
+}
+
+.gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 10%,
+    rgba(255, 255, 255, 0.7) 40%,
+    rgba(255, 255, 255, 0.9) 70%,
+    var(--dwc-surface-3) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Dark mode gradient */
+[data-theme='dark'] .gradient {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 10%,
+    rgba(28, 28, 28, 0.7) 40%,
+    rgba(28, 28, 28, 0.9) 70%,
+    var(--dwc-surface-3) 100%
+  );
+}
+
+.expandButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 10px 0;
+  background-color: var(--dwc-surface-3);
+  color: var(--ifm-font-color-base);
+  border: none;
+  border-top: 1px solid var(--ifm-toc-border-color);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.expandButton:hover {
+  background-color: var(--ifm-hover-overlay);
+}
+
+.chevron {
+  transition: transform var(--dwc-transition-medium);
+  margin-top: 2px;
+}
+
+.chevronExpanded {
+  transform: rotate(90deg);
+}
+
+/* Override CodeBlock styles */
+.codeBlock {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
+
+.codeBlock pre {
+  margin: 0 !important;
+  border-radius: 0 !important;
+}

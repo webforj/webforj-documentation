@@ -1,7 +1,6 @@
 ---
 title: Refresher
 sidebar_position: 101
-sidebar_class_name: new-content
 ---
 
 <DocChip chip="shadow" />
@@ -24,7 +23,7 @@ To activate the `Refresher`, **click and drag downward** from the top of the scr
 <AppLayoutViewer
 path='/webforj/refresher?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/refresher/refresher.css'
+cssURL='/css/refresher/refresher.css'
 height = '400px'
 mobile='true'
 />
@@ -44,7 +43,7 @@ This allows multilingual support and branding adjustments as needed.
 <AppLayoutViewer 
 path='/webforj/refresheri18n?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherI18nView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/refresher/refresher.css'
+cssURL='/css/refresher/refresher.css'
 height = '400px'
 mobile='true'
 />
@@ -56,7 +55,7 @@ You can change the [`Icons`](../components/icon) used for the `pull`/`release` a
 <AppLayoutViewer 
 path='/webforj/refreshericon?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherIconView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/refresher/refresher.css'
+cssURL='/css/refresher/refresher.css'
 height = '400px'
 mobile='true'
 />
@@ -113,7 +112,7 @@ The following sample cycles through all available themes each time you pull to r
 <AppLayoutViewer 
 path='/webforj/refresherthemes?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/refresher/RefresherThemesView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/refresher/refresher.css'
+cssURL='/css/refresher/refresher.css'
 height = '400px'
 mobile='true'
 />

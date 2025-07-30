@@ -1,7 +1,6 @@
 ---
 title: InfiniteScroll
 sidebar_position: 60
-sidebar_class_name: new-content
 ---
 
 <DocChip chip="shadow" />
@@ -16,7 +15,7 @@ When users reach the bottom of scrollable content, `InfiniteScroll` triggers an 
 <AppLayoutViewer
 path='/webforj/infinitescroll?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/infinitescroll/InfiniteScrollView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/infinitescroll/infinitescroll.css'
+cssURL='/css/infinitescroll/infinitescroll.css'
 height = '400px'
 mobile='true'
 />
@@ -49,7 +48,7 @@ You can reset this flag using `setCompleted(false)` if you later allow the user 
 
 ## Loading indicator customization
 
-By default, `InfiniteScroll` shows a built-in loading indicator — a small animated [`Spinner`](../components/spinner) along with a “Loading data” text. You can change the displayed text by passing a custom message to the `InfiniteScroll` constructor or by using `setText()`.
+By default, `InfiniteScroll` shows a built-in loading indicator - a small animated [`Spinner`](../components/spinner) along with a “Loading data” text. You can change the displayed text by passing a custom message to the `InfiniteScroll` constructor or by using `setText()`.
 
 ```java
 InfiniteScroll infiniteScroll = new InfiniteScroll("Fetching more records...");
@@ -61,7 +60,7 @@ Similarly, you can customize the [`Icon`](../components/icon) displayed during l
 <AppLayoutViewer
 path='/webforj/infinitescrollloading?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/infinitescroll/InfiniteScrollLoadingView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/infinitescroll/infinitescroll.css'
+cssURL='/css/infinitescroll/infinitescroll.css'
 height = '400px'
 mobile='true'
 />
@@ -76,7 +75,7 @@ When you populate the content slot, it replaces the default loading layout entir
 <AppLayoutViewer
 path='/webforj/infinitescrollcustomloading?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/infinitescroll/InfiniteScrollCustomLoadingView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/infinitescroll/infinitescrollcustom.css'
+cssURL='/css/infinitescroll/infinitescrollcustom.css'
 height = '400px'
 mobile='true'
 />

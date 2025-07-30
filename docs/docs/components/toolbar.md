@@ -1,7 +1,6 @@
 ---
 title: Toolbar
 sidebar_position: 145
-sidebar_class_name: new-content
 ---
 
 <DocChip chip="shadow" />

@@ -1,6 +1,6 @@
 ---
 title: Namespaces
-sidebar_class_name: new-content
+sidebar_position: 30
 ---
 
 <DocChip chip='since' label='24.22' />
