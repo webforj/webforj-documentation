@@ -1,6 +1,6 @@
 ---
 title: Master webforJ routing in 10 minutes
-description: Everything you need to know about routing with webforj in a quick breakdown
+description: Everything you need to know about routing with webforJ in a quick breakdown
 slug: Master webforJ routing in 10 minutes
 date: 2025-07-25
 authors: webforJ
