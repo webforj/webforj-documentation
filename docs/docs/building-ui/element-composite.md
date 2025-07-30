@@ -7,8 +7,7 @@ slug: element_composite
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/element/ElementComposite" top='true'/>
 
-
-The `ElementComposite` class serves as a versatile foundation for managing composite elements in webforJ apps. Its primary purpose is to facilitate the interaction with HTML elements, represented by the `Element` class, by providing a structured approach to handle properties, attributes, and event listeners. It allows for implementation and reuse of elements in an app. Use the `ElementComposite` class when implementing Web Components for use in webforJ apps.
+The `ElementComposite` class provides a structured base for building reusable web components in webforJ. It streamlines interaction with underlying HTML elements, enabling you to define properties, attributes, and event listeners in a type-safe, maintainable way. Use `ElementComposite` to encapsulate and integrate custom elements or third-party web components within your app.
 
 While using the `ElementComposite` class, using the `getElement()` method will give you access to the underlying `Element` component. Similarly, the `getNodeName()` method gives you the name of that node in the DOM. 
 
@@ -31,10 +30,12 @@ The `ElementComposite` class supports several annotations to simplify integratio
   @StyleSheet("https://cdn.example.com/library.css")
   ```
 
+:::tip
 These annotations are typically placed on your `ElementComposite` subclass to make sure are loaded automatically when the component is used.
-
+:::
 
 This guide demonstrates integration of the [Shoelace QR code web component](https://shoelace.style/components/qr-code) using the `ElementComposite` class.
+
 ## Concern Interfaces
 
 To add common behaviors to your custom element, implement the appropriate concern interfaces. For example:
@@ -174,7 +175,7 @@ height='250px'
 
 ## Event registration
 
-Events are a crucial part of web components, allowing communication between different parts of an app. The `ElementComposite` class simplifies event registration and handling. To register an event listener, use the `addEventListener()` method to register event listeners for specific event types. Specify the event class, the listener, and optional event options.
+Events enable communication between parts of your app and are essential for interactive components. `ElementComposite` makes event handling straightforward: register listeners for specific event types using `addEventListener()` with the event class, your listener, and optional options.
 
 ```java
 // Example: Adding a click event listener
