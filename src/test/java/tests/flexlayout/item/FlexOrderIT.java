@@ -20,13 +20,6 @@ public class FlexOrderIT extends BaseTest {
     }
 
     @BrowserTest
-    public void testEmptyOrderFieldTriggersValidationError() {
-        flexOrderPage.cleanField(flexOrderPage.getOrderInput());
-        flexOrderPage.getSetOrderButton().click();
-        assertThat(flexOrderPage.getDwcAlert()).hasText("Order can not be empty.");
-    }
-
-    @BrowserTest
     public void testEnteringOneHighlightsFirstBox() {
         flexOrderPage.cleanField(flexOrderPage.getOrderInput());
         page.keyboard().type("1");

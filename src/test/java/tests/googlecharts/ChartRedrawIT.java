@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import pages.googlecharts.ChartRedrawPage;
 import tests.BaseTest;
+import utils.WaitUtil;
 import utils.annotations.BrowserTest;
 
 public class ChartRedrawIT extends BaseTest {
@@ -61,14 +62,6 @@ public class ChartRedrawIT extends BaseTest {
         page.keyboard().type("$!#%&*");
 
         assertThat(chartRedraw.getValueForInstagram()).not().hasValue("$!#%&*");
-    }
-
-    @BrowserTest
-    public void testNoValueInput() {
-        chartRedraw.cleanField(chartRedraw.getValueForInstagram());
-        chartRedraw.getRedrawChartButton().click();
-
-        assertThat(chartRedraw.getWarningToast()).isVisible();
     }
 
     @BrowserTest

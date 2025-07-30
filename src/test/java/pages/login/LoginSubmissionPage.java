@@ -25,7 +25,7 @@ public class LoginSubmissionPage extends BasePage {
         password = page.locator("dwc-field#password >> input");
         signInButton = page.locator("dwc-button[part='submit-button']");
         rememberMe = page.locator("#checkbox-1");
-        errorMessage = page.locator("dwc-alert[part='error']");
+        errorMessage = page.locator("dwc-alert[part='error']:has-text('Invalid username or password')");
         logoutButton = page.locator("div:has-text('Logout') > dwc-button");
     }
 

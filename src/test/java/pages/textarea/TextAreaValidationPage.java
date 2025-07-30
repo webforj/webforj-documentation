@@ -8,7 +8,6 @@ public class TextAreaValidationPage extends BasePage {
 
     private static final String ROUTE = "textareavalidation";
 
-    // TextArea Validation Elements
     private final Locator validationTextArea;
     private final Locator maxLengthField;
     private final Locator maxLengthInput;
@@ -18,7 +17,6 @@ public class TextAreaValidationPage extends BasePage {
     public TextAreaValidationPage(Page page) {
         super(page);
 
-        // TextArea Validation (elements from TextAreaValidationIT)
         validationTextArea = page.locator("dwc-textarea:has-text('Validation Playground') >> textarea");
         maxLengthField = page.locator("dwc-field:has-text('Max Length')");
         maxLengthInput = page.locator("dwc-field:has-text('Max Length') >> input");

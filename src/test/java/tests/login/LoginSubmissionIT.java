@@ -29,6 +29,7 @@ public class LoginSubmissionIT extends BaseTest {
         loginSubmissionPage.getPassword().fill("wrongpass");
         loginSubmissionPage.getSignInButton().click();
 
+        WaitUtil.waitForVisible(loginSubmissionPage.getErrorMessage());
         assertThat(loginSubmissionPage.getErrorMessage()).isVisible();
 
     }
@@ -79,6 +80,7 @@ public class LoginSubmissionIT extends BaseTest {
         loginSubmissionPage.getPassword().fill("admin123");
         loginSubmissionPage.getSignInButton().click();
 
+        WaitUtil.waitForVisible(loginSubmissionPage.getErrorMessage());
         assertThat(loginSubmissionPage.getErrorMessage()).isVisible();
     }
 
@@ -88,6 +90,7 @@ public class LoginSubmissionIT extends BaseTest {
         loginSubmissionPage.getPassword().fill("admin");
         loginSubmissionPage.getSignInButton().click();
 
+        WaitUtil.waitForVisible(loginSubmissionPage.getErrorMessage());
         assertThat(loginSubmissionPage.getErrorMessage()).isVisible();
     }
 
@@ -97,6 +100,7 @@ public class LoginSubmissionIT extends BaseTest {
         loginSubmissionPage.getPassword().fill(" ");
         loginSubmissionPage.getSignInButton().click();
 
+        WaitUtil.waitForVisible(loginSubmissionPage.getErrorMessage());
         assertThat(loginSubmissionPage.getErrorMessage()).isVisible();
     }
 
@@ -106,6 +110,7 @@ public class LoginSubmissionIT extends BaseTest {
         loginSubmissionPage.getPassword().fill("<>?[]{}~");
         loginSubmissionPage.getSignInButton().click();
 
+        WaitUtil.waitForVisible(loginSubmissionPage.getErrorMessage());
         assertThat(loginSubmissionPage.getErrorMessage()).isVisible();
     }
 }
