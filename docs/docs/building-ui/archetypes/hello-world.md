@@ -1,7 +1,16 @@
 ---
 title: HelloWorld
 sidebar_position: 4
+hide_table_of_contents: true
 ---
+
+<Head>
+  <style>{`
+  .container {
+    max-width: 65em !important;
+  }
+  `}</style>
+</Head>
 
 <!-- vale off -->
 # HelloWorld archetype
