@@ -36,3 +36,5 @@ Spring Data
 JPA
 DevTools
 CRUD
+MCP
+FAQ
