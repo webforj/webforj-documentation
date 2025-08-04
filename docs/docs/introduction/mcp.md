@@ -243,9 +243,9 @@ Prompts are pre-configured AI instructions that combine multiple tools and workf
 ### How to use prompts
 
 <Tabs groupId="ide">
-<TabItem value="vscode" label="VS Code, Forks & Claude Code">
+<TabItem value="vscode" label="VS Code and Claude Code">
 
-1. Type `/` in the chat to see available prompts
+1. Type <kbd>/</kbd> in the chat to see available prompts
 2. Select a prompt from the dropdown menu
 3. Fill in the required parameters when prompted
 
@@ -278,7 +278,7 @@ AI models may skip the MCP server if they believe they already know the answer. 
 - **Ask for verified examples**: Request "working webforJ code examples" to force documentation lookup
 - **Reference specific versions**: Mention your webforJ version (e.g., "webforJ `25.02`") to get accurate results
 
-### Writing clear prompts
+### Writing specific prompts
 
 **Good examples:**
 ```
@@ -302,10 +302,10 @@ AI models may skip the MCP server if they believe they already know the answer. 
 
 If the AI provides generic answers without using the MCP server:
 
-1. Explicitly request: "Use the webforJ MCP server to search for `[query]`"
-2. Ask for documentation references: "Find in webforJ docs how to `[query]`"
-3. Request verification: "Verify this solution against webforJ documentation"
-4. Be framework-specific: Always include "webforJ" in your queries
+1. **Explicitly request**: "Use the webforJ MCP server to search for `[query]`"
+2. **Ask for documentation references**: "Find in webforJ docs how to `[query]`"
+3. **Request verification**: "Verify this solution against webforJ documentation"
+4. **Be framework-specific**: Always include "webforJ" in your queries
 
 ## AI customization {#ai-customization}
 
@@ -313,11 +313,10 @@ Configure your AI assistants to automatically use the MCP server and follow webf
 
 ### Project configuration files
 
-<Tabs groupId="ide">
-<TabItem value="vscode" label="VS Code & Copilot">
+- For **VS Code and Copilot**, create `.github/copilot-instructions.md`
+- For **Claude Code**, create `CLAUDE.md` in your project root
 
-Create `.github/copilot-instructions.md`:
-
+Add the following to the created markdown file:
 ```markdown
 ## Use the webforJ MCP server to answer any webforJ questions
 
@@ -327,25 +326,6 @@ Create `.github/copilot-instructions.md`:
 
 Always verify code compiles with `mvn compile` before suggesting.
 ```
-
-</TabItem>
-<TabItem value="claude" label="Claude Code">
-
-Create `CLAUDE.md` in your project root:
-
-```markdown
-## Use the webforJ MCP server to answer any webforJ questions
-
-- Always call the "webforj-knowledge-base" tool to fetch docs relevant to the question
-- Verify all API signatures against the official documentation
-- Never assume method names or parameters exist without checking
-
-Always verify code compiles with `mvn compile` before suggesting.
-```
-
-</TabItem>
-</Tabs>
-
 
 ## FAQ
 
