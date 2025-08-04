@@ -1,5 +1,5 @@
 ---
-title: "From Functional to Beautiful: The Power of @Stylesheet"
+title: "Building Better CSS with webforJ's Styling System"
 description: "Learning webforJ's styling system from a developer's perspective: using `@StyleSheet` and `@InlineStyleSheet` annotations, working with DWC design tokens, handling responsive layouts, and building complex demos that scale from simple components to full dashboards."
 slug: webforj-styling-guide
 date: 2025-07-18
@@ -8,6 +8,8 @@ tags: [webforJ, styling, frontend]
 image: "https://docs.webforj.com/release_blog/_images/stylesheetblog.png"
 hide_table_of_contents: false
 ---
+
+<!-- vale Google.FirstPerson = NO -->
 
 ![cover image](../../static/release_blog/_images/stylesheetblog.png)
 
@@ -30,11 +32,11 @@ public class Application extends App {
 }
 ```
 
-The `ws://` prefix maps directly to resources/static. webforJ deduplicates automatically - reference the same CSS file from multiple components and it still only loads once. You can annotate at the app level or component level, and everything loads exactly when needed.
+The `ws://` prefix maps directly to `resources/static`. webforJ deduplicates automatically - reference the same CSS file from multiple components and it still only loads once. You can annotate at the app level or component level, and everything loads exactly when needed.
 
 ## Inline styles that scale
 
-I avoided `@InlineStyleSheet` initially. Inline styles felt wrong because of separation of concerns and all that. But working on component examples changed my perspective.
+I avoided `@InlineStyleSheet` initially. Inline styles felt wrong because of separation of concerns and all that. But working on component demos changed my perspective.
 
 ```java
 @InlineStyleSheet("""
@@ -84,7 +86,9 @@ DWC provides structured color usage that eliminates guesswork:
 """)
 ```
 
-The numbers represent lightness values (5 = darkest, 95 = lightest, in steps of 5). The `-text` variants provide automatic contrast compliance. Building examples with this system taught me how color relationships should work: semantic, predictable, accessible by default.
+The numbers represent lightness values (5 = darkest, 95 = lightest, in steps of 5). The `-text` variants provide automatic contrast compliance. These DWC variables also handle light and dark mode switching. Set `var(--dwc-color-primary-40)` once and it adapts when users toggle between themes. webforJ inverts the lightness values to maintain readability.
+
+This eliminated so much tedious work. Instead of maintaining duplicate color schemes or writing conditional CSS, I define colors once and they work everywhere.
 
 ## How CSS custom properties work
 
@@ -168,7 +172,7 @@ Here's a dashboard I put together that uses most of the stuff I've mentioned - C
 <AppLayoutViewer 
 path='/webforj/moderndashboard?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ModernDashboardView.java'
-cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/stylesheet/dashboard.css'
+cssURL='/css/stylesheet/dashboard.css'
 />
 
 This dashboard shows how all the pieces work together in practice. The responsive layout uses CSS Grid with custom media queries for mobile optimization. All the colors and spacing come from DWC tokens, so changing the primary color at the root level updates the entire interface. The combination of external CSS and inline component styles keeps everything maintainable, which is great because I definitely needed to go back and fix things multiple times. 

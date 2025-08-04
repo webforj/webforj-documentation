@@ -8,9 +8,13 @@ import java.util.Map;
 import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
+import com.webforj.component.layout.applayout.AppDrawerToggle;
+import com.webforj.component.layout.applayout.AppLayout;
+import com.webforj.component.layout.appnav.AppNav;
+import com.webforj.component.layout.appnav.AppNavItem;
+import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.component.googlecharts.GoogleChart;
 import com.webforj.component.html.elements.Div;
-import com.webforj.component.html.elements.H1;
 import com.webforj.component.html.elements.H2;
 import com.webforj.component.html.elements.H3;
 import com.webforj.component.html.elements.H4;
@@ -19,130 +23,82 @@ import com.webforj.router.annotation.Route;
 
 @StyleSheet("ws://css/stylesheet/dashboard.css")
 @InlineStyleSheet("""
-    .metric-value {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: var(--dwc-color-primary-40);
+    .modern-dashboard {
+        background: linear-gradient(135deg, var(--dwc-surface-1) 0%, var(--dwc-surface-2) 100%);
     }
     
-    @media (max-width: 768px) {
-        .dashboard-header {
-            display: flex !important;
-            flex-direction: row !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-            padding: var(--dwc-space-s) var(--dwc-space-m) !important;
-        }
-        
-        .dashboard-header h1 {
-            margin: 0 !important;
-            text-align: left !important;
-            flex: 1;
-        }
-        
-        .user-area {
-            margin-left: auto !important;
-            flex-shrink: 0;
-        }
+    .page-title {
+        background: linear-gradient(135deg, var(--dwc-color-primary-40), var(--dwc-color-primary-30));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    
+    .charts-grid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+    
+    .actions-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    
+    .chart-container {
+        height: 600px;
+        border-top: 3px solid var(--dwc-color-primary-40);
     }
 """)
 @Route
-public class ModernDashboardView extends Composite<Div> {
+public class ModernDashboardView extends Composite<AppLayout> {
     
     public ModernDashboardView() {
-        Div container = getBoundComponent();
-        container.addClassName("modern-dashboard");
-       
-        Div header = createHeader();
+        AppLayout layout = getBoundComponent();
+        layout.addClassName("modern-dashboard");
         
-        Div sidebar = createSidebar();
+        Toolbar header = new Toolbar();
+        header.addToStart(new AppDrawerToggle())
+              .addToTitle(new H2("Analytics Dashboard"));
+        layout.addToHeader(header);
         
-        Div main = createMainContent();
+        AppNav drawerMenu = new AppNav();
+        drawerMenu.addItem(new AppNavItem("Overview", ModernDashboardView.class, TablerIcon.create("dashboard")));
+        drawerMenu.addItem(new AppNavItem("Analytics", ModernDashboardView.class, TablerIcon.create("chart-line")));
+        drawerMenu.addItem(new AppNavItem("Users", ModernDashboardView.class, TablerIcon.create("users")));
+        drawerMenu.addItem(new AppNavItem("Settings", ModernDashboardView.class, TablerIcon.create("settings")));
+        layout.addToDrawer(drawerMenu);
         
-        container.add(header, sidebar, main);
-    }
-    
-    private Div createHeader() {
-        Div header = new Div();
-        header.addClassName("dashboard-header");
-        
-        H1 title = new H1("Analytics Dashboard");
-        
-        Div userArea = new Div("Welcome back, Joe");
-        userArea.addClassName("user-area");
-        
-        header.add(title, userArea);
-        return header;
-    }
-    
-    private Div createSidebar() {
-        Div sidebar = new Div();
-        sidebar.addClassName("dashboard-sidebar");
-        
-        H3 navTitle = new H3("Dashboard");
-        navTitle.addClassName("nav-title");
-        
-        Div navList = new Div();
-        navList.addClassName("nav-list");
-        
-        navList.add(
-            createNavItem("Overview", "dashboard", true),
-            createNavItem("Analytics", "chart-line", false),
-            createNavItem("Users", "users", false),
-            createNavItem("Settings", "settings", false)
-        );
-        
-        sidebar.add(navTitle, navList);
-        return sidebar;
-    }
-    
-    private Div createNavItem(String text, String iconName, boolean current) {
-        Div item = new Div();
-        item.addClassName("nav-item");
-        if (current) {
-            item.addClassName("nav-current");
-        }
-        
-        try {
-            var icon = TablerIcon.create(iconName);
-            icon.addClassName("nav-icon");
-            item.add(icon);
-        } catch (Exception e) {
-            Div fallback = new Div("•");
-            fallback.addClassName("nav-icon");
-            item.add(fallback);
-        }
-        
-        Div label = new Div(text);
-        label.addClassName("nav-label");
-        item.add(label);
-        
-        return item;
+        createMainContent();
     }
     
     private Div createMainContent() {
-        Div main = new Div();
-        main.addClassName("dashboard-main");
-        
         H2 pageTitle = new H2("Overview");
         pageTitle.addClassName("page-title");
         
-        Div metricsGrid = new Div();
-        metricsGrid.addClassName("metrics-grid");
+        Div metricsGrid = createMetricsGrid();
+        Div chartsSection = createChartsSection();
+        Div actionsSection = createQuickActionsSection();
         
-        metricsGrid.add(
+        AppLayout layout = getBoundComponent();
+        layout.add(pageTitle, metricsGrid, chartsSection, actionsSection);
+        
+        return null;
+    }
+    
+    private Div createMetricsGrid() {
+        Div grid = new Div();
+        grid.addClassName("metrics-grid");
+        
+        grid.add(
             createMetricCard("Total Revenue", "$124,592", "+12.5%", "up"),
             createMetricCard("Active Users", "8,942", "+5.2%", "up"),
             createMetricCard("Conversion Rate", "3.2%", "-0.8%", "down"),
             createMetricCard("Server Load", "87%", "+15.3%", "neutral")
         );
         
-        Div chartsSection = createChartsSection();
-        
-        Div actionsSection = createQuickActionsSection();
-        
-        main.add(pageTitle, metricsGrid, chartsSection, actionsSection);
-        return main;
+        return grid;
     }
     
     private Div createChartsSection() {
@@ -178,10 +134,9 @@ public class ModernDashboardView extends Composite<Div> {
         
         chart.setStyle("width", "100%");
         chart.setStyle("height", "100%");
-        chart.setStyle("min-height", "200px"); 
+        chart.setStyle("min-height", "200px");
         
         wrapper.add(chart);
-        
         container.add(chartTitle, wrapper);
         return container;
     }
@@ -191,9 +146,6 @@ public class ModernDashboardView extends Composite<Div> {
         
         List<Object> data = new ArrayList<>();
         data.add(Arrays.asList("Month", "Revenue", "Target"));
-        data.add(Arrays.asList("Jan", 65000, 60000));
-        data.add(Arrays.asList("Feb", 59000, 65000));
-        data.add(Arrays.asList("Mar", 80000, 70000));
         data.add(Arrays.asList("Apr", 81000, 75000));
         data.add(Arrays.asList("May", 56000, 80000));
         data.add(Arrays.asList("Jun", 124592, 85000));
@@ -202,28 +154,31 @@ public class ModernDashboardView extends Composite<Div> {
         
         Map<String, Object> options = new HashMap<>();
         options.put("backgroundColor", "transparent");
-        options.put("legend", Map.of(
-            "position", "bottom",
-            "textStyle", Map.of("fontSize", 12)
-        ));
+        options.put("legend", Map.of("position", "bottom"));
         options.put("colors", Arrays.asList("#2563eb", "#059669"));
-        options.put("chartArea", Map.of(
-            "width", "80%", 
-            "height", "65%",
-            "top", "10%",
-            "left", "15%"
-        ));
-        options.put("hAxis", Map.of(
-            "textStyle", Map.of("fontSize", 10),
-            "titleTextStyle", Map.of("fontSize", 11),
-            "showTextEvery", 1
-        ));
-        options.put("vAxis", Map.of(
-            "textStyle", Map.of("fontSize", 10),
-            "titleTextStyle", Map.of("fontSize", 11)
-        ));
         options.put("responsive", true);
-        options.put("maintainAspectRatio", false);
+        
+        chart.setOptions(options);
+        return chart;
+    }
+    
+    private GoogleChart createActivityChart() {
+        GoogleChart chart = new GoogleChart(GoogleChart.Type.COLUMN);
+        
+        List<Object> data = new ArrayList<>();
+        data.add(Arrays.asList("Day", "Page Views", "Users"));
+        data.add(Arrays.asList("Thu", 1400, 950));
+        data.add(Arrays.asList("Fri", 1600, 1100));
+        data.add(Arrays.asList("Sat", 900, 600));
+        data.add(Arrays.asList("Sun", 800, 550));
+        
+        chart.setData(data);
+        
+        Map<String, Object> options = new HashMap<>();
+        options.put("backgroundColor", "transparent");
+        options.put("legend", Map.of("position", "bottom"));
+        options.put("colors", Arrays.asList("#0891b2", "#7c3aed"));
+        options.put("responsive", true);
         
         chart.setOptions(options);
         return chart;
@@ -240,12 +195,10 @@ public class ModernDashboardView extends Composite<Div> {
         actionsGrid.addClassName("actions-grid");
         
         actionsGrid.add(
-            createActionCard("Generate Report", "Create comprehensive analytics report", "file-text"),
-            createActionCard("Export Data", "Download data in various formats", "download"),
-            createActionCard("User Management", "Manage users and permissions", "users"),
-            createActionCard("System Settings", "Configure system preferences", "settings"),
-            createActionCard("Data Import", "Import data from external sources", "upload"),
-            createActionCard("API Documentation", "View API reference and guides", "book")
+            createActionCard("Generate Report", "Create analytics report", "file-text"),
+            createActionCard("Export Data", "Download data", "download"),
+            createActionCard("User Management", "Manage users", "users"),
+            createActionCard("System Settings", "Configure settings", "settings")
         );
         
         section.add(sectionTitle, actionsGrid);
@@ -284,49 +237,6 @@ public class ModernDashboardView extends Composite<Div> {
         card.add(iconDiv, content);
         
         return card;
-    }
-    
-    private GoogleChart createActivityChart() {
-        GoogleChart chart = new GoogleChart(GoogleChart.Type.COLUMN);
-        
-        List<Object> data = new ArrayList<>();
-        data.add(Arrays.asList("Day", "Page Views", "Users"));
-        data.add(Arrays.asList("Mon", 1200, 800));
-        data.add(Arrays.asList("Tue", 1100, 750));
-        data.add(Arrays.asList("Wed", 1300, 900));
-        data.add(Arrays.asList("Thu", 1400, 950));
-        data.add(Arrays.asList("Fri", 1600, 1100));
-        data.add(Arrays.asList("Sat", 900, 600));
-        data.add(Arrays.asList("Sun", 800, 550));
-        
-        chart.setData(data);
-        
-        Map<String, Object> options = new HashMap<>();
-        options.put("backgroundColor", "transparent");
-        options.put("legend", Map.of(
-            "position", "bottom",
-            "textStyle", Map.of("fontSize", 12)
-        ));
-        options.put("colors", Arrays.asList("#0891b2", "#7c3aed"));
-        options.put("chartArea", Map.of(
-            "width", "80%", 
-            "height", "65%",
-            "top", "10%",
-            "left", "15%"
-        ));
-        options.put("hAxis", Map.of(
-            "textStyle", Map.of("fontSize", 10),
-            "titleTextStyle", Map.of("fontSize", 11)
-        ));
-        options.put("vAxis", Map.of(
-            "textStyle", Map.of("fontSize", 10),
-            "titleTextStyle", Map.of("fontSize", 11)
-        ));
-        options.put("responsive", true);
-        options.put("maintainAspectRatio", false);
-        
-        chart.setOptions(options);
-        return chart;
     }
     
     private Div createMetricCard(String label, String value, String trend, String direction) {
