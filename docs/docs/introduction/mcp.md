@@ -347,7 +347,7 @@ Always verify code compiles with `mvn compile` before suggesting.
 </Tabs>
 
 
-### FAQ
+## FAQ
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
