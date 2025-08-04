@@ -37,4 +37,5 @@ JPA
 DevTools
 CRUD
 MCP
+SSE
 FAQ
