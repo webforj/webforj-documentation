@@ -1,11 +1,15 @@
 <urlrewrite>
-    
-     <rule>
+
+    <rule>
         <from>^/blog$</from>
-        <to>/blog.html</to>
+        <to>/blog.html</to> 
     </rule>
-  <rule>
+    <rule>
         <from>^/docs$</from>
         <to type="redirect">/</to>
+    </rule>
+    <rule>
+        <from>^/blog/authors$</from>
+        <to>/blog/authors.html</to>
     </rule>
 </urlrewrite>
