@@ -13,7 +13,7 @@ hide_table_of_contents: false
 
 ![cover image](../../static/release_blog/_images/stylesheetblog.png)
 
-Building demos and documentation for webforJ has been an education in CSS. I thought I knew enough to get by, some selectors, basic properties, maybe a flexbox here and there. Turns out there's a difference between writing CSS that works and writing CSS that actually makes sense.
+I've spent the better part of a year building webforJ demos and documentation, and honestly, it's taught me that I knew a lot less about CSS than I thought. I thought I knew enough to get by, some selectors, basic properties, maybe a flexbox here and there. Turns out there's a difference between writing CSS that works and writing CSS that actually makes sense.
 
 Working on webforJ's styling system has changed how I approach CSS. It handles common tasks well and gets out of your way for the interesting parts. Plus, I no longer spend half my time wondering why my styles disappeared into the void.
 
@@ -142,7 +142,7 @@ Since `rem` units are relative to the root element's font size, these spacing va
 
 ### Component consistency across devices
 
-webforJ components respond consistently because they're built on the same DWC token system. Buttons, cards, and layout components use the same spacing and sizing tokens, so they maintain their visual relationships. Change the spacing at the root level and everything adjusts together like a well-choreographed dance 
+webforJ components respond consistently because they're built on the same DWC token system. Buttons, cards, and layout components use the same spacing and sizing tokens, so they maintain their visual relationships. Change the spacing at the root level and everything adjusts together like a well-choreographed dance.
 
 ### When you need custom responsive behavior
 
@@ -150,7 +150,7 @@ For complex layout changes (like sidebars that disappear on mobile or metric gri
 
 ## Shadow DOM styling
 
-I've run into situations where I write CSS targeting a component and nothing happens. webforJ components use Shadow DOM, which keeps their internal styles separate from your CSS.
+I've run into situations where I write CSS targeting a component and nothing happens. webforJ components use a Shadow DOM, which keeps their internal styles separate from your CSS.
 
 When you need to customize component appearance, there's the `::part()` approach:
 
