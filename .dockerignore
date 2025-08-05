@@ -1,0 +1,50 @@
+# Git files
+.git
+.gitignore
+
+# IDE files
+.idea
+.vscode
+*.iml
+*.ipr
+*.iws
+
+# Build output
+target/
+build/
+dist/
+out/
+
+# Test results
+test-results/
+playwright-report/
+test-output/
+
+# Node modules (will be installed fresh in container)
+node_modules/
+docs/node_modules/
+docs/.docusaurus/
+docs/build/
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*~
+
+# Documentation
+*.md
+!README.md
+
+# Docker files (avoid recursive copies)
+Dockerfile
+.dockerignore
+docker-compose*.yml

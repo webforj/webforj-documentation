@@ -1,0 +1,28 @@
+package com.webforj.samples.views.radiobutton;
+
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
+import org.junit.jupiter.api.BeforeEach;
+
+import com.webforj.samples.pages.radiobutton.RadioButtonSwitchPage;
+import com.webforj.samples.utils.annotations.BrowserTest;
+import com.webforj.samples.views.BaseTest;
+
+public class RadioButtonSwitchIT extends BaseTest {
+
+    private RadioButtonSwitchPage radioButton;
+
+    @BeforeEach
+    public void setupRadioButtonSwitch() {
+        navigateToRoute(RadioButtonSwitchPage.getRoute());
+        radioButton = new RadioButtonSwitchPage(page);
+    }
+
+    @BrowserTest
+    public void testSwitchButtonStyle() {
+        assertThat(radioButton.getSwitchRadio()).hasAttribute("switch", "");
+
+        radioButton.getSwitchRadio().click();
+        assertThat(radioButton.getSwitchInput()).hasAttribute("aria-checked", "true");
+    }
+}
