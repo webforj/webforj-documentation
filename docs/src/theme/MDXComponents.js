@@ -18,6 +18,10 @@ import AskMenu from '@site/src/components/DocsTools/AskMenu';
 import DocCardList from '@theme/DocCardList';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import GLOBALS from '../../siteConfig';
 import RadiusBox from '@site/src/components/DWCTheme/RadiusBox/RadiusBox';
 import ShadowBox from '@site/src/components/DWCTheme/ShadowBox/ShadowBox';
@@ -48,6 +52,10 @@ export default {
   ShadowBox,
   SizingBox,
   SpacingBox,
-  TransitionBox
+  TransitionBox,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  ExpandMoreIcon
 };
 
