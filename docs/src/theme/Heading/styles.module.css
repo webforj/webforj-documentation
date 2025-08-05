@@ -1,0 +1,26 @@
+.headingWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: calc(var(--ifm-h1-vertical-rhythm-bottom) * var(--ifm-leading));
+}
+
+.heading {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-bottom: 0 !important;
+}
+
+/* On small screens, stack vertically with button on top */
+@media (max-width: 576px) {
+  .headingWrapper {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .heading {
+    width: 100%;
+  }
+}
