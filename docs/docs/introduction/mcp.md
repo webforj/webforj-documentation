@@ -26,6 +26,10 @@ While AI coding assistants excel at answering basic questions, they struggle wit
 
 With MCP integration, AI responses are anchored to actual webforJ documentation, code examples, and framework patterns, providing verifiable answers with direct links to official sources for deeper exploration.
 
+:::warning AI Can Still Make Mistakes
+While MCP significantly improves accuracy by providing access to official webforJ resources, it doesn't guarantee perfect code generation. AI assistants may still make mistakes in complex scenarios. Always verify generated code and test thoroughly before using in production.
+:::
+
 ## Installation
 
 The webforJ MCP server is hosted at `https://mcp.webforj.com` with two endpoints:
