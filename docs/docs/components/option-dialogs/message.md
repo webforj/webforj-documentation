@@ -15,7 +15,7 @@ A `MessageDialog` is a modal dialog designed to display a message to the user wi
 OptionDialog.showMessageDialog("Hello World!");
 ```
 
-## Usages
+## Usages {#usages}
 
 The Message Dialog provides a way to display informational alerts, such as notifications, updates, or simple messages that only require the user to acknowledge them without providing any input.
 
@@ -27,7 +27,7 @@ dialog.setAlignment(MessageDialog.Alignment.TOP);
 dialog.show();
 ```
 
-## Message type
+## Message type {#message-type}
 
 The `MessageDialog` supports the following message types. When you configures a type, The dialog displays an icon beside the message, and the dialog's theme updates according to the webforJ design system rules.
 
@@ -49,7 +49,7 @@ height = '350px'
 By default, the dialog's determines the theme based on the message type. You can customize the dialog's theme using the `setTheme(Theme theme)` method and independently adjust the button theme with the `setButtonTheme(ButtonTheme theme)` method to create different variations.
 :::
 
-## Button text
+## Button text {#button-text}
 
 You can configure the dialog button's text using the `setButtonText(String text)`.
 
@@ -57,7 +57,7 @@ You can configure the dialog button's text using the `setButtonText(String text)
 OptionDialog.showMessageDialog("Hello World!", "Title", "Got it");
 ```
 
-## HTML processing
+## HTML processing {#html-processing}
 
 By default, the message dialog processes and renders HTML content. You can turn off this feature by configuring it to display raw text instead.
 
@@ -68,7 +68,7 @@ dialog.setRawText(true);
 dialog.show();
 ```
 
-## Timeout
+## Timeout {#timeout}
 
 The `MessageDialog` allows you to set a timeout duration after which the dialog automatically closes. This feature is useful for non-critical notifications or information that doesn't require the user's immediate interaction.
 
@@ -80,7 +80,7 @@ dialog.setTimeout(2);
 dialog.show();
 ```
 
-## Best practices
+## Best practices {#best-practices}
 
 1. **Clear and Concise Messages**: Keep messages short and to the point and avoid technical jargon; use user-friendly language.
 2. **Appropriate Message Types**:

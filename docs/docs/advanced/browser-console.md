@@ -12,7 +12,7 @@ Using the browser's console to print valuable program information is an integral
 Before `24.10`, the `App.consoleLog()` and `App.consoleError()` methods enabled this behavior, but they have since been marked for deprecation.
 ::: -->
 
-## Instance
+## Instance {#instance}
 
 Get an instance of `BrowserConsole` using the `App.console()` method. Print any `Object` desired as one of the five log types: log, info, warn, error, or debug.
 
@@ -26,7 +26,7 @@ console().error("Error message");
 console().debug("Debug message");
 ```
 
-## Styling
+## Styling {#styling}
 
 Use the builder methods to set the appearance of the log message. Each builder has options to change a specific property. It's also possible to [mix multiple styles](#mixing-styles).
 Once a console message prints, any styling applied won't carry over to subsequent messages unless *explicitly* redefined.
@@ -42,7 +42,7 @@ Once a console message prints, any styling applied won't carry over to subsequen
 Use the `setStyle` method to change the properties of the `BrowserConsole` log not specified by the builders.
 :::
 
-### Background color 
+### Background color {#background-color}
 
 Set the background color with the `background()` method, which returns the <JavadocLink type="foundation" location="com/webforj/BrowserConsole.BackgroundColorBuilder" code='true'>BackgroundColorBuilder</JavadocLink>.
 Use methods named by color, like `blue()`, or choose a specific value with `colored(String color)`.
@@ -53,7 +53,7 @@ console().background().blue().log("Blue background");
 console().background().colored("#031f8f").log("Custom blue background");
 ```
 
-### Text color
+### Text color {#text-color}
 
 Set the text color with the `color()` method, which returns the <JavadocLink type="foundation" location="com/webforj/BrowserConsole.ColorBuilder" code='true'>ColorBuilder</JavadocLink>.
 Use methods named by color, like `red()`, or choose a specific value with `colored(String color)`.
@@ -64,7 +64,7 @@ console().background().red().log("Red text");
 console().color().colored("#becad2").log("Custom light bluish-gray text");
 ```
 
-### Font size
+### Font size {#font-size}
 
 Set the font size with the `size()` method, which returns the <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontSizeBuilder" code='true'>FontSizeBuilder</JavadocLink>.
 Use methods named by a size, like `small()`, or choose a specific value with `from(String value)`.
@@ -78,7 +78,7 @@ console().size().from("30px").log("30px font");
 The `from(String value)` method can take other font size values, such as rem and vw.
 :::
 
-### Font style
+### Font style {#font-style}
 
 Set the font style with the `style()` method, which returns the <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontStyleBuilder" code='true'>FontStyleBuilder</JavadocLink>.
 For example, use the `italic()` method to make the console log italicized.
@@ -89,7 +89,7 @@ console().style().italic().log("Italic font");
 console().style().normal().log("Normal font");
 ```
 
-### Text transformation
+### Text transformation {#text-transformation}
 
 Control the capitalization of the characters in a message with the `transform()` method, which returns the <JavadocLink type="foundation" location="com/webforj/BrowserConsole.TextTransformBuilder" code='true'>TextTransformBuilder</JavadocLink>.
 For example, use the `capitalize()` method to transform the first letter of each word to uppercase.
@@ -102,7 +102,7 @@ console().transform().capitalize().log("Capitalize text transformation");
 console().transform().uppercase().log("Uppercase text transformation");
 ```
 
-### Font weight
+### Font weight {#font-weight}
 
 Set how thick the text is with the `weight()` method, which returns the <JavadocLink type="foundation" location="com/webforj/BrowserConsole.FontWeightBuilder" code='true'>FontWeightBuilder</JavadocLink>.
 For example, use the `ligther()` method to make the font lighter than normal.
@@ -113,7 +113,7 @@ console().weight().bold().log("Bold font");
 console().weight().lighter().log("Lighter font");
 ```
 
-## Mixing styles
+## Mixing styles {#mixing-styles}
 It's possible to mix and match methods for a custom logging display.
 
 ```java

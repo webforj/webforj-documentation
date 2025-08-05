@@ -9,7 +9,7 @@ This documentation outlines the process for testing webforJ applications using P
 To learn more about the `webforj-archetype-hello-world`, refer to the [App Basics Introduction](../../introduction/basics) section.
 :::
 
-## Prerequisites
+## Prerequisites {#prerequisites}
 
 Before writing and running the Playwright tests, ensure the following:
 - The webforJ app is correctly set up and running on your local server.
@@ -18,7 +18,7 @@ Before writing and running the Playwright tests, ensure the following:
   - A compatible browser (Playwright can automatically install browsers during setup).
   - Maven for project dependencies.
 
-## Maven configuration
+## Maven configuration {#maven-configuration}
 
 Add the necessary dependencies in your `pom.xml` for Playwright:
 
@@ -38,7 +38,7 @@ Add the necessary dependencies in your `pom.xml` for Playwright:
 </dependencies>
 ```
 
-## Testing example: `HelloWorldView`
+## Testing example: `HelloWorldView` {#testing-example-helloworldview}
 
 The following code demonstrates a Playwright based test for the `HelloWorldView` component.
 
@@ -80,7 +80,7 @@ class HelloWorldViewTest {
 }
 ```
 
-### Key steps
+### Key steps {#key-steps}
 
 1. **Initialize Playwright**:
    - Create a `Playwright` instance.
@@ -100,7 +100,7 @@ class HelloWorldViewTest {
 5. **Teardown**:
    - Playwright automatically handles browser cleanup when the test finishes. For manual cleanup, you can close the browser using `browser.close()`.
 
-### Running tests
+### Running tests {#running-tests}
 
 1. Start the webforJ server:
    ```bash
@@ -112,7 +112,7 @@ class HelloWorldViewTest {
    mvn test
    ```
 
-## Expected behavior
+## Expected behavior {#expected-behavior}
 
 - On visiting `http://localhost:<port>/`, the `HelloWorldView` page loads.
 - Input webforJ into the text field and click the `Say Hello` button.

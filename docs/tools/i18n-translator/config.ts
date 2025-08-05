@@ -25,6 +25,11 @@ program
     'Root path which put docusaurus.config.js',
     process.cwd()
   )
+  .option(
+    '--batchSize [number]',
+    'Number of concurrent translation requests',
+    '250'
+  )
   .parse();
 
 export const options = program.opts<{
@@ -33,6 +38,7 @@ export const options = program.opts<{
   baseUrl?: string;
   model: string;
   project: string;
+  batchSize: string;
 }>();
 
 // webforJ-specific terms that should not be translated

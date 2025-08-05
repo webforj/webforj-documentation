@@ -15,7 +15,7 @@ title: File Save
 OptionDialog.showFileSaveDialog("Save your file");
 ```
 
-## Usages
+## Usages {#usages}
 
 The `FileSaveDialog` provides a streamlined method for saving files to the file system, offering user-configurable options for file naming and handling existing files.
 
@@ -25,7 +25,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '800px'
 />
 
-## Result
+## Result {#result}
 
 The `FileSaveDialog` returns the selected path as a string. If the user cancels the dialog, the result will be `null`.
 
@@ -49,7 +49,7 @@ if (result != null) {
 }
 ```
 
-## Exists action
+## Exists action {#exists-action}
 
 The `FileSaveDialog` provides configurable behavior when a file with the specified name already exists:
 
@@ -64,7 +64,7 @@ dialog.setExistsAction(FileSaveDialog.ExistsAction.ERROR_DIALOGUE);
 String result = dialog.show();
 ```
 
-## Selection mode
+## Selection mode {#selection-mode}
 
 The `FileSaveDialog` supports different selection modes, allowing you to tailor the selection method to your specific needs:
 
@@ -72,7 +72,7 @@ The `FileSaveDialog` supports different selection modes, allowing you to tailor 
 2. **DIRECTORIES**: Allows the selection of directories only.
 3. **FILES_AND_DIRECTORIES**: Allows the selection of both files and directories.
 
-## Initial path
+## Initial path {#initial-path}
 
 Specify the directory where the dialog will open using the initial path. This helps users start in a logical directory for their save operation.
 
@@ -82,7 +82,7 @@ FileSaveDialog dialog = new FileSaveDialog(
 String result = dialog.show();
 ```
 
-## Restriction
+## Restriction {#restriction}
 
 You can restrict the dialog to a specific directory, preventing users from navigating outside of it using the `setRestricted(boolean restricted)` method.
 
@@ -93,7 +93,7 @@ dialog.setRestricted(true);
 dialog.show();
 ```
 
-## Filename
+## Filename {#filename}
 
 Set a default filename for the save operation to guide users and minimize errors.
 
@@ -103,7 +103,7 @@ dialog.setName("report.xls");
 String result = dialog.show();
 ```
 
-## Internationalization (i18n)
+## Internationalization (i18n) {#internationalization-i18n}
 
 The titles, descriptions, labels, and messages within the component are fully customizable using the `FileSaveI18n` class. This ensures the dialog can be tailored to various localization or personalization requirements.
 
@@ -115,7 +115,7 @@ i18n.setCancel("Stornieren");
 dialog.setI18n(i18n);
 ```
 
-## Filters
+## Filters {#filters}
 
 The `FileSaveDialog` allows you to set filters to limit the types of files that can be saved using the `setFilters(List<FileSaveFilter> filters)` method.
 
@@ -125,7 +125,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '800px'
 />
 
-### Custom filters
+### Custom filters {#custom-filters}
 
 You can enable custom filters to allow users to define their own file filters using the `setCustomFilters(boolean customFilters)` method. Filters are saved in local storage by default and restored on subsequent dialog invocations.
 
@@ -135,7 +135,7 @@ dialog.setCustomFilters(true);
 String result = dialog.show();
 ```
 
-## Best practices
+## Best practices {#best-practices}
 
 * **Predefined File Names**: Provide a logical default filename where applicable.
 * **Confirm Overwrites**: Use `CONFIRMATION_DIALOGUE` for `ExistsAction` to prevent accidental overwrites.

@@ -20,7 +20,7 @@ height='300px'
 
 <!-- tabs={['ButtonDemo.java', 'demo_styles.css']} -->
 
-## Usages
+## Usages {#usages}
 
 The `Button` class is a versatile component that is commonly used in various situations where user interactions and actions need to be triggered. Here are some typical scenarios where you might need a button in your application:
 
@@ -45,7 +45,7 @@ The `Button` class is a versatile component that is commonly used in various sit
   > - "Previous" - Returns the user to the previous page of the application or section they're in.
   > - "Back" Returns the user to the first part of the application or page they're in.
 
-## Adding icons to buttons <DocChip chip='since' label='24.11' />
+## Adding icons to buttons <DocChip chip='since' label='24.11' /> {#adding-icons-to-buttons-docchip-chipsince-label2411-}
 
 Incorporating an icon into a button can greatly improve your app's design, allowing users to quickly identify actionable items on the screen. The [`Icon`](./icon.md) component provides a wide selection of icons to choose from.
 
@@ -66,11 +66,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="200px"
 />
 
-### Names
+### Names {#names}
 
 The `Button` component utilizes naming, which is used for accessibility. When a name is not explicitly set, the label of the `Button` will be used instead. However, some icons do not have labels, and only display non-text elements, such as icons. In this case, it is expedient to use the `setName()` method to ensure that the `Button` component created complies with accessibility standards.
 
-## Disabling a button
+## Disabling a button {#disabling-a-button}
 
 Button components, like many others, can be disabled to convey to a user that a certain action is not yet or is no longer available. A disabled button will decrease the opacity of the button, and is available for all button themes and expanses.
 
@@ -89,9 +89,9 @@ In some applications, clicking a button triggers a long-running action. In most 
 Disabling on click not only helps optimize the processing of actions, but also prevents the developer from needing to implement this behavior on their own, as this method has been optimized to reduce round trip communications.
 :::
 
-## Styling
+## Styling {#styling}
 
-### Themes
+### Themes {#themes}
 
 `Button` components come with <JavadocLink type="foundation" location="com/webforj/component/button/ButtonTheme">14 discrete themes </JavadocLink> built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to buttons to change their appearance and visual presentation. They offer a quick and consistent way to customize the look of buttons throughout an application. 
 
@@ -114,7 +114,7 @@ cssURL='/css/button/buttonThemes.css'
 height='175px'
 />
 
-### Expanses
+### Expanses {#expanses}
 The following <JavadocLink type="foundation" location="com/webforj/component/Expanse"> Expanses values </JavadocLink> allow for quick styling without using CSS. This allows for manipulation of the Button's dimensions without having to explicitly set it using any styling. In addition to simplifying styling, it also helps create and maintain a uniformity in your application. The default `Button` expanse is `Expanse.MEDIUM`.
 
 Different sizes are often appropriate for different uses:
@@ -132,7 +132,7 @@ height='200px'
 
 <TableBuilder name="Button" />
 
-## Best practices 
+## Best practices {#best-practices}
 
 To ensure an optimal user experience when using the `Button` component, consider the following best practices:
 

@@ -7,7 +7,7 @@ slug: Interactivity
 The `Table` component will respond to various keyboard inputs from users to allow for more fine-grained interaction. The following list outlines the various behaviors when the designated key is pressed:
 
 
-## Keyboard Interations
+## Keyboard Interations {#keyboard-interations}
 
 |Key|Behavior|
 |:-:|-|

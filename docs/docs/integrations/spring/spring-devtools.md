@@ -7,11 +7,11 @@ Spring DevTools provides automatic app restarts when code changes. webforJ DevTo
 
 Different file types trigger different reload behavior. Java code changes cause a full Spring restart and browser refresh. CSS and image changes update without a page reload, preserving form data and app state.
 
-## Understanding webforJ DevTools
+## Understanding webforJ DevTools {#understanding-webforj-devtools}
 
 webforJ extends Spring DevTools with browser synchronization. When Spring detects file changes and restarts, webforJ DevTools automatically refreshes your browser.
 
-### Reload behavior
+### Reload behavior {#reload-behavior}
 
 Different file types trigger different reload strategies:
 
@@ -20,7 +20,7 @@ Different file types trigger different reload strategies:
 - **JavaScript files** - Full browser page reload after Spring restart
 - **Images** - Refresh in place without page reload
 
-## Dependencies
+## Dependencies {#dependencies}
 
 Add both Spring DevTools and webforJ DevTools to your project:
 
@@ -39,7 +39,7 @@ Add both Spring DevTools and webforJ DevTools to your project:
 </dependency>
 ```
 
-## Configuration
+## Configuration {#configuration}
 
 Enable webforJ DevTools in your app properties:
 
@@ -51,7 +51,7 @@ webforj.devtools.livereload.enabled=true
 server.shutdown=immediate
 ```
 
-### Advanced configuration
+### Advanced configuration {#advanced-configuration}
 
 Configure WebSocket connection and reload behavior:
 

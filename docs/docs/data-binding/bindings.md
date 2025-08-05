@@ -15,7 +15,7 @@ flow within applications.
 This section introduces the basics of manually configuring bindings. Additionally, you can automatically create bindings based on the UI components in your form. Once you grasp the fundamentals, learn more by reading the [Automatic Binding](./automatic-binding) section.
 :::
 
-## Configure bindings
+## Configure bindings {#configure-bindings}
 
 Start by creating a new instance of `BindingContext` which manages all bindings for a particular model.
 This context ensures that all bindings can be validated and updated collectively.
@@ -28,7 +28,7 @@ BindingContext<Hero> context = new BindingContext<>(Hero.class);
 Each form should have only one `BindingContext` instance, and you should use this instance for all the components in the form.
 :::
 
-### The bound property
+### The bound property {#the-bound-property}
 
 A binding property is a specific field or attribute of a Java Bean that can be linked to a UI component in your app. 
 This linkage allows changes in the UI to directly affect the corresponding property of the data model, and vice versa, 
@@ -55,7 +55,7 @@ public class Hero  {
 the `bind` methods returns a `BindingBuilder` which creates the `Binding` object and you can use to configure the binding several settings, the `add` method which
 is what actually gets the binding added to the context.
 
-### The bound component
+### The bound component {#the-bound-component}
 
 The other side of the binding is the bound component, which refers to the UI component that interacts with the property of the Java Bean. 
 The bound component can be any UI component that supports user interaction and display, such as text fields, combo boxes, checkboxes, or 
@@ -70,9 +70,9 @@ BindingContext<Hero> context = new BindingContext<>(Hero.class);
 context.bind(nameTextField, "name").add();
 ```
 
-## Reading and writing data
+## Reading and writing data {#reading-and-writing-data}
 
-### Reading data
+### Reading data {#reading-data}
 
 Reading data involves populating UI components with values from the data model. 
 This is typically done when a form is initially displayed, or when you need to reload the data due to changes in the underlying model. 
@@ -90,7 +90,7 @@ In this example, the `read` method takes an instance of `Hero` and updates all b
 If the hero's name or power changes, the corresponding UI components (like a `TextField` for name and a `ComboBox` for powers) 
 display these new values.
 
-### Writing data
+### Writing data {#writing-data}
 
 Writing data involves collecting values from the UI components and updating the data model. 
 This typically occurs when a user submits a form. The `write` method handles validation and model updating in one step.
@@ -121,14 +121,14 @@ All core components of webforJ have default configurations to automatically repo
 :::
 
 <!-- vale off -->
-## ReadOnly data
+## ReadOnly data {#readonly-data}
 <!-- vale on -->
 
 In certain scenarios, you may want your app to display data without allowing the end-user to modify it directly through the UI. 
 This is where read-only data bindings become crucial. webforJ supports the configuration of bindings to be read-only, ensuring that 
 you can display data, but not edit it through bound UI components.
 
-### Configuring readonly bindings
+### Configuring readonly bindings {#configuring-readonly-bindings}
 
 To set up a read-only binding, you can configure the binding to turn off or ignore UI component input. 
 This ensures that the data remains unchanged from the UI perspective, while still updating programmatically if needed.
@@ -160,18 +160,18 @@ In contrast, setting a UI component as read-only, without configuring the bindin
 to the UI component but doesn't stop the binding from updating the data model if changes occur programmatically or through other means.
 :::
 
-## Binding getters and setters
+## Binding getters and setters {#binding-getters-and-setters}
 
 Setters and getters are methods in Java that set and get the values of properties, respectively.
 In the context of data binding, they are used to define how properties are updated and retrieved within the binding framework.
 
-### Customizing setters and getters
+### Customizing setters and getters {#customizing-setters-and-getters}
 
 Although webforJ can automatically use standard JavaBean naming conventions
 (for example, `getName()`, `setName()` for a property `name`), you might need to define custom behavior.
 This is necessary when the property doesn't follow the conventional naming or when the data handling requires additional logic.
 
-### Using custom getters
+### Using custom getters {#using-custom-getters}
 
 Custom getters are used when the value retrieval process involves more than just returning a property.
 For example, you might want to format the string, compute a value, or log certain actions when a property is accessed.
@@ -186,7 +186,7 @@ context
     });
 ```
 
-### Using custom setters
+### Using custom setters {#using-custom-setters}
 
 Custom setters come into play when setting a property involves additional operations such as validation, transformation, or side effects
 like logging or notifying other parts of your app.

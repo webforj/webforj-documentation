@@ -12,7 +12,7 @@ The `AppLifecycleListener` interface enables external code to observe and respon
 
 Lifecycle listeners are automatically discovered and loaded at runtime through service provider configuration files. Each app instance receives its own set of listener instances, maintaining isolation between different apps running in the same environment.
 
-## When to use lifecycle listeners
+## When to use lifecycle listeners {#when-to-use-lifecycle-listeners}
 
 Use lifecycle listeners when you need to:
 - Initialize resources or services before an app runs
@@ -20,7 +20,7 @@ Use lifecycle listeners when you need to:
 - Add cross-cutting concerns without modifying the `App` class
 - Build plugin architectures
 
-## The `AppLifecycleListener` interface
+## The `AppLifecycleListener` interface {#the-applifecyclelistener-interface}
 
 ```java title="AppLifecycleListener.java"
 public interface AppLifecycleListener {
@@ -40,7 +40,7 @@ Each app instance receives its own set of listener instances:
 If you need to share data between apps, use external storage mechanisms like databases or shared services.
 :::
 
-### Lifecycle events
+### Lifecycle events {#lifecycle-events}
 
 | Event | When Called | Common Uses |
 |-------|-------------|-------------|
@@ -49,9 +49,9 @@ If you need to share data between apps, use external storage mechanisms like dat
 | `onWillTerminate` | Before app termination | Save state, prepare for shutdown |
 | `onDidTerminate` | After app termination | Clean up resources, final logging |
 
-## Creating a lifecycle listener
+## Creating a lifecycle listener {#creating-a-lifecycle-listener}
 
-### Basic implementation
+### Basic implementation {#basic-implementation}
 
 ```java title="StartupListener.java"
 import com.webforj.App;
@@ -71,7 +71,7 @@ public class StartupListener implements AppLifecycleListener {
 }
 ```
 
-### Registering the listener
+### Registering the listener {#registering-the-listener}
 
 Create a service provider configuration file:
 
@@ -94,7 +94,7 @@ public class StartupListener implements AppLifecycleListener {
 ```
 :::
 
-## Controlling execution order
+## Controlling execution order {#controlling-execution-order}
 
 When multiple listeners are registered, you can control their execution order using the `@AppListenerPriority` annotation. This is particularly important when listeners have dependencies on each other or when certain initialization must happen before others.
 
@@ -120,7 +120,7 @@ public class LoggingListener implements AppLifecycleListener {
 }
 ```
 
-### Execution flow with App hooks
+### Execution flow with App hooks {#execution-flow-with-app-hooks}
 
 Beyond controlling the order between multiple listeners, it's important to understand how listeners interact with the `App` class's own lifecycle hooks. For each lifecycle event, the framework follows a specific execution sequence that determines when your listeners run relative to the app's built-in hooks.
 
@@ -133,7 +133,7 @@ The diagram below illustrates this execution flow, showing the precise timing of
 </div>
 
 
-## Error handling
+## Error handling {#error-handling}
 
 Exceptions thrown by listeners are logged but don't prevent other listeners from executing or the app from running. Always handle exceptions within your listeners:
 

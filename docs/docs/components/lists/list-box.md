@@ -13,7 +13,7 @@ slug: listbox
 
 The `ListBox` component is a user interface element designed to display a scrollable list of objects and allows users to select single or multiple items from the list. Users can also interact with the `ListBox` with the arrow keys. 
 
-## Usages
+## Usages {#usages}
 
 1. **User Role Assignment**: In applications with user access control, administrators can use a `ListBox` to assign roles and permissions to users. Users are selected from a list, and the roles or permissions are assigned based on their selection. This ensures precise and controlled access to different features and data within the application.
 
@@ -28,7 +28,7 @@ The `ListBox` component is a user interface element designed to display a scroll
 
 4. **Content Categorization**: In content management systems, `ListBox` components assist in categorizing articles, images, or files. Users can select one or more categories to associate with their content, making it easier to organize and search for content items in the system.
 
-## Selection Options
+## Selection Options {#selection-options}
 
 By default, the list box is configured to allow selection of a single item at a time. However, the `ListBox` implements the <JavadocLink type="foundation" location="com/webforj/component/list/MultipleSelectableList" code='true'>MultipleSelectableList</JavadocLink> interface, which can be configured with a built-in method which allows users to select multiple items ***using the `Shift` key*** for contiguous entry selection and ***`Control` (Windows) or `Command` (Mac) key*** for separate, multiple item selection. 
 
@@ -46,11 +46,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '250px'
 />
 
-## Styling
+## Styling {#styling}
 
 <TableBuilder name="ListBox" />
 
-## Best Practices 
+## Best Practices {#best-practices}
 
 To ensure an optimal user experience when using the `ChoiceBox` component, consider the following best practices:
 

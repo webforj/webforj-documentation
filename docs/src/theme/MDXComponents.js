@@ -19,6 +19,11 @@ import DocCardList from '@theme/DocCardList';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import GLOBALS from '../../siteConfig';
+import RadiusBox from '@site/src/components/DWCTheme/RadiusBox/RadiusBox';
+import ShadowBox from '@site/src/components/DWCTheme/ShadowBox/ShadowBox';
+import SizingBox from '@site/src/components/DWCTheme/SizingBox/SizingBox';
+import SpacingBox from '@site/src/components/DWCTheme/SpacingBox/SpacingBox';
+import TransitionBox from '@site/src/components/DWCTheme/TransitionBox/TransitionBox';
 
 
 export default {
@@ -38,6 +43,11 @@ export default {
   TabItem,
   ExpandableCode,
   GiscusComments,
-  AskMenu
+  AskMenu,
+  RadiusBox,
+  ShadowBox,
+  SizingBox,
+  SpacingBox,
+  TransitionBox
 };
 

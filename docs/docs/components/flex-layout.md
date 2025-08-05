@@ -8,7 +8,7 @@ sidebar_position: 45
 
 webforJ provides developers with an efficient and intuitive way to layout their various applications and components - the Flex Layout. This toolset allows for items to be displayed either vertically or horizontally. 
 
-## Flex layout properties
+## Flex layout properties {#flex-layout-properties}
 
 Flex layout's properties can be grouped into two categories: properties that apply to the items within a layout, and properties that apply to the layout itself. The flex layout, or the parent element, is a box/container that can contain one or more components. Everything inside a Flex Layout is called an item or child element. The Flex Layout provides some robust alignment capabilities, which can be achieved with the help of either container or item properties.
 
@@ -16,11 +16,11 @@ Flex layout's properties can be grouped into two categories: properties that app
 webforJ's layout component follows the pattern of [CSS's flexbox layout](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). However, these tools are made to be utilized fully in Java, and do not require the application of CSS outside of the Java API methods provided.
 :::
 
-## Container properties
+## Container properties {#container-properties}
 
 Container properties will apply to all of the components within a component and not the layout itself. They will not affect the orientation or placement of the parent - only the child components within.
 
-### Direction
+### Direction {#direction}
 
 The Flex Layout will add components next to one another according to the direction chosen by the developer - either horizontal or vertical. When using he builder, utilize either the `horizontal()`, `horizontalReverse()`, `vertical()` or `verticalReverse()` methods when calling the `create()` method on a `FlexLayout` object to configure this layout as the object is created.
 
@@ -33,7 +33,7 @@ cssURL='/css/flexlayout/container/flexContainerBuilder.css'
 height="275px"
 />
 
-### Positioning
+### Positioning {#positioning}
 
 Components that are added horizontally can also be positioned both horizontally and vertically. Use the `justify()`, `align()` and `contentAlign()` methods from the Flex Layout Builder to configure the positioning when creating a new Flex Layout.
 
@@ -52,13 +52,13 @@ cssURL='/css/flexlayout/container/flexContainerBuilder.css'
 height="375px"
 />
 
-### Wrapping
+### Wrapping {#wrapping}
 
 To further customize the Flex Layout component, you can specify the behavior of the flex layout when components that are added no longer fit within the display. To configure this using the builder, utilize the utilize the - `nowrap()` (default), `wrap()` and `wrapReverse()` methods to configure wrapping.
 
 Alternatively, if your layout already exists, use the `setWrap()` method to dictate how components will behave once they are no longer able to fit on a single line.
 
-### Spacing
+### Spacing {#spacing}
 
 In order to apply minimum spacing between items, you can set the gap property. It applies that spacing only between items not on the outer edges. 
 
@@ -66,7 +66,7 @@ In order to apply minimum spacing between items, you can set the gap property. I
 The gap property's behavior can be thought of as a minimum distance between - this property will only take effect if it is the largest calculated
 space between items. If the space between items would otherwise be larger due to another calculated property, such as due to `setAlignContent(FlexContentAlignment.SPACE_BETWEEN)`, then the gap property will be ignored.
 
-### Flow
+### Flow {#flow}
 
 Flex flow, which is a combination of both the direction and the wrap properties, can be set using the `setFlow()` method on a Flex Layout object. 
 
@@ -75,7 +75,7 @@ To configure this property when creating the layout, use the proper directional 
 use the `.vertical().wrap()` combination.
 :::
 
-### Container builder
+### Container builder {#container-builder}
 
 The following demo allows you to build a container with the desired flex properties selected from the various menus. This tool can be used not only to create a visual example of the various methods, but also as a tool to create your own layouts with your desired properties. To use a layout you customize, simply copy the output code and add your desired elements for use in your program.
 
@@ -89,11 +89,11 @@ height="600px"
 
 
 <!-- BIG CODE SNIPPET SHOWING CONTAINER -->
-## Item properties
+## Item properties {#item-properties}
 
 Item properties will not affect any child elements within the Flex Layout, but rather the actual Layout itself. This is useful for styling a single Flex Layout element that is a child of a larger Flex Layout element independent of styles applying to all children.
 
-### Order
+### Order {#order}
 
 The `ItemOrder` property determines how components are displayed within the Flex Layout, and when used on a Flex Layout will assign an item that layout's specific order number. This overrides the default "source order" that is built into each item (the order in which a component is added to its parent), and means that it will be shown before items with a higher order, and after items with a lower order.
 
@@ -110,7 +110,7 @@ cssURL='/css/flexlayout/container/flexContainerBuilder.css'
 height="320px"
 />
 
-### Self alignment
+### Self alignment {#self-alignment}
 
 Flex Layout's self-alignment refers to how a single Flex Layout object is aligned within its parent flex container along the cross axis, which is perpendicular to the main axis. The cross axis alignment is controlled by the `Alignment` property.
 
@@ -129,7 +129,7 @@ cssURL='/css/flexlayout/container/flexContainerBuilder.css'
 height="350px"
 />
 
-### Flex basis
+### Flex basis {#flex-basis}
 
 `Item Basis` is a property that's used in conjunction with Flex Layout's direction to set the initial size of a flex item before any remaining space is distributed.
 
@@ -147,7 +147,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="300px"
 />
 
-### Flex grow / shrink
+### Flex grow / shrink {#flex-grow--shrink}
 
 `Item Grow` and `Item Shrink` are two properties that work in conjunction with each other and with the `Item Basis` property to determine how flex items grow or shrink to fill the available space within a Flex Layout object.
 
@@ -160,7 +160,7 @@ When a container has more space than is needed to accommodate its contents, flex
 Similarly, when a container does not have enough space to accommodate its contents, flex items with a `Item Shrink` value greater than 0 will shrink to fit the available space. The amount of space each item gives up is determined by the ratio of its `Item Shrink` value to the total `Item Shrink` value of all items in the container.
 
 
-## Example form
+## Example form {#example-form}
 The form below demonstrates how `FlexLayout` organizes input fields into a structured layout. 
 
 :::tip

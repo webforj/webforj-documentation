@@ -16,7 +16,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='150px'
 />
 
-## Usages
+## Usages {#usages}
 
 The `ProgressBar` component is useful for visualizing the completion status of tasks. It supports:
 
@@ -24,7 +24,7 @@ The `ProgressBar` component is useful for visualizing the completion status of t
 - Indeterminate mode for ongoing tasks without a definite end.
 - Options for text visibility, animation, and striped designs for better visual feedback.
 
-## Setting values
+## Setting values {#setting-values}
 
 The ProgressBar component allows setting and getting its current value, minimum, and maximum limits.
 
@@ -35,7 +35,7 @@ bar.setMax(100);
 bar.setValue(50);
 ```
 
-## Orientation
+## Orientation {#orientation}
 
 The `ProgressBar` can be oriented horizontally or vertically.
 
@@ -45,7 +45,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='175px'
 />
 
-## Indeterminate state
+## Indeterminate state {#indeterminate-state}
 
 The `ProgressBar` supports an indeterminate state for tasks with unknown completion time.
 
@@ -55,7 +55,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='25px'
 />
 
-## Text and text visibility
+## Text and text visibility {#text-and-text-visibility}
 
 By default when created, the progress bar displays the percentage complete in the format `XX%`. Using the `setText()` method, you can use the placeholder `{{x}}` to get the current value as a percentage. Additionally, you can use the placeholder 
 `{{value}}` to get the raw current value.
@@ -64,9 +64,9 @@ By default when created, the progress bar displays the percentage complete in th
 ProgressBar bar = new ProgressBar(15, "Downloading: {{x}}%");
 ```
 
-## Styling
+## Styling {#styling}
 
-### Themes
+### Themes {#themes}
 
 The `ProgressBar` component comes with <JavadocLink type="foundation" location="com/webforj/component/Theme"> themes </JavadocLink> built in for quick styling without the use of CSS. These themes are pre-defined styles that can be applied to buttons to change their appearance and visual presentation. 
 They offer a quick and consistent way to customize the look of ProgressBars throughout an app. 
@@ -79,7 +79,7 @@ height='320px'
 
 <TableBuilder name="ProgressBar" />
 
-## Best practices 
+## Best practices {#best-practices}
 
 - **Use Appropriate Minimum and Maximum Values**: Set the minimum and maximum values to accurately reflect the task's range.
 - **Update Progress Regularly**: Continuously update the progress value to provide real-time feedback to users.

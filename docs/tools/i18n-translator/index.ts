@@ -1,11 +1,16 @@
+import dotenv from 'dotenv';
+import path from 'path';
+
+// Load environment variables from docs/.env
+dotenv.config({ path: path.resolve(process.cwd(), '.env') });
+
 import { options, whitelist } from './config';
 import { loadSiteConfig } from './utils';
-import path from 'path';
 import fg from 'fast-glob';
 import matter from 'gray-matter';
 import fs from 'fs-extra';
 import md5 from 'md5';
-import { translate } from './translate';
+import { translate, translateBatch, TranslationTask } from './translate';
 import os from 'os';
 
 const siteDir = options.project;
@@ -39,7 +44,7 @@ async function main() {
         locale,
         './docusaurus-plugin-content-docs/current.json'
       ),
-      ['sidebar.tutorialSidebar.category.']
+      ['sidebar.documentationSidebar.category.']
     );
     await translateJSON(
       locale,
@@ -73,6 +78,16 @@ async function translateDocs(locale: string) {
     onlyFiles: true,
   });
 
+  // Prepare tasks for batch translation
+  const tasks: TranslationTask[] = [];
+  const fileInfoMap = new Map<string, { 
+    filePath: string; 
+    targetPath: string; 
+    targetDir: string; 
+    frontmatter: any; 
+    hash: string 
+  }>();
+
   for (const file of files) {
     const filePath = path.resolve(docsDir, file);
     const targetDir = path.resolve(
@@ -98,23 +113,52 @@ async function translateDocs(locale: string) {
       }
     }
 
-    console.log(`  Translating.... ${file}`);
-
-    const { translatedText, usage } = await translate(content, locale);
-
-    const targetFileContent = matter.stringify(translatedText, {
-      ...frontmatter,
-      _i18n_hash: hash,
+    fileInfoMap.set(file, { filePath, targetPath, targetDir, frontmatter, hash });
+    tasks.push({
+      content,
+      locale,
+      isUIString: false,
+      file
     });
-
-    await fs.ensureDir(targetDir);
-    fs.writeFileSync(targetPath, targetFileContent);
-
-    console.log(
-      `  Writed translated file into: ${targetPath} , token usage: ${usage?.total_tokens}`
-    );
   }
+
+  if (tasks.length === 0) {
+    console.log('  No files need translation.');
+    return;
+  }
+
+  console.log(`  Translating ${tasks.length} files with batch size ${options.batchSize}...`);
+
+  // Translate in batches with progress
+  const results = await translateBatch(tasks, (completed, total) => {
+    process.stdout.write(`\r  Progress: ${completed}/${total} files translated...`);
+  });
+  process.stdout.write('\n');
+
+  // Process results
+  let totalTokens = 0;
+  for (const result of results) {
+    if (result.file) {
+      const fileInfo = fileInfoMap.get(result.file);
+      if (fileInfo) {
+        const targetFileContent = matter.stringify(result.translatedText, {
+          ...fileInfo.frontmatter,
+          _i18n_hash: fileInfo.hash,
+        });
+
+        await fs.ensureDir(fileInfo.targetDir);
+        fs.writeFileSync(fileInfo.targetPath, targetFileContent);
+        
+        if (result.usage?.total_tokens) {
+          totalTokens += result.usage.total_tokens;
+        }
+      }
+    }
+  }
+
+  console.log(`  Completed translation of ${results.length} files. Total token usage: ${totalTokens}`);
 }
+
 
 async function translateJSON(
   locale: string,
@@ -133,7 +177,10 @@ async function translateJSON(
   const jsonContent = fs.readFileSync(jsonPath, 'utf-8');
   const json = JSON.parse(jsonContent);
 
-  let hasTranslation = false;
+  // Prepare tasks for batch translation
+  const tasks: TranslationTask[] = [];
+  const keysToTranslate: string[] = [];
+
   for (const [key, value] of Object.entries(json)) {
     const shouldTranslate = prefixList.some((prefix) => key.startsWith(prefix));
     if (!shouldTranslate) {
@@ -149,17 +196,34 @@ async function translateJSON(
       continue;
     }
 
-    const { translatedText } = await translate(messageValue, locale);
-    (value as any).message = translatedText;
-    hasTranslation = true;
+    keysToTranslate.push(key);
+    tasks.push({
+      content: messageValue,
+      locale,
+      isUIString: true,
+      key
+    });
   }
 
-  if (hasTranslation) {
-    fs.writeFileSync(jsonPath, JSON.stringify(json, null, 2));
-    console.log(`  Writed translated file into: ${jsonPath}`);
-  } else {
+  if (tasks.length === 0) {
     console.log(`  No need to translate, Skip: ${path.relative(siteDir, jsonPath)}`);
+    return;
   }
+
+  console.log(`  Translating ${tasks.length} UI strings...`);
+
+  // Translate in batches
+  const results = await translateBatch(tasks);
+
+  // Update JSON with translations
+  for (const result of results) {
+    if (result.key && json[result.key]) {
+      (json[result.key] as any).message = result.translatedText;
+    }
+  }
+
+  fs.writeFileSync(jsonPath, JSON.stringify(json, null, 2));
+  console.log(`  Writed translated file into: ${jsonPath}`);
 }
 
 main().catch(console.error);

@@ -5,7 +5,7 @@ title: Query Parameters
 
 Query parameters allow you to pass additional data through URLs, using the format `?key1=value1&key2=value2`. While route parameters are used to pass required data within the URL path, query parameters provide a flexible mechanism for passing optional or additional data. They're especially useful when filtering content, sorting, or handling multiple values for the same key.
 
-## Query parameters overview
+## Query parameters overview {#query-parameters-overview}
 
 Query parameters in webforJ follow the typical URL convention: key-value pairs separated by `=` and concatenated with `&`. They're appended to the URL after a `?` and provide a flexible way to pass optional data, such as filtering or sorting preferences.
 
@@ -15,7 +15,7 @@ For example:
 /products?category=electronics&sort=price
 ```
 
-## Retrieving query parameters
+## Retrieving query parameters {#retrieving-query-parameters}
 
 Query parameters are accessed through the `ParametersBag` object. To retrieve query parameters, use the `getQueryParameters()` method of the `Location` object.
 
@@ -57,7 +57,7 @@ The `ParametersBag` provides several getter variations to help with casting the 
 These methods help you ensure the values are formatted and cast correctly, avoiding the need for manual parsing or validation.
 :::
 
-## Handling multiple values for a query parameter
+## Handling multiple values for a query parameter {#handling-multiple-values-for-a-query-parameter}
 
 Sometimes a query parameter might have multiple values for the same key, like in the following example:
 
@@ -91,7 +91,7 @@ In this example:
 By default, the `getList()` method uses a comma (`,`) as the delimiter. You can customize the delimiter by passing a different character or a regular expression as second parameter to the `getList(String key, String regex)` method.
 :::
 
-## Use cases for query parameters
+## Use cases for query parameters {#use-cases-for-query-parameters}
 
 - **Filtering content**: Query parameters are often used to apply filters, like categories or search keywords.
 - **Sorting data**: You can pass sorting preferences via query parameters, such as sorting by price, rating, or date.

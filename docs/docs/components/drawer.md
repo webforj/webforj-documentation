@@ -16,7 +16,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 cssURL='/css/drawer/drawerWelcome.css'
 />
 
-## Usages
+## Usages {#usages}
 
 1. **Navigation Menu**: One common usage of a drawer component is as a navigation menu. It provides a space-efficient way to display links to various sections or pages of your application, especially in mobile or responsive layouts. Users can open and close the drawer to access navigation options without cluttering the main content area.
 
@@ -32,11 +32,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='600px'
 />
 
-## Customization
+## Customization {#customization}
 
 Various properties exist that allow for the customization of various attributes of the Drawer component. This section outlines those properties with examples for their modification.
 
-## Autofocus
+## Autofocus {#autofocus}
 
 The Auto-Focus property is designed to enhance accessibility and usability by automatically focusing on the first item within a drawer when it is opened. This feature eliminates the need for users to manually navigate to the desired item, saving time and effort.
 
@@ -56,7 +56,7 @@ height='600px'
 
 <!-- Example -->
 
-## Label
+## Label {#label}
 
 The Drawer Label property is a feature designed to enhance accessibility and provide descriptive context for a drawer within a user interface. This property allows developers to assign a label to a drawer, primarily for accessibility purposes, ensuring that screen readers and other assistive technologies can accurately convey the drawer's purpose and content to users.
 
@@ -81,7 +81,7 @@ The `size` property can be defined using various units such as pixels, percentag
 By utilizing the `size` property effectively, developers can create responsive interfaces that adapt to different viewports and screen orientations. For instance, a smaller size can be chosen for mobile devices to optimize space utilization, while larger sizes can be used for desktop displays to take advantage of the available screen area.
 
 
-### Max Size
+### Max Size {#max-size}
 
 The Drawer max size property is a versatile feature designed to control the maximum width or height of a drawer within a user interface, based on the specified placement. This property allows developers to define the maximum size of the drawer, ensuring optimal presentation and layout while accommodating varying screen sizes and device resolutions.
 
@@ -97,7 +97,7 @@ The Drawer's max size property is particularly beneficial when dealing with resp
 
 When the drawer's content exceeds the defined maximum size, developers can implement appropriate techniques to handle overflow, such as scrolling within the drawer or utilizing additional UI patterns like tabs or accordions. This helps maintain a clean and organized interface while accommodating larger amounts of content. -->
 
-## Placement
+## Placement {#placement}
 
 The placement property of the Drawer UI Component allows developers to specify the position and alignment of the drawer within the viewport. This property offers a range of enum values that provide flexibility in determining where the drawer appears in relation to the main content.
 
@@ -126,11 +126,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='600px'
 />
 
-## Styling
+## Styling {#styling}
 
 <TableBuilder name="Drawer" />
 
-## Best practices 
+## Best practices {#best-practices}
 
 To ensure an optimal user experience when using the `Drawer` component, consider the following best practices:
 

@@ -22,7 +22,7 @@ By the end of this step, the app created in the [previous step](./creating-a-bas
 
 <!-- vale on -->
 
-## Creating a data model
+## Creating a data model {#creating-a-data-model}
 
 In order to create a `Table` that displays data in the main app, a Java bean class that can be used with the `Table` to display data needs to be created.
 
@@ -64,7 +64,7 @@ If `HasEntityKey` isn't implemented, the `Table` will default to using the Java 
 
 With the `Customer` data model in place, the next step is to manage and organize these models within the app.
 
-## Creating a `Service` class
+## Creating a `Service` class {#creating-a-service-class}
 
 Acting as a centralized data manager, the `Service` class not only loads `Customer` data but also provides an efficient interface for accessing and interacting with it.
 
@@ -127,7 +127,7 @@ public class Service {
 }
 ```
 
-## Creating and using a `Table`
+## Creating and using a `Table` {#creating-and-using-a-table}
 
 Now that the data needed has been properly created via the `Customer` class, and can is returned as a `Repository` via the `Service` class, the final task in this step is to integrate the `Table` component into the app to display customer data.
 
@@ -137,7 +137,7 @@ For a more detailed overview of the various features of behaviors of the `Table`
 
 The `Table` provides a dynamic and flexible way to display structured data in your app. It's designed to integrate with the `Repository` class, enabling features like data querying, pagination, and efficient updates. A `Table` is highly configurable, allowing you to define columns, control its appearance, and bind it to data repositories with minimal effort.
 
-### Implementing the `Table` in the app
+### Implementing the `Table` in the app {#implementing-the-table-in-the-app}
 
 Since the data for the `Table` is handled fully through the `Service` class, the main task in `DemoApplication.java` is configuring the `Table` and linking it to the `Repository` provided by the `Service`.
 

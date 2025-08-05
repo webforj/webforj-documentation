@@ -20,7 +20,7 @@ height = '400px'
 mobile='true'
 />
 
-## State management
+## State management {#state-management}
 
 The `InfiniteScroll` component emits events and maintains internal state to help manage how and when content is loaded.
 
@@ -46,7 +46,7 @@ You can reset this flag using `setCompleted(false)` if you later allow the user 
 :::
 
 
-## Loading indicator customization
+## Loading indicator customization {#loading-indicator-customization}
 
 By default, `InfiniteScroll` shows a built-in loading indicator - a small animated [`Spinner`](../components/spinner) along with a “Loading data” text. You can change the displayed text by passing a custom message to the `InfiniteScroll` constructor or by using `setText()`.
 
@@ -65,7 +65,7 @@ height = '400px'
 mobile='true'
 />
 
-### Full customization
+### Full customization {#full-customization}
 
 If you want to completely replace both the [`Spinner`](../components/spinner) and the text with your own markup,
 you can add content directly into the special content slot using `addToContent()`.
@@ -80,6 +80,6 @@ height = '400px'
 mobile='true'
 />
 
-## Styling
+## Styling {#styling}
 
 <TableBuilder name="InfiniteScroll" />

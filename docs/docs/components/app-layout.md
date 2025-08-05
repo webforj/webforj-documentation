@@ -13,7 +13,7 @@ The `AppLayout` is a comprehensive responsive layout component that provides a h
 
 This component can be used to build common app layouts, such as a dashboard.
 
-## Features
+## Features {#features}
 
 The webforJ App Layout is a component which allows for building common app layouts.
 
@@ -32,7 +32,7 @@ Each part of the layout is a `Div`, which can contain any valid webforJ control.
 @AppMeta(name = "viewport", content = "width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no")
 ```
 
-## Overview
+## Overview {#overview}
 
 The following code sample will result in an app with a collapsible sidebar that contains a logo and tabs for various content options and a header. The demo uses the dwc-icon-button web component to create a drawer toggle button. The button has the data-drawer-toggle attribute which instructs the DwcAppLayout to listen to click events coming from that component to toggle the drawer state.
 
@@ -41,7 +41,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 cssURL='/css/applayout/applayout.css'
 />
 
-## Full width navbar
+## Full width navbar {#full-width-navbar}
 
 By default, the AppLayout renders the header and the footer in the off-screen mode. The off-screen mode means that the header and the footer position will be shifted to fit beside the opened drawer. Disabling this mode will cause the header and footer to take the full available space and shift the drawer top and bottom position to fit with the header and the footer.
 
@@ -56,7 +56,7 @@ myApp.setFooterOffscreen(false);
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/fullnavbar/AppLayoutFullNavbarView.java'
 cssURL='/css/applayout/applayout.css'/>
 
-## Multiple toolbars
+## Multiple toolbars {#multiple-toolbars}
 
 The navbar has no limit to the number of toolbars you can add. A `Toolbar` is a horizontal container component that holds a set of action buttons, icons, or other controls. To add an additional toolbar, simply use the `addToHeader()` method to add another `Toolbar` component.
 
@@ -66,7 +66,7 @@ The following demo shows how to use two toolbars, The first one houses the drawe
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/multipleheaders/AppLayoutMultipleHeadersView.java'
 cssURL='/css/applayout/applayout.css'/>
 
-## Sticky toolbars
+## Sticky toolbars {#sticky-toolbars}
 
 A sticky toolbar is a toolbar that remains visible at the top of the page when the user scrolls down but the navbar height is collapsed to make more space available for the page's content. Usually this kind of toolbar contains a fixed navigation menu which is relevant to the current page.
 
@@ -80,7 +80,7 @@ With the help of the CSS custom property `--dwc-app-layout-header-collapse-heigh
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/stickytoolbar/AppLayoutStickyToolbarView.java'
 cssURL='/css/applayout/applayout.css'/>
 
-## Mobile navigation layout
+## Mobile navigation layout {#mobile-navigation-layout}
 
 The bottom navbar can be used to provide a different version of the navigation at the bottom of app. This type of navigation is specifically popular in mobile apps.
 
@@ -95,11 +95,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 cssURL='/css/applayout/applayoutMobile.css'
 />
 
-## Drawer utilities
+## Drawer utilities {#drawer-utilities}
 
 The `AppLayout` drawer utilities are designed for integrated navigation and contextual menus within the main app layout, while standalone [`Drawer`](https://docs.webforj.com/docs/components/drawer) components offer flexible, independent sliding panels that can be used anywhere in your app for additional content, filters, or notifications. This section focuses on the built-in drawer features and utilities provided by AppLayout.
 
-### Drawer breakpoint
+### Drawer breakpoint {#drawer-breakpoint}
 
 By default, when the screen width is 800px or less , the drawer will be switched to popover mode. This is called the breakpoint. Popover mode means that the drawer will pop over the content area with an overlay. It's possible to configure the breakpoint by using the `setDrawerBreakpoint()` method and the breakpoint must be a valid media query.
 
@@ -110,7 +110,7 @@ AppLayout demo = new AppLayout();
 demo.setDrawerBreakpoint("(max-width:500px)");
 ```
 
-### Drawer title
+### Drawer title {#drawer-title}
 
 The `AppLayout` component provides a `addToDrawerTitle()` method for defining a custom title to display in the drawer header. 
 
@@ -118,7 +118,7 @@ The `AppLayout` component provides a `addToDrawerTitle()` method for defining a 
 layout.addToDrawerTitle(new Div("Menu"));
 ```
 
-### Drawer actions
+### Drawer actions {#drawer-actions}
 
 The `AppLayout` component allows you to place custom components such as buttons or icons into the **drawer header actions area** using the `addToDrawerHeaderActions()` method.
 
@@ -144,11 +144,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 cssURL='/css/applayout/applayout.css'
 />
 
-## `AppDrawerToggle` <DocChip chip='since' label='24.12' />
+## `AppDrawerToggle` <DocChip chip='since' label='24.12' /> {#appdrawertoggle-docchip-chipsince-label2412-}
 
 The [`AppDrawerToggle`](https://javadoc.io/doc/com.webforj/webforj-applayout/latest/com/webforj/component/layout/applayout/AppDrawerToggle.html) component is a server-side webforJ class that represents a button used to toggle the visibility of a navigation drawer in an `AppLayout`. It maps to the client-side `<dwc-app-drawer-toggle>` element and is styled by default to behave like a traditional hamburger menu icon, this behaviour can be customized.
 
-### Overview
+### Overview {#overview-1}
 
 The `AppDrawerToggle` extends `IconButton` and uses the "menu-2" icon from the Tabler icon set by default. It automatically applies the `data-drawer-toggle` attribute to integrate with the client-side drawer behavior.
 
@@ -158,6 +158,6 @@ AppLayout layout = new AppLayout();
 layout.addToHeader(new AppDrawerToggle());
 // The drawer toggle will work out of the box—no manual event listeners needed.
 ```
-## Styling
+## Styling {#styling}
 
 <TableBuilder name="AppLayout" />

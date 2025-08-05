@@ -10,7 +10,7 @@ sidebar_position: 110
 
 The `Spinner` component provides a visual indicator that indicates ongoing processing or loading in the background. It's often used to show that the system is fetching data or when a process takes time to complete. The spinner offers user feedback, signaling that the system is actively working.
 
-## Basics
+## Basics {#basics}
 
 To create a `Spinner`, you can specify the theme and expanse. The basic syntax involves creating a `Spinner` instance and defining its appearance and behavior through methods such as `setTheme()` and `setExpanse()`.
 
@@ -21,13 +21,13 @@ cssURL='/css/spinnerstyles/spinnerdemo.css'
 height = '225px'
 />
 
-## Managing speed and pausing
+## Managing speed and pausing {#managing-speed-and-pausing}
 
 It's possible to set the speed in milliseconds for the `Spinner` and pause/resume the animation with ease. 
 
 Use cases for setting speeds include differentiating between loading processes. For example, faster `Spinners` are suitable for smaller tasks, while slower `Spinners` are better for larger tasks. Pausing is useful when user action or confirmation is required before continuing the process.
 
-### Adjusting speed
+### Adjusting speed {#adjusting-speed}
 
 You can control how fast the `Spinner` rotates by adjusting its speed in milliseconds using the `setSpeed()` method. A lower value makes the `Spinner` rotate faster, while higher values will slow it down.
 
@@ -39,7 +39,7 @@ spinner.setSpeed(500); // Rotates faster
 By default, the `Spinner` will take 1000 milliseconds to complete one full rotation.
 :::
 
-### Pausing and resuming
+### Pausing and resuming {#pausing-and-resuming}
 
 Pausing the `Spinner` is useful when a program is temporarily halted or waiting for user input. It lets users know that the program is on hold, rather than actively running, which enhances clarity during multi-step processes.
 
@@ -59,7 +59,7 @@ cssURL='/css/spinnerstyles/spinnerspeeddemo.css'
 height = '150px'
 />
 
-## Spin direction
+## Spin direction {#spin-direction}
 
 The direction of the `Spinner` can be controlled to rotate **clockwise** or **counterclockwise**. You can specify this behavior using the `setClockwise()` method.
 
@@ -76,9 +76,9 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '150px'
 />
 
-## Styling
+## Styling {#styling}
 
-### Themes
+### Themes {#themes}
 
 The `Spinner` component comes with several built-in themes that allow you to quickly apply styles without needing custom CSS. These themes change the visual appearance of the spinner, making it appropriate for different use cases and contexts. Using these predefined themes ensures consistency in styling throughout your app.
 
@@ -107,7 +107,7 @@ cssURL='/css/spinnerstyles/spinnerthemedemo.css'
 height = '100px'
 />
 
-### Expanses
+### Expanses {#expanses}
 
 You can adjust the size of the spinner, known as **expanse**, to fit the visual space you need. The spinner supports various sizes including `Expanse.SMALL`, `Expanse.MEDIUM`, and `Expanse.LARGE`.
 

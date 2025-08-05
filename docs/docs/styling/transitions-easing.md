@@ -3,11 +3,9 @@ sidebar_position: 10
 title: Transitions & Easing
 ---
 
-import TransitionBox from '@site/src/components/DWCTheme/TransitionBox/TransitionBox';
-
 Transition variables are used to provide consistent animation durations across your app. They control how long an animation takes to complete.
 
-### Example
+### Example {#example}
 
 ```css
 .element {
@@ -15,7 +13,7 @@ Transition variables are used to provide consistent animation durations across y
 }
 ```
 
-### Variables
+### Variables {#variables}
 
 | **Variable**              | **Default Value** | **Example**                               |
 |---------------------------|-------------------|--------------------------------------------|
@@ -28,11 +26,11 @@ Transition variables are used to provide consistent animation durations across y
 
 ---
 
-## Easing
+## Easing {#easing}
 
 Easing variables define how values change over time, making transitions feel more natural.
 
-### Example
+### Example {#example-1}
 
 ```css
 .element {
@@ -42,7 +40,7 @@ Easing variables define how values change over time, making transitions feel mor
 
 Try hovering over each easing preview to see its animation effect.
 
-### Variables
+### Variables {#variables-1}
 
 | **Variable** | **Cubic Bezier** | **Example** |
 |-------------|------------------|-------------|

@@ -18,7 +18,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="200px"
 />
 
-## Usages
+## Usages {#usages}
 
 The `RadioButton` is best used in scenarios where users need to make a single selection from a predefined set of options. Here are some examples of when to use the `RadioButton`:
 
@@ -28,7 +28,7 @@ The `RadioButton` is best used in scenarios where users need to make a single se
 
 3. **Filtering or Sorting**: A `RadioButton` can be used in applications that require users to select a single filter or sorting option, such as sorting a list of items by different criteria.
 
-## Text and positioning
+## Text and positioning {#text-and-positioning}
 
 Radio buttons can utilize the ```setText(String text)``` method, which will be positioned near the radio button according to the built-in `Position`.
 Radio buttons have built-in functionality to set text to be displayed either to the right or left of the component. By default, the text will be displayed to the right of the component. Positioning of the horizontal text is supported by use of the `HorizontalAlignment` enum class. Show below are the two settings: <br/>
@@ -40,7 +40,7 @@ height="120px"
 />
 
 
-## Activation
+## Activation {#activation}
 
 Radio buttons can be controlled using two types of activation: manual activation and auto activation. These dictate when a `RadioButton` will change its state.
 
@@ -50,7 +50,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="175px"
 />
 
-### Manual activation
+### Manual activation {#manual-activation}
 
 When a radio button is set to manual activation, it means that it will not be automatically checked when it gains focus.
 Manual activation allows the user to navigate through the radio button options using the keyboard or other input methods without immediately changing the selected option.
@@ -59,7 +59,7 @@ If the radio button is part of a group, selecting a different radio button withi
 Manual activation provides finer control over the selection process, requiring an explicit action from the user to change the selected option.
 
 
-### Auto activation
+### Auto activation {#auto-activation}
 
 Automatic activation is the default state for a `RadioButton`, and means that the button will be checked on whenever it gains focus for any reason. This means that
 not only clicking, but auto-focus or tab navigation will also check the button.
@@ -69,7 +69,7 @@ The default activation value is **`MANUAL`** activation.
 :::
 
 
-## Switches
+## Switches {#switches}
 
 A `RadioButton` can also be set to display as a switch provides which provides alternative visual representation for selecting options. Normally, radio buttons are circular or rounded in shape and indicate a single choice from a group of options. 
 
@@ -108,15 +108,15 @@ The behavior of the `RadioButton` remains the same when being rendered as a Swit
 
 <br/>
 
-## Styling
+## Styling {#styling}
 
-### Expanses
+### Expanses {#expanses}
 There are five checkbox expanses that are supported which allow for quick styling without using CSS.
 Expanses are supported by use of the `Expanse` enum class. Below are the expanses supported for the checkbox component: <br/>
 
 <TableBuilder name="RadioButton" />
 
-## Best practices 
+## Best practices {#best-practices}
 
 To ensure an optimal user experience when using the RadioButton component, consider the following best practices:
 

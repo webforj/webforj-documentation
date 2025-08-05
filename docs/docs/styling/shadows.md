@@ -5,9 +5,6 @@ title: Shadows
 
 The shadow properties are used to add shadow effects around an element's frame. You can set multiple effects separated by commas. In most cases, shadows are utilized to signify items that are layered on top of each other in the user interface.
 
-
-import ShadowBox from '@site/src/components/DWCTheme/ShadowBox/ShadowBox';
-
 <Head>
   <style>{`
   table {
@@ -17,7 +14,7 @@ import ShadowBox from '@site/src/components/DWCTheme/ShadowBox/ShadowBox';
   `}</style>
 </Head>
 
-### Example
+### Example {#example}
 
 ```css
 .element {
@@ -29,7 +26,7 @@ import ShadowBox from '@site/src/components/DWCTheme/ShadowBox/ShadowBox';
 You control the shadow color by setting the `--dwc-shadow-color` variable. By default the shadow color is gray tinted with the primary color.
 :::
 
-### Variables
+### Variables {#variables}
 
 | **Variable**       | **Example**                             |
 |--------------------|------------------------------------------|
