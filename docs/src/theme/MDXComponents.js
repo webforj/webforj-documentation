@@ -18,6 +18,10 @@ import AskMenu from '@site/src/components/DocsTools/AskMenu';
 import DocCardList from '@theme/DocCardList';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import GLOBALS from '../../siteConfig';
 
 
@@ -38,6 +42,10 @@ export default {
   TabItem,
   ExpandableCode,
   GiscusComments,
-  AskMenu
+  AskMenu,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  ExpandMoreIcon
 };
 
