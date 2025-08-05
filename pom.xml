@@ -15,6 +15,7 @@
     <warFileName>${project.artifactId}-${project.version}</warFileName>
     <jetty.version>12.0.14</jetty.version>
     <playwright.version>1.50.0</playwright.version>
+    <threadCount>8</threadCount>
 
     <!--
       Configures automatic reload of Jetty server
@@ -254,7 +255,7 @@
         <configuration>
           <trimStackTrace>false</trimStackTrace>
           <parallel>both</parallel>
-          <threadCount>8</threadCount>
+          <threadCount>${threadCount}</threadCount>
           <perCoreThreadCount>true</perCoreThreadCount>
           <rerunFailingTestsCount>2</rerunFailingTestsCount>
           <useFile>false</useFile>
