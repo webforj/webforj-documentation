@@ -355,7 +355,7 @@ Always verify code compiles with `mvn compile` before suggesting.
       npx @modelcontextprotocol/inspector
       ```
 
-      Wait for the message: `🔍 MCP Inspector is up and running at http://127.0.0.1:5274`
+      Wait for the message: `🔍 MCP Inspector is up and running at http://127.0.0.1:6274` (port may vary)
 
       Then in the inspector:
       1. Enter the MCP server URL: `https://mcp.webforj.com/mcp`
