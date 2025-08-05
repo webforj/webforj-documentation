@@ -14,9 +14,6 @@ hide_giscus_comments: true
   `}</style>
 </Head>
 
-import GalleryCard from '@site/src/components/GalleryCard/GalleryCard';
-import GalleryGrid from '@site/src/components/GalleryGrid/GalleryGrid';
-
 <Head>
   <title>UI Components | User Interface Application Building Components</title>
 </Head>
