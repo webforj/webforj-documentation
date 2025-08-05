@@ -1,14 +1,15 @@
 ---
 title: Design Effective Forms Using the TextField
 description: Design tips to create effective forms when using the webforJ TextField component
+date: 2025-08-07
 authors:
   name: Ben Brennan
   title: Technical Writer I
-image: "../../static/release_blog/_images/textfield-blog/blogcover.png"
+image: "https://cdn.webforj.com/webforj-documentation/blogs/using-textfield-in-forms/blogcover.png"
 tags: [webforJ, TextField, Web Development]
 ---
 
-![cover image](../../static/release_blog/_images/textfield-blog/blogcover.png)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/using-textfield-in-forms/blogcover.png)
 
 Several kinds of forms exist online: sign-up forms, order/checkout forms, and surveys. Regardless of the type of form you’ll need for your business, a bad UI can cost you returning customers. A staggering [**88% of users**](https://userguiding.com/blog/ux-statistics-trends) won’t come back to a website if they had a negative user experience, so you’ll need to get it right on the first try.
 
@@ -16,7 +17,7 @@ While the majority of this content focuses on the single-line `TextField` compon
 
 <!-- truncate -->
 
-## Provide text infromation
+## Provide text information
 
 Besides the actual value end users enter inside the field, you have three distinct spots to add text to inform what’s needed:
 
@@ -24,7 +25,7 @@ Besides the actual value end users enter inside the field, you have three distin
 
 - **Placeholders** only appear if the field is empty. Since this text can disappear, it shouldn’t be used as a label but should include a formatted example of the required info.
 
-- Finally, there’s **helper text** for additional context. Treat this text like a subheader; it can indicate whether a field is optional or provide more specific requirements.
+- Finally, there’s **helper text** for additional context. Treat this text like a sub header; it can indicate whether a field is optional or provide more specific requirements.
 
 A combination of these text areas provides end users with the full context of the required information, an example, and any additional context:
 
@@ -50,9 +51,9 @@ An icon inside a field can let those skimming the form quickly associate what’
 textField.setPrefixComponent(TablerIcon.create("user"));
 ```
 
-![TextField with a user icon](../../static/release_blog/_images/textfield-blog/prefixslot.png)
+![TextField with a user icon](https://cdn.webforj.com/webforj-documentation/blogs/using-textfield-in-forms/prefixslot.png)
 
-For moments that require more functionality, like a filter, consider replacing the `Icon` with an `IconButton`. Other components in the webforJ framework, like the `DateField` and `PasswordField`, offer even more functionality by default to meet the needs of types of fields common on forms.
+For moments that require more capability, like a filter, consider replacing the `Icon` with an `IconButton`. Other components in the webforJ framework, like the `DateField` and `PasswordField`, offer even more default features to meet the needs of types of fields common on forms.
 
 ## Provide meaningful error messages
 
@@ -60,7 +61,7 @@ It’s frustrating to complete a form with multiple fields and click the submit 
 
 Validations can range from character limits to uniquely defined criteria. Regardless, setting up criteria for a field allows you to notify end users in real time if their input is valid. You can even use the `setErrorMessage()` method to inform them exactly why their input is invalid. When setting custom error messages, aim for a friendly tone. End users may already feel frustrated when returning to the form, so the message should guide them, not blame them.
 
-![TextField with an error](../../static/release_blog/_images/textfield-blog/errormessage.png)
+![TextField with an error](https://cdn.webforj.com/webforj-documentation/blogs/using-textfield-in-forms/errormessage.png)
 
 :::tip
 It’s equally important to reassure end users that you’ve received a form, so provide them with a response when they’ve successfully submitted a form. This can also reduce fraud if someone receives an email verification for an account they didn't sign up for.
