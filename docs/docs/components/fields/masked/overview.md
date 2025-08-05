@@ -23,6 +23,6 @@ Masked fields are input components that enforce a specific structure for user in
 These components apply formatting rules directly to the input field, helping users understand what type of value is expected while reducing input errors. This makes them particularly useful in financial systems, administrative dashboards, scheduling interfaces, and other apps that rely on validated data entry.
 
 
-## Topics
+## Topics {#topics}
 
 <DocCardList className="topics-section" />

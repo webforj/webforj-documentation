@@ -10,7 +10,7 @@ the `webforj-archetype-hello-world`.
 To learn more about the `webforj-archetype-hello-world`, refer to the [App Basics Introduction](../../introduction/basics) section.
 :::
 
-## Prerequisites
+## Prerequisites {#prerequisites}
 
 Before running the Selenium tests, ensure the following:
 - webforJ app is correctly set up and running on your local server.
@@ -19,7 +19,7 @@ Before running the Selenium tests, ensure the following:
   - A compatible WebDriver for your browser.
   - Maven for project dependencies.
 
-## Maven configuration
+## Maven configuration {#maven-configuration}
 
 Add the necessary dependencies in your `pom.xml` for Selenium and other testing libraries:
 
@@ -43,7 +43,7 @@ Add the necessary dependencies in your `pom.xml` for Selenium and other testing 
 </dependencies>
 ```
 
-## Testing example: `HelloWorldView`
+## Testing example: `HelloWorldView` {#testing-example-helloworldview}
 
 The following code demonstrates a Selenium based test for the `HelloWorldView` component.
 
@@ -99,7 +99,7 @@ class HelloWorldViewTest {
 }
 ```
 
-### Key steps
+### Key steps {#key-steps}
 
 1. **Initialize WebDriver**:
    - Use [`WebDriverManager`](https://github.com/bonigarcia/webdrivermanager) to automatically manage the driver executable for the browser.
@@ -119,7 +119,7 @@ class HelloWorldViewTest {
 4. **Teardown**:
    - Quit the WebDriver session to release resources.
 
-### Running tests
+### Running tests {#running-tests}
 
 1. Start the webforJ server:
    ```bash
@@ -131,7 +131,7 @@ class HelloWorldViewTest {
    mvn test
    ```
 
-## Expected behavior
+## Expected behavior {#expected-behavior}
 
 - On visiting `http://localhost:<port>/`, the `HelloWorldView` page loads.
 - The `dwc-button` element with the text `Say Hello` should be present.

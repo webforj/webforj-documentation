@@ -10,15 +10,15 @@ sidebar_position: 150
 
 The `Tree` component organizes data as a hierarchy of nodes. Each node holds a unique key and a label. Nodes connect to form parent-child relationships. You can expand or collapse nodes to show or hide their children. Icons clarify what kind of node you’re looking at and whether it’s selected. Selection supports choosing one node or many at once.
 
-## Node model and tree structure
+## Node model and tree structure {#node-model-and-tree-structure}
 
-### The role of `TreeNode`
+### The role of `TreeNode` {#the-role-of-treenode}
 
 Every piece of data in the tree is wrapped in a `TreeNode`. This object holds the key, the text label, and links to its parent and children nodes. The root node is special: it exists in every tree but isn’t visible. It serves as the container for all top-level nodes, making the tree structure easier to manage internally.
 
 Because nodes keep references to their parents and children, traversing the tree is straightforward. Whether you want to move up, down, or find a specific node by key, the connections are always accessible.
 
-### Node creation and management
+### Node creation and management {#node-creation-and-management}
 
 Nodes are created using simple factory methods, either by providing a key and text or just text (which doubles as the key). This guarantees each node is valid and uniquely identifiable.
 
@@ -43,7 +43,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-### Modifying nodes
+### Modifying nodes {#modifying-nodes}
 
 You update a node’s label by calling `setText(String text)`. This method changes the text shown for the node in the tree.
 
@@ -63,11 +63,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='320px'
 />
 
-## Icons
+## Icons {#icons}
 
 Icons provide visual cues about what nodes represent and their state. They improve readability by distinguishing node types and selection status at a glance. The `Tree` component supports setting default icons globally, customizing icons per node, and toggling icon visibility.
 
-### Global icons
+### Global icons {#global-icons}
 
 The tree lets you set default icons for collapsed groups, expanded groups, leaf nodes, and selected leaves.
 
@@ -84,7 +84,7 @@ tree.setLeafSelectedIcon(TablerIcon.create("file-checked"));
 An icon can be any valid webforJ [icon](./icon) definition or a resource file loaded via a webforJ [supported assets protocols](../managing-resources/assets-protocols).
 :::
 
-### Per-node icons
+### Per-node icons {#per-node-icons}
 
 You can override global defaults by assigning icons to individual nodes. This is useful when certain nodes represent different concepts, like “project” folders or special files.
 
@@ -95,7 +95,7 @@ node.setIcon(TablerIcon.create("project"));
 node.setSelectedIcon(TablerIcon.create("project-selected"));
 ```
 
-### Icon visibility
+### Icon visibility {#icon-visibility}
 
 Sometimes, you might want to hide icons for groups or leaves to reduce clutter. The component lets you toggle visibility globally for these categories, letting you simplify the tree’s appearance without losing structure.
 
@@ -112,11 +112,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='320px'
 />
 
-## Node expansion and collapse
+## Node expansion and collapse {#node-expansion-and-collapse}
 
 Nodes can be expanded or collapsed to control which parts of the tree are visible. This allows focusing on relevant sections and supports scenarios like lazy loading or dynamic data updates.
 
-### Expand and collapse operations
+### Expand and collapse operations {#expand-and-collapse-operations}
 
 The tree supports expanding and collapsing individual nodes by either their key or direct reference. You can also expand or collapse all descendants of a node at once.
 
@@ -137,7 +137,7 @@ tree.collapseFrom(node);
 The root node anchors the tree but remains hidden. Collapsing the root would normally hide everything, making the tree appear empty. To avoid this, collapsing the root actually collapses all its children but keeps the root expanded internally, ensuring the tree still shows its content correctly.
 :::
 
-### Lazy loading nodes
+### Lazy loading nodes {#lazy-loading-nodes}
 
 The tree supports lazy loading of node children by reacting to expand events. When a user expands a node, your app can load or generate that node’s children dynamically. This improves performance by loading only visible parts of the tree on demand.
 
@@ -149,11 +149,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='250px'
 />
 
-## Selection
+## Selection {#selection}
 
 Selection controls which nodes are chosen by the user. The `Tree` component supports flexible modes and APIs to select, deselect, and query nodes.
 
-### Selection modes
+### Selection modes {#selection-modes}
 
 You can choose whether the tree allows selecting a single node at a time or multiple nodes simultaneously. Switching from multiple to single selection automatically deselects all but the first selected node.
 
@@ -170,7 +170,7 @@ When the tree is set to multiple selection mode, users can select more than one 
 * **Mobile and touch devices:** Since modifier keys aren’t available, users simply tap nodes to select or deselect them. Each tap toggles the selection state of that node, enabling easy multi-selection through simple taps.
 :::
 
-### Selecting and deselecting
+### Selecting and deselecting {#selecting-and-deselecting}
 
 Nodes can be selected or deselected by reference, key, individually, or in batches. You can also select or deselect all children of a node in one call.
 
@@ -190,7 +190,7 @@ tree.selectChildren(parentNode);
 tree.deselectChildren(parentNode);
 ```
 
-### Selection state retrieval
+### Selection state retrieval {#selection-state-retrieval}
 
 You can get the current selection by utilizing the code displayed below:
 
@@ -210,6 +210,6 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='400px'
 />
 
-## Styling
+## Styling {#styling}
 
 <TableBuilder name="Tree" />

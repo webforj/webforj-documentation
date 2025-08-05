@@ -15,7 +15,7 @@ sidebar_class_name: updated-content
 
 The `TextField` component allows users to enter and edit text in a single line. You can configure the field to display a specific virtual keyboard, such as a numeric keypad, email input, telephone input, or URL input. The component also provides built-in validation to reject values that don't adhere to the specified type.
 
-## Usages
+## Usages {#usages}
 
 The `TextField` is suitable for a wide range of scenarios where text input or editing is required. Here are some examples of when to use the `TextField`:
 
@@ -25,7 +25,7 @@ The `TextField` is suitable for a wide range of scenarios where text input or ed
 
 3. **Text Editing**: A `TextField` is ideal for apps that require text editing or content creation, such as document editors, chat apps, or note-taking apps.
 
-## Types
+## Types {#types}
 
 You can specify the type of the TextField using the `setType()` method. Similarly, you can retrieve the type using the `getType()` method, which will return an enum value.
 
@@ -48,7 +48,7 @@ path='/webforj/textfield?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/textfield/TextFieldView.java'
 />
 
-## Field value
+## Field value {#field-value}
 
 The value of a `TextField` represents the current user input as a string. In webforJ, this can be accessed using the `getValue()` method, or updated programmatically with `setValue(String)`.
 
@@ -68,11 +68,11 @@ This behavior is consistent with how the HTML `<input type="text">` element expo
 Apply constraints like a [pattern](#pattern-matching), [minimum length](#setminlength), or a [maximum length](#setmaxlength) to define when a value is considered valid. 
 :::
 
-## Placeholder text
+## Placeholder text {#placeholder-text}
 
 You can set placeholder text for the `TextField` using the `setPlaceholder()` method. The placeholder text is displayed when the field is empty, helping to prompt the user to enter appropriate input into the `TextField`.
 
-## Selected text
+## Selected text {#selected-text}
 
 It's possible to interact with the `TextField` class to retrieve a user's selected text, and to get information about the user's selection. You can retrieve the selected text in the `TextField` using the `getSelectedText()` method. This behavior would commonly be used in conjunction with an event. 
 
@@ -92,7 +92,7 @@ Similarly, it's possible to retrieve the current selection range of the `TextFie
 While you can call `getSelectedText()` manually inside an event handler, it’s more efficient to use the selection data provided in the event’s payload—such as in a `SelectionChangeEvent`—to avoid additional lookups.
 :::
 
-## Pattern matching
+## Pattern matching {#pattern-matching}
 
 You can use the `setPattern()` method to define a validation rule for the `TextField` using a regular expression. Setting a pattern adds a constraint validation that requires the input value to match the specified pattern.
 
@@ -109,7 +109,7 @@ When using complex patterns for a `TextField`, consider using a combination of t
 to provide additional hints and guidance.
 :::
 
-## Minimum and maximum length
+## Minimum and maximum length {#minimum-and-maximum-length}
 
 The `TextField` component supports constraint validation based on the number of characters entered by the user. This can be controlled using the `setMinLength()` and `setMaxLength()` methods. Use both methods to define a clear boundary of acceptable input lengths.
 
@@ -117,7 +117,7 @@ The `TextField` component supports constraint validation based on the number of 
 By default, the field displays a message when the input value is out of range, indicating to the user whether they need to shorten or lengthen their input. This message can be overridden with the `setInvalidMessage()` method.
 :::
 
-### `setMinLength()`
+### `setMinLength()` {#setminlength}
 
 This method sets the **minimum number of UTF-16 code units** that must be entered for the field to be considered valid. The value must be a whole number, and shouldn't exceed the configured maximum length.
 
@@ -127,7 +127,7 @@ textField.setMinLength(5); // User must enter at least 5 characters
 
 If the input contains fewer characters than the minimum required, the input will fail constraint validation. This rule only applies when the user changes the field's value.
 
-### `setMaxLength()`
+### `setMaxLength()` {#setmaxlength}
 
 This method sets the **maximum number of UTF-16 code units** allowed in the text field. The value must be `0` or greater. If not set, or set to an invalid value, no maximum is enforced.
 
@@ -137,7 +137,7 @@ textField.setMaxLength(20); // User cannot enter more than 20 characters
 
 The field fails constraint validation if the input length exceeds the minimum length. Like with `setMinLength()`, this validation is only triggered when the value is changed by the user.
 
-## Best practices
+## Best practices {#best-practices}
 
 The following section outlines some suggested best practices for utilization of the `TextField`.
 

@@ -7,11 +7,11 @@ In webforJ, all routes are rendered within a Frame, which serves as a top-level 
 
 The title of a frame can be set either statically using annotations or dynamically through code at runtime. This flexible approach allows developers to define titles that align with the purpose of each view, while also adapting to specific scenarios or parameters as needed.
 
-## Frame title with annotations
+## Frame title with annotations {#frame-title-with-annotations}
 
 The simplest way to set the title of a frame in view is by using the `@FrameTitle` annotation. This annotation allows you to define a static title for any route component, which is then applied to the frame when the component is rendered.
 
-### Using the `@FrameTitle` annotation
+### Using the `@FrameTitle` annotation {#using-the-frametitle-annotation}
 
 The `@FrameTitle` annotation is applied at the class level and allows you to specify a string value that represents the title of the page. When the router navigates to a component with this annotation, the specified title will be automatically set for the browser window.
 
@@ -38,11 +38,11 @@ This method is useful for routes that have a static title and don't require freq
 If the app title is set, the frame title will incorporate it. For example, if the app defines the title as `@AppTitle("webforJ")` and the frame title is set as `@FrameTitle("Dashboard")`, the final page title will be `Dashboard - webforJ`. You can customize the format of the final title in the `@AppTitle` annotation by using the `format` attribute if needed.  
 :::
 
-## Dynamic frame titles
+## Dynamic frame titles {#dynamic-frame-titles}
 
 In cases where the frame title needs to change dynamically based on the state of the app or route parameters, webforJ provides an interface called `HasFrameTitle`. This interface allows components to provide a frame title based on the current navigation context and route parameters.
 
-### Implementing the `HasFrameTitle` interface
+### Implementing the `HasFrameTitle` interface {#implementing-the-hasframetitle-interface}
 
 The `HasFrameTitle` interface contains a single method `getFrameTitle()`, which is invoked before the frame's title is updated. This method provides the flexibility to generate a title dynamically based on the navigation context or other dynamic factors.
 

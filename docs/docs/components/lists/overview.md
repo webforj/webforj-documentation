@@ -14,18 +14,18 @@ There are three types of lists available for use within your apps: [`ListBox`](l
 
 This page outlines the shared features and behavior of all list components, while specific details for each are covered in their respective pages.
 
-## Using `ListItem`
+## Using `ListItem` {#using-listitem}
 
 List components are composed of <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> objects, which represent individual items within a list. Each <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> is associated with a unique key and display text. Important features of the <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> class include:
 
 - A <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> encapsulates a unique key `Object` and a text `String` to display within the list component. 
 - You can construct a <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> by providing a key and text, or by specifying only the text so that a random key is generated.
 
-## Managing `ListItem` objects with the API
+## Managing `ListItem` objects with the API {#managing-listitem-objects-with-the-api}
 
 The various List components offer several methods for managing the list of items and maintaining a consistent state between the list and the client. By using these methods, you can effectively manage the items within the list. The API allows you to interact with and manipulate the list to meet your app's requirements.
 
-### Adding items
+### Adding items {#adding-items}
 
 - **Adding an item**:
 
@@ -46,7 +46,7 @@ The various List components offer several methods for managing the list of items
 To optimize performance, instead of triggering a server-to-client message each time you use the `add()` method, it's more efficient to create a List of <JavadocLink type="foundation" location="com/webforj/component/list/ListItem"  code="true">ListItem</JavadocLink> objects first. Once you have this list, you can add them all at once using the `insert(int index, List<ListItem> items)` method. This approach reduces server-client communication, enhancing overall efficiency. For detailed guidelines on this and other best practices in webforJ architecture, refer to [Client/Server Interaction](/docs/architecture/client-server).
 :::
 
-### Removing items
+### Removing items {#removing-items}
 
 - **Removing an item:**
 
@@ -55,11 +55,11 @@ To optimize performance, instead of triggering a server-to-client message each t
 - **Removing all items:**
    - You can remove all items from the list using <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#removeAll()' code="true">removeAll()</JavadocLink>.
 
-### Selecting items
+### Selecting items {#selecting-items}
 
 All of the list types implement the `SelectableList` interface. This interface allows multiple different ways of selecting the current `ListItem`.
 
-#### With a given `ListItem`
+#### With a given `ListItem` {#with-a-given-listitem}
 
 <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#select(com.webforj.component.list.ListItem)' code="true">select(ListItem item)</JavadocLink> takes a `ListItem` as parameter to select.
 
@@ -70,7 +70,7 @@ demoList.add(demoItem);
 demoList.select(demoItem);
 ```
 
-#### With a given key of a `ListItem`
+#### With a given key of a `ListItem` {#with-a-given-key-of-a-listitem}
 
 <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#selectKey(java.lang.Object)' code="true">selectKey(Object key)</JavadocLink> takes a key to a `ListItem` as parameter to select.
 
@@ -80,7 +80,7 @@ demoList.add("demo","Demo Item");
 demoList.selectKey("demo");
 ```
 
-#### With a given index of a `ListItem`
+#### With a given index of a `ListItem` {#with-a-given-index-of-a-listitem}
 
 <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#selectIndex(int)' code="true">selectIndex(int index)</JavadocLink> takes an index to a `ListItem`as a parameter to select.
 
@@ -90,7 +90,7 @@ demoList.add("demo","Demo Item");
 demoList.selectKey(0);
 ```
 
-### Other list operations
+### Other list operations {#other-list-operations}
 
 - **Accessing and updating items:**
 
@@ -101,7 +101,7 @@ demoList.selectKey(0);
    - You can get the size of the list using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#size()' code="true">size()</JavadocLink> method.
    - To check if the list is empty, use the <JavadocLink type="foundation" location="com/webforj/component/list/DwcList" suffix='#isEmpty()' code="true">isEmpty()</JavadocLink> method.
 
-### Iterating over lists
+### Iterating over lists {#iterating-over-lists}
 
 All List components implement the Java [`Iteratable`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Iterable.html) interface, providing an efficient and intuitive way to iterate through a list's contents. With this interface, you can easily loop through every `ListItem`, making it simple to access, modify, or perform actions on each item with minimal effort. The `Iterable` interface is a standard pattern of the Java language, ensuring your code is familiar and maintainable for any Java developer.
 
@@ -117,17 +117,17 @@ for (ListItem item : list) {
 }
 ```
 
-## Shared list properties
+## Shared list properties {#shared-list-properties}
 
-### Label
+### Label {#label}
 
 All List components can be assigned a label, which is a descriptive text or title associated with the component. Labels provide a brief explanation or prompt to help users understand the purpose or expected selection for that particular list. In addition to their importance for usability, list labels also play a crucial role in accessibility, enabling screen readers and assistive technologies to provide accurate information and facilitate keyboard navigation.
 
-### Helper text
+### Helper text {#helper-text}
 
 Each List component can display helper text beneath the list using the `setHelperText()` method. This helper text offers additional context or explanations about the available options, ensuring users have the necessary information to make informed selections.
 
-### Horizontal alignment
+### Horizontal alignment {#horizontal-alignment}
 
 All list components implement the <JavadocLink type="foundation" location="com/webforj/concern/HasHorizontalAlignment" code='true'>HasHorizontalAlignment</JavadocLink> interface, giving you control over how text and content are aligned inside the component.
 
@@ -147,7 +147,7 @@ To get the current alignment:
 HorizontalAlignment alignment = listBox.getHorizontalAlignment();
 ```
 
-### Expanses
+### Expanses {#expanses}
 
 All list components in webforJ also implement the <JavadocLink type="foundation" location="com/webforj/concern/HasExpanse" code='true'>HasExpanse</JavadocLink> interface, allowing you to adjust the overall sizing and visual weight of the component. This is useful for adapting the component to various UI contexts, such as forms, dialogs, sidebars, etc.
 
@@ -170,6 +170,6 @@ You can retrieve the current setting using:
 Expanse current = listBox.getExpanse();
 ```
 
-## Topics
+## Topics {#topics}
 
 <DocCardList className="topics-section" />

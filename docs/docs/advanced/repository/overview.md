@@ -11,7 +11,7 @@ sidebar_class_name: new-content
 
 The `Repository` pattern in webforJ provides a standardized way to manage and query collections of entities. It acts as an abstraction layer between your UI components and data, making it easy to work with different data sources while maintaining consistent behavior.
 
-## Why use repository
+## Why use repository {#why-use-repository}
 
 `Repository` eliminates manual updates while keeping your original data intact:
 
@@ -39,7 +39,7 @@ repository.commit(newCustomer); // Only updates what changed
 ```
 
 
-## Collection repository
+## Collection repository {#collection-repository}
 
 The <JavadocLink type="data" location="com/webforj/data/repository/CollectionRepository" code="true">CollectionRepository</JavadocLink> is the most common implementation, and wraps any Java Collection:
 
@@ -58,7 +58,7 @@ CollectionRepository<Employee> employeeRepo = new CollectionRepository<>(employe
 ```
 
 
-## Data synchronization
+## Data synchronization {#data-synchronization}
 
 The `Repository` acts as a bridge between your data and UI components. When data changes, you notify the repository through the `commit()` method:
 
@@ -88,7 +88,7 @@ The commit method has two signatures:
 This distinction matters for performance. When you update one field in a 1000-row table, `commit(entity)` updates just that cell while `commit()` would refresh all rows.
 :::
 
-## Filtering data
+## Filtering data {#filtering-data}
 
 The repository's filter controls what data flows to connected components. Your underlying collection stays unchanged because the filter acts as a lens:
 
@@ -118,7 +118,7 @@ When you set a filter, the `Repository`:
 The filter persists until you change it. New items added to the collection are automatically tested against the current filter.
 
 
-## Working with entity keys
+## Working with entity keys {#working-with-entity-keys}
 
 When your entities implement <JavadocLink type="data" location="com/webforj/data/HasEntityKey" code="true">HasEntityKey</JavadocLink>, the repository can find and update specific items by their ID:
 
@@ -152,7 +152,7 @@ Without `HasEntityKey`:
 - UI components can't select items by ID, only by object reference
 
 
-## UI integration
+## UI integration {#ui-integration}
 
 `Repository` integrates with data-aware components:
 
@@ -173,6 +173,6 @@ repository.commit();
 ```
 
 
-## Next steps
+## Next steps {#next-steps}
 
 <DocCardList className="topics-section" />

@@ -27,7 +27,7 @@ For more details about secure contexts and their importance, refer to the [Secur
   </video>
 </div>
 
-## `@AppProfile` annotation
+## `@AppProfile` annotation {#appprofile-annotation}
 
 The `@AppProfile` annotation is applied to the main app class and requires minimal configuration. At a minimum, you need to provide:
 
@@ -42,7 +42,7 @@ When the `@AppProfile` annotation is present, webforJ:
 - Generates a [Web Application Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
 - Serves related resources such as icons and screenshots.
 
-### Example: Applying `@AppProfile`
+### Example: Applying `@AppProfile` {#example-applying-appprofile}
 
 ```java
 @AppProfile(
@@ -60,7 +60,7 @@ public class Application extends App {
 }
 ```
 
-## `@AppProfile` properties
+## `@AppProfile` properties {#appprofile-properties}
 
 The following table lists all properties supported by the `@AppProfile` annotation:
 
@@ -79,7 +79,7 @@ The following table lists all properties supported by the `@AppProfile` annotati
 | `screenshots`     | [`Screenshot[]`](#appprofilescreenshot-properties) | An array of screenshots for the app, used in installation dialogs.                                        | `[]`                  |
 | `categories`      | `String[]`                                         | Categories to classify the app (e.g., `Finance`, `Shopping`).                                             | `[]`                  |
 
-### `@AppProfile.Icon` properties
+### `@AppProfile.Icon` properties {#appprofileicon-properties}
 
 Icons define the visual representation of your app in menus and home screens. The `@AppProfile.Icon` annotation supports the following properties:
 
@@ -90,7 +90,7 @@ Icons define the visual representation of your app in menus and home screens. Th
 | `type`                                                                           | `String` | The MIME type of the icon (e.g., `image/png`, `image/jpeg`). If not provided then it will be detected  | `""`              |
 | [`purpose`](https://developer.mozilla.org/en-US/docs/Web/Manifest/icons#purpose) | `String` | The purpose of the icon (e.g., `any`, `maskable`, `monochrome`).                                       | `""`              |
 
-### Example
+### Example {#example}
 
 ```java
 @AppProfile.Icon(
@@ -100,7 +100,7 @@ Icons define the visual representation of your app in menus and home screens. Th
 )
 ```
 
-### `@AppProfile.DefaultIcon` properties
+### `@AppProfile.DefaultIcon` properties {#appprofiledefaulticon-properties}
 
 The `DefaultIcon` annotation simplifies the configuration of app icons by generating multiple size variants from a base icon.
 This is particularly useful for ensuring compatibility across devices with varying resolutions.
@@ -113,18 +113,18 @@ This is particularly useful for ensuring compatibility across devices with varyi
 :::info Icon File Requirements
 This configuration does not generate the actual icon files for the app automatically. Instead, it uses the `@AppProfile.DefaultIcon` annotation to generate corresponding [`@AppProfile.Icon`](#appprofileicon-properties) entries for each specified size.
 
-#### If using the [webserver protocol](../managing-resources/assets-protocols#the-webserver-protocol)
+#### If using the [webserver protocol](../managing-resources/assets-protocols#the-webserver-protocol) {#if-using-the-webserver-protocol}
 - You must provide a base `icon.png` file in the `static/icons` folder.
 - You are expected to include additional icon variations named `icon-144x144.png`, `icon-192x192.png`, and `icon-512x512.png`.
 - These specific sizes ensure compatibility with various devices and resolutions.
 
-#### If using the [icons protocol](../managing-resources/assets-protocols#the-icons-protocol)
+#### If using the [icons protocol](../managing-resources/assets-protocols#the-icons-protocol) {#if-using-the-icons-protocol}
 
 - You are expected to provide a base `icon.png` file in the `/icons` folder.
 - The `icons` endpoint dynamically provides different icon sizes on demand when they're requested.
 :::
 
-### `@AppProfile.Screenshot` properties
+### `@AppProfile.Screenshot` properties {#appprofilescreenshot-properties}
 
 Screenshots provide a preview of the app in installation dialogs or app stores. The `@AppProfile.Screenshot` annotation supports the following properties:
 
@@ -137,7 +137,7 @@ Screenshots provide a preview of the app in installation dialogs or app stores. 
 | [`formFactor`](https://developer.mozilla.org/en-US/docs/Web/Manifest/screenshots#form_factor) | `String` | The form factor of the screenshot (e.g., `narrow`, `wide`).                                                 | `""`              |
 | [`platform`](https://developer.mozilla.org/en-US/docs/Web/Manifest/screenshots#platform)      | `String` | The platform for which the screenshot is intended (e.g., `ios`, `android`).                                 | `""`              |
 
-### Example
+### Example {#example-1}
 
 ```java
 @AppProfile.Screenshot(

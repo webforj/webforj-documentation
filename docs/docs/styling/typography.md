@@ -5,7 +5,7 @@ title: Typography
 
 Typography tokens are used to maintain a consistent set of font styles throughout your app.
 
-## Font family
+## Font family {#font-family}
 
 The font family properties are used to specify a prioritized list of font family names.
 
@@ -18,7 +18,7 @@ The system font stack is used by default:
 
 You can apply or change the font family using the `--dwc-font-family` custom property.
 
-### Example
+### Example {#example}
 
 ```css
 :root {
@@ -26,7 +26,7 @@ You can apply or change the font family using the `--dwc-font-family` custom pro
 }
 ```
 
-### Variables
+### Variables {#variables}
 
 | **Variable**             | **Default Value**                                                                                                                               | **Example**                                                           |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
@@ -34,7 +34,7 @@ You can apply or change the font family using the `--dwc-font-family` custom pro
 | `--dwc-font-family-mono` | Menlo, Monaco, 'Courier New', monospace                                                                                                         | <span style={{ fontFamily: "var(--dwc-font-family-mono)" }}>Sphinx of black quartz, judge my vow.</span> |
 | `--dwc-font-family`      | `var(--dwc-font-family-sans)`                                                                                                                   | <span style={{ fontFamily: "var(--dwc-font-family)" }}>Sphinx of black quartz, judge my vow.</span>      |
 
-## Font size
+## Font size {#font-size}
 
 The font size properties define a set of font sizes to choose from. `s` is the standard size, and is used by most components by default. All font sizes are defined in `em`.
 
@@ -42,7 +42,7 @@ The font size properties define a set of font sizes to choose from. `s` is the s
 `em` is a relative length unit. it's relative to [font size](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) of the parent, in the case of typographical properties like font-size, and font size of the element itself and in the case of other properties like [width](https://developer.mozilla.org/en-US/docs/Web/CSS/width).
 :::
 
-### Example
+### Example {#example-1}
 
 ```css
 .title {
@@ -50,7 +50,7 @@ The font size properties define a set of font sizes to choose from. `s` is the s
 }
 ```
 
-### Variables
+### Variables {#variables-1}
 
 | **Variable**          | **Default Value**        | **Example**                                                      |
 | --------------------- | ------------------------ | ---------------------------------------------------------------- |
@@ -64,11 +64,11 @@ The font size properties define a set of font sizes to choose from. `s` is the s
 | `--dwc-font-size-3xl` | 2.25rem                  | <span style={{ fontSize: "var(--dwc-font-size-3xl)" }}>Aa</span> |
 | `--dwc-font-size`     | `var(--dwc-font-size-s)` | <span style={{ fontSize: "var(--dwc-font-size)" }}>Aa</span>     |
 
-## Font weight
+## Font weight {#font-weight}
 
 The [font-weight](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight) CSS property sets the weight (or boldness) of the font.
 
-### Example
+### Example {#example-2}
 
 ```css
 p {
@@ -85,11 +85,11 @@ p {
 | `--dwc-font-weight-bold`     | 700               | <span style={{ fontWeight: "var(--dwc-font-weight-bold)" }}>Aa</span>     |
 | `--dwc-font-weight-bolder`   | 800               | <span style={{ fontWeight: "var(--dwc-font-weight-bolder)" }}>Aa</span>   |
 
-## Line height
+## Line height {#line-height}
 
 The line-height CSS property sets the height of a line box. It's commonly used to set the distance between lines of text.
 
-### Example
+### Example {#example-3}
 
 ```css
 p {
@@ -97,7 +97,7 @@ p {
 }
 ```
 
-### Variables
+### Variables {#variables-2}
 
 | **Variable**                 | **Default Value**             | **Example**                                                                                                |
 | ---------------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |

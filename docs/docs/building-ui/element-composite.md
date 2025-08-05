@@ -23,7 +23,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='175px'
 />
 
-## Property and attribute descriptors
+## Property and attribute descriptors {#property-and-attribute-descriptors}
 
 Properties and attributes in web components represent the state of the component. They are often used to manage data or configuration. The `ElementComposite` class provides a convenient way to work with properties and attributes.
 
@@ -66,7 +66,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='250px'
 />
 
-## Event registration
+## Event registration {#event-registration}
 
 Events are a crucial part of web components, allowing communication between different parts of an application. The `ElementComposite` class simplifies event registration and handling. To register an event listener, use the `addEventListener()` method to register event listeners for specific event types. Specify the event class, the listener, and optional event options.
 
@@ -88,7 +88,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## Interacting with Slots
+## Interacting with Slots {#interacting-with-slots}
 
 Web components often use slots to allow developers to define the structure of a component from the outside. A slot is a placeholder inside a web component that can be filled with content when using the component. In the context of the `ElementComposite` class, slots provide a way to customize the content within a component. The following methods are provided to allow developers to interact with and manipulate slots:
 

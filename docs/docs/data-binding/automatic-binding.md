@@ -5,7 +5,7 @@ title: Automatic Binding
 
 webforJ offers several features that streamline the configuration and automatic binding process for developers. This section demonstrates how to use these features effectively.
 
-## Using `BindingContext.of`
+## Using `BindingContext.of` {#using-bindingcontextof}
 
 The `BindingContext.of` method automatically binds UI components to the properties of a specified bean class, simplifying the binding process and reducing manual setup. It aligns bindable components, declared as fields within a form or app, with bean properties based on their names.
 
@@ -34,7 +34,7 @@ public class Hero {
 }
 ```
 
-### `UseProperty` annotation
+### `UseProperty` annotation {#useproperty-annotation}
 
 Use the `UseProperty` annotation to specify the bean property name when the UI field name doesn't match the bean property name.
 
@@ -51,7 +51,7 @@ public class HeroRegistration extends App {
 
 In the example above, the UI field name is `nameField`, but the bean property is `name`. You can annotate the UI field with the bean property name to ensure proper binding.
 
-### `BindingExclude` annotation
+### `BindingExclude` annotation {#bindingexclude-annotation}
 
 Use the `BindingExclude` annotation to exclude a component from automatic binding configurations when you prefer to bind it manually or exclude it altogether.
 
@@ -68,7 +68,7 @@ public class HeroRegistration extends App {
 }
 ```
 
-### `UseValidator` annotation
+### `UseValidator` annotation {#usevalidator-annotation}
 
 Use the `UseValidator` annotation to declare validators that enforce additional validation rules during binding. Validators apply in the order you specify them.
 
@@ -80,7 +80,7 @@ public class UserRegistration extends App {
 }
 ```
 
-### `UseTransformer` annotation
+### `UseTransformer` annotation {#usetransformer-annotation}
 
 Use the `UseTransformer` annotation to declare a transformer class directly on a UI field. The `BindingContext` automatically applies the specified transformer.
 
@@ -93,7 +93,7 @@ public class UserRegistration extends App {
 }
 ```
 
-### `BindingReadOnly` annotation
+### `BindingReadOnly` annotation {#bindingreadonly-annotation}
 
 Use the `BindingReadOnly` to [mark a binding as readonly](./bindings/#configuring-readonly-bindings).
 
@@ -105,7 +105,7 @@ public class UserRegistration extends App {
 }
 ```
 
-### `BindingRequired` annotation
+### `BindingRequired` annotation {#bindingrequired-annotation}
 
 Use the `BindingReadOnly` to mark a binding as required. See also [required binding detections](#required-binding-detections).
 
@@ -118,7 +118,7 @@ public class UserRegistration extends App {
 }
 ```
 
-## Writing data automatically
+## Writing data automatically {#writing-data-automatically}
 
 To enhance the responsiveness and dynamism of applications, you can use the `observe` method. This method ensures that changes in UI components immediately propagate to the data model. It's particularly useful when you need continuous synchronization between the data model and the UI.
 
@@ -154,7 +154,7 @@ While `observe` increases the interactivity of applications, it's important to u
 :::
 
 
-## Required binding detections
+## Required binding detections {#required-binding-detections}
 
 When you mark a binding as required, it marks the component as required, provided the component supports this state through the `RequiredAware` interface. The binding doesn't enforce this state by itself, but rather sets it on the component when applicable.
 

@@ -13,7 +13,7 @@ The `PropertyDescriptorTester` in webforJ simplifies testing for **third-party w
 The webforJ PropertyDescriptorTester adapter is currently an experimental feature. Breaking changes may be introduced at any time.
 :::
 
-## Overview
+## Overview {#overview}
 
 When working with third-party web components, ensuring that properties behave as expected is essential. The `PropertyDescriptorTester` automates this process by validating that properties:
 - Are correctly mapped to their getter and setter methods.
@@ -22,7 +22,7 @@ When working with third-party web components, ensuring that properties behave as
 
 The tool supports annotations for more complex use cases, such as excluding irrelevant properties or defining custom getter and setter methods, making it a versatile option for integration testing.
 
-## How `PropertyDescriptorTester` works
+## How `PropertyDescriptorTester` works {#how-propertydescriptortester-works}
 
 The testing process involves several automated steps:
 
@@ -38,11 +38,11 @@ The testing process involves several automated steps:
 4. **Error Reporting**:
    The tester provides detailed feedback on any validation failures, such as missing methods, inconsistent defaults, or property misconfigurations.
 
-## Writing tests with `PropertyDescriptorTester`
+## Writing tests with `PropertyDescriptorTester` {#writing-tests-with-propertydescriptortester}
 
 Here’s an example demonstrating basic property validation for an `AppLayout` component:
 
-### Example: Basic validation
+### Example: Basic validation {#example-basic-validation}
 
 ```java title="MyComponent.java"
 public class MyComponent extends ElementCompositeContainer {
@@ -55,7 +55,7 @@ public class MyComponent extends ElementCompositeContainer {
 }
 ```
 
-#### Test case
+#### Test case {#test-case}
 
 ```java title="MyComponentTest.java"
 import com.webforj.component.element.PropertyDescriptorTester;
@@ -80,11 +80,11 @@ This test automatically verifies:
 - That `drawerOpened` has valid getter and setter methods.
 - That `headerTitle` defaults to `"Default Title"`.
 
-## Advanced use cases with annotations
+## Advanced use cases with annotations {#advanced-use-cases-with-annotations}
 
 For more complex scenarios, `PropertyDescriptorTester` supports annotations to customize or exclude properties from testing.
 
-### Exclude properties with `@PropertyExclude`
+### Exclude properties with `@PropertyExclude` {#exclude-properties-with-propertyexclude}
 
 Exclude properties that rely on external systems or aren't relevant to the test. For instance:
 
@@ -94,7 +94,7 @@ private final PropertyDescriptor<String> excludedProperty =
     PropertyDescriptor.property("excludedProperty", "Excluded");
 ```
 
-### Customize methods with `@PropertyMethods`
+### Customize methods with `@PropertyMethods` {#customize-methods-with-propertymethods}
 
 Define custom getter, setter, or target class when the default naming conventions don’t apply:
 

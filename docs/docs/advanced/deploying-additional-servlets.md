@@ -17,7 +17,7 @@ In some scenarios, you may need to deploy additional servlets alongside your web
 
 webforJ provides two approaches for deploying custom servlets alongside your app:
 
-## Approach 1: Remapping `WebforjServlet`
+## Approach 1: Remapping `WebforjServlet` {#approach-1-remapping-webforjservlet}
 
 This approach remaps the `WebforjServlet` from `/*` to a specific path like `/ui/*`, freeing up the URL namespace for custom servlets. While this requires modifying `web.xml`, it gives custom servlets direct access to their URL patterns without any proxy overhead.
 
@@ -61,11 +61,11 @@ webforj.servlet-mapping=/ui/*
 This property remaps `WebforjServlet` from the default `/*` to `/ui/*`, freeing up the URL namespace for your custom servlets. Don't include quotes around the value - they will be interpreted as part of the URL pattern.
 :::
 
-## Approach 2: `WebforjServlet` proxy configuration
+## Approach 2: `WebforjServlet` proxy configuration {#approach-2-webforjservlet-proxy-configuration}
 
 This approach keeps `WebforjServlet` at `/*` and configures custom servlets in `webforJ.conf`. The `WebforjServlet` intercepts all requests and proxies matching patterns to your custom servlets.
 
-### Standard web.xml configuration
+### Standard web.xml configuration {#standard-webxml-configuration}
 
 ```xml
 <servlet>
@@ -90,7 +90,7 @@ This approach keeps `WebforjServlet` at `/*` and configures custom servlets in `
 </web-app>
 ```
 
-### webforJ.conf configuration
+### webforJ.conf configuration {#webforjconf-configuration}
 
 ```hocon
 servlets = [

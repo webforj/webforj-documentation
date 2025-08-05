@@ -18,7 +18,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '300px'
 />
 
-## Managing paragraphs
+## Managing paragraphs {#managing-paragraphs}
 
 The `TextArea` component provides features for handling text paragraphs, making it ideal for applications that require document editing or structured text input.
 
@@ -46,7 +46,7 @@ for (int i = 0; i < paragraphs.size(); i++) {
 }
 ```
 
-## Validation
+## Validation {#validation}
 
 The `TextArea` component supports two complementary types of validation: structural constraints and content constraints.
 
@@ -66,7 +66,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '550px'
 />
 
-## Word wrap and Line wrapping
+## Word wrap and Line wrapping {#word-wrap-and-line-wrapping}
 
 You can control whether text wraps or scrolls horizontally using `setLineWrap()`. When wrapping is disabled, lines continue horizontally beyond the visible area, requiring scrolling. When enabled, text automatically wraps to the next line when it reaches the edge of the component.
 
@@ -82,7 +82,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '400px'
 />
 
-## Predicted text
+## Predicted text {#predicted-text}
 
 The `TextArea` component supports smart text suggestions to help users type faster and with fewer errors. As users enter text, predictive suggestions appear based on the current input, allowing them to complete common or expected phrases.
 
@@ -100,7 +100,7 @@ height = '400px'
 This demo uses the [Datamuse API](https://datamuse.com/) to provide word suggestions based on the user’s input. The quality and relevance of the predictions depend entirely on the API's dataset and scoring mechanism. It doesn't use AI models or large language models (LLMs); the suggestions are generated from a lightweight, rule-based engine focused on lexical similarity.
 :::
 
-## Read-Only and Disabled state
+## Read-Only and Disabled state {#read-only-and-disabled-state}
 
 The `TextArea` component can be set to either read-only or disabled to control user interaction.
 
@@ -116,6 +116,6 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '300px'
 />
 
-## Styling
+## Styling {#styling}
 
 <TableBuilder name="TextArea" />

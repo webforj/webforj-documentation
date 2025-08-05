@@ -22,7 +22,7 @@ Both the ZIP file and GitHub repository contain the complete project structure w
   </video>
 </div>
 
-## Project structure
+## Project structure {#project-structure}
 
 The project is broken into four discrete directories, each representing a specific stage of the app’s development. These steps allow you to see how the app evolves from a basic setup to a fully functional customer management system.
 
@@ -41,7 +41,7 @@ webforj-demo-application
 └───4-validating-and-binding-data
 ```
 
-### Running the app
+### Running the app {#running-the-app}
 
 To see the app in action at any stage:
 

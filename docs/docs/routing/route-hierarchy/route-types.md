@@ -5,7 +5,7 @@ title: Route Types
 
 Routes are classified into two main types, **View Routes** and **Layout Routes**. The choice of route type determines how components are mapped to URLs and how they interact with other parts of your app.
 
-## View routes
+## View routes {#view-routes}
 
 View routes map directly to a URL segment and represent specific pages in your app. These routes are reflected in the browser's URL and are typically used for distinct views or pages.
 
@@ -24,7 +24,7 @@ public class HomeView extends Composite<Div> {
 
 In this example, navigating to `/home` renders the `HomeView` component.
 
-## Layout routes
+## Layout routes {#layout-routes}
 
 Layout routes wrap child views without contributing to the URL. Layouts provide shared UI elements such as headers or sidebars that are consistent across multiple views. Child routes are rendered inside the layout’s content area.
 
@@ -40,7 +40,7 @@ public class MainLayout extends Composite<AppLayout> {
 
 In this case, `MainLayout` is a layout route that wraps around child views. It defines common UI elements like a header and drawer. Child routes associated with this layout will be injected into the content area of the `AppLayout` component
 
-## Auto-Detection of route types
+## Auto-Detection of route types {#auto-detection-of-route-types}
 
 By default, route type is automatically detected whether the route is a **view** or **layout** based on the class name:
 

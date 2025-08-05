@@ -5,7 +5,7 @@ sidebar_position: 3
 
 Once webforJ and its dependencies are set up in your project, you're ready to create the app structure. This article will walk through the key elements of a basic webforJ app, specifically focusing on the `Application` and `HomeView` classes, which are the foundational classes in the `webforj-archetype-hello-world` starter project.
 
-## Main app class: `Application.java`
+## Main app class: `Application.java` {#main-app-class-applicationjava}
 
 The `Application` class serves as the entry point for your webforJ app, setting up essential configurations and routes. To start, notice the class's declaration and annotations. 
 
@@ -27,7 +27,7 @@ The `Application` class doesn't contain any additional methods because the confi
 
 With `Application.java` set up, the app is now configured with a title and routes pointing to the views package. Next, an overview of the `HomeView` class gives insight into what's displayed when the app is run.
 
-### Discovering an `App`
+### Discovering an `App` {#discovering-an-app}
 
 A single <JavadocLink type="foundation" location="com/webforj/App" code='true'>App</JavadocLink> limit is enforced in webforJ, which shifts all error handling responsibilities to the Java side and gives developers full control over error management.
 
@@ -42,11 +42,11 @@ During the webforJ bootstrap process, all classes that extend <JavadocLink type=
 For more information on how errors are handled in webforJ, see [this article](../advanced/error-handling).
 :::
 
-## Main view class: `HomeView.java`
+## Main view class: `HomeView.java` {#main-view-class-homeviewjava}
 
 The `HomeView` class defines a simple view component that serves as the homepage for the app. It displays a field and a button that to greet the user's typed name.
 
-### Class declaration and annotations
+### Class declaration and annotations {#class-declaration-and-annotations}
 
 `HomeView` extends `Composite<FlexLayout>`, which allows it to act as a reusable component composed of a [`FlexLayout`](../components/flex-layout) component. The [`@Route("/")`](../routing/overview) makes this the root route of the app.
 
@@ -93,7 +93,7 @@ private int count = 0;
 - `counter`: A button labeled `Count is 0`, which updates each time it's clicked.
 - `docs`: A link to the webforJ documentation.
 
-### Constructor and layout configuration
+### Constructor and layout configuration {#constructor-and-layout-configuration}
 
 The constructor sets up the layout and component interactions:
 
@@ -117,7 +117,7 @@ public HomeView() {
 - Button Action: The counter button uses a click event listener, `onClick`, to increment the count and update its label whenever it’s clicked.
 - Component Addition: Finally, all elements are added to the layout via `self.add(image, title, counter, and docs)`. -->
 
-### Component initialization
+### Component initialization {#component-initialization}
 
 Inside the class, several UI elements are initialized and declared:
 
@@ -131,7 +131,7 @@ private Button btn = new Button("Say Hello");
 - `hello`: A [`TextField`](../components/fields/textfield) labeled `What is your name?` for users to input their name.
 - `btn`: A primary-styled [`Button`](../components/button) labeled `Say Hello`.
 
-### Layout configuration
+### Layout configuration {#layout-configuration}
 
 The layout `(self)` is configured with a few key style properties:
 
@@ -139,10 +139,10 @@ The layout `(self)` is configured with a few key style properties:
 - `setMaxWidth(300)` restricts the width to 300 pixels for a compact layout.
 - `setStyle("margin", "1em auto")` centers the layout with a margin around it.
 
-### Adding components to the layout
+### Adding components to the layout {#adding-components-to-the-layout}
 Finally, the hello text field and btn button are added to the [`FlexLayout`](../components/flex-layout) container by calling `self.add(hello, btn)`. This arrangement defines the view’s structure, making the form both interactive and visually centered.
 
-## Styling the app
+## Styling the app {#styling-the-app}
 
 The `styles.css` file provides custom styling for your webforJ app. This CSS file is referenced in the Application class using the [`@StyleSheet`](../managing-resources/importing-assets#importing-css-files) annotation, which allows the app to apply styles to components within the app.
 

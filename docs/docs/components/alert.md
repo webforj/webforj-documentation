@@ -20,7 +20,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '100px'
 />
 
-## Dismissing alerts
+## Dismissing alerts {#dismissing-alerts}
 
 If you’d like to give users the option to dismiss the `Alert`, you can make it closable by calling the `setClosable()` method. 
 
@@ -41,9 +41,9 @@ Closing the alert only hides it—it doesn’t destroy the component, so you can
 :::
 
 
-## Styling
+## Styling {#styling}
 
-### Themes
+### Themes {#themes}
 
 The `Alert` component supports multiple <JavadocLink type="foundation" location="com/webforj/component/Theme"> themes </JavadocLink> to visually distinguish different types of messages—such as success, error, warning, or info. These themes can be applied using the `setTheme()` method or directly in the constructor.
 
@@ -54,7 +54,7 @@ height = '475px'
 />
 
 
-### Expanses
+### Expanses {#expanses}
 
 The expanse defines the visual size of the `Alert` component. You can set it using the `setExpanse()` method or pass it directly to the constructor. The available options come from the Expanse enum: `XSMALL`, `SMALL`, `MEDIUM`, `LARGE`, and `XLARGE`.
 

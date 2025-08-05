@@ -19,7 +19,7 @@ ConfirmDialog.Result result = OptionDialog.showConfirmDialog(
     ConfirmDialog.MessageType.QUESTION);
 ```
 
-## Usages
+## Usages {#usages}
 
 The `ConfirmDialog` provides a way to ask users for confirmation or to choose between multiple options, such as `Yes/No` or `OK/Cancel`, ensuring that they acknowledge and confirm their actions.
 
@@ -29,9 +29,9 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '350px'
 />
 
-## Types
+## Types {#types}
 
-### Option type
+### Option type {#option-type}
 
 The `ConfirmDialog` supports the following option types, which determine the buttons displayed in the dialog:
 
@@ -43,7 +43,7 @@ The `ConfirmDialog` supports the following option types, which determine the but
 6. **`RETRY_CANCEL`**: Displays `Retry` and `Cancel` buttons.
 7. **`CUSTOM`**: Displays custom buttons as specified.
 
-### Message type
+### Message type {#message-type}
 
 The `ConfirmDialog` supports the following message types. When you configures a type, The dialog displays an icon beside the message, and the dialog's theme updates according to the webforJ design system rules.
 
@@ -61,7 +61,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '350px'
 />
 
-## Result
+## Result {#result}
 
 The `ConfirmDialog` returns a result based on the user's interaction with the dialog. This result indicates which button the user clicked or if the dialog was dismissed due to a timeout.
 
@@ -93,7 +93,7 @@ if (result == ConfirmDialog.Result.FIRST_CUSTOM_BUTTON) {
 }
 ```
 
-## Default button
+## Default button {#default-button}
 
 The `ConfirmDialog` allows you to specify a default button that is preselected when the dialog is displayed. This enhances the user experience by providing a suggested action that can be quickly confirmed by pressing the <kbd>Enter</kbd> key.
 
@@ -104,7 +104,7 @@ dialog.setDefaultButton(Button.SECOND); // second button
 dialog.show();
 ```
 
-## Buttons text
+## Buttons text {#buttons-text}
 
 You can configure the text of the buttons using the `setButtonText(ConfirmDialog.Button button, String text)` method.
 
@@ -116,7 +116,7 @@ dialog.setButtonText(ConfirmDialog.Button.SECOND, "Nope");
 dialog.show();
 ```
 
-## HTML processing
+## HTML processing {#html-processing}
 
 By default, the confirm dialog processes and renders HTML content. You can turn off this feature by configuring it to display raw text instead.
 
@@ -128,7 +128,7 @@ dialog.setRawText(true);
 dialog.show();
 ```
 
-## Timeout
+## Timeout {#timeout}
 
 The `ConfirmDialog` allows you to set a timeout duration after which the dialog automatically closes. This feature is useful for non-critical confirmations or actions that don't require the user's immediate interaction.
 
@@ -160,7 +160,7 @@ switch (result) {
 }
 ```
 
-## Best practices
+## Best practices {#best-practices}
 
 1. **Clear and Concise Prompts**: Ensure the prompt message clearly explains what action the user is being asked to confirm. Avoid ambiguity.
 2. **Appropriate Option Types**: Choose option types that match the context of the action. For simple yes/no decisions, use straightforward options. For more complex scenarios, provide additional buttons like "Cancel" to allow users to back out without making a choice.

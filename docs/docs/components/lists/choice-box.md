@@ -13,7 +13,7 @@ slug: choicebox
 
 The `ChoiceBox` component is a user interface element designed to present users with a list of options or choices. Users can select a single option from this list, typically by clicking the `ChoiceBox`, which triggers the display of a dropdown list containing available choices. Users can also interact with the `ChoiceBox` with the arrow keys. When a user makes a selection, the chosen option is then displayed in the `ChoiceBox` button.
 
-## Usages
+## Usages {#usages}
 `ChoiceBox` components are used for various purposes, such as selecting items from a menu, choosing from a list of categories, or picking options from predefined sets. They provide an organized and visually pleasing way for users to make selections, particularly when there are multiple options available. Common usages include:
 
 1. **User Selection of Options**: The primary purpose of a `ChoiceBox` is to allow users to select a single option from a list. This is valuable in applications that require users to make choices, such as:
@@ -30,12 +30,12 @@ The `ChoiceBox` component is a user interface element designed to present users 
 The `ChoiceBox` is intended for use when a preset number of options are available, and custom options should not be allowed or included. If allowing users to enter custom values is desired, use a [`ComboBox`](./combo-box.md) instead
 :::
 
-## Dropdown type
+## Dropdown type {#dropdown-type}
 
 Using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setDropdownType(java.lang.String)'>setDropdownType()</JavadocLink> method will assign a value to the `type` attribute of a `ChoiceBox`, and a corresponding value for the `data-dropdown-for` attribute in the dropdown of the `ChoiceBox`. This is helpful for styling, as the dropdown is taken out of its current position in the DOM and relocated to the end of the page body when opened.
 
-<!-- ![example type](../_images/choicebox/type.png)
-![example type](../_images/choicebox/type_zoomed.png) -->
+<!-- ![example type](/img/components/_images/choicebox/type.png)
+![example type](/img/components/_images/choicebox/type_zoomed.png) -->
 
 This detachment creates a situation where directly targeting the
 dropdown using CSS or shadow part selectors from the parent component becomes challenging, unless you make use of the dropdown type attribute.
@@ -49,7 +49,7 @@ cssURL='/css/lists/combobox/comboBoxDropDownType.css'
 height='250px'
 />
 
-## Max row count
+## Max row count {#max-row-count}
 
 By default, the number of rows displayed in the dropdown of a `ChoiceBox` will be increased to fit the content. However, using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setMaxRowCount(int)'>setMaxRowCount()</JavadocLink> method allows for control over how many items are displayed. 
 
@@ -63,7 +63,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='450px'
 />
 
-## Opening and closing
+## Opening and closing {#opening-and-closing}
 
 The visibility of the options for a `ChoiceBox` can be programmatically controlled with the `open()` and `close()` methods.
 These methods allow you to display the list of options for selection or hide it as needed, providing greater flexibility in managing the behavior of a `ChoiceBox`.
@@ -87,7 +87,7 @@ major.onClose( e ->{
 });
 ```
 
-## Opening dimensions
+## Opening dimensions {#opening-dimensions}
 
 The `ChoiceBox` component has methods that allow manipulation of the dropdown dimensions. The **maximum height** and **minimum width** of the dropdown can be set using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenHeight(int)'>setOpenHeight()</JavadocLink> and <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenWidth(int)'>setOpenWidth()</JavadocLink> methods, respectively. 
 
@@ -95,7 +95,7 @@ The `ChoiceBox` component has methods that allow manipulation of the dropdown di
 Passing a `String` value to either of these methods will allow for [any valid CSS unit](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units) to be applied, such as pixels, viewport dimensions, or other valid rules. Passing an `int` will set the value passed in pixels.
 :::
 
-## Prefix and suffix
+## Prefix and suffix {#prefix-and-suffix}
 
 Slots provide flexible options for improving the capability of a `ChoiceBox`. You can have icons, labels, loading spinners, clear/reset capability, avatar/profile pictures, and other beneficial components nested within a `ChoiceBox` to further clarify intended meaning to users.
 The `ChoiceBox` has two slots: the `prefix` and `suffix` slots. Use the `setPrefixComponent()` and `setSuffixComponent()` methods to insert various components before and after the displayed option within a `ChoiceBox`.
@@ -106,11 +106,11 @@ ComboBox choiceBox = new ChoiceBox());
   choiceBox.setSuffixComponent(TablerIcon.create("box"));
 ```
 
-## Styling
+## Styling {#styling}
 
 <TableBuilder name="ChoiceBox" />
 
-## Best practices 
+## Best practices {#best-practices}
 
 To ensure an optimal user experience when using the `ChoiceBox` component, consider the following best practices:
 

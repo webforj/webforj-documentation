@@ -21,6 +21,6 @@ The key concepts you’ll encounter when building a webforJ routable app include
 - **Outlets**: Components where child views are dynamically injected into parent layouts.
 - **Layouts**: Special routes that wrap child components without contributing to the URL, providing shared UI elements such as headers, footers, or sidebars.
 
-## Topics
+## Topics {#topics}
 
 <DocCardList className="topics-section" />

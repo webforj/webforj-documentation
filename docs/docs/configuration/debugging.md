@@ -72,7 +72,7 @@ Debugging is an essential part of Java development, helping developers identify 
 </TabItem>
 </Tabs>
 
-## Running the debugger
+## Running the debugger {#running-the-debugger}
 
 Once you’ve configured your IDE:
 
