@@ -1,42 +1,42 @@
 {
   "theme.docs.translationNotice": {
-    "message": "Cette page a été traduite automatiquement par IA et peut contenir des erreurs ou des inexactitudes. Pour les informations les plus précises et à jour, veuillez consulter la documentation officielle webforJ. webforJ ne garantit pas l'exactitude, la fiabilité ou l'exhaustivité de ces traductions IA.",
+    "message": "Cette page a été traduite automatiquement et peut contenir des erreurs. Pour des informations précises, consultez la documentation officielle. webforJ ne garantit pas l'exactitude de ces traductions.",
     "description": "Translation notice for non-English pages"
   },
   "theme.ErrorPageContent.title": {
-    "message": "Cette page a planté.",
+    "message": "Échec de la page.",
     "description": "The title of the fallback page when the page crashed"
   },
   "theme.BackToTopButton.buttonAriaLabel": {
-    "message": "Retour au début de la page",
+    "message": "Retour en haut",
     "description": "The ARIA label for the back to top button"
   },
   "theme.blog.archive.title": {
-    "message": "Archive",
+    "message": "Archiver",
     "description": "The page & hero title of the blog archive page"
   },
   "theme.blog.archive.description": {
-    "message": "Archive",
+    "message": "Archiver",
     "description": "The page & hero description of the blog archive page"
   },
   "theme.blog.post.paginator.navAriaLabel": {
-    "message": "Pagination des articles du blog",
+    "message": "Pagination des articles",
     "description": "The ARIA label for the blog posts pagination"
   },
   "theme.blog.post.paginator.newerPost": {
-    "message": "Article plus récent",
+    "message": "Article le plus récent",
     "description": "The blog post button label to navigate to the newer/previous post"
   },
   "theme.blog.post.paginator.olderPost": {
-    "message": "Article plus ancien",
+    "message": "Article suivant",
     "description": "The blog post button label to navigate to the older/next post"
   },
   "theme.blog.paginator.navAriaLabel": {
-    "message": "Pagination de la liste des articles du blog",
+    "message": "Pagination des articles",
     "description": "The ARIA label for the blog pagination"
   },
   "theme.blog.paginator.newerEntries": {
-    "message": "Nouvelles entrées",
+    "message": "Nouveaux éléments",
     "description": "The label used to navigate to the newer blog posts page (previous page)"
   },
   "theme.blog.paginator.olderEntries": {
@@ -44,11 +44,11 @@
     "description": "The label used to navigate to the older blog posts page (next page)"
   },
   "theme.tags.tagsPageLink": {
-    "message": "Voir tous les tags",
+    "message": "Voir toutes les balises",
     "description": "The label of the link targeting the tag list page"
   },
   "theme.colorToggle.ariaLabel.mode.system": {
-    "message": "system mode",
+    "message": "mode sys",
     "description": "The name for the system color mode"
   },
   "theme.colorToggle.ariaLabel.mode.light": {
@@ -56,11 +56,11 @@
     "description": "The name for the light color mode"
   },
   "theme.colorToggle.ariaLabel.mode.dark": {
-    "message": "mode sombre",
+    "message": "Mode sombre",
     "description": "The name for the dark color mode"
   },
   "theme.colorToggle.ariaLabel": {
-    "message": "Basculer entre le mode sombre et clair (actuellement {mode})",
+    "message": "Basculer entre mode sombre et clair (actuellement {mode})",
     "description": "The ARIA label for the color mode toggle"
   },
   "theme.docs.breadcrumbs.navAriaLabel": {
@@ -68,11 +68,11 @@
     "description": "The ARIA label for the breadcrumbs"
   },
   "theme.docs.DocCard.categoryDescription.plurals": {
-    "message": "1 élément|{count} éléments",
+    "message": "1 élément | {count} éléments",
     "description": "The default description for a category card in the generated index about how many items this category includes"
   },
   "theme.docs.paginator.navAriaLabel": {
-    "message": "Pages de documentation",
+    "message": "Documentation",
     "description": "The ARIA label for the docs pagination"
   },
   "theme.docs.paginator.previous": {
@@ -84,7 +84,7 @@
     "description": "The label used to navigate to the next doc"
   },
   "theme.docs.tagDocListPageTitle.nDocsTagged": {
-    "message": "Un document tagué|{count} documents tagués",
+    "message": "Un document tagué | {count} documents tagués",
     "description": "Pluralized label for \"{count} docs tagged\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.docs.tagDocListPageTitle": {
@@ -92,14 +92,14 @@
     "description": "The title of the page for a docs tag"
   },
   "theme.docs.versionBadge.label": {
-    "message": "Version: {versionLabel}"
+    "message": "Version : {versionLabel}"
   },
   "theme.docs.versions.unreleasedVersionLabel": {
-    "message": "Ceci est la documentation de la prochaine version {versionLabel} de {siteTitle}.",
+    "message": "Documentation de la version {versionLabel} de {siteTitle}.",
     "description": "The label used to tell the user that he's browsing an unreleased doc version"
   },
   "theme.docs.versions.unmaintainedVersionLabel": {
-    "message": "Ceci est la documentation de {siteTitle} {versionLabel}, qui n'est plus activement maintenue.",
+    "message": "Ceci est la documentation de {siteTitle} {versionLabel}, qui n'est plus activement mise à jour.",
     "description": "The label used to tell the user that he's browsing an unmaintained doc version"
   },
   "theme.docs.versions.latestVersionSuggestionLabel": {
@@ -111,7 +111,7 @@
     "description": "The label used for the latest version suggestion link label"
   },
   "theme.common.editThisPage": {
-    "message": "Éditer cette page",
+    "message": "Modifier la page",
     "description": "The link label to edit the current page"
   },
   "theme.common.headingLinkTitle": {
@@ -119,15 +119,15 @@
     "description": "Title for link to heading"
   },
   "theme.lastUpdated.atDate": {
-    "message": " le {date}",
+    "message": "le {date}",
     "description": "The words used to describe on which date a page has been last updated"
   },
   "theme.lastUpdated.byUser": {
-    "message": " par {user}",
+    "message": "par {utilisateur}",
     "description": "The words used to describe by who the page has been last updated"
   },
   "theme.lastUpdated.lastUpdatedAtBy": {
-    "message": "Dernière mise à jour{atDate}{byUser}",
+    "message": "Dernière mise à jour le {atDate} par {byUser}",
     "description": "The sentence used to display when a page has been last updated, and by who"
   },
   "theme.navbar.mobileVersionsDropdown.label": {
@@ -135,11 +135,11 @@
     "description": "The label for the navbar versions dropdown on mobile view"
   },
   "theme.NotFound.title": {
-    "message": "Page introuvable",
+    "message": "Page non trouvée",
     "description": "The title of the 404 page"
   },
   "theme.tags.tagsListLabel": {
-    "message": "Tags :",
+    "message": "Étiquettes :",
     "description": "The label alongside a tag list"
   },
   "theme.admonition.caution": {
@@ -155,11 +155,11 @@
     "description": "The default label used for the Info admonition (:::info)"
   },
   "theme.admonition.note": {
-    "message": "remarque",
+    "message": "note",
     "description": "The default label used for the Note admonition (:::note)"
   },
   "theme.admonition.tip": {
-    "message": "astuce",
+    "message": "conseil",
     "description": "The default label used for the Tip admonition (:::tip)"
   },
   "theme.admonition.warning": {
@@ -171,15 +171,15 @@
     "description": "The ARIA label for close button of announcement bar"
   },
   "theme.blog.sidebar.navAriaLabel": {
-    "message": "Navigation article de blog récent",
+    "message": "Articles récents",
     "description": "The ARIA label for recent posts in the blog sidebar"
   },
   "theme.DocSidebarItem.expandCategoryAriaLabel": {
-    "message": "Développer la catégorie '{label}' de la barre latérale",
+    "message": "Développer '{label}'",
     "description": "The ARIA label to expand the sidebar category"
   },
   "theme.DocSidebarItem.collapseCategoryAriaLabel": {
-    "message": "Réduire la catégorie '{label}' de la barre latérale",
+    "message": "Réduire '{label}'",
     "description": "The ARIA label to collapse the sidebar category"
   },
   "theme.navbar.mobileLanguageDropdown.label": {
@@ -187,15 +187,15 @@
     "description": "The label for the mobile language switcher dropdown"
   },
   "theme.NavBar.navAriaLabel": {
-    "message": "Main",
+    "message": "Principal",
     "description": "The ARIA label for the main navigation"
   },
   "theme.NotFound.p1": {
-    "message": "Nous n'avons pas trouvé ce que vous recherchez.",
+    "message": "Aucun résultat.",
     "description": "The first paragraph of the 404 page"
   },
   "theme.NotFound.p2": {
-    "message": "Veuillez contacter le propriétaire du site qui vous a lié à l'URL d'origine et leur faire savoir que leur lien est cassé.",
+    "message": "Signaler un lien cassé",
     "description": "The 2nd paragraph of the 404 page"
   },
   "theme.TOCCollapsible.toggleButtonLabel": {
@@ -203,15 +203,15 @@
     "description": "The label used by the button on the collapsible TOC component"
   },
   "theme.blog.post.readMore": {
-    "message": "Lire plus",
+    "message": "Lire la suite",
     "description": "The label used in blog post item excerpts to link to full blog posts"
   },
   "theme.blog.post.readMoreLabel": {
-    "message": "En savoir plus sur {title}",
+    "message": "En savoir plus",
     "description": "The ARIA label for the link to full blog posts from excerpts"
   },
   "theme.blog.post.readingTime.plurals": {
-    "message": "Une minute de lecture|{readingTime} minutes de lecture",
+    "message": "Une minute de lecture | {readingTime} minutes de lecture",
     "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.CodeBlock.copy": {
@@ -219,7 +219,7 @@
     "description": "The copy button label on code blocks"
   },
   "theme.CodeBlock.copied": {
-    "message": "Copié",
+    "message": "Copier",
     "description": "The copied button label on code blocks"
   },
   "theme.CodeBlock.copyButtonAriaLabel": {
@@ -227,58 +227,58 @@
     "description": "The ARIA label for copy code blocks button"
   },
   "theme.CodeBlock.wordWrapToggle": {
-    "message": "Activer/désactiver le retour à la ligne",
+    "message": "Activer/Désactiver le retour à la ligne",
     "description": "The title attribute for toggle word wrapping button of code block lines"
   },
   "theme.docs.breadcrumbs.home": {
-    "message": "Page d'accueil",
+    "message": "Accueil",
     "description": "The ARIA label for the home page in the breadcrumbs"
   },
   "theme.docs.sidebar.collapseButtonTitle": {
-    "message": "Réduire le menu latéral",
+    "message": "Réduire",
     "description": "The title attribute for collapse button of doc sidebar"
   },
   "theme.docs.sidebar.collapseButtonAriaLabel": {
-    "message": "Réduire le menu latéral",
+    "message": "Réduire",
     "description": "The title attribute for collapse button of doc sidebar"
   },
   "theme.docs.sidebar.navAriaLabel": {
-    "message": "Docs sidebar",
+    "message": "Barre latérale Docs",
     "description": "The ARIA label for the sidebar navigation"
   },
   "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
-    "message": "Expand the dropdown",
+    "message": "Développer le menu",
     "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
   },
   "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
-    "message": "Collapse the dropdown",
+    "message": "Réduire",
     "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
   },
   "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
-    "message": "Fermer la barre de navigation",
+    "message": "Fermer la nav",
     "description": "The ARIA label for close button of mobile sidebar"
   },
   "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
-    "message": "← Retour au menu principal",
+    "message": "← Retour",
     "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
   },
   "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
-    "message": "Ouvrir/fermer la barre de navigation",
+    "message": "Ouvrir/Fermer le menu",
     "description": "The ARIA label for hamburger menu button of mobile navigation"
   },
   "theme.docs.sidebar.expandButtonTitle": {
-    "message": "Déplier le menu latéral",
+    "message": "Développer",
     "description": "The ARIA label and title attribute for expand button of doc sidebar"
   },
   "theme.docs.sidebar.expandButtonAriaLabel": {
-    "message": "Déplier le menu latéral",
+    "message": "Déplier",
     "description": "The ARIA label and title attribute for expand button of doc sidebar"
   },
   "theme.SearchBar.seeAll": {
-    "message": "Voir les {count} résultats"
+    "message": "Voir {count} résultats"
   },
   "theme.SearchPage.documentsFound.plurals": {
-    "message": "Un document trouvé|{count} documents trouvés",
+    "message": "Un document trouvé | {count} documents trouvés",
     "description": "Pluralized label for \"{count} documents found\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.SearchPage.existingResultsTitle": {
@@ -290,31 +290,31 @@
     "description": "The search page title for empty query"
   },
   "theme.SearchPage.inputPlaceholder": {
-    "message": "Tapez votre recherche ici",
+    "message": "Entrez votre recherche ici",
     "description": "The placeholder for search page input"
   },
   "theme.SearchPage.inputLabel": {
-    "message": "Chercher",
+    "message": "Rechercher",
     "description": "The ARIA label for search page input"
   },
   "theme.SearchPage.algoliaLabel": {
-    "message": "Recherche par Algolia",
+    "message": "Recherche Algolia",
     "description": "The ARIA label for Algolia mention"
   },
   "theme.SearchPage.noResultsText": {
-    "message": "Aucun résultat trouvé",
+    "message": "Aucun résultat",
     "description": "The paragraph for empty search result"
   },
   "theme.SearchPage.fetchingNewResults": {
-    "message": "Chargement de nouveaux résultats...",
+    "message": "Chargement des résultats...",
     "description": "The paragraph for fetching new search results"
   },
   "theme.SearchBar.label": {
-    "message": "Chercher",
+    "message": "Rechercher",
     "description": "The ARIA label and placeholder for search button"
   },
   "theme.SearchModal.searchBox.resetButtonTitle": {
-    "message": "Effacer la requête",
+    "message": "Effacer la demande",
     "description": "The label and ARIA label for search box reset button"
   },
   "theme.SearchModal.searchBox.cancelButtonText": {
@@ -330,11 +330,11 @@
     "description": "The text when no recent searches"
   },
   "theme.SearchModal.startScreen.saveRecentSearchButtonTitle": {
-    "message": "Sauvegarder cette recherche",
+    "message": "Sauvegarder la recherche",
     "description": "The label for save recent search button"
   },
   "theme.SearchModal.startScreen.removeRecentSearchButtonTitle": {
-    "message": "Supprimer cette recherche de l'historique",
+    "message": "Supprimer cette recherche",
     "description": "The label for remove recent search button"
   },
   "theme.SearchModal.startScreen.favoriteSearchesTitle": {
@@ -342,23 +342,23 @@
     "description": "The title for favorite searches"
   },
   "theme.SearchModal.startScreen.removeFavoriteSearchButtonTitle": {
-    "message": "Supprimer cette recherche des favoris",
+    "message": "Supprimer des favoris",
     "description": "The label for remove favorite search button"
   },
   "theme.SearchModal.errorScreen.titleText": {
-    "message": "Impossible de récupérer les résultats",
+    "message": "Échec de la récupération des résultats",
     "description": "The title for error screen of search modal"
   },
   "theme.SearchModal.errorScreen.helpText": {
-    "message": "Vous pouvez vérifier votre connexion réseau.",
+    "message": "Vérifier la connexion",
     "description": "The help text for error screen of search modal"
   },
   "theme.SearchModal.footer.selectText": {
-    "message": "sélectionner",
+    "message": "Sélectionner",
     "description": "The explanatory text of the action for the enter key"
   },
   "theme.SearchModal.footer.selectKeyAriaLabel": {
-    "message": "Touche Entrée",
+    "message": "Appuyez sur Entrée",
     "description": "The ARIA label for the Enter key button that makes the selection"
   },
   "theme.SearchModal.footer.navigateText": {
@@ -366,7 +366,7 @@
     "description": "The explanatory text of the action for the Arrow up and Arrow down key"
   },
   "theme.SearchModal.footer.navigateUpKeyAriaLabel": {
-    "message": "Flèche vers le haut",
+    "message": "Flèche vers le bas",
     "description": "The ARIA label for the Arrow up key button that makes the navigation"
   },
   "theme.SearchModal.footer.navigateDownKeyAriaLabel": {
@@ -378,11 +378,11 @@
     "description": "The explanatory text of the action for Escape key"
   },
   "theme.SearchModal.footer.closeKeyAriaLabel": {
-    "message": "Touche Echap",
+    "message": "Touche Échap",
     "description": "The ARIA label for the Escape key button that close the modal"
   },
   "theme.SearchModal.footer.searchByText": {
-    "message": "Recherche via",
+    "message": "Recherche par",
     "description": "The text explain that the search is making by Algolia"
   },
   "theme.SearchModal.noResultsScreen.noResultsText": {
@@ -394,11 +394,11 @@
     "description": "The text for the suggested query when no results are found for the following search"
   },
   "theme.SearchModal.noResultsScreen.reportMissingResultsText": {
-    "message": "Vous pensez que cette requête doit donner des résultats ?",
+    "message": "Cette requête doit-elle retourner des résultats ?",
     "description": "The text for the question where the user thinks there are missing results"
   },
   "theme.SearchModal.noResultsScreen.reportMissingResultsLinkText": {
-    "message": "Faites-le nous savoir.",
+    "message": "Faites-nous savoir.",
     "description": "The text for the link to report missing results"
   },
   "theme.SearchModal.placeholder": {
@@ -406,43 +406,43 @@
     "description": "The placeholder of the input of the DocSearch pop-up modal"
   },
   "theme.blog.post.plurals": {
-    "message": "Un article|{count} articles",
+    "message": "Un article | {count} articles",
     "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.blog.tagTitle": {
-    "message": "{nPosts} tagués avec « {tagName} »",
+    "message": "{nPosts} tagué(s) « {tagName} »",
     "description": "The title of the page for a blog tag"
   },
   "theme.blog.author.pageTitle": {
-    "message": "{authorName} - {nPosts}",
+    "message": "{nomAuteur} - {nPosts}",
     "description": "The title of the page for a blog author"
   },
   "theme.blog.authorsList.pageTitle": {
-    "message": "Authors",
+    "message": "Auteurs",
     "description": "The title of the authors page"
   },
   "theme.blog.authorsList.viewAll": {
-    "message": "View All Authors",
+    "message": "Voir tous les auteurs",
     "description": "The label of the link targeting the blog authors page"
   },
   "theme.blog.author.noPosts": {
-    "message": "This author has not written any posts yet.",
+    "message": "Aucun article publié.",
     "description": "The text for authors with 0 blog post"
   },
   "theme.contentVisibility.unlistedBanner.title": {
-    "message": "Page non répertoriée",
+    "message": "Page non indexée",
     "description": "The unlisted content banner title"
   },
   "theme.contentVisibility.unlistedBanner.message": {
-    "message": "Cette page n'est pas répertoriée. Les moteurs de recherche ne l'indexeront pas, et seuls les utilisateurs ayant un lien direct peuvent y accéder.",
+    "message": "Page non indexée. Accessible uniquement par lien direct.",
     "description": "The unlisted content banner message"
   },
   "theme.contentVisibility.draftBanner.title": {
-    "message": "Draft page",
+    "message": "Brouillon",
     "description": "The draft content banner title"
   },
   "theme.contentVisibility.draftBanner.message": {
-    "message": "This page is a draft. It will only be visible in dev and be excluded from the production build.",
+    "message": "Brouillon - Visible uniquement en développement. Exclue de la version de production.",
     "description": "The draft content banner message"
   },
   "theme.ErrorPageContent.tryAgain": {
@@ -454,7 +454,167 @@
     "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
   },
   "theme.tags.tagsPageTitle": {
-    "message": "Tags",
+    "message": "Étiquettes",
     "description": "The title of the tag list page"
+  },
+  "tableBuilder.headers.part": {
+    "message": "Section",
+    "description": "Table header for part name"
+  },
+  "tableBuilder.headers.description": {
+    "message": "Description",
+    "description": "Table header for description"
+  },
+  "tableBuilder.sections.shadowParts": {
+    "message": "Parties d'ombre",
+    "description": "Section heading for shadow parts table"
+  },
+  "tableBuilder.descriptions.shadowParts": {
+    "message": "Parties {shadowDomLink} pour {componentName}, nécessaires pour le CSS.",
+    "description": "Description for shadow parts section"
+  },
+  "tableBuilder.shadowDom": {
+    "message": "ombre DOM",
+    "description": "Link text for shadow DOM"
+  },
+  "tableBuilder.headers.slot": {
+    "message": "Emplacement",
+    "description": "Table header for slot name"
+  },
+  "tableBuilder.sections.slots": {
+    "message": "Emplacements",
+    "description": "Section heading for slots table"
+  },
+  "tableBuilder.descriptions.slots": {
+    "message": "Ces emplacements sont disponibles pour le composant {componentName}. Ils servent d'espaces réservés pour les enfants d'un élément personnalisé dans l'arbre ombre.",
+    "description": "Description for slots section"
+  },
+  "tableBuilder.headers.property": {
+    "message": "Propriété",
+    "description": "Table header for property name"
+  },
+  "tableBuilder.sections.cssProperties": {
+    "message": "Propriétés CSS",
+    "description": "Section heading for CSS properties table"
+  },
+  "tableBuilder.descriptions.cssProperties": {
+    "message": "Propriétés CSS de {componentName}",
+    "description": "Description for CSS properties section"
+  },
+  "tableBuilder.sections.properties": {
+    "message": "Propriétés",
+    "description": "Section heading for properties table"
+  },
+  "tableBuilder.headers.name": {
+    "message": "Nom",
+    "description": "Table header for name"
+  },
+  "tableBuilder.headers.attribute": {
+    "message": "Attribut",
+    "description": "Table header for attribute"
+  },
+  "tableBuilder.headers.type": {
+    "message": "Entrée",
+    "description": "Table header for type"
+  },
+  "tableBuilder.headers.reflects": {
+    "message": "Réfléchir",
+    "description": "Table header for reflects"
+  },
+  "tableBuilder.headers.default": {
+    "message": "Par défaut",
+    "description": "Table header for default value"
+  },
+  "tableBuilder.descriptions.properties": {
+    "message": "Propriétés du composant {componentName}.",
+    "description": "Description for properties section"
+  },
+  "tableBuilder.sections.reflectedAttributes": {
+    "message": "Attributs réfléchis",
+    "description": "Section heading for reflected attributes table"
+  },
+  "tableBuilder.descriptions.reflectedAttributes": {
+    "message": "Attributs réfléchis pour le composant {componentName}. Ils apparaissent dans l'élément HTML du DOM, permettant d'appliquer des styles.",
+    "description": "Description for reflected attributes section"
+  },
+  "tableBuilder.headers.event": {
+    "message": "Événements",
+    "description": "Table header for event name"
+  },
+  "tableBuilder.sections.events": {
+    "message": "Événements",
+    "description": "Section heading for events table"
+  },
+  "tableBuilder.descriptions.events": {
+    "message": "Événements de {componentName}.",
+    "description": "Description for events section"
+  },
+  "tableBuilder.headers.methodSignature": {
+    "message": "Signature de méthode",
+    "description": "Table header for method signature"
+  },
+  "tableBuilder.sections.methods": {
+    "message": "Méthodes",
+    "description": "Section heading for methods table"
+  },
+  "tableBuilder.descriptions.methods": {
+    "message": "Méthodes pour {componentName}.",
+    "description": "Description for methods section"
+  },
+  "tableBuilder.sections.dependentComponents": {
+    "message": "Composants associés",
+    "description": "Section heading for dependent components"
+  },
+  "tableBuilder.descriptions.dependentComponents": {
+    "message": "Les composants suivants dépendent de {componentName}.",
+    "description": "Description for dependent components section"
+  },
+  "tableBuilder.sections.dependencies": {
+    "message": "Dépendances",
+    "description": "Section heading for dependencies"
+  },
+  "tableBuilder.descriptions.dependencies": {
+    "message": "Le composant {componentName} dépend des composants clients suivants. Les composants clients sont uniquement côté client et ne peuvent pas être instanciés directement. Consultez l'article associé pour plus de détails sur la stylisation.",
+    "description": "Description for dependencies section"
+  },
+  "componentDemo.hideCode": {
+    "message": "Masquer le code",
+    "description": "Button text to hide the code section"
+  },
+  "componentDemo.showCode": {
+    "message": "Afficher le code",
+    "description": "Button text to show the code section"
+  },
+  "expandableCode.hideCode": {
+    "message": "Masquer le code",
+    "description": "Button text to hide the expanded code"
+  },
+  "expandableCode.showAllLines": {
+    "message": "Afficher les {count} lignes",
+    "description": "Button text to show all lines of code"
+  },
+  "componentArchetype.instructions": {
+    "message": "Pour créer un nouveau projet {project}, suivez ces étapes :",
+    "description": "Instructions for creating a new project"
+  },
+  "componentArchetype.step1": {
+    "message": "{strong}Naviguer vers le répertoire approprié{/strong} : Ouvrez un terminal et déplacez-vous vers le dossier où vous souhaitez créer votre nouveau projet.",
+    "description": "First step instruction"
+  },
+  "componentArchetype.step2": {
+    "message": "{strong}Exécuter la commande {code}archetype:generate{/code}{/strong} : Utilisez la commande Maven ci-dessous et personnalisez {code}groupId{/code}, {code}artifactId{/code} et {code}version{/code} selon les besoins de votre projet.",
+    "description": "Second step instruction"
+  },
+  "componentArchetype.table.argument": {
+    "message": "Argument",
+    "description": "Table header for argument column"
+  },
+  "componentArchetype.table.explanation": {
+    "message": "Explication",
+    "description": "Table header for explanation column"
+  },
+  "componentArchetype.finalInstruction": {
+    "message": "Après avoir exécuté la commande, Maven générera les fichiers de projet nécessaires pour exécuter le projet.",
+    "description": "Final instruction about Maven generating project files"
   }
 }

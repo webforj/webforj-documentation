@@ -16,11 +16,11 @@
     "description": "The label for category Integrations in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Spring Framework": {
-    "message": "Spring框架",
+    "message": "春季框架",
     "description": "The label for category Spring Framework in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Routing": {
-    "message": "路由",
+    "message": "路由器",
     "description": "The label for category Routing in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Navigation Lifecycle": {
@@ -28,11 +28,11 @@
     "description": "The label for category Navigation Lifecycle in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Route Hierarchy": {
-    "message": "路由层级",
+    "message": "路由级别",
     "description": "The label for category Route Hierarchy in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Building UIs": {
-    "message": "构建用户界面",
+    "message": "构建界面",
     "description": "The label for category Building UIs in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Archetypes": {
@@ -40,7 +40,7 @@
     "description": "The label for category Archetypes in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.HTML and Web Components": {
-    "message": "HTML和Web组件",
+    "message": "HTML与Web组件",
     "description": "The label for category HTML and Web Components in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Data Binding": {
@@ -60,7 +60,7 @@
     "description": "The label for category Fields in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Masked Fields": {
-    "message": "掩码字段",
+    "message": "掩码输入",
     "description": "The label for category Masked Fields in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Lists": {
@@ -68,7 +68,7 @@
     "description": "The label for category Lists in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Option Dialogs": {
-    "message": "选项对话框",
+    "message": "选项",
     "description": "The label for category Option Dialogs in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Table": {
@@ -88,19 +88,19 @@
     "description": "The label for category Styling in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Managing Resources": {
-    "message": "管理资源",
+    "message": "资源管理",
     "description": "The label for category Managing Resources in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Configuration": {
-    "message": "配置",
+    "message": "设置",
     "description": "The label for category Configuration in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Redeployment and Live Reload": {
-    "message": "重新部署与实时重载",
+    "message": "重新部署与即时加载",
     "description": "The label for category Redeployment and Live Reload in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Running with BBjServices": {
-    "message": "使用BBjServices运行",
+    "message": "Run BBj Service",
     "description": "The label for category Running with BBjServices in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Advanced Topics": {
@@ -108,7 +108,7 @@
     "description": "The label for category Advanced Topics in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Repository": {
-    "message": "仓库",
+    "message": "代码库",
     "description": "The label for category Repository in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Architecture": {
@@ -116,7 +116,7 @@
     "description": "The label for category Architecture in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Upgrading Guides": {
-    "message": "升级指南",
+    "message": "Upgrade Guide",
     "description": "The label for category Upgrading Guides in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Client Components": {

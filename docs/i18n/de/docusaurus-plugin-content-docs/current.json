@@ -32,7 +32,7 @@
     "description": "The label for category Route Hierarchy in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Building UIs": {
-    "message": "UIs gestalten",
+    "message": "UIs erstellen",
     "description": "The label for category Building UIs in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Archetypes": {
@@ -40,7 +40,7 @@
     "description": "The label for category Archetypes in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.HTML and Web Components": {
-    "message": "HTML und Webkomponenten",
+    "message": "HTML und Web-Komponenten",
     "description": "The label for category HTML and Web Components in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Data Binding": {
@@ -64,11 +64,11 @@
     "description": "The label for category Masked Fields in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Lists": {
-    "message": "Hören",
+    "message": "Abspielen",
     "description": "The label for category Lists in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Option Dialogs": {
-    "message": "Optionen-Dialoge",
+    "message": "Optionsdialoge",
     "description": "The label for category Option Dialogs in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Table": {
@@ -84,7 +84,7 @@
     "description": "The label for category E2E Testing in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Styling": {
-    "message": "Stilgestaltung",
+    "message": "Stylesheet",
     "description": "The label for category Styling in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Managing Resources": {
@@ -96,7 +96,7 @@
     "description": "The label for category Configuration in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Redeployment and Live Reload": {
-    "message": "Neudeplyoment und Live-Aktualisierung",
+    "message": "Neu-Bereitstellen und Live-Aktualisieren",
     "description": "The label for category Redeployment and Live Reload in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Running with BBjServices": {

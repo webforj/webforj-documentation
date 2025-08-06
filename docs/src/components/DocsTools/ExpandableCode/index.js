@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CodeBlock from '@theme/CodeBlock';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { translate } from '@docusaurus/Translate';
 import styles from './styles.module.css';
 
 export default function ExpandableCode({ 
@@ -52,7 +53,20 @@ export default function ExpandableCode({
             aria-expanded={isExpanded}
             aria-controls="expandable-code-content"
           >
-            <span>{isExpanded ? 'Hide Code' : `Show all ${lines.length} lines`}</span>
+            <span>
+              {isExpanded 
+                ? translate({
+                    id: 'expandableCode.hideCode',
+                    message: 'Hide Code',
+                    description: 'Button text to hide the expanded code'
+                  })
+                : translate({
+                    id: 'expandableCode.showAllLines',
+                    message: 'Show all {count} lines',
+                    description: 'Button text to show all lines of code'
+                  }, { count: lines.length })
+              }
+            </span>
             <ChevronRightIcon className={`${styles.chevron} ${isExpanded ? styles.chevronExpanded : ''}`} />
           </button>
         )}

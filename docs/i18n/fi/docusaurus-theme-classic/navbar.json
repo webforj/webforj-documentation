@@ -20,11 +20,11 @@
     "description": "Navbar item with label Developers"
   },
   "item.label.Support": {
-    "message": "Tuki",
+    "message": "Ohjeet",
     "description": "Navbar item with label Support"
   },
   "item.label.Events": {
-    "message": "Tapahtumat",
+    "message": "Events",
     "description": "Navbar item with label Events"
   },
   "item.label.Blog": {
@@ -40,7 +40,7 @@
     "description": "Navbar item with label DWC HueCraft"
   },
   "item.label.DWC Design Kit": {
-    "message": "DWC-suunnittelupaketti",
+    "message": "DWC-suunnittelu",
     "description": "Navbar item with label DWC Design Kit"
   },
   "item.label.JavaDocs": {
@@ -48,11 +48,11 @@
     "description": "Navbar item with label JavaDocs"
   },
   "item.label.Client Components": {
-    "message": "Asiakaskomponentit",
+    "message": "Asiakkaan komponentit",
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
-    "message": "Osallistumisohjeet",
+    "message": "Osallistu",
     "description": "Navbar item with label Contribution Guide"
   },
   "item.label.Report Issue": {
@@ -60,7 +60,7 @@
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {
-    "message": "Ota meihin yhteyttä",
+    "message": "Ota yhteyttä",
     "description": "Navbar item with label Contact us"
   }
 }

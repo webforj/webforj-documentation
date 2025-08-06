@@ -8,7 +8,7 @@
     "description": "The label for category Introduction in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Tutorial": {
-    "message": "Opas",
+    "message": "Ohjeet",
     "description": "The label for category Tutorial in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Integrations": {
@@ -16,7 +16,7 @@
     "description": "The label for category Integrations in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Spring Framework": {
-    "message": "Spring Framework",
+    "message": "Spring-kehys",
     "description": "The label for category Spring Framework in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Routing": {
@@ -24,7 +24,7 @@
     "description": "The label for category Routing in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Navigation Lifecycle": {
-    "message": "Navigoinnin elinkaari",
+    "message": "Navigointiaikajana",
     "description": "The label for category Navigation Lifecycle in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Route Hierarchy": {
@@ -32,7 +32,7 @@
     "description": "The label for category Route Hierarchy in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Building UIs": {
-    "message": "Käyttöliittymien rakentaminen",
+    "message": "Käyttöliittymät",
     "description": "The label for category Building UIs in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Archetypes": {
@@ -44,11 +44,11 @@
     "description": "The label for category HTML and Web Components in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Data Binding": {
-    "message": "Tietojen sitominen",
+    "message": "Liitä tiedot",
     "description": "The label for category Data Binding in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Validation": {
-    "message": "Vahvistus",
+    "message": "Vahvista",
     "description": "The label for category Validation in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Components": {
@@ -56,7 +56,7 @@
     "description": "The label for category Components in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Fields": {
-    "message": "Kentät",
+    "message": "Kenttä",
     "description": "The label for category Fields in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Masked Fields": {
@@ -64,7 +64,7 @@
     "description": "The label for category Masked Fields in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Lists": {
-    "message": "Luettelot",
+    "message": "Lista",
     "description": "The label for category Lists in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Option Dialogs": {
@@ -72,11 +72,11 @@
     "description": "The label for category Option Dialogs in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Table": {
-    "message": "Taulukko",
+    "message": "Table",
     "description": "The label for category Table in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Testing": {
-    "message": "Testaus",
+    "message": "Testi",
     "description": "The label for category Testing in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.E2E Testing": {
@@ -84,7 +84,7 @@
     "description": "The label for category E2E Testing in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Styling": {
-    "message": "Tyylitys",
+    "message": "Tyylit",
     "description": "The label for category Styling in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Managing Resources": {
@@ -96,7 +96,7 @@
     "description": "The label for category Configuration in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Redeployment and Live Reload": {
-    "message": "Uudelleenasentaminen ja Live Reload",
+    "message": "Uudelleenasennus ja Live Reload",
     "description": "The label for category Redeployment and Live Reload in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Running with BBjServices": {
@@ -104,7 +104,7 @@
     "description": "The label for category Running with BBjServices in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Advanced Topics": {
-    "message": "Edistyneet Aiheet",
+    "message": "Edistyneet aiheet",
     "description": "The label for category Advanced Topics in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Repository": {
@@ -112,7 +112,7 @@
     "description": "The label for category Repository in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Architecture": {
-    "message": "Arkkitehtuuri",
+    "message": "Architecture",
     "description": "The label for category Architecture in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Upgrading Guides": {

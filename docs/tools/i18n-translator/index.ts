@@ -67,6 +67,9 @@ async function main() {
       ['item.label.']
     );
 
+    // Translate the main code.json file containing all translation strings
+    await translateCodeJSON(locale);
+
     console.groupEnd();
   }
 }
@@ -224,6 +227,81 @@ async function translateJSON(
 
   fs.writeFileSync(jsonPath, JSON.stringify(json, null, 2));
   console.log(`  Writed translated file into: ${jsonPath}`);
+}
+
+async function translateCodeJSON(locale: string) {
+  const jsonPath = path.resolve(siteDir, './i18n', locale, './code.json');
+  console.log(`  Checking code.json: ${path.relative(siteDir, jsonPath)}`);
+
+  if (!fs.existsSync(jsonPath)) {
+    console.log(
+      `  Skip translation of code.json because you need to run \`docusaurus write-translations\` first, locale: ${locale}`
+    );
+    return;
+  }
+
+  const jsonContent = fs.readFileSync(jsonPath, 'utf-8');
+  const json = JSON.parse(jsonContent);
+
+  // Prepare tasks for batch translation
+  const tasks: TranslationTask[] = [];
+  const keysToTranslate: string[] = [];
+
+  for (const [key, value] of Object.entries(json)) {
+    const messageValue = (value as any).message;
+    if (typeof messageValue !== 'string') {
+      continue;
+    }
+
+    // Skip if already translated (not in English)
+    // Check if it contains English words that shouldn't appear in translations
+    const isEnglish = /\b(the|and|or|in|on|at|to|for|of|with|by)\b/i.test(messageValue) ||
+                     /^[A-Z][a-z]+ [A-Z][a-z]+/.test(messageValue) ||
+                     messageValue === 'Close' ||
+                     messageValue === 'Search' ||
+                     messageValue === 'Draft' ||
+                     messageValue.startsWith('Show ') ||
+                     messageValue.startsWith('Hide ') ||
+                     messageValue.includes('Navigate to') ||
+                     messageValue.includes('After running');
+    
+    if (!isEnglish) {
+      continue; // Already translated
+    }
+
+    // Skip if in whitelist (technical terms that shouldn't be translated)
+    if (whitelist.includes(messageValue)) {
+      continue;
+    }
+
+    keysToTranslate.push(key);
+    tasks.push({
+      content: messageValue,
+      locale,
+      isUIString: true,
+      key
+    });
+  }
+
+  if (tasks.length === 0) {
+    console.log(`  No need to translate, Skip: ${path.relative(siteDir, jsonPath)}`);
+    return;
+  }
+
+  console.log(`  Translating ${tasks.length} UI strings in code.json...`);
+
+  // Translate in batches
+  const results = await translateBatch(tasks);
+
+  // Update JSON with translations
+  for (const result of results) {
+    if (result.key && json[result.key]) {
+      (json[result.key] as any).message = result.translatedText;
+    }
+  }
+
+  fs.writeFileSync(jsonPath, JSON.stringify(json, null, 2));
+  console.log(`  Wrote translated file: ${jsonPath}`);
 }
 
 main().catch(console.error);

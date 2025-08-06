@@ -28,11 +28,11 @@
     "description": "The label for category Navigation Lifecycle in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Route Hierarchy": {
-    "message": "Route Hiërarchie",
+    "message": "Routehiërarchie",
     "description": "The label for category Route Hierarchy in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Building UIs": {
-    "message": "Maak gebruikersinterfaces",
+    "message": "Maak UI",
     "description": "The label for category Building UIs in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Archetypes": {
@@ -56,11 +56,11 @@
     "description": "The label for category Components in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Fields": {
-    "message": "Velden",
+    "message": "Veldnamen",
     "description": "The label for category Fields in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Masked Fields": {
-    "message": "Gemaskerde Velden",
+    "message": "Gemaskerde velden",
     "description": "The label for category Masked Fields in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Lists": {
@@ -68,7 +68,7 @@
     "description": "The label for category Lists in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Option Dialogs": {
-    "message": "Optiesvensters",
+    "message": "Optievensters",
     "description": "The label for category Option Dialogs in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Table": {
@@ -80,7 +80,7 @@
     "description": "The label for category Testing in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.E2E Testing": {
-    "message": "E2E testen",
+    "message": "E2E-testen",
     "description": "The label for category E2E Testing in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Styling": {
@@ -88,7 +88,7 @@
     "description": "The label for category Styling in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Managing Resources": {
-    "message": "Beheer Hulpmiddelen",
+    "message": "Gereedschappen beheren",
     "description": "The label for category Managing Resources in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Configuration": {
