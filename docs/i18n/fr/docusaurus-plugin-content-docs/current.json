@@ -12,7 +12,7 @@
     "description": "The label for category Tutorial in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Integrations": {
-    "message": "Intégrations",
+    "message": "Integrations",
     "description": "The label for category Integrations in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Spring Framework": {
@@ -32,7 +32,7 @@
     "description": "The label for category Route Hierarchy in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Building UIs": {
-    "message": "Création d’interface",
+    "message": "Créer une interface",
     "description": "The label for category Building UIs in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Archetypes": {
@@ -40,11 +40,11 @@
     "description": "The label for category Archetypes in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.HTML and Web Components": {
-    "message": "HTML et Web Components",
+    "message": "HTML et Composants Web",
     "description": "The label for category HTML and Web Components in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Data Binding": {
-    "message": "Lien de données",
+    "message": "Data Link",
     "description": "The label for category Data Binding in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Validation": {
@@ -68,7 +68,7 @@
     "description": "The label for category Lists in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Option Dialogs": {
-    "message": "Paramètres des boîtes de dialogue",
+    "message": "Paramètres des dialogues",
     "description": "The label for category Option Dialogs in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Table": {
@@ -88,7 +88,7 @@
     "description": "The label for category Styling in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Managing Resources": {
-    "message": "Resource Management",
+    "message": "Gestion des ressources",
     "description": "The label for category Managing Resources in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Configuration": {
@@ -108,7 +108,7 @@
     "description": "The label for category Advanced Topics in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Repository": {
-    "message": "Soumettre",
+    "message": "Submit",
     "description": "The label for category Repository in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Architecture": {
@@ -116,7 +116,7 @@
     "description": "The label for category Architecture in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Upgrading Guides": {
-    "message": "Guides de mise à niveau",
+    "message": "Guides de mise à jour",
     "description": "The label for category Upgrading Guides in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Client Components": {
