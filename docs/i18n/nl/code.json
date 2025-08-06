@@ -1,4 +1,8 @@
 {
+  "theme.docs.translationNotice": {
+    "message": "Deze pagina is automatisch vertaald met AI en kan fouten of onnauwkeurigheden bevatten. Voor de meest nauwkeurige en actuele informatie, raadpleeg de officiële webforJ documentatie. webforJ biedt geen garanties over de nauwkeurigheid, betrouwbaarheid of volledigheid van deze AI-vertalingen.",
+    "description": "Translation notice for non-English pages"
+  },
   "theme.ErrorPageContent.title": {
     "message": "Deze pagina is gecrasht.",
     "description": "The title of the fallback page when the page crashed"

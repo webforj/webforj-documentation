@@ -1,4 +1,8 @@
 {
+  "theme.docs.translationNotice": {
+    "message": "This page has been automatically translated using AI and may contain errors or inaccuracies. For the most accurate and up-to-date information, please refer to the official webforJ documentation. webforJ makes no warranties about the accuracy, reliability, or completeness of these AI translations.",
+    "description": "Translation notice for non-English pages"
+  },
   "theme.ErrorPageContent.title": {
     "message": "This page crashed.",
     "description": "The title of the fallback page when the page crashed"
