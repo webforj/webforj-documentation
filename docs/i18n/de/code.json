@@ -1,4 +1,8 @@
 {
+  "theme.docs.translationNotice": {
+    "message": "Diese Seite wurde automatisch mit KI übersetzt und kann Fehler oder Ungenauigkeiten enthalten. Für die genauesten und aktuellsten Informationen besuchen Sie bitte die offizielle webforJ-Dokumentation. webforJ übernimmt keine Garantien für die Richtigkeit, Zuverlässigkeit oder Vollständigkeit dieser KI-Übersetzungen.",
+    "description": "Translation notice for non-English pages"
+  },
   "theme.ErrorPageContent.title": {
     "message": "Die Seite ist abgestürzt.",
     "description": "The title of the fallback page when the page crashed"

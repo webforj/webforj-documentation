@@ -138,10 +138,6 @@ const config = {
           to: '/docs/components/overview',
           activeBasePath: '/docs/components'
         },
-        // {
-        //   type: 'localeDropdown',
-        //   position: 'right',
-        // },
         {
           type: 'search',
           position: 'right',
@@ -223,6 +219,10 @@ const config = {
           type: 'html',
           position: 'right',
           value: '<div class="separator" aria-hidden></div>',
+        },
+        {
+          type: 'localeDropdown',
+          position: 'right',
         },
         {
           href: 'https://github.com/webforj',
