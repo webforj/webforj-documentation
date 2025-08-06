@@ -2,9 +2,7 @@
 title: Design Effective Forms Using the TextField
 description: Design tips to create effective forms when using the webforJ TextField component
 date: 2025-08-07
-authors:
-  name: Ben Brennan
-  title: Technical Writer I
+authors: Ben Brennan
 image: "https://cdn.webforj.com/webforj-documentation/blogs/using-textfield-in-forms/blogcover.png"
 tags: [webforJ, TextField, Web Development]
 ---
