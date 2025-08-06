@@ -39,7 +39,7 @@ const config = {
         htmlLang: 'fr-FR',
       },
       nl: {
-        label: 'Nederlands',
+        label: 'Dutch',
         direction: 'ltr',
         htmlLang: 'nl-NL',
       },
