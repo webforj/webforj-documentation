@@ -10,15 +10,15 @@ draft: false
 
 Components are fundamental building blocks that can be added to a window, providing user interface functionality and custom behavior. In webforJ, the `Component` class serves as the foundation for all components within the engine.
 
-## Lifecycle management
+## Lifecycle management {#lifecycle-management}
 
 Understanding the component lifecycle is essential for creating, managing, and utilizing components effectively. The following two lifecycle states have methods to manipulate their behavior. These methods should not explicitly be called by the user.
 
-### Create and destroy hooks
+### Create and destroy hooks {#create-and-destroy-hooks}
 
 All classes that extend the `Component` class are responsible for implementing the functionality to be executed when the `Component` is created, and when it is destroyed. This is done by overriding the `onCreate()` and `onDestroy()` methods, respectively.
 
-#### `onCreate()`
+#### `onCreate()` {#oncreate}
 
 The `onCreate()` method called when the component is added to a window. Creating components involves setting up their initial state and functionality. This is where you define what the component should do when it's first created. Whether it's initializing variables, setting up event listeners, or performing any other setup, the `onCreate()` method is your entry point for customizing component behavior. 
 
@@ -38,7 +38,7 @@ protected void onCreate(Window window) {
 The `onCreate()` method is where the component and any constituents should be added to the window.
 :::
 
-#### `onDestroy()`
+#### `onDestroy()` {#ondestroy}
 
 Destroying components is an essential part of managing resources and ensuring proper cleanup. Destroying a component is necessary when it's no longer needed or when you want to release resources associated with it. It allows a developer to perform cleanup tasks, such as stopping timers, releasing memory, or detaching event listeners. It also allows the `destroy()` method to be called on any constituent components.
 
@@ -46,7 +46,7 @@ Destroying components is an essential part of managing resources and ensuring pr
 The `onDestroy()` method is responsible for calling the `destroy()` method on any constituent components. Otherwise, these components will still exist in the DOM, but will not be reachable via the API.
 :::
 
-### Asynchronous attachment
+### Asynchronous attachment {#asynchronous-attachment}
 
 The `whenAttached()` method allows for functionality to be executed after a component has been added to a window. This method returns a <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>, which allows for additional specified behavior to execute asynchronously once the component is attached in the DOM. 
 
@@ -74,7 +74,7 @@ public class Demo extends App {
 }
 ```
 
-### Observers
+### Observers {#observers}
 
 Observers play a vital role in keeping track of component lifecycle events. Observers can be added and removed using the `addLifecycleObserver()` and `removeLifecycleObserver()` methods, and  receive notifications about events such as creation and destruction of components.
 
@@ -89,19 +89,19 @@ button.addLifecycleObserver((button, lifecycleEvent) -> {
 });
 ```
 
-## Component properties
+## Component properties {#component-properties}
 
-### Component identifiers
+### Component identifiers {#component-identifiers}
 
 Component IDs serve as unique identifiers for components, allowing you to interact with them and manage their state effectively.
 
-#### Server-side component ID
+#### Server-side component ID {#server-side-component-id}
 
 Every component created from the `Component` class is assigned a server-side identifier automatically. Server-side IDs are essential for internal tracking and identification of components within the framework. You can retrieve the server-side component ID using the `getComponentId()` method.
 
 This can be helpful in many situations where having a unique, server-size identifier is necessary, such as querying for a specific component within a container.
 
-#### Client-side component ID
+#### Client-side component ID {#client-side-component-id}
 
 Client-Side IDs allow for the user to obtain the client representation of the server component created in Java. All provided webforJ components have an implementation of this ID provided. If you want to obtain access to and use the client-side component, you can execute `object.get()` with the client ID to obtain the desired client component.
 
@@ -127,7 +127,7 @@ public void run() throws WebforjException {
 }
 ```
 
-### User data
+### User data {#user-data}
 
 The `Component` class allows you to include additional information within the component using the `setUserData()` method. This information is accessible only on the server side of the component via the `getUserData()` method, and is not sent to the client. 
 

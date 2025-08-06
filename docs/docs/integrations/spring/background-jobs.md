@@ -7,7 +7,7 @@ When users click a button to generate a report or process data, they expect the 
 
 webforJ enforces thread safety for UI components - all updates must happen on the UI thread. This creates a challenge: how do background tasks update progress bars or display results? The answer is `Environment.runLater()`, which safely transfers UI updates from Spring's background threads to webforJ's UI thread.
 
-## Enabling asynchronous execution
+## Enabling asynchronous execution {#enabling-asynchronous-execution}
 
 Spring's asynchronous method execution requires explicit configuration. Without it, methods annotated with `@Async` execute synchronously, defeating their purpose.
 
@@ -31,7 +31,7 @@ The `@EnableAsync` annotation activates Spring's infrastructure for detecting `@
 For a quick introduction to Spring's `@Async` annotation and basic usage patterns, see [Creating Asynchronous Methods](https://spring.io/guides/gs/async-method).
 :::
 
-## Creating async services
+## Creating async services {#creating-async-services}
 
 Services annotated with `@Service` can have methods marked with `@Async` to run on background threads. These methods typically return `CompletableFuture` to enable proper completion handling and cancellation:
 
@@ -67,7 +67,7 @@ This service accepts a progress callback (`Consumer<Integer>`) that gets called 
 
 The method simulates a 5-second task with 10 progress updates. In production, this would be actual work like database queries or file processing. The exception handling restores the interrupt status to support proper task cancellation when `cancel(true)` is called.
 
-## Using background tasks in views
+## Using background tasks in views {#using-background-tasks-in-views}
 
 The view receives the background service through constructor injection:
 
@@ -119,7 +119,7 @@ Every UI update from a background thread must be wrapped in `Environment.runLate
 For detailed information about webforJ's threading model, execution behavior, and which operations require `Environment.runLater()`, see [Asynchronous Updates](../../advanced/asynchronous-updates).
 :::
 
-## Task cancellation and cleanup
+## Task cancellation and cleanup {#task-cancellation-and-cleanup}
 
 Proper lifecycle management prevents memory leaks and unwanted UI updates. The view stores the `CompletableFuture` reference:
 

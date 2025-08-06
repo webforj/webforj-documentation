@@ -13,7 +13,7 @@ Navigating through different views in a web app involves several stages, offerin
 
 This flexible system ensures smooth, consistent transitions by allowing developers to hook into critical points in the navigation process. Whether you need to block navigation, fetch data when a component is displayed, or manage unsaved changes, you have full control over the navigation flow through its lifecycle events and observers.
 
-## Lifecycle events overview
+## Lifecycle events overview {#lifecycle-events-overview}
 
 The navigation process is governed by a series of events that are triggered during route transitions. These events allow you to react at specific points in the lifecycle:
 
@@ -24,6 +24,6 @@ The navigation process is governed by a series of events that are triggered duri
 
 These events provide granular control over the navigation lifecycle, making it easier to manage complex transitions and ensure smooth interactions across routes.
 
-## Topics
+## Topics {#topics}
 
 <DocCardList className="topics-section" />

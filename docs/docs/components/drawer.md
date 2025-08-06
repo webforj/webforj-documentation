@@ -31,7 +31,7 @@ height='600px'
 
 <!-- Example -->
 
-## Label
+## Label {#label}
 
 The `setLabel()` method can provide a meaningful description of the content inside a `Drawer`. When a label is set, assistive technologies like screen readers can announce it, helping users understand the purpose of the `Drawer` without seeing its visual contents.
 
@@ -145,6 +145,6 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='600px'
 />
 
-## Styling
+## Styling {#styling}
 
 <TableBuilder name="Drawer" />

@@ -35,11 +35,11 @@ Before integrating the `DesktopNotification` component, ensure that:
   </video>
 </div>
 
-## Basic usage
+## Basic usage {#basic-usage}
 
 There are multiple ways to create and display a notification. In most scenarios, the simplest approach is to call one of the static `show` methods which encapsulate the full notification lifecycle.
 
-### Example: Displaying a basic notification
+### Example: Displaying a basic notification {#example-displaying-a-basic-notification}
 
 ```java
 // Basic notification with title and message
@@ -48,11 +48,11 @@ DesktopNotification.show("Update Available", "Your download is complete!");
 
 This one-liner creates a notification with a title and body, then attempts to display it.
 
-## Customizing the notification
+## Customizing the notification {#customizing-the-notification}
 
 There are various options for customizing the look and feel of the displayed notification, depending on needs of the app and the purpose of the notification. 
 
-### Setting a custom `Icon`
+### Setting a custom `Icon` {#setting-a-custom-icon}
 
 By default, the notification uses your defined app icon through the [icons protocol](../managing-resources/assets-protocols#the-icons-protocol). You can set a custom icon using the `setIcon` method. The component supports different URL schemes:
 
@@ -71,7 +71,7 @@ notification.setIcon("context://images/custom-icon.png");
 notification.open();
 ```
 
-## Notification events
+## Notification events {#notification-events}
 
 The `DesktopNotification` supports several lifecycle events, and listeners can be attached to handle events, like when a notification is shown, closed, clicked, or encounters an error.
 
@@ -101,7 +101,7 @@ notification.onClick(event -> {
 Browser security policies prevent the notification click event from automatically bringing your app window or tab into focus. This behavior is enforced by the browser and can not be overridden programmatically. If your app requires the window to be focused, you will need to instruct users to click within the app after interacting with the notification.
 :::
 
-## Security and compatibility considerations
+## Security and compatibility considerations {#security-and-compatibility-considerations}
 
 When using the **DesktopNotification** component, keep the following points in mind:
 
@@ -110,7 +110,7 @@ When using the **DesktopNotification** component, keep the following points in m
 - **Browser Limitations:** Not all browsers handle custom icons or focus behavior the same way. For example, custom icons might not work in Safari, while event behavior may vary in other browsers.
 - **Permissions:** Always verify that your app checks for and requests notification permissions from the user gracefully.
 
-## Usage best practices
+## Usage best practices {#usage-best-practices}
 
 Keep the following best practices in mind while using the `DesktopNotification` component in your app:
 

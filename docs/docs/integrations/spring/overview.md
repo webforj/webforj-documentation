@@ -19,6 +19,6 @@ Your Spring services, repositories, and configuration work as normal. Your webfo
 
 The integration keeps both frameworks doing what they do best - Spring handles backend concerns while webforJ handles the UI.
 
-## Topics
+## Topics {#topics}
 
 <DocCardList className="topics-section" />

@@ -11,7 +11,7 @@ sidebar_position: 15
 The `MaskedTextField` component aims to deliver a configurable and easily validatable text input. It's well-suited for apps requiring formatted input, such as financial, e-commerce, and healthcare apps.
 
 
-## Basics
+## Basics {#basics}
 
 The `MaskedTextField` can be instantiated with or without parameters. You can define an initial value, a label, a placeholder text, and a listener in case the value changes.
 
@@ -21,11 +21,11 @@ field.setMask("ZZZZ-0000")
   .setHelperText("Mask: ZZZZ-0000 - for example: SAVE-2025")
 ```
 
-## Mask rules
+## Mask rules {#mask-rules}
 
 The `MaskedTextField` formats text input using a mask - a string that defines what characters are allowed at each position. This ensures consistent, structured input for things like phone numbers, postal codes, and ID formats.
 
-### Supported mask characters
+### Supported mask characters {#supported-mask-characters}
 
 | Character | Description                                                                                 |
 |-----------|---------------------------------------------------------------------------------------------|
@@ -43,7 +43,7 @@ For example, a mask like `XX@XX` requires the user to enter an `@` in the middle
 - **Short input** is padded with spaces.
 - **Long input** is truncated to fit the mask.
 
-### Examples
+### Examples {#examples}
 
 ```java
 field.setMask("(000) 000-0000");     // Example: (123) 456-7890
@@ -63,7 +63,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='250px'
 />
 
-## Validation patterns
+## Validation patterns {#validation-patterns}
 
 While masks define the structure of the input, you can combine them with validation patterns to enforce more specific input rules. This adds an extra layer of client-side validation using regular expressions.
 
@@ -84,7 +84,7 @@ This is especially useful when:
 The pattern must be a valid [JavaScript regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions), as used by the `RegExp` type. You can find more details in the [HTML pattern attribute documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern#overview).
 :::
 
-## Restoring the value
+## Restoring the value {#restoring-the-value}
 
 The `MaskedTextField` includes a restore feature that resets the field’s value to a predefined or original state. 
 This can be useful for undoing user changes or reverting to a default input.
@@ -94,7 +94,7 @@ field.setRestoreValue("ABC123");
 field.restoreValue();
 ```
 
-### Ways to restore the value
+### Ways to restore the value {#ways-to-restore-the-value}
 
 - **Programmatically**, by calling `restoreValue()`
 - **Via keyboard**, by pressing <kbd>ESC</kbd> (this is the default restore key unless overridden by an event listener)
@@ -107,7 +107,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='200px'
 />
 
-## `MaskedTextFieldSpinner`
+## `MaskedTextFieldSpinner` {#maskedtextfieldspinner}
 
 The `MaskedTextFieldSpinner` extends [`MaskedTextField`](#basics) by adding spinner controls that let users cycle through a list of predefined values. 
 This improves the user experience in situations where the input should be constrained to a fixed set of valid options.
@@ -118,7 +118,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='120px'
 />
 
-### Key features
+### Key features {#key-features}
 
 - **Option List Support**  
   Populate the spinner with a list of valid string values using `setOptions()`:
@@ -146,6 +146,6 @@ height='120px'
 - **Mask Compatibility**  
   Fully inherits all formatting, mask rules, and pattern validation from `MaskedTextField`.
 
-## Styling
+## Styling {#styling}
 
 <TableBuilder name="MaskedTextField" />

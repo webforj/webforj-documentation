@@ -27,6 +27,6 @@ webforJ adopts a modular approach to resource management, offering multiple mech
 - **Custom Protocols**: Provide standardized methodologies for resource access.  
 - **File Streaming and Controlled Downloads**: Facilitate managed retrieval and transmission of resource files.  
 
-## Topics
+## Topics {#topics}
 
 <DocCardList className="topics-section" />

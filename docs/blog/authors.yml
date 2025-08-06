@@ -12,3 +12,32 @@ Matthew Hawkins:
   page: true
   socials:
     github: MatthewHawkins
+Ben Brennan:
+  name: Ben Brennan
+  image_url: https://media.licdn.com/dms/image/v2/D5603AQEJPxbj17UUdA/profile-displayphoto-scale_200_200/B56ZgToxrjG0Ac-/0/1752676113942?e=1756339200&v=beta&t=CF4Pm_geTxVnNOmC75S7UPP1CxI0v4VDazEPGl49J38
+  title: Technical Writer I
+  page: true
+  socials:
+    github: bbrennanbasis
+    linkedin: bbrennan505
+Eric Handtke:
+  name: Eric Handtke
+  image_url: /img/authors/IMG-20240614-WA0004.jpg
+  title: Software Developer
+  page: true
+  socials: 
+    github: EHandtkeBasis
+Garrison Osteen:
+  name: Garrison Osteen
+  image_url: https://media.licdn.com/dms/image/v2/D4E03AQH4c4fGMPMSkg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1731373674085?e=1756944000&v=beta&t=D3BED0ZzGJAaHx2bqYgquCO5Mh0av2DYvFd9bYUnhp8
+  title: Lead Technical Writer
+  page: true
+  socials:
+    github: gosteenBASIS
+Lauren Alamo:
+  name: Lauren Alamo
+  image_url: /img/authors/IMG_1826.jpg
+  title: Software Developer
+  page: true
+  socials:
+    github: laurenic0l

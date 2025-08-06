@@ -20,13 +20,13 @@ The `tabs` starting project generates an app with a simple tabbed interface. Ide
 For more control over customization and configuration, you can use [startforJ](https://docs.webforj.com/startforj/) to create your project - just select the `Tabs` archetype when choosing configuration options.
 :::
 
-## Using the `tabs` archetype
+## Using the `tabs` archetype {#using-the-tabs-archetype}
 
 <ComponentArchetype
 project="tabs"
 />
 
-## Running the app
+## Running the app {#running-the-app}
 
 Before running your app, install the [prerequisites](../../introduction/prerequisites) if you haven't yet. 
 Then, navigate to the project's root directory and run the following command:

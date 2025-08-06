@@ -20,7 +20,7 @@ By default, a column isn't sortable unless explicitly enabled. To allow sorting 
 table.getColumn("Age").setSortable(true);
 ```
 
-## Multi-sorting
+## Multi-sorting {#multi-sorting}
 
 :::warning Multi-Column Sorting Disabled by Default in webforJ `25.00`
 Before webforj `25.00`, tables supported multi-column sorting by default. Starting with version `25.00`, this behavior changed—developers now need to explicitly enable multi-column sorting.
@@ -62,7 +62,7 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/hea
 height='600px'
 />
 
-## Sort direction
+## Sort direction {#sort-direction}
 
 There are three available settings for the direction in which a column can be sorted:
 
@@ -75,11 +75,11 @@ When a column has sorting enabled, you will see a set of vertical arrow indicato
 When ascending order is selected, a `^` will be displayed, whereas descending order will display a `v`.
 
 
-## Client vs. server-side sorting
+## Client vs. server-side sorting {#client-vs-server-side-sorting}
 
 Sorting of data plays can be broadly categorized into two main approaches: **Client Sorting** and **Server Sorting**.
 
-### Client sorting
+### Client sorting {#client-sorting}
 
 Client sorting involves arranging and displaying data directly within the user interface of the client application. It's the sorting users interact with when they click on column headers, influencing the visual representation of data on the screen.
 
@@ -96,7 +96,7 @@ The developer has no direct control over client-side sorting, but rather is dete
 Client sorting does not work when only a portion of the data is available in the client.
 :::
 
-### Server sorting
+### Server sorting {#server-sorting}
 
 In contrast to client-side sorting, server sorting entails arranging and organizing data on the server before transmitting it to the client. This approach is particularly beneficial when dealing with large datasets that might be impractical to transfer entirely to the client.
 
@@ -107,7 +107,7 @@ Developers have more control over the logic of server sorting. This allows for t
 Server sorting is a performance-oriented strategy for dealing with datasets that exceed the capabilities of efficient client-side processing, and is the default method used by the `Table`.
 :::
 
-#### Comparators
+#### Comparators {#comparators}
 
 The `Column` component allows developers to use Java `Comparators` for dynamic and custom sorting. A `Comparator` is a mechanism used to order two objects of the same class, even if that class is user-defined. This functionality provides developers with the flexibility to customize how data is sorted, providing higher control over the default sorting behavior based on natural ordering.
 

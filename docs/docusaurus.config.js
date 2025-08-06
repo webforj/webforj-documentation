@@ -16,7 +16,34 @@ const config = {
   trailingSlash: false,
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'es', 'de', 'fr', 'nl'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+        htmlLang: 'en-US',
+      },
+      es: {
+        label: 'Español',
+        direction: 'ltr',
+        htmlLang: 'es-ES',
+      },
+      de: {
+        label: 'Deutsch',
+        direction: 'ltr',
+        htmlLang: 'de-DE',
+      },
+      fr: {
+        label: 'Français',
+        direction: 'ltr',
+        htmlLang: 'fr-FR',
+      },
+      nl: {
+        label: 'Dutch',
+        direction: 'ltr',
+        htmlLang: 'nl-NL',
+      },
+    },
   },
   scripts: [
     { src: '/js/dwc-theme-switcher.js', async: false },
@@ -192,6 +219,10 @@ const config = {
           type: 'html',
           position: 'right',
           value: '<div class="separator" aria-hidden></div>',
+        },
+        {
+          type: 'localeDropdown',
+          position: 'right',
         },
         {
           href: 'https://github.com/webforj',

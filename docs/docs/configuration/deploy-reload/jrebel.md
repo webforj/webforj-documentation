@@ -6,7 +6,7 @@ JRebel is a Java development tool that integrates with the JVM to detect code ch
 
 When a change is made to a class, method, or field, JRebel compiles and injects the updated bytecode on the fly, eliminating the need for a full server restart. By applying changes directly to the running app, JRebel streamlines the development workflow, saving time and preserving app state, including user sessions.
 
-## Installation
+## Installation {#installation}
 
 The official JRebel site provides [quick start instructions](https://www.jrebel.com/products/jrebel/learn) to get the product up and running in various popular IDEs. Follow these instructions to integrate JRebel into your development environment.
 

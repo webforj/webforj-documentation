@@ -7,7 +7,7 @@ title: Jakarta Validation
 
 webforJ seamlessly integrates with Bean Validation through the `JakartaValidator` adapter, providing robust support out of the box.
 
-## Installation
+## Installation {#installation}
 
 It's necessary to include a compatible implementation, such as [Hibernate Validator](https://hibernate.org/validator/), in your classpath. If your environment doesn't come with this implementation by default, you can add it manually by using the following Maven dependencies:
 
@@ -24,11 +24,11 @@ It's necessary to include a compatible implementation, such as [Hibernate Valida
 </dependency>
 ```
 
-## The `JakartaValidator`
+## The `JakartaValidator` {#the-jakartavalidator}
 
 The `JakartaValidator` class serves as an adapter, bridging the webforJ binding context with Jakarta Validation. This integration enables the use of complex validation rules directly via annotations in the bean class.
 
-### Activating `JakartaValidator`
+### Activating `JakartaValidator` {#activating-jakartavalidator}
 
 To activate the `JakartaValidator` across the entire context, you typically use the `useJakartaValidator` parameter when constructing the `BindingContext`.
 
@@ -36,7 +36,7 @@ To activate the `JakartaValidator` across the entire context, you typically use 
 BindingContext<User> context = new BindingContext<>(User.class, true);
 ```
 
-### Defining constraints for bean properties
+### Defining constraints for bean properties {#defining-constraints-for-bean-properties}
 
 Annotation-based constraints are directly applied within the bean class to specify validation conditions, as illustrated in the example below:
 

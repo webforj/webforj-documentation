@@ -26,13 +26,13 @@ This archetype creates a minimalistic app with a few components and some styling
 For more control over customization and configuration, you can use [startforJ](https://docs.webforj.com/startforj/) to create your project - just select the `HelloWorld` archetype when choosing configuration options.
 :::
 
-## Using the `hello-world` archetype
+## Using the `hello-world` archetype {#using-the-hello-world-archetype}
 
 <ComponentArchetype
 project="hello-world"
 />
 
-## Running the app
+## Running the app {#running-the-app}
 
 Before running your app, install the [prerequisites](../../introduction/prerequisites) if you haven't yet. 
 Then, navigate to the project's root directory and run the following command:

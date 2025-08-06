@@ -16,7 +16,7 @@ The app created in the [previous step](./working-with-data) will have a routing 
   </video>
 </div>
 
-## Routing
+## Routing {#routing}
 
 [Routing](../../routing/overview) is the mechanism that allows your app to manage navigation between different views or pages. Instead of keeping all logic and behavior in a single location, routing enables you to break your app into smaller, focused component. 
 
@@ -29,7 +29,7 @@ Instead of placing all logic within the `run()` method of `App`, views like `Dem
 - **DemoView**: Handles displaying the table and navigating to `FormView`.
 - **FormView**: Manages adding and editing customer data.
 
-### Changing the `App` class
+### Changing the `App` class {#changing-the-app-class}
 
 To enable routing in your app, update the `App` class with the `@Routify` annotation. This tells webforJ to activate routing and scan specified packages for route-enabled views.
 
@@ -42,7 +42,7 @@ public class DemoApplication extends App {
 - **`packages`**: Specifies which packages are scanned for views that define routes.
 - **`debug`**: Enables debugging mode for easier troubleshooting during development.
 
-### Creating files for the views and configuring routes
+### Creating files for the views and configuring routes {#creating-files-for-the-views-and-configuring-routes}
 
 Once routing has been enabled, separate Java files for each view the app will contain are created, in this case, `DemoView.java` and `FormView.java`. Unique routes are assigned to these views using the `@Route` annotation. This ensures that each view is accessible through a specific URL.
 
@@ -79,7 +79,7 @@ public class FormView extends Composite<Div> implements DidEnterObserver {
 More information regarding the different ways to implement those route patterns is available [here](../../routing/route-patterns).
 :::
 
-## Using `Composite` components to display pages
+## Using `Composite` components to display pages {#using-composite-components-to-display-pages}
 
 Composite components in webforJ, such as `Composite<Div>`, allow you to encapsulate UI logic and structure within a reusable container. By extending `Composite`, you limit the methods and data exposed to the rest of the app, ensuring cleaner code and better encapsulation.
 
@@ -102,12 +102,12 @@ public class DemoView extends Composite<Div> {
 }
 ```
 
-## Connecting the routes
+## Connecting the routes {#connecting-the-routes}
 
 After configuring routing and setting up views, connect the views and data using event listeners and service methods. The first step is to add one or more
 UI elements to navigate from one view to the other.
 
-### Button navigation
+### Button navigation {#button-navigation}
 
 The `Button` component triggers a navigation event to transition from one view to another using the `Router` class. For example:
 
@@ -122,7 +122,7 @@ and view initialization is of no concern.
 For more details on navigation, see the [Route Navigation Article](../../routing/route-navigation).
 :::
 
-### Table editing
+### Table editing {#table-editing}
 
 In addition to navigation via button click, many apps also allow for navigation to other parts of an app when a `Table` is double clicked. The following changes are made to allow users to double-click an item in the table to navigate to a form pre-filled with the item's details.
 
@@ -137,7 +137,7 @@ private void editCustomer(TableItemClickEvent<Customer> e) {
 }
 ```
 
-### Handling initialization with `onDidEnter`
+### Handling initialization with `onDidEnter` {#handling-initialization-with-ondidenter}
 
 The `onDidEnter` method in webforJ is part of the routing lifecycle and is triggered when a view becomes active. 
 
@@ -166,7 +166,7 @@ The `onDidEnter` method in `FormView` checks for the presence of an `id` paramet
 ```
 
 
-### Submitting data 
+### Submitting data {#submitting-data}
 
 When finished editing the data, it's necessary to submit it to the service handling the repository. Therefore the 
 `Service` class that has been already set up in the previous step of this tutorial
@@ -185,7 +185,7 @@ public void editCustomer(Customer editedCustomer) {
 }
 ```
 
-### Using `commit()`
+### Using `commit()` {#using-commit}
 
 The `commit()` method in the `Repository` class keeps the app’s data and UI in sync. It provides a mechanism to refresh the data stored in the `Repository`, ensuring the latest state is reflected in the app.
 

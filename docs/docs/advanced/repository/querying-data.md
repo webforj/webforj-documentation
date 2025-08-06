@@ -9,7 +9,7 @@ sidebar_position: 3
 
 The <JavadocLink type="data" location="com/webforj/data/repository/QueryableRepository" code="true">QueryableRepository</JavadocLink> interface extends `Repository` with advanced querying through <JavadocLink type="data" location="com/webforj/data/repository/RepositoryCriteria" code="true">RepositoryCriteria</JavadocLink>. Unlike basic repositories that only support simple filtering, queryable repositories provide structured querying with custom filter types, sorting, and pagination.
 
-## Understanding filter types
+## Understanding filter types {#understanding-filter-types}
 
 <JavadocLink type="data" location="com/webforj/data/repository/QueryableRepository" code="true">QueryableRepository</JavadocLink> introduces a second generic parameter for the filter type: `QueryableRepository<T, F>` where `T` is your entity type and `F` is your custom filter type. 
 
@@ -33,7 +33,7 @@ QueryableRepository<Document, String> searchRepo =
 
 UI components don't care about these differences. They call `setBaseFilter()` with whatever filter type the repository expects, and the repository handles the translation.
 
-## Building queries with repository criteria
+## Building queries with repository criteria {#building-queries-with-repository-criteria}
 
 <JavadocLink type="data" location="com/webforj/data/repository/RepositoryCriteria" code="true">RepositoryCriteria</JavadocLink> bundles all query parameters into one immutable object. Instead of calling separate methods for filter, sort, and pagination, you pass everything at once:
 
@@ -66,9 +66,9 @@ RepositoryCriteria<Product, Predicate<Product>> pageOnly =
     new RepositoryCriteria<>(0, 25);
 ```
 
-## Working with different filter types
+## Working with different filter types {#working-with-different-filter-types}
 
-### Predicate filters
+### Predicate filters {#predicate-filters}
 
 For in-memory collections, use `Predicate<T>` to compose functional filters:
 
@@ -95,7 +95,7 @@ repository.setBaseFilter(filter);
 ```
 
 
-### Custom filter objects
+### Custom filter objects {#custom-filter-objects}
 
 External data sources can't execute Java predicates. Instead, you create filter classes that represent what your backend can search:
 
@@ -127,7 +127,7 @@ Inside your custom repository's `findBy()` method, you'd translate this filter o
 
 The `Repository` implementation should handle this translation, keeping your UI code clean.
 
-## Sorting data
+## Sorting data {#sorting-data}
 
 <JavadocLink type="data" location="com/webforj/data/repository/OrderCriteria" code="true">OrderCriteria</JavadocLink> defines how to sort your data. Each `OrderCriteria` needs a value provider (how to get the value from your entity) and a direction:
 
@@ -161,7 +161,7 @@ OrderCriteria<Employee, String> byName = new OrderCriteria<>(
 
 `CollectionRepository` uses the value provider to sort Java objects. `DelegatingRepository` implementations can use the property name to build order clauses in SQL or `sort=name:asc` in REST APIs.
 
-## Controlling pagination
+## Controlling pagination {#controlling-pagination}
 
 Set offset and limit to control which slice of data to load:
 

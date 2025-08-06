@@ -20,7 +20,7 @@ path='/webforj/timefield?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/timefield/TimeFieldView.java'
 />
 
-## Usages
+## Usages {#usages}
 
 The `TimeField` is ideal for choosing and displaying times in your app. Here are some examples of when to use the `TimeField`:
 
@@ -30,7 +30,7 @@ The `TimeField` is ideal for choosing and displaying times in your app. Here are
 
 3. **Reminders and Alarms**: Using a time field simplifies the input process for users setting reminders or alarms in your app.
 
-## Min and max value
+## Min and max value {#min-and-max-value}
 
 With the `setMin()` and `setMax()` methods, you can specify a range of acceptable times.
 
@@ -38,7 +38,7 @@ With the `setMin()` and `setMax()` methods, you can specify a range of acceptabl
 
 - **For `setMax()`**: If the value entered into the component is later than the specified maximum time, the component will fail constraint validation. When both the min and max values are set, the max value must be a time that's the same as or later than the min value. 
 
-## Value handling and localization
+## Value handling and localization {#value-handling-and-localization}
 
 Internally, the `TimeField` component represents its value using a `LocalTime` object from the `java.time` package. This allows developers to interact with precise time values regardless of how they're visually rendered.
 
@@ -59,7 +59,7 @@ timeField.setText("09:15:00"); // valid
 The appearance of the time picker input UI depends not only on the selected locale but also on the browser and operating system being used. This ensures automatic consistency with the interface users are already familiar with.
 :::
 
-## Static utilities
+## Static utilities {#static-utilities}
 
 The `TimeField` class also provides the following static utility methods:
 
@@ -69,7 +69,7 @@ The `TimeField` class also provides the following static utility methods:
 
 - `isValidTime(String timeAsString)`: Check if the given string is a valid HH:mm:ss time. This will return a boolean value true if so, false otherwise.
 
-## Best practices
+## Best practices {#best-practices}
 
 - **Provide Clear Time Format Examples**: Clearly show users the expected time format near the `TimeField`. Use examples or placeholders to help them enter the time correctly. If possible, display the time format based on the user's location.
 

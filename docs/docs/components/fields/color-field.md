@@ -23,7 +23,7 @@ cssURL='/css/fields/colorfield/colorFieldDemo.css'
 height='300px'
 />
 
-## Usages
+## Usages {#usages}
 
 The `ColorField` is best used in scenarios where color selection is a crucial part of the user interface or app interface. Here are some scenarios where you can use a `ColorField` effectively:
 
@@ -33,7 +33,7 @@ The `ColorField` is best used in scenarios where color selection is a crucial pa
 
 3. **Data Visualization**: Provide users a color field to select colors for charts, graphs, heatmaps, and other visual representations.
 
-## Value
+## Value {#value}
 
 The `ColorField` uses the [`java.awt.Color`](https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Color.html) class for setting and retrieving colors via the `setValue()` and `getValue()` methods. While the client-side component exclusively handles fully opaque RGB colors in hexadecimal notation, webforJ streamlines the process by automatically converting `Color` values into the correct format.
 
@@ -41,7 +41,7 @@ The `ColorField` uses the [`java.awt.Color`](https://docs.oracle.com/en/java/jav
 When using the `setText()` method to assign a value, the `ColorField` will attempt to parse the input as a hexadecimal color. If parsing fails, an `IllegalArgumentException` will be thrown.
 :::
 
-## Static utilities 
+## Static utilities {#static-utilities}
 
 The `ColorField` class also provides the following static utility methods:
 
@@ -51,7 +51,7 @@ The `ColorField` class also provides the following static utility methods:
 
 - `isValidHexColor(String hex)`: Check if the given value is a valid 7 character hex color.
 
-## Best practices
+## Best practices {#best-practices}
 
 To ensure an optimal user experience when using the `ColorField` component, consider the following best practices:
 

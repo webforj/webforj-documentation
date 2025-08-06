@@ -16,14 +16,14 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '450px'
 />
 
-## Usages
+## Usages {#usages}
 
 The Login component provides a user-friendly login form interface within a dialog for entering authentication credentials. It enhances the user experience by offering:
    >- Clear input fields for username and password.
    >- Visibility toggle for password to verify input.
    >- Input validation feedback to prompt correct format before submission.
 
-## Login submission
+## Login submission {#login-submission}
 
 When users enter their username and password, the login component validates these inputs as required fields. Once the validation passes, a form submission event is triggered, delivering the entered credentials. To prevent multiple submissions, the `Signin` button is immediately disabled.
 
@@ -43,7 +43,7 @@ By default, the login form immediately disables the `Signin` button once the com
 In certain scenarios, empty passwords may be permissible, allowing users to log in with just a username. The login dialog can be configured to accept empty passwords by setting `setEmptyPassword(true)`.
 :::
 
-## Internationalization (i18n)
+## Internationalization (i18n) {#internationalization-i18n}
 
 The titles, descriptions, labels, and messages within the login component are fully customizable using the `LoginI18n` class. This flexibility allows you to tailor the login interface to meet specific localization requirements or personalization preferences.
 
@@ -55,9 +55,9 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '500px'
 />
 
-## Custom fields
+## Custom fields {#custom-fields}
 
-The login component includes [several slots](#slots), which allow you to add extra fields if necessary. This feature provides more control over the information required for successful authentication.
+The login component includes several slots, which allow you to add extra fields if necessary. This feature provides more control over the information required for successful authentication.
 
 In the example below, a Customer ID field is added to the login form. Users must provide a valid ID to complete authentication, enhancing security and ensuring that access is granted only after verifying all required credentials.
 
@@ -72,7 +72,7 @@ height = '700px'
 Note that the login component doesn't automatically recognize or include extra fields added to the form in its submission payload. This means developers must explicitly retrieve the value of any additional fields from the client side and handle it according to the app's requirements to complete the authentication process.
 :::
 
-## Cancel button
+## Cancel button {#cancel-button}
 
 In certain scenarios, it may be desirable to add a cancel button alongside the `Signin` button. This feature is useful particularly when a user attempts to access a restricted area of the app and needs an option to cancel the action and return to their previous location. The login form includes a cancel button by default, but it's hidden from view.
 
@@ -88,7 +88,7 @@ height = '450px'
 To hide an element from the login screen, simply set its label to an empty string. This approach is particularly useful for temporarily removing interface components without permanently altering the codebase.
 :::
 
-## Password managers
+## Password managers {#password-managers}
 
 The login component is designed to be compatible with browser-based password managers, enhancing the user experience by simplifying the login process. For users of Chromium-based browsers, the component integrates seamlessly with the [`PasswordCredential`](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential) API. This integration enables several convenient features:
 
@@ -96,6 +96,6 @@ The login component is designed to be compatible with browser-based password man
 - **Credential Management**: After logging in, the browser can prompt the user to save new credentials, making future logins faster and easier.
 - **Credential Selection**: If multiple credentials are saved, the browser can offer a choice to the user to select from one of the saved sets.
 
-## Styling
+## Styling {#styling}
 
 <TableBuilder name="Login" />

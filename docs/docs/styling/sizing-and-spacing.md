@@ -3,16 +3,13 @@ sidebar_position: 5
 title: Sizing and Spacing
 ---
 
-import SizingBox from '@site/src/components/DWCTheme/SizingBox/SizingBox';
-import SpacingBox from '@site/src/components/DWCTheme/SpacingBox/SpacingBox';
-
 Spacing and sizing tokens are used to provide consistent spacing and sizing in your app. All sizing and spacing properties are defined in `rem`.
 
 :::info REM Unit
 `rem` is a relative length unit. it's relative to the font size of the [root element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html).
 :::
 
-## Sizing
+## Sizing {#sizing}
 
 Use these properties to adjust the sizing of the component (width, height). `m` is the standard size for almost all components.
 
@@ -20,7 +17,7 @@ Use these properties to adjust the sizing of the component (width, height). `m` 
 When choosing a size, always make sure to keep it large enough for tap targets.
 :::
 
-### Example
+### Example {#example}
 
 ```css
 .element {
@@ -29,7 +26,7 @@ When choosing a size, always make sure to keep it large enough for tap targets.
 }
 ```
 
-### Variables
+### Variables {#variables}
 
 | **Variable**     | **Default Value** | **Example**                         |
 | ---------------- | ----------------- | ----------------------------------- |
@@ -44,11 +41,11 @@ When choosing a size, always make sure to keep it large enough for tap targets.
 | `--dwc-size-3xl` | 4.25rem           | <SizingBox size="--dwc-size-3xl" /> |
 | `--dwc-size`     | var(--dwc-size-m) | <SizingBox size="--dwc-size" />     |
 
-## Spacing
+## Spacing {#spacing}
 
 Use these properties to adjust the inter-component spacing (margin, padding).
 
-### Example
+### Example {#example-1}
 
 ```css
 .element {
@@ -56,7 +53,7 @@ Use these properties to adjust the inter-component spacing (margin, padding).
 }
 ```
 
-### Variables
+### Variables {#variables-1}
 
 | **Variable**      | **Default Value**  | **Example**                            |
 | ----------------- | ------------------ | -------------------------------------- |

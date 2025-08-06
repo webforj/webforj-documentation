@@ -20,7 +20,7 @@ path='/webforj/passwordfield?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/passwordfield/PasswordFieldView.java'
 />
 
-## Field value
+## Field value {#field-value}
 
 The `PasswordField` component stores and retrieves its value as a plain `String`, similar to a `TextField`, but with obscured visual rendering to hide the characters from view.
 
@@ -46,7 +46,7 @@ If no value has been entered by the user and no default is set, the field will r
 This behavior mimics that of the native HTML `<input type="password">`, where the `value` property holds the current input.
 
 
-## Usages
+## Usages {#usages}
 
 The `PasswordField` is best used in scenarios where capturing or handling sensitive information, such as passwords or other confidential data, is essential to your app. Here are some examples of when to use the `PasswordField`:
 
@@ -56,11 +56,11 @@ The `PasswordField` is best used in scenarios where capturing or handling sensit
 
 3. **Account Management and Profile Settings**: Password fields are valuable in apps that involve account management or profile settings, allowing users to change or update their passwords securely.
 
-## Password visibility
+## Password visibility {#password-visibility}
 
 Users can reveal the value of the `PasswordField` by clicking on the reveal icon. This allows users to verify what they’ve entered, or copy the information to their clipboard. However, for high-security environments, you can use `setPasswordReveal()` to remove the reveal icon and prevent users from seeing the value. You can verify if a user can use the reveal icon to show the value with the `isPasswordReveal()` method.
 
-## Pattern matching
+## Pattern matching {#pattern-matching}
 
 Applying a regular expression pattern to the `PasswordField` using the `setPattern()` method is strongly recommended. This allows you to enforce character rules and structural requirements, forcing users to create secure and compliant credentials. Pattern matching is especially useful when enforcing strong password rules, such as requiring a mix of uppercase and lowercase letters, numbers, and symbols.
 
@@ -79,7 +79,7 @@ Use `setLabel()` to provide a clear label describing the password field's purpos
 :::
 
 
-## Minimum and maximum length
+## Minimum and maximum length {#minimum-and-maximum-length}
 
 You can control the allowed length of the password input by using `setMinLength()` and `setMaxLength()` on the `PasswordField`.
 
@@ -104,7 +104,7 @@ Use both `setMinLength()` and `setMaxLength()` together to create effective inpu
 :::
 
 
-## Best practices
+## Best practices {#best-practices}
 
 As the `PasswordField` component is often associated with sensitive information, consider the following best practices when using the `PasswordField`:
 

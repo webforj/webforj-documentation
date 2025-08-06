@@ -15,6 +15,6 @@ hide_table_of_contents: true
 
 Validations play a crucial role by enforcing business rules before the system updates data in the model or acts upon it. webforJ integrates validations directly into the data binding process, providing a seamless way to ensure data integrity as it flows between UI components and the backend.
 
-## Topics
+## Topics {#topics}
 
 <DocCardList className="topics-section" />

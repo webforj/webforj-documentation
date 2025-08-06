@@ -17,11 +17,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## Min and max size 
+## Min and max size {#min-and-max-size}
 
 The `Splitter` component provides methods to set minimum and maximum sizes for its panels, allowing you to control the resizing behavior of the components within the `Splitter`. When users attempt to resize panels beyond the specified min or max sizes, the splitter component enforces these constraints, ensuring that panels remain within the defined boundaries.
 
-### Setting sizes
+### Setting sizes {#setting-sizes}
 
 The `setMasterMinSize(String masterMinSize)` method specifies the minimum size for the master panel of the splitter. Likewise, the `setMasterMaxSize(String masterMaxSize)` method specifies the maximum size for the master panel.
 
@@ -33,7 +33,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## Orientation
+## Orientation {#orientation}
 
 You can configure orientation in the `Splitter` component, allowing you to create layouts tailored to specific design requirements. By specifying the orientation, the component arranges panels horizontally or vertically, providing versatility in layout design.
 
@@ -45,7 +45,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## Relative position
+## Relative position {#relative-position}
 
 To set the initial position of the divider bar in the `Splitter` component, use `setPositionRelative`. This method takes a numeric value from `0` to `100` representing the percentage of the given space in the `Splitter`, and displays the divider at the given percentage of total width:
 
@@ -55,7 +55,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## Nesting
+## Nesting {#nesting}
 
 Splitter nesting allows you to create complex layouts with levels of resizable panels. It enables the creation of sophisticated user interfaces with granular control over the arrangement and resizing of content.
 
@@ -67,13 +67,13 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## Auto save
+## Auto save {#auto-save}
 
 The `Splitter` component includes an AutoSave option, which saves the state of panel sizes to local storage to keep dimensions consistent between reloads.
 
 When you set the auto-save configuration, the `Splitter` component automatically stores the state of panel sizes in the web browser's local storage. This ensures that the sizes users choose for panels persist across page reloads or browser sessions, reducing the need for manual adjustments.
 
-### Cleaning the state
+### Cleaning the state {#cleaning-the-state}
 
 To programmatically revert the `Splitter` back to default settings and dimensions, call the `cleanState()` method to remove any saved state data related to the `Splitter` component from the local storage of the web browser.
 
@@ -87,11 +87,11 @@ In the preceding demo, each Splitter instance activates the AutoSave feature by 
 
 Clicking the "Clear State" button calls the `cleanState()` method and refreshes the browser window to display the original dimensions.
 
-## Styling
+## Styling {#styling}
 
 <TableBuilder name="Splitter" />
 
-## Best practices 
+## Best practices {#best-practices}
 
 To ensure an optimal user experience when using the `Splitter` component, consider the following best practices: 
 

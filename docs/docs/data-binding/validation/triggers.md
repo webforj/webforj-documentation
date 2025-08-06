@@ -36,7 +36,7 @@ Some components, like the field components, implement the `ValueChangeModeAware`
 ```
 :::
 
-## Revalidation
+## Revalidation {#revalidation}
 
 While validations typically trigger automatically during data writing, you can also invoke them manually to verify the state of data without attempting to write it to the model. This manual approach is particularly useful in scenarios where you want to enable or turn off features based on the validity of the form data without making an update.
 

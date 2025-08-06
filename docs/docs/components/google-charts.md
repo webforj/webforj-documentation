@@ -32,7 +32,7 @@ height='300px'
 />
 
 
-## Chart types
+## Chart types {#chart-types}
 
 The `GoogleChart` addon offers a comprehensive array of chart types to suit various data visualization requirements. Selecting the appropriate chart type is essential for effectively communicating the data's story. See the gallery below for examples of common charts that can be used in a webforJ app.
 
@@ -43,7 +43,7 @@ cssURL='/css/googlecharts/chartGallery.css'
 height='600px'
 />
 
-## Options
+## Options {#options}
 
 The `GoogleChart` addon enables extensive customization through a variety of options. These options allow you to tailor the look and functionality of your charts to fit your app's needs. Options are passed as a `Map<String, Object>` to the chart's `setOptions()` method. 
 
@@ -60,11 +60,11 @@ chart.setOptions(options);
 
 For more information on the options available for specific charts, see the [Google Visualization API reference (Chart Gallery)](https://developers.google.com/chart/interactive/docs/gallery).
 
-## Setting data
+## Setting data {#setting-data}
 
 Visualizing data with `GoogleChart` requires properly structuring and setting the data. This guide will walk you through preparing your data and applying it to your charts.
 
-### Basic data setup
+### Basic data setup {#basic-data-setup}
 
 The most straightforward way to define the data is by using `List<Object>`, where each row is a list of values.
 
@@ -79,7 +79,7 @@ data.add(Arrays.asList("Sleep", 7));
 chart.setData(data);
 ```
 
-### Using maps for more complex structures
+### Using maps for more complex structures {#using-maps-for-more-complex-structures}
 
 For more complex data structures, you can use maps to represent rows and then convert them into the required format.
 
@@ -111,7 +111,7 @@ height='300px'
 
 <!-- tabs={['ChartDemoSettingData.java']} -->
 
-### Loading data and options from JSON
+### Loading data and options from JSON {#loading-data-and-options-from-json}
 
 You can also load data and options from JSON files using Gson for easier management. This approach helps keep your data and options organized and easy to update.
 
@@ -132,7 +132,7 @@ Map<String, Object> options = new Gson().fromJson(
 chart.setOptions(options);
 ```
 
-## Updating chart visuals
+## Updating chart visuals {#updating-chart-visuals}
 
 Refreshing or updating the appearance of your charts in response to data changes, user interactions, or visual option adjustments is straightforward with the `redraw()` method. This method ensures that your charts remain accurate and visually aligned with the underlying data or any modifications to their settings.
 
@@ -151,7 +151,7 @@ height='650px'
 
 <!-- tabs={['ChartDemoRedraw.java', 'redrawchart_styles.css']} -->
 
-## Exporting charts as images
+## Exporting charts as images {#exporting-charts-as-images}
 
 The `getImageUri()` method provides a way to export your Google Charts as base64-encoded PNG images. This method is particularly useful for sharing charts outside the web environment, embedding them into emails or documents, or simply for archival purposes.
 
@@ -164,7 +164,7 @@ chart.addReadyListener(e -> {
 });
 ```
 
-## `GoogleChartSelectedEvent`
+## `GoogleChartSelectedEvent` {#googlechartselectedevent}
 
 The `GoogleChartSelectedEvent` is triggered whenever a user selects a data point or segment in a Google Chart component. This event enables interaction with the selected chart data, providing details about what was selected. The event can be listened for by using the `addSelectedListener()` method on the `GoogleChart` instance.
 
@@ -186,7 +186,7 @@ chart.addSelectedListener(event -> {
 });
 ```
 
-### Payload
+### Payload {#payload}
 The `GoogleChartSelectedEvent` provides access to the selection data, which can be retrieved using the `getSelection()` method on the chart object. This method returns a list of objects, where each object contains the following properties:
 
 - **row**: The index of the row in the chart’s data table that was selected.
