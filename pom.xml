@@ -273,5 +273,32 @@
         <config.file>webforj-dev.conf</config.file>
       </properties>
     </profile>
+    <profile>
+      <id>en-only</id>
+      <properties>
+        <config.file>webforj-prod.conf</config.file>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.github.eirslett</groupId>
+            <artifactId>frontend-maven-plugin</artifactId>
+            <version>1.15.0</version>
+            <executions>
+              <execution>
+                <id>npm run build</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <phase>generate-resources</phase>
+                <configuration>
+                  <arguments>run build -- --locale en</arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
 </project>
