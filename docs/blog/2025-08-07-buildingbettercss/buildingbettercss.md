@@ -2,7 +2,7 @@
 title: "Building Better CSS with webforJ's Styling System"
 description: "Learning webforJ's styling system from a developer's perspective: using `@StyleSheet` and `@InlineStyleSheet` annotations, working with DWC design tokens, handling responsive layouts, and building complex demos that scale from simple components to full dashboards."
 slug: webforj-styling-guide
-date: 2025-07-18
+date: 2025-08-07
 authors: webforJ
 tags: [webforJ, styling, frontend]
 image: "https://docs.webforj.com/release_blog/_images/stylesheetblog.png"

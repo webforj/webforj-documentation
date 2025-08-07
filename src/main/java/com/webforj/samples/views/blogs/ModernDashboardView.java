@@ -1,4 +1,4 @@
-package com.webforj.samples.views.stylesheet;
+package com.webforj.samples.views.blogs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
