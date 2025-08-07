@@ -16,7 +16,7 @@ const config = {
   trailingSlash: false,
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'es', 'de', 'fr', 'nl'],
+    locales: ['en', 'es', 'de', 'fr', 'nl', 'fi', 'zh'],
     localeConfigs: {
       en: {
         label: 'English',
@@ -39,9 +39,19 @@ const config = {
         htmlLang: 'fr-FR',
       },
       nl: {
-        label: 'Dutch',
+        label: 'Nederlands',
         direction: 'ltr',
         htmlLang: 'nl-NL',
+      },
+      fi: {
+        label: 'Suomi',
+        direction: 'ltr',
+        htmlLang: 'fi-FI',
+      },
+      zh: {
+        label: '中文',
+        direction: 'ltr',
+        htmlLang: 'zh-CN',
       },
     },
   },

@@ -3,6 +3,102 @@
     "message": "This page has been automatically translated using AI and may contain errors or inaccuracies. For the most accurate and up-to-date information, please refer to the official webforJ documentation. webforJ makes no warranties about the accuracy, reliability, or completeness of these AI translations.",
     "description": "Translation notice for non-English pages"
   },
+  "component.askMenu.chatgpt.label": {
+    "message": "Open in ChatGPT",
+    "description": "ChatGPT button label"
+  },
+  "component.askMenu.chatgpt.desc": {
+    "message": "Ask questions about this page",
+    "description": "ChatGPT button description"
+  },
+  "component.askMenu.claude.label": {
+    "message": "Open in Claude",
+    "description": "Claude button label"
+  },
+  "component.askMenu.claude.desc": {
+    "message": "Chat with Claude AI about this page",
+    "description": "Claude button description"
+  },
+  "component.askMenu.markdown.label": {
+    "message": "Show Markdown",
+    "description": "Markdown button label"
+  },
+  "component.askMenu.markdown.desc": {
+    "message": "View the raw markdown source",
+    "description": "Markdown button description"
+  },
+  "component.archetype.intro": {
+    "message": "To create and scaffold a new {project} project, follow these steps:",
+    "description": "Introduction text for archetype component"
+  },
+  "component.archetype.step1.title": {
+    "message": "Navigate to the proper directory",
+    "description": "Step 1 title"
+  },
+  "component.archetype.step1.desc": {
+    "message": "Open a terminal and move to the folder where you want to create your new project.",
+    "description": "Step 1 description"
+  },
+  "component.archetype.step2.title": {
+    "message": "Run the archetype:generate command",
+    "description": "Step 2 title"
+  },
+  "component.archetype.step2.desc": {
+    "message": "Use the Maven command below, and customize the groupId, artifactId, and version as needed for your project.",
+    "description": "Step 2 description"
+  },
+  "component.archetype.table.argument": {
+    "message": "Argument",
+    "description": "Argument column header"
+  },
+  "component.archetype.table.explanation": {
+    "message": "Explanation",
+    "description": "Explanation column header"
+  },
+  "component.archetype.table.archetypeGroupId.desc": {
+    "message": "The group ID of the archetype is com.webforj for webforJ archetypes.",
+    "description": "archetypeGroupId description"
+  },
+  "component.archetype.table.archetypeArtifactId.desc": {
+    "message": "Specifies the name of the archetype to use.",
+    "description": "archetypeArtifactId description"
+  },
+  "component.archetype.table.archetypeVersion.desc": {
+    "message": "Specifies the version of the archetype to use. This ensures that the generated project is compatible with a specific archetype version. Using LATEST selects the most recent version available.",
+    "description": "archetypeVersion description"
+  },
+  "component.archetype.table.groupId.desc": {
+    "message": "Represents the namespace for the generated project. Typically structured like a Java package, such as org.example and is used to uniquely identify your organization or project domain.",
+    "description": "groupId description"
+  },
+  "component.archetype.table.artifactId.desc": {
+    "message": "Specifies the name of the generated project. This will be the name of the resulting artifact and the project folder.",
+    "description": "artifactId description"
+  },
+  "component.archetype.table.version.desc": {
+    "message": "Defines the version of the generated project. A common convention is MAJOR.MINOR-SNAPSHOT, like 1.0-SNAPSHOT, where SNAPSHOT denotes that the project is still in development.",
+    "description": "version description"
+  },
+  "component.archetype.table.flavor.desc": {
+    "message": "Selects a project flavor:",
+    "description": "flavor description intro"
+  },
+  "component.archetype.table.flavor.webforj": {
+    "message": "Standard webforJ app.",
+    "description": "webforj flavor description"
+  },
+  "component.archetype.table.flavor.spring": {
+    "message": "webforJ app with Spring Boot support (requires webforJ 25.02 or higher).",
+    "description": "webforj-spring flavor description"
+  },
+  "component.archetype.table.appName.desc": {
+    "message": "An optional parameter that can be used in the generated project's POM file. Depending on the used webforJ archetype, it can be utilized as a default title for the application.",
+    "description": "appName description"
+  },
+  "component.archetype.conclusion": {
+    "message": "After running the command, Maven will generate the project files necessary to run the project.",
+    "description": "Conclusion text"
+  },
   "theme.ErrorPageContent.title": {
     "message": "This page crashed.",
     "description": "The title of the fallback page when the page crashed"
@@ -456,5 +552,165 @@
   "theme.tags.tagsPageTitle": {
     "message": "Tags",
     "description": "The title of the tag list page"
+  },
+  "tableBuilder.headers.part": {
+    "message": "Part",
+    "description": "Table header for part name"
+  },
+  "tableBuilder.headers.description": {
+    "message": "Description",
+    "description": "Table header for description"
+  },
+  "tableBuilder.sections.shadowParts": {
+    "message": "Shadow parts",
+    "description": "Section heading for shadow parts table"
+  },
+  "tableBuilder.descriptions.shadowParts": {
+    "message": "These are the {shadowDomLink} parts for the {componentName} component, which are required for styling with CSS.",
+    "description": "Description for shadow parts section"
+  },
+  "tableBuilder.shadowDom": {
+    "message": "shadow DOM",
+    "description": "Link text for shadow DOM"
+  },
+  "tableBuilder.headers.slot": {
+    "message": "Slot",
+    "description": "Table header for slot name"
+  },
+  "tableBuilder.sections.slots": {
+    "message": "Slots",
+    "description": "Section heading for slots table"
+  },
+  "tableBuilder.descriptions.slots": {
+    "message": "These are the slots available for use within the {componentName} component. These slots act as placeholders within the component that control where the children of a customized element are inserted within the shadow tree.",
+    "description": "Description for slots section"
+  },
+  "tableBuilder.headers.property": {
+    "message": "Property",
+    "description": "Table header for property name"
+  },
+  "tableBuilder.sections.cssProperties": {
+    "message": "CSS properties",
+    "description": "Section heading for CSS properties table"
+  },
+  "tableBuilder.descriptions.cssProperties": {
+    "message": "These are the CSS properties that are used in the {componentName} component, with a short description of their use.",
+    "description": "Description for CSS properties section"
+  },
+  "tableBuilder.sections.properties": {
+    "message": "Properties",
+    "description": "Section heading for properties table"
+  },
+  "tableBuilder.headers.name": {
+    "message": "Name",
+    "description": "Table header for name"
+  },
+  "tableBuilder.headers.attribute": {
+    "message": "Attribute",
+    "description": "Table header for attribute"
+  },
+  "tableBuilder.headers.type": {
+    "message": "Type",
+    "description": "Table header for type"
+  },
+  "tableBuilder.headers.reflects": {
+    "message": "Reflects",
+    "description": "Table header for reflects"
+  },
+  "tableBuilder.headers.default": {
+    "message": "Default",
+    "description": "Table header for default value"
+  },
+  "tableBuilder.descriptions.properties": {
+    "message": "These are the properties for the {componentName} component. Properties are JavaScript variables associated with client web components. They are useful for storing data and controlling behavior, and make web components more reusable and easier to configure.\n\nSome properties reflect their values to attributes and vice versa. This means that if you set a property, the corresponding attribute is set automatically, and if you set an attribute, the corresponding property is set automatically.",
+    "description": "Description for properties section"
+  },
+  "tableBuilder.sections.reflectedAttributes": {
+    "message": "Reflected attributes",
+    "description": "Section heading for reflected attributes table"
+  },
+  "tableBuilder.descriptions.reflectedAttributes": {
+    "message": "These are the reflected attributes for the {componentName} component. Reflected attributes appear as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes.",
+    "description": "Description for reflected attributes section"
+  },
+  "tableBuilder.headers.event": {
+    "message": "Event",
+    "description": "Table header for event name"
+  },
+  "tableBuilder.sections.events": {
+    "message": "Events",
+    "description": "Section heading for events table"
+  },
+  "tableBuilder.descriptions.events": {
+    "message": "These are the events for the {componentName} component.",
+    "description": "Description for events section"
+  },
+  "tableBuilder.headers.methodSignature": {
+    "message": "Method Signature",
+    "description": "Table header for method signature"
+  },
+  "tableBuilder.sections.methods": {
+    "message": "Methods",
+    "description": "Section heading for methods table"
+  },
+  "tableBuilder.descriptions.methods": {
+    "message": "These are the methods for the {componentName} component.",
+    "description": "Description for methods section"
+  },
+  "tableBuilder.sections.dependentComponents": {
+    "message": "Dependent Components",
+    "description": "Section heading for dependent components"
+  },
+  "tableBuilder.descriptions.dependentComponents": {
+    "message": "The following components depend on the {componentName} component.",
+    "description": "Description for dependent components section"
+  },
+  "tableBuilder.sections.dependencies": {
+    "message": "Dependencies",
+    "description": "Section heading for dependencies"
+  },
+  "tableBuilder.descriptions.dependencies": {
+    "message": "The {componentName} component relies on the following client components. Client components are client-side only, and cannot be instantiated directly. See the related article for more detailed styling information.",
+    "description": "Description for dependencies section"
+  },
+  "componentDemo.hideCode": {
+    "message": "Hide Code",
+    "description": "Button text to hide the code section"
+  },
+  "componentDemo.showCode": {
+    "message": "Show Code",
+    "description": "Button text to show the code section"
+  },
+  "expandableCode.hideCode": {
+    "message": "Hide Code",
+    "description": "Button text to hide the expanded code"
+  },
+  "expandableCode.showAllLines": {
+    "message": "Show all {count} lines",
+    "description": "Button text to show all lines of code"
+  },
+  "componentArchetype.instructions": {
+    "message": "project, follow these steps:",
+    "description": "Instructions for creating a new project"
+  },
+  "componentArchetype.step1": {
+    "message": "{strong}Navigate to the proper directory{/strong}: Open a terminal and move to the folder where you want to create your new project.",
+    "description": "First step instruction"
+  },
+  "componentArchetype.step2": {
+    "message": "{strong}Run the {code}archetype:generate{/code} command{/strong}: Use the Maven command below, and customize the {code}groupId{/code}, {code}artifactId{/code}, and {code}version{/code} as needed for your project.",
+    "description": "Second step instruction"
+  },
+  "componentArchetype.table.argument": {
+    "message": "Argument",
+    "description": "Table header for argument column"
+  },
+  "componentArchetype.table.explanation": {
+    "message": "Explanation",
+    "description": "Table header for explanation column"
+  },
+  "componentArchetype.finalInstruction": {
+    "message": "After running the command, Maven will generate the project files necessary to run the project.",
+    "description": "Final instruction about Maven generating project files"
   }
 }

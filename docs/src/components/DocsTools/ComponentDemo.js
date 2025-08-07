@@ -3,6 +3,7 @@
 import { React, useState, useEffect, useRef } from "react";
 import { jsx, css } from "@emotion/react";
 import PropTypes from "prop-types";
+import { translate } from '@docusaurus/Translate';
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
@@ -366,7 +367,18 @@ export default function ComponentDemo({
       <details
         css={detailsStyles}>
           <summary onClick={() => setShowCode(!showCode)}>
-            {showCode ? "Hide Code" : "Show Code"}
+            {showCode 
+              ? translate({
+                  id: 'componentDemo.hideCode',
+                  message: 'Hide Code',
+                  description: 'Button text to hide the code section'
+                })
+              : translate({
+                  id: 'componentDemo.showCode',
+                  message: 'Show Code',
+                  description: 'Button text to show the code section'
+                })
+            }
             <ChevronRightIcon css={showCodeIconStyles}/>
           </summary>
         {cssURL ? (
