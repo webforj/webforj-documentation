@@ -171,7 +171,7 @@ Here's a dashboard I put together that uses most of the stuff I've mentioned - C
 
 <AppLayoutViewer 
 path='/webforj/moderndashboard?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ModernDashboardView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/blogs/ModernDashboardView.java'
 cssURL='/css/stylesheet/dashboard.css'
 />
 
