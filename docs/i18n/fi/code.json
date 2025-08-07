@@ -1,7 +1,103 @@
 {
   "theme.docs.translationNotice": {
-    "message": "Tämä sivu on automaattisesti käännetty. Tarkista virallinen webforJ-dokumentaatio saadaksesi tarkkaa tietoa.",
+    "message": "Tämä sivu on käännetty automaattisesti tekoälyllä ja saattaa sisältää virheitä tai epätarkkuuksia. Tarkimmat ja ajantasaisimmat tiedot löydät virallisesta webforJ-dokumentaatiosta. webforJ ei takaa näiden tekoälykäännösten tarkkuutta, luotettavuutta tai täydellisyyttä.",
     "description": "Translation notice for non-English pages"
+  },
+  "component.askMenu.chatgpt.label": {
+    "message": "Avaa ChatGPT:ssä",
+    "description": "ChatGPT button label"
+  },
+  "component.askMenu.chatgpt.desc": {
+    "message": "Kysy kysymyksiä tästä sivusta",
+    "description": "ChatGPT button description"
+  },
+  "component.askMenu.claude.label": {
+    "message": "Avaa Claudessa",
+    "description": "Claude button label"
+  },
+  "component.askMenu.claude.desc": {
+    "message": "Keskustele Claude AI:n kanssa tästä sivusta",
+    "description": "Claude button description"
+  },
+  "component.askMenu.markdown.label": {
+    "message": "Näytä Markdown",
+    "description": "Markdown button label"
+  },
+  "component.askMenu.markdown.desc": {
+    "message": "Näytä markdown-lähdekoodi",
+    "description": "Markdown button description"
+  },
+  "component.archetype.intro": {
+    "message": "Luodaksesi ja rakentaaksesi uuden {project}-projektin, seuraa näitä vaiheita:",
+    "description": "Introduction text for archetype component"
+  },
+  "component.archetype.step1.title": {
+    "message": "Siirry oikeaan hakemistoon",
+    "description": "Step 1 title"
+  },
+  "component.archetype.step1.desc": {
+    "message": "Avaa terminaali ja siirry kansioon, johon haluat luoda uuden projektisi.",
+    "description": "Step 1 description"
+  },
+  "component.archetype.step2.title": {
+    "message": "Suorita archetype:generate-komento",
+    "description": "Step 2 title"
+  },
+  "component.archetype.step2.desc": {
+    "message": "Käytä alla olevaa Maven-komentoa ja mukauta groupId, artifactId ja version projektisi tarpeiden mukaan.",
+    "description": "Step 2 description"
+  },
+  "component.archetype.table.argument": {
+    "message": "Argumentti",
+    "description": "Argument column header"
+  },
+  "component.archetype.table.explanation": {
+    "message": "Selitys",
+    "description": "Explanation column header"
+  },
+  "component.archetype.table.archetypeGroupId.desc": {
+    "message": "Arkkityypin ryhmätunnus on com.webforj webforJ-arkkityypeille.",
+    "description": "archetypeGroupId description"
+  },
+  "component.archetype.table.archetypeArtifactId.desc": {
+    "message": "Määrittää käytettävän arkkityypin nimen.",
+    "description": "archetypeArtifactId description"
+  },
+  "component.archetype.table.archetypeVersion.desc": {
+    "message": "Määrittää käytettävän arkkityypin version. Tämä varmistaa, että luotu projekti on yhteensopiva tietyn arkkityyppiversion kanssa. LATEST valitsee uusimman saatavilla olevan version.",
+    "description": "archetypeVersion description"
+  },
+  "component.archetype.table.groupId.desc": {
+    "message": "Edustaa luodun projektin nimiavaruutta. Tyypillisesti rakennettu Java-paketin tapaan, kuten org.example, ja sitä käytetään organisaatiosi tai projektialueesi yksilölliseen tunnistamiseen.",
+    "description": "groupId description"
+  },
+  "component.archetype.table.artifactId.desc": {
+    "message": "Määrittää luodun projektin nimen. Tästä tulee tuloksena olevan artefaktin ja projektikansion nimi.",
+    "description": "artifactId description"
+  },
+  "component.archetype.table.version.desc": {
+    "message": "Määrittää luodun projektin version. Yleinen käytäntö on MAJOR.MINOR-SNAPSHOT, kuten 1.0-SNAPSHOT, missä SNAPSHOT ilmaisee, että projekti on vielä kehitysvaiheessa.",
+    "description": "version description"
+  },
+  "component.archetype.table.flavor.desc": {
+    "message": "Valitsee projektin variantin:",
+    "description": "flavor description intro"
+  },
+  "component.archetype.table.flavor.webforj": {
+    "message": "Vakio webforJ-sovellus.",
+    "description": "webforj flavor description"
+  },
+  "component.archetype.table.flavor.spring": {
+    "message": "webforJ-sovellus Spring Boot -tuella (vaatii webforJ 25.02 tai uudemman).",
+    "description": "webforj-spring flavor description"
+  },
+  "component.archetype.table.appName.desc": {
+    "message": "Valinnainen parametri, jota voidaan käyttää luodun projektin POM-tiedostossa. Käytetyn webforJ-arkkityypin mukaan sitä voidaan käyttää sovelluksen oletusotsikkona.",
+    "description": "appName description"
+  },
+  "component.archetype.conclusion": {
+    "message": "Komennon suorittamisen jälkeen Maven luo projektin suorittamiseen tarvittavat projektitiedostot.",
+    "description": "Conclusion text"
   },
   "theme.ErrorPageContent.title": {
     "message": "Sivu kaatui.",

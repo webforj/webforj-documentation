@@ -1,7 +1,103 @@
 {
   "theme.docs.translationNotice": {
-    "message": "Deze pagina is automatisch vertaald en kan fouten bevatten. Raadpleeg de officiële webforJ documentatie voor nauwkeurige informatie. webforJ biedt geen garanties over de nauwkeurigheid van deze vertalingen.",
+    "message": "Deze pagina is automatisch vertaald met AI en kan fouten of onnauwkeurigheden bevatten. Voor de meest nauwkeurige en actuele informatie, raadpleeg de officiële webforJ documentatie. webforJ biedt geen garanties over de nauwkeurigheid, betrouwbaarheid of volledigheid van deze AI-vertalingen.",
     "description": "Translation notice for non-English pages"
+  },
+  "component.askMenu.chatgpt.label": {
+    "message": "Openen in ChatGPT",
+    "description": "ChatGPT button label"
+  },
+  "component.askMenu.chatgpt.desc": {
+    "message": "Vragen stellen over deze pagina",
+    "description": "ChatGPT button description"
+  },
+  "component.askMenu.claude.label": {
+    "message": "Openen in Claude",
+    "description": "Claude button label"
+  },
+  "component.askMenu.claude.desc": {
+    "message": "Chatten met Claude AI over deze pagina",
+    "description": "Claude button description"
+  },
+  "component.askMenu.markdown.label": {
+    "message": "Markdown tonen",
+    "description": "Markdown button label"
+  },
+  "component.askMenu.markdown.desc": {
+    "message": "De ruwe markdown broncode bekijken",
+    "description": "Markdown button description"
+  },
+  "component.archetype.intro": {
+    "message": "Om een nieuw {project} project te maken en op te zetten, volg deze stappen:",
+    "description": "Introduction text for archetype component"
+  },
+  "component.archetype.step1.title": {
+    "message": "Navigeer naar de juiste directory",
+    "description": "Step 1 title"
+  },
+  "component.archetype.step1.desc": {
+    "message": "Open een terminal en ga naar de map waar u uw nieuwe project wilt maken.",
+    "description": "Step 1 description"
+  },
+  "component.archetype.step2.title": {
+    "message": "Voer het archetype:generate commando uit",
+    "description": "Step 2 title"
+  },
+  "component.archetype.step2.desc": {
+    "message": "Gebruik het Maven commando hieronder en pas groupId, artifactId en version aan naar behoefte voor uw project.",
+    "description": "Step 2 description"
+  },
+  "component.archetype.table.argument": {
+    "message": "Argument",
+    "description": "Argument column header"
+  },
+  "component.archetype.table.explanation": {
+    "message": "Uitleg",
+    "description": "Explanation column header"
+  },
+  "component.archetype.table.archetypeGroupId.desc": {
+    "message": "De groep ID van het archetype is com.webforj voor webforJ archetypes.",
+    "description": "archetypeGroupId description"
+  },
+  "component.archetype.table.archetypeArtifactId.desc": {
+    "message": "Specificeert de naam van het te gebruiken archetype.",
+    "description": "archetypeArtifactId description"
+  },
+  "component.archetype.table.archetypeVersion.desc": {
+    "message": "Specificeert de versie van het te gebruiken archetype. Dit zorgt ervoor dat het gegenereerde project compatibel is met een specifieke archetype versie. LATEST selecteert de meest recente beschikbare versie.",
+    "description": "archetypeVersion description"
+  },
+  "component.archetype.table.groupId.desc": {
+    "message": "Vertegenwoordigt de namespace voor het gegenereerde project. Typisch gestructureerd als een Java package, zoals org.example, en wordt gebruikt om uw organisatie of projectdomein uniek te identificeren.",
+    "description": "groupId description"
+  },
+  "component.archetype.table.artifactId.desc": {
+    "message": "Specificeert de naam van het gegenereerde project. Dit wordt de naam van het resulterende artefact en de projectmap.",
+    "description": "artifactId description"
+  },
+  "component.archetype.table.version.desc": {
+    "message": "Definieert de versie van het gegenereerde project. Een gebruikelijke conventie is MAJOR.MINOR-SNAPSHOT, zoals 1.0-SNAPSHOT, waarbij SNAPSHOT aangeeft dat het project nog in ontwikkeling is.",
+    "description": "version description"
+  },
+  "component.archetype.table.flavor.desc": {
+    "message": "Selecteert een projectvariant:",
+    "description": "flavor description intro"
+  },
+  "component.archetype.table.flavor.webforj": {
+    "message": "Standaard webforJ applicatie.",
+    "description": "webforj flavor description"
+  },
+  "component.archetype.table.flavor.spring": {
+    "message": "webforJ applicatie met Spring Boot ondersteuning (vereist webforJ 25.02 of hoger).",
+    "description": "webforj-spring flavor description"
+  },
+  "component.archetype.table.appName.desc": {
+    "message": "Een optionele parameter die gebruikt kan worden in het POM-bestand van het gegenereerde project. Afhankelijk van het gebruikte webforJ archetype kan het gebruikt worden als standaardtitel voor de applicatie.",
+    "description": "appName description"
+  },
+  "component.archetype.conclusion": {
+    "message": "Na het uitvoeren van het commando zal Maven de benodigde projectbestanden genereren om het project uit te voeren.",
+    "description": "Conclusion text"
   },
   "theme.ErrorPageContent.title": {
     "message": "Deze pagina reageert niet.",

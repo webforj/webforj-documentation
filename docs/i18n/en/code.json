@@ -3,6 +3,102 @@
     "message": "This page has been automatically translated using AI and may contain errors or inaccuracies. For the most accurate and up-to-date information, please refer to the official webforJ documentation. webforJ makes no warranties about the accuracy, reliability, or completeness of these AI translations.",
     "description": "Translation notice for non-English pages"
   },
+  "component.askMenu.chatgpt.label": {
+    "message": "Open in ChatGPT",
+    "description": "ChatGPT button label"
+  },
+  "component.askMenu.chatgpt.desc": {
+    "message": "Ask questions about this page",
+    "description": "ChatGPT button description"
+  },
+  "component.askMenu.claude.label": {
+    "message": "Open in Claude",
+    "description": "Claude button label"
+  },
+  "component.askMenu.claude.desc": {
+    "message": "Chat with Claude AI about this page",
+    "description": "Claude button description"
+  },
+  "component.askMenu.markdown.label": {
+    "message": "Show Markdown",
+    "description": "Markdown button label"
+  },
+  "component.askMenu.markdown.desc": {
+    "message": "View the raw markdown source",
+    "description": "Markdown button description"
+  },
+  "component.archetype.intro": {
+    "message": "To create and scaffold a new {project} project, follow these steps:",
+    "description": "Introduction text for archetype component"
+  },
+  "component.archetype.step1.title": {
+    "message": "Navigate to the proper directory",
+    "description": "Step 1 title"
+  },
+  "component.archetype.step1.desc": {
+    "message": "Open a terminal and move to the folder where you want to create your new project.",
+    "description": "Step 1 description"
+  },
+  "component.archetype.step2.title": {
+    "message": "Run the archetype:generate command",
+    "description": "Step 2 title"
+  },
+  "component.archetype.step2.desc": {
+    "message": "Use the Maven command below, and customize the groupId, artifactId, and version as needed for your project.",
+    "description": "Step 2 description"
+  },
+  "component.archetype.table.argument": {
+    "message": "Argument",
+    "description": "Argument column header"
+  },
+  "component.archetype.table.explanation": {
+    "message": "Explanation",
+    "description": "Explanation column header"
+  },
+  "component.archetype.table.archetypeGroupId.desc": {
+    "message": "The group ID of the archetype is com.webforj for webforJ archetypes.",
+    "description": "archetypeGroupId description"
+  },
+  "component.archetype.table.archetypeArtifactId.desc": {
+    "message": "Specifies the name of the archetype to use.",
+    "description": "archetypeArtifactId description"
+  },
+  "component.archetype.table.archetypeVersion.desc": {
+    "message": "Specifies the version of the archetype to use. This ensures that the generated project is compatible with a specific archetype version. Using LATEST selects the most recent version available.",
+    "description": "archetypeVersion description"
+  },
+  "component.archetype.table.groupId.desc": {
+    "message": "Represents the namespace for the generated project. Typically structured like a Java package, such as org.example and is used to uniquely identify your organization or project domain.",
+    "description": "groupId description"
+  },
+  "component.archetype.table.artifactId.desc": {
+    "message": "Specifies the name of the generated project. This will be the name of the resulting artifact and the project folder.",
+    "description": "artifactId description"
+  },
+  "component.archetype.table.version.desc": {
+    "message": "Defines the version of the generated project. A common convention is MAJOR.MINOR-SNAPSHOT, like 1.0-SNAPSHOT, where SNAPSHOT denotes that the project is still in development.",
+    "description": "version description"
+  },
+  "component.archetype.table.flavor.desc": {
+    "message": "Selects a project flavor:",
+    "description": "flavor description intro"
+  },
+  "component.archetype.table.flavor.webforj": {
+    "message": "Standard webforJ app.",
+    "description": "webforj flavor description"
+  },
+  "component.archetype.table.flavor.spring": {
+    "message": "webforJ app with Spring Boot support (requires webforJ 25.02 or higher).",
+    "description": "webforj-spring flavor description"
+  },
+  "component.archetype.table.appName.desc": {
+    "message": "An optional parameter that can be used in the generated project's POM file. Depending on the used webforJ archetype, it can be utilized as a default title for the application.",
+    "description": "appName description"
+  },
+  "component.archetype.conclusion": {
+    "message": "After running the command, Maven will generate the project files necessary to run the project.",
+    "description": "Conclusion text"
+  },
   "theme.ErrorPageContent.title": {
     "message": "This page crashed.",
     "description": "The title of the fallback page when the page crashed"

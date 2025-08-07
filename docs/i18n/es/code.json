@@ -1,7 +1,103 @@
 {
   "theme.docs.translationNotice": {
-    "message": "Traducido automáticamente. Consulte la documentación oficial de webforJ para información precisa. Sin garantía de precisión.",
+    "message": "Esta página ha sido traducida automáticamente usando IA y puede contener errores o imprecisiones. Para obtener la información más precisa y actualizada, consulte la documentación oficial de webforJ. webforJ no ofrece garantías sobre la precisión, confiabilidad o integridad de estas traducciones de IA.",
     "description": "Translation notice for non-English pages"
+  },
+  "component.askMenu.chatgpt.label": {
+    "message": "Abrir en ChatGPT",
+    "description": "ChatGPT button label"
+  },
+  "component.askMenu.chatgpt.desc": {
+    "message": "Hacer preguntas sobre esta página",
+    "description": "ChatGPT button description"
+  },
+  "component.askMenu.claude.label": {
+    "message": "Abrir en Claude",
+    "description": "Claude button label"
+  },
+  "component.askMenu.claude.desc": {
+    "message": "Chatear con Claude AI sobre esta página",
+    "description": "Claude button description"
+  },
+  "component.askMenu.markdown.label": {
+    "message": "Mostrar Markdown",
+    "description": "Markdown button label"
+  },
+  "component.askMenu.markdown.desc": {
+    "message": "Ver el código fuente markdown",
+    "description": "Markdown button description"
+  },
+  "component.archetype.intro": {
+    "message": "Para crear y estructurar un nuevo proyecto {project}, siga estos pasos:",
+    "description": "Introduction text for archetype component"
+  },
+  "component.archetype.step1.title": {
+    "message": "Navegar al directorio adecuado",
+    "description": "Step 1 title"
+  },
+  "component.archetype.step1.desc": {
+    "message": "Abra una terminal y muévase a la carpeta donde desea crear su nuevo proyecto.",
+    "description": "Step 1 description"
+  },
+  "component.archetype.step2.title": {
+    "message": "Ejecutar el comando archetype:generate",
+    "description": "Step 2 title"
+  },
+  "component.archetype.step2.desc": {
+    "message": "Use el comando Maven a continuación y personalice groupId, artifactId y version según sea necesario para su proyecto.",
+    "description": "Step 2 description"
+  },
+  "component.archetype.table.argument": {
+    "message": "Argumento",
+    "description": "Argument column header"
+  },
+  "component.archetype.table.explanation": {
+    "message": "Explicación",
+    "description": "Explanation column header"
+  },
+  "component.archetype.table.archetypeGroupId.desc": {
+    "message": "El ID de grupo del arquetipo es com.webforj para arquetipos webforJ.",
+    "description": "archetypeGroupId description"
+  },
+  "component.archetype.table.archetypeArtifactId.desc": {
+    "message": "Especifica el nombre del arquetipo a usar.",
+    "description": "archetypeArtifactId description"
+  },
+  "component.archetype.table.archetypeVersion.desc": {
+    "message": "Especifica la versión del arquetipo a usar. Esto garantiza que el proyecto generado sea compatible con una versión específica del arquetipo. Usar LATEST selecciona la versión más reciente disponible.",
+    "description": "archetypeVersion description"
+  },
+  "component.archetype.table.groupId.desc": {
+    "message": "Representa el espacio de nombres para el proyecto generado. Típicamente estructurado como un paquete Java, como org.example, y se usa para identificar de manera única su organización o dominio del proyecto.",
+    "description": "groupId description"
+  },
+  "component.archetype.table.artifactId.desc": {
+    "message": "Especifica el nombre del proyecto generado. Este será el nombre del artefacto resultante y la carpeta del proyecto.",
+    "description": "artifactId description"
+  },
+  "component.archetype.table.version.desc": {
+    "message": "Define la versión del proyecto generado. Una convención común es MAJOR.MINOR-SNAPSHOT, como 1.0-SNAPSHOT, donde SNAPSHOT indica que el proyecto aún está en desarrollo.",
+    "description": "version description"
+  },
+  "component.archetype.table.flavor.desc": {
+    "message": "Selecciona una variante del proyecto:",
+    "description": "flavor description intro"
+  },
+  "component.archetype.table.flavor.webforj": {
+    "message": "Aplicación webforJ estándar.",
+    "description": "webforj flavor description"
+  },
+  "component.archetype.table.flavor.spring": {
+    "message": "Aplicación webforJ con soporte Spring Boot (requiere webforJ 25.02 o superior).",
+    "description": "webforj-spring flavor description"
+  },
+  "component.archetype.table.appName.desc": {
+    "message": "Un parámetro opcional que se puede usar en el archivo POM del proyecto generado. Dependiendo del arquetipo webforJ utilizado, puede utilizarse como título predeterminado para la aplicación.",
+    "description": "appName description"
+  },
+  "component.archetype.conclusion": {
+    "message": "Después de ejecutar el comando, Maven generará los archivos del proyecto necesarios para ejecutar el proyecto.",
+    "description": "Conclusion text"
   },
   "theme.ErrorPageContent.title": {
     "message": "Esta página ha fallado.",

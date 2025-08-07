@@ -1,7 +1,103 @@
 {
   "theme.docs.translationNotice": {
-    "message": "此页面使用AI自动翻译，可能存在错误。如需准确和最新的信息，请查看官方文档。webforJ不保证翻译的准确性、可靠性或完整性。",
+    "message": "此页面已使用AI自动翻译，可能包含错误或不准确之处。如需获取最准确和最新的信息，请参阅官方webforJ文档。webforJ不对这些AI翻译的准确性、可靠性或完整性提供任何保证。",
     "description": "Translation notice for non-English pages"
+  },
+  "component.askMenu.chatgpt.label": {
+    "message": "在ChatGPT中打开",
+    "description": "ChatGPT button label"
+  },
+  "component.askMenu.chatgpt.desc": {
+    "message": "询问关于此页面的问题",
+    "description": "ChatGPT button description"
+  },
+  "component.askMenu.claude.label": {
+    "message": "在Claude中打开",
+    "description": "Claude button label"
+  },
+  "component.askMenu.claude.desc": {
+    "message": "与Claude AI讨论此页面",
+    "description": "Claude button description"
+  },
+  "component.askMenu.markdown.label": {
+    "message": "显示Markdown",
+    "description": "Markdown button label"
+  },
+  "component.askMenu.markdown.desc": {
+    "message": "查看原始markdown源代码",
+    "description": "Markdown button description"
+  },
+  "component.archetype.intro": {
+    "message": "要创建和搭建新的{project}项目，请按照以下步骤操作：",
+    "description": "Introduction text for archetype component"
+  },
+  "component.archetype.step1.title": {
+    "message": "导航到正确的目录",
+    "description": "Step 1 title"
+  },
+  "component.archetype.step1.desc": {
+    "message": "打开终端并移动到您想要创建新项目的文件夹。",
+    "description": "Step 1 description"
+  },
+  "component.archetype.step2.title": {
+    "message": "运行archetype:generate命令",
+    "description": "Step 2 title"
+  },
+  "component.archetype.step2.desc": {
+    "message": "使用下面的Maven命令，并根据您的项目需要自定义groupId、artifactId和version。",
+    "description": "Step 2 description"
+  },
+  "component.archetype.table.argument": {
+    "message": "参数",
+    "description": "Argument column header"
+  },
+  "component.archetype.table.explanation": {
+    "message": "说明",
+    "description": "Explanation column header"
+  },
+  "component.archetype.table.archetypeGroupId.desc": {
+    "message": "原型的组ID是com.webforj用于webforJ原型。",
+    "description": "archetypeGroupId description"
+  },
+  "component.archetype.table.archetypeArtifactId.desc": {
+    "message": "指定要使用的原型名称。",
+    "description": "archetypeArtifactId description"
+  },
+  "component.archetype.table.archetypeVersion.desc": {
+    "message": "指定要使用的原型版本。这确保生成的项目与特定的原型版本兼容。使用LATEST选择最新的可用版本。",
+    "description": "archetypeVersion description"
+  },
+  "component.archetype.table.groupId.desc": {
+    "message": "代表生成项目的命名空间。通常像Java包一样构造，例如org.example，用于唯一标识您的组织或项目域。",
+    "description": "groupId description"
+  },
+  "component.archetype.table.artifactId.desc": {
+    "message": "指定生成项目的名称。这将是结果工件和项目文件夹的名称。",
+    "description": "artifactId description"
+  },
+  "component.archetype.table.version.desc": {
+    "message": "定义生成项目的版本。常见约定是MAJOR.MINOR-SNAPSHOT，如1.0-SNAPSHOT，其中SNAPSHOT表示项目仍在开发中。",
+    "description": "version description"
+  },
+  "component.archetype.table.flavor.desc": {
+    "message": "选择项目风格：",
+    "description": "flavor description intro"
+  },
+  "component.archetype.table.flavor.webforj": {
+    "message": "标准webforJ应用。",
+    "description": "webforj flavor description"
+  },
+  "component.archetype.table.flavor.spring": {
+    "message": "带Spring Boot支持的webforJ应用（需要webforJ 25.02或更高版本）。",
+    "description": "webforj-spring flavor description"
+  },
+  "component.archetype.table.appName.desc": {
+    "message": "可以在生成项目的POM文件中使用的可选参数。根据使用的webforJ原型，它可以用作应用程序的默认标题。",
+    "description": "appName description"
+  },
+  "component.archetype.conclusion": {
+    "message": "运行命令后，Maven将生成运行项目所需的项目文件。",
+    "description": "Conclusion text"
   },
   "theme.ErrorPageContent.title": {
     "message": "页面崩溃",
