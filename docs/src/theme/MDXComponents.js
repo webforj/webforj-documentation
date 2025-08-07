@@ -30,6 +30,8 @@ import SpacingBox from '@site/src/components/DWCTheme/SpacingBox/SpacingBox';
 import TransitionBox from '@site/src/components/DWCTheme/TransitionBox/TransitionBox';
 import GalleryCard from '@site/src/components/GalleryCard/GalleryCard';
 import GalleryGrid from '@site/src/components/GalleryGrid/GalleryGrid';
+import ColorPalette from '@site/src/components/DWCTheme/ColorPalette/ColorPalette';
+
 
 export default {
   ...MDXComponents,
@@ -59,6 +61,7 @@ export default {
   AccordionDetails,
   ExpandMoreIcon,
   GalleryCard,
-  GalleryGrid
+  GalleryGrid,
+  ColorPalette
 };
 

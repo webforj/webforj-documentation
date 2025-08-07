@@ -40,7 +40,7 @@
     "description": "Navbar item with label DWC HueCraft"
   },
   "item.label.DWC Design Kit": {
-    "message": "DWC Design Kit",
+    "message": "Kit de Diseño DWC",
     "description": "Navbar item with label DWC Design Kit"
   },
   "item.label.JavaDocs": {
@@ -48,19 +48,19 @@
     "description": "Navbar item with label JavaDocs"
   },
   "item.label.Client Components": {
-    "message": "Componentes de Cliente",
+    "message": "Componentes del Cliente",
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
-    "message": "Guía de Contribución",
+    "message": "Contribución",
     "description": "Navbar item with label Contribution Guide"
   },
   "item.label.Report Issue": {
-    "message": "Reportar problema",
+    "message": "Reportar un problema",
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {
-    "message": "Contáctenos",
+    "message": "Contáctanos",
     "description": "Navbar item with label Contact us"
   }
 }

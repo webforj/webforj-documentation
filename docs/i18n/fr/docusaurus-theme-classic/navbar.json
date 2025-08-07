@@ -16,7 +16,7 @@
     "description": "Navbar item with label Community"
   },
   "item.label.Developers": {
-    "message": "Développeurs",
+    "message": "Développeur",
     "description": "Navbar item with label Developers"
   },
   "item.label.Support": {
@@ -48,11 +48,11 @@
     "description": "Navbar item with label JavaDocs"
   },
   "item.label.Client Components": {
-    "message": "Client Components",
+    "message": "Composants Client",
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
-    "message": "Guide de Collaboration",
+    "message": "Guide de collaboration",
     "description": "Navbar item with label Contribution Guide"
   },
   "item.label.Report Issue": {

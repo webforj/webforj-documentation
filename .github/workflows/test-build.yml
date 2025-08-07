@@ -1,9 +1,6 @@
 name: Test WAR Build
 
 on:
-  # push:
-  #   branches:
-  #     - main
   pull_request:
     branches:
       - main
@@ -29,13 +26,7 @@ jobs:
           cache: 'maven'
 
       - name: Build WAR with Maven
-        run: mvn clean package -Pprod
+        run: mvn clean package -Pen-only
 
       - name: Verify WAR File Exists
         run: ls -lh target/*.war || (echo "WAR file not found!" && exit 1)
-
-      # - name: Upload WAR as an Artifact DEBUG
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: test-war
-      #     path: target/*.war
