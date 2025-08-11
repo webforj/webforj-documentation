@@ -82,7 +82,7 @@ jobs:
           # Check if there are changes to commit
           if [ -n "$(git status --porcelain)" ]; then
             git add .
-            git commit -m "chore: update translations [skip ci]"
+            git commit -m "chore: update translations"
             git push
           else
             echo "No translation changes to commit"
