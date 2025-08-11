@@ -15,8 +15,9 @@ Lifecycle listeners are automatically discovered and loaded at runtime through s
 ## When to use lifecycle listeners {#when-to-use-lifecycle-listeners}
 
 Use lifecycle listeners when you need to:
+
 - Initialize resources or services before an app runs
-- Clean up resources when an app terminates  
+- Clean up resources when an app terminates
 - Add cross-cutting concerns without modifying the `App` class
 - Build plugin architectures
 
@@ -24,6 +25,8 @@ Use lifecycle listeners when you need to:
 
 ```java title="AppLifecycleListener.java"
 public interface AppLifecycleListener {
+    default void onWillCreate(Environment env) {}     // Since 25.03
+    default void onDidCreate(App app) {}              // Since 25.03
     default void onWillRun(App app) {}
     default void onDidRun(App app) {}
     default void onWillTerminate(App app) {}
@@ -33,6 +36,7 @@ public interface AppLifecycleListener {
 
 :::info App isolation
 Each app instance receives its own set of listener instances:
+
 - Listeners are isolated between different apps
 - Static fields in listeners won't be shared between apps
 - Listener instances are created when the app starts and destroyed when it terminates
@@ -42,12 +46,14 @@ If you need to share data between apps, use external storage mechanisms like dat
 
 ### Lifecycle events {#lifecycle-events}
 
-| Event | When Called | Common Uses |
-|-------|-------------|-------------|
-| `onWillRun` | Before `app.run()` executes | Initialize resources, configure services |
-| `onDidRun` | After `app.run()` completes successfully | Start background tasks, log successful startup |
-| `onWillTerminate` | Before app termination | Save state, prepare for shutdown |
-| `onDidTerminate` | After app termination | Clean up resources, final logging |
+| Event             | When Called                                           | Common Uses                                         |
+| ----------------- | ----------------------------------------------------- | --------------------------------------------------- |
+| `onWillCreate`&nbsp;<DocChip chip='since' label='25.03' /> | After environment initialization, before app creation  | Modify configuration, merge external config sources |
+| `onDidCreate`&nbsp;<DocChip chip='since' label='25.03' />  | After app instantiation, before initialization        | Early app-level setup, register services            |
+| `onWillRun`       | Before `app.run()` executes                           | Initialize resources, configure services            |
+| `onDidRun`        | After `app.run()` completes successfully              | Start background tasks, log successful startup      |
+| `onWillTerminate` | Before app termination                                | Save state, prepare for shutdown                    |
+| `onDidTerminate`  | After app termination                                 | Clean up resources, final logging                   |
 
 ## Creating a lifecycle listener {#creating-a-lifecycle-listener}
 
@@ -56,14 +62,31 @@ If you need to share data between apps, use external storage mechanisms like dat
 ```java title="StartupListener.java"
 import com.webforj.App;
 import com.webforj.AppLifecycleListener;
+import com.webforj.Environment;
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigFactory;
 
 public class StartupListener implements AppLifecycleListener {
-    
+
+    @Override
+    public void onWillCreate(Environment env) {
+        // Modify configuration before app creation
+        Config additionalConfig = ConfigFactory.parseString(
+            "myapp.feature.enabled = true"
+        );
+        env.setConfig(additionalConfig);
+    }
+
+    @Override
+    public void onDidCreate(App app) {
+        System.out.println("App created: " + app.getId());
+    }
+
     @Override
     public void onWillRun(App app) {
         System.out.println("App starting: " + app.getId());
     }
-    
+
     @Override
     public void onDidRun(App app) {
         System.out.println("App started: " + app.getId());
