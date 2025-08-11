@@ -150,7 +150,9 @@ async function translateDocs(locale: string) {
         });
 
         await fs.ensureDir(fileInfo.targetDir);
-        fs.writeFileSync(fileInfo.targetPath, targetFileContent);
+        // Ensure LF line endings for consistency across platforms
+        const normalizedContent = targetFileContent.replace(/\r\n/g, '\n');
+        fs.writeFileSync(fileInfo.targetPath, normalizedContent);
         
         if (result.usage?.total_tokens) {
           totalTokens += result.usage.total_tokens;
@@ -225,7 +227,9 @@ async function translateJSON(
     }
   }
 
-  fs.writeFileSync(jsonPath, JSON.stringify(json, null, 2));
+  // Ensure LF line endings for consistency across platforms
+  const jsonString = JSON.stringify(json, null, 2).replace(/\r\n/g, '\n');
+  fs.writeFileSync(jsonPath, jsonString);
   console.log(`  Writed translated file into: ${jsonPath}`);
 }
 
@@ -300,7 +304,9 @@ async function translateCodeJSON(locale: string) {
     }
   }
 
-  fs.writeFileSync(jsonPath, JSON.stringify(json, null, 2));
+  // Ensure LF line endings for consistency across platforms
+  const codeJsonString = JSON.stringify(json, null, 2).replace(/\r\n/g, '\n');
+  fs.writeFileSync(jsonPath, codeJsonString);
   console.log(`  Wrote translated file: ${jsonPath}`);
 }
 
