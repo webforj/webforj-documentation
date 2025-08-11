@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.table.TableColumnComparatorPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class TableColumnComparatorIT extends BaseTest {
@@ -22,7 +22,7 @@ public class TableColumnComparatorIT extends BaseTest {
         tableColumnComparator = new TableColumnComparatorPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testComparatorFunctionality() {
         tableColumnComparator.getNumberColumnHeader().click();
 

@@ -3,9 +3,9 @@ package com.webforj.samples.views.table;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.table.TableFilteringPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class TableFilteringIT extends BaseTest {
@@ -18,7 +18,7 @@ public class TableFilteringIT extends BaseTest {
         tableFiltering = new TableFilteringPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testValidTitle() {
         tableFiltering.getTitleFilterInput().fill("Abbey Road");
 
@@ -27,7 +27,7 @@ public class TableFilteringIT extends BaseTest {
         assertThat(tableFiltering.getFirstTitleCell()).hasText("Abbey Road");
     }
 
-    @BrowserTest
+    @Test
     public void testPartialTitle() {
         tableFiltering.getTitleFilterInput().fill("Road");
 
@@ -35,7 +35,7 @@ public class TableFilteringIT extends BaseTest {
         assertThat(tableFiltering.getFirstTitleCell()).hasText("Abbey Road");
     }
 
-    @BrowserTest
+    @Test
     public void testCaseSensitiveTitle() {
         tableFiltering.getTitleFilterInput().fill("abbey ROAD");
 
@@ -43,21 +43,21 @@ public class TableFilteringIT extends BaseTest {
         assertThat(tableFiltering.getFirstTitleCell()).hasText("Abbey Road");
     }
 
-    @BrowserTest
+    @Test
     public void testNonexistentTitle() {
         tableFiltering.getTitleFilterInput().fill("Nonexistent Album");
 
         assertThat(tableFiltering.getTableRows()).hasCount(0);
     }
 
-    @BrowserTest
+    @Test
     public void testSpecialCharactersInSearch() {
         tableFiltering.getTitleFilterInput().fill("#$!?");
 
         assertThat(tableFiltering.getTableRows()).hasCount(0);
     }
 
-    @BrowserTest
+    @Test
     public void testSearchFiltersByTitleOnly() {
         tableFiltering.getTitleFilterInput().fill("ABBA");
 

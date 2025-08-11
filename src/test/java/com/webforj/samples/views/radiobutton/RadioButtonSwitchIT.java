@@ -3,9 +3,9 @@ package com.webforj.samples.views.radiobutton;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.radiobutton.RadioButtonSwitchPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class RadioButtonSwitchIT extends BaseTest {
@@ -18,7 +18,7 @@ public class RadioButtonSwitchIT extends BaseTest {
         radioButton = new RadioButtonSwitchPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testSwitchButtonStyle() {
         assertThat(radioButton.getSwitchRadio()).hasAttribute("switch", "");
 

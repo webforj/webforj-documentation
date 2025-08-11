@@ -3,9 +3,9 @@ package com.webforj.samples.views.slider;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.slider.DonationSliderPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class DonationSliderIT extends BaseTest {
@@ -18,7 +18,7 @@ public class DonationSliderIT extends BaseTest {
         sliderPage = new DonationSliderPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testDonation() {
         assertThat(sliderPage.getDonationLowerHandle()).hasAttribute("aria-valuenow", "50.0");
         sliderPage.getDonationButton().click();

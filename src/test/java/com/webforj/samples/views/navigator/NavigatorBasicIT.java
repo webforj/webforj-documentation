@@ -3,9 +3,9 @@ package com.webforj.samples.views.navigator;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.navigator.NavigatorBasicPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class NavigatorBasicIT extends BaseTest {
@@ -18,7 +18,7 @@ public class NavigatorBasicIT extends BaseTest {
         navigatorBasicPage = new NavigatorBasicPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testRangeConsistency() {
         assertThat(navigatorBasicPage.getNavigatorValue()).hasText("Value: 0");
 

@@ -3,11 +3,11 @@ package com.webforj.samples.views.splitter;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.Locator.DragToOptions;
 
 import com.webforj.samples.pages.splitter.SplitterOrientationPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class SplitterOrientationIT extends BaseTest {
@@ -20,7 +20,7 @@ public class SplitterOrientationIT extends BaseTest {
         splitterPage = new SplitterOrientationPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testSplitterOrientation() {
         String initialStyle = splitterPage.getMasterPanel().getAttribute("style");
 

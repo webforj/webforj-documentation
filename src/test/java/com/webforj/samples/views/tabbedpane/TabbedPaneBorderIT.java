@@ -3,9 +3,9 @@ package com.webforj.samples.views.tabbedpane;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.tabbedpane.TabbedPaneBorderPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class TabbedPaneBorderIT extends BaseTest {
@@ -18,7 +18,7 @@ public class TabbedPaneBorderIT extends BaseTest {
         tabbedPaneBorderPage = new TabbedPaneBorderPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testBorder() {
         tabbedPaneBorderPage.getHideBorderToggle().click();
         assertThat(tabbedPaneBorderPage.getBorderTabbedPane()).hasAttribute("borderless", "");

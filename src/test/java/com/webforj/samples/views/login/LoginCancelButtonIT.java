@@ -3,9 +3,9 @@ package com.webforj.samples.views.login;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.login.LoginCancelButtonPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class LoginCancelButtonIT extends BaseTest {
@@ -18,7 +18,7 @@ public class LoginCancelButtonIT extends BaseTest {
         loginCancelButtonPage = new LoginCancelButtonPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testCancelButton() {
         loginCancelButtonPage.getCancelButton().click();
         assertThat(loginCancelButtonPage.getSignInButton()).hasAttribute("disabled", "");

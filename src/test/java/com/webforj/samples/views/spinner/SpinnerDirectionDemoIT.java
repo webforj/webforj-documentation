@@ -3,9 +3,9 @@ package com.webforj.samples.views.spinner;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.spinner.SpinnerDirectionDemoPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class SpinnerDirectionDemoIT extends BaseTest {
@@ -18,7 +18,7 @@ public class SpinnerDirectionDemoIT extends BaseTest {
         spinnerPage = new SpinnerDirectionDemoPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testSpinnerDirectionCorrectness() {
         spinnerPage.getClockwiseButton().click();
         assertThat(spinnerPage.getSpinner()).hasAttribute("clockwise", "");

@@ -3,9 +3,9 @@ package com.webforj.samples.views.table;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.table.TableEditDataPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class TableEditDataIT extends BaseTest {
@@ -18,7 +18,7 @@ public class TableEditDataIT extends BaseTest {
         tablePage = new TableEditDataPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testEditButton() {
         tablePage.getEditButton().click();
 

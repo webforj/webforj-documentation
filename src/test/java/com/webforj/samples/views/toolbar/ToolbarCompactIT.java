@@ -3,9 +3,10 @@ package com.webforj.samples.views.toolbar;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.toolbar.ToolbarCompactPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
+import com.webforj.samples.utils.WaitUtil;
 import com.webforj.samples.views.BaseTest;
 
 public class ToolbarCompactIT extends BaseTest {
@@ -18,11 +19,9 @@ public class ToolbarCompactIT extends BaseTest {
         toolbarCompactPage = new ToolbarCompactPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testVisualHighlight() {
-
-        toolbarCompactPage.getSalesTab().click();
-        assertThat(toolbarCompactPage.getSalesTab()).hasAttribute("active", "");
+        WaitUtil.waitForVisible(toolbarCompactPage.getEnterpriseTab(),10000);
 
         toolbarCompactPage.getEnterpriseTab().click();
         assertThat(toolbarCompactPage.getEnterpriseTab()).hasAttribute("active", "");

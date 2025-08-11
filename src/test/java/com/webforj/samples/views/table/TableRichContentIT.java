@@ -6,11 +6,11 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.Locator;
 
 import com.webforj.samples.pages.table.TableRichContentPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class TableRichContentIT extends BaseTest {
@@ -23,7 +23,7 @@ public class TableRichContentIT extends BaseTest {
         tableRichContent = new TableRichContentPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testMasterCheckbox() {
 
         tableRichContent.getMasterCheckBox().click();
@@ -40,22 +40,25 @@ public class TableRichContentIT extends BaseTest {
         }
     }
 
-    @BrowserTest
-        public void testIndividualCheckbox() {
+    @Test
+    public void testIndividualCheckbox() {
         tableRichContent.getCheckboxInput().click();
 
         assertThat(tableRichContent.getCheckboxInput()).isChecked();
     }
 
-    @BrowserTest
-    public void testTableImages() {
+    @Test
+    void testTableImages() {
+        Locator images = tableRichContent.getImages();
+        int count = images.count();
 
-        for (int i = 0; i < tableRichContent.getImages().count(); i++) {
-            Locator image = tableRichContent.getImages().nth(i);
+        for (int i = 0; i < count; i++) {
+            Locator img = images.nth(i);
 
-            boolean isBroken = (boolean) image.evaluate(
-                    "img => !img.loaded || img.width < 32 || img.height < 32");
-            assertFalse(isBroken);
+            assertThat(img).hasJSProperty("complete", true);
+            assertThat(img).hasJSProperty("naturalWidth", 32);
+            assertThat(img).hasJSProperty("naturalHeight", 32);
+
         }
     }
 }

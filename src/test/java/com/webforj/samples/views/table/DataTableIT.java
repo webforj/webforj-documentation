@@ -1,14 +1,10 @@
 package com.webforj.samples.views.table;
 
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.options.AriaRole;
-
 import com.webforj.samples.pages.table.DataTablePage;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -28,7 +24,7 @@ public class DataTableIT extends BaseTest {
         dataTable = new DataTablePage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testEntriesPerPage() {
         dataTable.getEntriesDropdown().click();
         dataTable.getEntriesTen().click();
@@ -49,7 +45,7 @@ public class DataTableIT extends BaseTest {
         assertThat(dataTable.getPaginationText()).containsText("entries");
     }
 
-    @BrowserTest
+    @Test
     public void testSearchButtonFilter() {
         dataTable.searchAthlete(ATHLETE_NAME);
         assertThat(dataTable.getTableRows().first()).containsText(ATHLETE_NAME);
@@ -62,7 +58,7 @@ public class DataTableIT extends BaseTest {
         }
     }
 
-    @BrowserTest
+    @Test
     public void testFilteringNonLatinAlphabetCharacters() {
         dataTable.searchAthlete(ATHLETE_WITH_DIACRITICS_LATIN);
         page.waitForTimeout(1000);
@@ -74,7 +70,7 @@ public class DataTableIT extends BaseTest {
         assertThat(dataTable.getTableRows()).not().isVisible();
     }
 
-    @BrowserTest
+    @Test
     public void testSelectButton() {
         dataTable.getFirstCheckbox().click();
         assertThat(dataTable.getFirstCheckbox()).isChecked();
@@ -82,7 +78,7 @@ public class DataTableIT extends BaseTest {
         assertThat(dataTable.getFirstCheckbox()).not().isChecked();
     }
 
-    @BrowserTest
+    @Test
     public void testPaginatorDisplaysCorrectly() {
         dataTable.getPaginatorLastPage().click();
         assertThat(dataTable.getLastPageNumber()).hasText("862");
@@ -100,13 +96,13 @@ public class DataTableIT extends BaseTest {
         assertThat(dataTable.getLastPageNumber()).hasText("87");
     }
 
-    @BrowserTest
+    @Test
     public void testPaginatorNavigatesCorrectly() {
         dataTable.getPaginatorNextPage().click();
         assertThat(dataTable.getCurrentPageNavigator()).hasAttribute("current", "2");
     }
 
-    @BrowserTest
+    @Test
     public void testPaginatorUpdatesCorrectlyBySearchFilter() {
         dataTable.searchAthlete(ATHLETE_NAME);
         assertThat(dataTable.getTableRows().first()).containsText(ATHLETE_NAME);
@@ -118,13 +114,13 @@ public class DataTableIT extends BaseTest {
         assertThat(dataTable.getPaginatorLastPage()).isDisabled();
     }
 
-    @BrowserTest
+    @Test
     public void testPaginatorNavigatesCorrectlyToSpecificPage() {
         dataTable.goToSpecificPage(4).click();
         assertThat(dataTable.getCurrentPageNavigator()).hasAttribute("current", "4");
     }
 
-    @BrowserTest
+    @Test
     public void testPaginatorNavigatesLastAndFirstPage() {
         dataTable.getPaginatorLastPage().click();
         assertThat(dataTable.goToSpecificPage(862)).isVisible();

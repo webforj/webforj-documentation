@@ -4,6 +4,9 @@ FROM mcr.microsoft.com/playwright/java:v1.50.0-noble
 # Set working directory
 WORKDIR /app
 
+# Copy everything from the host project into that folder
+COPY . /app
+
 # Set environment variable (from workflow)
 ENV CI=true
 

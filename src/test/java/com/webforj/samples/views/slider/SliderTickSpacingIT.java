@@ -5,9 +5,9 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import java.util.regex.Pattern;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.slider.SliderTickSpacingPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class SliderTickSpacingIT extends BaseTest {
@@ -20,7 +20,7 @@ public class SliderTickSpacingIT extends BaseTest {
         sliderPage = new SliderTickSpacingPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testMajorandMinorTick() {
         assertThat(sliderPage.getMajorTickInput()).hasValue("20");
         assertThat(sliderPage.getMinorTickInput()).hasValue("10");
@@ -32,14 +32,14 @@ public class SliderTickSpacingIT extends BaseTest {
         assertThat(sliderPage.getMinorTicks()).hasCount(11);
     }
 
-    @BrowserTest
+    @Test
     public void testHiddingTicks() {
         sliderPage.getTickToggle().click();
         assertThat(sliderPage.getTickSpacingControl())
                 .hasClass(Pattern.compile(".*control--noTicks.*"));
     }
 
-    @BrowserTest
+    @Test
     public void testSnappingTicks() {
         sliderPage.getSnapToggle().click();
         assertThat(sliderPage.getLowerHandle()).hasAttribute("aria-valuenow", "50.0");

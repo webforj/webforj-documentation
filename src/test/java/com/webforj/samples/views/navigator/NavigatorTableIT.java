@@ -3,9 +3,9 @@ package com.webforj.samples.views.navigator;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.navigator.NavigatorTablePage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class NavigatorTableIT extends BaseTest {
@@ -19,7 +19,7 @@ public class NavigatorTableIT extends BaseTest {
 
     }
 
-    @BrowserTest
+    @Test
     public void testNavigationButtons() {
         navigatorTablePage.assertCurrentPage(1);
 
@@ -40,13 +40,13 @@ public class NavigatorTableIT extends BaseTest {
         navigatorTablePage.assertCurrentPage(1);
     }
 
-    @BrowserTest
+    @Test
     public void testSpecificPageNavigation() {
         navigatorTablePage.goToPage(4);
         navigatorTablePage.assertCurrentPage(4);
     }
 
-    @BrowserTest
+    @Test
     public void testDisableNavigationButtons() {
         navigatorTablePage.assertCurrentPage(1);
         assertThat(navigatorTablePage.getFirstButton()).hasAttribute("aria-disabled", "true");
@@ -58,7 +58,7 @@ public class NavigatorTableIT extends BaseTest {
         assertThat(navigatorTablePage.getLastButton()).hasAttribute("aria-disabled", "true");
     }
 
-    @BrowserTest
+    @Test
     public void testVerifyNavigatorData() {
         navigatorTablePage.assertCurrentPageData(1, "000001");
 

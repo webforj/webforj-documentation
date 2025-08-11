@@ -1,16 +1,9 @@
 package com.webforj.samples.config;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class RunConfig {
-  private static final String DEFAULT_BROWSERS = "chromium,firefox,webkit";
-  private static final boolean DEFAULT_HEADLESS = true; // Default to headless in CI
+  private static final String DEFAULT_BROWSER = "chromium";
+  private static final boolean DEFAULT_HEADLESS = true;
   private static final int DEFAULT_TIMEOUT = 30000;
-  private static final int DEFAULT_RETRY_COUNT = 3;
-  private static final String DEFAULT_REPORTS_DIR = "test-results/reports";
-  private static final int DEFAULT_SLOW_MO = 0; // No slow motion by default
-  private static final int DEFAULT_PORT = 8998; // Match the CI port
 
   static {
     // Parse webforj.e2e if provided
@@ -67,7 +60,6 @@ public class RunConfig {
       return value;
     }
 
-    // Finally return default
     return defaultValue;
   }
 
@@ -91,11 +83,8 @@ public class RunConfig {
     }
   }
 
-  public static List<String> getBrowsers() {
-    String browsersStr = getConfig("browsers", DEFAULT_BROWSERS);
-    return Arrays.stream(browsersStr.split(","))
-        .map(String::trim)
-        .toList();
+  public static String getBrowser() {
+    return getConfig("browser", DEFAULT_BROWSER);
   }
 
   public static boolean isHeadless() {
@@ -104,22 +93,6 @@ public class RunConfig {
 
   public static int getDefaultTimeout() {
     return getConfigInt("default.timeout", DEFAULT_TIMEOUT);
-  }
-
-  public static int getSlowMo() {
-    return getConfigInt("slow.mo", DEFAULT_SLOW_MO);
-  }
-
-  public static int getRetryCount() {
-    return getConfigInt("retry.count", DEFAULT_RETRY_COUNT);
-  }
-
-  public static String getReportsDir() {
-    return getConfig("reports.dir", DEFAULT_REPORTS_DIR);
-  }
-
-  public static int getPort() {
-    return getConfigInt("port", DEFAULT_PORT);
   }
 
 }

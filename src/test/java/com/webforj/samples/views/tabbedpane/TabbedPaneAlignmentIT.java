@@ -3,9 +3,9 @@ package com.webforj.samples.views.tabbedpane;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.tabbedpane.TabbedPaneAlignmentPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class TabbedPaneAlignmentIT extends BaseTest {
@@ -18,7 +18,7 @@ public class TabbedPaneAlignmentIT extends BaseTest {
         tabbedPaneAlignmentPage = new TabbedPaneAlignmentPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testAlignment() {
         tabbedPaneAlignmentPage.getAlignmentDropdown().click();
         tabbedPaneAlignmentPage.getAlignmentListBox().locator("text=AUTO").click();

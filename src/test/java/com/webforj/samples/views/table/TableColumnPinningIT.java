@@ -5,9 +5,9 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import java.util.regex.Pattern;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.table.TableColumnPinningPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class TableColumnPinningIT extends BaseTest {
@@ -20,7 +20,7 @@ public class TableColumnPinningIT extends BaseTest {
         tablePage = new TableColumnPinningPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testEditButton() {
 
         assertThat(tablePage.getEditButtonPosition()).hasAttribute("style", Pattern.compile(".*sticky; right: 0px;.*"));

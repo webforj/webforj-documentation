@@ -4,11 +4,11 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.Locator;
 
 import com.webforj.samples.pages.table.TableOlympicWinnersPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class TableOlympicWinnersIT extends BaseTest {
@@ -21,7 +21,7 @@ public class TableOlympicWinnersIT extends BaseTest {
         tableOlympicWinnersPage = new TableOlympicWinnersPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testColumnPinning() {
 
         String totalPosition = tableOlympicWinnersPage.getTotalHeader().evaluate("el => getComputedStyle(el).position").toString();
@@ -37,7 +37,7 @@ public class TableOlympicWinnersIT extends BaseTest {
         assertEquals("0px", left);
     }
 
-    @BrowserTest
+    @Test
     public void testDynamicLoadingOnScroll() {
         String firstRowValue = tableOlympicWinnersPage.getFirstRow().getAttribute("data-row");
         assertThat(tableOlympicWinnersPage.getFirstRow()).hasAttribute("data-row", firstRowValue);

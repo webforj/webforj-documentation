@@ -3,11 +3,11 @@ package com.webforj.samples.views.table;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.options.AriaRole;
 
 import com.webforj.samples.pages.table.TableSingleSelectionPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class TableSingleSelectionIT extends BaseTest {
@@ -17,7 +17,7 @@ public class TableSingleSelectionIT extends BaseTest {
         navigateToRoute(TableSingleSelectionPage.getRoute());
     }
 
-    @BrowserTest
+    @Test
     public void testSingleItemSelectionAndConfirmationDialog() {
         page.getByText("Mississippi Blues").click();
         assertThat(page.getByRole(AriaRole.BANNER)).containsText("Record Number 000001");

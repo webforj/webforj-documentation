@@ -3,9 +3,9 @@ package com.webforj.samples.views.radiobutton;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.radiobutton.RadioButtonTextPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class RadioButtonTextIT extends BaseTest {
@@ -18,7 +18,7 @@ public class RadioButtonTextIT extends BaseTest {
         radioButton = new RadioButtonTextPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testButtonAlignment() {
         radioButton.getRightAlignedInput().click();
         assertThat(radioButton.getRightAlignedInput()).hasAttribute("aria-checked", "true");

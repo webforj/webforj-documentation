@@ -3,10 +3,10 @@ package com.webforj.samples.views.login;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.login.LoginCustomFieldsPage;
 import com.webforj.samples.utils.WaitUtil;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class LoginCustomFieldsIT extends BaseTest {
@@ -19,7 +19,7 @@ public class LoginCustomFieldsIT extends BaseTest {
         loginCustomFieldsPage = new LoginCustomFieldsPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testSuccessfulLogin() {
         loginCustomFieldsPage.getCustomderID().fill("Tesla");
         loginCustomFieldsPage.getUsername().fill("admin");
@@ -32,7 +32,7 @@ public class LoginCustomFieldsIT extends BaseTest {
         assertThat(loginCustomFieldsPage.getHeader()).isVisible();
     }
 
-    @BrowserTest
+    @Test
     public void testInvalidCustomerID() {
 
         loginCustomFieldsPage.getCustomderID().fill("Toyota");
@@ -44,7 +44,7 @@ public class LoginCustomFieldsIT extends BaseTest {
         assertThat(loginCustomFieldsPage.getErrorMessage()).isVisible();
     }
 
-    @BrowserTest
+    @Test
     public void testValidCustomerIDAndBlankInput() {
         loginCustomFieldsPage.getCustomderID().fill("Tesla");
         loginCustomFieldsPage.getUsername().fill(" ");
@@ -55,7 +55,7 @@ public class LoginCustomFieldsIT extends BaseTest {
         assertThat(loginCustomFieldsPage.getErrorMessage()).isVisible();
     }
 
-    @BrowserTest
+    @Test
     public void testValidCustomerIDAndInvalidInput() {
         loginCustomFieldsPage.getCustomderID().fill("Tesla");
         loginCustomFieldsPage.getUsername().fill("user1");
@@ -66,7 +66,7 @@ public class LoginCustomFieldsIT extends BaseTest {
         assertThat(loginCustomFieldsPage.getErrorMessage()).isVisible();
     }
 
-    @BrowserTest
+    @Test
     public void testBlankCustomerIDAndValidInput() {
         loginCustomFieldsPage.getCustomderID().fill(" ");
         loginCustomFieldsPage.getUsername().fill("admin");

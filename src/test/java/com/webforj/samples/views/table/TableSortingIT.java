@@ -3,9 +3,9 @@ package com.webforj.samples.views.table;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.table.TableSortingPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class TableSortingIT extends BaseTest {
@@ -18,7 +18,7 @@ public class TableSortingIT extends BaseTest {
         tableSorting = new TableSortingPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testSortAscendingAndDescendingOrder() {
         String defaultTitle = "Mississippi Blues";
         String ascTitle = "Abbey Road";

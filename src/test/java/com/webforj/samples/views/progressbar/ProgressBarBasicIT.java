@@ -3,11 +3,11 @@ package com.webforj.samples.views.progressbar;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.assertions.LocatorAssertions.HasAttributeOptions;
 
 import com.webforj.samples.pages.progressbar.ProgressBarBasicPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class ProgressBarBasicIT extends BaseTest {
@@ -20,7 +20,7 @@ public class ProgressBarBasicIT extends BaseTest {
         progressBar = new ProgressBarBasicPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testStartProgressesBarTo100AndStops() {
         progressBar.getStartButton().click();
         assertThat(progressBar.getProgressBar()).hasAttribute("animated", "true");
@@ -29,7 +29,7 @@ public class ProgressBarBasicIT extends BaseTest {
 
     }
 
-    @BrowserTest
+    @Test
     public void testResetReturnsToInitialStateAfterPausing() {
         progressBar.getStartButton().click();
         assertThat(progressBar.getProgressBar()).hasAttribute("animated", "true");

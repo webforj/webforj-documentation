@@ -18,7 +18,9 @@ public class FlexOrderPage extends BasePage {
         super(page);
 
         flexOrderContainer = page.locator(".button__container--single-row");
-        orderInput = page.locator("dwc-numberfield:has-text('Order') >> input[type='text']");
+        // Target the editable input inside dwc-numberfield (avoid picking mask/label
+        // elements)
+        orderInput = page.locator("dwc-numberfield:has-text('Order') >> input[part='input']");
         setOrderButton = page.locator("dwc-button:has-text('Set Order')");
         dwcAlert = page.locator("dwc-alert-popover[theme='danger']");
     }

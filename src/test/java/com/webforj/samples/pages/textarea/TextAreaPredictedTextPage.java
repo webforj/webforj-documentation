@@ -15,7 +15,10 @@ public class TextAreaPredictedTextPage extends BasePage {
         super(page);
 
         // Predicted Text Demo (elements from PredictedTextDemoIT)
-        predictedTextArea = page.locator("dwc-textarea:has-text('Predicted Text') >> textarea");
+        // Ensure we target the actual editable textarea, not the readonly predicted
+        // overlay
+        predictedTextArea = page.locator(
+                "dwc-textarea:has-text('Predicted Text') >> textarea[part='input']:not([readonly])");
     }
 
     public static String getRoute() {

@@ -3,9 +3,9 @@ package com.webforj.samples.views.slider;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.slider.SliderLabelsPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class SliderLabelsIT extends BaseTest {
@@ -18,7 +18,7 @@ public class SliderLabelsIT extends BaseTest {
         sliderPage = new SliderLabelsPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testLabelsThemes() {
         sliderPage.getTenDegreeOption().click();
         assertThat(sliderPage.getLabelsSlider()).hasAttribute("theme", "primary");

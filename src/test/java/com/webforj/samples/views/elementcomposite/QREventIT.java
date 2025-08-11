@@ -3,9 +3,9 @@ package com.webforj.samples.views.elementcomposite;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.elementcomposite.QREventPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class QREventIT extends BaseTest {
@@ -16,10 +16,12 @@ public class QREventIT extends BaseTest {
     public void setupQREvents() {
         navigateToRoute(QREventPage.getRoute());
         qrCodeEventsPage = new QREventPage(page);
+        page.waitForLoadState();
     }
 
-    @BrowserTest
+    @Test
     public void testQREvents() {
+        qrCodeEventsPage.getQrCode().waitFor();
         qrCodeEventsPage.getQrCode().click();
 
         assertThat(qrCodeEventsPage.getMessageBox()).isVisible();

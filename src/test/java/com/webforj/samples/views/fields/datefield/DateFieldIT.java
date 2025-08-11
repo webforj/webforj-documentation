@@ -6,12 +6,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.fields.datefield.DateFieldPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
-
-import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 public class DateFieldIT extends BaseTest {
 
@@ -24,9 +22,8 @@ public class DateFieldIT extends BaseTest {
         dateFieldPage = new DateFieldPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testValidDates() {
-        assumeTrue(!browserType.equalsIgnoreCase("webkit"), "Skipping on WebKit");
 
         String departureDate = today.plusDays(3).format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
         String returnDate = today.plusDays(6).format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
@@ -44,11 +41,8 @@ public class DateFieldIT extends BaseTest {
 
     }
 
-    @BrowserTest
+    @Test
     public void testEarlierReturnDate() {
-        assumeTrue(!browserType.equalsIgnoreCase("webkit"), "Skipping on WebKit - Manually Tested on Safari");
-        assumeTrue(!browserType.equalsIgnoreCase("firefox"), "Skipping on Firefox - Manually Tested on Firefox");
-
 
         String departureDate = today.plusDays(6).format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
         String returnDate = today.plusDays(3).format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
@@ -66,9 +60,8 @@ public class DateFieldIT extends BaseTest {
 
     }
 
-    @BrowserTest
+    @Test
     public void testInvalidString() {
-        assumeTrue(!browserType.equalsIgnoreCase("webkit"), "Skipping on WebKit");
 
         dateFieldPage.getDepartureInput().click();
         dateFieldPage.getDepartureInput().press("Control+A");
@@ -83,10 +76,8 @@ public class DateFieldIT extends BaseTest {
 
     }
 
-    @BrowserTest
+    @Test
     public void testExcessiveDate() {
-        assumeTrue(!browserType.equalsIgnoreCase("webkit"), "Skipping on WebKit");
-
         page.keyboard().press("Tab");
         page.keyboard().press("Tab");
         dateFieldPage.getDepartureInput().pressSequentially("12/12/10000");
@@ -98,11 +89,8 @@ public class DateFieldIT extends BaseTest {
         assertThat(dateFieldPage.getDepartureInput()).hasAttribute("invalid", "");
     }
 
-    @BrowserTest
+    @Test
     public void testSpecialChar() {
-        // Webkit has issue, this is not related the feature. Skip the webkit.
-        assumeTrue(!browserType.equalsIgnoreCase("webkit"), "Skipping on WebKit");
-
         page.keyboard().press("Tab");
         page.keyboard().press("Tab");
         dateFieldPage.getDepartureInput().pressSequentially("#$%&");
@@ -115,10 +103,8 @@ public class DateFieldIT extends BaseTest {
         assertThat(dateFieldPage.getReturnInput().locator("input")).hasValue(today.toString());
     }
 
-    @BrowserTest
+    @Test
     public void testInvalidZeroDate() {
-        assumeTrue(!browserType.equalsIgnoreCase("webkit"), "Skipping on WebKit");
-
         page.keyboard().press("Tab");
         page.keyboard().press("Tab");
         dateFieldPage.getDepartureInput().pressSequentially("00/00/0000");

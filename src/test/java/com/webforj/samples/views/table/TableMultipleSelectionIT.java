@@ -7,9 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.table.TableMultiSelectionPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class TableMultipleSelectionIT extends BaseTest {
@@ -22,7 +22,7 @@ public class TableMultipleSelectionIT extends BaseTest {
         multipleSelection = new TableMultiSelectionPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testSelectAllButton() {
         List<String> expectedRecords = Arrays.asList(
                 "Mississippi Blues",
@@ -50,7 +50,7 @@ public class TableMultipleSelectionIT extends BaseTest {
         multipleSelection.getOkButton().click();
     }
 
-    @BrowserTest
+    @Test
     public void testMultipleSelection() {
         multipleSelection.getCheckboxes().nth(1).click();
         assertThat(multipleSelection.getHeaderText()).hasText("Record Selection");

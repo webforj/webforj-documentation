@@ -11,9 +11,9 @@ import java.net.http.HttpResponse;
 import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.icon.IconVariationsPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class IconVariationsIT extends BaseTest {
@@ -29,7 +29,7 @@ public class IconVariationsIT extends BaseTest {
         navigateToRoute(IconVariationsPage.getRoute());
     }
 
-    @BrowserTest
+    @Test
     public void testSVG() throws IOException, InterruptedException {
 
         Map<String, String> svgIcons = Map.of(

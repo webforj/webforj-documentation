@@ -3,9 +3,9 @@ package com.webforj.samples.views.radiobutton;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.radiobutton.RadioButtonGroupPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class RadioButtonGroupIT extends BaseTest {
@@ -18,7 +18,7 @@ public class RadioButtonGroupIT extends BaseTest {
         radioButtonGroupPage = new RadioButtonGroupPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testRadioButtonGroup() {
         radioButtonGroupPage.getStronglyDisagreeRB().click();
         assertThat(radioButtonGroupPage.getStronglyDisagreeRB()).isChecked();

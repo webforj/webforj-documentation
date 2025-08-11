@@ -10,6 +10,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.LuminanceSource;
@@ -20,7 +21,6 @@ import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 
 import com.webforj.samples.pages.elementcomposite.QRPropertiesPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class QRPropertiesIT extends BaseTest {
@@ -43,8 +43,10 @@ public class QRPropertiesIT extends BaseTest {
         qrCodePropertiesPage = new QRPropertiesPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testQRProperties() throws IOException, NotFoundException {
+        // Ensure the QR canvas is rendered
+        assertThat(qrCodePropertiesPage.getQrPropertiesCanvas()).isVisible();
         byte[] screenshot = qrCodePropertiesPage.getQrPropertiesCanvas().screenshot();
 
         String decodedText = decodeQRCode(screenshot);

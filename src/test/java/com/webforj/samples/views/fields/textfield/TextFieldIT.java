@@ -5,9 +5,9 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.fields.textfield.TextFieldPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class TextFieldIT extends BaseTest {
@@ -20,7 +20,7 @@ public class TextFieldIT extends BaseTest {
         textFieldPage = new TextFieldPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testAllInputFields() {
         assertThat(textFieldPage.getUsernameInput()).hasValue("John Doe");
         assertThat(textFieldPage.getEmailInput()).hasValue("example@email.com");
@@ -46,7 +46,7 @@ public class TextFieldIT extends BaseTest {
         assertThat(textFieldPage.getSearchInput()).hasValue("Search something...");
     }
 
-    @BrowserTest
+    @Test
     public void testValidEmail() {
         List<String> validEmails = List.of(
                 "user@example.com",
@@ -65,7 +65,7 @@ public class TextFieldIT extends BaseTest {
         }
     }
 
-    @BrowserTest
+    @Test
     public void testInvalidEmail() {
         List<String> invalidEmails = List.of(
                 "user@",
@@ -90,7 +90,7 @@ public class TextFieldIT extends BaseTest {
         }
     }
 
-    @BrowserTest
+    @Test
     public void testValidURL() {
         List<String> validURLs = List.of(
                 "http://example.com",
@@ -115,7 +115,7 @@ public class TextFieldIT extends BaseTest {
         }
     }
 
-    @BrowserTest
+    @Test
     public void testInvalidURL() {
         List<String> invalidURLs = List.of(
                 "example.com",

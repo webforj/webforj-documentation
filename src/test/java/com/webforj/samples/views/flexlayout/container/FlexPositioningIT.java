@@ -5,9 +5,9 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import java.util.regex.Pattern;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.flexlayout.container.FlexPositioningPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class FlexPositioningIT extends BaseTest {
@@ -21,7 +21,7 @@ public class FlexPositioningIT extends BaseTest {
 
     }
 
-    @BrowserTest
+    @Test
     public void testFlexStartPositionsBoxesAtStart() {
         flexPositioningPage.getFlexPositioningDropdown().click();
         flexPositioningPage.getListBox("Flex-start").nth(0).click();
@@ -30,7 +30,7 @@ public class FlexPositioningIT extends BaseTest {
                 Pattern.compile(".*justify-content: flex-start;.*"));
     }
 
-    @BrowserTest
+    @Test
     public void testFlexEndPositionsBoxesAtEnd() {
         flexPositioningPage.getFlexPositioningDropdown().click();
         flexPositioningPage.getListBox("Flex-end").nth(0).click();
@@ -39,7 +39,7 @@ public class FlexPositioningIT extends BaseTest {
                 Pattern.compile(".*justify-content: flex-end;.*"));
     }
 
-    @BrowserTest
+    @Test
     public void testCenterPositionsBoxesCentrally() {
         flexPositioningPage.getFlexPositioningDropdown().click();
         flexPositioningPage.getListBox("Center").nth(0).click();
@@ -48,7 +48,7 @@ public class FlexPositioningIT extends BaseTest {
                 Pattern.compile(".*justify-content: center;.*"));
     }
 
-    @BrowserTest
+    @Test
     public void testSpaceBetweenDistributesBoxesWithEdges() {
         flexPositioningPage.getFlexPositioningDropdown().click();
         flexPositioningPage.getListBox("Space-between").nth(0).click();
@@ -57,7 +57,7 @@ public class FlexPositioningIT extends BaseTest {
                 Pattern.compile(".*justify-content: space-between;.*"));
     }
 
-    @BrowserTest
+    @Test
     public void testSpaceAroundDistributesBoxesWithEqualSpaceAround() {
         flexPositioningPage.getFlexPositioningDropdown().click();
         flexPositioningPage.getListBox("Space-around").nth(0).click();
@@ -66,7 +66,7 @@ public class FlexPositioningIT extends BaseTest {
                 Pattern.compile(".*justify-content: space-around;.*"));
     }
 
-    @BrowserTest
+    @Test
     public void testSpaceEvenlyDistributesBoxesWithEqualSpaceBetweenAndAround() {
         flexPositioningPage.getFlexPositioningDropdown().click();
         flexPositioningPage.getListBox("Space-evenly").nth(0).click();

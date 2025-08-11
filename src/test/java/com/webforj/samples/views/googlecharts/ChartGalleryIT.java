@@ -7,11 +7,12 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.microsoft.playwright.Locator;
 
 import com.webforj.samples.pages.googlecharts.ChartGalleryPage;
 import com.webforj.samples.utils.WaitUtil;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class ChartGalleryIT extends BaseTest {
@@ -29,7 +30,7 @@ public class ChartGalleryIT extends BaseTest {
         chartGalleryPage = new ChartGalleryPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testChartGalleryPage() throws InterruptedException, IOException {
         WaitUtil.waitForVisible(chartGalleryPage.getGanttChart(), 30000);
 

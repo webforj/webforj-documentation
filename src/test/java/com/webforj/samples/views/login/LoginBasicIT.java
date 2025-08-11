@@ -3,9 +3,9 @@ package com.webforj.samples.views.login;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.login.LoginBasicPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class LoginBasicIT extends BaseTest {
@@ -18,7 +18,7 @@ public class LoginBasicIT extends BaseTest {
         loginBasicPage = new LoginBasicPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testUsernameAndPassword() {
         loginBasicPage.getUsername().fill("admin");
         loginBasicPage.getPasswordReveal().click();
@@ -31,7 +31,7 @@ public class LoginBasicIT extends BaseTest {
         assertThat(loginBasicPage.getSignInButton()).hasAttribute("disabled", "");
     }
 
-    @BrowserTest
+    @Test
     public void testEmptyInput() {
         loginBasicPage.getSignInButton().click();
 
@@ -40,7 +40,7 @@ public class LoginBasicIT extends BaseTest {
 
     }
 
-    @BrowserTest
+    @Test
     public void testRememberMe() {
         loginBasicPage.getRememberMe().click();
         assertThat(loginBasicPage.getRememberMe()).hasAttribute("aria-checked", "false");

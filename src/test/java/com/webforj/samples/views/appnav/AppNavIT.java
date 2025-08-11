@@ -3,9 +3,9 @@ package com.webforj.samples.views.appnav;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.appnav.AppNavPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class AppNavIT extends BaseTest {
@@ -18,17 +18,20 @@ public class AppNavIT extends BaseTest {
         appNavPage = new AppNavPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testTablerIcon() {
+        appNavPage.getTablerIcon().waitFor();
         appNavPage.getTablerIcon().click();
+
         assertThat(appNavPage.getSideMenu()).not().hasAttribute("drawer-opened", "12");
 
         appNavPage.getTablerIcon().click();
         assertThat(appNavPage.getSideMenu()).hasAttribute("drawer-opened", "");
     }
 
-    @BrowserTest
+    @Test
     public void testUpdateMainContent() {
+        appNavPage.getInboxDropdown().waitFor();
         appNavPage.getInboxDropdown().click();
 
         appNavPage.getSidebarPrimaryTab().click();
@@ -45,9 +48,12 @@ public class AppNavIT extends BaseTest {
 
     }
 
-    @BrowserTest
+    @Test
     public void testAboutDropdown() {
+        appNavPage.getAboutDropdown().waitFor();
         appNavPage.getAboutDropdown().click();
+
+        appNavPage.getSidebarWebforJ().waitFor();
         appNavPage.getSidebarWebforJ().click();
         assertThat(page).hasURL("https://webforj.com/");
         page.goBack();
@@ -67,8 +73,10 @@ public class AppNavIT extends BaseTest {
 
     }
 
-    @BrowserTest
+    @Test
     public void testVisualHighlight() {
+        appNavPage.getSidebarArchivedTab().waitFor();
+
         appNavPage.getSidebarArchivedTab().click();
         assertThat(appNavPage.getSidebarArchivedTab()).hasAttribute("selected", "");
 
@@ -76,14 +84,4 @@ public class AppNavIT extends BaseTest {
         assertThat(appNavPage.getSidebarTrashTab()).hasAttribute("selected", "");
 
     }
-
-    // @BrowserTest
-    // public void testEndpoints() {
-    //     appNavPage.getSidebarArchivedTab().click();
-    //     assertThat(page).hasURL("http://localhost:8080/webforj/appnav/Archived");
-
-    //     appNavPage.getSidebarTrashTab().click();
-    //     assertThat(page).hasURL("http://localhost:8080/webforj/appnav/Trash");
-
-    // }
 }

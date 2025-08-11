@@ -5,9 +5,9 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import java.util.regex.Pattern;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.flexlayout.container.FlexDirectionPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class FlexDirectionIT extends BaseTest {
@@ -20,7 +20,7 @@ public class FlexDirectionIT extends BaseTest {
         flexDirectionPage = new FlexDirectionPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testFlexDirectionOptions() {
         // Test "Row"
         flexDirectionPage.getFlexDirectionDropdown().click();

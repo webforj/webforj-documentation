@@ -3,10 +3,9 @@ package com.webforj.samples.views.googlecharts;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.googlecharts.ChartRedrawPage;
-import com.webforj.samples.utils.WaitUtil;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class ChartRedrawIT extends BaseTest {
@@ -24,7 +23,7 @@ public class ChartRedrawIT extends BaseTest {
         }
     }
 
-    @BrowserTest
+    @Test
     public void testChartUpdating() {
         assertThat(chartRedraw.getTitle()).hasText("Social Media Following");
 
@@ -41,14 +40,14 @@ public class ChartRedrawIT extends BaseTest {
 
     }
 
-    @BrowserTest
+    @Test
     public void testInvalidNegativeInput() {
         chartRedraw.getValueForInstagram().fill("-1");
 
         assertThat(chartRedraw.getWarningMessage()).isVisible();
     }
 
-    @BrowserTest
+    @Test
     public void testInvalidNonNumberInput() {
         chartRedraw.cleanField(chartRedraw.getValueForInstagram());
         page.keyboard().type("abc");
@@ -56,7 +55,7 @@ public class ChartRedrawIT extends BaseTest {
         assertThat(chartRedraw.getValueForInstagram()).not().hasValue("abc");
     }
 
-    @BrowserTest
+    @Test
     public void testInvalidSpecialCharacters() {
         chartRedraw.cleanField(chartRedraw.getValueForInstagram());
         page.keyboard().type("$!#%&*");
@@ -64,7 +63,7 @@ public class ChartRedrawIT extends BaseTest {
         assertThat(chartRedraw.getValueForInstagram()).not().hasValue("$!#%&*");
     }
 
-    @BrowserTest
+    @Test
     public void testSmallSizeScreenScrolling() {
         page.setViewportSize(600, 300);
 
@@ -72,7 +71,7 @@ public class ChartRedrawIT extends BaseTest {
         assertThat(page.locator("html")).hasCSS("overflow-x", "visible");
     }
 
-    @BrowserTest
+    @Test
     public void testInvalidDecimalValues() {
         chartRedraw.cleanField(chartRedraw.getValueForInstagram());
         page.keyboard().type("5.4");

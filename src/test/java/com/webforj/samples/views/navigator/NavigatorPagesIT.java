@@ -4,11 +4,11 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.microsoft.playwright.Locator;
 
 import com.webforj.samples.pages.navigator.NavigatorPagesPage;
-import com.webforj.samples.utils.annotations.BrowserTest;
 import com.webforj.samples.views.BaseTest;
 
 public class NavigatorPagesIT extends BaseTest {
@@ -21,7 +21,7 @@ public class NavigatorPagesIT extends BaseTest {
         navigatorPaginationPage = new NavigatorPagesPage(page);
     }
 
-    @BrowserTest
+    @Test
     public void testVerifyEllipsis() {
         navigatorPaginationPage.assertCurrentPage(1);
 
@@ -51,7 +51,7 @@ public class NavigatorPagesIT extends BaseTest {
         }
     }
 
-    @BrowserTest
+    @Test
     public void testVerifyPageDataMessage() {
 
         navigatorPaginationPage.assertCurrentPage(1);
