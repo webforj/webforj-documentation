@@ -1,15 +1,15 @@
 ---
 sidebar_position: 2
 title: Themes
-_i18n_hash: aa6eb0baae2b881b24c45ae970a079dc
+_i18n_hash: afb80b03bfe243ffa93d6f72a05809e2
 ---
-webforJ omvat drie ingebouwde app-thema's en ondersteunt het definiëren van uw eigen aangepaste thema's. De standaardthema's zijn:
+webforJ bevat drie ingebouwde app-thema's en ondersteunt het definiëren van je eigen aangepaste thema's. De standaardthema's zijn:
 
-- **light**: Een helder thema met een lichte achtergrond (standaard).
-- **dark**: Een donkere achtergrond getint met de primaire kleur.
-- **dark-pure**: Een volledig neutraal donker thema gebaseerd op grijstinten.
+- **licht**: Een helder thema met een lichte achtergrond (standaard).
+- **donker**: Een donkere achtergrond getint met de primaire kleur.
+- **donker-puur**: Een volledig neutraal donker thema gebaseerd op grijstinten.
 
-Om een thema in uw app toe te passen, gebruikt u de `@AppTheme` annotatie of de `App.setTheme()` methode. De thema naam moet een van de volgende zijn: `system`, `light`, `dark`, `dark-pure`, of een aangepaste themanaam.
+Om een thema in je app toe te passen, gebruik je de `@AppTheme` annotatie of de `App.setTheme()` methode. De themanaam moet een van de volgende zijn: `system`, `light`, `dark`, `dark-pure`, of een aangepaste themanaam.
 
 ```java
 @AppTheme("dark-pure")
@@ -17,16 +17,16 @@ class MyApp extends App {
   // app code
 }
 
-// of programatisch
+// of programmatically
 App.setTheme("dark-pure");
 ```
 
 ## Standaardthema's overschrijven {#overriding-default-themes}
 
-U kunt het **light** thema overschrijven door CSS aangepaste eigenschappen opnieuw te definiëren in de `:root` selector.
+Je kunt het **lichte** thema overschrijven door CSS aangepaste eigenschappen opnieuw te definiëren in de `:root` selector.
 
 :::info `:root` pseudo-klasse
-De `:root` CSS pseudo-klasse richt zich op het belangrijkste element van het document. In HTML vertegenwoordigt het het `<html>` element en heeft het een hogere specificiteit dan de gewone `html` selector.
+De `:root` CSS pseudo-klasse richt zich op het hoofdelement van het document. In HTML vertegenwoordigt het het `<html>` element en heeft het een hogere specificiteit dan de gewone `html` selector.
 :::
 
 Voorbeeld:
@@ -40,7 +40,7 @@ Voorbeeld:
 }
 ```
 
-Om de **dark** of **dark-pure** thema's te overschrijven, gebruikt u attribuutselectoren op het `<html>` element:
+Om de **donkere** of **donker-puur** thema's te overschrijven, gebruik je attributeselectoren op het `<html>` element:
 
 ```css
 html[data-app-theme="dark"] {
@@ -49,9 +49,9 @@ html[data-app-theme="dark"] {
 }
 ```
 
-## Aangepaste thema's maken {#creating-custom-themes}
+## Aangepaste thema's creëren {#creating-custom-themes}
 
-U kunt uw eigen thema's definiëren met behulp van de `html[data-app-theme='THEME_NAME']` selector. Aangepaste thema's kunnen naast de standaardthema's bestaan, en u kunt er dynamisch tussen schakelen tijdens runtime.
+Je kunt je eigen thema's definiëren met de `html[data-app-theme='THEME_NAME']` selector. Aangepaste thema's kunnen naast de standaardthema's bestaan, en je kunt er tijdens runtime dynamisch tussen schakelen.
 
 ```css
 html[data-app-theme="new-theme"] {
@@ -61,7 +61,7 @@ html[data-app-theme="new-theme"] {
 }
 ```
 
-Dan in uw app:
+Dan in je app:
 
 ```java
 @AppTheme("new-theme")
@@ -69,12 +69,12 @@ class MyApp extends App {
   // app code
 }
 
-// of programatisch
+// of programmatically
 App.setTheme("new-theme");
 ```
 
 ## Componentthema's {#component-themes}
 
-Naast de thema's op app-niveau ondersteunen webforJ componenten een reeks **componentthema's** gebaseerd op de standaard kleurpaletten: `default`, `primary`, `success`, `warning`, `danger`, `info`, en `gray`.
+Naast app-thema's ondersteunen webforJ componenten een set van **componentthema's** gebaseerd op de standaard kleurpaletten: `default`, `primary`, `success`, `warning`, `danger`, `info`, en `gray`.
 
-Elk component documenteert de ondersteunde thema's onder de sectie **Styling → Themes**.
+Elk component documenteert zijn ondersteunde thema's onder de sectie **Styling → Thema's**.

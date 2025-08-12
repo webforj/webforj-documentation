@@ -1,17 +1,17 @@
 ---
 title: Background Jobs
 sidebar_position: 25
-_i18n_hash: 6770951556a0f793ce218daeb686b581
+_i18n_hash: d419b53d933af4ef48890b8be2eab4dc
 ---
-Wanneer gebruikers op een knop klikken om een rapport te genereren of gegevens te verwerken, verwachten ze dat de interface responsief blijft. Voortgangsbalken moeten animeren, knoppen moeten reageren op hover, en de app mag niet vastlopen. Spring's `@Async` annotatie maakt dit mogelijk door langdurige bewerkingen naar achtergrondthreads te verplaatsen.
+Wanneer gebruikers op een knop klikken om een rapport te genereren of gegevens te verwerken, verwachten ze dat de interface responsief blijft. Voortgangsbalken moeten animaties hebben, knoppen moeten reageren op hover, en de app mag niet bevriezen. Spring's `@Async` annotatie maakt dit mogelijk door langdurige processen naar achtergrondthreads te verplaatsen.
 
-webforJ waarborgt threadveiligheid voor UI-componenten - alle updates moeten plaatsvinden op de UI-thread. Dit creëert een uitdaging: hoe kunnen achtergrondtaken voortgangsbalken bijwerken of resultaten weergeven? Het antwoord is `Environment.runLater()`, dat veilig UI-updates van Spring's achtergrondthreads naar webforJ's UI-thread overbrengt.
+webforJ handhaaft threadveiligheid voor UI-componenten - alle updates moeten plaatsvinden op de UI-thread. Dit creëert een uitdaging: hoe kunnen achtergrondtaken voortgangsbalken bijwerken of resultaten weergeven? Het antwoord is `Environment.runLater()`, dat UI-updates veilig overbrengt van Spring's achtergrondthreads naar webforJ's UI-thread.
 
-## Asynchrone uitvoering inschakelen {#enabling-asynchronous-execution}
+## Het inschakelen van asynchrone uitvoering {#enabling-asynchronous-execution}
 
-Spring's asynchrone methoden uitvoering vereist expliciete configuratie. Zonder deze configuratie worden methoden met de annotatie `@Async` synchronisch uitgevoerd, wat hun doel tenietdoet.
+De asynchrone methodenuitvoering van Spring vereist expliciete configuratie. Zonder deze configuratie worden methoden die zijn geannoteerd met `@Async` synchronisch uitgevoerd, wat hun doel tenietdoet.
 
-Voeg `@EnableAsync` toe aan je Spring Boot-app-klasse:
+Voeg `@EnableAsync` toe aan je Spring Boot-appklasse:
 
 ```java {2}
 @SpringBootApplication
@@ -25,15 +25,15 @@ public class Application {
 }
 ```
 
-De annotatie `@EnableAsync` activeert de infrastructuur van Spring voor het detecteren van `@Async` methoden en het uitvoeren ervan op achtergrondthreads.
+De `@EnableAsync` annotatie activeert de infrastructuur van Spring voor het detecteren van `@Async` methoden en het uitvoeren ervan op achtergrondthreads.
 
-:::tip[Spring async gids]
-Voor een snelle introductie in Spring's `@Async` annotatie en basis gebruikspatronen, zie [Asynchrone Methoden Creëren](https://spring.io/guides/gs/async-method).
+:::tip[Spring async guide]
+Voor een snelle introductie tot Spring's `@Async` annotatie en basisgebruikspatronen, zie [Creating Asynchronous Methods](https://spring.io/guides/gs/async-method).
 :::
 
-## Async-services creëren {#creating-async-services}
+## Het creëren van async services {#creating-async-services}
 
-Diensten gemarkeerd met `@Service` kunnen methoden hebben die gemarkeerd zijn met `@Async` om op achtergrondthreads te draaien. Deze methoden geven doorgaans `CompletableFuture` terug om een goede verwerking en annulering mogelijk te maken:
+Services die zijn geannoteerd met `@Service` kunnen methoden hebben die zijn gemarkeerd met `@Async` om op achtergrondthreads te draaien. Deze methoden retourneren meestal `CompletableFuture` om correcte voltooiingsafhandeling en annulering mogelijk te maken:
 
 ```java
 @Service
@@ -43,7 +43,7 @@ public class BackgroundService {
   public CompletableFuture<String> performLongRunningTask(Consumer<Integer> progressCallback) {
     try {
       for (int i = 0; i <= 10; i++) {
-          // Rapport progressie
+          // Meld voortgang
           int progress = i * 10;
           if (progressCallback != null) {
               progressCallback.accept(progress);
@@ -63,13 +63,13 @@ public class BackgroundService {
 }
 ```
 
-Deze service accepteert een voortgangs callback (`Consumer<Integer>`) die vanuit de achtergrondthread wordt aangeroepen. Het callback patroon stelt de service in staat om voortgang te rapporteren zonder kennis van UI-componenten.
+Deze service accepteert een voortgangcallback (`Consumer<Integer>`) die wordt aangeroepen vanuit de achtergrondthread. Het callbackpatroon stelt de service in staat om voortgang te rapporteren zonder kennis te hebben van UI-componenten. 
 
-De methode simuleert een taak van 5 seconden met 10 voortgangsupdates. In productie zou dit werkelijke taken zijn zoals databasequery's of bestandverwerking. De uitzondering behandeling herstelt de interruptstatus om een goede taakannulering te ondersteunen wanneer `cancel(true)` wordt aangeroepen.
+De methode simuleert een taak van 5 seconden met 10 voortgangsupdates. In productie zou dit werkelijke taken zijn zoals databasequery's of bestandsverwerking. De exceptionafhandeling herstelt de interruptstatus om correcte taakannulering te ondersteunen wanneer `cancel(true)` wordt aangeroepen.
 
-## Achtergrondtaken gebruiken in weergaven {#using-background-tasks-in-views}
+## Het gebruik van achtergrondtaken in weergaven {#using-background-tasks-in-views}
 
-De weergave ontvangt de achtergrondservice via constructorinjectie:
+De weergave ontvangt de achtergrondservice via constructor-injectie:
 
 ```java
 @Route("/")
@@ -91,9 +91,9 @@ public class HelloWorldView extends Composite<FlexLayout> {
 }
 ```
 
-Spring injecteert de `BackgroundService` in de constructor van de weergave, net als elke andere Spring bean. De weergave gebruikt deze service vervolgens om achtergrondtaken te starten. Het sleutelconcept: callbacks van de service worden op achtergrondthreads uitgevoerd, zodat alle UI-updates binnen die callbacks `Environment.runLater()` moeten gebruiken om de uitvoering naar de UI-thread te verplaatsen.
+Spring injecteert de `BackgroundService` in de constructor van de weergave, net als elke andere Spring-bean. De weergave gebruikt vervolgens deze service om achtergrondtaken te starten. Het belangrijkste concept: callbacks van de service worden uitgevoerd op achtergrondthreads, zodat alle UI-updates in die callbacks `Environment.runLater()` moeten gebruiken om de uitvoering naar de UI-thread over te brengen.
 
-Voltooiingsverwerking vereist hetzelfde zorgvuldige threadbeheer:
+Voltooiingsafhandeling vereist hetzelfde zorgvuldige threadbeheer:
 
 ```java
 currentTask.whenComplete((result, error) -> {
@@ -109,25 +109,25 @@ currentTask.whenComplete((result, error) -> {
 });
 ```
 
-De `whenComplete` callback wordt ook op een achtergrondthread uitgevoerd. Elke UI-operatie - het inschakelen van de knop, het verbergen van de voortgangsbalk, het tonen van toastberichten - moet worden ingepakt in `Environment.runLater()`. Zonder deze verpakking gooit webforJ uitzonderingen omdat achtergrondthreads geen toegang hebben tot UI-componenten.
+De `whenComplete` callback wordt ook uitgevoerd op een achtergrondthread. Elke UI-operatie - het inschakelen van de knop, het verbergen van de voortgangsbalk, het tonen van toasts - moet worden ingepakt in `Environment.runLater()`. Zonder deze inpakking gooit webforJ uitzonderingen omdat achtergrondthreads geen toegang hebben tot UI-componenten.
 
 :::warning[Threadveiligheid]
-Elke UI-update vanuit een achtergrondthread moet worden ingepakt in `Environment.runLater()`. Deze regel kent geen uitzonderingen. Directe toegang tot componenten vanuit `@Async` methoden faalt altijd.
+Elke UI-update vanuit een achtergrondthread moet worden ingepakt in `Environment.runLater()`. Deze regel heeft geen uitzonderingen. Directe componenttoegang vanuit `@Async` methoden faalt altijd.
 :::
 
 :::tip[Leer meer over threadveiligheid]
-Voor gedetailleerde informatie over het threadingmodel van webforJ, uitvoeringsgedrag en welke bewerkingen `Environment.runLater()` vereisen, zie [Asynchrone Updates](../../advanced/asynchronous-updates).
+Voor gedetailleerde informatie over het threadingmodel van webforJ, uitvoeringsgedrag en welke operaties `Environment.runLater()` vereisen, zie [Asynchronous Updates](../../advanced/asynchronous-updates).
 :::
 
 ## Taakannulering en opruiming {#task-cancellation-and-cleanup}
 
-Correcte levenscyclusbeheer voorkomt geheugenlekken en ongewenste UI-updates. De weergave slaat de referentie naar de `CompletableFuture` op:
+Juist levenscyclusbeheer voorkomt geheugenlekken en ongewenste UI-updates. De weergave slaat de referentie naar `CompletableFuture` op:
 
 ```java
 private CompletableFuture<String> currentTask;
 ```
 
-Wanneer de weergave wordt vernietigd, annuleert deze eventuele lopende taken:
+Wanneer de weergave wordt vernietigd, annuleert deze elke actieve taak:
 
 ```java
 @Override
@@ -139,9 +139,9 @@ protected void onDestroy() {
 }
 ```
 
-De parameter `cancel(true)` is cruciaal. Het onderbreekt de achtergrondthread, waardoor blokkering operaties zoals `Thread.sleep()` een `InterruptedException` gooien. Dit maakt onmiddellijke taakterminatie mogelijk. Zonder de interrupt-vlag (`cancel(false)`) zou de taak doorgaan totdat deze expliciet controleert op annulering.
+De parameter `cancel(true)` is cruciaal. Het onderbreekt de achtergrondthread, waardoor blokkeringen zoals `Thread.sleep()` `InterruptedException` gooien. Dit maakt onmiddellijke taakbeëindiging mogelijk. Zonder de onderbrekingsvlag (`cancel(false)`) zou de taak doorgaan tot deze expliciet controleert op annulering.
 
 Deze opruiming voorkomt verschillende problemen:
 - Achtergrondthreads blijven middelen verbruiken nadat de weergave is verdwenen
 - UI-updates proberen vernietigde componenten te wijzigen
-- Geheugenlekken van callbacks die referenties naar UI-componenten vasthouden
+- Geheugenlekken door callbacks die verwijzingen naar UI-componenten vasthouden

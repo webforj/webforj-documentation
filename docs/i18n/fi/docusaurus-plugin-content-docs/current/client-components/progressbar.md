@@ -6,7 +6,7 @@ slug: progressbar
 description: A user guide article for the progressbar
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 259afa8e2511f22af776c239e257d982
+_i18n_hash: d1322c3198d0fa1ef81298b11cd0ad4f
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,9 +17,9 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info ASIAKASKOMPONENTTI
-Tässä osiossa esitellään tyylitietoja **`<dwc-progressbar>`** komponentille. Tämä komponentti on **asiakaspuolella** - sitä ei voida instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+Tässä osiossa esitellään tyylitietoja **`<dwc-progressbar>`** komponentista. Tämä komponentti on **vain asiakaspäässä** - sitä ei voida instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
-## Tyylitys {#styling}
+## Tyylit {#styling}
 
 <TableBuilder name="dwc-progressbar" clientComponent />

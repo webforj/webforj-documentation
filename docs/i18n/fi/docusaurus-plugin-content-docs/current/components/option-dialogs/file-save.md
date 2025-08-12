@@ -1,7 +1,7 @@
 ---
 sidebar_position: 15
 title: File Save
-_i18n_hash: 477f92765ae539fd69106297baa9a0da
+_i18n_hash: 9f5ecfb61386cfa8c4eb3c31305b1838
 ---
 # Tallenna tiedosto -valintaikkuna
 
@@ -9,15 +9,15 @@ _i18n_hash: 477f92765ae539fd69106297baa9a0da
 <DocChip chip='since' label='24.21' />
 <JavadocLink type="foundation" location="com/webforj/component/optiondialog/FileSaveDialog" top='true'/>
 
-`FileSaveDialog` on modaalinen valintaikkuna, joka on suunniteltu mahdollistamaan käyttäjille tiedoston tallentamisen määrättyyn sijaintiin palvelimen tiedostojärjestelmässä. Ikkuna estää sovelluksen suorittamisen, kunnes käyttäjä syöttää tiedostonimen ja vahvistaa toiminnon tai peruuttaa dialogin.
+`FileSaveDialog` on modaalinen valintaikkuna, joka on suunniteltu mahdollistamaan käyttäjien tiedoston tallentaminen tiettyyn sijaintiin palvelimen tiedostojärjestelmässä. Ikkuna estää sovelluksen suorituksen, kunnes käyttäjä antaa tiedostonimen ja vahvistaa toiminnon tai peruuttaa ikkunan.
 
 ```java
 OptionDialog.showFileSaveDialog("Tallenna tiedostosi");
 ```
 
-## Käyttötavat {#usages}
+## Käyttöesimerkit {#usages}
 
-`FileSaveDialog` tarjoaa yksinkertaistetun tavan tallentaa tiedostoja tiedostojärjestelmään, tarjoten käyttäjän määriteltäviä vaihtoehtoja tiedoston nimeämiseen ja olemassa olevien tiedostojen käsittelyyn.
+`FileSaveDialog` tarjoaa virtaviivaisen menetelmän tiedostojen tallentamiseen tiedostojärjestelmään, tarjoten käyttäjän määriteltäviä vaihtoehtoja tiedoston nimeämiseen ja olemassa olevien tiedostojen käsittelyyn.
 
 <ComponentDemo 
 path='/webforj/filesavedialogbasic?' 
@@ -27,85 +27,85 @@ height = '800px'
 
 ## Tulokset {#result}
 
-`FileSaveDialog` palauttaa valitun polun merkkijonona. Jos käyttäjä peruuttaa dialogin, tulos on `null`.
+`FileSaveDialog` palauttaa valitun polun merkkijonona. Jos käyttäjä peruuttaa valintaikkunan, tulos on `null`.
 
-:::important Dialogin tarkoitus
-Tämä dialogi ei oikeasti tallenna tiedostoja, vaan palauttaa käyttäjän valitsemat tiedostonimen.
+:::important Valintaikkunan tarkoitus
+Tämä valintaikkuna ei oikeastaan tallenna tiedostoja, vaan palauttaa sen tiedostonimen, jonka käyttäjä on valinnut.
 :::
 
 :::info
-Tuloksena oleva merkkijono palautuu `show()`-metodista tai vastaavasta `OptionDialog`-metodista, kuten alla demonstroidaan.
+Tuloksena oleva merkkijono palautuu `show()`-menetelmällä tai vastaavalla `OptionDialog`-menetelmällä kuten alla osoitetaan.
 :::
 
 ```java showLineNumbers
 String result = OptionDialog.showFileSaveDialog(
-    "Tallenna tiedostosi", "/home/user/documents", "report.xls");
+    "Tallenna tiedostosi", "/home/user/documents", "raportti.xls");
 
 if (result != null) {
-  OptionDialog.showMessageDialog("Tallennettu tiedosto osoitteeseen: " + path, "Valittu polku");
+  OptionDialog.showMessageDialog("Tallennettu tiedosto: " + path, "Valittu polku");
 } else {
-  OptionDialog.showMessageDialog("Ei polkua valittu", "Valittu polku",
+  OptionDialog.showMessageDialog("Ei polkua ole valittu", "Valittu polku",
       MessageDialog.MessageType.ERROR);
 }
 ```
 
-## Olemassaolon toiminta {#exists-action}
+## Olemassa olevat toiminnot {#exists-action}
 
-`FileSaveDialog` tarjoaa konfiguroitavaa käyttäytymistä, kun tiedosto, jonka nimellä on jo olemassa:
+`FileSaveDialog` tarjoaa säädettävän käyttäytymisen, kun tiedosto, jolla on määritetty nimi, on jo olemassa:
 
-* **ACCEPT_WITHOUT_ACTION**: Valinta hyväksytään ilman lisätoimenpiteitä käyttäjältä.
-* **ERROR_DIALOGUE**: Käyttäjälle esitetään virhedialogi; valintaa ei sallita.
-* **CONFIRMATION_DIALOGUE**: Käyttäjälle esitetään dialogi, joka pyytää vahvistusta. Tämä on oletus.
+* **ACCEPT_WITHOUT_ACTION**: Valinta hyväksytään ilman lisätoimia käyttäjältä.
+* **ERROR_DIALOGUE**: Käyttäjälle näytetään virheilmoitusikkuna; valintaa ei sallita.
+* **CONFIRMATION_DIALOGUE**: Käyttäjälle näytetään ikkuna, joka pyytää vahvistusta. Tämä on oletus.
 
 ```java showLineNumbers
 FileSaveDialog dialog = new FileSaveDialog(
-  "Tallenna tiedostosi", "/home/user/documents", "report.xls");
+  "Tallenna tiedostosi", "/home/user/documents", "raportti.xls");
 dialog.setExistsAction(FileSaveDialog.ExistsAction.ERROR_DIALOGUE);
 String result = dialog.show();
 ```
 
 ## Valintatila {#selection-mode}
 
-`FileSaveDialog` tukee erilaisia valintatiloja, jotta voit räätälöidä valintamenetelmän tarpeidesi mukaan:
+`FileSaveDialog` tukee erilaisia valintatiloja, jolloin voit mukauttaa valintatavan tarpeidesi mukaan:
 
-1. **TIEDOSTOT**: Sallii vain tiedostojen valinnan.
-2. **KANSIO**: Sallii vain kansioiden valinnan.
-3. **TIEDOSTOT_JA_KANSIOT**: Sallii sekä tiedostojen että kansioiden valinnan.
+1. **FILES**: Mahdollistaa vain tiedostojen valitsemisen.
+2. **DIRECTORIES**: Mahdollistaa vain kansioiden valitsemisen.
+3. **FILES_AND_DIRECTORIES**: Mahdollistaa sekä tiedostojen että kansioiden valitsemisen.
 
 ## Alustava polku {#initial-path}
 
-Määritä hakemisto, josta dialogi avautuu, käyttämällä alustavaa polkua. Tämä auttaa käyttäjiä aloittamaan järkevistä hakemistoista tallennustoimintaansa varten.
+Määritä hakemisto, jossa valintaikkuna avataan käyttämällä alustavaa polkua. Tämä auttaa käyttäjiä aloittamaan loogisessa hakemistossa tallennustoimintoa varten.
 
 ```java showLineNumbers
 FileSaveDialog dialog = new FileSaveDialog(
-  "Tallenna tiedostosi", "/home/user/documents", "report.xls");
+  "Tallenna tiedostosi", "/home/user/documents", "raportti.xls");
 String result = dialog.show();
 ```
 
 ## Rajoitus {#restriction}
 
-Voit rajoittaa dialogin tiettyyn hakemistoon estäen käyttäjiä siirtymästä sen ulkopuolelle käyttämällä `setRestricted(boolean restricted)`-metodia.
+Voit rajoittaa valintaikkunaa tiettyyn hakemistoon, estäen käyttäjiä navigoimasta sen ulkopuolelle käyttämällä `setRestricted(boolean restricted)` -menetelmää.
 
 ```java showLineNumbers
 FileSaveDialog dialog = new FileSaveDialog(
-  "Tallenna tiedostosi", "/home/user/documents", "report.xls");
+  "Tallenna tiedostosi", "/home/user/documents", "raportti.xls");
 dialog.setRestricted(true);
 dialog.show();
 ```
 
 ## Tiedostonimi {#filename}
 
-Aseta oletustiedostonimi tallennustoimintoa varten, jotta käyttäjät saavat ohjeita ja virheiden mahdollisuudet minimoidaan.
+Aseta oletustiedostonimi tallennusoperaatiota varten ohjataksesi käyttäjiä ja minimoidaksesi virheitä.
 
 ```java showLineNumbers
 FileSaveDialog dialog = new FileSaveDialog("Tallenna tiedostosi");
-dialog.setName("report.xls");
+dialog.setName("raportti.xls");
 String result = dialog.show();
 ```
 
-## Kansainvälisyys (i18n) {#internationalization-i18n}
+## Kansainvälistäminen (i18n) {#internationalization-i18n}
 
-Komponentin otsikot, kuvastot, etikettit ja viestit ovat täysin muokattavissa käyttämällä `FileSaveI18n`-luokkaa. Tämä varmistaa, että dialogi voidaan räätälöidä erilaisiin paikallistamis- tai henkilökohtaisiin vaatimuksiin.
+Komponentin sisällä olevat otsikot, kuvaukset, etiketit ja viestit ovat täysin mukautettavissa käyttämällä `FileSaveI18n`-luokkaa. Tämä varmistaa, että valintaikkuna voidaan muokata erilaisten lokalisaatio- tai personointivaatimusten mukaan.
 
 ```java showLineNumbers
 FileSaveDialog dialog = new FileSaveDialog("Tallenna tiedostosi");
@@ -117,7 +117,7 @@ dialog.setI18n(i18n);
 
 ## Suodattimet {#filters}
 
-`FileSaveDialog` sallii suodattimien asettamisen rajatakseen tallennettavien tiedostotyyppien määrää `setFilters(List<FileSaveFilter> filters)`-metodin avulla.
+`FileSaveDialog` mahdollistaa suodattimien asettamisen, jotta voidaan rajoittaa tallennettavien tiedostotyyppien valikoimaa käyttämällä `setFilters(List<FileSaveFilter> filters)` -menetelmää.
 
 <ComponentDemo 
 path='/webforj/filesavedialogfilters?' 
@@ -125,9 +125,9 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '800px'
 />
 
-### Räätälöidyt suodattimet {#custom-filters}
+### Mukautetut suodattimet {#custom-filters}
 
-Voit mahdollistaa räätälöidyt suodattimet, jotta käyttäjät voivat määrittää omat tiedostosovittimensa käyttämällä `setCustomFilters(boolean customFilters)`-metodia. Suodattimet tallennetaan paikalliseen tallennukseen oletuksena ja palautetaan seuraavilla dialogin kutsuilla.
+Voit mahdollistaa mukautetut suodattimet, jotta käyttäjät voivat määrittää omat tiedostosarjansa käyttämällä `setCustomFilters(boolean customFilters)` -menetelmää. Suodattimet tallennetaan paikalliseen tallennustilaan oletuksena ja palautetaan seuraavilla valintaikkunan avauksilla.
 
 ```java showLineNumbers
 FileSaveDialog dialog = new FileSaveDialog("Tallenna tiedostosi", "/home/user/documents");
@@ -137,8 +137,8 @@ String result = dialog.show();
 
 ## Parhaat käytännöt {#best-practices}
 
-* **Ennaltamäärätyt tiedostonimet**: Tarjoa järkevä oletustiedostonimi tarvittaessa.
-* **Vahvista ylikirjoitukset**: Käytä `CONFIRMATION_DIALOGUE`-valintaa `ExistsAction`-toiminnolle estääksesi tahattomat ylikirjoitukset.
-* **Ymmärrettävä alustava polku**: Aseta alustava polku, joka vastaa käyttäjien odotuksia.
-* **Kansainvälisyys**: Mukauta dialogitekstiä parantaaksesi käytettävyyttä kansainvälisille yleisöille.
-* **Tiedostotyypin suodattimet**: Hyödynnä suodattimia rajataksesi tiedostotyyppejä ja ohjataksesi käyttäjiä kohti kelvollisia tiedostopäätteitä.
+* **Ennakoidut tiedostonimet**: Tarjoa looginen oletustiedostonimi, missä se on soveltuva.
+* **Vahvista ylittämiset**: Käytä `CONFIRMATION_DIALOGUE`-valintaa `ExistsAction`:in osalta estämään tahattomia ylityksiä.
+* **Intuitiivinen alustava polku**: Aseta alustava polku, joka vastaa käyttäjän odotuksia.
+* **Kansainvälistäminen**: Mukauta valintaikkunan tekstiä käytettävyyden parantamiseksi kansainvälisille käyttäjille.
+* **Tiedostotyyppisuodattimet**: Hyödynnä suodattimia rajoittamaan tiedostotyyppejä ja ohjaamaan käyttäjiä kohti kelvollisia tiedostopäätteen.

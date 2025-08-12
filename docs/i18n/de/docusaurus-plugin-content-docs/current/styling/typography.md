@@ -1,20 +1,20 @@
 ---
 sidebar_position: 4
 title: Typography
-_i18n_hash: 9ecc89dbb5b06c51ad61a22ddb69ce7d
+_i18n_hash: 5eafa3dea127703b4f573da438cbaf57
 ---
-Typografie-Tokens werden verwendet, um eine konsistente Reihe von Schriftstilen in Ihrer App beizubehalten.
+Typografie-Tokens werden verwendet, um ein konsistentes Set an Schriftstilen in Ihrer App aufrechtzuerhalten.
 
 ## Schriftfamilie {#font-family}
 
 Die Eigenschaften der Schriftfamilie werden verwendet, um eine priorisierte Liste von Schriftfamiliennamen anzugeben.
 
-Der systemeigene Schriftsatz wird standardmäßig verwendet:
+Der Systemschriftstapel wird standardmäßig verwendet:
 
 - `Segoe UI` unter Windows
 - `Roboto` unter Android und Chrome OS
 - `San Francisco` unter macOS und iOS
-- Auf anderen Systemen werden `Helvetica, Arial` als Rückfalloptionen verwendet.
+- Auf anderen Systemen werden `Helvetica, Arial` als Fallbacks verwendet.
 
 Sie können die Schriftfamilie mit der benutzerdefinierten Eigenschaft `--dwc-font-family` anwenden oder ändern.
 
@@ -36,10 +36,10 @@ Sie können die Schriftfamilie mit der benutzerdefinierten Eigenschaft `--dwc-fo
 
 ## Schriftgröße {#font-size}
 
-Die Eigenschaften der Schriftgröße definieren eine Reihe von Schriftgrößen zur Auswahl. `s` ist die Standardgröße und wird von den meisten Komponenten standardmäßig verwendet. Alle Schriftgrößen sind in `em` definiert.
+Die Eigenschaften der Schriftgröße definieren eine Auswahl von Schriftgrößen. `s` ist die Standardgröße und wird von den meisten Komponenten standardmäßig verwendet. Alle Schriftgrößen werden in `em` definiert.
 
 :::info EM-Einheit
-`em` ist eine relative Längeneinheit. Sie ist relativ zur [Schriftgröße](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) des Elternteils, im Fall von typografischen Eigenschaften wie Schriftgröße, und zur Schriftgröße des Elements selbst im Fall anderer Eigenschaften wie [width](https://developer.mozilla.org/en-US/docs/Web/CSS/width).
+`em` ist eine relative Längeneinheit. Sie ist relativ zur [Schriftgröße](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) des übergeordneten Elements im Falle typografischer Eigenschaften wie Schriftgröße und zur Schriftgröße des Elements selbst im Falle anderer Eigenschaften wie [Breite](https://developer.mozilla.org/en-US/docs/Web/CSS/width).
 :::
 
 ### Beispiel {#example-1}
@@ -53,20 +53,20 @@ Die Eigenschaften der Schriftgröße definieren eine Reihe von Schriftgrößen z
 ### Variablen {#variables-1}
 
 | **Variable**          | **Standardwert**        | **Beispiel**                                                      |
-| --------------------- | ---------------------- | ---------------------------------------------------------------- |
-| `--dwc-font-size-2xs` | 0.75rem                | <span style={{ fontSize: "var(--dwc-font-size-2xs)" }}>Aa</span> |
-| `--dwc-font-size-xs`  | 0.813rem               | <span style={{ fontSize: "var(--dwc-font-size-xs)" }}>Aa</span>  |
-| `--dwc-font-size-s`   | 0.875rem               | <span style={{ fontSize: "var(--dwc-font-size-s)" }}>Aa</span>   |
-| `--dwc-font-size-m`   | 1rem                   | <span style={{ fontSize: "var(--dwc-font-size-m)" }}>Aa</span>   |
-| `--dwc-font-size-l`   | 1.125rem               | <span style={{ fontSize: "var(--dwc-font-size-l)" }}>Aa</span>   |
-| `--dwc-font-size-xl`  | 1.375rem               | <span style={{ fontSize: "var(--dwc-font-size-xl)" }}>Aa</span>  |
-| `--dwc-font-size-2xl` | 1.75rem                | <span style={{ fontSize: "var(--dwc-font-size-2xl)" }}>Aa</span> |
-| `--dwc-font-size-3xl` | 2.25rem                | <span style={{ fontSize: "var(--dwc-font-size-3xl)" }}>Aa</span> |
+| --------------------- | ------------------------ | ---------------------------------------------------------------- |
+| `--dwc-font-size-2xs` | 0.75rem                  | <span style={{ fontSize: "var(--dwc-font-size-2xs)" }}>Aa</span> |
+| `--dwc-font-size-xs`  | 0.813rem                 | <span style={{ fontSize: "var(--dwc-font-size-xs)" }}>Aa</span>  |
+| `--dwc-font-size-s`   | 0.875rem                 | <span style={{ fontSize: "var(--dwc-font-size-s)" }}>Aa</span>   |
+| `--dwc-font-size-m`   | 1rem                     | <span style={{ fontSize: "var(--dwc-font-size-m)" }}>Aa</span>   |
+| `--dwc-font-size-l`   | 1.125rem                 | <span style={{ fontSize: "var(--dwc-font-size-l)" }}>Aa</span>   |
+| `--dwc-font-size-xl`  | 1.375rem                 | <span style={{ fontSize: "var(--dwc-font-size-xl)" }}>Aa</span>  |
+| `--dwc-font-size-2xl` | 1.75rem                  | <span style={{ fontSize: "var(--dwc-font-size-2xl)" }}>Aa</span> |
+| `--dwc-font-size-3xl` | 2.25rem                  | <span style={{ fontSize: "var(--dwc-font-size-3xl)" }}>Aa</span> |
 | `--dwc-font-size`     | `var(--dwc-font-size-s)` | <span style={{ fontSize: "var(--dwc-font-size)" }}>Aa</span>     |
 
-## Schriftstärke {#font-weight}
+## Schriftgewicht {#font-weight}
 
-Die [Schriftstärke](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight) CSS-Eigenschaft legt das Gewicht (oder die Fettigkeit) der Schrift fest.
+Die CSS-Eigenschaft [font-weight](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight) legt das Gewicht (oder die Fettigkeit) der Schrift fest.
 
 ### Beispiel {#example-2}
 
@@ -87,7 +87,7 @@ p {
 
 ## Zeilenhöhe {#line-height}
 
-Die Zeilenhöhe CSS-Eigenschaft legt die Höhe eines Zeilenkastens fest. Sie wird häufig verwendet, um den Abstand zwischen Zeilen von Text festzulegen.
+Die CSS-Eigenschaft für die Zeilenhöhe legt die Höhe eines Zeilenblocks fest. Sie wird häufig verwendet, um den Abstand zwischen Textzeilen einzustellen.
 
 ### Beispiel {#example-3}
 

@@ -1,22 +1,22 @@
 ---
 sidebar_position: 3
 title: Testing with Selenium
-_i18n_hash: 5d2e4b04f794236d9a8ea2a32d50579b
+_i18n_hash: fe85942b4638ef9828b334ef986b4436
 ---
-该文档概述了使用 Selenium 测试 webforJ 应用程序的过程，特别关注来自 `webforj-archetype-hello-world` 的 `HelloWorldView`。
+此文档概述了使用 Selenium 测试 webforJ 应用程序的过程，特别针对来自 `webforj-archetype-hello-world` 的 `HelloWorldView`。
 
 :::info 应用基础
-要了解更多有关 `webforj-archetype-hello-world` 的信息，请参阅 [应用基础介绍](../../introduction/basics) 部分。
+要深入了解 `webforj-archetype-hello-world`，请参考 [应用基础介绍](../../introduction/basics) 部分。
 :::
 
-## 先决条件 {#prerequisites}
+## 前提条件 {#prerequisites}
 
-在运行 Selenium 测试之前，请确保以下内容：
-- webforJ 应用程序已正确设置并在您的本地服务器上运行。
+在运行 Selenium 测试之前，请确保以下事项：
+- webforJ 应用程序已在您的本地服务器上正确设置并运行。
 - 您已安装：
   - Selenium Java 绑定。
-  - 与您浏览器兼容的 WebDriver。
-  - 用于项目依赖关系的 Maven。
+  - 适用于您的浏览器的兼容 WebDriver。
+  - 用于项目依赖的 Maven。
 
 ## Maven 配置 {#maven-configuration}
 
@@ -44,7 +44,7 @@ _i18n_hash: 5d2e4b04f794236d9a8ea2a32d50579b
 
 ## 测试示例：`HelloWorldView` {#testing-example-helloworldview}
 
-以下代码演示了一个基于 Selenium 的 `HelloWorldView` 组件测试。
+以下代码演示了针对 `HelloWorldView` 组件的 Selenium 基于的测试。
 
 ```java title="HelloWorldViewTest.java"
 package com.example.views;
@@ -98,24 +98,24 @@ class HelloWorldViewTest {
 }
 ```
 
-### 主要步骤 {#key-steps}
+### 关键步骤 {#key-steps}
 
 1. **初始化 WebDriver**：
    - 使用 [`WebDriverManager`](https://github.com/bonigarcia/webdrivermanager) 自动管理浏览器的驱动程序可执行文件。
 
 2. **设置测试环境**：
-   - 在 `http://localhost:<port>/` 启动测试服务器。
+   - 在 `http://localhost:<port>/` 上启动测试服务器。
    - 等待页面标题与预期的 `webforJ Hello World` 匹配。
 
 3. **与元素交互**：
    - 使用 `By.tagName`、`By.id` 或其他 Selenium 定位器定位元素。
-   - 验证预期行为，如按钮点击或文本更改。
+   - 验证按钮点击或文本变化等预期行为。
 
   :::info
-  因为 webforJ 生成一个单页面 Web 应用程序，所以 Selenium 在初始页面加载后并不了解 DOM 操作。您可以使用 Selenium 的 [WebDriverWait API](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/WebDriverWait.html) 来等待 DOM 编译完成。
+  由于 webforJ 生成了一个单页面 web 应用程序，Selenium 在初始页面加载后并不知道 DOM 操作。您可以使用 Selenium 的 [WebDriverWait API](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/WebDriverWait.html) 等待 DOM 编译完成。
   :::
 
-4. **拆解**：
+4. **清理**：
    - 退出 WebDriver 会话以释放资源。
 
 ### 运行测试 {#running-tests}
@@ -133,4 +133,4 @@ class HelloWorldViewTest {
 ## 预期行为 {#expected-behavior}
 
 - 访问 `http://localhost:<port>/` 时，`HelloWorldView` 页面加载。
-- 文本为 `Say Hello` 的 `dwc-button` 元素应存在。
+- 应存在带有文本 `Say Hello` 的 `dwc-button` 元素。

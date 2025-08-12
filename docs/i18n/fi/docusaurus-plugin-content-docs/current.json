@@ -24,7 +24,7 @@
     "description": "The label for category Routing in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Navigation Lifecycle": {
-    "message": "Navigointiaikajana",
+    "message": "Navigointi aikajana",
     "description": "The label for category Navigation Lifecycle in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Route Hierarchy": {
@@ -72,7 +72,7 @@
     "description": "The label for category Option Dialogs in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Table": {
-    "message": "Table",
+    "message": "Taulukko",
     "description": "The label for category Table in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Testing": {
@@ -112,7 +112,7 @@
     "description": "The label for category Repository in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Architecture": {
-    "message": "Architecture",
+    "message": "Arkkitehtuuri",
     "description": "The label for category Architecture in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Upgrading Guides": {
@@ -120,7 +120,7 @@
     "description": "The label for category Upgrading Guides in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Client Components": {
-    "message": "Asiakaskomponentit",
+    "message": "Asiakas komponentit",
     "description": "The label for category Client Components in sidebar documentationSidebar"
   }
 }

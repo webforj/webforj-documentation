@@ -1,9 +1,9 @@
 ---
 sidebar_position: 10
 title: Transitions & Easing
-_i18n_hash: 7d44ac3e68f0187b1df2bbeeeee923f3
+_i18n_hash: d2f7570b46bfa778ca967908d6e7d901
 ---
-Las variables de transición se utilizan para proporcionar duraciones de animación consistentes en tu aplicación. Controlan cuánto tiempo tarda en completarse una animación.
+Las variables de transición se utilizan para proporcionar duraciones de animación consistentes en toda su aplicación. Controlan cuánto tiempo tarda en completarse una animación.
 
 ### Ejemplo {#example}
 
@@ -15,20 +15,20 @@ Las variables de transición se utilizan para proporcionar duraciones de animaci
 
 ### Variables {#variables}
 
-| **Variable**              | **Valor por defecto** | **Ejemplo**                               |
-|---------------------------|-----------------------|--------------------------------------------|
-| `--dwc-transition-x-slow` | 1000ms                | <TransitionBox speed="--dwc-transition-x-slow" /> |
-| `--dwc-transition-slow`   | 500ms                 | <TransitionBox speed="--dwc-transition-slow" />   |
-| `--dwc-transition-medium` | 250ms                 | <TransitionBox speed="--dwc-transition-medium" /> |
-| `--dwc-transition-fast`   | 150ms                 | <TransitionBox speed="--dwc-transition-fast" />   |
-| `--dwc-transition-x-fast` | 50ms                  | <TransitionBox speed="--dwc-transition-x-fast" /> |
+| **Variable**              | **Valor Predeterminado** | **Ejemplo**                               |
+|---------------------------|--------------------------|-------------------------------------------|
+| `--dwc-transition-x-slow` | 1000ms                   | <TransitionBox speed="--dwc-transition-x-slow" /> |
+| `--dwc-transition-slow`   | 500ms                    | <TransitionBox speed="--dwc-transition-slow" />   |
+| `--dwc-transition-medium` | 250ms                    | <TransitionBox speed="--dwc-transition-medium" /> |
+| `--dwc-transition-fast`   | 150ms                    | <TransitionBox speed="--dwc-transition-fast" />   |
+| `--dwc-transition-x-fast` | 50ms                     | <TransitionBox speed="--dwc-transition-x-fast" /> |
 | `--dwc-transition`        | var(--dwc-transition-medium) | <TransitionBox speed="--dwc-transition" /> |
 
 ---
 
-## Easing {#easing}
+## Aceleración {#easing}
 
-Las variables de easing definen cómo cambian los valores a lo largo del tiempo, haciendo que las transiciones se sientan más naturales.
+Las variables de aceleración definen cómo cambian los valores con el tiempo, haciendo que las transiciones se sientan más naturales.
 
 ### Ejemplo {#example-1}
 
@@ -38,7 +38,7 @@ Las variables de easing definen cómo cambian los valores a lo largo del tiempo,
 }
 ```
 
-Intenta pasar el mouse sobre cada vista previa de easing para ver su efecto de animación.
+Intenta pasar el cursor sobre cada vista previa de aceleración para ver su efecto de animación.
 
 ### Variables {#variables-1}
 

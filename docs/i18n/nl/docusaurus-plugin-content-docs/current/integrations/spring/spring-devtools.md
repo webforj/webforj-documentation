@@ -1,28 +1,28 @@
 ---
 title: Spring DevTools
 sidebar_position: 30
-_i18n_hash: 3cbff575fa5d819ab8602aa97c58d5be
+_i18n_hash: 5401d3aa92e9230c4f26c827dcf83162
 ---
-Spring DevTools biedt automatische herstarts van de app wanneer de code verandert. webforJ DevTools voegt automatische browserverversing toe - wanneer Spring je app herstart, ververst de browser automatisch via de LiveReload-server van webforJ.
+Spring DevTools biedt automatische herstarts van de applicatie wanneer er codewijzigingen zijn. webforJ DevTools voegt automatische browservernieuwing toe - wanneer Spring uw applicatie herstart, ververst de browser automatisch via de LiveReload-server van webforJ.
 
-Verschillende bestandstypen veroorzaken verschillende herlaadgedragingen. Wijzigingen in Java-code veroorzaken een volledige Spring-herstart en browserverversing. Wijzigingen in CSS en afbeeldingen worden bijgewerkt zonder een pagina-herlaad, waardoor formuliergegevens en app-status behouden blijven.
+Verschillende bestandstypen veroorzaken verschillende herlaadgedragingen. Wijzigingen in Java-code veroorzaken een volledige Spring-herstart en browservernieuwing. Wijzigingen in CSS en afbeeldingen worden bijgewerkt zonder dat de pagina opnieuw wordt geladen, waarbij formuliergegevens en applicatiestatus behouden blijven.
 
-## Begrijpen van webforJ DevTools {#understanding-webforj-devtools}
+## Understanding webforJ DevTools {#understanding-webforj-devtools}
 
-webforJ breidt Spring DevTools uit met browsersynchronisatie. Wanneer Spring bestandwijzigingen detecteert en herstart, ververset webforJ DevTools automatisch je browser.
+webforJ breidt Spring DevTools uit met browsersynchronisatie. Wanneer Spring bestandswijzigingen detecteert en herstart, ververst webforJ DevTools automatisch uw browser.
 
-### Herlaadgedrag {#reload-behavior}
+### Reload behavior {#reload-behavior}
 
 Verschillende bestandstypen veroorzaken verschillende herlaadstrategieën:
 
-- **Java-bestanden** - Volledige browserpagina-herlaad na Spring-herstart
+- **Java-bestanden** - Volledige browserpagina herladen na Spring-herstart
 - **CSS-bestanden** - Stijlupdates zonder pagina-herlaad  
-- **JavaScript-bestanden** - Volledige browserpagina-herlaad na Spring-herstart
-- **Afbeeldingen** - Verversing ter plaatse zonder pagina-herlaad
+- **JavaScript-bestanden** - Volledige browserpagina herladen na Spring-herstart
+- **Afbeeldingen** - Vernieuwen ter plaatse zonder pagina-herlaad
 
-## Afhankelijkheden {#dependencies}
+## Dependencies {#dependencies}
 
-Voeg zowel Spring DevTools als webforJ DevTools toe aan je project:
+Voeg zowel Spring DevTools als webforJ DevTools toe aan uw project:
 
 ```xml title="pom.xml"
 <dependency>
@@ -39,32 +39,32 @@ Voeg zowel Spring DevTools als webforJ DevTools toe aan je project:
 </dependency>
 ```
 
-## Configuratie {#configuration}
+## Configuration {#configuration}
 
-Schakel webforJ DevTools in je app-eigenschappen in:
+Schakel webforJ DevTools in uw applicatie-eigenschappen in:
 
 ```Ini title="application.properties"
-# Schakel webforJ browser auto-verversing in
+# Schakel webforJ browser-auto-herladen in
 webforj.devtools.livereload.enabled=true
 
 # Schakel onmiddellijke afsluiting in voor snellere herstarts
 server.shutdown=immediate
 ```
 
-### Geavanceerde configuratie {#advanced-configuration}
+### Advanced configuration {#advanced-configuration}
 
-Configureer de WebSocket-verbinding en herlaadgedrag:
+Configureer WebSocket-verbinding en herlaadgedrag:
 
 ```Ini title="application.properties"
 # WebSocket-serverpoort (standaard: 35730)
 webforj.devtools.livereload.websocket-port=35730
 
-# WebSocket-eindpunt pad (standaard: /webforj-devtools-ws)
+# WebSocket-eindpuntpad (standaard: /webforj-devtools-ws)
 webforj.devtools.livereload.websocket-path=/webforj-devtools-ws
 
 # Hartslaginterval in milliseconden (standaard: 30000)
 webforj.devtools.livereload.heartbeat-interval=30000
 
-# Schakel hete herlaad voor statische bronnen in (standaard: true)
+# Schakel hot reload in voor statische bronnen (standaard: true)
 webforj.devtools.livereload.static-resources-enabled=true
 ```

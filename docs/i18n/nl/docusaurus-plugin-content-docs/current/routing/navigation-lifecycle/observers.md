@@ -1,16 +1,16 @@
 ---
 sidebar_position: 2
 title: Lifecycle Observers
-_i18n_hash: be571bd197730689ba8346b2ef702a3f
+_i18n_hash: 2c66b4194e4d93a762d9a8cd75918e49
 ---
-Observers stellen componenten in staat om te reageren op levenscyclusgebeurtenissen door interfaces te implementeren voor specifieke fasen. Dit patroon zorgt voor een duidelijke scheiding van verantwoordelijkheden en vereenvoudigt het omgaan met navigatielogica.
+Observers stelt componenten in staat om te reageren op levenscyclusgebeurtenissen door interfaces voor specifieke fasen te implementeren. Dit patroon zorgt voor een schone scheiding van verantwoordelijkheden en vereenvoudigt het afhandelen van navigatielogica.
 
 ## Beschikbare observers {#available-observers}
 
-- **`WillEnterObserver`**: Hiermee kun je taken afhandelen voordat een route betreden wordt, zoals het ophalen van noodzakelijke gegevens of het blokkeren van navigatie.
-- **`DidEnterObserver`**: Ideaal voor het afhandelen van acties nadat de component is bevestigd, zoals het weergeven van gegevens of het starten van animaties.
+- **`WillEnterObserver`**: Hiermee kun je taken afhandelen voordat een route wordt binnengegaan, zoals het ophalen van noodzakelijke gegevens of het blokkeren van navigatie.
+- **`DidEnterObserver`**: Ideaal voor het afhandelen van acties nadat het component is bevestigd, zoals het weergeven van gegevens of het starten van animaties.
 - **`WillLeaveObserver`**: Biedt een manier om logica te beheren voordat een gebruiker een route verlaat, zoals het controleren op niet-opgeslagen wijzigingen.
-- **`DidLeaveObserver`**: Wordt gebruikt voor opruimacties of andere taken die moeten worden uitgevoerd nadat een component uit de DOM is verwijderd.
+- **`DidLeaveObserver`**: Wordt gebruikt voor opruimacties of andere taken die moeten worden uitgevoerd nadat een component van de DOM is losgekoppeld.
 
 ## Voorbeeld: authenticatie met `WillEnterObserver` {#example-authentication-with-willenterobserver}
 
@@ -30,15 +30,15 @@ public class DashboardView extends Composite<Div> implements WillEnterObserver {
 }
 ```
 
-Hier controleert `onWillEnter` of de gebruiker is geauthenticeerd. Zo niet, dan wordt de navigatie verworpen, waardoor de navigatie niet wordt voltooid en in plaats daarvan naar de inlogpagina wordt omgeleid.
+Hier controleert `onWillEnter` of de gebruiker geauthenticeerd is. Als dit niet het geval is, wordt de navigatie verworpen, waardoor de navigatie niet volledig kan worden uitgevoerd en in plaats daarvan wordt doorgestuurd naar de aanmeldpagina.
 
-:::warning Voorbeeld van Geauthenticeerde Routes - Niet Klaar voor Productie
-Dit vorige is slechts een voorbeeld van hoe je geauthenticeerde routes kunt gebruiken.
-Dit **Is geen** voorbeeld van hoe je een authenticatiesysteem op productieniveau zou schrijven.
-Je moet de concepten en patronen die in dit voorbeeld worden gebruikt, aanpassen voor jouw authenticatiestroom/systeem voor jouw app.
+:::warning Voorbeeld van Geauthenticeerde Routes - Niet Geschikt voor Productie
+Dit voorbeeld is slechts een demonstratie van hoe geauthenticeerde routes te gebruiken.
+Dit **is geen** voorbeeld van hoe je een authenticatiesysteem op productie-niveau zou schrijven.
+Je moet de concepten en patronen die in dit voorbeeld worden gebruikt, aanpassen om te werken met jouw authenticatiestroom/systeem voor jouw app.
 :::
 
-## Voorbeeld: gegevens ophalen bij het betreden van een route met `DidEnterObserver` {#example-fetching-data-on-route-entry-with-didenterobserver}
+## Voorbeeld: gegevens ophalen bij het inloggen met `DidEnterObserver` {#example-fetching-data-on-route-entry-with-didenterobserver}
 
 ```java
 @Route(value = "profile")
@@ -57,9 +57,9 @@ public class ProfileView extends Composite<Div> implements DidEnterObserver {
 }
 ```
 
-Dit voorbeeld demonstreert het gebruik van `DidEnterObserver` om profielgegevens op te halen en weer te geven zodra de component aan de DOM is bevestigd.
+Dit voorbeeld laat zien hoe `DidEnterObserver` wordt gebruikt om profielgegevens op te halen en weer te geven zodra het component aan de DOM is bevestigd.
 
-## Voorbeeld: Ongeslagen wijzigingen afhandelen met `WillLeaveObserver` {#example-handling-unsaved-changes-with-willleaveobserver}
+## Voorbeeld: Afhandelen van niet-opgeslagen wijzigingen met `WillLeaveObserver` {#example-handling-unsaved-changes-with-willleaveobserver}
 
 ```java
 @Route(value = "edit-profile")
@@ -67,7 +67,7 @@ public class EditProfileView extends Composite<Div> implements WillLeaveObserver
   private boolean hasUnsavedChanges = false;
 
   public EditProfileView() {
-    // Logica om onopgeslagen wijzigingen te detecteren
+    // Logica om niet-opgeslagen wijzigingen te detecteren
   }
 
   @Override
@@ -76,8 +76,8 @@ public class EditProfileView extends Composite<Div> implements WillLeaveObserver
 
     if(hasUnsavedChanges) {
       ConfirmDialog.Result result = showConfirmDialog(
-          "Er zijn onopgeslagen wijzigingen. Wil je ze Negeer of Opslaan?",
-          "Ongeslagen Wijzigingen",
+          "Er zijn niet-opgeslagen wijzigingen. Wil je ze negeren of opslaan?",
+          "Niet-opgeslagen Wijzigingen",
           ConfirmDialog.OptionType.OK_CANCEL,
           ConfirmDialog.MessageType.WARNING);
     }
@@ -85,13 +85,13 @@ public class EditProfileView extends Composite<Div> implements WillLeaveObserver
 }
 ```
 
-In dit voorbeeld vraagt `onWillLeave` de gebruiker om bevestiging via een dialoogvenster als er onopgeslagen wijzigingen zijn, waarbij de navigatie wordt verworpen als de gebruiker ervoor kiest om te blijven.
+In dit voorbeeld vraagt `onWillLeave` de gebruiker om een bevestigingsdialoog als er niet-opgeslagen wijzigingen zijn, waarbij de navigatie wordt verworpen als de gebruiker ervoor kiest om te blijven.
 
-:::info Navigatieblokkering en Veto-afhandeling
-Voor meer informatie over het blokkeren van navigatie, zie [Navigatieblokkering en Veto-afhandeling](./navigation-blocking)
+:::info Navigatie blokkeren en Veto-afhandeling
+Voor meer informatie over het blokkeren van navigatie, zie [Navigatie Blokkeren en Veto-afhandeling](./navigation-blocking)
 :::
 
-## Voorbeeld: Opruiming met `DidLeaveObserver` {#example-cleanup-with-didleaveobserver}
+## Voorbeeld: Opruimen met `DidLeaveObserver` {#example-cleanup-with-didleaveobserver}
 
 ```java
 @Route(value = "notifications")
@@ -104,4 +104,4 @@ public class NotificationsView extends Composite<Div> implements DidLeaveObserve
 }
 ```
 
-Dit voorbeeld wist meldingen nadat de gebruiker de `NotificationsView` verlaat, en gebruikt de `DidLeaveObserver` voor opruiming.
+Dit voorbeeld verwijdert meldingen nadat de gebruiker de `NotificationsView` verlaat, met gebruik van de `DidLeaveObserver` voor opruimen.

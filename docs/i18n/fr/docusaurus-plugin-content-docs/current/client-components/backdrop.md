@@ -6,7 +6,7 @@ slug: backdrop
 description: A user guide article for the backdrop
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: a3daea6a11502b5fd94894791f3b7fd4
+_i18n_hash: 0c720960769b73ee5df47abd29d7e606
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,7 +17,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info COMPOSANT CLIENT
-Cette section décrit les informations de style pour le **`<dwc-backdrop>`** composant. Ce composant est **uniquement côté client** - il ne peut pas être instancié seul via l'API, mais peut faire partie des composants d'API.
+Cette section décrit les informations de style pour le **`<dwc-backdrop>`** composant. Ce composant est **uniquement côté client** - il ne peut pas être instancié par lui-même via l'API, mais peut faire partie des composants API.
 :::
 
 ## Styling {#styling}

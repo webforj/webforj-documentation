@@ -1,15 +1,15 @@
 ---
 sidebar_position: 6
 title: Jakarta Validation
-_i18n_hash: 68a57d576ce21a9f99b121e5db3cf85f
+_i18n_hash: eec00fac283efce49d856b1d40a48252
 ---
-[Java Bean Validation](https://beanvalidation.org/) on laajalti tunnustettu standardiksi vahvistuslogiikan integroimiseksi Java-sovelluksiin. Se hyödyntää yhtenäistä lähestymistapaa validoimalla, sallimalla kehittäjien liittää domain-mallin ominaisuuksiin deklaratiivisia vahvistusrajoituksia. Nämä rajoitukset pannaan täytäntöön ajonaikaisesti, ja käytettävissä on sekä sisäänrakennettuja että käyttäjän määrittämiä sääntöjä.
+[Java Bean Validation](https://beanvalidation.org/) on laajalti tunnustettu standardiksi validointilogikan integroimiseksi Java-sovelluksiin. Se hyödyntää yhtenäistä lähestymistapaa validointiin sallimalla kehittäjien merkitä domain-mallin ominaisuuksia deklaratiivisilla validointirajoilla. Näitä rajoja noudatetaan ajonaikana, ja käytettävissä on sekä valmiita että käyttäjän määrittämiä sääntöjä.
 
-webforJ integroituu saumattomasti Bean Validationiin `JakartaValidator`-sovittimen avulla tarjoten vankkaa tukea suoraan käyttöön.
+webforJ integroituu saumattomasti Bean Validationiin `JakartaValidator`-sovittimen kautta, tarjoten vankkaa tukea suoraan käyttöön.
 
 ## Asennus {#installation}
 
-On tarpeen sisällyttää yhteens Sopiva toteutus, kuten [Hibernate Validator](https://hibernate.org/validator/), luokkakehykseesi. Jos ympäristösi ei tule tämän toteutuksen kanssa oletuksena, voit lisätä sen manuaalisesti seuraavien Maven-riippuvuuksien avulla:
+On tarpeen lisätä yhteensopiva toteutus, kuten [Hibernate Validator](https://hibernate.org/validator/), luokkajuureen. Jos ympäristössäsi ei ole tätä toteutusta oletuksena, voit lisätä sen manuaalisesti käyttämällä seuraavia Maven-riippuvuuksia:
 
 ```xml
 <dependency>
@@ -26,19 +26,19 @@ On tarpeen sisällyttää yhteens Sopiva toteutus, kuten [Hibernate Validator](h
 
 ## `JakartaValidator` {#the-jakartavalidator}
 
-`JakartaValidator`-luokka toimii sovittimena, joka yhdistää webforJ-sitojan kontekstin Jakarta Validointiin. Tämä integraatio mahdollistaa monimutkaisten vahvistussääntöjen käytön suoraan annotaatioiden kautta bean-luokassa.
+`JakartaValidator`-luokka toimii sovittimena yhdistäen webforJ-sidontakontekstin Jakarta Validationiin. Tämä integrointi mahdollistaa monimutkaisten validointisääntöjen käytön suoraan annotaatioiden avulla bean-luokassa.
 
-### `JakartaValidator` aktivointi {#activating-jakartavalidator}
+### `JakartaValidator`-aktiivointi {#activating-jakartavalidator}
 
-Aktivoidaksesi `JakartaValidator`-sovittimen koko kontekstissa, käytät tyypillisesti `useJakartaValidator`-parametria `BindingContext`-rakentaessa.
+Voit aktivoida `JakartaValidator`:n koko kontekstissa käyttämällä tyypillisesti `useJakartaValidator`-parametria `BindingContext`:in rakentamisessa.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class, true);
 ```
 
-### Raajausten määrittäminen bean-ominaisuuksille {#defining-constraints-for-bean-properties}
+### Rajoitusten määrittäminen bean-ominaisuuksille {#defining-constraints-for-bean-properties}
 
-Annotaatio-pohjaiset rajoitukset sovelletaan suoraan bean-luokassa vahvistusolosuhteiden määrittämiseksi, kuten esimerkissä alla:
+Annotaatioihin perustuvat rajoitukset sovelletaan suoraan bean-luokassa validointiehtojen määrittämiseksi, kuten seuraavassa esimerkissä:
 
 ```java
 public class Hero {
@@ -50,12 +50,12 @@ public class Hero {
   @Pattern(regexp = "Fly|Invisible|LaserVision|Speed|Teleportation", message = "Virheellinen voima")
   private String power;
 
-  // getterit ja setterit
+  // hakijat ja asettajat
 }
 ```
 
-Tällaiset rajoitukset ovat yhtä tehokkaita kuin ohjelmallisesti asetetut rajoitukset sidonnan aloituksessa, varmistaen johdonmukaiset vahvistustulokset.
+Tällaiset rajoitukset ovat yhtä tehokkaita kuin ohjelmallisesti määritetyt rajoitukset sidontainitialisoinnin aikana, mikä varmistaa johdonmukaiset validointitulokset.
 
 :::warning
-Tällä hetkellä `JakartaValidator` tunnistaa vain ominaisuuksille suoraan asetetut rajoitukset ja ohittaa kaikki validoinnit, jotka eivät ole suoraan yhteydessä ominaisuuksiin.
+Tällä hetkellä `JakartaValidator` tunnistaa vain suoraan ominaisuuksiin liitetyt rajoitukset ja sivuuttaa kaikki validoinnit, jotka eivät ole suoraan yhteydessä ominaisuuksiin.
 :::

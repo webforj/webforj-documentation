@@ -2,7 +2,7 @@
 title: SideMenu
 sidebar_position: 3
 hide_table_of_contents: true
-_i18n_hash: c5fb775f5867b54eb53b0e1e63b90e20
+_i18n_hash: 0d0c302e47e1711d573c9bf6860547ae
 ---
 <Head>
   <style>{`
@@ -13,16 +13,16 @@ _i18n_hash: c5fb775f5867b54eb53b0e1e63b90e20
 </Head>
 
 <!-- vale off -->
-# SideMenu arkkityyppi
+# SideMenu-malli
 <!-- vale on -->
 
-Projekteille, jotka tarvitsevat rakenteellista navigointijärjestelmää, `sidemenu` arkkityyppi on loistava aloituspaikka. Tämä arkkityyppi sisältää sivuvalikon ja sisältöalueen, ja se on suunniteltu auttamaan sinua luomaan sovelluksia, joissa on selkeä ja intuitiivinen navig Structures, mikä helpottaa käyttäjien löytämistä ja pääsyä sovelluksesi eri osiin.
+Projekteille, jotka tarvitsevat jäsenneltyä navigointijärjestelmää, `sidemenu`-malli on erinomainen lähtökohta. Tämä malli sisältää sivupalkin ja sisältöalueen, ja se on suunniteltu auttamaan sinua luomaan sovelluksia, joissa on selkeä ja intuitiivinen navigointirakenne, mikä helpottaa käyttäjien löytämistä ja pääsyä erilaisiin osiin sovellustasi.
 
 :::tip Käyttäen startforJ
-Jos haluat enemmän hallintaa mukauttamisessa ja konfiguroinnissa, voit käyttää [startforJ](https://docs.webforj.com/startforj/) -palvelua projektisi luomiseen - valitse vain `SideMenu` arkkityyppi, kun valitset konfigurointivaihtoehtoja.
+Lisäämällä mukauttamista ja konfigurointia, voit käyttää [startforJ](https://docs.webforj.com/startforj/) -sovellusta projektisi luomiseen - valitse vain `SideMenu`-malli, kun valitset konfigurointivaihtoehtoja.
 :::
 
-## Käyttäen `sidemenu` arkkityyppiä {#using-the-sidemenu-archetype}
+## Käyttäen `sidemenu`-mallia {#using-the-sidemenu-archetype}
 
 <ComponentArchetype
 project="sidemenu"
@@ -30,15 +30,15 @@ project="sidemenu"
 
 ## Sovelluksen ajaminen {#running-the-app}
 
-Ennen kuin ajoit sovellustasi, asenna [esivaatimukset](../../introduction/prerequisites), jos et ole vielä tehnyt niin. 
-Siirry sitten projektin juurihakemistoon ja aja seuraava komento:
+Ennen sovelluksen ajamista, asenna [esivaatimukset](../../introduction/prerequisites), jos et ole vielä tehnyt niin. 
+Sitten siirry projektin pääkansioon ja suorita seuraava komento:
 
 ```bash
-# tavanomaiselle webforJ-sovellukselle
+# standardille webforJ sovellukselle
 mvn jetty:run
 
 # webforJ + Spring Boot
 mvn spring-boot:run
 ```
 
-Kun palvelin on käynnissä, avaa selain ja siirry osoitteeseen [http://localhost:8080](http://localhost:8080) nähdäksesi sovelluksen.
+Kun palvelin on käynnissä, avaa selaimesi ja mene osoitteeseen [http://localhost:8080](http://localhost:8080) nähdäksesi sovelluksen.

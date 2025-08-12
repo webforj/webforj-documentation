@@ -1,14 +1,14 @@
 ---
 title: Login
 sidebar_position: 70
-_i18n_hash: f2f1f96cfde1dbbede5bfdaafd3f0a92
+_i18n_hash: b95b5a072de318071d9d7ecae890a883
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-login" />
 <DocChip chip='since' label='24.01' />
 <JavadocLink type="login" location="com/webforj/component/login/Login" top='true'/>
 
-Die Login-Komponente ist so konzipiert, dass sie eine benutzerfreundliche Oberfläche zur Authentifizierung bereitstellt, die es den Benutzern ermöglicht, sich mit einem Benutzernamen und Passwort anzumelden. Sie unterstützt verschiedene Anpassungen zur Verbesserung der Benutzererfahrung auf unterschiedlichen Geräten und in verschiedenen Regionen.
+Die Login-Komponente ist so konzipiert, dass sie eine benutzerfreundliche Schnittstelle für die Authentifizierung bereitstellt, mit der Benutzer sich mit einem Benutzernamen und einem Passwort anmelden können. Sie unterstützt verschiedene Anpassungen, um das Benutzererlebnis über verschiedene Geräte und Regionen hinweg zu verbessern.
 
 <ComponentDemo 
 path='/webforj/loginbasic?' 
@@ -18,16 +18,16 @@ height = '450px'
 
 ## Usages {#usages}
 
-Die Login-Komponente bietet ein benutzerfreundliches Login-Formular innerhalb eines Dialogs zur Eingabe von Authentifizierungsdaten. Sie verbessert die Benutzererfahrung durch folgendes:
+Die Login-Komponente bietet eine benutzerfreundliche Anmeldemaske innerhalb eines Dialogfelds zur Eingabe von Authentifizierungsdaten. Sie verbessert das Benutzererlebnis, indem sie Folgendes bietet:
    >- Klare Eingabefelder für Benutzername und Passwort.
-   >- Sichtbarkeitstaster für das Passwort zur Überprüfung der Eingabe.
-   >- Eingabebestätigungsfeedback, um das richtige Format vor der Übermittlung zu fördern.
+   >- Sichtbarkeitsschalter für das Passwort zur Überprüfung der Eingabe.
+   >- Eingabebenachrichtigungen zur Rückmeldung, um das korrekte Format vor dem Absenden sicherzustellen.
 
 ## Login submission {#login-submission}
 
-Wenn Benutzer ihren Benutzernamen und ihr Passwort eingeben, validiert die Login-Komponente diese Eingaben als erforderliche Felder. Sobald die Validierung erfolgreich ist, wird ein Formularüberereignis ausgelöst, das die eingegebenen Anmeldedaten übermittelt. Um mehrere Übermittlungen zu verhindern, wird die `Signin`-Schaltfläche sofort deaktiviert.
+Wenn Benutzer ihren Benutzernamen und ihr Passwort eingeben, validiert die Login-Komponente diese Eingaben als erforderliche Felder. Sobald die Validierung bestanden ist, wird ein Formularüberereignis ausgelöst, das die eingegebenen Anmeldeinformationen übermittelt. Um mehrere Übermittlungen zu verhindern, wird die Schaltfläche `Signin` sofort deaktiviert.
 
-Die folgende Demo veranschaulicht einen grundlegenden Formularübermittlungsprozess. Wenn sowohl der Benutzername als auch das Passwort auf `"admin"` gesetzt sind, wird der Login-Dialog geschlossen und eine Abmelde-Schaltfläche erscheint. Wenn die Anmeldedaten nicht übereinstimmen, wird die standardmäßige Fehlermeldung des Login-Formulars angezeigt.
+Die folgende Demo veranschaulicht einen grundlegenden Formularübermittlungsprozess. Wenn der Benutzername und das Passwort beide auf `"admin"` gesetzt sind, wird das Anmeldedialogfeld geschlossen und eine Schaltfläche zum Abmelden erscheint. Wenn die Anmeldeinformationen nicht übereinstimmen, wird die Standardfehlermeldung des Anmeldeformulars angezeigt.
 
 <ComponentDemo 
 path='/webforj/loginsubmission?' 
@@ -36,18 +36,18 @@ height = '450px'
 />
 
 :::info Deaktivierung der Signin-Schaltfläche
-Standardmäßig deaktiviert das Login-Formular sofort die `Signin`-Schaltfläche, sobald die Komponente die Login-Eingaben als korrekt validiert, um mehrere Übermittlungen zu verhindern. Sie können die `Signin`-Schaltfläche mit der Methode `setEnabled(true)` wieder aktivieren.
+Standardmäßig deaktiviert das Anmeldeformular sofort die Schaltfläche `Signin`, sobald die Komponente die Anmeldeeingaben als korrekt validiert, um mehrere Übermittlungen zu verhindern. Sie können die Schaltfläche `Signin` mit der Methode `setEnabled(true)` wieder aktivieren.
 :::
 
-:::tip Zulassen von leeren Passwörtern
-In bestimmten Szenarien können leere Passwörter zulässig sein, sodass Benutzer sich nur mit einem Benutzernamen anmelden können. Der Login-Dialog kann so konfiguriert werden, dass er leere Passwörter akzeptiert, indem `setEmptyPassword(true)` gesetzt wird.
+:::tip Erlauben leerer Passwörter
+In bestimmten Szenarien können leere Passwörter zulässig sein, sodass Benutzer sich nur mit einem Benutzernamen anmelden können. Das Anmeldedialogfeld kann so konfiguriert werden, dass es leere Passwörter akzeptiert, indem `setEmptyPassword(true)` gesetzt wird.
 :::
 
 ## Internationalisierung (i18n) {#internationalization-i18n}
 
-Die Titel, Beschreibungen, Labels und Nachrichten innerhalb der Login-Komponente sind vollständig anpassbar und verwenden die `LoginI18n`-Klasse. Diese Flexibilität ermöglicht es Ihnen, die Login-Oberfläche an spezifische Lokalisierungsanforderungen oder persönliche Vorlieben anzupassen.
+Die Titel, Beschreibungen, Labels und Nachrichten innerhalb der Login-Komponente sind vollständig anpassbar mit der Klasse `LoginI18n`. Diese Flexibilität ermöglicht es Ihnen, die Anmeldeschnittstelle so anzupassen, dass sie spezifische Lokalisierungsanforderungen oder Personalisierungspräferenzen erfüllt.
 
-Die folgende Demo veranschaulicht, wie eine deutsche Übersetzung für den Login-Dialog bereitgestellt werden kann, sodass alle Interface-Elemente an die deutsche Sprache angepasst werden, um die Benutzererfahrung für deutschsprachige Benutzer zu verbessern.
+Die folgende Demo veranschaulicht, wie man eine deutsche Übersetzung für das Anmeldedialogfeld bereitstellt, um sicherzustellen, dass alle Schnittstellenelemente an die deutsche Sprache angepasst werden, um das Benutzererlebnis für deutschsprachige Benutzer zu verbessern.
 
 <ComponentDemo 
 path='/webforj/logininternationalization?' 
@@ -55,11 +55,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '500px'
 />
 
-## Benutzerdefinierte Felder {#custom-fields}
+## Custom fields {#custom-fields}
 
-Die Login-Komponente enthält mehrere Slots, die es Ihnen ermöglichen, bei Bedarf zusätzliche Felder hinzuzufügen. Dieses Feature bietet mehr Kontrolle über die Informationen, die für eine erfolgreiche Authentifizierung erforderlich sind.
+Die Login-Komponente umfasst mehrere Slots, die es Ihnen ermöglichen, bei Bedarf zusätzliche Felder hinzuzufügen. Diese Funktion ermöglicht mehr Kontrolle über die Informationen, die für eine erfolgreiche Authentifizierung erforderlich sind.
 
-Im folgenden Beispiel wird ein Kunden-ID-Feld zum Login-Formular hinzugefügt. Benutzer müssen eine gültige ID angeben, um die Authentifizierung abzuschließen, was die Sicherheit erhöht und sicherstellt, dass der Zugriff nur nach Überprüfung aller erforderlichen Anmeldedaten gewährt wird.
+Im untenstehenden Beispiel wird ein Kunden-ID-Feld zum Anmeldeformular hinzugefügt. Benutzer müssen eine gültige ID bereitstellen, um die Authentifizierung abzuschließen, was die Sicherheit erhöht und sicherstellt, dass der Zugriff nur nach Überprüfung aller erforderlichen Anmeldeinformationen gewährt wird.
 
 <ComponentDemo 
 path='/webforj/logincustomfields?' 
@@ -68,15 +68,15 @@ cssURL='/css/login/loginCustomFields.css'
 height = '700px'
 />
 
-:::info Übertragungsinhalt
-Bitte beachten Sie, dass die Login-Komponente zusätzliche Felder, die zum Formular hinzugefügt werden, nicht automatisch erkennt oder in ihrem Übertragungsinhalt enthält. Dies bedeutet, dass Entwickler den Wert zusätzlicher Felder explizit von der Client-Seite abrufen und entsprechend den Anforderungen der App verarbeiten müssen, um den Authentifizierungsprozess abzuschließen.
+:::info Übermittlungs-Payload
+Bitte beachten Sie, dass die Login-Komponente zusätzliche Felder, die dem Formular hinzugefügt wurden, nicht automatisch erkennt oder in ihrem Übermittlungs-Payload einbezieht. Das bedeutet, dass Entwickler explizit den Wert zusätzlicher Felder von der Clientseite abrufen und diesen gemäß den Anforderungen der Anwendung behandeln müssen, um den Authentifizierungsprozess abzuschließen.
 :::
 
-## Abbrechen-Schaltfläche {#cancel-button}
+## Cancel button {#cancel-button}
 
-In bestimmten Szenarien kann es wünschenswert sein, neben der `Signin`-Schaltfläche eine Abbrechen-Schaltfläche hinzuzufügen. Dieses Feature ist besonders nützlich, wenn ein Benutzer versucht, auf einen eingeschränkten Bereich der App zuzugreifen und eine Option zum Abbrechen der Aktion und Rückkehr zu seinem vorherigen Standort benötigt. Das Login-Formular enthält standardmäßig eine Abbrechen-Schaltfläche, die jedoch aus der Sicht verborgen ist.
+In bestimmten Szenarien kann es wünschenswert sein, neben der Schaltfläche `Signin` eine Abbrechen-Schaltfläche hinzuzufügen. Diese Funktion ist besonders nützlich, wenn ein Benutzer versucht, auf einen eingeschränkten Bereich der Anwendung zuzugreifen und eine Option benötigt, um die Aktion abzubrechen und zu seinem vorherigen Standort zurückzukehren. Das Anmeldeformular enthält standardmäßig eine Abbrechen-Schaltfläche, die jedoch nicht angezeigt wird.
 
-Um die Abbrechen-Schaltfläche sichtbar zu machen, müssen Sie ihr eine Bezeichnung geben - nach der Beschriftung wird sie auf dem Bildschirm erscheinen. Sie können auch auf Abbrechen-Ereignisse hören, um angemessen auf Benutzeraktionen zu reagieren und eine reibungslose und benutzerfreundliche Erfahrung bei der Navigation in der App sicherzustellen.
+Um die Abbrechen-Schaltfläche sichtbar zu machen, müssen Sie ihr ein Label geben - sobald sie beschriftet ist, wird sie auf dem Bildschirm angezeigt. Sie können auch auf Abbrechen-Ereignisse hören, um entsprechend auf die Benutzeraktionen zu reagieren und ein reibungsloses und benutzerfreundliches Erlebnis bei der Navigation in der Anwendung sicherzustellen.
 
 <ComponentDemo 
 path='/webforj/logincancelbutton?' 
@@ -84,17 +84,17 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '450px'
 />
 
-:::tip Verstecken von Elementen
-Um ein Element vom Login-Bildschirm zu verbergen, setzen Sie dessen Bezeichnung einfach auf einen leeren String. Dieser Ansatz ist besonders nützlich, um Interface-Komponenten vorübergehend zu entfernen, ohne den Code dauerhaft zu ändern.
+:::tip Ausblenden von Elementen
+Um ein Element vom Anmeldebildschirm auszublenden, setzen Sie einfach sein Label auf einen leeren String. Dieser Ansatz ist besonders nützlich, um Schnittstellenkomponenten vorübergehend zu entfernen, ohne den Code dauerhaft zu ändern.
 :::
 
-## Passwortmanager {#password-managers}
+## Password managers {#password-managers}
 
-Die Login-Komponente ist so konzipiert, dass sie mit browserbasierten Passwortmanagern kompatibel ist, was die Benutzererfahrung verbessert, indem der Anmeldeprozess vereinfacht wird. Für Benutzer von Chromium-basierten Browsern integriert sich die Komponente nahtlos mit der [`PasswordCredential`](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential) API. Diese Integration ermöglicht mehrere praktische Funktionen:
+Die Login-Komponente ist so konzipiert, dass sie mit passwortbasierten Browser-Managern kompatibel ist, um das Benutzererlebnis zu verbessern und den Anmeldeprozess zu vereinfachen. Für Benutzer von Chromium-basierten Browsern integriert sich die Komponente nahtlos mit dem [`PasswordCredential`](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential) API. Diese Integration ermöglicht mehrere komfortable Funktionen:
 
-- **Auto-fill**: Der Browser kann automatisch die Benutzername- und Passwortfelder ausfüllen, wenn der Benutzer Anmeldedaten für die Seite gespeichert hat.
-- **Zugangsdatenverwaltung**: Nach der Anmeldung kann der Browser den Benutzer auffordern, neue Anmeldedaten zu speichern, was zukünftige Anmeldungen schneller und einfacher macht.
-- **Zugangsdaten-Auswahl**: Wenn mehrere Anmeldedaten gespeichert sind, kann der Browser dem Benutzer die Wahl anbieten, aus einem der gespeicherten Datensätze auszuwählen.
+- **Automatisches Ausfüllen**: Der Browser kann die Felder für Benutzername und Passwort automatisch ausfüllen, wenn der Benutzer Anmeldeinformationen für die Website gespeichert hat.
+- **Credential Management**: Nach der Anmeldung kann der Browser den Benutzer auffordern, neue Anmeldeinformationen zu speichern, was zukünftige Anmeldungen schneller und einfacher macht.
+- **Credential Selection**: Wenn mehrere Anmeldeinformationen gespeichert sind, kann der Browser dem Benutzer die Wahl lassen, aus einem der gespeicherten Sätze auszuwählen.
 
 ## Styling {#styling}
 

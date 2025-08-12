@@ -6,7 +6,7 @@ slug: textarea
 description: A user guide article for the textarea
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 4a15e4800bbd5ccf7a242d11a7514609
+_i18n_hash: 0ac786cc079eda27eeb676fb81f1335e
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,7 +17,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info 客户端组件
-本节概述了**`<dwc-textarea>`**组件的样式信息。该组件是**仅客户端** - 不能通过API单独实例化，但可以是API组件的一部分。
+本节概述了 **`<dwc-textarea>`** 组件的样式信息。此组件是 **仅客户端** 的 - 不能通过 API 单独实例化，但可以作为 API 组件的一部分。
 :::
 
 ## 样式 {#styling}

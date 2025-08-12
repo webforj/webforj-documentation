@@ -1,13 +1,13 @@
 ---
 sidebar_position: 4
 title: Context Results
-_i18n_hash: 15fc4551d1ed2f2b5e35785975e66946
+_i18n_hash: f7eeb60ff21b1d5dff27b17cc82cdf50
 ---
-Wenn Sie Daten von der UI auf das Modell schreiben, löst die `write`-Methode des `BindingContext` die Validierungen aus. Die Ergebnisse der Validierung bestimmen, ob die Daten akzeptabel sind.
+Wenn Sie Daten von der Benutzeroberfläche in das Modell schreiben, löst die `write`-Methode des `BindingContext` die Validierungen aus. Die Validierungsergebnisse bestimmen, ob die Daten akzeptabel sind.
 
 ## Verarbeitung von Validierungsergebnissen {#processing-validation-results}
 
-Sie können Validierungsergebnisse verarbeiten, um dem Benutzer Feedback zu geben. Wenn eine Validierung fehlschlägt, können Sie das Update der Daten im Modell verhindern und Fehlermeldungen anzeigen, die mit jeder fehlgeschlagenen Validierung verbunden sind.
+Sie können Validierungsergebnisse verarbeiten, um dem Benutzer Feedback zu geben. Wenn eine Validierung fehlschlägt, können Sie die Datenaktualisierung im Modell verhindern und Fehlermeldungen anzeigen, die mit jeder fehlgeschlagenen Validierung verbunden sind.
 
 ```java
 ValidationResult result = context.write(hero);
@@ -19,10 +19,10 @@ if (!result.isValid()) {
 ```
 
 <!-- vale off -->
-## Kontext-Validierungsstatus {#context-validation-state}
+## Kontextvalidierungsstatus {#context-validation-state}
 <!-- vale on -->
 
-Wann immer der Kontext die Komponenten validiert, löst er ein `BindingContextValidateEvent` aus. Dieses Ereignis liefert das `ValidationResult` für alle Bindungen, die gleichzeitig geändert wurden. Sie können diese Ergebnisse nutzen, um Aktionen auszulösen und angemessen zu reagieren, z. B. durch Aktivieren oder Deaktivieren der Schaltfläche "Absenden", basierend auf der Gesamtgültigkeit des Formulars.
+Immer wenn der Kontext die Komponenten validiert, wird ein `BindingContextValidateEvent` ausgelöst. Dieses Ereignis liefert das `ValidationResult` für alle Bindungen, die gleichzeitig geändert wurden. Sie können diese Ergebnisse verwenden, um Aktionen auszulösen und angemessen zu reagieren, z. B. um die Schaltfläche zum Absenden basierend auf der Gesamtgültigkeit des Formulars zu aktivieren oder zu deaktivieren.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
@@ -35,9 +35,9 @@ context.addValidateListener(event -> {
 
 ## Auto-Fokus-Verletzung {#auto-focus-violation}
 
-Bei Formularen, die eine Validierung über mehrere Felder hinweg erfordern, kann der automatische Fokus auf das erste Feld mit einem Fehler die Benutzererfahrung erheblich verbessern. Diese Funktion hilft den Benutzern, Fehler sofort zu identifizieren und zu korrigieren, was den Abschluss des Formulars erleichtert.
+Beim Umgang mit Formularen, die eine Validierung über mehrere Felder erfordern, kann das automatische Fokussieren des ersten Feldes mit einem Fehler die Benutzererfahrung erheblich verbessern. Dieses Feature hilft Benutzern, Fehler sofort zu identifizieren und zu korrigieren, wodurch der Abschluss des Formulars erleichtert wird.
 
-Der `BindingContext` vereinfacht den Prozess, den Auto-Fokus auf die erste Komponente mit einem Validierungsfehler einzurichten. Durch die Verwendung der Methode `setAutoFocusFirstViolation` können Sie diese Funktion mit minimalem Code aktivieren, wodurch sichergestellt wird, dass die Benutzeroberfläche intuitiver und reaktionsschneller auf Eingabefehler wird.
+Der `BindingContext` vereinfacht den Prozess des Einstellens des Auto-Fokus auf die erste Komponente mit einem Validierungsfehler. Durch die Verwendung der Methode `setAutoFocusFirstViolation` können Sie dieses Feature mit minimalem Code aktivieren, sodass die Benutzeroberfläche intuitiver und reaktionsschneller auf Eingabefehler wird.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
@@ -45,5 +45,5 @@ context.setAutoFocusFirstViolation(true);
 ```
 
 :::info Fokusbewusst
-Diese Funktion funktioniert nur für die Komponenten, die das `FocusAcceptorAware`-Merkmal implementieren.
+Dieses Feature funktioniert nur für die Komponenten, die das `FocusAcceptorAware`-Anliegen implementieren.
 :::

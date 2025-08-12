@@ -1,18 +1,18 @@
 ---
 title: Object and String Tables
 sidebar_position: 35
-_i18n_hash: a20240ac42fa56a5a7044aaeb969faa7
+_i18n_hash: aa2c014d8043f9ad53dfabcdc39844da
 ---
-Le `ObjectTable` et le `StringTable` fournissent un accès statique aux données partagées dans un environnement webforJ. Les deux sont accessibles depuis n'importe où dans votre application et servent des objectifs différents :
+Le `ObjectTable` et le `StringTable` fournissent un accès statique aux données partagées dans un environnement webforJ. Les deux sont accessibles de n'importe où dans votre application et servent des objectifs différents :
 
-- `ObjectTable` : Pour stocker et récupérer des objets Java dans votre application.
-- `StringTable` : Pour travailler avec des paires clé-valeur de chaînes persistantes, souvent utilisées pour des données de configuration ou de type environnement.
+- `ObjectTable` : Pour stocker et récupérer des objets Java à travers votre application.
+- `StringTable` : Pour travailler avec des paires de chaînes clé-valeur persistantes, souvent utilisées pour des données de configuration ou de type environnement.
 
 Ces tables sont disponibles au niveau de l'environnement et ne nécessitent pas de gestion d'instance.
 
 ## `ObjectTable` {#objecttable}
 
-`ObjectTable` est une carte clé-valeur accessible globalement pour stocker n'importe quel objet Java. Il fournit un accès simple à l'état partagé sans besoin d'instancier ou de configurer quoi que ce soit. Il n'y a qu'une seule instance de `ObjectTable` et elle est effacée lorsque l'application est actualisée ou terminée. C'est utile dans les scénarios où vous devez mettre des données à disposition à travers plusieurs composants ou contextes sans maintenir une chaîne de référence.
+`ObjectTable` est une carte clé-valeur globalement accessible pour stocker n'importe quel objet Java. Il fournit un accès simple à l'état partagé sans avoir besoin d'instancier ou de configurer quoi que ce soit. Il n'y a qu'une seule instance d'ObjectTable et elle est effacée lorsque l'application est rafraîchie ou terminée. Cela est utile pour les scénarios où vous devez rendre les données disponibles à travers plusieurs composants ou contextes sans maintenir une chaîne de référence.
 
 ### Définir et récupérer des objets {#setting-and-retrieving-objects}
 
@@ -43,7 +43,7 @@ int total = ObjectTable.size();
 
 ## `StringTable` {#stringtable}
 
-`StringTable` fournit un accès statique aux variables de chaîne globales. Il est persistant et limité à l'application actuelle. Les valeurs peuvent être modifiées ou injectées par programmation via la configuration de l'environnement. Ce mécanisme est particulièrement utile pour stocker des valeurs de configuration, des indicateurs et des paramètres qui doivent être accessibles dans toute l'application mais ne nécessitent pas de transporter des données complexes.
+`StringTable` fournit un accès statique aux variables de chaîne globales. Il est persistant et limité à l'application en cours. Les valeurs peuvent être modifiées programmatique ou injectées via la configuration de l'environnement. Ce mécanisme est particulièrement utile pour stocker des valeurs de configuration, des indicateurs et des paramètres qui doivent être accessibles à l'échelle de l'application, mais qui n'ont pas besoin de porter des données complexes.
 
 ### Obtenir et définir des valeurs de chaîne {#getting-and-setting-string-values}
 
@@ -52,9 +52,9 @@ StringTable.put("COMPANY", "Acme Corp");
 String company = StringTable.get("COMPANY");
 ```
 
-### Valeurs préconfigurées à partir de la configuration {#pre-configured-values-from-config}
+### Valeurs pré-configurées à partir de la configuration {#pre-configured-values-from-config}
 
-Vous pouvez définir des clés dans votre fichier [`webforj.conf`](../configuration/properties#configuring-webforjconf) :
+Vous pouvez définir des clés dans votre [`webforj.conf`](../configuration/properties#configuring-webforjconf) fichier :
 
 ```
 webforj.stringTable = {
@@ -62,7 +62,7 @@ webforj.stringTable = {
 }
 ```
 
-Puis y accéder dans le code :
+Ensuite, accédez-y dans le code :
 
 ```java
 String val = StringTable.get("COMPANY");

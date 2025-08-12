@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Data Binding
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: fef9723206ef7122c3ada5503f97edf1
+_i18n_hash: 2ce381aec06e45ed4001e7dbfdb22dc0
 ---
 <Head>
   <style>{`
@@ -20,17 +20,17 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
- webforJ bevat een data-binding functie die naadloos UI-componenten integreert met backend datamodellen in Java-toepassingen. Deze functie overbrugt de kloof tussen de UI en de datalaag, en zorgt ervoor dat wijzigingen in de UI zich weerspiegelen in het datamodel en vice versa. Dit verbetert de gebruikerservaring en vermindert de complexiteit van event-handling en datasynchronisatie.
+webforJ bevat een data binding functie die UI-componenten naadloos integreert met backend datamodellen in Java-applicaties. Deze functie overbrugt de kloof tussen de UI en de datalaag, waardoor veranderingen in de UI worden weerspiegeld in het datamodel en vice versa. Dit verbetert de gebruikerservaring en vermindert de complexiteit van event handling en datasynchronisatie.
 
 ## Concept {#concept}
 
-De volgende demonstratie toont een eenvoudige webforJ-app voor het registreren van superhelden met behulp van webforJ data-binding. De app bestaat uit twee hoofdonderdelen: `HeroRegistration.java` en `Hero.java`. 
+De volgende demonstratie toont een eenvoudige webforJ-app voor het registreren van superhelden met behulp van webforJ data binding. De app bestaat uit twee hoofdonderdelen: `HeroRegistration.java` en `Hero.java`. 
 
-In `HeroRegistration.java` configureert de code de gebruikersinterface met een `TextField` voor het invoeren van de naam van de held, een `ComboBox` om een superkracht te selecteren, en een `Button` om de registratie in te dienen.
+In `HeroRegistration.java` configureert de code de gebruikersinterface met een `TextField` voor het invoeren van de naam van de held, een `ComboBox` om een superkracht te selecteren en een `Button` om de registratie in te dienen.
 
-De `Hero` klasse definieert het datamodel met validatiecriteria voor de naam en kracht van de held, zodat invoer geldig is en voldoet aan specifieke criteria zoals lengte en patroon.
+De `Hero` klasse definieert het datamodel met validatie constraints op de naam en de kracht van de held, wat ervoor zorgt dat invoer geldig is en voldoet aan gespecificeerde criteria zoals lengte en patroon.
 
-De app maakt gebruik van de `BindingContext` om UI-componenten te binden aan de eigenschappen van het `Hero` object. Wanneer een gebruiker op de verzendknop klikt, schrijft de app de gegevens die in het formulier zijn ingevoerd terug naar de `Hero` bean, indien deze geldig zijn.
+De app gebruikt de `BindingContext` om UI-componenten te koppelen aan de eigenschappen van het `Hero` object. Wanneer een gebruiker op de indienen-knop klikt, schrijft de app de ingevoerde gegevens in het formulier terug naar de `Hero` bean als ze geldig zijn.
 
 <Tabs>
 <TabItem value="HeroRegistration" label="HeroRegistration.java">
@@ -51,15 +51,15 @@ public class HeroRegistration extends App {
     BindingContext<Hero> context = BindingContext.of(this, Hero.class, true);
     Hero bean = new Hero("Superman", "Fly");
 
-    // reflecteer de bean-gegevens in het formulier
+    // reflect the bean data in the form
     context.read(bean);
 
     submit.onClick(e -> {
-      // schrijf de formuliergegevens terug naar de bean
+      // write the form data back to the bean
       ValidationResult results = context.write(bean);
 
       if (results.isValid()) {
-        // doe iets met de bean
+        // do something with the bean
         // repository.persist(bean)
       }
     });
@@ -76,12 +76,12 @@ public class HeroRegistration extends App {
 ```java showLineNumbers
 public class Hero {
 
-  @NotEmpty(message = "Naam kan niet leeg zijn")
+  @NotEmpty(message = "Name cannot be empty")
   @Length(min = 3, max = 20)
   private String name;
 
-  @NotEmpty(message = "Ongespecificeerde kracht")
-  @Pattern(regexp = "Fly|Invisible|LaserVision|Speed|Teleportation", message = "Ongeldige kracht")
+  @NotEmpty(message = "Unspecified power")
+  @Pattern(regexp = "Fly|Invisible|LaserVision|Speed|Teleportation", message = "Invalid power")
   private String power;
 
   public Hero(String name, String power) {
@@ -106,7 +106,7 @@ public class Hero {
   }
 
   public String toString() {
-    return "Naam: " + name + ", Kracht: " + power;
+    return "Name: " + name + ", Power: " + power;
   }
 }
 ```
@@ -116,13 +116,13 @@ public class Hero {
 
 ## Key features {#key-features}
 
-- **Bidirectionele Binding:** Ondersteunt bidirectionele databinding, waardoor wijzigingen in het datamodel de UI bijwerken, en gebruikersinteracties in de UI het datamodel bijwerken.
+- **Bidirectionele Binding:** Ondersteunt bidirectionele data binding, waardoor wijzigingen in het datamodel de UI bijwerken, en gebruikersinteracties in de UI het datamodel bijwerken.
 
-- **Validatie Ondersteuning:** Integreert uitgebreide validatiemechanismen die je kunt aanpassen en uitbreiden. Ontwikkelaars kunnen hun eigen validatieregels implementeren of bestaande validatiekaders zoals Jakarta Validation gebruiken om de gegevensintegriteit te waarborgen voordat ze het model bijwerken.
+- **Validatie Support:** Integreert uitgebreide validatiemechanismen die je kunt aanpassen en uitbreiden. Ontwikkelaars kunnen hun eigen validatieregels implementeren of bestaande validatiekaders zoals Jakarta Validation gebruiken om dataintegriteit te waarborgen voordat ze het model bijwerken.
 
 - **Uitbreidbaarheid:** Kan eenvoudig worden uitgebreid om verschillende soorten UI-componenten, datatransformaties en complexe validatiescenario's te ondersteunen.
 
-- **Annotatie-gedreven Configuratie:** Maakt gebruik van annotaties om boilerplatecode te minimaliseren, waardoor de bindingen tussen UI-componenten en datamodellen declaratief en eenvoudig te beheren zijn.
+- **Annotatie-gedreven Configuratie:** Maakt gebruik van annotaties om boilerplate-code te minimaliseren, waardoor de bindingen tussen UI-componenten en datamodellen declaratief en eenvoudig te beheren zijn.
 
 # Topics
 

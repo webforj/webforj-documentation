@@ -2,15 +2,15 @@
 title: Upgrade to 25.00
 description: Upgrade from 24.00 to 25.00
 pagination_next: null
-_i18n_hash: 2553d37a63c097b7520f2989849f016b
+_i18n_hash: 71f184a02c2552f5af34bfc3ec47c385
 ---
-Deze documentatie dient als een gids voor het upgraden van webforJ-apps van 24.00 naar 25.00. Hier zijn de wijzigingen die nodig zijn voor bestaande apps om soepel te blijven functioneren. Zoals altijd, zie de [GitHub release-overzicht](https://github.com/webforj/webforj/releases) voor een meer uitgebreide lijst van wijzigingen tussen releases.
+Deze documentatie dient als een gids om webforJ-apps te upgraden van 24.00 naar 25.00. Hier zijn de wijzigingen die nodig zijn voor bestaande apps om soepel te blijven draaien. Zoals altijd, zie de [GitHub releaseoverzicht](https://github.com/webforj/webforj/releases) voor een meer uitgebreide lijst met veranderingen tussen releases.
 
-## Jetty 12 webservers {#jetty-12-web-servers}
+## Jetty 12-webservers {#jetty-12-web-servers}
 
-webforJ 25.00 en hoger maakt gebruik van Jetty 12, met de Jakarta EE10 servlet-architectuur. Als je de Jetty Maven-plugin voor ontwikkeling gebruikt, migreer dan van Jakarta EE8 naar Jakarta EE10. Deze upgrade vereist ook het vervangen van alles wat afhankelijk was van het `javax.servlet`-pakket door het `Jakarta.servlet`-pakket.
+webforJ 25.00 en hoger maakt gebruik van Jetty 12, met de Jakarta EE10 servletarchitectuur. Als je de Jetty Maven-plugin voor ontwikkeling gebruikt, migreer dan van Jakarta EE8 naar Jakarta EE10. Deze upgrade vereist ook dat alles wat afhankelijk was van het `javax.servlet`-pakket wordt vervangen door het `Jakarta.servlet`-pakket.
 
-### POM-bestand wijzigingen {#pom-file-changes}
+### POM-bestandwijzigingen {#pom-file-changes}
 
 **Voor**
 
@@ -31,14 +31,14 @@ webforJ 25.00 en hoger maakt gebruik van Jetty 12, met de Jakarta EE10 servlet-a
 
 ## API-wijzigingen voor de `App`-klasse {#api-changes-for-the-app-class}
 
-Verschillende verouderde `App`-methoden zijn verwijderd in 25.00. De volgende secties beschrijven welke methoden zijn vervangen en de aanbevolen vervangingen.
+Verscheidene verouderde `App`-methoden zijn verwijderd in 25.00. De volgende secties beschrijven welke methoden zijn vervangen en de aanbevolen vervangingen.
 
 ### Console logging {#console-logging}
 
-De utility klasse [`BrowserConsole`](../advanced/browser-console.md), die is bestemd voor het maken van gestylede logs in de browserconsole, vervangt de `consoleLog()` en `consoleError()` methoden. Verkrijg de `BrowserConsole` door de `console()` methode te gebruiken:
+De hulpprogrammaklasse [`BrowserConsole`](../advanced/browser-console.md), die is gewijd aan het maken van gestileerde logboeken naar de browserconsole, vervangt de `consoleLog()` en `consoleError()` methoden. Verkrijg de `BrowserConsole` door gebruik te maken van de `console()`-methode:
 
 ```java
-public class Application extends App {
+public class Application extends App{
   
   @Override
   public void run() throws WebforjException {
@@ -50,13 +50,13 @@ public class Application extends App {
 
 ### Webopslag {#web-storage}
 
-Voor versies vóór webforJ 25.00 heeft de `App`-klasse de methoden `getLocalStorage()`, `getSessionStorage()` en `getCookieStorage()` om instanties van de klassen `LocalStorage`, `SessionStorage` en `CookieStorage` te verkrijgen. Voortaan heeft elke klasse een `getCurrent()` methode.
+Voor versies vóór webforJ 25.00 heeft de `App`-klasse de methoden `getLocalStorage()`, `getSessionStorage()` en `getCookieStorage()` om instanties van de respectieve `LocalStorage`, `SessionStorage` en `CookieStorage` klassen te verkrijgen. Voortaan heeft elke klasse een `getCurrent()`-methode.
 
-Zie [Webopslag](../advanced/web-storage.md) voor meer informatie.
+Zie [Web Storage](../advanced/web-storage.md) voor meer informatie.
 
 ### `Request`-klasse {#request-class}
 
-De `Request`-klasse is nu verantwoordelijk voor het verkrijgen van de URL, poort, host en protocol van een app. Dus in plaats van `App.getUrl()` te gebruiken, gebruik je `App.getCurrent().getUrl()`. De `getCurrent()` methode vervangt ook de `getRequest()` methode om een instantie van de `Request`-klasse te krijgen.
+De `Request`-klasse is nu verantwoordelijk voor het verkrijgen van de URL, poort, host en protocol van een app. Dus in plaats van `App.getUrl()` te gebruiken, gebruik je `App.getCurrent().getUrl()`. De `getCurrent()`-methode vervangt ook de `getRequest()`-methode om een instantie van de `Request`-klasse te verkrijgen.
 
 :::info
 De `Request`-klasse heeft ook verwijderde methoden, spring naar [`Request`](#request-changes) om ze te zien.
@@ -64,33 +64,33 @@ De `Request`-klasse heeft ook verwijderde methoden, spring naar [`Request`](#req
 
 ### `Page`-klasse {#page-class}
 
-De `getPage()` methode is vervangen door `Page.getCurrent()` om de huidige pagina-instantie te krijgen.
+De `getPage()`-methode is vervangen door `Page.getCurrent()` om de huidige pagina-instantie te verkrijgen.
 
-### Optie-dialogen {#option-dialogs}
+### Optiedialogen {#option-dialogs}
 
-In plaats van de `msgbox()` methode te gebruiken, gebruik [`OptionDialog.showMessageDialog()`](../components/option-dialogs/message) om messagedialogen te maken.
+In plaats van de `msgbox()`-methode te gebruiken, gebruik je [`OptionDialog.showMessageDialog()`](../components/option-dialogs/message) om messagedialogen te creëren.
 
-### App-terminatie {#app-termination}
+### App-beëindiging {#app-termination}
 
-De `cleanup()` methode is verwijderd. Er zijn nu twee methoden voor beëindigingen, `onWillTerminate()` en `onDidTerminate()`.
+De `cleanup()`-methode is verwijderd. Er zijn nu twee methoden voor beëindigingen: `onWillTerminate()` en `onDidTerminate()`.
 
 Zie [Hooks voor beëindiging](../advanced/terminate-and-error-actions.md#hooks-for-termination) voor meer informatie.
 
-## Tabel sorteren {#table-sorting}
+## Tabelsortering {#table-sorting}
 
-Voor webforJ 25.00 en hoger gebruiken tabellen standaard sorteren op één kolom. Kolommen worden alleen gesorteerd op de recentst geselecteerde kolomkop. Om een tabel meerkoloms sorteren te laten gebruiken, roep de [`setMultiSorting()`](../components/table/sorting#multi-sorting) methode aan:
+Voor webforJ 25.00 en hoger gebruiken tabellen standaard sorteren op één kolom. Kolommen worden alleen gesorteerd op de meest recent geselecteerde kolomkop. Om een tabel meervoudige sortering te laten gebruiken, roep je de [`setMultiSorting()`](../components/table/sorting#multi-sorting) methode aan:
 
 ```java
 table.setMultiSorting(true);
 ```
 
-## Verborgen `TabbedPane`-lichaam {#hidden-tabbedpane-body}
+## Verborgen `TabbedPane`-body {#hidden-tabbedpane-body}
 
-De `hideBody()` methode is vervangen door `setBodyHidden()` om een consistente naamgevingsconventie voor methoden te behouden.
+De `hideBody()`-methode is vervangen door `setBodyHidden()` om een consistente naamgevingsconventie voor methoden te handhaven.
 
 ## HTML renderen binnen componenten {#rendering-html-inside-components}
 
-In webforJ 25.00 en hoger is er een `setHtml()` methode om te helpen onderscheiden tussen het instellen van letterlijke en HTML-tekst binnen een component. HTML instellen met de `setText()` methode is nog steeds mogelijk, maar vereist nu expliciet het wikkelen met `<html>` tags.
+In webforJ 25.00 en hoger is er een `setHtml()`-methode om een onderscheid te maken tussen het instellen van letterlijke en HTML-tekst binnen een component. HTML instellen met de `setText()`-methode is nog steeds mogelijk, maar vereist nu expliciet het omhullen met `<html>`-tags.
 
 ```java
 // Geldige toepassingen van setText() en setHtml()
@@ -98,40 +98,40 @@ Button home = new Button();
 
 home.setText("""
   <html>
-    <h1>Home</h1>
+    <h1>Startpagina</h1>
   </html>
 """);
 
-home.setHtml("<h1>Home</h1>");
+home.setHtml("<h1>Startpagina</h1>");
 
-home.setText("Home");
+home.setText("Startpagina");
 ```
 
 ```java
 // Ongeldige toepassingen van setText() en setHtml()
 Button home = new Button();
-home.setText("<h1>Home</h1>");
+home.setText("<h1>Startpagina</h1>");
 ```
 
-## HTML-containers {#html-containers}
+## HTML-container {#html-containers}
 
-Het `com.webforj.component.htmlcontainer` pakket is niet langer aanwezig in webforJ. Gebruik in plaats daarvan het meer uitgebreide `com.webforj.component.element` pakket. Voor een lijst van webforJ-klassen voor standaard HTML-elementen, ga naar [HTML Element Components](../building-ui/web-components/html-elements.md).
+Het `com.webforj.component.htmlcontainer`-pakket is niet langer beschikbaar in webforJ. Gebruik in plaats daarvan het meer uitgebreide `com.webforj.component.element`-pakket. Voor een lijst van webforJ-klassen voor standaard HTML-elementen, ga naar [HTML Element Components](../building-ui/web-components/html-elements.md).
 
 ## `Request`-wijzigingen {#request-changes}
 
-- Net als de verwijdering van de `getCookieStorage()` methode voor de `App`-klasse heeft `Request` niet langer de `getCookie()` methode. Dit bevordert het gebruik van `CookieStorage.getCurrent()` om een instantie van de `CookieStorage`-klasse te verkrijgen.
+- Net als de verwijdering van de `getCookieStorage()`-methode voor de `App`-klasse, heeft `Request` niet langer de `getCookie()`-methode. Dit versterkt het gebruik van `CookieStorage.getCurrent()` om een instantie van de `CookieStorage`-klasse te verkrijgen.
 
-- De `getQueryParam()` methode is nu `getQueryParameter()`.
+- De `getQueryParam()`-methode is nu `getQueryParameter()`.
 
 ## `WebforjBBjBridge` wijzigingen {#webforjbbjbridge-changes}
 
 ### Een instantie van `WebforjBBjBridge` verkrijgen {#getting-an-instance-of-webforjbbjbridge}
 
-De `Environment` klasse heeft niet langer de `getWebforjHelper()` methode, gebruik nu `getBridge()` in plaats daarvan.
+De `Environment`-klasse heeft niet langer de `getWebforjHelper()`-methode, dus gebruik in plaats daarvan `getBridge()`.
 
-### Het `ConfirmDialog` component gebruiken voor de `msgbox()` methode {#using-the-confirmdialog-component-for-the-msgbox-method}
+### De `ConfirmDialog` component gebruiken voor de `msgbox()`-methode {#using-the-confirmdialog-component-for-the-msgbox-method}
 
-Verdere versies van webforJ gebruikten strings en gehele getallen direct voor de `WebforjBBjBridge` `msgbox()` methode. Berichten voor `WebforjBBjBridge` in webforJ 25.00 en hoger gebruiken echter het [`ConfirmDialog`](../components/option-dialogs/confirm.md) component. Dit biedt meer controle over welke knoppen worden weergegeven en het type bericht.
+Eerdere versies van webforJ gebruiken strings en gehele getallen rechtstreeks voor de `WebforjBBjBridge` `msgbox()`-methode. Echter, berichten voor `WebforjBBjBridge` in webforJ 25.00 en hoger gebruiken de [`ConfirmDialog`](../components/option-dialogs/confirm.md) component. Dit biedt meer controle over welke knoppen worden weergegeven en het type bericht.
 
 **Voor**
 ```java
@@ -153,14 +153,16 @@ ConfirmDialog dialog = new ConfirmDialog(
 int msgboxResult = bridge.msgbox(dialog);
 ```
 
-## `PasswordMediation` typfout correctie {#passwordmediation-typo-correction}
+<!-- ## Environment.logError verwijderd -->
 
-De enum klasse `PasswordMediation`, die wordt gebruikt om aan te geven of een gebruiker bij elke bezoek aan een app met een `Login`-component moet inloggen, heeft een typfout in eerdere versies van webforJ. `SILENT` vervangt de typfout `SILIENT` voor webforJ 25.00 en hoger.
+## Typo-correctie `PasswordMediation` {#passwordmediation-typo-correction}
 
-## Auto-focusing-methoden {#auto-focusing-methods}
+De enum-klasse `PasswordMediation`, gebruikt om aan te geven of een gebruiker bij elke bezoek aan een app met een `Login`-component zich moet aanmelden, had een typfout in eerdere versies van webforJ. `SILENT` vervangt de typfout `SILIENT` voor webforJ 25.00 en hoger.
 
-Om webforJ consistent te houden, hebben methoden zoals `setAutofocus()` en `isAutofocus()` nu een uniforme hoofdlettergebruik zoals de HasAutoFocus interface. Dus componenten zoals `Dialog` en `Drawer` gebruiken `setAutoFocus()` en `isAutoFocus()` voor 25.00 en hoger.
+## Autofocusmethoden {#auto-focusing-methods}
+
+Om webforJ consistent te houden, hebben methoden zoals `setAutofocus()` en `isAutofocus()` nu een uniforme kapitalisatie zoals de HasAutoFocus-interface. Dus componenten zoals `Dialog` en `Drawer` gebruiken `setAutoFocus()` en `isAutoFocus()` voor 25.00 en hoger.
 
 ## `BBjWindowAdapter` en `Panel` gemarkeerd als `final` {#bbjwindowadapter-and-panel-marked-as-final}
 
-De `BBjWindowAdapter` en `Panel` klassen zijn nu als `final` verklaard, wat betekent dat ze niet langer kunnen worden onderverdeeld. Deze wijziging verbetert de stabiliteit en handhaaft consistente gebruikspatronen.
+De klassen `BBjWindowAdapter` en `Panel` zijn nu gemarkeerd als `final`, wat betekent dat ze niet langer kunnen worden onderverdeeld. Deze wijziging verbetert de stabiliteit en handhaaft consistente gebruikspatronen.

@@ -6,7 +6,7 @@ slug: alert
 description: A user guide article for the alert
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 774a97b62f20a409f8c07146a62ee54d
+_i18n_hash: db38db7f4c120d0785cb1608e9f19af9
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,8 +16,8 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info CLIENT COMPONENT
-In diesem Abschnitt werden Styling-Informationen für die **`<dwc-alert>`** Komponente erläutert. Diese Komponente ist **nur auf der Client-Seite** - sie kann nicht über die API eigenständig instanziiert werden, kann aber Teil von API-Komponenten sein.
+:::info KLIENTENKOMPONENTE
+Dieser Abschnitt enthält Styling-Informationen für die **`<dwc-alert>`** Komponente. Diese Komponente ist **nur clientseitig** - sie kann nicht eigenständig über die API instanziiert werden, kann jedoch Teil von API-Komponenten sein.
 :::
 
 ## Styling {#styling}

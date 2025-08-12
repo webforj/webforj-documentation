@@ -6,7 +6,7 @@ slug: file-chooser
 description: A user guide article for the file-chooser
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: bd5feedd2ce5c2dc4e72305a167f57f1
+_i18n_hash: 05238b931bd40b12f88667d8913ccf29
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,8 +16,8 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info KLIËNTCOMPONENT
-Deze sectie schetst de stijlinformatie voor de **`<dwc-file-chooser>`** component. Deze component is **slechts aan de clientzijde** - deze kan niet op zichzelf worden geïnstantieerd via de API, maar kan deel uitmaken van API-componenten.
+:::info CLIËNTCOMPONENT
+Deze sectie beschrijft de stijlinformatie voor de **`<dwc-file-chooser>`** component. Deze component is **alleen clientzijde** - het kan niet op zichzelf worden geïnstantieerd via de API, maar kan deel uitmaken van API-componenten.
 :::
 
 ## Styling {#styling}

@@ -1,15 +1,15 @@
 ---
 sidebar_position: 6
 title: Jakarta Validation
-_i18n_hash: 68a57d576ce21a9f99b121e5db3cf85f
+_i18n_hash: eec00fac283efce49d856b1d40a48252
 ---
-[Java Bean Validation](https://beanvalidation.org/) ist weithin als der Standard für die Integration von Validierungslogik in Java-Anwendungen anerkannt. Es nutzt einen einheitlichen Ansatz zur Validierung, indem es Entwicklern ermöglicht, die Eigenschaften des Domänenmodells mit deklarativen Validierungsbedingungen zu annotieren. Diese Bedingungen werden zur Laufzeit durchgesetzt, wobei Optionen für sowohl integrierte als auch benutzerdefinierte Regeln verfügbar sind.
+[Java Bean Validation](https://beanvalidation.org/) ist weithin als der Standard für die Integration von Validierungslogik in Java-Anwendungen anerkannt. Es nutzt einen einheitlichen Ansatz zur Validierung, indem es Entwicklern ermöglicht, Eigenschaften des Domänenmodells mit deklarativen Validierungsbeschränkungen zu annotieren. Diese Beschränkungen werden zur Laufzeit durchgesetzt, mit Optionen für sowohl eingebaut als auch benutzerdefiniert definierte Regeln.
 
-webforJ integriert sich nahtlos mit Bean Validation durch den `JakartaValidator`-Adapter und bietet sofort robuste Unterstützung.
+webforJ integriert sich nahtlos mit Bean Validation über den `JakartaValidator`-Adapter und bietet sofort robuste Unterstützung.
 
 ## Installation {#installation}
 
-Es ist notwendig, eine kompatible Implementierung wie [Hibernate Validator](https://hibernate.org/validator/) in Ihren Klassenpfad einzuschließen. Wenn Ihre Umgebung standardmäßig nicht mit dieser Implementierung geliefert wird, können Sie sie manuell hinzufügen, indem Sie die folgenden Maven-Abhängigkeiten verwenden:
+Es ist notwendig, eine kompatible Implementierung wie [Hibernate Validator](https://hibernate.org/validator/) in Ihren Klassenpfad einzufügen. Wenn Ihre Umgebung dieses Implementierung standardmäßig nicht enthält, können Sie es manuell hinzufügen, indem Sie die folgenden Maven-Abhängigkeiten verwenden:
 
 ```xml
 <dependency>
@@ -26,19 +26,19 @@ Es ist notwendig, eine kompatible Implementierung wie [Hibernate Validator](http
 
 ## Der `JakartaValidator` {#the-jakartavalidator}
 
-Die `JakartaValidator`-Klasse fungiert als Adapter, der den Binding-Kontext von webforJ mit Jakarta Validation verbindet. Diese Integration ermöglicht die Verwendung komplexer Validierungsregeln direkt über Annotations in der Bean-Klasse.
+Die Klasse `JakartaValidator` dient als Adapter, der den webforJ-Bindungskontext mit Jakarta Validation verbindet. Diese Integration ermöglicht die Verwendung komplexer Validierungsregeln direkt über Anmerkungen in der Bean-Klasse.
 
-### Aktivierung des `JakartaValidator` {#activating-jakartavalidator}
+### Aktivierung von `JakartaValidator` {#activating-jakartavalidator}
 
-Um den `JakartaValidator` im gesamten Kontext zu aktivieren, verwenden Sie typischerweise den `useJakartaValidator`-Parameter beim Erstellen des `BindingContext`.
+Um den `JakartaValidator` im gesamten Kontext zu aktivieren, verwenden Sie typischerweise den Parameter `useJakartaValidator`, wenn Sie den `BindingContext` konstruieren.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class, true);
 ```
 
-### Festlegen von Einschränkungen für Bean-Eigenschaften {#defining-constraints-for-bean-properties}
+### Definieren von Constraints für Bean-Eigenschaften {#defining-constraints-for-bean-properties}
 
-Annotierte Einschränkungen werden direkt innerhalb der Bean-Klasse angewendet, um Validierungsbedingungen festzulegen, wie im folgenden Beispiel veranschaulicht:
+Anmerkungsbasierte Constraints werden direkt in der Bean-Klasse angewendet, um die Validierungsbedingungen anzugeben, wie im folgenden Beispiel veranschaulicht:
 
 ```java
 public class Hero {
@@ -54,8 +54,8 @@ public class Hero {
 }
 ```
 
-Solche Einschränkungen sind genauso effektiv wie die programmatisch während der Bindungsinitialisierung festgelegten, um konsistente Validierungsergebnisse zu gewährleisten.
+Solche Constraints sind genauso effektiv wie die programmgesteuert während der Bindungsinitialisierung festgelegten, und sorgen für konsistente Validierungsergebnisse.
 
 :::warning
-Derzeit erkennt der `JakartaValidator` nur Einschränkungen, die direkt Eigenschaften zugewiesen sind, und ignoriert alle Validierungen, die nicht direkt mit Eigenschaften verbunden sind.
+Derzeit erkennt der `JakartaValidator` nur Constraints, die direkt auf Eigenschaften angewendet werden, und ignoriert alle Validierungen, die nicht direkt mit Eigenschaften verbunden sind.
 :::

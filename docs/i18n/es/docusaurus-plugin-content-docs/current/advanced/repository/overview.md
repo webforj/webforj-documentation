@@ -2,31 +2,32 @@
 title: Repository
 sidebar_position: 1
 sidebar_class_name: new-content
-_i18n_hash: 8dfc90f24bba893de434f1a41d5776c6
+_i18n_hash: dc6f7bbfe82d68565cbe8da6436f080c
 ---
 <!-- vale off -->
 # Repositorio <DocChip chip='since' label='24.00' />
 <!-- vale on -->
 
-El patrón `Repository` en webforJ proporciona una forma estandarizada de gestionar y consultar colecciones de entidades. Actúa como una capa de abstracción entre sus componentes de UI y los datos, facilitando el trabajo con diferentes fuentes de datos mientras se mantiene un comportamiento consistente.
+
+El patrón `Repositorio` en webforJ proporciona una forma estandarizada de gestionar y consultar colecciones de entidades. Actúa como una capa de abstracción entre tus componentes de UI y los datos, facilitando el trabajo con diferentes fuentes de datos mientras se mantiene un comportamiento consistente.
 
 ## Por qué usar repositorio {#why-use-repository}
 
-`Repository` elimina las actualizaciones manuales mientras mantiene tus datos originales intactos:
+`Repositorio` elimina las actualizaciones manuales mientras mantiene tus datos originales intactos:
 
 ```java
-// Sin Repository - actualizaciones manuales
+// Sin Repositorio - actualizaciones manuales
 List<Customer> customers = loadCustomers();
 Table<Customer> table = new Table<>();
 table.setItems(customers);
 
-// Agregar requiere recarga completa
+// Agregar requiere recargar todo
 customers.add(newCustomer);
 table.setItems(customers); // Debe recargar todo
 ```
 
 ```java
-// Con Repository - sincronización automática
+// Con Repositorio - sincronización automática
 List<Customer> customers = loadCustomers();
 CollectionRepository<Customer> repository = new CollectionRepository<>(customers);
 Table<Customer> table = new Table<>();
@@ -34,10 +35,11 @@ table.setRepository(repository);
 
 // Agregar se sincroniza automáticamente
 customers.add(newCustomer);
-repository.commit(newCustomer); // Solo actualiza lo que ha cambiado
+repository.commit(newCustomer); // Solo actualiza lo que cambió
 ```
 
-## Repositorio de colecciones {#collection-repository}
+
+## Repositorio de colección {#collection-repository}
 
 El <JavadocLink type="data" location="com/webforj/data/repository/CollectionRepository" code="true">CollectionRepository</JavadocLink> es la implementación más común y envuelve cualquier colección de Java:
 
@@ -55,9 +57,10 @@ Collection<Employee> employees = getEmployeesFromHR();
 CollectionRepository<Employee> employeeRepo = new CollectionRepository<>(employees);
 ```
 
+
 ## Sincronización de datos {#data-synchronization}
 
-El `Repository` actúa como un puente entre tus datos y componentes de UI. Cuando los datos cambian, notificas al repositorio a través del método `commit()`:
+El `Repositorio` actúa como un puente entre tus datos y los componentes de UI. Cuando los datos cambian, notificas al repositorio a través del método `commit()`:
 
 ```java
 List<Product> products = new ArrayList<>();
@@ -74,18 +77,18 @@ repository.commit(products.get(0)); // Solo actualiza esta fila específica
 
 // Eliminar producto
 products.remove(2);
-repository.commit(); // Actualiza la vista
+repository.commit(); // Refresca la vista
 ```
 
 El método commit tiene dos firmas:
-- `commit()` - Indica al repositorio que refresque todo. Activa un `RepositoryCommitEvent` con todos los datos actuales.
+- `commit()` - Indica al repositorio que refresque todo. Dispara un `RepositoryCommitEvent` con todos los datos actuales.
 - `commit(entity)` - Apunta a una entidad específica. El repositorio encuentra esta entidad por su clave y actualiza solo los elementos de UI afectados.
 
-:::important Comprometimiento de entidades individuales
+:::important Comprometiendo entidades individuales
 Esta distinción es importante para el rendimiento. Cuando actualizas un campo en una tabla de 1000 filas, `commit(entity)` actualiza solo esa celda, mientras que `commit()` refrescaría todas las filas.
 :::
 
-## Filtrando datos {#filtering-data}
+## Filtrar datos {#filtering-data}
 
 El filtro del repositorio controla qué datos fluyen hacia los componentes conectados. Tu colección subyacente permanece sin cambios porque el filtro actúa como una lente:
 
@@ -103,18 +106,19 @@ repository.setBaseFilter(product ->
     product.getPrice() < 100.0
 );
 
-// Limpiar filtro
+// Borrar filtro
 repository.setBaseFilter(null);
 ```
 
-Cuando estableces un filtro, el `Repository`:
-1. Aplica el predicado a cada elemento de tu colección.
-2. Crea un flujo filtrado de elementos coincidentes.
-3. Notifica a los componentes conectados que actualicen su visualización.
+Cuando estableces un filtro, el `Repositorio`:
+1. Aplica el predicado a cada elemento en tu colección.
+2. Crea un flujo filtrado de elementos que coinciden.
+3. Notifica a los componentes conectados para que actualicen su visualización.
 
-El filtro persiste hasta que lo cambias. Los nuevos elementos añadidos a la colección se prueban automáticamente contra el filtro actual.
+El filtro persiste hasta que lo cambies. Los nuevos elementos añadidos a la colección se prueban automáticamente contra el filtro actual.
 
-## Trabajando con claves de entidades {#working-with-entity-keys}
+
+## Trabajando con claves de entidad {#working-with-entity-keys}
 
 Cuando tus entidades implementan <JavadocLink type="data" location="com/webforj/data/HasEntityKey" code="true">HasEntityKey</JavadocLink>, el repositorio puede encontrar y actualizar elementos específicos por su ID:
 
@@ -129,7 +133,7 @@ public class Customer implements HasEntityKey {
         return customerId;
     }
     
-    // Constructor y métodos getter/setter...
+    // Constructor y getters/setters...
 }
 
 // Buscar por clave
@@ -143,13 +147,14 @@ customer.ifPresent(c -> {
 ```
 
 Sin `HasEntityKey`:
-- `repository.find("C001")` no encontrará tu cliente porque busca un objeto que sea igual a "C001".
+- `repository.find("C001")` no encontrará a tu cliente porque busca un objeto que sea igual a "C001".
 - `repository.commit(entity)` sigue funcionando, pero depende de la igualdad de objetos.
 - Los componentes de UI no pueden seleccionar elementos por ID, solo por referencia de objeto.
 
-## Integración con UI {#ui-integration}
 
-`Repository` se integra con componentes que son conscientes de los datos:
+## Integración de UI {#ui-integration}
+
+`Repositorio` se integra con componentes conscientes de los datos:
 
 ```java
 // Crear repositorio y tabla
@@ -160,12 +165,13 @@ Table<Customer> table = new Table<>();
 table.setRepository(repository);
 table.addColumn("ID", Customer::getId);
 table.addColumn("Nombre", Customer::getName);
-table.addColumn("Email", Customer::getEmail);
+table.addColumn("Correo Electrónico", Customer::getEmail);
 
 // Agregar datos - la tabla se actualiza automáticamente
 customers.add(new Customer("C001", "Alice Johnson", "alice@example.com"));
 repository.commit();
 ```
+
 
 ## Próximos pasos {#next-steps}
 

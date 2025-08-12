@@ -1,22 +1,22 @@
 ---
 title: Navigator
 sidebar_position: 75
-_i18n_hash: 7c09a72456eb84a8227da3ff263b6c69
+_i18n_hash: 920c1d604673e69a32f58161e3fd4e14
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-navigator" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="foundation" location="com/webforj/component/navigator/Navigator" top='true'/>
 
-De `Navigator` component is een aanpasbare pagineringcomponent die is ontworpen om door datasets te navigeren en meerdere indelingen ondersteunt. U kunt deze configureren om verschillende navigatiecontroles weer te geven, zoals eerste, laatste, volgende en vorige knoppen, samen met paginanummers of een snel springveld, afhankelijk van de indelingsinstelling.
+De `Navigator` component is een aanpasbare pagineringcomponent die is ontworpen om door gegevenssets te navigeren en verschillende lay-outs ondersteunt. Je kunt het configureren om diverse navigatiecontroles weer te geven, zoals eerste, laatste, volgende en vorige knoppen, samen met paginanummers of een snel jump-veld, afhankelijk van de lay-outinstelling.
 
-Het ondersteunt automatische uitschakeling van navigatieknoppen op basis van de huidige pagina en het totale aantal items, en biedt aanpassingsmogelijkheden voor tekst en tooltips voor verschillende delen van de navigator. Daarnaast kunt u het koppelen aan een `Paginator` instantie om de pagineringlogica van de dataset te beheren en wijzigingen in de navigatiecontroles weer te geven.
+Het ondersteunt automatische uitschakeling van navigatieknoppen op basis van de huidige pagina en het totale aantal items, en biedt aanpassingsmogelijkheden voor tekst en tooltips voor verschillende delen van de navigator. Bovendien kun je het koppelen aan een `Paginator`-instantie om de pagineringslogica van de gegevensset te beheren en wijzigingen in de navigatiecontroles weer te geven.
 
-## Koppelen aan repositories {#binding-to-repositories}
+## Binding aan repositories {#binding-to-repositories}
 
-Vaak geeft een `Navigator` component informatie weer die is gevonden in een gebonden `Repository`. Deze binding stelt de `Navigator` in staat om gegevens die door de repository worden beheerd automatisch te pagineren en andere te koppelen componenten, zoals tabellen, bij te werken op basis van de genavigeerde gegevens.
+Vaak toont een `Navigator` component informatie die is gevonden in een gebonden `Repository`. Deze binding stelt de `Navigator` in staat om automatisch data te pagineren die door de repository wordt beheerd en om andere verbindbare componenten, zoals tabellen, te verversen op basis van de genavigeerde gegevens.
 
-Om dit te doen, geeft u eenvoudig het gewenste `Repository` object door aan de constructor van een toepasselijke `Navigator` object:
+Om dit te doen, geef je gewoon het gewenste `Repository` object door aan de constructor van een toepasselijk `Navigator` object:
 
 <ComponentDemo 
 path='/webforj/navigatortable?' 
@@ -24,31 +24,31 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='475px'
 />
 
-Dit voorbeeld maakt de `Navigator` en [`Table`](table/overview) met dezelfde `Repository` instantie. Dit betekent dat wanneer u naar een nieuwe pagina navigeert met de `Navigator`, de [`Table`](table/overview) deze wijziging herkent en opnieuw rendert.
+Dit voorbeeld creëert de `Navigator` en de [`Table`](table/overview) met dezelfde `Repository` instantie. Dit betekent dat wanneer je naar een nieuwe pagina navigeert met de `Navigator`, de [`Table`](table/overview) deze wijziging erkent en opnieuw rendert.
 
 ## Paginering {#pagination}
 
-De `Navigator` component is nauw verbonden met de `Paginator` modelklasse en berekent pagineringmetadata zoals het totale aantal pagina's, start/eindindices van items op de huidige pagina, en een array met paginanummers voor navigatie.
+De `Navigator` component is nauw verbonden met de `Paginator` modelklasse, die pagineringsmetadata berekent, zoals het totale aantal pagina's, start-/eindindexen van items op de huidige pagina, en een array van paginanummers voor navigatie.
 
-Hoewel niet per se noodzakelijk, maakt het gebruik van de `Paginator` de logica achter navigatie mogelijk. Bij integratie met een `Paginator` reageert de navigator op wijzigingen binnen de `Paginator`. `Navigator` objecten hebben toegang tot een ingebouwde `Paginator` via de `getPaginator()` methode. Het kan ook een `Paginator` instantie accepteren via de `setPaginator()` methode, of door gebruik te maken van een van de toepasselijke constructeurs.
+Hoewel niet expliciet noodzakelijk, maakt het gebruik van de `Paginator` de logica achter navigatie mogelijk. Bij integratie met een `Paginator` reageert de navigator op wijzigingen binnen de `Paginator`. `Navigator` objecten hebben toegang tot een ingebouwde `Paginator` via de `getPaginator()` methode. Het kan ook een `Paginator` instantie accepteren via de `setPaginator()` methode, of gebruik maken van een van de toepasselijke constructeurs.
 
-Dit gedeelte bevat praktische codefragmenten om te illustreren hoe deze integratie in de praktijk werkt.
+Deze sectie bevat praktische codefragmenten om te illustreren hoe deze integratie in de praktijk werkt.
 
 ### Items {#items}
 
-De term "items" verwijst naar de individuele gepagineerde elementen of gegevensinvoeren. Dit kunnen records, invoeren of andere discrete eenheden binnen een dataset zijn. U kunt het totale aantal items instellen met de `setTotalItems()` methode.
+De term "items" verwijst naar de individuele gepagineerde elementen of gegevensinvoer. Dit kunnen records, vermeldingen of andere discrete eenheden binnen een dataset zijn. Je kunt het totale aantal items instellen met de `setTotalItems()` methode.
 
 ```java
 navigator.getPaginator().setTotalItems(totalItems);
 ```
 
 :::info
-Een repository die is gekoppeld aan de `Paginator` instantie heeft het totale aantal items dat rechtstreeks door de repository wordt beheerd en kan niet rechtstreeks worden ingesteld.
+Een repository die is gekoppeld aan de `Paginator` instantie heeft het totale aantal items dat rechtstreeks door de repository wordt beheerd en kan niet direct worden ingesteld.
 :::
 
 ### Maximale pagina's {#maximum-pages}
 
-De `setMax()` methode stelt u in staat om het maximale aantal paginalinks dat in de pagineringsnavigatie moet worden weergegeven, te definiëren. Dit is bijzonder nuttig wanneer u met een groot aantal pagina's werkt, aangezien het het aantal paginalinks beperkt dat op elk moment zichtbaar is voor de gebruiker.
+De `setMax()` methode stelt je in staat om het maximale aantal paginalinks dat in de pagineringsnavigatie moet worden weergegeven, te definiëren. Dit is bijzonder nuttig bij een groot aantal pagina's, omdat het het aantal paginalinks zichtbaar voor de gebruiker op elk moment beheert.
 
 ```java
 navigator.getPaginator().setMax(maxPages);
@@ -60,21 +60,21 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='125px'
 />
 
-Dit programma toont maximaal vijf pagina's op de `Navigator` tegelijk door de `getPaginator()` methode te gebruiken om de `Paginator` op te halen die is gekoppeld aan het `Navigator` object, en vervolgens de `setMax()` methode te gebruiken om een gewenst aantal maximale pagina's weer te geven.
+Dit programma toont maximaal vijf pagina's op de `Navigator` tegelijkertijd door de `getPaginator()` methode te gebruiken om de `Paginator` op te halen die aan het `Navigator` object is gekoppeld, en vervolgens de `setMax()` methode te gebruiken om een gewenst aantal maximaal weergegeven pagina's op te geven.
 
-### Pagina grootte {#page-size}
+### Paginaformaat {#page-size}
 
-De `setSize()` methode stelt u in staat om het aantal items dat op elke pagina van de paginering moet worden weergegeven, te specificeren. Wanneer u deze methode aanroept en een nieuwe paginagrootte opgeeft, past het de paginering dienovereenkomstig aan.
+De `setSize()` methode stelt je in staat om het aantal items dat op elke pagina van de paginering moet worden weergegeven, op te geven. Wanneer je deze methode aanroept en een nieuwe paginaformaat opgeeft, past het de paginering dienovereenkomstig aan.
 
 ```java
 navigator.getPaginator().setSize(pageSize);
 ```
 
-## Aanpassen van knoppen, tekst en tooltips {#customizing-buttons-text-and-tooltips}
+## Aangepaste knoppen, tekst en tooltips {#customizing-buttons-text-and-tooltips}
 
-De `Navigator` component biedt uitgebreide aanpassingsmogelijkheden voor knoppen, tekst en tooltips. Om de weergegeven tekst op de `Navigator` component te wijzigen, gebruikt u de `setText()` methode. Deze methode neemt tekst aan, evenals het gewenste `Part` van de `Navigator`.
+De `Navigator` component biedt uitgebreide aanpassingsmogelijkheden voor knoppen, tekst en tooltips. Om de weergegeven tekst op de `Navigator` component te wijzigen, gebruik je de `setText()` methode. Deze methode neemt tekst, evenals het gewenste `Part` van de `Navigator`.
 
-In het volgende voorbeeld toont de `setText()` methode een numerieke waarde aan de gebruiker. Klikken op de knoppen activeert de `onChange` methode van de `Navigator`, die wordt geleverd met een `Direction` waarde van de aangeklikte knop.
+In het volgende voorbeeld toont de `setText()` methode een numerieke waarde aan de gebruiker. Het klikken op de knoppen activeert de `onChange` methode van de `Navigator`, die wordt geleverd met een `Direction` waarde van de aangeklikte knop.
 
 <ComponentDemo 
 path='/webforj/navigatorbasic?' 
@@ -84,45 +84,45 @@ height='100px'
 
 ### Knoppen en componenttekst {#buttons-and-component-text}
 
-De `setText()` methode evalueert de tekstparameter als een JavaScript-expressie met behulp van de volgende parameters:
+De `setText()` methode evalueert de tekstparameter als een JavaScript-expressie met de volgende parameters:
 
 - `page` - het huidige paginanummer
 - `current` - het momenteel geselecteerde paginanummer
 - `x` - een alias voor de huidige pagina
-- `startIndex` - de startindex van de huidige pagina.
-- `endIndex` - de eindindex van de huidige pagina.
-- `totalItems` - het totale aantal items.
-- `startPage` - het startpaginanummer.
-- `endPage` - het eindpaginanummer.
-- `component` - de Navigator clientcomponent.
+- `startIndex` - De startindex van de huidige pagina.
+- `endIndex` - De eindindex van de huidige pagina.
+- `totalItems` - Het totale aantal items.
+- `startPage` - Het startpaginanummer.
+- `endPage` - Het eindpaginanummer.
+- `component` - De Navigator clientcomponent.
 
 <!-- vale off -->
-Bijvoorbeeld, om de tekst van de laatste pagina-knop in een `Navigator` met 10 pagina's in te stellen op "Ga naar pagina 10", gebruikt u het volgende codefragment:
+Bijvoorbeeld, om de tekst van de laatste pagina knop in een `Navigator` met 10 pagina's in te stellen op "Ga naar pagina 10", gebruik je het volgende codefragment: 
 <!-- vale on -->
 
 ```java
 navigator.setText("'Ga naar pagina ' + endPage", Navigator.Part.LAST_BUTTON);
 ```
 
-### Tooltip tekst {#tooltip-text}
+### Tooltiptekst {#tooltip-text}
 
-U kunt tooltips voor verschillende delen van de `Navigator` component aanpassen met behulp van de `setTooltipText()` methode. Tooltips geven nuttige aanwijzingen aan gebruikers wanneer ze over de navigatie-elementen bewegen.
+Je kunt tooltips voor verschillende delen van de `Navigator` component aanpassen met de `setTooltipText()` methode. Tooltips bieden handige hints aan gebruikers wanneer ze met muis over navigatie-elementen bewegen.
 
 :::info
-Tooltip-tekst evalueert niet naar Javascript, in tegenstelling tot de tekst die wordt gebruikt door de `setText()` methode.
+Tooltiptekst evalueert niet naar Javascript, in tegenstelling tot de tekst die door de `setText()` methode wordt gebruikt.
 :::
 
 <!-- vale off -->
-Bijvoorbeeld, om de tooltip tekst van de laatste pagina-knop in een `Navigator` in te stellen op "Ga naar de laatste pagina", gebruikt u het volgende codefragment:
+Bijvoorbeeld, om de tooltiptekst van de laatste pagina knop in een `Navigator` in te stellen op "Ga naar de laatste pagina", gebruik je het volgende codefragment:
 <!-- vale on -->
 
 ```java
 navigator.setTooltipText("Ga naar de laatste pagina", Navigator.Part.LAST_BUTTON);
 ```
 
-## Indelingen {#layouts}
+## Lay-outs {#layouts}
 
-Er zijn verschillende indelingsopties voor de `Navigator` component om flexibiliteit te bieden bij het weergeven van pagineringscontroles. Om toegang te krijgen tot deze indelingen, gebruikt u de waarden van de `Navigator.Layout` enum. De opties zijn als volgt:
+Er zijn verschillende lay-outopties beschikbaar voor de `Navigator` component om flexibiliteit te bieden bij het weergeven van pagineringscontroles. Om toegang te krijgen tot deze lay-outs, gebruik je de waarden van de `Navigator.Layout` enum. De opties zijn als volgt:
 
 <ComponentDemo 
 path='/webforj/navigatorlayout?' 
@@ -130,54 +130,54 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='200px'
 />
 
-### 1. Geen indeling {#1-none-layout}
+### 1. Geen lay-out {#1-none-layout}
 
-De `NONE` indeling rendert geen tekst binnen de `Navigator` en toont alleen de navigatieknoppen zonder een standaard tekstweergave. Om deze indeling te activeren, gebruikt u:
+De `NONE` lay-out rendert geen tekst binnen de `Navigator`, en toont alleen de navigatieknoppen zonder een standaard tekstweergave. Om deze lay-out te activeren, gebruik:
 
 ```java
 navigator.setLayout(Navigator.Layout.NONE);
 ```
 
-### 2. Nummerindeling {#2-numbered-layout}
+### 2. Genummerde lay-out {#2-numbered-layout}
 
-De genummerde indeling toont genummerde chips die overeenkomen met elke pagina binnen het weergavegebied van de `Navigator`. Het gebruik van deze indeling is ideaal voor scenario's waarin gebruikers voorkeur geven aan directe navigatie naar specifieke pagina's. Om deze indeling te activeren, gebruikt u:
+De genummerde lay-out toont genummerde chips die overeenkomen met elke pagina binnen het weergavegebied van de `Navigator`. Het gebruik van deze lay-out is ideaal voor scenario's waarin gebruikers directe navigatie naar specifieke pagina's verkiezen. Om deze lay-out te activeren, gebruik:
 
 ```java
 navigator.setLayout(Navigator.Layout.PAGES);
 ```
 
-### 3. Voorvertoning indeling {#3-preview-layout}
+### 3. Voorbeeldlay-out {#3-preview-layout}
 
-De voorvertoning indeling toont het huidige paginanummer en het totale aantal pagina's, en is geschikt voor compacte pagineringsinterfaces met beperkte ruimte.
+De voorbeeldlay-out toont het huidige paginanummer en het totale aantal pagina's, en is geschikt voor compacte pagineringsinterfaces met beperkte ruimte.
 
 :::info
-Voorvertoning is de standaardindeling van de `Navigator`.
+Voorbeeld is de standaard `Navigator` lay-out.
 :::
 
-Om deze indeling te activeren, gebruikt u:
+Om deze lay-out te activeren, gebruik:
 
 ```java
 navigator.setLayout(Navigator.Layout.PREVIEW);
 ```
 
-### 4. Snelle sprong indeling {#4-quick-jump-layout}
+### 4. Snelle jump lay-out {#4-quick-jump-layout}
 
-De snelle sprong indeling biedt een [NumberField](./fields/number-field.md) voor gebruikers om een paginanummer in te voeren voor snelle navigatie. Dit is nuttig wanneer gebruikers snel naar een specifieke pagina moeten navigeren, vooral voor grote datasets. Om deze indeling te activeren, gebruikt u:
+De snelle jump lay-out biedt een [NumberField](./fields/number-field.md) voor gebruikers om een paginanummer in te voeren voor snelle navigatie. Dit is nuttig wanneer gebruikers snel naar een specifieke pagina moeten navigeren, vooral voor grote datasets. Om deze lay-out te activeren, gebruik:
 
 ```java
 navigator.setLayout(Navigator.Layout.QUICK_JUMP);
 ```
 
-## Stijlen {#styling}
+## Stylen {#styling}
 
 <TableBuilder name="Navigator" />
 
-## Beste praktijken {#best-practices}
+## Best practices {#best-practices}
 
-Om een optimale gebruikerservaring te waarborgen bij het gebruik van de `Navigator` component, overweeg de volgende beste praktijken:
+Om een optimale gebruikerservaring te waarborgen bij het gebruik van de `Navigator` component, overweeg de volgende best practices:
 
-- **Begrijp de dataset**: Voordat u een `Navigator` component in uw app integreert, begrijpt u grondig de vereisten voor het doorbladeren van gegevens van uw gebruikers. Houd rekening met factoren zoals de grootte van de dataset, typische gebruikersinteracties en voorkeuren voor navigatiepatronen.
+- **Begrijp de dataset**: Voordat je een `Navigator` component in je app integreert, moet je de vereisten voor het doorbladeren van gegevens van je gebruikers grondig begrijpen. Overweeg factoren zoals de grootte van de dataset, typische gebruikersinteracties en voorkeuren voor navigatiepatronen.
 
-- **Kies een geschikte indeling**: Selecteer een indeling voor de `Navigator` component die aansluit bij de gebruikerservaringdoelen en de beschikbare schermruimte.
+- **Kies een geschikte lay-out**: Selecteer een lay-out voor de `Navigator` component die aansluit bij de doelstellingen voor de gebruikerservaring en de beschikbare schermruimte.
 
-- **Pas tekst en tooltips aan**: Pas de tekst en tooltips van de `Navigator` component aan om overeen te komen met de taal en terminologie die in uw app wordt gebruikt. Bied beschrijvende labels en nuttige aanwijzingen om gebruikers te helpen de dataset effectief te navigeren.
+- **Pas tekst en tooltips aan**: Pas de tekst en tooltips van de `Navigator` component aan om overeen te komen met de taal en terminologie die in je app wordt gebruikt. Bied beschrijvende labels en handige hints om gebruikers te helpen bij het effectief navigeren door de dataset.

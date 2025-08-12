@@ -1,23 +1,23 @@
 ---
 title: JRebel
-_i18n_hash: 9e2b7ce994eb40e656cf61dc4967ec7e
+_i18n_hash: e0a60884cfab5835f788e6f225047d2c
 ---
-JRebel on Java-kehitystyökalu, joka integroituu JVM:ään havaitakseen koodimuutokset ja korvatakseen muutetut luokat suoraan muistissa, jolloin kehittäjät voivat nähdä koodimuutokset heti ilman palvelimen uudelleenkäynnistystä.
+JRebel on Java-kehitystyökalu, joka integroitui JVM:ään havaitsemaan koodimuutoksia ja korvaamaan muokatut luokat suoraan muistissa, jolloin kehittäjät voivat nähdä koodimuutokset välittömästi ilman palvelimen uudelleenkäynnistämistä.
 
-Kun muutoksia tehdään luokkaan, metodiin tai kenttään, JRebel kääntää ja injektoi päivitetyn tavukoodin lennossa, jolloin täyden palvelimen uudelleenkäynnistyksen tarve kielletään. Sovellukseen tehdyt muutokset tunnistetaan suoraan, mikä tehostaa kehitystyönkulkuja, säästää aikaa ja säilyttää sovellustilan, mukaan lukien käyttäjäistunnot.
+Kun luokkaan, menetelmään tai kenttään tehdään muutos, JRebel kääntää ja injektoi päivitetyn tavukoodin lennossa, mikä eliminoi tarpeen täydelle palvelimen uudelleenkäynnistykselle. Soveltamalla muutoksia suoraan käynnissä olevaan sovellukseen, JRebel virtaviivaistaa kehitysprosessia, säästäen aikaa ja säilyttäen sovelluksen tilan, mukaan lukien käyttäjäistunnot.
 
 ## Asennus {#installation}
 
-Virallisella JRebel-sivustolla on [nopeat aloitusohjeet](https://www.jrebel.com/products/jrebel/learn) tuotteen käynnistämiseen eri suosituissa IDE:issä. Seuraa näitä ohjeita integroidaksesi JRebel kehitysympäristöösi.
+Virallisella JRebel-sivustolla on [pikakäynnistysohjeet](https://www.jrebel.com/products/jrebel/learn) tuotteen käyttöönottoon eri suosituissa IDE:issä. Noudata näitä ohjeita integroidaksesi JRebel kehitysympäristöösi.
 
-Kun asennus on valmis, avaa webforJ-projekti ja varmista, että jetty `scan` -ominaisuus `pom.xml`-tiedostossa on asetettu arvoon `0`, jotta palvelimen automaattinen uudelleenkäynnistys estetään. Kun tämä on tehty, käytä seuraavaa komentoa:
+Kun asennus on valmis, avaa webforJ-projekti ja varmista, että jetty `scan` -ominaisuus `pom.xml` -tiedostossa on asetettu arvoon `0` palvelimen automaattisen uudelleenkäynnistyksen poistamiseksi käytöstä. Kun tämä on tehty, käytä seuraavaa komentoa:
 
 ```bash
 mvn jetty:run
 ```
 
-Jos kaikki on tehty oikein, JRebel antaa lokitietoja terminaaliin, ja ohjelmassasi tehdyt muutokset tulisi näkyä pyynnöstä.
+Jos kaikki on tehty oikein, JRebel tulostaa lokitietoja terminaaliin, ja ohjelmaasi tehdyt muutokset näkyvät pyynnöstä.
 
 :::info Näe muutoksesi
-Jos muutos tehdään näkymään tai komponenttiin, joka on jo näkyvissä, JRebel ei pakota sivun uudelleenlatausta, koska palvelinta ei käynnistetä uudelleen.
+Jos muutos tehdään näkymään tai komponenttiin, joka on jo näkyvillä, JRebel ei pakota sivun uudelleenlatausta, koska palvelinta ei käynnistetä uudelleen.
 :::

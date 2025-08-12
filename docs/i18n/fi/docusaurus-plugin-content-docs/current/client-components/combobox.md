@@ -6,7 +6,7 @@ slug: combobox
 description: A user guide article for the combobox
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 80008883ad1eed0c5fec1abd19622ab9
+_i18n_hash: 8c9d93b1863599dc5887d87d395e7850
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,8 +16,8 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info ASIAKASKOMPONENTTI
-Tässä osiossa käsitellään tyylitietoja **`<dwc-combobox>`** komponentille. Tämä komponentti on **asiakaspään vain** - sitä ei voi instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+:::info KLIENTTIKOMPONENTTI
+Tässä osiossa on tyylitietoja **`<dwc-combobox>`** komponentista. Tämä komponentti on **vain asiakaspuolella** - sitä ei voida instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
 ## Tyylitys {#styling}

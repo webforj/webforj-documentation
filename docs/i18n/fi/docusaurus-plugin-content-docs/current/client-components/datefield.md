@@ -6,7 +6,7 @@ slug: datefield
 description: A user guide article for the datefield
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 99533e4be553a7c96520f01ada99981c
+_i18n_hash: 0f73f86d8729078012d808352406a6b4
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,9 +17,9 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info ASIAKASKOMPONENTTI
-Tämä osa esittelee tyylitietoja **`<dwc-datefield>`** komponentista. Tämä komponentti on **vain asiakaspäässä** - sitä ei voi instanssia itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+Tässä osiossa esitellään tyylitietoja **`<dwc-datefield>`** komponentille. Tämä komponentti on **asiakaspään** - sitä ei voi instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
-## Tyylitys {#styling}
+## Tyylit {#styling}
 
 <TableBuilder name="dwc-datefield" clientComponent />

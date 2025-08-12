@@ -6,7 +6,7 @@ slug: infinite-scroll
 description: A user guide article for the infinite-scroll
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 68d7b67e45acf959bf6a3c14b861b0b2
+_i18n_hash: 0108c094189619169ffe818cc95568ea
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,8 +16,8 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info KLANTCOMPONENT
-Deze sectie beschrijft de stijlinformatie voor de **`<dwc-infinite-scroll>`** component. Deze component is **alleen clientzijde** - hij kan niet op zichzelf worden geïnstantieerd via de API, maar kan een onderdeel zijn van API-componenten.
+:::info KLIANTCOMPONENT
+Deze sectie bevat stylinginformatie voor de **`<dwc-infinite-scroll>`** component. Deze component is **slechts clientzijde** - het kan niet zelfstandig worden geïnstantieerd via de API, maar kan een onderdeel zijn van API-componenten.
 :::
 
 ## Styling {#styling}

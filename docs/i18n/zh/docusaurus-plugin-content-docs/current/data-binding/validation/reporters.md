@@ -1,23 +1,31 @@
 ---
 sidebar_position: 3
 title: Reporters
-_i18n_hash: 217311f203d2736071c33d6650c74ec2
+_i18n_hash: c563479cec7e1fe29d483bcd121bb5fc
 ---
-验证报告器用于向用户界面提供有关验证过程的反馈。此功能对于告知用户其输入验证的结果至关重要，特别是在复杂表单或数据密集型应用程序中。
+
+<!-- vale off -->
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<!-- vale on -->
+
+验证报告器用于向用户界面提供有关验证过程的反馈。此功能对于告知用户其输入验证的结果至关重要，特别是在复杂的表单或数据密集型应用程序中。
 
 ## 什么是验证报告器？ {#whats-a-validation-reporter}
 
-验证报告器是一个处理并向用户显示验证结果的组件。它充当验证逻辑与用户界面之间的桥梁，确保有效且清晰地传达验证结果。
+验证报告器是一个组件，用于处理并向用户展示验证的结果。它充当验证逻辑与用户界面之间的桥梁，确保验证结果得到有效和清晰的传达。
 
 :::tip 核心组件默认报告器
-webforJ 包含 `DefaultBindingReporter`，这是一个设计用于与所有核心 webforJ 组件无缝协作的默认绑定报告器。这个内置的报告器自动显示验证错误，消除了在许多情况下需要自定义实现的必要性。根据组件的配置，`DefaultBindingReporter` 可以直接将验证错误作为弹出框或内联显示，正好位于组件下方。此功能显著简化了错误报告过程，确保验证错误以清晰直接的方式进行沟通，并通过提供即时、上下文相关的输入验证反馈来增强用户体验。
+webforJ 包含 `DefaultBindingReporter`，这是一个设计与所有核心 webforJ 组件无缝合作的默认绑定报告器。此内置报告器自动显示验证错误，消除了许多情况下自定义实现的需要。根据组件的配置，`DefaultBindingReporter` 直接作为弹出提示或内嵌的方式，显示在组件正下方的验证错误。这一功能显著简化了错误报告过程，确保了验证错误的清晰和直接的沟通，并通过提供即时的上下文敏感反馈来增强用户体验。
 :::
 
 ## 配置验证报告器 {#configuring-validation-reporters}
 
-您可以在绑定上下文中配置验证报告器，以自定义消息的呈现方式。通常，您会实现一个验证报告器，以汇总验证结果，然后以用户友好的方式显示它们，例如突出显示错误字段、显示错误消息或更新状态指示符。
+您可以在绑定上下文中配置验证报告器，以自定义信息的呈现方式。通常，您会实现一个验证报告器以汇总验证结果，然后以用户友好的方式显示它们，如突出显示不正确的字段、显示错误消息或更新状态指示器。
 
-以下是如何为一个字段设置验证报告器的示例
+以下是如何为字段设置验证报告器的示例：
 
 <Tabs>
 <TabItem value="UserRegistration" label="UserRegistration.java">
@@ -26,7 +34,7 @@ webforJ 包含 `DefaultBindingReporter`，这是一个设计用于与所有核�
 @InlineStyleSheet("context://styles.css")
 public class UserRegistration extends App {
   Div errors = new Div();
-  TextField emailField = new TextField("Email Address");
+  TextField emailField = new TextField("电子邮件地址");
 
   FlexLayout layout = FlexLayout.create(emailField, errors).vertical().build();
 
@@ -40,7 +48,7 @@ public class UserRegistration extends App {
     BindingContext<User> context = new BindingContext<>(User.class);
     context.bind(emailField, "email")
         .useValidator(
-            Validator.from(new EmailValidator(), "Custom message for invalid email address"))
+            Validator.from(new EmailValidator(), "无效电子邮件地址的自定义消息"))
         .useReporter((validationResult, binding) -> {
           errors.setVisible(!validationResult.isValid());
 
@@ -112,4 +120,5 @@ public class User {
 </TabItem>
 </Tabs>
 
-在上述代码中，电子邮件绑定包含一个自定义报告器，直接在输入字段下方显示验证消息。该设置利用 `useReporter` 方法，该方法配置了绑定如何处理和呈现验证结果。此方法有效地将验证逻辑与用户界面连接起来，确保任何验证问题立即对用户可见，从而增强表单的互动性和用户体验。
+在上述代码中，电子邮件绑定包含一个自定义报告器，可以直接在输入字段下显示验证消息。这个设置利用 `useReporter` 方法，配置了绑定如何处理和呈现验证结果。此方法有效地将验证逻辑与用户界面连接起来，确保任何验证问题对用户立即可见，从而增强表单的互动性和用户体验。
+```

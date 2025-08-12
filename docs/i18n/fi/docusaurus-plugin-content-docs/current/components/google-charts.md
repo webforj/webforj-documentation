@@ -1,17 +1,17 @@
 ---
 title: Google Charts
 sidebar_position: 50
-_i18n_hash: 84d9b14321275191deb78447cde7c7fe
+_i18n_hash: b477c90cfb24a59329f3047d7ae7d24c
 ---
 <DocChip chip='shadow' />
-<DocChip chip='name' label="google-chart" exclude= 'true' />
+<DocChip chip='name' label="google-chart" exclude='true' />
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="googlecharts" location="com/webforj/component/googlecharts/GoogleChart" top='true'/>
 
-<!-- Koulu yleiskuvaus komponentista ja sen toiminnasta -->
+<!-- Componentin lyhyt yleiskatsaus ja mitä se on/tekee -->
 
-:::info Google Chartsin tuominen
-Voit käyttää `GoogleChart`-luokkaa sovelluksessasi käyttämällä seuraavaa XML:ää POM-tiedostossasi:
+:::info Google Chartsin tuonti
+Käytä `GoogleChart`-luokkaa sovelluksessasi seuraavalla XML:llä POM-tiedostossasi:
 
 ```xml
 <dependency>
@@ -22,7 +22,7 @@ Voit käyttää `GoogleChart`-luokkaa sovelluksessasi käyttämällä seuraavaa 
 ```
 :::
 
-`GoogleChart`-luokka on kattava ratkaisu rikkaiden, vuorovaikutteisten kaavioiden upottamiseksi verkkosovelluksiin. Tämä luokka toimii siltana [Google Charts](https://developers.google.com/chart) -kirjastolle, tarjoten laajan valikoiman kaaviotyyppejä, jotka sopivat mihin tahansa tietonäyttötavoitteeseen.
+`GoogleChart`-luokka on kattava ratkaisu rikkaiden, interaktiivisten kaavioiden upottamiseen web-sovelluksiin. Tämä luokka toimii silkkana [Google Charts](https://developers.google.com/chart) -kirjastoon, tarjoten laajan valikoiman kaaviotyyppejä, jotka sopivat mihin tahansa datan visualisointitehtävään.
 
 <ComponentDemo 
 path='/webforj/chart?' 
@@ -33,7 +33,7 @@ height='300px'
 
 ## Kaaviotyypit {#chart-types}
 
-`GoogleChart`-lisäosa tarjoaa kattavan valikoiman kaaviotyyppejä eri tietonäyttötavoitteita varten. Oikean kaaviotyypin valinta on olennaista tietojen tarinan tehokkaaksi viestimiseksi. Näet alla olevan gallerian esimerkkejä yleisistä kaavioista, joita voidaan käyttää webforJ-sovelluksessa.
+`GoogleChart`-lisäosa tarjoaa kattavan valikoiman kaaviotyyppejä erilaisten datan visualisointivaatimusten täyttämiseksi. Oikean kaaviotyypin valinta on olennaista, jotta datan tarina voidaan kommunikoida tehokkaasti. Katso alla olevasta galleriasta esimerkkejä yleisimmistä kaavioista, joita voidaan käyttää webforJ-sovelluksessa.
 
 <ComponentDemo 
 path='/webforj/chartgallery?' 
@@ -44,54 +44,54 @@ height='600px'
 
 ## Vaihtoehdot {#options}
 
-`GoogleChart`-lisäosa mahdollistaa laajan mukauttamisen erilaisten vaihtoehtojen avulla. Nämä vaihtoehdot antavat sinun räätälöidä kaaviosi ulkoasun ja toiminnallisuuden sovelluksesi tarpeiden mukaan. Vaihtoehdot siirretään kaavion `setOptions()`-metodiin `Map<String, Object>`-rakenteena. 
+`GoogleChart`-lisäosa mahdollistaa laajan persoonallisuuden erilaisilla vaihtoehdoilla. Nämä vaihtoehdot antavat sinun räätälöidä kaavioidesi ulkoasun ja toiminnallisuuden sovelluksesi tarpeisiin. Vaihtoehtoja välitetään kaavion `setOptions()`-menetelmään `Map<String, Object>`-rakenteena.
 
-Tässä on esimerkki kaavion vaihtoehtojen asettamisesta:
+Esimerkki kaavion vaihtoehtojen asettamisesta:
 
 ```java
 Map<String, Object> options = new HashMap<>();
-options.put("title", "Kuukausittaiset tulot");
+options.put("title", "Kuukausittainen liikevaihto");
 options.put("backgroundColor", "#EFEFEF");
 
-// Sovella vaihtoehdot kaavioon
+// Käytä vaihtoehtoja kaavioon
 chart.setOptions(options);
 ```
 
-Lisätietoja saatavilla olevista vaihtoehdoista tietyille kaavioille löytyy [Google Visualization API -viite (Chart Gallery)](https://developers.google.com/chart/interactive/docs/gallery).
+Lisätietoja tiettyjen kaavioiden käytettävissä olevista vaihtoehdoista löytyy [Google Visualization API -viittaus (Chart Gallery)](https://developers.google.com/chart/interactive/docs/gallery).
 
 ## Datan asettaminen {#setting-data}
 
-Datan visualisoiminen `GoogleChart`-kaaviolla vaatii datan asianmukaista rakennetta ja asettamista. Tämä opas käynnistää sinut datasi valmistelussa ja sen soveltamisessa kaavioihisi.
+Datalla visualisointi `GoogleChart`-kaavioilla vaatii datan oikeaa rakennetta ja asettamista. Tämä opas käynnistää sinut datasi valmistelussa ja sen soveltamisessa kaavioihisi.
 
-### Perusdatan asettaminen {#basic-data-setup}
+### Perusdatan asetaminen {#basic-data-setup}
 
-Yksinkertaisin tapa määrittää data on käyttää `List<Object>`, jossa kukin rivi on lista arvoja.
+Yksinkertaisin tapa määrittää data on käyttää `List<Object>`, jossa kukin rivi on lista arvoista.
 
 ```java
 List<Object> data = new ArrayList<>();
 data.add(Arrays.asList("Tehtävä", "Tunteja päivässä"));
 data.add(Arrays.asList("Työ", 11));
 data.add(Arrays.asList("Syö", 2));
-data.add(Arrays.asList("Työmatka", 2));
+data.add(Arrays.asList("Matkusta", 2));
 data.add(Arrays.asList("Katso TV", 2));
 data.add(Arrays.asList("Nuku", 7));
 chart.setData(data);
 ```
 
-### Karttojen käyttäminen monimutkaisemmissa rakenteissa {#using-maps-for-more-complex-structures}
+### Karttojen käyttäminen monimutkaisemmille rakenteille {#using-maps-for-more-complex-structures}
 
-Monimutkaisemmissa tietorakenteissa voit käyttää karttoja rivien esittämiseen ja muuntaa ne sitten vaadittuun muotoon.
+Monimutkaisempien tietorakenteiden osalta voit käyttää karttoja rivien esittämiseen ja sitten muuntaa ne tarvittavaan muotoon.
 
 ```java
 List<Object> data = new ArrayList<>();
 
 // Otsikkorivi
-data.add(Arrays.asList("Maa", "Tulot"));
+data.add(Arrays.asList("Maa", "Liikevaihto"));
 
 // Datarivit
-Map<String, Object> row1 = Map.of("Maa", "Saksa", "Tulot", 1000);
-Map<String, Object> row2 = Map.of("Maa", "Yhdysvallat", "Tulot", 1170);
-Map<String, Object> row3 = Map.of("Maa", "Brasil", "Tulot", 660);
+Map<String, Object> row1 = Map.of("Maa", "Saksa", "Liikevaihto", 1000);
+Map<String, Object> row2 = Map.of("Maa", "Yhdysvallat", "Liikevaihto", 1170);
+Map<String, Object> row3 = Map.of("Maa", "Brasilia", "Liikevaihto", 660);
 
 data.add(new ArrayList<>(row1.values()));
 data.add(new ArrayList<>(row2.values()));
@@ -100,7 +100,7 @@ data.add(new ArrayList<>(row3.values()));
 chart.setData(data);
 ```
 
-Kun data on valmis, se voidaan soveltaa GoogleChartiin käyttämällä setData-menetelmää.
+Kun data on valmisteltu, se voidaan soveltaa GoogleChartiin käyttämällä setData-menetelmää.
 
 <ComponentDemo 
 path='/webforj/chartsettingdata?' 
@@ -112,14 +112,14 @@ height='300px'
 
 ### Datan ja vaihtoehtojen lataaminen JSON:sta {#loading-data-and-options-from-json}
 
-Voit myös ladata dataa ja vaihtoehtoja JSON-tiedostoista käyttämällä Gsonia helpomman hallinnan vuoksi. Tämä lähestymistapa auttaa pitämään datasi ja vaihtoehtosi järjestyksessä ja helppoina päivittää.
+Voit myös ladata dataa ja vaihtoehtoja JSON-tiedostoista käyttäen Gsonia helpompaa hallintaa varten. Tämä lähestymistapa auttaa pitämään datan ja vaihtoehdot organisoituna ja helposti päivitettävänä.
 
 ```java
 List<Object> data = new ArrayList<>();
 data.add(Arrays.asList("Vuosi", "Myynnit", "Kulut"));
 data.add(Arrays.asList("2013", 1000, 400));
 data.add(Arrays.asList("2014", 1170, 460));
-data.add(Arrays.asList("2015", 660, null));
+data.add(Arrays.asList("2015", 660, null)); 
 data.add(Arrays.asList("2016", 1030, 540));
 chart.setData(data);
 
@@ -130,15 +130,15 @@ Map<String, Object> options = new Gson().fromJson(
 chart.setOptions(options);
 ```
 
-## Kaavioiden visuaalisten elementtien päivittäminen {#updating-chart-visuals}
+## Kaavioiden visuaalien päivittäminen {#updating-chart-visuals}
 
-Kaavioiden ulkoasun päivittäminen tai päivittäminen datamuutosten, käyttäjäinteractionien tai visuaalisten vaihtoehtojen säätämisen seurauksena on yksinkertaista `redraw()`-menetelmällä. Tämä menetelmä varmistaa, että kaavioisi pysyvät tarkkoina ja visuaalisesti linjassa taustalla olevan datan tai asetusten muutosten kanssa.
+Kaavioiden ulkoasun päivittäminen tai päivittäminen datan muutosten, käyttäjäinteraktioiden tai visuaalisten vaihtoehtojen säädön myötä on yksinkertaista `redraw()`-menetelmällä. Tämä menetelmä varmistaa, että kaaviosi pysyvät tarkkoina ja visuaalisesti linjassa taustadatansa tai minkä tahansa muutoksen kanssa niiden asetuksissa.
 
-Käytä `redraw()`-menetelmää sellaisissa tilanteissa, kuten:
+Kutsu `redraw()` seuraavissa tilanteissa:
 
-- **Datan muutosten jälkeen**: Varmistaa, että kaavio heijastaa kaikki päivitykset sen datalähteeseen.
-- **Asetusten muutoksen yhteydessä**: Soveltaa uusia tyylityksiä tai konfiguraatiomuutoksia kaavioon.
-- **Vastaavien säätöjen aikana**: Säätää kaavion asettelua tai kokoa, kun säiliön mitat muuttuvat, varmistaen optimaalinen näyttö eri laitteilla.
+- **Datamuutosten jälkeen**: Varmistaa, että kaavio heijastaa päivitykset sen datalähteeseen.
+- **Vaihtoehtojen vaihtamisen yhteydessä**: Soveltaa uusia tyylimuutoksia tai asetuksia kaavioon.
+- **Vastaavasti mukautettaessa**: Säädöt kaavion asettelua tai kokoa, kun säilön mitat muuttuvat, varmistaen optimaaliset näyttöasetukset laitteiden välillä.
 
 <ComponentDemo 
 path='/webforj/chartredraw?' 
@@ -149,24 +149,24 @@ height='650px'
 
 <!-- tabs={['ChartDemoRedraw.java', 'redrawchart_styles.css']} -->
 
-## Kaavioiden vienti kuvina {#exporting-charts-as-images}
+## Kaavioiden vienti kuviksi {#exporting-charts-as-images}
 
-`getImageUri()`-menetelmä tarjoaa tavan viedä Google Charts base64-koodattuna PNG-kuvana. Tämä menetelmä on erityisen hyödyllinen kaavioiden jakamiseen verkkoympäristön ulkopuolella, niiden upottamiseen sähköposteihin tai asiakirjoihin tai yksinkertaisesti arkistointitarkoituksiin.
+`getImageUri()`-menetelmä tarjoaa tavan viedä Google Charts base64-koodattuina PNG-kuvina. Tämä menetelmä on erityisen hyödyllinen kaavioiden jakamiseen web-ympärön ulkopuolella, upottamiseen sähköposteihin tai asiakirjoihin tai yksinkertaisesti arkistointitarkoituksiin.
 
-Kutsu `getImageUri()` kaavio-instanssillasi sen jälkeen, kun kaavio on täysin renderöity. Tyypillisesti tätä menetelmää käytetään "ready"-tapahtuman kuuntimessa varmistaaksesi, että kaavio on valmis vietyväksi:
+Kutsu `getImageUri()` kaavio-instanssillasi sen jälkeen, kun kaavio on täysin renderöity. Tyypillisesti tätä menetelmää käytetään "ready"-tapahtuman kuuntelijassa varmistaaksesi, että kaavio on valmis vientiin:
 
 ```java
 chart.addReadyListener(e -> {
     String imageUri = chart.getImageUri();
-    // Nyt voit käyttää imageUri'ta, esimerkiksi img-tagin src-attribuuttina
+    // Nyt voit käyttää imageUri, esimerkiksi img-tagin src-attribuutti
 });
 ```
 
 ## `GoogleChartSelectedEvent` {#googlechartselectedevent}
 
-`GoogleChartSelectedEvent` laukaisee aina, kun käyttäjä valitsee datapisteen tai segmentin Google Chart -komponentissa. Tämä tapahtuma mahdollistaa vuorovaikutuksen valitun kaaviorin datan kanssa, tarjoamalla tietoja siitä, mitä on valittu. Tapahtumaa voidaan kuunnella käyttämällä `addSelectedListener()`-menetelmää `GoogleChart`-instanssilla.
+`GoogleChartSelectedEvent` laukaisee aina, kun käyttäjä valitsee datan kohdan tai segmentin Google Chart -komponentissa. Tämä tapahtuma mahdollistaa vuorovaikutuksen valitun kaavion datan kanssa, tarjoten yksityiskohtia siitä, mitä on valittu. Tapahtumaan voi kuunnella käyttämällä `addSelectedListener()`-menetelmää `GoogleChart`-instanssilla.
 
-`GoogleChartSelectedEvent` on hyödyllinen sovelluksissa, joissa käyttäjän vuorovaikutus kaavion kanssa on tarpeen.
+`GoogleChartSelectedEvent` on hyödyllinen sovelluksissa, joissa käyttäjän vuorovaikutus kaavion kanssa on tarpeen. 
 
 ```java
 GoogleChart chart = new GoogleChart(GoogleChart.Type.BAR);
@@ -176,32 +176,32 @@ chart.addSelectedListener(event -> {
     // Hanki valinta
     List<Object> selection = chart.getSelection();
     
-    // Käsittele valittu tapahtuma
+    // Käsittele valittua tapahtumaa
     if (!selection.isEmpty()) {
         System.out.println("Valittu rivi: " + selection.get(0));
-        // Lisäprosessi valitun rivin/kolumnin perusteella
+        // Lisäkäsittely valinnan rivin/sarakkeen perusteella
     }
 });
 ```
 
 ### Payload {#payload}
-`GoogleChartSelectedEvent` tarjoaa pääsyn valintadatasi, joka voidaan noutaa käyttämällä `getSelection()`-menetelmää kaavio-objektilla. Tämä menetelmä palauttaa listan objekteista, joissa jokaisella objektilla on seuraavat ominaisuudet:
+`GoogleChartSelectedEvent` tarjoaa pääsyn valintadataan, joka voidaan hankkia käyttämällä `getSelection()`-menetelmää kaavio-objektista. Tämä menetelmä palauttaa listan objekteja, joissa jokaisessa objektissa on seuraavat ominaisuudet:
 
-- **row**: Rivi-indeksi kaavion datataulukossa, joka valittiin.
-- **column**: Tietotaulukon sarakeindeksi, joka on valinnainen ja koskee kaavioita, jotka mahdollistavat yksittäisten solujen valinnan, kuten taulukko-kaavio.
+- **row**: Valitun rivin indeksi kaavion datataulukossa.
+- **column**: Datan taulukon sarakkeen indeksi, joka on valinnainen ja koskee kaavioita, jotka sallivat yksittäisten solujen valinnan, kuten taulukko-kaavio.
 
-Pii/viivakaavioita tai pylväskaavioita varten tarjotaan yleensä vain `row`, joka osoittaa valittua datapistettä.
+Piemien kaavioiden, kuten piirakka- tai palkkikaavioiden, osalta ainoastaan `row`-ominaisuus on tyypillisesti saatavilla, mikä osoittaa valitun datakohdan.
 
-Tässä on esimerkki payloadista:
+Esimerkki payloadista:
 ```java
 [
   {
-    "row": 3,  // Valitun rivin indeksit datassa
+    "row": 3,  // Valitun rivin indeksi datassa
     "column": 2  // (Valinnainen) Valitun sarakkeen indeksi
   }
 ]
 ```
 
-:::info Monien datapisteiden valitseminen
-Jos käyttäjä valitsee useita datapisteitä, `getSelection()`-menetelmä palauttaa objektien taulukon, joista kukin edustaa valittua elementtiä. Payload voi vaihdella kaaviotyypin ja käyttäjän tekemän vuorovaikutuksen mukaan.
+:::info Useiden datakohtien valinta
+Jos käyttäjä valitsee useita datakohtia, `getSelection()`-menetelmä palauttaa objektitaulukon, joka jokainen esittää valittua elementtiä. Payload voi vaihdella kaaviotyypin ja käyttäjän suorittaman vuorovaikutuksen mukaan.
 :::

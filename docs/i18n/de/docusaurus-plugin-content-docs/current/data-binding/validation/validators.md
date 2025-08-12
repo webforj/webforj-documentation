@@ -1,15 +1,15 @@
 ---
 sidebar_position: 2
 title: Validators
-_i18n_hash: 98f40d70b15464d8c7ee48710b07d8fc
+_i18n_hash: 3d41925977054029c22c2110455dd419
 ---
-Validator überprüfen Daten in Ihren UI-Komponenten gegen definierte Einschränkungen, bevor diese Daten dem Datenmodell übertragen werden. Sie können Validatoren anwenden, um sicherzustellen, dass die Daten bestimmten Kriterien entsprechen, wie z. B. innerhalb eines angegebenen Bereichs, einem Muster zu entsprechen oder nicht leer zu sein.
+Validator überprüfen Daten innerhalb Ihrer UI-Komponenten gegen definierte Einschränkungen, bevor diese Daten im Datenmodell gespeichert werden. Sie können Validatoren anwenden, um sicherzustellen, dass Daten bestimmten Kriterien entsprechen, wie z.B. in einem bestimmten Bereich zu liegen, ein Muster zu erfüllen oder nicht leer zu sein.
 
-Validierungen werden pro Bindung konfiguriert, sodass spezifische Regeln für jeden datapunkt individuell gelten. Diese Einrichtung sorgt dafür, dass jedes Datenelement die Validierung gemäß seinen eigenen Anforderungen durchläuft.
+Validierungen werden pro Bindung konfiguriert, sodass spezifische Regeln für jeden Datensatz einzeln gelten. Dieses Setup stellt sicher, dass jedes Datenelement entsprechend seinen eigenen Anforderungen validiert wird.
 
 ## Hinzufügen von Validatoren {#adding-validators}
 
-Fügen Sie Validatoren zu einer Bindung hinzu, indem Sie die Methode `useValidator` auf dem `BindingBuilder` verwenden.
+Fügen Sie einer Bindung Validatoren mithilfe der `useValidator`-Methode auf dem `BindingBuilder` hinzu.
 
 ```java
 context.bind(nameTextField, "name")
@@ -21,14 +21,14 @@ context.bind(nameTextField, "name")
 Im obigen Beispiel überprüfen zwei Validatoren, dass der Name nicht leer ist und dass er mindestens drei Zeichen enthält.
 
 :::tip Verarbeitung von Validatoren
-Es gibt keine Grenze für die Anzahl der Validatoren, die Sie pro Bindung hinzufügen können. Die Bindung wendet die Validatoren in der Reihenfolge der Einfügung an und stoppt bei der ersten Verletzung.
+Es gibt keine Begrenzung für die Anzahl der Validatoren, die Sie pro Bindung hinzufügen können. Die Bindung wendet die Validatoren in der Reihenfolge der Einfügung an und stoppt bei der ersten Verletzung.
 :::
 
 ## Implementierung von Validatoren {#implementing-validators}
 
-Sie können benutzerdefinierte wiederverwendbare Validatoren erstellen, indem Sie das Interface `Validator<T>` implementieren, wobei `T` der Typ der zu validierenden Daten ist. Diese Einrichtung beinhaltet die Definition der Methode validate, die die Daten überprüft und ein `ValidationResult` zurückgibt.
+Sie können benutzerdefinierte wiederverwendbare Validatoren erstellen, indem Sie das `Validator<T>`-Interface implementieren, wobei `T` der Typ der Daten ist, die Sie validieren möchten. Dieses Setup umfasst die Definition der Validierungsmethode, die die Daten überprüft und ein `ValidationResult` zurückgibt.
 
-Hier ist ein Beispiel für einen wiederverwendbaren Validator, der überprüft, ob die E-Mail eines Nutzers gültig ist.
+Hier ist ein Beispiel für einen wiederverwendbaren Validator, der überprüft, ob die E-Mail eines Benutzers gültig ist.
 
 ```java
 import com.webforj.data.validation.server.ValidationResult;
@@ -50,7 +50,7 @@ public class EmailValidator implements Validator<String> {
 
 ## Verwendung von Validatoren in Bindungen {#using-validators-in-bindings}
 
-Sobald Sie einen Validator definiert haben, können Sie ihn einfach auf beliebige relevante Bindungen in Ihrer App anwenden. Dies ist besonders nützlich für Komponenten, die gemeinsame Validierungsregeln in verschiedenen Teilen Ihrer App erfordern, wie z. B. E-Mail-Adressen von Benutzern oder Passwortstärke.
+Sobald Sie einen Validator definiert haben, können Sie ihn problemlos auf alle relevanten Bindungen innerhalb Ihrer App anwenden. Dies ist besonders nützlich für Komponenten, die gängige Validierungsregeln in verschiedenen Teilen Ihrer App erfordern, wie z.B. Benutzer-E-Mail-Adressen oder Passwortstärken.
 
 Um den `EmailValidator` auf eine Bindung anzuwenden:
 
@@ -61,9 +61,9 @@ context.bind(ageField, "age")
     .add();
 ```
 
-## Überschreibung von Validatornachrichten {#overriding-validator-messages}
+## Überschreiben von Validatornachrichten {#overriding-validator-messages}
 
-Sie können die Fehlermeldungen von Validatoren an dem Punkt anpassen, an dem sie an eine spezifische UI-Komponente gebunden werden. Dies ermöglicht es Ihnen, detailliertere oder kontextbezogene Informationen an den Benutzer bereitzustellen, falls die Validierung fehlschlägt. Benutzerdefinierte Nachrichten sind besonders nützlich, wenn derselbe Validator auf mehrere Komponenten angewendet wird, jedoch unterschiedliche Benutzeranleitungen basierend auf dem Kontext, in dem er verwendet wird, benötigt.
+Sie können die Fehlermeldungen von Validatoren beim Binden an eine bestimmte UI-Komponente anpassen. Dies ermöglicht es Ihnen, detailliertere oder kontextuell relevantere Informationen bereitzustellen, wenn die Validierung fehlschlägt. Benutzerdefinierte Nachrichten sind besonders nützlich, wenn derselbe Validator auf mehrere Komponenten angewendet wird, aber unterschiedliche Benutzeranleitungen je nach Kontext benötigt werden.
 
 So können Sie die Standardnachricht eines wiederverwendbaren Validators in einer Bindung überschreiben:
 
@@ -75,8 +75,8 @@ context.bind(emailField, "email")
     .add();
 ```
 
-Im obigen Beispiel wendet der Code den `EmailValidator` auf ein E-Mail-Feld mit einer benutzerdefinierten Fehlermeldung an, die speziell für dieses Feld zugeschnitten ist. Dies ermöglicht ein gezielteres und hilfreicheres Benutzererlebnis, falls die Validierung fehlschlägt.
+Im obigen Beispiel wird der `EmailValidator` auf ein E-Mail-Feld mit einer benutzerdefinierten Fehlermeldung angewendet, die speziell für dieses Feld angepasst ist. Dies ermöglicht ein gezielteres und hilfreicheres Benutzererlebnis, wenn die Validierung fehlschlägt.
 
-:::tip Verstehen von `Validator.from`
-Die Methode `Validator.from` umhüllt einen übergebenen Validator mit einem neuen, sodass Sie eine benutzerdefinierte Fehlermeldung angeben können, falls der Validator keine benutzerdefinierten Nachrichten unterstützt. Diese Technik ist besonders nützlich, wenn Sie dieselbe Validierungslogik in mehreren Komponenten anwenden müssen, jedoch mit unterschiedlichen, kontextspezifischen Fehlermeldungen für jede Instanz.
+:::tip Verständnis von `Validator.from`
+Die Methode `Validator.from` umschließt einen übergebenen Validator mit einem neuen, sodass Sie eine benutzerdefinierte Fehlermeldung angeben können, falls der Validator keine angepassten Nachrichten unterstützt. Diese Technik ist besonders nützlich, wenn Sie dieselbe Validierungslogik auf mehrere Komponenten anwenden müssen, aber für jede Instanz unterschiedliche, kontextspezifische Fehlermeldungen benötigen.
 :::

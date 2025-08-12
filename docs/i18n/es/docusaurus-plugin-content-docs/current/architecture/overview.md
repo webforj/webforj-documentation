@@ -2,7 +2,7 @@
 title: Architecture
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: 685fd7c6ad36cbb58ad93b0227129bb1
+_i18n_hash: dcc71add3fa8e18540b687a38d762dc1
 ---
 <Head>
   <style>{`
@@ -16,5 +16,6 @@ _i18n_hash: 685fd7c6ad36cbb58ad93b0227129bb1
 import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
+
 
 <DocCardList className="topics-list" />

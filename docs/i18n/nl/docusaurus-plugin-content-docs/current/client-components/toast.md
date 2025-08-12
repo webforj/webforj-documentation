@@ -6,7 +6,7 @@ slug: toast
 description: A user guide article for the toast
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: a6c5f9143c6fd42ac3790f4236513a28
+_i18n_hash: ee897ac8e915ef254aabce56201d6822
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,10 +16,10 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info CLIëNTCOMPONENT
-Deze sectie beschrijft de stijlinformatie voor de **`<dwc-toast>`** component. Deze component is **alleen clientzijde** - hij kan niet op zichzelf worden geïnstalleerd via de API, maar kan een onderdeel zijn van API-componenten.
+:::info CLIËNTCOMPONENT
+Deze sectie bevat stijlinformatie voor de **`<dwc-toast>`** component. Deze component is **alleen client-side** - hij kan niet op zichzelf worden geïnstantieerd via de API, maar kan deel uitmaken van API-componenten.
 :::
 
-## Styling {#styling}
+## Stijling {#styling}
 
 <TableBuilder name="dwc-toast" clientComponent />

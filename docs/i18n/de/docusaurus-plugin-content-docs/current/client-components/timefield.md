@@ -6,7 +6,7 @@ slug: timefield
 description: A user guide article for the timefield
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: e736c84c856d4f1b96767dc4f127ec3d
+_i18n_hash: 31dcc8fc9956c82a54238898cb1e19eb
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,8 +16,8 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info KUNDENKOMPONENTE
-Dieser Abschnitt beschreibt die Styling-Informationen für die **`<dwc-timefield>`**-Komponente. Diese Komponente ist **nur auf der Client-Seite** - sie kann nicht eigenständig über die API instanziiert werden, sondern kann Teil von API-Komponenten sein.
+:::info CLIENT COMPONENT
+Dieser Abschnitt beschreibt die Styling-Informationen für die **`<dwc-timefield>`**-Komponente. Diese Komponente ist **nur auf der Client-Seite** - sie kann nicht eigenständig über die API instanziiert werden, kann aber Teil von API-Komponenten sein.
 :::
 
 ## Styling {#styling}

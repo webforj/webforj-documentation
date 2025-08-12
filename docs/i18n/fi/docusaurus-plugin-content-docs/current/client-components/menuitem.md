@@ -6,7 +6,7 @@ slug: menuitem
 description: A user guide article for the menuitem
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 7b6ff10cfc0f1ff85de8003d9df1794c
+_i18n_hash: 7a9061cd90ac790929105f9704cecc22
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,10 +16,10 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info KLIYENTTIKOMPONENTTI
-Tässä osiossa käsitellään **`<dwc-menuitem>`** komponentin tyylitietoja. Tämä komponentti on **vain asiakaspäässä** - sitä ei voi instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+:::info ASIAKASKOMPONENTTI
+Tässä osiossa käsitellään **`<dwc-menuitem>`** komponentin tyylitietoja. Tämä komponentti on **asiakaspuolen** - sitä ei voi instanssia itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
-## Tyylit {#styling}
+## Tyylittely {#styling}
 
 <TableBuilder name="dwc-menuitem" clientComponent />

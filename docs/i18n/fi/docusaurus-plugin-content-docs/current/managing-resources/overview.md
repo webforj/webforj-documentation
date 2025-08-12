@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Managing Resources
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: f882ad17e626d45c6ed92c4e14abe040
+_i18n_hash: a18b5fd490eca0891f470c7ccdb44e94
 ---
 <Head>
   <style>{`
@@ -18,14 +18,14 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
-Sovellukset luottavat erilaisiin resurssityyppeihin, kuten JavaScriptiin, CSS:ään ja kuviin. Tämä asiakirja tarjoaa kattavan teknisen tarkastelun webforJ:n resurssienhallintamekanismeista, mukaan lukien deklaratiiviset annotaatiot, ohjelmalliset API-menetelmät ja mukautetun protokollan käyttö.  
+Sovellukset riippuvat erilaisista resurssityypeistä, kuten JavaScriptistä, CSS:stä ja kuvista. Tämä asiakirja tarjoaa kattavan teknisen tutkimuksen webforJ:n resurssinhallintamekanismeista, kattaen deklaratiiviset annotaatiot, ohjelmalliset API-menetelmät ja mukautetun protokollan käytön.
 
-webforJ omaksuu modulaarisen lähestymistavan resurssien hallintaan, tarjoten useita mekanismeja erilaisten sovellustarpeiden ratkaisemiseksi:  
+webforJ omaksuu moduulipohjaisen lähestymistavan resurssien hallintaan, tarjoten useita mekanismeja erilaisten sovellustarpeiden ratkaisemiseen:
 
-- **Deklaratiiviset annotaatiot**: Upota JavaScript- ja CSS-resurssit komponenttien tai sovellustason.  
-- **API-pohjainen dynaaminen injektio**: Injektoi resursseja suoritusajon aikana dynaamisen sovelluskäyttäytymisen mahdollistamiseksi.  
-- **Mukautetut protokollat**: Tarjoa standardoituja menetelmiä resurssien käyttöön.  
-- **Tiedostovirtauksen ja hallittujen latausten mahdollistaminen**: Helpottaa resurssitiedostojen hallittua noutamista ja siirtoa.  
+- **Deklaratiiviset annotaatiot**: Upota JavaScript- ja CSS-resursseja komponenttitasolla tai sovellustasolla.
+- **API-pohjainen dynaaminen injektio**: Injektoi resursseja ajonaikana dynaamisen sovelluskäyttäytymisen mahdollistamiseksi.
+- **Mukautetut protokollat**: Tarjoa standardoituja menetelmiä resurssien käyttöön.
+- **Tiedostovirtauksen ja hallittujen latausten mahdollistaminen**: Helpota resurssitiedostojen hallittua noutoa ja siirtoa.
 
 ## Topics {#topics}
 

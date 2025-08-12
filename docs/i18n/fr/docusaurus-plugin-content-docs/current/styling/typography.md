@@ -1,20 +1,20 @@
 ---
 sidebar_position: 4
 title: Typography
-_i18n_hash: 9ecc89dbb5b06c51ad61a22ddb69ce7d
+_i18n_hash: 5eafa3dea127703b4f573da438cbaf57
 ---
-Les tokens typographiques sont utilisés pour maintenir un ensemble de styles de police cohérent tout au long de votre application.
+Les tokens typographiques sont utilisés pour maintenir un ensemble cohérent de styles de police dans toute votre application.
 
 ## Famille de polices {#font-family}
 
-Les propriétés de famille de polices sont utilisées pour spécifier une liste priorisée de noms de famille de polices.
+Les propriétés de famille de polices sont utilisées pour spécifier une liste priorisée de noms de familles de polices.
 
 La pile de polices système est utilisée par défaut :
 
 - `Segoe UI` sur Windows
 - `Roboto` sur Android et Chrome OS
 - `San Francisco` sur macOS et iOS
-- Sur d'autres systèmes, `Helvetica, Arial` sont utilisés comme solutions de repli.
+- Sur d'autres systèmes, `Helvetica, Arial` sont utilisés en tant que repli.
 
 Vous pouvez appliquer ou changer la famille de polices en utilisant la propriété personnalisée `--dwc-font-family`.
 
@@ -36,10 +36,10 @@ Vous pouvez appliquer ou changer la famille de polices en utilisant la propriét
 
 ## Taille de police {#font-size}
 
-Les propriétés de taille de police définissent un ensemble de tailles de police parmi lesquelles choisir. `s` est la taille standard, et est utilisée par la plupart des composants par défaut. Toutes les tailles de police sont définies en `em`.
+Les propriétés de taille de police définissent un ensemble de tailles de police à choisir. `s` est la taille standard et est utilisée par défaut par la plupart des composants. Toutes les tailles de police sont définies en `em`.
 
 :::info Unité EM
-`em` est une unité de longueur relative. Elle est relative à [la taille de police](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) du parent, dans le cas des propriétés typographiques comme la taille de police, et à la taille de police de l'élément lui-même dans le cas d'autres propriétés comme [la largeur](https://developer.mozilla.org/en-US/docs/Web/CSS/width).
+`em` est une unité de longueur relative. elle est relative à [la taille de police](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) du parent, dans le cas des propriétés typographiques comme la taille de police, et à la taille de police de l'élément lui-même dans le cas d'autres propriétés comme [la largeur](https://developer.mozilla.org/en-US/docs/Web/CSS/width).
 :::
 
 ### Exemple {#example-1}
@@ -87,7 +87,7 @@ p {
 
 ## Hauteur de ligne {#line-height}
 
-La propriété CSS de hauteur de ligne définit la hauteur d'une boîte de ligne. Elle est souvent utilisée pour définir la distance entre les lignes de texte.
+La propriété CSS de hauteur de ligne définit la hauteur d'une boîte de ligne. Elle est couramment utilisée pour définir la distance entre les lignes de texte.
 
 ### Exemple {#example-3}
 

@@ -1,7 +1,7 @@
 ---
 title: Debugging
 sidebar_position: 1
-_i18n_hash: fc63d32dc6c8e48192a28f100c29943e
+_i18n_hash: d296f9a16ac6e5962b6962aa55e98a52
 ---
 La depuración es una parte esencial del desarrollo en Java, ayudando a los desarrolladores a identificar y solucionar problemas de manera eficiente. Esta guía explica cómo configurar la depuración en webforJ para Visual Studio Code, IntelliJ IDEA y Eclipse.
 
@@ -50,7 +50,7 @@ La depuración es una parte esencial del desarrollo en Java, ayudando a los desa
 2. Navega a Ejecutar → Editar Configuraciones.
 3. Haz clic en el botón <kbd>+</kbd> y selecciona Depuración Remota de JVM.
 4. Establece el host en `localhost` y el puerto en `8000`.
-5. Guarda la configuración y haz clic en Depurar para adjuntarte a la aplicación en ejecución.
+5. Guarda la configuración y haz clic en Depurar para adjuntarte a la app en ejecución.
 
 </TabItem>
 <TabItem value="eclipse" label="Eclipse">
@@ -76,11 +76,11 @@ La depuración es una parte esencial del desarrollo en Java, ayudando a los desa
 
 Una vez que hayas configurado tu IDE:
 
-1. Inicia tu aplicación webforJ usando `mvnDebug jetty:run`.
+1. Inicia tu app de webforJ usando `mvnDebug jetty:run`.
 2. Ejecuta la configuración de depuración en tu IDE.
 3. Establece puntos de interrupción y comienza a depurar.
 
 :::tip Consejos de Depuración
 1. Asegúrate de que el puerto 8000 esté disponible y no esté bloqueado por ningún firewall.
-2. Si estás utilizando alguno de los arquetipos de webforJ y has cambiado el número de puerto en el archivo pom.xml, asegúrate de que el puerto utilizado para la depuración coincida con el valor actualizado.
+2. Si estás utilizando alguno de los arquetipos de webforJ y has cambiado el número de puerto en el archivo pom.xml, asegúrate de que el puerto utilizado para depurar coincide con el valor actualizado.
 :::

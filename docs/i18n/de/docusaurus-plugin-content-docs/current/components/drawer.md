@@ -1,31 +1,31 @@
 ---
 title: Drawer
 sidebar_position: 35
-_i18n_hash: e3b531e5fb7f1554e035f4d05aad8512
+_i18n_hash: 73da264dca1e3f8cfd58b697e3e9d0dc
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-drawer" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="drawer" location="com/webforj/component/drawer/Drawer" top='true'/>
 
-Die Schublade ist ein Container, der in das Ansichtsfenster gleitet, um zusätzliche Optionen und Informationen anzuzeigen. In einer Anwendung können mehrere Schubladen erstellt werden, die übereinander gestapelt werden.
+Der Drawer ist ein Container, der in den Ansichtsbereich gleitet, um zusätzliche Optionen und Informationen anzuzeigen. In einer Anwendung können mehrere Drawer erstellt werden, und sie werden übereinander gestapelt.
 
-Die Drawer-Komponente kann in vielen verschiedenen Situationen verwendet werden, z. B. indem sie ein Navigationsmenü bietet, das ein- und ausgeblendet werden kann, ein Panel, das ergänzende oder kontextbezogene Informationen anzeigt, oder um die Nutzung auf einem mobilen Gerät zu optimieren. Das folgende Beispiel zeigt eine mobile Anwendung, die die webforJ AppLayout-Komponente verwendet und beim ersten Laden eine „Willkommens-Popup“-Schublade am unteren Ende anzeigt. Darüber hinaus kann eine Navigationsschublade in der Anwendung durch Klicken auf das Hamburger-Menü umgeschaltet werden.
+Die Drawer-Komponente kann in vielen verschiedenen Situationen verwendet werden, beispielsweise als Navigationsmenü, das umgeschaltet werden kann, als Panel, das ergänzende oder kontextbezogene Informationen anzeigt, oder um die Nutzung auf einem Mobilgerät zu optimieren. Das folgende Beispiel zeigt eine mobile Anwendung, die die webforJ AppLayout-Komponente verwendet und beim ersten Laden einen "Willkommens-Popup"-Drawer am unteren Rand anzeigt. Zusätzlich kann ein Navigations-Drawer in der Anwendung durch Klicken auf das Hamburger-Menü umgeschaltet werden.
 
 <AppLayoutViewer path='/webforj/drawerwelcome?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java'
 cssURL='/css/drawer/drawerWelcome.css'
 />
 
-## Anwendungen {#usages}
+## Verwendungen {#usages}
 
-1. **Navigationsmenü**: Eine gängige Verwendung einer Schubladenkomponente ist als Navigationsmenü. Es bietet eine platzsparende Möglichkeit, Links zu verschiedenen Abschnitten oder Seiten Ihrer Anwendung anzuzeigen, insbesondere in mobilen oder responsiven Layouts. Benutzer können die Schublade öffnen und schließen, um auf die Navigationsoptionen zuzugreifen, ohne den Hauptinhalt überladen zu müssen.
+1. **Navigationsmenü**: Eine häufige Verwendung eines Drawer-Komponenten ist als Navigationsmenü. Es bietet eine platzsparende Möglichkeit, Links zu verschiedenen Abschnitten oder Seiten Ihrer Anwendung anzuzeigen, insbesondere in mobilen oder responsiven Layouts. Benutzer können den Drawer öffnen und schließen, um auf Navigationsoptionen zuzugreifen, ohne den Hauptinhalt zu überladen.
 
-2. **Filter und Sidebar**: Eine Schublade kann als Filter oder Sidebar in Anwendungen verwendet werden, die eine Liste von Elementen anzeigen. Benutzer können die Schublade erweitern, um Filteroptionen, Sortiersteuerungen oder zusätzliche Informationen zu den Listenartikeln anzuzeigen. Dadurch bleibt der Hauptinhalt auf die Liste fokussiert, während er erweiterte Funktionen auf zugängliche Weise bereitstellt.
+2. **Filter und Sidebar**: Ein Drawer kann als Filter oder Sidebar in Anwendungen verwendet werden, die eine Liste von Elementen anzeigen. Benutzer können den Drawer erweitern, um Filteroptionen, Sortiersteuerungen oder zusätzliche Informationen zu den Listenelementen anzuzeigen. Dies hält den Hauptinhalt auf die Liste konzentriert, während er erweiterte Funktionen auf zugängliche Weise bereitstellt.
 
-3. **Benutzerprofil oder Einstellungen**: Sie können eine Schublade verwenden, um Benutzerprofilinformationen oder Anwendungseinstellungen anzuzeigen. Dies hält solche Informationen leicht zugänglich, aber verborgen, wenn sie nicht benötigt werden, und sorgt für eine saubere und aufgeräumte Benutzeroberfläche. Benutzer können die Schublade öffnen, um ihre Profile zu aktualisieren oder Einstellungen anzupassen.
+3. **Benutzerprofil oder Einstellungen**: Sie können einen Drawer verwenden, um Informationen zum Benutzerprofil oder zu den Anwendungseinstellungen anzuzeigen. Dies ermöglicht einen einfachen Zugriff auf solche Informationen, bleibt aber verborgen, wenn sie nicht benötigt werden, wodurch eine saubere und übersichtliche Benutzeroberfläche erhalten bleibt. Benutzer können den Drawer öffnen, um ihre Profile zu aktualisieren oder Einstellungen anzupassen.
 
-4. **Benachrichtigungen**: Für Anwendungen mit Benachrichtigungen oder Alarmen kann eine Schublade hereingleiten, um neue Nachrichten oder Updates anzuzeigen. Benutzer können schnell Benachrichtigungen überprüfen und ablehnen, ohne ihre aktuelle Ansicht zu verlassen.
+4. **Benachrichtigungen**: Bei Anwendungen mit Benachrichtigungen oder Alerts kann ein Drawer hinein gleiten, um neue Nachrichten oder Aktualisierungen anzuzeigen. Benutzer können schnell Benachrichtigungen überprüfen und abweisen, ohne ihre aktuelle Ansicht zu verlassen.
 
 <ComponentDemo
 path='/webforj/drawerdemo?'
@@ -35,19 +35,19 @@ height='600px'
 
 ## Anpassung {#customization}
 
-Es gibt verschiedene Eigenschaften, die die Anpassung verschiedener Attribute der Drawer-Komponente ermöglichen. Dieser Abschnitt beschreibt diese Eigenschaften mit Beispielen für deren Modifizierung.
+Es gibt verschiedene Eigenschaften, die es ermöglichen, verschiedene Attribute der Drawer-Komponente anzupassen. Dieser Abschnitt erläutert diese Eigenschaften mit Beispielen für deren Modifikation.
 
 ## Autofokus {#autofocus}
 
-Die Autofokus-Eigenschaft wurde entwickelt, um die Zugänglichkeit und Benutzerfreundlichkeit zu verbessern, indem beim Öffnen einer Schublade automatisch auf das erste Element innerhalb der Schublade fokussiert wird. Diese Funktion beseitigt die Notwendigkeit für Benutzer, manuell zu dem gewünschten Element zu navigieren, wodurch Zeit und Mühe gespart werden.
+Die Auto-Fokus-Eigenschaft wurde entwickelt, um die Benutzerfreundlichkeit und Zugänglichkeit zu verbessern, indem automatisch das erste Element innerhalb eines Drawers fokussiert wird, wenn er geöffnet wird. Diese Funktion beseitigt die Notwendigkeit für Benutzer, manuell zum gewünschten Element zu navigieren, was Zeit und Mühe spart.
 
-Wenn die Schublade geöffnet werden soll, sei es durch ein Ereignis, standardmäßig oder durch eine andere Interaktion, wird der Benutzerfokus auf das erste Element innerhalb der Schublade gelenkt. Dieses erste Element könnte eine Schaltfläche, ein Link, eine Menüauswahl oder ein anderes fokussierbares Element sein.
+Wenn der Drawer geöffnet wird, sei es durch ein Ereignis, standardmäßig oder durch eine andere Interaktion, wird der Fokus des Benutzers auf das erste Element innerhalb des Drawers gelenkt. Dieses erste Element könnte eine Schaltfläche, ein Link, eine Menüoption oder ein anderes fokussierbares Element sein.
 
 :::tip
-Durch die automatische Fokussierung auf das erste Element stellt der Entwickler sicher, dass Benutzer sofort mit der relevantesten oder am häufigsten verwendeten Option interagieren können, ohne durch die gesamte Schublade zu tabben oder zu scrollen. Dieses Verhalten optimiert das Benutzererlebnis und fördert eine effiziente Navigation innerhalb der Benutzeroberfläche.
+Durch das automatische Fokussieren des ersten Elements stellt der Entwickler sicher, dass Benutzer sofort mit der relevantesten oder am häufigsten verwendeten Option interagieren können, ohne durch den gesamten Drawer zu tabben oder zu scrollen. Dieses Verhalten optimiert das Benutzererlebnis und fördert eine effiziente Navigation innerhalb der Benutzeroberfläche.
 :::
 
-Diese Eigenschaft kann auch besonders vorteilhaft für Personen sein, die auf Tastaturnavigation oder Hilfstechnologien wie Bildschirmleser angewiesen sind. Sie bietet einen klaren Ausgangspunkt innerhalb der Schublade und ermöglicht es Benutzern, die gewünschte Funktionalität ohne unnötige manuelle Eingabe zu erreichen.
+Diese Eigenschaft kann auch besonders vorteilhaft für Personen sein, die auf Tastaturnavigation oder unterstützende Technologien wie Bildschirmleser angewiesen sind. Sie bietet einen klaren Startpunkt innerhalb des Drawers und ermöglicht es den Benutzern, die gewünschte Funktionalität ohne unnötige manuelle Eingabe zu erreichen.
 
 <ComponentDemo
 path='/webforj/drawerautofocus?'
@@ -57,35 +57,35 @@ height='600px'
 
 ## Label {#label}
 
-Die Drawer-Label-Eigenschaft ist eine Funktion, die entwickelt wurde, um die Zugänglichkeit zu verbessern und den Benutzern einen beschreibenden Kontext für eine Schublade innerhalb einer Benutzeroberfläche bereitzustellen. Diese Eigenschaft ermöglicht es Entwicklern, einer Schublade ein Label zuzuweisen, hauptsächlich zu Zugänglichkeitszwecken, damit Bildschirmleser und andere Hilfstechnologien den Zweck und den Inhalt der Schublade genau an die Benutzer vermitteln können.
+Die Drawer-Label-Eigenschaft ist eine Funktion, die darauf abzielt, die Zugänglichkeit zu verbessern und beschreibenden Kontext für einen Drawer innerhalb einer Benutzeroberfläche bereitzustellen. Diese Eigenschaft ermöglicht es Entwicklern, einem Drawer ein Label zuzuweisen, hauptsächlich zu Zwecken der Zugänglichkeit, und sicherzustellen, dass Bildschirmleser und andere unterstützende Technologien den Zweck und den Inhalt des Drawers genau an die Benutzer vermitteln können.
 
-Wenn die Drawer-Label-Eigenschaft verwendet wird, wird das zugewiesene Label zu einem integralen Bestandteil der Zugänglichkeitsinfrastruktur der Schublade. Es ermöglicht Benutzern, die auf Hilfstechnologien angewiesen sind, die Funktion der Schublade zu verstehen und effektiver durch die Benutzeroberfläche zu navigieren.
+Wenn die Drawer-Label-Eigenschaft verwendet wird, wird das zugewiesene Label zu einem integralen Bestandteil der Zugänglichkeitsinfrastruktur des Drawers. Dies ermöglicht es Benutzern, die auf unterstützende Technologien angewiesen sind, die Funktion des Drawers zu verstehen und durch die Benutzeroberfläche effektiver zu navigieren.
 
-Durch die Bereitstellung eines Labels für die Schublade stellen Entwickler sicher, dass Bildschirmleser den Zweck der Schublade für sehbehinderte Benutzer ankündigen. Diese Informationen befähigen Einzelpersonen, informierte Entscheidungen zu treffen, wie sie mit der Schublade interagieren, da sie deren Inhalt und Relevanz innerhalb der breiteren Benutzeroberfläche verstehen können.
+Durch die Bereitstellung eines Labels für den Drawer stellen Entwickler sicher, dass Bildschirmleser den Zweck des Drawers für sehbehinderte Benutzer ankündigen. Diese Informationen ermöglichen es den Einzelnen, informierte Entscheidungen über die Interaktion mit dem Drawer zu treffen, da sie seinen Inhalt und seine Relevanz innerhalb der breiteren Benutzeroberfläche verstehen können.
 
-Die Label-Eigenschaft kann angepasst werden, um den spezifischen Kontext und die Designanforderungen der Anwendung zu erfüllen. Entwickler haben die Flexibilität, prägnante und beschreibende Labels bereitzustellen, die den Inhalt oder die Funktionalität der Schublade genau wiedergeben.
+Die Label-Eigenschaft kann an den spezifischen Kontext und die Designanforderungen der Anwendung angepasst werden. Entwickler haben die Flexibilität, prägnante und beschreibende Labels bereitzustellen, die den Inhalt oder die Funktionalität des Drawers genau repräsentieren.
 
 ## Platzierung {#placement}
 
-Die Platzierungseigenschaft der Drawer-UI-Komponente ermöglicht es Entwicklern, die Position und Ausrichtung der Schublade im Ansichtsfenster festzulegen. Diese Eigenschaft bietet eine Reihe von Enumerationswerten, die Flexibilität bieten, um zu bestimmen, wo die Schublade in Bezug auf den Hauptinhalt erscheint.
+Die Platzierungseigenschaft der Drawer-Benutzeroberflächenkomponente ermöglicht es Entwicklern, die Position und Ausrichtung des Drawers innerhalb des Ansichtsbereichs anzugeben. Diese Eigenschaft bietet eine Reihe von Enum-Werten, die Flexibilität bei der Bestimmung bieten, wo der Drawer in Bezug auf den Hauptinhalt erscheint.
 
-Die verfügbaren Enumerationswerte für die Platzierungseigenschaft sind wie folgt:
+Die verfügbaren Enum-Werte für die Platzierungseigenschaft sind wie folgt:
 
-- **OBEN**: Dieser Wert platziert die Schublade oben im Ansichtsfenster, sodass sie den obersten Bereich einnimmt.
+- **OBEN**: Dieser Wert platziert den Drawer oben im Ansichtsbereich, sodass er den obersten Bereich einnimmt.
 
-- **OBEN_MITTE**: Mit diesem Wert wird die Schublade in der Mitte des oberen Teils des Ansichtsfensters positioniert. Sie ist horizontal in der Mitte ausgerichtet und erzeugt ein ausgewogenes Layout.
+- **OBEN_ZENTRAL**: Mit diesem Wert wird der Drawer in der Mitte des oberen Bereichs des Ansichtsbereichs positioniert. Er ist horizontal mittig ausgerichtet, was ein ausgewogenes Layout schafft.
 
-- **UNTEN**: Bei Verwendung dieses Wertes befindet sich die Schublade unten im Ansichtsfenster und erscheint unter dem Hauptinhalt.
+- **UNTEN**: Wenn dieser Wert verwendet wird, befindet sich der Drawer am unteren Ende des Ansichtsbereichs, unter dem Hauptinhalt.
 
-- **UNTEN_MITTE**: Dieser Wert zentriert die Schublade horizontal am unteren Rand des Ansichtsfensters. Er sorgt für eine visuell ausgewogene Komposition.
+- **UNTEN_ZENTRAL**: Dieser Wert zentriert den Drawer horizontal am unteren Rand des Ansichtsbereichs. Er bietet eine visuell ausgewogene Komposition.
 
-- **LINKS**: Wenn dieser Wert ausgewählt wird, wird die Schublade auf der linken Seite des Ansichtsfensters platziert, angrenzend an den Hauptinhalt.
+- **LINKS**: Wenn dieser Wert ausgewählt wird, wird der Drawer auf der linken Seite des Ansichtsbereichs positioniert, angrenzend an den Hauptinhalt.
 
-- **RECHTS**: Mit diesem Wert wird die Schublade auf der rechten Seite des Ansichtsfensters platziert, wobei sie in unmittelbare Nähe zum Hauptinhalt bleibt.
+- **RECHTS**: Durch die Verwendung dieses Wertes wird der Drawer auf der rechten Seite des Ansichtsbereichs platziert, wobei eine Nähe zum Hauptinhalt gewahrt bleibt.
 
-Die Platzierungseigenschaft ermöglicht es Entwicklern, die am besten geeignete Position für die Schublade basierend auf den spezifischen Design- und Benutzererfahrungsanforderungen auszuwählen. Die Enumerationswerte bieten eine Vielzahl von Platzierungsoptionen, um verschiedene Schnittstellengestaltungen und visuelle Hierarchien zu berücksichtigen.
+Die Platzierungseigenschaft ermöglicht es Entwicklern, die am besten geeignete Position für den Drawer basierend auf den spezifischen Design- und Benutzererfahrungsanforderungen auszuwählen. Die Enum-Werte bieten eine Vielzahl von Platzierungsoptionen, um unterschiedlichen Benutzeroberflächenlayouts und visuellen Hierarchien gerecht zu werden.
 
-Durch die Nutzung der Platzierungseigenschaft können Entwickler intuitive und effiziente Benutzeroberflächen schaffen. Beispielsweise ermöglicht die Platzierung der Schublade auf der linken oder rechten Seite schnellen Zugriff auf zusätzliche Funktionen oder Navigationsoptionen, während Platzierungen oben oder unten gut geeignet sind für kontextuelle Informationen oder ergänzende Inhalte.
+Durch die Nutzung der Platzierungseigenschaft können Entwickler intuitive und effiziente Benutzeroberflächen erstellen. Zum Beispiel ermöglicht das Platzieren des Drawers auf der linken oder rechten Seite einen schnellen Zugriff auf zusätzliche Funktionen oder Navigationsoptionen, während obere oder untere Platzierungen gut für kontextbezogene Informationen oder ergänzende Inhalte geeignet sind.
 
 <ComponentDemo
 path='/webforj/drawerplacement?'
@@ -97,12 +97,12 @@ height='600px'
 
 <TableBuilder name="Drawer" />
 
-## Beste Praktiken {#best-practices}
+## Best Practices {#best-practices}
 
-Um ein optimales Benutzererlebnis bei der Verwendung der `Drawer`-Komponente zu gewährleisten, beachten Sie die folgenden besten Praktiken:
+Um ein optimales Benutzererlebnis bei der Verwendung der `Drawer`-Komponente sicherzustellen, sollten folgende Best Practices berücksichtigt werden:
 
-1. **Platzierung**: Entscheiden Sie, ob die Schublade von links, rechts, oben oder unten hereingleiten soll, basierend auf dem Layout und den Überlegungen zur Benutzererfahrung Ihrer Anwendung. Berücksichtigen Sie die Vorlieben der Benutzer und die Designkonventionen.
+1. **Platzierung**: Entscheiden Sie, ob der Drawer von links, rechts, oben oder unten hereingleiten soll, basierend auf dem Layout und den Benutzererfahrungsüberlegungen Ihrer Anwendung. Berücksichtigen Sie Benutzerpräferenzen und Designrichtlinien.
 
-2. **Zugänglichkeit**: Achten Sie besonders auf die Zugänglichkeit. Stellen Sie sicher, dass Benutzer die Schublade mit Tastaturbefehlen öffnen und schließen können und dass Bildschirmleser ihre Anwesenheit und ihren Zustand ankündigen können. Stellen Sie bei Bedarf ARIA-Rollen und -Labels bereit.
+2. **Zugänglichkeit**: Achten Sie besonders auf die Zugänglichkeit. Stellen Sie sicher, dass Benutzer den Drawer mit Tastenkombinationen öffnen und schließen können und dass Bildschirmleser seine Anwesenheit und seinen Status ankündigen können. Bereitstellen Sie bei Bedarf ARIA-Rollen und -Labels.
 
-3. **Wischgeste**: Unterstützen Sie auf berührungseingabefähigen Geräten Wischgesten zum Öffnen und Schließen der Schublade. Dies ist eine intuitive Möglichkeit für Benutzer, mit ihr zu interagieren.
+3. **Wischgesten**: Auf touchfähigen Geräten sollten Wischgesten zum Öffnen und Schließen des Drawers unterstützt werden. Dies ist eine intuitive Möglichkeit für Benutzer, damit zu interagieren.

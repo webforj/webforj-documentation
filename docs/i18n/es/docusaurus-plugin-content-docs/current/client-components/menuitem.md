@@ -6,7 +6,7 @@ slug: menuitem
 description: A user guide article for the menuitem
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 7b6ff10cfc0f1ff85de8003d9df1794c
+_i18n_hash: 7a9061cd90ac790929105f9704cecc22
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,7 +17,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info COMPONENTE DEL CLIENTE
-Esta sección describe la información de estilo para el **`<dwc-menuitem>`** componente. Este componente es **solo del lado del cliente** - no se puede instanciar por sí mismo a través de la API, pero puede formar parte de componentes de la API.
+Esta sección describe la información de estilo para el **`<dwc-menuitem>`** componente. Este componente es **solo del lado del cliente** - no se puede instanciar por sí solo a través de la API, pero puede formar parte de componentes de la API.
 :::
 
 ## Estilo {#styling}

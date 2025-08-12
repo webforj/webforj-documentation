@@ -1,16 +1,12 @@
 ---
 sidebar_position: 5
 title: Triggers
-_i18n_hash: a52300a9683a08701c4e1f1f6150dd9f
+_i18n_hash: b158a924f67b7141be94d56b9be8bba3
 ---
-<!-- vale off -->
+Importiert Tabs von '@theme/Tabs';
+import TabItem von '@theme/TabItem';
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<!-- vale on -->
-
-Standardmäßig validieren Bindungen automatisch die Komponenten, wenn Benutzer ihre Daten ändern, z. B. beim Eingeben neuen Textes, beim Markieren eines Kontrollkästchens oder beim Auswählen einer neuen Option in einem Auswahlfeld. Wenn Sie die automatischen Validierungen deaktivieren und diese nur melden möchten, wenn Sie in das Datenmodell schreiben, können Sie die Bindung so konfigurieren, dass sie deaktiviert wird. Dies gibt Ihnen die Kontrolle darüber, wann und wie Validierungen erfolgen, sodass Sie Validierungen gemäß den spezifischen Anforderungen der App oder Benutzerinteraktionen verwalten können.
+Standardmäßig validieren Bindungen automatisch Komponenten, wenn Benutzer ihre Daten ändern, wie z. B. beim Eingeben von neuem Text, Ankreuzen eines Kontrollkästchens oder Auswählen einer neuen Option in einer Optionsschaltfläche. Wenn Sie die automatischen Validierungen deaktivieren und sie nur dann melden möchten, wenn Sie in das Datenmodell schreiben, können Sie die Bindung so konfigurieren, dass sie deaktiviert wird. Dies gibt Ihnen die Kontrolle darüber, wann und wie Validierungen stattfinden, sodass Sie Validierungen gemäß den spezifischen Anforderungen der App oder Benutzerinteraktionen verwalten können.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
@@ -21,26 +17,26 @@ context.bind(emailField, "email")
     .add();
 ```
 
-Es ist auch möglich, die automatischen Validierungen für den gesamten Kontext zu deaktivieren.
+Es ist auch möglich, die automatischen Validierungen für den gesamten Kontext auszuschalten.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
 context.setAutoValidate(false);
 ```
 
-:::tip Wertänderungsmodus
-Einige Komponenten, wie die Feldkomponenten, implementieren das `ValueChangeModeAware`-Interface, mit dem Sie steuern können, wann das System ein `ValueChangeEvent` meldet. Zum Beispiel können Sie Feldkomponenten so einstellen, dass Wertänderungen nur bei Verlust des Fokus gemeldet werden. Diese Konfiguration reduziert die Häufigkeit von Validierungen, optimiert die Leistung und verbessert das Benutzererlebnis, indem Validierungen auf Momente konzentriert werden, in denen der Benutzer eine Eingabesitzung abschließt, anstatt während der aktiven Eingabe.
+:::tip Änderungsmodus für Werte
+Einige Komponenten, wie die Feldkomponenten, implementieren das `ValueChangeModeAware`-Interface, das es Ihnen ermöglicht, zu steuern, wann das System ein `ValueChangeEvent` meldet. Sie können beispielsweise die Feldkomponenten so einstellen, dass sie Wertänderungen nur beim Verlassen des Feldes melden. Diese Konfiguration reduziert die Häufigkeit der Validierungen, optimiert die Leistung und verbessert die Benutzererfahrung, indem sie die Validierungen auf Momente konzentriert, in denen der Benutzer eine Eingabesitzung abgeschlossen hat, anstatt während des aktiven Tippens.
 
 ```java
- emailField.setValueChangeMode(ValueChangeMode.ON_BLUR);
+emailField.setValueChangeMode(ValueChangeMode.ON_BLUR);
 ```
 :::
 
-## Revalidierung {#revalidation}
+## Neuvalidierung {#revalidation}
 
-Während Validierungen normalerweise automatisch während des Schreibens von Daten ausgelöst werden, können Sie sie auch manuell aufrufen, um den Zustand der Daten zu überprüfen, ohne zu versuchen, sie in das Modell zu schreiben. Dieser manuelle Ansatz ist besonders nützlich in Szenarien, in denen Sie Funktionen basierend auf der Gültigkeit der Formulardaten aktivieren oder deaktivieren möchten, ohne ein Update vorzunehmen.
+Während Validierungen typischerweise automatisch beim Schreiben von Daten ausgelöst werden, können Sie sie auch manuell aufrufen, um den Status der Daten zu überprüfen, ohne zu versuchen, sie in das Modell zu schreiben. Dieser manuelle Ansatz ist besonders nützlich in Szenarien, in denen Sie Funktionen aktivieren oder deaktivieren möchten, basierend auf der Gültigkeit der Formulardaten, ohne eine Aktualisierung vorzunehmen.
 
-Betrachten Sie ein klassisches Beispiel eines Reise-Datenauswählers, bei dem der Benutzer zwei Daten auswählen muss: das Startdatum und das Enddatum einer Reise. Es ist nicht gültig, ein Enddatum zu wählen, das vor dem Startdatum liegt, oder ein Startdatum, das nach dem Enddatum liegt. Sie können diese Abhängigkeiten lösen, indem Sie die Validierungen manuell auslösen:
+Betrachten Sie ein klassisches Beispiel für einen Reisedatum-Wähler, bei dem ein Benutzer zwei Daten auswählen muss: das Startdatum und das Enddatum einer Reise. Es ist ungültig, ein Enddatum zu wählen, das vor dem Startdatum liegt, oder ein Startdatum, das nach dem Enddatum liegt. Sie können diese Abhängigkeiten lösen, indem Sie Validierungen manuell auslösen:
 
 <Tabs>
 <TabItem value="TripBooking" label="TripBooking.java">

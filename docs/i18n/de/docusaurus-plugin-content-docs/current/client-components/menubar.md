@@ -6,7 +6,7 @@ slug: menubar
 description: A user guide article for the menubar
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: f912768e974c65ace00af42a024df72a
+_i18n_hash: 59050cdd3c9cae87680fd2d3c06df5b3
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,8 +16,8 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info KLIENTENKOMPONENTE
-Dieser Abschnitt beschreibt die Styling-Informationen für die **`<dwc-menubar>`**-Komponente. Diese Komponente ist **nur clientseitig** - sie kann nicht eigenständig über die API instanziiert werden, sondern kann Teil von API-Komponenten sein.
+:::info CLIENT COMPONENT
+Dieser Abschnitt beschreibt die Stilinformationen für die **`<dwc-menubar>`** Komponente. Diese Komponente ist **nur clientseitig** - sie kann nicht eigenständig über die API instanziiert werden, kann jedoch Teil von API-Komponenten sein.
 :::
 
 ## Styling {#styling}

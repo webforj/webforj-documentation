@@ -2,27 +2,27 @@
 sidebar_position: 25
 title: Large Data Sets
 slug: data
-_i18n_hash: 83619419eb87c85aa5e309ee153af7fb
+_i18n_hash: a8c510d518375e324ae1f1f0c95b5004
 ---
 ## Virtuelles Scrollen {#virtual-scrolling}
 
-Die `Table`-Komponente wurde entwickelt, um große Datensätze effizient zu verarbeiten, indem virtuelles Scrollen genutzt wird, eine Technik, die in Webanwendungen eingesetzt wird, um das Rendering und die Leistung großer Listen oder Tabellen zu optimieren, indem nur die sichtbaren Elemente auf dem Bildschirm gerendert werden.
+Die `Table`-Komponente ist entwickelt worden, um große Datensätze effizient zu verarbeiten, indem virtuelles Scrollen genutzt wird, eine Technik, die in Webanwendungen verwendet wird, um das Rendering und die Leistung großer Listen oder Tabellen zu optimieren, indem nur die sichtbaren Elemente auf dem Bildschirm gerendert werden.
 
-### Erster Render {#initial-render}
+### Erstes Rendering {#initial-render}
 
-Virtuelles Scrollen ist ein Designmuster, bei dem zunächst nur eine kleine Teilmenge von Elementen gerendert wird, die im sichtbaren Bereich des scrollbaren Containers passt. Dies minimiert die Anzahl der erstellten DOM-Elemente und beschleunigt den anfänglichen Renderprozess.
+Virtuelles Scrollen ist ein Gestaltungsprinzip, bei dem zunächst nur eine kleine Teilmenge von Elementen, die in den sichtbaren Bereich des scrollbaren Containers passen, gerendert wird. Dies minimiert die Anzahl der erzeugten DOM-Elemente und beschleunigt den anfänglichen Renderprozess.
 
 ### Dynamisches Laden {#dynamic-loading}
-Während der Benutzer nach unten oder oben scrollt, werden neue Elemente dynamisch in die Ansicht geladen. Diese Elemente werden normalerweise basierend auf der aktuellen Scrollposition aus der Datenquelle abgerufen.
+Während der Benutzer nach unten oder oben scrollt, werden neue Elemente dynamisch in die Ansicht geladen. Diese Elemente werden typischerweise anhand der aktuellen Scrollposition aus der Datenquelle abgerufen.
 
-### Element-Recycling {#item-recycling}
-Anstatt ein neues DOM-Element für jedes Element zu erstellen, verwendet das virtuelle Scrollen häufig vorhandene DOM-Elemente wieder. Wenn ein Element aus dem sichtbaren Bereich verschwindet, wird sein DOM-Element recycelt und für ein neues Element verwendet, das in den sichtbaren Bereich eintritt. Dieser Recyclingprozess hilft, den Speicherverbrauch zu reduzieren und die Leistung zu verbessern.
+### Elementwiederverwertung {#item-recycling}
+Anstatt für jedes Element ein neues DOM-Element zu erstellen, verwendet das virtuelle Scrollen oft vorhandene DOM-Elemente wieder. Wenn ein Element aus dem sichtbaren Bereich verschwindet, wird sein DOM-Element recycelt und für ein neues Element, das in den sichtbaren Bereich eintritt, wiederverwendet. Dieser Recyclingprozess hilft, den Speicherverbrauch zu reduzieren und die Leistung zu verbessern.
 
-### Leistungsverbesserungen: {#performance-benefits}
+### Leistungs Vorteile: {#performance-benefits}
 
-Der Hauptvorteil von virtuellem Scrollen ist die verbesserte Leistung, insbesondere beim Umgang mit einer großen Anzahl von Elementen. Es reduziert die Menge an DOM-Manipulation und verbessert die allgemeine Reaktionsfähigkeit der Benutzeroberfläche.
+Der Hauptvorteil des virtuellen Scrollens ist die verbesserte Leistung, insbesondere beim Umgang mit einer großen Anzahl von Elementen. Es reduziert die Menge an DOM-Manipulation und verbessert die Gesamtreaktionsfähigkeit der Benutzeroberfläche.
 
-Die folgende `Table` zeigt alle olympischen Gewinner - ein großer Datensatz, der stark von der Funktionalität des virtuellen Scrollens der Tabelle profitiert:
+Die folgende `Table` zeigt alle olympischen Gewinner - ein großer Datensatz, der erheblich von der virtuellen Scrollfunktionalität der Tabelle profitiert:
 
 <ComponentDemo
 path='/webforj/tableolympicwinners?' 
@@ -32,8 +32,8 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/hea
 height='600px'
 />
 
-## Overscan {#overscan}
+## Überwachung {#overscan}
 
-Die Einstellung der `Overscan`-Eigenschaft der Tabelle bestimmt, wie viele Zeilen außerhalb des sichtbaren Bereichs gerendert werden sollen. Diese Einstellung kann mit der Methode `setOverscan(double value)` konfiguriert werden.
+Das Setzen der `Overscan`-Eigenschaft der Tabelle bestimmt, wie viele Zeilen außerhalb des sichtbaren Bereichs gerendert werden sollen. Diese Einstellung kann mit der Methode `setOverscan(double value)` konfiguriert werden.
 
-Ein höherer Overscan-Wert kann die Häufigkeit des Renderns beim Scrollen reduzieren, aber auf Kosten, dass mehr Zeilen gerendert werden, als zu einem gegebenen Zeitpunkt sichtbar sind. Dies kann ein Kompromiss zwischen Rendering-Leistung und Scroll-Geschmeidigkeit sein.
+Ein höherer Overscan-Wert kann die Häufigkeit des Renderns beim Scrollen verringern, jedoch auf Kosten des Renderns von mehr Zeilen, als zu jedem Zeitpunkt sichtbar sind. Dies kann ein Kompromiss zwischen Renderleistungsfähigkeit und Scroll-Smoothness sein.

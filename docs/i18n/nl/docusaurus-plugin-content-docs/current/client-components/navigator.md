@@ -6,7 +6,7 @@ slug: navigator
 description: A user guide article for the navigator
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 528ee31d8756612fe9b06112bfff851e
+_i18n_hash: 1c80f24d7a89d5353b41145478f27715
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,9 +17,9 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info CLIËNTCOMPONENT
-Deze sectie beschrijft de stijlinformatie voor de **`<dwc-navigator>`** component. Deze component is **alleen clientzijde** - hij kan niet zelfstandig via de API worden geïnstantieerd, maar kan deel uitmaken van API-componenten.
+Deze sectie beschrijft stylinginformatie voor de **`<dwc-navigator>`** component. Deze component is **alleen clientzijde** - hij kan niet zelfstandig via de API worden geïnstantieerd, maar kan deel uitmaken van API-componenten.
 :::
 
-## Stijl {#styling}
+## Stijling {#styling}
 
 <TableBuilder name="dwc-navigator" clientComponent />

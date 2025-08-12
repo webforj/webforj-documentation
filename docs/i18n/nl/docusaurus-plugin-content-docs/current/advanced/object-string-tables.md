@@ -1,20 +1,20 @@
 ---
 title: Object and String Tables
 sidebar_position: 35
-_i18n_hash: a20240ac42fa56a5a7044aaeb969faa7
+_i18n_hash: aa2c014d8043f9ad53dfabcdc39844da
 ---
-De `ObjectTable` en `StringTable` bieden statische toegang tot gedeelde gegevens in een webforJ-omgeving. Beiden zijn toegankelijk vanaf elke locatie in uw app en dienen verschillende doelen:
+De `ObjectTable` en `StringTable` bieden statische toegang tot gedeelde gegevens in een webforJ-omgeving. Beide zijn overal in je app toegankelijk en hebben verschillende doeleinden:
 
-- `ObjectTable`: Voor het opslaan en ophalen van Java-objecten door uw app heen.
-- `StringTable`: Voor het werken met persistente sleutel-waarde stringparen, vaak gebruikt voor configuratie of omgevingsgegevens.
+- `ObjectTable`: Voor het opslaan en ophalen van Java-objecten in je app.
+- `StringTable`: Voor het werken met persistente sleutel-waarde stringparen, vaak gebruikt voor configuratie of omgevings-achtige gegevens.
 
 Deze tabellen zijn beschikbaar op het omgevingsniveau en vereisen geen instantiebeheer.
 
 ## `ObjectTable` {#objecttable}
 
-`ObjectTable` is een globaal toegankelijke sleutel-waarde kaart voor het opslaan van elk Java-object. Het biedt eenvoudige toegang tot gedeelde toestanden zonder de noodzaak om iets te instantiëren of configureren. Er is slechts één instantie van ObjectTable en het wordt gewist wanneer de app wordt vernieuwd of beëindigd. Het is nuttig voor scenario's waarin u gegevens beschikbaar wilt stellen over meerdere componenten of contexten zonder een referentieketen te behouden.
+`ObjectTable` is een wereldwijd toegankelijke sleutel-waarde map voor het opslaan van elk Java-object. Het biedt eenvoudige toegang tot gedeelde staat zonder dat je iets hoeft te initialiseren of te configureren. Er is slechts één instantie van ObjectTable en deze wordt gewist wanneer de app wordt vernieuwd of beëindigd. Het is nuttig voor scenario's waarin je gegevens beschikbaar wilt maken in meerdere componenten of contexten zonder een referentieketen te onderhouden.
 
-### Instellen en ophalen van objecten {#setting-and-retrieving-objects}
+### Instellingen en ophalen van objecten {#setting-and-retrieving-objects}
 
 ```java
 ObjectTable.put("userInfo", new User("Alice", "admin"));
@@ -29,7 +29,7 @@ if (ObjectTable.contains("userInfo")) {
 }
 ```
 
-### Verwijderen van invoer {#removing-entries}
+### Verwijderen van vermeldingen {#removing-entries}
 
 ```java
 ObjectTable.clear("userInfo");
@@ -43,18 +43,18 @@ int total = ObjectTable.size();
 
 ## `StringTable` {#stringtable}
 
-`StringTable` biedt statische toegang tot globale stringvariabelen. Het is persistent en gelimiteerd tot de huidige app. Waarden kunnen programmatisch worden gewijzigd of geïnjecteerd via omgevingsconfiguratie. Dit mechanisme is bijzonder nuttig voor het opslaan van configuratiewaarden, vlaggen en instellingen die toegankelijk moeten zijn voor de hele app, maar geen complexe gegevens hoeven mee te dragen.
+`StringTable` biedt statische toegang tot globale stringvariabelen. Het is persistent en beperkt tot de huidige app. Waarden kunnen programmatologisch worden gewijzigd of geïnjecteerd via omgevingsconfiguratie. Dit mechanisme is bijzonder nuttig voor het opslaan van configuratiewaarden, vlaggen en instellingen die app-breed toegankelijk moeten zijn, maar geen complexe gegevens hoeven te bevatten.
 
-### Stringwaarden ophalen en instellen {#getting-and-setting-string-values}
+### Verkrijgen en instellen van stringwaarden {#getting-and-setting-string-values}
 
 ```java
 StringTable.put("COMPANY", "Acme Corp");
 String company = StringTable.get("COMPANY");
 ```
 
-### Vooraf geconfigureerde waarden uit config {#pre-configured-values-from-config}
+### Vooraf geconfigureerde waarden uit configuratie {#pre-configured-values-from-config}
 
-U kunt sleutels definiëren in uw [`webforj.conf`](../configuration/properties#configuring-webforjconf) bestand:
+Je kunt sleutels definiëren in je [`webforj.conf`](../configuration/properties#configuring-webforjconf) bestand:
 
 ```
 webforj.stringTable = {
@@ -62,7 +62,7 @@ webforj.stringTable = {
 }
 ```
 
-Toegang tot deze waarden in de code:
+Toegang krijgen in de code:
 
 ```java
 String val = StringTable.get("COMPANY");

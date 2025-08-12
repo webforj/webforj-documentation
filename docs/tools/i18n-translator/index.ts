@@ -104,7 +104,9 @@ async function translateDocs(locale: string) {
 
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { data: frontmatter, content } = matter(fileContent);
-    const hash = md5(content);
+    // Normalize content before hashing to ensure consistency across platforms
+    const normalizedContent = content.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+    const hash = md5(normalizedContent);
 
     if (fs.existsSync(targetPath)) {
       const targetContent = fs.readFileSync(targetPath, 'utf-8');

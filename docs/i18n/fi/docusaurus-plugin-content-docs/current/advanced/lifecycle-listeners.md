@@ -2,25 +2,25 @@
 sidebar_position: 10
 title: Lifecycle Listeners
 sidebar_class_name: new-content
-_i18n_hash: 475cc2842226c605bbe7f2ee931955dd
+_i18n_hash: 95e3a7e349b0cf54679daf76d2bf209c
 ---
 <!-- vale off -->
-# Elinkku Kuuntelijat <DocChip chip='since' label='25.02' />
+# Elämänsyklin kuuntelijat <DocChip chip='since' label='25.02' />
 <!-- vale on -->
 
-`AppLifecycleListener` -rajapinta mahdollistaa ulkoisen koodin havainnoida ja reagoida sovelluksen elinkaaritapahtumiin. Tämän rajapinnan toteuttamalla voit suorittaa koodia tietyissä vaiheissa sovelluksen käynnistyksen ja sulkemisen aikana ilman, että sinun tarvitsee muuttaa `App`-luokkaa.
+`AppLifecycleListener`-rajapinta mahdollistaa ulkoisen koodin havainnoida ja reagoida sovelluksen elämänsyklin tapahtumiin. Toteuttamalla tämän rajapinnan voit suorittaa koodia tietyissä kohdissa sovelluksen käynnistämisen ja sulkemisen aikana ilman, että sinun tarvitsee muuttaa `App`-luokkaa itse.
 
-Elinkaari kuuntelijat havaitaan ja ladataan automaattisesti ajon aikana palveluntarjoajan määritystiedostojen kautta. Jokainen sovellusesimerkki saa oman joukon kuuntelijan instansseja, jolloin eri sovellusten välillä säilyy eristyneisyys samassa ympäristössä.
+Elämänsyklin kuuntelijat löydetään ja ladataan automaattisesti ajon aikana palveluntarjoajan konfiguraatiotiedostojen kautta. Jokainen sovelluksen ilmentymä saa oman joukon kuuntelijoita, mikä pitää eristyneenä eri sovellusten välillä, jotka ajavat samassa ympäristössä.
 
-## Milloin käyttää elinkaarikuuntelijoita {#when-to-use-lifecycle-listeners}
+## Milloin käyttää elämänsyklin kuuntelijoita {#when-to-use-lifecycle-listeners}
 
-Käytä elinkaarikuuntelijoita, kun sinun tarvitsee:
-- Alustaa resursseja tai palveluja ennen sovelluksen suorittamista
+Käytä elämänsyklin kuuntelijoita, kun sinun on:
+- Alustaa resursseja tai palveluja ennen sovelluksen ajamista
 - Siivota resursseja, kun sovellus päättyy  
-- Lisätä leikkaavia huolenaiheita ilman, että muutat `App`-luokkaa
-- Rakentaa laajennusarkkitehtuureja
+- Lisätä ristiinpoliittisia huolenaiheita ilman, että muokkaat `App`-luokkaa
+- Rakentaa liitännäisarkkitehtuureja
 
-## `AppLifecycleListener` -rajapinta {#the-applifecyclelistener-interface}
+## `AppLifecycleListener`-rajapinta {#the-applifecyclelistener-interface}
 
 ```java title="AppLifecycleListener.java"
 public interface AppLifecycleListener {
@@ -31,27 +31,27 @@ public interface AppLifecycleListener {
 }
 ```
 
-:::info Sovelluksen eristyneisyys
-Jokainen sovellusesimerkki saa oman joukon kuuntelijan instansseja:
+:::info Sovellus eristyneenä
+Jokainen sovellusinstanssi saa oman joukon kuuntelijoita:
 - Kuuntelijat ovat eristyneitä eri sovellusten välillä
-- Kuuntelijoiden staattisia kenttiä ei jaeta sovellusten välillä
-- Kuuntelijan instanssit luodaan, kun sovellus käynnistyy ja tuhotaan, kun se päättyy
+- Statiiset kentät kuuntelijoissa eivät jaa tietoja sovellusten välillä
+- Kuuntelija-instanssit luodaan, kun sovellus käynnistyy, ja ne tuhotaan, kun sovellus päättyy
 
 Jos sinun tarvitsee jakaa tietoja sovellusten välillä, käytä ulkoisia tallennusmekanismeja, kuten tietokantoja tai jaettuja palveluja.
 :::
 
-### Elinkaaritapahtumat {#lifecycle-events}
+### Elämänsyklin tapahtumat {#lifecycle-events}
 
-| Tapahtuma | Milloin kutsutaan | Yleisimmät käyttötarkoitukset |
-|-----------|-------------------|-------------------------------|
-| `onWillRun` | Ennen `app.run()` -suorittamista | Resurssien alustaminen, palveluiden konfigurointi |
-| `onDidRun` | Kun `app.run()` on suoritettu onnistuneesti | Taustatehtävien käynnistäminen, onnistuneen käynnistyksen lokitus |
-| `onWillTerminate` | Ennen sovelluksen päättymistä | Tilan tallentaminen, sulkemiseen valmistautuminen |
-| `onDidTerminate` | Sovelluksen päättymisen jälkeen | Resurssien siivous, lopullinen lokitus |
+| Tapahtuma | Milloin kutsutaan | Yleiset käytöt |
+|-----------|------------------|----------------|
+| `onWillRun` | Ennen `app.run()`-suoritusta | Resurssien alustaminen, palveluiden konfigurointi |
+| `onDidRun` | Kun `app.run()` on onnistuneesti suoritettu | Taustatehtävien käynnistäminen, onnistuneen käynnistyksen lokittaminen |
+| `onWillTerminate` | Ennen sovelluksen päättymistä | Tilanteen tallentaminen, sulkemiseen valmistautuminen |
+| `onDidTerminate` | Sovelluksen päättymisen jälkeen | Resurssien siivoaminen, lopullinen lokitus |
 
-## Elinkaarikuuntelijan luominen {#creating-a-lifecycle-listener}
+## Elämänsyklin kuuntelijan luominen {#creating-a-lifecycle-listener}
 
-### Perus toteutus {#basic-implementation}
+### Perusimplementaatio {#basic-implementation}
 
 ```java title="StartupListener.java"
 import com.webforj.App;
@@ -73,7 +73,7 @@ public class StartupListener implements AppLifecycleListener {
 
 ### Kuuntelijan rekisteröinti {#registering-the-listener}
 
-Luo palveluntarjoajan määritystiedosto:
+Luo palveluntarjoajan konfiguraatiotiedosto:
 
 **Tiedosto**: `src/main/resources/META-INF/services/com.webforj.AppLifecycleListener`
 
@@ -81,28 +81,28 @@ Luo palveluntarjoajan määritystiedosto:
 com.example.listeners.StartupListener
 ```
 
-:::tip Käytä AutoService
-On helppo unohtaa päivittää palvelukuvaajia. Käytä Googlen [AutoService](https://github.com/google/auto/blob/main/service/README.md) -työkalua, joka automaattisesti tuottaa palvelutiedoston:
+:::tip AutoService:n käyttö
+On helppo unohtaa päivittää palvelukuvaajat. Käytä Googlen [AutoService](https://github.com/google/auto/blob/main/service/README.md) -työkalua luodaksesi palvelutiedoston automaattisesti:
 
 ```java title="StartupListener.java"
 import com.google.auto.service.AutoService;
 
 @AutoService(AppLifecycleListener.class)
 public class StartupListener implements AppLifecycleListener {
-    // Toteutus
+    // Implementation
 }
 ```
 :::
 
-## Suorituksen järjestyksen säätäminen {#controlling-execution-order}
+## Suoritusjärjestyksen hallinta {#controlling-execution-order}
 
-Kun useita kuuntelijoita on rekisteröity, voit hallita niiden suoritusjärjestystä käyttämällä `@AppListenerPriority` -annotaatiota. Tämä on erityisen tärkeää, kun kuuntelijoilla on riippuvuuksia toisiinsa tai kun tietty alustaminen on pakollista ennen muita.
+Kun useita kuuntelijoita on rekisteröity, voit hallita niiden suoritusjärjestystä käyttämällä `@AppListenerPriority`-annotaatiota. Tämä on erityisen tärkeää, kun kuuntelijoilla on toisiinsa liittyviä riippuvuuksia tai kun tietty alustaminen on suoritettava ennen toisia.
 
-Prioriteettiarvot toimivat nousevassa järjestyksessä - **alemmat numerot suoritetaan ensin**. Oletusprioriteetti on 10, joten kuuntelijat, joilla ei ole ilmaisia prioriteettikuvastimia, suoritetaan niiden jälkeen, joilla on alhaisemmat prioriteettiarvot.
+Prioriteettiarvot toimivat nousevassa järjestyksessä - **pienemmät numerot suoritetaan ensin**. Oletusprioriteetti on 10, joten kuuntelijat, joilla ei ole eksplisiittisiä prioriteettiannotaatioita, suoritetaan niiden jälkeen, joilla on pienempiä prioriteettiarvoja.
 
 ```java title="SecurityListener.java"
 @AutoService(AppLifecycleListener.class)
-@AppListenerPriority(1)  // Suorittaa ensin - kriittinen turvallisuusasetelma
+@AppListenerPriority(1)  // Suoritetaan ensimmäisenä - kriittinen turvallisuusasetelma
 public class SecurityListener implements AppLifecycleListener {
     @Override
     public void onWillRun(App app) {
@@ -120,24 +120,24 @@ public class LoggingListener implements AppLifecycleListener {
 }
 ```
 
-### Suoritusvirta App-haakujen kanssa {#execution-flow-with-app-hooks}
+### Suoritusvirran hallinta sovelluksen koukuilla {#execution-flow-with-app-hooks}
 
-Useiden kuuntelijoiden suoritusjärjestyksen hallinnan lisäksi on tärkeää ymmärtää, kuinka kuuntelijat vuorovaikuttavat `App`-luokan omien elinkaarin haakujen kanssa. Jokaiselle elinkaaritapahtumalle kehys seuraa tiettyä suoritusjärjestystä, joka määrittää, milloin kuuntelijasi suoritetaan suhteessa sovelluksen sisäänrakennettuihin haakuihin.
+Lisäksi hallitsemalla järjestystä useiden kuuntelijoiden välillä, on tärkeää ymmärtää, miten kuuntelijat ovat vuorovaikutuksessa `App`-luokan omien elämänsyklin koukkujen kanssa. Jokaiselle elämänsyklin tapahtumalle kehys seuraa tiettyä suoritusjärjestystä, joka määrää, milloin kuuntelijat suoritetaan suhteessa sovelluksen sisäänrakennettuihin koukkuihin.
 
-Alla oleva kaavio havainnollistaa tätä suoritusvirtaa, näyttäen tarkat ajat, jolloin `AppLifecycleListener` -menetelmiä kutsutaan suhteessa vastaaviin `App`-haakuihin: 
+Alla oleva kaavio havainnollistaa tätä suoritusvirtaa, näyttäen tarkasti, milloin `AppLifecycleListener`-menetelmät kutsutaan suhteessa vastaaviin `App`-koukkuihin: 
 
 <div align="center">
 
-![AppLifecycleListener -kuuntelijat VS `App` haakut](/img/lifecycle-listeners.svg)
+![AppLifecycleListener kuuntelijat VS `App` koukut](/img/lifecycle-listeners.svg)
 
 </div>
 
 
 ## Virheiden käsittely {#error-handling}
 
-Kuuntelijoiden aiheuttamat poikkeukset kirjataan, mutta ne eivät estä muiden kuuntelijoiden suoritusta tai sovelluksen toimintaa. Käsittele aina poikkeuksia kuuntelijoissasi:
+Kuuntelijoiden heittämät poikkeukset kirjataan, mutta ne eivät estä muiden kuuntelijoiden suorittamista tai sovelluksen ajamista. Käsittele aina poikkeuksia kuuntelijoissasi:
 
-```java title="Virheiden käsittely esimerkki"
+```java title="Virheiden käsittelyn esimerkki"
 @Override
 public void onWillRun(App app) {
     try {

@@ -1,13 +1,13 @@
 ---
 title: Scaling with Routing and Composites
 sidebar_position: 4
-_i18n_hash: fdfd4b4255de20775bb12bcd863630f7
+_i18n_hash: 50cd3b00cb1fb7731b6328708d6d45ba
 ---
-Tämä vaihe keskittyy reitityksen toteuttamiseen sovellusrakenteen skaalautuvuuden ja organisoinnin parantamiseksi. Tämän saavuttamiseksi sovellusta päivitetään käsittelemään useita näkymiä, mikä mahdollistaa navigoinnin eri toimintojen, kuten asiakastietojen muokkaamisen ja luomisen, välillä. Se kuvaa, miten nämä toiminnot voidaan toteuttaa näkymissä, käyttäen komponentteja kuten `Composite` rakentaakseen modulaarisia ja uudelleenkäytettäviä asetteluja.
+Tämä vaihe keskittyy reitittämisen toteuttamiseen, jotta sovelluksen rakennetta voidaan parantaa skaalautuvuuden ja organisoinnin osalta. Tämän saavuttamiseksi sovellusta päivitetään käsittelemään useita näkymiä, mikä mahdollistaa navigoinnin eri toiminnallisuuksien välillä, kuten asiakastietojen muokkaamisessa ja luomisessa. Siinä kerrotaan, kuinka luodaan näkymiä näille toiminnallisuuksille, käyttäen komponentteja kuten `Composite` rakennemoduulien ja uudelleenkäytettävien ulkoasujen luomiseksi.
 
-Sovellus, joka luotiin [edellisessä vaiheessa](./working-with-data), saa reitityksen, joka tukee useita näkymiä, jolloin käyttäjät voivat hallita asiakastietoja tehokkaammin samalla kun säilytetään siisti ja skaalautuva koodipohja. Sovelluksen suorittamiseksi:
+Sovellukseen, joka luotiin [edellisessä vaiheessa](./working-with-data), lisätään reititysrakenne, joka tukee useita näkymiä, mahdollistaen käyttäjien hallita asiakasdataa tehokkaammin, samalla kun säilytetään siisti ja skaalautuva koodipohja. Sovelluksen suorittamiseksi:
 
-- Siirry hakemistoon `3-scaling-with-routing-and-composites`
+- Siirry kansioon `3-scaling-with-routing-and-composites`
 - Suorita komento `mvn jetty:run`
 
 <div class="videos-container">
@@ -18,20 +18,20 @@ Sovellus, joka luotiin [edellisessä vaiheessa](./working-with-data), saa reitit
 
 ## Reititys {#routing}
 
-[Reititys](../../routing/overview) on mekanismi, joka mahdollistaa sovelluksesi hallita navigointia eri näkymien tai sivujen välillä. Sen sijaan, että kaikki logiikka ja käyttäytyminen pidetään yhdessä paikassa, reititys mahdollistaa sovelluksen jakamisen pienempiin, tarkoin määriteltyihin komponentteihin.
+[Reititys](../../routing/overview) on mekanismi, joka mahdollistaa sovelluksesi hallita navigointia eri näkymien tai sivujen välillä. Sen sijaan, että kaikki logiikka ja käyttäytyminen pidetään yhdessä paikassa, reititys antaa sinun jakaa sovelluksesi pienempiin, keskittyneisiin komponentteihin.
 
-Perusperiaatteeltaan reititys yhdistää tietyt URL-osoitteet näkymiin tai komponentteihin, jotka käsittelevät näitä URL-osoitteita. Kun käyttäjä vuorovaikuttaa sovelluksesi kanssa—esimerkiksi napsauttamalla painiketta tai syöttämällä URL-osoitteen suoraan selaimeensa—reititin ratkaisee URL-osoitteen oikealle näkymälle, alustaa sen ja näyttää sen näytöllä. Tämä lähestymistapa tekee navigoinnin hallinnasta ja sovelluksen tilan ylläpidosta helppoa.
+Perusasioissa reititys yhdistää tietyt URL-osoitteet niihin näkymiin tai komponentteihin, jotka käsittelevät näitä URL-osoitteita. Kun käyttäjä vuorovaikuttaa sovelluksesi kanssa – kuten napsauttamalla painiketta tai syöttämällä URL-osoitteen suoraan selaimeensa – reititin ratkaisee URL-osoitteen sopivaksi näkymäksi, alustaa sen ja näyttää sen näytöllä. Tämä lähestymistapa helpottaa navigoinnin hallintaa ja sovelluksen tilan ylläpitämistä.
 
-Tässä vaiheessa keskitytään `App`-luokan muuttamiseen, näkymä tiedostojen luomiseen ja reittien konfigurointiin sujuvan navigoinnin mahdollistamiseksi eri osien välillä sovellusta.
+Tässä vaiheessa keskitytään `App`-luokan muuttamiseen, näkymille tiedostojen luomiseen sekä reittien määrittämiseen, jotta saadaan sujuva navigointi sovelluksen eri osien välillä.
 
-Sen sijaan, että kaikki logiikka sijoitetaan `App`:n `run()`-metodiin, näkymät kuten `DemoView` ja `FormView` toteutetaan erillisinä luokkina. Tämä lähestymistapa vastaa paremmin standardeja Java-käytäntöjä.
+Sen sijaan, että kaikki logiikka sijoitettaisiin `App`-luokan `run()`-metodiin, näkymiä kuten `DemoView` ja `FormView` toteutetaan erillisinä luokkina. Tämä lähestymistapa on paremmin linjassa standardien Java-käytäntöjen kanssa.
 
-- **DemoView**: Vastaa taulukon näyttämisestä ja navigoinnista `FormView`:hen.
-- **FormView**: Hallitsee asiakastietojen lisäämistä ja muokkaamista.
+- **DemoView**: Hakee taulukon ja navigoi `FormView`:hin.
+- **FormView**: Hallitsee asiakasdatan lisäämistä ja muokkaamista.
 
 ### `App`-luokan muuttaminen {#changing-the-app-class}
 
-Ota reititys käyttöön sovelluksessasi päivittämällä `App`-luokkaa `@Routify`-annotaatiolla. Tämä kertoo webforJ:lle aktivoida reititys ja skannata määritellyt paketit reitti-ominaisuudella varustettujen näkymien löytämiseksi.
+Reitittämisen mahdollistamiseksi päivitä `App`-luokka `@Routify`-annotaatiolla. Tämä kertoo webforJ:lle, että reititys aktivoidaan ja määritetyt paketit skannataan reititykselle soveltuvia näkymiä varten.
 
 ```java title="DemoApplication.java" {1}
 @Routify(packages = "com.webforj.demos.views", debug = true)
@@ -39,16 +39,16 @@ public class DemoApplication extends App {
 }
 ```
 
-- **`packages`**: Määrittää, mitkä paketit skannataan reittejä määrittelevien näkymien löytämiseksi.
-- **`debug`**: Ota käyttöön virheidenetsintätila, joka helpottaa kehittämisen aikana tapahtuvien ongelmien selvittämistä.
+- **`packages`**: Määrää, mitkä paketit skannataan reittejä määrittävien näkymien löytämiseksi.
+- **`debug`**: Aktivoi virheenkorjaustilan helpottamaan kehitysvaiheen vianmääritystä.
 
-### Näkymien tiedostojen luominen ja reittien konfigurointi {#creating-files-for-the-views-and-configuring-routes}
+### Näkymille tiedostojen luominen ja reittien määrittäminen {#creating-files-for-the-views-and-configuring-routes}
 
-Kun reititys on otettu käyttöön, luodaan erilliset Java-tiedostot jokaiselle näkymälle, joita sovellus sisältää, tässä tapauksessa `DemoView.java` ja `FormView.java`. Näille näkymille määritetään ainutlaatuiset reitit `@Route`-annotaation avulla. Tämä varmistaa, että jokainen näkymä on saavutettavissa tietyn URL-osoitteen kautta.
+Kun reititys on otettu käyttöön, luodaan erilliset Java-tiedostot jokaiselle näkymälle, joita sovelluksessa on, tässä tapauksessa `DemoView.java` ja `FormView.java`. Nämä näkymät saavat uniikit reitit `@Route`-annotaation avulla. Tämä varmistaa, että kuhunkin näkymään pääsee käsiksi tietyllä URL-osoitteella.
 
-Kun tietyn luokan `@Route`-annotaatio, joka kuuluu joihinkin näistä liitettyistä suffikseista, ei sisällä arvoa, webforJ määrittää automaattisesti luokan nimen ilman suffiksia reitiksi. Esimerkiksi `DemoView` mapataan oletusarvoisesti reitille `/demo`. Koska tässä tapauksessa `DemoView` on tarkoitettu oletusreittinä, sille määritetään reitti.
+Kun `@Route`-annotaatio on liitetty luokkaan, jolla on jokin näistä suffikseista ilman arvoa, webforJ määrittää automaattisesti luokan nimen ilman suffiksia reitiksi. Esimerkiksi, `DemoView` tanssii reittiin `/demo` oletuksena. Koska tässä tapauksessa `DemoView` on tarkoitus olla oletusreitittä, sille annetaan reitti.
 
-Reitti `/` toimii oletus sisäänkäyntinä sovellukseesi. Määrittäminen tälle reitille näkymälle varmistaa, että se on ensimmäinen sivu, jonka käyttäjät näkevät päästessään sovellukseen. Useimmissa tapauksissa ohjauspaneeli tai yhteenvedonäkymä liitetään reittiin `/`.
+Reitti `/` toimii oletuksena sovelluksesi sisäänkäyntipisteenä. Tämän reitin liittäminen näkymään varmistaa, että se on ensimmäinen sivu, jonka käyttäjät näkevät kirjauduttaessa sovellukseen. Usein nyt käytetään kojelautanäkymää tai yhteenvetonäkymää reitille `/`.
 
 ```java title="DemoView.java" {1}
 @Route("/")
@@ -59,31 +59,31 @@ public class DemoView extends Composite<Div> {
 ```
 
 :::info 
-Lisätietoa erilaisista reittymintyyppien saatavilla [tästä](../../routing/defining-routes).
+Lisätietoja eri reittityypeistä on saatavilla [täällä](../../routing/defining-routes).
 :::
 
-`FormView`:lle reitti `customer/:id?` käyttää valinnaista parametria `id`, joka määrittää `FormView`:n tilan.
+`FormView`:lle reitti `customer/:id?` käyttää valinnaista parametria `id` määrittämään `FormView`:n tilan.
 
-- **Lisäysnäyttö**: Kun `id`:tä ei anneta, `FormView` alustaa tyhjällä lomakkeella uusien asiakastietojen lisäämiseksi.
-- **Muokkaustila**: Kun `id` on annettu, `FormView` hakee vastaavan asiakkaan tiedot käyttäen `Service`: tä ja esitäyttää lomakkeen, mahdollistaen muokkaukset olemassa olevaan merkintään.
+- **Lisäystila**: Kun `id`:tä ei ole annettu, `FormView` alustaa tyhjällä lomakkeella uusien asiakasdatan lisäämistä varten.
+- **Muokkaustila**: Kun `id` on annettu, `FormView` hakee vastaavan asiakkaan tiedot käyttäen `Service` ja esitäyttää lomakkeen, jolloin olemassa olevaa merkintää voidaan muokata.
 
 ```java title="FormView.java" {1}
 @Route("customer/:id?")
-@FrameTitle("Asiakastiedot")
+@FrameTitle("Asiakaslomake")
 public class FormView extends Composite<Div> implements DidEnterObserver {
   // FormView logiikka
 }
 ```
 
 :::info 
-Lisätietoa siitä, kuinka toteuttaa näitä reittimallia, on saatavilla [täältä](../../routing/route-patterns).
+Lisätietoja siitä, miten toteuttaa näitä reittimalleja on saatavilla [täällä](../../routing/route-patterns).
 :::
 
-## `Composite`-komponenttien käyttö sivujen näyttämiseen {#using-composite-components-to-display-pages}
+## Käyttäen `Composite`-komponentteja sivujen näyttämiseen {#using-composite-components-to-display-pages}
 
-WebforJ:ssä Composite-komponentit, kuten `Composite<Div>`, mahdollistavat käyttöliittymälogiikan ja rakenteen kapseloinnin uudelleenkäytettävään säilöön. Laajentamalla `Composite`:a rajoitat metodeja ja tietoja, jotka ovat muiden sovelluksen osien saatavilla, mikä varmistaa siistimmän koodin ja paremman kapseloinnin.
+Composite-komponentit webforJ:ssä, kuten `Composite<Div>`, mahdollistavat UI-logiikan ja rakenteen kapseloinnin uudelleenkäytettävään säiliöön. Laajentamalla `Composite`:a rajoitat metodeja ja dataa, joita muu sovellus voi käyttää, mikä varmistaa siistimmän koodin ja paremman kapseloinnin.
 
-Esimerkiksi `DemoView` laajentaa `Composite<Div>` suoraan sen sijaan, että laajentaisi `Div`:a:
+Esimerkiksi, `DemoView` laajentaa `Composite<Div>`:a sen sijaan, että se laajentaisi suoraan `Div`:a:
 
 ```java title="DemoView.java"
 public class DemoView extends Composite<Div> {
@@ -104,11 +104,12 @@ public class DemoView extends Composite<Div> {
 
 ## Reittien yhdistäminen {#connecting-the-routes}
 
-Reitityksen konfiguroinnin ja näkymien asettamisen jälkeen, yhdistä näkymät ja tiedot käyttämällä tapahtumakuuntelijoita ja palvelimen metodeja. Ensimmäinen vaihe on lisätä yksi tai useampi käyttöliittymä-elementti navigoimaan yhdestä näkymästä toiseen.
+Konfiguroitujen reittien ja näkemien asetusten jälkeen yhdistä näkymät ja tiedot tapahtumakuuntelijoiden ja palvelumetodien avulla. Ensimmäinen askel on lisätä yksi tai useampi
+UI-elementti, joka navigoi yhdestä näkymästä toiseen.
 
 ### Painikennavigointi {#button-navigation}
 
-`Button`-komponentti laukaisee navigaatiotapahtuman siirtymään yhdestä näkymästä toiseen `Router`-luokan avulla. Esimerkiksi:
+`Button`-komponentti laukaisee navigointitapahtuman siirtyäkseen yhdestä näkymästä toiseen käyttäen `Router`-luokkaa. Esimerkiksi:
 
 ```java title="DemoView.java"
 private Button add = new Button("Lisää asiakas", ButtonTheme.PRIMARY,
@@ -116,17 +117,18 @@ private Button add = new Button("Lisää asiakas", ButtonTheme.PRIMARY,
 ```
 
 :::info
-Router-luokka käyttää annettua luokkaa reitin ratkaisemiseen ja URL-osoitteen rakentamiseen, johon navigoidaan. Kaikki selaimen navigointi hoidetaan siten, että historiaseuranta ja näkymän alustaminen eivät ole huolenaihe.
-Lisätietoja navigoinnista, katso [Route Navigation Artikkeli](../../routing/route-navigation).
+Router-luokka käyttää annettua luokkaa reitin ratkaisemiseksi ja URL:n rakentamiseksi navigoimiseksi. Kaikki selaimen navigointi käsitellään näin ollen historiahallinta
+ja näkymän alustaminen eivät ole huolenaiheita.
+Lisätietoja navigoinnista, katso [Reitityksen navigointi -artikkeli](../../routing/route-navigation).
 :::
 
 ### Taulukon muokkaaminen {#table-editing}
 
-Lisäksi navigoinnin lisäksi painikkeella monet sovellukset mahdollistavat navigoinnin muihin osiin sovellusta, kun `Table`:a kaksoisnapsautetaan. Seuraavat muutokset tehdään, jotta käyttäjät voivat kaksoisnapsauttaa taulukon kohdetta navigoidakseen lomakkeeseen, joka on esitäytetty kohteen tiedoilla.
+Lisäksi navigoinnin ohella painiketta napsauttamalla monet sovellukset sallivat myös navigoinnin sovelluksen muihin osiin, kun `Table`-komponenttia tuplaklikataan. Seuraavat muutokset tehdään, jotta käyttäjät voivat tuplaklikata taulukossa olevaa kohdetta siirtyäkseen lomakkeeseen, joka on esitäytetty kohteen tiedoilla.
 
-Kun tiedot on muokattu oikeassa näkymässä, muutokset tallennetaan, ja `Table`:a päivitetään näyttämään valitun kohteen muuttuneet tiedot.
+Kun tiedot on muokattu oikealla näytöllä, muutokset tallennetaan ja `Table` päivitetään näyttämään valitun kohteen muuttuneet tiedot.
 
-Helpottaakseen tätä navigointia, taulukon kohteiden napsautuksia käsitellään `TableItemClickEvent<Customer>`-kuuntelijalla. Tapahtuma sisältää napsautetun asiakkaan `id`:n, jonka se siirtää `FormView`:lle `navigate()`-metodin avulla `ParametersBag`-rakennetta käyttäen:
+Helpottaakseen tätä navigointia, kohteen napsautukset taulukossa käsitellään `TableItemClickEvent<Customer>`-kuuntelijalla. Tapahtuma sisältää napsautetun asiakkaan `id`:n, jonka se välittää `FormView`:lle hyödyntämällä `navigate()`-metodia `ParametersBag`:in avulla:
 
 ```java title="DemoView.java" 
 private void editCustomer(TableItemClickEvent<Customer> e) {
@@ -137,17 +139,17 @@ private void editCustomer(TableItemClickEvent<Customer> e) {
 
 ### Alustamisen käsittely `onDidEnter`-metodilla {#handling-initialization-with-ondidenter}
 
-`onDidEnter`-metodi webforJ:ssä on osa reitityksen elinkaarta ja se laukaistaan, kun näkymä tulee aktiiviseksi.
+`onDidEnter`-metodi webforJ:ssä on osa reitityksen elinkaarta ja se laukaisee, kun näkymä aktivoituu.
 
-Kun `Router` navigoi näkymään, `onDidEnter` laukaistaan osana elinkaaren tapahtumaa:
-- **Datan lataaminen**: Alustaa tai hakee näkymän tarvitsemat tiedot reitti-parametrin perusteella.
-- **Näkymän asettaminen**: Päivittää käyttöliittymäelementtejä dynaamisesti kontekstin mukaan.
-- **Reagoiminen tilamuutoksiin**: Suorittaa toimia, jotka riippuvat näkymän aktiivisuudesta, kuten lomakkeiden nollaaminen tai komponenttien korostaminen.
+Kun `Router` navigoi näkymään, `onDidEnter` laukaisee osana elinkaarta seuraavat toiminnot:
+- **Tietojen lataaminen**: Alustaa tai hakee näkymässä tarvittavat tiedot reittiparametrien perusteella.
+- **Näkymän asetusten määrittäminen**: Päivittää UI-elementtejä dynaamisesti kontekstin mukaan.
+- **Reagointi tilamuutoksiin**: Suorittaa toimenpiteitä, jotka riippuvat näkymän aktiivisuudesta, kuten lomakkeiden nollaaminen tai komponenttien korostaminen.
 
-`onDidEnter`-metodi `FormView`:ssä tarkistaa, onko reitissä `id`-parametria saatavilla ja säätää lomakkeen käyttäytymistä sen mukaan:
+`onDidEnter`-metodi `FormView` muuttujassa tarkistaa, onko reitissä `id`-parametri ja säätää lomakkeen toimintaa sen mukaan:
 
-- **Muokkaustila**: Jos `id` on annettu, metodi hakee vastaavan asiakkaan tiedot käyttäen `Service`: tä ja esitäyttää lomakkeen kentät. `Lähetä`-painike konfiguroidaan päivittämään olemassa oleva merkintä.
-- **Lisäystila**: Jos `id`:tä ei ole olemassa, lomake pysyy tyhjänä, ja `Lähetä`-painike konfiguroidaan luomaan uusi asiakas.
+- **Muokkaustila**: Jos `id` on annettu, metodi hakee vastaavan asiakkaan tiedot käyttäen `Service` ja esitäyttää lomakkeen kentät. `Lähetä`-painike on määritetty päivittämään olemassa olevaa merkintää.
+- **Lisäystila**: Jos `id`:tä ei ole, lomake pysyy tyhjänä ja `Lähetä`-painike on määritetty luomaan uusi asiakas.
 
 ```java
 @Override
@@ -163,11 +165,12 @@ Kun `Router` navigoi näkymään, `onDidEnter` laukaistaan osana elinkaaren tapa
   }
 ```
 
-### Datan lähettäminen {#submitting-data}
 
-Kun tiedot on muokattu, on tarpeen lähettää ne palvelimelle, joka käsittelee tietovarastoa. Siksi `Service`-luokkaa, joka on jo määritetty aiemmassa tämän oppaan vaiheessa, on nyt parannettava lisämetodeilla, jotka mahdollistavat asiakkaiden lisäämisen ja muokkaamisen.
+### Tietojen lähettäminen {#submitting-data}
 
-Alla oleva pätkä näyttää, kuinka tämä saavutetaan:
+Kun tiedot on muokattu, on tarpeen lähettää ne palvelimelle, joka käsittelee tietovarastoa. Siksi `Service`-luokkaa, joka on jo asetettu aiemmassa vaiheessa, on nyt parannettava lisämetodeilla, jotka mahdollistavat käyttäjien lisätä ja muokata asiakkaita.
+
+Alla oleva koodinpätkä näyttää, kuinka tämä toteutetaan:
 
 ```java title="Service.java"
 public void addCustomer(Customer newCustomer) {
@@ -180,33 +183,34 @@ public void editCustomer(Customer editedCustomer) {
 }
 ```
 
-### `commit()`-käyttö {#using-commit}
+### `commit()`-metodin käyttäminen {#using-commit}
 
-`commit()`-metodi `Repository`-luokassa pitää sovelluksen tiedot ja käyttöliittymän synkronoituna. Se tarjoaa mekanismin päivittää tiedot, jotka on tallennettu `Repository`:ssä, varmistaen, että sovelluksessa näkyy viimeisin tila.
+`commit()`-metodi `Repository`-luokassa pitää sovelluksen tiedot ja käyttöliittymän synkronoituna. Se tarjoaa mekanismin päivittää tietoja, jotka on tallennettu `Repository`:hin, varmistaen, että viimeisin tila heijastuu sovelluksessa.
 
 Tätä metodia voidaan käyttää kahdella tavalla:
 
-1. **Kaikkien tietojen päivittäminen:**
-  `commit()`-kutsuminen ilman argumentteja lataa kaikki entiteetit repositoryn taustatietolähteestä, kuten tietokannasta tai palvelinluokasta.
+1) **Kaikkien tietojen päivittäminen**:
+  `commit()`-kutsuminen ilman argumentteja lataa kaikki entiteetit varaston taustadata lähteestä, kuten tietokannasta tai palveluluokasta.
 
-2. **Yksittäisen entiteetin päivittäminen:**
+2) **Yksittäisen entiteetin päivittäminen**:
   `commit(T entity)`-kutsuminen lataa tietyn entiteetin, varmistaen, että sen tila vastaa viimeisimpiä tietolähteen muutoksia.
 
-Kutsu `commit()`-metodia, kun `Repository`:n tiedot muuttuvat, kuten entiteettien lisäämisen tai muokkaamisen jälkeen tietolähteessä.
+Kutsu `commit()`, kun tiedot `Repository`-luokassa muuttuvat, kuten lisäämisen tai muokkaamisen jälkeen.
 
 ```java
-// Päivitä kaikki asiakastiedot repositoryssä
+// Päivitä kaikki asiakastiedot varastossa
 customerRepository.commit();
 
 // Päivitä yksittäinen asiakasentiteetti
 Customer updatedCustomer = ...; // Päivitetty ulkoisesta lähteestä
 customerRepository.commit(updatedCustomer);
+
 ```
 
 Näiden muutosten myötä on saavutettu seuraavat tavoitteet:
 
-1. Toteutettu reititys ja asetettu se siten, että tulevat näkymät voidaan integroida helposti.
-2. Poistettu käyttöliittymän toteutukset `App`:sta ja siirretty ne erilliseen näkymään.
-3. Lisätty ylimääräinen näkymä hallitsemaan tietoa, joka näytetään asiakastaulukossa.
+1. Reititys on toteutettu ja konfiguroitu niin, että tulevat näkymät voidaan integroida vaivattomasti.
+2. Käyttöliittymäimplementointeja on poistettu `App`:sta ja siirretty erillisiin näkymiin.
+3. On lisätty uusi näkymä asiakastietojen manipulointiin, joka näkyy asiakastaulukossa.
 
-Asiakastietojen muokkaamisen ja reitityksen toteutuksen myötä seuraava vaihe keskittyy tietojen sitomiseen ja sen avulla validoinnin helpottamiseen.
+Asiakastietojen muokkaaminen ja reititys on nyt toteutettu, ja seuraava vaihe keskittyy tietosidonnan toteuttamiseen ja sen käyttämiseen validoinnin helpottamiseksi.

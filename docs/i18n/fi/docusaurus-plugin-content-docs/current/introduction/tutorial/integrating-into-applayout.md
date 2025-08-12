@@ -2,19 +2,19 @@
 title: Integrating the AppLayout
 sidebar_position: 6
 draft: true
-_i18n_hash: fd2f3844bbcb102adf05ae01b07ff8d8
+_i18n_hash: c0ed4864dc99a4665aef3f4ff808bc9d
 ---
-Tässä vaiheessa integroi aiemmissa vaiheissa toteutetut ominaisuudet, kuten reititys ja näkymät, yhtenäiseksi sovellusrakenteeksi. Tämä rakenne tarjoaa yhtenäisen navigointijärjestelmän ja dynaamiset sisältöalueet.
+Tässä vaiheessa integroi aiemmissa vaiheissa toteutetut ominaisuudet, kuten reititys ja näkymät, yhtenäiseen sovelluksen asetteluun. Tämä rakenne tarjoaa yhtenäisen navigointijärjestelmän ja dynaamiset sisältöalueet.
 
-## Sovellusrakenteen tarkoitus {#purpose-of-the-app-layout}
+## Sovelluksen asettelun tarkoitus {#purpose-of-the-app-layout}
 
-`AppLayout` toimii perustana sovelluksesi kokonaisrakenteen ja -virran hallintaan. Se tarjoaa:
-- **Globaali navigointi**: Johdonmukainen tapa siirtyä tärkeiden osioiden välillä.
-- **Dynaaminen sisällön renderöinti**: Keskitetty asettelu reititettyjen näkymien näyttämiseen.
+`AppLayout` toimii perustana sovelluksesi kokonaisrakenteen ja -kulun hallintaan. Se tarjoaa:
+- **Globaali navigointi**: Konsistentti tapa siirtyä keskeisten osioiden välillä.
+- **Dynaaminen sisällön renderointi**: Keskitetty asettelu reititetyille näkymille.
 
-## `AppNav` käyttö {#using-appnav}
+## Käyttäen `AppNav` {#using-appnav}
 
-`AppNav` komponenttia käytetään navigointivalikon luomiseen sovelluksen käyttöliittymässä. Tämä valikko tarjoaa linkkejä erilaisiin näkymiin sovelluksessasi, kuten `DemoView`:
+`AppNav` komponenttia käytetään navigaatiovalikon luomiseen sovelluksen käyttöliittymässä. Tämä valikko tarjoaa linkkejä eri näkymiin sovelluksessasi, kuten `DemoView`:
 
 ```java title="MainLayout.java"
 private void setDrawer() {
@@ -27,22 +27,22 @@ private void setDrawer() {
 }
 ```
 
-Tästä esimerkistä:
-- Navigointivalikko lisätään sovelluksen laatikkoon.
-- Jokainen valikkokohde on `AppNavItem`, joka määrittää:
-  - Nimen, esimerkiksi "Koontinäyttö."
-  - Kohdenäkymän esimerkiksi `DemoView`.
-  - Valinnaisen kuvakkeen, esimerkiksi sarakkeiden kuvake.
+Esimerkissä:
+- Navigaatiovalikko lisätään sovelluksen laatikkoon.
+- Jokainen valikkokohde on `AppNavItem`, joka määrittelee:
+  - Tunnisteen, esimerkiksi "Koontinäyttö."
+  - Kohdenäkemyksen, esimerkiksi `DemoView`.
+  - Valinnaisen ikonivaihtoehdon, esimerkiksi sarakkeiden ikoni.
 
-## Asettelureitit ja -paikat {#layout-routes-and-outlets}
+## Asettelureitit ja ulostulot {#layout-routes-and-outlets}
 
-Asettelu käyttää reittejä ja paikkoja dynaamisen sisällön renderöimiseen rakenteellisessa asettelussa. webforJ:ssa:
-- **Reitit** määrittävät, miten näkymät vastaavat tiettyjä polkuja.
-- **Paikat** toimivat paikkamerkkeinä asetteluissa, joissa reititetyt näkymät näytetään.
+Asettelut käyttävät reittejä ja ulostuloja dynaamisesti sisältöjen renderoimiseksi rakennetussa asettelussa. webforJ:ssa:
+- **Reitit** määrittelevät, miten näkymät vastaavat tiettyjä polkuja.
+- **Ulostulot** toimivat paikkamerkkeinä asetteluissa, joissa reititetyt näkymät näytetään.
 
-### Esimerkki: Asettelu reitin määrittäminen {#example-setting-up-a-layout-route}
+### Esimerkki: Asettelureitin määrittäminen {#example-setting-up-a-layout-route}
 
-`MainLayout` luokassa `@Route` -annotaatio määrittää sen perustasanteeksi, ja `DemoView` renderöidään tämän asettelun kautta paikassa:
+`MainLayout`-luokassa `@Route`-annotaatio määrittelee sen perustasoksi, ja `DemoView` renderoidaan tämän asettelun ulostulon kautta:
 
 ```java title="MainLayout.java"
 @Route("/")
@@ -54,7 +54,7 @@ public class MainLayout extends Composite<AppLayout> {
 }
 ```
 
-`@Route` -annotaatio `DemoView` -luokassa määrittää, että se käyttää `MainLayout`-asetusta:
+`@Route`-annotaatio `DemoView`lle määrittelee, että se käyttää `MainLayout`-asettelua ulostulona:
 
 ```java title="DemoView.java"
 @Route(value = "/demo", outlet = MainLayout.class)
@@ -64,6 +64,6 @@ public class DemoView extends Composite<Div> {
 }
 ```
 
-## Dynaamisen sisällön lisääminen `RouteOutlet`-komponentilla {#adding-dynamic-content-with-routeoutlet}
+## Dynaamisen sisällön lisääminen `RouteOutlet`-komponentin avulla {#adding-dynamic-content-with-routeoutlet}
 
-`RouteOutlet` näyttää dynaamisesti näkymiä aktiivisen reitin perusteella. Asettelussa näkymät, kuten `DemoView`, renderöidään `RouteOutlet`-komponentin kautta. `RouteOutlet` käsitellään implisiittisesti reittiannotaatioissa määritellyn paikan spesifikaation kautta.
+`RouteOutlet` näyttää dynaamisesti näkymiä aktiivisen reitin mukaan. Asettelussa näkymät kuten `DemoView` renderoidaan `RouteOutlet`in kautta. `RouteOutlet` käsitellään implisiittisesti reittiannotaatioiden ulostulomäärittelyssä.

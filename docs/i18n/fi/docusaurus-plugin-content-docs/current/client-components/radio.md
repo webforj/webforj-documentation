@@ -6,7 +6,7 @@ slug: radio
 description: A user guide article for the radio
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 662c7a8ade5302b2f78dc1a11f8731e9
+_i18n_hash: 7f3bc2c202d02a7e4bd65fc000b4db87
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,10 +16,10 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info ASIAKASKOMPOONENTTI
-Tässä osiossa käsitellään **`<dwc-radio>`** komponentin muotoilutietoja. Tämä komponentti on **vain asiakassivulla** - sitä ei voida instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+:::info ASIAKASKOMPONENTTI
+Tässä osiossa käsitellään **`<dwc-radio>`** komponentin tyylitietoja. Tämä komponentti on **vain asiakaspäässä** - sitä ei voida muodostaa itsenäisesti API: n kautta, mutta se saattaa olla osa API-komponentteja.
 :::
 
-## Muotoilu {#styling}
+## Tyylit {#styling}
 
 <TableBuilder name="dwc-radio" clientComponent />

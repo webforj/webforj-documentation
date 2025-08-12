@@ -6,7 +6,7 @@ slug: app-nav
 description: A user guide article for the app-nav
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: fa9431a6c9a18e8532f99cd6ae025786
+_i18n_hash: 16a55ca602aabfe4637385d580e959ff
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,7 +17,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info KLIENTENKOMPONENTE
-In diesem Abschnitt werden die Stylinginformationen für die **`<dwc-app-nav>`**-Komponente aufgeführt. Diese Komponente ist **nur clientseitig** - sie kann nicht eigenständig über die API instanziiert werden, kann jedoch Teil von API-Komponenten sein.
+Dieser Abschnitt beschreibt Styling-Informationen für die **`<dwc-app-nav>`**-Komponente. Diese Komponente ist **nur auf der Clientseite** - sie kann nicht alleine über die API instanziiert werden, sondern kann Teil von API-Komponenten sein.
 :::
 
 ## Styling {#styling}

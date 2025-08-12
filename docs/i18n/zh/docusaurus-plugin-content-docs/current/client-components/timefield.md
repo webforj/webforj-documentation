@@ -6,7 +6,7 @@ slug: timefield
 description: A user guide article for the timefield
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: e736c84c856d4f1b96767dc4f127ec3d
+_i18n_hash: 31dcc8fc9956c82a54238898cb1e19eb
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,7 +17,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info 客户端组件
-本节概述了**`<dwc-timefield>`**组件的样式信息。该组件是**仅客户端**的 - 它不能通过 API 单独实例化，但可能构成 API 组件的一部分。
+本节概述了**`<dwc-timefield>`**组件的样式信息。该组件是**仅限客户端** - 不能通过API单独实例化，但可以作为API组件的一部分。
 :::
 
 ## 样式 {#styling}

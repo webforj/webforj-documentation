@@ -6,7 +6,7 @@ slug: popupmenu
 description: A user guide article for the popupmenu
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 64e586b86f5e80f1f3fddd452902a19e
+_i18n_hash: 233dd9418695057beb3c39ea63651d54
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,10 +16,10 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info KLIENNIKOMPONENTTI
-Tässä osiossa on tyylitietoja **`<dwc-popupmenu>`** komponentille. Tämä komponentti on **asiakaspään** - sitä ei voi instanssia itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+:::info ASIAKASKOMPONENTTI
+Tässä osiossa käsitellään tyylitietoja komponentille **`<dwc-popupmenu>`**. Tämä komponentti on **vain asiakaspäätä** - sitä ei voi alustaa itsenäisesti API:n kautta, mutta se saattaa olla osa API-komponentteja.
 :::
 
-## Tyylit {#styling}
+## Tyylittely {#styling}
 
 <TableBuilder name="dwc-popupmenu" clientComponent />

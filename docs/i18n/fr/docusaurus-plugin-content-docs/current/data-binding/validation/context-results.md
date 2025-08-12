@@ -1,9 +1,9 @@
 ---
 sidebar_position: 4
 title: Context Results
-_i18n_hash: 15fc4551d1ed2f2b5e35785975e66946
+_i18n_hash: f7eeb60ff21b1d5dff27b17cc82cdf50
 ---
-Lorsque vous écrivez des données de l'interface utilisateur vers le modèle, la méthode `write` du `BindingContext` déclenche les validations. Les résultats de validation déterminent si les données sont acceptables.
+Lorsque vous écrivez des données de l'interface utilisateur vers le modèle, la méthode `write` du `BindingContext` déclenche les validations. Les résultats de la validation déterminent si les données sont acceptables.
 
 ## Traitement des résultats de validation {#processing-validation-results}
 
@@ -22,7 +22,7 @@ if (!result.isValid()) {
 ## État de validation du contexte {#context-validation-state}
 <!-- vale on -->
 
-Chaque fois que le contexte valide les composants, il déclenche un `BindingContextValidateEvent`. Cet événement livre le `ValidationResult` pour tous les liaisons qui ont changé simultanément. Vous pouvez utiliser ces résultats pour déclencher des actions et réagir de manière appropriée, comme activer ou désactiver le bouton de soumission en fonction de la validité globale du formulaire.
+Chaque fois que le contexte valide les composants, il déclenche un `BindingContextValidateEvent`. Cet événement transmet le `ValidationResult` pour tous les bindings qui ont changé simultanément. Vous pouvez utiliser ces résultats pour déclencher des actions et répondre de manière appropriée, par exemple en activant ou désactivant le bouton de soumission en fonction de la validité générale du formulaire.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
@@ -33,17 +33,17 @@ context.addValidateListener(event -> {
 });
 ```
 
-## Violation de mise au point automatique {#auto-focus-violation}
+## Violation de focus automatique {#auto-focus-violation}
 
-Lorsqu'il s'agit de formulaires nécessitant une validation sur plusieurs champs, le fait de mettre automatiquement au point le premier champ avec une erreur peut considérablement améliorer l'expérience utilisateur. Cette fonctionnalité aide les utilisateurs à identifier et à corriger immédiatement les erreurs, simplifiant ainsi le processus de remplissage du formulaire.
+Lorsqu'il s'agit de formulaires nécessitant une validation sur plusieurs champs, le fait de focaliser automatiquement le premier champ présentant une erreur peut considérablement améliorer l'expérience utilisateur. Cette fonctionnalité aide les utilisateurs à identifier et corriger immédiatement les erreurs, simplifiant ainsi le processus de complétion du formulaire.
 
-Le `BindingContext` simplifie le processus de mise en place de la mise au point automatique sur le premier composant présentant une erreur de validation. En utilisant la méthode `setAutoFocusFirstViolation`, vous pouvez activer cette fonctionnalité avec un code minimal, garantissant que l'interface utilisateur devient plus intuitive et réactive aux erreurs de saisie.
+Le `BindingContext` simplifie le processus de configuration du focus automatique sur le premier composant avec une erreur de validation. En utilisant la méthode `setAutoFocusFirstViolation`, vous pouvez activer cette fonctionnalité avec un code minimal, garantissant que l'interface utilisateur devient plus intuitive et réactive aux erreurs de saisie.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
 context.setAutoFocusFirstViolation(true);
 ```
 
-:::info Sensible au focus
-Cette fonctionnalité ne fonctionne que pour les composants qui implémentent la préoccupation `FocusAcceptorAware`.
+:::info Prise de conscience du focus
+Cette fonctionnalité fonctionne uniquement pour les composants qui implémentent le souci `FocusAcceptorAware`.
 :::

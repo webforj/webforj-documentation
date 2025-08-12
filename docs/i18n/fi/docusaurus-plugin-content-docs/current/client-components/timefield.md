@@ -6,7 +6,7 @@ slug: timefield
 description: A user guide article for the timefield
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: e736c84c856d4f1b96767dc4f127ec3d
+_i18n_hash: 31dcc8fc9956c82a54238898cb1e19eb
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,9 +17,9 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info ASIAKASKOMPONENTTI
-Tässä osiossa kuvataan **`<dwc-timefield>`** komponentin tyylitietoja. Tämä komponentti on **vain asiakaspuolella** - sitä ei voi instanssia itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+Tässä osiossa esitetään tyylitietoja **`<dwc-timefield>`** -komponentille. Tämä komponentti on **asiakassivulla** - sitä ei voi instanssia itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
-## Tyylit {#styling}
+## Tyylittely {#styling}
 
 <TableBuilder name="dwc-timefield" clientComponent />

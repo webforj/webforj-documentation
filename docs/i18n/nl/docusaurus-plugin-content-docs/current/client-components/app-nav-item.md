@@ -6,7 +6,7 @@ slug: app-nav-item
 description: A user guide article for the app-nav-item
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: a6033f8d0db6523b666c99ca7b0205d4
+_i18n_hash: 83397abca472dd3d320a5ff3fbfcc549
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,9 +17,9 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info CLIËNTCOMPONENT
-Deze sectie beschrijft stijlinformatie voor de **`<dwc-app-nav-item>`** component. Deze component is **alleen clientzijde** - het kan niet op zichzelf worden geïnstantieerd via de API, maar kan deel uitmaken van API-componenten.
+Dit gedeelte schetst de stijlinformatie voor het **`<dwc-app-nav-item>`** component. Dit component is **alleen client-side** - het kan niet zelfstandig worden geïnstantieerd via de API, maar kan onderdeel uitmaken van API-componenten.
 :::
 
-## Styling {#styling}
+## Stijlen {#styling}
 
 <TableBuilder name="dwc-app-nav-item" clientComponent />

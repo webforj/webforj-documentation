@@ -6,7 +6,7 @@ slug: tab
 description: A user guide article for the tab
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 0b43f610a9cc20d9f8319cb37be49239
+_i18n_hash: 9422652f8b0981a721f690fa890d3ee8
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,8 +16,8 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info COMPONENTE DE CLIENTE
-Esta sección describe la información de estilo para el **`<dwc-tab>`** componente. Este componente es **solo del lado del cliente** - no puede ser instanciado por sí solo a través de la API, pero puede formar parte de los componentes de la API.
+:::info COMPONENTE DEL CLIENTE
+Esta sección describe la información de estilo para el **`<dwc-tab>`** componente. Este componente es **solo del lado del cliente** - no se puede instanciar por sí mismo a través de la API, pero puede formar parte de los componentes de la API.
 :::
 
 ## Estilo {#styling}

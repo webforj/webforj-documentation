@@ -6,7 +6,7 @@ slug: file-save
 description: A user guide article for the file-save
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: ecee26fed2ab18cc67c824bb5d51250b
+_i18n_hash: fcd6d9e7c74ffec2ef2676a70d024a77
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,9 +17,9 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info ASIAKASKOMPONENTTI
-Tässä osiossa kuvataan **`<dwc-file-save>`** komponentin tyylitiedot. Tämä komponentti on **asiakaspään** komponentti - sitä ei voi instanssia itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+Tässä osiossa esitellään tyylitietoja **`<dwc-file-save>`** komponentille. Tämä komponentti on **asiakaspohjainen vain** - sitä ei voi instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
-## Styling {#styling}
+## Tyylit {#styling}
 
 <TableBuilder name="dwc-file-save" clientComponent />

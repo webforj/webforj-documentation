@@ -6,7 +6,7 @@ slug: menu
 description: A user guide article for the menu
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 1015fdc048231fc0205b32767c77e492
+_i18n_hash: 989d36ed4cfa93e263d5d34c2d2f5989
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,8 +16,8 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info KLIENTENKOMPONENTE
-Dieser Abschnitt beschreibt die Styling-Informationen für die **`<dwc-menu>`** Komponente. Diese Komponente ist **nur auf der Client-Seite** - sie kann nicht eigenständig über die API instanziiert werden, sondern kann Teil von API-Komponenten sein.
+:::info CLIENT COMPONENT
+Dieser Abschnitt beschreibt die Stylinginformationen für die **`<dwc-menu>`**-Komponente. Diese Komponente ist **nur auf der Client-Seite** - sie kann nicht eigenständig über die API instanziiert werden, sondern kann Teil von API-Komponenten sein.
 :::
 
 ## Styling {#styling}

@@ -1,13 +1,13 @@
 ---
 sidebar_position: 6
 title: Query Parameters
-_i18n_hash: c3b57611c46f7cd4fa9946ff704213cc
+_i18n_hash: 5a8313b16d83bfbef6e8d43589430f90
 ---
-Query-parameterit mahdollistavat lisätietojen lähettämisen URL-osoitteiden kautta käyttäen muotoa `?key1=value1&key2=value2`. Kun reittiparametrit käytetään vaadittujen tietojen lähettämiseen URL-polun sisällä, query-parametrit tarjoavat joustavan mekanismin valinnaisten tai lisätietojen lähettämiseen. Ne ovat erityisen hyödyllisiä sisällön suodattamisessa, lajittelussa tai useiden arvojen käsittelyssä samalla avaimella.
+Kyselyparametrit mahdollistavat lisätietojen siirtämisen URL-osoitteiden kautta, käyttämällä muotoa `?key1=value1&key2=value2`. Kun reittiparametreja käytetään vaadittavan tiedon siirtämiseen URL-polussa, kyselyparametrit tarjoavat joustavan mekanismin vapaaehtoisten tai lisätietojen siirtämiseen. Ne ovat erityisen hyödyllisiä sisällön suodattamisessa, lajittelussa tai käsitellessä useita arvoja samalla avaimella.
 
-## Query-parametrien yleiskatsaus {#query-parameters-overview}
+## Kyselyparametrien yleiskatsaus {#query-parameters-overview}
 
-Query-parametrit webforJ:ssa noudattavat tyypillistä URL-käytäntöä: avain-arvo-parit, jotka on erotettu `=`:llä ja yhdistetty `&`:llä. Ne liitetään URL-osoitteen perään `?`-merkin jälkeen ja tarjoavat joustavan tavan välittää valinnaisia tietoja, kuten suodatus- tai lajittelupreferenssejä.
+Kyselyparametrit webforJ:ssä noudattavat tyypillistä URL-käytäntöä: avain-arvo-parit erotetaan `=`-merkillä ja yhdistetään `&`-merkillä. Ne liitetään URL-osoitteeseen kysymysmerkin (`?`) jälkeen ja tarjoavat joustavan tavan siirtää vaihtoehtoisia tietoja, kuten suodatus- tai lajittelutoiveita.
 
 Esimerkiksi:
 
@@ -15,11 +15,11 @@ Esimerkiksi:
 /products?category=electronics&sort=price
 ```
 
-## Query-parametrien hakeminen {#retrieving-query-parameters}
+## Kyselyparametrien noutaminen {#retrieving-query-parameters}
 
-Query-parametreihin päästään käsiksi `ParametersBag`-objektin kautta. Query-parametrien hakemiseen käytetään `getQueryParameters()`-metodia `Location`-objektilta.
+Kyselyparametreja käytetään `ParametersBag`-objektin kautta. Noutaaksesi kyselyparametreja, käytä `getQueryParameters()`-metodia `Location`-objektista.
 
-Tässä on esimerkki siitä, kuinka voit hakea query-parametreja URL-osoitteesta näkymässä:
+Näin voit noutaa kyselyparametreja URL-osoitteesta näkymässä:
 
 ```java
 @Route(value = "products")
@@ -39,33 +39,33 @@ public class ProductView extends Composite<Div> implements DidEnterObserver {
 ```
 
 Tässä esimerkissä:
-- `onDidEnter`-metodi hakee query-parametreja `Location`-objektilta, joka on saatu `DidEnterEvent`-tapahtumasta.
-- `ParametersBag` mahdollistaa erityisten query-parametrien hakemisen `get()`-metodin avulla, joka palauttaa `Optional<String>`-tyyppisen arvon. Voit määrittää oletusarvon käyttämällä `orElse()`-metodia, jos parametria ei ole saatavilla.
+- `onDidEnter`-metodi noutaa kyselyparametreja `Location`-objektista, joka on saatavilla `DidEnterEvent`:istä.
+- `ParametersBag` mahdollistaa tiettyjen kyselyparametrien noutamisen `get()`-metodin avulla, joka palauttaa `Optional<String>`. Voit määrittää oletusarvon käyttämällä `orElse()`, jos parametria ei ole olemassa.
 
 :::tip `ParametersBag`-getterit
-`ParametersBag` tarjoaa useita getter-muunnoksia, jotka auttavat query-parametrin arvon tyypin muuntamisessa ja suodattamisessa. Alla on täydellinen luettelo saatavilla olevista gettereistä:
+`ParametersBag` tarjoaa useita getter-variantteja, jotka auttavat kyselyparametrien arvojen muuntamisessa tiettyihin tyyppeihin ja niiden suodattamisessa. Seuraavassa on täydellinen lista saatavilla olevista gettereistä:
 
-- **`get(String key)`**: Hakee parametrin arvon `String`-tyyppisenä.
-- **`getAlpha(String key)`**: Palauttaa vain aakkosnumeeriset merkit parametrin arvosta.
-- **`getAlnum(String key)`**: Palauttaa vain aakkosnumeeriset merkit parametrin arvosta.
-- **`getDigits(String key)`**: Palauttaa vain numerot parametrin arvosta.
-- **`getInt(String key)`**: Parsii ja palauttaa parametrin arvon `Integer`-tyyppisenä.
-- **`getFloat(String key)`**: Parsii ja palauttaa parametrin arvon `Float`-tyyppisenä.
-- **`getDouble(String key)`**: Parsii ja palauttaa parametrin arvon `Double`-tyyppisenä.
-- **`getBoolean(String key)`**: Parsii ja palauttaa parametrin arvon `Boolean`-tyyppisenä.
+- **`get(String key)`**: Noutaa parametrin arvon `String`-muodossa.
+- **`getAlpha(String key)`**: Palauttaa vain aakkoselliset merkit parametrin arvosta.
+- **`getAlnum(String key)`**: Palauttaa vain alfanumeeriset merkit parametrin arvosta.
+- **`getDigits(String key)`**: Palauttaa vain numeeriset numerot parametrin arvosta.
+- **`getInt(String key)`**: Parsii ja palauttaa parametrin arvon `Integer`-muodossa.
+- **`getFloat(String key)`**: Parsii ja palauttaa parametrin arvon `Float`-muodossa.
+- **`getDouble(String key)`**: Parsii ja palauttaa parametrin arvon `Double`-muodossa.
+- **`getBoolean(String key)`**: Parsii ja palauttaa parametrin arvon `Boolean`-muodossa.
 
-Nämä metodit auttavat varmistamaan, että arvot ovat muotoiltuja ja tyypitettyjä oikein, välttäen manuaalisen alustamisen tai vahvistamisen tarpeen.
+Nämä metodit auttavat varmistamaan, että arvot on muotoiltu ja muunnettu oikein, jolloin vältetään manuaalinen analysointi tai validointi.
 :::
 
-## Useiden arvojen käsittely query-parametrille {#handling-multiple-values-for-a-query-parameter}
+## Useiden arvojen käsittely kyselyparametrille {#handling-multiple-values-for-a-query-parameter}
 
-Joskus query-parametrilla voi olla useita arvoja samalla avaimella, kuten seuraavassa esimerkissä:
+Joskus kyselyparametrilla voi olla useita arvoja samalla avaimella, kuten seuraavassa esimerkissä:
 
 ```
 /products?category=electronics,appliances&sort=price
 ```
 
-`ParametersBag` tarjoaa menetelmän tämän käsittelemiseksi hakemalla arvojen luettelo:
+`ParametersBag` tarjoaa menetelmän tämän käsittelemiseen noutamalla arvot listana:
 
 ```java
 @Route(value = "products")
@@ -85,15 +85,15 @@ public class ProductView extends Composite<Div> implements DidEnterObserver {
 ```
 
 Tässä esimerkissä:
-- `getList("category")` hakee kaikki arvot, jotka liittyvät `category`-avaimeen, palauttaen ne luettelona.
+- `getList("category")` noutaa kaikki arvot, jotka liittyvät `category`-avaimeen, palauttaen ne listana.
 
 :::tip Useiden arvojen erotin
-Oletusarvoisesti `getList()`-metodi käyttää pilkkua (`,`) erottimena. Voit mukauttaa erottimen lähettämällä eri merkin tai säännöllisen lausekkeen toisena parametrina `getList(String key, String regex)`-metodiin.
+Oletuksena `getList()`-metodi käyttää pilkkua (`,`) erottimena. Voit mukauttaa erotinta välittämällä eri merkin tai säännöllisen lausekkeen toisen parametrina `getList(String key, String regex)`-metodille.
 :::
 
-## Käyttötapaukset query-parametreille {#use-cases-for-query-parameters}
+## Kyselyparametrien käyttötapaukset {#use-cases-for-query-parameters}
 
-- **Sisällön suodatus**: Query-parametreja käytetään usein suodattimien soveltamiseen, kuten kategorioiden tai hakusanojen.
-- **Datan lajittelu**: Voit välittää lajittelupreferenssejä query-parametrien avulla, kuten lajittelu hintojen, arvioiden tai päivämäärien mukaan.
-- **Valinnaisten parametrien käsittely**: Kun tarvitset tietojen välittämistä, joka ei ole osa vaadittua reittirakennetta, query-parametrit tarjoavat joustavuutta.
-- **Useiden arvojen välittäminen**: Query-parametrit mahdollistavat useiden arvojen lähettämisen yhdelle avaimelle, mikä on hyödyllistä, kun käyttäjät valitsevat useita vaihtoehtoja, kuten tuotekategorioita tai suodattimia.
+- **Sisällön suodattaminen**: Kyselyparametreja käytetään usein suodattimien, kuten kategorioiden tai hakusanageneraattoreiden, soveltamiseen.
+- **Tietojen lajittelu**: Voit siirtää lajittelutoiveita kyselyparametrien kautta, kuten lajittelu hinnan, arvostelun tai päivämäärän mukaan.
+- **Valinnaisten parametrien käsittely**: Kun sinun on siirrettävä tietoa, joka ei ole osa vaadittua reittirakennetta, kyselyparametrit tarjoavat joustavuutta.
+- **Useiden arvojen siirtäminen**: Kyselyparametrit mahdollistavat useiden arvojen lähettämisen yhdelle avaimelle, mikä on hyödyllistä, kun käyttäjät valitsevat useita vaihtoehtoja, kuten tuotekategorioita tai suodattimia.

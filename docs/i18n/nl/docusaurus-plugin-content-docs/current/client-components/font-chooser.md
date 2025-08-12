@@ -6,7 +6,7 @@ slug: font-chooser
 description: A user guide article for the font-chooser
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 425fa76d5f212e5a2b798370c3b82c9c
+_i18n_hash: 783f2c6a9217fdac1eaccecedba182d3
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,10 +16,10 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info KLIANTCOMPONENT
-Deze sectie beschrijft de stijlinformatie voor de **`<dwc-font-chooser>`** component. Deze component is **alleen client-side** - hij kan niet zelfstandig worden geïnstantieerd via de API, maar kan deel uitmaken van API-componenten.
+:::info CLIËNTCOMPONENT
+Dit gedeelte schetst de stijlinformatie voor de **`<dwc-font-chooser>`** component. Deze component is **alleen aan de clientzijde** - hij kan niet op zichzelf worden geïnstantieerd via de API, maar kan deel uitmaken van API-componenten.
 :::
 
-## Stijl {#styling}
+## Styling {#styling}
 
 <TableBuilder name="dwc-font-chooser" clientComponent />

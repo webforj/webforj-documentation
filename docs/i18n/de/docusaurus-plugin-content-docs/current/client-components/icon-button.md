@@ -6,7 +6,7 @@ slug: icon-button
 description: A user guide article for the icon-button
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: edd1a195702ab2336b452eee3136d73b
+_i18n_hash: 7f57804867c9853c3d15e06b2b0fead5
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,8 +16,8 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info KLIENTENKOMPONENTE
-Dieser Abschnitt beschreibt Stylinginformationen für die **`<dwc-icon-button>`** Komponente. Diese Komponente ist **nur auf der Client-Seite** - sie kann nicht eigenständig über die API instanziiert werden, kann jedoch Teil von API-Komponenten sein.
+:::info KUNDENKOMPONENTE
+Dieser Abschnitt beschreibt die Stilinformationen für die **`<dwc-icon-button>`** Komponente. Diese Komponente ist **nur clientseitig** - sie kann nicht eigenständig über die API instanziiert werden, könnte aber Teil von API-Komponenten sein.
 :::
 
 ## Styling {#styling}

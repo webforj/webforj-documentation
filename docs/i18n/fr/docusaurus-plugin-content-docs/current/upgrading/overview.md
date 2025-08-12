@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Upgrading Guides
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: 1bdddfccaece385582aecb1b63967611
+_i18n_hash: 6adbad314378e90356ad6602cc52de5a
 ---
 <Head>
   <style>{`
@@ -13,57 +13,57 @@ _i18n_hash: 1bdddfccaece385582aecb1b63967611
   `}</style>
 </Head>
 
-Le cycle de publication de webforJ suit un modèle structuré et prévisible pour garantir la stabilité, les performances et l'innovation continue. Ce document fournit une vue d'ensemble de la façon dont les versions sont planifiées, des types de versions à attendre et comment les utilisateurs peuvent rester informés et préparés.
+Le cycle de publication de webforJ suit un modèle structuré et prévisible pour garantir la stabilité, la performance et l'innovation continue. Ce document fournit un aperçu de la manière dont les versions sont planifiées, des types de versions à attendre et de la manière dont les utilisateurs peuvent rester informés et préparés.
 
-## Types de publications webforJ {#types-of-webforj-releases}
+## Types de versions de webforJ {#types-of-webforj-releases}
 
-webforJ suit un modèle de publication structuré qui comprend les types de publications suivants :
+webforJ suit un modèle de publication structuré qui comprend les types de versions suivants :
 
-### 1. Publications majeures {#1-major-releases}
-- Se produisent chaque année.
-- Introduisent des fonctionnalités, des améliorations et des perfectionnements significatifs.
-- Peuvent nécessiter des modifications de configuration ou l'adaptation d'applications existantes.
-- Identifiées par un versionnement tel que **webforJ 20.00, webforJ 21.00, etc.**
+### 1. Versions majeures {#1-major-releases}
+- Ont lieu annuellement.
+- Introduisent de nouvelles fonctionnalités significatives, des améliorations et des optimisations.
+- Peuvent nécessiter des changements de configuration ou l'adaptation d'applications existantes.
+- Identifiées par un versionnage tel que **webforJ 20.00, webforJ 21.00, etc.**
 
-### 2. Publications mineures {#2-minor-releases}
-- Se produisent plusieurs fois par an (environ toutes les six à huit semaines).
-- Fournissent des améliorations incrémentielles, des optimisations et des nouvelles fonctionnalités mineures.
-- Identifiées par un versionnement tel que **webforJ 20.01, webforJ 20.02, etc.**
+### 2. Versions mineures {#2-minor-releases}
+- Ont lieu plusieurs fois au cours de l'année (environ toutes les six à huit semaines).
+- Fournissent des améliorations incrémentales, des optimisations et de nouvelles fonctionnalités mineures.
+- Identifiées par un versionnage tel que **webforJ 20.01, webforJ 20.02, etc.**
 
-### 3. Patches et mises à jour de correction de bogues {#3-patches-and-bug-fix-releases}
-- Publiés si nécessaire.
-- Traitent les bogues critiques, les problèmes de performances et les vulnérabilités de sécurité.
-- Identifiés par un numéro supplémentaire tel que **webforJ 20.01.1, webforJ 20.01.2, etc.**
+### 3. Mises à jour et correctifs {#3-patches-and-bug-fix-releases}
+- Publiées si nécessaire.
+- Traitent des bugs critiques, des problèmes de performance et des vulnérabilités de sécurité.
+- Identifiées par un numéro supplémentaire tel que **webforJ 20.01.1, webforJ 20.01.2, etc.**
 
-## Que prévoir avec chaque publication {#what-to-expect-with-each-release}
+## À quoi s'attendre avec chaque version {#what-to-expect-with-each-release}
 
 ### Améliorations des fonctionnalités {#feature-enhancements}
-- Les publications majeures et mineures introduisent de nouvelles capacités, des optimisations et des intégrations.
+- Les versions majeures et mineures introduisent de nouvelles capacités, des optimisations et des intégrations.
 - Les feuilles de route des fonctionnalités sont partagées dans les notes de version pour aider les utilisateurs à planifier à l'avance.
 
-:::info Compatibilité ascendante
-Bien que des efforts soient faits pour maintenir la compatibilité, les publications majeures peuvent inclure des modifications nécessitant des ajustements des applications. Les utilisateurs sont encouragés à consulter les notes de version pour les fonctionnalités obsolètes.
+:::info Compatibilité descendante
+Bien que des efforts soient faits pour maintenir la compatibilité, les versions majeures peuvent inclure des changements qui nécessitent des ajustements des applications. Les utilisateurs sont encouragés à consulter les notes de version pour les fonctionnalités obsolètes.
 :::
 
 ### Mises à jour de sécurité {#security-updates}
-- La sécurité est une priorité, et les vulnérabilités critiques sont traitées dans les publications de correctifs dès que possible.
+- La sécurité est une priorité, et les vulnérabilités critiques sont traitées dans les versions de correctif dès que possible.
 
 :::tip Versions instantanées
-Les versions instantanées sont disponibles avant la plupart des publications. Les utilisateurs sont encouragés à les tester pour identifier les problèmes tôt et fournir des retours.
+Les versions instantanées sont disponibles avant la plupart des versions. Les utilisateurs sont encouragés à tester contre celles-ci pour identifier les problèmes tôt et fournir des retours.
 :::
 
 ## Comment rester informé {#how-to-stay-updated}
 
 ### Notes de version et annonces {#release-notes-and-announcements}
-- Chaque publication est accompagnée de notes de version détaillées [release notes](https://github.com/webforj/webforj/releases) qui décrivent les nouvelles fonctionnalités, les corrections de bogues et les actions requises.
-- Les utilisateurs devraient s'abonner au [blog](../../blog) de webforJ pour des mises à jour en temps opportun.
+- Chaque version est accompagnée de [notes de version](https://github.com/webforj/webforj/releases) détaillées qui décrivent les nouvelles fonctionnalités, les correctifs et toutes les actions requises.
+- Les utilisateurs doivent s'abonner au [blog](../../blog) de webforJ pour des mises à jour opportunes.
 
 :::tip Recommandations de mise à niveau
-Les clients devraient planifier les mises à niveau en fonction des besoins de l'entreprise et des exigences de stabilité. Les utilisateurs sont encouragés à rester sur la dernière version pour bénéficier des améliorations de performances et des nouvelles fonctionnalités.
+Les clients doivent planifier les mises à niveau en fonction des besoins commerciaux et des exigences de stabilité. Les utilisateurs sont encouragés à rester sur la dernière version pour bénéficier des améliorations de performance et des nouvelles fonctionnalités.
 :::
 
 ### Support et compatibilité {#support-and-compatibility}
-- webforJ fournit de la documentation et des guides de mise à niveau pour les publications majeures.
+- webforJ fournit une documentation et des guides de mise à niveau pour les versions majeures.
 - Des forums communautaires et des canaux de support client sont disponibles pour le dépannage et l'assistance.
 
 <DocCardList className="topics-section" />

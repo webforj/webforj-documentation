@@ -1,9 +1,9 @@
 ---
 sidebar_position: 7
 title: Shadows
-_i18n_hash: 84ad4478632d3020d57752a4827f925a
+_i18n_hash: 6f5378b91beaf0c663bdc9de9b67233a
 ---
-Varjostusominaisuuksia käytetään varjotehosteiden lisäämiseen elementin kehyksen ympärille. Voit asettaa useita tehosteita erottamalla ne pilkuilla. Useimmissa tapauksissa varjoja käytetään merkkinä esineistä, jotka ovat ristikkäin käyttöliittymässä.
+Varjostusominaisuuksia käytetään varjostusvaikutusten lisäämiseen elementin reunoille. Voit asettaa useita vaikutuksia erottamalla ne pilkuilla. Useimmissa tapauksissa varjoja käytetään merkkaamaan elementtejä, jotka ovat päällekkäin käyttäjäliittymässä.
 
 <Head>
   <style>{`
@@ -23,7 +23,7 @@ Varjostusominaisuuksia käytetään varjotehosteiden lisäämiseen elementin keh
 ```
 
 :::tip Varjon väri
-Voit hallita varjon väriä asettamalla `--dwc-shadow-color` -muuttujan. Oletuksena varjon väri on harmaa, jossa on päävärin sävy.
+Ohjaat varjon väriä asettamalla `--dwc-shadow-color` -muuttujan. Oletusarvoisesti varjon väri on harmaa, johon on sekoitettu pääväri.
 :::
 
 ### Muuttujat {#variables}

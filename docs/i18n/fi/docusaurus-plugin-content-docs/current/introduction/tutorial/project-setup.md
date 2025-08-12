@@ -1,20 +1,20 @@
 ---
 title: Project Setup
 sidebar_position: 1
-_i18n_hash: b1ac0a58b11558f40824c8caedeb95b3
+_i18n_hash: f8ad0e22acf56c824b05db580be2203b
 ---
- tässä oppaassa sovellus jaetaan **neljään vaiheeseen**, joista jokainen esittelee uusia ominaisuuksia projektin edetessä. Seuraamalla mukana saat selkeän käsityksen siitä, miten sovellus kehittyy ja miten kukin ominaisuus toteutetaan.
+Tässä oppaassa sovellus jaetaan **neljään vaiheeseen**, joista jokainen esittelee uusia ominaisuuksia projektin edetessä. Seuraamalla mukana saat selkeän käsityksen siitä, kuinka sovellus kehittyy ja kuinka kukin ominaisuus toteutetaan.
 
 Aloittaaksesi voit ladata koko projektin tai kloonata sen GitHubista:
 <!-- vale off -->
-- Lataa ZIP: [webforj-demo-application.zip](https://github.com/webforj/webforj-demo-application/archive/refs/heads/main.zip)
-- GitHub-repositorio: Kloonaa projekti [suoraan GitHubista](https://github.com/webforj/webforj-demo-application)
+- Lataa ZIP: [webforj-demo-sovellus.zip](https://github.com/webforj/webforj-demo-application/archive/refs/heads/main.zip)
+- GitHub-repositorio: Kloa projektin [suoraan GitHubista](https://github.com/webforj/webforj-demo-application)
 <!-- vale on -->
 ```bash
 git clone https://github.com/webforj/webforj-demo-application.git
 ```
 
-Sekä ZIP-tiedosto että GitHub-repositorio sisältävät täydellisen projektirakenteen kaikilla neljällä vaiheella, joten voit aloittaa mistä tahansa kohdasta tai seurata vaihe vaiheelta.
+Sekä ZIP-tiedosto että GitHub-repositorio sisältävät täydellisen projektirakenteen kaikilla neljällä vaiheella, joten voit aloittaa mistä tahansa tai seurata vaihe vaiheelta.
 
 <div class="videos-container">
   <video controls>
@@ -22,11 +22,11 @@ Sekä ZIP-tiedosto että GitHub-repositorio sisältävät täydellisen projektir
   </video>
 </div>
 
-## Projektirakenne {#project-structure}
+## Projektin rakenne {#project-structure}
 
-Projekti on jaettu neljään erilliseen hakemistoon, joista jokainen edustaa tiettyä vaihetta sovelluksen kehityksessä. Nämä vaiheet mahdollistavat sen näkemisen, miten sovellus kehittyy yksinkertaisesta kokoonpanosta täysin toimivaksi asiakashallintajärjestelmäksi.
+Projekti on jaettu neljään erilliseen hakemistoon, joista kukin edustaa tiettyä vaihetta sovelluksen kehityksessä. Nämä vaiheet auttavat sinua näkemään, kuinka sovellus kehittyy yksinkertaisesta asetuksesta täysin toimivaksi asiakashallintajärjestelmäksi.
 
-Projektikansiossa löydät neljä alihakemistoa, jotka vastaavat oppaan vaiheita:
+Projektikansion sisällä löydät neljä alihakemistoa, jotka vastaavat oppaan vaiheita:
 
 ```
 webforj-demo-application
@@ -41,11 +41,11 @@ webforj-demo-application
 └───4-validating-and-binding-data
 ```
 
-### Sovelluksen suorittaminen {#running-the-app}
+### Sovelluksen käynnistäminen {#running-the-app}
 
 Nähdäksesi sovelluksen toiminnassa missä tahansa vaiheessa:
 
-1) Siirry halutun vaiheen hakemistoon. Tämä tulisi olla kyseisen vaiheen ylimmän tason hakemisto, joka sisältää `pom.xml`-tiedoston.
+1) Siirry halutun vaiheen hakemistoon. Tämä pitäisi olla kyseisen vaiheen ykkösluokan hakemisto, joka sisältää `pom.xml`-tiedoston.
 
 2) Käytä Maven Jetty -lisäosaa sovelluksen paikalliseen käyttöönottoon suorittamalla:
 
@@ -55,4 +55,4 @@ mvn jetty:run
 
 3) Avaa selain ja siirry osoitteeseen http://localhost:8080 nähdäksesi sovelluksen.
 
-Toista tämä prosessi jokaisessa vaiheessa seuraten opasta, jolloin voit tutkia sovelluksen ominaisuuksia niiden lisätessä.
+Toista tämä prosessi jokaiselle vaiheelle seuratessasi opasta, jolloin voit tutkia sovelluksen ominaisuuksia, kun niitä lisätään.

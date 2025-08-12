@@ -2,22 +2,22 @@
 sidebar_position: 35
 title: Option Dialogs
 hide_giscus_comments: true
-_i18n_hash: 7ff00c0abd564956da84fbd20761413e
+_i18n_hash: 4d818d70f6238be10dc8913d19ed47b7
 ---
 <!-- vale off -->
 import DocCardList from '@theme/DocCardList';
 
-# Valikkodit
+# Valintapainikkeet
 <!-- vale on -->
 
-Valikkodit tarjoavat tavan sovelluksen kommunikoida käyttäjien kanssa ja kerätä heidän palautettaan. Nämä dialogit ovat modaalisia, mikä tarkoittaa, että ne estävät sovelluksen suorituksen, kunnes käyttäjä vuorovaikuttaa niiden kanssa, varmistaen, että tärkeät viestit käsitellään ennen jatkamista.
+Valintapainikkeet tarjoavat sovellukselle tavan kommunikoida käyttäjien kanssa ja kerätä heidän palautettaan. Nämä painikkeet ovat modaalisia, mikä tarkoittaa, että ne estävät sovelluksen suorituksen, kunnes käyttäjä on vuorovaikutuksessa niiden kanssa, varmistaen, että tärkeitä viestejä käsitellään ennen jatkamista.
 
-Valikkodit webforJ:ssa ovat samankaltaisia kuin `JOptionPane` Swingissä, ratkaisten perusongelman, joka liittyy estäviin dialogeihin verkkosovelluksissa.
+Valintapainikkeet webforJ:ssä ovat samankaltaisia kuin `JOptionPane` Swingissä, ratkaisten perusongelman esteiden käsittelyssä web-sovelluksissa.
 
 :::tip Modaalisuus
-Kun käytetään valikkodien luomiseen modaalisia dialogeja webforJ:ssa, dialogi estää käyttäjän syötteen muihin sovelluksen osiin ja käsittelee tapahtumia ainoastaan modaalille dialogille. Tämä varmistaa, että dialogi pysyy responsiivisena estäen samalla vuorovaikutukset muiden osien kanssa, parantaen käyttäjäkokemusta ja yllä pitäen sovelluksen virtausta. Palvelin lakkaa käsittelemästä muita pyyntöjä, kunnes dialogi suljetaan tai sieltä palautuu arvo.
+Kun käytät valintapainikkeita luodaksesi modaalisia painikkeita webforJ:ssä, painike estää käyttäjäsyötteen muilta osilta sovellusta ja käsittelee tapahtumia ainoastaan modaalin painikkeen osalta. Tämä varmistaa, että painike pysyy responsiivisena ja estää vuorovaikutukset muiden osien kanssa, parantaen käyttäjäkokemusta ja ylläpitäen sovelluksen kulkua. Palvelin lopettaa muiden pyyntöjen käsittelyn, kunnes painike hylätään tai siitä palautuu arvo.
 :::
 
-## Aiheita {#topics}
+## Aihealueet {#topics}
 
 <DocCardList className="topics-section" />

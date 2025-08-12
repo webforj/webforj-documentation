@@ -1,22 +1,22 @@
 ---
 title: ColumnsLayout
 sidebar_position: 25
-_i18n_hash: ed7626149e8b31e663de874e83935567
+_i18n_hash: fb5b6ef5a20567d8a86d04c022a0449e
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-columns-layout" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="columnslayout" location="com/webforj/component/layout/columnslayout/ColumnsLayout" top='true'/>
 
-`ColumnsLayout`-komponentti webforJ:ssä mahdollistaa kehittäjien luoda asetteluja käyttämällä joustavaa ja reagoivaa pystyasettelua. Tämä asettelu tarjoaa dynaamiset sarakkeet, jotka säätävät itsensä käytettävissä olevan leveyden mukaan. Tämä komponentti yksinkertaistaa monisarakkeisten asettelujen luomista hallinnoimalla automaattisesti katkaisuja ja kohdistuksia.
+`ColumnsLayout` -komponentti webforJ:ssä mahdollistaa kehittäjille joustavien ja responsiivisten pystylayoutien luomisen. Tämä layout tarjoaa dynaamiset sarakkeet, jotka mukautuvat käytettävissä olevan leveyden mukaan. Tämä komponentti yksinkertaistaa monisarakkeisten layoutien luontia hallitsemalla automaattisesti katkeamispisteet ja tasausasetukset.
 
-:::info Vaakasuorat asettelut
-Tätä voidaan käyttää sijastaan tai yhdessä [`FlexLayout`](./flex-layout) -komponentin kanssa - yhtä tehokas työkalu vaakasuoriin asetteluihin.
+:::info Vaakasuorat layoutit
+Tätä voidaan käyttää FlexLayout -komponentin kanssa tai sen sijaan - yhtä tehokas työkalu vaakasuuntaisiin layoutteihin.
 :::
 
 ## Perusteet {#basics}
 
-Kun `ColumnsLayout` ensin alustetaan, se käyttää kahta saraketta näyttääkseen asetteluun lisättyjä kohteita. Oletuksena se vie koko vanhemman elementtinsä leveyden ja kasvaa tarpeen mukaan lisäsisällön mahtumiseen. Lisättyjen kohteiden näyttämistä voidaan hienosäätää edelleen käyttämällä [`Breakpoint`](./columns-layout#breakpoints) ja [`Alignment`](./columns-layout#vertical-and-horizontal-item-alignments) asetuksia, joista keskustellaan seuraavissa osissa tarkemmin.
+Kun `ColumnsLayout` on ensimmäisen kerran instanssoitu, se käyttää kahta saraketta näyttääkseen layoutiin lisätyt kohteet. Oletuksena se vie koko laajuuden vanhempien elementtien sisällä ja kasvaa tarvittaessa lisäsisällön mahtumiseksi. Lisättyjen kohteiden näyttöä voidaan hienosäätää edelleen käyttämällä [`Breakpoint`](./columns-layout#breakpoints) ja [`Alignment`](./columns-layout#vertical-and-horizontal-item-alignments) asetuksia, joita käsitellään yksityiskohtaisesti seuraavissa osioissa.
 
 <ComponentDemo 
 path='/webforj/columnslayout?' 
@@ -24,32 +24,34 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="450px"
 />
 
-## Katkaisut {#breakpoints}
+## Katkeamispisteet {#breakpoints}
 
-`ColumnsLayout` on suunniteltu tarjoamaan nestemäinen, ruudukkomainen järjestelmä, joka mukautuu sen vanhemman säilön leveyteen. Toisin kuin perinteiset kiinteät ruudukkojärjestelmät, tämä asettelu mahdollistaa kehittäjien määrittää sarakkeiden määrän tietyllä leveydellä ja laskee dynaamisesti näytettävien sarakkeiden määrän asetettujen `Breakpoint`-objektien perusteella.
+`ColumnsLayout` on suunniteltu tarjoamaan joustava, ruudukkomallinen järjestelmä, joka mukautuu vanhemman säilön leveyteen. Toisin kuin perinteiset kiinteät ruudukkojärjestelmät, tämä layout mahdollistaa kehittäjien määrittää tietyn määrän sarakkeita tietyllä leveydellä ja laskee dynaamisesti näytettävien sarakkeiden määrän asetettujen `Breakpoint`-objektien mukaan.
 
-Tämä mahdollistaa `ColumnsLayout`-komponentin sujuvan mukautumisen kapeammasta tilasta pienillä näytöillä laajempaan tilaan suurilla näytöillä, tarjoten kehittäjälle reagoivan suunnittelun ilman tarvetta räätälöidylle toteutukselle.
+Tämä mahdollistaa `ColumnsLayout`:in sujuvan mukautumisen kapeammasta tilasta pienillä näytöillä laajemmalle alueelle suuremmilla näytöillä, tarjoten responsiivisen suunnittelun kehittäjälle ilman tarvetta erityiselle toteutukselle.
 
 ### Ymmärtäminen `Breakpoint` {#understanding-a-breakpoint}
 
-`Breakpoint` voidaan määrittää käyttämällä `Breakpoint`-luokkaa, joka ottaa kolme parametriä:
+`Breakpoint` voidaan määrittää käyttämällä `Breakpoint`-luokkaa, johon liittyy kolme parametria:
 
 1. **Nimi (valinnainen)**:
-Ketjun nimeäminen mahdollistaa sen viittaamisen tulevissa konfiguraatioissa.
+Katkeamispisteen nimeäminen mahdollistaa sen viittaamisen tulevissa asetuksissa.
 
-2. **Vähimmäisleveys**:
-Jokaisella katkaisulla on erityinen alue, joka määrittää, milloin sen asettelu otetaan käyttöön. Vähimmäisleveys määritellään nimenomaisesti, ja seuraava katkaisu määrittää maksimileveyden, jos sellainen on. Voit käyttää kokonaislukua määrittämään vähimmäisleveyden pikseleinä tai käyttää `String`-arvoa muiden yksiköiden, kuten `vw`, `%` tai `em`, määrittämiseen.
+2. **Minimileveys**:
+Jokaisella katkeamispisteellä on tietty alue, joka määrittää, milloin sen layoutia sovelletaan. Minimileveys määritellään tarkasti, ja seuraava katkeamispiste määrittää maksimi leveyden, jos sellainen on olemassa. Voit käyttää kokonaislukua minimoidaksesi leveyden pikseleinä tai käyttää merkkijonoa määrittääksesi muita yksiköitä, kuten `vw`, `%` tai `em`.
 
-3. **Sarakkeiden määrä**:
-Määritä, kuinka monta saraketta katkaisulla pitäisi olla tämän kokonaisluvun avulla.
+3. **Sarakemäärä**:
+Määritä, kuinka monta saraketta katkeamispisteessä tulisi olla tämän kokonaisluvun avulla.
+
 
 :::info `Breakpoint`-arviointi
-Katkaisuja arvioidaan kasvavana leveyden mukaan, mikä tarkoittaa, että asettelu käyttää ensimmäistä vastaavaa katkaisua.
+Katkeamispisteet arvioidaan nousevassa järjestyksessä leveyden mukaan, mikä tarkoittaa, että layout käyttää ensimmäistä vastaavaa katkeamispistettä.
 :::
 
-### Katkaisujen soveltaminen {#applying-breakpoints}
 
-Katkaisuja sovelletaan `ColumnsLayout`-komponenttiin joko rakennusvaiheessa tai käyttämällä `addBreakpoint(Breakpoint)` -menetelmää, kuten alla on esitetty.
+### Katkeamispisteiden soveltaminen {#applying-breakpoints}
+
+Katkeamispisteet voidaan soveltaa `ColumnsLayout`:iin kahdella tavalla: rakentamisen aikana tai käyttämällä `addBreakpoint(Breakpoint)` -menetelmää, kuten alla on esitetty. 
 
 ```java
 ColumnsLayout layout = new ColumnsLayout()
@@ -61,7 +63,7 @@ ColumnsLayout layout = new ColumnsLayout()
     .addBreakpoint(new Breakpoint(1200, 4));  
 ```
 
-Alla olevassa esimerkissä nähdään useiden katkaisujen asettamista rakentamisen aikana, käyttäen katkaisuja komponentin [`Span`](#column-span-and-spans-per-breakpoint) konfiguroimiseksi sekä esittelee `ColumnsLayout`-komponentin koon muuttamista sovelluksen koolla:
+Alla oleva esimerkki näyttää useiden katkeamispisteiden asettamisen rakentamisen aikana, käyttämällä katkeamispisteitä komponentin [`Span`](#column-span-and-spans-per-breakpoint) määrittelyyn, ja näyttää `ColumnsLayout`:n koon muutoksen, kun sovellusta muutetaan:
 
 <ComponentDemo 
 path='/webforj/columnslayoutbreakpoints?' 
@@ -71,77 +73,77 @@ height="375px"
 
 ## Sarakkeen `Span` ja spans per `Breakpoint` {#column-span-and-spans-per-breakpoint}
 
-Sarakkeiden spans `ColumnsLayout`-komponentissa mahdollistavat sen, kuinka monta saraketta kohde vie, antaen enemmän hallintaa asettelun ilmeeseen eri leveydillä. Tämä on erityisen hyödyllistä, kun tarvitset tiettyjä elementtejä vievän enemmän tai vähemmän tilaa näytön koon tai suunnitteluvaatimusten mukaan.
+Sarakkeiden spaneja `ColumnsLayout`:issa voidaan käyttää hallitsemaan, kuinka monta saraketta kohde vie, antaen sinulle enemmän hallintaa layoutin ulkoasusta eri leveysasioissa. Tämä on erityisen hyödyllistä, kun haluat tiettyjen elementtien vievän enemmän tai vähemmän tilaa näytön koosta tai suunnitteluvaatimuksista riippuen.
 
-### Sarakkeiden spans hallinta {#managing-column-spans}
+### Sarake-spanien hallinta {#managing-column-spans}
 
-Oletuksena jokainen kohde `ColumnsLayout`-komponentissa vie täsmälleen yhden sarakkeen. Voit kuitenkin mukauttaa tätä käyttäytymistä määrittämällä yksittäisten kohteiden sarake-span. Span määrittää, kuinka monta saraketta kohde tulisi viedä.
+Oletuksena jokainen kohde `ColumnsLayout`:issa vie tarkalleen yhden sarakkeen. Tämä käyttäytyminen voidaan kuitenkin mukauttaa asettamalla yksittäisten kohteiden sarakkeiden spanit. Span määrittää, kuinka monta saraketta kohde tulisi ottaa.
 
 ```java
 Button button = new Button("Klikkaa minua");
 layout.addComponent(button);
-// Kohde kattaa kaksi saraketta
+// Kohde vie kaksi saraketta
 layout.setSpan(button, 2);
 ```
 
-Yllä olevassa esimerkissä painike vie kaksi saraketta sen sijaan, että yksi on oletusarvoisesti. `setSpan()`-menetelmän avulla voit määrittää, kuinka monta saraketta komponentin tulisi kattaa asettelussa.
+Yllä olevassa esimerkissä painike vie kaksi saraketta, eikä vain oletuksena yhtä. `setSpan()`-menetelmä antaa sinun määrittää, kuinka monta saraketta komponentin tulisi kattaa layoutissa.
 
-### Sarakkeiden spans säätö katkaisujen avulla {#adjusting-column-spans-with-breakpoints}
+### Sarakkeen spanien säätäminen katkeamispisteiden kanssa {#adjusting-column-spans-with-breakpoints}
 
-Voit myös säätää sarakkeiden spans dynaamisesti katkaisujen perusteella. Tämä ominaisuus on hyödyllinen, kun haluat, että kohde vie erilaisia sarakkeiden määriä näytön koon mukaan. Esimerkiksi saatat haluta, että elementti vie yhden sarakkeen mobiililaitteissa, mutta kattaa useita sarakkeita suuremmilla näytöillä.
+Voit myös säätää sarakkeen spanien dynaamisesti katkeamispisteiden mukaan. Tämä ominaisuus on hyödyllinen, kun haluat kohteen spanin olevan erilaisista sarakkeista riippuvainen näytön koosta. Esimerkiksi saatat haluta elementin vievän yhden sarakkeen mobiililaitteilla, mutta spanavan useita sarakkeita suuremmilla näytöillä.
 
 ```java
 TextField email = new TextField("Sähköposti");
 //...
 List.of(
-  new ColumnsLayout.Breakpoint("oletus", 0 , 1),
-  new ColumnsLayout.Breakpoint("pieni", "20em", 1),
-  new ColumnsLayout.Breakpoint("keskikokoinen", "40em", 2),
-  new ColumnsLayout.Breakpoint("suuri", "60em", 3)
+  new ColumnsLayout.Breakpoint("default", 0 , 1),
+  new ColumnsLayout.Breakpoint("small", "20em", 1),
+  new ColumnsLayout.Breakpoint("medium", "40em", 2),
+  new ColumnsLayout.Breakpoint("large", "60em", 3)
 )
 //...
-//sähköpostikenttä kattaa kaksi saraketta, kun keskikokoinen katkaisu on aktiivinen
-columnsLayout.setSpan(email, "keskikokoinen", 2);
+//email-kenttä vie kaksi saraketta, kun keskeinen katkeamispiste on aktiivinen
+columnsLayout.setSpan(email, "medium", 2);
 //...
 ```
 
-Tämä mukauttamisaste varmistaa, että asettelusi pysyy reagoivana ja asianmukaisesti rakenteellisena eri laitteilla.
+Tämä mukautustaso varmistaa, että layoutisi pysyy responsiivisena ja rakenteeltaan asianmukaisena eri laitteilla.
 
 ## Kohteiden sijoittaminen sarakkeisiin {#placing-items-within-columns}
 
-`ColumnsLayout` tarjoaa mahdollisuuden sijoittaa kohteita tietyissä sarakkeissa, mikä antaa enemmän hallintaa elementtien sijoitteluun. Voit manuaalisesti määrittää, mihin kohtaan asettelua kohde tulisi sijoittaa, varmistaen, että tärkeät komponentit näkyvät suunnitellusti.
+`ColumnsLayout` tarjoaa mahdollisuuden sijoittaa kohteita tiettyihin sarakkeisiin, antaen enemmän hallintaa elementtien järjestelyyn. Voit manuaalisesti määrittää, missä kohteen tulisi näkyä layoutissa varmistaen, että tärkeät komponentit näkyvät haluamallasi tavalla.
 
-### Perussarake sijoittaminen {#basic-column-placement}
+### Perussarakasijoittaminen {#basic-column-placement}
 
-Oletuksena kohteet sijoitetaan seuraavaan saatavilla olevaan sarakkeeseen, täyttäen vasemmalta oikealle. Voit kuitenkin ohittaa tämän käyttäytymisen ja määrittää tarkan sarakkeen, johon kohde tulisi sijoittaa. Kohteen sijoittamiseksi tiettyyn sarakkeeseen käytä `setColumn()`-menetelmää. Tässä esimerkissä painike sijoitetaan asettelun toiseen sarakkeeseen sen perusteella, missä järjestyksessä se on lisätty suhteessa muihin komponentteihin:
+Oletuksena kohteet sijoitetaan seuraavaan saatavilla olevaan sarakkeeseen täyttäen vasemmalta oikealle. Voit kuitenkin ohittaa tämän käyttäytymisen ja määrittää tarkalleen, mihin sarakkeeseen kohde tulisi sijoittaa. Kohteen sijoittamiseksi tietyyn sarakkeeseen käytä `setColumn()`-menetelmää. Tässä esimerkissä painike sijoitetaan layoutin toiseen sarakkeeseen, riippumatta siitä, missä järjestyksessä se lisättiin suhteessa muihin komponentteihin:
 
 ```java
 Button button = new Button("Lähetä");
 layout.addComponent(button);
-// Sijoita kohte toiseen sarakkeeseen
+// Sijoita kohde toiseen sarakkeeseen
 layout.setColumn(button, 2);  
 ```
 
-### Sijoittamisen säätäminen katkaisujen mukaan {#adjusting-placement-per-breakpoint}
+### Sijoittamisen säätäminen katkeamispisteiden mukaan {#adjusting-placement-per-breakpoint}
 
-Aivan kuten sarakkeiden spans kanssa, voit käyttää katkaisuja säätämään kohteiden sijoittamista näytön koon mukaan. Tämä on hyödyllistä, kun järjestetään tai siirretään elementtejä asettelussa, kun näkymä muuttuu.
+Aivan kuten sarakkeen spanien kanssa, voit käyttää katkeamispisteitä säätämään kohteiden sijoittelua näytön koon mukaan. Tämä on hyödyllistä elementtien järjestyksen tai paikkaamisen muuttamiseksi layoutissa näkymän muuttuessa.
 
 ```java
 TextField email = new TextField("Sähköposti");
 //...
 List.of(
-  new ColumnsLayout.Breakpoint("oletus", 0 , 1),
-  new ColumnsLayout.Breakpoint("pieni", "20em", 1),
-  new ColumnsLayout.Breakpoint("keskikokoinen", "40em", 2),
-  new ColumnsLayout.Breakpoint("suuri", "60em", 3)
+  new ColumnsLayout.Breakpoint("default", 0 , 1),
+  new ColumnsLayout.Breakpoint("small", "20em", 1),
+  new ColumnsLayout.Breakpoint("medium", "40em", 2),
+  new ColumnsLayout.Breakpoint("large", "60em", 3)
 )
 //...
-//sähköpostikenttä näkyy toisessa sarakkeessa, kun keskikokoinen katkaisu on aktiivinen
-columnsLayout.setColumn(email, "keskikokoinen", 2); 
+//email-kenttä näkyy toisessa sarakkeessa, kun keskeinen katkeamispiste on aktiivinen
+columnsLayout.setColumn(email, "medium", 2); 
 //...
 ```
 
-Alla olevassa esimerkissä huomaa, että kun `"keskikokoinen"` katkaisu aktivoituu, `email`-kenttä kattaa molemmat sarakkeet, ja `confirmPassword`-kenttä sijoitetaan ensimmäiseen sarakkeeseen, sen sijaan että se olisi oletusarvoisesti toisessa sarakkeessa:
+Seuraavassa demonstraatiossa huomaa, että kun `"medium"` katkeamispiste aktivoituu, `email`-kenttä vie molemmat sarakkeet, ja `confirmPassword`-kenttä sijoitetaan ensimmäiseen sarakkeeseen, eikä sen oletuspaikkaan toiseen sarakkeeseen:
 
 <ComponentDemo 
 path='/webforj/columnslayoutspancolumn?' 
@@ -149,26 +151,26 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="375px"
 />
 
-:::tip Vältä kolisioita
-Kun useita kohteita sijoitetaan asetteluun erilaisilla span- ja/tai sarakeasetuksilla, varmista, että kohteiden yhdistetyt spans ja sijainnit rivillä eivät päällekkäin. Asettelu yrittää hallita välikkeiden tilaa automaattisesti, mutta huolellinen suunnittelu spansien ja katkaisujen osalta estää tahattomia näyttöongelmia.
+:::tip Vältä törmäyksiä
+Kun useita kohteita sijoitetaan layoutiin erilaisilla spanilla ja/tai sarakeasetuksilla, varmista, että kohteiden yhteenlasketut spanit ja sijoitukset rivillä eivät päällekkäin. Layout yrittää hallita välistä tilaa automaattisesti, mutta huolellinen suunnittelu spaneista ja katkeamispisteistä estää tahattoman kohteiden näyttämisen.
 :::
 
-## Pystysuoritussijoittaminen ja vaakasuorituskohtien kohdistukset {#vertical-and-horizontal-item-alignments}
+## Vertikaaliset ja horisontaaliset kohteen tasaus {#vertical-and-horizontal-item-alignments}
 
-Jokainen kohde `ColumnsLayout`-komponentissa voidaan kohdistaa sekä vaakasuunnassa että pystysuunnassa sen sarakkeessa, mikä antaa hallintaa sisällön sijoittamiselle asettelun sisällä.
+Jokainen kohde `ColumnsLayout`:issa voidaan tasaamaan sekä vaakasuunnassa että pystysuunnassa sarakkeensa sisällä, mikä antaa hallinnan siitä, miten sisältö sijoitetaan layoutin sisällä.
 
-**Vaakasuuntainen kohdistus** kohteen kohdalla hallitaan käyttämällä `setHorizontalAlignment()`-menetelmää. Tämä ominaisuus määrää, kuinka kohde kohdistuu sarakkeessaan vaakasuunnassa.
+**Vaakasuuntainen tasaus** kohteelle hallitaan käyttämällä `setHorizontalAlignment()`-menetelmää. Tämä ominaisuus määrää, miten kohde on kohdistettu sarakkeensa sisällä vaakasuoralla akselilla.
 
-**Pystysuuntainen kohdistus** määrittelee, kuinka kohde sijoitetaan sarakkeessaan pystysuunnassa. Tämä on hyödyllistä, kun sarakkeilla on vaihtelevat korkeudet ja haluat hallita, kuinka kohteet jakautuvat pystysuunnassa.
+**Pystysuuntainen tasaus** määrittää, kuinka kohde sijoitetaan sarakkeensa sisällä pystysuoralla akselilla. Tämä on hyödyllistä, kun sarakkeilla on vaihteleva korkeus ja haluat hallita, miten kohteet jakautuvat pystysuunnassa. 
 
-Saatavilla olevat `Alignment`-vaihtoehdot ovat:
+Saatavilla olevat `Alignment`-vaihtoehdot sisältävät:
 
 - `START`: Kohdistaa kohteen sarakkeen vasempaan laitaan (oletus).
-- `CENTER`: Keskittää kohteen vaakasuunnassa sarakkeeseen.
+- `CENTER`: Keskittää kohteen vaakasuunnassa sarakkeessa.
 - `END`: Kohdistaa kohteen sarakkeen oikeaan laitaan.
-- `STRETCH`: Venyttää komponentin täyttämään asettelun.
-- `BASELINE`: Kohdistaa tekstin tai sisällön mukaan sarakkeessa, kohdistamalla kohteet tekstin peruslinjaan muihin kohdistusvaihtoehtoihin verrattuna.
-- `AUTO`: Automaattinen kohdistus.
+- `STRETCH`: Venyttää komponentin täyttämään layoutin.
+- `BASELINE`: Kohdistaa perustuen sarakkeessa olevaan tekstiin tai sisältöön, kohdistamalla kohteet tekstin alalaitaan muista tasausvaihtoehdoista poiketen.
+- `AUTO`: Automaattinen tasaus.
 
 <ComponentDemo 
 path='/webforj/columnslayoutalignment?' 
@@ -176,33 +178,33 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="500px"
 />
 
-Yllä olevassa esimerkissä `Submit`-painikkeelle on annettu `ColumnsLayout.Alignment.END` varmistaakseen, että se ilmestyy sarakkeensa loppuun, tai tässä tapauksessa oikealle.
+Yllä olevassa esittelyssä `Lähetä`-painikkeelle on annettu `ColumnsLayout.Alignment.END`, jotta se näkyy sarakkeensa päässä, tai tässä tapauksessa oikealla.
 
-## Kohteiden välinen tila {#item-spacing}
+## Kohteiden väli {#item-spacing}
 
-Kohteiden välillä olevan tilan hallinta `ColumnsLayout`-komponentissa sarakkeiden (vaakasuuntainen tila) ja rivien (pystysuuntainen tila) välillä auttaa kehittäjiä hienosäätämään asettelua.
+Sarakkeiden välin hallinta `ColumnsLayout`:issa sarakkeiden (vaakaväli) ja rivien (pystyvli) välillä auttaa kehittäjiä hienosäätämään layoutia.
 
-Asettelu tilan asettamiseksi käytä `setHorizontalSpacing()`-menetelmää:
+Aseta layoutin vaakaväli käyttämällä `setHorizontalSpacing()`-menetelmää:
 
 ```java
-// Aseta 20 px tila sarakkeiden väliin
+// Aseta 20px väli sarakkeiden väliin
 layout.setHorizontalSpacing(20);  
 ```
 
-Samoin käytä `setVerticalSpacing()`-menetelmää määrittääksesi sarjojen välinen tila asettelussa:
+Samaan tapaan käytä `setVerticalSpacing()`-menetelmää määrittääksesi välin rivien välillä layoutissa:
 
 ```java
-// Aseta 15 px tila sarjojen väliin
+// Aseta 15px väli rivien väliin
 layout.setVerticalSpacing(15);  
 ```
 
 :::tip CSS-yksiköt
-Voit käyttää kokonaislukua määrittämään vähimmäisleveyden pikseleinä tai käyttää `String`-arvoa muiden yksiköiden, kuten `vw`, `%`, tai `em`, määrittämiseen.
+Voit käyttää kokonaislukua määrittämään minimileveyden pikseleinä tai käyttää merkkijonoa määrittääksesi muita yksiköitä, kuten `vw`, `%` tai `em`.
 :::
 
-## Vaakasuorat ja pystysuorat asettelut {#horizontal-and-vertical-layouts}
+## Vaakasuorat ja pystysuorat layoutit {#horizontal-and-vertical-layouts}
 
-Reagoivien ja houkuttelevien asettelujen rakentaminen on mahdollista käyttämällä sekä [`FlexLayout`](./flex-layout) -komponenttia että `ColumnsLayout` -komponenttia sekä yhdistelmää näistä kahdesta. Alla on esimerkki [lomakkeesta, joka on luotu FlexLayout](./flex-layout#example-form) -artikkelissa, mutta käyttäen `ColumnLayout`-kaavaa sen sijaan:
+Responsiivisten ja houkuttelevien layoutien rakentaminen on mahdollista sekä [`FlexLayout`](./flex-layout) -komponentilla että `ColumnsLayout` -komponentilla, sekä näiden yhdistelmällä. Alla on esimerkki [FlexLayout](./flex-layout#example-form) artikkelissa luodusta lomakkeesta, mutta käyttäen `ColumnLayout`-järjestelmää:
 
 <ComponentDemo 
 path='/webforj/columnslayoutform?' 
@@ -210,6 +212,6 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="700px"
 />
 
-## Tyylit {#styling}
+## Tyylittely {#styling}
 
 <TableBuilder name="ColumnsLayout" clientComponent />

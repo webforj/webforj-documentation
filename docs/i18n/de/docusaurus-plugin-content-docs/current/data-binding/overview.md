@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Data Binding
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: fef9723206ef7122c3ada5503f97edf1
+_i18n_hash: 2ce381aec06e45ed4001e7dbfdb22dc0
 ---
 <Head>
   <style>{`
@@ -20,17 +20,17 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
- webforJ umfasst eine Datenbindung, die UI-Komponenten nahtlos mit Backend-Datenmodellen in Java-Anwendungen integriert. Diese Funktion überbrückt die Kluft zwischen der Benutzeroberfläche und der Datenschicht und sorgt dafür, dass Änderungen in der Benutzeroberfläche im Datenmodell und umgekehrt widerspiegelt werden. Dadurch wird die Benutzererfahrung verbessert und die Komplexität der Ereignisbehandlung sowie der Datensynchronisierung reduziert.
+ webforJ umfasst eine Datenbindungsfunktion, die UI-Komponenten nahtlos mit Backend-Datenmodellen in Java-Anwendungen integriert. Diese Funktion überbrückt die Lücke zwischen der Benutzeroberfläche und der Datenschicht und sorgt dafür, dass Änderungen in der Benutzeroberfläche im Datenmodell und umgekehrt angezeigt werden. Dadurch wird das Benutzererlebnis verbessert und die Komplexität der Ereignisbehandlung und Datensynchronisation reduziert.
 
 ## Konzept {#concept}
 
 Die folgende Demonstration zeigt eine einfache webforJ-App zur Registrierung von Superhelden mithilfe der Datenbindung von webforJ. Die App besteht aus zwei Hauptteilen: `HeroRegistration.java` und `Hero.java`. 
 
-In `HeroRegistration.java` konfiguriert der Code die Benutzeroberfläche mit einem `TextField` zur Eingabe des Namens des Helden, einem `ComboBox` zur Auswahl einer Superkraft und einem `Button`, um die Registrierung abzusenden.
+In `HeroRegistration.java` konfiguriert der Code die Benutzeroberfläche mit einem `TextField`, um den Namen des Helden einzugeben, einer `ComboBox`, um eine Superkraft auszuwählen, und einem `Button`, um die Registrierung abzuschicken.
 
-Die `Hero`-Klasse definiert das Datenmodell mit Validierungsbeschränkungen für den Namen und die Kraft des Helden und stellt sicher, dass die Eingaben gültig sind und den festgelegten Kriterien wie Länge und Muster entsprechen.
+Die Klasse `Hero` definiert das Datenmodell mit Validierungsbedingungen für den Namen und die Kraft des Helden, um sicherzustellen, dass die Eingaben gültig sind und bestimmten Kriterien wie Länge und Muster entsprechen.
 
-Die App nutzt den `BindingContext`, um UI-Komponenten mit den Eigenschaften des `Hero`-Objekts zu verbinden. Wenn der Benutzer auf die Schaltfläche absenden klickt, schreibt die App die im Formular eingegebenen Daten zurück in die `Hero`-Bean, sofern sie gültig sind.
+Die App nutzt den `BindingContext`, um UI-Komponenten mit den Eigenschaften des `Hero`-Objekts zu verknüpfen. Wenn ein Benutzer auf die Schaltfläche "Absenden" klickt, schreibt die App die im Formular eingegebenen Daten zurück in das `Hero`-Bean, sofern sie gültig sind.
 
 <Tabs>
 <TabItem value="HeroRegistration" label="HeroRegistration.java">
@@ -46,16 +46,16 @@ public class HeroRegistration extends App {
 
   @Override
   public void run() throws WebforjException {
-    power.insert("Fliegen", "Unsichtbar", "LaserVision", "Geschwindigkeit", "Teleportation");
+    power.insert("Fliegen", "Unsichtbar", "Laserblick", "Geschwindigkeit", "Teleportation");
 
     BindingContext<Hero> context = BindingContext.of(this, Hero.class, true);
     Hero bean = new Hero("Superman", "Fliegen");
 
-    // Daten des Beans im Formular widerspiegeln
+    // spiegeln Sie die Beandaten im Formular wider
     context.read(bean);
 
     submit.onClick(e -> {
-      // Formulardaten zurück in den Bean schreiben
+      // schreiben Sie die Formulardaten zurück in das Bean
       ValidationResult results = context.write(bean);
 
       if (results.isValid()) {
@@ -76,12 +76,12 @@ public class HeroRegistration extends App {
 ```java showLineNumbers
 public class Hero {
 
-  @NotEmpty(message = "Der Name darf nicht leer sein")
+  @NotEmpty(message = "Name darf nicht leer sein")
   @Length(min = 3, max = 20)
   private String name;
 
-  @NotEmpty(message = "Unbestimmte Kraft")
-  @Pattern(regexp = "Fliegen|Unsichtbar|LaserVision|Geschwindigkeit|Teleportation", message = "Ungültige Kraft")
+  @NotEmpty(message = "Unbenannte Kraft")
+  @Pattern(regexp = "Fliegen|Unsichtbar|Laserblick|Geschwindigkeit|Teleportation", message = "Ungültige Kraft")
   private String power;
 
   public Hero(String name, String power) {
@@ -116,13 +116,13 @@ public class Hero {
 
 ## Hauptmerkmale {#key-features}
 
-- **Bidirektionale Bindung:** Unterstützt bidirektionale Datenbindung, sodass Änderungen im Datenmodell die Benutzeroberfläche aktualisieren und Benutzerinteraktionen in der Benutzeroberfläche das Datenmodell aktualisieren.
+- **Bidirektionale Bindung:** Unterstützt bidirektionale Datenbindung, die Änderungen im Datenmodell die Benutzeroberfläche aktualisieren lässt und Benutzerinteraktionen in der Benutzeroberfläche das Datenmodell aktualisieren lässt.
 
-- **Validierungsunterstützung:** Integriert umfassende Validierungsmechanismen, die individuell angepasst und erweitert werden können. Entwickler können ihre eigenen Validierungsregeln implementieren oder vorhandene Validierungsframeworks wie Jakarta Validation verwenden, um die Datenintegrität vor dem Aktualisieren des Modells sicherzustellen.
+- **Validierungsunterstützung:** Integriert umfassende Validierungsmechanismen, die Sie anpassen und erweitern können. Entwickler können ihre eigenen Validierungsregeln implementieren oder bestehende Validierungsframeworks wie Jakarta Validation verwenden, um die Datenintegrität vor der Aktualisierung des Modells sicherzustellen.
 
-- **Erweiterbarkeit:** Kann leicht erweitert werden, um verschiedene Arten von UI-Komponenten, Datenumwandlungen und komplexe Validierungsszenarien zu unterstützen.
+- **Erweiterbarkeit:** Kann leicht erweitert werden, um verschiedene Arten von UI-Komponenten, Datentransformationen und komplexen Validierungsszenarien zu unterstützen.
 
-- **Annotierte Konfiguration:** Nutzt Annotationen, um Boilerplate-Code zu minimieren und die Bindungen zwischen UI-Komponenten und Datenmodellen deklarativ und einfach zu verwalten.
+- **Annotation-getriebene Konfiguration:** Nutzt Annotationen, um Boilerplate-Code zu minimieren, wodurch die Bindungen zwischen UI-Komponenten und Datenmodellen deklarativ und einfach zu verwalten sind.
 
 # Themen
 

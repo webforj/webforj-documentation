@@ -1,15 +1,15 @@
 ---
 title: Background Jobs
 sidebar_position: 25
-_i18n_hash: 6770951556a0f793ce218daeb686b581
+_i18n_hash: d419b53d933af4ef48890b8be2eab4dc
 ---
-Wenn Benutzer auf eine Schaltfläche klicken, um einen Bericht zu erstellen oder Daten zu verarbeiten, erwarten sie, dass die Benutzeroberfläche reaktionsschnell bleibt. Fortschrittsbalken sollten animiert werden, Schaltflächen sollten auf Hover reagieren und die App darf nicht einfrieren. Springs `@Async`-Annotation macht dies möglich, indem lang laufende Vorgänge in Hintergrund-Threads verlagert werden.
+Wenn Benutzer auf eine Schaltfläche klicken, um einen Bericht zu generieren oder Daten zu verarbeiten, erwarten sie, dass die Benutzeroberfläche reaktionsschnell bleibt. Fortschrittsbalken sollten animiert werden, Schaltflächen sollten auf Hover reagieren, und die App sollte nicht einfrieren. Springs `@Async`-Annotation macht dies möglich, indem sie lang laufende Operationen in Hintergrundthreads verlagert.
 
-webforJ gewährleistet die Thread-Sicherheit für UI-Komponenten - alle Updates müssen im UI-Thread erfolgen. Das stellt eine Herausforderung dar: Wie können Hintergrundaufgaben Fortschrittsbalken aktualisieren oder Ergebnisse anzeigen? Die Antwort lautet `Environment.runLater()`, das sicher UI-Updates von Springs Hintergrund-Threads in den UI-Thread von webforJ überträgt.
+webforJ sorgt für Thread-Sicherheit der UI-Komponenten - alle Updates müssen im UI-Thread erfolgen. Dies schafft eine Herausforderung: Wie können Hintergrundaufgaben Fortschrittsbalken aktualisieren oder Ergebnisse anzeigen? Die Antwort ist `Environment.runLater()`, das sicher UI-Updates von Springs Hintergrundthreads zum UI-Thread von webforJ überträgt.
 
 ## Aktivieren der asynchronen Ausführung {#enabling-asynchronous-execution}
 
-Die asynchrone Methoden-Ausführung von Spring erfordert eine explizite Konfiguration. Ohne diese werden mit `@Async` annotierte Methoden synchron ausgeführt, was ihren Zweck untergräbt.
+Die asynchrone Methodenausführung von Spring erfordert eine explizite Konfiguration. Ohne diese werden Methoden, die mit `@Async` annotiert sind, synchron ausgeführt, was ihren Zweck untergräbt.
 
 Fügen Sie `@EnableAsync` zu Ihrer Spring Boot-Anwendungsklasse hinzu:
 
@@ -25,15 +25,15 @@ public class Application {
 }
 ```
 
-Die `@EnableAsync`-Annotation aktiviert die Infrastruktur von Spring zur Erkennung von `@Async`-Methoden und deren Ausführung in Hintergrund-Threads.
+Die Annotation `@EnableAsync` aktiviert die Infrastruktur von Spring zur Erkennung von `@Async`-Methoden und deren Ausführung in Hintergrundthreads.
 
 :::tip[Spring-Async-Guide]
-Für eine schnelle Einführung in Springs `@Async`-Annotation und grundlegende Nutzungsmuster siehe [Erstellen asynchroner Methoden](https://spring.io/guides/gs/async-method).
+Für eine schnelle Einführung in Springs `@Async`-Annotation und grundlegende Nutzungsmuster siehe [Asynchrone Methoden erstellen](https://spring.io/guides/gs/async-method).
 :::
 
 ## Erstellen von asynchronen Diensten {#creating-async-services}
 
-Dienste, die mit `@Service` annotiert sind, können Methoden haben, die mit `@Async` markiert sind, um in Hintergrund-Threads ausgeführt zu werden. Diese Methoden geben in der Regel `CompletableFuture` zurück, um eine ordnungsgemäße Abschlussbehandlung und Abbruch zu ermöglichen:
+Dienste, die mit `@Service` annotiert sind, können Methoden haben, die mit `@Async` markiert sind, um in Hintergrundthreads ausgeführt zu werden. Diese Methoden geben typischerweise `CompletableFuture` zurück, um eine ordnungsgemäße Abschlussbehandlung und Stornierung zu ermöglichen:
 
 ```java
 @Service
@@ -63,13 +63,13 @@ public class BackgroundService {
 }
 ```
 
-Dieser Dienst akzeptiert einen Fortschritts-Callback (`Consumer<Integer>`), der aus dem Hintergrund-Thread aufgerufen wird. Das Callback-Muster ermöglicht es dem Dienst, Fortschritte zu melden, ohne etwas über UI-Komponenten zu wissen.
+Dieser Dienst akzeptiert ein Fortschritts-Callback (`Consumer<Integer>`), das aus dem Hintergrundthread aufgerufen wird. Das Callback-Muster ermöglicht es dem Dienst, den Fortschritt zu melden, ohne über UI-Komponenten Bescheid zu wissen.
 
-Die Methode simuliert eine 5-Sekunden-Aufgabe mit 10 Fortschrittsaktualisierungen. In der Produktion wäre dies tatsächliche Arbeit wie Datenbankabfragen oder die Verarbeitung von Dateien. Die Ausnahmebehandlung stellt den Interrupt-Status wieder her, um eine ordnungsgemäße Abbruchunterstützung zu ermöglichen, wenn `cancel(true)` aufgerufen wird.
+Die Methode simuliert eine 5-Sekunden-Aufgabe mit 10 Fortschrittsaktualisierungen. In der Produktion wäre dies echte Arbeit wie Datenbankabfragen oder Datei-Verarbeitung. Die Ausnahmebehandlung stellt den Interrupt-Status wieder her, um eine ordnungsgemäße Stornierung der Aufgabe zu unterstützen, wenn `cancel(true)` aufgerufen wird.
 
 ## Verwendung von Hintergrundaufgaben in Ansichten {#using-background-tasks-in-views}
 
-Die Ansicht erhält den Hintergrunddienst über Konstruktorinjektion:
+Die Ansicht erhält den Hintergrunddienst über die Konstruktorinjektion:
 
 ```java
 @Route("/")
@@ -91,9 +91,9 @@ public class HelloWorldView extends Composite<FlexLayout> {
 }
 ```
 
-Spring injiziert den `BackgroundService` in den Konstruktor der Ansicht, genau wie jede andere Spring-Bean. Die Ansicht verwendet dann diesen Dienst, um Hintergrundaufgaben zu starten. Das Schlüsselkonzept ist: Callbacks vom Dienst werden in Hintergrund-Threads ausgeführt, sodass alle UI-Aktualisierungen innerhalb dieser Callbacks `Environment.runLater()` verwenden müssen, um die Ausführung in den UI-Thread zu übertragen.
+Spring injiziert den `BackgroundService` in den Konstruktor der Ansicht, genau wie jede andere Spring-Bean. Die Ansicht verwendet diesen Dienst, um Hintergrundaufgaben zu starten. Das Schlüsselkonzept: Callbacks aus dem Dienst werden in Hintergrundthreads ausgeführt, sodass alle UI-Aktualisierungen innerhalb dieser Callbacks `Environment.runLater()` verwenden müssen, um die Ausführung in den UI-Thread zu übertragen.
 
-Die Abschlussbehandlung erfordert das gleiche sorgfältige Thread-Management:
+Die Abschlussbehandlung erfordert dasselbe sorgfältige Thread-Management:
 
 ```java
 currentTask.whenComplete((result, error) -> {
@@ -109,17 +109,17 @@ currentTask.whenComplete((result, error) -> {
 });
 ```
 
-Der `whenComplete`-Callback wird ebenfalls in einem Hintergrund-Thread ausgeführt. Jede UI-Operation - die Schaltfläche aktivieren, den Fortschrittsbalken ausblenden, Toasts anzeigen - muss in `Environment.runLater()` eingeschlossen werden. Ohne diese Einfassung wirft webforJ Ausnahmen, da Hintergrund-Threads keinen Zugriff auf UI-Komponenten haben.
+Das `whenComplete`-Callback wird ebenfalls in einem Hintergrundthread ausgeführt. Jede UI-Operation - Aktivierung der Schaltfläche, Ausblenden des Fortschrittsbalkens, Anzeigen von Toasts - muss in `Environment.runLater()` gewickelt werden. Ohne dieses Wrapping wirft webforJ Ausnahmen, da Hintergrundthreads nicht auf UI-Komponenten zugreifen können.
 
 :::warning[Thread-Sicherheit]
-Jede UI-Aktualisierung von einem Hintergrund-Thread muss in `Environment.runLater()` eingeschlossen werden. Diese Regel hat keine Ausnahmen. Der direkte Zugriff auf Komponenten aus `@Async`-Methoden schlägt immer fehl.
+Jede UI-Aktualisierung von einem Hintergrundthread muss in `Environment.runLater()` gewickelt sein. Diese Regel hat keine Ausnahmen. Der direkte Zugriff auf Komponenten aus `@Async`-Methoden schlägt immer fehl.
 :::
 
 :::tip[Erfahren Sie mehr über Thread-Sicherheit]
 Für detaillierte Informationen über das Thread-Modell von webforJ, das Ausführungsverhalten und welche Operationen `Environment.runLater()` erfordern, siehe [Asynchrone Updates](../../advanced/asynchronous-updates).
 :::
 
-## Aufgabenabbruch und Bereinigung {#task-cancellation-and-cleanup}
+## Aufgabestornierung und Bereinigung {#task-cancellation-and-cleanup}
 
 Eine ordnungsgemäße Lebenszyklusverwaltung verhindert Speicherlecks und unerwünschte UI-Aktualisierungen. Die Ansicht speichert die Referenz auf das `CompletableFuture`:
 
@@ -127,21 +127,21 @@ Eine ordnungsgemäße Lebenszyklusverwaltung verhindert Speicherlecks und unerw�
 private CompletableFuture<String> currentTask;
 ```
 
-Wenn die Ansicht zerstört wird, bricht sie alle laufenden Aufgaben ab:
+Wenn die Ansicht zerstört wird, storniert sie jede laufende Aufgabe:
 
 ```java
 @Override
 protected void onDestroy() {
-    // Abbrechen der Aufgabe, wenn die Ansicht zerstört wird
+    // Stornieren Sie die Aufgabe, wenn die Ansicht zerstört wird
     if (currentTask != null && !currentTask.isDone()) {
         currentTask.cancel(true);
     }
 }
 ```
 
-Der Parameter `cancel(true)` ist entscheidend. Er unterbricht den Hintergrund-Thread, wodurch blockierende Operationen wie `Thread.sleep()` eine `InterruptedException` auslösen. Dies ermöglicht eine sofortige Aufgabentrennung. Ohne das Interrupt-Flag (`cancel(false)`) würde die Aufgabe weiterhin laufen, bis sie explizit auf Abbruch überprüft.
+Der `cancel(true)`-Parameter ist entscheidend. Er unterbricht den Hintergrundthread, was dazu führt, dass blockierende Operationen wie `Thread.sleep()` eine `InterruptedException` auslösen. Dies ermöglicht die sofortige Beendigung der Aufgabe. Ohne das Interrupt-Flag (`cancel(false)`) würde die Aufgabe weiterlaufen, bis sie explizit auf eine Stornierung prüft.
 
 Diese Bereinigung verhindert mehrere Probleme:
-- Hintergrund-Threads verbrauchen weiterhin Ressourcen, nachdem die Ansicht verschwunden ist
+- Hintergrundthreads verbrauchen weiterhin Ressourcen, nachdem die Ansicht verschwunden ist
 - UI-Aktualisierungen versuchen, zerstörte Komponenten zu ändern
-- Speicherlecks durch Callbacks, die Verweise auf UI-Komponenten halten
+- Speicherlecks durch Callbacks, die Referenzen auf UI-Komponenten halten

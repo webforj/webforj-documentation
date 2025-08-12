@@ -1,7 +1,7 @@
 ---
 title: AppNav
 sidebar_position: 6
-_i18n_hash: 47432ed72280efdc4d1b48e72d95b87d
+_i18n_hash: 1e9ac3fc8372d76faee53a4b9ee2cf88
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-app-nav" />
@@ -9,13 +9,13 @@ _i18n_hash: 47432ed72280efdc4d1b48e72d95b87d
 <DocChip chip='since' label='24.12' />
 <JavadocLink type="appnav" location="com/webforj/component/appnav/AppNav" top='true'/> 
 
-De `AppNav` component in webforJ biedt een flexibele en georganiseerde zij-navigatiemenustructuur met ondersteuning voor zowel platte als hiërarchische structuren. Elke toegang is een `AppNavItem`, dat een eenvoudige link of een groep kan vertegenwoordigen die sub-items bevat. Items kunnen worden gekoppeld aan interne weergaven of externe bronnen, verrijkt met pictogrammen, onderscheidingen of andere componenten.
+De `AppNav` component in webforJ biedt een flexibele en georganiseerde zij-navigatiemenu met ondersteuning voor zowel vlakke als hiërarchische structuren. Elke invoer is een `AppNavItem`, die een eenvoudige link of een groep met sub-items kan vertegenwoordigen. Items kunnen worden gekoppeld aan interne weergaven of externe bronnen, versterkt met pictogrammen, badges of andere componenten.
 
 ## Items toevoegen en nesten {#adding-and-nesting-items}
 
-`AppNavItem` instanties worden gebruikt om de `AppNav` structuur te vullen. Deze items kunnen eenvoudige links zijn of geneste groepkoppen die kinditems bevatten. Groepkoppen zonder links fungeren als uitvouwbare containers.
+`AppNavItem` instanties worden gebruikt om de `AppNav` structuur te vullen. Deze items kunnen eenvoudige links of geneste groepsheaders zijn die child items bevatten. Groepsheaders zonder links fungeren als uitbreidbare containers.
 
-Gebruik `addItem()` om items in de navigatie op te nemen:
+Gebruik `addItem()` om items aan de navigatie toe te voegen:
 
 ```java
 AppNavItem dashboard = new AppNavItem("Dashboard", "/dashboard");
@@ -28,10 +28,10 @@ nav.addItem(dashboard);
 nav.addItem(admin);
 ```
 
-:::tip Groepitems koppelen
-Bovenliggende items in een navigatieboom zijn doorgaans bedoeld om uitvouwbaar te zijn—geen klikbare links. Het instellen van een `path` op dergelijke items kan gebruikers verwarren die verwachten dat ze sub-items onthullen in plaats van elders naartoe te navigeren.
+:::tip Groep Items Koppelen
+Hoofditems in een navigatieboom zijn meestal bedoeld om uitbreidbaar te zijn—niet om klikbare links te zijn. Het instellen van een `path` op dergelijke items kan gebruikers in de war brengen die verwachten dat ze sub-items onthullen in plaats van ergens anders naartoe te navigeren.
 
-Als je wilt dat de groepkop een aangepaste actie activeert (zoals het openen van externe documentatie), houd dan het pad van de groep leeg en voeg in plaats daarvan een interactieve controle zoals een [`IconButton`](./icon#icon-buttons) toe aan de suffix van het item. Dit houdt de gebruikerservaring consistent en schoon.
+Als je wilt dat de groepsheader een aangepaste actie trigger (zoals het openen van externe documentatie), houd het groepspad dan leeg en voeg in plaats daarvan een interactieve controle zoals een [`IconButton`](./icon#icon-buttons) toe aan de suffix van het item. Dit houdt de gebruikerservaring consistent en overzichtelijk.
 :::
 
 <AppLayoutViewer 
@@ -39,9 +39,9 @@ path='/webforj/appnav/Social?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/appnav/AppNavView.java'
 />
 
-## Items koppelen {#linking-items}
+## Items Koppelen {#linking-items}
 
-Elk `AppNavItem` kan navigeren naar een interne weergave of een externe link. Je kunt dit definiëren met behulp van statische paden of geregistreerde weergave Klassen.
+Elke `AppNavItem` kan navigeren naar een interne weergave of een externe link. Je kunt dit definiëren met statische paden of geregistreerde weergaveklassen.
 
 ### Statische paden {#static-paths}
 
@@ -60,7 +60,7 @@ Als je weergaven zijn geregistreerd bij de [router](../routing/overview), kun je
 AppNavItem settings = new AppNavItem("Settings", SettingsView.class);
 ```
 
-Als je geannoteerde route ondersteuning biedt voor [routeparameters](../routing/route-patterns#named-parameters), kun je ook een `ParametersBag` doorgeven:
+Als je geannoteerde route [routeparameters](../routing/route-patterns#named-parameters) ondersteunt, kun je ook een `ParametersBag` doorgeven:
 
 ```java
 ParametersBag params = ParametersBag.of("id=123");
@@ -79,24 +79,24 @@ advanced.setQueryParameters(params);
 
 ## Doelgedrag {#target-behavior}
 
-Controleer hoe links openen met `setTarget()`. Dit is vooral handig voor externe links of pop-out weergaven.
+Beheer hoe links openen met `setTarget()`. Dit is vooral nuttig voor externe links of pop-out weergaven.
 
 - **`SELF`** (standaard): Opent in de huidige weergave.
 - **`BLANK`**: Opent in een nieuw tabblad of venster.
-- **`PARENT`**: Opent in de bovenliggende browsecontext.
-- **`TOP`**: Opent in de bovenliggende browsecontext.
+- **`PARENT`**: Opent in de bovenliggende browse-context.
+- **`TOP`**: Opent in de top-niveau browse-context.
 
 ```java
 AppNavItem help = new AppNavItem("Help", "https://support.example.com");
 help.setTarget(AppNavItem.NavigationTarget.BLANK);
 ```
 
-## Prefix en suffix {#prefix-and-suffix}
+## Voorvoegsel en achtervoegsel {#prefix-and-suffix}
 
-`AppNavItem` ondersteunt prefix- en suffixcomponenten. Gebruik deze om visuele duidelijkheid te bieden met pictogrammen, onderscheidingen of knoppen.
+`AppNavItem` ondersteunt voorvoegsel- en achtervoegselcomponenten. Gebruik deze om visuele duidelijkheid te bieden met pictogrammen, badges of knoppen.
 
-- **Prefix**: verschijnt voor het label, nuttig voor pictogrammen.
-- **Suffix**: verschijnt na het label, geweldig voor onderscheidingen of acties.
+- **Voorvoegsel**: verschijnt voor het label, handig voor pictogrammen.
+- **Achtervoegsel**: verschijnt na het label, geweldig voor badges of acties.
 
 ```java
 AppNavItem notifications = new AppNavItem("Alerts");
@@ -104,7 +104,7 @@ notifications.setPrefixComponent(TablerIcon.create("alert"));
 notifications.setSuffixComponent(TablerIcon.create("link"));
 ```
 
-## Automatisch uitvouwen van groepen {#auto-opening-groups}
+## Auto-openen groepen {#auto-opening-groups}
 
 Gebruik `setAutoOpen(true)` op de `AppNav` component om geneste groepen automatisch uit te vouwen wanneer de app wordt vernieuwd.
 
@@ -112,6 +112,6 @@ Gebruik `setAutoOpen(true)` op de `AppNav` component om geneste groepen automati
 nav.setAutoOpen(true);
 ```
 
-## Styling `AppNavItem` {#styling-appnavitem}
+## Stylen `AppNavItem` {#styling-appnavitem}
 
 <TableBuilder name="AppNavItem" />

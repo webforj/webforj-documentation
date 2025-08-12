@@ -1,9 +1,9 @@
 ---
 sidebar_position: 6
 title: Border
-_i18n_hash: fe0a0386da63ff7ea085db8daa12d0fe
+_i18n_hash: 0849be23b4628a0132bffb11c88fd4f3
 ---
-Die Rahmen-Eigenschaften werden verwendet, um den Rahmenstil und die -breite der Komponente zu steuern. Siehe [verfügbare Rahmenstile](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style).
+Die Rahmen-Eigenschaften werden verwendet, um den Rahmenstil und die Breite des Komponents zu steuern. Siehe [verfügbare Rahmenstile](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style).
 
 ### Beispiel {#example}
 
@@ -20,12 +20,12 @@ Die Rahmen-Eigenschaften werden verwendet, um den Rahmenstil und die -breite der
 | `--dwc-border-width` | 1px               |
 | `--dwc-border-style` | solid             |
 
-## Rahmeneckenradius {#border-radius}
+## Rahmenradius {#border-radius}
 
-Die Variablen für den Rahmeneckenradius definieren, wie abgerundet die Ecken einer Komponente sind. Alle Werte sind in `em` definiert, sodass sie mit der Schriftgröße skalieren.
+Die Rahmenradius-Variablen definieren, wie abgerundet die Ecken eines Komponents sind. Alle Werte werden in `em` definiert, sodass sie mit der Schriftgröße skalieren.
 
 :::info EM-Einheit
-`em` ist eine relative Einheit, die mit der [Schriftgröße](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) des übergeordneten Elements skaliert.
+`em` ist eine relative Einheit, die mit der [Schriftgröße](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) des Elternelements skaliert.
 :::
 
 ### Beispiel {#example-1}

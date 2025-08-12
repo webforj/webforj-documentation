@@ -1,15 +1,15 @@
 ---
 title: Background Jobs
 sidebar_position: 25
-_i18n_hash: 6770951556a0f793ce218daeb686b581
+_i18n_hash: d419b53d933af4ef48890b8be2eab4dc
 ---
-Lorsque les utilisateurs cliquent sur un bouton pour générer un rapport ou traiter des données, ils s'attendent à ce que l'interface reste réactive. Les barres de progression doivent s'animer, les boutons doivent réagir au survol, et l'application ne doit pas se bloquer. L'annotation `@Async` de Spring rend cela possible en déplaçant les opérations de longue durée vers des threads en arrière-plan.
+Lorsque les utilisateurs cliquent sur un bouton pour générer un rapport ou traiter des données, ils s'attendent à ce que l'interface reste réactive. Les barres de progression doivent s'animer, les boutons doivent réagir au survol et l'application ne doit pas se bloquer. L'annotation `@Async` de Spring rend cela possible en déplaçant les opérations longues vers des threads en arrière-plan.
 
-webforJ impose une sécurité des threads pour les composants de l'interface utilisateur - toutes les mises à jour doivent se faire sur le thread de l'interface utilisateur. Cela crée un défi : comment les tâches en arrière-plan mettent-elles à jour les barres de progression ou affichent les résultats ? La réponse est `Environment.runLater()`, qui transfère en toute sécurité les mises à jour de l'interface utilisateur des threads en arrière-plan de Spring vers le thread de l'interface utilisateur de webforJ.
+webforJ impose la sécurité des threads pour les composants UI - toutes les mises à jour doivent se faire sur le thread d'interface utilisateur. Cela crée un défi : comment les tâches d'arrière-plan peuvent-elles mettre à jour les barres de progression ou afficher des résultats ? La réponse est `Environment.runLater()`, qui transfère en toute sécurité les mises à jour de l'interface utilisateur des threads d'arrière-plan de Spring au thread d'interface utilisateur de webforJ.
 
-## Activer l'exécution asynchrone {#enabling-asynchronous-execution}
+## Activation de l'exécution asynchrone {#enabling-asynchronous-execution}
 
-L'exécution des méthodes asynchrones de Spring nécessite une configuration explicite. Sans cela, les méthodes annotées avec `@Async` s'exécutent de manière synchrone, ce qui va à l'encontre de leur objectif.
+L'exécution des méthodes asynchrones de Spring nécessite une configuration explicite. Sans cela, les méthodes annotées avec `@Async` s'exécutent de manière synchrone, ce qui contredit leur objectif.
 
 Ajoutez `@EnableAsync` à votre classe d'application Spring Boot :
 
@@ -25,15 +25,15 @@ public class Application {
 }
 ```
 
-L'annotation `@EnableAsync` active l'infrastructure de Spring pour détecter les méthodes annotées avec `@Async` et les exécuter sur des threads en arrière-plan.
+L'annotation `@EnableAsync` active l'infrastructure de Spring pour détecter les méthodes `@Async` et les exécuter sur des threads en arrière-plan.
 
 :::tip[Guide asynchrone de Spring]
-Pour une introduction rapide à l'annotation `@Async` de Spring et aux modèles d'utilisation de base, consultez [Créer des méthodes asynchrones](https://spring.io/guides/gs/async-method).
+Pour une introduction rapide à l'annotation `@Async` de Spring et aux motifs d'utilisation de base, consultez [Créer des méthodes asynchrones](https://spring.io/guides/gs/async-method).
 :::
 
 ## Création de services asynchrones {#creating-async-services}
 
-Les services annotés avec `@Service` peuvent avoir des méthodes marquées avec `@Async` pour s'exécuter sur des threads en arrière-plan. Ces méthodes retournent généralement `CompletableFuture` pour permettre une gestion appropriée de la complétion et de l'annulation :
+Les services annotés avec `@Service` peuvent avoir des méthodes marquées avec `@Async` pour s'exécuter sur des threads en arrière-plan. Ces méthodes retournent généralement `CompletableFuture` pour permettre un traitement approprié des complétions et des annulations :
 
 ```java
 @Service
@@ -43,7 +43,7 @@ public class BackgroundService {
   public CompletableFuture<String> performLongRunningTask(Consumer<Integer> progressCallback) {
     try {
       for (int i = 0; i <= 10; i++) {
-          // Signaler la progression
+          // Rapport de progression
           int progress = i * 10;
           if (progressCallback != null) {
               progressCallback.accept(progress);
@@ -54,7 +54,7 @@ public class BackgroundService {
       }
 
       return CompletableFuture.completedFuture(
-        "Tâche terminée avec succès depuis le service en arrière-plan !");
+        "Tâche terminée avec succès depuis le service d'arrière-plan !");
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
       return CompletableFuture.failedFuture(e);
@@ -63,23 +63,23 @@ public class BackgroundService {
 }
 ```
 
-Ce service accepte un rappel de progression (`Consumer<Integer>`) qui est appelé depuis le thread en arrière-plan. Le modèle de rappel permet au service de signaler la progression sans connaître les composants de l'interface utilisateur.
+Ce service accepte un rappel de progression (`Consumer<Integer>`) qui est appelé depuis le thread d'arrière-plan. Le modèle de rappel permet au service de rapporter la progression sans avoir connaissance des composants UI.
 
-La méthode simule une tâche de 5 secondes avec 10 mises à jour de progression. En production, il pourrait s'agir de travaux réels tels que des requêtes de base de données ou le traitement de fichiers. La gestion des exceptions restaure l'état d'interruption pour prendre en charge l'annulation correcte de la tâche lorsqu'on appelle `cancel(true)`.
+La méthode simule une tâche de 5 secondes avec 10 mises à jour de progression. En production, il s'agirait d'un travail réel comme des requêtes de base de données ou des traitements de fichiers. La gestion des exceptions restaure l'état d'interruption pour permettre une annulation appropriée de la tâche lorsque `cancel(true)` est appelé.
 
 ## Utilisation des tâches en arrière-plan dans les vues {#using-background-tasks-in-views}
 
-La vue reçoit le service en arrière-plan par injection de constructeur :
+La vue reçoit le service d'arrière-plan par injection par le constructeur :
 
 ```java
 @Route("/")
 public class HelloWorldView extends Composite<FlexLayout> {
-  private Button asyncBtn = new Button("Démarrer la tâche en arrière-plan");
+  private Button asyncBtn = new Button("Démarrer la tâche d'arrière-plan");
   private ProgressBar progressBar = new ProgressBar();
   private CompletableFuture<String> currentTask;
 
   public HelloWorldView(BackgroundService backgroundService) {
-    // Le service est injecté par Spring
+    // Service injecté par Spring
     asyncBtn.addClickListener(e -> {
       currentTask = backgroundService.performLongRunningTask(progress -> {
         Environment.runLater(() -> {
@@ -91,7 +91,7 @@ public class HelloWorldView extends Composite<FlexLayout> {
 }
 ```
 
-Spring injecte le `BackgroundService` dans le constructeur de la vue, tout comme tout autre bean Spring. La vue utilise ensuite ce service pour démarrer des tâches en arrière-plan. Le concept clé : les rappels du service s'exécutent sur des threads en arrière-plan, donc toutes les mises à jour de l'interface utilisateur à l'intérieur de ces rappels doivent utiliser `Environment.runLater()` pour transférer l'exécution au thread de l'interface utilisateur.
+Spring injecte le `BackgroundService` dans le constructeur de la vue, tout comme n'importe quel autre bean Spring. La vue utilise ensuite ce service pour démarrer des tâches d'arrière-plan. Le concept clé : les rappels du service s'exécutent sur des threads d'arrière-plan, donc toutes les mises à jour de l'UI à l'intérieur de ces rappels doivent utiliser `Environment.runLater()` pour transférer l'exécution au thread de l'UI.
 
 La gestion des complétions nécessite la même gestion minutieuse des threads :
 
@@ -101,7 +101,7 @@ currentTask.whenComplete((result, error) -> {
         asyncBtn.setEnabled(true);
         progressBar.setVisible(false);
         if (error != null) {
-            Toast.show("La tâche a échoué : " + error.getMessage(), Theme.DANGER);
+            Toast.show("Échec de la tâche : " + error.getMessage(), Theme.DANGER);
         } else {
             Toast.show(result, Theme.SUCCESS);
         }
@@ -109,25 +109,25 @@ currentTask.whenComplete((result, error) -> {
 });
 ```
 
-Le rappel `whenComplete` s'exécute également sur un thread en arrière-plan. Chaque opération d'interface utilisateur - habiliter le bouton, masquer la barre de progression, afficher des toasts - doit être enveloppée dans `Environment.runLater()`. Sans ce wrapping, webforJ génère des exceptions car les threads en arrière-plan ne peuvent pas accéder aux composants de l'interface utilisateur.
+Le rappel `whenComplete` s'exécute également sur un thread d'arrière-plan. Chaque opération UI - activation du bouton, masquage de la barre de progression, affichage des toasts - doit être encapsulée dans `Environment.runLater()`. Sans cette encapsulation, webforJ génère des exceptions car les threads d'arrière-plan ne peuvent pas accéder aux composants UI.
 
 :::warning[Sécurité des threads]
-Chaque mise à jour de l'interface utilisateur depuis un thread en arrière-plan doit être enveloppée dans `Environment.runLater()`. Cette règle n'a aucune exception. L'accès direct aux composants depuis des méthodes `@Async` échoue toujours.
+Chaque mise à jour de l'UI depuis un thread d'arrière-plan doit être encapsulée dans `Environment.runLater()`. Cette règle n'a aucune exception. L'accès direct aux composants depuis des méthodes `@Async` échoue toujours.
 :::
 
 :::tip[En savoir plus sur la sécurité des threads]
-Pour des informations détaillées sur le modèle de thread de webforJ, le comportement d'exécution et les opérations nécessitant `Environment.runLater()`, consultez [Mises à jour asynchrones](../../advanced/asynchronous-updates).
+Pour des informations détaillées sur le modèle de threading de webforJ, le comportement d'exécution et les opérations nécessitant `Environment.runLater()`, consultez [Mises à jour asynchrones](../../advanced/asynchronous-updates).
 :::
 
-## Annulation de tâches et nettoyage {#task-cancellation-and-cleanup}
+## Annulation des tâches et nettoyage {#task-cancellation-and-cleanup}
 
-Une gestion correcte du cycle de vie prévient les fuites de mémoire et les mises à jour d'interface utilisateur indésirables. La vue stocke la référence `CompletableFuture` :
+Une gestion appropriée du cycle de vie prévient les fuites de mémoire et les mises à jour d'interface indésirables. La vue stocke la référence `CompletableFuture` :
 
 ```java
 private CompletableFuture<String> currentTask;
 ```
 
-Lorsque la vue est détruite, elle annule toute tâche en cours d'exécution :
+Lorsque la vue est détruite, elle annule toute tâche en cours :
 
 ```java
 @Override
@@ -139,9 +139,9 @@ protected void onDestroy() {
 }
 ```
 
-Le paramètre `cancel(true)` est crucial. Il interrompt le thread en arrière-plan, provoquant des opérations de blocage comme `Thread.sleep()` pour lancer `InterruptedException`. Cela permet une terminaison immédiate de la tâche. Sans le drapeau d'interruption (`cancel(false)`), la tâche continuerait à s'exécuter jusqu'à ce qu'elle vérifie explicitement l'annulation.
+Le paramètre `cancel(true)` est crucial. Il interrompt le thread d'arrière-plan, causant des opérations de blocage comme `Thread.sleep()` à lancer `InterruptedException`. Cela permet une terminaison immédiate de la tâche. Sans le drapeau d'interruption (`cancel(false)`), la tâche continuerait à s'exécuter jusqu'à ce qu'elle vérifie explicitement l'annulation.
 
-Ce nettoyage empêche plusieurs problèmes :
-- Les threads en arrière-plan continuent à consommer des ressources après que la vue a disparu
-- Les mises à jour de l'interface utilisateur tentent de modifier des composants détruits
-- Fuites de mémoire causées par des rappels conservant des références à des composants de l'interface utilisateur
+Ce nettoyage prévient plusieurs problèmes :
+- Les threads d'arrière-plan continuent à consommer des ressources après que la vue soit disparue
+- Les mises à jour de l'UI tentent de modifier des composants détruits
+- Les fuites de mémoire des rappels tenant des références à des composants UI

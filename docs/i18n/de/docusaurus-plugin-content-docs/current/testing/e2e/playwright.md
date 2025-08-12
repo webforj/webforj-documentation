@@ -1,21 +1,21 @@
 ---
 sidebar_position: 2
 title: Testing with Playwright
-_i18n_hash: 43cec2eab876a8dc170f4fb69aaa8214
+_i18n_hash: dffe640edd9d7918a3c8bace8cf0bbe8
 ---
-Diese Dokumentation beschreibt den Prozess zum Testen von webforJ-Anwendungen mit Playwright, wobei speziell der `HelloWorldView` aus dem `webforj-archetype-hello-world` im Fokus steht.
+Diese Dokumentation beschreibt den Prozess zum Testen von webforJ-Anwendungen mit Playwright, insbesondere fokussiert auf die `HelloWorldView` aus dem `webforj-archetype-hello-world`.
 
-:::info App-Grundlagen
-Um mehr über das `webforj-archetype-hello-world` zu erfahren, siehe den Abschnitt [App-Grundlagen Einführung](../../introduction/basics).
+:::info App Grundlagen
+Um mehr über das `webforj-archetype-hello-world` zu erfahren, siehe den Abschnitt [Grundlagen der App Einführung](../../introduction/basics).
 :::
 
 ## Voraussetzungen {#prerequisites}
 
-Bevor Sie die Playwright-Tests schreiben und ausführen, stellen Sie sicher, dass Folgendes erfüllt ist:
+Bevor Sie die Playwright-Tests schreiben und ausführen, stellen Sie Folgendes sicher:
 - Die webforJ-App ist korrekt eingerichtet und läuft auf Ihrem lokalen Server.
 - Sie haben Folgendes installiert:
   - Playwright Java-Bindings.
-  - Einen kompatiblen Browser (Playwright kann Browser während der Einrichtung automatisch installieren).
+  - Einen kompatiblen Browser (Playwright kann während der Einrichtung automatisch Browser installieren).
   - Maven für Projektabhängigkeiten.
 
 ## Maven-Konfiguration {#maven-configuration}
@@ -40,7 +40,7 @@ Fügen Sie die erforderlichen Abhängigkeiten in Ihrer `pom.xml` für Playwright
 
 ## Testbeispiel: `HelloWorldView` {#testing-example-helloworldview}
 
-Der folgende Code zeigt einen auf Playwright basierenden Test für die Komponente `HelloWorldView`.
+Der folgende Code demonstriert einen auf Playwright basierenden Test für die `HelloWorldView`-Komponente.
 
 ```java title="HelloWorldViewTest.java"
 package com.example.views;
@@ -75,24 +75,24 @@ class HelloWorldViewTest {
     page.getByText("Say Hello").click();
 
     assertThat(page.locator("dwc-toast").first())
-        .containsText("Welcome to webforJ Starter webforJ!");
+        .containsText("Willkommen bei webforJ Starter webforJ!");
   }
 }
 ```
 
-### Schlüssel Schritte {#key-steps}
+### Schlüsselschritte {#key-steps}
 
 1. **Playwright initialisieren**:
    - Erstellen Sie eine `Playwright`-Instanz.
-   - Starten Sie eine Browser-Instanz mit `playwright.chromium().launch()`.
+   - Starten Sie eine Browserinstanz mit `playwright.chromium().launch()`.
 
 2. **Testumgebung einrichten**:
    - Öffnen Sie eine neue Browserseite mit `browser.newPage()`.
-   - Navigieren Sie zur Seite `HelloWorldView` mit der Methode `navigate`.
+   - Navigieren Sie zur `HelloWorldView`-Seite mit der Methode `navigate`.
 
 3. **Mit Elementen interagieren**:
    - Verwenden Sie [Playwrights Locator](https://playwright.dev/java/docs/api/class-locator), um mit DOM-Elementen zu interagieren.
-   - Füllen Sie Eingabefelder mit `locator("input").fill()` und lösen Sie Aktionen mit `getByText("Say Hello").click()` aus.
+   - Füllen Sie Eingabefelder mit `locator("input").fill()` und triggern Sie Aktionen mit `getByText("Say Hello").click()`.
 
 4. **Assertions**:
    - Überprüfen Sie die angezeigte Toast-Nachricht mit `PlaywrightAssertions.assertThat()`.
@@ -114,6 +114,6 @@ class HelloWorldViewTest {
 
 ## Erwartetes Verhalten {#expected-behavior}
 
-- Beim Besuch von `http://localhost:<port>/` wird die Seite `HelloWorldView` geladen.
+- Beim Besuch von `http://localhost:<port>/` wird die `HelloWorldView`-Seite geladen.
 - Geben Sie webforJ in das Textfeld ein und klicken Sie auf die Schaltfläche `Say Hello`.
-- Eine Toast-Nachricht sollte erscheinen mit dem Text: `Willkommen bei webforJ Starter webforJ!`.
+- Eine Toast-Nachricht sollte mit dem Text erscheinen: `Willkommen bei webforJ Starter webforJ!`.

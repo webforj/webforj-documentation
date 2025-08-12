@@ -2,7 +2,7 @@
 title: Tabs
 sidebar_position: 2
 hide_table_of_contents: true
-_i18n_hash: ba161760eed1006a71d42f2d566aff54
+_i18n_hash: bd6e6de9bb8396f7926e01ac2f34cfc3
 ---
 <Head>
   <style>{`
@@ -14,9 +14,9 @@ _i18n_hash: ba161760eed1006a71d42f2d566aff54
 
 # Archétype des onglets
 
-Le projet de démarrage `tabs` génère une application avec une interface à onglets simple. Idéal pour les projets nécessitant plusieurs vues ou sections accessibles via des onglets, cet archétype offre un moyen clair et organisé de gérer différentes parties de votre application, facilitant la navigation entre les diverses sections sans encombrer l'interface utilisateur.
+Le projet de départ `tabs` génère une application avec une interface à onglets simple. Idéal pour les projets nécessitant plusieurs vues ou sections accessibles via des onglets, cet archétype offre un moyen clair et organisé de gérer différentes parties de votre application, facilitant la navigation entre les différentes sections sans encombrer l'interface utilisateur.
 
-:::tip Utilisation de startforJ
+:::tip Utiliser startforJ
 Pour un meilleur contrôle sur la personnalisation et la configuration, vous pouvez utiliser [startforJ](https://docs.webforj.com/startforj/) pour créer votre projet - il vous suffit de sélectionner l'archétype `Tabs` lors du choix des options de configuration.
 :::
 
@@ -26,10 +26,10 @@ Pour un meilleur contrôle sur la personnalisation et la configuration, vous pou
 project="tabs"
 />
 
-## Exécution de l'application {#running-the-app}
+## Exécuter l'application {#running-the-app}
 
-Avant d'exécuter votre application, installez les [prérequis](../../introduction/prerequisites) si ce n'est pas déjà fait. 
-Ensuite, naviguez jusqu'au répertoire racine du projet et exécutez la commande suivante :
+Avant d'exécuter votre application, installez les [prérequis](../../introduction/prerequisites) si vous ne l'avez pas encore fait. 
+Ensuite, naviguez vers le répertoire racine du projet et exécutez la commande suivante :
 
 ```bash
 # pour une application webforJ standard

@@ -1,31 +1,31 @@
 ---
 title: Drawer
 sidebar_position: 35
-_i18n_hash: e3b531e5fb7f1554e035f4d05aad8512
+_i18n_hash: 73da264dca1e3f8cfd58b697e3e9d0dc
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-drawer" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="drawer" location="com/webforj/component/drawer/Drawer" top='true'/>
 
-Laatikko on säiliö, joka liukuu näkymään paljastaakseen lisävaihtoehtoja ja tietoja. Sovelluksessa voidaan luoda useita laatikoita, ja ne pinotaan toistensa päälle.
+Laatikko on säiliö, joka liukuu näkymään paljastaen lisävalintoja ja tietoa. Sovelluksessa voidaan luoda useita laatikoita, ja ne asetetaan toistensa päälle.
 
-Laatikkokomponenttia voidaan käyttää monenlaisissa tilanteissa, kuten tarjoamalla navigointivalikko, jota voidaan vaihtaa, paneeli, joka näyttää lisätietoja tai kontekstuaalista tietoa, tai optimoida käyttöä mobiililaitteessa. Seuraava esimerkki näyttää mobiilisovelluksen, joka käyttää webforJ AppLayout-komponenttia ja näyttää "Tervetuloa Popup" -laatikon alareunassa ensimmäisen latauksen yhteydessä. Lisäksi sovelluksessa voidaan vaihtaa navigointilaatikkokomponenttia napsauttamalla hampurilaisvalikkoa.
+Laatikkokomponenttia voidaan käyttää monissa eri tilanteissa, kuten tarjoamalla navigointivalikko, jonka voi vaihtaa päälle tai pois, paneeli, joka näyttää lisätietoja tai kontekstuaalista tietoa, tai optimoimaan käyttöä mobiililaitteella. Seuraava esimerkki näyttää mobiilisovelluksen, joka käyttää webforJ AppLayout-komponenttia ja näyttää "Tervetuloa Popup" -laatikon alareunassa, kun se ladataan ensimmäistä kertaa. Lisäksi navigointilaatikkokomponenttia voidaan vaihtaa sovelluksessa napsauttamalla hampurilaisvalikkoa.
 
 <AppLayoutViewer path='/webforj/drawerwelcome?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java'
 cssURL='/css/drawer/drawerWelcome.css'
 />
 
-## Käyttötarkoitukset {#usages}
+## Käyttötavat {#usages}
 
-1. **Navigointivalikko**: Yksi yleinen laatikkokomponentin käyttö on navigointivalikkona. Se tarjoaa tilaa säästävän tavan näyttää linkkejä sovelluksesi eri osiin tai sivuille, erityisesti mobiili- tai responsiivisissa asetteluissa. Käyttäjät voivat avata ja sulkea laatikon päästäkseen navigointivaihtoehtoihin ilman, että pääsisältöalue on liian täynnä.
+1. **Navigointivalikko**: Yksi yleinen laatikkokomponentin käyttötapa on navigointivalikkona. Se tarjoaa tilatehokkaan tavan näyttää linkkejä sovelluksen eri osiin tai sivuille, erityisesti mobiili- tai responsiivisissa asetteluissa. Käyttäjät voivat avata ja sulkea laatikon päästäkseen navigointivaihtoehtoihin ilman, että pääsisältöalue on tukossa.
 
-2. **Suodatin ja sivupaneeli**: Laatikkona voidaan käyttää suodatinta tai sivupaneelia sovelluksissa, jotka näyttävät luettelon kohteista. Käyttäjät voivat laajentaa laatikon paljastaakseen suodatusvaihtoehtoja, lajittelukontrolleja tai muita tietoja, jotka liittyvät luettelon kohteisiin. Tämä pitää pääsisällön keskittyneenä luetteloon samalla, kun tarjoat edistyneitä toimintoja helposti saavutettavassa muodossa.
+2. **Suodatin ja sivupalkki**: Laatikkoa voidaan käyttää suodattimena tai sivupalkkina sovelluksissa, jotka näyttävät luetteloita kohteista. Käyttäjät voivat laajentaa laatikkoa paljastaakseen suodatusvaihtoehdot, lajittelukontrollit tai lisätietoja liittyen luettelon kohteisiin. Tämä pitää pääsisällön keskittyneenä luetteloon, samalla kun tarjotaan kehittyneitä ominaisuuksia helposti saavutettavassa muodossa.
 
-3. **Käyttäjäprofiili tai asetukset**: Voit käyttää laatikkoa näyttämään käyttäjäprofiilitiedot tai sovelluksen asetukset. Tämä pitää nämä tiedot helposti saavutettavina, mutta piilossa, kun niitä ei tarvita, säilyttäen siistin ja järjestelmällisen käyttöliittymän. Käyttäjät voivat avata laatikon päivittääkseen profiilejaan tai säädöksiään.
+3. **Käyttäjäprofiili tai asetukset**: Voit käyttää laatikkoa näyttämään käyttäjäprofiilitietoja tai sovellusasetuksia. Tämä pitää tällaiset tiedot helposti saatavilla mutta piilossa, kun niitä ei tarvita, säilyttäen siistin ja järjestäytyneen käyttöliittymän. Käyttäjät voivat avata laatikon päivittääkseen profiilejaan tai säätelemään asetuksia.
 
-4. **Ilmoitukset**: Ilmoituksia tai hälytyksiä sisältävissä sovelluksissa laatikko voi liukua sisään näyttämään uusia viestejä tai päivityksiä. Käyttäjät voivat nopeasti tarkistaa ja hylätä ilmoituksia jättämättä nykyistä näkymäänsä.
+4. **Ilmoitukset**: Sovelluksille, joilla on ilmoituksia tai hälytyksiä, laatikko voi liukua esiin näyttämään uusia viestejä tai päivityksiä. Käyttäjät voivat nopeasti tarkistaa ja hylätä ilmoituksia ilman, että heidän tarvitsee poistua nykyisestä näkymästään.
 
 <ComponentDemo
 path='/webforj/drawerdemo?'
@@ -35,19 +35,19 @@ height='600px'
 
 ## Mukauttaminen {#customization}
 
-Erilaisia ominaisuuksia on käytettävissä, jotka mahdollistavat laatikkokomponentin eri attribuuttien mukauttamisen. Tässä osiossa käytetään esimerkkejä näiden ominaisuuksien muokkaamisesta.
+Erilaisia ominaisuuksia on olemassa, jotka mahdollistavat Laatikon komponentin eri attribuuttien mukauttamisen. Tämä osio käsittelee näitä ominaisuuksia esimerkkien avulla.
 
 ## Autofocus {#autofocus}
 
-Automaattisesti tarkennusominaisuus on suunniteltu parantamaan saavutettavuutta ja käytettävyyttä automaattisesti keskittymällä ensimmäiseen kohteeseen laatikossa, kun se avataan. Tämä ominaisuus poistaa tarpeen käyttäjien navigoida manuaalisesti haluttuun kohteeseen, säästäen aikaa ja vaivannäköä.
+Autofocus-ominaisuus on suunniteltu parantamaan saavutettavuutta ja käytettävyyttä automaattisesti keskittymällä laatikon ensimmäiseen kohteeseen, kun se avataan. Tämä toiminto poistaa tarpeen käyttäjien siirtyä manuaalisesti haluttuun kohteeseen, säästäen aikaa ja vaivaa.
 
-Kun laatikko avataan, joko tapahtuman, oletusarvon tai muun vuorovaikutuksen kautta, käyttäjän tarkennus ohjataan laatikon ensimmäiseen kohteeseen. Tämä ensimmäinen kohde voi olla painike, linkki, valikkovaihtoehto tai muu tarkennettavissa oleva elementti.
+Kun laatikko avautuu joko tapahtuman tai muun vuorovaikutuksen kautta, käyttäjän keskittyminen ohjataan laatikon ensimmäiseen kohteeseen. Tämä ensimmäinen kohde voi olla painike, linkki, valintavaihtoehto tai mikä tahansa muokattava elementti.
 
 :::tip
-Automaattisesti ensimmäiseen kohteeseen keskittymällä kehittäjä varmistaa, että käyttäjät voivat heti engage käyttää tärkeintä tai eniten käytettyä vaihtoehtoa ilman, että heidän tarvitsee siirtyä tai vierittää koko laatikon läpi. Tämä käyttäytyminen sujuvoittaa käyttäjäkokemusta ja edistää tehokasta navigointia käyttöliittymässä.
+Automaattisesti keskittymällä ensimmäiseen kohteeseen kehittäjä varmistaa, että käyttäjät voivat heti sitoutua merkittävimpään tai eniten käytettyyn vaihtoehtoon ilman, että heidän tarvitsee siirtyä tai vierittää koko laatikon läpi. Tämä käyttäytyminen sujuvoittaa käyttäjäkokemusta ja edistää tehokasta navigointia käyttöliittymässä.
 :::
 
-Tämä ominaisuus voi olla erityisen hyödyllinen henkilöille, jotka luottavat näppäimistön navigointiin tai apuvälineisiin, kuten näytönlukuohjelmiin. Se tarjoaa selkeän aloituspisteen laatikossa ja sallii käyttäjien päästä haluttuun toiminnallisuuteen ilman tarpeetonta manuaalista syöttöä.
+Tämä ominaisuus voi myös olla erityisen hyödyllinen henkilöille, jotka luottavat näppäimistön navigointiin tai apuvälineisiin, kuten ruudunlukijoihin. Se tarjoaa selkeän aloituspaikan laatikossa ja antaa käyttäjien käyttää haluttua toiminnallisuutta ilman tarpeetonta manuaalista syöttöä.
 
 <ComponentDemo
 path='/webforj/drawerautofocus?'
@@ -57,39 +57,39 @@ height='600px'
 
 <!-- Esimerkki -->
 
-## Tunnus {#label}
+## Otsikko {#label}
 
-Laatikon Tunnus-ominaisuus on toiminto, joka on suunniteltu parantamaan saavutettavuutta ja tarjoamaan kuvailevaa kontekstia laatikolle käyttöliittymässä. Tämä ominaisuus mahdollistaa kehittäjien liittää tunnuksen laatikolle, ensisijaisesti saavutettavuustarkoituksiin, varmistaen, että näytönlukuohjelmat ja muut apuvälineet voivat tarkasti välittää laatikon tarkoituksen ja sisällön käyttäjille.
+Laatikon Otsikko-ominaisuus on suunniteltu parantamaan saavutettavuutta ja tarjoamaan kuvaileva konteksti laatikolle käyttöliittymässä. Tämä ominaisuus mahdollistaa kehittäjien määrittää laatikolle otsikon, ensisijaisesti saavutettavuussyistä, varmistaen, että ruudunlukijat ja muut apuvälineet voivat tarkasti välittää laatikon tarkoituksen ja sisällön käyttäjille.
 
-Kun Laatikkotunnus-ominaisuus otetaan käyttöön, liitetystä tunnuksesta tulee olennainen osa laatikon saavutettavuusinfrastruktuuria. Se mahdollistaa niille käyttäjille, jotka luottavat apuvälineisiin, ymmärtää laatikon toiminto ja navigoida käyttöliittymässä tehokkaammin.
+Kun Laatikon Otsikko -ominaisuutta käytetään, määritetty otsikko tulee olemaan olennainen osa laatikon saavutettavuusinfrastruktuuria. Se mahdollistaa apuvälineisiin turvautuvien käyttäjien ymmärtää laatikon toiminto ja navigoida käyttöliittymässä tehokkaammin.
 
-Tarjoamalla tunnuksen laatikolle kehittäjät varmistavat, että näytönlukuohjelmat ilmoittavat laatikon tarkoituksen näkövammaisille käyttäjille. Tämä tieto auttaa yksilöitä tekemään tietoisia päätöksiä vuorovaikutuksessa laatikon kanssa, sillä he voivat ymmärtää sen sisällön ja merkityksen laajemmassa käyttöliittymässä.
+Antamalla otsikon laatikolle kehittäjät varmistavat, että ruudunlukijat ilmoittavat laatikon tarkoituksen näkörajoitteisille käyttäjille. Tämä tieto antaa yksilöille mahdollisuuden tehdä tietoisia päätöksiä vuorovaikutuksessa laatikon kanssa, sillä he ymmärtävät sen sisällön ja merkityksen laajemmassa käyttöliittymässä.
 
-Tunnusominaisuutta voidaan mukauttaa sovelluksen erityiseen kontekstiin ja suunnittelutarpeisiin. Kehittäjillä on joustavuutta antaa tiiviitä ja kuvailevia tunnuksia, jotka tarkasti kuvaavat laatikon sisältöä tai toiminnallisuutta.
+Otsikko-ominaisuutta voidaan mukauttaa sopimaan sovelluksen erityisiin konteksteihin ja suunnittelutarpeisiin. Kehittäjillä on joustavuutta tarjota tiiviitä ja kuvailevia otsikoita, jotka tarkasti edustavat laatikon sisältöä tai toiminnallisuutta.
 
 <!-- Esimerkki -->
 
-## Asettelu {#placement}
+## Sijoittaminen {#placement}
 
-Laatikon asetteluominaisuus antaa kehittäjille mahdollisuuden määrittää laatikon sijainti ja suunta näkymässä. Tämä ominaisuus tarjoaa joukon enum-arvoja, jotka antavat joustavuutta laatikon sijoittamiseen suhteessa pääsisältöön.
+Laatikkokomponentin sijoittamisominaisuus mahdollistaa kehittäjien määrittää laatikon aseman ja kohdistuksen näkymässä. Tämä ominaisuus tarjoaa joukon enum-arvoja, jotka tarjoavat joustavuutta sen määrittämisessä, missä laatikko ilmestyy pääsisällön suhteessa.
 
-Saatavilla olevat enum-arvot asetteluominaisuudelle ovat seuraavat:
+Saatavilla olevat enum-arvot sijoittamisominaisuudelle ovat seuraavat:
 
-- **YLÄ**: Tämä arvo sijoittaa laatikon näkymän yläosaan, jolloin se täyttää ylimmän alueen.
+- **YLÄ**: Tämä arvo asettaa laatikon näkyvän alueen yläosaan, jolloin se vie ylimmän alueen.
 
-- **YLÄ_KESKITE**: Tällä arvolla laatikko sijoitetaan yläosan keskipisteeseen. Se on vaakasuunnassa keskitetty, luoden tasapainoisen asettelun.
+- **YLÄ_KESKI**: Tällä arvolla laatikko sijoitetaan näkymän yläosan keskelle. Se on kohdistettu vaaka-asennossa keskelle, luoden tasapainoisen asettelun.
 
-- **ALHAALLA**: Tämän arvon käyttäminen sijoittaa laatikon näkymän alaosaan, jolloin se näkyy pääsisällön alapuolella.
+- **ALHA**: Tämän arvon avulla laatikko sijaitsee näkymän alareunassa, pääsisällön alapuolella.
 
-- **ALHAALLA_KESKITE**: Tämä arvo keskittyy laatikon vaakasuunnassa näkymän alaosassa. Se tarjoaa visuaalisesti tasapainoisen koostumuksen.
+- **ALHA_KESKI**: Tämä arvo keskittää laatikon vaakasuunnassa näkymän alareunassa. Se tarjoaa visuaalisesti tasapainoisen koostumuksen.
 
-- **VASEN**: Tämän arvon valitseminen aiheuttaa laatikon sijoittuvan näkymän vasemmalle puolelle pääsisällön viereen.
+- **VASEN**: Tämän arvon valitsemisella laatikko sijaitsee näkymän vasemmalla puolella, pääsisällön viereen.
 
-- **OIKELLE**: Käyttämällä tätä arvoa laatikko sijoitetaan näkymän oikealle puolelle, pitäen läheistä yhteyttä pääsisältöön.
+- **OIKEA**: Käyttämällä tätä arvoa laatikko sijoitetaan näkymän oikealle puolelle, pitäen läheistä läheisyyttä pääsisältöön.
 
-Asetteluominaisuus antaa kehittäjille mahdollisuuden valita sopivin sijainti laatikolle perustuen tiettyihin suunnittelu- ja käyttäjäkokemusvaatimuksiin. Enum-arvot tarjoavat monia asettelu vaihtoehtoja erilaisten käyttöliittymän asettelu- ja visuaalisten hierarkioiden mukauttamiseksi.
+Sijoittamisominaisuus mahdollistaa kehittäjien valita laatikon parhaimman aseman ottaen huomioon erityiset suunnittelu- ja käyttäjäkokemusvaatimukset. Enum-arvot tarjoavat erilaisia sijoitusvaihtoehtoja eri käyttöliittymäasettelujen ja visuaalisten hierarkioiden mahtamiseen.
 
-Hyödyntämällä asetteluominaisuutta kehittäjät voivat luoda intuitiivisia ja tehokkaita käyttöliittymiä. Esimerkiksi laatikon asettaminen vasemmalle tai oikealle puolelle mahdollistaa nopean pääsyn lisätoimintoihin tai navigointivaihtoehtoihin, kun taas ylös- tai alas-asettelut soveltuvat hyvin kontekstuaaliseen tietoon tai lisäsisältöön.
+Hyödyntämällä sijoittamisominaisuutta kehittäjät voivat luoda intuitiivisia ja tehokkaita käyttöliittymiä. Esimerkiksi sijoittamalla laatikon vasemmalle tai oikealle puolelle voidaan nopeasti päästä lisätoimintoihin tai navigointivaihtoehtoihin, kun taas ylä- tai alhaisijat ovat hyvin soveltuvia kontekstuaaliselle informaatiolle tai lisäsisällölle.
 
 <ComponentDemo
 path='/webforj/drawerplacement?'
@@ -103,10 +103,10 @@ height='600px'
 
 ## Parhaat käytännöt {#best-practices}
 
-Varmista optimaalinen käyttäjäkokemus käytettäessä `Laatikko`-komponenttia, ota huomioon seuraavat parhaat käytännöt:
+Varmistaaksesi optimaalisen käyttäjäkokemuksen käyttäessäsi `Laatikko`-komponenttia, harkitse seuraavia parhaita käytäntöjä:
 
-1. **Asettelu**: Päätä, pitäisikö laatikon liukua sisään vasemmalta, oikealta, ylhäältä tai alhaalta, sovelluksesi asettelun ja käyttäjäkokemusperusteiden perusteella. Ota huomioon käyttäjien mieltymykset ja suunnittelukäytännöt.
+1. **Sijoittaminen**: Päätä, pitäisikö laatikon liukua vasemmalta, oikealta, ylhäältä tai alhaalta sovelluksesi asettelun ja käyttäjäkokemusnäkökohtien perusteella. Ota huomioon käyttäjien mieltymykset ja suunnittelukäytännöt.
 
-2. **Saavutettavuus**: Kiinnitä erityistä huomiota saavutettavuuteen. Varmista, että käyttäjät voivat avata ja sulkea laatikon näppäimistökontrollilla ja että näytönlukuohjelmat voivat ilmoittaa sen olemassaolosta ja tilasta. Tarjoa ARIA-rooleja ja -tunnuksia tarpeen mukaan.
+2. **Saavutettavuus**: Kiinnitä erityistä huomiota saavutettavuuteen. Varmista, että käyttäjät voivat avata ja sulkea laatikon näppäimistöohjaimilla, ja että ruudunlukijat voivat ilmoittaa sen läsnäolosta ja tilasta. Tarjoa ARIA-rooleja ja -etikettejä tarpeen mukaan.
 
-3. **Pyyhkäisy eleet**: Kosketusnäyttölaiteilla tue pyyhkäisy eleitä laatikon avaamiseen ja sulkemiseen. Tämä on käyttäjille intuitiivinen tapa vuorovaikuttaa sen kanssa.
+3. **Pyyhkäisy eleet**: Kosketustoiminnolla varustetuilla laitteilla, tue pyyhkäisyliikkeitä laatikon avaamiseksi ja sulkemiseksi. Tämä on intuitiivinen tapa, jonka avulla käyttäjät voivat vuorovaikuttaa sen kanssa.

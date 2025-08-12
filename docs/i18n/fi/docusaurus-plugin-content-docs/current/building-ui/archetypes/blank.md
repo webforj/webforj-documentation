@@ -2,7 +2,7 @@
 title: Blank
 sidebar_position: 1
 hide_table_of_contents: true
-_i18n_hash: 135ed95be60a01a6a5ccb297c6bcce8f
+_i18n_hash: 5e7b116f0fea5cee2aa0d880d6fee05a
 ---
 <Head>
   <style>{`
@@ -12,27 +12,27 @@ _i18n_hash: 135ed95be60a01a6a5ccb297c6bcce8f
   `}</style>
 </Head>
 
-# Tyhjää arkkityyppiä
+# Tyhjät arkkityyppi
 
-`blank` -arkkityyppi on perustaalo webforJ-sovelluksille. Tämä malli tarjoaa puhtaan alkuperän, josta voit rakentaa sovelluksesi alusta alkaen. Se on ihanteellinen kehittäjille, jotka haluavat täydellisen hallinnan sovelluksensa rakenteesta ja komponenteista ilman ennaltamääriteltyjä rajoituksia.
+`blank` arkkityyppi on perustavanlaatuinen aloitusprojekti webforJ-sovelluksille. Tämä malli tarjoaa puhtaan alustan sovelluksesi rakentamiseen alusta alkaen. Se on ihanteellinen kehittäjille, jotka haluavat täydellisen hallinnan sovelluksensa rakenteeseen ja komponentteihin ilman ennalta määriteltyjä rajoituksia.
 
-:::tip Käyttämällä startforJ
-Saat lisää hallintaa mukauttamiseen ja konfiguroimiseen käyttämällä [startforJ](https://docs.webforj.com/startforj/) projektisi luomiseen - valitse vain `Blank` -arkkityyppi, kun valitset konfigurointivaihtoehtoja.
+:::tip Käytä startforJ
+Enemmän hallintaa mukauttamiseen ja konfigurointiin varten voit käyttää [startforJ](https://docs.webforj.com/startforj/) luodaksesi projektisi - valitse vain `Blank` arkkityyppi konfigurointivaihtoehtoja valitessasi.
 :::
 
-## `blank` -arkkityypin käyttäminen {#using-the-blank-archetype}
+## Käyttäminen `blank` arkkityyppi {#using-the-blank-archetype}
 
 <ComponentArchetype
 project="blank"
 />
 
-## Sovelluksen ajaminen {#running-the-app}
+## Sovelluksen suorittaminen {#running-the-app}
 
-Ennen sovelluksesi käynnistämistä asenna [esivaatimukset](../../introduction/prerequisites), jos et ole vielä tehnyt niin. 
+Ennen sovelluksen suorittamista asenna [esivaatimukset](../../introduction/prerequisites), jos et ole vielä tehnyt niin. 
 Sitten siirry projektin juurihakemistoon ja suorita seuraava komento:
 
 ```bash
-# standardille webforJ-sovellukselle
+# standardille webforJ sovellukselle
 mvn jetty:run
 
 # webforJ + Spring Boot

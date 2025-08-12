@@ -1,26 +1,27 @@
 ---
 sidebar_position: 3
 title: Testing with Selenium
-_i18n_hash: 5d2e4b04f794236d9a8ea2a32d50579b
+_i18n_hash: fe85942b4638ef9828b334ef986b4436
 ---
-Cette documentation décrit le processus de test des applications webforJ à l'aide de Selenium, en se concentrant spécifiquement sur le `HelloWorldView` du `webforj-archetype-hello-world`.
+Cette documentation décrit le processus de test des applications webforJ à l'aide de Selenium, en se concentrant spécifiquement sur le `HelloWorldView` de
+l'`webforj-archetype-hello-world`.
 
-:::info Bases de l'application
-Pour en savoir plus sur le `webforj-archetype-hello-world`, consultez la section [Introduction aux bases de l'application](../../introduction/basics).
+:::info App Basics
+Pour en savoir plus sur l'`webforj-archetype-hello-world`, consultez la section [Introduction aux concepts de base](../../introduction/basics).
 :::
 
 ## Prérequis {#prerequisites}
 
-Avant d'exécuter les tests Selenium, assurez-vous de ce qui suit :
-- L'application webforJ est correctement configurée et fonctionne sur votre serveur local.
+Avant d'exécuter les tests Selenium, assurez-vous des éléments suivants :
+- L'application webforJ est correctement configurée et en cours d'exécution sur votre serveur local.
 - Vous avez installé :
-  - Les bindings Java pour Selenium.
-  - Un WebDriver compatible avec votre navigateur.
+  - Les bindings Java de Selenium.
+  - Un WebDriver compatible pour votre navigateur.
   - Maven pour les dépendances du projet.
 
 ## Configuration Maven {#maven-configuration}
 
-Ajoutez les dépendances nécessaires dans votre `pom.xml` pour Selenium et les autres bibliothèques de test :
+Ajoutez les dépendances nécessaires dans votre `pom.xml` pour Selenium et d'autres bibliothèques de test :
 
 ```xml title="pom.xml"
 <dependencies>
@@ -44,7 +45,7 @@ Ajoutez les dépendances nécessaires dans votre `pom.xml` pour Selenium et les 
 
 ## Exemple de test : `HelloWorldView` {#testing-example-helloworldview}
 
-Le code suivant démontre un test basé sur Selenium pour le composant `HelloWorldView`.
+Le code suivant montre un test basé sur Selenium pour le composant `HelloWorldView`.
 
 ```java title="HelloWorldViewTest.java"
 package com.example.views;
@@ -93,7 +94,7 @@ class HelloWorldViewTest {
   @Test
   void shouldClickButton() {
     WebElement button = driver.findElement(By.tagName("dwc-button"));
-    assertEquals("Say Hello", button.getText(), "Le texte du bouton ne correspond pas !");
+    assertEquals("Say Hello", button.getText(), "Mismatch du texte du bouton !");
   }
 }
 ```
@@ -105,14 +106,14 @@ class HelloWorldViewTest {
 
 2. **Configurer l'environnement de test** :
    - Démarrez le serveur de test sur `http://localhost:<port>/`.
-   - Attendez que le titre de la page corresponde à `webforJ Hello World`.
+   - Attendez que le titre de la page corresponde au `webforJ Hello World` attendu.
 
 3. **Interagir avec les éléments** :
-   - Localisez les éléments à l'aide de `By.tagName`, `By.id` ou d'autres localisateurs Selenium.
-   - Vérifiez les comportements attendus comme les clics sur les boutons ou les changements de texte.
-    
+   - Localisez les éléments en utilisant `By.tagName`, `By.id` ou d'autres localisateurs Selenium.
+   - Vérifiez les comportements attendus, tels que les clics sur les boutons ou les changements de texte.
+
   :::info
-  Étant donné que webforJ produit une application web à page unique, Selenium n'est pas conscient de la manipulation du DOM après le chargement initial de la page. Vous pouvez utiliser l'[API WebDriverWait de Selenium](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/WebDriverWait.html) pour attendre que le DOM ait été compilé.
+  Étant donné que webforJ produit une application web à une seule page, Selenium n'est pas conscient de la manipulation du DOM après le chargement initial de la page. Vous pouvez utiliser l'[API WebDriverWait de Selenium](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/WebDriverWait.html) pour attendre que le DOM soit compilé.
   :::
 
 4. **Teardown** :

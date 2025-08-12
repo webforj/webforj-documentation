@@ -1,9 +1,9 @@
 ---
 sidebar_position: 7
 title: Shadows
-_i18n_hash: 84ad4478632d3020d57752a4827f925a
+_i18n_hash: 6f5378b91beaf0c663bdc9de9b67233a
 ---
-Las propiedades de sombra se utilizan para agregar efectos de sombra alrededor del marco de un elemento. Puedes establecer múltiples efectos separados por comas. En la mayoría de los casos, las sombras se utilizan para indicar elementos que están apilados unos sobre otros en la interfaz de usuario.
+Las propiedades de sombra se utilizan para agregar efectos de sombra alrededor del marco de un elemento. Puedes establecer múltiples efectos separados por comas. En la mayoría de los casos, las sombras se utilizan para significar elementos que están superpuestos en la interfaz de usuario.
 
 <Head>
   <style>{`
@@ -22,8 +22,8 @@ Las propiedades de sombra se utilizan para agregar efectos de sombra alrededor d
 }
 ```
 
-:::tip Color de sombra
-Controlas el color de la sombra estableciendo la variable `--dwc-shadow-color`. Por defecto, el color de la sombra es gris con un tinte del color primario.
+:::tip Color de Sombra
+Controlas el color de la sombra estableciendo la variable `--dwc-shadow-color`. Por defecto, el color de la sombra es gris tintado con el color primario.
 :::
 
 ### Variables {#variables}

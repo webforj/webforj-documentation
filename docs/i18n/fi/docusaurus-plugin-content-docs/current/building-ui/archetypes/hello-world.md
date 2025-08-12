@@ -2,7 +2,7 @@
 title: HelloWorld
 sidebar_position: 4
 hide_table_of_contents: true
-_i18n_hash: e1da494f783aca68616cd374b92e700c
+_i18n_hash: 145d1e89a5f688fa0c912b87056a35d1
 ---
 <Head>
   <style>{`
@@ -13,32 +13,32 @@ _i18n_hash: e1da494f783aca68616cd374b92e700c
 </Head>
 
 <!-- vale off -->
-# HelloWorld arkkityyppi
+# HelloWorld-arkkitehtuuri
 <!-- vale on -->
 
-Tämä arkkityyppi luo yksinkertaisen hello world -sovelluksen, jotta voidaan demonstroida käyttöliittymän perustaitoja webforJ:llä. Tämä malli on loistava aloittelijoille, jotka haluavat aloittaa nopeasti. Se tarjoaa yksinkertaisen esimerkin siitä, kuinka perustaa ja ajaa yksinkertainen webforJ-sovellus, mikä tekee siitä erinomaisen lähtökohdan uusille kehittäjille.
+Tämä arkkitehtuuri luo yksinkertaisen hello world -sovelluksen, joka demonstroi käyttöliittymän (UI) rakentamisen perusteita webforJ:n avulla. Tämä malli on loistava aloittelijoille, jotka haluavat päästä vauhtiin nopeasti. Se tarjoaa selkeän esimerkin siitä, miten perustaa ja suorittaa yksinkertainen webforJ-sovellus, ja se on erinomainen lähtökohta uusille kehittäjille.
 
 :::tip Aloittaminen tyhjältä
-Tämä arkkityyppi luo minimalisen sovelluksen, jossa on muutama komponentti ja hieman tyylitystä. Kehittäjille, jotka haluavat luoda projektin vähäisellä rakennekuvalla, katso [`blank` arkkityyppi](./blank).
+Tämä arkkitehtuuri luo minimalistisen sovelluksen, jossa on muutama komponentti ja hieman muotoilua. Kehittäjille, jotka haluavat luoda projektin vähäisellä rungolla, katso [`blank` arkkitehtuuria](./blank).
 :::
 
-:::tip Käyttämällä startforJ
-Jos haluat enemmän kontrollia mukauttamiseen ja konfigurointiin, voit käyttää [startforJ](https://docs.webforj.com/startforj/) -projektin luomiseen - valitse vain `HelloWorld` arkkityyppi konfigurointivaihtoehtoja valitessasi.
+:::tip Käyttäen startforJ:ta
+Lisääntynyt hallinta mukauttamiseen ja konfigurointiin voidaan saavuttaa käyttämällä [startforJ:ta](https://docs.webforj.com/startforj/) projektin luomiseksi - valitse vain `HelloWorld` arkkitehtuuri konfigurointivaihtoehtoja valitessasi.
 :::
 
-## Käyttäen `hello-world` arkkityyppiä {#using-the-hello-world-archetype}
+## Käyttämällä `hello-world` arkkitehtuuria {#using-the-hello-world-archetype}
 
 <ComponentArchetype
 project="hello-world"
 />
 
-## Sovelluksen ajaminen {#running-the-app}
+## Sovelluksen suorittaminen {#running-the-app}
 
-Ennen kuin suoritat sovelluksesi, asenna [esivaatimukset](../../introduction/prerequisites), jos et ole vielä tehnyt niin. 
-Tämän jälkeen siirry projektin juurihakemistoon ja suorita seuraava komento:
+Ennen kuin suoritat sovelluksesi, asenna [vaatimukset](../../introduction/prerequisites), jos et ole vielä tehnyt niin. 
+Siirry sitten projektin juuressa ja suorita seuraava komento:
 
 ```bash
-# standardi webforJ sovellus
+# standardi webforJ-sovellus
 mvn jetty:run
 
 # webforJ + Spring Boot

@@ -6,7 +6,7 @@ slug: upload
 description: A user guide article for the upload
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 026692228603a6ef9796ec7112992eef
+_i18n_hash: 48a9d6b03fdcaf69bbf09a1fb9cfbd20
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,7 +17,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info 客户端组件
-本节概述 **`<dwc-upload>`** 组件的样式信息。该组件是 **仅客户端** 的 - 它不能通过 API 独立实例化，但可以作为 API 组件的一部分。
+本节介绍**`<dwc-upload>`**组件的样式信息。该组件是**仅限客户端**的 - 无法通过API单独实例化，但可以作为API组件的一部分。
 :::
 
 ## 样式 {#styling}

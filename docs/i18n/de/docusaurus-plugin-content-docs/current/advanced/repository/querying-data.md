@@ -1,37 +1,37 @@
 ---
 title: Querying data
 sidebar_position: 3
-_i18n_hash: c5508e014de2ca1de7543b34e39731bc
+_i18n_hash: 96551b4f47c7019b8bdd43b57f716c88
 ---
 <!-- vale off -->
 # Abfragen von Daten <DocChip chip='since' label='25.02' />
 <!-- vale on -->
 
-Das <JavadocLink type="data" location="com/webforj/data/repository/QueryableRepository" code="true">QueryableRepository</JavadocLink> Interface erweitert `Repository` um erweiterte Abfragefunktionen über <JavadocLink type="data" location="com/webforj/data/repository/RepositoryCriteria" code="true">RepositoryCriteria</JavadocLink>. Im Gegensatz zu grundlegenden Repositories, die nur einfache Filter unterstützen, bieten abfragbare Repositories strukturierte Abfragen mit benutzerdefinierten Filtertypen, Sortierung und Pagination.
+Das <JavadocLink type="data" location="com/webforj/data/repository/QueryableRepository" code="true">QueryableRepository</JavadocLink>-Interface erweitert `Repository` mit erweiterten Abfragemöglichkeiten über <JavadocLink type="data" location="com/webforj/data/repository/RepositoryCriteria" code="true">RepositoryCriteria</JavadocLink>. Im Gegensatz zu einfachen Repositories, die nur grundlegendes Filtern unterstützen, bieten abfragefähige Repositories strukturierte Abfragen mit benutzerdefinierten Filtertypen, Sortierung und Pagination.
 
 ## Verständnis der Filtertypen {#understanding-filter-types}
 
-<JavadocLink type="data" location="com/webforj/data/repository/QueryableRepository" code="true">QueryableRepository</JavadocLink> führt einen zweiten generischen Parameter für den Filtertyp ein: `QueryableRepository<T, F>` wobei `T` Ihr Entitätstyp und `F` Ihr benutzerdefinierter Filtertyp ist.
+<JavadocLink type="data" location="com/webforj/data/repository/QueryableRepository" code="true">QueryableRepository</JavadocLink> führt einen zweiten generischen Parameter für den Filtertyp ein: `QueryableRepository<T, F>`, wobei `T` der Entitätstyp und `F` der benutzerdefinierte Filtertyp ist.
 
 Diese Trennung existiert, weil unterschiedliche Datenquellen unterschiedliche Abfragesprachen verwenden:
 
 ```java
-// Prädikatfilter für In-Memory-Kollektionen
+// Prädikat-Filter für In-Memory-Sammlungen
 QueryableRepository<Product, Predicate<Product>> inMemoryRepo = 
     new CollectionRepository<>(products);
 
 // Benutzerdefinierte Filterobjekte für REST-APIs oder Datenbanken  
 QueryableRepository<User, UserFilter> apiRepo = 
-    new DelegatingRepository<>(/* Implementierung */);
+    new DelegatingRepository<>(/* implementation */);
 
 // String-Abfragen für Suchmaschinen
 QueryableRepository<Document, String> searchRepo = 
-    new DelegatingRepository<>(/* Implementierung */);
+    new DelegatingRepository<>(/* implementation */);
 ```
 
-`CollectionRepository` verwendet `Predicate<Product>`, weil es Java-Objekte im Speicher filtert. Das REST-API-Repository verwendet `UserFilter` - eine benutzerdefinierte Klasse mit Feldern wie `department` und `status`, die zu Abfrageparametern zugeordnet werden. Das Suchrepository verwendet einfache Strings für Volltextabfragen.
+`CollectionRepository` verwendet `Predicate<Product>`, da es Java-Objekte im Speicher filtert. Das REST-API-Repository verwendet `UserFilter` – eine benutzerdefinierte Klasse mit Feldern wie `department` und `status`, die auf Abfrageparameter abgebildet werden. Das Suchrepository verwendet einfache Strings für Volltextabfragen.
 
-UI-Komponenten kümmern sich nicht um diese Unterschiede. Sie rufen `setBaseFilter()` mit dem Filtertyp auf, den das Repository erwartet, und das Repository übernimmt die Übersetzung.
+UI-Komponenten sind sich dieser Unterschiede nicht bewusst. Sie rufen `setBaseFilter()` mit dem Filtertyp auf, den das Repository erwartet, und das Repository kümmert sich um die Übersetzung.
 
 ## Erstellen von Abfragen mit Repository-Kriterien {#building-queries-with-repository-criteria}
 
@@ -41,8 +41,8 @@ UI-Komponenten kümmern sich nicht um diese Unterschiede. Sie rufen `setBaseFilt
 // Vollständige Abfrage mit allen Parametern
 RepositoryCriteria<Product, Predicate<Product>> criteria = 
     new RepositoryCriteria<>(
-        20,                                       // Offset - erste 20 überspringen
-        10,                                       // Limit - 10 Elemente nehmen  
+        20,                                       // offset - überspringe die ersten 20
+        10,                                       // limit - nimm 10 Elemente  
         orderCriteria,                           // Sortierregeln
         product -> product.getPrice() < 100.0    // Filterbedingung
     );
@@ -52,9 +52,9 @@ Stream<Product> results = repository.findBy(criteria);
 int totalMatching = repository.size(criteria);
 ```
 
-Die Methode `findBy()` führt die vollständige Abfrage aus - sie wendet den Filter an, sortiert die Ergebnisse, überspringt das Offset und übernimmt das Limit. Die Methode `size()` zählt alle Elemente, die dem Filter entsprechen, unabhängig von der Pagination.
+Die Methode `findBy()` führt die vollständige Abfrage aus - sie wendet den Filter an, sortiert die Ergebnisse, überspringt das Offset und nimmt das Limit. Die Methode `size()` zählt alle Elemente, die dem Filter entsprechen, und ignoriert die Pagination.
 
-Sie können auch Kriterien mit nur den Teilen erstellen, die Sie benötigen:
+Sie können auch Kriterien mit nur den benötigten Teilen erstellen:
 
 ```java
 // Nur Filter
@@ -68,9 +68,9 @@ RepositoryCriteria<Product, Predicate<Product>> pageOnly =
 
 ## Arbeiten mit verschiedenen Filtertypen {#working-with-different-filter-types}
 
-### Prädikatfilter {#predicate-filters}
+### Prädikat-Filter {#predicate-filters}
 
-Für In-Memory-Kollektionen verwenden Sie `Predicate<T>`, um funktionale Filter zu erstellen:
+Für In-Memory-Sammlungen verwenden Sie `Predicate<T>`, um funktionale Filter zu erstellen:
 
 ```java
 CollectionRepository<Product> repository = new CollectionRepository<>(products);
@@ -120,22 +120,22 @@ Stream<Product> results = customRepository.findBy(criteria);
 ```
 
 Innerhalb der `findBy()`-Methode Ihres benutzerdefinierten Repositories würden Sie dieses Filterobjekt übersetzen:
-- Für REST-APIs: In Abfrageparameter umwandeln wie `?category=Elektronik&maxPrice=99.99&inStock=true`
-- Für SQL: Eine Where-Klausel erstellen wie `WHERE category = ? AND price <= ? AND stock > 0`
-- Für GraphQL: Eine Abfrage mit den entsprechenden Feldauswahlen konstruieren
+- Für REST-APIs: In Abfrageparameter umwandeln wie `?category=Electronics&maxPrice=99.99&inStock=true`
+- Für SQL: Eine WHERE-Klausel wie `WHERE category = ? AND price <= ? AND stock > 0` erstellen
+- Für GraphQL: Eine Abfrage mit den entsprechenden Auswahlfeldern konstruieren
 
-Die Implementierung des `Repository` sollte diese Übersetzung durchführen, um Ihren UI-Code sauber zu halten.
+Die `Repository`-Implementierung sollte diese Übersetzung handhaben, sodass Ihr UI-Code sauber bleibt.
 
-## Daten sortieren {#sorting-data}
+## Sortieren von Daten {#sorting-data}
 
-<JavadocLink type="data" location="com/webforj/data/repository/OrderCriteria" code="true">OrderCriteria</JavadocLink> definiert, wie Ihre Daten sortiert werden. Jedes `OrderCriteria` benötigt einen Wertgeber (wie man den Wert von Ihrer Entität erhält) und eine Richtung:
+<JavadocLink type="data" location="com/webforj/data/repository/OrderCriteria" code="true">OrderCriteria</JavadocLink> definiert, wie Ihre Daten sortiert werden. Jede `OrderCriteria` benötigt einen Wertanbieter (wie man den Wert aus Ihrer Entität erhält) und eine Richtung:
 
 ```java
 // Sortierung nach einem einzelnen Feld
 OrderCriteria<Employee, String> byName = 
     new OrderCriteria<>(Employee::getName, OrderCriteria.Direction.ASC);
 
-// Mehrstufige Sortierung - Abteilung zuerst, dann Gehalt, dann Name
+// Mehrdimensionale Sortierung - Abteilung zuerst, dann Gehalt, dann Name
 OrderCriteriaList<Employee> sorting = new OrderCriteriaList<>();
 sorting.add(new OrderCriteria<>(Employee::getDepartment, OrderCriteria.Direction.ASC));
 sorting.add(new OrderCriteria<>(Employee::getSalary, OrderCriteria.Direction.DESC));  
@@ -146,34 +146,34 @@ RepositoryCriteria<Employee, Predicate<Employee>> criteria =
     new RepositoryCriteria<>(0, 50, sorting, employee -> employee.isActive());
 ```
 
-Der Wertgeber (`Employee::getName`) funktioniert für In-Memory-Sortierung. Aber externe Datenquellen können Java-Funktionen nicht ausführen. Für diese Fälle akzeptiert OrderCriteria einen Eigenschaftsnamen:
+Der Wertanbieter (`Employee::getName`) funktioniert für die In-Memory-Sortierung. Aber externe Datenquellen können Java-Funktionen nicht ausführen. In diesen Fällen akzeptiert OrderCriteria einen Eigenschaftsnamen:
 
 ```java
-// Für externe Repositories - sowohl Wertgeber als auch Eigenschaftsnamen angeben
-OrderCriteria<Employee, String> byName = new OrderCriteria<>( 
-    Employee::getName,           // Für In-Memory-Sortierung
+// Für externe Repositories - sowohl Wertanbieter als auch Eigenschaftsnamen angeben
+OrderCriteria<Employee, String> byName = new OrderCriteria<>(
+    Employee::getName,           // Für die In-Memory-Sortierung
     Direction.ASC,
-    null,                       // Benutzerdefinierter Comparator (optional)
+    null,                       // Benutzerdefinierter Vergleich (optional)
     "name"                      // Eigenschaftsname für Backend-Sortierung
 );
 ```
 
-`CollectionRepository` verwendet den Wertgeber, um Java-Objekte zu sortieren. Implementierungen von `DelegatingRepository` können den Eigenschaftsnamen verwenden, um Sortierklauseln in SQL oder `sort=name:asc` in REST-APIs zu erstellen.
+`CollectionRepository` verwendet den Wertanbieter, um Java-Objekte zu sortieren. Implementierungen von `DelegatingRepository` können den Eigenschaftsnamen verwenden, um Sortierklauseln in SQL oder `sort=name:asc` in REST-APIs zu erstellen.
 
-## Pagination steuern {#controlling-pagination}
+## Steuerung der Pagination {#controlling-pagination}
 
-Setzen Sie Offset und Limit, um zu steuern, welchen Teil der Daten Sie laden möchten:
+Setzen Sie Offset und Limit, um festzulegen, welcher Teil der Daten geladen werden soll:
 
 ```java
 // Seitenbasierte Pagination
-int page = 2;          // nullbasierte Seitennummer
+int page = 2;          // nullbasierte Seitenzahl
 int pageSize = 20;     // Elemente pro Seite
 int offset = page * pageSize;
 
 RepositoryCriteria<Product, Predicate<Product>> criteria = 
     new RepositoryCriteria<>(offset, pageSize, null, yourFilter);
 
-// Progressive Laden - laden Sie mehr Daten schrittweise  
+// Fortschreitendes Laden - Daten schrittweise laden  
 int currentlyLoaded = 50;
 int loadMore = 25;
 

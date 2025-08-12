@@ -3,7 +3,7 @@ title: Integrations
 hide_table_of_contents: true
 sidebar_class_name: new-content
 hide_giscus_comments: true
-_i18n_hash: 366829e324b872af8247a509f9c55783
+_i18n_hash: 987f1fb9ef8aa9e50ff4ec00320d2dd7
 ---
 <Head>
   <style>{`
@@ -13,21 +13,21 @@ _i18n_hash: 366829e324b872af8247a509f9c55783
   `}</style>
 </Head>
 
-webforJ está diseñado como una capa de interfaz de usuario independiente de frameworks para aplicaciones Java. Se enfoca exclusivamente en construir interfaces de usuario ricas y basadas en componentes, dejando las decisiones de arquitectura del backend completamente a tu cargo. Esta clara separación de preocupaciones permite que webforJ funcione con cualquier pila tecnológica de Java, desde servlets tradicionales hasta microservicios modernos.
+webforJ está diseñado como una capa de interfaz de usuario independiente del framework para aplicaciones Java. Se centra exclusivamente en construir interfaces de usuario ricas, basadas en componentes, dejando completamente en tus manos las decisiones de arquitectura del backend. Esta clara separación de preocupaciones permite que webforJ funcione con cualquier pila de tecnología Java, desde servlets tradicionales hasta microservicios modernos.
 
 ## Filosofía de arquitectura {#architecture-philosophy}
 
-webforJ separa deliberadamente las preocupaciones de la interfaz de usuario y del backend. A diferencia de los frameworks full-stack, que dictan toda la estructura de tu aplicación, webforJ proporciona solo lo que necesitas para construir interfaces de usuario sofisticadas. Tu elección de capa de persistencia, marco de inyección de dependencias, implementación de seguridad y arquitectura de servicios sigue siendo completamente independiente de tu tecnología de interfaz de usuario.
+webforJ separa deliberadamente las preocupaciones de UI y backend. A diferencia de los frameworks de pila completa, que dictan toda la estructura de tu aplicación, webforJ proporciona solo lo que necesitas para construir interfaces de usuario sofisticadas. Tu elección de capa de persistencia, marco de inyección de dependencias, implementación de seguridad y arquitectura de servicios permanece completamente independiente de tu tecnología de UI.
 
-Este enfoque reconoce que la mayoría de las organizaciones ya tienen patrones de backend establecidos, capas de servicio existentes y pilas tecnológicas preferidas. webforJ mejora estas aplicaciones con un framework de interfaz de usuario moderno sin requerir cambios arquitectónicos o migraciones de tecnología. Tu lógica de dominio, patrones de acceso a datos e implementaciones de seguridad seguirán funcionando exactamente como antes.
+Este enfoque reconoce que la mayoría de las organizaciones tienen patrones de backend establecidos, capas de servicio existentes y pilas de tecnología preferidas. webforJ mejora estas aplicaciones con un marco de UI moderno sin requerir cambios arquitectónicos o migraciones de tecnología. Tu lógica de dominio, patrones de acceso a datos e implementaciones de seguridad continúan funcionando exactamente como antes.
 
 ## Compatibilidad con frameworks de backend {#backend-framework-compatibility}
 
-webforJ funciona con cualquier framework de backend de Java o patrón de arquitectura que ya estés utilizando. Ya sea que estés construyendo sobre Jakarta EE, utilizando una arquitectura de microservicios o trabajando con un framework personalizado, webforJ proporciona la capa de interfaz de usuario sin interferir con tu diseño de backend.
+webforJ funciona con cualquier framework de backend Java o patrón de arquitectura que ya estés utilizando. Ya sea que estés construyendo sobre Jakarta EE, utilizando una arquitectura de microservicios o trabajando con un framework personalizado, webforJ proporciona la capa de UI sin interferir con el diseño de tu backend.
 
-Para ciertos frameworks populares, webforJ ofrece integraciones específicas que reducen el código de boilerplate y agilizan el desarrollo. Estas integraciones proporcionan comodidades como inyección de dependencias automática en componentes de interfaz de usuario, configuración simplificada y soporte de herramientas específicas del framework. Si no ves tu framework listado a continuación, no significa que webforJ no funcionará con él; simplemente significa que configurarás la conexión utilizando los patrones estándar de tu framework en lugar de utilizar una integración preconstruida.
+Para ciertos frameworks populares, webforJ ofrece integraciones específicas que reducen el código boilerplate y optimizan el desarrollo. Estas integraciones proporcionan comodidades como inyección de dependencia automática en componentes de UI, configuración simplificada y soporte de herramientas específicas del framework. Si no ves tu framework listado a continuación, no significa que webforJ no funcione con él; simplemente significa que configurarás la conexión utilizando los patrones estándar de tu framework en lugar de usar una integración preconstruida.
 
-Las integraciones a continuación son completamente opcionales. Existen para mejorar la experiencia del desarrollador al usar frameworks específicos, pero las características centrales de webforJ funcionan de manera idéntica ya sea que uses una integración o no. Tu framework de backend sigue gestionando servicios, acceso a datos y lógica empresarial mientras que webforJ se encarga de la capa de presentación.
+Las integraciones a continuación son totalmente opcionales. Existen para mejorar la experiencia del desarrollador al utilizar frameworks específicos, pero las características básicas de webforJ funcionan de manera idéntica, ya sea que uses una integración o no. Tu framework de backend continúa gestionando servicios, acceso a datos y lógica de negocio mientras que webforJ se encarga de la capa de presentación.
 
 ## Temas {#topics}
 

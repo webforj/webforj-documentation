@@ -1,32 +1,32 @@
 ---
 sidebar_position: 1
 title: Route Types
-_i18n_hash: d297703f4a165ebcfbb540c3256f825e
+_i18n_hash: ff067ccd8461640c772c1f8fa0dcc856
 ---
-Reitit jaotellaan kahteen päätyyppiin, **Näkymäreitteihin** ja **Asettelureitteihin**. Reittityypin valinta määrää, miten komponentit kartoitetaan URL-osoitteisiin ja miten ne vuorovaikuttavat sovelluksesi muiden osien kanssa.
+Reitit jaotetaan kahteen päätyyppiin, **Näyttöreitit** ja **Asetusreitit**. Reittityypin valinta määrää, miten komponentit kartoitetaan URL-osoitteisiin ja miten ne vuorovaikuttavat sovelluksen muiden osien kanssa.
 
-## Näkymäreitit {#view-routes}
+## Näyttöreitit {#view-routes}
 
-Näkymäreitit kartoittavat suoraan URL-segmenttiin ja edustavat tiettyjä sivuja sovelluksessasi. Nämä reitit näkyvät selaimen URL-osoitteessa ja niitä käytetään tyypillisesti erillisille näkymille tai sivuille.
+Näyttöreitit kartoittavat suoraan URL-segmenttiin ja edustavat sovelluksesi tiettyjä sivuja. Nämä reitit heijastuvat selaimen URL-osoitteessa ja niitä käytetään tyypillisesti erillisiin näkymiin tai sivuihin.
 
 ```java
 @Route(value = "home")
 public class HomeView extends Composite<Div> {
   public HomeView() {
     Div content = getBoundComponent();
-    content.add(new H1("Etusivu"));
+    content.add(new H1("Etusivun")); // "Home Page" translated to "Etusivu"
   }
 }
 ```
 
 - **URL**: `/home`
-- **Renderoitu komponentti**: `HomeView`
+- **Renderöity komponentti**: `HomeView`
 
-Esimerkissä, siirtyminen osoitteeseen `/home` renderoi `HomeView`-komponentin.
+Tässä esimerkissä navigointi osoitteeseen `/home` renderöi `HomeView`-komponentin.
 
-## Asettelureitit {#layout-routes}
+## Asetusreitit {#layout-routes}
 
-Asettelureitit kietovat lapsinäkymiä ilman, että ne vaikuttavat URL-osoitteeseen. Asettelut tarjoavat yhteisiä käyttöliittymäelementtejä, kuten yläosia tai sivupalkkeja, jotka ovat johdonmukaisia useissa näkymissä. Lapsireitit renderoidaan asettelun sisältöalueella.
+Asetusreitit kääriivät lapsinäkymiä ilman, että ne vaikuttavat URL-osoitteeseen. Asetukset tarjoavat jaettuja käyttöliittymäelementtejä, kuten otsikoita tai sivupalkkeja, jotka ovat johdonmukaisia useilla näkymillä. Lapsireitit renderöidään asetuksen sisältöalueelle.
 
 ```java
 @Route(type = Route.Type.LAYOUT)
@@ -38,19 +38,19 @@ public class MainLayout extends Composite<AppLayout> {
 }
 ```
 
-Tässä tapauksessa `MainLayout` on asettelureitti, joka kietoo lapsinäkymiä ympärilleen. Se määrittelee yleisiä UI-elementtejä, kuten yläosan ja piirongin. Tälle asettelulle liitetyt lapsireitit injektoidaan `AppLayout`-komponentin sisältöalueeseen.
+Tässä tapauksessa `MainLayout` on asetussuunta, joka käärii lapsinäkymät. Se määrittelee yleisiä käyttöliittymäelementtejä, kuten otsikon ja laatikon. Tämän asetuksen kanssa liittyvät lapsireitit injektoidaan `AppLayout`-komponentin sisältöalueeseen.
 
-## Reittityyppien auton tunnistaminen {#auto-detection-of-route-types}
+## Reittityyppien automaattinen tunnistus {#auto-detection-of-route-types}
 
-Oletusarvoisesti reittityyppi tunnistetaan automaattisesti sen perusteella, onko reitti **näkymä** tai **asettelu**, perustuen luokan nimeen:
+Oletusarvoisesti reittityyppi tunnistetaan automaattisesti siitä, onko reitti **näyttö** vai **asetus** luokan nimen perusteella:
 
-- Luokat, jotka päättyvät `Layout`:iin käsitellään **asettelureitteinä**.
-- Luokat, jotka päättyvät `View`:iin käsitellään **näkymäreitteinä**.
+- Luokat, jotka päättyvät `Layout`, käsitellään **asetussuunta** -reitteinä.
+- Luokat, jotka päättyvät `View`, käsitellään **näyttöreitteinä**.
 
-Vaihtoehtoisesti kehittäjät voivat määrittää reittityypin manuaalisesti asettamalla `Route.Type` `@Route`-merkintään.
+Vaihtoehtoisesti kehittäjät voivat manuaalisesti määrittää reittityypin asettamalla `Route.Type` `@Route`-annotaatiossa.
 
 ```java
-// Tunnistetaan automaattisesti Asetteluksi
+// Tunnistettu automaattisesti Asetukseksi
 @Route
 public class MainLayout extends Composite<AppLayout> {
   public MainLayout() {
@@ -61,12 +61,12 @@ public class MainLayout extends Composite<AppLayout> {
 ```
 
 ```java
-// Tunnistetaan automaattisesti Näkymäksi
+// Tunnistettu automaattisesti Näytöksi
 @Route(outlet = MainLayout.class)
 public class DashboardView extends Composite<Div> {
   public DashboardView() {
     Div content = getBoundComponent();
-    content.add(new H1("Koontinäytön sisältö"));
+    content.add(new H1("Dashbordin sisältö")); // "Dashboard Content" translated to "Dashbordin sisältö"
   }
 }
 ```

@@ -1,13 +1,13 @@
 ---
 sidebar_position: 5
 title: Automatic Binding
-_i18n_hash: 170c308c3b93a933f5fb85c0f0ec4f15
+_i18n_hash: e914be874b2c22c5e32f7fce4b5f1885
 ---
-webforJ bietet mehrere Funktionen, die den Konfigurations- und automatischen Bindungsprozess für Entwickler optimieren. In diesem Abschnitt wird erläutert, wie diese Funktionen effektiv genutzt werden können.
+webforJ bietet mehrere Funktionen, die den Konfigurations- und automatischen Bindungsprozess für Entwickler optimieren. In diesem Abschnitt wird gezeigt, wie diese Funktionen effektiv genutzt werden können.
 
 ## Verwendung von `BindingContext.of` {#using-bindingcontextof}
 
-Die Methode `BindingContext.of` bindet automatisch UI-Komponenten an die Eigenschaften einer angegebenen Bean-Klasse, vereinfacht den Bindungsprozess und reduziert den manuellen Aufwand. Sie ordnet bindbare Komponenten, die als Felder innerhalb eines Formulars oder einer Anwendung deklariert sind, entsprechend ihren Namen den Bean-Eigenschaften zu.
+Die Methode `BindingContext.of` bindet automatisch UI-Komponenten an die Eigenschaften einer bestimmten Bean-Klasse, was den Bindungsprozess vereinfacht und die manuelle Einrichtung reduziert. Sie gleicht bindbare Komponenten, die als Felder innerhalb eines Formulars oder einer App deklariert sind, mit Bean-Eigenschaften anhand ihrer Namen ab.
 
 ```java
 public class HeroRegistration extends App {
@@ -30,11 +30,11 @@ public class Hero {
   private String name;
   private String power;
 
-  // Setter und Getter
+  // Setters und Getters
 }
 ```
 
-### Annotation `UseProperty` {#useproperty-annotation}
+### `UseProperty` Annotation {#useproperty-annotation}
 
 Verwenden Sie die Annotation `UseProperty`, um den Namen der Bean-Eigenschaft anzugeben, wenn der Name des UI-Feldes nicht mit dem Namen der Bean-Eigenschaft übereinstimmt.
 
@@ -49,11 +49,11 @@ public class HeroRegistration extends App {
 }
 ```
 
-Im obigen Beispiel heißt das UI-Feld `nameField`, aber die Bean-Eigenschaft ist `name`. Sie können das UI-Feld mit dem Namen der Bean-Eigenschaft annotieren, um eine korrekte Bindung sicherzustellen.
+Im obigen Beispiel lautet der Name des UI-Feldes `nameField`, aber die Bean-Eigenschaft ist `name`. Sie können das UI-Feld mit dem Namen der Bean-Eigenschaft annotieren, um eine ordnungsgemäße Bindung sicherzustellen.
 
-### Annotation `BindingExclude` {#bindingexclude-annotation}
+### `BindingExclude` Annotation {#bindingexclude-annotation}
 
-Verwenden Sie die Annotation `BindingExclude`, um eine Komponente von automatischen Bindungskonfigurationen auszuschließen, wenn Sie es vorziehen, sie manuell zu binden oder ganz auszuschließen.
+Verwenden Sie die Annotation `BindingExclude`, um eine Komponente von automatischen Bindungskonfigurationen auszuschließen, wenn Sie sie manuell binden oder ganz ausschließen möchten.
 
 ```java
 public class HeroRegistration extends App {
@@ -68,7 +68,7 @@ public class HeroRegistration extends App {
 }
 ```
 
-### Annotation `UseValidator` {#usevalidator-annotation}
+### `UseValidator` Annotation {#usevalidator-annotation}
 
 Verwenden Sie die Annotation `UseValidator`, um Validatoren zu deklarieren, die zusätzliche Validierungsregeln während der Bindung durchsetzen. Validatoren werden in der Reihenfolge angewendet, in der Sie sie angeben.
 
@@ -80,22 +80,22 @@ public class UserRegistration extends App {
 }
 ```
 
-### Annotation `UseTransformer` {#usetransformer-annotation}
+### `UseTransformer` Annotation {#usetransformer-annotation}
 
-Verwenden Sie die Annotation `UseTransformer`, um eine Transformator-Klasse direkt auf ein UI-Feld zu deklarieren. Der `BindingContext` wendet automatisch den angegebenen Transformator an.
+Verwenden Sie die Annotation `UseTransformer`, um eine Transformerkasse direkt auf einem UI-Feld zu deklarieren. Der `BindingContext` wendet automatisch den angegebenen Transformator an.
 
 ```java
 public class UserRegistration extends App {
 
   @UseProperty("date")
   @UseTransformer(DateTransformer.class)
-  DateField dateField = new DateField("Datumsfeld");
+  DateField dateField = new DateField("Datumfeld");
 }
 ```
 
-### Annotation `BindingReadOnly` {#bindingreadonly-annotation}
+### `BindingReadOnly` Annotation {#bindingreadonly-annotation}
 
-Verwenden Sie `BindingReadOnly`, um [eine Bindung als schreibgeschützt zu kennzeichnen](./bindings/#configuring-readonly-bindings).
+Verwenden Sie die `BindingReadOnly`, um [eine Bindung als schreibgeschützt zu kennzeichnen](./bindings/#configuring-readonly-bindings).
 
 ```java
 public class UserRegistration extends App {
@@ -105,9 +105,9 @@ public class UserRegistration extends App {
 }
 ```
 
-### Annotation `BindingRequired` {#bindingrequired-annotation}
+### `BindingRequired` Annotation {#bindingrequired-annotation}
 
-Verwenden Sie `BindingRequired`, um eine Bindung als erforderlich zu kennzeichnen. Siehe auch [Erkennung erforderlicher Bindungen](#required-binding-detections).
+Verwenden Sie `BindingRequired`, um eine Bindung als erforderlich zu kennzeichnen. Siehe auch [erforderliche Bindungserkennungen](#required-binding-detections).
 
 ```java
 public class UserRegistration extends App {
@@ -119,9 +119,9 @@ public class UserRegistration extends App {
 
 ## Daten automatisch schreiben {#writing-data-automatically}
 
-Um die Reaktivität und Dynamik von Anwendungen zu verbessern, können Sie die Methode `observe` verwenden. Diese Methode stellt sicher, dass Änderungen an den UI-Komponenten sofort auf das Datenmodell übertragen werden. Sie ist besonders nützlich, wenn Sie eine kontinuierliche Synchronisierung zwischen dem Datenmodell und der UI benötigen.
+Um die Reaktionsfähigkeit und Dynamik von Anwendungen zu verbessern, können Sie die Methode `observe` verwenden. Diese Methode stellt sicher, dass Änderungen an UI-Komponenten sofort an das Datenmodell weitergegeben werden. Sie ist besonders nützlich, wenn Sie eine kontinuierliche Synchronisierung zwischen dem Datenmodell und der UI benötigen.
 
-Die Methode `observe` registriert einen `ValueChangeEvent`-Listener für alle Bindungen im Kontext, um Änderungen zu überwachen, die vom Benutzer vorgenommen werden. Diese Änderungen werden sofort an die gebundenen Eigenschaften des Modells geschrieben, sofern sie gültig sind. Wenn Sie diese Methode zum ersten Mal aufrufen, spiegelt sie die Bean-Eigenschaften in den UI-Komponenten wider.
+Die Methode `observe` registriert einen `ValueChangeEvent`-Listener für alle Bindungen im Kontext, um Änderungen, die vom Benutzer vorgenommen werden, zu überwachen und schreibt diese Änderungen sofort in die gebundenen Eigenschaften des Modells, sofern sie gültig sind. Wenn Sie diese Methode zum ersten Mal aufrufen, spiegelt sie die Bean-Eigenschaften in den UI-Komponenten wider.
 
 Hier ist ein Beispiel, wie Sie `observe` verwenden können:
 
@@ -136,25 +136,25 @@ context.onValidate(e -> {
 submit.onClick(e -> {
   ValidationResult results = context.validate();
   if (results.isValid()) {
-    // Handlung mit der Bean vornehmen.
+    // Maßnahmen mit der Bean ergreifen.
   }
 });
 ```
 
 :::info Update-Richtung
-Diese automatische Bindung ist unidirektional; Updates werden im Modell reflektiert, wenn Sie UI-Komponenten aktualisieren. Änderungen im Modell spiegeln sich jedoch nur einmal in den UI-Komponenten wider, wenn Sie die Methode zum ersten Mal aufrufen.
+Diese automatische Bindung ist unidirektional; Änderungen im Modell werden nur dann in den UI-Komponenten reflektiert, wenn Sie die Methode zum ersten Mal aufrufen.
 :::
 
 :::tip Überlegungen
-Während `observe` die Interaktivität von Anwendungen erhöht, ist es wichtig, es mit Bedacht zu verwenden:
+Während `observe` die Interaktivität von Anwendungen erhöht, ist es wichtig, sie mit Bedacht zu verwenden:
 
-- **Leistungsbeeinflussung**: Häufige Updates könnten die Leistung beeinträchtigen, insbesondere bei komplexen Modellen oder langsamen Backend-Diensten.
-- **Benutzererfahrung**: Automatische Updates sollten die Fähigkeit des Benutzers, Daten bequem einzugeben, nicht stören.
+- **Leistungswirkung**: Häufige Updates können die Leistung beeinträchtigen, insbesondere bei komplexen Modellen oder langsamen Backend-Diensten.
+- **Benutzererlebnis**: Automatische Updates sollten die Fähigkeit des Benutzers, Daten bequem einzugeben, nicht stören.
 :::
 
 ## Erforderliche Bindungserkennungen {#required-binding-detections}
 
-Wenn Sie eine Bindung als erforderlich kennzeichnen, markiert sie die Komponente als erforderlich, vorausgesetzt, die Komponente unterstützt diesen Zustand über das `RequiredAware`-Interface. Die Bindung erzwingt diesen Zustand nicht von sich aus, sondern setzt ihn auf der Komponente, wenn dies anwendbar ist.
+Wenn Sie eine Bindung als erforderlich kennzeichnen, kennzeichnet sie die Komponente als erforderlich, vorausgesetzt, die Komponente unterstützt diesen Zustand über die `RequiredAware`-Schnittstelle. Die Bindung setzt diesen Zustand nicht selbst durch, sondern legt ihn bei entsprechender Anwendung auf der Komponente fest.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class, true);
@@ -164,7 +164,7 @@ context
     .add()
 ```
 
-Bei der Verwendung von [Jakarta-Annotationen](./validation/jakarta-validation.md) kann die Bindung automatisch den erforderlichen Zustand erkennen, basierend auf dem Vorhandensein einer der folgenden Annotationen auf den Bean-Eigenschaften:
+Beim Verwenden von [Jakarta-Annotationen](./validation/jakarta-validation.md) kann die Bindung automatisch den erforderlichen Zustand erkennen, basierend auf dem Vorhandensein einer der folgenden Annotationen auf Bean-Eigenschaften:
 
 1. `@NotNull` 
 2. `@NotEmpty` 

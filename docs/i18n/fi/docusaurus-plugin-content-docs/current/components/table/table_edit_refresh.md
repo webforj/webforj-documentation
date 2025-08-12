@@ -2,9 +2,9 @@
 sidebar_position: 30
 title: Editing and Refreshing
 slug: refreshing
-_i18n_hash: 0c57bd3fd3a9adb9cb7275e23efa725f
+_i18n_hash: 39816123675d62a6dda185187e8d13e2
 ---
-Tietojen muokkaaminen `Table`-komponentissa tapahtuu vuorovaikutuksessa `Repository`:n kanssa, joka sisältää `Table`:n tietoja. `Repository` toimii silta `Table`:n ja taustalla olevan tietojoukon välillä, tarjoten menetelmiä tietojen hakemiseen, muokkaamiseen ja päivittämiseen. Alla on esimerkki, joka toteuttaa käyttäytymisen muokata halutun rivin "Otsikkoa".
+Tietojen muokkaaminen `Table`-komponentissa tapahtuu vuorovaikutuksessa `Repository`-komponentin kanssa, joka sisältää tiedot `Table`:lle. `Repository` toimii sillan tavoin `Table`-komponentin ja taustalla olevan datan välillä, tarjoten menetelmiä datan hakemiseen, muokkaamiseen ja päivittämiseen. Alla on esimerkki, joka toteuttaa käyttäytymisen muokata halutun rivin "Otsikko".
 
 <ComponentDemo 
 path='/webforj/tableeditdata?' 
@@ -13,18 +13,18 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/hea
 height='600px'
 />
 
-Edellä olevassa esimerkissä `TitleEditorComponent`-luokka mahdollistaa "Otsikko"-kentän muokkaamisen valitulle `MusicRecord`:ille. Komponentti sisältää syöttökentän uudelle otsikolle sekä "Tallenna" ja "Peruuta" -painikkeet.
+Yllä olevassa esimerkissä `TitleEditorComponent`-luokka mahdollistaa "Otsikko"-kentän muokkaamisen valitulle `MusicRecord`:lle. Komponentti sisältää syöttökentän uudelle otsikolle sekä "Tallenna" ja "Peruuta" -painikkeet.
 
-Yhdistääksemme muokkauskomponentin `Table`:n kanssa, "Muokkaa"-painike lisätään `Table`:hen `VoidElementRenderer`:in kautta. Tämän painikkeen napsauttaminen laukaisee `TitleEditorComponent`:n `edit()`-menetelmän, mikä antaa käyttäjille mahdollisuuden muokata "Otsikkoa".
+Yhdistääksesi muokkauskomponentin `Table`-komponenttiin, "Muokkaa" -painike lisätään `Table`-komponenttiin `VoidElementRenderer`-komponentin kautta. Tämä painike laukaisee `TitleEditorComponent`:in `edit()`-menetelmän, joka mahdollistaa käyttäjien muokata "Otsikkoa".
 
 ## Commit-menetelmä {#commit-method}
 
-Kun käyttäjä muokkaa otsikkoa ja napsauttaa "Tallenna"-painiketta, `TitleEditorComponent` laukaisee `save()`-menetelmän. Tämä menetelmä päivittää vastaavan `MusicRecord`:in otsikon ja käynnistää mukautetun `SaveEvent`:in.
+Kun käyttäjä muokkaa otsikkoa ja napsauttaa "Tallenna" -painiketta, `TitleEditorComponent` laukaisee `save()`-menetelmän. Tämä menetelmä päivittää vastaavan `MusicRecord`:in otsikon ja lähettää mukautetun `SaveEvent`:in.
 
-Reaaliaikainen tietojen päivitys repositoriossa saavutetaan `commit()`-menetelmän avulla. Tätä menetelmää käytetään `onSave`-tapahtumakuuntelijassa, varmistaen, että muokkauskomponentin kautta tehdyt muutokset heijastuvat taustalla olevaan tietojoukkoon.
+Reaaliaikainen tietojen päivitys repositoriossa saavutetaan `commit()`-menetelmällä. Tämä menetelmä käytetään `onSave`-tapahtuman kuuntelijassa varmistaen, että muokkauskomponentin kautta tehdyt muutokset heijastuvat taustadatassa.
 
-`commit()`-menetelmää kutsutaan ilmoittamaan kaikille kiinnostuneille komponenteille, että tiedot ovat muuttuneet. `Table` vastaanottaa `RepositoryCommitEvent`:in ja päivittää uuden datan perusteella.
+`commit()`-menetelmää kutsutaan ilmoittamaan kaikille kiinnostuneille komponenteille, että dataa on muutettu. `Table` vastaanottaa `RepositoryCommitEvent`:in ja päivittää sen mukaan uusista tiedoista.
 
-:::tip Tietojen päivittäminen ja luominen
-`commit()`-menetelmän kutsuminen päivittää olemassa olevia merkintöjä ja **lisää kaikki uudet merkinnät, jotka on luotu**.
-:::
+:::tip Kirjausten päivittäminen ja luominen
+`commit()`-menetelmän kutsuminen päivittää olemassa olevia kirjauksia ja **lisää kaikki uudet kirjaukset, jotka on luotu**.
+:::#

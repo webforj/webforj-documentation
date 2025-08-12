@@ -1,13 +1,13 @@
 ---
 sidebar_position: 3
 title: Colors
-_i18n_hash: 257b725aa7a7992bc6cedd91de9c9ca5
+_i18n_hash: c0e3dc5c992621c0c9cb3da24ef3964f
 ---
 import ColorPalette from '@site/src/components/DWCTheme/ColorPalette/ColorPalette';
 
-webforJ biedt een kleursysteem dat is gebaseerd op CSS-variabelen. Deze kleurvariabelen zorgen voor een consistente visuele stijl in je app, terwijl je volledige controle hebt om paletten aan te passen volgens je ontwerpeisen.
+webforJ biedt een kleursysteem dat is opgebouwd uit CSS-aangepaste eigenschappen. Deze kleurvariabelen zorgen voor een consistente visuele stijl in uw app, terwijl u volledige controle hebt om paletten aan te passen aan uw ontwerpeisen.
 
-Je kunt elke kleur verwijzen met de syntaxis `--dwc-color-{palette}-{shade}`, waarbij `{palette}` de naam van de kleurengroep is (bijv. `primary`, `danger`, ..) en `{shade}` een getal van `5` tot `95` in stappen van `5`, die de lichtheid van de kleur vertegenwoordigt.
+U kunt elke kleur verwijzen met de `--dwc-color-{palette}-{shade}` syntaxis, waarbij `{palette}` de naam is van de kleurengroep (bijv. `primary`, `danger`, ..) en `{shade}` een getal van `5` tot `95` in stappen van `5`, dat de lichtheid van de kleur vertegenwoordigt.
 
 ```css
 .element {
@@ -16,38 +16,40 @@ Je kunt elke kleur verwijzen met de syntaxis `--dwc-color-{palette}-{shade}`, wa
 }
 ```
 
-:::tip Schaduwwaarde-schaal
-Schaduwwaarden variëren van `5` (donkerste) tot `95` (lichtste), toenemend in stappen van `5`.
+:::tip Schaduwwaarde schaal
+Schaduwwaarden variëren van `5` (donkerste) tot `95` (lichtste), in stappen van `5`.
 :::
 
 ## Kleurpaletten {#color-palettes}
 
-Er zijn verschillende ingebouwde kleurpaletten, elk ontworpen voor semantische gebruiksdoeleinden zoals branding, succesberichten, waarschuwingen en meer. Elke palet is samengesteld uit dynamisch gegenereerde tinten en schaduwen op basis van drie belangrijke eigenschappen: `hue`, `saturation` en `contrast-threshold`.
+Er zijn verschillende ingebouwde kleurpaletten, elk ontworpen voor semantische gebruikscenario's zoals branding, succesberichten, waarschuwingen en meer. Elk palet bestaat uit dynamisch gegenereerde tinten en schaduwen op basis van drie belangrijke eigenschappen: `hue`, `saturation`, en `contrast-threshold`.
 
 ### Beschikbare paletten {#available-palettes}
 
-- **default**: Een neutrale grijs-gebaseerde palet getint met de primaire kleur, gebruikt voor de meeste componenten.
-- **primary**: Vertegenwoordigt doorgaans de primaire kleur van jouw merk.
+- **default**: Een neutrale grijsgebaseerde palet getint met de primaire kleur, gebruikt voor de meeste componenten.
+- **primary**: Vertegenwoordigt doorgaans de primaire kleur van uw merk.
 - **success**, **warning**, **danger**: Semantische paletten die worden gebruikt voor geschikte statusindicatoren.
-- **info**: Een optionele aanvullende palet voor secundaire nadruk.
-- **gray**: Een echte grijs-schaal palet, ongekleurd.
+- **info**: Een optioneel complementair palet voor secundaire nadruk.
+- **gray**: Een echte grijs-schalen palet, ongekleurd.
 - **black/white**: Statische kleurwaarden
 
 <ColorPalette></ColorPalette>
 
+
 <br/>
 
 :::tip DWC HueCraft
-Om het proces van het genereren van WCAG-conforme paletten voor jouw webforJ-toepassingen te vereenvoudigen, kun je de [DWC HueCraft](https://webforj.github.io/huecraft/) tool gebruiken. Het ondersteunt paletcreatie op basis van merk kleuren of logo's en maakt snelle CSS-export mogelijk.
+Om het proces van het genereren van WCAG-conforme paletten voor uw webforJ-toepassingen te vereenvoudigen, kunt u de [DWC HueCraft](https://webforj.github.io/huecraft/) tool gebruiken. Het ondersteunt het maken van paletten op basis van merk kleuren of logo's en laat snelle CSS-export toe.
 :::
 
-### Gedrag in de donkere modus {#dark-mode-behavior}
 
-webforJ ondersteunt een omgekeerde kleurstrategie in de donkere modus. In plaats van volledig aparte kleurpaletten te gebruiken, draait het de manier waarop lichtheidswaarden worden geïnterpreteerd om.
+### Donkere modus gedrag {#dark-mode-behavior}
 
-Dit betekent dat in **donkere thema's** lagere schaduwwaarden (bijv. `--dwc-color-primary-5`) licht worden en hogere waarden (bijv. `--dwc-color-primary-95`) donker worden. De logica is omgekeerd om een optimale contrast en leesbaarheid te waarborgen over achtergronden.
+webforJ ondersteunt een omgekeerde kleurstrategie in de donkere modus. In plaats van volledig aparte kleurpaletten te gebruiken, draait het de manier waarop lichtheid waarden worden geïnterpreteerd om.
 
-Je componentcode blijft dezelfde, ongeacht het thema. Bijvoorbeeld:
+Dit betekent dat in **donkere thema's**, lagere schaduwwaarden (bijv. `--dwc-color-primary-5`) licht worden en hogere waarden (bijv. `--dwc-color-primary-95`) donker worden. De logica is omgekeerd om optimale contrast en leesbaarheid over achtergronden te waarborgen.
+
+Uw componentcode blijft hetzelfde, ongeacht het thema. Bijvoorbeeld:
 
 ```css
 .button {
@@ -56,19 +58,19 @@ Je componentcode blijft dezelfde, ongeacht het thema. Bijvoorbeeld:
 }
 ```
 
-In de lichte modus geeft dit een gemiddelde achtergrond. In de donkere modus geeft het nog steeds een gemiddelde, maar visueel omgekeerd om op donkere oppervlakken te werken. Deze aanpak voorkomt duplicatie, houdt je stijlen consistent en zorgt voor soepele visuele overgangen bij het schakelen tussen lichte en donkere thema's.
+In de lichte modus geeft dit een middentoon achtergrond. In de donkere modus geeft het nog steeds een middentoon, maar visueel omgekeerd om op donkere oppervlakken te werken. Deze benadering voorkomt duplicatie, houdt uw stijlen consistent en zorgt ervoor dat visuele overgangen soepel verlopen bij het schakelen tussen lichte en donkere thema's.
 
-### Variabelen voor paletconfiguratie {#palette-configuration-variables}
+### Palet configuratievariabelen {#palette-configuration-variables}
 
-Elke palet wordt gegenereerd op basis van de volgende variabelen:
+Elk palet wordt gegenereerd op basis van de volgende variabelen:
 
-| Variabele               | Beschrijving |
-|------------------------|-------------|
-| `hue`                  | De hoek (in graden) op het kleurenwiel. Waarden zonder eenheid worden als graden geïnterpreteerd. |
-| `saturation`           | Een percentage dat de kleurintensiteit aangeeft. `100%` is volledig verzadigd; `0%` is grijswaarden. |
-| `contrast-threshold`   | Een waarde tussen `0` en `100` die bepaalt of tekst licht of donker moet zijn op basis van de achtergrondlichtheid. |
+| Variabele                  | Beschrijving |
+|----------------------------|--------------|
+| `hue`                      | De hoek (in graden) op het kleurenwiel. Waarden zonder eenheid worden geïnterpreteerd als graden. |
+| `saturation`               | Een percentage dat de kleurdichtheid aangeeft. `100%` is volledig verzadigd; `0%` is grijswaarden. |
+| `contrast-threshold`       | Een waarde tussen `0` en `100` die bepaalt of tekst licht of donker moet zijn, afhankelijk van de achtergrondlichtheid. |
 
-Je kunt een palet aanpassen door deze variabelen in je root-stijlen opnieuw te definiëren. Bijvoorbeeld, om de primaire palet te wijzigen:
+U kunt een palet aanpassen door deze variabelen opnieuw te definiëren in uw root-stijlen. Bijvoorbeeld, om het primaire palet te wijzigen:
 
 ```css
 :root {
@@ -78,84 +80,84 @@ Je kunt een palet aanpassen door deze variabelen in je root-stijlen opnieuw te d
 }
 ```
 
-## Thematiseren van componenten met abstracte variabelen {#theming-components-with-abstract-variables}
+## Theming componenten met abstracte variabelen {#theming-components-with-abstract-variables}
 
-Om styling en consistentie over componenten te vereenvoudigen, introduceert webforJ een abstractielaag bovenop de basiskleurpaletten. Deze laag is opgebouwd uit **abstracte themavariabelen** - CSS-variabelen die verwijzen naar specifieke schaduwen binnen een kleurpalet.
+Om styling en consistentie over componenten te vereenvoudigen, introduceert webforJ een abstractielaag bovenop de basis kleurpaletten. Deze laag is opgebouwd uit **abstracte themavariabelen** - CSS aangepaste eigenschappen die verwijzen naar specifieke tinten binnen een kleurpalet.
 
-Deze variabelen maken het gemakkelijker om thema's toepassen op alle componenten zonder direct te verwijzen naar ruwe kleurwaarden of kleurstalen. Je kunt ze zien als *semantische styling-snelkoppelingen* die de intentie van jouw app weerspiegelen in plaats van de implementatiedetails.
+Deze variabelen maken het gemakkelijker om thema's toe te passen op alle componenten zonder direct te verwijzen naar ruwe kleurwaarden of kleurstalen. U kunt ze beschouwen als *semantische styling snelkoppelingen* die de intentie van uw app weerspiegelen en niet de implementatiedetails.
 
 ### Variabele groepen {#variable-groups}
 
 Abstracte themavariabelen zijn georganiseerd in vier groepen:
 
-1. [Normaal](#normal-state) Gebruikt voor de standaard uitstraling, zoals achtergronden en tekst op inactieve componenten.
-2. [Donker](#darker-variant) Gebruikt voor actieve of geselecteerde staten.
-3. [Licht](#lighter-variant) Gebruikt voor hover- en focus-staten.
+1. [Normaal](#normal-state) Gebruikt voor het standaard uiterlijk, zoals achtergronden en tekst op niet-actieve componenten.
+2. [Donker](#darker-variant) Gebruikt voor actieve of geselecteerde toestanden.
+3. [Licht](#lighter-variant) Gebruikt voor hover- en focus-toestanden.
 4. [Alt](#alt-variant) Gebruikt voor secundaire highlights, zoals toetsenbordfocus of subtiele UI-accenten.
 
 Elke groep definieert:
 
 - Een achtergrondkleur
-- Een voorgrond (tekst)kleur
-- Een randkleur (voor gefocuste/gehoverde/actieve staten)
+- Een voorgrond (tekst) kleur
+- Een randkleur (voor gefocuste/gehoverde/actieve toestanden)
 - Een focusring (gebruikt wanneer de component zichtbare focus ontvangt)
 
-Elke tab hieronder toont de abstracte variabelen die zijn gedefinieerd voor een specifiek palet (`primary`, `success`, `danger`, enz.). Deze variabelen trekken waarden uit het onderliggende palet (bijv. `--dwc-color-primary-40`) en maken ze herbruikbaar in jouw app.
+Elke tab hieronder toont de abstracte variabelen gedefinieerd voor een specifiek palet (`primary`, `success`, `danger`, enz.). Deze variabelen halen waarden uit het onderliggende palet (bijv. `--dwc-color-primary-40`) en maken ze herbruikbaar in uw app.
 
-Bijvoorbeeld, in plaats van direct `--dwc-color-primary-40` te gebruiken, kun je `--dwc-color-primary` toepassen, wat de rol van die kleur als de *standaard achtergrond* voor een component met primaire stijl abstraheert.
+Bijvoorbeeld, in plaats van direct `--dwc-color-primary-40` te gebruiken, kunt u `--dwc-color-primary` toepassen, wat de rol van die kleur als de *standaard achtergrond* voor een primaire gestileerde component abstraheert.
 
-Het wijzigen van de paletwaarden op één plek zal het uiterlijk van alle componenten die op deze abstracte variabelen vertrouwen bijwerken.
+Het wijzigen van de paletwaarden op één plaats zal het uiterlijk van alle componenten die afhankelijk zijn van deze abstracte variabelen bijwerken.
 
 ### Normale staat {#normal-state}
 
-Gebruikt voor de basis, neutrale uitstraling van een component — wanneer deze inactief is en niet wordt weergegeven.
+Gebruikt voor het basis, neutrale uiterlijk van een component—wanneer deze inactief is en niet wordt interactie mee.
 
-| Variabele                           | Beschrijving                                                             |
-| ---------------------------------- | ----------------------------------------------------------------------- |
-| `--dwc-color-${name}`              | De standaard achtergrondkleur. Wordt ook gebruikt voor randen in veel componenten. |
-| `--dwc-color-on-${name}-text`      | De tekstkleur die bovenop de standaard achtergrond wordt weergegeven.   |
-| `--dwc-color-${name}-text`         | De tekstkleur wanneer de component op de oppervlakte achtergrond is geplaatst. |
-| `--dwc-border-color-${name}`       | Randkleur, voornamelijk gebruikt voor hover-, focus- en actieve staten. |
-| `--dwc-focus-ring-${name}`         | Focusring-schaduw wanneer de component zichtbare stijlen ontvangt.     |
+| Variabele                                | Beschrijving                                                               |
+|------------------------------------------|---------------------------------------------------------------------------|
+| `--dwc-color-${name}`                    | De standaard achtergrondkleur. Ook gebruikt voor randen in veel componenten. |
+| `--dwc-color-on-${name}-text`            | De kleur van de tekst die bovenop de standaard achtergrond wordt weergegeven. |
+| `--dwc-color-${name}-text`               | De kleur van de tekst wanneer de component wordt geplaatst op de oppervlak achtergrond. |
+| `--dwc-border-color-${name}`             | Randkleur, voornamelijk gebruikt voor hover, focus en actieve toestanden. |
+| `--dwc-focus-ring-${name}`               | Focusring schaduw wanneer de component focus-visibele styling ontvangt. |
 
---- 
+---
 
 ### Donkere variant {#darker-variant}
 
-Gebruikt voor geselecteerde of actieve staten — meestal een diepere toon voor sterker contrast en nadruk.
+Gebruikt voor geselecteerde of actieve toestanden—meestal een diepere toon voor sterkere contrast en nadruk.
 
-| Variabele                                | Beschrijving                                                              |
-| --------------------------------------- | ------------------------------------------------------------------------ |
-| `--dwc-color-${name}-dark`              | Een donkerdere versie van de basiskleur. Vaak gebruikt voor ingedrukte of geselecteerde staten. |
-| `--dwc-color-on-${name}-text-dark`      | Tekstkleur wanneer gebruikt op een donkere achtergrond.                   |
-| `--dwc-color-${name}-text-dark`         | Een iets donkerdere tekstvariant wanneer getoond op het oppervlak.       |
+| Variabele                              | Beschrijving                                                               |
+|-----------------------------------------|---------------------------------------------------------------------------|
+| `--dwc-color-${name}-dark`              | Een donkere versie van de basiskleur. Vaak gebruikt voor ingedrukte of geselecteerde toestanden. |
+| `--dwc-color-on-${name}-text-dark`      | Tekstkleur wanneer gebruikt op een donkere achtergrond.                     |
+| `--dwc-color-${name}-text-dark`         | Een iets donkerdere tekstalternatief wanneer getoond op het oppervlak.      |
 
---- 
+---
 
 ### Lichtere variant {#lighter-variant}
 
-Gebruikt voor hover-, focus- en minder dominante visuele aanwijzingen. Dit zijn zachte tonen die zijn ontworpen voor subtiele interactie-feedback.
+Gebruikt voor hover, focus, en minder dominante visuele aanwijzingen. Dit zijn zachte tonen die zijn ontworpen voor subtiele interactiefeedback.
 
-| Variabele                                | Beschrijving                                                              |
-| --------------------------------------- | ------------------------------------------------------------------------ |
-| `--dwc-color-${name}-light`             | Een lichtere versie van de basiskleur. Typisch gebruikt voor hover/focus-achtergronden. |
-| `--dwc-color-on-${name}-text-light`     | Tekstkleur wanneer getoond op een lichte achtergrond.                     |
-| `--dwc-color-${name}-text-light`        | Een lichtere teksttoon voor gebruik in minder prominente staten.        |
+| Variabele                              | Beschrijving                                                               |
+|-----------------------------------------|---------------------------------------------------------------------------|
+| `--dwc-color-${name}-light`             | Een lichtere versie van de basiskleur. Typisch gebruikt voor hover/focus achtergronden. |
+| `--dwc-color-on-${name}-text-light`     | Tekstkleur wanneer weergegeven op een lichte achtergrond.                   |
+| `--dwc-color-${name}-text-light`        | Een lichtere texttoon voor gebruik in minder prominente toestanden.         |
 
---- 
+---
 
-### Alternatieve variant {#alt-variant}
+### Alt variant {#alt-variant}
 
-Gebruikt voor secundaire nadruk of UI-hoogtepunten — zoals toetsenbordnavigatiefocusomtrekken of aanvullende indicatoren.
+Gebruikt voor secundaire nadruk of UI-hoogtepunten—zoals toetsenbord navigatie focusomtrekken of aanvullende indicatoren.
 
-| Variabele                                | Beschrijving                                                              |
-| --------------------------------------- | ------------------------------------------------------------------------ |
-| `--dwc-color-${name}-alt`               | Een zeer lichte versie van de kleur, voornamelijk gebruikt voor hoogtepunten of achtergrondglows. |
-| `--dwc-color-on-${name}-text-alt`       | Tekstkleur wanneer de achtergrond de alternatieve (`alt`) kleur is.      |
+| Variabele                              | Beschrijving                                                               |
+|-----------------------------------------|---------------------------------------------------------------------------|
+| `--dwc-color-${name}-alt`               | Een zeer lichte versie van de kleur, voornamelijk gebruikt voor hoogtepunten of achtergrondglosten. |
+| `--dwc-color-on-${name}-text-alt`       | Tekstkleur wanneer de achtergrond de alternatieve (`alt`) kleur is.        |
 
 <Tabs>
 
-<TabItem value="Standaard / Toon">
+<TabItem value="Default / Tone">
 
 ```css
 --dwc-color-default-dark: var(--dwc-color-default-85);
@@ -179,7 +181,7 @@ Gebruikt voor secundaire nadruk of UI-hoogtepunten — zoals toetsenbordnavigati
 
 </TabItem>
 
-<TabItem value="Primair">
+<TabItem value="Primary">
 
 ```css
 --dwc-color-primary-dark: var(--dwc-color-primary-35);
@@ -208,7 +210,7 @@ Gebruikt voor secundaire nadruk of UI-hoogtepunten — zoals toetsenbordnavigati
 
 </TabItem>
 
-<TabItem value="Succes">
+<TabItem value="Success">
 
 ```css
 --dwc-color-success-dark: var(--dwc-color-success-20);
@@ -231,13 +233,13 @@ Gebruikt voor secundaire nadruk of UI-hoogtepunten — zoals toetsenbordnavigati
     var(--dwc-color-success-h),
     var(--dwc-color-success-s),
     var(--dwc-focus-ring-l),
-    var(--dwc-color-success-a)
+    var(--dwc-focus-ring-a)
   );
 ```
 
 </TabItem>
 
-<TabItem value="Waarschuwing">
+<TabItem value="Warning">
 
 ```css
 --dwc-color-warning-dark: var(--dwc-color-warning-35);
@@ -260,13 +262,13 @@ Gebruikt voor secundaire nadruk of UI-hoogtepunten — zoals toetsenbordnavigati
     var(--dwc-color-warning-h),
     var(--dwc-color-warning-s),
     var(--dwc-focus-ring-l),
-    var(--dwc-color-warning-a)
+    var(--dwc-focus-ring-a)
   );
 ```
 
 </TabItem>
 
-<TabItem value="Gevaren">
+<TabItem value="Danger">
 
 ```css
 --dwc-color-danger-dark: var(--dwc-color-danger-35);
@@ -289,7 +291,7 @@ Gebruikt voor secundaire nadruk of UI-hoogtepunten — zoals toetsenbordnavigati
     var(--dwc-color-danger-h),
     var(--dwc-color-danger-s),
     var(--dwc-focus-ring-l),
-    var(--dwc-color-danger-a)
+    var(--dwc-focus-ring-a)
   );
 ```
 
@@ -318,13 +320,13 @@ Gebruikt voor secundaire nadruk of UI-hoogtepunten — zoals toetsenbordnavigati
     var(--dwc-color-info-h),
     var(--dwc-color-info-s),
     var(--dwc-focus-ring-l),
-    var(--dwc-color-info-a)
+    var(--dwc-focus-ring-a)
   );
 ```
 
 </TabItem>
 
-<TabItem value="Grijs">
+<TabItem value="Gray">
 
 ```css
 --dwc-color-gray-dark: var(--dwc-color-gray-10);
@@ -347,7 +349,7 @@ Gebruikt voor secundaire nadruk of UI-hoogtepunten — zoals toetsenbordnavigati
     var(--dwc-color-gray-h),
     var(--dwc-color-gray-s),
     var(--dwc-focus-ring-l),
-    var(--dwc-color-gray-a)
+    var(--dwc-focus-ring-a)
   );
 ```
 </TabItem>

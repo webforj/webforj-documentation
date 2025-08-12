@@ -1,26 +1,26 @@
 ---
 sidebar_position: 3
 title: Testing with Selenium
-_i18n_hash: 5d2e4b04f794236d9a8ea2a32d50579b
+_i18n_hash: fe85942b4638ef9828b334ef986b4436
 ---
-Tämä dokumentaatio kuvaa prosessin webforJ-sovellusten testaamiseksi Seleniumilla, erityisesti keskittyen `HelloWorldView`-komponenttiin, joka tulee `webforj-archetype-hello-world`-projektista.
+Tämä dokumentaatio kuvaa prosessin webforJ-sovellusten testaamiseksi Seleniumilla, keskittyen erityisesti `HelloWorldView`-komponenttiin `webforj-archetype-hello-world`-projektista.
 
 :::info Sovelluksen perusteet
-Jos haluat tietää lisää `webforj-archetype-hello-world`-sovelluksesta, tutustu kohtaan [Sovelluksen perusteet -esittely](../../introduction/basics).
+Jos haluat tietää lisää `webforj-archetype-hello-world`-projektista, viittaa [Sovelluksen perusteet -esittelyyn](../../introduction/basics).
 :::
 
-## Vaatimukset {#prerequisites}
+## Edellytykset {#prerequisites}
 
 Ennen Selenium-testien suorittamista varmista seuraavat asiat:
-- webforJ-sovellus on asetettu oikein ja toimii paikallisella palvelimellasi.
+- webforJ-sovellus on oikein asetettu ja toimii paikallisella palvelimellasi.
 - Olet asentanut:
-  - Seleniumin Java-sidonnat.
+  - Selenium Java -sidokset.
   - Yhteensopivan WebDriverin selaimellesi.
-  - Mavenin projektiriippuvuuksia varten.
+  - Maven projektiriippuvuuksia varten.
 
-## Maven-konfigurointi {#maven-configuration}
+## Maven-konfiguraatio {#maven-configuration}
 
-Lisää tarvittavat riippuvuudet `pom.xml`-tiedostoosi Seleniumille ja muille testauskirjastoille:
+Lisää tarvittavat riippuvuudet `pom.xml`-tiedostoosi Seleniumia ja muita testauskirjastoja varten:
 
 ```xml title="pom.xml"
 <dependencies>
@@ -42,9 +42,9 @@ Lisää tarvittavat riippuvuudet `pom.xml`-tiedostoosi Seleniumille ja muille te
 </dependencies>
 ```
 
-## Testiesimerkki: `HelloWorldView` {#testing-example-helloworldview}
+## Testausesimerkki: `HelloWorldView` {#testing-example-helloworldview}
 
-Seuraava koodi kuvaa Selenium-pohjaista testiä `HelloWorldView`-komponentille.
+Seuraava koodi esittelee Selenium-pohjaisen testin `HelloWorldView`-komponentille.
 
 ```java title="HelloWorldViewTest.java"
 package com.example.views;
@@ -98,25 +98,25 @@ class HelloWorldViewTest {
 }
 ```
 
-### Keskeiset vaiheet {#key-steps}
+### Keskeiset askeleet {#key-steps}
 
 1. **Alusta WebDriver**:
-   - Käytä [`WebDriverManager`](https://github.com/bonigarcia/webdrivermanager) -koulukunta automaattisesti hallitsemaan selaimen ajurin suoritettavaa tiedostoa.
+   - Käytä [`WebDriverManager`](https://github.com/bonigarcia/webdrivermanager) -työkalua hallitsemaan selaimen ajurin suoritettavaa automaattisesti.
 
-2. **Testiympäristön asetukset**:
-   - Käynnistä testipalvelin `http://localhost:<port>/`-osoitteessa.
-   - Odota, kunnes sivun otsikko vastaa odotettua `webforJ Hello World`.
+2. **Aseta testausympäristö**:
+   - Käynnistä testipalvelin `http://localhost:<port>/`-osoitteeseen.
+   - Odota, että sivun otsikko vastaa odotettua `webforJ Hello World`.
 
 3. **Vuorovaikutus elementtien kanssa**:
-   - Hae elementtejä käyttäen `By.tagName`, `By.id` tai muita Seleniumin hakijoita.
-   - Vahvista odotettu käyttäytyminen, kuten painikkeen napsautukset tai tekstin muutokset.
-    
+   - Etsi elementtejä käyttäen `By.tagName`, `By.id` tai muita Seleniumin etsintätapoja.
+   - Vahvista odotettuja käyttäytymisiä, kuten nappien klikkaukset tai tekstimuutokset.
+
   :::info
-  Koska webforJ tuottaa yhden sivun verkkosovelluksen, Selenium ei ole tietoinen DOM-manipulaatioista sen jälkeen, kun alkuperäinen sivu on ladattu. Voit käyttää Seleniumin [WebDriverWait APIa](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/WebDriverWait.html) odottaaksesi, kunnes DOM on koottu.
+  Koska webforJ tuottaa yksisivuisen verkkosovelluksen, Selenium ei tunne DOM-manipulaatiota sen jälkeen, kun alkuperäinen sivu on ladattu. Voit käyttää Seleniumin [WebDriverWait APIa](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/WebDriverWait.html) odottaaksesi, kunnes DOM on käännetty.
   :::
 
-4. **Puhdistus**:
-   - Lopeta WebDriver-istunto vapauttaaksesi resurssit.
+4. **Tehostus**:
+   - Sulje WebDriver-istunto vapauttaaksesi resurssit.
 
 ### Testien suorittaminen {#running-tests}
 
@@ -132,5 +132,5 @@ class HelloWorldViewTest {
 
 ## Odotettu käyttäytyminen {#expected-behavior}
 
-- Käyttäessäsi `http://localhost:<port>/`, `HelloWorldView`-sivu latautuu.
-- `dwc-button`-elementin, jossa on teksti `Say Hello`, tulisi olla läsnä.
+- Kun vierailet `http://localhost:<port>/`, `HelloWorldView`-sivu latautuu.
+- `dwc-button`-elementin, jonka teksti on `Say Hello`, tulisi olla läsnä.

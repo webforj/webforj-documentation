@@ -1,15 +1,15 @@
 ---
 title: Background Jobs
 sidebar_position: 25
-_i18n_hash: 6770951556a0f793ce218daeb686b581
+_i18n_hash: d419b53d933af4ef48890b8be2eab4dc
 ---
-Kun käyttäjät napsauttavat painiketta raportin luomiseksi tai tietojen käsittelemiseksi, he odottavat käyttöliittymän pysyvän reagoivana. Edistymispalkkien tulisi animoitua, painikkeiden tulisi reagoida hiiren mukana kulkemiseen, eikä sovelluksen pitäisi jumiutua. Springin `@Async`-annotaatio tekee tämän mahdolliseksi siirtämällä pitkäkestoisia operaatioita taustasäikeisiin.
+When users click a button to generate a report or process data, they expect the interface to remain responsive. Progress bars should animate, buttons should react to hover, and the app shouldn't freeze. Springin `@Async` annotaatio mahdollistaa tämän siirtämällä pitkäkestoiset toiminnot taustakäthreadille.
 
-webforJ varmistaa säikeiden turvallisuuden käyttöliittymäkomponenteille - kaikki päivitykset on suoritettava käyttöliittymässä. Tämä aiheuttaa haasteen: kuinka taustatehtävät voivat päivittää edistymispalkkeja tai näyttää tuloksia? Vastaus on `Environment.runLater()`, joka siirtää käyttöliittymän päivitykset turvallisesti Springin taustasäikeistä webforJ:n käyttöliittymän säikeeseen.
+webforJ varmistaa säikeiden turvallisuuden käyttöliittymän komponenteille - kaikki päivitykset on suoritettava käyttöliittymässä. Tämä luo haasteen: miten taustatehtävät voivat päivittää edistymispalkkeja tai näyttää tuloksia? Vastaus on `Environment.runLater()`, joka siirtää käyttöliittymän päivitykset turvallisesti Springin taustasäikeiltä webforJ:n käyttöliittymän säikeelle.
 
-## Asynkronisen suorituksen mahdollistaminen {#enabling-asynchronous-execution}
+## Asynkronisen suorittamisen mahdollistaminen {#enabling-asynchronous-execution}
 
-Springin asynkroninen metodisuoritus vaatii eksplisiittistä konfigurointia. Ilman sitä, `@Async`-annotaatiolla merkittyjä metodeja suoritetaan synkronisesti, mikä kumoaa niiden tarkoituksen.
+Springin asynkroninen metodin suorittaminen vaatii eksplisiittistä konfigurointia. Ilman sitä, `@Async`-annotaatiolla merkittyjä metodeja suoritetaan synkronisesti, mikä kumoaa niiden tarkoituksen.
 
 Lisää `@EnableAsync` Spring Boot -sovelluksesi luokkaan:
 
@@ -25,15 +25,15 @@ public class Application {
 }
 ```
 
-`@EnableAsync` -annotaatio aktivoi Springin infrastruktuurin `@Async`-metodien havaitsemiseksi ja niiden suorittamiseksi taustasäikeissä.
+`@EnableAsync` annotaatio aktivoi Springin infrastruktuurin havaitsemaan `@Async`-metodit ja suorittamaan ne taustasäikeillä.
 
-:::tip[Springin asynkroninen opas]
-Nopeaa esittelyä Springin `@Async` -annotaatiosta ja peruskäyttötavoista varten, katso [Asynkronisten metodien luominen](https://spring.io/guides/gs/async-method).
+:::tip[Spring async guide]
+Springin `@Async` annotaation ja perustavanlaatuisten käyttömallien lyhyen esittelyn saamiseksi, katso [Luodaan asynkronisia metodeja](https://spring.io/guides/gs/async-method).
 :::
 
-## Asynkronisten palveluiden luominen {#creating-async-services}
+## Asynkronisten palvelujen luominen {#creating-async-services}
 
-`@Service`-annotaatiolla merkittyjen palveluiden metodeilla voi olla `@Async`-merkintä, jotta niitä voidaan suorittaa taustasäikeissä. Nämä metodit palauttavat tyypillisesti `CompletableFuture`, jotta oikean valmistumisen käsittely ja peruutus voidaan mahdollistaa:
+`@Service`-annotaatiolla merkittyjen palvelujen metodeilla voi olla `@Async`-Annotaatio, jotta ne voivat toimia taustasäikeillä. Nämä metodit palauttavat tyypillisesti `CompletableFuture`-arvon, jotta voidaan mahdollistaa asianmukainen päättymisen käsittely ja peruutus:
 
 ```java
 @Service
@@ -43,7 +43,7 @@ public class BackgroundService {
   public CompletableFuture<String> performLongRunningTask(Consumer<Integer> progressCallback) {
     try {
       for (int i = 0; i <= 10; i++) {
-          // Ilmoita edistyksestä
+          // Ilmoita edistymisestä
           int progress = i * 10;
           if (progressCallback != null) {
               progressCallback.accept(progress);
@@ -63,13 +63,13 @@ public class BackgroundService {
 }
 ```
 
-Tämä palvelu vastaanottaa edistymisen palautuksen (`Consumer<Integer>`), jota kutsutaan taustasäikeestä. Palautusmalli mahdollistaa palvelun ilmoittavan edistyksestä tietämättä käyttöliittymäkomponenteista.
+Tämä palvelu hyväksyy edistymiskutsun (`Consumer<Integer>`), joka kutsutaan taustasäikeeltä. Kutsumalli mahdollistaa palvelun ilmoittaa edistymisestä ilman, että se tietää käyttöliittymäkomponenteista.
 
-Metodi simuloi 5 sekunnin tehtävää, jossa on 10 edistymispäivitystä. Tuotannossa tämä olisi todellista työtä, kuten tietokantakyselyjä tai tiedostojen käsittelyä. Poikkeusten käsittely palauttaa keskeytyksen tilan tukemaan oikeaa tehtävän peruuttamista, kun `cancel(true)` kutsutaan.
+Metodi simuloi 5 sekunnin tehtävää, jossa on 10 edistymispäivitystä. Tuotannossa tämä olisi todellista työtä, kuten tietokantakyselyjä tai tiedostojen käsittelyä. Poikkeusten käsittely palauttaa keskeytyksen tilan tuen tarjoamiseksi, kun `cancel(true)` kutsutaan.
 
 ## Taustatehtävien käyttäminen näkymissä {#using-background-tasks-in-views}
 
-Näkymä vastaanottaa taustapalvelun konstruktorin injektoinnin kautta:
+Näkymä vastaanottaa taustapalvelun konstruktorisisaanton kautta:
 
 ```java
 @Route("/")
@@ -79,7 +79,7 @@ public class HelloWorldView extends Composite<FlexLayout> {
   private CompletableFuture<String> currentTask;
 
   public HelloWorldView(BackgroundService backgroundService) {
-    // Palvelu injektoidaan Springin avulla
+    // Palvelu injektoidaan Springin kautta
     asyncBtn.addClickListener(e -> {
       currentTask = backgroundService.performLongRunningTask(progress -> {
         Environment.runLater(() -> {
@@ -91,9 +91,9 @@ public class HelloWorldView extends Composite<FlexLayout> {
 }
 ```
 
-Spring injektoi `BackgroundService`-palvelun näkymän konstruktorille, aivan kuten minkä tahansa muun Springin beanin. Näkymä käyttää tätä palvelua käynnistääkseen taustatehtäviä. Keskeinen käsite: palvelun palautukset suoritetaan taustasäikeissä, joten kaikki käyttöliittymän päivitykset niissä palautuksissa on suoritettava `Environment.runLater()`-kutsun avulla.
+Spring injektoi `BackgroundService`-palvelun näkymän konstruktorin, aivan kuten minkä tahansa muun Spring-bigin. Näkymä käyttää tätä palvelua aloittaakseen taustatehtäviä. Keskeinen käsite: palvelusta tulevat palautteet suoritetaan taustasäikeillä, joten kaikki käyttöliittymäpäivitykset näissä palautteissa on käytettävä `Environment.runLater()`-metodia siirtääkseen suoritus käyttöliittymän säikeelle.
 
-Valmistumisen käsittely vaatii samaa huolellista säiettä hallintaa:
+Valmistumisen käsittely vaatii samanlaista huolellista säiehallintaa:
 
 ```java
 currentTask.whenComplete((result, error) -> {
@@ -109,19 +109,19 @@ currentTask.whenComplete((result, error) -> {
 });
 ```
 
-`whenComplete`-palautetta suoritetaan myös taustasäikeessä. Jokainen käyttöliittymätoiminto - painikkeen mahdollistaminen, edistymispalkin piilottaminen, toastin näyttäminen - on pakattava `Environment.runLater()`-kutsun sisään. Ilman tätä pakkausta webforJ heittää poikkeuksia, koska taustasäikeet eivät voi käyttää käyttöliittymäkomponentteja.
+`whenComplete`-palautteen suorittaminen tapahtuu myös taustasäikeellä. Jokainen käyttöliittymätoiminto - napin mahdollistaminen, edistymispalkin piilottaminen, toastien näyttäminen - on pakattava `Environment.runLater()`-metodin sisään. Ilman tätä pakkausta webforJ heittää poikkeuksia, koska taustasäikeet eivät voi käyttää käyttöliittymäkomponentteja.
 
 :::warning[Säieturvallisuus]
-Jokainen käyttöliittymän päivitys taustasäikeestä on pakattava `Environment.runLater()`-kutsun sisään. Tälle säännölle ei ole poikkeuksia. Suora komponenttipääsy `@Async`-metodeista epäonnistuu aina.
+Jokainen käyttöliittymäpäivitys taustasäikeeltä on pakattava `Environment.runLater()`-metodiin. Tällä säännöllä ei ole poikkeuksia. Suora komponenttien käyttö `@Async`-metodeista epäonnistuu aina.
 :::
 
-:::tip[Oppia lisää säieturvallisuudesta]
-Yksityiskohtaisia tietoja webforJ:n säietilasta, suoritus käyttäytymisestä ja siitä, mitkä operaatiot vaativat `Environment.runLater()`, katso [Asynkroniset päivitykset](../../advanced/asynchronous-updates).
+:::tip[Lisätietoja säieturvallisuudesta]
+WebforJ:n säietta koskevasta mallista, suorituskäyttäytymisestä ja siitä, mitkä toiminnot vaativat `Environment.runLater()`-metodia, saat lisätietoja [Asynkroniset päivitykset](../../advanced/asynchronous-updates).
 :::
 
-## Tehtävän peruuttaminen ja siivoaminen {#task-cancellation-and-cleanup}
+## Tehtävän peruutus ja siivous {#task-cancellation-and-cleanup}
 
-Oikea elinkaaren hallinta estää muistivuotoja ja tarpeettomia käyttöliittymän päivityksiä. Näkymä tallentaa `CompletableFuture`-viitteen:
+Oikea elinkaaren hallinta estää muistivuodot ja ei-toivotut käyttöliittymäpäivitykset. Näkymä tallentaa `CompletableFuture`-viittauksen:
 
 ```java
 private CompletableFuture<String> currentTask;
@@ -139,9 +139,9 @@ protected void onDestroy() {
 }
 ```
 
-`cancel(true)`-parametri on ratkaiseva. Se keskeyttää taustasäikeen, mikä aiheuttaa esteet operaatiot, kuten `Thread.sleep()`, heittävän `InterruptedException`. Tämä mahdollistaa välittömän tehtävän lopettamisen. Ilman keskeytyslippua (`cancel(false)`) tehtävä jatkaisi suorittamista, kunnes se oikein tarkistaa peruutuksen.
+`cancel(true)`-parametri on ratkaiseva. Se keskeyttää taustasäikeen, mikä aiheuttaa estävät toiminnot, kuten `Thread.sleep()`, heittämään `InterruptedException`. Tämä mahdollistaa välittömän tehtävän lopettamisen. Ilman keskeytyslippua (`cancel(false)`) tehtävä jatkaisi suorittamista, kunnes se tarkistaa peruutuksen erikseen.
 
-Tämä siivoaminen estää useita ongelmia:
-- Taustasäikeet kuluttavat edelleen resursseja näkymän kadottua
-- Käyttöliittymän päivitykset yrittävät muokata tuhottuja komponentteja
-- Muistivuodot palautuksista, jotka pitävät viittauksia käyttöliittymäkomponentteihin
+Tämä siivous estää useita ongelmia:
+- Taustasäikeet jatkavat resurssien kuluttamista, kun näkymä on poistettu
+- Käyttöliittymäpäivitykset yrittävät muuttaa tuhottuja komponentteja
+- Muistivuodot palautteista, jotka pitävät viittauksia käyttöliittymäkomponentteihin

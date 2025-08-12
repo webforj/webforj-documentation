@@ -6,7 +6,7 @@ slug: app-nav
 description: A user guide article for the app-nav
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: fa9431a6c9a18e8532f99cd6ae025786
+_i18n_hash: 16a55ca602aabfe4637385d580e959ff
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,10 +16,10 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info KLANTCOMPONENT
-Dit gedeelte beschrijft opmaakinformatie voor de **`<dwc-app-nav>`** component. Deze component is **alleen aan de clientzijde** - hij kan niet zelfstandig worden geïnstalleerd via de API, maar kan onderdeel zijn van API-componenten.
+:::info CLIËNTCOMPONENT
+Dit gedeelte geeft stylinginformatie voor de **`<dwc-app-nav>`** component. Deze component is **alleen client-side** - hij kan niet op zichzelf worden geïnstantieerd via de API, maar kan deel uitmaken van API-componenten.
 :::
 
-## Opmaak {#styling}
+## Styling {#styling}
 
 <TableBuilder name="dwc-app-nav" clientComponent />

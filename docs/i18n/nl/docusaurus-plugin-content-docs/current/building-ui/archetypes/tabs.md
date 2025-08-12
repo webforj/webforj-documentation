@@ -2,7 +2,7 @@
 title: Tabs
 sidebar_position: 2
 hide_table_of_contents: true
-_i18n_hash: ba161760eed1006a71d42f2d566aff54
+_i18n_hash: bd6e6de9bb8396f7926e01ac2f34cfc3
 ---
 <Head>
   <style>{`
@@ -14,25 +14,25 @@ _i18n_hash: ba161760eed1006a71d42f2d566aff54
 
 # Tabs archetype
 
-Het `tabs` startproject genereert een app met een eenvoudige tabinterface. Ideaal voor projecten die meerdere weergaven of secties vereisen die toegankelijk zijn via tabs, biedt dit archetype een schone en georganiseerde manier om verschillende delen van je app te beheren, waardoor het gemakkelijk wordt om tussen verschillende secties te navigeren zonder de gebruikersinterface te rommelen.
+Het `tabs` startproject genereert een app met een eenvoudige tabbladeninterface. Ideaal voor projecten die meerdere weergaven of secties vereisen die via tabbladen toegankelijk zijn, biedt dit archetype een schone en georganiseerde manier om verschillende delen van je app te beheren, waardoor het gemakkelijk is om tussen verschillende secties te navigeren zonder de gebruikersinterface te rommelen.
 
 :::tip Gebruik startforJ
 Voor meer controle over aanpassing en configuratie kun je [startforJ](https://docs.webforj.com/startforj/) gebruiken om je project te maken - selecteer gewoon het `Tabs` archetype bij het kiezen van configuratieopties.
 :::
 
-## Using the `tabs` archetype {#using-the-tabs-archetype}
+## Het `tabs` archetype gebruiken {#using-the-tabs-archetype}
 
 <ComponentArchetype
 project="tabs"
 />
 
-## Running the app {#running-the-app}
+## De app uitvoeren {#running-the-app}
 
-Voordat je je app uitvoert, installeer je de [vereisten](../../introduction/prerequisites) als je dat nog niet gedaan hebt. 
-Navigeer dan naar de hoofdmap van het project en voer de volgende opdracht uit:
+Voordat je je app uitvoert, installeer de [vereisten](../../introduction/prerequisites) als je dat nog niet hebt gedaan.
+Navigeer vervolgens naar de hoofdmap van het project en voer de volgende opdracht uit:
 
 ```bash
-# voor standaard webforJ app
+# voor standaard webforJ-app
 mvn jetty:run
 
 # voor webforJ + Spring Boot

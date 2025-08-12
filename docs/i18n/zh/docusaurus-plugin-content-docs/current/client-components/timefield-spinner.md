@@ -6,7 +6,7 @@ slug: timefield-spinner
 description: A user guide article for the timefield-spinner
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: f3e7bcf36930d90ce42dae10b9ec4c41
+_i18n_hash: f0a3faf6b4052dca8e5aa82450ae4eaf
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,7 +17,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info 客户端组件
-本节概述了**`<dwc-timefield-spinner>`**组件的样式信息。此组件为**客户端专用** - 不能通过API单独实例化，但可以作为API组件的一部分。
+本节概述了**`<dwc-timefield-spinner>`**组件的样式信息。此组件是**仅客户端** - 不能通过API独立实例化，但可以成为API组件的一部分。
 :::
 
 ## 样式 {#styling}

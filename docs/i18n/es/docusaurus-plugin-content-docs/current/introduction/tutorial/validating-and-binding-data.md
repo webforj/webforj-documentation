@@ -2,13 +2,13 @@
 title: Validating and Binding Data
 sidebar_position: 5
 pagination_next: null
-_i18n_hash: 3efedcc32a2111ba6ce08c1a3ee6b477
+_i18n_hash: 11d03e09c4c37172713713649c920e9e
 ---
-El enlace de datos es un mecanismo que conecta los componentes de la UI de tu aplicación directamente con el modelo de datos subyacente, permitiendo la sincronización automática de valores entre ambos. Esto elimina la necesidad de llamadas repetitivas de getter y setter, reduciendo el tiempo de desarrollo y mejorando la fiabilidad del código.
+El enlace de datos es un mecanismo que conecta los componentes de la interfaz de usuario de tu aplicación directamente con el modelo de datos subyacente, lo que permite la sincronización automática de valores entre ambos. Esto elimina la necesidad de llamadas repetitivas de getter y setter, reduciendo el tiempo de desarrollo y mejorando la confiabilidad del código.
 
 La validación, en este contexto, asegura que los datos ingresados en el formulario cumplan con reglas predefinidas, como no estar vacíos o seguir un formato específico. Al combinar el enlace de datos con la validación, puedes optimizar la experiencia del usuario mientras mantienes la integridad de los datos sin escribir extensas verificaciones manuales.
 
-Para obtener más información sobre el enlace de datos, consulta [este artículo.](../../data-binding/overview) Para ejecutar la aplicación:
+Para más información sobre el enlace de datos, consulta [este artículo.](../../data-binding/overview) Para ejecutar la aplicación:
 
 - Ve al directorio `4-validating-and-binding-data`
 - Ejecuta el comando `mvn jetty:run`
@@ -31,14 +31,14 @@ context = BindingContext.of(this, Customer.class, true);
 `BindingContext.of(this, Customer.class, true)` inicializa el contexto de enlace para la clase `Customer`. El tercer parámetro, `true`, habilita [jakarta validation](https://beanvalidation.org/).
 
 :::info
-Esta implementación utiliza enlace automático como se describe en el [Artículo de Enlace de Datos](../../data-binding/automatic-binding). Esto funciona si los campos en el modelo de datos `Customer` tienen el mismo nombre que los campos correspondientes en el `FormView`.
+Esta implementación utiliza auto-vinculación como se describe en el [Artículo de Enlace de Datos](../../data-binding/automatic-binding). Esto funciona si los campos en el modelo de datos `Customer` tienen el mismo nombre que los campos correspondientes en el `FormView`.
 
-Si los campos no tienen los mismos nombres, puedes agregar la anotación `UseProperty` en el formulario sobre el campo que deseas vincular para que sepan a qué campos de datos referirse.
+Si los campos no tienen el mismo nombre, puedes agregar la anotación `UseProperty` en el formulario sobre el campo que deseas vincular para que sepan a qué campos de datos referirse.
 :::
 
 ### Enlace de datos con `onDidEnter()` {#data-binding-with-ondidenter}
 
-El método `onDidEnter` aprovecha la configuración del enlace de datos para facilitar el proceso de rellenar los campos del formulario. En lugar de establecer manualmente valores para cada campo, los datos ahora se sincronizan automáticamente con el `BindingContext`.
+El método `onDidEnter` aprovecha la configuración del enlace de datos para optimizar el proceso de llenado de los campos del formulario. En lugar de establecer manualmente valores para cada campo, los datos ahora se sincronizan automáticamente con el `BindingContext`.
 
 ```java {7}
 @Override
@@ -51,15 +51,15 @@ El método `onDidEnter` aprovecha la configuración del enlace de datos para fac
   }
 ```
 
-El método `context.read` en el sistema de enlace de datos de webforJ sincroniza los campos de un componente de UI con los valores de un modelo de datos. Se utiliza en este caso para rellenar los campos del formulario con datos de un modelo existente, asegurando que la UI refleje el estado actual de los datos.
+El método `context.read` en el sistema de enlace de datos de webforJ sincroniza los campos de un componente de interfaz de usuario con los valores de un modelo de datos. Se utiliza en este caso para llenar los campos del formulario con datos de un modelo existente, asegurando que la interfaz refleje el estado actual de los datos.
 
 ## Validando datos {#validating-data}
 
-La validación asegura que los datos ingresados en el formulario cumplan con reglas especificadas, mejorando la calidad de los datos y previniendo envíos inválidos. Con el enlace de datos, la validación ya no necesita ser implementada manualmente, sino que simplemente se configura, permitiendo una retroalimentación en tiempo real sobre las entradas del usuario.
+La validación asegura que los datos ingresados en el formulario cumplan con reglas específicas, mejorando la calidad de los datos y previniendo envíos inválidos. Con el enlace de datos, la validación ya no necesita implementarse manualmente, sino que simplemente se configura, permitiendo retroalimentación en tiempo real sobre las entradas del usuario.
 
 ### Definiendo reglas de validación {#defining-validation-rules}
 
-Usando [Jakarta](https://beanvalidation.org) y expresiones regulares, puedes imponer una multitud de reglas sobre un campo. Ejemplos comúnmente utilizados serían asegurarse de que el campo no esté vacío o nulo, o siga un cierto patrón. A través de anotaciones en la clase del cliente, puedes dar parámetros de validación de jakarta al campo.
+Usando [Jakarta](https://beanvalidation.org) y expresiones regulares, puedes hacer cumplir una multitud de reglas en un campo. Ejemplos comunes serían asegurarte de que el campo no esté vacío o nulo, o siga un cierto patrón. A través de anotaciones en la clase customer puedes otorgar parámetros de validación jakarta al campo.
 
 :::info
 Más detalles sobre la configuración de la validación están disponibles [aquí](../../data-binding/validation/jakarta-validation.md#installation).
@@ -71,24 +71,24 @@ Más detalles sobre la configuración de la validación están disponibles [aqu�
   private String firstName = "";
 ```
 
-Luego se añade el método `onValidate` para controlar el estado del botón `Submit` en función de la validez de los campos del formulario. Esto asegura que solo se puedan enviar datos válidos.
+El método `onValidate` se agrega para controlar el estado del botón `Submit` basado en la validez de los campos del formulario. Esto asegura que solo se puedan enviar datos válidos.
 
 ```java title="FormView.java"
 context.onValidate(e -> submit.setEnabled(e.isValid()));
 ```
 
-`e.isValid()` devuelve verdadero si todos los campos son válidos y falso si no. Esto significa que el botón `Submit` está habilitado siempre que todos los campos son válidos. De lo contrario, permanece desactivado, evitando el envío hasta que se realicen correcciones.
+`e.isValid()` devuelve verdadero si todos los campos son válidos, y falso si no lo son. Esto significa que el botón `Submit` está habilitado mientras todos los campos sean válidos. De lo contrario, permanece desactivado, impidiendo el envío hasta que se realicen las correcciones necesarias.
 
 ### Agregando y editando entradas con validación {#adding-and-editing-entries-with-validation}
 
-El método `submitCustomer()` ahora valida los datos utilizando el `BindingContext` antes de realizar operaciones de agregar o editar. Este enfoque elimina la necesidad de verificaciones de validación manuales, aprovechando los mecanismos incorporados del contexto para asegurar que solo se procesen datos válidos.
+El método `submitCustomer()` ahora valida los datos utilizando el `BindingContext` antes de realizar operaciones de adición o edición. Este enfoque elimina la necesidad de verificaciones de validación manuales, aprovechando los mecanismos integrados del contexto para asegurar que solo se procesen datos válidos.
 
-- **Modo Agregar**: Si no se proporciona un `id`, el formulario está en modo agregar. Los datos validados se escriben en el modelo `Customer` y se agregan al repositorio a través de `Service.getCurrent().addCustomer(customer)`.
-- **Modo Editar**: Si hay un `id` presente, el método recupera los datos del cliente correspondientes, los actualiza con las entradas validadas y compromete los cambios al repositorio.
+- **Modo Agregar**: Si no se proporciona un `id`, el formulario está en modo de agregar. Los datos validados se escriben en el modelo `Customer` y se agregan al repositorio a través de `Service.getCurrent().addCustomer(customer)`.
+- **Modo Editar**: Si se presenta un `id`, el método recupera los datos del cliente correspondiente, los actualiza con las entradas validadas y confirma los cambios en el repositorio.
 
-Llamar a `context.write(customer)` devolverá una instancia de `ValidationResult`. Esta clase indica si la validación fue exitosa o no, y almacena cualquier mensaje asociado con este resultado.
+Llamar a `context.write(customer)` retornará una instancia de `ValidationResult`. Esta clase indica si la validación fue exitosa o no, y almacena cualquier mensaje asociado con este resultado.
 
-Este código asegura que todos los cambios sean validados y aplicados automáticamente al modelo antes de agregar uno nuevo o editar un `Customer` existente.
+Este código asegura que todos los cambios sean validados y aplicados automáticamente al modelo antes de agregar un nuevo cliente o editar uno existente.
 
 ```java title="FormView.java"
 private void submitCustomer() {
@@ -102,4 +102,4 @@ private void submitCustomer() {
 }
 ```
 
-Al completar este paso, la aplicación ahora admite enlace de datos y validación, asegurando que las entradas del formulario estén sincronizadas con el modelo y cumplan con reglas predefinidas.
+Al completar este paso, la aplicación ahora soporta el enlace de datos y la validación, asegurando que las entradas del formulario estén sincronizadas con el modelo y cumplan con las reglas predefinidas.

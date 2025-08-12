@@ -6,7 +6,7 @@ slug: field
 description: A user guide article for the field
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 06ea0e8e4a6afffdba0c5ad14f8ca7eb
+_i18n_hash: 84efbc9491c0bbed89fed16a2d19a909
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,7 +17,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info COMPOSANT CLIENT
-Cette section décrit les informations de style pour le **`<dwc-field>`** composant. Ce composant est **uniquement côté client** - il ne peut pas être instancié seul via l'API, mais peut faire partie des composants d'API.
+Cette section décrit les informations de style pour le **`<dwc-field>`** composant. Ce composant est **uniquement côté client** - il ne peut pas être instancié seul via l'API, mais peut faire partie des composants API.
 :::
 
 ## Style {#styling}

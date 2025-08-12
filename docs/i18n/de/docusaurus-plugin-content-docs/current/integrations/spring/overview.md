@@ -3,7 +3,7 @@ title: Spring Framework
 sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: edf3c4087bb9491b2be06b67e32bb27e
+_i18n_hash: 4ef41ed3a00ca782da0bba406fd4e902
 ---
 <Head>
   <style>{`
@@ -15,9 +15,9 @@ _i18n_hash: edf3c4087bb9491b2be06b67e32bb27e
 
 Viele Java-Teams verwenden bereits [Spring Boot](https://spring.io/projects/spring-boot) zum Erstellen von Anwendungen. Die Spring-Integration mit webforJ ermöglicht es Ihnen jetzt, die UI-Komponenten von webforJ zu bestehenden Spring-Anwendungen hinzuzufügen oder die Funktionen von Spring in neuen webforJ-Projekten zu nutzen.
 
-Ihre Spring-Services, Repositories und Konfigurationen funktionieren wie gewohnt. Ihre webforJ-Komponenten können `@Autowired` beliebige Spring-Beans verwenden. [Spring Data](https://spring.io/projects/spring-data) Repositories verbinden sich direkt mit webforJ-Tabellen über `SpringDataRepository`. Die Entwicklung wird schneller mit automatischen Browseraktualisierungen von Spring DevTools und webforJ LiveReload.
+Ihre Spring-Services, -Repositorys und -Konfigurationen funktionieren wie gewohnt. Ihre webforJ-Komponenten können jedes Spring-Bean `@Autowired` verwenden. [Spring Data](https://spring.io/projects/spring-data) Repositorys verbinden sich direkt mit webforJ-Tabellen über `SpringDataRepository`. Die Entwicklung wird schneller mit automatischem Browser-Reload von Spring DevTools und webforJ LiveReload.
 
-Die Integration sorgt dafür, dass beide Frameworks das tun, was sie am besten können - Spring kümmert sich um Backend-Anliegen, während webforJ die UI verwaltet.
+Die Integration hält beide Frameworks dabei, das Beste zu tun, was sie können – Spring kümmert sich um Backend-Angelegenheiten, während webforJ die Benutzeroberfläche verwaltet.
 
 ## Themen {#topics}
 

@@ -6,7 +6,7 @@ description: >-
   A component that provides a default browser-based date and time picker for
   selecting both date and time through a single input field.
 sidebar_class_name: updated-content
-_i18n_hash: 70f471320621b40dc1bb4170e4cbf752
+_i18n_hash: dd6fe3e8a737f5b016f92629d9767dbb
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-field" />
@@ -15,7 +15,7 @@ _i18n_hash: 70f471320621b40dc1bb4170e4cbf752
 
 <ParentLink parent="Field" />
 
-Die `DateTimeField`-Komponente ist so konzipiert, dass Benutzer sowohl ein Datum als auch eine Uhrzeit eingeben können. Dies umfasst die Angabe von Jahr, Monat und Tag sowie die Zeit in Stunden und Minuten. Sie bietet den Benutzern die Möglichkeit, ihre Eingaben auf Genauigkeit zu validieren oder eine spezielle Datums-Uhrzeit-Auswahloberfläche zu nutzen, um den Auswahlprozess zu vereinfachen.
+Das `DateTimeField`-Komponente wurde entwickelt, um Benutzern die Eingabe sowohl eines Datums als auch einer Uhrzeit zu ermöglichen. Dazu gehört die Angabe des Jahres, Monats und Tages sowie der Uhrzeit in Stunden und Minuten. Es bietet den Benutzern die Möglichkeit, ihre Eingaben auf Richtigkeit zu validieren oder eine spezielle Datum-Uhrzeit-Auswahloberfläche zu nutzen, um den Auswahlprozess zu erleichtern.
 
 <ComponentDemo 
 path='/webforj/datetimefield?' 
@@ -24,23 +24,23 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 
 ## Verwendungen {#usages}
 
-Das `DateTimeField` eignet sich am besten für Szenarien, in denen das Erfassen oder Anzeigen von sowohl Datum **als auch** Uhrzeit für Ihre App von wesentlicher Bedeutung ist. Hier sind einige Beispiele, wann das `DateTimeField` verwendet werden sollte:
+Das `DateTimeField` eignet sich am besten für Szenarien, in denen die Erfassung oder Anzeige von sowohl Datum **als auch** Uhrzeit für Ihre App entscheidend ist. Hier sind einige Beispiele, wann das `DateTimeField` verwendet werden sollte:
 
-1. **Ereignisplanung und Kalender**: Ermöglichen Sie es den Benutzern, effizient Ereignisse zu planen, Termine zu buchen und ihre Kalender zu verwalten, indem Sie ihnen eine einzige Komponente zur Verfügung stellen, mit der sie Datum und Uhrzeit auswählen können.
+1. **Veranstaltungstermine und Kalender**: Ermöglichen Sie Benutzern, Veranstaltungen effizient zu planen, Termine zu buchen und ihre Kalender zu verwalten, indem Sie ihnen eine einzige Komponente zur Verfügung stellen, mit der sie Datum und Uhrzeit auswählen können.
 <!-- vale off -->
 2. **Check-in und Check-out**: Erleichtern Sie die Auswahl von Check-in- und Check-out-Zeiten, wenn der Zeitraum mehrere Tage umfassen kann.
 <!-- vale on -->
-3. **Datenprotokollierung und Zeitstempel**: Nutzen Sie `DateTimeFields` für Apps, die das Aufzeichnen von Datum und Uhrzeit, zu dem Ereignisse auftreten oder ein Benutzer Daten eingibt, beinhalten.
+3. **Datenprotokollierung und Zeitstempel**: Verwenden Sie `DateTimeFields` für Apps, die das Datum und die Uhrzeit erfassen, zu denen Ereignisse stattfinden oder ein Benutzer Daten übermittelt.
 
-4. **Aufgabenverwaltung und Fristen**: `DateTimeFields` sind wertvoll in Anwendungen, die Aufgabenmanagement oder das Setzen von Fristen beinhalten, bei denen sowohl das Datum als auch die Uhrzeit für eine genaue Planung relevant sind.
+4. **Aufgabenverwaltung und Fristen**: `DateTimeFields` sind wertvoll in Anwendungen, die Aufgabenverwaltung oder das Setzen von Fristen beinhalten, wo sowohl Datum als auch Uhrzeit für eine genaue Planung relevant sind.
 
 ## Feldwert (`LocalDateTime`) {#field-value-localdatetime}
 
-Intern repräsentiert die `DateTimeField`-Komponente ihren Wert mit einem `LocalDateTime`-Objekt aus dem `java.time`-Paket. Dies bietet eine präzise Kontrolle über die Eingabewerte für Datum und Uhrzeit.
+Intern verwendet die `DateTimeField`-Komponente ein `LocalDateTime`-Objekt aus dem Paket `java.time`, um ihren Wert darzustellen. Dies ermöglicht eine präzise Kontrolle sowohl über die Datums- als auch die Uhrzeitkomponenten der Eingabe.
 
-Während der **Client-seitige** Wert basierend auf der Standortkonvention des Browsers des Benutzers (z.B. Datums- und Zeitformate, die lokalen Gepflogenheiten entsprechen) gerendert wird, folgt der **geparste** Wert einer strengen und vorhersehbaren Struktur: **`yyyy-MM-ddTHH:mm:ss`**.
+Während der **clientseitige** Wert basierend auf der Browsersprache des Benutzers gerendert wird (z.B. Datums- und Uhrzeitformate, die den lokalen Gepflogenheiten entsprechen), folgt der **geparste** Wert einer strengen und vorhersehbaren Struktur: **`yyyy-MM-ddTHH:mm:ss`**.
 
-### Wert abrufen und festlegen {#getting-and-setting-the-value}
+### Abrufen und Setzen des Wertes {#getting-and-setting-the-value}
 
 Um den aktuellen Wert abzurufen, verwenden Sie die Methode `getValue()`:
 
@@ -56,7 +56,7 @@ dateTimeField.setValue(LocalDateTime.of(2024, 4, 27, 14, 30, 0));
 
 ### Verwendung von `setText()` {#using-settext}
 
-Wenn Sie den Wert über eine rohe Zeichenfolge festlegen möchten, muss er dem genauen Format `yyyy-MM-ddTHH:mm:ss` entsprechen.
+Wenn Sie den Wert über einen Rohstring festlegen möchten, muss er dem exakten Format `yyyy-MM-ddTHH:mm:ss` folgen.
 
 ```java
 dateTimeField.setText("2024-04-27T14:30:00"); // gültig
@@ -65,47 +65,47 @@ dateTimeField.setText("24-04-27T14:30:00"); // ungültig
 ```
 
 :::warning
-Wenn Sie die Methode `setText()` verwenden, wird eine `IllegalArgumentException` ausgelöst, wenn die Komponente die Eingabe im Format `yyyy-MM-ddTHH:mm:ss` nicht parsen kann.
+ Bei Verwendung der Methode `setText()` wird eine `IllegalArgumentException` ausgelöst, wenn die Komponente die Eingabe nicht im Format `yyyy-MM-ddTHH:mm:ss` parsen kann.
 :::
 
-## Statische Hilfsmittel {#static-utilities}
+## Statische Dienstprogramme {#static-utilities}
 
-Die DateTimeField-Klasse bietet auch die folgenden statischen Hilfsmethoden:
+Die DateTimeField-Klasse bietet auch die folgenden statischen Dienstprogrammmethoden:
 
-- `fromDateTime(String dateTimeAsString)`: Konvertiert eine Datum- und Uhrzeit-Zeichenfolge im Format `yyyy-MM-ddTHH:mm:ss` in ein LocalDateTime-Objekt, das dann mit dieser Klasse oder anderswo verwendet werden kann.
+- `fromDateTime(String dateTimeAsString)`: Konvertiert einen Datums- und Uhrzeitstring im Format `yyyy-MM-ddTHH:mm:ss` in ein LocalDateTime-Objekt, das dann mit dieser Klasse oder anderswo verwendet werden kann.
 
-- `toDateTime(LocalDateTime dateTime)`: Konvertiert ein LocalDateTime-Objekt in eine Datum- und Uhrzeit-Zeichenfolge im Format `yyyy-MM-ddTHH:mm:ss`.
+- `toDateTime(LocalDateTime dateTime)`: Konvertiert ein LocalDateTime-Objekt in einen Datums- und Uhrzeitstring im Format `yyyy-MM-ddTHH:mm:ss`.
 
-- `isValidDateTime(String dateTimeAsString)`: Überprüft, ob die angegebene Zeichenfolge ein gültiges Datum und eine gültige Uhrzeit im Format `yyyy-MM-ddTHH:mm:ss` ist. Dies gibt einen booleschen Wert zurück: true, wenn ja, andernfalls false.
+- `isValidDateTime(String dateTimeAsString)`: Überprüft, ob der gegebene String ein gültiges `yyyy-MM-ddTHH:mm:ss`-Datum und eine Uhrzeit ist. Dies gibt einen booleschen Wert zurück: true, wenn dies der Fall ist, andernfalls false.
 
-## Minimale und maximale Werte {#min-and-max-value}
+## Min- und Max-Wert {#min-and-max-value}
 
-### Der minimale Wert {#the-min-value}
+### Der Min-Wert {#the-min-value}
 
-Wenn der in die Komponente eingegebene Wert früher ist als der angegebene Mindestzeitstempel, schlägt die Komponente bei der Validierung der Einschränkungen fehl. Wenn sowohl die Minimal- als auch die Maximalwerte festgelegt sind, muss der Minimalwert ein Zeitstempel sein, der derselbe ist oder früher als der Maximalwert.
+Wenn der in die Komponente eingegebene Wert früher als der angegebene Mindestzeitstempel ist, wird die Einschränkungsvalidierung der Komponente fehlschlagen. Wenn sowohl die Min- als auch die Max-Werte gesetzt sind, muss der Min-Wert ein Zeitstempel sein, der gleich oder früher als der Max-Wert ist.
 
 ```java
-// Setzen des minimal erlaubten Zeitstempels: 1. Januar 2023 um 08:00
+// Mindestzeitstempel festlegen: 1. Januar 2023 um 08:00
 dateTimeField.setMin(LocalDateTime.of(2023, 1, 1, 8, 0));
 ```
 
-### Der maximale Wert {#the-max-value}
+### Der Max-Wert {#the-max-value}
 
-Wenn der in die Komponente eingegebene Wert später ist als der angegebene Höchstzeitstempel, schlägt die Komponente bei der Validierung der Einschränkungen fehl. Wenn sowohl die Minimal- als auch die Maximalwerte festgelegt sind, muss der Maximalwert ein Zeitstempel sein, der derselbe ist oder später als der Minimalwert.
+Wenn der in die Komponente eingegebene Wert später als der angegebene Höchstzeitstempel ist, wird die Einschränkungsvalidierung der Komponente fehlschlagen. Wenn sowohl die Min- als auch die Max-Werte gesetzt sind, muss der Max-Wert ein Zeitstempel sein, der gleich oder später als der Min-Wert ist.
 
 ```java
-// Setzen des maximal erlaubten Zeitstempels: 31. Dezember 2023 um 18:00
+// Höchstzeitstempel festlegen: 31. Dezember 2023 um 18:00
 dateTimeField.setMax(LocalDateTime.of(2023, 12, 31, 18, 0));
 ```
 
 ## Best Practices {#best-practices}
 
-Um ein optimales Benutzererlebnis bei der Verwendung der `DateTimeField`-Komponente sicherzustellen, sollten Sie die folgenden Best Practices berücksichtigen:
+Um eine optimale Benutzererfahrung bei der Verwendung der `DateTimeField`-Komponente zu gewährleisten, berücksichtigen Sie die folgenden Best Practices:
 
-- **Lokalisierte Datumsanzeige**: Die Lokalisierung des Datumsformats und die Einbeziehung regionaler Präferenzen stellen sicher, dass Daten in einem vertrauten Format für den Benutzer angezeigt werden.
+- **Lokalisierte Datum-Anzeige**: Durch die Lokalisierung des Datumsformats und die Berücksichtigung regionaler Präferenzen wird sichergestellt, dass Daten in einem vertrauten Format für den Benutzer angezeigt werden.
 
-- **Zeitzonen einbeziehen**: Wenn Ihre App mit zeitsensiblen Informationen über verschiedene Zeitzonen hinweg arbeitet, sollten Sie die Auswahl der Zeitzone neben dem Datumsfeld in Betracht ziehen, um eine genaue Darstellung von Datum und Uhrzeit zu gewährleisten.
+- **Zeitzonen einbeziehen**: Wenn Ihre App mit zeitkritischen Informationen über verschiedene Zeitzonen hinweg arbeitet, sollten Sie die Auswahl der Zeitzone zusammen mit dem Datumsfeld einbeziehen, um eine genaue Darstellung von Datum und Uhrzeit sicherzustellen.
 
-- **Barrierefreiheit**: Verwenden Sie das `DateTimeField` unter Berücksichtigung der Barrierefreiheit. Stellen Sie sicher, dass es den Zugänglichkeitsstandards entspricht, wie z.B. ordnungsgemäße Bezeichnungen zu bieten und mit Unterstützungstechnologien kompatibel zu sein.
+- **Barrierefreiheit**: Verwenden Sie das `DateTimeField` mit Blick auf die Barrierefreiheit. Stellen Sie sicher, dass es den Standards für Barrierefreiheit entspricht, wie z.B. die Bereitstellung geeigneter Beschriftungen und die Kompatibilität mit unterstützenden Technologien.
 
-- **Automatisches Ausfüllen des aktuellen Datums**: Berücksichtigen Sie die Möglichkeit, das aktuelle Datum und die aktuelle Uhrzeit als Standardwert im Datumszeitfeld automatisch auszufüllen, wenn dies für den Anwendungsfall Ihrer App geeignet ist.
+- **Automatisches Ausfüllen des aktuellen Datums**: Ziehen Sie in Betracht, eine Option anzubieten, um das aktuelle Datum und die Uhrzeit als Standardwert im Datumsfeld automatisch auszufüllen, wenn dies für den Anwendungsfall Ihrer App angemessen ist.

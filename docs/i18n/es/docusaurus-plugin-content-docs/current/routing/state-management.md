@@ -1,20 +1,20 @@
 ---
 sidebar_position: 7
 title: State Management
-_i18n_hash: cba905abd01a780dea1f459ec4397cda
+_i18n_hash: e10d155e02722ea38419a79813a2f5af
 ---
-Creating seamless, dynamic user experiences often requires that the state of your web app be reflected in the URL and retained across browser navigation events. You can achieve this without reloading the page by leveraging URL parameter updates and browser history state management. This ensures that users can share, bookmark, or return to specific views with the app fully aware of their prior interactions.
+Crear experiencias de usuario dinámicas y fluidas a menudo requiere que el estado de tu aplicación web se refleje en la URL y se mantenga a través de eventos de navegación del navegador. Puedes lograr esto sin recargar la página aprovechando las actualizaciones de parámetros de URL y la gestión del estado del historial del navegador. Esto asegura que los usuarios puedan compartir, marcar o regresar a vistas específicas con la aplicación plenamente consciente de sus interacciones previas.
 
-## Actualización de la URL {#updating-the-url}
+## Actualizando la URL {#updating-the-url}
 
-Cuando el estado de una página web cambia, como al filtrar una lista de productos o navegar a través de diferentes vistas, a menudo necesitas que la URL refleje esos cambios. Puedes usar los métodos `replaceState` o `pushState` proporcionados por la clase `BrowserHistory` para manipular la URL sin recargar la página:
+Cuando el estado de una página web cambia, como al filtrar una lista de productos o navegar a través de diferentes vistas, a menudo necesitas que la URL refleje esos cambios. Puedes utilizar los métodos `replaceState` o `pushState` proporcionados por la clase `BrowserHistory` para manipular la URL sin recargar la página:
 
 - **`pushState`**: Agrega una nueva entrada a la pila de historial del navegador sin recargar la página. Esto es útil para navegar entre diferentes vistas o contenido dinámico.
-- **`replaceState`**: Actualiza la entrada actual en el historial del navegador sin agregar una nueva entrada. Esto es ideal para actualizar el estado dentro de la misma vista.
+- **`replaceState`**: Actualiza la entrada actual en el historial del navegador sin añadir una nueva entrada. Esto es ideal para actualizar el estado dentro de la misma vista.
 
 ### Ejemplo: Actualizando la URL con parámetros de consulta {#example-updating-the-url-with-query-parameters}
 
-En este ejemplo, cuando se hace clic en el botón "Actualizar URL", la interfaz de usuario se actualiza para mostrar la categoría seleccionada y el orden, y la URL se actualiza con nuevos parámetros de consulta para `category` y `sort`:
+En este ejemplo, cuando se hace clic en el botón "Actualizar URL", la interfaz se actualiza para mostrar la categoría seleccionada y la ordenación, y la URL se actualiza con nuevos parámetros de consulta para `category` y `sort`:
 
 ```java
 @Route(value = "products")
@@ -23,7 +23,7 @@ public class ProductView extends Composite<Div> {
   Random random = new Random();
 
   public ProductView() {
-    Button update = new Button("Actualizar URL", ButtonTheme.PRIMARY);
+    Button update = new Button("Update URL", ButtonTheme.PRIMARY);
     update.onClick(ev -> {
       filter("electronics", String.valueOf(random.nextInt(3) - 1));
     });
@@ -52,7 +52,7 @@ public class ProductView extends Composite<Div> {
 
     Location newLocation = new Location("/products?" + queryParameters.getQueryString());
     Router.getCurrent().getHistory()
-        // Actualiza la URL sin recargar la página
+        // Actualizar la URL sin recargar la página
         .replaceState(null, newLocation);
   }
 }
@@ -60,17 +60,17 @@ public class ProductView extends Composite<Div> {
 
 ### Explicación: {#explanation}
 
-- **Método `filter`**: El método se encarga de actualizar tanto la UI como la URL según la `category` y `sort` seleccionadas.
+- **Método `filter`**: El método maneja la actualización tanto de la UI como de la URL en función de la `category` y `sort` seleccionadas.
 - **Método `updateUrl`**: Este método crea un nuevo `ParametersBag` para los parámetros de consulta, construye una nueva URL y luego usa `replaceState` para actualizar la URL del navegador sin recargar la página.
 - **`replaceState`**: Este método cambia la URL a la nueva ubicación mientras mantiene el estado actual, sin causar una recarga de la página.
 
-## Guardando y restaurando estado en el historial del navegador {#saving-and-restoring-state-in-browser-history}
+## Guardando y restaurando el estado en el historial del navegador {#saving-and-restoring-state-in-browser-history}
 
 Además de actualizar la URL, es posible guardar objetos de estado arbitrarios en el historial del navegador. Esto significa que puedes almacenar datos adicionales relacionados con la vista actual (por ejemplo: entradas de formularios, filtros, etc.) sin incrustarlos directamente en la URL.
 
-### Ejemplo: Guardando el estado de la selección {#example-saving-selection-state}
+### Ejemplo: Guardando el estado de selección {#example-saving-selection-state}
 
-En el siguiente ejemplo, una `ProfileView` consta de varias pestañas (Perfil, Pedidos y Configuraciones). Cuando el usuario cambia entre pestañas, el estado de la pestaña seleccionada se guarda en el historial del navegador usando `replaceState`. Esto permite que la aplicación recuerde la última pestaña activa si el usuario navega de regreso a esta vista o actualiza la página.
+En el siguiente ejemplo, un `ProfileView` consiste en varias pestañas (Perfil, Pedidos y Configuración). Cuando el usuario cambia entre pestañas, el estado de la pestaña seleccionada se guarda en el historial del navegador usando `replaceState`. Esto permite que la aplicación recuerde la última pestaña activa si el usuario vuelve a esta vista o actualiza la página.
 
 ```java
 @Route(value = "profile")
@@ -79,9 +79,9 @@ public class ProfileView extends Composite<Div> implements DidEnterObserver {
   int currentSection = 0;
 
   public ProfileView() {
-    sections.addTab("Perfil");
-    sections.addTab("Pedidos");
-    sections.addTab("Configuraciones");
+    sections.addTab("Profile");
+    sections.addTab("Orders");
+    sections.addTab("Settings");
 
     sections.onSelect(ev -> {
       currentSection = ev.getTabIndex();
@@ -114,6 +114,6 @@ public class ProfileView extends Composite<Div> implements DidEnterObserver {
 
 ### Explicación: {#explanation-1}
 
-1. **Componente TabbedPane**: La vista consiste en un componente `TabbedPane`, que tiene tres pestañas: Perfil, Pedidos y Configuraciones.
-2. **Guardado de Estado en el Cambio de Pestaña**: Cada vez que se selecciona una pestaña, el índice de la sección actual se guarda en el historial del navegador usando el método `replaceState`.
-3. **Restauración del Estado en la Navegación**: Cuando el usuario navega de regreso a la `ProfileView`, la aplicación recupera la sección guardada del historial usando `event.getState()` y restaura la selección correcta de la pestaña.
+1. **Componente TabbedPane**: La vista consiste en un componente `TabbedPane`, que tiene tres pestañas: Perfil, Pedidos y Configuración.
+2. **Guardando el estado al cambiar de pestaña**: Cada vez que se selecciona una pestaña, el índice de la sección actual se guarda en el historial del navegador utilizando el método `replaceState`.
+3. **Restaurando el estado en la navegación**: Cuando el usuario navega de regreso a la `ProfileView`, la aplicación recupera la sección guardada del historial usando `event.getState()` y restaura la selección de pestaña correcta.

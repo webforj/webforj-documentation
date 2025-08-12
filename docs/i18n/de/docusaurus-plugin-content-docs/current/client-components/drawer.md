@@ -6,7 +6,7 @@ slug: drawer
 description: A user guide article for the drawer
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: f4914564d1cc5e89afe20b47c8cf86f9
+_i18n_hash: 5f4c52a070f3e5b326422aa1c97a10d8
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,8 +16,8 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info KLIENTENKOMPONENTE
-In diesem Abschnitt werden Stylinginformationen für die **`<dwc-drawer>`**-Komponente beschrieben. Diese Komponente ist **nur auf der Client-Seite** - sie kann nicht eigenständig über die API instanziiert werden, kann aber Teil von API-Komponenten sein.
+:::info KUNDENKOMPONENTE
+Dieser Abschnitt beschreibt Styling-Informationen für die **`<dwc-drawer>`**-Komponente. Diese Komponente ist **nur auf der Client-Seite** - sie kann nicht eigenständig über die API instanziiert werden, kann aber Teil von API-Komponenten sein.
 :::
 
 ## Styling {#styling}

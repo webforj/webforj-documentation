@@ -1,22 +1,22 @@
 ---
 title: BusyIndicator
 sidebar_position: 10
-_i18n_hash: 0ecb07a1364b90d27e17484ade2199ae
+_i18n_hash: a61f487d0d763856c6055898a7284011
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-loading" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/BusyIndicator" top='true'/>
 
-`BusyIndicator` tarjoaa visuaalisia vihjeitä varmistaakseen, että käyttäjät ovat tietoisia käynnissä olevista prosesseista, estäen heitä vuorovaikuttamasta järjestelmän kanssa ennenaikaisesti. Se kattaa tyypillisesti koko sovelluksen käyttöliittymän globaalien toimintojen aikana.
+`BusyIndicator` tarjoaa visuaalisia vihjeitä varmistaakseen, että käyttäjät ovat tietoisia käynnissä olevista prosesseista, estäen heitä vuorovaikuttamasta järjestelmän kanssa liian aikaisin. Se kattaa tyypillisesti koko sovelluksen käyttöliittymän globaalien toimintojen aikana.
 
-Kun [`Loading`](../components/loading) -komponentti keskittyy sovelluksen tiettyihin alueisiin tai komponentteihin, `BusyIndicator` käsittelee globaaleja, sovelluksen laajuisia prosesseja ja estää vuorovaikutuksen koko käyttöliittymässä. Tämä laajuusero tekee [`Loading`](../components/loading) -komponentista ihanteellisen enemmän paikallisiin, komponentti-spesifisiin tilanteisiin, kuten datan lataamiseen tietyssä sivun osassa. Sen sijaan `BusyIndicator` soveltuu järjestelmänlaajuisiin toimintoihin, jotka vaikuttavat koko sovellukseen, kuten sovelluksen alustamiseen tai suuren datasyyn suorittamiseen.
+Kun [`Loading`](../components/loading) komponentti keskittyy tiettyihin alueisiin tai komponentteihin sovelluksessa, `BusyIndicator` käsittelee globaaleja, sovellustason prosesseja ja estää vuorovaikutuksen koko käyttöliittymässä. Tämä erottava tekijä tekee [`Loading`](../components/loading) komponentista erinomaisen enemmän paikallisiin, komponenttikohtaisiin tilanteisiin, kuten tietojen lataamiseen tietyn sivun osan sisällä. Sen sijaan `BusyIndicator` on sopiva järjestelmätason operaatioihin, jotka vaikuttavat koko sovellukseen, kuten sovelluksen alustamiseen tai merkittävän tietosynkronoinnin suorittamiseen.
 
-## Perusteet {#basics}
+## Perustiedot {#basics}
 
-`BusyIndicator` webforJ:ssä näyttää yksinkertaiselta pyörijältä, joten sen käyttö ilman asetuksia on helppoa. Voit kuitenkin räätälöidä sitä lisäämällä viestin, säätämällä pyörijän teeman tai muuttamalla näkyvyysasetuksia. Tämä mahdollistaa enemmän kontekstin tai tyylin tarjoamisen samalla, kun säilytät toimivan, valmiin ratkaisun.
+`BusyIndicator` webforJ:ssa näkyy yksinkertaisena pyörijänä, mikä tekee siitä helppokäyttöisen ilman asetuksia. Voit kuitenkin mukauttaa sitä lisäämällä viestin, säätämällä pyörijän teemaa tai muokkaamalla näkyvyysasetuksia. Tämä mahdollistaa lisätiedon tai tyylin tarjoamisen säilyttäen samalla toimivan, valmiin ratkaisun.
 
-Tässä esimerkissä `BusyIndicator` estää kaikki käyttäjän toimet koko käyttöliittymässä, kunnes toimeksianto on valmis.
+Tässä esimerkissä `BusyIndicator` estää kaikki käyttäjätoimet koko käyttöliittymässä, kunnes operaatio on valmis.
 
 <ComponentDemo 
 path='/webforj/busydemo?' 
@@ -26,9 +26,9 @@ height = '300px'
 
 ## Taustat {#backdrops}
 
-`BusyIndicator` -komponentti webforJ:ssä mahdollistaa taustan näyttämisen, joka estää käyttäjän vuorovaikutuksen prosessin ollessa käynnissä. Oletusarvoisesti komponentti sallii taustan, mutta voit halutessasi poistaa sen käytöstä.
+`BusyIndicator` komponentti webforJ:ssa mahdollistaa taustan näyttämisen estääksee käyttäjävuorovaikutuksen, kun prosessi on käynnissä. Oletusarvoisesti komponentti mahdollistaa taustan, mutta voit halutessasi kytkeä sen pois päältä.
 
-`BusyIndicator` näyttää taustan oletuksena. Voit hallita taustan näkyvyyttä `setBackdropVisible()` -menetelmällä, kuten alla on esitetty:
+`BusyIndicator` näyttää taustan oletusarvoisesti. Voit hallita taustan näkyvyyttä käyttämällä `setBackdropVisible()` metodia, kuten alla on esitetty:
 
 ```java
 BusyIndicator busyIndicator = getBusyIndicator();
@@ -36,14 +36,14 @@ busyIndicator.setBackdropVisible(false);  // Poistaa taustan käytöstä
 busyIndicator.open();
 ```
 :::info Taustan Poistaminen
-Vaikka poistat taustan käytöstä, `BusyIndicator` -komponentti jatkaa käyttäjän vuorovaikutuksen estämistä varmistaakseen, että taustalla oleva prosessi valmistuu keskeytyksettä. Tausta hallitsee vain visuaalista peittoa, ei vuorovaikutuksen estokäyttäytymistä.
+Vaikka kytket taustan pois päältä, `BusyIndicator` komponentti estää edelleen käyttäjävuorovaikutuksen varmistaakseen, että taustalla oleva prosessi valmistuu keskeytyksettä. Tausta vain hallitsee visuaalista peittoa, ei vuorovaikutuksen estämiskäyttäytymistä.
 :::
 
 ## `Spinner` {#spinner}
 
-`BusyIndicator` -komponentti webforJ:ssä sisältää `Spinner`:in, joka visuaalisesti ilmoittaa, että taustatoiminto on käynnissä. Voit mukauttaa tätä pyörijää useilla vaihtoehdoilla, mukaan lukien sen koko, nopeus, suunta, teema ja näkyvyys.
+`BusyIndicator` komponentti webforJ:ssa sisältää `Spinner`in, joka visuaalisesti ilmoittaa, että taustatoiminto on käynnissä. Voit mukauttaa tätä pyörijää useilla vaihtoehdoilla, mukaan lukien sen koko, nopeus, suunta, teema ja näkyvyys.
 
-Tässä on esimerkki siitä, kuinka voit mukauttaa pyörijää `BusyIndicator` -komponentissa:
+Tässä on esimerkki siitä, kuinka voit mukauttaa pyörijää `BusyIndicator` komponentin sisällä:
 
 <ComponentDemo 
 path='/webforj/busyspinnerdemo?' 
@@ -52,14 +52,14 @@ height = '200px'
 />
 
 ## Käyttötapaukset {#use-cases}
-- **Sivun laajuiset prosessit**  
-   `BusyIndicator` on hyvin soveltuva suuremmille, sivun laajuisille toiminnoille, kuten silloin, kun käyttäjä aloittaa tehtävän, joka vaikuttaa koko sivuun, kuten tiedoston lataaminen tai datan käsittely useissa osissa. Se voi ilmoittaa käyttäjille, että koko sovellus on töissä, estäen lisävuorovaikutusta, kunnes prosessi on valmis.
+- **Sivun Laajuinen Prosessointi**  
+   `BusyIndicator` soveltuu hyvin suurempiin, sivun laajuisiin operaatioihin, kuten silloin, kun käyttäjä käynnistää tehtävän, joka vaikuttaa koko sivuun, kuten tiedoston lataamiseen tai tietojen käsittelyyn useilla alueilla. Se voi ilmoittaa käyttäjille, että koko sovellus on käynnissä, estäen lisävaihtoehtojen valitsemisen, kunnes prosessi on valmis.
 
-- **Kriittiset järjestelmätoiminnot**  
-   Kun suoritetaan järjestelmän kriittisiä tehtäviä, kuten datan synkronointia, järjestelmänlaajuisten päivitysten soveltamista tai arkaluontoisten tietojen käsittelyä, `BusyIndicator` antaa selkeää visuaalista palautetta siitä, että suuri operaatio on käynnissä, mikä antaa käyttäjälle mahdollisuuden odottaa, kunnes se on valmis.
+- **Kriittiset Järjestelmätoiminnot**  
+   Kun suoritetaan järjestelmän kannalta kriittisiä tehtäviä, kuten tietojen synkronointia, järjestelmälaajuisia päivityksiä tai arkaluontoisen tiedon käsittelyä, `BusyIndicator` antaa selkeää visuaalista palautetta siitä, että merkittävä operaatio on käynnissä, jolloin käyttäjä voi odottaa, kunnes se on valmis.
 
-- **Asynkroniset datan lataukset**  
-   Tapahtumissa, joissa on mukana asynkronista datan käsittelyä, kuten useiden API:iden kutsumisessa tai monimutkaisten laskentojen odottamisessa, `BusyIndicator` -komponentti ilmoittaa aktiivisesti, että järjestelmä on varattu, kehottamalla käyttäjiä odottamaan ennen lisätoimien suorittamista.
+- **Asynkroniset Tiedon Lataukset**  
+   Tapahtumissa, joissa on mukana asynkronista tiedonkäsittelyä, kuten useiden rajapintojen kutsu tai monimutkaisten laskentojen odottaminen, `BusyIndicator` komponentti ilmoittaa aktiivisesti, että järjestelmä on varattu, kehottamalla käyttäjiä odottamaan, ennen kuin he tekevät lisätoimia.
 
 ## Tyylittely {#styling}
 

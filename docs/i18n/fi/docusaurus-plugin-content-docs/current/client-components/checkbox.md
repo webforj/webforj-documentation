@@ -6,7 +6,7 @@ slug: checkbox
 description: A user guide article for the checkbox
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: ec189dc69a5e03e27d2dfc5d05c43974
+_i18n_hash: 8865067633ab9618418f6c0ba17792ce
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,7 +17,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info KLIENTTIKOMPONENTTI
-Tässä osiossa käsitellään **`<dwc-checkbox>`** komponentin tyylitietoja. Tämä komponentti on **vain asiakaspuolella** - sitä ei voi instanssia itsenäisesti API:n kautta, mutta se saattaa olla osa API-komponentteja.
+Tässä osiossa kuvataan tyylitietoja **`<dwc-checkbox>`**-komponentille. Tämä komponentti on **vain asiakaspuolella** - sitä ei voi instanssia itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
 ## Tyylit {#styling}

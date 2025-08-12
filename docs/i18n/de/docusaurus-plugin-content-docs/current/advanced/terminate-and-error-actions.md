@@ -1,37 +1,37 @@
 ---
 title: Terminate and Error Actions
 sidebar_position: 40
-_i18n_hash: d0f7532dd9019f6cd611255055c76754
+_i18n_hash: 1a250a51020b32c8b3471ae75ea8f750
 ---
 <!-- vale off -->
 # Beendigungs- und Fehleraktionen <DocChip chip='since' label='23.06' />
 <!-- vale on -->
 
-Bei der Entwicklung von Anwendungen mit webforJ ist es entscheidend, zu definieren, wie sich Ihre App verhält, wenn sie beendet wird oder auf einen Fehler stößt. Das Framework bietet Mechanismen zur Anpassung dieser Verhaltensweisen über `terminate`- und `error`-Aktionen.
+Bei der Entwicklung von Anwendungen mit webforJ ist es entscheidend, festzulegen, wie sich Ihre App verhält, wenn sie beendet wird oder auf einen Fehler stößt. Das Framework bietet Mechanismen, um diese Verhaltensweisen über `terminate`- und `error`-Aktionen anzupassen.
 
 ## Übersicht {#overview}
 
-Die `App`-Klasse ermöglicht es Ihnen, Aktionen zu definieren, die ausgeführt werden, wenn die App normal beendet wird oder wenn ein Fehler auftritt. Diese Aktionen sind Instanzen des `AppCloseAction`-Interfaces und können wie folgt festgelegt werden:
+Die Klasse `App` ermöglicht es Ihnen, Aktionen zu definieren, die ausgeführt werden, wenn die App normal beendet wird oder einen Fehler auftritt. Diese Aktionen sind Instanzen des `AppCloseAction`-Interfaces und können mit folgenden Methoden festgelegt werden:
 
-- `setTerminateAction(AppCloseAction action)`: Legt die Aktion fest, die beim normalen Beenden ausgeführt werden soll.
-- `setErrorAction(AppCloseAction action)`: Legt die Aktion fest, die ausgeführt werden soll, wenn ein Fehler auftritt.
+- `setTerminateAction(AppCloseAction action)`: Legt die Aktion fest, die bei normaler Beendigung ausgeführt werden soll.
+- `setErrorAction(AppCloseAction action)`: Legt die Aktion fest, die bei einem Fehler ausgeführt werden soll.
 
 Verfügbare Implementierungen von `AppCloseAction` sind:
 
 - `DefaultAction`: Löscht den Browser und zeigt eine lokalisierte Nachricht an, die den Benutzer auffordert, die App neu zu laden.
-- `NoneAction`: Führt keine Aktion aus und setzt somit eine zuvor festgelegte Aktion zurück.
-- `MessageAction`: Zeigt eine benutzerdefinierte Linknachricht an.
+- `NoneAction`: Führt keine Aktion aus und setzt damit eine zuvor festgelegte Aktion effektiv zurück.
+- `MessageAction`: Zeigt eine benutzerdefinierte Link-Nachricht an.
 - `RedirectAction`: Leitet den Benutzer zu einer angegebenen URL weiter.
 
 :::info Unterscheidung zwischen Beendigungsaktionen und Fehleraktionen in webforJ
-webforJ behandelt die Beendigung aufgrund einer geworfenen oder nicht behandelten Ausnahme nicht als Fehleraktion, sondern als Beendigungsaktion, da die App normal heruntergefahren wird. Eine Fehleraktion tritt auf, wenn die App ein Beendigungssignal aufgrund eines externen Fehlers erhält, z. B. wenn der Browser keine Verbindung zum Server herstellen kann, auf dem die App ausgeführt wird.
+webforJ behandelt eine Beendigung aufgrund einer geworfenen oder unbehandelten Ausnahme nicht als Fehleraktion, sondern vielmehr als Beendigungsaktion, da die App normal heruntergefahren wird. Eine Fehleraktion tritt auf, wenn die App ein Beendigungssignal aufgrund eines externen Fehlers erhält, beispielsweise wenn der Browser keine Verbindung zum Server herstellen kann, der die App ausführt.
 :::
 
 ## Standardverhalten {#default-behavior}
 
-In der Version `24.11` von webforJ verwendet die App standardmäßig `DefaultAction` für sowohl Beendigungs- als auch Fehlerereignisse. Das bedeutet, dass der Browser eine Nachricht anzeigt, die den Benutzer auffordert, die App neu zu laden, wenn die App beendet wird oder ein Fehler auftritt.
+In der webforJ-Version `24.11` und früher verwendet die App standardmäßig `DefaultAction` sowohl für Beendigungs- als auch für Fehlerereignisse. Das bedeutet, dass beim Beenden oder bei einem Fehler die Nachricht angezeigt wird, die den Benutzer auffordert, die App neu zu laden.
 
-Ab Version `24.12` verwendet webforJ standardmäßig `NoneAction` für sowohl Beendigungs- als auch Fehlerereignisse. Diese Änderung bedeutet, dass bei der Beendigung der App oder bei einem Fehler keine Aktion ausgeführt wird, wodurch webforJ die Fehlerbehandlung an einen geeigneten `ErrorHandler` delegieren kann, falls einer konfiguriert ist, oder auf seine allgemeinen Fehlerbehandlungsmechanismen zurückgreift. Durch die Verwendung von `NoneAction` vermeidet die App die Störung des Standard-Fehlerbehandlungsflusses und ermöglicht es Ihnen, benutzerdefinierte Fehlerhandler zu definieren oder sich auf das integrierte Fehlermanagement von webforJ zu verlassen.
+Ab Version `24.12` verwendet webforJ standardmäßig `NoneAction` für sowohl Beendigungs- als auch Fehlerereignisse. Diese Änderung bedeutet, dass bei Beendigung oder Fehler keine Aktion ausgeführt wird, sodass webforJ die Fehlerbehandlung an einen geeigneten `ErrorHandler` delegieren kann, wenn einer konfiguriert ist, oder auf die generischen Fehlerbehandlungsmechanismen zurückgreifen kann. Durch die Verwendung von `NoneAction` vermeidet die App, den Standardfluss der Fehlerbehandlung zu stören, was es Ihnen ermöglicht, benutzerdefinierte Fehlerbehandler zu definieren oder sich auf das integrierte Fehlermanagement von webforJ zu verlassen.
 
 ## Anpassen von Aktionen {#customizing-actions}
 
@@ -48,7 +48,7 @@ public class MyApp extends App {
   public void run() throws WebforjException {
     // Setzen Sie eine benutzerdefinierte Nachrichtenaktion
     setTerminateAction(new MessageAction(
-        "Danke, dass Sie unsere Anwendung genutzt haben! Klicken Sie zum Neuladen"
+        "Danke, dass Sie unsere Anwendung verwendet haben! Klicken Sie hier, um neu zu laden."
     ));
   }
 }
@@ -63,7 +63,7 @@ public class MyApp extends App {
 
   @Override
   public void run() throws WebforjException {
-    // Setzen Sie eine Weiterleitungsaktion bei Fehlern
+    // Setzen Sie eine Weiteraktionsaktion bei Fehlern
     setTerminateAction(new RedirectAction(
         "https://example.com/error"
     ));
@@ -73,7 +73,7 @@ public class MyApp extends App {
 
 ## Beenden der App {#terminating-the-app}
 
-Sie können Ihre App programmatisch beenden, indem Sie die Methode `terminate()` aufrufen:
+Sie können Ihre App programmgesteuert beenden, indem Sie die Methode `terminate()` aufrufen:
 
 ```java
 public class MyApp extends App {
@@ -88,11 +88,11 @@ public class MyApp extends App {
 }
 ```
 
-Beim Aufruf von `terminate()` wird die durch `setTerminateAction()` definierte Aktion ausgeführt.
+Nach dem Aufruf von `terminate()` wird die durch `setTerminateAction()` definierte Aktion ausgeführt.
 
 ## Hooks für die Beendigung {#hooks-for-termination}
 
-Die `App`-Klasse bietet Hook-Methoden, um vor und nach der Beendigung Aktionen durchzuführen:
+Die Klasse `App` bietet Hook-Methoden, um Aktionen vor und nach der Beendigung auszuführen:
 
 - `onWillTerminate()`: Wird vor der Beendigung aufgerufen.
 - `onDidTerminate()`: Wird nach der Beendigung aufgerufen.
@@ -102,7 +102,7 @@ public class MyApp extends App {
 
   @Override
   protected void onWillTerminate() {
-    // Bereinigungsaufgaben durchführen
+    // Führen Sie Bereinigungsaufgaben durch
   }
 
   @Override
@@ -112,15 +112,15 @@ public class MyApp extends App {
 }
 ```
 
-:::tip Externe Lifecycle-Listener
-Für ein fortgeschritteneres Lifecycle-Management sollten Sie `AppLifecycleListener` in Betracht ziehen, um Beendigungsereignisse von externen Komponenten zu behandeln, ohne die `App`-Klasse zu ändern. Dies ist insbesondere nützlich für Plugin-Architekturen oder wenn mehrere Komponenten auf die Beendigung der App reagieren müssen. Erfahren Sie mehr über [Lifecycle Listener](lifecycle-listeners.md).
+:::tip Externe Lebenszyklus-Listener
+Für eine fortgeschrittenere Lebenszyklusverwaltung sollten Sie `AppLifecycleListener` verwenden, um Beendigungsereignisse von externen Komponenten zu behandeln, ohne die Klasse `App` zu ändern. Dies ist besonders nützlich für Plugin-Architekturen oder wenn mehrere Komponenten auf die Beendigung der App reagieren müssen. Erfahren Sie mehr über [Lifecycle-Listener](lifecycle-listeners.md).
 :::
 
 ### Benutzerdefinierte Beendigungsseite {#custom-termination-page}
 
-In einigen Fällen möchten Sie möglicherweise eine benutzerdefinierte Beendigungsseite anzeigen, wenn Ihre App endet, um den Benutzern eine personalisierte Nachricht oder zusätzliche Ressourcen zur Verfügung zu stellen. Dies kann erreicht werden, indem Sie die Methode `onDidTerminate()` in Ihrer `App`-Unterklasse überschreiben und benutzerdefiniertes HTML in die Seite einfügen.
+In einigen Fällen möchten Sie möglicherweise eine benutzerdefinierte Beendigungsseite anzeigen, wenn Ihre App endet, um den Benutzern eine personalisierte Nachricht oder zusätzliche Ressourcen bereitzustellen. Dies kann erreicht werden, indem Sie die Methode `onDidTerminate()` in Ihrer `App`-Unterklasse überschreiben und benutzerdefiniertes HTML in die Seite einfügen.
 
-Hier ist ein Beispiel, wie Sie eine benutzerdefinierte Beendigungsseite erstellen:
+Hier ist ein Beispiel, wie Sie eine benutzerdefinierte Beendigungsseite erstellen können:
 
 ```java
 public class MyApp extends App {
@@ -135,7 +135,7 @@ public class MyApp extends App {
   protected void onDidTerminate() {
     String html = """
     <div style="display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;">
-        <h1>Danke, dass Sie webforJ genutzt haben</h1>
+        <h1>Danke, dass Sie webforJ verwendet haben</h1>
         <p>Für weitere Informationen besuchen Sie <a href="https://webforj.com">webforj.com</a></p>
     </div>
     """;

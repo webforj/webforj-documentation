@@ -2,9 +2,9 @@
 sidebar_position: 30
 title: Editing and Refreshing
 slug: refreshing
-_i18n_hash: 0c57bd3fd3a9adb9cb7275e23efa725f
+_i18n_hash: 39816123675d62a6dda185187e8d13e2
 ---
-Het bewerken van gegevens binnen de `Table` werkt via interactie met de `Repository` die de gegevens voor de `Table` bevat. De `Repository` fungeert als een brug tussen de `Table` en de onderliggende dataset en biedt methoden voor gegevensophaling, -wijziging en -vernieuwing. Hieronder staat een voorbeeld dat gedrag implementeert om de "Titel" van een gewenste rij te bewerken.
+Het bewerken van gegevens binnen de `Table` werkt via interactie met de `Repository` die de gegevens voor de `Table` bevat. De `Repository` dient als een brug tussen de `Table` en de onderliggende dataset, en biedt methoden voor gegevensophaling, wijziging en vernieuwing. Hieronder volgt een voorbeeld dat gedrag implementeert om de "Titel" van een gewenste rij te bewerken.
 
 <ComponentDemo 
 path='/webforj/tableeditdata?' 
@@ -13,18 +13,18 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/hea
 height='600px'
 />
 
-In het bovenstaande voorbeeld faciliteert de `TitleEditorComponent` klasse het bewerken van het "Titel" veld voor een geselecteerd `MusicRecord`. De component bevat een invoerveld voor de nieuwe titel, samen met "Opslaan" en "Annuleren" knoppen.
+In het bovenstaande voorbeeld faciliteert de `TitleEditorComponent` klasse het bewerken van het "Titel" veld voor een geselecteerde `MusicRecord`. De component bevat een invoerveld voor de nieuwe titel, samen met "Opslaan" en "Annuleren" knoppen.
 
-Om de bewerkcomponent te verbinden met de `Table`, is er een "Bewerken" knop toegevoegd aan de `Table` via een `VoidElementRenderer`. Op het klikken van deze knop wordt de `edit()` methode van de `TitleEditorComponent` geactiveerd, waardoor gebruikers de "Titel" kunnen aanpassen.
+Om de bewerkingscomponent met de `Table` te verbinden, wordt er een "Bewerken" knop toegevoegd aan de `Table` via een `VoidElementRenderer`. Het klikken op deze knop activeert de `edit()` methode van de `TitleEditorComponent`, waardoor gebruikers de "Titel" kunnen wijzigen.
 
 ## Commit-methode {#commit-method}
 
-Zodra de gebruiker de titel aanpast en op de "Opslaan" knop klikt, activeert de `TitleEditorComponent` de `save()` methode. Deze methode werkt de titel van het bijbehorende `MusicRecord` bij en verzendt een aangepaste `SaveEvent`.
+Wanneer de gebruiker de titel wijzigt en op de "Opslaan" knop klikt, activeert de `TitleEditorComponent` de `save()` methode. Deze methode werkt de titel van de overeenkomstige `MusicRecord` bij en verstuurt een aangepaste `SaveEvent`.
 
-De realtime-update van gegevens in de repository wordt bereikt via de `commit()` methode. Deze methode wordt toegepast binnen de `onSave` gebeurtenislistener, waardoor ervoor wordt gezorgd dat wijzigingen die via de bewerkcomponent zijn aangebracht in de onderliggende dataset worden weerspiegeld.
+De realtime-update van gegevens in de repository wordt bereikt via de `commit()` methode. Deze methode wordt gebruikt binnen de `onSave` gebeurtenislistener, zodat wijzigingen die zijn aangebracht via de bewerkingscomponent worden weerspiegeld in de onderliggende dataset.
 
-De `commit()` methode wordt aangeroepen om alle betrokken componenten te informeren dat de gegevens zijn gewijzigd. De `Table` vangt de `RepositoryCommitEvent` op en werkt bij op basis van de nieuwe gegevens.
+De `commit()` methode wordt aangeroepen om alle geïnteresseerde componenten te informeren dat de gegevens zijn gewijzigd. De `Table` vangt de `RepositoryCommitEvent` op en werkt bij op basis van de nieuwe gegevens.
 
-:::tip Bijwerken en aanmaken van records
-Het aanroepen van de `commit()` methode werkt zowel bestaande records bij als **voegt nieuwe records toe die zijn aangemaakt**.
+:::tip Bijwerken en creëren van items
+Het aanroepen van de `commit()` methode werkt zowel bestaande items bij als **voegt nieuwe items toe die zijn aangemaakt**.
 :::

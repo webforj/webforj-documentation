@@ -2,7 +2,7 @@
 title: HelloWorld
 sidebar_position: 4
 hide_table_of_contents: true
-_i18n_hash: e1da494f783aca68616cd374b92e700c
+_i18n_hash: 145d1e89a5f688fa0c912b87056a35d1
 ---
 <Head>
   <style>{`
@@ -16,14 +16,14 @@ _i18n_hash: e1da494f783aca68616cd374b92e700c
 # HelloWorld-Archetyp
 <!-- vale on -->
 
-Dieses Archetyp erstellt eine einfache Hello-World-App, um die Grundlagen des Aufbaus einer Benutzeroberfläche mit webforJ zu demonstrieren. Diese Vorlage ist großartig für Anfänger, die schnell starten möchten. Sie bietet ein unkompliziertes Beispiel dafür, wie man eine grundlegende webforJ-App einrichtet und ausführt, und ist somit ein ausgezeichneter Ausgangspunkt für neue Entwickler.
+Dieses Archetyp erstellt eine einfache Hello World-App, um die Grundlagen des Aufbaus einer Benutzeroberfläche mit webforJ zu demonstrieren. Diese Vorlage ist großartig für Anfänger, um schnell zu starten. Sie bietet ein einfaches Beispiel dafür, wie man eine grundlegende webforJ-App einrichtet und ausführt, was sie zu einem ausgezeichneten Ausgangspunkt für neue Entwickler macht.
 
 :::tip Von Grund auf neu starten
-Dieses Archetyp erstellt eine minimalistische App mit einigen Komponenten und etwas Stil. Für Entwickler, die ein Projekt mit minimaler Struktur erstellen möchten, siehe das [`blank` Archetyp](./blank).
+Dieses Archetyp erstellt eine minimalistischen App mit einigen Komponenten und etwas Styling. Für Entwickler, die ein Projekt mit minimaler Struktur erstellen möchten, siehe das [`blank` Archetyp](./blank).
 :::
 
 :::tip Verwendung von startforJ
-Für mehr Kontrolle über Anpassungen und Konfigurationen können Sie [startforJ](https://docs.webforj.com/startforj/) verwenden, um Ihr Projekt zu erstellen - wählen Sie einfach das `HelloWorld`-Archetyp, wenn Sie Konfigurationsoptionen auswählen.
+Für mehr Kontrolle über Anpassungen und Konfigurationen können Sie [startforJ](https://docs.webforj.com/startforj/) verwenden, um Ihr Projekt zu erstellen - wählen Sie einfach das `HelloWorld` Archetyp, wenn Sie Konfigurationsoptionen auswählen.
 :::
 
 ## Verwendung des `hello-world` Archetyps {#using-the-hello-world-archetype}
@@ -38,7 +38,7 @@ Bevor Sie Ihre App ausführen, installieren Sie die [Voraussetzungen](../../intr
 Navigieren Sie dann zum Stammverzeichnis des Projekts und führen Sie den folgenden Befehl aus:
 
 ```bash
-# für standardmäßige webforJ-App
+# für die standardmäßige webforJ-App
 mvn jetty:run
 
 # für webforJ + Spring Boot

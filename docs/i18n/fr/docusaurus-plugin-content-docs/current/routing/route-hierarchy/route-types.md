@@ -1,32 +1,32 @@
 ---
 sidebar_position: 1
 title: Route Types
-_i18n_hash: d297703f4a165ebcfbb540c3256f825e
+_i18n_hash: ff067ccd8461640c772c1f8fa0dcc856
 ---
-Les itinéraires sont classés en deux types principaux, **Itinéraires de vue** et **Itinéraires de mise en page**. Le choix du type d'itinéraire détermine comment les composants sont mappés aux URL et comment ils interagissent avec d'autres parties de votre application.
+Les routes sont classées en deux types principaux, **View Routes** et **Layout Routes**. Le choix du type de route détermine comment les composants sont mappés aux URL et comment ils interagissent avec d'autres parties de votre application.
 
-## Itinéraires de vue {#view-routes}
+## View routes {#view-routes}
 
-Les itinéraires de vue sont directement mappés à un segment d'URL et représentent des pages spécifiques dans votre application. Ces itinéraires sont reflétés dans l'URL du navigateur et sont généralement utilisés pour des vues ou pages distinctes.
+Les routes view se mappent directement à un segment d'URL et représentent des pages spécifiques de votre application. Ces routes sont reflétées dans l'URL du navigateur et sont généralement utilisées pour des vues ou des pages distinctes.
 
 ```java
 @Route(value = "home")
 public class HomeView extends Composite<Div> {
   public HomeView() {
     Div content = getBoundComponent();
-    content.add(new H1("Page d'accueil"));
+    content.add(new H1("Page d'Accueil"));
   }
 }
 ```
 
 - **URL**: `/home`
-- **Composant rendu**: `HomeView`
+- **Composant Rendu**: `HomeView`
 
 Dans cet exemple, naviguer vers `/home` rend le composant `HomeView`.
 
-## Itinéraires de mise en page {#layout-routes}
+## Layout routes {#layout-routes}
 
-Les itinéraires de mise en page englobent des vues enfants sans contribuer à l'URL. Les mises en page fournissent des éléments d'interface utilisateur partagés tels que des en-têtes ou des barres latérales qui sont cohérents à travers plusieurs vues. Les itinéraires enfants sont rendus dans la zone de contenu de la mise en page.
+Les routes layout englobent des vues enfants sans contribuer à l'URL. Les mises en page fournissent des éléments d'interface utilisateur partagés tels que des en-têtes ou des barres latérales qui sont cohérents à travers plusieurs vues. Les routes enfants sont rendues dans la zone de contenu de la mise en page.
 
 ```java
 @Route(type = Route.Type.LAYOUT)
@@ -38,19 +38,19 @@ public class MainLayout extends Composite<AppLayout> {
 }
 ```
 
-Dans ce cas, `MainLayout` est un itinéraire de mise en page qui entoure les vues enfants. Il définit des éléments d'interface utilisateur communs comme un en-tête et un tiroir. Les itinéraires enfants associés à cette mise en page seront injectés dans la zone de contenu du composant `AppLayout`.
+Dans ce cas, `MainLayout` est une route de mise en page qui entoure les vues enfants. Elle définit des éléments d'interface utilisateur communs comme un en-tête et un tiroir. Les routes enfants associées à cette mise en page seront injectées dans la zone de contenu du composant `AppLayout`.
 
-## Détection automatique des types d'itinéraires {#auto-detection-of-route-types}
+## Détection automatique des types de routes {#auto-detection-of-route-types}
 
-Par défaut, le type d'itinéraire est détecté automatiquement que l'itinéraire soit une **vue** ou une **mise en page** en fonction du nom de la classe :
+Par défaut, le type de route est détecté automatiquement, que la route soit une **view** ou une **layout** en fonction du nom de la classe :
 
-- Les classes se terminant par `Layout` sont traitées comme **itinéraires de mise en page**.
-- Les classes se terminant par `View` sont traitées comme **itinéraires de vue**.
+- Les classes se terminant par `Layout` sont considérées comme des **layout routes**.
+- Les classes se terminant par `View` sont considérées comme des **view routes**.
 
-Alternativement, les développeurs peuvent spécifier manuellement le type d'itinéraire en définissant `Route.Type` dans l'annotation `@Route`.
+Alternativement, les développeurs peuvent spécifier manuellement le type de route en définissant `Route.Type` dans l'annotation `@Route`.
 
 ```java
-// Détecté automatiquement comme Mise en page
+// Détecté automatiquement comme Layout
 @Route
 public class MainLayout extends Composite<AppLayout> {
   public MainLayout() {
@@ -61,12 +61,12 @@ public class MainLayout extends Composite<AppLayout> {
 ```
 
 ```java
-// Détecté automatiquement comme Vue
+// Détecté automatiquement comme View
 @Route(outlet = MainLayout.class)
 public class DashboardView extends Composite<Div> {
   public DashboardView() {
     Div content = getBoundComponent();
-    content.add(new H1("Contenu du tableau de bord"));
+    content.add(new H1("Contenu du Dashboard"));
   }
 }
 ```

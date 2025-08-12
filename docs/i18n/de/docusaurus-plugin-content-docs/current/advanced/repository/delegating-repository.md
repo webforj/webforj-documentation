@@ -1,27 +1,27 @@
 ---
 title: Custom data sources
 sidebar_position: 4
-_i18n_hash: dbcaaa420987ee45f54d3f4059e98d92
+_i18n_hash: 44f087c7c2308fc7a0c3b8c4c4246531
 ---
 <!-- vale off -->
 # Benutzerdefinierte Datenquellen <DocChip chip='since' label='25.02' />
 <!-- vale on -->
 
-Wenn Ihre Daten außerhalb Ihrer Anwendung leben - in einer REST-API, Datenbank oder externen Dienst - müssen Sie eine benutzerdefinierte Repository-Implementation erstellen. Die <JavadocLink type="data" location="com/webforj/data/repository/DelegatingRepository" code="true">DelegatingRepository</JavadocLink>-Klasse macht dies einfach, indem Sie Funktionen anstelle einer vollständigen Klasse bereitstellen.
+Wenn Ihre Daten außerhalb Ihrer App - in einer REST-API, Datenbank oder externen Dienst - leben, müssen Sie eine benutzerdefinierte Repository-Implementierung erstellen. Die <JavadocLink type="data" location="com/webforj/data/repository/DelegatingRepository" code="true">DelegatingRepository</JavadocLink> Klasse macht dies einfach, indem sie es Ihnen ermöglicht, Funktionen bereitzustellen, anstatt eine vollständige Klasse zu implementieren.
 
 ## Wie `DelegatingRepository` funktioniert {#how-delegatingrepository-works}
 
-<JavadocLink type="data" location="com/webforj/data/repository/DelegatingRepository" code="true">DelegatingRepository</JavadocLink> ist eine konkrete Klasse, die <JavadocLink type="data" location="com/webforj/data/repository/AbstractQueryableRepository" code="true">AbstractQueryableRepository</JavadocLink> erweitert. Anstelle von abstrakten Methoden implementieren Sie drei Funktionen im Konstruktor:
+<JavadocLink type="data" location="com/webforj/data/repository/DelegatingRepository" code="true">DelegatingRepository</JavadocLink> ist eine konkrete Klasse, die <JavadocLink type="data" location="com/webforj/data/repository/AbstractQueryableRepository" code="true">AbstractQueryableRepository</JavadocLink> erweitert. Anstatt abstrakte Methoden zu implementieren, stellen Sie im Konstruktor drei Funktionen bereit:
 
 ```java
 DelegatingRepository<User, UserFilter> repository = new DelegatingRepository<>(
-    // 1. Find-Funktion - gibt gefilterte/sortierte/paginierte Daten zurück
+    // 1. Find-Funktion - gibt gefilterte/sortierte/seitengerechte Daten zurück
     criteria -> userService.findUsers(criteria),
     
-    // 2. Count-Funktion - gibt die Gesamtzahl für den Filter zurück
+    // 2. Count-Funktion - gibt die Gesamtanzahl für den Filter zurück
     criteria -> userService.countUsers(criteria),
     
-    // 3. Find by key-Funktion - gibt eine einzelne Entität anhand der ID zurück
+    // 3. Find by key-Funktion - gibt eine einzelne Entität nach ID zurück
     userId -> userService.findById(userId)
 );
 ```
@@ -29,19 +29,19 @@ DelegatingRepository<User, UserFilter> repository = new DelegatingRepository<>(
 Jede Funktion hat einen spezifischen Zweck:
 
 **Find-Funktion** erhält ein `RepositoryCriteria`-Objekt, das enthält:
-- `getFilter()` - Ihr benutzerdefiniertes Filterobjekt (der `F` Typ-Parameter)
+- `getFilter()` - Ihr benutzerdefiniertes Filterobjekt (der `F` Typparameter)
 - `getOffset()` und `getLimit()` - für die Paginierung
-- `getOrderCriteria()` - Liste der Sortierungsregeln
+- `getOrderCriteria()` - Liste von Sortierregeln
 
 Diese Funktion muss einen `Stream<T>` von Entitäten zurückgeben, die den Kriterien entsprechen. Der Stream kann leer sein, wenn keine Übereinstimmungen gefunden werden.
 
-**Count-Funktion** erhält ebenfalls die Kriterien, verwendet jedoch typischerweise nur den Filterteil. Sie gibt die Gesamtzahl der entsprechenden Entitäten zurück, wobei die Paginierung ignoriert wird. Dies wird von UI-Komponenten verwendet, um die Gesamtzahl der Ergebnisse anzuzeigen oder Seiten zu berechnen.
+**Count-Funktion** erhält ebenfalls die Kriterien, verwendet aber typischerweise nur den Filterteil. Sie gibt die Gesamtanzahl der übereinstimmenden Entitäten zurück und ignoriert die Paginierung. Dies wird von UI-Komponenten verwendet, um die Gesamtzahl der Ergebnisse anzuzeigen oder Seiten zu berechnen.
 
 **Find by key-Funktion** erhält einen Entitätsschlüssel (in der Regel eine ID) und gibt ein `Optional<T>` zurück. Geben Sie `Optional.empty()` zurück, wenn die Entität nicht existiert.
 
-## REST-API-Beispiel {#rest-api-example}
+## REST API-Beispiel {#rest-api-example}
 
-Bei der Integration mit einer REST-API müssen Sie die Repository-Kriterien in HTTP-Anforderungsparameter umwandeln. Beginnen Sie mit der Definition einer Filterklasse, die mit den Abfragefähigkeiten Ihrer API übereinstimmt:
+Bei der Integration mit einer REST-API müssen Sie die Repository-Kriterien in HTTP-Anforderungsparameter umwandeln. Beginnen Sie mit der Definition einer Filterklasse, die zu den Abfragemöglichkeiten Ihrer API passt:
 
 ```java
 public class UserFilter {
@@ -51,7 +51,7 @@ public class UserFilter {
 }
 ```
 
-Diese Filterklasse repräsentiert die Suchparameter, die Ihre API akzeptiert. Das Repository wird Instanzen dieser Klasse an Ihre Funktionen übergeben, wenn Filter angewendet werden.
+Diese Filterklasse repräsentiert die Suchparameter, die Ihre API akzeptiert. Das Repository wird Instanzen dieser Klasse an Ihre Funktionen übergeben, wenn das Filtern angewendet wird.
 
 Erstellen Sie das Repository mit Funktionen, die Kriterien in API-Aufrufe übersetzen:
 
@@ -79,7 +79,7 @@ Die Methode `buildParams()` würde Werte aus den Kriterien extrahieren und in Ab
 
 ## Datenbankbeispiel {#database-example}
 
-Die Datenbankintegration folgt einem ähnlichen Muster, konvertiert jedoch Kriterien in SQL-Abfragen. Der Hauptunterschied besteht darin, die SQL-Generierung und Parameterbindung zu behandeln:
+Die Datenbankintegration folgt einem ähnlichen Muster, wandelt jedoch Kriterien in SQL-Abfragen um. Der wesentliche Unterschied besteht in der Handhabung der SQL-Generierung und der Parameterbindung:
 
 ```java
 DelegatingRepository<Customer, CustomerFilter> dbRepository = new DelegatingRepository<>(
@@ -111,11 +111,11 @@ ORDER BY created_date DESC, name ASC
 LIMIT ? OFFSET ?
 ```
 
-Die Eigenschaften Ihres Filterobjekts werden den Bedingungen im `WHERE`-Abschnitt zugeordnet, während Paginierung und Sortierung durch `LIMIT/OFFSET` und `ORDER BY`-Klauseln behandelt werden.
+Die Eigenschaften Ihres Filterobjektsmap entsprechen den Bedingungen der `WHERE`-Klausel, während Paginierung und Sortierung über `LIMIT/OFFSET` und `ORDER BY`-Klauseln gehandhabt werden.
 
 ## Verwendung mit UI-Komponenten {#using-with-ui-components}
 
-Die Schönheit des Repository-Musters besteht darin, dass UI-Komponenten nicht wissen oder sich darum kümmern, woher die Daten stammen. Ob es eine In-Memory-Sammlung, REST-API oder Datenbank ist, die Nutzung ist identisch:
+Die Schönheit des Repository-Musters besteht darin, dass UI-Komponenten nicht wissen oder sich darum kümmern, woher die Daten stammen. Ob es sich um eine In-Memory-Sammlung, REST-API oder Datenbank handelt, die Nutzung ist identisch:
 
 ```java
 // Repository erstellen und konfigurieren
@@ -128,10 +128,10 @@ repository.setBaseFilter(filter);
 Table<User> table = new Table<>();
 table.setRepository(repository);
 
-// Tabelle zeigt automatisch gefilterte Ingenieure an
+// Tabelle zeigt automatisch gefilterte Benutzer der Ingenieurabteilung an
 ```
 
-Wenn Benutzer mit der [`Table`](../../components/table/overview) (Spalten sortieren, Seiten ändern) interagieren, ruft die `Table` Ihre Repository-Funktionen mit aktualisierten Kriterien auf. Ihre Funktionen übersetzen diese in API-Aufrufe oder SQL-Abfragen, und die Tabelle wird automatisch mit den Ergebnissen aktualisiert.
+Wenn Benutzer mit der [`Table`](../../components/table/overview) (Sortierung der Spalten, Wechseln der Seiten) interagieren, ruft die `Table` Ihre Repository-Funktionen mit aktualisierten Kriterien auf. Ihre Funktionen übersetzen diese in API-Aufrufe oder SQL-Abfragen, und die Tabelle wird automatisch mit den Ergebnissen aktualisiert.
 
 ## Wann `AbstractQueryableRepository` erweitern {#when-to-extend-abstractqueryablerepository}
 
@@ -156,7 +156,7 @@ public class CustomUserRepository extends AbstractQueryableRepository<User, User
     
     // Fügen Sie benutzerdefinierte Methoden hinzu
     public List<User> findActiveManagers() {
-        // Benutzerdefinierte Abfragelogik
+        // Logik für benutzerdefinierte Abfragen
     }
 }
 ```

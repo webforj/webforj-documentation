@@ -1,14 +1,15 @@
 ---
 title: Splitter
 sidebar_position: 115
-_i18n_hash: 0f8ea00bed7b930d5b7a8efe6bcd5446
+_i18n_hash: 7a830c81311c3830e4d1c36bd08903c5
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-splitter" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="splitter" location="com/webforj/component/layout/splitter/Splitter" top='true'/>
 
-De `Splitter` component, ontworpen om inhoud binnen uw app te verdelen en te schalen, encapsuleert twee resizable componenten: de master en de detail componenten. Een scheidingslijn scheidt deze componenten, waardoor gebruikers de grootte van elke component dynamisch kunnen aanpassen volgens hun voorkeuren.
+
+De `Splitter` component, ontworpen om inhoud binnen uw app te verdelen en te schalen, encapsuleert twee schaalbare componenten: de master- en detailcomponenten. Een scheidingslijn scheidt deze componenten, waardoor gebruikers de grootte van elke component dynamisch kunnen aanpassen aan hun voorkeuren.
 
 <ComponentDemo 
 path='/webforj/splitterbasic?' 
@@ -18,13 +19,13 @@ height='300px'
 
 ## Min en max grootte {#min-and-max-size}
 
-De `Splitter` component biedt methoden om minimum en maximum groottes voor zijn panelen in te stellen, zodat u het schaalkarakter van de componenten binnen de `Splitter` kunt beheersen. Wanneer gebruikers proberen panelen buiten de opgegeven min- of maxgroottes te schalen, handhaaft de splittercomponent deze beperkingen, zodat panelen binnen de gedefinieerde grenzen blijven.
+De `Splitter` component biedt methoden om minimum- en maximumgroottes voor zijn panelen in te stellen, waardoor u het schalingsgedrag van de componenten binnen de `Splitter` kunt beheersen. Wanneer gebruikers proberen panelen buiten de opgegeven min- of max-groottes te schalen, handhaaft de splittercomponent deze beperkingen, zodat panelen binnen de gedefinieerde grenzen blijven.
 
 ### Groottes instellen {#setting-sizes}
 
-De `setMasterMinSize(String masterMinSize)` methode specificeert de minimale grootte voor het masterpaneel van de splitter. Evenzo specificeert de `setMasterMaxSize(String masterMaxSize)` methode de maximale grootte voor het masterpaneel.
+De `setMasterMinSize(String masterMinSize)` methode specificeert de minimumgrootte voor het masterpaneel van de splitter. Evenzo specificeert de `setMasterMaxSize(String masterMaxSize)` methode de maximumgrootte voor het masterpaneel.
 
-U kunt groottes specificeren met behulp van geldige CSS-eenheden, zoals hieronder weergegeven:
+U kunt groottes opgeven met behulp van geldige CSS-eenheden, zoals hieronder weergegeven:
 
 <ComponentDemo 
 path='/webforj/splitterminmax?' 
@@ -34,9 +35,9 @@ height='300px'
 
 ## Oriëntatie {#orientation}
 
-U kunt de oriëntatie in de `Splitter` component configureren, zodat u lay-outs kunt creëren die zijn afgestemd op specifieke ontwerpeisen. Door de oriëntatie te specificeren, arrangeert de component panelen horizontaal of verticaal, wat veelzijdigheid biedt in het ontwerp van lay-outs.
+U kunt de oriëntatie in de `Splitter` component configureren, waardoor u lay-outs kunt creëren die zijn afgestemd op specifieke ontwerpeisen. Door de oriëntatie op te geven, rangschikt de component panelen horizontaal of verticaal, wat veelzijdigheid in lay-outontwerp biedt.
 
-Om de oriëntatie te configureren, gebruikt u de ondersteunde oriëntaties Enum om aan te geven of de `Splitter` horizontaal of verticaal moet worden weergegeven:
+Om de oriëntatie te configureren, gebruikt u de ondersteunde oriëntaties Enum om te specificeren of de `Splitter` horizontaal of verticaal moet worden weergegeven:
 
 <ComponentDemo 
 path='/webforj/splitterorientation?' 
@@ -46,7 +47,7 @@ height='300px'
 
 ## Relatieve positie {#relative-position}
 
-Om de initiële positie van de scheidingslijn in de `Splitter` component in te stellen, gebruikt u `setPositionRelative`. Deze methode neemt een numerieke waarde van `0` tot `100`, die het percentage van de opgegeven ruimte in de `Splitter` vertegenwoordigt, en toont de scheidingslijn op het opgegeven percentage van de totale breedte:
+Om de initiële positie van de scheidingslijn in de `Splitter` component in te stellen, gebruikt u `setPositionRelative`. Deze methode neemt een numerieke waarde van `0` tot `100` die het percentage van de gegeven ruimte in de `Splitter` vertegenwoordigt en toont de scheidingslijn op het opgegeven percentage van de totale breedte:
 
 <ComponentDemo 
 path='/webforj/splitterposition?' 
@@ -56,9 +57,9 @@ height='300px'
 
 ## Nesting {#nesting}
 
-Nesting van Splitters stelt u in staat om complexe lay-outs te creëren met niveaus van resizable panelen. Het maakt de creatie van geavanceerde gebruikersinterfaces mogelijk met gedetailleerde controle over de arrangement en het schalen van inhoud.
+Nesting van Splitters stelt u in staat om complexe lay-outs te creëren met niveaus van schaalbare panelen. Het maakt de creatie van geavanceerde gebruikersinterfaces mogelijk met granulaire controle over de rangschikking en schaling van inhoud.
 
-Om Splitter componenten te nestelen, instantiate nieuwe `Splitter` instanties en voeg ze toe als kinderen aan bestaande `Splitter` componenten. Deze hiërarchische structuur maakt het mogelijk om multi-level lay-outs te creëren met flexibele schaalcapaciteiten. Het onderstaande programma demonstreert dit:
+Om Splitter-componenten te nesten, instantiëert u nieuwe `Splitter` instanties en voegt u ze als kinderen toe aan bestaande `Splitter` componenten. Deze hiërarchische structuur maakt de creatie van multi-niveau lay-outs met flexibele schalingsmogelijkheden mogelijk. Het onderstaande programma demonstreert dit:
 
 <ComponentDemo 
 path='/webforj/splitternested?' 
@@ -66,15 +67,15 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## Auto opslaan {#auto-save}
+## Autosave {#auto-save}
 
-De `Splitter` component bevat een AutoSave optie, die de status van panelgroottes opslaat in de lokale opslag om dimensies consistent te houden tussen herlaadbeurten.
+De `Splitter` component bevat een AutoSave-optie, die de status van panelgroottes opslaat in de lokale opslag om de afmetingen consistent te houden tussen herlaadacties.
 
-Wanneer u de auto-opslagconfiguratie instelt, slaat de `Splitter` component automatisch de status van panelgroottes op in de lokale opslag van de webbrowser. Dit zorgt ervoor dat de groottes die gebruikers kiezen voor panelen behouden blijven bij het opnieuw laden van de pagina of sessies in de browser, wat de behoefte aan handmatige aanpassingen vermindert.
+Wanneer u de auto-save configuratie instelt, slaat de `Splitter` component automatisch de status van de panelgroottes op in de lokale opslag van de webbrowser. Dit zorgt ervoor dat de groottes die gebruikers voor panelen kiezen, persistent zijn tijdens het herladen van de pagina of browser sessies, waardoor de behoefte aan handmatige aanpassingen wordt verminderd.
 
-### Het statusbestand opschonen {#cleaning-the-state}
+### Het wissen van de status {#cleaning-the-state}
 
-Om de `Splitter` programmatisch terug te zetten naar de standaardinstellingen en dimensies, roept u de `cleanState()` methode aan om eventuele opgeslagen statusgegevens met betrekking tot de `Splitter` component uit de lokale opslag van de webbrowser te verwijderen.
+Om de `Splitter` programatisch terug te zetten naar de standaardinstellingen en afmetingen, roept u de `cleanState()` methode aan om eventuele opgeslagen statusgegevens met betrekking tot de `Splitter` component uit de lokale opslag van de webbrowser te verwijderen.
 
 <ComponentDemo 
 path='/webforj/splitterautosave?' 
@@ -82,20 +83,20 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='400px'
 />
 
-In de voorgaande demo activeert elke Splitter-instantie de AutoSave-functie door de `setAutosave` methode aan te roepen. Dit zorgt ervoor dat panelgroottes automatisch worden opgeslagen in de lokale opslag. Bij het herladen van de browser blijven de groottes van deze splitters hetzelfde.
+In de voorgaande demo activeert elke Splitter-instantie de AutoSave-functie door de `setAutosave` methode aan te roepen. Dit zorgt ervoor dat de panelgroottes automatisch worden opgeslagen in de lokale opslag. Wanneer de browser wordt herladen, blijven de groottes van deze splitters hetzelfde.
 
-Door op de knop "Status wissen" te klikken, wordt de `cleanState()` methode aangeroepen en wordt het browservenster vernieuwd om de oorspronkelijke dimensies weer te geven.
+Klikken op de knop "Status wissen" roept de `cleanState()` methode aan en ververst het browservenster om de oorspronkelijke afmetingen weer te geven.
 
-## Styling {#styling}
+## Stijl {#styling}
 
 <TableBuilder name="Splitter" />
 
 ## Best practices {#best-practices}
 
-Om een optimale gebruikerservaring te waarborgen bij het gebruik van de `Splitter` component, overweeg de volgende beste praktijken:
+Om een optimale gebruikerservaring te garanderen bij het gebruik van de `Splitter` component, houd rekening met de volgende best practices: 
 
-- **Aanpassen op basis van inhoud**: Bij het beslissen over de oriëntatie en initiële groottes van panelen, overweeg de prioriteit van de inhoud. Bijvoorbeeld, in een lay-out met een navigatiezijbalk en een hoofdinhoudsgebied, moet de zijbalk doorgaans smaller blijven met een vaste min grootte voor duidelijke navigatie.
+- **Aanpassen op basis van inhoud**: Bij het bepalen van de oriëntatie en initiële groottes van panelen, houdt rekening met de prioriteit van de inhoud. Bijvoorbeeld, in een lay-out met een navigatiesidebar en een hoofdinhoudsgebied, moet de sidebar meestal smaller blijven met een ingestelde minimumgrootte voor duidelijke navigatie.
 
-- **Strategische nesting**: Het nestelen van Splitters kan veelzijdige lay-outs creëren maar kan de UI compliceren en prestatie beïnvloeden. Plan uw genestelde lay-outs om ervoor te zorgen dat ze intuïtief zijn en de gebruikerservaring verbeteren.
+- **Strategisch nesting**: Nesting van splitters kan veelzijdige lay-outs creëren, maar kan de UI compliceren en de prestaties beïnvloeden. Plan uw geneste lay-outs om ervoor te zorgen dat ze intuïtief zijn en de gebruikerservaring verbeteren.
 
-- **Vergeet gebruikersvoorkeuren niet**: Gebruik de AutoSave functie om gebruikersaanpassingen tussen sessies te onthouden, wat de gebruikerservaring verbeterd. Bied een optie om gebruikers in staat te stellen naar de standaardinstellingen terug te keren.
+- **Vergeet gebruikersvoorkeuren niet**: Gebruik de AutoSave-functie om gebruikersaanpassingen over sessies heen te onthouden, wat de gebruikerservaring verbetert. Bied een optie om gebruikers toe te staan om terug te keren naar de standaardinstellingen.

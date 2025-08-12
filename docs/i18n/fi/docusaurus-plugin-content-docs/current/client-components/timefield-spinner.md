@@ -6,7 +6,7 @@ slug: timefield-spinner
 description: A user guide article for the timefield-spinner
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: f3e7bcf36930d90ce42dae10b9ec4c41
+_i18n_hash: f0a3faf6b4052dca8e5aa82450ae4eaf
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,9 +17,9 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info ASIAKASKOMPONENTTI
-Tässä osiossa kuvataan tyylitietoja **`<dwc-timefield-spinner>`** komponentille. Tämä komponentti on **asiakaspainotteinen** - sitä ei voi instansioida itsenäisesti API:n kautta, mutta se voi muodostaa osan API-komponenteista.
+Tässä osassa kuvataan tyylitietoja **`<dwc-timefield-spinner>`** komponentille. Tämä komponentti on **vain asiakaspään** - sitä ei voida instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
-## Tyylit {#styling}
+## Tyylittely {#styling}
 
 <TableBuilder name="dwc-timefield-spinner" clientComponent />

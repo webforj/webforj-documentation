@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Component Basics
 slug: basics
 draft: false
-_i18n_hash: d517f6169f7ac0798ed073bb27348eb5
+_i18n_hash: e4d0cb9dd9f53dabda8bebe6664bf0d3
 ---
 <DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/>
@@ -16,11 +16,11 @@ Entender el ciclo de vida del componente es esencial para crear, gestionar y uti
 
 ### Hooks de creación y destrucción {#create-and-destroy-hooks}
 
-Todas las clases que extienden la clase `Component` son responsables de implementar la funcionalidad que se ejecutará cuando se cree el `Component`, y cuando se destruya. Esto se hace sobrescribiendo los métodos `onCreate()` y `onDestroy()`, respectivamente.
+Todas las clases que extienden la clase `Component` son responsables de implementar la funcionalidad que se ejecutará cuando el `Component` se cree y cuando se destruya. Esto se hace al sobrescribir los métodos `onCreate()` y `onDestroy()`, respectivamente.
 
 #### `onCreate()` {#oncreate}
 
-El método `onCreate()` se llama cuando el componente se agrega a una ventana. Crear componentes implica establecer su estado inicial y funcionalidad. Aquí es donde defines lo que el componente debería hacer cuando se crea por primera vez. Ya sea inicializando variables, configurando oyentes de eventos o realizando cualquier otra configuración, el método `onCreate()` es tu punto de entrada para personalizar el comportamiento del componente.
+El método `onCreate()` se llama cuando el componente se agrega a una ventana. Crear componentes implica configurar su estado y funcionalidad inicial. Aquí es donde defines lo que debe hacer el componente cuando se crea por primera vez. Ya sea inicializando variables, configurando oyentes de eventos o realizando cualquier otra configuración, el método `onCreate()` es tu punto de entrada para personalizar el comportamiento del componente.
 
 Este hook recibe una instancia de ventana que permite la adición de componentes contenidos dentro del componente.
 
@@ -35,20 +35,20 @@ protected void onCreate(Window window) {
 ```
 
 :::tip
-El método `onCreate()` es donde el componente y cualquier componente constituyente deben ser añadidos a la ventana.
+El método `onCreate()` es donde se deben agregar el componente y cualquier constituyente a la ventana.
 :::
 
 #### `onDestroy()` {#ondestroy}
 
-Destruir componentes es una parte esencial de la gestión de recursos y asegurar la limpieza adecuada. Destruir un componente es necesario cuando ya no se necesita o cuando deseas liberar recursos asociados a él. Esto permite a un desarrollador realizar tareas de limpieza, como detener temporizadores, liberar memoria o desasociar oyentes de eventos. También permite que se llame al método `destroy()` en cualquier componente constituyente.
+Destruir componentes es una parte esencial de la gestión de recursos y garantizar la limpieza adecuada. Destruir un componente es necesario cuando ya no se necesita o cuando deseas liberar los recursos asociados con él. Permite a un desarrollador realizar tareas de limpieza, como detener temporizadores, liberar memoria o desvincular oyentes de eventos. También permite que se llame al método `destroy()` en cualquier componente constitutivo.
 
 :::tip
-El método `onDestroy()` es responsable de llamar al método `destroy()` en cualquier componente constituyente. De lo contrario, estos componentes seguirán existiendo en el DOM, pero no serán accesibles a través de la API.
+El método `onDestroy()` es responsable de llamar al método `destroy()` en cualquier componente constitutivo. De lo contrario, estos componentes seguirán existiendo en el DOM, pero no estarán accesibles a través de la API.
 :::
 
-### Adición asíncrona {#asynchronous-attachment}
+### Adición asincrónica {#asynchronous-attachment}
 
-El método `whenAttached()` permite que la funcionalidad se ejecute después de que un componente ha sido agregado a una ventana. Este método devuelve un <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>, que permite que se ejecute un comportamiento adicional especificado de forma asíncrona una vez que el componente está adjunto en el DOM.
+El método `whenAttached()` permite que se ejecute funcionalidad después de que un componente ha sido agregado a una ventana. Este método devuelve un <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink>, que permite que se ejecute comportamiento adicional especificado de forma asincrónica una vez que el componente esté adjunto en el DOM.
 
 :::tip
 A diferencia de los tres métodos anteriores, `whenAttached()` está destinado a ser llamado explícitamente por el usuario.
@@ -65,7 +65,7 @@ public class Demo extends App {
     /* Llamada explícita a whenAttached() que mostrará un 
     cuadro de mensaje cuando el botón esté adjunto al Frame.*/
     button.whenAttached().thenAccept( e -> {
-      showMessageDialog("¡Estoy adjunto!", "Adición asíncrona");
+      showMessageDialog("¡Estoy adjunto!", "Adición asincrónica");
     });
   
     // se llama al método onCreate()
@@ -76,9 +76,9 @@ public class Demo extends App {
 
 ### Observadores {#observers}
 
-Los observadores juegan un papel vital en el seguimiento de los eventos del ciclo de vida del componente. Los observadores pueden ser añadidos y removidos utilizando los métodos `addLifecycleObserver()` y `removeLifecycleObserver()`, y reciben notificaciones sobre eventos como la creación y destrucción de componentes.
+Los observadores juegan un papel vital en el seguimiento de los eventos del ciclo de vida del componente. Los observadores se pueden agregar y eliminar usando los métodos `addLifecycleObserver()` y `removeLifecycleObserver()`, y reciben notificaciones sobre eventos como la creación y destrucción de componentes.
 
-Al añadir observadores, puedes tomar medidas cuando un componente es creado o destruido. Esto es particularmente útil para implementar lógica personalizada o manejar escenarios específicos basados en eventos de componentes.
+Al agregar observadores, puedes tomar medidas cuando un componente es creado o destruido. Esto es particularmente útil para implementar lógica personalizada o manejar escenarios específicos basados en eventos de componentes.
 
 ```java
 Button button = new Button();
@@ -93,23 +93,23 @@ button.addLifecycleObserver((button, lifecycleEvent) -> {
 
 ### Identificadores de componente {#component-identifiers}
 
-Las IDs de componente sirven como identificadores únicos para los componentes, permitiéndote interactuar con ellos y gestionar su estado de manera efectiva.
+Los IDs de componentes sirven como identificadores únicos para los componentes, permitiéndote interactuar con ellos y gestionar su estado de manera efectiva.
 
 #### ID de componente del lado del servidor {#server-side-component-id}
 
-Cada componente creado a partir de la clase `Component` se le asigna automáticamente un identificador del lado del servidor. Las IDs del lado del servidor son esenciales para el rastreo interno e identificación de componentes dentro del marco. Puedes recuperar el ID del componente del lado del servidor utilizando el método `getComponentId()`.
+Cada componente creado a partir de la clase `Component` se asigna automáticamente un identificador del lado del servidor. Los IDs del lado del servidor son esenciales para el seguimiento e identificación internos de los componentes dentro del marco. Puedes recuperar el ID del componente del lado del servidor utilizando el método `getComponentId()`.
 
 Esto puede ser útil en muchas situaciones donde tener un identificador único del lado del servidor es necesario, como consultar un componente específico dentro de un contenedor.
 
 #### ID de componente del lado del cliente {#client-side-component-id}
 
-Las IDs del lado del cliente permiten al usuario obtener la representación del cliente del componente del servidor creado en Java. Todos los componentes proporcionados por webforJ tienen una implementación de esta ID proporcionada. Si deseas acceder y usar el componente del lado del cliente, puedes ejecutar `object.get()` con la ID del cliente para obtener el componente del cliente deseado.
+Los IDs del lado del cliente permiten al usuario obtener la representación del cliente del componente del servidor creado en Java. Todos los componentes webforJ proporcionados tienen una implementación de este ID disponible. Si deseas obtener acceso y usar el componente del lado del cliente, puedes ejecutar `object.get()` con el ID del cliente para obtener el componente del cliente deseado.
 
 :::important
-Esta ID **no** es el atributo ID del elemento en el DOM.
+Este ID **no** es el atributo ID del elemento en el DOM.
 :::
 
-En el siguiente ejemplo, un evento `onClick` se añade a un botón, que luego se activa llamando al método en el componente cliente después de haberlo obtenido usando el método `object.get()`.
+En el siguiente ejemplo, se agrega un evento `onClick` a un botón, que luego se activa llamando al método en el componente del cliente después de que se obtiene utilizando el método `object.get()`.
 
 ```java
 @Override
@@ -127,8 +127,8 @@ public void run() throws WebforjException {
 }
 ```
 
-### Datos de usuario {#user-data}
+### Datos del usuario {#user-data}
 
-La clase `Component` te permite incluir información adicional dentro del componente utilizando el método `setUserData()`. Esta información es accesible solo en el lado del servidor del componente a través del método `getUserData()`, y no se envía al cliente.
+La clase `Component` permite incluir información adicional dentro del componente utilizando el método `setUserData()`. Esta información solo es accesible en el lado del servidor del componente a través del método `getUserData()`, y no se envía al cliente. 
 
-Esto es bastante útil cuando hay información que debería ser incluida con un componente, y cuando esa información debería ser accesible sin tener que hacer un viaje al cliente para recuperarla.
+Esto es bastante útil cuando hay información que debe incluirse con un componente, y cuando esa información debe ser accesible sin hacer un viaje al cliente para recuperarla.

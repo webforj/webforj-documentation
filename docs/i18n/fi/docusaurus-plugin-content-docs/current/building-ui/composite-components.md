@@ -2,34 +2,34 @@
 sidebar_position: 2
 title: Composite Components
 draft: false
-_i18n_hash: c133bfa392bbd2705acdc71cea3fdd68
+_i18n_hash: 864d51bda31fc239bb58f5886ca7eeb4
 ---
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
-Kehittäjät haluavat usein luoda komponentteja, jotka sisältävät koostuvia komponentteja sovellusnäkymän käyttöä varten. `Composite`-komponentti antaa kehittäjille tarvittavat työkalut omien komponenttien luomiseen samalla, kun he hallitsevat mitä he päättävät paljastaa käyttäjille. 
+Kehittäjät haluavat usein luoda komponentteja, jotka sisältävät osakomponentteja sovellustason käyttöä varten. `Composite`-komponentti tarjoaa kehittäjille työkalut omien komponenttien luomiseen pitäen samalla hallinnan siitä, mitä he valitsevat tarjota käyttäjille.
 
-Se mahdollistaa kehittäjille tietyn tyyppisen `Component`-instanssin hallinnan, tarjoten tavan kapseloida sen käyttäytyminen. Se vaatii jokaiselta laajentavalta aliluokalta määrittelemään sen hallitseman `Component`-tyypin, varmistaen, että `Composite`-aliluokka on intrinsiikisesti sidoksissa sen taustalla olevaan `Component`:iin.
+Se mahdollistaa kehittäjille tietyn tyyppisen `Component`-instanssin hallinnan, tarjoten tavan kapseloida sen käyttäytymistä. Se vaatii, että kaikki laajentavat alaluokat määrittävät sen `Component`-tyypin, jota ne aikovat hallita, varmistaen, että `Composite`-alaluokka on intrinsiikisti sidottu sen taustalla olevaan `Component`-komponenttiin.
 
 :::tip
 On erittäin suositeltavaa luoda mukautettuja komponentteja hyödyntämällä `Composite`-komponenttia sen sijaan, että laajennettaisiin perus `Component`-komponenttia.
 :::
 
-Voit käyttää `Composite`-komponenttia aloittamalla uuden Java-luokan luomisen, joka laajentaa `Composite`-komponenttia. Määritä hallittavan komponentin tyyppi geneerisen tyyppiparametrina.
+Käyttääksesi `Composite`-komponenttia, aloita luomalla uusi Java-luokka, joka laajentaa `Composite`-komponenttia. Määritä hallittavan komponentin tyyppi yleisen tyyppiparametrina.
 
 ```java
 public class ApplicationComponent extends Composite<Div> {
-	//Implementaatio
+	// Toteutus
 }
 ```
 
 ## Komponentin sidonta {#component-binding}
 
-`Composite`-luokka vaatii kehittäjiä määrittelemään sen hallitseman `Component`-tyypin. Tämä vahva yhteys varmistaa, että `Composite`-komponentti on intrinsiikisesti sidoksissa sen taustalla olevaan komponenttiin. Tämä tarjoaa myös etuja perinteiseen perimiseen verrattuna, sillä se antaa kehittäjälle mahdollisuuden päättää tarkalleen, mitä toiminnallisuutta julkaistaan julkisessa API:ssa. 
+`Composite`-luokka vaatii kehittäjiä määrittämään hallittavan `Component`-tyypin. Tämä vahva yhteys varmistaa, että `Composite`-komponentti on intrinsiikisesti sidottu sen taustalla olevaan komponenttiin. Tämä myös tarjoaa etuja perinteiseen perimiseen verrattuna, koska se antaa kehittäjän päättää tarkalleen, mitä toiminnallisuutta tarjotaan julkisessa API:ssa.
 
-Oletusarvoisesti `Composite`-komponentti käyttää aliluokkansa geneeristä tyyppiparametria tunnistaakseen ja instansioidakseen sidotun komponenttityypin. Tämä perustuu oletukseen, että komponenttiluokalla on parametrivapaa konstruktorin. Kehittäjät voivat mukauttaa komponentin alustamisprosessia ylittämällä `initBoundComponent()`-menetelmän. Tämä mahdollistaa suuremman joustavuuden sidotun komponentin luomisessa ja hallinnassa, mukaan lukien parametrisoitujen konstruktorien kutsumisen.
+Oletuksena `Composite`-komponentti hyödyntää alaluokkansa yleistä tyyppiparametria tunnistaakseen ja instansioidakseen sidotun komponenttityypin. Tämä perustuu oletukseen, että komponenttijoukolla on parametria vaatimaton konstruktori. Kehittäjät voivat mukauttaa komponentin alustamisprosessia ylikirjoittamalla `initBoundComponent()`-metodin. Tämä mahdollistaa suuremman joustavuuden sidotun komponentin luomisessa ja hallinnassa, mukaan lukien parametrillisten konstruktorien kutsuminen.
 
-Seuraava koodi ylittää `initBoundComponent`-menetelmän käyttääkseen parametrisoitua konstruktorista [FlexLayout](../components/flex-layout.md) -luokassa:
+Seuraava koodinpätkä ylikirjoittaa `initBoundComponent`-metodin käyttäen parametria vaativaa konstruktoria [`FlexLayout`](../components/flex-layout.md)-luokalle:
 
 ```java
 public class OverrideComposite extends Composite<FlexLayout> {
@@ -48,11 +48,11 @@ public class OverrideComposite extends Composite<FlexLayout> {
 
 ## Elinkaaren hallinta {#lifecycle-management}
 
-Toisin kuin `Component`-luokan kanssa, kehittäjien ei tarvitse toteuttaa `onCreate()` ja `onDestroy()` -menetelmiä työskennellessään `Composite`-komponentin kanssa. `Composite`-komponentti huolehtii näistä asioista puolestasi.
+Toisin kuin `Component`-komponentin kanssa, kehittäjien ei tarvitse toteuttaa `onCreate()` ja `onDestroy()` menetelmiä työskennellessään `Composite`-komponentin kanssa. `Composite`-komponentti hoitaa nämä asiat puolestasi.
 
-Jos sinun tarvitsee käyttää sidottuja komponentteja elinkaaren eri vaiheissa, `onDidCreate()` ja `onDidDestroy()` -koukut antavat kehittäjille pääsyn näihin elinkaaren vaiheisiin lisätoimintojen suorittamista varten. Näiden koukkujen käyttö on valinnaista.
+Jos sinun on tarpeen käyttää sidottuja komponentteja elinkaarensa eri vaiheissa, `onDidCreate()` ja `onDidDestroy()` koukut antavat kehittäjille pääsyn näihin elinkaarivaiheisiin lisätoiminnallisuuden suorittamiseksi. Näiden koukkujen käyttäminen on valinnaista.
 
-`onDidCreate()`-menetelmää kutsutaan heti, kun sidottu komponentti on luotu ja lisätty ikkunaan. Käytä tätä menetelmää komponenttisi alustamiseen, kaiken tarvittavan konfiguroinnin muokkaamiseen ja lapsikomponenttien lisäämiseen, jos tarpeen. Vaikka `Component`-luokan `onCreate()`-menetelmä ottaa [Window](#) -instanssin, `onDidCreate()`-menetelmä ottaa sen sijaan sidotun komponentin, jolloin `getBoundComponent()`-menetelmän kutsumista ei tarvita suoraan. Esimerkiksi:
+`onDidCreate()`-metodia kutsutaan heti sen jälkeen, kun sidottu komponentti on luotu ja lisätty ikkunaan. Käytä tätä metodia komponenttisi asettamiseen, tarvittavien asetusten muokkaamiseen ja lapsikomponenttien lisäämiseen, jos mahdollista. Vaikka `Component`-luokan `onCreate()`-metodi ottaa vastaan [Window](#) instanssin, `onDidCreate()`-metodi sen sijaan ottaa vastaan sidotun komponentin, jolloin tarpeettomaksi jää suoraan kutsua `getBoundComponent()`-metodia. Esimerkiksi:
 
 ```java
 public class ApplicationComponent extends Composite<Div> {
@@ -67,22 +67,22 @@ public class ApplicationComponent extends Composite<Div> {
 ```
 
 :::tip
-Tämä logiikka voidaan myös toteuttaa konstruktorissa kutsumalla `getBoundComponent()`.
+Tätä logiikkaa voidaan myös toteuttaa konstruktorissa kutsumalla `getBoundComponent()`.
 :::
 
-Samoin `onDidDestroy()`-menetelmä aktivoituu, kun sidottu komponentti on tuhottu, ja mahdollistaa lisäkäyttäytymisen, jos niin halutaan.
+Samoin `onDidDestroy()`-metodi laukaisee kerran, kun sidottu komponentti on tuhoutunut, ja mahdollistaa lisäkäyttäytymisen laukeamisen tuhoutumisen yhteydessä, jos se on tarpeen.
 
-### Esimerkkikomponentti `Composite` {#example-composite-component}
+### Esimerkki `Composite`-komponentista {#example-composite-component}
 
-Seuraavassa esimerkissä on luotu yksinkertainen ToDo-sovellus, jossa jokainen listalle lisätty kohde on `Composite`-komponentti, joka koostuu [`RadioButton`](../components/radio-button.md) -komponentista, joka on tyylitelty kytkimeksi, ja [`Div`](#) -komponentista, jossa on tekstiä.
+Seuraavassa esimerkissä on luotu yksinkertainen ToDo-sovellus, jossa jokainen luetteloon lisätty kohde on `Composite`-komponentti, joka koostuu [`RadioButton`](../components/radio-button.md) -komponentista, joka on tyylitelty kytkimeksi, ja [`Div`](#) elementistä, jossa on tekstiä.
 
-Tämän komponentin logiikka on määritelty konstruktorissa, joka asettaa tyylit ja lisää koostuvia komponentteja sidottuun komponenttiin käyttäen `getBoundComponent` -menetelmää, ja lisää tapahtumalogikasta.
+Tämän komponentin logiikka on asetettu konstruktorissa, joka määrittää tyylit ja lisää osakomponentit sidottuun komponenttiin `getBoundComponent`-metodilla sekä lisää tapahtumalogiikan.
 
 :::tip
-Tämä voitaisiin myös toteuttaa `onDidCreate()`-menetelmässä, mikä antaisi suoran pääsyn sidottuun [`FlexLayout`](../components/flex-layout.md) -komponenttiin.
+Tämä voisi myös toteuttaa `onDidCreate()`-metodissa, mikä antaisi suoran pääsyn sidottuun [`FlexLayout`](../components/flex-layout.md) -komponenttiin.
 :::
 
-Tätä komponenttia käytetään sitten instansioimalla ja hyödyntämällä sovelluksessa, ja se mahdollistaa sen käytön eri paikoissa, mikä tekee siitä tehokkaan työkalun mukautettujen komponenttien luomisessa.
+Tätä komponenttia käytetään sovelluksessa, ja se mahdollistaa sen käytön useissa paikoissa, mikä tekee siitä tehokkaan työkalun mukautettujen komponenttien luomisessa.
 
 <ComponentDemo 
 path='/webforj/composite?' 

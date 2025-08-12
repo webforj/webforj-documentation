@@ -2,19 +2,19 @@
 title: Integrating the AppLayout
 sidebar_position: 6
 draft: true
-_i18n_hash: fd2f3844bbcb102adf05ae01b07ff8d8
+_i18n_hash: c0ed4864dc99a4665aef3f4ff808bc9d
 ---
-Dans cette étape, vous intégrerez les fonctionnalités mises en œuvre dans les étapes précédentes, telles que le routage et les vues, dans une mise en page d'application cohérente. Cette structure fournira un système de navigation unifié et des zones de contenu dynamiques.
+Dans cette étape, vous allez intégrer les fonctionnalités mises en œuvre dans les étapes précédentes, telles que le routage et les vues, dans une mise en page d'application cohérente. Cette structure fournira un système de navigation unifié et des zones de contenu dynamiques.
 
 ## Objectif de la mise en page de l'application {#purpose-of-the-app-layout}
 
-La `AppLayout` sert de fondation pour gérer la structure générale et le flux de votre application. Elle fournit :
-- **Navigation Globale** : Un moyen cohérent de passer entre les sections clés.
-- **Rendu de Contenu Dynamique** : Une mise en page centralisée pour afficher les vues routées.
+Le `AppLayout` sert de fondation pour gérer la structure globale et le flux de votre application. Il offre :
+- **Navigation Globale** : Un moyen cohérent de passer d'une section clé à une autre.
+- **Rendu Dynamique de Contenu** : Une mise en page centralisée pour afficher les vues routées.
 
 ## Utilisation de `AppNav` {#using-appnav}
 
-Le composant `AppNav` est utilisé pour créer un menu de navigation dans l'interface utilisateur de l'application. Ce menu fournit des liens vers différentes vues de votre application, comme la `DemoView` :
+Le composant `AppNav` est utilisé pour créer un menu de navigation dans l'interface utilisateur de l'application. Ce menu fournit des liens vers différentes vues de votre application, comme le `DemoView` :
 
 ```java title="MainLayout.java"
 private void setDrawer() {
@@ -29,20 +29,20 @@ private void setDrawer() {
 
 Dans cet exemple :
 - Le menu de navigation est ajouté au tiroir de l'application.
-- Chaque élément du menu est un `AppNavItem` qui spécifie :
+- Chaque élément de menu est un `AppNavItem` qui spécifie :
   - L'étiquette, par exemple "Tableau de bord."
-  - La vue cible par exemple `DemoView`.
+  - La vue cible, par exemple `DemoView`.
   - Une icône optionnelle par exemple une icône de colonnes.
 
 ## Routes et sorties de mise en page {#layout-routes-and-outlets}
 
-La mise en page utilise des routes et des sorties pour rendre dynamiquement du contenu dans une mise en page structurée. Dans webforJ :
-- **Routes** définissent comment les vues se mappent à des chemins spécifiques.
+La mise en page utilise des routes et des sorties pour rendre dynamiquement le contenu dans une mise en page structurée. Dans webforJ :
+- **Routes** définissent comment les vues sont mappées à des chemins spécifiques.
 - **Sorties** agissent comme des espaces réservés dans les mises en page où les vues routées sont affichées.
 
 ### Exemple : Configuration d'une route de mise en page {#example-setting-up-a-layout-route}
 
-Dans la classe `MainLayout`, l'annotation `@Route` la définit comme la mise en page de base, et la `DemoView` est rendue via une sortie dans cette mise en page :
+Dans la classe `MainLayout`, l'annotation `@Route` la définit comme la mise en page de base, et le `DemoView` est rendu à travers une sortie dans cette mise en page :
 
 ```java title="MainLayout.java"
 @Route("/")
@@ -54,13 +54,13 @@ public class MainLayout extends Composite<AppLayout> {
 }
 ```
 
-L'annotation `@Route` pour `DemoView` spécifie qu'elle utilise `MainLayout` comme sa sortie :
+L'annotation `@Route` pour `DemoView` spécifie qu'elle utilise `MainLayout` comme sortie :
 
 ```java title="DemoView.java"
 @Route(value = "/demo", outlet = MainLayout.class)
 @FrameTitle("Démonstration")
 public class DemoView extends Composite<Div> {
-    // Logique de DemoView
+    // Logique du DemoView
 }
 ```
 

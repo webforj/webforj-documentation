@@ -1,7 +1,7 @@
 ---
 title: Google Charts
 sidebar_position: 50
-_i18n_hash: 84d9b14321275191deb78447cde7c7fe
+_i18n_hash: b477c90cfb24a59329f3047d7ae7d24c
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="google-chart" exclude= 'true' />
@@ -22,7 +22,7 @@ Pour utiliser la classe `GoogleChart` dans votre application, utilisez le XML su
 ```
 :::
 
-La classe `GoogleChart` est une solution complète pour intégrer des graphiques interactifs et riches au sein d'applications web. Cette classe agit comme un pont vers la bibliothèque [Google Charts](https://developers.google.com/chart), offrant une grande variété de types de graphiques adaptés à toute tâche de visualisation de données.
+La classe `GoogleChart` est une solution complète pour intégrer des graphiques riches et interactifs au sein des applications web. Cette classe agit comme un pont vers la bibliothèque [Google Charts](https://developers.google.com/chart), offrant une large variété de types de graphiques adaptés à toute tâche de visualisation de données.
 
 <ComponentDemo 
 path='/webforj/chart?' 
@@ -34,7 +34,7 @@ height='300px'
 
 ## Types de graphiques {#chart-types}
 
-L'addon `GoogleChart` propose un éventail complet de types de graphiques pour répondre à divers besoins de visualisation de données. Choisir le type de graphique approprié est essentiel pour communiquer efficacement l'histoire des données. Voir la galerie ci-dessous pour des exemples de graphiques courants pouvant être utilisés dans une application webforJ.
+L'addon `GoogleChart` propose une gamme complète de types de graphiques pour répondre à divers besoins en matière de visualisation de données. Choisir le type de graphique approprié est essentiel pour communiquer efficacement l'histoire des données. Consultez la galerie ci-dessous pour des exemples de graphiques courants pouvant être utilisés dans une application webforJ.
 
 <ComponentDemo 
 path='/webforj/chartgallery?' 
@@ -45,7 +45,7 @@ height='600px'
 
 ## Options {#options}
 
-L'addon `GoogleChart` permet une personnalisation extensive à travers une variété d'options. Ces options vous permettent de personnaliser l'apparence et la fonctionnalité de vos graphiques selon les besoins de votre application. Les options sont passées sous forme de `Map<String, Object>` au méthode `setOptions()` du graphique.
+L'addon `GoogleChart` permet une personnalisation extensive grâce à une variété d'options. Ces options vous permettent d'adapter l'apparence et la fonctionnalité de vos graphiques pour répondre aux besoins de votre application. Les options sont passées en tant que `Map<String, Object>` au méthode `setOptions()` du graphique.
 
 Voici un exemple pour définir les options d'un graphique :
 
@@ -58,30 +58,30 @@ options.put("backgroundColor", "#EFEFEF");
 chart.setOptions(options);
 ```
 
-Pour plus d'informations sur les options disponibles pour des graphiques spécifiques, consultez la [référence de l'API de Visualisation Google (Galerie de Graphiques)](https://developers.google.com/chart/interactive/docs/gallery).
+Pour plus d'informations sur les options disponibles pour des graphiques spécifiques, consultez la [référence de l'API Google Visualization (Galerie de Graphiques)](https://developers.google.com/chart/interactive/docs/gallery).
 
 ## Définir les données {#setting-data}
 
-Visualiser des données avec `GoogleChart` nécessite de structurer et de définir correctement les données. Ce guide vous guidera à travers la préparation de vos données et leur application à vos graphiques.
+Visualiser des données avec `GoogleChart` nécessite de structurer correctement et de définir les données. Ce guide vous accompagnera dans la préparation de vos données et leur application à vos graphiques.
 
-### Configuration des données de base {#basic-data-setup}
+### Configuration de base des données {#basic-data-setup}
 
-La manière la plus simple de définir les données est d'utiliser une `List<Object>`, où chaque ligne est une liste de valeurs.
+La manière la plus simple de définir les données est d'utiliser `List<Object>`, où chaque ligne est une liste de valeurs.
 
 ```java
 List<Object> data = new ArrayList<>();
-data.add(Arrays.asList("Tâche", "Heures par jour"));
+data.add(Arrays.asList("Tâche", "Heures par Jour"));
 data.add(Arrays.asList("Travail", 11));
 data.add(Arrays.asList("Manger", 2));
 data.add(Arrays.asList("Trajet", 2));
-data.add(Arrays.asList("Regarder la télé", 2));
+data.add(Arrays.asList("Regarder la TV", 2));
 data.add(Arrays.asList("Dormir", 7));
 chart.setData(data);
 ```
 
-### Utilisation de cartes pour des structures plus complexes {#using-maps-for-more-complex-structures}
+### Utiliser des cartes pour des structures plus complexes {#using-maps-for-more-complex-structures}
 
-Pour des structures de données plus complexes, vous pouvez utiliser des cartes pour représenter les lignes, puis les convertir dans le format requis.
+Pour des structures de données plus complexes, vous pouvez utiliser des cartes pour représenter les lignes puis les convertir dans le format requis.
 
 ```java
 List<Object> data = new ArrayList<>();
@@ -111,9 +111,10 @@ height='300px'
 
 <!-- tabs={['ChartDemoSettingData.java']} -->
 
-### Chargement de données et options depuis JSON {#loading-data-and-options-from-json}
+### Charger des données et options depuis JSON {#loading-data-and-options-from-json}
 
-Vous pouvez également charger des données et des options à partir de fichiers JSON en utilisant Gson pour une gestion plus facile. Cette approche aide à garder vos données et options organisées et faciles à mettre à jour.
+Vous pouvez également charger des données et options depuis des fichiers JSON en utilisant Gson pour une gestion plus facile. Cette approche aide à garder vos données et options organisées et faciles à mettre à jour.
+
 
 ```java
 List<Object> data = new ArrayList<>();
@@ -131,15 +132,15 @@ Map<String, Object> options = new Gson().fromJson(
 chart.setOptions(options);
 ```
 
-## Mise à jour de l'apparence des graphiques {#updating-chart-visuals}
+## Mettre à jour l'apparence des graphiques {#updating-chart-visuals}
 
-Actualiser ou mettre à jour l'apparence de vos graphiques en réponse aux modifications de données, aux interactions des utilisateurs ou aux ajustements d'options visuelles est simple avec la méthode `redraw()`. Cette méthode assure que vos graphiques restent précis et visuellement alignés avec les données sous-jacentes ou toute modification de leurs paramètres.
+Rafraîchir ou mettre à jour l'apparence de vos graphiques en réponse aux modifications de données, aux interactions des utilisateurs ou aux ajustements d'options visuelles est simple avec la méthode `redraw()`. Cette méthode garantit que vos graphiques restent précis et visuellement alignés avec les données sous-jacentes ou toute modification de leurs paramètres.
 
 Appelez `redraw()` dans des scénarios tels que :
 
 - **Après des modifications de données** : Assure que le graphique reflète toutes les mises à jour de sa source de données.
-- **Lors du changement d'options** : Applique de nouveaux styles ou changements de configuration au graphique.
-- **Pour des ajustements réactifs** : Ajuste la disposition ou la taille du graphique lorsque les dimensions du conteneur changent, garantissant un affichage optimal sur tous les appareils.
+- **Lors de changements d'options** : Applique de nouveaux styles ou modifications de configuration au graphique.
+- **Pour des ajustements réactifs** : Ajuste la mise en page ou la taille du graphique lorsque les dimensions du conteneur changent, garantissant un affichage optimal sur tous les appareils.
 
 <ComponentDemo 
 path='/webforj/chartredraw?' 
@@ -150,24 +151,24 @@ height='650px'
 
 <!-- tabs={['ChartDemoRedraw.java', 'redrawchart_styles.css']} -->
 
-## Exportation des graphiques sous forme d'images {#exporting-charts-as-images}
+## Exporter des graphiques en tant qu'images {#exporting-charts-as-images}
 
-La méthode `getImageUri()` fournit un moyen d'exporter vos Google Charts en tant qu'images PNG codées en base64. Cette méthode est particulièrement utile pour partager des graphiques en dehors de l'environnement web, les intégrer dans des courriels ou des documents, ou tout simplement pour des raisons d'archivage.
+La méthode `getImageUri()` fournit un moyen d'exporter vos Graphiques Google en tant qu'images PNG encodées en base64. Cette méthode est particulièrement utile pour partager des graphiques en dehors de l'environnement web, les intégrer dans des e-mails ou des documents, ou simplement à des fins d'archivage.
 
-Appelez `getImageUri()` sur votre instance de graphique après que le graphique a été entièrement rendu. Typiquement, cette méthode est utilisée dans un écouteur d'événements "prêt" pour s'assurer que le graphique est prêt à être exporté :
+Appelez `getImageUri()` sur votre instance de graphique après que le graphique a été entièrement rendu. En général, cette méthode est utilisée dans un écouteur d'événements "prêt" pour s'assurer que le graphique est prêt à être exporté :
 
 ```java
 chart.addReadyListener(e -> {
     String imageUri = chart.getImageUri();
-    // Maintenant, vous pouvez utiliser l'imageUri, par exemple, comme l'attribut src d'une balise img
+    // Vous pouvez maintenant utiliser l'imageUri, par exemple, comme l'attribut src d'une balise img
 });
 ```
 
 ## `GoogleChartSelectedEvent` {#googlechartselectedevent}
 
-L'`GoogleChartSelectedEvent` est déclenché chaque fois qu'un utilisateur sélectionne un point de données ou un segment dans un composant Google Chart. Cet événement permet d'interagir avec les données du graphique sélectionné, fournissant des détails sur ce qui a été sélectionné. L'événement peut être écouté en utilisant la méthode `addSelectedListener()` sur l'instance de `GoogleChart`.
+L'événement `GoogleChartSelectedEvent` est déclenché chaque fois qu'un utilisateur sélectionne un point de données ou un segment dans un composant Google Chart. Cet événement permet d'interagir avec les données sélectionnées du graphique, fournissant des détails sur ce qui a été sélectionné. L'événement peut être écouté en utilisant la méthode `addSelectedListener()` sur l'instance `GoogleChart`.
 
-L'`GoogleChartSelectedEvent` est utile dans les applications où l'interaction de l'utilisateur avec le graphique est nécessaire.
+L'événement `GoogleChartSelectedEvent` est utile dans les applications où l'interaction de l'utilisateur avec le graphique est nécessaire.
 
 ```java
 GoogleChart chart = new GoogleChart(GoogleChart.Type.BAR);
@@ -177,23 +178,23 @@ chart.addSelectedListener(event -> {
     // Obtenir la sélection
     List<Object> selection = chart.getSelection();
     
-    // Gérer l'événement de sélection
+    // Traiter l'événement sélectionné
     if (!selection.isEmpty()) {
-        System.out.println("Ligne sélectionnée : " + selection.get(0));
-        // Traitement supplémentaire basé sur la ligne/colonne de sélection
+        System.out.println("Ligne Sélectionnée : " + selection.get(0));
+        // Traitement supplémentaire basé sur la sélection de ligne/colonne
     }
 });
 ```
 
-### Charge Utile {#payload}
-L'`GoogleChartSelectedEvent` fournit un accès aux données de sélection, qui peuvent être récupérées en utilisant la méthode `getSelection()` sur l'objet graphique. Cette méthode renvoie une liste d'objets, où chaque objet contient les propriétés suivantes :
+### Payload {#payload}
+L'événement `GoogleChartSelectedEvent` fournit l'accès aux données de sélection, qui peuvent être récupérées en utilisant la méthode `getSelection()` sur l'objet graphique. Cette méthode renvoie une liste d'objets, où chaque objet contient les propriétés suivantes :
 
-- **row** : L'index de la ligne dans le tableau de données du graphique qui a été sélectionnée.
-- **column** : L'index de la colonne dans le tableau de données, qui est optionnel et s'applique aux graphiques qui permettent la sélection de cellules individuelles, comme un graphique en tableau.
+- **row** : L'index de la ligne dans la table de données du graphique qui a été sélectionnée.
+- **column** : L'index de la colonne dans la table de données, qui est optionnel et s'applique aux graphiques qui permettent la sélection de cellules individuelles, comme un graphique de tableau.
   
-Pour des graphiques comme les graphiques à secteurs ou à barres, seul le `row` est généralement fourni, indiquant le point de données sélectionné.
+Pour des graphiques comme les graphiques en secteurs ou les graphiques à barres, seule la `row` est généralement fournie, indiquant le point de données sélectionné.
 
-Voici un exemple de charge utile :
+Voici un exemple de payload :
 ```java
 [
   {
@@ -204,5 +205,5 @@ Voici un exemple de charge utile :
 ```
 
 :::info Sélection de plusieurs points de données
-Si l'utilisateur sélectionne plusieurs points de données, la méthode `getSelection()` renverra un tableau d'objets, chacun représentant un élément sélectionné. La charge utile peut varier en fonction du type de graphique et de l'interaction que l'utilisateur effectue.
+Si l'utilisateur sélectionne plusieurs points de données, la méthode `getSelection()` renverra un tableau d'objets, chacun représentant un élément sélectionné. Le payload peut varier en fonction du type de graphique et de l'interaction réalisée par l'utilisateur.
 :::

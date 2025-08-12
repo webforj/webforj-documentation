@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
 title: Shadows
-_i18n_hash: 84ad4478632d3020d57752a4827f925a
+_i18n_hash: 6f5378b91beaf0c663bdc9de9b67233a
 ---
 Die Schatteneigenschaften werden verwendet, um Schatteneffekte um den Rahmen eines Elements hinzuzufügen. Sie können mehrere Effekte durch Kommas getrennt festlegen. In den meisten Fällen werden Schatten verwendet, um Elemente darzustellen, die in der Benutzeroberfläche übereinander liegen.
 
@@ -23,7 +23,7 @@ Die Schatteneigenschaften werden verwendet, um Schatteneffekte um den Rahmen ein
 ```
 
 :::tip Schattenfarbe
-Sie steuern die Schattenfarbe, indem Sie die Variable `--dwc-shadow-color` setzen. Standardmäßig ist die Schattenfarbe grau, gestreckt mit der Primärfarbe.
+Sie steuern die Schattenfarbe, indem Sie die Variable `--dwc-shadow-color` festlegen. Standardmäßig ist die Schattenfarbe grau, getönt mit der Primärfarbe.
 :::
 
 ### Variablen {#variables}

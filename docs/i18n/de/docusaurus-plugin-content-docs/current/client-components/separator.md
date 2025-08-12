@@ -6,7 +6,7 @@ slug: separator
 description: A user guide article for the separator
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: a650b81b9f7b063e42c9f00cf635dc12
+_i18n_hash: 74dd8d342077296e4716c5ae6e61f5e6
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,10 +16,10 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info KLIENTENKOMPONENTE
-Dieser Abschnitt beschreibt die Stylinginformationen für das **`<dwc-separator>`**-Element. Dieses Element ist **nur clientseitig** - es kann nicht eigenständig über die API instanziiert werden, kann jedoch Teil von API-Komponenten sein.
+:::info CLIENT COMPONENT
+Dieser Abschnitt beschreibt die Stilinformationen für die **`<dwc-separator>`** Komponente. Diese Komponente ist **nur clientseitig** - sie kann nicht eigenständig über die API instanziiert werden, kann aber Teil von API-Komponenten sein.
 :::
 
-## Styling {#styling}
+## Stil {#styling}
 
 <TableBuilder name="dwc-separator" clientComponent />

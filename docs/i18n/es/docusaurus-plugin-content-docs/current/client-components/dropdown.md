@@ -6,7 +6,7 @@ slug: dropdown
 description: A user guide article for the dropdown
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 1f1f734bc20041cf496f7fed6e63dc2c
+_i18n_hash: 0181aacb9fab46cbb8e7b5db9593eb25
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,7 +17,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info COMPONENTE DEL CLIENTE
-Esta sección describe información de estilo para el **`<dwc-dropdown>`** componente. Este componente es **solo del lado del cliente** - no puede ser instanciado por sí mismo a través de la API, pero puede formar parte de los componentes de la API.
+Esta sección describe la información de estilo para el **`<dwc-dropdown>`** componente. Este componente es **solo del lado del cliente** - no se puede instanciar por sí solo a través de la API, pero puede formar parte de los componentes de la API.
 :::
 
 ## Estilo {#styling}

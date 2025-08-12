@@ -6,7 +6,7 @@ slug: app-layout
 description: A user guide article for the app-layout
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 68571f449b0e565c160aa5f55f09b87e
+_i18n_hash: 3cecf6c9d8e19c2f3c6e8e66547a8f24
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,7 +17,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info 客户端组件
-本节概述**`<dwc-app-layout>`**组件的样式信息。该组件仅为**客户端** - 它不能通过API单独实例化，但可以作为API组件的一部分。
+本节概述了 **`<dwc-app-layout>`** 组件的样式信息。该组件仅为 **客户端** - 它不能通过 API 独立实例化，但可以作为 API 组件的一部分。
 :::
 
 ## 样式 {#styling}

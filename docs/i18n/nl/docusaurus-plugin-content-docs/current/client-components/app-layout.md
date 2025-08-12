@@ -6,7 +6,7 @@ slug: app-layout
 description: A user guide article for the app-layout
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 68571f449b0e565c160aa5f55f09b87e
+_i18n_hash: 3cecf6c9d8e19c2f3c6e8e66547a8f24
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,8 +16,8 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info CLIËNTCOMPONENT
-Dit gedeelte schetst de stijl informatie voor de **`<dwc-app-layout>`** component. Deze component is **alleen client-side** - het kan niet zelfstandig worden aangemaakt via de API, maar kan een onderdeel zijn van API-componenten.
+:::info CLIËNT COMPONENT
+Deze sectie beschrijft de stylinginformatie voor de **`<dwc-app-layout>`** component. Deze component is **alleen aan de clientzijde** - het kan niet op eigen kracht via de API worden aangemaakt, maar kan een deel uitmaken van API-componenten.
 :::
 
 ## Styling {#styling}

@@ -1,6 +1,6 @@
 {
   "theme.docs.translationNotice": {
-    "message": "Diese Seite wurde automatisch mit KI übersetzt und kann Fehler oder Ungenauigkeiten enthalten. Für die genauesten und aktuellsten Informationen besuchen Sie bitte die offizielle webforJ-Dokumentation. webforJ übernimmt keine Garantien für die Richtigkeit, Zuverlässigkeit oder Vollständigkeit dieser KI-Übersetzungen.",
+    "message": "Diese Seite wurde automatisch übersetzt. Für genauere Informationen besuchen Sie bitte die offizielle webforJ-Dokumentation.",
     "description": "Translation notice for non-English pages"
   },
   "component.askMenu.chatgpt.label": {
@@ -16,7 +16,7 @@
     "description": "Claude button label"
   },
   "component.askMenu.claude.desc": {
-    "message": "Mit Claude AI über diese Seite chatten",
+    "message": "Mit Claude AI chatten",
     "description": "Claude button description"
   },
   "component.askMenu.markdown.label": {
@@ -36,7 +36,7 @@
     "description": "Step 1 title"
   },
   "component.archetype.step1.desc": {
-    "message": "Öffnen Sie ein Terminal und navigieren Sie zum Ordner, in dem Sie Ihr neues Projekt erstellen möchten.",
+    "message": "Öffnen Sie ein Terminal und navigieren Sie zum Ordner für Ihr neues Projekt.",
     "description": "Step 1 description"
   },
   "component.archetype.step2.title": {
@@ -44,7 +44,7 @@
     "description": "Step 2 title"
   },
   "component.archetype.step2.desc": {
-    "message": "Verwenden Sie den Maven-Befehl unten und passen Sie groupId, artifactId und version nach Bedarf für Ihr Projekt an.",
+    "message": "Verwenden Sie den Maven-Befehl und passen Sie groupId, artifactId und Version an.",
     "description": "Step 2 description"
   },
   "component.archetype.table.argument": {
@@ -56,7 +56,7 @@
     "description": "Explanation column header"
   },
   "component.archetype.table.archetypeGroupId.desc": {
-    "message": "Die Gruppen-ID des Archetypes ist com.webforj für webforJ-Archetypes.",
+    "message": "Die Gruppen-ID des Archetyps ist com.webforj.",
     "description": "archetypeGroupId description"
   },
   "component.archetype.table.archetypeArtifactId.desc": {
@@ -76,7 +76,7 @@
     "description": "artifactId description"
   },
   "component.archetype.table.version.desc": {
-    "message": "Definiert die Version des generierten Projekts. Eine gängige Konvention ist MAJOR.MINOR-SNAPSHOT, wie 1.0-SNAPSHOT, wobei SNAPSHOT anzeigt, dass das Projekt noch in Entwicklung ist.",
+    "message": "Versionsnummer festlegen. Gängige Konvention: MAJOR.MINOR-SNAPSHOT, z. B. 1.0-SNAPSHOT, wobei SNAPSHOT anzeigt, dass das Projekt in Entwicklung ist.",
     "description": "version description"
   },
   "component.archetype.table.flavor.desc": {
@@ -92,15 +92,15 @@
     "description": "webforj-spring flavor description"
   },
   "component.archetype.table.appName.desc": {
-    "message": "Ein optionaler Parameter, der in der POM-Datei des generierten Projekts verwendet werden kann. Je nach verwendetem webforJ-Archetype kann er als Standardtitel für die Anwendung genutzt werden.",
+    "message": "Ein optionaler Parameter in der POM-Datei, der als Standardtitel verwendet werden kann.",
     "description": "appName description"
   },
   "component.archetype.conclusion": {
-    "message": "Nach Ausführung des Befehls generiert Maven die notwendigen Projektdateien, um das Projekt auszuführen.",
+    "message": "Maven generiert nach Ausführung des Befehls die notwendigen Projektdateien.",
     "description": "Conclusion text"
   },
   "theme.ErrorPageContent.title": {
-    "message": "Die Seite ist abgestürzt.",
+    "message": "Die Seite wurde beendet.",
     "description": "The title of the fallback page when the page crashed"
   },
   "theme.BackToTopButton.buttonAriaLabel": {
@@ -211,7 +211,7 @@
     "description": "The link label to edit the current page"
   },
   "theme.common.headingLinkTitle": {
-    "message": "Direkter Link zu {Überschrift}",
+    "message": "Direkter Link zu {Titel}",
     "description": "Title for link to heading"
   },
   "theme.lastUpdated.atDate": {
@@ -267,7 +267,7 @@
     "description": "The default label used for the Warning admonition (:::warning)"
   },
   "theme.blog.sidebar.navAriaLabel": {
-    "message": "Neueste Blogartikel",
+    "message": "Neueste Blogbeiträge",
     "description": "The ARIA label for recent posts in the blog sidebar"
   },
   "theme.DocSidebarItem.expandCategoryAriaLabel": {
@@ -299,7 +299,7 @@
     "description": "The 2nd paragraph of the 404 page"
   },
   "theme.blog.post.readMore": {
-    "message": "Erfahren Sie mehr",
+    "message": "Mehr erfahren",
     "description": "The label used in blog post item excerpts to link to full blog posts"
   },
   "theme.blog.post.readMoreLabel": {
@@ -522,7 +522,7 @@
     "description": "The label of the link targeting the blog authors page"
   },
   "theme.blog.author.noPosts": {
-    "message": "Dieser Autor hat noch keine Artikel.",
+    "message": "Dieser Autor hat keine Artikel.",
     "description": "The text for authors with 0 blog post"
   },
   "theme.contentVisibility.unlistedBanner.title": {
@@ -530,7 +530,7 @@
     "description": "The unlisted content banner title"
   },
   "theme.contentVisibility.unlistedBanner.message": {
-    "message": "Diese Seite ist nicht gelistet.",
+    "message": "Diese Seite ist nicht verfügbar.",
     "description": "The unlisted content banner message"
   },
   "theme.contentVisibility.draftBanner.title": {
@@ -538,7 +538,7 @@
     "description": "The draft content banner title"
   },
   "theme.contentVisibility.draftBanner.message": {
-    "message": "Diese Seite ist ein Entwurf und nur für die Entwicklung sichtbar.",
+    "message": "Diese Seite ist ein Entwurf und nur für Entwickler sichtbar.",
     "description": "The draft content banner message"
   },
   "theme.ErrorPageContent.tryAgain": {
@@ -622,11 +622,11 @@
     "description": "Table header for default value"
   },
   "tableBuilder.descriptions.properties": {
-    "message": "Eigenschaften der {componentName} Komponente. Eigenschaften sind JavaScript-Variablen, die mit Client-Webkomponenten verknüpft sind. Sie dienen zum Speichern von Daten und zur Steuerung des Verhaltens.\n\nEinige Eigenschaften spiegeln ihre Werte in Attribute wider und umgekehrt.",
+    "message": "Eigenschaften der {componentName} Komponente.",
     "description": "Description for properties section"
   },
   "tableBuilder.sections.reflectedAttributes": {
-    "message": "Gespiegelte Attribute",
+    "message": "Gespiegelte Eigenschaften",
     "description": "Section heading for reflected attributes table"
   },
   "tableBuilder.descriptions.reflectedAttributes": {
@@ -694,7 +694,7 @@
     "description": "Instructions for creating a new project"
   },
   "componentArchetype.step1": {
-    "message": "{strong}Zum richtigen Verzeichnis navigieren{/strong}: Öffnen Sie ein Terminal und wechseln Sie in den Ordner, in dem Sie Ihr neues Projekt erstellen möchten.",
+    "message": "{strong}Navigiere zum richtigen Verzeichnis{/strong}",
     "description": "First step instruction"
   },
   "componentArchetype.step2": {
@@ -710,7 +710,7 @@
     "description": "Table header for explanation column"
   },
   "componentArchetype.finalInstruction": {
-    "message": "Nach Ausführung des Befehls erstellt Maven die erforderlichen Projektdateien zum Ausführen des Projekts.",
+    "message": "Maven erstellt die Projektdateien nach dem Befehl.",
     "description": "Final instruction about Maven generating project files"
   }
 }

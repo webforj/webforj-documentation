@@ -1,13 +1,13 @@
 ---
 title: Custom data sources
 sidebar_position: 4
-_i18n_hash: dbcaaa420987ee45f54d3f4059e98d92
+_i18n_hash: 44f087c7c2308fc7a0c3b8c4c4246531
 ---
 <!-- vale off -->
 # Fuentes de datos personalizadas <DocChip chip='since' label='25.02' />
 <!-- vale on -->
 
-Cuando tus datos se encuentran fuera de tu aplicación - en una API REST, base de datos o servicio externo - necesitas crear una implementación de repositorio personalizada. La clase <JavadocLink type="data" location="com/webforj/data/repository/DelegatingRepository" code="true">DelegatingRepository</JavadocLink> lo hace sencillo al permitirte proporcionar funciones en lugar de implementar una clase completa.
+Cuando tus datos están fuera de tu aplicación - en una API REST, base de datos o servicio externo - necesitas crear una implementación de repositorio personalizada. La clase <JavadocLink type="data" location="com/webforj/data/repository/DelegatingRepository" code="true">DelegatingRepository</JavadocLink> hace esto sencillo al permitirte proporcionar funciones en lugar de implementar una clase completa.
 
 ## Cómo funciona `DelegatingRepository` {#how-delegatingrepository-works}
 
@@ -18,7 +18,7 @@ DelegatingRepository<User, UserFilter> repository = new DelegatingRepository<>(
     // 1. Función de búsqueda - devuelve datos filtrados/ordenados/paginados
     criteria -> userService.findUsers(criteria),
     
-    // 2. Función de conteo - devuelve el total de elementos para el filtro
+    // 2. Función de conteo - devuelve el conteo total para el filtro
     criteria -> userService.countUsers(criteria),
     
     // 3. Función de búsqueda por clave - devuelve una única entidad por ID
@@ -26,38 +26,38 @@ DelegatingRepository<User, UserFilter> repository = new DelegatingRepository<>(
 );
 ```
 
-Cada función tiene un propósito específico:
+Cada función cumple un propósito específico:
 
 **Función de búsqueda** recibe un objeto `RepositoryCriteria` que contiene:
 - `getFilter()` - tu objeto de filtro personalizado (el parámetro de tipo `F`)
 - `getOffset()` y `getLimit()` - para paginación
-- `getOrderCriteria()` - lista de reglas de ordenamiento
+- `getOrderCriteria()` - lista de reglas de ordenación
 
-Esta función debe retornar un `Stream<T>` de entidades que coincidan con los criterios. El stream puede estar vacío si no se encuentran coincidencias.
+Esta función debe devolver un `Stream<T>` de entidades que coincidan con los criterios. El flujo puede estar vacío si no se encuentran coincidencias.
 
-**Función de conteo** también recibe los criterios pero típicamente solo utiliza la parte del filtro. Retorna el conteo total de entidades coincidentes, ignorando la paginación. Esto es utilizado por los componentes de la UI para mostrar el total de resultados o calcular páginas.
+**Función de conteo** también recibe los criterios, pero generalmente solo utiliza la parte del filtro. Devuelve el conteo total de entidades coincidentes, ignorando la paginación. Esto es utilizado por los componentes de UI para mostrar resultados totales o calcular páginas.
 
-**Función de búsqueda por clave** recibe una clave de entidad (usualmente un ID) y retorna un `Optional<T>`. Retorna `Optional.empty()` si la entidad no existe.
+**Función de búsqueda por clave** recibe una clave de entidad (generalmente un ID) y devuelve un `Optional<T>`. Devuelve `Optional.empty()` si la entidad no existe.
 
 ## Ejemplo de API REST {#rest-api-example}
 
-Al integrar con una API REST, necesitas convertir los criterios del repositorio en parámetros de solicitudes HTTP. Comienza definiendo una clase de filtro que coincida con las capacidades de consulta de tu API:
+Al integrarte con una API REST, necesitas convertir los criterios del repositorio en parámetros de solicitud HTTP. Comienza definiendo una clase de filtro que coincida con las capacidades de consulta de tu API:
 
 ```java
 public class UserFilter {
     private String department;
     private String status;
-    // getters y setters...
+    // getters and setters...
 }
 ```
 
 Esta clase de filtro representa los parámetros de búsqueda que tu API acepta. El repositorio pasará instancias de esta clase a tus funciones cuando se aplique el filtrado.
 
-Crea el repositorio con funciones que traduce los criterios a llamadas a la API:
+Crea el repositorio con funciones que traduzcan criterios a llamadas a la API:
 
 ```java
 DelegatingRepository<User, UserFilter> apiRepository = new DelegatingRepository<>(
-    // Buscar usuarios
+    // Encontrar usuarios
     criteria -> {
         Map<String, String> params = buildParams(criteria);
         List<User> users = restClient.get("/users", params);
@@ -75,15 +75,15 @@ DelegatingRepository<User, UserFilter> apiRepository = new DelegatingRepository<
 );
 ```
 
-El método `buildParams()` extraería valores de los criterios y los convertiría en parámetros de consulta como `?department=Sales&status=active&offset=20&limit=10`. Tu cliente REST entonces realiza la solicitud HTTP real y deserializa la respuesta.
+El método `buildParams()` extraería valores de los criterios y los convertiría en parámetros de consulta como `?department=Sales&status=active&offset=20&limit=10`. Tu cliente REST luego realiza la solicitud HTTP real y deserializa la respuesta.
 
 ## Ejemplo de base de datos {#database-example}
 
-La integración con bases de datos sigue un patrón similar pero convierte los criterios en consultas SQL. La principal diferencia es el manejo de la generación de SQL y la vinculación de parámetros:
+La integración con bases de datos sigue un patrón similar pero convierte los criterios en consultas SQL. La diferencia clave es manejar la generación de SQL y el enlace de parámetros:
 
 ```java
 DelegatingRepository<Customer, CustomerFilter> dbRepository = new DelegatingRepository<>(
-    // Consultar con filtro, ordenamiento, paginación
+    // Consulta con filtro, orden, paginación
     criteria -> {
         String sql = buildQuery(criteria);
         return jdbcTemplate.queryForStream(sql, rowMapper);
@@ -103,7 +103,7 @@ DelegatingRepository<Customer, CustomerFilter> dbRepository = new DelegatingRepo
 );
 ```
 
-El método `buildQuery()` construiría SQL como:
+El método `buildQuery()` construiría una consulta SQL como:
 ```sql
 SELECT * FROM customers 
 WHERE status = ? AND region = ?
@@ -111,27 +111,27 @@ ORDER BY created_date DESC, name ASC
 LIMIT ? OFFSET ?
 ```
 
-Las propiedades de tu objeto de filtro se mapean a condiciones de la cláusula `WHERE`, mientras que la paginación y el ordenamiento se manejan a través de las cláusulas `LIMIT/OFFSET` y `ORDER BY`.
+Las propiedades de tu objeto de filtro se mapean a las condiciones de la cláusula `WHERE`, mientras que la paginación y el orden se manejan a través de las cláusulas `LIMIT/OFFSET` y `ORDER BY`.
 
-## Usando con componentes de UI {#using-with-ui-components}
+## Uso con componentes de UI {#using-with-ui-components}
 
-La belleza del patrón de repositorio es que los componentes de la UI no saben ni les importa de dónde provienen los datos. Ya sea una colección en memoria, una API REST o una base de datos, el uso es idéntico:
+La belleza del patrón de repositorio es que los componentes de UI no saben ni les importa de dónde provienen los datos. Ya sea que se trate de una colección en memoria, una API REST o una base de datos, el uso es idéntico:
 
 ```java
-// Crear y configurar repositorio
+// Crear y configurar el repositorio
 Repository<User> repository = createApiRepository();
 UserFilter filter = new UserFilter();
 filter.setDepartment("Engineering");
 repository.setBaseFilter(filter);
 
-// Adjuntar a la tabla
+// Conectar a la tabla
 Table<User> table = new Table<>();
 table.setRepository(repository);
 
-// La tabla muestra automáticamente a los usuarios filtrados de ingeniería
+// La tabla muestra automáticamente los usuarios filtrados de ingeniería
 ```
 
-Cuando los usuarios interactúan con la [`Table`](../../components/table/overview) (ordenando columnas, cambiando páginas), la `Table` llama a tus funciones del repositorio con criterios actualizados. Tus funciones traducen esto a llamadas a la API o consultas SQL, y la tabla se actualiza automáticamente con los resultados.
+Cuando los usuarios interactúan con la [`Table`](../../components/table/overview) (ordenando columnas, cambiando páginas), la `Table` llama a tus funciones de repositorio con criterios actualizados. Tus funciones traducen estos en llamadas a la API o consultas SQL, y la tabla se actualiza automáticamente con los resultados.
 
 ## Cuándo extender `AbstractQueryableRepository` {#when-to-extend-abstractqueryablerepository}
 

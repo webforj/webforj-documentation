@@ -6,7 +6,7 @@ slug: dialog
 description: A user guide article for the dialog
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: a4026d4842f3cce05e6f6b09c499c7cd
+_i18n_hash: 2c71b96494ef226b34becac3fd88f281
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,8 +16,8 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info KLIENTENKOMPONENTE
-Dieser Abschnitt enthält Styling-Informationen für die **`<dwc-dialog>`** Komponente. Diese Komponente ist **nur auf der Client-Seite** - sie kann nicht eigenständig über die API instanziiert werden, kann aber Teil von API-Komponenten sein.
+:::info KUNDENKOMPONENTE
+Dieser Abschnitt beschreibt die Stylinginformationen für die **`<dwc-dialog>`**-Komponente. Diese Komponente ist **nur clientseitig** - sie kann nicht eigenständig über die API instanziiert werden, sondern kann Teil von API-Komponenten sein.
 :::
 
 ## Styling {#styling}

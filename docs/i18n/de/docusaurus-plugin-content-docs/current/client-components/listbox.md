@@ -6,7 +6,7 @@ slug: listbox
 description: A user guide article for the listbox
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: b073f1c5261530940d59e19cdecd8a3d
+_i18n_hash: fc4bce43328781c2a124c0c0738c126b
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,7 +17,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info KLIENTENKOMPONENTE
-Dieser Abschnitt enthält Stylinginformationen für die **`<dwc-listbox>`** Komponente. Diese Komponente ist **nur clientseitig** - sie kann nicht eigenständig über die API instanziiert werden, kann jedoch Teil von API-Komponenten sein.
+Dieser Abschnitt beschreibt die Styling-Informationen für die **`<dwc-listbox>`**-Komponente. Diese Komponente ist **nur clientseitig** - sie kann nicht eigenständig über die API instanziiert werden, kann aber Teil von API-Komponenten sein.
 :::
 
 ## Styling {#styling}

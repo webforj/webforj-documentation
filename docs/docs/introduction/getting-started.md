@@ -10,10 +10,6 @@ To create a new webforJ app from an archetype, you can use [startforJ](#using-st
 Before you begin, review the necessary [prerequisites](./prerequisites) for setting up and using webforJ.
 :::
 
-<!-- vale off -->
-import DocCardList from '@theme/DocCardList';
-
-<!-- vale on -->
 
 ## Using startforJ {#using-startforj}
 

@@ -1,18 +1,18 @@
 ---
 sidebar_position: 2
 title: Lifecycle Observers
-_i18n_hash: be571bd197730689ba8346b2ef702a3f
+_i18n_hash: 2c66b4194e4d93a762d9a8cd75918e49
 ---
 Observers allow components to react to lifecycle events by implementing interfaces for specific stages. This pattern ensures a clean separation of concerns and simplifies handling navigation logic.
 
 ## Saatavilla olevat observaatit {#available-observers}
 
-- **`WillEnterObserver`**: Mahdollistaa tehtävien käsittelemisen ennen reitille siirtymistä, kuten tarvittavien tietojen noutamisen tai navigoinnin estämisen.
-- **`DidEnterObserver`**: Ihanteellinen toimien käsittelemiseen sen jälkeen, kun komponentti on liitetty, kuten tietojen renderöinti tai animaatioiden käynnistäminen.
-- **`WillLeaveObserver`**: Tarjoaa tavan hallita logiikkaa ennen kuin käyttäjä poistuu reitiltä, kuten tarkistaa tallentamattomat muutokset.
-- **`DidLeaveObserver`**: Käytetään siivoustoimiin tai muihin tehtäviin, jotka on suoritettava komponentin poistamisen jälkeen DOM:sta.
+- **`WillEnterObserver`**: Mahdollistaa tehtävien käsittelyn ennen reitin sisäänkäyntiä, kuten tarvittavan tiedon hakemisen tai navigoinnin estämisen.
+- **`DidEnterObserver`**: Ihanteellinen toimien käsittelyyn sen jälkeen, kun komponentti on liitetty, kuten tietojen renderöimiseen tai animaatioiden laukaisemiseen.
+- **`WillLeaveObserver`**: Tarjoaa tavan hallita logiikkaa ennen kuin käyttäjä siirtyy reitiltä, kuten tallentamattomien muutosten tarkistamiseen.
+- **`DidLeaveObserver`**: Käytetään siivoustoimiin tai muihin tehtäviin, jotka tulisi suorittaa sen jälkeen, kun komponentti on irrotettu DOMista.
 
-## Esimerkki: todennus `WillEnterObserver`-painotteisena {#example-authentication-with-willenterobserver}
+## Esimerkki: autentikointi `WillEnterObserver` kanssa {#example-authentication-with-willenterobserver}
 
 ```java
 @Route(value = "dashboard")
@@ -30,15 +30,15 @@ public class DashboardView extends Composite<Div> implements WillEnterObserver {
 }
 ```
 
-Tässä `onWillEnter` tarkistaa, onko käyttäjä todennettu. Jos ei, navigointi estetään, mikä estää navigoinnin suorittamisen ja siirtää käyttäjän kirjautumissivulle.
+Tässä `onWillEnter` tarkistaa, onko käyttäjä autentikoitu. Jos ei, navigointi estetään, mikä estää navigoinnin suorittamisen ja ohjaa sen sijaan kirjautumissivulle.
 
-:::warning Esimerkki todennetuista reiteistä - Ei tuotantovalmiina
-Tämä on vain esimerkki siitä, miten käyttää todennettuja reittejä.
-Tämä **ei ole** esimerkki siitä, miten kirjoitat tuotantotason todennusjärjestelmän.
-Sinun täytyy ottaa tämän esimerkin käyttämät käsitteet ja mallit ja sovittaa ne omiin todennusprosessiisi/järjestelmään sovelluksessasi.
+:::warning Esimerkki autentikoiduista reiteistä - Ei tuotantokäyttöön
+Tämä edellinen on vain esimerkki siitä, miten käyttää autentikoituja reittejä.
+Tämä **ei ole** esimerkki siitä, miten kirjoitat tuotantotason autentikointijärjestelmän.
+Sinun on otettava käyttöön tässä esimerkissä käytetyt käsitteet ja mallit ja mukautettava ne toimimaan sovelluksesi autentikointivirrassa/järjestelmässä.
 :::
 
-## Esimerkki: tietojen noutaminen reitin sisäänkäynnillä `DidEnterObserver`-painotteisena {#example-fetching-data-on-route-entry-with-didenterobserver}
+## Esimerkki: tietojen hakeminen reitin sisäänkäynnillä `DidEnterObserver` kanssa {#example-fetching-data-on-route-entry-with-didenterobserver}
 
 ```java
 @Route(value = "profile")
@@ -52,14 +52,14 @@ public class ProfileView extends Composite<Div> implements DidEnterObserver {
   }
 
   private void updateProfileUI(Profile profile) {
-    // Koodi käyttöliittymän päivittämiseksi profiilitiedoilla
+    // Koodi käyttöliittymän päivittämiseen profiilitiedoilla
   }
 }
 ```
 
-Tässä esimerkissä käytetään `DidEnterObserver`-painotteista toimintoa tietojen noutamiseen ja näyttämiseen käyttäjäprofiilista sen jälkeen, kun komponentti on liitetty DOM:iin.
+Tässä esimerkissä käytetään `DidEnterObserveria` tietojen hakemiseen ja näyttämiseen profiilista, kun komponentti on liitetty DOM:iin.
 
-## Esimerkki: tallentamattomien muutosten käsittely `WillLeaveObserver`-painotteisena {#example-handling-unsaved-changes-with-willleaveobserver}
+## Esimerkki: tallentamattomien muutosten käsittely `WillLeaveObserver` kanssa {#example-handling-unsaved-changes-with-willleaveobserver}
 
 ```java
 @Route(value = "edit-profile")
@@ -67,7 +67,7 @@ public class EditProfileView extends Composite<Div> implements WillLeaveObserver
   private boolean hasUnsavedChanges = false;
 
   public EditProfileView() {
-    // Logiikka tallentamattomien muutosten tunnistamiseksi
+    // Logiikka tallentamattomien muutosten havaitsemiseksi
   }
 
   @Override
@@ -76,7 +76,7 @@ public class EditProfileView extends Composite<Div> implements WillLeaveObserver
 
     if(hasUnsavedChanges) {
       ConfirmDialog.Result result = showConfirmDialog(
-          "On olemassa tallentamattomia muutoksia. Haluatko hylätä vai tallentaa ne?",
+          "Tallentamattomia muutoksia on olemassa. Haluatko hylätä tai tallentaa ne?",
           "Tallentamattomat muutokset",
           ConfirmDialog.OptionType.OK_CANCEL,
           ConfirmDialog.MessageType.WARNING);
@@ -85,13 +85,13 @@ public class EditProfileView extends Composite<Div> implements WillLeaveObserver
 }
 ```
 
-Tässä esimerkissä `onWillLeave` kysyy käyttäjältä vahvistusta, jos on olemassa tallentamattomia muutoksia, estäen navigoinnin, jos käyttäjä päättää jäädä.
+Tässä esimerkissä `onWillLeave` kysyy käyttäjältä vahvistusta, jos tallentamattomia muutoksia on, estäen navigoinnin, jos käyttäjä päättää jäädä.
 
 :::info Navigoinnin estäminen ja vetoaminen
-Lisätietoja navigoinnin estämisestä löytyy kohdasta [Navigoinnin estäminen ja vetoaminen](./navigation-blocking)
+Lisätietoja navigoinnin estämisestä, katso [Navigoinnin estäminen ja vetoaminen](./navigation-blocking)
 :::
 
-## Esimerkki: Siivous `DidLeaveObserver`-painotteisena {#example-cleanup-with-didleaveobserver}
+## Esimerkki: Siivous `DidLeaveObserver` kanssa {#example-cleanup-with-didleaveobserver}
 
 ```java
 @Route(value = "notifications")
@@ -104,4 +104,4 @@ public class NotificationsView extends Composite<Div> implements DidLeaveObserve
 }
 ```
 
-Tässä esimerkissä tyhjennetään ilmoitukset sen jälkeen, kun käyttäjä poistuu `NotificationsView`:istä, käyttäen `DidLeaveObserver`-toimintoa siivoukseen.
+Tässä esimerkissä tyhjennetään ilmoitukset sen jälkeen, kun käyttäjä poistuu `NotificationsView`-näkymästä, käyttäen `DidLeaveObserveria` siivoukseen.

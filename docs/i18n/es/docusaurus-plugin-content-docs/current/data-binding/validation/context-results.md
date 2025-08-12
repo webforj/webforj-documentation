@@ -1,13 +1,13 @@
 ---
 sidebar_position: 4
 title: Context Results
-_i18n_hash: 15fc4551d1ed2f2b5e35785975e66946
+_i18n_hash: f7eeb60ff21b1d5dff27b17cc82cdf50
 ---
 Cuando escribes datos de la interfaz de usuario al modelo, el método `write` del `BindingContext` activa las validaciones. Los resultados de la validación determinan si los datos son aceptables.
 
-## Procesamiento de resultados de validación {#processing-validation-results}
+## Procesando resultados de validación {#processing-validation-results}
 
-Puedes procesar los resultados de la validación para brindar retroalimentación al usuario. Si una validación falla, puedes evitar la actualización de datos en el modelo y mostrar mensajes de error asociados con cada validación fallida.
+Puedes procesar los resultados de validación para proporcionar retroalimentación al usuario. Si una validación falla, puedes prevenir la actualización de los datos en el modelo y mostrar mensajes de error asociados con cada validación fallida.
 
 ```java
 ValidationResult result = context.write(hero);
@@ -19,10 +19,10 @@ if (!result.isValid()) {
 ```
 
 <!-- vale off -->
-## Estado de validación del contexto {#context-validation-state}
+## Estado de Validación del Contexto {#context-validation-state}
 <!-- vale on -->
 
-Siempre que el contexto valide los componentes, se activa un `BindingContextValidateEvent`. Este evento entrega el `ValidationResult` para todos los enlaces que han cambiado simultáneamente. Puedes usar estos resultados para activar acciones y responder adecuadamente, como habilitar o deshabilitar el botón de envío según la validez general del formulario.
+Cada vez que el contexto valida los componentes, se dispara un `BindingContextValidateEvent`. Este evento entrega el `ValidationResult` para todas las vinculaciones que han cambiado simultáneamente. Puedes usar estos resultados para activar acciones y responder apropiadamente, como habilitar o deshabilitar el botón de envío según la validez general del formulario.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
@@ -33,17 +33,17 @@ context.addValidateListener(event -> {
 });
 ```
 
-## Violación de autoenfoque {#auto-focus-violation}
+## Violación de auto enfoque {#auto-focus-violation}
 
-Al tratar con formularios que requieren validación en múltiples campos, enfocar automáticamente el primer campo con un error puede mejorar significativamente la experiencia del usuario. Esta característica ayuda a los usuarios a identificar y corregir errores de inmediato, simplificando el proceso de completado del formulario.
+Al tratar con formularios que requieren validación a través de múltiples campos, enfocar automáticamente el primer campo con un error puede mejorar significativamente la experiencia del usuario. Esta característica ayuda a los usuarios a identificar y corregir errores de inmediato, agilizando el proceso de completar el formulario.
 
-El `BindingContext` simplifica el proceso de configuración de autoenfoque en el primer componente con un error de validación. Al usar el método `setAutoFocusFirstViolation`, puedes habilitar esta función con un código mínimo, asegurando que la interfaz de usuario se vuelva más intuitiva y receptiva a los errores de entrada.
+El `BindingContext` simplifica el proceso de configurar el auto-enfoque en el primer componente con un error de validación. Al usar el método `setAutoFocusFirstViolation`, puedes habilitar esta función con un código mínimo, asegurando que la interfaz de usuario se vuelva más intuitiva y receptiva a los errores de entrada.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
 context.setAutoFocusFirstViolation(true);
 ```
 
-:::info Consciente del enfoque
+:::info Enfoque Consciente
 Esta función solo funciona para los componentes que implementan la preocupación `FocusAcceptorAware`.
 :::

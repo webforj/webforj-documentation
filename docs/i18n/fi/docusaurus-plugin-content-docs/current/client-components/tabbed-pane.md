@@ -6,7 +6,7 @@ slug: tabbed-pane
 description: A user guide article for the tabbed-pane
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 669d6f626cb50789c1800d79dfb46871
+_i18n_hash: 30ec6ed25ce10d857057e74b7be26243
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,10 +16,10 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info ASIA OSOITE
-Tämä osio käsittelee **`<dwc-tabbed-pane>`** komponentin tyylitietoja. Tämä komponentti on **asiakaspuolella** - sitä ei voi alustaa itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+:::info KLIENTTIKOMPONENTTI
+Tässä osiossa käsitellään tyylitietoja **`<dwc-tabbed-pane>`** komponentille. Tämä komponentti on **vain asiakaspuolella** - sitä ei voi instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
-## Tyylittely {#styling}
+## Tyylit {#styling}
 
 <TableBuilder name="dwc-tabbed-pane" clientComponent />

@@ -2,13 +2,13 @@
 sidebar_position: 10
 title: Selection
 slug: selection
-_i18n_hash: c0e15da31dab7ea7701ea65b47ce67f8
+_i18n_hash: 91df1121dac6d410883e3b43ddf767d5
 ---
-`Table`-komponentti tarjoaa erilaisia valintamahdollisuuksia. Se sisältää menetelmiä yksittäisten kohteiden, useiden kohteiden tai ohjelmallisen valinnan hallintaan.
+`Table`-komponentti tarjoaa useita valintamahdollisuuksia. On olemassa metodeja yksittäisen kohteen, useiden kohteiden valitsemiseksi tai valintojen hallitsemiseksi ohjelmallisesti.
 
 ## Valintatila {#selection-mode}
 
-Taulukon valintatila määrittää, miten käyttäjä voi valita kohteita. Se tarjoaa vaihtoehtoja kohteiden valinnan käyttäytymisen määrittelyyn. Table-luokka tarjoaa menetelmän valintatilan asettamiseen:
+Taulukon valintatila määrää, kuinka käyttäjä voi valita kohteita. Se tarjoaa vaihtoehtoja kohteiden valinnan käyttäytymisen määrittämiseksi. Table-luokka tarjoaa menetelmän valintatilan asettamiseksi:
 
 ```java
 setSelectionMode(SelectionMode selectionMode)
@@ -16,23 +16,23 @@ setSelectionMode(SelectionMode selectionMode)
 
 Saatavilla olevat SelectionMode-vaihtoehdot ovat:
 
->- `SINGLE` - (yksittäisvalinta) 
->- `MULTI` - (useita valintoja)
+>- `SINGLE` - (yksittäinen valinta) 
+>- `MULTI` - (usean valinta)
 >- `NONE` - (ei valintaa).
 
 ## Valintatapahtuma {#selection-event}
 
-`Table`-komponenttipaketti lähettää useita tapahtumia, jotka liittyvät rivivalintaan. Nämä tapahtumat tallentavat muutoksia `Table`-rivien valintatilassa. Alla on keskeiset valintatapahtumat kuvauksineen:
+`Table`-komponenttipaketti lähettää useita tapahtumia, jotka liittyvät rivivalintaan. Nämä tapahtumat tallentavat muutokset `Table`-rivien valintatilassa. Alla on keskeiset valintatapahtumat kuvauksineen:
 
 >- `TableItemSelectEvent` - Lähetetään, kun taulukon kohde valitaan.
->- `TableItemDeselectEvent` - Lähetetään, kun taulukon kohteesta luovutaan.
->- `TableItemSelectionChange` - Lähetetään, kun taulukon yleinen valinta muuttuu tai kun valitaan lisävalinta.
+>- `TableItemDeselectEvent` - Lähetetään, kun taulukon kohde poistetaan valinnasta.
+>- `TableItemSelectionChange` - Lähetetään, kun koko taulukon valinta muuttuu tai kun valitaan lisävalinta.
 
 :::info
-`TableItemSelectEvent` ja `TableItemDeselectEvent` eivät käynnisty, kun usean valinnan tila on aktiivinen ja valinta tehdään pääotsikon valintaruudun kautta. Tällöin `TableItemSelectionChange`-tapahtumaa tulisi käyttää sen sijaan.
+`TableItemSelectEvent` ja `TableItemDeselectEvent` eivät laukaise, kun usean valinnan tila on aktiivinen ja valinta tehdään otsikkorivin valintaruudun kautta. Tässä tapauksessa pitäisi käyttää `TableItemSelectionChange` -tapahtumaa.
 :::
 
-Alla olevassa esimerkissä laukaisemme `TableItemSelectEvent`-tapahtuman aina, kun käyttäjä valitsee rivin. Tapahtuma voidaan käsitellä lisäämällä kuuntelija taulukkoon käyttämällä `onItemSelect()`-menetelmää.
+Alla olevassa esimerkissä `TableItemSelectEvent` -tapahtuma laukaistaan aina, kun käyttäjä valitsee rivin. Tapahtuman voi käsitellä lisäämällä kuuntelijan taulukkoon käyttämällä `onItemSelect()`-metodia.
 
 <ComponentDemo 
 path='/webforj/tablesingleselection?' 
@@ -42,11 +42,11 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/hea
 height='600px'
 />
 
-## Valintaruutuvalinta {#checkbox-selection}
+## Valintaruutu {#checkbox-selection}
 
-Valintaruutuvalinta on käytössä, kun valintatila on `MULTI`, ja se mahdollistaa käyttäjien mukavasti valita yksi tai useampi kohde kunkin rivin yhteydessä olevilla valintaruutuilla. Tämä ominaisuus on erityisen hyödyllinen tilanteissa, joissa käyttäjät tarvitsevat tehdä massatoimia valituilla kohteilla. Table-luokka tarjoaa menetelmiä valintaruutuvalinnan mahdollistamiseksi ja mukauttamiseksi.
+Valintaruutuvalinta on aktivoitu, kun valintatila on `MULTI`, ja se mahdollistaa käyttäjien valita vaivattomasti yhden tai useamman kohteen jokaisen rivin viereen liitettyjen valintaruutujen avulla. Tämä ominaisuus on erityisen hyödyllinen tilanteissa, joissa käyttäjät tarvitsevat suorittaa ryhmätoimia valituilla kohteilla. Table-luokka tarjoaa menetelmiä valintaruutuvalinnan mahdollistamiseksi ja mukauttamiseksi.
 
-Käyttämällä `setCheckboxSelection(boolean checkboxSelection)`-menetelmää valintaruutuja voidaan konfiguroida näkyviin joka rivin viereen, jolloin käyttäjät voivat valita kohteita. Alla oleva ohjelma näyttää usean valinnan ja valintaruudun valinnan olevan käytössä:
+Käyttämällä `setCheckboxSelection(boolean checkboxSelection)` -metodia valintaruudut voidaan määrittää näytettäväksi kunkin rivin viereen, jolloin käyttäjät voivat valita kohteita. Alla oleva ohjelma näyttää usean valinnan ja valintaruutuvalinnan aktivoituna:
 
 <ComponentDemo 
 path='/webforj/tablemultiselection?' 
@@ -58,16 +58,16 @@ height='600px'
 
 ## Ohjelmallinen valinta {#programatic-selection}
 
-`Table`-komponentti tarjoaa ohjelmallisia valintamenetelmiä, jotta voit manipuloida valittuja kohteita niiden avaimien tai koko kohteen perusteella.
+`Table`-komponentti tarjoaa ohjelmallisen valinnan menetelmiä, mikä mahdollistaa valittujen kohteiden manipuloinnin joko niiden avaimien tai kokonaisuuden kautta. 
 
-### Valitse avaimen mukaan {#select-by-key}
+### Valitse avaimella {#select-by-key}
 
-`selectKey(Object... keys)`-menetelmä mahdollistaa kohteiden ohjelmallisen valitsemisen niiden avaimia käyttäen. Voit antaa tälle menetelmälle yhden tai useamman avaimen, ja se päivittää valinnan vastaavasti.
+`selectKey(Object... keys)` -metodi mahdollistaa kohteiden ohjelmallisen valitsemisen niiden avain-arvojen avulla. Voit välittää tälle metodille yhden tai useamman avaimen, ja se päivittää valinnan sen mukaisesti.
 
 ### Valitse indeksin mukaan {#select-by-index}
 
-`selectIndex(int... indices)`-menetelmän käyttäminen mahdollistaa yhden tai useamman indeksin lähettämisen menetelmälle, ja se päivittää valitut kohteet vastaavasti.
+Käyttämällä `selectIndex(int... indices)` -metodia voit välittää metodille yhden tai useamman indeksin, ja se päivittää valittuja kohteita vastaavasti.
 
-### Koko kohteiden valitseminen {#selecting-entire-items}
+### Kokonaisten kohteiden valitseminen {#selecting-entire-items}
 
-Lopuksi `select(T... items)`-menetelmä mahdollistaa kohteiden ohjelmallisen valitsemisen, kunhan annat tämän menetelmän kautta yhden tai useamman kohteen, ja se päivittää valinnan vastaavasti.
+Lopuksi `select(T... items)` -metodi mahdollistaa kokonaisten kohteiden ohjelmallisen valitsemisen välittämällä tälle metodille yksi tai useampi kohde itsessään, jotta valinta voidaan päivittää vastaavasti.

@@ -6,7 +6,7 @@ slug: popupmenu
 description: A user guide article for the popupmenu
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 64e586b86f5e80f1f3fddd452902a19e
+_i18n_hash: 233dd9418695057beb3c39ea63651d54
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,7 +17,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info 客户端组件
-本节概述了**`<dwc-popupmenu>`**组件的样式信息。该组件为**仅客户端** - 不能通过API单独实例化，但可能构成API组件的一部分。
+本节概述了**`<dwc-popupmenu>`**组件的样式信息。该组件仅为**客户端组件** - 不能通过API单独实例化，但可以成为API组件的一部分。
 :::
 
 ## 样式 {#styling}

@@ -1,33 +1,33 @@
 ---
 title: Spring Boot Setup
 sidebar_position: 10
-_i18n_hash: c988b8fe49245d60c0e5f18c830595e3
+_i18n_hash: de620ee956248e4cea0e14dec25225a8
 ---
-Spring Boot ist eine beliebte Wahl zum Erstellen von Java-Apps und bietet Abhängigkeitsinjektion, automatische Konfiguration und ein Embedded-Server-Modell. Beim Einsatz von Spring Boot mit webforJ können Sie Dienste, Repositories und andere von Spring verwaltete Beans direkt in Ihre UI-Komponenten durch Konstruktorinjektion einfügen.
+Spring Boot ist eine beliebte Wahl zum Erstellen von Java-Apps und bietet Dependency Injection, automatische Konfiguration und ein eingebettetes Servermodell. Wenn Sie Spring Boot mit webforJ verwenden, können Sie Dienste, Repositories und andere von Spring verwaltete Beans direkt in Ihre UI-Komponenten durch Konstruktorinjektion einfügen.
 
-Wenn Sie Spring Boot mit webforJ verwenden, läuft Ihre App als ausführbare JAR-Datei mit einem eingebetteten Tomcat-Server, anstatt eine WAR-Datei auf einem externen Anwendungsserver bereitzustellen. Dieses Verpackungsmodell vereinfacht die Bereitstellung und entspricht den praktischen Anforderungen für cloud-native Bereitstellungen. Das Komponentenmodell und die Routen von webforJ arbeiten zusammen mit dem Anwendungs-Kontext von Spring zur Verwaltung von Abhängigkeiten und Konfiguration.
+Wenn Sie Spring Boot mit webforJ verwenden, läuft Ihre App als ausführbares JAR mit einem eingebetteten Tomcat-Server, anstatt eine WAR-Datei auf einem externen Anwendungsserver bereitzustellen. Dieses Verpackungsmodell vereinfacht die Bereitstellung und stimmt mit cloud-nativen Bereitstellungspraktiken überein. Das Komponentenmodell und das Routing von webforJ arbeiten neben dem Anwendungs-Kontext von Spring zur Verwaltung von Abhängigkeiten und Konfiguration.
 
 ## Erstellen einer Spring Boot-App {#create-a-spring-boot-app}
 
-Sie haben zwei Optionen, um eine neue webforJ-App mit Spring Boot zu erstellen: mit dem grafischen Tool startforJ oder über die Maven-Befehlszeile.
+Sie haben zwei Möglichkeiten, eine neue webforJ-App mit Spring Boot zu erstellen: über das grafische Tool startforJ oder über die Maven-Befehlszeile.
 
 ### Option 1: Verwendung von startforJ {#option-1-using-startforj}
 
-Der einfachste Weg, um eine neue webforJ-App zu erstellen, ist [startforJ](https://docs.webforj.com/startforj), das ein minimales Starterprojekt basierend auf einem gewählten webforJ-Archetyp generiert. Dieses Starterprojekt enthält alle erforderlichen Abhängigkeiten, Konfigurationsdateien und ein vorgefertigtes Layout, sodass Sie sofort mit dem Aufbau beginnen können.
+Der einfachste Weg, eine neue webforJ-App zu erstellen, ist [startforJ](https://docs.webforj.com/startforj), das ein minimales Starterprojekt basierend auf einem gewählten webforJ-Archetyp generiert. Dieses Starterprojekt enthält alle erforderlichen Abhängigkeiten, Konfigurationsdateien und ein vorgefertigtes Layout, sodass Sie sofort mit dem Aufbau beginnen können.
 
-Wenn Sie mit [startforJ](https://docs.webforj.com/startforj) eine App erstellen, können Sie diese anpassen, indem Sie folgende Informationen bereitstellen:
+Wenn Sie eine App mit [startforJ](https://docs.webforj.com/startforj) erstellen, können Sie sie anpassen, indem Sie die folgenden Informationen bereitstellen:
 
 - Grundlegende Projektmetadaten (App-Name, Gruppen-ID, Artefakt-ID)  
 - webforJ-Version und Java-Version
-- Farbthema und Symbol
+- Themenfarbe und Symbol
 - Archetyp
 - **Flavor** - Wählen Sie **webforJ Spring**, um ein Spring Boot-Projekt zu erstellen
 
-Mit diesen Informationen erstellt startforJ ein Basisprojekt aus Ihrem gewählten Archetyp, das für Spring Boot konfiguriert ist. Sie können wählen, ob Sie Ihr Projekt als ZIP-Datei herunterladen oder direkt auf GitHub veröffentlichen möchten.
+Mit diesen Informationen erstellt startforJ ein Grundprojekt aus Ihrem gewählten Archetyp, das für Spring Boot konfiguriert ist. Sie können wählen, ob Sie Ihr Projekt als ZIP-Datei herunterladen oder direkt auf GitHub veröffentlichen möchten.
 
 ### Option 2: Verwendung der Befehlszeile {#option-2-using-the-command-line}
 
-Wenn Sie die Befehlszeile bevorzugen, generieren Sie ein Spring Boot webforJ-Projekt direkt mit den offiziellen webforJ-Archetypen:
+Wenn Sie lieber die Befehlszeile verwenden, generieren Sie ein Spring Boot webforJ-Projekt direkt mit den offiziellen webforJ-Archetypen:
 
 ```bash {8}
 mvn -B archetype:generate \
@@ -40,33 +40,33 @@ mvn -B archetype:generate \
   -Dflavor=webforj-spring
 ```
 
-Der Parameter `flavor` teilt dem Archetyp mit, dass ein Spring Boot-Projekt anstelle eines Standard-webforJ-Projekts generiert werden soll.
+Der Parameter `flavor` teilt dem Archetyp mit, ein Spring Boot-Projekt anstelle eines Standard-webforJ-Projekts zu generieren.
 
 Dies erstellt ein vollständiges Spring Boot-Projekt mit:
-- Konfiguration des Spring Boot-Eltern-POM
+- Spring Boot-Parent-POM-Konfiguration
 - webforJ Spring Boot-Starter-Abhängigkeit
 - Haupt-App-Klasse mit `@SpringBootApplication` und `@Routify`
 - Beispielansichten
-- Konfigurationsdateien für sowohl Spring als auch webforJ
+- Konfigurationsdateien sowohl für Spring als auch für webforJ
 
 ## Spring Boot zu bestehenden Projekten hinzufügen {#add-spring-boot-to-existing-projects}
 
-Wenn Sie eine bestehende webforJ-App haben, können Sie Spring Boot hinzufügen, indem Sie Ihre Projektkonfiguration ändern. Dieser Prozess umfasst das Aktualisieren Ihrer Maven-Konfiguration, das Hinzufügen von Spring-Abhängigkeiten und das Konvertieren Ihrer Haupt-App-Klasse.
+Wenn Sie eine bestehende webforJ-App haben, können Sie Spring Boot hinzufügen, indem Sie Ihre Projektkonfiguration ändern. Dieser Prozess umfasst die Aktualisierung Ihrer Maven-Konfiguration, das Hinzufügen von Spring-Abhängigkeiten und das Konvertieren Ihrer Haupt-App-Klasse.
 
 :::info[Nur für bestehende Projekte]
-Überspringen Sie diesen Abschnitt, wenn Sie ein neues Projekt von Grund auf erstellen.
+Überspringen Sie diesen Abschnitt, wenn Sie ein neues Projekt von Grund auf neu erstellen.
 :::
 
 ### Schritt 1: Maven-Konfiguration aktualisieren {#step-1-update-maven-configuration}
 
-Nehmen Sie folgende Änderungen an Ihrer POM-Datei vor:
+Nehmen Sie die folgenden Änderungen an Ihrer POM-Datei vor:
 
-1. Ändern Sie die Verpackung von WAR auf JAR:
+1. Ändern Sie das Packaging von WAR zu JAR:
    ```xml title="pom.xml"
    <packaging>jar</packaging>
    ```
 
-2. Setzen Sie Spring Boot als Eltern-POM:
+2. Setzen Sie Spring Boot als Parent POM:
    ```xml title="pom.xml"
    <parent>
        <groupId>org.springframework.boot</groupId>
@@ -76,12 +76,12 @@ Nehmen Sie folgende Änderungen an Ihrer POM-Datei vor:
    </parent>
    ```
 
-3. Entfernen Sie spezifische WAR-Konfigurationen wie:
+3. Entfernen Sie alle WAR-spezifischen Konfigurationen wie:
    - `maven-war-plugin`
    - Verweise auf das Verzeichnis `webapp`
-   - Konfigurationen, die mit `web.xml` zusammenhängen
+   - `web.xml`-bezogene Konfiguration
 
-Wenn Sie bereits eine Eltern-POM haben, müssen Sie stattdessen das Spring Boot Bill of Materials (BOM) importieren:
+Wenn Sie bereits eine Parent-POM haben, müssen Sie stattdessen die Spring Boot Bill of Materials (BOM) importieren:
 
 ```xml title="pom.xml"
 <dependencyManagement>
@@ -99,7 +99,7 @@ Wenn Sie bereits eine Eltern-POM haben, müssen Sie stattdessen das Spring Boot 
 
 ### Schritt 2: Spring-Abhängigkeiten hinzufügen {#step-2-add-spring-dependencies}
 
-Fügen Sie den webforJ Spring Boot-Starter zu Ihren Abhängigkeiten hinzu. Behalten Sie Ihre bestehende webforJ-Abhängigkeit bei:
+Fügen Sie den webforJ Spring Boot-Starter zu Ihren Abhängigkeiten hinzu. Behalten Sie Ihre vorhandene webforJ-Abhängigkeit:
 
 ```xml title="pom.xml"
 <dependencies>
@@ -110,14 +110,14 @@ Fügen Sie den webforJ Spring Boot-Starter zu Ihren Abhängigkeiten hinzu. Behal
         <version>${webforj.version}</version>
     </dependency>
     
-    <!-- Spring Boot-Starter hinzufügen -->
+    <!-- Fügen Sie den Spring Boot-Starter hinzu -->
     <dependency>
         <groupId>com.webforj</groupId>
         <artifactId>webforj-spring-boot-starter</artifactId>
         <version>${webforj.version}</version>
     </dependency>
 
-    <!-- Devtools hinzufügen -->
+    <!-- Fügen Sie Devtools hinzu -->
     <dependency>
       <groupId>com.webforj</groupId>
       <artifactId>webforj-spring-devtools</artifactId>
@@ -132,8 +132,8 @@ Fügen Sie den webforJ Spring Boot-Starter zu Ihren Abhängigkeiten hinzu. Behal
 </dependencies>
 ```
 
-:::tip[webforJ DevTools für automatisches Browser-Refresh]
-Die Abhängigkeit `webforj-spring-devtools` erweitert Spring DevTools um ein automatisches Browser-Refresh. Wenn Sie Änderungen in Ihrer IDE speichern, wird der Browser automatisch ohne manuelles Eingreifen neu geladen. Siehe die [Spring DevTools](spring-devtools)-Dokumentation für Konfigurationsdetails.
+:::tip[webforJ DevTools für automatische Browseraktualisierung]
+Die Abhängigkeit `webforj-spring-devtools` erweitert Spring DevTools mit automatischer Browseraktualisierung. Wenn Sie Änderungen in Ihrer IDE speichern, wird der Browser automatisch ohne manuelles Eingreifen neu geladen. Weitere Informationen finden Sie im Leitfaden zu [Spring DevTools](spring-devtools).
 :::
 
 ### Schritt 3: Build-Plugins aktualisieren {#step-3-update-build-plugins}
@@ -174,7 +174,7 @@ public class Application extends App {
         SpringApplication.run(Application.class, args);
     }
     
-    // Behalten Sie Ihre vorhandene run()-Methode bei, wenn Sie eine haben
+    // Behalten Sie Ihre vorhandene run()-Methode, falls Sie eine haben
     @Override
     public void run() throws WebforjException {
       // Ihr vorhandener Initialisierungscode 
@@ -182,21 +182,21 @@ public class Application extends App {
 }
 ```
 
-Die Annotation `@SpringBootApplication` aktiviert die automatische Konfiguration und die Komponenten-Scannung von Spring. Die Annotation `@Routify` bleibt gleich und scannt weiterhin Ihre Ansichtspakete nach Routen.
+Die Annotation `@SpringBootApplication` aktiviert die automatische Konfiguration und die Komponentensuche von Spring. Die Annotation `@Routify` bleibt unverändert und scannt weiterhin Ihre Ansichtspakete nach Routen.
 
 ### Schritt 5: Spring-Konfiguration hinzufügen {#step-5-add-spring-configuration}
 
 Erstellen Sie `application.properties` in `src/main/resources`:
 
 ```Ini title="application.properties"
-# App Name
+# App-Name
 spring.application.name=Hallo Welt Spring
 
 # Serverkonfiguration
 server.port=8080
 server.shutdown=immediate
 
-# Konfiguration für webforJ DevTools
+# webforJ DevTools-Konfiguration
 spring.devtools.livereload.enabled=false
 webforj.devtools.livereload.enabled=true
 webforj.devtools.livereload.static-resources-enabled=true
@@ -208,23 +208,23 @@ Ihre vorhandene Datei `webforj.conf` funktioniert weiterhin. Verweisen Sie auf I
 webforj.entry = org.example.Application
 ```
 
-## Ausführen der Spring Boot-App {#run-the-spring-boot-app}
+## Führen Sie die Spring Boot-App aus {#run-the-spring-boot-app}
 
-Sobald die Konfiguration abgeschlossen ist, führen Sie Ihre App mit folgendem Befehl aus:
+Sobald Sie konfiguriert sind, führen Sie Ihre App mit folgendem Befehl aus:
 
 ```bash
 mvn spring-boot:run
 ```
 
-Die App wird standardmäßig mit einem eingebetteten Tomcat-Server auf Port 8080 gestartet. Ihre bestehenden webforJ-Ansichten und -Routen funktionieren genau wie zuvor, aber jetzt können Sie Spring-Beans injizieren und die Funktionen von Spring nutzen.
+Die App wird standardmäßig mit einem eingebetteten Tomcat-Server auf Port 8080 gestartet. Ihre bestehenden webforJ-Ansichten und Routen funktionieren genau wie zuvor, aber jetzt können Sie Spring-Beans injizieren und Funktionen von Spring nutzen.
 
 ## Konfigurationsunterschiede {#configuration-differences}
 
-Wenn Sie zu Spring Boot wechseln, ändern sich mehrere Konfigurationsaspekte:
+Beim Wechsel zu Spring Boot ändern sich mehrere Konfigurationsaspekte:
 
 | Aspekt | Standard webforJ | Spring Boot webforJ |
 |--------|-----------------|-------------------|
-| **Verpackung** | WAR-Datei | Ausführbare JAR |
+| **Packaging** | WAR-Datei | Ausführbares JAR |
 | **Server** | Extern (Jetty, Tomcat) | Eingebetteter Tomcat |
 | **Ausführungsbefehl** | `mvn jetty:run` | `mvn spring-boot:run` |
 | **Hauptkonfiguration** | Nur `webforj.conf` | `webforj.conf` + `application.properties` |

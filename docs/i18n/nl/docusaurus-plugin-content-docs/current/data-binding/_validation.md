@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
 title: Validation
-_i18n_hash: 12200d1f695c60869e55f396811d569f
+_i18n_hash: 533e7742b8c8468a224d530352cfb5e6
 ---
-## Afhandelen van validatieresultaten {#handling-validation-results}
+## Omgaan met validatieresultaten {#handling-validation-results}

@@ -1,32 +1,32 @@
 ---
 title: Maven Jetty plugin
-_i18n_hash: 13b8de676f30b5a21eb7e9c2b49945b6
+_i18n_hash: 7311fe4d0b6c5382244d898f099b9435
 ---
-Maven Jetty -laajennus on suosittu työkalu, joka mahdollistaa kehittäjille Java-verkkosovellusten ajamisen sisäänrakennetussa Jetty-palvelimessa suoraan heidän Maven-projekteistaan.
+Maven Jetty -lisäosa on suosittu työkalu, joka mahdollistaa kehittäjien suorittaa Java-verkkosovelluksia sisäisessä Jetty-palvelimessa suoraan Maven-projekteistaan.
 
-Jetty-plugin käynnistää sisäänrakennetun Jetty-palvelimen, joka valvoo sovelluksesi tiedostoja, mukaan lukien Java-luokat ja resurssit, muutosten varalta. Kun se havaitsee päivityksiä, se automaattisesti uudelleen asettaa sovelluksen, mikä nopeuttaa kehitystä poistamalla manuaaliset rakentamis- ja käyttöönottovaiheet.
+Jetty-lisäosa käynnistää sisäänrakennetun Jetty-palvelimen, joka valvoo sovelluksesi tiedostoja, mukaan lukien Java-luokkia ja resursseja, muutosten varalta. Kun se havaitsee päivityksiä, se ottaa sovelluksen automaattisesti uudelleen käyttöön, mikä nopeuttaa kehitystä poistamalla manuaaliset rakennus- ja käyttöönottoaskeleet.
 
-## Jetty-konfiguraatiot {#jetty-configurations}
+## Jetty configurations {#jetty-configurations}
 
-Tässä on joitakin olennaisia konfiguraatioita pluginin kuuman käyttöönoton ja palvelinvuorovaikutuksen asetusten hienosäätöön:
+Tässä on joitakin olennaisia konfiguraatioita lisäosan kuuman käyttöönoton ja palvelinvuorovaikutuksen asetusten hienosäätämiseksi:
 
-| Ominaisuus                          | Kuvaus                                                                                                                                                                           | Oletus        |
+| Ominaisuus                          | Kuvaus                                                                                                                                                                           | Oletusarvo     |
 |-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
-| **`scan`**         | Määrittää, kuinka usein Jetty-palvelin skannaa tiedostomuutoksia **`pom.xml`**-tiedostossa. Luonnosprojektissa tämä on asetettu `2` sekunniksi. Tämän välin pidentäminen voi vähentää CPU-kuormitusta, mutta voi viivästyttää muutosten näkymistä sovelluksessa. | `1`            |
+| **`scan`**         | Määrittää, kuinka usein Jetty-palvelin skannaa tiedostomuutoksia **`pom.xml`**-tiedostossa. Luonnosprojekti asettaa tämän `2` sekunniksi. Tämän välin pidentäminen voi vähentää prosessorin kuormitusta, mutta se voi myös viivästyttää muutosten näkymistä sovelluksessa. | `1`            |
 
-## webforJ-konfiguraatiot {#webforj-configurations}
+## webforJ configurations {#webforj-configurations}
 
-| Ominaisuus                          | Kuvaus                                                                                                                                                                           | Oletus        |
+| Ominaisuus                          | Kuvaus                                                                                                                                                                           | Oletusarvo     |
 |-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
-| **`webforj.reloadOnServerError`** | Kun käytetään kuumaa uudelleenasennusta, koko WAR-tiedosto vaihdetaan. Jos asiakas lähettää pyynnön palvelimen käynnistymisen aikana, tapahtuu virhe. Tämä asetuksella asiakas voi yrittää ladata sivun uudelleen, olettaen, että palvelin on pian online-tilassa. Soveltuu vain kehitysympäristöihin ja käsittelee vain virheitä, jotka liittyvät kuumaan uudelleenasennukseen. | `on`           |
-| **`webforj.clientHeartbeatRate`** | Määrittää välin asiakasviestien lähettämiseksi palvelimen saatavuuden kysymiseksi. Tämä pitää asiakas-palvelin -viestinnän avoimena. Kehityksessä käytä lyhyempiä välejä nopeaa virheiden havaitsemista varten. Tuotannossa aseta tämä vähintään 50 sekuntiin liiallisen pyyntökuorman välttämiseksi. | `50s`          |
+| **`webforj.reloadOnServerError`** | Kun käytetään kuumaa uudelleenkäyttöä, koko WAR-tiedosto vaihdetaan. Jos asiakas lähettää pyyntöjä, kun palvelin on käynnistymässä, virhe tapahtuu. Tämä asetus mahdollistaa asiakkaan yrittää ladata sivua uudelleen olettaen, että palvelin on pian käytettävissä. Koskee vain kehitysympäristöjä ja käsittelee vain kuumaan uudelleenkäyttöön liittyviä virheitä. | `on`           |
+| **`webforj.clientHeartbeatRate`** | Määrittää vaiheen asiakaspinguille palvelimen saatavuuden kyselyä varten. Tämä pitää asiakas-palvelin-viestinnän avoimena. Kehityksessä käytä lyhyempiä välejä nopeamman virheiden havaitsemisen vuoksi. Tuotannossa aseta tämä vähintään 50 sekuntiin liiallisten pyyntöjen välttämiseksi. | `50s`          |
 
-## Käyttöön liittyvät huomiot {#usage-considerations}
+## Käytön huomioitavaa {#usage-considerations}
 
-Vaikka Jetty-plugin on erittäin tehokas kehityksessä, sillä on joitakin mahdollisia rajoituksia:
+Vaikka Jetty-lisäosa on erittäin tehokas kehityksessä, sillä on joitakin mahdollisia rajoituksia:
 
-- **Muistin ja CPU:n käyttö**: Usein tapahtuva tiedostoskannaus, jolloin `pom.xml`:ssä on matalat `scan`-arvot, voi lisätä resurssien kulutusta, erityisesti suurissa projekteissa. Välin pidentäminen voi vähentää kuormitusta, mutta hidastaa myös uudelleenasennusta.
+- **Muistin ja prosessorin käyttö**: Usein tapahtuva tiedostojen skannaus, joka asetetaan matalilla `scan`-arvoilla `pom.xml`-tiedostossa, voi lisätä resurssien kulutusta, erityisesti suurissa projekteissa. Välin pidentäminen voi vähentää kuormitusta, mutta se hidastaa myös uudelleenkäyttöönottoa.
 
-- **Rajoitettu tuotantokäyttö**: Jetty-plugin on suunniteltu kehitystä varten, ei tuotantoympäristöjä varten. Siinä ei ole suorituskyvyn optimointia ja turvallisuusasetuksia, joita tarvitaan tuotannossa, joten se soveltuu paremmin paikalliseen testaukseen.
+- **Rajoitettu tuotantokäyttö**: Jetty-lisäosa on suunniteltu kehitykseen, ei tuotantoympäristöihin. Siltä puuttuvat tuotantoon tarvittavat suorituskyvyn optimointi- ja suojausasetukset, joten se soveltuu paremmin paikalliseen testaukseen.
 
-- **Istunnon hallinta**: Kuuman uudelleenasennuksen aikana käyttäjäistuntoja ei välttämättä säilytetä, erityisesti silloin, kun suuria rakenteellisia muutoksia tapahtuu koodissa. Tämä voi keskeyttää käyttäjäistuntodataa sisältävät testit, mikä vaatii manuaalista istunnon hallintaa tai kiertoratkaisuasetuksia kehityksessä.
+- **Istunnon hallinta**: Kuuman uudelleenkäytön aikana käyttäjäistuntoja ei välttämättä säilytetä, erityisesti silloin, kun koodissa tapahtuu suuria rakenteellisia muutoksia. Tämä voi häiritä testejä, joissa on käyttäjäistuntoon liittyviä tietoja, mikä vaatii manuaalista istunnon hallintaa tai kiertoratkaisuja kehitykselle.

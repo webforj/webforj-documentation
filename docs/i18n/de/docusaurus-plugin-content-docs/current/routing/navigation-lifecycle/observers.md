@@ -1,16 +1,16 @@
 ---
 sidebar_position: 2
 title: Lifecycle Observers
-_i18n_hash: be571bd197730689ba8346b2ef702a3f
+_i18n_hash: 2c66b4194e4d93a762d9a8cd75918e49
 ---
-Beobachter ermöglichen es Komponenten, auf Lebenszyklusereignisse zu reagieren, indem sie Schnittstellen für bestimmte Phasen implementieren. Dieses Muster sorgt für eine klare Trennung der Anliegen und vereinfacht die Handhabung der Navigationslogik.
+Beobachter ermöglichen es Komponenten, auf Lebenszyklusereignisse zu reagieren, indem sie Schnittstellen für spezifische Phasen implementieren. Dieses Muster gewährleistet eine klare Trennung der Anliegen und vereinfacht die Handhabung der Navigationslogik.
 
 ## Verfügbare Beobachter {#available-observers}
 
-- **`WillEnterObserver`**: Ermöglicht es Ihnen, Aufgaben zu erledigen, bevor eine Route betreten wird, z. B. das Abrufen benötigter Daten oder das Blockieren der Navigation.
-- **`DidEnterObserver`**: Ideal für die Handhabung von Aktionen, nachdem die Komponente angehängt wurde, z. B. das Rendern von Daten oder das Auslösen von Animationen.
-- **`WillLeaveObserver`**: Bietet eine Möglichkeit, Logik zu verwalten, bevor ein Benutzer eine Route verlässt, z. B. das Überprüfen auf ungespeicherte Änderungen.
-- **`DidLeaveObserver`**: Wird für Aufräumaktionen oder andere Aufgaben verwendet, die nach dem Abziehen einer Komponente vom DOM ausgeführt werden sollen.
+- **`WillEnterObserver`**: Ermöglicht es Ihnen, Aufgaben zu handhaben, bevor eine Route betreten wird, wie das Abrufen notwendiger Daten oder das Sperren der Navigation.
+- **`DidEnterObserver`**: Ideal für die Handhabung von Aktionen, nachdem die Komponente angefügt wurde, wie das Rendern von Daten oder das Auslösen von Animationen.
+- **`WillLeaveObserver`**: Bietet eine Möglichkeit, Logik zu verwalten, bevor ein Benutzer eine Route verlässt, wie das Überprüfen von ungespeicherten Änderungen.
+- **`DidLeaveObserver`**: Wird für Bereinigungsaktionen oder andere Aufgaben verwendet, die ausgeführt werden sollen, nachdem eine Komponente vom DOM getrennt wurde.
 
 ## Beispiel: Authentifizierung mit `WillEnterObserver` {#example-authentication-with-willenterobserver}
 
@@ -30,15 +30,15 @@ public class DashboardView extends Composite<Div> implements WillEnterObserver {
 }
 ```
 
-Hier überprüft `onWillEnter`, ob der Benutzer authentifiziert ist. Wenn nicht, wird die Navigation abgelehnt, was verhindert, dass die Navigation abgeschlossen wird, und stattdessen zur Login-Seite umgeleitet.
+Hier überprüft `onWillEnter`, ob der Benutzer authentifiziert ist. Falls nicht, wird die Navigation vetoisiert, wodurch die Navigation nicht abgeschlossen wird und stattdessen zur Anmeldeseite umgeleitet wird.
 
-:::warning Beispiel für authentifizierte Routen - Nicht Produktionsbereit
-Dieses Beispiel ist nur eine Darstellung, wie man mit authentifizierten Routen arbeitet. 
-Dies **ist kein** Beispiel dafür, wie Sie ein authentifiziertes System auf Produktionsniveau schreiben würden.
-Sie müssen die Konzepte und Muster aus diesem Beispiel übernehmen und an Ihren Authentifizierungsfluss/Ihr System anpassen.
+:::warning Beispiel für authentifizierte Routen - Nicht für die Produktion geeignet
+Dieses Beispiel dient nur als Hinweis, wie Sie authentifizierte Routen verwenden können.
+Dies **ist** kein Beispiel dafür, wie Sie ein produktionsreifes Authentifizierungssystem schreiben würden.
+Sie müssen die Konzepte und Muster, die in diesem Beispiel verwendet werden, anpassen, um mit Ihrem Authentifizierungsfluss/Ihrem System für Ihre App zu arbeiten.
 :::
 
-## Beispiel: Datenabruf beim Routen-Eintritt mit `DidEnterObserver` {#example-fetching-data-on-route-entry-with-didenterobserver}
+## Beispiel: Daten beim Routenauftritt mit `DidEnterObserver` abrufen {#example-fetching-data-on-route-entry-with-didenterobserver}
 
 ```java
 @Route(value = "profile")
@@ -52,12 +52,12 @@ public class ProfileView extends Composite<Div> implements DidEnterObserver {
   }
 
   private void updateProfileUI(Profile profile) {
-    // Code zur Aktualisierung der UI mit Profildaten
+    // Code zum Aktualisieren der UI mit Profildaten
   }
 }
 ```
 
-Dieses Beispiel zeigt die Verwendung von `DidEnterObserver`, um Profilinformationen abzurufen und anzuzeigen, sobald die Komponente dem DOM angehängt ist.
+Dieses Beispiel zeigt die Verwendung von `DidEnterObserver`, um Profilinformationen abzurufen und anzuzeigen, sobald die Komponente dem DOM hinzugefügt wurde.
 
 ## Beispiel: Umgang mit ungespeicherten Änderungen mit `WillLeaveObserver` {#example-handling-unsaved-changes-with-willleaveobserver}
 
@@ -85,13 +85,13 @@ public class EditProfileView extends Composite<Div> implements WillLeaveObserver
 }
 ```
 
-In diesem Beispiel fordert `onWillLeave` den Benutzer mit einem Bestätigungsdialog auf, wenn es ungespeicherte Änderungen gibt, und lehnt die Navigation ab, wenn der Benutzer bleibt.
+In diesem Beispiel fordert `onWillLeave` den Benutzer mit einem Bestätigungsdialog auf, wenn es ungespeicherte Änderungen gibt, und vetoisiert die Navigation, wenn der Benutzer sich entscheidet, zu bleiben.
 
-:::info Navigation Blockieren und Handling von Veto
-Für weitere Informationen über die Blockierung der Navigation siehe [Navigation Blocking and Veto Handling](./navigation-blocking)
+:::info Navigationssperrung und Veto-Behandlung
+Für weitere Informationen zur Blockierung der Navigation siehe [Navigationssperrung und Veto-Behandlung](./navigation-blocking)
 :::
 
-## Beispiel: Aufräumen mit `DidLeaveObserver` {#example-cleanup-with-didleaveobserver}
+## Beispiel: Bereinigung mit `DidLeaveObserver` {#example-cleanup-with-didleaveobserver}
 
 ```java
 @Route(value = "notifications")
@@ -104,4 +104,4 @@ public class NotificationsView extends Composite<Div> implements DidLeaveObserve
 }
 ```
 
-Dieses Beispiel löscht Benachrichtigungen, nachdem der Benutzer die `NotificationsView` verlässt, und verwendet den `DidLeaveObserver` für das Aufräumen.
+Dieses Beispiel löscht die Benachrichtigungen, nachdem der Benutzer die `NotificationsView` verlässt, wobei der `DidLeaveObserver` für die Bereinigung verwendet wird.

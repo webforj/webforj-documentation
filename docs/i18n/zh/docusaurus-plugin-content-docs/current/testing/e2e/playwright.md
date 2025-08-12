@@ -1,21 +1,21 @@
 ---
 sidebar_position: 2
 title: Testing with Playwright
-_i18n_hash: 43cec2eab876a8dc170f4fb69aaa8214
+_i18n_hash: dffe640edd9d7918a3c8bace8cf0bbe8
 ---
-该文档概述了使用 Playwright 测试 webforJ 应用程序的过程，特别关注来自 `webforj-archetype-hello-world` 的 `HelloWorldView`。
+本文档概述了使用 Playwright 测试 webforJ 应用程序的过程，特别关注 `webforj-archetype-hello-world` 中的 `HelloWorldView`。
 
 :::info 应用基础
-要了解更多关于 `webforj-archetype-hello-world` 的信息，请参考 [应用基础介绍](../../introduction/basics) 部分。
+要了解有关 `webforj-archetype-hello-world` 的更多信息，请参阅 [应用基础介绍](../../introduction/basics) 部分。
 :::
 
 ## 前提条件 {#prerequisites}
 
-在编写和运行 Playwright 测试之前，请确保以下几点：
-- webforJ 应用程序在您的本地服务器上正确设置并运行。
+在编写和运行 Playwright 测试之前，请确保以下事项：
+- webforJ 应用程序已正确设置并在本地服务器上运行。
 - 您已安装：
   - Playwright Java 绑定。
-  - 兼容的浏览器（Playwright 可以在设置期间自动安装浏览器）。
+  - 兼容的浏览器（Playwright 可以在设置过程中自动安装浏览器）。
   - 用于项目依赖的 Maven。
 
 ## Maven 配置 {#maven-configuration}
@@ -40,7 +40,7 @@ _i18n_hash: 43cec2eab876a8dc170f4fb69aaa8214
 
 ## 测试示例：`HelloWorldView` {#testing-example-helloworldview}
 
-以下代码演示了一个基于 Playwright 的 `HelloWorldView` 组件的测试。
+以下代码演示了针对 `HelloWorldView` 组件的 Playwright 基础测试。
 
 ```java title="HelloWorldViewTest.java"
 package com.example.views;
@@ -84,7 +84,7 @@ class HelloWorldViewTest {
 
 1. **初始化 Playwright**：
    - 创建一个 `Playwright` 实例。
-   - 使用 `playwright.chromium().launch()` 启动一个浏览器实例。
+   - 使用 `playwright.chromium().launch()` 启动浏览器实例。
 
 2. **设置测试环境**：
    - 使用 `browser.newPage()` 打开一个新的浏览器页面。
@@ -98,7 +98,7 @@ class HelloWorldViewTest {
    - 使用 `PlaywrightAssertions.assertThat()` 验证显示的 toast 消息。
 
 5. **清理**：
-   - Playwright 在测试完成时自动处理浏览器清理。如需手动清理，您可以使用 `browser.close()` 关闭浏览器。
+   - Playwright 在测试完成时自动处理浏览器清理。对于手动清理，您可以使用 `browser.close()` 关闭浏览器。
 
 ### 运行测试 {#running-tests}
 
@@ -114,6 +114,6 @@ class HelloWorldViewTest {
 
 ## 预期行为 {#expected-behavior}
 
-- 在访问 `http://localhost:<port>/` 时，`HelloWorldView` 页面加载。
-- 在文本字段中输入 webforJ 并点击 `Say Hello` 按钮。
-- 应出现一条 toast 消息，文本为：`Welcome to webforJ Starter webforJ!`。
+- 访问 `http://localhost:<port>/` 时，`HelloWorldView` 页面加载。
+- 在文本字段中输入 webforJ，并点击 `Say Hello` 按钮。
+- 应出现一条 toast 消息，内容为：`Welcome to webforJ Starter webforJ!`。

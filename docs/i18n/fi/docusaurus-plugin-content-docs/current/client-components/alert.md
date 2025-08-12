@@ -6,7 +6,7 @@ slug: alert
 description: A user guide article for the alert
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 774a97b62f20a409f8c07146a62ee54d
+_i18n_hash: db38db7f4c120d0785cb1608e9f19af9
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,10 +16,10 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info ASIA COMPONENT
-Tässä osiossa käsitellään **`<dwc-alert>`** komponentin tyyliin liittyvää tietoa. Tämä komponentti on **asiakaspuolella vain** - sitä ei voi instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+:::info ASIAKASTOIMINNOT
+Tässä osiossa käsitellään **`<dwc-alert>`** komponentin tyylitietoja. Tämä komponentti on **asiakaspuolella vain** - sitä ei voi instanssoida itsenäisesti API: n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
-## Tyyli {#styling}
+## Tyylit {#styling}
 
 <TableBuilder name="dwc-alert" clientComponent />

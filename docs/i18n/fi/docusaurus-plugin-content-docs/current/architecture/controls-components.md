@@ -1,30 +1,30 @@
 ---
 sidebar_position: 10
 title: BBj Controls and webforJ Components
-_i18n_hash: 929625ea8b8335de7326ecb067dca773
+_i18n_hash: 7fd4306a016d3734d34336b8136c6e11
 ---
-webforJ-kehyksen tarkoituksena on tarjota Java API BBj-kielen DWC:n ympärillä, ja se tarjoaa vahvan arkkitehtuurin komponenttien rakentamiseen ja hallintaan.
+webforJ-kehys on suunniteltu tarjoamaan Java API BBj-kielen DWC:n ympärille ja tarjoaa robustin arkkitehtuurin komponenttien rakentamiseen ja hallintaan.
 
-## Mapping BBj-ohjaimia webforJ-komponentteihin {#mapping-bbj-controls-to-webforj-components}
-Yksi webforJ:n perusperiaatteista on BBj-ohjainten sitominen webforJ-komponentteihin. Tässä arkkitehtuurissa jokaisella webforJ-komponentilla, joka toimitetaan tuotteen mukana, on yksi-yhteen -suhde taustalla olevan BBj-ohjaimen kanssa. Tämä mappaus varmistaa, että Java-komponentit peilaavat BBj-vastineidensa käyttäytymistä ja ominaisuuksia saumattomasti.
+## BBj-ohjausobjektien kartoitus webforJ-komponentteihin {#mapping-bbj-controls-to-webforj-components}
+Yksi webforJ:n perusperiaatteista on BBj-ohjausobjektien sitominen webforJ-komponentteihin. Tässä arkkitehtuurissa jokaisella tuotteeseen sisältyvällä webforJ-komponentilla on yksi-yhteen-kartoitus taustalla olevaan BBj-ohjausobjektiin. Tämä kartoitus varmistaa, että Java-komponentit heijastavat BBj-vastineidensa käyttäytymistä ja ominaisuuksia saumattomasti.
 
-Tämä tiivis vastaavuus webforJ-komponenttien ja BBj-ohjainten välillä yksinkertaistaa kehitystä ja mahdollistaa Java-kehittäjien työskentelemisen tutuilla käsitteillä web-pohjaisten sovellusten rakentamisessa ilman tarvetta kirjoittaa mitään BBj-koodia.
+Tämä läheinen vastaavuus webforJ-komponenttien ja BBj-ohjausobjektien välillä yksinkertaistaa kehitystä ja mahdollistaa Java-kehittäjien työskentelyn tutuilla käsitteillä verkkopohjaisten sovellusten rakentamisessa ilman tarpeen kirjoittaa mitään BBj-koodia.
 
-## `DwcComponent` perusluokka {#the-dwccomponent-base-class}
-webforJ:n komponenttiarkkitehtuurin ytimessä on DWCComponent-perusluokka. Kaikki webforJ-komponentit perivät tämän luokan. Tämä perintö antaa jokaiselle webforJ-komponentille pääsyn sen taustalla olevaan BBj-ohjaimeen, ja se tarjoaa suoran linkin Java-komponentin ja BBj-ohjaimen välillä, jota se edustaa.
+## `DwcComponent` -pohjaluokka {#the-dwccomponent-base-class}
+webforJ:n komponenttiarkkitehtuurin ytimessä on DWCComponent-pohjaluokka. Kaikki webforJ-komponentit perivät tästä luokasta. Tämä perintö antaa jokaiselle webforJ-komponentille pääsyn sen taustalla olevaan BBj-ohjausobjektiin, tarjoten suoran yhteyden Java-komponentin ja sen edustaman BBj-ohjausobjektin välillä.
 
-On kuitenkin tärkeää huomata, että kehittäjillä on rajoituksia DWCComponent-luokan laajentamiselle. Yrittäminen laajentaa tätä luokkaa johtaa ajonaikaiseen poikkeukseen, joka estää tällaiset laajennukset. Tämä rajoitus on olemassa, jotta säilytetään taustalla olevan BBj-ohjaimen eheys ja varmistetaan, että kehittäjät eivät tahattomasti manipuloisi sitä tavoilla, jotka voisivat johtaa odottamattomiin seurauksiin.
+On kuitenkin tärkeää huomata, että kehittäjät eivät saa laajentaa DWCComponent-luokkaa. Yrittäminen aiheuttaa aikarajoitteen poikkeuksen, joka estää tällaiset laajennukset. Tämä rajoitus on olemassa taustalla olevan BBj-ohjausobjektin eheyden ylläpitämiseksi ja varmistaaksesi, etteivät kehittäjät tahattomasti muokkaa sitä tavoilla, jotka voisivat johtaa odottamattomiin seurauksiin.
 
-### Loppuluokat ja laajennusrajoitukset {#final-classes-and-extension-restrictions}
-webforJ:ssä useimmat komponenttiluokat, lukuun ottamatta sisäänrakennettuja HTML-elementtejä ja näistä laajentavia luokkia, on määritelty `final`-avainsanalla. Tämä tarkoittaa, että niitä ei voi laajentaa tai aliluokkia. Tämä suunnittelupäätös on tarkoituksellinen ja palvelee useita tarkoituksia:
+### Lopulliset luokat ja laajennusrajoitukset {#final-classes-and-extension-restrictions}
+webforJ:ssä useimmat komponenttiluokat, lukuun ottamatta sisäänrakennettuja HTML-elementtejä ja kaikkia näitä laajentavia luokkia, on määritelty `final`-avainsanalla. Tämä tarkoittaa, että niitä ei ole saatavilla laajennettavaksi tai alaluokiksi. Tämä suunnittelupäätös on tarkoituksella valittu ja palvelee useita tarkoituksia:
 
-1. **Kontrolli taustalla olevaan BBj-ohjaimeen**: Kuten mainittiin aiemmin, webforJ-komponenttiluokkien laajentaminen antaisi kehittäjille hallintaa taustalla olevasta BBj-ohjaimesta. Komponenttikäyttäytymisen johdonmukaisuuden ja ennakoitavuuden ylläpitämiseksi tätä hallintaa rajoitetaan.
+1. **Valvonta taustalla olevan BBj-ohjausobjektin suhteen**: Kuten aiemmin mainittiin, webforJ-komponenttiluokkien laajentaminen antaisi kehittäjille hallinnan taustalla olevaan BBj-ohjausobjektiin. Komponenttien käyttäytymisen johdonmukaisuuden ja ennakoitavuuden ylläpitämiseksi tätä hallintatasoa rajoitetaan.
 
-2. **Tahattomien muutosten estäminen**: Komponenttiluokkien määrittäminen `final`-avainsanalla estää tahattomat muutokset ydinkomponenteille, mikä vähentää odottamattomien käyttäytymis- tai haavoittuvuusriskien syntyä.
+2. **Tahattomien muutosten estäminen**: Tekemällä komponenttiluokat `final`, vältetään tahattomat muutokset ydinkomponentteihin, mikä vähentää odottamattomien käyttäytymisten tai haavoittuvuuksien esittelyn riskiä.
 
-3. **Compositejen käytön edistäminen**: Komponenttien toiminnallisuuden laajentamiseksi webforJ-kehys kannustaa kehittäjiä käyttämään koosteen lähestymistapaa. Koostekomponentit ovat Java-luokkia, jotka sisältävät muita webforJ-komponentteja tai standardeja HTML-elementtejä. Vaikka perinteinen perintö on ei-toivottua, koostekomponentit tarjoavat tavan luoda uusia, räätälöityjä komponentteja, jotka kapseloivat olemassa olevia.
+3. **Koostumien käytön edistäminen**: Komponenttien toiminnallisuuden laajentamiseksi webforJ-kehys kannustaa kehittäjiä käyttämään koostumamallia. Koostumakomponentit ovat Java-luokkia, jotka sisältävät muita webforJ-komponentteja tai standardeja HTML-elementtejä. Vaikka perinteistä perintöä ei suositella, koostumakomponentit tarjoavat tavan luoda uusia, mukautettuja komponentteja, jotka kapseloivat olemassa olevia.
 
-## Koostekomponentit: laajennus koostumisen kautta {#composite-components-extending-through-composition}
-webforJ-kehyksessä koostekomponenttien käsite näyttelee keskeistä roolia komponenttitoiminnallisuuden laajentamisessa. Koostekomponentit ovat Java-luokkia, joita ei rajoita final-avainsana, mikä mahdollistaa kehittäjien luoda uusia komponentteja, jotka laajentavat yhden komponentin käyttäytymistä tai yhdistävät useita komponentteja yhdeksi, koostamalla olemassa olevia komponentteja. Luokkia, jotka helpottavat tätä toimintaa, on luotu kehittäjien käyttöön. Katso `Composite`- ja `ElementComposite`-osioista, miten luoda oikein koostekomponentteja.
+## Koostumakomponentit: laajentaminen koostumalla {#composite-components-extending-through-composition}
+webforJ-kehyksessä koostumakomponenttien käsite on keskeisessä roolissa komponenttien toiminnallisuuden laajentamisessa. Koostumakomponentit ovat Java-luokkia, joita ei rajoita final-avainsana, mikä mahdollistaa kehittäjien luoda uusia komponentteja, jotka laajentavat yksittäisen komponentin käyttäytymistä tai yhdistävät useita komponentteja yhdeksi, koostamalla olemassa olevia komponentteja. Käyttäjiä varten on luotu luokkia, jotka helpottavat tätä käyttäytymistä. Katso `Composite`- ja `ElementComposite`-osiot nähdäksesi, kuinka koostumakomponentteja luodaan oikein.
 
-Tämä lähestymistapa kannustaa modulaarisempaan ja joustavampaan kehitystyylin, mikä mahdollistaa kehittäjien rakentaa räätälöityjä komponentteja, jotka täyttävät erityiset vaatimukset.
+Tämä lähestymistapa kannustaa modulaarisempaan ja joustavampaan kehitystyylin, jolloin kehittäjät voivat rakentaa räätälöityjä komponentteja, jotka täyttävät erityiset vaatimukset.

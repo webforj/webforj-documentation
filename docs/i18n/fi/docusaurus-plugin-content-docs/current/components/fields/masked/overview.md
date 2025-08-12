@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Masked Fields
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: 0c97c1eb15e2cd24ae90a79c33e3c839
+_i18n_hash: f613888a848d8f0b2da31066485b9bfc
 ---
 <Head>
   <style>{`
@@ -18,9 +18,9 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
-Maskatut kentät ovat syöttökomponentteja, jotka pakottavat käyttäjän syötteelle tietyn rakenteen. Ne ovat ihanteellisia lomakkeille, jotka vaativat johdonmukaisesta muotoilusta - kuten päivämääristä, ajoista, numeroista tai tunnisteista - joissa tarkkuus on tärkeää.
+Pehmennetyt kentät ovat syöttökomponentteja, jotka pakottavat käyttäjän syötteen tiettyyn rakenteeseen. Ne ovat ihanteellisia lomakkeille, jotka vaativat johdonmukaista muotoilua - kuten päivämääriä, aikoja, numeroita tai tunnisteita - joissa tarkkuus on tärkeää.
 
-Nämä komponentit soveltavat muoto规则 suoraan syöttökenttään, auttaen käyttäjiä ymmärtämään, minkä tyyppistä arvoa odotetaan, samalla kun ne vähentävät syöttövirheitä. Tämä tekee niistä erityisen hyödyllisiä talousjärjestelmissä, hallintopaneeleissa, aikataulutusrajapinnoissa ja muissa sovelluksissa, jotka perustuvat validoituun tietojen syöttöön.
+Nämä komponentit soveltavat muotoilusääntöjä suoraan syöttökenttään, auttaen käyttäjiä ymmärtämään, millaista arvoa odotetaan, samalla vähentäen syöttövirheitä. Tämä tekee niistä erityisen hyödyllisiä talousjärjestelmissä, hallintapaneeleissa, aikataulutusliittymissä ja muissa sovelluksissa, jotka riippuvat validoidusta tietojen syötöstä.
 
 
 ## Topics {#topics}

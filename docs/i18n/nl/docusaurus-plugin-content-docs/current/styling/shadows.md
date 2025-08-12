@@ -1,9 +1,9 @@
 ---
 sidebar_position: 7
 title: Shadows
-_i18n_hash: 84ad4478632d3020d57752a4827f925a
+_i18n_hash: 6f5378b91beaf0c663bdc9de9b67233a
 ---
-De schaduw eigenschappen worden gebruikt om schaduweffecten rondom het frame van een element toe te voegen. Je kunt meerdere effecten instellen, gescheiden door komma's. In de meeste gevallen worden schaduwen gebruikt om items aan te duiden die bovenop elkaar zijn gestapeld in de gebruikersinterface.
+De schaduw eigenschappen worden gebruikt om schaduweffecten rond het frame van een element toe te voegen. Je kunt meerdere effecten instellen, gescheiden door komma's. In de meeste gevallen worden schaduwen gebruikt om items aan te duiden die bovenop elkaar zijn geplaatst in de gebruikersinterface.
 
 <Head>
   <style>{`
@@ -23,12 +23,12 @@ De schaduw eigenschappen worden gebruikt om schaduweffecten rondom het frame van
 ```
 
 :::tip Schaduwkleur
-Je beheert de schaduwkleur door de variabele `--dwc-shadow-color` in te stellen. Standaard is de schaduwkleur grijs getint met de primaire kleur.
+Je controleert de schaduwkleur door de variabele `--dwc-shadow-color` in te stellen. Standaard is de schaduwkleur grijs getint met de primaire kleur.
 :::
 
 ### Variabelen {#variables}
 
-| **Variabele**      | **Voorbeeld**                             |
+| **Variabele**       | **Voorbeeld**                             |
 |--------------------|------------------------------------------|
 | `--dwc-shadow-xs`  | <ShadowBox shadow="--dwc-shadow-xs" />  |
 | `--dwc-shadow-s`   | <ShadowBox shadow="--dwc-shadow-s" />   |

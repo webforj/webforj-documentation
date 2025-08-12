@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: CSS Variables
-_i18n_hash: f81f4fd4afdcb9807e10b8a35e244b20
+_i18n_hash: b753c1b13cfcc45f72d6712e980ef952
 ---
 Les variables CSS jouent un rôle central dans la personnalisation de l'apparence des composants webforJ. Ces variables stockent des valeurs réutilisables telles que des couleurs, des tailles de police et des espacements, qui peuvent être appliquées de manière cohérente dans votre application.
 
@@ -9,7 +9,7 @@ Contrairement aux approches traditionnelles qui s'appuyaient sur des préprocess
 
 ## Définir des variables CSS {#defining-css-variables}
 
-Les variables CSS sont définies à l'aide d'un préfixe en double tiret (`--`), et peuvent être limitées à n'importe quel sélecteur CSS. Cependant, la pratique la plus courante est de les définir dans le sélecteur `:root`, ce qui leur confère une portée globale.
+Les variables CSS sont définies en utilisant un préfixe double tiret (`--`), et peuvent être limitées à n'importe quel sélecteur CSS. Cependant, la pratique la plus courante est de les définir dans le sélecteur `:root`, qui les limite globalement.
 
 ```css
 :root {
@@ -39,9 +39,10 @@ dwc-button {
 }
 ```
 
-:::tip Référence de style spécifique au composant
-Chaque composant webforJ prend en charge un ensemble spécifique de variables CSS qui contrôlent son apparence. Celles-ci sont documentées dans la section **Styling > Propriétés CSS** pour chaque composant.
+:::tip Référence pour le style spécifique au composant
+Chaque composant webforJ prend en charge un ensemble spécifique de variables CSS qui contrôlent son apparence. Celles-ci sont documentées sous la section **Styling > Propriétés CSS** pour chaque composant. 
 :::
+
 
 ## Utiliser des variables CSS {#using-css-variables}
 
@@ -53,7 +54,7 @@ Utilisez la fonction [`var()`](https://developer.mozilla.org/en-US/docs/Web/CSS/
 }
 ```
 
-Vous pouvez également spécifier une valeur de secours au cas où la variable n'est pas définie :
+Vous pouvez également spécifier une valeur de remplacement au cas où la variable ne serait pas définie :
 
 ```css
 .frame {
@@ -61,7 +62,7 @@ Vous pouvez également spécifier une valeur de secours au cas où la variable n
 }
 ```
 
-## Manipuler les variables avec webforJ {#manipulating-variables-with-webforj}
+## Manipuler des variables avec webforJ {#manipulating-variables-with-webforj}
 
 Les variables CSS peuvent être mises à jour dynamiquement via l'API webforJ, permettant un style en temps réel :
 
@@ -70,7 +71,7 @@ Les variables CSS peuvent être mises à jour dynamiquement via l'API webforJ, p
 button.setStyle('--dwc-button-font-weight', '400');
 ```
 
-:::tip Manipulation des variables CSS avec JavaScript
+:::tip Manipuler des variables CSS avec JavaScript
 webforJ vous permet d'exécuter JavaScript côté client en utilisant l'API Page ou Element. Cela signifie que vous pouvez manipuler dynamiquement les variables CSS à l'exécution, tout comme vous le feriez dans des applications web standard.
 
 ```javascript
@@ -85,5 +86,5 @@ const value = el.style.getPropertyValue('--dwc-font-size-m');
 
 ## Ressources supplémentaires {#additional-resources}
 
-- [Utiliser les propriétés CSS personnalisées (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)  
-- [Un guide complet sur les propriétés personnalisées (CSS-Tricks)](https://css-tricks.com/a-complete-guide-to-custom-properties/)
+- [Utiliser des propriétés personnalisées CSS (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)  
+- [Un guide complet des propriétés personnalisées (CSS-Tricks)](https://css-tricks.com/a-complete-guide-to-custom-properties/)

@@ -1,15 +1,15 @@
 ---
 sidebar_position: 5
 title: Triggers
-_i18n_hash: a52300a9683a08701c4e1f1f6150dd9f
+_i18n_hash: b158a924f67b7141be94d56b9be8bba3
 ---
-Bij standaardinstellingen valideren bindings automatisch componenten wanneer gebruikers hun gegevens wijzigen, zoals het invoeren van nieuwe tekst, het aanvinken van een selectievakje of het selecteren van een nieuwe optie in een radioknop. Als je de voorkeur geeft aan het uitschakelen van automatische validaties en ze alleen wilt rapporteren wanneer je naar het datamodel schrijft, kun je de binding zo configureren dat deze wordt uitgeschakeld. Dit geeft je controle over wanneer en hoe validaties plaatsvinden, zodat je validaties kunt beheren op basis van specifieke app-behoeften of gebruikersinteracties.
+Bij standaardinstellingen valideren bindings automatisch componenten opnieuw wanneer gebruikers hun gegevens wijzigen, zoals het invoeren van nieuwe tekst, het aanvinken van een selectievakje of het selecteren van een nieuwe optie in een radiobutton. Als u liever automatische validaties uitschakelt en alleen rapporteert wanneer u naar het gegevensmodel schrijft, kunt u de binding configureren om ze uit te zetten. Dit geeft u controle over wanneer en hoe validaties plaatsvinden, zodat u validaties kunt beheren op basis van specifieke app-behoeften of gebruikersinteracties.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
 context.bind(emailField, "email")
     .useValidator(
-        Validator.from(new EmailValidator(), "Aangepaste melding voor ongeldig e-mailadres"))
+        Validator.from(new EmailValidator(), "Aangepaste boodschap voor ongeldig e-mailadres"))
     .autoValidate(false)
     .add();
 ```
@@ -21,8 +21,8 @@ BindingContext<User> context = new BindingContext<>(User.class);
 context.setAutoValidate(false);
 ```
 
-:::tip Waarde Wijziging Modus
-Sommige componenten, zoals de veldcomponenten, implementeren de `ValueChangeModeAware` interface, waarmee je kunt regelen wanneer het systeem een `ValueChangeEvent` rapporteert. Je kunt bijvoorbeeld veldcomponenten instellen om waarde wijzigingen alleen te rapporteren bij verlies van focus. Deze configuratie vermindert de frequentie van validaties, optimaliseert de prestaties en verbetert de gebruikerservaring door validaties te concentreren op momenten waarop de gebruiker een invoersessie voltooit, in plaats van tijdens actief typen.
+:::tip Waarde Wijzigingsmodus
+Sommige componenten, zoals de veldcomponenten, implementeren de `ValueChangeModeAware` interface, waarmee u kunt bepalen wanneer het systeem een `ValueChangeEvent` rapporteert. U kunt bijvoorbeeld veldcomponenten instellen om waarde wijzigingen alleen bij verlies van focus te rapporteren. Deze configuratie beperkt de frequentie van validaties, optimaliseert de prestaties en verbetert de gebruikerservaring door validaties te richten op momenten waarop de gebruiker een invoersessie voltooit, in plaats van tijdens actieve typactiviteiten.
 
 ```java
  emailField.setValueChangeMode(ValueChangeMode.ON_BLUR);
@@ -31,9 +31,9 @@ Sommige componenten, zoals de veldcomponenten, implementeren de `ValueChangeMode
 
 ## Hervalidatie {#revalidation}
 
-Hoewel validaties meestal automatisch worden geactiveerd tijdens het schrijven van gegevens, kun je ze ook handmatig aanroepen om de staat van de gegevens te verifiëren zonder te proberen deze naar het model te schrijven. Deze handmatige benadering is bijzonder nuttig in scenario's waarin je functies wilt inschakelen of uitschakelen op basis van de geldigheid van de formuliergegevens zonder een update uit te voeren.
+Hoewel validaties doorgaans automatisch worden geactiveerd tijdens het schrijven van gegevens, kunt u ze ook handmatig aanroepen om de toestand van gegevens te verifiëren zonder te proberen deze naar het model te schrijven. Deze handmatige benadering is bijzonder nuttig in situaties waarin u functies wilt in- of uitschakelen op basis van de geldigheid van de formuliergegevens zonder een update uit te voeren.
 
-Beschouw een klassiek voorbeeld van een Reisdatum Keuze, waarbij een gebruiker twee datums moet selecteren: de startdatum en de einddatum van een reis. Het is niet geldig om een einddatum te kiezen die vóór de startdatum ligt, of een startdatum die na de einddatum ligt. Je kunt deze afhankelijkheden oplossen door validaties handmatig te activeren:
+Overweeg een klassiek voorbeeld van een Reisdatumkiezer, waarbij een gebruiker twee data moet selecteren: de startdatum en de einddatum van een reis. Het is niet geldig om een einddatum te kiezen die voor de startdatum valt, of een startdatum die na de einddatum valt. U kunt deze afhankelijkheden oplossen door validaties handmatig te activeren:
 
 <Tabs>
 <TabItem value="TripBooking" label="TripBooking.java">
@@ -52,15 +52,15 @@ public class TripBooking extends App {
   public void run() throws WebforjException {
     BindingContext<Trip> context = new BindingContext<>(Trip.class);
     context.bind(startDateField, "startDate")
-        .useValidator(Objects::nonNull, "Startdatum is vereist")
+        .useValidator(Objects::nonNull, "Startdatum is verplicht")
         .useValidator(value -> endDate != null && value.isBefore(endDate),
-            "Startdatum moet vóór de einddatum liggen")
+            "Startdatum moet voor de einddatum zijn")
         .add();
 
     context.bind(endDateField, "endDate")
-        .useValidator(Objects::nonNull, "Einddatum is vereist")
+        .useValidator(Objects::nonNull, "Einddatum is verplicht")
         .useValidator(value -> startDate != null && value.isAfter(startDate),
-            "Einddatum moet na de startdatum liggen")
+            "Einddatum moet na de startdatum zijn")
         .add();
 
     startDateField.setValueChangeMode(ValueChangeMode.ON_BLUR);

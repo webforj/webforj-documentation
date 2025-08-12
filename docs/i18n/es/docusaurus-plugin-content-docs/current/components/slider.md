@@ -1,18 +1,18 @@
 ---
 title: Slider
 sidebar_position: 101
-_i18n_hash: 045c80d3d54048157d805ee64213f210
+_i18n_hash: 47e9254faad15097b580eb4099968fbc
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-slider" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/slider/Slider" top='true'/>
 
-El componente `Slider` en webforJ proporciona un control interactivo que permite a los usuarios seleccionar un valor dentro de un rango específico moviendo un botón. Esta característica es particularmente útil para aplicaciones que requieren entradas precisas o intuitivas, como seleccionar volúmenes, porcentajes u otros valores ajustables.
+El componente `Slider` en webforJ proporciona un control interactivo que permite a los usuarios seleccionar un valor dentro de un rango específico al mover una perilla. Esta característica es particularmente útil para aplicaciones que requieren entradas precisas o intuitivas, como seleccionar volúmenes, porcentajes u otros valores ajustables.
 
 ## Básicos {#basics}
 
-El `Slider` está diseñado para funcionar directamente, sin necesidad de configuración adicional para funcionar de manera efectiva. Por defecto, abarca un rango de 0 a 100 con un valor inicial de 50, lo que lo hace ideal para una rápida integración en cualquier aplicación. Para casos de uso más específicos, el `Slider` se puede personalizar con propiedades como orientación, marcas de referencia, etiquetas y descripciones emergentes.
+El `Slider` está diseñado para funcionar inmediatamente, sin necesidad de configuración adicional para funcionar de manera efectiva. Por defecto, abarca un rango de 0 a 100 con un valor inicial de 50, lo que lo hace ideal para una integración rápida en cualquier aplicación. Para casos de uso más específicos, el `Slider` se puede personalizar con propiedades como orientación, marcas de ticks, etiquetas y tooltips.
 
 Aquí hay un ejemplo de un `Slider` que permite a los usuarios ajustar los niveles de volumen dentro de un rango predefinido:
 
@@ -24,35 +24,35 @@ height = '100px'
 
 ## Valor del `Slider` {#slider-value}
 
-El valor del `Slider` representa la posición actual del botón en el deslizador y se define como un entero dentro del rango del `Slider`. Este valor se actualiza dinámicamente a medida que el usuario interactúa con el deslizador, convirtiéndolo en una propiedad esencial para rastrear la entrada del usuario.
+El valor del `Slider` representa la posición actual de la perilla en el slider y se define como un entero dentro del rango del `Slider`. Este valor se actualiza dinámicamente a medida que el usuario interactúa con el slider, lo que lo convierte en una propiedad esencial para rastrear la entrada del usuario.
 
-:::tip Valor por defecto
-Por defecto, el `Slider` comienza con un valor de 50, asumiendo el rango por defecto de 0 a 100.
+:::tip Valor predeterminado
+Por defecto, el `Slider` comienza con un valor de 50, asumiendo el rango predeterminado de 0 a 100.
 :::
 
-### Establecer y obtener el valor {#setting-and-getting-the-value}
+### Estableciendo y obteniendo el valor {#setting-and-getting-the-value}
 
-Puedes establecer el valor del `Slider` durante la inicialización o actualizarlo más tarde usando el método `setValue()`. Para recuperar el valor actual, usa el método `getValue()`.
+Puedes establecer el valor del `Slider` durante la inicialización o actualizarlo más tarde usando el método `setValue()`. Para recuperar el valor actual, utiliza el método `getValue()`.
 
 ```java
 Slider slider = new Slider();  
-slider.setValue(25); // Establece el deslizador en 25
+slider.setValue(25); // Establece el slider en 25
 
 Integer value = slider.getValue();  
 System.out.println("Valor actual del Slider: " + value);
 ```
 
-## Valores mínimos y máximos {#minimum-and-maximum-values}
+## Valores mínimo y máximo {#minimum-and-maximum-values}
 
-Los valores mínimo y máximo definen el rango permitido del `Slider`, determinando los límites dentro de los cuales el botón del `Slider` puede moverse. Por defecto, el rango está configurado de 0 a 100, pero puedes personalizar estos valores según tus necesidades.
+Los valores mínimo y máximo definen el rango permitido del `Slider`, determinando los límites dentro de los cuales puede moverse la perilla del `Slider`. Por defecto, el rango se establece de 0 a 100, pero puedes personalizar estos valores según tus necesidades.
 
-Los intervalos en el `Slider` tienen un paso por defecto de 1, lo que significa que el número de intervalos está determinado por el rango. Por ejemplo:
+Los intervalos en el `Slider` tienen un paso predeterminado de 1, lo que significa que el número de intervalos se determina por el rango. Por ejemplo:
 - Un Slider con un rango de 0 a 10 tendrá 10 intervalos.
 - Un Slider con un rango de 0 a 100 tendrá 100 intervalos.
 
-Estos intervalos están distribuídos uniformemente a lo largo de la pista del deslizador, con su espaciado dependiendo de las dimensiones del `Slider`.
+Estos intervalos se distribuyen uniformemente a lo largo de la pista del slider, y su espaciado depende de las dimensiones del `Slider`.
 
-A continuación se muestra un ejemplo de la creación de un `Slider` con un rango personalizado:
+A continuación, se muestra un ejemplo de creación de un `Slider` con un rango personalizado:
 
 <ComponentDemo 
 path='/webforj/donationslider?' 
@@ -60,41 +60,41 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '200px'
 />
 
-## Configuración de marcas de referencia {#tick-configuration}
+## Configuración de ticks {#tick-configuration}
 
-El componente `Slider` ofrece una configuración de marcas de referencia flexible, lo que permite personalizar cómo se muestran las marcas de referencia y cómo interactúa el botón del deslizador con ellas. Esto incluye ajustar el espaciado de las marcas de referencia principales y menores, mostrar/ocultar marcas de referencia y habilitar el ajuste a las marcas de referencia para una entrada precisa del usuario.
+El componente `Slider` ofrece una configuración de ticks flexible, lo que permite personalizar cómo se muestran las marcas de ticks y cómo interactúa la perilla del slider con ellas. Esto incluye ajustar el espaciado de ticks mayores y menores, mostrar/ocultar marcas de ticks y habilitar la alineación con marcas de ticks para una entrada precisa del usuario.
 
-### Espaciado de marcas de referencia principales y menores {#major-and-minor-tick-spacing}
+### Espaciado de ticks mayores y menores {#major-and-minor-tick-spacing}
 
-Puedes definir el espaciado para las marcas de referencia principales y menores, lo que determina con qué frecuencia aparecen en la pista del `Slider`:
+Puedes definir el espaciado para las marcas de ticks mayores y menores, que determina con qué frecuencia aparecen en la pista del `Slider`:
 
-- Las marcas de referencia principales son más grandes y a menudo se etiquetan para representar valores clave.
-- Las marcas de referencia menores son más pequeñas y aparecen entre las marcas de referencia principales para ofrecer intervalos más finos.
+- Los ticks mayores son más grandes y a menudo están etiquetados para representar valores clave.
+- Los ticks menores son más pequeños y aparecen entre los ticks mayores para ofrecer intervalos más finos.
 
-Establece el espaciado de las marcas usando los siguientes métodos `setMajorTickSpacing()` y `setMinorTickSpacing()`:
+Establece el espaciado de ticks utilizando los métodos `setMajorTickSpacing()` y `setMinorTickSpacing()`:
 ```java
-slider.setMajorTickSpacing(10); // Marcas principales cada 10 unidades
-slider.setMinorTickSpacing(2);  // Marcas menores cada 2 unidades
+slider.setMajorTickSpacing(10); // Ticks mayores cada 10 unidades
+slider.setMinorTickSpacing(2);  // Ticks menores cada 2 unidades
 ```
 
-### Mostrar u ocultar marcas de referencia {#show-or-hide-ticks}
+### Mostrar u ocultar ticks {#show-or-hide-ticks}
 
-Puedes alternar la visibilidad de las marcas de referencia usando el método `setTicksVisible()`. Por defecto, las marcas de referencia están ocultas.
-
-```java
-slider.setTicksVisible(true); // Mostrar marcas de referencia
-slider.setTicksVisible(false); // Ocultar marcas de referencia
-```
-
-### Ajuste {#snapping}
-
-Para garantizar que el botón del `Slider` se alinee con la marca de referencia más cercana durante la interacción del usuario, habilita el ajuste usando el método `setSnapToTicks()`:
+Puedes alternar la visibilidad de las marcas de ticks utilizando el método `setTicksVisible()`. Por defecto, las marcas de ticks están ocultas.
 
 ```java
-slider.setSnapToTicks(true); // Habilitar ajuste
+slider.setTicksVisible(true); // Mostrar marcas de ticks
+slider.setTicksVisible(false); // Ocultar marcas de ticks
 ```
 
-Aquí hay un ejemplo de un `Slider` completamente configurado que muestra la configuración de marcas principales y menores junto con la capacidad de ajuste para ajustes precisos:
+### Alineación {#snapping}
+
+Para asegurar que la perilla del `Slider` se alinee con la marca de tick más cercana durante la interacción del usuario, habilita la alineación utilizando el método `setSnapToTicks()`:
+
+```java
+slider.setSnapToTicks(true); // Habilitar la alineación
+```
+
+Aquí hay un ejemplo de un `Slider` completamente configurado que muestra configuraciones de ticks mayores y menores junto con la capacidad de alineación para ajustes precisos:
 
 <ComponentDemo 
 path='/webforj/slidertickspacing?' 
@@ -104,12 +104,12 @@ height = '350px'
 
 ## Orientación e inversión {#orientation-and-inversion}
 
-El componente `Slider` admite dos orientaciones: horizontal (por defecto) y vertical. Puedes cambiar la orientación para adaptarse a tu diseño de interfaz de usuario y requisitos de la aplicación.
+El componente `Slider` admite dos orientaciones: horizontal (predeterminada) y vertical. Puedes cambiar la orientación para adaptarla a la disposición de tu interfaz de usuario y a los requisitos de la aplicación.
 
 Además de la orientación, el `Slider` también se puede invertir. Por defecto:
 
 - Un `Slider` horizontal va de mínimo (izquierda) a máximo (derecha).
-- Un `Slider` vertical va de mínimo (abajo) a máximo (arriba).
+- Un `Slider` vertical va de mínimo (inferior) a máximo (superior).
 
 Cuando se invierte, esta dirección se invierte. Usa el método `setInverted(true)` para habilitar la inversión.
 
@@ -121,11 +121,11 @@ height = '420px'
 
 ## Etiquetas {#labels}
 
-El componente `Slider` admite etiquetas en las marcas de referencia para ayudar a los usuarios a interpretar los valores más fácilmente. Puedes usar etiquetas numéricas por defecto o proporcionar etiquetas personalizadas, y puedes alternar su visibilidad según sea necesario.
+El componente `Slider` admite etiquetas en las marcas de ticks para ayudar a los usuarios a interpretar los valores más fácilmente. Puedes usar etiquetas numéricas predeterminadas o proporcionar etiquetas personalizadas, y puedes alternar su visibilidad según sea necesario.
 
-### Etiquetas por defecto {#default-labels}
+### Etiquetas predeterminadas {#default-labels}
 
-Por defecto, el deslizador puede mostrar etiquetas numéricas en las marcas de referencia principales. Estos valores están determinados por la configuración de `setMajorTickSpacing()`. Para habilitar etiquetas por defecto, usa:
+Por defecto, el slider puede mostrar etiquetas numéricas en las marcas de ticks mayores. Estos valores se determinan mediante la configuración de `setMajorTickSpacing()`. Para habilitar etiquetas predeterminadas, usa:
 
 ```java
 slider.setLabelsVisible(true);
@@ -133,12 +133,12 @@ slider.setLabelsVisible(true);
 
 ### Etiquetas personalizadas {#custom-labels}
 
-Puedes reemplazar las etiquetas numéricas por defecto con texto personalizado usando el método `setLabels()`. Esto es útil cuando deseas mostrar valores más significativos (por ejemplo, temperatura, moneda o categorías).
+Puedes reemplazar las etiquetas numéricas predeterminadas con texto personalizado utilizando el método `setLabels()`. Esto es útil cuando deseas mostrar valores más significativos (por ejemplo, temperatura, moneda o categorías).
 
 ```java
 Map<Integer, String> customLabels = Map.of(
     0, "Frío",
-    30, "Frío",
+    30, "Fresco",
     50, "Moderado",
     80, "Cálido",
     100, "Caliente"
@@ -150,7 +150,7 @@ slider.setLabelsVisible(true);
 
 ### Alternar visibilidad de etiquetas {#toggling-label-visibility}
 
-Ya sea que estés usando etiquetas por defecto o personalizadas, puedes controlar su visibilidad con `setLabelsVisible(true)` o ocultarlas con `setLabelsVisible(false)`.
+Ya sea que estés utilizando etiquetas predeterminadas o personalizadas, puedes controlar su visibilidad con `setLabelsVisible(true)` o ocultarlas con `setLabelsVisible(false)`.
 
 <ComponentDemo 
 path='/webforj/sliderlabels?' 
@@ -158,26 +158,27 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '150px'
 />
 
-## Descripciones emergentes {#tooltips}
+## Tooltips {#tooltips}
 
-Las descripciones emergentes mejoran la usabilidad al mostrar el valor del `Slider` directamente encima o debajo del botón, ayudando a los usuarios a hacer ajustes más precisos. Puedes configurar el comportamiento, la visibilidad y el formato de la descripción emergente según tus necesidades.
+Los tooltips mejoran la usabilidad al mostrar el valor del `Slider` directamente encima o debajo de la perilla, ayudando a los usuarios a hacer ajustes más precisos. Puedes configurar el comportamiento, la visibilidad y el formato del tooltip según tus necesidades.
 
-Para habilitar las descripciones emergentes, usa el método `setTooltipVisible()`. Por defecto, las descripciones emergentes están deshabilitadas:
+Para habilitar los tooltips, utiliza el método `setTooltipVisible()`. Por defecto, los tooltips están deshabilitados:
 
 ```java
-slider.setTooltipVisible(true); // Habilitar descripciones emergentes
-slider.setTooltipVisible(false); // Deshabilitar descripciones emergentes
+slider.setTooltipVisible(true); // Habilitar tooltips
+slider.setTooltipVisible(false); // Deshabilitar tooltips
 ```
 
-Las descripciones emergentes también se pueden configurar para aparecer solo cuando el usuario interactúa con el `Slider`. Usa el método `setTooltipVisibleOnSlideOnly()` para habilitar este comportamiento. Esto es especialmente útil para reducir el desorden visual mientras se proporciona retroalimentación útil durante la interacción.
+Los tooltips también se pueden configurar para que aparezcan solo cuando el usuario interactúa con el `Slider`. Usa el método `setTooltipVisibleOnSlideOnly()` para habilitar este comportamiento. Esto es especialmente útil para reducir el desorden visual mientras se sigue proporcionando retroalimentación útil durante la interacción.
 
-Aquí hay un ejemplo de un `Slider` completamente configurado con descripciones emergentes:
+Aquí hay un ejemplo de un `Slider` completamente configurado con tooltips:
 
-### Personalización de descripciones emergentes {#tooltip-customization}
 
-Por defecto, el `Slider` muestra una descripción emergente con su valor actual. Si deseas personalizar este texto, usa el método `setTooltipText()`. Esto es útil cuando deseas que la descripción emergente muestre texto estático o descriptivo en lugar del valor en vivo.
+### Personalización del tooltip {#tooltip-customization}
 
-También puedes usar una expresión de JavaScript para formatear la descripción emergente dinámicamente. Si tu expresión incluye la palabra clave `return`, se usa tal cual. Si no, se envuelve automáticamente con `return` y `;` para formar una función válida. Por ejemplo:
+Por defecto, el `Slider` muestra un tooltip con su valor actual. Si deseas personalizar este texto, utiliza el método `setTooltipText()`. Esto es útil cuando quieres que el tooltip muestre texto estático o descriptivo en lugar del valor en vivo.
+
+También puedes usar una expresión de JavaScript para formatear el tooltip dinámicamente. Si tu expresión incluye la palabra clave `return`, se utiliza tal como está. Si no, se envuelve automáticamente con `return` y `;` para formar una función válida. Por ejemplo:
 
 ```java
 // Muestra el valor seguido de un signo de dólar
@@ -191,12 +192,13 @@ O simplemente:
 slider.setTooltipText("x + ' unidades'"); 
 ```
 
-## Estilo {#styling}
+
+## Estilización {#styling}
 
 ### Temas {#themes}
 
-El `Slider` viene con 6 temas integrados para rápido estilo sin el uso de CSS. El tema es compatible mediante el uso de una clase enum incorporada.
-A continuación se muestran deslizadores con cada uno de los temas admitidos aplicados:
+El `Slider` viene con 6 temas integrados para una estilización rápida sin el uso de CSS. El uso de temas está soportado por una clase enum incorporada.
+A continuación se muestran sliders con cada uno de los temas soportados aplicados:
 
 <ComponentDemo 
 path='/webforj/sliderthemes?' 

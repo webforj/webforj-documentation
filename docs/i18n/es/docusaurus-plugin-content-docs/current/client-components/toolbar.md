@@ -6,7 +6,7 @@ slug: toolbar
 description: A user guide article for the toolbar
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: c50f56291d0ed9795849c7c4c07dfa0d
+_i18n_hash: 5ddca7821c09d0f46e27af39c3a5e37a
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,7 +17,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info COMPONENTE DEL CLIENTE
-Esta sección describe la información de estilo para el **`<dwc-toolbar>`** componente. Este componente es **solo del lado del cliente** - no se puede instanciar por sí solo a través de la API, pero puede formar parte de componentes de la API.
+Esta sección describe la información de estilo para el **`<dwc-toolbar>`** componente. Este componente es **solo del lado del cliente** - no puede ser instanciado por sí mismo a través de la API, pero puede formar parte de los componentes de la API.
 :::
 
 ## Estilo {#styling}

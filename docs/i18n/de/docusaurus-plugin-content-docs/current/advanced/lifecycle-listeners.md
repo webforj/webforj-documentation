@@ -2,25 +2,25 @@
 sidebar_position: 10
 title: Lifecycle Listeners
 sidebar_class_name: new-content
-_i18n_hash: 475cc2842226c605bbe7f2ee931955dd
+_i18n_hash: 95e3a7e349b0cf54679daf76d2bf209c
 ---
 <!-- vale off -->
 # Lebenszyklus-Listener <DocChip chip='since' label='25.02' />
 <!-- vale on -->
 
-Das `AppLifecycleListener`-Interface ermöglicht es externem Code, App-Lebensereignisse zu beobachten und darauf zu reagieren. Durch die Implementierung dieses Interfaces können Sie Code zu spezifischen Zeitpunkten während des App-Starts und -Herunterfahrens ausführen, ohne die `App`-Klasse selbst zu ändern.
+Die Schnittstelle `AppLifecycleListener` ermöglicht externem Code, die Ereignisse des Anwendungslebenszyklus zu beobachten und darauf zu reagieren. Durch die Implementierung dieser Schnittstelle können Sie Code zu bestimmten Zeitpunkten während des Starts und der Beendigung der Anwendung ausführen, ohne die `App`-Klasse selbst zu ändern.
 
-Lebenszyklus-Listener werden zur Laufzeit automatisch über Konfigurationsdateien des Dienstanbieters entdeckt und geladen. Jede App-Instanz erhält ihre eigenen Satz von Listener-Instanzen, wobei die Isolation zwischen verschiedenen Apps, die in derselben Umgebung ausgeführt werden, gewahrt bleibt.
+Lebenszyklus-Listener werden automatisch zur Laufzeit über Konfigurationsdateien für Dienstanbieter entdeckt und geladen. Jede Instanz der Anwendung erhält ihren eigenen Satz von Listener-Instanzen, wodurch die Isolation zwischen verschiedenen Anwendungen, die in derselben Umgebung ausgeführt werden, gewahrt bleibt.
 
-## Wann man Lebenszyklus-Listener verwenden sollte {#when-to-use-lifecycle-listeners}
+## Wann Sie Lebenszyklus-Listener verwenden sollten {#when-to-use-lifecycle-listeners}
 
 Verwenden Sie Lebenszyklus-Listener, wenn Sie:
-- Ressourcen oder Dienste initialisieren möchten, bevor eine App ausgeführt wird
-- Ressourcen beim Beenden einer App bereinigen möchten
+- Ressourcen oder Dienste initialisieren müssen, bevor eine Anwendung ausgeführt wird
+- Ressourcen bereinigen müssen, wenn eine Anwendung beendet wird  
 - Querschnittsbelange hinzufügen möchten, ohne die `App`-Klasse zu ändern
-- Plugin-Architekturen erstellen möchten
+- Plugin-Architekturen aufbauen möchten
 
-## Das `AppLifecycleListener`-Interface {#the-applifecyclelistener-interface}
+## Die Schnittstelle `AppLifecycleListener` {#the-applifecyclelistener-interface}
 
 ```java title="AppLifecycleListener.java"
 public interface AppLifecycleListener {
@@ -31,27 +31,27 @@ public interface AppLifecycleListener {
 }
 ```
 
-:::info App-Isolation
-Jede App-Instanz erhält ihren eigenen Satz von Listener-Instanzen:
-- Listener sind zwischen verschiedenen Apps isoliert
-- Statische Felder in Listenern werden nicht zwischen Apps geteilt
-- Listener-Instanzen werden erstellt, wenn die App startet, und gelöscht, wenn sie beendet wird
+:::info Anwendung Isolierung
+Jede Instanz der Anwendung erhält ihren eigenen Satz von Listener-Instanzen:
+- Listener sind zwischen verschiedenen Anwendungen isoliert
+- Statische Felder in Listenern werden nicht zwischen Anwendungen geteilt
+- Listener-Instanzen werden erstellt, wenn die Anwendung startet, und zerstört, wenn sie beendet wird
 
-Wenn Sie Daten zwischen Apps teilen müssen, verwenden Sie externe Speichermechanismen wie Datenbanken oder gemeinsame Dienste.
+Wenn Sie Daten zwischen Anwendungen teilen müssen, verwenden Sie externe Speichermechanismen wie Datenbanken oder gemeinsame Dienste.
 :::
 
 ### Lebenszyklusereignisse {#lifecycle-events}
 
-| Ereignis | Wann aufgerufen | Häufige Verwendungen |
-|----------|----------------|----------------------|
-| `onWillRun` | Bevor `app.run()` ausgeführt wird | Ressourcen initialisieren, Dienste konfigurieren |
-| `onDidRun` | Nachdem `app.run()` erfolgreich abgeschlossen wurde | Hintergrundaufgaben starten, erfolgreichen Start protokollieren |
-| `onWillTerminate` | Vor dem Beenden der App | Zustand speichern, auf Herunterfahren vorbereiten |
-| `onDidTerminate` | Nach dem Beenden der App | Ressourcen bereinigen, abschließendes Protokollieren |
+| Ereignis | Wann aufgerufen | Übliche Verwendungen |
+|----------|----------------|---------------------|
+| `onWillRun` | Vor der Ausführung von `app.run()` | Ressourcen initialisieren, Dienste konfigurieren |
+| `onDidRun` | Nach erfolgreichem Abschluss von `app.run()` | Hintergrundaufgaben starten, erfolgreichen Start protokollieren |
+| `onWillTerminate` | Vor der Beendigung der Anwendung | Status speichern, auf Shutdown vorbereiten |
+| `onDidTerminate` | Nach der Beendigung der Anwendung | Ressourcen bereinigen, abschließendes Protokollieren |
 
-## Erstellen eines Lebenszyklus-Listeners {#creating-a-lifecycle-listener}
+## Erstellung eines Lebenszyklus-Listeners {#creating-a-lifecycle-listener}
 
-### Grundlegende Implementierung {#basic-implementation}
+### Basisimplementierung {#basic-implementation}
 
 ```java title="StartupListener.java"
 import com.webforj.App;
@@ -61,19 +61,19 @@ public class StartupListener implements AppLifecycleListener {
     
     @Override
     public void onWillRun(App app) {
-        System.out.println("App startet: " + app.getId());
+        System.out.println("Anwendung startet: " + app.getId());
     }
     
     @Override
     public void onDidRun(App app) {
-        System.out.println("App gestartet: " + app.getId());
+        System.out.println("Anwendung gestartet: " + app.getId());
     }
 }
 ```
 
 ### Registrieren des Listeners {#registering-the-listener}
 
-Erstellen Sie eine Datei zur Konfiguration des Dienstanbieters:
+Erstellen Sie eine Konfigurationsdatei für den Dienstanbieter:
 
 **Datei**: `src/main/resources/META-INF/services/com.webforj.AppLifecycleListener`
 
@@ -82,7 +82,7 @@ com.example.listeners.StartupListener
 ```
 
 :::tip Verwendung von AutoService
-Es ist leicht zu vergessen, Dienstbeschreibungen zu aktualisieren. Verwenden Sie Googles [AutoService](https://github.com/google/auto/blob/main/service/README.md), um die Dienstdatei automatisch zu generieren:
+Es ist leicht, das Aktualisieren von Dienstbeschreibungen zu vergessen. Verwenden Sie Googles [AutoService](https://github.com/google/auto/blob/main/service/README.md), um die Datei automatisch zu generieren:
 
 ```java title="StartupListener.java"
 import com.google.auto.service.AutoService;
@@ -96,9 +96,9 @@ public class StartupListener implements AppLifecycleListener {
 
 ## Steuerung der Ausführungsreihenfolge {#controlling-execution-order}
 
-Wenn mehrere Listener registriert sind, können Sie deren Ausführungsreihenfolge mit der `@AppListenerPriority`-Annotation steuern. Dies ist besonders wichtig, wenn Listener Abhängigkeiten zueinander haben oder wenn bestimmte Initialisierungen vor anderen erfolgen müssen.
+Wenn mehrere Listener registriert sind, können Sie ihre Ausführungsreihenfolge mit der Annotation `@AppListenerPriority` steuern. Dies ist besonders wichtig, wenn Listener Abhängigkeiten untereinander haben oder wenn bestimmte Initialisierungen vor anderen erfolgen müssen.
 
-Prioritätswerte wirken in aufsteigender Reihenfolge - **niedrigere Zahlen werden zuerst ausgeführt**. Die Standardpriorität beträgt 10, sodass Listener ohne explizite Prioritätsannotationen nach denen mit niedrigeren Prioritätswerten ausgeführt werden.
+Prioritätswerte funktionieren in aufsteigender Reihenfolge - **niedrigere Zahlen werden zuerst ausgeführt**. Die Standardpriorität beträgt 10, sodass Listener ohne explizite Prioritätsannotation nach denen mit niedrigeren Prioritätswerten ausgeführt werden.
 
 ```java title="SecurityListener.java"
 @AutoService(AppLifecycleListener.class)
@@ -122,22 +122,21 @@ public class LoggingListener implements AppLifecycleListener {
 
 ### Ausführungsfluss mit App-Hooks {#execution-flow-with-app-hooks}
 
-Über die Kontrolle der Reihenfolge zwischen mehreren Listenern hinaus ist es wichtig zu verstehen, wie Listener mit den Lifecycle-Hooks der `App`-Klasse interagieren. Für jedes Lebenszyklusereignis folgt das Framework einer spezifischen Ausführungsreihenfolge, die bestimmt, wann Ihre Listener im Verhältnis zu den integrierten Hooks der App ausgeführt werden.
+Neben der Steuerung der Reihenfolge zwischen mehreren Listenern ist es wichtig zu verstehen, wie Listener mit den eigenen Lebenszyklus-Hooks der `App`-Klasse interagieren. Für jedes Lebenszyklusereignis folgt das Framework einer spezifischen Ausführungssequenz, die bestimmt, wann Ihre Listener im Verhältnis zu den integrierten Hooks der Anwendung ausgeführt werden.
 
-Das folgende Diagramm zeigt diesen Ausführungsfluss und die präzise Zeitplanung, wann die `AppLifecycleListener`-Methoden im Verhältnis zu den entsprechenden `App`-Hooks aufgerufen werden:
+Das folgende Diagramm veranschaulicht diesen Ausführungsfluss und zeigt den genauen Zeitpunkt, zu dem die Methoden `AppLifecycleListener` im Verhältnis zu den entsprechenden `App`-Hooks aufgerufen werden: 
 
 <div align="center">
 
-![AppLifecycleListener listener VS `App` hooks](/img/lifecycle-listeners.svg)
+![AppLifecycleListener listeners VS `App` hooks  ](/img/lifecycle-listeners.svg)
 
 </div>
 
-
 ## Fehlerbehandlung {#error-handling}
 
-Ausnahmen, die von Listenern ausgelöst werden, werden protokolliert, verhindern jedoch nicht, dass andere Listener ausgeführt werden oder die App weiterhin läuft. Stellen Sie immer sicher, dass Ausnahmen innerhalb Ihrer Listener behandelt werden:
+Ausnahmen, die von Listeners ausgelöst werden, werden protokolliert, verhindern jedoch nicht die Ausführung anderer Listener oder das Ausführen der Anwendung. Behandeln Sie immer Ausnahmen innerhalb Ihrer Listener:
 
-```java title="Fehlerbehandlungsbeispiel"
+```java title="Beispiel für Fehlerbehandlung"
 @Override
 public void onWillRun(App app) {
     try {

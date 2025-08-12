@@ -1,6 +1,6 @@
 {
   "theme.docs.translationNotice": {
-    "message": "Deze pagina is automatisch vertaald met AI en kan fouten of onnauwkeurigheden bevatten. Voor de meest nauwkeurige en actuele informatie, raadpleeg de officiële webforJ documentatie. webforJ biedt geen garanties over de nauwkeurigheid, betrouwbaarheid of volledigheid van deze AI-vertalingen.",
+    "message": "Deze pagina is automatisch vertaald en kan fouten bevatten. Raadpleeg de officiële webforJ documentatie voor de meest actuele informatie. webforJ biedt geen garanties over de nauwkeurigheid van deze vertalingen.",
     "description": "Translation notice for non-English pages"
   },
   "component.askMenu.chatgpt.label": {
@@ -68,7 +68,7 @@
     "description": "archetypeVersion description"
   },
   "component.archetype.table.groupId.desc": {
-    "message": "Vertegenwoordigt de namespace voor het gegenereerde project. Typisch gestructureerd als een Java package, zoals org.example, en wordt gebruikt om uw organisatie of projectdomein uniek te identificeren.",
+    "message": "Namespace voor het project.",
     "description": "groupId description"
   },
   "component.archetype.table.artifactId.desc": {
@@ -76,7 +76,7 @@
     "description": "artifactId description"
   },
   "component.archetype.table.version.desc": {
-    "message": "Definieert de versie van het gegenereerde project. Een gebruikelijke conventie is MAJOR.MINOR-SNAPSHOT, zoals 1.0-SNAPSHOT, waarbij SNAPSHOT aangeeft dat het project nog in ontwikkeling is.",
+    "message": "Definieer projectversie: MAJOR.MINOR-SNAPSHOT, bijv. 1.0-SNAPSHOT (SNAPSHOT geeft aan dat het project nog in ontwikkeling is).",
     "description": "version description"
   },
   "component.archetype.table.flavor.desc": {
@@ -88,11 +88,11 @@
     "description": "webforj flavor description"
   },
   "component.archetype.table.flavor.spring": {
-    "message": "webforJ applicatie met Spring Boot ondersteuning (vereist webforJ 25.02 of hoger).",
+    "message": "webforJ applicatie met ondersteuning voor Spring Boot ( vereist webforJ 25.02 of hoger).",
     "description": "webforj-spring flavor description"
   },
   "component.archetype.table.appName.desc": {
-    "message": "Een optionele parameter die gebruikt kan worden in het POM-bestand van het gegenereerde project. Afhankelijk van het gebruikte webforJ archetype kan het gebruikt worden als standaardtitel voor de applicatie.",
+    "message": "Optionele parameter voor het POM-bestand; kan dienen als standaardtitel voor de applicatie, afhankelijk van het gebruikte webforJ-archetype.",
     "description": "appName description"
   },
   "component.archetype.conclusion": {
@@ -538,7 +538,7 @@
     "description": "The draft content banner title"
   },
   "theme.contentVisibility.draftBanner.message": {
-    "message": "Deze pagina is een concept en alleen zichtbaar in de ontwikkelingsomgeving.",
+    "message": "Deze pagina is een concept en alleen zichtbaar in de ontwikkelomgeving.",
     "description": "The draft content banner message"
   },
   "theme.ErrorPageContent.tryAgain": {
@@ -674,7 +674,7 @@
     "description": "Description for dependencies section"
   },
   "componentDemo.hideCode": {
-    "message": "Verberg Code",
+    "message": "Verberg code",
     "description": "Button text to hide the code section"
   },
   "componentDemo.showCode": {

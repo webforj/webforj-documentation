@@ -1,9 +1,9 @@
 ---
 sidebar_position: 10
 title: Transitions & Easing
-_i18n_hash: 7d44ac3e68f0187b1df2bbeeeee923f3
+_i18n_hash: d2f7570b46bfa778ca967908d6e7d901
 ---
-Les variables de transition sont utilisées pour fournir des durées d'animation cohérentes dans votre application. Elles contrôlent la durée qu'une animation prend pour se terminer.
+Les variables de transition sont utilisées pour fournir des durées d'animation cohérentes dans votre application. Elles contrôlent combien de temps une animation met à se terminer.
 
 ### Exemple {#example}
 
@@ -16,7 +16,7 @@ Les variables de transition sont utilisées pour fournir des durées d'animation
 ### Variables {#variables}
 
 | **Variable**              | **Valeur par défaut** | **Exemple**                               |
-|---------------------------|-----------------------|--------------------------------------------|
+|---------------------------|-----------------------|-------------------------------------------|
 | `--dwc-transition-x-slow` | 1000ms                | <TransitionBox speed="--dwc-transition-x-slow" /> |
 | `--dwc-transition-slow`   | 500ms                 | <TransitionBox speed="--dwc-transition-slow" />   |
 | `--dwc-transition-medium` | 250ms                 | <TransitionBox speed="--dwc-transition-medium" /> |
@@ -43,7 +43,7 @@ Essayez de survoler chaque aperçu d'easing pour voir son effet d'animation.
 ### Variables {#variables-1}
 
 | **Variable** | **Cubic Bezier** | **Exemple** |
-|--------------|------------------|-------------|
+|-------------|------------------|-------------|
 | `--dwc-ease-inQuad` | [cubic-bezier(0.55, 0.085, 0.68, 0.53)](https://cubic-bezier.com/#0.55,0.085,0.68,0.53) | <TransitionBox easing="--dwc-ease-inQuad" /> |
 | `--dwc-ease-outQuad` | [cubic-bezier(0.25, 0.46, 0.45, 0.94)](https://cubic-bezier.com/#0.25,0.46,0.45,0.94) | <TransitionBox easing="--dwc-ease-outQuad" /> |
 | `--dwc-ease-inOutQuad` | [cubic-bezier(0.455, 0.03, 0.515, 0.955)](https://cubic-bezier.com/#0.455,0.03,0.515,0.955) | <TransitionBox easing="--dwc-ease-inOutQuad" /> |

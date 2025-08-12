@@ -1,15 +1,15 @@
 ---
 sidebar_position: 1
 title: CSS Variables
-_i18n_hash: f81f4fd4afdcb9807e10b8a35e244b20
+_i18n_hash: b753c1b13cfcc45f72d6712e980ef952
 ---
-CSS-muuttujat ovat keskeisessä roolissa webforJ-komponenttien ulkoasun mukauttamisessa. Nämä muuttujat tallentavat käytettäviä arvoja, kuten värejä, fonttikokoja ja väliä, joita voidaan soveltaa johdonmukaisesti sovelluksessasi.
+CSS-muuttujat ovat keskeisessä roolissa webforJ-komponenttien ulkoasun mukauttamisessa. Nämä muuttujat tallentavat uudelleenkäytettäviä arvoja, kuten värejä, fonttikokoja ja välejä, joita voidaan soveltaa johdonmukaisesti sovelluksessasi.
 
-Toisin kuin perinteiset lähestymistavat, jotka nojautuivat CSS-esikäsittelijöihin kuten [SASS](https://sass-lang.com/) tai [LESS](https://lesscss.org/), CSS-muuttujat mahdollistavat **dynaamisen tyylittelyn ajon aikana**. Ne vähentävät toistoa, parantavat ylläpidettävyyttä ja tekevät tyylitiedostoista helpommin luettavia ja hallittavia.
+Toisin kuin perinteiset lähestymistavat, jotka perustuivat CSS-esikäsittelijöihin kuten [SASS](https://sass-lang.com/) tai [LESS](https://lesscss.org/), CSS-muuttujat mahdollistavat **dynaamisten tyylien määrittämisen ajonaikaisesti**. Ne vähentävät toistoa, parantavat ylläpidettävyyttä ja tekevät tyylitiedostoista helpommin luettavia ja hallittavia.
 
 ## CSS-muuttujien määrittäminen {#defining-css-variables}
 
-CSS-muuttujat määritellään käyttäen kaksoisviivaa (`--`) etuliitteenä, ja ne voidaan rajata mihin tahansa CSS-valitsimeen. Yleisimmän käytännön mukaan ne määritellään `:root`-valitsimessa, joka rajaa ne globaalisti.
+CSS-muuttujat määritetään käyttämällä kaksoisdashia (`--`) etuliitteenä, ja ne voidaan rajata mihin tahansa CSS-valitsimeen. Yleisimmät käytännöt ovat määritellä ne `:root`-valitsimessa, joka rajaa ne globaalisti.
 
 ```css
 :root {
@@ -17,11 +17,11 @@ CSS-muuttujat määritellään käyttäen kaksoisviivaa (`--`) etuliitteenä, ja
 }
 ```
 
-:::tip `:root` pseudoluokka
-[`_root_`](https://developer.mozilla.org/en-US/docs/Web/CSS/:root) pseudoluokka kohdistaa asiakirjan juurielementtiin—yleensä `<html>` HTML:ssä. Se käyttäytyy kuin `html`, mutta sillä on korkeampi spesifisyys.
+:::tip `:root` -pseudo-luokka
+[` :root`](https://developer.mozilla.org/en-US/docs/Web/CSS/:root) -pseudo-luokka kohdistuu asiakirjan juurielementtiin—yleensä `<html>` HTML:ssä. Se käyttäytyy kuin `html`, mutta sillä on suurempi spesifisyys.
 :::
 
-CSS-muuttujat voivat pitää sisällään mitä tahansa merkkijonoa, eivät vain voimassa olevia CSS-arvoja. Tämä joustavuus on erityisen hyödyllistä työskennellessäsi JavaScriptin kanssa.
+CSS-muuttujat voivat sisältää minkä tahansa merkkijonon, eivät vain kelvollisia CSS-arvoja. Tämä joustavuus on erityisen hyödyllistä työskenneltäessä JavaScriptin kanssa.
 
 ```css
 html {
@@ -29,9 +29,9 @@ html {
 }
 ```
 
-## Komponentti-spesifiset muuttujat {#component-specific-variables}
+## Komponenttikohtaiset muuttujat {#component-specific-variables}
 
-Määritelläksesi tai ylittääksesi muuttujan tietyssä komponentissa, ilmoita se komponentin valitsimen sisällä:
+Määritelläksesi tai ohjataksesi muuttujan tietylle komponentille, ilmoita se komponentin valitsimen sisällä:
 
 ```css
 dwc-button {
@@ -39,13 +39,13 @@ dwc-button {
 }
 ```
 
-:::tip Komponenttispefiset tyylittelyviitteet
-Jokainen webforJ-komponentti tukee erityistä joukkoa CSS-muuttujia, jotka hallitsevat sen ulkoasua. Nämä on dokumentoitu **Tyylitys > CSS-ominaisuudet** -osiossa kullekin komponentille.
+:::tip Komponenttikohtainen tyyliviite
+Jokainen webforJ-komponentti tukee tiettyä CSS-muuttujien joukkoa, joka ohjaa sen ulkoasua. Nämä on dokumentoitu **Tyylit > CSS-ominaisuudet** -osiossa jokaiselle komponentille. 
 :::
 
-## CSS-muuttujien käyttö {#using-css-variables}
+## CSS-muuttujien käyttäminen {#using-css-variables}
 
-Käytä [`var()`](https://developer.mozilla.org/en-US/docs/Web/CSS/var())-funktiota soveltaaksesi muuttujan arvoa tyyleihisi:
+Käytä [`var()`](https://developer.mozilla.org/en-US/docs/Web/CSS/var()) -funktiota sovellaksesi muuttujan arvoa tyyleihisi:
 
 ```css
 .panel {
@@ -53,7 +53,7 @@ Käytä [`var()`](https://developer.mozilla.org/en-US/docs/Web/CSS/var())-funkti
 }
 ```
 
-Voit myös määritellä varavarauksen, jos muuttujaa ei ole määritelty:
+Voit myös määrittää varaväriarvon, jos muuttujaa ei ole määritelty:
 
 ```css
 .frame {
@@ -61,29 +61,29 @@ Voit myös määritellä varavarauksen, jos muuttujaa ei ole määritelty:
 }
 ```
 
-## Muuttujien käsittely webforJ:llä {#manipulating-variables-with-webforj}
+## Muuttujien manipulointi webforJ:llä {#manipulating-variables-with-webforj}
 
-CSS-muuttujia voidaan päivittää dynaamisesti webforJ API:n kautta, mahdollistaen reaaliaikaisen tyylittelyn:
+CSS-muuttujia voidaan päivittää dynaamisesti webforJ-API:n kautta, mahdollistaen reaaliaikaisen tyylin:
 
 ```java
-// Asetetaan CSS-muuttuja
+// Määritä CSS-muuttuja
 button.setStyle('--dwc-button-font-weight', '400');
 ```
 
-:::tip CSS-muuttujien käsittely JavaScriptillä
-webforJ mahdollistaa JavaScriptin suorittamisen asiakaspuolella käyttäen Page- tai Element API:ta. Tämä tarkoittaa, että voit dynaamisesti käsitellä CSS-muuttujia ajon aikana aivan kuten tekisit tavanomaisissa verkkosovelluksissa.
+:::tip CSS-muuttujien manipulointi JavaScriptilla
+webforJ mahdollistaa JavaScriptin suorittamisen asiakkaan puolella käyttäen Sivusivun tai Elementin APIa. Tämä tarkoittaa, että voit dynaamisesti manipuloida CSS-muuttujia ajonaikaisesti aivan kuten normaalissa verkkosovelluksessa.
 
 ```javascript
-// Asetetaan CSS-muuttuja
+// Määritä CSS-muuttuja
 const el = document.querySelector('dwc-button');
 el.style.setProperty('--dwc-button-font-weight', '400');
 
-// Haetaan CSS-muuttuja
+// Hanki CSS-muuttuja
 const value = el.style.getPropertyValue('--dwc-font-size-m');
 ```
 :::
 
 ## Lisäresurssit {#additional-resources}
 
-- [CSS-käyttötilojen käyttäminen (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)  
-- [Täydellinen opas mukautettuihin ominaisuuksiin (CSS-Tricks)](https://css-tricks.com/a-complete-guide-to-custom-properties/)
+- [CSS-muuttujien käyttö (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)  
+- [Täydellinen opas mukautetuille ominaisuuksille (CSS-Tricks)](https://css-tricks.com/a-complete-guide-to-custom-properties/)

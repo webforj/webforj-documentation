@@ -1,15 +1,15 @@
 ---
 sidebar_position: 2
 title: Themes
-_i18n_hash: aa6eb0baae2b881b24c45ae970a079dc
+_i18n_hash: afb80b03bfe243ffa93d6f72a05809e2
 ---
-webforJ incluye tres temas de aplicación incorporados y admite la definición de sus propios temas personalizados. Los temas predeterminados son:
+webforJ incluye tres temas de aplicación integrados y admite la definición de sus propios temas personalizados. Los temas predeterminados son:
 
 - **light**: Un tema brillante con un fondo claro (predeterminado).
-- **dark**: Un fondo oscuro teñido con el color principal.
+- **dark**: Un fondo oscuro con un tono del color primario.
 - **dark-pure**: Un tema oscuro completamente neutral basado en tonos grises.
 
-Para aplicar un tema en su aplicación, use la anotación `@AppTheme` o el método `App.setTheme()`. El nombre del tema debe ser uno de: `system`, `light`, `dark`, `dark-pure`, o un nombre de tema personalizado.
+Para aplicar un tema en su aplicación, use la anotación `@AppTheme` o el método `App.setTheme()`. El nombre del tema debe ser uno de: `system`, `light`, `dark`, `dark-pure` o un nombre de tema personalizado.
 
 ```java
 @AppTheme("dark-pure")
@@ -23,7 +23,7 @@ App.setTheme("dark-pure");
 
 ## Sobrescribiendo temas predeterminados {#overriding-default-themes}
 
-Puede sobrescribir el tema **light** redefiniendo las propiedades personalizadas de CSS en el selector `:root`.
+Puede sobrescribir el tema **light** redefiniendo propiedades CSS personalizadas en el selector `:root`.
 
 :::info `:root` pseudo-clase
 La pseudo-clase CSS `:root` apunta al elemento raíz del documento. En HTML, representa el elemento `<html>` y tiene una especificidad mayor que el selector `html` simple.
@@ -51,7 +51,7 @@ html[data-app-theme="dark"] {
 
 ## Creando temas personalizados {#creating-custom-themes}
 
-Puede definir sus propios temas utilizando el selector `html[data-app-theme='THEME_NAME']`. Los temas personalizados pueden coexistir con los predeterminados, y puede cambiar entre ellos dinámicamente en tiempo de ejecución.
+Puede definir sus propios temas utilizando el selector `html[data-app-theme='THEME_NAME']`. Los temas personalizados pueden coexistir con los predeterminados, y puede alternar entre ellos dinámicamente en tiempo de ejecución.
 
 ```css
 html[data-app-theme="new-theme"] {
@@ -75,6 +75,6 @@ App.setTheme("new-theme");
 
 ## Temas de componentes {#component-themes}
 
-Además de los temas a nivel de aplicación, los componentes de webforJ admiten un conjunto de **temas de componente** basados en las paletas de colores predeterminadas: `default`, `primary`, `success`, `warning`, `danger`, `info`, y `gray`.
+Además de los temas a nivel de aplicación, los componentes de webforJ admiten un conjunto de **temas de componentes** basados en las paletas de colores predeterminadas: `default`, `primary`, `success`, `warning`, `danger`, `info` y `gray`.
 
-Cada componente documenta sus temas compatibles en la sección **Estilo → Temas**.
+Cada componente documenta sus temas admitidos en la sección **Estilo → Temas**.

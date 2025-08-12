@@ -1,13 +1,13 @@
 ---
 sidebar_position: 11
 title: Routes Registration
-_i18n_hash: 8f6b7b85dd246adc8d98c8a5bf994a39
+_i18n_hash: 5075588c497508fc77d7f76b1b412cf4
 ---
-除了使用 `@Route` 注解[注册路由](./defining-routes)之外，还可以根据应用逻辑、用户角色或其他条件在运行时动态注册、更新或删除路由。这种灵活性使您能够更动态地管理导航，而不是在编译时静态定义路由。
+除了使用 `@Route` 注释 [注册路由](./defining-routes) 外，还可以根据应用逻辑、用户角色或其他条件，在运行时动态注册、更新或删除路由。这样的灵活性使您能够更动态地管理导航，而不是在编译时静态地定义路由。
 
 ## 动态注册路由 {#registering-routes-dynamically}
 
-您可以使用 `RouteRegistry` 类动态注册路由，该类可以通过 `Router` 访问。这允许您在运行时添加新路由，从而实现灵活的导航。
+您可以使用 `RouteRegistry` 类动态注册路由，该类可以通过 `Router` 访问。这使您能够在运行时添加新路由，从而实现灵活的导航。
 
 ### 示例：注册动态路由 {#example-registering-a-dynamic-route}
 
@@ -26,7 +26,7 @@ router.navigate(SettingsView.class);
 
 ## 条件路由注册 {#conditional-route-registration}
 
-通常，路由需要根据特定条件（例如用户角色或应用程序状态）进行添加或删除。通过动态路由，您可以在运行时有条件地注册或注销路由。
+通常，路由需要根据特定条件，例如用户角色或应用程序的状态进行添加或删除。通过动态路由，您可以有条件地在运行时注册或注销路由。
 
 ### 示例：基于用户角色的条件注册 {#example-conditional-registration-based-on-user-role}
 
@@ -34,14 +34,14 @@ router.navigate(SettingsView.class);
 Router router = Router.getCurrent();
 RouteRegistry registry = router.getRegistry();
 
-// 检查用户角色并注册相应的路由
+// 检查用户角色并注册适当的路由
 if (user.hasRole("editor")) {
     registry.register("/editor/dashboard", EditorDashboardView.class);
 } else if (user.hasRole("viewer")) {
     registry.register("/viewer/dashboard", ViewerDashboardView.class);
 }
 
-// 导航到相应的仪表板
+// 导航到适当的仪表板
 if (user.hasRole("editor")) {
     router.navigate(EditorDashboardView.class);
 } else if (user.hasRole("viewer")) {
@@ -49,15 +49,15 @@ if (user.hasRole("editor")) {
 }
 ```
 
-在这个例子中：
+在此示例中：
 - 根据用户的角色动态注册 `/editor/dashboard` 或 `/viewer/dashboard` 路由。
 - 应用程序根据用户的访问权限导航到适当的仪表板。
 
 ## 删除路由 {#removing-routes}
 
-正如可以动态添加路由一样，当不再需要时，它们也可以在运行时被删除，或者当应用程序的上下文发生变化时。
+就像路由可以动态添加一样，当不再需要它们或应用程序的上下文发生变化时，也可以在运行时删除。
 
-### 示例：删除已注册的路由 {#example-removing-a-registered-route}
+### 示例：删除注册的路由 {#example-removing-a-registered-route}
 
 ```java
 Router router = Router.getCurrent();
@@ -66,17 +66,17 @@ RouteRegistry registry = router.getRegistry();
 // 删除设置视图的路由
 registry.unregister("/settings");
 
-// 可选择通过组件类进行删除
+// 可选，通过组件类删除
 registry.unregister(SettingsView.class);
 ```
 
-在此示例中，当不再需要时，`/settings` 路由动态删除。
+在此示例中，当不再需要时，动态删除 `/settings` 路由。
 
-## 在应用程序启动时注册路由 {#registering-routes-at-app-startup}
+## 在应用启动时注册路由 {#registering-routes-at-app-startup}
 
-您可以在应用程序初始化期间注册动态路由，根据启动时的环境或配置使某些视图可用。
+您可以在应用初始化期间注册动态路由，从而使某些视图可用，具体取决于启动时的环境或配置。
 
-### 示例：应用程序启动期间注册路由 {#example-registering-routes-during-app-startup}
+### 示例：在应用启动期间注册路由 {#example-registering-routes-during-app-startup}
 
 ```java
 @Routify
@@ -96,13 +96,13 @@ public class Application extends App {
 ```
 
 在此示例中：
-- 仅在应用程序以开发模式运行时，动态注册 `DebugView`。
+- 仅在应用程序处于开发模式时，动态注册 `DebugView`。
 
-## 动态注册带有 `@Route` 注解的组件 {#registering-route-annotated-components-dynamically}
+## 动态注册 `@Route` 注释的组件 {#registering-route-annotated-components-dynamically}
 
-除了手动定义路由之外，您还可以动态注册已用 `@Route` 注解的组件。当您希望利用预先注解的类，但根据应用逻辑动态注册它们时，这非常有用。
+除了手动定义路由外，还可以动态注册已经用 `@Route` 注释的组件。当您希望利用预注释的类但根据应用逻辑动态注册它们时，这非常有用。
 
-### 示例：注册带有 `@Route` 注解的组件 {#example-registering-an-route-annotated-component}
+### 示例：注册 `@Route` 注释的组件 {#example-registering-an-route-annotated-component}
 
 ```java
 @Route("profile")
@@ -113,7 +113,7 @@ public class ProfileView extends Composite<Div> {
 Router router = Router.getCurrent();
 RouteRegistry registry = router.getRegistry();
 
-// 动态注册带有 @Route 注解的 ProfileView
+// 动态注册带有 @Route 注释的 ProfileView
 registry.register(ProfileView.class);
 
 // 导航到 ProfileView
@@ -121,14 +121,14 @@ router.navigate(ProfileView.class);
 ```
 
 在此示例中：
-- `ProfileView` 类带有 `@Route("profile")` 注解。
-- 路由通过 `registry.register(ProfileView.class)` 在运行时动态注册。
+- `ProfileView` 类带有 `@Route("profile")` 注释。
+- 使用 `registry.register(ProfileView.class)` 在运行时动态注册路由。
 
 ## 从整个包注册路由 {#registering-routes-from-an-entire-package}
 
-如果您的应用程序有大量路由组织在一个包中，您可以动态注册该包中的所有带有 `@Route` 注解的组件。
+如果您的应用程序有大量路由按包组织，您可以动态注册包中的所有 `@Route` 注释的组件。
 
-### 示例：从一个包注册所有路由 {#example-registering-all-routes-from-a-package}
+### 示例：从包中注册所有路由 {#example-registering-all-routes-from-a-package}
 
 ```java
 Router router = Router.getCurrent();
@@ -139,14 +139,14 @@ RouteRegistry.ofPackage(new String[] { "com.myapp.admin" }, registry);
 ```
 
 在此示例中：
-- `ofPackage` 方法扫描 `com.myapp.admin` 包并注册所有带有 `@Route` 注解的类。
-- 这对于路由数量众多并按包组织的大型应用程序特别有用。
+- `ofPackage` 方法扫描 `com.myapp.admin` 包并注册所有带有 `@Route` 注释的类。
+- 这对于路由数量众多的较大应用程序特别有用。
 
-## 检索已注册的路由 {#retrieving-registered-routes}
+## 检索注册的路由 {#retrieving-registered-routes}
 
-要检索所有动态注册路由的列表，可以使用 `RouteRegistry` 类。这对于需要以编程方式管理或显示可用路由时非常有用。
+要检索所有动态注册路由的列表，请使用 `RouteRegistry` 类。当您需要以编程方式管理或显示可用路由时，这很有用。
 
-### 示例：检索并显示所有已注册的路由 {#example-retrieving-and-displaying-all-registered-routes}
+### 示例：检索和显示所有注册的路由 {#example-retrieving-and-displaying-all-registered-routes}
 
 ```java
 Router router = Router.getCurrent();
@@ -156,11 +156,11 @@ List<RouteEntry> routes = registry.getAvailableRouteEntires();
 routes.forEach(route -> console().log("Path: " + route.getPath()));
 ```
 
-在此示例中，应用程序检索所有当前注册的路由并打印它们的路径。
+在此示例中，应用程序检索当前注册的所有路由并打印它们的路径。
 
 ## 动态管理路由别名 {#managing-route-aliases-dynamically}
 
-webforJ 允许您为单个视图注册多个别名。这意味着用户可以通过不同的 URL 路径访问相同的视图。
+webforJ 允许您为单个视图注册多个别名。这意味着用户可以使用不同的 URL 路径访问相同的视图。
 
 ### 示例：动态注册路由别名 {#example-registering-route-aliases-dynamically}
 
@@ -168,12 +168,12 @@ webforJ 允许您为单个视图注册多个别名。这意味着用户可以通
 Router router = Router.getCurrent();
 RouteRegistry registry = router.getRegistry();
 
-// 注册主要路由
+// 注册主路由
 registry.register("/contact", ContactView.class);
 
-// 注册联系视图的别名
+// 注册联系人视图的别名
 registry.register("/support", ContactView.class);
 registry.register("/help", ContactView.class);
 ```
 
-在此示例中，通过三条不同的路径访问 `ContactView`：`/contact`、`/support` 和 `/help`。
+在此示例中，`ContactView` 通过三种不同的路径访问：`/contact`、`/support` 和 `/help`。

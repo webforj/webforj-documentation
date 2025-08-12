@@ -6,7 +6,7 @@ slug: file-save
 description: A user guide article for the file-save
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: ecee26fed2ab18cc67c824bb5d51250b
+_i18n_hash: fcd6d9e7c74ffec2ef2676a70d024a77
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,8 +16,8 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info KLIANTCOMPONENT
-Deze sectie beschrijft de stijlinformatie voor de **`<dwc-file-save>`** component. Deze component is **alleen clientzijde** - het kan niet op zichzelf worden geïnstantieerd via de API, maar kan deel uitmaken van API-componenten.
+:::info CLIËNTCOMPONENT
+Dit gedeelte beschrijft stylinginformatie voor de **`<dwc-file-save>`** component. Deze component is **alleen client-side** - het kan niet op zichzelf worden geïnstantieerd via de API, maar kan deel uitmaken van API-componenten.
 :::
 
 ## Styling {#styling}

@@ -1,26 +1,23 @@
 ---
 sidebar_position: 3
 title: Reporters
-_i18n_hash: 217311f203d2736071c33d6650c74ec2
+_i18n_hash: c563479cec7e1fe29d483bcd121bb5fc
 ---
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-Validation reporters are used for providing feedback about the validation process to the user interface. This feature is essential for informing users about the results of their input validation, particularly in complex forms or data-intensive applications.
+Les rapporteurs de validation sont utilisés pour fournir des retours d'information sur le processus de validation à l'interface utilisateur. Cette fonctionnalité est essentielle pour informer les utilisateurs des résultats de leur validation d'entrée, en particulier dans des formulaires complexes ou des applications intensives en données.
 
 ## Qu'est-ce qu'un rapporteur de validation ? {#whats-a-validation-reporter}
 
-A validation reporter is a component that processes and displays the outcomes of validations to users. It acts as a bridge between the validation logic and the user interface, ensuring that validation results are communicated effectively and clearly.
+Un rapporteur de validation est un composant qui traite et affiche les résultats des validations aux utilisateurs. Il sert de lien entre la logique de validation et l'interface utilisateur, garantissant que les résultats de validation sont communiqués de manière efficace et claire.
 
-:::tip Rapporteur par défaut des composants principaux
-webforJ includes the `DefaultBindingReporter`, a default bindings reporter designed to work seamlessly with all core webforJ components. This built-in reporter automatically displays validation errors, eliminating the need for custom implementation in many cases. Depending on the component's configuration, the `DefaultBindingReporter` displays validation errors directly as a popover or inline, right beneath the component. This feature simplifies the error reporting process significantly, ensuring clear and direct communication of validation errors, and enhances the user experience by providing immediate, context-sensitive feedback on input validation.
+:::tip Composants de base Rapporteur par défaut
+webforJ inclut le `DefaultBindingReporter`, un rapporteur de liaison par défaut conçu pour fonctionner sans problème avec tous les composants de base de webforJ. Ce rapporteur intégré affiche automatiquement les erreurs de validation, éliminant ainsi la nécessité d'implémentations personnalisées dans de nombreux cas. En fonction de la configuration du composant, le `DefaultBindingReporter` affiche les erreurs de validation directement sous forme de popover ou en ligne, juste en dessous du composant. Cette fonctionnalité simplifie considérablement le processus de signalement des erreurs, garantissant une communication claire et directe des erreurs de validation, et améliore l'expérience utilisateur en fournissant un retour immédiat et contextuel sur la validation des entrées.
 :::
 
 ## Configuration des rapporteurs de validation {#configuring-validation-reporters}
 
-You can configure validation reporters within the binding context to customize how messages are presented. Typically, you would implement a validation reporter to aggregate validation results and then display them in a user-friendly manner, such as highlighting incorrect fields, displaying error messages, or updating status indicators.
+Vous pouvez configurer les rapporteurs de validation dans le contexte de liaison pour personnaliser la manière dont les messages sont présentés. En général, vous implémenteriez un rapporteur de validation pour agréger les résultats de validation et les afficher de manière conviviale, comme en mettant en évidence les champs incorrects, en affichant des messages d'erreur ou en mettant à jour des indicateurs de statut.
 
-Here’s an example of how to set up a validation reporter for a field
+Voici un exemple de la façon de configurer un rapporteur de validation pour un champ
 
 <Tabs>
 <TabItem value="UserRegistration" label="UserRegistration.java">
@@ -29,7 +26,7 @@ Here’s an example of how to set up a validation reporter for a field
 @InlineStyleSheet("context://styles.css")
 public class UserRegistration extends App {
   Div errors = new Div();
-  TextField emailField = new TextField("Email Address");
+  TextField emailField = new TextField("Adresse e-mail");
 
   FlexLayout layout = FlexLayout.create(emailField, errors).vertical().build();
 
@@ -43,7 +40,7 @@ public class UserRegistration extends App {
     BindingContext<User> context = new BindingContext<>(User.class);
     context.bind(emailField, "email")
         .useValidator(
-            Validator.from(new EmailValidator(), "Custom message for invalid email address"))
+            Validator.from(new EmailValidator(), "Message personnalisé pour l'adresse e-mail invalide"))
         .useReporter((validationResult, binding) -> {
           errors.setVisible(!validationResult.isValid());
 
@@ -115,4 +112,4 @@ public class User {
 </TabItem>
 </Tabs>
 
-In the above code, the email binding incorporates a custom reporter that directly displays validation messages beneath the input field. This setup utilizes the `useReporter` method, which configures how the binding handles and presents validation results. This method effectively links the validation logic to the user interface, ensuring that any validation issues are immediately visible to the user, enhancing the form's interactivity and user experience.
+Dans le code ci-dessus, la liaison de l'e-mail incorpore un rapporteur personnalisé qui affiche directement les messages de validation sous le champ de saisie. Cette configuration utilise la méthode `useReporter`, qui configure la manière dont la liaison gère et présente les résultats de validation. Cette méthode relie efficacement la logique de validation à l'interface utilisateur, garantissant que tout problème de validation est immédiatement visible pour l'utilisateur, améliorant l'interactivité du formulaire et l'expérience utilisateur.

@@ -6,7 +6,7 @@ slug: alert-popover
 description: A user guide article for the alert-popover
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: ce01c7a6924272e453a2a68bddf17e50
+_i18n_hash: c53e774b05adbe4cc6d0ce1e20ba1c79
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,8 +16,8 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info CLIENT COMPONENT
-Dieser Abschnitt beschreibt die Styling-Informationen für die **`<dwc-alert-popover>`** Komponente. Diese Komponente ist **nur für den Client** - sie kann nicht eigenständig über die API instanziiert werden, kann jedoch Teil von API-Komponenten sein.
+:::info KLIENTENKOMPONENTE
+Dieser Abschnitt beschreibt Styling-Informationen für die **`<dwc-alert-popover>`** Komponente. Diese Komponente ist **nur auf der Client-Seite** - sie kann nicht eigenständig über die API instanziiert werden, sondern kann Teil von API-Komponenten sein.
 :::
 
 ## Styling {#styling}

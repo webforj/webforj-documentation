@@ -3,7 +3,7 @@ title: Spring Framework
 sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: edf3c4087bb9491b2be06b67e32bb27e
+_i18n_hash: 4ef41ed3a00ca782da0bba406fd4e902
 ---
 <Head>
   <style>{`
@@ -13,11 +13,11 @@ _i18n_hash: edf3c4087bb9491b2be06b67e32bb27e
   `}</style>
 </Head>
 
-Monet Java-tiimit käyttävät jo [Spring Bootia](https://spring.io/projects/spring-boot) sovellusten rakentamiseen. Springin integraatio webforJ:n kanssa mahdollistaa nyt webforJ:n käyttöliittymäkomponenttien lisäämisen olemassa oleviin Spring-sovelluksiin tai Springin ominaisuuksien käyttämisen uusissa webforJ-projekteissa.
+Monet Java-tiimeistä käyttää jo [Spring Bootia](https://spring.io/projects/spring-boot) sovellusten rakentamiseen. Springin integraatio webforJ:n kanssa mahdollistaa webforJ:n käyttöliittymäkomponenttien lisäämisen olemassa oleviin Spring-sovelluksiin tai Springin ominaisuuksien käyttämisen uusissa webforJ-projekteissa.
 
-Spring-palvelusi, reposi ja konfiguraatio toimivat normaalisti. WebforJ-komponenttisi voivat `@Autowired` käyttää mitä tahansa Spring-beania. [Spring Data](https://spring.io/projects/spring-data) -repositoriot yhdistyvät suoraan webforJ-taulukoihin `SpringDataRepositoryn` kautta. Kehitys nopeutuu automaattisella selaimen päivityksellä Spring DevToolsista ja webforJ LiveReloadista.
+Spring-palvelusi, -varastosi ja -konfiguraatiosi toimivat normaalisti. WebforJ-komponenttisi voivat `@Autowired` käyttää mitä tahansa Spring-beania. [Spring Data](https://spring.io/projects/spring-data) -varastot yhdistyvät suoraan webforJ-tauluihin käyttämällä `SpringDataRepository`:ta. Kehitys nopeutuu automaattisella selaimen päivityksellä Spring DevToolsin ja webforJ LiveReloadin avulla.
 
-Integraatio pitää molemmat kehykset parhaimmillaan - Spring käsittelee taustahuolia, kun taas webforJ käsittelee käyttöliittymän.
+Integraatio pitää molemmat kehykset tekemässä sitä, missä ne ovat parhaita - Spring hoitaa taustahuoltoja, kun taas webforJ hoitaa käyttöliittymän.
 
 ## Topics {#topics}
 

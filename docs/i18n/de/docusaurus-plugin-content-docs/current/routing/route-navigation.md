@@ -1,25 +1,25 @@
 ---
 sidebar_position: 4
 title: Route Navigation
-_i18n_hash: cf1f9e79aa81f240306313a7c0c5a9c4
+_i18n_hash: 2ca468b09b2ae9e2ab3813119d31bf44
 ---
-In webforJ ist die Navigation zwischen Routen der zentrale Mechanismus, um Sichtweisen und Komponenten basierend auf Benutzeraktionen oder URL-Änderungen zu wechseln. Die Navigation ermöglicht es den Benutzern, nahtlos zwischen verschiedenen Teilen der App zu wechseln, ohne die Seite zu aktualisieren. Diese clientseitige Navigation hält die App reaktionsschnell und flüssig, während der Zustand der App erhalten bleibt.
+In webforJ ist die Navigation zwischen Routen der zentrale Mechanismus zum Wechseln von Ansichten und Komponenten basierend auf Benutzeraktionen oder URL-Änderungen. Die Navigation ermöglicht es Benutzern, nahtlos zwischen verschiedenen Teilen der Anwendung zu wechseln, ohne die Seite zu aktualisieren. Diese clientseitige Navigation hält die Anwendung responsiv und reibungslos, während der Zustand der Anwendung erhalten bleibt.
 
-## Programmatische Navigation {#programmatic-navigation}
+## Programmgesteuerte Navigation {#programmatic-navigation}
 
-Sie können die Navigation von überall in Ihrer App auslösen, indem Sie die Klasse `Router` verwenden. Dies ermöglicht dynamische Änderungen an den angezeigten Komponenten basierend auf Ereignissen wie Mausklicks oder anderen Benutzerinteraktionen.
+Sie können die Navigation von überall in Ihrer Anwendung aus über die `Router`-Klasse auslösen. Dies ermöglicht dynamische Änderungen in den angezeigten Komponenten basierend auf Ereignissen wie Mausklicks oder anderen Benutzerinteraktionen.
 
-Hier ist ein Beispiel dafür, wie man zu einer bestimmten Route navigiert:
+Hier ist ein Beispiel, wie man zu einer bestimmten Route navigiert:
 
 ```java
 @Route(value = "dashboard")
 public class DashboardView extends Composite<Div> {
-  // Komponentenlogik hier
+  // Komponentelogik hier
 }
 ```
 
 ```java
-// zu der Ansicht navigieren
+// zur Ansicht navigieren
 Router.getCurrent().navigate(DashboardView.class);
 ```
 
@@ -31,13 +31,13 @@ Es ist auch möglich, zur Ansicht zu navigieren, indem eine neue `Location` übe
 Router.getCurrent().navigate(new Location("/dashboard"));
 ```
 
-:::tip Klasse vs. Location: Methoden zur Ansichts-Routing
-Beim Navigieren zwischen Ansichten haben Entwickler zwei Optionen: Sie können entweder die Klassenansicht oder die Routenklasse übergeben, wodurch der Router die URL automatisch generiert und die Ansicht rendert, oder die Location direkt übergeben. Beide Methoden sind gültig, aber **die Verwendung der Klassenansicht ist der bevorzugte Ansatz**, da er bessere Flexibilität für zukünftige Änderungen bietet. Wenn Sie beispielsweise später beschließen, die Route zu aktualisieren, müssen Sie nur die Annotation `@Route` ändern, ohne den Code zu ändern, der die Klassenansicht für die Navigation verwendet.
+:::tip Klasse vs. Location: Methoden für die Ansichtsnavigation
+Bei der Navigation zwischen Ansichten haben die Entwickler zwei Optionen: Sie können entweder die Ansicht oder die Routenkasse übergeben, sodass der Router automatisch die URL generiert und die Ansicht rendert, oder die Location direkt übergeben. Beide Methoden sind gültig, aber **die Verwendung der Ansichtsklasse ist der bevorzugte Ansatz**, da er bessere Flexibilität für zukünftige Änderungen bietet. Wenn Sie beispielsweise später entscheiden, die Route zu aktualisieren, müssen Sie nur die Annotation `@Route` ändern, ohne den Code zu ändern, der die Ansichtsklasse für die Navigation verwendet.
 :::
 
 ### Navigation mit Parametern {#navigation-with-parameters}
 
-Wenn Sie Parameter zusammen mit der Route übergeben müssen, erlaubt webforJ, Parameter in der URL einzubetten. Hier ist, wie Sie zu einer Route mit Parametern navigieren können:
+Wenn Sie Parameter zusammen mit der Route übergeben müssen, ermöglicht es webforJ, Parameter in der URL einzubetten. So navigieren Sie zu einer Route mit Parametern:
 
 ```java
 @Route("user/:id")
@@ -65,18 +65,18 @@ public class UserProfileView extends Composite<Div> implements DidEnterObserver 
 ```
 
 ```java
-// zu der Ansicht navigieren und die Benutzer-ID übergeben
+// zur Ansicht navigieren und die Benutzer-ID übergeben
 Router.getCurrent().navigate(
   UserProfileView.class,
   ParametersBag.of("id=JohnDoe")
 );
 ```
 
-Dies navigiert zu `/user/JohnDoe`, wobei `JohnDoe` eine Benutzer-ID darstellen könnte. Die Komponente für diese Route kann dann den Parameter extrahieren und entsprechend verwenden.
+Dies navigiert zu `/user/JohnDoe`, wobei `JohnDoe` möglicherweise eine Benutzer-ID darstellt. Die Komponente für diese Route kann dann den Parameter extrahieren und entsprechend verwenden.
 
-## Erstellte Ansichtsinstanz {#created-view-instance}
+## Erstellt Ansichtinstanz {#created-view-instance}
 
-Die Methode `navigate` akzeptiert einen Java `Consumer`, der aufgerufen wird, sobald die Navigation abgeschlossen ist. Der `Consumer` erhält die Instanz der erstellten Ansichtskomponente, eingewickelt in ein java `Optional`, was es dem Entwickler ermöglicht, mit der Ansicht nach einer erfolgreichen Navigation zu interagieren.
+Die `navigate`-Methode akzeptiert einen Java `Consumer`, der aufgerufen wird, sobald die Navigation abgeschlossen ist. Der `Consumer` erhält die Instanz der erstellten Ansichtskomponente, eingewickelt in ein java `Optional`, sodass der Entwickler nach einer erfolgreichen Navigation mit der Ansicht interagieren kann.
 
 ```java
 Router.getCurrent().navigate(
@@ -89,12 +89,12 @@ Router.getCurrent().navigate(
 ```
 
 :::info Null-Instanzen
-Der Consumer erhält ein Java `Optional` für die Komponente, da sie `null` sein könnte oder aus verschiedenen Gründen nicht erstellt wurde. Die Komponente könnte beispielsweise nicht gerendert werden, wenn die Navigationsbeobachter die Navigation ablehnen und den Prozess stoppen.
+Der Consumer erhält ein Java `Optional` für die Komponente, da sie möglicherweise `null` ist oder aus verschiedenen Gründen nicht erstellt wurde. Beispielsweise wird die Komponente möglicherweise nicht gerendert, wenn die Navigationsbeobachter die Navigation ablehnen und den Prozess stoppen.
 :::
 
 ## Navigationsoptionen {#navigation-options}
 
-Die Klasse `NavigationOptions` ermöglicht es den Entwicklern, die Navigation innerhalb der App fein abzustimmen. Durch das Setzen bestimmter Optionen können Sie das Verhalten der Navigation steuern, z. B. ob die Browserhistorie aktualisiert wird, ob Lebenszyklusbeobachter aufgerufen werden oder ob Navigationsereignisse ausgelöst werden.
+Die `NavigationOptions`-Klasse ermöglicht es Entwicklern, zu verfeinern, wie Navigation innerhalb der Anwendung gehandhabt wird. Durch die Festlegung spezifischer Optionen können Sie das Verhalten der Navigation steuern, beispielsweise ob der Verlauf des Browsers aktualisiert werden soll, Lebenszyklusbeobachter aufgerufen werden sollen oder sogar Navigationsereignisse ausgelöst werden sollen.
 
 ```java
 NavigationOptions options = new NavigationOptions();
@@ -104,35 +104,35 @@ Router.getCurrent().navigate(
   new Location("user/JohnDoe"), options);
 ```
 
-### Setzen von Navigationsoptionen {#setting-navigation-options}
+### Festlegen von Navigationsoptionen {#setting-navigation-options}
 
-Die Klasse `NavigationOptions` bietet mehrere Methoden zur Anpassung des Navigationsverhaltens. Dazu gehört die Steuerung, wie Routen behandelt werden, ob Beobachter benachrichtigt werden und wie die Historie des Browsers aktualisiert wird.
+Die `NavigationOptions`-Klasse bietet mehrere Methoden zur Anpassung des Navigationsverhaltens. Dazu gehört die Steuerung, wie Routen behandelt werden, ob Beobachter benachrichtigt werden und wie der Verlauf des Browsers aktualisiert wird.
 
 Hier sind die wichtigsten Konfigurationsoptionen, die innerhalb von `NavigationOptions` verfügbar sind:
 
-1. **Navigationsart (`setNavigationType`)**  
-   Diese Option definiert, ob die neue Route zur Browserhistorie hinzugefügt oder die aktuelle Route ersetzt werden soll.
+1. **Navigationstyp (`setNavigationType`)**  
+   Diese Option definiert, ob die neue Route zum Verlauf des Browsers hinzugefügt oder die aktuelle Route ersetzt werden soll.
 
-   - **`PUSH`**: Fügt die neue Route zum Verlaufsstapel hinzu und bewahrt den aktuellen Standort.
-   - **`REPLACE`**: Ersetzt die aktuelle Route im Verlaufsstapel durch den neuen Standort, wodurch verhindert wird, dass die Zurück-Taste zur vorherigen Route navigiert.
+   - **`PUSH`**: Fügt die neue Route zum Verlauf hinzu und bewahrt den aktuellen Standort.
+   - **`REPLACE`**: Ersetzt die aktuelle Route im Verlauf durch den neuen Standort, sodass der Zurück-Button nicht zur vorherigen Route navigiert.
 
 2. **Ereignisse auslösen (`setFireEvents`)**  
-   Bestimmt, ob während der Navigation [Lebenszyklusereignisse](./navigation-lifecycle/navigation-events) ausgelöst werden sollen. Standardmäßig ist dies auf `true` gesetzt, und Ereignisse werden ausgelöst. Wenn auf `false` gesetzt, werden keine Ereignisse ausgelöst, was nützlich für stille Navigation ist.
+   Bestimmt, ob während der Navigation [Lebenszyklusereignisse](./navigation-lifecycle/navigation-events) ausgelöst werden sollen. Standardmäßig ist dies auf `true` eingestellt, und Ereignisse werden ausgelöst. Wenn es auf `false` eingestellt ist, werden keine Ereignisse ausgelöst, was für stille Navigation nützlich ist.
 
 3. **Beobachter aufrufen (`setInvokeObservers`)**  
-   Dieses Flag steuert, ob die Navigation [Beobachter](./navigation-lifecycle/observers) innerhalb der navigierten Komponenten auslösen soll. Beobachter behandeln typischerweise Ereignisse wie den Eintritt oder Austritt aus der Route. Wenn dies auf `false` gesetzt ist, werden keine Beobachter aufgerufen.
+   Dieses Flag steuert, ob die Navigation [Beobachter](./navigation-lifecycle/observers) innerhalb der navigierten Komponenten auslösen soll. Beobachter behandeln typischerweise Ereignisse wie Eintritt oder Austritt von Routen. Wenn Sie dies auf `false` setzen, werden Beobachter nicht aufgerufen.
 
-4. **Historie aktualisieren (`setUpdateHistory`)**  
-   Wenn auf `false` gesetzt, verhindert diese Option, dass der Standort in der Historie aktualisiert wird. Dies ist nützlich, wenn Sie die Ansicht ändern möchten, ohne die Zurück- oder Vorwärtsnavigation des Browsers zu beeinträchtigen. Es beeinflusst nur das Geschichtsmanagement, nicht den Lebenszyklus der Komponenten oder die Routenbehandlung.
+4. **Verlauf aktualisieren (`setUpdateHistory`)**  
+   Wenn dieser Wert auf `false` gesetzt ist, wird verhindert, dass der Verlaufstand aktualisiert wird. Dies ist nützlich, wenn Sie die Ansicht ändern möchten, ohne die Rückwärts- oder Vorwärtsnavigation des Browsers zu beeinträchtigen. Es beeinflusst nur das Verlaufmanagement, nicht den Lebenszyklus der Komponenten oder die Routenbehandlung.
 
 5. **Zustandsobjekt (`setState`)**  
-   [Das Zustandsobjekt](./state-management#saving-and-restoring-state-in-browser-history) ermöglicht es Ihnen, zusätzliche Informationen beim Aktualisieren der Historie des Browsers zu übergeben. Dieses Objekt wird im Historiezustand des Browsers gespeichert und kann später für benutzerdefinierte Zwecke verwendet werden, z. B. zum Speichern des Zustands der App während der Navigation.
+   [Das Zustandsobjekt](./state-management#saving-and-restoring-state-in-browser-history) ermöglicht es Ihnen, zusätzliche Informationen beim Aktualisieren des Verlaufs des Browsers zu übergeben. Dieses Objekt wird im Verlauf des Browsers gespeichert und kann später für benutzerdefinierte Zwecke verwendet werden, z. B. um den Zustand der Anwendung während der Navigation zu speichern.
 
-## Generieren von Standorten für Ansichten {#generating-locations-for-views}
+## Generieren von Locations für Ansichten {#generating-locations-for-views}
 
-Der Router kann den Standort für Ansichten basierend auf dem Routenmuster, das in der Ansicht definiert ist, generieren. Sie können auch zusätzliche Parameter für dynamische und erforderliche Segmente in der URL bereitstellen. Dies kann nützlich sein, wenn Sie Links erstellen oder direkten Zugriff auf bestimmte Ansichten in der App teilen möchten.
+Der Router kann die Location für Ansichten basierend auf dem Routenmuster generieren, das in der Ansicht definiert ist. Sie können auch zusätzliche Parameter für dynamische und erforderliche Segmente in der URL bereitstellen. Dies kann nützlich sein, wenn Sie Links erstellen oder direkten Zugriff auf bestimmte Ansichten in der Anwendung teilen möchten.
 
-Hier ist, wie man eine `Location` basierend auf einer Klassenansicht und Routenparametern generiert:
+So generieren Sie eine `Location`, basierend auf einer Ansichtsklasse und Routenparametern:
 
 ```java
 Class<UserProfileView> userProfileView = UserProfileView.class;
@@ -142,4 +142,4 @@ Optional<Location> location = Router.getCurrent().getLocation(userProfileView, p
 console().log(location.get());
 ```
 
-Dies erzeugt ein `Location`-Objekt mit dem Pfad `/user/JohnDoe`, der vollständigen URI als Zeichenfolge.
+Dies generiert ein `Location`-Objekt mit dem Pfad `/user/JohnDoe`, der vollständige URI als String.

@@ -6,7 +6,7 @@ slug: hotkey
 description: A user guide article for the hotkey
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: f41dd0e3044ff6b7291ae79663f2666f
+_i18n_hash: b37d98001f1e7b40c02bc0385af881e2
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,8 +16,8 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info CLIËNTCOMPONENT
-Deze sectie beschrijft de stijlinformatie voor de **`<dwc-hotkey>`** component. Deze component is **alleen client-side** - het kan niet zelfstandig via de API worden geïnstantieerd, maar kan deel uitmaken van API-componenten.
+:::info CLIËNT COMPONENT
+Deze sectie beschrijft de stylinginformatie voor de **`<dwc-hotkey>`** component. Deze component is **alleen aan de clientzijde** - hij kan niet zelfstandig via de API worden geïnstantieerd, maar kan deel uitmaken van API-componenten.
 :::
 
 ## Styling {#styling}

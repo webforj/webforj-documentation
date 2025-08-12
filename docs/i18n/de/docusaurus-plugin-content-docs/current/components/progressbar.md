@@ -1,14 +1,14 @@
 ---
 title: ProgressBar
 sidebar_position: 90
-_i18n_hash: 3c76010e8bda96d8694bffa5a260b851
+_i18n_hash: 9b2f9ec23124d60ab5f8fca18e561acb
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-progressbar" />
 <DocChip chip='since' label='24.02' />
 <JavadocLink type="foundation" location="com/webforj/component/progressbar/ProgressBar" top='true'/>
 
-Der ProgressBar ist eine Komponente, die den Fortschritt einer Aufgabe visuell darstellt. Während die Aufgabe auf die Fertigstellung hin fortschreitet, zeigt die Fortschrittsanzeige den prozentualen Abschluss der Aufgabe an. Dieser Prozentsatz wird visuell durch ein Rechteck dargestellt, das zu Beginn leer ist und allmählich gefüllt wird, während die Aufgabe voranschreitet. Darüber hinaus kann die Fortschrittsanzeige eine textuelle Darstellung dieses Prozentsatzes anzeigen.
+Der ProgressBar ist eine Komponente, die visuell den Fortschritt einer Aufgabe anzeigt. Während die Aufgabe dem Abschluss näher kommt, zeigt die Fortschrittsanzeige den Prozentsatz des Abschlusses der Aufgabe an. Dieser Prozentsatz wird visuell durch ein Rechteck dargestellt, das zu Beginn leer ist und allmählich gefüllt wird, während die Aufgabe voranschreitet. Zusätzlich kann die Fortschrittsanzeige eine textuelle Darstellung dieses Prozentsatzes anzeigen.
 
 <ComponentDemo 
 path='/webforj/progressbarbasic?' 
@@ -16,17 +16,17 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='150px'
 />
 
-## Anwendungen {#usages}
+## Verwendungen {#usages}
 
-Die `ProgressBar`-Komponente ist nützlich zur Visualisierung des Abschlussstatus von Aufgaben. Sie unterstützt:
+Die `ProgressBar`-Komponente ist nützlich, um den Fertigstellungsstatus von Aufgaben zu visualisieren. Sie unterstützt:
 
 - Konfigurierbare Mindest- und Höchstwerte.
 - Unbestimmten Modus für laufende Aufgaben ohne definitives Ende.
-- Optionen für Textsichtbarkeit, Animation und gestreifte Designs für besseres visuelles Feedback.
+- Optionen für die Textsichtbarkeit, Animation und gestreifte Designs für ein besseres visuelles Feedback.
 
-## Werte setzen {#setting-values}
+## Werte festlegen {#setting-values}
 
-Die ProgressBar-Komponente ermöglicht das Setzen und Abrufen ihres aktuellen Wertes, der Mindest- und Höchstgrenzen.
+Die ProgressBar-Komponente ermöglicht das Setzen und Abrufen ihres aktuellen Wertes, Mindest- und Höchstwerte.
 
 ```java showLineNumbers
 ProgressBar bar = new ProgressBar();
@@ -37,7 +37,7 @@ bar.setValue(50);
 
 ## Ausrichtung {#orientation}
 
-Die `ProgressBar` kann horizontal oder vertikal ausgerichtet sein.
+Die `ProgressBar` kann horizontal oder vertikal ausgerichtet werden.
 
 <ComponentDemo 
 path='/webforj/progressbarorientation?' 
@@ -63,11 +63,11 @@ Standardmäßig zeigt die Fortschrittsanzeige beim Erstellen den Prozentsatz des
 ProgressBar bar = new ProgressBar(15, "Herunterladen: {{x}}%");
 ```
 
-## Stil {#styling}
+## Styling {#styling}
 
 ### Themen {#themes}
 
-Die `ProgressBar`-Komponente verfügt über <JavadocLink type="foundation" location="com/webforj/component/Theme"> Themen </JavadocLink>, die für eine schnelle Styling-Option ohne die Verwendung von CSS integriert sind. Diese Themen sind vordefinierte Stile, die auf Schaltflächen angewendet werden können, um ihr Erscheinungsbild und ihre visuelle Präsentation zu ändern. Sie bieten eine schnelle und konsistente Möglichkeit, das Erscheinungsbild von ProgressBars in der gesamten Anwendung anzupassen.
+Die `ProgressBar`-Komponente verfügt über <JavadocLink type="foundation" location="com/webforj/component/Theme"> Themen </JavadocLink>, die für eine schnelle Gestaltung ohne CSS eingebaut sind. Diese Themen sind vordefinierte Stile, die auf Schaltflächen angewendet werden können, um ihr Aussehen und ihre visuelle Präsentation zu ändern. Sie bieten eine schnelle und konsistente Möglichkeit, das Erscheinungsbild von ProgressBars in einer App anzupassen.
 
 <ComponentDemo 
 path='/webforj/progressbarthemes?' 
@@ -79,7 +79,7 @@ height='320px'
 
 ## Best Practices {#best-practices}
 
-- **Verwenden Sie angemessene Mindest- und Höchstwerte**: Setzen Sie die Mindest- und Höchstwerte, um den Bereich der Aufgabe genau widerzuspiegeln.
-- **Aktualisieren Sie den Fortschritt regelmäßig**: Aktualisieren Sie den Fortschrittswert kontinuierlich, um den Benutzern Echtzeit-Feedback zu geben.
-- **Nutzen Sie den unbestimmten Zustand für unbekannte Dauer**: Verwenden Sie den unbestimmten Zustand für Aufgaben mit unvorhersehbaren Dauern, um den laufenden Fortschritt anzuzeigen.
-- **Zeigen Sie Text für besseres Benutzerfeedback an**: Blenden Sie Text auf der Fortschrittsanzeige ein, um zusätzlichen Kontext zum Fortschritt der Aufgabe zu bieten.
+- **Verwenden Sie geeignete Mindest- und Höchstwerte**: Setzen Sie die Mindest- und Höchstwerte, um den Aufgabenbereich genau widerzuspiegeln.
+- **Aktualisieren Sie den Fortschritt regelmäßig**: Aktualisieren Sie den Fortschrittswert kontinuierlich, um den Benutzern zeitnahe Rückmeldungen zu geben.
+- **Nutzen Sie den unbestimmten Zustand für unbekannte Dauer**: Verwenden Sie den unbestimmten Zustand für Aufgaben mit unvorhersehbaren Dauern, um fortlaufenden Fortschritt anzuzeigen.
+- **Zeigen Sie Text für besseres Benutzerfeedback an**: Zeigen Sie Text auf der Fortschrittsanzeige an, um zusätzlichen Kontext zum Fortschritt der Aufgabe zu bieten.

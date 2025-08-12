@@ -6,7 +6,7 @@ slug: tab-panel
 description: A user guide article for the tab-panel
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: ee59776fc34de80a826a9e0a60d09c8b
+_i18n_hash: 51fcdc9d9fbd4b7165c644283189c162
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,7 +17,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info ASIAKASKOMPONENTTI
-Tässä osiossa on tyylitietoja **`<dwc-tab-panel>`** komponentille. Tämä komponentti on **vain asiakaspäätteessä** - sitä ei voi instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+Tässä osiossa on tyylitietoja **`<dwc-tab-panel>`**-komponentille. Tämä komponentti on **vain asiakaspäivittäinen** - sitä ei voi instanssia itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
 ## Tyylitys {#styling}

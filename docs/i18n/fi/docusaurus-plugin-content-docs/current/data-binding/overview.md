@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Data Binding
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: fef9723206ef7122c3ada5503f97edf1
+_i18n_hash: 2ce381aec06e45ed4001e7dbfdb22dc0
 ---
 <Head>
   <style>{`
@@ -20,17 +20,17 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
- webforJ sisältää tietosidontasominaisuuden, joka integroi UI-komponentit saumattomasti taustadatan malleihin Java-sovelluksissa. Tämä ominaisuus ylittää kuilun UI:n ja datakerroksen välillä, varmistaen, että muutokset UI:ssa heijastuvat datamalliin ja päinvastoin. Tämän seurauksena se parantaa käyttäjäkokemusta ja vähentää tapahtumankäsittelyn ja datan synkronoinnin monimutkaisuutta.
+webforJ sisältää tiedonsidontatoiminnon, joka integroi UI-komponentit saumattomasti taustadatamalleihin Java-sovelluksissa. Tämä ominaisuus ylittää rajan UI:n ja datakerroksen välillä, varmistaen, että muutokset UI:ssa heijastuvat datamalliin ja päinvastoin. Tuloksena paranee käyttäjäkokemus ja vähenee tapahtumankäsittelyn ja datan synkronoinnin monimutkaisuus.
 
-## Konsepti {#concept}
+## Käsite {#concept}
 
-Seuraava esittely esittelee yksinkertaisen webforJ-sovelluksen supersankareiden rekisteröimiseksi webforJ:n tietosidontatoiminnolla. Sovellus koostuu kahdesta pääosasta: `HeroRegistration.java` ja `Hero.java`. 
+Seuraava esittely näyttää yksinkertaisen webforJ-sovelluksen, joka rekisteröi supersankareita käyttäen webforJ:n tiedonsidontatoimintoa. Sovellus koostuu kahdesta pääosasta: `HeroRegistration.java` ja `Hero.java`.
 
-`HeroRegistration.java`:ssa koodi määrittää käyttöliittymän, jossa on `TextField` sankarin nimen syöttämiseen, `ComboBox` supervoiman valitsemiseen ja `Button` rekisteröinnin jättämiseen.
+Tiedostossa `HeroRegistration.java` koodi konfiguroi käyttöliittymän `TextField`:llä sankarin nimen syöttämistä varten, `ComboBox`:illa supervoiman valitsemista varten ja `Button`:illa rekisteröinnin lähettämistä varten.
 
-`Hero`-luokka määrittää datamallin, jossa on vahvistusrajoituksia sankarin nimen ja voiman osalta, varmistaen, että syötteet ovat voimassa ja noudattavat määriteltyjä kriteerejä, kuten pituus ja malli.
+`Hero`-luokka määrittelee datamallin validointirajoituksilla sankarin nimen ja voiman osalta, varmistaen, että syötteet ovat voimassa ja noudattavat määrättyjä kriteerejä, kuten pituus ja malli.
 
-Sovellus hyödyntää `BindingContext`-ominaisuutta sidomaan UI-komponentteja `Hero` objektin ominaisuuksiin. Kun käyttäjä napsauttaa lähetyspainiketta, sovellus kirjoittaa lomakkeeseen syötetyt tiedot takaisin `Hero`-beanille, jos ne ovat voimassa.
+Sovellus käyttää `BindingContext`-luokkaa sitomaan UI-komponentit `Hero`-olion ominaisuuksiin. Kun käyttäjä napsauttaa lähetyspainiketta, sovellus kirjoittaa lomakkeessa syötetyt tiedot taaksepäin `Hero`-bean:iin, jos ne ovat voimassa.
 
 <Tabs>
 <TabItem value="HeroRegistration" label="HeroRegistration.java">
@@ -40,22 +40,22 @@ public class HeroRegistration extends App {
     
   private TextField name = new TextField("Tekstikenttä");
   private ComboBox power = new ComboBox("Voima");
-  private Button submit = new Button("Lähetä hakemus");
+  private Button submit = new Button("Rekisteröi hakemus");
   private FlexLayout layout = FlexLayout.create(name, power, submit).vertical().build()
       .setStyle("margin", "20px auto").setMaxWidth("400px");
 
   @Override
   public void run() throws WebforjException {
-    power.insert("Lentäminen", "Näkymättömyys", "Laservisio", "Nopeus", "Siirtyminen");
+    power.insert("Lentää", "Näkymätön", "Lasersilmä", "Nopeus", "Siirtyminen");
 
     BindingContext<Hero> context = BindingContext.of(this, Hero.class, true);
-    Hero bean = new Hero("Supermies", "Lentäminen");
+    Hero bean = new Hero("Superman", "Lentää");
 
     // heijasta bean-data lomakkeeseen
     context.read(bean);
 
     submit.onClick(e -> {
-      // kirjoita lomake-data takaisin beanille
+      // kirjoita lomakedata takaisin beaniin
       ValidationResult results = context.write(bean);
 
       if (results.isValid()) {
@@ -81,7 +81,7 @@ public class Hero {
   private String name;
 
   @NotEmpty(message = "Määrittelemätön voima")
-  @Pattern(regexp = "Lentäminen|Näkymättömyys|Laservisio|Nopeus|Siirtyminen", message = "Virheellinen voima")
+  @Pattern(regexp = "Lentää|Näkymätön|Lasersilmä|Nopeus|Siirtyminen", message = "Virheellinen voima")
   private String power;
 
   public Hero(String name, String power) {
@@ -116,13 +116,13 @@ public class Hero {
 
 ## Avainominaisuudet {#key-features}
 
-- **Kaksisuuntainen sidos:** Tukee kaksisuuntaista tietosidontaa, jolloin muutokset datamallissa päivittävät käyttöliittymän ja käyttäjän toiminnot käyttöliittymässä päivittävät datamallia.
+- **Kaksisuuntainen sidonta:** Tukee kaksisuuntaista tiedonsidontaa, jolloin muutokset datamallissa päivittävät UI:ta ja käyttäjäinteraktiot UI:ssa päivittävät datamallia.
 
-- **Vahvistustuki:** Integroi kattavat vahvistusmekanismit, joita voit mukauttaa ja laajentaa. Kehittäjät voivat toteuttaa omia vahvistussääntöjä tai käyttää olemassa olevia vahvistuskehyksiä, kuten Jakarta Validation, varmistaakseen datan eheyden ennen mallin päivittämistä.
+- **Validointituki:** Integroi kattavat validointimekanismit, joita voit mukauttaa ja laajentaa. Kehittäjät voivat toteuttaa omia validointisääntöjään tai käyttää olemassa olevia validointikehyksiä, kuten Jakarta Validation, varmistaakseen datan eheyden ennen mallin päivittämistä.
 
-- **Laajennettavuus:** Voidaan helposti laajentaa tukemaan erilaisia UI-komponentteja, datamuunnoksia ja monimutkaisempia vahvistusskenaarioita.
+- **Laajennettavuus:** Voidaan helposti laajentaa tukemaan erilaisia UI-komponentteja, datamuunnoksia ja monimutkaisia validointiskenaarioita.
 
-- **Ominaisuusajurella määrittely:** Käyttää annotaatioita vähentääkseen toistorakennetta, jolloin sidokset käyttöliittymäkomponenttien ja datamallien välillä ovat deklaratiivisia ja helppokäyttöisiä.
+- **Annotaatio-ohjattu konfigurointi:** Hyödyntää annotaatioita minimoidakseen turhakoodin, jolloin sidokset UI-komponenttien ja datamallien välillä ovat deklaratiivisia ja helppoja hallita.
 
 # Aiheet
 

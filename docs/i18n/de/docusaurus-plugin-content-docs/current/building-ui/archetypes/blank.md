@@ -2,7 +2,7 @@
 title: Blank
 sidebar_position: 1
 hide_table_of_contents: true
-_i18n_hash: 135ed95be60a01a6a5ccb297c6bcce8f
+_i18n_hash: 5e7b116f0fea5cee2aa0d880d6fee05a
 ---
 <Head>
   <style>{`
@@ -14,10 +14,10 @@ _i18n_hash: 135ed95be60a01a6a5ccb297c6bcce8f
 
 # Leeres Archetyp
 
-Das `blank` Archetyp ist ein grundlegendes Starterprojekt für webforJ-Anwendungen. Diese Vorlage bietet eine saubere Grundlage, um Ihre App von Grund auf neu zu erstellen. Es ist ideal für Entwickler, die vollständige Kontrolle über die Struktur und Komponenten ihrer App ohne vordefinierte Einschränkungen wünschen.
+Das `blank` Archetyp ist ein grundlegendes Starterprojekt für webforJ-Anwendungen. Diese Vorlage bietet eine saubere Grundlage, von der aus Sie Ihre App von Grund auf neu erstellen können. Sie ist ideal für Entwickler, die vollständige Kontrolle über die Struktur und die Komponenten ihrer App ohne vordefinierte Einschränkungen wünschen.
 
 :::tip Verwendung von startforJ
-Für mehr Kontrolle über Anpassung und Konfiguration können Sie [startforJ](https://docs.webforj.com/startforj/) verwenden, um Ihr Projekt zu erstellen – wählen Sie einfach das `Blank` Archetyp, wenn Sie die Konfigurationsoptionen auswählen.
+Für mehr Kontrolle über Anpassung und Konfiguration können Sie [startforJ](https://docs.webforj.com/startforj/) verwenden, um Ihr Projekt zu erstellen - wählen Sie einfach das `Blank` Archetyp bei der Auswahl der Konfigurationsoptionen.
 :::
 
 ## Verwendung des `blank` Archetyps {#using-the-blank-archetype}
@@ -28,10 +28,11 @@ project="blank"
 
 ## Ausführen der App {#running-the-app}
 
-Bevor Sie Ihre App ausführen, installieren Sie die [Voraussetzungen](../../introduction/prerequisites), falls Sie dies noch nicht getan haben. Navigieren Sie dann zum Stammverzeichnis des Projekts und führen Sie den folgenden Befehl aus:
+Bevor Sie Ihre App ausführen, installieren Sie die [Voraussetzungen](../../introduction/prerequisites), falls Sie dies noch nicht getan haben. 
+Navigieren Sie dann zum Stammverzeichnis des Projekts und führen Sie den folgenden Befehl aus:
 
 ```bash
-# für standard webforJ app
+# für Standard-webforJ-App
 mvn jetty:run
 
 # für webforJ + Spring Boot

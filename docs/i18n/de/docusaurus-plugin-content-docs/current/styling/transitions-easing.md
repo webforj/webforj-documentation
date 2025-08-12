@@ -1,7 +1,7 @@
 ---
 sidebar_position: 10
 title: Transitions & Easing
-_i18n_hash: 7d44ac3e68f0187b1df2bbeeeee923f3
+_i18n_hash: d2f7570b46bfa778ca967908d6e7d901
 ---
 Übergangsvariablen werden verwendet, um konsistente Animationsdauern in Ihrer App bereitzustellen. Sie steuern, wie lange eine Animation benötigt, um abgeschlossen zu werden.
 
@@ -28,7 +28,7 @@ _i18n_hash: 7d44ac3e68f0187b1df2bbeeeee923f3
 
 ## Easing {#easing}
 
-Easing-Variablen definieren, wie sich Werte im Laufe der Zeit ändern, wodurch Übergänge natürlicher wirken.
+Easing-Variablen definieren, wie Werte sich über die Zeit ändern, wodurch Übergänge natürlicher wirken.
 
 ### Beispiel {#example-1}
 
@@ -38,7 +38,7 @@ Easing-Variablen definieren, wie sich Werte im Laufe der Zeit ändern, wodurch �
 }
 ```
 
-Versuchen Sie, über jede Easing-Vorschau zu fahren, um die Animationswirkung zu sehen.
+Versuchen Sie, über jede Easing-Vorschau zu fahren, um ihren Animationseffekt zu sehen.
 
 ### Variablen {#variables-1}
 

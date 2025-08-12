@@ -6,7 +6,7 @@ slug: field-spinner
 description: A user guide article for the field-spinner
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 6404bf4ba02ff09aa56bf440b5278c66
+_i18n_hash: fec562035feb13636822cd8f61800b41
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,10 +16,10 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info CLIËNTCOMPONENT
-Dit gedeelte bevat opmaak informatie voor de **`<dwc-field-spinner>`** component. Deze component is **alleen aan de clientzijde** - het kan niet zelfstandig via de API worden geïnstantieerd, maar kan deel uitmaken van API-componenten.
+:::info KLANT COMPONENT
+Deze sectie beschrijft styling informatie voor de **`<dwc-field-spinner>`** component. Deze component is **alleen client zijde** - het kan niet op zichzelf worden geïnstalleerd via de API, maar kan deel uitmaken van API-componenten.
 :::
 
-## Opmaak {#styling}
+## Styling {#styling}
 
 <TableBuilder name="dwc-field-spinner" clientComponent />

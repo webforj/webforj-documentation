@@ -3,26 +3,26 @@ sidebar_position: 1
 title: Component Basics
 slug: basics
 draft: false
-_i18n_hash: d517f6169f7ac0798ed073bb27348eb5
+_i18n_hash: e4d0cb9dd9f53dabda8bebe6664bf0d3
 ---
 <DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/>
 
-Komponenten sind grundlegende Bausteine, die zu einem Fenster hinzugefügt werden können und Benutzeroberflächenfunktionen sowie benutzerdefiniertes Verhalten bereitstellen. In webforJ dient die `Component`-Klasse als Grundlage für alle Komponenten innerhalb der Engine.
+Komponenten sind grundlegende Bausteine, die zu einem Fenster hinzugefügt werden können und Funktionen für die Benutzeroberfläche sowie benutzerdefiniertes Verhalten bereitstellen. In webforJ dient die Klasse `Component` als Grundlage für alle Komponenten innerhalb der Engine.
 
-## Lifecycle-Management {#lifecycle-management}
+## Lebenszyklusverwaltung {#lifecycle-management}
 
-Das Verständnis des Lebenszyklus von Komponenten ist entscheidend, um Komponenten effektiv zu erstellen, zu verwalten und zu nutzen. Die folgenden beiden Lebenszykluszustände verfügen über Methoden, um ihr Verhalten zu manipulieren. Diese Methoden sollten nicht ausdrücklich vom Benutzer aufgerufen werden.
+Das Verständnis des Komponentenlebenszyklus ist entscheidend für die effektive Erstellung, Verwaltung und Nutzung von Komponenten. Die folgenden beiden Lebenszykluszustände verfügen über Methoden, um ihr Verhalten zu manipulieren. Diese Methoden sollten nicht explizit vom Benutzer aufgerufen werden.
 
-### Erstellungs- und Zerstörungsmethoden {#create-and-destroy-hooks}
+### Erstellungs- und Zerstörungs-Hooks {#create-and-destroy-hooks}
 
-Alle Klassen, die die `Component`-Klasse erweitern, sind dafür verantwortlich, die Funktionalität zu implementieren, die ausgeführt werden soll, wenn die `Component` erstellt und wenn sie zerstört wird. Dies geschieht durch Überschreiben der Methoden `onCreate()` und `onDestroy()`.
+Alle Klassen, die die Klasse `Component` erweitern, sind dafür verantwortlich, die Funktionalität zu implementieren, die beim Erstellen der `Component` und beim Zerstören ausgeführt wird. Dies geschieht, indem die Methoden `onCreate()` und `onDestroy()` überschrieben werden.
 
 #### `onCreate()` {#oncreate}
 
-Die Methode `onCreate()` wird aufgerufen, wenn die Komponente zu einem Fenster hinzugefügt wird. Komponenten zu erstellen bedeutet, ihren anfänglichen Zustand und ihre Funktionalität einzurichten. Hier definierst du, was die Komponente tun soll, wenn sie zum ersten Mal erstellt wird. Egal, ob es darum geht, Variablen zu initialisieren, Ereignis-Listener einzurichten oder eine andere Einrichtung vorzunehmen, die Methode `onCreate()` ist dein Einstiegspunkt zur Anpassung des Verhaltens der Komponente.
+Die Methode `onCreate()` wird aufgerufen, wenn die Komponente zu einem Fenster hinzugefügt wird. Die Erstellung von Komponenten umfasst die Einrichtung ihres Anfangszustands und ihrer Funktionalität. Hier definierst du, was die Komponente tun soll, wenn sie erstmals erstellt wird. Ob es darum geht, Variablen zu initialisieren, Ereignislistener einzurichten oder andere Vorbereitungen zu treffen, die Methode `onCreate()` ist dein Einstiegspunkt zur Anpassung des Komponentenverhaltens.
 
-Dieser Hook erhält eine Fensterinstanz, die die Hinzufügung der innerhalb der Komponente enthaltenen Komponenten ermöglicht.
+Dieser Hook erhält eine Fensterinstanz, die die Hinzufügung von innerhalb der Komponente enthaltenen Komponenten ermöglicht.
 
 ```java
 @Override
@@ -35,23 +35,23 @@ protected void onCreate(Window window) {
 ```
 
 :::tip
-Die Methode `onCreate()` ist der Ort, an dem die Komponente und alle Komponenten hinzugefügt werden sollten.
+Die Methode `onCreate()` ist der Ort, an dem die Komponente und alle Bestandteile zum Fenster hinzugefügt werden sollten.
 :::
 
 #### `onDestroy()` {#ondestroy}
 
-Die Zerstörung von Komponenten ist ein wesentlicher Bestandteil des Ressourcenmanagements und der ordnungsgemäßen Bereinigung. Es ist notwendig, eine Komponente zu zerstören, wenn sie nicht mehr benötigt wird oder wenn du Ressourcen freigeben möchtest, die mit ihr verbunden sind. Dies ermöglicht es einem Entwickler, Bereinigungsaufgaben durchzuführen, z. B. Timer zu stoppen, Speicher freizugeben oder Ereignis-Listener zu trennen. Es ermöglicht auch, die Methode `destroy()` auf allen dazugehörigen Komponenten aufzurufen.
+Das Zerstören von Komponenten ist ein wesentlicher Bestandteil des Ressourcenmanagements und gewährleistet eine ordnungsgemäße Bereinigung. Das Zerstören einer Komponente ist notwendig, wenn sie nicht mehr benötigt wird oder wenn du Ressourcen, die damit verbunden sind, freigeben möchtest. Es ermöglicht einem Entwickler, Bereinigungsaufgaben durchzuführen, wie das Stoppen von Timern, das Freigeben von Speicher oder das Abtrennen von Ereignislistenern. Es ermöglicht auch, die Methode `destroy()` für alle Bestandteil-Komponenten aufzurufen.
 
 :::tip
-Die Methode `onDestroy()` ist dafür verantwortlich, die Methode `destroy()` auf allen zugehörigen Komponenten aufzurufen. Andernfalls bestehen diese Komponenten weiterhin im DOM, sind jedoch über die API nicht mehr erreichbar.
+Die Methode `onDestroy()` ist dafür verantwortlich, die Methode `destroy()` für alle Bestandteil-Komponenten aufzurufen. Andernfalls existieren diese Komponenten weiterhin im DOM, sind jedoch nicht über die API erreichbar.
 :::
 
-### Asynchrone Anbindung {#asynchronous-attachment}
+### Asynchrone Anbringung {#asynchronous-attachment}
 
-Die Methode `whenAttached()` ermöglicht es, Funktionen auszuführen, nachdem eine Komponente zu einem Fenster hinzugefügt wurde. Diese Methode gibt eine <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> zurück, die es ermöglicht, zusätzlich festgelegtes Verhalten asynchron auszuführen, sobald die Komponente im DOM angehängt ist.
+Die Methode `whenAttached()` ermöglicht es, Funktionen auszuführen, nachdem eine Komponente zu einem Fenster hinzugefügt wurde. Diese Methode gibt ein <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> zurück, das es ermöglicht, spezifizierte zusätzliche Verhalten asynchron auszuführen, sobald die Komponente im DOM angehängt ist.
 
 :::tip
-Im Gegensatz zu den vorherigen drei Methoden soll `whenAttached()` ausdrücklich vom Benutzer aufgerufen werden.
+Anders als die vorherigen drei Methoden soll `whenAttached()` explizit vom Benutzer aufgerufen werden.
 :::
 
 ```java
@@ -63,9 +63,9 @@ public class Demo extends App {
     Button button = new Button(); 
 
     /* Expliziter Aufruf von whenAttached(), der ein 
-    Nachrichtenfenster anzeigt, wenn der Button dem Frame angehängt ist.*/
+    Nachrichtenfeld anzeigt, wenn der Button an das Frame angehängt wird.*/
     button.whenAttached().thenAccept( e -> {
-      showMessageDialog("Ich bin angehängt!", "Asynchrone Anbindung");
+      showMessageDialog("Ich bin angehängt!", "Asynchrone Anbringung");
     });
   
     // Methode onCreate() wird aufgerufen
@@ -76,7 +76,7 @@ public class Demo extends App {
 
 ### Beobachter {#observers}
 
-Beobachter spielen eine wichtige Rolle beim Verfolgen von Ereignissen im Lebenszyklus von Komponenten. Beobachter können mit den Methoden `addLifecycleObserver()` und `removeLifecycleObserver()` hinzugefügt und entfernt werden und erhalten Benachrichtigungen über Ereignisse wie die Erstellung und Zerstörung von Komponenten.
+Beobachter spielen eine entscheidende Rolle bei der Verfolgung von Ereignissen im Lebenszyklus von Komponenten. Beobachter können mit den Methoden `addLifecycleObserver()` und `removeLifecycleObserver()` hinzugefügt und entfernt werden und erhalten Benachrichtigungen über Ereignisse wie die Erstellung und Zerstörung von Komponenten.
 
 Durch das Hinzufügen von Beobachtern kannst du Maßnahmen ergreifen, wenn eine Komponente erstellt oder zerstört wird. Dies ist besonders nützlich, um benutzerdefinierte Logik zu implementieren oder spezifische Szenarien basierend auf Komponentenereignissen zu behandeln.
 
@@ -84,40 +84,40 @@ Durch das Hinzufügen von Beobachtern kannst du Maßnahmen ergreifen, wenn eine 
 Button button = new Button();
 button.addLifecycleObserver((button, lifecycleEvent) -> {
   if (lifecycleEvent == ComponentLifecycleObserver.LifecycleEvent.DESTROY) {
-    // Implementierte Logik, die ausgeführt werden soll, wenn der Button zerstört wird
+    // implementierte Logik ausführen, wenn der Button zerstört wird
   }
 });
 ```
 
-## Komponentenattribute {#component-properties}
+## Komponenten Eigenschaften {#component-properties}
 
 ### Komponentenidentifikatoren {#component-identifiers}
 
-Komponenten-IDs dienen als eindeutige Identifikatoren für Komponenten, die es ermöglichen, mit ihnen zu interagieren und ihren Zustand effektiv zu verwalten.
+Komponenten-IDs dienen als eindeutige Identifikatoren für Komponenten, die es dir ermöglichen, mit ihnen zu interagieren und ihren Zustand effektiv zu verwalten.
 
 #### Serverseitige Komponenten-ID {#server-side-component-id}
 
-Jede Komponente, die aus der `Component`-Klasse erstellt wird, erhält automatisch eine serverseitige Identifikationsnummer. Serverseitige IDs sind für die interne Nachverfolgung und Identifizierung von Komponenten innerhalb des Frameworks unerlässlich. Du kannst die serverseitige Komponenten-ID mit der Methode `getComponentId()` abrufen.
+Jede Komponente, die aus der Klasse `Component` erstellt wird, erhält automatisch eine serverseitige Identifikationsnummer. Serverseitige IDs sind wichtig für das interne Tracking und die Identifikation von Komponenten innerhalb des Frameworks. Du kannst die serverseitige Komponenten-ID mit der Methode `getComponentId()` abrufen.
 
-Dies kann in vielen Situationen hilfreich sein, in denen eine eindeutige, serverseitige Identifikation erforderlich ist, z. B. bei der Abfrage einer bestimmten Komponente innerhalb eines Containers.
+Dies kann in vielen Situationen hilfreich sein, in denen eine eindeutige, serverseitige Identifikationsnummer erforderlich ist, z. B. beim Abfragen einer bestimmten Komponente innerhalb eines Containers.
 
-#### Client-seitige Komponenten-ID {#client-side-component-id}
+#### Clientseitige Komponenten-ID {#client-side-component-id}
 
-Client-seitige IDs ermöglichen es dem Benutzer, die Client-Darstellung der serverseitig in Java erstellten Komponente zu erhalten. Alle bereitgestellten webforJ-Komponenten haben eine Implementierung dieser ID. Wenn du Zugriff auf die client-seitige Komponente erhalten und sie verwenden möchtest, kannst du `object.get()` mit der Client-ID ausführen, um die gewünschte Client-Komponente zu erhalten.
+Clientseitige IDs ermöglichen es dem Benutzer, die Clientdarstellung der serverseitig in Java erstellten Komponente zu erhalten. Alle bereitgestellten webforJ-Komponenten verfügen über eine Implementierung dieser ID. Wenn du Zugriff auf die clientseitige Komponente erhalten und sie verwenden möchtest, kannst du `object.get()` mit der Client-ID ausführen, um die gewünschte Client-Komponente zu erhalten.
 
 :::important
 Diese ID ist **nicht** das ID-Attribut des Elements im DOM.
 :::
 
-Im untenstehenden Beispiel wird ein `onClick`-Ereignis zu einem Button hinzugefügt, der dann durch den Aufruf der Methode auf der client-seitigen Komponente ausgelöst wird, nachdem sie mit der Methode `object.get()` abgerufen wurde.
+Im folgenden Beispiel wird ein `onClick`-Ereignis zu einem Button hinzugefügt, das dann ausgelöst wird, indem die Methode auf der Client-Komponente aufgerufen wird, nachdem sie mit der `object.get()`-Methode erhalten wurde.
 
 ```java
 @Override
 public void run() throws WebforjException {
   Frame frame = new Frame();
-  Button btn = new Button("Klicke mich");
+  Button btn = new Button("Klick mich");
   btn.onClick(e -> {
-    showMessageDialog("Der Button wurde geklickt", "Ein Ereignis ist aufgetreten");
+    showMessageDialog("Der Button wurde angeklickt", "Ein Ereignis trat ein");
   });
 
   btn.whenAttached().thenAccept(e -> {
@@ -129,6 +129,6 @@ public void run() throws WebforjException {
 
 ### Benutzerdaten {#user-data}
 
-Die `Component`-Klasse ermöglicht es dir, zusätzliche Informationen innerhalb der Komponente mithilfe der Methode `setUserData()` einzuschließen. Diese Informationen sind nur auf der Serverseite der Komponente über die Methode `getUserData()` zugänglich und werden nicht an den Client gesendet.
+Die Klasse `Component` ermöglicht es dir, zusätzliche Informationen innerhalb der Komponente mithilfe der Methode `setUserData()` einzuschließen. Diese Informationen sind nur auf der Serverseite der Komponente über die Methode `getUserData()` zugänglich und werden nicht an den Client gesendet.
 
-Dies ist besonders nützlich, wenn Informationen mit einer Komponente verbunden sein sollen und diese Informationen ohne zusätzliche Abfrage an den Client zugänglich sein sollen.
+Dies ist besonders nützlich, wenn Informationen, die mit einer Komponente enthalten sein sollen, vorhanden sind und wenn diese Informationen ohne einen Zugriff auf den Client abgerufen werden sollen.

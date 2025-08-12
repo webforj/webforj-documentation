@@ -1,18 +1,18 @@
 ---
 title: Loading
 sidebar_position: 65
-_i18n_hash: fd3e1e31d1a614494358f9d67a9d3cd8
+_i18n_hash: 9bdb4d5c978b4070d3628566e5105088
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-loading" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="loading" location="com/webforj/component/loading/Loading" top='true'/>
 
-De `Loading` component in webforJ toont een overlay die aangeeft dat een bewerking wordt verwerkt, waardoor tijdelijke gebruikersinteractie wordt verhinderd totdat de taak is voltooid. Deze functie verbetert de gebruikerservaring, vooral in situaties waarin taken zoals gegevens laden, berekeningen of achtergrondprocessen enige tijd kunnen duren. Voor globale, app-omvattende processen, overweeg het gebruik van de [`BusyIndicator`](../components/busyindicator) component, die interactie over de hele interface blokkeert.
+De `Loading` component in webforJ toont een overlay die aangeeft dat een bewerking wordt verwerkt, en voorkomt tijdelijk gebruikersinteractie totdat de taak is voltooid. Deze functie verbetert de gebruikerservaring, vooral in situaties waar taken zoals het laden van gegevens, berekeningen of achtergrondprocessen enige tijd kunnen duren. Voor wereldwijde, applicatiebrede processen kunt u overwegen om de [`BusyIndicator`](../components/busyindicator) component te gebruiken, die interactie blokkeert over de gehele interface.
 
 ## Basisprincipes {#basics}
 
-De eenvoudigste manier om een `Loading` component te creëren, is door het zonder aanvullende instellingen te initialiseren. Standaard toont dit een basisspinner boven de inhoud van de bovenliggende component. Je kunt echter ook een bericht toevoegen voor meer context.
+De eenvoudigste manier om een `Loading` component te creëren, is door het zonder extra instellingen te initialiseren. Standaard toont dit een basis spinner over de inhoud van de bovenliggende laag. U kunt echter ook een bericht geven voor meer context.
 
 Hier is een voorbeeld van het creëren van een `Loading` component met een bericht:
 
@@ -23,25 +23,25 @@ cssURL='/css/loadingstyles/loadingdemo.css'
 height = '300px'
 />
 
-## Scoping {#scoping}
+## Afbakening {#scoping}
 
-De `Loading` component in webforJ kan zichzelf beperken tot een specifieke bovenliggende container, zoals een `Div`, waardoor het alleen gebruikersinteractie binnen dat element blokkeert. Standaard is de `Loading` component relatief aan zijn bovenliggende component, wat betekent dat het de bovenliggende component overlayt in plaats van de hele app.
+De `Loading` component in webforJ kan zich afbakenen tot een specifieke bovenliggende container, zoals een `Div`, waardoor het alleen gebruikersinteractie blokkeert binnen dat element. Standaard is de `Loading` component relatief aan zijn ouder, wat betekent dat het de bovenliggende component overlaget in plaats van de hele app.
 
-Om de `Loading` component tot zijn bovenliggende component te beperken, voeg je eenvoudig de `Loading` component toe aan de bovenliggende container. Als je deze bijvoorbeeld toevoegt aan een `Div`, wordt de laad-overlay alleen op die `Div` toegepast:
+Om de `Loading` component te beperken tot zijn ouder, hoeft u alleen maar de `Loading` component aan de bovenliggende container toe te voegen. Als u het bijvoorbeeld aan een `Div` toevoegt, geldt de laadoverlay alleen voor die `Div`:
 
 ```java
 Div parentDiv = new Div();  
 parentDiv.setStyle("position", "relative");
 Loading loading = new Loading();
 parentDiv.add(loading);
-loading.open();  // Loading zal alleen interactie binnen de parentDiv blokkeren
+loading.open();  // Loading blokkeert alleen interactie binnen de parentDiv
 ```
 
 ## Achtergrond {#backdrop}
 
-De `Loading` component in webforJ stelt je in staat om een achtergrond weer te geven om gebruikersinteractie te blokkeren terwijl een proces aan de gang is. Standaard is de achtergrond ingeschakeld, maar je hebt de optie om deze uit te schakelen indien nodig.
+De `Loading` component in webforJ laat u een achtergrond weergeven om gebruikersinteractie te blokkeren terwijl een proces aan de gang is. Standaard is de achtergrond ingeschakeld, maar u heeft de optie om deze uit te schakelen indien nodig.
 
-Voor de `Loading` component is de achtergrond standaard zichtbaar. Je kunt deze expliciet inschakelen of uitschakelen met de methode `setBackdropVisible()`:
+Voor de `Loading` component is de achtergrond standaard zichtbaar. U kunt deze expliciet in- of uitschakelen met de `setBackdropVisible()` methode:
 
 ```java
 Loading loading = new Loading();
@@ -49,14 +49,14 @@ loading.setBackdropVisible(false);  // Schakelt de achtergrond uit
 loading.open();
 ```
 :::info Achtergrond Uit
-Zelfs wanneer je de achtergrond uitschakelt, blijft de `Loading` component gebruikersinteractie blokkeren om ervoor te zorgen dat het onderliggende proces ononderbroken kan worden voltooid. De achtergrond bestuurt eenvoudig de visuele overlay, niet het gedrag van het blokkeren van interactie.
+Zelfs als u de achtergrond uitschakelt, blijft de `Loading` component gebruikersinteractie blokkeren om te zorgen dat het onderliggende proces ononderbroken kan worden voltooid. De achtergrond regelt simpelweg de visuele overlay, niet het blokkeren van interactie.
 :::
 
 ## `Spinner` {#spinner}
 
-De `Loading` component in webforJ bevat een `Spinner` die visueel aangeeft dat er een achtergrondbewerking aan de gang is. Je kunt deze spinner aanpassen met verschillende opties, waaronder grootte, snelheid, richting, thema en zichtbaarheid.
+De `Loading` component in webforJ bevat een `Spinner` die visueel aangeeft dat er een achtergrondbewerking bezig is. U kunt deze spinner aanpassen met verschillende opties, waaronder de grootte, snelheid, richting, thema en zichtbaarheid.
 
-Hier is een voorbeeld van hoe je de spinner binnen een `Loading` component kunt aanpassen:
+Hier is een voorbeeld van hoe u de spinner binnen een `Loading` component kunt aanpassen:
 
 <ComponentDemo 
 path='/webforj/loadingspinnerdemo?' 
@@ -65,16 +65,16 @@ cssURL='/css/loadingstyles/loadingspinnerdemo.css'
 height = '300px'
 />
 
-## Gebruikscases {#use-cases}
-- **Gegevens ophalen**  
-   Bij het ophalen van gegevens van een server of API, overlayt de `Loading` component een specifiek gedeelte van de UI, zoals een kaart of formulier, om gebruikers te informeren dat het systeem op de achtergrond werkt. Dit is ideaal wanneer je voortgang over slechts één deel van het scherm wilt tonen zonder de hele interface te blokkeren.
+## Gebruikscenarios {#use-cases}
+- **Gegevens Ophalen**  
+   Bij het ophalen van gegevens van een server of API, overlayt de `Loading` component een specifiek gedeelte van de gebruikersinterface, zoals een kaart of formulier, om gebruikers te informeren dat het systeem op de achtergrond bezig is. Dit is ideaal wanneer u voortgang wilt tonen op slechts één deel van het scherm zonder de hele interface te blokkeren.
 
-- **Inhoud laden in kaarten/gedeelten**  
-   De `Loading` component kan worden beperkt tot specifieke gebieden van een pagina, zoals individuele kaarten of containers. Dit is nuttig wanneer je wilt aangeven dat een bepaald gedeelte van de UI nog aan het laden is, terwijl gebruikers met andere delen van de pagina kunnen interageren.
+- **Inhoud Laden in Kaarten/Gedeelten**  
+   De `Loading` component kan beperkt worden tot specifieke gebieden van een pagina, zoals individuele kaarten of containers. Dit is nuttig wanneer u wilt aangeven dat een bepaald gedeelte van de gebruikersinterface nog aan het laden is, terwijl gebruikers kunnen blijven interageren met andere delen van de pagina.
 
-- **Complexe formulierindieningen**  
-   Voor langere formulierindieningen waarbij validatie of verwerking tijd kost, biedt de `Loading` component visuele feedback aan gebruikers, waarmee wordt bevestigd dat hun invoer actief wordt verwerkt.
+- **Complexe Formulierverschrijvingen**  
+   Voor langere formulierverschrijvingen waarbij validatie of verwerking enige tijd kost, biedt de `Loading` component visuele feedback aan gebruikers, wat hen geruststelt dat hun invoer actief wordt verwerkt.
 
-## Stylen {#styling}
+## Stijlen {#styling}
 
 <TableBuilder name="Loading" />

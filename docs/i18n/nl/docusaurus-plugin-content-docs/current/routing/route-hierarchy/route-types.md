@@ -1,13 +1,13 @@
 ---
 sidebar_position: 1
 title: Route Types
-_i18n_hash: d297703f4a165ebcfbb540c3256f825e
+_i18n_hash: ff067ccd8461640c772c1f8fa0dcc856
 ---
-Routes zijn ingedeeld in twee hoofdtypen: **View Routes** en **Layout Routes**. De keuze van het routetype bepaalt hoe componenten aan URL's worden gekoppeld en hoe ze interactie hebben met andere delen van je app.
+Routes worden ingedeeld in twee hoofdtypen, **View Routes** en **Layout Routes**. De keuze voor het type route bepaalt hoe componenten aan URL's worden toegewezen en hoe ze interageren met andere delen van je app.
 
 ## View routes {#view-routes}
 
-View routes staan direct in verbinding met een URL-segment en vertegenwoordigen specifieke pagina's in je app. Deze routes worden weerspiegeld in de URL van de browser en worden doorgaans gebruikt voor afzonderlijke weergaven of pagina's.
+View routes zijn direct gekoppeld aan een URL-segment en vertegenwoordigen specifieke pagina's in je app. Deze routes worden weerspiegeld in de URL van de browser en worden doorgaans gebruikt voor afzonderlijke weergaven of pagina's.
 
 ```java
 @Route(value = "home")
@@ -20,13 +20,13 @@ public class HomeView extends Composite<Div> {
 ```
 
 - **URL**: `/home`
-- **Weergavede Component**: `HomeView`
+- **Gerenderde Component**: `HomeView`
 
-In dit voorbeeld rendert het navigeren naar `/home` de `HomeView` component.
+In dit voorbeeld rendert navigeren naar `/home` de `HomeView` component.
 
 ## Layout routes {#layout-routes}
 
-Layout routes omringen kindweergaven zonder bij te dragen aan de URL. Layouts bieden gedeelde UI-elementen zoals kopteksten of zijbalken die consistent zijn over meerdere weergaven. Kindroutes worden weergegeven in het inhoudsgebied van de layout.
+Layout routes omhullen kindweergaven zonder bij te dragen aan de URL. Layouts bieden gedeelde UI-elementen zoals kopteksten of zijbalken die consistent zijn over meerdere weergaven. Kindroutes worden binnen het inhoudsgebied van de lay-out gerenderd.
 
 ```java
 @Route(type = Route.Type.LAYOUT)
@@ -38,16 +38,16 @@ public class MainLayout extends Composite<AppLayout> {
 }
 ```
 
-In dit geval is `MainLayout` een layout route die om kindweergaven heen wikkelt. Het definieert gemeenschappelijke UI-elementen zoals een koptekst en een lade. Kindroutes die aan deze layout zijn gekoppeld, worden geïnjecteerd in het inhoudsgebied van de `AppLayout` component.
+In dit geval is `MainLayout` een layout route die kindweergaven omhult. Het definieert gemeenschappelijke UI-elementen zoals een koptekst en lade. Kindroutes die aan deze lay-out zijn gekoppeld, worden geïnjecteerd in het inhoudsgebied van de `AppLayout` component.
 
-## Auto-detectie van routetypen {#auto-detection-of-route-types}
+## Auto-detectie van routetypes {#auto-detection-of-route-types}
 
-Standaard wordt het routetype automatisch gedetecteerd of de route een **view** of **layout** is op basis van de klassenaam:
+Standaard wordt het routetype automatisch gedetecteerd, of de route nu een **view** of **layout** is, op basis van de class-naam:
 
 - Klassen die eindigen op `Layout` worden behandeld als **layout routes**.
 - Klassen die eindigen op `View` worden behandeld als **view routes**.
 
-Optioneel kunnen ontwikkelaars handmatig het routetype specificeren door `Route.Type` in de `@Route` annotatie in te stellen.
+Als alternatief kunnen ontwikkelaars handmatig het routetype specificeren door `Route.Type` in de `@Route` annotatie in te stellen.
 
 ```java
 // Automatisch gedetecteerd als Layout

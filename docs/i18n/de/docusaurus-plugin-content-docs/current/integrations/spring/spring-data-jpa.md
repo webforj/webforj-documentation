@@ -1,19 +1,19 @@
 ---
 title: Spring Data JPA
 sidebar_position: 20
-_i18n_hash: f97a3247bcdeadf193a049bdb6d1a3bc
+_i18n_hash: 5aee4b031f1464780e7fd06e71946951
 ---
-Spring Data JPA ist der de facto Standard für den Datenzugriff in Spring-Anwendungen und bietet Repository-Abstraktionen, Abfragemethoden und Spezifikationen für komplexe Abfragen. Der webforJ `SpringDataRepository`-Adapter verbindet Spring Data-Repositories mit den UI-Komponenten von webforJ, wodurch Sie JPA-Entitäten direkt mit UI-Komponenten verknüpfen, dynamisches Filtern mit JPA-Spezifikationen implementieren und die Seitenpagination verwalten können.
+Spring Data JPA ist der De-facto-Standard für den Datenzugriff in Spring-Anwendungen und bietet Repository-Abstraktionen, Abfragemethoden und Spezifikationen für komplexe Abfragen. Der webforJ `SpringDataRepository`-Adapter verbindet Spring Data-Repositories mit den UI-Komponenten von webforJ und ermöglicht es Ihnen, JPA-Entitäten direkt an UI-Komponenten zu binden, dynamisches Filtern mit JPA-Spezifikationen zu implementieren und die Paginierung zu verwalten.
 
-Der Adapter erkennt, welche Spring Data-Schnittstellen Ihr Repository implementiert - ob es sich um `CrudRepository`, `PagingAndSortingRepository` oder `JpaSpecificationExecutor` handelt - und stellt automatisch die entsprechenden Funktionen in Ihrer UI bereit. Das bedeutet, dass Ihre bestehenden Spring Data-Repositories ohne Änderungen mit webforJ-Komponenten funktionieren, während die Typensicherheit erhalten bleibt und Ihr bestehendes Domänenmodell genutzt wird.
+Der Adapter erkennt, welche Spring Data-Schnittstellen Ihr Repository implementiert - sei es `CrudRepository`, `PagingAndSortingRepository` oder `JpaSpecificationExecutor` - und stellt automatisch die entsprechenden Funktionen in Ihrer UI zur Verfügung. Das bedeutet, dass Ihre vorhandenen Spring Data-Repositories ohne Änderungen mit webforJ-Komponenten funktionieren, während die Typensicherheit gewahrt bleibt und Ihr bestehendes Domänenmodell verwendet wird.
 
-:::tip[Mehr über Spring Data JPA erfahren]
+:::tip[Erfahren Sie mehr über Spring Data JPA]
 Für ein umfassendes Verständnis der Funktionen und Abfragemethoden von Spring Data JPA siehe die [Spring Data JPA-Dokumentation](https://docs.spring.io/spring-data/jpa/reference/).
 :::
 
 ## Verwendung von SpringDataRepository {#using-springdatarepository}
 
-Die `SpringDataRepository`-Klasse verbindet Spring Data JPA-Repositories mit der Repository-Schnittstelle von webforJ, wodurch sie mit UI-Komponenten wie [`Table`](../../components/table/overview) kompatibel ist und gleichzeitig alle Funktionen von Spring Data beibehält.
+Die Klasse `SpringDataRepository` verbindet Spring Data JPA-Repositories mit der Repository-Schnittstelle von webforJ und macht sie kompatibel mit UI-Komponenten wie [`Table`](../../components/table/overview), während alle Funktionen von Spring Data erhalten bleiben.
 
 ```java
 // Ihr Spring Data-Repository
@@ -23,20 +23,20 @@ private PersonRepository personRepository;
 // Mit SpringDataRepository umschließen
 SpringDataRepository<Person, Long> adapter = new SpringDataRepository<>(personRepository);
 
-// Verwendung mit webforJ Table
+// Mit webforJ Table verwenden
 Table<Person> table = new Table<>();
 table.setRepository(adapter);
 ```
 
 ### Schnittstellenerkennung {#interface-detection}
 
-Spring Data-Repositories verwenden Schnittstellenvererbung, um Funktionen hinzuzufügen. Sie beginnen mit grundlegenden CRUD-Operationen und fügen Schnittstellen für Funktionen wie Pagination oder Spezifikationen hinzu:
+Spring Data-Repositories verwenden Schnittstellenerbschaft, um Funktionen hinzuzufügen. Sie beginnen mit grundlegenden CRUD-Operationen und fügen Schnittstellen für Funktionen wie Paginierung oder Spezifikationen hinzu:
 
 ```java
-// Nur grundlegendes CRUD
+// Nur grundlegende CRUD
 public interface CustomerRepository extends CrudRepository<Customer, Long> {}
 
-// CRUD + Pagination + Sortierung
+// CRUD + Paginierung + Sortierung
 public interface CustomerRepository extends PagingAndSortingRepository<Customer, Long> {}
 
 // Vollständiges Repository
@@ -44,20 +44,20 @@ public interface CustomerRepository extends JpaRepository<Customer, Long>,
                                            JpaSpecificationExecutor<Customer> {}
 ```
 
-`SpringDataRepository` untersucht, welche Schnittstellen Ihr Repository implementiert und passt sein Verhalten entsprechend an. Wenn Ihr Repository die Seitenpagination unterstützt, aktiviert der Adapter paginierte Abfragen. Wenn es `JpaSpecificationExecutor` implementiert, können Sie dynamisches Filtern mit Spezifikationen verwenden.
+`SpringDataRepository` überprüft, welche Schnittstellen Ihr Repository implementiert, und passt sein Verhalten entsprechend an. Wenn Ihr Repository Paginierung unterstützt, ermöglicht der Adapter paginierte Abfragen. Wenn es `JpaSpecificationExecutor` implementiert, können Sie dynamisches Filtern mit Spezifikationen verwenden.
 
 ### Repository-Funktionen {#repository-capabilities}
 
-Jede Spring Data-Schnittstelle fügt spezifische Funktionen hinzu, die `SpringDataRepository` verwenden kann:
+Jede Spring Data-Schnittstelle fügt spezifische Funktionen hinzu, die `SpringDataRepository` nutzen kann:
 
-- **CrudRepository** - Grundlegende Operationen: `save`, `delete`, `findById`, `findAll`
+- **CrudRepository** - Grundoperationen: `save`, `delete`, `findById`, `findAll`
 - **PagingAndSortingRepository** - Fügt paginierte Abfragen und Sortierung hinzu
-- **JpaRepository** - Kombiniert CRUD und Pagination/Sortierung mit Batch-Operationen
-- **JpaSpecificationExecutor** - Dynamische Abfragen mit JPA-Spezifikationen
+- **JpaRepository** - Kombiniert CRUD und Paginierung/Sortierung mit Batch-Operationen
+- **JpaSpecificationExecutor** - Dynamische Abfragen mithilfe von JPA-Spezifikationen
 
-### Erstellen eines Spring Data-Repositorys {#creating-a-spring-data-repository}
+### Erstellen eines Spring Data-Repositories {#creating-a-spring-data-repository}
 
-Für maximale Kompatibilität mit webforJ-Komponenten erstellen Sie Repositories, die sowohl `JpaRepository` als auch `JpaSpecificationExecutor` implementieren:
+Für maximale Kompatibilität mit webforJ-Komponenten sollten Sie Repositories erstellen, die sowohl `JpaRepository` als auch `JpaSpecificationExecutor` implementieren:
 
 ```java title="PersonRepository.java"
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -75,14 +75,14 @@ public interface PersonRepository
 Diese Kombination bietet:
 
 - Finden nach ID-Operationen
-- Pagination mit optimaler Leistung
-- Sortierfunktionen
-- Filterung nach Java Persistence API-Spezifikation
+- Paginierung mit optimaler Leistung
+- Sortierungsfähigkeiten
+- Filterung mithilfe der Java Persistence API-Spezifikation
 - Zähloperationen mit und ohne Filter
 
 ## Arbeiten mit `Table` {#working-with-table}
 
-Das folgende Beispiel verwendet ein `PersonRepository`, das `JpaRepository` und `JpaSpecificationExecutor` erweitert. Diese Kombination ermöglicht das Sortieren über Spaltenüberschriften und dynamisches Filtern mit Spezifikationen.
+Das folgende Beispiel verwendet ein `PersonRepository`, das `JpaRepository` und `JpaSpecificationExecutor` erweitert. Diese Kombination ermöglicht das Sortieren über Kopfzeilen und dynamisches Filtern mit Spezifikationen.
 
 ```java title="TableView.java"
 @Route
@@ -94,7 +94,7 @@ public class TableView extends Composite<Div> {
     // Spring Data-Repository für webforJ umschließen
     repository = new SpringDataRepository<>(personRepository);
     
-    // Mit Tabelle verbinden
+    // Mit der Tabelle verbinden
     table.setRepository(repository);
     
     // Spalten definieren
@@ -112,15 +112,15 @@ public class TableView extends Composite<Div> {
 }
 ```
 
-Die Methode `setPropertyName()` ist wichtig für die Sortierung - sie teilt dem Adapter mit, welche JPA-Eigenschaft in der `ORDER BY`-Klausel verwendet werden soll, wenn nach dieser Spalte sortiert wird. Ohne sie funktioniert die Sortierung nicht für berechnete Eigenschaften wie `getFullName()`.
+Die Methode `setPropertyName()` ist wichtig für das Sortieren - sie sagt dem Adapter, welche JPA-Eigenschaft in der `ORDER BY`-Klausel verwendet werden soll, wenn nach dieser Spalte sortiert wird. Ohne sie funktioniert das Sortieren nicht für berechnete Eigenschaften wie `getFullName()`.
 
 ## Filtern mit JPA-Spezifikationen {#filtering-with-jpa-specifications}
 
-`SpringDataRepository` verwendet JPA-Spezifikationen für dynamische Abfragen, die auf den Repository-`findBy`- und `count`-Operationen angewendet werden.
+`SpringDataRepository` verwendet JPA-Spezifikationen für dynamische Abfragen, die auf die Repository-Operationen `findBy` und `count` angewendet werden.
 
-:::tip[Mehr über Filtern erfahren]
-Um zu verstehen, wie das Filtern mit webforJ-Repositories funktioniert, einschließlich Basisfiltern und Filterzusammensetzung, siehe die [Repository-Dokumentation](../../advanced/repository/overview).
-:::
+:::tip[Erfahren Sie mehr über das Filtern]
+Um zu verstehen, wie das Filtern mit webforJ-Repositories funktioniert, einschließlich Basisfiltern und Filterkomposition, siehe die [Repository-Dokumentation](../../advanced/repository/overview).
+::: 
 
 ```java
 // Nach Stadt filtern
@@ -136,6 +136,6 @@ Specification<Person> complexFilter = (root, query, cb) ->
     );
 repository.setFilter(complexFilter);
 
-// Filter zurücksetzen
+// Filter löschen
 repository.setFilter(null);
 ```

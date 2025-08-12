@@ -1,29 +1,29 @@
 ---
 sidebar_position: 2
 title: Assets Protocols
-_i18n_hash: b37158687b15dc2b94a7543624eaa09f
+_i18n_hash: a7482285684e797c3cfc30d025a95482
 ---
-webforJ tukee mukautettuja omaisuuspöytäkirjoja, jotka mahdollistavat rakenteellisen ja tehokkaan resurssien käytön. Nämä pöytäkirjat abstraktoivat staattisten ja dynaamisten resurssien palauttamisen monimutkaisuudet varmistaen, että omaisuudet haetaan ja integroidaan saumattomasti sovellukseen.
+webforJ tukee mukautettuja omaisuutta koskevia protokollia, jotka mahdollistavat jäsennellyn ja tehokkaan resurssien käytön. Nämä protokollat abstruoivat staattisten ja dynaamisten resurssien hakuun liittyvät monimutkaisuudet, varmistamalla, että omaisuudet haetaan ja liitetään saumattomasti sovellukseen.
 
-## The webserver protocol {#the-webserver-protocol}
+## Webpalvelinprotokolla {#the-webserver-protocol}
 
-**`ws://`**-pöytäkirja mahdollistaa omaisuuksien hakemisen webforJ-sovelluksen staattisesta kansiosta. Kaikki tiedostot, jotka sijaitsevat sovelluksen luokkatiellä `src/main/resources/static`, ovat suoraan saavutettavissa selaimesta. Esimerkiksi, jos sinulla on tiedosto nimeltä **css/app.css** kansiossa **resources/static**, se voidaan saavuttaa osoitteessa: **`/static/css/app.css`**
+**`ws://`**-protokolla mahdollistaa omaisuuksien hakemisen webforJ-sovelluksen staattisesta kansiosta. Kaikki tiedostot, jotka sijaitsevat sovelluksen luokkapolulla `src/main/resources/static`, ovat suoraan käytettävissä selaimesta. Esimerkiksi, jos sinulla on tiedosto nimeltä **css/app.css** kansiossa **resources/static**, se voidaan avata osoitteessa: **`/static/css/app.css`**
 
-**ws://**-pöytäkirja poistaa tarpeen kovakoodata `static`-etuliite resurssi-URL-osoitteisiisi, suojaten muutoksilta etuliitteissä riippuen käyttöyhteydestä. Jos web-sovellus on julkaistu kontekstissa, joka ei ole juurisijainti, kuten **/mycontext**, osoite **css/app.css**:lle olisi: **`/mycontext/static/css/app.css`**
+**ws://**-protokolla poistaa tarpeen kovakoodata `static`-etuliite resurssi-URL-osoitteissa, suojaten muuttuneilta etuliitteiltä riippuen käyttöönoton kontekstista. Jos web-sovellus on otettu käyttöön muun kontekstin alla kuin juuri, kuten **/mycontext**, osoite **css/app.css**:lle olisi: **`/mycontext/static/css/app.css`**
 
-:::tip Configure the static prefix
-Voit hallita `static`-etuliitettä käyttämällä [webforj-konfigurointia](../configuration/properties#configuration-options) asetusta `webforj.assetsDir`. Tämä asetus määrittää reitin nimen, jota käytetään staattisten tiedostojen tarjoamiseen, samalla kun **fyysinen kansio pysyy nimeltään `static`**. Tämä on erityisen hyödyllinen, jos oletusstaattinen reitti on ristiriidassa sovelluksesi reitin kanssa, sillä se mahdollistaa reitin nimen muuttamisen ilman kansion nimeämistä uudelleen.
+:::tip Staattisen etuliitteen konfigurointi
+Voit ohjata `static`-etuliitettä käyttämällä [webforj-konfiguraatiota](../configuration/properties#configuration-options) vaihtoehdolla `webforj.assetsDir`. Tämä asetus määrittelee reitin nimen, jota käytetään staattisten tiedostojen palvelemiseen, kun taas **fyysinen kansio pysyy nimeltään `static`**. Tämä on erityisen hyödyllinen, jos oletusstaattinen reitti on ristiriidassa sovelluksesi reitin kanssa, sillä se mahdollistaa reitin nimen muuttamisen ilman, että kansiota täytyy nimetä uudelleen.
 :::
 
-Voit käyttää <JavadocLink type="foundation" location="com/webforj/utilities/Assets" code='true'>Assets</JavadocLink> -apuluokkaa ratkaistaksesi annetun web-palvelimen URL-osoitteen. Tämä voi olla hyödyllistä, jos sinulla on mukautettu komponentti, joka tarvitsee tukea tälle pöytäkirjalle.
+Voit käyttää <JavadocLink type="foundation" location="com/webforj/utilities/Assets" code='true'>Assets</JavadocLink> -apuluokkaa ratkaistaksesi annetun web-palvelimen URL-osoitteen. Tämä voi olla hyödyllistä, jos sinulla on mukautettu komponentti, joka tarvitsee tukea tälle protokollalle.
 
 ```java
 String url = Assets.resolveWebServerUrl("ws://js/app.js");
 ```
 
-## The context protocol {#the-context-protocol}
+## Kontekstiproto {#the-context-protocol}
 
-Kontekstipöytäkirja vastaa resursseista sovelluksen luokkatiellä `src/main/resources`. Jotkut resurssin API-menetelmät ja annotaatiot tukevat tätä pöytäkirjaa lukeakseen tiedoston sisältöä resursseista ja lähettääkseen sen sisällön selaimelle. Esimerkiksi `InlineJavaScript`-annotaatio mahdollistaa JavaScript-tiedoston sisällön lukemisen resurssikansiosta ja sen inline-tyylin käyttö asiakaspuolella.
+Kontekstiproto kartoittaa resursseja sovelluksen luokkapolulla `src/main/resources`. Jotkut resurssi-API-menetelmät ja -annotaatiot tukevat tätä protokollaa lukemaan tiedoston sisältö resurssikansiosta ja lähettämään sen sisällön selaimelle. Esimerkiksi, `InlineJavaScript`-annotaatio mahdollistaa JavaScript-tiedoston sisällön lukemisen resurssikansiosta ja sen upottamisen asiakaspäähän.
 
 Esimerkiksi:
 
@@ -33,48 +33,48 @@ String content = Assets.contentOf(
 );
 ```
 
-## The icons protocol {#the-icons-protocol}
+## Ikoni-protokolla {#the-icons-protocol}
 
-**`icons://`**-pöytäkirja tarjoaa dynaamisen lähestymistavan ikonien hallintaan, mikä tekee siitä tehokkaan ja joustavan ikonien luomiseen ja tarjoamiseen [asennettavissa sovelluksissa](../configuration/installable-apps). Tämä pöytäkirja mahdollistaa ikonien luomisen lennossa pyydetyn tiedostonimen ja parametrien perusteella, vähentäen monissa tapauksissa ennakolta luodun ikonitavan tarvetta.
+**`icons://`**-protokolla tarjoaa dynaamisen lähestymistavan ikoninhallintaan, mikä tekee siitä tehokkaan ja joustavan ikoneiden luomiseen ja palvelemiseen [asennettavissa sovelluksissa](../configuration/installable-apps). Tämä protokolla sallii ikonien luomisen lennossa pyydetyn tiedoston nimen ja parametrien perusteella, poistaen monissa tapauksissa ennakkoon luotujen ikonien tarpeen.
 
 ```java
 Img icon = new Img("icons://icon-192x192.png")
 ```
 
-### Base icon {#base-icon}
+### Perusikoni {#base-icon}
 
-Kun ikonia pyydetään käyttäen `icons://`-pöytäkirjaa, peruskuva johdetaan dynaamisesti pyydetystä ikonin tiedostonimestä. Tämä varmistaa ikonimuotoilun johdonmukaisuuden ja mahdollistaa automaattisen varayhteyden oletuskuvaan, jos perusikonia ei ole tarjolla.
+Kun ikonia pyydetään käyttäen `icons://`-protokollaa, peruskuva johdetaan dynaamisesti pyydetystä ikonitiedoston nimestä. Tämä varmistaa johdonmukaisuuden ikonisuunnittelussa ja mahdollistaa automaattisen varautumisen oletuskuvaan, jos perusikonia ei ole annettu.
 
 - **Esimerkki 1:** Pyyntö: `/icons/icon-192x192.png` → Perusikoni: `resources/icons/icon.png`
 - **Esimerkki 2:** Pyyntö: `/icons/icon-different-192x192.png` → Perusikoni: `resources/icons/icon-different.png`
 
-Jos peruskuvaa ei ole olemassa pyydetylle ikonille, käytetään oletus webforJ -logo varayhteytenä.
+Jos pyydetylle ikonille ei ole olemassa peruskuvaa, oletuswebforJ-logo käytetään varakuvana.
 
 :::tip `webforj.iconsDir`
-Oletusarvoisesti webforJ tarjoaa ikoneita `resources/icons/`-kansiosta. Voit muuttaa päätepisteen nimeä asettamalla `webforj.iconsDir` -ominaisuuden webforJ-konfiguraatiotiedostoon. Tämä muuttaa vain URL-päätepisteen, jota käytetään ikoneiden hakemiseen, ei varsinaista kansion nimeä. Oletuspäätepiste on `icons/`.
+Oletusarvoisesti webforJ palvelee ikoneita `resources/icons/`-hakemistosta. Voit muuttaa päätepisteen nimeä asettamalla `webforj.iconsDir`-ominaisuuden webforJ-konfigurointitiedostoon. Tämä muuttaa vain URL-päätepisteen, jota käytetään ikoneiden hakemiseen, ei varsinaisen kansion nimeä. Oletuspäätepiste on `icons/`.
 :::
 
-### Overriding Icons {#overriding-icons}
+### Ikonien ylikirjoittaminen {#overriding-icons}
 
-Voit ylittää tietyt ikonikooot sijoittamalla ennakkoluodut kuvat `resources/icons/`-kansioon. Tämä antaa suuremman hallinnan ikonien ulkonäköön, kun tietyt koot tai tyylit vaativat mukauttamista.
+Voit ylikirjoittaa tiettyjä ikonikokoja sijoittamalla ennakkoon luotuja kuvia `resources/icons/`-hakemistoon. Tämä antaa suuremman hallinnan ikonien ulkonäöstä, kun tietyt koot tai tyylit tarvitsevat muokkausta.
 
-- **Esimerkki:** Jos `resources/icons/icon-192x192.png` on olemassa, se palvelee suoraan sen sijaan, että se luotaisiin dynaamisesti.
+- **Esimerkki:** Jos `resources/icons/icon-192x192.png` on olemassa, se palvellaan suoraan sen sijaan, että se luotaisiin dynaamisesti.
 
-### Customizing icon appearance {#customizing-icon-appearance}
+### Ikonien ulkoasun mukauttaminen {#customizing-icon-appearance}
 
-`icons://`-pöytäkirja tukee lisäparametreja, jotka mahdollistavat dynaamisesti luotujen ikonien ulkonäön mukauttamisen. Tämä sisältää vaihtoehdot tyhjentämiselle ja taustavärille.
+`icons://`-protokolla tukee lisäparametreja, joiden avulla voit mukauttaa dynaamisesti luotujen ikonien ulkoasua. Tämä sisältää vaihtoehtoja reunamarginaalille ja taustavärille.
 
-- **Tyhjennys**: `padding`-parametriä voidaan käyttää säätämään tilaa ikonien ympärillä. Hyväksyttävät arvot vaihtelevat `0`, mikä tarkoittaa, että tilaa ei ole, ja `1`, mikä tarkoittaa suurinta tilaa.
+- **Reunamarginaali**: `padding`-parametria voidaan käyttää hallitsemaan ikonille annettavaa reunamarginaalia. Hyväksytyt arvot vaihtelevat `0`:sta, jolloin reunamarginaalia ei ole, `1`:een, jolloin reunamarginaali on suurin.
   - **Esimerkki:** `/icons/icon-192x192.png?padding=0.3`
-  
-- **Taustaväri**: `background`-parametri mahdollistaa ikonien taustavärin asettamisen. Se tukee seuraavia arvoja:
+
+- **Taustaväri**: `background`-parametri mahdollistaa ikonin taustavärin asettamisen. Se tukee seuraavia arvoja:
   - **`transparent`**: Ei taustaväriä.
   <!-- vale off -->
-  - **Heeksadesimaaliset väri-koodit**: Mukautetut taustavärit (esim. `FFFFFF` valkoiselle).
+  - **Heksadeemiset väriarvot**: Mukautetut taustavärit (esim. `FFFFFF` valkoiselle).
   <!-- vale on -->
-  - **`auto`**: Yrittää automaattisesti tunnistaa ikonin taustavärin.
+  - **`auto`**: Yrittää automaattisesti havaita ikonille taustavärin.
 
-Esimerkiksi: 
+  Esimerkiksi: 
   
   - **Esimerkki 1:** `/icons/icon-192x192.png?background=000000`
   - **Esimerkki 2:** `/icons/icon-192x192.png?background=auto`

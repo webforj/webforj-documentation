@@ -6,7 +6,7 @@ slug: popupmenu
 description: A user guide article for the popupmenu
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 64e586b86f5e80f1f3fddd452902a19e
+_i18n_hash: 233dd9418695057beb3c39ea63651d54
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,8 +16,8 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info CLIËNT COMPONENT
-Deze sectie beschrijft stylinginformatie voor de **`<dwc-popupmenu>`** component. Deze component is **alleen aan de clientzijde** - hij kan niet zelfstandig via de API worden geïnitialiseerd, maar kan deel uitmaken van API-componenten.
+:::info KLIANTCOMPONENT
+Dit gedeelte geeft stylinginformatie voor de **`<dwc-popupmenu>`** component. Deze component is **alleen aan de clientzijde** - kan niet zelfstandig via de API worden aangemaakt, maar kan een onderdeel zijn van API-componenten.
 :::
 
 ## Styling {#styling}

@@ -1,27 +1,27 @@
 ---
 sidebar_position: 2
 title: Shadow Parts
-_i18n_hash: 8dbd7759364573b73d0b1b00c6d7e219
+_i18n_hash: bad90a86a29eaf34485d5ee9150aacb3
 ---
-CSS **Shadow Parts** geven ontwikkelaars de mogelijkheid om elementen binnen de shadow DOM van een component van buitenaf te stylen, terwijl de encapsulatie behouden blijft.
+CSS **Schaduw Onderdelen** geven ontwikkelaars een manier om elementen binnen de schaduw DOM van een component van buitenaf te stylen, terwijl de encapsulatie behouden blijft.
 
 ## Introductie {#introduction}
 
-De webforJ-componenten zijn gebouwd met behulp van [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components), die zich baseren op de [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) om de interne structuur en stijlen van een component te encapsuleren.
+De webforJ-componenten zijn gebouwd met behulp van [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components), die vertrouwen op de [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) om de interne structuur en stijlen van een component te encapsuleren.
 
 :::tip Web Components
-Web Components zijn een suite van technologieën waarmee je herbruikbare, ingekapselde aangepaste elementen kunt maken voor gebruik in webapplicaties.
+Web Components zijn een suite van technologieën waarmee je herbruikbare, geëncapsuleerde op maat gemaakte elementen kunt maken voor gebruik in webapplicaties.
 :::
 
-De **Shadow DOM** voorkomt dat interne stijlen en opmaak naar buiten lekken of worden beïnvloed door externe stijlen. Deze encapsulatie zorgt ervoor dat componenten zelfvoorzienend blijven, waardoor het risico op stylingconflicten vermindert.
+De **Shadow DOM** voorkomt dat interne stijlen en markup naar buiten lekken of worden beïnvloed door externe stijlen. Deze encapsulatie zorgt ervoor dat componenten zelfvoorzienend blijven, wat het risico op stijlconflicten vermindert.
 
-:::tip  Web Components Encapsulatie
-Encapsulatie is een belangrijke voordelen van Web Components. Door de structuur, stijlen en gedrag van een component gescheiden te houden van de rest van je app, vermijd je conflicten en behoud je schone, onderhoudbare code.
+:::tip Web Components Encapsulatie
+Encapsulatie is een belangrijk voordeel van Web Components. Door de structuur, stijlen en gedrag van een component gescheiden te houden van de rest van je app, voorkom je conflicten en behoud je schone, onderhoudbare code.
 :::
 
-Echter, vanwege deze encapsulatie kun je **geen directe styling** toepassen op elementen binnen een shadow DOM met standaard CSS-selectors.
+Echter, vanwege deze encapsulatie **kun je elementen binnen een schaduw DOM niet direct stilen** met standaard CSS-selectors.
 
-Bijvoorbeeld, de `dwc-button` component rendert de volgende structuur:
+Bijvoorbeeld, de `dwc-button` component render de volgende structuur:
 
 ```html {2}
 <dwc-button>
@@ -33,7 +33,7 @@ Bijvoorbeeld, de `dwc-button` component rendert de volgende structuur:
 </dwc-button>
 ```
 
-Als je probeert het `label` zo te stylen:
+Als je probeert de `label` zo te stylen:
 
 ```css
 /* Werkt NIET */
@@ -42,19 +42,19 @@ dwc-button .control__label {
 }
 ```
 
-zal het geen effect hebben, omdat het `.control__label` element zich binnen de shadow root bevindt.
+zal het geen effect hebben, omdat het `.control__label` element zich binnen de schadow root bevindt.
 
-Dit is waar **CSS Shadow Parts** in beeld komen.
+Hier komen de **CSS Schaduw Onderdelen** in beeld.
 
-## Stylen met shadow parts {#styling-with-shadow-parts}
+## Stylen met schaduw onderdelen {#styling-with-shadow-parts}
 
-Shadow parts stellen externe stylesheets in staat om specifieke elementen binnen een shadow tree te targeten, maar **alleen als** die elementen expliciet zijn gemarkeerd als "exposed" door de component.
+Schaduw onderdelen laten externe stylesheets specifieke elementen binnen een schaduw boom targetten, maar **alleen als** die elementen expliciet zijn gemarkeerd als "blootgesteld" door de component.
 
 ### Hoe onderdelen worden blootgesteld {#how-parts-are-exposed}
 
-Om een element bloot te stellen voor externe styling, moet de componentauteur een `part` attribuut eraan toekennen binnen de shadow DOM.
+Om een element voor externe styling bloot te stellen, moet de component auteur een `part` attribuut toewijzen aan het element binnen de schaduw DOM.
 
-Alle webforJ-componenten stellen automatisch relevante onderdelen bloot voor styling. Je kunt de lijst van ondersteunde onderdelen vinden in de sectie **Styling > Shadow parts** van de documentatie van elke component.
+Alle webforJ-componenten stellen automatisch relevante onderdelen voor styling bloot. Je kunt de lijst van ondersteunde onderdelen vinden in de sectie **Styling > Schaduw onderdelen** van de documentatie van elke component.
 
 Bijvoorbeeld, de `dwc-button` component stelt onderdelen bloot zoals `prefix`, `label` en `suffix`:
 
@@ -67,12 +67,12 @@ Bijvoorbeeld, de `dwc-button` component stelt onderdelen bloot zoals `prefix`, `
 </dwc-button>
 ```
 
-Eenmaal blootgesteld, kunnen deze onderdelen van buiten de component gestyled worden met de [`::part()`](https://developer.mozilla.org/en-US/docs/Web/CSS/::part) pseudo-element. 
+Zodra deze onderdeel zijn blootgesteld, kunnen ze van buiten de component gestyled worden met behulp van de [`::part()`](https://developer.mozilla.org/en-US/docs/Web/CSS/::part) pseudo-element.
 
 
 ### De `::part()` pseudo-element {#the-part-pseudo-element}
 
-De `::part()`-selector stelt je in staat om stijlen toe te passen op elementen binnen de shadow DOM die zijn gemarkeerd met een `part` attribuut.
+De `::part()` selector stelt je in staat om stijlen toe te passen op elementen binnen de schaduw DOM die zijn gemarkeerd met een `part` attribuut.
 
 Bijvoorbeeld, om de kleur van het `label` onderdeel in een `dwc-button` te veranderen:
 
@@ -91,7 +91,7 @@ dwc-button::part(label):hover {
 ```
 
 :::warning Beperkingen van de ::part() Selector
-Je kunt niet *binnen* een shadow part selecteren. Het volgende zal **niet** werken:
+Je kunt niet *binnen* een schaduw onderdeel selecteren. Het volgende zal **niet** werken:
 
 ```css
 /* Werkt NIET */

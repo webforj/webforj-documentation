@@ -20,7 +20,7 @@
     "description": "Navbar item with label Developers"
   },
   "item.label.Support": {
-    "message": "Asistencia",
+    "message": "Ayuda",
     "description": "Navbar item with label Support"
   },
   "item.label.Events": {
@@ -56,7 +56,7 @@
     "description": "Navbar item with label Contribution Guide"
   },
   "item.label.Report Issue": {
-    "message": "Reportar un problema",
+    "message": "Reportar problema",
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {

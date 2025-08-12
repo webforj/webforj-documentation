@@ -6,7 +6,7 @@ slug: textarea
 description: A user guide article for the textarea
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 4a15e4800bbd5ccf7a242d11a7514609
+_i18n_hash: 0ac786cc079eda27eeb676fb81f1335e
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,7 +17,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info COMPONENTE DEL CLIENTE
-Esta sección describe la información de estilo para el **`<dwc-textarea>`** componente. Este componente es **solo del lado del cliente** - no se puede instanciar por sí solo a través de la API, pero puede formar parte de los componentes de la API.
+Esta sección describe la información de estilo para el **`<dwc-textarea>`**. Este componente es **solo del lado del cliente** - no se puede instanciar por sí solo a través de la API, pero puede formar parte de componentes de la API.
 :::
 
 ## Estilo {#styling}

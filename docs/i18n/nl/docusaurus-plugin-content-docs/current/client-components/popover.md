@@ -6,7 +6,7 @@ slug: popover
 description: A user guide article for the popover
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: af9c8ebe52b90fe590a93fc54f5f6dc7
+_i18n_hash: f8a3ac21fe0826265af520c521b2474f
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,10 +16,10 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info CLIëntCOMPONENT
-Dit gedeelte beschrijft de stijl-informatie voor de **`<dwc-popover>`** component. Deze component is **alleen clientzijde** - het kan niet op eigen kracht via de API worden geïnstantieerd, maar kan deel uitmaken van API-componenten.
+:::info KLIëntCOMPONENT
+Deze sectie bevat stijlinformatie voor de **`<dwc-popover>`** component. Deze component is **alleen client-side** - het kan niet op zichzelf worden geïnstantieerd via de API, maar kan deel uitmaken van API-componenten.
 :::
 
-## Stijling {#styling}
+## Styling {#styling}
 
 <TableBuilder name="dwc-popover" clientComponent />

@@ -6,7 +6,7 @@ slug: backdrop
 description: A user guide article for the backdrop
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: a3daea6a11502b5fd94894791f3b7fd4
+_i18n_hash: 0c720960769b73ee5df47abd29d7e606
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,9 +17,9 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info ASIAKASKOMPONENTTI
-Tässä osiossa esitellään tyylitietoja **`<dwc-backdrop>`** komponentille. Tämä komponentti on **vain asiakaspuolella** - sitä ei voida instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+Tässä osassa esitellään tyyli-informaatiota **`<dwc-backdrop>`** komponentille. Tämä komponentti on **asiakassivun komponentti** - sitä ei voi instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
-## Tyylit {#styling}
+## Tyylistys {#styling}
 
 <TableBuilder name="dwc-backdrop" clientComponent />

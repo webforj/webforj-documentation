@@ -6,7 +6,7 @@ slug: textfield
 description: A user guide article for the textfield
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 0bcd7c14939d9dc8430e3337ead76523
+_i18n_hash: 74e92c72dc271b439bfd7e47053d4323
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,7 +17,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info ASIAKASKOMPONENTTI
-Tässä osiossa kuvataan tyylitietoja **`<dwc-textfield>`** komponentille. Tämä komponentti on **asiakaspuolen komponentti** - sitä ei voi instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+Tässä osiossa käsitellään **`<dwc-textfield>`** komponentin tyylitietoja. Tämä komponentti on **vain asiakaspäätteen puolella** - sitä ei voi instanssia itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
 ## Tyylit {#styling}

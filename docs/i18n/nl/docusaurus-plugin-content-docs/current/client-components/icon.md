@@ -6,7 +6,7 @@ slug: icon
 description: A user guide article for the icon
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 9ad7c6c58a3b9cf44f0280cfc10431c2
+_i18n_hash: 4974da383efa4aa057fcd74a67da84b6
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,9 +17,9 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info CLIËNTCOMPONENT
-Deze sectie schetst de stijlinformatie voor de **`<dwc-icon>`** component. Deze component is **alleen aan de clientzijde** - deze kan niet op zichzelf worden geïnstantieerd via de API, maar kan deel uitmaken van API-componenten.
+Deze sectie beschrijft de stijlinformatie voor de **`<dwc-icon>`** component. Deze component is **alleen aan de clientzijde** - hij kan niet zelfstandig worden geïnstantieerd via de API, maar kan onderdeel zijn van API-componenten.
 :::
 
-## Stijl {#styling}
+## Styling {#styling}
 
 <TableBuilder name="dwc-icon" clientComponent />

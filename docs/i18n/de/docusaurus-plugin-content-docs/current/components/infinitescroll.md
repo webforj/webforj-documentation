@@ -1,16 +1,16 @@
 ---
 title: InfiniteScroll
 sidebar_position: 60
-_i18n_hash: afeb43fb31ce58db2860ceddd8e8527c
+_i18n_hash: 3384cb35d5087561cc9be2c11b95c7e1
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-infinite-scroll" />
 <DocChip chip='since' label='25.00' />
 <JavadocLink type="infinite-scroll" location="com/webforj/component/infinitescroll/InfiniteScroll" top='true'/>
 
-Die `InfiniteScroll`-Komponente in webforJ lädt automatisch mehr Inhalte, während die Benutzer nach unten scrollen, und erspart so die Notwendigkeit von Pagination. Dies schafft eine flüssige Erfahrung für Listen, Feeds und datenschwere Ansichten, indem Inhalte nur bei Bedarf geladen werden.
+Die `InfiniteScroll`-Komponente in webforJ lädt automatisch mehr Inhalte, während Benutzer nach unten scrollen, und beseitigt so die Notwendigkeit für die Paginierung. Dies schafft ein reibungsloses Erlebnis für Listen, Feeds und datenintensive Ansichten, indem Inhalte nur bei Bedarf geladen werden.
 
-Wenn Benutzer das Ende des scrollbaren Inhalts erreichen, löst `InfiniteScroll` ein Ereignis zum Laden weiterer Daten aus. Während neue Inhalte geladen werden, wird ein [`Spinner`](../components/spinner) mit anpassbarem Text angezeigt, um anzuzeigen, dass weitere Elemente auf dem Weg sind.
+Wenn Benutzer den unteren Rand des scrollbaren Inhalts erreichen, löst `InfiniteScroll` ein Ereignis zum Laden weiterer Daten aus. Während neuer Inhalt geladen wird, zeigt es einen [`Spinner`](../components/spinner) mit anpassbarem Text an, um anzuzeigen, dass weitere Elemente unterwegs sind.
 
 <AppLayoutViewer
 path='/webforj/infinitescroll?' 
@@ -24,37 +24,37 @@ mobile='true'
 
 Die `InfiniteScroll`-Komponente gibt Ereignisse aus und verwaltet den internen Zustand, um zu helfen, wie und wann Inhalte geladen werden.
 
-Um mehr Daten zu laden, wenn der Benutzer scrollt, verwenden Sie die Methode `onScroll()` oder `addScrollListener()`, um einen Listener zu registrieren. Innerhalb des Listeners laden Sie normalerweise zusätzliche Inhalte und rufen `update()` auf, um den `InfiniteScroll`-Zustand zu aktualisieren.
+Um mehr Daten abzurufen, wenn der Benutzer scrollt, verwenden Sie die Methode `onScroll()` oder `addScrollListener()`, um einen Listener zu registrieren. Innerhalb des Listeners laden Sie typischerweise zusätzliche Inhalte und rufen `update()` auf, um den Zustand von `InfiniteScroll` zu aktualisieren.
 
 ```java
 infiniteScroll.onScroll(event -> {
-    infiniteScroll.add(new Paragraph("Geladenes Element"));
+    infiniteScroll.add(new Paragraph("Gelaadener Artikel"));
     infiniteScroll.update();
 });
 ```
 
-Sobald alle Inhalte geladen sind, markieren Sie das Scrollen als abgeschlossen, um weitere Auslösungen zu verhindern. Nachdem Sie abgeschlossen gesetzt haben, denken Sie daran, `update()` aufzurufen, um den neuen Zustand anzuwenden:
+Sobald alle Inhalte geladen sind, markieren Sie das Scrollen als abgeschlossen, um weitere Auslösungen zu verhindern. Nach dem Setzen auf abgeschlossen, denken Sie daran, `update()` aufzurufen, um den neuen Zustand anzuwenden:
 
 ```java
 infiniteScroll.setCompleted(true);
 infiniteScroll.update();
 ```
-Dies deaktiviert das Verhalten des unendlichen Scrollens.
+Dies deaktiviert das weitere unendliche Scrollverhalten.
 
-:::tip Setzen Sie das Ladeflag zurück
-Sie können dieses Flag mit `setCompleted(false)` zurücksetzen, wenn Sie später dem Benutzer erlauben, mehr Inhalte zu laden (z. B. nach einem Refresh).
+:::tip Ladeflag zurücksetzen
+Sie können dieses Flag mit `setCompleted(false)` zurücksetzen, wenn Sie später Benutzern erlauben, mehr Inhalte zu laden (z. B. nach einem Refresh).
 :::
 
-## Anpassung des Ladeindikators {#loading-indicator-customization}
+## Anpassung des Ladeanzeigen {#loading-indicator-customization}
 
-Standardmäßig zeigt `InfiniteScroll` einen integrierten Ladeindikator - einen kleinen animierten [`Spinner`](../components/spinner) zusammen mit einem „Daten werden geladen“-Text. Sie können den angezeigten Text ändern, indem Sie eine benutzerdefinierte Nachricht an den `InfiniteScroll`-Konstruktor übergeben oder `setText()` verwenden.
+Standardmäßig zeigt `InfiniteScroll` eine eingebaute Ladeanzeige - einen kleinen animierten [`Spinner`](../components/spinner) zusammen mit einem Text „Daten werden geladen“. Sie können den angezeigten Text ändern, indem Sie eine benutzerdefinierte Nachricht an den Konstruktor von `InfiniteScroll` übergeben oder `setText()` verwenden.
 
 ```java
-InfiniteScroll infiniteScroll = new InfiniteScroll("Weitere Datensätze werden abgerufen...");
-infiniteScroll.setText("Weitere Elemente werden geladen...");
+InfiniteScroll infiniteScroll = new InfiniteScroll("Weitere Datensätze abrufen...");
+infiniteScroll.setText("Mehr Artikel laden...");
 ```
 
-Ebenso können Sie das während des Ladevorgangs angezeigte [`Icon`](../components/icon) mit `setIcon()` anpassen.
+Ebenso können Sie das während des Ladens angezeigte [`Icon`](../components/icon) mithilfe von `setIcon()` anpassen.
 
 <AppLayoutViewer
 path='/webforj/infinitescrollloading?' 
@@ -66,9 +66,10 @@ mobile='true'
 
 ### Vollständige Anpassung {#full-customization}
 
-Wenn Sie sowohl den [`Spinner`](../components/spinner) als auch den Text vollständig durch Ihr eigenes Markup ersetzen möchten, können Sie Inhalte direkt in den speziellen Inhaltsbereich mithilfe von `addToContent()` hinzufügen.
+Wenn Sie sowohl den [`Spinner`](../components/spinner) als auch den Text vollständig durch Ihr eigenes Markup ersetzen möchten,
+können Sie Inhalte direkt in den speziellen Inhaltsbereich mit `addToContent()` einfügen.
 
-Wenn Sie den Inhaltsbereich füllen, ersetzt dies das Standard-Lade-Layout vollständig.
+Wenn Sie den Inhaltsbereich füllen, wird das Standard-Lade-Layout vollständig ersetzt.
 
 <AppLayoutViewer
 path='/webforj/infinitescrollcustomloading?' 
@@ -78,6 +79,6 @@ height = '400px'
 mobile='true'
 />
 
-## Styling {#styling}
+## Stil {#styling}
 
 <TableBuilder name="InfiniteScroll" />

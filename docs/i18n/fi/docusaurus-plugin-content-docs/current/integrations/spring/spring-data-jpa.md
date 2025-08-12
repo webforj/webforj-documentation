@@ -1,59 +1,59 @@
 ---
 title: Spring Data JPA
 sidebar_position: 20
-_i18n_hash: f97a3247bcdeadf193a049bdb6d1a3bc
+_i18n_hash: 5aee4b031f1464780e7fd06e71946951
 ---
-Spring Data JPA on de facto -standardi datan käsittelyssä Spring-sovelluksissa, tarjoten varastoabstraktioita, kyselymenetelmiä ja spesifikaatioita monimutkaisille kyselyille. webforJ `SpringDataRepository` -adapteri yhdistää Spring Data -varastot webforJ:n UI-komponentteihin, mahdollistaen JPA-olioiden yhdistämisen suoraan UI-komponentteihin, dynaamisen suodattamisen JPA Specificationsin avulla ja sivutuksen hallinnan.
+Spring Data JPA on de facto -standardi tietojen käsittelyssä Spring-sovelluksissa, tarjoten varastoabstraktioita, kyselymenetelmiä ja spesifikaatioita monimutkaisille kyselyille. webforJ `SpringDataRepository` -sovitin yhdistää Spring Data -varastot webforJ:n UI-komponenttien kanssa, mahdollistaen JPA-olioiden sitomisen suoraan UI-komponentteihin, dynaamisen suodattamisen JPA-spesifikaatioiden avulla ja sivutuksen käsittelyn.
 
-Adapteri tunnistaa, mitkä Spring Data -rajapinnat sinun varastosi toteuttaa - olipa se sitten `CrudRepository`, `PagingAndSortingRepository` tai `JpaSpecificationExecutor` - ja tarjoaa automaattisesti vastaavat ominaisuudet UI:ssasi. Tämä tarkoittaa, että olemassa olevat Spring Data -varastosi toimivat webforJ-komponenttien kanssa ilman muutoksia, säilyttäen samalla tyyppiturvallisuuden ja käyttäen olemassa olevaa domain-malliasi.
+Sovitin tunnistaa, mitkä Spring Data -rajapinnat varastosi toteuttaa - olipa se `CrudRepository`, `PagingAndSortingRepository` tai `JpaSpecificationExecutor` - ja tarjoaa automaattisesti vastaavat ominaisuudet UI:ssasi. Tämä tarkoittaa, että olemassa olevat Spring Data -varastosi toimivat webforJ-komponenttien kanssa ilman muutoksia, samalla säilyttäen tyyppiturvallisuuden ja käyttäen olemassa olevaa sovellusmalliasi.
 
-:::tip[Opi lisää Spring Data JPA:sta]
-Kattavan ymmärryksen saamiseksi Spring Data JPA:n ominaisuuksista ja kyselymenetelmistä, katso [Spring Data JPA -dokumentaatio](https://docs.spring.io/spring-data/jpa/reference/).
+:::tip[Lisätietoa Spring Data JPA:sta]
+Saadaksesi kattavan käsityksen Spring Data JPA:n ominaisuuksista ja kyselymenetelmistä, katso [Spring Data JPA -dokumentaatio](https://docs.spring.io/spring-data/jpa/reference/).
 :::
 
-## Käyttäminen SpringDataRepository {#using-springdatarepository}
+## SpringDataRepository käyttö {#using-springdatarepository}
 
 `SpringDataRepository`-luokka yhdistää Spring Data JPA -varastot webforJ:n Repository-rajapintaan, tehden niistä yhteensopivia UI-komponenttien, kuten [`Table`](../../components/table/overview), kanssa samalla säilyttäen kaikki Spring Data -ominaisuudet.
 
 ```java
-// Oma Spring Data varasto
+// Olet Spring Data -varasto
 @Autowired
 private PersonRepository personRepository;
 
-// Kääri se SpringDataRepositoryn ympärille
+// Kääri se SpringDataRepositoryyn
 SpringDataRepository<Person, Long> adapter = new SpringDataRepository<>(personRepository);
 
-// Käytä webforJ-taulukon kanssa
+// Käytä webforJ Taulukossa
 Table<Person> table = new Table<>();
 table.setRepository(adapter);
 ```
 
 ### Rajapinnan tunnistus {#interface-detection}
 
-Spring Data -varastot käyttävät rajapinnan perimistä lisäominaisuuksien lisäämiseksi. Aloitat perus CRUD-toiminnoista ja lisäät rajapintoja ominaisuuksille, kuten sivutukselle tai spesifikaatioille:
+Spring Data -varastot käyttävät rajapinnan perimistä ominaisuuksien lisäämiseksi. Aloitat perus CRUD-toiminnoista ja lisäät rajapintoja ominaisuuksille, kuten sivutukselle tai spesifikaatioille:
 
 ```java
-// Vain perus CRUD
+// Perus CRUD vain
 public interface CustomerRepository extends CrudRepository<Customer, Long> {}
 
-// CRUD + Sivutus + Lajittelu
+// CRUD + Sivutus + Järjestäminen
 public interface CustomerRepository extends PagingAndSortingRepository<Customer, Long> {}
 
-// Täysipainoinen varasto
+// Täysin varusteltu varasto
 public interface CustomerRepository extends JpaRepository<Customer, Long>, 
                                            JpaSpecificationExecutor<Customer> {}
 ```
 
-`SpringDataRepository` tarkistaa, mitkä rajapinnat varastosi toteuttaa ja mukauttaa käyttäytymistään sen mukaan. Jos varastosi tukee sivutusta, adapteri mahdollistaa sivutettujen kyselyjen tekemisen. Jos se toteuttaa `JpaSpecificationExecutor`, voit käyttää dynaamista suodattamista spesifikaatioiden avulla.
+`SpringDataRepository` tarkistaa, mitkä rajapinnat varastosi toteuttaa ja mukauttaa käyttäytymistään tämän mukaan. Jos varastosi tukee sivutusta, sovitin mahdollistaa sivutuksetut kyselyt. Jos se toteuttaa `JpaSpecificationExecutor`-rajapinnan, voit käyttää dynaamista suodattamista spesifikaatioiden avulla.
 
 ### Varaston ominaisuudet {#repository-capabilities}
 
 Jokainen Spring Data -rajapinta lisää erityisiä ominaisuuksia, joita `SpringDataRepository` voi käyttää:
 
 - **CrudRepository** - Perustoiminnot: `save`, `delete`, `findById`, `findAll`
-- **PagingAndSortingRepository** - Lisää sivutettujen kyselyjen ja lajittelun
-- **JpaRepository** - Yhdistää CRUD- ja sivutus/lajittelu -toiminnot pakettitoimintojen kanssa
-- **JpaSpecificationExecutor** - Dynaamiset kyselyt käyttäen JPA Specifications
+- **PagingAndSortingRepository** - Lisää sivutettuja kyselyitä ja lajittelua
+- **JpaRepository** - Yhdistää CRUD:n ja sivutuksen/lajittelun joukkotoimintoihin
+- **JpaSpecificationExecutor** - Dynaamiset kyselyt JPA-specifikaatioiden avulla
 
 ### Spring Data -varaston luominen {#creating-a-spring-data-repository}
 
@@ -74,15 +74,15 @@ public interface PersonRepository
 
 Tämä yhdistelmä tarjoaa:
 
-- Löydä ID:n mukaan -toiminnot
-- Sivutus optimaalisen suorituskyvyn kanssa
-- Lajitteluominaisuudet
-- Java Persistence API -spesifikaation suodatus
-- Laskentatoiminnot suodattimien kanssa ja ilman
+- Löydä ID:llä -toiminnot
+- Sivutus optimaalisen suorituskyvyn avulla
+- Lajittelukyvykkyydet
+- Java Persistence API Specification -suodatus
+- Laskentatoiminnot suodattimilla ja ilman suodattimia
 
 ## Työskentely `Table`-komponentin kanssa {#working-with-table}
 
-Seuraava esimerkki käyttää `PersonRepository`-varastoa, joka laajentaa `JpaRepository` ja `JpaSpecificationExecutor`. Tämä yhdistelmä mahdollistaa lajittelun sarakeotsikoiden kautta ja dynaamisen suodattamisen spesifikaatioiden avulla.
+Seuraava esimerkki käyttää `PersonRepositorya`, joka laajentaa `JpaRepository` ja `JpaSpecificationExecutor`. Tämä yhdistelmä mahdollistaa lajittelun sarakeotsikoiden kautta ja dynaamisen suodattamisen spesifikaatioiden avulla.
 
 ```java title="TableView.java"
 @Route
@@ -91,15 +91,15 @@ public class TableView extends Composite<Div> {
   private Table<Person> table = new Table<>();
 
   public TableView(PersonRepository personRepository) {
-    // Kääri Spring Data varasto webforJ:n ympärille
+    // Kääri Spring Data -varasto webforJ:lle
     repository = new SpringDataRepository<>(personRepository);
     
-    // Liitä taulukoihin
+    // Yhdistä taulukkoon
     table.setRepository(repository);
     
     // Määritä sarakkeet
     table.addColumn("name", Person::getFullName)
-          .setPropertyName("firstName"); // Lajittele oikean JPA ominaisuuden mukaan
+          .setPropertyName("firstName"); // Lajittele varsinaisella JPA-ominaisuudella
     table.addColumn("email", Person::getEmail);
     table.addColumn("age", person -> 
           person.getAge() != null ? person.getAge().toString() : "");
@@ -112,14 +112,14 @@ public class TableView extends Composite<Div> {
 }
 ```
 
-`setPropertyName()` -metodi on tärkeä lajittelua varten - se kertoo adapterille, mikä JPA-ominaisuus käytetään `ORDER BY` -lauseessa, kun lajitellaan kyseisen sarakkeen perusteella. Ilman sitä lajittelu ei toimi laskennallisille ominaisuuksille, kuten `getFullName()`.
+`setPropertyName()`-metodi on tärkeä lajittelua varten - se kertoo sovittimelle, mitä JPA-ominaisuutta käytetään `ORDER BY`-lausessa, kun lajittelet kyseistä saraketta. Ilman sitä lajittelu ei toimi laskettujen ominaisuuksien, kuten `getFullName()`, kohdalla.
 
-## Suodattaminen JPA spesifikaatioilla {#filtering-with-jpa-specifications}
+## Suodatus JPA-spesifikaatioiden avulla {#filtering-with-jpa-specifications}
 
-`SpringDataRepository` käyttää JPA spesifikaatioita dynaamisille kyselyille, ja niitä sovelletaan varaston `findBy`- ja `count`-toimintoihin.
+`SpringDataRepository` käyttää JPA-spesifikaatioita dynaamisiin kyselyihin, ja niitä sovelletaan varaston `findBy`- ja `count`-toimintoihin.
 
-:::tip[Opi lisää suodattamisesta]
-Ymmärtääksesi, kuinka suodattaminen toimii webforJ-varastoilla, mukaan lukien perussuodattimet ja suodattamisen yhdistäminen, katso [Varastodokumentaatio](../../advanced/repository/overview).
+:::tip[Lisätietoa suodattamisesta]
+Saadaksesi ymmärryksen siitä, miten suodatus toimii webforJ-varastoissa, mukaan lukien perussuodattimet ja suodattimien yhdistäminen, katso [Varasto-dokumentaatio](../../advanced/repository/overview).
 :::
 
 ```java
@@ -136,6 +136,6 @@ Specification<Person> complexFilter = (root, query, cb) ->
     );
 repository.setFilter(complexFilter);
 
-// Tyhjennä suodatin
+// Poista suodatus
 repository.setFilter(null);
 ```

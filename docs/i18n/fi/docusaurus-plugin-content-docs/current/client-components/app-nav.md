@@ -6,7 +6,7 @@ slug: app-nav
 description: A user guide article for the app-nav
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: fa9431a6c9a18e8532f99cd6ae025786
+_i18n_hash: 16a55ca602aabfe4637385d580e959ff
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,10 +16,10 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info KLIENTTIKOOSTE
-Tässä osiossa käsitellään **`<dwc-app-nav>`** komponentin tyylitietoja. Tämä komponentti on **vain asiakaspään** - sitä ei voi alustaa itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+:::info ASIA CLIENT
+Tässä osiossa käsitellään **`<dwc-app-nav>`** komponentin tyylitietoja. Tämä komponentti on **vain asiakaspuolella** - sitä ei voi alustaa itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
-## Stylointi {#styling}
+## Tyylit {#styling}
 
 <TableBuilder name="dwc-app-nav" clientComponent />

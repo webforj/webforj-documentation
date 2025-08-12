@@ -1,13 +1,13 @@
 ---
 sidebar_position: 4
 title: Context Results
-_i18n_hash: 15fc4551d1ed2f2b5e35785975e66946
+_i18n_hash: f7eeb60ff21b1d5dff27b17cc82cdf50
 ---
-Kun kirjoitat tietoja käyttöliittymästä malliin, `write`-metodi `BindingContext`-luokassa aktivoi validoinnit. Validoinnin tulokset määrittävät, onko tieto hyväksyttävää.
+Kun kirjoitat dataa käyttöliittymästä malliin, `BindingContext`-luokan `write`-metodi laukaisee validoinnit. Validointitulokset määrittävät, onko data hyväksyttävää.
 
 ## Validointitulosten käsittely {#processing-validation-results}
 
-Voit käsitellä validointituloksia antaaksesi palautetta käyttäjälle. Jos validointi epäonnistuu, voit estää tietojen päivittämisen mallissa ja näyttää virheilmoituksia, jotka liittyvät kuhunkin epäonnistuneeseen validointiin.
+Voit käsitellä validointituloksia antaaksesi palautetta käyttäjälle. Jos validointi epäonnistuu, voit estää datan päivityksen mallissa ja näyttää virheilmoituksia, jotka liittyvät jokaiseen epäonnistuneeseen validointiin.
 
 ```java
 ValidationResult result = context.write(hero);
@@ -19,31 +19,31 @@ if (!result.isValid()) {
 ```
 
 <!-- vale off -->
-## Konteksti-validointitila {#context-validation-state}
+## Konteksti validointitila {#context-validation-state}
 <!-- vale on -->
 
-Aina kun konteksti validoi komponentteja, se laukaisee `BindingContextValidateEvent`-tapahtuman. Tämä tapahtuma toimittaa `ValidationResult`:n kaikille sitoumuksille, jotka ovat muuttuneet samanaikaisesti. Voit käyttää näitä tuloksia laukaistaksesi toimintoja ja vastataksesi asianmukaisesti, esimerkiksi mahdollistamalla tai estämällä lähetysnapin käytön koko lomakkeen pätevyyden mukaan.
+Aina kun konteksti validoi komponentteja, se laukaisee `BindingContextValidateEvent`-tapahtuman. Tämä tapahtuma toimittaa `ValidationResult`-tiedot kaikista sidoksista, jotka ovat muuttuneet samanaikaisesti. Voit käyttää näitä tuloksia toimintojen laukaisemiseen ja vastata asianmukaisesti, esimerkiksi mahdollistamalla tai estämällä lähetysnappulan aktivoinnin lomakkeen kokonaisvalidaation perusteella.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
 
-// Kuuntele BindingContextValidateEvent:ia, joka laukaistaan jokaisen käyttäjän vuorovaikutuksen yhteydessä.
+// Kuuntele BindingContextValidateEvent-tapahtumaa, joka laukaistaan jokaisen käyttäjävuorovaikutuksen jälkeen.
 context.addValidateListener(event -> {
     submit.setEnabled(event.isValid());
 });
 ```
 
-## Automaattinen fokusoimisen rikkominen {#auto-focus-violation}
+## Automaattinen fokus rikkomus {#auto-focus-violation}
 
-Kun käsitellään lomakkeita, jotka vaativat validointia useissa kentissä, automaattinen siirtyminen ensimmäiseen virheelliseen kenttään voi merkittävästi parantaa käyttäjäkokemusta. Tämä ominaisuus auttaa käyttäjiä tunnistamaan ja korjaamaan virheitä heti, mikä tekee lomakkeen täyttämisestä sujuvampaa.
+Kun käsitellään lomakkeita, jotka vaativat validoitavaksi useita kenttiä, ensimmäisen virheellisen kentän automaattinen fokusoiminen voi merkittävästi parantaa käyttäjäkokemusta. Tämä ominaisuus auttaa käyttäjiä tunnistamaan ja korjaamaan virheitä välittömästi, nopeuttaen lomakkeen täyttämisprosessia.
 
-`BindingContext` yksinkertaistaa prosessia, jolla asetetaan automaattinen fokus ensimmäiseen komponenttiin, jolla on validointivirhe. Käyttämällä `setAutoFocusFirstViolation`-metodia voit ottaa tämän ominaisuuden käyttöön vähällä koodilla, varmistaen, että käyttöliittymästä tulee intuitiivisempi ja reagoivampi syöttövirheisiin.
+`BindingContext` yksinkertaistaa prosessia automaattisen fokuksen asettamisessa ensimmäiselle komponentille, jossa on validointivirhe. Käyttämällä `setAutoFocusFirstViolation`-metodia, voit aktivoida tämän ominaisuuden minimoidulla koodilla, varmistaen, että käyttöliittymästä tulee intuitiivisempi ja reagoivampi syöttövirheisiin.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
 context.setAutoFocusFirstViolation(true);
 ```
 
-:::info Fokukseen liittyvä
-Tämä ominaisuus toimii vain niille komponenteille, jotka toteuttavat `FocusAcceptorAware`-huolen. 
+:::info Fokukselle herkkä
+Tämä ominaisuus toimii vain komponenttien kohdalla, jotka toteuttavat `FocusAcceptorAware`-huolen.
 :::

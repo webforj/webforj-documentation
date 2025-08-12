@@ -6,7 +6,7 @@ slug: columns-layout
 description: A user guide article for the columns-layout
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: f911b4eaf137dbe1cae9cdba664d2220
+_i18n_hash: 8e491f5641370cf690c5a70115f84cc5
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,9 +17,9 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info ASIAKASKOMPONENTTI
-Tässä osiossa kuvataan tyyliin liittyvää tietoa **`<dwc-columns-layout>`** komponentista. Tämä komponentti on **vain asiakaspäässä** - sitä ei voi instanssia itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+Tässä osiossa käsitellään **`<dwc-columns-layout>`** komponentin tyylitietoja. Tämä komponentti on **asiakaspuolen ainoa** - sitä ei voi instanssia itsenäisesti API:n kautta, mutta se saattaa olla osa API-komponentteja.
 :::
 
-## Tyyli {#styling}
+## Tyylittely {#styling}
 
 <TableBuilder name="dwc-columns-layout" clientComponent />

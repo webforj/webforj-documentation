@@ -1,43 +1,43 @@
 ---
 title: Overview
 hide_giscus_comments: true
-_i18n_hash: 4d70b1e894fa3ca05afb5a4bc6ed982d
+_i18n_hash: 4174ea766ba47277c5bcb607c4111e29
 ---
-Tämä opetusohjelma on suunniteltu opastamaan sinua vaihe vaiheelta sovelluksen luomisprosessissa. Tämä sovellus, jonka tarkoituksena on hallita asiakastietoja, näyttää, kuinka käyttää webforJ:ta toimivan ja käyttäjäystävällisen käyttöliittymän rakentamiseen, jossa on ominaisuuksia asiakastietojen tarkasteluun, lisäämiseen ja muokkaamiseen. Jokainen osa rakentaa edellisen päälle, mutta voit halutessasi jättää osia väliin.
+Tämä opas on suunniteltu opastamaan sinua askel askeleelta prosessissa sovelluksen luomiseksi. Tämä sovellus, joka on suunniteltu hallitsemaan asiakastietoja, osoittaa, kuinka webforJ:ta käytetään toimivan ja käyttäjäystävällisen käyttöliittymän rakentamiseen, jossa on ominaisuuksia asiakastietojen tarkasteluun, lisäämiseen ja muokkaamiseen. Jokainen osa rakentaa edellisen päälle, mutta voit vapaasti hypätä eteenpäin tarpeen mukaan.
 
-Jokainen vaihe opetusohjelmassa tuottaa ohjelman, joka kootaan WAR-tiedostoksi, jota voidaan julkaista mille tahansa Java-web-sovellipalvelimelle. Tässä opetusohjelmassa käytetään Maven Jetty -laajennusta sovelluksen paikalliseen julkaisuun. Tämä kevyt asetelma varmistaa, että sovellus voi käynnistyä nopeasti ja että muutokset näkyvät reaaliaikaisesti kehityksen aikana.
+Jokainen vaihe tässä oppaassa tuottaa ohjelman, joka kääntyy WAR-tiedostoksi, joka voidaan ottaa käyttöön missä tahansa Java-web-sovelluspalvelimessa. Tässä oppaassa käytetään Maven Jetty -laajennusta sovelluksen paikalliseen käyttöönottoon. Tämä kevyt kokoonpano varmistaa, että sovellus käynnistyy nopeasti ja että muutokset näkyvät reaaliaikaisesti kehityksen aikana.
 
-## Opetusohjelmasovelluksen ominaisuudet {#tutorial-app-features}
+## Tutorial app features {#tutorial-app-features}
 
- - Työskentely tietojen kanssa taulukkona.
- - Käyttäen [`ObjectTable`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/environment/ObjectTable.html) ja omaisuuden hallintaa.
+ - Työskentely tietojen kanssa taulukossa.
+ - [`ObjectTable`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/environment/ObjectTable.html) ja omaisuuden hallinta.
  - [Reititys](../../routing/overview) ja [navigointi](../../routing/route-navigation)
- - [Databindings](../../data-binding/overview) ja [validointi](../../data-binding/validation/overview)
+ - [Tietositeet](../../data-binding/overview) ja [validointi](../../data-binding/validation/overview)
 
-## Esivaatimukset {#prerequisites}
+## Prerequisites {#prerequisites}
 
-Saadaksesi kaiken irti tästä opetusohjelmasta, oletetaan, että sinulla on perusymmärrys Java-ohjelmoinnista ja olet tuttu työkalujen, kuten Maven, kanssa. Jos olet uusi webforJ:n käyttäjä, älä huoli - kehyksen perusteet käsitellään matkan varrella.
+Saadaksesi parhaan hyödyn tästä oppaasta, on oletettavaa, että sinulla on perusymmärrys Java-ohjelmoinnista ja olet tuttu työkaluista kuten Maven. Jos olet uusi webforJ:n parissa, ei hätää - kehyksen perusteet käsitellään matkan varrella.
 
-Seuraavat työkalut/resurssit tulisi olla läsnä kehityskoneellasi:
+Seuraavat työkalut/resurssit tulisi olla läsnä kehityskoneellasi
 
 <!-- vale off -->
-- Java 17 tai uudempi
+- Java 17 tai korkeampi
 - Maven
 - Java IDE
 - Verkkoselain
 - Git (suositeltava mutta ei pakollinen)
 <!-- vale on -->
 
-:::tip webforJ Esivaatimukset
-Katso [tämä artikkeli](../prerequisites) saadaksesi tarkempaa tietoa vaadituista työkaluista.
+:::tip webforJ Prerequisites
+Katso [tämä artikkeli](../prerequisites) saadaksesi tarkemman katsauksen vaadituista työkaluista.
 :::
 
-## Osat {#sections}
+## Sections {#sections}
 
-Opetusohjelma on jaettu seuraaviin osiin. Siirry järjestyksessä kattavan oppaan saamiseksi tai ohita tarpeen mukaan erityiseen tietoon.
+Opas on jaettu seuraaviin osiin. Edisty järjestelmällisesti kattavan läpikäynnin vuoksi tai voit hypätä eteenpäin saadaksesi erityistä tietoa.
 
-:::tip Projektin asetukset
-Niille, jotka haluavat ohittaa tietyt aiheet, on suositeltavaa ensin lukea Projektin asetukset -osa ennen eteenpäin siirtymistä.
+:::tip Project setup
+Niille, jotka haluavat hypätä eteenpäin tiettyihin aiheisiin, on suositeltavaa ensin lukea Projektin asetukset -osa ennen jatkamista. 
 :::
 
 <DocCardList className="topics-section" />

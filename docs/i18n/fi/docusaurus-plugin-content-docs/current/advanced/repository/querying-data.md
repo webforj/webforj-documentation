@@ -1,50 +1,50 @@
 ---
 title: Querying data
 sidebar_position: 3
-_i18n_hash: c5508e014de2ca1de7543b34e39731bc
+_i18n_hash: 96551b4f47c7019b8bdd43b57f716c88
 ---
 <!-- vale off -->
 # Tietojen kysely <DocChip chip='since' label='25.02' />
 <!-- vale on -->
 
-<JavadocLink type="data" location="com/webforj/data/repository/QueryableRepository" code="true">QueryableRepository</JavadocLink>-rajapinta laajentaa `Repository`-rajapintaa edistetyllä kyselyllä <JavadocLink type="data" location="com/webforj/data/repository/RepositoryCriteria" code="true">RepositoryCriteria</JavadocLink> avulla. Toisin kuin perusvarastot, jotka tukevat vain yksinkertaista suodattamista, kyseltävät varastot tarjoavat rakenteellista kyselyä mukautetuilla suodatintyypeillä, lajittelulla ja sivutuksella.
+<JavadocLink type="data" location="com/webforj/data/repository/QueryableRepository" code="true">QueryableRepository</JavadocLink> -rajapinta laajentaa `Repository` -rajapintaa edistyneillä kyselyominaisuuksilla <JavadocLink type="data" location="com/webforj/data/repository/RepositoryCriteria" code="true">RepositoryCriteria</JavadocLink>:n kautta. Toisin kuin perusrepositoriot, jotka tukevat vain yksinkertaista suodattamista, kyselyrepositoriot tarjoavat rakenteellista kyselyä mukautettujen suodatin tyyppien, lajittelun ja sivutuksen avulla.
 
-## Suodatintyypin ymmärtäminen {#understanding-filter-types}
+## Suodatin tyyppien ymmärtäminen {#understanding-filter-types}
 
-<JavadocLink type="data" location="com/webforj/data/repository/QueryableRepository" code="true">QueryableRepository</JavadocLink> esittelee toisen geneerisen parametrin suodatintyypille: `QueryableRepository<T, F>` missä `T` on entiteettisi tyyppi ja `F` on mukautettu suodatintyypi.
+<JavadocLink type="data" location="com/webforj/data/repository/QueryableRepository" code="true">QueryableRepository</JavadocLink> esittelee toisen geneerisen parametrin suodatin tyypille: `QueryableRepository<T, F>`, missä `T` on entiteettityyppisi ja `F` on mukautettu suodatin tyyppisi.
 
-Tämä erottelu on olemassa, koska eri tietolähteet puhuvat eri kyselykieliä:
+Tämä erottelu on olemassa, koska eri tietolähteet käyttävät erilaisia kyselykieliä:
 
 ```java
-// Predikaattisuodattimet muistissa oleville kokoelmille
+// Predikaatti suodattimet muistissa oleville kokoelmille
 QueryableRepository<Product, Predicate<Product>> inMemoryRepo = 
     new CollectionRepository<>(products);
 
-// Mukautetut suodatinobjektit REST-API:lle tai tietokannoille  
+// Mukautetut suodatin objektit REST API:lle tai tietokannoille  
 QueryableRepository<User, UserFilter> apiRepo = 
-    new DelegatingRepository<>(/* toteutus */);
+    new DelegatingRepository<>(/* implementation */);
 
-// Merkkikyselyt hakukoneille
+// Merkkijono kyselyt hakukoneille
 QueryableRepository<Document, String> searchRepo = 
-    new DelegatingRepository<>(/* toteutus */);
+    new DelegatingRepository<>(/* implementation */);
 ```
 
-`CollectionRepository` käyttää `Predicate<Product>`:tä, koska se suodattaa Java-objekteja muistissa. REST API -varasto käyttää `UserFilter`:iä - mukautettua luokkaa, jossa on kenttiä kuten `department` ja `status`, jotka vastaavat kyselyparametreja. Hakusäilytys käyttää tavallisia merkkijonoja täydellisiin kyselyihin.
+`CollectionRepository` käyttää `Predicate<Product>` koska se suodattaa Java-objekteja muistissa. REST API -repository käyttää `UserFilter` -nimistä mukautettua luokkaa, jonka kentät ovat kuten `department` ja `status`, jotka vastaavat kyselyparametreja. Hakurepositorio käyttää tavallisia merkkijonoja täysimittaisiin kyselyihin.
 
-Käyttöliittymäkomponentit eivät välitä näistä eroista. Ne kutsuvat `setBaseFilter()`-metodia mihin tahansa suodatintyypiin, jota varasto odottaa, ja varasto käsittelee käännöksen.
+UI-komponentit eivät välitä näistä eroista. Ne kutsuvat `setBaseFilter()` -menetelmää haluamallaan suodatin tyypillä, ja repositorio hoitaa käännöksen.
 
-## Kyselyjen rakentaminen varastokriteerien avulla {#building-queries-with-repository-criteria}
+## Kyselyjen rakentaminen repositorion kriteereillä {#building-queries-with-repository-criteria}
 
-<JavadocLink type="data" location="com/webforj/data/repository/RepositoryCriteria" code="true">RepositoryCriteria</JavadocLink> kokoaa kaikki kyselyparametrit yhteen muuttumattomaan objektiin. Sen sijaan, että kutsuisit erillisiä metodeja suodattamiseen, lajitteluun ja sivutukseen, voit siirtää kaiken kerralla:
+<JavadocLink type="data" location="com/webforj/data/repository/RepositoryCriteria" code="true">RepositoryCriteria</JavadocLink> kokoaa kaikki kyselyparametrit yhteen muutettuun objektiin. Sen sijaan, että kutsuisit erillisiä menetelmiä suodattamiseen, lajitteluun ja sivutukseen, voit välittää kaiken kerralla:
 
 ```java
-// Täydellinen kysely kaikilla parametreilla
+// Kattava kysely kaikilla parametreilla
 RepositoryCriteria<Product, Predicate<Product>> criteria = 
-    new RepositoryCriteria<>( 
-        20,                                       // offset - jätä ensimmäiset 20 pois
-        10,                                       // limit - ota 10 kohdetta 
+    new RepositoryCriteria<>(
+        20,                                       // offset - ohita ensimmäiset 20
+        10,                                       // limit - ota 10 kohdetta  
         orderCriteria,                           // lajittelusäännöt
-        product -> product.getPrice() < 100.0    // suodatuskonditionaalitus
+        product -> product.getPrice() < 100.0    // suodatin ehto
     );
 
 // Suorita kysely
@@ -52,12 +52,12 @@ Stream<Product> results = repository.findBy(criteria);
 int totalMatching = repository.size(criteria);
 ```
 
-`findBy()`-metodi suorittaa koko kyselyn - se soveltaa suodatusta, lajittelee tuloksia, jättää offsetin huomiotta ja ottaa rajoituksen. `size()`-metodi laskee kaikki kohteet, jotka vastaavat suodatinta, sivutuksesta huolimatta.
+`findBy()`-menetelmä suorittaa koko kyselyn - se soveltaa suodatinta, lajittelee tulokset, ohittaa offsetin ja ottaa rajan. `size()`-menetelmä laskee kaikki kohteet, jotka vastaavat suodatinta, unohtaen sivutuksen.
 
-Voit myös luoda kriteereitä vain tarvitsemillasi osilla:
+Voit myös luoda kriteerejä vain tarvittavia osia käyttäen:
 
 ```java
-// Vain suodatin
+// Vain suodatus
 RepositoryCriteria<Product, Predicate<Product>> filterOnly = 
     new RepositoryCriteria<>(product -> product.isActive());
 
@@ -66,11 +66,11 @@ RepositoryCriteria<Product, Predicate<Product>> pageOnly =
     new RepositoryCriteria<>(0, 25);
 ```
 
-## Eri suodatintyypeillä työskentely {#working-with-different-filter-types}
+## Eri suodatin tyyppien kanssa työskentely {#working-with-different-filter-types}
 
-### Predikaattisuodattimet {#predicate-filters}
+### Predikaatti suodattimet {#predicate-filters}
 
-Muistissa oleville kokoelmille käytä `Predicate<T>`:tä rakentaaksesi funktionaalisia suodattimia:
+Muistissa oleville kokoelmille käytä `Predicate<T>` -tyyppiä rakentaaksesi funktionaalisia suodattimia:
 
 ```java
 CollectionRepository<Product> repository = new CollectionRepository<>(products);
@@ -94,9 +94,9 @@ if (maxPrice != null) {
 repository.setBaseFilter(filter);
 ```
 
-### Mukautetut suodatinobjektit {#custom-filter-objects}
+### Mukautetut suodatin objektit {#custom-filter-objects}
 
-Ulkoiset tietolähteet eivät voi suorittaa Java-predikaatteja. Sen sijaan luot suodatinluokkia, jotka kuvaavat, mitä taustajärjestelmäsi voi etsiä:
+Ulkoiset tietolähteet eivät voi suorittaa Java-predikaatteja. Sen sijaan luot suodatinluokkia, jotka edustavat mitä taustajärjestelmäsi voi etsiä:
 
 ```java
 public class ProductFilter {
@@ -107,7 +107,7 @@ public class ProductFilter {
     // getterit ja setterit...
 }
 
-// Käytä mukautetussa varastossa
+// Käytä mukautetun repositorion kanssa
 ProductFilter filter = new ProductFilter();
 filter.setCategory("Elektroniikka");
 filter.setMaxPrice(new BigDecimal("99.99"));
@@ -119,16 +119,16 @@ RepositoryCriteria<Product, ProductFilter> criteria =
 Stream<Product> results = customRepository.findBy(criteria);
 ```
 
-Mukautetun varaston `findBy()`-metodissa sinun tulee kääntää tämä suodatinobjekti:
+Mukautetun repositoryn `findBy()`-menetelmässä sinun tulisi kääntää tämä suodatin objekti:
 - REST API:lle: Muunna kyselyparametreiksi kuten `?category=Elektroniikka&maxPrice=99.99&inStock=true`
-- SQL:lle: Rakenna WHERE-lause kuten `WHERE category = ? AND price <= ? AND stock > 0`
-- GraphQL:lle: Rakenna kysely asianmukaisilla kenttävalinnoilla
+- SQL:lle: Rakenna where-lause kuten `WHERE category = ? AND price <= ? AND stock > 0`
+- GraphQL:lle: Rakenna kysely oikeilla kenttävalinnoilla
 
-`Repository`-toteutuksen tulisi käsitellä tämä käännös, pitäen käyttöliittymäkoodisi siistinä.
+`Repository`-implementaation tulisi hoitaa tämä käännös, pitäen UI-koodisi puhtaana.
 
-## Datan lajittelu {#sorting-data}
+## Tietojen lajittelu {#sorting-data}
 
-<JavadocLink type="data" location="com/webforj/data/repository/OrderCriteria" code="true">OrderCriteria</JavadocLink> määrittää, kuinka lajittelet tietosi. Jokaisella `OrderCriteria`:lla on arvojen hankintapalvelija (kuinka saada arvo entiteetistä) ja suunta:
+<JavadocLink type="data" location="com/webforj/data/repository/OrderCriteria" code="true">OrderCriteria</JavadocLink> määrittelee, kuinka lajittelet tietosi. Jokainen `OrderCriteria` tarvitsee arvon tuottajan (kuinka saada arvo entiteetistäsi) ja suunnan:
 
 ```java
 // Yhden kentän lajittelu
@@ -141,39 +141,39 @@ sorting.add(new OrderCriteria<>(Employee::getDepartment, OrderCriteria.Direction
 sorting.add(new OrderCriteria<>(Employee::getSalary, OrderCriteria.Direction.DESC));  
 sorting.add(new OrderCriteria<>(Employee::getName, OrderCriteria.Direction.ASC));
 
-// Käytä kriteerissä
+// Käytä kriteereissä
 RepositoryCriteria<Employee, Predicate<Employee>> criteria = 
     new RepositoryCriteria<>(0, 50, sorting, employee -> employee.isActive());
 ```
 
-Arvon hankintapalvelija (`Employee::getName`) toimii muistissa lajittelussa. Mutta ulkoiset tietolähteet eivät voi suorittaa Java-funktioita. Näissä tapauksissa `OrderCriteria` hyväksyy ominaisuuden nimen:
+Arvon tuottaja (`Employee::getName`) toimii muistissa lajittelussa. Mutta ulkoiset tietolähteet eivät voi suorittaa Java-funktioita. Näissä tapauksissa `OrderCriteria` hyväksyy ominaisuuden nimen:
 
 ```java
-// Ulkoisia varastoja varten - tarjoa sekä arvojen hankkija että ominaisuuden nimi
+// Ulkoisia repositorioita varten - anna sekä arvon hakija että ominaisuuden nimi
 OrderCriteria<Employee, String> byName = new OrderCriteria<>(
-    Employee::getName,           // Muistissa lajittelua varten
+    Employee::getName,           // Muistissa lajittelu
     Direction.ASC,
     null,                       // Mukautettu vertailija (valinnainen)
-    "name"                      // Ominaisuuden nimi taustan lajittelua varten
+    "name"                      // Ominaisuuden nimi taustajärjestelmälle
 );
 ```
 
-`CollectionRepository` käyttää arvojen hankintapalvelijaa lajittelemiseen Java-objekteissa. `DelegatingRepository`-toteutukset voivat käyttää ominaisuuden nimeä rakentaakseen järjestyslausekkeita SQL:ssä tai `sort=name:asc` REST-API:ssä.
+`CollectionRepository` käyttää arvon tuottajaa lajittaakseen Java-objekteja. `DelegatingRepository`-implementaatiot voivat käyttää ominaisuuden nimeä rakentamaan järjestykseen liittyviä lausekkeita SQL:ssä tai `sort=name:asc` REST API:ssa.
 
 ## Sivutuksen hallinta {#controlling-pagination}
 
-Aseta offset ja limit hallitaksesi, mikä datan osa ladataan:
+Aseta offset ja limit hallitaksesi, mikä tietolohko ladataan:
 
 ```java
 // Sivupohjainen sivutus
-int page = 2;          // nollapohjainen sivunumero
-int pageSize = 20;     // kohteita per sivu
+int page = 2;          // nollapohjainen sivun numero
+int pageSize = 20;     // kohteita sivua kohti
 int offset = page * pageSize;
 
 RepositoryCriteria<Product, Predicate<Product>> criteria = 
     new RepositoryCriteria<>(offset, pageSize, null, yourFilter);
 
-// Progressiivinen lataus - lataa lisää dataa vähitellen  
+// Progressiivinen lataus - lataa lisää tietoja asteittain  
 int currentlyLoaded = 50;
 int loadMore = 25;
 

@@ -3,7 +3,7 @@ sidebar_position: 1
 title: Data Binding
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: fef9723206ef7122c3ada5503f97edf1
+_i18n_hash: 2ce381aec06e45ed4001e7dbfdb22dc0
 ---
 <Head>
   <style>{`
@@ -20,15 +20,15 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
- webforJ inclut une fonctionnalité de liaison de données qui intègre de manière transparente les composants UI avec les modèles de données backend dans les applications Java. Cette fonctionnalité comble le fossé entre l'interface utilisateur et la couche de données, garantissant que les changements dans l'UI se reflètent dans le modèle de données et vice versa. En conséquence, cela améliore l'expérience utilisateur et réduit la complexité de la gestion des événements et de la synchronisation des données.
+ webforJ inclut une fonctionnalité de liaison de données qui intègre sans effort les composants UI avec les modèles de données backend dans les applications Java. Cette fonctionnalité comble le fossé entre l'interface utilisateur et la couche de données, garantissant que les changements dans l'interface utilisateur se reflètent dans le modèle de données et vice versa. En conséquence, elle améliore l'expérience utilisateur et réduit la complexité du traitement des événements et de la synchronisation des données.
 
 ## Concept {#concept}
 
-La démonstration suivante présente une simple application webforJ pour enregistrer des super-héros en utilisant la liaison de données webforJ. L'application se compose de deux parties principales : `HeroRegistration.java` et `Hero.java`. 
+La démonstration suivante présente une simple application webforJ pour l'enregistrement de super-héros utilisant la liaison de données webforJ. L'application se compose de deux parties principales : `HeroRegistration.java` et `Hero.java`.
 
-Dans `HeroRegistration.java`, le code configure l'interface utilisateur avec un `TextField` pour entrer le nom du héros, un `ComboBox` pour sélectionner un superpouvoir, et un `Button` pour soumettre l'enregistrement.
+Dans `HeroRegistration.java`, le code configure l'interface utilisateur avec un `TextField` pour entrer le nom du héros, un `ComboBox` pour sélectionner un super-pouvoir et un `Button` pour soumettre l'enregistrement.
 
-La classe `Hero` définit le modèle de données avec des contraintes de validation sur le nom et le pouvoir du héros, garantissant que les entrées sont valides et respectent des critères spécifiés tels que la longueur et le motif.
+La classe `Hero` définit le modèle de données avec des contraintes de validation sur le nom et le pouvoir du héros, garantissant que les entrées soient valides et respectent des critères spécifiés tels que la longueur et le motif.
 
 L'application utilise le `BindingContext` pour lier les composants UI aux propriétés de l'objet `Hero`. Lorsque l'utilisateur clique sur le bouton de soumission, l'application écrit les données saisies dans le formulaire dans le bean `Hero` si elles sont valides.
 
@@ -116,13 +116,13 @@ public class Hero {
 
 ## Caractéristiques clés {#key-features}
 
-- **Liaison bidirectionnelle :**  Prend en charge la liaison de données bidirectionnelle, permettant aux changements dans le modèle de données de mettre à jour l'interface utilisateur, et aux interactions de l'utilisateur dans l'interface de mettre à jour le modèle de données.
+- **Liaison bidirectionnelle :** Prend en charge la liaison de données bidirectionnelle, permettant aux modifications du modèle de données de mettre à jour l'interface utilisateur, et aux interactions de l'utilisateur dans l'interface utilisateur de mettre à jour le modèle de données.
 
-- **Support de validation :** Intègre des mécanismes de validation complets que vous pouvez personnaliser et étendre. Les développeurs peuvent mettre en œuvre leurs propres règles de validation ou utiliser des frameworks de validation existants comme Jakarta Validation pour garantir l'intégrité des données avant de mettre à jour le modèle.
+- **Support de validation :** Intègre des mécanismes de validation complets que vous pouvez personnaliser et étendre. Les développeurs peuvent mettre en œuvre leurs propres règles de validation ou utiliser des frameworks de validation existants comme Jakarta Validation pour assurer l'intégrité des données avant de mettre à jour le modèle.
 
-- **Extensibilité :** Peut être facilement étendue pour prendre en charge différents types de composants UI, des transformations de données et des scénarios de validation complexes.
+- **Extensibilité :** Peut être facilement étendu pour prendre en charge différents types de composants UI, transformations de données et scénarios de validation complexes.
 
-- **Configuration basée sur les annotations :**  Utilise des annotations pour minimiser le code boilerplate, rendant les liaisons entre les composants UI et les modèles de données déclaratifs et faciles à gérer.
+- **Configuration par annotation :** Utilise des annotations pour minimiser le code standard, rendant les liaisons entre les composants UI et les modèles de données déclaratives et faciles à gérer.
 
 # Sujets
 

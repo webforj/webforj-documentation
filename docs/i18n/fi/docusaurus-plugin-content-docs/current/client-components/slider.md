@@ -6,7 +6,7 @@ slug: slider
 description: A user guide article for the slider
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 91e1eca61020551c56604a75d5f88422
+_i18n_hash: 9e0d26d8c94376b6915e68c668573676
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,10 +16,10 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info ASIA-KOMPONENTTI
-Tässä osiossa kuvataan **`<dwc-slider>`** komponentin tyylitietoja. Tämä komponentti on **asiakaspuolella vain** - sitä ei voi instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+:::info ASIAKASKOMPONENTTI
+Tässä osiossa kuvataan tyylitietoja **`<dwc-slider>`** -komponentille. Tämä komponentti on **asiakaspään vain** - sitä ei voida instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
-## Tyylitys {#styling}
+## Tyylittely {#styling}
 
 <TableBuilder name="dwc-slider" clientComponent />

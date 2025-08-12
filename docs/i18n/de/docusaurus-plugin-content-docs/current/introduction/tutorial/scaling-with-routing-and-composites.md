@@ -1,11 +1,11 @@
 ---
 title: Scaling with Routing and Composites
 sidebar_position: 4
-_i18n_hash: fdfd4b4255de20775bb12bcd863630f7
+_i18n_hash: 50cd3b00cb1fb7731b6328708d6d45ba
 ---
-Dieser Schritt konzentriert sich auf die Implementierung von Routing, um die Skalierbarkeit und Organisation der App-Struktur zu verbessern. Um dies zu erreichen, wird die App so aktualisiert, dass sie mehrere Ansichten verwaltet und die Navigation zwischen verschiedenen Funktionen wie dem Bearbeiten und Erstellen von Kundeneinträgen ermöglicht. Es wird beschrieben, wie Ansichten für diese Funktionen erstellt werden, wobei Komponenten wie `Composite` verwendet werden, um modulare und wiederverwendbare Layouts zu erstellen.
+Dieser Schritt konzentriert sich auf die Implementierung von Routing, um die Skalierbarkeit und Organisation der App-Struktur zu verbessern. Um dies zu erreichen, wird die App aktualisiert, um mehrere Ansichten zu verwalten, die die Navigation zwischen verschiedenen Funktionen wie dem Bearbeiten und Erstellen von Kundeneinträgen ermöglichen. Es wird erläutert, wie Ansichten für diese Funktionen erstellt werden, unter Verwendung von Komponenten wie `Composite`, um modulare und wiederverwendbare Layouts zu erstellen.
 
-Die in [dem vorherigen Schritt](./working-with-data) erstellte App wird mit einem Routing-Setup versehen, das mehrere Ansichten unterstützt und es den Benutzern ermöglicht, Kundendaten effektiver zu verwalten und gleichzeitig eine saubere und skalierbare Codebasis zu erhalten. Um die App auszuführen:
+Die im [vorangegangenen Schritt](./working-with-data) erstellte App wird ein Routing-Setup haben, das mehrere Ansichten unterstützt, sodass die Nutzer Kundendaten effektiver verwalten können, während eine saubere und skalierbare Codebasis beibehalten wird. Um die App auszuführen:
 
 - Gehe in das Verzeichnis `3-scaling-with-routing-and-composites`
 - Führe den Befehl `mvn jetty:run` aus
@@ -18,20 +18,20 @@ Die in [dem vorherigen Schritt](./working-with-data) erstellte App wird mit eine
 
 ## Routing {#routing}
 
-[Routing](../../routing/overview) ist der Mechanismus, der es deiner App ermöglicht, die Navigation zwischen verschiedenen Ansichten oder Seiten zu verwalten. Anstatt alle Logik und das Verhalten an einem einzigen Ort zu halten, ermöglicht Routing, deine App in kleinere, fokussierte Komponenten aufzuteilen.
+[Routing](../../routing/overview) ist der Mechanismus, der es deiner App ermöglicht, die Navigation zwischen verschiedenen Ansichten oder Seiten zu verwalten. Anstatt alle Logik und das Verhalten an einem einzigen Ort zu behalten, ermöglicht Routing, dass du deine App in kleinere, fokussierte Komponenten aufteilst.
 
-Grundsätzlich verbindet Routing spezifische URLs mit den Ansichten oder Komponenten, die diese URLs behandeln. Wenn ein Benutzer mit deiner App interagiert – wie das Klicken auf einen Button oder das direkte Eingeben einer URL in seinem Browser – löst der Router die URL zur entsprechenden Ansicht auf, initialisiert sie und zeigt sie auf dem Bildschirm an. Dieser Ansatz erleichtert die Verwaltung der Navigation und die Aufrechterhaltung des App-Zustands.
+Im Kern verbindet Routing spezifische URLs mit den Ansichten oder Komponenten, die diese URLs verarbeiten. Wenn ein Benutzer mit deiner App interagiert—zum Beispiel, indem er auf einen Button klickt oder eine URL direkt in seinem Browser eingibt—wird die URL vom Router auf die entsprechende Ansicht aufgelöst, initialisiert und auf dem Bildschirm angezeigt. Dieser Ansatz erleichtert es, die Navigation zu verwalten und den Status der App aufrechtzuerhalten.
 
 Dieser Schritt konzentriert sich auf die Änderung der `App`-Klasse, das Erstellen von Dateien für die Ansichten und das Konfigurieren von Routen, um eine reibungslose Navigation zwischen verschiedenen Teilen deiner App zu ermöglichen.
 
-Anstatt die gesamte Logik innerhalb der `run()`-Methode der `App` zu platzieren, werden ansichten wie `DemoView` und `FormView` als separate Klassen implementiert. Dieser Ansatz entspricht eher den Standardpraktiken in Java.
+Anstatt die gesamte Logik innerhalb der Methode `run()` von `App` zu platzieren, werden Ansichten wie `DemoView` und `FormView` als separate Klassen implementiert. Dieser Ansatz entspricht eher den gängigen Java-Praktiken.
 
-- **DemoView**: Verantwortlich für die Anzeige der Tabelle und die Navigation zu `FormView`.
+- **DemoView**: Zuständig für die Anzeige der Tabelle und die Navigation zu `FormView`.
 - **FormView**: Verwalten des Hinzufügens und Bearbeitens von Kundendaten.
 
 ### Ändern der `App`-Klasse {#changing-the-app-class}
 
-Um Routing in deiner App zu ermöglichen, aktualisiere die `App`-Klasse mit der `@Routify`-Annotation. Dies sagt webforJ, dass Routing aktiviert und bestimmte Pakete nach routenfähigen Ansichten durchsucht werden.
+Um Routing in deiner App zu aktivieren, aktualisiere die `App`-Klasse mit der `@Routify`-Annotation. Dies weist webforJ an, das Routing zu aktivieren und die angegebenen Pakete nach routenfähigen Ansichten zu durchsuchen.
 
 ```java title="DemoApplication.java" {1}
 @Routify(packages = "com.webforj.demos.views", debug = true)
@@ -40,15 +40,15 @@ public class DemoApplication extends App {
 ```
 
 - **`packages`**: Gibt an, welche Pakete nach Ansichten durchsucht werden, die Routen definieren.
-- **`debug`**: Aktiviert den Debugging-Modus, um die Fehlersuche während der Entwicklung zu erleichtern.
+- **`debug`**: Aktiviert den Debugging-Modus für einfacheres Troubleshooting während der Entwicklung.
 
 ### Erstellen von Dateien für die Ansichten und Konfigurieren von Routen {#creating-files-for-the-views-and-configuring-routes}
 
-Sobald das Routing aktiviert ist, werden separate Java-Dateien für jede Ansicht erstellt, die die App enthalten wird, in diesem Fall `DemoView.java` und `FormView.java`. Einzigartige Routen werden diesen Ansichten mit der Annotation `@Route` zugewiesen. Dies stellt sicher, dass jede Ansicht über eine spezifische URL zugänglich ist.
+Sobald das Routing aktiviert ist, werden separate Java-Dateien für jede Ansicht, die die App enthalten wird, erstellt, in diesem Fall `DemoView.java` und `FormView.java`. Einzigartige Routen werden diesen Ansichten unter Verwendung der `@Route`-Annotation zugewiesen. Dadurch wird sichergestellt, dass jede Ansicht über eine spezifische URL zugänglich ist.
 
-Wenn die Annotation `@Route` einer Klasse ohne Wert zugeordnet ist, weist webforJ der Klasse ohne den Suffix automatisch den Namen der Route zu. Zum Beispiel wird `DemoView` standardmäßig der Route `/demo` zugeordnet. Da `DemoView` in diesem Fall als Standardroute vorgesehen ist, weist du ihr eine Route zu.
+Wenn die `@Route`-Annotation, die mit einer Klasse mit einem dieser Suffixe verknüpft ist, keinen Wert hat, weist webforJ der Klassenbezeichnung ohne das Suffix automatisch die Route zu. Beispielsweise wird `DemoView` standardmäßig der Route `/demo` zugeordnet. Da `DemoView` in diesem Fall die Standardroute sein soll, wird ihm eine Route zugewiesen.
 
-Die Route `/` dient als standardmäßiger Einstiegspunkt für deine App. Diese Route einer Ansicht zuzuweisen, stellt sicher, dass dies die erste Seite ist, die Benutzer beim Zugriff auf die App sehen. In den meisten Fällen wird ein Dashboard oder eine Zusammenfassungsansicht der Route `/` zugeordnet.
+Die Route `/` dient als Standardentrypoint für deine App. Die Zuweisung dieser Route zu einer Ansicht stellt sicher, dass dies die erste Seite ist, die Benutzer sehen, wenn sie auf die App zugreifen. In den meisten Fällen wird ein Dashboard oder eine Zusammenfassungsansicht der Route `/` zugewiesen.
 
 ```java title="DemoView.java" {1}
 @Route("/")
@@ -58,14 +58,14 @@ public class DemoView extends Composite<Div> {
 }
 ```
 
-:::info
-Weitere Informationen zu den verschiedenen Routenarten findest du [hier](../../routing/defining-routes).
+:::info 
+Weitere Informationen zu den verschiedenen Routentypen sind [hier](../../routing/defining-routes) verfügbar.
 :::
 
 Für die `FormView` verwendet die Route `customer/:id?` einen optionalen Parameter `id`, um den Modus der `FormView` zu bestimmen.
 
-- **Add-Modus**: Wenn `id` nicht angegeben ist, wird `FormView` mit einem leeren Formular zum Hinzufügen neuer Kundendaten initialisiert.
-- **Bearbeitungsmodus**: Wenn `id` angegeben ist, ruft `FormView` die entsprechenden Kundendaten über `Service` ab und füllt das Formular vor, sodass Änderungen an dem vorhandenen Eintrag vorgenommen werden können.
+- **Hinzufügen-Modus**: Wenn `id` nicht bereitgestellt wird, wird die `FormView` mit einem leeren Formular zur Eingabe neuer Kundendaten initialisiert.
+- **Bearbeiten-Modus**: Wenn `id` bereitgestellt wird, ruft die `FormView` die entsprechenden Kundendaten über `Service` ab und füllt das Formular voraus, sodass Änderungen am bestehenden Eintrag vorgenommen werden können.
 
 ```java title="FormView.java" {1}
 @Route("customer/:id?")
@@ -75,15 +75,15 @@ public class FormView extends Composite<Div> implements DidEnterObserver {
 }
 ```
 
-:::info
-Weitere Informationen zu den verschiedenen Möglichkeiten zur Implementierung dieser Routenmuster findest du [hier](../../routing/route-patterns).
+:::info 
+Weitere Informationen zu den verschiedenen Möglichkeiten zur Implementierung dieser Routenmuster sind [hier](../../routing/route-patterns) verfügbar.
 :::
 
 ## Verwendung von `Composite`-Komponenten zur Anzeige von Seiten {#using-composite-components-to-display-pages}
 
-Composite-Komponenten in webforJ, wie `Composite<Div>`, ermöglichen es dir, UI-Logik und -Struktur in einem wiederverwendbaren Container zu kapseln. Durch das Erweitern von `Composite` beschränkst du die Methoden und Daten, die für den Rest der App zugänglich sind, was zu cleanerem Code und besserer Kapselung führt.
+Composite-Komponenten in webforJ, wie `Composite<Div>`, ermöglichen es dir, UI-Logik und -Struktur innerhalb eines wiederverwendbaren Containers zu kapseln. Durch die Erweiterung von `Composite` beschränkst du die Methoden und Daten, die dem Rest der App zugänglich sind, was zu sauberem Code und besserer Kapselung führt.
 
-Zum Beispiel erweitert `DemoView` `Composite<Div>` anstelle von `Div` direkt:
+Beispielsweise erweitert `DemoView` `Composite<Div>` anstelle von direkt `Div` zu erweitern:
 
 ```java title="DemoView.java"
 public class DemoView extends Composite<Div> {
@@ -104,11 +104,11 @@ public class DemoView extends Composite<Div> {
 
 ## Verbinden der Routen {#connecting-the-routes}
 
-Nachdem das Routing konfiguriert und die Ansichten eingerichtet wurden, verbinde die Ansichten und Daten mithilfe von Ereignis-Listenern und Service-Methoden. Der erste Schritt besteht darin, ein oder mehrere UI-Elemente hinzuzufügen, um von einer Ansicht zur anderen zu navigieren.
+Nachdem das Routing konfiguriert und die Ansichten eingerichtet wurden, verbinde die Ansichten und Daten mithilfe von Ereignis-Listenern und Servicemethoden. Der erste Schritt besteht darin, ein oder mehrere UI-Elemente hinzuzufügen, um von einer Ansicht zur anderen zu navigieren.
 
 ### Button-Navigation {#button-navigation}
 
-Die `Button`-Komponente löst ein Navigationsereignis aus, um von einer Ansicht zur anderen zu wechseln, mithilfe der `Router`-Klasse. Zum Beispiel:
+Die `Button`-Komponente löst ein Navigationsereignis aus, um von einer Ansicht zur anderen zu wechseln, indem die Klasse `Router` verwendet wird. Zum Beispiel:
 
 ```java title="DemoView.java"
 private Button add = new Button("Kunden hinzufügen", ButtonTheme.PRIMARY,
@@ -116,17 +116,17 @@ private Button add = new Button("Kunden hinzufügen", ButtonTheme.PRIMARY,
 ```
 
 :::info
-Die Router-Klasse verwendet die angegebene Klasse, um die Route zu lösen und eine URL zu erstellen, zu der navigiert werden kann. Alle Browser-Navigationen werden dann so behandelt, dass das Verwalten der Historie und die Initialisierung der Ansichten kein Thema sind.
-Für weitere Details zur Navigation siehe den [Artikel zur Routen-Navigation](../../routing/route-navigation).
+Die Router-Klasse verwendet die angegebene Klasse, um die Route aufzulösen und eine URL zum Navigieren zu erstellen. Alle Browser-Navigationen werden dann verwaltet, sodass die Verwaltung der Historie und die Initialisierung der Ansicht kein Anliegen sind.
+Für weitere Details zur Navigation siehe den [Artikel zur Routennavigation](../../routing/route-navigation).
 :::
 
 ### Tabellenbearbeitung {#table-editing}
 
-Zusätzlich zur Navigation durch einen Button-Klick ermöglichen viele Apps auch die Navigation zu anderen Teilen einer App, wenn in einer `Table` doppelt geklickt wird. Die folgenden Änderungen werden vorgenommen, um den Benutzern das Doppelklicken auf einen Eintrag in der Tabelle zu ermöglichen, um zu einem Formular zu navigieren, das mit den Details des Eintrags vorbefüllt ist.
+Neben der Navigation über einen Button-Klick erlauben viele Apps auch die Navigation zu anderen Teilen einer App, wenn ein Element in einer `Table` doppelt angeklickt wird. Die folgenden Änderungen werden vorgenommen, um es den Benutzern zu ermöglichen, ein Element in der Tabelle doppelt anzuklicken, um zu einem Formular zu navigieren, das mit den Details des Elements vorausgefüllt ist.
 
-Sobald die Details auf dem entsprechenden Bildschirm bearbeitet wurden, werden die Änderungen gespeichert, und die `Table` wird aktualisiert, um die geänderten Daten des ausgewählten Eintrags anzuzeigen.
+Sobald die Details auf dem entsprechenden Bildschirm bearbeitet wurden, werden die Änderungen gespeichert und die `Table` aktualisiert, um die geänderten Daten des ausgewählten Elements anzuzeigen.
 
-Um diese Navigation zu erleichtern, werden Item-Klicks in der Tabelle von dem Listener `TableItemClickEvent<Customer>` verarbeitet. Das Ereignis enthält die `id` des geklickten Kunden, die es an die `FormView` über die `navigate()`-Methode mit einem `ParametersBag` weitergibt:
+Um diese Navigation zu ermöglichen, werden Elementklicks in der Tabelle vom Listener `TableItemClickEvent<Customer>` behandelt. Das Ereignis enthält die `id` des angeklickten Kunden, die es an die `FormView` weitergibt, indem die Methode `navigate()` mit einer `ParametersBag` verwendet wird:
 
 ```java title="DemoView.java" 
 private void editCustomer(TableItemClickEvent<Customer> e) {
@@ -137,17 +137,17 @@ private void editCustomer(TableItemClickEvent<Customer> e) {
 
 ### Handhabung der Initialisierung mit `onDidEnter` {#handling-initialization-with-ondidenter}
 
-Die Methode `onDidEnter` in webforJ ist Teil des Routing-Lebenszyklus und wird ausgelöst, wenn eine Ansicht aktiv wird.
+Die Methode `onDidEnter` in webforJ ist Teil des Routing-Lebenszyklus und wird ausgelöst, wenn eine Ansicht aktiv wird. 
 
-Wenn der `Router` zu einer Ansicht navigiert, wird `onDidEnter` als Teil des Lebenszyklus wie folgt ausgelöst:
-- **Daten laden**: Initialisiere oder hole die für die Ansicht benötigten Daten basierend auf den Routenparametern.
-- **Die Ansicht einrichten**: Aktualisiere UI-Elemente dynamisch basierend auf dem Kontext.
-- **Auf Zustandsänderungen reagieren**: Führe Aktionen aus, die davon abhängen, dass die Ansicht aktiv ist, z. B. Formulare zurücksetzen oder Komponenten hervorheben.
+Wenn der `Router` zu einer Ansicht navigiert, wird `onDidEnter` als Teil des Lebenszyklus ausgelöst, um:
+- **Daten zu laden**: Daten zu initialisieren oder abzurufen, die für die Ansicht basierend auf den Routenparametern erforderlich sind.
+- **Die Ansicht einzurichten**: UI-Elemente dynamisch basierend auf dem Kontext zu aktualisieren.
+- **Auf Statusänderungen zu reagieren**: Aktionen durchzuführen, die von der aktiven Ansicht abhängen, z. B. das Zurücksetzen von Formularen oder das Hervorheben von Komponenten.
 
-Die Methode `onDidEnter` in `FormView` prüft das Vorhandensein eines `id`-Parameters in der Route und passt das Verhalten des Formulars entsprechend an:
+Die Methode `onDidEnter` in `FormView` prüft auf das Vorhandensein eines `id`-Parameters in der Route und passt das Verhalten des Formulars entsprechend an:
 
-- **Bearbeitungsmodus**: Wenn eine `id` angegeben ist, ruft die Methode die entsprechenden Kundendaten über `Service` ab und füllt die Formularfelder vor. Die Schaltfläche `Absenden` ist so konfiguriert, dass sie den bestehenden Eintrag aktualisiert.
-- **Add-Modus**: Wenn keine `id` vorhanden ist, bleibt das Formular leer, und die Schaltfläche `Absenden` ist so konfiguriert, dass sie einen neuen Kunden erstellt.
+- **Bearbeiten-Modus**: Wenn eine `id` bereitgestellt wird, ruft die Methode die entsprechenden Kundendaten über `Service` ab und füllt die Formularfelder voraus. Der `Submit`-Button ist so konfiguriert, dass der bestehende Eintrag aktualisiert wird.
+- **Hinzufügen-Modus**: Wenn keine `id` vorhanden ist, bleibt das Formular leer, und der `Submit`-Button ist so konfiguriert, dass ein neuer Kunde erstellt wird.
 
 ```java
 @Override
@@ -163,11 +163,12 @@ Die Methode `onDidEnter` in `FormView` prüft das Vorhandensein eines `id`-Param
   }
 ```
 
-### Daten übermitteln {#submitting-data}
+### Datenübermittlung {#submitting-data}
 
-Nachdem die Daten bearbeitet wurden, ist es notwendig, sie an den Service zu übermitteln, der das Repository verwaltet. Daher muss die `Service`-Klasse, die bereits im vorherigen Schritt dieses Tutorials eingerichtet wurde, mit zusätzlichen Methoden erweitert werden, die es den Benutzern ermöglichen, Kunden hinzuzufügen und zu bearbeiten.
+Nachdem die Daten bearbeitet wurden, ist es notwendig, sie an den Service zu übermitteln, der das Repository verwaltet. Daher muss die 
+`Service`-Klasse, die bereits im vorherigen Schritt dieses Tutorials eingerichtet wurde, nun mit zusätzlichen Methoden erweitert werden, die es den Nutzern ermöglichen, Kunden hinzuzufügen und zu bearbeiten.
 
-Der folgende Code zeigt, wie dies erreicht werden kann:
+Der folgende Snippet zeigt, wie dies erreicht werden kann:
 
 ```java title="Service.java"
 public void addCustomer(Customer newCustomer) {
@@ -182,31 +183,31 @@ public void editCustomer(Customer editedCustomer) {
 
 ### Verwendung von `commit()` {#using-commit}
 
-Die Methode `commit()` in der `Repository`-Klasse hält die Daten der App und die UI synchron. Sie bietet einen Mechanismus zum Aktualisieren der Daten, die im `Repository` gespeichert sind, und stellt sicher, dass der neueste Zustand in der App angezeigt wird.
+Die Methode `commit()` in der `Repository`-Klasse hält die Daten und die UI der App synchron. Sie bietet einen Mechanismus, um die im `Repository` gespeicherten Daten zu aktualisieren, sodass der neueste Stand in der App widergespiegelt wird.
 
 Diese Methode kann auf zwei Arten verwendet werden:
 
-1) **Aktualisieren aller Daten**:
-  Das Aufrufen von `commit()` ohne Argumente lädt alle Entitäten aus der zugrunde liegenden Datenquelle des Repositories, z. B. aus einer Datenbank oder einer Service-Klasse, neu.
+1) **Aktualisierung aller Daten:**
+  Der Aufruf von `commit()` ohne Argumente lädt alle Entitäten aus der zugrunde liegenden Datenquelle des Repositorys, wie einer Datenbank oder einer Serviceklasse, neu.
 
-2) **Aktualisieren einer einzelnen Entität**:
-  Das Aufrufen von `commit(T entity)` lädt eine bestimmte Entität neu und stellt sicher, dass ihr Zustand den neuesten Änderungen in der Datenquelle entspricht.
+2) **Aktualisierung einer einzelnen Entität:**
+  Der Aufruf von `commit(T entity)` lädt eine bestimmte Entität neu und stellt sicher, dass ihr Zustand mit den neuesten Änderungen der Datenquelle übereinstimmt.
 
-Rufe `commit()` auf, wenn sich Daten im `Repository` ändern, z. B. nach dem Hinzufügen oder Ändern von Entitäten in der Datenquelle.
+Rufe `commit()` auf, wenn sich die Daten im `Repository` ändern, z. B. nach dem Hinzufügen oder Ändern von Entitäten in der Datenquelle.
 
 ```java
-// Alle Kundendaten im Repository aktualisieren
+// Aktualisiere alle Kundendaten im Repository
 customerRepository.commit();
 
-// Eine einzelne Kundenentität aktualisieren
-Customer updatedCustomer = ...; // Aus einer externen Quelle aktualisiert
+// Aktualisiere eine einzelne Kundenentität
+Customer updatedCustomer = ...; // Von einer externen Quelle aktualisiert
 customerRepository.commit(updatedCustomer);
 ```
 
-Mit diesen Änderungen wurden die folgenden Ziele erreicht:
+Mit diesen Änderungen wurden folgende Ziele erreicht:
 
-1. Routing implementiert und so konfiguriert, dass zukünftige Ansichten mit wenig Aufwand integriert werden können.
-2. UI-Implementierungen aus der `App` entfernt und in eine separate Ansicht verschoben.
-3. Eine zusätzliche Ansicht hinzugefügt, um die Daten zu manipulieren, die in der Kundentabelle angezeigt werden.
+  1. Routing implementiert und so eingerichtet, dass zukünftige Ansichten mit wenig Aufwand integriert werden können.
+  2. UI-Implementierungen aus der `App` entfernt und in eine separate Ansicht verschoben.
+  3. Eine zusätzliche Ansicht hinzugefügt, um die Daten zu manipulieren, die in der Kundentabelle angezeigt werden.
 
-Mit der Modifikation der Kundendetails und dem Routing abgeschlossen, wird der nächste Schritt die Implementierung des Datenbindens und der Nutzung dessen zur Erleichterung der Validierung sein.
+Mit der Modifikation der Kundendetails und dem Routing abgeschlossen, wird der nächste Schritt darauf abzielen, Datenbindung zu implementieren und sie zur Validierung zu verwenden.

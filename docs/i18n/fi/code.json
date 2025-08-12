@@ -1,6 +1,6 @@
 {
   "theme.docs.translationNotice": {
-    "message": "Tämä sivu on käännetty automaattisesti tekoälyllä ja saattaa sisältää virheitä tai epätarkkuuksia. Tarkimmat ja ajantasaisimmat tiedot löydät virallisesta webforJ-dokumentaatiosta. webforJ ei takaa näiden tekoälykäännösten tarkkuutta, luotettavuutta tai täydellisyyttä.",
+    "message": "Tämä sivu on käännetty automaattisesti ja saattaa sisältää virheitä. Tarkimmat tiedot löydät virallisesta webforJ-dokumentaatiosta.",
     "description": "Translation notice for non-English pages"
   },
   "component.askMenu.chatgpt.label": {
@@ -16,7 +16,7 @@
     "description": "Claude button label"
   },
   "component.askMenu.claude.desc": {
-    "message": "Keskustele Claude AI:n kanssa tästä sivusta",
+    "message": "Keskustele Clauden kanssa",
     "description": "Claude button description"
   },
   "component.askMenu.markdown.label": {
@@ -56,7 +56,7 @@
     "description": "Explanation column header"
   },
   "component.archetype.table.archetypeGroupId.desc": {
-    "message": "Arkkityypin ryhmätunnus on com.webforj webforJ-arkkityypeille.",
+    "message": "Arkityypin ryhmätunnus on com.webforj webforJ-arkkityypeille.",
     "description": "archetypeGroupId description"
   },
   "component.archetype.table.archetypeArtifactId.desc": {
@@ -64,7 +64,7 @@
     "description": "archetypeArtifactId description"
   },
   "component.archetype.table.archetypeVersion.desc": {
-    "message": "Määrittää käytettävän arkkityypin version. Tämä varmistaa, että luotu projekti on yhteensopiva tietyn arkkityyppiversion kanssa. LATEST valitsee uusimman saatavilla olevan version.",
+    "message": "Määritä arkkityypin versio. LATEST valitsee uusimman version.",
     "description": "archetypeVersion description"
   },
   "component.archetype.table.groupId.desc": {
@@ -76,7 +76,7 @@
     "description": "artifactId description"
   },
   "component.archetype.table.version.desc": {
-    "message": "Määrittää luodun projektin version. Yleinen käytäntö on MAJOR.MINOR-SNAPSHOT, kuten 1.0-SNAPSHOT, missä SNAPSHOT ilmaisee, että projekti on vielä kehitysvaiheessa.",
+    "message": "Määritä versionumero (MAJOR.MIINOR-SNAPSHOT, esim. 1.0-SNAPSHOT).",
     "description": "version description"
   },
   "component.archetype.table.flavor.desc": {
@@ -192,7 +192,7 @@
     "description": "The label used to tell the user that he's browsing an unreleased doc version"
   },
   "theme.docs.versions.unmaintainedVersionLabel": {
-    "message": "Tämä on {siteTitle} {versionLabel} -dokumentaatio, jota ei enää päivitetä.",
+    "message": "Tämä on {siteTitle} {versionLabel} -dokumentaatio, jota ei päivitetä.",
     "description": "The label used to tell the user that he's browsing an unmaintained doc version"
   },
   "theme.docs.versions.latestVersionSuggestionLabel": {
@@ -538,7 +538,7 @@
     "description": "The draft content banner title"
   },
   "theme.contentVisibility.draftBanner.message": {
-    "message": "Tämä sivu on luonnos. Näkyy vain kehitysympäristössä.",
+    "message": "Tämä sivu on luonnos. Näkyy vain kehityksessä.",
     "description": "The draft content banner message"
   },
   "theme.ErrorPageContent.tryAgain": {
@@ -674,7 +674,7 @@
     "description": "Description for dependencies section"
   },
   "componentDemo.hideCode": {
-    "message": "Piilota Koodi",
+    "message": "Piilota koodi",
     "description": "Button text to hide the code section"
   },
   "componentDemo.showCode": {

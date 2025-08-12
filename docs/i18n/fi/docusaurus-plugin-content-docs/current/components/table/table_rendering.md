@@ -2,99 +2,99 @@
 sidebar_position: 20
 title: Rendering
 slug: rendering
-_i18n_hash: 12791f1583592c6f000a45b74e52ba65
+_i18n_hash: 9bf580ccd6532be7fc66e2825d083724
 ---
-# Rikas sisältö ja asiakaspuolen renderointi
+# Runsas sisältö ja asiakaspään renderointi
 
-Taulukot webforJ:ssa ovat myös konfiguroitavissa seuraavien työkalujen avulla, jotka näyttävät rikasta sisältöä soluissa. Tämä sisältää interaktiivisia komponentteja tai muotoiltua tietoa taulukon soluissa.
+Taulukot webforJ:ssä ovat myös konfiguroitavissa käyttäen seuraavia työkaluja runsaan sisällön esittämiseen soluissa. Tämä sisältää interaktiiviset komponentit tai muotoillut tiedot taulukon soluissa.
 
-Nämä elementit renderöidään asiakaspuolella, mikä tarkoittaa, että rikkaan sisällön luonti ja näyttäminen tapahtuu suoraan selaimessa, käyttäen JavaScriptiä vain tarpeen mukaan, mikä parantaa sovellusten suorituskykyä, jotka käyttävät `Table`-komponenttia.
+Nämä elementit renderoidaan asiakaspään, mikä tarkoittaa, että runsaan sisällön luonti ja esittäminen tapahtuu suoraan selaimessa, käyttäen JavaScriptiä vain tarvittaessa, mikä parantaa sovellusten suorituskykyä käyttäen `Table`.
 
 ## Lodash-renderöijät {#lodash-renderers}
 
-Renderöijät tarjoavat tehokkaan mekanismin mukauttaa tapaa, jolla tiedot näytetään `Table`:ssa. Pääluokka, `Renderer`, on suunniteltu laajennettavaksi mukautettujen renderöijien luomiseksi lodash-malleihin perustuen, mahdollistaen dynaamisen ja interaktiivisen sisällön renderoinnin.
+Renderöijät tarjoavat tehokkaan mekanismin tietojen näyttämisen mukauttamiseen `Table`-komponentissa. Pääluokka, `Renderer`, on suunniteltu laajennettavaksi mukautettujen renderöijien luomiseksi lodash-malleihin perustuen, mahdollistaen dynaamisen ja interaktiivisen sisällön renderoinnin.
 
-Lodash-mallit mahdollistavat HTML:n suoran sijoittamisen taulukon soluihin, mikä tekee niistä erittäin tehokkaita monimutkaisen soludatan renderoinnissa `Table`:ssa. Tämä lähestymistapa mahdollistaa HTML:n dynaamisen luomisen solutiedon perusteella, helpottaen rikasta ja interaktiivista taulukon solusisältöä.
+Lodash-mallit mahdollistavat HTML:n suoran upottamisen taulukon soluihin, mikä tekee niistä erittäin tehokkaita monimutkaisten solutietojen renderoimiseen `Table`-komponentissa. Tämä lähestymistapa sallii HTML:n dynaamisen luomisen solutiedon perusteella, helpottaen runsasta ja interaktiivista taulukonsisältöä.
 
 ### Lodash-syntaksi {#lodash-syntax}
 
-Seuraava osio käsittelee Lodash-syntaksin perusteita. Vaikka tämä ei ole tyhjentävä tai kattava katsaus, se voi auttaa Lodashin käyttämisessä `Table`-komponentissa.
+Seuraava osio kuvaa Lodash-syntaksin perusteet. Vaikka tämä ei ole kattava tai ytimekäs esitys, sitä voidaan käyttää Lodashin aloittamiseen `Table`-komponentissa.
 
-#### Syntaksikatsaus lodash-malleille: {#syntax-overview-for-lodash-templates}
+#### Syntaksin yleiskatsaus lodash-malleille: {#syntax-overview-for-lodash-templates}
 
-- `<%= ... %>` - Interpoloi arvot, sijoittaen JavaScript-koodin tuloksen malliin.
-- `<% ... %>` - Suorittaa JavaScript-koodia, mahdollistamalla silmukat, ehtolauseet, ja enemmän.
-- `<%- ... %>` - Pakkaa HTML-sisällön, varmistaen, että interpoloitu data on suojattu HTML-injektiohyökkäyksiltä.
+- `<%= ... %>` - Interpoloi arvoja, upottaen JavaScript-koodin tuloksen malliin.
+- `<% ... %>` - Suorittaa JavaScript-koodia, mahdollistaa silmukat, ehtolauseet ja muut.
+- `<%- ... %>` - Pakottaa HTML-sisällön, varmistaen, että interpoloidut tiedot ovat suojassa HTML-injektiohyökkäyksiltä.
 
-#### Esimerkkejä soludatasta: {#examples-using-cell-data}
+#### Esimerkkejä solutiedoista: {#examples-using-cell-data}
 
-**1. Yksinkertainen arvon interpolointi**: Näytä suoraan solun arvo.
+**1. Yksinkertainen arvon interpolointi**: Näyttää suoraan solun arvon.
 
 `<%= cell.value %>`
 
-**2. Ehdollinen renderointi**: Käytä JavaScript-logiikkaa sisällön ehdolliseen renderointiin.
+**2. Ehtopohjainen renderointi**: Käyttää JavaScript-logiikkaa sisällön ehtopohjaiseen renderointiin.
 
 `<% if (cell.value > 100) { %> 'Korkea' <% } else { %> 'Normaali' <% } %>`
 
-**3. Tietokenttien yhdistäminen**: Renderoi sisältöä käyttämällä useita tietokenttiä solusta.
+**3. Tietokenttien yhdistäminen**: Renderoi sisältöä käyttäen useita tietokenttiä solusta.
 
 `<%= cell.row.getValue('firstName') + ' ' + cell.row.getValue('lastName') %>`
 
-**4. HTML-sisällön pakkaaminen**: Renderoi turvallisesti käyttäjän luomaa sisältöä.
+**4. HTML-sisällön pakottaminen**: Renderoi turvallisesti käyttäjän luomaa sisältöä.
 
-Renderöijällä on pääsy yksityiskohtaisiin solun, rivin ja sarakkeen ominaisuuksiin asiakaspuolella:
+Renderöijällä on pääsy yksityiskohtaisiin solu-, rivi- ja sarakeominaisuuksiin asiakaspäässä:
 
-**Taulukon solun ominaisuudet:**
+**TaulukonSolun Ominaisuudet:**
 
 |Ominaisuus	|Tyyppi	|Kuvaus|
 |-|-|-|
 |column|`TableColumn`|Liitetty sarakeobjekti.|
-|first|`boolean`|Ilmaisee, onko solu rivin ensimmäinen.|
+|first|`boolean`|Ilmaisee, onko solu ensimmäinen rivissä.|
 |id|`String`|Solun ID.|
-|index|`int`|Solun indeksi rivissään.|
-|last|`boolean`|Ilmaisee, onko solu rivin viimeinen.|
+|index|`int`|Solun indeksi sen rivissä.|
+|last|`boolean`|Ilmaisee, onko solu viimeinen rivissä.|
 |row|`TableRow`|Liitetty riviobjekti solulle.|
-|value|`Object`|Solun raakatieto suoraan tietolähteestä.|
+|value|`Object`|Solun raaka arvo, suoraan tietolähteestä.|
 
-**Taulukon rivin ominaisuudet:**
+**TaulukonRivin Ominaisuudet:**
 
 |Ominaisuus|Tyyppi|Kuvaus|
 |-|-|-|
-|cells|`TableCell[]`|Rivin sisällä olevat solut.|
-|data|`Object`|Sovelluksen tarjoama data riville.|
-|even|`boolean`|Ilmaisee, onko rivi parillinen (tyylitarkoituksia varten).|
-|first|`boolean`|Ilmaisee, onko rivi taulukon ensimmäinen.|
-|id|`String`|Rivin ainutlaatuinen ID.|
-|index|`int`|Rivin indeksi.|
-|last|`boolean`|Ilmaisee, onko rivi taulukon viimeinen.|
-|odd|`boolean`|Ilmaisee, onko rivi pariton (tyylitarkoituksia varten).|
+|cells|`TableCell[]`|Rivin sisällä olevat solut.
+|data|`Object`|Sovelluksen antamat tiedot riville.
+|even|`boolean`|Ilmaisee, onko rivi parillinen (tyylitarkoituksiin).
+|first|`boolean`|Ilmaisee, onko rivi ensimmäinen taulukossa.
+|id|`String`|Rivin ainutlaatuinen ID.
+|index|`int`|Rivin indeksi.
+|last|`boolean`|Ilmaisee, onko rivi viimeinen taulukossa.
+|odd|`boolean`|Ilmaisee, onko rivi pariton (tyylitarkoituksiin).
 
-**Taulukon sarakkeen ominaisuudet:**
+**TaulukonSarake Ominaisuudet:**
 
 |Ominaisuus	|Tyyppi	|Kuvaus|
 |-|-|-|
-|align|ColumnAlignment|Sarakkeen tasaus (vasen, keski, oikea).|
-|id|String|Riviodasta haettavan solun datan kenttä.|
-|label|String|Nimi, joka renderöidään sarakeotsikossa.|
-|pinned|ColumnPinDirection|Sarakkeen kiinnityssuunta (vasen, oikea, automaattinen).|
-|sortable|boolean|Jos tosi, saraketta voidaan järjestää.|
-|sort|SortDirection|Sarakkeen järjestys.|
-|type|ColumnType|Sarakkeen tyyppi (teksti, numero, boolean jne.).|
+|align|ColumnAlignment|Sarakkeen tasaus (vasen, keskellä, oikea).
+|id|String|Rivillä olevan objektin kenttä, josta saadaan solun tiedot.
+|label|String|Nimi, joka näytetään sarakkeen otsikossa.
+|pinned|ColumnPinDirection|Sarakkeen kiinnityssuunta (vasen, oikea, automaattinen).
+|sortable|boolean|Jos tosi, sarake voidaan lajitella.
+|sort|SortDirection|Sarakkeen lajittelujärjestys.
+|type|ColumnType|Sarakkeen tyyppi (teksti, numero, boolean jne.).
 |minWidth|number|Sarakkeen vähimmäisleveys pikseleinä.
 
 ## Saatavilla olevat renderöijät {#available-renderers}
 
-Vaikka mukautettuja renderöijöitä voidaan luoda, käytettävissä on useita esikonfiguroituja renderöijöitä, joita voidaan käyttää `Table`:ssa. Seuraavat ovat saatavilla kehittäjien käyttöön ilman tarvetta luoda mukautettua renderöijää:
+Vaikka mukautettuja renderöijä voidaan luoda, on useita valmiita renderöijöitä, jotka ovat käytettävissä `Table`-komponentin sisällä. Seuraavat ovat saatavilla kehittäjille käytettäväksi suoraan ilman tarvetta luoda mukautettua renderöijää:
 
->- `ButtonRenderer` - Renderöijä webforJ-painikkeelle.
->- `NativeButtonRenderer` - Renderöijä natiiville HTML-painikkeelle.
+>- `ButtonRenderer` - Renderöijä webforJ-napille.
+>- `NativeButtonRenderer` - Renderöijä natiiville HTML-napille.
 >- `ElementRenderer` - Perusluokka kaikille renderöijille, jotka renderöivät HTML-tagin **sisällön kanssa**.
->- `VoidElementRenderer` - Perusluokka kaikille renderöijille, jotka renderöivät tyhjää elementtiä tai HTML-tagia **ilman** sisältöä.
->- `IconRenderer` - Renderöijä ikonille - **[katso tämä](../../components/icon)** artikkeli lisätietoja varten ikoista.
+>- `VoidElementRenderer` - Perusluokka kaikille renderöijille, jotka renderöivät tyhjää elementtiä, tai HTML-tagin **ilman** sisältöä.
+>- `IconRenderer` - Renderöijä ikonille - **[katso tämä](../../components/icon)** artikkeli saadaksesi lisätietoja ikoneista.
 
-Renderöijät mahdollistavat mukautettujen tapahtumien kirjoittamisen myös laajentamalla mitä tahansa tuettua perusrenderöijää. Tällä hetkellä renderöijät tarjoavat `RendererClickEvent`-tapahtuman kehittäjien käyttöön.
+Renderöijät sallivat myös mukautettujen tapahtumien kirjoittamisen laajentamalla mitä tahansa tuettua perus renderöijää. Tällä hetkellä renderöijät tulevat mukana `RendererClickEvent` -tapahtumalla, jota kehittäjät voivat käyttää.
 
-Alla on esimerkki `Table`:sta, joka käyttää renderöijöitä näyttämään rikasta sisältöä:
+Alla on esimerkki `Table`-komponentista, joka käyttää renderöijöitä näyttämään runsasta sisältöä:
 
 <ComponentDemo 
 path='/webforj/tablerichcontent?' 

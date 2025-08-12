@@ -1,25 +1,25 @@
 ---
 sidebar_position: 2
 title: Shadow Parts
-_i18n_hash: 8dbd7759364573b73d0b1b00c6d7e219
+_i18n_hash: bad90a86a29eaf34485d5ee9150aacb3
 ---
-CSS **Shadow Parts** geben Entwicklern die Möglichkeit, Elemente im Schatten-DOM einer Komponente von außen zu stylen, während die Kapselung erhalten bleibt.
+CSS **Shadow Parts** bieten Entwicklern eine Möglichkeit, Elemente innerhalb des Shadow DOM eines Komponents von außen zu stylen, während die Kapselung erhalten bleibt.
 
 ## Einführung {#introduction}
 
-Die webforJ-Komponenten sind unter Verwendung von [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) aufgebaut, die auf dem [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) basieren, um die interne Struktur und die Stile einer Komponente zu kapseln.
+Die webforJ-Komponenten sind mit [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) aufgebaut, die auf dem [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) basieren, um die interne Struktur und die Stile eines Komponents zu kapseln.
 
 :::tip Web Components
-Web Components sind eine Suite von Technologien, mit denen Sie wiederverwendbare, gekapselte benutzerdefinierte Elemente für die Verwendung in Webanwendungen erstellen können.
+Web Components sind eine Suite von Technologien, mit denen Sie wiederverwendbare, kapselbare benutzerdefinierte Elemente für die Verwendung in Webanwendungen erstellen können.
 :::
 
-Das **Shadow DOM** verhindert, dass interne Stile und Markup aus der Komponente herausdringen oder von externen Stilen beeinflusst werden. Diese Kapselung stellt sicher, dass Komponenten eigenständig bleiben, wodurch das Risiko von Stilkonflikten verringert wird.
+Der **Shadow DOM** verhindert, dass interne Stile und Markup aus dem Komponent entwichen oder von externen Stilen beeinflusst werden. Diese Kapselung stellt sicher, dass Komponenten eigenständig bleiben und das Risiko von Stilkonflikten verringert wird.
 
-:::tip  Kapselung von Web Components
-Kapselung ist ein wesentlicher Vorteil von Web Components. Indem Sie die Struktur, Stile und das Verhalten einer Komponente von den anderen Teilen Ihrer Anwendung trennen, vermeiden Sie Konflikte und halten den Code sauber und wartbar.
+:::tip Web Components Kapselung
+Kapselung ist ein wesentlicher Vorteil von Web Components. Indem Sie die Struktur, Stile und das Verhalten eines Komponents vom Rest Ihrer App getrennt halten, vermeiden Sie Konflikte und erhalten sauberen, wartbaren Code.
 :::
 
-Allerdings können Sie aufgrund dieser Kapselung Elemente im Schatten-DOM nicht direkt mit Standard-CSS-Selektoren stylen.
+Da diese Kapselung jedoch besteht, können Sie **Elemente innerhalb eines Shadow DOM nicht direkt** mit Standard-CSS-Selektoren stylen.
 
 Zum Beispiel rendert die `dwc-button`-Komponente die folgende Struktur:
 
@@ -42,19 +42,19 @@ dwc-button .control__label {
 }
 ```
 
-hat es keine Wirkung, da das `.control__label`-Element im Schatten-Wurzel lebt.
+hat es keine Auswirkungen, da das `.control__label`-Element im Shadow Root lebt.
 
 Hier kommen die **CSS Shadow Parts** ins Spiel.
 
-## Styling mit Shadow Parts {#styling-with-shadow-parts}
+## Stylisieren mit Shadow Parts {#styling-with-shadow-parts}
 
-Shadow Parts ermöglichen es externen Stylesheets, spezifische Elemente innerhalb eines Schattenbaums anzusprechen, jedoch **nur**, wenn diese Elemente ausdrücklich vom Komponentenautoren als „exponiert“ markiert wurden.
+Shadow Parts ermöglichen es externen Stylesheets, spezifische Elemente innerhalb eines Shadow Trees anzusprechen, aber **nur wenn** diese Elemente explizit vom Komponent als „exponiert“ markiert sind.
 
-### Wie Teile exponiert werden {#how-parts-are-exposed}
+### Wie Parts exponiert werden {#how-parts-are-exposed}
 
-Um ein Element für externes Styling zu exponieren, muss der Autor der Komponente ein `part`-Attribut zu diesem Element im Schatten-DOM zuweisen.
+Um ein Element für das externe Styling zu exponieren, muss der Autor des Komponents dem Element im Shadow DOM ein `part`-Attribut zuweisen.
 
-Alle webforJ-Komponenten exponieren automatisch relevante Teile für das Styling. Sie finden die Liste der unterstützten Teile im Abschnitt **Styling > Shadow Parts** der Dokumentation jeder Komponente.
+Alle webforJ-Komponenten exponieren automatisch relevante Teile zum Stylen. Sie finden die Liste der unterstützten Teile im Abschnitt **Styling > Shadow Parts** der Dokumentation jedes Komponents.
 
 Zum Beispiel exponiert die `dwc-button`-Komponente Teile wie `prefix`, `label` und `suffix`:
 
@@ -67,11 +67,11 @@ Zum Beispiel exponiert die `dwc-button`-Komponente Teile wie `prefix`, `label` u
 </dwc-button>
 ```
 
-Sobald sie exponiert sind, können diese Teile von außerhalb der Komponente mit dem [`::part()`](https://developer.mozilla.org/en-US/docs/Web/CSS/::part) Pseudo-Element gestylt werden.
+Sobald sie exponiert sind, können diese Teile von außerhalb des Komponents mit dem [`::part()`](https://developer.mozilla.org/en-US/docs/Web/CSS/::part) Pseudoelement gestylt werden.
 
-### Das `::part()` Pseudo-Element {#the-part-pseudo-element}
+### Das `::part()` Pseudoelement {#the-part-pseudo-element}
 
-Der `::part()`-Selektor erlaubt es Ihnen, Stile auf Elemente innerhalb des Schatten-DOMs anzuwenden, die mit einem `part`-Attribut markiert wurden.
+Der `::part()`-Selektor ermöglicht es Ihnen, Stile auf Elemente im Shadow DOM anzuwenden, die mit einem `part`-Attribut markiert wurden.
 
 Zum Beispiel, um die Farbe des `label`-Teils in einem `dwc-button` zu ändern:
 
@@ -90,12 +90,12 @@ dwc-button::part(label):hover {
 ```
 
 :::warning Einschränkungen des ::part() Selektors
-Sie können *nicht* innerhalb eines Schattenteils auswählen. Das folgende wird **nicht** funktionieren:
+Sie können *innerhalb* eines Shadow Parts nicht auswählen. Folgendes wird **nicht** funktionieren:
 
 ```css
 /* Funktioniert NICHT */
 dwc-button::part(label) span {
-  /* CSS kommt hierhin */
+  /* CSS hier */
 }
 ```
 :::

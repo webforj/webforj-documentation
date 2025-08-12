@@ -6,7 +6,7 @@ slug: button
 description: A user guide article for the button
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 097546e8d5184c77d826d4687cdaf269
+_i18n_hash: a2d7f48c00a5367f9c0ca02327eafa0c
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,8 +16,8 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info CLIENT COMPONENT
-Deze sectie bevat stijl informatie voor de **`<dwc-button>`** component. Deze component is **alleen aan de clientzijde** - hij kan niet zelfstandig via de API worden geïnstantieerd, maar kan deel uitmaken van API-componenten.
+:::info CLIËNTCOMPONENT
+Dit gedeelte schetst de stijlinformatie voor de **`<dwc-button>`** component. Deze component is **alleen client-side** – het kan niet op zichzelf worden geïnstantieerd via de API, maar kan deel uitmaken van API-componenten.
 :::
 
 ## Styling {#styling}

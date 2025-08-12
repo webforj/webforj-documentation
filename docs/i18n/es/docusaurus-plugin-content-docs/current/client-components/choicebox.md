@@ -6,7 +6,7 @@ slug: choicebox
 description: A user guide article for the choicebox
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: e8f59167330c124d0c2ed84b64826976
+_i18n_hash: 84bc442705ad0320f19dac94a01d4485
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,9 +17,9 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info COMPONENTE DEL CLIENTE
-Esta sección describe la información de estilización para el **`<dwc-choicebox>`** componente. Este componente es **solo del lado del cliente** - no puede ser instanciado por sí solo a través de la API, pero puede formar parte de componentes de la API.
+Esta sección describe la información de estilo para el **`<dwc-choicebox>`** componente. Este componente es **solo del lado del cliente** - no se puede instanciar por sí solo a través de la API, pero puede formar parte de los componentes de la API.
 :::
 
-## Estilización {#styling}
+## Estilo {#styling}
 
 <TableBuilder name="dwc-choicebox" clientComponent />

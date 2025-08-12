@@ -1,24 +1,24 @@
 ---
 title: Spring DevTools
 sidebar_position: 30
-_i18n_hash: 3cbff575fa5d819ab8602aa97c58d5be
+_i18n_hash: 5401d3aa92e9230c4f26c827dcf83162
 ---
-Spring DevTools 提供代码更改时的自动应用重启。webforJ DevTools 添加了自动浏览器刷新 - 当 Spring 重新启动您的应用时，浏览器会通过 webforJ 的 LiveReload 服务器自动刷新。
+Spring DevTools 提供在代码更改时自动重启应用程序的功能。webforJ DevTools 添加了自动浏览器刷新 - 当 Spring 重启您的应用程序时，浏览器会通过 webforJ 的 LiveReload 服务器自动刷新。
 
-不同文件类型触发不同的重新加载行为。Java 代码更改会导致整个 Spring 重启和浏览器刷新。CSS 和图像更改则无须页面重新加载，保留表单数据和应用状态。
+不同文件类型触发不同的重载行为。Java 代码更改会导致完整的 Spring 重启和浏览器刷新。CSS 和图像更改则在不重新加载页面的情况下更新，从而保留表单数据和应用程序状态。
 
 ## Understanding webforJ DevTools {#understanding-webforj-devtools}
 
-webforJ 扩展了 Spring DevTools，提供浏览器同步。当 Spring 检测到文件更改并重新启动时，webforJ DevTools 会自动刷新您的浏览器。
+webforJ 扩展了 Spring DevTools 的浏览器同步功能。当 Spring 检测到文件更改并进行重启时，webforJ DevTools 会自动刷新您的浏览器。
 
 ### Reload behavior {#reload-behavior}
 
-不同文件类型触发不同的重新加载策略：
+不同文件类型触发不同的重载策略：
 
-- **Java 文件** - Spring 重启后完整浏览器页面重新加载
-- **CSS 文件** - 样式更新无需页面重新加载  
-- **JavaScript 文件** - Spring 重启后完整浏览器页面重新加载
-- **图像** - 原地刷新无需页面重新加载
+- **Java 文件** - 在 Spring 重启后完全重新加载浏览器页面
+- **CSS 文件** - 样式更新时不重新加载页面  
+- **JavaScript 文件** - 在 Spring 重启后完全重新加载浏览器页面
+- **图像** - 在不重新加载页面的情况下刷新
 
 ## Dependencies {#dependencies}
 
@@ -41,30 +41,30 @@ webforJ 扩展了 Spring DevTools，提供浏览器同步。当 Spring 检测到
 
 ## Configuration {#configuration}
 
-在您的应用属性中启用 webforJ DevTools：
+在您的应用程序属性中启用 webforJ DevTools：
 
 ```Ini title="application.properties"
-# Enable webforJ browser auto-reload
+# 启用 webforJ 浏览器自动重载
 webforj.devtools.livereload.enabled=true
 
-# Enable immediate shutdown for faster restarts
+# 启用即时关闭以加快重启速度
 server.shutdown=immediate
 ```
 
 ### Advanced configuration {#advanced-configuration}
 
-配置 WebSocket 连接和重新加载行为：
+配置 WebSocket 连接和重载行为：
 
 ```Ini title="application.properties"
-# WebSocket server port (default: 35730)
+# WebSocket 服务器端口 (默认: 35730)
 webforj.devtools.livereload.websocket-port=35730
 
-# WebSocket endpoint path (default: /webforj-devtools-ws)
+# WebSocket 端点路径 (默认: /webforj-devtools-ws)
 webforj.devtools.livereload.websocket-path=/webforj-devtools-ws
 
-# Heartbeat interval in milliseconds (default: 30000)
+# 心跳间隔（毫秒）(默认: 30000)
 webforj.devtools.livereload.heartbeat-interval=30000
 
-# Enable hot reload for static resources (default: true)
+# 启用静态资源的热重载 (默认: true)
 webforj.devtools.livereload.static-resources-enabled=true
 ```

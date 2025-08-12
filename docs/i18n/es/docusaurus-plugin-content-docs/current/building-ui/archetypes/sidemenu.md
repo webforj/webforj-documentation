@@ -2,7 +2,7 @@
 title: SideMenu
 sidebar_position: 3
 hide_table_of_contents: true
-_i18n_hash: c5fb775f5867b54eb53b0e1e63b90e20
+_i18n_hash: 0d0c302e47e1711d573c9bf6860547ae
 ---
 <Head>
   <style>{`
@@ -13,16 +13,16 @@ _i18n_hash: c5fb775f5867b54eb53b0e1e63b90e20
 </Head>
 
 <!-- vale off -->
-# Arquetipo de SideMenu
+# Archetipo de SideMenu
 <!-- vale on -->
 
-Para proyectos que necesitan un sistema de navegación estructurado, el arquetipo `sidemenu` es un excelente punto de partida. Este arquetipo contiene un menú lateral y un área de contenido, y está diseñado para ayudarte a crear aplicaciones con una estructura de navegación clara e intuitiva, facilitando que los usuarios encuentren y accedan a diferentes partes de tu aplicación.
+Para proyectos que necesitan un sistema de navegación estructurado, el archetipo `sidemenu` es un excelente punto de partida. Este archetipo contiene un menú lateral y un área de contenido, y está diseñado para ayudarte a crear aplicaciones con una estructura de navegación clara e intuitiva, facilitando a los usuarios encontrar y acceder a diferentes partes de tu aplicación.
 
 :::tip Usando startforJ
-Para tener más control sobre la personalización y configuración, puedes usar [startforJ](https://docs.webforj.com/startforj/) para crear tu proyecto: solo selecciona el arquetipo `SideMenu` al elegir las opciones de configuración.
+Para tener más control sobre la personalización y configuración, puedes usar [startforJ](https://docs.webforj.com/startforj/) para crear tu proyecto; solo selecciona el archetipo `SideMenu` al elegir las opciones de configuración.
 :::
 
-## Usando el arquetipo `sidemenu` {#using-the-sidemenu-archetype}
+## Usando el archetipo `sidemenu` {#using-the-sidemenu-archetype}
 
 <ComponentArchetype
 project="sidemenu"
@@ -30,15 +30,14 @@ project="sidemenu"
 
 ## Ejecutando la aplicación {#running-the-app}
 
-Antes de ejecutar tu aplicación, instala los [prerequisitos](../../introduction/prerequisites) si aún no lo has hecho. 
-Luego, navega al directorio raíz del proyecto y ejecuta el siguiente comando:
+Antes de ejecutar tu aplicación, instala los [prerrequisitos](../../introduction/prerequisites) si aún no lo has hecho. Luego, navega al directorio raíz del proyecto y ejecuta el siguiente comando:
 
 ```bash
-# para una aplicación webforJ estándar
+# para aplicación estándar webforJ
 mvn jetty:run
 
 # para webforJ + Spring Boot
 mvn spring-boot:run
 ```
 
-Una vez que el servidor esté en funcionamiento, abre tu navegador y ve a [http://localhost:8080](http://localhost:8080) para ver la aplicación.
+Una vez que el servidor esté en ejecución, abre tu navegador y ve a [http://localhost:8080](http://localhost:8080) para ver la aplicación.

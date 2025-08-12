@@ -6,7 +6,7 @@ slug: toolbar
 description: A user guide article for the toolbar
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: c50f56291d0ed9795849c7c4c07dfa0d
+_i18n_hash: 5ddca7821c09d0f46e27af39c3a5e37a
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,10 +16,10 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info ASIA CLIENT
-Tässä osiossa on tyyliin liittyvää tietoa **`<dwc-toolbar>`** -komponentille. Tämä komponentti on **vain asiakaspuolella** - sitä ei voi instanssoida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+:::info ASIAKASKOMPONENTTI
+Tässä osiossa kuvataan tyylitietoja **`<dwc-toolbar>`** komponentille. Tämä komponentti on **asiakaspään ainoastaan** - sitä ei voi instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
-## Tyyli {#styling}
+## Tyylittely {#styling}
 
 <TableBuilder name="dwc-toolbar" clientComponent />

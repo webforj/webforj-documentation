@@ -1,13 +1,13 @@
 ---
 sidebar_position: 11
 title: Routes Registration
-_i18n_hash: 8f6b7b85dd246adc8d98c8a5bf994a39
+_i18n_hash: 5075588c497508fc77d7f76b1b412cf4
 ---
-Lisäksi [reittien rekisteröimisestä `@Route`-annotaatioiden avulla](./defining-routes) on mahdollista rekisteröidä, päivittää tai poistaa reittejä dynaamisesti suoritusaikana sovelluksen logiikan, käyttäjäroolien tai muiden ehtojen perusteella. Tämä joustavuus mahdollistaa navigoinnin hallinnan dynaamisemmin sen sijaan, että reitit määritellään staattisesti käännösaikana.
+Rekisteröinnin lisäksi [reittiä @Route -annotaatioiden avulla](./defining-routes) on mahdollista rekisteröidä, päivittää tai poistaa reittejä dynaamisesti suoritusajon aikana sovelluksen logiikan, käyttäjäroolien tai muiden ehtojen perusteella. Tämä joustavuus mahdollistaa navigoinnin hallinnan dynaamisemmin, sen sijaan että reitit määritellään staattisesti käännösaikana.
 
 ## Reittien dynaaminen rekisteröinti {#registering-routes-dynamically}
 
-Voit rekisteröidä reitin dynaamisesti käyttäen `RouteRegistry`-luokkaa, joka on saatavilla `Routerin` kautta. Tämä mahdollistaa uusien reittien lisäämisen suoritusaikana, mikä mahdollistaa joustavamman navigoinnin.
+Voit rekisteröidä reitin dynaamisesti käyttämällä `RouteRegistry`-luokkaa, joka on saatavilla `Routerin` kautta. Tämä mahdollistaa uusien reittien lisäämisen suoritusaikana, mikä mahdollistaa joustavan navigoinnin.
 
 ### Esimerkki: Dynaamisen reitin rekisteröinti {#example-registering-a-dynamic-route}
 
@@ -15,20 +15,20 @@ Voit rekisteröidä reitin dynaamisesti käyttäen `RouteRegistry`-luokkaa, joka
 Router router = Router.getCurrent();
 RouteRegistry registry = router.getRegistry();
 
-// Rekisteröi asetukset-reitti dynaamisesti
+// Rekisteröi asetusten reitti dynaamisesti
 registry.register("/settings", SettingsView.class);
 
-// Siirry asetukset-näkymään
+// Siirry asetusten näkymään
 router.navigate(SettingsView.class);
 ```
 
-Tässä esimerkissä `/settings`-reitti rekisteröidään dynaamisesti ja sovellus siirtyy juuri rekisteröityyn näkymään.
+Tässä esimerkissä `/settings`-reitti rekisteröidään dynaamisesti, ja sovellus navigoi juuri rekisteröityyn näkymään.
 
 ## Ehdollinen reittien rekisteröinti {#conditional-route-registration}
 
-Usein reittejä on tarpeen lisätä tai poistaa tiettyjen ehtojen, kuten käyttäjäroolien tai sovelluksen tilan perusteella. Dynaamisen reitityksen avulla voit rekisteröidä tai peruuttaa reittejä ehdollisesti suoritusaikana.
+Usein reittejä on lisättävä tai poistettava tietyistä ehdoista, kuten käyttäjärooleista tai sovelluksen tilasta. Dynaamisen reitityksen avulla voit rekisteröidä tai poistaa reittejä ehdollisesti suoritusaikana.
 
-### Esimerkki: Ehdollinen rekisteröinti käyttäjäroolin mukaan {#example-conditional-registration-based-on-user-role}
+### Esimerkki: Ehdollinen rekisteröinti käyttäjäroolen perusteella {#example-conditional-registration-based-on-user-role}
 
 ```java
 Router router = Router.getCurrent();
@@ -41,7 +41,7 @@ if (user.hasRole("editor")) {
     registry.register("/viewer/dashboard", ViewerDashboardView.class);
 }
 
-// Siirry sopivaan dashboardiin
+// Siirry sopivaan hallintapaneeliin
 if (user.hasRole("editor")) {
     router.navigate(EditorDashboardView.class);
 } else if (user.hasRole("viewer")) {
@@ -50,12 +50,12 @@ if (user.hasRole("editor")) {
 ```
 
 Tässä esimerkissä:
-- `/editor/dashboard`- tai `/viewer/dashboard`-reitti rekisteröidään dynaamisesti käyttäjän roolin mukaan.
-- Sovellus siirtyy sopivaan dashboardiin käyttäjän pääsyoikeuksien perusteella.
+- `/editor/dashboard` tai `/viewer/dashboard` reitti rekisteröidään dynaamisesti käyttäjän roolin perusteella.
+- Sovellus navigoi sopivaan hallintapaneeliin käyttäjän käyttöoikeuksien mukaan.
 
 ## Reittien poistaminen {#removing-routes}
 
-Samoin kuin reittejä voidaan lisätä dynaamisesti, niitä voidaan myös poistaa suoritusaikana, kun niitä ei enää tarvita tai kun sovelluksen konteksti muuttuu.
+Juuri kuten reittejä voidaan lisätä dynaamisesti, niitä voidaan myös poistaa suoritusaikana, kun niitä ei enää tarvita tai kun sovelluksen konteksti muuttuu.
 
 ### Esimerkki: Rekisteröidyn reitin poistaminen {#example-removing-a-registered-route}
 
@@ -63,18 +63,18 @@ Samoin kuin reittejä voidaan lisätä dynaamisesti, niitä voidaan myös poista
 Router router = Router.getCurrent();
 RouteRegistry registry = router.getRegistry();
 
-// Poista asetukset-näkymän reitti
+// Poista reitti asetusten näkymälle
 registry.unregister("/settings");
 
-// Valinnaisesti, poista komponenttiluokan mukaan
+// Vaihtoehtoisesti, poista komponenttaluokan mukaan
 registry.unregister(SettingsView.class);
 ```
 
-Tässä esimerkissä `/settings`-reitti poistetaan dynaamisesti, kun sitä ei enää tarvita.
+Tässä esimerkissä `/settings`-reitti poistuu dynaamisesti, kun sitä ei enää tarvita.
 
 ## Reittien rekisteröinti sovelluksen käynnistyksessä {#registering-routes-at-app-startup}
 
-Voit rekisteröidä dynaamisia reittejä sovelluksen alustuksen aikana, jolloin tietyt näkymät ovat saatavilla ympäristön tai kokoonpanon perusteella käynnistyksessä.
+Voit rekisteröidä dynaamisia reittejä sovelluksen alustusvaiheessa, jolloin tietyt näkymät ovat saatavilla ympäristöstä tai asetuksista riippuen käynnistyksen aikana.
 
 ### Esimerkki: Reittien rekisteröinti sovelluksen käynnistyksen aikana {#example-registering-routes-during-app-startup}
 
@@ -84,7 +84,7 @@ public class Application extends App {
 
   @Override
   protected void onWillRun() {
-    // Rekisteröi debug-näkymä vain kehitysmallissa
+    // Rekisteröi debug-näkö vain kehitysmoodissa
     if (Environment.getCurrent().isDebug()) {
       Router router = Router.getCurrent();
       RouteRegistry registry = router.getRegistry();
@@ -96,11 +96,11 @@ public class Application extends App {
 ```
 
 Tässä esimerkissä:
-- `DebugView` rekisteröidään dynaamisesti sovelluksen käynnistyksen aikana, mutta vain jos sovellus on käynnissä kehitysmallissa.
+- `DebugView` rekisteröidään dynaamisesti sovelluksen käynnistyessä, mutta vain jos sovellus toimii kehitysmoodissa.
 
-## Dynaamisesti rekisteröidyt `@Route`-annotoitu komponentit {#registering-route-annotated-components-dynamically}
+## `@Route`-annotoidun komponentin dynaaminen rekisteröinti {#registering-route-annotated-components-dynamically}
 
-Manuaalisten reittien määrittämisen lisäksi on mahdollista rekisteröidä dynaamisesti `@Route`-annotaatiolla jo varustettuja komponentteja. Tämä on kätevää, kun haluat hyödyntää esimerkit-annotoituja luokkia mutta rekisteröidä ne dynaamisesti sovelluksen logiikan perusteella.
+Lisäksi manuaalisten reittien määrittämisen ohella on mahdollista rekisteröidä dynaamisesti komponentteja, jotka on jo merkitty `@Route`-annotaatiolla. Tämä on hyödyllistä, kun haluat käyttää etukäteen merkittyjä luokkia, mutta rekisteröidä ne dynaamisesti sovelluksen logiikan perusteella.
 
 ### Esimerkki: `@Route`-annotoidun komponentin rekisteröinti {#example-registering-an-route-annotated-component}
 
@@ -116,17 +116,17 @@ RouteRegistry registry = router.getRegistry();
 // Rekisteröi ProfileView dynaamisesti sen @Route-annotaation kanssa
 registry.register(ProfileView.class);
 
-// Siirry ProfileView-näkymään
+// Siirry ProfileVieween
 router.navigate(ProfileView.class);
 ```
 
 Tässä esimerkissä:
-- `ProfileView`-luokka on annotoitu `@Route("profile")`.
+- `ProfileView`-luokka on merkitty `@Route("profile")`.
 - Reitti rekisteröidään dynaamisesti suoritusaikana käyttäen `registry.register(ProfileView.class)`.
 
-## Reittien rekisteröinti koko paketista {#registering-routes-from-an-entire-package}
+## Reittien rekisteröinti kokonaisesta paketista {#registering-routes-from-an-entire-package}
 
-Jos sovelluksessasi on suuri määrä reittejä, jotka on järjestetty pakettiin, voit rekisteröidä kaikki `@Route`-annotoituja komponentteja paketista dynaamisesti.
+Jos sovelluksessasi on suuri määrä reittejä, jotka on järjestetty pakettiin, voit rekisteröidä kaikki `@Route`-annotoidut komponentit paketin dynaamisesti.
 
 ### Esimerkki: Kaikkien reittien rekisteröinti paketista {#example-registering-all-routes-from-a-package}
 
@@ -134,19 +134,19 @@ Jos sovelluksessasi on suuri määrä reittejä, jotka on järjestetty pakettiin
 Router router = Router.getCurrent();
 RouteRegistry registry = router.getRegistry();
 
-// Rekisteröi kaikki reitit "com.myapp.admin" -paketista
+// Rekisteröi kaikki reitit "com.myapp.admin" paketista
 RouteRegistry.ofPackage(new String[] { "com.myapp.admin" }, registry);
 ```
 
 Tässä esimerkissä:
-- `ofPackage`-menetelmä skannaa `com.myapp.admin`-paketin ja rekisteröi kaikki `@Route`-annotoitu luokat.
-- Tämä on erityisen hyödyllistä suurille sovelluksille, joissa on lukuisia reittejä, jotka on järjestetty paketteihin.
+- `ofPackage`-metodi skannaa `com.myapp.admin`-paketin ja rekisteröi kaikki `@Route`-annotaatiolla varustetut luokat.
+- Tämä on erityisen hyödyllistä suurissa sovelluksissa, joissa on lukuisia reittejä, jotka on järjestetty paketteihin.
 
 ## Rekisteröityjen reittien hakeminen {#retrieving-registered-routes}
 
-Voit hakea luettelon kaikista dynaamisesti rekisteröidyistä reiteistä käyttämällä `RouteRegistry`-luokkaa. Tämä on hyödyllistä, kun sinun tarvitsee hallita tai näyttää ohjelmallisesti saatavilla olevia reittejä.
+Voit käyttää `RouteRegistry`-luokkaa saadaksesi listan kaikista dynaamisesti rekisteröidyistä reiteistä. Tämä on hyödyllistä, kun sinun on hallittava tai näytettävä saatavilla olevia reittejä ohjelmallisesti.
 
-### Esimerkki: Kaikkien rekisteröityjen reittien hakeminen ja näyttäminen {#example-retrieving-and-displaying-all-registered-routes}
+### Esimerkki: Rekisteröityjen reittien hakeminen ja näyttäminen {#example-retrieving-and-displaying-all-registered-routes}
 
 ```java
 Router router = Router.getCurrent();
@@ -156,24 +156,24 @@ List<RouteEntry> routes = registry.getAvailableRouteEntires();
 routes.forEach(route -> console().log("Polku: " + route.getPath()));
 ```
 
-Tässä esimerkissä sovellus hakee kaikki tällä hetkellä rekisteröidyt reitit ja tulostaa niiden polut.
+Tässä esimerkissä sovellus saa kaikki tällä hetkellä rekisteröidyt reitit ja tulostaa niiden polut.
 
-## Reitti Alias:ien hallinta dynaamisesti {#managing-route-aliases-dynamically}
+## Reitti-aliasien hallinta dynaamisesti {#managing-route-aliases-dynamically}
 
-webforJ mahdollistaa useiden alias-nimien rekisteröimisen yhdelle näkymälle. Tämä tarkoittaa, että käyttäjät voivat käyttää samaa näkymää eri URL-polkujen kautta.
+webforJ mahdollistaa useiden aliasien rekisteröinnin yhdelle näkymälle. Tämä tarkoittaa, että käyttäjät voivat käyttää samaa näkymää eri URL-reittien kautta.
 
-### Esimerkki: Reitti Alias:ien dynaaminen rekisteröinti {#example-registering-route-aliases-dynamically}
+### Esimerkki: Reitti-aliasien rekisteröinti dynaamisesti {#example-registering-route-aliases-dynamically}
 
 ```java
 Router router = Router.getCurrent();
 RouteRegistry registry = router.getRegistry();
 
-// Rekisteröi ensisijainen reitti
+// Rekisteröi pääreitti
 registry.register("/contact", ContactView.class);
 
-// Rekisteröi alias-nimiä kontaktinäkymälle
+// Rekisteröi aliasit contact-näkymälle
 registry.register("/support", ContactView.class);
 registry.register("/help", ContactView.class);
 ```
 
-Tässä esimerkissä `ContactView` on saavutettavissa kolmella eri polulla: `/contact`, `/support` ja `/help`.
+Tässä esimerkissä `ContactView` on saavutettavissa kolmen eri polun kautta: `/contact`, `/support` ja `/help`.

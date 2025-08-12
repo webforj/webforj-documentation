@@ -1,27 +1,27 @@
 ---
 sidebar_position: 2
 title: Shadow Parts
-_i18n_hash: 8dbd7759364573b73d0b1b00c6d7e219
+_i18n_hash: bad90a86a29eaf34485d5ee9150aacb3
 ---
-CSS **Shadow Parts** antavat kehittäjille tavan muokata komponentin varjo-DOM:issa olevia elementtejä ulkoapäin säilyttäen samalla kapseloinnin.
+CSS **Varjostin osat** antavat kehittäjille keinon tyylitellä elementtejä komponentin varjostin DOM:issa ulkopuolelta, samalla säilyttäen kapseloinnin.
 
 ## Johdanto {#introduction}
 
-webforJ-komponentit perustuvat [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) -tekniikoihin, jotka hyödyntävät [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) -ratkaisua komponentin sisäisen rakenteen ja tyylien kapselointiin.
+webforJ-komponentit on rakennettu käyttäen [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) -tekniikoita, jotka perustuvat [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) -kapselointiin komponentin sisäisen rakenteen ja tyylioston suojaamiseksi.
 
 :::tip Web Components
-Web Components ovat teknologioiden kokoelma, joka mahdollistaa uusiutuvaa, kapseloitua mukautettua elementtiä luomisen verkkosovelluksille.
+Web Components on teknologiaratkaisu, joka antaa sinun luoda uudelleenkäytettäviä, kapseloituja mukautettuja elementtejä käytettäväksi verkkosovelluksissa.
 :::
 
 **Shadow DOM** estää sisäisten tyylien ja merkintöjen vuotamisen komponentista tai ulkoisten tyylien vaikutuksen. Tämä kapselointi varmistaa, että komponentit pysyvät itsenäisinä, vähentäen tyylikonfliktien riskiä.
 
-:::tip Web Components Kapselointi
-Kapselointi on Web Componentsin keskeinen etu. Pitämällä komponentin rakenne, tyylit ja käyttäytyminen erillään sovelluksesi muusta osiosta, vältät ristiriidat ja ylläpidät selkeää, helposti ylläpidettävää koodia.
+:::tip  Web Componentsin kapselointi
+Kapselointi on Web Componentsin keskeinen etu. Pitämällä komponentin rakenne, tyylit ja käyttäytyminen erillään sovelluksen muusta osasta vältät ristiriitoja ja ylläpidät siistiä, ylläpidettävää koodia.
 :::
 
-Kuitenkin tämän kapseloinnin vuoksi et voi **suoraan muokata** varjo-DOM:issa olevia elementtejä vakio CSS-valitsimilla.
+Kapseloinnin vuoksi et voi **suoraan tyylitellä** varjostin DOM:issa olevia elementtejä käyttäen normaaleja CSS-valitsimia.
 
-Esimerkiksi `dwc-button` komponentti luo seuraavan rakenteen:
+Esimerkiksi `dwc-button` -komponentti renderöi seuraavan rakenteen:
 
 ```html {2}
 <dwc-button>
@@ -33,30 +33,30 @@ Esimerkiksi `dwc-button` komponentti luo seuraavan rakenteen:
 </dwc-button>
 ```
 
-Jos yrität tyylitellä `label`-elementtiä näin:
+Jos yrität tyylitellä `label` näin:
 
 ```css
-/* Ei TOIMI */
+/* Ei toimi */
 dwc-button .control__label {
   color: pink;
 }
 ```
 
-se ei vaikuta, koska `.control__label` elementti sijaitsee varjojuuren sisällä.
+se ei vaikuta mihinkään, koska `.control__label` -elementti sijaitsee varjostinjuurella.
 
-Tässä vaiheessa **CSS Shadow Parts** tulevat kuvaan.
+Tässä kohtaa tulevat mukaan **CSS varjostinosat**.
 
-## Tyylit varjo-osilla {#styling-with-shadow-parts}
+## Tyylittely varjostinosilla {#styling-with-shadow-parts}
 
-Varjo-osat mahdollistavat ulkoisten tyylitiedostojen kohdistamisen tiettyihin elementteihin varjopuussa, mutta **vain jos** nämä elementit on selkeästi merkitty "altistettaviksi" komponentissa.
+Varjostinosat sallivat ulkoisten tyylitiedostojen kohdistaa tiettyjä elementtejä varjostinpuussa, mutta **vain jos** nämä elementit on erikseen merkitty "altistetuiksi" komponentin toimesta.
 
 ### Kuinka osat altistetaan {#how-parts-are-exposed}
 
-Jotta elementti voidaan altistaa ulkoista muokkausta varten, komponentin kirjoittajan on annettava `part`-attribuutti sille varjo-DOM:issa.
+Jotta elementti voidaan altistaa ulkoiselle tyylittelylle, komponentin kirjoittajan on määritettävä `part`-attribuutti sille varjostin DOM:issa.
 
-Kaikki webforJ-komponentit altistavat automaattisesti asianmukaiset osat tyylittelyä varten. Löydät tuetut osat **Tyylittely > Varjo-osat** -osasta kunkin komponentin dokumentaatiossa.
+Kaikki webforJ-komponentit altistavat automaattisesti relevanssit osat tyylittelyä varten. Voit löytää luettelon tuetuista osista kunkin komponentin dokumentaation **Tyylittely > Varjostinosat** -osiosta.
 
-Esimerkiksi `dwc-button` komponentti altistaa osia kuten `prefix`, `label` ja `suffix`:
+Esimerkiksi `dwc-button` -komponentti altistaa osia kuten `prefix`, `label` ja `suffix`:
 
 ```html
 <dwc-button>
@@ -67,13 +67,13 @@ Esimerkiksi `dwc-button` komponentti altistaa osia kuten `prefix`, `label` ja `s
 </dwc-button>
 ```
 
-Kun osat on altistettu, niitä voidaan tyylitellä komponentin ulkopuolelta käyttämällä [`::part()`](https://developer.mozilla.org/en-US/docs/Web/CSS/::part) -pseudoelementtiä.
+Kun osat on altistettu, niitä voidaan tyylitellä komponentin ulkopuolelta käyttäen [`::part()`](https://developer.mozilla.org/en-US/docs/Web/CSS/::part) -pseudo-elementtiä.
 
-### `::part()` pseudoelementti {#the-part-pseudo-element}
+### `::part()` pseudo-elementti {#the-part-pseudo-element}
 
-`::part()`-valitsin sallii sinun soveltaa tyylejä varjo-DOM:in elementteihin, jotka on merkitty `part`-attribuutille.
+`::part()`-valitsin antaa sinun soveltaa tyylejä varjostin DOM:issa oleviin elementteihin, joilla on `part`-attribuutti.
 
-Esimerkiksi, jos haluat vaihtaa `label`-osan väriä `dwc-button`-komponentissa:
+Esimerkiksi, jotta voit muuttaa `label`-osan väriä `dwc-button` -komponentissa:
 
 ```css
 dwc-button::part(label) {
@@ -81,7 +81,7 @@ dwc-button::part(label) {
 }
 ```
 
-Voit yhdistää `::part()` muihin valitsimiin, kuten `:hover`:
+Voit yhdistää `::part()` muiden valitsimien, kuten `:hover`, kanssa:
 
 ```css
 dwc-button::part(label):hover {
@@ -89,13 +89,13 @@ dwc-button::part(label):hover {
 }
 ```
 
-:::warning `::part()` valitsimen rajoitukset
-Et voi valita *sisällä* varjo-osassa. Seuraava **ei** toimi:
+:::warning `::part()`-valitsimen rajoitukset
+Et voi valita *sisällä* varjostinosassa. Seuraava ei **toimi**:
 
 ```css
-/* Ei TOIMI */
+/* Ei toimi */
 dwc-button::part(label) span {
-  /* CSS tulee tähän */
+  /* CSS:tä tähän */
 }
 ```
 :::

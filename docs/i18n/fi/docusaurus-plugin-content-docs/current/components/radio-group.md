@@ -2,15 +2,15 @@
 title: RadioButtonGroup
 slug: radiobuttongroup
 sidebar_position: 100
-_i18n_hash: 8e58efd7b052a00eaf8cfce276cda92e
+_i18n_hash: 91d753e882e3d6d59deef5044ee7bc4c
 ---
 <DocChip chip='since' label='23.01' />
 <JavadocLink type="foundation" location="com/webforj/component/optioninput/RadioButtonGroup" top='true'/>
 
-`RadioButtonGroup`-luokkaa käytetään ryhmittämään liittyvät radiopainikkeet yhteen, mikä auttaa määrittämään vaihtoehtojen keskinäisen ekskluusion kyseisessä ryhmässä. Käyttäjät voivat valita vain yhden radiopainikkeen tietyssä radioryhmässä. Kun käyttäjä valitsee radiopainikkeen ryhmässä, aiemmin valittu radiopainike samassa ryhmässä poistuu automaattisesti valinnasta. Tämä varmistaa, että vain yksi vaihtoehto voidaan valita kerrallaan.
+`RadioButtonGroup`-luokkaa käytetään ryhmittämään toisiinsa liittyviä radiopainikkeita, mikä auttaa luomaan vaihtoehtojen keskinäistä eksklusiivisuutta kyseisessä ryhmässä. Käyttäjät voivat valita vain yhden radiopainikkeen tietyssä radioryhmässä. Kun käyttäjä valitsee radiopainikkeen ryhmästä, aiemmin valittu radiopainike samassa ryhmässä poistuu automaattisesti valinnasta. Tämä varmistaa, että vain yksi vaihtoehto voidaan valita kerrallaan.
 
 :::tip
-`RadioButton`-komponentti tallentaa ryhmän, johon se kuuluu, ja se voidaan saada käyttöön `getButtonGroup()`-menetelmällä.
+`RadioButton`-komponentti tallentaa ryhmän, johon se kuuluu, ja tämä voidaan saavuttaa `getButtonGroup()`-metodin avulla.
 :::
 
 <ComponentDemo 
@@ -20,34 +20,33 @@ height="200px"
 />
 
 :::important
-`RadioButtonGroup`-komponentti ei renderöi HTML-elementtiä sivulle. Pikemminkin se on vain
-logiikka, joka varmistaa, että joukko radiopainikkeita käyttäytyy ryhmänä sen sijaan, että ne käyttäytyisivät yksilöllisesti.
+`RadioButtonGroup`-komponentti ei renderöi HTML-elementtiä sivulle. Sen sijaan se on vain logiikka, joka varmistaa, että ryhmä Radiopainikkeita käyttäytyy ryhmänä sen sijaan, että ne käyttäytyisivät yksittäin.
 :::
 
-## Käytöt {#usages}
+## Käyttötapaukset {#usages}
 
-`RadioButtonGroup` soveltuu parhaiten tilanteisiin, joissa käyttäjien tarvitsee tehdä yksi valinta ennalta määritellystä vaihtoehtojen joukosta, joka esitetään radiopainikkeina. Tässä on joitakin esimerkkejä siitä, milloin `RadioButtonGroup`-komponenttia tulisi käyttää:
+`RadioButtonGroup`-komponenttia käytetään parhaiten tilanteissa, joissa käyttäjä tarvitsee tehdä yksittäisen valinnan ennalta määritetystä vaihtoehtojen joukosta, joka esitetään radiopainikkeina. Tässä on joitakin esimerkkejä, milloin `RadioButtonGroup`-komponenttia kannattaa käyttää:
 
-1. **Kyselyt tai kyselylomakkeet**: `RadioButtonGroup`-komponentteja käytetään yleisesti kyselyissä tai kyselylomakkeissa, joissa käyttäjien tulee valita yksi vastaus vaihtoehtoluettelosta.
+1. **Kyselyt tai Lomakkeet**: `RadioButtonGroup`-komponentteja käytetään yleisesti kyselyissä tai lomakkeissa, joissa käyttäjien on valittava yksi vastaus vaihtoehtojen luettelosta.
 
-2. **Asetusten määrittäminen**: Sovelluksissa, jotka sisältävät asetuksia tai asetuspaneeleja, käytetään usein `RadioButtonGroup`-komponenttia, jotta käyttäjät voivat valita yhden vaihtoehdon keskinäisesti eksklusiivisista valinnoista.
+2. **Asetteluasetukset**: Sovelluksissa, jotka sisältävät asetuksiin liittyviä paneeleja, käytetään usein RadioButtonGroup-komponenttia, jotta käyttäjät voivat valita yhden vaihtoehdon keskenään poissulkevista vaihtoehdoista.
 
-3. **Suodatus tai lajittelu**: `RadioButton`-komponenttia voidaan käyttää sovelluksissa, joissa käyttäjien on valittava yksi suodatus- tai lajitteluvaihtoehto, kuten lajitteluvaihtoehto eri kriteerien perusteella.
+3. **Suodatus tai Lajittelu**: `RadioButton`-komponenttia voidaan käyttää sovelluksissa, joissa vaaditaan käyttäjien valitsevan yksittäinen suodatus- tai lajitteluvaihtoehto, kuten erilaisten kriteerien mukaan lajittelemalla tavaraluetteloa.
 
 <!-- vale off -->
 ## Radiopainikkeiden lisääminen ja poistaminen {#adding-and-removing-radiobuttons}
 <!-- vale on -->
 
-On mahdollista lisätä ja poistaa yksittäisiä tai useita `RadioButton`-objekteja ryhmästä varmistaen, että ne osoittavat keskinäisesti eksklusiivista valintakäyttäytymistä, ja ne voivat liittyä mihin tahansa ryhmään kuuluvaan nimeen.
+On mahdollista lisätä ja poistaa yksittäisiä tai useita `RadioButton`-objekteja ryhmään varmistaen, että ne käyttäytyvät keskenään poissulkevalla tavalla ja liittyvät mihin tahansa nimeen, joka voi kuulua ryhmään.
 
 ## Nimeäminen {#naming}
 
-Nimiattribuutti `RadioButtonGroup`-komponentissa ryhmittelee liittyvät radiopainikkeet yhteen, jolloin käyttäjät voivat tehdä yhden valinnan annetuista vaihtoehdoista ja vähentää radiopainikkeiden keskinäistä eksklusiivisuutta. Ryhmän nimeä ei heijasteta DOM:iin, mutta se on mukavuustyökalu Java-kehittäjälle.
+`RadioButtonGroup`-komponentin nimi-attribuutti ryhmittelee liittyvät Radiopainikkeet yhteen, jolloin käyttäjät voivat tehdä yksittäisen valinnan tarjotuista vaihtoehdoista ja varmistaa eksklusiivisuuden Radiopainikkeiden välillä. Ryhmän nimeä ei heijasteta DOM:iin, ja se on kuitenkin kätevä työkalu Java-kehittäjälle.
 
 ## Parhaat käytännöt {#best-practices}
 
-Optimaalisen käyttäjäkokemuksen varmistamiseksi `RadioButton`-komponentin käytössä kannattaa harkita seuraavia parhaita käytäntöjä:
+Varmistaaksesi optimaalisen käyttäjäkokemuksen RadioButton-komponenttia käytettäessä, harkitse seuraavia parhaita käytäntöjä:
 
-1. **Selkeät vaihtoehtojen merkinnät**: Tarjoa selkeät ja ytimekkäät merkinnät jokaiselle `RadioButton`-vaihtoehdolle kuvaamaan valintaa tarkasti. Merkintöjen tulee olla helposti ymmärrettäviä ja erotettavissa toisistaan.
+1. **Selkeät Merkit**: Anna selkeät ja ytimekkäät nimet jokaiselle `RadioButton`-vaihtoehdolle, jotta valinta voidaan kuvata tarkasti. Nimien tulisi olla helposti ymmärrettäviä ja erottua toisistaan.
 
-2. **Tarjoa oletusvalinta**: Mikäli mahdollista, harkitse oletusvalinnan tarjoamista radiopainikkeille ohjataksesi käyttäjiä, kun he kohtaavat vaihtoehdot ensimmäistä kertaa. Oletusvalinnan tulisi vastata yleisintä tai toivottua valintaa.
+2. **Tarjoa Oletusvalinta**: Jos mahdollista, harkitse oletusvalinnan tarjoamista Radiopainikkeille ohjataksesi käyttäjiä, kun he kohtaavat vaihtoehdot ensimmäisen kerran. Oletusvalinnan tulisi vastata yleisintä tai suosituimpaa valintaa.

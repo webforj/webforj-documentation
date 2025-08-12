@@ -1,7 +1,7 @@
 ---
 title: ProgressBar
 sidebar_position: 90
-_i18n_hash: 3c76010e8bda96d8694bffa5a260b851
+_i18n_hash: 9b2f9ec23124d60ab5f8fca18e561acb
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-progressbar" />
@@ -20,13 +20,13 @@ height='150px'
 
 Le composant `ProgressBar` est utile pour visualiser l'état d'achèvement des tâches. Il prend en charge :
 
-- Valeurs minimales et maximales configurables.
-- Mode indéterminé pour les tâches en cours sans fin définie.
-- Options pour la visibilité du texte, l'animation et les designs rayés pour un meilleur retour visuel.
+- Des valeurs minimales et maximales configurables.
+- Un mode indéterminé pour les tâches en cours sans fin définie.
+- Des options pour la visibilité du texte, l'animation et des designs rayés pour un meilleur retour visuel.
 
 ## Setting values {#setting-values}
 
-Le composant ProgressBar permet de définir et d'obtenir sa valeur actuelle, ses limites minimale et maximale.
+Le composant ProgressBar permet de définir et d'obtenir sa valeur actuelle, ses limites minimales et maximales.
 
 ```java showLineNumbers
 ProgressBar bar = new ProgressBar();
@@ -37,7 +37,7 @@ bar.setValue(50);
 
 ## Orientation {#orientation}
 
-Le `ProgressBar` peut être orienté horizontalement ou verticalement.
+La `ProgressBar` peut être orientée horizontalement ou verticalement.
 
 <ComponentDemo 
 path='/webforj/progressbarorientation?' 
@@ -47,7 +47,7 @@ height='175px'
 
 ## Indeterminate state {#indeterminate-state}
 
-Le `ProgressBar` prend en charge un état indéterminé pour des tâches dont le temps d'achèvement est inconnu.
+La `ProgressBar` prend en charge un état indéterminé pour les tâches dont le temps de complétion est inconnu.
 
 <ComponentDemo 
 path='/webforj/progressbardeterminate?' 
@@ -57,8 +57,7 @@ height='25px'
 
 ## Text and text visibility {#text-and-text-visibility}
 
-Par défaut, lors de sa création, la barre de progression affiche le pourcentage d'achèvement au format `XX%`. En utilisant la méthode `setText()`, vous pouvez utiliser le placeholder `{{x}}` pour obtenir la valeur actuelle en pourcentage. De plus, vous pouvez utiliser le placeholder 
-`{{value}}` pour obtenir la valeur actuelle brute.
+Par défaut, lorsque créé, la barre de progression affiche le pourcentage d'achèvement au format `XX%`. En utilisant la méthode `setText()`, vous pouvez utiliser le placeholder `{{x}}` pour obtenir la valeur actuelle en pourcentage. De plus, vous pouvez utiliser le placeholder `{{value}}` pour obtenir la valeur actuelle brute.
 
 ```java
 ProgressBar bar = new ProgressBar(15, "Téléchargement : {{x}}%");
@@ -68,8 +67,7 @@ ProgressBar bar = new ProgressBar(15, "Téléchargement : {{x}}%");
 
 ### Themes {#themes}
 
-Le composant `ProgressBar` est livré avec des <JavadocLink type="foundation" location="com/webforj/component/Theme"> thèmes </JavadocLink> intégrés pour un stylage rapide sans avoir besoin de CSS. Ces thèmes sont des styles prédéfinis qui peuvent être appliqués aux boutons pour changer leur apparence et leur présentation visuelle. 
-Ils offrent un moyen rapide et cohérent de personnaliser l'apparence des ProgressBars dans toute une application.
+Le composant `ProgressBar` est livré avec des <JavadocLink type="foundation" location="com/webforj/component/Theme"> thèmes </JavadocLink> intégrés pour un stylisme rapide sans utiliser de CSS. Ces thèmes sont des styles prédéfinis qui peuvent être appliqués aux boutons pour modifier leur apparence et leur présentation visuelle. Ils offrent un moyen rapide et cohérent de personnaliser l'apparence des ProgressBars dans toute une application.
 
 <ComponentDemo 
 path='/webforj/progressbarthemes?' 
@@ -82,6 +80,6 @@ height='320px'
 ## Best practices {#best-practices}
 
 - **Utiliser des valeurs minimales et maximales appropriées** : Définissez les valeurs minimales et maximales pour refléter avec précision l'intervalle de la tâche.
-- **Mettre à jour le progrès régulièrement** : Mettez continuellement à jour la valeur de progression pour fournir un retour en temps réel aux utilisateurs.
-- **Utiliser l'état indéterminé pour des durées inconnues** : Utilisez l'état indéterminé pour des tâches dont la durée est imprévisible afin d'indiquer une progression en cours.
-- **Afficher du texte pour un meilleur retour d'information aux utilisateurs** : Affichez du texte sur la barre de progression pour offrir un contexte supplémentaire sur l'avancement de la tâche.
+- **Mettre à jour régulièrement le progrès** : Mettez continuellement à jour la valeur de progression pour fournir un retour d'information en temps réel aux utilisateurs.
+- **Utiliser l'état indéterminé pour des durées inconnues** : Utilisez l'état indéterminé pour les tâches dont les durées sont imprévisibles afin d'indiquer un progrès en cours.
+- **Afficher du texte pour un meilleur retour d'utilisateur** : Affichez du texte sur la barre de progression pour offrir un contexte supplémentaire sur l'avancement de la tâche.

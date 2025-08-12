@@ -1,15 +1,15 @@
 ---
 sidebar_position: 25
 title: Input Dialog
-_i18n_hash: ba46203db1b4c35878c6509a514a70e5
+_i18n_hash: 60c8f92b63b241996eda4f5a08df8027
 ---
-# Syöttödialogi
+# Input Dialog
 
 <DocChip chip='shadow' />
 <DocChip chip='since' label='24.02' />
 <JavadocLink type="foundation" location="com/webforj/component/optiondialog/InputDialog" top='true'/>
 
-`InputDialog` on modaalinen dialogi, joka on suunniteltu pyytämään käyttäjältä syötettä. Dialogi estää sovelluksen suorittamisen, kunnes käyttäjä antaa syötteen tai sulkee dialogin.
+`InputDialog` on on modaalinen dialogi, joka on suunniteltu pyytämään käyttäjältä syötettä. Dialogi estää sovelluksen suorituksen, kunnes käyttäjä antaa syötteen tai sulkee dialogin.
 
 <ComponentDemo 
 path='/webforj/inputdialogbasic?' 
@@ -19,36 +19,36 @@ height = '500px'
 
 ## Käytöt {#usages}
 
-`InputDialog` tarjoaa tavan pyytää syötettä käyttäjiltä, kuten tekstiä, numeroita tai muuta tietoa, varmistaen, että he antavat tarvittavat tiedot ennen kuin jatkavat.
+`InputDialog` tarjoaa tavan pyytää syötettä käyttäjiltä, ​​kuten tekstiä, numeroita tai muita tietoja, varmistaen, että he antavat tarvittavat tiedot ennen etenemistä.
 
 ## Tyypit {#types}
 
 ### Syöttötyypit {#input-types}
 
-`InputDialog` tukee eri tyyppisiä syöttökenttiä, jotka sallivat sinun mukauttaa syöttötapaa erityistarpeidesi mukaan:
+`InputDialog` tukee erilaisia syöttökenttätyyppejä, mikä mahdollistaa syöttötavan räätälöimisen erityisiin tarpeisiisi:
 
-1. **TEKSTI**: Vakiota yhden rivin tekstisyöttö.
+1. **TEKSTI**: Normaali yksirivinen tekstisyöttö.
 2. **SALASANA**: Salasanasyöttökenttä, joka piilottaa käyttäjän syötteen.
-3. **NUMERO**: Numero-syöttökenttä.
-4. **SÄHKÖPOSTI**: Syöttökenttä sähköpostiosoitteille.
-5. **URL**: Syöttökenttä URL-osoitteille.
-6. **HAKU**: Hakutekstisyöttökenttä.
-7. **PÄIVÄ**: Syöttökenttä päivämäärän valitsemiseksi.
-8. **AIKA**: Syöttökenttä ajan valitsemiseksi.
-9. **MUISTI_LOCAL**: Syöttökenttä paikallisen päivämäärän ja ajan valitsemiseksi.
+3. **NUMERO**: Numero syöttökenttä.
+4. **SÄHKÖPOSTI**: Syöttökenttä sähköpostiosoitteita varten.
+5. **URL**: Syöttökenttä URL-osoitteita varten.
+6. **HAKU**: Haku tekstisyöttökenttä.
+7. **PÄIVÄ**: Syöttökenttä päivien valitsemiseksi.
+8. **AIKA**: Syöttökenttä aikojen valitsemiseksi.
+9. **PAIKALLINEN_AIKAMÄÄRÄ**: Syöttökenttä paikallisen päivämäärän ja ajan valitsemiseksi.
 10. **VÄRI**: Syöttökenttä värin valitsemiseksi.
 
 ### Viestityyppi {#message-type}
 
 `InputDialog` tukee seuraavia viestityyppejä. Kun määrität tyypin, dialogi näyttää ikonin viestin vieressä, ja dialogin teema päivittyy webforJ-suunnittelujärjestelmän sääntöjen mukaisesti.
 
-1. `LAINEN`: Näyttää viestin ilman ikonia, käyttäen oletusteemaa.
-2. `VIRHE`: Näyttää virhekuvakkeen viestin vieressä virheteemalla.
-3. `KYSYMYS`: Näyttää kysymysmerkin ikonina viestin vieressä, käyttäen ensisijaista teemaa.
-4. `VAROITUS`: Näyttää varoituskuvakkeen viestin vieressä varoitusteemalla.
-5. `TIETO`: Näyttää infoikonin viestin vieressä, käyttäen info teemaa.
+1. `YKSINKERTAINEN`: Näyttää viestin ilman ikonia käyttäen oletusteemaa.
+2. `VIRHE`: Näyttää virheikoni viestin vieressä virheteemalla.
+3. `KYSYMYS`: Näyttää kysymysmerkin ikonina viestin vieressä, käyttäen ensisijaisteemaa.
+4. `VAROITUS`: Näyttää varoitusikoni viestin vieressä varoitusteemalla.
+5. `TIETO`: Näyttää tietoikonin viestin vieressä, käyttäen tietoteemaa.
 
-Seuraavassa esimerkissä käyttäjä pyytää syöttämään salasanansa päästäkseen sovellukseen. Jos kirjautuminen epäonnistuu, käyttäjältä pyydetään uudelleen.
+Alla olevassa esimerkissä käyttäjältä kysytään salasanansa syöttämistä päästäkseen sovellukseen. Jos kirjautuminen epäonnistuu, käyttäjältä kysytään uudelleen.
 
 <ComponentDemo 
 path='/webforj/inputdialogtype?' 
@@ -61,7 +61,7 @@ height = '350px'
 `InputDialog` palauttaa käyttäjän syötteen merkkijonona. Jos käyttäjä sulkee dialogin antamatta syötettä, tulos on `null`.
 
 :::important
-Tuloksena oleva merkkijono palautuu `show()`-menetelmästä tai vastaavasta `OptionDialog`-menetelmästä, kuten alla on esitetty. 
+Palautettu merkkijono palautetaan `show()`-menetelmästä tai vastaavasta `OptionDialog`-menetelmästä, kuten alla on esitetty. 
 :::
 
 ```java showLineNumbers
@@ -69,42 +69,42 @@ String result = OptionDialog.showInputDialog(
     "Ole hyvä ja syötä ikäsi:", "Ikäsyöttö", "", InputDialog.InputType.NUMBER);
 
 if (result != null) {
-    OptionDialog.showMessageDialog("Annoit: " + result, "Syöttö vastaanotettu");
+    OptionDialog.showMessageDialog("Annon: " + result, "Syöte vastaanotettu");
 } else {
-    OptionDialog.showMessageDialog("Ei syötettä vastaanotettu", "Syöttö peruutettu");
+    OptionDialog.showMessageDialog("Ei syötettä vastaanotettu", "Syöte peruutettu");
 }
 ```
 
 ## Oletusarvo {#default-value}
 
-`InputDialog` sallii sinun määrittää oletusarvon, joka näkyy syöttökentässä, kun dialogi näytetään. Tämä voi tarjota käyttäjille ehdotuksen tai aiemmin syötetyn arvon.
+`InputDialog` mahdollistaa oletusarvon määrittämisen, joka näkyy syöttökentässä, kun dialogi näytetään. Tämä voi tarjota käyttäjille ehdotuksen tai aiemmin syötetyn arvon.
 
 ```java showLineNumbers
 InputDialog dialog = new InputDialog(
-    "Ole hyvä ja syötä nimesi:", "Nimisyöttö", "John Doe", InputDialog.InputType.TEXT);
+    "Ole hyvä ja syötä nimesi:", "Nimesyöttö", "John Doe", InputDialog.InputType.TEXT);
 String result = dialog.show();
 ```
 
-## Aikaraja {#timeout}
+## Aikakatkaisu {#timeout}
 
-`InputDialog` sallii sinun asettaa aikarajan, jonka kuluttua dialogi sulkeutuu automaattisesti. Tämä ominaisuus on hyödyllinen ei-kriittisissä syötepyynnöissä tai toimissa, jotka eivät vaadi käyttäjän välitöntä vuorovaikutusta.
+`InputDialog` mahdollistaa aikakatkaisin kestoon asettamisen, jonka jälkeen dialogi sulkeutuu automaattisesti. Tämä ominaisuus on hyödyllinen ei-kriittisille syötepyynnöille tai toiminnoille, jotka eivät vaadi käyttäjän välitöntä vuorovaikutusta.
 
-Voit määrittää aikarajan dialogille käyttämällä `setTimeout(int timeout)`-menetelmää. Aikaraja on sekunteina. Jos määritetty aika kuluu ilman käyttäjän vuorovaikutusta, dialogi sulkeutuu automaattisesti.
+Voit määrittää dialogin aikakatkaisun käyttämällä `setTimeout(int timeout)`-menetelmää. Aikakatkaisun kesto on sekunteina. Jos määritetty aika umpeutuu ilman käyttäjän vuorovaikutusta, dialogi sulkeutuu automaattisesti.
 
 ```java showLineNumbers
 InputDialog dialog = new InputDialog(
-    "Ole hyvä ja syötä nimesi:", "Nimisyöttö", "John Doe");
+    "Ole hyvä ja syötä nimesi:", "Nimesyöttö", "John Doe");
 dialog.setTimeout(5);
 String result = dialog.show();
 
 OptionDialog.showMessageDialog(
-    "Annoit: " + result, "Syöttö vastaanotettu", "OK", MessageDialog.MessageType.INFO);
+    "Annon: " + result, "Syöte vastaanotettu", "OK", MessageDialog.MessageType.INFO);
 ```
 
-## Parhaat käytännöt {#best-practices}
+## Best practices {#best-practices}
 
-1. **Selkeät ja ytimekkäät kehotteet**: Varmista, että kehoteviesti selittää selvästi, mitä tietoa käyttäjältä pyydetään.
-2. **Sopivat syöttötyypit**: Valitse syöttötyypit, jotka vastaavat vaadittua tietoa varmistaaksesi tarkan ja relevantin käyttäjäsyötteen.
-3. **Loogiset oletusarvot**: Aseta oletusarvot, jotka tarjoavat hyödyllisiä ehdotuksia tai aikaisempia syötteitä käyttäjäsyötteen virtaviivaistamiseksi.
-4. **Käytä aikarajoja harkiten**: Aseta aikarajoja ei-kriittisille syötepyynnöille varmistaen, että käyttäjillä on tarpeeksi aikaa antaa tarvittavat tiedot.
-5. **Vältä liiallista käyttöä**: Käytä syöttödialogeita säästeliäästi käyttäjätyytyväisyyden välttämiseksi. Varreserve ne toimiin, jotka vaativat erityistä käyttäjäsyötettä.
+1. **Selkeät ja Ytimekkäät Kehotukset**: Varmista, että kehotusviesti selkeästi selittää, mitä tietoa käyttäjältä pyydetään.
+2. **Sopivat Syöttötyypit**: Valitse syöttötyypit, jotka vastaavat vaadittavaa tietoa varmistaaksesi tarkka ja asiaankuuluva käyttäjäsyöte.
+3. **Loogiset Oletusarvot**: Aseta oletusarvot, jotka tarjoavat hyödyllisiä ehdotuksia tai aiempia syötteitä käyttäjäsyötteen sujuvoittamiseksi.
+4. **Aikakatkaisun Huolellinen Käyttö**: Aseta aikakatkaisuja ei-kriittisille syötepyynnöille varmistaen, että käyttäjillä on tarpeeksi aikaa antaa vaadittavat tiedot.
+5. **Ylikäytön Vähentäminen**: Käytä syöttödialogeja säästeliäästi käyttäjien turhautumisen välttämiseksi. Varaudu niihin toimiin, jotka vaativat erityistä käyttäjäsyötettä.

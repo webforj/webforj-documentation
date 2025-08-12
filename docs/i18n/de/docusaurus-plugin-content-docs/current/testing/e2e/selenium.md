@@ -1,26 +1,26 @@
 ---
 sidebar_position: 3
 title: Testing with Selenium
-_i18n_hash: 5d2e4b04f794236d9a8ea2a32d50579b
+_i18n_hash: fe85942b4638ef9828b334ef986b4436
 ---
-Diese Dokumentation beschreibt den Prozess zum Testen von webforJ-Anwendungen mit Selenium, wobei der Fokus speziell auf der `HelloWorldView` aus dem `webforj-archetype-hello-world` liegt.
+Diese Dokumentation beschreibt den Prozess zum Testen von webforJ-Anwendungen mit Selenium, insbesondere fokussiert auf die `HelloWorldView` aus der `webforj-archetype-hello-world`.
 
-:::info App Grundlegendes
-Um mehr über das `webforj-archetype-hello-world` zu erfahren, lesen Sie den Abschnitt [App Grundlegendes Einführung](../../introduction/basics).
+:::info App Grundlagen
+Um mehr über die `webforj-archetype-hello-world` zu erfahren, lesen Sie den Abschnitt [Einführung in die App-Grundlagen](../../introduction/basics).
 :::
 
 ## Voraussetzungen {#prerequisites}
 
 Bevor Sie die Selenium-Tests ausführen, stellen Sie Folgendes sicher:
-- Die webforJ-Anwendung ist korrekt eingerichtet und auf Ihrem lokalen Server aktiv.
-- Sie haben folgende Software installiert:
+- Die webforJ-App ist korrekt eingerichtet und läuft auf Ihrem lokalen Server.
+- Sie haben Folgendes installiert:
   - Selenium Java-Bindings.
-  - Ein kompatibler WebDriver für Ihren Browser.
-  - Maven für die Projektabhängigkeiten.
+  - Einen kompatiblen WebDriver für Ihren Browser.
+  - Maven für Projektabhängigkeiten.
 
 ## Maven-Konfiguration {#maven-configuration}
 
-Fügen Sie die erforderlichen Abhängigkeiten in Ihre `pom.xml` für Selenium und andere Testbibliotheken hinzu:
+Fügen Sie die erforderlichen Abhängigkeiten in Ihrer `pom.xml` für Selenium und andere Testbibliotheken hinzu:
 
 ```xml title="pom.xml"
 <dependencies>
@@ -44,7 +44,7 @@ Fügen Sie die erforderlichen Abhängigkeiten in Ihre `pom.xml` für Selenium un
 
 ## Testbeispiel: `HelloWorldView` {#testing-example-helloworldview}
 
-Der folgende Code demonstriert einen auf Selenium basierenden Test für die `HelloWorldView`-Komponente.
+Der folgende Code demonstriert einen Selenium-basierten Test für die `HelloWorldView`-Komponente.
 
 ```java title="HelloWorldViewTest.java"
 package com.example.views;
@@ -93,32 +93,32 @@ class HelloWorldViewTest {
   @Test
   void shouldClickButton() {
     WebElement button = driver.findElement(By.tagName("dwc-button"));
-    assertEquals("Say Hello", button.getText(), "Button text mismatch!");
+    assertEquals("Say Hello", button.getText(), "Buttontext stimmt nicht überein!");
   }
 }
 ```
 
 ### Wichtige Schritte {#key-steps}
 
-1. **WebDriver Initialisieren**:
-   - Verwenden Sie [`WebDriverManager`](https://github.com/bonigarcia/webdrivermanager), um den Treiber ausführbar für den Browser automatisch zu verwalten.
+1. **WebDriver initialisieren**:
+   - Verwenden Sie [`WebDriverManager`](https://github.com/bonigarcia/webdrivermanager), um das Treiber-Executable für den Browser automatisch zu verwalten.
 
-2. **Testumgebung Einrichten**:
+2. **Testumgebung einrichten**:
    - Starten Sie den Testserver unter `http://localhost:<port>/`.
-   - Warten Sie, bis der Seitentitel mit dem erwarteten `webforJ Hello World` übereinstimmt.
+   - Warten Sie, bis der Seitentitel dem erwarteten `webforJ Hello World` entspricht.
 
-3. **Interaktion mit Elementen**:
-   - Lokalisieren Sie Elemente mithilfe von `By.tagName`, `By.id` oder anderen Selenium-Lokatoren.
-   - Überprüfen Sie erwartete Verhaltensweisen wie Button-Klicks oder Textänderungen.
-    
+3. **Mit Elementen interagieren**:
+   - Lokalisieren Sie Elemente mit `By.tagName`, `By.id` oder anderen Selenium-Selektoren.
+   - Überprüfen Sie erwartete Verhaltensweisen wie das Klicken auf Schaltflächen oder Textänderungen.
+
   :::info
-  Da webforJ eine Einzelseiten-Webanwendung produziert, ist Selenium sich nach dem initialen Laden der Seite nicht über DOM-Manipulationen bewusst. Sie können die [WebDriverWait API](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/WebDriverWait.html) von Selenium verwenden, um zu warten, bis das DOM kompiliert wurde.
+  Da webforJ eine einseitige Webanwendung produziert, ist Selenium sich nach dem Laden der ursprünglichen Seite nicht über DOM-Manipulationen bewusst. Sie können die [WebDriverWait API](https://www.selenium.dev/selenium/docs/api/java/org/openqa/selenium/support/ui/WebDriverWait.html) von Selenium verwenden, um zu warten, bis das DOM kompiliert ist.
   :::
 
-4. **Teardown**:
+4. **Bereinigung**:
    - Beenden Sie die WebDriver-Sitzung, um Ressourcen freizugeben.
 
-### Tests Ausführen {#running-tests}
+### Tests ausführen {#running-tests}
 
 1. Starten Sie den webforJ-Server:
    ```bash

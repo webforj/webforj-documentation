@@ -6,7 +6,7 @@ slug: tab
 description: A user guide article for the tab
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 0b43f610a9cc20d9f8319cb37be49239
+_i18n_hash: 9422652f8b0981a721f690fa890d3ee8
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -16,8 +16,8 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 
 <br />
 
-:::info ASIAKASKOMPONENTTI
-Tässä osiossa kuvataan **`<dwc-tab>`** komponentin tyylitietoja. Tämä komponentti on **vain asiakaspään** - sitä ei voi instansoida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
+:::info KLIENTTIKOMPONENTTI
+Tässä osiossa esitetään tyylitietoja **`<dwc-tab>`**-komponentille. Tämä komponentti on **vain asiakaspäätteessä** - sitä ei voi instansioida itsenäisesti API:n kautta, mutta se voi olla osa API-komponentteja.
 :::
 
 ## Tyylit {#styling}

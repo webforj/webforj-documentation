@@ -6,7 +6,7 @@ slug: splitter
 description: A user guide article for the splitter
 // pagination_prev: null
 // pagination_next: null
-_i18n_hash: 3149d07c9856a568b2fa90c5e8617d4c
+_i18n_hash: 7d271e88bf0f0136df4f3d99022e890e
 ---
 import TableBuilder from '@site/src/components/DocsTools/TableBuilder';
 import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
@@ -17,7 +17,7 @@ import DocChip from '@site/src/components/DocsTools/DocChip';
 <br />
 
 :::info CLIËNTCOMPONENT
-Deze sectie bevat stylinginformatie voor de **`<dwc-splitter>`** component. Deze component is **alleen aan de klantzijde** - hij kan niet op zichzelf worden geïnstantieerd via de API, maar kan deel uitmaken van API-componenten.
+Deze sectie biedt stylinginformatie voor de **`<dwc-splitter>`** component. Deze component is **alleen aan de clientzijde** - deze kan niet zelfstandig via de API worden geïnstantieerd, maar kan deel uitmaken van API-componenten.
 :::
 
 ## Styling {#styling}

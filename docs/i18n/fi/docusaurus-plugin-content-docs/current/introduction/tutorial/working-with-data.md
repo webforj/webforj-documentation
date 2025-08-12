@@ -1,15 +1,15 @@
 ---
 title: Working With Data
 sidebar_position: 3
-_i18n_hash: 3afbf6e4eb4921183cc11d87c8457150
+_i18n_hash: 42dff7cecf07f976ccbe007e04e78a22
 ---
-Tässä vaiheessa keskitytään datanhallinnan ja näyttömahdollisuuksien lisäämiseen demosovellukseen. Tätä varten luodaan keinotekoista tietoa eri `Customer`-objekteista, ja sovellusta päivitetään käsittelemään näitä tietoja ja näyttämään niitä [`Table`](../../components/table/overview), joka lisätään aiempaan sovellukseen.
+Tämä vaihe keskittyy tiedonhallinta- ja näyttökäskyjen lisäämiseen demon sovellukseen. Tätä varten luodaan testidataa eri `Customer`-objekteista, ja sovellusta päivitetään käsittelemään näitä tietoja ja esittämään niitä aiemmin lisättyyn [`Table`](../../components/table/overview) komponenttiin.
 
-Tässä vaiheessa luodaan `Customer`-malliluokka ja integroidaan se `Service`-luokan kanssa, jotta päästään käsiksi ja hallitaan tarvittavia tietoja käyttöliittymän kautta. Sen jälkeen käydään läpi, miten saatuja tietoja käytetään `Table`-komponentin toteuttamiseen sovelluksessa, jolloin asiakkaan tietoja näytetään interaktiivisessa ja rakenteellisessa muodossa.
+Tässä vaiheessa käsitellään `Customer`-malli-luokan luomista ja sen integroimista `Service`-luokkaan, jolla pääsee käsiksi ja hallitsemaan tarvittavaa dataa käyttäen varaston toteutusta. Lisäksi tarkennetaan, miten haettua dataa käytetään `Table`-komponentin toteuttamiseen sovelluksessa, esittäen asiakastietoja interaktiivisessa ja jäsennellyssä muodossa.
 
-Tämän vaiheen lopussa sovellus, joka on luotu [edellisessä vaiheessa](./creating-a-basic-app), näyttää taulukon luodusta datasta, jota voidaan kehittää seuraavissa vaiheissa. Sovelluksen suorittamiseksi:
+Tämän vaiheen lopussa aiemmin luotu sovellus [edellisessä vaiheessa](./creating-a-basic-app) esittää taulukon luodusta datasta, jota voidaan laajentaa seuraavissa vaiheissa. Sovelluksen käynnistämiseksi:
 
-- Siirry `2-working-with-data`-hakemistoon
+- Siirry `2-working-with-data` -hakemistoon
 - Suorita `mvn jetty:run`
 
 <!-- vale off -->
@@ -24,9 +24,9 @@ Tämän vaiheen lopussa sovellus, joka on luotu [edellisessä vaiheessa](./creat
 
 ## Datan mallin luominen {#creating-a-data-model}
 
-Jotta voit luoda `Table`-komponentin, joka näyttää tietoja päätösovelluksessa, tarvitaan Java-bean-luokka, jota voidaan käyttää `Table`:n kanssa tietojen näyttämiseen.
+Jotta voidaan luoda `Table`, joka esittää dataa pääsovelluksessa, on luotava Java bean -luokka, jota voidaan käyttää `Table`-komponentin kanssa datan esittämiseen.
 
-Tässä ohjelmassa `Customer`-luokka `src/main/java/com/webforj/demos/data/Customer.java` tekee tämän. Tämä luokka toimii sovelluksen keskeisenä datamallina, kapseloinnin asiakasta koskevat attribuutit, kuten `firstName`, `lastName`, `company` ja `country`. Tämä malli sisältää myös ainutlaatuisen ID:n.
+Tässä ohjelmassa `Customer`-luokka tiedostossa `src/main/java/com/webforj/demos/data/Customer.java` tekee tämän. Tämä luokka toimii sovelluksen ydintietomallina, kapseloiden asiakastietoihin liittyvät attribuutit, kuten `firstName`, `lastName`, `company` ja `country`. Tämä malli sisältää myös ainutlaatuisen tunnisteen.
 
 ```java title="Customer.java"
 public class Customer implements HasEntityKey {
@@ -41,7 +41,7 @@ public class Customer implements HasEntityKey {
     @SerializedName("Germany")
     GERMANY,
 
-    // Jäljellä olevat maat
+    // Jäännösmaat
   }
 
     // Getterit ja setterit
@@ -53,28 +53,28 @@ public class Customer implements HasEntityKey {
 }
 ```
 
-:::info `HasEntityKey`:n käyttäminen ainutkertaisille tunnisteille
+:::info `HasEntityKey` ainutlaatuisten tunnisteiden hallintaan
 
-`HasEntityKey`-rajapinnan toteuttaminen on ratkaisevan tärkeää, jotta mallit, joita käytetään `Table`:n kanssa, voivat hallita ainutlaatuisia tunnisteita. Se varmistaa, että jokaisella mallin instanssilla on ainutkertainen avain, jolloin `Table` voi tehokkaasti tunnistaa ja hallita rivejä.
+`HasEntityKey`-rajapinnan toteuttaminen on keskeistä mallien ainutlaatuisten tunnisteiden hallinnassa, joita käytetään `Table`-komponentin kanssa. Se varmistaa, että jokaisella mallin instanssilla on ainutlaatuinen avain, mikä mahdollistaa `Table`-komponentin tunnistavan ja hallitsevan rivejä tehokkaasti.
 
-Tässä demossa `getEntityKey()`-metodi palauttaa UUID:n jokaiselle asiakkaalle, mikä varmistaa ainutkertaisen tunnistamisen. Vaikka UUID:ita käytetään täällä yksinkertaisuuden vuoksi, todellisissa sovelluksissa tietokannan ensisijainen avain on usein parempi vaihtoehto ainutkaisten avainten luomiseksi.
+Tässä demon esimerkissä `getEntityKey()`-metodi palauttaa UUID:n jokaiselle asiakkaalle, varmistaen ainutlaatuisen tunnistamisen. Vaikka UUID:itä käytetäänkin tässä yksinkertaisuuden vuoksi, oikeissa sovelluksissa tietokannan pääavain on usein parempi vaihtoehto ainutlaatuisten avainten luomiseen.
 
-Jos `HasEntityKey`:ta ei toteuteta, `Table` käyttää oletusarvoisesti Java:n hash-koodia avaimena. Koska hash-koodit eivät takaa ainutlaatuisuutta, tämä voi aiheuttaa konflikteja `Table`:n rivien hallinnassa.
+Jos `HasEntityKey` ei ole toteutettu, `Table` käyttää oletuksena Java-hash-koodia avaimena. Koska hash-koodit eivät takaa ainutlaatuisuutta, tämä voi aiheuttaa ristiriitoja hallittaessa rivejä `Table`-komponentissa.
 :::
 
-Kun `Customer`-datamalli on paikallaan, seuraava vaihe on hallita ja järjestää näitä malleja sovelluksessa.
+Kun `Customer`-datamalli on paikoillaan, seuraava vaihe on hallita ja järjestää näitä malleja sovelluksessa.
 
 ## `Service`-luokan luominen {#creating-a-service-class}
 
-Keskitettyä tietojen hallintaa varten `Service`-luokka ei vain lataa `Customer`-tietoja, vaan myös tarjoaa tehokkaan käyttöliittymän pääsyyn ja vuorovaikutukseen niiden kanssa.
+Keskitettynä datanhallintana `Service`-luokka ei vain lataa `Customer`-dataa, vaan myös tarjoaa tehokkaan käyttöliittymän sen saamiseksi ja käsittelemiseksi.
 
-`Service.java`-luokka luodaan `src/main/java/com/webforj/demos/data`-hakemistoon. Sen sijaan, että tietoja siirrettäisiin manuaalisesti komponenttien tai luokkien välillä, `Service` toimii jaettuna resurssina, jolloin kiinnostuneet osapuolet voivat helposti noutaa ja käsitellä tietoja.
+`Service.java`-luokka luodaan tiedostoon `src/main/java/com/webforj/demos/data`. Sen sijaan, että dataa kuljetettaisiin manuaalisesti komponenttien tai luokkien välillä, `Service` toimii jaettuna resurssina, mikä mahdollistaa asianomaisten tahojen hankkia ja käsitellä dataa helposti.
 
-Tässä demossa `Service`-luokka lukee asiakastietoja JSON-tiedostosta, joka sijaitsee `src/main/resources/data/customers.json`. Tiedot kartoitetaan `Customer`-objekteiksi ja tallennetaan `ArrayList`-tietorakenteeseen, joka muodostaa perustan taulukon `Repository`:lle.
+Tässä demon esimerkissä `Service`-luokka lukee asiakastietoja JSON-tiedostosta, joka sijaitsee kohdassa `src/main/resources/data/customers.json`. Data kartutetaan `Customer`-objekteille ja tallennetaan `ArrayList`-tietorakenteeseen, joka muodostaa perustan taulukon `Repository`-komponentille.
 
-webforJ:ssä `Repository`-luokka tarjoaa rakenteellisen tavan hallita ja noutaa kokoelmia entiteeteistä. Se toimii rajapintana sovelluksen ja sen tietojen välillä ja tarjoaa menetelmiä tietojen kyselyyn, laskentaan ja päivittämiseen säilyttäen samalla puhtaan ja johdonmukaisen rakenteen. Sitä käyttää `Table`-luokka tietojen näyttämiseen, jotka on tallennettu sisälle.
+webforJ:ssa `Repository`-luokka tarjoaa jäsennellyn tavan hallita ja noutaa kokoelmia entiteeteistä. Se toimii rajapintana sovelluksesi ja sen datan välillä, tarjoten menetelmiä kyselyjen suorittamiseen, laskemiseen ja datan päivittämiseen samalla kun se ylläpitää siistiä ja johdonmukaista rakennetta. Sitä käyttää `Table`-luokka esittääkseen siellä tallennettua dataa.
 
-Vaikka `Repository`-luokassa ei ole menetelmiä entiteettien päivittämiseen tai poistamiseen, se toimii rakenteellisena kääreenä objektikokoelman ympärillä. Tämä tekee siitä ihanteellisen tarjoamaan organisoitua ja tehokasta tietojen käyttöä.
+Vaikka `Repository` ei sisällä menetelmiä entiteettien päivittämiseen tai poistamiseen, se toimii jäsenneltynä kääreenä kokoelmaobjekteista. Tämä tekee siitä ihanteellisen tarjoamaan järjestettyä ja tehokasta datan saatavuutta.
 
 ```java
 public class Service {
@@ -86,20 +86,20 @@ public class Service {
     repository = new CollectionRepository<>(data);
   }
 
-  //Jäljellä oleva toteutus
+  // Jäljelle jäävä toteutus
 }
 ```
 
-Jotta `Repository` saadaan täytettyä tiedoilla, `Service`-luokka toimii keskeisenä hallitsijana, joka huolehtii resurssien lataamisesta ja järjestämisestä sovelluksessa. Asiakastiedot luetaan JSON-tiedostosta ja kartoitellaan `Customer`-objekteihin `Repository`:ssä.
+`Repository`-komponentin täyttämiseksi dataa `Service`-luokka toimii keskitettynä hallintona, joka huolehtii varastojen lataamisesta ja järjestämisestä sovelluksessa. Asiakastiedot luetaan JSON-tiedostosta ja kartoitetaan `Customer`-objekteiksi `Repository`:ssä.
 
-webforJ:ssä `Assets`-työkalu helpottaa tämän datan dynaamista lataamista kontekstin URL-osoitteita käyttäen. Esimerkiksi asiakastiedot voidaan ladata JSON-tiedostosta seuraavasti:
+`Assets`-apuväline webforJ:ssa helpottaa tämän datan dynaamista lataamista käyttämällä kontekstiosoitteita. Datan ja resurssien lataamiseksi webforJ:ssa `Service`-luokka käyttää kontekstiosoitteita yhdessä `Assets`-apuvälineen kanssa. Esimerkiksi asiakastiedot voidaan ladata JSON-tiedostosta seuraavasti:
 
 ```java
 String content = Assets.contentOf(Assets.resolveContextUrl("context://data/customers.json"));
 ```
 
-:::tip Käyttäen `ObjectTable`:ta
-`Service`-luokka käyttää `ObjectTable`:ta hallitsemaan instansseja dynaamisesti sen sijaan, että luottaisi staattisiin kenttiin. Tämä lähestymistapa ratkaisee tärkeän rajoituksen, kun käytetään servlettejä: staattiset kentät ovat sidottuja palvelimen elinkaareen ja voivat aiheuttaa ongelmia ympäristöissä, joissa on useita pyyntöjä tai samanaikaisia istuntoja. `ObjectTable` on sidottu käyttäjäistuntoon, ja sen käyttäminen varmistaa yksinäisen kaltaisen käyttäytymisen ilman näitä rajoituksia, mikä mahdollistaa johdonmukaisen ja skaalautuvan tietojen hallinnan.
+:::tip `ObjectTable`-komponentin käyttäminen
+`Service`-luokka käyttää `ObjectTable`-komponenttia hallitsemaan instansseja dynaamisesti sen sijaan, että luottaisi staattisiin kenttiin. Tämä lähestymistapa ratkaisee keskeisen rajoituksen servlet-toteutuksissa: staattiset kentät liittyvät palvelimen elinkaareen ja voivat aiheuttaa ongelmia ympäristöissä, joissa on useita pyyntöjä tai samanaikaisia istuntoja. `ObjectTable` on rajattu käyttäjän istuntoon, ja sen käyttäminen varmistaa singleton-tyyppisen toiminnan ilman näitä rajoituksia, mahdollistaen johdonmukaisen ja skaalautuvan datan hallinnan.
 :::
 
 ```java title="Service.java"
@@ -113,7 +113,7 @@ public class Service {
     // toteutus
   }
 
-  // Noutaa nykyisen instanssin Service:sta tai luo uuden, jos sitä ei ole
+  // Palauttaa nykyisen Service-instanssin tai luo uuden, jos sitä ei ole olemassa
   public static Service getCurrent() {
     // toteutus
   }
@@ -127,66 +127,66 @@ public class Service {
 }
 ```
 
-## `Table`-komponentin luominen ja käyttäminen {#creating-and-using-a-table}
+## `Table`-komponentin luominen ja käyttö {#creating-and-using-a-table}
 
-Nyt kun tarvittavat tiedot on oikeaoppisesti luotu `Customer`-luokan kautta ja ne voidaan palauttaa `Repository`:n kautta `Service`-luokasta, tämän vaiheen viimeinen tehtävä on integroida `Table`-komponentti sovellukseen asiakastietojen näyttämiseksi.
+Nyt kun tarvittava data on luotu kunnolla `Customer`-luokan avulla ja se voidaan palauttaa `Repository`-tietorakenteena `Service`-luokasta, viimeinen tehtävä tässä vaiheessa on integroida `Table`-komponentti sovellukseen asiakastietojen näyttämiseksi.
 
-:::tip Lisätietoja `Table`:sta
-Yksityiskohtaisemman yleiskuvan `Table`:n erilaisista ominaisuuksista ja käyttäytymisistä löydät [tästä artikkelista](../../components/table/overview).
+:::tip Lisätietoa `Table`-komponentista
+Yksityiskohtaisemman yleiskatsauksen `Table`-komponentin eri ominaisuuksista ja käytöksistä katso [tämä artikkeli](../../components/table/overview).
 :::
 
-`Table` tarjoaa dynaamisen ja joustavan tavan näyttää jäsentynyttä dataa sovelluksessa. Se on suunniteltu toimimaan `Repository`-luokan kanssa, mahdollistaen ominaisuuksia kuten tietojen kyselyn, sivutuksen ja tehokkaat päivitykset. `Table` on erittäin konfiguroitavissa, jolloin voit määrittää sarakkeet, hallita sen ulkoasua ja sitoa sen tietovarastoihin vaivattomasti.
+`Table` tarjoaa dynaamisen ja joustavan tavan näyttä datan sovelluksessa. Se on suunniteltu integroitavaksi `Repository`-luokan kanssa, mahdollistaen ominaisuudet kuten datan kysely, sivuuttaminen ja tehokkaat päivitykset. `Table` on erittäin konfiguroitava, mikä mahdollistaa sarakkeiden määrittämisen, sen ulkoasun hallinnan ja datavarastojen sitomisen vaivattomasti.
 
-### `Table`:n toteuttaminen sovelluksessa {#implementing-the-table-in-the-app}
+### `Table`-komponentin toteuttaminen sovelluksessa {#implementing-the-table-in-the-app}
 
-Koska `Table`:n tiedot käsitellään täysin `Service`-luokan kautta, päätehtävä `DemoApplication.java`:ssa on konfiguroida `Table` ja liittää se `Repository`:n, jonka `Service` tarjoaa.
+Koska `Table`-komponentin dataa käsitellään täysin `Service`-luokan kautta, päätehtävä `DemoApplication.java`-tiedostossa on konfiguroida `Table` ja liittää se `Repository`:n kanssa, jonka `Service` tarjoaa.
 
-`Table`:n konfiguroimiseksi:
+`Table`-komponentin konfiguroimiseksi:
 
-- Aseta sen leveys ja korkeus asettelua varten `setHeight()` ja `setWidth()`-menetelmien avulla.
-- Määritä sarakkeet, tarkentamalla niiden nimet ja menetelmät, joilla kukin tieto noudetaan.
-- Määritä `Repository`, josta tiedot saadaan dynaamisesti.
+- Aseta sen leveys ja korkeus asettelutarkoituksiin käyttäen `setHeight()` ja `setWidth()` menetelmiä.
+- Määritä sarakkeet, jolloin kerrotaan niiden nimet ja metodit, joista kukin data haetaan.
+- Määritä `Repository`, joka tarjoaa dynaamista dataa.
 
-Kun tämä on tehty, koodi näyttää seuraavilta:
+Tämän jälkeen koodi näyttää seuraavanlaiselta:
 
 ```java title="DemoApplication.java"
 public class DemoApplication extends App {
-  // Muut komponentit ensimmäisestä vaiheesta
+  // Muita komponentteja ensimmäisestä vaiheesta
 
-  // Table-komponentti asiakastietojen näyttämistä varten
-  Table<Customer> table = new Table<>(); 
+  // Taulukkoasiakastietojen esittämiseksi
+  Table<Customer> table = new Table<>();
 
   @Override
   public void run() throws WebforjException {
-    // Aikaisempi toteutus ensimmäisestä vaiheesta
+    // Edellisen vaiheen toteutus
     buildTable();
     mainFrame.add(demo, btn, table);
   }
 
   private void buildTable() {
-    // Aseta taulukon korkeus 300 pikseliin
+    // Aseta taulukon korkeus 300 pikseliksi
     table.setHeight("300px");
-    // Aseta taulukon leveys 1000 pikseliin
+    // Aseta taulukon leveys 1000 pikseliksi
     table.setWidth(1000);
 
-    // Lisää erilaiset sarakeotsikot ja määritä asianmukaiset getterit
+    // Lisää erilaisia sarakeotsikoita ja määritä vastaavat getterit
     table.addColumn("First Name", Customer::getFirstName);
     table.addColumn("Last Name", Customer::getLastName);
     table.addColumn("Company", Customer::getCompany);
     table.addColumn("Country", Customer::getCountry);
 
-    // Sitouta Table Repositoryyn, joka sisältää asiakastiedot
-    // Repository noudetaan Service-luokan kautta
+    // Sidotaan Table `Repository`:n avulla, joka sisältää asiakastiedot
+    // Repository haetaan Service-luokan kautta
     table.setRepository(Service.getCurrent().getCustomers());
   }
 }
 ```
 
-Kun sovelluksen muutokset on toteutettu, seuraavat vaiheet tapahtuvat sovelluksen käynnistyessä:
+Kun sovellukseen on tehty tarvittavat muutokset, seuraavat vaiheet tapahtuvat, kun sovellus suoritetaan:
 
-1. `Service`-luokka noutaa asiakastiedot JSON-tiedostosta ja tallentaa ne `Repository`:hin.
-2. `Table` integroidaan `Repository`:hin datan näyttämiseksi ja täyttää rivinsä dynaamisesti.
+1. `Service`-luokka noutaa `Customer`-datan JSON-tiedostosta ja tallentaa sen `Repository`:hen.
+2. `Table` integroi `Repository`:n datan ja täyttää rivinsä dynaamisesti.
 
-Nyt kun `Table` näyttää asiakastietoja, seuraava askel keskittyy uuden näkymän luomiseen asiakastietojen muokkaamiseksi ja reitityksen integroimiseksi sovellukseen.
+Nyt kun `Table` esittää `Customer`-dataa, seuraava vaihe tulee keskittymään uuden näkymän luomiseen asiakastietojen muokkaamista varten ja reitityksen integroimiseen sovellukseen.
 
-Tämä mahdollistaa sovelluksen logiikan organisoimisen tehokkaammin siirtämällä sen pois pääasiallisesta `App`-luokasta ja osiin, joihin pääsee käsiksi reittien kautta.
+Tämä mahdollistaa sovelluksen logiikan järjestämisen tehokkaammin siirtämällä sen pää `App`-luokasta ja reitittämään käsittelee sitä eri näytöissä.

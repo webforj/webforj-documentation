@@ -1,9 +1,9 @@
 ---
 title: Debugging
 sidebar_position: 1
-_i18n_hash: fc63d32dc6c8e48192a28f100c29943e
+_i18n_hash: d296f9a16ac6e5962b6962aa55e98a52
 ---
-Le débogage est une partie essentielle du développement Java, aidant les développeurs à identifier et à corriger les problèmes efficacement. Ce guide explique comment configurer le débogage dans webforJ pour Visual Studio Code, IntelliJ IDEA et Eclipse.
+Le débogage est une partie essentielle du développement Java, aidant les développeurs à identifier et corriger les problèmes de manière efficace. Ce guide explique comment configurer le débogage dans webforJ pour Visual Studio Code, IntelliJ IDEA et Eclipse.
 
 <Tabs>
 <TabItem value="vscode" label="Visual Studio Code">
@@ -47,10 +47,10 @@ Le débogage est une partie essentielle du développement Java, aidant les déve
 </div>
 
 1. Ouvrez votre projet dans IntelliJ IDEA.
-2. Accédez à Exécuter → Modifier les configurations.
+2. Allez à Exécuter → Éditer les configurations.
 3. Cliquez sur le bouton <kbd>+</kbd> et sélectionnez Débogage JVM à distance.
 4. Définissez l'hôte sur `localhost` et le port sur `8000`.
-5. Enregistrez la configuration et cliquez sur Déboguer pour vous attacher à l'application en cours d'exécution.
+5. Enregistrez la configuration et cliquez sur Déboguer pour vous connecter à l'application en cours d'exécution.
 
 </TabItem>
 <TabItem value="eclipse" label="Eclipse">
@@ -62,7 +62,7 @@ Le débogage est une partie essentielle du développement Java, aidant les déve
 </div>
 
 1. Ouvrez votre projet dans Eclipse.
-2. Allez dans Exécuter → Modifier les configurations.
+2. Allez à Exécuter → Éditer les configurations.
 3. Sélectionnez Application Java à distance.
 4. Cliquez sur Nouvelle configuration et définissez :
    - Hôte : `localhost`
@@ -72,7 +72,7 @@ Le débogage est une partie essentielle du développement Java, aidant les déve
 </TabItem>
 </Tabs>
 
-## Exécuter le débogueur {#running-the-debugger}
+## Exécution du débogueur {#running-the-debugger}
 
 Une fois que vous avez configuré votre IDE :
 
@@ -80,7 +80,7 @@ Une fois que vous avez configuré votre IDE :
 2. Exécutez la configuration de débogage dans votre IDE.
 3. Définissez des points d'arrêt et commencez le débogage.
 
-:::tip Conseils de débogage
+:::tip Astuces de débogage
 1. Assurez-vous que le port 8000 est disponible et n'est pas bloqué par un pare-feu.
 2. Si vous utilisez l'un des archétypes webforJ et que vous avez changé le numéro de port dans le fichier pom.xml, assurez-vous que le port utilisé pour le débogage correspond à la valeur mise à jour.
 :::

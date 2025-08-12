@@ -3,10 +3,10 @@ sidebar_position: 1000
 title: Glossary
 sidebar_class_name: sidebar--item__hidden
 slug: glossary
-_i18n_hash: 3c6937fc1123688d8e861b2cba017f95
+_i18n_hash: 2dcc01ead4b8eb721d020a17c8c95a26
 ---
 ## Shadow DOM {#shadow-dom}
 
-Shadow DOM ist ein Webstandard, der die Kapselung des DOM (Document Object Model) und CSS innerhalb eines bestimmten Elements, bekannt als der Schattenbaum, ermöglicht. Dieses isolierte DOM und CSS sind vom Hauptdokument-DOM getrennt, wodurch effektiv eine geschlossene Grenze für die Komponente geschaffen wird. Shadow DOM hilft, eigenständige, wiederverwendbare Webkomponenten zu erstellen, die zu einer Webseite hinzugefügt werden können, ohne sich um Konflikte mit anderen Stilen und Skripten auf der Seite sorgen zu müssen.
+Shadow DOM ist ein Webstandard, der die Kapselung des DOM (Document Object Model) und CSS innerhalb eines bestimmten Elements, bekannt als der Schattenbaum, ermöglicht. Dieses isolierte DOM und CSS sind getrennt vom Hauptdokument-DOM und schaffen effektiv eine abgegrenzte Grenze für die Komponente. Shadow DOM hilft dabei, eigenständige, wiederverwendbare Webkomponenten zu erstellen, die zu einer Webseite hinzugefügt werden können, ohne sich um Konflikte mit anderen Stilen und Skripten auf der Seite kümmern zu müssen.
 
-Es führt auch Funktionen wie Schattenparts und Slots ein, die Entwicklern ermöglichen, bestimmte Teile des Schattenbaums zur Anpassung durch die übergeordnete Seite freizugeben. Dies bietet eine flexible Methode, um Inhalte in die Komponente einzufügen und ihr Erscheinungsbild anzupassen, während die Kapselung gewahrt bleibt.
+Es führt auch Funktionen wie Schattenparts und Slots ein, die es Entwicklern ermöglichen, bestimmte Teile des Schattenbaums für die Anpassung durch die übergeordnete Seite freizugeben. Dies bietet eine flexible Möglichkeit, Inhalte in die Komponente zu übergeben und ihr Erscheinungsbild anzupassen, während die Kapselung aufrechterhalten wird.

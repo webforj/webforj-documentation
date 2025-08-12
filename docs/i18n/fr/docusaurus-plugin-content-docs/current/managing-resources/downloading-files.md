@@ -1,13 +1,13 @@
 ---
 sidebar_position: 3
 title: Downloading Files
-_i18n_hash: 49bec97825977b7d05e97522debfa0d8
+_i18n_hash: 013e64888b44110c108f80adf492be10
 ---
 webforJ fournit des méthodes pour initier des téléchargements de fichiers, facilitant ainsi la livraison de fichiers aux utilisateurs via le navigateur. La <JavadocLink type="foundation" location="com/webforj/Page" code='true'>classe Page</JavadocLink> offre plusieurs façons de télécharger des fichiers, qu'ils proviennent de flux d'entrée, de tableaux d'octets, de fichiers physiques ou de ressources.
 
-## Télécharger des fichiers en utilisant `InputStream` {#downloading-files-using-inputstream}
+## Télécharger des fichiers à l'aide de `InputStream` {#downloading-files-using-inputstream}
 
-La <JavadocLink type="foundation" location="com/webforj/Page" code='true' suffix='#download(java.io.InputStream,java.lang.String)'>méthode download(InputStream inputStream, String fileName)</JavadocLink> permet d'envoyer un fichier au client en utilisant un flux d'entrée. Cela est particulièrement utile lorsque le contenu du fichier est généré dynamiquement ou lu à partir d'une source externe.
+La <JavadocLink type="foundation" location="com/webforj/Page" code='true' suffix='#download(java.io.InputStream,java.lang.String)'>méthode download(InputStream inputStream, String fileName)</JavadocLink> vous permet d'envoyer un fichier au client en utilisant un flux d'entrée. Cela est particulièrement utile lorsque le contenu du fichier est généré dynamiquement ou lu à partir d'une source externe.
 
 ```java
 InputStream inputStream = new FileInputStream("path/to/sample.pdf");
@@ -17,7 +17,7 @@ Page.getCurrent().download(inputStream, "sample.pdf");
 - **inputStream** : Le flux d'entrée représentant le contenu du fichier.
 - **fileName** : Le nom sous lequel le fichier sera téléchargé par le client.
 
-## Télécharger des fichiers en utilisant des tableaux d'octets {#downloading-files-using-byte-arrays}
+## Télécharger des fichiers à l'aide de tableaux d'octets {#downloading-files-using-byte-arrays}
 
 La <JavadocLink type="foundation" location="com/webforj/Page" code='true' suffix='#download(byte%5B%5D,java.lang.String)'>méthode download(byte[] content, String fileName)</JavadocLink> permet de télécharger des fichiers en utilisant un tableau d'octets qui représente le contenu du fichier. Cette méthode est utile lorsque le contenu du fichier est généré ou traité en mémoire.
 
@@ -39,7 +39,7 @@ Page.getCurrent().download(file, "image.png");
 ```
 
 ```java
-// Dans ce cas, le nom original du fichier sera utilisé pour le téléchargement.
+// Dans ce cas, le nom de fichier original sera utilisé pour le téléchargement.
 Page.getCurrent().download(new File("path/to/report.pdf"));
 ```
 

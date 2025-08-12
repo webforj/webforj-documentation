@@ -2,7 +2,7 @@
 title: Tabs
 sidebar_position: 2
 hide_table_of_contents: true
-_i18n_hash: ba161760eed1006a71d42f2d566aff54
+_i18n_hash: bd6e6de9bb8396f7926e01ac2f34cfc3
 ---
 <Head>
   <style>{`
@@ -12,31 +12,31 @@ _i18n_hash: ba161760eed1006a71d42f2d566aff54
   `}</style>
 </Head>
 
-# Välilehtien arkkityyppi
+# Välilehdet arkkityyppi
 
-`tabs` -aloitusprojekti tuottaa sovelluksen, jossa on yksinkertainen välilehtiliittymä. Ihanteellinen projekteille, jotka vaativat useita näkymiä tai osioita, jotka ovat saatavilla välilehtien kautta, tämä arkkityyppi tarjoaa tehokkaan ja järjestäytyneen tavan hallita sovelluksen eri osia, mikä tekee navigoinnista helppoa ilman käyttäjäliittymän tukkeutumista.
+Välilehdet-starter-projekti luo sovelluksen, jossa on yksinkertainen välilehtikäyttöliittymä. Ihanteellinen projekteihin, jotka vaativat useita näkymiä tai osioita, joihin pääsee nopeasti välilehtien avulla. Tämä arkkityyppi tarjoaa siistin ja järjestäytyneen tavan hallita sovelluksesi eri osia, mikä helpottaa navigointia eri osioiden välillä ilman käyttöliittymän kaaosta.
 
 :::tip Käyttäen startforJ
-Jos tarvitset enemmän hallintaa muokkaamiseen ja konfigurointiin, voit käyttää [startforJ](https://docs.webforj.com/startforj/) -sovelluksen luomiseen - valitse vain `Tabs` -arkkityyppi valitessasi konfigurointi vaihtoehtoja.
+Jos haluat enemmän hallintaa mukauttamiseen ja konfigurointiin, voit käyttää [startforJ](https://docs.webforj.com/startforj/) -työkalua projektisi luomiseen - valitse vain `Tabs` arkkityyppi, kun valitset konfigurointivaihtoehtoja.
 :::
 
-## Välilehtien arkkityypin käyttäminen {#using-the-tabs-archetype}
+## Välilehdet-arkkityypin käyttö {#using-the-tabs-archetype}
 
 <ComponentArchetype
 project="tabs"
 />
 
-## Sovelluksen suorittaminen {#running-the-app}
+## Sovelluksen ajaminen {#running-the-app}
 
-Ennen sovelluksesi suorittamista asenna [esivaatimukset](../../introduction/prerequisites), jos et ole vielä tehnyt niin. 
+Ennen kuin ajat sovellustasi, asenna [esivaatimukset](../../introduction/prerequisites), jos et ole vielä tehnyt niin. 
 Siirry sitten projektin juurihakemistoon ja suorita seuraava komento:
 
 ```bash
-# tavanomaiselle webforJ-sovellukselle
+# standardi webforJ-sovellus
 mvn jetty:run
 
-# webforJ + Spring Bootille
+# webforJ + Spring Boot
 mvn spring-boot:run
 ```
 
-Kun palvelin on käynnissä, avaa selain ja siirry osoitteeseen [http://localhost:8080](http://localhost:8080) nähdäksesi sovelluksen.
+Kun palvelin on käynnissä, avaa selain ja siirry osoitteeseen [http://localhost:8080](http://localhost:8080), jotta voit katsella sovellusta.

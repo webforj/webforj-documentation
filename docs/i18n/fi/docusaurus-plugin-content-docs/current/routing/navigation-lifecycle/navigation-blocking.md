@@ -1,17 +1,17 @@
 ---
 sidebar_position: 3
 title: Navigation Blocking
-_i18n_hash: c0d79c6ce266eb4b9f9fd28915dcc380
+_i18n_hash: a08d56654914719e12d1401d263c7956
 ---
-Navigoinnin esto lisää yhden tai useamman ohjaustason koko taustalla olevaan reitittimeen. Jos mitään estäviä käsittelijöitä on läsnä, navigointi estetään seuraavasti:
+Navigointia estävä lisää yhden tai useamman kerroksen hallintaa koko taustalla olevalle reititin-API:lle. Jos estäviä käsittelijöitä on läsnä, navigointi estetään seuraavasti:
 
-Jos navigointi laukaistaan jollain reitittimen tasolla ohjatulla asiatapahtumalla, voit suorittaa tehtäviä tai näyttää käyttöliittymäilmoituksen käyttäjälle toimenpiteen vahvistamiseksi. Jokainen komponentti, joka toteuttaa `WillLeaveObserver` [reitinhierarkiassa](../route-hierarchy/overview), kutsutaan. Toteuttajan on kutsuttava `accept` jatkaakseen navigointia tai `reject` estääkseen sen. Jos useampi komponentti toteuttaa `WillLeaveObserver` reitin puussa, estokäsittelyt suoritetaan peräkkäin käänteisessä järjestyksessä.
+Jos navigointi laukaistaan jollakin reitittimen tasolla hallitulla toiminnolla, voit suorittaa minkä tahansa tehtävän tai näyttää käyttäjälle käyttöliittymäkehotteen toiminnon vahvistamiseksi. Jokainen komponentti, joka toteuttaa `WillLeaveObserver`-sovelluksen [reitinhierarkiassa](../route-hierarchy/overview), kutsutaan. Toteuttajan on kutsuttava `accept` jatkaakseen navigointia tai `reject` estääkseen sen. Jos useampi komponentti toteuttaa `WillLeaveObserver` reitin puussa, estokäsittelijät suoritetaan peräkkäin käänteisessä järjestyksessä
 
-:::info Käytännön esimerkki estokäsittelystä  
-Katso, kuinka estäminen toimii käytännössä, viittaamalla [Käyttöliittymäelämän havainnoijien esimerkit](observers#example-handling-unsaved-changes-with-willleaveobserver)  
+:::info Käytännön esimerkki estotoiminnasta
+Jos haluat nähdä, miten estäminen toimii käytännössä, tutustu [Käyttöliittymän elinkaaren tarkastajien esimerkkeihin](observers#example-handling-unsaved-changes-with-willleaveobserver)
 :::
 
-Sivutapahtumille, joita ei voida hallita suoraan, reititin ei häiritse eikä pakota erityistä toimintaa. Kehittäjät voivat silti kuunnella [`beforeunload`](https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event) -tapahtumaa tehdäkseen viimeisen yrityksen varoittaa käyttäjää tallentamattomista tiedoista, jos se on tarpeen.
+Sivutapahtumille, joita ei voida hallita suoraan, reititin ei puutu tai pakota tiettyä käyttäytymistä. Kehittäjät voivat kuitenkin edelleen kuunnella [`beforeunload`](https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event) -tapahtumaa tehdäksesi viimeisen yrityksen varoittaa käyttäjää tallentamattomasta datasta, jos se on tarpeen.
 
 ```java
 PageEventOptions options = new PageEventOptions();
@@ -22,6 +22,6 @@ options.setCode("""
 Page.getCurrent().addEventListener("beforeunload", e -> {}, options);
 ```
 
-## Selaimen takaisinpainike {#browser-back-button}
+## Selaimen takapainike {#browser-back-button}
 
-Takaisinpainike toimii verkkosovellusten hallinnan ulkopuolella, mikä tekee sen toiminnan keskeyttämisestä tai estämisestä haastavaa kaikissa selaimissa johdonmukaisesti. Sen sijaan, että yrittäisit estää takaisinpainiketta, on tehokkaampaa suunnitella UI/UX siten, että vaikutuksia vähennetään. Harkitse strategioita, kuten tallentamalla tallentamattomat tiedot [istuntomuistiin](../../advanced/web-storage#session-storage), jotta jos käyttäjä navigoi pois ja palaa takaisin, heidän edistymisensä palautuu turvallisesti. Tämä lähestymistapa takaa tietosuojan ilman epävakaaseen selaimen toimintaan luottamista.
+Takapainike toimii web-sovellusten hallinnan ulkopuolella, mikä tekee sen toiminnan katkaisemisesta tai estämisestä vaikeaa kaikissa selaimissa johdonmukaisesti. Sen sijaan, että yrittäisit estää takapainiketta, on tehokkaampaa suunnitella käyttöliittymäsi/käyttökokemuksesi tavalla, joka vähentää vaikutusta. Mieti strategioita, kuten tallentaa tallentamaton data [istuntotallennukseen](../../advanced/web-storage#session-storage), jotta käyttäjä, jos hän siirtyy pois ja palaa, voi palauttaa edistymisensä turvallisesti. Tämä lähestymistapa varmistaa tietosuojan luottamatta epäluotettavaan selaimen käyttäytymiseen.

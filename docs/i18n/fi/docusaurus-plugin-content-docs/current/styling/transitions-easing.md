@@ -1,9 +1,9 @@
 ---
 sidebar_position: 10
 title: Transitions & Easing
-_i18n_hash: 7d44ac3e68f0187b1df2bbeeeee923f3
+_i18n_hash: d2f7570b46bfa778ca967908d6e7d901
 ---
-Siirtymät muuttujat käytetään tarjoamaan johdonmukaisia animaatioiden kestoja sovelluksessasi. Ne hallitsevat, kuinka kauan animaation suorittaminen kestää.
+Siirtymämuutujat käytetään tarjoamaan yhdenmukaisia animoituvia kestoja sovelluksessasi. Ne kontrolloivat, kuinka kauan animaatio kestää valmistuakseen.
 
 ### Esimerkki {#example}
 
@@ -15,20 +15,20 @@ Siirtymät muuttujat käytetään tarjoamaan johdonmukaisia animaatioiden kestoj
 
 ### Muuttujat {#variables}
 
-| **Muuttuja**              | **Oletusarvo**   | **Esimerkki**                               |
-|---------------------------|-------------------|--------------------------------------------|
-| `--dwc-transition-x-slow` | 1000ms            | <TransitionBox speed="--dwc-transition-x-slow" /> |
-| `--dwc-transition-slow`   | 500ms             | <TransitionBox speed="--dwc-transition-slow" />   |
-| `--dwc-transition-medium` | 250ms             | <TransitionBox speed="--dwc-transition-medium" /> |
-| `--dwc-transition-fast`   | 150ms             | <TransitionBox speed="--dwc-transition-fast" />   |
-| `--dwc-transition-x-fast` | 50ms              | <TransitionBox speed="--dwc-transition-x-fast" /> |
+| **Muuttuja**              | **Oletusarvo** | **Esimerkki**                               |
+|---------------------------|----------------|--------------------------------------------|
+| `--dwc-transition-x-slow` | 1000ms         | <TransitionBox speed="--dwc-transition-x-slow" /> |
+| `--dwc-transition-slow`   | 500ms          | <TransitionBox speed="--dwc-transition-slow" />   |
+| `--dwc-transition-medium` | 250ms          | <TransitionBox speed="--dwc-transition-medium" /> |
+| `--dwc-transition-fast`   | 150ms          | <TransitionBox speed="--dwc-transition-fast" />   |
+| `--dwc-transition-x-fast` | 50ms           | <TransitionBox speed="--dwc-transition-x-fast" /> |
 | `--dwc-transition`        | var(--dwc-transition-medium) | <TransitionBox speed="--dwc-transition" /> |
 
 ---
 
-## Easing {#easing}
+## Helpotukset {#easing}
 
-Easing-muuttujat määrittelevät, kuinka arvot muuttuvat ajan myötä, mikä tekee siirtymistä luonnollisempia.
+Helpotusmuuttujat määrittelevät, kuinka arvot muuttuvat ajan myötä, mikä tekee siirtymistä luonnollisemman tuntuiseksi.
 
 ### Esimerkki {#example-1}
 
@@ -38,12 +38,12 @@ Easing-muuttujat määrittelevät, kuinka arvot muuttuvat ajan myötä, mikä te
 }
 ```
 
-Yritä hiiren kanssa jokaisen easing-esikatselun päällä nähdäksesi sen animaatioefektin.
+Kokeile hiiren osoittamista jokaisen helpotuksen esikatselun yli nähdäksesi sen animaatioefektin.
 
 ### Muuttujat {#variables-1}
 
 | **Muuttuja** | **Cubic Bezier** | **Esimerkki** |
-|-------------|------------------|-------------|
+|--------------|------------------|---------------|
 | `--dwc-ease-inQuad` | [cubic-bezier(0.55, 0.085, 0.68, 0.53)](https://cubic-bezier.com/#0.55,0.085,0.68,0.53) | <TransitionBox easing="--dwc-ease-inQuad" /> |
 | `--dwc-ease-outQuad` | [cubic-bezier(0.25, 0.46, 0.45, 0.94)](https://cubic-bezier.com/#0.25,0.46,0.45,0.94) | <TransitionBox easing="--dwc-ease-outQuad" /> |
 | `--dwc-ease-inOutQuad` | [cubic-bezier(0.455, 0.03, 0.515, 0.955)](https://cubic-bezier.com/#0.455,0.03,0.515,0.955) | <TransitionBox easing="--dwc-ease-inOutQuad" /> |

@@ -1,20 +1,20 @@
 ---
 title: Slider
 sidebar_position: 101
-_i18n_hash: 045c80d3d54048157d805ee64213f210
+_i18n_hash: 47e9254faad15097b580eb4099968fbc
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-slider" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/slider/Slider" top='true'/>
 
-Le composant `Slider` de webforJ fournit un contrôle interactif qui permet aux utilisateurs de sélectionner une valeur dans une plage spécifique en déplaçant un bouton. Cette fonctionnalité est particulièrement utile pour les applications nécessitant une entrée précise ou intuitive, telles que la sélection de volumes, pourcentages ou autres valeurs ajustables.
+Le composant `Slider` dans webforJ fournit un contrôle interactif permettant aux utilisateurs de sélectionner une valeur dans une plage spécifique en déplaçant un bouton. Cette fonctionnalité est particulièrement utile pour les applications nécessitant une saisie précise ou intuitive, comme la sélection de volumes, de pourcentages ou d'autres valeurs ajustables.
 
-## Basics {#basics}
+## Bases {#basics}
 
-Le `Slider` est conçu pour fonctionner immédiatement, sans configuration supplémentaire pour être efficace. Par défaut, il s'étend sur une plage de 0 à 100 avec une valeur de départ de 50, ce qui le rend idéal pour une intégration rapide dans n'importe quelle application. Pour des cas d'utilisation plus spécifiques, le `Slider` peut être personnalisé avec des propriétés telles que l'orientation, les marques de graduation, les étiquettes et les infobulles.
+Le `Slider` est conçu pour fonctionner immédiatement sans configuration supplémentaire. Par défaut, il s'étend sur une plage de 0 à 100 avec une valeur de départ de 50, ce qui le rend idéal pour une intégration rapide dans n'importe quelle application. Pour des cas d'utilisation plus spécifiques, le `Slider` peut être personnalisé avec des propriétés telles que l'orientation, les graduations, les étiquettes et les info-bulles.
 
-Voici un exemple d'un `Slider` qui permet aux utilisateurs d'ajuster les niveaux de volume dans une plage prédéfinie :
+Voici un exemple de `Slider` permettant aux utilisateurs d'ajuster les niveaux de volume dans une plage prédéfinie :
 
 <ComponentDemo 
 path='/webforj/slider?' 
@@ -22,12 +22,12 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '100px'
 />
 
-## `Slider` value {#slider-value}
+## Valeur du `Slider` {#slider-value}
 
-La valeur du `Slider` représente la position actuelle du bouton sur le slider et est définie comme un entier dans la plage du `Slider`. Cette valeur se met à jour dynamiquement à mesure que l'utilisateur interagit avec le slider, ce qui en fait une propriété essentielle pour suivre l'entrée de l'utilisateur.
+La valeur du `Slider` représente la position actuelle du bouton sur le curseur et est définie comme un entier dans la plage du `Slider`. Cette valeur se met à jour dynamiquement lorsque l'utilisateur interagit avec le curseur, ce qui en fait une propriété essentielle pour suivre les saisies des utilisateurs.
 
 :::tip Valeur par défaut
-Par défaut, le `Slider` commence avec une valeur de 50, supposant que la plage par défaut est de 0 à 100.
+Par défaut, le `Slider` commence avec une valeur de 50, supposant la plage par défaut de 0 à 100.
 :::
 
 ### Définir et obtenir la valeur {#setting-and-getting-the-value}
@@ -44,13 +44,13 @@ System.out.println("Valeur actuelle du Slider : " + value);
 
 ## Valeurs minimales et maximales {#minimum-and-maximum-values}
 
-Les valeurs minimales et maximales définissent la plage autorisée du `Slider`, déterminant les limites à l'intérieur desquelles le bouton du `Slider` peut se déplacer. Par défaut, la plage est définie de 0 à 100, mais vous pouvez personnaliser ces valeurs selon vos besoins.
+Les valeurs minimales et maximales définissent la plage autorisée du `Slider`, déterminant les limites dans lesquelles le bouton du `Slider` peut se déplacer. Par défaut, la plage est définie de 0 à 100, mais vous pouvez personnaliser ces valeurs en fonction de vos besoins.
 
-Les intervalles sur le `Slider` ont une étape par défaut de 1, ce qui signifie que le nombre d'intervalles est déterminé par la plage. Par exemple :
+Les intervalles sur le `Slider` ont un pas par défaut de 1, ce qui signifie que le nombre d'intervalles est déterminé par la plage. Par exemple :
 - Un Slider avec une plage de 0 à 10 aura 10 intervalles.
 - Un Slider avec une plage de 0 à 100 aura 100 intervalles.
 
-Ces intervalles sont répartis uniformément le long de la piste du slider, leur espacement dépendant des dimensions du `Slider`.
+Ces intervalles sont répartis uniformément le long de la piste du curseur, leur espacement dépendant des dimensions du `Slider`.
 
 Voici un exemple de création d'un `Slider` avec une plage personnalisée :
 
@@ -60,41 +60,41 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '200px'
 />
 
-## Configuration des marques de graduation {#tick-configuration}
+## Configuration des graduations {#tick-configuration}
 
-Le composant `Slider` offre une configuration flexible des marques de graduation, vous permettant de personnaliser la façon dont les marques de graduation sont affichées et comment le bouton du slider interagit avec elles. Cela inclut l'ajustement de l'espacement des marques de graduation majeures et mineures, l'affichage/cachage des marques de graduation et l'activation de l'accrochage aux marques de graduation pour une entrée utilisateur précise.
+Le composant `Slider` offre une configuration flexible des graduations, vous permettant de personnaliser l'affichage des marques de graduation et la manière dont le bouton du curseur interagit avec elles. Cela inclut l'ajustement de l'espacement des graduations majeures et mineures, l'affichage/cachage des marques de graduation et l'activation de l'alignement sur les marques de graduation pour une saisie utilisateur précise.
 
-### Espacement des marques de graduation majeures et mineures {#major-and-minor-tick-spacing}
+### Espacement des graduations majeures et mineures {#major-and-minor-tick-spacing}
 
 Vous pouvez définir l'espacement des marques de graduation majeures et mineures, ce qui détermine leur fréquence d'apparition sur la piste du `Slider` :
 
-- Les marques de graduation majeures sont plus grandes et souvent étiquetées pour représenter des valeurs clés.
-- Les marques de graduation mineures sont plus petites et apparaissent entre les marques de graduation majeures pour offrir des intervalles plus fins.
+- Les graduations majeures sont plus grandes et souvent étiquetées pour représenter des valeurs clés.
+- Les graduations mineures sont plus petites et apparaissent entre les graduations majeures pour offrir des intervalles plus fins.
 
-Définissez l'espacement des marques de graduation en utilisant les méthodes suivantes `setMajorTickSpacing()` et `setMinorTickSpacing()` :
+Définissez l'espacement des graduations à l'aide des méthodes suivantes `setMajorTickSpacing()` et `setMinorTickSpacing()` :
 ```java
-slider.setMajorTickSpacing(10); // Marques majeures tous les 10 unités
-slider.setMinorTickSpacing(2);  // Marques mineures toutes les 2 unités
+slider.setMajorTickSpacing(10); // Graduations majeures tous les 10 unités
+slider.setMinorTickSpacing(2);  // Graduations mineures toutes les 2 unités
 ```
 
-### Afficher ou masquer les marques de graduation {#show-or-hide-ticks}
+### Afficher ou cacher les graduations {#show-or-hide-ticks}
 
-Vous pouvez basculer la visibilité des marques de graduation en utilisant la méthode `setTicksVisible()`. Par défaut, les marques de graduation sont cachées.
+Vous pouvez activer ou désactiver la visibilité des marques de graduation à l'aide de la méthode `setTicksVisible()`. Par défaut, les marques de graduation sont cachées.
 
 ```java
 slider.setTicksVisible(true); // Afficher les marques de graduation
-slider.setTicksVisible(false); // Masquer les marques de graduation
+slider.setTicksVisible(false); // Cacher les marques de graduation
 ```
 
-### Accrochage {#snapping}
+### Alignement sur les graduations {#snapping}
 
-Pour garantir que le bouton du `Slider` s'aligne avec la marque de graduation la plus proche lors de l'interaction de l'utilisateur, activez l'accrochage en utilisant la méthode `setSnapToTicks()` :
+Pour s'assurer que le bouton du `Slider` s'aligne sur la marque de graduation la plus proche pendant l'interaction de l'utilisateur, activez l'alignement à l'aide de la méthode `setSnapToTicks()` :
 
 ```java
-slider.setSnapToTicks(true); // Activer l'accrochage
+slider.setSnapToTicks(true); // Activer l'alignement
 ```
 
-Voici un exemple d'un `Slider` entièrement configuré montrant les paramètres des marques de graduation majeures et mineures ainsi que la capacité d'accrochage pour des ajustements précis :
+Voici un exemple d'un `Slider` entièrement configuré montrant les réglages des graduations majeures et mineures ainsi que la capacité d'alignement pour des ajustements précis :
 
 <ComponentDemo 
 path='/webforj/slidertickspacing?' 
@@ -104,14 +104,14 @@ height = '350px'
 
 ## Orientation et inversion {#orientation-and-inversion}
 
-Le composant `Slider` prend en charge deux orientations : horizontale (par défaut) et verticale. Vous pouvez changer l'orientation pour convenir à votre mise en page UI et aux exigences de votre application.
+Le composant `Slider` prend en charge deux orientations : horizontale (par défaut) et verticale. Vous pouvez changer l'orientation en fonction de votre mise en page d'interface utilisateur et des exigences de votre application.
 
 En plus de l'orientation, le `Slider` peut également être inversé. Par défaut :
 
-- Un `Slider` horizontal va de minime (gauche) à maximum (droite).
-- Un `Slider` vertical va de minime (bas) à maximum (haut).
+- Un `Slider` horizontal va du minimum (gauche) au maximum (droite).
+- Un `Slider` vertical va du minimum (bas) au maximum (haut).
 
-Lorsque le slider est inversé, cette direction est inversée. Utilisez la méthode `setInverted(true)` pour activer l'inversion.
+Lorsqu'il est inversé, cette direction est inversée. Utilisez la méthode `setInverted(true)` pour activer l'inversion.
 
 <ComponentDemo 
 path='/webforj/sliderorientation?' 
@@ -121,11 +121,11 @@ height = '420px'
 
 ## Étiquettes {#labels}
 
-Le composant `Slider` prend en charge les étiquettes sur les marques de graduation pour aider les utilisateurs à interpréter plus facilement les valeurs. Vous pouvez utiliser des étiquettes numériques par défaut ou fournir des étiquettes personnalisées, et vous pouvez basculer leur visibilité au besoin.
+Le composant `Slider` prend en charge les étiquettes sur les marques de graduation pour aider les utilisateurs à interpréter les valeurs plus facilement. Vous pouvez utiliser des étiquettes numériques par défaut ou fournir des étiquettes personnalisées, et vous pouvez basculer leur visibilité si nécessaire.
 
 ### Étiquettes par défaut {#default-labels}
 
-Par défaut, le slider peut afficher des étiquettes numériques aux marques de graduation majeures. Ces valeurs sont déterminées par le réglage de `setMajorTickSpacing()`. Pour activer les étiquettes par défaut, utilisez :
+Par défaut, le curseur peut afficher des étiquettes numériques aux marques de graduation majeures. Ces valeurs sont déterminées par le paramètre `setMajorTickSpacing()`. Pour activer les étiquettes par défaut, utilisez :
 
 ```java
 slider.setLabelsVisible(true);
@@ -133,7 +133,7 @@ slider.setLabelsVisible(true);
 
 ### Étiquettes personnalisées {#custom-labels}
 
-Vous pouvez remplacer les étiquettes numériques par défaut par un texte personnalisé en utilisant la méthode `setLabels()`. Cela est utile lorsque vous souhaitez afficher des valeurs plus significatives (par exemple, température, devise ou catégories).
+Vous pouvez remplacer les étiquettes numériques par défaut par du texte personnalisé en utilisant la méthode `setLabels()`. Cela est utile lorsque vous souhaitez afficher des valeurs plus significatives (par exemple, température, devise ou catégories).
 
 ```java
 Map<Integer, String> customLabels = Map.of(
@@ -148,9 +148,9 @@ slider.setLabels(customLabels);
 slider.setLabelsVisible(true);
 ```
 
-### Basculement de la visibilité des étiquettes {#toggling-label-visibility}
+### Contrôle de la visibilité des étiquettes {#toggling-label-visibility}
 
-Que vous utilisiez des étiquettes par défaut ou personnalisées, vous pouvez contrôler leur visibilité avec `setLabelsVisible(true)` ou les masquer avec `setLabelsVisible(false)`.
+Que vous utilisiez des étiquettes par défaut ou personnalisées, vous pouvez contrôler leur visibilité avec `setLabelsVisible(true)` ou les cacher avec `setLabelsVisible(false)`.
 
 <ComponentDemo 
 path='/webforj/sliderlabels?' 
@@ -158,29 +158,29 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '150px'
 />
 
-## Infobulles {#tooltips}
+## Info-bulles {#tooltips}
 
-Les infobulles améliorent l'utilisabilité en affichant la valeur du `Slider` directement au-dessus ou en dessous du bouton, aidant les utilisateurs à effectuer des ajustements plus précis. Vous pouvez configurer le comportement, la visibilité et le format de l'infobulle selon vos besoins.
+Les info-bulles améliorent l'utilisabilité en affichant la valeur du `Slider` directement au-dessus ou en dessous du bouton, aidant les utilisateurs à effectuer des ajustements plus précis. Vous pouvez configurer le comportement, la visibilité et le format de l'info-bulle en fonction de vos besoins.
 
-Pour activer les infobulles, utilisez la méthode `setTooltipVisible()`. Par défaut, les infobulles sont désactivées :
+Pour activer les info-bulles, utilisez la méthode `setTooltipVisible()`. Par défaut, les info-bulles sont désactivées :
 
 ```java
-slider.setTooltipVisible(true); // Activer les infobulles
-slider.setTooltipVisible(false); // Désactiver les infobulles
+slider.setTooltipVisible(true); // Activer les info-bulles
+slider.setTooltipVisible(false); // Désactiver les info-bulles
 ```
 
-Les infobulles peuvent également être configurées pour n'apparaître que lorsque l'utilisateur interagit avec le `Slider`. Utilisez la méthode `setTooltipVisibleOnSlideOnly()` pour activer ce comportement. Ceci est particulièrement utile pour réduire l'encombrement visuel tout en fournissant un retour d'information utile lors de l'interaction.
+Les info-bulles peuvent également être configurées pour apparaître uniquement lorsque l'utilisateur interagit avec le `Slider`. Utilisez la méthode `setTooltipVisibleOnSlideOnly()` pour activer ce comportement. Ceci est particulièrement utile pour réduire l'encombrement visuel tout en fournissant des retours utiles pendant l'interaction.
 
-Voici un exemple d'un `Slider` entièrement configuré avec des infobulles :
+Voici un exemple d'un `Slider` entièrement configuré avec des info-bulles :
 
-### Personnalisation des infobulles {#tooltip-customization}
+### Personnalisation de l'info-bulle {#tooltip-customization}
 
-Par défaut, le `Slider` montre une infobulle avec sa valeur actuelle. Si vous souhaitez personnaliser ce texte, utilisez la méthode `setTooltipText()`. Cela est utile lorsque vous souhaitez que l'infobulle affiche du texte statique ou descriptif au lieu de la valeur en direct.
+Par défaut, le `Slider` affiche une info-bulle avec sa valeur actuelle. Si vous souhaitez personnaliser ce texte, utilisez la méthode `setTooltipText()`. Cela est utile lorsque vous souhaitez que l'info-bulle affiche un texte statique ou descriptif au lieu de la valeur en direct.
 
-Vous pouvez également utiliser une expression JavaScript pour formater dynamiquement l'infobulle. Si votre expression inclut le mot-clé `return`, elle est utilisée telle quelle. Sinon, elle est automatiquement enroulée avec `return` et `;` pour former une fonction valide. Par exemple :
+Vous pouvez également utiliser une expression JavaScript pour formater l'info-bulle dynamiquement. Si votre expression comprend le mot-clé `return`, elle est utilisée telle quelle. Sinon, elle est automatiquement enveloppée avec `return` et `;` pour former une fonction valide. Par exemple :
 
 ```java
-// Montre la valeur suivie d'un signe dollar
+// Affiche la valeur suivie d'un signe dollar
 slider.setTooltipText("return x + '$'"); 
 ```
 
@@ -191,12 +191,12 @@ Ou simplement :
 slider.setTooltipText("x + ' unités'"); 
 ```
 
-## Stylisation {#styling}
+## Style {#styling}
 
 ### Thèmes {#themes}
 
-Le `Slider` est livré avec 6 thèmes intégrés pour un stylisme rapide sans l'utilisation de CSS. La thématisation est prise en charge par l'utilisation d'une classe d'énumération intégrée.
-Ci-dessous sont montrés des sliders avec chacun des thèmes pris en charge appliqués :
+Le `Slider` est livré avec 6 thèmes intégrés pour un style rapide sans utiliser de CSS. La thématisation est prise en charge par une classe énumérée intégrée.
+Ci-dessous, des curseurs avec chacun des thèmes pris en charge appliqués :
 
 <ComponentDemo 
 path='/webforj/sliderthemes?' 
