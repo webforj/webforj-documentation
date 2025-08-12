@@ -16,7 +16,7 @@
     "description": "Navbar item with label Community"
   },
   "item.label.Developers": {
-    "message": "Developer",
+    "message": "Ontwikkelaar",
     "description": "Navbar item with label Developers"
   },
   "item.label.Support": {
@@ -40,7 +40,7 @@
     "description": "Navbar item with label DWC HueCraft"
   },
   "item.label.DWC Design Kit": {
-    "message": "DWC Ontwerpset",
+    "message": "DWC Ontwerpenset",
     "description": "Navbar item with label DWC Design Kit"
   },
   "item.label.JavaDocs": {

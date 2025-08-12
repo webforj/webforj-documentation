@@ -8,7 +8,7 @@
     "description": "Navbar item with label Getting Started"
   },
   "item.label.Components": {
-    "message": "组件",
+    "message": "Components",
     "description": "Navbar item with label Components"
   },
   "item.label.Community": {
@@ -24,7 +24,7 @@
     "description": "Navbar item with label Support"
   },
   "item.label.Events": {
-    "message": "Event",
+    "message": "事件",
     "description": "Navbar item with label Events"
   },
   "item.label.Blog": {
@@ -56,7 +56,7 @@
     "description": "Navbar item with label Contribution Guide"
   },
   "item.label.Report Issue": {
-    "message": "Report Issue",
+    "message": "报告问题",
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {

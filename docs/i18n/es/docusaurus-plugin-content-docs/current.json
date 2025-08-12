@@ -12,11 +12,11 @@
     "description": "The label for category Tutorial in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Integrations": {
-    "message": "Integrations",
+    "message": "Integraciones",
     "description": "The label for category Integrations in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Spring Framework": {
-    "message": "Marco de trabajo Spring",
+    "message": "Spring Framework",
     "description": "The label for category Spring Framework in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Routing": {
@@ -44,7 +44,7 @@
     "description": "The label for category HTML and Web Components in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Data Binding": {
-    "message": "Vinculación de Datos",
+    "message": "Data Linking",
     "description": "The label for category Data Binding in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Validation": {
@@ -56,7 +56,7 @@
     "description": "The label for category Components in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Fields": {
-    "message": "Fields",
+    "message": "Campos",
     "description": "The label for category Fields in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Masked Fields": {
@@ -96,7 +96,7 @@
     "description": "The label for category Configuration in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Redeployment and Live Reload": {
-    "message": "Reimplementación y Recarga en Tiempo Real",
+    "message": "Reimplementación y Recarga en Vivo",
     "description": "The label for category Redeployment and Live Reload in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Running with BBjServices": {
@@ -104,11 +104,11 @@
     "description": "The label for category Running with BBjServices in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Advanced Topics": {
-    "message": "Temas Avanzados",
+    "message": "Advanced Themes",
     "description": "The label for category Advanced Topics in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Repository": {
-    "message": "Repositorio",
+    "message": "Repository",
     "description": "The label for category Repository in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Architecture": {

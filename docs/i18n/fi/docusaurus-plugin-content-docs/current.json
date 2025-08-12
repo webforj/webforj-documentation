@@ -24,7 +24,7 @@
     "description": "The label for category Routing in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Navigation Lifecycle": {
-    "message": "Navigointi aikajana",
+    "message": "Aikajanan navigointi",
     "description": "The label for category Navigation Lifecycle in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Route Hierarchy": {
@@ -112,7 +112,7 @@
     "description": "The label for category Repository in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Architecture": {
-    "message": "Arkkitehtuuri",
+    "message": "Architecture",
     "description": "The label for category Architecture in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Upgrading Guides": {

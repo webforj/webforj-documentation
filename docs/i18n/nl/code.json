@@ -76,7 +76,7 @@
     "description": "artifactId description"
   },
   "component.archetype.table.version.desc": {
-    "message": "Definieer projectversie: MAJOR.MINOR-SNAPSHOT, bijv. 1.0-SNAPSHOT (SNAPSHOT geeft aan dat het project nog in ontwikkeling is).",
+    "message": "Definieer projectversie: MAJOR.MINOR-SNAPSHOT, bijv. 1.0-SNAPSHOT",
     "description": "version description"
   },
   "component.archetype.table.flavor.desc": {
@@ -454,7 +454,7 @@
     "description": "The explanatory text of the action for the enter key"
   },
   "theme.SearchModal.footer.selectKeyAriaLabel": {
-    "message": "Voer in",
+    "message": "Invoeren",
     "description": "The ARIA label for the Enter key button that makes the selection"
   },
   "theme.SearchModal.footer.navigateText": {
@@ -658,7 +658,7 @@
     "description": "Description for methods section"
   },
   "tableBuilder.sections.dependentComponents": {
-    "message": "Afhankelijke Componenten",
+    "message": "Afhankelijke componenten",
     "description": "Section heading for dependent components"
   },
   "tableBuilder.descriptions.dependentComponents": {
@@ -682,7 +682,7 @@
     "description": "Button text to show the code section"
   },
   "expandableCode.hideCode": {
-    "message": "Verberg Code",
+    "message": "Verberg code",
     "description": "Button text to hide the expanded code"
   },
   "expandableCode.showAllLines": {

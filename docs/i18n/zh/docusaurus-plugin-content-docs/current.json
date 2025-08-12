@@ -8,7 +8,7 @@
     "description": "The label for category Introduction in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Tutorial": {
-    "message": "Tutorial",
+    "message": "教程",
     "description": "The label for category Tutorial in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Integrations": {
@@ -16,11 +16,11 @@
     "description": "The label for category Integrations in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Spring Framework": {
-    "message": "Spring Framework",
+    "message": "Spring框架",
     "description": "The label for category Spring Framework in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Routing": {
-    "message": "Router",
+    "message": "路由器",
     "description": "The label for category Routing in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Navigation Lifecycle": {
@@ -52,11 +52,11 @@
     "description": "The label for category Validation in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Components": {
-    "message": "Component",
+    "message": "组件",
     "description": "The label for category Components in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Fields": {
-    "message": "字段",
+    "message": "Field",
     "description": "The label for category Fields in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Masked Fields": {
@@ -84,7 +84,7 @@
     "description": "The label for category E2E Testing in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Styling": {
-    "message": "样式设置",
+    "message": "样式设定",
     "description": "The label for category Styling in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Managing Resources": {
@@ -92,7 +92,7 @@
     "description": "The label for category Managing Resources in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Configuration": {
-    "message": "Settings",
+    "message": "设置",
     "description": "The label for category Configuration in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Redeployment and Live Reload": {
@@ -100,7 +100,7 @@
     "description": "The label for category Redeployment and Live Reload in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Running with BBjServices": {
-    "message": "运行 BBj 服务",
+    "message": "Run BBj Service",
     "description": "The label for category Running with BBjServices in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Advanced Topics": {
@@ -108,7 +108,7 @@
     "description": "The label for category Advanced Topics in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Repository": {
-    "message": "代码库",
+    "message": "代码仓库",
     "description": "The label for category Repository in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Architecture": {
@@ -116,11 +116,11 @@
     "description": "The label for category Architecture in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Upgrading Guides": {
-    "message": "升级指南",
+    "message": "Upgrade Guide",
     "description": "The label for category Upgrading Guides in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Client Components": {
-    "message": "Client Component",
+    "message": "客户端组件",
     "description": "The label for category Client Components in sidebar documentationSidebar"
   }
 }

@@ -1,6 +1,6 @@
 {
   "theme.docs.translationNotice": {
-    "message": "Diese Seite wurde automatisch übersetzt. Für genauere Informationen besuchen Sie bitte die offizielle webforJ-Dokumentation.",
+    "message": "Diese Seite wurde automatisch übersetzt. Für genauere Informationen besuchen Sie bitte die offizielle Dokumentation.",
     "description": "Translation notice for non-English pages"
   },
   "component.askMenu.chatgpt.label": {
@@ -16,7 +16,7 @@
     "description": "Claude button label"
   },
   "component.askMenu.claude.desc": {
-    "message": "Mit Claude AI chatten",
+    "message": "Mit Claude AI sprechen",
     "description": "Claude button description"
   },
   "component.askMenu.markdown.label": {
@@ -76,7 +76,7 @@
     "description": "artifactId description"
   },
   "component.archetype.table.version.desc": {
-    "message": "Versionsnummer festlegen. Gängige Konvention: MAJOR.MINOR-SNAPSHOT, z. B. 1.0-SNAPSHOT, wobei SNAPSHOT anzeigt, dass das Projekt in Entwicklung ist.",
+    "message": "Versionsnummer einstellen. Gängige Konvention: MAJOR.MINOR-SNAPSHOT, z. B. 1.0-SNAPSHOT, wobei SNAPSHOT anzeigt, dass das Projekt in Entwicklung ist.",
     "description": "version description"
   },
   "component.archetype.table.flavor.desc": {
@@ -92,7 +92,7 @@
     "description": "webforj-spring flavor description"
   },
   "component.archetype.table.appName.desc": {
-    "message": "Ein optionaler Parameter in der POM-Datei, der als Standardtitel verwendet werden kann.",
+    "message": "Optionaler Parameter in der POM-Datei für Standardtitel.",
     "description": "appName description"
   },
   "component.archetype.conclusion": {
@@ -100,7 +100,7 @@
     "description": "Conclusion text"
   },
   "theme.ErrorPageContent.title": {
-    "message": "Die Seite wurde beendet.",
+    "message": "Die Seite wurde geschlossen.",
     "description": "The title of the fallback page when the page crashed"
   },
   "theme.BackToTopButton.buttonAriaLabel": {
@@ -132,7 +132,7 @@
     "description": "The ARIA label for the blog posts pagination"
   },
   "theme.blog.post.paginator.newerPost": {
-    "message": "Neuer Beitrag",
+    "message": "Neuer Artikel",
     "description": "The blog post button label to navigate to the newer/previous post"
   },
   "theme.blog.post.paginator.olderPost": {
@@ -267,7 +267,7 @@
     "description": "The default label used for the Warning admonition (:::warning)"
   },
   "theme.blog.sidebar.navAriaLabel": {
-    "message": "Neueste Blogbeiträge",
+    "message": "Neueste Blogartikel",
     "description": "The ARIA label for recent posts in the blog sidebar"
   },
   "theme.DocSidebarItem.expandCategoryAriaLabel": {
@@ -522,7 +522,7 @@
     "description": "The label of the link targeting the blog authors page"
   },
   "theme.blog.author.noPosts": {
-    "message": "Dieser Autor hat keine Artikel.",
+    "message": "Dieser Autor hat keine Beiträge.",
     "description": "The text for authors with 0 blog post"
   },
   "theme.contentVisibility.unlistedBanner.title": {
@@ -530,7 +530,7 @@
     "description": "The unlisted content banner title"
   },
   "theme.contentVisibility.unlistedBanner.message": {
-    "message": "Diese Seite ist nicht verfügbar.",
+    "message": "Diese Seite ist nicht erreichbar.",
     "description": "The unlisted content banner message"
   },
   "theme.contentVisibility.draftBanner.title": {
@@ -626,7 +626,7 @@
     "description": "Description for properties section"
   },
   "tableBuilder.sections.reflectedAttributes": {
-    "message": "Gespiegelte Eigenschaften",
+    "message": "Gespiegelte Attribute",
     "description": "Section heading for reflected attributes table"
   },
   "tableBuilder.descriptions.reflectedAttributes": {
