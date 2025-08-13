@@ -88,7 +88,7 @@
     "description": "webforj flavor description"
   },
   "component.archetype.table.flavor.spring": {
-    "message": "webforJ applicatie met ondersteuning voor Spring Boot ( vereist webforJ 25.02 of hoger).",
+    "message": "webforJ-applicatie met ondersteuning voor Spring Boot (vereist webforJ 25.02 of hoger).",
     "description": "webforj-spring flavor description"
   },
   "component.archetype.table.appName.desc": {

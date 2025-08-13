@@ -56,7 +56,7 @@
     "description": "Explanation column header"
   },
   "component.archetype.table.archetypeGroupId.desc": {
-    "message": "Arkityypin ryhmätunnus on com.webforj webforJ-arkkityypeille.",
+    "message": "Arkityypin ryhmätunnus on com.webforj.",
     "description": "archetypeGroupId description"
   },
   "component.archetype.table.archetypeArtifactId.desc": {

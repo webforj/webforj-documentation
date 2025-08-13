@@ -32,7 +32,7 @@
     "description": "The label for category Route Hierarchy in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Building UIs": {
-    "message": "Maak UI",
+    "message": "UI maken",
     "description": "The label for category Building UIs in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Archetypes": {

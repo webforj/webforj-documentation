@@ -88,7 +88,7 @@
     "description": "The label for category Styling in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Managing Resources": {
-    "message": "Resurssien hallinta",
+    "message": "Resurssienhallinta",
     "description": "The label for category Managing Resources in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Configuration": {
@@ -112,7 +112,7 @@
     "description": "The label for category Repository in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Architecture": {
-    "message": "Architecture",
+    "message": "Arkkitehtuuri",
     "description": "The label for category Architecture in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Upgrading Guides": {
@@ -120,7 +120,7 @@
     "description": "The label for category Upgrading Guides in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Client Components": {
-    "message": "Asiakas komponentit",
+    "message": "Asiakaskomponentit",
     "description": "The label for category Client Components in sidebar documentationSidebar"
   }
 }

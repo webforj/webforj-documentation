@@ -16,7 +16,7 @@
     "description": "The label for category Integrations in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Spring Framework": {
-    "message": "Spring-Framework",
+    "message": "Frühling-Framework",
     "description": "The label for category Spring Framework in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Routing": {
@@ -40,7 +40,7 @@
     "description": "The label for category Archetypes in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.HTML and Web Components": {
-    "message": "HTML und Webkomponenten",
+    "message": "HTML und Web-Komponenten",
     "description": "The label for category HTML and Web Components in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Data Binding": {
