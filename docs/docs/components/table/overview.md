@@ -86,3 +86,7 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/hea
 'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
 height='600px'
 />
+
+## Styling
+
+<TableBuilder name="Table" />
