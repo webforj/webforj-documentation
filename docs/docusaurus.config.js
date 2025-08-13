@@ -118,7 +118,8 @@ const config = {
       appId: '826LUKOV8E',
       apiKey: 'a69d79113b838bfc8490ffb56cef78f2',
       indexName: 'umentation-webforj',
-      contextualSearch: false,
+      contextualSearch: true,
+      externalUrlRegex: '.*', // disables version filtering
     },
     announcementBar: {
       id: '25.02',
