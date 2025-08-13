@@ -138,9 +138,9 @@ public class InteractiveMap extends Composite<Div> {
 }
 ```
 
-## Example `Composite` component
+## Example `Composite` component {#example-composite-component}
 
-The following example demonstrates a Todo application where each item is a `Composite` component consisting of a [`RadioButton`](../components/radiobutton) styled as a switch and a Div with text: 
+The following example demonstrates a Todo app where each item is a `Composite` component consisting of a [`RadioButton`](../components/radiobutton) styled as a switch and a Div with text: 
 
 <ComponentDemo 
 path='/webforj/composite?' 
@@ -149,9 +149,9 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='400px'
 />
 
-## Component grouping
+## Component grouping {#component-grouping}
 
-Sometimes you may want to use a `Composite` to group related components together into a single unit, even when reusability is not the main concern:
+Sometimes you may want to use a `Composite` to group related components together into a single unit, even when reusability isn't the main concern:
 
 <ComponentDemo
 path='/webforj/analyticscardcomposite?'
