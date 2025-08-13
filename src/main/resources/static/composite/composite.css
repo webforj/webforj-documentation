@@ -9,6 +9,7 @@
   max-width: 600px;
   max-height: 400px;
   box-shadow: var(--dwc-shadow-xs);
+  border: var(--dwc-border-width) solid var(--dwc-color-default);
   border-radius: 16px;
 }
 
@@ -25,7 +26,7 @@
   padding: var(--dwc-space-m);
   background-color: var(--dwc-surface-1);
   border-radius: 10px;
-  border: 1px solid var(--dwc-color-neutral-200);
+  border: var(--dwc-border-width) solid var(--dwc-color-default);
 }
 
 .item__todo--display {
@@ -33,7 +34,7 @@
   align-items: center;
   gap: var(--dwc-space-s);
   padding: var(--dwc-space-s) 0;
-  border-bottom: 1px solid var(--dwc-color-neutral-200);
+  border-bottom: var(--dwc-border-width) solid var(--dwc-color-default);
 }
 
 .item__todo--display:last-child {
