@@ -10,6 +10,8 @@ sidebar_class_name: updated-content
 
 The `Composite` component combines existing webforJ components into self-contained, reusable components with custom behavior. Use it to wrap internal webforJ components into reusable business logic units, reuse component patterns throughout your app, and combine multiple components without exposing implementation details.
 
+When you extend `Composite`, you create a strong association with your underlying component. This gives you control over which methods and properties your users can access, unlike traditional inheritance where everything is exposed.
+
 If you need to integrate web components from another source, use specialized alternatives:
 
 - ElementComposite: For web components with type-safe property management
