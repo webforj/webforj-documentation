@@ -1,8 +1,9 @@
 ---
 sidebar_position: 1
 title: Configuration
+hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: 8c83e4aa27d8794fc93f3046c79c332d
+_i18n_hash: 15a2d632346a0d90ca09c694849f6a2b
 ---
 <Head>
   <style>{`
@@ -11,11 +12,5 @@ _i18n_hash: 8c83e4aa27d8794fc93f3046c79c332d
   }
   `}</style>
 </Head>
-
-<!-- vale off -->
-import DocCardList from '@theme/DocCardList';
-
-<!-- vale on -->
-
 
 <DocCardList className="topics-list" />

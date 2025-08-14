@@ -24,7 +24,7 @@
     "description": "Navbar item with label Support"
   },
   "item.label.Events": {
-    "message": "Event",
+    "message": "事件",
     "description": "Navbar item with label Events"
   },
   "item.label.Blog": {
@@ -40,7 +40,7 @@
     "description": "Navbar item with label DWC HueCraft"
   },
   "item.label.DWC Design Kit": {
-    "message": "DWC Design Toolbox",
+    "message": "DWC 设计工具箱",
     "description": "Navbar item with label DWC Design Kit"
   },
   "item.label.JavaDocs": {
@@ -56,11 +56,11 @@
     "description": "Navbar item with label Contribution Guide"
   },
   "item.label.Report Issue": {
-    "message": "报告问题",
+    "message": "Report Issue",
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {
-    "message": "Contact Me",
+    "message": "联系我",
     "description": "Navbar item with label Contact us"
   }
 }

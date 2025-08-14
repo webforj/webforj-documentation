@@ -1,53 +1,28 @@
 ---
 title: Drawer
 sidebar_position: 35
-_i18n_hash: 73da264dca1e3f8cfd58b697e3e9d0dc
+sidebar_class_name: updated-content
+_i18n_hash: a19d1b8c8e0b74cecee529e86649d449
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-drawer" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="drawer" location="com/webforj/component/drawer/Drawer" top='true'/>
 
-Le tiroir est un conteneur qui glisse dans la fenêtre pour exposer des options et des informations supplémentaires. Plusieurs tiroirs peuvent être créés dans une application, et ils seront empilés les uns au-dessus des autres.
+Le composant `Drawer` dans webforJ crée un panneau coulissant qui apparaît depuis le bord de l'écran, révélant du contenu supplémentaire sans quitter la vue actuelle. Il est couramment utilisé pour la navigation latérale, les menus de filtres, les paramètres utilisateur ou les notifications compactes qui doivent apparaître temporairement sans perturber l'interface principale.
 
-Le composant Drawer peut être utilisé dans de nombreuses situations différentes, comme en fournissant un menu de navigation qui peut être activé, un panneau qui affiche des informations complémentaires ou contextuelles, ou pour optimiser l'utilisation sur un appareil mobile. L'exemple suivant montrera une application mobile qui utilise le composant webforJ AppLayout et affiche un tiroir "Welcome Popup" en bas lors de son premier chargement. De plus, un composant navigational Drawer peut être activé dans l'application en cliquant sur le menu hamburger.
+Les `Drawers` s'empilent automatiquement lorsque plusieurs sont ouverts, en faisant un choix flexible pour les interfaces à espace limité.
+
+L'exemple ci-dessous montre ce comportement au sein du composant [`AppLayout`](../components/app-layout). Le tiroir de navigation déclenché par le menu hamburger est intégré dans [`AppLayout`](../components/app-layout), tandis que le popup de bienvenue en bas utilise une instance de `Drawer` autonome. Les deux coexistent et s'empilent indépendamment, démontrant comment les `Drawers` peuvent être intégrés dans des composants de mise en page ou utilisés comme éléments autonomes.
 
 <AppLayoutViewer path='/webforj/drawerwelcome?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java'
 cssURL='/css/drawer/drawerWelcome.css'
 />
 
-## Usages {#usages}
+## Autofocus
 
-1. **Menu de Navigation** : Une utilisation courante d'un composant tiroir est en tant que menu de navigation. Il fournit un moyen efficace en termes d'espace pour afficher des liens vers diverses sections ou pages de votre application, en particulier dans des mises en page mobiles ou réactives. Les utilisateurs peuvent ouvrir et fermer le tiroir pour accéder aux options de navigation sans encombrer la zone de contenu principale.
-
-2. **Filtre et Barre Latérale** : Un tiroir peut être utilisé comme un filtre ou une barre latérale dans des applications qui affichent une liste d'éléments. Les utilisateurs peuvent développer le tiroir pour révéler des options de filtre, des contrôles de tri ou des informations supplémentaires liées aux éléments de la liste. Cela garde le contenu principal concentré sur la liste tout en fournissant des fonctionnalités avancées de manière accessible.
-
-3. **Profil Utilisateur ou Paramètres** : Vous pouvez utiliser un tiroir pour afficher les informations du profil utilisateur ou les paramètres de l'application. Cela garde ces informations facilement accessibles mais cachées lorsque non nécessaires, maintenant une interface propre et non encombrée. Les utilisateurs peuvent ouvrir le tiroir pour mettre à jour leurs profils ou ajuster les paramètres.
-
-4. **Notifications** : Pour les applications avec des notifications ou des alertes, un tiroir peut glisser pour afficher de nouveaux messages ou mises à jour. Les utilisateurs peuvent rapidement vérifier et dismiss notifications sans quitter leur vue actuelle.
-
-<ComponentDemo
-path='/webforj/drawerdemo?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerDemoView.java'
-height='600px'
-/>
-
-## Personnalisation {#customization}
-
-Diverses propriétés existent qui permettent de personnaliser différents attributs du composant Drawer. Cette section décrit ces propriétés avec des exemples de leur modification.
-
-## Autofocus {#autofocus}
-
-La propriété Auto-Focus est conçue pour améliorer l'accessibilité et l'utilisabilité en mettant automatiquement le focus sur le premier élément dans un tiroir lorsqu'il est ouvert. Cette fonctionnalité élimine le besoin pour les utilisateurs de naviguer manuellement vers l'élément souhaité, ce qui permet d'économiser du temps et des efforts.
-
-Lorsque le tiroir est déclenché pour s'ouvrir, soit par un événement, par défaut ou par toute autre interaction, le focus de l'utilisateur est dirigé vers le premier élément dans le tiroir. Ce premier élément pourrait être un bouton, un lien, une option de menu, ou tout autre élément pouvant recevoir le focus.
-
-:::tip
-En mettant automatiquement le focus sur le premier élément, le développeur s'assure que les utilisateurs peuvent immédiatement interagir avec l'option la plus pertinente ou fréquemment utilisée sans avoir à naviguer ou faire défiler tout le tiroir. Ce comportement simplifie l'expérience utilisateur et favorise une navigation efficace dans l'UI.
-:::
-
-Cette propriété peut également être particulièrement bénéfique pour les personnes qui comptent sur la navigation au clavier ou sur des technologies d'assistance telles que les lecteurs d'écran. Elle fournit un point de départ clair à l'intérieur du tiroir et permet aux utilisateurs d'accéder à la fonctionnalité souhaitée sans saisie manuelle inutile.
+Le composant `Drawer` prend en charge l'autofocus, qui fixe automatiquement le focus sur le premier élément focalisable lorsque le `Drawer` s'ouvre. Cela améliore l'utilisabilité en attirant directement l'attention sur le premier élément actionnable.
 
 <ComponentDemo
 path='/webforj/drawerautofocus?'
@@ -55,37 +30,69 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='600px'
 />
 
-## Étiquette {#label}
+<!-- Exemple -->
 
-La propriété Drawer Label est une fonctionnalité conçue pour améliorer l'accessibilité et fournir un contexte descriptif pour un tiroir dans une interface utilisateur. Cette propriété permet aux développeurs d'assigner une étiquette à un tiroir, principalement à des fins d'accessibilité, garantissant que les lecteurs d'écran et autres technologies d'assistance peuvent transmettre avec précision le but et le contenu du tiroir aux utilisateurs.
+## Label {#label}
 
-Lorsqu'elle est utilisée, la propriété Drawer Label devient une partie intégrante de l'infrastructure d'accessibilité du tiroir. Elle permet aux utilisateurs qui comptent sur des technologies d'assistance de comprendre la fonction du tiroir et de naviguer dans l'interface de manière plus efficace.
+La méthode `setLabel()` peut fournir une description significative du contenu à l'intérieur d'un `Drawer`. Lorsqu'une étiquette est définie, les technologies d'assistance comme les lecteurs d'écran peuvent l'annoncer, aidant les utilisateurs à comprendre le but du `Drawer` sans voir son contenu visuel.
 
-En fournissant une étiquette pour le tiroir, les développeurs s'assurent que les lecteurs d'écran annoncent le but du tiroir aux utilisateurs malvoyants. Cette information permet aux individus de prendre des décisions éclairées sur l'interaction avec le tiroir, car ils peuvent comprendre son contenu et sa pertinence dans l'interface utilisateur plus large.
+```java
+Drawer drawer = new Drawer();
+drawer.setLabel("Gestionnaire de tâches");
+```
 
-La propriété d'étiquette peut être personnalisée pour s'adapter au contexte spécifique et aux exigences de conception de l'application. Les développeurs ont la flexibilité de fournir des étiquettes concises et descriptives qui représentent avec précision le contenu ou la fonctionnalité du tiroir.
+:::tip Étiquettes descriptives
+Utilisez des étiquettes concises et descriptives qui reflètent le but du `Drawer`. Évitez les termes génériques comme « Menu » ou « Panneau » lorsqu'un nom plus spécifique peut être utilisé.
+:::
 
-## Placement {#placement}
+## Taille
 
-La propriété placement du composant UI Drawer permet aux développeurs de spécifier la position et l'alignement du tiroir dans la fenêtre. Cette propriété offre une gamme de valeurs enum qui fournissent de la flexibilité dans la détermination de l'emplacement du tiroir par rapport au contenu principal.
+Pour contrôler la taille d'un `Drawer`, définissez une valeur pour la propriété CSS personnalisée `--dwc-drawer-size`. Cela définit la largeur du `Drawer` pour un placement à gauche/droite ou la hauteur pour un placement en haut/en bas.
 
-Les valeurs enum disponibles pour la propriété placement sont les suivantes :
+Vous pouvez définir la valeur en utilisant n'importe quelle unité CSS valide telle qu'un pourcentage, des pixels ou vw/vh, en utilisant Java ou CSS :
 
-- **HAUT** : Cette valeur place le tiroir en haut de la fenêtre, lui permettant d'occuper la région supérieure.
+```java
+// Java
+drawer.setStyle("--dwc-drawer-size", "40%");
+```
 
-- **HAUT_CENTRE** : Avec cette valeur, le tiroir est positionné au centre de la partie supérieure de la fenêtre. Il est aligné horizontalement au milieu, créant une mise en page équilibrée.
+```css
+/* CSS */
+dwc-drawer {
+  --dwc-drawer-size: 40%;
+}
+```
 
-- **BAS** : Lors de l'utilisation de cette valeur, le tiroir est situé en bas de la fenêtre, apparaissant en dessous du contenu principal.
+Pour empêcher le `Drawer` de devenir trop grand, utilisez `--dwc-drawer-max-size` en parallèle :
 
-- **BAS_CENTRE** : Cette valeur centre le tiroir horizontalement en bas de la fenêtre. Elle fournit une composition visuellement équilibrée.
+```java
+// Java
+drawer.setStyle("--dwc-drawer-size", "40%");
+drawer.setStyle("--dwc-drawer-max-size", "800px");
+```
 
-- **GAUCHE** : Le choix de cette valeur place le tiroir sur le côté gauche de la fenêtre, adjacent au contenu principal.
+```css
+/* CSS */
+dwc-drawer {
+  --dwc-drawer-size: 40%;
+  --dwc-drawer-max-size: 800px;
+}
+```
 
-- **DROITE** : En utilisant cette valeur, le tiroir est placé sur le côté droit de la fenêtre, maintenant une proximité avec le contenu principal.
+## Placement
 
-La propriété placement permet aux développeurs de choisir la position la plus appropriée pour le tiroir en fonction des exigences spécifiques de conception et d'expérience utilisateur. Les valeurs enum offrent une variété d'options de placement pour accueillir différentes mises en page d'interface et hiérarchies visuelles.
+La méthode `setPlacement()` contrôle où le `Drawer` apparaît dans la fenêtre d'affichage.
 
-En tirant parti de la propriété placement, les développeurs peuvent créer des interfaces utilisateur intuitives et efficaces. Par exemple, placer le tiroir sur le côté gauche ou droit permet un accès rapide à des fonctionnalités ou options de navigation supplémentaires, tandis que les placements en haut ou en bas sont bien adaptés aux informations contextuelles ou contenu supplémentaire.
+Options de placement disponibles :
+
+<!-- vale off -->
+- **TOP** : Positionne le tiroir en haut de la fenêtre d'affichage.
+- **TOP_CENTER** : Aligne le tiroir horizontalement centré en haut de la fenêtre d'affichage.
+- **BOTTOM** : Place le tiroir en bas de la fenêtre d'affichage.
+- **BOTTOM_CENTER** : Centre horizontalement le tiroir en bas de la fenêtre d'affichage.
+- **LEFT** : Positionne le tiroir le long du bord gauche de la fenêtre d'affichage.
+- **RIGHT** : Positionne le tiroir le long du bord droit de la fenêtre d'affichage.
+<!-- vale on -->
 
 <ComponentDemo
 path='/webforj/drawerplacement?'
@@ -93,16 +100,52 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='600px'
 />
 
-## Styles {#styling}
+## Gestion des événements
+
+Le composant `Drawer` émet des événements de cycle de vie qui peuvent être utilisés pour déclencher la logique de l'application en réponse aux changements de son état ouvert ou fermé.
+
+Événements pris en charge :
+
+- `DrawerOpenEvent` : Émis lorsque le tiroir est complètement ouvert.
+- `DrawerCloseEvent` : Émis lorsque le tiroir est complètement fermé.
+
+Vous pouvez attacher des auditeurs à ces événements pour exécuter une logique lorsque l'état du `Drawer` change.
+
+```java
+Drawer drawer = new Drawer();
+
+drawer.addOpenListener(e -> {
+  // Gérer l'événement d'ouverture du tiroir
+});
+
+drawer.addCloseListener(e -> {
+  // Gérer l'événement de fermeture du tiroir
+});
+```
+
+## Exemple : Sélecteur de contact
+
+Le composant `Drawer` expose du contenu supplémentaire sans perturber la vue actuelle. Cet exemple place un tiroir au centre en bas, contenant une liste de contacts défilante.
+
+Chaque contact affiche un avatar, un nom, un emplacement et un bouton d'action pour un accès rapide aux détails ou à la communication. Cette approche fonctionne bien pour créer des outils compacts comme des sélecteurs de contacts, des panneaux de paramètres ou des notifications.
+
+<ComponentDemo
+path='/webforj/drawercontact?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerContactView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/drawer/drawerContact.css'
+height='600px'
+/>
+
+## Exemple : Gestionnaire de tâches
+
+Cet exemple utilise un `Drawer` comme gestionnaire de tâches. Vous pouvez ajouter des tâches, les cocher et effacer celles qui sont complètes. Le pied de page du `Drawer` inclut des contrôles de formulaire pour interagir avec la liste de tâches, et le bouton "Ajouter une tâche" [`Button`](../components/button) se désactive si 50 tâches sont atteintes.
+
+<ComponentDemo
+path='/webforj/drawertask?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerTaskView.java'
+height='600px'
+/>
+
+## Stylisation {#styling}
 
 <TableBuilder name="Drawer" />
-
-## Meilleures pratiques {#best-practices}
-
-Pour garantir une expérience utilisateur optimale lors de l'utilisation du composant `Drawer`, considérez les meilleures pratiques suivantes :
-
-1. **Placement** : Déterminez si le tiroir doit glisser par la gauche, la droite, le haut ou le bas, en fonction de la mise en page de votre application et des considérations d'expérience utilisateur. Prenez en compte les préférences des utilisateurs et les conventions de design.
-
-2. **Accessibilité** : Portez une attention particulière à l'accessibilité. Assurez-vous que les utilisateurs peuvent ouvrir et fermer le tiroir à l'aide de commandes clavier et que les lecteurs d'écran peuvent annoncer sa présence et son état. Fournissez des rôles et des étiquettes ARIA si nécessaire.
-
-3. **Gestes de balayage** : Sur les dispositifs à écran tactile, prenez en charge les gestes de balayage pour ouvrir et fermer le tiroir. C'est un moyen intuitif pour les utilisateurs d'interagir avec lui.

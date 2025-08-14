@@ -3,14 +3,14 @@ sidebar_position: 1
 title: Table
 hide_giscus_comments: true
 sidebar_class_name: has-new-content
-_i18n_hash: 3dde6158741882c0936e6cfe5abdad49
+_i18n_hash: 9e123638ff60f46c96d369bce79da44e
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-table" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="table" location="com/webforj/component/table/Table" top='true'/>
 
-`Table`-luokka on monipuolinen komponentti, joka on suunniteltu esittämään taulukkomuotoista tietoa rakenteellisella ja helposti ymmärrettävällä tavalla. Suunniteltu käsittelemään suuria tietojoukkoja korkealla suorituskyvyllä, tämä komponentti tarjoaa edistyksellisiä visualisointeja ja kattavan tapahtumasarjan dynaamiseen käyttäjävuorovaikutukseen.
+Luokka `Table` on monipuolinen komponentti, joka on suunniteltu esittämään taulukkomuotoista tietoa rakenteellisesti ja helposti ymmärrettävästi. Optimoitu suurten tietoaineistojen käsittelyyn korkealla suorituskyvyllä, tämä komponentti tarjoaa edistyksellisiä visualisointeja ja kattavan valikoiman tapahtumia dynaamiseen käyttäjien sitoutumiseen.
 
 <ComponentDemo 
 path='/webforj/datatable?' 
@@ -23,23 +23,23 @@ height='600px'
 
 ## Taulukon luominen {#creating-a-table}
 
-Taulukon luomiseksi ja täyttämiseksi sovelluksessa voidaan seurata seuraavia vaiheita:
+Jotta voit luoda ja täyttää `Table`-komponentin sovelluksessa, voit seurata seuraavia vaiheita:
 
 ### 1. Luo entiteettiluokka {#1-create-an-entity-class}
 
-Määritä luokka, joka edustaa taulukossa näytettäviä entiteettejä (dataa). Esimerkissä tämä luokka on MusicRecord.
+Määrittele luokka, joka edustaa niitä entiteettejä (dataa), jotka haluat näyttää taulukossa. Esimerkissä tämä luokka on MusicRecord.
 
 ```java
 public class MusicRecord {
-    // Kentät ja metodit, jotka edustavat jokaisen levyn attribuutteja
+    // Kentät ja metodit, jotka edustavat kunkin tietueen ominaisuuksia
 }
 ```
 
-### 2. Luo varasto {#2-create-a-repository}
+### 2. Luo repository {#2-create-a-repository}
 
-Kun entiteettiluokka on luotu, käytä tätä täyttämään kokoelma näistä entiteeteistä haluamallasi datalla.
+Kun entiteettiluokka on luotu, käytä sitä täyttämään kokoelma näistä entiteeteistä halutulla datalla.
 
-Tästä datasta on luotava `Repository`, jota käytetään `Table`:ssa. `CollectionRepository`-luokka on tarjottu muuntamaan mikä tahansa voimassa oleva Java-kokoelma käytettäväksi `Repository`:ksi, jolloin oman `Repository`-luokan toteuttamista ei tarvita.
+Tästä datasta on luotava `Repository`, jota käytetään `Table`-komponentissa. `CollectionRepository`-luokka on saatavilla, jotta voit muuttaa minkä tahansa kelvollisen Java-kokoelman käytettävissä olevaksi `Repositoryksi`, jolloin oman `Repository`-luokan toteuttamista ei tarvitse.
 
 ```java
 List<MusicRecord> data = new Gson().fromJson(
@@ -51,9 +51,9 @@ List<MusicRecord> data = new Gson().fromJson(
 CollectionRepository<MusicRecord> dataRepository = new CollectionRepository<>(data);
 ```
 
-### 3. Luodaan `Table` ja lisätään sarakkeita {#3-instantiate-table-and-add-columns}
+### 3. Instansoi `Table` ja lisää sarakkeet {#3-instantiate-table-and-add-columns}
 
-Luo uusi `Table`-objekti ja käytä yhtä tarjotusta tehdasmenetelmästä lisätäksesi haluamasi sarakkeet juuri luotuun `Table`:een:
+Instansoi uusi `Table`-objekti ja käytä yhtä tarjottuista tehdastekniikoista lisätäksesi halutut sarakkeet juuri luotuun `Table`-komponenttiin:
 
 ```java
 Table<MusicRecord> table = new Table<>();
@@ -66,17 +66,18 @@ table.addColumn("Hinta", MusicRecord::getCost);
 
 ### 4. Aseta `Table`-data {#4-set-the-table-data}
 
-Lopuksi, aseta edellisessä vaiheessa luodun `Table`:n `Repository`:
+Lopuksi, aseta edellisessä vaiheessa luotun `Table`-komponentin `Repository`:
 
 ```java
 table.setRepository(Service.getMusicRecords());
 ```
 
 :::info
-Vaihtoehtoisesti `setItems()`-metodille voidaan välittää mikä tahansa voimassa oleva Java-kokoelma, joka luo taustalla `CollectionRepository`-luokan puolestasi.
+Vaihtoehtoisesti, `setItems()`-metodille voidaan antaa mikä tahansa kelvollinen Java-kokoelma, joka luo taustalla `CollectionRepository`-komponentin sinulle. 
 :::
 
-Alla on esimerkki yllä mainittujen vaiheiden toteuttamisesta perus `Table`-komponentin luomiseksi:
+Alla on esimerkki yllä olevista vaiheista, jotka on toteutettu luomaan perus `Table`-komponentti:
+
 
 <ComponentDemo 
 path='/webforj/tablebasic?' 
@@ -85,3 +86,7 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/hea
 'https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
 height='600px'
 />
+
+## Tyylittely
+
+<TableBuilder name="Table" />

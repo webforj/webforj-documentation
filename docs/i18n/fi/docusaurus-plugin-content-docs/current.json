@@ -88,7 +88,7 @@
     "description": "The label for category Styling in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Managing Resources": {
-    "message": "Resurssienhallinta",
+    "message": "Resurssinhallinta",
     "description": "The label for category Managing Resources in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Configuration": {
@@ -112,7 +112,7 @@
     "description": "The label for category Repository in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Architecture": {
-    "message": "Arkkitehtuuri",
+    "message": "Architecture",
     "description": "The label for category Architecture in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Upgrading Guides": {

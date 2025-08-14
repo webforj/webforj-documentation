@@ -1,6 +1,6 @@
 {
   "theme.docs.translationNotice": {
-    "message": "Diese Seite wurde automatisch übersetzt. Für genauere Informationen besuchen Sie bitte die offizielle Dokumentation.",
+    "message": "Diese Seite wurde automatisch übersetzt. Bitte besuchen Sie die offizielle Dokumentation für genauere Informationen.",
     "description": "Translation notice for non-English pages"
   },
   "component.askMenu.chatgpt.label": {
@@ -76,7 +76,7 @@
     "description": "artifactId description"
   },
   "component.archetype.table.version.desc": {
-    "message": "Versionsnummer festlegen. Gängige Konvention: MAJOR.MINOR-SNAPSHOT, z. B. 1.0-SNAPSHOT, wobei SNAPSHOT anzeigt, dass das Projekt in Entwicklung ist.",
+    "message": "Versionsnummer festlegen. Gängige Konvention: MAJOR.MINOR-SNAPSHOT, z. B. 1.0-SNAPSHOT.",
     "description": "version description"
   },
   "component.archetype.table.flavor.desc": {
@@ -100,7 +100,7 @@
     "description": "Conclusion text"
   },
   "theme.ErrorPageContent.title": {
-    "message": "Die Seite wurde geschlossen.",
+    "message": "Die Seite ist geschlossen.",
     "description": "The title of the fallback page when the page crashed"
   },
   "theme.BackToTopButton.buttonAriaLabel": {
@@ -486,7 +486,7 @@
     "description": "The text explains that there are no results for the following search"
   },
   "theme.SearchModal.noResultsScreen.suggestedQueryText": {
-    "message": "Versuchen Sie zu suchen nach",
+    "message": "Suchen nach",
     "description": "The text for the suggested query when no results are found for the following search"
   },
   "theme.SearchModal.noResultsScreen.reportMissingResultsText": {
@@ -530,7 +530,7 @@
     "description": "The unlisted content banner title"
   },
   "theme.contentVisibility.unlistedBanner.message": {
-    "message": "Diese Seite ist nicht erreichbar.",
+    "message": "Diese Seite ist nicht verfügbar.",
     "description": "The unlisted content banner message"
   },
   "theme.contentVisibility.draftBanner.title": {
@@ -626,7 +626,7 @@
     "description": "Description for properties section"
   },
   "tableBuilder.sections.reflectedAttributes": {
-    "message": "Gespiegelte Attribute",
+    "message": "Gespiegelte Eigenschaften",
     "description": "Section heading for reflected attributes table"
   },
   "tableBuilder.descriptions.reflectedAttributes": {

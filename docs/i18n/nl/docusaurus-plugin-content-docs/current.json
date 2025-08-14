@@ -32,7 +32,7 @@
     "description": "The label for category Route Hierarchy in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Building UIs": {
-    "message": "UI maken",
+    "message": "UI ontwerpen",
     "description": "The label for category Building UIs in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Archetypes": {
@@ -88,7 +88,7 @@
     "description": "The label for category Styling in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Managing Resources": {
-    "message": "Beheer hulpmiddelen",
+    "message": "Hulpmiddelen beheren",
     "description": "The label for category Managing Resources in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Configuration": {
