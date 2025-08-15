@@ -5,7 +5,6 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.microsoft.playwright.options.WaitUntilState;
 import com.webforj.samples.pages.element.ElementInputEventPage;
 import com.webforj.samples.views.BaseTest;
 
@@ -21,11 +20,11 @@ public class ElementInputEventIT extends BaseTest {
 
     @Test
     public void testEventListener() {
-        elementInputEventPage.getInput().fill("Hello World");
-        elementInputEventPage.getInput().press("Enter");
+        elementInputEventPage.getInputField().fill("Hello World");
+        elementInputEventPage.getInputField().press("Enter");
 
-        assertThat(elementInputEventPage.getDialogBox().locator("header")).hasText("Input Event");
-        assertThat(elementInputEventPage.getDialogBox().locator("section")).hasText("Hello World");
+        assertThat(elementInputEventPage.getHeader()).hasText("Input Event");
+        assertThat(elementInputEventPage.getSection()).hasText("Hello World");
 
         elementInputEventPage.getOKButton().click();
     }

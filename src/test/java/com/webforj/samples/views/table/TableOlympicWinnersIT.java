@@ -23,18 +23,11 @@ public class TableOlympicWinnersIT extends BaseTest {
 
     @Test
     public void testColumnPinning() {
+        assertThat(tableOlympicWinnersPage.getTotalHeader()).hasCSS("position", "sticky");
+        assertThat(tableOlympicWinnersPage.getAthleteHeader()).hasCSS("position", "sticky");
 
-        String totalPosition = tableOlympicWinnersPage.getTotalHeader().evaluate("el => getComputedStyle(el).position").toString();
-        assertEquals("sticky", totalPosition);
-
-        String athletePosition = tableOlympicWinnersPage.getAthleteHeader().evaluate("el => getComputedStyle(el).position").toString();
-        assertEquals("sticky", athletePosition);
-
-        String right = tableOlympicWinnersPage.getTotalRow().evaluate("el => getComputedStyle(el).right").toString();
-        assertEquals("0px", right);
-
-        String left = tableOlympicWinnersPage.getAthleteRow().evaluate("el => getComputedStyle(el).left").toString();
-        assertEquals("0px", left);
+        assertThat(tableOlympicWinnersPage.getTotalRow()).hasCSS("right", "0px");
+        assertThat(tableOlympicWinnersPage.getAthleteRow()).hasCSS("left", "0px");
     }
 
     @Test

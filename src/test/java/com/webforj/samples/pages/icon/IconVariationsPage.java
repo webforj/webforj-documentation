@@ -8,7 +8,6 @@ public class IconVariationsPage extends BasePage {
 
     private static final String ROUTE = "iconvariations";
 
-    // IconVariations locators
     private final Locator envelopeIcon;
     private final Locator solidEnvelopeIcon;
     private final Locator instagramIcon;

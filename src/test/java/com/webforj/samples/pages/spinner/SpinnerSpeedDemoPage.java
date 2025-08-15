@@ -9,7 +9,7 @@ public class SpinnerSpeedDemoPage extends BasePage {
 
     private static final String ROUTE = "spinnerspeeddemo";
 
-    private final Locator spinner11;
+    private final Locator spinner;
     private final Locator slowButton;
     private final Locator mediumButton;
     private final Locator fastButton;
@@ -18,19 +18,19 @@ public class SpinnerSpeedDemoPage extends BasePage {
     public SpinnerSpeedDemoPage(Page page) {
         super(page);
 
-        spinner11 = page.locator("dwc-spinner[theme='primary']");
-        slowButton = page.locator("dwc-button:has-text('Slow')");
-        mediumButton = page.locator("dwc-button:has-text('Medium')");
-        fastButton = page.locator("dwc-button:has-text('Fast')");
-        pauseButton = page.locator("dwc-button:has-text('Pause')");
+        this.spinner = page.locator("dwc-spinner");
+        this.slowButton = page.locator("dwc-button:has-text('Slow')").locator("button");
+        this.mediumButton = page.locator("dwc-button:has-text('Medium')").locator("button");
+        this.fastButton = page.locator("dwc-button:has-text('Fast')").locator("button");
+        this.pauseButton = page.locator("dwc-button:has-text('Pause')").locator("button");
     }
 
     public static String getRoute() {
         return ROUTE;
     }
 
-    public Locator getSpinner11() {
-        return spinner11;
+    public Locator getSpinner() {
+        return spinner;
     }
 
     public Locator getSlowButton() {

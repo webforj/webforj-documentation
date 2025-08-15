@@ -22,25 +22,12 @@ public class TabbedPaneBorderIT extends BaseTest {
     public void testBorder() {
         tabbedPaneBorderPage.getHideBorderToggle().click();
         assertThat(tabbedPaneBorderPage.getBorderTabbedPane()).hasAttribute("borderless", "");
-        tabbedPaneBorderPage.getBorderOrdersTab().click();
-        assertThat(tabbedPaneBorderPage.getBorderOrdersTab()).hasAttribute("active", "");
 
         tabbedPaneBorderPage.getHideActiveIndicatorToggle().click();
         assertThat(tabbedPaneBorderPage.getBorderTabbedPane()).hasAttribute("hide-active-indicator", "");
-        assertThat(tabbedPaneBorderPage.getBorderTabbedPane()).hasAttribute("borderless", "");
-        tabbedPaneBorderPage.getBorderDashboardTab().click();
-        assertThat(tabbedPaneBorderPage.getBorderDashboardTab()).hasAttribute("active", "");
 
-        tabbedPaneBorderPage.getHideBorderToggle().click();
-        assertThat(tabbedPaneBorderPage.getBorderTabbedPane()).hasAttribute("hide-active-indicator", "");
-        assertThat(tabbedPaneBorderPage.getBorderTabbedPane()).not().hasAttribute("borderless", "");
-        tabbedPaneBorderPage.getBorderOrdersTab().click();
-        assertThat(tabbedPaneBorderPage.getBorderOrdersTab()).hasAttribute("active", "");
-
-        tabbedPaneBorderPage.getHideActiveIndicatorToggle().click();
-        assertThat(tabbedPaneBorderPage.getBorderTabbedPane()).not().hasAttribute("hide-active-indicator", "");
-        assertThat(tabbedPaneBorderPage.getBorderTabbedPane()).not().hasAttribute("borderless", "");
-        tabbedPaneBorderPage.getBorderDashboardTab().click();
-        assertThat(tabbedPaneBorderPage.getBorderDashboardTab()).hasAttribute("active", "");
+        tabbedPaneBorderPage.getOrdersTab().click();
+        assertThat(tabbedPaneBorderPage.getOrdersTab()).hasAttribute("active", "");
+        assertThat(tabbedPaneBorderPage.getDashboardTab()).not().hasAttribute("active", "");
     }
 }

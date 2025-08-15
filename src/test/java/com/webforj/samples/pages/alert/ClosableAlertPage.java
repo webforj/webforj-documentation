@@ -9,18 +9,23 @@ public class ClosableAlertPage extends BasePage {
 
     private static final String ROUTE = "closablealert";
 
-    private final Locator closableAlert;
-    private final Locator closableAlertText;
     private final Locator closableAlertButton;
     private final Locator showAlertButton;
+    private final Locator closableAlert;
+    private final Locator alertHost;
+    private final Locator buttonHost;
+    private final Locator alertButtonHost;
+    
 
     public ClosableAlertPage(Page page) {
         super(page);
 
-        closableAlert = page.locator("dwc-alert[theme='info']");
-        closableAlertText = page.locator("text='Heads up! This alert can be dismissed.'");
-        closableAlertButton = page.locator("dwc-icon-button.hydrated");
-        showAlertButton = page.locator("dwc-button:has-text('Show alert')");
+        this.alertHost = page.locator("dwc-alert");
+        this.closableAlert = alertHost.locator("div[role='alert']");
+        this.buttonHost = alertHost.locator("dwc-icon-button[part='close-button']");
+        this.closableAlertButton = buttonHost.locator("button.nfv");
+        this.alertButtonHost = page.locator("dwc-button:has-text('Show Alert')");
+        this.showAlertButton = alertButtonHost.locator("button[type='button']");
     }
 
     public static String getRoute() {
@@ -29,10 +34,6 @@ public class ClosableAlertPage extends BasePage {
 
     public Locator getClosableAlert() {
         return closableAlert;
-    }
-
-    public Locator getClosableAlertText() {
-        return closableAlertText;
     }
 
     public Locator getClosableAlertButton() {

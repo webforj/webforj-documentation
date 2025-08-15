@@ -9,17 +9,18 @@ public class ElementInputEventPage extends BasePage {
 
     private static final String ROUTE = "elementinputevent";
 
-    private final Locator input;
-    private final Locator label;
-    private final Locator dialogBox;
+    private final Locator inputField;
     private final Locator OKButton;
+    private final Locator header;
+    private final Locator section;
 
     public ElementInputEventPage(Page page) {
         super(page);
 
-        input = page.locator("input.element--input");
-        label = page.locator("div.element--label");
-        dialogBox = page.locator("dwc-dialog");
+        inputField = page.locator(".element--input");
+        Locator shadowRootDialogBox = page.locator("dwc-dialog[type='msgbox']");
+        header = shadowRootDialogBox.locator("header");
+        section = shadowRootDialogBox.locator("section");
         OKButton = page.locator("text=OK");
     }
 
@@ -27,16 +28,16 @@ public class ElementInputEventPage extends BasePage {
         return ROUTE;
     }
 
-    public Locator getInput() {
-        return input;
+    public Locator getInputField() {
+        return inputField;
     }
 
-    public Locator getLabel() {
-        return label;
+    public Locator getHeader() {
+        return header;
     }
 
-    public Locator getDialogBox() {
-        return dialogBox;
+    public Locator getSection() {
+        return section;
     }
 
     public Locator getOKButton() {

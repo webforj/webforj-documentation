@@ -12,22 +12,23 @@ public class ChartRedrawPage extends BasePage {
     private final Locator valueForFacebook;
     private final Locator valueForLinkedIn;
     private final Locator redrawChartButton;
-    private final Locator warningMessage;
+    private final Locator instagramWarningMessage;
     private final Locator warningToast;
-    private final Locator title;
 
     private static final String ROUTE = "chartredraw";
 
     public ChartRedrawPage(Page page) {
         super(page);
-        valueForInstagram = page.locator("dwc-field:has-text('Instagram') >> input");
-        valueForTwitter = page.locator("dwc-field:has-text('Twitter') >> input");
-        valueForFacebook = page.locator("dwc-field:has-text('Facebook') >> input");
-        valueForLinkedIn = page.locator("dwc-field:has-text('LinkedIn') >> input");
-        redrawChartButton = page.locator("dwc-button:has-text('Redraw Chart')");
-        warningMessage = page.locator("dwc-alert.bbj-noborder");
+
+        valueForInstagram = page.locator("dwc-field:has-text('Instagram')").locator("input");
+        valueForTwitter = page.locator("dwc-field:has-text('Twitter')").locator("input");
+        valueForFacebook = page.locator("dwc-field:has-text('Facebook')").locator("input");
+        valueForLinkedIn = page.locator("dwc-field:has-text('LinkedIn')").locator("input");
+        redrawChartButton = page.locator("dwc-button")
+                .filter(new Locator.FilterOptions().setHasText("Redraw Chart"))
+                .locator("[part~='control']");
+        instagramWarningMessage = page.locator("dwc-alert.bbj-noborder");
         warningToast = page.locator("dwc-toast-group[placement='bottom']");
-        title = page.locator("text:has-text('Social Media Following')");
     }
 
     public void updateChart(int instagram, int twitter, int facebook, int linkedIn) {
@@ -63,16 +64,12 @@ public class ChartRedrawPage extends BasePage {
         return redrawChartButton;
     }
 
-    public Locator getWarningMessage() {
-        return warningMessage;
+    public Locator getInstagramWarningMessage() {
+        return instagramWarningMessage;
     }
 
-    public Locator getWarningToast(){
+    public Locator getWarningToast() {
         return warningToast;
-    }
-
-    public Locator getTitle() {
-        return title;
     }
 
     public void cleanField(Locator locator) {

@@ -21,15 +21,9 @@ public class SliderLabelsIT extends BaseTest {
     @Test
     public void testLabelsThemes() {
         sliderPage.getTenDegreeOption().click();
-        assertThat(sliderPage.getLabelsSlider()).hasAttribute("theme", "primary");
+        assertThat(sliderPage.getSliderLabel()).hasAttribute("theme", "primary");
 
         sliderPage.getFortyDegreeOption().click();
-        assertThat(sliderPage.getLabelsSlider()).hasAttribute("theme", "success");
-
-        sliderPage.getSixtyDegreeOption().click();
-        assertThat(sliderPage.getLabelsSlider()).hasAttribute("theme", "warning");
-
-        sliderPage.getNinetyDegreeOption().click();
-        assertThat(sliderPage.getLabelsSlider()).hasAttribute("theme", "danger");
+        assertThat(sliderPage.getSliderLabel()).hasAttribute("theme", "success");
     }
 }

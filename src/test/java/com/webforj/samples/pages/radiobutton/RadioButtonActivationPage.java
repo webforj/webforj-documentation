@@ -10,11 +10,13 @@ public class RadioButtonActivationPage extends BasePage {
     private static final String ROUTE = "radiobuttonactivation";
 
     private final Locator autoActivatedInput;
+    private final Locator shadowRootRadio;
 
     public RadioButtonActivationPage(Page page) {
         super(page);
 
-        autoActivatedInput = page.locator("dwc-radio:has-text('Auto Activated')").nth(0).locator("input");
+        this.shadowRootRadio = page.locator("dwc-radio").nth(0);
+        this.autoActivatedInput = shadowRootRadio.locator("input");
     }
 
     public static String getRoute() {

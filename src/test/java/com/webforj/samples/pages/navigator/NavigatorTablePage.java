@@ -16,14 +16,18 @@ public class NavigatorTablePage extends BasePage {
     private final Locator prevButton;
     private final Locator nextButton;
     private final Locator lastButton;
+    private final Locator shadowRootNavigator;
+    private final Locator shadowRootTable;
 
     public NavigatorTablePage(Page page) {
         super(page);
 
-        firstButton = page.locator("button[title='Goto first page']");
-        prevButton = page.locator("button[title='Goto previous page']");
-        nextButton = page.locator("button[title='Goto next page']");
-        lastButton = page.locator("button[title='Goto last page']");
+        this.shadowRootTable = page.locator("dwc-table");
+        this.shadowRootNavigator = page.locator("dwc-navigator");
+        this.firstButton = shadowRootNavigator.locator("button[title='Goto first page']");
+        this.prevButton = shadowRootNavigator.locator("button[title='Goto previous page']");
+        this.nextButton = shadowRootNavigator.locator("button[title='Goto next page']");
+        this.lastButton = shadowRootNavigator.locator("button[title='Goto last page']");
     }
 
     public static String getRoute() {
@@ -47,19 +51,19 @@ public class NavigatorTablePage extends BasePage {
     }
 
     public void assertCurrentPage(int pageNumber) {
-        Locator pageButton = page.locator("button[title='Goto page " + pageNumber + "']");
+        Locator pageButton = shadowRootNavigator.locator("button[title='Goto page " + pageNumber + "']");
         assertThat(pageButton).hasAttribute("aria-current", "true");
     }
 
     public void assertCurrentPageData(int pageNumber, String expectedData) {
-        Locator firstDataCell = page.locator("tbody tr:nth-child(2) td:nth-child(1)");
+        Locator firstDataCell = shadowRootTable.locator("tbody tr:nth-child(2) td:nth-child(1)");
         String actualData = firstDataCell.innerText().trim();
         assertEquals(expectedData, actualData,
                 "First data cell should contain: " + expectedData);
     }
 
     public void goToPage(int pageNumber) {
-        Locator pageButton = page.locator("button[title='Goto page " + pageNumber + "']");
+        Locator pageButton = shadowRootNavigator.locator("button[title='Goto page " + pageNumber + "']");
         pageButton.click();
     }
 

@@ -13,8 +13,8 @@ public class ChartGalleryPage extends BasePage {
 
     public ChartGalleryPage(Page page) {
         super(page);
-        ganttChart = page.locator("div.chart-div > p:has-text('Gantt Chart')");
-        links = page.locator(".chart-gallery a");
+        ganttChart = page.locator("a:has-text('Gantt Chart')");
+        links = page.locator(".chart-gallery > a");
    }
 
     public static String getRoute() {

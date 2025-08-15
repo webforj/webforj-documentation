@@ -17,10 +17,10 @@ public class ProgressBarBasicPage extends BasePage {
     public ProgressBarBasicPage(Page page) {
         super(page);
 
-        progressBar = page.locator("dwc-progressbar");
-        startButton = page.locator("dwc-button:has-text('Start')");
-        pauseButton = page.locator("dwc-button:has-text('Pause')");
-        resetButton = page.locator("dwc-button:has-text('Reset')");
+        this.progressBar = page.locator("dwc-progressbar");
+        this.startButton = page.locator("dwc-button:has-text('Start')").locator("button");
+        this.pauseButton = page.locator("dwc-button:has-text('Pause')").locator("button");
+        this.resetButton = page.locator("dwc-button:has-text('Reset')").locator("button");
     }
 
     public static String getRoute() {

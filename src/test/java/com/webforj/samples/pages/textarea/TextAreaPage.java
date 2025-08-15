@@ -13,15 +13,20 @@ public class TextAreaPage extends BasePage {
     private final Locator charactersCount;
     private final Locator submitButton;
     private final Locator donationToaster;
+    private final Locator textAreaHost;
 
     public TextAreaPage(Page page) {
         super(page);
 
-        mainLabel = page.locator("dwc-textarea >> label");
-        feedbackArea = page.locator("dwc-textarea >> textarea");
-        charactersCount = page.locator("div[style*='place-content: center'] > p");
-        submitButton = page.locator("dwc-button:has-text('Submit Feedback')");
-        donationToaster = page.locator("dwc-toast-group");
+        this.textAreaHost = page.locator("dwc-textarea");
+
+        this.mainLabel = textAreaHost.locator("label");
+        this.feedbackArea = textAreaHost.locator("[part~='input']");
+        this.charactersCount = textAreaHost.locator("xpath=following-sibling::div[1]/p");
+        this.submitButton = page.locator("dwc-button")
+                .filter(new Locator.FilterOptions().setHasText("Submit Feedback"))
+                .locator("[part~='control']");
+        this.donationToaster = page.locator("dwc-toast-group").locator("dwc-toast");
     }
 
     public static String getRoute() {

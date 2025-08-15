@@ -15,9 +15,9 @@ public class CheckboxIndeterminatePage extends BasePage {
     public CheckboxIndeterminatePage(Page page) {
         super(page);
 
-        parentCheckbox = page.locator("dwc-checkbox:has-text('Parent')");
-        child1CheckboxInput = page.locator("dwc-checkbox:has-text('Child 1') >> input");
-        child2CheckboxInput = page.locator("dwc-checkbox:has-text('Child 2') >> input");
+        this.parentCheckbox = page.locator("dwc-checkbox:has-text('Parent')");
+        this.child1CheckboxInput = page.locator("dwc-checkbox:has-text('Child 1') >> input");
+        this.child2CheckboxInput = page.locator("dwc-checkbox:has-text('Child 2') >> input");
     }
 
     public static String getRoute() {

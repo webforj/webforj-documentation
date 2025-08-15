@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.login.LoginCustomFieldsPage;
-import com.webforj.samples.utils.WaitUtil;
 import com.webforj.samples.views.BaseTest;
 
 public class LoginCustomFieldsIT extends BaseTest {
@@ -26,10 +25,10 @@ public class LoginCustomFieldsIT extends BaseTest {
         loginCustomFieldsPage.getPassword().fill("admin");
         loginCustomFieldsPage.getSignInButton().click();
 
-        WaitUtil.waitForVisible(loginCustomFieldsPage.getLogoutButton(), 10000);
+        assertThat(loginCustomFieldsPage.getLogoutButton()).isVisible();
         loginCustomFieldsPage.getLogoutButton().click();
 
-        assertThat(loginCustomFieldsPage.getHeader()).isVisible();
+        assertThat(loginCustomFieldsPage.getUsername()).isVisible();
     }
 
     @Test
@@ -40,7 +39,7 @@ public class LoginCustomFieldsIT extends BaseTest {
         loginCustomFieldsPage.getPassword().fill("admin");
         loginCustomFieldsPage.getSignInButton().click();
 
-        WaitUtil.waitForVisible(loginCustomFieldsPage.getErrorMessage(), 10000);
+        assertThat(loginCustomFieldsPage.getErrorHost()).hasAttribute("opened", "");
         assertThat(loginCustomFieldsPage.getErrorMessage()).isVisible();
     }
 
@@ -51,7 +50,7 @@ public class LoginCustomFieldsIT extends BaseTest {
         loginCustomFieldsPage.getPassword().fill(" ");
         loginCustomFieldsPage.getSignInButton().click();
 
-        WaitUtil.waitForVisible(loginCustomFieldsPage.getErrorMessage(), 10000);
+        assertThat(loginCustomFieldsPage.getErrorHost()).hasAttribute("opened", "");
         assertThat(loginCustomFieldsPage.getErrorMessage()).isVisible();
     }
 
@@ -62,7 +61,7 @@ public class LoginCustomFieldsIT extends BaseTest {
         loginCustomFieldsPage.getPassword().fill("wrongpass");
         loginCustomFieldsPage.getSignInButton().click();
 
-        WaitUtil.waitForVisible(loginCustomFieldsPage.getErrorMessage(), 10000);
+        assertThat(loginCustomFieldsPage.getErrorHost()).hasAttribute("opened", "");
         assertThat(loginCustomFieldsPage.getErrorMessage()).isVisible();
     }
 
@@ -73,7 +72,7 @@ public class LoginCustomFieldsIT extends BaseTest {
         loginCustomFieldsPage.getPassword().fill("admin");
         loginCustomFieldsPage.getSignInButton().click();
 
-        WaitUtil.waitForVisible(loginCustomFieldsPage.getErrorMessage(), 10000);
+        assertThat(loginCustomFieldsPage.getErrorHost()).hasAttribute("opened", "");
         assertThat(loginCustomFieldsPage.getErrorMessage()).isVisible();
     }
 }

@@ -12,17 +12,21 @@ public class TabbedPaneBorderPage extends BasePage {
     private final Locator hideBorderToggle;
     private final Locator hideActiveIndicatorToggle;
     private final Locator borderTabbedPane;
-    private final Locator borderDashboardTab;
-    private final Locator borderOrdersTab;
+    private final Locator dashboardTab;
+    private final Locator ordersTab;
 
     public TabbedPaneBorderPage(Page page) {
         super(page);
 
-        hideBorderToggle = page.locator("dwc-radio:has-text('Hide Border') >> input");
-        hideActiveIndicatorToggle = page.locator("dwc-radio:has-text('Hide Active Indicator') >> input");
-        borderTabbedPane = page.locator("dwc-tabbed-pane[placement='top']");
-        borderDashboardTab = borderTabbedPane.locator("dwc-tab").nth(0);
-        borderOrdersTab = borderTabbedPane.locator("dwc-tab").nth(1);
+        this.hideBorderToggle = page.locator("dwc-radio").filter(
+                new Locator.FilterOptions().setHasText("Hide Border")).locator("input");
+        this.hideActiveIndicatorToggle = page.locator("dwc-radio").filter(
+                new Locator.FilterOptions().setHasText("Hide Active Indicator")).locator("input");
+        this.borderTabbedPane = page.locator("dwc-tabbed-pane");
+        this.dashboardTab = borderTabbedPane.locator("dwc-tab").filter(
+                new Locator.FilterOptions().setHasText("Dashboard"));
+        this.ordersTab = borderTabbedPane.locator("dwc-tab").filter(
+                new Locator.FilterOptions().setHasText("Orders"));
     }
 
     public static String getRoute() {
@@ -41,11 +45,11 @@ public class TabbedPaneBorderPage extends BasePage {
         return borderTabbedPane;
     }
 
-    public Locator getBorderDashboardTab() {
-        return borderDashboardTab;
+    public Locator getDashboardTab() {
+        return dashboardTab;
     }
 
-    public Locator getBorderOrdersTab() {
-        return borderOrdersTab;
+    public Locator getOrdersTab() {
+        return ordersTab;
     }
 }

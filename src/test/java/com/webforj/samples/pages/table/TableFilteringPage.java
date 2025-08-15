@@ -11,13 +11,18 @@ public class TableFilteringPage extends BasePage {
     private final Locator titleFilterInput;
     private final Locator tableRows;
     private final Locator firstTitleCell;
+    private final Locator tableHost;
+    private final Locator fieldHost;
 
     public TableFilteringPage(Page page) {
         super(page);
 
-        titleFilterInput = page.locator("#field-1");
-        tableRows = page.locator("tbody tr[part*='row']");
-        firstTitleCell = page.locator("tr td").first();
+        this.tableHost = page.locator("dwc-table");
+        this.fieldHost = page.locator("dwc-field");
+
+        this.titleFilterInput = fieldHost.locator("#field-1");
+        this.tableRows = tableHost.locator("tbody tr[part*='row']");
+        this.firstTitleCell = tableHost.locator("tr td").first();
     }
 
     public static String getRoute() {

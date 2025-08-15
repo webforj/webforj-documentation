@@ -9,12 +9,15 @@ public class TableColumnComparatorPage extends BasePage {
 
     private final Locator numberColumnHeader;
     private final Locator numberCells;
+    private final Locator dataTableHost;
 
     public TableColumnComparatorPage(Page page) {
         super(page);
 
-        numberColumnHeader = page.locator("th[data-column='Number']");
-        numberCells = page.locator("td[data-cell*='-Number'] div[part='cell-label']");
+        this.dataTableHost = page.locator("dwc-table");
+
+        this.numberColumnHeader = dataTableHost.locator("th[data-column='Number']");
+        this.numberCells = dataTableHost.locator("td[data-cell*='-Number'] div[part='cell-label']");
 
     }
 

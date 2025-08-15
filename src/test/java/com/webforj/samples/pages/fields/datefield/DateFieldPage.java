@@ -10,11 +10,18 @@ public class DateFieldPage extends BasePage {
 
     private final Locator departureInput;
     private final Locator returnInput;
+    private static Locator departureInputHost;
+    private static Locator returnInputHost;
 
     public DateFieldPage(Page page) {
         super(page);
-        departureInput = page.locator("dwc-field:has-text('Departure Date')");
-        returnInput = page.locator("dwc-field:has-text('Return Date')");
+
+        departureInputHost = page.locator("dwc-field[type='date']")
+                .filter(new Locator.FilterOptions().setHas(page.locator("label:has-text('Departure Date')")));
+        departureInput = departureInputHost.locator("[part~='input']:visible").first();
+        returnInputHost = page.locator("dwc-field[type='date']")
+                .filter(new Locator.FilterOptions().setHas(page.locator("label:has-text('Return Date')")));
+        returnInput = returnInputHost.locator("[part~='input']:visible").first();
     }
 
     public static String getRoute() {
@@ -27,5 +34,13 @@ public class DateFieldPage extends BasePage {
 
     public Locator getReturnInput() {
         return returnInput;
+    }
+
+    public Locator getDepartureInputHost() {
+        return departureInputHost;
+    }
+
+    public Locator getReturnInputHost() {
+        return returnInputHost;
     }
 }

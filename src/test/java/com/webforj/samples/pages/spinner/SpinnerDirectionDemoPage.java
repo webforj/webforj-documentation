@@ -16,9 +16,9 @@ public class SpinnerDirectionDemoPage extends BasePage {
     public SpinnerDirectionDemoPage(Page page) {
         super(page);
 
-        spinner = page.locator("dwc-spinner.hydrated");
-        clockwiseButton = page.locator("dwc-button:has-text('Clockwise') >> button").first();
-        counterClockwiseButton = page.locator("dwc-button:has-text('Counterclockwise') >> button").first();
+        this.spinner = page.locator("dwc-spinner");
+        this.clockwiseButton = page.locator("dwc-button:has-text('Clockwise')").locator("button").first();
+        this.counterClockwiseButton = page.locator("dwc-button:has-text('Counterclockwise')").locator("button").first();
     }
 
     public static String getRoute() {

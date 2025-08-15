@@ -9,32 +9,31 @@ public class LoginCustomFieldsPage extends BasePage {
 
     private static final String ROUTE = "logincustomfields";
 
-    private final Locator header;
     private final Locator username;
     private final Locator password;
     private final Locator signInButton;
     private final Locator errorMessage;
     private final Locator logoutButton;
     private final Locator customerID;
+    private final Locator errorHost;
 
     public LoginCustomFieldsPage(Page page) {
         super(page);
 
-        header = page.locator("dwc-dialog > header");
-        username = page.locator("dwc-field#username >> input");
-        password = page.locator("dwc-field#password >> input");
-        signInButton = page.locator("dwc-button[part='submit-button']");
-        errorMessage = page.locator("dwc-alert[part='error']");
-        logoutButton = page.locator("div:has-text('Logout') > dwc-button");
-        customerID = page.locator("dwc-field:has-text('Customer ID') >> div > div > input");
+        Locator loginHost = page.locator("dwc-login");
+        this.errorHost = loginHost.locator("dwc-alert[part='error'][opened]");
+
+        this.customerID = page.locator("dwc-field[slot='before-form']").locator("[part~='input']");
+        this.username = loginHost.locator("#username").locator("[part~='input']");
+        this.password = loginHost.locator("#password").locator("[part~='input']");
+        this.signInButton = loginHost.locator("[part='submit-button']").locator("[part~='control']");
+        this.errorMessage = errorHost.locator("[part~='control'][role='alert']");
+        this.logoutButton = page.locator("dwc-button").filter(new Locator.FilterOptions().setHasText("Logout"))
+                .locator("[part~='control']");
     }
 
     public static String getRoute() {
         return ROUTE;
-    }
-
-    public Locator getHeader() {
-        return header;
     }
 
     public Locator getUsername() {
@@ -59,5 +58,9 @@ public class LoginCustomFieldsPage extends BasePage {
 
     public Locator getCustomderID() {
         return customerID;
+    }
+
+    public Locator getErrorHost() {
+        return errorHost;
     }
 }

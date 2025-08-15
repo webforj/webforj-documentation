@@ -10,13 +10,16 @@ public class TableColumnPinningPage extends BasePage {
     private final Locator editButtonPosition;
     private final Locator editButton;
     private final Locator dialogBox;
+    private final Locator dataTableHost;
 
     public TableColumnPinningPage(Page page) {
         super(page);
 
-        editButtonPosition = page.locator("td[part~='cell-pinned-right']").first();
-        editButton = page.locator("td dwc-button").first();
-        dialogBox = page.locator("dwc-dialog[type='msgbox'] >> section");
+        this.dataTableHost = page.locator("dwc-table");
+
+        this.editButtonPosition = dataTableHost.locator("td[part~='cell-pinned-right']").first();
+        this.editButton = dataTableHost.locator("td dwc-button").first();
+        this.dialogBox = page.locator("dwc-dialog[type='msgbox']").locator("section");
     }
 
     public static String getRoute() {

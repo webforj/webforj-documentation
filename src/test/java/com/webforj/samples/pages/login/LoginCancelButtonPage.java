@@ -15,8 +15,9 @@ public class LoginCancelButtonPage extends BasePage {
     public LoginCancelButtonPage(Page page) {
         super(page);
 
-        cancelButton = page.locator("dwc-button >> button[name='Cancel']");
-        signInButton = page.locator("dwc-button[part='submit-button']");
+        Locator shadowRoot = page.locator("dwc-login");
+        cancelButton = shadowRoot.locator("dwc-button[part='cancel-button']").locator("button");
+        signInButton = shadowRoot.locator("dwc-button[part='submit-button']").locator("button");
     }
 
     public static String getRoute() {

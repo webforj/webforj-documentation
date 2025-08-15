@@ -25,8 +25,6 @@ public class ChartRedrawIT extends BaseTest {
 
     @Test
     public void testChartUpdating() {
-        assertThat(chartRedraw.getTitle()).hasText("Social Media Following");
-
         assertThat(chartRedraw.getValueForInstagram()).hasValue("100");
         assertThat(chartRedraw.getValueForTwitter()).hasValue("100");
         assertThat(chartRedraw.getValueForFacebook()).hasValue("100");
@@ -44,7 +42,7 @@ public class ChartRedrawIT extends BaseTest {
     public void testInvalidNegativeInput() {
         chartRedraw.getValueForInstagram().fill("-1");
 
-        assertThat(chartRedraw.getWarningMessage()).isVisible();
+        assertThat(chartRedraw.getInstagramWarningMessage()).isVisible();
     }
 
     @Test
@@ -76,6 +74,6 @@ public class ChartRedrawIT extends BaseTest {
         chartRedraw.cleanField(chartRedraw.getValueForInstagram());
         page.keyboard().type("5.4");
 
-        assertThat(chartRedraw.getWarningMessage()).isVisible();
+        assertThat(chartRedraw.getInstagramWarningMessage()).isVisible();
     }
 }

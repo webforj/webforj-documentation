@@ -14,8 +14,8 @@ public class ColumnsLayoutAlignmentPage extends BasePage {
     public ColumnsLayoutAlignmentPage(Page page) {
         super(page);
 
-        dwcColumnsLayout = page.locator("dwc-columns-layout");
-        submitButton = page.locator("dwc-button:has-text('Submit')");
+        this.dwcColumnsLayout = page.locator("dwc-columns-layout");
+        this.submitButton = page.locator("dwc-button:has-text('Submit')");
     }
 
     public static String getRoute() {

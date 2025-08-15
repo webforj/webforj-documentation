@@ -14,7 +14,7 @@ public class QRPropertiesPage extends BasePage {
     public QRPropertiesPage(Page page) {
         super(page);
 
-        qrPropertiesCanvas = page.locator("sl-qr-code >> canvas");
+        qrPropertiesCanvas = page.locator("sl-qr-code >>> canvas[part='base'][class='qr-code']");
     }
 
     public static String getRoute() {

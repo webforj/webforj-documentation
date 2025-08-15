@@ -11,22 +11,22 @@ public class ButtonEventPage extends BasePage {
 
     private static final String ROUTE = "buttonevent";
 
-    private final Locator button;
+    private final Locator clickMeButton;
     private final Locator counter;
 
     public ButtonEventPage(Page page) {
         super(page);
 
-        button = page.locator("dwc-button:has-text('Click Me!')");
-        counter = page.locator("div").filter(new Locator.FilterOptions().setHasText(Pattern.compile("^Current Counter: \\d+$")));
+        this.clickMeButton = page.locator("dwc-button:has-text('Click Me!')").locator("button");
+        this.counter = page.getByText(Pattern.compile("^\\s*Current Counter:\\s*\\d+\\s*$")).first();
     }
 
     public static String getRoute() {
         return ROUTE;
     }
 
-    public Locator getButton() {
-        return button;
+    public Locator getClickMeButton() {
+        return clickMeButton;
     }
 
     public Locator getCounter() {

@@ -122,16 +122,11 @@ public class WaitUtil {
         return waitUntil(condition, DEFAULT_TIMEOUT, 100);
     }
 
-    /*
-     * Helper method to assert timeout error when clicking a locator which is not
-     * clickable as expected.
-     */
-    public static void assertClickTimeout(Locator locator, String elementDescription) {
+    public static void assertClickTimeout(Locator locator) {
         PlaywrightException exception = assertThrows(PlaywrightException.class, () -> {
-            locator.click(new Locator.ClickOptions().setTimeout(5000));
-        }, "Expected timeout when clicking: " + elementDescription);
+            locator.click(new Locator.ClickOptions().setTimeout(2500));
+        });
 
-        assertTrue(exception.getMessage().contains("Timeout"),
-                "Expected timeout error for: " + elementDescription);
+        assertTrue(exception.getMessage().contains("Timeout"));
     }
 }

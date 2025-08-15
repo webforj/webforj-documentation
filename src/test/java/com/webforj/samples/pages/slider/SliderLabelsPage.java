@@ -13,16 +13,19 @@ public class SliderLabelsPage extends BasePage {
     private final Locator fortyDegreeOption;
     private final Locator sixtyDegreeOption;
     private final Locator ninetyDegreeOption;
-    private final Locator labelsSlider;
+    private final Locator sliderLabel;
+    private final Locator shadowRootSlider;
 
     public SliderLabelsPage(Page page) {
         super(page);
 
-        tenDegreeOption = page.locator("div[data-value='10']");
-        fortyDegreeOption = page.locator("div[data-value='40']");
-        sixtyDegreeOption = page.locator("div[data-value='60']");
-        ninetyDegreeOption = page.locator("div[data-value='90']");
-        labelsSlider = page.locator("dwc-slider[orientation='horizontal']");
+        this.shadowRootSlider = page.locator("dwc-slider");
+
+        this.tenDegreeOption = shadowRootSlider.locator("div[data-value='10']");
+        this.fortyDegreeOption = shadowRootSlider.locator("div[data-value='40']");
+        this.sixtyDegreeOption = shadowRootSlider.locator("div[data-value='60']");
+        this.ninetyDegreeOption = shadowRootSlider.locator("div[data-value='90']");
+        this.sliderLabel = shadowRootSlider;
     }
 
     public static String getRoute() {
@@ -45,7 +48,7 @@ public class SliderLabelsPage extends BasePage {
         return ninetyDegreeOption;
     }
 
-    public Locator getLabelsSlider() {
-        return labelsSlider;
+    public Locator getSliderLabel() {
+        return sliderLabel;
     }
 }

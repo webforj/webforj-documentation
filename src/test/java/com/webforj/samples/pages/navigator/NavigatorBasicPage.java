@@ -18,11 +18,12 @@ public class NavigatorBasicPage extends BasePage {
     public NavigatorBasicPage(Page page) {
         super(page);
 
-        firstButton = page.locator("button[title='Goto first page']");
-        prevButton = page.locator("button[title='Goto previous page']");
-        nextButton = page.locator("button[title='Goto next page']");
-        lastButton = page.locator("button[title='Goto last page']");
-        navigatorValue = page.locator("div[part='area area-middle']");
+        Locator shadowRoot = page.locator("dwc-navigator");
+        firstButton = shadowRoot.locator("button[title='Goto first page']");
+        prevButton = shadowRoot.locator("button[title='Goto previous page']");
+        nextButton = shadowRoot.locator("button[title='Goto next page']");
+        lastButton = shadowRoot.locator("button[title='Goto last page']");
+        navigatorValue = shadowRoot.locator("div[part='area area-middle']");
     }
 
     public static String getRoute() {

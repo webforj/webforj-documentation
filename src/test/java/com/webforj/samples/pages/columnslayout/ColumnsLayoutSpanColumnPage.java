@@ -13,6 +13,7 @@ public class ColumnsLayoutSpanColumnPage extends BasePage {
 
     public ColumnsLayoutSpanColumnPage(Page page) {
         super(page);
+        
         this.dwcColumnsLayout = page.locator("dwc-columns-layout");
         this.email = page.locator("dwc-field:has-text('Email')");
     }

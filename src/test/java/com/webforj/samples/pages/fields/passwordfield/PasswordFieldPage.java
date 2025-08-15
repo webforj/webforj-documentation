@@ -14,7 +14,9 @@ public class PasswordFieldPage extends BasePage {
 
     public PasswordFieldPage(Page page) {
         super(page);
-        passwordField = page.locator("dwc-field:has-text('Password') >> input");
+
+        Locator shadowRootPasswordField = page.locator("dwc-field[type='password']");
+        passwordField = shadowRootPasswordField.locator("input#field-1");
         eyeOffIcon = page.locator("dwc-icon-button[part='eye-off-icon']");
     }
 

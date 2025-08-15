@@ -14,21 +14,24 @@ public class TableMultiSelectionPage extends BasePage {
 
     private final Locator masterCheckbox;
     private final Locator checkboxes;
-    private final Locator headerText;
     private final Locator recordItems;
     private final Locator okButton;
     private final Locator noRecordsMessage;
+    private final Locator tableHost;
+    private final Locator dialogHost;
 
     public TableMultiSelectionPage(Page page) {
         super(page);
         pageTitle = "Table Multiple Selection";
 
-        masterCheckbox = page.locator("#checkbox-1");
-        checkboxes = page.locator("dwc-checkbox input[type='checkbox']");
-        headerText = page.locator("dwc-dialog header[slot='header']");
-        recordItems = page.locator("dwc-dialog ul li");
-        okButton = page.getByRole(AriaRole.CONTENTINFO).getByText("OK");
-        noRecordsMessage = page.locator("dwc-dialog >> text=There are no records selected");
+        this.tableHost = page.locator("dwc-table");
+        this.dialogHost = page.locator("dwc-dialog");
+
+        this.masterCheckbox = tableHost.locator("dwc-checkbox").locator("#checkbox-1");
+        this.checkboxes = tableHost.locator("dwc-checkbox").locator("input[type='checkbox']");
+        this.recordItems = dialogHost.locator("ul li");
+        this.okButton = dialogHost.getByRole(AriaRole.CONTENTINFO).getByText("OK");
+        this.noRecordsMessage = dialogHost.locator("text='There are no records selected'");
     }
 
     public static String getRoute() {
@@ -55,10 +58,6 @@ public class TableMultiSelectionPage extends BasePage {
 
     public Locator getCheckboxes() {
         return checkboxes;
-    }
-
-    public Locator getHeaderText() {
-        return headerText;
     }
 
     public Locator getRecordItems() {

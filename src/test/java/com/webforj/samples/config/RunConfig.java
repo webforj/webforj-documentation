@@ -4,6 +4,7 @@ public class RunConfig {
   private static final String DEFAULT_BROWSER = "chromium";
   private static final boolean DEFAULT_HEADLESS = true;
   private static final int DEFAULT_TIMEOUT = 30000;
+  private static final int DEFAULT_SLOW_MO = 0;
 
   static {
     // Parse webforj.e2e if provided
@@ -93,6 +94,10 @@ public class RunConfig {
 
   public static int getDefaultTimeout() {
     return getConfigInt("default.timeout", DEFAULT_TIMEOUT);
+  }
+
+  public static int getSlowMo() {
+    return getConfigInt("slowmo", DEFAULT_SLOW_MO);
   }
 
 }

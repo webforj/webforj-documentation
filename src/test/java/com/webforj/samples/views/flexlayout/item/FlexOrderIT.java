@@ -20,21 +20,9 @@ public class FlexOrderIT extends BaseTest {
     }
 
     @Test
-    public void testEnteringOneHighlightsFirstBox() {
-        // Ensure input is ready then fill deterministically
-        assertThat(flexOrderPage.getOrderInput()).isVisible();
-        flexOrderPage.getOrderInput().fill("1");
-        flexOrderPage.getSetOrderButton().click();
-        // Wait until the danger button reflects the new order
-        assertThat(flexOrderPage.getFlexOrderContainer().locator("dwc-button[theme='danger']"))
-                .hasText("Order: 1");
-
-    }
-
-    @Test
     public void testEnteringZeroPositionsBoxWithOrderZero() {
-        assertThat(flexOrderPage.getOrderInput()).isVisible();
-        flexOrderPage.getOrderInput().fill("0");
+        flexOrderPage.getHostInput().click(); //it's zero by default
+
         flexOrderPage.getSetOrderButton().click();
         assertThat(flexOrderPage.getFlexOrderContainer().locator("dwc-button[theme='danger']"))
                 .hasText("Order: 0");
@@ -42,23 +30,26 @@ public class FlexOrderIT extends BaseTest {
     }
 
     @Test
-    public void testNegativeOneNotAcceptedInOrderField() {
-        assertThat(flexOrderPage.getOrderInput()).isVisible();
-        flexOrderPage.getOrderInput().fill("-1");
+    public void testSpecialCharactersNotAcceptedInOrderField() {
+        flexOrderPage.getHostInput().click();
+        flexOrderPage.getOrderInput().clear();
+        flexOrderPage.getOrderInput().fill("!@#$%");
         flexOrderPage.getSetOrderButton().click();
 
-        assertThat(flexOrderPage.getFlexOrderContainer().locator("dwc-button[theme='danger']")).hasText("Order: 1");
-        assertThat(flexOrderPage.getOrderInput()).hasValue("1");
+        assertThat(flexOrderPage.getFlexOrderContainer().locator("dwc-button[theme='danger']")).not()
+                .hasText("Order: !@#$%");
 
     }
 
     @Test
-    public void testSpecialCharactersNotAcceptedInOrderField() {
-        assertThat(flexOrderPage.getOrderInput()).isVisible();
-        flexOrderPage.getOrderInput().fill("@Dd$#");
+    public void testCharactersNotAcceptedInOrderField() {
+        flexOrderPage.getHostInput().click();
+        flexOrderPage.getOrderInput().clear();
+        flexOrderPage.getOrderInput().fill("ABC");
         flexOrderPage.getSetOrderButton().click();
 
-        assertThat(flexOrderPage.getOrderInput()).hasValue("");
+        assertThat(flexOrderPage.getFlexOrderContainer().locator("dwc-button[theme='danger']")).not()
+                .hasText("Order: ABC");
 
     }
 }

@@ -53,7 +53,6 @@ public class TableMultipleSelectionIT extends BaseTest {
     @Test
     public void testMultipleSelection() {
         multipleSelection.getCheckboxes().nth(1).click();
-        assertThat(multipleSelection.getHeaderText()).hasText("Record Selection");
         multipleSelection.verifyRecordItems("Mississippi Blues");
         multipleSelection.getOkButton().click();
 

@@ -16,9 +16,9 @@ public class TabbedPanePlacementPage extends BasePage {
     public TabbedPanePlacementPage(Page page) {
         super(page);
 
-        placementDropdown = page.locator("dwc-dropdown.hydrated");
-        placementListBox = page.locator("dwc-listbox");
-        placementTabbedPane = page.locator("dwc-tabbed-pane[theme='default']");
+        this.placementDropdown = page.locator("dwc-choicebox").locator("dwc-dropdown");
+        this.placementListBox = page.locator("dwc-listbox").locator("ul");
+        this.placementTabbedPane = page.locator("dwc-tabbed-pane");
     }
 
     public static String getRoute() {

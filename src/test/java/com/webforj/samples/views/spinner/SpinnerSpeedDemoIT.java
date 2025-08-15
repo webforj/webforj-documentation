@@ -20,22 +20,22 @@ public class SpinnerSpeedDemoIT extends BaseTest {
 
     @Test
     public void testPauseAndResumeFunctionality() {
-        assertThat(spinnerPage.getSpinner11())
+        assertThat(spinnerPage.getSpinner())
                 .hasAttribute("style", "--_dwc-spinner-speed: 1000ms;");
 
         spinnerPage.getPauseButton().click();
-        assertThat(spinnerPage.getSpinner11()).hasAttribute("paused", "");
+        assertThat(spinnerPage.getSpinner()).hasAttribute("paused", "");
 
         spinnerPage.getFastButton().click();
-        assertThat(spinnerPage.getSpinner11())
+        assertThat(spinnerPage.getSpinner())
                 .hasAttribute("style", "--_dwc-spinner-speed: 200ms;");
 
         spinnerPage.getMediumButton().click();
-        assertThat(spinnerPage.getSpinner11())
+        assertThat(spinnerPage.getSpinner())
                 .hasAttribute("style", "--_dwc-spinner-speed: 500ms;");
 
         spinnerPage.getSlowButton().click();
-        assertThat(spinnerPage.getSpinner11())
+        assertThat(spinnerPage.getSpinner())
                 .hasAttribute("style", "--_dwc-spinner-speed: 1000ms;");
     }
 }

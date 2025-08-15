@@ -18,11 +18,12 @@ public class TextFieldPage extends BasePage {
 
     public TextFieldPage(Page page) {
         super(page);
-        usernameInput = page.locator("dwc-field:has-text('Enter Name') >> input");
-        emailInput = page.locator("dwc-field:has-text('Enter Email') >> input");
-        phoneInput = page.locator("dwc-field:has-text('Enter Phone Number') >> input");
-        urlInput = page.locator("dwc-field:has-text('Enter URL') >> input");
-        searchInput = page.locator("dwc-field:has-text('Enter Your Search') >> input");
+
+        usernameInput = page.locator("dwc-field[type='text']").locator("input");
+        emailInput = page.locator("dwc-field[type='email']").locator("input");
+        phoneInput = page.locator("dwc-field[type='tel']").locator("input");
+        urlInput = page.locator("dwc-field[type='url']").locator("input");
+        searchInput = page.locator("dwc-field[type='search']").locator("input");
         alertPopover = page.locator("div[class*='dwc-positioner']");
     }
 

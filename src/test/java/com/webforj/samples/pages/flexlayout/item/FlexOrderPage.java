@@ -1,6 +1,7 @@
 package com.webforj.samples.pages.flexlayout.item;
 
 import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Locator.FilterOptions;
 import com.microsoft.playwright.Page;
 
 import com.webforj.samples.pages.BasePage;
@@ -13,16 +14,19 @@ public class FlexOrderPage extends BasePage {
     private final Locator orderInput;
     private final Locator setOrderButton;
     private final Locator dwcAlert;
+    private final Locator hostInput;
 
     public FlexOrderPage(Page page) {
         super(page);
 
+        hostInput = page.locator("dwc-numberfield")
+                .filter(new FilterOptions().setHas(page.locator("label:has-text('Order')")));
+        
         flexOrderContainer = page.locator(".button__container--single-row");
-        // Target the editable input inside dwc-numberfield (avoid picking mask/label
-        // elements)
-        orderInput = page.locator("dwc-numberfield:has-text('Order') >> input[part='input']");
-        setOrderButton = page.locator("dwc-button:has-text('Set Order')");
-        dwcAlert = page.locator("dwc-alert-popover[theme='danger']");
+        orderInput = hostInput.locator("input[part^='input']:visible").first();
+        Locator shadowRootOrderButton = page.locator("dwc-button[theme='default']");
+        setOrderButton = shadowRootOrderButton.locator("button[type='button']");
+        dwcAlert = hostInput.locator("dwc-alert-popover[theme='danger']");
     }
 
     public static String getRoute() {
@@ -43,6 +47,10 @@ public class FlexOrderPage extends BasePage {
 
     public Locator getDwcAlert() {
         return dwcAlert;
+    }
+
+    public Locator getHostInput() {
+        return hostInput;
     }
 
     public void cleanField(Locator locator) {

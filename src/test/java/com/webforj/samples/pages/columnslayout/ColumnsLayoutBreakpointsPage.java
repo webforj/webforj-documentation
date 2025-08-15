@@ -12,6 +12,7 @@ public class ColumnsLayoutBreakpointsPage extends BasePage {
 
     public ColumnsLayoutBreakpointsPage(Page page) {
         super(page);
+        
         this.dwcColumnsLayout = page.locator("dwc-columns-layout");
     }
 

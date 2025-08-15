@@ -16,16 +16,13 @@ public class QREventIT extends BaseTest {
     public void setupQREvents() {
         navigateToRoute(QREventPage.getRoute());
         qrCodeEventsPage = new QREventPage(page);
-        page.waitForLoadState();
     }
 
     @Test
     public void testQREvents() {
-        qrCodeEventsPage.getQrCode().waitFor();
         qrCodeEventsPage.getQrCode().click();
 
-        assertThat(qrCodeEventsPage.getMessageBox()).isVisible();
+        assertThat(qrCodeEventsPage.getDialogBox()).isVisible();
         assertThat(qrCodeEventsPage.getMessageHeader()).containsText("You clicked the QR code");
-
     }
 }

@@ -18,19 +18,31 @@ public class SliderTickSpacingPage extends BasePage {
     private final Locator snapToggle;
     private final Locator snapThumb;
     private final Locator lowerHandle;
+    private final Locator shadowRootSlider;
+    private final Locator majorFieldHost;
+    private final Locator minorFieldHost;
 
     public SliderTickSpacingPage(Page page) {
         super(page);
 
-        majorTickInput = page.locator("dwc-field:has-text('Major Tick') >> input");
-        minorTickInput = page.locator("dwc-field:has-text('Minor Tick') >> input");
-        majorTicks = page.locator(".noUi-value-horizontal");
-        minorTicks = page.locator(".noUi-marker-horizontal");
-        tickSpacingControl = page.locator("dwc-slider >> div[part='control']");
-        tickToggle = page.locator("dwc-radio:has-text('Show Ticks')");
-        snapToggle = page.locator("dwc-radio:has-text('Snap to Ticks')");
-        snapThumb = page.locator(".noUi-touch-area");
-        lowerHandle = page.locator(".noUi-handle-lower");
+        this.shadowRootSlider = page.locator("dwc-slider");
+        this.majorFieldHost = page.locator("dwc-field")
+                .filter(new Locator.FilterOptions().setHasText("Major Tick"));
+        this.minorFieldHost = page.locator("dwc-field")
+                .filter(new Locator.FilterOptions().setHasText("Minor Tick"));
+
+        this.majorTickInput = majorFieldHost.locator("input[type='number']");
+        this.minorTickInput = minorFieldHost.locator("input[type='number']");
+
+        this.majorTicks = shadowRootSlider.locator(".noUi-value-horizontal");
+        this.minorTicks = shadowRootSlider.locator(".noUi-marker-horizontal");
+        this.tickSpacingControl = shadowRootSlider.locator("div[part='control']");
+        this.snapToggle = page.locator("dwc-radio").filter(
+                new Locator.FilterOptions().setHasText("Snap to Ticks"));
+        this.tickToggle = page.locator("dwc-radio").filter(
+                new Locator.FilterOptions().setHasText("Show Ticks"));
+        this.snapThumb = shadowRootSlider.locator(".noUi-touch-area");
+        this.lowerHandle = shadowRootSlider.locator(".noUi-handle-lower");
     }
 
     public static String getRoute() {

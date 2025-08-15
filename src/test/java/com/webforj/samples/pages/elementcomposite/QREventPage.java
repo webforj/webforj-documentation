@@ -10,15 +10,16 @@ public class QREventPage extends BasePage {
     private static final String ROUTE = "qrevent";
 
     private final Locator qrCode;
-    private final Locator messageBox;
     private final Locator messageHeader;
+    private final Locator dialogBox;
 
     public QREventPage(Page page) {
         super(page);
 
-        qrCode = page.locator("sl-qr-code >> canvas");
-        messageBox = page.locator("dwc-dialog");
-        messageHeader = messageBox.locator("header");
+        Locator shadowRootQRCode = page.locator("sl-qr-code");
+        qrCode = shadowRootQRCode.locator("canvas");
+        dialogBox = page.locator("dwc-dialog[type='msgbox']");
+        messageHeader = dialogBox.locator("header");
     }
 
     public static String getRoute() {
@@ -29,8 +30,8 @@ public class QREventPage extends BasePage {
         return qrCode;
     }
 
-    public Locator getMessageBox() {
-        return messageBox;
+    public Locator getDialogBox() {
+        return dialogBox;
     }
 
     public Locator getMessageHeader() {

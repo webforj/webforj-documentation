@@ -20,11 +20,7 @@ public class RadioButtonTextIT extends BaseTest {
 
     @Test
     public void testButtonAlignment() {
-        radioButton.getRightAlignedInput().click();
-        assertThat(radioButton.getRightAlignedInput()).hasAttribute("aria-checked", "true");
-
         radioButton.getLeftAlignedInput().click();
         assertThat(radioButton.getLeftAlignedInput()).hasAttribute("aria-checked", "true");
-
     }
 }

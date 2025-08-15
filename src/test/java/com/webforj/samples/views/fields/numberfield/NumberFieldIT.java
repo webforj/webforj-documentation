@@ -30,7 +30,8 @@ public class NumberFieldIT extends BaseTest {
     public void testNonNumericNumber() {
         try {
             numberFieldPage.getNumberField().fill("abcd");
-        } catch (PlaywrightException e) {
+        } 
+        catch (PlaywrightException e) {
         }
         assertThat(numberFieldPage.getNumberField()).hasValue("");
 

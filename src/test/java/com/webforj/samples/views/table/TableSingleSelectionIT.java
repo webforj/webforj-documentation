@@ -5,23 +5,25 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.microsoft.playwright.options.AriaRole;
-
 import com.webforj.samples.pages.table.TableSingleSelectionPage;
 import com.webforj.samples.views.BaseTest;
 
 public class TableSingleSelectionIT extends BaseTest {
 
+    private TableSingleSelectionPage tableSingleSelectionPage;
+
     @BeforeEach
     public void setupTableSingleSelection() {
         navigateToRoute(TableSingleSelectionPage.getRoute());
+        tableSingleSelectionPage = new TableSingleSelectionPage(page);
     }
 
     @Test
     public void testSingleItemSelectionAndConfirmationDialog() {
-        page.getByText("Mississippi Blues").click();
-        assertThat(page.getByRole(AriaRole.BANNER)).containsText("Record Number 000001");
-        assertThat(page.locator("section"))
+        tableSingleSelectionPage.getFirstArtist().click();
+        
+        assertThat(tableSingleSelectionPage.getHeaderMessage()).containsText("Record Number 000001");
+        assertThat(tableSingleSelectionPage.getDialogMessage())
                 .hasText("You have selected Mississippi Blues by John Hurt & The Ramblers");
     }
 }

@@ -9,13 +9,15 @@ public class TableSortingPage extends BasePage {
 
     private final Locator titleSorting;
     private final Locator firstTitleCell;
+    private final Locator tableHost;
 
     public TableSortingPage(Page page) {
         super(page);
 
-        titleSorting = page.locator("dwc-table >> text=Title");
-        firstTitleCell = page.locator("tr[part*='row'] td[part*='cell'] div[part='cell-label']")
-                .first();
+        this.tableHost = page.locator("dwc-table");
+
+        this.titleSorting = tableHost.locator("text=Title");
+        this.firstTitleCell = tableHost.locator("tr[part*='row-first'] td[part*='cell-first']");
     }
 
     public static String getRoute() {

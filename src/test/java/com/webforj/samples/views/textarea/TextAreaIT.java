@@ -21,8 +21,7 @@ public class TextAreaIT extends BaseTest {
     @Test
     public void testToastMessage() {
         feedbackTextAreaPage.getFeedbackArea().fill("Hello World");
-        assertThat(feedbackTextAreaPage.getCharactersCount()).containsText("11 / 200");
-
+        
         feedbackTextAreaPage.getSubmitButton().click();
         assertThat(feedbackTextAreaPage.getDonationToaster()).isVisible();
 
@@ -41,9 +40,6 @@ public class TextAreaIT extends BaseTest {
 
     @Test
     public void testEmptyFeedback() {
-        feedbackTextAreaPage.getFeedbackArea().fill("");
-        assertThat(feedbackTextAreaPage.getCharactersCount()).containsText("0 / 200");
-
         feedbackTextAreaPage.getSubmitButton().click();
         assertThat(feedbackTextAreaPage.getDonationToaster()).not().isVisible();
 

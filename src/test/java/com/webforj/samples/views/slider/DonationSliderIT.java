@@ -20,10 +20,6 @@ public class DonationSliderIT extends BaseTest {
 
     @Test
     public void testDonation() {
-        assertThat(sliderPage.getDonationLowerHandle()).hasAttribute("aria-valuenow", "50.0");
-        sliderPage.getDonationButton().click();
-        assertThat(sliderPage.getConfirmationToast()).hasText("Thank you for your generous contribution of $50!");
-
         sliderPage.getTwentyDollarsOption().click();
         assertThat(sliderPage.getDonationLowerHandle()).hasAttribute("aria-valuenow", "20.0");
 

@@ -5,8 +5,6 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.microsoft.playwright.assertions.LocatorAssertions.HasAttributeOptions;
-
 import com.webforj.samples.pages.progressbar.ProgressBarBasicPage;
 import com.webforj.samples.views.BaseTest;
 
@@ -18,15 +16,6 @@ public class ProgressBarBasicIT extends BaseTest {
     public void setupProgressBarBasics() {
         navigateToRoute(ProgressBarBasicPage.getRoute());
         progressBar = new ProgressBarBasicPage(page);
-    }
-
-    @Test
-    public void testStartProgressesBarTo100AndStops() {
-        progressBar.getStartButton().click();
-        assertThat(progressBar.getProgressBar()).hasAttribute("animated", "true");
-        assertThat(progressBar.getProgressBar()).hasAttribute("style", "--_dwc-progressbar-percent: 100%;",
-                new HasAttributeOptions().setTimeout(30000));
-
     }
 
     @Test

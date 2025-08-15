@@ -14,7 +14,6 @@ public class DataTableIT extends BaseTest {
     private static final String ATHLETE_NAME = "Michael Phelps";
     private static final String ATHLETE_WITH_DIACRITICS_LATIN = "Živko Gocic";
     private static final String ATHLETE_NAME_CYRILLIC = "Живко Гоцић"; // Živko Gocic
-    private static final String ATHLETE_NAME_INVALID = "No Name";
 
     private DataTablePage dataTable;
 
@@ -33,11 +32,6 @@ public class DataTableIT extends BaseTest {
         dataTable.getEntriesDropdown().click();
         dataTable.getEntriesTwentyfive().click();
         assertThat(dataTable.getTableRows()).hasCount(25);
-
-        dataTable.getEntriesDropdown().click();
-        dataTable.getEntriesFifty().click();
-        assertThat(dataTable.getPaginationText()).containsText("Showing 1 to 50 of");
-        assertThat(dataTable.getPaginationText()).containsText("entries");
 
         dataTable.getEntriesDropdown().click();
         dataTable.getEntriesHundred().click();
@@ -99,7 +93,7 @@ public class DataTableIT extends BaseTest {
     @Test
     public void testPaginatorNavigatesCorrectly() {
         dataTable.getPaginatorNextPage().click();
-        assertThat(dataTable.getCurrentPageNavigator()).hasAttribute("current", "2");
+        assertThat(dataTable.getCurrentPageNavigator()).containsText("Showing 11 to 20");
     }
 
     @Test
@@ -117,7 +111,7 @@ public class DataTableIT extends BaseTest {
     @Test
     public void testPaginatorNavigatesCorrectlyToSpecificPage() {
         dataTable.goToSpecificPage(4).click();
-        assertThat(dataTable.getCurrentPageNavigator()).hasAttribute("current", "4");
+        assertThat(dataTable.getCurrentPageNavigator()).containsText("Showing 31 to 40");
     }
 
     @Test

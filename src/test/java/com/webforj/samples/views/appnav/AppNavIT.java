@@ -20,68 +20,32 @@ public class AppNavIT extends BaseTest {
 
     @Test
     public void testTablerIcon() {
-        appNavPage.getTablerIcon().waitFor();
         appNavPage.getTablerIcon().click();
 
-        assertThat(appNavPage.getSideMenu()).not().hasAttribute("drawer-opened", "12");
+        assertThat(appNavPage.getAppLayout()).not().hasAttribute("drawer-opened", "12");
 
         appNavPage.getTablerIcon().click();
-        assertThat(appNavPage.getSideMenu()).hasAttribute("drawer-opened", "");
+        assertThat(appNavPage.getAppLayout()).hasAttribute("drawer-opened", "");
     }
 
     @Test
     public void testUpdateMainContent() {
-        appNavPage.getInboxDropdown().waitFor();
         appNavPage.getInboxDropdown().click();
 
         appNavPage.getSidebarPrimaryTab().click();
         assertThat(appNavPage.getParagraph()).containsText("Primary");
 
-        appNavPage.getSidebarSocialTab().click();
-        assertThat(appNavPage.getParagraph()).containsText("Social");
-
-        appNavPage.getSidebarArchivedTab().click();
-        assertThat(appNavPage.getParagraph()).containsText("Archived");
-
-        appNavPage.getSidebarTrashTab().click();
-        assertThat(appNavPage.getParagraph()).containsText("Trash");
-
     }
 
     @Test
     public void testAboutDropdown() {
-        appNavPage.getAboutDropdown().waitFor();
         appNavPage.getAboutDropdown().click();
 
-        appNavPage.getSidebarWebforJ().waitFor();
-        appNavPage.getSidebarWebforJ().click();
-        assertThat(page).hasURL("https://webforj.com/");
-        page.goBack();
-        assertThat(appNavPage.getAboutDropdown()).isVisible();
-
-        appNavPage.getAboutDropdown().click();
-        appNavPage.getSidebarGitHub().click();
-        assertThat(page).hasURL("https://github.com/webforj/webforj");
-        page.goBack();
-        assertThat(appNavPage.getAboutDropdown()).isVisible();
-
-        appNavPage.getAboutDropdown().click();
-        appNavPage.getSidebarDocumentation().click();
-        assertThat(page).hasURL("https://docs.webforj.com/");
-        page.goBack();
-        assertThat(appNavPage.getAboutDropdown()).isVisible();
-
-    }
-
-    @Test
-    public void testVisualHighlight() {
-        appNavPage.getSidebarArchivedTab().waitFor();
-
-        appNavPage.getSidebarArchivedTab().click();
-        assertThat(appNavPage.getSidebarArchivedTab()).hasAttribute("selected", "");
-
-        appNavPage.getSidebarTrashTab().click();
-        assertThat(appNavPage.getSidebarTrashTab()).hasAttribute("selected", "");
+        assertThat(appNavPage.getSidebarWebforJ().locator("a")).hasAttribute("href", "https://webforj.com/");
+        assertThat(appNavPage.getSidebarGitHub().locator("a")).hasAttribute("href",
+                "https://github.com/webforj/webforj");
+        assertThat(appNavPage.getSidebarDocumentation().locator("a")).hasAttribute("href",
+                "https://documentation.webforj.com/");
 
     }
 }

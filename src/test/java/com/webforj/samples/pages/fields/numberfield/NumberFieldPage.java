@@ -13,7 +13,9 @@ public class NumberFieldPage extends BasePage {
 
     public NumberFieldPage(Page page) {
         super(page);
-        numberField = page.locator("dwc-field:has-text('Quantity') >> input");
+
+        Locator shadowRootNumberField = page.locator("dwc-field[type='number']");
+        numberField = shadowRootNumberField.locator("input#field-1");
     }
 
     public static String getRoute() {

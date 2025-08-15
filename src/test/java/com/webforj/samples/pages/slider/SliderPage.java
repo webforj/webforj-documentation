@@ -16,9 +16,9 @@ public class SliderPage extends BasePage {
     public SliderPage(Page page) {
         super(page);
 
-        muteIcon = page.locator(".volume-off");
-        unmuteIcon = page.locator("dwc-icon-button.volume-2");
-        lowerHandle = page.locator(".noUi-handle-lower");
+       this.muteIcon = page.locator("dwc-icon-button[name='volume-off']");
+       this.unmuteIcon = page.locator("dwc-icon-button[name='volume-2']");
+       this.lowerHandle = page.locator("dwc-slider").locator(".noUi-handle-lower");
     }
 
     public static String getRoute() {

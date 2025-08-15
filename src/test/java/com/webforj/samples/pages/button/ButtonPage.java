@@ -1,5 +1,7 @@
 package com.webforj.samples.pages.button;
 
+import java.util.regex.Pattern;
+
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.webforj.samples.pages.BasePage;
@@ -17,12 +19,15 @@ public class ButtonPage extends BasePage {
     public ButtonPage(Page page) {
         super(page);
 
-        firstName = page.locator("dwc-field:has-text('First Name') >> input");
-        lastName = page.locator("dwc-field:has-text('Last Name') >> input");
-        email = page.locator("dwc-field[type='email'] >> input");
 
-        submitButton = page.locator("dwc-button:has-text('Submit')");
-        clearButton = page.locator("dwc-button:has-text('Clear')");
+        this.firstName = page.getByLabel("First Name");
+        this.lastName = page.getByLabel("Last Name");
+        this.email = page.getByLabel(Pattern.compile("^E-?mail:?$"));
+
+        this.submitButton = page.locator("dwc-button")
+                .filter(new Locator.FilterOptions().setHasText("Submit"));
+        this.clearButton = page.locator("dwc-button")
+                .filter(new Locator.FilterOptions().setHasText("Clear"));
     }
 
     public static String getRoute() {

@@ -10,13 +10,11 @@ public class RadioButtonSwitchPage extends BasePage {
     private static final String ROUTE = "radiobuttonswitch";
 
     private final Locator switchRadio;
-    private final Locator switchInput;
 
     public RadioButtonSwitchPage(Page page) {
         super(page);
 
-        switchRadio = page.locator("dwc-radio:has-text('Switch')");
-        switchInput = switchRadio.locator("input");
+        this.switchRadio = page.locator("dwc-radio.Switch").locator("input");
     }
 
     public static String getRoute() {
@@ -25,9 +23,5 @@ public class RadioButtonSwitchPage extends BasePage {
 
     public Locator getSwitchRadio() {
         return switchRadio;
-    }
-
-    public Locator getSwitchInput() {
-        return switchInput;
     }
 }

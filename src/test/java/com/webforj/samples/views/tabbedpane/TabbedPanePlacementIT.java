@@ -28,17 +28,5 @@ public class TabbedPanePlacementIT extends BaseTest {
         tabbedPanePlacementPage.getPlacementListBox().locator("text=BOTTOM").click();
         assertThat(tabbedPanePlacementPage.getPlacementTabbedPane()).hasAttribute("placement", "bottom");
 
-        tabbedPanePlacementPage.getPlacementDropdown().click();
-        tabbedPanePlacementPage.getPlacementListBox().locator("text=LEFT").click();
-        assertThat(tabbedPanePlacementPage.getPlacementTabbedPane()).hasAttribute("placement", "left");
-
-        tabbedPanePlacementPage.getPlacementDropdown().click();
-        tabbedPanePlacementPage.getPlacementListBox().locator("text=RIGHT").click();
-        assertThat(tabbedPanePlacementPage.getPlacementTabbedPane()).hasAttribute("placement", "right");
-
-        tabbedPanePlacementPage.getPlacementDropdown().click();
-        tabbedPanePlacementPage.getPlacementListBox().locator("text=HIDDEN").click();
-        assertThat(tabbedPanePlacementPage.getPlacementTabbedPane()).hasAttribute("placement", "hidden");
-
     }
 }

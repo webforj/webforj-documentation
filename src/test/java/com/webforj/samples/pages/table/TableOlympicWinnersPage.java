@@ -14,18 +14,21 @@ public class TableOlympicWinnersPage extends BasePage {
     private final Locator rows;
     private final Locator firstRow;
     private final Locator lastRow;
+    private final Locator tableHost;
 
     public TableOlympicWinnersPage(Page page) {
         super(page);
 
-        totalHeader = page.locator("th:nth-child(7)").first();
-        athleteHeader = page.locator("th:nth-child(1)").first();
-        totalRow = page.locator("td:nth-child(7)").first();
-        athleteRow = page.locator("td:nth-child(1)").first();
+        this.tableHost = page.locator("dwc-table");
 
-        rows = page.locator("tr[data-row]");
-        firstRow = rows.first();
-        lastRow = rows.last();
+        this.totalHeader = tableHost.locator("th:nth-child(7)").first();
+        this.athleteHeader = tableHost.locator("th:nth-child(1)").first();
+        this.totalRow = tableHost.locator("td:nth-child(7)").first();
+        this.athleteRow = tableHost.locator("td:nth-child(1)").first();
+
+       this.rows = tableHost.locator("tr[data-row]");
+       this.firstRow = rows.first();
+       this.lastRow = rows.last();
     }
 
     public static String getRoute() {

@@ -15,9 +15,9 @@ public class CheckboxHorizontalTextPage extends BasePage {
     public CheckboxHorizontalTextPage(Page page) {
         super(page);
 
-        leftAlignedCheckbox = page.locator("dwc-checkbox.bbj-reverse-order:has-text('Daily')");
-        monthlyCheckboxLabel = page.locator("dwc-checkbox.bbj-reverse-order:has-text('Monthly') >> label[part='label']");
-        monthlyCheckboxInput = page.locator("dwc-checkbox.bbj-reverse-order:has-text('Monthly') >> input");
+        this.leftAlignedCheckbox = page.locator("dwc-checkbox.bbj-reverse-order:has-text('Daily')");
+        this.monthlyCheckboxLabel = page.locator("dwc-checkbox.bbj-reverse-order:has-text('Monthly') >> label[part='label']");
+        this.monthlyCheckboxInput = page.locator("dwc-checkbox.bbj-reverse-order:has-text('Monthly') >> input");
     }
 
     public static String getRoute() {

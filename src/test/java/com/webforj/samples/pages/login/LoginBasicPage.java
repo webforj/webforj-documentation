@@ -14,21 +14,21 @@ public class LoginBasicPage extends BasePage {
     private final Locator password;
     private final Locator signInButton;
     private final Locator passwordReveal;
-    private final Locator rememberMe;
     private final Locator dwcUsernameField;
     private final Locator dwcPasswordField;
 
     public LoginBasicPage(Page page) {
         super(page);
 
-        header = page.locator("dwc-dialog > header");
-        username = page.locator("dwc-field#username >> input");
-        password = page.locator("dwc-field#password >> input");
-        signInButton = page.locator("dwc-button[part='submit-button']");
-        passwordReveal = page.locator("dwc-icon-button[part='eye-off-icon']");
-        rememberMe = page.locator("#checkbox-1");
-        dwcUsernameField = page.locator("#username");
-        dwcPasswordField = page.locator("#password");
+        Locator shadowRoot = page.locator("dwc-login");
+        Locator shadowRootDialog = shadowRoot.locator("dwc-dialog");
+        header = shadowRoot.locator("dwc-dialog > header");
+        username = shadowRootDialog.locator("dwc-field#username").locator("input");
+        password = shadowRootDialog.locator("dwc-field#password").locator("input");
+        signInButton = shadowRootDialog.locator("dwc-button[part='submit-button']");
+        passwordReveal = shadowRoot.locator("dwc-field#password").locator("dwc-icon-button[part='eye-off-icon']").locator("button");
+        dwcUsernameField = shadowRoot.locator("#username");
+        dwcPasswordField = shadowRoot.locator("#password");
     }
 
     public static String getRoute() {
@@ -53,10 +53,6 @@ public class LoginBasicPage extends BasePage {
 
     public Locator getPasswordReveal() {
         return passwordReveal;
-    }
-
-    public Locator getRememberMe() {
-        return rememberMe;
     }
 
     public Locator getDwcUsernameField() {

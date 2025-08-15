@@ -1,7 +1,6 @@
 package com.webforj.samples.views.table;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.List;
 
@@ -28,7 +27,7 @@ public class TableRichContentIT extends BaseTest {
 
         tableRichContent.getMasterCheckBox().click();
 
-        List<Locator> checkboxes = page.locator("tbody div[part='cell-content-checkbox']").all();
+        List<Locator> checkboxes = tableRichContent.getCheckboxes().all();
 
         for (Locator checkbox : checkboxes) {
             assertThat(checkbox).isChecked();
@@ -42,7 +41,7 @@ public class TableRichContentIT extends BaseTest {
 
     @Test
     public void testIndividualCheckbox() {
-        tableRichContent.getCheckboxInput().click();
+        tableRichContent.getMasterCheckBox().click();
 
         assertThat(tableRichContent.getCheckboxInput()).isChecked();
     }

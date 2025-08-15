@@ -12,14 +12,20 @@ public class BusyDemoPage extends BasePage {
     private final Locator nameInput;
     private final Locator passwordInput;
     private final Locator submitButton;
+    private final Locator busyIndicatorHost;
+    private final Locator nameHost;
+    private final Locator passwordHost;
 
     public BusyDemoPage(Page page) {
         super(page);
 
-        busyIndicator = page.locator("dwc-loading:has-text('Submitting form... Please wait.')");
-        nameInput = page.locator("#field-1");
-        passwordInput = page.locator("#field-2");
-        submitButton = page.locator("dwc-button:has-text('Submit')");
+        this.busyIndicatorHost = page.locator("dwc-loading:has-text('Submitting form... Please wait.')");
+        this.busyIndicator = busyIndicatorHost.locator("dwc-backdrop[part='backdrop']");
+        this.nameHost = page.locator("dwc-field[type='text']").nth(0);
+        this.nameInput = nameHost.locator("input[type='text']");
+        this.passwordHost = page.locator("dwc-field[type='text']").nth(1);
+        this.passwordInput = passwordHost.locator("input[type='text']");
+        this.submitButton = page.locator("dwc-button:has-text('Submit')");
     }
 
     public static String getRoute() {

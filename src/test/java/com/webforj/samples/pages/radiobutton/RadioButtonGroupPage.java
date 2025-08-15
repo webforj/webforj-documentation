@@ -9,43 +9,30 @@ public class RadioButtonGroupPage extends BasePage {
 
     private static final String ROUTE = "radiobuttongroup";
 
-    private final Locator stronglyDisagreeRB;
-    private final Locator disagreeRB;
-    private final Locator neutralRB;
-    private final Locator agreeRB;
-    private final Locator stronglyAgreeRB;
+    private final Locator stronglyDisagreeRadioButton;
+    private final Locator disagreeRadioButton;
+    private final Locator shadowRootDisagreeRadio;
+    private final Locator shadowRootStronglyDisagreeRadio;
 
     public RadioButtonGroupPage(Page page) {
         super(page);
 
-        stronglyDisagreeRB = page.locator("label:has-text('Strongly disagree')");
-        disagreeRB = page.locator("label:text-is('Disagree')");
-        neutralRB = page.locator("label:has-text('Neutral')");
-        agreeRB = page.locator("label:text-is('Agree')");
-        stronglyAgreeRB = page.locator("label:has-text('Strongly agree')");
+        this.shadowRootStronglyDisagreeRadio = page.locator("dwc-radio").nth(0);
+        this.stronglyDisagreeRadioButton = shadowRootStronglyDisagreeRadio
+                .locator("label:has-text('Strongly disagree')");
+        this.shadowRootDisagreeRadio = page.locator("dwc-radio").nth(1);
+        this.disagreeRadioButton = shadowRootDisagreeRadio.locator("label:text-is('Disagree')");
     }
 
     public static String getRoute() {
         return ROUTE;
     }
 
-    public Locator getStronglyDisagreeRB() {
-        return stronglyDisagreeRB;
+    public Locator getStronglyDisagreeRadioButton() {
+        return stronglyDisagreeRadioButton;
     }
 
-    public Locator getDisagreeRB() {
-        return disagreeRB;
-    }
-
-    public Locator getNeutralRB() {
-        return neutralRB;
-    }
-
-    public Locator getAgreeRB() {
-        return agreeRB;
-    }
-
-    public Locator getStronglyAgreeRB() {
-        return stronglyAgreeRB;
+    public Locator getDisagreeRadioButton() {
+        return disagreeRadioButton;
     }
 }

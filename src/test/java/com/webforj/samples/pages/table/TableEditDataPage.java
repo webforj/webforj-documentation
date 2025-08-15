@@ -11,14 +11,19 @@ public class TableEditDataPage extends BasePage {
     private final Locator input;
     private final Locator saveButton;
     private final Locator title;
+    private final Locator dataTableHost;
+    private final Locator dialogHost;
 
     public TableEditDataPage(Page page) {
         super(page);
 
-        editButton = page.locator("dwc-icon-button[name='pencil-pin'] >> button").first();
-        input = page.locator("#field-1");
-        saveButton = page.locator("dwc-button:has-text('Save')");
-        title = page.locator("tr td").nth(1).first();
+        this.dataTableHost = page.locator("dwc-table");
+        this.dialogHost = page.locator("dwc-dialog");
+
+        this.editButton = dataTableHost.locator("dwc-icon-button").first().locator("button");
+        this.input = dialogHost.locator("dwc-field").locator("#field-1");
+        this.saveButton = dialogHost.locator("dwc-button:has-text('Save')").locator("button");
+        this.title = dataTableHost.locator("tr td").nth(1).first();
 
     }
 
@@ -41,6 +46,5 @@ public class TableEditDataPage extends BasePage {
     public Locator getTitle() {
         return title;
     }
-
 
 }

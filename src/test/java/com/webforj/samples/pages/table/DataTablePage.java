@@ -16,7 +16,6 @@ public class DataTablePage extends BasePage {
     private final Locator entriesTwentyfive;
     private final Locator entriesFifty;
     private final Locator entriesHundred;
-    private final Locator paginator;
     private final Locator paginatorLastPage;
     private final Locator paginatorNextPage;
     private final Locator paginatorFirstPage;
@@ -25,28 +24,36 @@ public class DataTablePage extends BasePage {
     private final Locator paginationText;
     private final Locator firstCheckbox;
     private final Locator lastPageNumber;
+    private final Locator shadowRootTable;
+    private final Locator shadowRootChoiceBox;
+    private final Locator paginatorHost;
 
     public DataTablePage(Page page) {
         super(page);
 
-        searchInput = page.locator("input[type='search']");
-        tableRows = page.locator("tbody tr[data-row]");
-        entriesDropdown = page.locator("dwc-button[part='button']");
-        entriesTen = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("10").setExact(true));
-        entriesTwentyfive = page.getByRole(AriaRole.OPTION,
-           new Page.GetByRoleOptions().setName("25").setExact(true));
-        entriesFifty = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("50").setExact(true));
-        entriesHundred = page.getByRole(AriaRole.OPTION,
-           new Page.GetByRoleOptions().setName("100").setExact(true));
-        paginator = page.locator("dwc-navigator.data-scrollable-right");
-        paginatorLastPage = page.locator("button[part='button button-last']");
-        paginatorNextPage = page.locator("button[part='button button-next']");
-        paginatorFirstPage = page.locator("button[part='button button-first']");
-        paginatorPreviousPage = page.locator("button[part='button button-previous']");
-        currentPageNavigator = page.locator("dwc-navigator:has-text('Showing')");
-        paginationText = page.locator("div[part='layout layout-preview']");
-        firstCheckbox = page.locator("input[type='checkbox']").first();
-        lastPageNumber = page.locator("div[part='layout layout-numbered']").locator("button").last();
+        this.shadowRootTable = page.locator("dwc-table");
+        this.shadowRootChoiceBox = page.locator("dwc-choicebox");
+        this.paginatorHost = page.locator("dwc-navigator").filter(new Locator.FilterOptions().setHas(
+                page.locator("[part~='layout-numbered'], [part~='layout-preview']")));
+
+        this.searchInput = page.locator("dwc-field").locator("input");
+        this.tableRows = shadowRootTable.locator("tbody tr[data-row]");
+        this.entriesDropdown = shadowRootChoiceBox.locator("dwc-dropdown");
+        this.entriesTen = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("10").setExact(true));
+        this.entriesTwentyfive = page.getByRole(AriaRole.OPTION,
+                new Page.GetByRoleOptions().setName("25").setExact(true));
+        this.entriesFifty = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("50").setExact(true));
+        this.entriesHundred = page.getByRole(AriaRole.OPTION,
+                new Page.GetByRoleOptions().setName("100").setExact(true));
+        this.paginatorLastPage = paginatorHost.locator("button[part~='button-last']");
+        this.paginatorNextPage = paginatorHost.locator("button[part~='button-next']");
+        this.paginatorFirstPage = paginatorHost.locator("button[part~='button-first']");
+        this.paginatorPreviousPage = paginatorHost.locator("button[part~='button-previous']");
+        this.currentPageNavigator = paginatorHost.locator("[part~='layout-preview']");
+        this.paginationText = paginatorHost.locator("[part~='layout-preview']");
+        this.firstCheckbox = shadowRootTable.locator("dwc-checkbox").first().locator("input[type='checkbox']");
+        this.lastPageNumber = paginatorHost.locator("div[part='layout layout-numbered']").locator("button")
+                .last();
     }
 
     public void searchAthlete(String athleteName) {
@@ -86,10 +93,6 @@ public class DataTablePage extends BasePage {
         return entriesHundred;
     }
 
-    public Locator getPaginator() {
-        return paginator;
-    }
-
     public Locator getPaginatorLastPage() {
         return paginatorLastPage;
     }
@@ -123,13 +126,9 @@ public class DataTablePage extends BasePage {
     }
 
     public Locator goToSpecificPage(int pageNumber) {
-        Locator pageNavigationButton = page.getByRole(
+        return paginatorHost.getByRole(
                 AriaRole.BUTTON,
-                new Page.GetByRoleOptions()
-                        .setName(String.format("Goto page %s", pageNumber))
-                        .setExact(true));
-
-        return pageNavigationButton;
+                new Locator.GetByRoleOptions().setName("Goto page " + pageNumber).setExact(true));
     }
 
     public static String getRoute() {

@@ -10,9 +10,12 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 public class NavigatorPagesPage extends BasePage {
 
     private static final String ROUTE = "navigatorpages";
+    private final Locator shadowRoot;
 
     public NavigatorPagesPage(Page page) {
         super(page);
+
+        this.shadowRoot = page.locator("dwc-navigator");
     }
 
     public static String getRoute() {
@@ -20,17 +23,17 @@ public class NavigatorPagesPage extends BasePage {
     }
 
     public void assertCurrentPage(int pageNumber) {
-        Locator pageButton = page.locator("button[title='Goto page " + pageNumber + "']");
+        Locator pageButton = shadowRoot.locator("button[title='Goto page " + pageNumber + "']");
         assertThat(pageButton).hasAttribute("aria-current", "true");
     }
 
     public void goToPage(int pageNumber) {
-        Locator pageButton = page.locator("button[title='Goto page " + pageNumber + "']");
+        Locator pageButton = shadowRoot.locator("button[title='Goto page " + pageNumber + "']");
         pageButton.click();
     }
 
     public Locator getEllipsisButtons() {
-        return page.locator("div[part='layout layout-numbered'] > button");
+        return shadowRoot.locator("div[part='layout layout-numbered'] > button");
     }
 
 }

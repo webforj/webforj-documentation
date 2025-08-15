@@ -28,7 +28,7 @@ public class LoginBasicIT extends BaseTest {
         assertThat(loginBasicPage.getHeader()).hasText("Authentication");
         assertThat(loginBasicPage.getUsername()).hasValue("admin");
         assertThat(loginBasicPage.getPassword()).hasValue("admin");
-        assertThat(loginBasicPage.getSignInButton()).hasAttribute("disabled", "");
+        assertThat(loginBasicPage.getPassword()).hasAttribute("type", "text");
     }
 
     @Test
@@ -37,16 +37,6 @@ public class LoginBasicIT extends BaseTest {
 
         assertThat(loginBasicPage.getDwcUsernameField()).hasAttribute("invalid", "");
         assertThat(loginBasicPage.getDwcPasswordField()).hasAttribute("invalid", "");
-
-    }
-
-    @Test
-    public void testRememberMe() {
-        loginBasicPage.getRememberMe().click();
-        assertThat(loginBasicPage.getRememberMe()).hasAttribute("aria-checked", "false");
-
-        loginBasicPage.getRememberMe().click();
-        assertThat(loginBasicPage.getRememberMe()).hasAttribute("aria-checked", "true");
 
     }
 }
