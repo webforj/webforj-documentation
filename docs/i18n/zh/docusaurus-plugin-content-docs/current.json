@@ -4,7 +4,7 @@
     "description": "The label for version current"
   },
   "sidebar.documentationSidebar.category.Introduction": {
-    "message": "介绍",
+    "message": "关于我们",
     "description": "The label for category Introduction in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Tutorial": {
@@ -16,11 +16,11 @@
     "description": "The label for category Integrations in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Spring Framework": {
-    "message": "春季框架",
+    "message": "Spring框架",
     "description": "The label for category Spring Framework in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Routing": {
-    "message": "路由器",
+    "message": "Router",
     "description": "The label for category Routing in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Navigation Lifecycle": {
@@ -36,11 +36,11 @@
     "description": "The label for category Building UIs in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Archetypes": {
-    "message": "原型",
+    "message": "Prototype",
     "description": "The label for category Archetypes in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.HTML and Web Components": {
-    "message": "HTML与Web组件",
+    "message": "HTML和Web组件",
     "description": "The label for category HTML and Web Components in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Data Binding": {
@@ -56,7 +56,7 @@
     "description": "The label for category Components in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Fields": {
-    "message": "Field",
+    "message": "字段",
     "description": "The label for category Fields in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Masked Fields": {
@@ -68,7 +68,7 @@
     "description": "The label for category Lists in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Option Dialogs": {
-    "message": "Options",
+    "message": "选项",
     "description": "The label for category Option Dialogs in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Table": {
@@ -92,7 +92,7 @@
     "description": "The label for category Managing Resources in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Configuration": {
-    "message": "设置",
+    "message": "Settings",
     "description": "The label for category Configuration in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Redeployment and Live Reload": {
@@ -116,7 +116,7 @@
     "description": "The label for category Architecture in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Upgrading Guides": {
-    "message": "升级指南",
+    "message": "Upgrade Guide",
     "description": "The label for category Upgrading Guides in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Client Components": {
