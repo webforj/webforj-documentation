@@ -12,7 +12,7 @@
     "description": "Navbar item with label Components"
   },
   "item.label.Community": {
-    "message": "Yhteisö",
+    "message": "Community",
     "description": "Navbar item with label Community"
   },
   "item.label.Developers": {

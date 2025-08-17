@@ -16,7 +16,7 @@
     "description": "Navbar item with label Community"
   },
   "item.label.Developers": {
-    "message": "Ontwikkelaar",
+    "message": "Developer",
     "description": "Navbar item with label Developers"
   },
   "item.label.Support": {
@@ -40,7 +40,7 @@
     "description": "Navbar item with label DWC HueCraft"
   },
   "item.label.DWC Design Kit": {
-    "message": "DWC Ontwerp Sjabloon",
+    "message": "DWC Ontwerpsjabloon",
     "description": "Navbar item with label DWC Design Kit"
   },
   "item.label.JavaDocs": {
@@ -52,11 +52,11 @@
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
-    "message": "Bijdragen gids",
+    "message": "Bijdragen handleiding",
     "description": "Navbar item with label Contribution Guide"
   },
   "item.label.Report Issue": {
-    "message": "Probleem rapporteren",
+    "message": "Probleem melden",
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {

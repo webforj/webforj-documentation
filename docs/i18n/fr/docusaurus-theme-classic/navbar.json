@@ -4,7 +4,7 @@
     "description": "The alt text of navbar logo"
   },
   "item.label.Getting Started": {
-    "message": "Démarrer",
+    "message": "Commencer",
     "description": "Navbar item with label Getting Started"
   },
   "item.label.Components": {
@@ -40,7 +40,7 @@
     "description": "Navbar item with label DWC HueCraft"
   },
   "item.label.DWC Design Kit": {
-    "message": "DWC Design Kit",
+    "message": "Kit de conception DWC",
     "description": "Navbar item with label DWC Design Kit"
   },
   "item.label.JavaDocs": {
@@ -48,7 +48,7 @@
     "description": "Navbar item with label JavaDocs"
   },
   "item.label.Client Components": {
-    "message": "Composants Clien",
+    "message": "Composants Client",
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {

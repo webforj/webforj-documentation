@@ -678,7 +678,7 @@
     "description": "Button text to hide the code section"
   },
   "componentDemo.showCode": {
-    "message": "Toon Code",
+    "message": "Toon code",
     "description": "Button text to show the code section"
   },
   "expandableCode.hideCode": {

@@ -44,7 +44,7 @@
     "description": "Step 2 title"
   },
   "component.archetype.step2.desc": {
-    "message": "Verwenden Sie den Maven-Befehl und passen Sie groupId, artifactId und Version an.",
+    "message": "Verwenden Sie den Maven-Befehl und passen Sie die groupId, artifactId und Version an.",
     "description": "Step 2 description"
   },
   "component.archetype.table.argument": {
