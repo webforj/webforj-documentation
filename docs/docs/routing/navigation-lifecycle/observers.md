@@ -137,7 +137,7 @@ public class ProductView extends Composite<Div> implements ActivateObserver {
 }
 ```
 
-This example demonstrates using `ActivateObserver` to refresh data when navigating to the same route with different parameters. The component remains cached and is reactivated rather than recreated, improving performance while ensuring the UI displays the correct data.
+This example demonstrates using `ActivateObserver` to refresh data when navigating to the same route with different parameters. The component remains cached and is reactivated rather than recreated, so the UI updates to display the correct data for the current parameters without instantiating a new component.
 
 :::tip Activation in Component Hierarchies
 When navigating to a route, the `Activate` event fires for **all cached components in the hierarchy** that remain in the current path. For example, when navigating from `/products/123` to `/products/456`, both the parent `ProductsLayout` component and the child `ProductView` component receive the `Activate` event if they're cached and remain in the route hierarchy.
