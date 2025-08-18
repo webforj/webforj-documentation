@@ -77,8 +77,13 @@ const config = {
           editUrl:
             'https://github.com/webforj/webforj-documentation/tree/main/docs/',
         },
+        blog: {
+          postsPerPage: 12
+        },
         theme: {
-          customCss: require.resolve('./src/css/custom.scss'),
+          customCss: [require.resolve('./src/css/custom.scss'),
+          require.resolve('./src/css/customBlog.css')
+          ],
         },
         gtag: {
           trackingID: 'G-47SBJTFG20',

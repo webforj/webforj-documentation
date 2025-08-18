@@ -1,0 +1,115 @@
+/* See docusarus css names: https://docusaurus.io/docs/styling-layout#theme-class-names */
+
+.blog-authors-posts-page .container,
+.blog-tags-post-list-page .container {
+  max-width: 100rem;
+}
+
+.blog-list-page main {
+  --ifm-col-width: calc(11 / 12 * 100%);
+}
+
+.blog-wrapper .row {
+  justify-content: center;
+}
+
+.blog-list-page main,
+.blog-tags-post-list-page main,
+.blog-authors-posts-page main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 2%;
+  margin-left: 0;
+}
+
+.blog-list-page main::before {
+  content: "webforJ Blog";
+  font-size: 3rem;
+  font-weight: bold;
+  grid-column: 1/-1;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.blog-wrapper:not(.blog-post-page):not(.blog-tags-list-page) article {
+  background-color: var(--dwc-surface-3);
+  padding: 1rem;
+  border: solid 1px var(--dwc-color-gray-75);
+  border-radius: var(--dwc-border-radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--dwc-shadow-xs);
+}
+
+.blog-wrapper:not(.blog-post-page) h2 {
+  font-size: 1.7rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.blog-wrapper:not(.blog-post-page) nav,
+.blog-wrapper:not(.blog-post-page) header,
+.blog-wrapper:not(.blog-post-page) hr {
+  grid-column: 1/-1;
+}
+
+.blog-wrapper:not(.blog-post-page) div.markdown img {
+  aspect-ratio: 2/1;
+  max-height: 35vh;
+  width: auto;
+  border-radius: var(--dwc-border-radius-l);
+}
+
+.blog-wrapper:not(.blog-post-page) div.markdown p:has(img) {
+  text-align: center;
+}
+
+.blog-wrapper:not(.blog-post-page) div.markdown p:nth-child(2) {
+  height: 60%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  mask-image: linear-gradient(#000 50%, transparent 100%);
+}
+
+.blog-wrapper:not(.blog-post-page) div.markdown *:nth-child(n + 3),
+.blog-wrapper:not(.blog-post-page) div.giscus,
+.blog-list-page aside {
+  display: none;
+}
+.blog-wrapper article footer {
+  margin: 0 calc(var(--ifm-spacing-horizontal) * -1);
+}
+
+.blog-wrapper article footer .col--3 {
+  --ifm-col-width: calc(4 / 12 * 100%);
+}
+
+.blog-wrapper article footer .col--9 {
+  --ifm-col-width: calc(8 / 12 * 100%);
+}
+
+@media (max-width: 1400px) {
+  .blog-wrapper:not(.blog-post-page) main {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 996px) {
+  .blog-wrapper:not(.blog-post-page) main {
+    grid-template-columns: 1fr;
+  }
+  .blog-wrapper:not(.blog-post-page) div.markdown p:nth-child(2) {
+    mask-image: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .blog-list-page main::before {
+    font-size: 2rem;
+  }
+}
