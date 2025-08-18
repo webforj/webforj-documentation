@@ -21,14 +21,27 @@ public class LoginCustomFieldsPage extends BasePage {
         super(page);
 
         Locator loginHost = page.locator("dwc-login");
-        this.errorHost = loginHost.locator("dwc-alert[part='error'][opened]");
+        customerID = loginHost.locator("dwc-field")
+                .filter(new Locator.FilterOptions().setHas(page.locator("label:has-text('Customer ID')")))
+                .locator("[part~='input']:visible").first();
 
-        this.customerID = page.locator("dwc-field[slot='before-form']").locator("[part~='input']");
-        this.username = loginHost.locator("#username").locator("[part~='input']");
-        this.password = loginHost.locator("#password").locator("[part~='input']");
-        this.signInButton = loginHost.locator("[part='submit-button']").locator("[part~='control']");
-        this.errorMessage = errorHost.locator("[part~='control'][role='alert']");
-        this.logoutButton = page.locator("dwc-button").filter(new Locator.FilterOptions().setHasText("Logout"))
+        username = loginHost.locator("dwc-field")
+                .filter(new Locator.FilterOptions().setHas(page.locator("label:has-text('Username')")))
+                .locator("[part~='input']:visible").first();
+
+        password = loginHost.locator("dwc-field")
+                .filter(new Locator.FilterOptions().setHas(page.locator("label:has-text('Password')")))
+                .locator("[part~='input']:visible").first();
+
+        signInButton = loginHost.locator("dwc-button")
+                .filter(new Locator.FilterOptions().setHasText("Sign In"))
+                .locator("[part~='control']");
+
+        errorHost = loginHost.locator("dwc-alert[part='error']");
+        errorMessage = errorHost.locator("[part~='control'][role='alert']");
+
+        logoutButton = page.locator("dwc-button")
+                .filter(new Locator.FilterOptions().setHasText("Logout"))
                 .locator("[part~='control']");
     }
 

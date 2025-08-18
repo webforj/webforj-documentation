@@ -1,27 +1,45 @@
 package com.webforj.samples.pages.radiobutton;
 
 import com.microsoft.playwright.Locator;
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 import com.microsoft.playwright.Page;
 
 import com.webforj.samples.pages.BasePage;
 
 public class RadioButtonSwitchPage extends BasePage {
 
-    private static final String ROUTE = "radiobuttonswitch";
+  private static final String ROUTE = "radiobuttonswitch";
 
-    private final Locator switchRadio;
+  private final Locator switchHost;
+  private final Locator switchInput;
+  private final Locator switchControl;
 
-    public RadioButtonSwitchPage(Page page) {
-        super(page);
+  public RadioButtonSwitchPage(Page page) {
+    super(page);
 
-        this.switchRadio = page.locator("dwc-radio.Switch").locator("input");
-    }
+    switchHost = page.locator("dwc-radio")
+        .filter(new Locator.FilterOptions()
+            .setHas(page.locator("label[part='label']:has-text('Switch')")));
 
-    public static String getRoute() {
-        return ROUTE;
-    }
+    switchInput = switchHost.locator("input[part='input']:visible").first();
+    switchControl = switchHost.locator("[part~='control']").first();
+  }
 
-    public Locator getSwitchRadio() {
-        return switchRadio;
-    }
+  public static String getRoute() {
+    return ROUTE;
+  }
+
+  public void waitReady() {
+    assertThat(page.locator("dwc-radio input[part='input']:visible"))
+        .hasCount(2);
+  }
+
+  public Locator getSwitchRadio() {
+    return switchInput;
+  }
+
+  public Locator getSwitchControl() {
+    return switchControl;
+  }
 }

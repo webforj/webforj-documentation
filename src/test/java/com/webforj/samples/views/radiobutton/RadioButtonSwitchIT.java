@@ -20,7 +20,10 @@ public class RadioButtonSwitchIT extends BaseTest {
 
     @Test
     public void testSwitchButtonStyle() {
-        radioButton.getSwitchRadio().click();
-        assertThat(radioButton.getSwitchRadio()).hasAttribute("aria-checked", "true");
+        radioButton.waitReady();
+
+        radioButton.getSwitchRadio().check();
+
+        assertThat(radioButton.getSwitchRadio()).isChecked();
     }
 }

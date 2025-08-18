@@ -27,7 +27,7 @@ public class FlexPositioningIT extends BaseTest {
         flexPositioningPage.getListBox("Flex-start").nth(0).click();
 
         assertThat(flexPositioningPage.getFlexPositioningContainer()).hasAttribute("style",
-                Pattern.compile(".*justify-content: flex-start;.*"));
+                Pattern.compile("justify-content:\\s*flex-start"));
     }
 
     @Test
@@ -36,7 +36,7 @@ public class FlexPositioningIT extends BaseTest {
         flexPositioningPage.getListBox("Flex-end").nth(0).click();
 
         assertThat(flexPositioningPage.getFlexPositioningContainer()).hasAttribute("style",
-                Pattern.compile(".*justify-content: flex-end;.*"));
+                Pattern.compile("justify-content:\\s*flex-end"));
     }
 
     @Test
@@ -45,7 +45,7 @@ public class FlexPositioningIT extends BaseTest {
         flexPositioningPage.getListBox("Center").nth(0).click();
 
         assertThat(flexPositioningPage.getFlexPositioningContainer()).hasAttribute("style",
-                Pattern.compile(".*justify-content: center;.*"));
+                Pattern.compile("justify-content:\\s*center"));
     }
 
     @Test
@@ -54,7 +54,7 @@ public class FlexPositioningIT extends BaseTest {
         flexPositioningPage.getListBox("Space-between").nth(0).click();
 
         assertThat(flexPositioningPage.getFlexPositioningContainer()).hasAttribute("style",
-                Pattern.compile(".*justify-content: space-between;.*"));
+                Pattern.compile("justify-content:\\s*space-between"));
     }
 
     @Test
@@ -63,7 +63,7 @@ public class FlexPositioningIT extends BaseTest {
         flexPositioningPage.getListBox("Space-around").nth(0).click();
 
         assertThat(flexPositioningPage.getFlexPositioningContainer()).hasAttribute("style",
-                Pattern.compile(".*justify-content: space-around;.*"));
+                Pattern.compile("justify-content:\\s*space-around"));
     }
 
     @Test
@@ -72,6 +72,6 @@ public class FlexPositioningIT extends BaseTest {
         flexPositioningPage.getListBox("Space-evenly").nth(0).click();
 
         assertThat(flexPositioningPage.getFlexPositioningContainer()).hasAttribute("style",
-                Pattern.compile(".*justify-content: space-evenly;.*"));
+                Pattern.compile("justify-content:\\s*space-evenly"));
     }
 }

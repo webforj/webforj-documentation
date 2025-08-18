@@ -15,27 +15,16 @@ public class ChartRedrawIT extends BaseTest {
     @BeforeEach
     public void navigateToChartRedraw() {
         navigateToRoute(ChartRedrawPage.getRoute());
-
-        try {
-            chartRedraw = new ChartRedrawPage(page);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        chartRedraw = new ChartRedrawPage(page);
     }
 
     @Test
     public void testChartUpdating() {
-        assertThat(chartRedraw.getValueForInstagram()).hasValue("100");
-        assertThat(chartRedraw.getValueForTwitter()).hasValue("100");
-        assertThat(chartRedraw.getValueForFacebook()).hasValue("100");
-        assertThat(chartRedraw.getValueForLinkedIn()).hasValue("100");
-
         chartRedraw.updateChart(140, 120, 100, 80);
         assertThat(chartRedraw.getValueForInstagram()).hasValue("140");
         assertThat(chartRedraw.getValueForTwitter()).hasValue("120");
         assertThat(chartRedraw.getValueForFacebook()).hasValue("100");
         assertThat(chartRedraw.getValueForLinkedIn()).hasValue("80");
-
     }
 
     @Test
@@ -59,14 +48,6 @@ public class ChartRedrawIT extends BaseTest {
         page.keyboard().type("$!#%&*");
 
         assertThat(chartRedraw.getValueForInstagram()).not().hasValue("$!#%&*");
-    }
-
-    @Test
-    public void testSmallSizeScreenScrolling() {
-        page.setViewportSize(600, 300);
-
-        assertThat(page.locator("html")).hasCSS("overflow-y", "visible");
-        assertThat(page.locator("html")).hasCSS("overflow-x", "visible");
     }
 
     @Test

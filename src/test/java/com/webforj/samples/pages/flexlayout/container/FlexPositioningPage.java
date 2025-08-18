@@ -17,8 +17,10 @@ public class FlexPositioningPage extends BasePage {
         super(page);
 
         flexPositioningContainer = page.locator(".button__container--single-row");
-        Locator shadowRootDropdown = page.locator("dwc-button:has-text('Flex-start')");
-        flexPositioningDropdown = shadowRootDropdown.locator("button");
+        Locator shadowRootDropdown = page.locator("dwc-button")
+                .filter(new Locator.FilterOptions()
+                        .setHas(page.locator("div[part='button-label']:has-text('Flex-start')")));
+        flexPositioningDropdown = shadowRootDropdown.locator("div[part='button-label']");
         Locator shadowRootListBox = page.locator("dwc-listbox");
         listBox = shadowRootListBox.locator("li");
     }

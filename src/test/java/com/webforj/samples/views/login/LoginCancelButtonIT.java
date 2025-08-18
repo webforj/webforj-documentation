@@ -10,17 +10,17 @@ import com.webforj.samples.views.BaseTest;
 
 public class LoginCancelButtonIT extends BaseTest {
 
-    private LoginCancelButtonPage loginCancelButtonPage;
+    private LoginCancelButtonPage login;
 
     @BeforeEach
     public void setupLoginCancelButton() {
         navigateToRoute(LoginCancelButtonPage.getRoute());
-        loginCancelButtonPage = new LoginCancelButtonPage(page);
+        login = new LoginCancelButtonPage(page);
     }
 
     @Test
     public void testCancelButton() {
-        loginCancelButtonPage.getCancelButton().click();
-        assertThat(loginCancelButtonPage.getSignInButton()).hasAttribute("disabled", "");
+        login.getCancelButton().click();
+        assertThat(login.getSignInButton()).hasAttribute("disabled", "");
     }
 }

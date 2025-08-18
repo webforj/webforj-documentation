@@ -10,69 +10,69 @@ import com.webforj.samples.views.BaseTest;
 
 public class LoginCustomFieldsIT extends BaseTest {
 
-    private LoginCustomFieldsPage loginCustomFieldsPage;
+    private LoginCustomFieldsPage login;
 
     @BeforeEach
     public void setupLoginCustomFields() {
         navigateToRoute(LoginCustomFieldsPage.getRoute());
-        loginCustomFieldsPage = new LoginCustomFieldsPage(page);
+        login = new LoginCustomFieldsPage(page);
     }
 
     @Test
     public void testSuccessfulLogin() {
-        loginCustomFieldsPage.getCustomderID().fill("Tesla");
-        loginCustomFieldsPage.getUsername().fill("admin");
-        loginCustomFieldsPage.getPassword().fill("admin");
-        loginCustomFieldsPage.getSignInButton().click();
+        login.getCustomderID().fill("Tesla");
+        login.getUsername().fill("admin");
+        login.getPassword().fill("admin");
+        login.getSignInButton().click();
 
-        assertThat(loginCustomFieldsPage.getLogoutButton()).isVisible();
-        loginCustomFieldsPage.getLogoutButton().click();
+        assertThat(login.getLogoutButton()).isVisible();
+        login.getLogoutButton().click();
 
-        assertThat(loginCustomFieldsPage.getUsername()).isVisible();
+        assertThat(login.getUsername()).isVisible();
     }
 
     @Test
     public void testInvalidCustomerID() {
 
-        loginCustomFieldsPage.getCustomderID().fill("Toyota");
-        loginCustomFieldsPage.getUsername().fill("admin");
-        loginCustomFieldsPage.getPassword().fill("admin");
-        loginCustomFieldsPage.getSignInButton().click();
+        login.getCustomderID().fill("Toyota");
+        login.getUsername().fill("admin");
+        login.getPassword().fill("admin");
+        login.getSignInButton().click();
 
-        assertThat(loginCustomFieldsPage.getErrorHost()).hasAttribute("opened", "");
-        assertThat(loginCustomFieldsPage.getErrorMessage()).isVisible();
+        assertThat(login.getErrorHost()).hasAttribute("opened", "");
+        assertThat(login.getErrorMessage()).isVisible();
     }
 
     @Test
     public void testValidCustomerIDAndBlankInput() {
-        loginCustomFieldsPage.getCustomderID().fill("Tesla");
-        loginCustomFieldsPage.getUsername().fill(" ");
-        loginCustomFieldsPage.getPassword().fill(" ");
-        loginCustomFieldsPage.getSignInButton().click();
+        login.getCustomderID().fill("Tesla");
+        login.getUsername().fill(" ");
+        login.getPassword().fill(" ");
+        login.getSignInButton().click();
 
-        assertThat(loginCustomFieldsPage.getErrorHost()).hasAttribute("opened", "");
-        assertThat(loginCustomFieldsPage.getErrorMessage()).isVisible();
+        assertThat(login.getErrorHost()).hasAttribute("opened", "");
+        assertThat(login.getErrorMessage()).isVisible();
     }
 
     @Test
     public void testValidCustomerIDAndInvalidInput() {
-        loginCustomFieldsPage.getCustomderID().fill("Tesla");
-        loginCustomFieldsPage.getUsername().fill("user1");
-        loginCustomFieldsPage.getPassword().fill("wrongpass");
-        loginCustomFieldsPage.getSignInButton().click();
+        login.getCustomderID().fill("Tesla");
+        login.getUsername().fill("user1");
+        login.getPassword().fill("wrongpass");
+        login.getSignInButton().click();
 
-        assertThat(loginCustomFieldsPage.getErrorHost()).hasAttribute("opened", "");
-        assertThat(loginCustomFieldsPage.getErrorMessage()).isVisible();
+        assertThat(login.getErrorHost()).hasAttribute("opened", "");
+        assertThat(login.getErrorMessage()).isVisible();
     }
 
     @Test
     public void testBlankCustomerIDAndValidInput() {
-        loginCustomFieldsPage.getCustomderID().fill(" ");
-        loginCustomFieldsPage.getUsername().fill("admin");
-        loginCustomFieldsPage.getPassword().fill("admin");
-        loginCustomFieldsPage.getSignInButton().click();
+        login.getCustomderID().fill(" ");
+        login.getUsername().fill("admin");
+        login.getPassword().fill("admin");
+        login.getSignInButton().click();
 
-        assertThat(loginCustomFieldsPage.getErrorHost()).hasAttribute("opened", "");
-        assertThat(loginCustomFieldsPage.getErrorMessage()).isVisible();
+        assertThat(login.getErrorHost()).hasAttribute("opened", "");
+        assertThat(login.getErrorMessage()).isVisible();
     }
 }

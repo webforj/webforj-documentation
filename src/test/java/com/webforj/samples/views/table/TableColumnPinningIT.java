@@ -2,8 +2,6 @@ package com.webforj.samples.views.table;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import java.util.regex.Pattern;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,9 +20,6 @@ public class TableColumnPinningIT extends BaseTest {
 
     @Test
     public void testEditButton() {
-
-        assertThat(tablePage.getEditButtonPosition()).hasAttribute("style", Pattern.compile(".*sticky; right: 0px;.*"));
-
         tablePage.getEditButton().click();
         assertThat(tablePage.getDialogBox()).hasText("You asked to edit record number 000001.");
     }

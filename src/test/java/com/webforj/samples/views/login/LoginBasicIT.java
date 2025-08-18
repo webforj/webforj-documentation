@@ -10,33 +10,33 @@ import com.webforj.samples.views.BaseTest;
 
 public class LoginBasicIT extends BaseTest {
 
-    private LoginBasicPage loginBasicPage;
+    private LoginBasicPage login;
 
     @BeforeEach
     public void setupLoginBasics() {
         navigateToRoute(LoginBasicPage.getRoute());
-        loginBasicPage = new LoginBasicPage(page);
+        login = new LoginBasicPage(page);
     }
 
     @Test
     public void testUsernameAndPassword() {
-        loginBasicPage.getUsername().fill("admin");
-        loginBasicPage.getPasswordReveal().click();
-        loginBasicPage.getPassword().fill("admin");
-        loginBasicPage.getSignInButton().click();
+        login.getUsername().fill("admin");
+        login.getPasswordReveal().click();
+        login.getPassword().fill("admin");
+        login.getSignInButton().click();
 
-        assertThat(loginBasicPage.getHeader()).hasText("Authentication");
-        assertThat(loginBasicPage.getUsername()).hasValue("admin");
-        assertThat(loginBasicPage.getPassword()).hasValue("admin");
-        assertThat(loginBasicPage.getPassword()).hasAttribute("type", "text");
+        assertThat(login.getHeader()).hasText("Authentication");
+        assertThat(login.getUsername()).hasValue("admin");
+        assertThat(login.getPassword()).hasValue("admin");
+        assertThat(login.getPassword()).hasAttribute("type", "text");
     }
 
     @Test
     public void testEmptyInput() {
-        loginBasicPage.getSignInButton().click();
+        login.getSignInButton().click();
 
-        assertThat(loginBasicPage.getDwcUsernameField()).hasAttribute("invalid", "");
-        assertThat(loginBasicPage.getDwcPasswordField()).hasAttribute("invalid", "");
+        assertThat(login.getDwcUsernameField()).hasAttribute("invalid", "");
+        assertThat(login.getDwcPasswordField()).hasAttribute("invalid", "");
 
     }
 }
