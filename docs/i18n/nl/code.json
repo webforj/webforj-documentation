@@ -4,7 +4,7 @@
     "description": "Translation notice for non-English pages"
   },
   "component.askMenu.chatgpt.label": {
-    "message": "Openen in ChatGPT",
+    "message": "Open in ChatGPT",
     "description": "ChatGPT button label"
   },
   "component.askMenu.chatgpt.desc": {
@@ -646,7 +646,7 @@
     "description": "Description for events section"
   },
   "tableBuilder.headers.methodSignature": {
-    "message": "Methode Handtekening",
+    "message": "Methodehandtekening",
     "description": "Table header for method signature"
   },
   "tableBuilder.sections.methods": {

@@ -12,7 +12,7 @@
     "description": "Navbar item with label Components"
   },
   "item.label.Community": {
-    "message": "Community",
+    "message": "Yhteisö",
     "description": "Navbar item with label Community"
   },
   "item.label.Developers": {
@@ -24,7 +24,7 @@
     "description": "Navbar item with label Support"
   },
   "item.label.Events": {
-    "message": "Tapahtumat",
+    "message": "Events",
     "description": "Navbar item with label Events"
   },
   "item.label.Blog": {

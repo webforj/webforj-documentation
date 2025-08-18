@@ -16,7 +16,7 @@
     "description": "Navbar item with label Community"
   },
   "item.label.Developers": {
-    "message": "Developer",
+    "message": "Ontwikkelaar",
     "description": "Navbar item with label Developers"
   },
   "item.label.Support": {
@@ -52,11 +52,11 @@
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
-    "message": "Bijdragen handleiding",
+    "message": "Bijdragen gids",
     "description": "Navbar item with label Contribution Guide"
   },
   "item.label.Report Issue": {
-    "message": "Probleem melden",
+    "message": "Probleem rapporteren",
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {

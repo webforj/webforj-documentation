@@ -402,7 +402,7 @@
     "description": "The paragraph for empty search result"
   },
   "theme.SearchPage.fetchingNewResults": {
-    "message": "Neue Ergebnisse laden...",
+    "message": "Neue Ergebnisse abrufen...",
     "description": "The paragraph for fetching new search results"
   },
   "theme.SearchBar.label": {
