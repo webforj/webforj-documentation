@@ -10,7 +10,7 @@ sidebar_class_name: updated-content
 
 The `Composite` component combines existing webforJ components into self-contained, reusable components with custom behavior. Use it to wrap internal webforJ components into reusable business logic units, reuse component patterns throughout your app, and combine multiple components without exposing implementation details.
 
-When you extend `Composite`, you create a strong association with your underlying component. This gives you control over which methods and properties your users can access, unlike traditional inheritance where everything is exposed.
+A `Composite` component has a strong association with an underlying bound component. This gives you control over which methods and properties users can access, unlike traditional inheritance where everything is exposed.
 
 If you need to integrate web components from another source, use specialized alternatives:
 
@@ -58,7 +58,7 @@ public class CustomFormLayout extends Composite<FlexLayout> {
 
 ## Component lifecycle {#component-lifecycle}
 
-webforJ handles all lifecycle management for `Composite` components automatically. Most custom behavior can be handled in the constructor, including adding child components, setting properties, basic layout setup, and event registration.
+webforJ handles all lifecycle management for `Composite` components automatically. By using the `getBoundComponent()` method, most custom behavior can be handled in the constructor, including adding child components, setting properties, basic layout setup, and event registration.
 
 ```java
 public class UserDashboard extends Composite<FlexLayout> {
@@ -98,7 +98,7 @@ public class UserDashboard extends Composite<FlexLayout> {
 }
 ```
 
-If you have additional specific setup or cleanup requirements, you may need to use the optional lifecycle hooks `onDidCreate` and `onDidDestroy`:
+If you have additional specific setup or cleanup requirements, you may need to use the optional lifecycle hooks `onDidCreate()` and `onDidDestroy()`:
 
 ```java
 public class DataVisualizationPanel extends Composite<Div> {
@@ -148,7 +148,7 @@ The following example demonstrates a Todo app where each item is a `Composite` c
 path='/webforj/composite?' 
 cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/composite/composite.css'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/composite/CompositeView.java'
-height='400px'
+height='500px'
 />
 
 ## Component grouping {#component-grouping}
