@@ -24,7 +24,7 @@
     "description": "Navbar item with label Support"
   },
   "item.label.Events": {
-    "message": "Tapahtumat",
+    "message": "Events",
     "description": "Navbar item with label Events"
   },
   "item.label.Blog": {
@@ -40,7 +40,7 @@
     "description": "Navbar item with label DWC HueCraft"
   },
   "item.label.DWC Design Kit": {
-    "message": "DWC-suunnittelu",
+    "message": "DWC-suunnitelma",
     "description": "Navbar item with label DWC Design Kit"
   },
   "item.label.JavaDocs": {
@@ -52,7 +52,7 @@
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
-    "message": "Osallistua",
+    "message": "Liity nyt",
     "description": "Navbar item with label Contribution Guide"
   },
   "item.label.Report Issue": {
@@ -60,7 +60,7 @@
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {
-    "message": "Contact us",
+    "message": "Ota yhteyttä",
     "description": "Navbar item with label Contact us"
   }
 }

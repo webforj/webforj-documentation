@@ -1,10 +1,10 @@
 {
   "theme.docs.translationNotice": {
-    "message": "Diese Seite wurde automatisch übersetzt. Für genauere Informationen besuchen Sie bitte die offizielle Dokumentation.",
+    "message": "Diese Seite wurde automatisch übersetzt. Bitte besuchen Sie die offizielle Dokumentation für genauere Informationen.",
     "description": "Translation notice for non-English pages"
   },
   "component.askMenu.chatgpt.label": {
-    "message": "In ChatGPT öffnen",
+    "message": "ChatGPT öffnen",
     "description": "ChatGPT button label"
   },
   "component.askMenu.chatgpt.desc": {
@@ -16,7 +16,7 @@
     "description": "Claude button label"
   },
   "component.askMenu.claude.desc": {
-    "message": "Mit Claude AI chatten",
+    "message": "Chatten mit Claude AI",
     "description": "Claude button description"
   },
   "component.askMenu.markdown.label": {
@@ -44,7 +44,7 @@
     "description": "Step 2 title"
   },
   "component.archetype.step2.desc": {
-    "message": "Verwenden Sie den Maven-Befehl und passen Sie groupId, artifactId und Version an.",
+    "message": "Verwenden Sie den Maven-Befehl und passen Sie die groupId, artifactId und Version an.",
     "description": "Step 2 description"
   },
   "component.archetype.table.argument": {
@@ -76,7 +76,7 @@
     "description": "artifactId description"
   },
   "component.archetype.table.version.desc": {
-    "message": "Versionsnummer festlegen. Gängige Konvention: MAJOR.MINOR-SNAPSHOT, z. B. 1.0-SNAPSHOT, wobei SNAPSHOT anzeigt, dass das Projekt in Entwicklung ist.",
+    "message": "Versionsnummer festlegen. Gängige Konvention: MAJOR.MINOR-SNAPSHOT, z. B. 1.0-SNAPSHOT.",
     "description": "version description"
   },
   "component.archetype.table.flavor.desc": {
@@ -100,7 +100,7 @@
     "description": "Conclusion text"
   },
   "theme.ErrorPageContent.title": {
-    "message": "Die Seite wurde geschlossen.",
+    "message": "Die Seite ist geschlossen.",
     "description": "The title of the fallback page when the page crashed"
   },
   "theme.BackToTopButton.buttonAriaLabel": {
@@ -128,7 +128,7 @@
     "description": "The label used to navigate to the older blog posts page (next page)"
   },
   "theme.blog.post.paginator.navAriaLabel": {
-    "message": "Blogbeitrag Navigation",
+    "message": "Blogbeitrag-Navigation",
     "description": "The ARIA label for the blog posts pagination"
   },
   "theme.blog.post.paginator.newerPost": {
@@ -402,7 +402,7 @@
     "description": "The paragraph for empty search result"
   },
   "theme.SearchPage.fetchingNewResults": {
-    "message": "Neue Ergebnisse laden...",
+    "message": "Neue Ergebnisse abrufen...",
     "description": "The paragraph for fetching new search results"
   },
   "theme.SearchBar.label": {
@@ -486,7 +486,7 @@
     "description": "The text explains that there are no results for the following search"
   },
   "theme.SearchModal.noResultsScreen.suggestedQueryText": {
-    "message": "Versuchen Sie zu suchen nach",
+    "message": "Suchen nach",
     "description": "The text for the suggested query when no results are found for the following search"
   },
   "theme.SearchModal.noResultsScreen.reportMissingResultsText": {
@@ -530,7 +530,7 @@
     "description": "The unlisted content banner title"
   },
   "theme.contentVisibility.unlistedBanner.message": {
-    "message": "Diese Seite ist nicht erreichbar.",
+    "message": "Diese Seite ist nicht verfügbar.",
     "description": "The unlisted content banner message"
   },
   "theme.contentVisibility.draftBanner.title": {
@@ -626,7 +626,7 @@
     "description": "Description for properties section"
   },
   "tableBuilder.sections.reflectedAttributes": {
-    "message": "Gespiegelte Attribute",
+    "message": "Gespiegelte Eigenschaften",
     "description": "Section heading for reflected attributes table"
   },
   "tableBuilder.descriptions.reflectedAttributes": {

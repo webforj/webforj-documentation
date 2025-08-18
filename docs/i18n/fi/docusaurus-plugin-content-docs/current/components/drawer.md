@@ -1,53 +1,28 @@
 ---
 title: Drawer
 sidebar_position: 35
-_i18n_hash: 73da264dca1e3f8cfd58b697e3e9d0dc
+sidebar_class_name: updated-content
+_i18n_hash: a19d1b8c8e0b74cecee529e86649d449
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-drawer" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="drawer" location="com/webforj/component/drawer/Drawer" top='true'/>
 
-Laatikko on säiliö, joka liukuu näkymään paljastaen lisävalintoja ja tietoa. Sovelluksessa voidaan luoda useita laatikoita, ja ne asetetaan toistensa päälle.
+`Drawer`-komponentti webforJ:ssä luo liukuvan paneelin, joka ilmestyy näytön reunalta, paljastaen lisäsisältöä poistumatta nykyisestä näkymästä. Sitä käytetään yleisesti sivuavigaatioon, suodatinvalikkoihin, käyttäjäasetuksiin tai tiivistettyihin ilmoituksiin, jotka tarvitsevat ilmestyä tilapäisesti häiritsemättä pääkäyttöliittymää.
 
-Laatikkokomponenttia voidaan käyttää monissa eri tilanteissa, kuten tarjoamalla navigointivalikko, jonka voi vaihtaa päälle tai pois, paneeli, joka näyttää lisätietoja tai kontekstuaalista tietoa, tai optimoimaan käyttöä mobiililaitteella. Seuraava esimerkki näyttää mobiilisovelluksen, joka käyttää webforJ AppLayout-komponenttia ja näyttää "Tervetuloa Popup" -laatikon alareunassa, kun se ladataan ensimmäistä kertaa. Lisäksi navigointilaatikkokomponenttia voidaan vaihtaa sovelluksessa napsauttamalla hampurilaisvalikkoa.
+`Drawers`-paneelit pinoutuvat automaattisesti, kun useita on avoinna, mikä tekee niistä joustavan vaihtoehdon tilarajoitteisille käyttöliittymille.
+
+Esimerkki alla esittää tätä käyttäytymistä [`AppLayout`](../components/app-layout) -komponentissa. Hampurilaisvalikon aiheuttama navigointiluukku on rakennettu [`AppLayout`](../components/app-layout) -komponenttiin, kun taas alareunassa oleva tervetulotoivotuspomppupaneeli käyttää erillistä `Drawer`-instanssia. Molemmat ovat olemassa rinnakkain ja pinoutuvat itsenäisesti, todistaen kuinka `Drawers`-paneeleja voidaan integroida asettelukomponentteihin tai käyttää itsenäisinä elementteinä.
 
 <AppLayoutViewer path='/webforj/drawerwelcome?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java'
 cssURL='/css/drawer/drawerWelcome.css'
 />
 
-## Käyttötavat {#usages}
+## Autofocus
 
-1. **Navigointivalikko**: Yksi yleinen laatikkokomponentin käyttötapa on navigointivalikkona. Se tarjoaa tilatehokkaan tavan näyttää linkkejä sovelluksen eri osiin tai sivuille, erityisesti mobiili- tai responsiivisissa asetteluissa. Käyttäjät voivat avata ja sulkea laatikon päästäkseen navigointivaihtoehtoihin ilman, että pääsisältöalue on tukossa.
-
-2. **Suodatin ja sivupalkki**: Laatikkoa voidaan käyttää suodattimena tai sivupalkkina sovelluksissa, jotka näyttävät luetteloita kohteista. Käyttäjät voivat laajentaa laatikkoa paljastaakseen suodatusvaihtoehdot, lajittelukontrollit tai lisätietoja liittyen luettelon kohteisiin. Tämä pitää pääsisällön keskittyneenä luetteloon, samalla kun tarjotaan kehittyneitä ominaisuuksia helposti saavutettavassa muodossa.
-
-3. **Käyttäjäprofiili tai asetukset**: Voit käyttää laatikkoa näyttämään käyttäjäprofiilitietoja tai sovellusasetuksia. Tämä pitää tällaiset tiedot helposti saatavilla mutta piilossa, kun niitä ei tarvita, säilyttäen siistin ja järjestäytyneen käyttöliittymän. Käyttäjät voivat avata laatikon päivittääkseen profiilejaan tai säätelemään asetuksia.
-
-4. **Ilmoitukset**: Sovelluksille, joilla on ilmoituksia tai hälytyksiä, laatikko voi liukua esiin näyttämään uusia viestejä tai päivityksiä. Käyttäjät voivat nopeasti tarkistaa ja hylätä ilmoituksia ilman, että heidän tarvitsee poistua nykyisestä näkymästään.
-
-<ComponentDemo
-path='/webforj/drawerdemo?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerDemoView.java'
-height='600px'
-/>
-
-## Mukauttaminen {#customization}
-
-Erilaisia ominaisuuksia on olemassa, jotka mahdollistavat Laatikon komponentin eri attribuuttien mukauttamisen. Tämä osio käsittelee näitä ominaisuuksia esimerkkien avulla.
-
-## Autofocus {#autofocus}
-
-Autofocus-ominaisuus on suunniteltu parantamaan saavutettavuutta ja käytettävyyttä automaattisesti keskittymällä laatikon ensimmäiseen kohteeseen, kun se avataan. Tämä toiminto poistaa tarpeen käyttäjien siirtyä manuaalisesti haluttuun kohteeseen, säästäen aikaa ja vaivaa.
-
-Kun laatikko avautuu joko tapahtuman tai muun vuorovaikutuksen kautta, käyttäjän keskittyminen ohjataan laatikon ensimmäiseen kohteeseen. Tämä ensimmäinen kohde voi olla painike, linkki, valintavaihtoehto tai mikä tahansa muokattava elementti.
-
-:::tip
-Automaattisesti keskittymällä ensimmäiseen kohteeseen kehittäjä varmistaa, että käyttäjät voivat heti sitoutua merkittävimpään tai eniten käytettyyn vaihtoehtoon ilman, että heidän tarvitsee siirtyä tai vierittää koko laatikon läpi. Tämä käyttäytyminen sujuvoittaa käyttäjäkokemusta ja edistää tehokasta navigointia käyttöliittymässä.
-:::
-
-Tämä ominaisuus voi myös olla erityisen hyödyllinen henkilöille, jotka luottavat näppäimistön navigointiin tai apuvälineisiin, kuten ruudunlukijoihin. Se tarjoaa selkeän aloituspaikan laatikossa ja antaa käyttäjien käyttää haluttua toiminnallisuutta ilman tarpeetonta manuaalista syöttöä.
+`Drawer`-komponentti tukee automaattista fokusta, joka asettaa fokus heti ensimmäiselle fokusoitavalle elementille, kun `Drawer` avautuu. Tämä parantaa käytettävyyttä tuomalla huomion suoraan ensimmäiseen toiminnalliseen elementtiin.
 
 <ComponentDemo
 path='/webforj/drawerautofocus?'
@@ -57,39 +32,67 @@ height='600px'
 
 <!-- Esimerkki -->
 
-## Otsikko {#label}
+## Label {#label}
 
-Laatikon Otsikko-ominaisuus on suunniteltu parantamaan saavutettavuutta ja tarjoamaan kuvaileva konteksti laatikolle käyttöliittymässä. Tämä ominaisuus mahdollistaa kehittäjien määrittää laatikolle otsikon, ensisijaisesti saavutettavuussyistä, varmistaen, että ruudunlukijat ja muut apuvälineet voivat tarkasti välittää laatikon tarkoituksen ja sisällön käyttäjille.
+`setLabel()`-metodi voi tarjota merkityksellisen kuvauksen `Drawer`-paneelin sisällöstä. Kun etiketti on asetettu, apuvälineet kuten ruudunlukuohjelmat voivat ilmoittaa sen, auttaen käyttäjiä ymmärtämään `Drawer`-paneelin tarkoituksen näkemättä sen visuaalista sisältöä.
 
-Kun Laatikon Otsikko -ominaisuutta käytetään, määritetty otsikko tulee olemaan olennainen osa laatikon saavutettavuusinfrastruktuuria. Se mahdollistaa apuvälineisiin turvautuvien käyttäjien ymmärtää laatikon toiminto ja navigoida käyttöliittymässä tehokkaammin.
+```java
+Drawer drawer = new Drawer();
+drawer.setLabel("Tehtävien hallinta");
+```
 
-Antamalla otsikon laatikolle kehittäjät varmistavat, että ruudunlukijat ilmoittavat laatikon tarkoituksen näkörajoitteisille käyttäjille. Tämä tieto antaa yksilöille mahdollisuuden tehdä tietoisia päätöksiä vuorovaikutuksessa laatikon kanssa, sillä he ymmärtävät sen sisällön ja merkityksen laajemmassa käyttöliittymässä.
+:::tip Kuvalliset Etiketit
+Käytä tiiviitä ja kuvaavia etikettejä, jotka heijastavat `Drawer`-paneelin tarkoitusta. Vältä geneerisiä termejä kuten "Valikko" tai "Paneeli", kun tarkempi nimi voi olla käytettävissä.
+:::
 
-Otsikko-ominaisuutta voidaan mukauttaa sopimaan sovelluksen erityisiin konteksteihin ja suunnittelutarpeisiin. Kehittäjillä on joustavuutta tarjota tiiviitä ja kuvailevia otsikoita, jotka tarkasti edustavat laatikon sisältöä tai toiminnallisuutta.
+## Koko
 
-<!-- Esimerkki -->
+`Drawer`-paneelin koon hallitsemiseksi aseta arvo CSS:n mukautetulle ominaisuudelle `--dwc-drawer-size`. Tämä määrittää `Drawer`-paneelin leveyden vasemmalle/oikealle sijoittamiselle tai korkeuden ylös/alaspäin sijoittamiselle.
 
-## Sijoittaminen {#placement}
+Voit määrittää arvon käyttäen mitä tahansa voimassa olevaa CSS-yksikköä, kuten prosentteja, pikseleitä tai vw/vh, joko Java- tai CSS-muodossa:
 
-Laatikkokomponentin sijoittamisominaisuus mahdollistaa kehittäjien määrittää laatikon aseman ja kohdistuksen näkymässä. Tämä ominaisuus tarjoaa joukon enum-arvoja, jotka tarjoavat joustavuutta sen määrittämisessä, missä laatikko ilmestyy pääsisällön suhteessa.
+```java
+// Java
+drawer.setStyle("--dwc-drawer-size", "40%");
+```
 
-Saatavilla olevat enum-arvot sijoittamisominaisuudelle ovat seuraavat:
+```css
+/* CSS */
+dwc-drawer {
+  --dwc-drawer-size: 40%;
+}
+```
 
-- **YLÄ**: Tämä arvo asettaa laatikon näkyvän alueen yläosaan, jolloin se vie ylimmän alueen.
+Estääksesi `Drawer`-paneelin kasvamasta liian suureksi, käytä `--dwc-drawer-max-size` -arvoa yhdessä sen kanssa:
 
-- **YLÄ_KESKI**: Tällä arvolla laatikko sijoitetaan näkymän yläosan keskelle. Se on kohdistettu vaaka-asennossa keskelle, luoden tasapainoisen asettelun.
+```java
+// Java
+drawer.setStyle("--dwc-drawer-size", "40%");
+drawer.setStyle("--dwc-drawer-max-size", "800px");
+```
 
-- **ALHA**: Tämän arvon avulla laatikko sijaitsee näkymän alareunassa, pääsisällön alapuolella.
+```css
+/* CSS */
+dwc-drawer {
+  --dwc-drawer-size: 40%;
+  --dwc-drawer-max-size: 800px;
+}
+```
 
-- **ALHA_KESKI**: Tämä arvo keskittää laatikon vaakasuunnassa näkymän alareunassa. Se tarjoaa visuaalisesti tasapainoisen koostumuksen.
+## Sijoitus
 
-- **VASEN**: Tämän arvon valitsemisella laatikko sijaitsee näkymän vasemmalla puolella, pääsisällön viereen.
+`setPlacement()`-metodi hallitsee, missä kohtaa `Drawer`-paneeli näkyy näkymässä.
 
-- **OIKEA**: Käyttämällä tätä arvoa laatikko sijoitetaan näkymän oikealle puolelle, pitäen läheistä läheisyyttä pääsisältöön.
+Saatavilla olevat sijoitusvaihtoehdot:
 
-Sijoittamisominaisuus mahdollistaa kehittäjien valita laatikon parhaimman aseman ottaen huomioon erityiset suunnittelu- ja käyttäjäkokemusvaatimukset. Enum-arvot tarjoavat erilaisia sijoitusvaihtoehtoja eri käyttöliittymäasettelujen ja visuaalisten hierarkioiden mahtamiseen.
-
-Hyödyntämällä sijoittamisominaisuutta kehittäjät voivat luoda intuitiivisia ja tehokkaita käyttöliittymiä. Esimerkiksi sijoittamalla laatikon vasemmalle tai oikealle puolelle voidaan nopeasti päästä lisätoimintoihin tai navigointivaihtoehtoihin, kun taas ylä- tai alhaisijat ovat hyvin soveltuvia kontekstuaaliselle informaatiolle tai lisäsisällölle.
+<!-- vale off -->
+- **YLÄOSA**: Asettelu paneeli yläpään reunalle näkymässä.
+- **YLÄKESKI**: Kohdistaa paneelin vaaka-keskitetysti yläpään reunalle näkymässä.
+- **ALHAOSA**: Asettelu paneeli alareunaan näkymässä.
+- **ALHAKESKI**: Vaaka-keskittää paneelin alaspäin näkymässä.
+- **VASEN**: Asettelu paneeli vasemmalle reunalle näkymässä.
+- **OIKEA**: Asettelu paneeli oikealle reunalle näkymässä.
+<!-- vale on -->
 
 <ComponentDemo
 path='/webforj/drawerplacement?'
@@ -97,16 +100,52 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='600px'
 />
 
+## Tapahtumien käsittely
+
+`Drawer`-komponentti tuottaa elinkaaritapahtumia, joita voidaan käyttää sovelluksen logiikan suorittamiseen `Drawer`-paneelin avoimuuden tai sulkemisen tilan muuttuessa.
+
+Tuetut tapahtumat:
+
+- `DrawerOpenEvent`: Lausutaan, kun paneeli on täysin avattu.
+- `DrawerCloseEvent`: Lausutaan, kun paneeli on täysin suljettu.
+
+Voit liittää kuuntelijoita näihin tapahtumiin suoraan logiikan suorittamiseksi, kun `Drawer`-paneelin tila muuttuu.
+
+```java
+Drawer drawer = new Drawer();
+
+drawer.addOpenListener(e -> {
+  // Käsittele avattua paneelia
+});
+
+drawer.addCloseListener(e -> {
+  // Käsittele suljettua paneelia
+});
+```
+
+## Esimerkki: Yhteystietojen valitsija
+
+`Drawer`-komponentti tuo esiin lisäsisältöä häiritsemättä nykyistä näkymää. Tämä esimerkki sijoittaa paneelin alareunaan keskelle, sisältäen vieritettävän yhteystietoluettelon.
+
+Jokainen yhteystieto näyttää avatarin, nimen, sijainnin ja toimintopainikkeen nopeaa pääsyä varten yksityiskohtiin tai viestintään. Tämä lähestymistapa toimii hyvin kompaktien työkalujen, kuten yhteystietovalitsijoiden, asetuspaneelien tai ilmoitusten rakentamiseen.
+
+<ComponentDemo
+path='/webforj/drawercontact?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerContactView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/drawer/drawerContact.css'
+height='600px'
+/>
+
+## Esimerkki: Tehtävien hallinta
+
+Tämä esimerkki käyttää `Drawer`-paneelia tehtävien hallintana. Voit lisätä tehtäviä, rastittaa ne ja tyhjentää suoritetut. `Drawer`-paneelin alatuki sisältää lomakeohjaimia vuorovaikutukseen tehtäväluettelon kanssa, ja "Lisää tehtävä" [`Button`](../components/button) poistaa itsensä käytöstä, jos 50 tehtävää saavutetaan.
+
+<ComponentDemo
+path='/webforj/drawertask?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerTaskView.java'
+height='600px'
+/>
+
 ## Tyylit {#styling}
 
-<TableBuilder name="Laatikko" />
-
-## Parhaat käytännöt {#best-practices}
-
-Varmistaaksesi optimaalisen käyttäjäkokemuksen käyttäessäsi `Laatikko`-komponenttia, harkitse seuraavia parhaita käytäntöjä:
-
-1. **Sijoittaminen**: Päätä, pitäisikö laatikon liukua vasemmalta, oikealta, ylhäältä tai alhaalta sovelluksesi asettelun ja käyttäjäkokemusnäkökohtien perusteella. Ota huomioon käyttäjien mieltymykset ja suunnittelukäytännöt.
-
-2. **Saavutettavuus**: Kiinnitä erityistä huomiota saavutettavuuteen. Varmista, että käyttäjät voivat avata ja sulkea laatikon näppäimistöohjaimilla, ja että ruudunlukijat voivat ilmoittaa sen läsnäolosta ja tilasta. Tarjoa ARIA-rooleja ja -etikettejä tarpeen mukaan.
-
-3. **Pyyhkäisy eleet**: Kosketustoiminnolla varustetuilla laitteilla, tue pyyhkäisyliikkeitä laatikon avaamiseksi ja sulkemiseksi. Tämä on intuitiivinen tapa, jonka avulla käyttäjät voivat vuorovaikuttaa sen kanssa.
+<TableBuilder name="Drawer" />

@@ -3,14 +3,14 @@ sidebar_position: 1
 title: Table
 hide_giscus_comments: true
 sidebar_class_name: has-new-content
-_i18n_hash: 3dde6158741882c0936e6cfe5abdad49
+_i18n_hash: 9e123638ff60f46c96d369bce79da44e
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-table" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="table" location="com/webforj/component/table/Table" top='true'/>
 
-La clase `Table` es un componente versátil diseñado para presentar información tabular de manera estructurada y fácilmente comprensible. Optimizada para manejar grandes conjuntos de datos con alto rendimiento, este componente ofrece una visualización avanzada y una completa suite de eventos para una dinámica participación del usuario.
+La clase `Table` es un componente versátil diseñado para presentar información tabular de manera estructurada y fácilmente comprensible. Optimizado para manejar grandes conjuntos de datos con alto rendimiento, este componente ofrece visualización avanzada y un conjunto completo de eventos para la interacción dinámica del usuario.
 
 <ComponentDemo 
 path='/webforj/datatable?' 
@@ -39,7 +39,7 @@ public class MusicRecord {
 
 Una vez que se ha creado una clase de entidad, utilízala para llenar una colección de estas entidades con los datos deseados.
 
-A partir de estos datos, se necesita crear un `Repository` para su uso dentro de la `Table`. La clase `CollectionRepository` se proporciona para convertir cualquier colección válida de Java en un `Repository` utilizable, evitando la necesidad de implementar tu propia clase de `Repository`.
+A partir de estos datos, se necesita crear un `Repository` para su uso dentro de la `Table`. Se proporciona la clase `CollectionRepository` para convertir cualquier colección válida de Java en un `Repository` utilizable, evitando la necesidad de implementar tu propia clase de `Repository`.
 
 ```java
 List<MusicRecord> data = new Gson().fromJson(
@@ -53,7 +53,7 @@ CollectionRepository<MusicRecord> dataRepository = new CollectionRepository<>(da
 
 ### 3. Instanciar `Table` y agregar columnas {#3-instantiate-table-and-add-columns}
 
-Instancia un nuevo objeto `Table`, y utiliza uno de los métodos de fábrica proporcionados para agregar las columnas deseadas a una `Table` recién creada:
+Instancia un nuevo objeto `Table`, y utiliza uno de los métodos de fábrica proporcionados para agregar las columnas deseadas a la `Table` recién creada:
 
 ```java
 Table<MusicRecord> table = new Table<>();
@@ -73,10 +73,10 @@ table.setRepository(Service.getMusicRecords());
 ```
 
 :::info
-Alternativamente, el método `setItems()` puede aceptar cualquier colección válida de Java, lo que creará un `CollectionRepository` automáticamente para ti. 
+Alternativamente, el método `setItems()` puede recibir cualquier colección válida de Java, lo que creará una `CollectionRepository` internamente para ti. 
 :::
 
-A continuación se muestra un ejemplo de los pasos anteriores implementados para crear un componente básico `Table`:
+A continuación se muestra un ejemplo de los pasos anteriores implementados para crear un componente `Table` básico:
 
 
 <ComponentDemo 
@@ -86,3 +86,7 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/hea
 'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
 height='600px'
 />
+
+## Estilo
+
+<TableBuilder name="Table" />

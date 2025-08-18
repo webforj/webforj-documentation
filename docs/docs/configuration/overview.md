@@ -1,9 +1,9 @@
 ---
 sidebar_position: 1
 title: Configuration
+hide_table_of_contents: true
 hide_giscus_comments: true
 ---
-
 
 <Head>
   <style>{`
@@ -12,11 +12,5 @@ hide_giscus_comments: true
   }
   `}</style>
 </Head>
-
-<!-- vale off -->
-import DocCardList from '@theme/DocCardList';
-
-<!-- vale on -->
-
 
 <DocCardList className="topics-list" />

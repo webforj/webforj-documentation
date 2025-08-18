@@ -56,7 +56,7 @@
     "description": "Explanation column header"
   },
   "component.archetype.table.archetypeGroupId.desc": {
-    "message": "Arkityypin ryhmätunnus on com.webforj.",
+    "message": "Arkityypin ryhmätunnus: com.webforJ",
     "description": "archetypeGroupId description"
   },
   "component.archetype.table.archetypeArtifactId.desc": {
@@ -538,7 +538,7 @@
     "description": "The draft content banner title"
   },
   "theme.contentVisibility.draftBanner.message": {
-    "message": "Tämä sivu on luonnos. Näkyy vain kehityksessä.",
+    "message": "Tämä sivu on luonnos. Näkyy vain kehitysympäristössä.",
     "description": "The draft content banner message"
   },
   "theme.ErrorPageContent.tryAgain": {

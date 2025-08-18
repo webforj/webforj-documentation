@@ -10,7 +10,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/webforj_icon.svg',
+  favicon: 'https://docs.webforj.com/icons/icon.png',
   organizationName: 'webforj',
   projectName: 'webforj-docs',
   trailingSlash: false,

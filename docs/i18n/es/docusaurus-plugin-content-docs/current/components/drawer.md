@@ -1,53 +1,28 @@
 ---
 title: Drawer
 sidebar_position: 35
-_i18n_hash: 73da264dca1e3f8cfd58b697e3e9d0dc
+sidebar_class_name: updated-content
+_i18n_hash: a19d1b8c8e0b74cecee529e86649d449
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-drawer" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="drawer" location="com/webforj/component/drawer/Drawer" top='true'/>
 
-El cajón es un contenedor que se desliza hacia dentro del área de visualización para exponer opciones e información adicional. Se pueden crear múltiples cajones en una aplicación, y se apilarán uno encima del otro.
+El componente `Drawer` en webforJ crea un panel deslizante que aparece desde el borde de la pantalla, revelando contenido adicional sin dejar la vista actual. Se utiliza comúnmente para navegación lateral, menús de filtros, configuraciones de usuario o notificaciones compactas que necesitan aparecer temporalmente sin interrumpir la interfaz principal.
 
-El componente Drawer se puede utilizar en muchas situaciones diferentes, como al proporcionar un menú de navegación que se puede alternar, un panel que muestra información suplementaria o contextual, o para optimizar el uso en un dispositivo móvil. El siguiente ejemplo mostrará una aplicación móvil que utiliza el componente webforJ AppLayout y muestra un cajón "Bienvenida Popup" en la parte inferior cuando se carga por primera vez. Además, un componente de cajón navegacional se puede alternar en la aplicación al hacer clic en el menú hamburguesa.
+Los `Drawers` se apilan automáticamente cuando se abren múltiples, lo que los convierte en una opción flexible para interfaces con espacio limitado.
+
+El ejemplo a continuación muestra este comportamiento dentro del componente [`AppLayout`](../components/app-layout). El cajón de navegación activado por el menú hamburguesa está integrado en [`AppLayout`](../components/app-layout), mientras que el popup de bienvenida en la parte inferior utiliza una instancia de `Drawer` independiente. Ambos coexisten y se apilan de manera independiente, demostrando cómo los `Drawers` pueden integrarse dentro de componentes de diseño o usarse como elementos independientes.
 
 <AppLayoutViewer path='/webforj/drawerwelcome?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java'
 cssURL='/css/drawer/drawerWelcome.css'
 />
 
-## Usos {#usages}
+## Autofocus
 
-1. **Menú de Navegación**: Un uso común de un componente de cajón es como menú de navegación. Proporciona una forma eficiente de espacio para mostrar enlaces a varias secciones o páginas de tu aplicación, especialmente en diseños móviles o responsivos. Los usuarios pueden abrir y cerrar el cajón para acceder a las opciones de navegación sin desordenar el área de contenido principal.
-
-2. **Filtro y Barra Lateral**: Un cajón se puede utilizar como filtro o barra lateral en aplicaciones que muestran una lista de elementos. Los usuarios pueden expandir el cajón para revelar opciones de filtro, controles de ordenación, o información adicional relacionada con los elementos de la lista. Esto mantiene el contenido principal enfocado en la lista mientras proporciona funciones avanzadas de una manera accesible.
-
-3. **Perfil de Usuario o Configuración**: Puedes usar un cajón para mostrar información del perfil del usuario o configuraciones de la aplicación. Esto mantiene dicha información fácilmente accesible pero oculta cuando no es necesaria, manteniendo una interfaz limpia y ordenada. Los usuarios pueden abrir el cajón para actualizar sus perfiles o ajustar configuraciones.
-
-4. **Notificaciones**: Para aplicaciones con notificaciones o alertas, un cajón puede deslizarse para mostrar nuevos mensajes o actualizaciones. Los usuarios pueden revisar y descartar rápidamente las notificaciones sin salir de su vista actual.
-
-<ComponentDemo
-path='/webforj/drawerdemo?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerDemoView.java'
-height='600px'
-/>
-
-## Personalización {#customization}
-
-Existen varias propiedades que permiten la personalización de varios atributos del componente Drawer. Esta sección describe esas propiedades con ejemplos de su modificación.
-
-## Autofocus {#autofocus}
-
-La propiedad Auto-Focus está diseñada para mejorar la accesibilidad y usabilidad al enfocar automáticamente el primer elemento dentro de un cajón cuando se abre. Esta característica elimina la necesidad de que los usuarios naveguen manualmente al elemento deseado, ahorrando tiempo y esfuerzo.
-
-Cuando se activa el cajón para abrirse, ya sea a través de un evento, por defecto o cualquier otra interacción, el enfoque del usuario se dirige al primer elemento dentro del cajón. Este primer elemento podría ser un botón, un enlace, una opción de menú, o cualquier otro elemento que pueda recibir el enfoque.
-
-:::tip
-Al enfocar automáticamente el primer elemento, el desarrollador asegura que los usuarios puedan interactuar de inmediato con la opción más relevante o utilizada sin tener que tabular o desplazarse por todo el cajón. Este comportamiento optimiza la experiencia del usuario y promueve una navegación eficiente dentro de la interfaz de usuario.
-:::
-
-Esta propiedad también puede ser particularmente beneficiosa para personas que dependen de la navegación por teclado o tecnologías asistivas como lectores de pantalla. Proporciona un punto de partida claro dentro del cajón y permite a los usuarios acceder a la funcionalidad deseada sin entradas manuales innecesarias.
+El componente `Drawer` admite autofocus, que establece automáticamente el foco en el primer elemento enfocable cuando se abre el `Drawer`. Esto mejora la usabilidad al llevar la atención directamente al primer elemento accionable.
 
 <ComponentDemo
 path='/webforj/drawerautofocus?'
@@ -55,37 +30,69 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='600px'
 />
 
-## Etiqueta {#label}
+<!-- Ejemplo -->
 
-La propiedad Drawer Label es una característica diseñada para mejorar la accesibilidad y proporcionar un contexto descriptivo para un cajón dentro de una interfaz de usuario. Esta propiedad permite a los desarrolladores asignar una etiqueta a un cajón, principalmente para fines de accesibilidad, asegurando que los lectores de pantalla y otras tecnologías asistivas puedan transmitir con precisión el propósito y contenido del cajón a los usuarios.
+## Label {#label}
 
-Cuando se utiliza la propiedad Drawer Label, la etiqueta asignada se convierte en una parte integral de la infraestructura de accesibilidad del cajón. Permite a los usuarios que dependen de tecnologías asistivas comprender la función del cajón y navegar por la interfaz de manera más efectiva.
+El método `setLabel()` puede proporcionar una descripción significativa del contenido dentro de un `Drawer`. Cuando se establece una etiqueta, las tecnologías asistivas como los lectores de pantalla pueden anunciarla, ayudando a los usuarios a entender el propósito del `Drawer` sin ver su contenido visual.
 
-Al proporcionar una etiqueta para el cajón, los desarrolladores aseguran que los lectores de pantalla anuncian el propósito del cajón a los usuarios con discapacidades visuales. Esta información empodera a las personas para que tomen decisiones informadas sobre la interacción con el cajón, ya que pueden entender su contenido y relevancia dentro de la interfaz de usuario más amplia.
+```java
+Drawer drawer = new Drawer();
+drawer.setLabel("Administrador de Tareas");
+```
 
-La propiedad Label se puede personalizar para adaptarse al contexto específico y los requisitos de diseño de la aplicación. Los desarrolladores tienen la flexibilidad de proporcionar etiquetas concisas y descriptivas que representen con precisión el contenido o la funcionalidad del cajón.
+:::tip Etiquetas Descriptivas
+Utiliza etiquetas concisas y descriptivas que reflejen el propósito del `Drawer`. Evita términos genéricos como "Menú" o "Panel" cuando se puede usar un nombre más específico.
+:::
 
-## Ubicación {#placement}
+## Tamaño
 
-La propiedad de ubicación del componente de interfaz de usuario Drawer permite a los desarrolladores especificar la posición y alineación del cajón dentro del área de visualización. Esta propiedad ofrece una variedad de valores de enumeración que brindan flexibilidad para determinar dónde aparece el cajón en relación con el contenido principal.
+Para controlar el tamaño de un `Drawer`, establece un valor para la propiedad CSS personalizada `--dwc-drawer-size`. Esto establece el ancho del `Drawer` para colocaciones izquierda/derecha o la altura para colocaciones superior/inferior.
 
-Los valores de enumeración disponibles para la propiedad de ubicación son los siguientes:
+Puedes definir el valor usando cualquier unidad CSS válida como un porcentaje, píxeles o vw/vh, utilizando Java o CSS:
 
-- **TOP**: Este valor coloca el cajón en la parte superior del área de visualización, permitiendo que ocupe la región más alta.
+```java
+// Java
+drawer.setStyle("--dwc-drawer-size", "40%");
+```
 
-- **TOP_CENTER**: Con este valor, el cajón se posiciona en el centro de la parte superior del área de visualización. Está alineado horizontalmente en el medio, creando un diseño equilibrado.
+```css
+/* CSS */
+dwc-drawer {
+  --dwc-drawer-size: 40%;
+}
+```
 
-- **BOTTOM**: Al usar este valor, el cajón se sitúa en la parte inferior del área de visualización, apareciendo debajo del contenido principal.
+Para evitar que el `Drawer` crezca demasiado, utiliza `--dwc-drawer-max-size` junto a él:
 
-- **BOTTOM_CENTER**: Este valor centra el cajón horizontalmente en la parte inferior del área de visualización. Proporciona una composición visualmente equilibrada.
+```java
+// Java
+drawer.setStyle("--dwc-drawer-size", "40%");
+drawer.setStyle("--dwc-drawer-max-size", "800px");
+```
 
-- **LEFT**: Seleccionar este valor hace que el cajón se posicione en el lado izquierdo del área de visualización, adyacente al contenido principal.
+```css
+/* CSS */
+dwc-drawer {
+  --dwc-drawer-size: 40%;
+  --dwc-drawer-max-size: 800px;
+}
+```
 
-- **RIGHT**: Al utilizar este valor, el cajón se coloca en el lado derecho del área de visualización, manteniendo una proximidad cercana al contenido principal.
+## Colocación
 
-La propiedad de ubicación permite a los desarrolladores elegir la posición más apropiada para el cajón en función de los requisitos específicos de diseño y experiencia del usuario. Los valores de enumeración ofrecen una variedad de opciones de ubicación para acomodar diferentes diseños de interfaz y jerarquías visuales.
+El método `setPlacement()` controla dónde aparece el `Drawer` en la ventana de visualización.
 
-Al aprovechar la propiedad de ubicación, los desarrolladores pueden crear interfaces de usuario intuitivas y eficientes. Por ejemplo, colocar el cajón en el lado izquierdo o derecho permite un acceso rápido a funcionalidades o opciones de navegación adicionales, mientras que las ubicaciones superior o inferior son adecuadas para información contextual o contenido suplementario.
+Opciones de colocación disponibles:
+
+<!-- vale off -->
+- **TOP**: Posiciona el cajón en el borde superior de la ventana de visualización.
+- **TOP_CENTER**: Alinea el cajón horizontalmente centrado en la parte superior de la ventana de visualización.
+- **BOTTOM**: Coloca el cajón en la parte inferior de la ventana de visualización.
+- **BOTTOM_CENTER**: Centra horizontalmente el cajón en la parte inferior de la ventana de visualización.
+- **LEFT**: Posiciona el cajón a lo largo del borde izquierdo de la ventana de visualización.
+- **RIGHT**: Posiciona el cajón a lo largo del borde derecho de la ventana de visualización.
+<!-- vale on -->
 
 <ComponentDemo
 path='/webforj/drawerplacement?'
@@ -93,16 +100,52 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='600px'
 />
 
+## Manejo de eventos
+
+El componente `Drawer` emite eventos de ciclo de vida que se pueden utilizar para activar la lógica de la aplicación en respuesta a cambios en su estado abierto o cerrado.
+
+Eventos soportados:
+
+- `DrawerOpenEvent`: Se dispara cuando el cajón está completamente abierto.
+- `DrawerCloseEvent`: Se dispara cuando el cajón está completamente cerrado.
+
+Puedes adjuntar oyentes a estos eventos para ejecutar lógica cuando el estado del `Drawer` cambia.
+
+```java
+Drawer drawer = new Drawer();
+
+drawer.addOpenListener(e -> {
+  // Manejar el evento de cajón abierto
+});
+
+drawer.addCloseListener(e -> {
+  // Manejar el evento de cajón cerrado
+});
+```
+
+## Ejemplo: Selector de contactos
+
+El componente `Drawer` expone contenido adicional sin interrumpir la vista actual. Este ejemplo coloca un cajón en el centro inferior, conteniendo una lista de contactos desplazable.
+
+Cada contacto muestra un avatar, nombre, ubicación y botón de acción para acceso rápido a detalles o comunicación. Este enfoque funciona bien para construir herramientas compactas como selectores de contactos, paneles de configuración o notificaciones.
+
+<ComponentDemo
+path='/webforj/drawercontact?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerContactView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/drawer/drawerContact.css'
+height='600px'
+/>
+
+## Ejemplo: Administrador de tareas
+
+Este ejemplo utiliza un `Drawer` como un administrador de tareas. Puedes agregar tareas, marcarlas como completadas y eliminar las completadas. El pie del `Drawer` incluye controles de formulario para interactuar con la lista de tareas, y el botón "Agregar Tarea" [`Button`](../components/button) se desactiva si se alcanzan 50 tareas.
+
+<ComponentDemo
+path='/webforj/drawertask?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerTaskView.java'
+height='600px'
+/>
+
 ## Estilo {#styling}
 
 <TableBuilder name="Drawer" />
-
-## Mejores prácticas {#best-practices}
-
-Para asegurar una experiencia de usuario óptima al utilizar el componente `Drawer`, considera las siguientes mejores prácticas:
-
-1. **Ubicación**: Decide si el cajón debe deslizarse desde la izquierda, derecha, arriba o abajo, según el diseño de tu aplicación y consideraciones de experiencia del usuario. Considera las preferencias del usuario y las convenciones de diseño.
-
-2. **Accesibilidad**: Presta especial atención a la accesibilidad. Asegúrate de que los usuarios puedan abrir y cerrar el cajón usando controles de teclado y que los lectores de pantalla puedan anunciar su presencia y estado. Proporciona roles y etiquetas ARIA según sea necesario.
-
-3. **Gestos de deslizamiento**: En dispositivos habilitados para táctil, apoya los gestos de deslizamiento para abrir y cerrar el cajón. Esta es una forma intuitiva para que los usuarios interactúen con él.

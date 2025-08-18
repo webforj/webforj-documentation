@@ -1,53 +1,28 @@
 ---
 title: Drawer
 sidebar_position: 35
-_i18n_hash: 73da264dca1e3f8cfd58b697e3e9d0dc
+sidebar_class_name: updated-content
+_i18n_hash: a19d1b8c8e0b74cecee529e86649d449
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-drawer" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="drawer" location="com/webforj/component/drawer/Drawer" top='true'/>
 
-抽屉是一个容器，滑入视口以显示附加选项和信息。一个应用程序可以创建多个抽屉，它们将按层叠加在一起。
+`Drawer` 组件在 webforJ 中创建一个从屏幕边缘滑出的面板，显示额外内容而不离开当前视图。它通常用于侧边导航、过滤菜单、用户设置或需要临时出现的紧凑通知，而不会干扰主界面。
 
-抽屉组件可以在许多不同的场景中使用，例如提供一个可以切换的导航菜单，一个显示补充或上下文信息的面板，或者优化移动设备上的使用。以下示例将展示一个使用webforJ AppLayout组件的移动应用程序，并在首次加载时在底部显示“欢迎弹出”抽屉。此外，用户通过点击汉堡菜单可以在应用程序中切换导航抽屉组件。
+当多个 `Drawers` 打开时，它们会自动堆叠，使其成为空间受限界面的灵活选择。
+
+下面的示例展示了这种行为在 [`AppLayout`](../components/app-layout) 组件中的效果。通过汉堡菜单触发的导航抽屉集成在 [`AppLayout`](../components/app-layout) 中，而底部的欢迎弹出窗口使用独立的 `Drawer` 实例。两者共存并独立堆叠，展示了 `Drawers` 如何在布局组件中集成或作为独立元素使用。
 
 <AppLayoutViewer path='/webforj/drawerwelcome?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java'
 cssURL='/css/drawer/drawerWelcome.css'
 />
 
-## 用法 {#usages}
+## Autofocus
 
-1. **导航菜单**：抽屉组件的一个常见用法是作为导航菜单。它提供了一种空间高效的方式来显示链接到应用程序各个部分或页面的选项，特别是在移动或响应式布局中。用户可以打开和关闭抽屉来访问导航选项，而不会使主内容区域显得杂乱。
-
-2. **过滤器和侧边栏**：抽屉可以用作显示项目列表的应用程序中的过滤器或侧边栏。用户可以展开抽屉以显示过滤选项、排序控件或与列表项相关的附加信息。这使得主内容可以集中于列表，同时以便捷的方式提供高级功能。
-
-3. **用户个人资料或设置**：您可以使用抽屉显示用户个人资料信息或应用程序设置。这样可以保持信息的可及性，同时在不需要时将其隐藏，维护一个整洁的用户界面。用户可以打开抽屉来更新其个人资料或调整设置。
-
-4. **通知**：对于有通知或警报的应用，抽屉可以滑入以显示新消息或更新。用户可以快速检查和关闭通知，而不离开当前视图。
-
-<ComponentDemo
-path='/webforj/drawerdemo?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerDemoView.java'
-height='600px'
-/>
-
-## 定制 {#customization}
-
-存在各种属性，允许定制抽屉组件的不同属性。本节概述了这些属性及其修改示例。
-
-## 自动聚焦 {#autofocus}
-
-自动聚焦属性旨在通过在抽屉打开时自动聚焦于第一个项目来增强可访问性和可用性。此功能消除了用户手动导航到所需项目的需要，节省了时间和精力。
-
-当抽屉被触发打开时，无论是通过事件、默认或其他任何交互，用户的焦点会被引导到抽屉中的第一个项目。这个第一个项目可以是一个按钮、一个链接、一个菜单选项或任何其他可聚焦的元素。
-
-:::tip
-通过自动聚焦第一个项目，开发者确保用户可以立即与最相关或最常用的选项进行交互，而不必通过整个抽屉进行选项切换或滚动。这种行为简化了用户体验，并促进了用户在UI内的高效导航。
-:::
-
-该属性对那些依赖键盘导航或辅助技术（如屏幕阅读器）的人尤其有益。它提供了抽屉内的明确起点，使用户可以在不进行不必要手动输入的情况下访问所需功能。
+`Drawer` 组件支持自动聚焦，当 `Drawer` 打开时，会自动将焦点设置到第一个可聚焦元素。这通过直接将注意力集中在第一个可操作元素上，提高了可用性。
 
 <ComponentDemo
 path='/webforj/drawerautofocus?'
@@ -55,37 +30,69 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='600px'
 />
 
-## 标签 {#label}
+<!-- 示例 -->
 
-抽屉标签属性是一个旨在增强可访问性并为用户界面中的抽屉提供描述性上下文的功能。这个属性允许开发人员为抽屉分配一个标签，主要出于可访问性目的，确保屏幕阅读器和其他辅助技术可以准确传达抽屉的目的和内容。
+## Label {#label}
 
-当使用抽屉标签属性时，所分配的标签将成为抽屉可访问性基础设施的一个重要部分。它使依赖辅助技术的用户能够理解抽屉的功能，能够更有效地在界面之间进行导航。
+`setLabel()` 方法可以提供对 `Drawer` 内部内容的有意义描述。当设置了标签后，辅助技术如屏幕阅读器可以宣读它，帮助用户在未查看其视觉内容的情况下理解 `Drawer` 的用途。
 
-通过为抽屉提供标签，开发者确保屏幕阅读器向视力受损的用户宣告抽屉的目的。这些信息使得个体能够对与抽屉的互动做出明智的决定，因为他们可以理解其内容和在更广泛用户界面中的相关性。
+```java
+Drawer drawer = new Drawer();
+drawer.setLabel("任务管理器");
+```
 
-标签属性可以根据应用的特定上下文和设计要求进行定制。开发者可以灵活提供简洁和描述性标签，准确表示抽屉的内容或功能。
+:::tip 描述性标签
+使用简洁且描述性强的标签来反映 `Drawer` 的用途。当更具体的名称可以使用时，避免使用“菜单”或“面板”等通用术语。
+:::
 
-## 放置 {#placement}
+## Size
 
-抽屉UI组件的放置属性允许开发人员指定抽屉在视口中的位置和对齐。这一属性提供了一系列枚举值，可灵活确定抽屉相对于主内容的出现位置。
+要控制 `Drawer` 的大小，请为 CSS 自定义属性 `--dwc-drawer-size` 设置值。这将设置 `Drawer` 左/右放置的宽度或上下放置的高度。
 
-放置属性的可用枚举值如下：
+您可以使用任何有效的 CSS 单位来定义该值，例如百分比、像素或 vw/vh，使用 Java 或 CSS：
 
-- **顶部**：此值将抽屉放置在视口的顶部，让它占据最上方区域。
+```java
+// Java
+drawer.setStyle("--dwc-drawer-size", "40%");
+```
 
-- **顶部中心**：使用此值，抽屉位于视口顶端的中心。它在水平方向上居中，创建出平衡的布局。
+```css
+/* CSS */
+dwc-drawer {
+  --dwc-drawer-size: 40%;
+}
+```
 
-- **底部**：使用此值时，抽屉位于视口的底部，处于主内容之下。
+要防止 `Drawer` 变得过大，请结合使用 `--dwc-drawer-max-size`：
 
-- **底部中心**：此值在视口底部水平居中抽屉。提供了一种视觉平衡的构图。
+```java
+// Java
+drawer.setStyle("--dwc-drawer-size", "40%");
+drawer.setStyle("--dwc-drawer-max-size", "800px");
+```
 
-- **左侧**：选择此值会使抽屉位于视口的左侧，紧邻主内容。
+```css
+/* CSS */
+dwc-drawer {
+  --dwc-drawer-size: 40%;
+  --dwc-drawer-max-size: 800px;
+}
+```
 
-- **右侧**：使用此值，抽屉位于视口的右侧，保持与主内容的接近。
+## Placement
 
-放置属性允许开发者根据特定的设计和用户体验要求选择最合适的抽屉位置。枚举值提供多种放置选项，以适应不同的界面布局和视觉层级。
+`setPlacement()` 方法控制 `Drawer` 在视口中的出现位置。
 
-通过利用放置属性，开发者可以创建直观且高效的用户界面。例如，将抽屉放在左侧或右侧使额外的功能或导航选项快速可及，而顶部或底部的放置则适合上下文信息或补充内容。
+可用的放置选项：
+
+<!-- vale off -->
+- **顶部**: 将抽屉放置在视口的顶部边缘。
+- **顶部中心**: 将抽屉水平居中对齐于视口的顶部。
+- **底部**: 将抽屉放置在视口的底部。
+- **底部中心**: 将抽屉水平居中于视口底部。
+- **左侧**: 将抽屉沿视口的左边缘放置。
+- **右侧**: 将抽屉沿视口的右边缘放置。
+<!-- vale on -->
 
 <ComponentDemo
 path='/webforj/drawerplacement?'
@@ -93,16 +100,52 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='600px'
 />
 
+## 事件处理
+
+`Drawer` 组件会发出生命周期事件，可用于在其开启或关闭状态变化时触发应用逻辑。
+
+支持的事件：
+
+- `DrawerOpenEvent`: 在抽屉完全打开时触发。
+- `DrawerCloseEvent`: 在抽屉完全关闭时触发。
+
+您可以向这些事件附加监听器，以在 `Drawer` 状态变化时运行逻辑。
+
+```java
+Drawer drawer = new Drawer();
+
+drawer.addOpenListener(e -> {
+  // 处理抽屉打开事件
+});
+
+drawer.addCloseListener(e -> {
+  // 处理抽屉关闭事件
+});
+```
+
+## 示例：联系人选择器
+
+`Drawer` 组件在不干扰当前视图的情况下提供额外内容。此示例在底部中心放置一个抽屉，包含一个可滚动的联系人列表。
+
+每个联系人显示一个头像、姓名、位置和用于快速访问详细信息或通信的操作按钮。这种方法非常适合构建紧凑的工具，如联系人选择器、设置面板或通知。
+
+<ComponentDemo
+path='/webforj/drawercontact?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerContactView.java'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/css/drawer/drawerContact.css'
+height='600px'
+/>
+
+## 示例：任务管理器
+
+此示例使用 `Drawer` 作为任务管理器。您可以添加任务、检查它们，并清除已完成的任务。`Drawer` 底部包括与任务列表交互的表单控件，且“添加任务” [`Button`](../components/button) 在达到 50 个任务时会禁用自己。
+
+<ComponentDemo
+path='/webforj/drawertask?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerTaskView.java'
+height='600px'
+/>
+
 ## 样式 {#styling}
 
 <TableBuilder name="Drawer" />
-
-## 最佳实践 {#best-practices}
-
-为了确保在使用`Drawer`组件时获得最佳的用户体验，请考虑以下最佳实践：
-
-1. **放置**：根据您的应用程序布局和用户体验考虑，决定抽屉应该从左、右、顶部或底部滑入。同时考虑用户偏好和设计规范。
-
-2. **可访问性**：特别注意可访问性。确保用户可以使用键盘控制打开和关闭抽屉，并且屏幕阅读器可以宣告其存在及状态。根据需要提供ARIA角色和标签。
-
-3. **滑动手势**：在支持触控的设备上，支持滑动手势以打开和关闭抽屉。这是用户与其交互的一种直观方式。
