@@ -52,7 +52,7 @@ public class DataTableIT extends BaseTest {
     @Test
     public void testFilteringNonLatinAlphabetCharacters() {
         dataTable.searchAthlete(ATHLETE_WITH_DIACRITICS_LATIN);
-        assertThat(dataTable.getAthleteCells().first()).containsText(ATHLETE_NAME);
+        assertThat(dataTable.getAthleteCells().first()).containsText(ATHLETE_WITH_DIACRITICS_LATIN);
 
         dataTable.searchAthlete(ATHLETE_NAME_CYRILLIC);
         assertThat(dataTable.getTableRows()).hasCount(0);
