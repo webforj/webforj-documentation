@@ -24,7 +24,7 @@
     "description": "Navbar item with label Support"
   },
   "item.label.Events": {
-    "message": "Event",
+    "message": "事件",
     "description": "Navbar item with label Events"
   },
   "item.label.Blog": {
@@ -60,7 +60,7 @@
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {
-    "message": "联系我",
+    "message": "Contact Me",
     "description": "Navbar item with label Contact us"
   }
 }
