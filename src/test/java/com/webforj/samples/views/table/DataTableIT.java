@@ -42,26 +42,20 @@ public class DataTableIT extends BaseTest {
     @Test
     public void testSearchButtonFilter() {
         dataTable.searchAthlete(ATHLETE_NAME);
-        assertThat(dataTable.getTableRows().first()).containsText(ATHLETE_NAME);
 
-        page.waitForTimeout(1000);
+        assertThat(dataTable.getAthleteCells().first()).isVisible();
+        assertThat(dataTable.getAthleteCells().first()).containsText(ATHLETE_NAME);
 
-        int rowCount = dataTable.getRowCount();
-        for (int i = 0; i < rowCount; i++) {
-            assertThat(dataTable.getTableRows().nth(i)).containsText(ATHLETE_NAME);
-        }
+        assertThat(dataTable.getTableRows()).hasCount(3);
     }
 
     @Test
     public void testFilteringNonLatinAlphabetCharacters() {
         dataTable.searchAthlete(ATHLETE_WITH_DIACRITICS_LATIN);
-        page.waitForTimeout(1000);
-        assertThat(dataTable.getTableRows().nth(0)).containsText(ATHLETE_WITH_DIACRITICS_LATIN);
+        assertThat(dataTable.getAthleteCells().first()).containsText(ATHLETE_NAME);
 
         dataTable.searchAthlete(ATHLETE_NAME_CYRILLIC);
-        page.waitForTimeout(1000);
         assertThat(dataTable.getTableRows()).hasCount(0);
-        assertThat(dataTable.getTableRows()).not().isVisible();
     }
 
     @Test

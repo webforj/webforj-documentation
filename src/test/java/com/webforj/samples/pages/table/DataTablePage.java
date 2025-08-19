@@ -24,21 +24,23 @@ public class DataTablePage extends BasePage {
     private final Locator paginationText;
     private final Locator firstCheckbox;
     private final Locator lastPageNumber;
-    private final Locator shadowRootTable;
-    private final Locator shadowRootChoiceBox;
+    private final Locator tableHost;
+    private final Locator athleteCells;
+    private final Locator choiceBoxHost;
     private final Locator paginatorHost;
 
     public DataTablePage(Page page) {
         super(page);
 
-        this.shadowRootTable = page.locator("dwc-table");
-        this.shadowRootChoiceBox = page.locator("dwc-choicebox");
+        this.tableHost = page.locator("dwc-table");
+        this.choiceBoxHost = page.locator("dwc-choicebox");
         this.paginatorHost = page.locator("dwc-navigator").filter(new Locator.FilterOptions().setHas(
                 page.locator("[part~='layout-numbered'], [part~='layout-preview']")));
 
         this.searchInput = page.locator("dwc-field").locator("input");
-        this.tableRows = shadowRootTable.locator("tbody tr[data-row]");
-        this.entriesDropdown = shadowRootChoiceBox.locator("dwc-dropdown");
+        this.tableRows = tableHost.locator("tbody tr[data-row]");
+        athleteCells = tableHost.locator("tbody td[data-cell$='-athlete']");
+        this.entriesDropdown = choiceBoxHost.locator("dwc-dropdown");
         this.entriesTen = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("10").setExact(true));
         this.entriesTwentyfive = page.getByRole(AriaRole.OPTION,
                 new Page.GetByRoleOptions().setName("25").setExact(true));
@@ -51,7 +53,7 @@ public class DataTablePage extends BasePage {
         this.paginatorPreviousPage = paginatorHost.locator("button[part~='button-previous']");
         this.currentPageNavigator = paginatorHost.locator("[part~='layout-preview']");
         this.paginationText = paginatorHost.locator("[part~='layout-preview']");
-        this.firstCheckbox = shadowRootTable.locator("dwc-checkbox").first().locator("input[type='checkbox']");
+        this.firstCheckbox = tableHost.locator("dwc-checkbox").first().locator("input[type='checkbox']");
         this.lastPageNumber = paginatorHost.locator("div[part='layout layout-numbered']").locator("button")
                 .last();
     }
@@ -123,6 +125,10 @@ public class DataTablePage extends BasePage {
 
     public Locator getLastPageNumber() {
         return lastPageNumber;
+    }
+
+    public Locator getAthleteCells() {
+        return athleteCells;
     }
 
     public Locator goToSpecificPage(int pageNumber) {

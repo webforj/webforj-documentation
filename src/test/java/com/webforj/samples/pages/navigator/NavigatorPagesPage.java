@@ -5,35 +5,34 @@ import com.microsoft.playwright.Page;
 
 import com.webforj.samples.pages.BasePage;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 public class NavigatorPagesPage extends BasePage {
 
     private static final String ROUTE = "navigatorpages";
-    private final Locator shadowRoot;
+    private final Locator navigatorHost;
 
     public NavigatorPagesPage(Page page) {
         super(page);
 
-        this.shadowRoot = page.locator("dwc-navigator");
+        this.navigatorHost = page.locator("dwc-navigator");
     }
 
     public static String getRoute() {
         return ROUTE;
     }
 
-    public void assertCurrentPage(int pageNumber) {
-        Locator pageButton = shadowRoot.locator("button[title='Goto page " + pageNumber + "']");
-        assertThat(pageButton).hasAttribute("aria-current", "true");
+    public Locator getPageButtons() {
+        return navigatorHost.locator("div[part~='layout-numbered'] > button");
     }
 
-    public void goToPage(int pageNumber) {
-        Locator pageButton = shadowRoot.locator("button[title='Goto page " + pageNumber + "']");
-        pageButton.click();
+    public Locator getCurrentPageButton() {
+        return navigatorHost.locator("button[part~='button-numbered'][aria-current='true']");
     }
 
-    public Locator getEllipsisButtons() {
-        return shadowRoot.locator("div[part='layout layout-numbered'] > button");
+    public void goToPage(int index) {
+        Locator button = navigatorHost.locator("button[part~='button-numbered'][data-index='" + index + "']");
+        button.click();
+        com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat(button)
+                .hasAttribute("aria-current", "true");
     }
 
 }
