@@ -6,7 +6,7 @@ The Maven Jetty plugin is a popular tool that allows developers to run Java web 
 
 The Jetty Plugin launches an embedded Jetty server that monitors your app’s files, including Java classes and resources, for changes. When it detects updates, it automatically redeploys the app, which speeds up development by eliminating manual build and deployment steps. 
 
-## Jetty configurations
+## Jetty configurations {#jetty-configurations}
 
 Here are some essential configurations for fine-tuning the plugin’s hot deployment and server interaction settings:
 
@@ -14,14 +14,14 @@ Here are some essential configurations for fine-tuning the plugin’s hot deploy
 |-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
 | **`scan`**         | Configures how often the Jetty server scans for file changes in the **`pom.xml`**. The skeleton project sets this to `2` seconds. Increasing this interval can reduce CPU load but may delay changes being reflected in the app. | `1`            |
 
-## webforJ configurations
+## webforJ configurations {#webforj-configurations}
 
 | Property                          | Description                                                                                                                                                                           | Default        |
 |-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
 | **`webforj.reloadOnServerError`** | When using hot redeploy, the whole WAR file is swapped. If the client sends a request while the server is restarting, an error occurs. This setting allows the client to attempt a page reload, assuming the server will be back online shortly. Only applies to development environments and only handles errors specific to hot redeployment. | `on`           |
 | **`webforj.clientHeartbeatRate`** | Sets the interval for client pings to query server availability. This keeps the client-server communication open. For development, use shorter intervals for faster error detection. In production, set this to at least 50 seconds to avoid excessive requests. | `50s`          |
 
-## Usage considerations
+## Usage considerations {#usage-considerations}
 
 While the Jetty Plugin is highly effective for development, it has a few potential limitations:
 

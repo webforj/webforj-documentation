@@ -11,7 +11,7 @@ sidebar_position: 6
 
 The `AppNav` component in webforJ provides a flexible and organized side navigation menu with support for both flat and hierarchical structures. Each entry is an `AppNavItem`, which can represent a simple link or a group containing sub-items. Items can be linked to internal views or external resources, enhanced with icons, badges, or other components.
 
-## Adding and nesting items
+## Adding and nesting items {#adding-and-nesting-items}
 
 `AppNavItem` instances are used to populate the `AppNav` structure. These items can be simple links or nested group headers that contain child items. Group headers without links act as expandable containers.
 
@@ -39,11 +39,11 @@ path='/webforj/appnav/Social?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/appnav/AppNavView.java'
 />
 
-## Linking Items
+## Linking Items {#linking-items}
 
 Each `AppNavItem` can navigate to an internal view or an external link. You can define this using static paths or registered view classes.
 
-### Static paths
+### Static paths {#static-paths}
 
 Use string paths to define links directly:
 
@@ -52,7 +52,7 @@ AppNavItem docs = new AppNavItem("Docs", "/docs");
 AppNavItem help = new AppNavItem("Help", "https://support.example.com");
 ```
 
-### Registered views
+### Registered views {#registered-views}
 
 If your views are registered with the [router](../routing/overview), you can pass the class instead of a hardcoded URL:
 
@@ -67,7 +67,7 @@ ParametersBag params = ParametersBag.of("id=123");
 AppNavItem advanced = new AppNavItem("User", UserView.class, params);
 ```
 
-### With query parameters
+### With query parameters {#with-query-parameters}
 
 Pass a `ParametersBag` to include query strings:
 
@@ -77,7 +77,7 @@ AppNavItem advanced = new AppNavItem("Advanced", SettingsView.class, params);
 advanced.setQueryParameters(params);
 ```
 
-## Target behavior
+## Target behavior {#target-behavior}
 
 Control how links open using `setTarget()`. This is especially useful for external links or pop-out views.
 
@@ -91,7 +91,7 @@ AppNavItem help = new AppNavItem("Help", "https://support.example.com");
 help.setTarget(AppNavItem.NavigationTarget.BLANK);
 ```
 
-## Prefix and suffix
+## Prefix and suffix {#prefix-and-suffix}
 
 `AppNavItem` supports prefix and suffix components. Use these to provide visual clarity with icons, badges, or buttons.
 
@@ -104,7 +104,7 @@ notifications.setPrefixComponent(TablerIcon.create("alert");
 notifications.setSuffixComponent(TablerIcon.create("link"));
 ```
 
-## Auto-opening groups
+## Auto-opening groups {#auto-opening-groups}
 
 Use `setAutoOpen(true)` on the `AppNav` component to automatically expand nested groups when the app is refreshed.
 
@@ -112,6 +112,6 @@ Use `setAutoOpen(true)` on the `AppNav` component to automatically expand nested
 nav.setAutoOpen(true);
 ```
 
-## Styling `AppNavItem`
+## Styling `AppNavItem` {#styling-appnavitem}
 
 <TableBuilder name="AppNavItem" />

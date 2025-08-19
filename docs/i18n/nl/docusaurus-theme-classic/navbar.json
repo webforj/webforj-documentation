@@ -1,0 +1,66 @@
+{
+  "logo.alt": {
+    "message": "webforJ Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Getting Started": {
+    "message": "Starten",
+    "description": "Navbar item with label Getting Started"
+  },
+  "item.label.Components": {
+    "message": "Componenten",
+    "description": "Navbar item with label Components"
+  },
+  "item.label.Community": {
+    "message": "Gemeenschap",
+    "description": "Navbar item with label Community"
+  },
+  "item.label.Developers": {
+    "message": "Ontwikkelaar",
+    "description": "Navbar item with label Developers"
+  },
+  "item.label.Support": {
+    "message": "Ondersteuning",
+    "description": "Navbar item with label Support"
+  },
+  "item.label.Events": {
+    "message": "Evenementen",
+    "description": "Navbar item with label Events"
+  },
+  "item.label.Blog": {
+    "message": "Blog",
+    "description": "Navbar item with label Blog"
+  },
+  "item.label.startforJ": {
+    "message": "startforJ",
+    "description": "Navbar item with label startforJ"
+  },
+  "item.label.DWC HueCraft": {
+    "message": "DWC HueCraft",
+    "description": "Navbar item with label DWC HueCraft"
+  },
+  "item.label.DWC Design Kit": {
+    "message": "DWC Ontwerpsjabloon",
+    "description": "Navbar item with label DWC Design Kit"
+  },
+  "item.label.JavaDocs": {
+    "message": "JavaDocs",
+    "description": "Navbar item with label JavaDocs"
+  },
+  "item.label.Client Components": {
+    "message": "Klantcomponenten",
+    "description": "Navbar item with label Client Components"
+  },
+  "item.label.Contribution Guide": {
+    "message": "Bijdragen gids",
+    "description": "Navbar item with label Contribution Guide"
+  },
+  "item.label.Report Issue": {
+    "message": "Probleem rapporteren",
+    "description": "Navbar item with label Report Issue"
+  },
+  "item.label.Contact us": {
+    "message": "Neem contact op",
+    "description": "Navbar item with label Contact us"
+  }
+}

@@ -1,0 +1,716 @@
+{
+  "theme.docs.translationNotice": {
+    "message": "Tämä sivu on käännetty automaattisesti ja saattaa sisältää virheitä. Tarkimmat tiedot löydät virallisesta webforJ-dokumentaatiosta.",
+    "description": "Translation notice for non-English pages"
+  },
+  "component.askMenu.chatgpt.label": {
+    "message": "Avaa ChatGPT:ssä",
+    "description": "ChatGPT button label"
+  },
+  "component.askMenu.chatgpt.desc": {
+    "message": "Kysy kysymyksiä tästä sivusta",
+    "description": "ChatGPT button description"
+  },
+  "component.askMenu.claude.label": {
+    "message": "Avaa Claudessa",
+    "description": "Claude button label"
+  },
+  "component.askMenu.claude.desc": {
+    "message": "Keskustele Clauden kanssa",
+    "description": "Claude button description"
+  },
+  "component.askMenu.markdown.label": {
+    "message": "Näytä Markdown",
+    "description": "Markdown button label"
+  },
+  "component.askMenu.markdown.desc": {
+    "message": "Näytä markdown-lähdekoodi",
+    "description": "Markdown button description"
+  },
+  "component.archetype.intro": {
+    "message": "Luodaksesi ja rakentaaksesi uuden {project}-projektin, seuraa näitä vaiheita:",
+    "description": "Introduction text for archetype component"
+  },
+  "component.archetype.step1.title": {
+    "message": "Siirry oikeaan hakemistoon",
+    "description": "Step 1 title"
+  },
+  "component.archetype.step1.desc": {
+    "message": "Avaa terminaali ja siirry kansioon, johon haluat luoda uuden projektisi.",
+    "description": "Step 1 description"
+  },
+  "component.archetype.step2.title": {
+    "message": "Suorita archetype:generate-komento",
+    "description": "Step 2 title"
+  },
+  "component.archetype.step2.desc": {
+    "message": "Käytä alla olevaa Maven-komentoa ja mukauta groupId, artifactId ja version projektisi tarpeiden mukaan.",
+    "description": "Step 2 description"
+  },
+  "component.archetype.table.argument": {
+    "message": "Argumentti",
+    "description": "Argument column header"
+  },
+  "component.archetype.table.explanation": {
+    "message": "Selitys",
+    "description": "Explanation column header"
+  },
+  "component.archetype.table.archetypeGroupId.desc": {
+    "message": "Arkityypin ryhmätunnus: com.webforJ",
+    "description": "archetypeGroupId description"
+  },
+  "component.archetype.table.archetypeArtifactId.desc": {
+    "message": "Määrittää käytettävän arkkityypin nimen.",
+    "description": "archetypeArtifactId description"
+  },
+  "component.archetype.table.archetypeVersion.desc": {
+    "message": "Määritä arkkityypin versio. LATEST valitsee uusimman version.",
+    "description": "archetypeVersion description"
+  },
+  "component.archetype.table.groupId.desc": {
+    "message": "Edustaa luodun projektin nimiavaruutta. Tyypillisesti rakennettu Java-paketin tapaan, kuten org.example, ja sitä käytetään organisaatiosi tai projektialueesi yksilölliseen tunnistamiseen.",
+    "description": "groupId description"
+  },
+  "component.archetype.table.artifactId.desc": {
+    "message": "Määrittää luodun projektin nimen. Tästä tulee tuloksena olevan artefaktin ja projektikansion nimi.",
+    "description": "artifactId description"
+  },
+  "component.archetype.table.version.desc": {
+    "message": "Määritä versionumero (MAJOR.MIINOR-SNAPSHOT, esim. 1.0-SNAPSHOT).",
+    "description": "version description"
+  },
+  "component.archetype.table.flavor.desc": {
+    "message": "Valitsee projektin variantin:",
+    "description": "flavor description intro"
+  },
+  "component.archetype.table.flavor.webforj": {
+    "message": "Vakio webforJ-sovellus.",
+    "description": "webforj flavor description"
+  },
+  "component.archetype.table.flavor.spring": {
+    "message": "webforJ-sovellus Spring Boot -tuella (vaatii webforJ 25.02 tai uudemman).",
+    "description": "webforj-spring flavor description"
+  },
+  "component.archetype.table.appName.desc": {
+    "message": "Valinnainen parametri, jota voidaan käyttää luodun projektin POM-tiedostossa. Käytetyn webforJ-arkkityypin mukaan sitä voidaan käyttää sovelluksen oletusotsikkona.",
+    "description": "appName description"
+  },
+  "component.archetype.conclusion": {
+    "message": "Komennon suorittamisen jälkeen Maven luo projektin suorittamiseen tarvittavat projektitiedostot.",
+    "description": "Conclusion text"
+  },
+  "theme.ErrorPageContent.title": {
+    "message": "Sivu kaatui.",
+    "description": "The title of the fallback page when the page crashed"
+  },
+  "theme.BackToTopButton.buttonAriaLabel": {
+    "message": "Takaisin ylös",
+    "description": "The ARIA label for the back to top button"
+  },
+  "theme.blog.archive.title": {
+    "message": "Arkisto",
+    "description": "The page & hero title of the blog archive page"
+  },
+  "theme.blog.archive.description": {
+    "message": "Arkisto",
+    "description": "The page & hero description of the blog archive page"
+  },
+  "theme.blog.paginator.navAriaLabel": {
+    "message": "Blogiluettelo",
+    "description": "The ARIA label for the blog pagination"
+  },
+  "theme.blog.paginator.newerEntries": {
+    "message": "Uudet merkinnät",
+    "description": "The label used to navigate to the newer blog posts page (previous page)"
+  },
+  "theme.blog.paginator.olderEntries": {
+    "message": "Aiemmat merkinnät",
+    "description": "The label used to navigate to the older blog posts page (next page)"
+  },
+  "theme.blog.post.paginator.navAriaLabel": {
+    "message": "Blogikirjoituksen navigointi",
+    "description": "The ARIA label for the blog posts pagination"
+  },
+  "theme.blog.post.paginator.newerPost": {
+    "message": "Uudempia julkaisuja",
+    "description": "The blog post button label to navigate to the newer/previous post"
+  },
+  "theme.blog.post.paginator.olderPost": {
+    "message": "Vanhemmat artikkelit",
+    "description": "The blog post button label to navigate to the older/next post"
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "järjestelmätila",
+    "description": "The name for the system color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.light": {
+    "message": "arvoasema",
+    "description": "The name for the light color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.dark": {
+    "message": "tumma tila",
+    "description": "The name for the dark color mode"
+  },
+  "theme.colorToggle.ariaLabel": {
+    "message": "Vaihda tumman ja vaalean tilan välillä (nykyinen {tila})",
+    "description": "The ARIA label for the color mode toggle"
+  },
+  "theme.tags.tagsPageLink": {
+    "message": "Näytä kaikki tagit",
+    "description": "The label of the link targeting the tag list page"
+  },
+  "theme.docs.breadcrumbs.navAriaLabel": {
+    "message": "Muruset",
+    "description": "The ARIA label for the breadcrumbs"
+  },
+  "theme.docs.DocCard.categoryDescription.plurals": {
+    "message": "1 tuote|{count} tuotetta",
+    "description": "The default description for a category card in the generated index about how many items this category includes"
+  },
+  "theme.docs.paginator.navAriaLabel": {
+    "message": "Asiakirjasivut",
+    "description": "The ARIA label for the docs pagination"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "Edellinen",
+    "description": "The label used to navigate to the previous doc"
+  },
+  "theme.docs.paginator.next": {
+    "message": "Seuraava",
+    "description": "The label used to navigate to the next doc"
+  },
+  "theme.docs.tagDocListPageTitle.nDocsTagged": {
+    "message": "Yksi asiakirja merkitty | {count} asiakirjaa merkitty",
+    "description": "Pluralized label for \"{count} docs tagged\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.docs.tagDocListPageTitle": {
+    "message": "{nDocsTagged} merkitty \"{tagName}\"",
+    "description": "The title of the page for a docs tag"
+  },
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "Julkaisematon dokumentaatio {siteTitle} {versionLabel}.",
+    "description": "The label used to tell the user that he's browsing an unreleased doc version"
+  },
+  "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "Tämä on {siteTitle} {versionLabel} -dokumentaatio, jota ei päivitetä.",
+    "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+  },
+  "theme.docs.versions.latestVersionSuggestionLabel": {
+    "message": "Ajantasainen dokumentaatio {latestVersionLink} ({versionLabel}).",
+    "description": "The label used to tell the user to check the latest version"
+  },
+  "theme.docs.versions.latestVersionLinkLabel": {
+    "message": "uusi versio",
+    "description": "The label used for the latest version suggestion link label"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "Versio: {versionLabel}"
+  },
+  "theme.common.editThisPage": {
+    "message": "Muokkaa sivua",
+    "description": "The link label to edit the current page"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "Suora linkki {heading}",
+    "description": "Title for link to heading"
+  },
+  "theme.lastUpdated.atDate": {
+    "message": "{date} klo",
+    "description": "The words used to describe on which date a page has been last updated"
+  },
+  "theme.lastUpdated.byUser": {
+    "message": "käyttäjän {user}",
+    "description": "The words used to describe by who the page has been last updated"
+  },
+  "theme.lastUpdated.lastUpdatedAtBy": {
+    "message": "Viimeksi päivitetty {atDate} {byUser}",
+    "description": "The sentence used to display when a page has been last updated, and by who"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "Versiot",
+    "description": "The label for the navbar versions dropdown on mobile view"
+  },
+  "theme.NotFound.title": {
+    "message": "Sivua ei löytynyt",
+    "description": "The title of the 404 page"
+  },
+  "theme.tags.tagsListLabel": {
+    "message": "Tunnisteet:",
+    "description": "The label alongside a tag list"
+  },
+  "theme.admonition.caution": {
+    "message": "varoitus",
+    "description": "The default label used for the Caution admonition (:::caution)"
+  },
+  "theme.admonition.danger": {
+    "message": "virhe",
+    "description": "The default label used for the Danger admonition (:::danger)"
+  },
+  "theme.admonition.info": {
+    "message": "tiedot",
+    "description": "The default label used for the Info admonition (:::info)"
+  },
+  "theme.admonition.note": {
+    "message": "huomio",
+    "description": "The default label used for the Note admonition (:::note)"
+  },
+  "theme.admonition.tip": {
+    "message": "vihje",
+    "description": "The default label used for the Tip admonition (:::tip)"
+  },
+  "theme.admonition.warning": {
+    "message": "varoitus",
+    "description": "The default label used for the Warning admonition (:::warning)"
+  },
+  "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "Sulje",
+    "description": "The ARIA label for close button of announcement bar"
+  },
+  "theme.blog.sidebar.navAriaLabel": {
+    "message": "Blogi uusimmat julkaisut",
+    "description": "The ARIA label for recent posts in the blog sidebar"
+  },
+  "theme.DocSidebarItem.expandCategoryAriaLabel": {
+    "message": "Laajenna kategoriaa '{label}'",
+    "description": "The ARIA label to expand the sidebar category"
+  },
+  "theme.DocSidebarItem.collapseCategoryAriaLabel": {
+    "message": "Supista '{label}'-kategoriaa",
+    "description": "The ARIA label to collapse the sidebar category"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "Päävalikko",
+    "description": "The ARIA label for the main navigation"
+  },
+  "theme.NotFound.p1": {
+    "message": "Emme löytäneet etsimääsi.",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "Ilmoita rikkinäisestä linkistä sivuston omistajalle.",
+    "description": "The 2nd paragraph of the 404 page"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "Kielet",
+    "description": "The label for the mobile language switcher dropdown"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "Tällä sivulla",
+    "description": "The label used by the button on the collapsible TOC component"
+  },
+  "theme.blog.post.readMore": {
+    "message": "Lue lisää",
+    "description": "The label used in blog post item excerpts to link to full blog posts"
+  },
+  "theme.blog.post.readMoreLabel": {
+    "message": "Lue lisää {title} aiheesta",
+    "description": "The ARIA label for the link to full blog posts from excerpts"
+  },
+  "theme.blog.post.readingTime.plurals": {
+    "message": "Yksi minuutti lukemista | {readingTime} min lukemista",
+    "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.CodeBlock.copy": {
+    "message": "Kopioi",
+    "description": "The copy button label on code blocks"
+  },
+  "theme.CodeBlock.copied": {
+    "message": "Kopioitu",
+    "description": "The copied button label on code blocks"
+  },
+  "theme.CodeBlock.copyButtonAriaLabel": {
+    "message": "Kopioi koodi",
+    "description": "The ARIA label for copy code blocks button"
+  },
+  "theme.CodeBlock.wordWrapToggle": {
+    "message": "Kytke sanarivien liitos",
+    "description": "The title attribute for toggle word wrapping button of code block lines"
+  },
+  "theme.docs.breadcrumbs.home": {
+    "message": "Aloita",
+    "description": "The ARIA label for the home page in the breadcrumbs"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "Pienennä paneeli",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "Sulje sivupaneeli",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Dokumentit-paneeli",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "Sulje navigointi",
+    "description": "The ARIA label for close button of mobile sidebar"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← Palaa päävalikkoon",
+    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "Vaihda navigointi",
+    "description": "The ARIA label for hamburger menu button of mobile navigation"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "Laajenna valikko",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "Pienennä valikkoa",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "Laajenna sivupaneeli",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "Laajenna sivupalkki",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.SearchPage.documentsFound.plurals": {
+    "message": "Yksi asiakirja löytyi|{count} asiakirjaa löytyi",
+    "description": "Pluralized label for \"{count} documents found\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.SearchPage.existingResultsTitle": {
+    "message": "Hakutulokset hakusanalla \"{query}\"",
+    "description": "The search page title for non-empty query"
+  },
+  "theme.SearchPage.emptyResultsTitle": {
+    "message": "Etsi dokumentaatio",
+    "description": "The search page title for empty query"
+  },
+  "theme.SearchPage.inputPlaceholder": {
+    "message": "Etsi tästä",
+    "description": "The placeholder for search page input"
+  },
+  "theme.SearchPage.inputLabel": {
+    "message": "Haku",
+    "description": "The ARIA label for search page input"
+  },
+  "theme.SearchPage.algoliaLabel": {
+    "message": "Hae Algolialla",
+    "description": "The ARIA label for Algolia mention"
+  },
+  "theme.SearchPage.noResultsText": {
+    "message": "Ei tuloksia",
+    "description": "The paragraph for empty search result"
+  },
+  "theme.SearchPage.fetchingNewResults": {
+    "message": "Hae uusia tuloksia...",
+    "description": "The paragraph for fetching new search results"
+  },
+  "theme.SearchBar.seeAll": {
+    "message": "Näytä kaikki {count} tulosta"
+  },
+  "theme.SearchBar.label": {
+    "message": "Hae",
+    "description": "The ARIA label and placeholder for search button"
+  },
+  "theme.SearchModal.searchBox.resetButtonTitle": {
+    "message": "Tyhjennä kysely",
+    "description": "The label and ARIA label for search box reset button"
+  },
+  "theme.SearchModal.searchBox.cancelButtonText": {
+    "message": "Peruuta",
+    "description": "The label and ARIA label for search box cancel button"
+  },
+  "theme.SearchModal.startScreen.recentSearchesTitle": {
+    "message": "Uusimmat",
+    "description": "The title for recent searches"
+  },
+  "theme.SearchModal.startScreen.noRecentSearchesText": {
+    "message": "Ei viimeisimpiä hakuja",
+    "description": "The text when no recent searches"
+  },
+  "theme.SearchModal.startScreen.saveRecentSearchButtonTitle": {
+    "message": "Tallenna haku",
+    "description": "The label for save recent search button"
+  },
+  "theme.SearchModal.startScreen.removeRecentSearchButtonTitle": {
+    "message": "Poista haun historia",
+    "description": "The label for remove recent search button"
+  },
+  "theme.SearchModal.startScreen.favoriteSearchesTitle": {
+    "message": "Lempisi",
+    "description": "The title for favorite searches"
+  },
+  "theme.SearchModal.startScreen.removeFavoriteSearchButtonTitle": {
+    "message": "Poista suosikeista",
+    "description": "The label for remove favorite search button"
+  },
+  "theme.SearchModal.errorScreen.titleText": {
+    "message": "Ei tuloksia löytynyt",
+    "description": "The title for error screen of search modal"
+  },
+  "theme.SearchModal.errorScreen.helpText": {
+    "message": "Tarkista yhteys.",
+    "description": "The help text for error screen of search modal"
+  },
+  "theme.SearchModal.footer.selectText": {
+    "message": "valitse",
+    "description": "The explanatory text of the action for the enter key"
+  },
+  "theme.SearchModal.footer.selectKeyAriaLabel": {
+    "message": "Syötä avain",
+    "description": "The ARIA label for the Enter key button that makes the selection"
+  },
+  "theme.SearchModal.footer.navigateText": {
+    "message": "navigointi",
+    "description": "The explanatory text of the action for the Arrow up and Arrow down key"
+  },
+  "theme.SearchModal.footer.navigateUpKeyAriaLabel": {
+    "message": "Nuoli ylös",
+    "description": "The ARIA label for the Arrow up key button that makes the navigation"
+  },
+  "theme.SearchModal.footer.navigateDownKeyAriaLabel": {
+    "message": "Nuoli alas",
+    "description": "The ARIA label for the Arrow down key button that makes the navigation"
+  },
+  "theme.SearchModal.footer.closeText": {
+    "message": "sulje",
+    "description": "The explanatory text of the action for Escape key"
+  },
+  "theme.SearchModal.footer.closeKeyAriaLabel": {
+    "message": "Peruuta",
+    "description": "The ARIA label for the Escape key button that close the modal"
+  },
+  "theme.SearchModal.footer.searchByText": {
+    "message": "Liity mukaan",
+    "description": "The text explain that the search is making by Algolia"
+  },
+  "theme.SearchModal.noResultsScreen.noResultsText": {
+    "message": "No results.",
+    "description": "The text explains that there are no results for the following search"
+  },
+  "theme.SearchModal.noResultsScreen.suggestedQueryText": {
+    "message": "Yritä etsiä",
+    "description": "The text for the suggested query when no results are found for the following search"
+  },
+  "theme.SearchModal.noResultsScreen.reportMissingResultsText": {
+    "message": "Uskotko, että kysely palauttaa tuloksia?",
+    "description": "The text for the question where the user thinks there are missing results"
+  },
+  "theme.SearchModal.noResultsScreen.reportMissingResultsLinkText": {
+    "message": "Ilmoita meille.",
+    "description": "The text for the link to report missing results"
+  },
+  "theme.SearchModal.placeholder": {
+    "message": "Etsi asiakirjoja",
+    "description": "The placeholder of the input of the DocSearch pop-up modal"
+  },
+  "theme.blog.post.plurals": {
+    "message": "Yksi julkaisu | {count} julkaisua",
+    "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.blog.tagTitle": {
+    "message": "{nPosts} merkintää \"{tagName}\"",
+    "description": "The title of the page for a blog tag"
+  },
+  "theme.blog.author.pageTitle": {
+    "message": "{authorName} - {nViestiä}",
+    "description": "The title of the page for a blog author"
+  },
+  "theme.blog.authorsList.pageTitle": {
+    "message": "Kirjoittajat",
+    "description": "The title of the authors page"
+  },
+  "theme.blog.authorsList.viewAll": {
+    "message": "Näytä kaikki tekijät",
+    "description": "The label of the link targeting the blog authors page"
+  },
+  "theme.blog.author.noPosts": {
+    "message": "Tämä kirjoittaja ei ole vielä julkaissut sisältöä.",
+    "description": "The text for authors with 0 blog post"
+  },
+  "theme.contentVisibility.unlistedBanner.title": {
+    "message": "Luetteloimattomat sivut",
+    "description": "The unlisted content banner title"
+  },
+  "theme.contentVisibility.unlistedBanner.message": {
+    "message": "Tämä sivu ei ole luetteloitu.",
+    "description": "The unlisted content banner message"
+  },
+  "theme.contentVisibility.draftBanner.title": {
+    "message": "Luonnos-sivu",
+    "description": "The draft content banner title"
+  },
+  "theme.contentVisibility.draftBanner.message": {
+    "message": "Tämä sivu on luonnos. Näkyy vain kehitysympäristössä.",
+    "description": "The draft content banner message"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "Yritä uudelleen",
+    "description": "The label of the button to try again rendering when the React error boundary captures an error"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Siirry pääsisältöön",
+    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "Tunnisteet",
+    "description": "The title of the tag list page"
+  },
+  "tableBuilder.headers.part": {
+    "message": "Osio",
+    "description": "Table header for part name"
+  },
+  "tableBuilder.headers.description": {
+    "message": "Kuvaus",
+    "description": "Table header for description"
+  },
+  "tableBuilder.sections.shadowParts": {
+    "message": "Varjota osat",
+    "description": "Section heading for shadow parts table"
+  },
+  "tableBuilder.descriptions.shadowParts": {
+    "message": "Nämä ovat {componentName} komponentin {shadowDomLink} osat CSS-tyylittelyyn.",
+    "description": "Description for shadow parts section"
+  },
+  "tableBuilder.shadowDom": {
+    "message": "varjot DOM",
+    "description": "Link text for shadow DOM"
+  },
+  "tableBuilder.headers.slot": {
+    "message": "Lokero",
+    "description": "Table header for slot name"
+  },
+  "tableBuilder.sections.slots": {
+    "message": "Sijainnit",
+    "description": "Section heading for slots table"
+  },
+  "tableBuilder.descriptions.slots": {
+    "message": "Nämä ovat käytettävissä olevat slotit {componentName} -komponentissa.",
+    "description": "Description for slots section"
+  },
+  "tableBuilder.headers.property": {
+    "message": "Ominaisuudet",
+    "description": "Table header for property name"
+  },
+  "tableBuilder.sections.cssProperties": {
+    "message": "CSS-ominaisuudet",
+    "description": "Section heading for CSS properties table"
+  },
+  "tableBuilder.descriptions.cssProperties": {
+    "message": "Nämä ovat {componentName}-komponentin CSS-ominaisuudet, lyhyt kuvaus käytöstä.",
+    "description": "Description for CSS properties section"
+  },
+  "tableBuilder.sections.properties": {
+    "message": "Ominaisuudet",
+    "description": "Section heading for properties table"
+  },
+  "tableBuilder.headers.name": {
+    "message": "Nimi",
+    "description": "Table header for name"
+  },
+  "tableBuilder.headers.attribute": {
+    "message": "Ominaisuus",
+    "description": "Table header for attribute"
+  },
+  "tableBuilder.headers.type": {
+    "message": "Tyyppi",
+    "description": "Table header for type"
+  },
+  "tableBuilder.headers.reflects": {
+    "message": "Heijastaa",
+    "description": "Table header for reflects"
+  },
+  "tableBuilder.headers.default": {
+    "message": "Oletus",
+    "description": "Table header for default value"
+  },
+  "tableBuilder.descriptions.properties": {
+    "message": "{componentName} ominaisuudet. Ominaisuudet ovat JavaScript-muuttujia asiakassivuston komponentteihin. Ne auttavat tietojen tallentamisessa ja käyttäytymisen hallinnassa, tehden web-komponenteista uudelleenkäytettävämpiä ja helpompia konfiguroida.\n\nOsa ominaisuuksista heijastaa arvojaan attribuutteihin ja päinvastoin. Tämä tarkoittaa, että kun asetat ominaisuuden, vastaava attribuutti asetetaan automaattisesti, ja kun asetat attribuutin, vastaava ominaisuus asetetaan automaattisesti.",
+    "description": "Description for properties section"
+  },
+  "tableBuilder.sections.reflectedAttributes": {
+    "message": "Heijastetut ominaisuudet",
+    "description": "Section heading for reflected attributes table"
+  },
+  "tableBuilder.descriptions.reflectedAttributes": {
+    "message": "Nämä ovat {componentName}-komponentin heijastavat attribuutit.",
+    "description": "Description for reflected attributes section"
+  },
+  "tableBuilder.headers.event": {
+    "message": "Tapahtumat",
+    "description": "Table header for event name"
+  },
+  "tableBuilder.sections.events": {
+    "message": "Tapahtumat",
+    "description": "Section heading for events table"
+  },
+  "tableBuilder.descriptions.events": {
+    "message": "Nämä ovat {componentName} tapahtumat.",
+    "description": "Description for events section"
+  },
+  "tableBuilder.headers.methodSignature": {
+    "message": "Metodin allekirjoitus",
+    "description": "Table header for method signature"
+  },
+  "tableBuilder.sections.methods": {
+    "message": "Menetelmät",
+    "description": "Section heading for methods table"
+  },
+  "tableBuilder.descriptions.methods": {
+    "message": "Nämä ovat {componentName} toiminnot.",
+    "description": "Description for methods section"
+  },
+  "tableBuilder.sections.dependentComponents": {
+    "message": "Riippuvat komponentit",
+    "description": "Section heading for dependent components"
+  },
+  "tableBuilder.descriptions.dependentComponents": {
+    "message": "Seuraavat komponentit riippuvat {componentName} komponentista.",
+    "description": "Description for dependent components section"
+  },
+  "tableBuilder.sections.dependencies": {
+    "message": "Riippuvuudet",
+    "description": "Section heading for dependencies"
+  },
+  "tableBuilder.descriptions.dependencies": {
+    "message": "{componentName}-komponentti riippuu seuraavista asiakaskomponenteista. Asiakaskomponentteja ei voi instanssia suoraan. Katso artikkeli saadaksesi lisätietoja.",
+    "description": "Description for dependencies section"
+  },
+  "componentDemo.hideCode": {
+    "message": "Piilota koodi",
+    "description": "Button text to hide the code section"
+  },
+  "componentDemo.showCode": {
+    "message": "Näytä Koodi",
+    "description": "Button text to show the code section"
+  },
+  "expandableCode.hideCode": {
+    "message": "Piilota koodi",
+    "description": "Button text to hide the expanded code"
+  },
+  "expandableCode.showAllLines": {
+    "message": "Näytä kaikki {count} riviä",
+    "description": "Button text to show all lines of code"
+  },
+  "componentArchetype.instructions": {
+    "message": "Luo ja rakenna uusi {project} projekti, noudata näitä vaiheita:",
+    "description": "Instructions for creating a new project"
+  },
+  "componentArchetype.step1": {
+    "message": "Navigoi oikeaan hakemistoon: Avaa terminaali ja siirry kansioon, johon haluat luoda uuden projektin.",
+    "description": "First step instruction"
+  },
+  "componentArchetype.step2": {
+    "message": "{strong}Suorita {code}archetype:generate{/code} komento{/strong}: Käytä alempana olevaa Maven-komentoa ja muokkaa {code}groupId{/code}, {code}artifactId{/code} ja {code}version{/code} tarpeidesi mukaan.",
+    "description": "Second step instruction"
+  },
+  "componentArchetype.table.argument": {
+    "message": "Argument",
+    "description": "Table header for argument column"
+  },
+  "componentArchetype.table.explanation": {
+    "message": "Explanation",
+    "description": "Table header for explanation column"
+  },
+  "componentArchetype.finalInstruction": {
+    "message": "Komennon suorittamisen jälkeen Maven luo projektitiedostot, jotka ovat tarpeen projektin suorittamiseksi.",
+    "description": "Final instruction about Maven generating project files"
+  }
+}

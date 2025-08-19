@@ -20,13 +20,13 @@ The `blank` archetype is a foundational starter project for webforJ applications
 For more control over customization and configuration, you can use [startforJ](https://docs.webforj.com/startforj/) to create your project - just select the `Blank` archetype when choosing configuration options.
 :::
 
-## Using the `blank` archetype
+## Using the `blank` archetype {#using-the-blank-archetype}
 
 <ComponentArchetype
 project="blank"
 />
 
-## Running the app
+## Running the app {#running-the-app}
 
 Before running your app, install the [prerequisites](../../introduction/prerequisites) if you haven't yet. 
 Then, navigate to the project's root directory and run the following command:

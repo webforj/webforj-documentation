@@ -10,13 +10,50 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/webforj_icon.svg',
+  favicon: 'https://docs.webforj.com/icons/icon.png',
   organizationName: 'webforj',
   projectName: 'webforj-docs',
   trailingSlash: false,
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'es', 'de', 'fr', 'nl', 'fi', 'zh'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+        htmlLang: 'en-US',
+      },
+      es: {
+        label: 'Español',
+        direction: 'ltr',
+        htmlLang: 'es-ES',
+      },
+      de: {
+        label: 'Deutsch',
+        direction: 'ltr',
+        htmlLang: 'de-DE',
+      },
+      fr: {
+        label: 'Français',
+        direction: 'ltr',
+        htmlLang: 'fr-FR',
+      },
+      nl: {
+        label: 'Nederlands',
+        direction: 'ltr',
+        htmlLang: 'nl-NL',
+      },
+      fi: {
+        label: 'Suomi',
+        direction: 'ltr',
+        htmlLang: 'fi-FI',
+      },
+      zh: {
+        label: '中文',
+        direction: 'ltr',
+        htmlLang: 'zh-CN',
+      },
+    },
   },
   scripts: [
     { src: '/js/dwc-theme-switcher.js', async: false },
@@ -81,7 +118,8 @@ const config = {
       appId: '826LUKOV8E',
       apiKey: 'a69d79113b838bfc8490ffb56cef78f2',
       indexName: 'umentation-webforj',
-      contextualSearch: false,
+      contextualSearch: true,
+      externalUrlRegex: '.*', // disables version filtering
     },
     announcementBar: {
       id: '25.02',
@@ -192,6 +230,10 @@ const config = {
           type: 'html',
           position: 'right',
           value: '<div class="separator" aria-hidden></div>',
+        },
+        {
+          type: 'localeDropdown',
+          position: 'right',
         },
         {
           href: 'https://github.com/webforj',

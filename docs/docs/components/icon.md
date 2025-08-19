@@ -18,7 +18,7 @@ Some components, like `PasswordField` and `TimeField`, have built-in icons to he
 
 :::
 
-## Basics
+## Basics {#basics}
 
 Every `Icon` is designed as a Scalable Vector Graphics (SVG) image, which means it can easily scale to any size without losing clarity or quality.
 Additionally, `Icon` components are loaded on demand from a content delivery network (CDN), which helps reduce latency and improve overall performance.
@@ -32,7 +32,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='100px'
 />
 
-### Pools
+### Pools {#pools}
 
 An icon pool is a collection of commonly used icons that enables easy access and reuse. By using icons from an icon pool, you can ensure that the icons in your app are recognizable and share a consistent style.
 Using webforJ allows you to choose from three pools, or implement a custom pool.
@@ -54,7 +54,7 @@ If you're interested in creating your own icon pool, see [Creating custom pools]
 
 Once you have selected the pool or pools to include in your app, the next step is to specify the name of the icon you want to use.
 
-### Names
+### Names {#names}
 
 To include an icon in your app, all you need is the icon pool and the icon name. Browse the icon pool website for the icon you wish to use, and use the icon name as the parameter of the `create()` method.
 Additionally, you can to create the icons through enums for the `FeatherIcon` and `DwcIcon` classes, allowing them to appear in code completion.
@@ -66,18 +66,18 @@ Icon image = TablerIcon.create("image");
 Icon image = FeatherIcon.IMAGE.create();
 ```
 
-### Variations
+### Variations {#variations}
 
 You can personalize icons even more by utilizing variations.
 Certain icons allow you to choose between an outlined or a filled version, allowing you to emphasize a specific icon based on your preference. `FontAwesomeIcon` and `Tabler` icons offer variations.
 
-#### `FontAwesomeIcon` variations
+#### `FontAwesomeIcon` variations {#fontawesomeicon-variations}
 
 1. `REGULAR`: The outlined variation of icons. This is the default.
 2. `SOLID`: The filled variation of icons.
 3. `BRAND`: The variation for when you're using the icons of brands.
 
-#### `TablerIcon` variations
+#### `TablerIcon` variations {#tablericon-variations}
 
 1. `OUTLINE`: The outlined variation of icons. This is the default.
 2. `FILLED`: The filled variation of icons.
@@ -95,7 +95,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='100px'
 />
 
-## Adding icons to components
+## Adding icons to components {#adding-icons-to-components}
 
 Integrate icons into your components using slots. Slots provide flexible options to make components more useful. It's beneficial to add an `Icon` to a component to further clarify intended meaning to users.
 Components implementing the `HasPrefixAndSuffix` interface can include an `Icon` or other valid components. The added components can be placed in the `prefix` and `suffix` slots and can enhance both overall design and user experience.
@@ -104,7 +104,7 @@ Using `prefix` and `suffix` slots, you can determine if you want the icon before
 
 Deciding whether to place an icon before or after the text on a component largely depends on the purpose and design context.
 
-### Icon placement: before VS after
+### Icon placement: before VS after {#icon-placement-before-vs-after}
 
 Icons positioned before the component text help users quickly understand the primary action or purpose of the component, especially for universally recognized icons like the save icon.
 Icons before a component's text offers a logical processing order, guiding users naturally through the intended action, which is beneficial for buttons whose primary function is an immediate action.
@@ -120,7 +120,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='100px'
 />️
 
-## Creating custom pools
+## Creating custom pools {#creating-custom-pools}
 
 Beyond utilizing existing icon collections, you have the option to create a custom pool that can be used for custom logos or avatars.
 A custom pool of icons can be stored in a centralized directory or in the resources folder (context), simplifying the icon management process.
@@ -139,7 +139,7 @@ Icon customAvatar = new Icon("avatar-default", "app-pool");
 Make sure to design icons with equal width and height, as `Icon` components are designed to occupy a square space.
 :::
 
-### Custom pool factory
+### Custom pool factory {#custom-pool-factory}
 
 You can also create a factory class for a custom pool in webforJ, just like `FeatherIcon`. This enables you to create and manage icon resources within a specified pool and allow for code completion.
 Each icon can be instantiated through the `create()` method, which returns an `Icon`. The factory class should provide pool-specific metadata, such as the pool name and the icon's identifier, formatted to the image's filename.
@@ -184,7 +184,7 @@ Icon customLogo = new Icon("logo", "app-pool");
 Icon customLogo = AppPoolIcon.LOGO.create();
 ```
 
-## Icon buttons
+## Icon buttons {#icon-buttons}
 An `Icon` component is nonselectable, but for actions that are best represented with just an icon, such as notifications or alerts, you can use the `IconButton`.
 
  ```java

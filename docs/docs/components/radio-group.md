@@ -24,7 +24,7 @@ The `RadioButtonGroup` component does not render an HTML element on the page. Ra
 logic that ensures a group of RadioButtons behave as a group instead of individually.
 :::
 
-## Usages
+## Usages {#usages}
 
 The `RadioButtonGroup` is best used in scenarios where users need to make a single selection from a predefined set of options presented as radio buttons. Here are some examples of when to use the `RadioButtonGroup`:
 
@@ -35,16 +35,16 @@ The `RadioButtonGroup` is best used in scenarios where users need to make a sing
 3. **Filtering or Sorting**: A `RadioButton` can be used in applications that require users to select a single filter or sorting option, such as sorting a list of items by different criteria.
 
 <!-- vale off -->
-## Adding and removing RadioButtons
+## Adding and removing RadioButtons {#adding-and-removing-radiobuttons}
 <!-- vale on -->
 
 It is possible to add and remove singular or multiple `RadioButton` objects to a group, ensuring that they exhibit mutually exclusive checking behavior, and are associated with any name that may belong to the group.
 
-## Naming
+## Naming {#naming}
 
 The name attribute in a `RadioButtonGroup` groups related RadioButtons together, allowing users to make a single choice from the options provided and enforcing exclusivity among the RadioButtons. The name of a group is not reflected in the DOM, however, and is a convenience utility for the Java developer.
 
-## Best practices 
+## Best practices {#best-practices}
 
 To ensure an optimal user experience when using the RadioButton component, consider the following best practices:
 

@@ -1,0 +1,716 @@
+{
+  "theme.docs.translationNotice": {
+    "message": "Deze pagina is automatisch vertaald en kan fouten bevatten. Raadpleeg de officiële webforJ documentatie voor de meest actuele informatie. webforJ biedt geen garanties over de nauwkeurigheid van deze vertalingen.",
+    "description": "Translation notice for non-English pages"
+  },
+  "component.askMenu.chatgpt.label": {
+    "message": "Open in ChatGPT",
+    "description": "ChatGPT button label"
+  },
+  "component.askMenu.chatgpt.desc": {
+    "message": "Vragen stellen over deze pagina",
+    "description": "ChatGPT button description"
+  },
+  "component.askMenu.claude.label": {
+    "message": "Openen in Claude",
+    "description": "Claude button label"
+  },
+  "component.askMenu.claude.desc": {
+    "message": "Chatten met Claude AI over deze pagina",
+    "description": "Claude button description"
+  },
+  "component.askMenu.markdown.label": {
+    "message": "Markdown tonen",
+    "description": "Markdown button label"
+  },
+  "component.askMenu.markdown.desc": {
+    "message": "De ruwe markdown broncode bekijken",
+    "description": "Markdown button description"
+  },
+  "component.archetype.intro": {
+    "message": "Om een nieuw {project} project te maken en op te zetten, volg deze stappen:",
+    "description": "Introduction text for archetype component"
+  },
+  "component.archetype.step1.title": {
+    "message": "Navigeer naar de juiste directory",
+    "description": "Step 1 title"
+  },
+  "component.archetype.step1.desc": {
+    "message": "Open een terminal en ga naar de map waar u uw nieuwe project wilt maken.",
+    "description": "Step 1 description"
+  },
+  "component.archetype.step2.title": {
+    "message": "Voer het archetype:generate commando uit",
+    "description": "Step 2 title"
+  },
+  "component.archetype.step2.desc": {
+    "message": "Gebruik het Maven commando hieronder en pas groupId, artifactId en version aan naar behoefte voor uw project.",
+    "description": "Step 2 description"
+  },
+  "component.archetype.table.argument": {
+    "message": "Argument",
+    "description": "Argument column header"
+  },
+  "component.archetype.table.explanation": {
+    "message": "Uitleg",
+    "description": "Explanation column header"
+  },
+  "component.archetype.table.archetypeGroupId.desc": {
+    "message": "De groep ID van het archetype is com.webforj voor webforJ archetypes.",
+    "description": "archetypeGroupId description"
+  },
+  "component.archetype.table.archetypeArtifactId.desc": {
+    "message": "Specificeert de naam van het te gebruiken archetype.",
+    "description": "archetypeArtifactId description"
+  },
+  "component.archetype.table.archetypeVersion.desc": {
+    "message": "Specificeert de versie van het te gebruiken archetype. Dit zorgt ervoor dat het gegenereerde project compatibel is met een specifieke archetype versie. LATEST selecteert de meest recente beschikbare versie.",
+    "description": "archetypeVersion description"
+  },
+  "component.archetype.table.groupId.desc": {
+    "message": "Namespace voor het project.",
+    "description": "groupId description"
+  },
+  "component.archetype.table.artifactId.desc": {
+    "message": "Specificeert de naam van het gegenereerde project. Dit wordt de naam van het resulterende artefact en de projectmap.",
+    "description": "artifactId description"
+  },
+  "component.archetype.table.version.desc": {
+    "message": "Definieer projectversie: MAJOR.MINOR-SNAPSHOT, bijv. 1.0-SNAPSHOT",
+    "description": "version description"
+  },
+  "component.archetype.table.flavor.desc": {
+    "message": "Selecteert een projectvariant:",
+    "description": "flavor description intro"
+  },
+  "component.archetype.table.flavor.webforj": {
+    "message": "Standaard webforJ applicatie.",
+    "description": "webforj flavor description"
+  },
+  "component.archetype.table.flavor.spring": {
+    "message": "webforJ-applicatie met ondersteuning voor Spring Boot (vereist webforJ 25.02 of hoger).",
+    "description": "webforj-spring flavor description"
+  },
+  "component.archetype.table.appName.desc": {
+    "message": "Optionele parameter voor het POM-bestand; kan dienen als standaardtitel voor de applicatie, afhankelijk van het gebruikte webforJ-archetype.",
+    "description": "appName description"
+  },
+  "component.archetype.conclusion": {
+    "message": "Na het uitvoeren van het commando zal Maven de benodigde projectbestanden genereren om het project uit te voeren.",
+    "description": "Conclusion text"
+  },
+  "theme.ErrorPageContent.title": {
+    "message": "Deze pagina reageert niet.",
+    "description": "The title of the fallback page when the page crashed"
+  },
+  "theme.BackToTopButton.buttonAriaLabel": {
+    "message": "Scroll naar boven",
+    "description": "The ARIA label for the back to top button"
+  },
+  "theme.blog.archive.title": {
+    "message": "Archief",
+    "description": "The page & hero title of the blog archive page"
+  },
+  "theme.blog.archive.description": {
+    "message": "Archief",
+    "description": "The page & hero description of the blog archive page"
+  },
+  "theme.blog.paginator.navAriaLabel": {
+    "message": "Paginanavigatie Blog",
+    "description": "The ARIA label for the blog pagination"
+  },
+  "theme.blog.paginator.newerEntries": {
+    "message": "Nieuwere items",
+    "description": "The label used to navigate to the newer blog posts page (previous page)"
+  },
+  "theme.blog.paginator.olderEntries": {
+    "message": "Oudere artikelen",
+    "description": "The label used to navigate to the older blog posts page (next page)"
+  },
+  "theme.blog.post.paginator.navAriaLabel": {
+    "message": "Paginanavigatie blog",
+    "description": "The ARIA label for the blog posts pagination"
+  },
+  "theme.blog.post.paginator.newerPost": {
+    "message": "Nieuw bericht",
+    "description": "The blog post button label to navigate to the newer/previous post"
+  },
+  "theme.blog.post.paginator.olderPost": {
+    "message": "Oud bericht",
+    "description": "The blog post button label to navigate to the older/next post"
+  },
+  "theme.tags.tagsPageLink": {
+    "message": "Toon alle tags",
+    "description": "The label of the link targeting the tag list page"
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "systeemmodus",
+    "description": "The name for the system color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.light": {
+    "message": "lichte modus",
+    "description": "The name for the light color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.dark": {
+    "message": "donkere modus",
+    "description": "The name for the dark color mode"
+  },
+  "theme.colorToggle.ariaLabel": {
+    "message": "Schakel tussen donkere en lichte modus (huidige {mode})",
+    "description": "The ARIA label for the color mode toggle"
+  },
+  "theme.docs.breadcrumbs.navAriaLabel": {
+    "message": "Broodkruimels",
+    "description": "The ARIA label for the breadcrumbs"
+  },
+  "theme.docs.DocCard.categoryDescription.plurals": {
+    "message": "1 artikel | {count} artikelen",
+    "description": "The default description for a category card in the generated index about how many items this category includes"
+  },
+  "theme.docs.paginator.navAriaLabel": {
+    "message": "Documentatie",
+    "description": "The ARIA label for the docs pagination"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "Vorige",
+    "description": "The label used to navigate to the previous doc"
+  },
+  "theme.docs.paginator.next": {
+    "message": "Volgende",
+    "description": "The label used to navigate to the next doc"
+  },
+  "theme.docs.tagDocListPageTitle.nDocsTagged": {
+    "message": "Een artikel getagd|{count} artikelen getagd",
+    "description": "Pluralized label for \"{count} docs tagged\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.docs.tagDocListPageTitle": {
+    "message": "{nDocsTagged} met \"{tagName}\"",
+    "description": "The title of the page for a docs tag"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "Versie: {versionLabel}"
+  },
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "Niet-uitgegeven documentatie voor {siteTitle}, versie {versionLabel}",
+    "description": "The label used to tell the user that he's browsing an unreleased doc version"
+  },
+  "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "Dit is de documentatie voor {siteTitle} {versionLabel}, die niet langer wordt onderhouden.",
+    "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+  },
+  "theme.docs.versions.latestVersionSuggestionLabel": {
+    "message": "Voor de huidige documentatie, zie de {latestVersionLink} ({versionLabel}).",
+    "description": "The label used to tell the user to check the latest version"
+  },
+  "theme.docs.versions.latestVersionLinkLabel": {
+    "message": "laatste versie",
+    "description": "The label used for the latest version suggestion link label"
+  },
+  "theme.common.editThisPage": {
+    "message": "Bewerk pagina",
+    "description": "The link label to edit the current page"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "Directe link naar {heading}",
+    "description": "Title for link to heading"
+  },
+  "theme.lastUpdated.atDate": {
+    "message": "op {datum}",
+    "description": "The words used to describe on which date a page has been last updated"
+  },
+  "theme.lastUpdated.byUser": {
+    "message": "door {gebruiker}",
+    "description": "The words used to describe by who the page has been last updated"
+  },
+  "theme.lastUpdated.lastUpdatedAtBy": {
+    "message": "Laatst bijgewerkt op {atDate} door {byUser}",
+    "description": "The sentence used to display when a page has been last updated, and by who"
+  },
+  "theme.NotFound.title": {
+    "message": "Pagina niet gevonden",
+    "description": "The title of the 404 page"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "Versies",
+    "description": "The label for the navbar versions dropdown on mobile view"
+  },
+  "theme.tags.tagsListLabel": {
+    "message": "Labels:",
+    "description": "The label alongside a tag list"
+  },
+  "theme.admonition.caution": {
+    "message": "let op",
+    "description": "The default label used for the Caution admonition (:::caution)"
+  },
+  "theme.admonition.danger": {
+    "message": "gevaar",
+    "description": "The default label used for the Danger admonition (:::danger)"
+  },
+  "theme.admonition.info": {
+    "message": "informatie",
+    "description": "The default label used for the Info admonition (:::info)"
+  },
+  "theme.admonition.note": {
+    "message": "notitie",
+    "description": "The default label used for the Note admonition (:::note)"
+  },
+  "theme.admonition.tip": {
+    "message": "tip",
+    "description": "The default label used for the Tip admonition (:::tip)"
+  },
+  "theme.admonition.warning": {
+    "message": "waarschuwing",
+    "description": "The default label used for the Warning admonition (:::warning)"
+  },
+  "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "Sluiten",
+    "description": "The ARIA label for close button of announcement bar"
+  },
+  "theme.blog.sidebar.navAriaLabel": {
+    "message": "Navigatie recente blogartikelen",
+    "description": "The ARIA label for recent posts in the blog sidebar"
+  },
+  "theme.DocSidebarItem.expandCategoryAriaLabel": {
+    "message": "Categorie zijbalk uitklappen '{label}'",
+    "description": "The ARIA label to expand the sidebar category"
+  },
+  "theme.DocSidebarItem.collapseCategoryAriaLabel": {
+    "message": "Categorie zijbalk inpakken '{label}'",
+    "description": "The ARIA label to collapse the sidebar category"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "Hoofdmenu",
+    "description": "The ARIA label for the main navigation"
+  },
+  "theme.NotFound.p1": {
+    "message": "Niet gevonden.",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "Neem contact op met de eigenaar over de link.",
+    "description": "The 2nd paragraph of the 404 page"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "Talen",
+    "description": "The label for the mobile language switcher dropdown"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "Op deze pagina",
+    "description": "The label used by the button on the collapsible TOC component"
+  },
+  "theme.blog.post.readMore": {
+    "message": "Lees meer",
+    "description": "The label used in blog post item excerpts to link to full blog posts"
+  },
+  "theme.blog.post.readMoreLabel": {
+    "message": "Lees meer over {title}",
+    "description": "The ARIA label for the link to full blog posts from excerpts"
+  },
+  "theme.blog.post.readingTime.plurals": {
+    "message": "Een minuut leestijd | {readingTime} minuten leestijd",
+    "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.CodeBlock.copy": {
+    "message": "Kopieer",
+    "description": "The copy button label on code blocks"
+  },
+  "theme.CodeBlock.copied": {
+    "message": "Gekopieerd",
+    "description": "The copied button label on code blocks"
+  },
+  "theme.CodeBlock.copyButtonAriaLabel": {
+    "message": "Kopieer code naar klembord",
+    "description": "The ARIA label for copy code blocks button"
+  },
+  "theme.CodeBlock.wordWrapToggle": {
+    "message": "Tekstterugloop aan/uit",
+    "description": "The title attribute for toggle word wrapping button of code block lines"
+  },
+  "theme.docs.breadcrumbs.home": {
+    "message": "Starten",
+    "description": "The ARIA label for the home page in the breadcrumbs"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "Zijbalk verbergen",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "Zijbalk verbergen",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Docs zijbalk",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "Sluit navigatie",
+    "description": "The ARIA label for close button of mobile sidebar"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← Terug naar Menu",
+    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "Navigatiebalk inschakelen",
+    "description": "The ARIA label for hamburger menu button of mobile navigation"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "Vergroten uitklapmenu",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "Vouw het dropdownmenu samen",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "Zijbalk uitbreiden",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "Zijbalk uitvouwen",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.SearchBar.seeAll": {
+    "message": "Toon alle {count} resultaten"
+  },
+  "theme.SearchPage.documentsFound.plurals": {
+    "message": "1 document gevonden | {count} documenten gevonden",
+    "description": "Pluralized label for \"{count} documents found\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.SearchPage.existingResultsTitle": {
+    "message": "Zoekresultaten voor \"{query}\"",
+    "description": "The search page title for non-empty query"
+  },
+  "theme.SearchPage.emptyResultsTitle": {
+    "message": "Doorzoek documentatie",
+    "description": "The search page title for empty query"
+  },
+  "theme.SearchPage.inputPlaceholder": {
+    "message": "Typ hier uw zoekopdracht",
+    "description": "The placeholder for search page input"
+  },
+  "theme.SearchPage.inputLabel": {
+    "message": "Zoeken",
+    "description": "The ARIA label for search page input"
+  },
+  "theme.SearchPage.algoliaLabel": {
+    "message": "Zoeken met Algolia",
+    "description": "The ARIA label for Algolia mention"
+  },
+  "theme.SearchPage.noResultsText": {
+    "message": "Geen resultaten gevonden",
+    "description": "The paragraph for empty search result"
+  },
+  "theme.SearchPage.fetchingNewResults": {
+    "message": "Resultaten laden...",
+    "description": "The paragraph for fetching new search results"
+  },
+  "theme.SearchBar.label": {
+    "message": "Zoeken",
+    "description": "The ARIA label and placeholder for search button"
+  },
+  "theme.SearchModal.searchBox.resetButtonTitle": {
+    "message": "Zoekopdracht verwijderen",
+    "description": "The label and ARIA label for search box reset button"
+  },
+  "theme.SearchModal.searchBox.cancelButtonText": {
+    "message": "Annuleren",
+    "description": "The label and ARIA label for search box cancel button"
+  },
+  "theme.SearchModal.startScreen.recentSearchesTitle": {
+    "message": "Recente zoekopdrachten",
+    "description": "The title for recent searches"
+  },
+  "theme.SearchModal.startScreen.noRecentSearchesText": {
+    "message": "Geen recente zoekopdrachten",
+    "description": "The text when no recent searches"
+  },
+  "theme.SearchModal.startScreen.saveRecentSearchButtonTitle": {
+    "message": "Sla opdracht op",
+    "description": "The label for save recent search button"
+  },
+  "theme.SearchModal.startScreen.removeRecentSearchButtonTitle": {
+    "message": "Verwijder zoekopdracht",
+    "description": "The label for remove recent search button"
+  },
+  "theme.SearchModal.startScreen.favoriteSearchesTitle": {
+    "message": "Favoriet",
+    "description": "The title for favorite searches"
+  },
+  "theme.SearchModal.startScreen.removeFavoriteSearchButtonTitle": {
+    "message": "Verwijder uit favorieten",
+    "description": "The label for remove favorite search button"
+  },
+  "theme.SearchModal.errorScreen.titleText": {
+    "message": "Ophalen van resultaten mislukt",
+    "description": "The title for error screen of search modal"
+  },
+  "theme.SearchModal.errorScreen.helpText": {
+    "message": "Controleer netwerkverbinding.",
+    "description": "The help text for error screen of search modal"
+  },
+  "theme.SearchModal.footer.selectText": {
+    "message": "selecteren",
+    "description": "The explanatory text of the action for the enter key"
+  },
+  "theme.SearchModal.footer.selectKeyAriaLabel": {
+    "message": "Invoeren",
+    "description": "The ARIA label for the Enter key button that makes the selection"
+  },
+  "theme.SearchModal.footer.navigateText": {
+    "message": "navigeren",
+    "description": "The explanatory text of the action for the Arrow up and Arrow down key"
+  },
+  "theme.SearchModal.footer.navigateUpKeyAriaLabel": {
+    "message": "Pijltoets omhoog",
+    "description": "The ARIA label for the Arrow up key button that makes the navigation"
+  },
+  "theme.SearchModal.footer.navigateDownKeyAriaLabel": {
+    "message": "Pijltoets omlaag",
+    "description": "The ARIA label for the Arrow down key button that makes the navigation"
+  },
+  "theme.SearchModal.footer.closeText": {
+    "message": "Sluiten",
+    "description": "The explanatory text of the action for Escape key"
+  },
+  "theme.SearchModal.footer.closeKeyAriaLabel": {
+    "message": "Esc-toets",
+    "description": "The ARIA label for the Escape key button that close the modal"
+  },
+  "theme.SearchModal.footer.searchByText": {
+    "message": "Zoeken",
+    "description": "The text explain that the search is making by Algolia"
+  },
+  "theme.SearchModal.noResultsScreen.noResultsText": {
+    "message": "Geen resultaten voor",
+    "description": "The text explains that there are no results for the following search"
+  },
+  "theme.SearchModal.noResultsScreen.suggestedQueryText": {
+    "message": "Probeer te zoeken naar",
+    "description": "The text for the suggested query when no results are found for the following search"
+  },
+  "theme.SearchModal.noResultsScreen.reportMissingResultsText": {
+    "message": "Moet deze zoekopdracht resultaten opleveren?",
+    "description": "The text for the question where the user thinks there are missing results"
+  },
+  "theme.SearchModal.noResultsScreen.reportMissingResultsLinkText": {
+    "message": "Stuur een bericht.",
+    "description": "The text for the link to report missing results"
+  },
+  "theme.SearchModal.placeholder": {
+    "message": "Doorzoek documentatie",
+    "description": "The placeholder of the input of the DocSearch pop-up modal"
+  },
+  "theme.blog.post.plurals": {
+    "message": "Een bericht | {count} berichten",
+    "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.blog.tagTitle": {
+    "message": "{nPosts} getagd met \"{tagName}\"",
+    "description": "The title of the page for a blog tag"
+  },
+  "theme.blog.author.pageTitle": {
+    "message": "{auteurNaam} - {nBerichten}",
+    "description": "The title of the page for a blog author"
+  },
+  "theme.blog.authorsList.pageTitle": {
+    "message": "Auteurs",
+    "description": "The title of the authors page"
+  },
+  "theme.blog.authorsList.viewAll": {
+    "message": "Bekijk alle auteurs",
+    "description": "The label of the link targeting the blog authors page"
+  },
+  "theme.blog.author.noPosts": {
+    "message": "Deze auteur heeft nog geen berichten geplaatst.",
+    "description": "The text for authors with 0 blog post"
+  },
+  "theme.contentVisibility.unlistedBanner.title": {
+    "message": "Verborgen pagina",
+    "description": "The unlisted content banner title"
+  },
+  "theme.contentVisibility.unlistedBanner.message": {
+    "message": "Deze pagina is verborgen. Alleen gebruikers met een directe link kunnen deze openen.",
+    "description": "The unlisted content banner message"
+  },
+  "theme.contentVisibility.draftBanner.title": {
+    "message": "Conceptpagina",
+    "description": "The draft content banner title"
+  },
+  "theme.contentVisibility.draftBanner.message": {
+    "message": "Deze pagina is een concept en alleen zichtbaar in de ontwikkelomgeving.",
+    "description": "The draft content banner message"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "Probeer opnieuw",
+    "description": "The label of the button to try again rendering when the React error boundary captures an error"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Ga naar hoofdinhoud",
+    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "Tags",
+    "description": "The title of the tag list page"
+  },
+  "tableBuilder.headers.part": {
+    "message": "Componenten",
+    "description": "Table header for part name"
+  },
+  "tableBuilder.headers.description": {
+    "message": "Beschrijving",
+    "description": "Table header for description"
+  },
+  "tableBuilder.sections.shadowParts": {
+    "message": "Schaduwcomponenten",
+    "description": "Section heading for shadow parts table"
+  },
+  "tableBuilder.descriptions.shadowParts": {
+    "message": "Dit zijn de {shadowDomLink} onderdelen voor de {componentName} component, nodig voor CSS-styling.",
+    "description": "Description for shadow parts section"
+  },
+  "tableBuilder.shadowDom": {
+    "message": "schaduw DOM",
+    "description": "Link text for shadow DOM"
+  },
+  "tableBuilder.headers.slot": {
+    "message": "Slot",
+    "description": "Table header for slot name"
+  },
+  "tableBuilder.sections.slots": {
+    "message": "Sloten",
+    "description": "Section heading for slots table"
+  },
+  "tableBuilder.descriptions.slots": {
+    "message": "Beschikbare slots voor {componentName}. Plaats voor kinderen in de schaduwboom.",
+    "description": "Description for slots section"
+  },
+  "tableBuilder.headers.property": {
+    "message": "Bezit",
+    "description": "Table header for property name"
+  },
+  "tableBuilder.sections.cssProperties": {
+    "message": "CSS-eigenschappen",
+    "description": "Section heading for CSS properties table"
+  },
+  "tableBuilder.descriptions.cssProperties": {
+    "message": "Dit zijn de CSS-eigenschappen die worden gebruikt in de {componentName} component, met een korte beschrijving van hun gebruik.",
+    "description": "Description for CSS properties section"
+  },
+  "tableBuilder.sections.properties": {
+    "message": "Eigenschappen",
+    "description": "Section heading for properties table"
+  },
+  "tableBuilder.headers.name": {
+    "message": "Naam",
+    "description": "Table header for name"
+  },
+  "tableBuilder.headers.attribute": {
+    "message": "Attributen",
+    "description": "Table header for attribute"
+  },
+  "tableBuilder.headers.type": {
+    "message": "Typ",
+    "description": "Table header for type"
+  },
+  "tableBuilder.headers.reflects": {
+    "message": "Reflecteert",
+    "description": "Table header for reflects"
+  },
+  "tableBuilder.headers.default": {
+    "message": "Standaard",
+    "description": "Table header for default value"
+  },
+  "tableBuilder.descriptions.properties": {
+    "message": "Eigenschappen van de {componentName} component. Eigenschappen zijn JavaScript-variabelen gekoppeld aan clientwebcomponenten. Ze zijn nuttig voor het opslaan van gegevens en het beheren van gedrag, en maken webcomponenten herbruikbaarder en makkelijker te configureren.\n\nSommige eigenschappen weerspiegelen waarden naar attributen en vice versa. Dit betekent dat als je een eigenschap instelt, het bijbehorende attribuut automatisch wordt ingesteld, en als je een attribuut instelt, de bijbehorende eigenschap automatisch wordt ingesteld.",
+    "description": "Description for properties section"
+  },
+  "tableBuilder.sections.reflectedAttributes": {
+    "message": "Weerspiegelde eigenschappen",
+    "description": "Section heading for reflected attributes table"
+  },
+  "tableBuilder.descriptions.reflectedAttributes": {
+    "message": "Weerspiegelde attributen voor {componentName}. Styling kan met deze attributen worden toegepast.",
+    "description": "Description for reflected attributes section"
+  },
+  "tableBuilder.headers.event": {
+    "message": "Evenement",
+    "description": "Table header for event name"
+  },
+  "tableBuilder.sections.events": {
+    "message": "Evenementen",
+    "description": "Section heading for events table"
+  },
+  "tableBuilder.descriptions.events": {
+    "message": "Dit zijn de gebeurtenissen voor de {componentName} component.",
+    "description": "Description for events section"
+  },
+  "tableBuilder.headers.methodSignature": {
+    "message": "Methodehandtekening",
+    "description": "Table header for method signature"
+  },
+  "tableBuilder.sections.methods": {
+    "message": "Methoden",
+    "description": "Section heading for methods table"
+  },
+  "tableBuilder.descriptions.methods": {
+    "message": "Dit zijn de methoden voor de {componentName} component.",
+    "description": "Description for methods section"
+  },
+  "tableBuilder.sections.dependentComponents": {
+    "message": "Afhankelijke componenten",
+    "description": "Section heading for dependent components"
+  },
+  "tableBuilder.descriptions.dependentComponents": {
+    "message": "De volgende componenten zijn afhankelijk van de {componentName} component.",
+    "description": "Description for dependent components section"
+  },
+  "tableBuilder.sections.dependencies": {
+    "message": "Afhankelijkheden",
+    "description": "Section heading for dependencies"
+  },
+  "tableBuilder.descriptions.dependencies": {
+    "message": "De {componentName} component is afhankelijk van de volgende clientcomponenten. Clientcomponenten zijn alleen client-side en kunnen niet rechtstreeks worden geïnstalleerd. Zie het gerelateerde artikel voor meer gedetailleerde stylinginformatie.",
+    "description": "Description for dependencies section"
+  },
+  "componentDemo.hideCode": {
+    "message": "Verberg code",
+    "description": "Button text to hide the code section"
+  },
+  "componentDemo.showCode": {
+    "message": "Toon code",
+    "description": "Button text to show the code section"
+  },
+  "expandableCode.hideCode": {
+    "message": "Verberg code",
+    "description": "Button text to hide the expanded code"
+  },
+  "expandableCode.showAllLines": {
+    "message": "Toon alle {count} regels",
+    "description": "Button text to show all lines of code"
+  },
+  "componentArchetype.instructions": {
+    "message": "Volg deze stappen om een nieuw {project} project te maken en structureren:",
+    "description": "Instructions for creating a new project"
+  },
+  "componentArchetype.step1": {
+    "message": "{strong}Navigeer naar de juiste map{/strong}: Open een terminal en ga naar de map waar je je nieuwe project wilt aanmaken.",
+    "description": "First step instruction"
+  },
+  "componentArchetype.step2": {
+    "message": "{strong}Voer de {code}archetype:generate{/code} opdracht uit{/strong}: Gebruik de Maven-opdracht hieronder en pas de {code}groupId{/code}, {code}artifactId{/code}, en {code}version{/code} aan naar behoefte voor uw project.",
+    "description": "Second step instruction"
+  },
+  "componentArchetype.table.argument": {
+    "message": "Argument",
+    "description": "Table header for argument column"
+  },
+  "componentArchetype.table.explanation": {
+    "message": "Explanation",
+    "description": "Table header for explanation column"
+  },
+  "componentArchetype.finalInstruction": {
+    "message": "Na het uitvoeren van de opdracht genereert Maven de projectbestanden die nodig zijn om het project uit te voeren.",
+    "description": "Final instruction about Maven generating project files"
+  }
+}

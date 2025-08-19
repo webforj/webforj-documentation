@@ -10,7 +10,7 @@ sidebar_position: 101
 
 The `Slider` component in webforJ provides an interactive control that allows users to select a value within a specific range by moving a knob. This feature is particularly useful for apps requiring precise or intuitive input, such as selecting volumes, percentages, or other adjustable values.
 
-## Basics
+## Basics {#basics}
 
 The `Slider` is designed to work right out of the box, requiring no additional setup to function effectively. By default, it spans a range from 0 to 100 with a starting value of 50, making it ideal for quick integration into any app. For more specific use cases, the `Slider` can be customized with properties such as orientation, tick marks, labels, and tooltips.
 
@@ -22,7 +22,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '100px'
 />
 
-## `Slider` value
+## `Slider` value {#slider-value}
 
 The `Slider` value represents the current position of the knob on the slider and is defined as an integer within the `Slider`'s range. This value dynamically updates as the user interacts with the slider, making it an essential property for tracking user input.
 
@@ -30,7 +30,7 @@ The `Slider` value represents the current position of the knob on the slider and
 By default, the `Slider` starts with a value of 50, assuming the default range of 0 to 100.
 :::
 
-### Setting and getting the value
+### Setting and getting the value {#setting-and-getting-the-value}
 
 You can set the `Slider`'s value during initialization or update it later using the `setValue()` method. To retrieve the current value, use the `getValue()` method.
 
@@ -42,7 +42,7 @@ Integer value = slider.getValue();
 System.out.println("Current Slider Value: " + value);
 ```
 
-## Minimum and maximum values
+## Minimum and maximum values {#minimum-and-maximum-values}
 
 The minimum and maximum values define the allowable range of the `Slider`, determining the boundaries within which the `Slider` knob can move. By default, the range is set from 0 to 100, but you can customize these values to suit your needs.
 
@@ -60,11 +60,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '200px'
 />
 
-## Tick configuration
+## Tick configuration {#tick-configuration}
 
 The `Slider` component offers flexible tick configuration, allowing you to customize how tick marks are displayed and how the slider knob interacts with them. This includes adjusting major and minor tick spacing, showing/hiding tick marks, and enabling snapping to tick marks for precise user input.
 
-### Major and minor tick spacing
+### Major and minor tick spacing {#major-and-minor-tick-spacing}
 
 You can define the spacing for major and minor tick marks, which determines how frequently they appear on the `Slider` track:
 
@@ -77,7 +77,7 @@ slider.setMajorTickSpacing(10); // Major ticks every 10 units
 slider.setMinorTickSpacing(2);  // Minor ticks every 2 units
 ```
 
-### Show or hide ticks
+### Show or hide ticks {#show-or-hide-ticks}
 
 You can toggle the visibility of tick marks using the `setTicksVisible()` method. By default, tick marks are hidden.
 
@@ -86,7 +86,7 @@ slider.setTicksVisible(true); // Show tick marks
 slider.setTicksVisible(false); // Hide tick marks
 ```
 
-### Snapping
+### Snapping {#snapping}
 
 To ensure the `Slider` knob aligns with the nearest tick mark during user interaction, enable snapping using the `setSnapToTicks()` method:
 
@@ -102,7 +102,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '350px'
 />
 
-## Orientation and inversion
+## Orientation and inversion {#orientation-and-inversion}
 
 The `Slider` component supports two orientations: horizontal (default) and vertical. You can change the orientation to suit your UI layout and app requirements.
 
@@ -119,11 +119,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '420px'
 />
 
-## Labels
+## Labels {#labels}
 
 The `Slider` component supports labels on tick marks to help users interpret the values more easily. You can use default numeric labels or provide custom ones, and you can toggle their visibility as needed.
 
-### Default labels
+### Default labels {#default-labels}
 
 By default, the slider can display numeric labels at major tick marks. These values are determined by the `setMajorTickSpacing()` setting. To enable default labels, use:
 
@@ -131,7 +131,7 @@ By default, the slider can display numeric labels at major tick marks. These val
 slider.setLabelsVisible(true);
 ```
 
-### Custom labels
+### Custom labels {#custom-labels}
 
 You can replace the default numeric labels with custom text using the `setLabels()` method. This is helpful when you want to display more meaningful values (e.g., temperature, currency, or categories).
 
@@ -148,7 +148,7 @@ slider.setLabels(customLabels);
 slider.setLabelsVisible(true);
 ```
 
-### Toggling label visibility
+### Toggling label visibility {#toggling-label-visibility}
 
 Whether you're using default or custom labels, you can control their visibility with `setLabelsVisible(true)` or hide them with `setLabelsVisible(false)`.
 
@@ -158,7 +158,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '150px'
 />
 
-## Tooltips
+## Tooltips {#tooltips}
 
 Tooltips enhance usability by displaying the `Slider`’s value directly above or under the knob, helping users make more precise adjustments. You can configure the tooltip’s behavior, visibility, and format to suit your needs.
 
@@ -174,7 +174,7 @@ Tooltips can also be configured to appear only when the user interacts with the 
 Here’s an example of a fully configured `Slider` with tooltips:
 
 
-### Tooltip customization
+### Tooltip customization {#tooltip-customization}
 
 By default, the `Slider` shows a tooltip with its current value. If you want to customize this text, use the `setTooltipText()` method. This is useful when you want the tooltip to show static or descriptive text instead of the live value.
 
@@ -193,9 +193,9 @@ slider.setTooltipText("x + ' units'");
 ```
 
 
-## Styling
+## Styling {#styling}
 
-### Themes
+### Themes {#themes}
 
 The `Slider` comes with 6 themes built in for quick styling without the use of CSS. Theming is supported by use of a built-in enum class.
 Shown below are sliders with each of the supported Themes applied:

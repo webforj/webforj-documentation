@@ -1,0 +1,126 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.documentationSidebar.category.Introduction": {
+    "message": "Einführung",
+    "description": "The label for category Introduction in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Tutorial": {
+    "message": "Anleitung",
+    "description": "The label for category Tutorial in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Integrations": {
+    "message": "Integrationen",
+    "description": "The label for category Integrations in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Spring Framework": {
+    "message": "Frühling-Framework",
+    "description": "The label for category Spring Framework in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Routing": {
+    "message": "Routing",
+    "description": "The label for category Routing in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Navigation Lifecycle": {
+    "message": "Navigationszyklus",
+    "description": "The label for category Navigation Lifecycle in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Route Hierarchy": {
+    "message": "Routenhierarchie",
+    "description": "The label for category Route Hierarchy in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Building UIs": {
+    "message": "UIs erstellen",
+    "description": "The label for category Building UIs in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Archetypes": {
+    "message": "Archetypen",
+    "description": "The label for category Archetypes in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.HTML and Web Components": {
+    "message": "HTML und Webkomponenten",
+    "description": "The label for category HTML and Web Components in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Data Binding": {
+    "message": "Datenbindung",
+    "description": "The label for category Data Binding in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Validation": {
+    "message": "Validierung",
+    "description": "The label for category Validation in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Components": {
+    "message": "Komponenten",
+    "description": "The label for category Components in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Fields": {
+    "message": "Felder",
+    "description": "The label for category Fields in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Masked Fields": {
+    "message": "Maskierte Felder",
+    "description": "The label for category Masked Fields in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Lists": {
+    "message": "Wiedergabe",
+    "description": "The label for category Lists in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Option Dialogs": {
+    "message": "Optionsdialog",
+    "description": "The label for category Option Dialogs in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Table": {
+    "message": "Tabelle",
+    "description": "The label for category Table in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Testing": {
+    "message": "Testen",
+    "description": "The label for category Testing in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.E2E Testing": {
+    "message": "E2E-Tests",
+    "description": "The label for category E2E Testing in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Styling": {
+    "message": "Stylesheet",
+    "description": "The label for category Styling in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Managing Resources": {
+    "message": "Ressourcenverwaltung",
+    "description": "The label for category Managing Resources in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Configuration": {
+    "message": "Konfiguration",
+    "description": "The label for category Configuration in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Redeployment and Live Reload": {
+    "message": "Neu bereitstellen und live aktualisieren",
+    "description": "The label for category Redeployment and Live Reload in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Running with BBjServices": {
+    "message": "Ausführen mit BBjServices",
+    "description": "The label for category Running with BBjServices in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Advanced Topics": {
+    "message": "Erweiterte Themen",
+    "description": "The label for category Advanced Topics in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Repository": {
+    "message": "Repository",
+    "description": "The label for category Repository in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Architecture": {
+    "message": "Architektur",
+    "description": "The label for category Architecture in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Upgrading Guides": {
+    "message": "Upgrade-Anleitungen",
+    "description": "The label for category Upgrading Guides in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Client Components": {
+    "message": "Client-Komponenten",
+    "description": "The label for category Client Components in sidebar documentationSidebar"
+  }
+}

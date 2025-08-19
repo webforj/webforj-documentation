@@ -7,3 +7,7 @@
   align-content: center;
   justify-content: center;
 }
+
+dwc-checkbox[checked] {
+  opacity: 0.6;
+}

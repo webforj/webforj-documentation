@@ -13,7 +13,7 @@ slug: combobox
 
 The `ComboBox` component is a user interface element designed to present users with a list of options or choices, as well as a field for entering their own custom values. Users can select a single option from this list, typically by clicking the `ComboBox`, which triggers the display of a dropdown list containing available choices, or type in a custom value. Users can also interact with the `ComboBox` with the arrow keys. When a user makes a selection, the chosen option is then displayed in the `ComboBox`. 
 
-## Usages
+## Usages {#usages}
 
 The ComboBox component is a versatile input element that combines the features of both a dropdown list and a text input field. It allows users to select items from a predefined list or enter custom values as needed. This section explores common usages of the ComboBox component in various scenarios:
 
@@ -30,7 +30,7 @@ The ComboBox component is a versatile input element that combines the features o
     The `ComboBox` should be used when users are allowed to enter custom values. If only preset values are desired, use a [`ChoiceBox`](./choice-box.md) instead.
     :::
 
-## Custom value
+## Custom value {#custom-value}
 
 Changing the custom value property allows control over whether or not a user is able to change the value in the `ComboBox` component's input field. If `true`, which is the default, then a user can change the value. If set to `false`, the user won't be able to change the value. This can be set using the <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#setAllowCustomValue(boolean)'>setAllowCustomValue()</JavadocLink> method.
 
@@ -40,7 +40,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '200px'
 />
 
-## Placeholder
+## Placeholder {#placeholder}
 
 A placeholder can be set for a `ComboBox` which will display in the text field of the component when it is empty to prompt users for the desired entry in the field. This can be done using the <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" code='true' suffix='#setPlaceholder(java.lang.String)'>setPlaceholder()</JavadocLink> method.
 
@@ -50,7 +50,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '200px'
 />
 
-## Dropdown type
+## Dropdown type {#dropdown-type}
 
 Using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setDropdownType(java.lang.String)'>setDropdownType()</JavadocLink> method will assign a value to the `type` attribute of a `ComboBox`, and a corresponding value for the `data-dropdown-for` attribute in the dropdown of the `ComboBox`. This is helpful for styling, as the dropdown is taken out of its current position in the DOM and relocated to the end of the page body when opened.
 
@@ -66,7 +66,7 @@ cssURL='/css/lists/combobox/comboBoxDropDownType.css'
 height='250px'
 />
 
-## Max row count
+## Max row count {#max-row-count}
 
 By default, the number of rows displayed in the dropdown of a `ComboBox` will be increased to fit the content. However, using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setMaxRowCount(int)'>setMaxRowCount()</JavadocLink> method allows for control over how many items are displayed.
 
@@ -80,7 +80,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='450px'
 />
 
-## Opening and closing
+## Opening and closing {#opening-and-closing}
 
 The visibility of the options for a `ComboBox` can be programmatically controlled with the `open()` and `close()` methods.
 These methods allow you to display the list of options for selection or hide it as needed, providing greater flexibility in managing the behavior of a `ComboBox`.
@@ -104,7 +104,7 @@ major.onClose( e ->{
 });
 ```
 
-## Opening dimensions
+## Opening dimensions {#opening-dimensions}
 
 The `ComboBox` component has methods that allow manipulation of the dropdown dimensions. The **maximum height** and **minimum width** of the dropdown can be set using the <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenHeight(int)'>setOpenHeight()</JavadocLink> and <JavadocLink type="foundation" location="com/webforj/component/list/DwcSelectDropdown" code='true' suffix='#setOpenWidth(int)'>setOpenWidth()</JavadocLink> methods, respectively. 
 
@@ -112,7 +112,7 @@ The `ComboBox` component has methods that allow manipulation of the dropdown dim
 Passing a `String` value to either of these methods will allow for [any valid CSS unit](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units) to be applied, such as pixels, viewport dimensions, or other valid rules. Passing an `int` will set the value passed in pixels.
 :::
 
-## Highlighting
+## Highlighting {#highlighting}
 
 When working with a `ComboBox`, you can customize when the text is highlighted based on how the component gains focus. This feature can reduce input errors when users are completing forms and can improve the overall navigation experience. Change the highlighting behavior using the `setHighlightOnFocus()` method with on of the built-in `HasHighlightOnFocus.Behavior` enums:
 
@@ -137,7 +137,7 @@ Contents of the component are never automatically highlighted when the component
 If content was highlighted upon losing focus, it will be highlighted again upon regaining focus, regardless of the set behavior.
 :::
 
-## Prefix and suffix
+## Prefix and suffix {#prefix-and-suffix}
 
 Slots provide flexible options for improving the capability of a `ComboBox`. You can have icons, labels, loading spinners, clear/reset capability, avatar/profile pictures, and other beneficial components nested within a `ComboBox` to further clarify intended meaning to users.
 The `ComboBox` has two slots: the `prefix` and `suffix` slots. Use the `setPrefixComponent()` and `setSuffixComponent()` methods to insert various components before and after the options within a `ComboBox`.
@@ -148,11 +148,11 @@ ComboBox comboBox = new ComboBox());
   comboBox.setSuffixComponent(TablerIcon.create("box"));
 ```
 
-## Styling
+## Styling {#styling}
 
 <TableBuilder name="ComboBox" />
 
-## Best practices 
+## Best practices {#best-practices}
 
 To ensure an optimal user experience when using the `ComboBox` component, consider the following best practices:
 

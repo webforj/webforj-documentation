@@ -12,18 +12,21 @@ The `AppLifecycleListener` interface enables external code to observe and respon
 
 Lifecycle listeners are automatically discovered and loaded at runtime through service provider configuration files. Each app instance receives its own set of listener instances, maintaining isolation between different apps running in the same environment.
 
-## When to use lifecycle listeners
+## When to use lifecycle listeners {#when-to-use-lifecycle-listeners}
 
 Use lifecycle listeners when you need to:
+
 - Initialize resources or services before an app runs
-- Clean up resources when an app terminates  
+- Clean up resources when an app terminates
 - Add cross-cutting concerns without modifying the `App` class
 - Build plugin architectures
 
-## The `AppLifecycleListener` interface
+## The `AppLifecycleListener` interface {#the-applifecyclelistener-interface}
 
 ```java title="AppLifecycleListener.java"
 public interface AppLifecycleListener {
+    default void onWillCreate(Environment env) {}     // Since 25.03
+    default void onDidCreate(App app) {}              // Since 25.03
     default void onWillRun(App app) {}
     default void onDidRun(App app) {}
     default void onWillTerminate(App app) {}
@@ -33,6 +36,7 @@ public interface AppLifecycleListener {
 
 :::info App isolation
 Each app instance receives its own set of listener instances:
+
 - Listeners are isolated between different apps
 - Static fields in listeners won't be shared between apps
 - Listener instances are created when the app starts and destroyed when it terminates
@@ -40,30 +44,49 @@ Each app instance receives its own set of listener instances:
 If you need to share data between apps, use external storage mechanisms like databases or shared services.
 :::
 
-### Lifecycle events
+### Lifecycle events {#lifecycle-events}
 
-| Event | When Called | Common Uses |
-|-------|-------------|-------------|
-| `onWillRun` | Before `app.run()` executes | Initialize resources, configure services |
-| `onDidRun` | After `app.run()` completes successfully | Start background tasks, log successful startup |
-| `onWillTerminate` | Before app termination | Save state, prepare for shutdown |
-| `onDidTerminate` | After app termination | Clean up resources, final logging |
+| Event             | When Called                                           | Common Uses                                         |
+| ----------------- | ----------------------------------------------------- | --------------------------------------------------- |
+| `onWillCreate`&nbsp;<DocChip chip='since' label='25.03' /> | After environment initialization, before app creation  | Modify configuration, merge external config sources |
+| `onDidCreate`&nbsp;<DocChip chip='since' label='25.03' />  | After app instantiation, before initialization        | Early app-level setup, register services            |
+| `onWillRun`       | Before `app.run()` executes                           | Initialize resources, configure services            |
+| `onDidRun`        | After `app.run()` completes successfully              | Start background tasks, log successful startup      |
+| `onWillTerminate` | Before app termination                                | Save state, prepare for shutdown                    |
+| `onDidTerminate`  | After app termination                                 | Clean up resources, final logging                   |
 
-## Creating a lifecycle listener
+## Creating a lifecycle listener {#creating-a-lifecycle-listener}
 
-### Basic implementation
+### Basic implementation {#basic-implementation}
 
 ```java title="StartupListener.java"
 import com.webforj.App;
 import com.webforj.AppLifecycleListener;
+import com.webforj.Environment;
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigFactory;
 
 public class StartupListener implements AppLifecycleListener {
-    
+
+    @Override
+    public void onWillCreate(Environment env) {
+        // Modify configuration before app creation
+        Config additionalConfig = ConfigFactory.parseString(
+            "myapp.feature.enabled = true"
+        );
+        env.setConfig(additionalConfig);
+    }
+
+    @Override
+    public void onDidCreate(App app) {
+        System.out.println("App created: " + app.getId());
+    }
+
     @Override
     public void onWillRun(App app) {
         System.out.println("App starting: " + app.getId());
     }
-    
+
     @Override
     public void onDidRun(App app) {
         System.out.println("App started: " + app.getId());
@@ -71,7 +94,7 @@ public class StartupListener implements AppLifecycleListener {
 }
 ```
 
-### Registering the listener
+### Registering the listener {#registering-the-listener}
 
 Create a service provider configuration file:
 
@@ -94,7 +117,7 @@ public class StartupListener implements AppLifecycleListener {
 ```
 :::
 
-## Controlling execution order
+## Controlling execution order {#controlling-execution-order}
 
 When multiple listeners are registered, you can control their execution order using the `@AppListenerPriority` annotation. This is particularly important when listeners have dependencies on each other or when certain initialization must happen before others.
 
@@ -120,7 +143,7 @@ public class LoggingListener implements AppLifecycleListener {
 }
 ```
 
-### Execution flow with App hooks
+### Execution flow with App hooks {#execution-flow-with-app-hooks}
 
 Beyond controlling the order between multiple listeners, it's important to understand how listeners interact with the `App` class's own lifecycle hooks. For each lifecycle event, the framework follows a specific execution sequence that determines when your listeners run relative to the app's built-in hooks.
 
@@ -133,7 +156,7 @@ The diagram below illustrates this execution flow, showing the precise timing of
 </div>
 
 
-## Error handling
+## Error handling {#error-handling}
 
 Exceptions thrown by listeners are logged but don't prevent other listeners from executing or the app from running. Always handle exceptions within your listeners:
 

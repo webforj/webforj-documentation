@@ -5,7 +5,7 @@ title: Shadow Parts
 
 CSS **Shadow Parts** give developers a way to style elements inside a component’s shadow DOM from the outside, while still preserving encapsulation.
 
-## Introduction
+## Introduction {#introduction}
 
 The webforJ components are built using [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components), which rely on the [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) to encapsulate a component’s internal structure and styles.
 
@@ -46,11 +46,11 @@ it won’t have any effect, because the `.control__label` element lives inside t
 
 This is where **CSS Shadow Parts** come in.
 
-## Styling with shadow parts
+## Styling with shadow parts {#styling-with-shadow-parts}
 
 Shadow parts allow external stylesheets to target specific elements inside a shadow tree, but **only if** those elements are explicitly marked as “exposed” by the component.
 
-### How parts are exposed
+### How parts are exposed {#how-parts-are-exposed}
 
 To expose an element for external styling, the component author must assign a `part` attribute to it inside the shadow DOM.
 
@@ -70,7 +70,7 @@ For example, the `dwc-button` component exposes parts like `prefix`, `label`, an
 Once exposed, these parts can be styled from outside the component using the [`::part()`](https://developer.mozilla.org/en-US/docs/Web/CSS/::part) pseudo-element.
 
 
-### The `::part()` pseudo-element
+### The `::part()` pseudo-element {#the-part-pseudo-element}
 
 The `::part()` selector allows you to apply styles to elements within the shadow DOM that have been marked with a `part` attribute.
 

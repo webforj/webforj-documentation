@@ -11,7 +11,7 @@ When using Spring Boot with webforJ, the framework detects the Spring context an
 For a comprehensive understanding of dependency injection patterns and Spring's IoC container, see [Spring's official dependency injection documentation](https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html).
 :::
 
-## How webforJ creates routes with Spring
+## How webforJ creates routes with Spring {#how-webforj-creates-routes-with-spring}
 
 webforJ handles route creation differently when Spring is present. The framework's object creation mechanism detects Spring Boot on the classpath and delegates to Spring's `AutowireCapableBeanFactory` for creating instances with dependency injection.
 
@@ -24,7 +24,7 @@ For classes discovered through `@Routify` scanning, webforJ always creates fresh
 
 This behavior is intentional and differs from typical Spring beans. Even if you register a route as a Spring bean with `@Component`, webforJ ignores that bean definition and creates a fresh instance for each navigation.
 
-## Using Spring beans in routes
+## Using Spring beans in routes {#using-spring-beans-in-routes}
 
 Your route classes don't require Spring annotations. The `@Route` annotation alone enables both route discovery and dependency injection:
 
@@ -55,7 +55,7 @@ The constructor can receive:
 - Spring infrastructure beans (`ApplicationContext`, `Environment`)
 - Any bean registered in the Spring context
 
-## Working example
+## Working example {#working-example}
 
 This example demonstrates a complete dependency injection scenario where a Spring service is injected into a webforJ route. The service manages business logic while the route handles UI presentation.
 

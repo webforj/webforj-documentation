@@ -43,6 +43,7 @@
 "SplitPane" :"dwc-splitter",
 "Splitter":"dwc-splitter",
 "TabbedPane" :"dwc-tabbed-pane",
+"Table": "dwc-table",
 "Terminal": "dwc-terminal",
 "TextArea" :"dwc-textarea",
 "TextField" :"dwc-textfield",
@@ -50,5 +51,5 @@
 "TimeField": "dwc-timefield",
 "Toast": "dwc-toast",
 "Toolbar": "dwc-toolbar",
-"Tree" :"dwc-tree"
+"Tree": "dwc-tree"
 }

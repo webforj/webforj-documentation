@@ -5,7 +5,7 @@ title: Assets Protocols
 
 webforJ supports custom assets protocols that enable structured and efficient resource access. These protocols abstract the complexities of static and dynamic resource retrieval, ensuring that assets are fetched and integrated seamlessly within the app.
 
-## The webserver protocol
+## The webserver protocol {#the-webserver-protocol}
 
 The **`ws://`** protocol allows you to retrieve assets hosted in the static folder of a webforJ app. All files located within the app classpath `src/main/resources/static` are directly accessible from the browser. For example, if you have a file named **css/app.css** inside **resources/static**, it can be accessed at: **`/static/css/app.css`**  
 
@@ -21,7 +21,7 @@ You can use the <JavadocLink type="foundation" location="com/webforj/utilities/A
 String url = Assets.resolveWebServerUrl("ws://js/app.js");
 ```
 
-## The context protocol
+## The context protocol {#the-context-protocol}
 
 The context protocol maps to resources within the app's classpath at `src/main/resources`. Some resource API methods and annotations support this protocol to read the content of a file located in the resources folder and send its content to the browser. For example, the `InlineJavaScript` annotation allows reading the content of a JavaScript file from the resources folder and inlining it on the client side.
 
@@ -33,7 +33,7 @@ String content = Assets.contentOf(
 );
 ```
 
-## The icons protocol
+## The icons protocol {#the-icons-protocol}
 
 The **`icons://`** protocol provides a dynamic approach to icon management, making it efficient and flexible for generating and serving icons in [installable apps](../configuration/installable-apps). This protocol allows you to generate icons on the fly based on the requested filename and parameters, eliminating the need for pre-generated icons in many cases.
 
@@ -41,7 +41,7 @@ The **`icons://`** protocol provides a dynamic approach to icon management, maki
 Img icon = new Img("icons://icon-192x192.png")
 ```
 
-### Base icon
+### Base icon {#base-icon}
 
 When an icon is requested using the `icons://` protocol, a base image is dynamically derived from the requested icon filename. This ensures consistency in icon design and allows for automatic fallback to a default image if no base icon is provided.
 
@@ -54,13 +54,13 @@ If a base image doesn’t exist for the requested icon, the default webforJ logo
 By default, webforJ serves icons from the `resources/icons/` directory. You can change the endpoint name by setting the `webforj.iconsDir` property in the webforJ configuration file. This only changes the URL endpoint used to access the icons, not the actual folder name. The default endpoint is `icons/`. 
 :::
 
-### Overriding Icons
+### Overriding Icons {#overriding-icons}
 
 You can override specific icon sizes by placing pre-generated images in the `resources/icons/` directory. This provides greater control over the appearance of icons when certain sizes or styles need to be customized.
 
 - **Example:** If `resources/icons/icon-192x192.png` exists, it will be served directly instead of being dynamically generated.
 
-### Customizing icon appearance
+### Customizing icon appearance {#customizing-icon-appearance}
 
 The `icons://` protocol supports additional parameters that allow you to customize the appearance of dynamically generated icons. This includes options for padding and background color.
 

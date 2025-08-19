@@ -1,0 +1,49 @@
+.MuiAccordion-root {
+  background-color: transparent !important;
+  border: 1px solid var(--dwc-border-color) !important;
+  box-shadow: none !important;
+  margin-bottom: .2em !important;
+  color: var(--dwc-color-black) !important;
+
+  // Remove the default separator line
+  &:before {
+    display: none;
+  }
+
+  // Remove margin when expanded
+  &.Mui-expanded {
+    margin: 0 0 1px 0 !important;
+  }
+}
+
+.MuiAccordionSummary-root {
+  padding: 0.75rem 1rem;
+  min-height: 48px;
+  transition: all 0.2s ease;
+
+  &.Mui-expanded {
+    background-color: var(--dwc-color-primary-alt) !important;
+    min-height: 48px;
+  }
+
+  .MuiAccordionSummary-content {
+    margin: 0;
+
+    &.Mui-expanded {
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .MuiAccordionSummary-expandIconWrapper {
+    color: var(--dwc-color-primary) !important;
+  }
+}
+
+.MuiAccordionDetails-root {
+  padding: 1rem;
+  border-top: 1px solid var(--dwc-border-color);
+}

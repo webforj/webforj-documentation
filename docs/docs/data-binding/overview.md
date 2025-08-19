@@ -22,7 +22,7 @@ import DocCardList from '@theme/DocCardList';
 
  webforJ includes a data binding feature that seamlessly integrates UI components with backend data models in Java applications. This feature bridges the gap between the UI and the data layer, ensuring that changes in the UI reflect in the data model and vice versa. As a result, it enhances user experience and reduces the complexity of event handling and data synchronization.
 
-## Concept
+## Concept {#concept}
 
 The following demonstration showcases a simple webforJ app for registering superheroes using webforJ data binding. The app consists of two main parts: `HeroRegistration.java` and `Hero.java`. 
 
@@ -114,7 +114,7 @@ public class Hero {
 </TabItem>
 </Tabs>
 
-## Key features
+## Key features {#key-features}
 
 - **Bidirectional Binding:**  Supports bidirectional data binding, allowing changes in the data model to update the UI, and user interactions in the UI to update the data model.
 

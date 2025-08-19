@@ -9,7 +9,7 @@ sidebar_position: 5
 
 `Repository` events let you react to data changes. Beyond the automatic UI updates, you can listen for changes to trigger custom logic.
 
-## `Repository` event lifecycle
+## `Repository` event lifecycle {#repository-event-lifecycle}
 
 Every `commit()` call fires a <JavadocLink type="data" location="com/webforj/data/repository/event/RepositoryCommitEvent" code="true">RepositoryCommitEvent</JavadocLink>. This event carries information about what changed:
 
@@ -33,7 +33,7 @@ The event tells you:
 
 For `commit()` without parameters, the event contains all entities currently in the repository after filtering.
 
-## Update strategies
+## Update strategies {#update-strategies}
 
 The two commit signatures serve different purposes:
 
@@ -56,7 +56,7 @@ Bulk commits refresh everything. Use them when:
 - You added or removed items
 - You're not sure what changed
 
-## Reactive UI patterns
+## Reactive UI patterns {#reactive-ui-patterns}
 
 `Repository` events let you keep summary displays in sync with your data:
 
@@ -77,7 +77,7 @@ repository.onCommit(e -> {
 
 These listeners fire on every commit, whether from user actions, data imports, or programmatic updates. The event gives you access to the committed entities, but often you'll recalculate from the source collection to include all current data.
 
-## Memory management
+## Memory management {#memory-management}
 
 Event listeners hold references to your components. If you don't remove them, the `Repository` keeps your components in memory even after they're no longer displayed:
 

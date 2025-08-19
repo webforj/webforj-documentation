@@ -7,11 +7,11 @@ sidebar_position: 30
 
 To successfully deploy and run a webforJ app, a couple key configuration files are required: `webforJ.conf` and `web.xml`. Each of these files controls different aspects of the app's behavior, from entry points and debug settings to servlet mappings.
 
-## Configuring `webforj.conf`
+## Configuring `webforj.conf` {#configuring-webforjconf}
 
 The `webforJ.conf` file is a core configuration file in webforJ, specifying app settings like entry points, debug mode, and client-server interaction. The file is written in [HOCON format](https://github.com/lightbend/config/blob/master/HOCON.md), and should be located in the `resources` directory.
 
-### Example `webforj.conf` file
+### Example `webforj.conf` file {#example-webforjconf-file}
 
 ```Ini
 # This configuration file is in HOCON format:
@@ -23,7 +23,7 @@ webforj.reloadOnServerError = on
 webforj.clientHeartbeatRate = 1s
 ```
 
-### Configuration options
+### Configuration options {#configuration-options}
 
 <!-- Fixed many vale issues, but turning it off for the table since these descriptions come directly from comments in the code -->
 <!-- vale off -->
@@ -44,7 +44,7 @@ webforj.clientHeartbeatRate = 1s
 
 <!-- vale on -->
 
-## Configuring `web.xml`
+## Configuring `web.xml` {#configuring-webxml}
 
 The web.xml file is an essential configuration file for Java web apps, and in webforJ, it defines important settings like the servlet configuration, URL patterns, welcome pages. This file should be located in the `WEB-INF` directory of your project’s deployment structure.
 

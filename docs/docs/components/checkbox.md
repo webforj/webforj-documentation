@@ -12,7 +12,7 @@ The `CheckBox` class creates a component that can be selected or deselected, and
 
 By providing a clear and straightforward visual indication of selection status, checkboxes enhance user interaction and decision-making, making them an essential element in modern user interfaces.
 
-## Usages
+## Usages {#usages}
 
 The `CheckBox` is best used in scenarios where users need to make multiple selections from a list of options. Here are some examples of when to use the `CheckBox`:
 
@@ -31,7 +31,7 @@ The `CheckBox` is best used in scenarios where users need to make multiple selec
    > - Agree to terms and conditions
    > - Select items for purchase or booking
 
-## Text and positioning
+## Text and positioning {#text-and-positioning}
 
 Check boxes can utilize the <JavadocLink type="foundation" location="com/webforj/component/AbstractOptionInput" code='true' suffix='#setText(java.lang.String)'>setText(String text)</JavadocLink> method, which will be positioned near the check box according to the built-in <JavadocLink type="foundation" location="com/webforj/component/TextPosition" code='true' suffix=''>Position</JavadocLink>.
 
@@ -45,7 +45,7 @@ height = '200px'
 
 <br/>
 
-## Indeterminism
+## Indeterminism {#indeterminism}
 
 The `CheckBox` component supports indeterminism, which is a UI pattern commonly used in forms and lists to indicate that a group of checkboxes has a mixture of checked and unchecked states. This state is represented by a third visual state, typically displayed as a filled square or a dash inside the checkbox. There are a few common use cases associated with indeterminism:
 
@@ -59,9 +59,9 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '150px'
 />
 
-## Styling
+## Styling {#styling}
 
-### Expanses
+### Expanses {#expanses}
 
 The following <JavadocLink type="foundation" location="com/webforj/component/Expanse"> Expanses values </JavadocLink> allow for quick styling without using CSS.
 Expanses are supported by use of the `Expanse` enum class. Below are the expanses supported for the checkbox component: <br/>
@@ -76,7 +76,7 @@ height = '150px'
 
 <TableBuilder name="Checkbox" />
 
-## Best practices
+## Best practices {#best-practices}
 
 To ensure an optimal user experience when using the `Checkbox` component, consider the following best practices:
 

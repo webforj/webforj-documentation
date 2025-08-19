@@ -10,7 +10,7 @@ sidebar_position: 145
 
 Toolbars offer users quick access to core actions and navigation elements. The webforJ `Toolbar` component is a horizontal container that can hold a set of action buttons, icons, or other components. It's well-suited for managing page controls and housing key functions like a search bar or a notification button.
 
-## Organizing toolbar content
+## Organizing toolbar content {#organizing-toolbar-content}
 
 The `Toolbar` organizes essential components in an easily accessible and consistent layout. By default, it takes the full width of its parent element and provides four placement areas, or _slots_, for organizing components:
 
@@ -30,7 +30,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## Compact mode
+## Compact mode {#compact-mode}
 
 Use `setCompact(true)` to reduce the padding around a `Toolbar`. This is helpful when you need to fit more content on screen, especially in apps with stacked toolbars or limited space. The toolbar still behaves the same—only the height is reduced. This mode is commonly used in headers, sidebars, or layouts where space is tight.
 
@@ -43,7 +43,7 @@ toolbar.setCompact(true);
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toolbar/ToolbarCompactView.java'
 />
 
-## `ProgressBar` in toolbars
+## `ProgressBar` in toolbars {#progressbar-in-toolbars}
 
 A `ProgressBar` serves as a visual indicator for ongoing processes, such as loading data, uploading files, or completing steps in a flow. When placed inside a `Toolbar`, the `ProgressBar` aligns neatly along the bottom edge, making it unobtrusive while still clearly communicating progress to users.
 
@@ -53,9 +53,9 @@ You can combine it with other components in the toolbar like buttons or labels w
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/toolbar/ToolbarProgressbarView.java'
 />
 
-## Styling
+## Styling {#styling}
 
-### Themes
+### Themes {#themes}
 
 `Toolbar` components include <JavadocLink type="foundation" location="com/webforj/component/Theme">seven built-in themes</JavadocLink> for quick visual customization:
 

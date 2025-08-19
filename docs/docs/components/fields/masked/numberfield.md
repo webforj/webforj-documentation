@@ -12,7 +12,7 @@ The `MaskedNumberField` is a text input designed for structured numeric entry. I
 
 This component supports number formatting, localization of decimal/grouping characters, and optional value constraints like minimums or maximums.
 
-## Basics
+## Basics {#basics}
 
 The `MaskedNumberField` can be instantiated with or without parameters. It supports setting an initial value, a label, a placeholder, and an event listener to react to value changes.
 
@@ -24,12 +24,12 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '270px'
 />
 
-## Mask rules
+## Mask rules {#mask-rules}
 
 The `MaskedNumberField` uses a mask string to control how numeric input is formatted and displayed. 
 Each character in the mask defines a specific formatting behavior, allowing precise control over how numbers appear.
 
-### Mask characters
+### Mask characters {#mask-characters}
 
 | Character | Description |
 |-----------|-------------|
@@ -57,7 +57,7 @@ A mask within a field does **NOT** round. For example, when placing a value such
 into a field that is masked with `###0.00`, you'll get `12.34`.
 :::
 
-## Group and decimal separators
+## Group and decimal separators {#group-and-decimal-separators}
 
 The `MaskedNumberField` supports customization of **grouping** and **decimal** characters, making it easy to adapt number formatting to different locales or business conventions.
 
@@ -75,7 +75,7 @@ field.setDecimalCharacter(","); // e.g. 123,45
 By default, `MaskedNumberField` applies group and decimal separators based on the app's current locale. You can override them at any time using the provided setters.
 :::
 
-## Negateable
+## Negateable {#negateable}
 
 The `MaskedNumberField` supports an option to control whether negative numbers are allowed.
 
@@ -95,7 +95,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '150px'
 />
 
-## Min and max values
+## Min and max values {#min-and-max-values}
 
 The `MaskedNumberField` supports setting numeric boundaries using `setMin()` and `setMax()`. 
 These constraints help ensure that user input stays within a valid, expected range.
@@ -118,7 +118,7 @@ These constraints help ensure that user input stays within a valid, expected ran
 
   Values above this limit will be flagged as invalid.
 
-## Restoring the value
+## Restoring the value {#restoring-the-value}
 
 The `MaskedNumberField` supports a restore feature that resets the field’s value to a predefined state. 
 This can be useful when users need to undo changes, revert accidental edits, or return to a known default value.
@@ -131,7 +131,7 @@ numberField.setRestoreValue(1500.00);
 numberField.restoreValue();
 ```
 
-### Ways to restore the value
+### Ways to restore the value {#ways-to-restore-the-value}
 
 - **Programmatically** using `restoreValue()`
 - **Via keyboard**, by pressing <kbd>ESC</kbd> (this is the default restore key unless overridden)
@@ -144,7 +144,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '150px'
 />
 
-## `MaskedNumberFieldSpinner`
+## `MaskedNumberFieldSpinner` {#maskednumberfieldspinner}
 
 The `MaskedNumberFieldSpinner` extends [`MaskedNumberField`](#basics) by adding spinner controls that let users increase or decrease the value using step buttons or arrow keys. 
 This is ideal for inputs like quantities, pricing adjustments, rating controls, or any scenario where users make incremental changes.
@@ -155,7 +155,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '120px'
 />
 
-### Key features
+### Key features {#key-features}
 
 - **Step Increments**  
   Use `setStep()` to define how much the value should change with each spin:
@@ -170,6 +170,6 @@ height = '120px'
 - **All Features from MaskedNumberField**  
   Fully supports masks, formatting, grouping/decimal characters, min/max constraints, and restore logic.
 
-## Styling
+## Styling {#styling}
 
 <TableBuilder name="MaskedNumberField" />

@@ -26,7 +26,7 @@ Before you begin, make sure you have reviewed the necessary [prerequisites](../.
 :::
 
 
-## 1. BBj download and installation
+## 1. BBj download and installation {#1-bbj-download-and-installation}
 
 <b>While following this step, be sure that you install the BBj version that corresponds to the same webforJ version. </b><br/><br/>
 
@@ -51,40 +51,40 @@ mvn install:install-file -Dfile=BBjUtil.jar -DgroupId=com.basis.lib -DartifactId
 
 Once BBj has been installed, the Plugin Manager can be accessed to install tools needed to configure webforJ. To start, type "Plugin Manager" into the start menu or Finder. 
 
-<!-- ![Plugin manager start location](./_images/users/local/i1.png#rounded-border) -->
+<!-- ![Plugin manager start location](/img/bbj-installation/users/local/i1.png#rounded-border) -->
 
 After the plugin manager has been opened, navigate to the "Available Plugins" tab towards the top.
 
-![Plugin manager configuration](./_images/local/Step_1l.png#rounded-border)
+![Plugin manager configuration](/img/bbj-installation/local/Step_1l.png#rounded-border)
 
 Once in this section, select the "Show versions under development" checkbox
 
-![Plugin manager configuration](./_images/local/Step_2l.png#rounded-border)
+![Plugin manager configuration](/img/bbj-installation/local/Step_2l.png#rounded-border)
 
 The DWCJ entry should now be visible in the list of available plugins for download. Click on this entry in the list to select it.
 
-![Plugin manager configuration](./_images/local/Step_3l.png#rounded-border)
+![Plugin manager configuration](/img/bbj-installation/local/Step_3l.png#rounded-border)
 
 With the DWCJ entry selected, click the "Install" button
 
-![Plugin manager configuration](./_images/local/Step_4l.png#rounded-border)
+![Plugin manager configuration](/img/bbj-installation/local/Step_4l.png#rounded-border)
 
 Once the plugin has finished installing, click the "Installed Plugins" tab at the top.
 
-![Plugin manager configuration](./_images/local/Step_5l.png#rounded-border)
+![Plugin manager configuration](/img/bbj-installation/local/Step_5l.png#rounded-border)
 
 This tab displays installed plugins, which should now include the DWCJ entry. Click on the entry within the list.
 
-![Plugin manager configuration](./_images/local/Step_6l.png#rounded-border)
+![Plugin manager configuration](/img/bbj-installation/local/Step_6l.png#rounded-border)
 
 With the DWCJ entry selected, click the "Configure" button
 
-![Plugin manager configuration](./_images/local/Step_7l.png#rounded-border)
+![Plugin manager configuration](/img/bbj-installation/local/Step_7l.png#rounded-border)
 
 On the window that opens, click the "Enable Maven Remote Install" button at the bottom left of the window.
 
 
-![Plugin manager configuration](./_images/local/Step_8l.png#rounded-border)
+![Plugin manager configuration](/img/bbj-installation/local/Step_8l.png#rounded-border)
 
 :::tip 
 
@@ -97,22 +97,22 @@ Alternatively, navigate to the `bin` directory within your `bbx` folder and run 
 
 A dialog should display that remote installation has been enabled. Click "OK" to close this dialog.
 
-![Plugin manager configuration](./_images/local/Step_9l.png#rounded-border)
-<!-- ![Plugin manager start location](./_images/users/local/i2.png#rounded-border)
+![Plugin manager configuration](/img/bbj-installation/local/Step_9l.png#rounded-border)
+<!-- ![Plugin manager start location](/img/bbj-installation/users/local/i2.png#rounded-border)
 
 On this tab, select the "Show versions under development" checkbox near the top left of the window.
 
-![Plugin manager start location](./_images/users/local/i2.5.png#rounded-border)
+![Plugin manager start location](/img/bbj-installation/users/local/i2.5.png#rounded-border)
 
 On this page, select the DWCJ entry, and click "Install".
 
-![Plugin manager start location](./_images/users/local/i3.png#rounded-border)
+![Plugin manager start location](/img/bbj-installation/users/local/i3.png#rounded-border)
 
 Once this has been done, you should be able to switch back to the "Installed Plugins" tab, and see the DWCJ entry listed there.
 
 Finally, click on the "Configure" button, which will open a new window. In this window, click the "Enable Maven Remote Install" button.
 
-![Enabling Remote Installation](./_images/users/local/i6.png#rounded-border) -->
+![Enabling Remote Installation](/img/bbj-installation/users/local/i6.png#rounded-border) -->
 
 
 ## 3. Using the starter project

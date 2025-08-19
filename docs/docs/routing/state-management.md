@@ -5,14 +5,14 @@ title: State Management
 
 Creating seamless, dynamic user experiences often requires that the state of your web app be reflected in the URL and retained across browser navigation events. You can achieve this without reloading the page by leveraging URL parameter updates and browser history state management. This ensures that users can share, bookmark, or return to specific views with the app fully aware of their prior interactions.
 
-## Updating the URL
+## Updating the URL {#updating-the-url}
 
 When the state of a web page changes, like filtering a product list or navigating through different views, you often need the URL to reflect those changes. You can use the `replaceState` or `pushState` methods provided by the `BrowserHistory` class to manipulate the URL without reloading the page:
 
 - **`pushState`**: Adds a new entry to the browser’s history stack without reloading the page. This is useful for navigating between different views or dynamic content.
 - **`replaceState`**: Updates the current entry in the browser’s history without adding a new entry. This is ideal for updating state within the same view.
 
-### Example: Updating the URL with query parameters
+### Example: Updating the URL with query parameters {#example-updating-the-url-with-query-parameters}
 
 In this example, when the "Update URL" button is clicked, the UI is updated to show the selected category and sorting, and the URL is updated with new query parameters for `category` and `sort`:
 
@@ -58,17 +58,17 @@ public class ProductView extends Composite<Div> {
 }
 ```
 
-### Explanation:
+### Explanation: {#explanation}
 
 - **`filter` Method**: The method handles updating both the UI and the URL based on the selected `category` and `sort`.
 - **`updateUrl` Method**: This method creates a new `ParametersBag` for query parameters, constructs a new URL, and then uses `replaceState` to update the browser's URL without reloading the page.
 - **`replaceState`**: This method changes the URL to the new location while maintaining the current state, without causing a page reload.
 
-## Saving and restoring state in browser history
+## Saving and restoring state in browser history {#saving-and-restoring-state-in-browser-history}
 
 In addition to updating the URL, it's possible to save arbitrary state objects in the browser's history. This means you can stash additional data related to the current view (for instance: form inputs, filters, etc.) without embedding them directly into the URL.
 
-### Example: Saving selection state
+### Example: Saving selection state {#example-saving-selection-state}
 
 In the following example, a `ProfileView` consists of several tabs (Profile, Orders and Settings). When the user switches between tabs, the selected tab’s state is saved in the browser’s history using `replaceState`. This allows the app to remember the last active tab if the user navigates back to this view or refreshes the page.
 
@@ -112,7 +112,7 @@ public class ProfileView extends Composite<Div> implements DidEnterObserver {
 }
 ```
 
-### Explanation:
+### Explanation: {#explanation-1}
 
 1. **TabbedPane Component**: The view consists of a `TabbedPane` component, which has three tabs: Profile, Orders, and Settings.
 2. **State Saving on Tab Change**: Each time a tab is selected, the current section index is saved in the browser’s history using the `replaceState` method.
