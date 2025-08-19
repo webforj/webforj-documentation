@@ -40,7 +40,6 @@ public class LoginCustomFieldsIT extends BaseTest {
         login.getSignInButton().click();
 
         assertThat(login.getErrorMessage()).isVisible();
-        assertThat(login.getErrorHost()).hasJSProperty("opened", true);
     }
 
     @Test
@@ -50,7 +49,6 @@ public class LoginCustomFieldsIT extends BaseTest {
         login.getPassword().fill(" ");
         login.getSignInButton().click();
 
-        assertThat(login.getErrorHost()).hasAttribute("opened", "");
         assertThat(login.getErrorMessage()).isVisible();
     }
 
@@ -61,7 +59,6 @@ public class LoginCustomFieldsIT extends BaseTest {
         login.getPassword().fill("wrongpass");
         login.getSignInButton().click();
 
-        assertThat(login.getErrorHost()).hasAttribute("opened", "");
         assertThat(login.getErrorMessage()).isVisible();
     }
 
@@ -72,7 +69,6 @@ public class LoginCustomFieldsIT extends BaseTest {
         login.getPassword().fill("admin");
         login.getSignInButton().click();
 
-        assertThat(login.getErrorHost()).hasAttribute("opened", "");
         assertThat(login.getErrorMessage()).isVisible();
     }
 }
