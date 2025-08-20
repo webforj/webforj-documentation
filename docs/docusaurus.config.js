@@ -81,9 +81,7 @@ const config = {
           postsPerPage: 12
         },
         theme: {
-          customCss: [require.resolve('./src/css/custom.scss'),
-          require.resolve('./src/css/customBlog.css')
-          ],
+          customCss: require.resolve('./src/css/custom.scss'),
         },
         gtag: {
           trackingID: 'G-47SBJTFG20',

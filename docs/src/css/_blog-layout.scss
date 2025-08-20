@@ -1,16 +1,27 @@
 /* See docusarus css names: https://docusaurus.io/docs/styling-layout#theme-class-names */
 
-.blog-authors-posts-page .container,
-.blog-tags-post-list-page .container {
-  max-width: 100rem;
+.blog-tags-post-list-page main,
+.blog-list-page main,
+.blog-authors-posts-page main {
+  --ifm-col-width: 1;
 }
 
-.blog-list-page main {
-  --ifm-col-width: calc(11 / 12 * 100%);
+.blog-tags-post-list-page div.container,
+.blog-list-page div.container,
+.blog-authors-posts-page div.container{
+  padding: 0;
 }
 
 .blog-wrapper .row {
   justify-content: center;
+}
+
+.blog-post-page main{
+  --ifm-col-width: calc(9.5 / 12 * 100%);
+}
+
+.blog-post-page aside{
+  --ifm-col-width: calc(2.5 / 12 * 100%);
 }
 
 .blog-list-page main,
@@ -18,12 +29,12 @@
 .blog-authors-posts-page main {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 2%;
+  grid-template-rows: auto;
   margin-left: 0;
+  column-gap: 3%;
 }
 
 .blog-list-page main::before {
-  content: "webforJ Blog";
   font-size: 3rem;
   font-weight: bold;
   grid-column: 1/-1;
@@ -36,12 +47,11 @@
   padding: 1rem;
   border: solid 1px var(--dwc-color-gray-75);
   border-radius: var(--dwc-border-radius-2xl);
-  overflow: hidden;
   box-shadow: var(--dwc-shadow-xs);
 }
 
 .blog-wrapper:not(.blog-post-page) h2 {
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -57,11 +67,18 @@
 
 .blog-wrapper:not(.blog-post-page) div.markdown img {
   aspect-ratio: 2/1;
+  object-fit: cover;
   max-height: 35vh;
   width: auto;
   border-radius: var(--dwc-border-radius-l);
 }
 
+.blog-post-page div.markdown p:has(img):first-of-type img{
+  max-height: 45vh;
+  width: auto;
+}
+
+.blog-post-page div.markdown p:has(img):first-of-type,
 .blog-wrapper:not(.blog-post-page) div.markdown p:has(img) {
   text-align: center;
 }
@@ -76,20 +93,23 @@
   mask-image: linear-gradient(#000 50%, transparent 100%);
 }
 
+.blog-post-page div.col:has(div.tableOfContents_bqdL),
 .blog-wrapper:not(.blog-post-page) div.markdown *:nth-child(n + 3),
 .blog-wrapper:not(.blog-post-page) div.giscus,
-.blog-list-page aside {
+.blog-wrapper:not(.blog-post-page) aside {
   display: none;
 }
+
 .blog-wrapper article footer {
   margin: 0 calc(var(--ifm-spacing-horizontal) * -1);
+  width: 100%;
 }
 
-.blog-wrapper article footer .col--3 {
+.blog-wrapper article footer .col--3{
   --ifm-col-width: calc(4 / 12 * 100%);
 }
 
-.blog-wrapper article footer .col--9 {
+.blog-wrapper article footer .col--9{
   --ifm-col-width: calc(8 / 12 * 100%);
 }
 
