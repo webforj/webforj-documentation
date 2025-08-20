@@ -44,7 +44,7 @@
     "description": "Step 2 title"
   },
   "component.archetype.step2.desc": {
-    "message": "Verwenden Sie den Maven-Befehl und passen Sie die groupId, artifactId und Version an.",
+    "message": "Maven-Befehl verwenden und groupId, artifactId und Version anpassen.",
     "description": "Step 2 description"
   },
   "component.archetype.table.argument": {
@@ -402,7 +402,7 @@
     "description": "The paragraph for empty search result"
   },
   "theme.SearchPage.fetchingNewResults": {
-    "message": "Neue Ergebnisse abrufen...",
+    "message": "Neue Ergebnisse laden...",
     "description": "The paragraph for fetching new search results"
   },
   "theme.SearchBar.label": {
