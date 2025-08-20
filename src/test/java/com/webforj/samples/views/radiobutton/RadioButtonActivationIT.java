@@ -21,6 +21,9 @@ public class RadioButtonActivationIT extends BaseTest {
 
     @Test
     public void testAutoSelection() {
-        assertThat(radioButton.getAutoActivatedInput()).hasAttribute("aria-checked", "true");
+        assertThat(page.locator("dwc-radio [part~='input']:visible")).hasCount(4);
+
+        assertThat(radioButton.getCheckedAutoInput()).isVisible();
+        assertThat(radioButton.getCheckedAutoInput()).hasAttribute("aria-checked", "true");
     }
 }

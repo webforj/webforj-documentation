@@ -9,21 +9,24 @@ public class RadioButtonActivationPage extends BasePage {
 
     private static final String ROUTE = "radiobuttonactivation";
 
-    private final Locator autoActivatedInput;
-    private final Locator shadowRootRadio;
+    private final Locator checkedAutoInput;
+    private final Locator checkedAutoHost;
 
     public RadioButtonActivationPage(Page page) {
         super(page);
 
-        this.shadowRootRadio = page.locator("dwc-radio").nth(0);
-        this.autoActivatedInput = shadowRootRadio.locator("input");
+        this.checkedAutoHost = page.locator("dwc-radio[checked]")
+                .filter(new Locator.FilterOptions()
+                        .setHas(page.locator("label:has-text('Auto Activated')")));
+
+        this.checkedAutoInput = checkedAutoHost.locator("input[part~='input']:visible");
     }
 
     public static String getRoute() {
         return ROUTE;
     }
 
-    public Locator getAutoActivatedInput() {
-        return autoActivatedInput;
+    public Locator getCheckedAutoInput() {
+        return checkedAutoInput;
     }
 }
