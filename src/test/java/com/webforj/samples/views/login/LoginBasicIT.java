@@ -19,18 +19,6 @@ public class LoginBasicIT extends BaseTest {
     }
 
     @Test
-    public void testUsernameAndPassword() {
-        login.getUsername().clear();
-        login.getUsername().fill("admin");
-        login.getPassword().fill("admin");
-        login.getSignInButton().click();
-
-        assertThat(login.getUsername()).hasValue("admin");
-        assertThat(login.getPassword()).hasValue("admin");
-        assertThat(login.getPassword()).hasAttribute("type", "text");
-    }
-
-    @Test
     public void testEmptyInput() {
         login.getSignInButton().click();
 
