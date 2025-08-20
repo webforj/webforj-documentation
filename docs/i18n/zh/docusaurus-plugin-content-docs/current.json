@@ -16,11 +16,11 @@
     "description": "The label for category Integrations in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Spring Framework": {
-    "message": "Spring Framework",
+    "message": "春季框架",
     "description": "The label for category Spring Framework in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Routing": {
-    "message": "Router",
+    "message": "路由器",
     "description": "The label for category Routing in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Navigation Lifecycle": {
@@ -60,7 +60,7 @@
     "description": "The label for category Fields in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Masked Fields": {
-    "message": "Mask Input",
+    "message": "输入遮罩",
     "description": "The label for category Masked Fields in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Lists": {
@@ -84,7 +84,7 @@
     "description": "The label for category E2E Testing in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Styling": {
-    "message": "样式配置",
+    "message": "样式设置",
     "description": "The label for category Styling in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Managing Resources": {
@@ -108,7 +108,7 @@
     "description": "The label for category Advanced Topics in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Repository": {
-    "message": "Code Repository",
+    "message": "代码仓库",
     "description": "The label for category Repository in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Architecture": {
@@ -116,11 +116,11 @@
     "description": "The label for category Architecture in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Upgrading Guides": {
-    "message": "Upgrade Guide",
+    "message": "升级指南",
     "description": "The label for category Upgrading Guides in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Client Components": {
-    "message": "Client Component",
+    "message": "客户端组件",
     "description": "The label for category Client Components in sidebar documentationSidebar"
   }
 }

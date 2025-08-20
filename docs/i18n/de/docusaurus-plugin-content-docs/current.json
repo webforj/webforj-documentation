@@ -40,7 +40,7 @@
     "description": "The label for category Archetypes in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.HTML and Web Components": {
-    "message": "HTML und Webkomponenten",
+    "message": "HTML und Web-Komponenten",
     "description": "The label for category HTML and Web Components in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Data Binding": {
@@ -52,7 +52,7 @@
     "description": "The label for category Validation in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Components": {
-    "message": " Komponenten",
+    "message": "Komponenten",
     "description": "The label for category Components in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Fields": {
@@ -88,7 +88,7 @@
     "description": "The label for category Styling in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Managing Resources": {
-    "message": "Ressourcenverwaltung",
+    "message": "Ressourcenmanagement",
     "description": "The label for category Managing Resources in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Configuration": {

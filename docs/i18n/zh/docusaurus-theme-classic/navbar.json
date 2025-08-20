@@ -24,7 +24,7 @@
     "description": "Navbar item with label Support"
   },
   "item.label.Events": {
-    "message": "事件",
+    "message": "Events",
     "description": "Navbar item with label Events"
   },
   "item.label.Blog": {
@@ -48,7 +48,7 @@
     "description": "Navbar item with label JavaDocs"
   },
   "item.label.Client Components": {
-    "message": "客户端组件",
+    "message": "Client Component",
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
@@ -60,7 +60,7 @@
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {
-    "message": "Contact Me",
+    "message": "联系我",
     "description": "Navbar item with label Contact us"
   }
 }

@@ -518,11 +518,11 @@
     "description": "The title of the authors page"
   },
   "theme.blog.authorsList.viewAll": {
-    "message": "Alle Autoren zeigen",
+    "message": "Alle Autoren anzeigen",
     "description": "The label of the link targeting the blog authors page"
   },
   "theme.blog.author.noPosts": {
-    "message": "Dieser Autor hat keine Artikel.",
+    "message": "Dieser Autor hat keine Beiträge.",
     "description": "The text for authors with 0 blog post"
   },
   "theme.contentVisibility.unlistedBanner.title": {

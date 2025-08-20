@@ -20,7 +20,7 @@
     "description": "The label for category Spring Framework in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Routing": {
-    "message": "Routing",
+    "message": "Routage",
     "description": "The label for category Routing in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Navigation Lifecycle": {
@@ -44,7 +44,7 @@
     "description": "The label for category HTML and Web Components in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Data Binding": {
-    "message": "Données liées",
+    "message": "Données associées",
     "description": "The label for category Data Binding in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Validation": {
@@ -52,7 +52,7 @@
     "description": "The label for category Validation in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Components": {
-    "message": "Components",
+    "message": "Composants",
     "description": "The label for category Components in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Fields": {
@@ -60,7 +60,7 @@
     "description": "The label for category Fields in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Masked Fields": {
-    "message": "Champs masqués",
+    "message": "Champs cachés",
     "description": "The label for category Masked Fields in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Lists": {
@@ -88,7 +88,7 @@
     "description": "The label for category Styling in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Managing Resources": {
-    "message": "Resource Management",
+    "message": "Gestion des ressources",
     "description": "The label for category Managing Resources in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Configuration": {
@@ -108,7 +108,7 @@
     "description": "The label for category Advanced Topics in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Repository": {
-    "message": "Soumettre",
+    "message": "Submit",
     "description": "The label for category Repository in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Architecture": {
