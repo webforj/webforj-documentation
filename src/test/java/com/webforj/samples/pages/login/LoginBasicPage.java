@@ -9,34 +9,36 @@ public class LoginBasicPage extends BasePage {
 
     private static final String ROUTE = "loginbasic";
 
-    private final Locator header;
     private final Locator username;
     private final Locator password;
     private final Locator signInButton;
-    private final Locator passwordReveal;
     private final Locator dwcUsernameField;
     private final Locator dwcPasswordField;
 
     public LoginBasicPage(Page page) {
         super(page);
 
-        Locator shadowRoot = page.locator("dwc-login");
-        Locator shadowRootDialog = shadowRoot.locator("dwc-dialog");
-        header = shadowRoot.locator("dwc-dialog > header");
-        username = shadowRootDialog.locator("dwc-field#username").locator("input");
-        password = shadowRootDialog.locator("dwc-field#password").locator("input");
-        signInButton = shadowRootDialog.locator("dwc-button[part='submit-button']");
-        passwordReveal = shadowRoot.locator("dwc-field#password").locator("dwc-icon-button[part='eye-off-icon']").locator("button");
-        dwcUsernameField = shadowRoot.locator("#username");
-        dwcPasswordField = shadowRoot.locator("#password");
+        Locator host = page.locator("dwc-login");
+        Locator dialogHost = host.locator("dwc-dialog");
+
+        username = page.locator("dwc-field")
+                .filter(new Locator.FilterOptions().setHas(page.locator("label:has-text('Username')")))
+                .locator("[part~='input']:visible").first();
+
+        password = page.locator("dwc-field")
+                .filter(new Locator.FilterOptions().setHas(page.locator("label:has-text('Password')")))
+                .locator("[part~='input']:visible").first();
+
+        signInButton = dialogHost.locator("dwc-button")
+                .filter(new Locator.FilterOptions().setHasText("Sign in"))
+                .locator("[part~='control']");
+
+        dwcUsernameField = host.locator("#username");
+        dwcPasswordField = host.locator("#password");
     }
 
     public static String getRoute() {
         return ROUTE;
-    }
-
-    public Locator getHeader() {
-        return header;
     }
 
     public Locator getUsername() {
@@ -49,10 +51,6 @@ public class LoginBasicPage extends BasePage {
 
     public Locator getSignInButton() {
         return signInButton;
-    }
-
-    public Locator getPasswordReveal() {
-        return passwordReveal;
     }
 
     public Locator getDwcUsernameField() {

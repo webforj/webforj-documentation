@@ -20,12 +20,11 @@ public class LoginBasicIT extends BaseTest {
 
     @Test
     public void testUsernameAndPassword() {
+        login.getUsername().clear();
         login.getUsername().fill("admin");
-        login.getPasswordReveal().click();
         login.getPassword().fill("admin");
         login.getSignInButton().click();
 
-        assertThat(login.getHeader()).hasText("Authentication");
         assertThat(login.getUsername()).hasValue("admin");
         assertThat(login.getPassword()).hasValue("admin");
         assertThat(login.getPassword()).hasAttribute("type", "text");

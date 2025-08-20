@@ -2,7 +2,7 @@ package com.webforj.samples.pages.login;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class LoginCustomFieldsPage extends BasePage {
@@ -12,7 +12,6 @@ public class LoginCustomFieldsPage extends BasePage {
     private final Locator username;
     private final Locator password;
     private final Locator signInButton;
-    private final Locator errorMessage;
     private final Locator logoutButton;
     private final Locator customerID;
     private final Locator errorHost;
@@ -37,8 +36,7 @@ public class LoginCustomFieldsPage extends BasePage {
                 .filter(new Locator.FilterOptions().setHasText("Sign In"))
                 .locator("[part~='control']");
 
-        errorHost = loginHost.locator("dwc-alert[part='error']");
-        errorMessage = errorHost.locator("[part~='control'][role='alert']");
+        errorHost = loginHost.locator("dwc-dialog[opened]").getByRole(AriaRole.ALERT);
 
         logoutButton = page.locator("dwc-button")
                 .filter(new Locator.FilterOptions().setHasText("Logout"))
@@ -59,10 +57,6 @@ public class LoginCustomFieldsPage extends BasePage {
 
     public Locator getSignInButton() {
         return signInButton;
-    }
-
-    public Locator getErrorMessage() {
-        return errorMessage;
     }
 
     public Locator getLogoutButton() {
