@@ -5,13 +5,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.webforj.annotation.InlineStyleSheet;
 import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
-import com.webforj.component.layout.applayout.AppDrawerToggle;
 import com.webforj.component.layout.applayout.AppLayout;
-import com.webforj.component.layout.appnav.AppNav;
-import com.webforj.component.layout.appnav.AppNavItem;
 import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.component.googlecharts.GoogleChart;
 import com.webforj.component.html.elements.Div;
@@ -22,35 +18,6 @@ import com.webforj.component.icons.TablerIcon;
 import com.webforj.router.annotation.Route;
 
 @StyleSheet("ws://css/stylesheet/dashboard.css")
-@InlineStyleSheet("""
-    .modern-dashboard {
-        background: linear-gradient(135deg, var(--dwc-surface-1) 0%, var(--dwc-surface-2) 100%);
-    }
-    
-    .page-title {
-        background: linear-gradient(135deg, var(--dwc-color-primary-40), var(--dwc-color-primary-30));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-    
-    .metrics-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-    
-    .charts-grid {
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    }
-    
-    .actions-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-    
-    .chart-container {
-        height: 600px;
-        border-top: 3px solid var(--dwc-color-primary-40);
-    }
-""")
 @Route
 public class ModernDashboardView extends Composite<AppLayout> {
     
@@ -59,16 +26,10 @@ public class ModernDashboardView extends Composite<AppLayout> {
         layout.addClassName("modern-dashboard");
         
         Toolbar header = new Toolbar();
-        header.addToStart(new AppDrawerToggle())
-              .addToTitle(new H2("Analytics Dashboard"));
+
+        header.addToTitle(new H2("Analytics Dashboard"));
         layout.addToHeader(header);
-        
-        AppNav drawerMenu = new AppNav();
-        drawerMenu.addItem(new AppNavItem("Overview", ModernDashboardView.class, TablerIcon.create("dashboard")));
-        drawerMenu.addItem(new AppNavItem("Analytics", ModernDashboardView.class, TablerIcon.create("chart-line")));
-        drawerMenu.addItem(new AppNavItem("Users", ModernDashboardView.class, TablerIcon.create("users")));
-        drawerMenu.addItem(new AppNavItem("Settings", ModernDashboardView.class, TablerIcon.create("settings")));
-        layout.addToDrawer(drawerMenu);
+        layout.setDrawerPlacement(AppLayout.DrawerPlacement.HIDDEN);
         
         createMainContent();
     }
