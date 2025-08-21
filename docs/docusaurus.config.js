@@ -112,6 +112,14 @@ const config = {
             from: '/docs/intro/basics',
             to: '/docs/introduction/basics',
           },
+          {
+            from: '/docs/integrations/spring/dependency-injection',
+            to: '/docs/integrations/spring/routing',
+          },
+          {
+            from: '/docs/integrations/spring/setup',
+            to: '/docs/integrations/spring/spring-boot',
+          }
         ],
       },
     ]

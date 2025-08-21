@@ -16,7 +16,7 @@
     "description": "The label for category Integrations in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Spring Framework": {
-    "message": "Spring框架",
+    "message": "春季框架",
     "description": "The label for category Spring Framework in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Routing": {
@@ -60,7 +60,7 @@
     "description": "The label for category Fields in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Masked Fields": {
-    "message": "掩码输入",
+    "message": "输入遮罩",
     "description": "The label for category Masked Fields in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Lists": {
@@ -68,7 +68,7 @@
     "description": "The label for category Lists in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Option Dialogs": {
-    "message": "Options",
+    "message": "选项",
     "description": "The label for category Option Dialogs in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Table": {
@@ -108,7 +108,7 @@
     "description": "The label for category Advanced Topics in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Repository": {
-    "message": "代码库",
+    "message": "代码仓库",
     "description": "The label for category Repository in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Architecture": {
