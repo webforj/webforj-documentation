@@ -16,7 +16,7 @@
     "description": "The label for category Integrations in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Spring Framework": {
-    "message": "Marco Spring",
+    "message": "Marco de Trabajo Spring",
     "description": "The label for category Spring Framework in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Routing": {
@@ -32,7 +32,7 @@
     "description": "The label for category Route Hierarchy in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Building UIs": {
-    "message": "Construyendo UI",
+    "message": "Construir IU",
     "description": "The label for category Building UIs in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Archetypes": {
@@ -40,11 +40,11 @@
     "description": "The label for category Archetypes in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.HTML and Web Components": {
-    "message": "HTML y Componentes Web",
+    "message": "HTML y Componentes",
     "description": "The label for category HTML and Web Components in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Data Binding": {
-    "message": "Enlace de Datos",
+    "message": "Data Link",
     "description": "The label for category Data Binding in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Validation": {

@@ -1,11 +1,11 @@
 ---
-title: Dependency Injection  
+title: Routing  
 sidebar_position: 15
 ---
 
-Dependency injection (DI) is a process where objects define their dependencies through constructor arguments rather than creating or looking up dependencies themselves. The Spring container injects these dependencies when creating the object, resulting in cleaner code and better decoupling between components.
+Routing in webforJ with Spring works exactly the same way as in plain webforJ applications. You still use the `@Route` annotation to define routes, the same navigation patterns, and the same route lifecycle. The only difference is that when Spring is present, your routes can also receive Spring beans through constructor injection.
 
-When using Spring Boot with webforJ, the framework detects the Spring context and adapts its object creation to use Spring's dependency injection. This means your route classes can declare dependencies on services, repositories, and other Spring beans through constructor parameters.
+When you navigate to a route, webforJ creates the route instance - but with Spring on the classpath, it uses Spring's container to resolve dependencies. This means your routes can use the full power of Spring's ecosystem (services, repositories, custom beans) while maintaining the familiar webforJ routing behavior.
 
 :::tip[Learn more about dependency injection]
 For a comprehensive understanding of dependency injection patterns and Spring's IoC container, see [Spring's official dependency injection documentation](https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html).

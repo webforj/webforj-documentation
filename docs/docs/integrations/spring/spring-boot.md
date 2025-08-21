@@ -1,5 +1,5 @@
 ---
-title: Spring Boot Setup
+title: Spring Boot
 sidebar_position: 10
 ---
 

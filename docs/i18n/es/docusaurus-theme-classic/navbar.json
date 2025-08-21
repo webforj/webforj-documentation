@@ -52,11 +52,11 @@
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
-    "message": "Contribución",
+    "message": "Contribuir",
     "description": "Navbar item with label Contribution Guide"
   },
   "item.label.Report Issue": {
-    "message": "Reportar un problema",
+    "message": "Reportar problema",
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {

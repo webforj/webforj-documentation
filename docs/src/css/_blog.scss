@@ -1,0 +1,212 @@
+/* See docusarus css names: https://docusaurus.io/docs/styling-layout#theme-class-names */
+
+// Common styles for blog list pages
+.blog-tags-post-list-page,
+.blog-list-page,
+.blog-authors-posts-page {
+  main {
+    --ifm-col-width: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    margin-left: 0;
+    column-gap: 1.5rem;
+    padding: 2rem;
+    border: 0;
+    background-color: transparent;
+  }
+
+  div.container {
+    padding: 0;
+  }
+
+  .margin-bottom--xl {
+    margin-bottom: 3rem !important;
+  }
+}
+
+.blog-wrapper {
+  #__docusaurus {
+    background-color: var(--dwc-surface-3);
+  }
+
+  .row {
+    justify-content: center;
+  }
+
+  article footer {
+    margin: 0 calc(var(--ifm-spacing-horizontal) * -1);
+    width: 100%;
+
+    .col--3 {
+      --ifm-col-width: calc(4 / 12 * 100%);
+    }
+
+    .col--9 {
+      --ifm-col-width: calc(8 / 12 * 100%);
+    }
+  }
+
+  // Non-post-page specific styles
+  &:not(.blog-post-page) {
+    article {
+      background-color: var(--dwc-surface-3);
+      padding: 1rem;
+      border: solid 1px var(--dwc-color-default);
+      border-radius: var(--dwc-border-radius);
+      padding: 0;
+    }
+
+    header,
+    footer {
+      padding: var(--dwc-space-m);
+    }
+
+    .markdown {
+      > *:not(p:has(img)) {
+        padding-left: var(--dwc-space-m);
+        padding-right: var(--dwc-space-m);
+      }
+    }
+
+    h2 {
+      font-size: var(--dwc-font-size-2xl);
+      margin-bottom: var(--dwc-space-m);
+      margin-top: var(--dwc-space-m);
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      // line-height * 2 lines
+      min-height: calc(var(--dwc-font-size-2xl) * 2);
+      word-break: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
+
+      a {
+        color: unset;
+        transition: color 0.2s ease-in-out;
+
+        &:hover,
+        &:focus {
+          color: var(--dwc-color-primary);
+          text-decoration: none;
+        }
+      }
+    }
+
+    nav,
+    header,
+    hr {
+      grid-column: 1/-1;
+    }
+
+    .markdown {
+      img {
+        aspect-ratio: 2/1;
+        object-fit: cover;
+        max-height: 35vh;
+        width: 100%;
+        border-radius: 0;
+      }
+
+      p:has(img) {
+        text-align: center;
+      }
+
+      p:nth-child(2) {
+        height: 60%;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        mask-image: linear-gradient(#000 50%, transparent 100%);
+      }
+
+      *:nth-child(n + 3) {
+        display: none;
+      }
+    }
+
+    div.giscus,
+    aside {
+      display: none;
+    }
+  }
+}
+
+// Blog post page specific styles
+.blog-post-page {
+  main {
+    // --ifm-col-width: calc(9.5 / 12 * 100%);
+    --ifm-col-width: 960px;
+  }
+
+  aside {
+    display: none;
+  }
+
+  div.markdown p:has(img):first-of-type {
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  div.col:has(div.tableOfContents_bqdL) {
+    display: none;
+  }
+}
+
+// Blog list page specific styles
+.blog-list-page main::before {
+  font-size: 3rem;
+  font-weight: bold;
+  grid-column: 1/-1;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+// Media queries
+@media (max-width: 1400px) {
+  .blog-wrapper:not(.blog-post-page) main {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 996px) {
+  .blog-wrapper:not(.blog-post-page) {
+    main {
+      grid-template-columns: 1fr;
+    }
+
+    div.markdown p:nth-child(2) {
+      mask-image: none;
+    }
+  }
+
+  .blog-post-page {
+    main {
+      --ifm-col-width: 90%;
+      max-width: 100%;
+    }
+
+    aside {
+      --ifm-col-width: 100%;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .blog-list-page main::before {
+    font-size: 2rem;
+  }
+
+  .blog-post-page main {
+    --ifm-col-width: 100%;
+    max-width: 100%;
+  }
+}

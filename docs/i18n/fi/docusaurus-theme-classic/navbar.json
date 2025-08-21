@@ -12,7 +12,7 @@
     "description": "Navbar item with label Components"
   },
   "item.label.Community": {
-    "message": "Community",
+    "message": "Yhteisö",
     "description": "Navbar item with label Community"
   },
   "item.label.Developers": {
@@ -52,7 +52,7 @@
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
-    "message": "Liity mukaan",
+    "message": "Liity nyt",
     "description": "Navbar item with label Contribution Guide"
   },
   "item.label.Report Issue": {
