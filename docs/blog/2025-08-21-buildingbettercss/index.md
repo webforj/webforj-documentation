@@ -2,16 +2,16 @@
 title: "Building Better CSS with webforJ's Styling System"
 description: "Learning webforJ's styling system from a developer's perspective: using `@StyleSheet` and `@InlineStyleSheet` annotations, working with DWC design tokens, handling responsive layouts, and building complex demos that scale from simple components to full dashboards."
 slug: webforj-styling-guide
-date: 2025-08-07
-authors: webforJ
+date: 2025-08-21
+authors: Lauren Alamo
 tags: [webforJ, styling, frontend]
-image: "https://docs.webforj.com/release_blog/_images/stylesheetblog.png"
-hide_table_of_contents: false
+image: "https://cdn.webforj.com/webforj-documentation/blogs/buildingbettercss/cover.png"
+hide_table_of_contents: true
 ---
 
 <!-- vale Google.FirstPerson = NO -->
 
-![cover image](../../static/release_blog/_images/stylesheetblog.png)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/buildingbettercss/cover.png)
 
 I've spent the better part of a year building webforJ demos and documentation, and honestly, it's taught me that I knew a lot less about CSS than I thought. I thought I knew enough to get by, some selectors, basic properties, maybe a flexbox here and there. Turns out there's a difference between writing CSS that works and writing CSS that actually makes sense.
 
@@ -40,16 +40,16 @@ I avoided `@InlineStyleSheet` initially. Inline styles felt wrong because of sep
 
 ```java
 @InlineStyleSheet("""
-    .example-card {
-        background: var(--dwc-surface-2);
-        padding: var(--dwc-space-l);
-        border-left: 4px solid var(--dwc-color-primary-40);
-        transition: all 0.3s ease;
-    }
-    
-    .example-card:hover {
-        transform: translateY(-2px);
-    }
+  .example-card {
+    background: var(--dwc-surface-2);
+    padding: var(--dwc-space-l);
+    border-left: 4px solid var(--dwc-color-primary-40);
+    transition: all 0.3s ease;
+  }
+  
+  .example-card:hover {
+    transform: translateY(-2px);
+  }
 """)
 @Route
 public class CardExample extends Composite<Div> {
@@ -70,20 +70,18 @@ The DWC design system taught me what systematic color usage actually means. Befo
 
 DWC provides structured color usage that eliminates guesswork:
 
-```java
-@InlineStyleSheet("""
-    .notification-info {
-        background: var(--dwc-color-primary-5);
-        color: var(--dwc-color-primary-text-40);
-        border-left: 4px solid var(--dwc-color-primary-40);
-    }
-    
-    .notification-success {
-        background: var(--dwc-color-success-5);
-        color: var(--dwc-color-success-text-40);
-        border-left-color: var(--dwc-color-success-40);
-    }
-""")
+```css
+.notification-info {
+  background: var(--dwc-color-primary-5);
+  color: var(--dwc-color-primary-text-40);
+  border-left: 4px solid var(--dwc-color-primary-40);
+}
+
+.notification-success {
+  background: var(--dwc-color-success-5);
+  color: var(--dwc-color-success-text-40);
+  border-left-color: var(--dwc-color-success-40);
+}
 ```
 
 The numbers represent lightness values (5 = darkest, 95 = lightest, in steps of 5). The `-text` variants provide automatic contrast compliance. These DWC variables also handle light and dark mode switching. Set `var(--dwc-color-primary-40)` once and it adapts when users toggle between themes. webforJ inverts the lightness values to maintain readability.
@@ -97,22 +95,22 @@ While building various demos, I kept seeing these `--dwc-` variables everywhere.
 
 ```java
 @InlineStyleSheet("""
-    html[data-app-theme="corporate"] {
-        --dwc-color-primary-h: 210;
-        --dwc-color-primary-s: 80%;
-        --dwc-color-primary-c: 45;
-        
-        --dwc-color-success-h: 160;
-        --dwc-color-success-s: 84%;
-        --dwc-color-success-c: 39;
-        
-        /* Custom spacing for tighter layouts */
-        --dwc-space-m: 0.875rem;
-        --dwc-space-l: 1.125rem;
-        
-        /* Corporate typography */
-        --dwc-font-family: "Inter", "Segoe UI", sans-serif;
-    }
+  html[data-app-theme="corporate"] {
+    --dwc-color-primary-h: 210;
+    --dwc-color-primary-s: 80%;
+    --dwc-color-primary-c: 45;
+    
+    --dwc-color-success-h: 160;
+    --dwc-color-success-s: 84%;
+    --dwc-color-success-c: 39;
+    
+    /* Custom spacing for tighter layouts */
+    --dwc-space-m: 0.875rem;
+    --dwc-space-l: 1.125rem;
+    
+    /* Corporate typography */
+    --dwc-font-family: "Inter", "Segoe UI", sans-serif;
+  }
 """)
 @AppTheme("corporate")
 public class CorporateApp extends App {
@@ -130,11 +128,11 @@ I learned about responsive design by necessity when my first few experiments wit
 
 The DWC spacing system does a lot of the responsive work so you don't have to. Spacing tokens use `rem` units that scale relative to the root font size, which means your padding and margins maintain their relationships without you doing any calculations:
 
-```java
+```css
 .metric-card {
-    padding: var(--dwc-space-l);    /* 1.25rem */
-    margin: var(--dwc-space-s);     /* 0.5rem */
-    gap: var(--dwc-space-m);        /* 1rem */
+  padding: var(--dwc-space-l);    /* 1.25rem */
+  margin: var(--dwc-space-s);     /* 0.5rem */
+  gap: var(--dwc-space-m);        /* 1rem */
 }
 ```
 
@@ -154,13 +152,11 @@ I've run into situations where I write CSS targeting a component and nothing hap
 
 When you need to customize component appearance, there's the `::part()` approach:
 
-```java
-@InlineStyleSheet("""
+```css
 dwc-button::part(label) {
-    font-weight: 600;
-    text-transform: uppercase;
+  font-weight: 600;
+  text-transform: uppercase;
 }
-""")
 ```
 
 The `::part()` pseudo-element is like having a key to specific rooms in an otherwise locked house. I can style exactly what the component exposes, without breaking the encapsulation that keeps everything else stable.
@@ -170,9 +166,9 @@ The `::part()` pseudo-element is like having a key to specific rooms in an other
 Here's a dashboard I put together that uses most of the stuff I've mentioned - CSS Grid, DWC tokens, and component-specific styling:
 
 <AppLayoutViewer 
-path='/webforj/moderndashboard?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/blogs/ModernDashboardView.java'
-cssURL='/css/stylesheet/dashboard.css'
+path='/webforj/blogs/building-better-css?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/blogs/buildingbettercss/ModernDashboardView.java'
+cssURL='/blogs/buildingbettercss/dashboard.css'
 />
 
 This dashboard shows how all the pieces work together in practice. The responsive layout uses CSS Grid with custom media queries for mobile optimization. All the colors and spacing come from DWC tokens, so changing the primary color at the root level updates the entire interface. The combination of external CSS and inline component styles keeps everything maintainable, which is great because I definitely needed to go back and fix things multiple times. 
