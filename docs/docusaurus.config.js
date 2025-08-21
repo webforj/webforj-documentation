@@ -77,6 +77,9 @@ const config = {
           editUrl:
             'https://github.com/webforj/webforj-documentation/tree/main/docs/',
         },
+        blog: {
+          postsPerPage: 12
+        },
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),
         },
