@@ -92,7 +92,7 @@
     "description": "webforj-spring flavor description"
   },
   "component.archetype.table.appName.desc": {
-    "message": "Optionaler Parameter in der POM für Standardtitel.",
+    "message": "Optionaler POM-Parameter für Standardtitel.",
     "description": "appName description"
   },
   "component.archetype.conclusion": {
@@ -223,7 +223,7 @@
     "description": "The words used to describe by who the page has been last updated"
   },
   "theme.lastUpdated.lastUpdatedAtBy": {
-    "message": "Letztes Update am {atDate} von {byUser}",
+    "message": "Letzte Aktualisierung am {atDate} von {byUser}",
     "description": "The sentence used to display when a page has been last updated, and by who"
   },
   "theme.navbar.mobileVersionsDropdown.label": {
@@ -402,7 +402,7 @@
     "description": "The paragraph for empty search result"
   },
   "theme.SearchPage.fetchingNewResults": {
-    "message": "Neue Ergebnisse laden...",
+    "message": "Neue Ergebnisse herunterladen...",
     "description": "The paragraph for fetching new search results"
   },
   "theme.SearchBar.label": {
@@ -530,7 +530,7 @@
     "description": "The unlisted content banner title"
   },
   "theme.contentVisibility.unlistedBanner.message": {
-    "message": "Diese Seite ist nicht verfügbar.",
+    "message": "Diese Seite ist nicht erreichbar.",
     "description": "The unlisted content banner message"
   },
   "theme.contentVisibility.draftBanner.title": {
@@ -626,7 +626,7 @@
     "description": "Description for properties section"
   },
   "tableBuilder.sections.reflectedAttributes": {
-    "message": "Gespiegelte Eigenschaften",
+    "message": "Gespiegelte Attribute",
     "description": "Section heading for reflected attributes table"
   },
   "tableBuilder.descriptions.reflectedAttributes": {

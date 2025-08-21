@@ -12,7 +12,7 @@
     "description": "Navbar item with label Components"
   },
   "item.label.Community": {
-    "message": "社区",
+    "message": "Community",
     "description": "Navbar item with label Community"
   },
   "item.label.Developers": {
@@ -24,7 +24,7 @@
     "description": "Navbar item with label Support"
   },
   "item.label.Events": {
-    "message": "Events",
+    "message": "事件",
     "description": "Navbar item with label Events"
   },
   "item.label.Blog": {
@@ -48,7 +48,7 @@
     "description": "Navbar item with label JavaDocs"
   },
   "item.label.Client Components": {
-    "message": "Client Component",
+    "message": "客户端组件",
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
