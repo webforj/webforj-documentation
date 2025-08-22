@@ -16,7 +16,7 @@
     "description": "The label for category Integrations in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Spring Framework": {
-    "message": "Spring Framework",
+    "message": "Framework Spring",
     "description": "The label for category Spring Framework in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Routing": {
@@ -32,11 +32,11 @@
     "description": "The label for category Route Hierarchy in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Building UIs": {
-    "message": "Construir UI",
+    "message": "Construir IU",
     "description": "The label for category Building UIs in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Archetypes": {
-    "message": "Archetypes",
+    "message": "Arquetipos",
     "description": "The label for category Archetypes in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.HTML and Web Components": {
@@ -56,7 +56,7 @@
     "description": "The label for category Components in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Fields": {
-    "message": "Fields",
+    "message": "Campos",
     "description": "The label for category Fields in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Masked Fields": {
@@ -92,7 +92,7 @@
     "description": "The label for category Managing Resources in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Configuration": {
-    "message": "Configuración",
+    "message": "Ajustes",
     "description": "The label for category Configuration in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Redeployment and Live Reload": {
@@ -120,7 +120,7 @@
     "description": "The label for category Upgrading Guides in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Client Components": {
-    "message": "Componentes del Cliente",
+    "message": "Cliente Components",
     "description": "The label for category Client Components in sidebar documentationSidebar"
   }
 }

@@ -16,7 +16,7 @@
     "description": "Navbar item with label Community"
   },
   "item.label.Developers": {
-    "message": "Ontwikkelaar",
+    "message": "Developer",
     "description": "Navbar item with label Developers"
   },
   "item.label.Support": {

@@ -522,7 +522,7 @@
     "description": "The label of the link targeting the blog authors page"
   },
   "theme.blog.author.noPosts": {
-    "message": "Dieser Autor hat keine Beiträge.",
+    "message": "Dieser Autor hat keine Artikel.",
     "description": "The text for authors with 0 blog post"
   },
   "theme.contentVisibility.unlistedBanner.title": {

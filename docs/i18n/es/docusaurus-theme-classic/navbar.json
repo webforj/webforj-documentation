@@ -40,7 +40,7 @@
     "description": "Navbar item with label DWC HueCraft"
   },
   "item.label.DWC Design Kit": {
-    "message": "Kit de Diseño DWC",
+    "message": "DWC Design Kit",
     "description": "Navbar item with label DWC Design Kit"
   },
   "item.label.JavaDocs": {
@@ -60,7 +60,7 @@
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {
-    "message": "Contáctanos",
+    "message": "Contáctenos",
     "description": "Navbar item with label Contact us"
   }
 }

@@ -48,11 +48,11 @@
     "description": "Navbar item with label JavaDocs"
   },
   "item.label.Client Components": {
-    "message": "Asiakkaan komponentit",
+    "message": "Asiakas komponentit",
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
-    "message": "Join now",
+    "message": "Liity nyt",
     "description": "Navbar item with label Contribution Guide"
   },
   "item.label.Report Issue": {

@@ -16,11 +16,11 @@
     "description": "The label for category Integrations in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Spring Framework": {
-    "message": "Kevät-kehys",
+    "message": "Kevätkehys",
     "description": "The label for category Spring Framework in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Routing": {
-    "message": "Suositukset",
+    "message": "Suositellut",
     "description": "The label for category Routing in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Navigation Lifecycle": {
@@ -48,7 +48,7 @@
     "description": "The label for category Data Binding in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Validation": {
-    "message": "Confirmo",
+    "message": "Vahvista",
     "description": "The label for category Validation in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Components": {
@@ -112,15 +112,15 @@
     "description": "The label for category Repository in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Architecture": {
-    "message": "Arkkitehtuuri",
+    "message": "Architecture",
     "description": "The label for category Architecture in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Upgrading Guides": {
-    "message": "Päivitysohjeet",
+    "message": "Update instructions",
     "description": "The label for category Upgrading Guides in sidebar documentationSidebar"
   },
   "sidebar.documentationSidebar.category.Client Components": {
-    "message": "Asiakasosat",
+    "message": "Asiakasosioita",
     "description": "The label for category Client Components in sidebar documentationSidebar"
   }
 }

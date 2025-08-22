@@ -8,11 +8,11 @@
     "description": "Navbar item with label Getting Started"
   },
   "item.label.Components": {
-    "message": "组件",
+    "message": "Components",
     "description": "Navbar item with label Components"
   },
   "item.label.Community": {
-    "message": "Community",
+    "message": "社区",
     "description": "Navbar item with label Community"
   },
   "item.label.Developers": {
@@ -24,7 +24,7 @@
     "description": "Navbar item with label Support"
   },
   "item.label.Events": {
-    "message": "事件",
+    "message": "Event",
     "description": "Navbar item with label Events"
   },
   "item.label.Blog": {
@@ -60,7 +60,7 @@
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {
-    "message": "联系我",
+    "message": "Contact me",
     "description": "Navbar item with label Contact us"
   }
 }
