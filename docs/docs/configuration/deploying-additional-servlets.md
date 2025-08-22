@@ -1,5 +1,5 @@
 ---
-sidebar_position: 50
+sidebar_position: 35
 title: Deploying Additional Servlets
 sidebar_class_name: new-content
 ---
