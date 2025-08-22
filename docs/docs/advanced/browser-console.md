@@ -1,7 +1,11 @@
 ---
-sidebar_position: 5
-title: Browser Console
+sidebar_position: 15
+title: Debugging Tool
 ---
+
+<!-- vale off -->
+# Broswer Console
+<!-- vale on -->
 
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/BrowserConsole" top='true'/>

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-title: Lifecycle Listeners
+title: App Lifecycle Management
 sidebar_class_name: new-content
 ---
 

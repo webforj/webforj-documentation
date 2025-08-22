@@ -1,7 +1,11 @@
 ---
-title: Namespaces
-sidebar_position: 30
+title: Organization
+sidebar_position: 40
 ---
+
+<!-- vale off -->
+# Namespaces
+<!-- vale on -->
 
 <DocChip chip='since' label='24.22' />
 <JavadocLink type="foundation" location="com/webforj/environment/namespace/Namespace" top='true'/>

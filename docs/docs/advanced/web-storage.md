@@ -1,6 +1,6 @@
 ---
-sidebar_position: 10
-title: Web Storage
+sidebar_position: 35
+title: Data Persistence
 ---
 <!-- vale off -->
 # Web Storage <DocChip chip='since' label='23.06' />
