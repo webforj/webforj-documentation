@@ -1,6 +1,6 @@
 {
   "theme.docs.translationNotice": {
-    "message": "Diese Seite wurde automatisch übersetzt. Bitte besuchen Sie die offizielle Dokumentation für genauere Informationen.",
+    "message": "Diese Seite wurde automatisch übersetzt. Besuchen Sie die offizielle Dokumentation für genauere Informationen.",
     "description": "Translation notice for non-English pages"
   },
   "component.askMenu.chatgpt.label": {
@@ -307,7 +307,7 @@
     "description": "The ARIA label for the link to full blog posts from excerpts"
   },
   "theme.blog.post.readingTime.plurals": {
-    "message": "Eine Minute Lesezeit | {readingTime} Minuten Lesezeit",
+    "message": "1 Minute Lesezeit | {readingTime} Minuten Lesezeit",
     "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.CodeBlock.copy": {
@@ -522,7 +522,7 @@
     "description": "The label of the link targeting the blog authors page"
   },
   "theme.blog.author.noPosts": {
-    "message": "Dieser Autor hat keine Artikel.",
+    "message": "Dieser Autor hat keine Beiträge.",
     "description": "The text for authors with 0 blog post"
   },
   "theme.contentVisibility.unlistedBanner.title": {
@@ -530,7 +530,7 @@
     "description": "The unlisted content banner title"
   },
   "theme.contentVisibility.unlistedBanner.message": {
-    "message": "Diese Seite ist nicht erreichbar.",
+    "message": "Diese Seite ist nicht verfügbar.",
     "description": "The unlisted content banner message"
   },
   "theme.contentVisibility.draftBanner.title": {

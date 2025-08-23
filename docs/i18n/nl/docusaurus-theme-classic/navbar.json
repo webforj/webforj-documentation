@@ -12,11 +12,11 @@
     "description": "Navbar item with label Components"
   },
   "item.label.Community": {
-    "message": "Gemeenschap",
+    "message": "Community",
     "description": "Navbar item with label Community"
   },
   "item.label.Developers": {
-    "message": "Developer",
+    "message": "Ontwikkelaar",
     "description": "Navbar item with label Developers"
   },
   "item.label.Support": {
@@ -40,7 +40,7 @@
     "description": "Navbar item with label DWC HueCraft"
   },
   "item.label.DWC Design Kit": {
-    "message": "DWC Ontwerp Sjabloon",
+    "message": "DWC Ontwerpsjabloon",
     "description": "Navbar item with label DWC Design Kit"
   },
   "item.label.JavaDocs": {
@@ -48,7 +48,7 @@
     "description": "Navbar item with label JavaDocs"
   },
   "item.label.Client Components": {
-    "message": "Klantcomponenten",
+    "message": "Klant componenten",
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
@@ -56,7 +56,7 @@
     "description": "Navbar item with label Contribution Guide"
   },
   "item.label.Report Issue": {
-    "message": "Probleemrapportage",
+    "message": "Probleem melden",
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {
