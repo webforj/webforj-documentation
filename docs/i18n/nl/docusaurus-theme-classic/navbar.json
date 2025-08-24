@@ -12,7 +12,7 @@
     "description": "Navbar item with label Components"
   },
   "item.label.Community": {
-    "message": "Community",
+    "message": "Gemeenschap",
     "description": "Navbar item with label Community"
   },
   "item.label.Developers": {
@@ -48,15 +48,15 @@
     "description": "Navbar item with label JavaDocs"
   },
   "item.label.Client Components": {
-    "message": "Klant componenten",
+    "message": "Klantcomponenten",
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
-    "message": "Bijdragen gids",
+    "message": "Bijdrage gids",
     "description": "Navbar item with label Contribution Guide"
   },
   "item.label.Report Issue": {
-    "message": "Probleem melden",
+    "message": "Probleem rapporteren",
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {

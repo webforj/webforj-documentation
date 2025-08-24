@@ -12,7 +12,7 @@
     "description": "Navbar item with label Components"
   },
   "item.label.Community": {
-    "message": "Yhteisö",
+    "message": "Community",
     "description": "Navbar item with label Community"
   },
   "item.label.Developers": {
@@ -48,7 +48,7 @@
     "description": "Navbar item with label JavaDocs"
   },
   "item.label.Client Components": {
-    "message": "Asiakas komponentit",
+    "message": "Asiakasosat",
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
@@ -60,7 +60,7 @@
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {
-    "message": "Ota yhteyttä",
+    "message": "Contact Us",
     "description": "Navbar item with label Contact us"
   }
 }

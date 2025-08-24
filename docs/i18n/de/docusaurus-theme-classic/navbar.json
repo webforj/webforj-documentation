@@ -12,7 +12,7 @@
     "description": "Navbar item with label Components"
   },
   "item.label.Community": {
-    "message": "Gemeinschaft",
+    "message": "Community",
     "description": "Navbar item with label Community"
   },
   "item.label.Developers": {
@@ -60,7 +60,7 @@
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {
-    "message": "Kontaktieren",
+    "message": "Kontakt",
     "description": "Navbar item with label Contact us"
   }
 }
