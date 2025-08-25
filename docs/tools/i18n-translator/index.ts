@@ -15,6 +15,61 @@ import os from 'os';
 
 const siteDir = options.project;
 
+// JSON hash tracking utilities
+interface JSONHashes {
+  [fileName: string]: string;
+}
+
+function loadJSONHashes(locale: string): JSONHashes {
+  const hashesPath = path.resolve(siteDir, './i18n', locale, '_hashes.json');
+  
+  if (!fs.existsSync(hashesPath)) {
+    return {};
+  }
+  
+  try {
+    const hashesContent = fs.readFileSync(hashesPath, 'utf-8');
+    return JSON.parse(hashesContent);
+  } catch (error) {
+    console.warn(`Failed to load JSON hashes for ${locale}:`, error);
+    return {};
+  }
+}
+
+function saveJSONHashes(locale: string, hashes: JSONHashes): void {
+  const hashesPath = path.resolve(siteDir, './i18n', locale, '_hashes.json');
+  const hashesDir = path.dirname(hashesPath);
+  
+  try {
+    fs.ensureDirSync(hashesDir);
+    const hashesString = JSON.stringify(hashes, null, 2).replace(/\r\n/g, '\n');
+    fs.writeFileSync(hashesPath, hashesString);
+  } catch (error) {
+    console.error(`Failed to save JSON hashes for ${locale}:`, error);
+  }
+}
+
+function calculateJSONHash(jsonPath: string): string | null {
+  if (!fs.existsSync(jsonPath)) {
+    return null;
+  }
+  
+  try {
+    const jsonContent = fs.readFileSync(jsonPath, 'utf-8');
+    // Normalize content before hashing to ensure consistency across platforms
+    const normalizedContent = jsonContent.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+    return md5(normalizedContent);
+  } catch (error) {
+    console.warn(`Failed to calculate hash for ${jsonPath}:`, error);
+    return null;
+  }
+}
+
+function getRelativeJSONPath(locale: string, absolutePath: string): string {
+  const localeDir = path.resolve(siteDir, './i18n', locale);
+  return path.relative(localeDir, absolutePath);
+}
+
 async function main() {
   const config = await loadSiteConfig(siteDir);
   if (!config.i18n) {
@@ -181,6 +236,16 @@ async function translateJSON(
     return;
   }
 
+  // Check hash to see if file has changed
+  const relativePath = getRelativeJSONPath(locale, jsonPath);
+  const currentHash = calculateJSONHash(jsonPath);
+  const savedHashes = loadJSONHashes(locale);
+  
+  if (currentHash && savedHashes[relativePath] === currentHash) {
+    console.log(`  Skip: ${path.relative(siteDir, jsonPath)} because not changed`);
+    return;
+  }
+
   const jsonContent = fs.readFileSync(jsonPath, 'utf-8');
   const json = JSON.parse(jsonContent);
 
@@ -233,6 +298,12 @@ async function translateJSON(
   const jsonString = JSON.stringify(json, null, 2).replace(/\r\n/g, '\n');
   fs.writeFileSync(jsonPath, jsonString);
   console.log(`  Writed translated file into: ${jsonPath}`);
+  
+  // Update hash after successful translation
+  if (currentHash) {
+    const updatedHashes = { ...savedHashes, [relativePath]: currentHash };
+    saveJSONHashes(locale, updatedHashes);
+  }
 }
 
 async function translateCodeJSON(locale: string) {
@@ -243,6 +314,16 @@ async function translateCodeJSON(locale: string) {
     console.log(
       `  Skip translation of code.json because you need to run \`docusaurus write-translations\` first, locale: ${locale}`
     );
+    return;
+  }
+
+  // Check hash to see if file has changed
+  const relativePath = getRelativeJSONPath(locale, jsonPath);
+  const currentHash = calculateJSONHash(jsonPath);
+  const savedHashes = loadJSONHashes(locale);
+  
+  if (currentHash && savedHashes[relativePath] === currentHash) {
+    console.log(`  Skip: ${path.relative(siteDir, jsonPath)} because not changed`);
     return;
   }
 
@@ -310,6 +391,12 @@ async function translateCodeJSON(locale: string) {
   const codeJsonString = JSON.stringify(json, null, 2).replace(/\r\n/g, '\n');
   fs.writeFileSync(jsonPath, codeJsonString);
   console.log(`  Wrote translated file: ${jsonPath}`);
+  
+  // Update hash after successful translation
+  if (currentHash) {
+    const updatedHashes = { ...savedHashes, [relativePath]: currentHash };
+    saveJSONHashes(locale, updatedHashes);
+  }
 }
 
 main().catch(console.error);
