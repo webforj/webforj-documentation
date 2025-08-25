@@ -7,44 +7,57 @@ slug: element_composite
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/element/ElementComposite" top='true'/>
 
-The `ElementComposite` class provides a structured base for building reusable web components in webforJ. It streamlines interaction with underlying HTML elements, enabling you to define properties, attributes, and event listeners in a type-safe, maintainable way. Use `ElementComposite` to encapsulate and integrate custom elements or third-party web components within your app.
+The `ElementComposite` class provides a structured base for building reusable web components in webforJ. It allows you to easily define properties, attributes, and event listeners of the underlying HTML elements in a type-safe, maintainable way. Use `ElementComposite` to encapsulate and integrate custom elements or third-party web components within your app.
 
 While using the `ElementComposite` class, using the `getElement()` method will give you access to the underlying `Element` component. Similarly, the `getNodeName()` method gives you the name of that node in the DOM. 
 
 :::tip
-It's possible to do everything with the `Element` class itself, without using `ElementComposite` class. However, the provided methods in the `ElementComposite` give users a way to reuse the work that's being done. 
+While it's possible to do everything with the `Element` class itself, the provided methods in the `ElementComposite` give you a way to reuse the work that's being done. 
 :::
 
+:::info
+This guide uses the [Shoelace QR code web component](https://shoelace.style/components/qr-code) to show how to integrate third-party web components.
+:::
 
 ## Annotations
 
 The `ElementComposite` class supports several annotations to simplify integration with web components:
 
 - **@NodeName**: Defines the custom HTML tag for your component. For example, `@NodeName("sl-qr-code")` will create a `<sl-qr-code>` element in the DOM.
-- **@JavaScript**: Loads external JavaScript resources (such as third-party web components). Example:
+
+- **@JavaScript**: Loads external JavaScript resources (such as third-party web components):
+
   ```java
-  @JavaScript(value = "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/shoelace.js", attributes = {@Attribute(name = "type", value = "module")})
+  @JavaScript(value = "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.87/dist/shoelace.js",
+    attributes = {@Attribute(name = "type", value = "module")})
   ```
-- **@StyleSheet**: Loads external CSS files for your component. Example:
+
+- **@StyleSheet**: Loads external CSS files for your component:
+
   ```java
-  @StyleSheet("https://cdn.example.com/library.css")
+  @StyleSheet(url = "https://cdn.example.com/library.css")
   ```
 
 :::tip
-These annotations are typically placed on your `ElementComposite` subclass to make sure are loaded automatically when the component is used.
+These annotations are typically placed on the subclass extending the `ElementComposite` class to make sure it's loaded automatically when the component is used.
 :::
 
-This guide demonstrates integration of the [Shoelace QR code web component](https://shoelace.style/components/qr-code) using the `ElementComposite` class.
+<ComponentDemo 
+path='/webforj/qrdemo?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/QRDemoView.java'
+height='175px'
+/>
 
 ## Concern Interfaces
 
 To add common behaviors to your custom element, implement the appropriate concern interfaces. For example:
 
-- **HasText**: Adds support for getting and setting text content.
-- **HasClassName**: Adds support for manipulating CSS class names.
-- **HasStyle**: Adds support for inline styles.
+- **`HasText`**: Adds support for getting and setting text content.
+- **`HasClassName`**: Adds support for manipulating CSS class names.
+- **`HasStyle`**: Adds support for inline styles.
 
-You can implement multiple interfaces to compose the desired capability. Example:
+You can implement multiple interfaces to compose the desired capability:
+
 ```java
 @NodeName("my-component")
 public final class MyComponent extends ElementComposite
@@ -52,11 +65,12 @@ public final class MyComponent extends ElementComposite
     // ...
 }
 ```
+
 ## `ElementCompositeContainer` for components with slots
 
-For components that need to manage child components in named slots (such as headers, footers, or content areas), extend `ElementCompositeContainer` instead of `ElementComposite`.
+For components that need to manage child components in named slots (such as headers, footers, or content areas), extend <JavadocLink type="foundation" location="com/webforj/component/element/ElementCompositeContainer" code='true' >ElementCompositeContainer</JavadocLink> instead of `ElementComposite`.
 
-`ElementCompositeContainer` provides a structured way to add, remove, and manage components in specific slots. For example:
+`ElementCompositeContainer` provides a structured way to add, remove, and manage components in specific slots:
 
 ```java
 @NodeName("my-container")
@@ -89,16 +103,10 @@ public final class MyContainer extends ElementCompositeContainer
 
 Use `ElementCompositeContainer` whenever your component needs to support multiple content areas or slots, such as layouts, dialogs, or toolbars.
 
-<ComponentDemo 
-path='/webforj/qrdemo?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/QRDemoView.java'
-height='175px'
-/>
-
 
 ## Property and attribute descriptors
 
-Properties and attributes in web components represent the state and configuration of a component. In webforJ, the `ElementComposite` class provides a structured way to define, set, and get properties and attributes using `PropertyDescriptor`.
+Properties and attributes in web components represent the state and configuration of a component. You can define, set, and get properties and attributes using the <JavadocLink type="foundation" location="com/webforj/component/element/PropertyDescriptor" code='true' >PropertyDescriptor</JavadocLink> class.
 
 ### Defining properties and attributes
 
@@ -117,7 +125,6 @@ private final PropertyDescriptor<Type> ATTRIBUTE_NAME = PropertyDescriptor.attri
 
 The generic type parameter `<Type>` specifies the Java type of the property or attribute. This guarantees type safety when setting or getting values.
 
-**Example:**
 ```java
 private final PropertyDescriptor<String> TITLE = PropertyDescriptor.property("title", "");
 private final PropertyDescriptor<Integer> COUNT = PropertyDescriptor.attribute("count", 0);
@@ -125,20 +132,23 @@ private final PropertyDescriptor<Integer> COUNT = PropertyDescriptor.attribute("
 
 ### Setting and getting values
 
-Use the `set()` method to assign a value, and the `get()` method to retrieve it:
+Use the `set()` method to assign a value, and the `get()` method to retrieve it.
+
 ```java
 set(TITLE, "My Title");
 String title = get(TITLE);
 ```
 
-You can also use the overloaded `get()` method to specify whether to fetch the value from the client, and to cast to a specific type:
+You can also use the overloaded `get()` method to specify whether to fetch the value from the client, and to cast to a specific type.
+
 ```java
 String title = get(TITLE, false, String.class);
 ```
 
 ### Best practices for validating properties
 
-To guarantee valid values, add validation logic in your setter methods or before calling `set()`. For example:
+To guarantee valid values, add validation logic in your setter methods or before calling `set()`:
+
 ```java
 public void setCount(int count) {
     if (count < 0) {
@@ -147,11 +157,11 @@ public void setCount(int count) {
     set(COUNT, count);
 }
 ```
-This approach helps prevent invalid state.
+This approach helps prevent an invalid state.
 
 ### Enum-style properties
 
-For properties that should only accept a fixed set of values, use Java enums. Define the enum, then use it as the type parameter for your `PropertyDescriptor`:
+For properties that should only accept a fixed set of values, use Java enums. Define the enum, then use it as the type parameter for your `PropertyDescriptor`.
 
 ```java
 public enum Status {
@@ -165,7 +175,6 @@ set(STATUS, Status.INACTIVE);
 Status status = get(STATUS);
 ```
 
-This pattern guarantees valid values are used and improves code readability.
 
 <ComponentDemo 
 path='/webforj/qrproperties?' 
@@ -175,7 +184,7 @@ height='250px'
 
 ## Event registration
 
-Events enable communication between parts of your app and are essential for interactive components. `ElementComposite` makes event handling straightforward: register listeners for specific event types using `addEventListener()` with the event class, your listener, and optional options.
+Events enable communication between parts of your app and create interactive components. `ElementComposite` makes event handling straightforward: register listeners for specific event types using `addEventListener()` with the event class, your listener, and optional options.
 
 ```java
 // Example: Adding a click event listener
@@ -185,10 +194,11 @@ addEventListener(ClickEvent.class, event -> {
 ```
 
 :::info
-The `ElementComposite` events are different than `Element` events, in that this doesn't allow any class, but only specified `Event` classes.
+The `ElementComposite` events are different from `Element` events, in that this doesn't allow any class, but only specified `Event` classes.
 :::
 
-In the demonstration below, a click event has been created and then added to the QR code component. This event, when fired, will display the "X" coordinate of the mouse at the time of clicking the component, which is provided to the Java event as data. A method is then implemented to allow the user to access this data, which is how it's displayed in the app.
+In the following demonstration, a click event has been created and then added to the QR code component. This event, when fired, will display the "X" coordinate of the mouse at the time of clicking the component, which is provided to the Java event as data. A method is then implemented to allow the user to access this data, which is how it's displayed in the app.
+
 <ComponentDemo 
 path='/webforj/qrevent?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/QREventView.java'
