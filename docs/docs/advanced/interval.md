@@ -1,11 +1,7 @@
 ---
 sidebar_position: 20
-title: Timing Utilities
+title: Interval
 ---
-
-<!-- vale off -->
-# Interval
-<!-- vale on -->
 
 <DocChip chip='since' label='24.02' />
 <JavadocLink type="foundation" location="com/webforj/Interval" top='true'/>

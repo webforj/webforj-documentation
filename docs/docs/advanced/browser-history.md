@@ -1,11 +1,7 @@
 ---
-title: Navigation
+title: Browser History
 sidebar_position: 30
 ---
-
-<!-- vale off -->
-# Browser History
-<!-- vale on -->
 
 <DocChip chip='since' label='24.12' />
 <JavadocLink type="foundation" location="com/webforj/router/history/BrowserHistory" top='true'/>

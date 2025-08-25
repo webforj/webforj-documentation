@@ -1,11 +1,7 @@
 ---
 sidebar_position: 15
-title: Debugging Tool
+title: Broswer Console
 ---
-
-<!-- vale off -->
-# Broswer Console
-<!-- vale on -->
 
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/BrowserConsole" top='true'/>

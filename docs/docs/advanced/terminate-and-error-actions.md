@@ -1,5 +1,5 @@
 ---
-title: Error Handling Continuation
+title: Terminate and Error Actions
 sidebar_position: 25
 ---
 <!-- vale off -->

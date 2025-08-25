@@ -1,11 +1,7 @@
 ---
-title: Advanced Data Structure
+title: Object and String Tables
 sidebar_position: 45
 ---
-
-<!-- vale off -->
-# Object and String Tables
-<!-- vale on -->
 
 The `ObjectTable` and `StringTable` provide static access to shared data in a webforJ environment. Both are accessible from anywhere in your app and serve different purposes:
 
