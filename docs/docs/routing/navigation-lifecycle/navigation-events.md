@@ -25,6 +25,7 @@ Global listeners can be attached to various lifecycle events, including:
 - **`WillLeaveEvent`**: Fired before a component is detached from the DOM.
 - **`DidLeaveEvent`**: Fired after a component is detached from the DOM.
 - **`NavigateEvent`**: Fired every time navigation occurs.
+- **`ActivateEvent`** (since 25.03): Fired when a cached component is reactivated.
 
 :::tip Using Observers to Hook into Lifecycle Events
 You can also hook into the lifecycle events using observers. For more details, refer to the [Lifecycle Observers](./observers).
