@@ -1,6 +1,6 @@
 ---
 title: Browser History
-sidebar_position: 20
+sidebar_position: 30
 ---
 
 <DocChip chip='since' label='24.12' />
