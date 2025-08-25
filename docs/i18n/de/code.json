@@ -1,6 +1,6 @@
 {
   "theme.docs.translationNotice": {
-    "message": "Diese Seite wurde automatisch übersetzt. Bitte besuchen Sie die offizielle Dokumentation für genauere Informationen.",
+    "message": "Diese Seite wurde automatisch übersetzt. Besuchen Sie die offizielle Dokumentation für genauere Informationen.",
     "description": "Translation notice for non-English pages"
   },
   "component.askMenu.chatgpt.label": {
@@ -92,7 +92,7 @@
     "description": "webforj-spring flavor description"
   },
   "component.archetype.table.appName.desc": {
-    "message": "Optionaler Parameter in der POM für Standardtitel.",
+    "message": "Optionaler POM-Parameter für Standardtitel.",
     "description": "appName description"
   },
   "component.archetype.conclusion": {
@@ -223,7 +223,7 @@
     "description": "The words used to describe by who the page has been last updated"
   },
   "theme.lastUpdated.lastUpdatedAtBy": {
-    "message": "Letztes Update am {atDate} von {byUser}",
+    "message": "Letzte Aktualisierung am {atDate} von {byUser}",
     "description": "The sentence used to display when a page has been last updated, and by who"
   },
   "theme.navbar.mobileVersionsDropdown.label": {
@@ -307,7 +307,7 @@
     "description": "The ARIA label for the link to full blog posts from excerpts"
   },
   "theme.blog.post.readingTime.plurals": {
-    "message": "Eine Minute Lesezeit | {readingTime} Minuten Lesezeit",
+    "message": "1 Minute Lesezeit | {readingTime} Minuten Lesezeit",
     "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.CodeBlock.copy": {
@@ -398,11 +398,11 @@
     "description": "The ARIA label for Algolia mention"
   },
   "theme.SearchPage.noResultsText": {
-    "message": "Keine Ergebnisse gefunden",
+    "message": "Keine Ergebnisse entdeckt",
     "description": "The paragraph for empty search result"
   },
   "theme.SearchPage.fetchingNewResults": {
-    "message": "Neue Ergebnisse laden...",
+    "message": "Neue Ergebnisse herunterladen...",
     "description": "The paragraph for fetching new search results"
   },
   "theme.SearchBar.label": {
@@ -546,7 +546,7 @@
     "description": "The label of the button to try again rendering when the React error boundary captures an error"
   },
   "theme.common.skipToMainContent": {
-    "message": "Zum Hauptinhalt springen",
+    "message": "Zum Hauptinhalt wechseln",
     "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
   },
   "theme.tags.tagsPageTitle": {

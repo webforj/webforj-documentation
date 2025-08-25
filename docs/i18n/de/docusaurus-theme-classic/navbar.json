@@ -48,7 +48,7 @@
     "description": "Navbar item with label JavaDocs"
   },
   "item.label.Client Components": {
-    "message": "Client-Komponenten",
+    "message": "Client-Elemente",
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
@@ -56,11 +56,11 @@
     "description": "Navbar item with label Contribution Guide"
   },
   "item.label.Report Issue": {
-    "message": "Problembericht",
+    "message": "Fehlerbericht",
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {
-    "message": "Kontaktieren Sie uns",
+    "message": "Kontakt",
     "description": "Navbar item with label Contact us"
   }
 }

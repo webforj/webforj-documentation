@@ -58,13 +58,15 @@ export default function HeadingWrapper(props) {
     </div>
   );
 
+  const showAskMenu = location.pathname.includes('/docs/');
+
   return (
     <>
       {props.as === "h1" ? (
         <>
           <div className={styles.headingWrapper}>
             <Heading {...props} className={styles.heading} />
-            <AskMenu />
+            {showAskMenu && <AskMenu />}
           </div>
           {translationNotice}
         </>

@@ -1,6 +1,6 @@
 {
   "theme.docs.translationNotice": {
-    "message": "Tämä sivu on käännetty automaattisesti ja saattaa sisältää virheitä. Tarkimmat tiedot löydät virallisesta webforJ-dokumentaatiosta.",
+    "message": "Tieto saattaa olla virheellinen. Tarkista viralliset tiedot webforJ-dokumentaatiosta.",
     "description": "Translation notice for non-English pages"
   },
   "component.askMenu.chatgpt.label": {
@@ -192,7 +192,7 @@
     "description": "The label used to tell the user that he's browsing an unreleased doc version"
   },
   "theme.docs.versions.unmaintainedVersionLabel": {
-    "message": "Tämä on {siteTitle} {versionLabel} -dokumentaatio, jota ei päivitetä.",
+    "message": "Tämä on {siteTitle} {versionLabel} -dokumentaatio, joka ei ole ajan tasalla.",
     "description": "The label used to tell the user that he's browsing an unmaintained doc version"
   },
   "theme.docs.versions.latestVersionSuggestionLabel": {
