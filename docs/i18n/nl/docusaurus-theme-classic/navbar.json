@@ -12,15 +12,15 @@
     "description": "Navbar item with label Components"
   },
   "item.label.Community": {
-    "message": "Gemeenschap",
+    "message": "Community",
     "description": "Navbar item with label Community"
   },
   "item.label.Developers": {
-    "message": "Ontwikkelaar",
+    "message": "Developer",
     "description": "Navbar item with label Developers"
   },
   "item.label.Support": {
-    "message": "Ondersteuning",
+    "message": "Support",
     "description": "Navbar item with label Support"
   },
   "item.label.Events": {
@@ -52,11 +52,11 @@
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
-    "message": "Bijdrage gids",
+    "message": "Bijdragehandleiding",
     "description": "Navbar item with label Contribution Guide"
   },
   "item.label.Report Issue": {
-    "message": "Probleem rapporteren",
+    "message": "Probleem melden",
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {
