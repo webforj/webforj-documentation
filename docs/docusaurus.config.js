@@ -119,6 +119,10 @@ const config = {
           {
             from: '/docs/integrations/spring/setup',
             to: '/docs/integrations/spring/spring-boot',
+          },
+          {
+            from: '/docs/advanced/deploying-additional-servlets',
+            to: '/docs/configuration/deploying-additional-servlets',
           }
         ],
       },
