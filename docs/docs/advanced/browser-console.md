@@ -1,6 +1,6 @@
 ---
 sidebar_position: 15
-title: Broswer Console
+title: Browser Console
 ---
 
 <DocChip chip='since' label='24.10' />
