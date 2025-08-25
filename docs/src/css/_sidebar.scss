@@ -1,72 +1,101 @@
-#__docusaurus {
-  .theme-doc-sidebar-container {
-    background-color: var(--dwc-surface-3);
+  [data-theme='light'] .navbar-sidebar__item {
+    --ifm-menu-link-sublist-icon-filter: none;
   }
 
-  .menu__list-item.sidebar--item__hidden {
-    display: none !important;
+  [data-theme='light'] .menu__list .header-github-link:before {
+    filter: invert(1);
   }
 
-  .menu {
-    padding: .5rem !important;
-  }
+  #__docusaurus {
 
-  .menu__list:not(.theme-doc-sidebar-menu) {
-    margin-left: var(--ifm-menu-link-padding-horizontal);
-    border-left: thin dotted var(--menu-level-indicator-color);
-  }
-
-  .menu__list-item.updated-content a:after,
-  .menu__list-item.new-content a:after {
-    box-sizing: border-box;
-    padding: 0.15rem 0.5rem;
-    margin-left: .5rem;
-    font-weight: 400;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    transform: rotateZ(0deg) !important;
-  }
-
-  .theme-doc-sidebar-item-category.new-content ul a:after,
-  .theme-doc-sidebar-item-category.updated-content ul a:after {
-    display: none;
-  }
-
-  .menu__list-item.new-content a:after {
-    content: "New";
-    border: 1px solid var(--dwc-color-primary-85);
-    background-color: var(--dwc-color-primary-alt);
-    color: var(--dwc-color-primary);
-  }
-
-  .menu__list-item.updated-content a:after {
-    content: "Updated";
-    border: 1px solid var(--dwc-color-gray-85);
-    background-color: var(--dwc-color-gray-alt);
-    color: var(--dwc-color-gray);
-  }
-
-  .has-new-content > .menu__list-item-collapsible a:after {
-    content: "";
-    display: block;
-    width: 0.25rem;
-    height: 0.25rem;
-    background-color: var(--dwc-color-primary);
-    border-radius: 50%;
-    margin-left: .5rem;
-    margin-top: 0.25rem;
-    animation: pulse 1.5s infinite ease-in-out;
-  }
-
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-      opacity: 1;
+    .theme-doc-sidebar-container,
+    .navbar-sidebar__item {
+      background-color: var(--dwc-surface-3);
+      --ifm-menu-color: var(--dwc-color-default-10);
+      --ifm-menu-color-background-active: var(--dwc-surface-2);
     }
-    50% {
-      transform: scale(1.5);
-      opacity: 0.5;
-    }
-  }
 
-}
+    .menu__list-item.sidebar--item__hidden {
+      display: none !important;
+    }
+
+    .menu {
+      padding: .5rem !important;
+    }
+
+    .menu__list:not(.theme-doc-sidebar-menu) {
+      margin-left: var(--ifm-menu-link-padding-horizontal);
+      border-left: thin dotted var(--menu-level-indicator-color);
+    }
+
+    .menu__list-item.updated-content a:after,
+    .menu__list-item.new-content a:after {
+      box-sizing: border-box;
+      padding: 0.15rem 0.5rem;
+      margin-left: .5rem;
+      font-weight: 400;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      transform: rotateZ(0deg) !important;
+    }
+
+    .theme-doc-sidebar-item-category.new-content ul a:after,
+    .theme-doc-sidebar-item-category.updated-content ul a:after {
+      display: none;
+    }
+
+    .menu__list-item.new-content a:after {
+      content: "New";
+      border: 1px solid var(--dwc-color-primary-85);
+      background-color: var(--dwc-color-primary-alt);
+      color: var(--dwc-color-primary);
+    }
+
+    .menu__list-item.updated-content a:after {
+      content: "Updated";
+      border: 1px solid var(--dwc-color-gray-85);
+      background-color: var(--dwc-color-gray-alt);
+      color: var(--dwc-color-gray);
+    }
+
+    .has-new-content>.menu__list-item-collapsible a:after {
+      content: "";
+      display: block;
+      width: 0.25rem;
+      height: 0.25rem;
+      background-color: var(--dwc-color-primary);
+      border-radius: 50%;
+      margin-left: .5rem;
+      margin-top: 0.25rem;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+      }
+    }
+
+    .navbar-sidebar__back {
+      background-color: var(--dwc-color-primary-95);
+      color: var(--ifm-menu-color)
+    }
+
+    .menu__link:hover,
+    .menu__link--sublist:hover {
+      background-color: var(--dwc-color-primary-95) !important;
+    }
+
+    .menu__link--active {
+      color: var(--dwc-color-primary);
+    }
+
+  }
