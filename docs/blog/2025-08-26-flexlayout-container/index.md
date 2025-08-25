@@ -1,7 +1,7 @@
 ---
 title: FlexWrap your mind around webforJ's FlexLayout
-description: How to use FlexLayout
-date: 2025-08-28
+description: A guide to configuring and using webforJ's FlexLayout
+date: 2025-08-26
 authors: Garrison Osteen
 tags: [webforJ, FlexLayout, Flexbox, Responsive Design]
 ---
