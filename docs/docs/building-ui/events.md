@@ -101,5 +101,3 @@ path='/webforj/buttonevent?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonEventView.java'
 height='100px'
 />
-
-<!-- <EventTable base events={['drawerOpen', 'drawerClose']} /> -->

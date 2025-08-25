@@ -3,8 +3,6 @@ sidebar_position: 3
 title: Colors
 ---
 
-import ColorPalette from '@site/src/components/DWCTheme/ColorPalette/ColorPalette';
-
 webforJ provides a color system built on CSS custom properties. These color variables keep consistent visual style across your app while giving you full control to customize palettes according to your design needs.
 
 You can reference any color using the `--dwc-color-{palette}-{shade}` syntax, where `{palette}` is the name of the color group (e.g., `primary`, `danger`, ..) and `{shade}` is a number from `5` to `95` in increments of `5`, representing the color’s lightness.
