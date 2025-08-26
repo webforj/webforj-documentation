@@ -15,6 +15,9 @@ import os from 'os';
 
 const siteDir = options.project;
 
+// Track if any translations were made across all locales
+let hasChanges = false;
+
 // Per-string hash tracking utilities
 interface StringHashes {
   [key: string]: string;  // key -> hash of English content
@@ -117,6 +120,15 @@ async function main() {
 
     console.groupEnd();
   }
+
+  // Exit based on whether any changes were made
+  if (!hasChanges) {
+    console.log('\nNo translations needed - all content is up to date');
+    process.exit(1); // Exit with code 1 when no changes needed
+  }
+
+  console.log('\nTranslation completed with changes');
+  process.exit(0); // Exit with code 0 when changes were made
 }
 
 async function translateDocs(locale: string) {
@@ -176,6 +188,9 @@ async function translateDocs(locale: string) {
     console.log('  No files need translation.');
     return;
   }
+
+  // Mark that we're making changes
+  hasChanges = true;
 
   console.log(`  Translating ${tasks.length} files with batch size ${options.batchSize}...`);
 
@@ -291,6 +306,9 @@ async function translateJSON(
     return;
   }
 
+  // Mark that we're making changes
+  hasChanges = true;
+
   console.log(`  Translating ${tasks.length} UI strings (${Object.keys(newHashes).length - tasks.length} unchanged)...`);
 
   // Translate in batches
@@ -339,6 +357,9 @@ async function translateJSONOldWay(
   }
 
   if (tasks.length === 0) return;
+
+  // Mark that we're making changes
+  hasChanges = true;
 
   console.log(`  Translating ${tasks.length} UI strings...`);
   const results = await translateBatch(tasks);
@@ -424,6 +445,9 @@ async function translateCodeJSON(locale: string) {
     return;
   }
 
+  // Mark that we're making changes
+  hasChanges = true;
+
   console.log(`  Translating ${tasks.length} UI strings in code.json (${Object.keys(newHashes).length - tasks.length} unchanged)...`);
 
   // Translate in batches
@@ -478,6 +502,9 @@ async function translateCodeJSONOldWay(locale: string, jsonPath: string) {
   }
 
   if (tasks.length === 0) return;
+
+  // Mark that we're making changes
+  hasChanges = true;
 
   console.log(`  Translating ${tasks.length} UI strings in code.json...`);
   const results = await translateBatch(tasks);

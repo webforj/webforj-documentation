@@ -55,12 +55,15 @@ jobs:
         run: npm run write-heading-ids
         
       - name: Run custom translation tool
+        id: translate
+        continue-on-error: true
         working-directory: ./docs
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: npm run translate
         
       - name: Test build with Maven
+        if: steps.translate.outcome == 'success'
         id: maven-build
         run: mvn clean package -Pprod
         
@@ -74,7 +77,7 @@ jobs:
           compression-level: 9
         
       - name: Commit and push translation updates
-        if: success()
+        if: steps.translate.outcome == 'success'
         run: |
           git config --local user.email "${{ secrets.ACTOR_EMAIL }}"
           git config --local user.name "${{ secrets.ACTOR_NAME }}"
