@@ -6,7 +6,7 @@ authors: Garrison Osteen
 tags: [webforJ, FlexLayout, Flexbox, Responsive Design]
 ---
 
-![cover image](FlexLayout-cover.png)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/flexlayout-container/FlexLayout-cover.png)
 
 One of the great benefits of creating web apps is gaining access to the powerful styling and layout capabilities of CSS. 
 In particular, CSS lets you create responsive layouts, allowing your apps to smoothly adjust their layout according to parameters like window size and device type. 
@@ -70,9 +70,10 @@ Instead of writing CSS like `justify-content: space-between;` you will use objec
   <td>
 
   ```Java
-  FlexLayout flex = FlexLayout.create().build(); 
-  flex.setJustifyContent(FlexJustifyContent.EVENLY);
-  flex.setWrap(FlexWrap.WRAP);
+    FlexLayout.create(components)
+      .justify().evenly()
+      .wrap()
+    .build();
   ```
   </td>
   </tr>
