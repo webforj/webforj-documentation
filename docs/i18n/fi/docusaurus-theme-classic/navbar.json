@@ -24,7 +24,7 @@
     "description": "Navbar item with label Support"
   },
   "item.label.Events": {
-    "message": "Events",
+    "message": "Tapahtumat",
     "description": "Navbar item with label Events"
   },
   "item.label.Blog": {
@@ -32,7 +32,7 @@
     "description": "Navbar item with label Blog"
   },
   "item.label.startforJ": {
-    "message": "startforJ",
+    "message": "aloita forJ",
     "description": "Navbar item with label startforJ"
   },
   "item.label.DWC HueCraft": {
@@ -60,7 +60,7 @@
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {
-    "message": "Ota yhteyttä",
+    "message": "Contact Us",
     "description": "Navbar item with label Contact us"
   }
 }
