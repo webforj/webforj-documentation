@@ -15,6 +15,51 @@ import os from 'os';
 
 const siteDir = options.project;
 
+// Per-string hash tracking utilities
+interface StringHashes {
+  [key: string]: string;  // key -> hash of English content
+}
+
+function loadStringHashes(locale: string): StringHashes {
+  const hashesPath = path.resolve(siteDir, './i18n', locale, '_hashes.json');
+  
+  if (!fs.existsSync(hashesPath)) {
+    return {};
+  }
+  
+  try {
+    const hashesContent = fs.readFileSync(hashesPath, 'utf-8');
+    return JSON.parse(hashesContent);
+  } catch (error) {
+    console.warn(`Failed to load hashes for ${locale}:`, error);
+    return {};
+  }
+}
+
+function saveStringHashes(locale: string, newHashes: StringHashes): void {
+  const hashesPath = path.resolve(siteDir, './i18n', locale, '_hashes.json');
+  const hashesDir = path.dirname(hashesPath);
+  
+  try {
+    fs.ensureDirSync(hashesDir);
+    
+    // Load existing hashes and merge with new ones
+    const existingHashes = loadStringHashes(locale);
+    const mergedHashes = { ...existingHashes, ...newHashes };
+    
+    const hashesString = JSON.stringify(mergedHashes, null, 2).replace(/\r\n/g, '\n');
+    fs.writeFileSync(hashesPath, hashesString);
+  } catch (error) {
+    console.error(`Failed to save hashes for ${locale}:`, error);
+  }
+}
+
+function hashString(content: string): string {
+  // Normalize content before hashing for consistency
+  const normalized = content.replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
+  return md5(normalized);
+}
+
 async function main() {
   const config = await loadSiteConfig(siteDir);
   if (!config.i18n) {
@@ -181,29 +226,110 @@ async function translateJSON(
     return;
   }
 
-  const jsonContent = fs.readFileSync(jsonPath, 'utf-8');
-  const json = JSON.parse(jsonContent);
+  // Load the ENGLISH source file - handle both forward and backslashes
+  const englishJsonPath = jsonPath
+    .replace(`/i18n/${locale}/`, '/i18n/en/')
+    .replace(`\\i18n\\${locale}\\`, '\\i18n\\en\\');
+  console.log(`  Debug: Looking for English source at: ${englishJsonPath}`);
+  if (!fs.existsSync(englishJsonPath)) {
+    console.log(`  Warning: English source not found at ${path.relative(siteDir, englishJsonPath)}`);
+    console.log(`  Falling back to translating from current content`);
+    // Fall back to old behavior if English source doesn't exist
+    await translateJSONOldWay(locale, jsonPath, prefixList);
+    return;
+  }
+  console.log(`  Found English source, using per-string hashing...`);
 
+  const englishJson = JSON.parse(fs.readFileSync(englishJsonPath, 'utf-8'));
+  const targetJson = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
+  
+  // Load saved hashes for this locale
+  const savedHashes = loadStringHashes(locale);
+  
   // Prepare tasks for batch translation
   const tasks: TranslationTask[] = [];
-  const keysToTranslate: string[] = [];
+  const newHashes: StringHashes = {};
 
-  for (const [key, value] of Object.entries(json)) {
+  for (const [key, value] of Object.entries(englishJson)) {
     const shouldTranslate = prefixList.some((prefix) => key.startsWith(prefix));
     if (!shouldTranslate) {
       continue;
     }
 
+    const englishMessage = (value as any).message;
+    if (typeof englishMessage !== 'string') {
+      continue;
+    }
+
+    if (whitelist.includes(englishMessage)) {
+      continue;
+    }
+
+    // Hash the English content
+    const currentHash = hashString(englishMessage);
+    newHashes[key] = currentHash;
+    
+    // Check if translation is needed
+    if (savedHashes[key] === currentHash && targetJson[key]) {
+      // Hash matches and translation exists, skip
+      continue;
+    }
+
+    // Need to translate this string
+    tasks.push({
+      content: englishMessage,
+      locale,
+      isUIString: true,
+      key
+    });
+  }
+
+  if (tasks.length === 0) {
+    console.log(`  All translations up to date, Skip: ${path.relative(siteDir, jsonPath)}`);
+    // Still save the hashes to track current state
+    saveStringHashes(locale, newHashes);
+    return;
+  }
+
+  console.log(`  Translating ${tasks.length} UI strings (${Object.keys(newHashes).length - tasks.length} unchanged)...`);
+
+  // Translate in batches
+  const results = await translateBatch(tasks);
+
+  // Update JSON with translations
+  for (const result of results) {
+    if (result.key && targetJson[result.key]) {
+      (targetJson[result.key] as any).message = result.translatedText;
+    }
+  }
+
+  // Save updated translations
+  const jsonString = JSON.stringify(targetJson, null, 2).replace(/\r\n/g, '\n');
+  fs.writeFileSync(jsonPath, jsonString);
+  
+  // Save hashes after successful translation
+  saveStringHashes(locale, newHashes);
+  
+  console.log(`  Wrote translated file: ${jsonPath}`);
+}
+
+// Keep old way as fallback for when English source doesn't exist
+async function translateJSONOldWay(
+  locale: string,
+  jsonPath: string,
+  prefixList: string[]
+) {
+  const jsonContent = fs.readFileSync(jsonPath, 'utf-8');
+  const json = JSON.parse(jsonContent);
+
+  const tasks: TranslationTask[] = [];
+  for (const [key, value] of Object.entries(json)) {
+    const shouldTranslate = prefixList.some((prefix) => key.startsWith(prefix));
+    if (!shouldTranslate) continue;
+
     const messageValue = (value as any).message;
-    if (typeof messageValue !== 'string') {
-      continue;
-    }
+    if (typeof messageValue !== 'string' || whitelist.includes(messageValue)) continue;
 
-    if (whitelist.includes(messageValue)) {
-      continue;
-    }
-
-    keysToTranslate.push(key);
     tasks.push({
       content: messageValue,
       locale,
@@ -212,27 +338,20 @@ async function translateJSON(
     });
   }
 
-  if (tasks.length === 0) {
-    console.log(`  No need to translate, Skip: ${path.relative(siteDir, jsonPath)}`);
-    return;
-  }
+  if (tasks.length === 0) return;
 
   console.log(`  Translating ${tasks.length} UI strings...`);
-
-  // Translate in batches
   const results = await translateBatch(tasks);
 
-  // Update JSON with translations
   for (const result of results) {
     if (result.key && json[result.key]) {
       (json[result.key] as any).message = result.translatedText;
     }
   }
 
-  // Ensure LF line endings for consistency across platforms
   const jsonString = JSON.stringify(json, null, 2).replace(/\r\n/g, '\n');
   fs.writeFileSync(jsonPath, jsonString);
-  console.log(`  Writed translated file into: ${jsonPath}`);
+  console.log(`  Wrote translated file: ${jsonPath}`);
 }
 
 async function translateCodeJSON(locale: string) {
@@ -246,21 +365,98 @@ async function translateCodeJSON(locale: string) {
     return;
   }
 
-  const jsonContent = fs.readFileSync(jsonPath, 'utf-8');
-  const json = JSON.parse(jsonContent);
+  // Load the ENGLISH source file
+  const englishJsonPath = path.resolve(siteDir, './i18n/en/code.json');
+  console.log(`  Debug: Looking for English code.json at: ${englishJsonPath}`);
+  if (!fs.existsSync(englishJsonPath)) {
+    console.log(`  Warning: English code.json not found at ${path.relative(siteDir, englishJsonPath)}`);
+    console.log(`  Falling back to detecting English strings in target file`);
+    // Fall back to old behavior if English source doesn't exist
+    await translateCodeJSONOldWay(locale, jsonPath);
+    return;
+  }
+  console.log(`  Found English source, using per-string hashing...`);
 
+  const englishJson = JSON.parse(fs.readFileSync(englishJsonPath, 'utf-8'));
+  const targetJson = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
+  
+  // Load saved hashes for this locale
+  const savedHashes = loadStringHashes(locale);
+  
   // Prepare tasks for batch translation
   const tasks: TranslationTask[] = [];
-  const keysToTranslate: string[] = [];
+  const newHashes: StringHashes = {};
 
-  for (const [key, value] of Object.entries(json)) {
-    const messageValue = (value as any).message;
-    if (typeof messageValue !== 'string') {
+  for (const [key, value] of Object.entries(englishJson)) {
+    const englishMessage = (value as any).message;
+    if (typeof englishMessage !== 'string') {
       continue;
     }
 
+    // Skip if in whitelist (technical terms that shouldn't be translated)
+    if (whitelist.includes(englishMessage)) {
+      continue;
+    }
+
+    // Hash the English content
+    const currentHash = hashString(englishMessage);
+    newHashes[key] = currentHash;
+    
+    // Check if translation is needed
+    if (savedHashes[key] === currentHash && targetJson[key]) {
+      // Hash matches and translation exists, skip
+      continue;
+    }
+
+    // Need to translate this string
+    tasks.push({
+      content: englishMessage,
+      locale,
+      isUIString: true,
+      key
+    });
+  }
+
+  if (tasks.length === 0) {
+    console.log(`  All translations up to date, Skip: ${path.relative(siteDir, jsonPath)}`);
+    // Still save the hashes to track current state
+    saveStringHashes(locale, newHashes);
+    return;
+  }
+
+  console.log(`  Translating ${tasks.length} UI strings in code.json (${Object.keys(newHashes).length - tasks.length} unchanged)...`);
+
+  // Translate in batches
+  const results = await translateBatch(tasks);
+
+  // Update JSON with translations
+  for (const result of results) {
+    if (result.key && targetJson[result.key]) {
+      (targetJson[result.key] as any).message = result.translatedText;
+    }
+  }
+
+  // Save updated translations
+  const codeJsonString = JSON.stringify(targetJson, null, 2).replace(/\r\n/g, '\n');
+  fs.writeFileSync(jsonPath, codeJsonString);
+  
+  // Save hashes after successful translation
+  saveStringHashes(locale, newHashes);
+  
+  console.log(`  Wrote translated file: ${jsonPath}`);
+}
+
+// Keep old way as fallback for when English source doesn't exist
+async function translateCodeJSONOldWay(locale: string, jsonPath: string) {
+  const jsonContent = fs.readFileSync(jsonPath, 'utf-8');
+  const json = JSON.parse(jsonContent);
+
+  const tasks: TranslationTask[] = [];
+  for (const [key, value] of Object.entries(json)) {
+    const messageValue = (value as any).message;
+    if (typeof messageValue !== 'string') continue;
+
     // Skip if already translated (not in English)
-    // Check if it contains English words that shouldn't appear in translations
     const isEnglish = /\b(the|and|or|in|on|at|to|for|of|with|by)\b/i.test(messageValue) ||
                      /^[A-Z][a-z]+ [A-Z][a-z]+/.test(messageValue) ||
                      messageValue === 'Close' ||
@@ -271,16 +467,8 @@ async function translateCodeJSON(locale: string) {
                      messageValue.includes('Navigate to') ||
                      messageValue.includes('After running');
     
-    if (!isEnglish) {
-      continue; // Already translated
-    }
+    if (!isEnglish || whitelist.includes(messageValue)) continue;
 
-    // Skip if in whitelist (technical terms that shouldn't be translated)
-    if (whitelist.includes(messageValue)) {
-      continue;
-    }
-
-    keysToTranslate.push(key);
     tasks.push({
       content: messageValue,
       locale,
@@ -289,24 +477,17 @@ async function translateCodeJSON(locale: string) {
     });
   }
 
-  if (tasks.length === 0) {
-    console.log(`  No need to translate, Skip: ${path.relative(siteDir, jsonPath)}`);
-    return;
-  }
+  if (tasks.length === 0) return;
 
   console.log(`  Translating ${tasks.length} UI strings in code.json...`);
-
-  // Translate in batches
   const results = await translateBatch(tasks);
 
-  // Update JSON with translations
   for (const result of results) {
     if (result.key && json[result.key]) {
       (json[result.key] as any).message = result.translatedText;
     }
   }
 
-  // Ensure LF line endings for consistency across platforms
   const codeJsonString = JSON.stringify(json, null, 2).replace(/\r\n/g, '\n');
   fs.writeFileSync(jsonPath, codeJsonString);
   console.log(`  Wrote translated file: ${jsonPath}`);
