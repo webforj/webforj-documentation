@@ -56,37 +56,45 @@ jobs:
         
       - name: Run custom translation tool
         id: translate
-        continue-on-error: true
         working-directory: ./docs
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: npm run translate
+        run: |
+          npm run translate
+          EXIT_CODE=$?
+          if [ $EXIT_CODE -eq 1 ]; then
+            echo "No translations needed - skipping build and commit"
+            echo "::notice::No translations were needed. All content is up to date."
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
         
       - name: Test build with Maven
-        if: steps.translate.outcome == 'success'
+        if: steps.translate.outputs.has_changes == 'true'
         id: maven-build
         run: mvn clean package -Pprod
         
-      - name: Upload translation files on failure
-        if: failure() && steps.maven-build.outcome == 'failure'
-        uses: actions/upload-artifact@v4
-        with:
-          name: failed-translation-files-${{ github.run_id }}
-          path: docs/i18n/
-          retention-days: 5
-          compression-level: 9
+      # - name: Upload translation files on failure
+      #   if: failure() && steps.maven-build.outcome == 'failure'
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: failed-translation-files-${{ github.run_id }}
+      #     path: docs/i18n/
+      #     retention-days: 5
+      #     compression-level: 9
         
-      - name: Commit and push translation updates
-        if: steps.translate.outcome == 'success'
-        run: |
-          git config --local user.email "${{ secrets.ACTOR_EMAIL }}"
-          git config --local user.name "${{ secrets.ACTOR_NAME }}"
+      # - name: Commit and push translation updates
+      #   if: steps.translate.outputs.has_changes == 'true'
+      #   run: |
+      #     git config --local user.email "${{ secrets.ACTOR_EMAIL }}"
+      #     git config --local user.name "${{ secrets.ACTOR_NAME }}"
           
-          # Check if there are changes to commit
-          if [ -n "$(git status --porcelain)" ]; then
-            git add .
-            git commit -m "chore: update translations"
-            git push
-          else
-            echo "No translation changes to commit"
-          fi
+      #     # Check if there are changes to commit
+      #     if [ -n "$(git status --porcelain)" ]; then
+      #       git add .
+      #       git commit -m "chore: update translations"
+      #       git push
+      #     else
+      #       echo "No translation changes to commit"
+      #     fi
