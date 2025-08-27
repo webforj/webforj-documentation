@@ -33,7 +33,7 @@ filter: brightness(0) invert(1);
   max-width: 600px;
 }
 
-dwc-tab::part(prefix) {
+dwc-app-nav-item::part(prefix) {
   --dwc-icon-size: var(--dwc-size-s);
   cursor: pointer;
 }
