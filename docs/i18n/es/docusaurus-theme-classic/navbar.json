@@ -60,7 +60,7 @@
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {
-    "message": "Contáctanos",
+    "message": "Contáctenos",
     "description": "Navbar item with label Contact us"
   }
 }

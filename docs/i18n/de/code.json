@@ -402,7 +402,7 @@
     "description": "The paragraph for empty search result"
   },
   "theme.SearchPage.fetchingNewResults": {
-    "message": "Neue Ergebnisse herunterladen...",
+    "message": "Neue Ergebnisse abrufen...",
     "description": "The paragraph for fetching new search results"
   },
   "theme.SearchBar.label": {
@@ -546,7 +546,7 @@
     "description": "The label of the button to try again rendering when the React error boundary captures an error"
   },
   "theme.common.skipToMainContent": {
-    "message": "Zum Hauptinhalt wechseln",
+    "message": "Zum Hauptinhalt springen",
     "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
   },
   "theme.tags.tagsPageTitle": {

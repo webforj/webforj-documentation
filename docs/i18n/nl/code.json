@@ -594,7 +594,7 @@
     "description": "Section heading for CSS properties table"
   },
   "tableBuilder.descriptions.cssProperties": {
-    "message": "Dit zijn de CSS-eigenschappen die worden gebruikt in de {componentName} component, met een korte beschrijving van hun functie.",
+    "message": "CSS-eigenschappen voor de {componentName} component met een korte beschrijving van hun functie.",
     "description": "Description for CSS properties section"
   },
   "tableBuilder.sections.properties": {
