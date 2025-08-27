@@ -1,14 +1,15 @@
 ---
-title: Scaling with Routing and Composites
+title: Scaling with routing and composites
 sidebar_position: 4
 ---
 
-This step focuses on implementing routing to enhance the scalability and organization of the app structure. To achieve this, the app will be updated to handle multiple views, allowing navigation between different functionalities such as editing and creating customer entries. It will outline creating views for these functionalities, using components like `Composite` to build modular and reusable layouts.
 
-The app created in the [previous step](./working-with-data) will have a routing setup that supports multiple views, enabling users to manage customer data more effectively while maintaining a clean and scalable codebase. To run the app:
+This step introduces routing so the app can display multiple views and support navigation between features such as editing and creating customer entries. You’ll create views for these features using `Composite` components for modular, reusable layouts.
+
+The app from the [previous step](./working-with-data) is now structured for routing and navigation, using Spring Boot as the runtime. To run the app:
 
 - Go to the `3-scaling-with-routing-and-composites` directory
-- Run the `mvn jetty:run` command
+- Run the `mvn spring-boot:run` command
 
 <div class="videos-container">
   <video controls>
@@ -16,18 +17,95 @@ The app created in the [previous step](./working-with-data) will have a routing 
   </video>
 </div>
 
-## Routing {#routing}
 
-[Routing](../../routing/overview) is the mechanism that allows your app to manage navigation between different views or pages. Instead of keeping all logic and behavior in a single location, routing enables you to break your app into smaller, focused component. 
+## Routing
 
-At its core, routing connects specific URLs to the views or components that handle those URLs. When a user interacts with your app—such as clicking a button or entering a URL directly in their browser—the router resolves the URL to the appropriate view, initializes it, and displays it on the screen. This approach makes it easy to manage navigation and maintain the app's state.
+[Routing](../../routing/overview) allows your app to manage navigation between different views or pages. Instead of keeping all logic in a single location, routing lets you break your app into smaller, focused components.
 
-This step focuses on changing the `App` class, creating files for the views, and configuring routes to enable smooth navigation between different parts of your app.
+With Spring Boot, routing in webforJ works the same as in standard webforJ apps, but you can inject Spring beans (like services) into your views.
 
-Instead of placing all logic within the `run()` method of `App`, views like `DemoView` and `FormView` are implemented as separate classes. This approach more closely aligns with standard Java practices.
+### Enabling routing in the app class
 
-- **DemoView**: Handles displaying the table and navigating to `FormView`.
-- **FormView**: Manages adding and editing customer data.
+To enable routing, annotate your main app class with `@Routify` and specify the package containing your views:
+
+```java title="Application.java"
+@SpringBootApplication
+@StyleSheet("ws://css/app.css")
+@AppTheme("system")
+@Routify(packages = "com.webforj.demos.views")
+@AppProfile(name = "DemoApplication", shortName = "DemoApplication")
+public class Application extends App {
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
+  }
+}
+```
+
+### Creating views and defining routes
+
+Each view is a separate class, typically extending `Composite<Div>`. Use the `@Route` annotation to assign a URL path, and `@FrameTitle` for the browser title.
+
+**DemoView** (table and navigation):
+
+```java title="DemoView.java"
+@Route("/")
+@FrameTitle("Demo")
+public class DemoView extends Composite<Div> {
+  private final CustomerService customerService;
+  // ... table, button, and layout setup ...
+  public DemoView(CustomerService customerService) {
+    this.customerService = customerService;
+    // ... UI setup ...
+  }
+  // ... navigation logic ...
+}
+```
+
+**FormView** (add/edit customer):
+
+```java title="FormView.java"
+@StyleSheet("ws://css/views/form.css")
+@Route("customer/:id?")
+@FrameTitle("Customer Form")
+public class FormView extends Composite<Div> implements DidEnterObserver {
+  private final CustomerService customerService;
+  // ... form fields and layout ...
+  public FormView(CustomerService customerService) {
+    this.customerService = customerService;
+    // ... UI setup ...
+  }
+  @Override
+  public void onDidEnter(DidEnterEvent event, ParametersBag parameters) {
+    // ... load data for edit/add ...
+  }
+}
+```
+
+- The `@Route("/")` on `DemoView` makes it the default landing page.
+- The `@Route("customer/:id?")` on `FormView` allows both add and edit modes, depending on the presence of an `id` parameter.
+
+### Navigation and event handling
+
+- Use `Router.getCurrent().navigate(FormView.class)` to navigate to the form.
+- Use `Router.getCurrent().navigate(FormView.class, ParametersBag.of("id=" + e.getItemKey()))` to navigate with a specific customer ID for editing.
+
+### Dependency injection
+
+With Spring Boot, you can inject services (like `CustomerService`) directly into your views via constructor injection. This allows you to use Spring-managed beans for data access, business logic, etc.
+
+### Running the app
+
+From the step directory, run:
+
+```bash
+mvn spring-boot:run
+```
+
+Then open [http://localhost:8080](http://localhost:8080) in your browser.
+
+---
+
+With routing and view separation in place, your app is now ready for further scaling, including advanced data binding and validation in the next step.
 
 ### Changing the `App` class {#changing-the-app-class}
 
@@ -44,11 +122,11 @@ public class DemoApplication extends App {
 
 ### Creating files for the views and configuring routes {#creating-files-for-the-views-and-configuring-routes}
 
-Once routing has been enabled, separate Java files for each view the app will contain are created, in this case, `DemoView.java` and `FormView.java`. Unique routes are assigned to these views using the `@Route` annotation. This ensures that each view is accessible through a specific URL.
+Once routing is enabled, create separate Java files for each view the app will contain, in this case, `DemoView.java` and `FormView.java`. Assign unique routes to these views using the `@Route` annotation. Each view is then accessible through a specific URL.
 
 When the `@Route` annotation associated with a class with one of these suffixes has no value, webforJ automatically assigns the class's name without the suffix as the route. For example, `DemoView` will map the route `/demo` by default. Since in this case `DemoView` is supposed to be the default route tho you will assign it a route.
 
-The `/` route serves as the default entry point for your app. Assigning this route to a view ensures that it's the first page users see when accessing the app. In most cases, a dashboard or summary view is assigned to `/`.
+The `/` route is the default entry point for your app. Assign this route to a view to make it the first page users see when accessing the app. In most cases, a dashboard or summary view is assigned to `/`.
 
 ```java title="DemoView.java" {1}
 @Route("/")
@@ -81,7 +159,7 @@ More information regarding the different ways to implement those route patterns 
 
 ## Using `Composite` components to display pages {#using-composite-components-to-display-pages}
 
-Composite components in webforJ, such as `Composite<Div>`, allow you to encapsulate UI logic and structure within a reusable container. By extending `Composite`, you limit the methods and data exposed to the rest of the app, ensuring cleaner code and better encapsulation.
+Composite components in webforJ, such as `Composite<Div>`, encapsulate UI logic and structure within a reusable container. By extending `Composite`, you limit the methods and data exposed to the rest of the app, which helps keep your code organized and maintainable.
 
 For example, `DemoView` extends `Composite<Div>` instead of directly extending `Div`:
 
@@ -128,7 +206,7 @@ In addition to navigation via button click, many apps also allow for navigation 
 
 Once the details have been edited on the appropriate screen, the changes are saved, and the `Table` is updated to display the changed data from the selected item.
 
-To facilitate this navigation, item clicks in the table are handled by the `TableItemClickEvent<Customer>` listener. The event contains the `id` of the clicked customer, which it passes to the `FormView` by utilizing the `navigate()` method with a `ParametersBag`:
+To enable this navigation, item clicks in the table are handled by the `TableItemClickEvent<Customer>` listener. The event contains the `id` of the clicked customer, which it passes to the `FormView` by using the `navigate()` method with a `ParametersBag`:
 
 ```java title="DemoView.java" 
 private void editCustomer(TableItemClickEvent<Customer> e) {
@@ -170,7 +248,7 @@ The `onDidEnter` method in `FormView` checks for the presence of an `id` paramet
 
 When finished editing the data, it's necessary to submit it to the service handling the repository. Therefore the 
 `Service` class that has been already set up in the previous step of this tutorial
-now needs to be enhanced with additional methods, allowing users to add and edit customers. 
+now needs additional methods so users can add and edit customers. 
 
 The snippet below shows how to accomplish this:
 
@@ -187,7 +265,7 @@ public void editCustomer(Customer editedCustomer) {
 
 ### Using `commit()` {#using-commit}
 
-The `commit()` method in the `Repository` class keeps the app’s data and UI in sync. It provides a mechanism to refresh the data stored in the `Repository`, ensuring the latest state is reflected in the app.
+The `commit()` method in the `Repository` class keeps the app’s data and UI in sync. It provides a way to refresh the data stored in the `Repository` so the app always displays the latest state.
 
 This method can be used in two ways:
 
@@ -195,7 +273,7 @@ This method can be used in two ways:
   Calling `commit()` without arguments reloads all entities from the repository's underlying data source, such as a database or a service class.
 
 2) **Refreshing a single entity:**
-  Calling `commit(T entity)` reloads a specific entity, ensuring its state matches the latest data source changes.
+  Calling `commit(T entity)` reloads a specific entity so its state matches the latest data source changes.
 
 Call `commit()` when data in the `Repository` changes, such as after adding or modifying entities in the data source.
 
