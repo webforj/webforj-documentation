@@ -63,7 +63,7 @@ This property remaps `WebforjServlet` from the default `/*` to `/ui/*`, freeing 
 
 ## Approach 2: `WebforjServlet` proxy configuration {#approach-2-webforjservlet-proxy-configuration}
 
-This approach keeps `WebforjServlet` at `/*` and configures custom servlets in `webforJ.conf`. The `WebforjServlet` intercepts all requests and proxies matching patterns to your custom servlets.
+This approach keeps `WebforjServlet` at `/*` and configures custom servlets in `webforj.conf`. The `WebforjServlet` intercepts all requests and proxies matching patterns to your custom servlets.
 
 ### Standard web.xml configuration {#standard-webxml-configuration}
 
@@ -93,10 +93,14 @@ This approach keeps `WebforjServlet` at `/*` and configures custom servlets in `
 ### webforJ.conf configuration {#webforjconf-configuration}
 
 ```hocon
-servlets = [
+servlets: [
   {
-    name = "hello-world"
-    class = "com.example.HelloWorldServlet"
+    class: "com.example.HelloWorldServlet",
+    name: "hello-world",
+    config: {
+      foo: "bar",
+      baz: "bang"
+    }
   }
 ]
 ```
@@ -104,3 +108,4 @@ servlets = [
 With this configuration:
 - `WebforjServlet` handles all requests
 - Requests to `/hello-world` are proxied to `HelloWorldServlet`
+- The optional `config` key provides name/value pairs as initialization parameters for the servlet
