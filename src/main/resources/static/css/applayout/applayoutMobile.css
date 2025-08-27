@@ -17,12 +17,12 @@ h1 {
 }
 
 @media (max-width: 600px) {
-  dwc-tab span {
+  dwc-app-nav-item span {
     display: none;
   }
 }
 
-dwc-tab::part(prefix) {
+dwc-app-nav-item::part(prefix) {
   --dwc-icon-size: var(--dwc-size-s);
   cursor: pointer;
 }
