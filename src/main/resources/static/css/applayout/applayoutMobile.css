@@ -1,12 +1,24 @@
-:root {
-  --dwc-app-layout-header-height: 40px;
-  --dwc-app-layout-footer-height: 40px;
+.layout--collapse {
+  --dwc-app-layout-header-collapse-height: 45px;
 }
 
-h1 {
+.layout--collapse h1 {
   text-align: center;
 }
 
+.drawer__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--dwc-space-m) 0;
+  margin-bottom: var(--dwc-space-m);
+  border-bottom: thin solid var(--dwc-color-default) !important;
+}
+
+.drawer__logo img {
+  max-width: 100px;
+  border-radius: 10px;
+}
 .card {
   padding: var(--dwc-space-m);
   margin: var(--dwc-space-m) auto;
@@ -17,12 +29,12 @@ h1 {
 }
 
 @media (max-width: 600px) {
-  dwc-app-nav-item span {
+  dwc-tab span {
     display: none;
   }
 }
 
-dwc-app-nav-item::part(prefix) {
+dwc-tab::part(prefix) {
   --dwc-icon-size: var(--dwc-size-s);
   cursor: pointer;
 }

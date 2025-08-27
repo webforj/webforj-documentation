@@ -23,7 +23,7 @@ import com.webforj.router.history.ParametersBag;
 import com.webforj.samples.views.applayout.DrawerLogo;
 
 @Route
-@StyleSheet("ws://css/applayout/applayout.css")
+@StyleSheet("ws://css/applayout/applayoutMobile.css")
 @FrameTitle("AppLayout Mobile Drawer")
 public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
   AppLayout self = getBoundComponent();
