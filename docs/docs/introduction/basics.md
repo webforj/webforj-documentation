@@ -30,9 +30,9 @@ With `Application.java` set up, the app is now configured with a title and route
 ### Discovering an `App` {#discovering-an-app}
 
 A single <JavadocLink type="foundation" location="com/webforj/App" code='true'>App</JavadocLink> limit is enforced in webforJ, which shifts all error handling responsibilities to the Java side and gives developers full control over error management.
-
+<!-- vale off -->
 During the webforJ bootstrap process, all classes that extend <JavadocLink type="foundation" location="com/webforj/App" code='true'>com.webforj.App</JavadocLink> are scanned. If multiple apps are found, the system looks for the <JavadocLink type="foundation" location="com/webforj/annotation/AppEntry" code='true'>com.webforj.annotation.AppEntry</JavadocLink> annotation. If any of the discovered classes are annotated with <JavadocLink type="foundation" location="com/webforj/annotation/AppEntry" code='true' >@AppEntry</JavadocLink>, the first one encountered is considered the entry point.
-
+<!-- vale on -->
 - If a class is annotated with `@AppEntry`, that class is selected as the entry point.
 - If multiple classes are annotated with `@AppEntry`, an exception is thrown, listing all the discovered classes.
 - If no class is annotated and only one subclass of `App` is found, that class is selected as the entry point.
@@ -147,3 +147,23 @@ Finally, the hello text field and btn button are added to the [`FlexLayout`](../
 The `styles.css` file provides custom styling for your webforJ app. This CSS file is referenced in the Application class using the [`@StyleSheet`](../managing-resources/importing-assets#importing-css-files) annotation, which allows the app to apply styles to components within the app.
 
 This file is located in the `resources/static` directory of the project, and can be referenced using the web server URL `ws://app.css`.
+
+## Cleanup
+
+The <JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page</JavadocLink> class provides an `onUnload()` method that allows you to register a listener for when the browser is unloading the page. This can be useful for cleanup tasks such as logging, releasing resources, or tracking session activity.
+
+This event is triggered when the user:
+
+* Closes the browser tab or window
+* Refreshes the page
+* Navigates to a different URL
+
+### Example
+
+```java
+Page.getCurrent().onUnload(event -> {
+  System.out.println("Page is unloading, webforj is shutting down");
+});
+```
+
+This listener is registered using `addUnloadListener()` and returns a `ListenerRegistration<PageUnloadEvent>` that can be used to remove the listener later if needed.
