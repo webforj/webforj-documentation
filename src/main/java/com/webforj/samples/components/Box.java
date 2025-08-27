@@ -7,7 +7,7 @@ import com.webforj.concern.HasStyle;
 import com.webforj.concern.HasVisibility;
 
 @StyleSheet("ws://css/flexlayout/box.css")
-public class Box extends Composite<Div> implements HasStyle, HasVisibility{
+public class Box extends Composite<Div> implements HasStyle<Box>, HasVisibility<Box>{
 
   int num;
   String title = "";
