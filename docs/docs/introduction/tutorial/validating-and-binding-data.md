@@ -1,17 +1,16 @@
 ---
-title: Validating and Binding Data
+title: Validating and binding data
 sidebar_position: 5
 pagination_next: null
 ---
 
-Data binding is a mechanism that connects the UI components of your app directly with the underlying data model, enabling automatic synchronization of values between the two. This eliminates the need for repetitive getter and setter calls, reducing development time and improving code reliability.
 
-Validation, in this context, ensures that the data entered into the form adheres to predefined rules, such as being non-empty or following a specific format. By combining data binding with validation, you can streamline the user experience while maintaining data integrity without writing extensive manual checks.
+Data binding connects UI components directly with your data model, enabling automatic synchronization of values. This reduces boilerplate and improves reliability. Validation checks that form data follows rules such as being non-empty or matching a pattern. With webforJ and Spring Boot, you can use Jakarta validation annotations and webforJ’s binding system for a user-friendly experience.
 
-For more information on data binding reference [this article.](../../data-binding/overview) To run the app:
+To run the app:
 
 - Go to the `4-validating-and-binding-data` directory
-- Run the `mvn jetty:run` command
+- Run `mvn spring-boot:run`
 
 <div class="videos-container">
   <video controls>
@@ -19,89 +18,73 @@ For more information on data binding reference [this article.](../../data-bindin
   </video>
 </div>
 
-### Binding the fields {#binding-the-fields}
 
-The data binding setup begins with initializing a `BindingContext` for the `Customer` model. The `BindingContext` links the model properties to the form fields, enabling automatic data synchronization. This is set up in the `FormView` constructor.
+## Binding the fields
+
+The data binding setup begins with initializing a `BindingContext` for the `Customer` model. The `BindingContext` links model properties to form fields, enabling automatic data sync. This is set up in the `FormView` constructor:
 
 ```java title="FormView.java"
-BindingContext<Customer> context;
 context = BindingContext.of(this, Customer.class, true);
+context.onValidate(e -> submit.setEnabled(e.isValid()));
 ```
 
-`BindingContext.of(this, Customer.class, true)` initializes the binding context for the `Customer` class. The third parameter, `true`, enables [jakarta validation](https://beanvalidation.org/).
+The third parameter (`true`) enables Jakarta validation.
 
 :::info
-This implementation uses auto-binding as described in the [Data Binding Article](../../data-binding/automatic-binding). This works if the fields in the data model `Customer` are named the same as the corresponding fields in the `FormView`.
-
-Should the fields not be named the same you can add the `UseProperty` annotation in the form over the field you want to bind so they know which data fields to refer to.
+This uses auto-binding as described in the [Data Binding Article](../../data-binding/automatic-binding). Field names in the data model and form must match, or you can use the `UseProperty` annotation to map them.
 :::
 
-### Data binding with `onDidEnter()` {#data-binding-with-ondidenter}
 
-The `onDidEnter` method leverages the data binding setup to streamline the process of populating the form fields. Instead of manually setting values for each field, the data is now synchronized automatically with the `BindingContext`.
+## Data binding with `onDidEnter()`
 
-```java {7}
+The `onDidEnter` method uses the binding context to populate the form fields. Instead of setting each value manually, the context synchronizes the UI with the model:
+
+```java title="FormView.java"
 @Override
-  public void onDidEnter(DidEnterEvent event, ParametersBag parameters) {
-    parameters.get("id").ifPresent(id -> {
-      customer = Service.getCurrent().getCustomerByKey(UUID.fromString(id));
-      customerId = id;
-    });
-    context.read(customer);
-  }
+public void onDidEnter(DidEnterEvent event, ParametersBag parameters) {
+  parameters.get("id").ifPresent(id -> {
+    customer = customerService.getCustomerByKey(Long.parseLong(id));
+    customerId = Long.parseLong(id);
+  });
+  context.read(customer);
+}
 ```
 
-The `context.read` method in webforJ's data binding system synchronizes the fields of a UI component with the values from a data model. It's used in this case to populate form fields with data from an existing model, ensuring the UI reflects the current state of the data.
 
-## Validating data {#validating-data}
+## Validating data
 
-Validation ensures that the data entered into the form adheres to specified rules, improving data quality and preventing invalid submissions. With data binding, validation no longer needs to be manually implemented but instead simply configured, allowing real-time feedback on user inputs.
+Validation is handled by Jakarta annotations in the `Customer` entity:
 
-### Defining validation rules {#defining-validation-rules}
-
-Using [Jakarta](https://beanvalidation.org) and regular expressions, you can enforce a multitude of rules on a field. Often used examples would be ensuring the field
-isn't empty or null, or follows a certain pattern.
-Through annotations in the customer class you can give jakarta validation parameters to the field.
-
-:::info
-More details regarding the setup of the validation is available [here](../../data-binding/validation/jakarta-validation.md#installation).
-:::
-
-```java
-  @NotEmpty(message = "Name cannot be empty")
-  @Pattern(regexp = "[a-zA-Z]*", message = "Invalid characters")
-  private String firstName = "";
+```java title="Customer.java"
+@NotEmpty(message = "Customer name is required")
+@Pattern(regexp = "[a-zA-Z]*", message = "Invalid characters")
+@Column(name = "first_name")
+private String firstName = "";
 ```
 
-The `onValidate` method is then added to control the `Submit` button's state based on the validity of the form fields. This ensures that only valid data can be submitted.
+The binding context disables the submit button if the form is invalid:
 
 ```java title="FormView.java"
 context.onValidate(e -> submit.setEnabled(e.isValid()));
 ```
 
-`e.isValid()` returns true if all fields are valid, and false if not. This means that the `Submit` button is enabled as long as all fields are valid. Otherwise, it remains turned off, preventing submission until corrections are made.
 
-### Adding and editing entries with validation {#adding-and-editing-entries-with-validation}
+## Adding and editing entries with validation
 
-The `submitCustomer()` method now validates data using the `BindingContext` before performing add or edit operations. This approach eliminates the need for manual validation checks, leveraging the context's built-in mechanisms to ensure that only valid data is processed.
-
-- **Add Mode**: If no `id` is provided, the form is in add mode. The validated data is written to the `Customer` model and added to the repository via `Service.getCurrent().addCustomer(customer)`.
-- **Edit Mode**: If an `id` is present, the method retrieves the corresponding customer data, updates it with validated inputs, and commits the changes to the repository.
-
-Calling `context.write(customer)` will return an instance of a `ValidationResult`. This class indicates whether or not the validation was successful, and stores any messages associated with this result.
-
-This code ensures that all changes are validated and automatically applied to the model before being adding a new or editing an existing `Customer`.
+The `submitCustomer()` method validates data using the binding context before add or edit operations. Only valid data is processed:
 
 ```java title="FormView.java"
 private void submitCustomer() {
   ValidationResult results = context.write(customer);
   if (results.isValid()) {
-    if (customerId.isEmpty()) {
-      Service.getCurrent().addCustomer(customer);
+    if (customerId.intValue() == 0) {
+      customerService.createCustomer(customer);
+    } else {
+      customerService.updateCustomer(customer);
     }
     Router.getCurrent().navigate(DemoView.class);
   }
 }
 ```
 
-By completing this step, the app now supports data binding and validation, ensuring that form inputs are synchronized with the model and adhere to predefined rules.
+With these changes, the app now supports data binding and validation using Spring Boot and webforJ. Form inputs are synchronized with the model and checked against validation rules automatically.
