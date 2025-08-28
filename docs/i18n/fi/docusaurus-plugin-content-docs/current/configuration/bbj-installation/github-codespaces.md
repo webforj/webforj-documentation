@@ -3,7 +3,6 @@ sidebar_position: 2
 title: Github Codespaces
 _i18n_hash: 05f50845efd34767431faacb2e5dc97e
 ---
-import UnderConstruction from '@site/src/components/PageTools/UnderConstruction';
 
 [`webforj-hello-world`](https://github.com/webforj/webforj-hello-world) on valmisteltu toimimaan Github Codespaces -ympäristössä. Codespaces on pilvipohjainen kehitysympäristö, joka mahdollistaa webforJ-sovellusten kehittämisen ja ajamisen suoraan selaimessasi. Aloittaaksesi kehittämisen tämän työkalun kanssa, seuraa alla olevia vaiheita:
 

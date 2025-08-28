@@ -3,7 +3,6 @@ sidebar_position: 2
 title: Github Codespaces
 _i18n_hash: 05f50845efd34767431faacb2e5dc97e
 ---
-import UnderConstruction from '@site/src/components/PageTools/UnderConstruction';
 
 [`webforj-hello-world`](https://github.com/webforj/webforj-hello-world) 已配置为在 Github Codespaces 中运行。Codespaces 是一个基于云的开发环境，允许您直接在浏览器中开发和运行 webforJ 应用程序。要开始使用此工具进行开发，请按照以下步骤操作：
 
