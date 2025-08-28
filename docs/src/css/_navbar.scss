@@ -49,15 +49,24 @@
     --ifm-dropdown-hover-background-color: var(--dwc-color-primary-alt);
   }
 
+  #webforj-version-badge {
+    background-color: #000;
+    
+  }
+
   @media (max-width: 1000px) {
     .separator {
       display: none;
     }
   }
 
-  @media (max-width: 1180px) {
+  @media (max-width: 1300px) {
     .dropdown--right {
       display: none;
+    }
+    
+  #webforj-version-badge {
+      display: inline-block;
     }
   }
 }
