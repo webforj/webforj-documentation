@@ -33,6 +33,7 @@ public class BasicComposite extends Composite<FlexLayout> {
   }
 }
 ```
+
 The `getBoundComponent()` method provides access to your underlying component, allowing you to configure its properties, add child components, and manage its behavior directly.
 
 The bound component can be any [webforJ component](../components/overview) or [HTML element component](/docs/building-ui/web-components/html-elements). For flexible layouts, consider using [`FlexLayout`](../components/flex-layout) or [`Div`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/html/elements/Div.html) as your bound component.
@@ -41,7 +42,8 @@ The bound component can be any [webforJ component](../components/overview) or [H
 Never extend `Component` or `DwcComponent` directly. Always use composition patterns with `Composite` to build custom components.
 :::
 
-By default, the bound component is instantiated using its no-argument constructor. To customize this behavior, override the `initBoundComponent()` method. This provides more control over the component creation process, enabling the use of constructors with parameters and other initialization requirements.
+Override `initBoundComponent()` when you need greater flexibility in creating and managing the bound component, such as using parameterized constructors instead of the default no-argument constructor. Use this pattern when the bound component requires components to be passed to its constructor rather than added afterward.
+
 
 ```java title="CustomFormLayout.java"
 public class CustomFormLayout extends Composite<FlexLayout> {
