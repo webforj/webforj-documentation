@@ -55,12 +55,23 @@ jobs:
         run: npm run write-heading-ids
         
       - name: Run custom translation tool
+        id: translate
         working-directory: ./docs
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: npm run translate
+        run: |
+          npm run translate
+          EXIT_CODE=$?
+          if [ $EXIT_CODE -eq 1 ]; then
+            echo "No translations needed - skipping build and commit"
+            echo "::notice::No translations were needed. All content is up to date."
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
         
       - name: Test build with Maven
+        if: steps.translate.outputs.has_changes == 'true'
         id: maven-build
         run: mvn clean package -Pprod
         
@@ -74,7 +85,7 @@ jobs:
           compression-level: 9
         
       - name: Commit and push translation updates
-        if: success()
+        if: steps.translate.outputs.has_changes == 'true'
         run: |
           git config --local user.email "${{ secrets.ACTOR_EMAIL }}"
           git config --local user.name "${{ secrets.ACTOR_NAME }}"
