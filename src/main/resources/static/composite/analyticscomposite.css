@@ -1,4 +1,5 @@
 .analytics-card {
+  border: thin solid var(--dwc-color-default);
   border-radius: 16px;
   padding: var(--dwc-space-m);
   background-color: var(--dwc-surface-3);

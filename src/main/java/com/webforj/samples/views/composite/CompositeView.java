@@ -17,7 +17,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
-@FrameTitle("Constructor Setup")
+@FrameTitle("To-Do List")
 @StyleSheet("ws://composite/composite.css")
 public class CompositeView extends Composite<Div> {
 
