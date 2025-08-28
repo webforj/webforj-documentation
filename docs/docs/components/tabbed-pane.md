@@ -20,15 +20,17 @@ height="400px"
   
 ## Tabs {#tabs}
 
-`Tabs` are the clickable headers that organize and control content switching in a `TabbedPane`. Each `Tab` represents a different section of content that users can access.
+Tabs are the clickable headers that organize and control content switching in a `TabbedPane`. Each `Tab` represents a different section of content that users can access.
 
 :::important
-`Tabs` aren't intended to be used as standalone components. They're meant to be used in conjunction with `TabbedPanes`. This class isn't a `Component` and shouldn't be used as such.
+Tabs aren't intended to be used as standalone components. They're meant to be used in conjunction with TabbedPanes. This class isn't a `Component` and shouldn't be used as such.
 :::
+
+You can create a `TabbedPane` with only the tab headers if you need navigation without content panels - simply add `Tab` objects without corresponding content. This is useful for creating tab-based navigation that controls content displayed elsewhere in your application.
 
 ### Properties {#properties}
 
-`Tabs` are comprised of the following properties, which are then used when adding them in a `TabbedPane`. These properties have getters and setters to facilitate customization within a `TabbedPane`.
+Tabs are comprised of the following properties, which are then used when adding them in a `TabbedPane`. These properties have getters and setters to facilitate customization within a `TabbedPane`.
 
 1. **Key(`Object`)**: Represents the unique identifier for the `Tab`.
 
@@ -38,10 +40,10 @@ height="400px"
 
 4. **Enabled(`boolean`)**: Represents whether the `Tab` is currently enabled or not. Can be modified with the `setEnabled(boolean enabled)` method.
 
-5. **Closeable(`boolean`)**: Represents whether the `Tab` can be closed. Can be modified with the `setCloseable(boolean enabled)` method. This will add a close button on the `Tab` which can be clicked on by the user, and fires a removal event. The     `TabbedPane` component dictates how to handle the removal.
+5. **Closeable(`boolean`)**: Represents whether the `Tab` can be closed. Can be modified with the `setCloseable(boolean enabled)` method. This will add a close button on the `Tab` which can be clicked on by the user, and fires a removal event. The `TabbedPane` component dictates how to handle the removal.
 
 6. **Slot(`Component`)**: 
-    Slots let you add extra elements to a `Tab` like icons, labels, spinners, avatars, or even reset buttons. These additions help convey meaning more clearly and give you room to customize the `Tab’s` appearance and behavior.
+    Slots let you add extra elements to a `Tab` like icons, labels, spinners, avatars, or even reset buttons. These additions help convey meaning more clearly and give you room to customize the Tab’s appearance and behavior.
     
     You can add a component to the `prefix` slot of a `Tab` during construction. Alternatively, you can use the `setPrefixComponent()` and `setSuffixComponent()` methods to insert various components before and after the displayed option within a `Tab`.
 
@@ -56,7 +58,7 @@ Various methods exist to allow developers to add, insert, remove and manipulate 
 
 ### Adding a `Tab` {#adding-a-tab}
 
-The `TabbedPane` offers multiple overloaded versions of `addTab()` and `add()` to give you flexibility when adding `Tabs`. Each new `Tab` is added after the existing ones.
+The `TabbedPane` offers multiple overloaded versions of `addTab()` and `add()` to give you flexibility when adding Tabs. Each new `Tab` is added after the existing ones.
 
 1. **`addTab(String text)`** - Adds a `Tab` to the `TabbedPane` with the specified `String` as the text of the `Tab`.
 2. **`addTab(Tab tab)`** - Adds the `Tab` provided  as a parameter to the `TabbedPane`.
@@ -70,7 +72,7 @@ The `add(Component... component)` determines the name of the passed `Component` 
 
 ### Inserting a `Tab` {#inserting-a-tab}
 
-In addition to appending `Tabs` to the end, the `TabbedPane` also supports inserting `Tabs` at specific positions. This is achieved through the various overloaded forms of the `insertTab()` method.
+In addition to appending Tabs to the end, the `TabbedPane` also supports inserting Tabs at specific positions. This is achieved through the various overloaded forms of the `insertTab()` method.
 
 1. **`insertTab(int index, String text)`** - Inserts a `Tab` into the `TabbedPane` at the given index with the specified `String` as the text of the `Tab`.
 2. **`insertTab(int index, Tab tab)`** - Inserts the `Tab` provided as a parameter to the `TabbedPane` at the specified index.
@@ -133,16 +135,16 @@ pane.setComponentFor(1, new UpdatedSettingsPanel()); // By index
 The `TabbedPane` handles content visibility based on tab selection:
 
 - Clicking a `Tab` shows the corresponding content panel
-- Switching `Tabs` hides the previous content and displays the new one
-- Keyboard navigation is supported after focusing the tab list. Use the `Tab` key to focus the `Tabs,` then arrow keys to navigate between them. The visible content updates automatically as you switch `Tabs`.
+- Switching Tabs hides the previous content and displays the new one
+- Keyboard navigation is supported after focusing the tab list. Use the `Tab` key to focus the Tabs, then arrow keys to navigate between them. The visible content updates automatically as you switch Tabs.
 
 ## `Tab` events
 
-The `TabbedPane` fires events when users interact with `Tabs`:
+The `TabbedPane` fires events when users interact with Tabs:
 
 - **`TabSelectEvent`** - Fired when a `Tab` is selected
 - **`TabDeselectEvent`** - Fired when a `Tab` loses selection  
-- **`TabCloseEvent`** - Fired when a closeable `Tab's` close button is clicked
+- **`TabCloseEvent`** - Fired when a closeable Tab's close button is clicked
 
 ```java
 tabbedPane.onSelect(event -> {
@@ -175,7 +177,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/
 
 ### Tab placement {#tab-placement}
 
-The `Tabs` within a `TabbedPane` can be placed in various positions within the component based on the application developers preference. Provided options are set using the provided enum, which has the values of `TOP`, `BOTTOM`, `LEFT`, `RIGHT`, or `HIDDEN`. The default setting is `TOP`.
+The Tabs within a `TabbedPane` can be placed in various positions within the component based on the application developers preference. Provided options are set using the provided enum, which has the values of `TOP`, `BOTTOM`, `LEFT`, `RIGHT`, or `HIDDEN`. The default setting is `TOP`.
 
 <ComponentDemo 
 path='/webforj/tabbedpaneplacement?' 
@@ -197,7 +199,7 @@ height="250px"
 
 ### Border and activity indicator {#border-and-activity-indicator}
 
-By default, the `TabbedPane` displays a border around its `Tabs`, with the border’s position determined by the configured `Placement`. This visual boundary helps distinguish the `Tab` area from the content section.
+By default, the `TabbedPane` displays a border around its Tabs, with the border’s position determined by the configured `Placement`. This visual boundary helps distinguish the `Tab` area from the content section.
 
 When a `Tab` is selected, an activity indicator appears beneath it to highlight the active state.
 
@@ -207,7 +209,7 @@ Both of these features can be customized:
 - Use `setHideActiveIndicator(true)` to remove the activity indicator from the active Tab. The default value is false.
 
 :::info
-The `Tab` border applies exclusively to the area occupied by the `Tabs` themselves. It doesn't extend around the full `TabbedPane`, and serves solely to delineate the `Tabs` from the content section.
+The `Tab` border applies exclusively to the area occupied by the Tabs themselves. It doesn't extend around the full `TabbedPane`, and serves solely to delineate the Tabs from the content section.
 :::
 
 <ComponentDemo 
@@ -220,7 +222,7 @@ height="300px"
 
 For more fine-grained control over how the `TabbedPane` behaves when being navigated by the keyboard, the `Activation` mode can be set to specify how the component should behave.
 
-- **`Auto`**: When set to auto, navigating `Tabs` with the arrow keys will instantly show the corresponding tab component.
+- **`Auto`**: When set to auto, navigating Tabs with the arrow keys will instantly show the corresponding tab component.
 
 - **`Manual`**: When set to manual, the `Tab` will receive focus but won't show until the user presses `Space` or `Enter`.
 
