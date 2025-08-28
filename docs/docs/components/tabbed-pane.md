@@ -26,7 +26,7 @@ Tabs are the clickable headers that organize and control content switching in a 
 Tabs aren't intended to be used as standalone components. They're meant to be used in conjunction with TabbedPanes. This class isn't a `Component` and shouldn't be used as such.
 :::
 
-You can create a `TabbedPane` with only the tab headers if you need navigation without content panels - simply add `Tab` objects without corresponding content. This is useful for creating tab-based navigation that controls content displayed elsewhere in your application.
+You can create a `TabbedPane` with only the tab headers if you need navigation without content panels - simply add `Tab` objects without corresponding content. This is useful for creating tab-based navigation that controls content displayed elsewhere in your app.
 
 ### Properties {#properties}
 
@@ -177,7 +177,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/
 
 ### Tab placement {#tab-placement}
 
-The Tabs within a `TabbedPane` can be placed in various positions within the component based on the application developers preference. Provided options are set using the provided enum, which has the values of `TOP`, `BOTTOM`, `LEFT`, `RIGHT`, or `HIDDEN`. The default setting is `TOP`.
+The Tabs within a `TabbedPane` can be placed in various positions within the component based on the app developer's preference. Provided options are set using the provided enum, which has the values of `TOP`, `BOTTOM`, `LEFT`, `RIGHT`, or `HIDDEN`. The default setting is `TOP`.
 
 <ComponentDemo 
 path='/webforj/tabbedpaneplacement?' 
