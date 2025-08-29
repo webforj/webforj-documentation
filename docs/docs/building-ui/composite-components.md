@@ -86,7 +86,7 @@ This component is then instantiated and utilized in an Application, and allows f
  
 <ComponentDemo 
 path='/webforj/composite?' 
-cssURL='/css/composite.css'
+cssURL='/css/composite/composite.css'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeView.java'
 height='550px'
 />
