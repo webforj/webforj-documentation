@@ -57,7 +57,8 @@ const config = {
   },
   scripts: [
     { src: '/js/dwc-theme-switcher.js', async: false },
-    { src: '/js/link-decorator.js' }
+    { src: '/js/link-decorator.js' },
+    { src: '/js/latest-webforj-version.js', defer: true}
   ],
   headTags: [
     {
@@ -152,6 +153,14 @@ const config = {
         target: '_self'
       },
       items: [
+        {
+          position: 'left',
+          label: 'latest',
+          href: 'https://github.com/webforj/webforj/releases/latest',
+          target: '_blank', 
+          id: 'webforj-version-badge',
+          title: 'Latest webforJ release'
+        },
         {
           position: 'left',
           label: 'Getting Started',
