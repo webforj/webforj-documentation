@@ -1,8 +1,10 @@
 package com.webforj.samples.pages.spinner;
 
+import java.util.regex.Pattern;
+
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class SpinnerDirectionDemoPage extends BasePage {
@@ -17,8 +19,10 @@ public class SpinnerDirectionDemoPage extends BasePage {
         super(page);
 
         this.spinner = page.locator("dwc-spinner");
-        this.clockwiseButton = page.locator("dwc-button:has-text('Clockwise')").locator("button").first();
-        this.counterClockwiseButton = page.locator("dwc-button:has-text('Counterclockwise')").locator("button").first();
+        this.clockwiseButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions()
+                .setName(Pattern.compile("^Clockwise$", Pattern.CASE_INSENSITIVE)));
+        this.counterClockwiseButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions()
+                .setName(Pattern.compile("^Counter\\s*-?\\s*Clockwise$", Pattern.CASE_INSENSITIVE)));
     }
 
     public static String getRoute() {

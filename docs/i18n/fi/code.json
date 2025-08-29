@@ -4,7 +4,7 @@
     "description": "Translation notice for non-English pages"
   },
   "component.askMenu.chatgpt.label": {
-    "message": "Avaa ChatGPT:ssä",
+    "message": "Avaa ChatGPT:ssa",
     "description": "ChatGPT button label"
   },
   "component.askMenu.chatgpt.desc": {
@@ -192,7 +192,7 @@
     "description": "The label used to tell the user that he's browsing an unreleased doc version"
   },
   "theme.docs.versions.unmaintainedVersionLabel": {
-    "message": "Tämä on {siteTitle} {versionLabel} -dokumentaatio, joka ei ole ajan tasalla.",
+    "message": "Tämä on {siteTitle} {versionLabel} -dokumentaatio, joka on vanhentunut.",
     "description": "The label used to tell the user that he's browsing an unmaintained doc version"
   },
   "theme.docs.versions.latestVersionSuggestionLabel": {
@@ -538,7 +538,7 @@
     "description": "The draft content banner title"
   },
   "theme.contentVisibility.draftBanner.message": {
-    "message": "Tämä sivu on luonnos. Näkyy vain kehitysympäristössä.",
+    "message": "Tämä sivu on luonnos. Näkyy vain kehitysversiossa.",
     "description": "The draft content banner message"
   },
   "theme.ErrorPageContent.tryAgain": {

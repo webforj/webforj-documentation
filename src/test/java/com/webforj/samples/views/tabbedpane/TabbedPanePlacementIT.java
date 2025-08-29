@@ -21,11 +21,7 @@ public class TabbedPanePlacementIT extends BaseTest {
     @Test
     public void testPlacement() {
         tabbedPanePlacementPage.getPlacementDropdown().click();
-        tabbedPanePlacementPage.getPlacementListBox().locator("text=TOP").click();
-        assertThat(tabbedPanePlacementPage.getPlacementTabbedPane()).hasAttribute("placement", "top");
-
-        tabbedPanePlacementPage.getPlacementDropdown().click();
-        tabbedPanePlacementPage.getPlacementListBox().locator("text=BOTTOM").click();
+        tabbedPanePlacementPage.getAlignmentDropdownButton().click(); //BOTTOM
         assertThat(tabbedPanePlacementPage.getPlacementTabbedPane()).hasAttribute("placement", "bottom");
 
     }

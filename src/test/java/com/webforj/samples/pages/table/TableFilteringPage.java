@@ -2,6 +2,7 @@ package com.webforj.samples.pages.table;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class TableFilteringPage extends BasePage {
@@ -10,19 +11,12 @@ public class TableFilteringPage extends BasePage {
 
     private final Locator titleFilterInput;
     private final Locator tableRows;
-    private final Locator firstTitleCell;
-    private final Locator tableHost;
-    private final Locator fieldHost;
 
     public TableFilteringPage(Page page) {
         super(page);
 
-        this.tableHost = page.locator("dwc-table");
-        this.fieldHost = page.locator("dwc-field");
-
-        this.titleFilterInput = fieldHost.locator("#field-1");
-        this.tableRows = tableHost.locator("tbody tr[part*='row']");
-        this.firstTitleCell = tableHost.locator("tr td").first();
+        this.titleFilterInput = page.getByRole(AriaRole.SEARCHBOX, new Page.GetByRoleOptions().setName("Search"));
+        this.tableRows = page.getByRole(AriaRole.TABLE).locator("tbody tr[part*='row']");
     }
 
     public static String getRoute() {
@@ -37,15 +31,16 @@ public class TableFilteringPage extends BasePage {
         return tableRows;
     }
 
-    public Locator getFirstTitleCell() {
-        return firstTitleCell;
-    }
-
     public void filterByTitle(String title) {
         titleFilterInput.fill(title);
     }
 
     public int tableRowCount() {
         return tableRows.count();
+    }
+
+    public Locator verifyTitle(String title) {
+        return page.getByRole(AriaRole.CELL,
+                new Page.GetByRoleOptions().setName(title));
     }
 }

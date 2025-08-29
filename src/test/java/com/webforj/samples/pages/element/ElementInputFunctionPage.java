@@ -2,7 +2,7 @@ package com.webforj.samples.pages.element;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class ElementInputFunctionPage extends BasePage {
@@ -17,7 +17,7 @@ public class ElementInputFunctionPage extends BasePage {
         super(page);
 
         dialogBox = page.locator("dwc-dialog");
-        OKButton = page.locator("text=OK");
+        OKButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("OK"));
         secondDialogBox = page.locator("dwc-dialog[opened]");
     }
 

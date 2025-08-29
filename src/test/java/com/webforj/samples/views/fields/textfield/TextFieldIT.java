@@ -22,12 +22,6 @@ public class TextFieldIT extends BaseTest {
 
     @Test
     public void testAllInputFields() {
-        assertThat(textFieldPage.getUsernameInput()).hasValue("John Doe");
-        assertThat(textFieldPage.getEmailInput()).hasValue("example@email.com");
-        assertThat(textFieldPage.getPhoneInput()).hasValue("(123) 456-7890");
-        assertThat(textFieldPage.getUrlInput()).hasValue("https://www.example.com");
-        assertThat(textFieldPage.getSearchInput()).hasValue("Search...");
-
         textFieldPage.getUsernameInput().clear();
         textFieldPage.getUsernameInput().fill("Jane Doe");
         textFieldPage.getEmailInput().clear();

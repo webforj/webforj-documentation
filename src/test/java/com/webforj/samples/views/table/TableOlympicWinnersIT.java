@@ -1,7 +1,6 @@
 package com.webforj.samples.views.table;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,7 +35,7 @@ public class TableOlympicWinnersIT extends BaseTest {
         assertThat(tableOlympicWinnersPage.getFirstRow()).hasAttribute("data-row", firstRowValue);
 
         tableOlympicWinnersPage.getLastRow().click();
-        Locator firstRowAfterScrolling = tableOlympicWinnersPage.getRows().first();
+        Locator firstRowAfterScrolling = tableOlympicWinnersPage.getFirstRow();
         assertThat(firstRowAfterScrolling).not().hasAttribute("data-row", firstRowValue);
     }
 }

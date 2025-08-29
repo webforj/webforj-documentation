@@ -48,7 +48,7 @@
     "description": "Navbar item with label JavaDocs"
   },
   "item.label.Client Components": {
-    "message": "Client Component",
+    "message": "客户端组件",
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
@@ -60,7 +60,7 @@
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {
-    "message": "联系我",
+    "message": "Contact Me",
     "description": "Navbar item with label Contact us"
   }
 }

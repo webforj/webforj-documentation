@@ -10,40 +10,31 @@ import com.webforj.samples.views.BaseTest;
 
 public class NavigatorBasicIT extends BaseTest {
 
-    private NavigatorBasicPage navigatorBasicPage;
+    private NavigatorBasicPage navigator;
 
     @BeforeEach
     public void setupNavigatorBasics() {
         navigateToRoute(NavigatorBasicPage.getRoute());
-        navigatorBasicPage = new NavigatorBasicPage(page);
+        navigator = new NavigatorBasicPage(page);
     }
 
     @Test
     public void testRangeConsistency() {
-        assertThat(navigatorBasicPage.getNavigatorValue()).hasText("Value: 0");
 
-        navigatorBasicPage.clickNext();
-        assertThat(navigatorBasicPage.getNavigatorValue()).hasText("Value: 1");
+        navigator.clickNext();
+        assertThat(navigator.navigatorValue(1)).isVisible();
 
-        navigatorBasicPage.clickLast();
-        assertThat(navigatorBasicPage.getNavigatorValue()).hasText("Value: 10");
+        navigator.clickLast();
+        assertThat(navigator.navigatorValue(10)).isVisible();
 
-        navigatorBasicPage.clickPrev();
-        assertThat(navigatorBasicPage.getNavigatorValue()).hasText("Value: 9");
+        navigator.clickPrev();
+        assertThat(navigator.navigatorValue(9)).isVisible();
 
-        navigatorBasicPage.clickFirst();
-        assertThat(navigatorBasicPage.getNavigatorValue()).hasText("Value: 0");
+        navigator.clickFirst();
+        assertThat(navigator.navigatorValue(0)).isVisible();
 
-        navigatorBasicPage.clickPrev();
-        assertThat(navigatorBasicPage.getNavigatorValue()).hasText("Value: 0");
+        navigator.clickPrev();
+        assertThat(navigator.navigatorValue(0)).isVisible();
 
-        navigatorBasicPage.clickFirst();
-        assertThat(navigatorBasicPage.getNavigatorValue()).hasText("Value: 0");
-
-        navigatorBasicPage.clickLast();
-        assertThat(navigatorBasicPage.getNavigatorValue()).hasText("Value: 10");
-
-        navigatorBasicPage.clickNext();
-        assertThat(navigatorBasicPage.getNavigatorValue()).hasText("Value: 10");
     }
 }

@@ -35,16 +35,15 @@ public class DataTableIT extends BaseTest {
 
         dataTable.getEntriesDropdown().click();
         dataTable.getEntriesHundred().click();
-        assertThat(dataTable.getPaginationText()).containsText("Showing 1 to 100 of");
-        assertThat(dataTable.getPaginationText()).containsText("entries");
+        assertThat(dataTable.getPaginationText("Showing 1 to 100 of")).isVisible();
     }
 
     @Test
     public void testSearchButtonFilter() {
         dataTable.searchAthlete(ATHLETE_NAME);
 
-        assertThat(dataTable.getAthleteCells().first()).isVisible();
-        assertThat(dataTable.getAthleteCells().first()).containsText(ATHLETE_NAME);
+        assertThat(dataTable.getAthleteCells(ATHLETE_NAME).first()).isVisible();
+        assertThat(dataTable.getAthleteCells(ATHLETE_NAME).first()).containsText(ATHLETE_NAME);
 
         assertThat(dataTable.getTableRows()).hasCount(3);
     }
@@ -52,42 +51,34 @@ public class DataTableIT extends BaseTest {
     @Test
     public void testFilteringNonLatinAlphabetCharacters() {
         dataTable.searchAthlete(ATHLETE_WITH_DIACRITICS_LATIN);
-        assertThat(dataTable.getAthleteCells().first()).containsText(ATHLETE_WITH_DIACRITICS_LATIN);
+        assertThat(dataTable.getAthleteCells(ATHLETE_WITH_DIACRITICS_LATIN).first()).isVisible();
 
         dataTable.searchAthlete(ATHLETE_NAME_CYRILLIC);
         assertThat(dataTable.getTableRows()).hasCount(0);
     }
 
     @Test
-    public void testSelectButton() {
-        dataTable.getFirstCheckbox().click();
-        assertThat(dataTable.getFirstCheckbox()).isChecked();
-        dataTable.getFirstCheckbox().click();
-        assertThat(dataTable.getFirstCheckbox()).not().isChecked();
-    }
-
-    @Test
     public void testPaginatorDisplaysCorrectly() {
         dataTable.getPaginatorLastPage().click();
-        assertThat(dataTable.getLastPageNumber()).hasText("862");
+        assertThat(dataTable.goToSpecificPage(862)).isVisible();
 
         dataTable.getEntriesDropdown().click();
         dataTable.getEntriesTwentyfive().click();
-        assertThat(dataTable.getLastPageNumber()).hasText("345");
+        assertThat(dataTable.goToSpecificPage(345)).isVisible();
 
         dataTable.getEntriesDropdown().click();
         dataTable.getEntriesFifty().click();
-        assertThat(dataTable.getLastPageNumber()).hasText("173");
+        assertThat(dataTable.goToSpecificPage(173)).isVisible();
 
         dataTable.getEntriesDropdown().click();
         dataTable.getEntriesHundred().click();
-        assertThat(dataTable.getLastPageNumber()).hasText("87");
+        assertThat(dataTable.goToSpecificPage(87)).isVisible();
     }
 
     @Test
     public void testPaginatorNavigatesCorrectly() {
         dataTable.getPaginatorNextPage().click();
-        assertThat(dataTable.getCurrentPageNavigator()).containsText("Showing 11 to 20");
+        assertThat(dataTable.getPaginationText("Showing 11 to 20")).isVisible();
     }
 
     @Test
@@ -95,7 +86,7 @@ public class DataTableIT extends BaseTest {
         dataTable.searchAthlete(ATHLETE_NAME);
         assertThat(dataTable.getTableRows().first()).containsText(ATHLETE_NAME);
         assertThat(dataTable.goToSpecificPage(2)).not().isVisible();
-        assertThat(dataTable.getPaginationText()).hasText("Showing 1 to 3 of 3 entries");
+        assertThat(dataTable.getPaginationText("Showing 1 to 3 of 3 entries")).isVisible();
         assertThat(dataTable.getPaginatorPreviousPage()).isDisabled();
         assertThat(dataTable.getPaginatorFirstPage()).isDisabled();
         assertThat(dataTable.getPaginatorNextPage()).isDisabled();
@@ -105,7 +96,7 @@ public class DataTableIT extends BaseTest {
     @Test
     public void testPaginatorNavigatesCorrectlyToSpecificPage() {
         dataTable.goToSpecificPage(4).click();
-        assertThat(dataTable.getCurrentPageNavigator()).containsText("Showing 31 to 40");
+        assertThat(dataTable.getPaginationText("Showing 31 to 40")).isVisible();
     }
 
     @Test

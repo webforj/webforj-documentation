@@ -24,7 +24,7 @@ public class TableFilteringIT extends BaseTest {
 
         assertThat(tableFiltering.getTableRows()).hasCount(1);
 
-        assertThat(tableFiltering.getFirstTitleCell()).hasText("Abbey Road");
+        assertThat(tableFiltering.verifyTitle("Abbey Road")).isVisible();
     }
 
     @Test
@@ -32,7 +32,7 @@ public class TableFilteringIT extends BaseTest {
         tableFiltering.getTitleFilterInput().fill("Road");
 
         assertThat(tableFiltering.getTableRows()).hasCount(1);
-        assertThat(tableFiltering.getFirstTitleCell()).hasText("Abbey Road");
+        assertThat(tableFiltering.verifyTitle("Abbey Road")).isVisible();
     }
 
     @Test
@@ -40,7 +40,7 @@ public class TableFilteringIT extends BaseTest {
         tableFiltering.getTitleFilterInput().fill("abbey ROAD");
 
         assertThat(tableFiltering.getTableRows()).hasCount(1);
-        assertThat(tableFiltering.getFirstTitleCell()).hasText("Abbey Road");
+        assertThat(tableFiltering.verifyTitle("Abbey Road")).isVisible();
     }
 
     @Test

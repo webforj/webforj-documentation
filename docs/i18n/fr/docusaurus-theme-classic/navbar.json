@@ -4,7 +4,7 @@
     "description": "The alt text of navbar logo"
   },
   "item.label.Getting Started": {
-    "message": "Démarrer",
+    "message": "Commencer",
     "description": "Navbar item with label Getting Started"
   },
   "item.label.Components": {

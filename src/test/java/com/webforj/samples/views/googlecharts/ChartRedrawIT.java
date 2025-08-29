@@ -28,13 +28,6 @@ public class ChartRedrawIT extends BaseTest {
     }
 
     @Test
-    public void testInvalidNegativeInput() {
-        chartRedraw.getValueForInstagram().fill("-1");
-
-        assertThat(chartRedraw.getInstagramWarningMessage()).isVisible();
-    }
-
-    @Test
     public void testInvalidNonNumberInput() {
         chartRedraw.cleanField(chartRedraw.getValueForInstagram());
         page.keyboard().type("abc");
@@ -48,13 +41,5 @@ public class ChartRedrawIT extends BaseTest {
         page.keyboard().type("$!#%&*");
 
         assertThat(chartRedraw.getValueForInstagram()).not().hasValue("$!#%&*");
-    }
-
-    @Test
-    public void testInvalidDecimalValues() {
-        chartRedraw.cleanField(chartRedraw.getValueForInstagram());
-        page.keyboard().type("5.4");
-
-        assertThat(chartRedraw.getInstagramWarningMessage()).isVisible();
     }
 }

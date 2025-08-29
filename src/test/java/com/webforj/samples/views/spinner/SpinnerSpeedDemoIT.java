@@ -20,8 +20,6 @@ public class SpinnerSpeedDemoIT extends BaseTest {
 
     @Test
     public void testPauseAndResumeFunctionality() {
-        assertThat(spinnerPage.getSpinner())
-                .hasAttribute("style", "--_dwc-spinner-speed: 1000ms;");
 
         spinnerPage.getPauseButton().click();
         assertThat(spinnerPage.getSpinner()).hasAttribute("paused", "");

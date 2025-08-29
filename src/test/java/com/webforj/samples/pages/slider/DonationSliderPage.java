@@ -1,28 +1,28 @@
 package com.webforj.samples.pages.slider;
 
+import java.util.regex.Pattern;
+
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class DonationSliderPage extends BasePage {
 
-    private static final String ROUTE = "donationslider";;
+    private static final String ROUTE = "donationslider";
 
     private final Locator donationLowerHandle;
     private final Locator donationButton;
     private final Locator confirmationToast;
     private final Locator twentyDollarsOption;
-    private final Locator shadowRootSlider;
 
     public DonationSliderPage(Page page) {
         super(page);
 
-        this.shadowRootSlider = page.locator("dwc-slider");
-
-        this.donationLowerHandle = shadowRootSlider.locator(".noUi-handle-lower");
-        this.donationButton = page.locator("dwc-button[theme='gray']").locator("button");
-        this.confirmationToast = page.locator("dwc-toast-group[placement='bottom']").locator("dwc-toast[theme='success']");
-        this.twentyDollarsOption = shadowRootSlider.locator("text=$20");
+        this.donationLowerHandle = page.getByRole(AriaRole.SLIDER);
+        this.donationButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Confirm Donation"));
+        this.confirmationToast = page.getByText(Pattern.compile("Thank you for your generous contribution of \\$\\d+!"));
+        this.twentyDollarsOption = page.getByText("$20");
     }
 
     public static String getRoute() {

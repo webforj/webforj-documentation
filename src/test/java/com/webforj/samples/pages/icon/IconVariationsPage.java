@@ -2,6 +2,7 @@ package com.webforj.samples.pages.icon;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class IconVariationsPage extends BasePage {
@@ -17,11 +18,16 @@ public class IconVariationsPage extends BasePage {
     public IconVariationsPage(Page page) {
         super(page);
 
-        envelopeIcon = page.locator("dwc-icon.envelope");
-        solidEnvelopeIcon = page.locator("dwc-icon.fas-envelope");
-        instagramIcon = page.locator("dwc-icon.instagram");
-        calendarIcon = page.locator("dwc-icon.calendar");
-        filledCalendarIcon = page.locator("dwc-icon.filled-calendar");
+        envelopeIcon = page.getByRole(AriaRole.IMG,
+                new Page.GetByRoleOptions().setName("envelope"));
+        solidEnvelopeIcon = page.getByRole(AriaRole.IMG,
+                new Page.GetByRoleOptions().setName("fas-envelope"));
+        instagramIcon = page.getByRole(AriaRole.IMG,
+                new Page.GetByRoleOptions().setName("fab instagram"));
+        calendarIcon = page.getByRole(AriaRole.IMG,
+                new Page.GetByRoleOptions().setName("calendar"));
+        filledCalendarIcon = page.getByRole(AriaRole.IMG,
+                new Page.GetByRoleOptions().setName("filled-calendar"));
     }
 
     public static String getRoute() {

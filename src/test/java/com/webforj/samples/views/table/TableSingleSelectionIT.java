@@ -21,9 +21,8 @@ public class TableSingleSelectionIT extends BaseTest {
     @Test
     public void testSingleItemSelectionAndConfirmationDialog() {
         tableSingleSelectionPage.getFirstArtist().click();
-        
-        assertThat(tableSingleSelectionPage.getHeaderMessage()).containsText("Record Number 000001");
-        assertThat(tableSingleSelectionPage.getDialogMessage())
-                .hasText("You have selected Mississippi Blues by John Hurt & The Ramblers");
+
+        assertThat(tableSingleSelectionPage.getDialogMessage("Mississippi Blues", "John Hurt & The Ramblers"))
+                .isVisible();
     }
 }

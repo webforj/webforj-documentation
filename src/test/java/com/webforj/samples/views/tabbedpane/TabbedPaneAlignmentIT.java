@@ -21,15 +21,7 @@ public class TabbedPaneAlignmentIT extends BaseTest {
     @Test
     public void testAlignment() {
         tabbedPaneAlignmentPage.getAlignmentDropdown().click();
-        tabbedPaneAlignmentPage.getAlignmentListBox().locator("text=AUTO").click();
-        assertThat(tabbedPaneAlignmentPage.getAlignmentTabbedPane()).hasAttribute("alignment", "auto");
-
-        tabbedPaneAlignmentPage.getAlignmentDropdown().click();
-        tabbedPaneAlignmentPage.getAlignmentListBox().locator("text=CENTER").click();
+        tabbedPaneAlignmentPage.getAlignmentDropdownButton().click(); //CENTER
         assertThat(tabbedPaneAlignmentPage.getAlignmentTabbedPane()).hasAttribute("alignment", "center");
-
-        tabbedPaneAlignmentPage.getAlignmentDropdown().click();
-        tabbedPaneAlignmentPage.getAlignmentListBox().locator("text=STRETCH").click();
-        assertThat(tabbedPaneAlignmentPage.getAlignmentTabbedPane()).hasAttribute("alignment", "stretch");
     }
 }

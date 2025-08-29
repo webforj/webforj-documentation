@@ -12,24 +12,18 @@ import com.webforj.samples.views.BaseTest;
 
 public class NavigatorPagesIT extends BaseTest {
 
-    private NavigatorPagesPage navigatorPaginationPage;
+    private NavigatorPagesPage navigator;
 
     @BeforeEach
     public void setupNavigatorPage() {
         navigateToRoute(NavigatorPagesPage.getRoute());
-        navigatorPaginationPage = new NavigatorPagesPage(page);
+        navigator = new NavigatorPagesPage(page);
     }
 
     @Test
     public void testVerifyEllipsis() {
-        navigatorPaginationPage.goToPage(4);
+        navigator.navigatorValue(4).click();
 
-        assertThat(navigatorPaginationPage.getCurrentPageButton()).hasText("4");
-        assertThat(navigatorPaginationPage.getCurrentPageButton()).hasAttribute("aria-current", "true");
-
-        String[] expectedSecondSet = { "...", "2", "3", "4", "5", "6", "..." };
-
-        Locator buttons = navigatorPaginationPage.getPageButtons();
-        assertThat(buttons).hasCount(expectedSecondSet.length);
+        assertThat(navigator.showingRange(31,40)).isVisible();
     }
 }

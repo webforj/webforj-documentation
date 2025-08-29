@@ -2,7 +2,7 @@ package com.webforj.samples.pages.fields.passwordfield;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class PasswordFieldPage extends BasePage {
@@ -15,9 +15,9 @@ public class PasswordFieldPage extends BasePage {
     public PasswordFieldPage(Page page) {
         super(page);
 
-        Locator shadowRootPasswordField = page.locator("dwc-field[type='password']");
-        passwordField = shadowRootPasswordField.locator("input#field-1");
-        eyeOffIcon = page.locator("dwc-icon-button[part='eye-off-icon']");
+        
+        passwordField = page.getByPlaceholder("Password");
+        eyeOffIcon = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("eye"));
     }
 
     public static String getRoute() {

@@ -3,7 +3,6 @@ sidebar_position: 2
 title: Github Codespaces
 _i18n_hash: 05f50845efd34767431faacb2e5dc97e
 ---
-import UnderConstruction from '@site/src/components/PageTools/UnderConstruction';
 
 [`webforj-hello-world`](https://github.com/webforj/webforj-hello-world) ha sido configurado para ejecutarse en Github Codespaces. Codespaces es un entorno de desarrollo en la nube que te permite desarrollar y ejecutar aplicaciones webforJ directamente en tu navegador. Para comenzar a desarrollar con esta herramienta, sigue los pasos a continuación:
 

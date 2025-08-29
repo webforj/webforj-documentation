@@ -26,6 +26,6 @@ public class TableEditDataIT extends BaseTest {
         tablePage.getInput().fill("Somebody I Used To Know");
         tablePage.getSaveButton().click();
 
-        assertThat(tablePage.getTitle()).hasText("Somebody I Used To Know");
+        assertThat(tablePage.verifyTitle("Somebody I Used To Know")).isVisible();
     }
 }

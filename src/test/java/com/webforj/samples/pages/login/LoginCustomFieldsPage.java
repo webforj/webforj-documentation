@@ -14,33 +14,20 @@ public class LoginCustomFieldsPage extends BasePage {
     private final Locator signInButton;
     private final Locator logoutButton;
     private final Locator customerID;
-    private final Locator errorHost;
 
     public LoginCustomFieldsPage(Page page) {
         super(page);
 
-        Locator loginHost = page.locator("dwc-login");
-        customerID = loginHost.locator("dwc-field")
-                .filter(new Locator.FilterOptions().setHas(page.locator("label:has-text('Customer ID')")))
-                .locator("[part~='input']:visible").first();
+        customerID = page.getByLabel("Customer ID");
 
-        username = loginHost.locator("dwc-field")
-                .filter(new Locator.FilterOptions().setHas(page.locator("label:has-text('Username')")))
-                .locator("[part~='input']:visible").first();
+        username = page.getByLabel("Username");
 
-        password = loginHost.locator("dwc-field")
-                .filter(new Locator.FilterOptions().setHas(page.locator("label:has-text('Password')")))
-                .locator("[part~='input']:visible").first();
+        password = page.getByLabel("Password");
 
-        signInButton = loginHost.locator("dwc-button")
-                .filter(new Locator.FilterOptions().setHasText("Sign In"))
-                .locator("[part~='control']");
+        signInButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign in"));
 
-        errorHost = loginHost.locator("dwc-dialog[opened]").getByRole(AriaRole.ALERT);
-
-        logoutButton = page.locator("dwc-button")
-                .filter(new Locator.FilterOptions().setHasText("Logout"))
-                .locator("[part~='control']");
+        logoutButton = page.getByRole(AriaRole.BUTTON,
+                new Page.GetByRoleOptions().setName("Logout"));
     }
 
     public static String getRoute() {
@@ -65,9 +52,5 @@ public class LoginCustomFieldsPage extends BasePage {
 
     public Locator getCustomderID() {
         return customerID;
-    }
-
-    public Locator getErrorHost() {
-        return errorHost;
     }
 }

@@ -2,6 +2,7 @@ package com.webforj.samples.pages.table;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class TableRichContentPage extends BasePage {
@@ -9,21 +10,25 @@ public class TableRichContentPage extends BasePage {
 
     private final Locator masterCheckBox;
     private final Locator firstCheckbox;
-    private final Locator checkboxInput;
     private final Locator images;
     private final Locator checkboxes;
-    private final Locator tableHost;
 
     public TableRichContentPage(Page page) {
         super(page);
 
-        this.tableHost = page.locator("dwc-table");
+        this.checkboxes = page.getByRole(AriaRole.ROW)
+                .filter(new Locator.FilterOptions().setHas(page.getByRole(AriaRole.CHECKBOX)))
+                .getByRole(AriaRole.CHECKBOX);
 
-        this.checkboxes = tableHost.locator("dwc-checkbox").locator("input[type='checkbox']");
-        this.masterCheckBox = tableHost.locator("dwc-checkbox").locator("#checkbox-1");
-        this.firstCheckbox = tableHost.locator("dwc-checkbox").first();
-        this.checkboxInput = firstCheckbox.locator("input[type='checkbox']");
-        this.images = tableHost.locator("img[part='avatar-img']");
+        this.masterCheckBox = page.getByRole(AriaRole.ROW)
+                .filter(new Locator.FilterOptions().setHas(page.getByRole(AriaRole.CHECKBOX)))
+                .getByRole(AriaRole.CHECKBOX).nth(0);
+
+        this.firstCheckbox = page.getByRole(AriaRole.ROW)
+                .filter(new Locator.FilterOptions().setHas(page.getByRole(AriaRole.CHECKBOX)))
+                .getByRole(AriaRole.CHECKBOX).nth(1);
+
+        this.images = page.getByRole(AriaRole.IMG);
     }
 
     public static String getRoute() {
@@ -38,13 +43,8 @@ public class TableRichContentPage extends BasePage {
         return masterCheckBox;
     }
 
-
     public Locator getFirstCheckbox() {
         return firstCheckbox;
-    }
-
-    public Locator getCheckboxInput() {
-        return checkboxInput;
     }
 
     public Locator getImages() {

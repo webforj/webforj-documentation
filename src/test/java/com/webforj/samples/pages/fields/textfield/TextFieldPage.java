@@ -19,12 +19,14 @@ public class TextFieldPage extends BasePage {
     public TextFieldPage(Page page) {
         super(page);
 
-        usernameInput = page.locator("dwc-field[type='text']").locator("input");
-        emailInput = page.locator("dwc-field[type='email']").locator("input");
-        phoneInput = page.locator("dwc-field[type='tel']").locator("input");
-        urlInput = page.locator("dwc-field[type='url']").locator("input");
-        searchInput = page.locator("dwc-field[type='search']").locator("input");
+        usernameInput = page.getByPlaceholder("Name");
+        emailInput = page.getByPlaceholder("Email");
+        phoneInput = page.getByPlaceholder("Phone Number");
+        urlInput = page.getByPlaceholder("URL");
+        searchInput = page.getByPlaceholder("Search");
         alertPopover = page.locator("div[class*='dwc-positioner']");
+        
+
     }
 
     public static String getRoute() {

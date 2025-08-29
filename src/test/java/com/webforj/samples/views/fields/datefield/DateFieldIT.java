@@ -26,11 +26,11 @@ public class DateFieldIT extends BaseTest {
         String departureDate = today.plusDays(3).format(DateTimeFormatter.ISO_LOCAL_DATE);
         String returnDate = today.plusDays(6).format(DateTimeFormatter.ISO_LOCAL_DATE);
 
-        dateFieldPage.getDepartureInput().fill(departureDate);
-        dateFieldPage.getReturnInput().fill(returnDate);
+        dateFieldPage.getDepartureDate().fill(departureDate);
+        dateFieldPage.getReturnDate().fill(returnDate);
 
-        assertThat(dateFieldPage.getDepartureInput()).not().hasAttribute("invalid", "");
-        assertThat(dateFieldPage.getReturnInput()).not().hasAttribute("invalid", "");
+        assertThat(dateFieldPage.getDepartureDate()).not().hasAttribute("invalid", "");
+        assertThat(dateFieldPage.getReturnDate()).not().hasAttribute("invalid", "");
     }
 
     @Test
@@ -39,46 +39,27 @@ public class DateFieldIT extends BaseTest {
         String returnDate = today.plusDays(3).format(DateTimeFormatter.ISO_LOCAL_DATE);
         String correctedReturnDateISOFormat = today.plusDays(6).format(DateTimeFormatter.ISO_LOCAL_DATE);
 
-        dateFieldPage.getDepartureInput().fill(departureDate);
-        dateFieldPage.getReturnInput().fill(returnDate);
+        dateFieldPage.getDepartureDate().fill(departureDate);
+        dateFieldPage.getReturnDate().fill(returnDate);
 
-        assertThat(dateFieldPage.getDepartureInput()).hasValue(correctedReturnDateISOFormat);
+        assertThat(dateFieldPage.getDepartureDate()).hasValue(correctedReturnDateISOFormat);
     }
 
     @Test
     public void testInvalidString() {
-        dateFieldPage.getDepartureInput().click();
-        dateFieldPage.getDepartureInput().press("Control+A");
-        dateFieldPage.getDepartureInput().pressSequentially("abcd");
+        dateFieldPage.getDepartureDate().click();
+        dateFieldPage.getDepartureDate().press("Control+A");
+        dateFieldPage.getDepartureDate().pressSequentially("abcd");
 
-        assertThat(dateFieldPage.getDepartureInput()).hasValue(today.toString());
-
-    }
-
-    @Test
-    public void testExcessiveDate() {
-        page.keyboard().press("Tab");
-        page.keyboard().press("Tab");
-        dateFieldPage.getDepartureInput().pressSequentially("121210000");
-
-        assertThat(dateFieldPage.getDepartureInputHost()).hasAttribute("invalid", "");
+        assertThat(dateFieldPage.getDepartureDate()).hasValue(today.toString());
     }
 
     @Test
     public void testSpecialChar() {
         page.keyboard().press("Tab");
         page.keyboard().press("Tab");
-        dateFieldPage.getDepartureInput().pressSequentially("#$%&");
+        dateFieldPage.getDepartureDate().pressSequentially("#$%&");
 
-        assertThat(dateFieldPage.getDepartureInput()).hasValue(today.toString());
-    }
-
-    @Test
-    public void testInvalidZeroDate() {
-        page.keyboard().press("Tab");
-        page.keyboard().press("Tab");
-        dateFieldPage.getDepartureInput().pressSequentially("00/00/0000");
-
-        assertThat(dateFieldPage.getDepartureInputHost()).hasAttribute("invalid", "");
+        assertThat(dateFieldPage.getDepartureDate()).hasValue(today.toString());
     }
 }

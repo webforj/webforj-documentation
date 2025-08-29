@@ -27,7 +27,6 @@ public class TabbedPaneBorderIT extends BaseTest {
         assertThat(tabbedPaneBorderPage.getBorderTabbedPane()).hasAttribute("hide-active-indicator", "");
 
         tabbedPaneBorderPage.getOrdersTab().click();
-        assertThat(tabbedPaneBorderPage.getOrdersTab()).hasAttribute("active", "");
-        assertThat(tabbedPaneBorderPage.getDashboardTab()).not().hasAttribute("active", "");
+        assertThat(tabbedPaneBorderPage.getOrdersTab()).hasAttribute("aria-selected", "true");
     }
 }

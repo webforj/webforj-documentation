@@ -2,19 +2,19 @@ package com.webforj.samples.pages.radiobutton;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class RadioButtonTextPage extends BasePage {
 
     private static final String ROUTE = "radiobuttontext";
 
-    private final Locator leftAlignedInput;
+    private final Locator leftAlignedRB;
 
     public RadioButtonTextPage(Page page) {
         super(page);
 
-        this.leftAlignedInput = page.locator("dwc-radio").nth(1).locator("input");
+        this.leftAlignedRB = page.getByRole(AriaRole.RADIO, new Page.GetByRoleOptions().setName("Left aligned"));
     }
 
     public static String getRoute() {
@@ -22,6 +22,6 @@ public class RadioButtonTextPage extends BasePage {
     }
 
     public Locator getLeftAlignedInput() {
-        return leftAlignedInput;
+        return leftAlignedRB;
     }
 }

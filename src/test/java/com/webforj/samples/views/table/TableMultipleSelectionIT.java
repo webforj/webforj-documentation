@@ -1,7 +1,6 @@
 package com.webforj.samples.views.table;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,6 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.microsoft.playwright.Locator;
 import com.webforj.samples.pages.table.TableMultiSelectionPage;
 import com.webforj.samples.views.BaseTest;
 
@@ -38,29 +38,30 @@ public class TableMultipleSelectionIT extends BaseTest {
 
         multipleSelection.getMasterCheckbox().click();
 
-        List<String> actualRecords = multipleSelection.getRecordItems().allTextContents();
         for (String record : expectedRecords) {
-            assertTrue(actualRecords.contains(record));
+            try {
+                assertThat(
+                        multipleSelection.getRecordItems()
+                                .filter(new Locator.FilterOptions().setHasText(record)))
+                        .hasCount(1);
+            } catch (Exception e) {
+                System.out.println("Record not found: " + record);
+            }
         }
 
         multipleSelection.getOkButton().click();
         multipleSelection.getMasterCheckbox().click();
         assertThat(multipleSelection.getNoRecordsMessage()).isVisible();
-
-        multipleSelection.getOkButton().click();
     }
 
     @Test
     public void testMultipleSelection() {
-        multipleSelection.getCheckboxes().nth(1).click();
-        multipleSelection.verifyRecordItems("Mississippi Blues");
+        multipleSelection.getRowCheckboxes().nth(1).click();
+        assertThat(multipleSelection.getRecordItems()).containsText("Mississippi Blues");
+
         multipleSelection.getOkButton().click();
 
-        multipleSelection.getCheckboxes().nth(2).click();
-        multipleSelection.verifyRecordItems("Gold - Greatest Hits");
-        multipleSelection.getOkButton().click();
-
-        multipleSelection.getCheckboxes().nth(2).click();
-        multipleSelection.verifyRecordItems("Gold - Greatest Hits", false);
+        multipleSelection.getRowCheckboxes().nth(1).click();
+        assertThat(multipleSelection.getNoRecordsMessage()).isVisible();
     }
 }

@@ -2,6 +2,7 @@ package com.webforj.samples.pages.appnav;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class AppNavPage extends BasePage {
@@ -15,39 +16,26 @@ public class AppNavPage extends BasePage {
     private final Locator inboxDropdown;
     private final Locator sidebarPrimaryTab;
 
-    private final Locator sidebarArchivedTab;
-    private final Locator sidebarTrashTab;
-
     private final Locator aboutDropdown;
     private final Locator sidebarWebforJ;
     private final Locator sidebarGitHub;
     private final Locator sidebarDocumentation;
-    private final Locator appLayoutHost;
-    private final Locator toolBarHost;
-    private final Locator AppBarHost;
-
 
     public AppNavPage(Page page) {
         super(page);
 
-        appLayoutHost = page.locator("dwc-app-layout");
-        toolBarHost = appLayoutHost.locator("dwc-toolbar");
-        AppBarHost = appLayoutHost.locator("dwc-app-nav");
-
-        this.tablerIcon = toolBarHost.locator("dwc-icon-button.menu-2.hydrated");
+        this.tablerIcon = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("menu 2"));
         this.appLayout = page.locator("dwc-app-layout");
-        this.paragraph = page.locator("dwc-app-layout").locator("p");
+        this.paragraph = page.getByText("Content for", new Page.GetByTextOptions().setExact(false));
 
-        this.inboxDropdown = AppBarHost.locator("dwc-app-nav-item:has-text('Inbox')");
-        this.sidebarPrimaryTab = inboxDropdown.locator("dwc-app-nav-item:has-text('Primary')");
+        this.inboxDropdown = page.getByText("Inbox", new Page.GetByTextOptions().setExact(false));
 
-        this.sidebarArchivedTab = AppBarHost.locator("dwc-app-nav-item:has-text('Archived')");
-        this.sidebarTrashTab = AppBarHost.locator("dwc-app-nav-item:has-text('Trash')");
+        this.sidebarPrimaryTab = page.getByText("Primary", new Page.GetByTextOptions().setExact(false));
 
-        this.aboutDropdown = AppBarHost.locator("dwc-app-nav-item:has-text('About')");
-        this.sidebarWebforJ = aboutDropdown.locator("dwc-app-nav-item:has-text('WebforJ')");
-        this.sidebarGitHub = aboutDropdown.locator("dwc-app-nav-item:has-text('GitHub')");
-        this.sidebarDocumentation = aboutDropdown.locator("dwc-app-nav-item:has-text('Documentation')");
+        this.aboutDropdown = page.getByText("About", new Page.GetByTextOptions().setExact(false));
+        this.sidebarWebforJ = page.getByText("webforJ", new Page.GetByTextOptions().setExact(false));
+        this.sidebarGitHub = page.getByText("GitHub", new Page.GetByTextOptions().setExact(false));
+        this.sidebarDocumentation = page.getByText("Documentation", new Page.GetByTextOptions().setExact(false));
     }
 
     public static String getRoute() {
@@ -72,14 +60,6 @@ public class AppNavPage extends BasePage {
 
     public Locator getSidebarPrimaryTab() {
         return sidebarPrimaryTab;
-    }
-
-    public Locator getSidebarArchivedTab() {
-        return sidebarArchivedTab;
-    }
-
-    public Locator getSidebarTrashTab() {
-        return sidebarTrashTab;
     }
 
     public Locator getAboutDropdown() {

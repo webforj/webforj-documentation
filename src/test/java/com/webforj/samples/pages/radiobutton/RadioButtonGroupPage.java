@@ -2,37 +2,34 @@ package com.webforj.samples.pages.radiobutton;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class RadioButtonGroupPage extends BasePage {
 
     private static final String ROUTE = "radiobuttongroup";
 
-    private final Locator stronglyDisagreeRadioButton;
-    private final Locator disagreeRadioButton;
-    private final Locator shadowRootDisagreeRadio;
-    private final Locator shadowRootStronglyDisagreeRadio;
+    private final Locator stronglyDisagreeRB;
+    private final Locator disagreeRB;
 
     public RadioButtonGroupPage(Page page) {
         super(page);
 
-        this.shadowRootStronglyDisagreeRadio = page.locator("dwc-radio").nth(0);
-        this.stronglyDisagreeRadioButton = shadowRootStronglyDisagreeRadio
-                .locator("label:has-text('Strongly disagree')");
-        this.shadowRootDisagreeRadio = page.locator("dwc-radio").nth(1);
-        this.disagreeRadioButton = shadowRootDisagreeRadio.locator("label:text-is('Disagree')");
+        this.stronglyDisagreeRB = page.getByRole(AriaRole.RADIO, new Page.GetByRoleOptions().setName("Strongly Disagree").setExact(true));
+        this.disagreeRB = page.getByRole(AriaRole.RADIO, new Page.GetByRoleOptions().setName("Disagree").setExact(true));
+
+        
     }
 
     public static String getRoute() {
         return ROUTE;
     }
 
-    public Locator getStronglyDisagreeRadioButton() {
-        return stronglyDisagreeRadioButton;
+    public Locator getStronglyDisagreeRB() {
+        return stronglyDisagreeRB;
     }
 
-    public Locator getDisagreeRadioButton() {
-        return disagreeRadioButton;
+    public Locator getDisagreeRB() {
+        return disagreeRB;
     }
 }

@@ -2,7 +2,7 @@ package com.webforj.samples.pages.tabbedpane;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class TabbedPaneBorderPage extends BasePage {
@@ -18,15 +18,15 @@ public class TabbedPaneBorderPage extends BasePage {
     public TabbedPaneBorderPage(Page page) {
         super(page);
 
-        this.hideBorderToggle = page.locator("dwc-radio").filter(
-                new Locator.FilterOptions().setHasText("Hide Border")).locator("input");
-        this.hideActiveIndicatorToggle = page.locator("dwc-radio").filter(
-                new Locator.FilterOptions().setHasText("Hide Active Indicator")).locator("input");
+        this.hideBorderToggle = page.getByRole(AriaRole.RADIO, 
+                new Page.GetByRoleOptions().setName("Hide Border"));
+        this.hideActiveIndicatorToggle = page.getByRole(AriaRole.RADIO, 
+                new Page.GetByRoleOptions().setName("Hide Active Indicator"));
         this.borderTabbedPane = page.locator("dwc-tabbed-pane");
-        this.dashboardTab = borderTabbedPane.locator("dwc-tab").filter(
-                new Locator.FilterOptions().setHasText("Dashboard"));
-        this.ordersTab = borderTabbedPane.locator("dwc-tab").filter(
-                new Locator.FilterOptions().setHasText("Orders"));
+        this.dashboardTab = page.getByRole(AriaRole.TAB, 
+                new Page.GetByRoleOptions().setName("Dashboard"));
+        this.ordersTab = page.getByRole(AriaRole.TAB, 
+                new Page.GetByRoleOptions().setName("Orders"));
     }
 
     public static String getRoute() {

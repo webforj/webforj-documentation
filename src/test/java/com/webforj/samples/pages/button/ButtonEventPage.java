@@ -1,10 +1,8 @@
 package com.webforj.samples.pages.button;
 
-import java.util.regex.Pattern;
-
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class ButtonEventPage extends BasePage {
@@ -12,13 +10,13 @@ public class ButtonEventPage extends BasePage {
     private static final String ROUTE = "buttonevent";
 
     private final Locator clickMeButton;
-    private final Locator counter;
+    private final Locator firstClickCounter;
 
     public ButtonEventPage(Page page) {
         super(page);
 
-        this.clickMeButton = page.locator("dwc-button:has-text('Click Me!')").locator("button");
-        this.counter = page.getByText(Pattern.compile("^\\s*Current Counter:\\s*\\d+\\s*$")).first();
+        this.clickMeButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Click Me"));
+        this.firstClickCounter = page.getByText("Current Counter: 1");
     }
 
     public static String getRoute() {
@@ -29,7 +27,7 @@ public class ButtonEventPage extends BasePage {
         return clickMeButton;
     }
 
-    public Locator getCounter() {
-        return counter;
+    public Locator getFirstClickCounter() {
+        return firstClickCounter;
     }
 }

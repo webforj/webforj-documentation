@@ -20,11 +20,11 @@ public class RadioButtonGroupIT extends BaseTest {
 
     @Test
     public void testRadioButtonGroup() {
-        radioButtonGroupPage.getStronglyDisagreeRadioButton().click();
-        assertThat(radioButtonGroupPage.getStronglyDisagreeRadioButton()).isChecked();
+        radioButtonGroupPage.getStronglyDisagreeRB().check();;
+        assertThat(radioButtonGroupPage.getStronglyDisagreeRB()).isChecked();
 
-        radioButtonGroupPage.getDisagreeRadioButton().click();
-        assertThat(radioButtonGroupPage.getDisagreeRadioButton()).isChecked();
-        assertThat(radioButtonGroupPage.getStronglyDisagreeRadioButton()).not().isChecked();
+        radioButtonGroupPage.getDisagreeRB().check();
+        assertThat(radioButtonGroupPage.getDisagreeRB()).isChecked();
+        assertThat(radioButtonGroupPage.getStronglyDisagreeRB()).not().isChecked();
     }
 }

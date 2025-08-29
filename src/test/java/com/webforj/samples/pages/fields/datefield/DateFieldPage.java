@@ -2,45 +2,33 @@ package com.webforj.samples.pages.fields.datefield;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class DateFieldPage extends BasePage {
 
     private static final String ROUTE = "datefield";
 
-    private final Locator departureInput;
-    private final Locator returnInput;
-    private static Locator departureInputHost;
-    private static Locator returnInputHost;
+    private final Locator departureDate;
+    private final Locator returnDate;
 
     public DateFieldPage(Page page) {
         super(page);
-
-        departureInputHost = page.locator("dwc-field[type='date']")
-                .filter(new Locator.FilterOptions().setHas(page.locator("label:has-text('Departure Date')")));
-        departureInput = departureInputHost.locator("[part~='input']:visible").first();
-        returnInputHost = page.locator("dwc-field[type='date']")
-                .filter(new Locator.FilterOptions().setHas(page.locator("label:has-text('Return Date')")));
-        returnInput = returnInputHost.locator("[part~='input']:visible").first();
+        
+        this.departureDate = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Departure Date"));
+        this.returnDate = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Return Date"));
+        
     }
 
     public static String getRoute() {
         return ROUTE;
     }
 
-    public Locator getDepartureInput() {
-        return departureInput;
+    public Locator getDepartureDate() {
+        return departureDate;
     }
 
-    public Locator getReturnInput() {
-        return returnInput;
-    }
-
-    public Locator getDepartureInputHost() {
-        return departureInputHost;
-    }
-
-    public Locator getReturnInputHost() {
-        return returnInputHost;
+    public Locator getReturnDate() {
+        return returnDate;
     }
 }

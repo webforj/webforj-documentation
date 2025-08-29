@@ -1,6 +1,6 @@
 ---
 title: Terminate and Error Actions
-sidebar_position: 40
+sidebar_position: 25
 ---
 <!-- vale off -->
 # Terminate and Error Actions <DocChip chip='since' label='23.06' />

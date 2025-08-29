@@ -2,32 +2,24 @@ package com.webforj.samples.pages.table;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class TableColumnPinningPage extends BasePage {
     private static final String ROUTE = "tablecolumnpinning";
 
-    private final Locator editButtonPosition;
     private final Locator editButton;
     private final Locator dialogBox;
-    private final Locator dataTableHost;
 
     public TableColumnPinningPage(Page page) {
         super(page);
 
-        this.dataTableHost = page.locator("dwc-table");
-
-        this.editButtonPosition = dataTableHost.locator("td[part~='cell-pinned-right']").first();
-        this.editButton = dataTableHost.locator("td dwc-button").first();
-        this.dialogBox = page.locator("dwc-dialog[type='msgbox']").locator("section");
+        this.editButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Edit").setExact(true)).nth(0);
+        this.dialogBox = page.getByText("You asked to edit record number ", new Page.GetByTextOptions().setExact(false));
     }
 
     public static String getRoute() {
         return ROUTE;
-    }
-
-    public Locator getEditButtonPosition() {
-        return editButtonPosition;
     }
 
     public Locator getEditButton() {

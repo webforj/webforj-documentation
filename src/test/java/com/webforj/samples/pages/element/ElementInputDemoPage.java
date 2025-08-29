@@ -14,7 +14,7 @@ public class ElementInputDemoPage extends BasePage {
     public ElementInputDemoPage(Page page) {
         super(page);
 
-        inputField = page.locator("input[placeholder='Enter some text']");
+        inputField = page.getByPlaceholder("Enter some text");
     }
 
     public static String getRoute() {

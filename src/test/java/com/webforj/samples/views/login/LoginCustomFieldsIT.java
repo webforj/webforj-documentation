@@ -39,7 +39,7 @@ public class LoginCustomFieldsIT extends BaseTest {
         login.getPassword().fill("admin");
         login.getSignInButton().click();
 
-        assertThat(login.getErrorHost()).isVisible();
+        assertThat(login.getLogoutButton()).not().isVisible();
     }
 
     @Test
@@ -49,7 +49,7 @@ public class LoginCustomFieldsIT extends BaseTest {
         login.getPassword().fill(" ");
         login.getSignInButton().click();
 
-        assertThat(login.getErrorHost()).isVisible();
+        assertThat(login.getLogoutButton()).not().isVisible();
     }
 
     @Test
@@ -59,7 +59,7 @@ public class LoginCustomFieldsIT extends BaseTest {
         login.getPassword().fill("wrongpass");
         login.getSignInButton().click();
 
-        assertThat(login.getErrorHost()).isVisible();
+        assertThat(login.getLogoutButton()).not().isVisible();
     }
 
     @Test
@@ -69,6 +69,6 @@ public class LoginCustomFieldsIT extends BaseTest {
         login.getPassword().fill("admin");
         login.getSignInButton().click();
 
-        assertThat(login.getErrorHost()).isVisible();
+        assertThat(login.getLogoutButton()).not().isVisible();
     }
 }

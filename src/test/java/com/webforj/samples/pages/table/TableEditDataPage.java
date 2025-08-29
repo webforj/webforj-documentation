@@ -2,6 +2,7 @@ package com.webforj.samples.pages.table;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class TableEditDataPage extends BasePage {
@@ -10,20 +11,13 @@ public class TableEditDataPage extends BasePage {
     private final Locator editButton;
     private final Locator input;
     private final Locator saveButton;
-    private final Locator title;
-    private final Locator dataTableHost;
-    private final Locator dialogHost;
 
     public TableEditDataPage(Page page) {
         super(page);
 
-        this.dataTableHost = page.locator("dwc-table");
-        this.dialogHost = page.locator("dwc-dialog");
-
-        this.editButton = dataTableHost.locator("dwc-icon-button").first().locator("button");
-        this.input = dialogHost.locator("dwc-field").locator("#field-1");
-        this.saveButton = dialogHost.locator("dwc-button:has-text('Save')").locator("button");
-        this.title = dataTableHost.locator("tr td").nth(1).first();
+        this.editButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("pencil pin")).nth(0);
+        this.input = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("New Title"));
+        this.saveButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Save"));
 
     }
 
@@ -43,8 +37,9 @@ public class TableEditDataPage extends BasePage {
         return saveButton;
     }
 
-    public Locator getTitle() {
-        return title;
+    public Locator verifyTitle(String title){
+        return page.getByRole(AriaRole.CELL,
+    new Page.GetByRoleOptions().setName(title));
     }
 
 }

@@ -2,7 +2,7 @@ package com.webforj.samples.pages.progressbar;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class ProgressBarBasicPage extends BasePage {
@@ -18,9 +18,9 @@ public class ProgressBarBasicPage extends BasePage {
         super(page);
 
         this.progressBar = page.locator("dwc-progressbar");
-        this.startButton = page.locator("dwc-button:has-text('Start')").locator("button");
-        this.pauseButton = page.locator("dwc-button:has-text('Pause')").locator("button");
-        this.resetButton = page.locator("dwc-button:has-text('Reset')").locator("button");
+        this.startButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Start"));
+        this.pauseButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Pause"));
+        this.resetButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Reset"));
     }
 
     public static String getRoute() {

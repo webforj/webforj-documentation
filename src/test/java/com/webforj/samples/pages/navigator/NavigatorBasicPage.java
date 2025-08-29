@@ -1,5 +1,7 @@
 package com.webforj.samples.pages.navigator;
 
+import java.util.regex.Pattern;
+
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
@@ -13,17 +15,14 @@ public class NavigatorBasicPage extends BasePage {
     private final Locator prevButton;
     private final Locator nextButton;
     private final Locator lastButton;
-    private final Locator navigatorValue;
 
     public NavigatorBasicPage(Page page) {
         super(page);
 
-        Locator shadowRoot = page.locator("dwc-navigator");
-        firstButton = shadowRoot.locator("button[title='Goto first page']");
-        prevButton = shadowRoot.locator("button[title='Goto previous page']");
-        nextButton = shadowRoot.locator("button[title='Goto next page']");
-        lastButton = shadowRoot.locator("button[title='Goto last page']");
-        navigatorValue = shadowRoot.locator("div[part='area area-middle']");
+        firstButton = page.getByLabel("Goto first page");
+        prevButton = page.getByLabel("Goto previous page");
+        nextButton = page.getByLabel("Goto next page");
+        lastButton = page.getByLabel("Goto last page");
     }
 
     public static String getRoute() {
@@ -62,7 +61,8 @@ public class NavigatorBasicPage extends BasePage {
         return lastButton;
     }
 
-    public Locator getNavigatorValue() {
-        return navigatorValue;
+    public Locator navigatorValue(int n) {
+        Pattern exact = Pattern.compile("^\\s*Value:\\s*" + n + "\\s*$");
+        return page.getByText(exact);
     }
 }

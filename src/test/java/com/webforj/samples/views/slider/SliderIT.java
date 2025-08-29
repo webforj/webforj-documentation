@@ -20,10 +20,10 @@ public class SliderIT extends BaseTest {
 
     @Test
     public void testSliderView() {
-        sliderPage.getMuteIcon().click();
+        sliderPage.getVolumeOffButton().click();
         assertThat(sliderPage.getLowerHandle()).hasAttribute("aria-valuenow", "0.0");
 
-        sliderPage.getUnmuteIcon().click();
+        sliderPage.getVolumeOnButton().click();
         assertThat(sliderPage.getLowerHandle()).hasAttribute("aria-valuenow", "100.0");
     }
 }

@@ -2,7 +2,7 @@ package com.webforj.samples.pages.spinner;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class SpinnerSpeedDemoPage extends BasePage {
@@ -19,10 +19,10 @@ public class SpinnerSpeedDemoPage extends BasePage {
         super(page);
 
         this.spinner = page.locator("dwc-spinner");
-        this.slowButton = page.locator("dwc-button:has-text('Slow')").locator("button");
-        this.mediumButton = page.locator("dwc-button:has-text('Medium')").locator("button");
-        this.fastButton = page.locator("dwc-button:has-text('Fast')").locator("button");
-        this.pauseButton = page.locator("dwc-button:has-text('Pause')").locator("button");
+        this.slowButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Slow"));
+        this.mediumButton =page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Medium"));
+        this.fastButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Fast"));
+        this.pauseButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Pause"));
     }
 
     public static String getRoute() {

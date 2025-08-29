@@ -4,6 +4,7 @@ import java.util.regex.Pattern;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class ButtonPage extends BasePage {
@@ -20,14 +21,12 @@ public class ButtonPage extends BasePage {
         super(page);
 
 
-        this.firstName = page.getByLabel("First Name");
-        this.lastName = page.getByLabel("Last Name");
-        this.email = page.getByLabel(Pattern.compile("^E-?mail:?$"));
+        this.firstName = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("First Name"));
+        this.lastName = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Last Name"));
+        this.email = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName(Pattern.compile("^E-?mail:?$")));
 
-        this.submitButton = page.locator("dwc-button")
-                .filter(new Locator.FilterOptions().setHasText("Submit"));
-        this.clearButton = page.locator("dwc-button")
-                .filter(new Locator.FilterOptions().setHasText("Clear"));
+        this.submitButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Submit"));
+        this.clearButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Clear"));
     }
 
     public static String getRoute() {

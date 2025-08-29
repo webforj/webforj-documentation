@@ -43,7 +43,7 @@ public class TableRichContentIT extends BaseTest {
     public void testIndividualCheckbox() {
         tableRichContent.getMasterCheckBox().click();
 
-        assertThat(tableRichContent.getCheckboxInput()).isChecked();
+        assertThat(tableRichContent.getFirstCheckbox()).isChecked();
     }
 
     @Test

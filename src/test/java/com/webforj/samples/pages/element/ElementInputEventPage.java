@@ -2,7 +2,7 @@ package com.webforj.samples.pages.element;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class ElementInputEventPage extends BasePage {
@@ -11,17 +11,15 @@ public class ElementInputEventPage extends BasePage {
 
     private final Locator inputField;
     private final Locator OKButton;
-    private final Locator header;
-    private final Locator section;
+    private final Locator dialogMessage;
 
     public ElementInputEventPage(Page page) {
         super(page);
 
-        inputField = page.locator(".element--input");
-        Locator shadowRootDialogBox = page.locator("dwc-dialog[type='msgbox']");
-        header = shadowRootDialogBox.locator("header");
-        section = shadowRootDialogBox.locator("section");
-        OKButton = page.locator("text=OK");
+        inputField = page.getByRole(AriaRole.TEXTBOX);
+
+        dialogMessage = page.locator("section");
+        OKButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("OK"));
     }
 
     public static String getRoute() {
@@ -32,12 +30,8 @@ public class ElementInputEventPage extends BasePage {
         return inputField;
     }
 
-    public Locator getHeader() {
-        return header;
-    }
-
-    public Locator getSection() {
-        return section;
+    public Locator getDialogMessage() {
+        return dialogMessage;
     }
 
     public Locator getOKButton() {

@@ -2,7 +2,7 @@ package com.webforj.samples.pages.tabbedpane;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class TabbedPanePlacementPage extends BasePage {
@@ -10,14 +10,14 @@ public class TabbedPanePlacementPage extends BasePage {
     private static final String ROUTE = "tabbedpaneplacement";
 
     private final Locator placementDropdown;
-    private final Locator placementListBox;
     private final Locator placementTabbedPane;
+    private final Locator alignmentDropdownButton;
 
     public TabbedPanePlacementPage(Page page) {
         super(page);
 
-        this.placementDropdown = page.locator("dwc-choicebox").locator("dwc-dropdown");
-        this.placementListBox = page.locator("dwc-listbox").locator("ul");
+        this.placementDropdown = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("TOP"));
+        this.alignmentDropdownButton = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("BOTTOM"));
         this.placementTabbedPane = page.locator("dwc-tabbed-pane");
     }
 
@@ -29,11 +29,11 @@ public class TabbedPanePlacementPage extends BasePage {
         return placementDropdown;
     }
 
-    public Locator getPlacementListBox() {
-        return placementListBox;
-    }
-
     public Locator getPlacementTabbedPane() {
         return placementTabbedPane;
+    }
+
+    public Locator getAlignmentDropdownButton() {
+        return alignmentDropdownButton;
     }
 }

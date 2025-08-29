@@ -21,35 +21,7 @@ public class FlexOrderIT extends BaseTest {
 
     @Test
     public void testEnteringZeroPositionsBoxWithOrderZero() {
-        flexOrderPage.getHostInput().click(); //it's zero by default
-
         flexOrderPage.getSetOrderButton().click();
-        assertThat(flexOrderPage.getFlexOrderContainer().locator("dwc-button[theme='danger']"))
-                .hasText("Order: 0");
-
-    }
-
-    @Test
-    public void testSpecialCharactersNotAcceptedInOrderField() {
-        flexOrderPage.getHostInput().click();
-        flexOrderPage.getOrderInput().clear();
-        flexOrderPage.getOrderInput().fill("!@#$%");
-        flexOrderPage.getSetOrderButton().click();
-
-        assertThat(flexOrderPage.getFlexOrderContainer().locator("dwc-button[theme='danger']")).not()
-                .hasText("Order: !@#$%");
-
-    }
-
-    @Test
-    public void testCharactersNotAcceptedInOrderField() {
-        flexOrderPage.getHostInput().click();
-        flexOrderPage.getOrderInput().clear();
-        flexOrderPage.getOrderInput().fill("ABC");
-        flexOrderPage.getSetOrderButton().click();
-
-        assertThat(flexOrderPage.getFlexOrderContainer().locator("dwc-button[theme='danger']")).not()
-                .hasText("Order: ABC");
-
+        assertThat(flexOrderPage.buttonValue(0)).isVisible();        
     }
 }

@@ -2,29 +2,29 @@
 sidebar_position: 35
 title: Deploying Additional Servlets
 sidebar_class_name: new-content
-_i18n_hash: 0717fa071511a4ca3b71dcf0592146e7
+_i18n_hash: 95695a68854d595e78a58904d7214208
 ---
 <!-- vale off -->
 # Desplegando Servlets Adicionales <DocChip chip='since' label='25.02' />
 <!-- vale on -->
 
-webforJ enruta todas las solicitudes a través de `WebforjServlet`, que está mapeado a `/*` en web.xml por defecto. Este servlet gestiona el ciclo de vida del componente, la enrutación y las actualizaciones de la interfaz de usuario que impulsan tu aplicación webforJ.
+webforJ enruta todas las solicitudes a través de `WebforjServlet`, que está mapeado a `/*` en web.xml por defecto. Este servlet gestiona el ciclo de vida del componente, el enrutamiento y las actualizaciones de la interfaz de usuario que alimentan tu aplicación webforJ.
 
-En algunos escenarios, es posible que necesites desplegar servlets adicionales junto a tu aplicación webforJ:
-- Integrar bibliotecas de terceros que proporcionan sus propios servlets
+En algunos escenarios, es posible que necesites desplegar servlets adicionales junto con tu aplicación webforJ:
+- Integrar bibliotecas de terceros que proporcionen sus propios servlets
 - Implementar APIs REST o webhooks
 - Manejar cargas de archivos con procesamiento personalizado
-- Soportar código basado en servlets heredado
+- Soportar código heredado basado en servlets
 
-webforJ proporciona dos enfoques para desplegar servlets personalizados junto a tu aplicación:
+webforJ ofrece dos enfoques para desplegar servlets personalizados junto con tu aplicación:
 
-## Enfoque 1: Remapeo de `WebforjServlet` {#approach-1-remapping-webforjservlet}
+## Enfoque 1: Reasignar `WebforjServlet` {#approach-1-remapping-webforjservlet}
 
-Este enfoque remapea el `WebforjServlet` de `/*` a una ruta específica como `/ui/*`, liberando el espacio de nombres de URL para servlets personalizados. Aunque esto requiere modificar `web.xml`, le da a los servlets personalizados acceso directo a sus patrones de URL sin ningún costo adicional por proxy.
+Este enfoque reasigna el `WebforjServlet` de `/*` a una ruta específica como `/ui/*`, liberando el espacio de nombres de URL para servlets personalizados. Aunque esto requiere modificar `web.xml`, da acceso directo a los patrones de URL de los servlets personalizados sin ninguna sobrecarga de proxy.
 
 ```xml
 <web-app>
-  <!-- WebforjServlet remapeado para manejar solo /ui/* -->
+  <!-- WebforjServlet reasignado para manejar solo /ui/* -->
   <servlet>
     <servlet-name>WebforjServlet</servlet-name>
     <servlet-class>com.webforj.servlet.WebforjServlet</servlet-class>
@@ -53,18 +53,18 @@ Con esta configuración:
 - No hay mecanismo de proxy involucrado - enrutamiento directo del contenedor de servlets
 
 :::tip Configuración de Spring Boot
-Al usar webforJ con Spring Boot, no hay un archivo `web.xml`. En su lugar, configura el mapeo del servlet en `application.properties`:
+Cuando uses webforJ con Spring Boot, no hay un archivo `web.xml`. En su lugar, configura el mapeo de servlets en `application.properties`:
 
 ```Ini
 webforj.servlet-mapping=/ui/*
 ```
 
-Esta propiedad remapea `WebforjServlet` del `/*` por defecto a `/ui/*`, liberando el espacio de nombres de URL para tus servlets personalizados. No incluyas comillas alrededor del valor; serán interpretadas como parte del patrón de URL.
+Esta propiedad reasigna `WebforjServlet` del `/*` por defecto a `/ui/*`, liberando el espacio de nombres de URL para tus servlets personalizados. No incluyas comillas alrededor del valor; se interpretarán como parte del patrón de URL.
 :::
 
 ## Enfoque 2: Configuración de proxy de `WebforjServlet` {#approach-2-webforjservlet-proxy-configuration}
 
-Este enfoque mantiene `WebforjServlet` en `/*` y configura servlets personalizados en `webforJ.conf`. El `WebforjServlet` intercepta todas las solicitudes y las envía a los servlets personalizados que coincidan con los patrones.
+Este enfoque mantiene `WebforjServlet` en `/*` y configura servlets personalizados en `webforj.conf`. El `WebforjServlet` intercepta todas las solicitudes y envía las que coinciden con patrones a tus servlets personalizados.
 
 ### Configuración estándar de web.xml {#standard-webxml-configuration}
 
@@ -94,14 +94,19 @@ Este enfoque mantiene `WebforjServlet` en `/*` y configura servlets personalizad
 ### Configuración de webforJ.conf {#webforjconf-configuration}
 
 ```hocon
-servlets = [
+servlets: [
   {
-    name = "hello-world"
-    class = "com.example.HelloWorldServlet"
+    class: "com.example.HelloWorldServlet",
+    name: "hello-world",
+    config: {
+      foo: "bar",
+      baz: "bang"
+    }
   }
 ]
 ```
 
 Con esta configuración:
 - `WebforjServlet` maneja todas las solicitudes
-- Las solicitudes a `/hello-world` son enviadas al `HelloWorldServlet`
+- Las solicitudes a `/hello-world` se envían al `HelloWorldServlet`
+- La clave opcional `config` proporciona pares nombre/valor como parámetros de inicialización para el servlet

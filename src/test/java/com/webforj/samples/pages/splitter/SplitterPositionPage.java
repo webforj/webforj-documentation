@@ -11,14 +11,12 @@ public class SplitterPositionPage extends BasePage {
 
     private final Locator positionedMasterPanel;
     private final Locator positionedDetailPanel;
-    private final Locator shadowRootSplitter;
 
     public SplitterPositionPage(Page page) {
         super(page);
 
-        this.shadowRootSplitter = page.locator("dwc-splitter");
-        this.positionedMasterPanel = shadowRootSplitter.locator(".splitter-box--info");
-        this.positionedDetailPanel = shadowRootSplitter.locator(".splitter-box--success");
+        this.positionedMasterPanel = page.getByText("Master");
+        this.positionedDetailPanel = page.getByText("Detail");
     }
 
     public static String getRoute() {

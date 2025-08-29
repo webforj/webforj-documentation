@@ -2,6 +2,7 @@ package com.webforj.samples.pages.table;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class TableOlympicWinnersPage extends BasePage {
@@ -11,24 +12,21 @@ public class TableOlympicWinnersPage extends BasePage {
     private final Locator athleteHeader;
     private final Locator totalRow;
     private final Locator athleteRow;
-    private final Locator rows;
     private final Locator firstRow;
     private final Locator lastRow;
-    private final Locator tableHost;
 
     public TableOlympicWinnersPage(Page page) {
         super(page);
 
-        this.tableHost = page.locator("dwc-table");
+        this.totalHeader = page.getByRole(AriaRole.TABLE).locator("th[data-column='total']");
+        this.athleteHeader = page.getByRole(AriaRole.TABLE).locator("th[data-column='athlete']");
+        this.totalRow = page.getByRole(AriaRole.CELL)
+                .filter(new Locator.FilterOptions().setHasText("total")).nth(0);
+        this.athleteRow = page.getByRole(AriaRole.CELL)
+                .filter(new Locator.FilterOptions().setHasText("athlete")).nth(0);
 
-        this.totalHeader = tableHost.locator("th:nth-child(7)").first();
-        this.athleteHeader = tableHost.locator("th:nth-child(1)").first();
-        this.totalRow = tableHost.locator("td:nth-child(7)").first();
-        this.athleteRow = tableHost.locator("td:nth-child(1)").first();
-
-       this.rows = tableHost.locator("tr[data-row]");
-       this.firstRow = rows.first();
-       this.lastRow = rows.last();
+        this.firstRow = page.getByRole(AriaRole.TABLE).filter().locator("[data-row]").first();
+        this.lastRow = page.getByRole(AriaRole.TABLE).filter().locator("[data-row]").last();
     }
 
     public static String getRoute() {
@@ -49,10 +47,6 @@ public class TableOlympicWinnersPage extends BasePage {
 
     public Locator getAthleteRow() {
         return athleteRow;
-    }
-
-    public Locator getRows() {
-        return rows;
     }
 
     public Locator getFirstRow() {

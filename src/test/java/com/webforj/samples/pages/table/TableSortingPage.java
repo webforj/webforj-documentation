@@ -2,6 +2,7 @@ package com.webforj.samples.pages.table;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class TableSortingPage extends BasePage {
@@ -9,15 +10,12 @@ public class TableSortingPage extends BasePage {
 
     private final Locator titleSorting;
     private final Locator firstTitleCell;
-    private final Locator tableHost;
 
     public TableSortingPage(Page page) {
         super(page);
 
-        this.tableHost = page.locator("dwc-table");
-
-        this.titleSorting = tableHost.locator("text=Title");
-        this.firstTitleCell = tableHost.locator("tr[part*='row-first'] td[part*='cell-first']");
+        this.titleSorting = page.getByRole(AriaRole.CELL).nth(0);
+        this.firstTitleCell = page.getByRole(AriaRole.ROW).nth(2).getByRole(AriaRole.CELL).nth(0);
     }
 
     public static String getRoute() {

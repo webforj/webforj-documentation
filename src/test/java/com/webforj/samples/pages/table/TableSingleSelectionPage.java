@@ -8,21 +8,11 @@ public class TableSingleSelectionPage extends BasePage {
     private static final String ROUTE = "tablesingleselection";
 
     private final Locator firstArtist;
-    private final Locator tableHost;
-    private final Locator dialogHost;
-    private final Locator headerMessage;
-    private final Locator dialogMessage;
 
     public TableSingleSelectionPage(Page page) {
         super(page);
-        pageTitle = "Table Single Selection";
 
-        this.tableHost = page.locator("dwc-table");
-        this.dialogHost = page.locator("dwc-dialog");
-
-        this.firstArtist = tableHost.getByText("Mississippi Blues");
-        this.headerMessage = dialogHost.locator("header");
-        this.dialogMessage = page.locator("section");
+        this.firstArtist = page.getByText("Mississippi Blues");
 
     }
 
@@ -34,11 +24,7 @@ public class TableSingleSelectionPage extends BasePage {
         return firstArtist;
     }
 
-    public Locator getHeaderMessage() {
-        return headerMessage;
-    }
-
-    public Locator getDialogMessage() {
-        return dialogMessage;
+    public Locator getDialogMessage(String title, String artist) {
+        return page.getByText("You have selected " + title + " by " + artist);
     }
 }
