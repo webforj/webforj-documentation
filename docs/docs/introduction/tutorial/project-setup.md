@@ -1,5 +1,5 @@
 ---
-title: Project Setup
+title: Project setup
 sidebar_position: 1
 ---
 
@@ -47,12 +47,14 @@ To see the app in action at any stage:
 
 1) Navigate to the directory for the desired step. This should be the top level directory for that step, containing the `pom.xml`
 
-2) Use the Maven Jetty plugin to deploy the app locally by running:
+
+2. Use Maven to run the Spring Boot app locally by running:
 
 ```bash
-mvn jetty:run
+mvn spring-boot:run
 ```
 
-3) Open your browser and navigate to http://localhost:8080 to view the app.
+
+3. Open your browser and go to http://localhost:8080 to view the app.
 
 Repeat this process for each step as you follow along with the tutorial, allowing you to explore the app’s features as they're added.
