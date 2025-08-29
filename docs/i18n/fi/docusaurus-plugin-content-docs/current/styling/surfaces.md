@@ -1,11 +1,9 @@
 ---
 sidebar_position: 8
 title: Surfaces
-_i18n_hash: 05e79ea41c1483cb30396be9bc096c4f
+_i18n_hash: ac1f587cd1039f9bf083c610c29c27b9
 ---
-import SurfaceBox from '@site/src/components/DWCTheme/SurfaceBox/SurfaceBox';
-
-On kolme pinta-aluetta, joita käytetään käyttöliittymän hierarkian järjestämiseen, usein yhdistettynä [varjoihin](./shadows). Kaikki [palettivärit](./colors) on testattu tarjoamaan riittävää kontrastia näitä pintoja vastaan.
+On kolme tasoa pintoja, joita käytetään UI-hierarkian järjestämiseen, usein yhdistettynä [varjoihin](./shadows). Kaikki [palettivärit](./colors) testataan, jotta ne tarjoavat riittävän kontrastin näitä pintoja vastaan.
 
 ### Esimerkki {#example}
 
@@ -17,8 +15,8 @@ On kolme pinta-aluetta, joita käytetään käyttöliittymän hierarkian järjes
 
 ### Muuttujat {#variables}
 
-| **Muuttuja**      | **Käyttö**                                                             | **Esimerkki**                             |
-|-------------------|------------------------------------------------------------------------|--------------------------------------------|
-| `--dwc-surface-1` | Tummain pinta. Käytetään rungon taustana.                             | <SurfaceBox surface="--dwc-surface-1" /> |
-| `--dwc-surface-2` | Käytetään komponenteissa (esim. korteissa).                           | <SurfaceBox surface="--dwc-surface-2" /> |
-| `--dwc-surface-3` | Vaalein ja korkein pinta. Käytetään valikoissa, ponnahdusikkunoissa, dialogeissa ... | <SurfaceBox surface="--dwc-surface-3" /> |
+| **Muuttuja**      | **Käyttö**                                                              | **Esimerkki**                             |
+|-------------------|-------------------------------------------------------------------------|--------------------------------------------|
+| `--dwc-surface-1` | Tummenin pinta. Käytetään taustan taustana.                             | <SurfaceBox surface="--dwc-surface-1" /> |
+| `--dwc-surface-2` | Käytetään komponenteissa (esim. korteissa).                            | <SurfaceBox surface="--dwc-surface-2" /> |
+| `--dwc-surface-3` | Vaalein ja korkeimmalla oleva pinta. Käytetään valikoissa, popovereissa, dialogeissa ... | <SurfaceBox surface="--dwc-surface-3" /> |

@@ -3,103 +3,101 @@ sidebar_position: 10
 title: Events
 slug: events
 draft: false
-_i18n_hash: 35a5057106e5fe7f270cbadaff74b924
+_i18n_hash: 620635097d0620cc0cd4a639b0d29d97
 ---
 <JavadocLink type="foundation" location="com/webforj/component/event/Event" top='true'/>
 
-Komponentit, olivatpa ne mukautettuja tai osia kehyksestä, tukevat tapahtumien käsittelyä. Voit lisätä tapahtumakuuntelijoita erilaisten tapahtumien, kuten käyttäjäinteraktioiden, tilan muutosten tai muiden mukautettujen tapahtumien, kaappaamiseksi. Näitä tapahtumakuuntelijoita voidaan käyttää erityisten toimien tai käyttäytymisten laukaisevana vastauksena tapahtumiin.
+Komponentit, jotka ovat joko mukautettuja tai osa kehystä, tukevat tapahtumien käsittelyä. Voit lisätä tapahtumakuuntelijoita, jotka tallentavat erilaisia tapahtumia, kuten käyttäjän vuorovaikutuksia, tilan muutoksia tai muita mukautettuja tapahtumia. Näitä tapahtumakuuntelijoita voidaan käyttää erityisten toimintojen tai käyttäytymisten laukaisemiseen vastauksena tapahtumiin.
 
-Alla olevassa esimerkissä tapahtuma lisätään kolmella tuetulla menetelmällä: lambda-lausekkeilla, anonyymeillä luokilla ja metodiviittauksilla.
+Alla olevassa esimerkissä tapahtuma lisätään käyttäen kolmea tuettua menetelmää: lambda-lausekkeita, nimettömiä luokkia ja menetelviittauksia.
 ## Tapahtumien lisääminen {#adding-events}
 
-Tapahtumakuuntelijan lisääminen on mahdollista käyttää yhtä seuraavista malleista, joissa:
+Tapahtumakuuntelijan lisääminen on mahdollista käyttää yhden seuraavista malleista, joissa:
 
 - **`myComponent`** on komponentti, johon haluat liittää tapahtumakuuntelijan.
 
-- **`addEventListener`** on korvattu tapahtumaan liittyvällä menetelmällä.
+- **`addEventListener`** korvataan tapahtumakohtaisella menetelmällä.
 
-- **`EventListener`** on korvattu kuunneltavan tapahtuman tyypillä.
+- **`EventListener`** korvataan kuunneltavan tapahtuman tyypillä.
 
 ```java
 myComponent.addEventListener(e -> {
-  // Suoritetaan, kun tapahtuma laukaisee
+  //Suoritetaan, kun tapahtuma käynnistyy
 });
 
-// TAI
+//TAI
 
 myComponent.addEventListener(new ComponentEventListener<EventListener>() {
   @Override
   public void onComponentEvent(ComponentEvent e){
-    // Suoritetaan, kun tapahtuma laukaisee
+    //Suoritetaan, kun tapahtuma käynnistyy
   }
 });
 
-// TAI
+//TAI
 
 myComponent.addEventListener(this::eventMethod);
 ```
 
-Lisäsynnin koodimetodeja tai alias-nimet on lisätty vaihtoehtoista tapahtumien lisäämistä varten käyttäen `on`-etuliitettä yhdessä tapahtuman kanssa, kuten:
+Lisäksi on lisätty synnin sokeria tai alias-menetelmiä vaihtoehtoisia tapahtumien lisäämistä varten käyttämällä `on`-etuliitettä, jota seuraa tapahtuma, kuten:
 
 ```java
 myComponent.onEvent(e -> {
-  // Suoritetaan, kun tapahtuma laukaisee
+  //Suoritetaan, kun tapahtuma käynnistyy
 });
 ```
 
 ## Tapahtuman poistaminen {#removing-an-event}
 
-Kun lisäät tapahtumakuuntelijan, palautetaan `ListenerRegistration`-objekti. Tämä voi olla käytettävissä muiden asioiden ohella poistamaan tapahtuman myöhemmin.
+Kun lisäät tapahtumakuuntelijan, palautetaan `ListenerRegistration`-objekti. Tätä voidaan käyttää muiden asioiden ohella tapahtuman poistamiseen myöhemmin.
 
 ```java
-// Tapahtuman lisääminen
+//Tapahtuman lisääminen
 ListenerRegistration listenerRegistration = myComponent.addEventListener(e -> {
-        // Suoritetaan, kun tapahtuma laukaisee
+        //Suoritetaan, kun tapahtuma käynnistyy
     });
 
-// Tapahtuman poistaminen
+//Tapahtuman poistaminen
 listenerRegistration.remove();
 ```
 
-## Tapahtuman palkin käyttäminen {#using-event-payload}
+## Tapahtuman hyödyntäminen {#using-event-payload}
 
-On tärkeää huomata, että tapahtumat tulevat usein palkin kanssa, joka sisältää lisätietoja liittyen tapahtumaan. Voit tehokkaasti hyödyntää tätä palkkia tapahtumankäsittelijässä päästäksesi käsiksi relevanteihin tietoihin ilman tarpeettomia pyörähdyksiä asiakkaan ja palvelimen välillä. Näin voit parantaa sovelluksesi suorituskykyä.
+On tärkeää huomata, että tapahtumilla tulee usein mukana kuormitus, joka sisältää lisätietoja tapahtumasta. Voit tehokkaasti käyttää tätä kuormitusta tapahtumankäsittelijässä päästäksesi käsiksi relevantteihin tietoihin ilman tarpeettomia matkustuksia asiakas- ja palvelinpuolien välillä. Näin voit parantaa sovelluksesi suorituskykyä.
 
-Seuraava koodipätkä kysyy komponentilta tietoja, jotka meidän esimerkkimme mukaisesti on jo sisällytetty tapahtuman palkkiin, mikä edustaa tehotonta koodia:
+Seuraavassa koodiesimerkissä kysytään komponentilta tietoa, joka, esimerkkimme tarkoitusten vuoksi, on jo mukana tapahtumakuormituksessa, mikä edustaa tehottomaa koodia:
 
 ```java
 myComponent.addEventListener(e -> {
-  // Pääsy komponentin tietoihin
+  // Pääsy dataan komponentista
   String componentText = e.getComponent().getText();
 
-  // TAI jos komponentti on käytettävissä funktion laajuudessa
+  //TAI jos komponentti on käytettävissä funktion laajuudessa
   String componentText = myComponent.getText();
 
-  // Käytä componentTextiä suorittaaksesi muita toimia.
+  // Käytä componentTextiä muiden toimintojen suorittamiseen.
 });
 ```
 
-Sen sijaan käyttämällä metodin palkkia, joka esimerkin vuoksi sisältää komponentin tekstin, vältytään pyörähdykseltä:
+Sen sijaan kuormituksen hyödyntäminen, joka esimerkin vuoksi sisältää komponentin tekstin, välttää matkustuksen:
 
 ```java
 myComponent.addEventListener(e -> {
-  // Pääsy tapahtuman palkin tietoihin
+  // Pääsy dataan tapahtumakuormituksesta
   String componentText = e.getText();
   
-  // Käytä componentTextiä suorittaaksesi muita toimia.
+  // Käytä componentTextiä muiden toimintojen suorittamiseen.
 });
 ```
 
-Tämä lähestymistapa minimoi tarpeen kysyä komponentilta tietoja, sillä tiedot ovat heti saatavilla tapahtuman palkissa. Noudattamalla tätä tehokasta tapahtumankäsittelykäytäntöä voit parantaa komponenttiesi suorituskykyä ja reagointinopeutta. Lisätietoja saat [Asiakas/Palvelin vuorovaikutus](../architecture/client-server).
+Tämä lähestymistapa minimoi tarpeen kysyä komponentilta tietoja, sillä tiedot ovat helposti saatavilla tapahtumakuormituksessa. Noudattamalla tätä tehokasta tapahtumankäsittelykäytäntöä voit parantaa komponenttisi suorituskykyä ja reagointikykyä. Lisätietoja saat [Asiakas/Palvelin vuorovaikutus](../architecture/client-server).
 
 ### Esimerkki {#sample}
 
-Alla on esittely, joka näyttää <JavadocLink type="foundation" location="com/webforj/component/button/event/ButtonClickEvent" code="true">ButtonClickEvent</JavadocLink> lisäämisen [`Button`](#). Tämä [`Button`](#) käyttää myös tapahtuman palkin mukana tuomaa tietoa näyttääkseen tietoja näytöllä.
+Alla on esitys, joka näyttää <JavadocLink type="foundation" location="com/webforj/component/button/event/ButtonClickEvent"  code="true">ButtonClickEvent</JavadocLink> lisäämisen [`Button`](#). Tämä [`Button`](#) käyttää myös tapahtuman kuormituksessa mukana tulevia tietoja näyttääkseen tietoa näytöllä.
 
 <ComponentDemo 
 path='/webforj/buttonevent?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonEventView.java'
 height='100px'
 />
-
-<!-- <EventTable base events={['drawerOpen', 'drawerClose']} /> -->

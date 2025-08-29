@@ -4,7 +4,7 @@
     "description": "The alt text of navbar logo"
   },
   "item.label.Getting Started": {
-    "message": "Inicio",
+    "message": "Comenzando",
     "description": "Navbar item with label Getting Started"
   },
   "item.label.Components": {
@@ -20,7 +20,7 @@
     "description": "Navbar item with label Developers"
   },
   "item.label.Support": {
-    "message": "Ayuda",
+    "message": "Soporte",
     "description": "Navbar item with label Support"
   },
   "item.label.Events": {
@@ -48,19 +48,19 @@
     "description": "Navbar item with label JavaDocs"
   },
   "item.label.Client Components": {
-    "message": "Clientes Componentes",
+    "message": "Componentes del Cliente",
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
-    "message": "Contribuir",
+    "message": "Guía de Contribución",
     "description": "Navbar item with label Contribution Guide"
   },
   "item.label.Report Issue": {
-    "message": "Reportar error",
+    "message": "Informar problema",
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {
-    "message": "Contáctenos",
+    "message": "Contáctanos",
     "description": "Navbar item with label Contact us"
   }
 }
