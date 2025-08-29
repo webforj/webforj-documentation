@@ -1,13 +1,11 @@
 ---
 sidebar_position: 3
 title: Colors
-_i18n_hash: c0e3dc5c992621c0c9cb3da24ef3964f
+_i18n_hash: d82a6a563267933d08c081faeddf2cc0
 ---
-import ColorPalette from '@site/src/components/DWCTheme/ColorPalette/ColorPalette';
+webforJ proporciona un sistema de color basado en propiedades personalizadas de CSS. Estas variables de color mantienen un estilo visual consistente en toda tu aplicación mientras te brindan control total para personalizar paletas de acuerdo con tus necesidades de diseño.
 
-webforJ proporciona un sistema de color basado en propiedades personalizadas de CSS. Estas variables de color mantienen un estilo visual consistente en toda tu aplicación mientras te brindan control total para personalizar paletas según tus necesidades de diseño.
-
-Puedes hacer referencia a cualquier color utilizando la sintaxis `--dwc-color-{palette}-{shade}`, donde `{palette}` es el nombre del grupo de colores (por ejemplo, `primary`, `danger`, ..) y `{shade}` es un número del `5` al `95` en incrementos de `5`, representando la claridad del color.
+Puedes hacer referencia a cualquier color utilizando la sintaxis `--dwc-color-{palette}-{shade}`, donde `{palette}` es el nombre del grupo de color (por ejemplo, `primary`, `danger`, ..) y `{shade}` es un número de `5` a `95` en incrementos de `5`, que representa la claridad del color.
 
 ```css
 .element {
@@ -16,21 +14,21 @@ Puedes hacer referencia a cualquier color utilizando la sintaxis `--dwc-color-{p
 }
 ```
 
-:::tip Escala de Valores de Sombra
-Los valores de sombra van desde `5` (más oscuro) hasta `95` (más claro), aumentando en pasos de `5`.
+:::tip Escala de valores de sombra
+Los valores de sombra varían de `5` (el más oscuro) a `95` (el más claro), aumentando en pasos de `5`.
 :::
 
-## Paletas de colores {#color-palettes}
+## Paletas de color {#color-palettes}
 
-Hay varias paletas de colores integradas, cada una diseñada para casos de uso semántico como branding, mensajes de éxito, advertencias y más. Cada paleta está compuesta de matices y tonos generados dinámicamente basados en tres propiedades clave: `hue`, `saturation`, y `contrast-threshold`.
+Existen varias paletas de color integradas, cada una diseñada para casos de uso semánticos como branding, mensajes de éxito, advertencias y más. Cada paleta se compone de matices y sombras generados dinámicamente basados en tres propiedades clave: `hue`, `saturation` y `contrast-threshold`.
 
 ### Paletas disponibles {#available-palettes}
 
-- **default**: Una paleta neutra basada en gris, matizada con el color primario, utilizada para la mayoría de los componentes.
+- **default**: Una paleta neutral basada en gris matizada con el color primario, utilizada para la mayoría de los componentes.
 - **primary**: Representa típicamente el color primario de tu marca.
 - **success**, **warning**, **danger**: Paletas semánticas utilizadas para indicadores de estado apropiados.
-- **info**: Una paleta complementaria opcional para un énfasis secundario.
-- **gray**: Una paleta de escala de grises verdadera, sin matizar.
+- **info**: Una paleta complementaria opcional para énfasis secundario.
+- **gray**: Una paleta realmente en escala de grises, sin matizar.
 - **black/white**: Valores de color estáticos.
 
 <ColorPalette></ColorPalette>
@@ -38,16 +36,17 @@ Hay varias paletas de colores integradas, cada una diseñada para casos de uso s
 <br/>
 
 :::tip DWC HueCraft
-Para simplificar el proceso de generación de paletas compatibles con WCAG para tus aplicaciones webforJ, puedes utilizar la herramienta [DWC HueCraft](https://webforj.github.io/huecraft/). Soporta la creación de paletas basadas en colores de marca o logotipos y permite una exportación rápida de CSS.
+Para simplificar el proceso de generación de paletas compatibles con WCAG para tus aplicaciones webforJ, puedes utilizar la herramienta [DWC HueCraft](https://webforj.github.io/huecraft/). Soporta la creación de paletas basadas en colores o logotipos de marca y permite una rápida exportación a CSS.
 :::
 
-### Comportamiento en modo oscuro {#dark-mode-behavior}
 
-webforJ admite una estrategia de color invertido en modo oscuro. En vez de utilizar paletas de colores completamente separadas, invierte la forma en que se interpretan los valores de claridad.
+### Comportamiento del modo oscuro {#dark-mode-behavior}
 
-Esto significa que en **temas oscuros**, los valores de sombra más bajos (por ejemplo, `--dwc-color-primary-5`) se convierten en claros y los valores más altos (por ejemplo, `--dwc-color-primary-95`) se convierten en oscuros. La lógica se invierte para asegurar un contraste y una legibilidad óptimos en todos los fondos.
+webforJ admite una estrategia de color invertido en el modo oscuro. En lugar de usar paletas de color completamente separadas, invierte la forma en que se interpretan los valores de claridad.
 
-El código de tu componente permanece igual, independientemente del tema. Por ejemplo:
+Esto significa que en **temas oscuros**, los valores de sombra más bajos (por ejemplo, `--dwc-color-primary-5`) se vuelven claros y los valores más altos (por ejemplo, `--dwc-color-primary-95`) se vuelven oscuros. La lógica se invierte para asegurar un contraste y legibilidad óptimos en todos los fondos.
+
+Tu código de componente sigue siendo el mismo, independientemente del tema. Por ejemplo:
 
 ```css
 .button {
@@ -56,7 +55,7 @@ El código de tu componente permanece igual, independientemente del tema. Por ej
 }
 ```
 
-En modo claro, esto da un fondo de tono medio. En modo oscuro, todavía da un tono medio, pero visualmente invertido para funcionar sobre superficies oscuras. Este enfoque evita la duplicación, mantiene tus estilos consistentes y suaviza las transiciones visuales al cambiar entre temas claros y oscuros.
+En el modo claro, esto proporciona un fondo de tono medio. En el modo oscuro, sigue ofreciendo un tono medio, pero visualmente invertido para funcionar en superficies oscuras. Este enfoque evita la duplicación, mantiene tus estilos consistentes y permite transiciones visuales suaves al cambiar entre temas claros y oscuros.
 
 ### Variables de configuración de paleta {#palette-configuration-variables}
 
@@ -65,7 +64,7 @@ Cada paleta se genera en base a las siguientes variables:
 | Variable               | Descripción |
 |------------------------|-------------|
 | `hue`                  | El ángulo (en grados) en la rueda de color. Los valores sin unidad se interpretan como grados. |
-| `saturation`           | Un porcentaje que indica la intensidad del color. `100%` es completamente saturado; `0%` es escala de grises. |
+| `saturation`           | Un porcentaje que indica la intensidad del color. `100%` está totalmente saturado; `0%` es escala de grises. |
 | `contrast-threshold`   | Un valor entre `0` y `100` que determina si el texto debe ser claro u oscuro según la claridad del fondo. |
 
 Puedes ajustar una paleta redefiniendo estas variables en tus estilos raíz. Por ejemplo, para modificar la paleta primaria:
@@ -78,11 +77,11 @@ Puedes ajustar una paleta redefiniendo estas variables en tus estilos raíz. Por
 }
 ```
 
-## Tematización de componentes con variables abstractas {#theming-components-with-abstract-variables}
+## Temas de componentes con variables abstractas {#theming-components-with-abstract-variables}
 
-Para simplificar el estilo y la consistencia en todos los componentes, webforJ introduce una capa de abstracción sobre las paletas de colores base. Esta capa se basa en **variables de tema abstractas** - propiedades personalizadas de CSS que se refieren a tonos específicos dentro de una paleta de colores.
+Para simplificar el estilo y la consistencia entre los componentes, webforJ introduce una capa de abstracción sobre las paletas de color base. Esta capa se basa en **variables de tema abstractas** - propiedades personalizadas de CSS que se refieren a sombras específicas dentro de una paleta de color.
 
-Estas variables facilitan la aplicación de temas en todos los componentes sin referirse directamente a valores de color en crudo o muestras. Puedes pensar en ellas como *atajos de estilo semántico* que reflejan la intención de tu aplicación en lugar de sus detalles de implementación.
+Estas variables facilitan la aplicación de temas en todos los componentes sin referirse directamente a valores de color crudos o muestras. Puedes considerarlas como *acortamientos de estilo semántico* que reflejan la intención de tu aplicación en lugar de los detalles de su implementación.
 
 ### Grupos de variables {#variable-groups}
 
@@ -91,20 +90,20 @@ Las variables de tema abstractas se organizan en cuatro grupos:
 1. [Normal](#normal-state) Usado para la apariencia predeterminada, como fondos y texto en componentes inactivos.
 2. [Oscuro](#darker-variant) Usado para estados activos o seleccionados.
 3. [Claro](#lighter-variant) Usado para estados de hover y enfoque.
-4. [Alt](#alt-variant) Usado para realces secundarios, como enfoque de teclado o acentos sutiles de UI.
+4. [Alt](#alt-variant) Usado para resaltados secundarios, como el enfoque del teclado o acentos sutiles de UI.
 
 Cada grupo define:
 
 - Un color de fondo
 - Un color de primer plano (texto)
 - Un color de borde (para estados enfocados/hover/activos)
-- Un anillo de enfoque (utilizado cuando el componente recibe un enfoque visible)
+- Un anillo de enfoque (usado cuando el componente recibe enfoque visible)
 
-Cada pestaña a continuación muestra las variables abstractas definidas para una paleta específica (`primary`, `success`, `danger`, etc.). Estas variables extraen valores de la paleta subyacente (por ejemplo, `--dwc-color-primary-40`) y los hacen reutilizables en toda tu aplicación.
+Cada pestaña a continuación muestra las variables abstractas definidas para una paleta específica (`primary`, `success`, `danger`, etc.). Estas variables extraen valores de la paleta subyacente (por ejemplo, `--dwc-color-primary-40`) y las hacen reutilizables en toda tu aplicación.
 
-Por ejemplo, en lugar de usar directamente `--dwc-color-primary-40`, puedes aplicar `--dwc-color-primary`, que abstrae el papel de ese color como el *fondo predeterminado* para un componente estilizado como primario.
+Por ejemplo, en lugar de usar directamente `--dwc-color-primary-40`, puedes aplicar `--dwc-color-primary`, que abstrae el rol de ese color como el *fondo predeterminado* para un componente con estilo primario.
 
-Cambiar los valores de la paleta en un lugar actualizará el aspecto de todos los componentes que dependen de estas variables abstractas.
+Cambiar los valores de la paleta en un solo lugar actualizará el aspecto de todos los componentes que dependen de estas variables abstractas.
 
 ### Estado normal {#normal-state}
 
@@ -112,21 +111,21 @@ Usado para la apariencia base, neutral de un componente—cuando está inactivo 
 
 | Variable                           | Descripción                                                             |
 | ---------------------------------- | ----------------------------------------------------------------------- |
-| `--dwc-color-${name}`              | El color de fondo predeterminado. También se utiliza para los bordes en muchos componentes. |
-| `--dwc-color-on-${name}-text`      | El color del texto mostrado sobre el fondo predeterminado.             |
-| `--dwc-color-${name}-text`         | El color del texto cuando el componente se coloca sobre el fondo de superficie. |
-| `--dwc-border-color-${name}`       | Color del borde, utilizado principalmente para estados hover, enfoque y activos. |
-| `--dwc-focus-ring-${name}`         | Sombra del anillo de enfoque cuando el componente recibe el estilo de enfoque visible. |
+| `--dwc-color-${name}`             | El color de fondo predeterminado. También se utiliza para bordes en muchos componentes. |
+| `--dwc-color-on-${name}-text`     | El color del texto mostrado sobre el fondo predeterminado.             |
+| `--dwc-color-${name}-text`        | El color del texto cuando el componente se coloca sobre el fondo de superficie. |
+| `--dwc-border-color-${name}`      | Color del borde, utilizado principalmente para estados de hover, enfoque y activos. |
+| `--dwc-focus-ring-${name}`        | Sombra del anillo de enfoque cuando el componente recibe estilo de enfoque visible. |
 
 ---
 
 ### Variante más oscura {#darker-variant}
 
-Usado para estados seleccionados o activos—generalmente un tono más profundo para un contraste y énfasis más fuertes.
+Usado para estados seleccionados o activos—normalmente un tono más profundo para un contraste y énfasis más fuertes.
 
 | Variable                                | Descripción                                                              |
 | --------------------------------------- | ------------------------------------------------------------------------ |
-| `--dwc-color-${name}-dark`              | Una versión más oscura del color base. A menudo utilizado para estados presionados o seleccionados. |
+| `--dwc-color-${name}-dark`              | Una versión más oscura del color base. A menudo utilizada para estados presionados o seleccionados. |
 | `--dwc-color-on-${name}-text-dark`      | Color del texto cuando se utiliza sobre un fondo oscuro.                 |
 | `--dwc-color-${name}-text-dark`         | Una alternativa de texto ligeramente más oscura cuando se muestra sobre la superficie. |
 
@@ -134,24 +133,24 @@ Usado para estados seleccionados o activos—generalmente un tono más profundo 
 
 ### Variante más clara {#lighter-variant}
 
-Usado para hover, enfoque y pistas visuales menos dominantes. Estos son tonos suaves diseñados para una retroalimentación sutil de interacción.
+Usado para hover, enfoque y señales visuales menos dominantes. Estos son tonos suaves diseñados para una retroalimentación de interacción sutil.
 
 | Variable                                | Descripción                                                              |
 | --------------------------------------- | ------------------------------------------------------------------------ |
-| `--dwc-color-${name}-light`             | Una versión más clara del color base. Típicamente utilizado para fondos de hover/enfoque. |
-| `--dwc-color-on-${name}-text-light`     | Color del texto cuando se muestra sobre un fondo claro.                  |
-| `--dwc-color-${name}-text-light`        | Un tono de texto más claro para utilizar en estados menos prominentes.   |
+| `--dwc-color-${name}-light`             | Una versión más clara del color base. Típicamente utilizada para fondos de hover/enfoque. |
+| `--dwc-color-on-${name}-text-light`     | Color del texto cuando se muestra sobre un fondo claro.                 |
+| `--dwc-color-${name}-text-light`        | Un tono de texto más claro para usar en estados menos prominentes.      |
 
 ---
 
-### Variante alterna {#alt-variant}
+### Variante alternativa {#alt-variant}
 
-Usado para énfasis secundario o realces de UI—como contornos de enfoque de navegación por teclado o indicadores auxiliares.
+Usado para énfasis secundario o resaltados de UI—como contornos de enfoque de navegación por teclado o indicadores auxiliares.
 
 | Variable                                | Descripción                                                              |
 | --------------------------------------- | ------------------------------------------------------------------------ |
-| `--dwc-color-${name}-alt`               | Una versión muy clara del color, utilizada principalmente para realces o brillos de fondo. |
-| `--dwc-color-on-${name}-text-alt`       | Color del texto cuando el fondo es el color alternativo (`alt`).         |
+| `--dwc-color-${name}-alt`               | Una versión muy clara del color, utilizada principalmente para resaltados o brillos de fondo. |
+| `--dwc-color-on-${name}-text-alt`       | Color del texto cuando el fondo es el color alternativo (`alt`).        |
 
 <Tabs>
 
@@ -260,7 +259,7 @@ Usado para énfasis secundario o realces de UI—como contornos de enfoque de na
     var(--dwc-color-warning-h),
     var(--dwc-color-warning-s),
     var(--dwc-focus-ring-l),
-    var(--dwc-color-warning-a)
+    var(--dwc-focus-ring-a)
   );
 ```
 
@@ -318,7 +317,7 @@ Usado para énfasis secundario o realces de UI—como contornos de enfoque de na
     var(--dwc-color-info-h),
     var(--dwc-color-info-s),
     var(--dwc-focus-ring-l),
-    var(--dwc-color-info-a)
+    var(--dwc-focus-ring-a)
   );
 ```
 

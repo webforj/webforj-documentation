@@ -33,7 +33,7 @@ filter: brightness(0) invert(1);
   max-width: 600px;
 }
 
-dwc-tab::part(prefix) {
-  --dwc-icon-size: var(--dwc-size-s);
-  cursor: pointer;
+dwc-tabbed-pane[slot="footer"] dwc-tab::part(label),
+dwc-tabbed-pane[slot="footer"] dwc-tab::part(suffix) {
+  display: none;
 }

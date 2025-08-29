@@ -20,11 +20,11 @@
     "description": "Navbar item with label Developers"
   },
   "item.label.Support": {
-    "message": "Hilfe",
+    "message": "Unterstützung",
     "description": "Navbar item with label Support"
   },
   "item.label.Events": {
-    "message": "Ereignisse",
+    "message": "Veranstaltungen",
     "description": "Navbar item with label Events"
   },
   "item.label.Blog": {
@@ -40,7 +40,7 @@
     "description": "Navbar item with label DWC HueCraft"
   },
   "item.label.DWC Design Kit": {
-    "message": "DWC Design-Toolkit",
+    "message": "DWC Design Kit",
     "description": "Navbar item with label DWC Design Kit"
   },
   "item.label.JavaDocs": {
@@ -48,19 +48,19 @@
     "description": "Navbar item with label JavaDocs"
   },
   "item.label.Client Components": {
-    "message": "Client-Elemente",
+    "message": "Client-Komponenten",
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
-    "message": "Beitragsrichtlinien",
+    "message": "Beitragsleitfaden",
     "description": "Navbar item with label Contribution Guide"
   },
   "item.label.Report Issue": {
-    "message": "Fehlerbericht",
+    "message": "Problem melden",
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {
-    "message": "Kontakt",
+    "message": "Kontaktieren Sie uns",
     "description": "Navbar item with label Contact us"
   }
 }
