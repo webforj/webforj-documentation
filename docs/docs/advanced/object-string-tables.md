@@ -54,6 +54,10 @@ It follows the same API pattern as `ObjectTable` for consistency.
 Objects stored in `SessionObjectTable` should implement `Serializable` to support session persistence, replication, and passivation in servlet containers.
 :::
 
+:::warning Availability in `BBjServices`
+This feature isn't yet available when running with BBjServices in version 25.03.
+:::
+
 ### Setting and retrieving session objects {#setting-and-retrieving-session-objects}
 
 ```java
