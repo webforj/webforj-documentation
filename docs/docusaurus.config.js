@@ -155,7 +155,7 @@ const config = {
       items: [
         {
           position: 'left',
-          label: 'latest',
+          label: ' ',
           href: 'https://github.com/webforj/webforj/releases/latest',
           target: '_blank', 
           id: 'webforj-version-badge',

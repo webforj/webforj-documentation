@@ -50,8 +50,20 @@
   }
 
   #webforj-version-badge {
-    background-color: #000;
-    
+    background-color: hsl( 211,  100%, 25%);
+    width: 65px;
+    height: 34px;
+    opacity: 0;
+    animation: fadeInBadge 0.3s ease-in forwards;
+  }
+
+  @keyframes fadeInBadge {
+  to {
+    opacity: 1;
+  }
+}
+  #webforj-version-badge svg{
+    display: none;
   }
 
   @media (max-width: 1000px) {
