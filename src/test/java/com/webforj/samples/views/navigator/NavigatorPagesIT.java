@@ -5,8 +5,6 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.microsoft.playwright.Locator;
-
 import com.webforj.samples.pages.navigator.NavigatorPagesPage;
 import com.webforj.samples.views.BaseTest;
 

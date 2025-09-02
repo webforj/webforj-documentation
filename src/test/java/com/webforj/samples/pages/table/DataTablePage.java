@@ -22,17 +22,12 @@ public class DataTablePage extends BasePage {
     private final Locator prevButton;
     private final Locator nextButton;
     private final Locator lastButton;
-    private final Locator athleteCells;
 
     public DataTablePage(Page page) {
         super(page);
 
         this.searchInput = page.getByRole(AriaRole.SEARCHBOX, new Page.GetByRoleOptions().setName("Search"));
         this.tableRows = page.getByRole(AriaRole.TABLE).filter().locator("[data-row]");
-
-        this.athleteCells = page
-                .getByRole(AriaRole.CELL)
-                .filter(new Locator.FilterOptions().setHas(page.locator("[data-cell$='-athlete']")));
 
         this.entriesDropdown = page.locator("dwc-dropdown");
 

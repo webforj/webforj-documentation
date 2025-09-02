@@ -64,14 +64,6 @@ public class WaitUtil {
         return waitForState(locator, WaitForSelectorState.DETACHED);
     }
 
-    public static void waitForNavigation(Page page, Runnable action) {
-        try {
-            page.waitForNavigation(() -> action.run());
-        } catch (TimeoutError e) {
-            // Ignore
-        }
-    }
-
     public static boolean waitForUrl(Page page, String urlPattern) {
         try {
             page.waitForURL(urlPattern);

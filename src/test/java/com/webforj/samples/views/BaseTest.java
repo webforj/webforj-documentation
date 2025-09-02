@@ -2,6 +2,9 @@ package com.webforj.samples.views;
 
 import com.microsoft.playwright.*;
 import com.webforj.samples.config.RunConfig;
+
+import java.nio.file.*;
+
 import org.junit.jupiter.api.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -17,8 +20,7 @@ public abstract class BaseTest {
         browser = playwright.chromium().launch(
                 new BrowserType.LaunchOptions()
                         .setHeadless(RunConfig.isHeadless())
-                        .setSlowMo(RunConfig.getSlowMo())
-                        );
+                        .setSlowMo(RunConfig.getSlowMo()));
     }
 
     @BeforeEach
@@ -26,12 +28,23 @@ public abstract class BaseTest {
         context = browser.newContext(new Browser.NewContextOptions()
                 .setViewportSize(1920, 1080)
                 .setIgnoreHTTPSErrors(true));
+
+        context.tracing().start(new Tracing.StartOptions()
+                .setScreenshots(true)
+                .setSnapshots(true)
+                .setSources(true));
+
         page = context.newPage();
     }
 
     @AfterEach
-    public void teardownTest() {
+    public void teardownTest(TestInfo testInfo) {
         if (context != null) {
+            String testName = testInfo.getDisplayName().replaceAll("[^a-zA-Z0-9]", "");
+
+            context.tracing().stop(new Tracing.StopOptions()
+                    .setPath(Paths.get("./target/playwright-traces/" + testName + ".zip")));
+
             context.close();
         }
     }
