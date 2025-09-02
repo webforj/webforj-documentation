@@ -1,6 +1,6 @@
 {
   "theme.docs.translationNotice": {
-    "message": "Esta página ha sido traducida automáticamente usando IA y puede contener errores o imprecisiones. Para obtener la información más precisa y actualizada, consulte la documentación oficial de webforJ. webforJ no ofrece garantías sobre la precisión, confiabilidad o integridad de estas traducciones de IA.",
+    "message": "Esta página ha sido traducida automáticamente mediante IA y puede contener errores o inexactitudes. Para la información más precisa y actualizada, consulte la documentación oficial de webforJ. webforJ no ofrece garantías sobre la exactitud, fiabilidad o integridad de estas traducciones de IA.",
     "description": "Translation notice for non-English pages"
   },
   "component.askMenu.chatgpt.label": {
@@ -24,11 +24,11 @@
     "description": "Markdown button label"
   },
   "component.askMenu.markdown.desc": {
-    "message": "Ver el código fuente markdown",
+    "message": "Ver la fuente markdown en bruto",
     "description": "Markdown button description"
   },
   "component.archetype.intro": {
-    "message": "Para crear y estructurar un nuevo proyecto {project}, siga estos pasos:",
+    "message": "Para crear y estructurar un nuevo proyecto {project}, sigue estos pasos:",
     "description": "Introduction text for archetype component"
   },
   "component.archetype.step1.title": {
@@ -36,7 +36,7 @@
     "description": "Step 1 title"
   },
   "component.archetype.step1.desc": {
-    "message": "Abra una terminal y muévase a la carpeta donde desea crear su nuevo proyecto.",
+    "message": "Abre una terminal y muévete a la carpeta donde deseas crear tu nuevo proyecto.",
     "description": "Step 1 description"
   },
   "component.archetype.step2.title": {
@@ -44,7 +44,7 @@
     "description": "Step 2 title"
   },
   "component.archetype.step2.desc": {
-    "message": "Use el comando Maven a continuación y personalice groupId, artifactId y version según sea necesario para su proyecto.",
+    "message": "Utiliza el comando Maven a continuación y personaliza el groupId, artifactId y versión según sea necesario para tu proyecto.",
     "description": "Step 2 description"
   },
   "component.archetype.table.argument": {
@@ -56,7 +56,7 @@
     "description": "Explanation column header"
   },
   "component.archetype.table.archetypeGroupId.desc": {
-    "message": "El ID de grupo del arquetipo es com.webforj para arquetipos webforJ.",
+    "message": "El ID del grupo del arquetipo es com.webforj para los arquetipos de webforJ.",
     "description": "archetypeGroupId description"
   },
   "component.archetype.table.archetypeArtifactId.desc": {
@@ -64,11 +64,11 @@
     "description": "archetypeArtifactId description"
   },
   "component.archetype.table.archetypeVersion.desc": {
-    "message": "Especifica la versión del arquetipo a usar. Esto garantiza que el proyecto generado sea compatible con una versión específica del arquetipo. Usar LATEST selecciona la versión más reciente disponible.",
+    "message": "Especifica la versión del arquetipo a utilizar. Esto asegura que el proyecto generado sea compatible con una versión específica del arquetipo. Usar LATEST selecciona la versión más reciente disponible.",
     "description": "archetypeVersion description"
   },
   "component.archetype.table.groupId.desc": {
-    "message": "Representa el espacio de nombres para el proyecto generado. Típicamente estructurado como un paquete Java, como org.example, y se usa para identificar de manera única su organización o dominio del proyecto.",
+    "message": "Representa el espacio de nombres para el proyecto generado. Típicamente estructurado como un paquete de Java, como org.example, y se utiliza para identificar de manera única su organización o dominio del proyecto.",
     "description": "groupId description"
   },
   "component.archetype.table.artifactId.desc": {
@@ -76,23 +76,23 @@
     "description": "artifactId description"
   },
   "component.archetype.table.version.desc": {
-    "message": "Define la versión del proyecto generado. Una convención común es MAJOR.MINOR-SNAPSHOT, como 1.0-SNAPSHOT, donde SNAPSHOT indica que el proyecto aún está en desarrollo.",
+    "message": "Define la versión del proyecto generado. Una convención común es MAYOR.MENOR-SNAPSHOT, como 1.0-SNAPSHOT, donde SNAPSHOT indica que el proyecto aún está en desarrollo.",
     "description": "version description"
   },
   "component.archetype.table.flavor.desc": {
-    "message": "Selecciona una variante del proyecto:",
+    "message": "Seleccionar un sabor de proyecto:",
     "description": "flavor description intro"
   },
   "component.archetype.table.flavor.webforj": {
-    "message": "Aplicación webforJ estándar.",
+    "message": "Aplicación estándar de webforJ.",
     "description": "webforj flavor description"
   },
   "component.archetype.table.flavor.spring": {
-    "message": "Aplicación webforJ con soporte Spring Boot (requiere webforJ 25.02 o superior).",
+    "message": "Aplicación webforJ con soporte para Spring Boot (requiere webforJ 25.02 o superior).",
     "description": "webforj-spring flavor description"
   },
   "component.archetype.table.appName.desc": {
-    "message": "Un parámetro opcional que se puede usar en el archivo POM del proyecto generado. Dependiendo del arquetipo webforJ utilizado, puede utilizarse como título predeterminado para la aplicación.",
+    "message": "Un parámetro opcional que se puede usar en el archivo POM del proyecto generado. Dependiendo del arquetipo webforJ utilizado, se puede utilizar como título predeterminado para la aplicación.",
     "description": "appName description"
   },
   "component.archetype.conclusion": {
@@ -100,15 +100,15 @@
     "description": "Conclusion text"
   },
   "theme.ErrorPageContent.title": {
-    "message": "Esta página ha fallado.",
+    "message": "Esta página se ha bloqueado.",
     "description": "The title of the fallback page when the page crashed"
   },
   "theme.BackToTopButton.buttonAriaLabel": {
-    "message": "Volver al inicio",
+    "message": "Volver arriba",
     "description": "The ARIA label for the back to top button"
   },
   "theme.blog.archive.title": {
-    "message": "File",
+    "message": "Archivo",
     "description": "The page & hero title of the blog archive page"
   },
   "theme.blog.archive.description": {
@@ -116,27 +116,27 @@
     "description": "The page & hero description of the blog archive page"
   },
   "theme.blog.paginator.navAriaLabel": {
-    "message": "Navegación de blogs",
+    "message": "Navegación de la lista de blogs",
     "description": "The ARIA label for the blog pagination"
   },
   "theme.blog.paginator.newerEntries": {
-    "message": "Entradas recientes",
+    "message": "Entradas más recientes",
     "description": "The label used to navigate to the newer blog posts page (previous page)"
   },
   "theme.blog.paginator.olderEntries": {
-    "message": "Entradas previas",
+    "message": "Entradas anteriores",
     "description": "The label used to navigate to the older blog posts page (next page)"
   },
   "theme.blog.post.paginator.navAriaLabel": {
-    "message": "Barra de navegación",
+    "message": "Navegación de publicaciones del blog",
     "description": "The ARIA label for the blog posts pagination"
   },
   "theme.blog.post.paginator.newerPost": {
-    "message": "Publicación reciente",
+    "message": "Publicación más reciente",
     "description": "The blog post button label to navigate to the newer/previous post"
   },
   "theme.blog.post.paginator.olderPost": {
-    "message": "Publicación más antigua",
+    "message": "Publicación anterior",
     "description": "The blog post button label to navigate to the older/next post"
   },
   "theme.tags.tagsPageLink": {
@@ -144,7 +144,7 @@
     "description": "The label of the link targeting the tag list page"
   },
   "theme.colorToggle.ariaLabel.mode.system": {
-    "message": "modo del sistema",
+    "message": "modo de sistema",
     "description": "The name for the system color mode"
   },
   "theme.colorToggle.ariaLabel.mode.light": {
@@ -152,23 +152,23 @@
     "description": "The name for the light color mode"
   },
   "theme.colorToggle.ariaLabel.mode.dark": {
-    "message": "Modo oscuro",
+    "message": "modo oscuro",
     "description": "The name for the dark color mode"
   },
   "theme.colorToggle.ariaLabel": {
-    "message": "Cambiar a modo {modo}",
+    "message": "Cambiar entre modo oscuro y claro (actualmente {mode})",
     "description": "The ARIA label for the color mode toggle"
   },
   "theme.docs.breadcrumbs.navAriaLabel": {
-    "message": "Ruta de navegación",
+    "message": "Migas de pan",
     "description": "The ARIA label for the breadcrumbs"
   },
   "theme.docs.DocCard.categoryDescription.plurals": {
-    "message": "1 artículo|{count} artículos",
+    "message": "1 artículo | {count} artículos",
     "description": "The default description for a category card in the generated index about how many items this category includes"
   },
   "theme.docs.paginator.navAriaLabel": {
-    "message": "Página del documento",
+    "message": "Páginas de Docs",
     "description": "The ARIA label for the docs pagination"
   },
   "theme.docs.paginator.previous": {
@@ -176,11 +176,11 @@
     "description": "The label used to navigate to the previous doc"
   },
   "theme.docs.paginator.next": {
-    "message": "Next",
+    "message": "Siguiente",
     "description": "The label used to navigate to the next doc"
   },
   "theme.docs.tagDocListPageTitle.nDocsTagged": {
-    "message": "Un documento etiquetado | {count} documentos etiquetados",
+    "message": "Un doc etiquetado|{count} docs etiquetados",
     "description": "Pluralized label for \"{count} docs tagged\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.docs.tagDocListPageTitle": {
@@ -191,15 +191,15 @@
     "message": "Versión: {versionLabel}"
   },
   "theme.docs.versions.unreleasedVersionLabel": {
-    "message": "Documentación no publicada para {siteTitle}, versión {versionLabel}.",
+    "message": "Esta es la documentación no publicada para {siteTitle} {versionLabel}.",
     "description": "The label used to tell the user that he's browsing an unreleased doc version"
   },
   "theme.docs.versions.unmaintainedVersionLabel": {
-    "message": "Esta es la documentación para {siteTitle} {versionLabel}, que ya no se mantiene.",
+    "message": "Esta es la documentación para {siteTitle} {versionLabel}, que ya no se mantiene activamente.",
     "description": "The label used to tell the user that he's browsing an unmaintained doc version"
   },
   "theme.docs.versions.latestVersionSuggestionLabel": {
-    "message": "Para la documentación actualizada, consulte {latestVersionLink} ({versionLabel}).",
+    "message": "Para documentación actualizada, consulta el {latestVersionLink} ({versionLabel}).",
     "description": "The label used to tell the user to check the latest version"
   },
   "theme.docs.versions.latestVersionLinkLabel": {
@@ -207,19 +207,19 @@
     "description": "The label used for the latest version suggestion link label"
   },
   "theme.common.editThisPage": {
-    "message": "Editar página",
+    "message": "Editar esta página",
     "description": "The link label to edit the current page"
   },
   "theme.common.headingLinkTitle": {
-    "message": "Enlace directo a {encabezado}",
+    "message": "Enlace directo a {heading}",
     "description": "Title for link to heading"
   },
   "theme.lastUpdated.atDate": {
-    "message": "es {fecha}",
+    "message": "el {date}",
     "description": "The words used to describe on which date a page has been last updated"
   },
   "theme.lastUpdated.byUser": {
-    "message": "por {usuario}",
+    "message": "por {user}",
     "description": "The words used to describe by who the page has been last updated"
   },
   "theme.lastUpdated.lastUpdatedAtBy": {
@@ -259,7 +259,7 @@
     "description": "The default label used for the Tip admonition (:::tip)"
   },
   "theme.admonition.warning": {
-    "message": "aviso",
+    "message": "advertencia",
     "description": "The default label used for the Warning admonition (:::warning)"
   },
   "theme.AnnouncementBar.closeButtonAriaLabel": {
@@ -267,15 +267,15 @@
     "description": "The ARIA label for close button of announcement bar"
   },
   "theme.blog.sidebar.navAriaLabel": {
-    "message": "Navegación de publicaciones recientes",
+    "message": "Navegación de publicaciones recientes del Blog",
     "description": "The ARIA label for recent posts in the blog sidebar"
   },
   "theme.DocSidebarItem.expandCategoryAriaLabel": {
-    "message": "Ampliar '{label}'",
+    "message": "Expandir categoría de barra lateral '{label}'",
     "description": "The ARIA label to expand the sidebar category"
   },
   "theme.DocSidebarItem.collapseCategoryAriaLabel": {
-    "message": "Colapsar categoría '{etiqueta}'",
+    "message": "Colapsar categoría de barra lateral '{label}'",
     "description": "The ARIA label to collapse the sidebar category"
   },
   "theme.NavBar.navAriaLabel": {
@@ -287,11 +287,11 @@
     "description": "The label for the mobile language switcher dropdown"
   },
   "theme.NotFound.p1": {
-    "message": "No encontrado.",
+    "message": "No pudimos encontrar lo que buscabas.",
     "description": "The first paragraph of the 404 page"
   },
   "theme.NotFound.p2": {
-    "message": "Notificar al propietario del sitio sobre el enlace roto.",
+    "message": "Por favor, contacta al propietario del sitio que te enlazó a la URL original y házle saber que su enlace está roto.",
     "description": "The 2nd paragraph of the 404 page"
   },
   "theme.TOCCollapsible.toggleButtonLabel": {
@@ -299,7 +299,7 @@
     "description": "The label used by the button on the collapsible TOC component"
   },
   "theme.blog.post.readMore": {
-    "message": "Leer Más",
+    "message": "Leer más",
     "description": "The label used in blog post item excerpts to link to full blog posts"
   },
   "theme.blog.post.readMoreLabel": {
@@ -311,23 +311,23 @@
     "description": "The copy button label on code blocks"
   },
   "theme.CodeBlock.copied": {
-    "message": "Copiar",
+    "message": "Copiado",
     "description": "The copied button label on code blocks"
   },
   "theme.CodeBlock.copyButtonAriaLabel": {
-    "message": "Copiar código",
+    "message": "Copiar código al portapapeles",
     "description": "The ARIA label for copy code blocks button"
   },
   "theme.CodeBlock.wordWrapToggle": {
-    "message": "Alternar ajuste de texto",
+    "message": "Activar salto de línea",
     "description": "The title attribute for toggle word wrapping button of code block lines"
   },
   "theme.docs.breadcrumbs.home": {
-    "message": "Inicio",
+    "message": "Página de inicio",
     "description": "The ARIA label for the home page in the breadcrumbs"
   },
   "theme.docs.sidebar.navAriaLabel": {
-    "message": "Barra lateral de Documentos",
+    "message": "Barra lateral de Docs",
     "description": "The ARIA label for the sidebar navigation"
   },
   "theme.docs.sidebar.collapseButtonTitle": {
@@ -335,58 +335,58 @@
     "description": "The title attribute for collapse button of doc sidebar"
   },
   "theme.docs.sidebar.collapseButtonAriaLabel": {
-    "message": "Colapsar menú lateral",
+    "message": "Colapsar barra lateral",
     "description": "The title attribute for collapse button of doc sidebar"
   },
   "theme.blog.post.readingTime.plurals": {
-    "message": "Lectura de un minuto | {readingTime} min",
+    "message": "Un minuto de lectura | {readingTime} min de lectura",
     "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
-    "message": "Cerrar panel lateral",
+    "message": "Cerrar barra de navegación",
     "description": "The ARIA label for close button of mobile sidebar"
   },
   "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
-    "message": "← Volver al menú",
+    "message": "← Volver al menú principal",
     "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
   },
   "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
-    "message": "Alternar menú lateral",
+    "message": "Alternar barra de navegación",
     "description": "The ARIA label for hamburger menu button of mobile navigation"
   },
   "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
-    "message": "Expandir menú",
+    "message": "Expandir el menú desplegable",
     "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
   },
   "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
-    "message": "Colapsar",
+    "message": "Colapsar el menú desplegable",
     "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
   },
   "theme.docs.sidebar.expandButtonTitle": {
-    "message": "Expandir menú lateral",
+    "message": "Expandir barra lateral",
     "description": "The ARIA label and title attribute for expand button of doc sidebar"
   },
   "theme.docs.sidebar.expandButtonAriaLabel": {
-    "message": "Expandir menú lateral",
+    "message": "Expandir barra lateral",
     "description": "The ARIA label and title attribute for expand button of doc sidebar"
   },
   "theme.SearchBar.seeAll": {
     "message": "Ver todos los {count} resultados"
   },
   "theme.SearchPage.documentsFound.plurals": {
-    "message": "Un documento encontrado | {count} documentos encontrados",
+    "message": "Un documento encontrado|{count} documentos encontrados",
     "description": "Pluralized label for \"{count} documents found\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.SearchPage.existingResultsTitle": {
-    "message": "Resultados para \"{query}\"",
+    "message": "Resultados de búsqueda para \"{query}\"",
     "description": "The search page title for non-empty query"
   },
   "theme.SearchPage.emptyResultsTitle": {
-    "message": "Buscar en la docs",
+    "message": "Buscar la documentación",
     "description": "The search page title for empty query"
   },
   "theme.SearchPage.inputPlaceholder": {
-    "message": "Escribe tu búsqueda",
+    "message": "Escriba su búsqueda aquí",
     "description": "The placeholder for search page input"
   },
   "theme.SearchPage.inputLabel": {
@@ -394,11 +394,11 @@
     "description": "The ARIA label for search page input"
   },
   "theme.SearchPage.algoliaLabel": {
-    "message": "Búsqueda con Algolia",
+    "message": "Buscar por Algolia",
     "description": "The ARIA label for Algolia mention"
   },
   "theme.SearchPage.noResultsText": {
-    "message": "Sin resultados",
+    "message": "No se encontraron resultados",
     "description": "The paragraph for empty search result"
   },
   "theme.SearchPage.fetchingNewResults": {
@@ -410,7 +410,7 @@
     "description": "The ARIA label and placeholder for search button"
   },
   "theme.SearchModal.searchBox.resetButtonTitle": {
-    "message": "Limpiar búsqueda",
+    "message": "Borrar la consulta",
     "description": "The label and ARIA label for search box reset button"
   },
   "theme.SearchModal.searchBox.cancelButtonText": {
@@ -426,7 +426,7 @@
     "description": "The text when no recent searches"
   },
   "theme.SearchModal.startScreen.saveRecentSearchButtonTitle": {
-    "message": "Guardar búsqueda",
+    "message": "Guardar esta búsqueda",
     "description": "The label for save recent search button"
   },
   "theme.SearchModal.startScreen.removeRecentSearchButtonTitle": {
@@ -434,27 +434,27 @@
     "description": "The label for remove recent search button"
   },
   "theme.SearchModal.startScreen.favoriteSearchesTitle": {
-    "message": "Favoritos",
+    "message": "Favorito",
     "description": "The title for favorite searches"
   },
   "theme.SearchModal.startScreen.removeFavoriteSearchButtonTitle": {
-    "message": "Eliminar de favoritos",
+    "message": "Eliminar esta búsqueda de favoritos",
     "description": "The label for remove favorite search button"
   },
   "theme.SearchModal.errorScreen.titleText": {
-    "message": "Sin resultados",
+    "message": "No se pueden obtener resultados",
     "description": "The title for error screen of search modal"
   },
   "theme.SearchModal.errorScreen.helpText": {
-    "message": "Verifica tu conexión.",
+    "message": "Verifique su conexión a la red.",
     "description": "The help text for error screen of search modal"
   },
   "theme.SearchModal.footer.selectText": {
-    "message": "seleccionar",
+    "message": "para seleccionar",
     "description": "The explanatory text of the action for the enter key"
   },
   "theme.SearchModal.footer.selectKeyAriaLabel": {
-    "message": "Clave de Inicio",
+    "message": "Tecla Enter",
     "description": "The ARIA label for the Enter key button that makes the selection"
   },
   "theme.SearchModal.footer.navigateText": {
@@ -466,15 +466,15 @@
     "description": "The ARIA label for the Arrow up key button that makes the navigation"
   },
   "theme.SearchModal.footer.navigateDownKeyAriaLabel": {
-    "message": "Flecha hacia abajo",
+    "message": "Flecha abajo",
     "description": "The ARIA label for the Arrow down key button that makes the navigation"
   },
   "theme.SearchModal.footer.closeText": {
-    "message": "Cerrar",
+    "message": "cerrar",
     "description": "The explanatory text of the action for Escape key"
   },
   "theme.SearchModal.footer.closeKeyAriaLabel": {
-    "message": "Esc",
+    "message": "Tecla de escape",
     "description": "The ARIA label for the Escape key button that close the modal"
   },
   "theme.SearchModal.footer.searchByText": {
@@ -486,23 +486,23 @@
     "description": "The text explains that there are no results for the following search"
   },
   "theme.SearchModal.noResultsScreen.suggestedQueryText": {
-    "message": "Buscar por",
+    "message": "Intenta buscar por",
     "description": "The text for the suggested query when no results are found for the following search"
   },
   "theme.SearchModal.noResultsScreen.reportMissingResultsText": {
-    "message": "¿Debería devolver resultados?",
+    "message": "¿Cree que esta consulta debería devolver resultados?",
     "description": "The text for the question where the user thinks there are missing results"
   },
   "theme.SearchModal.noResultsScreen.reportMissingResultsLinkText": {
-    "message": "Háganos saber.",
+    "message": "Háznoslo saber.",
     "description": "The text for the link to report missing results"
   },
   "theme.SearchModal.placeholder": {
-    "message": "Buscar Documentos",
+    "message": "Buscar docs",
     "description": "The placeholder of the input of the DocSearch pop-up modal"
   },
   "theme.blog.post.plurals": {
-    "message": "Una publicación | {count} publicaciones",
+    "message": "Una publicación|{count} publicaciones",
     "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.blog.tagTitle": {
@@ -510,11 +510,11 @@
     "description": "The title of the page for a blog tag"
   },
   "theme.blog.author.pageTitle": {
-    "message": "{authorName} - {nPublicaciones}",
+    "message": "{nombreAutor} - {nPublicaciones}",
     "description": "The title of the page for a blog author"
   },
   "theme.blog.authorsList.pageTitle": {
-    "message": "Authors",
+    "message": "Autores",
     "description": "The title of the authors page"
   },
   "theme.blog.authorsList.viewAll": {
@@ -522,31 +522,31 @@
     "description": "The label of the link targeting the blog authors page"
   },
   "theme.blog.author.noPosts": {
-    "message": "Este autor aún no ha publicado nada.",
+    "message": "Este autor no ha escrito ninguna publicación aún.",
     "description": "The text for authors with 0 blog post"
   },
   "theme.contentVisibility.unlistedBanner.title": {
-    "message": "Página no disponible",
+    "message": "Página no listada",
     "description": "The unlisted content banner title"
   },
   "theme.contentVisibility.unlistedBanner.message": {
-    "message": "Esta página no está clasificada. Solo los usuarios con el enlace directo podrán acceder.",
+    "message": "Esta página no está listada. Los motores de búsqueda no la indexarán y solo los usuarios con un enlace directo podrán acceder.",
     "description": "The unlisted content banner message"
   },
   "theme.contentVisibility.draftBanner.title": {
-    "message": "Borrador",
+    "message": "Página de borrador",
     "description": "The draft content banner title"
   },
   "theme.contentVisibility.draftBanner.message": {
-    "message": "Esta página es un borrador. Solo visible en desarrollo.",
+    "message": "Esta página es un borrador. Solo será visible en dev y estará excluida de la versión de producción.",
     "description": "The draft content banner message"
   },
   "theme.ErrorPageContent.tryAgain": {
-    "message": "Intenta nuevamente",
+    "message": "Inténtalo de nuevo",
     "description": "The label of the button to try again rendering when the React error boundary captures an error"
   },
   "theme.common.skipToMainContent": {
-    "message": "Saltar al contenido",
+    "message": "Saltar al contenido principal",
     "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
   },
   "theme.tags.tagsPageTitle": {
@@ -562,19 +562,19 @@
     "description": "Table header for description"
   },
   "tableBuilder.sections.shadowParts": {
-    "message": "Partes en sombra",
+    "message": "Partes de sombra",
     "description": "Section heading for shadow parts table"
   },
   "tableBuilder.descriptions.shadowParts": {
-    "message": "Partes de {componentName} {shadowDomLink} necesarias para estilo CSS.",
+    "message": "Estas son las partes de {componentName} {shadowDomLink}, que son necesarias para el estilo con CSS.",
     "description": "Description for shadow parts section"
   },
   "tableBuilder.shadowDom": {
-    "message": "Sombra DOM",
+    "message": "DOM sombra",
     "description": "Link text for shadow DOM"
   },
   "tableBuilder.headers.slot": {
-    "message": "Slot",
+    "message": "Ranura",
     "description": "Table header for slot name"
   },
   "tableBuilder.sections.slots": {
@@ -582,7 +582,7 @@
     "description": "Section heading for slots table"
   },
   "tableBuilder.descriptions.slots": {
-    "message": "Espacios disponibles para {componentName}. Actúan como marcadores de posición para insertar hijos en el árbol de sombras.",
+    "message": "Estos son los espacios disponibles para usar dentro del componente {componentName}. Estos espacios actúan como marcadores de posición dentro del componente que controlan dónde se insertan los hijos de un elemento personalizado dentro del árbol de sombra.",
     "description": "Description for slots section"
   },
   "tableBuilder.headers.property": {
@@ -594,7 +594,7 @@
     "description": "Section heading for CSS properties table"
   },
   "tableBuilder.descriptions.cssProperties": {
-    "message": "Propiedades CSS del componente {componentName} con descripción breve.",
+    "message": "Estas son las propiedades CSS utilizadas en el componente {componentName}, con una breve descripción de su uso.",
     "description": "Description for CSS properties section"
   },
   "tableBuilder.sections.properties": {
@@ -614,7 +614,7 @@
     "description": "Table header for type"
   },
   "tableBuilder.headers.reflects": {
-    "message": "Reflections",
+    "message": "Reflejos",
     "description": "Table header for reflects"
   },
   "tableBuilder.headers.default": {
@@ -622,7 +622,7 @@
     "description": "Table header for default value"
   },
   "tableBuilder.descriptions.properties": {
-    "message": "Propiedades del componente {componentName}. Las propiedades son variables de JavaScript relacionadas con componentes web del cliente. Son útiles para almacenar datos y controlar comportamientos, lo que hace que los componentes web sean más reutilizables y fáciles de configurar.\n\nAlgunas propiedades reflejan sus valores a atributos y viceversa. Esto significa que si estableces una propiedad, el atributo correspondiente se establece automáticamente, y si estableces un atributo, la propiedad correspondiente se establece automáticamente.",
+    "message": "Estas son las propiedades del componente {componentName}. Las propiedades son variables de JavaScript asociadas con componentes web del cliente. Son útiles para almacenar datos y controlar el comportamiento, y hacen que los componentes web sean más reutilizables y fáciles de configurar.\n\nAlgunas propiedades reflejan sus valores en atributos y viceversa. Esto significa que si estableces una propiedad, el atributo correspondiente se establece automáticamente, y si estableces un atributo, la propiedad correspondiente se establece automáticamente.",
     "description": "Description for properties section"
   },
   "tableBuilder.sections.reflectedAttributes": {
@@ -630,7 +630,7 @@
     "description": "Section heading for reflected attributes table"
   },
   "tableBuilder.descriptions.reflectedAttributes": {
-    "message": "Atributos reflejados de {componentName}. Se pueden aplicar estilos mediante estos atributos en el DOM.",
+    "message": "Estos son los atributos reflejados para el componente {componentName}. Los atributos reflejados aparecen como atributos en el elemento HTML renderizado para el componente en el DOM. Esto significa que se puede aplicar estilo utilizando estos atributos.",
     "description": "Description for reflected attributes section"
   },
   "tableBuilder.headers.event": {
@@ -642,11 +642,11 @@
     "description": "Section heading for events table"
   },
   "tableBuilder.descriptions.events": {
-    "message": "Eventos para el {componentName}.",
+    "message": "Estos son los eventos para el componente {componentName}.",
     "description": "Description for events section"
   },
   "tableBuilder.headers.methodSignature": {
-    "message": "Método de Firma",
+    "message": "Firma del Método",
     "description": "Table header for method signature"
   },
   "tableBuilder.sections.methods": {
@@ -654,7 +654,7 @@
     "description": "Section heading for methods table"
   },
   "tableBuilder.descriptions.methods": {
-    "message": "Métodos para el componente {componentName}.",
+    "message": "Estos son los métodos para el componente {componentName}.",
     "description": "Description for methods section"
   },
   "tableBuilder.sections.dependentComponents": {
@@ -662,7 +662,7 @@
     "description": "Section heading for dependent components"
   },
   "tableBuilder.descriptions.dependentComponents": {
-    "message": "Los siguientes componentes dependen de {componentName}.",
+    "message": "Los siguientes componentes dependen del componente {componentName}.",
     "description": "Description for dependent components section"
   },
   "tableBuilder.sections.dependencies": {
@@ -670,7 +670,7 @@
     "description": "Section heading for dependencies"
   },
   "tableBuilder.descriptions.dependencies": {
-    "message": "El componente {componentName} depende de los siguientes componentes del cliente. Los componentes del cliente son solo del lado del cliente y no se pueden instanciar directamente. Consulte el artículo relacionado para más detalles sobre el estilo.",
+    "message": "El componente {componentName} depende de los siguientes componentes del cliente. Los componentes del cliente son solo del lado del cliente y no se pueden instanciar directamente. Consulte el artículo relacionado para obtener información más detallada sobre el estilo.",
     "description": "Description for dependencies section"
   },
   "componentDemo.hideCode": {
@@ -690,27 +690,27 @@
     "description": "Button text to show all lines of code"
   },
   "componentArchetype.instructions": {
-    "message": "Para crear y estructurar un nuevo proyecto {project}, sigue estos pasos:",
+    "message": "proyecto, sigue estos pasos:",
     "description": "Instructions for creating a new project"
   },
   "componentArchetype.step1": {
-    "message": "{strong}Navegar al directorio correcto{/strong}: Abre una terminal y muévete a la carpeta donde deseas crear tu nuevo proyecto.",
+    "message": "{strong}Navegar al directorio adecuado{/strong}: Abre un terminal y ve a la carpeta donde quieres crear tu nuevo proyecto.",
     "description": "First step instruction"
   },
   "componentArchetype.step2": {
-    "message": "{strong}Ejecuta el comando {code}archetype:generate{/code}{/strong}: Usa el comando de Maven a continuación y personaliza el {code}groupId{/code}, {code}artifactId{/code} y {code}version{/code} según sea necesario para tu proyecto.",
+    "message": "{strong}Ejecuta el comando {code}archetype:generate{/code}{/strong}: Utiliza el comando de Maven a continuación y personaliza el {code}groupId{/code}, {code}artifactId{/code} y {code}version{/code} según sea necesario para tu proyecto.",
     "description": "Second step instruction"
   },
   "componentArchetype.table.argument": {
-    "message": "Argument",
+    "message": "Argumento",
     "description": "Table header for argument column"
   },
   "componentArchetype.table.explanation": {
-    "message": "Explanation",
+    "message": "Explicación",
     "description": "Table header for explanation column"
   },
   "componentArchetype.finalInstruction": {
-    "message": "Después de ejecutar el comando, Maven generará los archivos de proyecto necesarios para ejecutar el proyecto.",
+    "message": "Después de ejecutar el comando, Maven generará los archivos del proyecto necesarios para ejecutar el proyecto.",
     "description": "Final instruction about Maven generating project files"
   }
 }

@@ -1,92 +1,171 @@
 ---
 sidebar_position: 2
 title: Composite Components
-draft: false
-_i18n_hash: 864d51bda31fc239bb58f5886ca7eeb4
+sidebar_class_name: updated-content
+_i18n_hash: 997bb40968c4f4ede5eccb00c27e5305
 ---
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
-Les développeurs souhaiteront souvent créer des composants contenant des composants constituants pour une utilisation au niveau de l'application. Le composant `Composite` fournit aux développeurs les outils nécessaires pour créer leurs propres composants tout en maintenant le contrôle sur ce qu'ils choisissent d'exposer aux utilisateurs.
+Le composant `Composite` combine les composants webforJ existants en composants autonomes et réutilisables avec un comportement personnalisé. Utilisez-le pour encapsuler des composants webforJ internes dans des unités de logique métier réutilisables, réutiliser des modèles de composants dans toute votre application et combiner plusieurs composants sans exposer les détails d'implémentation.
 
-Il permet aux développeurs de gérer un type spécifique d'instance `Component`, offrant un moyen d'encapsuler son comportement. Il exige de toute sous-classe étendue qu'elle spécifie le type de `Component` qu'elle entend gérer, garantissant qu'une sous-classe de `Composite` est intrinsèquement liée à son `Component` sous-jacent.
+Un composant `Composite` a une forte association avec un composant sous-jacent lié. Cela vous donne le contrôle sur les méthodes et propriétés auxquelles les utilisateurs peuvent accéder, contrairement à l'héritage traditionnel où tout est exposé.
 
-:::tip
-Il est fortement recommandé de créer des composants personnalisés en utilisant le composant `Composite`, plutôt qu'en étendant le composant de base `Component`.
-:::
+Si vous devez intégrer des composants web provenant d'une autre source, utilisez des alternatives spécialisées :
 
-Pour utiliser le composant `Composite`, commencez par créer une nouvelle classe Java qui étend le composant `Composite`. Spécifiez le type de composant que vous souhaitez gérer en tant que paramètre de type générique.
+- [ElementComposite](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementComposite.html) : Pour les composants web avec une gestion des propriétés de type sécurisé
+- [ElementCompositeContainer](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementCompositeContainer.html) : Pour les composants web qui acceptent du contenu à emplacements
 
-```java
-public class ApplicationComponent extends Composite<Div> {
-	//Implementation
+## Utilisation {#usage}
+
+Pour définir un composant `Composite`, prolongez la classe `Composite` et spécifiez le type de composant qu'il gère. Cela devient votre composant lié, qui est le conteneur racine contenant votre structure interne :
+
+```java title="BasicComposite.java"
+public class BasicComposite extends Composite<FlexLayout> {
+
+  public BasicComposite() {
+    // Accédez au composant lié pour le configurer
+    getBoundComponent()
+      .setDirection(FlexDirection.COLUMN)
+      .setSpacing("3px")
+      .add(new TextField(), new Button("Soumettre"));
+  }
 }
 ```
 
-## Liaison de composants {#component-binding}
+La méthode `getBoundComponent()` fournit un accès à votre composant sous-jacent, vous permettant de configurer ses propriétés, d'ajouter des composants enfants et de gérer son comportement directement.
 
-La classe `Composite` nécessite que les développeurs spécifient le type de `Component` qu'elle gère. Cette association forte garantit qu'un composant `Composite` est intrinsèquement lié à son `Component` sous-jacent. Cela offre également des avantages par rapport à l'héritage traditionnel, car cela permet au développeur de décider exactement quelle fonctionnalité exposer à l'API publique.
+Le composant lié peut être n'importe quel [composant webforJ](../components/overview) ou [composant élément HTML](/docs/building-ui/web-components/html-elements). Pour des mises en page flexibles, envisagez d'utiliser [`FlexLayout`](../components/flex-layout) ou [`Div`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/html/elements/Div.html) comme votre composant lié.
 
-Par défaut, le composant `Composite` utilise le paramètre de type générique de sa sous-classe pour identifier et instancier le type de composant lié. Cela se base sur l'hypothèse que la classe de composant possède un constructeur sans paramètre. Les développeurs peuvent personnaliser le processus d'initialisation du composant en substituant la méthode `initBoundComponent()`. Cela permet une plus grande flexibilité dans la création et la gestion du composant lié, y compris l'invocation de constructeurs paramétrés.
+:::note Extension de composant
+N'étendez jamais directement `Component` ou `DwcComponent`. Utilisez toujours des modèles de composition avec `Composite` pour créer des composants personnalisés.
+:::
 
-Le snippet suivant substitue la méthode initBoundComponent pour utiliser un constructeur paramétré pour la classe [FlexLayout](../components/flex-layout.md) :
+Surchargez `initBoundComponent()` lorsque vous avez besoin d'une plus grande flexibilité dans la création et la gestion du composant lié, comme l'utilisation de constructeurs paramétrés au lieu du constructeur par défaut sans argument. Utilisez ce modèle lorsque le composant lié nécessite que des composants soient passés à son constructeur plutôt que d'être ajoutés par la suite.
 
-```java
-public class OverrideComposite extends Composite<FlexLayout> {
-	
-	TextField nameField;
-	Button submit;
+```java title="CustomFormLayout.java"
+public class CustomFormLayout extends Composite<FlexLayout> {
+ private TextField nameField;
+ private TextField emailField;
+ private Button submitButton;
 
-	@Override
-	protected FlexLayout initBoundComponent() {
-		nameField = new TextField();
-		submit = new Button("Submit");
-		return new FlexLayout(nameField, submit);
-	}
+ @Override
+ protected FlexLayout initBoundComponent() {
+   nameField = new TextField("Nom");
+   emailField = new TextField("Email");
+   submitButton = new Button("Soumettre");
+
+   FlexLayout layout = new FlexLayout(nameField, emailField, submitButton);
+   layout.setDirection(FlexDirection.COLUMN);
+   layout.setSpacing("10px");
+
+   return layout;
+ }
 }
 ```
 
-## Gestion du cycle de vie {#lifecycle-management}
+## Cycle de vie des composants {#component-lifecycle}
 
-Contrairement à `Component`, les développeurs n'ont pas besoin d'implémenter les méthodes `onCreate()` et `onDestroy()` lorsqu'ils travaillent avec le composant `Composite`. Le composant `Composite` s'occupe de ces aspects pour vous.
-
-Si vous devez accéder aux composants liés à différents stades de son cycle de vie, les hooks `onDidCreate()` et `onDidDestroy()` permettent aux développeurs d'accéder à ces étapes du cycle de vie pour effectuer des opérations supplémentaires. L'utilisation de ces hooks est facultative.
-
-La méthode `onDidCreate()` est appelée immédiatement après que le composant lié a été créé et ajouté à une fenêtre. Utilisez cette méthode pour configurer votre composant, modifier toute configuration nécessaire, et ajouter des composants enfants si applicable. Alors que la méthode `onCreate()` de la classe `Component` prend une instance de [Window](#), la méthode `onDidCreate()` prend à la place le composant lié, éliminant ainsi le besoin d'appeler directement la méthode `getBoundComponent()`. Par exemple :
+webforJ gère automatiquement toute la gestion du cycle de vie des composants `Composite`. En utilisant la méthode `getBoundComponent()`, la plupart des comportements personnalisés peuvent être gérés dans le constructeur, y compris l'ajout de composants enfants, la définition de propriétés, la configuration de la mise en page de base et l'enregistrement des événements.
 
 ```java
-public class ApplicationComponent extends Composite<Div> {
-	@Override
-	protected void onDidCreate(Div container) {
-		// Ajouter des composants enfants au conteneur
-		container.add(new CheckBox());
-		container.add(new Paragraph());
-		// ...
-	}
+public class UserDashboard extends Composite<FlexLayout> {
+ private TextField searchField;
+ private Button searchButton;
+ private Div resultsContainer;
+
+ public UserDashboard() {
+   initializeComponents();
+   setupLayout();
+   configureEvents();
+ }
+
+ private void initializeComponents() {
+   searchField = new TextField("Rechercher des utilisateurs...");
+   searchButton = new Button("Rechercher");
+   resultsContainer = new Div();
+ }
+
+ private void setupLayout() {
+   FlexLayout searchRow = new FlexLayout(searchField, searchButton);
+   searchRow.setAlignment(FlexAlignment.CENTER);
+   searchRow.setSpacing("8px");
+
+   getBoundComponent()
+     .setDirection(FlexDirection.COLUMN)
+     .add(searchRow, resultsContainer);
+ }
+
+ private void configureEvents() {
+   searchButton.onClick(event -> performSearch());
+ }
+
+ private void performSearch() {
+   // Logique de recherche ici
+ }
 }
 ```
 
-:::tip
-Cette logique peut également être implémentée dans le constructeur, en appelant `getBoundComponent()`.
-:::
+Si vous avez des exigences spécifiques de configuration ou de nettoyage supplémentaires, vous devrez peut-être utiliser les hooks de cycle de vie optionnels `onDidCreate()` et `onDidDestroy()` :
 
-De même, la méthode `onDidDestroy()` se déclenche une fois que le composant lié a été détruit, et permet d'exécuter un comportement supplémentaire lors de la destruction si cela est souhaité.
+```java
+public class DataVisualizationPanel extends Composite<Div> {
+ private Interval refreshInterval;
 
-### Exemple de composant `Composite` {#example-composite-component}
+ @Override
+ protected void onDidCreate(Div container) {
+   // Initialiser les composants nécessitant une attache DOM
+   refreshInterval = new Interval(5.0, event -> updateData());
+   refreshInterval.start();
+ }
 
-Dans l'exemple suivant, une application ToDo simple a été créée, où chaque élément ajouté à la liste est un composant `Composite`, composé d'un [`RadioButton`](../components/radio-button.md) stylé comme un interrupteur, et d'un [`Div`](#) avec du texte.
+ @Override
+ protected void onDidDestroy() {
+   // Nettoyer les ressources
+   if (refreshInterval != null) {
+     refreshInterval.stop();
+   }
+ }
 
-La logique pour ce composant est configurée dans le constructeur, qui définit le style et ajoute des composants constituants au composant lié en utilisant la méthode `getBoundComponent`, et ajoute la logique d'événements.
+ private void updateData() {
+   // Logique de mise à jour des données
+ }
+}
+```
 
-:::tip
-Cela pourrait également être implémenté dans la méthode `onDidCreate()`, qui donnerait un accès direct au composant lié [`FlexLayout`](../components/flex-layout.md).
-:::
+Si vous devez effectuer des actions après l'attachement du composant au DOM, utilisez la méthode `whenAttached()` :
 
-Ce composant est ensuite instancié et utilisé dans une Application, permettant son utilisation dans divers emplacements, en faisant un outil puissant pour la création de composants personnalisés.
+```java title="InteractiveMap.java"
+public class InteractiveMap extends Composite<Div> {
+  public InteractiveMap() {
+    setupMapContainer();
+
+    whenAttached().thenAccept(component -> {
+      initializeMapLibrary();
+      loadMapData();
+    });
+  }
+}
+```
+
+## Exemple de composant `Composite` {#example-composite-component}
+
+L'exemple suivant démontre une application Todo où chaque élément est un composant `Composite` composé d'un [`RadioButton`](../components/radiobutton) stylé comme un interrupteur et d'un Div avec du texte :
 
 <ComponentDemo 
 path='/webforj/composite?' 
-cssURL='/css/composite.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeView.java'
-height='550px'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/composite/composite.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/composite/CompositeView.java'
+height='500px'
+/>
+
+## Exemple : Groupement de composants {#example-component-grouping}
+
+Parfois, vous souhaiterez peut-être utiliser un `Composite` pour regrouper des composants connexes en une seule unité, même lorsque la réutilisabilité n'est pas la principale préoccupation :
+
+<ComponentDemo
+path='/webforj/analyticscardcomposite?'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/composite/analyticscomposite.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/composite/AnalyticsCardCompositeView.java'
+height='500px'
 />

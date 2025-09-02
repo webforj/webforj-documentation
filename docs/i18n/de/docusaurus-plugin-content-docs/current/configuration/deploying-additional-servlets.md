@@ -2,29 +2,29 @@
 sidebar_position: 35
 title: Deploying Additional Servlets
 sidebar_class_name: new-content
-_i18n_hash: 0717fa071511a4ca3b71dcf0592146e7
+_i18n_hash: 95695a68854d595e78a58904d7214208
 ---
 <!-- vale off -->
 # Bereitstellung zusätzlicher Servlets <DocChip chip='since' label='25.02' />
 <!-- vale on -->
 
-webforJ leitet alle Anfragen standardmäßig über `WebforjServlet`, das in der web.xml auf `/*` abgebildet ist. Dieses Servlet verwaltet den Lebenszyklus von Komponenten, das Routing und die UI-Aktualisierungen, die Ihre webforJ-App antreiben.
+webforJ leitet alle Anfragen standardmäßig über `WebforjServlet`, das in web.xml auf `/*` abgebildet ist. Dieses Servlet verwaltet den Lebenszyklus der Komponenten, das Routing und die UI-Aktualisierungen, die Ihre webforJ-App antreiben.
 
-In einigen Szenarien müssen Sie möglicherweise zusätzliche Servlets neben Ihrer webforJ-App bereitstellen:
-- Integration von Drittanbieterbibliotheken, die ihre eigenen Servlets bereitstellen
+In einigen Szenarien müssen Sie möglicherweise zusätzliche Servlets zusammen mit Ihrer webforJ-App bereitstellen:
+- Integration von Drittanbieterbibliotheken, die eigene Servlets bereitstellen
 - Implementierung von REST-APIs oder Webhooks
-- Verarbeitung von Dateiuploads mit benutzerdefinierter Verarbeitung
+- Handhabung von Datei-Uploads mit benutzerdefinierten Verarbeitungen
 - Unterstützung von legacy servlet-basiertem Code
 
-webforJ bietet zwei Ansätze zur Bereitstellung benutzerdefinierter Servlets neben Ihrer App:
+webforJ bietet zwei Ansätze zur Bereitstellung benutzerdefinierter Servlets zusammen mit Ihrer App:
 
-## Ansatz 1: Remapping `WebforjServlet` {#approach-1-remapping-webforjservlet}
+## Ansatz 1: Neuausbildung von `WebforjServlet` {#approach-1-remapping-webforjservlet}
 
-Dieser Ansatz remapped das `WebforjServlet` von `/*` auf einen bestimmten Pfad wie `/ui/*`, wodurch der URL-Namespace für benutzerdefinierte Servlets freigegeben wird. Obwohl dies eine Anpassung der web.xml erfordert, ermöglicht es benutzerdefinierten Servlets den direkten Zugriff auf ihre URL-Muster ohne Proxy-Overhead.
+Dieser Ansatz bildet das `WebforjServlet` von `/*` auf einen spezifischen Pfad wie `/ui/*` um und gibt den URL-Namespace für benutzerdefinierte Servlets frei. Obwohl dies eine Änderung von `web.xml` erfordert, haben benutzerdefinierte Servlets direkten Zugriff auf ihre URL-Muster ohne Proxy-Überkopf.
 
 ```xml
 <web-app>
-  <!-- WebforjServlet remapped um nur /ui/* zu behandeln -->
+  <!-- WebforjServlet umgeleitet, um nur /ui/* zu verarbeiten -->
   <servlet>
     <servlet-name>WebforjServlet</servlet-name>
     <servlet-class>com.webforj.servlet.WebforjServlet</servlet-class>
@@ -49,24 +49,24 @@ Dieser Ansatz remapped das `WebforjServlet` von `/*` auf einen bestimmten Pfad w
 
 Mit dieser Konfiguration:
 - webforJ-Komponenten sind unter `/ui/` zugänglich
-- Das benutzerdefinierte Servlet bearbeitet Anfragen an `/hello-world`
-- Kein Proxy-Mechanismus - direktes Routing des Servlet-Containers
+- Benutzerdefiniertes Servlet bearbeitet Anfragen an `/hello-world`
+- Kein Proxy-Mechanismus beteiligt - direkte Servlet-Container-Routing
 
 :::tip Spring Boot-Konfiguration
-Wenn Sie webforJ mit Spring Boot verwenden, gibt es keine `web.xml`-Datei. Stattdessen konfigurieren Sie das Servlet-Mapping in der `application.properties`:
+Beim Einsatz von webforJ mit Spring Boot gibt es keine `web.xml`-Datei. Stattdessen konfigurieren Sie das Servlet-Mapping in `application.properties`:
 
 ```Ini
 webforj.servlet-mapping=/ui/*
 ```
 
-Dieses Property remapped `WebforjServlet` von dem Standard `/*` auf `/ui/*`, wodurch der URL-Namespace für Ihre benutzerdefinierten Servlets freigegeben wird. Fügen Sie keine Anführungszeichen um den Wert hinzu - sie werden als Teil des URL-Musters interpretiert.
+Dieses Property bildet das `WebforjServlet` von dem Standard `/*` auf `/ui/*` um und gibt den URL-Namespace für Ihre benutzerdefinierten Servlets frei. Schließen Sie keine Anführungszeichen um den Wert ein - diese werden als Teil des URL-Musters interpretiert.
 :::
 
-## Ansatz 2: Proxy-Konfiguration von `WebforjServlet` {#approach-2-webforjservlet-proxy-configuration}
+## Ansatz 2: `WebforjServlet` Proxy-Konfiguration {#approach-2-webforjservlet-proxy-configuration}
 
-Dieser Ansatz behält `WebforjServlet` bei `/*` und konfiguriert benutzerdefinierte Servlets in `webforJ.conf`. Das `WebforjServlet` fängt alle Anfragen ab und leitet übereinstimmende Muster an Ihre benutzerdefinierten Servlets weiter.
+Dieser Ansatz behält das `WebforjServlet` bei `/*` und konfiguriert benutzerdefinierte Servlets in `webforj.conf`. Das `WebforjServlet` interceptiert alle Anfragen und protokolliert übereinstimmende Muster an Ihre benutzerdefinierten Servlets.
 
-### Standard-web.xml-Konfiguration {#standard-webxml-configuration}
+### Standard web.xml-Konfiguration {#standard-webxml-configuration}
 
 ```xml
 <servlet>
@@ -94,10 +94,14 @@ Dieser Ansatz behält `WebforjServlet` bei `/*` und konfiguriert benutzerdefinie
 ### webforJ.conf-Konfiguration {#webforjconf-configuration}
 
 ```hocon
-servlets = [
+servlets: [
   {
-    name = "hello-world"
-    class = "com.example.HelloWorldServlet"
+    class: "com.example.HelloWorldServlet",
+    name: "hello-world",
+    config: {
+      foo: "bar",
+      baz: "bang"
+    }
   }
 ]
 ```
@@ -105,3 +109,4 @@ servlets = [
 Mit dieser Konfiguration:
 - `WebforjServlet` verarbeitet alle Anfragen
 - Anfragen an `/hello-world` werden an `HelloWorldServlet` weitergeleitet
+- Der optionale `config`-Schlüssel bietet Name/Wert-Paare als Initialisierungsparameter für das Servlet

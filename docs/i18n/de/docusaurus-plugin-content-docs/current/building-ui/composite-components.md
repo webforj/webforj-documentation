@@ -1,92 +1,171 @@
 ---
 sidebar_position: 2
 title: Composite Components
-draft: false
-_i18n_hash: 864d51bda31fc239bb58f5886ca7eeb4
+sidebar_class_name: updated-content
+_i18n_hash: 997bb40968c4f4ede5eccb00c27e5305
 ---
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
-Entwickler möchten häufig Komponenten erstellen, die konstitutive Komponenten für den Anwendungsgebrauch enthalten. Die `Composite`-Komponente gibt Entwicklern die Werkzeuge, die sie benötigen, um ihre eigenen Komponenten zu erstellen und gleichzeitig die Kontrolle darüber zu behalten, was sie den Benutzern zur Verfügung stellen möchten.
+Die `Composite`-Komponente kombiniert bestehende webforJ-Komponenten zu eigenständigen, wiederverwendbaren Komponenten mit benutzerdefiniertem Verhalten. Verwenden Sie sie, um interne webforJ-Komponenten in wiederverwendbare Geschäftseinheiten zu verpacken, Komponentenmuster in Ihrer Anwendung wiederzuverwenden und mehrere Komponenten zusammenzuführen, ohne Implementierungsdetails offenzulegen.
 
-Sie ermöglicht es Entwicklern, eine spezifische Art von `Component`-Instanz zu verwalten, und bietet eine Möglichkeit, ihr Verhalten zu kapseln. Es erfordert, dass jede abgeleitete Unterklasse den Typ von `Component`, den sie verwalten möchte, spezifiziert, wodurch sichergestellt wird, dass eine Unterklasse von `Composite` intrinsisch mit ihrer zugrunde liegenden `Component` verbunden ist.
+Eine `Composite`-Komponente hat eine starke Assoziation mit einer zugrunde liegenden gebundenen Komponente. Dies gibt Ihnen die Kontrolle darüber, auf welche Methoden und Eigenschaften Benutzer zugreifen können, im Gegensatz zu traditioneller Vererbung, bei der alles offengelegt wird.
 
-:::tip
-Es wird dringend empfohlen, benutzerdefinierte Komponenten unter Verwendung der `Composite`-Komponente zu erstellen, anstatt die Basiskomponente `Component` zu erweitern.
-:::
+Wenn Sie web Komponenten aus einer anderen Quelle integrieren müssen, verwenden Sie spezialisierte Alternativen:
 
-Um die `Composite`-Komponente zu nutzen, beginnen Sie damit, eine neue Java-Klasse zu erstellen, die die `Composite`-Komponente erweitert. Geben Sie den Typ der Komponente an, die Sie als generischen Typ verwalten möchten.
+- [ElementComposite](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementComposite.html): Für web Komponenten mit typsicherem Eigenschaftenmanagement
+- [ElementCompositeContainer](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/element/ElementCompositeContainer.html): Für web Komponenten, die eingesetzte Inhalte akzeptieren
 
-```java
-public class ApplicationComponent extends Composite<Div> {
-	//Implementierung
+## Nutzung {#usage}
+
+Um eine `Composite`-Komponente zu definieren, erweitern Sie die `Composite`-Klasse und geben Sie den Typ der Komponente an, die sie verwaltet. Dies wird Ihre gebundene Komponente, die das Wurzelcontainer ist, das Ihre interne Struktur hält:
+
+```java title="BasicComposite.java"
+public class BasicComposite extends Composite<FlexLayout> {
+
+  public BasicComposite() {
+    // Zugriff auf die gebundene Komponente zur Konfiguration
+    getBoundComponent()
+      .setDirection(FlexDirection.COLUMN)
+      .setSpacing("3px")
+      .add(new TextField(), new Button("Einreichen"));
+  }
 }
 ```
 
-## Komponentenbindung {#component-binding}
+Die Methode `getBoundComponent()` bietet Zugriff auf Ihre zugrunde liegende Komponente, sodass Sie deren Eigenschaften konfigurieren, untergeordnete Komponenten hinzufügen und deren Verhalten direkt verwalten können.
 
-Die `Composite`-Klasse erfordert von Entwicklern, den Typ der `Component`, die sie verwaltet, anzugeben. Diese starke Assoziation stellt sicher, dass eine `Composite`-Komponente intrinsisch mit ihrer zugrunde liegenden Komponente verbunden ist. Dies bietet auch Vorteile gegenüber traditioneller Vererbung, da es dem Entwickler ermöglicht, genau zu entscheiden, welche Funktionalität in die öffentliche API aufgenommen wird.
+Die gebundene Komponente kann jede [webforJ-Komponente](../components/overview) oder [HTML-Elementkomponente](/docs/building-ui/web-components/html-elements) sein. Für flexible Layouts ziehen Sie in Betracht, [`FlexLayout`](../components/flex-layout) oder [`Div`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/html/elements/Div.html) als Ihre gebundene Komponente zu verwenden.
 
-Standardmäßig verwendet die `Composite`-Komponente den generischen Typ ihrer Unterklasse, um den gebundenen Komponententyp zu identifizieren und zu instanziieren. Dies basiert auf der Annahme, dass die Komponentenklasse einen parameterlosen Konstruktor hat. Entwickler können den Initialisierungsprozess der Komponente anpassen, indem sie die Methode `initBoundComponent()` überschreiben. Dies ermöglicht eine größere Flexibilität bei der Erstellung und Verwaltung der gebundenen Komponente, einschließlich des Aufrufs von parametrierten Konstruktoren.
+:::note Komponenten-Erweiterung
+Erweitern Sie niemals `Component` oder `DwcComponent` direkt. Verwenden Sie immer Kompositionsmuster mit `Composite`, um benutzerdefinierte Komponenten zu erstellen.
+:::
 
-Der folgende Code überschreibt die Methode `initBoundComponent`, um einen parametrisierten Konstruktor für die [FlexLayout](../components/flex-layout.md)-Klasse zu verwenden:
+Überschreiben Sie `initBoundComponent()`, wenn Sie mehr Flexibilität bei der Erstellung und Verwaltung der gebundenen Komponente benötigen, z. B. durch die Verwendung von parametrierten Konstruktoren anstelle des Standard-Konstruktors ohne Argumente. Verwenden Sie dieses Muster, wenn die gebundene Komponente erfordert, dass Komponenten an ihren Konstruktor übergeben werden, anstatt nachträglich hinzugefügt zu werden.
 
-```java
-public class OverrideComposite extends Composite<FlexLayout> {
-	
-	TextField nameField;
-	Button submit;
+```java title="CustomFormLayout.java"
+public class CustomFormLayout extends Composite<FlexLayout> {
+ private TextField nameField;
+ private TextField emailField;
+ private Button submitButton;
 
-	@Override
-	protected FlexLayout initBoundComponent() {
-		nameField = new TextField();
-		submit = new Button("Absenden");
-		return new FlexLayout(nameField, submit);
-	}
+ @Override
+ protected FlexLayout initBoundComponent() {
+   nameField = new TextField("Name");
+   emailField = new TextField("E-Mail");
+   submitButton = new Button("Einreichen");
+
+   FlexLayout layout = new FlexLayout(nameField, emailField, submitButton);
+   layout.setDirection(FlexDirection.COLUMN);
+   layout.setSpacing("10px");
+
+   return layout;
+ }
 }
 ```
 
-## Lebenszyklusverwaltung {#lifecycle-management}
+## Lebenszyklus der Komponente {#component-lifecycle}
 
-Im Gegensatz zur `Component` müssen Entwickler die Methoden `onCreate()` und `onDestroy()` beim Arbeiten mit der `Composite`-Komponente nicht implementieren. Die `Composite`-Komponente kümmert sich um diese Aspekte für Sie.
-
-Sollten Sie auf die gebundenen Komponenten in den verschiedenen Phasen ihres Lebenszyklus zugreifen müssen, ermöglichen die `onDidCreate()`- und `onDidDestroy()`-Hooks den Entwicklern den Zugriff auf diese Lebenszyklusphasen, um zusätzliche Funktionalität auszuführen. Die Nutzung dieser Hooks ist optional.
-
-Die Methode `onDidCreate()` wird unmittelbar nach der Erstellung und Hinzufügung der gebundenen Komponente zu einem Fenster aufgerufen. Verwenden Sie diese Methode, um Ihre Komponente einzurichten, erforderliche Konfigurationen zu ändern und gegebenenfalls untergeordnete Komponenten hinzuzufügen. Während die `onCreate()`-Methode der `Component`-Klasse eine [Window](#)-Instanz entgegennimmt, nimmt die Methode `onDidCreate()` stattdessen die gebundene Komponente entgegen, sodass der Aufruf der Methode `getBoundComponent()` nicht mehr erforderlich ist. Zum Beispiel:
+webforJ übernimmt automatisch die gesamte Lebenszyklusverwaltung für `Composite`-Komponenten. Durch die Verwendung der Methode `getBoundComponent()` kann das meiste benutzerdefinierte Verhalten im Konstruktor behandelt werden, einschließlich des Hinzufügens untergeordneter Komponenten, des Setzens von Eigenschaften, der grundlegenden Layout-Einrichtung und der Ereignisregistrierung.
 
 ```java
-public class ApplicationComponent extends Composite<Div> {
-	@Override
-	protected void onDidCreate(Div container) {
-		// Fügen Sie untergeordnete Komponenten zum Container hinzu
-		container.add(new CheckBox());
-		container.add(new Paragraph());
-		// ...
-	}
+public class UserDashboard extends Composite<FlexLayout> {
+ private TextField searchField;
+ private Button searchButton;
+ private Div resultsContainer;
+
+ public UserDashboard() {
+   initializeComponents();
+   setupLayout();
+   configureEvents();
+ }
+
+ private void initializeComponents() {
+   searchField = new TextField("Benutzer suchen...");
+   searchButton = new Button("Suchen");
+   resultsContainer = new Div();
+ }
+
+ private void setupLayout() {
+   FlexLayout searchRow = new FlexLayout(searchField, searchButton);
+   searchRow.setAlignment(FlexAlignment.CENTER);
+   searchRow.setSpacing("8px");
+
+   getBoundComponent()
+     .setDirection(FlexDirection.COLUMN)
+     .add(searchRow, resultsContainer);
+ }
+
+ private void configureEvents() {
+   searchButton.onClick(event -> performSearch());
+ }
+
+ private void performSearch() {
+   // Suchlogik hier
+ }
 }
 ```
 
-:::tip
-Diese Logik kann auch im Konstruktor implementiert werden, indem `getBoundComponent()` aufgerufen wird.
-:::
+Wenn Sie zusätzliche spezifische Anforderungen für die Einrichtung oder Bereinigung haben, müssen Sie möglicherweise die optionalen Lebenszyklus-Hooks `onDidCreate()` und `onDidDestroy()` verwenden:
 
-Ebenso wird die Methode `onDidDestroy()` aufgerufen, sobald die gebundene Komponente zerstört wurde, und ermöglicht es, zusätzliches Verhalten beim Zerstören auszulösen, falls gewünscht.
+```java
+public class DataVisualizationPanel extends Composite<Div> {
+ private Interval refreshInterval;
 
-### Beispiel `Composite`-Komponente {#example-composite-component}
+ @Override
+ protected void onDidCreate(Div container) {
+   // Initialisieren Sie Komponenten, die eine DOM-Anhängigkeit erfordern
+   refreshInterval = new Interval(5.0, event -> updateData());
+   refreshInterval.start();
+ }
 
-Im folgenden Beispiel wurde eine einfache ToDo-Anwendung erstellt, bei der jeder Punkt in der Liste eine `Composite`-Komponente ist, die aus einem [`RadioButton`](../components/radio-button.md) besteht, der als Schalter gestaltet ist, und einem [`Div`](#) mit Text.
+ @Override
+ protected void onDidDestroy() {
+   // Ressourcen bereinigen
+   if (refreshInterval != null) {
+     refreshInterval.stop();
+   }
+ }
 
-Die Logik für diese Komponente wird im Konstruktor festgelegt, der das Styling festlegt und konstitutive Komponenten zur gebundenen Komponente mithilfe der Methode `getBoundComponent` hinzufügt und Ereignislogik hinzufügt.
+ private void updateData() {
+   // Datenaktualisierungslogik
+ }
+}
+```
 
-:::tip
-Dies könnte auch in der Methode `onDidCreate()` implementiert werden, die direkten Zugriff auf die gebundene [`FlexLayout`](../components/flex-layout.md)-Komponente gewährt.
-:::
+Wenn Sie nach dem Anfügen der Komponente an das DOM weitere Aktionen ausführen müssen, verwenden Sie die Methode `whenAttached()`:
 
-Diese Komponente wird dann instanziiert und in einer Anwendung verwendet und ermöglicht ihre Nutzung an verschiedenen Stellen, was sie zu einem leistungsstarken Instrument bei der Erstellung benutzerdefinierter Komponenten macht.
+```java title="InteractiveMap.java"
+public class InteractiveMap extends Composite<Div> {
+  public InteractiveMap() {
+    setupMapContainer();
+
+    whenAttached().thenAccept(component -> {
+      initializeMapLibrary();
+      loadMapData();
+    });
+  }
+}
+```
+
+## Beispiel `Composite`-Komponente {#example-composite-component}
+
+Das folgende Beispiel zeigt eine Todo-App, bei der jedes Element eine `Composite`-Komponente ist, die aus einem [`RadioButton`](../components/radiobutton) besteht, der als Schalter gestylt ist, und einem Div mit Text: 
 
 <ComponentDemo 
 path='/webforj/composite?' 
-cssURL='/css/composite.css'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/CompositeView.java'
-height='550px'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/composite/composite.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/composite/CompositeView.java'
+height='500px'
+/>
+
+## Beispiel: Komponenten Gruppierung {#example-component-grouping}
+
+Manchmal möchten Sie vielleicht ein `Composite` verwenden, um verwandte Komponenten zu einer einzigen Einheit zusammenzufassen, selbst wenn Wiederverwendbarkeit nicht das Hauptanliegen ist:
+
+<ComponentDemo
+path='/webforj/analyticscardcomposite?'
+cssURL='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static/composite/analyticscomposite.css'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/composite/AnalyticsCardCompositeView.java'
+height='500px'
 />

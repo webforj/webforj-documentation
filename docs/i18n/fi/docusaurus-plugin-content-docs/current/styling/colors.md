@@ -1,13 +1,11 @@
 ---
 sidebar_position: 3
 title: Colors
-_i18n_hash: c0e3dc5c992621c0c9cb3da24ef3964f
+_i18n_hash: d82a6a563267933d08c081faeddf2cc0
 ---
-import ColorPalette from '@site/src/components/DWCTheme/ColorPalette/ColorPalette';
+webforJ tarjoaa värijärjestelmän, joka perustuu CSS:n mukautettuihin ominaisuuksiin. Nämä värimuuttujat säilyttävät johdonmukaisen visuaalisen tyylin sovelluksessasi, samalla kun ne antavat sinulle täyden hallinnan mukauttaa värejä suunnittelutarpeidesi mukaan.
 
-webforJ tarjoaa värijärjestelmän, joka perustuu CSS:n mukautettuihin ominaisuuksiin. Nämä väri muuttujat säilyttävät johdonmukaisen visuaalisen tyylin sovelluksessasi samalla kun ne antavat sinulle täyden valvonnan mukauttaa palettia suunnittelutarpeidesi mukaan.
-
-Voit viitata mihin tahansa väriin käyttäen `--dwc-color-{palette}-{shade}` syntaksia, jossa `{palette}` on väriryhmän nimi (esim. `primary`, `danger`, jne.) ja `{shade}` on numero `5` ja `95` välillä viiden välein, mikä edustaa värin vaaleutta.
+Voit viitata mihin tahansa väriin käyttämällä syntaksia `--dwc-color-{palette}-{shade}`, jossa `{palette}` on väriryhmän nimi (esim. `primary`, `danger`, ..) ja `{shade}` on numero `5` ja `95` välillä viiden numeron välein, joka edustaa värin vaaleutta.
 
 ```css
 .element {
@@ -16,38 +14,36 @@ Voit viitata mihin tahansa väriin käyttäen `--dwc-color-{palette}-{shade}` sy
 }
 ```
 
-:::tip Sävyarvojen asteikko
-Sävyarvot vaihtelevat välillä `5` (tummimmat) ja `95` (vaaleimmat), kasvavat viiden välein.
+:::tip Varshade-arvoasteikko
+Varshade-arvot vaihtelevat `5` (tummimmat) ja `95` (vaaleimmat) välillä, lisääntyvät viiden välein.
 :::
 
-## Väripaletit {#color-palettes}
+## Väriteemat {#color-palettes}
 
-On useita käyttövalmiita väripaletteja, jotka on suunniteltu semanttisia käyttötapauksia varten, kuten brändäys, menestysviestit, varoitukset jne. Kukin paletti koostuu dynaamisesti luoduista sävyistä ja vivahteista, jotka perustuvat kolmeen keskeiseen ominaisuuteen: `hue`, `saturation` ja `contrast-threshold`.
+Saatavilla on useita valmiita väriteemoja, jotka on suunniteltu semanttisiin käyttötarkoituksiin, kuten brändäykseen, onnistumisviesteihin, varoituksiin ja muuhun. Jokainen väripaletista koostuu dynaamisesti luoduista sävyistä ja vaaleuksista, jotka perustuvat kolmeen keskeiseen ominaisuuteen: `hue`, `saturation` ja `contrast-threshold`.
 
 ### Saatavilla olevat paletit {#available-palettes}
 
-- **default**: Neutraali harmaapohjainen paletti, joka on sävytetty päävärillä, käytetään useimmissa komponenteissa.
-- **primary**: Edustaa yleensä brändisi pääväriä.
-- **success**, **warning**, **danger**: Semanttiset paletit käytettäväksi asianmukaisina tilan indikaattoreina.
-- **info**: Valinnainen täydentävä paletti toissijaiselle painotukselle.
-- **gray**: Todellinen harmaan sävyinen paletti, ilman sävyä.
-- **black/white**: Staattiset väriarvot.
+- **default**: Puhtaasti harmaaseen perustuva neutraali paletti, jota on sävytetty ensisijaisella värillä, käytetään useimmissa komponenteissa.
+- **primary**: Edustaa tyypillisesti brändisi ensisijaista väriä.
+- **success**, **warning**, **danger**: Semanttiset paletit, joita käytetään sopivien tilan ilmaisten esittämiseen.
+- **info**: Valinnainen täydentävä paletti toissijaisen korostamisen varten.
+- **gray**: Todellinen harmaasävyjen paletti, ilman sävyä.
+- **black/white**: Staattiset värimaailmat.
 
 <ColorPalette></ColorPalette>
-
 
 <br/>
 
 :::tip DWC HueCraft
-Helpottaaksesi WCAG-yhteensopivien palettien luomisprosessia webforJ-sovelluksillesi, voit käyttää [DWC HueCraft](https://webforj.github.io/huecraft/) työkalua. Se tukee palettien luomista brändivärien tai logojen perusteella ja mahdollistaa nopean CSS-viennin.
+Helpottaaksesi WCAG-yhteensopivien palettien luomista webforJ-sovelluksillesi, voit käyttää [DWC HueCraft](https://webforj.github.io/huecraft/) työkalua. Se tukee palettien luomista brändivärien tai logojen perusteella ja mahdollistaa nopean CSS-viennin.
 :::
 
+### Tumman tila käyttäytyminen {#dark-mode-behavior}
 
-### Tumma tila {#dark-mode-behavior}
+webforJ tukee käänteistä väri strategiaa tummassa tilassa. Sen sijaan, että käyttäisit täysin erillisiä väriteemoja, se kääntää vaaleusarvojen tulkintatapaa.
 
-webforJ tukee käänteistä väristrategiaa tummassa tilassa. Sen sijaan, että käyttäisit täysin erillisiä väripaletteja, se kääntää huomioväriarvoja.
-
-Tämä tarkoittaa, että **tummissa teemoissa** alhaiset sävyarvot (esim. `--dwc-color-primary-5`) muuttuvat vaaleiksi ja korkeammat arvot (esim. `--dwc-color-primary-95`) tummiksi. Logiikka kääntyy varmistamaan optimaalisen kontrastin ja luettavuuden taustojen yli.
+Tämä tarkoittaa, että **tummissa teemoissa** alhaiset shade-arvot (esim. `--dwc-color-primary-5`) muuttuvat vaaleiksi ja korkeammat arvot (esim. `--dwc-color-primary-95`) tummiksi. Logiikka käännetään optimaalisen kontrastin ja luettavuuden varmistamiseksi taustojen välillä.
 
 Komponenttikoodisi pysyy samana riippumatta teemasta. Esimerkiksi:
 
@@ -58,19 +54,19 @@ Komponenttikoodisi pysyy samana riippumatta teemasta. Esimerkiksi:
 }
 ```
 
-Vaalea tila antaa keskiväri taustan. Tumma tila antaa silti keskivärin, mutta käänteisenä visuaalisesti suljettujen pintojen päällä. Tämä lähestymistapa välttää päällekkäisyyksiä, pitää tyylisi johdonmukaisina ja tekee visuaalisista siirtymisistä sujuvia kun vaihdetaan vaaleista tummiin teemoihin.
+Valoisassa tilassa tämä antaa keskivärisen taustan. Tummassa tilassa se tarjoaa edelleen keskitason, mutta käännettynä visuaalisesti tummille pinnoille. Tämä lähestymistapa välttää päällekkäisyyksiä, pitää tyylit johdonmukaisina ja varmistaa visuaalisten siirtymien sujuvuuden vaaleista tummiin teemoihin siirryttäessä.
 
-### Palettien konfigurointi muuttujat {#palette-configuration-variables}
+### Paletin konfigurointimuuttujat {#palette-configuration-variables}
 
-Jokainen paletti luodaan seuraavien muuttujien perusteella:
+Jokainen paletti johdetaan seuraavista muuttujista:
 
 | Muuttuja               | Kuvaus |
 |------------------------|-------------|
-| `hue`                  | Kulma (asteina) väripyörällä. Yksikköinä arvoja käsitellään asteina. |
-| `saturation`           | Prosentti, joka indikoi värin voimakkuutta. `100%` on täysin kyllästetty; `0%` on harmaasävy. |
-| `contrast-threshold`   | Arvo välillä `0` ja `100`, joka määrittää, onko teksti vaaleaa vai tummaa taustavärin vaaleuden perusteella. |
+| `hue`                  | Kulma (asteina) värirenkaalla. Yksikköarvoja tulkitaan asteina. |
+| `saturation`           | Prosentti, joka ilmoittaa värin intensiivisyyden. `100%` on täysin kylläinen; `0%` on harmaaaste. |
+| `contrast-threshold`   | Arvo väliltä `0` ja `100`, joka määräytyy sen mukaan, tulisiko teksti olla vaalea vai tumma taustan vaaleuden perusteella. |
 
-Voit säätää palettia määrittelemällä nämä muuttujat juurisijoituksissasi. Esimerkiksi, muuttaaksesi pääpalettia:
+Voit säätää palettia määrittelemällä nämä muuttujat juurityylissäsi. Esimerkiksi, muuttaaksesi ensisijaista palettia:
 
 ```css
 :root {
@@ -80,84 +76,84 @@ Voit säätää palettia määrittelemällä nämä muuttujat juurisijoituksissa
 }
 ```
 
-## Komponenttien teemoittaminen abstrakteilla muuttujilla {#theming-components-with-abstract-variables}
+## Komponenttien teemoitus abstraktien muuttujien avulla {#theming-components-with-abstract-variables}
 
-Helpottaaksesi tyylittämistä ja johdonmukaisuutta komponenttien kesken, webforJ esittelee abstraktiokerroksen perusväripalettejensa päälle. Tämä kerros perustuu **abstrakteihin teema muuttujille** - CSS:n mukautetut ominaisuudet, jotka viittaavat tiettyihin sävyihin väripaletissa.
+Tyylin ja johdonmukaisuuden helpottamiseksi komponenttien välillä, webforJ esittelee abstraktiokerroksen perustason väriteemojen päälle. Tämä kerros perustuu **abstrakteihin teemu muuttujiin** - CSS:n mukautettuihin ominaisuuksiin, jotka viittaavat tiettyihin sävyihin väripalettissa.
 
-Nämä muuttujat helpottavat teemojen soveltamista kaikissa komponenteissa ilman, että suoraan viitataan raakoihin väriarvoihin tai vahahiin. Voit ajatella niitä *semanttisina tyylitien oikoreitteinä*, jotka heijastavat sovelluksesi aikomusta sen toteutustiedon sijaan.
+Nämä muuttujat helpottavat teemojen käyttöä kaikissa komponenteissa ilman, että sinun tarvitsee viitata suoraan raakoihin väriväwerteihin tai väriin. Voit ajatella niitä *semanttisina tyylityökaluna*, jotka heijastavat sovelluksesi aikomusta sen toteutuksen yksityiskohtien sijaan.
 
 ### Muuttujaryhmät {#variable-groups}
 
-Abstraktit teema muuttujat on järjestetty neljään ryhmään:
+Abstraktit teemamuuttujat on järjestetty neljään ryhmään:
 
-1. [Normaali](#normal-state) Käytetään oletusulkonäössä, kuten taustoissa ja tekstissä inaktiivisissa komponenteissa.
+1. [Normaali](#normal-state) Käytetään oletusulkoasun, kuten taustojen ja tekstin dynaamisissa komponenteissa.
 2. [Tumma](#darker-variant) Käytetään aktiivisissa tai valituissa tiloissa.
-3. [Vaalea](#lighter-variant) Käytetään hover- ja keskipisteissä.
-4. [Alt](#alt-variant) Käytetään toissijaisissa korostuksissa, kuten näppäimistöfokuksessa tai hienovaraisissa UI-vivahteissa.
+3. [Vaalea](#lighter-variant) Käytetään hover- ja fokus-tiloissa.
+4. [Alt](#alt-variant) Käytetään toissijaisissa korostuksissa, kuten näppäimistön fokuksessa tai hienovaraisissa käyttöliittymän sävyissä.
 
 Jokainen ryhmä määrittelee:
 
 - Taustaväri
 - Etualan (teksti) väri
-- Rajas väri (fokusoitu/hovered/aktiivisissa tiloissa)
-- Fokusoituväri (käytetään, kun komponentti saa näkyväfokustyylit)
+- Rantaväri (fokusoiduissa/hypiävissä/aktiivisissa tiloissa)
+- Fokus-renkaat (käytetään, kun komponentti saa näkyvän fokus-tyylin)
 
-Jokainen välilehti alla näyttää abstraktit muuttujat, jotka on määritelty tietylle paletille (`primary`, `success`, `danger`, jne.). Nämä muuttujat haetaan arvoista taustalla olevasta paletista (esim. `--dwc-color-primary-40`) ja tekevät niistä uudelleenkäytettäviä sovelluksessasi.
+Jokainen välilehti alla osoittaa abstraktit muuttujat, jotka on määritelty tietylle paletille (`primary`, `success`, `danger`, jne.). Nämä muuttujat nappaavat arvot alustan paletista (esim. `--dwc-color-primary-40`) ja tekevät niistä käytettävissä sovelluksessasi.
 
-Esimerkiksi, sen sijaan, että käyttäisit suoraan `--dwc-color-primary-40`, voit soveltaa `--dwc-color-primary`, joka abstrahoi sen roolin *oletustaustaksi* primääriselle komponentille.
+Esimerkiksi, sen sijaan, että käyttäisit suoraan `--dwc-color-primary-40`, voit soveltaa `--dwc-color-primary`, joka abstrahoi sen roolin *oletustaustana* ensisijaisille tyyli komponenteille.
 
-Palettimuutosten tekeminen yhdessä paikassa päivittää kaikkien komponenttien ulkoasun, jotka tukeutuvat näihin abstrakteihin muuttujiin.
+Muuttamalla palettin arvoja yhdessä paikassa päivittää kaikkien näiden abstraktien muuttujien varan saaneiden komponenttien ulkoasua.
 
 ### Normaali tila {#normal-state}
 
-Käytetään komponentin perustavaa, neutraalia ilmettä - kun se on käyttämättömänä eikä siihen ole vuorovaikutuksessa.
+Käytetään komponentin perus-, neutraalia ulkoasua - kun se on lepotilassa eikä sillä ole vuorovaikutusta.
 
 | Muuttuja                           | Kuvaus                                                             |
-| ---------------------------------- | ----------------------------------------------------------------------- |
-| `--dwc-color-${name}`              | Oletustaustaväri. Käytetään myös monien komponenttien rajoissa. |
-| `--dwc-color-on-${name}-text`      | Tekstiväri, joka näkyy oletustaustalla.                 |
-| `--dwc-color-${name}-text`         | Tekstiväri, kun komponentti on asetettu pintataustalle. |
-| `--dwc-border-color-${name}`       | Raja väri, käytetään pääasiassa hover, focus ja aktiivisissa tiloissa.         |
-| `--dwc-focus-ring-${name}`         | Fokusrengasvarjo, kun komponentti saa fokuksen näkyvän tyylin.   |
+| ---------------------------------- | --------------------------------------------------------------------- |
+| `--dwc-color-${name}`              | Oletus taustaväri. Käytetään myös useimmissa komponenttien rajoissa. |
+| `--dwc-color-on-${name}-text`      | Tekstiväri, joka näkyy oletus taustan yllä.                        |
+| `--dwc-color-${name}-text`         | Tekstiväri, kun komponentti on asetettu pinnan taustalle.         |
+| `--dwc-border-color-${name}`       | Rantaväri, käytetään pääasiassa hover, fokus ja aktiivisissa tiloissa. |
+| `--dwc-focus-ring-${name}`         | Fokusrenkaan varjo, kun komponentti saa näkyvän fokus-tyylin.     |
 
 ---
 
 ### Tummempi variantti {#darker-variant}
 
-Käytetään valitsemisen tai aktiivisten tilojen yhteydessä - yleensä syvempi sävy voimakkaamman kontrastin ja korostuksen vuoksi.
+Käytetään valituissa tai aktiivisissa tiloissa - yleensä syvempi sävy voimakkaamman kontrastin ja korostuksen vuoksi.
 
 | Muuttuja                                | Kuvaus                                                              |
 | --------------------------------------- | ------------------------------------------------------------------------ |
-| `--dwc-color-${name}-dark`              | Tummempi versio perusväri. Käytetään usein painettuina tai valittuina tiloina. |
-| `--dwc-color-on-${name}-text-dark`      | Tekstiväri, kun sitä käytetään tummalla taustalla.                               |
-| `--dwc-color-${name}-text-dark`         | Hiukan tummempi tekstivaihtoehto, kun sitä näytetään pinnalla.            |
+| `--dwc-color-${name}-dark`              | Tummempi versio perusväristä. Käytetään usein painetuissa tai valituissa tiloissa. |
+| `--dwc-color-on-${name}-text-dark`      | Tekstiväri, kun taustana on tumma väri.                              |
+| `--dwc-color-${name}-text-dark`         | Aavistuksen tummempi tekstivaihtoehto pinnan päällä.            |
 
 ---
 
 ### Vaaleampi variantti {#lighter-variant}
 
-Käytetään hover, focus ja vähemmän hallitsevissa visuaalisissa vihjeissä. Nämä ovat pehmeitä sävyjä, jotka on suunniteltu hienovaraiseksi vuorovaikutuspalautteeksi.
+Käytetään hover-, fokus- ja vähemmän hallitsevissa visuaalista varoitusviestintää. Nämä ovat pehmeitä sävyjä, jotka on suunniteltu hienovaraisiksi vuorovaikutuksen palautteiksi.
 
 | Muuttuja                                | Kuvaus                                                              |
 | --------------------------------------- | ------------------------------------------------------------------------ |
-| `--dwc-color-${name}-light`             | Vaaleampi versio perusväristä. Tyypillisesti käytetään hover/focus taustoissa. |
+| `--dwc-color-${name}-light`             | Vaaleampi versio perusväristä. Tyypillisesti käytetään hover/fokus taustoissa. |
 | `--dwc-color-on-${name}-text-light`     | Tekstiväri, kun se näkyy vaalealla taustalla.                             |
-| `--dwc-color-${name}-text-light`        | Vaaleampi tekstiväri käytettäväksi vähemmän korostetuissa tiloissa.                    |
+| `--dwc-color-${name}-text-light`        | Vaaleampi tekstisävy vähemmän hallitsevissa tiloissa.                    |
 
 ---
 
-### Alt variantti {#alt-variant}
+### Alt-variantti {#alt-variant}
 
-Käytetään toissijaiselle korostukselle tai UI-kohokohdille - kuten näppäimistön navigointifokusoutlineille tai apuvälineille.
+Käytetään toissijaiselle korostamiselle tai käyttöliittymän kohokohtiin - kuten näppäimistön navigoinnin fokusviivoille tai apuviesteille.
 
 | Muuttuja                                | Kuvaus                                                              |
 | --------------------------------------- | ------------------------------------------------------------------------ |
-| `--dwc-color-${name}-alt`               | Erittäin vaaleampi versio väristä, käytetään pääasiassa korostuksissa tai taustavaloissa. |
-| `--dwc-color-on-${name}-text-alt`       | Tekstiväri, kun tausta on vaihtoehtoinen (`alt`) väri.           |
+| `--dwc-color-${name}-alt`               | Erittäin vaalea versio väri, käytetään pääasiassa korostuksissa tai taustasäteilyssä. |
+| `--dwc-color-on-${name}-text-alt`       | Tekstiväri, kun taustana on vaihtoehtoinen (`alt`) väri.           |
 
 <Tabs>
 
-<TabItem value="Oletus / Sävy">
+<TabItem value="Oletus / sävy">
 
 ```css
 --dwc-color-default-dark: var(--dwc-color-default-85);
@@ -181,7 +177,7 @@ Käytetään toissijaiselle korostukselle tai UI-kohokohdille - kuten näppäimi
 
 </TabItem>
 
-<TabItem value="Pää">
+<TabItem value="Ensisijainen">
 
 ```css
 --dwc-color-primary-dark: var(--dwc-color-primary-35);
@@ -210,7 +206,7 @@ Käytetään toissijaiselle korostukselle tai UI-kohokohdille - kuten näppäimi
 
 </TabItem>
 
-<TabItem value="Menestys">
+<TabItem value="Onnistuminen">
 
 ```css
 --dwc-color-success-dark: var(--dwc-color-success-20);
@@ -233,7 +229,7 @@ Käytetään toissijaiselle korostukselle tai UI-kohokohdille - kuten näppäimi
     var(--dwc-color-success-h),
     var(--dwc-color-success-s),
     var(--dwc-focus-ring-l),
-    var(--dwc-focus-ring-a)
+    var(--dwc-color-success-a)
   );
 ```
 
@@ -262,13 +258,13 @@ Käytetään toissijaiselle korostukselle tai UI-kohokohdille - kuten näppäimi
     var(--dwc-color-warning-h),
     var(--dwc-color-warning-s),
     var(--dwc-focus-ring-l),
-    var(--dwc-focus-ring-a)
+    var(--dwc-color-warning-a)
   );
 ```
 
 </TabItem>
 
-<TabItem value="Vaara">
+<TabItem value="Vaarallisuus">
 
 ```css
 --dwc-color-danger-dark: var(--dwc-color-danger-35);
@@ -290,8 +286,8 @@ Käytetään toissijaiselle korostukselle tai UI-kohokohdille - kuten näppäimi
 --dwc-focus-ring-danger: 0 0 0 var(--dwc-focus-ring-width) hsla(
     var(--dwc-color-danger-h),
     var(--dwc-color-danger-s),
-    var(--dwc-focus-ring-l),
-    var(--dwc-focus-ring-a)
+    var(--dwc-color-danger-l),
+    var(--dwc-color-danger-a)
   );
 ```
 
@@ -320,7 +316,7 @@ Käytetään toissijaiselle korostukselle tai UI-kohokohdille - kuten näppäimi
     var(--dwc-color-info-h),
     var(--dwc-color-info-s),
     var(--dwc-focus-ring-l),
-    var(--dwc-focus-ring-a)
+    var(--dwc-color-info-a)
   );
 ```
 

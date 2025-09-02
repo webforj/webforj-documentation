@@ -3,8 +3,6 @@ sidebar_position: 8
 title: Surfaces
 ---
 
-import SurfaceBox from '@site/src/components/DWCTheme/SurfaceBox/SurfaceBox';
-
 There are three levels of surfaces used to organize the UI hierarchy, often combined with [shadows](./shadows). All [palette colors](./colors) are tested to provide sufficient contrast against these surfaces.
 
 ### Example {#example}

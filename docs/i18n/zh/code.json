@@ -1,14 +1,14 @@
 {
   "theme.docs.translationNotice": {
-    "message": "此页面已使用AI自动翻译，可能包含错误或不准确之处。如需获取最准确和最新的信息，请参阅官方webforJ文档。webforJ不对这些AI翻译的准确性、可靠性或完整性提供任何保证。",
+    "message": "该页面已通过AI自动翻译，可能含有错误或不准确之处。如需获取最准确和最新的信息，请参考官方webforJ文档。webforJ对这些AI翻译的准确性、可靠性或完整性不作任何担保。",
     "description": "Translation notice for non-English pages"
   },
   "component.askMenu.chatgpt.label": {
-    "message": "在ChatGPT中打开",
+    "message": "在 ChatGPT 中打开",
     "description": "ChatGPT button label"
   },
   "component.askMenu.chatgpt.desc": {
-    "message": "询问关于此页面的问题",
+    "message": "询问此页面的问题",
     "description": "ChatGPT button description"
   },
   "component.askMenu.claude.label": {
@@ -16,7 +16,7 @@
     "description": "Claude button label"
   },
   "component.askMenu.claude.desc": {
-    "message": "与Claude AI讨论此页面",
+    "message": "与Claude AI聊天有关此页面",
     "description": "Claude button description"
   },
   "component.askMenu.markdown.label": {
@@ -24,11 +24,11 @@
     "description": "Markdown button label"
   },
   "component.askMenu.markdown.desc": {
-    "message": "查看原始markdown源代码",
+    "message": "查看原始Markdown源码",
     "description": "Markdown button description"
   },
   "component.archetype.intro": {
-    "message": "要创建和搭建新的{project}项目，请按照以下步骤操作：",
+    "message": "要创建和搭建一个新的 {project} 项目，请按照以下步骤进行：",
     "description": "Introduction text for archetype component"
   },
   "component.archetype.step1.title": {
@@ -36,15 +36,15 @@
     "description": "Step 1 title"
   },
   "component.archetype.step1.desc": {
-    "message": "打开终端并移动到您想要创建新项目的文件夹。",
+    "message": "打开终端并移动到您想创建新项目的文件夹。",
     "description": "Step 1 description"
   },
   "component.archetype.step2.title": {
-    "message": "运行archetype:generate命令",
+    "message": "运行 archetype:generate 命令",
     "description": "Step 2 title"
   },
   "component.archetype.step2.desc": {
-    "message": "使用下面的Maven命令，并根据您的项目需要自定义groupId、artifactId和version。",
+    "message": "使用下面的Maven命令，并根据您的项目需求自定义groupId、artifactId和版本。",
     "description": "Step 2 description"
   },
   "component.archetype.table.argument": {
@@ -52,11 +52,11 @@
     "description": "Argument column header"
   },
   "component.archetype.table.explanation": {
-    "message": "说明",
+    "message": "解释",
     "description": "Explanation column header"
   },
   "component.archetype.table.archetypeGroupId.desc": {
-    "message": "原型的组ID是com.webforj用于webforJ原型。",
+    "message": "该原型的组ID为com.webforj。",
     "description": "archetypeGroupId description"
   },
   "component.archetype.table.archetypeArtifactId.desc": {
@@ -64,35 +64,35 @@
     "description": "archetypeArtifactId description"
   },
   "component.archetype.table.archetypeVersion.desc": {
-    "message": "指定要使用的原型版本。这确保生成的项目与特定的原型版本兼容。使用LATEST选择最新的可用版本。",
+    "message": "指定要使用的原型版本。这确保生成的项目与特定的原型版本兼容。使用 LATEST 选择最新可用版本。",
     "description": "archetypeVersion description"
   },
   "component.archetype.table.groupId.desc": {
-    "message": "代表生成项目的命名空间。通常像Java包一样构造，例如org.example，用于唯一标识您的组织或项目域。",
+    "message": "表示生成项目的命名空间。通常结构类似于Java包，例如org.example，用于唯一识别您的组织或项目域。",
     "description": "groupId description"
   },
   "component.archetype.table.artifactId.desc": {
-    "message": "指定生成项目的名称。这将是结果工件和项目文件夹的名称。",
+    "message": "指定生成项目的名称。它将是生成的工件和项目文件夹的名称。",
     "description": "artifactId description"
   },
   "component.archetype.table.version.desc": {
-    "message": "定义生成项目的版本。常见约定是MAJOR.MINOR-SNAPSHOT，如1.0-SNAPSHOT，其中SNAPSHOT表示项目仍在开发中。",
+    "message": "定义生成项目的版本。常见约定为 MAJOR.MINOR-SNAPSHOT，例如 1.0-SNAPSHOT，其中 SNAPSHOT 表示项目仍在开发中。",
     "description": "version description"
   },
   "component.archetype.table.flavor.desc": {
-    "message": "选择项目风格：",
+    "message": "选择项目风味:",
     "description": "flavor description intro"
   },
   "component.archetype.table.flavor.webforj": {
-    "message": "标准webforJ应用。",
+    "message": "标准 webforJ 应用。",
     "description": "webforj flavor description"
   },
   "component.archetype.table.flavor.spring": {
-    "message": "带Spring Boot支持的webforJ应用（需要webforJ 25.02或更高版本）。",
+    "message": "webforJ 应用，支持 Spring Boot（需要 webforJ 25.02 或更高版本）。",
     "description": "webforj-spring flavor description"
   },
   "component.archetype.table.appName.desc": {
-    "message": "可以在生成项目的POM文件中使用的可选参数。根据使用的webforJ原型，它可以用作应用程序的默认标题。",
+    "message": "项目 POM 文件中可选的参数。根据使用的 webforJ 原型，它可以作为应用程序的默认标题。",
     "description": "appName description"
   },
   "component.archetype.conclusion": {
@@ -100,35 +100,35 @@
     "description": "Conclusion text"
   },
   "theme.ErrorPageContent.title": {
-    "message": "页面崩溃",
+    "message": "此页面已崩溃。",
     "description": "The title of the fallback page when the page crashed"
   },
   "theme.BackToTopButton.buttonAriaLabel": {
-    "message": "回到顶部",
+    "message": "返回顶部",
     "description": "The ARIA label for the back to top button"
   },
   "theme.blog.paginator.navAriaLabel": {
-    "message": "博文列表分页",
+    "message": "博客列表页面导航",
     "description": "The ARIA label for the blog pagination"
   },
   "theme.blog.paginator.newerEntries": {
-    "message": "最新文章",
+    "message": "最新条目",
     "description": "The label used to navigate to the newer blog posts page (previous page)"
   },
   "theme.blog.paginator.olderEntries": {
-    "message": "较旧文章",
+    "message": "旧条目",
     "description": "The label used to navigate to the older blog posts page (next page)"
   },
   "theme.blog.archive.title": {
-    "message": "历史博客",
+    "message": "归档",
     "description": "The page & hero title of the blog archive page"
   },
   "theme.blog.archive.description": {
-    "message": "历史博客",
+    "message": "存档",
     "description": "The page & hero description of the blog archive page"
   },
   "theme.blog.post.paginator.navAriaLabel": {
-    "message": "博文分页",
+    "message": "博客文章页面导航",
     "description": "The ARIA label for the blog posts pagination"
   },
   "theme.blog.post.paginator.newerPost": {
@@ -136,7 +136,7 @@
     "description": "The blog post button label to navigate to the newer/previous post"
   },
   "theme.blog.post.paginator.olderPost": {
-    "message": "较旧文章",
+    "message": "旧帖子",
     "description": "The blog post button label to navigate to the older/next post"
   },
   "theme.tags.tagsPageLink": {
@@ -148,58 +148,58 @@
     "description": "The name for the system color mode"
   },
   "theme.colorToggle.ariaLabel.mode.light": {
-    "message": "浅色模式",
+    "message": "明亮模式",
     "description": "The name for the light color mode"
   },
   "theme.colorToggle.ariaLabel.mode.dark": {
-    "message": "暗黑模式",
+    "message": "深色模式",
     "description": "The name for the dark color mode"
   },
   "theme.colorToggle.ariaLabel": {
-    "message": "切换模式（当前：{mode}）",
+    "message": "切换深色和浅色模式（当前模式：{mode}）",
     "description": "The ARIA label for the color mode toggle"
   },
   "theme.docs.breadcrumbs.navAriaLabel": {
-    "message": "页面路径",
+    "message": "面包屑导航",
     "description": "The ARIA label for the breadcrumbs"
   },
   "theme.docs.DocCard.categoryDescription.plurals": {
-    "message": "{count} Items",
+    "message": "1 项|{count} 项",
     "description": "The default description for a category card in the generated index about how many items this category includes"
   },
   "theme.docs.paginator.navAriaLabel": {
-    "message": "文件标签",
+    "message": "文档页面",
     "description": "The ARIA label for the docs pagination"
   },
   "theme.docs.paginator.previous": {
-    "message": "上一页",
+    "message": "上一步",
     "description": "The label used to navigate to the previous doc"
   },
   "theme.docs.paginator.next": {
-    "message": "下一页",
+    "message": "下一步",
     "description": "The label used to navigate to the next doc"
   },
   "theme.docs.tagDocListPageTitle.nDocsTagged": {
-    "message": "{count} 文档已标记",
+    "message": "一份文档已标记|{count}份文档已标记",
     "description": "Pluralized label for \"{count} docs tagged\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.docs.tagDocListPageTitle": {
-    "message": "{nDocsTagged}「{tagName}」",
+    "message": "与“{tagName}”标记的 {nDocsTagged}",
     "description": "The title of the page for a docs tag"
   },
   "theme.docs.versionBadge.label": {
     "message": "版本：{versionLabel}"
   },
   "theme.docs.versions.unreleasedVersionLabel": {
-    "message": "此为 {siteTitle} {versionLabel} 版未发布文档。",
+    "message": "这是未发布的{siteTitle} {versionLabel}版本文档。",
     "description": "The label used to tell the user that he's browsing an unreleased doc version"
   },
   "theme.docs.versions.unmaintainedVersionLabel": {
-    "message": "此为 {siteTitle} {versionLabel} 版文档，已停止维护。",
+    "message": "这是 {siteTitle} {versionLabel} 的文档，不再积极维护。",
     "description": "The label used to tell the user that he's browsing an unmaintained doc version"
   },
   "theme.docs.versions.latestVersionSuggestionLabel": {
-    "message": "查看最新文档 {latestVersionLink} ({versionLabel})。",
+    "message": "有关最新文档，请参见 {latestVersionLink} ({versionLabel})。",
     "description": "The label used to tell the user to check the latest version"
   },
   "theme.docs.versions.latestVersionLinkLabel": {
@@ -207,11 +207,11 @@
     "description": "The label used for the latest version suggestion link label"
   },
   "theme.common.editThisPage": {
-    "message": "编辑页面",
+    "message": "编辑此页面",
     "description": "The link label to edit the current page"
   },
   "theme.common.headingLinkTitle": {
-    "message": "直接链接",
+    "message": "直接链接到 {heading}",
     "description": "Title for link to heading"
   },
   "theme.lastUpdated.atDate": {
@@ -219,27 +219,27 @@
     "description": "The words used to describe on which date a page has been last updated"
   },
   "theme.lastUpdated.byUser": {
-    "message": "由 {user}",
+    "message": "由 {user} 发布",
     "description": "The words used to describe by who the page has been last updated"
   },
   "theme.lastUpdated.lastUpdatedAtBy": {
-    "message": "最后更新：{byUser} 在 {atDate}",
+    "message": "最后更新于{atDate}，由{byUser}更新",
     "description": "The sentence used to display when a page has been last updated, and by who"
   },
   "theme.NotFound.title": {
-    "message": "页面不存在",
+    "message": "页面未找到",
     "description": "The title of the 404 page"
   },
   "theme.navbar.mobileVersionsDropdown.label": {
-    "message": "选择版本",
+    "message": "版本",
     "description": "The label for the navbar versions dropdown on mobile view"
   },
   "theme.tags.tagsListLabel": {
-    "message": "标签",
+    "message": "标签：",
     "description": "The label alongside a tag list"
   },
   "theme.admonition.caution": {
-    "message": "警告",
+    "message": "小心",
     "description": "The default label used for the Caution admonition (:::caution)"
   },
   "theme.admonition.danger": {
@@ -251,7 +251,7 @@
     "description": "The default label used for the Info admonition (:::info)"
   },
   "theme.admonition.note": {
-    "message": "备注",
+    "message": "笔记",
     "description": "The default label used for the Note admonition (:::note)"
   },
   "theme.admonition.tip": {
@@ -259,7 +259,7 @@
     "description": "The default label used for the Tip admonition (:::tip)"
   },
   "theme.admonition.warning": {
-    "message": "提示",
+    "message": "警告",
     "description": "The default label used for the Warning admonition (:::warning)"
   },
   "theme.AnnouncementBar.closeButtonAriaLabel": {
@@ -267,47 +267,47 @@
     "description": "The ARIA label for close button of announcement bar"
   },
   "theme.blog.sidebar.navAriaLabel": {
-    "message": "最新博客",
+    "message": "博客最近帖子导航",
     "description": "The ARIA label for recent posts in the blog sidebar"
   },
   "theme.DocSidebarItem.expandCategoryAriaLabel": {
-    "message": "展开侧边栏 '{label}'",
+    "message": "展开侧边栏类别‘{label}’",
     "description": "The ARIA label to expand the sidebar category"
   },
   "theme.DocSidebarItem.collapseCategoryAriaLabel": {
-    "message": "折叠侧边栏'{label}'",
+    "message": "折叠侧边栏类别‘{label}’",
     "description": "The ARIA label to collapse the sidebar category"
   },
   "theme.NavBar.navAriaLabel": {
-    "message": "主导航",
+    "message": "主菜单",
     "description": "The ARIA label for the main navigation"
   },
   "theme.NotFound.p1": {
-    "message": "未找到页面。",
+    "message": "未找到您要查找的内容。",
     "description": "The first paragraph of the 404 page"
   },
   "theme.NotFound.p2": {
-    "message": "请通知网站所有者链接已损坏。",
+    "message": "请联系链接到原始网址的站点所有者，并告知他们链接已损坏。",
     "description": "The 2nd paragraph of the 404 page"
   },
   "theme.navbar.mobileLanguageDropdown.label": {
-    "message": "选择语言",
+    "message": "语言",
     "description": "The label for the mobile language switcher dropdown"
   },
   "theme.TOCCollapsible.toggleButtonLabel": {
-    "message": "Home",
+    "message": "在此页面",
     "description": "The label used by the button on the collapsible TOC component"
   },
   "theme.blog.post.readingTime.plurals": {
-    "message": "阅读时间 {readingTime} 分钟",
+    "message": "一分钟阅读|{readingTime}分钟阅读",
     "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.blog.post.readMore": {
-    "message": "更多阅读",
+    "message": "阅读更多",
     "description": "The label used in blog post item excerpts to link to full blog posts"
   },
   "theme.blog.post.readMoreLabel": {
-    "message": "阅读 {title}",
+    "message": "了解更多关于{title}的信息",
     "description": "The ARIA label for the link to full blog posts from excerpts"
   },
   "theme.CodeBlock.copy": {
@@ -315,11 +315,11 @@
     "description": "The copy button label on code blocks"
   },
   "theme.CodeBlock.copied": {
-    "message": "复制成功",
+    "message": "已复制",
     "description": "The copied button label on code blocks"
   },
   "theme.CodeBlock.copyButtonAriaLabel": {
-    "message": "复制到剪贴板",
+    "message": "复制代码到剪贴板",
     "description": "The ARIA label for copy code blocks button"
   },
   "theme.CodeBlock.wordWrapToggle": {
@@ -327,7 +327,7 @@
     "description": "The title attribute for toggle word wrapping button of code block lines"
   },
   "theme.docs.breadcrumbs.home": {
-    "message": "首页",
+    "message": "主页",
     "description": "The ARIA label for the home page in the breadcrumbs"
   },
   "theme.docs.sidebar.collapseButtonTitle": {
@@ -335,7 +335,7 @@
     "description": "The title attribute for collapse button of doc sidebar"
   },
   "theme.docs.sidebar.collapseButtonAriaLabel": {
-    "message": "收起菜单",
+    "message": "收起侧边栏",
     "description": "The title attribute for collapse button of doc sidebar"
   },
   "theme.docs.sidebar.navAriaLabel": {
@@ -343,7 +343,7 @@
     "description": "The ARIA label for the sidebar navigation"
   },
   "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
-    "message": "关闭导航",
+    "message": "关闭导航栏",
     "description": "The ARIA label for close button of mobile sidebar"
   },
   "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
@@ -351,15 +351,15 @@
     "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
   },
   "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
-    "message": "切换导航",
+    "message": "切换导航栏",
     "description": "The ARIA label for hamburger menu button of mobile navigation"
   },
   "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
-    "message": "展开菜单",
+    "message": "展开下拉菜单",
     "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
   },
   "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
-    "message": "收起",
+    "message": "收起下拉菜单",
     "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
   },
   "theme.docs.sidebar.expandButtonTitle": {
@@ -371,22 +371,22 @@
     "description": "The ARIA label and title attribute for expand button of doc sidebar"
   },
   "theme.SearchBar.seeAll": {
-    "message": "查看全部 {count} 结果"
+    "message": "查看所有 {count} 个结果"
   },
   "theme.SearchPage.documentsFound.plurals": {
-    "message": "找到 {count} 个文件",
+    "message": "找到一个文档|找到{count}个文档",
     "description": "Pluralized label for \"{count} documents found\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.SearchPage.existingResultsTitle": {
-    "message": "「{query}」的搜索结果",
+    "message": "\"{query}\"的搜索结果",
     "description": "The search page title for non-empty query"
   },
   "theme.SearchPage.emptyResultsTitle": {
-    "message": "文档搜索",
+    "message": "搜索文档",
     "description": "The search page title for empty query"
   },
   "theme.SearchPage.inputPlaceholder": {
-    "message": "输入搜索关键词",
+    "message": "在此输入搜索内容",
     "description": "The placeholder for search page input"
   },
   "theme.SearchPage.inputLabel": {
@@ -394,7 +394,7 @@
     "description": "The ARIA label for search page input"
   },
   "theme.SearchPage.algoliaLabel": {
-    "message": "搜索 Algolia",
+    "message": "通过Algolia搜索",
     "description": "The ARIA label for Algolia mention"
   },
   "theme.SearchPage.noResultsText": {
@@ -402,7 +402,7 @@
     "description": "The paragraph for empty search result"
   },
   "theme.SearchPage.fetchingNewResults": {
-    "message": "获取新搜索结果...",
+    "message": "正在获取新结果...",
     "description": "The paragraph for fetching new search results"
   },
   "theme.SearchBar.label": {
@@ -418,35 +418,35 @@
     "description": "The label and ARIA label for search box cancel button"
   },
   "theme.SearchModal.startScreen.recentSearchesTitle": {
-    "message": "最近搜索",
+    "message": "最近",
     "description": "The title for recent searches"
   },
   "theme.SearchModal.startScreen.noRecentSearchesText": {
-    "message": "暂无搜索记录",
+    "message": "没有最近的搜索",
     "description": "The text when no recent searches"
   },
   "theme.SearchModal.startScreen.saveRecentSearchButtonTitle": {
-    "message": "保存搜索",
+    "message": "保存此搜索",
     "description": "The label for save recent search button"
   },
   "theme.SearchModal.startScreen.removeRecentSearchButtonTitle": {
-    "message": "从历史中删除搜索",
+    "message": "从历史中移除此搜索",
     "description": "The label for remove recent search button"
   },
   "theme.SearchModal.startScreen.favoriteSearchesTitle": {
-    "message": "保存",
+    "message": "收藏",
     "description": "The title for favorite searches"
   },
   "theme.SearchModal.startScreen.removeFavoriteSearchButtonTitle": {
-    "message": "从收藏中移除此搜索",
+    "message": "从收藏夹中移除此搜索",
     "description": "The label for remove favorite search button"
   },
   "theme.SearchModal.errorScreen.titleText": {
-    "message": "获取结果失败",
+    "message": "无法获取结果",
     "description": "The title for error screen of search modal"
   },
   "theme.SearchModal.errorScreen.helpText": {
-    "message": "检查网络",
+    "message": "请检查您的网络连接。",
     "description": "The help text for error screen of search modal"
   },
   "theme.SearchModal.footer.selectText": {
@@ -454,7 +454,7 @@
     "description": "The explanatory text of the action for the enter key"
   },
   "theme.SearchModal.footer.selectKeyAriaLabel": {
-    "message": "确认",
+    "message": "确认键",
     "description": "The ARIA label for the Enter key button that makes the selection"
   },
   "theme.SearchModal.footer.navigateText": {
@@ -462,7 +462,7 @@
     "description": "The explanatory text of the action for the Arrow up and Arrow down key"
   },
   "theme.SearchModal.footer.navigateUpKeyAriaLabel": {
-    "message": "向上",
+    "message": "向上箭头",
     "description": "The ARIA label for the Arrow up key button that makes the navigation"
   },
   "theme.SearchModal.footer.navigateDownKeyAriaLabel": {
@@ -474,27 +474,27 @@
     "description": "The explanatory text of the action for Escape key"
   },
   "theme.SearchModal.footer.closeKeyAriaLabel": {
-    "message": "Esc键",
+    "message": "退出键",
     "description": "The ARIA label for the Escape key button that close the modal"
   },
   "theme.SearchModal.footer.searchByText": {
-    "message": "搜索提供",
+    "message": "按…搜索",
     "description": "The text explain that the search is making by Algolia"
   },
   "theme.SearchModal.noResultsScreen.noResultsText": {
-    "message": "无结果",
+    "message": "没有结果 для",
     "description": "The text explains that there are no results for the following search"
   },
   "theme.SearchModal.noResultsScreen.suggestedQueryText": {
-    "message": "搜索试试",
+    "message": "尝试搜索",
     "description": "The text for the suggested query when no results are found for the following search"
   },
   "theme.SearchModal.noResultsScreen.reportMissingResultsText": {
-    "message": "认为此查询有结果？",
+    "message": "相信此查询应该返回结果？",
     "description": "The text for the question where the user thinks there are missing results"
   },
   "theme.SearchModal.noResultsScreen.reportMissingResultsLinkText": {
-    "message": "请告知我们。",
+    "message": "告诉我们。",
     "description": "The text for the link to report missing results"
   },
   "theme.SearchModal.placeholder": {
@@ -502,15 +502,15 @@
     "description": "The placeholder of the input of the DocSearch pop-up modal"
   },
   "theme.blog.post.plurals": {
-    "message": "{count} 博客",
+    "message": "一条帖子|{count}条帖子",
     "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.blog.tagTitle": {
-    "message": "{nPosts} 带标签「{tagName}」",
+    "message": "{nPosts} 个标签为 \"{tagName}\"",
     "description": "The title of the page for a blog tag"
   },
   "theme.blog.author.pageTitle": {
-    "message": "{authorName} - {nPosts} Posts",
+    "message": "{authorName} - {nPosts}",
     "description": "The title of the page for a blog author"
   },
   "theme.blog.authorsList.pageTitle": {
@@ -522,7 +522,7 @@
     "description": "The label of the link targeting the blog authors page"
   },
   "theme.blog.author.noPosts": {
-    "message": "该作者尚未发布内容。",
+    "message": "此作者尚未撰写任何帖子。",
     "description": "The text for authors with 0 blog post"
   },
   "theme.contentVisibility.unlistedBanner.title": {
@@ -530,23 +530,23 @@
     "description": "The unlisted content banner title"
   },
   "theme.contentVisibility.unlistedBanner.message": {
-    "message": "页面未列出，仅限链接用户访问。",
+    "message": "此页面未列出。搜索引擎将不会索引此页面，只有拥有直接链接的用户才能访问。",
     "description": "The unlisted content banner message"
   },
   "theme.contentVisibility.draftBanner.title": {
-    "message": "草稿",
+    "message": "草稿页面",
     "description": "The draft content banner title"
   },
   "theme.contentVisibility.draftBanner.message": {
-    "message": "此页面为草稿，仅在开发环境中可见。",
+    "message": "此页面为草稿，仅在开发中可见，将从生产构建中排除。",
     "description": "The draft content banner message"
   },
   "theme.ErrorPageContent.tryAgain": {
-    "message": "重试",
+    "message": "再试一次",
     "description": "The label of the button to try again rendering when the React error boundary captures an error"
   },
   "theme.common.skipToMainContent": {
-    "message": "跳到主要内容",
+    "message": "跳至主要内容",
     "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
   },
   "theme.tags.tagsPageTitle": {
@@ -562,19 +562,19 @@
     "description": "Table header for description"
   },
   "tableBuilder.sections.shadowParts": {
-    "message": "阴影区域",
+    "message": "阴影部分",
     "description": "Section heading for shadow parts table"
   },
   "tableBuilder.descriptions.shadowParts": {
-    "message": "这是 {componentName} 组件的 {shadowDomLink} 部分，用于 CSS。",
+    "message": "这些是 {componentName} 组件的 {shadowDomLink} 部分，CSS 样式所需。",
     "description": "Description for shadow parts section"
   },
   "tableBuilder.shadowDom": {
-    "message": "阴影 DOM",
+    "message": "影子DOM",
     "description": "Link text for shadow DOM"
   },
   "tableBuilder.headers.slot": {
-    "message": "槽位",
+    "message": "槽",
     "description": "Table header for slot name"
   },
   "tableBuilder.sections.slots": {
@@ -582,7 +582,7 @@
     "description": "Section heading for slots table"
   },
   "tableBuilder.descriptions.slots": {
-    "message": "这是{componentName}组件的可用插槽。",
+    "message": "这是 {componentName} 组件中可用的插槽。这些插槽作为占位符，控制自定义元素的子元素在影子树中的插入位置。",
     "description": "Description for slots section"
   },
   "tableBuilder.headers.property": {
@@ -594,7 +594,7 @@
     "description": "Section heading for CSS properties table"
   },
   "tableBuilder.descriptions.cssProperties": {
-    "message": "{componentName}组件CSS属性及用途简述。",
+    "message": "这些是 {componentName} 组件中使用的 CSS 属性，以及它们的简短描述。",
     "description": "Description for CSS properties section"
   },
   "tableBuilder.sections.properties": {
@@ -614,7 +614,7 @@
     "description": "Table header for type"
   },
   "tableBuilder.headers.reflects": {
-    "message": "反馈",
+    "message": "反射",
     "description": "Table header for reflects"
   },
   "tableBuilder.headers.default": {
@@ -622,7 +622,7 @@
     "description": "Table header for default value"
   },
   "tableBuilder.descriptions.properties": {
-    "message": "{componentName} 组件属性。属性是与客户端 Web 组件关联的 JavaScript 变量，用于存储数据和控制行为，使 Web 组件更可重用且更易于配置。\n\n某些属性会相互反映值，若设置一个属性，相应属性会自动更新。",
+    "message": "这些是{componentName}组件的属性。属性是与客户端网页组件关联的JavaScript变量。它们用于存储数据和控制行为，使网页组件更可重用，更易于配置。\n\n一些属性的值会反映到属性上，反之亦然。这意味着如果你设置一个属性，相应的属性会自动设置，如果你设置一个属性，相应的属性也会自动设置。",
     "description": "Description for properties section"
   },
   "tableBuilder.sections.reflectedAttributes": {
@@ -630,11 +630,11 @@
     "description": "Section heading for reflected attributes table"
   },
   "tableBuilder.descriptions.reflectedAttributes": {
-    "message": "这是{componentName}组件的反射属性。反射属性可以在DOM中的HTML元素中作为属性出现，样式可以通过这些属性应用。",
+    "message": "这是{componentName}组件的反射属性。反射属性在DOM中的渲染HTML元素中作为属性出现。这意味着可以使用这些属性应用样式。",
     "description": "Description for reflected attributes section"
   },
   "tableBuilder.headers.event": {
-    "message": "Event",
+    "message": "事件",
     "description": "Table header for event name"
   },
   "tableBuilder.sections.events": {
@@ -642,7 +642,7 @@
     "description": "Section heading for events table"
   },
   "tableBuilder.descriptions.events": {
-    "message": "这是{componentName}的事件。",
+    "message": "这是{componentName}组件的事件。",
     "description": "Description for events section"
   },
   "tableBuilder.headers.methodSignature": {
@@ -654,15 +654,15 @@
     "description": "Section heading for methods table"
   },
   "tableBuilder.descriptions.methods": {
-    "message": "这是{componentName}的方法。",
+    "message": "这是{componentName}组件的方法。",
     "description": "Description for methods section"
   },
   "tableBuilder.sections.dependentComponents": {
-    "message": "依赖",
+    "message": "依赖组件",
     "description": "Section heading for dependent components"
   },
   "tableBuilder.descriptions.dependentComponents": {
-    "message": "该组件依赖于 {componentName}。",
+    "message": "以下组件依赖于{componentName}组件。",
     "description": "Description for dependent components section"
   },
   "tableBuilder.sections.dependencies": {
@@ -670,7 +670,7 @@
     "description": "Section heading for dependencies"
   },
   "tableBuilder.descriptions.dependencies": {
-    "message": "{componentName}组件依赖以下客户端组件。客户端组件仅在客户端使用，无法直接实例化。请参阅相关文章以获取更多样式信息。",
+    "message": "{componentName} 组件依赖以下客户端组件。客户端组件仅限于客户端使用，无法直接实例化。有关更详细的样式信息，请参见相关文章。",
     "description": "Description for dependencies section"
   },
   "componentDemo.hideCode": {
@@ -690,27 +690,27 @@
     "description": "Button text to show all lines of code"
   },
   "componentArchetype.instructions": {
-    "message": "要创建并搭建一个新的 {project} 项目，请按照以下步骤操作：",
+    "message": "项目，按照以下步骤：",
     "description": "Instructions for creating a new project"
   },
   "componentArchetype.step1": {
-    "message": "{strong}导航到正确目录{/strong}: 打开终端并移动到你想创建新项目的文件夹。",
+    "message": "{strong}导航至正确目录{/strong}: 打开终端并移动到您想要创建新项目的文件夹。",
     "description": "First step instruction"
   },
   "componentArchetype.step2": {
-    "message": "{strong}运行 {code}archetype:generate{/code} 命令{/strong}: 使用下面的 Maven 命令，并根据需要自定义 {code}groupId{/code}、{code}artifactId{/code} 和 {code}version{/code}。",
+    "message": "{strong}运行 {code}archetype:generate{/code} 命令{/strong}: 使用下面的 Maven 命令，根据需要自定义 {code}groupId{/code}、{code}artifactId{/code} 和 {code}version{/code}。",
     "description": "Second step instruction"
   },
   "componentArchetype.table.argument": {
-    "message": "Argument",
+    "message": "参数",
     "description": "Table header for argument column"
   },
   "componentArchetype.table.explanation": {
-    "message": "Explanation",
+    "message": "说明",
     "description": "Table header for explanation column"
   },
   "componentArchetype.finalInstruction": {
-    "message": "运行命令后，Maven将生成项目所需的文件。",
+    "message": "运行该命令后，Maven 将生成运行项目所需的项目文件。",
     "description": "Final instruction about Maven generating project files"
   }
 }
