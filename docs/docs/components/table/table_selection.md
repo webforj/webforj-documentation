@@ -6,6 +6,10 @@ slug: selection
 
 The `Table` component provides various selection capabilities. There are methods for selecting a single item, multiple items, or programmatically managing selections.
 
+:::tip Managing and querying data
+For information on how to use the `Repository` pattern to manage and query collections, see the [Repository articles](/docs/advanced/repository/overview).
+:::
+
 ## Selection mode {#selection-mode}
 
 The selection mode in the table determines how items can be selected by the user. It provides options for configuring the behavior of item selection. The Table class provides a method to set the selection mode:
