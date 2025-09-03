@@ -12,7 +12,7 @@ The `Table` class uses column instances to define and customize how data is disp
 
 ## Column identity {#column-identity}
 
-A column’s identity defines how it is recognized in the `Table`. This includes its label, the value it provides, and whether it is visible or navigable.
+A column’s identity defines how it's recognized in the `Table`. This includes its label, the value it provides, and whether it's visible or navigable.
 
 ### Label {#label}
 
@@ -92,11 +92,11 @@ The `Table` Component supports three primary alignment options:
 - `Column.Alignment.CENTER`: Ideal for numerical or categorical data where a balanced presentation is desired. Creates a visually centered display.
 - `Column.Alignment.RIGHT`: Commonly used for numerical data, especially when the magnitude or precision of numbers is significant. Aligns data towards the right for a natural reading flow.
 
-In the above example, the final column for `Cost` has been right-aligned to provide a more obvious visual distinction.
+In the preceding example, the final column for `Cost` has been right-aligned to provide a more obvious visual distinction.
 
 ### Pinning {#pinning}
 
-Column pinning is a feature that allows users to affix or "pin" a column to a specific side of the `Table`, enhancing visibility and accessibility. This is useful when certain columns, such as identifiers or essential information, need to remain visible while scrolling horizontally through a table.
+Column pinning is a feature that allows users to affix or "pin" a column to a specific side of the `Table`. This is useful when certain columns, such as identifiers or essential information, need to remain visible while scrolling horizontally through a table.
 
 <!-- vale off -->
 <ComponentDemo 
