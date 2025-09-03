@@ -36,7 +36,7 @@ async function getLatestVer() {
 function displayLatestVer(latestVersion, retries) {
   const thisVer = document.getElementById("webforj-version-badge");
   if (thisVer) {
-    thisVer.innerHTML = latestVersion;
+    thisVer.innerHTML = `v${latestVersion}`;
   } else if (retries > 0) {
     setTimeout(() => displayLatestVer(latestVersion, retries - 1), 100);
   } else {
