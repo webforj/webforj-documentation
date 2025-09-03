@@ -6,7 +6,7 @@ sidebar_position: 3
 
 This step adds data management and display capabilities to the demo app. You’ll define a `Customer` entity, use a Spring Data repository and service for data access, and display customer data in a [`Table`](../../components/table/overview) component.
 
-This and all future steps utilize a H2 database. To use H2 with Spring Boot, add the H2 dependency to your pom.xml and set spring.datasource.url=jdbc:h2:mem:testdb in your application.properties. Spring Boot will auto-configure and start the H2 database for you.
+This and all future steps use a H2 database. To use H2 with Spring Boot, add the H2 dependency to your pom.xml and set `spring.datasource.url=jdbc:h2:mem:testdb` in your `application.properties`. Spring Boot will auto-configure and start the H2 database for you.
 
 By the end of this step, the app from the [previous step](./creating-a-basic-app) will display a table with customer data, ready for further extension. To run the app:
 
