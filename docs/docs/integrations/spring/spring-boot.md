@@ -203,7 +203,7 @@ webforj.devtools.livereload.enabled=true
 webforj.devtools.livereload.static-resources-enabled=true
 ```
 
-Your existing `webforj.conf` file continues to work. Point it to your main class:
+You can use the `application.properties` file instead of `webforj.conf`, but your existing `webforj.conf` file continues to work. Point it to your main class:
 
 ```Ini title="webforj.conf"
 webforj.entry = org.example.Application
@@ -219,7 +219,21 @@ mvn spring-boot:run
 
 The app starts with an embedded Tomcat server on port 8080 by default. Your existing webforJ views and routes work exactly as before, but now you can inject Spring beans and use Spring features.
 
-## Configuration differences {#configuration-differences}
+## Configuration
+
+Use the `application.properties` file in `src/main/resources` to configure your app. 
+You can set webforJ configuration properties in the `application.properties` file, and webforJ will create the `webforj.conf` file for you. See [Property Configuration](/docs/configuration/properties.md) for information on webforJ configuration properties.
+
+The following webforJ `application.properties` settings are specific to the Spring framework:
+
+| Property | Type | Description | Default|
+|----------|------|-------------|--------|
+| **`webforj.servletMapping`** | String | URL mapping pattern for the webforJ servlet. | `/*` |
+| **`webforj.excludeUrls`** | List | URL patterns that should not be handled by webforJ when mapped to root. When webforJ is mapped to the root context (`/*`), these URL patterns will be excluded from webforJ handling and can be handled by Spring MVC controllers instead. This allows REST endpoints and other Spring MVC mappings to coexist with webforJ routes. | `[]` |
+
+
+
+### Configuration differences {#configuration-differences}
 
 When you switch to Spring Boot, several configuration aspects change:
 
@@ -228,6 +242,6 @@ When you switch to Spring Boot, several configuration aspects change:
 | **Packaging** | WAR file | Executable JAR |
 | **Server** | External (Jetty, Tomcat) | Embedded Tomcat |
 | **Run command** | `mvn jetty:run` | `mvn spring-boot:run` |
-| **Main config** | `webforj.conf` only | `webforj.conf` + `application.properties` |
+| **Main config** | `webforj.conf` only | `application.properties` + automatically generated `webforj.conf`  |
 | **Profiles** | `webforj-dev.conf`, `webforj-prod.conf` | Spring profiles with `application-{profile}.properties` |
 | **Port config** | In plugin configuration | `server.port` in properties |

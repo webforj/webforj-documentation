@@ -15,10 +15,10 @@ webforJ extends Spring DevTools with browser synchronization. When Spring detect
 
 Different file types trigger different reload strategies:
 
-- **Java files** - Full browser page reload after Spring restart
-- **CSS files** - Style updates without page reload  
-- **JavaScript files** - Full browser page reload after Spring restart
-- **Images** - Refresh in place without page reload
+- **Java files**: Full browser page reload after Spring restart
+- **JavaScript files**: Full browser page reload after Spring restart
+- **CSS files**: Style updates without page reload  
+- **Images**: Refresh in place without page reload
 
 ## Dependencies {#dependencies}
 
@@ -41,7 +41,7 @@ Add both Spring DevTools and webforJ DevTools to your project:
 
 ## Configuration {#configuration}
 
-Enable webforJ DevTools in your app properties:
+Enable webforJ DevTools in your `application.properties` file:
 
 ```Ini title="application.properties"
 # Enable webforJ browser auto-reload
