@@ -9,7 +9,7 @@ sidebar_position: 16
 
 <!-- vale on -->
 
-Spring manages bean lifecycle through scopes. Each scope defines when a bean is created, how long it lives, and when it's destroyed. In addition to standard Spring scopes, webforJ adds three custom scopes - `@WebforjSessionScope`, `@EnvironmentScope` and `@RouteScope`.
+Spring manages bean lifecycle through scopes. Each scope defines when a bean is created, how long it lives, and when it's destroyed. In addition to standard Spring scopes, webforJ adds three custom scopes: `@WebforjSessionScope`, `@EnvironmentScope` and `@RouteScope`.
 
 :::tip[Learn more about Spring scopes]
 For comprehensive coverage of Spring's scoping mechanism and standard scopes, see [Spring's bean scopes documentation](https://docs.spring.io/spring-framework/reference/core/beans/factory-scopes.html).
@@ -23,15 +23,15 @@ webforJ provides three custom scopes designed for web app state management:
 - **`@EnvironmentScope`**: Beans isolated to a single browser tab/window. Ideal for tab-specific workflows, form data, and independent document editing.
 - **`@RouteScope`**: Beans shared within a route hierarchy. Useful for navigation state and data that should reset when users navigate between app sections.
 
-![webforJ spring scopes](/img/spring-scopes.svg)
+[![webforJ spring scopes](/img/spring-scopes.svg)](/img/spring-scopes.svg)
 
 ## Session scope {#session-scope}
 
-The `@WebforjSessionScope` annotation creates beans that persist across the entire webforJ session. Unlike [environment scope](#environment-scope) which isolates beans per browser window/tab, session-scoped beans are shared across all windows and tabs from the same browser. These beans live as long as the webforJ session remains active - typically until the user logs out or the session expires.
+The `@WebforjSessionScope` annotation creates beans that persist across the entire webforJ session. Unlike [environment scope](#environment-scope) which isolates beans per browser window/tab, session-scoped beans are shared across all windows and tabs from the same browser. These beans live as long as the webforJ session remains active, typically until the user logs out or the session expires.
 
-Session scope is ideal for authentication state, user preferences, and shopping carts - data that should persist across multiple browser tabs but remain isolated between different users. Each user's browser session receives its own instance of session-scoped beans.
+Session scope is ideal for authentication state, user preferences, and shopping carts. Data that should persist across multiple browser tabs but remain isolated between different users. Each user's browser session receives its own instance of session-scoped beans.
 
-:::info Beans need to be Serialization
+:::info Beans need to be Serializable
 Session-scoped beans need to implement `Serializable` since they're stored in HTTP session attributes. All non-transient fields must also be serializable (primitives, `String`, or classes implementing `Serializable`). Mark fields as `transient` if they shouldn't be persisted.
 :::
 
@@ -111,7 +111,7 @@ When a user logs in through one tab, all other tabs immediately have access to t
 
 The `@EnvironmentScope` annotation creates beans that live for the duration of a browser window or tab session. When a user opens the app in a browser window or tab, webforJ creates an Environment. Any bean marked with `@EnvironmentScope` is created once per browser window/tab and remains available until the user closes the tab or the session expires.
 
-Each Environment represents an isolated browser window or tab. Environment-scoped beans can't be shared between different browser windows or tabs - each window/tab receives its own instance.
+Each Environment represents an isolated browser window or tab. Environment-scoped beans can't be shared between different browser windows or tabs because each window/tab receives its own instance.
 
 Add `@EnvironmentScope` to any Spring component:
 
@@ -207,7 +207,7 @@ public class NavigationState {
 
 Routes form hierarchies through the `outlet` parameter. The parent route provides an outlet where child routes render. When you define a route with an outlet, webforJ constructs a component tree where the outlet component becomes the parent and the route component becomes the child. This parent-child relationship determines which components share route-scoped beans.
 
-```java
+```java {11}
 @Route
 public class AdminView extends Composite<Div> {
 
