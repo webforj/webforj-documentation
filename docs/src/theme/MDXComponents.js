@@ -29,7 +29,7 @@ import TransitionBox from '@site/src/components/DWCTheme/TransitionBox/Transitio
 import GalleryCard from '@site/src/components/GalleryCard/GalleryCard';
 import GalleryGrid from '@site/src/components/GalleryGrid/GalleryGrid';
 import ColorPalette from '@site/src/components/DWCTheme/ColorPalette/ColorPalette';
-
+import VersionBadge from '../components/DocsTools/VersionBadge';
 
 export default {
   ...MDXComponents,
@@ -58,6 +58,7 @@ export default {
   ExpandMoreIcon,
   GalleryCard,
   GalleryGrid,
-  ColorPalette
+  ColorPalette,
+  VersionBadge
 };
 

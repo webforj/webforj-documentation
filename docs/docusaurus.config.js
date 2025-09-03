@@ -57,8 +57,7 @@ const config = {
   },
   scripts: [
     { src: '/js/dwc-theme-switcher.js', async: false },
-    { src: '/js/link-decorator.js' },
-    { src: '/js/latest-webforj-version.js', defer: true}
+    { src: '/js/link-decorator.js' }
   ],
   headTags: [
     {
@@ -153,6 +152,11 @@ const config = {
         target: '_self'
       },
       items: [
+        // {
+        //   type: 'html',
+        //   position: 'left',
+        //   value: '<a class="navbar__link" id="webforj-version-badge"></a>',
+        // },
         {
           position: 'left',
           label: ' ',

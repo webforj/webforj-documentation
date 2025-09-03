@@ -65,6 +65,10 @@
     }
   }
 
+  .navbar-sidebar__items #webforj-version-badge{
+    display: none;
+  }
+
   @media (max-width: 1000px) {
     .separator {
       display: none;
