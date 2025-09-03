@@ -18,16 +18,12 @@ public class LoginCustomFieldsPage extends BasePage {
     public LoginCustomFieldsPage(Page page) {
         super(page);
 
-        customerID = page.getByLabel("Customer ID");
-
-        username = page.getByLabel("Username");
-
-        password = page.getByLabel("Password");
+        customerID = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Customer ID •"));
+        username = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Username •"));
+        password = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Password •"));
 
         signInButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign in"));
-
-        logoutButton = page.getByRole(AriaRole.BUTTON,
-                new Page.GetByRoleOptions().setName("Logout"));
+        logoutButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Logout"));
     }
 
     public static String getRoute() {

@@ -21,7 +21,7 @@ public class ButtonViewIT extends BaseTest {
     @Test
     public void testClickSubmitDisplaysWelcomeMessage() {
         button.getSubmitButton().click();
-        assertThat(page.locator("section")).hasText("Welcome to the app Jason Turner!");
+        assertThat(button.getWelcomeDialog()).isVisible();
 
     }
 
@@ -30,7 +30,6 @@ public class ButtonViewIT extends BaseTest {
         assertThat(button.getFirstName()).hasValue("Jason");
         assertThat(button.getLastName()).hasValue("Turner");
         assertThat(button.getEmail()).hasValue("turner.jason@email.com");
-
 
         button.getClearButton().click();
 

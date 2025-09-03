@@ -2,7 +2,7 @@ package com.webforj.samples.pages.login;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-
+import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.pages.BasePage;
 
 public class LoginCancelButtonPage extends BasePage {
@@ -15,9 +15,8 @@ public class LoginCancelButtonPage extends BasePage {
     public LoginCancelButtonPage(Page page) {
         super(page);
 
-        Locator shadowRoot = page.locator("dwc-login");
-        cancelButton = shadowRoot.locator("dwc-button[part='cancel-button']").locator("button");
-        signInButton = shadowRoot.locator("dwc-button[part='submit-button']").locator("button");
+        cancelButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Cancel"));
+        signInButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign in"));
     }
 
     public static String getRoute() {

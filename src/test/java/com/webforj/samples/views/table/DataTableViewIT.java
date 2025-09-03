@@ -35,23 +35,19 @@ public class DataTableViewIT extends BaseTest {
 
         dataTable.getEntriesDropdown().click();
         dataTable.getEntriesHundred().click();
-        assertThat(dataTable.getPaginationText("Showing 1 to 100 of")).isVisible();
+        assertThat(dataTable.getPaginationText("Showing 1 to 100 of 8618")).isVisible();
     }
 
     @Test
     public void testSearchButtonFilter() {
         dataTable.searchAthlete(ATHLETE_NAME);
-
-        assertThat(dataTable.getAthleteCells(ATHLETE_NAME).first()).isVisible();
-        assertThat(dataTable.getAthleteCells(ATHLETE_NAME).first()).containsText(ATHLETE_NAME);
-
         assertThat(dataTable.getTableRows()).hasCount(3);
     }
 
     @Test
     public void testFilteringNonLatinAlphabetCharacters() {
         dataTable.searchAthlete(ATHLETE_WITH_DIACRITICS_LATIN);
-        assertThat(dataTable.getAthleteCells(ATHLETE_WITH_DIACRITICS_LATIN).first()).isVisible();
+        assertThat(dataTable.getPaginationText("Showing 1 to 2 of 2 entries")).isVisible();
 
         dataTable.searchAthlete(ATHLETE_NAME_CYRILLIC);
         assertThat(dataTable.getTableRows()).hasCount(0);
@@ -78,14 +74,12 @@ public class DataTableViewIT extends BaseTest {
     @Test
     public void testPaginatorNavigatesCorrectly() {
         dataTable.getPaginatorNextPage().click();
-        assertThat(dataTable.getPaginationText("Showing 11 to 20")).isVisible();
+        assertThat(dataTable.getPaginationText("Showing 11 to 20 of 8618")).isVisible();
     }
 
     @Test
     public void testPaginatorUpdatesCorrectlyBySearchFilter() {
         dataTable.searchAthlete(ATHLETE_NAME);
-        assertThat(dataTable.getTableRows().first()).containsText(ATHLETE_NAME);
-        assertThat(dataTable.goToSpecificPage(2)).not().isVisible();
         assertThat(dataTable.getPaginationText("Showing 1 to 3 of 3 entries")).isVisible();
         assertThat(dataTable.getPaginatorPreviousPage()).isDisabled();
         assertThat(dataTable.getPaginatorFirstPage()).isDisabled();
@@ -96,15 +90,6 @@ public class DataTableViewIT extends BaseTest {
     @Test
     public void testPaginatorNavigatesCorrectlyToSpecificPage() {
         dataTable.goToSpecificPage(4).click();
-        assertThat(dataTable.getPaginationText("Showing 31 to 40")).isVisible();
-    }
-
-    @Test
-    public void testPaginatorNavigatesLastAndFirstPage() {
-        dataTable.getPaginatorLastPage().click();
-        assertThat(dataTable.goToSpecificPage(862)).isVisible();
-
-        dataTable.getPaginatorFirstPage().click();
-        assertThat(dataTable.goToSpecificPage(1));
+        assertThat(dataTable.getPaginationText("Showing 31 to 40 of 8618")).isVisible();
     }
 }

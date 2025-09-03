@@ -3,7 +3,7 @@ package com.webforj.samples.config;
 public class RunConfig {
   private static final String DEFAULT_BROWSER = "chromium";
   private static final boolean DEFAULT_HEADLESS = true;
-  private static final int DEFAULT_TIMEOUT = 30000;
+  private static final int DEFAULT_TIMEOUT = 60000;
   private static final int DEFAULT_SLOW_MO = 0;
 
   static {

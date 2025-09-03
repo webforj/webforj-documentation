@@ -16,6 +16,7 @@ public class ButtonPage extends BasePage {
     private final Locator firstName;
     private final Locator lastName;
     private final Locator email;
+    private final Locator welcomeDialog;
 
     public ButtonPage(Page page) {
         super(page);
@@ -23,10 +24,12 @@ public class ButtonPage extends BasePage {
 
         this.firstName = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("First Name"));
         this.lastName = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Last Name"));
-        this.email = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName(Pattern.compile("^E-?mail:?$")));
+        this.email = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("E-mail:"));
 
         this.submitButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Submit"));
         this.clearButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Clear"));
+
+        this.welcomeDialog = page.getByText("Welcome to the app Jason");
     }
 
     public static String getRoute() {
@@ -51,5 +54,9 @@ public class ButtonPage extends BasePage {
 
     public Locator getClearButton() {
         return clearButton;
+    }
+
+    public Locator getWelcomeDialog() {
+        return welcomeDialog;
     }
 }

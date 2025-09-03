@@ -32,21 +32,18 @@ public class DataTablePage extends BasePage {
         this.entriesDropdown = page.locator("dwc-dropdown");
 
         this.entriesTen = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("10").setExact(true));
-        this.entriesTwentyfive = page.getByRole(AriaRole.OPTION,
-                new Page.GetByRoleOptions().setName("25").setExact(true));
+        this.entriesTwentyfive = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("25").setExact(true));
         this.entriesFifty = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("50").setExact(true));
-        this.entriesHundred = page.getByRole(AriaRole.OPTION,
-                new Page.GetByRoleOptions().setName("100").setExact(true));
+        this.entriesHundred = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("100").setExact(true));
 
-        this.firstButton = page.getByLabel("Goto first page");
-        this.prevButton = page.getByLabel("Goto previous page");
-        this.nextButton = page.getByLabel("Goto next page");
-        this.lastButton = page.getByLabel("Goto last page");
+        this.firstButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Goto first page"));
+        this.prevButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Goto previous page"));
+        this.nextButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Goto next page"));
+        this.lastButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Goto last page"));
     }
 
     public void searchAthlete(String athleteName) {
-        searchInput.click();
-        page.keyboard().type(athleteName);
+        searchInput.fill(athleteName);
     }
 
     public int getRowCount() {
@@ -106,8 +103,7 @@ public class DataTablePage extends BasePage {
     }
 
     public Locator goToSpecificPage(int n) {
-        String regex = String.format("^\\s*Goto page %d\\s*$", n);
-        return page.getByLabel(Pattern.compile(regex));
+        return page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Goto page " + n));
     }
 
     public static String getRoute() {
