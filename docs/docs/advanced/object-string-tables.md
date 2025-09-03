@@ -3,9 +3,10 @@ title: Object and String Tables
 sidebar_position: 45
 ---
 
-The `ObjectTable` and `StringTable` provide static access to shared data in a webforJ environment. Both are accessible from anywhere in your app and serve different purposes:
+The `ObjectTable`, `SessionObjectTable`, and `StringTable` provide static access to shared data in a webforJ environment. All are accessible from anywhere in your app and serve different purposes:
 
 - `ObjectTable`: For storing and retrieving Java objects across your app.
+- `SessionObjectTable`: For storing and retrieving Java objects in HTTP session scope.
 - `StringTable`: For working with persistent key-value string pairs, often used for configuration or environment-style data.
 
 These tables are available at the environment level and don't require instance management.
@@ -41,6 +42,48 @@ ObjectTable.clear("userInfo");
 
 ```java
 int total = ObjectTable.size();
+```
+
+## `SessionObjectTable` <DocChip chip='since' label='25.03' /> {#sessionobjecttable}
+
+`SessionObjectTable` provides static access to HTTP session attributes when running in a Jakarta Servlet 6.1+ container. Unlike `ObjectTable` which is app-scoped, `SessionObjectTable` stores data in the user's HTTP session, making it persist across requests but unique to each user session.
+
+It follows the same API pattern as `ObjectTable` for consistency.
+
+:::warning
+Objects stored in `SessionObjectTable` should implement `Serializable` to support session persistence, replication, and passivation in servlet containers.
+:::
+
+:::warning Availability in `BBjServices`
+This feature isn't yet available when running with BBjServices in version 25.03.
+:::
+
+### Setting and retrieving session objects {#setting-and-retrieving-session-objects}
+
+```java
+// ShoppingCart should implement Serializable
+SessionObjectTable.put("cart", new ShoppingCart());
+ShoppingCart cart = (ShoppingCart) SessionObjectTable.get("cart");
+```
+
+### Checking for presence {#checking-for-presence-session}
+
+```java
+if (SessionObjectTable.contains("cart")) {
+  // Session has cart
+}
+```
+
+### Removing session entries {#removing-session-entries}
+
+```java
+SessionObjectTable.clear("cart");
+```
+
+### Session table size {#session-table-size}
+
+```java
+int total = SessionObjectTable.size();
 ```
 
 ## `StringTable` {#stringtable}
