@@ -18,7 +18,7 @@ A column’s identity defines how it's recognized in the `Table`. This includes 
 
 The label of a column is its public-facing identifier, helping clarify displayed data.  
 
-Use `setLabel` to set or modify the label. 
+Use `setLabel()` to set or modify the label.
 
 :::tip
 By default, the label will be the same as the column ID.
@@ -30,9 +30,11 @@ table.addColumn("Product ID", Product::getProductId).setLabel("ID");
 
 ### Value providers {#value-providers}
 
-A value provider is a function responsible for translating raw data from the underlying dataset into a format suitable for display within a specific column. The function, defined by the user, takes an instance of the row data type (T) and returns the value to be showcased in the associated column for that particular row.
+A value provider is a function responsible for translating raw data from the underlying dataset into a format suitable for display within a specific column. The function, that you define, takes an instance of the row data type (T) and returns the value to be showcased in the associated column for that particular row.
 
-To set a value provider on a column, use one of the `addColumn` factory methods that accept a provider as an argument:
+To set a value provider on a column, use one of the `addColumn()` methods from the `Table` component.
+
+In the following snippet, a column will attempt to access data from a JSON object, rendering it only if the data isn't null.
 
 ```java
     List<String> columnsList = Arrays.asList("athlete", "age", "country", "year", "sport", "gold", "silver", "bronze", "total");
@@ -48,13 +50,9 @@ To set a value provider on a column, use one of the `addColumn` factory methods 
     }
 ```
 
-In this example, a column will attempt to access data from a JSON object, rendering it only if the data is not null.
-
 ### Visibility {#visibility}
 
-It's possible to set the visibility of a column, determining whether or not it will be shown within the `Table`. This can be useful when, among other things, determining whether or not to display sensitive information. 
-
-Use the `setHidden()` method, as shown below, to set this property on a column:
+It's possible to set a column's visibility, determining whether or not it will be shown within the `Table`. This can be useful when, among other things, determining whether or not to display sensitive information. 
 
 ```java
 table.addColumn("Credit Card", Customer::getCreditCardNumber).setHidden(true);
@@ -74,7 +72,7 @@ After establishing a column’s identity, the next step is to control how its co
 
 ### Alignment {#alignment}
 
-Alignment defines the horizontal positioning of data within a column. It provides a visual guide to users about the nature of the information. 
+Setting a column’s alignment lets you create organized tables, which can help users identify the different sections in the `Table`.
 
 <!-- vale off -->
 <ComponentDemo 
@@ -86,11 +84,11 @@ height='600px'
 />
 <!-- vale on -->
 
-The `Table` Component supports three primary alignment options:
+The `Table` Component supports three primary alignments:
 
 - `Column.Alignment.LEFT`: Suitable for textual or descriptive data where maintaining a leftward flow is intuitive. Useful when emphasizing the starting point of the content.
-- `Column.Alignment.CENTER`: Ideal for numerical or categorical data where a balanced presentation is desired. Creates a visually centered display.
-- `Column.Alignment.RIGHT`: Commonly used for numerical data, especially when the magnitude or precision of numbers is significant. Aligns data towards the right for a natural reading flow.
+- `Column.Alignment.CENTER`: Center-aligned columns are ideal for shorter values, like a character key, status, or anything else that has balanced presentation.
+- `Column.Alignment.RIGHT`: Consider using a right-aligned column for numerical values that are helpful to quickly scan through, such as dates, amounts, and percentages.
 
 In the preceding example, the final column for `Cost` has been right-aligned to provide a more obvious visual distinction.
 
@@ -114,7 +112,7 @@ There are three available directions for pinning a column:
 - `PinDirection.RIGHT`: Pins the column to the right side.
 - `PinDirection.AUTO`: Column appears based on the insertion order.
 
-Pinning can be set programmatically, allowing users to change the pin direction based on user interactions or application logic.
+Pinning can be set programmatically, allowing you to change the pin direction based on user interactions or by the app's logic.
 
 ## Column sizing {#column-sizing}
 
@@ -128,7 +126,7 @@ table.addColumn("ID", Product::getId).setWidth(80f);
 
 The width property defines the desired initial width for the column. How this width is used depends on other properties and column type:
 
-- [**Regular columns**]: With only width set, the column renders at the specified width but can shrink proportionally when the container is too small. The width acts as both desired and minimum width.
+- **Regular columns**: With only the width set, the column renders at the specified width but can shrink proportionally when the container is too small. The width acts as both the desired and the minimum width.
 - [**Pinned columns**](#pinning): Always maintain their exact width, never participating in responsive shrinking.
 - [**Flex columns**](#flex-sizing): Setting width is incompatible with flex. Use either width (fixed) or flex (proportional), not both.
 
@@ -182,7 +180,7 @@ float maxWidth = column.getMaxWidth();
 The `setFlex()` method enables proportional column sizing, making columns share available space after fixed-width columns are allocated:
 
 ```java
-// Title column gets twice the space of Artist column
+// Title column gets twice the space of the Artist column
 table.addColumn("Title", Product::getTitle).setFlex(2f);
 table.addColumn("Artist", Product::getArtist).setFlex(1f);
 ```
@@ -227,7 +225,7 @@ table.setColumnToAutoSize("description");
 
 #### Proportional auto-fit {#proportional-auto-fit}
 
-Distribute all columns proportionally across the available `Table` width. This operation sets each column to flex=1, making them share the total `Table` width equally regardless of their content length. Columns will expand or contract to fill the exact `Table` dimensions with no remaining space.
+Distribute all columns proportionally across the available `Table` width. This operation sets each column to flex=1, making them share the total `Table` width equally, regardless of their content length. Columns will expand or contract to fill the exact `Table` dimensions with no remaining space.
 
 ```java
 // Fit columns to table width (equivalent to setting flex=1 on all)

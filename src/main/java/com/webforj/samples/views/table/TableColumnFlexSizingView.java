@@ -34,10 +34,11 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
 
   public TableColumnFlexSizingView() {
     FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN);
-    layout.setPadding("var(--dwc-space-l)");
-    layout.setSpacing("var(--dwc-space-l)");
-    layout.setHeight("100vh");
+    layout.setDirection(FlexDirection.COLUMN)
+      .setPadding("var(--dwc-space-l)")
+      .setSpacing("var(--dwc-space-l)")
+      .setHeight("100vh");
+    layout.setStyle("box-sizing", "border-box");
 
     FlexLayout controls = createControls();
     table = createTable();
@@ -47,8 +48,8 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
 
   private FlexLayout createControls() {
     FlexLayout controls = new FlexLayout();
-    controls.setDirection(FlexDirection.ROW);
-    controls.setSpacing("var(--dwc-space-l)");
+    controls.setDirection(FlexDirection.ROW)
+      .setSpacing("var(--dwc-space-l)");
     controls.setStyle("align-items", "flex-end");
     controls.setStyle("flex-wrap", "wrap");
 
@@ -73,9 +74,9 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
 
   private FlexLayout createFlexControl(String label, double defaultValue, Runnable onChange) {
     FlexLayout control = new FlexLayout();
-    control.setDirection(FlexDirection.COLUMN);
-    control.setSpacing("5px");
-    control.setMinWidth("120px");
+    control.setDirection(FlexDirection.COLUMN)
+      .setSpacing("5px")
+      .setMinWidth("120px");
 
     Paragraph labelEl = new Paragraph(label + " Flex:");
     labelEl.setStyle("margin", "0");

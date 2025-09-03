@@ -22,10 +22,10 @@ public class TableColumnAutoSizingView extends Composite<FlexLayout> {
 
   public TableColumnAutoSizingView() {
     FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN);
-    layout.setStyle("padding", "10px");
-    layout.setStyle("gap", "10px");
-    layout.setStyle("height", "100vh");
+    layout.setDirection(FlexDirection.COLUMN)
+      .setPadding("var(--dwc-space-l)")
+      .setSpacing("var(--dwc-space-l)")
+      .setHeight("100vh");
     layout.setStyle("box-sizing", "border-box");
 
     FlexLayout buttonPanel = new FlexLayout();
