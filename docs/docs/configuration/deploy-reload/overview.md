@@ -22,14 +22,6 @@ Live reload ensures that once changes are deployed, the browser reflects those u
 
 In a webforJ app, live reload can automatically refresh the view, re-rendering components to show the latest state of the app, or even patch changes as they're needed on demand.
 
-## Integration options
-
-You can implement redeployment and live reload with any of the following integrations:
-
-- The [Maven Jetty Plugin](maven-jetty-plugin.md) launches an embedded Jetty server that monitors the app’s files for changes and automatically redeploys the app.
-- [Spring DevTools](../../integrations/spring/spring-devtools.md) provides automatic redeployment when Java or JavaScript files change, and integrates with webforJ DevTools for live reloading, displaying styling and image changes without a full page reload.
-- [JRebel](jrebel.md) integrates with the JVM to detect code changes and replace modified classes directly in memory, without restarting the server.
-
 ## Topics {#topics}
 
 <DocCardList className="topics-section" />
