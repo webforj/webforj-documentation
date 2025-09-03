@@ -4,7 +4,7 @@
     "description": "The alt text of navbar logo"
   },
   "item.label.Getting Started": {
-    "message": "Starten",
+    "message": "Aan de slag",
     "description": "Navbar item with label Getting Started"
   },
   "item.label.Components": {
@@ -16,7 +16,7 @@
     "description": "Navbar item with label Community"
   },
   "item.label.Developers": {
-    "message": "Developer",
+    "message": "Ontwikkelaars",
     "description": "Navbar item with label Developers"
   },
   "item.label.Support": {
@@ -40,7 +40,7 @@
     "description": "Navbar item with label DWC HueCraft"
   },
   "item.label.DWC Design Kit": {
-    "message": "DWC Ontwerpsjabloon",
+    "message": "DWC Ontwerpkit",
     "description": "Navbar item with label DWC Design Kit"
   },
   "item.label.JavaDocs": {
@@ -48,19 +48,19 @@
     "description": "Navbar item with label JavaDocs"
   },
   "item.label.Client Components": {
-    "message": "Klantcomponenten",
+    "message": "Cliëntcomponenten",
     "description": "Navbar item with label Client Components"
   },
   "item.label.Contribution Guide": {
-    "message": "Bijdragen gids",
+    "message": "Bijdragehandleiding",
     "description": "Navbar item with label Contribution Guide"
   },
   "item.label.Report Issue": {
-    "message": "Probleem Rapporteren",
+    "message": "Probleem Melden",
     "description": "Navbar item with label Report Issue"
   },
   "item.label.Contact us": {
-    "message": "Neem contact op",
+    "message": "Neem contact met ons op",
     "description": "Navbar item with label Contact us"
   }
 }

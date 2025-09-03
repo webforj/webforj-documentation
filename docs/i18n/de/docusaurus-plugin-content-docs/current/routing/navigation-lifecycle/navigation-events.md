@@ -1,9 +1,9 @@
 ---
 sidebar_position: 4
 title: Navigation Events
-_i18n_hash: efd06f0c5d04fb782fc27b187d1b063d
+_i18n_hash: f41ebca54f574eeac4834234cf3a0e5b
 ---
-Neben komponentenspezifischen Lebenszyklusereignissen können Sie **globale Ereignislistener** auf Router-Ebene registrieren. Dies ermöglicht die globale Verfolgung der Navigation in der gesamten App, was nützlich für Protokollierung, Analytik oder andere bereichsübergreifende Belange ist.
+Zusätzlich zu komponentenspezifischen Lebenszyklusereignissen können Sie **globale Ereignislistener** auf Routerniveau registrieren. Dies ermöglicht das Tracking der Navigation global über die gesamte App hinweg, was nützlich für Protokollierung, Analytik oder andere bereichsübergreifende Anliegen ist.
 
 ## Beispiel: Globaler Navigationslistener {#example-global-navigation-listener}
 
@@ -14,20 +14,21 @@ Router.getCurrent().addNavigateListener(event -> {
 });
 ```
 
-In diesem Beispiel wird ein globaler Listener registriert, um jedes Navigationsereignis in der App zu protokollieren. Dies ist nützlich für Audits oder zur Verfolgung von Seitenaufrufen.
+In diesem Beispiel wird ein globaler Listener registriert, um jedes Navigationsereignis in der App zu protokollieren. Dies ist nützlich für die Überprüfung oder das Tracking von Seitenaufrufen.
 
-## Registrieren globaler Lebenszyklusereignis-Listener {#registering-global-lifecycle-event-listeners}
+## Registrierung globaler Lebenszyklusereignislistener {#registering-global-lifecycle-event-listeners}
 
-Globale Listener können verschiedenen Lebenszyklusereignissen zugeordnet werden, einschließlich:
+Globale Listener können an verschiedene Lebenszyklusereignisse angehängt werden, einschließlich:
 
-- **`WillEnterEvent`**: Wird ausgelöst, bevor eine Komponente einer Route an das DOM angehängt wird.
-- **`DidEnterEvent`**: Wird ausgelöst, nachdem eine Komponente an das DOM angehängt wurde.
-- **`WillLeaveEvent`**: Wird ausgelöst, bevor eine Komponente vom DOM abgetrennt wird.
-- **`DidLeaveEvent`**: Wird ausgelöst, nachdem eine Komponente vom DOM abgetrennt wurde.
+- **`WillEnterEvent`**: Wird ausgelöst, bevor das Komponent einer Route an das DOM angehängt wird.
+- **`DidEnterEvent`**: Wird ausgelöst, nachdem ein Komponent an das DOM angehängt wurde.
+- **`WillLeaveEvent`**: Wird ausgelöst, bevor ein Komponent vom DOM getrennt wird.
+- **`DidLeaveEvent`**: Wird ausgelöst, nachdem ein Komponent vom DOM getrennt wurde.
 - **`NavigateEvent`**: Wird jedes Mal ausgelöst, wenn eine Navigation erfolgt.
+- **`ActivateEvent`** (seit 25.03): Wird ausgelöst, wenn ein zwischengespeichertes Komponent reaktiviert wird.
 
-:::tip Verwendung von Beobachtern zum Haken in Lebenszyklusereignisse
-Sie können auch die Lebenszyklusereignisse über Beobachter hooken. Weitere Details finden Sie in den [Lifecycle Observers](./observers).
+:::tip Verwendung von Observatoren zum Hooken in Lebenszyklusereignisse
+Sie können auch in die Lebenszyklusereignisse mithilfe von Observatoren hooken. Weitere Details finden Sie in den [Lifecycle Observers](./observers).
 :::
 
 ## Beispiel: Globaler `WillLeaveEvent`-Listener {#example-global-willleaveevent-listener}
@@ -36,7 +37,7 @@ Sie können auch die Lebenszyklusereignisse über Beobachter hooken. Weitere Det
 Router.getCurrent().addWillLeaveListener(event -> {
   ConfirmDialog.Result result = showConfirmDialog(
       "Sind Sie sicher, dass Sie diese Ansicht verlassen möchten?",
-      "Ansicht verlassen",
+      "Ansicht Verlassen",
       ConfirmDialog.OptionType.OK_CANCEL,
       ConfirmDialog.MessageType.WARNING);
 
@@ -44,4 +45,4 @@ Router.getCurrent().addWillLeaveListener(event -> {
 });
 ```
 
-In diesem Fall wird das `WillLeaveEvent` global verwendet, um einen Bestätigungsdialog anzuzeigen, bevor der Benutzer von einer Ansicht navigiert.
+In diesem Fall wird das `WillLeaveEvent` global verwendet, um ein Bestätigungsdialogfeld anzuzeigen, bevor der Benutzer von einer Ansicht navigiert.

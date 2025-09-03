@@ -77,6 +77,9 @@ const config = {
           editUrl:
             'https://github.com/webforj/webforj-documentation/tree/main/docs/',
         },
+        blog: {
+          postsPerPage: 12
+        },
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),
         },
@@ -109,6 +112,18 @@ const config = {
             from: '/docs/intro/basics',
             to: '/docs/introduction/basics',
           },
+          {
+            from: '/docs/integrations/spring/dependency-injection',
+            to: '/docs/integrations/spring/routing',
+          },
+          {
+            from: '/docs/integrations/spring/setup',
+            to: '/docs/integrations/spring/spring-boot',
+          },
+          {
+            from: '/docs/advanced/deploying-additional-servlets',
+            to: '/docs/configuration/deploying-additional-servlets',
+          }
         ],
       },
     ]

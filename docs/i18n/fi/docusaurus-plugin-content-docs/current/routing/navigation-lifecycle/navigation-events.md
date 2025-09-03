@@ -1,9 +1,9 @@
 ---
 sidebar_position: 4
 title: Navigation Events
-_i18n_hash: efd06f0c5d04fb782fc27b187d1b063d
+_i18n_hash: f41ebca54f574eeac4834234cf3a0e5b
 ---
-Lisäksi komponenttikohtaisille elinkaaritapahtumille voit rekisteröidä **globaaleja tapahtumakuuntelijoita** reitittimen tasolla. Tämä mahdollistaa navigoinnin seuraamisen koko sovelluksessa, mikä on hyödyllistä lokitusta, analytiikkaa tai muita poikkileikkaavia huolenaiheita varten.
+Lisäksi komponenttikohtaisten elinkaaritapahtumien ohella voit rekisteröidä **globaalit tapahtumakuuntelijat** reitittimen tasolla. Tämä mahdollistaa navigoinnin seuraamisen globaalisti koko sovelluksessa, mikä on hyödyllistä lokitusta, analytiikkaa tai muita poikkileikkavia huolenaiheita varten.
 
 ## Esimerkki: Globaali navigointikuuntelija {#example-global-navigation-listener}
 
@@ -14,23 +14,24 @@ Router.getCurrent().addNavigateListener(event -> {
 });
 ```
 
-Tässä esimerkissä rekisteröidään globaali kuuntelija, joka kirjaa jokaisen navigointitapahtuman sovelluksessa. Tämä on hyödyllistä tarkastelua tai sivunäkymien seuraamista varten.
+Tässä esimerkissä globaalinen kuuntelija rekisteröidään lokittamaan jokainen navigointitapahtuma sovelluksessa. Tämä on hyödyllistä tarkastelua tai sivunäkymien seuraamista varten.
 
 ## Globaalien elinkaaritapahtumakuuntelijoiden rekisteröinti {#registering-global-lifecycle-event-listeners}
 
-Globaalit kuuntelijat voivat olla kiinnitettyinä erilaisiin elinkaaritapahtumiin, mukaan lukien:
+Globaalit kuuntelijat voidaan liittää erilaisiin elinkaaritapahtumiin, mukaan lukien:
 
-- **`WillEnterEvent`**: Käynnistyy ennen kuin minkä tahansa reitin komponentti liitetään DOM:iin.
-- **`DidEnterEvent`**: Käynnistyy sen jälkeen, kun komponentti on liitetty DOM:iin.
-- **`WillLeaveEvent`**: Käynnistyy ennen kuin komponentti irrotetaan DOM:ista.
-- **`DidLeaveEvent`**: Käynnistyy sen jälkeen, kun komponentti on irrotettu DOM:ista.
-- **`NavigateEvent`**: Käynnistyy joka kerta, kun navigointi tapahtuu.
+- **`WillEnterEvent`**: Laukaisee ennen kuin minkään reitin komponentti liitetään DOM:iin.
+- **`DidEnterEvent`**: Laukaisee sen jälkeen, kun komponentti on liitetty DOM:iin.
+- **`WillLeaveEvent`**: Laukaisee ennen kuin komponentti irrotetaan DOM:ista.
+- **`DidLeaveEvent`**: Laukaisee sen jälkeen, kun komponentti on irrotettu DOM:ista.
+- **`NavigateEvent`**: Laukaisee joka kerta, kun navigointi tapahtuu.
+- **`ActivateEvent`** (desde 25.03): Laukaisee, kun välimuistissa oleva komponentti aktivoidaan uudelleen.
 
-:::tip Observerien käyttäminen elinkaaritapahtumiin
-Voit myös liittää elinkaaritapahtumiin käyttämällä observereita. Lisätietoja löytyy [Elinkaarikontrollerit](./observers).
+:::tip Käyttäen Observereita elinkaaritapahtumiin liittymiseksi
+Voit myös liittää elinkaaritapahtumiin käyttämällä observereita. Lisätietoja varten katso [Lifecycle Observers](./observers).
 :::
 
-## Esimerkki: Globaali `WillLeaveEvent` kuuntelija {#example-global-willleaveevent-listener}
+## Esimerkki: Globaali `WillLeaveEvent` -kuuntelija {#example-global-willleaveevent-listener}
 
 ```java
 Router.getCurrent().addWillLeaveListener(event -> {
@@ -44,4 +45,4 @@ Router.getCurrent().addWillLeaveListener(event -> {
 });
 ```
 
-Tässä tapauksessa `WillLeaveEvent` käytetään globaalisti näyttämään vahvistusdialogi ennen kuin käyttäjä navigoi pois mistään näkymästä.
+Tässä tapauksessa `WillLeaveEvent` käytetään globaalisti näyttämään vahvistusdialogi ennen kuin käyttäjä navigoi pois mistä tahansa näkymästä.

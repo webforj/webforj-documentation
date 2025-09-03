@@ -1,9 +1,9 @@
 ---
 sidebar_position: 4
 title: Navigation Events
-_i18n_hash: efd06f0c5d04fb782fc27b187d1b063d
+_i18n_hash: f41ebca54f574eeac4834234cf3a0e5b
 ---
-Naast component-specifieke levenscyclusgebeurtenissen, kun je **globale gebeurtenisluisteraars** op routerniveau registreren. Dit maakt het mogelijk om navigatie wereldwijd in de hele app te volgen, wat nuttig is voor logging, analytics of andere dwarsdoorsnijdende zorgen.
+Naast component-specifieke lifecycle-gebeurtenissen, kunt u **globale gebeurtenisluisteraars** op routersniveau registreren. Dit maakt het mogelijk om navigatie wereldwijd over de gehele app te volgen, wat nuttig is voor logging, analytics of andere dwarsliggende zorgen.
 
 ## Voorbeeld: Globale navigatieluisteraar {#example-global-navigation-listener}
 
@@ -14,29 +14,30 @@ Router.getCurrent().addNavigateListener(event -> {
 });
 ```
 
-In dit voorbeeld wordt een globale luisteraar geregistreerd om elk navigatie-evenement in de app te loggen. Dit is nuttig voor auditing of het volgen van paginabezoeken.
+In dit voorbeeld wordt een globale luisteraar geregistreerd om elke navigatiegebeurtenis in de app te loggen. Dit is nuttig voor auditing of het volgen van paginaweergaven.
 
-## Registreren van globale levenscyclusgebeurtenisluisteraars {#registering-global-lifecycle-event-listeners}
+## Registreren van globale lifecycle gebeurtenisluisteraars {#registering-global-lifecycle-event-listeners}
 
-Globale luisteraars kunnen worden gekoppeld aan verschillende levenscyclusgebeurtenissen, waaronder:
+Globale luisteraars kunnen aan verschillende lifecycle-gebeurtenissen worden gekoppeld, waaronder:
 
-- **`WillEnterEvent`**: Wordt geactiveerd voordat de component van een route aan de DOM wordt gekoppeld.
-- **`DidEnterEvent`**: Wordt geactiveerd nadat een component aan de DOM is gekoppeld.
+- **`WillEnterEvent`**: Wordt geactiveerd voordat een component van een route aan de DOM wordt gehecht.
+- **`DidEnterEvent`**: Wordt geactiveerd nadat een component aan de DOM is gehecht.
 - **`WillLeaveEvent`**: Wordt geactiveerd voordat een component van de DOM wordt losgekoppeld.
 - **`DidLeaveEvent`**: Wordt geactiveerd nadat een component van de DOM is losgekoppeld.
-- **`NavigateEvent`**: Wordt geactiveerd telkens wanneer navigatie plaatsvindt.
+- **`NavigateEvent`**: Wordt geactiveerd elke keer dat navigatie plaatsvindt.
+- **`ActivateEvent`** (sinds 25.03): Wordt geactiveerd wanneer een gecached component opnieuw wordt geactiveerd.
 
-:::tip Gebruik van Observers om in Levenscyclusgebeurtenissen in te haken
-Je kunt ook in de levenscyclusgebeurtenissen inhaken met behulp van observers. Voor meer details, zie de [Lifecycle Observers](./observers).
+:::tip Gebruik van Observers om in Lifecycle-gebeurtenissen te haken
+U kunt ook haken in de lifecycle-gebeurtenissen met behulp van observers. Voor meer details, verwijzen we naar de [Lifecycle Observers](./observers).
 :::
 
-## Voorbeeld: Globale `WillLeaveEvent` luisteraar {#example-global-willleaveevent-listener}
+## Voorbeeld: Globale `WillLeaveEvent`-luisteraar {#example-global-willleaveevent-listener}
 
 ```java
 Router.getCurrent().addWillLeaveListener(event -> {
   ConfirmDialog.Result result = showConfirmDialog(
-      "Weet je zeker dat je deze weergave wilt verlaten?",
-      "Verlaat weergave",
+      "Weet u zeker dat u dit scherm wilt verlaten?",
+      "Verlaat Scherm",
       ConfirmDialog.OptionType.OK_CANCEL,
       ConfirmDialog.MessageType.WARNING);
 
@@ -44,4 +45,4 @@ Router.getCurrent().addWillLeaveListener(event -> {
 });
 ```
 
-In dit geval wordt de `WillLeaveEvent` globaal gebruikt om een bevestigingsdialoog weer te geven voordat de gebruiker naar een andere weergave navigeert.
+In dit geval wordt de `WillLeaveEvent` wereldwijd gebruikt om een bevestigingsdialoog weer te geven voordat de gebruiker navigeert weg van een scherm.
