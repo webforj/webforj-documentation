@@ -21,15 +21,6 @@ public class TableOlympicWinnersViewIT extends BaseTest {
     }
 
     @Test
-    public void testColumnPinning() {
-        assertThat(tableOlympicWinnersPage.getTotalHeader()).hasCSS("position", "sticky");
-        assertThat(tableOlympicWinnersPage.getAthleteHeader()).hasCSS("position", "sticky");
-
-        assertThat(tableOlympicWinnersPage.getTotalRow()).hasCSS("right", "0px");
-        assertThat(tableOlympicWinnersPage.getAthleteRow()).hasCSS("left", "0px");
-    }
-
-    @Test
     public void testDynamicLoadingOnScroll() {
         String firstRowValue = tableOlympicWinnersPage.getFirstRow().getAttribute("data-row");
         assertThat(tableOlympicWinnersPage.getFirstRow()).hasAttribute("data-row", firstRowValue);

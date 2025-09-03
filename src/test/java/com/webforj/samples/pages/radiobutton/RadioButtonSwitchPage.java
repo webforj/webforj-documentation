@@ -15,7 +15,7 @@ public class RadioButtonSwitchPage extends BasePage {
   public RadioButtonSwitchPage(Page page) {
     super(page);
 
-    this.switchRB = page.getByRole(AriaRole.RADIO, new Page.GetByRoleOptions().setName("Switch RadioButton").setExact(true));
+    this.switchRB = page.getByRole(AriaRole.RADIO, new Page.GetByRoleOptions().setName("Switch RadioButton"));
 
   }
 
