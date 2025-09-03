@@ -68,3 +68,13 @@ webforj.devtools.livereload.heartbeat-interval=30000
 # Enable hot reload for static resources (default: true)
 webforj.devtools.livereload.static-resources-enabled=true
 ```
+
+Configure browser opening on app startup:
+
+```Ini title="application.properties"
+# Enable browser opening (default: false)
+webforj.devtools.browser.open=true
+
+# localhost, hostname, or IP address (default: localhost)
+webforj.devtools.browser.host=localhost
+```
