@@ -152,11 +152,6 @@ const config = {
         target: '_self'
       },
       items: [
-        // {
-        //   type: 'html',
-        //   position: 'left',
-        //   value: '<a class="navbar__link" id="webforj-version-badge"></a>',
-        // },
         {
           position: 'left',
           label: ' ',
