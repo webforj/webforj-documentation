@@ -6,6 +6,8 @@ sidebar_position: 3
 
 This step adds data management and display capabilities to the demo app. You’ll define a `Customer` entity, use a Spring Data repository and service for data access, and display customer data in a [`Table`](../../components/table/overview) component.
 
+This and all future steps utilize a H2 database. To use H2 with Spring Boot, add the H2 dependency to your pom.xml and set spring.datasource.url=jdbc:h2:mem:testdb in your application.properties. Spring Boot will auto-configure and start the H2 database for you.
+
 By the end of this step, the app from the [previous step](./creating-a-basic-app) will display a table with customer data, ready for further extension. To run the app:
 
 - Go to the `2-working-with-data` directory
@@ -59,6 +61,14 @@ With the `Customer` data model in place, the next step is to manage and organize
 
 Spring Boot integration lets you use Spring Data repositories and services for data access. The `CustomerService` class provides methods to create, update, delete, and query customers, and exposes a `SpringDataRepository` for use with webforJ’s `Table`.
 
+Note that there are three spring annotations used here:
+
+- `@Service` marks a class as a service component in Spring, making it automatically detected and managed as a bean for business logic or reusable operations.
+
+- `@Transactional` tells Spring to run the method or class within a database transaction, so all operations inside are committed or rolled back together. More detail is available in their official [documentation](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html#page-title).
+
+- `@Autowired` tells Spring to automatically inject the required dependency into a field, constructor, or method. This means you don’t have to create the object yourself—Spring finds and supplies it from its app context. More detail is available in their official [documentation](https://docs.spring.io/spring-framework/reference/core/beans/annotation-config/autowired.html).
+
 ```java title="CustomerService.java"
 @Service
 @Transactional
@@ -94,6 +104,10 @@ public class CustomerService {
   }
 }
 ```
+
+:::note
+`SpringDataRepository` is a webforJ wrapper that lets you connect UI components directly to Spring Data repositories. It simplifies data binding and CRUD operations by allowing your webforJ tables and forms to work freely with your Spring-managed data layer.
+:::
 
 
 ## Displaying data in a table
