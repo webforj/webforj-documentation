@@ -45,7 +45,7 @@ webforj-demo-application
 
 To see the app in action at any stage:
 
-1) Navigate to the directory for the desired step. This should be the top level directory for that step, containing the `pom.xml`
+1. Navigate to the directory for the desired step. This should be the top level directory for that step, containing the `pom.xml`
 
 
 2. Use Maven to run the Spring Boot app locally by running:

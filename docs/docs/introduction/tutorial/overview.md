@@ -11,19 +11,19 @@ Each step in the tutorial results in a runnable Spring Boot app (JAR), which you
 ## Tutorial app features {#tutorial-app-features}
 
  - Working with data in a table.
- - Using the [`ObjectTable`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/environment/ObjectTable.html) and asset management.
+ - [Respository](../../advanced/repository/overview) and asset management.
  - [Routing](../../routing/overview) and [navigation](../../routing/route-navigation)
  - [Data binding](../../data-binding/overview) and [validation](../../data-binding/validation/overview)
 
 ## Prerequisites {#prerequisites}
 
 
-To get the most out of this tutorial, you should have a basic understanding of Java and Maven. No prior Spring Boot experience is required—key concepts will be introduced as needed.
+To get the most out of this tutorial, you should have a basic understanding of Java and Maven. No prior Spring Boot experience is required—key concepts will be introduced as needed. Should you be interested in additional spring resources you can find them [here](https://spring.io/learn);
 
 The following tools/resources should be present on your development machine:
 
 <!-- vale off -->
-- Java 17 or higher
+- Java 17 or 21
 - Maven
 - A Java IDE
 - A web browser
