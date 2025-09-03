@@ -3,7 +3,8 @@ title: Creating a Basic App
 sidebar_position: 2
 ---
 
-This first step lays the foundation for your customer management app by creating a simple, interactive interface using webforJ with Spring Boot. You’ll set up a minimal Spring Boot project, define your main app class, and build a UI with a button and dialog—demonstrating the basics of webforJ’s component model and event handling.
+
+This first step lays the foundation for your customer management app by creating a simple, interactive interface using webforJ with Spring Boot. You’ll set up a minimal Spring Boot project, define your main app class, and build a UI with a button and dialog. This straightforward implementation introduces key components and gives you a feel for how webforJ works.
 
 **Note:** this step uses a single `Application` class that directly hosts the UI content. Routing and separate view classes will be introduced in later steps.
 
@@ -13,7 +14,7 @@ By the end of this step, you’ll have a running app that demonstrates basic int
 
 ## Prerequisites
 
-- Java 17 or higher
+- Java 17 or 21
 - Maven
 - A Java IDE (e.g., IntelliJ IDEA, Eclipse, VSCode)
 - Web browser
@@ -41,6 +42,10 @@ mvn -B archetype:generate \
 
 Create a class called `Application.java` that extends `App` and is annotated for Spring Boot and webforJ:
 
+The `@SpringBootApplication` annotation marks this class as the main entry point for a Spring Boot app. It enables auto-configuration, component scanning, and allows Spring Boot to start your app with an embedded server. This means you don't need extra configuration to get your app running. Spring Boot handles it for you.
+
+The `@StyleSheet` annotation loads the style sheet, in this case provided by the [webserver-protocol](../../managing-resources/assets-protocols#the-webserver-protocol).
+
 ```java title="Application.java"
 package com.webforj.demos;
 
@@ -66,6 +71,8 @@ public class Application extends App {
   }
 }
 ```
+
+
 
 ---
 
@@ -98,6 +105,8 @@ public void run() {
   webforj.entry = com.webforj.demos.Application
   webforj.debug=true
   ```
+
+- Make sure the spring [dependencies](../../integrations/spring/spring-boot#step-2-add-spring-dependencies) are correctly configured in your POM, if not, add them.
 
 - Place your CSS in `src/main/resources/static/app.css` and reference it with `@StyleSheet("ws://app.css")`.
 

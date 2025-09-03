@@ -5,7 +5,7 @@ pagination_next: null
 ---
 
 
-Data binding connects UI components directly with your data model, enabling automatic synchronization of values. This reduces boilerplate and improves reliability. Validation checks that form data follows rules such as being non-empty or matching a pattern. With webforJ and Spring Boot, you can use Jakarta validation annotations and webforJ’s binding system for a user-friendly experience.
+[Data binding](../../data-binding/overview.md) connects UI components directly with your data model, enabling automatic synchronization of values. This reduces boilerplate and improves reliability. Validation checks that form data follows rules such as being non-empty or matching a pattern. With webforJ and Spring Boot, you can use Jakarta validation annotations and webforJ’s binding system for a user-friendly experience.
 
 To run the app:
 
@@ -61,6 +61,28 @@ Validation is handled by Jakarta annotations in the `Customer` entity:
 @Column(name = "first_name")
 private String firstName = "";
 ```
+
+**Annotation overview:**
+
+- `@NotEmpty` and `@Pattern` are [Jakarta Validation](https://beanvalidation.org/) annotations. They declare validation rules directly on the model property:
+  - `@NotEmpty` requires the value to be non-empty.
+  - `@Pattern` restricts input to the specified regular expression (here, only letters).
+
+**Other common Jakarta Validation annotations:**
+
+- `@NotNull`: Value must not be null.
+- `@NotBlank`: String must not be null and must contain at least one non-whitespace character.
+- `@Size(min=, max=)`: String, collection, or array must have a length/size within the given bounds.
+- `@Email`: Value must be a valid email address.
+- `@Min` / `@Max`: Numeric value must be within the specified range.
+- `@Positive` / `@Negative`: Value must be positive or negative.
+- `@Past` / `@Future`: Date/time value must be in the past or future.
+- `@Digits(integer=, fraction=)`: Number must have the specified number of integer and fraction digits.
+
+See the [Jakarta Bean Validation constraints reference](https://jakarta.ee/specifications/bean-validation/3.0/apidocs/jakarta/validation/constraints/package-summary.html) for a full list.
+
+webforJ integrates Jakarta validation via the `BindingContext` (with validation enabled), so these constraints are automatically checked when binding data. For more, see [Jakarta Validation in webforJ](../../data-binding/validation/jakarta-validation.md).
+
 
 The binding context disables the submit button if the form is invalid:
 
