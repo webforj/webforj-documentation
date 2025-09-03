@@ -92,7 +92,7 @@ By default, when the screen width is 800px or less , the drawer will be switched
 
 <AppLayoutViewer path='/webforj/applayoutmobiledrawer/?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/mobiledrawer/AppLayoutMobileDrawerView.java'
-cssURL='/css/applayout/applayoutMobile.css'
+cssURL='/css/applayout/applayout.css'
 />
 
 ## Drawer utilities {#drawer-utilities}

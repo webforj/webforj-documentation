@@ -2,11 +2,13 @@ package com.webforj.samples.views.applayout.mobiledrawer;
 
 import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
+import com.webforj.component.Expanse;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H1;
 import com.webforj.component.html.elements.H3;
 import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.icons.Icon;
+import com.webforj.component.icons.IconButton;
 import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.applayout.AppDrawerToggle;
 import com.webforj.component.layout.applayout.AppLayout;
@@ -93,12 +95,13 @@ public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
     footerMenu.setBorderless(true);
     footerMenu.setPlacement(Placement.BOTTOM);
     footerMenu.setAlignment(Alignment.STRETCH);
+    footerMenu.setExpanse(Expanse.XLARGE);
 
     // Adding tabs to drawer menu
-    footerMenu.addTab(new Tab("", TablerIcon.create("dashboard")));
-    footerMenu.addTab(new Tab("", TablerIcon.create("shopping-cart")));
-    footerMenu.addTab(new Tab("", TablerIcon.create("users")));
-    footerMenu.addTab(new Tab("", TablerIcon.create("box")));
-    footerMenu.addTab(new Tab("", TablerIcon.create("files")));
-  }
+    footerMenu.addTab(new Tab("", new IconButton(TablerIcon.create("dashboard"))));
+    footerMenu.addTab(new Tab("", new IconButton(TablerIcon.create("shopping-cart"))));
+    footerMenu.addTab(new Tab("", new IconButton(TablerIcon.create("users"))));
+    footerMenu.addTab(new Tab("", new IconButton(TablerIcon.create("box"))));
+    footerMenu.addTab(new Tab("", new IconButton(TablerIcon.create("files"))));
+}
 }
