@@ -52,12 +52,10 @@ webforj.clientHeartbeatRate = 1s
 | **`webforj.locale`**                 | String  | The locale for the app, determining language, region settings, and formats for dates, times, and numbers. | `null` |
 | **`webforj.quiet`**                  | Boolean | Disables the loading image during application startup. | `false` |
 | **`webforj.reloadOnServerError`**    | Boolean | **Development environments only.** In a development environment, auto-reload the page on errors related to hot redeployment, but not other error types. When using hot redeploy, if the client sends a request to the server while it is restarting, an error can occur while the WAR file is being swapped.  Because the server will likely be back online shortly, this setting allows the client to attempt a page reload automatically.  | `false` |
-| **`webforj.servletMapping`**         | String  | **Spring only.** URL mapping pattern for the webforJ servlet. | `/*` |
+| **`webforj.servlets[n].name`**       | String  | Servlet name (uses class name if not specified). | `null` |
 | **`webforj.servlets[n].className`**  | String | Fully qualified class name of the servlet. | `null` |
 | **`webforj.servlets[n].config.<key>`** | `Map<String,String>` | Servlet initialization parameters. | `null` |
-| **`webforj.servlets[n].name`**       | String  | Servlet name (uses class name if not specified). | `null` |
 | **`webforj.sessionTimeout`**         | Integer | Session timeout duration in seconds. | `60` |
-| **`webforj.stringTable.<key>`**      | `Map<String,String>` | Key-value pairs for application strings. | `null` |
 | **`webforj.stringTable`**            | `Map<String,String>` | A map of key-value pairs used to store strings for use in the app. Useful for storing app messages or labels. More information on `StringTable` can be found [here](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/environment/StringTable.html). | `{}`            |
 
 <!-- vale on -->
