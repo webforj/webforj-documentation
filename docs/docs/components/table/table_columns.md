@@ -114,7 +114,7 @@ There are three available directions for pinning a column:
 
 Pinning can be set programmatically, allowing you to change the pin direction based on user interactions or by the app's logic.
 
-## Column sizing {#column-sizing}
+## Column sizing <DocChip chip='since' label='25.03' /> {#column-sizing} 
 
 ### Fixed width {#fixed-width}
 
@@ -248,7 +248,7 @@ height='550px'
 />
 <!-- vale on -->
 
-## User interactions {#user-interactions}
+## User interactions <DocChip chip='since' label='25.03' /> {#user-interactions}
 
 ### Column resizing {#column-resizing}
 
@@ -308,7 +308,7 @@ table.setColumnsToMovable(false);
 The `setColumnsToResizable()` and `setColumnsToMovable()` methods only affect existing columns at the time of invocation. They don't set defaults for future columns.
 :::
 
-## Programmatic column movement {#programmatic-column-movement}
+### Programmatic column movement {#programmatic-column-movement} 
 
 In addition to drag-and-drop, you can also reposition columns programmatically by index or ID. Keep in mind that the index is based only on visible columns; any hidden columns are ignored when calculating positions.
 
@@ -325,7 +325,7 @@ table.moveColumn("description", 2).thenAccept(c -> {
 });
 ```
 
-## Event handling {#event-handling}
+### Event handling {#event-handling}
 
 The `Table` component emits events when users interact with columns, allowing you to respond to layout changes and save user preferences.
 
