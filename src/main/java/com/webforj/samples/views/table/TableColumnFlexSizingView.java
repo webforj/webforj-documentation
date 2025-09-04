@@ -4,8 +4,10 @@ import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.field.NumberField;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.layout.flexlayout.FlexWrap;
 import com.webforj.component.table.Column;
 import com.webforj.component.table.Table;
 import com.webforj.router.annotation.FrameTitle;
@@ -19,7 +21,7 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
   private Column<MusicRecord, String> titleColumn;
   private Column<MusicRecord, String> artistColumn;
   private Column<MusicRecord, String> genreColumn;
-  
+
   private NumberField titleFlexField;
   private NumberField artistFlexField;
   private NumberField genreFlexField;
@@ -27,37 +29,39 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
   public TableColumnFlexSizingView() {
     FlexLayout layout = getBoundComponent();
     layout.setDirection(FlexDirection.COLUMN)
-      .setPadding("var(--dwc-space-l)")
-      .setSpacing("var(--dwc-space-l)")
-      .setHeight("100vh");
-    layout.setStyle("box-sizing", "border-box");
+        .setPadding("var(--dwc-space-l)")
+        .setSpacing("var(--dwc-space-l)")
+        .setHeight("100vh");
 
     FlexLayout controls = createControls();
     table = createTable();
-    
+
     layout.add(controls, table);
   }
 
   private FlexLayout createControls() {
     FlexLayout controls = new FlexLayout();
-    
-    controls.setDirection(FlexDirection.ROW)
-      .setSpacing("var(--dwc-space-l)");
-    controls.setStyle("align-items", "flex-end");
-    controls.setStyle("flex-wrap", "wrap");
 
-    FlexLayout titleControl = createFlexControl("Title", 2.0, this::updateTitleFlex);
+    controls.setDirection(FlexDirection.ROW)
+        .setSpacing("var(--dwc-space-l)")
+        .setAlignment(FlexAlignment.END)
+        .setWrap(FlexWrap.WRAP);
+
+    FlexLayout titleControl = createFlexControl("Title", 2.0,
+        () -> updateColumnFlex(titleFlexField, titleColumn));
     titleFlexField = (NumberField) titleControl.getComponents().get(1);
-    
-    FlexLayout artistControl = createFlexControl("Artist", 1.5, this::updateArtistFlex);
+
+    FlexLayout artistControl = createFlexControl("Artist", 1.5,
+        () -> updateColumnFlex(artistFlexField, artistColumn));
     artistFlexField = (NumberField) artistControl.getComponents().get(1);
 
-    FlexLayout genreControl = createFlexControl("Genre", 1.0, this::updateGenreFlex);
+    FlexLayout genreControl = createFlexControl("Genre", 1.0,
+        () -> updateColumnFlex(genreFlexField, genreColumn));
     genreFlexField = (NumberField) genreControl.getComponents().get(1);
 
     Button resetBtn = new Button("Reset to Defaults", ButtonTheme.OUTLINED_PRIMARY);
     resetBtn.onClick(e -> resetToDefaults());
-    
+
     Button equalBtn = new Button("Equal Flex", ButtonTheme.OUTLINED_PRIMARY);
     equalBtn.onClick(e -> setEqualFlex());
 
@@ -69,11 +73,11 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
     FlexLayout control = new FlexLayout();
 
     control.setDirection(FlexDirection.COLUMN)
-      .setSpacing("5px")
-      .setMinWidth("120px");
+        .setSpacing("5px")
+        .setMinWidth("120px");
 
-    com.webforj.component.html.elements.Paragraph labelEl = 
-        new com.webforj.component.html.elements.Paragraph(label + " Flex:");
+    com.webforj.component.html.elements.Paragraph labelEl = new com.webforj.component.html.elements.Paragraph(
+        label + " Flex:");
     labelEl.setStyle("margin", "0");
     labelEl.setStyle("font-weight", "bold");
     labelEl.setStyle("font-size", "14px");
@@ -121,33 +125,23 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
         .setResizable(false);
 
     table.setRepository(Service.getMusicRecords());
-    
+
     return table;
   }
 
-  private void updateTitleFlex() {
-    double flexValue = titleFlexField.getValue();
-    titleColumn.setFlex((float) flexValue);
-    table.refreshColumns();
-  }
-
-  private void updateArtistFlex() {
-    double flexValue = artistFlexField.getValue();
-    artistColumn.setFlex((float) flexValue);
-    table.refreshColumns();
-  }
-
-  private void updateGenreFlex() {
-    double flexValue = genreFlexField.getValue();
-    genreColumn.setFlex((float) flexValue);
-    table.refreshColumns();
+  private void updateColumnFlex(NumberField field, Column<MusicRecord, String> column) {
+    Double value = field.getValue();
+    if (value != null) {
+      column.setFlex(value.floatValue());
+      table.refreshColumns();
+    }
   }
 
   private void resetToDefaults() {
     titleFlexField.setValue(2.0);
     artistFlexField.setValue(1.5);
     genreFlexField.setValue(1.0);
-    
+
     titleColumn.setFlex(2f);
     artistColumn.setFlex(1.5f);
     genreColumn.setFlex(1f);
@@ -158,7 +152,7 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
     titleFlexField.setValue(1.0);
     artistFlexField.setValue(1.0);
     genreFlexField.setValue(1.0);
-    
+
     titleColumn.setFlex(1f);
     artistColumn.setFlex(1f);
     genreColumn.setFlex(1f);

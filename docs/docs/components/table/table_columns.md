@@ -215,7 +215,7 @@ Automatically size columns based on their content. The `Table` analyzes the data
 
 ```java
 // Auto-size all columns to fit content
-table.setColumnsToAutoSize().thenAccept(ignored -> {
+table.setColumnsToAutoSize().thenAccept(c -> {
     // Sizing complete - columns now fit their content
 });
 
@@ -317,10 +317,10 @@ In addition to drag-and-drop, you can also reposition columns programmatically b
 table.moveColumn("title", 0);
 
 // Move column to last position
-table.moveColumn(titleColumn.getId(), table.getColumns().size() - 1);
+table.moveColumn(titleColumn, table.getColumns().size() - 1);
 
 // Async movement with callback
-table.moveColumn("description", 2).thenAccept(ignored -> {
+table.moveColumn("description", 2).thenAccept(c -> {
     // Column moved successfully
 });
 ```
