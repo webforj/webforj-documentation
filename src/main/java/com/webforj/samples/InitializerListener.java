@@ -13,11 +13,9 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class InitializerListener implements ServletContextListener {
-  private static final Logger logger = LoggerFactory.getLogger(InitializerListener.class);
+  private static final System.Logger logger = System.getLogger(InitializerListener.class.getName());
 
   @Override
   public void contextInitialized(ServletContextEvent sce) {
@@ -53,9 +51,9 @@ public class InitializerListener implements ServletContextListener {
       }
 
       System.setProperty("filechooser-files.path", tempDir.toString());
-      logger.info("filechooser-files are extracted to: {}", tempDir);
+      logger.log(System.Logger.Level.INFO, "filechooser-files are extracted to: " + tempDir);
     } catch (IOException e) {
-      logger.error("Error extracting filechooser-files.zip", e);
+      logger.log(System.Logger.Level.ERROR, "Error extracting filechooser-files.zip", e);
     }
   }
 
@@ -63,9 +61,9 @@ public class InitializerListener implements ServletContextListener {
     String tempDir = System.getProperty("filechooser-files.path");
     try {
       FileUtils.forceDelete(new File(tempDir));
-      logger.info("filechooser-files are deleted from: {}", tempDir);
+      logger.log(System.Logger.Level.INFO, "filechooser-files are deleted from: " + tempDir);
     } catch (IOException e) {
-      logger.error("Error deleting filechooser-files", e);
+      logger.log(System.Logger.Level.ERROR, "Error deleting filechooser-files", e);
     }
   }
 }
