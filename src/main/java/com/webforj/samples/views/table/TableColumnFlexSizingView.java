@@ -26,10 +26,10 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
 
   public TableColumnFlexSizingView() {
     FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN);
-    layout.setStyle("padding", "20px");
-    layout.setStyle("gap", "20px");
-    layout.setStyle("height", "100vh");
+    layout.setDirection(FlexDirection.COLUMN)
+      .setPadding("var(--dwc-space-l)")
+      .setSpacing("var(--dwc-space-l)")
+      .setHeight("100vh");
     layout.setStyle("box-sizing", "border-box");
 
     FlexLayout controls = createControls();
@@ -40,8 +40,9 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
 
   private FlexLayout createControls() {
     FlexLayout controls = new FlexLayout();
-    controls.setDirection(FlexDirection.ROW);
-    controls.setStyle("gap", "20px");
+    
+    controls.setDirection(FlexDirection.ROW)
+      .setSpacing("var(--dwc-space-l)");
     controls.setStyle("align-items", "flex-end");
     controls.setStyle("flex-wrap", "wrap");
 
@@ -66,9 +67,10 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
 
   private FlexLayout createFlexControl(String label, double defaultValue, Runnable onChange) {
     FlexLayout control = new FlexLayout();
-    control.setDirection(FlexDirection.COLUMN);
-    control.setStyle("gap", "5px");
-    control.setStyle("min-width", "120px");
+
+    control.setDirection(FlexDirection.COLUMN)
+      .setSpacing("5px")
+      .setMinWidth("120px");
 
     com.webforj.component.html.elements.Paragraph labelEl = 
         new com.webforj.component.html.elements.Paragraph(label + " Flex:");
