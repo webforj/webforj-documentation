@@ -12,13 +12,14 @@ sidebar_class_name: has-new-content
 
 The `Table` class is a versatile component designed for presenting tabular information in a structured and easily understandable manner. Optimized for handling large datasets with high performance, this component offers advanced visualization and a comprehensive suite of events for dynamic user engagement.
 
+
+<!-- vale off -->
 <ComponentDemo 
 path='/webforj/datatable?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/DataTableView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
 height='600px'
 />
+<!-- vale on -->
 
 
 ## Creating a `Table` {#creating-a-table}
@@ -50,6 +51,10 @@ List<MusicRecord> data = new Gson().fromJson(
 
 CollectionRepository<MusicRecord> dataRepository = new CollectionRepository<>(data);
 ```
+
+:::tip More information
+For more information on the `Repository` pattern in webforJ, see the [Repository articles](/docs/advanced/repository/overview).
+:::
 
 ### 3. Instantiate `Table` and add columns {#3-instantiate-table-and-add-columns}
 

@@ -20,7 +20,6 @@ import com.webforj.component.navigator.Navigator;
 import com.webforj.component.navigator.Navigator.Layout;
 import com.webforj.data.Paginator;
 import com.webforj.data.repository.CollectionRepository;
-import com.webforj.data.repository.Repository;
 import com.webforj.utilities.Assets;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
@@ -29,7 +28,7 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Data Table")
 public class DataTableView extends Composite<Div> {
   private String searchTerm = "";
-  private Repository<JsonObject> repository;
+  private CollectionRepository<JsonObject> repository;
   private Paginator paginator;
 
   public DataTableView() {
@@ -38,7 +37,7 @@ public class DataTableView extends Composite<Div> {
         new TypeToken<List<JsonObject>>() {});
 
     repository = new CollectionRepository<>(data);
-    repository.setFilter((JsonObject json) -> {
+    repository.setBaseFilter((JsonObject json) -> {
       String athlete = json.get("athlete").getAsString();
       return athlete.toLowerCase().contains(this.searchTerm);
     });

@@ -6,6 +6,10 @@ slug: sorting
 
 Sorting lets users arrange data in columns by order, making information easier to read and analyze. This is useful when users need to quickly find the highest or lowest values in a particular column.
 
+:::tip Managing and querying data
+For information on how to use the `Repository` pattern to manage and query collections, see the [Repository articles](/docs/advanced/repository/overview).
+:::
+
 <ComponentDemo 
 path='/webforj/tablesorting?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableSortingView.java'

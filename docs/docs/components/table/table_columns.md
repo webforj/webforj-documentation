@@ -349,4 +349,3 @@ table.onColumnMove(event -> {
   // Access: event.getColumn(), event.getOldIndex(), event.getNewIndex()
 });
 ```
-

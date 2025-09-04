@@ -1,11 +1,13 @@
 package com.webforj.samples.views.table;
 
 import com.webforj.component.table.Table;
+
 import com.webforj.component.Composite;
 import com.webforj.component.field.TextField;
 import com.webforj.component.field.TextField.Type;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.data.repository.CollectionRepository;
 import com.webforj.data.repository.Repository;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
@@ -16,8 +18,9 @@ public class TableFilteringView extends Composite<Div> {
   private String searchTerm = "";
 
   public TableFilteringView() {
-    Repository<MusicRecord> repository = Service.getMusicRecords();
-    repository.setFilter((MusicRecord r) -> {
+    CollectionRepository<MusicRecord> repository = Service.getMusicRecords();
+
+    repository.setBaseFilter((MusicRecord r) -> {
       String title = r.getTitle();
       return title.toLowerCase().contains(this.searchTerm);
     });
