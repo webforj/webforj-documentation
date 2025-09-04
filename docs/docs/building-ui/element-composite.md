@@ -66,44 +66,6 @@ public final class MyComponent extends ElementComposite
 }
 ```
 
-## `ElementCompositeContainer` for components with slots
-
-For components that need to manage child components in named slots (such as headers, footers, or content areas), extend <JavadocLink type="foundation" location="com/webforj/component/element/ElementCompositeContainer" code='true' >ElementCompositeContainer</JavadocLink> instead of `ElementComposite`.
-
-`ElementCompositeContainer` provides a structured way to add, remove, and manage components in specific slots:
-
-```java
-@NodeName("my-container")
-public final class MyContainer extends ElementCompositeContainer
-    implements HasClassName<MyContainer>, HasStyle<MyContainer> {
-    private static final String HEADER_SLOT = "header";
-    private static final String CONTENT_SLOT = "content";
-    private static final String FOOTER_SLOT = "footer";
-
-    public MyContainer() {
-        super();
-    }
-
-    public MyContainer addToHeader(Component... components) {
-        getElement().add(HEADER_SLOT, components);
-        return this;
-    }
-
-    public MyContainer addToContent(Component... components) {
-        add(components); // Default slot
-        return this;
-    }
-
-    public MyContainer addToFooter(Component... components) {
-        getElement().add(FOOTER_SLOT, components);
-        return this;
-    }
-}
-```
-
-Use `ElementCompositeContainer` whenever your component needs to support multiple content areas or slots, such as layouts, dialogs, or toolbars.
-
-
 ## Property and attribute descriptors {#property-and-attribute-descriptors}
 
 Properties and attributes in web components represent the state and configuration of a component. You can define, set, and get properties and attributes using the <JavadocLink type="foundation" location="com/webforj/component/element/PropertyDescriptor" code='true' >PropertyDescriptor</JavadocLink> class.
@@ -205,9 +167,13 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## Interacting with Slots {#interacting-with-slots}
+## `ElementCompositeContainer` for components with slots
 
-Web components often use slots to allow developers to define the structure of a component from the outside. A slot is a placeholder inside a web component that can be filled with content when using the component. In the context of the `ElementComposite` class, slots provide a way to customize the content within a component. The following methods are provided to allow developers to interact with and manipulate slots:
+Web components often use slots to allow developers to define the structure of a component from the outside. A slot is a placeholder inside a web component that can be filled with content when using the component.
+
+For web components that have slots (such as headers, footers, or content areas), extend <JavadocLink type="foundation" location="com/webforj/component/element/ElementCompositeContainer" code='true' >ElementCompositeContainer</JavadocLink> instead of `ElementComposite` to manage the child components within the named slots.
+
+`ElementCompositeContainer` provides a structured way to add, remove, and manage components in specific slots:
 
 1. **`findComponentSlot()`**: This method is used to search for a specific component across all slots in a component system. It returns the name of the slot where the component is located. If the component isn't found in any slot, an empty string is returned.
 
@@ -217,4 +183,31 @@ Web components often use slots to allow developers to define the structure of a 
 
 It's also possible to use the `add()` method with a `String` parameter to specify the desired slot in which to add the passed component.
 
-These interactions allow developers to harness the power of web components by providing a clean and straightforward API for manipulating slots, properties, and handling events within the `ElementComposite` class.
+```java
+@NodeName("my-container")
+public final class MyContainer extends ElementCompositeContainer
+    implements HasClassName<MyContainer>, HasStyle<MyContainer> {
+    private static final String HEADER_SLOT = "header";
+    private static final String CONTENT_SLOT = "content";
+    private static final String FOOTER_SLOT = "footer";
+
+    public MyContainer() {
+        super();
+    }
+
+    public MyContainer addToHeader(Component... components) {
+        getElement().add(HEADER_SLOT, components);
+        return this;
+    }
+
+    public MyContainer addToContent(Component... components) {
+        add(components); // Default slot
+        return this;
+    }
+
+    public MyContainer addToFooter(Component... components) {
+        getElement().add(FOOTER_SLOT, components);
+        return this;
+    }
+}
+```
