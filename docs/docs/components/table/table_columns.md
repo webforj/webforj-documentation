@@ -325,7 +325,7 @@ table.moveColumn("description", 2).thenAccept(c -> {
 });
 ```
 
-### Event handling {#event-handling}
+## Event handling {#event-handling}
 
 The `Table` component emits events when users interact with columns, allowing you to respond to layout changes and save user preferences.
 
