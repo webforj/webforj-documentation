@@ -7,12 +7,11 @@
 @use "./content";
 @use "./toc";
 @use "./pagination";
-@use "./blog-sidebar";
-@use "./blog-content";
 @use "./tutorial-content";
 @use "./utils";
 @use "./reset";
 @use "./accordion";
+@use "./blog";
 
 :root {
   /* DWC */

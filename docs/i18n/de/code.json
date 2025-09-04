@@ -1,10 +1,10 @@
 {
   "theme.docs.translationNotice": {
-    "message": "Diese Seite wurde automatisch übersetzt. Bitte besuchen Sie die offizielle Dokumentation für genauere Informationen.",
+    "message": "Diese Seite wurde automatisch mit KI übersetzt und kann Fehler oder Ungenauigkeiten enthalten. Für die genauesten und aktuellsten Informationen beachten Sie bitte die offizielle webforJ-Dokumentation. webforJ übernimmt keine Gewähr für die Genauigkeit, Zuverlässigkeit oder Vollständigkeit dieser KI-Übersetzungen.",
     "description": "Translation notice for non-English pages"
   },
   "component.askMenu.chatgpt.label": {
-    "message": "ChatGPT öffnen",
+    "message": "In ChatGPT öffnen",
     "description": "ChatGPT button label"
   },
   "component.askMenu.chatgpt.desc": {
@@ -16,7 +16,7 @@
     "description": "Claude button label"
   },
   "component.askMenu.claude.desc": {
-    "message": "Chatten mit Claude AI",
+    "message": "Mit Claude AI über diese Seite chatten",
     "description": "Claude button description"
   },
   "component.askMenu.markdown.label": {
@@ -24,31 +24,31 @@
     "description": "Markdown button label"
   },
   "component.askMenu.markdown.desc": {
-    "message": "Den rohen Markdown-Quelltext anzeigen",
+    "message": "Rohmarkdown-Quelltext anzeigen",
     "description": "Markdown button description"
   },
   "component.archetype.intro": {
-    "message": "Um ein neues {project}-Projekt zu erstellen und zu strukturieren, folgen Sie diesen Schritten:",
+    "message": "Um ein neues {project}-Projekt zu erstellen und zu scaffolden, folgen Sie diesen Schritten:",
     "description": "Introduction text for archetype component"
   },
   "component.archetype.step1.title": {
-    "message": "Zum richtigen Verzeichnis navigieren",
+    "message": "Navigieren Sie zum richtigen Verzeichnis",
     "description": "Step 1 title"
   },
   "component.archetype.step1.desc": {
-    "message": "Öffnen Sie ein Terminal und navigieren Sie zum Ordner für Ihr neues Projekt.",
+    "message": "Öffnen Sie ein Terminal und wechseln Sie in den Ordner, in dem Sie Ihr neues Projekt erstellen möchten.",
     "description": "Step 1 description"
   },
   "component.archetype.step2.title": {
-    "message": "Den archetype:generate Befehl ausführen",
+    "message": "Führe den Befehl archetype:generate aus",
     "description": "Step 2 title"
   },
   "component.archetype.step2.desc": {
-    "message": "Maven-Befehl verwenden und groupId, artifactId und Version anpassen.",
+    "message": "Verwenden Sie den folgenden Maven-Befehl und passen Sie groupId, artifactId und version nach Bedarf für Ihr Projekt an.",
     "description": "Step 2 description"
   },
   "component.archetype.table.argument": {
-    "message": "Argument",
+    "message": "Argumentation",
     "description": "Argument column header"
   },
   "component.archetype.table.explanation": {
@@ -56,19 +56,19 @@
     "description": "Explanation column header"
   },
   "component.archetype.table.archetypeGroupId.desc": {
-    "message": "Die Gruppen-ID des Archetyps ist com.webforJ.",
+    "message": "Die Gruppen-ID des Archetyps ist com.webforj für webforJ-Archetypen.",
     "description": "archetypeGroupId description"
   },
   "component.archetype.table.archetypeArtifactId.desc": {
-    "message": "Gibt den Namen des zu verwendenden Archetypes an.",
+    "message": "Gibt den Namen des zu verwendenden Archetyps an.",
     "description": "archetypeArtifactId description"
   },
   "component.archetype.table.archetypeVersion.desc": {
-    "message": "Gibt die Version des zu verwendenden Archetypes an. Dies stellt sicher, dass das generierte Projekt mit einer bestimmten Archetype-Version kompatibel ist. LATEST wählt die neueste verfügbare Version.",
+    "message": "Legt die zu verwendende Version des Archetyps fest. Dies stellt sicher, dass das generierte Projekt mit einer bestimmten Archetyp-Version kompatibel ist. Die Auswahl von LATEST wählt die aktuellste verfügbare Version aus.",
     "description": "archetypeVersion description"
   },
   "component.archetype.table.groupId.desc": {
-    "message": "Repräsentiert den Namespace für das generierte Projekt. Typischerweise wie ein Java-Paket strukturiert, z.B. org.example, und wird verwendet, um Ihre Organisation oder Projektdomäne eindeutig zu identifizieren.",
+    "message": "Namespace für das generierte Projekt. Typisch strukturiert wie ein Java-Paket, z.B. org.example und wird verwendet, um Ihre Organisation oder Projektdomain eindeutig zu identifizieren.",
     "description": "groupId description"
   },
   "component.archetype.table.artifactId.desc": {
@@ -76,11 +76,11 @@
     "description": "artifactId description"
   },
   "component.archetype.table.version.desc": {
-    "message": "Versionsnummer festlegen. Gängige Konvention: MAJOR.MINOR-SNAPSHOT, z. B. 1.0-SNAPSHOT.",
+    "message": "Legt die Version des generierten Projekts fest. Eine gängige Konvention ist MAJOR.MINOR-SNAPSHOT, wie 1.0-SNAPSHOT, wobei SNAPSHOT bedeutet, dass sich das Projekt noch in der Entwicklung befindet.",
     "description": "version description"
   },
   "component.archetype.table.flavor.desc": {
-    "message": "Wählt eine Projektvariante:",
+    "message": "Wählen Sie einen Projektgeschmack aus:",
     "description": "flavor description intro"
   },
   "component.archetype.table.flavor.webforj": {
@@ -88,23 +88,23 @@
     "description": "webforj flavor description"
   },
   "component.archetype.table.flavor.spring": {
-    "message": "webforJ-App mit Spring Boot-Unterstützung (erfordert webforJ 25.02 oder höher).",
+    "message": "webforJ-App mit Unterstützung für Spring Boot (erfordert webforJ 25.02 oder höher).",
     "description": "webforj-spring flavor description"
   },
   "component.archetype.table.appName.desc": {
-    "message": "Optionaler Parameter in der POM für Standardtitel.",
+    "message": "Ein optionaler Parameter, der in der POM-Datei des generierten Projekts verwendet werden kann. Abhängig vom verwendeten webforJ-Archetyp kann er als Standardtitel für die Anwendung genutzt werden.",
     "description": "appName description"
   },
   "component.archetype.conclusion": {
-    "message": "Maven generiert nach Ausführung des Befehls die notwendigen Projektdateien.",
+    "message": "Nach Ausführung des Befehls wird Maven die benötigten Projektdateien generieren, um das Projekt auszuführen.",
     "description": "Conclusion text"
   },
   "theme.ErrorPageContent.title": {
-    "message": "Die Seite ist geschlossen.",
+    "message": "Diese Seite ist abgestürzt.",
     "description": "The title of the fallback page when the page crashed"
   },
   "theme.BackToTopButton.buttonAriaLabel": {
-    "message": "Nach oben",
+    "message": "Nach oben scrollen",
     "description": "The ARIA label for the back to top button"
   },
   "theme.blog.archive.title": {
@@ -116,23 +116,23 @@
     "description": "The page & hero description of the blog archive page"
   },
   "theme.blog.paginator.navAriaLabel": {
-    "message": "Blogliste Navigation",
+    "message": "Blog-Übersicht Navigation",
     "description": "The ARIA label for the blog pagination"
   },
   "theme.blog.paginator.newerEntries": {
-    "message": "Neueste Beiträge",
+    "message": "Neuere Einträge",
     "description": "The label used to navigate to the newer blog posts page (previous page)"
   },
   "theme.blog.paginator.olderEntries": {
-    "message": "Ältere Beiträge",
+    "message": "Ältere Einträge",
     "description": "The label used to navigate to the older blog posts page (next page)"
   },
   "theme.blog.post.paginator.navAriaLabel": {
-    "message": "Blogbeitrag-Navigation",
+    "message": "Blog-Beitragsseitennavigation",
     "description": "The ARIA label for the blog posts pagination"
   },
   "theme.blog.post.paginator.newerPost": {
-    "message": "Neuer Artikel",
+    "message": "Neuer Beitrag",
     "description": "The blog post button label to navigate to the newer/previous post"
   },
   "theme.blog.post.paginator.olderPost": {
@@ -148,27 +148,27 @@
     "description": "The name for the system color mode"
   },
   "theme.colorToggle.ariaLabel.mode.light": {
-    "message": "Heller Modus",
+    "message": "Helle Mode",
     "description": "The name for the light color mode"
   },
   "theme.colorToggle.ariaLabel.mode.dark": {
-    "message": "Dunkelmodus",
+    "message": "dunkler Modus",
     "description": "The name for the dark color mode"
   },
   "theme.colorToggle.ariaLabel": {
-    "message": "Umschalten zwischen Dunkel- und Hellansicht (aktuell {mode})",
+    "message": "Wechseln Sie zwischen dem Dunkel- und dem Hellmodus (aktuell {mode})",
     "description": "The ARIA label for the color mode toggle"
   },
   "theme.docs.breadcrumbs.navAriaLabel": {
-    "message": "Brotkrumen",
+    "message": "Breadcrumbs",
     "description": "The ARIA label for the breadcrumbs"
   },
   "theme.docs.DocCard.categoryDescription.plurals": {
-    "message": "1 Eintrag|{count} Einträge",
+    "message": "1 Element|{count} Elemente",
     "description": "The default description for a category card in the generated index about how many items this category includes"
   },
   "theme.docs.paginator.navAriaLabel": {
-    "message": "Dokumentation",
+    "message": "Dokumentseiten",
     "description": "The ARIA label for the docs pagination"
   },
   "theme.docs.paginator.previous": {
@@ -180,7 +180,7 @@
     "description": "The label used to navigate to the next doc"
   },
   "theme.docs.tagDocListPageTitle.nDocsTagged": {
-    "message": "Ein Dokument getaggt | {count} Dokumente getaggt",
+    "message": "Ein Dokument getagt | {count} Dokumente getagt",
     "description": "Pluralized label for \"{count} docs tagged\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.docs.tagDocListPageTitle": {
@@ -191,31 +191,31 @@
     "message": "Version: {versionLabel}"
   },
   "theme.docs.versions.unreleasedVersionLabel": {
-    "message": "Das ist die unveröffentlichte Dokumentation für {siteTitle} {versionLabel}.",
+    "message": "Dies ist die unveröffentlichte Dokumentation für {siteTitle} Version {versionLabel}.",
     "description": "The label used to tell the user that he's browsing an unreleased doc version"
   },
   "theme.docs.versions.unmaintainedVersionLabel": {
-    "message": "Dies ist die Dokumentation für {siteTitle} {versionLabel} und wird nicht weiter aktualisiert.",
+    "message": "Dies ist die Dokumentation für {siteTitle} {versionLabel}, die nicht mehr aktiv gewartet wird.",
     "description": "The label used to tell the user that he's browsing an unmaintained doc version"
   },
   "theme.docs.versions.latestVersionSuggestionLabel": {
-    "message": "Für die neueste Dokumentation bitte auf {latestVersionLink} ({versionLabel}) gehen.",
+    "message": "Für die aktuelle Dokumentation siehe den {latestVersionLink} ({versionLabel}).",
     "description": "The label used to tell the user to check the latest version"
   },
   "theme.docs.versions.latestVersionLinkLabel": {
-    "message": "Letzte Version",
+    "message": "neueste Version",
     "description": "The label used for the latest version suggestion link label"
   },
   "theme.common.editThisPage": {
-    "message": "Seite bearbeiten",
+    "message": "Diese Seite bearbeiten",
     "description": "The link label to edit the current page"
   },
   "theme.common.headingLinkTitle": {
-    "message": "Direkter Link zu {Titel}",
+    "message": "Direkter Link zu {heading}",
     "description": "Title for link to heading"
   },
   "theme.lastUpdated.atDate": {
-    "message": "am {datum}",
+    "message": "am {date}",
     "description": "The words used to describe on which date a page has been last updated"
   },
   "theme.lastUpdated.byUser": {
@@ -223,7 +223,7 @@
     "description": "The words used to describe by who the page has been last updated"
   },
   "theme.lastUpdated.lastUpdatedAtBy": {
-    "message": "Letztes Update am {atDate} von {byUser}",
+    "message": "Zuletzt aktualisiert{atDate}{byUser}",
     "description": "The sentence used to display when a page has been last updated, and by who"
   },
   "theme.navbar.mobileVersionsDropdown.label": {
@@ -243,11 +243,11 @@
     "description": "The ARIA label for close button of announcement bar"
   },
   "theme.admonition.caution": {
-    "message": "Achtung",
+    "message": "Vorsicht",
     "description": "The default label used for the Caution admonition (:::caution)"
   },
   "theme.admonition.danger": {
-    "message": "Warnung",
+    "message": "Gefahr",
     "description": "The default label used for the Danger admonition (:::danger)"
   },
   "theme.admonition.info": {
@@ -259,7 +259,7 @@
     "description": "The default label used for the Note admonition (:::note)"
   },
   "theme.admonition.tip": {
-    "message": "Info",
+    "message": "Tipp",
     "description": "The default label used for the Tip admonition (:::tip)"
   },
   "theme.admonition.warning": {
@@ -267,15 +267,15 @@
     "description": "The default label used for the Warning admonition (:::warning)"
   },
   "theme.blog.sidebar.navAriaLabel": {
-    "message": "Neueste Beiträge",
+    "message": "Blog Neueste Beiträge Navigation",
     "description": "The ARIA label for recent posts in the blog sidebar"
   },
   "theme.DocSidebarItem.expandCategoryAriaLabel": {
-    "message": "Seitenleistenkategorie '{label}' öffnen",
+    "message": "Seitenleistenkategorie '{label}' erweitern",
     "description": "The ARIA label to expand the sidebar category"
   },
   "theme.DocSidebarItem.collapseCategoryAriaLabel": {
-    "message": "Sidebar-Kategorie '{label}' schließen",
+    "message": "Seitenleistenkategorie '{label}' einklappen",
     "description": "The ARIA label to collapse the sidebar category"
   },
   "theme.NavBar.navAriaLabel": {
@@ -291,23 +291,23 @@
     "description": "The label used by the button on the collapsible TOC component"
   },
   "theme.NotFound.p1": {
-    "message": "Nicht gefunden.",
+    "message": "Wir konnten nicht finden, wonach Sie gesucht haben.",
     "description": "The first paragraph of the 404 page"
   },
   "theme.NotFound.p2": {
-    "message": "Link funktioniert nicht. Bitte kontaktieren Sie den Seitenbesitzer.",
+    "message": "Bitte kontaktieren Sie den Eigentümer der Website, die Sie mit der originalen URL verlinkt hat, und informieren Sie ihn, dass sein Link defekt ist.",
     "description": "The 2nd paragraph of the 404 page"
   },
   "theme.blog.post.readMore": {
-    "message": "Mehr erfahren",
+    "message": "Mehr lesen",
     "description": "The label used in blog post item excerpts to link to full blog posts"
   },
   "theme.blog.post.readMoreLabel": {
-    "message": "Mehr über {title} anzeigen",
+    "message": "Mehr über {title} erfahren",
     "description": "The ARIA label for the link to full blog posts from excerpts"
   },
   "theme.blog.post.readingTime.plurals": {
-    "message": "Eine Minute Lesezeit | {readingTime} Minuten Lesezeit",
+    "message": "Eine Min lesen | {readingTime} Min lesen",
     "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.CodeBlock.copy": {
@@ -315,15 +315,15 @@
     "description": "The copy button label on code blocks"
   },
   "theme.CodeBlock.copied": {
-    "message": "Kopieren",
+    "message": "Kopiert",
     "description": "The copied button label on code blocks"
   },
   "theme.CodeBlock.copyButtonAriaLabel": {
-    "message": "In die Zwischenablage kopieren",
+    "message": "Code in die Zwischenablage kopieren",
     "description": "The ARIA label for copy code blocks button"
   },
   "theme.CodeBlock.wordWrapToggle": {
-    "message": "Zeilenumbruch wechseln",
+    "message": "Wortumbruch umschalten",
     "description": "The title attribute for toggle word wrapping button of code block lines"
   },
   "theme.docs.breadcrumbs.home": {
@@ -331,15 +331,15 @@
     "description": "The ARIA label for the home page in the breadcrumbs"
   },
   "theme.docs.sidebar.collapseButtonTitle": {
-    "message": "Seitenleiste minimieren",
+    "message": "Seitenleiste einklappen",
     "description": "The title attribute for collapse button of doc sidebar"
   },
   "theme.docs.sidebar.collapseButtonAriaLabel": {
-    "message": "Seitenleiste minimieren",
+    "message": "Seitenleiste collapsen",
     "description": "The title attribute for collapse button of doc sidebar"
   },
   "theme.docs.sidebar.navAriaLabel": {
-    "message": "Dokumenten-Panel",
+    "message": "Dokumenten-Seitenleiste",
     "description": "The ARIA label for the sidebar navigation"
   },
   "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
@@ -347,11 +347,11 @@
     "description": "The ARIA label for close button of mobile sidebar"
   },
   "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
-    "message": "Navigationsleiste wechseln",
+    "message": "Navigationsleiste umschalten",
     "description": "The ARIA label for hamburger menu button of mobile navigation"
   },
   "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
-    "message": "← Zurück zum Menü",
+    "message": "← Zur Hauptmenü",
     "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
   },
   "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
@@ -363,18 +363,18 @@
     "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
   },
   "theme.docs.sidebar.expandButtonTitle": {
-    "message": "Seitenleiste anzeigen",
+    "message": "Seitenleiste erweitern",
     "description": "The ARIA label and title attribute for expand button of doc sidebar"
   },
   "theme.docs.sidebar.expandButtonAriaLabel": {
-    "message": "Seitenleiste einblenden",
+    "message": "Seitenleiste erweitern",
     "description": "The ARIA label and title attribute for expand button of doc sidebar"
   },
   "theme.SearchBar.seeAll": {
     "message": "Alle {count} Ergebnisse anzeigen"
   },
   "theme.SearchPage.documentsFound.plurals": {
-    "message": "Dokument gefunden | {count} Dokumente gefunden",
+    "message": "Ein Dokument gefunden|{count} Dokumente gefunden",
     "description": "Pluralized label for \"{count} documents found\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.SearchPage.existingResultsTitle": {
@@ -386,7 +386,7 @@
     "description": "The search page title for empty query"
   },
   "theme.SearchPage.inputPlaceholder": {
-    "message": "Hier suchen",
+    "message": "Geben Sie hier Ihre Suche ein",
     "description": "The placeholder for search page input"
   },
   "theme.SearchPage.inputLabel": {
@@ -402,15 +402,15 @@
     "description": "The paragraph for empty search result"
   },
   "theme.SearchPage.fetchingNewResults": {
-    "message": "Neue Ergebnisse laden...",
+    "message": "Neue Ergebnisse werden abgerufen...",
     "description": "The paragraph for fetching new search results"
   },
   "theme.SearchBar.label": {
-    "message": "Suche",
+    "message": "Suchen",
     "description": "The ARIA label and placeholder for search button"
   },
   "theme.SearchModal.searchBox.resetButtonTitle": {
-    "message": "Abfrage entfernen",
+    "message": "Abfrage löschen",
     "description": "The label and ARIA label for search box reset button"
   },
   "theme.SearchModal.searchBox.cancelButtonText": {
@@ -422,15 +422,15 @@
     "description": "The title for recent searches"
   },
   "theme.SearchModal.startScreen.noRecentSearchesText": {
-    "message": "Keine aktuellen Suchen",
+    "message": "Keine aktuellen Suchanfragen",
     "description": "The text when no recent searches"
   },
   "theme.SearchModal.startScreen.saveRecentSearchButtonTitle": {
-    "message": "Suche speichern",
+    "message": "Diese Suche speichern",
     "description": "The label for save recent search button"
   },
   "theme.SearchModal.startScreen.removeRecentSearchButtonTitle": {
-    "message": "Suche löschen",
+    "message": "Diesen Suchvorgang aus der Historie entfernen",
     "description": "The label for remove recent search button"
   },
   "theme.SearchModal.startScreen.favoriteSearchesTitle": {
@@ -438,19 +438,19 @@
     "description": "The title for favorite searches"
   },
   "theme.SearchModal.startScreen.removeFavoriteSearchButtonTitle": {
-    "message": "Suchergebnis löschen",
+    "message": "Dieses Suchergebnis aus Favoriten entfernen",
     "description": "The label for remove favorite search button"
   },
   "theme.SearchModal.errorScreen.titleText": {
-    "message": "Ergebnisse können nicht geladen werden",
+    "message": "Ergebnisse können nicht abgerufen werden",
     "description": "The title for error screen of search modal"
   },
   "theme.SearchModal.errorScreen.helpText": {
-    "message": "Bitte überprüfen Sie Ihre Netzwerkverbindung.",
+    "message": "Überprüfen Sie Ihre Netzwerkverbindung.",
     "description": "The help text for error screen of search modal"
   },
   "theme.SearchModal.footer.selectText": {
-    "message": "Auswählen",
+    "message": "auswählen",
     "description": "The explanatory text of the action for the enter key"
   },
   "theme.SearchModal.footer.selectKeyAriaLabel": {
@@ -470,11 +470,11 @@
     "description": "The ARIA label for the Arrow down key button that makes the navigation"
   },
   "theme.SearchModal.footer.closeText": {
-    "message": "Schließen",
+    "message": "schließen",
     "description": "The explanatory text of the action for Escape key"
   },
   "theme.SearchModal.footer.closeKeyAriaLabel": {
-    "message": "Esc-Taste",
+    "message": "Escape-Taste",
     "description": "The ARIA label for the Escape key button that close the modal"
   },
   "theme.SearchModal.footer.searchByText": {
@@ -486,11 +486,11 @@
     "description": "The text explains that there are no results for the following search"
   },
   "theme.SearchModal.noResultsScreen.suggestedQueryText": {
-    "message": "Suchen nach",
+    "message": "Versuchen Sie zu suchen nach",
     "description": "The text for the suggested query when no results are found for the following search"
   },
   "theme.SearchModal.noResultsScreen.reportMissingResultsText": {
-    "message": "Soll diese Abfrage Ergebnisse zurückgeben?",
+    "message": "Glauben Sie, dass diese Abfrage Ergebnisse liefern sollte?",
     "description": "The text for the question where the user thinks there are missing results"
   },
   "theme.SearchModal.noResultsScreen.reportMissingResultsLinkText": {
@@ -498,15 +498,15 @@
     "description": "The text for the link to report missing results"
   },
   "theme.SearchModal.placeholder": {
-    "message": "Dokumente suchen",
+    "message": "Dokumente durchsuchen",
     "description": "The placeholder of the input of the DocSearch pop-up modal"
   },
   "theme.blog.post.plurals": {
-    "message": "Ein Beitrag | {count} Beiträge",
+    "message": "Ein Beitrag|{count} Beiträge",
     "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
   "theme.blog.tagTitle": {
-    "message": "{nPosts} getaggt mit \"{tagName}\"",
+    "message": "{nPosts} markiert mit \"{tagName}\"",
     "description": "The title of the page for a blog tag"
   },
   "theme.blog.author.pageTitle": {
@@ -522,27 +522,27 @@
     "description": "The label of the link targeting the blog authors page"
   },
   "theme.blog.author.noPosts": {
-    "message": "Dieser Autor hat keine Beiträge.",
+    "message": "Dieser Autor hat noch keine Beiträge verfasst.",
     "description": "The text for authors with 0 blog post"
   },
   "theme.contentVisibility.unlistedBanner.title": {
-    "message": "Nicht aufgelistete Seite",
+    "message": "Nicht gelistete Seite",
     "description": "The unlisted content banner title"
   },
   "theme.contentVisibility.unlistedBanner.message": {
-    "message": "Diese Seite ist nicht verfügbar.",
+    "message": "Diese Seite ist nicht gelistet. Suchmaschinen werden sie nicht indizieren, und nur Benutzer mit einem direkten Link können darauf zugreifen.",
     "description": "The unlisted content banner message"
   },
   "theme.contentVisibility.draftBanner.title": {
-    "message": "Entwurf",
+    "message": "Entwurfseite",
     "description": "The draft content banner title"
   },
   "theme.contentVisibility.draftBanner.message": {
-    "message": "Diese Seite ist ein Entwurf und nur für Entwickler sichtbar.",
+    "message": "Diese Seite ist ein Entwurf. Sie wird nur in der Entwicklung angezeigt und von der Produktionsversion ausgeschlossen.",
     "description": "The draft content banner message"
   },
   "theme.ErrorPageContent.tryAgain": {
-    "message": "Erneut versuchen",
+    "message": "Versuch es erneut",
     "description": "The label of the button to try again rendering when the React error boundary captures an error"
   },
   "theme.common.skipToMainContent": {
@@ -554,7 +554,7 @@
     "description": "The title of the tag list page"
   },
   "tableBuilder.headers.part": {
-    "message": "Teilen",
+    "message": "Teil",
     "description": "Table header for part name"
   },
   "tableBuilder.headers.description": {
@@ -566,7 +566,7 @@
     "description": "Section heading for shadow parts table"
   },
   "tableBuilder.descriptions.shadowParts": {
-    "message": "Dies sind die {shadowDomLink} Teile der {componentName} Komponente, die für das Styling mit CSS benötigt werden.",
+    "message": "Dies sind die {shadowDomLink} Teile für die {componentName} Komponente, die zum Stylen mit CSS erforderlich sind.",
     "description": "Description for shadow parts section"
   },
   "tableBuilder.shadowDom": {
@@ -582,7 +582,7 @@
     "description": "Section heading for slots table"
   },
   "tableBuilder.descriptions.slots": {
-    "message": "Verfügbare Slots",
+    "message": "Dies sind die verfügbaren Slots zur Verwendung innerhalb der {componentName}-Komponente. Diese Slots fungieren als Platzhalter innerhalb der Komponente und steuern, wo die Kinder eines angepassten Elements im Schattenbaum eingefügt werden.",
     "description": "Description for slots section"
   },
   "tableBuilder.headers.property": {
@@ -594,7 +594,7 @@
     "description": "Section heading for CSS properties table"
   },
   "tableBuilder.descriptions.cssProperties": {
-    "message": "Dies sind die im {componentName}-Element verwendeten CSS-Eigenschaften.",
+    "message": "Dies sind die CSS-Eigenschaften, die im {componentName}-Komponente verwendet werden, mit einer kurzen Beschreibung ihrer Verwendung.",
     "description": "Description for CSS properties section"
   },
   "tableBuilder.sections.properties": {
@@ -610,7 +610,7 @@
     "description": "Table header for attribute"
   },
   "tableBuilder.headers.type": {
-    "message": "Typen",
+    "message": "Typ",
     "description": "Table header for type"
   },
   "tableBuilder.headers.reflects": {
@@ -618,19 +618,19 @@
     "description": "Table header for reflects"
   },
   "tableBuilder.headers.default": {
-    "message": "Standard",
+    "message": "Standardmäßig",
     "description": "Table header for default value"
   },
   "tableBuilder.descriptions.properties": {
-    "message": "Eigenschaften der {componentName} Komponente.",
+    "message": "Dies sind die Eigenschaften für die {componentName} Komponente. Eigenschaften sind JavaScript-Variablen, die mit Client-Webkomponenten verbunden sind. Sie sind nützlich zum Speichern von Daten und zur Steuerung des Verhaltens und machen Webkomponenten wiederverwendbarer und einfacher konfigurierbar.\n\nEinige Eigenschaften spiegeln ihre Werte in Attribute wider und umgekehrt. Das bedeutet, dass wenn Sie eine Eigenschaft setzen, das entsprechende Attribut automatisch gesetzt wird, und wenn Sie ein Attribut setzen, die entsprechende Eigenschaft automatisch gesetzt wird.",
     "description": "Description for properties section"
   },
   "tableBuilder.sections.reflectedAttributes": {
-    "message": "Gespiegelte Eigenschaften",
+    "message": "Reflektierte Attribute",
     "description": "Section heading for reflected attributes table"
   },
   "tableBuilder.descriptions.reflectedAttributes": {
-    "message": "Dies sind die reflektierten Attribute für die {componentName} Komponente.",
+    "message": "Dies sind die reflektierten Attribute für die {componentName}-Komponente. Reflektierte Attribute erscheinen als Attribute im gerenderten HTML-Element der Komponente im DOM. Das bedeutet, dass Styling mit diesen Attributen angewendet werden kann.",
     "description": "Description for reflected attributes section"
   },
   "tableBuilder.headers.event": {
@@ -638,7 +638,7 @@
     "description": "Table header for event name"
   },
   "tableBuilder.sections.events": {
-    "message": "Ereignisse",
+    "message": "Veranstaltungen",
     "description": "Section heading for events table"
   },
   "tableBuilder.descriptions.events": {
@@ -646,7 +646,7 @@
     "description": "Description for events section"
   },
   "tableBuilder.headers.methodSignature": {
-    "message": "Methodensignatur",
+    "message": "Methode-Signatur",
     "description": "Table header for method signature"
   },
   "tableBuilder.sections.methods": {
@@ -654,7 +654,7 @@
     "description": "Section heading for methods table"
   },
   "tableBuilder.descriptions.methods": {
-    "message": "Dies sind die Methoden der {componentName}-Komponente.",
+    "message": "Dies sind die Methoden für die {componentName}-Komponente.",
     "description": "Description for methods section"
   },
   "tableBuilder.sections.dependentComponents": {
@@ -662,7 +662,7 @@
     "description": "Section heading for dependent components"
   },
   "tableBuilder.descriptions.dependentComponents": {
-    "message": "Die folgenden Komponenten hängen von der {componentName}-Komponente ab.",
+    "message": "Die folgenden Komponenten hängen von der {componentName} Komponente ab.",
     "description": "Description for dependent components section"
   },
   "tableBuilder.sections.dependencies": {
@@ -670,7 +670,7 @@
     "description": "Section heading for dependencies"
   },
   "tableBuilder.descriptions.dependencies": {
-    "message": "Die {componentName}-Komponente ist von folgenden Client-Komponenten abhängig. Siehe den Artikel für Styling-Informationen.",
+    "message": "Die {componentName}-Komponente basiert auf den folgenden Client-Komponenten. Client-Komponenten sind nur auf der Client-Seite und können nicht direkt instanziiert werden. Siehe den verwandten Artikel für detailliertere Styling-Informationen.",
     "description": "Description for dependencies section"
   },
   "componentDemo.hideCode": {
@@ -690,11 +690,11 @@
     "description": "Button text to show all lines of code"
   },
   "componentArchetype.instructions": {
-    "message": "Um ein neues {project} Projekt zu erstellen und zu scaffolden, befolgen Sie diese Schritte:",
+    "message": "Projekt, befolgen Sie diese Schritte:",
     "description": "Instructions for creating a new project"
   },
   "componentArchetype.step1": {
-    "message": "{strong}Navigiere zum richtigen Verzeichnis{/strong}",
+    "message": "{strong}Navigieren Sie zum richtigen Verzeichnis{/strong}: Öffnen Sie ein Terminal und wechseln Sie zu dem Ordner, in dem Sie Ihr neues Projekt erstellen möchten.",
     "description": "First step instruction"
   },
   "componentArchetype.step2": {
@@ -702,15 +702,15 @@
     "description": "Second step instruction"
   },
   "componentArchetype.table.argument": {
-    "message": "Argument",
+    "message": "Argumente",
     "description": "Table header for argument column"
   },
   "componentArchetype.table.explanation": {
-    "message": "Explanation",
+    "message": "Erklärung",
     "description": "Table header for explanation column"
   },
   "componentArchetype.finalInstruction": {
-    "message": "Maven erstellt die Projektdateien nach dem Befehl.",
+    "message": "Nach Ausführung des Befehls wird Maven die Projektdateien generieren, die zum Ausführen des Projekts erforderlich sind.",
     "description": "Final instruction about Maven generating project files"
   }
 }

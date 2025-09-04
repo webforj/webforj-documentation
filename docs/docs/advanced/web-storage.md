@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 35
 title: Web Storage
 ---
 <!-- vale off -->

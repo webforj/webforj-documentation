@@ -1,96 +1,96 @@
 ---
 sidebar_position: 1
 title: Docker
-_i18n_hash: 49f4e9eb5470926c186e323e4d67377f
+_i18n_hash: ec7566378c3ec80f071b7391742ec353
 ---
-# Docker-installatie
+# Docker installatie
 
-Deze sectie van de documentatie behandelt de stappen die nodig zijn voor gebruikers die met Docker willen ontwikkelen. Wijzigingen aan uw code worden gemaakt op uw ontwikkelingsmachine en de resulterende app zal worden uitgevoerd in Docker.
+Dit gedeelte van de documentatie behandelt de stappen die vereist zijn voor gebruikers die willen ontwikkelen met Docker. Wijzigingen aan uw code worden aangebracht op uw ontwikkelingsmachine, en de resulterende app wordt uitgevoerd in Docker.
 
 ## 1. Docker downloaden {#1-downloading-docker}
 
-Het installatieproces voor Docker verschilt iets tussen Windows-, Mac- en Linux-gebruikers. Bekijk de onderstaande sectie die overeenkomt met uw besturingssysteem.
+Het installatieproces voor Docker verschilt licht tussen Windows-, Mac- en Linux-gebruikers. Zie het onderstaande gedeelte dat overeenkomt met uw besturingssysteem.
 
 ### Windows {#windows}
 
 :::info
-Het wordt aanbevolen om de nieuwste versie van Windows Subsystem for Linux te downloaden. Meer informatie is te vinden [op deze link](https://learn.microsoft.com/en-us/windows/wsl/install)
+Het wordt aanbevolen de nieuwste versie van Windows Subsystem for Linux te downloaden. Meer informatie vindt u [op deze link](https://learn.microsoft.com/en-us/windows/wsl/install)
 :::
 
-**1. Docker Desktop downloaden:**
+**1. Download Docker Desktop:**
 >- Bezoek de downloadpagina voor Docker Desktop voor Windows: [Docker Desktop voor Windows](https://www.docker.com/products/docker-desktop/)
->- Klik op de knop "Docker Desktop voor Windows krijgen" om de installer te downloaden.
+>- Klik op de knop "Docker Desktop voor Windows ophalen" om de installer te downloaden.
 
-**2. Docker Desktop installeren:**
+**2. Installeer Docker Desktop:**
 >- Voer de gedownloade installer uit.
->- Volg de installatiewizard en zorg ervoor dat Hyper-V is ingeschakeld (indien gevraagd), aangezien Docker voor Windows Hyper-V gebruikt voor virtualisatie.
+>- Volg de installatiewizard en zorg ervoor dat u Hyper-V inschakelt (indien gevraagd), aangezien Docker voor Windows Hyper-V gebruikt voor virtualisatie.
 >- Zodra de installatie is voltooid, wordt Docker Desktop automatisch gestart.
 
-**3. Installatie verifiëren:**
+**3. Verifieer de installatie:**
 >- Open een terminal en voer de opdracht `docker --version` uit om te verifiëren dat Docker correct is geïnstalleerd en werkt.
 
 ### Mac {#mac}
 
-**1. Docker Desktop downloaden:**
+**1. Download Docker Desktop:**
 >- Bezoek de downloadpagina voor Docker Desktop voor Mac: [Docker Desktop voor Mac](https://www.docker.com/products/docker-desktop/)
 
-**2. Docker Desktop installeren:**
+**2. Installeer Docker Desktop:**
 >- Voer de gedownloade installer uit.
 >- Zodra de installatie is voltooid, wordt Docker Desktop automatisch gestart.
 
-**3. Installatie verifiëren:**
+**3. Verifieer de installatie:**
 >- Open een terminal en voer de opdracht `docker --version` uit om te verifiëren dat Docker correct is geïnstalleerd en werkt.
 
 ## 2. Configuratie {#2-configuration}
 
-Zodra Docker Desktop is gedownload, zoekt u naar de nieuwste webforJ-image, die momenteel onder de naam `webforj/sandbox` valt.
+Zodra Docker Desktop is gedownload, zoek naar de nieuwste webforJ afbeelding, die momenteel onder de naam `webforj/sandbox` staat.
 
 ![DWCJ Image Search](/img/bbj-installation/docker/Step_1l.png#rounded-border)
 
-Klik op de lijst met tags om de beschikbare opties te bekijken
+Klik op de lijst met tags om de beschikbare opties te zien.
 
 ![DWCJ Image Search](/img/bbj-installation/docker/Step_2l.png#rounded-border)
 
-Voor de meest recente build, selecteer "rc"
+Kies voor de meest recente build "rc".
 
 ![DWCJ Image Search](/img/bbj-installation/docker/Step_3l.png#rounded-border)
 
-Haal de image op om uw container te starten
+Haal de afbeelding op om uw container te starten.
 
 ![DWCJ Image Search](/img/bbj-installation/docker/Step_4l.png#rounded-border)
 
-Zodra de download is voltooid, klikt u op de startknop, waarmee de configuratie-instellingen worden geopend
+Zodra de download is voltooid, klikt u op de knop uitvoeren, waarmee de configuratie-instellingen worden geopend.
 
 ![DWCJ Image Search](/img/bbj-installation/docker/Step_5l.png#rounded-border)
 
-Open het menu "Optionele instellingen"
+Open het menu "Optionele instellingen".
 
 ![DWCJ Image Search](/img/bbj-installation/docker/Step_6l.png#rounded-border)
 
-Selecteer een gewenste hostpoort waar u uw app binnen Docker kunt zien draaien
+Selecteer een gewenste hostpoort waar u uw app binnen Docker kunt zien draaien.
 
 ![DWCJ Image Search](/img/bbj-installation/docker/Step_7l.png#rounded-border)
 
-Klik op "Uitvoeren" om de container te starten
+Klik op "Uitvoeren" om de container te starten.
 
 ![DWCJ Image Search](/img/bbj-installation/docker/Step_8l.png#rounded-border)
 
 :::success Belangrijk
-Zorg ervoor dat u het aangepaste Host-poortnummer dat u opgeeft, noteert, aangezien dit later nodig zal zijn.
+Zorg ervoor dat u het aangepaste hostpoortnummer dat u opgeeft, noteert, aangezien dit later nodig zal zijn.
 :::
 
 ## 3. Uw app uitvoeren {#3-running-your-app}
 
-Zodra de container is gemaakt, kunnen webforJ-applicaties binnen de container worden uitgevoerd in plaats van lokaal. Eerst is het nodig om het POM-bestand van uw project correct te configureren. Zodra dit is gedaan, zal naar een specifieke URL in de browser gaan de app tonen.
+Zodra de container is aangemaakt, kunnen webforJ-applicaties binnen de container worden uitgevoerd in plaats van lokaal. Eerst is het noodzakelijk om het POM-bestand van uw project correct te configureren. Zodra dit is gedaan, zal het bezoeken van een specifieke URL in de browser de app weergeven.
 
 ### Configureren van uw POM-bestand {#configuring-your-pom-file}
 
-Het draaien van een webforJ-project in de Docker-container vereist het gebruik van de webforJ Install Plugin, die kan worden geconfigureerd via uw POM-bestand:
+Het uitvoeren van een webforJ-project in de Docker-container vereist het gebruik van de webforJ Install Plugin, die kan worden geconfigureerd met behulp van uw POM-bestand:
 
-Maak een nieuwe `<plugin>`-invoer in de sectie `<plugins>` van de POM. De volgende code toont een startinvoer die kan worden gebruikt en aangepast zoals nodig voor uw project:
+Maak een nieuwe `<plugin>`-vermelding in de `<plugins>`-sectie van de POM. De volgende code toont een startvermelding die kan worden gebruikt en verder kan worden aangepast naar behoefte voor uw project:
 
 :::important
-Als uw POM-bestand geen `<plugins>`-sectie heeft, creëer er dan een.
+Als uw POM-bestand geen `<plugins>`-sectie heeft, maak er dan een aan.
 :::
 
 ```xml
@@ -114,13 +114,13 @@ Als uw POM-bestand geen `<plugins>`-sectie heeft, creëer er dan een.
 </plugin>
 ```
 
-Zodra een invoer vergelijkbaar met de bovenstaande is gemaakt, kunt u de volgende informatie aanpassen:
+Zodra een vermelding vergelijkbaar met de bovenstaande is gemaakt, past u de volgende informatie aan:
 
-- Wijzig de invoer `<deployurl>` zodat deze het poortnummer gebruikt dat overeenkomt met de **Host-port** die u in de vorige stap voor uw container hebt geconfigureerd.
+- Verander de `<deployurl>`-vermelding naar het poortnummer dat overeenkomt met de **Host port** die u voor uw container hebt geconfigureerd in de vorige stap.
 
-- Zorg ervoor dat de invoer `<classname>` overeenkomt met de naam van de app die u wilt uitvoeren.
+- Zorg ervoor dat de `<classname>`-vermelding overeenkomt met de naam van de app die u wilt uitvoeren.
 
-- Als uw `<username>` en `<password>` inloggegevens verschillen voor uw installatie van BBj, wijzig deze dan.
+- Als uw `<username>` en `<password>` inloggegevens anders zijn voor uw installatie van BBj, wijzig deze dan.
 
 ### Gebruik maken van het starterproject {#using-the-starter-project}
 
@@ -128,10 +128,10 @@ Zodra een invoer vergelijkbaar met de bovenstaande is gemaakt, kunt u de volgend
 project="bbj-hello-world"
 />
 
-### De app starten {#launching-the-app}
+### De app lanceren {#launching-the-app}
 
-Zodra dit gedaan is, voert u een `mvn install` uit in uw projectdirectory. Dit zal de webforJ-installatieplugin uitvoeren en u in staat stellen om toegang te krijgen tot uw app. Om de app te zien, gaat u naar de volgende URL:
+Zodra dit is gedaan, voert u een `mvn install` uit in uw projectmap. Dit zal de webforJ install-plugin uitvoeren en u in staat stellen uw app te openen. Om de app te zien, wilt u naar de volgende URL gaan:
 
 `http://localhost:YourHostPort/webapp/YourPublishName`
 
-Vervang `YourHostPort` door de Host-poort die u met Docker hebt geconfigureerd, en `YourPublishName` wordt vervangen door de tekst in de `<publishname>`-tag van de POM. Als alles correct is gedaan, zou u uw app moeten kunnen weergeven.
+Vervang `YourHostPort` door de Host-port die u met Docker hebt geconfigureerd, en `YourPublishName` wordt vervangen door de tekst binnen de `<publishname>`-tag van de POM. Als dit correct is gedaan, zou u uw app moeten zien renderen.

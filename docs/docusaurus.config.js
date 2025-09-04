@@ -57,7 +57,8 @@ const config = {
   },
   scripts: [
     { src: '/js/dwc-theme-switcher.js', async: false },
-    { src: '/js/link-decorator.js' }
+    { src: '/js/link-decorator.js' },
+    { src: '/js/latest-webforj-version.js', defer: true}
   ],
   headTags: [
     {
@@ -76,6 +77,9 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
             'https://github.com/webforj/webforj-documentation/tree/main/docs/',
+        },
+        blog: {
+          postsPerPage: 12
         },
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),
@@ -109,6 +113,18 @@ const config = {
             from: '/docs/intro/basics',
             to: '/docs/introduction/basics',
           },
+          {
+            from: '/docs/integrations/spring/dependency-injection',
+            to: '/docs/integrations/spring/routing',
+          },
+          {
+            from: '/docs/integrations/spring/setup',
+            to: '/docs/integrations/spring/spring-boot',
+          },
+          {
+            from: '/docs/advanced/deploying-additional-servlets',
+            to: '/docs/configuration/deploying-additional-servlets',
+          }
         ],
       },
     ]
@@ -137,6 +153,14 @@ const config = {
         target: '_self'
       },
       items: [
+        {
+          position: 'left',
+          label: ' ',
+          href: 'https://github.com/webforj/webforj/releases/latest',
+          target: '_blank', 
+          id: 'webforj-version-badge',
+          title: 'Latest webforJ release'
+        },
         {
           position: 'left',
           label: 'Getting Started',

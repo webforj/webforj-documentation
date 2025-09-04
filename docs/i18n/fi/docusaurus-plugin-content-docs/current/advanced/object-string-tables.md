@@ -1,20 +1,22 @@
 ---
 title: Object and String Tables
-sidebar_position: 35
-_i18n_hash: aa2c014d8043f9ad53dfabcdc39844da
+sidebar_position: 45
+_i18n_hash: 2ec33737ccaf06670b4c1cd16369d858
 ---
-`ObjectTable` ja `StringTable` tarjoavat staattista pääsyä jaettuun dataan webforJ-ympäristössä. Molempiin pääsee käsiksi mistä tahansa sovelluksessasi, ja ne palvelevat eri tarkoituksia:
+`ObjectTable`, `SessionObjectTable` ja `StringTable` tarjoavat staattisen pääsyn jaettuun dataan webforJ-ympäristössä. Kaikki ovat käytettävissä mistä tahansa sovelluksessasi ja palvelevat eri tarkoituksia:
 
-- `ObjectTable`: Käytetään Java-objektien tallentamiseen ja hakemiseen sovelluksesi laajuudessa.
-- `StringTable`: Työskentelee pysyvien avain-arvo-merkkijonoparien kanssa, joita käytetään usein konfiguraatio- tai ympäristötyyppisessä datassa.
+- `ObjectTable`: Java-olioiden tallentamiseen ja hakemiseen koko sovelluksessa.
+- `SessionObjectTable`: Java-olioiden tallentamiseen ja hakemiseen HTTP-istuntotason kontekstissa.
+- `StringTable`: Pysyvien avain-arvo-merkkijonoparien työskentelyyn, joita käytetään usein konfiguraatio- tai ympäristötietona.
 
-Nämä taulukot ovat saatavilla ympäristötasolla, eikä niiden hallintaan tarvita instanssien hallintaa.
+Nämä taulukot ovat saatavilla ympäristötasolla eivätkä vaadi instanssien hallintaa.
 
 ## `ObjectTable` {#objecttable}
 
-`ObjectTable` on globaalisti käytettävissä oleva avain-arvo-kartta, jota käytetään minkä tahansa Java-objektin tallentamiseen. Se tarjoaa yksinkertaisen pääsyn jaettuun tilaan ilman, että mitään tarvitsee instansioida tai konfiguroida. `ObjectTable`:llä on vain yksi instanssi, ja se tyhjennetään, kun sovellus päivitetään tai suljetaan. Se on hyödyllinen tilanteissa, joissa tarvitaan datan saatavuutta useiden komponenttien tai kontekstien välillä ilman, että viittausketjua tarvitsee ylläpitää.
+`ObjectTable` on globaalisti saatavissa oleva avain-arvo-kartta minkä tahansa Java-olion tallentamiseen. Se tarjoaa yksinkertaisen pääsyn jaettuun tilaan ilman, että mitään tarvitsisi instansioida tai konfiguroida. `ObjectTable`:llä on vain yksi instanssi, ja se tyhjennetään, kun sovellus päivitetään tai lopetetaan. Se on hyödyllinen skenaarioissa, joissa tarvitset tietojen saatavuutta useiden komponenttien tai kontekstien välillä ilman viittausketjun ylläpitämistä.
 
-### Objektien asettaminen ja hakeminen {#setting-and-retrieving-objects}
+
+### Olioiden asettaminen ja hakeminen {#setting-and-retrieving-objects}
 
 ```java
 ObjectTable.put("userInfo", new User("Alice", "admin"));
@@ -29,7 +31,7 @@ if (ObjectTable.contains("userInfo")) {
 }
 ```
 
-### Entryjen poistaminen {#removing-entries}
+### Merkintöjen poistaminen {#removing-entries}
 
 ```java
 ObjectTable.clear("userInfo");
@@ -41,20 +43,62 @@ ObjectTable.clear("userInfo");
 int total = ObjectTable.size();
 ```
 
+## `SessionObjectTable` <DocChip chip='since' label='25.03' /> {#sessionobjecttable}
+
+`SessionObjectTable` tarjoaa staattisen pääsyn HTTP-istuntotason attribuutteihin, kun se toimii Jakarta Servlet 6.1+ -säiliössä. Toisin kuin `ObjectTable`, joka on sovellustason, `SessionObjectTable` tallentaa tietoja käyttäjän HTTP-istuntoon, mikä tekee niistä pysyviä pyyntöjen välillä, mutta ainutlaatuisia jokaiselle käyttäjäistunnolle.
+
+Se noudattaa samaa API-mallia kuin `ObjectTable` johdonmukaisuuden vuoksi.
+
+:::warning
+`SessionObjectTable`:ssä tallennettujen objektien tulee toteuttaa `Serializable` tukeakseen istuntojen pysyvyyttä, replikoitumista ja passivointia servlet-säiliöissä.
+:::
+
+:::warning Saatavuus `BBjServices`:ssa
+Tätä ominaisuutta ei ole vielä saatavilla käytettäessä BBjServicesia versiolla 25.03.
+:::
+
+### Istunto-olioiden asettaminen ja hakeminen {#setting-and-retrieving-session-objects}
+
+```java
+// ShoppingCart:in tulee toteuttaa Serializable
+SessionObjectTable.put("cart", new ShoppingCart());
+ShoppingCart cart = (ShoppingCart) SessionObjectTable.get("cart");
+```
+
+### Läsnäolon tarkistaminen {#checking-for-presence-session}
+
+```java
+if (SessionObjectTable.contains("cart")) {
+  // Istunnolla on ostoskori
+}
+```
+
+### Istunto-merkintöjen poistaminen {#removing-session-entries}
+
+```java
+SessionObjectTable.clear("cart");
+```
+
+### Istuntotaulukon koko {#session-table-size}
+
+```java
+int total = SessionObjectTable.size();
+```
+
 ## `StringTable` {#stringtable}
 
-`StringTable` tarjoaa staattista pääsyä globaaleihin merkkijonomuuttujiin. Se on pysyvä ja rajattu nykyiseen sovellukseen. Arvoja voidaan ohjelmallisesti muuttaa tai syöttää ympäristön konfiguraation kautta. Tämä mekanismi on erityisen hyödyllinen, kun tallennetaan konfiguraatioarvoja, lippuja ja asetuksia, jotka on oltava käytettävissä sovelluslaajuisesti, mutta eivät tarvitse kantaa monimutkaista dataa.
+`StringTable` tarjoaa staattisen pääsyn globaalisiin merkkimuuttujiin. Se on pysyvä ja rajoittuu nykyiseen sovellukseen. Arvoja voidaan ohjelmallisesti muuttaa tai injektoida ympäristön konfiguraation kautta. Tämä mekanismi on erityisen hyödyllinen konfiguraatioarvojen, lippujen ja asetusten tallentamiseen, joita on oltava saatavilla koko sovelluksessa, mutta jotka eivät tarvitse kantaa monimutkaista dataa.
 
-### Merkkijonojen arvojen saaminen ja asettaminen {#getting-and-setting-string-values}
+### Merkkijonoarvojen hakeminen ja asettaminen {#getting-and-setting-string-values}
 
 ```java
 StringTable.put("COMPANY", "Acme Corp");
 String company = StringTable.get("COMPANY");
 ```
 
-### Esikonfiguroitujen arvojen hakeminen konfiguraatiosta {#pre-configured-values-from-config}
+### Esikonfiguroidut arvot konfiguraatiosta {#pre-configured-values-from-config}
 
-Voit määrittää avaimia [`webforj.conf`](../configuration/properties#configuring-webforjconf) -tiedostossasi:
+Voit määrittää avaimet [`webforj.conf`](../configuration/properties#configuring-webforjconf) -tiedostossasi:
 
 ```
 webforj.stringTable = {
@@ -62,7 +106,7 @@ webforj.stringTable = {
 }
 ```
 
-Sitten voit päästä niihin koodissa:
+Sitten pääset niihin koodissa:
 
 ```java
 String val = StringTable.get("COMPANY");

@@ -414,7 +414,7 @@ Always verify code compiles with `mvn compile` before suggesting.
   </AccordionSummary>
   <AccordionDetails>
     <div>
-      **Report issues:** [webforJ MCP Feedback](https://github.com/webforj/webforj-mcp-feedback/issues)
+      **Report issues:** [webforJ MCP Issue Template](https://github.com/webforj/webforj/issues/new?template=mcp_report.yml)
       
       **Common issues to report:**
       - Outdated documentation in search results

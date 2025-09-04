@@ -1,0 +1,26 @@
+.analytics-card {
+  border: thin solid var(--dwc-color-default);
+  border-radius: 16px;
+  padding: var(--dwc-space-m);
+  background-color: var(--dwc-surface-3);
+  box-shadow: var(--dwc-shadow-xs);
+  max-width: 500px;
+  margin: 2em auto;
+}
+
+.analytics-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+}
+
+.analytics-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--dwc-color-primary);
+}
+
+.analytics-description {
+  font-size: 0.9rem;
+  color: var(--dwc-color-neutral-600);
+} 

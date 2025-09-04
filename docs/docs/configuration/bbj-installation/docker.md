@@ -159,5 +159,3 @@ you to access your app. To see the app, you'll want to go to the following URL:
 
 Replace `YourHostPort` with the Host port you configured with Docker, and `YourPublishName` is replaced by the text inside the `<publishname>` tag of the POM. 
 If done correctly, you should see your app render.
-
-<!-- <UnderConstruction /> -->
