@@ -11,7 +11,9 @@ When you use Spring Boot with webforJ, your app runs as an executable JAR with a
 
 You have two options for creating a new webforJ app with Spring Boot: using the graphical startforJ tool or the Maven command line.
 
+<!-- vale off -->
 ### Option 1: Using startforJ {#option-1-using-startforj}
+<!-- vale on -->
 
 The simplest way to create a new webforJ app is [startforJ](https://docs.webforj.com/startforj), which generates a minimal starter project based on a chosen webforJ archetype. This starter project includes all required dependencies, configuration files, and a pre-made layout, so you can start building on it right away.
 
@@ -190,6 +192,9 @@ The `@SpringBootApplication` annotation enables Spring's auto-configuration and 
 Create `application.properties` in `src/main/resources`:
 
 ```Ini title="application.properties"
+# Fully qualified class name of application entry point
+webforj.entry = org.example.Application
+
 # App Name
 spring.application.name=Hello World Spring
 
@@ -201,12 +206,6 @@ server.shutdown=immediate
 spring.devtools.livereload.enabled=false
 webforj.devtools.livereload.enabled=true
 webforj.devtools.livereload.static-resources-enabled=true
-```
-
-You can use the `application.properties` file instead of `webforj.conf`, but your existing `webforj.conf` file continues to work. Point it to your main class:
-
-```Ini title="webforj.conf"
-webforj.entry = org.example.Application
 ```
 
 ## Run the Spring Boot app {#run-the-spring-boot-app}
@@ -222,7 +221,7 @@ The app starts with an embedded Tomcat server on port 8080 by default. Your exis
 ## Configuration
 
 Use the `application.properties` file in `src/main/resources` to configure your app. 
-You can set webforJ configuration properties in the `application.properties` file, and webforJ will create the `webforj.conf` file for you. See [Property Configuration](/docs/configuration/properties.md) for information on webforJ configuration properties.
+ See [Property Configuration](/docs/configuration/properties.md) for information on webforJ configuration properties.
 
 The following webforJ `application.properties` settings are specific to the Spring framework:
 
@@ -240,6 +239,6 @@ When you switch to Spring Boot, several configuration aspects change:
 | **Packaging** | WAR file | Executable JAR |
 | **Server** | External (Jetty, Tomcat) | Embedded Tomcat |
 | **Run command** | `mvn jetty:run` | `mvn spring-boot:run` |
-| **Main config** | `webforj.conf` only | `application.properties` + automatically generated `webforj.conf`  |
+| **Main config** | `webforj.conf` only | `application.properties` + `webforj.conf`  |
 | **Profiles** | `webforj-dev.conf`, `webforj-prod.conf` | Spring profiles with `application-{profile}.properties` |
 | **Port config** | In plugin configuration | `server.port` in properties |
