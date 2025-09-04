@@ -1,0 +1,141 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">webforJ Scopes</title>
+  <desc id="desc">Diagram of webforJ session, environments, and route-scoped hierarchies.</desc>
+
+  <defs>
+    <style>
+    /* Light defaults */
+    :root{
+      --t:#0f172a;
+      --small:12px;
+      --hint:#475569;
+      --session-fill:#fff;
+      --session-stroke:#0ea5e9;
+      --env-fill:#fbfdff;
+      --env-stroke:#7c3aed;
+      --tabbar:#eef2ff;
+      --dot:#cbd5e1;
+      --route-fill:#f59e0b12;
+      --route-stroke:#f59e0b;
+      --node-fill:#fff;
+      --node-stroke:#334155;
+      --line:#334155;
+      --muted:#94a3b8;
+    }
+
+    /* Auto dark mode (system) */
+    @media (prefers-color-scheme: dark){
+      :root{
+        --t:#f8fafc;
+        --hint:#94a3b8;
+        --session-fill:#1e293b;
+        --env-fill:#0f172a;
+        --tabbar:#334155;
+        --dot:#475569;
+        --node-fill:#1e293b;
+        --node-stroke:#e2e8f0;
+        --line:#e2e8f0;
+        --muted:#64748b;
+      }
+    }
+
+    .t{font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; fill:var(--t)}
+    .label{font-weight:600}
+    .hint{fill:var(--hint)}
+    .session{fill:var(--session-fill); stroke:var(--session-stroke); stroke-width:3}
+    .env{fill:var(--env-fill); stroke:var(--env-stroke); stroke-width:2.5; stroke-dasharray:8 6}
+    .tabbar{fill:var(--tabbar)}
+    .dot{fill:var(--dot)}
+    .routeArea{fill:var(--route-fill); stroke:var(--route-stroke); stroke-width:2}
+    .node{fill:var(--node-fill); stroke:var(--node-stroke); stroke-width:1.5}
+    .line{stroke:var(--line); stroke-width:1.5}
+    .muted{fill:var(--muted)}
+    </style>
+  </defs>
+
+  <!-- SESSION -->
+  <rect x="24" y="24" width="1152" height="672" rx="20" ry="20" class="session"/>
+  <text x="40" y="56" class="t label">@WebforjSessionScope (session)</text>
+  <text x="40" y="80" class="t small hint">Shared across all tabs/windows for this user</text>
+
+  <!-- ENV A -->
+  <g transform="translate(72,120)">
+    <rect x="0" y="0" width="472" height="460" rx="16" ry="16" class="env"/>
+    <rect x="0" y="0" width="472" height="40" rx="16" ry="16" class="tabbar"/>
+    <circle cx="22" cy="20" r="4" class="dot"/><circle cx="38" cy="20" r="4" class="dot"/><circle cx="54" cy="20" r="4" class="dot"/>
+    <text x="72" y="25" class="t small">A. @EnvironmentScope (tab/window)</text>
+
+    <!-- ROUTE AREA -->
+    <g transform="translate(24,64)">
+      <rect x="0" y="0" width="424" height="340" rx="14" ry="14" class="routeArea"/>
+      <text x="16" y="28" class="t small label">@RouteScope (subtree)</text>
+
+      <!-- Root -->
+      <rect x="149" y="56" width="126" height="40" rx="8" ry="8" class="node"/>
+      <text x="212" y="81" text-anchor="middle" class="t">AdminView</text>
+
+      <!-- Children -->
+      <line x1="212" y1="96"  x2="212" y2="128" class="line"/>
+      <line x1="212" y1="128" x2="100" y2="128" class="line"/>
+      <line x1="212" y1="128" x2="324" y2="128" class="line"/>
+
+      <rect x="37"  y="128" width="126" height="40" rx="8" ry="8" class="node"/>
+      <text x="100" y="153" text-anchor="middle" class="t">UsersView</text>
+
+      <rect x="261" y="128" width="126" height="40" rx="8" ry="8" class="node"/>
+      <text x="324" y="153" text-anchor="middle" class="t">SettingsView</text>
+
+      <!-- Grandchildren -->
+      <line x1="100" y1="168" x2="100" y2="200" class="line"/>
+      <line x1="100" y1="200" x2="60"  y2="200" class="line"/>
+      <line x1="100" y1="200" x2="140" y2="200" class="line"/>
+
+      <rect x="44"  y="200" width="72" height="40" rx="8" ry="8" class="node"/>
+      <text x="80"  y="226" text-anchor="middle" class="t small">List</text>
+
+      <rect x="128" y="200" width="72" height="40" rx="8" ry="8" class="node"/>
+      <text x="164" y="226" text-anchor="middle" class="t small">Details</text>
+    </g>
+    <text x="24" y="444" class="t small hint">Environment A has its own @EnvironmentScope instances.</text>
+  </g>
+
+  <!-- ENV B -->
+  <g transform="translate(648,120)">
+    <rect x="0" y="0" width="472" height="460" rx="16" ry="16" class="env"/>
+    <rect x="0" y="0" width="472" height="40" rx="16" ry="16" class="tabbar"/>
+    <circle cx="22" cy="20" r="4" class="dot"/><circle cx="38" cy="20" r="4" class="dot"/><circle cx="54" cy="20" r="4" class="dot"/>
+    <text x="72" y="25" class="t small">B. @EnvironmentScope (tab/window)</text>
+
+    <!-- ROUTE AREA (height fixed so "Members" stays inside) -->
+    <g transform="translate(24,64)">
+      <rect x="224" y="56" width="200" height="192" rx="14" ry="14" class="routeArea"/>
+      <text x="236" y="78" class="t small label">@RouteScope</text>
+
+      <rect x="24"  y="56" width="160" height="40" rx="8" ry="8" class="node"/>
+      <text x="104" y="81" text-anchor="middle" class="t">PublicView</text>
+
+      <rect x="248" y="112" width="152" height="40" rx="8" ry="8" class="node"/>
+      <text x="324" y="137" text-anchor="middle" class="t">TeamSection</text>
+
+      <line x1="324" y1="152" x2="324" y2="184" class="line"/>
+      <rect x="288" y="184" width="72" height="40" rx="8" ry="8" class="node"/>
+      <text x="324" y="210" text-anchor="middle" class="t small">Members</text>
+    </g>
+    <text x="24" y="444" class="t small hint">Environment B is isolated from A.</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="40" y="628" class="t small hint">Example: @WebforjSessionScope AuthenticationService is shared by both environments.</text>
+
+  <!-- Legend -->
+  <g transform="translate(40,660)">
+    <line x1="0" y1="0" x2="36" y2="0" stroke="#0ea5e9" stroke-width="4"/>
+    <text x="44" y="4" class="t small">Session boundary</text>
+
+    <line x1="200" y1="0" x2="236" y2="0" stroke="#7c3aed" stroke-width="4" stroke-dasharray="8 6"/>
+    <text x="244" y="4" class="t small">Environment boundary</text>
+
+    <rect x="430" y="-10" width="30" height="20" class="routeArea"/>
+    <text x="468" y="4" class="t small">Route-scoped subtree</text>
+  </g>
+</svg>
