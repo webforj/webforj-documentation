@@ -124,6 +124,10 @@ const config = {
           {
             from: '/docs/advanced/deploying-additional-servlets',
             to: '/docs/configuration/deploying-additional-servlets',
+          },
+          {
+            from: '/docs/integrations/spring/spring-devtools',
+            to: '/docs/configuration/deploy-reload/spring-devtools'
           }
         ],
       },
