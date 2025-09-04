@@ -1,6 +1,7 @@
 package com.webforj.samples.views;
 
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.LoadState;
 import com.webforj.samples.config.RunConfig;
 
 import java.nio.file.*;
@@ -61,5 +62,7 @@ public abstract class BaseTest {
 
     protected void navigateToRoute(String route) {
         page.navigate("http://localhost:8998/" + route);
+        // Wait for the page to be fully loaded
+        page.waitForLoadState(LoadState.DOMCONTENTLOADED);
     }
 }

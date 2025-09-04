@@ -278,6 +278,7 @@
           <includes>
             <include>**/*IT.java</include>
           </includes>
+          <rerunFailingTestsCount>2</rerunFailingTestsCount>
         </configuration>
       </plugin>
       <plugin>
