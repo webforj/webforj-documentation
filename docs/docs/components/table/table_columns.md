@@ -52,7 +52,7 @@ In this example, a column will attempt to access data from a JSON object, render
 
 ### Visibility {#visibility}
 
-It's possible to set the visibility of a column, determining whether or not it will be shown within the `Table`. This can be useful when, among other things, determining whether or not to display sensitive information. 
+You can set the visibility of a column, controlling whether or not it will be shown within the `Table`. This can be particularly useful for hiding sensitive information.
 
 Use the `setHidden()` method, as shown below, to set this property on a column:
 
@@ -86,7 +86,7 @@ height='600px'
 />
 <!-- vale on -->
 
-The `Table` Component supports three primary alignment options:
+The `Table` Component supports three alignment options:
 
 - `Column.Alignment.LEFT`: Suitable for textual or descriptive data where maintaining a leftward flow is intuitive. Useful when emphasizing the starting point of the content.
 - `Column.Alignment.CENTER`: Ideal for numerical or categorical data where a balanced presentation is desired. Creates a visually centered display.
@@ -120,7 +120,7 @@ Pinning can be set programmatically, allowing users to change the pin direction 
 
 ### Fixed width {#fixed-width}
 
-You can set an exact width for a column using the `setWidth()` method:
+Set an exact width for a column using the `setWidth()` method, specifying the desired width in pixels:
 
 ```java
 table.addColumn("ID", Product::getId).setWidth(80f);
@@ -128,7 +128,7 @@ table.addColumn("ID", Product::getId).setWidth(80f);
 
 The width property defines the desired initial width for the column. How this width is used depends on other properties and column type:
 
-- [**Regular columns**]: With only width set, the column renders at the specified width but can shrink proportionally when the container is too small. The width acts as both desired and minimum width.
+- **Regular columns**: With only width set, the column renders at the specified width but can shrink proportionally when the container is too small. The original width serves as the desired width, but without explicit minimum constraints, the column can render smaller than the set width.
 - [**Pinned columns**](#pinning): Always maintain their exact width, never participating in responsive shrinking.
 - [**Flex columns**](#flex-sizing): Setting width is incompatible with flex. Use either width (fixed) or flex (proportional), not both.
 
@@ -147,12 +147,12 @@ The `setMinWidth()` method allows you to define the minimum width of a column. I
 table.addColumn("Price", Product::getPrice).setMinWidth(100f);
 ```
 
-The value passed represents the desired minimum width in pixels.
+The value passed represents the minimum width in pixels.
 
 The minimum width property controls the smallest width a column can have:
 
-- **Regular columns**: With only `minWidth` set, the column uses minWidth as both desired and minimum width. With width + minWidth, the column can shrink from width down to `minWidth` but no further.
-- [**Pinned columns**](#pinning): If only `minWidth` is set (no width), it becomes the fixed width.
+- **Regular columns**: With only minimum width set, the column uses the minimum width as both desired and minimum width. With width + minimum width, the column can shrink from the width down to the minimum width but no further.
+- [**Pinned columns**](#pinning): If only minimum width is set (no width), it becomes the fixed width.
 - [**Flex columns**](#flex-sizing): Prevents the column from shrinking below this width even when container space is limited.
 
 ```java
@@ -191,7 +191,7 @@ Key flex behaviors:
 
 - **Flex value**: Determines the proportion of available space. A column with flex=2 gets twice the space of a column with flex=1.
 - **Incompatible with width**: Can't be used together with the width property. When flex is greater than zero, it takes effect over the width setting.
-- **Respects constraints**: Works with `minWidth`/`maxWidth`. Without `minWidth`, flex columns can shrink to 0.
+- **Respects constraints**: Works with minimum width/maximum width constraints. Without minimum width, flex columns can shrink to 0.
 
 <!-- vale off -->
 <ComponentDemo 
@@ -336,7 +336,7 @@ Supported events:
 - `TableColumnResizeEvent`: Fired when a user resizes a column by dragging its border.
 - `TableColumnMoveEvent`: Fired when a user reorders a column by dragging its header.
 
-You can attach listeners to these events to run logic when users modify the table layout.
+You can attach listeners to the `Table` to respond when users modify the table layout.
 
 ```java
 Table<Product> table = new Table<>();
