@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 Validation reporters are used for providing feedback about the validation process to the user interface. This feature is essential for informing users about the results of their input validation, particularly in complex forms or data-intensive applications.
 
-## What's a validation reporter?
+## What's a validation reporter? {#whats-a-validation-reporter}
 
 A validation reporter is a component that processes and displays the outcomes of validations to users. It acts as a bridge between the validation logic and the user interface, ensuring that validation results are communicated effectively and clearly.
 
@@ -20,7 +20,7 @@ A validation reporter is a component that processes and displays the outcomes of
 webforJ includes the `DefaultBindingReporter`, a default bindings reporter designed to work seamlessly with all core webforJ components. This built-in reporter automatically displays validation errors, eliminating the need for custom implementation in many cases. Depending on the component's configuration, the `DefaultBindingReporter` displays validation errors directly as a popover or inline, right beneath the component. This feature simplifies the error reporting process significantly, ensuring clear and direct communication of validation errors, and enhances the user experience by providing immediate, context-sensitive feedback on input validation.
 :::
 
-## Configuring validation reporters
+## Configuring validation reporters {#configuring-validation-reporters}
 
 You can configure validation reporters within the binding context to customize how messages are presented. Typically, you would implement a validation reporter to aggregate validation results and then display them in a user-friendly manner, such as highlighting incorrect fields, displaying error messages, or updating status indicators.
 

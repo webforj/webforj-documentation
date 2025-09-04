@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import CodeIcon from '@mui/icons-material/Code';
+import { translate } from '@docusaurus/Translate';
 import styles from './AskMenu.module.css';
 
 const ChatGPTIcon = ({ className }) => (
@@ -25,22 +26,46 @@ function AskMenu() {
   const options = [
     {
       key: "chatgpt",
-      label: "Open in ChatGPT",
-      desc: "Ask questions about this page",
+      label: translate({
+        id: 'component.askMenu.chatgpt.label',
+        message: 'Open in ChatGPT',
+        description: 'ChatGPT button label'
+      }),
+      desc: translate({
+        id: 'component.askMenu.chatgpt.desc',
+        message: 'Ask questions about this page',
+        description: 'ChatGPT button description'
+      }),
       icon: <ChatGPTIcon className={styles.iconDropdown} />,
       href: `https://chat.openai.com/?model=gpt-4&hints=search&prompt=Read%20from%20${encodeURIComponent(currentUrl)}%20so%20I%20can%20ask%20questions%20about%20it`,
     },
     {
       key: "claude",
-      label: "Open in Claude",
-      desc: "Chat with Claude AI about this page",
+      label: translate({
+        id: 'component.askMenu.claude.label',
+        message: 'Open in Claude',
+        description: 'Claude button label'
+      }),
+      desc: translate({
+        id: 'component.askMenu.claude.desc',
+        message: 'Chat with Claude AI about this page',
+        description: 'Claude button description'
+      }),
       icon: <ClaudeIcon className={styles.iconDropdown} />,
       href: `https://claude.ai/new?q=Read%20from%20${encodeURIComponent(currentUrl)}%20so%20I%20can%20ask%20questions%20about%20it`,
     },
     {
       key: "markdown",
-      label: "Show Markdown",
-      desc: "View the raw markdown source",
+      label: translate({
+        id: 'component.askMenu.markdown.label',
+        message: 'Show Markdown',
+        description: 'Markdown button label'
+      }),
+      desc: translate({
+        id: 'component.askMenu.markdown.desc',
+        message: 'View the raw markdown source',
+        description: 'Markdown button description'
+      }),
       icon: <CodeIcon className={styles.iconDropdown} />,
       href: `https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/docs/docs/${encodeURIComponent(docsPath)}.md`,
     },

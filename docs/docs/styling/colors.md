@@ -3,8 +3,6 @@ sidebar_position: 3
 title: Colors
 ---
 
-import ColorPalette from '@site/src/components/DWCTheme/ColorPalette/ColorPalette';
-
 webforJ provides a color system built on CSS custom properties. These color variables keep consistent visual style across your app while giving you full control to customize palettes according to your design needs.
 
 You can reference any color using the `--dwc-color-{palette}-{shade}` syntax, where `{palette}` is the name of the color group (e.g., `primary`, `danger`, ..) and `{shade}` is a number from `5` to `95` in increments of `5`, representing the color’s lightness.
@@ -20,11 +18,11 @@ You can reference any color using the `--dwc-color-{palette}-{shade}` syntax, wh
 Shade values range from `5` (darkest) to `95` (lightest), increasing in steps of `5`.
 :::
 
-## Color palettes
+## Color palettes {#color-palettes}
 
 There are several built-in color palettes, each designed for semantic use cases such as branding, success messages, warnings, and more. Each palette is composed of dynamically generated tints and shades based on three key properties: `hue`, `saturation`, and `contrast-threshold`.
 
-### Available palettes
+### Available palettes {#available-palettes}
 
 - **default**: A neutral gray-based palette tinted with the primary color, used for most components.
 - **primary**: Typically represents your brand’s primary color.
@@ -43,7 +41,7 @@ To simplify the process of generating WCAG-compliant palettes for your webforJ a
 :::
 
 
-### Dark mode behavior
+### Dark mode behavior {#dark-mode-behavior}
 
 webforJ supports a flipped color strategy in dark mode. Rather than using entirely separate color palettes, it inverts the way lightness values are interpreted.
 
@@ -60,7 +58,7 @@ Your component code stays the same, regardless of the theme. For example:
 
 In light mode, this gives a mid-tone background. In dark mode, it still gives a mid-tone, but flipped visually to work on dark surfaces. This approach avoids duplication, keeps your styles consistent, and keeps visual transitions smooth when switching between light and dark themes.
 
-### Palette configuration variables
+### Palette configuration variables {#palette-configuration-variables}
 
 Each palette is generated based on the following variables:
 
@@ -80,13 +78,13 @@ You can adjust a palette by redefining these variables in your root styles. For 
 }
 ```
 
-## Theming components with abstract variables
+## Theming components with abstract variables {#theming-components-with-abstract-variables}
 
 To simplify styling and consistency across components, webforJ introduces an abstraction layer over the base color palettes. This layer is built on **abstract theme variables** - CSS custom properties that refer to specific shades within a color palette.
 
 These variables make it easier to apply themes across all components without directly referencing raw color values or swatches. You can think of them as *semantic styling shortcuts* that reflect your app's intent rather than its implementation details.
 
-### Variable groups
+### Variable groups {#variable-groups}
 
 Abstract theme variables are organized into four groups:
 
@@ -108,7 +106,7 @@ For example, instead of directly using `--dwc-color-primary-40`, you can apply `
 
 Changing the palette values in one place will update the look of all components that rely on these abstract variables.
 
-### Normal state
+### Normal state {#normal-state}
 
 Used for the base, neutral appearance of a component—when it’s idle and not being interacted with.
 
@@ -122,7 +120,7 @@ Used for the base, neutral appearance of a component—when it’s idle and not 
 
 ---
 
-### Darker variant
+### Darker variant {#darker-variant}
 
 Used for selected or active states—usually a deeper tone for stronger contrast and emphasis.
 
@@ -134,7 +132,7 @@ Used for selected or active states—usually a deeper tone for stronger contrast
 
 ---
 
-### Lighter variant
+### Lighter variant {#lighter-variant}
 
 Used for hover, focus, and less dominant visual cues. These are soft tones designed for subtle interaction feedback.
 
@@ -146,7 +144,7 @@ Used for hover, focus, and less dominant visual cues. These are soft tones desig
 
 ---
 
-### Alt variant
+### Alt variant {#alt-variant}
 
 Used for secondary emphasis or UI highlights—such as keyboard navigation focus outlines or auxiliary indicators.
 

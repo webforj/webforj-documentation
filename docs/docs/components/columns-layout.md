@@ -14,7 +14,7 @@ The `ColumnsLayout` component in webforJ allows developers to create layouts usi
 This can be used in place of, or in combination with, the [`FlexLayout`](./flex-layout) component - an equally powerful tool for horizontal layouts.
 :::
 
-## Basics
+## Basics {#basics}
 
 When first instantiated, the `ColumnsLayout` uses two columns to display items added to the layout. By default, it takes the full width of its parent elements and grows as needed to fit additional content. The display of added items can be further calibrated with the use of [`Breakpoint`](./columns-layout#breakpoints) and [`Alignment`](./columns-layout#vertical-and-horizontal-item-alignments) settings, which are discussed in the following sections in more detail.
 
@@ -24,13 +24,13 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="450px"
 />
 
-## Breakpoints
+## Breakpoints {#breakpoints}
 
 At its core, the `ColumnsLayout` is designed to provide a fluid, grid-like system that adapts to the width of its parent container. Unlike traditional fixed-grid systems, this layout allows developers to specify a number of columns at a given width, and dynamically calculates the number of displayed columns based on set `Breakpoint` objects. 
 
 This allows a `ColumnsLayout` to smoothly adapt from a more constrained space on small screens to a wider area on larger screens, offering a responsive design to a developer without needing custom implementation.
 
-### Understanding a `Breakpoint`
+### Understanding a `Breakpoint` {#understanding-a-breakpoint}
 
 A `Breakpoint` can be specified using the `Breakpoint` class, which takes three parameters:
 
@@ -49,7 +49,7 @@ Breakpoints are evaluated in ascending order of the width, meaning the layout wi
 :::
 
 
-### Applying breakpoints
+### Applying breakpoints {#applying-breakpoints}
 
 Breakpoints are applied to a `ColumnsLayout` in one of two ways: during construction, or by using the `addBreakpoint(Breakpoint)` method as shown below. 
 
@@ -71,11 +71,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="375px"
 />
 
-## Column `Span` and spans per `Breakpoint`
+## Column `Span` and spans per `Breakpoint` {#column-span-and-spans-per-breakpoint}
 
 Column spans in `ColumnsLayout` allow you to control how many columns an item occupies, giving you more control over the appearance of your layout at varying widths. This is especially useful when you need certain elements to take up more or less space depending on the screen size or design requirements.
 
-### Managing column spans
+### Managing column spans {#managing-column-spans}
 
 By default, each item in the `ColumnsLayout` takes up exactly one column. However, you can customize this behavior by setting the column span for individual items. A span specifies the number of columns an item should occupy.
 
@@ -88,7 +88,7 @@ layout.setSpan(button, 2);
 
 In the above example, the button occupies two columns instead of the default one. The `setSpan()` method allows you to specify how many columns a component should span within the layout.
 
-### Adjusting column spans with breakpoints
+### Adjusting column spans with breakpoints {#adjusting-column-spans-with-breakpoints}
 
 You can also adjust column spans dynamically based on breakpoints. This feature is useful when you want an item to span different numbers of columns depending on the screen size. For instance, you may want an element to occupy a single column on mobile devices but span multiple columns on larger screens.
 
@@ -109,11 +109,11 @@ columnsLayout.setSpan(email, "medium", 2);
 
 This level of customization ensures that your layout remains responsive and appropriately structured across different devices.
 
-## Placing items within columns
+## Placing items within columns {#placing-items-within-columns}
 
 `ColumnsLayout` provides the ability to place items in specific columns, giving more control over the arrangement of elements. You can manually specify where an item should appear within the layout, ensuring important components display as intended.
 
-### Basic column placement
+### Basic column placement {#basic-column-placement}
 
 By default, items are placed in the next available column, filling from left to right. However, you can override this behavior and specify the exact column where an item should be placed. To place an item in a specific column, use the `setColumn()` method. In this example, the button is placed in the second column of the layout, regardless of the order in which it was added relative to other components:
 
@@ -124,7 +124,7 @@ layout.addComponent(button);
 layout.setColumn(button, 2);  
 ```
 
-### Adjusting placement per breakpoint
+### Adjusting placement per breakpoint {#adjusting-placement-per-breakpoint}
 
 Just like with column spans, you use breakpoints to adjust the placement of items based on the screen size. This is useful for reordering or relocating elements in the layout as the viewport changes.
 
@@ -155,7 +155,7 @@ height="375px"
 When multiple items are placed in a layout with differing spans and/or column assignments, ensure that the combined spans and placements of items in a row don’t overlap. The layout attempts to gracefully manage spacing automatically, but careful design of spans and breakpoints prevents unintended display of items.
 :::
 
-## Vertical and horizontal item alignments
+## Vertical and horizontal item alignments {#vertical-and-horizontal-item-alignments}
 
 Each item in the `ColumnsLayout` can be aligned both horizontally and vertically within its column, giving control over how content is positioned inside the layout.
 
@@ -180,7 +180,7 @@ height="500px"
 
 In the demo above, the `Submit` button has been given `ColumnsLayout.Alignment.END` to ensure that it appears at the end, or in this case to the right, of its column.
 
-## Item spacing 
+## Item spacing {#item-spacing}
 
 Controlling the space between columns in the `ColumnsLayout` between columns (horizontal spacing) and between rows (vertical spacing) helps developers fine-tune the layout.
 
@@ -202,7 +202,7 @@ layout.setVerticalSpacing(15);
 You can use an integer to define the minimum width in pixels or use a `String` to specify other units such as `vw`, `%`, or `em`.
 :::
 
-## Horizontal and vertical layouts
+## Horizontal and vertical layouts {#horizontal-and-vertical-layouts}
 
 Building responsive and attractive layouts is possible using both the [`FlexLayout`](./flex-layout) component and the `ColumnsLayout` component, as well as a combination of the two. Below is a sample of the [form created in the FlexLayout](./flex-layout#example-form) article, but using a `ColumnLayout` scheme instead:
 
@@ -212,6 +212,6 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="700px"
 />
 
-## Styling
+## Styling {#styling}
 
 <TableBuilder name="ColumnsLayout" clientComponent />

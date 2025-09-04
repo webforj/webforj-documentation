@@ -21,7 +21,7 @@ class MyApp extends App {
 App.setTheme("dark-pure");
 ```
 
-## Overriding default themes
+## Overriding default themes {#overriding-default-themes}
 
 You can override the **light** theme by redefining CSS custom properties in the `:root` selector.
 
@@ -49,7 +49,7 @@ html[data-app-theme="dark"] {
 }
 ```
 
-## Creating custom themes
+## Creating custom themes {#creating-custom-themes}
 
 You can define your own themes using the `html[data-app-theme='THEME_NAME']` selector. Custom themes can coexist with the default ones, and you can switch between them dynamically at runtime.
 
@@ -73,7 +73,7 @@ class MyApp extends App {
 App.setTheme("new-theme");
 ```
 
-## Component themes
+## Component themes {#component-themes}
 
 In addition to app-level themes, webforJ components support a set of **component themes** based on the default color palettes: `default`, `primary`, `success`, `warning`, `danger`, `info`, and `gray`.
 

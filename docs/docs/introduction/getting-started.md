@@ -10,12 +10,8 @@ To create a new webforJ app from an archetype, you can use [startforJ](#using-st
 Before you begin, review the necessary [prerequisites](./prerequisites) for setting up and using webforJ.
 :::
 
-<!-- vale off -->
-import DocCardList from '@theme/DocCardList';
 
-<!-- vale on -->
-
-## Using startforJ
+## Using startforJ {#using-startforj}
 
 The simplest way to create a new webforJ app is [startforJ](https://docs.webforj.com/startforj), which generates a minimal starter project based on a chosen webforJ archetype. This starter project includes all required dependencies, configuration files, and a pre-made layout, so you can start building on it right away.
 
@@ -26,7 +22,7 @@ The simplest way to create a new webforJ app is [startforJ](https://docs.webforj
 </div>
 
 
-### Customizing with startforJ
+### Customizing with startforJ {#customizing-with-startforj}
 
 When you create an app with [startforJ](https://docs.webforj.com/startforj), you can customize it by providing the following information:
 
@@ -53,7 +49,7 @@ You can choose to download your project as a ZIP file or publish it directly to 
 
 Once you have downloaded your project, open the project folder in your IDE and move on to [running the app](#running-the-app).
 
-## Using the command line
+## Using the command line {#using-the-command-line}
 
 
 If you prefer to use the command line, you can generate a project directly using the Maven archetype:
@@ -63,7 +59,7 @@ project="hello-world"
 flavor="webforj"
 />
 
-## Running the app
+## Running the app {#running-the-app}
 
 Before running your app, install the [prerequisites](./prerequisites.md) if you haven't yet. 
 Then, navigate to the project's root directory and run the following command:

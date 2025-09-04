@@ -9,7 +9,7 @@ sidebar_position: 4
 
 When your data lives outside your app - in a REST API, database, or external service - you need to create a custom repository implementation. The <JavadocLink type="data" location="com/webforj/data/repository/DelegatingRepository" code="true">DelegatingRepository</JavadocLink> class makes this straightforward by letting you provide functions instead of implementing a full class.
 
-## How `DelegatingRepository` works
+## How `DelegatingRepository` works {#how-delegatingrepository-works}
 
 <JavadocLink type="data" location="com/webforj/data/repository/DelegatingRepository" code="true">DelegatingRepository</JavadocLink> is a concrete class that extends <JavadocLink type="data" location="com/webforj/data/repository/AbstractQueryableRepository" code="true">AbstractQueryableRepository</JavadocLink>. Instead of implementing abstract methods, you provide three functions in the constructor:
 
@@ -39,7 +39,7 @@ This function must return a `Stream<T>` of entities that match the criteria. The
 
 **Find by key function** receives an entity key (usually an ID) and returns an `Optional<T>`. Return `Optional.empty()` if the entity doesn't exist.
 
-## REST API example
+## REST API example {#rest-api-example}
 
 When integrating with a REST API, you need to convert the repository criteria into HTTP request parameters. Start by defining a filter class that matches your API's query capabilities:
 
@@ -77,7 +77,7 @@ DelegatingRepository<User, UserFilter> apiRepository = new DelegatingRepository<
 
 The `buildParams()` method would extract values from the criteria and convert them to query parameters like `?department=Sales&status=active&offset=20&limit=10`. Your REST client then makes the actual HTTP request and deserializes the response.
 
-## Database example
+## Database example {#database-example}
 
 Database integration follows a similar pattern but converts criteria to SQL queries. The key difference is handling SQL generation and parameter binding:
 
@@ -113,7 +113,7 @@ LIMIT ? OFFSET ?
 
 Your filter object properties map to `WHERE` clause conditions, while pagination and sorting are handled through `LIMIT/OFFSET` and `ORDER BY` clauses.
 
-## Using with UI components
+## Using with UI components {#using-with-ui-components}
 
 The beauty of the repository pattern is that UI components don't know or care where the data comes from. Whether it's an in-memory collection, REST API, or database, the usage is identical:
 
@@ -133,7 +133,7 @@ table.setRepository(repository);
 
 When users interact with the [`Table`](../../components/table/overview) (sorting columns, changing pages), the `Table` calls your repository functions with updated criteria. Your functions translate these to API calls or SQL queries, and the table updates automatically with the results.
 
-## When to extend `AbstractQueryableRepository`
+## When to extend `AbstractQueryableRepository` {#when-to-extend-abstractqueryablerepository}
 
 If you need custom methods or complex initialization, extend <JavadocLink type="data" location="com/webforj/data/repository/AbstractQueryableRepository" code="true">AbstractQueryableRepository</JavadocLink> directly:
 

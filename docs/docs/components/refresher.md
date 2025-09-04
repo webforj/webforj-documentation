@@ -12,7 +12,7 @@ The `Refresher` component in webforJ enables a pull-to-refresh interaction withi
 
 You can use `Refresher` in tandem with components like [`InfiniteScroll`](../components/infinitescroll) to reload content or reset state via simple gesture-based input. The component is fully configurable in terms of interaction behavior, appearance, localization, and integration with the rest of your UI.
 
-## Instantiation and internationalization
+## Instantiation and internationalization {#instantiation-and-internationalization}
 
 Add a `Refresher` by instantiating it and registering a refresh listener. When refresh operations complete, call `finish()` to reset the component to its idle state.
 
@@ -30,7 +30,7 @@ mobile='true'
 
 This approach is commonly used to refresh paginated lists or restart infinite scroll loading.
 
-### Internationalization
+### Internationalization {#internationalization}
 
 Each state label can also be localized using the `RefresherI18n` object. The three states are:
 
@@ -48,7 +48,7 @@ height = '400px'
 mobile='true'
 />
 
-## Icon customization
+## Icon customization {#icon-customization}
 
 You can change the [`Icons`](../components/icon) used for the `pull`/`release` and `refreshing` stages using either a predefined [`Icon`](../components/icon) or an [Icon URL](../managing-resources/assets-protocols). These are useful when you want to apply branding or a custom animation.
 
@@ -60,9 +60,9 @@ height = '400px'
 mobile='true'
 />
 
-## Pull behavior configuration
+## Pull behavior configuration {#pull-behavior-configuration}
 
-### Threshold
+### Threshold {#threshold}
 
 Set how far the user must pull down (in pixels) before triggering the refresh:
 
@@ -70,7 +70,7 @@ Set how far the user must pull down (in pixels) before triggering the refresh:
 refresher.setThreshold(80); // default: 80px
 ```
 
-### Threshold maximum
+### Threshold maximum {#threshold-maximum}
 
 To define the maximum pull distance allowed, use the `setThresholdMax()` method:
 
@@ -80,7 +80,7 @@ refresher.setThresholdMax(160);
 
 These thresholds control the gesture sensitivity and resistance curve.
 
-## State management
+## State management {#state-management}
 
 The `Refresher` component maintains its own internal state and communicates state changes through events. When a user pulls down past the defined threshold, the `Refresher` emits a refresh event that you can respond to by registering an `onRefresh()` listener.
 
@@ -101,9 +101,9 @@ refresher.setEnabled(false);
 
 This is useful when refreshes should be temporarily disallowed—for instance, during a loading screen or while another critical process is running.
 
-## Styling
+## Styling {#styling}
 
-### Themes
+### Themes {#themes}
 
 The `Refresher` component supports multiple themes to visually distinguish different states or to match your app's look and feel. Themes can be applied using the `setTheme()` method.
 

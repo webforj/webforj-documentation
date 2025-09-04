@@ -9,7 +9,7 @@ Data transformations are a pivotal feature, facilitating seamless conversion bet
 The transformer setting is best used when the data type of the bean property doesn't match the data type handled by the UI components. If you simply need to transform data of the same type, configuring [the bindings' getters and setters](bindings#binding-getters-and-setters) is the preferred approach.
 :::
 
-## Configuring transformers
+## Configuring transformers {#configuring-transformers}
 
 You configure data transformations directly within your bindings, enabling you to define how data should be transformed during the data binding process.
 
@@ -27,7 +27,7 @@ In the example above, the code configures a `CurrencyTransformer` to handle conv
 Each binding is associated with a single transformer. If transforming a value requires multiple steps, it's recommend to implement your own transformer for these steps.
 :::
 
-## Implementing a transformer
+## Implementing a transformer {#implementing-a-transformer}
 
 Here’s an example of implementing a simple transformer that converts between a `LocalDate` model and a `String` UI representation:
 
@@ -63,7 +63,7 @@ public class DateTransformer implements Transformer<LocalDate, String> {
 
 This transformer facilitates the handling of date fields, ensuring that dates are correctly formatted when displayed in the UI and correctly parsed back into the model.
 
-## Using transformers in bindings
+## Using transformers in bindings {#using-transformers-in-bindings}
 
 Once you have defined a transformer, you can apply it across multiple bindings within your app. This approach is particularly useful for standard data formats that need consistent handling across different parts of your app.
 
@@ -79,7 +79,7 @@ context.bind(startDateField, "startDate", String.class)
 In the `bind` method, specifying the type of the bean property as the third parameter is essential when there is a discrepancy between the data type displayed by the UI component and the data type used in the model. For instance, if the component handles `startDateField` as a Java `LocalDate` within the component but stored as a `String` in the model, explicitly defining the type as `String.class` ensures that the binding mechanism accurately processes and converts the data between the two different types utilized by the component and the bean using the provided transformer and validators.
 :::
 
-## Simplifying transforms with `Transformer.of`
+## Simplifying transforms with `Transformer.of` {#simplifying-transforms-with-transformerof}
 
 It's possible to simplify the implementation of such transformations using the `Transformer.of` method provided by the `Transformer`. This method is syntactic sugar, and allows you to write a method that handles transformations inline, rather than passing a class implementing the `Transformer` interface. 
 

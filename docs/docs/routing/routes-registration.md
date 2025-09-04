@@ -6,11 +6,11 @@ title: Routes Registration
 In addition to [registering routes using the `@Route` annotations](./defining-routes), it's possible to dynamically register, update, or remove routes at runtime based on app logic, user roles, or other conditions. This flexibility enables you to manage navigation more dynamically, rather than statically defining routes at compile time.
 
 
-## Registering routes dynamically
+## Registering routes dynamically {#registering-routes-dynamically}
 
 You can register a route dynamically using the `RouteRegistry` class, which is accessible via the `Router`. This allows you to add new routes during runtime, enabling flexible navigation.
 
-### Example: Registering a dynamic route
+### Example: Registering a dynamic route {#example-registering-a-dynamic-route}
 
 ```java
 Router router = Router.getCurrent();
@@ -25,11 +25,11 @@ router.navigate(SettingsView.class);
 
 In this example, the `/settings` route is dynamically registered, and the app navigates to the newly registered view.
 
-## Conditional route registration
+## Conditional route registration {#conditional-route-registration}
 
 Often, routes need to be added or removed based on specific conditions such as user roles or the app's state. With dynamic routing, you can register or unregister routes conditionally at runtime.
 
-### Example: conditional registration based on user role
+### Example: conditional registration based on user role {#example-conditional-registration-based-on-user-role}
 
 ```java
 Router router = Router.getCurrent();
@@ -54,11 +54,11 @@ In this example:
 - The `/editor/dashboard` or `/viewer/dashboard` route is dynamically registered based on the user's role.
 - The app navigates to the appropriate dashboard based on the user's access rights.
 
-## Removing routes
+## Removing routes {#removing-routes}
 
 Just as routes can be added dynamically, they can also be removed at runtime when they're no longer needed, or when the app’s context changes.
 
-### Example: Removing a registered route
+### Example: Removing a registered route {#example-removing-a-registered-route}
 
 ```java
 Router router = Router.getCurrent();
@@ -73,11 +73,11 @@ registry.unregister(SettingsView.class);
 
 In this example, the `/settings` route is removed dynamically when it's no longer required.
 
-## Registering routes at app startup
+## Registering routes at app startup {#registering-routes-at-app-startup}
 
 You can register dynamic routes during app initialization, allowing certain views to be available based on the environment or configuration at startup.
 
-### Example: Registering routes during app startup
+### Example: Registering routes during app startup {#example-registering-routes-during-app-startup}
 
 ```java
 @Routify
@@ -99,11 +99,11 @@ public class Application extends App {
 In this example:
 - A `DebugView` is dynamically registered during app startup, but only if the app is running in development mode.
 
-## Registering `@Route` annotated components dynamically
+## Registering `@Route` annotated components dynamically {#registering-route-annotated-components-dynamically}
 
 In addition to manually defining routes, it's possible to dynamically register components already annotated with `@Route`. This is useful when you want to leverage pre-annotated classes but register them dynamically based on app logic.
 
-### Example: Registering an `@Route` annotated component
+### Example: Registering an `@Route` annotated component {#example-registering-an-route-annotated-component}
 
 ```java
 @Route("profile")
@@ -125,11 +125,11 @@ In this example:
 - The `ProfileView` class is annotated with `@Route("profile")`.
 - The route is dynamically registered at runtime using `registry.register(ProfileView.class)`.
 
-## Registering routes from an entire package
+## Registering routes from an entire package {#registering-routes-from-an-entire-package}
 
 If your app has a large number of routes organized within a package, you can register all `@Route`-annotated components from the package dynamically.
 
-### Example: Registering all routes from a package
+### Example: Registering all routes from a package {#example-registering-all-routes-from-a-package}
 
 ```java
 Router router = Router.getCurrent();
@@ -143,11 +143,11 @@ In this example:
 - The `ofPackage` method scans the `com.myapp.admin` package and registers all classes annotated with `@Route`.
 - This is particularly useful for large applications with numerous routes organized by packages.
 
-## Retrieving registered routes
+## Retrieving registered routes {#retrieving-registered-routes}
 
 To retrieve a list of all dynamically registered routes, use the `RouteRegistry` class. This is useful when you need to programmatically manage or display available routes.
 
-### Example: Retrieving and displaying all registered routes
+### Example: Retrieving and displaying all registered routes {#example-retrieving-and-displaying-all-registered-routes}
 
 ```java
 Router router = Router.getCurrent();
@@ -159,11 +159,11 @@ routes.forEach(route -> console().log("Path: " + route.getPath()));
 
 In this example, the app retrieves all currently registered routes and prints their paths.
 
-## Managing route aliases dynamically
+## Managing route aliases dynamically {#managing-route-aliases-dynamically}
 
 webforJ allows you to register multiple aliases for a single view. This means users can access the same view using different URL paths.
 
-### Example: Registering route aliases dynamically
+### Example: Registering route aliases dynamically {#example-registering-route-aliases-dynamically}
 
 ```java
 Router router = Router.getCurrent();

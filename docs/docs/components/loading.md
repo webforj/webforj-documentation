@@ -10,7 +10,7 @@ sidebar_position: 65
 
 The `Loading` component in webforJ displays an overlay that signals the processing of an operation, temporarily preventing user interaction until the task is complete. This feature improves the user experience, especially in situations where tasks like data loading, computations, or background processes may take some time. For global, app-wide processes, consider using the [`BusyIndicator`](../components/busyindicator) component, which blocks interaction across the entire interface.
 
-## Basics
+## Basics {#basics}
 
 The simplest way to create a `Loading` component is by initializing it without any additional settings. By default, this displays a basic spinner over its parent content. However, you can also provide a message for more context.
 
@@ -23,7 +23,7 @@ cssURL='/css/loadingstyles/loadingdemo.css'
 height = '300px'
 />
 
-## Scoping
+## Scoping {#scoping}
 
 The `Loading` component in webforJ can scope itself to a specific parent container, such as a `Div`, ensuring that it only blocks user interaction within that element. By default, the `Loading` component is relative to its parent, meaning it overlays the parent component rather than the entire app.
 
@@ -37,7 +37,7 @@ parentDiv.add(loading);
 loading.open();  // Loading will only block interaction within the parentDiv
 ```
 
-## Backdrop
+## Backdrop {#backdrop}
 
 The `Loading` component in webforJ allows you to display a backdrop to block user interaction while a process is ongoing. By default, the component enables the backdrop, but you have the option to turn it off if needed.
 
@@ -52,7 +52,7 @@ loading.open();
 Even when you turn off the backdrop, the `Loading` component continues to block user interaction to ensure the underlying process completes uninterrupted. The backdrop simply controls the visual overlay, not the interaction blocking behavior.
 :::
 
-## `Spinner`
+## `Spinner` {#spinner}
 
 The `Loading` component in webforJ includes a `Spinner` that visually indicates a background operation is in progress. You can customize this spinner with several options, including its size, speed, direction, theme, and visibility.
 
@@ -65,7 +65,7 @@ cssURL='/css/loadingstyles/loadingspinnerdemo.css'
 height = '300px'
 />
 
-## Use cases
+## Use cases {#use-cases}
 - **Data Fetching**  
    When retrieving data from a server or API, the `Loading` component overlays a specific section of the UI, such as a card or form, to inform users that the system is working in the background. This is ideal when you want to show progress on just one part of the screen without blocking the entire interface.
 
@@ -75,6 +75,6 @@ height = '300px'
 - **Complex Form Submissions**  
    For longer form submissions where validation or processing takes time, the `Loading` component provides visual feedback to users, reassuring them that their input is actively processing.
 
-## Styling 
+## Styling {#styling}
 
 <TableBuilder name="Loading" />

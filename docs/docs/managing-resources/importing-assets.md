@@ -5,7 +5,7 @@ title: Importing Assets
 
 Assets annotations provide a declarative approach to embedding external and inline resources such as JavaScript and CSS within an app statically. These annotations streamline resource management by ensuring dependencies are loaded at the appropriate execution phase, reducing manual configuration and enhancing maintainability.
 
-## Importing JavaScript files
+## Importing JavaScript files {#importing-javascript-files}
 
 Declarative JavaScript inclusion is supported through the `@JavaScript` annotation, enabling automatic dependency loading. The annotation can be applied at both the component level and the app level.
 
@@ -21,7 +21,7 @@ The annotation accepts a relative or full path to be loaded in the app. This wil
 | `top`        | Boolean | Specifies whether the script should be injected into the top-level window                                                                         | `false` |
 | `attributes` | Object  | A set of <JavadocLink type="foundation" location="com/webforj/annotation/Attribute" code='true'>attributes</JavadocLink> to apply to the script. | `{}`    |
 
-#### Example:
+#### Example: {#example}
 
 ```java
 @JavaScript(value = "ws://my-component.js",
@@ -32,7 +32,7 @@ The annotation accepts a relative or full path to be loaded in the app. This wil
 Files are loaded only when the component declaring the annotation is attached to a container. If multiple components load the same file, the file is injected only once.
 :::
 
-## Injecting JavaScript
+## Injecting JavaScript {#injecting-javascript}
 
 In some cases, you may want to inject JavaScript code directly into the DOM instead of providing a JavaScript path. The `InlineJavaScript` annotation allows you to inject JavaScript content.
 
@@ -51,7 +51,7 @@ In some cases, you may want to inject JavaScript code directly into the DOM inst
 Scripts can be injected multiple times using `InlineJavaScript` unless a specific ID is assigned using the `id` property.
 :::
 
-## Importing CSS files
+## Importing CSS files {#importing-css-files}
 
 Declarative CSS inclusion is supported through the `@StyleSheet` annotation, enabling automatic dependency loading. The annotation can be applied at both the component level and the app level.
 
@@ -65,7 +65,7 @@ Declarative CSS inclusion is supported through the `@StyleSheet` annotation, ena
 | `top`        | Boolean | Specifies whether the StyleSheet should be injected into the top-level window | `false` |
 | `attributes` | Object  | Attributes to apply to the StyleSheet                                         | `{}`    |
 
-#### Example:
+#### Example: {#example-1}
 
 ```java
 @StyleSheet(value = "ws://my-component.css",
@@ -76,7 +76,7 @@ Declarative CSS inclusion is supported through the `@StyleSheet` annotation, ena
 Files are loaded only when the component declaring the annotation is attached to a container. Each file is loaded only once.
 :::
 
-## Injecting CSS
+## Injecting CSS {#injecting-css}
 
 The `InlineStyleSheet` annotation allows you to inject CSS content directly into a web page at both the component level and the app level.
 
@@ -96,11 +96,11 @@ The `InlineStyleSheet` annotation allows you to inject CSS content directly into
 For better syntax highlighting when writing inline CSS for your components, you can use webforJ VS Code extension: [Java HTML CSS Syntax Highlighting](https://marketplace.visualstudio.com/items?itemName=BEU.vscode-java-html).
 :::
 
-## Dynamic assets at runtime
+## Dynamic assets at runtime {#dynamic-assets-at-runtime}
 
 Dynamic resource management is possible through programmatic injection of JavaScript and CSS at runtime. You can load or inject resources based on runtime context.
 
-### Loading and injecting JavaScript
+### Loading and injecting JavaScript {#loading-and-injecting-javascript}
 
 Dynamically load or inject JavaScript at runtime using the <JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page API</JavadocLink>. This allows you to load scripts from URLs or inject inline scripts directly into the DOM.
 
@@ -122,7 +122,7 @@ page.addInlineJavaScript("alert('This script runs inline');");
 | `top`        | Determines whether the script should be injected at the top of the page.                                                |
 | `attributes` | A map of attributes to set for the script.                                                                              |
 
-### Loading and Injecting CSS
+### Loading and Injecting CSS {#loading-and-injecting-css}
 
 Dynamically load or inject CSS at runtime using the <JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page API</JavadocLink>. This allows you to load stylesheets from URLs or inject inline styles directly into the DOM.
 

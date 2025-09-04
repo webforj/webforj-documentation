@@ -14,16 +14,13 @@ hide_giscus_comments: true
   `}</style>
 </Head>
 
-import GalleryCard from '@site/src/components/GalleryCard/GalleryCard';
-import GalleryGrid from '@site/src/components/GalleryGrid/GalleryGrid';
-
 <Head>
   <title>UI Components | User Interface Application Building Components</title>
 </Head>
 
 In webforJ, applications are created using modular units known as Components, which facilitate quick and efficient UI development. The framework offers a range of essential components like buttons, input elements, and layout containers. After mastering the fundamentals, you can consult the [JavaDocs](https://javadoc.io/doc/com.webforj) for a detailed overview of all components and their functionalities.
 
-## Layouts
+## Layouts {#layouts}
 
 Layout components provide the foundation for structuring user interfaces, enabling developers to organize content efficiently. These components offer various ways to control the arrangement of child components, whether for simple or complex layouts.
 
@@ -67,7 +64,7 @@ The following layout components are designed to handle a wide range of use cases
   </GalleryCard>
 </GalleryGrid>
 
-## Data entry
+## Data entry {#data-entry}
 
 Data entry components provide essential tools for capturing user input and managing interactions within your app. These components are versatile, making it easy to build interactive forms and collect various types of data.
 
@@ -145,7 +142,7 @@ Data entry components provide essential tools for capturing user input and manag
   </GalleryCard>
 </GalleryGrid>
 
-## Option dialogs
+## Option dialogs {#option-dialogs}
 
 Option dialogs provide a way to present users with choices or prompt them for confirmation before proceeding with an action. These components are essential for creating interactive, decision-driven workflows, enabling users to confirm, cancel, or choose from various options in a clear and structured manner.
 
@@ -175,7 +172,7 @@ Option dialogs provide a way to present users with choices or prompt them for co
   </GalleryCard>
 </GalleryGrid>
 
-## Interaction and display
+## Interaction and display {#interaction-and-display}
 
 This category includes components that facilitate user interactions and visually display data or app states. These components help users navigate the app, trigger actions, and understand progress or results through dynamic visual elements.
 

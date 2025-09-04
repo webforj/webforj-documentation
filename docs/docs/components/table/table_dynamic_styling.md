@@ -10,7 +10,7 @@ sidebar_class_name: updated-content
 
 In webforJ 25 and higher, it's possible to style individual rows and cells in the Table using custom part names. These names can be assigned dynamically based on your app's logic, giving you fine-grained control over the table’s appearance.
 
-## Row styling
+## Row styling {#row-styling}
 
 The `setRowPartProvider()` method assigns part names to entire rows based on the data item they contain. This lets you highlight full rows that meet specific conditions—for example, alternating background colors for even rows.
 
@@ -29,7 +29,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## Cell styling
+## Cell styling {#cell-styling}
 
 The `setCellPartProvider()` method styles individual cells based on both the data item and the column they belong to. This makes it ideal for highlighting specific values, like calling out ages preceding a threshold or invalid entries.
 
@@ -41,7 +41,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## Reacting to data updates
+## Reacting to data updates {#reacting-to-data-updates}
 
 If your app modifies data programmatically, such as updating a user's age, the table will automatically re-evaluate and reapply any associated row or cell styles once the updated item is committed in the repository 
 
@@ -51,7 +51,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='475px'
 />
 
-## Striped rows
+## Striped rows {#striped-rows}
 
 Enable alternating background colors for rows to improve readability:
 
@@ -60,7 +60,7 @@ Enable alternating background colors for rows to improve readability:
 table.setStriped(true);
 ```
 
-## Borders
+## Borders {#borders}
 
 Configure which borders are shown around the `Table`, columns, and rows:
 
