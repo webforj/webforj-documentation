@@ -1,11 +1,172 @@
 <urlrewrite>
-    
-     <rule>
-        <from>^/blog$</from>
-        <to>/blog.html</to>
-    </rule>
-  <rule>
+    <rule>
+        <name>Main Docs</name>
         <from>^/docs$</from>
-        <to type="redirect">/</to>
+        <to>/</to>
+    </rule>
+    <rule>
+        <name>Main Docs Localized</name>
+        <from>^/([^/]+)/docs$</from>
+        <to>/$1/docs/intro/getting-started/index.html</to>
+    </rule>
+    <rule>
+        <name>Docs First Subdirectory</name>
+        <from>^/docs/([^/]+)$</from>
+        <to>/docs/$1.html</to>
+    </rule>
+    <rule>
+        <name>Docs First Subdirectory Localized</name>
+        <from>^/([^/]+)/docs/([^/]+)$</from>
+        <to>/$1/docs/$2.html</to>
+    </rule>
+    <rule>
+        <name>Docs Second Subdirectory</name>
+        <from>^/docs/([^/]+)/([^/]+)$</from>
+        <to>/docs/$1/$2.html</to>
+    </rule>
+    <rule>
+        <name>Docs Second Subdirectory Localized</name>
+        <from>^/([^/]+)/docs/([^/]+)/([^/]+)$</from>
+        <to>/$1/docs/$2/$3.html</to>
+    </rule>
+    <rule>
+        <name>Main Blog</name>
+        <from>^/blog$</from>
+        <to>/blog.html</to> 
+    </rule>
+    <rule>
+        <name>Main Blog Localized</name>
+        <from>^/([^/]+)/blog$</from>
+        <to>/$1/blog.html</to> 
+    </rule>
+    <rule>
+        <name>Blog Pages</name>
+        <from>^/blog/page$</from>
+        <set type="status">404</set>
+        <to>/404.html</to>
+    </rule>
+    <rule>
+        <name>Blog Pages Localized</name>
+        <from>^/([^/]+)/blog/page$</from>
+        <set type="status">404</set>
+        <to>/$1/404.html</to>
+    </rule>
+    <rule>
+        <name>Blog Authors</name>
+        <from>^/blog/authors$</from>
+        <to>/blog/authors.html</to>
+    </rule>
+    <rule>
+        <name>Blog Authors Localized</name>
+        <from>^/([^/]+)/blog/authors$</from>
+        <to>/$1/blog/authors.html</to>
+    </rule>
+    <rule>
+        <name>Blog Tags List</name>
+        <from>^/blog/tags$</from>
+        <to>/blog/tags.html</to>
+    </rule>
+    <rule>
+        <name>Blog Tags List Localized</name>
+        <from>^/([^/]+)/blog/tags$</from>
+        <to>/$1/blog/tags.html</to>
+    </rule>
+    <rule>
+        <name>Blog Tags Page</name>
+        <from>^/blog/tags/([^/]+)$</from>
+        <to>/blog/tags/$1.html</to>
+    </rule>
+    <rule>
+        <name>Blog Tags Page Localized</name>
+        <from>^/([^/]+)/blog/tags/([^/]+)$</from>
+        <to>/$1/blog/tags/$2.html</to>
+    </rule>
+    <rule>
+        <name>CSS Folder</name>
+        <from>^/css$</from>
+        <set type="status">404</set>
+        <to>/404.html</to>
+    </rule>
+    <rule>
+        <name>CSS Subdirectory</name>
+        <from>^/css/([^/]+)$</from>
+        <set type="status">404</set>
+        <to>/404.html</to>
+    </rule>
+    <rule>
+        <name>Image Folder</name>
+        <note>
+            No Image Folder Subdirectory rule because 
+            of images directly in the img folder.
+        </note>
+        <from>^/img$</from>
+        <set type="status">404</set>
+        <to>/404.html</to>
+    </rule>
+    <rule>
+        <name>Image Folder Localized</name>
+        <from>^/([^/]+)/img$</from>
+        <set type="status">404</set>
+        <to>/$1/404.html</to>
+    </rule>
+    <rule>
+        <name>Video Folder</name>
+        <from>^/video$</from>
+        <set type="status">404</set>
+        <to>/404.html</to>
+    </rule>
+    <rule>
+        <name>Video Folder Localized</name>
+        <from>^/([^/]+)/video$</from>
+        <set type="status">404</set>
+        <to>/$1/404.html</to>
+    </rule>
+    <rule>
+        <name>JS Folder</name>
+        <from>^/js$</from>
+        <set type="status">404</set>
+        <to>/404.html</to>
+    </rule>
+    <rule>
+        <name>JS Folder Localized</name>
+        <from>^/([^/]+)/js$</from>
+        <set type="status">404</set>
+        <to>/$1/404.html</to>
+    </rule>
+    <rule>
+        <name>Release Blog Folder</name>
+        <from>^/release_blog$</from>
+        <set type="status">404</set>
+        <to>/404.html</to>
+    </rule>
+    <rule>
+        <name>Release Blog Folder Localized</name>
+        <from>^/([^/]+)/release_blog$</from>
+        <set type="status">404</set>
+        <to>/$1/404.html</to>
+    </rule>
+    <rule>
+        <name>Release Blog Images</name>
+        <from>^/release_blog/_images$</from>
+        <set type="status">404</set>
+        <to>/404.html</to>
+    </rule>
+    <rule>
+        <name>Release Blog Images Localized</name>
+        <from>^/([^/]+)/release_blog/_images$</from>
+        <set type="status">404</set>
+        <to>/$1/404.html</to>
+    </rule>
+    <rule>
+        <name>Assets</name>
+        <from>^/assets$</from>
+        <set type="status">404</set>
+        <to>/404.html</to>
+    </rule>
+    <rule>
+        <name>Assets Localized</name>
+        <from>^/([^/]+)/assets$</from>
+        <set type="status">404</set>
+        <to>/$1/404.html</to>
     </rule>
 </urlrewrite>

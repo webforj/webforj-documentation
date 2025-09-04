@@ -12,7 +12,7 @@ The `BusyIndicator` provides visual cues to ensure that users are aware of ongoi
 
 While the [`Loading`](../components/loading) component focuses on specific areas or components within the app, the `BusyIndicator` handles global, app-wide processes and blocks interaction across the entire interface. This difference in scope makes the [`Loading`](../components/loading) component ideal for more localized, component-specific scenarios, such as loading data in a particular section of a page. In contrast, the `BusyIndicator` is suitable for system-wide operations that affect the entire app, such as initializing the app or performing a major data sync.
 
-## Basics
+## Basics {#basics}
 
 The `BusyIndicator` in webforJ displays as a simple spinner, making it easy to use without configuration. However, you can customize it by adding a message, adjusting the spinner's theme, or modifying visibility settings. This allows you to provide more context or style while maintaining a functional, out-of-the-box solution.
 
@@ -24,7 +24,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '300px'
 />
 
-## Backdrops
+## Backdrops {#backdrops}
 
 The `BusyIndicator` component in webforJ allows you to display a backdrop to block user interaction while a process is ongoing. By default, the component enables the backdrop, but you have the option to turn it off if needed.
 
@@ -39,7 +39,7 @@ busyIndicator.open();
 Even when you turn off the backdrop, the `BusyIndicator` component continues to block user interaction to ensure the underlying process completes uninterrupted. The backdrop simply controls the visual overlay, not the interaction blocking behavior.
 :::
 
-## `Spinner`
+## `Spinner` {#spinner}
 
 The `BusyIndicator` component in webforJ includes a `Spinner` that visually indicates a background operation is in progress. You can customize this spinner with several options, including its size, speed, direction, theme, and visibility.
 
@@ -51,7 +51,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '200px'
 />
 
-## Use cases
+## Use cases {#use-cases}
 - **Page-Wide Processing**  
    The `BusyIndicator` is well-suited for larger, page-wide operations, such as when a user initiates a task that affects the entire page, like uploading a file or processing data across multiple sections. It can inform users that the entire app is working, preventing further interaction until the process is complete.
 
@@ -61,6 +61,6 @@ height = '200px'
 - **Asynchronous Data Loads**  
    In scenarios where asynchronous data processing is involved, such as when calling multiple APIs or waiting for complex computations, the `BusyIndicator` component actively indicates that the system is busy, prompting users to wait before performing additional actions.
 
-## Styling 
+## Styling {#styling}
 
 <TableBuilder name="BusyIndicator" />

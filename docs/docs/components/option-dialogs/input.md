@@ -18,13 +18,13 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '500px'
 />
 
-## Usages
+## Usages {#usages}
 
 The `InputDialog` provides a way to request input from users, such as text, numbers, or other data, ensuring that they provide necessary information before proceeding.
 
-## Types
+## Types {#types}
 
-### Input types
+### Input types {#input-types}
 
 The `InputDialog` supports different types of input fields, allowing you to tailor the input method to your specific needs:
 
@@ -39,7 +39,7 @@ The `InputDialog` supports different types of input fields, allowing you to tail
 9. **DATETIME_LOCAL**: An input field for selecting local date and time.
 10. **COLOR**: An input field for selecting a color.
 
-### Message type
+### Message type {#message-type}
 
 The `InputDialog` supports the following message types. When you configures a type, The dialog displays an icon beside the message, and the dialog's theme updates according to the webforJ design system rules.
 
@@ -58,7 +58,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '350px'
 />
 
-## Result
+## Result {#result}
 
 The `InputDialog` returns the user's input as a string. If the user closes the dialog without providing input, the result will be `null`.
 
@@ -77,7 +77,7 @@ if (result != null) {
 }
 ```
 
-## Default value
+## Default value {#default-value}
 
 The `InputDialog` allows you to specify a default value that appears in the input field when the dialog is displayed. This can provide users with a suggestion or a previously entered value.
 
@@ -87,7 +87,7 @@ InputDialog dialog = new InputDialog(
 String result = dialog.show();
 ```
 
-## Timeout
+## Timeout {#timeout}
 
 The `InputDialog` allows you to set a timeout duration after which the dialog automatically closes. This feature is useful for non-critical input requests or actions that don't require the user's immediate interaction.
 
@@ -103,7 +103,7 @@ OptionDialog.showMessageDialog(
     "You entered: " + result, "Input Received", "OK", MessageDialog.MessageType.INFO);
 ```
 
-## Best practices
+## Best practices {#best-practices}
 
 1. **Clear and Concise Prompts**: Ensure the prompt message clearly explains what information the user is being asked to provide.
 2. **Appropriate Input Types**: Choose input types that match the required data to ensure accurate and relevant user input.

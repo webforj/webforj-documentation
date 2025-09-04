@@ -104,7 +104,7 @@ public final class MyContainer extends ElementCompositeContainer
 Use `ElementCompositeContainer` whenever your component needs to support multiple content areas or slots, such as layouts, dialogs, or toolbars.
 
 
-## Property and attribute descriptors
+## Property and attribute descriptors {#property-and-attribute-descriptors}
 
 Properties and attributes in web components represent the state and configuration of a component. You can define, set, and get properties and attributes using the <JavadocLink type="foundation" location="com/webforj/component/element/PropertyDescriptor" code='true' >PropertyDescriptor</JavadocLink> class.
 
@@ -182,7 +182,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='250px'
 />
 
-## Event registration
+## Event registration {#event-registration}
 
 Events enable communication between parts of your app and create interactive components. `ElementComposite` makes event handling straightforward: register listeners for specific event types using `addEventListener()` with the event class, your listener, and optional options.
 
@@ -205,7 +205,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## Interacting with slots
+## Interacting with Slots {#interacting-with-slots}
 
 Web components often use slots to allow developers to define the structure of a component from the outside. A slot is a placeholder inside a web component that can be filled with content when using the component. In the context of the `ElementComposite` class, slots provide a way to customize the content within a component. The following methods are provided to allow developers to interact with and manipulate slots:
 

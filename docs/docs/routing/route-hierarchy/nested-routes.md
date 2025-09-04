@@ -5,7 +5,7 @@ title: Nested Routes
 
 Nested routes allow child routes to be rendered within parent routes, creating a modular and reusable UI. Parent routes define shared components, while child routes are injected into specific outlets within these parent components.
 
-## Defining nested routes
+## Defining nested routes {#defining-nested-routes}
 
 Nested routes are created using the `outlet` parameter in the `@Route` annotation, which establishes a parent-child relationship. The `outlet` determines where the child component will be rendered within the parent route.
 

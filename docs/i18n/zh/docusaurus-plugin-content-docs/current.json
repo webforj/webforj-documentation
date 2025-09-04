@@ -1,0 +1,126 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.documentationSidebar.category.Introduction": {
+    "message": "介绍",
+    "description": "The label for category Introduction in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Tutorial": {
+    "message": "教程",
+    "description": "The label for category Tutorial in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Integrations": {
+    "message": "集成",
+    "description": "The label for category Integrations in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Spring Framework": {
+    "message": "Spring框架",
+    "description": "The label for category Spring Framework in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Routing": {
+    "message": "路由",
+    "description": "The label for category Routing in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Navigation Lifecycle": {
+    "message": "导航生命周期",
+    "description": "The label for category Navigation Lifecycle in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Route Hierarchy": {
+    "message": "路由层级",
+    "description": "The label for category Route Hierarchy in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Building UIs": {
+    "message": "构建界面",
+    "description": "The label for category Building UIs in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Archetypes": {
+    "message": "原型",
+    "description": "The label for category Archetypes in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.HTML and Web Components": {
+    "message": "HTML 和 Web 组件",
+    "description": "The label for category HTML and Web Components in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Data Binding": {
+    "message": "数据绑定",
+    "description": "The label for category Data Binding in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Validation": {
+    "message": "验证",
+    "description": "The label for category Validation in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Components": {
+    "message": "组件",
+    "description": "The label for category Components in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Fields": {
+    "message": "字段",
+    "description": "The label for category Fields in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Masked Fields": {
+    "message": "掩码字段",
+    "description": "The label for category Masked Fields in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Lists": {
+    "message": "列表",
+    "description": "The label for category Lists in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Option Dialogs": {
+    "message": "选项对话框",
+    "description": "The label for category Option Dialogs in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Table": {
+    "message": "表格",
+    "description": "The label for category Table in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Testing": {
+    "message": "测试",
+    "description": "The label for category Testing in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.E2E Testing": {
+    "message": "端到端测试",
+    "description": "The label for category E2E Testing in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Styling": {
+    "message": "样式设置",
+    "description": "The label for category Styling in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Managing Resources": {
+    "message": "管理资源",
+    "description": "The label for category Managing Resources in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Configuration": {
+    "message": "配置",
+    "description": "The label for category Configuration in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Redeployment and Live Reload": {
+    "message": "重新部署和实时重载",
+    "description": "The label for category Redeployment and Live Reload in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Running with BBjServices": {
+    "message": "使用BBjServices运行",
+    "description": "The label for category Running with BBjServices in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Advanced Topics": {
+    "message": "高级主题",
+    "description": "The label for category Advanced Topics in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Repository": {
+    "message": "仓库",
+    "description": "The label for category Repository in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Architecture": {
+    "message": "架构",
+    "description": "The label for category Architecture in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Upgrading Guides": {
+    "message": "升级指南",
+    "description": "The label for category Upgrading Guides in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Client Components": {
+    "message": "客户端组件",
+    "description": "The label for category Client Components in sidebar documentationSidebar"
+  }
+}

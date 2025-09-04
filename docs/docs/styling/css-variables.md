@@ -7,7 +7,7 @@ CSS Variables play a central role in customizing the appearance of webforJ compo
 
 Unlike traditional approaches that relied on CSS preprocessors like [SASS](https://sass-lang.com/) or [LESS](https://lesscss.org/), CSS variables allow for **dynamic styling at runtime**. They reduce repetition, improve maintainability, and make stylesheets easier to read and manage.
 
-## Defining CSS variables
+## Defining CSS variables {#defining-css-variables}
 
 CSS variables are defined using a double-dash (`--`) prefix, and can be scoped within any CSS selector. However, the most common practice is to define them in the `:root` selector, which scopes them globally.
 
@@ -29,7 +29,7 @@ html {
 }
 ```
 
-## Component-specific variables
+## Component-specific variables {#component-specific-variables}
 
 To define or override a variable for a specific component, declare it within the component’s selector:
 
@@ -44,7 +44,7 @@ Each webforJ component supports a specific set of CSS variables that control its
 :::
 
 
-## Using CSS variables
+## Using CSS variables {#using-css-variables}
 
 Use the [`var()`](https://developer.mozilla.org/en-US/docs/Web/CSS/var()) function to apply the value of a variable in your styles:
 
@@ -62,7 +62,7 @@ You can also specify a fallback value in case the variable isn't defined:
 }
 ```
 
-## Manipulating variables with webforJ
+## Manipulating variables with webforJ {#manipulating-variables-with-webforj}
 
 CSS variables can be dynamically updated via webforJ API, enabling real-time styling:
 
@@ -84,7 +84,7 @@ const value = el.style.getPropertyValue('--dwc-font-size-m');
 ```
 :::
 
-## Additional resources
+## Additional resources {#additional-resources}
 
 - [Using CSS Custom Properties (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)  
 - [A Complete Guide to Custom Properties (CSS-Tricks)](https://css-tricks.com/a-complete-guide-to-custom-properties/)

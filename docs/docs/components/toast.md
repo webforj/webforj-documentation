@@ -12,7 +12,7 @@ A `Toast` notification is a subtle and unobtrusive pop-up notification designed 
 
 With webforJ's `Toast` component, you can easily implement these notifications to enhance user experience by providing relevant information in a familiar, non-intrusive, and seamless manner. 
 
-## Basics
+## Basics {#basics}
 
 webforJ provides a quick and easy way to create a `Toast` component in a single line of code with the `Toast.show()` method, which creates a `Toast` component, adds it to the `Frame`, and displays it. You can pass parameters to the `show` method to configure the displayed `Toast`:
 
@@ -44,7 +44,7 @@ Toasts are versatile and provide subtle notifications for real-time feedback. Fo
 - **Customizable themes** for differentiating between success, error, warning, or informational messages.
 - **Flexible placement** options to show notifications in different areas of the screen without interrupting the user’s workflow.
 
-## Duration
+## Duration {#duration}
 
 You can configure `Toast` notifications to disappear after a set duration or persist on the screen until they're dismissed, depending on your needs. You can customize the duration with the `setDuration()` method, or simply supply a duration parameter to the constructor or the `show()` method.
 
@@ -58,7 +58,7 @@ toast.setDuration(10000);
 toast.open();
 ```
 
-### Persistent toasts
+### Persistent toasts {#persistent-toasts}
 
 You can create a persistent `Toast` by setting a negative duration. Persistent `Toast` notifications won't close automatically, which can be useful for critical alerts or in cases where some interaction or acknowledgement is required from the user.
 
@@ -71,7 +71,7 @@ Toast toast = new Toast("Operation completed successfully!", -1, Theme.SUCCESS, 
 toast.open();
 ```
 
-## Placement
+## Placement {#placement}
 
 With webforJ's `Toast` component, you can choose where the notification appears on the screen to suit your app's design and usability requirements. By default, `Toast` notifications appear at the bottom center of the screen. 
 
@@ -100,11 +100,11 @@ height='500px'
 
 By customizing the placement of your `Toast` notifications, you can ensure that users receive information in a way that is appropriate for any given app, screen layout, and context.
 
-## Stacking
+## Stacking {#stacking}
 
 The `Toast` component can display multiple notifications simultaneously, stacking them vertically based on their placement. Newer notifications appear closer to the placement edge, pushing older notifications farther away. This ensures that users don't miss important information, even when there is a lot going on.
 
-## Actions and Interactivity
+## Actions and Interactivity {#actions-and-interactivity}
 
 Although `Toast` notifications don't require user interaction by default, webforJ allows you to add buttons or other interactive elements to make them more useful than simple notifications. 
 
@@ -116,7 +116,7 @@ height='350px'
 
 By adding this kind of interactivity, you can give users the ability to handle tasks and perform actions without navigating away from their current screen, transforming a `Toast` notification into a valuable channel of interaction and engagement. 
 
-## Styling
+## Styling {#styling}
 
 You can style `Toast` notifications with themes just like other webforJ components, providing users with valuable context about the type of information being shown, and creating a consistent style throughout your app. You can either set the theme when you create the Toast or use the `setTheme()` method.
 
@@ -129,7 +129,7 @@ Toast toast = new Toast("Sample Notification");
 toast.setTheme(Theme.INFO);
 ```
 
-### Custom themes
+### Custom themes {#custom-themes}
 
 In addition to using built-in themes, you can create your own custom themes for `Toast` notifications. This allows for a more personalized and branded user experience, giving you full control over the overall styling of the `Toast`.
 

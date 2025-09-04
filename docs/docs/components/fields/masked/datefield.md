@@ -16,13 +16,13 @@ This component supports flexible parsing, validation, localization, and value re
 The `MaskedDateField` is focused solely on **date** values. If you need a similar component for entering and formatting **time**, look into the [`MaskedTimeField`](./timefield) instead.
 :::
 
-## Basics
+## Basics {#basics}
 
 The `MaskedDateField` can be instantiated with or without parameters. You can define an initial value, a label, a placeholder, and an event listener for value changes.
 
 <ComponentDemo path='/webforj/maskeddatefield?' javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldView.java' height='120px'/>
 
-## Mask rules
+## Mask rules {#mask-rules}
 
 The `MaskedDateField` supports multiple date formats used around the world, which vary by the order of day, month, and year. Common patterns include:
 
@@ -34,7 +34,7 @@ Within these formats, local variations include the choice of separator (e.g., `-
 
 To handle this diversity, the `MaskedDateField` uses format indicators, each starting with `%`, followed by a letter that represents a specific part of the date. These indicators define how input is parsed and how the date is displayed.
 
-### Date format indicators
+### Date format indicators {#date-format-indicators}
 
 | Format | Description |
 | ------ | ----------- |
@@ -42,7 +42,7 @@ To handle this diversity, the `MaskedDateField` uses format indicators, each sta
 | `%M`   | Month       |
 | `%D`   | Day         |
 
-### Modifiers
+### Modifiers {#modifiers}
 
 Modifiers allow more control over how components of the date are formatted:
 
@@ -56,7 +56,7 @@ Modifiers allow more control over how components of the date are formatted:
 
 These can be combined to build a wide variety of date masks.
 
-## Date format localization
+## Date format localization {#date-format-localization}
 
 The `MaskedDateField` adapts to regional date formats by setting the appropriate locale. This ensures that dates are displayed and parsed in a way that matches user expectations.
 
@@ -72,14 +72,14 @@ To apply localization, use the `setLocale()` method. It accepts a [`java.util.Lo
 dateField.setLocale(Locale.FRANCE);
 ```
 
-## Parsing logic
+## Parsing logic {#parsing-logic}
 
 The `MaskedDateField` parses user input based on the defined date mask. It accepts both complete and abbreviated numeric inputs with or without delimiters, allowing flexible entry while ensuring valid dates.
 Parsing behavior depends on the format order defined by the mask (e.g., `%Mz/%Dz/%Yz` for month/day/year). This format determines how numeric sequences are interpreted.
 
 For example, assuming that today is `September 15, 2012`, this is how various inputs would be interpreted:
 
-### Example parsing scenarios
+### Example parsing scenarios {#example-parsing-scenarios}
 
 | Entry                                | YMD (ISO)                                                                                                                                                                                          | MDY (US)                                                                            | DMY (EU)                                                                                                                     |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -92,7 +92,7 @@ For example, assuming that today is `September 15, 2012`, this is how various in
 | <div align="center">`12/6`</div>     | Two numbers separated by any valid delimiter is interpreted as MM/DD, so this would be December 6, 2012. <br />Note: All characters except for letters and digits are considered valid delimiters. | Same as YMD                                                                         | Two numbers separated by any delimiter is interpreted as DD/MM, so this would be June 12, 2012.                               |
 | <div align="center">`3/4/5`</div>    | April 5, 2012                                                                                                                                                                                      | March 4, 2005                                                                       | April 3, 2005                                                                                                                 |
 
-## Setting min/max constraints
+## Setting min/max constraints {#setting-minmax-constraints}
 
 You can restrict the allowed date range in a `MaskedDateField` using the `setMin()` and `setMax()` methods:
 
@@ -103,7 +103,7 @@ dateField.setMax(LocalDate.of(2030, 12, 31));
 
 Both methods accept values of type [`java.time.LocalDate`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html). Input outside the defined range will be considered invalid.
 
-## Restoring the value
+## Restoring the value {#restoring-the-value}
 
 The `MaskedDateField` includes a restore feature that resets the field’s value to a predefined or original state. This is useful for reverting user input or resetting to a default date.
 
@@ -112,7 +112,7 @@ dateField.setRestoreValue(LocalDate.of(2025, 1, 1));
 dateField.restoreValue();
 ```
 
-### Ways to restore the value
+### Ways to restore the value {#ways-to-restore-the-value}
 
 - **Programmatically**, by calling `restoreValue()`
 - **Via keyboard**, by pressing <kbd>ESC</kbd> (this is the default restore key unless overridden by an event listener)
@@ -124,7 +124,7 @@ path='/webforj/maskeddatefieldrestore?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldRestoreView.java' 
 height='120px'/>
 
-## Validation patterns
+## Validation patterns {#validation-patterns}
 
 You can apply client-side validation rules using regular expressions with the `setPattern()` method:
 
@@ -143,7 +143,7 @@ The field attempts to parse and format numeric date inputs based on the current 
 You should always validate the input value in your app logic, even if a regular expression pattern is set, to ensure the date is both correctly formatted and meaningful.
 ::::
 
-## Date picker
+## Date picker {#date-picker}
 
 The `MaskedDateField` includes a built-in calendar picker that lets users select a date visually, rather than typing it. This enhances usability for less technical users or when precise input is required.
 
@@ -152,7 +152,7 @@ path='/webforj/maskeddatefieldpicker?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldPickerView.java' 
 height='450px'/>
 
-### Accessing the picker
+### Accessing the picker {#accessing-the-picker}
 
 You can access the date picker using `getPicker()`:
 
@@ -160,7 +160,7 @@ You can access the date picker using `getPicker()`:
 DatePicker picker = dateField.getPicker();
 ```
 
-### Show/hide the picker icon
+### Show/hide the picker icon {#showhide-the-picker-icon}
 
 Use `setIconVisible()` to show or hide the calendar icon next to the field:
 
@@ -168,7 +168,7 @@ Use `setIconVisible()` to show or hide the calendar icon next to the field:
 picker.setIconVisible(true); // shows the icon
 ```
 
-### Auto-open behavior
+### Auto-open behavior {#auto-open-behavior}
 
 You can configure the picker to open automatically when the user interacts with the field (e.g., clicks, presses Enter or arrow keys):
 
@@ -187,7 +187,7 @@ dateField.setAllowCustomValue(false);    // Disables manual text input
 This setup guarantees that all date input comes through the picker UI, which is useful when you want strict format control and eliminate parsing issues from typed input.
 :::
 
-### Manually open the calendar
+### Manually open the calendar {#manually-open-the-calendar}
 
 To open the calendar programmatically:
 
@@ -201,7 +201,7 @@ Or use the alias:
 picker.show(); // same as open()
 ```
 
-### Show weeks in the calendar
+### Show weeks in the calendar {#show-weeks-in-the-calendar}
 
 The picker can optionally display week numbers in the calendar view:
 
@@ -209,7 +209,7 @@ The picker can optionally display week numbers in the calendar view:
 picker.setShowWeeks(true);
 ```
 
-## `MaskedDateFieldSpinner`
+## `MaskedDateFieldSpinner` {#maskeddatefieldspinner}
 
 The `MaskedDateFieldSpinner` extends [`MaskedDateField`](#basics) by adding spinner controls that let users increment or decrement the date using arrow keys or UI buttons. It provides a more guided interaction style, especially useful in desktop-style applications.
 
@@ -218,7 +218,7 @@ path='/webforj/maskeddatefieldspinner?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldSpinnerView.java' 
 height='450px'/>
 
-### Key features
+### Key features {#key-features}
 
 - **Interactive Date Stepping:**  
   Use arrow keys or spin buttons to increment or decrement the date value.
@@ -238,7 +238,7 @@ height='450px'/>
 - **Formatted Output:**  
   Fully compatible with masks and localization settings from `MaskedDateField`.
 
-### Example: Configure weekly stepping
+### Example: Configure weekly stepping {#example-configure-weekly-stepping}
 
 ```java
 MaskedDateFieldSpinner spinner = new MaskedDateFieldSpinner();
@@ -247,6 +247,6 @@ spinner.setSpinField(MaskedDateFieldSpinner.SpinField.WEEK);
 
 This makes each spin step advance or rewind the date by one week.
 
-## Styling
+## Styling {#styling}
 
 <TableBuilder name="MaskedDateField" />

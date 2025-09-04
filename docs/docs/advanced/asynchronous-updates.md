@@ -1,5 +1,5 @@
 ---
-sidebar_position: 46
+sidebar_position: 55
 title: Asynchronous Updates
 sidebar_class_name: new-content
 ---
@@ -14,7 +14,7 @@ The `Environment.runLater()` API provides a mechanism for safely updating the UI
 This API is marked as experimental since 25.02 and may change in future releases. The API signature, behavior, and performance characteristics are subject to modification.
 :::
 
-## Understanding the thread model
+## Understanding the thread model {#understanding-the-thread-model}
 
 webforJ enforces a strict threading model where all UI operations must occur on the `Environment` thread. This restriction exists because:
 
@@ -24,7 +24,7 @@ webforJ enforces a strict threading model where all UI operations must occur on 
 
 This single-threaded model prevents race conditions and maintains a consistent state for all UI components, but creates challenges when integrating with asynchronous, long-running computation tasks.
 
-## `RunLater` API
+## `RunLater` API {#runlater-api}
 
 The `Environment.runLater()` API provides two methods for scheduling UI updates:
 
@@ -38,11 +38,11 @@ public static <T> PendingResult<T> runLater(Supplier<T> supplier)
 
 Both methods return a <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> that tracks task completion and provides access to the result or any exceptions that occurred.
 
-## Thread context inheritance
+## Thread context inheritance {#thread-context-inheritance}
 
 Automatic context inheritance is a critical feature of `Environment.runLater()`. When a thread running in an `Environment` creates child threads, those children automatically inherit the ability to use `runLater()`.
 
-### How inheritance works
+### How inheritance works {#how-inheritance-works}
 
 Any thread created from within an `Environment` thread automatically has access to that `Environment`. This inheritance happens automatically, so you don't need to pass any context or configure anything.
 
@@ -68,7 +68,7 @@ public class DataView extends Composite<Div> {
 }
 ```
 
-### Threads without context
+### Threads without context {#threads-without-context}
 
 Threads created outside the `Environment` context can't use `runLater()` and will throw an `IllegalStateException`:
 
@@ -95,11 +95,11 @@ httpClient.sendAsync(request, responseHandler)
     });
 ```
 
-## Execution behavior
+## Execution behavior {#execution-behavior}
 
 The execution behavior of `runLater()` depends on which thread calls it:
 
-### From the UI thread
+### From the UI thread {#from-the-ui-thread}
 
 When called from the `Environment` thread itself, tasks execute **synchronously and immediately**:
 
@@ -118,7 +118,7 @@ button.onClick(e -> {
 
 With this synchronous behavior, UI updates from event handlers are applied immediately and don't incur any unnecessary queueing overhead.
 
-### From background threads
+### From background threads {#from-background-threads}
 
 When called from a background thread, tasks are **queued for asynchronous execution**:
 
@@ -143,11 +143,11 @@ public void onDidCreate() {
 
 webforJ processes tasks submitted from background threads in **strict FIFO order**, preserving the sequence of operations even when submitted from multiple threads concurrently. With this ordering guarantee, UI updates are applied in the exact order they were submitted. So if thread A submits task 1, and then thread B submits task 2, task 1 will always execute before task 2 on the UI thread. Processing tasks in FIFO order prevents inconsistencies in the UI.
 
-## Task cancellation
+## Task cancellation {#task-cancellation}
 
 The <JavadocLink type="foundation" location="com/webforj/PendingResult" code='true'>PendingResult</JavadocLink> returned by `Environment.runLater()` supports cancellation, allowing you to prevent queued tasks from executing. By cancelling pending tasks, you can avoid memory leaks and prevent long-running operations from updating the UI after they're no longer needed.
 
-### Basic cancellation
+### Basic cancellation {#basic-cancellation}
 
 ```java
 PendingResult<Void> result = Environment.runLater(() -> {
@@ -160,7 +160,7 @@ if (!result.isDone()) {
 }
 ```
 
-### Managing multiple updates
+### Managing multiple updates {#managing-multiple-updates}
 
 When performing long-running operations with frequent UI updates, track all pending results:
 
@@ -201,7 +201,7 @@ public class LongRunningTask {
 }
 ```
 
-### Component lifecycle management
+### Component lifecycle management {#component-lifecycle-management}
 
 When components are destroyed (e.g., during navigation), cancel all pending updates to prevent memory leaks:
 
@@ -225,7 +225,7 @@ public class CleanupView extends Composite<Div> {
 }
 ```
 
-## Design considerations
+## Design considerations {#design-considerations}
 
 1. **Context requirement**: Threads must have inherited an `Environment` context. External library threads, system timers, and static initializers can't use this API.
 
@@ -235,7 +235,7 @@ public class CleanupView extends Composite<Div> {
 
 4. **Cancellation limitations**: Cancellation only prevents execution of queued tasks. Tasks already executing will complete normally.
 
-## Complete case study: `LongTaskView`
+## Complete case study: `LongTaskView` {#complete-case-study-longtaskview}
 
 The following is a complete, production-ready implementation demonstrating all best practices for asynchronous UI updates:
 
@@ -445,11 +445,11 @@ public class LongTaskView extends Composite<FlexLayout> {
 
 <!-- vale on -->
 
-### Case study analysis
+### Case study analysis {#case-study-analysis}
 
 This implementation demonstrates several critical patterns:
 
-#### 1. Thread pool management
+#### 1. Thread pool management {#1-thread-pool-management}
 ```java
 private final ExecutorService executor = Executors.newSingleThreadExecutor(r -> {
     Thread t = new Thread(r, "LongTaskView-Worker");
@@ -460,7 +460,7 @@ private final ExecutorService executor = Executors.newSingleThreadExecutor(r -> 
 - Uses a **single thread executor** to prevent resource exhaustion
 - Creates **daemon threads** that won't prevent JVM shutdown
 
-#### 2. Tracking pending updates
+#### 2. Tracking pending updates {#2-tracking-pending-updates}
 ```java
 private final List<PendingResult<?>> pendingUIUpdates = new ArrayList<>();
 ```
@@ -469,7 +469,7 @@ Every `Environment.runLater()` call is tracked to enable:
 - Memory leak prevention in `onDestroy()`
 - Proper cleanup during component lifecycle
 
-#### 3. Cooperative cancellation
+#### 3. Cooperative cancellation {#3-cooperative-cancellation}
 ```java
 private volatile boolean isCancelled = false;
 ```
@@ -478,7 +478,7 @@ The background thread checks this flag at each iteration, enabling:
 - Clean exit from the loop
 - Prevention of further UI updates
 
-#### 4. Lifecycle management
+#### 4. Lifecycle management {#4-lifecycle-management}
 ```java
 @Override
 protected void onDestroy() {
@@ -493,7 +493,7 @@ Critical for preventing memory leaks by:
 - Interrupting running threads
 - Shutting down the executor
 
-#### 5. UI responsiveness testing
+#### 5. UI responsiveness testing {#5-ui-responsiveness-testing}
 ```java
 testButton.onClick(e -> {
     int count = clickCount.incrementAndGet();

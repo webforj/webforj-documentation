@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 35
 title: Web Storage
 ---
 <!-- vale off -->
@@ -14,7 +14,7 @@ webforJ supports three mechanisms for storing client data: [**Cookies**](#cookie
 You can see current cookie, local storage and session storage key-value pairs in your browser's developer tools.
 :::
 
-## Summary of differences
+## Summary of differences {#summary-of-differences}
 | Feature            | Cookies                                      | Session Storage                          | Local Storage                            |
 |--------------------|----------------------------------------------|------------------------------------------|------------------------------------------|
 | **Persistence**    | Configurable expiration date                 | Duration of the page session             | Persistent until explicitly deleted      |
@@ -22,13 +22,13 @@ You can see current cookie, local storage and session storage key-value pairs in
 | **Use Cases**      | User authentication, preferences, tracking   | Temporary data, form data                | Persistent settings, user preferences    |
 | **Security**       | Vulnerable to XSS, can be secured with flags | Cleared on session end, less risk        | Accessible via JavaScript, potential risk|
 
-## Using web storage
+## Using web storage {#using-web-storage}
 The <JavadocLink type="foundation" location="com/webforj/webstorage/CookieStorage" code='true'>CookieStorage</JavadocLink>, <JavadocLink type="foundation" location="com/webforj/webstorage/SessionStorage" code='true'>SessionStorage</JavadocLink>, and <JavadocLink type="foundation" location="com/webforj/webstorage/LocalStorage" code='true'>LocalStorage</JavadocLink> classes in webforJ all extend the abstract <JavadocLink type="foundation" location="com/webforj/webstorage/WebStorage" code='true'>WebStorage</JavadocLink> class. To obtain the appropriate object, use the static methods `CookieStorage.getCurrent()`,  `SessionStorage.getCurrent()`, or `LocalStorage.getCurrent()`. To add, get, and remove key-value pairs, use the `add(key, value)`, `get(key)`, and `remove(key)` methods.
 
-## Cookies
+## Cookies {#cookies}
 [Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies) are small pieces of data stored on the client side and sent to the server with each HTTP request. They are often used to remember user sessions, preferences, and authentication information. In addition to the key-value pairs, cookies may also have attributes. To set attributes for cookies, use `add(key, value, attributes)`.
 
-### Key features:
+### Key features: {#key-features}
 - Can store data across different domains
 - Support expiration dates
 - Small storage size, typically restricted to 4 KB
@@ -39,7 +39,7 @@ The <JavadocLink type="foundation" location="com/webforj/webstorage/CookieStorag
 By default, cookies in webforJ expire after 30 days. You can change this with the `max-age` or `expires` attributes.
 :::
 
-### Using cookies
+### Using cookies {#using-cookies}
 
 The following code snippet demonstrates the use of the <JavadocLink type="foundation" location="com/webforj/webstorage/CookieStorage" code='true'>CookieStorage</JavadocLink> object.
 
@@ -60,7 +60,7 @@ cookieStorage.remove("username");
 Certain cookie attributes, such as `Secure` and `SameSite=None`, require a secure context using HTTPS. These attributes ensure that cookies are only sent over secure connections, protecting them from being intercepted. For more information, see the [MDN documentation on cookie security](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#security).
 :::
 
-### Use cases
+### Use cases {#use-cases}
 The following use cases are well-suited for utilization of cookies:
 
 - **User Authentication**: Store session tokens to keep users logged in.
@@ -68,16 +68,16 @@ The following use cases are well-suited for utilization of cookies:
 - **Tracking**: Collect information about user behavior for analytics.
 
 
-## Session storage
+## Session storage {#session-storage}
 Session storage stores data for the duration of a page session. The data is accessible only within the same session and is cleared when the page or tab is closed. However, the data persists for reloads and restores. Session storage is best for storing temporary data during a single page session and maintaining state across different pages in the same session.
 
-### Key features
+### Key features {#key-features-1}
 - Data isn't sent with every HTTP request
 - Larger storage size than cookies
 - Data is cleared when the page or tab is closed
 - Data isn't shared across tabs
 
-### Using session storage in webforJ
+### Using session storage in webforJ {#using-session-storage-in-webforj}
 
 The following code snippet demonstrates the use of the <JavadocLink type="foundation" location="com/webforj/webstorage/SessionStorage" code='true'>SessionStorage</JavadocLink> object.
 
@@ -95,16 +95,16 @@ String currentPage = sessionStorage.get("currentPage");
 sessionStorage.remove("currentPage");
 ```
 
-### Use cases
+### Use cases {#use-cases-1}
 The following use cases are well-suited for utilization of session storage:
 
 - **Temporary Data Storage**: Store data that only needs to persist while the user is on a particular page or session.
 - **Form Data**: Temporarily save form data for use within the session.
 
-## Local storage
+## Local storage {#local-storage}
 Local storage stores data with no expiration date. It persists even after the browser is closed, and can be accessed whenever the user revisits the website. Local storage is best for storing user preferences or settings, caching data to improve performance, and saving app state across sessions.
 
-### Key features
+### Key features {#key-features-2}
 
 - Data persists across sessions
 - Data isn't sent with every HTTP request.
@@ -112,7 +112,7 @@ Local storage stores data with no expiration date. It persists even after the br
 - Not suitable for sensitive data
 - You must manage data yourself, since the browser never automatically deletes it
 
-### Using local storage in webforJ
+### Using local storage in webforJ {#using-local-storage-in-webforj}
 
 The following code snippet demonstrates the use of the <JavadocLink type="foundation" location="com/webforj/webstorage/LocalStorage" code='true'>LocalStorage</JavadocLink> object.
 
@@ -130,7 +130,7 @@ String theme = localStorage.get("theme");
 localStorage.remove("theme");
 ```
 
-### Use cases
+### Use cases {#use-cases-2}
 The following use cases are well-suited for utilization of local storage:
 
 - **Persistent Data**: Store data that should be available across multiple sessions.

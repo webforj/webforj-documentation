@@ -1,6 +1,6 @@
 ---
 title: Terminate and Error Actions
-sidebar_position: 40
+sidebar_position: 25
 ---
 <!-- vale off -->
 # Terminate and Error Actions <DocChip chip='since' label='23.06' />
@@ -8,7 +8,7 @@ sidebar_position: 40
 
 When developing applications with the webforJ, it's essential to define how your app behaves when it terminates or encounters an error. The framework provides mechanisms to customize these behaviors through `terminate` and `error` actions.
 
-## Overview
+## Overview {#overview}
 
 The `App` class allows you to define actions that execute when the app terminates normally or when it encounters an error. These actions are instances of the `AppCloseAction` interface and can be set using:
 
@@ -26,17 +26,17 @@ Available implementations of `AppCloseAction` include:
 webforJ doesn't treat termination due to a thrown or unhandled exception as an error action, but rather as a termination action because the app shuts down normally. An error action occurs when the app receives a termination signal due to an external error, such as when the browser can't connect to the server running the app.
 :::
 
-## Default behavior
+## Default behavior {#default-behavior}
 
 In webforJ version `24.11` and earlier, the app defaults to using `DefaultAction` for both termination and error events. This means that when the app terminates or encounters an error, the browser displays a message prompting the user to reload the app.
 
 Starting from version `24.12`, webforJ defaults to `NoneAction` for both termination and error events. This change means that no action is taken when the app terminates or an error occurs, allowing webforJ to delegate error handling to an appropriate `ErrorHandler` if one is configured, or to fall back on its generic error handling mechanisms. By using `NoneAction`, the app avoids disrupting the default error handling flow, enabling you to define custom error handlers or rely on webforJ’s built-in error management.
 
-## Customizing actions
+## Customizing actions {#customizing-actions}
 
 To change the default behavior, use the `setTerminateAction()` and `setErrorAction()` methods in your `App` subclass.
 
-### Setting a custom message action
+### Setting a custom message action {#setting-a-custom-message-action}
 
 If you want to display a custom message upon normal termination:
 
@@ -53,7 +53,7 @@ public class MyApp extends App {
 }
 ```
 
-### Setting a redirect action
+### Setting a redirect action {#setting-a-redirect-action}
 
 To redirect the user to a specific URL upon normal termination:
 
@@ -70,7 +70,7 @@ public class MyApp extends App {
 }
 ```
 
-## Terminating the app
+## Terminating the app {#terminating-the-app}
 
 You can programmatically terminate your app by calling the `terminate()` method:
 
@@ -89,7 +89,7 @@ public class MyApp extends App {
 
 Upon calling `terminate()`, the action defined by `setTerminateAction()` executes.
 
-## Hooks for termination
+## Hooks for termination {#hooks-for-termination}
 
 The `App` class provides hook methods to perform actions before and after termination:
 
@@ -115,7 +115,7 @@ public class MyApp extends App {
 For more advanced lifecycle management, consider using `AppLifecycleListener` to handle termination events from external components without modifying the `App` class. This is particularly useful for plugin architectures or when multiple components need to respond to app termination. Learn more about [Lifecycle Listeners](lifecycle-listeners.md).
 :::
 
-### Custom termination page 
+### Custom termination page {#custom-termination-page}
 
 In some cases, you might want to display a custom termination page when your app ends, providing users with a personalized message or additional resources. This can be achieved by overriding the `onDidTerminate()` method in your `App` subclass and injecting custom HTML into the page.
 

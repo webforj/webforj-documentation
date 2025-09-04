@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "@docusaurus/Link";
+import Translate, { translate } from '@docusaurus/Translate';
 import controlMap from '@site/docs/components/_dwc_control_map.json';
 import exclusions from '@site/static/exclusions.json';
 
@@ -106,102 +107,310 @@ export default function TableBuilder(props) {
     switch (table) {
       case "parts":
         items = partItems;
-        headers = ["Part", "Description"];
-        sectionHeading = "Shadow parts";
+        headers = [
+          translate({
+            id: 'tableBuilder.headers.part',
+            message: 'Part',
+            description: 'Table header for part name'
+          }),
+          translate({
+            id: 'tableBuilder.headers.description',
+            message: 'Description',
+            description: 'Table header for description'
+          })
+        ];
+        sectionHeading = translate({
+          id: 'tableBuilder.sections.shadowParts',
+          message: 'Shadow parts',
+          description: 'Section heading for shadow parts table'
+        });
         sectionDescription = (
           <>
-            These are the <Link to={shadowDomLink}>shadow DOM</Link> parts for 
-            the <code>{props.name}</code> component, which are required for styling with CSS.
+            <Translate
+              id="tableBuilder.descriptions.shadowParts"
+              description="Description for shadow parts section"
+              values={{
+                shadowDomLink: <Link to={shadowDomLink}>{translate({
+                  id: 'tableBuilder.shadowDom',
+                  message: 'shadow DOM',
+                  description: 'Link text for shadow DOM'
+                })}</Link>,
+                componentName: <code>{props.name}</code>
+              }}
+            >
+              {"These are the {shadowDomLink} parts for the {componentName} component, which are required for styling with CSS."}
+            </Translate>
           </>
         );
         break;
       case "slots":
         items = slotItems;
-        headers = ["Slot", "Description"];
-        sectionHeading = "Slots";
+        headers = [
+          translate({
+            id: 'tableBuilder.headers.slot',
+            message: 'Slot',
+            description: 'Table header for slot name'
+          }),
+          translate({
+            id: 'tableBuilder.headers.description',
+            message: 'Description',
+            description: 'Table header for description'
+          })
+        ];
+        sectionHeading = translate({
+          id: 'tableBuilder.sections.slots',
+          message: 'Slots',
+          description: 'Section heading for slots table'
+        });
         sectionDescription = (
           <>
-          These are the slots available for use within the <code>{props.name}</code> component. 
-          These slots act as placeholders within the component that control 
-          where the children of a customized element are inserted within the shadow tree.
+            <Translate
+              id="tableBuilder.descriptions.slots"
+              description="Description for slots section"
+              values={{
+                componentName: <code>{props.name}</code>
+              }}
+            >
+              {"These are the slots available for use within the {componentName} component. These slots act as placeholders within the component that control where the children of a customized element are inserted within the shadow tree."}
+            </Translate>
           </>
         )
         break;
       case "css":
         items = styleItems;
-        headers = ["Property", "Description"];
-        sectionHeading = "CSS properties";
+        headers = [
+          translate({
+            id: 'tableBuilder.headers.property',
+            message: 'Property',
+            description: 'Table header for property name'
+          }),
+          translate({
+            id: 'tableBuilder.headers.description',
+            message: 'Description',
+            description: 'Table header for description'
+          })
+        ];
+        sectionHeading = translate({
+          id: 'tableBuilder.sections.cssProperties',
+          message: 'CSS properties',
+          description: 'Section heading for CSS properties table'
+        });
         sectionDescription = (
           <>
-          These are the CSS properties that are used in the <code>{props.name}</code> component, 
-          with a short description of their use.
+            <Translate
+              id="tableBuilder.descriptions.cssProperties"
+              description="Description for CSS properties section"
+              values={{
+                componentName: <code>{props.name}</code>
+              }}
+            >
+              {"These are the CSS properties that are used in the {componentName} component, with a short description of their use."}
+            </Translate>
           </>
         )
         break;
       case "properties":
         items = propItems;
-        sectionHeading = "Properties";
-        headers = ["Name", "Attribute", "Description", "Type", "Reflects", "Default"];
+        sectionHeading = translate({
+          id: 'tableBuilder.sections.properties',
+          message: 'Properties',
+          description: 'Section heading for properties table'
+        });
+        headers = [
+          translate({
+            id: 'tableBuilder.headers.name',
+            message: 'Name',
+            description: 'Table header for name'
+          }),
+          translate({
+            id: 'tableBuilder.headers.attribute',
+            message: 'Attribute',
+            description: 'Table header for attribute'
+          }),
+          translate({
+            id: 'tableBuilder.headers.description',
+            message: 'Description',
+            description: 'Table header for description'
+          }),
+          translate({
+            id: 'tableBuilder.headers.type',
+            message: 'Type',
+            description: 'Table header for type'
+          }),
+          translate({
+            id: 'tableBuilder.headers.reflects',
+            message: 'Reflects',
+            description: 'Table header for reflects'
+          }),
+          translate({
+            id: 'tableBuilder.headers.default',
+            message: 'Default',
+            description: 'Table header for default value'
+          })
+        ];
         sectionDescription = (
           <>
-          These are the properties for the <code>{props.name}</code> component.
-          Properties are JavaScript variables associated with client web components. 
-          They are useful for storing data and controlling behavior, and make web components more reusable and easier to configure. 
-
-          Some properties reflect their values to attributes and vice versa. 
-          This means that if you set a property, the corresponding attribute is set automatically, and if you set an attribute, the corresponding property is set automatically.
+            <Translate
+              id="tableBuilder.descriptions.properties"
+              description="Description for properties section"
+              values={{
+                componentName: <code>{props.name}</code>
+              }}
+            >
+              {"These are the properties for the {componentName} component. Properties are JavaScript variables associated with client web components. They are useful for storing data and controlling behavior, and make web components more reusable and easier to configure.\n\nSome properties reflect their values to attributes and vice versa. This means that if you set a property, the corresponding attribute is set automatically, and if you set an attribute, the corresponding property is set automatically."}
+            </Translate>
           </>
         );
         break;
       case "reflects":
         items = reflectItems;
-        headers = ["Attribute", "Description", "Type"];
-        sectionHeading = "Reflected attributes";
+        headers = [
+          translate({
+            id: 'tableBuilder.headers.attribute',
+            message: 'Attribute',
+            description: 'Table header for attribute'
+          }),
+          translate({
+            id: 'tableBuilder.headers.description',
+            message: 'Description',
+            description: 'Table header for description'
+          }),
+          translate({
+            id: 'tableBuilder.headers.type',
+            message: 'Type',
+            description: 'Table header for type'
+          })
+        ];
+        sectionHeading = translate({
+          id: 'tableBuilder.sections.reflectedAttributes',
+          message: 'Reflected attributes',
+          description: 'Section heading for reflected attributes table'
+        });
         sectionDescription = (
           <>
-          These are the reflected attributes for the <code>{props.name}</code> component.
-          Reflected attributes appear as attributes in the rendered HTML element 
-          for the component in the DOM. This means that styling can be applied using these attributes.
+            <Translate
+              id="tableBuilder.descriptions.reflectedAttributes"
+              description="Description for reflected attributes section"
+              values={{
+                componentName: <code>{props.name}</code>
+              }}
+            >
+              {"These are the reflected attributes for the {componentName} component. Reflected attributes appear as attributes in the rendered HTML element for the component in the DOM. This means that styling can be applied using these attributes."}
+            </Translate>
           </>
         )
         break;
       case "events":
         items = eventItems;
-        headers = ["Event", "Description", "Type"];
-        sectionHeading = "Events";
+        headers = [
+          translate({
+            id: 'tableBuilder.headers.event',
+            message: 'Event',
+            description: 'Table header for event name'
+          }),
+          translate({
+            id: 'tableBuilder.headers.description',
+            message: 'Description',
+            description: 'Table header for description'
+          }),
+          translate({
+            id: 'tableBuilder.headers.type',
+            message: 'Type',
+            description: 'Table header for type'
+          })
+        ];
+        sectionHeading = translate({
+          id: 'tableBuilder.sections.events',
+          message: 'Events',
+          description: 'Section heading for events table'
+        });
         sectionDescription = (
           <>
-          These are the events for the <code>{props.name}</code> component.
+            <Translate
+              id="tableBuilder.descriptions.events"
+              description="Description for events section"
+              values={{
+                componentName: <code>{props.name}</code>
+              }}
+            >
+              {"These are the events for the {componentName} component."}
+            </Translate>
           </>
         )
         break;
       case "methods":
         items = methodItems;
-        headers = ["Method Signature", "Description"];
-        sectionHeading = "Methods";
+        headers = [
+          translate({
+            id: 'tableBuilder.headers.methodSignature',
+            message: 'Method Signature',
+            description: 'Table header for method signature'
+          }),
+          translate({
+            id: 'tableBuilder.headers.description',
+            message: 'Description',
+            description: 'Table header for description'
+          })
+        ];
+        sectionHeading = translate({
+          id: 'tableBuilder.sections.methods',
+          message: 'Methods',
+          description: 'Section heading for methods table'
+        });
         sectionDescription = (
           <>
-          These are the methods for the <code>{props.name}</code> component.
+            <Translate
+              id="tableBuilder.descriptions.methods"
+              description="Description for methods section"
+              values={{
+                componentName: <code>{props.name}</code>
+              }}
+            >
+              {"These are the methods for the {componentName} component."}
+            </Translate>
           </>
         )
         break;
       case "dependents":
         items = dependents;
-        sectionHeading = "Dependent Components";
+        sectionHeading = translate({
+          id: 'tableBuilder.sections.dependentComponents',
+          message: 'Dependent Components',
+          description: 'Section heading for dependent components'
+        });
         sectionDescription = (
           <>
-          The following components depend on the <code>{props.name}</code> component.</>
+            <Translate
+              id="tableBuilder.descriptions.dependentComponents"
+              description="Description for dependent components section"
+              values={{
+                componentName: <code>{props.name}</code>
+              }}
+            >
+              {"The following components depend on the {componentName} component."}
+            </Translate>
+          </>
         )
         break;
       case "dependencies":
         items = dependencies;
-        sectionHeading = "Dependencies"
+        sectionHeading = translate({
+          id: 'tableBuilder.sections.dependencies',
+          message: 'Dependencies',
+          description: 'Section heading for dependencies'
+        });
         sectionDescription = (
-        <>
-        The <code>{props.name}</code> component relies on the following client components. 
-        Client components are client-side only, and cannot be instantiated directly.
-        See the related article for more detailed styling information.
-        </>
+          <>
+            <Translate
+              id="tableBuilder.descriptions.dependencies"
+              description="Description for dependencies section"
+              values={{
+                componentName: <code>{props.name}</code>
+              }}
+            >
+              {"The {componentName} component relies on the following client components. Client components are client-side only, and cannot be instantiated directly. See the related article for more detailed styling information."}
+            </Translate>
+          </>
         )
         break;
       default:

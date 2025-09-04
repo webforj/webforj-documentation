@@ -38,7 +38,7 @@ urls={[
 height='400px'
 />
 
-## How it works
+## How it works {#how-it-works}
 
 The terminal manages a grid of text cells, processes incoming character streams, and reacts to user actions like typing or selecting text. It automatically interprets control characters and escape sequences for cursor movement, color changes, and screen clearing.
 
@@ -51,7 +51,7 @@ The core behaviors include:
 
 The terminal is stateful, meaning it properly reconstructs multibyte characters and maintains continuity across fragmented inputs.
 
-## Sending data to the terminal
+## Sending data to the terminal {#sending-data-to-the-terminal}
 
 Data is sent to the terminal using the `write` and `writeln` methods:
 
@@ -60,7 +60,7 @@ Data is sent to the terminal using the `write` and `writeln` methods:
 
 The terminal processes all incoming data as **UTF-16** strings. It automatically handles multibyte characters, even when input arrives in fragmented chunks.
 
-### Example
+### Example {#example}
 ```java
 terminal.write("echo Hello World\n");
 terminal.writeln("Ready.");
@@ -74,7 +74,7 @@ terminal.write("Long command output", e -> {
 });
 ```
 
-## Receiving user input
+## Receiving user input {#receiving-user-input}
 
 The terminal captures user-generated input through two events:
 
@@ -83,7 +83,7 @@ The terminal captures user-generated input through two events:
 
 These events can be used to relay user input to a backend, update UI elements, or trigger custom actions.
 
-### Example
+### Example {#example-1}
 ```java
 terminal.onData(event -> {
   String userInput = event.getValue();
@@ -105,13 +105,13 @@ The terminal **doesn't support legacy encodings** like `ISO-8859`.
 If you need compatibility with non-UTF-8 systems, use an external transcoder (for example, [`luit`](https://linux.die.net/man/1/luit) or [`iconv`](https://en.wikipedia.org/wiki/Iconv)) to convert the data before writing it to or reading it from the terminal.
 :::
 
-## Handling large data streams
+## Handling large data streams {#handling-large-data-streams}
 
 Because the terminal can't instantly render unlimited input, it maintains an internal input buffer. If this buffer grows too large (default around `50MB`), new incoming data may be dropped to protect system performance.
 
 To properly manage fast data sources, you should implement **flow control**.
 
-### Basic flow control example
+### Basic flow control example {#basic-flow-control-example}
 
 Pause your backend until the terminal finishes processing a chunk:
 
@@ -124,7 +124,7 @@ pty.onData(chunk -> {
 });
 ```
 
-### Watermark flow control example
+### Watermark flow control example {#watermark-flow-control-example}
 
 For more efficient control, use high/low watermarks:
 
@@ -156,9 +156,9 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='400px'
 />
 
-## Customization
+## Customization {#customization}
 
-### Terminal options
+### Terminal options {#terminal-options}
 
 The `TerminalOptions` class allows you to configure behavior:
 
@@ -179,7 +179,7 @@ TerminalOptions options = new TerminalOptions()
 terminal.setOptions(options);
 ```
 
-### Terminal theme
+### Terminal theme {#terminal-theme}
 
 You can style the terminal using `TerminalTheme`, which defines:
 
@@ -200,7 +200,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='500px'
 />
 
-## Supported sequences
+## Supported sequences {#supported-sequences}
 
 The terminal supports a wide range of standard control sequences used for cursor movement, screen updates, and text formatting.
 
@@ -218,6 +218,6 @@ Some exotic sequence types like `APC`,`PM`, and `SOS` are recognized but silentl
 Custom sequences can be supported through integrations if needed.
 :::
 
-## Styling
+## Styling {#styling}
 
 <TableBuilder name="Terminal" />

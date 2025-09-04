@@ -7,8 +7,37 @@ webforJ:
     github: webforj
 Matthew Hawkins:
   name: Matthew Hawkins
-  image_url: https://media.licdn.com/dms/image/v2/C4E03AQFljoM_H1quFw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1580784422162?e=1756339200&v=beta&t=RT8iII-yXZcPCTXcdQjduvp9iuqKVeLGBND4uSAOh7I
+  image_url: /img/authors/mhawkins.jpg
   title: Software Developer
   page: true
   socials:
     github: MatthewHawkins
+Ben Brennan:
+  name: Ben Brennan
+  image_url: /img/authors/bbrennan.jpg
+  title: Technical Writer
+  page: true
+  socials:
+    github: bbrennanbasis
+    linkedin: bbrennan505
+Eric Handtke:
+  name: Eric Handtke
+  image_url: /img/authors/ehandtke.jpg
+  title: Software Developer
+  page: true
+  socials:
+    github: EHandtkeBasis
+Garrison Osteen:
+  name: Garrison Osteen
+  image_url: /img/authors/gosteen.jpg
+  title: Lead Technical Writer
+  page: true
+  socials:
+    github: gosteenBASIS
+Lauren Alamo:
+  name: Lauren Alamo
+  image_url: /img/authors/lalamo.jpg
+  title: Software Developer
+  page: true
+  socials:
+    github: laurenic0l

@@ -8,12 +8,12 @@ title: Docker
 This section of the documentation will cover the steps required for users who wish to develop using Docker. Changes to your code
 will be made on your development machine, and the resulting app will be run in Docker. 
 
-## 1. Downloading Docker
+## 1. Downloading Docker {#1-downloading-docker}
 
 The installation process for Docker will differ slightly between Windows, Mac, and Linux users. See the section below that corresponds to your operating system.
 
 
-### Windows
+### Windows {#windows}
 
 :::info
 It is recommended to download the latest version of Windows Subsystem for Linux. More information can be found [at this link](https://learn.microsoft.com/en-us/windows/wsl/install)
@@ -31,7 +31,7 @@ It is recommended to download the latest version of Windows Subsystem for Linux.
 **3. Verify Installation:**
 >- Open a terminal and run the command `docker --version` to verify that Docker is installed and working correctly.
 
-### Mac
+### Mac {#mac}
 
 **1. Download Docker Desktop:**
 >- Visit the Docker Desktop for Mac download page: [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop/)
@@ -51,44 +51,44 @@ It is recommended to download the latest version of Windows Subsystem for Linux.
 **2. Verify Installation:**
 >- Open a terminal and run the command `docker --version` to verify that Docker is installed and working correctly. -->
 
-## 2. Configuration
+## 2. Configuration {#2-configuration}
 
 Once Docker Desktop has been downloaded, search for the latest webforJ image, which is currently under the name `webforj/sandbox`.
 
-![DWCJ Image Search](./_images/docker/Step_1l.png#rounded-border)
+![DWCJ Image Search](/img/bbj-installation/docker/Step_1l.png#rounded-border)
 
 Click on the list of tags to see the available options
 
-![DWCJ Image Search](./_images/docker/Step_2l.png#rounded-border)
+![DWCJ Image Search](/img/bbj-installation/docker/Step_2l.png#rounded-border)
 
 For the most recent build, select "rc"
 
-![DWCJ Image Search](./_images/docker/Step_3l.png#rounded-border)
+![DWCJ Image Search](/img/bbj-installation/docker/Step_3l.png#rounded-border)
 
 Pull the image to start your container
 
-![DWCJ Image Search](./_images/docker/Step_4l.png#rounded-border)
+![DWCJ Image Search](/img/bbj-installation/docker/Step_4l.png#rounded-border)
 
 Once the download is complete, click the run button, which will open configuration settings
 
-![DWCJ Image Search](./_images/docker/Step_5l.png#rounded-border)
+![DWCJ Image Search](/img/bbj-installation/docker/Step_5l.png#rounded-border)
 
 Open the "Optional settings" menu
 
-![DWCJ Image Search](./_images/docker/Step_6l.png#rounded-border)
+![DWCJ Image Search](/img/bbj-installation/docker/Step_6l.png#rounded-border)
 
 Select a desired host port where you can see your app running within Docker
 
-![DWCJ Image Search](./_images/docker/Step_7l.png#rounded-border)
+![DWCJ Image Search](/img/bbj-installation/docker/Step_7l.png#rounded-border)
 
 Click "Run" to start the container
 
-![DWCJ Image Search](./_images/docker/Step_8l.png#rounded-border)
+![DWCJ Image Search](/img/bbj-installation/docker/Step_8l.png#rounded-border)
 
 <!-- Click the `Run` button, which will pop up a configuration window. These settings are optional, but it is highly recommended to
 supply the `Host port` configuration setting, as this will be necessary later when running your app.
 
-![Configuration](./_images/docker/2.png)
+![Configuration](/img/bbj-installation/docker/2.png)
 
 Once this is finished, click the `Run` button at the bottom of the window, which will create a new container with your specified settings. -->
 
@@ -96,12 +96,12 @@ Once this is finished, click the `Run` button at the bottom of the window, which
 Make sure to take note of the custom Host port number you provide, as this will be needed later.
 :::
 
-## 3. Running your app
+## 3. Running your app {#3-running-your-app}
 
 Once the container has been created, webforJ applications can be run within the container instead of locally. First, it is necessary to configure
 the POM file of your project correctly. Once this is done, going to a specific URL in the browser will show the app.
 
-### Configuring your POM file
+### Configuring your POM file {#configuring-your-pom-file}
 
 Running a webforJ project in the Docker container will require the use of the webforJ Install Plugin, which can be configured using your POM file:
 
@@ -144,13 +144,13 @@ in the previous step.
 - If your `<username>` and `<password>` credentials are different for your installation of BBj, change these.
 
 
-### Using the starter project
+### Using the starter project {#using-the-starter-project}
 
 <ComponentArchetype
 project="bbj-hello-world"
 />
 
-### Launching the app
+### Launching the app {#launching-the-app}
 
 Once this has been done, run a `mvn install` in your project directory. This will run the webforJ install plugin, and allow
 you to access your app. To see the app, you'll want to go to the following URL:
@@ -159,5 +159,3 @@ you to access your app. To see the app, you'll want to go to the following URL:
 
 Replace `YourHostPort` with the Host port you configured with Docker, and `YourPublishName` is replaced by the text inside the `<publishname>` tag of the POM. 
 If done correctly, you should see your app render.
-
-<!-- <UnderConstruction /> -->

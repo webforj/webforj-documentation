@@ -11,7 +11,7 @@ The adapter detects which Spring Data interfaces your repository implements - wh
 For a comprehensive understanding of Spring Data JPA features and query methods, see [Spring Data JPA documentation](https://docs.spring.io/spring-data/jpa/reference/).
 :::
 
-## Using SpringDataRepository
+## Using SpringDataRepository {#using-springdatarepository}
 
 The `SpringDataRepository` class bridges Spring Data JPA repositories with webforJ's Repository interface, making them compatible with UI components like [`Table`](../../components/table/overview) while retaining all Spring Data features.
 
@@ -28,7 +28,7 @@ Table<Person> table = new Table<>();
 table.setRepository(adapter);
 ```
 
-### Interface detection
+### Interface detection {#interface-detection}
 
 Spring Data repositories use interface inheritance to add capabilities. You start with basic CRUD operations and add interfaces for features like pagination or specifications:
 
@@ -46,7 +46,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long>,
 
 `SpringDataRepository` examines which interfaces your repository implements and adapts its behavior accordingly. If your repository supports pagination, the adapter enables paginated queries. If it implements `JpaSpecificationExecutor`, you can use dynamic filtering with specifications.
 
-### Repository capabilities
+### Repository capabilities {#repository-capabilities}
 
 Each Spring Data interface adds specific capabilities that `SpringDataRepository` can use:
 
@@ -55,7 +55,7 @@ Each Spring Data interface adds specific capabilities that `SpringDataRepository
 - **JpaRepository** - Combines CRUD and paging/sorting with batch operations
 - **JpaSpecificationExecutor** - Dynamic queries using JPA Specifications
 
-### Creating a Spring Data repository
+### Creating a Spring Data repository {#creating-a-spring-data-repository}
 
 For maximum compatibility with webforJ components, create repositories that implement both `JpaRepository` and `JpaSpecificationExecutor`:
 
@@ -80,7 +80,7 @@ This combination provides:
 - Java Persistence API Specification filtering
 - Count operations with and without filters
 
-## Working with `Table`
+## Working with `Table` {#working-with-table}
 
 The following example uses a `PersonRepository` that extends `JpaRepository` and `JpaSpecificationExecutor`. This combination enables sorting through column headers and dynamic filtering with specifications.
 
@@ -114,7 +114,7 @@ public class TableView extends Composite<Div> {
 
 The `setPropertyName()` method is important for sorting - it tells the adapter which JPA property to use in the `ORDER BY` clause when sorting by that column. Without it, sorting won't work for computed properties like `getFullName()`.
 
-## Filtering with JPA specifications  
+## Filtering with JPA specifications {#filtering-with-jpa-specifications}
 
 `SpringDataRepository` uses JPA Specifications for dynamic queries and they are applied to the repository `findBy` and `count` operations.
 

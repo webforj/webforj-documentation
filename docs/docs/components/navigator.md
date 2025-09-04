@@ -12,7 +12,7 @@ The `Navigator` component is a customizable pagination component designed to nav
 
 It supports automatic disabling of navigation buttons based on the current page and total items, and offers customization options for text and tooltips for different parts of the navigator. Additionally, you can bind it to a `Paginator` instance to manage the data set's pagination logic and reflect changes in the navigation controls. 
 
-## Binding to repositories
+## Binding to repositories {#binding-to-repositories}
 
 Often, a `Navigator` component displays information found in a bound `Repository`. This binding enables the `Navigator` to automatically paginate data managed by the repository and refresh other bindable components, such as tables, based on the navigated data.
 
@@ -26,7 +26,7 @@ height='475px'
 
 This example creates the `Navigator` and [`Table`](table/overview) with the same `Repository` instance. This means that when navigating to a new page with the `Navigator`, the [`Table`](table/overview) recognizes this change and rerenders.
 
-## Pagination 
+## Pagination {#pagination}
 
 The `Navigator` component is closely linked with the `Paginator` model class, calculates pagination metadata such as total number of pages, start/end indices of items on the current page, and an array of page numbers for navigation. 
 
@@ -34,7 +34,7 @@ While not overtly necessary, utilizing the `Paginator` enables the logic behind 
 
 This section includes practical code snippets to illustrate how this integration works in practice.
 
-### Items
+### Items {#items}
 
 The term "items" denotes the individual paginated elements or data entries. These could be records, entries, or any discrete units within a dataset. You can set the total number of items using the `setTotalItems()` method. 
 
@@ -46,7 +46,7 @@ navigator.getPaginator().setTotalItems(totalItems);
 A repository associated with the `Paginator` instance has the total number of items directly managed by the repository and can't be directly set.
 :::
 
-### Maximum pages
+### Maximum pages {#maximum-pages}
 
 The `setMax()` method allows you to define the maximum number of page links to display in the pagination navigation. This is particularly useful when dealing with a large number of pages, as it controls the number of page links visible to the user at any given time.
 
@@ -62,7 +62,7 @@ height='125px'
 
 This program shows a maximum of five pages on the `Navigator` at one time by using the `getPaginator()` method to retrieve the `Paginator` associated with the `Navigator` object, and then using the `setMax()` method to specify a desired number of maximum pages displayed.
 
-### Page size
+### Page size {#page-size}
 
 The `setSize()` method allows you to specify the number of items to display on each page of the pagination. When you call this method and provide a new page size, it adjusts the pagination accordingly. 
 
@@ -70,7 +70,7 @@ The `setSize()` method allows you to specify the number of items to display on e
 navigator.getPaginator().setSize(pageSize);
 ```
 
-## Customizing buttons, text and tooltips
+## Customizing buttons, text and tooltips {#customizing-buttons-text-and-tooltips}
 
 The `Navigator` component provides extensive customization options for buttons, text, and tooltips. To change the displayed text on the `Navigator` component, use the `setText()` method. This method takes text, as well as the desired `Part` of the `Navigator`. 
 
@@ -82,7 +82,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='100px'
 />
 
-### Buttons and component text
+### Buttons and component text {#buttons-and-component-text}
 
 The `setText()` method evaluates the text parameter as a JavaScript expression using following parameters:
 
@@ -104,7 +104,7 @@ For example, to set the text of the last page button in a `Navigator` with 10 pa
 navigator.setText("'Go to page ' + endPage", Navigator.Part.LAST_BUTTON);
 ```
 
-### Tooltip text
+### Tooltip text {#tooltip-text}
 
 You can customize tooltips for various parts of the `Navigator` component using the `setTooltipText()` method. Tooltips provide helpful hints to users when they hover over navigation elements.
 
@@ -120,7 +120,7 @@ For example, to set the tooltip text of the last page button in a `Navigator` to
 navigator.setTooltipText("Go to the last page", Navigator.Part.LAST_BUTTON);
 ```
 
-## Layouts
+## Layouts {#layouts}
 
 Various layout options exist for the `Navigator` component  to provide flexibility in displaying pagination controls. To access these layouts, use the `Navigator.Layout` enum's values. The options are as follows:
 
@@ -130,7 +130,7 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='200px'
 />
 
-### 1. None layout
+### 1. None layout {#1-none-layout}
 
 The `NONE` layout renders no text within the `Navigator`, displaying only the navigation buttons without a default textual display. To activate this layout, use:
 
@@ -138,7 +138,7 @@ The `NONE` layout renders no text within the `Navigator`, displaying only the na
 navigator.setLayout(Navigator.Layout.NONE);
 ```
 
-### 2. Numbered layout
+### 2. Numbered layout {#2-numbered-layout}
 
 The numbered layout displays numbered chips corresponding to each page within the display area of the `Navigator`. Using this layout is ideal for scenarios where users prefer direct navigation to specific pages. To activate this layout, use:
 
@@ -146,7 +146,7 @@ The numbered layout displays numbered chips corresponding to each page within th
 navigator.setLayout(Navigator.Layout.PAGES);
 ```
 
-### 3. Preview layout
+### 3. Preview layout {#3-preview-layout}
 
 The preview layout shows the current page number and the total number of pages, and is suitable for compact pagination interfaces with limited space.
 
@@ -160,7 +160,7 @@ To activate this layout, use:
 navigator.setLayout(Navigator.Layout.PREVIEW);
 ```
 
-### 4. Quick jump layout
+### 4. Quick jump layout {#4-quick-jump-layout}
 
 The quick-jump layout provides a [NumberField](./fields/number-field.md) for users to enter a page number for quick navigation. This is useful when users need to navigate to a specific page quickly, especially for large datasets To activate this layout, use:
 
@@ -168,11 +168,11 @@ The quick-jump layout provides a [NumberField](./fields/number-field.md) for use
 navigator.setLayout(Navigator.Layout.QUICK_JUMP);
 ```
 
-## Styling
+## Styling {#styling}
 
 <TableBuilder name="Navigator" />
 
-## Best practices 
+## Best practices {#best-practices}
 
 To ensure an optimal user experience when using the `Navigator` component, consider the following best practices: 
 

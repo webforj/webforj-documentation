@@ -19,7 +19,7 @@ For more information on data binding reference [this article.](../../data-bindin
   </video>
 </div>
 
-### Binding the fields
+### Binding the fields {#binding-the-fields}
 
 The data binding setup begins with initializing a `BindingContext` for the `Customer` model. The `BindingContext` links the model properties to the form fields, enabling automatic data synchronization. This is set up in the `FormView` constructor.
 
@@ -36,7 +36,7 @@ This implementation uses auto-binding as described in the [Data Binding Article]
 Should the fields not be named the same you can add the `UseProperty` annotation in the form over the field you want to bind so they know which data fields to refer to.
 :::
 
-### Data binding with `onDidEnter()`
+### Data binding with `onDidEnter()` {#data-binding-with-ondidenter}
 
 The `onDidEnter` method leverages the data binding setup to streamline the process of populating the form fields. Instead of manually setting values for each field, the data is now synchronized automatically with the `BindingContext`.
 
@@ -53,11 +53,11 @@ The `onDidEnter` method leverages the data binding setup to streamline the proce
 
 The `context.read` method in webforJ's data binding system synchronizes the fields of a UI component with the values from a data model. It's used in this case to populate form fields with data from an existing model, ensuring the UI reflects the current state of the data.
 
-## Validating data
+## Validating data {#validating-data}
 
 Validation ensures that the data entered into the form adheres to specified rules, improving data quality and preventing invalid submissions. With data binding, validation no longer needs to be manually implemented but instead simply configured, allowing real-time feedback on user inputs.
 
-### Defining validation rules
+### Defining validation rules {#defining-validation-rules}
 
 Using [Jakarta](https://beanvalidation.org) and regular expressions, you can enforce a multitude of rules on a field. Often used examples would be ensuring the field
 isn't empty or null, or follows a certain pattern.
@@ -81,7 +81,7 @@ context.onValidate(e -> submit.setEnabled(e.isValid()));
 
 `e.isValid()` returns true if all fields are valid, and false if not. This means that the `Submit` button is enabled as long as all fields are valid. Otherwise, it remains turned off, preventing submission until corrections are made.
 
-### Adding and editing entries with validation
+### Adding and editing entries with validation {#adding-and-editing-entries-with-validation}
 
 The `submitCustomer()` method now validates data using the `BindingContext` before performing add or edit operations. This approach eliminates the need for manual validation checks, leveraging the context's built-in mechanisms to ensure that only valid data is processed.
 

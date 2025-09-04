@@ -7,7 +7,7 @@ Validators checks data within your UI components against defined constraints bef
 
 Validations are configured per binding, allowing specific rules to apply to each data point individually. This setup ensures that each piece of data undergoes validation according to its own requirements.
 
-## Adding validators
+## Adding validators {#adding-validators}
 
 Add validators to a binding using the `useValidator` method on the `BindingBuilder`.
 
@@ -24,7 +24,7 @@ In the example above, two validators verify that the name isn't empty and that i
 There is no limit to the number of validators you can add per binding. The binding applies the validators by the order of insertion, and stops at the first violation.
 :::
 
-## Implementing validators
+## Implementing validators {#implementing-validators}
 
 You can create custom reusable validators by implementing the `Validator<T>` interface, where `T` is the type of data you want to validate. This setup involves defining the validate method, which checks the data and returns a `ValidationResult`.
 
@@ -48,7 +48,7 @@ public class EmailValidator implements Validator<String> {
 }
 ```
 
-## Using validators in bindings
+## Using validators in bindings {#using-validators-in-bindings}
 
 Once you have defined a validator, you can easily apply it to any relevant bindings within your app. This is particularly useful for components that require common validation rules across different parts of your app, such as user email addresses, or password strength.
 
@@ -61,7 +61,7 @@ context.bind(ageField, "age")
     .add();
 ```
 
-## Overriding validator messages
+## Overriding validator messages {#overriding-validator-messages}
 
 You can customize the error messages of validators at the point of binding to a specific UI component. This allows you to provide more detailed or contextually relevant information to the user if the validation fails. Custom messages are particularly useful when the same validator applies to multiple components but requires different user guidance based on the context in which it is used.
 

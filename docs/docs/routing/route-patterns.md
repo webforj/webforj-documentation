@@ -5,7 +5,7 @@ title: Route Patterns
 
 **Route Patterns** are used to define how URLs map to specific views, including dynamic and optional segments, regular expressions, and wildcards. Route patterns enable the framework to match URLs, extract parameters, and generate URLs dynamically. They play a critical role in structuring an app's navigation and component rendering based on the browser's location.
 
-## Route pattern syntax
+## Route pattern syntax {#route-pattern-syntax}
 
 Route patterns in webforJ are highly flexible, supporting the following features:
 
@@ -14,7 +14,7 @@ Route patterns in webforJ are highly flexible, supporting the following features
 - **Wildcard Segments:** Represented by `*`, they capture all remaining segments of the URL.
 - **Regular Expressions Constraints:** Constraints can be added only to named parameters (for example, `:id<[0-9]+>`).
 
-### Example of route pattern definitions
+### Example of route pattern definitions {#example-of-route-pattern-definitions}
 
 ```java
 @Route("customer/:id<[0-9]+>/named/:name/*")
@@ -42,11 +42,11 @@ In this example:
 - `:name` captures a name.
 - `*` captures any additional path segments beyond `named/:name`.
 
-## Named parameters
+## Named parameters {#named-parameters}
 
 Named parameters are defined by prefixing a colon `:` to the parameter name in the pattern. They're required unless marked as optional. Named parameters can also have regular expression [constraints](#regular-expression-constraints) to validate the values.
 
-### Example:
+### Example: {#example}
 
 ```java
 @Route("product/:id")
@@ -57,11 +57,11 @@ public class ProductView extends Composite<Div> {
 
 This pattern matches URLs like `/product/123` where `id` is `123`
 
-## Optional parameters
+## Optional parameters {#optional-parameters}
 
 Optional parameters are indicated by adding a `?` after the parameter name. These segments aren't required and can be omitted from the URL.
 
-### Example:
+### Example: {#example-1}
 
 ```java
 @Route("order/:id?<[0-9]+>")
@@ -79,11 +79,11 @@ public class OrderView extends Composite<Div> implements DidEnterObserver {
 
 This pattern matches both `/order/123` to include a numeric value to be included, and `/order`, allowing the omission of a numeric value when `/order` is entered.
 
-## Regular expression constraints
+## Regular expression constraints {#regular-expression-constraints}
 
 You can apply regular expression constraints to parameters by adding them within angle brackets `<>`. This allows you to specify stricter matching rules for parameters.
 
-### Example:
+### Example: {#example-2}
 
 ```java
 @Route("product/:code<[A-Z]{3}-[0-9]{4}>")
@@ -100,11 +100,11 @@ public class ProductView extends Composite<FlexLayout> implements DidEnterObserv
 
 This pattern only matches product codes in the format `ABC-1234`. For example, `/product/XYZ-5678` will match, but `/product/abc-5678` won't.
 
-## Wildcard segments
+## Wildcard segments {#wildcard-segments}
 
 Wildcards can be used to capture entire paths following a specific route segment, but they can only appear as the final segment in the pattern, resolving all subsequent values in the URL. For better readability, wildcard segments can be named. However, unlike named parameters, wildcard segments can't have any constraints.
 
-### Example:
+### Example: {#example-3}
 
 ```java
 @Route("files/:pathname*")
@@ -122,11 +122,11 @@ public class FileManagerView extends Composite<Div> implements DidEnterObserver 
 
 This pattern matches any URL starting with `/files` and captures the rest of the path as a wildcard.
 
-## Route priority
+## Route priority {#route-priority}
 
 When multiple routes match a given URL, the priority attribute of a route determines which route is selected first. This is especially useful when two or more routes overlap in their path patterns, and you need a way to control which one is given precedence. The priority attribute is available in both `@Route` and `@RouteAlias` annotations.
 
-### How the priority system works
+### How the priority system works {#how-the-priority-system-works}
 
 The priority attribute allows the router to determine the order in which routes are evaluated when multiple routes could match a given URL. Routes are sorted based on their priority values, with higher priority (lower numeric values) being matched first. This ensures that more specific routes take precedence over more general ones.
 
@@ -136,7 +136,7 @@ If two routes share the same priority, the router resolves the conflict by selec
 By default, all routes are assigned a priority of `10`.  
 :::
 
-### Example: Conflicting routes
+### Example: Conflicting routes {#example-conflicting-routes}
 
 Consider a scenario where two routes match similar URL patterns:
 

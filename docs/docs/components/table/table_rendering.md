@@ -10,23 +10,23 @@ Tables in webforJ are also configurable using the following tools to display ric
 
 These elements are rendered client-side, meaning the process of generating and displaying rich content is done directly in the browser, using JavaScript only when needed, increasing performance of applications using the `Table`.
 
-## Lodash renderers
+## Lodash renderers {#lodash-renderers}
 
 Renderers offer a powerful mechanism for customizing the way data is displayed within a `Table`. The primary class, `Renderer`, is designed to be extended to create custom renderers based on lodash templates, enabling dynamic and interactive content rendering. 
 
 Lodash templates enable the insertion of HTML directly into table cells, making them highly effective for rendering complex cell data in a `Table`. This approach allows for the dynamic generation of HTML based on cell data, facilitating rich and interactive table cell content.
 
-### Lodash syntax
+### Lodash syntax {#lodash-syntax}
 
 The following section outlines the basics of Lodash syntax. While this is not an exhaustive or comprehensive overview, it can be used to help start using Lodash within the `Table` component. 
 
-#### Syntax overview for lodash templates:
+#### Syntax overview for lodash templates: {#syntax-overview-for-lodash-templates}
 
 - `<%= ... %>` - Interpolates values, inserting the JavaScript code's result into the template.
 - `<% ... %>` - Executes JavaScript code, allowing loops, conditionals, and more.
 - `<%- ... %>` - Escapes HTML content, ensuring interpolated data is safe from HTML injection attacks.
 
-#### Examples using cell data:
+#### Examples using cell data: {#examples-using-cell-data}
 
 **1. Simple value interpolation**: Directly display the cell's value.
 
@@ -82,7 +82,7 @@ The renderer has access to detailed cell, row, and column properties in the clie
 |type|ColumnType|The type of the column (text, number, boolean, etc.).
 |minWidth|number|The minimum width of the column in pixels.
 
-## Available renderers
+## Available renderers {#available-renderers}
 
 While custom renderers can be created, there are multiple pre-configured renderers available for use within a `Table`. The following are available for developers to use out of the box without the need to create a custom renderer:
 

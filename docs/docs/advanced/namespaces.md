@@ -1,6 +1,6 @@
 ---
 title: Namespaces
-sidebar_position: 30
+sidebar_position: 40
 ---
 
 <DocChip chip='since' label='24.22' />
@@ -8,11 +8,11 @@ sidebar_position: 30
 
 Namespaces in webforJ provide a mechanism for storing and retrieving shared data across different scopes in a web app. They enable inter-component and cross-session data communication without relying on traditional storage techniques like session attributes or static fields. This abstraction allows developers to encapsulate and access state in a controlled, thread-safe manner. Namespaces are ideal for building multi-user collaboration tools or simply maintaining consistent global settings, and let you coordinate data safely and efficiently.
 
-## What's a namespace?
+## What's a namespace? {#whats-a-namespace}
 
 A namespace is a named container that stores key-value pairs. These values can be accessed and modified across different parts of your app depending on the namespace type you use. You can think of it like a thread-safe, distributed map with built-in event handling and locking mechanisms.
 
-### When to use namespaces
+### When to use namespaces {#when-to-use-namespaces}
 
 Use namespaces when:
 
@@ -22,7 +22,7 @@ Use namespaces when:
 - You need to persist and retrieve state efficiently across your app.
 
 
-### Types of namespaces
+### Types of namespaces {#types-of-namespaces}
 
 webforJ offers three types of namespaces:
 
@@ -37,11 +37,11 @@ webforJ offers three types of namespaces:
 When in doubt, use a `PrivateNamespace`. It offers safe, scoped sharing between related sessions without impacting global or server-wide state. This makes it a reliable default for most applications. 
 :::
 
-## Creating and using a namespace
+## Creating and using a namespace {#creating-and-using-a-namespace}
 
 Namespaces are created by instantiating one of the available types. Each type defines how and where the data is shared. The examples below demonstrate how to create a namespace and interact with its values.
 
-### `Private` namespace
+### `Private` namespace {#private-namespace}
 
 The private namespace name is made up of two parts:
 
@@ -85,7 +85,7 @@ Examples:
 - X shared.data (too generic, likely to conflict)
 :::
 
-### `Group` and `Global` namespaces
+### `Group` and `Global` namespaces {#group-and-global-namespaces}
 
 In addition to PrivateNamespace, webforJ provides two other types for broader sharing contexts. These are useful when state needs to persist beyond a single session or thread group.
 
@@ -102,11 +102,11 @@ GroupNamespace groupNs = new GroupNamespace();
 groupNs.put("localCache", new HashMap<>());
 ```
 
-## Working with values
+## Working with values {#working-with-values}
 
 Namespaces provide a consistent interface for managing shared data through key-value pairs. This includes setting, retrieving, removing values, synchronizing access, and observing changes in real time.
 
-### Setting and removing values
+### Setting and removing values {#setting-and-removing-values}
 
 Use `put()` to store a value under a specific key. If the key is currently locked, the method waits until the lock is released or the timeout expires.
 
@@ -134,7 +134,7 @@ ns.atomicPut("counter", 42);
 
 This prevents race conditions and avoids the need for manual locking in simple update scenarios.
 
-### Getting values
+### Getting values {#getting-values}
 
 To retrieve a value, use `get()`:
 
@@ -164,7 +164,7 @@ Object token = ns.computeIfAbsent("authToken", key -> generateToken());
 
 This is useful for shared values that are created once and reused, such as session tokens, configuration blocks, or cached data.
 
-### Manual locking
+### Manual locking {#manual-locking}
 
 If you need to perform multiple operations on the same key or coordinate across multiple keys, use manual locking.
 
@@ -181,7 +181,7 @@ ns.removeLock("flag");
 
 Use this pattern when a sequence of operations must be performed atomically across reads and writes. Always ensure the lock is released to avoid blocking other threads.
 
-### Listening for changes
+### Listening for changes {#listening-for-changes}
 
 Namespaces support event listeners that allow you to react to access or modification of values. This is useful for scenarios such as:
 
@@ -189,7 +189,7 @@ Namespaces support event listeners that allow you to react to access or modifica
 - Triggering updates when a config value changes
 - Monitoring shared state changes in multi-user apps
 
-#### Available listener methods
+#### Available listener methods {#available-listener-methods}
 
 | Method                    | Trigger                        | Scope              |
 |---------------------------|--------------------------------|--------------------|
@@ -204,7 +204,7 @@ Each listener receives an event object containing:
 - The new value
 - A reference to the namespace
 
-#### Example: Respond to any key change
+#### Example: Respond to any key change {#example-respond-to-any-key-change}
 
 ```java
 ns.onChange(event -> {
@@ -214,7 +214,7 @@ ns.onChange(event -> {
 });
 ```
 
-#### Example: Track access to a specific key
+#### Example: Track access to a specific key {#example-track-access-to-a-specific-key}
 
 ```java
 ns.onKeyAccess("sessionToken", event -> {
@@ -231,7 +231,7 @@ ListenerRegistration<NamespaceKeyChangeEvent> reg = ns.onKeyChange("status", eve
 reg.remove();
 ```
 
-## Example: Sharing game state in Tic-Tac-Toe
+## Example: Sharing game state in Tic-Tac-Toe {#example-sharing-game-state-in-tic-tac-toe}
 
 The [webforJ Tic-Tac-Toe demo](https://github.com/webforj/webforj-tictactoe) provides a simple two-player game where turns are shared between users. The project demonstrates how `Namespace` can be used to coordinate state without relying on external tools like databases or APIs.
 

@@ -1,6 +1,6 @@
 ---
 title: Browser History
-sidebar_position: 20
+sidebar_position: 30
 ---
 
 <DocChip chip='since' label='24.12' />
@@ -8,11 +8,11 @@ sidebar_position: 20
 
 The `BrowserHistory` class in webforJ provides a high-level API to interact with the browser's history. Browser history allows web applications to keep track of the user's navigation within the app. By leveraging browser history, developers can enable features like back and forward navigation, state preservation, and dynamic URL management without requiring full-page reloads.
 
-## Navigating through history
+## Navigating through history {#navigating-through-history}
 
 Managing the browser's history is a core feature for of most web apps. The `BrowserHistory` API enables developers to control how users navigate through the pages and states of their applications, mimicking or altering the standard browser behavior.
 
-### Initializing or retrieving a history instance
+### Initializing or retrieving a history instance {#initializing-or-retrieving-a-history-instance}
 
 To use the `BrowserHistory` API, you have two main options for obtaining a history instance:
 
@@ -30,7 +30,7 @@ BrowserHistory history = Router.getCurrent().getHistory();
 ```
 This method is recommended when your app relies on routing, as it maintains consistency in history management across all views and navigation actions.
 
-### Managing history
+### Managing history {#managing-history}
 The following methods can be used for history navigation in a webforJ app:
 
 - `back()`: Moves the browser history back by one step, simulating a user pressing the back button in their browser. If there are no more entries in the history stack, it stays on the current page.
@@ -67,7 +67,7 @@ The following methods can be used for history navigation in a webforJ app:
 
 Understanding how to navigate efficiently is the cornerstone of building dynamic applications. Once you have the fundamentals of navigation, it's essential to know how to access and update the URLs associated with these navigation events.
 
-## Accessing and updating URL
+## Accessing and updating URL {#accessing-and-updating-url}
 
 A core aspect of navigating and managing browser history is being able to access and update the current URL path efficiently. This is essential in modern web apps, where URL changes correspond to different views or states within the app. The `BrowserHistory` API offers a simple way to retrieve and manipulate the current path relative to the app's root.
 
@@ -82,7 +82,7 @@ Optional<Location> location = history.getLocation();
 location.ifPresent(loc -> System.out.println("Current Path: " + loc.getFullURI()));
 ```
 
-## Managing state
+## Managing state {#managing-state}
 
 `BrowserHistory` lets you save and manage custom state information using `pushState()` and `replaceState()` methods. By using state management methods, you can control what information is stored as part of the history entry, which helps in maintaining a consistent user experience when navigating back and forth within your app. The following methods can be used to manage state in your webforJ app.
 
@@ -108,7 +108,7 @@ Optional<MyState> currentState = history.getState(MyState.class);
 currentState.ifPresent(state -> System.out.println("Current Page: " + state.getViewName()));
 ```
 
-### Listening for state changes
+### Listening for state changes {#listening-for-state-changes}
 The `BrowserHistory` class provides the ability to register event listeners that respond to changes in the history state.
 
 The `addHistoryStateChangeListener(EventListener<HistoryStateChangeEvent> listener)` registers a listener that gets triggered when the state changes, such as when the user clicks the browser's back or forward buttons. This method sets up a listener for the browser's `popstate` event, allowing your app to respond to user actions or programmatically triggered state changes.

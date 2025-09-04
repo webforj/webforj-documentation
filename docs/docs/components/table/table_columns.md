@@ -10,7 +10,7 @@ slug: columns
 The `Table` class utilizes `Column` classes to handle the creation of data columns within it. This class has a wide range of functionality that allows a user to thoroughly customize what is displayed within each of the columns.
 To add a `Column` to a `Table`, use one of the `addColumn` factory methods.
 
-## Value providers
+## Value providers {#value-providers}
 
 A value provider is a function responsible for translating raw data from the underlying dataset into a format suitable for display within a specific column. The function, defined by the user, takes an instance of the row data type (T) and returns the value to be showcased in the associated column for that particular row.
 
@@ -32,7 +32,7 @@ To set a value provider on a column, use one of the `addColumn` factory methods 
 
 In this example, a column will attempt to access data from a JSON object, rendering it only if the data is not null.
 
-## Pin Direction
+## Pin Direction {#pin-direction}
 
 Column pinning is a feature that allows users to affix or "pin" a column to a specific side of the table, enhancing visibility and accessibility. This is useful when certain columns, such as identifiers or essential information, need to remain visible while scrolling horizontally through a table.
 
@@ -53,7 +53,7 @@ There are three available directions for pinning a column:
 Pinning can be set programmatically, allowing users to change the pin direction based on user interactions or application logic.
 
 
-## Alignment
+## Alignment {#alignment}
 
 Column alignment defines the horizontal positioning of data within a column. It influences how data values are displayed, providing a visual guide to users about the nature of the information. 
 
@@ -73,7 +73,7 @@ The Table Component supports three primary alignment options:
 
 In the above example, the final column for `Cost` has been right-aligned to provide a more obvious visual distinction.
 
-## Visibility
+## Visibility {#visibility}
 
 It is possible to set the visibility of a `Column`, determining whether or not it will be shown within the table. This can be useful when, among other things, determining whether or not to display sensitive information. 
 
@@ -81,7 +81,7 @@ Use the `setHidden()` method, as shown below, to set this property on a `Column`
 
 `table.addColumn("Credit Card", Customer::getCreditCardNumber).setHidden(true);`
 
-## Navigable
+## Navigable {#navigable}
 
 The navigable attribute determines whether users can interact with a column during navigation. Setting `setSuppressNavigable()` to true restricts user interaction with the column, providing a read-only experience.
 
@@ -89,7 +89,7 @@ The navigable attribute determines whether users can interact with a column duri
 table.addColumn("ReadOnly Column", Product::getDescription).setSuppressNavigable(true);
 ```
 
-## Label
+## Label {#label}
 
 The label of a column is its public-facing identifier, contributing to the clarity and understanding of displayed data. Use setLabel to set or modify the label associated with a column.
 
@@ -101,7 +101,7 @@ By default, the label will be the same as the column ID
 table.addColumn("Product ID", Product::getProductId).setLabel("ID");
 ```
 
-## Minimum width
+## Minimum width {#minimum-width}
 
  The `setMinWidth()` method allows you to define the minimum width of a column, ensuring consistent and aesthetically pleasing layout.
 

@@ -22,13 +22,13 @@ For projects that need a structured navigation system, the `sidemenu` archetype 
 For more control over customization and configuration, you can use [startforJ](https://docs.webforj.com/startforj/) to create your project - just select the `SideMenu` archetype when choosing configuration options.
 :::
 
-## Using the `sidemenu` archetype
+## Using the `sidemenu` archetype {#using-the-sidemenu-archetype}
 
 <ComponentArchetype
 project="sidemenu"
 />
 
-## Running the app
+## Running the app {#running-the-app}
 
 Before running your app, install the [prerequisites](../../introduction/prerequisites) if you haven't yet. 
 Then, navigate to the project's root directory and run the following command:

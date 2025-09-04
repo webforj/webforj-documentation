@@ -1,5 +1,5 @@
 ---
-sidebar_position: 15
+sidebar_position: 20
 title: Interval
 ---
 
@@ -11,7 +11,7 @@ The <JavadocLink type="foundation" location="com/webforj/Interval" code='true' >
 The `Interval` class provides a straightforward way to trigger events after a specified delay. It's possible to start, stop, and restart an `Interval` as needed. Additionally, Intervals can support multiple listeners for the elapsed event.
 Optimized for the webforJ framework, it offers better performance compared to the standard Java timer or the Swing timer.
 
-## Usages
+## Usages {#usages}
 The `Interval` class triggers event(s) at a fixed time delay. Leveraging Intervals creatively, you can enhance user interaction and engagement on your website while keeping the experience dynamic and interesting.:
 
 1. **Check for Inactivity**: Display a [`Dialog`](../components/dialog) component if there hasn't been any interaction on a form within a given time.
@@ -20,10 +20,10 @@ The `Interval` class triggers event(s) at a fixed time delay. Leveraging Interva
 
 3. **Live Data**: Refresh data on your app, such as stock prices, news feeds, or weather updates, on each Interval to keep the data current.
 
-## Managing `Interval` states: starting, stopping, and restart
+## Managing `Interval` states: starting, stopping, and restart {#managing-interval-states-starting-stopping-and-restart}
 An Interval requires manual activation; use the `start()` method to initiate it. To stop an Interval, use the `stop()` method. The `restart()` method can be used to restart the Interval.
 
-## Adjusting the `Interval` delay
+## Adjusting the `Interval` delay {#adjusting-the-interval-delay}
 
 To modify the delay of an Interval, use the `setDelay(float delay)` method. The new delay value is applied after the Interval is either stopped or restarted.
 
@@ -38,7 +38,7 @@ Interval.restart();
 The delay can be fractional seconds to millisecond in resolution, but a very small timeout value causes a flood of events faster than the program can respond to them.
 :::
 
-## Adding listeners
+## Adding listeners {#adding-listeners}
 
 You can attach additional listeners to an Interval using the `addElapsedListener(EventListener\<Interval.ElapsedEvent\> listener)` method. Once a listener is added, it automatically triggers on the next interval if the Interval is already running.
 

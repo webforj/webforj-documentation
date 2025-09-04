@@ -5,7 +5,7 @@ title: Route Navigation
 
 In webforJ, navigating between routes is the core mechanism for switching views and components based on user actions or URL changes. Navigation allows users to move seamlessly between different parts of the app without refreshing the page. This client-side navigation keeps the app responsive and smooth while preserving the app's state.
 
-## Programmatic navigation
+## Programmatic navigation {#programmatic-navigation}
 
 You can trigger navigation from anywhere in your app by using the `Router` class. This allows dynamic changes in the displayed components based on events such as button clicks or other user interactions.
 
@@ -36,7 +36,7 @@ Router.getCurrent().navigate(new Location("/dashboard"));
 When navigating between views, developers have two options: they can either pass the view or route class, allowing the router to automatically generate the URL and render the view, or pass the location directly. Both methods are valid, but **using the view class is the preferred approach** because it offers better flexibility for future changes. For instance, if you later decide to update the route, you only need to modify the `@Route` annotation, without having to change any code that uses the view class for navigation.
 :::
 
-### Navigation with parameters
+### Navigation with parameters {#navigation-with-parameters}
 
 When you need to pass parameters along with the route, webforJ allows you to embed parameters in the URL. Here’s how you can navigate to a route with parameters:
 
@@ -75,7 +75,7 @@ Router.getCurrent().navigate(
 
 This navigates to `/user/JohnDoe`, where `JohnDoe` might represent a user ID. The component for this route can then extract the parameter and use it accordingly.
 
-## Created view instance
+## Created view instance {#created-view-instance}
 
 The `navigate` method accepts a Java `Consumer` that's invoked once navigation is complete. The `Consumer` receives the instance of the created view component, wrapped in a java `Optional`, allowing the developer to interact with the view after a successful navigation.
 
@@ -93,7 +93,7 @@ Router.getCurrent().navigate(
 The consumer receives a Java `Optional` for the component because it might be `null`, or not created for various reasons. For example, the component may not be rendered if the navigation observers veto the navigation and stop the process.
 :::
 
-## Navigation options
+## Navigation options {#navigation-options}
 
 The `NavigationOptions` class allows developers to fine-tune how navigation is handled within the app. By setting specific options, you can control the behavior of navigation, such as whether to update the browser's history, invoke lifecycle observers, or even fire navigation events.
 
@@ -105,7 +105,7 @@ Router.getCurrent().navigate(
   new Location("user/JohnDoe"), options);
 ```
 
-### Setting navigation options
+### Setting navigation options {#setting-navigation-options}
 
 The `NavigationOptions` class provides several methods for customizing navigation behavior. These include controlling how routes are handled, whether observers are notified, and how the browser's history is updated.
 
@@ -129,7 +129,7 @@ Here are the main configuration options available within `NavigationOptions`:
 5. **State Object (`setState`)**  
    [The state object](./state-management#saving-and-restoring-state-in-browser-history) allows you to pass additional information when updating the browser’s history. This object is stored in the browser's history state and can be used later for custom purposes, like saving the state of the app during navigation.
 
-## Generating locations for views
+## Generating locations for views {#generating-locations-for-views}
 
 The router can generate the location for views based on the route pattern defined in the view. You can also provide additional parameters for dynamic and required segments in the URL. This can be useful when constructing links or sharing direct access points to specific views in the app.
 
