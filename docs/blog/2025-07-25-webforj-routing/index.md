@@ -9,23 +9,25 @@ hide_table_of_contents: false
 ---
 
 ![Cover Image](/img/routingcover.png)
----
+
 <!--vale off-->
 We all probably know this situation; browsing a website or webapp, make a simple misclick and instinctively try to go back or undo it. Only to then be somewhere completely else, worst case not even on the site anymore. 
 
-Seeing that user experience is one of the most important factors in modern web development, that scenario is one of the many reasons why a robust and well-maintained routing system is so important for our SPA.
+Seeing that user experience is one of the most important factors in modern web development, that scenario is one of the many reasons why a robust and well-maintained routing system is so important for your Single Page Application (SPA).
 
 In this article, I will give a quick overview on how to achieve that with webforJ. First we will take a look at movement between views, preserving different states, and in general intuitive interaction with our app. In around 10 minutes, you should be able to set up routes, handle advanced navigation scenarios, and follow the best practices for future maintenance.
 
+<!-- truncate -->
+
 ## What is Routing? And what is an SPA?
 
-Lets start off with the most important things first: what are we even talking about here? A Java SPA (Single Page Application) is using a single HTML page to dynamically update its content. This results in a faster and smoother user experience whilst posing the challenge of navigating these content updates.
+Lets start off with the most important things first: what are we even talking about here? A Java SPA is using a single HTML page to dynamically update its content. This results in a faster and smoother user experience whilst posing the challenge of navigating these content updates.
 
 That's where routing comes into play. To put it simple, we only replace the actual content of the page without reloading it, thus cutting out loading times for the user, making navigation seamless and overall keeping full control over our state.
 
 With webforJ, you can handle routing entirely in Java, allowing you to define navigation paths, manage state and control how users move through your app.
 
-## Basic route setup - @Route annotation usage
+## Basic route setup - `@Route` annotation usage
 
 Setting up routes in webforJ is very straightforward. The core of routing is the `@Route` annotation, which you place on your view classes to map them to specific URL paths. When a user navigates to a given path, webforJ automatically displays the corresponding view - no manual wiring required.
 
@@ -43,7 +45,7 @@ public class AboutView extends Composite<Div> {
 }
 ```
 
-With this setup, visiting "/" will show you the HomeView, and "/about" will show you the AboutView. Its possible to add as many routes as you need, each mapped to its own Java class. 
+With this setup, visiting **/** will show you the HomeView, and **/about** will show you the AboutView. Its possible to add as many routes as you need, each mapped to its own Java class. 
 
 ## Advanced routing features - parameters, aliases, nested routes
 
@@ -51,7 +53,7 @@ Other than the very basic setup shown above you eventually come to the point whe
 
 For route parameters, you can define those directly in the path, such as `@Route("user/:id")`. Using route parameters you can capture dynamic values from the URL and use them directly in your webforJ code. The way you do that is by utilizing the `ParametersBag` in navigation events so you can load data or update the UI based on the route.
 
-Now i know that may sound very technical and complicated, but in reality - it isnt. Here you can see how such an implementation would look where the code automatically uses the id provided through the route. yoursite.com/user/eric would show my userprofile.
+Now I know that may sound very technical and complicated, but in reality - it isn't. Here you can see how such an implementation would look where the code automatically uses the id provided through the route. Going to **yoursite.com/user/eric** would show my user profile.
 
 ```java
 import com.webforj.router.annotation.Route;
@@ -71,9 +73,9 @@ public class UserProfileView extends Composite {
 }
 ```
 
-For even more flexibility, use the `@RouteAlias` annotation to map multiple URLs to the same view. For example, a profile page can be accessible via both `/profile` and `/user/me` by annotating the class with both `@Route` and `@RouteAlias`.
+For even more flexibility, use the `@RouteAlias` annotation to map multiple URLs to the same view. For example, a profile page can be accessible via both **/profile** and **/user/me** by annotating the class with both `@Route` and `@RouteAlias`.
 
-Nested routes are handled using the outlet parameter in the @Route annotation, letting you build parent-child hierarchies. This allows you to inject child views into specific areas of a parent layout, giving you free reign over your URL structures (e.g., /dashboard/settings).
+Nested routes are handled using the outlet parameter in the @Route annotation, letting you build parent-child hierarchies. This allows you to inject child views into specific areas of a parent layout, giving you free rein over your URL structures (e.g., **/dashboard/settings**).
 
 ## Browser integration and management
 
@@ -87,9 +89,9 @@ webforJ also manages browser history and deep linking out of the box. As users n
 
 A typical pattern in webforJ apps is to use a dedicated layout route for dashboards, with nested view routes for each dashboard section. For example, you might have a MainLayout class annotated with `@Route`, and then a `DashboardView` with `@Route(value = "/", outlet = MainLayout.class)` and `@RouteAlias(value = "/dashboard")`. This way you can utilize shared UI elements, like a drawer for navigation or headers, in the layout whilst you can freely change the content which is injected as children.
 
-Unknown or invalid routes are not directly part of the routing features i talked about so far but instead are managed through the error handling webforJ offers. Since it is not part of what i want to talk about here i wont go into too much detail but will instead give a brief sample of how a replacement to the default 404 can be done and more can be read up in our dedicated  [documentation](https://docs.webforj.com/docs/advanced/error-handling#handler-selection). 
+Unknown or invalid routes are not directly part of the routing features I talked about so far, but instead are managed through the error handling webforJ offers. Since it is not part of what I want to talk about here I won't go into too much detail, but will instead give a brief sample of how a replacement to the default 404 can be done. You can learn more by reading about [error handler selection](/docs/advanced/error-handling#handler-selection). 
 
-To replace the default 404 page that will appear when you try to reach a faulty route you can simply add an `ErrorHandler` implementation to your code, in this case a `NotFoundExceptionErrorHandler`. Register that handler according to the aforementioned documentation and replace the body with whatever html you want to display and you are ready to go.
+To replace the default 404 page that will appear when you try to reach a faulty route you can simply add an `ErrorHandler` implementation to your code, in this case a `NotFoundExceptionErrorHandler`. Register that handler according to the aforementioned documentation and replace the body with whatever HTML you want to display and you are ready to go.
 
 ```java
 package com.example.error;
@@ -101,7 +103,7 @@ public class NotFoundExceptionErrorHandler implements ErrorHandler {
   public void onError(Throwable throwable, boolean debug){
     String title = "Page not found";
     String content = "";
-    /*Add the html content you want to show on 404 to the previous String */
+    /*Add the HTML content you want to show on 404 to the previous String */
     showErrorPage(title,content);
   }
 
@@ -110,15 +112,15 @@ public class NotFoundExceptionErrorHandler implements ErrorHandler {
 ```
 
 - **Consistent Naming:** Name your route classes with clear, descriptive names that end in `View` for standard views and `Layout` for layout components. This helps webforJ auto-detect route types and keeps your code self-explanatory.
-- **Logical Folder Structure:** Organize your views and layouts into folders by feature or section (e.g., `views/dashboard/`, `views/admin/`). This makes it easy to locate and manage related routes as your app grows.
-- **Declarative Routing:** Use the `@Route` annotation for all routable components, and prefer static registration over dynamic unless you have advanced needs. Keep route paths simple, lowercase, and hyphenated (e.g., `/user-profile`).
+- **Logical Folder Structure:** Organize your views and layouts into folders by feature or section (e.g., **views/dashboard/**, **views/admin/**). This makes it easy to locate and manage related routes as your app grows.
+- **Declarative Routing:** Use the `@Route` annotation for all routable components, and prefer static registration over dynamic unless you have advanced needs. Keep route paths simple, lowercase, and hyphenated (e.g., **/user-profile**).
 - **Route Hierarchy:** Structure your routes hierarchically, using parent layouts for shared UI and child views for specific content.
 - **Single Responsibility:** Each view or layout should have a focused purpose. Avoid mixing unrelated logic in a single component.
 - **Type-Safe Navigation:** When navigating programmatically, use the view class rather than hardcoded strings. 
 
-## Comparison to angular
+## Comparison to Angular
 
-Now a big question i can already sense is what makes webforJ routing different from other well known web dev frameworks like react for example and for that i have a side by side comparison.
+Now a big question I can already sense is what makes webforJ routing different from other well-known web dev frameworks like React? To answer that question, I have a side-by-side comparison:
 
 <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
   <div style={{ flex: 1 }}>
@@ -151,7 +153,7 @@ Now a big question i can already sense is what makes webforJ routing different f
 
 We have now gone over how to build up routing in webforJ that's both easily maintainable and implemented as well as some structures to follow so that users can navigate through your app without any problems. Of course, this article can't cover everything there is to know about routing, and there would be more topics we could delve into like data binding and security, but that would go beyond the scope of what we set out to do here.
 
-If you want to check those topics out, feel free to look through our official [documentation](https://webforj.dev/docs/routing/overview), where you will find a plethora of different articles detailing everything you need to know about those topics as well.
+If you want to check those topics out, feel free to look through our [Routing articles](https://webforj.dev/docs/routing/overview), where you will find a plethora of different articles detailing everything you need to know about those topics as well.
 
 As a next step, try building a small multi-view app to reinforce these concepts. Once you’re comfortable, explore more advanced topics like authentication flows, dynamic route registration, and custom navigation guards.
 
