@@ -20,7 +20,7 @@ Tools and settings that automate or optimize browser reloading can be added for 
 
 Live reload ensures that once changes are deployed, the browser reflects those updates in real-time without needing a manual browser refresh. 
 
-In a webforJ app, live reload can automatically refreshes the view, re-rendering components to show the latest state of the app, or even patch changes as they're needed on demand.
+In a webforJ app, live reload can automatically refresh the view, re-rendering components to show the latest state of the app, or even patch changes as they're needed on demand.
 
 ## Topics {#topics}
 
