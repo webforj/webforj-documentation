@@ -2,25 +2,24 @@
 sidebar_position: 21
 title: Dynamic Styling
 slug: styling
-sidebar_class_name: updated-content
-_i18n_hash: 38ec04cdf27a7de8a9e51ad24cf66009
+_i18n_hash: 8e9f61685fbb3a7fb830463f1320e8cf
 ---
 <!-- vale off -->
-# Dynaaminen tyylitys <DocChip chip='since' label='25.00' />
+# Dynaaminen tyylittely <DocChip chip='since' label='25.00' />
 <!-- vale on -->
 
-WebforJ 25:ssä ja korkeammissa versioissa on mahdollista tyylittää yksittäisiä rivejä ja soluja taulukossa käyttäen mukautettuja osanimiä. Nämä nimet voidaan määrittää dynaamisesti sovelluksesi logiikan perusteella, mikä antaa sinulle tarkkaa hallintaa taulukon ulkoasusta.
+WebforJ 25:ssä ja sitä uudempissa versioissa on mahdollista tyylittää yksittäisiä rivejä ja soluja taulukossa käyttäen mukautettuja osanimiä. Nämä nimet voidaan määrittää dynaamisesti sovelluksesi logiikan perusteella, mikä antaa sinulle tarkkaa hallintaa taulukon ulkonäöstä.
 
-## Rivien tyylitys {#row-styling}
+## Rivin tyylitys {#row-styling}
 
-`setRowPartProvider()`-metodi määrittää osanimiä koko riveille niiden sisältämän tietoelementin perusteella. Tämä mahdollistaa täydellisten rivien korostamisen, jotka täyttävät tietyt ehdot—esimerkiksi vuorotellen taustavärejä parillisille riveille.
+`setRowPartProvider()`-metodi määrittää osanimiä koko riveille niiden sisältämän tietoelementin perusteella. Tämä mahdollistaa koko rivien korostamisen, jotka täyttävät tietyt ehdot—esimerkiksi vuorottelevat taustavärit parillisille riveille.
 
-Näitä tyylinimiä voidaan kohdistaa CSS:ssä `::part()`-valitsimen avulla.
+Näitä tyylinimiä voidaan kohdistaa `::part()`-valitsimella CSS:ssäsi.
 
-:::tip Varjopartit
-`::part()`-valitsin on erityinen CSS-ominaisuus, joka mahdollistaa komponentin varjo DOM:in sisällä olevien elementtien tyylittämisen—niin kauan kuin nämä elementit altistavat `part`-attribuutin. Tämä on erityisen hyödyllistä webforJ-komponenttien sisäisten osien, kuten rivien tai solujen tyylittämisessä.
+:::tip Varjo-osiot
+`::part()`-valitsin on erityinen CSS-ominaisuus, joka mahdollistaa komponentin varjo-DOM:issa olevien elementtien tyylittämisen—niin kauan kuin nämä elementit altistavat `part`-attribuutin. Tämä on erityisen hyödyllistä webforJ-komponenttien sisäisten osien, kuten rivien tai solujen, tyylittämiseen.
 
-Lisätietoja varjoparttien toiminnasta ja niiden määrittämisestä ja kohdistamisesta löydät [Tyylitys](../../styling/shadow-parts) osiosta.
+Lisätietoja siitä, miten varjo-osat toimivat ja miten niitä määritellään ja kohdistetaan, katso [Tyylittely](../../styling/shadow-parts) -osio.
 :::
 
 
@@ -30,11 +29,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## Solujen tyylitys {#cell-styling}
+## Solun tyylitys {#cell-styling}
 
-`setCellPartProvider()`-metodi tyylittää yksittäisiä soluja sekä tietoelementin että niihin kuuluvan sarakkeen perusteella. Tämä tekee siitä ihanteellisen tiettyjen arvojen, kuten kynnyksen alittavien ikien tai virheellisten tietojen korostamiseen.
+`setCellPartProvider()`-metodi tyylittää yksittäisiä soluja sekä tiedoelementin että siihen liittyvän sarakkeen perusteella. Tämä tekee siitä ihanteellisen tiettyjen arvojen, kuten ikien korostamisen, kun ne ovat ennen kynnystä tai virheellisiä merkintöjä.
 
-Kuten riviosat, solupositiot määritellään nimellä ja kohdistetaan `::part()`-valitsimen avulla.
+Kuten riviosat, soluosat määritellään nimellä ja niitä kohdistetaan `::part()`-valitsimella.
 
 <ComponentDemo 
 path='/webforj/tablecellstyling?' 
@@ -42,9 +41,9 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## Reagointi datapäivityksiin {#reacting-to-data-updates}
+## Reagoiminen tietopäivityksiin {#reacting-to-data-updates}
 
-Jos sovelluksesi muuttaa tietoja ohjelmallisesti, kuten päivittämällä käyttäjän ikää, taulukko arvioi automaattisesti uudelleen ja soveltaa mitään siihen liittyviä rivin tai solun tyylejä heti, kun päivitetty elementti on tallennettu varastoon. 
+Jos sovelluksesi muuttaa tietoja ohjelmallisesti, kuten päivittämällä käyttäjän ikää, taulukko arvioi automaattisesti ja soveltaa uudelleen kaikki siihen liittyvät rivin tai solun tyylit, kun päivitettävä kohde on sitoutettu varastoon.
 
 <ComponentDemo 
 path='/webforj/tabledynamicstyling?' 
@@ -54,29 +53,33 @@ height='475px'
 
 ## Raidalliset rivit {#striped-rows}
 
-Ota käyttöön vuorotellen taustavärit riveille parantaaksesi luettavuutta:
+Ota käyttöön vuorottelevat taustavärit riveille parantaaksesi luettavuutta:
 
 ```java
-// Ota käyttöön raidalliset rivistyylit
+// Käytä raidallista rivityylitystä
 table.setStriped(true);
 ```
 
-## Rajat {#borders}
+## Reunat {#borders}
 
-Määritä, mitkä rajat näytetään `Table`:n, sarakkeiden ja rivien ympärillä:
+Määritä, mitkä reunat näytetään `Table`:n, sarakkeiden ja rivien ympärillä:
 
 ```java
-// Ota käyttöön kaikki rajat
+// Ota kaikki reunat käyttöön
 table.setBordersVisible(EnumSet.of(Table.Border.AROUND, Table.Border.COLUMNS, Table.Border.ROWS));
 
-// Poista kaikki rajat
+// Poista kaikki reunat
 table.setBordersVisible(EnumSet.noneOf(Table.Border.class));
 ```
 
-Alla oleva esimerkki esittelee yksinkertaisen tavan sovittaa `Table`:n visuaalinen ulkoasu sovelluksesi muuhun visuaaliseen ilmeeseen käyttäen `setStriped()` ja `setBordersVisible()`.
+Alla oleva demo esittelee yksinkertaisen tavan sovittaa `Table`:n visuaalinen ilme sovelluksesi muuhun osaan käyttäen `setStriped()` ja `setBordersVisible()`.
 
 <ComponentDemo 
 path='/webforj/tablelayoutstyling?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableLayoutStylingView.java'
 height='300px'
 />
+
+:::tip Tietojen hallinta ja kysely
+Lisätietoja `Repository`-mallin käytöstä kokoelmainen hallitsemiseen ja kyselyyn, katso [Repository-artikkelit](/docs/advanced/repository/overview).
+:::

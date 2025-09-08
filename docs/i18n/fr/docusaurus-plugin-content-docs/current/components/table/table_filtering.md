@@ -2,10 +2,14 @@
 sidebar_position: 35
 title: Filtering
 slug: filtering
-_i18n_hash: 110061605b615701c1832988833fe959
+sidebar_class_name: updated-content
+_i18n_hash: 008eef50f8ab27ec3f8a455fb5649f41
 ---
-Le composant `Table` vous permet de mettre en œuvre une fonctionnalité de filtrage pour affiner les données affichées en fonction de critères spécifiques. Le filtrage peut être réalisé en définissant un critère de filtrage à l'aide de la méthode `setFilter(Predicate<T> filter)` fournie par le `Repository` associé à la table.
+Le composant `Table` vous permet de mettre en œuvre un filtrage pour réduire les données affichées en fonction de critères spécifiques. Le filtrage peut être réalisé en définissant un critère de filtrage à l'aide de la méthode `setFilter(Predicate<T> filter)` fournie par le `Repository` associé à la table.
 
+L'exemple suivant utilise un critère défini par l'utilisateur à partir du champ de recherche et la méthode `setBaseFilter()` pour appliquer un filtre au `CollectionRepository` en fonction des titres de `MusicRecord`. Lorsque la méthode `commit()` est déclenchée, la table se rafraîchit avec les données filtrées.
+
+<!-- vale off -->
 <ComponentDemo
 path='/webforj/tablefiltering?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableFilteringView.java'
@@ -13,11 +17,8 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/hea
 'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
 height='600px'
 />
+<!-- vale on -->
 
-Dans l'exemple ci-dessus, la méthode `setFilter()` est utilisée pour définir un critère de filtrage basé sur le titre de `MusicRecord`. 
-
-:::tip
-La méthode `setFilter()` appartient à la classe `Repository`, et n'est pas un comportement intégré de la `Table` elle-même.
+:::note
+La méthode `setBaseFilter()` appartient à la classe `CollectionRepository`, pas au composant `Table`.
 :::
-
-Le filtre est ensuite appliqué lorsque l'utilisateur modifie le contenu du champ de recherche, mettant à jour le searchTerm et déclenchant la méthode `commit()` pour rafraîchir les données affichées.
