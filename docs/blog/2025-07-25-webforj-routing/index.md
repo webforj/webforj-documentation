@@ -49,7 +49,7 @@ With this setup, visiting "/" will show you the HomeView, and "/about" will show
 
 Other than the very basic setup shown above you eventually come to the point where you need more advanced features. Of course webforJ also allows you implement those without much extra work. 
 
-For route parameters, you can define those directly in the path, such as `@Route("user/:id")`. Using route parameters you can capture dynamic values from the URL and use them directly in your webforJ code. The way you do that is by utilizing the `ParametersBag` in navigation events so you can load data or update the UI based on the route.
+Route parameters are especially useful if you want to have a page set up with a structure and fill the content details when navigating there such as a profile page, or a search prefiltered according to specific criteria. You can define those directly in the path, such as `@Route("user/:id")`. Using route parameters you can capture dynamic values from the URL and use them directly in your webforJ code. The way you do that is by utilizing the `ParametersBag` in navigation events so you can load data or update the UI based on the route.
 
 Now i know that may sound very technical and complicated, but in reality - it isnt. Here you can see how such an implementation would look where the code automatically uses the id provided through the route. yoursite.com/user/eric would show my userprofile.
 
@@ -77,7 +77,7 @@ Nested routes are handled using the outlet parameter in the @Route annotation, l
 
 ## Browser integration and management
 
-webforJ manages page titles and browser history automatically, additionally use the `@FrameTitle` annotation on your view classes to set the browser’s page title for each route. For example, `@FrameTitle("Dashboard")` ensures that when users navigate to the dashboard, the browser tab displays the correct title. If you set an app-wide title with `@AppTitle`, webforJ combines it with the frame title so everyone still knows where they currently are even if potentially tabbed away.
+webforJ manages page titles and browser history automatically, but it obviously can only use automatically generated titles for that, you should use the `@FrameTitle` annotation on your view classes to set the browser’s page title for each route so they show exactly what you want. For example, `@FrameTitle("Dashboard")` ensures that when users navigate to the dashboard, the browser tab displays the correct title. If you set an app-wide title with `@AppTitle`, webforJ combines it with the frame title so everyone still knows where they currently are even if potentially tabbed away.
 
 If you want your title to be dynamically set depending on things like route parameters or app state, you can simply implement the `HasFrameTitle` interface into your view. This will generate the title based on those things. This can be used for pages like user profiles, where the title should reflect the current user.
 
@@ -87,7 +87,7 @@ webforJ also manages browser history and deep linking out of the box. As users n
 
 A typical pattern in webforJ apps is to use a dedicated layout route for dashboards, with nested view routes for each dashboard section. For example, you might have a MainLayout class annotated with `@Route`, and then a `DashboardView` with `@Route(value = "/", outlet = MainLayout.class)` and `@RouteAlias(value = "/dashboard")`. This way you can utilize shared UI elements, like a drawer for navigation or headers, in the layout whilst you can freely change the content which is injected as children.
 
-Unknown or invalid routes are not directly part of the routing features i talked about so far but instead are managed through the error handling webforJ offers. Since it is not part of what i want to talk about here i wont go into too much detail but will instead give a brief sample of how a replacement to the default 404 can be done and more can be read up in our dedicated  [documentation](https://docs.webforj.com/docs/advanced/error-handling#handler-selection). 
+Dealing with unknown or invalid routes is managed through error handling in webforJ. Since this isn't handled by routing directly, I'll only give a brief example of how to replace the default 404 page. If want to learn more about this topic, read about [error handler selection](/docs/advanced/error-handling#handler-selection). 
 
 To replace the default 404 page that will appear when you try to reach a faulty route you can simply add an `ErrorHandler` implementation to your code, in this case a `NotFoundExceptionErrorHandler`. Register that handler according to the aforementioned documentation and replace the body with whatever html you want to display and you are ready to go.
 
@@ -116,7 +116,7 @@ public class NotFoundExceptionErrorHandler implements ErrorHandler {
 - **Single Responsibility:** Each view or layout should have a focused purpose. Avoid mixing unrelated logic in a single component.
 - **Type-Safe Navigation:** When navigating programmatically, use the view class rather than hardcoded strings. 
 
-## Comparison to angular
+## Comparison to react
 
 Now a big question i can already sense is what makes webforJ routing different from other well known web dev frameworks like react for example and for that i have a side by side comparison.
 
@@ -146,6 +146,8 @@ Now a big question i can already sense is what makes webforJ routing different f
     </ul>
   </div>
 </div>
+
+webforJ routing offers easy integration with Java server-side logic, enabling type-safe route definitions and direct access to backend resources without context switching. Unlike React Router, which requires manual state management and JavaScript code, webforJ routing is leverages Java annotations, and automatically synchronizes UI state with the server.
 
 ## Where to go now?
 
