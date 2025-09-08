@@ -57,7 +57,8 @@ const config = {
   },
   scripts: [
     { src: '/js/dwc-theme-switcher.js', async: false },
-    { src: '/js/link-decorator.js' }
+    { src: '/js/link-decorator.js' },
+    { src: '/js/latest-webforj-version.js', defer: true}
   ],
   headTags: [
     {
@@ -123,6 +124,10 @@ const config = {
           {
             from: '/docs/advanced/deploying-additional-servlets',
             to: '/docs/configuration/deploying-additional-servlets',
+          },
+          {
+            from: '/docs/integrations/spring/spring-devtools',
+            to: '/docs/configuration/deploy-reload/spring-devtools'
           }
         ],
       },
@@ -152,6 +157,14 @@ const config = {
         target: '_self'
       },
       items: [
+        {
+          position: 'left',
+          label: ' ',
+          href: 'https://github.com/webforj/webforj/releases/latest',
+          target: '_blank', 
+          id: 'webforj-version-badge',
+          title: 'Latest webforJ release'
+        },
         {
           position: 'left',
           label: 'Getting Started',

@@ -1,7 +1,6 @@
 ---
 sidebar_position: 35
 title: Deploying Additional Servlets
-sidebar_class_name: new-content
 ---
 <!-- vale off -->
 # Deploying Additional Servlets <DocChip chip='since' label='25.02' />

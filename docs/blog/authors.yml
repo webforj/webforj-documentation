@@ -5,16 +5,17 @@ webforJ:
   page: true
   socials:
     github: webforj
+    linkedin: https://www.linkedin.com/company/webforj/
 Matthew Hawkins:
   name: Matthew Hawkins
-  image_url: https://media.licdn.com/dms/image/v2/C4E03AQFljoM_H1quFw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1580784422162?e=1756339200&v=beta&t=RT8iII-yXZcPCTXcdQjduvp9iuqKVeLGBND4uSAOh7I
+  image_url: /img/authors/mhawkins.jpg
   title: Software Developer
   page: true
   socials:
     github: MatthewHawkins
 Ben Brennan:
   name: Ben Brennan
-  image_url: https://media.licdn.com/dms/image/v2/D5603AQEJPxbj17UUdA/profile-displayphoto-scale_200_200/B56ZgToxrjG0Ac-/0/1752676113942?e=1756339200&v=beta&t=CF4Pm_geTxVnNOmC75S7UPP1CxI0v4VDazEPGl49J38
+  image_url: /img/authors/bbrennan.jpg
   title: Technical Writer
   page: true
   socials:
@@ -22,21 +23,21 @@ Ben Brennan:
     linkedin: bbrennan505
 Eric Handtke:
   name: Eric Handtke
-  image_url: /img/authors/IMG-20240614-WA0004.jpg
+  image_url: /img/authors/ehandtke.jpg
   title: Software Developer
   page: true
   socials:
     github: EHandtkeBasis
 Garrison Osteen:
   name: Garrison Osteen
-  image_url: https://media.licdn.com/dms/image/v2/D4E03AQH4c4fGMPMSkg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1731373674085?e=1756944000&v=beta&t=D3BED0ZzGJAaHx2bqYgquCO5Mh0av2DYvFd9bYUnhp8
+  image_url: /img/authors/gosteen.jpg
   title: Lead Technical Writer
   page: true
   socials:
     github: gosteenBASIS
 Lauren Alamo:
   name: Lauren Alamo
-  image_url: /img/authors/IMG_1826.jpg
+  image_url: /img/authors/lalamo.jpg
   title: Software Developer
   page: true
   socials:
