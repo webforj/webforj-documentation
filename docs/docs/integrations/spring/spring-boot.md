@@ -134,7 +134,7 @@ Add the webforJ Spring Boot starter to your dependencies. Keep your existing web
 ```
 
 :::tip[webforJ DevTools for automatic browser refresh]
-The `webforj-spring-devtools` dependency extends Spring DevTools with automatic browser refresh. When you save changes in your IDE, the browser automatically reloads without manual intervention. See the [Spring DevTools](spring-devtools) guide for configuration details.
+The `webforj-spring-devtools` dependency extends Spring DevTools with automatic browser refresh. When you save changes in your IDE, the browser automatically reloads without manual intervention. See the [Spring DevTools](/docs/configuration/deploy-reload/spring-devtools.md) guide for configuration details.
 :::
 
 ### Step 3: Update build plugins {#step-3-update-build-plugins}
