@@ -9,17 +9,16 @@ import com.webforj.concern.HasVisibility;
 @StyleSheet("ws://css/flexlayout/box.css")
 public class Box extends Composite<Div> implements HasStyle<Box>, HasVisibility<Box>{
 
-  int num;
+  int boxNumber;
   String title = "";
-  boolean vis = true;
   Div display = new Div();
 
   @Override
   protected void onDidCreate(Div container) {
     super.onDidCreate(container);
-    
+
     if (title.isEmpty()) {
-      title = "Box " + this.num;
+      title = "Box " + this.boxNumber;
     }
     display.setText(title);
     container.add(display);
@@ -27,7 +26,7 @@ public class Box extends Composite<Div> implements HasStyle<Box>, HasVisibility<
   }
 
   public Box(int num) {
-    this.num = num;
+    this.boxNumber = num;
   }
 
   public Box(String title) {
@@ -44,7 +43,7 @@ public class Box extends Composite<Div> implements HasStyle<Box>, HasVisibility<
     return this;
   }
 
-  public void boxDestroy() {
+  public void destroyBox() {
     getBoundComponent().destroy();
   }
 
