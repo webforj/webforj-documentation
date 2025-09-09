@@ -118,9 +118,9 @@ public class NotFoundExceptionErrorHandler implements ErrorHandler {
 - **Single Responsibility:** Each view or layout should have a focused purpose. Avoid mixing unrelated logic in a single component.
 - **Type-Safe Navigation:** When navigating programmatically, use the view class rather than hardcoded strings. 
 
-## Comparison to react
+## Comparison to React
 
-Now a big question I can already sense is what makes webforJ routing different from other well-known web dev frameworks like React? To answer that question, I have a side-by-side comparison:
+Now a big question I can already sense is what makes webforJ routing different from other well-known web dev frameworks like React? webforJ routing offers easy integration with Java server-side logic, enabling type-safe route definitions and direct access to backend resources without context switching. Unlike React Router, which requires manual state management and JavaScript code, webforJ routing leverages Java annotations, and automatically synchronizes UI state with the server.
 
 <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
   <div style={{ flex: 1 }}>
@@ -149,7 +149,6 @@ Now a big question I can already sense is what makes webforJ routing different f
   </div>
 </div>
 
-webforJ routing offers easy integration with Java server-side logic, enabling type-safe route definitions and direct access to backend resources without context switching. Unlike React Router, which requires manual state management and JavaScript code, webforJ routing is leverages Java annotations, and automatically synchronizes UI state with the server.
 
 ## Where to go now?
 
