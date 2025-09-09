@@ -23,6 +23,10 @@
       padding: .5rem !important;
     }
 
+    .navbar-sidebar h3 {
+      color: var(--ifm-menu-color)
+    }
+
     .menu__list:not(.theme-doc-sidebar-menu) {
       margin-left: var(--ifm-menu-link-padding-horizontal);
       border-left: thin dotted var(--menu-level-indicator-color);
