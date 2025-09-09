@@ -51,8 +51,8 @@ export default function DocChip( { chip, label, href, exclude, tooltipText, colo
     break;
     // A "Version" chip    
     case 'since':
-      tooltipText = "This feature is available for webforJ " + label + " and higher.";
-      exclude= 'true';
+      tooltipText = `This feature is available for webforJ ${label} and higher.`;
+      href = `https://github.com/webforj/webforj/releases/tag/${label}`;
       icon = <AddTaskIcon css={iconStyles} />
     break;
     // A "Scoped" chip
