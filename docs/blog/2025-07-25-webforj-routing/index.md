@@ -79,7 +79,9 @@ Nested routes are handled using the outlet parameter in the @Route annotation, l
 
 ## Browser integration and management
 
-webforJ manages page titles and browser history automatically, but it obviously can only use automatically generated titles for that, you should use the `@FrameTitle` annotation on your view classes to set the browser’s page title for each route so they show exactly what you want. For example, `@FrameTitle("Dashboard")` ensures that when users navigate to the dashboard, the browser tab displays the correct title. If you set an app-wide title with `@AppTitle`, webforJ combines it with the frame title so everyone still knows where they currently are even if potentially tabbed away.
+webforJ manages the page titles and browser history for you automatically, so you don’t have to set them yourself. However, if you prefer to customize the titles, you can use the `@FrameTitle` annotation on your view classes to show exactly what you want.
+
+For example, `@FrameTitle("Dashboard")` ensures that when users navigate to the dashboard, the browser tab displays the correct title. If you set an app-wide title with `@AppTitle`, webforJ combines it with the frame title so everyone still knows where they currently are even if potentially tabbed away.
 
 If you want your title to be dynamically set depending on things like route parameters or app state, you can simply implement the `HasFrameTitle` interface into your view. This will generate the title based on those things. This can be used for pages like user profiles, where the title should reflect the current user.
 
