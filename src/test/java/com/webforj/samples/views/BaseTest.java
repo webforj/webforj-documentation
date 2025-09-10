@@ -1,12 +1,22 @@
 package com.webforj.samples.views;
 
-import com.microsoft.playwright.*;
-import com.microsoft.playwright.options.LoadState;
+import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.BrowserContext;
+import com.microsoft.playwright.BrowserType;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.Playwright;
+import com.microsoft.playwright.Tracing;
 import com.webforj.samples.config.RunConfig;
 
-import java.nio.file.*;
+import java.nio.file.Paths;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.TestInstance;
+
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public abstract class BaseTest {
@@ -58,11 +68,5 @@ public abstract class BaseTest {
         if (playwright != null) {
             playwright.close();
         }
-    }
-
-    protected void navigateToRoute(String route) {
-        page.navigate("http://localhost:8998/" + route);
-        // Wait for the page to be fully loaded
-        page.waitForLoadState(LoadState.DOMCONTENTLOADED);
     }
 }
