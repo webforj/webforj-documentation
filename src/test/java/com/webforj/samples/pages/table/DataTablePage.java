@@ -1,16 +1,13 @@
 package com.webforj.samples.pages.table;
 
-import java.util.regex.Pattern;
-
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 
-import com.webforj.samples.pages.BasePage;
-
-public class DataTablePage extends BasePage {
+public class DataTablePage {
     private static final String ROUTE = "datatable";
 
+    private final Page page;
     private final Locator searchInput;
     private final Locator tableRows;
     private final Locator entriesDropdown;
@@ -24,8 +21,9 @@ public class DataTablePage extends BasePage {
     private final Locator lastButton;
 
     public DataTablePage(Page page) {
-        super(page);
 
+        this.page = page;
+        
         this.searchInput = page.getByRole(AriaRole.SEARCHBOX, new Page.GetByRoleOptions().setName("Search"));
         this.tableRows = page.getByRole(AriaRole.TABLE).filter().locator("[data-row]");
 

@@ -3,17 +3,17 @@ package com.webforj.samples.pages.flexlayout.container;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.pages.BasePage;
 
-public class FlexDirectionPage extends BasePage {
+public class FlexDirectionPage {
 
     private static final String ROUTE = "flexdirection";
 
+    private final Page page;
     private final Locator flexDirectionDropdown;
     private final Locator flexDirectionContainer;
 
     public FlexDirectionPage(Page page) {
-        super(page);
+        this.page = page;
 
         this.flexDirectionDropdown = page.getByRole(AriaRole.BUTTON).filter().getByLabel("");
         this.flexDirectionContainer = page.locator(".button__container--single-row");

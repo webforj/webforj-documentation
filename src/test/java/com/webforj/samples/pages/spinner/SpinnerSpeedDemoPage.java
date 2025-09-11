@@ -3,9 +3,8 @@ package com.webforj.samples.pages.spinner;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.pages.BasePage;
 
-public class SpinnerSpeedDemoPage extends BasePage {
+public class SpinnerSpeedDemoPage {
 
     private static final String ROUTE = "spinnerspeeddemo";
 
@@ -16,7 +15,6 @@ public class SpinnerSpeedDemoPage extends BasePage {
     private final Locator pauseButton;
 
     public SpinnerSpeedDemoPage(Page page) {
-        super(page);
 
         this.spinner = page.locator("dwc-spinner");
         this.slowButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Slow"));

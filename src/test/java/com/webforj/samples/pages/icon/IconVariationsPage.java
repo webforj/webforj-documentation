@@ -3,9 +3,8 @@ package com.webforj.samples.pages.icon;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.pages.BasePage;
 
-public class IconVariationsPage extends BasePage {
+public class IconVariationsPage {
 
     private static final String ROUTE = "iconvariations";
 
@@ -16,7 +15,6 @@ public class IconVariationsPage extends BasePage {
     private final Locator filledCalendarIcon;
 
     public IconVariationsPage(Page page) {
-        super(page);
 
         envelopeIcon = page.getByRole(AriaRole.IMG,
                 new Page.GetByRoleOptions().setName("envelope"));

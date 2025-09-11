@@ -3,9 +3,7 @@ package com.webforj.samples.pages.slider;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-import com.webforj.samples.pages.BasePage;
-
-public class SliderLabelsPage extends BasePage {
+public class SliderLabelsPage {
 
     private static final String ROUTE = "sliderlabels";
 
@@ -14,7 +12,6 @@ public class SliderLabelsPage extends BasePage {
     private final Locator sliderLabel;
 
     public SliderLabelsPage(Page page) {
-        super(page);
 
         this.sliderLabel = page.locator("dwc-slider");
         this.tenDegreeOption = page.getByText("10");

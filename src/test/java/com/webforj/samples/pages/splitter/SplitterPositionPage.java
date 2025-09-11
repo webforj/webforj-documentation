@@ -3,9 +3,7 @@ package com.webforj.samples.pages.splitter;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-import com.webforj.samples.pages.BasePage;
-
-public class SplitterPositionPage extends BasePage {
+public class SplitterPositionPage {
 
     private static final String ROUTE = "splitterposition";
 
@@ -13,7 +11,6 @@ public class SplitterPositionPage extends BasePage {
     private final Locator positionedDetailPanel;
 
     public SplitterPositionPage(Page page) {
-        super(page);
 
         this.positionedMasterPanel = page.getByText("Master");
         this.positionedDetailPanel = page.getByText("Detail");

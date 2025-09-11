@@ -5,9 +5,8 @@ import java.util.regex.Pattern;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.pages.BasePage;
 
-public class DonationSliderPage extends BasePage {
+public class DonationSliderPage {
 
     private static final String ROUTE = "donationslider";
 
@@ -17,7 +16,6 @@ public class DonationSliderPage extends BasePage {
     private final Locator twentyDollarsOption;
 
     public DonationSliderPage(Page page) {
-        super(page);
 
         this.donationLowerHandle = page.getByRole(AriaRole.SLIDER);
         this.donationButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Confirm Donation"));

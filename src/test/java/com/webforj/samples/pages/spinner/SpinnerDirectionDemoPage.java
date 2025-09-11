@@ -5,9 +5,8 @@ import java.util.regex.Pattern;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.pages.BasePage;
 
-public class SpinnerDirectionDemoPage extends BasePage {
+public class SpinnerDirectionDemoPage {
 
     private static final String ROUTE = "spinnerdirectiondemo";
 
@@ -16,7 +15,6 @@ public class SpinnerDirectionDemoPage extends BasePage {
     private final Locator counterClockwiseButton;
 
     public SpinnerDirectionDemoPage(Page page) {
-        super(page);
 
         this.spinner = page.locator("dwc-spinner");
         this.clockwiseButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions()

@@ -3,10 +3,8 @@ package com.webforj.samples.pages.element;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.pages.BasePage;
 
-public class ElementInputEventPage extends BasePage {
-
+public class ElementInputEventPage {
     private static final String ROUTE = "elementinputevent";
 
     private final Locator inputField;
@@ -14,7 +12,6 @@ public class ElementInputEventPage extends BasePage {
     private final Locator dialogMessage;
 
     public ElementInputEventPage(Page page) {
-        super(page);
 
         inputField = page.getByRole(AriaRole.TEXTBOX);
 

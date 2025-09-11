@@ -3,9 +3,8 @@ package com.webforj.samples.pages.login;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.pages.BasePage;
 
-public class LoginCustomFieldsPage extends BasePage {
+public class LoginCustomFieldsPage {
 
     private static final String ROUTE = "logincustomfields";
 
@@ -16,7 +15,6 @@ public class LoginCustomFieldsPage extends BasePage {
     private final Locator customerID;
 
     public LoginCustomFieldsPage(Page page) {
-        super(page);
 
         customerID = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Customer ID •"));
         username = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Username •"));

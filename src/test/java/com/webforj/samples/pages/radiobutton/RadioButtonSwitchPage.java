@@ -4,16 +4,14 @@ import com.microsoft.playwright.Locator;
 
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.pages.BasePage;
 
-public class RadioButtonSwitchPage extends BasePage {
+public class RadioButtonSwitchPage {
 
   private static final String ROUTE = "radiobuttonswitch";
 
   private final Locator switchRB;
 
   public RadioButtonSwitchPage(Page page) {
-    super(page);
 
     this.switchRB = page.getByRole(AriaRole.RADIO, new Page.GetByRoleOptions().setName("Switch RadioButton"));
 

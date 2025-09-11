@@ -3,16 +3,13 @@ package com.webforj.samples.pages.element;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-import com.webforj.samples.pages.BasePage;
-
-public class ElementInputDemoPage extends BasePage {
+public class ElementInputDemoPage {
 
     private static final String ROUTE = "elementinputdemo";
 
     private final Locator inputField;
 
     public ElementInputDemoPage(Page page) {
-        super(page);
 
         inputField = page.getByPlaceholder("Enter some text");
     }

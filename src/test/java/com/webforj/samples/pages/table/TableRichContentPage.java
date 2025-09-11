@@ -3,9 +3,8 @@ package com.webforj.samples.pages.table;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.pages.BasePage;
 
-public class TableRichContentPage extends BasePage {
+public class TableRichContentPage {
     private static final String ROUTE = "tablerichcontent";
 
     private final Locator masterCheckBox;
@@ -14,7 +13,6 @@ public class TableRichContentPage extends BasePage {
     private final Locator checkboxes;
 
     public TableRichContentPage(Page page) {
-        super(page);
 
         this.checkboxes = page.getByRole(AriaRole.ROW)
                 .filter(new Locator.FilterOptions().setHas(page.getByRole(AriaRole.CHECKBOX)))

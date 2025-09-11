@@ -3,9 +3,8 @@ package com.webforj.samples.pages.slider;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.pages.BasePage;
 
-public class SliderTickSpacingPage extends BasePage {
+public class SliderTickSpacingPage {
 
     private static final String ROUTE = "slidertickspacing";
 
@@ -17,7 +16,6 @@ public class SliderTickSpacingPage extends BasePage {
 
 
     public SliderTickSpacingPage(Page page) {
-        super(page);
 
         this.slider = page.getByRole(AriaRole.SLIDER);
         this.majorTickInput = page.getByLabel("Major Tick");

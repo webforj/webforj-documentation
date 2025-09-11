@@ -3,9 +3,8 @@ package com.webforj.samples.pages.googlecharts;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.pages.BasePage;
 
-public class ChartGalleryPage extends BasePage {
+public class ChartGalleryPage  {
 
     private static final String ROUTE = "chartgallery";
 
@@ -13,7 +12,7 @@ public class ChartGalleryPage extends BasePage {
     private final Locator links;
 
     public ChartGalleryPage(Page page) {
-        super(page);
+
         this.ganttChart = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Gantt Chart"));
         this.links = page.locator(".chart-gallery > a");
    }

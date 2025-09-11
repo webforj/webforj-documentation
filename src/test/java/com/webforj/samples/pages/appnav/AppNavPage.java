@@ -3,9 +3,8 @@ package com.webforj.samples.pages.appnav;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.pages.BasePage;
 
-public class AppNavPage extends BasePage {
+public class AppNavPage {
 
     private static final String ROUTE = "appnav";
 
@@ -22,7 +21,6 @@ public class AppNavPage extends BasePage {
     private final Locator sidebarDocumentation;
 
     public AppNavPage(Page page) {
-        super(page);
 
         this.tablerIcon = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("menu 2"));
         this.appLayout = page.locator("dwc-app-layout");

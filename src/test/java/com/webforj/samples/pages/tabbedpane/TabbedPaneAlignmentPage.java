@@ -3,9 +3,8 @@ package com.webforj.samples.pages.tabbedpane;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.pages.BasePage;
 
-public class TabbedPaneAlignmentPage extends BasePage {
+public class TabbedPaneAlignmentPage {
 
     private static final String ROUTE = "tabbedpanealignment";
 
@@ -14,7 +13,6 @@ public class TabbedPaneAlignmentPage extends BasePage {
     private final Locator alignmentTabbedPane;
 
     public TabbedPaneAlignmentPage(Page page) {
-        super(page);
 
         this.alignmentDropdown = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("AUTO"));
         this.alignmentDropdownButton = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("CENTER"));

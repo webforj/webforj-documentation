@@ -6,17 +6,16 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.options.AriaRole;
 import com.microsoft.playwright.Page;
 
-import com.webforj.samples.pages.BasePage;
 
-public class FlexOrderPage extends BasePage {
+public class FlexOrderPage {
 
     private static final String ROUTE = "flexorder";
 
+    private final Page page;
     private final Locator setOrderButton;
 
     public FlexOrderPage(Page page) {
-        super(page);
-
+        this.page = page;
         this.setOrderButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Set Order"));
 
     }

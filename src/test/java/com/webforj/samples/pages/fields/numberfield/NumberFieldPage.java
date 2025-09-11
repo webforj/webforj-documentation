@@ -2,16 +2,14 @@ package com.webforj.samples.pages.fields.numberfield;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.webforj.samples.pages.BasePage;
 
-public class NumberFieldPage extends BasePage {
+public class NumberFieldPage {
 
     private static final String ROUTE = "numberfield";
 
     private final Locator numberField;
 
     public NumberFieldPage(Page page) {
-        super(page);
 
         numberField = page.getByLabel("Quantity");
     }

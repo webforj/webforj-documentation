@@ -3,9 +3,8 @@ package com.webforj.samples.pages.textarea;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.pages.BasePage;
 
-public class TextAreaPage extends BasePage {
+public class TextAreaPage {
 
     private static final String ROUTE = "textarea";
 
@@ -14,7 +13,6 @@ public class TextAreaPage extends BasePage {
     private final Locator donationToaster;
 
     public TextAreaPage(Page page) {
-        super(page);
 
         this.feedbackTextarea = page.getByLabel("What do you think about this demo?");
         this.submitButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Submit Feedback"));

@@ -3,9 +3,7 @@ package com.webforj.samples.pages.fields.textfield;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-import com.webforj.samples.pages.BasePage;
-
-public class TextFieldPage extends BasePage {
+public class TextFieldPage {
 
     private static final String ROUTE = "textfield";
 
@@ -17,7 +15,6 @@ public class TextFieldPage extends BasePage {
     private final Locator alertPopover;
 
     public TextFieldPage(Page page) {
-        super(page);
 
         usernameInput = page.getByPlaceholder("Name");
         emailInput = page.getByPlaceholder("Email");

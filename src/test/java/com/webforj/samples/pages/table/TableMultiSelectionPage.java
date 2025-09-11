@@ -4,9 +4,7 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 
-import com.webforj.samples.pages.BasePage;
-
-public class TableMultiSelectionPage extends BasePage {
+public class TableMultiSelectionPage {
 
     private static final String ROUTE = "tablemultiselection";
 
@@ -17,7 +15,6 @@ public class TableMultiSelectionPage extends BasePage {
     private final Locator noRecordsMessage;
 
     public TableMultiSelectionPage(Page page) {
-        super(page);
 
         this.masterCheckbox = page.getByRole(AriaRole.ROW)
                 .filter(new Locator.FilterOptions().setHas(page.getByRole(AriaRole.CHECKBOX)))

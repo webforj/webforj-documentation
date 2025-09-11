@@ -5,14 +5,13 @@ import java.util.regex.Pattern;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-import com.webforj.samples.pages.BasePage;
-
-public class NavigatorPagesPage extends BasePage {
+public class NavigatorPagesPage {
 
     private static final String ROUTE = "navigatorpages";
 
+    private final Page page;
     public NavigatorPagesPage(Page page) {
-        super(page);
+        this.page = page;
     }
 
     public static String getRoute() {

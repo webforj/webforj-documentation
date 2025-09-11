@@ -3,9 +3,8 @@ package com.webforj.samples.pages.login;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.pages.BasePage;
 
-public class LoginCancelButtonPage extends BasePage {
+public class LoginCancelButtonPage {
 
     private static final String ROUTE = "logincancelbutton";
 
@@ -13,8 +12,7 @@ public class LoginCancelButtonPage extends BasePage {
     private final Locator signInButton;
 
     public LoginCancelButtonPage(Page page) {
-        super(page);
-
+        
         cancelButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Cancel"));
         signInButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign in"));
     }

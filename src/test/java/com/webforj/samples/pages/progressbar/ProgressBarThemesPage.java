@@ -3,9 +3,7 @@ package com.webforj.samples.pages.progressbar;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-import com.webforj.samples.pages.BasePage;
-
-public class ProgressBarThemesPage extends BasePage {
+public class ProgressBarThemesPage {
 
     private static final String ROUTE = "progressbarthemes";
 
@@ -18,7 +16,6 @@ public class ProgressBarThemesPage extends BasePage {
     private final Locator warningBar;
 
     public ProgressBarThemesPage(Page page) {
-        super(page);
 
         dangerBar = page.locator("dwc-progressbar[theme='danger']");
         defaultBar = page.locator("dwc-progressbar[theme='default']");

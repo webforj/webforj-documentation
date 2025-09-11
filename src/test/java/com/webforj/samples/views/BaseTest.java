@@ -6,6 +6,7 @@ import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.Tracing;
+import com.microsoft.playwright.options.LoadState;
 import com.webforj.samples.config.RunConfig;
 
 import java.nio.file.Paths;
@@ -17,11 +18,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.TestInstance;
 
-
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public abstract class BaseTest {
-    private Playwright playwright;
-    private Browser browser;
+    Playwright playwright;
+    Browser browser;
     protected BrowserContext context;
     protected Page page;
 
@@ -68,5 +68,11 @@ public abstract class BaseTest {
         if (playwright != null) {
             playwright.close();
         }
+    }
+
+    protected void navigateToRoute(String route) {
+        page.navigate("http://localhost:8998/" + route);
+        // Wait for the page to be fully loaded
+        page.waitForLoadState(LoadState.DOMCONTENTLOADED);
     }
 }

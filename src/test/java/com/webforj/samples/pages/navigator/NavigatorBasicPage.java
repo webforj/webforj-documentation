@@ -5,11 +5,11 @@ import java.util.regex.Pattern;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-import com.webforj.samples.pages.BasePage;
-
-public class NavigatorBasicPage extends BasePage {
+public class NavigatorBasicPage {
 
     private static final String ROUTE = "navigatorbasic";
+
+    private final Page page;
 
     private final Locator firstButton;
     private final Locator prevButton;
@@ -17,8 +17,8 @@ public class NavigatorBasicPage extends BasePage {
     private final Locator lastButton;
 
     public NavigatorBasicPage(Page page) {
-        super(page);
-
+        this.page = page;
+        
         firstButton = page.getByLabel("Goto first page");
         prevButton = page.getByLabel("Goto previous page");
         nextButton = page.getByLabel("Goto next page");

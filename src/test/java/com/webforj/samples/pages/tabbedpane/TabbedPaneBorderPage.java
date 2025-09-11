@@ -3,9 +3,8 @@ package com.webforj.samples.pages.tabbedpane;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.pages.BasePage;
 
-public class TabbedPaneBorderPage extends BasePage {
+public class TabbedPaneBorderPage {
 
     private static final String ROUTE = "tabbedpaneborder";
 
@@ -16,7 +15,6 @@ public class TabbedPaneBorderPage extends BasePage {
     private final Locator ordersTab;
 
     public TabbedPaneBorderPage(Page page) {
-        super(page);
 
         this.hideBorderToggle = page.getByRole(AriaRole.RADIO, 
                 new Page.GetByRoleOptions().setName("Hide Border"));

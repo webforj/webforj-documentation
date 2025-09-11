@@ -5,10 +5,11 @@ import java.util.regex.Pattern;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.pages.BasePage;
 
-public class ChartRedrawPage extends BasePage {
+public class ChartRedrawPage {
 
+    private final Page page;
+    
     private final Locator valueForInstagram;
     private final Locator valueForTwitter;
     private final Locator valueForFacebook;
@@ -19,7 +20,7 @@ public class ChartRedrawPage extends BasePage {
     private static final String ROUTE = "chartredraw";
 
     public ChartRedrawPage(Page page) {
-        super(page);
+        this.page = page;
 
         this.valueForInstagram = page.getByRole(AriaRole.SPINBUTTON,
                 new Page.GetByRoleOptions().setName("Value for Instagram"));

@@ -1,13 +1,10 @@
 package com.webforj.samples.pages.button;
 
-import java.util.regex.Pattern;
-
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.pages.BasePage;
 
-public class ButtonPage extends BasePage {
+public class ButtonPage{
 
     private static final String ROUTE = "button";
 
@@ -19,8 +16,6 @@ public class ButtonPage extends BasePage {
     private final Locator welcomeDialog;
 
     public ButtonPage(Page page) {
-        super(page);
-
 
         this.firstName = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("First Name"));
         this.lastName = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Last Name"));
