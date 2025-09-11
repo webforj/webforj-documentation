@@ -24,7 +24,7 @@ Let's walk through how it all works together.
 
 webforJ comes with three thoughtfully designed themes that cover most common scenarios. There's light for clean, bright interfaces, dark for those who prefer darker backgrounds with your brand colors, and dark-pure for a more neutral approach using grayscale tones.
 
-Each theme takes care of the details you might not think about initially—ensuring text has proper contrast, adjusting component styling, and maintaining visual consistency throughout your app.
+Each theme takes care of the details you might not think about initially such as ensuring text has proper contrast, adjusting component styling, and maintaining visual consistency throughout your app.
 
 Getting dark mode is wonderfully simple:
 
@@ -35,7 +35,7 @@ public class MyApp extends App {
 }
 ```
 
-With that single annotation you can transform an entire application. Every webforJ component automatically adapts its appearance to work harmoniously with the dark theme.
+With that single annotation you can transform an entire app. Every webforJ component automatically adapts its appearance to work harmoniously with the dark theme.
 
 ## Respecting system preferences
 
@@ -162,9 +162,9 @@ When you change your app's primary color, all the primary-themed components upda
 
 ## Performance and efficiency
 
-Theme switching happens instantly across the entire application. You won't see components updating at different rates or half your buttons still showing the old theme while everything else has switched.
+Theme switching happens instantly across the entire app. You won't see components updating at different rates or half your buttons still showing the old theme while everything else has switched.
 
-webforJ uses one stylesheet that adapts to different themes through CSS variables instead of requiring separate stylesheets for each theme. This means fewer files to manage and faster loading since users download a single stylesheet that handles all theme variations. 
+webforJ uses one style sheet that adapts to different themes through CSS variables instead of requiring separate style sheets for each theme. This means fewer files to manage and faster loading since users download a single style sheet that handles all theme variations. 
 
 ## Starting your theming journey
 
