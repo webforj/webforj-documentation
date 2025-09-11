@@ -1,6 +1,7 @@
 ---
-sidebar_position: 4
+sidebar_position: 1
 title: Element Composite
+sidebar_class_name: has-new-content
 slug: element_composite
 ---
 
@@ -68,11 +69,13 @@ height='250px'
 
 ## Event registration {#event-registration}
 
-Events are a crucial part of web components, allowing communication between different parts of an application. The `ElementComposite` class simplifies event registration and handling. To register an event listener, use the `addEventListener()` method to register event listeners for specific event types. Specify the event class, the listener, and optional event options.
+Events enable communication between different parts of your webforJ application. The `ElementComposite` class provides event handling with support for debouncing, throttling, filtering, and custom event data collection.
+
+Register event listeners using the `addEventListener()` method:
 
 ```java
 // Example: Adding a click event listener
-addEventListener(ClickEvent.class, event -> {
+addEventListener(ElementClickEvent.class, event -> {
     // Handle the click event
 });
 ```
@@ -81,12 +84,82 @@ addEventListener(ClickEvent.class, event -> {
 The `ElementComposite` events are different than `Element` events, in that this doesn't allow any class, but only specified `Event` classes.
 :::
 
-In the demonstration below, a click event has been created and then added to the QR code component. This event, when fired, will display the "X" coordinate of the mouse at the time of clicking the component, which is provided to the Java event as data. A method is then implemented to allow the user to access this data, which is how it is displayed in the application.
+### Built-in event classes {#built-in-event-classes}
+
+webforJ provides pre-built event classes with typed data access:
+
+- **ElementClickEvent**: Mouse click events with coordinates (`getClientX()`, `getClientY()`), button information (`getButton()`), and modifier keys (`isCtrlKey()`, `isShiftKey()`, etc.)
+- **ElementDefinedEvent**: Fired when a custom element is defined in the DOM and ready for use
+- **ElementEvent**: Base event class providing access to raw event data, event type (`getType()`), and event ID (`getId()`)
+
+### Event payloads {#event-payloads}
+
+Events carry data from the client to your Java code. Access this data through `getData()` for raw event data or use typed methods when available on built-in event classes. For more details on efficiently using event payloads, see the [Events guide](../building-ui/events).
+
+## Custom event classes {#custom-event-classes}
+
+For specialized event handling, create custom event classes with configured payloads using `@EventName` and `@EventOptions` annotations:
+
+In the example below, a click event has been created and then added to the QR code component. This event, when fired, will display the "X" coordinate of the mouse at the time of clicking the component, which is provided to the Java event as data. A method is then implemented to allow the user to access this data, which is how it is displayed in the application.
+
 <ComponentDemo 
 path='/webforj/qrevent?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/elementcomposite/QREventView.java'
 height='300px'
 />
+
+## ElementEventOptions {#elementeventoptions}
+
+`ElementEventOptions` lets you customize event behavior by configuring what data to collect, when events fire, and how they're processed. Here's a comprehensive code snippet showing all the configuration options:
+
+```java
+ElementEventOptions options = new ElementEventOptions()
+    // Collect custom data from the client
+    .addData("query", "this.value")
+    .addData("timestamp", "Date.now()")
+    .addData("isValid", "this.checkValidity()")
+    
+    // Execute JavaScript before event fires
+    .setCode("this.classList.add('processing');")
+    
+    // Only fire if conditions are met
+    .setFilter("this.value.length >= 2")
+    
+    // Delay execution until user stops typing (300ms)
+    .setDebounce(300, DebouncePhase.TRAILING);
+
+addEventListener("input", this::handleSearch, options);
+```
+
+### Performance control {#performance-control}
+
+Control when and how often events fire:
+
+**Debouncing** - Delays execution until activity stops:
+
+```java
+options.setDebounce(300, DebouncePhase.TRAILING); // Wait 300ms after last event
+```
+
+**Throttling** - Limits execution frequency:
+
+```java
+options.setThrottle(100); // Fire at most once per 100ms
+```
+
+Available debounce phases:
+
+- `LEADING`: Fire immediately, then wait
+- `TRAILING`: Wait for quiet period, then fire (default)
+- `BOTH`: Fire immediately and after quiet period
+
+## Options merging {#options-merging}
+
+Combine event configurations from different sources using `mergeWith()`. Base options provide common data for all events, while specific options add specialized configuration. Later options override conflicting settings.
+
+```java
+ElementEventOptions merged = baseOptions.mergeWith(specificOptions);
+```
 
 ## Interacting with Slots {#interacting-with-slots}
 
