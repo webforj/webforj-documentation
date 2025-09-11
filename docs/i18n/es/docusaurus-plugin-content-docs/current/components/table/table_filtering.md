@@ -2,22 +2,13 @@
 sidebar_position: 35
 title: Filtering
 slug: filtering
-_i18n_hash: 110061605b615701c1832988833fe959
+sidebar_class_name: updated-content
+_i18n_hash: 008eef50f8ab27ec3f8a455fb5649f41
 ---
-El componente `Table` te permite implementar la funcionalidad de filtrado para reducir los datos mostrados según criterios específicos. El filtrado se puede lograr definiendo un criterio de filtrado utilizando el método `setFilter(Predicate<T> filter)` proporcionado por el `Repository` asociado con la tabla.
+El componente `Table` te permite implementar filtrado para reducir los datos mostrados en función de criterios específicos. El filtrado se puede lograr definiendo un criterio de filtrado utilizando el método `setFilter(Predicate<T> filter)` proporcionado por el `Repository` asociado con la tabla.
 
-<ComponentDemo
-path='/webforj/tablefiltering?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableFilteringView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
-height='600px'
-/>
+El siguiente ejemplo utiliza un criterio definido por el usuario desde el campo de búsqueda y el método `setBaseFilter()` para aplicar un filtro al `CollectionRepository` basado en los títulos de `MusicRecord`. Cuando se activa el método `commit()`, la tabla se actualiza con los datos filtrados.
 
-En el ejemplo anterior, se utiliza el método `setFilter()` para definir un criterio de filtrado basado en el título de `MusicRecord`. 
-
-:::tip
-El método `setFilter()` pertenece a la clase `Repository`, y no es un comportamiento integrado de la `Table` en sí misma.
+:::note
+El método `setBaseFilter()` pertenece a la clase `CollectionRepository`, no al componente `Table`.
 :::
-
-El filtro se aplica cuando el usuario modifica el contenido del campo de búsqueda, actualizando el searchTerm y activando el método `commit()` para refrescar los datos mostrados.

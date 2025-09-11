@@ -2,25 +2,24 @@
 sidebar_position: 21
 title: Dynamic Styling
 slug: styling
-sidebar_class_name: updated-content
-_i18n_hash: 38ec04cdf27a7de8a9e51ad24cf66009
+_i18n_hash: 8e9f61685fbb3a7fb830463f1320e8cf
 ---
 <!-- vale off -->
-# Dynamische Gestaltung <DocChip chip='since' label='25.00' />
+# Dynamisches Styling <DocChip chip='since' label='25.00' />
 <!-- vale on -->
 
-In webforJ 25 und höher ist es möglich, einzelne Zeilen und Zellen in der Tabelle mithilfe von benutzerdefinierten Parts-Namen zu gestalten. Diese Namen können dynamisch basierend auf der Logik Ihrer App zugewiesen werden, wodurch Sie eine feine Steuerung über das Erscheinungsbild der Tabelle erhalten.
+In webforJ 25 und höher ist es möglich, einzelne Reihen und Zellen in der Tabelle mit benutzerdefinierten Teilenamen zu stylen. Diese Namen können dynamisch basierend auf der Logik Ihrer App zugewiesen werden, sodass Sie eine feinkörnige Kontrolle über das Aussehen der Tabelle haben.
 
-## Zeilengestaltung {#row-styling}
+## Reihenstyling {#row-styling}
 
-Die Methode `setRowPartProvider()` weist gesamten Zeilen basierend auf dem Datenobjekt, das sie enthalten, Parts-Namen zu. Dies ermöglicht es Ihnen, vollständige Zeilen hervorzuheben, die bestimmten Bedingungen entsprechen—zum Beispiel alternative Hintergrundfarben für gerade Zeilen.
+Die Methode `setRowPartProvider()` weist gesamten Reihen basierend auf dem enthaltenen Datenobjekt Teilenamen zu. Dadurch können Sie vollständige Reihen hervorheben, die bestimmten Bedingungen entsprechen – zum Beispiel abwechselnde Hintergrundfarben für gerade Reihen.
 
-Diese Stilnamen können mit dem `::part()`-Selektor in Ihrem CSS angesprochen werden.
+Diese Stilenamen können in Ihrem CSS mit dem Selektor `::part()` angesprochen werden.
 
-:::tip Schatten-Parts
-Der `::part()`-Selektor ist ein spezielles CSS-Feature, das es Ihnen ermöglicht, Elemente innerhalb des Shadow DOM eines Komponentes zu gestalten—sofern diese Elemente ein `part`-Attribut bereitstellen. Dies ist besonders nützlich, um interne Teile von webforJ-Komponenten wie Zeilen oder Zellen in einer Tabelle zu gestalten.
+:::tip Schatten Teile
+Der Selektor `::part()` ist eine spezielle CSS-Funktion, die es Ihnen ermöglicht, Elemente im Shadow DOM eines Komponentes zu stylen – solange diese Elemente ein `part`-Attribut bereitstellen. Dies ist besonders nützlich, um interne Teile von webforJ-Komponenten, wie Reihen oder Zellen in einer Tabelle, zu stylen.
 
-Für mehr Informationen darüber, wie Schatten-Parts funktionieren und wie man sie definiert und anvisiert, siehe den Abschnitt [Styling](../../styling/shadow-parts).
+Für weitere Informationen, wie Schatten Teile funktionieren und wie man sie definiert und anspricht, siehe den Abschnitt [Styling](../../styling/shadow-parts).
 :::
 
 
@@ -30,11 +29,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## Zellengestaltung {#cell-styling}
+## Zellenstyling {#cell-styling}
 
-Die Methode `setCellPartProvider()` gestaltet einzelne Zellen basierend auf dem Datenobjekt und der Spalte, zu der sie gehören. Dies ist ideal, um spezifische Werte hervorzuheben, wie Altersangaben, die einen Schwellenwert überschreiten, oder ungültige Einträge.
+Die Methode `setCellPartProvider()` stylt einzelne Zellen basierend sowohl auf dem Datenobjekt als auch auf der Spalte, zu der sie gehören. Dies ist ideal, um spezifische Werte hervorzuheben, wie etwa Altersangaben, die einen Schwellenwert überschreiten, oder ungültige Einträge.
 
-Ähnlich wie bei Zeilen-Parts werden Zell-Parts durch einen Namen definiert und mit dem `::part()`-Selektor angesprochen.
+Wie bei Reihen sind Zellen Teile durch einen Namen definiert und können mit dem Selektor `::part()` angesprochen werden.
 
 <ComponentDemo 
 path='/webforj/tablecellstyling?' 
@@ -42,9 +41,9 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## Reaktion auf Datenaktualisierungen {#reacting-to-data-updates}
+## Reagieren auf Datenaktualisierungen {#reacting-to-data-updates}
 
-Wenn Ihre App Daten programmgesteuert ändert, wie zum Beispiel das Aktualisieren des Alters eines Benutzers, wird die Tabelle automatisch alle zugehörigen Zeilen- oder Zellstile erneut evaluieren und anwenden, sobald das aktualisierte Element im Repository gespeichert wurde.
+Wenn Ihre App Daten programmgesteuert ändert, z. B. das Alter eines Benutzers aktualisiert, wird die Tabelle automatisch alle zugehörigen Reihen- oder Zellstile neu bewerten und anwenden, sobald das aktualisierte Element im Repository gespeichert wird.
 
 <ComponentDemo 
 path='/webforj/tabledynamicstyling?' 
@@ -52,31 +51,35 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='475px'
 />
 
-## Gestreifte Zeilen {#striped-rows}
+## Gestreifte Reihen {#striped-rows}
 
-Aktivieren Sie abwechselnde Hintergrundfarben für Zeilen, um die Lesbarkeit zu verbessern:
+Aktivieren Sie abwechselnde Hintergrundfarben für Reihen, um die Lesbarkeit zu verbessern:
 
 ```java
-// Gestreifte Zeilengestaltung anwenden
+// Gestreiftes Reihenstyling anwenden
 table.setStriped(true);
 ```
 
-## Rahmen {#borders}
+## Ränder {#borders}
 
-Konfigurieren Sie, welche Rahmen um die `Tabelle`, Spalten und Zeilen angezeigt werden:
+Konfigurieren Sie, welche Ränder um die `Table`, Spalten und Reihen angezeigt werden:
 
 ```java
-// Alle Rahmen aktivieren
+// Alle Ränder aktivieren
 table.setBordersVisible(EnumSet.of(Table.Border.AROUND, Table.Border.COLUMNS, Table.Border.ROWS));
 
-// Alle Rahmen entfernen
+// Alle Ränder entfernen
 table.setBordersVisible(EnumSet.noneOf(Table.Border.class));
 ```
 
-Die Demo unten zeigt eine einfache Möglichkeit, das visuelle Erscheinungsbild Ihrer `Tabelle` mit dem Rest Ihrer App in Einklang zu bringen, indem Sie `setStriped()` und `setBordersVisible()` verwenden.
+Die folgende Demo zeigt eine einfache Möglichkeit, das visuelle Erscheinungsbild Ihrer `Table` mit dem Rest Ihrer App mithilfe von `setStriped()` und `setBordersVisible()` abzustimmen.
 
 <ComponentDemo 
 path='/webforj/tablelayoutstyling?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableLayoutStylingView.java'
 height='300px'
 />
+
+:::tip Verwaltung und Abfrage von Daten
+Für Informationen zur Verwendung des `Repository`-Musters zur Verwaltung und Abfrage von Sammlungen siehe die [Repository-Artikel](/docs/advanced/repository/overview).
+:::
