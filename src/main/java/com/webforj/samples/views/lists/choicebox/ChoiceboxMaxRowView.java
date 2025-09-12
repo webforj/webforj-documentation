@@ -24,7 +24,7 @@ public class ChoiceboxMaxRowView extends Composite<FlexLayout> {
     numberField.setInvalidMessage("Number of rows cannot be empty.");
     select.onClick(e -> {
       if (!numberField.getText().isBlank())
-        demoBox.setMaxRowCount(Integer.valueOf(numberField.getText()));
+        demoBox.setMaxRowCount(Double.valueOf(numberField.getText()).intValue());
       else
         numberField.setInvalid(true);
     });
