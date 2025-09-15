@@ -1,18 +1,19 @@
 ---
 title: Object and String Tables
-sidebar_position: 35
-_i18n_hash: aa2c014d8043f9ad53dfabcdc39844da
+sidebar_position: 45
+_i18n_hash: 2ec33737ccaf06670b4c1cd16369d858
 ---
-La `ObjectTable` y la `StringTable` proporcionan acceso estático a datos compartidos en un entorno webforJ. Ambas son accesibles desde cualquier parte de tu aplicación y sirven para diferentes propósitos:
+La `ObjectTable`, `SessionObjectTable` y `StringTable` proporcionan acceso estático a datos compartidos en un entorno webforJ. Todos son accesibles desde cualquier parte de su aplicación y sirven diferentes propósitos:
 
-- `ObjectTable`: Para almacenar y recuperar objetos Java a través de tu aplicación.
-- `StringTable`: Para trabajar con pares de clave-valor de cadenas persistentes, a menudo utilizados para datos de configuración o de estilo de entorno.
+- `ObjectTable`: Para almacenar y recuperar objetos Java en toda su aplicación.
+- `SessionObjectTable`: Para almacenar y recuperar objetos Java en el contexto de la sesión HTTP.
+- `StringTable`: Para trabajar con pares de cadena de clave-valor persistentes, a menudo utilizados para datos de configuración o estilo de entorno.
 
 Estas tablas están disponibles a nivel de entorno y no requieren gestión de instancias.
 
 ## `ObjectTable` {#objecttable}
 
-`ObjectTable` es un mapa de clave-valor accesible globalmente para almacenar cualquier objeto Java. Proporciona acceso simple a un estado compartido sin necesidad de instanciar o configurar nada. Solo hay una instancia de ObjectTable y se borra cuando la aplicación se actualiza o termina. Es útil para escenarios donde necesitas hacer datos disponibles a través de múltiples componentes o contextos sin mantener una cadena de referencias.
+`ObjectTable` es un mapa de clave-valor accesible globalmente para almacenar cualquier objeto Java. Proporciona acceso simple al estado compartido sin necesidad de instanciar o configurar nada. Solo hay una instancia de ObjectTable y se borra cuando la aplicación se actualiza o se finaliza. Es útil en escenarios donde necesita hacer que los datos estén disponibles en múltiples componentes o contextos sin mantener una cadena de referencia.
 
 ### Configuración y recuperación de objetos {#setting-and-retrieving-objects}
 
@@ -21,7 +22,7 @@ ObjectTable.put("userInfo", new User("Alice", "admin"));
 User user = (User) ObjectTable.get("userInfo");
 ```
 
-### Comprobación de presencia {#checking-for-presence}
+### Comprobando la presencia {#checking-for-presence}
 
 ```java
 if (ObjectTable.contains("userInfo")) {
@@ -29,7 +30,7 @@ if (ObjectTable.contains("userInfo")) {
 }
 ```
 
-### Eliminación de entradas {#removing-entries}
+### Eliminando entradas {#removing-entries}
 
 ```java
 ObjectTable.clear("userInfo");
@@ -41,11 +42,53 @@ ObjectTable.clear("userInfo");
 int total = ObjectTable.size();
 ```
 
+## `SessionObjectTable` <DocChip chip='since' label='25.03' /> {#sessionobjecttable}
+
+`SessionObjectTable` proporciona acceso estático a atributos de sesión HTTP cuando se ejecuta en un contenedor Jakarta Servlet 6.1+. A diferencia de `ObjectTable`, que es de alcance de aplicación, `SessionObjectTable` almacena datos en la sesión HTTP del usuario, haciéndolos persistentes entre solicitudes pero únicos para cada sesión de usuario.
+
+Sigue el mismo patrón de API que `ObjectTable` por consistencia.
+
+:::warning
+Los objetos almacenados en `SessionObjectTable` deben implementar `Serializable` para admitir la persistencia de la sesión, replicación y pasivación en contenedores de servlets.
+:::
+
+:::warning Disponibilidad en `BBjServices`
+Esta característica aún no está disponible al ejecutarse con BBjServices en la versión 25.03.
+:::
+
+### Configuración y recuperación de objetos de sesión {#setting-and-retrieving-session-objects}
+
+```java
+// ShoppingCart debe implementar Serializable
+SessionObjectTable.put("cart", new ShoppingCart());
+ShoppingCart cart = (ShoppingCart) SessionObjectTable.get("cart");
+```
+
+### Comprobando la presencia {#checking-for-presence-session}
+
+```java
+if (SessionObjectTable.contains("cart")) {
+  // La sesión tiene el carrito
+}
+```
+
+### Eliminando entradas de sesión {#removing-session-entries}
+
+```java
+SessionObjectTable.clear("cart");
+```
+
+### Tamaño de la tabla de sesiones {#session-table-size}
+
+```java
+int total = SessionObjectTable.size();
+```
+
 ## `StringTable` {#stringtable}
 
-`StringTable` proporciona acceso estático a variables de cadena globales. Es persistente y está limitado a la aplicación actual. Los valores se pueden modificar programáticamente o inyectar a través de la configuración del entorno. Este mecanismo es particularmente útil para almacenar valores de configuración, flags y ajustes que deben ser accesibles en toda la aplicación pero no necesitan llevar datos complejos.
+`StringTable` proporciona acceso estático a variables de cadena globales. Es persistente y está limitado a la aplicación actual. Los valores pueden ser modificados programáticamente o inyectados a través de la configuración del entorno. Este mecanismo es particularmente útil para almacenar valores de configuración, banderas y configuraciones que deben ser accesibles en toda la aplicación pero que no necesitan llevar datos complejos.
 
-### Obtener y establecer valores de cadena {#getting-and-setting-string-values}
+### Obtener y configurar valores de cadena {#getting-and-setting-string-values}
 
 ```java
 StringTable.put("COMPANY", "Acme Corp");
@@ -54,7 +97,7 @@ String company = StringTable.get("COMPANY");
 
 ### Valores preconfigurados desde la configuración {#pre-configured-values-from-config}
 
-Puedes definir claves en tu archivo [`webforj.conf`](../configuration/properties#configuring-webforjconf):
+Puede definir claves en su archivo [`webforj.conf`](../configuration/properties#configuring-webforjconf):
 
 ```
 webforj.stringTable = {
@@ -62,21 +105,21 @@ webforj.stringTable = {
 }
 ```
 
-Luego accede a ella en el código:
+Luego acceda a ello en el código:
 
 ```java
 String val = StringTable.get("COMPANY");
 ```
 
-### Comprobación de presencia {#checking-for-presence-1}
+### Comprobando la presencia {#checking-for-presence-1}
 
 ```java
 if (StringTable.contains("COMPANY")) {
-  // La clave está configurada
+  // La clave está establecida
 }
 ```
 
-### Limpiar una clave {#clearing-a-key}
+### Limpiando una clave {#clearing-a-key}
 
 ```java
 StringTable.clear("COMPANY");

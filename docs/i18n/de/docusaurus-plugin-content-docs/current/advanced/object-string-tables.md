@@ -1,18 +1,19 @@
 ---
 title: Object and String Tables
-sidebar_position: 35
-_i18n_hash: aa2c014d8043f9ad53dfabcdc39844da
+sidebar_position: 45
+_i18n_hash: 2ec33737ccaf06670b4c1cd16369d858
 ---
-Die `ObjectTable` und `StringTable` bieten statischen Zugriff auf gemeinsam genutzte Daten in einer webforJ-Umgebung. Beide sind von überall in Ihrer App zugänglich und dienen unterschiedlichen Zwecken:
+Die `ObjectTable`, `SessionObjectTable` und `StringTable` bieten statischen Zugriff auf gemeinsame Daten in einer webforJ-Umgebung. Alle sind von überall in Ihrer Anwendung zugänglich und dienen unterschiedlichen Zwecken:
 
-- `ObjectTable`: Zum Speichern und Abrufen von Java-Objekten in Ihrer App.
-- `StringTable`: Zum Arbeiten mit persistenten Schlüssel-Wert-String-Paaren, die häufig für Konfiguration oder Umgebungsdaten verwendet werden.
+- `ObjectTable`: Zum Speichern und Abrufen von Java-Objekten über Ihre Anwendung hinweg.
+- `SessionObjectTable`: Zum Speichern und Abrufen von Java-Objekten im HTTP-Sitzungsbereich.
+- `StringTable`: Zum Arbeiten mit persistenten Schlüssel-Wert-Paaren von Strings, die häufig für Konfigurations- oder umgebungsbezogene Daten verwendet werden.
 
-Diese Tabellen sind auf der Umgebungsstufe verfügbar und erfordern kein Instanzenmanagement.
+Diese Tabellen sind auf Umgebungsniveau verfügbar und erfordern kein Instanzmanagement.
 
 ## `ObjectTable` {#objecttable}
 
-`ObjectTable` ist eine global zugängliche Schlüssel-Wert-Karte zum Speichern beliebiger Java-Objekte. Es bietet einfachen Zugriff auf einen gemeinsamen Status, ohne etwas instanziieren oder konfigurieren zu müssen. Es gibt nur eine Instanz von ObjectTable, und sie wird gelöscht, wenn die App aktualisiert oder beendet wird. Es ist nützlich für Szenarien, in denen Sie Daten über mehrere Komponenten oder Kontexte hinweg verfügbar machen müssen, ohne eine Referenzkette aufrechtzuerhalten.
+`ObjectTable` ist eine global zugängliche Schlüssel-Wert-Karte zum Speichern beliebiger Java-Objekte. Es bietet einfachen Zugriff auf den gemeinsamen Zustand, ohne dass etwas instanziiert oder konfiguriert werden muss. Es gibt nur eine Instanz von ObjectTable, die gelöscht wird, wenn die Anwendung aktualisiert oder beendet wird. Es ist nützlich für Szenarien, in denen Daten über mehrere Komponenten oder Kontexte hinweg verfügbar gemacht werden müssen, ohne eine Referenzkette aufrechtzuerhalten.
 
 ### Objekte setzen und abrufen {#setting-and-retrieving-objects}
 
@@ -41,9 +42,51 @@ ObjectTable.clear("userInfo");
 int total = ObjectTable.size();
 ```
 
+## `SessionObjectTable` <DocChip chip='since' label='25.03' /> {#sessionobjecttable}
+
+`SessionObjectTable` bietet statischen Zugriff auf HTTP-Sitzungsattribute, wenn es in einem Jakarta Servlet 6.1+ Container läuft. Im Gegensatz zu `ObjectTable`, das auf Anwendungsebene ist, speichert `SessionObjectTable` Daten in der HTTP-Sitzung des Benutzers, was sie über Anfragen hinweg persistent macht, aber für jede Benutzersitzung einzigartig ist.
+
+Es folgt dem gleichen API-Muster wie `ObjectTable` für Konsistenz.
+
+:::warning
+Objekte, die im `SessionObjectTable` gespeichert sind, sollten `Serializable` implementieren, um die Sitzungsverfügbarkeit, -replikation und -passivierung in Servlet-Containern zu unterstützen.
+:::
+
+:::warning Verfügbarkeit in `BBjServices`
+Diese Funktion ist derzeit nicht verfügbar, wenn sie mit BBjServices in Version 25.03 ausgeführt wird.
+:::
+
+### Sitzungobjekte setzen und abrufen {#setting-and-retrieving-session-objects}
+
+```java
+// ShoppingCart sollte Serializable implementieren
+SessionObjectTable.put("cart", new ShoppingCart());
+ShoppingCart cart = (ShoppingCart) SessionObjectTable.get("cart");
+```
+
+### Überprüfung auf Vorhandensein {#checking-for-presence-session}
+
+```java
+if (SessionObjectTable.contains("cart")) {
+  // Sitzung hat Warenkorb
+}
+```
+
+### Sitzungs-Einträge entfernen {#removing-session-entries}
+
+```java
+SessionObjectTable.clear("cart");
+```
+
+### Sitzungs-Tabellengröße {#session-table-size}
+
+```java
+int total = SessionObjectTable.size();
+```
+
 ## `StringTable` {#stringtable}
 
-`StringTable` bietet statischen Zugriff auf globale String-Variablen. Es ist persistent und auf die aktuelle App beschränkt. Werte können programmgesteuert modifiziert oder über die Umgebungsabhängigkeit injiziert werden. Dieser Mechanismus ist besonders nützlich für das Speichern von Konfigurationswerten, Flags und Einstellungen, die appweit zugänglich sein müssen, aber keine komplexen Daten tragen müssen.
+`StringTable` bietet statischen Zugriff auf globale String-Variablen. Es ist persistent und auf die aktuelle Anwendung beschränkt. Werte können programmgesteuert geändert oder über die Umgebungsconfiguration injiziert werden. Dieser Mechanismus ist besonders nützlich zum Speichern von Konfigurationswerten, Flags und Einstellungen, die anwendungsweit zugänglich sein müssen, aber keine komplexen Daten tragen müssen.
 
 ### String-Werte abrufen und setzen {#getting-and-setting-string-values}
 
@@ -52,7 +95,7 @@ StringTable.put("COMPANY", "Acme Corp");
 String company = StringTable.get("COMPANY");
 ```
 
-### Vorgegebene Werte aus der Konfiguration {#pre-configured-values-from-config}
+### Vorgefertigte Werte aus der Konfiguration {#pre-configured-values-from-config}
 
 Sie können Schlüssel in Ihrer [`webforj.conf`](../configuration/properties#configuring-webforjconf) Datei definieren:
 
@@ -76,7 +119,7 @@ if (StringTable.contains("COMPANY")) {
 }
 ```
 
-### Ein Schlüssel löschen {#clearing-a-key}
+### Einen Schlüssel löschen {#clearing-a-key}
 
 ```java
 StringTable.clear("COMPANY");
