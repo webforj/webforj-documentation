@@ -49,7 +49,7 @@
     --ifm-dropdown-hover-background-color: var(--dwc-color-primary-alt);
   }
 
-  #webforj-version-badge {
+  #webforj-version-badge{
     display: inline-block;
     background-color: hsl( 211,  100%, 25%);
     min-width: 76px;
@@ -65,19 +65,118 @@
     }
   }
 
-  .navbar-sidebar #webforj-version-badge {
+  .navbar-sidebar #webforj-version-badge,
+  .navbar-sidebar #startforj-link {
     display: none;
   }
 
+  .navbar__item:has(#startforj-link),
+  #startforj-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+   #startforj-link{
+    border: none;
+    transition: border .65s;
+    width: 125px;
+    height: 34px;
+    background-color: hsl( 211,  100%, 25%);
+      &:hover,
+      &:focus {
+      color: white;
+    }
+   }
+
+  .startforj-hover-text,
+  .startforj-idle-text {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    transition: opacity .1s;
+  }
+
+  #startforj-link:hover .startforj-idle-text,
+  #startforj-link:focus .startforj-idle-text,
+  .startforj-hover-text {
+    opacity: 0;
+  }
+
+  #startforj-link:hover .startforj-hover-text,
+  #startforj-link:focus .startforj-hover-text,
+  .startforj-idle-text {
+    opacity: 1;
+  }
+
+  .startforj-container {
+    width: 125px;
+    height: 34px;
+    position: relative;
+    text-wrap: nowrap;
+    overflow: hidden;
+    border: solid 0px hsl( 211,  100%, 25%);
+  }
+
+  #startforj-link:hover,
+  #startforj-link:focus {
+    border: solid 1px var(--dwc-color-primary-50);
+  }
+
+  #startforj-link:hover .startforj-container,
+  #startforj-link:focus .startforj-container{
+  animation: starforj-animation 0.65s var(--dwc-ease-outExpo);
+}
+
+@keyframes starforj-animation {
+  0% {
+    width: 125px;
+    border-width: 0 5px 0;
+    border-color: var(--dwc-color-primary-50);
+  }
+  50% {
+    width: 0px;
+    border-radius: 400px;
+    border-width: 0px 18px 0px;
+    border-color: hsl( 211,  100%, 85%);
+  }
+  75% {
+    border-width: 0px 8px 0px;
+  }
+    100% {
+    width: 125px;
+    border-radius: 0px;
+    border-width: 0px;
+    border-color: hsl( 211,  100%, 25%);
+  }
+}
+
+  @media (max-width: 1350px) {
+    .dropdown--right:not(#startforj-link) {
+      display: none;
+    }
+  }
   @media (max-width: 1000px) {
     .separator {
       display: none;
     }
   }
-
-  @media (max-width: 1300px) {
-    .dropdown--right {
+  @media (max-width: 996px) {
+      .navbar__item:has(#startforj-link){
+      margin-right: 150px;
+    }
+  }
+    @media (max-width: 768px) {
+      .navbar__item:has(#startforj-link){
+      margin-right: 50px;
+    }
+  }
+  @media (max-width: 600px) {
+    #startforj-link,
+    #webforj-version-badge {
       display: none;
     }
   }
+  
 }
