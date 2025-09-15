@@ -112,8 +112,8 @@ public class NotFoundExceptionErrorHandler implements ErrorHandler {
 
 Now a big question I can already sense is what makes webforJ routing different from other well-known web dev frameworks like React? webforJ routing offers easy integration with Java server-side logic, enabling type-safe route definitions and direct access to backend resources without context switching. Unlike React Router, which requires manual state management and JavaScript code, webforJ routing leverages Java annotations, and automatically synchronizes UI state with the server.
 
-<div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
-  <div style={{ flex: 1 }}>
+<div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+  <div style={{ flex: '1 1 400px', minWidth: '300px' }}>
     <h3>webforJ Routing</h3>
     <ul>
       <li><b>Server-side, Java-based</b>: Routes are defined using <code>@Route</code> annotations on Java classes.</li>
@@ -125,7 +125,7 @@ Now a big question I can already sense is what makes webforJ routing different f
       <li><b>UI Updates</b>: Navigation triggers server rendering and updates the client UI.</li>
     </ul>
   </div>
-  <div style={{ flex: 1 }}>
+  <div style={{ flex: '1 1 400px', minWidth: '300px' }}>
     <h3>React Router</h3>
     <ul>
       <li><b>Client-side, JavaScript-based</b>: Routes are defined in JSX using <code>&lt;Route&gt;</code> components.</li>
