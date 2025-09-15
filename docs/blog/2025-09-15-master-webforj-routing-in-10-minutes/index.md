@@ -5,10 +5,11 @@ slug: master-webforj-routing-in-10-minutes
 date: 2025-09-15
 authors: Eric Handtke
 tags: [webforJ, Routing, SPA Routing, Web Development]
+image: "https://cdn.webforj.com/webforj-documentation/blogs/master-webforj-routing-in-10-minutes/cover.png"
 hide_table_of_contents: false
 ---
 
-![Cover Image](/img/routingcover.png)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/master-webforj-routing-in-10-minutes/cover.png)
 
 <!--vale off-->
 We all probably know this situation; browsing a website or webapp, make a simple misclick and instinctively try to go back or undo it. Only to then be somewhere completely else, worst case not even on the site anymore. 
