@@ -76,11 +76,11 @@ Debugging is an essential part of Java development, helping developers identify 
 
 Once you’ve configured your IDE:
 
-1. Start your webforJ app using the corresponding command to your setup: 
-  - for jetty `mvnDebug jetty:run` 
-  - for spring `mvnDebug spring-boot:run`
+1. Start your webforJ app using the corresponding command: 
+    - For Jetty, use `mvnDebug jetty:run` 
+    - For Spring Boot, use `mvnDebug spring-boot:run`
 2. Run the debug configuration in your IDE.
-3. Set breakpoints and begin debugging
+3. Set breakpoints and begin debugging.
 
 :::tip Debugging Tips
 1. Make sure port 8000 is available and not blocked by any firewall.
