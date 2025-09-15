@@ -108,13 +108,6 @@ public class NotFoundExceptionErrorHandler implements ErrorHandler {
 
 ```
 
-- **Consistent Naming:** Name your route classes with clear, descriptive names that end in `View` for standard views and `Layout` for layout components. This helps webforJ auto-detect route types and keeps your code self-explanatory.
-- **Logical Folder Structure:** Organize your views and layouts into folders by feature or section (e.g., **views/dashboard/**, **views/admin/**). This makes it easy to locate and manage related routes as your app grows.
-- **Declarative Routing:** Use the `@Route` annotation for all routable components, and prefer static registration over dynamic unless you have advanced needs. Keep route paths simple, lowercase, and hyphenated (e.g., **/user-profile**).
-- **Route Hierarchy:** Structure your routes hierarchically, using parent layouts for shared UI and child views for specific content.
-- **Single Responsibility:** Each view or layout should have a focused purpose. Avoid mixing unrelated logic in a single component.
-- **Type-Safe Navigation:** When navigating programmatically, use the view class rather than hardcoded strings. 
-
 ## Comparison to React
 
 Now a big question I can already sense is what makes webforJ routing different from other well-known web dev frameworks like React? webforJ routing offers easy integration with Java server-side logic, enabling type-safe route definitions and direct access to backend resources without context switching. Unlike React Router, which requires manual state management and JavaScript code, webforJ routing leverages Java annotations, and automatically synchronizes UI state with the server.
