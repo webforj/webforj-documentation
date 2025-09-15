@@ -2,10 +2,17 @@
 title: Event Dispatcher System
 description: How the webforJ event dispatcher system works and how to use it for event-driven programming.
 sidebar_position: 50
+sidebar_class_name: new-content
 ---
 
+<DocChip chip='since' label='23.06' />
+<JavadocLink type="dispatcher" location="com/webforj/dispatcher/EventDispatcher" top='true'/>
 
-The webforJ event dispatcher system provides a flexible and type-safe way to handle events in your app. It allows you to register listeners for specific event types and dispatch events to those listeners, enabling event-driven programming across components. This page covers the standalone `EventDispatcher` API for custom event management. (For element/component events, see their respective documentation.)
+The webforJ event dispatcher system provides a flexible and type-safe way to handle events in your app. It allows you to register listeners for specific event types and dispatch events to those listeners, enabling event-driven programming across components.
+
+:::tip Element and component events
+The `EventDispatcher` is for custom event management, see the [Events](/docs/building-ui/events) articles to learn how to handle standard element and component events.
+:::
 
 <ComponentDemo 
 path='/webforj/eventdispatchercustomevent' 
