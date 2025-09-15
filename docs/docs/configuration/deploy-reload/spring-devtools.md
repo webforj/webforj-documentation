@@ -1,13 +1,16 @@
 ---
 title: Spring DevTools
 sidebar_position: 30
+sidebar_class_name: updated-content
 ---
 
 Spring DevTools provides automatic app restarts when code changes. webforJ DevTools adds automatic browser refresh - when Spring restarts your app, the browser refreshes automatically through webforJ's LiveReload server.
 
 Different file types trigger different reload behavior. Java code changes cause a full Spring restart and browser refresh. CSS and image changes update without a page reload, preserving form data and app state.
 
+<!-- vale off -->
 ## Understanding webforJ DevTools {#understanding-webforj-devtools}
+<!-- vale on -->
 
 webforJ extends Spring DevTools with browser synchronization. When Spring detects file changes and restarts, webforJ DevTools automatically refreshes your browser.
 
@@ -15,10 +18,10 @@ webforJ extends Spring DevTools with browser synchronization. When Spring detect
 
 Different file types trigger different reload strategies:
 
-- **Java files** - Full browser page reload after Spring restart
-- **CSS files** - Style updates without page reload  
-- **JavaScript files** - Full browser page reload after Spring restart
-- **Images** - Refresh in place without page reload
+- **Java files**: Full browser page reload after Spring restart
+- **JavaScript files**: Full browser page reload after Spring restart
+- **CSS files**: Style updates without page reload  
+- **Images**: Refresh in place without page reload
 
 ## Dependencies {#dependencies}
 
@@ -41,7 +44,7 @@ Add both Spring DevTools and webforJ DevTools to your project:
 
 ## Configuration {#configuration}
 
-Enable webforJ DevTools in your app properties:
+Enable webforJ DevTools in your `application.properties` file:
 
 ```Ini title="application.properties"
 # Enable webforJ browser auto-reload
@@ -67,4 +70,14 @@ webforj.devtools.livereload.heartbeat-interval=30000
 
 # Enable hot reload for static resources (default: true)
 webforj.devtools.livereload.static-resources-enabled=true
+```
+
+<DocChip chip='since' label='25.03' /> Configure browser opening on app startup:
+
+```Ini title="application.properties"
+# Enable browser opening (default: false)
+webforj.devtools.browser.open=true
+
+# localhost, hostname, or IP address (default: localhost)
+webforj.devtools.browser.host=localhost
 ```
