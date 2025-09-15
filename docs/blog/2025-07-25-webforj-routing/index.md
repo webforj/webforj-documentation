@@ -1,8 +1,8 @@
 ---
 title: Master webforJ routing in 10 minutes
 description: Everything you need to know about routing with webforJ in a quick breakdown
-slug: Master webforJ routing in 10 minutes
-date: 2025-07-25
+slug: master-webforj-routing-in-10-minutes
+date: 2025-09-15
 authors: Eric Handtke
 tags: [webforJ, Routing, SPA Routing, Web Development]
 hide_table_of_contents: false
@@ -34,7 +34,7 @@ Setting up routes in webforJ is very straightforward. The core of routing is the
 For example, to create a simple home page and an about page:
 
 ```java
-@Route("")
+@Route("/")
 public class HomeView extends Composite<Div> {
     // Home page content
 }
@@ -45,7 +45,7 @@ public class AboutView extends Composite<Div> {
 }
 ```
 
-With this setup, visiting **/** will show you the HomeView, and **/about** will show you the AboutView. Its possible to add as many routes as you need, each mapped to its own Java class. 
+With this setup, visiting `/` will show you the HomeView, and `/about` will show you the AboutView. Its possible to add as many routes as you need, each mapped to its own Java class. 
 
 ## Advanced routing features - parameters, aliases, nested routes
 
@@ -56,13 +56,9 @@ Route parameters are especially useful if you want to have a page set up with a 
 Now I know that may sound very technical and complicated, but in reality - it isn't. Here you can see how such an implementation would look where the code automatically uses the id provided through the route. Going to **yoursite.com/user/eric** would show my user profile.
 
 ```java
-import com.webforj.router.annotation.Route;
-import com.webforj.router.event.DidEnterEvent;
-import com.webforj.router.history.ParametersBag;
-import com.webforj.component.Composite;
-
 @Route(value = "user/:id")
-public class UserProfileView extends Composite {
+public class UserProfileView extends Composite<Div> {
+
     @Override
     public void onDidEnter(DidEnterEvent event, ParametersBag parameters) {
         // Get the "id" parameter from the URL, e.g., /user/john → id = "john"
@@ -75,9 +71,7 @@ public class UserProfileView extends Composite {
 
 For even more flexibility, use the `@RouteAlias` annotation to map multiple URLs to the same view. For example, a profile page can be accessible via both **/profile** and **/user/me** by annotating the class with both `@Route` and `@RouteAlias`.
 
-Nested routes are handled using the outlet parameter in the @Route annotation, letting you build parent-child hierarchies. This allows you to inject child views into specific areas of a parent layout, giving you free rein over your URL structures (e.g., **/dashboard/settings**).
-
-## Browser integration and management
+## History and page title management
 
 webforJ manages the page titles and browser history for you automatically, so you don’t have to set them yourself. However, if you prefer to customize the titles, you can use the `@FrameTitle` annotation on your view classes to show exactly what you want.
 
@@ -134,7 +128,7 @@ Now a big question I can already sense is what makes webforJ routing different f
       <li><b>Deep Linking</b>: Supported, handled by the server.</li>
       <li><b>404 Handling</b>: Managed via Java error handlers (e.g., <code>NotFoundExceptionErrorHandler</code>).</li>
       <li><b>Integration</b>: Can be used standalone or with Spring Boot (with dependency injection for routes).</li>
-      <li><b>UI Updates</b>: Navigation triggers server-side rendering and updates the client UI.</li>
+      <li><b>UI Updates</b>: Navigation triggers server rendering and updates the client UI.</li>
     </ul>
   </div>
   <div style={{ flex: 1 }}>
@@ -156,7 +150,7 @@ Now a big question I can already sense is what makes webforJ routing different f
 
 We have now gone over how to build up routing in webforJ that's both easily maintainable and implemented as well as some structures to follow so that users can navigate through your app without any problems. Of course, this article can't cover everything there is to know about routing, and there would be more topics we could delve into like data binding and security, but that would go beyond the scope of what we set out to do here.
 
-If you want to check those topics out, feel free to look through our [Routing articles](https://webforj.dev/docs/routing/overview), where you will find a plethora of different articles detailing everything you need to know about those topics as well.
+If you want to check those topics out, feel free to look through our [Routing articles](https://docs.webforj.com/docs/routing/overview), where you will find a plethora of different articles detailing everything you need to know about those topics as well.
 
 As a next step, try building a small multi-view app to reinforce these concepts. Once you’re comfortable, explore more advanced topics like authentication flows, dynamic route registration, and custom navigation guards.
 
