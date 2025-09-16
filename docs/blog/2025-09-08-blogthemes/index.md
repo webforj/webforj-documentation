@@ -75,7 +75,7 @@ The transition happens instantly throughout your entire app. Components update t
 
 While the built-in themes work well for many situations, you'll often want to incorporate your own brand colors or create a unique visual identity. webforJ makes this process much more approachable than traditional CSS theming.
 
-The system uses something called DWC (Design Web Components) colors, which generate complete, harmonious color palettes from just a few basic values. You provide the hue (position on the color wheel), saturation (how vibrant), and contrast threshold (which determines text color contrast), and it creates dozens of coordinated shades along with text colors that maintain proper readability.
+The system uses something called DWC (Dynamic Web Client) colors, which generate complete, harmonious color palettes from just a few basic values. You provide the hue (position on the color wheel), saturation (how vibrant), and contrast threshold (which determines text color contrast), and it creates dozens of coordinated shades along with text colors that maintain proper readability.
 
 ```css
 html[data-app-theme="corporate"] {
