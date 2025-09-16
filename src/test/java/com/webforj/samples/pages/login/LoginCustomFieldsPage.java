@@ -16,9 +16,9 @@ public class LoginCustomFieldsPage {
 
     public LoginCustomFieldsPage(Page page) {
 
-        customerID = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Customer ID •"));
-        username = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Username •"));
-        password = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Password •"));
+        customerID = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Customer ID").setExact(false));
+        username = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Username").setExact(false));
+        password = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Password").setExact(false));
 
         signInButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign in"));
         logoutButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Logout"));
