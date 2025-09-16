@@ -25,8 +25,8 @@ public class Box extends Composite<Div> implements HasStyle<Box>, HasVisibility<
     container.addClassName("demo__box");
   }
 
-  public Box(int num) {
-    this.boxNumber = num;
+  public Box(int boxNumber) {
+    this.boxNumber = boxNumber;
   }
 
   public Box(String title) {
