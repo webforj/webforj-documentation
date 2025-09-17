@@ -30,7 +30,7 @@ webforJ provides three custom scopes designed for web app state management:
 
 The `@WebforjSessionScope` annotation creates beans that persist across the entire webforJ session. Unlike [environment scope](#environment-scope) which isolates beans per browser window/tab, session-scoped beans are shared across all windows and tabs from the same browser. These beans live as long as the webforJ session remains active, typically until the user logs out or the session expires.
 
-Session scope is ideal for authentication state, user preferences, and shopping carts. Data that should persist across multiple browser tabs but remain isolated between different users. Each user's browser session receives its own instance of session-scoped beans.
+Session scope is ideal for authentication state, user preferences, shopping carts, and data that should persist across multiple browser tabs but remain isolated between different users. Each user's browser session receives its own instance of session-scoped beans.
 
 :::info Beans need to be Serializable
 Session-scoped beans need to implement `Serializable` since they're stored in HTTP session attributes. All non-transient fields must also be serializable (primitives, `String`, or classes implementing `Serializable`). Mark fields as `transient` if they shouldn't be persisted.
@@ -283,4 +283,4 @@ public class PublicSection extends Composite<Div> {
 
 The `@SharedFrom` annotation enforces architectural boundaries. Components outside the specified scope can't access the bean. When Spring attempts to inject a `@SharedFrom` bean into a component outside its designated hierarchy, the injection fails with an `IllegalStateException`. This enforcement happens at runtime when the route is accessed, so beans remain properly scoped to their intended component trees.
 
-The annotation accepts a single parameter - the component class that should serve as the root for sharing. Only this component and its descendants in the route hierarchy can access the bean. Parent components and sibling hierarchies can't inject it.
+The annotation accepts a single parameter: the component class that should serve as the root for sharing. Only this component and its descendants in the route hierarchy can access the bean. Parent components and sibling hierarchies can't inject it.
