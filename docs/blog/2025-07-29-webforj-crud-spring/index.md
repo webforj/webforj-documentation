@@ -40,7 +40,7 @@ I'm happy to say, everything was straightforward - I managed to (fairly easily) 
 
 ### The Back End
 
-Creating my data layer took exactly three files. I've written CSS files longer than my entire backend. Of course, this is a simple app, but with the help of my AI buddy, I was able to not only get these files created, but finally understand the relationship between my [data model/entity](https://spring.io/guides/gs/accessing-data-jpa) defines the structure of my data and maps it to the database, my repository provides an interface for CRUD operations and database queries, and my service layer contains business logic and orchestrates communication between controllers and repositories.
+Creating my data layer took exactly three files. I've written CSS files longer than my entire backend. Of course, this is a simple app, but with the help of my AI buddy, I was able to not only get these files created, but finally understand the relationship between the different layers and components. My [data model/entity](https://spring.io/guides/gs/accessing-data-jpa) defines the structure of my data and maps it to the database, my repository provides an interface for CRUD operations and database queries, and my service layer contains business logic and orchestrates communication between controllers and repositories.
 
 **File #1 - The Entity**:
 
@@ -155,7 +155,7 @@ public class ArtistAvatarRenderer extends Renderer<MusicArtist> {
 }
 ```
 
-My `Table` went from "database dump" to looking like it with built with more intention quite easily. I've spent way too much time with Table renderers, and have been quite enjoying building some cool looking things with them, like this [dashboard project](https://docs.webforj.com/dashboard/) I completed a little while ago.
+My `Table` went from "database dump" to looking like it was built with more intention quite easily. I've spent way too much time with Table renderers, and have been quite enjoying building some cool-looking things with them, like this [dashboard project](https://docs.webforj.com/dashboard/) I completed a little while ago.
 
 ### Binding the back end to my form
 

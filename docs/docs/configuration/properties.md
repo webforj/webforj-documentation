@@ -62,13 +62,13 @@ webforj.clientHeartbeatRate = 1s
 
 ## Configuring `web.xml` {#configuring-webxml}
 
-The web.xml file is an essential configuration file for Java web apps, and in webforJ, it defines important settings like the servlet configuration, URL patterns, welcome pages. This file should be located in the `WEB-INF` directory of your project’s deployment structure.
+The `web.xml` file is an essential configuration file for Java web apps, and in webforJ, it defines important settings like the servlet configuration, URL patterns, and welcome pages. This file should be located in the `WEB-INF` directory of your project’s deployment structure.
 
 | Setting                                 | Explanation                                                                                                                                                                                   | Default Value               |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
 | **`<display-name>`**                    | Sets the display name for the web app, typically derived from the project name. This name appears in app servers' management consoles.                                                        | `${project.name}`           |
 | **`<servlet>` and `<servlet-mapping>`** | Defines the `WebforjServlet`, the core servlet for handling webforJ requests. This servlet is mapped to all URLs (`/*`), making it the main entry point for web requests.                     | `WebforjServlet`            |
-| **`<load-on-startup>`**                 | Specifies that `WebforjServlet` should be loaded when the app starts. Setting this to `1` makes the servlet loads immediately, which improves initial request handling.                | `1`                         |
+| **`<load-on-startup>`**                 | Specifies that `WebforjServlet` should be loaded when the app starts. Setting this to `1` makes the servlet load immediately, which improves initial request handling.                | `1`                         |
 <!-- | **`<filter>` and `<filter-mapping>`**   | Configures the `WebforjCacheControlFilter` to control caching for JavaScript files. This filter prevents caching of `.js` files by setting specific HTTP headers, improving development flow. | `WebforjCacheControlFilter` | -->
 
 <!-- ## Configuring `blsclient.conf` -->
