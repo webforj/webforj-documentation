@@ -62,5 +62,9 @@
   "item.label.Contact us": {
     "message": "Contact us",
     "description": "Navbar item with label Contact us"
+  },
+  "item.label. ": {
+    "message": " ",
+    "description": "Navbar item with label  "
   }
 }

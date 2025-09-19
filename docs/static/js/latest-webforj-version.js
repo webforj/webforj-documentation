@@ -1,4 +1,6 @@
-async function getLatestVer() {
+let latestVersion = null;
+
+async function fetchLatestVersion() {
   const cacheKey = "webforj_latest_version";
   const cacheExpiry = 24 * 60 * 60 * 1000; // 24 hours
 
@@ -6,8 +8,7 @@ async function getLatestVer() {
   const cachedTimestamp = localStorage.getItem(`${cacheKey}_timestamp`);
 
   if (cachedData && cachedTimestamp && (Date.now() - cachedTimestamp) < cacheExpiry) {
-    const latestVersion = cachedData;
-    displayLatestVer(latestVersion, retries = 10);
+    latestVersion = cachedData;
     return;
   }
 
@@ -20,29 +21,36 @@ async function getLatestVer() {
     }
 
     const data = await response.json();
-    const latestVersion = data.tag_name;
+    latestVersion = data.tag_name;
 
     localStorage.setItem(cacheKey, latestVersion);
     localStorage.setItem(`${cacheKey}_timestamp`, Date.now());
 
-    displayLatestVer(latestVersion, retries = 10);
-
   } catch (error) {
     console.error("Failed to fetch the latest version:", error);
-    displayLatestVer(latest, retries = 10);
+    latestVersion = "latest";
   }
 }
 
-function displayLatestVer(latestVersion, retries) {
-  const thisVer = document.getElementById("webforj-version-badge");
-  if (thisVer) {
-    thisVer.innerHTML = `v${latestVersion}`;
-  } else if (retries > 0) {
-    setTimeout(() => displayLatestVer(latestVersion, retries - 1), 100);
-  } else {
-    console.warn("Couldn't find the webforJ version badge");
-    return;
+function updateVersionBadge() {
+  const badge = document.getElementById("webforj-version-badge");
+  if (badge && latestVersion) {
+    badge.innerHTML = `v${latestVersion}`;
   }
 }
 
-getLatestVer();
+function tryUpdateBadge(retries = 10) {
+  if (retries <= 0) return;
+  updateVersionBadge();
+  setTimeout(() => tryUpdateBadge(retries - 1), 50);
+}
+
+// Fetch version once on initial load
+fetchLatestVersion().then(() => {
+  tryUpdateBadge();
+});
+
+document.addEventListener('DOMContentLoaded', tryUpdateBadge);
+window.addEventListener('popstate', tryUpdateBadge);
+window.addEventListener('pushstate', tryUpdateBadge);
+tryUpdateBadge();

@@ -1,7 +1,6 @@
 ---
 sidebar_position: 55
 title: Asynchronous Updates
-sidebar_class_name: new-content
 ---
 
 <DocChip chip='since' label='25.02' />

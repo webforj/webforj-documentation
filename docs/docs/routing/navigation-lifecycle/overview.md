@@ -2,6 +2,7 @@
 sidebar_position: 1
 title: Navigation Lifecycle
 hide_giscus_comments: true
+sidebar_class_name: has-new-content
 ---
 
 <!-- vale off -->

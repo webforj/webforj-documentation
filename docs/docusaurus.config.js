@@ -124,6 +124,10 @@ const config = {
           {
             from: '/docs/advanced/deploying-additional-servlets',
             to: '/docs/configuration/deploying-additional-servlets',
+          },
+          {
+            from: '/docs/integrations/spring/spring-devtools',
+            to: '/docs/configuration/deploy-reload/spring-devtools'
           }
         ],
       },
@@ -138,9 +142,9 @@ const config = {
       externalUrlRegex: '.*', // disables version filtering
     },
     announcementBar: {
-      id: '25.02',
+      id: '25.03',
       content:
-        'We are excited to announce webforJ version 25.02 is live! Read more about the changes and features <a href=/blog/whats-new-v25.02>here.</a> ',
+        'We are excited to announce webforJ version 25.03 is live! Read more about the changes and features <a href=/blog/whats-new-v25.03>here.</a> ',
       isCloseable: true,
     },
     image: 'https://docs.webforj.com/img/social-cover.png',
