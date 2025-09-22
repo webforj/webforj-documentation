@@ -22,7 +22,7 @@ The integration architecture consists of:
 3. **Browser Client** - Displays both the webforJ UI and the embedded Swing app
 
 :::important Port Configuration
-Webswing and webforJ must run on different ports to avoid conflicts. Both webforJ and Webswing typically runs on port `8080`. You should change either the Webswing port or the webforJ port.
+Webswing and webforJ must run on different ports to avoid conflicts. Both webforJ and Webswing typically run on port `8080`. You should change either the Webswing port or the webforJ port.
 :::
 
 ## Webswing server setup
@@ -138,7 +138,9 @@ Register the filter in your `web.xml`:
 </filter-mapping>
 ```
 
+:::important Access in Production Environments
 For production environments, replace the wildcard (`*`) in `Access-Control-Allow-Origin` with your specific Webswing server URL for security.
+:::
 
 ### Basic Implementation
 
