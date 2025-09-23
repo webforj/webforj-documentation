@@ -33,16 +33,24 @@ Webswing and webforJ must run on different ports to avoid conflicts. Both webfor
 2. **Extract the archive** to your preferred location (e.g., `/opt/webswing` or `C:\webswing`)
 3. **Start the server** using the platform-specific scripts:
 
-```bash
-# Linux
-webswing.sh
+<Tabs>
+      <TabItem value="Linux" label="Linux" default>
+        ```bash
+        webswing.sh
+        ```
+      </TabItem>
+      <TabItem value="macOS" label="macOS">
+        ```bash
+        webswing.command
+        ```
+      </TabItem>
+      <TabItem value="Windows" label="Windows">
+        ```bash
+        webswing.bat
+        ```
+      </TabItem>
+</Tabs>
 
-# macOS
-webswing.command
-
-# Windows
-webswing.bat
-```
 
 4. **Verify the server is running** by accessing `http://localhost:8080`
 

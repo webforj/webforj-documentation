@@ -7,7 +7,7 @@ The `WebswingConnector` provides bidirectional communication between your webfor
 
 ## Sending actions to Swing
 
-The `performAction` method allows your webforJ app to trigger functionality in the Swing app. This is useful for synchronizing state, triggering updates, or controlling the Swing app's behavior from the web interface.
+The `performAction()` method allows your webforJ app to trigger functionality in the Swing app. This is useful for synchronizing state, triggering updates, or controlling the Swing app's behavior from the web interface.
 
 For example, if your Swing app has a custom action handler for refreshing data:
 
@@ -19,7 +19,7 @@ connector.performAction("refresh");
 You can also send data along with the action. The Swing app receives this through its Webswing API integration:
 
 ```java
-// Send a command with data from webforj
+// Send a command with data from webforJ
 connector.performAction("selectRecord", "12345");
 
 // Send binary data

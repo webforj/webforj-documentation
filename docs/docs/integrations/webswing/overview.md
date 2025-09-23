@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Webswing
 hide_table_of_contents: true
 hide_giscus_comments: true
 sidebar_class_name: new-content
@@ -24,7 +24,7 @@ Many organizations have substantial investments in Java desktop applications tha
 - Time and cost constraints of a full rewrite
 - Need to maintain feature parity with existing functionality
 
-Webswing enables these applications to be web-accessible without modification, preserving their original functionality and appearance.
+Webswing allows these applications to be web-accessible without modification, preserving their original functionality and appearance.
 
 ## Integration with webforJ
 
