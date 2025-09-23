@@ -69,7 +69,7 @@ height='250px'
 
 ## Event registration {#event-registration}
 
-Events enable communication between different parts of your webforJ application. The `ElementComposite` class provides event handling with support for debouncing, throttling, filtering, and custom event data collection.
+Events enable communication between different parts of your webforJ app. The `ElementComposite` class provides event handling with support for debouncing, throttling, filtering, and custom event data collection.
 
 Register event listeners using the `addEventListener()` method:
 
