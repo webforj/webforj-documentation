@@ -8,15 +8,15 @@ slug: element_composite
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/element/ElementComposite" top='true'/>
 
-The `ElementComposite` class serves as a versatile foundation for managing composite elements in webforJ applications. Its primary purpose is to facilitate the interaction with HTML elements, represented by the `Element` class, by providing a structured approach to handle properties, attributes, and event listeners. It allows for implementation and reuse of elements in an application. Use the `ElementComposite` class when implementing Web Components for use in webforJ applications.
+The `ElementComposite` class serves as a versatile foundation for managing composite elements in webforJ applications. Its primary purpose is to facilitate the interaction with HTML elements, represented by the `Element` class, by providing a structured approach to handle properties, attributes, and event listeners. It allows for implementation and reuse of elements in an app. Use the `ElementComposite` class when implementing Web Components for use in webforJ applications.
 
 While using the `ElementComposite` class, using the `getElement()` method will give you access to the underlying `Element` component. Similarly, the `getNodeName()` method gives you the name of that node in the DOM. 
 
 :::tip
-It is possible to do everything with the `Element` class itself, without using `ElementComposite` class. However, the provided methods in the `ElementComposite` give users a way to reuse the work that's being done. 
+it's possible to do everything with the `Element` class itself, without using `ElementComposite` class. However, the provided methods in the `ElementComposite` give users a way to reuse the work that's being done. 
 :::
 
-Throughout this guide, we'll be implementing the [Shoelace QR code web component](https://shoelace.style/components/qr-code) using the `ElementComposite` class.
+This guide demonstrates how to implement the [Shoelace QR code web component](https://shoelace.style/components/qr-code) using the `ElementComposite` class.
 
 <ComponentDemo 
 path='/webforj/qrdemo?' 
@@ -26,7 +26,7 @@ height='175px'
 
 ## Property and attribute descriptors {#property-and-attribute-descriptors}
 
-Properties and attributes in web components represent the state of the component. They are often used to manage data or configuration. The `ElementComposite` class provides a convenient way to work with properties and attributes.
+Properties and attributes in web components represent the state of the component. they're often used to manage data or configuration. The `ElementComposite` class provides a convenient way to work with properties and attributes.
 
 Properties and attributes can be declared and initialized as `PropertyDescriptor` members of the `ElementComposite` class being written, and then used in the code. To define properties and attributes, use the `set()` method to set the value of a property. For example, `set(PropertyDescriptor<V> property, V value)` sets a property to a specified value. 
 
@@ -44,12 +44,12 @@ set(TITLE, "My Title");
 set(VALUE, "My Value");
 ```
 
-In addition to setting a property, utilize the `get()` method in the `ElementComposite` class to access and read properties. The `get()` method can be passed an optional `boolean` value, which is false by default, to dictate whether the method should make a trip to the client to retrieve the value. This impacts performance, but might be necessary if the property can be modified purely in the client. 
+In addition to setting a property, use the `get()` method in the `ElementComposite` class to access and read properties. The `get()` method can be passed an optional `boolean` value, which is false by default, to dictate whether the method should make a trip to the client to retrieve the value. This impacts performance, but might be necessary if the property can be modified purely in the client. 
 
 A `Type` can also be passed to the method, which dictates what to cast retrieved result to.
 
 :::tip
-This `Type` is not overtly necessary, and adds an extra layer of specification as the data is retrieved.
+This `Type` isn't overtly necessary, and adds an extra layer of specification as the data is retrieved.
 :::
 
 ```java
@@ -100,7 +100,7 @@ Events carry data from the client to your Java code. Access this data through `g
 
 For specialized event handling, create custom event classes with configured payloads using `@EventName` and `@EventOptions` annotations.
 
-In the example below, a click event has been created and then added to the QR code component. This event, when fired, will display the "X" coordinate of the mouse at the time of clicking the component, which is provided to the Java event as data. A method is then implemented to allow the user to access this data, which is how it is displayed in the application.
+In the example below, a click event has been created and then added to the QR code component. This event, when fired, will display the "X" coordinate of the mouse at the time of clicking the component, which is provided to the Java event as data. A method is then implemented to allow the user to access this data, which is how it's displayed in the app.
 
 <ComponentDemo 
 path='/webforj/qrevent?' 
@@ -108,22 +108,22 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## ElementEventOptions {#elementeventoptions}
+## `ElementEventOptions` {#elementeventoptions}
 
 `ElementEventOptions` lets you customize event behavior by configuring what data to collect, when events fire, and how they're processed. Here's a comprehensive code snippet showing all the configuration options:
 
 ```java
 ElementEventOptions options = new ElementEventOptions()
     // Collect custom data from the client
-    .addData("query", "this.value")
+    .addData("query", "component.value")
     .addData("timestamp", "Date.now()")
-    .addData("isValid", "this.checkValidity()")
+    .addData("isValid", "component.checkValidity()")
     
     // Execute JavaScript before event fires
-    .setCode("this.classList.add('processing');")
+    .setCode("component.classList.add('processing');")
     
     // Only fire if conditions are met
-    .setFilter("this.value.length >= 2")
+    .setFilter("component.value.length >= 2")
     
     // Delay execution until user stops typing (300ms)
     .setDebounce(300, DebouncePhase.TRAILING);
@@ -161,7 +161,7 @@ Combine event configurations from different sources using `mergeWith()`. Base op
 ElementEventOptions merged = baseOptions.mergeWith(specificOptions);
 ```
 
-## Interacting with Slots {#interacting-with-slots}
+## Interacting with slots {#interacting-with-slots}
 
 Web components often use slots to allow developers to define the structure of a component from the outside. A slot is a placeholder inside a web component that can be filled with content when using the component. In the context of the `ElementComposite` class, slots provide a way to customize the content within a component. The following methods are provided to allow developers to interact with and manipulate slots:
 
@@ -171,6 +171,6 @@ Web components often use slots to allow developers to define the structure of a 
 
 3. **`getFirstComponentInSlot()`**: This method is designed to fetch the first component assigned to the slot. Optionally pass a specific class type to filter the results of this method.
 
-It is also possible to use the `add()` method with a `String` parameter to specify the desired slot in which to add the passed component.
+it's also possible to use the `add()` method with a `String` parameter to specify the desired slot in which to add the passed component.
 
 These interactions allow developers to harness the power of web components by providing a clean and straightforward API for manipulating slots, properties, and handling events within the `ElementComposite` class.
