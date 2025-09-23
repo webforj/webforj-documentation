@@ -158,7 +158,7 @@ import com.webforj.component.webswing.WebswingConnector;
 public class SwingAppView extends Composite<Div> {
   private WebswingConnector connector;
 
-  public LegacyAppView() {
+  public SwingAppView() {
     // Initialize the connector with your Webswing application URL
     connector = new WebswingConnector("http://localhost:8080/myapp/");
 
