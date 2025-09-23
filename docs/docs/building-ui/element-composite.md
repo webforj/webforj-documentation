@@ -141,7 +141,7 @@ Control when and how often events fire:
 options.setDebounce(300, DebouncePhase.TRAILING); // Wait 300ms after last event
 ```
 
-**Throttling** - Limits execution frequency:
+**Throttling** limits execution frequency:
 
 ```java
 options.setThrottle(100); // Fire at most once per 100ms
