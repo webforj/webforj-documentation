@@ -98,7 +98,7 @@ Events carry data from the client to your Java code. Access this data through `g
 
 ## Custom event classes {#custom-event-classes}
 
-For specialized event handling, create custom event classes with configured payloads using `@EventName` and `@EventOptions` annotations:
+For specialized event handling, create custom event classes with configured payloads using `@EventName` and `@EventOptions` annotations.
 
 In the example below, a click event has been created and then added to the QR code component. This event, when fired, will display the "X" coordinate of the mouse at the time of clicking the component, which is provided to the Java event as data. A method is then implemented to allow the user to access this data, which is how it is displayed in the application.
 
