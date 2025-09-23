@@ -135,7 +135,7 @@ addEventListener("input", this::handleSearch, options);
 
 Control when and how often events fire:
 
-**Debouncing** - Delays execution until activity stops:
+**Debouncing** delays execution until activity stops:
 
 ```java
 options.setDebounce(300, DebouncePhase.TRAILING); // Wait 300ms after last event
