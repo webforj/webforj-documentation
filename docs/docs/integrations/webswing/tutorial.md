@@ -163,7 +163,7 @@ connector.onAction(event -> {
 });
 ```
 
-This is where the modernization happens - instead of the Swing dialog, users see a modern web form built with webforJ components.
+Now, instead of the Swing dialog, users see a modern web form built with webforJ components.
 
 ## Step 3: bidirectional communication
 
