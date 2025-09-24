@@ -70,7 +70,7 @@ After configuration, your Swing app will be accessible at `http://localhost:8080
 
 ## webforJ Integration
 
-Once your Webswing server is running with your Swing app configured, you can integrate it into your webforJ app. This involves adding the dependency, configuring CORS, and creating a view with the `WebswingConnector` component.
+Once your Webswing server is running with your Swing app configured, you can integrate it into your webforJ app. This involves adding the dependency, configuring Cross-Origin Resource Sharing (CORS), and creating a view with the `WebswingConnector` component.
 
 ### Add dependency
 
