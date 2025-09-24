@@ -17,9 +17,9 @@ Before you begin, make sure you have the following prerequisites:
 
 The integration architecture consists of:
 
-1. **Webswing Server** - Runs your Swing app, captures the GUI rendering, and handles user input
-2. **webforJ Application** - Hosts your web app with the embedded `WebswingConnector`
-3. **Browser Client** - Displays both the webforJ UI and the embedded Swing app
+1. **Webswing Server**: runs your Swing app, captures the GUI rendering, and handles user input
+2. **webforJ Application**: hosts your web app with the embedded `WebswingConnector`
+3. **Browser Client**: displays both the webforJ UI and the embedded Swing app
 
 :::important Port Configuration
 Webswing and webforJ must run on different ports to avoid conflicts. Both webforJ and Webswing typically run on port `8080`. You should change either the Webswing port or the webforJ port.
