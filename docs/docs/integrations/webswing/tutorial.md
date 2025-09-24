@@ -65,7 +65,7 @@ public class Application {
 
 This app works perfectly as a desktop app but lacks web accessibility. Users must install Java and run the JAR file locally.
 
-## Step 1 - Making it Webswing-aware
+## Step 1: making it Webswing-aware
 
 The first step is making the Swing app detect whether it's running under Webswing. This allows it to adapt its behavior without breaking desktop compatibility.
 
