@@ -165,7 +165,7 @@ connector.onAction(event -> {
 
 This is where the modernization happens - instead of the Swing dialog, users see a modern web form built with webforJ components.
 
-## Step 3 - bidirectional communication
+## Step 3: bidirectional communication
 
 The integration becomes powerful when communication flows both ways. The webforJ app can send updates back to the Swing app, keeping both UIs synchronized.
 
