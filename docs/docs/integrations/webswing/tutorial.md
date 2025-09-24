@@ -1,5 +1,5 @@
 ---
-title: "Tutorial - Modernization"
+title: "Modernization Tutorial"
 sidebar_position: 4
 ---
 
