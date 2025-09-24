@@ -60,11 +60,11 @@ Once the server is running, access the admin console at `http://localhost:8080/a
 
 In the admin console, configure:
 
-- **Application Name** - Becomes part of the URL path (e.g., `myapp` → `http://localhost:8080/myapp/`)
-- **Main Class** - The entry point of your Swing app
-- **Classpath** - Path to your app JAR and dependencies
-- **JVM Arguments** - Memory settings, system properties, and other JVM options
-- **Home Directory** - Working directory for the app
+- **Application Name**: becomes part of the URL path (e.g., `myapp` → `http://localhost:8080/myapp/`)
+- **Main Class**: the entry point of your Swing app
+- **Classpath**: path to your app JAR and dependencies
+- **JVM Arguments**: memory settings, system properties, and other JVM options
+- **Home Directory**: working directory for the app
 
 After configuration, your Swing app will be accessible at `http://localhost:8080/[app-name]/`
 
