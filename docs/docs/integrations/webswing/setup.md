@@ -9,9 +9,9 @@ Integrating Webswing with webforJ involves two components: the Webswing server t
 
 Before you begin, make sure you have the following prerequisites:
 
-- **Java desktop app** - A Swing, JavaFX, or SWT app packaged as a JAR file
-- **Webswing server** - Download from [webswing.org](https://webswing.org)
-- **webforJ version `25.10` or later** - Required for `WebswingConnector` support
+- **Java desktop app**: a Swing, JavaFX, or SWT app packaged as a JAR file
+- **Webswing server**: download from [webswing.org](https://webswing.org)
+- **webforJ version `25.10` or later**: required for `WebswingConnector` support
 
 ## Architecture overview
 
