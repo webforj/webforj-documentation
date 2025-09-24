@@ -117,7 +117,7 @@ private void handleDoubleClick(MouseEvent e) {
 
 This pattern - checking `isWebswing` and branching behavior - allows the same codebase to work in both environments.
 
-## Step 2 - Creating the webforJ wrapper
+## Step 2: creating the webforJ wrapper
 
 Now that the Swing app can communicate via events, create a webforJ app that embeds the Swing app and adds modern web features such as web-based dialogs and forms.
 
