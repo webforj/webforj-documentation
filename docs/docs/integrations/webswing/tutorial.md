@@ -115,7 +115,7 @@ private void handleDoubleClick(MouseEvent e) {
 }
 ```
 
-This pattern - checking `isWebswing` and branching behavior - allows the same codebase to work in both environments.
+By branching behavior according to the value of `isWebswing`, the codebase can handle both environments.
 
 ## Step 2: creating the webforJ wrapper
 
