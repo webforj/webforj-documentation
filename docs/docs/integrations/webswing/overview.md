@@ -51,9 +51,9 @@ Combine modern web UI built with webforJ with specialized desktop functionality:
 
 The integration operates through three layers:
 
-1. **Webswing Server** - Runs your Java desktop app, capturing its visual output and processing user input
-2. **WebswingConnector Component** - A webforJ component that embeds the Webswing client, managing the connection and communication with the server
-3. **Communication Protocol** - Bidirectional messaging that allows your webforJ app to send commands to the Swing app and receive events back
+1. **Webswing Server**: runs your Java desktop app, capturing its visual output and processing user input
+2. **WebswingConnector Component**: a webforJ component that embeds the Webswing client, managing the connection and communication with the server
+3. **Communication Protocol**: bidirectional messaging that allows your webforJ app to send commands to the Swing app and receive events back
 
 When a user accesses your webforJ app, the `WebswingConnector` establishes a connection to the Webswing server. The server creates or reconnects to an app instance, and begins streaming the visual state to the browser. User interactions (mouse, keyboard) are captured and sent to the server, where they're replayed on the actual Swing app.
 
