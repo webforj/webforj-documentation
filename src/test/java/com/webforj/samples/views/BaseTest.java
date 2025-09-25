@@ -6,6 +6,7 @@ import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.Tracing;
+import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import com.microsoft.playwright.options.LoadState;
 import com.webforj.samples.config.RunConfig;
 
@@ -32,6 +33,8 @@ public abstract class BaseTest {
                 new BrowserType.LaunchOptions()
                         .setHeadless(RunConfig.isHeadless())
                         .setSlowMo(RunConfig.getSlowMo()));
+
+        PlaywrightAssertions.setDefaultAssertionTimeout(15000);
     }
 
     @BeforeEach
