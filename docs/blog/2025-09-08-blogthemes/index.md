@@ -130,7 +130,7 @@ The way webforJ handles dark mode is worth understanding because it's not what y
 Your color choices are really about relationships between elements. One thing needs to be darker than another, this needs to stand out against that background. When you switch themes, those relationships stay the same even though the actual colors change.
 
 
-```java
+```css
 .notification-card {
   background: var(--dwc-color-primary-15);      /* A light background tone */
   color: var(--dwc-color-primary-text-15);      /* Appropriate text color */
