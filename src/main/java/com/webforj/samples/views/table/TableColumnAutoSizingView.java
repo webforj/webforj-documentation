@@ -62,49 +62,40 @@ public class TableColumnAutoSizingView extends Composite<FlexLayout> {
     table.setHeight("450px");
     table.setStriped(true);
 
-    numberCol = table.addColumn("Number", MusicRecord::getNumber)
-        .setWidth(50f)
-        .setMinWidth(40f);
-
-    titleCol = table.addColumn("Title", MusicRecord::getTitle)
-        .setWidth(100f)
-        .setMinWidth(80f);
-
-    artistCol = table.addColumn("Artist", MusicRecord::getArtist)
-        .setWidth(200f)
-        .setMinWidth(100f);
-
-    genreCol = table.addColumn("Genre", MusicRecord::getMusicType)
-        .setWidth(80f)
-        .setMinWidth(60f);
-
+    numberCol = table.addColumn("Number", MusicRecord::getNumber);
+    titleCol = table.addColumn("Title", MusicRecord::getTitle);
+    artistCol = table.addColumn("Artist", MusicRecord::getArtist);
+    genreCol = table.addColumn("Genre", MusicRecord::getMusicType);
     costCol = table.addColumn("Cost", r -> String.format("$%.2f", r.getCost()))
-        .setWidth(60f)
-        .setMinWidth(50f)
         .setAlignment(Column.Alignment.RIGHT);
 
+    applyDefaultColumnSizing();
     table.setRepository(Service.getMusicRecords());
     return table;
   }
 
-  private void autoSizeAllColumns() {
-    table.setColumnsToAutoSize().thenAccept(ignored -> {});
-  }
-
-  private void autoFitColumns() {
-    table.setColumnsToAutoFit().thenAccept(ignored -> {});
-  }
-
-  private void autoSizeTitleColumn() {
-    table.setColumnToAutoSize(titleCol).thenAccept(ignored -> {});
-  }
-
-  private void resetToDefaults() {
+  private void applyDefaultColumnSizing() {
     numberCol.setFlex(0f).setWidth(50f).setMinWidth(40f);
     titleCol.setFlex(0f).setWidth(100f).setMinWidth(80f);
     artistCol.setFlex(0f).setWidth(200f).setMinWidth(100f);
     genreCol.setFlex(0f).setWidth(80f).setMinWidth(60f);
     costCol.setFlex(0f).setWidth(60f).setMinWidth(50f);
+  }
+
+  private void autoSizeAllColumns() {
+    table.setColumnsToAutoSize();
+  }
+
+  private void autoFitColumns() {
+    table.setColumnsToAutoFit();
+  }
+
+  private void autoSizeTitleColumn() {
+    table.setColumnToAutoSize(titleCol);
+  }
+
+  private void resetToDefaults() {
+    applyDefaultColumnSizing();
     table.refreshColumns();
   }
 }
