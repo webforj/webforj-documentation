@@ -105,7 +105,7 @@ If you prefer keeping everything in your Java file, inline styles work nicely he
 
 You can also create multiple theme variations for different contexts:
 
-```java
+```css
 /* Standard corporate theme */
 html[data-app-theme="corporate"] {
   --dwc-color-primary-h: 215;
