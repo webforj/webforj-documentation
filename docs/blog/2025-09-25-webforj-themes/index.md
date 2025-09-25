@@ -2,15 +2,16 @@
 title: "Transform Your webforJ App with Professional Theming"
 description: "Learn webforJ's theming system from built-in themes to custom color palettes and dark mode. "
 slug: guide-webforj-themes
-date: 2025-09-10
+date: 2025-09-25
 authors: Lauren Alamo
 tags: [webforJ, themes, styling]
+image: "https://cdn.webforj.com/webforj-documentation/blogs/webforj-themes/cover.png"
 hide_table_of_contents: true
 ---
 
 <!-- vale Google.FirstPerson = NO -->
 
-![cover image](/img/webforjthemes.png)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/webforj-themes/cover.png)
 
 Modern applications need flexible theming systems. Users expect dark mode support, but they also want apps that reflect brand identity and adapt to different contexts. Building themes traditionally meant maintaining separate stylesheets, duplicating CSS rules, and coordinating updates across multiple files.
 
