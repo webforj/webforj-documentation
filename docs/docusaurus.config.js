@@ -58,6 +58,7 @@ const config = {
   scripts: [
     { src: '/js/dwc-theme-switcher.js', async: false },
     { src: '/js/link-decorator.js' },
+    { src: '/js/style-startforj.js', defer: true},
     { src: '/js/latest-webforj-version.js', defer: true}
   ],
   headTags: [
@@ -247,7 +248,7 @@ const config = {
           type: 'html',
           value: `
           <a aria-label="Start your app with startforJ" id="startforj-link" target="_blank" href="https://docs.webforj.com/startforj/" class="navbar__link">
-            <div class="startforj-container">
+            <div div aria-hidden="true" class="startforj-container">
               <span class="startforj-hover-text">startforJ</span>
               <span class="startforj-idle-text">Start your app</span>
            </div>
