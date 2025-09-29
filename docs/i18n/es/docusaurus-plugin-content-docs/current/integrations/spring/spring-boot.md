@@ -204,7 +204,7 @@ webforj.devtools.livereload.static-resources-enabled=true
 
 Tu archivo `webforj.conf` existente sigue funcionando. Apúntalo a tu clase principal:
 
-```Ini title="webforj.conf"
+```ini title="webforj.conf"
 webforj.entry = org.example.Application
 ```
 
