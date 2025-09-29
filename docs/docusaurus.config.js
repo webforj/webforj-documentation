@@ -58,6 +58,7 @@ const config = {
   scripts: [
     { src: '/js/dwc-theme-switcher.js', async: false },
     { src: '/js/link-decorator.js' },
+    { src: '/js/style-startforj.js', defer: true},
     { src: '/js/latest-webforj-version.js', defer: true}
   ],
   headTags: [
@@ -161,7 +162,7 @@ const config = {
           position: 'left',
           label: ' ',
           href: 'https://github.com/webforj/webforj/releases/latest',
-          target: '_blank', 
+          target: '_blank',
           id: 'webforj-version-badge',
           title: 'Latest webforJ release'
         },
@@ -194,6 +195,18 @@ const config = {
             {
               to: 'blog',
               label: 'Blog'
+            },
+            {
+              label: "Report Issue",
+              href: 'https://github.com/webforj/webforj/issues/new/choose',
+              target: '_blank',
+              rel: null,
+            },
+            {
+              label: "Contact us",
+              href: 'https://webforj.com/schedule-discovery/',
+              target: '_blank',
+              rel: null,
             }
           ]
         },
@@ -201,12 +214,6 @@ const config = {
           label: 'Developers',
           position: 'right',
           items: [
-            {
-              label: "startforJ",
-              href: 'https://docs.webforj.com/startforj/',
-              target: '_blank',
-              rel: null,
-            },
             {
               label: "DWC HueCraft",
               href: 'https://webforj.github.io/huecraft/',
@@ -237,22 +244,16 @@ const config = {
           ]
         },
         {
-          label: 'Support',
           position: 'right',
-          items: [
-            {
-              label: "Report Issue",
-              href: 'https://github.com/webforj/webforj/issues/new/choose',
-              target: '_blank',
-              rel: null,
-            },
-            {
-              label: "Contact us",
-              href: 'https://webforj.com/schedule-discovery/',
-              target: '_blank',
-              rel: null,
-            }
-          ]
+          type: 'html',
+          value: `
+          <a aria-label="Start your app with startforJ" id="startforj-link" target="_blank" href="https://docs.webforj.com/startforj/" class="navbar__link">
+            <div div aria-hidden="true" class="startforj-container">
+              <span class="startforj-hover-text">startforJ</span>
+              <span class="startforj-idle-text">Start your app</span>
+           </div>
+          </a>
+          `,
         },
         {
           type: 'html',

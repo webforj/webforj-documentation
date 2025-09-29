@@ -17,10 +17,8 @@ import com.webforj.samples.views.terminal.commands.TimeCommand;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Queue;
 
 @Route
 @FrameTitle("Custom Terminal")
@@ -31,7 +29,7 @@ import java.util.Queue;
 """)
 public class TerminalView extends Composite<Terminal> {
   private Terminal self = getBoundComponent();
-  private Queue<Character> commandBuffer = new LinkedList<>();
+  private StringBuilder commandBuffer = new StringBuilder();
   private List<String> commandHistory = new ArrayList<>();
   private int historyIndex = -1;
   private final Map<String, TerminalCommand> commands = new HashMap<>();
@@ -65,14 +63,15 @@ public class TerminalView extends Composite<Terminal> {
   }
 
   private void processCommand() {
-    StringBuilder buffer = new StringBuilder();
-    for (char c : commandBuffer) {
-      buffer.append(c);
-    }
-    String commandLine = buffer.toString();
-    commandBuffer.clear();
+    String commandLine = commandBuffer.toString();
+    commandBuffer.setLength(0);
 
-    String[] args = commandLine.trim().split(" ");
+    if (commandLine.isBlank()) {
+      self.write("$ ");
+      return;
+    }
+
+    String[] args = commandLine.trim().split("\\s+");
     TerminalCommand command = commands.get(args[0]);
     if (command == null) {
       self.writeln("Unknown command: " + args[0]);
@@ -88,34 +87,31 @@ public class TerminalView extends Composite<Terminal> {
     boolean isPrintable = input.chars().allMatch(c -> (c >= 0x20 && c <= 0x7E) || c >= 0xA0);
 
     switch (input) {
-      case "\r": // Enter Key
+      case "\r":
         self.write("\r\n");
-        if (!commandBuffer.isEmpty()) {
-          StringBuilder buffer = new StringBuilder();
-          for (char c : commandBuffer) {
-            buffer.append(c);
-          }
-          commandHistory.add(buffer.toString());
+        if (commandBuffer.length() > 0) {
+          commandHistory.add(commandBuffer.toString());
           historyIndex = commandHistory.size();
         }
         processCommand();
         break;
 
-      case "\u007F": // Backspace
-        if (!commandBuffer.isEmpty()) {
-          commandBuffer.poll();
+      case "\u007F":
+      case "\b":
+        if (commandBuffer.length() > 0) {
+          commandBuffer.deleteCharAt(commandBuffer.length() - 1);
           self.write("\b \b");
         }
         break;
 
-      case "\u001b[A": // Up arrow key
+      case "\u001b[A":
         if (historyIndex > 0) {
           historyIndex--;
           replaceCommandBuffer(commandHistory.get(historyIndex));
         }
         break;
 
-      case "\u001b[B": // Down arrow key
+      case "\u001b[B":
         if (historyIndex < commandHistory.size() - 1) {
           historyIndex++;
           replaceCommandBuffer(commandHistory.get(historyIndex));
@@ -127,7 +123,7 @@ public class TerminalView extends Composite<Terminal> {
 
       default:
         if (isPrintable) {
-          commandBuffer.add(input.charAt(0));
+          commandBuffer.append(input);
           self.write(input);
         }
         break;
@@ -135,14 +131,11 @@ public class TerminalView extends Composite<Terminal> {
   }
 
   private void replaceCommandBuffer(String newBuffer) {
-    while (!commandBuffer.isEmpty()) {
+    while (commandBuffer.length() > 0) {
       self.write("\b \b");
-      commandBuffer.poll();
+      commandBuffer.setLength(commandBuffer.length() - 1);
     }
-
-    for (char c : newBuffer.toCharArray()) {
-      commandBuffer.add(c);
-      self.write(String.valueOf(c));
-    }
+    commandBuffer.append(newBuffer);
+    self.write(newBuffer);
   }
 }

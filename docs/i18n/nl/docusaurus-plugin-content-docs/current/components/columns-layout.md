@@ -1,22 +1,22 @@
 ---
 title: ColumnsLayout
 sidebar_position: 25
-_i18n_hash: fb5b6ef5a20567d8a86d04c022a0449e
+_i18n_hash: 25558ea9869bae96974e292e7cc1939d
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-columns-layout" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="columnslayout" location="com/webforj/component/layout/columnslayout/ColumnsLayout" top='true'/>
 
-De `ColumnsLayout` component in webforJ stelt ontwikkelaars in staat om lay-outs te maken met behulp van een flexibele en responsieve verticale lay-out. Deze lay-out biedt dynamische kolommen die zich aanpassen op basis van de beschikbare breedte. Deze component vereenvoudigt het creëren van multi-kolom lay-outs door automatisch de breekpunten en uitlijningen te beheren.
+De `ColumnsLayout` component in webforJ stelt ontwikkelaars in staat om lay-outs te creëren met een flexibele en responsieve verticale indeling. Deze lay-out biedt dynamische kolommen die zich aanpassen op basis van de beschikbare breedte. Deze component vereenvoudigt het maken van lay-outs met meerdere kolommen door automatisch de breekpunten en uitlijningen te beheren.
 
-:::info Horizontale lay-outs 
-Dit kan worden gebruikt in plaats van, of in combinatie met, de [`FlexLayout`](./flex-layout) component - een even krachtige tool voor horizontale lay-outs.
+:::info Horizontale indelingen 
+Dit kan worden gebruikt in plaats van, of in combinatie met, de [`FlexLayout`](./flex-layout) component - een even krachtige tool voor horizontale indelingen.
 :::
 
 ## Basisprincipes {#basics}
 
-Wanneer de `ColumnsLayout` voor het eerst wordt geïnstantieerd, gebruikt deze twee kolommen om items weer te geven die aan de lay-out zijn toegevoegd. Standaard neemt deze de volledige breedte van zijn bovenliggende elementen en groeit indien nodig om extra inhoud te bevatten. De weergave van toegevoegde items kan verder worden afgestemd met behulp van de [`Breakpoint`](./columns-layout#breakpoints) en [`Alignment`](./columns-layout#vertical-and-horizontal-item-alignments) instellingen, die in de volgende secties in meer detail worden besproken.
+Wanneer de `ColumnsLayout` voor het eerst wordt aangemaakt, gebruikt deze twee kolommen om de items die aan de lay-out zijn toegevoegd weer te geven. Standaard neemt deze de volledige breedte van zijn bovenliggende elementen in en groeit deze indien nodig om extra inhoud te kunnen bevatten. De weergave van toegevoegde items kan verder worden afgestemd met behulp van [`Breakpoint`](./columns-layout#breakpoints) en [`Alignment`](./columns-layout#vertical-and-horizontal-item-alignments) instellingen, die in de volgende secties in meer detail worden besproken.
 
 <ComponentDemo 
 path='/webforj/columnslayout?' 
@@ -26,42 +26,48 @@ height="450px"
 
 ## Breekpunten {#breakpoints}
 
-In wezen is de `ColumnsLayout` ontworpen om een vloeiend, rasterachtig systeem te bieden dat zich aanpast aan de breedte van zijn bovenliggende container. In tegenstelling tot traditionele vaste raster systemen, laat deze lay-out ontwikkelaars toe om een aantal kolommen op een bepaalde breedte op te geven, en berekent dynamisch het aantal weergegeven kolommen op basis van ingestelde `Breakpoint` objecten. 
+In essentie is de `ColumnsLayout` ontworpen om een vloeibaar, rasterachtig systeem te bieden dat zich aanpast aan de breedte van zijn bovenliggende container. In tegenstelling tot traditionele vaste roostersystemen, stelt deze lay-out ontwikkelaars in staat om een aantal kolommen op een bepaalde breedte op te geven en berekent deze dynamisch het aantal weergegeven kolommen op basis van ingestelde `Breakpoint` objecten. 
 
-Dit stelt een `ColumnsLayout` in staat om soepel aan te passen van een meer beperkte ruimte op kleine schermen naar een breder gebied op grotere schermen, en biedt een responsief ontwerp aan een ontwikkelaar zonder dat een op maat gemaakte implementatie nodig is.
+Dit stelt een `ColumnsLayout` in staat om soepel over te gaan van een meer beperkte ruimte op kleine schermen naar een bredere ruimte op grotere schermen, en biedt een responsief ontwerp aan een ontwikkelaar zonder dat er een aangepaste implementatie nodig is.
 
 ### Een `Breakpoint` begrijpen {#understanding-a-breakpoint}
 
-Een `Breakpoint` kan worden gespecificeerd met behulp van de `Breakpoint` klasse, die drie parameters accepteert:
+Een `Breakpoint` kan worden gespecificeerd met behulp van de `Breakpoint` klasse, die drie parameters neemt:
 
 1. **Naam (optioneel)**:
-Het benoemen van een breekpunt maakt het mogelijk om hier in toekomstige configuraties naar te verwijzen.
+Een breekpunt een naam geven stelt je in staat om het in toekomstige configuraties te verwijzen.
 
 2. **Minimale breedte**:
-Ieder breekpunt heeft een specifieke range die bepaalt wanneer zijn lay-out wordt toegepast. De minimale breedte wordt expliciet gedefinieerd, en het volgende breekpunt bepaalt de maximale breedte als deze bestaat. Je kunt een geheel getal gebruiken om de minimale breedte in pixels te definiëren of een `String` gebruiken om andere eenheden op te geven, zoals `vw`, `%`, of `em`.
+Elk breekpunt heeft een specifieke reeks die bepaalt wanneer zijn lay-out wordt toegepast. De minimale breedte is expliciet gedefinieerd, en het volgende breekpunt bepaalt de maximale breedte als deze bestaat. Je kunt een geheel getal gebruiken om de minimale breedte in pixels te definiëren of een `String` gebruiken om andere eenheden zoals `vw`, `%`, of `em` op te geven.
 
 3. **Aantal kolommen**:
-Geef op hoeveel kolommen een breekpunt moet hebben met dit geheel getal.
+Geef aan hoeveel kolommen een breekpunt moet hebben met dit geheel getal.
 
-:::info Evaluatie van `Breakpoint`
-Breekpunten worden geëvalueerd in oplopende volgorde van de breedte, wat betekent dat de lay-out het eerste bijpassende breekpunt zal gebruiken.
+
+:::info `Breakpoint` evaluatie
+Breekpunten worden geëvalueerd in opklimmende volgorde van de breedte, wat betekent dat de lay-out het eerste overeenkomende breekpunt zal gebruiken.
 :::
+
 
 ### Breekpunten toepassen {#applying-breakpoints}
 
-Breekpunten worden op een `ColumnsLayout` toegepast op een van de twee manieren: tijdens de constructie, of door gebruik te maken van de `addBreakpoint(Breakpoint)` methode zoals hieronder weergegeven. 
+Breekpunten worden op een `ColumnsLayout` toegepast op een van de twee manieren: tijdens de constructie, of in een `List` met behulp van de `setBreakpoints()` methode: 
 
 ```java
-ColumnsLayout layout = new ColumnsLayout()
+ColumnsLayout layout = new ColumnsLayout();
+
+List<Breakpoint> breakpoints = List.of(
     // Eén kolom bij breedtes >= 0px
-    .addBreakpoint(new Breakpoint(0, 1))
+    new Breakpoint(0, 1),
     // Twee kolommen bij breedtes >= 600px
-    .addBreakpoint(new Breakpoint(600, 2))
+    new Breakpoint(600, 2),
     // Vier kolommen bij breedtes >= 1200px
-    .addBreakpoint(new Breakpoint(1200, 4));  
+    new Breakpoint(1200, 4));
+
+layout.setBreakpoints(breakpoints);
 ```
 
-De demonstratie hieronder toont een voorbeeld van het instellen van meerdere breekpunten tijdens de constructie, het gebruik van breekpunten om de [`Span`](#column-span-and-spans-per-breakpoint) van een component te configureren, en demonstreert de herformattering mogelijkheden van de `ColumnsLayout` wanneer de app wordt gewijzigd:
+De demonstratie hieronder laat een voorbeeld zien van het instellen van meerdere breekpunten bij de constructie, het gebruik van breekpunten om de [`Span`](#column-span-and-spans-per-breakpoint) van een component te configureren, en demonstreert de aanpassingsmogelijkheden van de `ColumnsLayout` wanneer de app wordt aangepast in formaat:
 
 <ComponentDemo 
 path='/webforj/columnslayoutbreakpoints?' 
@@ -71,24 +77,24 @@ height="375px"
 
 ## Kolom `Span` en spans per `Breakpoint` {#column-span-and-spans-per-breakpoint}
 
-Kolomspannen in `ColumnsLayout` stellen je in staat te regelen hoeveel kolommen een item in beslag neemt, waardoor je meer controle hebt over het uiterlijk van je lay-out bij verschillende breedtes. Dit is vooral handig wanneer je wilt dat bepaalde elementen meer of minder ruimte in beslag nemen, afhankelijk van de schermgrootte of ontwerpeisen.
+Kolomspans in `ColumnsLayout` stellen je in staat te bepalen hoeveel kolommen een item in beslag neemt, waardoor je meer controle hebt over het uiterlijk van je lay-out bij verschillende breedtes. Dit is vooral nuttig wanneer je bepaalde elementen meer of minder ruimte wilt laten innemen afhankelijk van de schermgrootte of ontwerpeisen.
 
-### Kolomspannen beheren {#managing-column-spans}
+### Kolomspans beheren {#managing-column-spans}
 
 Standaard neemt elk item in de `ColumnsLayout` precies één kolom in beslag. Je kunt dit gedrag echter aanpassen door de kolomspan voor individuele items in te stellen. Een span specificeert het aantal kolommen dat een item moet innemen.
 
 ```java
-Button button = new Button("Klik op mij");
+Button button = new Button("Klik hier");
 layout.addComponent(button);
-// Item beslaat twee kolommen
+// Item neemt twee kolommen in beslag
 layout.setSpan(button, 2);
 ```
 
-In het bovenstaande voorbeeld neemt de knop twee kolommen in beslag in plaats van de standaard één. De `setSpan()` methode stelt je in staat op te geven hoeveel kolommen een component binnen de lay-out moet beslaan.
+In het bovenstaande voorbeeld neemt de knop twee kolommen in beslag in plaats van de standaard één. De `setSpan()` methode stelt je in staat op te geven hoeveel kolommen een component moet beslaan binnen de lay-out.
 
-### Kolomspannen aanpassen met breekpunten {#adjusting-column-spans-with-breakpoints}
+### Kolomspans aanpassen met breekpunten {#adjusting-column-spans-with-breakpoints}
 
-Je kunt ook kolomspannen dynamisch aanpassen op basis van breekpunten. Deze functie is handig wanneer je wilt dat een item verschillende aantallen kolommen beslaat, afhankelijk van de schermgrootte. Bijvoorbeeld, je wilt misschien dat een element een enkele kolom op mobiele apparaten in beslag neemt, maar meerdere kolommen op grotere schermen.
+Je kunt kolomspans ook dynamisch aanpassen op basis van breekpunten. Deze functie is nuttig wanneer je wilt dat een item verschillende aantallen kolommen beslaat, afhankelijk van de schermgrootte. Bijvoorbeeld, je wilt misschien dat een element één kolom in beslag neemt op mobiele apparaten, maar meerdere kolommen op grotere schermen.
 
 ```java
 TextField email = new TextField("Email");
@@ -100,20 +106,20 @@ List.of(
   new ColumnsLayout.Breakpoint("large", "60em", 3)
 )
 //...
-//emailveld zal twee kolommen beslaan wanneer het middelgrote breekpunt actief is
+//emailveld zal twee kolommen beslaan wanneer het gemiddelde breekpunt actief is
 columnsLayout.setSpan(email, "medium", 2);
 //...
 ```
 
-Dit niveau van aanpassing zorgt ervoor dat je lay-out responsief blijft en geschikt gestructureerd is op verschillende apparaten.
+Dit niveau van aanpassing zorgt ervoor dat je lay-out responsief en op de juiste manier gestructureerd blijft op verschillende apparaten.
 
 ## Items binnen kolommen plaatsen {#placing-items-within-columns}
 
-`ColumnsLayout` biedt de mogelijkheid om items in specifieke kolommen te plaatsen, waardoor je meer controle hebt over de rangschikking van elementen. Je kunt handmatig specificeren waar een item moet verschijnen binnen de lay-out, zodat belangrijke componenten zoals bedoeld worden weergegeven.
+`ColumnsLayout` biedt de mogelijkheid om items in specifieke kolommen te plaatsen, waardoor je meer controle hebt over de rangschikking van elementen. Je kunt handmatig opgeven waar een item moet verschijnen binnen de lay-out, zodat belangrijke componenten worden weergegeven zoals bedoeld.
 
 ### Basis kolomplaatsing {#basic-column-placement}
 
-Standaard worden items geplaatst in de eerst beschikbare kolom, van links naar rechts vullen. Je kunt dit gedrag echter overschrijven en de exacte kolom specificeren waar een item moet worden geplaatst. Om een item in een specifieke kolom te plaatsen, gebruik je de `setColumn()` methode. In dit voorbeeld wordt de knop in de tweede kolom van de lay-out geplaatst, ongeacht de volgorde waarin deze ten opzichte van andere componenten is toegevoegd:
+Standaard worden items geplaatst in de eerstvolgende beschikbare kolom, van links naar rechts. Je kunt dit gedrag echter overschrijven en de exacte kolom specificeren waar een item moet worden geplaatst. Om een item in een specifieke kolom te plaatsen, gebruik je de `setColumn()` methode. In dit voorbeeld wordt de knop in de tweede kolom van de lay-out geplaatst, ongeacht de volgorde waarin deze is toegevoegd ten opzichte van andere componenten:
 
 ```java
 Button button = new Button("Verzenden");
@@ -124,7 +130,7 @@ layout.setColumn(button, 2);
 
 ### Plaatsing aanpassen per breekpunt {#adjusting-placement-per-breakpoint}
 
-Net zoals met kolomspannen, gebruik je breekpunten om de plaatsing van items op basis van de schermgrootte aan te passen. Dit is handig voor het herordenen of verplaatsen van elementen in de lay-out naarmate de viewport verandert.
+Net als bij kolomspans, gebruik je breekpunten om de plaatsing van items aan te passen op basis van de schermgrootte. Dit is nuttig voor het opnieuw ordenen of verplaatsen van elementen in de lay-out naarmate het venster verandert.
 
 ```java
 TextField email = new TextField("Email");
@@ -136,12 +142,12 @@ List.of(
   new ColumnsLayout.Breakpoint("large", "60em", 3)
 )
 //...
-//emailveld verschijnt in de tweede kolom wanneer middelgrote breekpunt actief is
+//emailveld zal verschijnen in de tweede kolom wanneer gemiddelde breekpunt actief is
 columnsLayout.setColumn(email, "medium", 2); 
 //...
 ```
 
-In de volgende demonstratie, let op het feit dat wanneer het `"medium"` breekpunt wordt geactiveerd, het `email` veld beide kolommen beslaat, en het `confirmPassword` veld wordt geplaatst in de eerste kolom, in plaats van zijn standaard plaatsing in de tweede kolom:
+In de volgende demonstratie, let op dat wanneer het `"medium"` breekpunt wordt geactiveerd, het `email` veld in beide kolommen beslaat en het `confirmPassword` veld in de eerste kolom wordt geplaatst, in plaats van zijn standaardplaatsing in de tweede kolom:
 
 <ComponentDemo 
 path='/webforj/columnslayoutspancolumn?' 
@@ -150,24 +156,24 @@ height="375px"
 />
 
 :::tip Vermijd botsingen
-Wanneer meerdere items in een lay-out met verschillende spannen en/of kolomtoewijzingen worden geplaatst, zorg ervoor dat de gecombineerde spannen en plaatsingen van items in een rij niet overlappen. De lay-out probeert automatisch de ruimte soepel te beheren, maar zorgvuldige planning van spannen en breekpunten voorkomt ongewenste weergave van items.
+Wanneer meerdere items in een lay-out worden geplaatst met verschillende spans en/of kolomtoewijzingen, zorg ervoor dat de gecombineerde spans en plaatsingen van items in een rij niet overlappen. De lay-out probeert automatisch de ruimte goed te beheren, maar zorgvuldige vormgeving van spans en breekpunten voorkomt onbedoelde weergave van items.
 :::
 
 ## Verticale en horizontale itemuitlijningen {#vertical-and-horizontal-item-alignments}
 
 Elk item in de `ColumnsLayout` kan zowel horizontaal als verticaal binnen zijn kolom worden uitgelijnd, wat controle geeft over hoe de inhoud binnen de lay-out is gepositioneerd.
 
-**Horizontale uitlijning** van een item wordt geregeld met behulp van de `setHorizontalAlignment()` methode. Deze eigenschap bepaalt hoe een item zich binnen zijn kolom langs de horizontale as uitlijnt.
+**Horizontale uitlijning** van een item wordt geregeld met de `setHorizontalAlignment()` methode. Deze eigenschap bepaalt hoe een item is uitgelijnd binnen zijn kolom langs de horizontale as.
 
-**Verticale uitlijning** specificeert hoe een item is gepositioneerd binnen zijn kolom langs de verticale as. Dit is nuttig wanneer kolommen verschillende hoogtes hebben en je wilt regelen hoe items verticaal worden verdeeld. 
+**Verticale uitlijning** specificeert hoe een item is gepositioneerd binnen zijn kolom langs de verticale as. Dit is nuttig wanneer kolommen verschillende hoogtes hebben en je wilt controleren hoe items verticaal zijn verdeeld. 
 
-Beschikbare `Alignment` opties zijn:
+Beschikbare `Alignment` opties zijn onder andere:
 
-- `START`: Lijnt het item links van de kolom uit (standaard).
+- `START`: Lijnt het item links in de kolom (standaard).
 - `CENTER`: Centreert het item horizontaal binnen de kolom.
-- `END`: Lijnt het item rechts van de kolom uit.
-- `STRETCH`: Rekent het component om de lay-out te vullen.
-- `BASELINE`: Linieert op basis van de tekst of inhoud binnen de kolom, waardoor items worden uitgelijnd op de tekstbasislijn in plaats van andere uitlijningsopties.
+- `END`: Lijnt het item rechts in de kolom.
+- `STRETCH`: Strekt de component om de lay-out te vullen.
+- `BASELINE`: Lijnt op basis van de tekst of inhoud binnen de kolom, waarbij items worden uitgelijnd op de tekstbasislijn in plaats van op andere uitlijningsopties.
 - `AUTO`: Automatische uitlijning.
 
 <ComponentDemo 
@@ -178,31 +184,31 @@ height="500px"
 
 In de demo hierboven heeft de `Verzenden` knop `ColumnsLayout.Alignment.END` gekregen om ervoor te zorgen dat deze aan het einde, of in dit geval rechts, van zijn kolom verschijnt.
 
-## Itemafstand {#item-spacing}
+## Item spacing {#item-spacing}
 
-Het regelen van de ruimte tussen kolommen in de `ColumnsLayout` tussen kolommen (horizontale afstand) en tussen rijen (verticale afstand) helpt ontwikkelaars de lay-out te verfijnen.
+Het beheersen van de ruimte tussen kolommen in de `ColumnsLayout` tussen kolommen (horizontale spacing) en tussen rijen (verticale spacing) helpt ontwikkelaars om de lay-out verder te verfijnen.
 
-Om de horizontale afstand van de lay-out in te stellen, gebruik je de `setHorizontalSpacing()` methode:
+Om de horizontale spatiëring van de lay-out in te stellen, gebruik je de `setHorizontalSpacing()` methode:
 
 ```java
 // Stel 20px ruimte in tussen kolommen
 layout.setHorizontalSpacing(20);  
 ```
 
-Evenzo gebruik je de `setVerticalSpacing()` methode om de ruimte tussen de rijen van de lay-out in te stellen:
+Evenzo gebruik je de `setVerticalSpacing()` methode om de ruimte tussen rijen van de lay-out te configureren:
 
 ```java
 // Stel 15px ruimte in tussen rijen
 layout.setVerticalSpacing(15);  
 ```
 
-:::tip CSS-eenheden
-Je kunt een geheel getal gebruiken om de minimale breedte in pixels te definiëren of een `String` gebruiken om andere eenheden op te geven, zoals `vw`, `%`, of `em`.
+:::tip CSS eenheden
+Je kunt een geheel getal gebruiken om de minimale breedte in pixels te definiëren of een `String` gebruiken om andere eenheden zoals `vw`, `%`, of `em` op te geven.
 :::
 
 ## Horizontale en verticale lay-outs {#horizontal-and-vertical-layouts}
 
-Responsieve en aantrekkelijke lay-outs bouwen is mogelijk met zowel de [`FlexLayout`](./flex-layout) component als de `ColumnsLayout` component, evenals een combinatie van beide. Hieronder is een voorbeeld van het [formulier dat is gemaakt in het FlexLayout](./flex-layout#example-form) artikel, maar met een `ColumnLayout` schema in plaats van:
+Het bouwen van responsieve en aantrekkelijke lay-outs is mogelijk met zowel de [`FlexLayout`](./flex-layout) component als de `ColumnsLayout` component, evenals een combinatie van beide. Hieronder zie je een voorbeeld van de [formulier gemaakt in het FlexLayout](./flex-layout#example-form) artikel, maar met een `ColumnLayout` schema in plaats daarvan:
 
 <ComponentDemo 
 path='/webforj/columnslayoutform?' 
@@ -210,6 +216,6 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="700px"
 />
 
-## Stijlen {#styling}
+## Stijl {#styling}
 
 <TableBuilder name="ColumnsLayout" clientComponent />
