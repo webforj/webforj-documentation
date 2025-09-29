@@ -221,7 +221,7 @@ The app starts with an embedded Tomcat server on port 8080 by default. Your exis
 ## Configuration
 
 Use the `application.properties` file in `src/main/resources` to configure your app. 
- See [Property Configuration](/docs/configuration/properties.md) for information on webforJ configuration properties.
+ See [Property Configuration](/docs/configuration/properties) for information on webforJ configuration properties.
 
 The following webforJ `application.properties` settings are specific to the Spring framework:
 
