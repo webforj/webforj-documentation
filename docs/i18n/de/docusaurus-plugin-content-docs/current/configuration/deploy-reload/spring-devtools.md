@@ -1,24 +1,27 @@
 ---
 title: Spring DevTools
 sidebar_position: 30
-_i18n_hash: 5401d3aa92e9230c4f26c827dcf83162
+sidebar_class_name: updated-content
+_i18n_hash: 147474b17005c532723aacd8af9391ea
 ---
-Spring DevTools bietet automatische Neustarts der Anwendung bei Codeänderungen. webforJ DevTools fügt eine automatische Browseraktualisierung hinzu - wenn Spring Ihre Anwendung neu startet, wird der Browser automatisch über den LiveReload-Server von webforJ aktualisiert.
+Spring DevTools bietet automatische Anwendungsneustarts bei Codeänderungen. webforJ DevTools fügt eine automatische Browseraktualisierung hinzu - wenn Spring Ihre Anwendung neu startet, wird der Browser automatisch über den LiveReload-Server von webforJ aktualisiert.
 
-Verschiedene Dateitypen lösen unterschiedliche Neuladeverhalten aus. Änderungen im Java-Code verursachen einen vollständigen Spring-Neustart und eine Browseraktualisierung. Änderungen an CSS und Bildern werden ohne Seitenneuladen aktualisiert und bewahren dabei Formulardaten und Anwendungszustand.
+Verschiedene Dateitypen lösen unterschiedliche Neuladeverhalten aus. Änderungen am Java-Code führen zu einem vollständigen Spring-Neustart und einer Browseraktualisierung. Änderungen an CSS und Bildern werden ohne Neuladen der Seite aktualisiert, wodurch Formulardaten und Anwendungsstatus beibehalten werden.
 
-## Configuración de webforJ DevTools {#understanding-webforj-devtools}
+<!-- vale off -->
+## Verständnis von webforJ DevTools {#understanding-webforj-devtools}
+<!-- vale on -->
 
-webforJ erweitert Spring DevTools mit Browser-Synchronisierung. Wenn Spring Dateiänderungen erkennt und neu startet, aktualisiert webforJ DevTools automatisch Ihren Browser.
+webforJ erweitert Spring DevTools mit Browser-Synchronisation. Wenn Spring Dateiänderungen erkennt und neu startet, aktualisiert webforJ DevTools automatisch Ihren Browser.
 
-### Reload-Verhalten {#reload-behavior}
+### Neuladeverhalten {#reload-behavior}
 
-Verschiedene Dateitypen lösen unterschiedliche Neuladstrategien aus:
+Verschiedene Dateitypen lösen unterschiedliche Neulademechanismen aus:
 
-- **Java-Dateien** - Vollständiges Neuladen der Browserseite nach dem Spring-Neustart
-- **CSS-Dateien** - Stilaktualisierungen ohne Seitenneuladen  
-- **JavaScript-Dateien** - Vollständiges Neuladen der Browserseite nach dem Spring-Neustart
-- **Bilder** - Aktualisierung vor Ort ohne Seitenneuladen
+- **Java-Dateien**: Vollständiges Neuladen der Browserseite nach dem Spring-Neustart
+- **JavaScript-Dateien**: Vollständiges Neuladen der Browserseite nach dem Spring-Neustart
+- **CSS-Dateien**: Stilaktualisierungen ohne Neuladen der Seite  
+- **Bilder**: Aktualisierung vor Ort ohne Neuladen der Seite
 
 ## Abhängigkeiten {#dependencies}
 
@@ -39,15 +42,15 @@ Fügen Sie sowohl Spring DevTools als auch webforJ DevTools zu Ihrem Projekt hin
 </dependency>
 ```
 
-## Configuración {#configuration}
+## Konfiguration {#configuration}
 
-Aktivieren Sie webforJ DevTools in Ihren Anwendungs-Eigenschaften:
+Aktivieren Sie webforJ DevTools in Ihrer Datei `application.properties`:
 
 ```Ini title="application.properties"
-# Aktivieren Sie die automatische Browser-Aktualisierung von webforJ
+# Aktivieren Sie die automatische Browseraktualisierung von webforJ
 webforj.devtools.livereload.enabled=true
 
-# Aktivieren Sie sofortige Beendigung für schnellere Neustarts
+# Sofortiges Herunterfahren für schnellere Neustarts aktivieren
 server.shutdown=immediate
 ```
 
@@ -65,6 +68,16 @@ webforj.devtools.livereload.websocket-path=/webforj-devtools-ws
 # Herzschlagintervall in Millisekunden (Standard: 30000)
 webforj.devtools.livereload.heartbeat-interval=30000
 
-# Aktivieren Sie das Hot-Reload für statische Ressourcen (Standard: true)
+# Hot Reload für statische Ressourcen aktivieren (Standard: true)
 webforj.devtools.livereload.static-resources-enabled=true
+```
+
+<DocChip chip='since' label='25.03' /> Konfigurieren Sie das Öffnen des Browsers beim Anwendungsstart:
+
+```Ini title="application.properties"
+# Öffnen des Browsers aktivieren (Standard: false)
+webforj.devtools.browser.open=true
+
+# localhost, Hostname oder IP-Adresse (Standard: localhost)
+webforj.devtools.browser.host=localhost
 ```

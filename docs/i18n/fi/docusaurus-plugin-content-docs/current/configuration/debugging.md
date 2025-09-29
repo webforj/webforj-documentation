@@ -1,9 +1,9 @@
 ---
 title: Debugging
 sidebar_position: 1
-_i18n_hash: d296f9a16ac6e5962b6962aa55e98a52
+_i18n_hash: 057e00d21a3392bb3bf8d1fba1dea15f
 ---
-Virheenkorjaus on olennainen osa Java-kehitystä, joka auttaa kehittäjiä tunnistamaan ja korjaamaan ongelmia tehokkaasti. Tämä opas selittää, kuinka virheenkorjaus konfiguroidaan webforJ:lle Visual Studio Codessa, IntelliJ IDEA:ssa ja Eclipsessä.
+Virheenkorjauksen hallinta on olennainen osa Java-kehitystä, ja se auttaa kehittäjiä tunnistamaan ja korjaamaan ongelmia tehokkaasti. Tämä opas selittää, kuinka virheenkorjaus konfiguroidaan webforJ:ssä Visual Studio Codessa, IntelliJ IDEA:ssa ja Eclipsessä.
 
 <Tabs>
 <TabItem value="vscode" label="Visual Studio Code">
@@ -15,10 +15,10 @@ Virheenkorjaus on olennainen osa Java-kehitystä, joka auttaa kehittäjiä tunni
 </div>
 
 1. Avaa webforJ-projektisi VS Codessa.
-2. Paina <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> (tai <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> Macilla) avataksesi Suorita ja Virheenkorjaus -paneelin.
-3. Klikkaa "luo launch.json-tiedosto"
-4. Valitse Java ympäristöksi.
-5. Muokkaa `launch.json` vastamaan seuraavaa:
+2. Paina <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> (tai <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> Macilla) avataksesi Suorita ja virheenkorjaus -paneelin.
+3. Napsauta "create a launch.json file".
+4. Valitse ympäristöksi Java.
+5. Muokkaa `launch.json` seuraamaan seuraavaa:
 
 ```json title="launch.json"
 {
@@ -35,7 +35,7 @@ Virheenkorjaus on olennainen osa Java-kehitystä, joka auttaa kehittäjiä tunni
 }
 ```
 
-6. Tallenna tiedosto ja klikkaa Aloita virheenkorjaus.
+6. Tallenna tiedosto ja napsauta Aloita virheenkorjaus.
 
 </TabItem>
 <TabItem value="intellij" label="IntelliJ IDEA">
@@ -47,10 +47,10 @@ Virheenkorjaus on olennainen osa Java-kehitystä, joka auttaa kehittäjiä tunni
 </div>
 
 1. Avaa projektisi IntelliJ IDEA:ssa.
-2. Siirry kohteeseen Suorita → Muokkaa asetuksia.
-3. Klikkaa <kbd>+</kbd> -painiketta ja valitse Etä-JVM-virheenkorjaus.
-4. Aseta isäntäksi `localhost` ja portiksi `8000`.
-5. Tallenna asetukset ja klikkaa Virheenkorjaus liittääksesi käynnissä olevaan sovellukseen.
+2. Siirry kohtaan Suorita → Muokkaa asetuksia.
+3. Napsauta <kbd>+</kbd> -painiketta ja valitse Etä JVM -virheenkorjaus.
+4. Aseta isäntäkoneeksi `localhost` ja portiksi `8000`.
+5. Tallenna asetukset ja napsauta Virheenkorjaus liittääksesi käynnissä olevaan sovellukseen.
 
 </TabItem>
 <TabItem value="eclipse" label="Eclipse">
@@ -63,24 +63,26 @@ Virheenkorjaus on olennainen osa Java-kehitystä, joka auttaa kehittäjiä tunni
 
 1. Avaa projektisi Eclipsessä.
 2. Siirry kohtaan Suorita → Muokkaa asetuksia.
-3. Valitse Etä-Java-sovellus.
-4. Klikkaa Uusi kokoonpano ja aseta:
+3. Valitse Etä Java -sovellus.
+4. Napsauta Uusi konfiguraatio ja aseta:
    - Isäntä: `localhost`
    - Portti: `8000`
-5. Tallenna ja aloita virheenkorjaus.
+5. Tallenna ja käynnistä virheenkorjain.
 
 </TabItem>
 </Tabs>
 
-## Virheenkorjaajan käyttöönotto {#running-the-debugger}
+## Virheenkorjaimen suorittaminen {#running-the-debugger}
 
 Kun olet konfiguroinut IDE:si:
 
-1. Käynnistä webforJ-sovelluksesi käyttäen `mvnDebug jetty:run`.
-2. Suorita debug-kokoonpanosi IDE:ssäsi.
-3. Aseta pysäytyspisteet ja aloita virheenkorjaus.
+1. Käynnistä webforJ-sovelluksesi vastaavalla komennolla: 
+    - Jettylle käytä `mvnDebug jetty:run` 
+    - Spring Bootille käytä `mvnDebug spring-boot:run`
+2. Suorita virheenkorjauskonfiguraatio IDE:ssäsi.
+3. Aseta katkaisupisteitä ja aloita virheenkorjaus.
 
 :::tip Virheenkorjausvinkit
-1. Varmista, että portti 8000 on käytettävissä eikä estetty palomuurilla.
-2. Jos käytät jotain webforJ-mallipohjaa ja olet muuttanut porttinumeron pom.xml-tiedostossa, varmista, että virheenkorjauksessa käytettävä portti vastaa päivitettyä arvoa.
+1. Varmista, että portti 8000 on käytettävissä eikä sitä estä mikään palomuuri.
+2. Jos käytät jotain webforJ-arkkitehtuureista ja olet muuttanut porttinumeroa pom.xml-tiedostossa, varmista, että virheenkorjauksessa käytettävä portti vastaa päivitettyä arvoa.
 :::

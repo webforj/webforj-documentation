@@ -2,26 +2,27 @@
 title: Redeployment and Live Reload
 hide_table_of_contents: false
 hide_giscus_comments: true
-_i18n_hash: 2e8bf7fded04e11ec6bab6d8a7c1c2b5
+sidebar_class_name: has-new-content
+_i18n_hash: 9b0d2672241250200ed14343e57d3926
 ---
-Tehokkaat kehitysprosessit riippuvat työkaluista, jotka havaitsevat koodimuutokset ja päivittävät sovelluksen automaattisesti reaaliaikaisesti. Jatkuva käyttöönottaminen ja dynaaminen uudelleenlataus toimivat yhdessä yksinkertaistaen kehitysprosessia vähentämällä manuaalisia vaiheita, jolloin voit nähdä muutoksesi nopeasti ilman, että palvelinta tarvitsee käynnistää manuaalisesti uudelleen.
+Tehokkaat kehitystyöskentelyt nojaavat työkaluihin, jotka havaitsevat koodimuutoksia ja päivittävät sovelluksen automaattisesti reaaliajassa. Jatkuva käyttöönotto ja dynaaminen uudelleenlataus toimivat yhdessä yksinkertaistaen kehitysprosessia vähentämällä manuaalisia vaiheita, jolloin voit nähdä muutokset nopeasti ilman, että sinun tarvitsee käynnistää palvelinta manuaalisesti.
 
-## Uudelleen käyttöönotto {#redeployment}
+## Uudelleenversiointi {#redeployment}
 
-Uudelleen käyttöönotto Java-kehityksessä tarkoittaa koodimuutosten automaattista havaitsemista ja käyttöönottoa, jotta päivitykset näkyvät sovelluksessa ilman manuaalista palvelimen uudelleenkäynnistystä. Tämä prosessi sisältää yleensä Java-luokkien ja verkkoresurssien päivittämisen lennossa.
+Uudelleenversiointi Java-kehityksessä tarkoittaa koodimuutosten automaattista havaitsemista ja käyttöönottoa, jotta päivitykset näkyvät sovelluksessa ilman manuaalista palvelimen käynnistämistä. Tähän prosessiin liittyy tyypillisesti Java-luokkien ja verkkoresurssien päivittäminen lennossa.
 
-WebforJ-sovelluksessa tämä tarkoittaa WAR-tiedoston uudelleenluomista aina kun koodiin tehdään muutoksia.
+WebforJ-sovelluksessa tämä tarkoittaa WAR-tiedoston uudelleenluontia aina, kun koodissa tehdään muutoksia.
 
-Muutoksia Java-luokissa ja resurssit, jotka ovat luokkatiessä, seurataan yleensä IDE:n toimesta. Kun Java-luokkaa muutetaan ja tiedosto tallennetaan, joko IDE:n automaattisesti tai kehittäjän toimesta, nämä työkalut aktivoituvat kääntämään ja sijoittamaan päivitetyt luokkafileet kohdekansioon, jotta muutokset voidaan toteuttaa.
+Muutoksia Java-luokissa ja resurssien luokassa seurataan tyypillisesti IDE:llä. Kun Java-luokkaa muokataan ja tiedosto tallennetaan joko IDE:n toimesta automaattisesti tai kehittäjän toimesta manuaalisesti, nämä työkalut aktivoituvat kääntämään ja sijoittamaan päivitetyt luokkatehtävät kohdekansioon muutosten soveltamiseksi.
 
-Työkaluja ja asetuksia, jotka automatisoivat tai optimoivat selaimen uudelleenlataamista, voidaan lisätä sujuvamman kokemuksen saamiseksi.
+Parhaan kokemuksen saavuttamiseksi käytä automaattista uudelleenversiointia yhdessä työkalujen tai asetusten kanssa, jotka automatisoivat selaimen lataamisen.
 
-## Reaaliaikainen lataus {#live-reload}
+## Live reload {#live-reload}
 
-Reaaliaikainen lataus varmistaa, että kun muutokset on otettu käyttöön, selain heijastaa näitä päivityksiä reaaliajassa ilman manuaalista selaimen virkistystä.
+Kun muutokset on otettu käyttöön, live reload lataa sovelluksen automaattisesti uudelleen, jotta selain heijastaa päivityksiä välittömästi ilman manuaalista selaimen päivittämistä.
 
-WebforJ-sovelluksessa reaaliaikainen lataus voi automaattisesti päivittää näkymän, piirtäen komponentit uudelleen näyttämään sovelluksen uusimman tilan tai jopa korjaamaan muutoksia tarpeen mukaan.
+WebforJ-sovelluksessa live reload voi automaattisesti päivittää näkymän, renderöimällä komponentteja uudelleen näyttämään sovelluksen viimeisimmän tilan, tai jopa korjata muutoksia tarpeen mukaan pyynnöstä.
 
-## Aiheet {#topics}
+## Aiheita {#topics}
 
 <DocCardList className="topics-section" />
