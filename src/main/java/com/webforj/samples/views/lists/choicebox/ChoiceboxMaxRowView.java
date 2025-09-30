@@ -14,19 +14,26 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Choicebox Max Rows")
 public class ChoiceboxMaxRowView extends Composite<FlexLayout> {
 
-  ChoiceBox demoBox = new ChoiceBox("States");
+  ChoiceBox choiceBox = new ChoiceBox("States");
   NumberField numberField = new NumberField("Number of Rows");
   Button select = new Button("Apply", ButtonTheme.PRIMARY);
 
   public ChoiceboxMaxRowView() {
     getBoundComponent().setDirection(FlexDirection.COLUMN).setMargin("20px 0 0 20px").setSpacing("20px").setWidth(200);
-    getBoundComponent().add(demoBox, numberField, select);
-    numberField.setInvalidMessage("Number of rows cannot be empty.");
+    getBoundComponent().add(choiceBox, numberField, select);
+
+    numberField.setStep(1.0)
+        .setMax(50.0)
+        .setMin(0.0)
+        .setRequired(true)
+        .setValue((double) choiceBox.getMaxRowCount());
+
+    numberField.onValueChange(e -> {
+      select.setEnabled(!numberField.isInvalid());
+    });
+
     select.onClick(e -> {
-      if (!numberField.getText().isBlank())
-        demoBox.setMaxRowCount(Integer.valueOf(numberField.getText()));
-      else
-        numberField.setInvalid(true);
+      choiceBox.setMaxRowCount(numberField.getValue().intValue());
     });
 
     String[] states = { "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware",
@@ -36,7 +43,7 @@ public class ChoiceboxMaxRowView extends Composite<FlexLayout> {
         "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas",
         "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming" };
 
-    demoBox.insert(states);
-    demoBox.selectIndex(0);
+    choiceBox.insert(states);
+    choiceBox.selectIndex(0);
   }
 }
