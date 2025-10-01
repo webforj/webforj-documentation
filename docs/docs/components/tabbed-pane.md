@@ -118,10 +118,6 @@ The `TabbedPane` class has two constituent parts: a `Tab` that is displayed in a
 
 The `TabbedPane` supports navigating through the various tabs via swiping. This is ideal for a mobile application, but can also be configured via a built-in method to support mouse swiping. Both swiping and mouse swipping are disabled by default, but can be enabled with the `setSwipable(boolean)` and `setSwipableWithMouse(boolean)` methods, respectively. 
 
-<!-- <AppLayoutViewer path='https://demo.webforj.com?class=componentdemos.tabbedpanedemos.TabbedPaneSwipe&platform=mobile' mobile='true'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/java/componentdemos/tabbedpanedemos/TabbedPaneSwipe.java'
-/> -->
-
 ### Tab placement {#tab-placement}
 
 The `Tabs` within a `TabbedPane` can be placed in various positions within the component based on the application developers preference. Provided options are set using the provided enum, which has the values of `TOP`, `BOTTOM`, `LEFT`, `RIGHT`, or `HIDDEN`. The default setting is `TOP`.
