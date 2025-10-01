@@ -6,6 +6,7 @@ import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.Tracing;
+import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import com.microsoft.playwright.options.LoadState;
 import com.webforj.samples.config.RunConfig;
 
@@ -28,10 +29,24 @@ public abstract class BaseTest {
     @BeforeAll
     public void setupBrowser() {
         playwright = Playwright.create();
-        browser = playwright.chromium().launch(
-                new BrowserType.LaunchOptions()
-                        .setHeadless(RunConfig.isHeadless())
-                        .setSlowMo(RunConfig.getSlowMo()));
+        String name = RunConfig.getBrowser().toLowerCase();
+        BrowserType type;
+        switch (name) {
+            case "firefox":
+                type = playwright.firefox();
+                break;
+            case "webkit":
+                type = playwright.webkit();
+                break;
+            default:
+                type = playwright.chromium();
+                break;
+        }
+        browser = type.launch(new BrowserType.LaunchOptions()
+                .setHeadless(RunConfig.isHeadless())
+                .setSlowMo(RunConfig.getSlowMo()));
+
+        PlaywrightAssertions.setDefaultAssertionTimeout(15000);
     }
 
     @BeforeEach
