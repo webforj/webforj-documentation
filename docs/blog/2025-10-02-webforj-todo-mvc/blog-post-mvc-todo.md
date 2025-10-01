@@ -1,3 +1,14 @@
+---
+title: "Building a Todo App with MVC Pattern in webforJ"
+description: "Learning webforJ's styling system from a developer's perspective: using `@StyleSheet` and `@InlineStyleSheet` annotations, working with DWC design tokens, handling responsive layouts, and building complex demos that scale from simple components to full dashboards."
+slug: webforj-mvc
+date: 2025-10-02
+authors: Matthew Hawkins
+tags: [webforJ, MVC, Spring, Spring Boot, Front End, Back End]
+image: "https://cdn.webforj.com/webforj-documentation/blogs/buildingbettercss/cover.png"
+hide_table_of_contents: true
+---
+
 # Building a Todo App with MVC Pattern in webforJ
 
 Remember learning about MVC (Model-View-Controller) in university? For most, at least from what I hear when speaking to others - they had to actually create an app following this design paradigm, which greatly helps any future use of this pattern in the "real world". 
