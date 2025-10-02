@@ -19,7 +19,7 @@ All this to say that when I started working with webforJ, I saw it as the perfec
 
 ## The Mission: Clean Architecture, Real Application
 
-The goal was to build something simple, but that could clearly demonstrate the MVC design pattern. As many seasoned developers know, a simple "Todo List" application is a nearly ubiquitously accepted method to show how to do this in various technologies, and webforJ proved to be no exception. The goal was to implement a proper MVC (Model-View-Controller) pattern with Spring Boot integration, all while keeping the code clean and maintainable.
+The goal was to build something simple that could clearly demonstrate the MVC design pattern. As many seasoned developers know, a simple "Todo List" app is a nearly ubiquitously accepted method to show how to do this in various technologies, and webforJ proved to be no exception. The goal was to implement a proper MVC (Model-View-Controller) pattern with Spring Boot integration, all while keeping the code clean and maintainable.
 
 ## What is MVC Anyway?
 
