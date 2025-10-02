@@ -15,7 +15,7 @@ Remember learning about Model-View-Controller (MVC) in university? For most, at 
 
 For me, that class was right in the middle of COVID. Our instructor was a nice enough guy, but between the Zoom fatigue and lack of experience (I'm fairly sure it was his first or second term teaching), not only did we not end up actually building anything, but we spent time doing theoretical explorations of the various design patterns out there, with MVC only receiving a few days of review. 
 
-All this today that when I started working with webforJ, I saw it as the perfect opportunity to finally get hands-on with MVC – not just to understand the pattern properly this time, but also to learn how webforJ fits into this paradigm. Building a stereotypical todo app seemed like the ideal way to explore both.
+All this to say that when I started working with webforJ, I saw it as the perfect opportunity to finally get hands-on with MVC—not just to understand the pattern properly this time, but also to learn how webforJ fits into this paradigm. Building a stereotypical todo app seemed like the ideal way to explore both.
 
 ## The Mission: Clean Architecture, Real Application
 
