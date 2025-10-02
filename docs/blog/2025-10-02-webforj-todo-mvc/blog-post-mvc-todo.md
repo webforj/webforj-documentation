@@ -29,7 +29,7 @@ Before diving into code, let's demystify MVC in case any of you reading this als
 - **View**: What users see and interact with (the face)
 - **Controller**: The middleman coordinating between them (the nervous system)
 
-There are all sorts of metaphors and analogies relating real-life paradigms to MVC - I'll spare you having to read through more of them here. 
+There are all sorts of metaphors and analogies relating real-life paradigms to MVC. I'll spare you having to read through more of them here. 
 
 Of course, working with webforJ meant that the view in particular would be of interest - would it not only be straightforward to create a modern, responsive UI, but would working with the tools the framework provides also make wiring in the other two pieces quick and painless? 
 
