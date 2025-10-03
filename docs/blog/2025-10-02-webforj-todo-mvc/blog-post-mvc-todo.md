@@ -64,7 +64,7 @@ public class Todo {
 }
 ```
 
-That's our todo entity – clean and simple. The repository? Even simpler:
+That's our todo entity—clean and simple. The repository? Even simpler:
 
 ```java
 public interface TodoRepository extends JpaRepository<Todo, String> {
