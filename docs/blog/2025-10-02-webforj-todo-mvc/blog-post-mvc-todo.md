@@ -35,7 +35,7 @@ Of course, working with webforJ meant that the view in particular would be of in
 
 I'll walk through each of the layers, what I had to do to get them implemented, and leave you with the answer to this question.
 
-## The Backend
+## The back end
 
 Let's start with our Model layer. In webforJ with Spring Boot, this means **entities**, **repositories**, and **services**:
 
