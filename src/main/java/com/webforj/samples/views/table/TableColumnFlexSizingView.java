@@ -131,9 +131,9 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
 
   private void updateColumnFlex(NumberField field, Column<MusicRecord, String> column) {
     Double value = field.getValue();
-    if (value != null) {
+
+    if (value != null && value > 0) {
       column.setFlex(value.floatValue());
-      table.refreshColumns();
     }
   }
 
@@ -145,7 +145,6 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
     titleColumn.setFlex(2f);
     artistColumn.setFlex(1.5f);
     genreColumn.setFlex(1f);
-    table.refreshColumns();
   }
 
   private void setEqualFlex() {
@@ -156,6 +155,5 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
     titleColumn.setFlex(1f);
     artistColumn.setFlex(1f);
     genreColumn.setFlex(1f);
-    table.refreshColumns();
   }
 }
