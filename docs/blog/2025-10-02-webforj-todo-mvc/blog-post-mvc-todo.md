@@ -116,7 +116,7 @@ Here's where things got interesting. In my webforJ program, my front end was com
 
 I extended `Composite<T>`, and started building UIs that just made sense. Both my view, and the components within that view, were built from this foundational building block. No wrestling with templating languages or complex state management libraries. 
 
-The first class is the `TodoView`, which lives in the `views` directory, and is therefore automatically scanned for routing - in this case, as the home route. 
+The first class is the `TodoView`, which lives in the `views` directory, and is therefore automatically scanned for routing—in this case, as the home route. 
 
 ```java
 @Route("/")
