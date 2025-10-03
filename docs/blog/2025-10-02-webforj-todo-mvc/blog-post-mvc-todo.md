@@ -213,7 +213,7 @@ public class TodoItem extends Composite<FlexLayout> {
 
 The beauty of making `TodoItem` its own component is that it manages its own state and appearance. When you toggle that radio button, the component handles updating its own strikethrough styling. It's component composition at its finest – and those callbacks to the parent? That's just good old-fashioned function passing, no magic required.
 
-## The Controller
+## The controller
 
 Tying these two pieces of together, the `TodoController` acts as the coordinator between the View and Model layers, managing business logic and state:
 
