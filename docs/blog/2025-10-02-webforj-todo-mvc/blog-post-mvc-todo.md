@@ -273,7 +273,7 @@ Here's what happens when you add a new todo:
 
 To recap here, each piece has a clear job. The controller doesn't try to be a service, the service doesn't try to be a repository, and the view components don't try to be controllers. It's MVC in action, and it feels natural.
 
-## Small Sample Demonstrates Large Promise
+## Small sample demonstrates large promise
 
 Building this small sample gave me a little practical experience I never got while studying, and exemplified why this pattern is so widely used. It's not about following some rigid pattern from a textbook – it's about organizing your code in a way that makes sense both now and six months from now when you need to add features.
 
