@@ -17,7 +17,7 @@ For me, that class was right in the middle of COVID. Our instructor was a nice e
 
 All this to say that when I started working with webforJ, I saw it as the perfect opportunity to finally get hands-on with MVC—not just to understand the pattern properly this time, but also to learn how webforJ fits into this paradigm. Building a stereotypical todo app seemed like the ideal way to explore both.
 
-## The Mission: Clean Architecture, Real Application
+## The mission: clean architecture, real application
 
 The goal was to build something simple that could clearly demonstrate the MVC design pattern. As many seasoned developers know, a simple "Todo List" app is a nearly ubiquitously accepted method to show how to do this in various technologies, and webforJ proved to be no exception. The goal was to implement a proper MVC (Model-View-Controller) pattern with Spring Boot integration, all while keeping the code clean and maintainable.
 
