@@ -108,7 +108,7 @@ public class TodoService {
 }
 ```
 
-So we've got our data layer all set up with Spring Boot doing its thing. But data sitting in a database doesn't help anyone – we need to show it to users and let them interact with it. This is where I got to see how to use webforJ optimally to create a modern UI.
+So we've got our data layer all set up with Spring Boot doing its thing. But data sitting in a database doesn't help anyone—we need to show it to users and let them interact with it. This is where I got to see how to use webforJ optimally to create a modern UI.
 
 ## The Frontend
 
