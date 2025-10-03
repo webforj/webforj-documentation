@@ -259,7 +259,7 @@ Take the `Composite` pattern, for instance. When you extend `Composite<Div>`, yo
 
 The Spring Boot integration continues to make app building pleasant. Your `@Service` classes get autowired into your views, your `@Route` annotations get picked up automatically, and there's no weird workarounds or shortcuts that need to be taken.
 
-## Watching It All Come Together
+## Watching it all come together
 
 Here's what happens when you add a new todo:
 
