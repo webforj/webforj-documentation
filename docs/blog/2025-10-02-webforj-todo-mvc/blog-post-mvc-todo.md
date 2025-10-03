@@ -31,7 +31,7 @@ Before diving into code, let's demystify MVC in case any of you reading this als
 
 There are all sorts of metaphors and analogies relating real-life paradigms to MVC. I'll spare you having to read through more of them here. 
 
-Of course, working with webforJ meant that the view in particular would be of interest - would it not only be straightforward to create a modern, responsive UI, but would working with the tools the framework provides also make wiring in the other two pieces quick and painless? 
+Of course, working with webforJ meant that the view in particular would be of interest. Would it not only be straightforward to create a modern, responsive UI, but would working with the tools the framework provides also make wiring in the other two pieces quick and painless? 
 
 I'll walk through each of the layers, what I had to do to get them implemented, and leave you with the answer to this question.
 
