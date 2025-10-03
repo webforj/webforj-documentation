@@ -1,21 +1,23 @@
 ---
 title: "Building a Todo App with MVC Pattern in webforJ"
-description: "Learning webforJ's styling system from a developer's perspective: using `@StyleSheet` and `@InlineStyleSheet` annotations, working with DWC design tokens, handling responsive layouts, and building complex demos that scale from simple components to full dashboards."
+description: "Building a function todo app with the model-view-controller pattern in webforJ"
 slug: webforj-mvc
-date: 2025-10-02
+date: 2025-10-03
 authors: Matthew Hawkins
 tags: [webforJ, MVC, Spring, Spring Boot, Front End, Back End]
-image: "https://cdn.webforj.com/webforj-documentation/blogs/buildingbettercss/cover.png"
+image: "https://cdn.webforj.com/webforj-documentation/blogs/todo-mvc/cover.png"
 hide_table_of_contents: true
 ---
 
-# Building a Todo App with MVC Pattern in webforJ
+![cover image](mvc-cover.png)
 
 Remember learning about Model-View-Controller (MVC) in university? For most, at least from what I hear when speaking to others, they had to actually create an app following this design paradigm, which greatly helps any future use of this pattern in the "real world." 
 
 For me, that class was right in the middle of COVID. Our instructor was a nice enough guy, but between the Zoom fatigue and lack of experience (I'm fairly sure it was his first or second term teaching), not only did we not end up actually building anything, but we spent time doing theoretical explorations of the various design patterns out there, with MVC only receiving a few days of review. 
 
 All this to say that when I started working with webforJ, I saw it as the perfect opportunity to finally get hands-on with MVC—not just to understand the pattern properly this time, but also to learn how webforJ fits into this paradigm. Building a stereotypical todo app seemed like the ideal way to explore both.
+
+<!-- truncate -->
 
 ## The mission: clean architecture, real application
 
@@ -249,13 +251,13 @@ public class TodoController {
 }
 ```
 
-Notice how the controller isn't trying to do everything? It's not a REST endpoint (though we'll be exploring that in the near future!), and it's not managing database connections. It's just coordinating – taking requests from the view, applying business logic like filtering, and delegating the heavy lifting to the service layer.
+Notice how the controller isn't trying to do everything? It's not a REST endpoint (though we'll be exploring that in the near future!), and it's not managing database connections. It's just coordinating—taking requests from the view, applying business logic like filtering, and delegating the heavy lifting to the service layer.
 
 ## How this all works
 
 As I was building this, I never really ended up getting terribly stuck, or even moderately stuck. One would hope that a todo app wouldn't present such issues, but it became apparently that webforJ has been created in a way that naturally facilitates MVC without forcing it down your throat. The framework gives you these building blocks that naturally guide you toward good architecture.
 
-Take the `Composite` pattern, for instance. When you extend `Composite<Div>`, you're not just creating a component – you're creating something that knows how to manage its lifecycle, handle events, and compose with other components. It's like Lego blocks for UIs, but with type safety and IDE support.
+Take the `Composite` pattern, for instance. When you extend `Composite<Div>`, you're not just creating a component—you're creating something that knows how to manage its lifecycle, handle events, and compose with other components. It's like Lego blocks for UIs, but with type safety and IDE support.
 
 The Spring Boot integration continues to make app building pleasant. Your `@Service` classes get autowired into your views, your `@Route` annotations get picked up automatically, and there's no weird workarounds or shortcuts that need to be taken.
 
@@ -275,19 +277,21 @@ To recap here, each piece has a clear job. The controller doesn't try to be a se
 
 ## Small sample demonstrates large promise
 
-Building this small sample gave me a little practical experience I never got while studying, and exemplified why this pattern is so widely used. It's not about following some rigid pattern from a textbook – it's about organizing your code in a way that makes sense both now and six months from now when you need to add features.
+Building this small sample gave me a little practical experience I never got while studying, and exemplified why this pattern is so widely used. It's not about following some rigid pattern from a textbook—it's about organizing your code in a way that makes sense both now and six months from now when you need to add features.
 
 What webforJ brings to the table is a way to keep all of your code in Java, including the presentation layer. It gives you a clean way to build and route UIs without the complexity of modern JavaScript frameworks, and ihe Spring Boot integration means you get all the backend power you need without configuration hell.
 
 The event handling deserves a special mention too. Being able to write `text.onKeypress(e -> {...})` and have it just work is refreshing.
 
-## Looking Back (and Forward)
+## Looking back (and forward)
 
-This project started as a simple way to finally understand MVC properly after my COVID-interrupted education. What I discovered was that webforJ doesn't just support MVC – it makes it feel like the natural way to build applications. The framework gives you the tools (components, routing, dependency injection) and then gets out of your way.
+This project started as a simple way to finally understand MVC properly after my COVID-interrupted education. What I discovered was that webforJ doesn't just support MVC—it makes it feel like the natural way to build applications. The framework gives you the tools (components, routing, dependency injection) and then gets out of your way.
 
-The todo app might be simple, but it's architecturally sound. The separation between the Model (entities, repositories, services), View (components extending Composite), and Controller (coordinating logic) isn't forced – it emerges naturally from using webforJ's features.
+The todo app might be simple, but it's architecturally sound. The separation between the Model (entities, repositories, services), View (components extending Composite), and Controller (coordinating logic) isn't forced—it emerges naturally from using webforJ's features.
 
 And that's perhaps the best lesson from this whole experience: good frameworks don't force patterns on you; they make the right patterns feel obvious.
+
+![finished Todo App image](../../static/img/webforj-mvc.png)
 
 ---
 
