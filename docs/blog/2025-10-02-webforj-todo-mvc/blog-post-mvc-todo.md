@@ -112,7 +112,7 @@ So we've got our data layer all set up with Spring Boot doing its thing. But dat
 
 ## The front end
 
-Here's where things got interesting. In my webforJ program, my front end was comprised entirely of components, which helped me keep things simple and effective. 
+Here's where things got interesting. In my webforJ program, my front end was composed entirely of components, which helped me keep things simple and effective. 
 
 I extended `Composite<T>`, and started building UIs that just made sense. Both my view, and the components within that view, were built from this foundational building block. No wrestling with templating languages or complex state management libraries. 
 
