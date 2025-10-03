@@ -21,7 +21,7 @@ All this to say that when I started working with webforJ, I saw it as the perfec
 
 The goal was to build something simple that could clearly demonstrate the MVC design pattern. As many seasoned developers know, a simple "Todo List" app is a nearly ubiquitously accepted method to show how to do this in various technologies, and webforJ proved to be no exception. The goal was to implement a proper MVC (Model-View-Controller) pattern with Spring Boot integration, all while keeping the code clean and maintainable.
 
-## What is MVC Anyway?
+## What is MVC anyway?
 
 Before diving into code, let's demystify MVC in case any of you reading this also took your design patterns class during COVID. It's basically organizing your code into three distinct layers:
 
