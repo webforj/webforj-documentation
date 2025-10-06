@@ -5,5 +5,5 @@ ignorecase: false
 action:
   name: replace
 swap:
-  "(?i:webforj)": webforJ
-  "(?i:startforj)": startforJ
+  "(?i)(?<!/)webforj": webforJ
+  "(?i)(?<!/)startforj": startforJ
