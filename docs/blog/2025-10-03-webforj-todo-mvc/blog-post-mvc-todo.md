@@ -5,11 +5,11 @@ slug: webforj-mvc
 date: 2025-10-03
 authors: Matthew Hawkins
 tags: [webforJ, MVC, Spring, Spring Boot, Front End, Back End]
-image: "https://cdn.webforj.com/webforj-documentation/blogs/todo-mvc/cover.png"
+image: "https://cdn.webforj.com/webforj-documentation/blogs/webforj-todo-mvc/cover.png"
 hide_table_of_contents: true
 ---
 
-![cover image](mvc-cover.png)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/webforj-todo-mvc/cover.png)
 
 Remember learning about Model-View-Controller (MVC) in university? For most, at least from what I hear when speaking to others, they had to actually create an app following this design paradigm, which greatly helps any future use of this pattern in the "real world." 
 
@@ -291,7 +291,10 @@ The todo app might be simple, but it's architecturally sound. The separation bet
 
 And that's perhaps the best lesson from this whole experience: good frameworks don't force patterns on you; they make the right patterns feel obvious.
 
-![finished Todo App image](../../static/img/webforj-mvc.png)
+<img 
+  style={{margin: "0 auto", display: "block"}}
+  src="https://cdn.webforj.com/webforj-documentation/blogs/webforj-todo-mvc/webforj-mvc.png" alt="finished Todo App image" />
+
 
 ---
 
