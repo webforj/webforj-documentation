@@ -12,7 +12,7 @@ To successfully deploy and run a webforJ app, a couple key configuration files a
 The `webforj.conf` file is a core configuration file in webforJ, specifying app settings like entry points, debug mode, and client-server interaction. The file is in [HOCON format](https://github.com/lightbend/config/blob/master/HOCON.md), and should be located in the `resources` directory.
 
 :::tip
-If you are integrating with the [Spring Framework](../integrations/spring/overview.md), you can set these `webforj.conf` properties in the `application.properties` file.
+If you are integrating with [Spring](../integrations/spring/overview.md), you can set these `webforj.conf` properties in the `application.properties` file.
 :::
 
 
