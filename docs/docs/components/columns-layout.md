@@ -51,16 +51,20 @@ Breakpoints are evaluated in ascending order of the width, meaning the layout wi
 
 ### Applying breakpoints {#applying-breakpoints}
 
-Breakpoints are applied to a `ColumnsLayout` in one of two ways: during construction, or by using the `addBreakpoint(Breakpoint)` method as shown below. 
+Breakpoints are applied to a `ColumnsLayout` in one of two ways: during construction, or in a `List` using the `setBreakpoints()` method: 
 
 ```java
-ColumnsLayout layout = new ColumnsLayout()
+ColumnsLayout layout = new ColumnsLayout();
+
+List<Breakpoint> breakpoints = List.of(
     // One column at widths >= 0px
-    .addBreakpoint(new Breakpoint(0, 1))
+    new Breakpoint(0, 1),
     // Two columns at widths >= 600px
-    .addBreakpoint(new Breakpoint(600, 2))
+    new Breakpoint(600, 2),
     // Four columns at widths >= 1200px
-    .addBreakpoint(new Breakpoint(1200, 4));  
+    new Breakpoint(1200, 4));
+
+layout.setBreakpoints(breakpoints);
 ```
 
 The demonstration below shows an example of setting multiple breakpoints at construction, using breakpoints to configure the [`Span`](#column-span-and-spans-per-breakpoint) of a component, and demonstrates the resizing capabilities of the `ColumnsLayout` when the app is resized:

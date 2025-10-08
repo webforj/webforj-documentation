@@ -179,7 +179,7 @@ public class FlexContainerBuilderView extends Composite<Div> {
 
   private void removeBox(int newNum) {
     while (newNum < numBoxes) {
-      boxes.get((int) numBoxes - 1).boxDestroy();
+      boxes.get((int) numBoxes - 1).destroyBox();
       boxes.remove((int) numBoxes - 1);
       numBoxes--;
     }

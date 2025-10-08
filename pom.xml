@@ -11,16 +11,19 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
-    <webforj.version>25.02</webforj.version>
+    <webforj.version>25.03</webforj.version>
     <warFileName>${project.artifactId}-${project.version}</warFileName>
     <jetty.version>12.0.14</jetty.version>
+    <playwright.version>1.50.0</playwright.version>
+    <threadCount>8</threadCount>
+
     <!--
       Configures automatic reload of Jetty server
       (with 1 second timeout) when new classes are compiled.
       Should be disabled when using a live reload system, such as JRebel.
       -->
     <jetty.scan>1</jetty.scan>
-    <jetty.port>8080</jetty.port>
+    <jetty.port>8998</jetty.port>
     <jetty.stopPort>9966</jetty.stopPort>
 
   </properties>
@@ -75,21 +78,26 @@
       <artifactId>webforj-terminal</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-simple</artifactId>
-      <version>2.0.16</version>
-    </dependency>
-    <dependency>
       <groupId>com.microsoft.playwright</groupId>
       <artifactId>playwright</artifactId>
-      <version>1.49.0</version>
-      <scope>test</scope>
+      <version>${playwright.version}</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <scope>test</scope>
+    </dependency>
+
     <dependency>
       <groupId>org.tuckey</groupId>
       <artifactId>urlrewritefilter</artifactId>
@@ -192,6 +200,7 @@
           <scan>${jetty.scan}</scan>
           <stopPort>${jetty.stopPort}</stopPort>
           <stopKey>${project.artifactId}</stopKey>
+          <stopWait>30</stopWait>
           <httpConnector>
             <port>${jetty.port}</port>
           </httpConnector>
@@ -216,11 +225,18 @@
           </execution>
         </executions>
       </plugin>
-      <!-- Runs the integration tests (*IT) after the server is started -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
-        <version>3.0.0-M7</version>
+        <version>3.2.5</version>
         <executions>
           <execution>
             <goals>
@@ -231,6 +247,19 @@
         </executions>
         <configuration>
           <trimStackTrace>false</trimStackTrace>
+          <parallel>both</parallel>
+          <threadCount>${threadCount}</threadCount>
+          <perCoreThreadCount>true</perCoreThreadCount>
+          <useFile>false</useFile>
+          <disableXmlReport>true</disableXmlReport>
+          <consoleOutputReporter>
+            <disable>false</disable>
+          </consoleOutputReporter>
+          <summaryFile>target/failsafe-reports/summary.txt</summaryFile>
+          <includes>
+            <include>**/*IT.java</include>
+          </includes>
+          <rerunFailingTestsCount>2</rerunFailingTestsCount>
         </configuration>
       </plugin>
       <plugin>
@@ -250,6 +279,100 @@
             <goals>
               <goal>run</goal>
             </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Docker commands -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <!-- Build Docker image -->
+          <execution>
+            <id>docker-e2e-build</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>docker</executable>
+              <arguments>
+                <argument>build</argument>
+                <argument>-t</argument>
+                <argument>webforj-integration-tests</argument>
+                <argument>.</argument>
+              </arguments>
+            </configuration>
+          </execution>
+
+          <!-- Build and run tests in Docker -->
+          <execution>
+            <id>docker-e2e</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>docker</executable>
+              <arguments>
+                <argument>run</argument>
+                <!-- Remove container after run -->
+                <argument>--rm</argument>
+                <!-- Avoid zombie processes -->
+                <argument>--init</argument>
+                <!-- For Chromium shared memory https://playwright.dev/docs/ci#docker -->
+                <argument>--ipc=host</argument>
+                <!-- Mount the project directory to /app in the container -->
+                <argument>--mount=type=bind,source=${project.basedir},target=/app</argument>
+                <!-- Cache Maven dependencies in Docker volume -->
+                <argument>-v</argument>
+                <argument>webforj-e2e-maven-repo:/var/maven/.m2</argument>
+                <argument>-e</argument>
+                <argument>MAVEN_CONFIG=/var/maven/.m2</argument>
+                <argument>webforj-integration-tests</argument>
+                <argument>mvn</argument>
+                <argument>-Dmaven.repo.local=/var/maven/.m2/repository</argument>
+                <argument>verify</argument>
+                <argument>-Dskip.npm</argument>
+              </arguments>
+            </configuration>
+          </execution>
+
+          <!-- Run specific test in Docker -->
+          <execution>
+            <id>docker-e2e-single</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>docker</executable>
+              <arguments>
+                <argument>run</argument>
+                <!-- Remove container after run -->
+                <argument>--rm</argument>
+                <!-- Avoid zombie processes -->
+                <argument>--init</argument>
+                <!-- For Chromium shared memory https://playwright.dev/docs/ci#docker -->
+                <argument>--ipc=host</argument>
+                <!-- Pass CI environment variable -->
+                <argument>-e</argument>
+                <argument>CI=true</argument>
+                <!-- Mount the project directory to /app in the container -->
+                <argument>--mount=type=bind,source=${project.basedir},target=/app</argument>
+                <!-- Cache Maven dependencies in Docker volume -->
+                <argument>-v</argument>
+                <argument>webforj-e2e-maven-repo:/var/maven/.m2</argument>
+                <argument>-e</argument>
+                <argument>MAVEN_CONFIG=/var/maven/.m2</argument>
+                <argument>webforj-integration-tests</argument>
+                <argument>mvn</argument>
+                <argument>-Dmaven.repo.local=/var/maven/.m2/repository</argument>
+                <argument>verify</argument>
+                <argument>-Dit.test=${test}</argument>
+                <argument>-Dskip.npm</argument>
+                <argument>-Dwebforj.e2e=${webforj.e2e:}</argument>
+              </arguments>
+            </configuration>
           </execution>
         </executions>
       </plugin>

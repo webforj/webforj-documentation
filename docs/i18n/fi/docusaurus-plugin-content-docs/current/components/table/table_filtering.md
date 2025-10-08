@@ -2,22 +2,13 @@
 sidebar_position: 35
 title: Filtering
 slug: filtering
-_i18n_hash: 110061605b615701c1832988833fe959
+sidebar_class_name: updated-content
+_i18n_hash: 008eef50f8ab27ec3f8a455fb5649f41
 ---
-`Table`-komponentti sallii suodatustoiminnallisuuden toteuttamisen, jonka avulla voit rajata näytettäviä tietoja tietyille kielille. Suodatus voidaan toteuttaa määrittämällä suodatuskriteerit käyttäen `setFilter(Predicate<T> filter)` -menetelmää, joka on saatavilla taulukkoon liittyvältä `Repository`-luokalta.
+`Table`-komponentti mahdollistaa suodattamisen toteuttamisen, jotta voidaan kaventaa näytettävää dataa tiettyjen kriteerien mukaan. Suodattaminen voidaan saavuttaa määrittelemällä suodatuskriteerit käyttäen `setFilter(Predicate<T> filter)` -metodia, joka on tarjottu taulukkoon liittyvälle `Repository`:lle.
 
-<ComponentDemo
-path='/webforj/tablefiltering?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableFilteringView.java'
-urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
-'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
-height='600px'
-/>
+Seuraavassa esimerkissä käytetään käyttäjän määrittelemiä kriteerejä hakukentästä ja `setBaseFilter()` -metodia suodattimen soveltamiseen `CollectionRepository`:lle `MusicRecord`:ien otsikoiden perusteella. Kun `commit()`-metodia aktivoidaan, taulukko päivitetään suodatetulla datalla.
 
-Yllä olevassa esimerkissä `setFilter()`-menetelmää käytetään määrittämään suodatuskriteerit `MusicRecord`-nimikkeen mukaan.
-
-:::tip
-`setFilter()`-menetelmä kuuluu `Repository`-luokkaan, eikä se ole `Table`-komponentin sisäänrakennettu toiminnallisuus.
+:::note
+`setBaseFilter()` -metodi kuuluu `CollectionRepository` -luokalle, ei `Table` -komponentille.
 :::
-
-Suodatus sovelletaan, kun käyttäjä muuttaa hakukentän sisältöä, päivittäen searchTerm-arvon ja laukaisee `commit()`-menetelmän, joka päivittää näytettävät tiedot.

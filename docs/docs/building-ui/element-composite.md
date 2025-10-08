@@ -1,13 +1,16 @@
 ---
-sidebar_position: 4
+sidebar_position: 1
 title: Element Composite
+sidebar_class_name: has-new-content
 slug: element_composite
 ---
 
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/element/ElementComposite" top='true'/>
 
+
 The `ElementComposite` class provides a structured base for building reusable web components in webforJ. It allows you to easily define properties, attributes, and event listeners of the underlying HTML elements in a type-safe, maintainable way. Use `ElementComposite` to encapsulate and integrate custom elements or third-party web components within your app.
+
 
 While using the `ElementComposite` class, using the `getElement()` method will give you access to the underlying `Element` component. Similarly, the `getNodeName()` method gives you the name of that node in the DOM. 
 
@@ -101,7 +104,7 @@ set(TITLE, "My Title");
 String title = get(TITLE);
 ```
 
-You can also use the overloaded `get()` method to specify whether to fetch the value from the client, and to cast to a specific type.
+In addition to setting a property, use the `get()` method in the `ElementComposite` class to access and read properties. The `get()` method can be passed an optional `boolean` value, which is false by default, to dictate whether the method should make a trip to the client to retrieve the value. This impacts performance, but might be necessary if the property can be modified purely in the client. 
 
 ```java
 String title = get(TITLE, false, String.class);
@@ -150,7 +153,7 @@ Events enable communication between parts of your app and create interactive com
 
 ```java
 // Example: Adding a click event listener
-addEventListener(ClickEvent.class, event -> {
+addEventListener(ElementClickEvent.class, event -> {
     // Handle the click event
 });
 ```
@@ -159,7 +162,23 @@ addEventListener(ClickEvent.class, event -> {
 The `ElementComposite` events are different from `Element` events, in that this doesn't allow any class, but only specified `Event` classes.
 :::
 
-In the following demonstration, a click event has been created and then added to the QR code component. This event, when fired, will display the "X" coordinate of the mouse at the time of clicking the component, which is provided to the Java event as data. A method is then implemented to allow the user to access this data, which is how it's displayed in the app.
+### Built-in event classes {#built-in-event-classes}
+
+webforJ provides pre-built event classes with typed data access:
+
+- **ElementClickEvent**: Mouse click events with coordinates (`getClientX()`, `getClientY()`), button information (`getButton()`), and modifier keys (`isCtrlKey()`, `isShiftKey()`, etc.)
+- **ElementDefinedEvent**: Fired when a custom element is defined in the DOM and ready for use
+- **ElementEvent**: Base event class providing access to raw event data, event type (`getType()`), and event ID (`getId()`)
+
+### Event payloads {#event-payloads}
+
+Events carry data from the client to your Java code. Access this data through `getData()` for raw event data or use typed methods when available on built-in event classes. For more details on efficiently using event payloads, see the [Events guide](../building-ui/events).
+
+## Custom event classes {#custom-event-classes}
+
+For specialized event handling, create custom event classes with configured payloads using `@EventName` and `@EventOptions` annotations.
+
+In the example below, a click event has been created and then added to the QR code component. This event, when fired, will display the "X" coordinate of the mouse at the time of clicking the component, which is provided to the Java event as data. A method is then implemented to allow the user to access this data, which is how it's displayed in the app.
 
 <ComponentDemo 
 path='/webforj/qrevent?' 
@@ -167,7 +186,60 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## `ElementCompositeContainer` for components with slots
+## `ElementEventOptions` {#elementeventoptions}
+
+`ElementEventOptions` lets you customize event behavior by configuring what data to collect, when events fire, and how they're processed. Here's a comprehensive code snippet showing all the configuration options:
+
+```java
+ElementEventOptions options = new ElementEventOptions()
+    // Collect custom data from the client
+    .addData("query", "component.value")
+    .addData("timestamp", "Date.now()")
+    .addData("isValid", "component.checkValidity()")
+    
+    // Execute JavaScript before event fires
+    .setCode("component.classList.add('processing');")
+    
+    // Only fire if conditions are met
+    .setFilter("component.value.length >= 2")
+    
+    // Delay execution until user stops typing (300ms)
+    .setDebounce(300, DebouncePhase.TRAILING);
+
+addEventListener("input", this::handleSearch, options);
+```
+
+### Performance control {#performance-control}
+
+Control when and how often events fire:
+
+**Debouncing** delays execution until activity stops:
+
+```java
+options.setDebounce(300, DebouncePhase.TRAILING); // Wait 300ms after last event
+```
+
+**Throttling** limits execution frequency:
+
+```java
+options.setThrottle(100); // Fire at most once per 100ms
+```
+
+Available debounce phases:
+
+- `LEADING`: Fire immediately, then wait
+- `TRAILING`: Wait for quiet period, then fire (default)
+- `BOTH`: Fire immediately and after quiet period
+
+## Options merging {#options-merging}
+
+Combine event configurations from different sources using `mergeWith()`. Base options provide common data for all events, while specific options add specialized configuration. Later options override conflicting settings.
+
+```java
+ElementEventOptions merged = baseOptions.mergeWith(specificOptions);
+```
+
+## Interacting with slots {#interacting-with-slots}
 
 Web components often use slots to allow developers to define the structure of a component from the outside. A slot is a placeholder inside a web component that can be filled with content when using the component.
 
