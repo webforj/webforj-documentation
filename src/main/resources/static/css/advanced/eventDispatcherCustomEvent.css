@@ -1,0 +1,7 @@
+.statusText {
+border: 2px solid #333;
+border-radius: var(--dwc-border-radius-s);
+padding: 8px 24px;
+font-size: var(--dwc-font-size-l);
+background: var(--dwc-surface-3);
+}

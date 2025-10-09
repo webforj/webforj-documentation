@@ -14,24 +14,6 @@ The webforJ event dispatcher system provides a flexible and type-safe way to han
 The `EventDispatcher` is for custom event management, see the [Events](/docs/building-ui/events) articles to learn how to handle standard element and component events.
 :::
 
-<ComponentDemo 
-path='/webforj/eventdispatchercustomevent' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/advanced/EventDispatcherCustomEventView.java'
-height = '300px'
-/>
-
-## Event dispatcher APIs
-
-[`EventDispatcher`](https://webforj.com/javadoc/com/webforj/dispatcher/EventDispatcher.html) is a minimalistic event manager for dispatching events to listeners. It's not tied to UI components or element events.
-
-**Available methods:**
-
-- `addListener(Class<T> eventClass, EventListener<T> listener)`: Registers a listener for a specific event type. Returns a `ListenerRegistration<T>` for later removal.
-- `removeListener(Class<T> eventClass, EventListener<T> listener)`: Removes a specific listener for the given event type.
-- `removeAllListeners(Class<T> eventClass)`: Removes all listeners for a given event type.
-- `removeAllListeners()`: Removes all listeners from the dispatcher.
-- `dispatchEvent(T event)`: Notifies all listeners of the given event.
-
 ## Creating and registering listeners
 
 To respond to events in your app, you first need to register one or more listeners with the `EventDispatcher`. A listener is simply a function or lambda that will be called whenever an event of the specified type is dispatched. This mechanism allows you to decouple event producers from consumers. You can register listeners for standard Java events or for your own custom event classes.
@@ -94,8 +76,47 @@ Whenever needed, dispatch the event and the listener will be triggered.
 dispatcher.dispatchEvent(new MyCustomEvent("Hello from custom event!"));
 ```
 
-## Best practices
+<ComponentDemo 
+path='/webforj/eventdispatchercustomevent' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/advanced/EventDispatcherCustomEventView.java'
+height = '300px'
+/>
 
-- Always remove listeners when they're no longer needed to avoid memory leaks.
-- Use the provided event payload methods to access event data efficiently.
-- Use the EventDispatcher for custom, non-UI event flows. For UI/component events, see the relevant component documentation.
+### Removing listeners and avoiding memory leaks
+
+When to remove listeners
+
+- Remove listeners when the consumer object is disposed or no longer reachable from the app UI (for example: closing a dialog, navigating away from a view, or when a long-lived service no longer needs callbacks).
+- Remove listeners when the event handling is tied to a transient lifecycle (short-lived tasks, temporary subscriptions, or one-time flows).
+
+How to remove listeners
+
+Use the returned `ListenerRegistration` to unregister a listener explicitly:
+
+```java
+ListenerRegistration<MyCustomEvent> reg = dispatcher.addListener(MyCustomEvent.class, ev -> handle(ev));
+// Later, when no longer needed
+reg.remove();
+```
+
+Or remove by passing the listener to the dispatcher:
+
+```java
+dispatcher.removeListener(MyCustomEvent.class, myListener);
+```
+
+If you registered multiple listeners for the same class and want to remove all of them at once:
+
+```java
+dispatcher.removeAllListeners(MyCustomEvent.class);
+```
+
+Listeners are objects or lambdas that often reference surrounding objects (for example, a view or its model). The EventDispatcher keeps those listener objects in internal collections; while stored, neither the listener nor the objects it references can be garbage-collected. In apps that create many short-lived views or components, forgotten listeners accumulate and keep those views alive, causing memory that can't be freed.
+
+- A dialog registers a listener that references the dialog's model. If the dialog is closed but the listener isn't removed, the dispatcher still references the listener, which in turn references the dialog and its model. The dialog can't be garbage-collected.
+- Lambdas or inner classes implicitly capture `this` or local variables; the captured references become part of the listener object retained by the dispatcher.
+
+Removing the listener explicitly breaks the chain of strong references: the dispatcher no longer references the listener, so the listener and the objects it captured become eligible for garbage collection if there are no other live references to them.
+
+Prefer storing the returned `ListenerRegistration` where you can remove it during cleanup (for example, in a component's `dispose` or a view's `onDetach`), and avoid anonymous registrations that you can't later unhook.
+
