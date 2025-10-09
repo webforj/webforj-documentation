@@ -20,13 +20,14 @@ public class ChoiceboxDropdownTypeViewIT extends BaseTest {
     @Test
     public void testChoiceboxDropdownType() {
 
-        Locator choiceBoxElectronics = page.getByRole(AriaRole.BUTTON,new Page.GetByRoleOptions().setName("Electronics"));
+        Locator choiceBoxElectronics = page.getByRole(AriaRole.BUTTON,
+                new Page.GetByRoleOptions().setName("Electronics"));
         choiceBoxElectronics.click();
 
         Locator kitchenDropdown = page.getByRole(AriaRole.OPTION, new Page.GetByRoleOptions().setName("Kitchen"));
         kitchenDropdown.click();
 
-        Locator choiceBoxKitchen = page.getByRole(AriaRole.BUTTON,new Page.GetByRoleOptions().setName("Kitchen"));
+        Locator choiceBoxKitchen = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Kitchen"));
 
         assertThat(choiceBoxKitchen).isVisible();
     }

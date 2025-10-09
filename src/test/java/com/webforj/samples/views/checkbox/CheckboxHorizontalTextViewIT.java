@@ -16,13 +16,13 @@ public class CheckboxHorizontalTextViewIT extends BaseTest {
     }
 
     @Test
-    public void testCheckboxHorizontal(){
+    public void testCheckboxHorizontal() {
         Locator checkbox = page.getByText("Daily").nth(1);
-        
+
         assertThat(checkbox).isChecked();
 
         checkbox.click();
         assertThat(checkbox).not().isChecked();
     }
-    
+
 }

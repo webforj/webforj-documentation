@@ -15,9 +15,6 @@ public class ToastViewIT extends BaseTest {
     @BeforeEach
     public void setupToastView() {
         navigateToRoute("toast");
-        // Kill animations for more reliable testing
-        page.addStyleTag(new Page.AddStyleTagOptions()
-                .setContent("* { transition: none !important; animation: none !important; }"));
     }
 
     @Test

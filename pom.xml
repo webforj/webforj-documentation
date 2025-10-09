@@ -249,7 +249,6 @@
           <trimStackTrace>false</trimStackTrace>
           <parallel>both</parallel>
           <threadCount>${threadCount}</threadCount>
-          <perCoreThreadCount>true</perCoreThreadCount>
           <useFile>false</useFile>
           <disableXmlReport>true</disableXmlReport>
           <consoleOutputReporter>

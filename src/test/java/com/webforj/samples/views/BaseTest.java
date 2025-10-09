@@ -89,5 +89,8 @@ public abstract class BaseTest {
         page.navigate("http://localhost:8998/" + route);
         // Wait for the page to be fully loaded
         page.waitForLoadState(LoadState.DOMCONTENTLOADED);
+
+        page.addStyleTag(new Page.AddStyleTagOptions()
+                .setContent("* { transition: none !important; animation: none !important; }"));
     }
 }

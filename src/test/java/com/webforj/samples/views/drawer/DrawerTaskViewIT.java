@@ -14,11 +14,7 @@ public class DrawerTaskViewIT extends BaseTest {
 
     @BeforeEach
     public void setupDrawerTask() {
-        navigateToRoute("drawertask");
-        // Kill animations for more reliable testing
-        page.addStyleTag(new Page.AddStyleTagOptions()
-                .setContent("* { transition: none !important; animation: none !important; }"));
-    }
+        navigateToRoute("drawertask");    }
 
     @Test
     public void testDrawerTask() {

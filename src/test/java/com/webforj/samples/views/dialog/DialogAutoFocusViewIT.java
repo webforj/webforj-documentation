@@ -15,10 +15,6 @@ public class DialogAutoFocusViewIT extends BaseTest {
     @BeforeEach
     public void setupDialogAutoFocus() {
         navigateToRoute("dialogautofocus");
-
-        // Kill animations for more reliable testing
-        page.addStyleTag(new Page.AddStyleTagOptions()
-                .setContent("* { transition: none !important; animation: none !important; }"));
     }
 
     @Test
