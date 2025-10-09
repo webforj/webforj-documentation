@@ -2,7 +2,6 @@
 sidebar_position: 21
 title: Dynamic Styling
 slug: styling
-sidebar_class_name: updated-content
 ---
 <!-- vale off -->
 # Dynamic Styling <DocChip chip='since' label='25.00' />
@@ -79,3 +78,7 @@ path='/webforj/tablelayoutstyling?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableLayoutStylingView.java'
 height='300px'
 />
+
+:::tip Managing and querying data
+For information on how to use the `Repository` pattern to manage and query collections, see the [Repository articles](/docs/advanced/repository/overview).
+:::

@@ -2,25 +2,26 @@
 title: Redeployment and Live Reload
 hide_table_of_contents: false
 hide_giscus_comments: true
-_i18n_hash: ec300e413c9fab01c4723f90f0e4c532
+sidebar_class_name: has-new-content
+_i18n_hash: 9b0d2672241250200ed14343e57d3926
 ---
-Effiziente Entwicklungsabläufe basieren auf Tools, die Codeänderungen erkennen und die App automatisch in Echtzeit aktualisieren. Continuous Deployment und Dynamic Reload arbeiten zusammen, um den Entwicklungsprozess zu vereinfachen, indem manuelle Schritte reduziert werden, sodass Sie Ihre Änderungen schnell sehen können, ohne den Server manuell neu starten zu müssen.
+Effiziente Entwicklungsworkflows stützen sich auf Werkzeuge, die Codeänderungen erkennen und die App in Echtzeit automatisch aktualisieren. Continuous Deployment und Dynamic Reload arbeiten zusammen, um den Entwicklungsprozess zu vereinfachen, indem manuelle Schritte reduziert werden, sodass Sie Ihre Änderungen schnell sehen können, ohne den Server manuell neu starten zu müssen.
 
-## Neuverteilung {#redeployment}
+## Redeployment {#redeployment}
 
-Neuverteilung in der Java-Entwicklung bezieht sich auf das automatische Erkennen und Bereitstellen von Codeänderungen, sodass Aktualisierungen ohne einen manuellen Serverneustart in der App angezeigt werden. Dieser Prozess umfasst typischerweise die Aktualisierung von Java-Klassen und Web-Ressourcen im laufenden Betrieb.
+Redeployment in der Java-Entwicklung bezieht sich auf das automatische Erkennen und Bereitstellen von Codeänderungen, sodass Updates in der App ohne einen manuellen Serverneustart widergespiegelt werden. Dieser Prozess umfasst typischerweise die Aktualisierung von Java-Klassen und Webressourcen im laufenden Betrieb.
 
-In einer webforJ-App bedeutet dies, dass die WAR-Datei bei jeder Änderung des Codes neu generiert wird.
+In einer webforJ-App bedeutet dies, dass die WAR-Datei jedes Mal neu generiert wird, wenn Änderungen am Code vorgenommen werden.
 
-Änderungen an Java-Klassen und Ressourcen im Klassenpfad werden normalerweise von der IDE überwacht. Wenn eine Java-Klasse geändert und die Datei gespeichert wird, entweder automatisch durch die IDE oder manuell durch den Entwickler, treten diese Tools in Kraft, um die aktualisierten Klassendateien im Zielverzeichnis zu kompilieren und anzuwenden.
+Änderungen an Java-Klassen und Ressourcen im Klassenpfad werden typischerweise von der IDE überwacht. Wenn eine Java-Klasse geändert wird und die Datei gespeichert wird, entweder automatisch von der IDE oder manuell vom Entwickler, treten diese Werkzeuge in Kraft, um die aktualisierten Klassendateien im Zielverzeichnis zu kompilieren und anzuwenden.
 
-Tools und Einstellungen, die das Browsen von Reloads automatisieren oder optimieren, können für eine nahtlosere Erfahrung hinzugefügt werden.
+Für die beste Erfahrung verwenden Sie automatisches Redeployment in Kombination mit Werkzeugen oder Einstellungen, die das Neuladen des Browsers automatisieren.
 
-## Live-Reload {#live-reload}
+## Live reload {#live-reload}
 
-Live-Reload stellt sicher, dass einmal bereitgestellte Änderungen im Browser in Echtzeit angezeigt werden, ohne dass eine manuelle Aktualisierung des Browsers erforderlich ist.
+Sobald Änderungen bereitgestellt werden, lädt live reload die App automatisch neu, sodass der Browser die Updates sofort widerspiegelt, ohne dass ein manuelles Aktualisieren des Browsers erforderlich ist.
 
-In einer webforJ-App kann das Live-Reload automatisch die Ansicht aktualisieren, Komponenten neu rendern, um den neuesten Zustand der App anzuzeigen, oder sogar Änderungen nach Bedarf patchen.
+In einer webforJ-App kann live reload die Ansicht automatisch aktualisieren, Komponenten neu rendern, um den neuesten Zustand der App anzuzeigen, oder sogar Änderungen nach Bedarf auf Abruf patchen.
 
 ## Themen {#topics}
 

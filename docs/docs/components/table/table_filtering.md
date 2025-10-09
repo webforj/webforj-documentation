@@ -2,10 +2,14 @@
 sidebar_position: 35
 title: Filtering
 slug: filtering
+sidebar_class_name: updated-content
 ---
 
-The `Table` component allows you to implement filtering functionality to narrow down displayed data based on specific criteria. Filtering can be achieved by defining a filtering criteria using the `setFilter(Predicate<T> filter)` method provided by the `Repository` associated with the table.
+The `Table` component allows you to implement filtering to narrow down displayed data based on specific criteria. Filtering can be achieved by defining a filtering criteria using the `setFilter(Predicate<T> filter)` method provided by the `Repository` associated with the table
 
+The following example uses a user-defined criteria from the search field and the `setBaseFilter()` method to apply a filter to the `CollectionRepository` based on the titles of `MusicRecord`. When the `commit()` method is triggered, the table refreshes with the filtered data. 
+
+<!-- vale off -->
 <ComponentDemo
 path='/webforj/tablefiltering?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableFilteringView.java'
@@ -13,11 +17,8 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/hea
 'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
 height='600px'
 />
+<!-- vale on -->
 
-In the above example, the `setFilter()` method is used to define a filtering criteria based on the title of `MusicRecord`. 
-
-:::tip
-The `setFilter()` method belongs to the `Repository` class, and is not a built-in behavior of the `Table` itself.
+:::note
+The `setBaseFilter()` method belongs to the `CollectionRepository` class, not the `Table` component.
 :::
-
-The filter is then applied when the user modifies the content of the search field, updating the searchTerm and triggering the `commit()` method to refresh the displayed data.

@@ -34,7 +34,7 @@ textField.setHelperText("Include any suffixes (Jr., II, etc.)");
 ```
 
 :::tip
-Regardless of where you’re information is, avoid using all uppercase text. This can be harder to read for smaller text, especially if multiple fields are present.
+Regardless of where your information is, avoid using all uppercase text. This can be harder to read for smaller text, especially if multiple fields are present.
 :::
 
 ## ~~Sometimes, using~~ less is more ~~effective, so keep things simple~~

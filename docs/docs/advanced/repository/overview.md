@@ -1,7 +1,6 @@
 ---
 title: Repository
 sidebar_position: 1
-sidebar_class_name: new-content
 ---
 
 <!-- vale off -->

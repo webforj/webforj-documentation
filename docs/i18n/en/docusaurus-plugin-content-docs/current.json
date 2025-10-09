@@ -122,5 +122,13 @@
   "sidebar.documentationSidebar.category.Client Components": {
     "message": "Client Components",
     "description": "The label for category Client Components in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Webswing": {
+    "message": "Webswing",
+    "description": "The label for category Webswing in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Spring": {
+    "message": "Spring",
+    "description": "The label for category Spring in sidebar documentationSidebar"
   }
 }

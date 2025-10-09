@@ -1,0 +1,56 @@
+package com.webforj.samples.pages.fields.textfield;
+
+import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Page;
+
+public class TextFieldPage {
+
+    private static final String ROUTE = "textfield";
+
+    private final Locator usernameInput;
+    private final Locator emailInput;
+    private final Locator phoneInput;
+    private final Locator urlInput;
+    private final Locator searchInput;
+    private final Locator alertPopover;
+
+    public TextFieldPage(Page page) {
+
+        usernameInput = page.getByPlaceholder("Name");
+        emailInput = page.getByPlaceholder("Email");
+        phoneInput = page.getByPlaceholder("Phone Number");
+        urlInput = page.getByPlaceholder("URL");
+        searchInput = page.getByPlaceholder("Search");
+        alertPopover = page.locator("div[class*='dwc-positioner']");
+        
+
+    }
+
+    public static String getRoute() {
+        return ROUTE;
+    }
+
+    public Locator getUsernameInput() {
+        return usernameInput;
+    }
+
+    public Locator getEmailInput() {
+        return emailInput;
+    }
+
+    public Locator getPhoneInput() {
+        return phoneInput;
+    }
+
+    public Locator getUrlInput() {
+        return urlInput;
+    }
+
+    public Locator getSearchInput() {
+        return searchInput;
+    }
+
+    public Locator getAlertPopover() {
+        return alertPopover;
+    }
+}

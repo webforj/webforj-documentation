@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Lifecycle Observers
+sidebar_class_name: new-content
 ---
 
 Observers allow components to react to lifecycle events by implementing interfaces for specific stages. This pattern ensures a clean separation of concerns and simplifies handling navigation logic.
