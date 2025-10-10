@@ -5,6 +5,8 @@ pagination_next: null
 draft: true
 ---
 
+I shouldn't use first person when writing in the main Webforj documentation.
+
 This documentation serves as a guide to upgrade webforJ apps from 25.00 to 26.00.
 Here are the changes needed for existing apps to continue running smoothly.
 As always, see the [GitHub release overview](https://github.com/webforj/webforj/releases) for a more comprehensive list of changes between releases.
