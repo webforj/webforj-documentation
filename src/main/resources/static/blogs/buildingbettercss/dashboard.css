@@ -5,11 +5,7 @@
 }
 
 .modern-dashboard {
-  background: linear-gradient(
-    135deg,
-    var(--dwc-surface-1),
-    var(--dwc-surface-2)
-  );
+  background: linear-gradient(135deg, var(--dwc-surface-1), var(--dwc-surface-2));
 }
 
 .dashboard-main {
@@ -17,11 +13,7 @@
 }
 
 .page-title {
-  background: linear-gradient(
-    135deg,
-    var(--dwc-color-primary-40),
-    var(--dwc-color-primary-30)
-  );
+  background: linear-gradient(135deg, var(--dwc-color-primary-40), var(--dwc-color-primary-30));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -81,8 +73,12 @@
 .chart-container {
   display: flex;
   flex-direction: column;
-  height: 600px;
   border-top: 3px solid var(--dwc-color-primary-40);
+  background: var(--dwc-surface-2);
+  border-radius: var(--dwc-border-radius-m);
+  padding: var(--dwc-space-l);
+  box-shadow: var(--dwc-shadow-s);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .metric-value {
@@ -127,34 +123,35 @@
 }
 
 .chart-wrapper {
-  flex: 1;
   position: relative;
+  width: 100%;
+  height: 420px;
+  margin-top: var(--dwc-space-m);
+  overflow: hidden;
 }
 
-html[data-app-theme="dark"] .section-title,
-html[data-app-theme="dark"] .metric-value {
-  color: var(--dwc-color-primary-20);
+.chart-wrapper > * {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 @media (max-width: 768px) {
   .dashboard-main {
     padding: var(--dwc-space-m);
   }
-
   .metrics-grid {
     grid-template-columns: 1fr 1fr;
   }
-
   .charts-grid,
   .actions-grid {
     grid-template-columns: 1fr;
   }
-
   .metric-value {
     font-size: 1.5rem;
   }
-
-  .chart-container {
+  .chart-wrapper {
     height: 300px;
   }
 }
@@ -163,8 +160,12 @@ html[data-app-theme="dark"] .metric-value {
   .metrics-grid {
     grid-template-columns: 1fr;
   }
-
-  .chart-container {
-    height: 250px;
+  .chart-wrapper {
+    height: 240px;
   }
+}
+
+html[data-app-theme="dark"] .section-title,
+html[data-app-theme="dark"] .metric-value {
+  color: var(--dwc-color-primary-20);
 }
