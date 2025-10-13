@@ -1,6 +1,7 @@
 ---
 title: Property Configuration
 sidebar_position: 30
+sidebar_class_name: updated-content
 ---
 
 # Configuring webforJ properties
@@ -57,6 +58,7 @@ webforj.clientHeartbeatRate = 1s
 | **`webforj.servlets[n].config.<key>`** | `Map<String,String>` | Servlet initialization parameters. | `null` |
 | **`webforj.sessionTimeout`**         | Integer | Session timeout duration in seconds. | `60` |
 | **`webforj.stringTable`**            | `Map<String,String>` | A map of key-value pairs used to store strings for use in the app. Useful for storing app messages or labels. More information on `StringTable` can be found [here](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/environment/StringTable.html). | `{}`            |
+| **`webforj.mime.extensions`**            | `Map<String,String>` | Custom MIME type mappings for file extensions when serving static files. Allows you to override default MIME types or define MIME types for custom extensions. The map key is the file extension (without the dot), and the value is the MIME type. | `{}`            |
 
 <!-- vale on -->
 
@@ -72,3 +74,38 @@ The `web.xml` file is an essential configuration file for Java web apps, and in 
 <!-- | **`<filter>` and `<filter-mapping>`**   | Configures the `WebforjCacheControlFilter` to control caching for JavaScript files. This filter prevents caching of `.js` files by setting specific HTTP headers, improving development flow. | `WebforjCacheControlFilter` | -->
 
 <!-- ## Configuring `blsclient.conf` -->
+
+## Custom MIME Type Mappings {#mime-type-mappings}
+
+webforJ automatically detects MIME types for static files served from the `resources/static` directory. The `webforj.mime.extensions` property allows you to override these defaults or define MIME types for custom file extensions.
+
+The configuration accepts a map where the key is the file extension (without the dot) and the value is the MIME type string.
+
+Example `webforj.conf` configuration:
+
+```ini
+webforj.mime.extensions = {
+    "txt": "text/plain",
+    "foo": "foo/bar",
+    "md": "text/markdown"
+}
+```
+
+Spring Boot `application.properties` configuration:
+
+```properties
+webforj.mime.extensions.txt=text/plain
+webforj.mime.extensions.foo=foo/bar
+webforj.mime.extensions.md=text/markdown
+```
+
+Spring Boot `application.yml` configuration:
+
+```yaml
+webforj:
+  mime:
+    extensions:
+      txt: text/plain
+      foo: foo/bar
+      md: text/markdown
+```
