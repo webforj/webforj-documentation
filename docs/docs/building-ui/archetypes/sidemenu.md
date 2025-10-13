@@ -41,4 +41,8 @@ mvn jetty:run
 mvn spring-boot:run
 ```
 
+:::tip mvn shorthand
+You can use the shorthand `mvn` command instead of the full command above. The archetype's POM file includes a `<defaultGoal>` configuration that automatically runs the appropriate goal for your project type.
+:::
+
 Once the server is running, open your browser and go to [http://localhost:8080](http://localhost:8080) to view the app.
