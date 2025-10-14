@@ -1,7 +1,6 @@
 ---
 title: Spring Boot
 sidebar_position: 10
-sidebar_class_name: updated-content
 ---
 
 Spring Boot is a popular choice for building Java apps, providing dependency injection, auto-configuration, and an embedded server model. When using Spring Boot with webforJ, you can inject services, repositories, and other Spring-managed beans directly into your UI components through constructor injection.
@@ -230,7 +229,6 @@ The following webforJ `application.properties` settings are specific to Spring:
 |----------|------|-------------|--------|
 | **`webforj.servletMapping`** | String | URL mapping pattern for the webforJ servlet. | `/*` |
 | **`webforj.excludeUrls`** | List | URL patterns that shouldn't be handled by webforJ when mapped to root. When webforJ is mapped to the root context (`/*`), these URL patterns will be excluded from webforJ handling and can be handled by Spring MVC controllers instead. This allows REST endpoints and other Spring MVC mappings to coexist with webforJ routes. | `[]` |
-| **`webforj.mime.extensions`** | Map | Custom MIME type mappings for file extensions in static files. Map file extensions (without dot) to MIME types. | `{}` |
 
 ### Configuration differences {#configuration-differences}
 

@@ -75,37 +75,3 @@ The `web.xml` file is an essential configuration file for Java web apps, and in 
 
 <!-- ## Configuring `blsclient.conf` -->
 
-## Custom MIME Type Mappings {#mime-type-mappings}
-
-webforJ automatically detects MIME types for static files served from the `resources/static` directory. The `webforj.mime.extensions` property allows you to override these defaults or define MIME types for custom file extensions.
-
-The configuration accepts a map where the key is the file extension (without the dot) and the value is the MIME type string.
-
-Example `webforj.conf` configuration:
-
-```ini
-webforj.mime.extensions = {
-    "txt": "text/plain",
-    "foo": "foo/bar",
-    "md": "text/markdown"
-}
-```
-
-Spring Boot `application.properties` configuration:
-
-```properties
-webforj.mime.extensions.txt=text/plain
-webforj.mime.extensions.foo=foo/bar
-webforj.mime.extensions.md=text/markdown
-```
-
-Spring Boot `application.yml` configuration:
-
-```yaml
-webforj:
-  mime:
-    extensions:
-      txt: text/plain
-      foo: foo/bar
-      md: text/markdown
-```
