@@ -19,7 +19,7 @@ public class RadioButtonSwitchViewIT extends BaseTest {
     }
 
     @Test
-    public void testSwitchButtonStyle() {
+    public void testSwitchRadioButtonStyle() {
         radioButton.getSwitchRadio().check();
 
         assertThat(radioButton.getSwitchRadio()).isChecked();

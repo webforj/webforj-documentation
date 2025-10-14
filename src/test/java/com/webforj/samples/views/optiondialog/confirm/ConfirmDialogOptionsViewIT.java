@@ -18,7 +18,7 @@ public class ConfirmDialogOptionsViewIT extends BaseTest {
     }
 
     @Test
-    public void testDialogConfirmation() {
+    public void testDialogConfirmationAtStart() {
         Locator dialog = page.getByRole(AriaRole.DIALOG);
         assertThat(dialog).isVisible();
 

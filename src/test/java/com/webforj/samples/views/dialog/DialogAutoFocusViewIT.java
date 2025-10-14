@@ -18,7 +18,7 @@ public class DialogAutoFocusViewIT extends BaseTest {
     }
 
     @Test
-    public void testDialogAutoFocus() {
+    public void testAutoFocus() {
         Locator textField = page.getByRole(AriaRole.TEXTBOX,
                 new Page.GetByRoleOptions().setName("This Box is Auto Focused"));
 

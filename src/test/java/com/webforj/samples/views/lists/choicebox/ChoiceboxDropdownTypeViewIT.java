@@ -18,7 +18,7 @@ public class ChoiceboxDropdownTypeViewIT extends BaseTest {
     }
 
     @Test
-    public void testChoiceboxDropdownType() {
+    public void testChoiceboxDropdownTypeSelected() {
 
         Locator choiceBoxElectronics = page.getByRole(AriaRole.BUTTON,
                 new Page.GetByRoleOptions().setName("Electronics"));

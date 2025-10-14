@@ -22,7 +22,7 @@ public class FlexPositioningViewIT extends BaseTest {
     }
 
     @Test
-    public void testFlexStartPositionsBoxesAtStart() {
+    public void testFlexStartPositionsBoxesAtStartAtStart() {
         flexPositioningPage.getFlexPositioningDropdown().click();
         flexPositioningPage.getListBox("Flex-start").nth(0).click();
 
@@ -31,7 +31,7 @@ public class FlexPositioningViewIT extends BaseTest {
     }
 
     @Test
-    public void testFlexEndPositionsBoxesAtEnd() {
+    public void testFlexEndPositionsBoxesAtStartAtStart() {
         flexPositioningPage.getFlexPositioningDropdown().click();
         flexPositioningPage.getListBox("Flex-end").nth(0).click();
 
@@ -40,7 +40,7 @@ public class FlexPositioningViewIT extends BaseTest {
     }
 
     @Test
-    public void testCenterPositionsBoxesCentrally() {
+    public void testCenterPositionsBoxesAtStartAtStart() {
         flexPositioningPage.getFlexPositioningDropdown().click();
         flexPositioningPage.getListBox("Center").nth(0).click();
 
@@ -49,7 +49,7 @@ public class FlexPositioningViewIT extends BaseTest {
     }
 
     @Test
-    public void testSpaceBetweenDistributesBoxesWithEdges() {
+    public void testSpaceBetweenDistributesBoxesWithEdgesAtStartAtStart() {
         flexPositioningPage.getFlexPositioningDropdown().click();
         flexPositioningPage.getListBox("Space-between").nth(0).click();
 
@@ -58,7 +58,7 @@ public class FlexPositioningViewIT extends BaseTest {
     }
 
     @Test
-    public void testSpaceAroundDistributesBoxesWithEqualSpaceAround() {
+    public void testSpaceAroundDistributesBoxesWithEqualSpaceAroundAtStartAtStart() {
         flexPositioningPage.getFlexPositioningDropdown().click();
         flexPositioningPage.getListBox("Space-around").nth(0).click();
 
@@ -67,7 +67,7 @@ public class FlexPositioningViewIT extends BaseTest {
     }
 
     @Test
-    public void testSpaceEvenlyDistributesBoxesWithEqualSpaceBetweenAndAround() {
+    public void testSpaceEvenlyDistributesBoxesWithEqualSpaceBetweenAndAroundAtStartAtStart() {
         flexPositioningPage.getFlexPositioningDropdown().click();
         flexPositioningPage.getListBox("Space-evenly").nth(0).click();
 

@@ -30,7 +30,7 @@ public class IconVariationsViewIT extends BaseTest {
     }
 
     @Test
-    public void testSVG() throws IOException, InterruptedException {
+    public void testSVGsLoaded() throws IOException, InterruptedException {
 
         Map<String, String> svgIcons = Map.of(
                 "calendar", CALENDAR_ICON_URL,

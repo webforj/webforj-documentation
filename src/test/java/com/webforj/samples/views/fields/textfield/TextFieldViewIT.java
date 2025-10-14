@@ -21,7 +21,7 @@ public class TextFieldViewIT extends BaseTest {
     }
 
     @Test
-    public void testAllInputFields() {
+    public void testAllInputFieldsEnteredAtStart() {
         textFieldPage.getUsernameInput().clear();
         textFieldPage.getUsernameInput().fill("Jane Doe");
         textFieldPage.getEmailInput().clear();
@@ -41,7 +41,7 @@ public class TextFieldViewIT extends BaseTest {
     }
 
     @Test
-    public void testValidEmail() {
+    public void testValidEmailsEnteredAtStart() {
         List<String> validEmails = List.of(
                 "user@example.com",
                 "user@subdomain.example.com",
@@ -60,7 +60,7 @@ public class TextFieldViewIT extends BaseTest {
     }
 
     @Test
-    public void testInvalidEmail() {
+    public void testInvalidEmailsIgnoredAtStart() {
         List<String> invalidEmails = List.of(
                 "user@",
                 "@example.com",
@@ -85,7 +85,7 @@ public class TextFieldViewIT extends BaseTest {
     }
 
     @Test
-    public void testValidURL() {
+    public void testValidURLsEnteredAtStart() {
         List<String> validURLs = List.of(
                 "http://example.com",
                 "https://example.com",
@@ -110,7 +110,7 @@ public class TextFieldViewIT extends BaseTest {
     }
 
     @Test
-    public void testInvalidURL() {
+    public void testInvalidURLsIgnoredAtStart() {
         List<String> invalidURLs = List.of(
                 "example.com",
                 "http//example.com",

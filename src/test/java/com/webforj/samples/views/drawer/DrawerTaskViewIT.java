@@ -17,7 +17,7 @@ public class DrawerTaskViewIT extends BaseTest {
         navigateToRoute("drawertask");    }
 
     @Test
-    public void testDrawerTask() {
+    public void testTaskAdded() {
         Locator drawer = page.locator("dwc-drawer");
         assertThat(drawer).isVisible();
 

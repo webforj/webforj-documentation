@@ -19,7 +19,7 @@ public class TableSingleSelectionViewIT extends BaseTest {
     }
 
     @Test
-    public void testSingleItemSelectionAndConfirmationDialog() {
+    public void testSingleSelectionRecords() {
         tableSingleSelectionPage.getFirstArtist().click();
 
         assertThat(tableSingleSelectionPage.getDialogMessage("Mississippi Blues", "John Hurt & The Ramblers"))

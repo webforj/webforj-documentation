@@ -19,7 +19,7 @@ public class TableEditDataViewIT extends BaseTest {
     }
 
     @Test
-    public void testEditButton() {
+    public void testEditButtonTableEditData() {
         tablePage.getEditButton().click();
 
         tablePage.getInput().clear();

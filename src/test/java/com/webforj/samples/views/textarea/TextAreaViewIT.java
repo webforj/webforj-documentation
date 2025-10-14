@@ -21,7 +21,7 @@ public class TextAreaViewIT extends BaseTest {
     }
 
     @Test
-    public void testToastMessage() {
+    public void testToastMessageTextArea() {
         feedbackTextAreaPage.getFeedbackTextarea().fill("Hello World");
 
         feedbackTextAreaPage.getSubmitButton().click();
@@ -30,7 +30,7 @@ public class TextAreaViewIT extends BaseTest {
     }
 
     @Test
-    public void testCharacterLimit() {
+    public void testCharacterLimitTextArea() {
         // "Hello World" repeated 20 times is 220 characters, but we still expect the
         // result to be 200 characters.
         for (int i = 0; i < 20; i++) {
@@ -42,7 +42,7 @@ public class TextAreaViewIT extends BaseTest {
     }
 
     @Test
-    public void testEmptyFeedback() {
+    public void testEmptyFeedbackTextArea() {
         feedbackTextAreaPage.getSubmitButton().click();
         assertThat(feedbackTextAreaPage.getDonationToaster()).not().isVisible();
 

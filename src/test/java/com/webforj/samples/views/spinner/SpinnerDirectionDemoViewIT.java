@@ -19,7 +19,7 @@ public class SpinnerDirectionDemoViewIT extends BaseTest {
     }
 
     @Test
-    public void testSpinnerDirectionCorrectness() {
+    public void testSpinnerDirection() {
         spinnerPage.getClockwiseButton().click();
         assertThat(spinnerPage.getSpinner()).hasAttribute("clockwise", "");
 

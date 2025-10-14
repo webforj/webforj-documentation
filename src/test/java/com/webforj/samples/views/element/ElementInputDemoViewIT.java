@@ -19,7 +19,7 @@ public class ElementInputDemoViewIT extends BaseTest {
     }
 
     @Test
-    public void testInput() {
+    public void testInputValue() {
         elementInputDemoPage.getInputField().fill("Hello World");
         assertThat(elementInputDemoPage.getInputField()).hasValue("Hello World");
     }

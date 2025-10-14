@@ -18,8 +18,9 @@ public class SliderLabelsViewIT extends BaseTest {
         sliderPage = new SliderLabelsPage(page);
     }
 
+
     @Test
-    public void testLabelsThemes() {
+    public void testLabelsThemesSlider() {
         sliderPage.getTenDegreeOption().click();
         assertThat(sliderPage.getSliderLabel()).hasAttribute("theme", "primary");
 

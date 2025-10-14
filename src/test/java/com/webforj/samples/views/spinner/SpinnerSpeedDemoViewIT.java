@@ -19,7 +19,7 @@ public class SpinnerSpeedDemoViewIT extends BaseTest {
     }
 
     @Test
-    public void testPauseAndResumeFunctionality() {
+    public void testPauseAndResumeSpinner() {
 
         spinnerPage.getPauseButton().click();
         assertThat(spinnerPage.getSpinner()).hasAttribute("paused", "");

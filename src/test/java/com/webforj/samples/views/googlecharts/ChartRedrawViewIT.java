@@ -19,7 +19,7 @@ public class ChartRedrawViewIT extends BaseTest {
     }
 
     @Test
-    public void testChartUpdating() {
+    public void testChartValuesUpdated() {
         chartRedraw.updateChart(140, 120, 100, 80);
         assertThat(chartRedraw.getValueForInstagram()).hasValue("140");
         assertThat(chartRedraw.getValueForTwitter()).hasValue("120");
@@ -28,7 +28,7 @@ public class ChartRedrawViewIT extends BaseTest {
     }
 
     @Test
-    public void testInvalidNonNumberInput() {
+    public void testInvalidNonNumberInputsIgnored() {
         chartRedraw.cleanField(chartRedraw.getValueForInstagram());
         page.keyboard().type("abc");
 
@@ -36,7 +36,7 @@ public class ChartRedrawViewIT extends BaseTest {
     }
 
     @Test
-    public void testInvalidSpecialCharacters() {
+    public void testInvalidSpecialCharactersIgnored() {
         chartRedraw.cleanField(chartRedraw.getValueForInstagram());
         page.keyboard().type("$!#%&*");
 

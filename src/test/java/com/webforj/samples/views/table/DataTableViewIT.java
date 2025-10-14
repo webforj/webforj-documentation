@@ -24,7 +24,7 @@ public class DataTableViewIT extends BaseTest {
     }
 
     @Test
-    public void testEntriesPerPage() {
+    public void testEntriesPerPageAndPaginator() {
         dataTable.getEntriesDropdown().click();
         dataTable.getEntriesTen().click();
         assertThat(dataTable.getTableRows()).hasCount(10);
@@ -54,7 +54,7 @@ public class DataTableViewIT extends BaseTest {
     }
 
     @Test
-    public void testPaginatorDisplaysCorrectly() {
+    public void testPaginatorDisplaysCorrectlyPaginator() {
         dataTable.getPaginatorLastPage().click();
         assertThat(dataTable.goToSpecificPage(862)).isVisible();
 
@@ -72,7 +72,7 @@ public class DataTableViewIT extends BaseTest {
     }
 
     @Test
-    public void testPaginatorNavigatesCorrectly() {
+    public void testPaginatorNavigatesCorrectlyPaginator() {
         dataTable.getPaginatorNextPage().click();
         assertThat(dataTable.getPaginationText("Showing 11 to 20 of 8618")).isVisible();
     }

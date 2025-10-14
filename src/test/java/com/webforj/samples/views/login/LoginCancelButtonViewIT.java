@@ -19,7 +19,7 @@ public class LoginCancelButtonViewIT extends BaseTest {
     }
 
     @Test
-    public void testCancelButton() {
+    public void testCancelButtonDisabled() {
         login.getCancelButton().click();
         assertThat(login.getSignInButton()).hasAttribute("disabled", "");
     }

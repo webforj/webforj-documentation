@@ -19,7 +19,7 @@ public class NavigatorPagesViewIT extends BaseTest {
     }
 
     @Test
-    public void testVerifyEllipsis() {
+    public void testVerifyEllipsisAtStart() {
         navigator.navigatorValue(4).click();
 
         assertThat(navigator.showingRange(31,40)).isVisible();

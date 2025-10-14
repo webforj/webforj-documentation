@@ -17,7 +17,7 @@ public class ClosableAlertViewIT extends BaseTest {
     }
 
     @Test
-    public void testAlertClosable() {
+    public void testAlertClosableAtStart() {
         Locator alert = page.getByRole(AriaRole.ALERT);
 
         assertThat(alert).isVisible();

@@ -16,7 +16,6 @@ public class RunConfig {
 
   private static void parseE2EProps(String propsString) {
     try {
-      // Parse manually to handle browsers=a:b:c case
       String[] pairs = propsString.split(",");
 
       for (String pair : pairs) {

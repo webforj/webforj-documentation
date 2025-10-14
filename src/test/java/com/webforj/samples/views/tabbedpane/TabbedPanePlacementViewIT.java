@@ -13,13 +13,13 @@ public class TabbedPanePlacementViewIT extends BaseTest {
     private TabbedPanePlacementPage tabbedPanePlacementPage;
 
     @BeforeEach
-    public void setupTabbedPanePlacement() {
+    public void setupPlacementTabbedPane() {
         navigateToRoute(TabbedPanePlacementPage.getRoute());
         tabbedPanePlacementPage = new TabbedPanePlacementPage(page);
     }
 
     @Test
-    public void testPlacement() {
+    public void testPlacementTabbedPane() {
         tabbedPanePlacementPage.getPlacementDropdown().click();
         tabbedPanePlacementPage.getAlignmentDropdownButton().click(); //BOTTOM
         assertThat(tabbedPanePlacementPage.getPlacementTabbedPane()).hasAttribute("placement", "bottom");
