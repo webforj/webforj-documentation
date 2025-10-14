@@ -33,7 +33,12 @@ public class ChoiceboxMaxRowView extends Composite<FlexLayout> {
     });
 
     select.onClick(e -> {
-      choiceBox.setMaxRowCount(numberField.getValue().intValue());
+      if (!numberField.isInvalid()){
+        choiceBox.setMaxRowCount(numberField.getValue().intValue());
+      }
+      else {
+        numberField.focus();
+      }
     });
 
     String[] states = { "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware",
