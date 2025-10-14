@@ -1,7 +1,8 @@
 package com.webforj.samples.config;
 
 public class RunConfig {
-  private static final String DEFAULT_BROWSER = "chromium";
+  private static final String DEFAULT_BROWSER_LOCAL = "chromium";
+  private static final String DEFAULT_BROWSER_CI = "chromium,firefox,webkit";
   private static final boolean DEFAULT_HEADLESS = true;
   private static final int DEFAULT_TIMEOUT = 30000;
   private static final int DEFAULT_SLOW_MO = 0;
@@ -93,7 +94,8 @@ public class RunConfig {
       browser = System.getenv("BROWSER");
     }
     if (browser == null) {
-      browser = DEFAULT_BROWSER;
+      // Use all browsers in CI, just chromium locally
+      browser = IS_CI ? DEFAULT_BROWSER_CI : DEFAULT_BROWSER_LOCAL;
     }
     return browser.toLowerCase();
   }
