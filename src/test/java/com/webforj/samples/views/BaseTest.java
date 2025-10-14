@@ -67,9 +67,11 @@ public abstract class BaseTest {
     public void teardownTest(TestInfo testInfo) {
         if (context != null) {
             String testName = testInfo.getDisplayName().replaceAll("[^a-zA-Z0-9]", "");
+            String browserName = RunConfig.getBrowser();
+            String tracePath = "./target/playwright-traces/" + browserName + "-" + testName + ".zip";
 
             context.tracing().stop(new Tracing.StopOptions()
-                    .setPath(Paths.get("./target/playwright-traces/" + testName + ".zip")));
+                    .setPath(Paths.get(tracePath)));
 
             context.close();
         }

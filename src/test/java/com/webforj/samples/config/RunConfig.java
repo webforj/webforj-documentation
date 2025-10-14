@@ -5,6 +5,7 @@ public class RunConfig {
   private static final boolean DEFAULT_HEADLESS = true;
   private static final int DEFAULT_TIMEOUT = 30000;
   private static final int DEFAULT_SLOW_MO = 0;
+  private static final boolean IS_CI = "true".equalsIgnoreCase(System.getenv("CI"));
 
   static {
     // Parse webforj.e2e if provided
@@ -84,10 +85,27 @@ public class RunConfig {
   }
 
   public static String getBrowser() {
-    return getConfig("browser", DEFAULT_BROWSER);
+    String browser = System.getProperty("browser");
+    if (browser == null) {
+      browser = System.getProperty("playwright.browser");
+    }
+    if (browser == null) {
+      browser = System.getenv("BROWSER");
+    }
+    if (browser == null) {
+      browser = DEFAULT_BROWSER;
+    }
+    return browser.toLowerCase();
+  }
+
+  public static boolean isCI() {
+    return IS_CI;
   }
 
   public static boolean isHeadless() {
+    if (IS_CI) {
+      return true;
+    }
     return getConfigBoolean("headless", DEFAULT_HEADLESS);
   }
 
