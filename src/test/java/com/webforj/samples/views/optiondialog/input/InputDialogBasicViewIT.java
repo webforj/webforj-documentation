@@ -18,7 +18,7 @@ public class InputDialogBasicViewIT extends BaseTest {
     }
 
     @Test
-    public void testInvalidInputDialog() {
+    public void testInvalidInputDialogIsShownWhenDeleteButtonIsClicked() {
         Locator dialog = page.getByRole(AriaRole.DIALOG);
         assertThat(dialog).isVisible();
 
@@ -37,7 +37,7 @@ public class InputDialogBasicViewIT extends BaseTest {
     }
 
     @Test
-    public void testValidInputDialog() {
+    public void testValidInputDialogIsShownWhenDeleteButtonIsClicked() {
         Locator dialog = page.getByRole(AriaRole.DIALOG);
         assertThat(dialog).isVisible();
 

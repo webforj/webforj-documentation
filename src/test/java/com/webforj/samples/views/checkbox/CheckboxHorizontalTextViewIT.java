@@ -16,7 +16,7 @@ public class CheckboxHorizontalTextViewIT extends BaseTest {
     }
 
     @Test
-    public void testDailyCheckboxChecked() {
+    public void testDailyCheckboxIsCheckedAndUncheckedWhenClicked() {
         Locator checkbox = page.getByText("Daily").nth(1);
 
         assertThat(checkbox).isChecked();

@@ -18,7 +18,7 @@ public class InputDialogTypeViewIT extends BaseTest {
     }
 
     @Test
-    public void testInputDialogType() {
+    public void testInputDialogTypeIsShownWhenContinueButtonIsClicked() {
         Locator dialog = page.getByRole(AriaRole.DIALOG);
         assertThat(dialog).isVisible();
 

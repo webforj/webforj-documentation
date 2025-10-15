@@ -20,7 +20,7 @@ public class DateFieldViewIT extends BaseTest {
         navigateToRoute(DateFieldPage.getRoute());
         dateFieldPage = new DateFieldPage(page);
     }
-
+    
     @Test
     public void testValidDatesEntered() {
         String departureDate = today.plusDays(3).format(DateTimeFormatter.ISO_LOCAL_DATE);

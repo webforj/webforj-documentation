@@ -19,7 +19,7 @@ public class NavigatorBasicViewIT extends BaseTest {
     }
 
     @Test
-    public void testRangeConsistencyAtStart() {
+    public void testRangeConsistency() {
 
         navigator.clickNext();
         assertThat(navigator.navigatorValue(1)).isVisible();

@@ -19,7 +19,7 @@ public class AppNavViewIT extends BaseTest {
     }
 
     @Test
-    public void testDrawerOpened() {
+    public void testDrawerOpensAndCloses() {
         appNavPage.getTablerIcon().click();
 
         assertThat(appNavPage.getAppLayout()).not().hasAttribute("drawer-opened", "12");
@@ -38,7 +38,7 @@ public class AppNavViewIT extends BaseTest {
     }
 
     @Test
-    public void testExternalLinks() {
+    public void testExternalLinksAreCorrect() {
         appNavPage.getAboutDropdown().click();
 
         assertThat(appNavPage.getSidebarWebforJ().locator("a")).hasAttribute("href", "https://webforj.com/");

@@ -20,7 +20,7 @@ public class FlexOrderViewIT extends BaseTest {
     }
 
     @Test
-    public void testZeroOrderPositionsBoxAtStartAtStart() {
+    public void testZeroOrderPositionsBoxAtStart() {
         flexOrderPage.getSetOrderButton().click();
         assertThat(flexOrderPage.buttonValue(0)).isVisible();
     }

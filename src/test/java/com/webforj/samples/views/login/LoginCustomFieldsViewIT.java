@@ -19,7 +19,7 @@ public class LoginCustomFieldsViewIT extends BaseTest {
     }
 
     @Test
-    public void testSuccessfulLoginWithValidCredentialsAtStart() {
+    public void testSuccessfulLoginWithValidCredentials() {
         login.getCustomderID().fill("Tesla");
         login.getUsername().fill("admin");
         login.getPassword().fill("admin");
@@ -32,7 +32,7 @@ public class LoginCustomFieldsViewIT extends BaseTest {
     }
 
     @Test
-    public void testInvalidCustomerIDIgnoredAtStart() {
+    public void testInvalidCustomerIDIgnored() {
 
         login.getCustomderID().fill("Toyota");
         login.getUsername().fill("admin");
@@ -43,7 +43,7 @@ public class LoginCustomFieldsViewIT extends BaseTest {
     }
 
     @Test
-    public void testValidCustomerIDAndBlankInputsIgnoredAtStart() {
+    public void testValidCustomerIDAndBlankInputsIgnored() {
         login.getCustomderID().fill("Tesla");
         login.getUsername().fill(" ");
         login.getPassword().fill(" ");
@@ -53,7 +53,7 @@ public class LoginCustomFieldsViewIT extends BaseTest {
     }
 
     @Test
-    public void testValidCustomerIDAndInvalidInputsIgnoredAtStart() {
+    public void testValidCustomerIDAndInvalidInputsIgnored() {
         login.getCustomderID().fill("Tesla");
         login.getUsername().fill("user1");
         login.getPassword().fill("wrongpass");

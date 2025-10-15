@@ -18,7 +18,7 @@ public class ToastViewIT extends BaseTest {
     }
 
     @Test
-    public void testToastStopButton() {
+    public void testToastStopButtonClosesToast() {
         Locator toast = page.getByText("System update failed. Restoring to the previous state.");
         assertThat(toast).isVisible();
 

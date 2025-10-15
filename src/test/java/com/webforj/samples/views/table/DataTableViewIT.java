@@ -39,7 +39,7 @@ public class DataTableViewIT extends BaseTest {
     }
 
     @Test
-    public void testSearchButtonFilter() {
+    public void testSearchButtonFilterOnTable() {
         dataTable.searchAthlete(ATHLETE_NAME);
         assertThat(dataTable.getTableRows()).hasCount(3);
     }
@@ -54,7 +54,7 @@ public class DataTableViewIT extends BaseTest {
     }
 
     @Test
-    public void testPaginatorDisplaysCorrectlyPaginator() {
+    public void testPaginatorDisplaysCorrectly() {
         dataTable.getPaginatorLastPage().click();
         assertThat(dataTable.goToSpecificPage(862)).isVisible();
 
@@ -72,7 +72,7 @@ public class DataTableViewIT extends BaseTest {
     }
 
     @Test
-    public void testPaginatorNavigatesCorrectlyPaginator() {
+    public void testPaginatorNavigatesCorrectly() {
         dataTable.getPaginatorNextPage().click();
         assertThat(dataTable.getPaginationText("Showing 11 to 20 of 8618")).isVisible();
     }

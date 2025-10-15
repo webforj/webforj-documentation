@@ -19,7 +19,7 @@ public class PasswordFieldViewIT extends BaseTest {
     }
 
     @Test
-    public void testVisibilityToggled() {
+    public void testVisibilityToggledWhenEyeOffIconIsClicked() {
         passwordFieldPage.getPasswordField().fill("Password123!");
         assertThat(passwordFieldPage.getPasswordField()).hasAttribute("type", "password");
 

@@ -16,7 +16,7 @@ public class DialogSectionsViewIT extends BaseTest {
     }
 
     @Test
-    public void testSectionsVisible() {
+    public void testSectionsAreVisible() {
         Locator header = page.getByText("Header");
         Locator content = page.getByText("Content");
         Locator footer = page.getByText("Footer");
