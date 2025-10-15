@@ -34,10 +34,13 @@ Top-level items in a navigation tree are typically meant to be expandable—not 
 If you want the group header to trigger a custom action (such as opening external docs), keep the group path empty and instead add an interactive control like an [`IconButton`](./icon#icon-buttons) to the item's suffix. This keeps the UX consistent and clean.
 :::
 
+<!--vale off-->
 <AppLayoutViewer 
 path='/webforj/appnav/Social?'  
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/appnav/AppNavView.java'
+urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/appnav/AppNavPageView.java']}
 />
+<!--vale on-->
 
 ## Linking Items {#linking-items}
 
