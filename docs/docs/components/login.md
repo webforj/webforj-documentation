@@ -1,6 +1,7 @@
 ---
 title: Login
 sidebar_position: 70
+sidebar_class_name: updated-content
 ---
 
 <DocChip chip='shadow' />
@@ -8,7 +9,7 @@ sidebar_position: 70
 <DocChip chip='since' label='24.01' />
 <JavadocLink type="login" location="com/webforj/component/login/Login" top='true'/>
 
-The Login component is designed to provide a and user-friendly interface for authentication, allowing users to log in using a username and password. It supports various customizations to enhance user experience across different devices and locales.
+The `Login` component simplifies user authentication by providing a ready-to-use login dialog with username and password fields. It includes features like input validation, customizable labels and messages, password visibility controls, and support for additional custom fields.
 
 <ComponentDemo 
 path='/webforj/loginbasic?' 
@@ -16,18 +17,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '450px'
 />
 
-## Usages {#usages}
-
-The Login component provides a user-friendly login form interface within a dialog for entering authentication credentials. It enhances the user experience by offering:
-   >- Clear input fields for username and password.
-   >- Visibility toggle for password to verify input.
-   >- Input validation feedback to prompt correct format before submission.
-
 ## Login submission {#login-submission}
 
-When users enter their username and password, the login component validates these inputs as required fields. Once the validation passes, a form submission event is triggered, delivering the entered credentials. To prevent multiple submissions, the `Signin` button is immediately disabled.
+When users enter their username and password, the `Login` component validates these inputs as required fields. Once the validation passes, a form submission event is triggered, delivering the entered credentials. To prevent multiple submissions, the `Signin` button is immediately disabled.
 
-The demo below illustrates a basic form submission process. If the username and password are both set to `"admin"` respectively, the login dialog closes, and a logout button appears. If the credentials don't match, the default error message of the login form is displayed.
+The demo below illustrates a basic form submission process. If the username and password are both set to `"admin"` respectively, the login dialog closes, and a logout button appears. If the credentials don't match, the default error message is displayed.
 
 <ComponentDemo 
 path='/webforj/loginsubmission?' 
@@ -36,18 +30,31 @@ height = '450px'
 />
 
 :::info Disabling the Signin Button
-By default, the login form immediately disables the `Signin` button once the component validates the login inputs as correct, to prevent multiple submissions. You can re-enable the `Signin` button using the `setEnabled(true)` method.
+By default, `Login` immediately disables the `Signin` button once the component validates the login inputs as correct, to prevent multiple submissions. You can re-enable the `Signin` button using the `setEnabled(true)` method.
 :::
 
 :::tip Allowing Empty Passwords
-In certain scenarios, empty passwords may be permissible, allowing users to log in with just a username. The login dialog can be configured to accept empty passwords by setting `setEmptyPassword(true)`.
+In certain scenarios, empty passwords may be permissible, allowing users to log in with just a username. The `Login`	 dialog can be configured to accept empty passwords by setting `setEmptyPassword(true)`.
+:::
+
+## Form Action {#form-action}
+
+The `Login` component can submit form data directly to a specified URL instead of handling the submission through the submit event. When an action URL is set, the form performs a standard POST request with the username and password as form parameters.
+
+```java
+Login login = new Login();
+login.setAction("/api/auth");
+```
+
+When using `setAction()`, the form submission bypasses the `LoginSubmitEvent` and instead performs a traditional HTTP POST request to the specified endpoint. The username and password are sent as form parameters named "username" and "password", respectively. Custom fields with a name attribute are also included in the POST request.
+
+:::tip 
+If no action URL is set, form submission is handled through the `LoginSubmitEvent`, allowing you to process credentials programmatically on the server side.
 :::
 
 ## Internationalization (i18n) {#internationalization-i18n}
 
-The titles, descriptions, labels, and messages within the login component are fully customizable using the `LoginI18n` class. This flexibility allows you to tailor the login interface to meet specific localization requirements or personalization preferences.
-
-The demo below illustrates how to provide a German translation for the login dialog, ensuring that all interface elements are adapted to the German language to enhance user experience for German-speaking users.
+The titles, descriptions, labels, and messages within the `Login` component are fully customizable using the `LoginI18n` class. This flexibility allows you to tailor the login interface to meet specific localization requirements or personalization preferences.
 
 <ComponentDemo 
 path='/webforj/logininternationalization?' 
@@ -57,7 +64,7 @@ height = '500px'
 
 ## Custom fields {#custom-fields}
 
-The login component includes several slots, which allow you to add extra fields if necessary. This feature provides more control over the information required for successful authentication.
+The `Login` component includes several slots that allow you to add extra fields as needed. Custom fields are automatically collected when the form is submitted and can be accessed through the submit event's data map.
 
 In the example below, a Customer ID field is added to the login form. Users must provide a valid ID to complete authentication, enhancing security and ensuring that access is granted only after verifying all required credentials.
 
@@ -68,15 +75,15 @@ cssURL='/css/login/loginCustomFields.css'
 height = '700px'
 />
 
-:::info Submission Payload
-Note that the login component doesn't automatically recognize or include extra fields added to the form in its submission payload. This means developers must explicitly retrieve the value of any additional fields from the client side and handle it according to the app's requirements to complete the authentication process.
+:::info Name Required
+Custom fields must have a name set using `setName()` to be included in the form submission. The name is used as the key to retrieve the field's value from `event.getData()`.
 :::
 
 ## Cancel button {#cancel-button}
 
-In certain scenarios, it may be desirable to add a cancel button alongside the `Signin` button. This feature is useful particularly when a user attempts to access a restricted area of the app and needs an option to cancel the action and return to their previous location. The login form includes a cancel button by default, but it's hidden from view.
+`Login` includes a cancel button that's hidden by default. This is particularly useful when a user attempts to access a restricted area of the app and needs an option to return to their previous location without completing the login.
 
-To make the cancel button visible, you must provide a label for it - once labeled, it will appear on the screen. You can also listen to cancel events to respond appropriately to user actions, ensuring a smooth and user-friendly experience for navigating the app.
+To make the cancel button visible, provide a label for it. You can also listen to cancel events to handle the cancellation appropriately.
 
 <ComponentDemo 
 path='/webforj/logincancelbutton?' 
@@ -85,12 +92,12 @@ height = '450px'
 />
 
 :::tip Hiding Elements
-To hide an element from the login screen, simply set its label to an empty string. This approach is particularly useful for temporarily removing interface components without permanently altering the codebase.
+To hide an element, set its label to an empty string. This lets you toggle visibility without removing the component from your code.
 :::
 
 ## Password managers {#password-managers}
 
-The login component is designed to be compatible with browser-based password managers, enhancing the user experience by simplifying the login process. For users of Chromium-based browsers, the component integrates seamlessly with the [`PasswordCredential`](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential) API. This integration enables several convenient features:
+This component works with browser-based password managers to simplify the login process. On Chromium-based browsers, it integrates with the [`PasswordCredential`](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential) API, which provides:
 
 - **Auto-fill**: The browser may automatically fill out the username and password fields if the user has saved credentials for the site.
 - **Credential Management**: After logging in, the browser can prompt the user to save new credentials, making future logins faster and easier.
