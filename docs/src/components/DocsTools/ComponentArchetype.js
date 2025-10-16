@@ -3,6 +3,7 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import CodeBlock from "@theme/CodeBlock";
+import Admonition from '@theme/Admonition';
 import { translate } from '@docusaurus/Translate';
 
 export default function ComponentArchetype({ project, flavor = "webforj" }) {
@@ -185,5 +186,16 @@ export default function ComponentArchetype({ project, flavor = "webforj" }) {
       description: 'Conclusion text'
     })}
     </p>
+    <Admonition type="tip" title={translate({
+      id: 'component.archetype.mvn.shorthand.title',
+      message: 'mvn shorthand',
+      description: 'mvn shorthand tip title'
+    })}>
+      <p>{translate({
+        id: 'component.archetype.mvn.shorthand.desc',
+        message: 'You can use the shorthand mvn command instead of the full command above. The archetype\'s POM file includes a <defaultGoal> configuration that automatically runs the appropriate goal for your project type.',
+        description: 'mvn shorthand tip description'
+      })}</p>
+    </Admonition>
   </>);
 }
