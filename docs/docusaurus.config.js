@@ -139,7 +139,7 @@ const config = {
       appId: '826LUKOV8E',
       apiKey: 'a69d79113b838bfc8490ffb56cef78f2',
       indexName: 'umentation-webforj',
-      contextualSearch: true,
+      contextualSearch: process.env.NODE_ENV !== 'development',
       externalUrlRegex: '.*', // disables version filtering
     },
     announcementBar: {
@@ -260,10 +260,10 @@ const config = {
           position: 'right',
           value: '<div class="separator" aria-hidden></div>',
         },
-        {
+        ...(process.env.NODE_ENV === 'development' ? [] : [{
           type: 'localeDropdown',
           position: 'right',
-        },
+        }]),
         {
           href: 'https://github.com/webforj',
           position: 'right',
