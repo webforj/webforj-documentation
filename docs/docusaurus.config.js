@@ -141,6 +141,12 @@ const config = {
       indexName: 'umentation-webforj',
       contextualSearch: true,
       externalUrlRegex: '.*', // disables version filtering
+      askAi: {
+        assistantId: '0So3Fg39A7WH',
+        appId: '826LUKOV8E',
+        apiKey: 'a69d79113b838bfc8490ffb56cef78f2',
+        indexName: 'umentation-webforj',
+      },
     },
     announcementBar: {
       id: '25.03',
