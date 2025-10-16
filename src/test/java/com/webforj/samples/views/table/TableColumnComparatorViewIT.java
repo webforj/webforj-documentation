@@ -24,7 +24,7 @@ public class TableColumnComparatorViewIT extends BaseTest {
     }
 
     @Test
-    public void testComparatorFunctionality() {
+    public void testComparatorFunctionalityTableColumnComparator() {
         tableColumnComparator.getNumberColumnHeader().click();
 
         List<String> ascNumbersText = tableColumnComparator.getNumberCells().allTextContents();

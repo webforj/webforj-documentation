@@ -21,16 +21,16 @@ public class NumberFieldViewIT extends BaseTest {
     }
 
     @Test
-    public void testNumericNumber() {
+    public void testNumericNumberEntered() {
         numberFieldPage.getNumberField().fill("1234567890");
         assertThat(numberFieldPage.getNumberField()).hasValue("1234567890");
     }
 
     @Test
-    public void testNonNumericNumber() {
+    public void testNonNumericNumberIgnored () {
         try {
             numberFieldPage.getNumberField().fill("abcd");
-        } 
+        }
         catch (PlaywrightException e) {
         }
         assertThat(numberFieldPage.getNumberField()).hasValue("");

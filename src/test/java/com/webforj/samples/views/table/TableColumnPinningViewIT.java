@@ -19,7 +19,7 @@ public class TableColumnPinningViewIT extends BaseTest {
     }
 
     @Test
-    public void testEditButton() {
+    public void testEditButtonTableColumnPinning() {
         tablePage.getEditButton().click();
         assertThat(tablePage.getDialogBox()).hasText("You asked to edit record number 000001.");
     }

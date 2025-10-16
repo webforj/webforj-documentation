@@ -19,14 +19,14 @@ public class ButtonViewIT extends BaseTest {
     }
 
     @Test
-    public void testClickSubmitDisplaysWelcomeMessage() {
+    public void testWelcomeMessageIsDisplayedWhenSubmitButtonIsClicked() {
         button.getSubmitButton().click();
         assertThat(button.getWelcomeDialog()).isVisible();
 
     }
 
     @Test
-    public void testClickClearClearsInputs() {
+    public void testInputsAreClearedWhenClearButtonIsClicked() {
         assertThat(button.getFirstName()).hasValue("Jason");
         assertThat(button.getLastName()).hasValue("Turner");
         assertThat(button.getEmail()).hasValue("turner.jason@email.com");

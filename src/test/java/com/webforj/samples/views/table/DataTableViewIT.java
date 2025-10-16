@@ -24,7 +24,7 @@ public class DataTableViewIT extends BaseTest {
     }
 
     @Test
-    public void testEntriesPerPage() {
+    public void testEntriesPerPageAndPaginator() {
         dataTable.getEntriesDropdown().click();
         dataTable.getEntriesTen().click();
         assertThat(dataTable.getTableRows()).hasCount(10);
@@ -39,7 +39,7 @@ public class DataTableViewIT extends BaseTest {
     }
 
     @Test
-    public void testSearchButtonFilter() {
+    public void testSearchButtonFilterOnTable() {
         dataTable.searchAthlete(ATHLETE_NAME);
         assertThat(dataTable.getTableRows()).hasCount(3);
     }
