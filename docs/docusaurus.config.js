@@ -16,7 +16,7 @@ const config = {
   trailingSlash: false,
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'es', 'de', 'fr', 'nl', 'fi', 'zh'],
+    locales: process.env.NODE_ENV === 'development' ? ['en'] : ['en', 'es', 'de', 'fr', 'nl', 'fi', 'zh'],
     localeConfigs: {
       en: {
         label: 'English',
