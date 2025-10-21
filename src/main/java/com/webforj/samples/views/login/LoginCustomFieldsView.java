@@ -54,6 +54,7 @@ public class LoginCustomFieldsView extends Composite<Div> {
       } else {
         login.setError(true);
         login.setEnabled(true);
+        customerId.focus();
       }
     });
   }

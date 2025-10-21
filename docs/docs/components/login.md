@@ -19,9 +19,9 @@ height = '450px'
 
 ## Login submission {#login-submission}
 
-When users enter their username and password, the `Login` component validates these inputs as required fields. Once the validation passes, a form submission event is triggered, delivering the entered credentials. To prevent multiple submissions, the `Signin` button is immediately disabled.
+When users enter their username and password, the `Login` component validates these inputs as required fields. Once the validation passes, a form submission event is triggered, delivering the entered credentials. To prevent multiple submissions, the [Sign in] button is immediately disabled.
 
-The demo below illustrates a basic form submission process. If the username and password are both set to `"admin"` respectively, the login dialog closes, and a logout button appears. If the credentials don't match, the default error message is displayed.
+The following illustrates a basic `Login` component. If the username and password are both set to `"admin"` respectively, the login dialog closes, and a [Logout] button appears. If the credentials don't match, the default error message is displayed.
 
 <ComponentDemo 
 path='/webforj/loginsubmission?' 
@@ -29,15 +29,15 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '450px'
 />
 
-:::info Disabling the Signin Button
-By default, `Login` immediately disables the `Signin` button once the component validates the login inputs as correct, to prevent multiple submissions. You can re-enable the `Signin` button using the `setEnabled(true)` method.
+:::info Disabling the [Sign in] Button
+By default, `Login` immediately disables the [Sign in] button once the component validates the login inputs as correct, to prevent multiple submissions. You can re-enable the [Sign in] button using the `setEnabled(true)` method.
 :::
 
 :::tip Allowing Empty Passwords
-In certain scenarios, empty passwords may be permissible, allowing users to log in with just a username. The `Login`	 dialog can be configured to accept empty passwords by setting `setEmptyPassword(true)`.
+You can allow users to log in with only a username by using the `setEmptyPassword(true)` method.
 :::
 
-## Form Action {#form-action}
+## Form action <DocChip chip='since' label='25.10' />{#form-action}
 
 The `Login` component can submit form data directly to a specified URL instead of handling the submission through the submit event. When an action URL is set, the form performs a standard POST request with the username and password as form parameters.
 
@@ -66,7 +66,7 @@ height = '500px'
 
 The `Login` component includes several slots that allow you to add extra fields as needed. Custom fields are automatically collected when the form is submitted and can be accessed through the submit event's data map.
 
-In the example below, a Customer ID field is added to the login form. Users must provide a valid ID to complete authentication, enhancing security and ensuring that access is granted only after verifying all required credentials.
+The following login has a custom field added for a customer ID. This can help you manage companies or departments with shared content across multiple users.
 
 <ComponentDemo 
 path='/webforj/logincustomfields?' 
@@ -81,7 +81,7 @@ Custom fields must have a name set using `setName()` to be included in the form 
 
 ## Cancel button {#cancel-button}
 
-`Login` includes a cancel button that's hidden by default. This is particularly useful when a user attempts to access a restricted area of the app and needs an option to return to their previous location without completing the login.
+`Login` includes a [Cancel] button that's hidden by default. This is particularly useful when a user attempts to access a restricted area of the app and needs an option to return to their previous location without completing the login.
 
 To make the cancel button visible, provide a label for it. You can also listen to cancel events to handle the cancellation appropriately.
 
