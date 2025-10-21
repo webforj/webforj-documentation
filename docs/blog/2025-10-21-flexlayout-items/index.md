@@ -9,7 +9,7 @@ tags: [webforJ, FlexLayout, Flexbox, Responsive Design]
 ![cover image](./cover.png)
 
 The webforJ [`FlexLayout`](https://docs.webforj.com/docs/components/flex-layout) component provides an easy and Java-like way to create CSS Flexbox layouts. 
-For an introduction, see the first part of this series, [FlexWrap your mind around webforJ's FlexLayout](../2025-08-26-flexlayout-container/index), in which I discuss the general benefits of the webforJ FlexLayout component and the methods that modify the flex container. 
+For an introduction, see the first part of this series, [FlexWrap your mind around webforJ's FlexLayout](/blog/2025/08/26/flexlayout-container), in which I discuss the general benefits of the webforJ FlexLayout component and the methods that modify the flex container. 
 In this article, I'll dive into the flex items inside the container to see how you can further customize the behavior of your layout.
 
 ## Flex item basics
@@ -40,6 +40,7 @@ This gives you a lot of "flexibility" in how you arrange the items in your layou
 If you want to draw attention to an element, or if certain items look better with a different alignment, you can customize it as needed. 
 Use any `FlexAlignment` enum to set the alignment. 
 The `FlexAlignment.AUTO` value will cause the item to use whatever alignment is set on the FlexLayout overall.
+
 In the following image, the FlexLayout has the alignment value shown on the majority of the items, and the second item has a different value, set with `setItemAlignment()`.
 ![setItemAlignment example](./itemalignment.png)
 
