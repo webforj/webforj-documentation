@@ -45,6 +45,29 @@
       0 2px 2px 0 rgba(3, 4, 9, 0.3);
   }
 
+  .DocSearch-Button {
+    background: var(--docsearch-searchbox-background) !important;
+    border: solid 1.75px hsla(211, 100%, 60%, 0%);
+    border-radius: 40px !important;
+    font-weight: 500;
+    & .DocSearch-Search-Icon{
+      filter: brightness(0) invert(1);
+    }
+    &:hover,
+    &:focus {
+      border: solid 1.75px hsl(211, 100%, 60%);
+      .DocSearch-Button-Placeholder {
+        color: var(--ifm-color-secondary-lightest);
+      }
+    }
+  }
+
+  .DocSearch-Button-Key {
+    border: 0 !important;
+    color: var(--ifm-color-secondary-lightest);
+    background: var(--docsearch-key-gradient);
+  }
+
   .dropdown__menu {
     border: thin solid var(--dwc-border-color);
     --ifm-dropdown-hover-background-color: var(--dwc-color-primary-alt);
@@ -192,7 +215,7 @@
 
   @media (max-width: 996px) {
     .navbar__item:has(#startforj-link) {
-      margin-right: 150px;
+      margin-right: 165px;
     }
   }
 
