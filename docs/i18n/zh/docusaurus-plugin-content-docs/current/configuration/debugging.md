@@ -1,9 +1,9 @@
 ---
 title: Debugging
 sidebar_position: 1
-_i18n_hash: d296f9a16ac6e5962b6962aa55e98a52
+_i18n_hash: 057e00d21a3392bb3bf8d1fba1dea15f
 ---
-调试是Java开发的重要部分，帮助开发人员高效地识别和修复问题。本指南解释了如何在Visual Studio Code、IntelliJ IDEA和Eclipse中为webforJ配置调试。
+调试是Java开发中至关重要的一部分，帮助开发者高效地识别和修复问题。本指南解释了如何在Visual Studio Code、IntelliJ IDEA和Eclipse中为webforJ配置调试。
 
 <Tabs>
 <TabItem value="vscode" label="Visual Studio Code">
@@ -15,10 +15,10 @@ _i18n_hash: d296f9a16ac6e5962b6962aa55e98a52
 </div>
 
 1. 在VS Code中打开你的webforJ项目。
-2. 按 <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>（在Mac上按 <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>）打开运行和调试面板。
-3. 点击“创建一个launch.json文件”
+2. 按下 <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>（在Mac上为 <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>）以打开运行和调试面板。
+3. 单击“创建一个launch.json文件”
 4. 选择Java作为环境。
-5. 修改`launch.json`以匹配以下内容：
+5. 修改 `launch.json` 使其与以下内容匹配：
 
 ```json title="launch.json"
 {
@@ -35,7 +35,7 @@ _i18n_hash: d296f9a16ac6e5962b6962aa55e98a52
 }
 ```
 
-6. 保存文件并点击开始调试。
+6. 保存文件并单击开始调试。
 
 </TabItem>
 <TabItem value="intellij" label="IntelliJ IDEA">
@@ -47,10 +47,10 @@ _i18n_hash: d296f9a16ac6e5962b6962aa55e98a52
 </div>
 
 1. 在IntelliJ IDEA中打开你的项目。
-2. 导航到运行 → 编辑配置。
+2. 导航至运行 → 编辑配置。
 3. 点击 <kbd>+</kbd> 按钮并选择远程JVM调试。
-4. 将主机设置为`localhost`，端口设置为`8000`。
-5. 保存配置并点击调试以附加到正在运行的应用。
+4. 将主机设置为 `localhost`，端口设置为 `8000`。
+5. 保存配置并单击调试以附加到运行中的应用。
 
 </TabItem>
 <TabItem value="eclipse" label="Eclipse">
@@ -63,10 +63,10 @@ _i18n_hash: d296f9a16ac6e5962b6962aa55e98a52
 
 1. 在Eclipse中打开你的项目。
 2. 转到运行 → 编辑配置。
-3. 选择远程Java应用。
-4. 点击新配置并设置：
-   - 主机：`localhost`
-   - 端口：`8000`
+3. 选择远程Java应用程序。
+4. 点击新建配置并设置：
+   - 主机： `localhost`
+   - 端口： `8000`
 5. 保存并启动调试器。
 
 </TabItem>
@@ -74,13 +74,15 @@ _i18n_hash: d296f9a16ac6e5962b6962aa55e98a52
 
 ## 运行调试器 {#running-the-debugger}
 
-一旦你配置好了你的IDE：
+配置好你的IDE后：
 
-1. 使用 `mvnDebug jetty:run` 启动你的webforJ应用。
+1. 使用相应的命令启动你的webforJ应用：
+    - 对于Jetty，使用 `mvnDebug jetty:run` 
+    - 对于Spring Boot，使用 `mvnDebug spring-boot:run`
 2. 在你的IDE中运行调试配置。
 3. 设置断点并开始调试。
 
 :::tip 调试提示
-1. 确保端口8000可用，并且没有被任何防火墙阻挡。
-2. 如果你使用的是任何webforJ原型，并且已在pom.xml文件中更改了端口号，请确保用于调试的端口与更新的值匹配。
+1. 确保8000端口可用且未被任何防火墙阻塞。
+2. 如果你使用任何webforJ原型并且在pom.xml文件中更改了端口号，请确保用于调试的端口与更新的值匹配。
 :::

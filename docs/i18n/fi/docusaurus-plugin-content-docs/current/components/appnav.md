@@ -1,7 +1,7 @@
 ---
 title: AppNav
 sidebar_position: 6
-_i18n_hash: 1e9ac3fc8372d76faee53a4b9ee2cf88
+_i18n_hash: faa14d827865b1697b369a9787315dcd
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-app-nav" />
@@ -9,104 +9,107 @@ _i18n_hash: 1e9ac3fc8372d76faee53a4b9ee2cf88
 <DocChip chip='since' label='24.12' />
 <JavadocLink type="appnav" location="com/webforj/component/appnav/AppNav" top='true'/> 
 
-`AppNav` komponentti webforJ:ssä tarjoaa joustavan ja organisoidun sivuvalikkorakenteen, joka tukee sekä tasaisia että hierarkkisia rakenteita. Jokainen merkintä on `AppNavItem`, joka voi edustaa yksinkertaista linkkiä tai ryhmää, johon kuuluu alakohtia. Kohteet voivat linkittää sisäisiin näkymiin tai ulkoisiin resursseihin, ja niitä voidaan parantaa kuvakkeilla, merkinnöillä tai muilla komponenteilla.
+`AppNav` -komponentti webforJ:ssä tarjoaa joustavan ja järjestelmällisen sivunavigaatiovalikon, joka tukee sekä tasaisia että hierarkisia rakenteita. Jokainen merkintä on `AppNavItem`, joka voi edustaa yksinkertaista linkkiä tai ryhmää, joka sisältää alakohtia. Kohteita voidaan linkittää sisäisiin näkymiin tai ulkoisiin resursseihin, ja ne voidaan rikastuttaa ikoneilla, merkillä tai muilla komponenteilla.
 
 ## Lisääminen ja ryhmittely {#adding-and-nesting-items}
 
-`AppNavItem` instansseja käytetään `AppNav` rakenteen täyttämiseen. Nämä kohteet voivat olla yksinkertaisia linkkejä tai sisäkkäisiä ryhmän otsikoita, joihin kuuluu lapsikohteita. Ryhmän otsikot ilman linkkejä toimivat laajennettavina säilytyspaikkoina.
+`AppNavItem`-instansseja käytetään `AppNav`-rakenteen täyttämiseen. Nämä kohteet voivat olla yksinkertaisia linkkejä tai sisäkkäisiä ryhmäotsikoita, jotka sisältävät lapsohjeita. Ryhmäotsikot ilman linkkejä toimivat laajennettavina säiliöinä.
 
-Käytä `addItem()` lisätäksesi kohteita valikkoon:
+Käytä `addItem()` lisätäksesi kohteita navigaatioon:
 
 ```java
-AppNavItem dashboard = new AppNavItem("Dashborad", "/dashboard");
+AppNavItem dashboard = new AppNavItem("Dashboard", "/dashboard");
 AppNavItem admin = new AppNavItem("Admin");
-admin.addItem(new AppNavItem("Käyttäjät", "/admin/users"));
-admin.addItem(new AppNavItem("Asetukset", "/admin/settings"));
+admin.addItem(new AppNavItem("Users", "/admin/users"));
+admin.addItem(new AppNavItem("Settings", "/admin/settings"));
 
 AppNav nav = new AppNav();
 nav.addItem(dashboard);
 nav.addItem(admin);
 ```
 
-:::tip Ryhmän kohteiden linkittäminen
-Ylimmän tason kohteet navigointipuussa on tyypillisesti tarkoitettu laajennettavaksi - eivät klikkattaviksi linkeiksi. `path` asettaminen tällaisille kohteille voi hämmentää käyttäjiä, jotka odottavat niiden paljastavan alakohtia sen sijaan, että navigoisivat muualle.
+:::tip Ryhmien kohteiden linkittäminen
+Ylimmän tason kohteet navigaatiopuussa on yleensä tarkoitettu laajennettavaksi — eivät klikattaviksi linkeiksi. Tällaisille kohteille asetettu `path` voi hämmentää käyttäjiä, jotka odottavat niiden paljastavan alakohtia sen sijaan, että ne navigoisivat muualle.
 
-Jos haluat, että ryhmän otsikko laukaisee mukautetun toiminnon (kuten avaa ulkoiset asiakirjat), pidä ryhmän polku tyhjänä ja lisää sen sijaan interaktiivinen ohjaus, kuten [`IconButton`](./icon#icon-buttons), kohteen liitteeksi. Tämä pitää käyttökokemuksen yhtenäisenä ja selkeänä.
+Jos haluat, että ryhmäotsikko laukaisee mukautetun toiminnon (kuten avaa ulkoisia asiakirjoja), pidä ryhmän polku tyhjänä ja lisää sen sijaan interaktiivinen ohjaus, kuten [`IconButton`](./icon#icon-buttons) kohteen liitteenä. Tämä pitää käyttäjäkokemuksen johdonmukaisena ja siistinä.
 :::
 
+<!--vale off-->
 <AppLayoutViewer 
 path='/webforj/appnav/Social?'  
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/appnav/AppNavView.java'
+urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/appnav/AppNavPageView.java']}
 />
+<!--vale on-->
 
 ## Kohteiden linkittäminen {#linking-items}
 
-Jokainen `AppNavItem` voi navigoida sisäiseen näkymään tai ulkoiseen linkkiin. Voit määrittää tämän käyttäen staattisia polkuja tai rekisteröityjä näkymäluokkia.
+Jokainen `AppNavItem` voi navigoida sisäiseen näkymään tai ulkoiseen linkkiin. Voit määrittää tämän käyttämällä staattisia polkuja tai rekisteröityjä näkemyksiä.
 
 ### Staattiset polut {#static-paths}
 
-Käytä merkkijonopoluja määrittääksesi linkkejä suoraan:
+Käytä merkkijonopolkuja määrittääksesi linkit suoraan:
 
 ```java
-AppNavItem docs = new AppNavItem("Asiakirjat", "/docs");
-AppNavItem help = new AppNavItem("Apua", "https://support.example.com");
+AppNavItem docs = new AppNavItem("Docs", "/docs");
+AppNavItem help = new AppNavItem("Help", "https://support.example.com");
 ```
 
 ### Rekisteröidyt näkymät {#registered-views}
 
-Jos näkymät on rekisteröity [reitittimelle](../routing/overview), voit välittää luokan sen sijaan, että käyttäisit kovakoodattua URL:ia:
+Jos näkymäsi on rekisteröity [reitittimelle](../routing/overview), voit siirtää luokan sen sijaan, että käyttäisit kiinteää URL:ia:
 
 ```java
-AppNavItem settings = new AppNavItem("Asetukset", SettingsView.class);
+AppNavItem settings = new AppNavItem("Settings", SettingsView.class);
 ```
 
-Jos sinun annottoitu reitti tukee [reittiparametreja](../routing/route-patterns#named-parameters), voit myös välittää `ParametersBag`:in:
+Jos merkitty reittisi tukee [reitityksen parametreja](../routing/route-patterns#named-parameters), voit myös siirtää `ParametersBag`:in:
 
 ```java
 ParametersBag params = ParametersBag.of("id=123");
-AppNavItem advanced = new AppNavItem("Käyttäjä", UserView.class, params);
+AppNavItem advanced = new AppNavItem("User", UserView.class, params);
 ```
 
 ### Kyselyparametrien kanssa {#with-query-parameters}
 
-Välitä `ParametersBag` sisältääksesi kyselymerkkijonot:
+Siirrä `ParametersBag`, jotta voit sisällyttää kyselymerkit:
 
 ```java
 ParametersBag params = ParametersBag.of("param1=value1&param2=value2");
-AppNavItem advanced = new AppNavItem("Edistynyt", SettingsView.class, params);
+AppNavItem advanced = new AppNavItem("Advanced", SettingsView.class, params);
 advanced.setQueryParameters(params);
 ```
 
 ## Kohteen käyttäytyminen {#target-behavior}
 
-Säädä, miten linkit avautuvat käyttämällä `setTarget()`. Tämä on erityisen hyödyllistä ulkoisille linkeille tai pop-out-näkymille.
+Säädä, kuinka linkit avautuvat käyttämällä `setTarget()`. Tämä on erityisen hyödyllistä ulkoisille linkeille tai pop-out-näkymille.
 
-- **`SELF`** (oletus): Avataan nykyisessä näkymässä.
-- **`BLANK`**: Avataan uudessa välilehdessä tai ikkunassa.
-- **`PARENT`**: Avataan vanhemmassa selauskontekstissa.
-- **`TOP`**: Avataan ylimmässä selauskontekstissa.
+- **`SELF`** (oletus): Avaa nykyisessä näkymässä.
+- **`BLANK`**: Avaa uudessa välilehdessä tai ikkunassa.
+- **`PARENT`**: Avaa ylätason selauskontekstissa.
+- **`TOP`**: Avaa ylimmässä selauskontekstissa.
 
 ```java
-AppNavItem help = new AppNavItem("Apua", "https://support.example.com");
+AppNavItem help = new AppNavItem("Help", "https://support.example.com");
 help.setTarget(AppNavItem.NavigationTarget.BLANK);
 ```
 
-## Etuliite ja liite {#prefix-and-suffix}
+## Etuliite ja jälkiliite {#prefix-and-suffix}
 
-`AppNavItem` tukee etuliitteitä ja liitteitä. Käytä näitä visuaalisen selkeyden tarjoamiseksi kuvakkeilla, merkinnöillä tai painikkeilla.
+`AppNavItem` tukee etuliite- ja jälkiliitekomponentteja. Käytä näitä tarjoamaan visuaalista selkeyttä ikoneilla, merkeillä tai painikkeilla.
 
-- **Etuliite**: ilmestyy ennen merkintää, hyödyllinen kuvakkeille.
-- **Liite**: ilmestyy merkinnän jälkeen, loistava merkinnöille tai toiminnoille.
+- **Etuliite**: ilmestyy ennen merkintää, hyödyllinen ikoneille.
+- **Jälkiliite**: ilmestyy merkin jälkeen, loistava merkeille tai toimille.
 
 ```java
-AppNavItem notifications = new AppNavItem("Ilmoitukset");
+AppNavItem notifications = new AppNavItem("Alerts");
 notifications.setPrefixComponent(TablerIcon.create("alert"));
 notifications.setSuffixComponent(TablerIcon.create("link"));
 ```
 
 ## Automaattisesti avautuvat ryhmät {#auto-opening-groups}
 
-Käytä `setAutoOpen(true)` `AppNav` komponentilla automaattisesti laajentaaksesi sisäkkäisiä ryhmiä, kun sovellus uusitaan.
+Käytä `setAutoOpen(true)` `AppNav` -komponentissa, jotta sisäkkäiset ryhmät avautuvat automaattisesti, kun sovellus päivitetään.
 
 ```java
 nav.setAutoOpen(true);

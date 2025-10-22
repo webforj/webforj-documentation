@@ -1,24 +1,27 @@
 ---
 title: Spring DevTools
 sidebar_position: 30
-_i18n_hash: 5401d3aa92e9230c4f26c827dcf83162
+sidebar_class_name: updated-content
+_i18n_hash: 147474b17005c532723aacd8af9391ea
 ---
-Spring DevTools biedt automatische herstarts van de app wanneer er wijzigingen in de code zijn. webforJ DevTools voegt automatische verversing van de browser toe - wanneer Spring je app herstart, vernieuwt de browser automatisch via de LiveReload-server van webforJ.
+Spring DevTools biedt automatische herstarts van de applicatie wanneer de code verandert. webforJ DevTools voegt automatische browservernieuwing toe - wanneer Spring je applicatie herstart, ververst de browser automatisch via de LiveReload-server van webforJ.
 
-Verschillende bestandstypen activeren verschillende herlaadgedragingen. Wijzigingen in Java-code veroorzaken een volledige Spring-herstart en verversing van de browser. Wijzigingen in CSS en afbeeldingen worden bijgewerkt zonder een pagina-herlading, waardoor formuliergegevens en app-status behouden blijven.
+Verschillende bestandstypen activeren verschillende herlaadgedragingen. Wijzigingen in Java-code zorgen voor een volledige Spring-herstart en browservernieuwing. CSS- en afbeeldingswijzigingen worden bijgewerkt zonder een pagina-herlaad, waardoor formuliergegevens en de staat van de applicatie behouden blijven.
 
-## Begrijpen van webforJ DevTools {#understanding-webforj-devtools}
+<!-- vale off -->
+## Understanding webforJ DevTools {#understanding-webforj-devtools}
+<!-- vale on -->
 
-webforJ breidt Spring DevTools uit met browsersynchronisatie. Wanneer Spring wijzigingen in bestanden detecteert en herstart, ververst webforJ DevTools automatisch je browser.
+webforJ breidt Spring DevTools uit met browsersynchronisatie. Wanneer Spring bestandswijzigingen detecteert en herstart, ververst webforJ DevTools automatisch je browser.
 
-### Herlaadgebragin {#reload-behavior}
+### Herlaadgedrag {#reload-behavior}
 
 Verschillende bestandstypen activeren verschillende herlaadstrategieën:
 
-- **Java-bestanden** - Volledige browserpagina-herlading na Spring-herstart
-- **CSS-bestanden** - Stijlupdates zonder pagina-herlading  
-- **JavaScript-bestanden** - Volledige browserpagina-herlading na Spring-herstart
-- **Afbeeldingen** - Ververs in plaats zonder pagina-herlading
+- **Java-bestanden**: Volledige browserpagina-herlaad na Spring-herstart
+- **JavaScript-bestanden**: Volledige browserpagina-herlaad na Spring-herstart
+- **CSS-bestanden**: Stijlupdates zonder pagina-herlaad  
+- **Afbeeldingen**: Vernieuwen ter plaatse zonder pagina-herlaad
 
 ## Afhankelijkheden {#dependencies}
 
@@ -41,25 +44,25 @@ Voeg zowel Spring DevTools als webforJ DevTools toe aan je project:
 
 ## Configuratie {#configuration}
 
-Schakel webforJ DevTools in je app-eigenschappen in:
+Schakel webforJ DevTools in je `application.properties`-bestand in:
 
 ```Ini title="application.properties"
-# Schakel automatische verversing van de browser in
+# Schakel webforJ browser auto-herlaad in
 webforj.devtools.livereload.enabled=true
 
-# Schakel onmiddellijke afsluiting in voor snellere herstarts
+# Schakel onmiddellijke beëindiging in voor snellere herstarts
 server.shutdown=immediate
 ```
 
 ### Geavanceerde configuratie {#advanced-configuration}
 
-Configureer de WebSocket-verbinding en herlaadgebraging:
+Configureer WebSocket-verbinding en herlaadgedrag:
 
 ```Ini title="application.properties"
-# WebSocket-serverpoort (standaard: 35730)
+# WebSocket serverpoort (standaard: 35730)
 webforj.devtools.livereload.websocket-port=35730
 
-# WebSocket-eindpunt pad (standaard: /webforj-devtools-ws)
+# WebSocket eindpunt pad (standaard: /webforj-devtools-ws)
 webforj.devtools.livereload.websocket-path=/webforj-devtools-ws
 
 # Hartslaginterval in milliseconden (standaard: 30000)
@@ -67,4 +70,14 @@ webforj.devtools.livereload.heartbeat-interval=30000
 
 # Schakel hot reload in voor statische bronnen (standaard: true)
 webforj.devtools.livereload.static-resources-enabled=true
+```
+
+<DocChip chip='since' label='25.03' /> Configureer het openen van de browser bij het opstarten van de app:
+
+```Ini title="application.properties"
+# Schakel het openen van de browser in (standaard: false)
+webforj.devtools.browser.open=true
+
+# localhost, hostnaam of IP-adres (standaard: localhost)
+webforj.devtools.browser.host=localhost
 ```

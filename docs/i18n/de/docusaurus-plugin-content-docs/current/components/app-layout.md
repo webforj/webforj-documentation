@@ -1,31 +1,31 @@
 ---
 title: AppLayout
 sidebar_position: 5
-_i18n_hash: e6da714fff4ce713ceb5b486b8ab0026
+_i18n_hash: 7bc8b2a8bfc772644cf2107199615515
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-app-layout" />
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="applayout" location="com/webforj/component/layout/applayout/AppLayout" top='true'/>
 
-Das `AppLayout` ist eine umfassende responsive Layout-Komponente, die eine Kopfzeile, eine Fußzeile, ein Schublade und einen Inhaltsbereich bereitstellt. Die Kopfzeile und Fußzeile sind fixiert, die Schublade fährt in und aus dem Ansichtsfenster, und der Inhalt ist scrollbar.
+Der `AppLayout` ist eine umfassende responsive Layout-Komponente, die einen Header, einen Footer, eine Schublade und einen Inhaltsbereich bietet. Der Header und der Footer sind fixiert, die Schublade fährt in und aus dem Ansichtsbereich, und der Inhalt ist scrollbar.
 
-Diese Komponente kann verwendet werden, um gängige App-Layouts zu erstellen, wie z.B. ein Dashboard.
+Diese Komponente kann verwendet werden, um häufige App-Layouts zu erstellen, wie z.B. ein Dashboard.
 
 ## Funktionen {#features}
 
-Das webforJ App Layout ist eine Komponente, die das Erstellen gängiger App-Layouts ermöglicht.
+Das webforJ App Layout ist eine Komponente, die den Aufbau gängiger App-Layouts ermöglicht.
 
 <ul>
-    <li>Einfach zu bedienen und anzupassen</li>
-    <li>Responsives Design</li>
+    <li>Einfach zu verwenden und anzupassen</li>
+    <li>Responsive Design</li>
     <li>Mehrere Layout-Optionen</li>
     <li>Funktioniert mit dem webforJ Dunkelmodus</li>
 </ul>
 
-Es bietet eine Kopfzeile, Fußzeile, Schublade und Inhaltsbereich, die alle in einer responsiven Komponente integriert sind, die leicht angepasst werden kann, um schnell gängige App-Layouts wie ein Dashboard zu erstellen. Die Kopfzeile und Fußzeile sind fixiert, die Schublade fährt in und aus dem Ansichtsfenster, und der Inhalt ist scrollbar.
+Es bietet einen Header, einen Footer, eine Schublade und einen Inhaltsbereich, die alle in eine responsive Komponente integriert sind, die leicht angepasst werden kann, um schnell gängige App-Layouts wie ein Dashboard zu erstellen. Der Header und der Footer sind fixiert, die Schublade fährt in und aus dem Ansichtsbereich, und der Inhalt ist scrollbar.
 
-Jeder Teil des Layouts ist ein `Div`, das jede gültige webforJ-Steuerung enthalten kann. Für beste Ergebnisse sollte die App ein Viewport-Meta-Tag enthalten, das viewport-fit=cover enthält. Das Meta-Tag bewirkt, dass der Viewport so skaliert wird, dass er den Bildschirm des Geräts ausfüllt.
+Jeder Teil des Layouts ist ein `Div`, der jede gültige webforJ-Komponente enthalten kann. Für beste Ergebnisse sollte die App ein Viewport-Meta-Tag enthalten, das viewport-fit=cover hat. Das Meta-Tag sorgt dafür, dass der Viewport skaliert wird, um die Anzeige des Geräts auszufüllen.
 
 ```java
 @AppMeta(name = "viewport", content = "width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no")
@@ -33,16 +33,19 @@ Jeder Teil des Layouts ist ein `Div`, das jede gültige webforJ-Steuerung enthal
 
 ## Übersicht {#overview}
 
-Der folgende Code-Sample führt zu einer App mit einer zusammenklappbaren Seitenleiste, die ein Logo und Registerkarten für verschiedene Inhaltsoptionen sowie eine Kopfzeile enthält. Die Demo verwendet die web-Komponente dwc-icon-button, um einen Schubladen-Umschalter zu erstellen. Der Knopf hat das Attribut data-drawer-toggle, das den DwcAppLayout anweist, auf Klickereignisse von dieser Komponente zu hören, um den Schubladenstatus zu wechseln.
+Der folgende Code-Schnipsel führt zu einer App mit einer einklappbaren Seitenleiste, die ein Logo und Registerkarten für verschiedene Inhaltsoptionen sowie einen Header enthält. Die Demo verwendet die webkomponente dwc-icon-button, um einen Schubladenumschalter zu erstellen. Der Button hat das Attribut data-drawer-toggle, das den DwcAppLayout anweist, auf Klickereignisse von dieser Komponente zu hören, um den Zustand der Schublade umzuschalten.
 
+<!--vale off-->
 <AppLayoutViewer path='/webforj/applayout/content/Dashboard?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/applayout/AppLayoutView.java'
 cssURL='/css/applayout/applayout.css'
-/>
+urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
+<!--vale on-->
 
-## Vollbreite Navbar {#full-width-navbar}
+## Vollbreite-Navigationsleiste {#full-width-navbar}
 
-Standardmäßig rendert das AppLayout die Kopfzeile und die Fußzeile im Off-Screen-Modus. Der Off-Screen-Modus bedeutet, dass die Position der Kopfzeile und der Fußzeile verschoben wird, um neben der geöffneten Schublade zu passen. Das Deaktivieren dieses Modus führt dazu, dass die Kopfzeile und Fußzeile den gesamten verfügbaren Raum einnehmen und die Position der Schublade oben und unten anpassen, um mit der Kopfzeile und der Fußzeile zu passen.
+Standardmäßig rendert das AppLayout den Header und den Footer im Offscreen-Modus. Der Offscreen-Modus bedeutet, dass die Position von Header und Footer verschoben wird, um neben der geöffneten Schublade zu passen. Das Deaktivieren dieses Modus führt dazu, dass der Header und der Footer den gesamten verfügbaren Raum einnehmen und die obere und untere Position der Schublade an Header und Footer angepasst werden.
 
 ```java showLineNumbers
 AppLayout myApp = new AppLayout();
@@ -51,58 +54,76 @@ myApp.setHeaderOffscreen(false);
 myApp.setFooterOffscreen(false);
 ```
 
+<!--vale off-->
 <AppLayoutViewer path='/webforj/applayoutfullnavbar/content/Dashboard?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/fullnavbar/AppLayoutFullNavbarView.java'
-cssURL='/css/applayout/applayout.css'/>
+cssURL='/css/applayout/applayout.css'
+urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/fullnavbar/AppLayoutFullNavbarContentView.java',
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
+<!--vale on-->
 
 ## Mehrere Werkzeugleisten {#multiple-toolbars}
 
-Die Navbar hat keine Begrenzung für die Anzahl der Werkzeugleisten, die Sie hinzufügen können. Eine `Toolbar` ist eine horizontale Container-Komponente, die eine Reihe von Aktionsschaltflächen, Symbolen oder anderen Steuerelementen enthält. Um eine zusätzliche Werkzeugleiste hinzuzufügen, verwenden Sie einfach die Methode `addToHeader()`, um eine weitere `Toolbar`-Komponente hinzuzufügen.
+Die Navigationsleiste hat keine Einschränkung bezüglich der Anzahl von Werkzeugleisten, die Sie hinzufügen können. Eine `Toolbar` ist eine horizontale Containerkomponente, die eine Reihe von Aktionsknöpfen, Symbolen oder anderen Steuerelementen hält. Um eine zusätzliche Werkzeugleiste hinzuzufügen, verwenden Sie einfach die Methode `addToHeader()`, um eine weitere `Toolbar`-Komponente hinzuzufügen.
 
-Die folgende Demo zeigt, wie man zwei Werkzeugleisten verwendet. Die erste enthält die Umschalttaste der Schublade und den Titel der App. Die zweite Werkzeugleiste enthält ein sekundäres Navigationsmenü.
+Die folgende Demo zeigt, wie man zwei Werkzeugleisten verwendet. Die erste beherbergt den Umschalter für die Schublade und den Titel der App. Die zweite Werkzeugleiste beherbergt ein sekundäres Navigationsmenü.
 
+<!--vale off-->
 <AppLayoutViewer path='/webforj/applayoutmultipleheaders/content/Dashboard?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/multipleheaders/AppLayoutMultipleHeadersView.java'
-cssURL='/css/applayout/applayout.css'/>
+cssURL='/css/applayout/applayout.css'
+urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/multipleheaders/AppLayoutMultipleHeaderContentView.java',
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
+<!--vale on-->
 
 ## Sticky Werkzeugleisten {#sticky-toolbars}
 
-Eine Sticky-Werkzeugleiste ist eine Werkzeugleiste, die am oberen Rand der Seite sichtbar bleibt, wenn der Benutzer nach unten scrollt, jedoch die Höhe der Navbar reduziert wird, um mehr Platz für den Inhalt der Seite zur Verfügung zu stellen. Normalerweise enthält diese Art von Werkzeugleiste ein festes Navigationsmenü, das für die aktuelle Seite relevant ist.
+Eine Sticky-Werkzeugleiste ist eine Werkzeugleiste, die oben auf der Seite sichtbar bleibt, wenn der Benutzer nach unten scrollt, während die Höhe der Navigationsleiste verringert wird, um mehr Platz für die Seiteninhalte freizugeben. In der Regel enthält diese Art von Werkzeugleiste ein fixes Navigationsmenü, das für die aktuelle Seite relevant ist.
 
-Es ist möglich, Sticky-Werkzeugleisten mithilfe der CSS-Custom-Property `--dwc-app-layout-header-collapse-height` und der Option `AppLayout.setHeaderReveal()` zu erstellen.
+Es ist möglich, Sticky-Werkzeugleisten mit der CSS-Anpassungsvariable `--dwc-app-layout-header-collapse-height` und der Option `AppLayout.setHeaderReveal()` zu erstellen.
 
-Wenn `AppLayout.setHeaderReveal(true)` aufgerufen wird, wird die Kopfzeile beim ersten Rendern sichtbar und dann verborgen, wenn der Benutzer beginnt, nach unten zu scrollen. Sobald der Benutzer beginnt, wieder nach oben zu scrollen, wird die Kopfzeile enthüllt.
+Wenn `AppLayout.setHeaderReveal(true)` gesetzt wird, ist der Header beim ersten Rendern sichtbar und wird dann ausgeblendet, wenn der Benutzer beginnt, nach unten zu scrollen. Sobald der Benutzer wieder nach oben scrollt, wird der Header wieder angezeigt.
 
-Mit Hilfe der CSS-Custom-Property `--dwc-app-layout-header-collapse-height` ist es möglich, festzulegen, wie viel von der Kopfzeilen-Navigation verborgen wird.
+Mit Hilfe der CSS-Anpassungsvariable `--dwc-app-layout-header-collapse-height` ist es möglich, zu steuern, wie viel von der Header-Navigationsleiste ausgeblendet wird.
 
+<!--vale off-->
 <AppLayoutViewer path='/webforj/applayoutstickytoolbar/content/Dashboard?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/stickytoolbar/AppLayoutStickyToolbarView.java'
-cssURL='/css/applayout/applayout.css'/>
+cssURL='/css/applayout/applayout.css'
+urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/stickytoolbar/AppLayoutStickyToolbarContentView.java',
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
+<!--vale on-->
 
 ## Mobile Navigationslayout {#mobile-navigation-layout}
 
-Die untere Navbar kann verwendet werden, um eine andere Version der Navigation am unteren Rand der App bereitzustellen. Diese Art der Navigation ist besonders in mobilen Apps beliebt.
+Die untere Navigationsleiste kann verwendet werden, um eine andere Version der Navigation am unteren Rand der App bereitzustellen. Diese Art der Navigation ist besonders beliebt in mobilen Apps.
 
-Beachten Sie, wie die Schublade in der folgenden Demo verborgen ist. Das AppLayout-Widget unterstützt drei Schubladenpositionen: `DrawerPlacement.LEFT`, `DrawerPlacement.RIGHT` und `DrawerPlacement.HIDDEN`.
+Beachten Sie, dass die Schublade in der folgenden Demo ausgeblendet ist. Das AppLayout-Widget unterstützt drei Schubladenpositionen: `DrawerPlacement.LEFT`, `DrawerPlacement.RIGHT` und `DrawerPlacement.HIDDEN`.
 
-Wie bei `AppLayout.setHeaderReveal()` wird auch `AppLayout.setFooterReveal()` unterstützt. Wenn `AppLayout.setFooterReveal(true)` aufgerufen wird, wird die Fußzeile beim ersten Rendern sichtbar und verborgen, wenn der Benutzer beginnt, nach oben zu scrollen. Sobald der Benutzer wieder nach unten scrollt, wird die Fußzeile enthüllt.
+Ähnlich wie `AppLayout.setHeaderReveal()`, wird auch `AppLayout.setFooterReveal()` unterstützt. Wenn `AppLayout.setFooterReveal(true)` aufgerufen wird, ist der Footer beim ersten Rendern sichtbar und wird dann ausgeblendet, wenn der Benutzer beginnt, nach oben zu scrollen. Sobald der Benutzer wieder nach unten scrollt, wird der Footer wieder angezeigt.
 
-Standardmäßig wird die Schublade bei einer Bildschirmbreite von 800px oder weniger in den Popover-Modus versetzt. Dies wird als Breakpoint bezeichnet. Der Popover-Modus bedeutet, dass die Schublade über den Inhaltsbereich mit einem Overlay aufspringt. Es ist möglich, den Breakpoint mithilfe der Methode `setDrawerBreakpoint()` zu konfigurieren, und der Breakpoint muss eine gültige [Media Query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) sein.
+Standardmäßig, wenn die Bildschirmbreite 800px oder weniger beträgt, wechselt die Schublade in den Popover-Modus. Dies wird als Breakpoint bezeichnet. Der Popover-Modus bedeutet, dass die Schublade über den Inhaltsbereich mit einer Überlagerung erscheint. Es ist möglich, den Breakpoint mit der Methode `setDrawerBreakpoint()` zu konfigurieren, und der Breakpoint muss eine gültige [Medienabfrage](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) sein.
 
+<!--vale off-->
 <AppLayoutViewer path='/webforj/applayoutmobiledrawer/?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/mobiledrawer/AppLayoutMobileDrawerView.java'
 cssURL='/css/applayout/applayout.css'
-/>
+urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/mobiledrawer/AppLayoutMobileDrawerContentView.java',
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
+<!--vale on-->
 
-## Schubladen-Dienstprogramme {#drawer-utilities}
+## Schubladenutilities {#drawer-utilities}
 
-Die `AppLayout` Schubladen-Dienstprogramme sind für die integrierte Navigation und kontextuelle Menüs innerhalb des Haupt-App-Layouts konzipiert, während eigenständige [`Drawer`](https://docs.webforj.com/docs/components/drawer) Komponenten flexible, unabhängige Schiebepanels bieten, die überall in Ihrer App für zusätzlichen Inhalt, Filter oder Benachrichtigungen verwendet werden können. Dieser Abschnitt konzentriert sich auf die integrierten Schubladenmerkmale und -dienstprogramme, die von AppLayout bereitgestellt werden.
+Die Schubladenutilities des `AppLayout` sind für die integrierte Navigation und kontextbezogene Menüs innerhalb des Haupt-App-Layouts konzipiert, während eigenständige [`Drawer`](https://docs.webforj.com/docs/components/drawer) Komponenten flexible, unabhängige Schiebepanele bieten, die überall in Ihrer App für zusätzliche Inhalte, Filter oder Benachrichtigungen verwendet werden können. Dieser Abschnitt konzentriert sich auf die integrierten Schubladenfunktionen und -utilities, die vom AppLayout bereitgestellt werden.
 
 ### Schubladen-Breakpoint {#drawer-breakpoint}
 
-Standardmäßig wird die Schublade bei einer Bildschirmbreite von 800px oder weniger in den Popover-Modus versetzt. Dies wird als Breakpoint bezeichnet. Der Popover-Modus bedeutet, dass die Schublade über den Inhaltsbereich mit einem Overlay aufspringt. Es ist möglich, den Breakpoint mithilfe der Methode `setDrawerBreakpoint()` zu konfigurieren, und der Breakpoint muss eine gültige Media Query sein.
+Standardmäßig wechselt die Schublade, wenn die Bildschirmbreite 800px oder weniger beträgt, in den Popover-Modus. Dies wird als Breakpoint bezeichnet. Der Popover-Modus bedeutet, dass die Schublade über den Inhaltsbereich mit einer Überlagerung erscheint. Es ist möglich, den Breakpoint mit der Methode `setDrawerBreakpoint()` zu konfigurieren, und der Breakpoint muss eine gültige Medienabfrage sein.
 
-Zum Beispiel ist im folgenden Beispiel der Schubladen-Breakpoint auf 500px oder weniger konfiguriert.
+Zum Beispiel wird im folgenden Beispiel der Schubladen-Breakpoint auf 500px oder weniger konfiguriert.
 
 ```java
 AppLayout demo = new AppLayout();
@@ -111,7 +132,7 @@ demo.setDrawerBreakpoint("(max-width:500px)");
 
 ### Schubladentitel {#drawer-title}
 
-Die `AppLayout` Komponente stellt eine Methode `addToDrawerTitle()` zur Verfügung, um einen benutzerdefinierten Titel anzuzeigen, der im Schubladenkopf angezeigt wird. 
+Die `AppLayout`-Komponente bietet eine Methode `addToDrawerTitle()`, um einen benutzerdefinierten Titel zu definieren, der im Schubladenkopf angezeigt werden soll.
 
 ```java
 layout.addToDrawerTitle(new Div("Menü"));
@@ -119,7 +140,7 @@ layout.addToDrawerTitle(new Div("Menü"));
 
 ### Schubladenaktionen {#drawer-actions}
 
-Die `AppLayout` Komponente ermöglicht es Ihnen, benutzerdefinierte Komponenten wie Schaltflächen oder Symbole in den **Schubladenkopf-Aktionsbereich** zu platzieren, indem Sie die Methode `addToDrawerHeaderActions()` verwenden.
+Die `AppLayout`-Komponente ermöglicht es Ihnen, benutzerdefinierte Komponenten wie Schaltflächen oder Symbole in den **Actions-Bereich des Schubladenkopfes** mit der Methode `addToDrawerHeaderActions()` einzufügen.
 
 ```java
 layout.addToDrawerHeaderActions(
@@ -136,27 +157,31 @@ layout.addToDrawerHeaderActions(
 );
 ```
 
-Schubladenaktionen erscheinen im **rechtsbündigen Bereich** des Schubladenkopfes.
+Die Schubladenaktionen erscheinen im **rechtsbündigen Bereich** des Schubladenkopfes.
 
+<!--vale off-->
 <AppLayoutViewer path='/webforj/applayoutdrawerutility/content/Dashboard/?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/applayoutdrawerutility/AppLayoutDrawerUtilityView.java'
 cssURL='/css/applayout/applayout.css'
-/>
+urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/applayoutdrawerutility/AppLayoutDrawerUtilityContentView.java',
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
+<!--vale on-->
 
 ## `AppDrawerToggle` <DocChip chip='since' label='24.12' /> {#appdrawertoggle-docchip-chipsince-label2412-}
 
-Die [`AppDrawerToggle`](https://javadoc.io/doc/com.webforj/webforj-applayout/latest/com/webforj/component/layout/applayout/AppDrawerToggle.html) Komponente ist eine serverseitige webforJ-Klasse, die einen Knopf darstellt, der verwendet wird, um die Sichtbarkeit einer Navigationsschublade in einem `AppLayout` umzuschalten. Sie entspricht dem clientseitigen `<dwc-app-drawer-toggle>` Element und ist standardmäßig so gestaltet, dass sie sich wie ein traditionelles Hamburger-Menü-Symbol verhält. Dieses Verhalten kann angepasst werden.
+Die [`AppDrawerToggle`](https://javadoc.io/doc/com.webforj/webforj-applayout/latest/com/webforj/component/layout/applayout/AppDrawerToggle.html) Komponente ist eine serverseitige webforJ-Klasse, die eine Schaltfläche repräsentiert, die zur Umschaltung der Sichtbarkeit einer Navigationsschublade in einem `AppLayout` verwendet wird. Sie entspricht dem clientseitigen `<dwc-app-drawer-toggle>`-Element und ist standardmäßig so gestaltet, dass sie sich wie ein traditionelles Hamburger-Menüsymbol verhält. Dieses Verhalten kann angepasst werden.
 
 ### Übersicht {#overview-1}
 
-Die `AppDrawerToggle` erweitert `IconButton` und verwendet standardmäßig das "menu-2" Symbol aus dem Tabler-Symbolsatz. Sie wendet automatisch das Attribut `data-drawer-toggle` an, um sich in das clientseitige Schubladenverhalten zu integrieren.
+Die `AppDrawerToggle` erweitert `IconButton` und verwendet standardmäßig das "menu-2"-Symbol aus dem Tabler-Icon-Set. Es wendet automatisch das Attribut `data-drawer-toggle` an, um sich mit dem clientseitigen Schubladenverhalten zu integrieren.
 
 ```java
 // Keine Ereignisregistrierung erforderlich:
 AppLayout layout = new AppLayout();
 layout.addToHeader(new AppDrawerToggle());
-// Der Schubladen-Umschalter funktioniert sofort—keine manuellen Ereignislistener erforderlich.
+// Der Schubladenumschalter funktioniert direkt – keine manuellen Ereignislistener erforderlich.
 ```
-## Styling {#styling}
+## Stil {#styling}
 
 <TableBuilder name="AppLayout" />
