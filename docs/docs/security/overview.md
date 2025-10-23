@@ -22,6 +22,9 @@ import DocCardList from '@theme/DocCardList';
 
 # Security <DocChip chip='since' label='25.10' />
 
+:::note Public Preview
+This feature is in public preview and ready for production use. During the preview period, APIs may be refined based on feedback from the developer community. Any changes will be announced in advance through release notes and migration guides will be provided when necessary.
+:::
 
 In modern web applications, **security** refers to controlling access to different parts of your app based on user identity and permissions. In webforJ, security provides a framework for **route-level access control**, where you can protect views, require authentication, and enforce role-based permissions.
 
