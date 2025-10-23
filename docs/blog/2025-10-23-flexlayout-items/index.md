@@ -24,7 +24,7 @@ flex.add(p);
 flex.setItemBasis("50%", p);
 ```
 
-## Order
+## Item order
 When you add items to a FlexLayout, they will appear in the order that you added them. 
 However, you can adjust this order at any time by using `setItemOrder()`, which corresponds to the CSS property `order`. 
 This gives you the freedom to rearrange your layout dynamically, just by modifying this property.
