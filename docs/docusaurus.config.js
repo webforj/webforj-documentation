@@ -58,8 +58,8 @@ const config = {
   scripts: [
     { src: '/js/dwc-theme-switcher.js', async: false },
     { src: '/js/link-decorator.js' },
-    { src: '/js/style-startforj.js', defer: true},
-    { src: '/js/latest-webforj-version.js', defer: true}
+    { src: '/js/style-startforj.js', defer: true },
+    { src: '/js/latest-webforj-version.js', defer: true }
   ],
   headTags: [
     {
@@ -134,6 +134,10 @@ const config = {
       },
     ]
   ],
+  themes: ['@docusaurus/theme-mermaid'],
+  markdown: {
+    mermaid: true,
+  },
   themeConfig: {
     algolia: {
       appId: '826LUKOV8E',
