@@ -4,25 +4,23 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import com.microsoft.playwright.Locator;
+import com.webforj.samples.pages.dialog.DialogSectionsPage;
 import com.webforj.samples.views.BaseTest;
 
 public class DialogSectionsViewIT extends BaseTest {
 
+    private DialogSectionsPage dialogSectionsPage;
+
     @BeforeEach
     public void setupDialogSections() {
-        navigateToRoute("dialogsections");
+        navigateToRoute(DialogSectionsPage.getRoute());
+        dialogSectionsPage = new DialogSectionsPage(page);
     }
 
     @Test
     public void testSectionsAreVisible() {
-        Locator header = page.getByText("Header");
-        Locator content = page.getByText("Content");
-        Locator footer = page.getByText("Footer");
-
-        assertThat(header).isVisible();
-        assertThat(content).isVisible();
-        assertThat(footer).isVisible();
+        assertThat(dialogSectionsPage.getHeader()).isVisible();
+        assertThat(dialogSectionsPage.getContent()).isVisible();
+        assertThat(dialogSectionsPage.getFooter()).isVisible();
     }
 }

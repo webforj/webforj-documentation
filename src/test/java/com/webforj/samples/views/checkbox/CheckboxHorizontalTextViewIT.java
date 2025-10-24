@@ -1,28 +1,26 @@
 package com.webforj.samples.views.checkbox;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import com.microsoft.playwright.Locator;
+import com.webforj.samples.pages.checkbox.CheckboxHorizontalTextPage;
 import com.webforj.samples.views.BaseTest;
 
 public class CheckboxHorizontalTextViewIT extends BaseTest {
 
+    private CheckboxHorizontalTextPage checkboxHorizontalTextPage;
+
     @BeforeEach
     public void setupCheckboxHorizontalText() {
-        navigateToRoute("checkboxhorizontaltext");
+        navigateToRoute(CheckboxHorizontalTextPage.getRoute());
+        checkboxHorizontalTextPage = new CheckboxHorizontalTextPage(page);
     }
 
     @Test
     public void testDailyCheckboxIsCheckedAndUncheckedWhenClicked() {
-        Locator checkbox = page.getByText("Daily").nth(1);
+        assertThat(checkboxHorizontalTextPage.getDailyCheckbox()).isChecked();
 
-        assertThat(checkbox).isChecked();
-
-        checkbox.click();
-        assertThat(checkbox).not().isChecked();
+        checkboxHorizontalTextPage.getDailyCheckbox().click();
+        assertThat(checkboxHorizontalTextPage.getDailyCheckbox()).not().isChecked();
     }
-
 }

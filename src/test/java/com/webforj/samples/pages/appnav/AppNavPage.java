@@ -24,16 +24,16 @@ public class AppNavPage {
 
         this.tablerIcon = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("menu 2"));
         this.appLayout = page.locator("dwc-app-layout");
-        this.paragraph = page.getByText("Content for", new Page.GetByTextOptions().setExact(false));
+        this.paragraph = page.getByText("Content for", new Page.GetByTextOptions());
 
-        this.inboxDropdown = page.getByText("Inbox", new Page.GetByTextOptions().setExact(false));
+        this.inboxDropdown = page.getByText("Inbox", new Page.GetByTextOptions());
 
-        this.sidebarPrimaryTab = page.getByText("Primary", new Page.GetByTextOptions().setExact(false));
+        this.sidebarPrimaryTab = page.getByText("Primary", new Page.GetByTextOptions());
 
-        this.aboutDropdown = page.getByText("About", new Page.GetByTextOptions().setExact(false));
-        this.sidebarWebforJ = page.getByText("webforJ", new Page.GetByTextOptions().setExact(false));
-        this.sidebarGitHub = page.getByText("GitHub", new Page.GetByTextOptions().setExact(false));
-        this.sidebarDocumentation = page.getByText("Documentation", new Page.GetByTextOptions().setExact(false));
+        this.aboutDropdown = page.getByText("About", new Page.GetByTextOptions());
+        this.sidebarWebforJ = page.getByText("webforJ", new Page.GetByTextOptions());
+        this.sidebarGitHub = page.getByText("GitHub", new Page.GetByTextOptions());
+        this.sidebarDocumentation = page.getByText("Documentation", new Page.GetByTextOptions());
     }
 
     public static String getRoute() {
