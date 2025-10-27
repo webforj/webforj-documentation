@@ -45,3 +45,7 @@ CORS
 admin
 Swing
 MVC
+JAAS
+Shiro
+OAuth2
+LDAP
