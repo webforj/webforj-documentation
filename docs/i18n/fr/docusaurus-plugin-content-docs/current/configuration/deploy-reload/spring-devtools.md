@@ -1,26 +1,29 @@
 ---
 title: Spring DevTools
 sidebar_position: 30
-_i18n_hash: 5401d3aa92e9230c4f26c827dcf83162
+sidebar_class_name: updated-content
+_i18n_hash: 147474b17005c532723aacd8af9391ea
 ---
-Spring DevTools fournit des redémarrages automatiques de l'application lorsque le code change. webforJ DevTools ajoute un rafraîchissement automatique du navigateur - lorsque Spring redémarre votre application, le navigateur se rafraîchit automatiquement via le serveur LiveReload de webforJ.
+Spring DevTools fournit des redémarrages automatiques de l'application lors des modifications de code. webforJ DevTools ajoute un rafraîchissement automatique du navigateur - lorsque Spring redémarre votre application, le navigateur se rafraîchit automatiquement via le serveur LiveReload de webforJ.
 
-Différents types de fichiers déclenchent un comportement de rechargement différent. Les modifications du code Java provoquent un redémarrage complet de Spring et un rafraîchissement du navigateur. Les modifications CSS et d'images se mettent à jour sans rechargement de page, préservant les données de formulaire et l'état de l'application.
+Différents types de fichiers déclenchent différents comportements de rechargement. Les modifications du code Java provoquent un redémarrage complet de Spring et un rafraîchissement du navigateur. Les modifications CSS et d'images se mettent à jour sans rechargement de la page, préservant les données du formulaire et l'état de l'application.
 
-## Understanding webforJ DevTools {#understanding-webforj-devtools}
+<!-- vale off -->
+## Comprendre webforJ DevTools {#understanding-webforj-devtools}
+<!-- vale on -->
 
 webforJ étend Spring DevTools avec la synchronisation du navigateur. Lorsque Spring détecte des modifications de fichiers et redémarre, webforJ DevTools rafraîchit automatiquement votre navigateur.
 
-### Reload behavior {#reload-behavior}
+### Comportement de rechargement {#reload-behavior}
 
 Différents types de fichiers déclenchent différentes stratégies de rechargement :
 
-- **Fichiers Java** - Rechargement complet de la page du navigateur après le redémarrage de Spring
-- **Fichiers CSS** - Mises à jour des styles sans rechargement de la page  
-- **Fichiers JavaScript** - Rechargement complet de la page du navigateur après le redémarrage de Spring
-- **Images** - Rafraîchissement sur place sans rechargement de la page
+- **Fichiers Java** : Rechargement complet de la page du navigateur après le redémarrage de Spring
+- **Fichiers JavaScript** : Rechargement complet de la page du navigateur après le redémarrage de Spring
+- **Fichiers CSS** : Mises à jour du style sans rechargement de la page  
+- **Images** : Rafraîchissement sur place sans rechargement de la page
 
-## Dependencies {#dependencies}
+## Dépendances {#dependencies}
 
 Ajoutez à la fois Spring DevTools et webforJ DevTools à votre projet :
 
@@ -41,7 +44,7 @@ Ajoutez à la fois Spring DevTools et webforJ DevTools à votre projet :
 
 ## Configuration {#configuration}
 
-Activez webforJ DevTools dans les propriétés de votre application :
+Activez webforJ DevTools dans votre fichier `application.properties` :
 
 ```Ini title="application.properties"
 # Activer le rechargement automatique du navigateur webforJ
@@ -51,7 +54,7 @@ webforj.devtools.livereload.enabled=true
 server.shutdown=immediate
 ```
 
-### Advanced configuration {#advanced-configuration}
+### Configuration avancée {#advanced-configuration}
 
 Configurez la connexion WebSocket et le comportement de rechargement :
 
@@ -59,12 +62,22 @@ Configurez la connexion WebSocket et le comportement de rechargement :
 # Port du serveur WebSocket (par défaut : 35730)
 webforj.devtools.livereload.websocket-port=35730
 
-# Chemin du point de terminaison WebSocket (par défaut : /webforj-devtools-ws)
+# Chemin de point de terminaison WebSocket (par défaut : /webforj-devtools-ws)
 webforj.devtools.livereload.websocket-path=/webforj-devtools-ws
 
-# Intervalle de battement en millisecondes ( par défaut : 30000)
+# Intervalle de battement en millisecondes (par défaut : 30000)
 webforj.devtools.livereload.heartbeat-interval=30000
 
-# Activer le rechargement à chaud pour les ressources statiques (par défaut : true)
+# Activer le rechargement à chaud pour les ressources statiques (par défaut : vrai)
 webforj.devtools.livereload.static-resources-enabled=true
+```
+
+<DocChip chip='since' label='25.03' /> Configurer l'ouverture du navigateur au démarrage de l'application :
+
+```Ini title="application.properties"
+# Activer l'ouverture du navigateur (par défaut : faux)
+webforj.devtools.browser.open=true
+
+# localhost, nom d'hôte ou adresse IP (par défaut : localhost)
+webforj.devtools.browser.host=localhost
 ```

@@ -2,34 +2,34 @@
 title: Scopes
 sidebar_position: 16
 sidebar_class_name: new-content
-_i18n_hash: 79be5bc5e8982111f185b0f474a1f746
+_i18n_hash: 8c977fdef41f6125ac21239e7e397f4d
 ---
-# Scope <DocChip chip='since' label='25.03' />
+# Skaalat <DocChip chip='since' label='25.03' />
 
-Spring hallitsee beanien elinkaarta scopejen kautta. Jokainen scope määrittelee, milloin bean luodaan, kuinka kauan se elää ja milloin se tuhoutuu. Standardien Spring scopesien ohella webforJ lisää kolme mukautettua scopea: `@WebforjSessionScope`, `@EnvironmentScope` ja `@RouteScope`.
+Spring hallitsee beanin elinkaaren skaalausten kautta. Kukin skaalaus määrittää, milloin bean luodaan, kuinka kauan se elää ja milloin se tuhoutuu. Perinteisten Spring-skaalausten lisäksi webforJ lisää kolme mukautettua skaalausta: `@WebforjSessionScope`, `@EnvironmentScope` ja `@RouteScope`.
 
-:::tip[Lisätietoja Spring-scopeista]
-Kattavasta kuvasta Springin scope-mekanismista ja standardiscopeista katso [Springin bean-scope-dokumentaatio](https://docs.spring.io/spring-framework/reference/core/beans/factory-scopes.html).
+:::tip[Lisätietoja Spring-skaaloista]
+Kattavan käsittelyn Springin skaalausmekanismista ja standardiskaaloista löydät [Springin bean skaalausasiakirjasta](https://docs.spring.io/spring-framework/reference/core/beans/factory-scopes.html).
 :::
 
 ## Yleiskatsaus
 
-webforJ tarjoaa kolme mukautettua scopea, jotka on suunniteltu web-sovellusten tilanhallintaan:
+webforJ tarjoaa kolme mukautettua skaalausta, jotka on suunniteltu verkkosovelluksen tilanhallintaan:
 
-- **`@WebforjSessionScope`**: Beans, jotka jaetaan kaikkien saman käyttäjän selaintabien/ikkunoiden kesken. Ihanteellinen todennukseen, käyttäjäasetuksiin ja ostoskoreihin.
-- **`@EnvironmentScope`**: Beans, jotka on eristetty yhteen selaintablettiin/ikkunaan. Erinomainen välilehtikohtaisiin työnkulkuihin, lomaketietoihin ja itsenäiseen asiakirjan muokkaamiseen.
-- **`@RouteScope`**: Beans, jotka jaetaan reitti-hierarkiassa. Hyödyllinen navigointitilan ja datan hallintaan, joka palautuu käyttäjien liikkuessa sovelluksen eri osien välillä.
+- **`@WebforjSessionScope`**: Beanit, jotka jaetaan kaikkien selaimen välilehtien / ikkunoiden kesken saman käyttäjäistunnon aikana. Erinomainen autentikointiin, käyttäjäasetuksiin ja ostoskärryihin.
+- **`@EnvironmentScope`**: Beanit, jotka on eristetty yhteen selaimen välilehteen / ikkunaan. Ihanteellinen välilehti- tai työlaflujaisiin työnkulkuun, lomaketietoihin ja itsenäiseen asiakirjan muokkaamiseen.
+- **`@RouteScope`**: Beanit, jotka jaetaan reittihierarkiassa. Hyödyllinen navigointitilan ja datan hallintaan, joka tulisi nollata kun käyttäjät navigoivat sovelluksen eri osien välillä.
 
 [![webforJ spring scopes](/img/spring-scopes.svg)](/img/spring-scopes.svg)
 
-## Istunt scope {#session-scope}
+## Istuntotila {#session-scope}
 
-`@WebforjSessionScope`-annotaatio luo beans, jotka säilyvät koko webforJ-istunnon ajan. Ero [environment scopeen](#environment-scope), joka eristää beansit jokaiselle selainten ikkunalle/tabille, istuntokohtaiset beans jaetaan kaikkien samasta selaimesta avattujen ikkunoiden ja välilehtien kesken. Nämä beans elävät niin kauan kuin webforJ-istunto pysyy aktiivisena, tyypillisesti siihen asti, kun käyttäjä kirjautuu ulos tai istunto vanhenee.
+`@WebforjSessionScope` -annotaatio luo beaneja, jotka säilyvät koko webforJ-istunnon ajan. Toisin kuin [ympäristöskaalaus](#environment-scope), joka eristää beanit selaimen ikkunoiden / välilehtien mukaan, istuntotilan beanit jaetaan kaikissa ikkunoissa ja välilehdissä saman selaimen osalta. Nämä beanit elävät niin kauan kuin webforJ-istunto on aktiivinen, tyypillisesti siihen asti kun käyttäjä kirjautuu ulos tai istunto vanhentuu.
 
-Istunt scope on ihanteellinen todennustilan, käyttäjäasetusten ja ostoskorejen hallintaan. Tiedot, jotka tulee säilyttää useiden selaintabien välillä, mutta pysyä eristyksissä eri käyttäjien välillä. Jokaisen käyttäjän selaimistuntiin kuuluu oma istuntokohtainen beans-instanssi.
+Istuntotila on ihanteellinen autentikaatiosstateeseen, käyttäjäasetuksiin, ostoskärryihin ja dataan, joka tulisi säilyttää useiden selaimen välilehtien yli, mutta pysyä eristyksissä eri käyttäjien välillä. Jokaisen käyttäjän selaimistuntosi saa oman instanssinsa istuntotilan beaneista.
 
-:::info Beansit tarvitsevat olla Serializable
-Istuntokohtaiset beansit tulee toteuttaa `Serializable`, koska ne tallennetaan HTTP-istuntomuuttujissa. Kaikkien ei-siirrettävien kenttien tulee myös olla serialisoitavia (perusmuodot, `String` tai luokat, jotka toteuttavat `Serializable`). Merkitse kentät `transient`-näin, jos niitä ei tule säilyttää.
+:::info Beanien on oltava Serializable
+Istuntotilaan liittyvien beanien on toteutettava `Serializable`, koska ne tallennetaan HTTP-istunnon attribuutteihin. Kaikkien ei-siirtyvien kenttien on myös oltava sarjoitettavia (primitivit, `String` tai luokat, jotka toteuttavat `Serializable`). Merkitse kentät `transient`, jos niitä ei pitäisi säilyttää.
 :::
 
 Lisää `@WebforjSessionScope` mihin tahansa Spring-komponenttiin:
@@ -42,7 +42,7 @@ public class AuthenticationService {
   private Instant loginTime;
 
   public void login(String username, String password) {
-    // Vahvista käyttäjä
+    // Autentikoi käyttäjä
     authenticatedUser = authenticate(username, password);
     loginTime = Instant.now();
   }
@@ -50,7 +50,7 @@ public class AuthenticationService {
   public void logout() {
     authenticatedUser = null;
     loginTime = null;
-    // Kumoa istunto
+    // Virallista istunto
   }
 
   public boolean isAuthenticated() {
@@ -63,9 +63,9 @@ public class AuthenticationService {
 }
 ```
 
-### Istunnon jakaminen iskuilla {#session-sharing-across-tabs}
+### Istunnon jakaminen välilehtien välillä {#session-sharing-across-tabs}
 
-Istuntokohtaiset beansit säilyttävät tilan kaikkien selainten ikkunoiden ja tabien välillä. Avaamalla sovelluksen useassa tabissa jaetaan sama beans-instanssi:
+Istuntotilan beanit ylläpitävät tilaa kaikissa selaimen ikkunoissa ja välilehdissä. Sovelluksen avaaminen useissa välilehdissä jakaa saman bean-instanssin:
 
 ```java
 @Route
@@ -73,15 +73,15 @@ public class LoginView extends Composite<Div> {
 
   public LoginView(AuthenticationService authService) {
     if (authService.isAuthenticated()) {
-      // Käyttäjä on jo kirjautunut sisään toisessa tabissa
+      // Käyttäjä on jo kirjautunut sisään toisessa välilehdessä
       Router.getCurrent().navigate("/dashboard");
       return;
     }
 
-    Button loginButton = new Button("Kirjaudu");
+    Button loginButton = new Button("Kirjaudu sisään");
     loginButton.onClick(e -> {
       authService.login(username, password);
-      // Käyttäjä on nyt kirjautunut sisään kaikissa tabissa
+      // Käyttäjä on nyt kirjautunut sisään kaikissa välilehdissä
     });
   }
 }
@@ -90,7 +90,7 @@ public class LoginView extends Composite<Div> {
 public class DashboardView extends Composite<Div> {
 
   public DashboardView(AuthenticationService authService) {
-    // Sama AuthenticationService-instanssi kaikissa tabissa
+    // Sama AuthenticationService-instanssi kaikissa välilehdissä
     User user = authService.getCurrentUser();
     if (user == null) {
       Router.getCurrent().navigate("/login");
@@ -102,13 +102,13 @@ public class DashboardView extends Composite<Div> {
 }
 ```
 
-Kun käyttäjä kirjautuu sisään yhdellä tabilla, kaikilla muilla tabilla on heti pääsy todennettuun tilaan. Uuden tabin tai ikkunan avaaminen säilyttää kirjautumistilan. Kirjautuminen ulos mistä tahansa tabista vaikuttaa kaikkiin tabiin, koska ne jakavat saman istuntokohtaisen beanin.
+Kun käyttäjä kirjautuu sisään yhden välilehden kautta, kaikki muut välilehdet saavat heti pääsyn autentikoituneeseen tilaan. Uuden välilehden tai ikkunan avaaminen säilyttää kirjautumistilan. Kirjautuminen ulos mistä tahansa välilehdestä vaikuttaa kaikkiin välilehtiin, koska ne jakavat saman istuntotilan beanin.
 
-## Ympäristön scope {#environment-scope}
+## Ympäristöskaalaus {#environment-scope}
 
-`@EnvironmentScope`-annotaatio luo beans, jotka elävät selaimen ikkunan tai tabin istuntokäytön ajan. Kun käyttäjä avaa sovelluksen selaimen ikkunassa tai tabissa, webforJ luo ympäristön. Mikä tahansa bean, joka on merkitty `@EnvironmentScope`, luodaan kerran per selaimen ikkuna/tab ja pysyy käytettävissä, kunnes käyttäjä sulkee tabin tai istunto vanhenee.
+`@EnvironmentScope` -annotaatio luo beaneja, jotka elävät selaimen ikkuna- tai välilehtisession keston ajan. Kun käyttäjä avaa sovelluksen selaimessa, webforJ luo ympäristön. Kaikki beanit, jotka on merkitty `@EnvironmentScope` -annotaatiolla, luodaan kerran jokaiselle selaimen ikkunalle/välilehdelle ja pysyvät saatavilla, kunnes käyttäjä sulkee välilehden tai istunto vanhenee.
 
-Jokainen ympäristö edustaa eristettyä selaimen ikkunaa tai tabia. Ympäristön scopeen liittyvät beansit eivät voi jakaa eri selaimen ikkunoiden tai tabien välillä, koska jokainen ikkuna/tab saa oman instanssinsä.
+Jokainen ympäristö edustaa eristettyä selaimen ikkunaa tai välilehteä. Ympäristöskaalaisia beaneja ei voida jakaa eri selaimen ikkunoiden tai välilehtien kesken, koska jokainen ikkuna/välilehti saa oman instanssinsa.
 
 Lisää `@EnvironmentScope` mihin tahansa Spring-komponenttiin:
 
@@ -137,11 +137,11 @@ public class TabWorkspace {
 }
 ```
 
-`TabWorkspace`-bean ylläpitää tilaa selaimen ikkunan tai tabin elinkaaren ajan. Jokainen selaimen ikkuna/tab saa eristetyn instanssin.
+`TabWorkspace` -bean ylläpitää tilaa koko selaimen ikkunan tai välilehden eliniän ajan. Jokainen selaimen ikkuna/välilehti saa eristetyn instanssin.
 
-### Ympäristön scopeen liittyvien beansien käyttäminen {#using-environment-scoped-beans}
+### Ympäristöskaalisten beanien käyttäminen {#using-environment-scoped-beans}
 
-Reitit saavat ympäristön scopeen liittyvät beansit konstruktorin injektoinnin kautta:
+Reitit saavat ympäristöskaaliset beanit konstruktorin injektoinnin kautta:
 
 ```java
 @Route
@@ -149,7 +149,7 @@ public class EditorView extends Composite<Div> {
 
   public EditorView(TabWorkspace workspace) {
     String documentId = workspace.getDocumentId();
-    // Lataa asiakirja tälle tabille
+    // Lataa asiakirja tälle välilehdelle
     if (documentId == null) {
       // Luo uusi asiakirja
       workspace.setDocumentId(generateDocumentId());
@@ -161,21 +161,21 @@ public class EditorView extends Composite<Div> {
 public class PreviewView extends Composite<Div> {
 
   public PreviewView(TabWorkspace workspace) {
-    // Sama TabWorkspace-instanssi kuin EditorView tälle tabille
+    // Sama TabWorkspace-instanssi kuin EditorView tätä välilehteä
     workspace.setWorkspaceData("lastView", "preview");
     String documentId = workspace.getDocumentId();
-    // Esikatselu asiakirjasta, jota muokataan tälle tabille
+    // Esikatsele asiakirjaa, jota muokataan täällä
   }
 }
 ```
 
-Spring injektoi saman `TabWorkspace`-instanssin molemmille näkymille samassa selaimen ikkunassa/tabissa. Navigointi editorin ja esikatselun välillä säilyttää työtilan instanssin. Jos käyttäjä avaa sovelluksen uudessa selaimen ikkunassa tai tabissa, se ikkuna saa oman erillisen `TabWorkspace`-instanssin, mikä mahdollistaa erilaisten asiakirjojen itsenäisen muokkaamisen.
+Spring injektoi saman `TabWorkspace` -instanssin molempiin näkymiin saman selaimen ikkunan/välilehden aikana. Navigointi editorin ja esikatselun välillä säilyttää työtilan instanssin. Jos käyttäjä avaa sovelluksen uudessa selaimen ikkunassa tai välilehdessä, se ikkuna saa oman erillisen `TabWorkspace` -instanssinsa, jolloin eri asiakirjojen itsenäinen muokkaaminen on mahdollista.
 
-## Reitti scope {#route-scope}
+## Reittitila {#route-scope}
 
-`@RouteScope`-annotaatio luo beans, jotka jaetaan reitti-hierarkiassa. Navigointi `/admin/users` rakentaa komponenttihierarkian, jossa hallintanäkymä on vanhempi ja käyttäjänäkymä on lapsi. Reitti-scope-Beans luodaan kerran hierarkian mukaan ja jaetaan vanhempien ja lasten komponenttien kesken.
+`@RouteScope` -annotaatio luo beaneja, jotka jaetaan reittihierarkiassa. Navigointi `/admin/users` rakentaa komponenttihierarkian, jossa hallintanäkymä on vanhempi ja käyttäjänäkymä on lapsi. Reittitilassa olevat beanit instansioidaan kerran hierarkiassa ja jaetaan vanhemman ja lapsikomponentin kesken.
 
-Reitti scope eroaa ympäristön scopeista granulaariudeltaan. Kun ympäristön scopeen liittyvät beansit ovat käytössä koko selaimen ikkunan/tabin istuntokäytössä, reitti-scope-beansit ovat käytössä vain, kun käyttäjä pysyy tietyssä reitti-hierarkiassa. Navigointi hierarkian ulkopuolelle tuhoaa beansit, ja palaaminen luo uusia instansseja. Tämä scope on ihanteellinen tilan hallintaan, joka tulee palauttaa, kun käyttäjät liikkuvat sovelluksen eri osien välillä.
+Reittitila eroaa ympäristöskaalasta hienovaraisuudessaan. Kun ympäristöskaaliset beanit elävät koko selaimen ikkunan/välilehden session ajan, reittitilassa olevat beanit elävät vain niin kauan kuin käyttäjä pysyy tietyssä reittihierarkiassa. Navigointi hierarkian ulkopuolelle tuhoaa beanit ja palaaminen luo uusia instansseja. Tämä skaalaus on ihanteellinen tila, joka tulisi nollata, kun käyttäjät navigoivat sovelluksen eri osien välillä.
 
 Lisää `@RouteScope` mihin tahansa Spring-komponenttiin:
 
@@ -200,17 +200,17 @@ public class NavigationState {
 }
 ```
 
-### Reitti-hierarkiat ja jakaminen {#route-hierarchies-and-sharing}
+### Reittihierarkiat ja jakaminen {#route-hierarchies-and-sharing}
 
-Reitit muodostavat hierarkioita `outlet`-parametrin kautta. Vanha reitti tarjoaa outletin, johon lapsireitit renderöidään. Kun määrität reitin outletilla, webforJ rakentaa komponenttipuun, jossa outlet-komponentti tulee vanhemmaksi ja reitti-komponentti lapsikeskellä. Tämä vanhempi-lapsisuhde määrää, mitkä komponentit jakavat reitti-scope-beansit.
+Reitit muodostavat hierarkioita `outlet`-parametrin kautta. Vanhempi reitti tarjoaa outletin, johon lapsireitit renderöidään. Kun määrität reitin outletilla, webforJ rakentaa komponenttipuun, jossa outlet-komponentti toimii vanhempana ja reittikomponentti lapsena. Tämä vanhempi-lapsi-suhde määrittää, mitkä komponentit jakavat reittitilan beanit.
 
 ```java {11}
 @Route
 public class AdminView extends Composite<Div> {
 
   public AdminView(NavigationState navState) {
-    navState.addBreadcrumb("Koti");
-    navState.addBreadcrumb("Hallinta");
+    navState.addBreadcrumb("Etusivu");
+    navState.addBreadcrumb("Admin");
     // ...
   }
 }
@@ -226,13 +226,13 @@ public class UsersView extends Composite<Div> {
 }
 ```
 
-`AdminView` ja `UsersView` jakavat saman `NavigationState`-instanssin. Asennus määrittelee navigointirakenteen, kun taas näkymä päivittää aktiivisen tilan. Navigointi `admin`-osion ulkopuolelle (esimerkiksi `/public`) tuhoaa nykyisen `NavigationState`-instanssin ja luo uuden seuraavalle hierarkialle.
+`AdminView` ja `UsersView` jakavat saman `NavigationState` -instanssin. Ulkoasu määrittelee navigointirakenteen, kun taas näkymä päivittää aktiivisen tilan. Navigointi ulkopuolelle `admin` osioon (esim. `/public`) tuhoaa nykyisen `NavigationState` -instanssin ja luo uuden seuraavaan hierarkiaan.
 
-Scope-raja seuraa reitti-puustruktuuria. Kaikki komponentit hierarkian juuresta alas lehtiin jakavat saman reitti-scope-bean-instanssin. Navigointi sisar-reiteille saman hierarkian sisällä säilyttää beansit, kun taas navigointi täysin etäisille hierarkioille laukaisee beanin tuhoamisen ja uudelleenluomisen.
+Skaalausraja seuraa reittipuun rakennetta. Kaikki komponentit hierarkian juuresta lehtiin jakavat samat reittitilan beanin instanssit. Navigointi sisarreisilla samassa hierarkiassa säilyttää beanit, kun taas navigointi eristyksissä hierarkioissa laukaisee beanin tuhoamisen ja uudelleenluonnin.
 
-### Scope-rajojen mukauttaminen `@SharedFrom`:llä {#customizing-scope-boundaries}
+### Skaalaparametrien mukauttaminen `@SharedFrom` avulla {#customizing-scope-boundaries}
 
-Reitti-scope-beansit jaetaan oletusarvoisesti ylimmäisestä komponentista. `@SharedFrom`-annotaatio määrittää vaihtoehtoisen juurikomponentin. Tämä annotaatio muuttaa, mihin hierarkian kohtaan bean tulee saataville, jolloin voit rajoittaa pääsyä tiettyihin alapuolisiin versioihin reittirakenteessasi:
+Reittitilan beanit jaetaan ylhäältä alaspäin oletusarvoisesti. `@SharedFrom` -annotaatio määrittää vaihtoehtoisen juurikomponentin. Tämä annotaatio muuttaa sitä, missä hierarkiassa bean tulee saataville, jolloin voit rajoittaa pääsyä tiettyihin alityypteihin reittirakenteessasi:
 
 ```java title="TeamContext" {2,3}
 @Component
@@ -252,7 +252,7 @@ public class TeamContext {
 }
 ```
 
-Bean on käytettävissä vain `TeamSection`:ssä ja sen lapsikomponenteissa:
+Bean on käytettävissä vain `TeamSection` ja sen lapsikomponenteissa:
 
 ```java
 @Route("/")
@@ -262,7 +262,7 @@ public class MainView extends Composite<Div> {}
 public class TeamSection extends Composite<Div> {
 
   public TeamSection(TeamContext context) {
-    // Bean luotu täällä
+    // Bean luodaan täällä
     context.setTeamId("team-123");
   }
 }
@@ -271,12 +271,12 @@ public class TeamSection extends Composite<Div> {
 public class PublicSection extends Composite<Div> {
 
   public PublicSection(TeamContext context) {
-    // Ei voi injektoida TeamContextia - se on rajoitettu TeamSectioniin
-    // Yritys injektoida heittää IllegalStateExceptionin
+    // Ei voi injektoida TeamContextia - se on rajattu TeamSectioniin
+    // Yritetään injektointi heittää IllegalStateException
   }
 }
 ```
 
-`@SharedFrom`-annotaatio vahvistaa arkkitehtoniset rajat. Komponentit, jotka ovat määritetyn scope rakenneyhteisön ulkopuolella, eivät voi käyttää beania. Kun Spring yrittää injektoida `@SharedFrom`-beanin komponenttiin, joka on sen tarkoitetun hierarkian ulkopuolella, injektio epäonnistuu `IllegalStateException`-virheellä. Tämä toteutus tapahtuu ajon aikana, kun reittiä käytetään, jotta beans pysyvät asianmukaisesti rajattuna haluttuihiin komponenttipuihin.
+`@SharedFrom` -annotaatio vahvistaa arkkitehtuurirajoja. Komponentit, jotka ovat määrittelemättömän skaalan ulkopuolella, eivät voi käyttää beania. Kun Spring yrittää injektoida `@SharedFrom` -beanin komponenttiin, joka on sen määritellyn hierarkian ulkopuolella, injektointi epäonnistuu `IllegalStateException` -virheellä. Tämä pakottaminen tapahtuu ajonaikaisesti, kun reittiä käytetään, joten beanit pysyvät asianmukaisesti rajattuina niiden tarkoitetuille komponenttipuille. 
 
-Annotaatio hyväksyy yhden parametrin - komponenttiluokan, joka tulee toimia juurena jakamista varten. Vain tämä komponentti ja sen jälkeläiset reittihierarkiassa voivat käyttää beania. Vanhempia komponentteja ja sisarhierarkioita ei voi injektoida sitä.
+Annotaatio hyväksyy yhden parametrin: komponenttiluokan, joka tulisi toimia jakamisen juurena. Vain tämä komponentti ja sen jälkeläiset reittihierarkiassa voivat käyttää beania. Vanhemmat komponentit ja sisarhierarkiat eivät voi injektoida sitä.

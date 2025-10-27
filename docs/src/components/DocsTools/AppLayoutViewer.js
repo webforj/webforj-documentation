@@ -6,7 +6,7 @@ import { useColorMode } from '@docusaurus/theme-common';
 import ComponentDemo, {OpenNewWindowButton, isLocalhost} from './ComponentDemo';
 import GLOBALS from "../../../siteConfig";
 
-export default function AppLayoutViewer({path, mobile, javaE, cssURL}) {
+export default function AppLayoutViewer({path, mobile, javaE, cssURL, urls}) {
     
   const [buttonVisible, setButtonVisible] = useState(false);
   const iframeRef = useRef(null);
@@ -80,7 +80,7 @@ export default function AppLayoutViewer({path, mobile, javaE, cssURL}) {
             <iframe src={(isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path} css={demoContent} loading='lazy' ref={iframeRef}>
             </iframe>
         </div>
-        <ComponentDemo frame="hidden" javaE={javaE} cssURL={cssURL}/>
+        <ComponentDemo frame="hidden" javaE={javaE} cssURL={cssURL} urls={urls}/>
     </div>
   );
 }

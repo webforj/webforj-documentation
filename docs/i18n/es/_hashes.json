@@ -221,5 +221,7 @@
   "componentArchetype.table.argument": "1853680a6d666b9fea2d789dd00bc7eb",
   "componentArchetype.table.explanation": "b72ac10807b29c77f5b7e4b80ea40414",
   "componentArchetype.finalInstruction": "0ac3c2ead6c9467ebf321f53bc7d8c9e",
-  "item.label. ": "d41d8cd98f00b204e9800998ecf8427e"
+  "item.label. ": "d41d8cd98f00b204e9800998ecf8427e",
+  "sidebar.documentationSidebar.category.Webswing": "2e5d4e6133d5cb0ee82f8b6e37cd0767",
+  "sidebar.documentationSidebar.category.Spring": "38008dd81c2f4d7985ecf6e0ce8af1d1"
 }
