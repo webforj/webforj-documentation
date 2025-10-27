@@ -3,6 +3,7 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import CodeBlock from "@theme/CodeBlock";
+import Admonition from '@theme/Admonition';
 import { translate } from '@docusaurus/Translate';
 
 export default function ComponentArchetype({ project, flavor = "webforj" }) {
@@ -52,7 +53,7 @@ export default function ComponentArchetype({ project, flavor = "webforj" }) {
 -DgroupId=org.example \\
 -DartifactId=my-app \\
 -Dversion=1.0-SNAPSHOT ${project !== 'bbj-hello-world' ? `\\
--Dflavor=${flavor}` : ''} \\
+-Dflavor=${flavor} ` : ''}\\
 -DappName=MyApp`}
         </CodeBlock>
       </TabItem>
@@ -65,7 +66,7 @@ export default function ComponentArchetype({ project, flavor = "webforj" }) {
 -DgroupId="org.example" \`
 -DartifactId="my-app" \`
 -Dversion="1.0-SNAPSHOT" ${project !== 'bbj-hello-world' ? `\`
--Dflavor="${flavor}` : ''}" \`
+-Dflavor="${flavor}" ` : ''}\`
 -DappName="MyApp"`}
         </CodeBlock>
       </TabItem>
@@ -78,7 +79,7 @@ export default function ComponentArchetype({ project, flavor = "webforj" }) {
 -DgroupId="org.example" ^
 -DartifactId="my-app" ^
 -Dversion="1.0-SNAPSHOT" ${project !== 'bbj-hello-world' ? `^
--Dflavor="${flavor}` : ''}" ^
+-Dflavor="${flavor}" ` : ''}^
 -DappName="MyApp"`}
         </CodeBlock>
       </TabItem>
@@ -185,5 +186,45 @@ export default function ComponentArchetype({ project, flavor = "webforj" }) {
       description: 'Conclusion text'
     })}
     </p>
+{project !== 'bbj-hello-world' && (
+  <>
+    <h2>{translate({
+        id: 'running-the-app',
+        message: 'Running the app',
+        description: 'Running the app title'
+    })}</h2>
+        <p>{translate({
+        id: 'component.archetype.running.app.desc',
+        message: 'Before running your app, install the {prerequisites} if you haven\'t yet. Then, navigate to the project\'s root directory and run the following command:',
+        description: 'Running the app description'
+    }, {prerequisites: <a href="/docs/introduction/prerequisites">prerequisites</a>})}
+    </p>
+        <CodeBlock language="bash">
+{`mvn`}
+        </CodeBlock>
+    <Admonition type="info" title={translate({
+      id: 'component.archetype.mvn.shorthand.title',
+      message: 'Full maven command',
+      description: 'Full maven command note title'
+    })}>
+      <p>{translate({
+        id: 'component.archetype.mvn.command.desc',
+        message: 'The shorthand mvn command works because the archetype\'s POM file includes a {default} configuration that automatically runs the appropriate goal for your project type. If your project doesn\'t have {default}, run the following:',
+        description: 'Full maven command note description'
+      }, {default: <code>&lt;defaultGoal&gt;</code>})}</p>
+        <CodeBlock language="bash">
+{`# for a standard webforJ app
+mvn jetty:run
+# for a webforJ + Spring Boot app
+mvn spring-boot:run`}
+        </CodeBlock>
+    </Admonition>
+<p>{translate({
+  id: 'component.archetype.browser.desc',
+  message: 'Once the server is running, open your browser and go to {localhost} to view the app.',
+  description: 'running in the browser text'  
+  }, {localhost: <a href="http://localhost:8080">http://localhost:8080</a>})}</p>
+      </>
+)}
   </>);
 }
