@@ -36,10 +36,6 @@ There are two flavor options to choose from with "webforJ Only" being the defaul
   - **webforJ Only**: Standard webforJ app
   - **webforJ + Spring Boot**: webforJ app with Spring Boot support
 
-:::caution Spring Boot support
-Spring Boot flavor is only available in webforJ version 25.02 and higher. If you select this option, make sure to choose a compatible version.
-:::
-
 :::tip Available Archetypes
 webforJ comes with several predefined archetypes to help you get started quickly. For a complete list of available archetypes, see the [archetypes catalog](../building-ui/archetypes/overview).
 :::
