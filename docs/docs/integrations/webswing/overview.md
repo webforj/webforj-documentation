@@ -8,7 +8,7 @@ sidebar_class_name: new-content
 
 import DocChip from '@site/src/components/DocsTools/DocChip';
 
-<DocChip chip='since' label='25.10' />
+# Webswing <DocChip chip='since' label='25.10' />
 
 <Head>
   <style>{`
