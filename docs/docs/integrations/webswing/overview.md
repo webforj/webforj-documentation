@@ -3,7 +3,12 @@ title: Webswing
 hide_table_of_contents: true
 hide_giscus_comments: true
 sidebar_class_name: new-content
+
 ---
+
+import DocChip from '@site/src/components/DocsTools/DocChip';
+
+<DocChip chip='since' label='25.10' />
 
 <Head>
   <style>{`
