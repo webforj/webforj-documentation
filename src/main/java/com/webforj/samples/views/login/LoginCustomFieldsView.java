@@ -19,6 +19,7 @@ public class LoginCustomFieldsView extends Composite<Div> {
   TextField customerId = new TextField("Customer ID");
 
   public LoginCustomFieldsView() {
+    customerId.setName("customer-id");
     customerId.setRequired(true);
 
     Login login = new Login();
@@ -41,7 +42,7 @@ public class LoginCustomFieldsView extends Composite<Div> {
     login.open();
 
     login.onSubmit(ev -> {
-      String id = customerId.getValue();
+      String id = (String) ev.getData().get("customer-id");
       String username = ev.getUsername();
       String password = ev.getPassword();
 
@@ -53,6 +54,7 @@ public class LoginCustomFieldsView extends Composite<Div> {
       } else {
         login.setError(true);
         login.setEnabled(true);
+        customerId.focus();
       }
     });
   }
