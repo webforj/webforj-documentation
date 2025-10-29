@@ -9,7 +9,7 @@ public class RunConfig {
   private static final boolean IS_CI = "true".equalsIgnoreCase(System.getenv("CI"));
 
   static {
-    // Parse webforj.e2e if provided 
+    // Parse webforj.e2e if provided
     String e2eProps = System.getProperty("webforj.e2e");
     if (e2eProps != null && !e2eProps.isEmpty()) {
       parseE2EProps(e2eProps);
