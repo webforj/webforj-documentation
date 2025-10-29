@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Foundation Architecture
+title: Foundational Architecture
 ---
 
 The webforJ security system is built on a foundation of core interfaces that work together to provide route-level access control. These interfaces define the contracts for security behavior, allowing different implementations, whether session-based, JWT-based, LDAP-integrated, or database-backed, to plug into the same underlying framework.
@@ -126,7 +126,7 @@ flowchart TB
 
 When a user navigates, the `RouteSecurityObserver` intercepts the navigation and asks the `RouteSecurityManager` to evaluate access. The manager consults the `RouteSecurityConfiguration` for settings, gets user information from the `RouteSecurityContext`, and runs each `RouteSecurityEvaluator` in priority order until one makes a decision.
 
-## The interfaces as contracts {#the-interfaces-as-contracts}
+## Interfaces as contracts {#the-interfaces-as-contracts}
 
 Each interface defines a contract, a set of questions the security system needs answered. **How** you answer those questions is your implementation choice:
 

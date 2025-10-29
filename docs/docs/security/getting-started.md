@@ -85,7 +85,7 @@ This configuration creates four Spring beans that work together:
 
 - The `accessDeniedPage()` method defines where authenticated users go when they lack permissions for a route. For example, a user trying to access an admin only route gets redirected to this page.
 
-- The `logout()` method enables the logout endpoint at `/logout`. After logout, users are redirected back to the login page with a `?logout` parameter
+- The `logout()` method enables the logout endpoint at `/logout`. After logout, users are redirected back to the login page with a `?logout` parameter.
 
 **`PasswordEncoder`** uses BCrypt to hash passwords securely. Spring Security automatically applies this encoder during login to compare the submitted password with the stored hash.
 
@@ -197,7 +197,7 @@ public class TeamsView extends Composite<FlexLayout> {
 
 The `InboxView` has no annotation, which means any authenticated user can access it. When a user successfully logs in with the credentials you defined in `UserDetailsService` (`user/password` or `admin/admin`), they can view this route. Unauthenticated users attempting to access this route are redirected to the login page.
 
-The `TeamsView` uses `@RolesAllowed("ADMIN")` to restrict access to users with the admin role. Even though both the "user" and "admin" accounts are authenticated users, only admin can access this route because it has both `USER` and `ADMIN` roles. The user account only has the `USER` role, so attempting to access this route redirects them to the access denied page.
+The `TeamsView` uses `@RolesAllowed("ADMIN")` to restrict access to users with the admin role. Even though both the "user" and "admin" accounts are authenticated users, only users with the admin role can access this route because it has both `USER` and `ADMIN` roles. The user account only has the `USER` role, so attempting to access this route redirects them to the access denied page.
 
 :::tip Security annotations
 See the [Security Annotations guide](/docs/security/annotations) for all available annotations.

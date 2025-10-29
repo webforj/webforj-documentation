@@ -69,7 +69,7 @@ public class LoginView extends Composite<Login> {
     });
   }
 }
-````
+```
 
 ```java title="ProductsView.java"
 // Products - requires authentication
@@ -115,7 +115,7 @@ With automatic enforcement, security rules are applied consistently across your 
 
 ## Authentication VS authorization {#authentication-vs-authorization}
 
-Understanding these two concepts is essential for implementing security:
+Understanding these two concepts is fundamental for implementing security:
 
 - **Authentication**: Verifying who the user is. This typically happens during login when the user provides credentials (username and password). Once authenticated, the user's identity is stored in the session or security context.
 

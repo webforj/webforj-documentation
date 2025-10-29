@@ -19,7 +19,7 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
-The webforJ security system is built on a foundation of interfaces and design patterns that enable flexible, extensible route protection. This section explains how the foundation security framework works and how to build custom security implementations by implementing these interfaces.
+The webforJ security system is built on a foundation of interfaces and design patterns that enable flexible, extensible route protection. This section explains how the foundational security framework functions, and how to build custom security solutions by implementing these interfaces.
 
 :::tip[You probably don't need to implement this yourself]
 Most applications should use the [Spring Security integration](/docs/security/getting-started), which auto-configures all of this for you. Only implement custom security if you have specific requirements or you're not using Spring Boot. The Spring integration is built on this same foundation architecture.
@@ -28,7 +28,7 @@ Most applications should use the [Spring Security integration](/docs/security/ge
 You'll learn about the core interfaces, the evaluator chain pattern, how navigation is intercepted and evaluated, and different approaches for storing authentication state.
 
 :::info[Focus on architecture and extension points]
-These guides explain the foundation architecture and extension points—the interfaces you implement and how they work together. Code examples show **one possible approach**, not prescriptive requirements. Your implementation can use different storage mechanisms (JWT, database, LDAP), different wiring patterns, or different authentication flows based on your needs.
+These guides explain the foundational architecture and extension points, the interfaces you implement, and how they work together. Code examples show **one possible approach**, not prescriptive requirements. Your implementation can use different storage mechanisms (JWT, database, LDAP), different wiring patterns, or different authentication flows based on your needs.
 :::
 
 ## What you'll learn {#what-youll-learn}
@@ -44,7 +44,7 @@ These guides explain the foundation architecture and extension points—the inte
 These guides are for developers who want to:
 
 - Build custom security implementations for non-Spring applications
-- Understand the foundation architecture to troubleshoot issues
+- Understand the foundational architecture to troubleshoot issues
 - Implement custom authentication flows or authorization logic
 - Create security evaluators with domain-specific logic
 - Integrate with existing authentication systems (LDAP, OAuth, custom backends)
