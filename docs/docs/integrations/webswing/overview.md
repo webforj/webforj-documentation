@@ -6,8 +6,6 @@ sidebar_class_name: new-content
 
 ---
 
-import DocChip from '@site/src/components/DocsTools/DocChip';
-
 # Webswing <DocChip chip='since' label='25.10' />
 
 <Head>
