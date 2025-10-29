@@ -5,52 +5,32 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.optiondialog.input.InputDialogBasicPage;
 import com.webforj.samples.views.BaseTest;
 
 public class InputDialogBasicViewIT extends BaseTest {
 
+    private InputDialogBasicPage inputDialogBasicPage;
+
     @BeforeEach
     public void setupInputDialogBasicView() {
-        navigateToRoute("inputdialogbasic");
+        navigateToRoute(InputDialogBasicPage.getRoute());
+        inputDialogBasicPage = new InputDialogBasicPage(page);
     }
 
     @Test
     public void testInvalidInputDialogIsShownWhenDeleteButtonIsClicked() {
-        Locator dialog = page.getByRole(AriaRole.DIALOG);
-        assertThat(dialog).isVisible();
-
-        Locator inputField = page.getByRole(AriaRole.TEXTBOX);
-        inputField.fill("wrongCode");
-
-        Locator deleteButton = page.getByRole(AriaRole.BUTTON,
-                new Page.GetByRoleOptions().setName("Delete Repository"));
-        deleteButton.click();
-
-        Locator errorDialog = page.getByText("Failed to delete the repository. Code entered is incorrect");
-        assertThat(errorDialog).isVisible();
-
-        Locator okButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("OK"));
-        okButton.click();
+        inputDialogBasicPage.getInputField().fill("wrongCode");
+        inputDialogBasicPage.getDeleteButton().click();
+        assertThat(inputDialogBasicPage.getErrorDialog()).isVisible();
+        inputDialogBasicPage.getOKButton().click();
     }
 
     @Test
     public void testValidInputDialogIsShownWhenDeleteButtonIsClicked() {
-        Locator dialog = page.getByRole(AriaRole.DIALOG);
-        assertThat(dialog).isVisible();
-
-        Locator inputField = page.getByRole(AriaRole.TEXTBOX);
-        Locator deleteButton = page.getByRole(AriaRole.BUTTON,
-                new Page.GetByRoleOptions().setName("Delete Repository"));
-
-        inputField.fill("7ANfB");
-        deleteButton.click();
-
-        Locator okButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("OK"));
-        Locator successDialog = page.getByText("Repository was deleted successfully");
-        assertThat(successDialog).isVisible();
-        okButton.click();
+        inputDialogBasicPage.getInputField().fill("7ANfB");
+        inputDialogBasicPage.getDeleteButton().click();
+        assertThat(inputDialogBasicPage.getSuccessDialog()).isVisible();
+        inputDialogBasicPage.getOKButton().click();
     }
 }

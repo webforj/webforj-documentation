@@ -5,31 +5,26 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.optiondialog.input.InputDialogTypePage;
 import com.webforj.samples.views.BaseTest;
 
 public class InputDialogTypeViewIT extends BaseTest {
 
+    private InputDialogTypePage inputDialogTypePage;
+
     @BeforeEach
     public void setupInputDialogTypeView() {
-        navigateToRoute("inputdialogtype");
+        navigateToRoute(InputDialogTypePage.getRoute());
+        inputDialogTypePage = new InputDialogTypePage(page);
     }
 
     @Test
-    public void testInputDialogTypeIsShownWhenContinueButtonIsClicked() {
-        Locator dialog = page.getByRole(AriaRole.DIALOG);
-        assertThat(dialog).isVisible();
+        public void testInputDialogTypeIsShownWhenContinueButtonIsClicked() {
 
-        Locator inputField = page.getByRole(AriaRole.TEXTBOX);
-        inputField.fill("mySecretPassword");
-        Locator continueButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Continue"));
-        continueButton.click();
-        Locator accessGrantedDialog = page.getByText("Access granted");
-        assertThat(accessGrantedDialog).isVisible();
-        Locator gotItButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Got it"));
-        gotItButton.click();
+        inputDialogTypePage.getInputField().fill("mySecretPassword");
+        inputDialogTypePage.getContinueButton().click();
+        assertThat(inputDialogTypePage.getAccessGrantedDialog()).isVisible();
+        inputDialogTypePage.getGotItButton().click();
     }
 
 }
