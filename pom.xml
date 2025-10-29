@@ -144,6 +144,9 @@
             </goals>
             <phase>generate-resources</phase>
             <configuration>
+              <environmentVariables>
+                <WEBFORJ_VERSION>${webforj.version}</WEBFORJ_VERSION>
+              </environmentVariables>
               <arguments>run build</arguments>
             </configuration>
           </execution>
