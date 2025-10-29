@@ -12,6 +12,8 @@ The webforJ [`FlexLayout`](https://docs.webforj.com/docs/components/flex-layout)
 For an introduction, see the first part of this series, [FlexWrap your mind around webforJ's FlexLayout](/blog/2025/08/26/flexlayout-container), in which I discuss the general benefits of the webforJ FlexLayout component and the methods that modify the flex container. 
 In this article, I'll dive into the flex items inside the container to see how you can further customize the behavior of your layout.
 
+<!-- truncate -->
+
 ## Flex item basics
 The components that you add to a FlexLayout are considered to be "flex items," and you can set different properties on these items to affect the way they behave within the layout. 
 In CSS, this means setting certain flex-related properties on the flex item. 
