@@ -13,12 +13,6 @@ sidebar_class_name: new-content
   `}</style>
 </Head>
 
-<div class="videos-container">
-  <video controls>
-    <source src="" type="video/mp4"/>
-  </video>
-</div>
-
 Webswing is a web server technology that allows Java desktop applications (Swing, JavaFX, SWT) to run in a web browser without any modifications to the original source code. It renders the desktop app on the server and streams the interface to the browser using HTML5 canvas, handling all user interactions transparently.
 
 ## What Webswing solves

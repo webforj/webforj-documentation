@@ -9,6 +9,12 @@ This tutorial walks through modernizing an existing Java Swing app by integratin
 The complete source code for this tutorial is available on GitHub: [webforj/webforj-webswing-integration-tutorial](https://github.com/webforj/webforj-webswing-integration-tutorial)
 :::
 
+<div class="videos-container">
+  <video controls preload="metadata">
+    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/webswing/modernization-tutorial.mp4#t=5" type="video/mp4"/>
+  </video>
+</div>
+
 ## The scenario
 
 Imagine you have a customer management app built with Swing that's been in production for years. It works well, but users now expect web access and a modern interface. Rather than rewriting from scratch, you'll use Webswing to make it web-accessible immediately, then incrementally add modern web features such as web-based dialogs and forms using webforJ components.
