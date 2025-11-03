@@ -50,11 +50,11 @@ sequenceDiagram
 ```
 
 **Flow:**
-1. **SecurityRegistrar** runs at startup, creates the manager, registers evaluators, and attaches the observer
-2. **SecurityManager** coordinates everything - it provides the context and configuration to evaluators
-3. **SecurityContext** answers "Who is logged in?" by reading from HTTP sessions
-4. **SecurityConfiguration** answers "Where to redirect?" for login and access denied pages
-5. **Evaluators** make access decisions using the context and configuration
+1. **`SecurityRegistrar`** runs at startup, creates the manager, registers evaluators, and attaches the observer
+2. **`SecurityManager`** coordinates everything - it provides the context and configuration to evaluators
+3. **`SecurityContext`** answers "Who is logged in?" by reading from HTTP sessions
+4. **`SecurityConfiguration`** answers "Where to redirect?" for login and access denied pages
+5. **`Evaluators`** make access decisions using the context and configuration
 
 ## Step 1: Define security configuration {#step-1-define-security-configuration}
 
@@ -232,7 +232,7 @@ public class SecurityContext implements RouteSecurityContext {
 
 ## Step 3: Create security manager {#step-3-create-security-manager}
 
-The manager coordinates security decisions. It extends `AbstractRouteSecurityManager` which handles evaluator chains and access denial:
+The manager coordinates security decisions. It extends `AbstractRouteSecurityManager`, which handles evaluator chains and access denial:
 
 <!-- vale off -->
 
@@ -297,7 +297,7 @@ public class SecurityManager extends AbstractRouteSecurityManager {
   }
 
   /**
-   * Logs out the current user and redirects to login page.
+   * Logs out the current user and redirects to the login page.
    */
   public void logout() {
     SessionObjectTable.clear(SESSION_USER_KEY);
@@ -345,7 +345,7 @@ public class SecurityManager extends AbstractRouteSecurityManager {
 - Extends `AbstractRouteSecurityManager` to inherit evaluator chain logic
 - Provides `getConfiguration()` and `getSecurityContext()` implementations
 - Adds `login()` to authenticate users and store credentials in session
-- Adds `logout()` to clear session and redirect to login page
+- Adds `logout()` to clear the session and redirect to the login page
 - Uses [`SessionObjectTable`](/docs/advanced/object-string-tables#sessionobjecttable) for simple session storage
 - Stores itself in [`ObjectTable`](/docs/advanced/object-string-tables#objecttable) for app-wide access
 

@@ -14,12 +14,6 @@ sidebar_class_name: new-content
   `}</style>
 </Head>
 
-<!-- vale off -->
-
-import DocCardList from '@theme/DocCardList';
-
-<!-- vale on -->
-
 # Security <DocChip chip='since' label='25.10' />
 
 :::note Public Preview
@@ -28,7 +22,7 @@ This feature is in public preview and ready for production use. During the previ
 
 In modern web applications, **security** refers to controlling access to different parts of your app based on user identity and permissions. In webforJ, security provides a framework for **route-level access control**, where you can protect views, require authentication, and enforce role-based permissions.
 
-## Traditional vs secured routing {#traditional-vs-secured-routing}
+## Traditional VS secured routing {#traditional-vs-secured-routing}
 
 In traditional unsecured routing, all routes in your app are accessible to anyone who knows the URL. This means users can navigate to sensitive pages like admin panels or user dashboards without any authentication or authorization checks. The burden falls on developers to manually verify permissions in every component, leading to inconsistent security enforcement and potential vulnerabilities.
 
@@ -44,9 +38,9 @@ This approach introduces several problems:
 1. **Declarative annotations**: Mark routes with security annotations to define access requirements.
 2. **Automatic enforcement**: The security system checks permissions before rendering any view.
 3. **Centralized configuration**: Define security behavior in one place and apply it consistently.
-4. **Flexible implementations**: Choose between Spring Security integration or custom plain Java implementation.
+4. **Flexible implementations**: Choose between Spring Security integration or a custom plain Java implementation.
 
-This design enables **authentication** (verifying who the user is) and **authorization** (verifying what the user can access), so only authorized users are granted access to protected routes. Unauthorized users are automatically redirected or denied access based on the configured security rules.
+This design enables **authentication** (verifying the identity of the user) and **authorization** (verifying what the user can access), so only authorized users are granted access to protected routes. Unauthorized users are automatically redirected or denied access based on the configured security rules.
 
 ## Example of secured routing in webforJ {#example-of-secured-routing-in-webforj}
 
@@ -115,7 +109,7 @@ With automatic enforcement, security rules are applied consistently across your 
 
 ## Authentication VS authorization {#authentication-vs-authorization}
 
-Understanding these two concepts is fundamental for implementing security:
+To implement security in your app correctly, it's important to know the difference between these two concepts:
 
 - **Authentication**: Verifying who the user is. This typically happens during login when the user provides credentials (username and password). Once authenticated, the user's identity is stored in the session or security context.
 

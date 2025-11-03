@@ -13,16 +13,12 @@ hide_giscus_comments: true
   `}</style>
 </Head>
 
-<!-- vale off -->
-
-import DocCardList from '@theme/DocCardList';
-
-<!-- vale on -->
+# Security Architecture <DocChip chip='since' label='25.10' />
 
 The webforJ security system is built on a foundation of interfaces and design patterns that enable flexible, extensible route protection. This section explains how the foundational security framework functions, and how to build custom security solutions by implementing these interfaces.
 
-:::tip[You probably don't need to implement this yourself]
-Most applications should use the [Spring Security integration](/docs/security/getting-started), which auto-configures all of this for you. Only implement custom security if you have specific requirements or you're not using Spring Boot. The Spring integration is built on this same foundation architecture.
+:::tip[Integrating with Spring]
+Most applications should use the [Spring Security integration](/docs/security/getting-started), as it auto-configures all of this for you. Only implement custom security if you have specific requirements or you're not using Spring Boot. The Spring integration is built on this same foundation architecture.
 :::
 
 You'll learn about the core interfaces, the evaluator chain pattern, how navigation is intercepted and evaluated, and different approaches for storing authentication state.

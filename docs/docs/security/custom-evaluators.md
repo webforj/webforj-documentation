@@ -48,7 +48,7 @@ Define an annotation to mark routes that require ownership verification:
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RequireOwnership {
   /**
-   * The route parameter name containing the user ID.
+   * The route parameter name that contains the user ID.
    */
   String value() default "userId";
 }
@@ -156,7 +156,7 @@ The evaluator implementation has two key methods:
 2. `OwnershipEvaluator.evaluate()` runs:
    - `currentUserId = "123"`, `requestedUserId = "123"`
    - IDs match → calls `chain.evaluate()` to continue
-3. If no other evaluators deny access, user is granted access
+3. If no other evaluators deny access, the user is granted access
 
 ## Understanding the evaluator chain {#understanding-the-evaluator-chain}
 
@@ -258,9 +258,9 @@ public class UserSettingsView extends Composite<Div> {
 ```
 
 **How it works:**
-1. `RolesAllowedEvaluator` (priority 5) checks if user has "USER" role
+1. `RolesAllowedEvaluator` (priority 5) checks if the user has the "USER" role
 2. If yes, calls `chain.evaluate()` to continue
-3. `OwnershipEvaluator` (priority 10) checks if `userId` matches logged-in user
+3. `OwnershipEvaluator` (priority 10) checks if `userId` matches the logged-in user
 4. If yes, calls `chain.evaluate()` to continue
 5. Chain ends → access granted
 
@@ -275,9 +275,9 @@ public class AdminEditUserView extends Composite<Div> {
 }
 ```
 
-### What cannot be combined {#cannot-combine}
+### What can't be combined {#cant-combine}
 
-`@AnonymousAccess` and `@PermitAll` make **terminal decisions** - they immediately grant access without calling the chain. You cannot combine them with custom evaluators:
+`@AnonymousAccess` and `@PermitAll` make **terminal decisions** - they immediately grant access without calling the chain. You can't combine them with custom evaluators:
 
 ```java
 // @PermitAll grants access immediately, @RequireOwnership never runs
@@ -297,6 +297,6 @@ For resources that all authenticated users can access, use `@RolesAllowed` with 
 @RolesAllowed("USER")
 @RequireOwnership("userId")
 public class ProfileView extends Composite<Div> {
-  // Must be authenticated user AND accessing their own profile
+  // Must be an authenticated user AND accessing their own profile
 }
 ```

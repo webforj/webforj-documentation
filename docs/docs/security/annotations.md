@@ -6,7 +6,7 @@ title: Security Annotations
 Security annotations provide a declarative way to control access to routes in your webforJ app. By adding annotations to your route components, you define who can access each view without writing manual permission checks. The security system automatically enforces these rules before any component is rendered.
 
 :::info Implementation note
-This guide works with any security implementation. The examples shown work with both Spring Security and custom implementations. If you're not using Spring Boot, see the [Security Architecture guide](/docs/security/architecture/overview) to understand the foundation and implement custom security.
+This guide works with any security implementation. The examples shown works with both Spring Security and custom implementations. If you're not using Spring Boot, see the [Security Architecture guide](/docs/security/architecture/overview) to understand the foundation and implement custom security.
 :::
 
 ## `@AnonymousAccess` - public routes {#anonymousaccess-public-routes}
@@ -188,5 +188,5 @@ public class DashboardView extends Composite<Div> { }
 ```
 
 :::tip Best practice
-Enable `secure-by-default` for production apps. With this setting, protected routes aren't exposed unless explicitly marked as public, reducing the risk of accidental exposure due to missing annotations. Only turn off it during initial development if you find the extra annotations cumbersome.
+Enable `secure-by-default` for production apps. With this setting, protected routes aren't exposed unless explicitly marked as public, reducing the risk of accidental exposure due to missing annotations. Only turn it off during initial development if you find the extra annotations cumbersome.
 :::

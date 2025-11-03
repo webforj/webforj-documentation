@@ -83,9 +83,9 @@ This configuration creates four Spring beans that work together:
 
 - The `loginPage()` method tells Spring Security where users should authenticate. Pass your login view component class, and webforJ automatically resolves the route path from the `@Route` annotation. When unauthenticated users try to access protected routes, they're redirected here.
 
-- The `accessDeniedPage()` method defines where authenticated users go when they lack permissions for a route. For example, a user trying to access an admin only route gets redirected to this page.
+- The `accessDeniedPage()` method defines where authenticated users go when they lack permissions for a route. For example, a user trying to access an admin-only route gets redirected to this page.
 
-- The `logout()` method enables the logout endpoint at `/logout`. After logout, users are redirected back to the login page with a `?logout` parameter.
+- The `logout()` method enables the logout endpoint at `/logout`. After logging out, users are redirected back to the login page with a `?logout` parameter.
 
 **`PasswordEncoder`** uses BCrypt to hash passwords securely. Spring Security automatically applies this encoder during login to compare the submitted password with the stored hash.
 
@@ -127,7 +127,7 @@ The `@AnonymousAccess` annotation marks this route as public so unauthenticated 
 
 The `setAction("/signin")` line is critical, it configures the Login component to POST credentials to Spring's authentication endpoint. Spring intercepts this submission, verifies the credentials, and either grants access or redirects back with an error parameter.
 
-The `onDidEnter` observer checks for query parameters that Spring adds to communicate results. When authentication fails, Spring redirects to `/signin?error`. After logout, it redirects to `/signin?logout`. The observer displays appropriate messages based on these parameters.
+The `onDidEnter` observer checks for query parameters that Spring adds to communicate results. When authentication fails, Spring redirects to `/signin?error`. After logging out, it redirects to `/signin?logout`. The observer displays appropriate messages based on these parameters.
 
 :::tip Endpoint matching
 The path in `setAction("/signin")` must match your `@Route("/signin")` path. Spring intercepts form submissions to this exact path for authentication. If you need different paths for the login page and authentication processing, configure them separately in `SecurityConfig`:
@@ -158,7 +158,7 @@ public class AccessDenyView extends Composite<Div> {
 }
 ```
 
-This view is rendered when authenticated users try to access routes they don't have permission for like a user attempting to access an admin-only route.
+This view is rendered when authenticated users try to access routes they don't have permission for, like a user attempting to access an admin-only route.
 
 ## Protect your routes {#protect-your-routes}
 

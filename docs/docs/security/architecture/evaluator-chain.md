@@ -89,7 +89,7 @@ Terminal evaluators like `PermitAllEvaluator` make final decisions without calli
 
 ## When the chain exhausts {#when-the-chain-exhausts}
 
-If every evaluator delegates and none make a decision, the chain exhausts, there are no more evaluators to run. At this point, the security system applies a fallback based on the `isSecureByDefault()` configuration:
+If every evaluator delegates and none makes a decision, the chain exhausts, there are no more evaluators to run. At this point, the security system applies a fallback based on the `isSecureByDefault()` configuration:
 
 **Secure by default enabled** (`isSecureByDefault() == true`):
 - If user is authenticated: Grant access
@@ -123,7 +123,7 @@ public class SubscriptionEvaluator implements RouteSecurityEvaluator {
                                        NavigationContext context,
                                        RouteSecurityContext securityContext,
                                        SecurityEvaluatorChain chain) {
-    // Check if user has active subscription
+    // Check if the user has an active subscription
     boolean hasSubscription = checkSubscription(securityContext);
 
     if (!hasSubscription) {
@@ -164,10 +164,10 @@ public class PremiumAdminView extends Composite<Div> {
 ```
 
 Flow:
-1. `RolesAllowedEvaluator` checks if user has `ADMIN` role
+1. `RolesAllowedEvaluator` checks if the user has the `ADMIN` role
 2. If yes, calls `chain.evaluate()` to continue
 3. `SubscriptionEvaluator` checks subscription status (runs later in chain)
-4. If subscription active, grants access; otherwise denies
+4. If the subscription is active, grants access; otherwise denies
 
 ### Composition that doesn't work {#composition-that-does-not-work}
 
@@ -175,7 +175,7 @@ You **can't** combine `@PermitAll` with other evaluators because it stops the ch
 
 ```java
 @Route("/wrong")
-@PermitAll           // Grants immediately, stops chain
+@PermitAll           // Grants immediately, stops the chain
 @RolesAllowed("ADMIN")  // NEVER runs!
 public class WrongView extends Composite<Div> {
   // This grants access to ANY authenticated user

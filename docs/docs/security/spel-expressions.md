@@ -11,7 +11,7 @@ Spring Expression Language (`SpEL`) provides a declarative way to define authori
 
 ## Basic usage {#basic-usage}
 
-The `@RouteAccess` annotation accepts a `SpEL` expression that evaluates to boolean:
+The `@RouteAccess` annotation accepts a `SpEL` expression that evaluates to a boolean:
 
 ```java
 @Route("/admin/dashboard")
@@ -141,7 +141,7 @@ Example using variables:
 public class SuperAdminView extends Composite<Div> { }
 ```
 
-## When to use `SpEL` vs custom evaluators {#when-to-use-spel-vs-custom-evaluators}
+## When to use `SpEL` VS custom evaluators {#when-to-use-spel-vs-custom-evaluators}
 
 **Use `@RouteAccess` `SpEL` when:**
 - Authorization is based purely on roles or authorities

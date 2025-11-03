@@ -3,7 +3,7 @@ sidebar_position: 2
 title: Foundational Architecture
 ---
 
-The webforJ security system is built on a foundation of core interfaces that work together to provide route-level access control. These interfaces define the contracts for security behavior, allowing different implementations, whether session-based, JWT-based, LDAP-integrated, or database-backed, to plug into the same underlying framework.
+The webforJ security system is built on a foundation of core interfaces that work together to provide route-level access control. These interfaces define the contracts for security behavior, allowing different implementations, whether session-based, based on JSON Web Tokens (JWT), LDAP-integrated, or database-backed, to plug into the same underlying framework.
 
 Understanding this architecture helps you see how security annotations like `@RolesAllowed` and `@PermitAll` are evaluated, how navigation interception works, and how you can build custom security implementations for your specific needs.
 
@@ -130,15 +130,15 @@ When a user navigates, the `RouteSecurityObserver` intercepts the navigation and
 
 Each interface defines a contract, a set of questions the security system needs answered. **How** you answer those questions is your implementation choice:
 
-**RouteSecurityContext contract:**
+**`RouteSecurityContext` contract:**
 
 - "Is the current user authenticated?" (`isAuthenticated()`)
 - "Who is the user?" (`getPrincipal()`)
 - "Does the user have role X?" (`hasRole()`)
 
-You decide where this information comes from HTTP sessions, `JWT` tokens decoded from headers, database lookups, LDAP queries, or any other authentication backend.
+You decide where this information comes from HTTP sessions, JWT tokens decoded from headers, database lookups, LDAP queries, or any other authentication backend.
 
-**RouteSecurityConfiguration contract:**
+**`RouteSecurityConfiguration` contract:**
 
 - "Is security enabled?" (`isEnabled()`)
 - "Should routes be secure by default?" (`isSecureByDefault()`)
@@ -146,7 +146,7 @@ You decide where this information comes from HTTP sessions, `JWT` tokens decoded
 
 You decide how to source these values: hardcoded, from configuration files, from environment variables, from a database, or computed dynamically.
 
-**RouteSecurityManager contract:**
+**`RouteSecurityManager` contract:**
 
 - "Should this user access this route?" (`evaluate()`)
 - "What happens when access is denied?" (`onAccessDenied()`)
