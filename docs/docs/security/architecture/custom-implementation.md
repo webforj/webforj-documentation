@@ -425,6 +425,8 @@ After this runs, security is active for all navigation.
 
 ### Create a login view {#create-a-login-view}
 
+The following view uses the [`Login`](/docs/components/login) component.
+
 ```java title="LoginView.java"
 package com.securityplain.views;
 

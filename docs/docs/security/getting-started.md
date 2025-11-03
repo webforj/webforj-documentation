@@ -95,7 +95,7 @@ This configuration creates four Spring beans that work together:
 
 ## Create login view {#create-login-view}
 
-Create a view that presents a login dialog and submits credentials to Spring Security:
+Create a view that presents a login dialog and submits credentials to Spring Security. The following view uses the [`Login`](/docs/components/login) component:
 
 ```java title="LoginView.java"
 @Route("/signin")
