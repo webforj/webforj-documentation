@@ -130,5 +130,13 @@
   "sidebar.documentationSidebar.category.Spring": {
     "message": "Spring",
     "description": "The label for category Spring in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Security": {
+    "message": "Security",
+    "description": "The label for category Security in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.security-architecture": {
+    "message": "Architecture",
+    "description": "The label for category Architecture in sidebar documentationSidebar"
   }
 }
