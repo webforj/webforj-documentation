@@ -137,6 +137,10 @@ const config = {
       },
     ]
   ],
+  themes: ['@docusaurus/theme-mermaid'],
+  markdown: {
+    mermaid: true,
+  },
   themeConfig: {
     algolia: {
       appId: '826LUKOV8E',
