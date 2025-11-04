@@ -1,6 +1,7 @@
 // @ts-check
 const lightCodeTheme = require('prism-react-renderer').themes.github;
 const darkCodeTheme = require('prism-react-renderer').themes.dracula;
+const webforjVersion = `${process.env.WEBFORJ_VERSION || 'latest'}`;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -14,6 +15,9 @@ const config = {
   organizationName: 'webforj',
   projectName: 'webforj-docs',
   trailingSlash: false,
+  customFields: {
+    webforjVersion: `${webforjVersion}`,
+  },
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'es', 'de', 'fr', 'nl', 'fi', 'zh'],
@@ -58,8 +62,7 @@ const config = {
   scripts: [
     { src: '/js/dwc-theme-switcher.js', async: false },
     { src: '/js/link-decorator.js' },
-    { src: '/js/style-startforj.js', defer: true },
-    { src: '/js/latest-webforj-version.js', defer: true }
+    { src: '/js/style-startforj.js', defer: true}
   ],
   headTags: [
     {
@@ -155,7 +158,7 @@ const config = {
     announcementBar: {
       id: '25.03',
       content:
-        'We are excited to announce webforJ version 25.03 is live! Read more about the changes and features <a href=/blog/whats-new-v25.03>here.</a> ',
+        `We are excited to announce webforJ version ${webforjVersion} is live! Read more about the changes and features <a href=/blog/whats-new-v${webforjVersion}>here.</a>`,
       isCloseable: true,
     },
     image: 'https://docs.webforj.com/img/social-cover.png',
@@ -170,7 +173,7 @@ const config = {
       items: [
         {
           position: 'left',
-          label: ' ',
+          label: `v${webforjVersion}`,
           href: 'https://github.com/webforj/webforj/releases/latest',
           target: '_blank',
           id: 'webforj-version-badge',

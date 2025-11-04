@@ -5,15 +5,15 @@
 
   .navbar--dark {
     --ifm-navbar-background-color: var(--navbar-dark-background-color);
-    --ifm-navbar-link-hover-color: var(--navbar-dark-link-hover-color);
+    --ifm-navbar-link-hover-color: hsl(211, 100%, 60%);
     --ifm-menu-color-background-active: var(--navbar-dark-background-active);
     --ifm-menu-color-background-hover: transparent;
-    --ifm-menu-color-active: var(--ifm-navbar-link-hover-color);
+    --ifm-menu-color-active: hsl(211, 100%, 60%);
     --ifm-navbar-search-input-color: var(--ifm-color-white);
     --menu-level-indicator-color: var(--navbar-dark-sidebar-level-indicator-color);
 
     .navbar__link--active {
-      color: var(--navbar-dark-link-hover-color);
+      color: hsl(211, 100%, 60%);
     }
   }
 
@@ -77,7 +77,7 @@
     display: inline-block;
     min-width: 76px;
     height: 34px;
-    border: solid 1px hsl(211, 100%, 40%);
+    border: solid 1px #2f3b49;
 
     svg {
       display: none;
