@@ -121,7 +121,7 @@ flowchart TB
 
     Chain --> Decision{"Access Decision"}
     Decision -->|"Grant"| Render["Render component"]
-    Decision -->|"Deny"| Redirect["Manager.onAccessDenied()<br/>Redirect to login or deny page"]
+    Decision -->|"Deny"| Redirect["RouteSecurityManager.onAccessDenied()<br/>Redirect to login or deny page"]
 ```
 
 When a user navigates, the `RouteSecurityObserver` intercepts the navigation and asks the `RouteSecurityManager` to evaluate access. The manager consults the `RouteSecurityConfiguration` for settings, gets user information from the `RouteSecurityContext`, and runs each `RouteSecurityEvaluator` in priority order until one makes a decision.
