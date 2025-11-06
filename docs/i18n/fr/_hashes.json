@@ -255,5 +255,7 @@
   "theme.SearchModal.askAiScreen.duringToolCallText": "60cce52409bf43cc214add077f21b4a6",
   "theme.SearchModal.askAiScreen.afterToolCallText": "9663f2d86c6acfd10afef7169dfa9be6",
   "theme.SearchModal.footer.submitQuestionText": "593fdba55564a994f4828fc209fc51b4",
-  "theme.SearchModal.footer.backToSearchText": "c97a1955a91f83a4666d3ce9747e03ea"
+  "theme.SearchModal.footer.backToSearchText": "c97a1955a91f83a4666d3ce9747e03ea",
+  "sidebar.documentationSidebar.category.Security": "2fae32629d4ef4fc6341f1751b405e45",
+  "sidebar.documentationSidebar.category.security-architecture": "2d242bb36ec91b32005f9296ff03a912"
 }

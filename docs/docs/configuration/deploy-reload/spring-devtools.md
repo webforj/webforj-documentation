@@ -1,7 +1,6 @@
 ---
 title: Spring DevTools
 sidebar_position: 30
-sidebar_class_name: updated-content
 ---
 
 Spring DevTools provides automatic app restarts when code changes. webforJ DevTools adds automatic browser refresh - when Spring restarts your app, the browser refreshes automatically through webforJ's LiveReload server.
