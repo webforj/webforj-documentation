@@ -1,7 +1,6 @@
 ---
 sidebar_position: 4
 title: Navigation Events
-sidebar_class_name: new-content
 ---
 
 In addition to component-specific lifecycle events, you can register **global event listeners** at the router level. This allows for tracking navigation globally across the entire app, making it useful for logging, analytics, or other cross-cutting concerns.
