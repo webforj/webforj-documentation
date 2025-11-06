@@ -52,51 +52,6 @@ menu.inbox=Inbox
 app.title=Postfach
 menu.inbox=Posteingang
 ```
-
-## Implementing observers {#implementing-observers}
-
-When a component implements `LocaleObserver`, it needs to handle two scenarios: initial rendering with the current locale, and updating when the locale changes. The following example demonstrates this pattern with a component that displays localized text and links.
-
-The component stores references to elements that need translation updates. When constructed, it loads the current locale's translations. When the locale changes, `onLocaleChange()` fires, allowing the component to reload translations and update its displayed text.
-
-```java title="Explore.java"
-public class Explore extends Composite<FlexLayout> implements LocaleObserver {
-  private static ResourceBundle bundle = ResourceBundle.getBundle("messages", App.getLocale());
-  private FlexLayout self = getBoundComponent();
-  private H3 titleElement;
-  private Anchor anchor;
-  private String titleKey;
-
-  public Explore(String titleKey) {
-    this.titleKey = titleKey;
-
-    Img img = new Img(
-      String.format("ws://explore/%s.svg", titleKey), 
-      "mailbox"
-    );
-    img.setMaxWidth(250);
-
-    String translatedTitle = bundle.getString("menu." + titleKey.toLowerCase());
-    titleElement = new H3(translatedTitle);
-
-    anchor = new Anchor(
-      "https://docs.webforj.com/docs/components/overview", 
-      bundle.getString("explore.link"));
-    anchor.setTarget("_blank");
-
-    self.add(img, titleElement, anchor);
-  }
-
-  @Override
-  public void onLocaleChange(LocaleEvent event) {
-    titleElement.setText(bundle.getString("menu." + titleKey.toLowerCase()));
-    anchor.setText(bundle.getString("explore.link"));
-  }
-}
-```
-
-The component stores references to elements that display translated content (`titleElement` and `anchor`). Translations are loaded in the constructor using the current locale. When the locale changes, `onLocaleChange()` updates only the text that needs translation.
-
 ## Changing the locale {#changing-the-locale}
 
 Use `App.setLocale()` to change the app locale. This triggers notifications to all registered observers:
@@ -123,6 +78,72 @@ languageSelector.onSelect(e -> {
 ```
 
 When the user selects a language, `App.setLocale()` fires, and all components implementing `LocaleObserver` receive the update.
+
+## Implementing observers {#implementing-observers}
+
+When a component implements `LocaleObserver`, it needs to handle two scenarios: initial rendering with the current locale, and updating when the locale changes. The following example demonstrates this pattern with a component that displays localized text and links.
+
+The component stores references to elements that need translation updates. When constructed, it loads the current locale's translations. When the locale changes, `onLocaleChange()` fires, allowing the component to reload translations and update its displayed text.
+
+```java title="TranslationService.java"
+import com.webforj.App;
+import org.springframework.context.MessageSource;
+import org.springframework.stereotype.Service;
+
+@Service
+public class TranslationService {
+  private final MessageSource messageSource;
+
+  public TranslationService(MessageSource messageSource) {
+    this.messageSource = messageSource;
+  }
+
+  public String get(String key) {
+    return messageSource.getMessage(key, null, App.getLocale());
+  }
+}
+```
+
+```java title="Explore.java"
+public class Explore extends Composite<FlexLayout> implements LocaleObserver {
+  private final TranslationService i18n;
+  private FlexLayout self = getBoundComponent();
+  private H3 titleElement;
+  private Anchor anchor;
+  private String titleKey;
+
+  public Explore(TranslationService i18n, String titleKey) {
+    this.i18n = i18n;
+    this.titleKey = titleKey;
+
+    self.addClassName("explore-component");
+    self.setStyle("margin", "1em auto");
+    self.setDirection(FlexDirection.COLUMN);
+    self.setAlignment(FlexAlignment.CENTER);
+    self.setMaxWidth(300);
+    self.setSpacing(".3em");
+
+    Img img = new Img(String.format("ws://explore/%s.svg", titleKey), "mailbox");
+    img.setMaxWidth(250);
+
+    String translatedTitle = i18n.get("menu." + titleKey.toLowerCase());
+    titleElement = new H3(translatedTitle);
+
+    anchor = new Anchor("https://docs.webforj.com/docs/components/overview", i18n.get("explore.link"));
+    anchor.setTarget("_blank");
+
+    self.add(img, titleElement, anchor);
+  }
+
+  @Override
+  public void onLocaleChange(LocaleEvent event) {
+    titleElement.setText(i18n.get("menu." + titleKey.toLowerCase()));
+    anchor.setText(i18n.get("explore.link"));
+  }
+}
+```
+
+The component stores references to elements that display translated content (`titleElement` and `anchor`). Translations are loaded in the constructor using the current locale. When the locale changes, `onLocaleChange()` updates only the text that needs translation.
 
 ## Lifecycle management {#lifecycle-management}
 
