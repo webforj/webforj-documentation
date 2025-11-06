@@ -2,7 +2,6 @@
 title: Redeployment and Live Reload
 hide_table_of_contents: false
 hide_giscus_comments: true
-sidebar_class_name: has-new-content
 ---
 
 Efficient development workflows rely on tools that detect code changes and automatically update the app in real time. Continuous Deployment and Dynamic Reload work together to simplify the development process by reducing manual steps, allowing you to see your changes quickly without needing to manually restart the server.
