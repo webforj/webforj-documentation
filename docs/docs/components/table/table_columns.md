@@ -2,7 +2,6 @@
 sidebar_position: 5
 title: Columns
 slug: columns
-sidebar_class_name: new-content
 ---
 
 <DocChip chip='since' label='24.00' />

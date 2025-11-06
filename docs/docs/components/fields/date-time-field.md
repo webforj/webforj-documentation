@@ -3,7 +3,6 @@ sidebar_position: 15
 title: DateTimeField
 slug: datetimefield
 description: A component that provides a default browser-based date and time picker for selecting both date and time through a single input field.
-sidebar_class_name: updated-content
 ---
 
 <DocChip chip='shadow' />

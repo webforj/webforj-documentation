@@ -1,7 +1,6 @@
 ---
 title: Scopes
 sidebar_position: 16
-sidebar_class_name: new-content
 ---
 
 <!-- vale off -->

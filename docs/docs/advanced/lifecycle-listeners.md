@@ -1,7 +1,6 @@
 ---
 sidebar_position: 10
 title: Lifecycle Listeners
-sidebar_class_name: new-content
 ---
 
 <!-- vale off -->

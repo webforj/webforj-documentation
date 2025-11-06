@@ -66,5 +66,9 @@
   "item.label. ": {
     "message": " ",
     "description": "Navbar item with label  "
+  },
+  "item.label.vlatest": {
+    "message": "vlatest",
+    "description": "Navbar item with label vlatest"
   }
 }

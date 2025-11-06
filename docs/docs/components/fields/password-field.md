@@ -3,7 +3,6 @@ sidebar_position: 30
 title: PasswordField
 slug: passwordfield
 description: A single-line input component for securely entering and masking password data.
-sidebar_class_name: updated-content
 ---
 
 <DocChip chip='shadow' />
