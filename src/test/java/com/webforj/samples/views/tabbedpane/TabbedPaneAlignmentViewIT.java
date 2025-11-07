@@ -13,13 +13,13 @@ public class TabbedPaneAlignmentViewIT extends BaseTest {
     private TabbedPaneAlignmentPage tabbedPaneAlignmentPage;
 
     @BeforeEach
-    public void setupAlignment() {
+    public void setupAlignmentTabbedPane() {
         navigateToRoute(TabbedPaneAlignmentPage.getRoute());
         tabbedPaneAlignmentPage = new TabbedPaneAlignmentPage(page);
     }
 
     @Test
-    public void testAlignment() {
+    public void testAlignmentTabbedPane() {
         tabbedPaneAlignmentPage.getAlignmentDropdown().click();
         tabbedPaneAlignmentPage.getAlignmentDropdownButton().click(); //CENTER
         assertThat(tabbedPaneAlignmentPage.getAlignmentTabbedPane()).hasAttribute("alignment", "center");

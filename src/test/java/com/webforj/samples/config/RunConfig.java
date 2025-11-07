@@ -1,22 +1,23 @@
 package com.webforj.samples.config;
 
 public class RunConfig {
-  private static final String DEFAULT_BROWSER = "chromium";
+  private static final String DEFAULT_BROWSER_LOCAL = "chromium";
+  private static final String DEFAULT_BROWSER_CI = "chromium,firefox,webkit";
   private static final boolean DEFAULT_HEADLESS = true;
   private static final int DEFAULT_TIMEOUT = 30000;
   private static final int DEFAULT_SLOW_MO = 0;
+  private static final boolean IS_CI = "true".equalsIgnoreCase(System.getenv("CI"));
 
   static {
     // Parse webforj.e2e if provided
     String e2eProps = System.getProperty("webforj.e2e");
-    if (e2eProps != null && !e2eProps.isEmpty()) {
+    if (e2eProps != null && !e2eProps.isEmpty()) { 
       parseE2EProps(e2eProps);
     }
   }
 
   private static void parseE2EProps(String propsString) {
     try {
-      // Parse manually to handle browsers=a:b:c case
       String[] pairs = propsString.split(",");
 
       for (String pair : pairs) {
@@ -85,10 +86,28 @@ public class RunConfig {
   }
 
   public static String getBrowser() {
-    return getConfig("browser", DEFAULT_BROWSER);
+    String browser = System.getProperty("browser");
+    if (browser == null) {
+      browser = System.getProperty("playwright.browser");
+    }
+    if (browser == null) {
+      browser = System.getenv("BROWSER");
+    }
+    if (browser == null) {
+      // Use all browsers in CI, just chromium locally
+      browser = IS_CI ? DEFAULT_BROWSER_CI : DEFAULT_BROWSER_LOCAL;
+    }
+    return browser.toLowerCase();
+  }
+
+  public static boolean isCI() {
+    return IS_CI;
   }
 
   public static boolean isHeadless() {
+    if (IS_CI) {
+      return true;
+    }
     return getConfigBoolean("headless", DEFAULT_HEADLESS);
   }
 

@@ -23,7 +23,7 @@
       Should be disabled when using a live reload system, such as JRebel.
       -->
     <jetty.scan>1</jetty.scan>
-    <jetty.port>8998</jetty.port>
+    <jetty.port>8080</jetty.port>
     <jetty.stopPort>9966</jetty.stopPort>
 
   </properties>
@@ -144,6 +144,9 @@
             </goals>
             <phase>generate-resources</phase>
             <configuration>
+              <environmentVariables>
+                <WEBFORJ_VERSION>${webforj.version}</WEBFORJ_VERSION>
+              </environmentVariables>
               <arguments>run build</arguments>
             </configuration>
           </execution>
@@ -249,7 +252,6 @@
           <trimStackTrace>false</trimStackTrace>
           <parallel>both</parallel>
           <threadCount>${threadCount}</threadCount>
-          <perCoreThreadCount>true</perCoreThreadCount>
           <useFile>false</useFile>
           <disableXmlReport>true</disableXmlReport>
           <consoleOutputReporter>

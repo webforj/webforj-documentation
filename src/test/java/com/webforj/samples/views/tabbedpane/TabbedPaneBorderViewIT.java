@@ -13,13 +13,13 @@ public class TabbedPaneBorderViewIT extends BaseTest {
     private TabbedPaneBorderPage tabbedPaneBorderPage;
 
     @BeforeEach
-    public void setupBorder() {
+    public void setupBorderTabbedPane() {
         navigateToRoute(TabbedPaneBorderPage.getRoute());
         tabbedPaneBorderPage = new TabbedPaneBorderPage(page);
     }
 
     @Test
-    public void testBorder() {
+    public void testBorderTabbedPane() {
         tabbedPaneBorderPage.getHideBorderToggle().click();
         assertThat(tabbedPaneBorderPage.getBorderTabbedPane()).hasAttribute("borderless", "");
 

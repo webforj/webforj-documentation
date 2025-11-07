@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { css } from "@emotion/react";
 import { Tooltip, Chip } from "@mui/material";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 export default function JavadocLink({
   type,
@@ -12,6 +13,7 @@ export default function JavadocLink({
   code,
   suffix,
 }) {
+  const {siteConfig} = useDocusaurusContext();
   const [url, setUrl] = useState("");
   const [hasDocChips, setHasDocChips] = useState(false);
 
@@ -26,49 +28,10 @@ export default function JavadocLink({
   }, []);
 
   useEffect(() => {
-    async function fetchLatestVersion() {
       const resolvedSuffix = suffix || "";
-      const cacheKey = "webforj_latest_version";
-      const cacheExpiry = 24 * 60 * 60 * 1000; // 24 hours
-
-      const cachedData = localStorage.getItem(cacheKey);
-      const cachedTimestamp = localStorage.getItem(`${cacheKey}_timestamp`);
-
-      if (cachedData && cachedTimestamp && (Date.now() - cachedTimestamp) < cacheExpiry) {
-        const latestVersion = cachedData;
-        setUrl(
-          `https://javadoc.io/doc/com.webforj/webforj-${type}/${latestVersion}/${location}.html${resolvedSuffix}`
-        );
-        return;
-      }
-
-      try {
-        const response = await fetch(
-          "https://api.github.com/repos/webforj/webforj/releases/latest"
-        );
-        if (!response.ok) {
-          throw new Error(`GitHub API error: ${response.statusText}`);
-        }
-
-        const data = await response.json();
-        const latestVersion = data.tag_name;
-        console.log(latestVersion);
-
-        localStorage.setItem(cacheKey, latestVersion);
-        localStorage.setItem(`${cacheKey}_timestamp`, Date.now());
-
-        setUrl(
-          `https://javadoc.io/doc/com.webforj/webforj-${type}/${latestVersion}/${location}.html${resolvedSuffix}`
-        );
-      } catch (error) {
-        console.error("Failed to fetch the latest version:", error);
-        setUrl(
-          `https://javadoc.io/doc/com.webforj/webforj-${type}/latest/${location}.html${resolvedSuffix}`
-        );
-      }
-    }
-    fetchLatestVersion();
-  }, [type, location, suffix]);
+      setUrl(`https://javadoc.io/doc/com.webforj/webforj-${type}/${siteConfig.customFields.webforjVersion}/${location}.html${resolvedSuffix}`
+      );
+    }, [type, location, suffix]);
 
   const mainStyles = css`
     ${(top) =>

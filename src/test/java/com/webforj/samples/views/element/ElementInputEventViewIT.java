@@ -19,7 +19,7 @@ public class ElementInputEventViewIT extends BaseTest {
     }
 
     @Test
-    public void testEventListener() {
+    public void testDialogMessageIsShownWhenInputFieldIsFilled() {
         elementInputEventPage.getInputField().fill("Hello World");
         elementInputEventPage.getInputField().press("Enter");
 

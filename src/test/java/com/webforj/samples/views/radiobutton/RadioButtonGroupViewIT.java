@@ -19,7 +19,7 @@ public class RadioButtonGroupViewIT extends BaseTest {
     }
 
     @Test
-    public void testRadioButtonGroup() {
+    public void testStronglyDisagreeRadioButtonGroupIsChecked() {
         radioButtonGroupPage.getStronglyDisagreeRB().check();
         assertThat(radioButtonGroupPage.getStronglyDisagreeRB()).isChecked();
 

@@ -19,7 +19,7 @@ public class TableFilteringViewIT extends BaseTest {
     }
 
     @Test
-    public void testValidTitle() {
+    public void testValidTitleFiltering() {
         tableFiltering.getTitleFilterInput().fill("Abbey Road");
 
         assertThat(tableFiltering.getTableRows()).hasCount(1);
@@ -28,7 +28,7 @@ public class TableFilteringViewIT extends BaseTest {
     }
 
     @Test
-    public void testPartialTitle() {
+    public void testPartialTitleFiltering() {
         tableFiltering.getTitleFilterInput().fill("Road");
 
         assertThat(tableFiltering.getTableRows()).hasCount(1);
@@ -36,7 +36,7 @@ public class TableFilteringViewIT extends BaseTest {
     }
 
     @Test
-    public void testCaseSensitiveTitle() {
+    public void testCaseSensitiveTitleFiltering() {
         tableFiltering.getTitleFilterInput().fill("abbey ROAD");
 
         assertThat(tableFiltering.getTableRows()).hasCount(1);
@@ -44,21 +44,21 @@ public class TableFilteringViewIT extends BaseTest {
     }
 
     @Test
-    public void testNonexistentTitle() {
+    public void testNonexistentTitleFiltering() {
         tableFiltering.getTitleFilterInput().fill("Nonexistent Album");
 
         assertThat(tableFiltering.getTableRows()).hasCount(0);
     }
 
     @Test
-    public void testSpecialCharactersInSearch() {
+    public void testSpecialCharactersInSearchFiltering() {
         tableFiltering.getTitleFilterInput().fill("#$!?");
 
         assertThat(tableFiltering.getTableRows()).hasCount(0);
     }
 
     @Test
-    public void testSearchFiltersByTitleOnly() {
+    public void testSearchFiltersCaseSensitively() {
         tableFiltering.getTitleFilterInput().fill("ABBA");
 
         assertThat(tableFiltering.getTableRows()).hasCount(0);

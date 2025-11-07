@@ -76,3 +76,31 @@
     font-size: 0.8125rem;
   }
 }
+
+[class^="headingWrapper_"], [class*=" headingWrapper_"] {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: nowrap !important;  
+}
+
+[class^="headingWrapper_"] h1, [class*=" headingWrapper_"] h1 {
+  flex: 1 1 0;                    
+  min-width: 0;                 
+  white-space: normal;          
+  overflow-wrap: anywhere;      
+  margin: 0;
+}
+
+[class^="headingWrapper_"] [class^="askMenu_"],
+[class*=" headingWrapper_"] [class^="askMenu_"] {
+  flex: 0 0 auto;                
+  display: inline-flex;   
+  max-width: max-content;
+  white-space: nowrap;
+}
+
+[class^="headingWrapper_"] [class^="askMenu_"] * {
+  white-space: nowrap;
+  min-width: 0;
+}

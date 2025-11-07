@@ -2,7 +2,6 @@
 sidebar_position: 35
 title: Filtering
 slug: filtering
-sidebar_class_name: updated-content
 ---
 
 The `Table` component allows you to implement filtering to narrow down displayed data based on specific criteria. Filtering can be achieved by defining a filtering criteria using the `setFilter(Predicate<T> filter)` method provided by the `Repository` associated with the table

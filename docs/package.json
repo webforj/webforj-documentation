@@ -15,12 +15,13 @@
     "translate": "tsx tools/i18n-translator/index.ts"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.8.1",
-    "@docusaurus/plugin-client-redirects": "^3.8.1",
-    "@docusaurus/plugin-content-docs": "^3.8.1",
-    "@docusaurus/plugin-google-gtag": "^3.8.1",
-    "@docusaurus/plugin-google-tag-manager": "^3.8.1",
-    "@docusaurus/preset-classic": "^3.6.3",
+    "@docusaurus/core": "^3.9.1",
+    "@docusaurus/plugin-client-redirects": "^3.9.1",
+    "@docusaurus/plugin-content-docs": "^3.9.1",
+    "@docusaurus/plugin-google-gtag": "^3.9.1",
+    "@docusaurus/plugin-google-tag-manager": "^3.9.1",
+    "@docusaurus/preset-classic": "^3.9.1",
+    "@docusaurus/theme-mermaid": "^3.9.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mdx-js/react": "^3.0.0",
@@ -37,8 +38,8 @@
     "sass": "^1.79.4"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.6.3",
-    "@docusaurus/types": "^3.6.3",
+    "@docusaurus/module-type-aliases": "^3.9.1",
+    "@docusaurus/types": "^3.9.1",
     "@types/md5": "^2.3.5",
     "commander": "^11.1.0",
     "fast-glob": "^3.3.2",
