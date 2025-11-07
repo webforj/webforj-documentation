@@ -16,10 +16,20 @@ export async function translate(content: string, targetLanguage: string, isUIStr
        Keep the translation concise and appropriate for UI elements like buttons, menu items, and labels.
        Do not translate technical terms or brand names like: webforJ, DWC, BASIS, startforJ, HueCraft, Blog, JavaDocs.
        Return ONLY the translated text, nothing else.`
-    : `You are translating technical documentation to ${targetLanguage}. 
+    : `You are translating technical documentation to ${targetLanguage}.
+
+🎯 FIRST: TRANSLATE THE FRONTMATTER TITLE!
+In the YAML frontmatter at the top of every document, you MUST translate the value after "title:".
+Example: title: Local Installation → title: Instalación Local
+This is MANDATORY. Do not skip this step.
 
 ⚠️ CRITICAL FAILURE PREVENTION ⚠️
 If you translate ANY of the following, the build will FAIL:
+
+🎯 FRONTMATTER TITLE - MUST ALWAYS TRANSLATE:
+• The title field VALUE in the YAML frontmatter at the top of the document MUST be translated
+• Example: title: Local Installation → title: Instalación Local
+• This is REQUIRED - do not skip translating the title value
 
 🚫 NEVER TRANSLATE THESE EXACT WORDS IN JSX ATTRIBUTES:
 • chip='since' → MUST stay chip='since' (NEVER chip='desde')
@@ -29,6 +39,7 @@ If you translate ANY of the following, the build will FAIL:
 • chip='foundation' → MUST stay chip='foundation'
 
 🚫 NEVER TRANSLATE:
+• Frontmatter fields (EXCEPT TITLE): sidebar_position, slug, tags, etc. - keep EXACT
 • Anchor IDs: {#heading-id} and (#anchor-name) - keep EXACT
 • Admonitions: :::tip :::warning :::important :::note :::info
 • Image paths: /img/path/file.png - keep EXACT
@@ -41,16 +52,43 @@ If you translate ANY of the following, the build will FAIL:
 • DO NOT wrap HTML/JSX tags in triple-backtick code blocks
 
 ✅ ONLY TRANSLATE:
+• **FRONTMATTER TITLE VALUE** - ALWAYS TRANSLATE: title: Page Name → title: Nombre de Página
 • Heading text: ## Configuration {#config} → ## Configuración {#config}
 • Body paragraphs and descriptions
 • Image alt text: ![Docker setup](/img/x.png) → ![Configuración Docker](/img/x.png)
 • Text inside JSX tags: <JavadocLink>docs</JavadocLink> → <JavadocLink>documentos</JavadocLink>
 
+⚠️ REMINDER: The title field in frontmatter MUST be translated. Do not leave it in English.
+
 🔥 CRITICAL EXAMPLES - STUDY THESE:
+
+FRONTMATTER TITLE EXAMPLES:
+❌ WRONG: Leaving title in English
+---
+title: Configuration
+sidebar_position: 10
+---
+
+✅ CORRECT: Translate the title value to target language
+---
+title: Configuración
+sidebar_position: 10
+---
+
+❌ WRONG: Translating field names
+---
+título: Configuration
+---
+
+✅ CORRECT: Keep field name "title:", translate only the value
+---
+title: Configuración
+---
+
 ❌ WRONG: <DocChip chip='desde' label='24.10' />
 ✅ CORRECT: <DocChip chip='since' label='24.10' />
 
-❌ WRONG: <DocChip chip='sombra' />  
+❌ WRONG: <DocChip chip='sombra' />
 ✅ CORRECT: <DocChip chip='shadow' />
 
 ❌ WRONG: :::importante
@@ -59,7 +97,7 @@ If you translate ANY of the following, the build will FAIL:
 ❌ WRONG: {#configuracion}
 ✅ CORRECT: {#configuration}
 
-❌ WRONG: [link](#configuracion)  
+❌ WRONG: [link](#configuracion)
 ✅ CORRECT: [link](#configuration)
 
 ❌ WRONG: Missing import statement

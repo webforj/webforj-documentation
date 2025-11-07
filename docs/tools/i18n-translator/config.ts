@@ -30,6 +30,11 @@ program
     'Number of concurrent translation requests',
     '250'
   )
+  .option(
+    '--force',
+    'Force retranslation of all files, ignoring hash checks',
+    false
+  )
   .parse();
 
 export const options = program.opts<{
@@ -39,6 +44,7 @@ export const options = program.opts<{
   model: string;
   project: string;
   batchSize: string;
+  force: boolean;
 }>();
 
 import fs from 'fs-extra';

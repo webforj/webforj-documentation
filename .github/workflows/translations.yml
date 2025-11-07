@@ -11,6 +11,11 @@ on:
         required: false
         default: 'all'
         type: string
+      force:
+        description: 'Force retranslation of all files (ignore cache)'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   translate:
@@ -60,7 +65,11 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          npm run translate
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then
+            npm run translate -- --force
+          else
+            npm run translate
+          fi
           EXIT_CODE=$?
           if [ $EXIT_CODE -eq 1 ]; then
             echo "No translations needed - skipping build and commit"

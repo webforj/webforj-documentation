@@ -165,7 +165,7 @@ async function translateDocs(locale: string) {
     const normalizedContent = content.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
     const hash = md5(normalizedContent);
 
-    if (fs.existsSync(targetPath)) {
+    if (fs.existsSync(targetPath) && !options.force) {
       const targetContent = fs.readFileSync(targetPath, 'utf-8');
       const { data: targetFrontmatter } = matter(targetContent);
 
@@ -206,10 +206,17 @@ async function translateDocs(locale: string) {
     if (result.file) {
       const fileInfo = fileInfoMap.get(result.file);
       if (fileInfo) {
-        const targetFileContent = matter.stringify(result.translatedText, {
+        // Parse the translated content to extract any translated frontmatter (especially title)
+        const { data: translatedFrontmatter, content: translatedContent } = matter(result.translatedText);
+
+        // Merge: use translated title if present, but keep other original frontmatter fields
+        const mergedFrontmatter = {
           ...fileInfo.frontmatter,
+          ...(translatedFrontmatter.title ? { title: translatedFrontmatter.title } : {}),
           _i18n_hash: fileInfo.hash,
-        });
+        };
+
+        const targetFileContent = matter.stringify(translatedContent, mergedFrontmatter);
 
         await fs.ensureDir(fileInfo.targetDir);
         // Ensure LF line endings for consistency across platforms

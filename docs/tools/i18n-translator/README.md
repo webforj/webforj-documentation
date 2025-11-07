@@ -121,12 +121,23 @@ Run this command before translating to ensure all internal links remain function
 npm run translate
 ```
 
+**Force retranslation of all files (ignore cache):**
+```bash
+npm run translate -- --force
+```
+
+Use the `--force` flag when you need to retranslate all files regardless of whether they've changed. This bypasses the hash-based caching system and is useful when:
+- Updating translations after prompt improvements
+- Fixing translation quality issues across all files
+- Migrating to a new translation model
+- Testing translation changes on the entire documentation set
+
 **What happens during translation:**
 1. Loads locale configuration from `docusaurus.config.js`
 2. For each non-English locale:
    - Translates all Markdown documentation files
    - Translates UI strings in JSON files
-   - Skips already-translated content
+   - Skips already-translated content (unless `--force` is used)
    - Preserves technical terms from the whitelist
 
 ### Translation Detection
@@ -209,3 +220,9 @@ The tool provides progress indicators:
    - Review translated content for technical accuracy
    - Update Vale accept.txt for new technical terms
    - Monitor token usage for cost management
+
+4. **Using GitHub Actions**:
+   - Navigate to **Actions** → **Update Translations** → **Run workflow**
+   - Select target language (or "all" for all locales)
+   - Check **Force retranslation** to bypass cache and retranslate everything
+   - Click **Run workflow** to start the translation process
