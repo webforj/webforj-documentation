@@ -20,7 +20,7 @@ const config = {
   },
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'es', 'de', 'fr', 'nl', 'fi', 'zh'],
+    locales: process.env.NODE_ENV === 'development' ? ['en'] : ['en', 'es', 'de', 'fr', 'nl', 'fi', 'zh'],
     localeConfigs: {
       en: {
         label: 'English',
@@ -146,7 +146,7 @@ const config = {
       appId: '826LUKOV8E',
       apiKey: 'a69d79113b838bfc8490ffb56cef78f2',
       indexName: 'umentation-webforj',
-      contextualSearch: true,
+      contextualSearch: process.env.NODE_ENV !== 'development',
       externalUrlRegex: '.*', // disables version filtering
       askAi: {
         assistantId: '0So3Fg39A7WH',
@@ -273,10 +273,10 @@ const config = {
           position: 'right',
           value: '<div class="separator" aria-hidden></div>',
         },
-        {
+        ...(process.env.NODE_ENV === 'development' ? [] : [{
           type: 'localeDropdown',
           position: 'right',
-        },
+        }]),
         {
           href: 'https://github.com/webforj',
           position: 'right',
