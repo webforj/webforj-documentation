@@ -10,10 +10,19 @@ import fg from 'fast-glob';
 import matter from 'gray-matter';
 import fs from 'fs-extra';
 import md5 from 'md5';
-import { translate, translateBatch, TranslationTask } from './translate';
+import { translate, translateBatch, translateTitle, TranslationTask } from './translate';
 import os from 'os';
 
 const siteDir = options.project;
+
+// Check for force translate via environment variable or command line
+const forceTranslate = process.env.FORCE_TRANSLATE === 'true' ||
+                       process.argv.includes('--force-retranslate') ||
+                       process.argv.includes('force');
+
+if (forceTranslate) {
+  console.log('Force mode enabled - retranslating all content regardless of changes\n');
+}
 
 // Track if any translations were made across all locales
 let hasChanges = false;
@@ -165,7 +174,7 @@ async function translateDocs(locale: string) {
     const normalizedContent = content.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
     const hash = md5(normalizedContent);
 
-    if (fs.existsSync(targetPath)) {
+    if (!forceTranslate && fs.existsSync(targetPath)) {
       const targetContent = fs.readFileSync(targetPath, 'utf-8');
       const { data: targetFrontmatter } = matter(targetContent);
 
@@ -200,22 +209,39 @@ async function translateDocs(locale: string) {
   });
   process.stdout.write('\n');
 
-  // Process results
+  // Process results and translate titles
   let totalTokens = 0;
   for (const result of results) {
     if (result.file) {
       const fileInfo = fileInfoMap.get(result.file);
       if (fileInfo) {
-        const targetFileContent = matter.stringify(result.translatedText, {
-          ...fileInfo.frontmatter,
-          _i18n_hash: fileInfo.hash,
-        });
+        // Start with original frontmatter
+        const updatedFrontmatter = { ...fileInfo.frontmatter };
+
+        // Translate the title if it exists
+        if (fileInfo.frontmatter.title && typeof fileInfo.frontmatter.title === 'string') {
+          try {
+            const titleResult = await translateTitle(fileInfo.frontmatter.title, locale);
+            updatedFrontmatter.title = titleResult.translatedText;
+            if (titleResult.usage?.total_tokens) {
+              totalTokens += titleResult.usage.total_tokens;
+            }
+          } catch (error) {
+            console.warn(`  Failed to translate title for ${result.file}: ${error}`);
+            // Keep original title on error
+          }
+        }
+
+        // Add the hash
+        updatedFrontmatter._i18n_hash = fileInfo.hash;
+
+        const targetFileContent = matter.stringify(result.translatedText, updatedFrontmatter);
 
         await fs.ensureDir(fileInfo.targetDir);
         // Ensure LF line endings for consistency across platforms
         const normalizedContent = targetFileContent.replace(/\r\n/g, '\n');
         fs.writeFileSync(fileInfo.targetPath, normalizedContent);
-        
+
         if (result.usage?.total_tokens) {
           totalTokens += result.usage.total_tokens;
         }
@@ -285,7 +311,7 @@ async function translateJSON(
     newHashes[key] = currentHash;
     
     // Check if translation is needed
-    if (savedHashes[key] === currentHash && targetJson[key]) {
+    if (!forceTranslate && savedHashes[key] === currentHash && targetJson[key]) {
       // Hash matches and translation exists, skip
       continue;
     }
@@ -424,7 +450,7 @@ async function translateCodeJSON(locale: string) {
     newHashes[key] = currentHash;
     
     // Check if translation is needed
-    if (savedHashes[key] === currentHash && targetJson[key]) {
+    if (!forceTranslate && savedHashes[key] === currentHash && targetJson[key]) {
       // Hash matches and translation exists, skip
       continue;
     }
