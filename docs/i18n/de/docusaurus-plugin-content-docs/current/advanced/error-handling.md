@@ -1,5 +1,5 @@
 ---
-title: Error Handling
+title: Fehlerbehandlung
 sidebar_position: 25
 _i18n_hash: 15106dd9fa7ccf0d4f722ca675f0d362
 ---

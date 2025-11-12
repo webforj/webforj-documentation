@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-title: State Management
+title: Toestandbeheer
 _i18n_hash: e10d155e02722ea38419a79813a2f5af
 ---
 Het creëren van naadloze, dynamische gebruikers ervaringen vereist vaak dat de staat van je webapplicatie wordt weergegeven in de URL en behouden blijft tijdens navigatie gebeurtenissen in de browser. Dit kan worden bereikt zonder de pagina opnieuw te laden door gebruik te maken van updates van URL-parameters en het beheren van de geschiedenisstatus van de browser. Dit zorgt ervoor dat gebruikers specifieke weergaven kunnen delen, bladwijzers kunnen toevoegen of terug kunnen keren naar eerdere interacties met de app, waarbij de app volledig op de hoogte is van hun eerdere interacties.

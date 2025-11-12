@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Downloading Files
+title: Tiedostojen lataaminen
 _i18n_hash: 013e64888b44110c108f80adf492be10
 ---
 webforJ tarjoaa menetelmiä tiedostojen lataamisen käynnistämiseen, mikä helpottaa tiedostojen tarjoamista käyttäjille selaimen kautta. <JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page</JavadocLink> -luokka tarjoaa useita tapoja ladata tiedostoja, olivatpa ne sitten syötevirroista, tavutaulukosta, fyysisistä tiedostoista tai resursseista.

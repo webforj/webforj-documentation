@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Sizing and Spacing
+title: Tamaño y Espaciado
 _i18n_hash: 4efe9ef910459481ca90eec87c26ebe0
 ---
 Tokens de espaciado y tamaño se utilizan para proporcionar un espaciado y tamaño consistentes en tu aplicación. Todas las propiedades de tamaño y espaciado se definen en `rem`.

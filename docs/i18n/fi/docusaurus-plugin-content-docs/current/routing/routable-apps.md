@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Routable Apps
+title: Routettavat sovellukset
 _i18n_hash: 6d09e8327e3391cedd4e8059d9390d09
 ---
 Routing webforJ:ssä on valinnainen työkalu. Kehittäjät voivat valita webforJ-reititysrationaalin tai perinteisen mallin, jossa käytetään `Frame`-manipulaatiota ilman syvälinkitystä. Reitityksen mahdollistamiseksi **`@Routify`**-annotaatio on käytettävä luokalla, joka toteuttaa `App`. Tämä antaa webforJ:lle oikeuden hallita selainhistoriaa, reagoida navigointitapahtumiin ja renderöidä sovelluksen komponentit URL-osoitteen perusteella.

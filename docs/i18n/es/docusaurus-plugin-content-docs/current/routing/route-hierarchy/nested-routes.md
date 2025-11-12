@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Nested Routes
+title: Rutas Anidadas
 _i18n_hash: 8c3365b48d048d5bc7c4c47f253acb24
 ---
 Las rutas anidadas permiten que las rutas hijas se rendericen dentro de las rutas padre, creando una interfaz de usuario modular y reutilizable. Las rutas padre definen componentes compartidos, mientras que las rutas hijas se inyectan en salidas específicas dentro de estos componentes padre.

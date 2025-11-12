@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Foundational Architecture
+title: Grundlegend Architektur
 _i18n_hash: 53db76e19a5bfcf2e476ac1efaaa2c48
 ---
 Das webforJ-Sicherheitssystem basiert auf einer Grundlage von Kernschnittstellen, die zusammenarbeiten, um eine Zugriffssteuerung auf Routenebene bereitzustellen. Diese Schnittstellen definieren die Verträge für das Sicherheitsverhalten, wodurch verschiedene Implementierungen – sei es sitzungsbasiert, auf JSON Web Tokens (JWT) basierend, LDAP-integriert oder datenbankgestützt – in das gleiche zugrunde liegende Framework integriert werden können.

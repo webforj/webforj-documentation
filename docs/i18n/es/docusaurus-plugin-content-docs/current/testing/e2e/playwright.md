@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Testing with Playwright
+title: Pruebas con Playwright
 _i18n_hash: dffe640edd9d7918a3c8bace8cf0bbe8
 ---
 Esta documentación describe el proceso para probar aplicaciones webforJ utilizando Playwright, enfocándose específicamente en el `HelloWorldView` del `webforj-archetype-hello-world`.

@@ -1,5 +1,5 @@
 ---
-title: Licensing and Watermark
+title: Licences et Filigrane
 sidebar_position: 20
 _i18n_hash: 9846eb8092fd823df938558446c260cf
 ---

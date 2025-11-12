@@ -1,5 +1,5 @@
 ---
-title: Routing
+title: Reititys
 sidebar_position: 15
 _i18n_hash: a5b11fb9cf05e74bd347faae48f167dd
 ---

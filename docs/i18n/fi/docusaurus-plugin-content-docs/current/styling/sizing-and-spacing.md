@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Sizing and Spacing
+title: Koko ja Väli
 _i18n_hash: 4efe9ef910459481ca90eec87c26ebe0
 ---
 Spacing and sizing tokens are used to provide consistent spacing and sizing in your app. All sizing and spacing properties are defined in `rem`.

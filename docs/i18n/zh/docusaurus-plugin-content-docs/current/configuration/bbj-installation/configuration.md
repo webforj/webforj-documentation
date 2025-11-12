@@ -1,5 +1,5 @@
 ---
-title: Install Plugin
+title: 安装插件
 sidebar_position: 3
 displayed_sidebar: documentationSidebar
 _i18n_hash: 1a3e48999554631e4f15a67c80385111

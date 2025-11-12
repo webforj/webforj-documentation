@@ -1,5 +1,5 @@
 ---
-title: Setup and Configuration
+title: Einrichtung und Konfiguration
 sidebar_position: 2
 _i18n_hash: 5d819b2a84de98748b48e7b3b1c9ab66
 ---

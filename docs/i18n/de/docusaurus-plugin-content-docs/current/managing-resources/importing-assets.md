@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Importing Assets
+title: Assets importieren
 _i18n_hash: a2aecab2ea12370f1e494703c2ec05af
 ---
 Assets-Anmerkungen bieten einen deklarativen Ansatz zur Einbettung externer und interner Ressourcen wie JavaScript und CSS innerhalb einer App auf statische Weise. Diese Anmerkungen optimieren das Ressourcenmanagement, indem sie sicherstellen, dass Abhängigkeiten zur entsprechenden Ausführungsphase geladen werden, was die manuelle Konfiguration reduziert und die Wartbarkeit erhöht.

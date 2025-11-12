@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Importing Assets
+title: 导入资产
 _i18n_hash: a2aecab2ea12370f1e494703c2ec05af
 ---
 资产注释提供了一种声明性方法，可以在应用中静态嵌入外部和内联资源，如 JavaScript 和 CSS。这些注释通过确保依赖项在适当的执行阶段加载，从而简化了资源管理，减少了手动配置，提高了可维护性。

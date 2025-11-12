@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Data Binding
+title: Liaison de données
 hide_table_of_contents: true
 hide_giscus_comments: true
 _i18n_hash: 2ce381aec06e45ed4001e7dbfdb22dc0

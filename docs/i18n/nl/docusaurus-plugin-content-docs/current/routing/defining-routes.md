@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Defining Routes
+title: Routes Definiëren
 _i18n_hash: 4f7189d5ef27386506e9ecf950f145ed
 ---
 Definiëren van routes is essentieel voor het koppelen van URL's aan specifieke componenten. Dit stelt je in staat om te bepalen hoe verschillende onderdelen van je UI worden weergegeven op basis van de URL-structuur. Het framework gebruikt de `@Route` annotatie om dit proces declaratief en eenvoudig te maken, waardoor de behoefte aan handmatige configuratie wordt verminderd.

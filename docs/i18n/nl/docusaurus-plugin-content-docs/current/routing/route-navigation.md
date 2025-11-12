@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Route Navigation
+title: Route Navigatie
 _i18n_hash: 2ca468b09b2ae9e2ab3813119d31bf44
 ---
 In webforJ is navigeren tussen routes de kernmechanisme voor het schakelen van weergaven en componenten op basis van gebruikersacties of URL-wijzigingen. Navigatie stelt gebruikers in staat om naadloos tussen verschillende delen van de app te bewegen zonder de pagina te vernieuwen. Deze navigatie aan de clientzijde houdt de app responsief en soepel terwijl de status van de app behouden blijft.

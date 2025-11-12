@@ -1,5 +1,5 @@
 ---
-title: Redeployment and Live Reload
+title: 重部署和实时重载
 hide_table_of_contents: false
 hide_giscus_comments: true
 sidebar_class_name: has-new-content

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-title: Navigational Frame Titles
+title: 导航框架标题
 _i18n_hash: 0a4e46f57c88d52966be27b35070a027
 ---
 在webforJ中，所有路由都在一个框架中呈现，该框架充当顶级容器，负责显示当前路由的内容。当用户在不同路由之间导航时，框架标题会动态更新，以反映活动视图，从而帮助提供用户在应用程序中的当前位置的清晰上下文。

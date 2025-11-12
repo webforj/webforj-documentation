@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Downloading Files
+title: Bestanden Downloaden
 _i18n_hash: 013e64888b44110c108f80adf492be10
 ---
 webforJ biedt methoden om bestandsdownloads te initiëren, waardoor het eenvoudig is om bestanden via de browser aan gebruikers te bezorgen. De <JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page</JavadocLink> klasse biedt verschillende manieren om bestanden te downloaden, of ze nu komen van invoerstromen, byte-arrays, fysieke bestanden of bronnen.

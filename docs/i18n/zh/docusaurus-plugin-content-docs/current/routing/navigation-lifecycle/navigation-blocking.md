@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Navigation Blocking
+title: 导航阻塞
 _i18n_hash: a08d56654914719e12d1401d263c7956
 ---
 导航阻止为整个底层路由器 API 添加一个或多个控制层。如果存在任何阻止处理程序，则导航将按如下方式被阻止：

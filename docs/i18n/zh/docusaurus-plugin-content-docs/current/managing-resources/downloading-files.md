@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Downloading Files
+title: 下载文件
 _i18n_hash: 013e64888b44110c108f80adf492be10
 ---
 webforJ 提供了启用文件下载的方法，使得通过浏览器向用户交付文件变得简单。<JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page</JavadocLink> 类提供了多种下载文件的方式，无论文件来自输入流、字节数组、物理文件还是资源。

@@ -1,5 +1,5 @@
 ---
-title: Debugging
+title: 调试
 sidebar_position: 1
 _i18n_hash: 057e00d21a3392bb3bf8d1fba1dea15f
 ---

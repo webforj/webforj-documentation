@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Client/Server Interaction
+title: Client/Server Interactie
 _i18n_hash: e5eafeb3f76c9a412d5a124f2eed2da8
 ---
 De volgende sectie bespreekt verschillende prestatiedetails en best practices voor webforJ, evenals implementatiedetails voor het framework.

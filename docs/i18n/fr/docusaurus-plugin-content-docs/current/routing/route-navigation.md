@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Route Navigation
+title: Navigation des Routes
 _i18n_hash: 2ca468b09b2ae9e2ab3813119d31bf44
 ---
 Dans webforJ, naviguer entre les routes est le mécanisme central permettant de changer les vues et les composants en fonction des actions des utilisateurs ou des modifications d'URL. La navigation permet aux utilisateurs de se déplacer sans effort entre différentes parties de l'application sans rafraîchir la page. Cette navigation côté client maintient l'application réactive et fluide tout en préservant l'état de l'application.

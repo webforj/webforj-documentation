@@ -1,5 +1,5 @@
 ---
-title: Working With Data
+title: Työskentele Datan Kanssa
 sidebar_position: 3
 _i18n_hash: 42dff7cecf07f976ccbe007e04e78a22
 ---

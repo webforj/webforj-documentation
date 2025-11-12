@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Nested Routes
+title: Geneste Routes
 _i18n_hash: 8c3365b48d048d5bc7c4c47f253acb24
 ---
 Geneste routes stellen het mogelijk om kindroutes binnen ouderroutes weer te geven, wat resulteert in een modulaire en herbruikbare gebruikersinterface. Ouderroutes definiëren gedeelde componenten, terwijl kindroutes worden ingevoegd in specifieke uitgangen binnen deze oudercomponenten.

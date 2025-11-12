@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-title: Navigational Frame Titles
+title: Titres de Cadre de Navigation
 _i18n_hash: 0a4e46f57c88d52966be27b35070a027
 ---
 Dans webforJ, toutes les routes sont rendues au sein d'un Frame, qui sert de conteneur de niveau supérieur responsable de l'affichage du contenu de la route actuelle. Au fur et à mesure que les utilisateurs naviguent entre différentes routes, le titre du Frame est mis à jour dynamiquement pour refléter la vue active, aidant à fournir un contexte clair sur la position actuelle de l'utilisateur au sein de l'application.
