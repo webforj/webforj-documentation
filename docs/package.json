@@ -13,7 +13,8 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "translate": "tsx tools/i18n-translator/index.ts",
-    "translate:force": "tsx tools/i18n-translator/index.ts force"
+    "translate:force": "tsx tools/i18n-translator/index.ts force",
+    "translate:titles": "tsx tools/i18n-translator/index.ts titles-only"
   },
   "dependencies": {
     "@docusaurus/core": "^3.9.1",

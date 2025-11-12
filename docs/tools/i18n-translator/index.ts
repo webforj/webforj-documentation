@@ -20,8 +20,16 @@ const forceTranslate = process.env.FORCE_TRANSLATE === 'true' ||
                        process.argv.includes('--force-retranslate') ||
                        process.argv.includes('force');
 
+// Check for titles-only mode
+const titlesOnly = process.argv.includes('--titles-only') ||
+                   process.argv.includes('titles-only');
+
 if (forceTranslate) {
   console.log('Force mode enabled - retranslating all content regardless of changes\n');
+}
+
+if (titlesOnly) {
+  console.log('Titles-only mode enabled - translating only frontmatter titles\n');
 }
 
 // Track if any translations were made across all locales
@@ -92,40 +100,46 @@ async function main() {
   for (const locale of targetLocales) {
     console.group(`Translating ${locale}:`);
 
-    await translateDocs(locale);
-    await translateJSON(
-      locale,
-      path.resolve(
-        siteDir,
-        './i18n',
+    if (titlesOnly) {
+      // Only translate titles in existing translated files
+      await translateDocsTitlesOnly(locale);
+    } else {
+      // Normal translation flow
+      await translateDocs(locale);
+      await translateJSON(
         locale,
-        './docusaurus-plugin-content-docs/current.json'
-      ),
-      ['sidebar.documentationSidebar.category.']
-    );
-    await translateJSON(
-      locale,
-      path.resolve(
-        siteDir,
-        './i18n',
+        path.resolve(
+          siteDir,
+          './i18n',
+          locale,
+          './docusaurus-plugin-content-docs/current.json'
+        ),
+        ['sidebar.documentationSidebar.category.']
+      );
+      await translateJSON(
         locale,
-        './docusaurus-theme-classic/footer.json'
-      ),
-      ['link.title.', 'link.item.label.']
-    );
-    await translateJSON(
-      locale,
-      path.resolve(
-        siteDir,
-        './i18n',
+        path.resolve(
+          siteDir,
+          './i18n',
+          locale,
+          './docusaurus-theme-classic/footer.json'
+        ),
+        ['link.title.', 'link.item.label.']
+      );
+      await translateJSON(
         locale,
-        './docusaurus-theme-classic/navbar.json'
-      ),
-      ['item.label.']
-    );
+        path.resolve(
+          siteDir,
+          './i18n',
+          locale,
+          './docusaurus-theme-classic/navbar.json'
+        ),
+        ['item.label.']
+      );
 
-    // Translate the main code.json file containing all translation strings
-    await translateCodeJSON(locale);
+      // Translate the main code.json file containing all translation strings
+      await translateCodeJSON(locale);
+    }
 
     console.groupEnd();
   }
@@ -250,6 +264,84 @@ async function translateDocs(locale: string) {
   }
 
   console.log(`  Completed translation of ${results.length} files. Total token usage: ${totalTokens}`);
+}
+
+async function translateDocsTitlesOnly(locale: string) {
+  const docsDir = path.resolve(siteDir, './docs');
+  const translatedDocsDir = path.resolve(
+    siteDir,
+    './i18n',
+    locale,
+    './docusaurus-plugin-content-docs/current'
+  );
+
+  // Find all translated files
+  const translatedFiles = await fg(['**/*.md', '**/*.mdx'], {
+    cwd: translatedDocsDir,
+    onlyFiles: true,
+  });
+
+  let updatedCount = 0;
+  let totalTokens = 0;
+
+  console.log(`  Processing ${translatedFiles.length} files for title translation...`);
+
+  for (const file of translatedFiles) {
+    const translatedPath = path.resolve(translatedDocsDir, file);
+    const sourcePath = path.resolve(docsDir, file);
+
+    // Check if source file exists
+    if (!fs.existsSync(sourcePath)) {
+      console.warn(`  Warning: Source file not found for ${file}, skipping`);
+      continue;
+    }
+
+    // Read both source and translated files
+    const sourceContent = fs.readFileSync(sourcePath, 'utf-8');
+    const { data: sourceFrontmatter } = matter(sourceContent);
+
+    const translatedContent = fs.readFileSync(translatedPath, 'utf-8');
+    const { data: translatedFrontmatter, content: translatedBody } = matter(translatedContent);
+
+    // Check if source has a title and it needs translation
+    if (!sourceFrontmatter.title || typeof sourceFrontmatter.title !== 'string') {
+      continue;
+    }
+
+    // Check if the title has already been translated (not the same as source)
+    if (translatedFrontmatter.title && translatedFrontmatter.title !== sourceFrontmatter.title) {
+      // Title already translated, skip
+      continue;
+    }
+
+    // Translate the title
+    try {
+      console.log(`  Translating title for: ${file}`);
+      const titleResult = await translateTitle(sourceFrontmatter.title, locale);
+
+      // Update frontmatter with new title
+      const updatedFrontmatter = { ...translatedFrontmatter, title: titleResult.translatedText };
+
+      // Write back the file with updated title but same content and hash
+      const updatedFileContent = matter.stringify(translatedBody, updatedFrontmatter);
+      const normalizedContent = updatedFileContent.replace(/\r\n/g, '\n');
+      fs.writeFileSync(translatedPath, normalizedContent);
+
+      updatedCount++;
+      if (titleResult.usage?.total_tokens) {
+        totalTokens += titleResult.usage.total_tokens;
+      }
+    } catch (error) {
+      console.warn(`  Failed to translate title for ${file}: ${error}`);
+    }
+  }
+
+  if (updatedCount > 0) {
+    hasChanges = true;
+    console.log(`  Completed title translation for ${updatedCount} files. Total token usage: ${totalTokens}`);
+  } else {
+    console.log(`  No titles needed translation.`);
+  }
 }
 
 
