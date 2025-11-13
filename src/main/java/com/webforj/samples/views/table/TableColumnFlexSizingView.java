@@ -134,6 +134,7 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
 
     if (value != null && value > 0) {
       column.setFlex(value.floatValue());
+      table.refreshColumns();
     }
   }
 
