@@ -8,7 +8,7 @@ tags: [webforJ, Spring Boot, REST API, Data Loading, Performance, Repository Pat
 hide_table_of_contents: false
 ---
 
-![cover image](../../static/img/rest-blog-cover-crop.png)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/data-loading-strategies/cover.png)
 
 When building web applications that consume REST APIs, one of the most important decisions you'll make is how to load and manage your data. Load everything at once for snappy client-side operations, or fetch data on-demand to keep memory usage low? The answer, as with most things in software development, is: it depends.
 
@@ -20,7 +20,7 @@ In this post, we'll explore two distinct approaches to loading data from REST AP
 
 Our demo application displays 100 customer records in a table with pagination. Simple enough, right? But we've implemented it in two different ways, each living in its own tab, to demonstrate when each approach shines.
 
-![app screenshot](../../static/img/rest-blog.png)
+![app screenshot](https://cdn.webforj.com/webforj-documentation/blogs/data-loading-strategies/rest-blog.png)
 
 
 **The Architecture**: This is a unified Spring Boot application where everything runs together on the same server and port. Spring Boot serves our webforJ frontend while simultaneously exposing REST API endpoints (like `/api/customers`) that the frontend consumes. You can use common querying tools like Postman or Insomnia and query the same server for data (at the appropriate endpoint) that serves the app.
@@ -39,7 +39,7 @@ But under the hood? They work very differently.
 
 The first approach uses webforJ's [`CollectionRepository`](https://docs.webforj.com/docs/advanced/repository/overview#collection-repository) to load all data into memory at once, then handle pagination.
 
-![app screenshot](../../static/img/rest-blog-collection-repo.png)
+![app screenshot](https://cdn.webforj.com/webforj-documentation/blogs/data-loading-strategies/rest-blog-collection-repo.png)
 
 ### How It Works
 
@@ -102,7 +102,7 @@ This approach worked because our API was relatively simple, and we were only int
 
 The second `Table` demonstrates webforJ's [`DelegatingRepository`](https://docs.webforj.com/docs/advanced/repository/delegating-repository) to fetch only the data needed for the current page, loading more as users navigate.
 
-![app screenshot](../../static/img/rest-blog-delegating-repo.png)
+![app screenshot](https://cdn.webforj.com/webforj-documentation/blogs/data-loading-strategies/rest-blog-delegating-repo.png)
 
 ### How It Works
 
