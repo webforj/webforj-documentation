@@ -8,7 +8,7 @@ tags: [webforJ, Spring Boot, REST API, Data Loading, Performance, Repository Pat
 hide_table_of_contents: false
 ---
 
-<!-- ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2025-11-12-data-loading-strategies/cover.png) -->
+![cover image](../../static/img/rest-blog-cover-crop.png)
 
 When building web applications that consume REST APIs, one of the most important decisions you'll make is how to load and manage your data. Load everything at once for snappy client-side operations, or fetch data on-demand to keep memory usage low? The answer, as with most things in software development, is: it depends.
 
@@ -19,6 +19,9 @@ In this post, we'll explore two distinct approaches to loading data from REST AP
 ## The Setup: A Customer Management System
 
 Our demo application displays 100 customer records in a table with pagination. Simple enough, right? But we've implemented it in two different ways, each living in its own tab, to demonstrate when each approach shines.
+
+![app screenshot](../../static/img/rest-blog.png)
+
 
 **The Architecture**: This is a unified Spring Boot application where everything runs together on the same server and port. Spring Boot serves our webforJ frontend while simultaneously exposing REST API endpoints (like `/api/customers`) that the frontend consumes. You can use common querying tools like Postman or Insomnia and query the same server for data (at the appropriate endpoint) that serves the app.
 
@@ -34,7 +37,9 @@ But under the hood? They work very differently.
 
 ## Approach 1: CollectionRepository (Load Everything Up Front)
 
-The first approach uses webforJ's [`CollectionRepository`](https://docs.webforj.com/docs/advanced/repository/overview#collection-repository) to load all data into memory at once, then handle pagination on the client side.
+The first approach uses webforJ's [`CollectionRepository`](https://docs.webforj.com/docs/advanced/repository/overview#collection-repository) to load all data into memory at once, then handle pagination.
+
+![app screenshot](../../static/img/rest-blog-collection-repo.png)
 
 ### How It Works
 
@@ -69,13 +74,9 @@ public class CustomerRestController {
 
 ### The Pros
 
-**Fast Client-Side Operations**: Once loaded, everything is instant. Sorting, filtering, and jumping between pages happens with zero latency because all the data is already in memory.
-
 **Simple Implementation**: It's the easiest pattern to implement. One endpoint, one service call, done. No need to manage offset/limit parameters or worry about pagination logic.
 
 **Excellent for Small Datasets**: If you're working with a few hundred records or less, the performance is excellent and the memory footprint is negligible.
-
-**No Backend Pagination Required**: Your backend doesn't need to implement pagination logic. Just return the full collection and let the client handle it.
 
 ### The Cons
 
@@ -100,6 +101,8 @@ This approach worked because our API was relatively simple, and we were only int
 ## Approach 2: DelegatingRepository (Lazy Loading on Demand)
 
 The second `Table` demonstrates webforJ's [`DelegatingRepository`](https://docs.webforj.com/docs/advanced/repository/delegating-repository) to fetch only the data needed for the current page, loading more as users navigate.
+
+![app screenshot](../../static/img/rest-blog-delegating-repo.png)
 
 ### How It Works
 
@@ -188,8 +191,6 @@ public class CustomerRestController {
 
 **Low Memory Footprint**: At any given time, you're only holding one or two pages of data in memory, not the entire dataset.
 
-**Fresh Data**: Every page navigation fetches current data from the backend. Users always see up-to-date information.
-
 **Scales Indefinitely**: Whether you have 100 records or 100,000, the client-side performance remains consistent.
 
 ### The Cons
@@ -199,8 +200,6 @@ public class CustomerRestController {
 **Backend Complexity**: Your backend needs to implement and maintain proper pagination logic, including offset/limit handling and efficient database queries.
 
 **More API Calls**: More network requests means more opportunities for failures and more load on your backend infrastructure.
-
-**No Instant Filtering**: Client-side filtering isn't possible. If you want to filter or sort, you need backend endpoints that support it and accept the additional network delays.
 
 ### When to Use DelegatingRepository
 
