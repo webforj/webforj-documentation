@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-title: Navigational Frame Titles
+title: Navigointikehyksen otsikot
 _i18n_hash: 0a4e46f57c88d52966be27b35070a027
 ---
 In webforJ, kaikki reitit renderöidään Frame-ydinrakenteessa, joka toimii ylimpänä säilönä, joka vastaa nykyisen reitin sisällön näyttämisestä. Kun käyttäjät navigoivat eri reittien välillä, Frame-otsikko päivitetään dynaamisesti heijastamaan aktiivista näkymää, mikä auttaa tarjoamaan selkeän kontekstin käyttäjän nykyisestä sijainnista sovelluksessa.

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 21
-title: Dynamic Styling
+title: Dynamische styling
 slug: styling
 _i18n_hash: 8e9f61685fbb3a7fb830463f1320e8cf
 ---

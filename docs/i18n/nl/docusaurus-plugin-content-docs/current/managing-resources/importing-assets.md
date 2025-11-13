@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Importing Assets
+title: Assets Importeren
 _i18n_hash: a2aecab2ea12370f1e494703c2ec05af
 ---
 Assets annotations bieden een declaratieve benadering om externe en inline bronnen zoals JavaScript en CSS statisch in een app in te sluiten. Deze annotaties stroomlijnen het beheer van bronnen door ervoor te zorgen dat afhankelijkheden op het juiste moment van uitvoering worden geladen, wat handmatige configuratie vermindert en de onderhoudbaarheid verbetert.

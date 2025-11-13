@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Aan de Slag
 sidebar_position: 2
 _i18n_hash: 5c658711bfa3dc70787cccbf2dfb6d2d
 ---

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Importing Assets
+title: Omanusvarat
 _i18n_hash: a2aecab2ea12370f1e494703c2ec05af
 ---
 Asset-annotaatioilla on julkinen lähestymistapa upottaa ulkoisia ja sisäisiä resursseja, kuten JavaScriptiä ja CSS:ää, applikaatioon statisesti. Nämä annotaatiot tehostavat resurssien hallintaa varmistaen, että riippuvuudet ladataan oikeassa suoritusvaiheessa, mikä vähentää manuaalista konfigurointia ja parantaa kunnossapidettävyyttä.

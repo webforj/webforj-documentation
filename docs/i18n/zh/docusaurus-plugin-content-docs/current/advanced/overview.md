@@ -1,5 +1,5 @@
 ---
-title: Advanced Topics
+title: 高级主题
 hide_table_of_contents: true
 sidebar_class_name: has-new-content
 hide_giscus_comments: true

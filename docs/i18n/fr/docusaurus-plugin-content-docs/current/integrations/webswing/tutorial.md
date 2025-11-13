@@ -1,5 +1,5 @@
 ---
-title: Modernization Tutorial
+title: Tutoriel de modernisation
 sidebar_position: 4
 _i18n_hash: d4f256ba28ac621f2280bbd31575f6f1
 ---

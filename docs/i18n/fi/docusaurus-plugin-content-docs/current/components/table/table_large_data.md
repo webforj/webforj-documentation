@@ -1,6 +1,6 @@
 ---
 sidebar_position: 25
-title: Large Data Sets
+title: Suuret tietojoukot
 slug: data
 _i18n_hash: a8c510d518375e324ae1f1f0c95b5004
 ---

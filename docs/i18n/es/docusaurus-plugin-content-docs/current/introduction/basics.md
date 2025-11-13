@@ -1,5 +1,5 @@
 ---
-title: App Basics
+title: Fundamentos de la Aplicación
 sidebar_position: 3
 _i18n_hash: ad73702df52f27ebff7e226bb75e3a6a
 ---

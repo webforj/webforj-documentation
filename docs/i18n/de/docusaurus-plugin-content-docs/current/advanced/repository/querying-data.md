@@ -1,5 +1,5 @@
 ---
-title: Querying data
+title: Abfragen von Daten
 sidebar_position: 3
 _i18n_hash: 96551b4f47c7019b8bdd43b57f716c88
 ---

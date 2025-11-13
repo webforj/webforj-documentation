@@ -1,6 +1,6 @@
 ---
 sidebar_position: 46
-title: Asynchronous Updates
+title: Mises à jour asynchrones
 sidebar_class_name: new-content
 _i18n_hash: 0db4be3f7e785c967b2e7efa442ca3ff
 ---

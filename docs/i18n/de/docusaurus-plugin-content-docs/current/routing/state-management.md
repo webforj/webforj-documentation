@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-title: State Management
+title: Zustandsverwaltung
 _i18n_hash: e10d155e02722ea38419a79813a2f5af
 ---
 Creating seamless, dynamic user experiences often requires that the state of your web app be reflected in the URL and retained across browser navigation events. You can achieve this without reloading the page by leveraging URL-Parameteraktualisierungen und das Management des Browserverlaufs. This ensures that users can share, bookmark, or return to specific views with the app fully aware of their prior interactions.

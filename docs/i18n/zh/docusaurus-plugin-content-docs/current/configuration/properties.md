@@ -1,5 +1,5 @@
 ---
-title: Property Configuration
+title: 属性配置
 sidebar_position: 30
 sidebar_class_name: updated-content
 _i18n_hash: fe000276baa9ac8b0773e5c4372d8463

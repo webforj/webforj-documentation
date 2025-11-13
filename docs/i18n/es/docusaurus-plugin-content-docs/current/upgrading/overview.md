@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Upgrading Guides
+title: Guías de Actualización
 hide_table_of_contents: true
 hide_giscus_comments: true
 _i18n_hash: 6adbad314378e90356ad6602cc52de5a

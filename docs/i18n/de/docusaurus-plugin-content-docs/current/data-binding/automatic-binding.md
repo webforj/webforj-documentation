@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Automatic Binding
+title: Automatische Bindung
 _i18n_hash: e914be874b2c22c5e32f7fce4b5f1885
 ---
 webforJ bietet mehrere Funktionen, die den Konfigurations- und automatischen Bindungsprozess für Entwickler optimieren. In diesem Abschnitt wird gezeigt, wie diese Funktionen effektiv genutzt werden können.

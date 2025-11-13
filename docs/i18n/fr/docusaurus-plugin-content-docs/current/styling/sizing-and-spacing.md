@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Sizing and Spacing
+title: Taille et espacement
 _i18n_hash: 4efe9ef910459481ca90eec87c26ebe0
 ---
 Les tokens de taille et d'espacement sont utilisés pour fournir un espacement et une taille cohérents dans votre application. Toutes les propriétés de taille et d'espacement sont définies en `rem`.

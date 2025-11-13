@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Foundational Architecture
+title: Perustavanlaatuinen Arkkitehtuuri
 _i18n_hash: 53db76e19a5bfcf2e476ac1efaaa2c48
 ---
 WebforJ:n turvallisuusjärjestelmä perustuu ydinkäyttöliittymien pohjalle, jotka toimivat yhdessä tarjotakseen reittikohtaista pääsynhallintaa. Nämä käyttöliittymät määrittelevät turvallisuuskäyttäytymisen sopimukset, jolloin erilaiset toteutukset, olipa kyseessä sessioon perustuva, JSON Web Tokenien (JWT) käyttöön perustuva, LDAP-integroitu tai tietokannan tukema, voivat liittää itseensä samaan taustarakenteeseen.

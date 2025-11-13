@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Foundational Architecture
+title: Architecture Fondamentale
 _i18n_hash: 53db76e19a5bfcf2e476ac1efaaa2c48
 ---
 Le système de sécurité webforJ est construit sur une fondation d'interfaces de base qui travaillent ensemble pour fournir un contrôle d'accès au niveau des routes. Ces interfaces définissent les contrats pour le comportement de sécurité, permettant à différentes implémentations, qu'elles soient basées sur des sessions, sur des JSON Web Tokens (JWT), intégrées à LDAP ou basées sur des bases de données, de s'intégrer dans le même cadre sous-jacent.

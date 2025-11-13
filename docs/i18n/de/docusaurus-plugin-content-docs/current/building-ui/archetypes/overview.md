@@ -1,6 +1,6 @@
 ---
 sidebar_position: 0
-title: Archetypes
+title: Archetypen
 hide_table_of_contents: true
 hide_giscus_comments: true
 _i18n_hash: 5a88f2db8f4185a676299eace305d70f

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Testing with Playwright
+title: 使用 Playwright 进行测试
 _i18n_hash: dffe640edd9d7918a3c8bace8cf0bbe8
 ---
 本文档概述了使用 Playwright 测试 webforJ 应用程序的过程，特别关注 `webforj-archetype-hello-world` 中的 `HelloWorldView`。

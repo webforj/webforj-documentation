@@ -1,6 +1,6 @@
 ---
 sidebar_position: 15
-title: File Save
+title: File Opslaan
 _i18n_hash: 9f5ecfb61386cfa8c4eb3c31305b1838
 ---
 # Bestandsopslag Dialoog

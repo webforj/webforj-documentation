@@ -1,5 +1,5 @@
 ---
-title: Events and updates
+title: Ereignisse und Updates
 sidebar_position: 5
 _i18n_hash: b2973e75abc879992ab1e235ba5d8b5e
 ---

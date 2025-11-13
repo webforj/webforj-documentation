@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Defining Routes
+title: Définir des Routes
 _i18n_hash: 4f7189d5ef27386506e9ecf950f145ed
 ---
 La définition des routes est essentielle pour mapper les URL à des composants spécifiques. Cela vous permet de contrôler comment différentes parties de votre interface utilisateur sont rendues en fonction de la structure de l'URL. Le framework utilise l'annotation `@Route` pour rendre ce processus déclaratif et simple, réduisant le besoin de configuration manuelle.
