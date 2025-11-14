@@ -1,6 +1,7 @@
 ---
 title: Repository
 sidebar_position: 1
+sidebar_class_name: has-new-content
 ---
 
 <!-- vale off -->
@@ -119,19 +120,23 @@ The filter persists until you change it. New items added to the collection are a
 
 ## Working with entity keys {#working-with-entity-keys}
 
-When your entities implement <JavadocLink type="data" location="com/webforj/data/HasEntityKey" code="true">HasEntityKey</JavadocLink>, the repository can find and update specific items by their ID:
+The repository needs to identify entities uniquely to support operations like `find()` and `commit(entity)`. There are two ways to define how entities are identified:
+
+### Using HasEntityKey interface {#using-hasentitykey}
+
+Implement <JavadocLink type="data" location="com/webforj/data/HasEntityKey" code="true">HasEntityKey</JavadocLink> on your entity class:
 
 ```java
 public class Customer implements HasEntityKey {
     private String customerId;
     private String name;
     private String email;
-    
+
     @Override
     public Object getEntityKey() {
         return customerId;
     }
-    
+
     // Constructor and getters/setters...
 }
 
@@ -145,10 +150,40 @@ customer.ifPresent(c -> {
 });
 ```
 
-Without `HasEntityKey`:
-- `repository.find("C001")` won't find your customer because it looks for an object that equals "C001"
-- `repository.commit(entity)` still works, but relies on object equality
-- UI components can't select items by ID, only by object reference
+### Using custom key provider <DocChip chip='since' label='25.10' /> {#using-custom-key-provider} 
+
+For entities where you can't or don't want to implement `HasEntityKey` (like JPA entities), use `setKeyProvider()`:
+
+```java
+@Entity
+public class Product {
+    @Id
+    private Long id;
+    private String name;
+    private double price;
+
+    // JPA-managed entity
+}
+
+// Configure repository to use the getId() method
+CollectionRepository<Product> repository = new CollectionRepository<>(products);
+repository.setKeyProvider(Product::getId);
+
+// Now find works with the ID
+Optional<Product> product = repository.find(123L);
+```
+
+### Choosing an approach {#choosing-approach}
+
+Both approaches work, but `setKeyProvider()` is preferred when:
+- Working with JPA entities that have `@Id` fields
+- You can't modify the entity class
+- You need different key strategies for different repositories
+
+Use `HasEntityKey` when:
+- You control the entity class
+- The key extraction logic is complex
+- You want the entity to define its own identity
 
 
 ## UI integration {#ui-integration}
