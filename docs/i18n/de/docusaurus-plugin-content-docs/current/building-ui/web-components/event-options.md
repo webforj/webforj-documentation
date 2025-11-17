@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Event Options
+title: Event-Optionen
 _i18n_hash: d780e41b809f0e3df55f65a1c71983a0
 ---
 <!-- sidebar_class_name: sidebar--item__hidden -->

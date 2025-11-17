@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-title: State Management
+title: Tilanhallinta
 _i18n_hash: e10d155e02722ea38419a79813a2f5af
 ---
 Luodaan saumatonta, dynaamista käyttäjäkokemusta vaativat usein sen, että verkkosovelluksen tila heijastuu URL-osoitteeseen ja säilyy selainviestinnän aikana. Voit saavuttaa tämän lataamatta sivua uudelleen hyödyntämällä URL-parametrien päivityksiä ja selainhistorian hallintaa. Tämä varmistaa, että käyttäjät voivat jakaa, merkitä kirjanmerkkeihin tai palata tiettyihin näkymiin sovelluksen ollessa täysin tietoinen heidän aiemmista vuorovaikutuksistaan.

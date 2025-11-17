@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: HTML Element Components
+title: HTML 元素组件
 _i18n_hash: 86c5e2ee07360ad502e8857eb68cebe2
 ---
 虽然 webforJ 的 `Element` 类允许用户在他们的应用程序中创建 HTML 元素，但 webforJ 的核心组件中包含了一套标准 HTML 元素以简化使用。

@@ -1,5 +1,5 @@
 ---
-title: Integrating the AppLayout
+title: 集成 AppLayout
 sidebar_position: 6
 draft: true
 _i18n_hash: c0ed4864dc99a4665aef3f4ff808bc9d

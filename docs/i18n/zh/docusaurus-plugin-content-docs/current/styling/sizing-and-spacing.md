@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Sizing and Spacing
+title: 大小和间距
 _i18n_hash: 4efe9ef910459481ca90eec87c26ebe0
 ---
 间距和大小的标记用于在您的应用中提供一致的间距和大小。所有的大小和间距属性都以 `rem` 为单位定义。

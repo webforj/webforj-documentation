@@ -1,5 +1,5 @@
 ---
-title: Redeployment and Live Reload
+title: Redeployment en Live Reload
 hide_table_of_contents: false
 hide_giscus_comments: true
 sidebar_class_name: has-new-content

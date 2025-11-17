@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Navigation Blocking
+title: Bloqueo de Navegación
 _i18n_hash: a08d56654914719e12d1401d263c7956
 ---
 El bloqueo de navegación añade una o más capas de control a toda la API del enrutador subyacente. Si hay controladores de bloqueo presentes, la navegación se evitará de la siguiente manera:

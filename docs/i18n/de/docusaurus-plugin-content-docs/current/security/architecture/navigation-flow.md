@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Navigation Flow
+title: Navigationsablauf
 _i18n_hash: 4cdc8e09fc6ad44de6a5a81a511175b8
 ---
 Sicherheitsdurchsetzung in webforJ erfolgt automatisch während der Navigation. Wenn ein Benutzer auf einen Link klickt oder zu einer Route navigiert, unterbricht das Sicherheitssystem die Navigation, bewertet die Zugriffsregeln und erlaubt entweder die Fortsetzung der Navigation oder leitet den Benutzer auf eine geeignete Seite um. Diese Unterbrechung ist für die Benutzer unsichtbar und erfordert keine manuellen Sicherheitsüberprüfungen in Ihrem Komponenten-Code.

@@ -1,5 +1,5 @@
 ---
-title: Custom data sources
+title: Fuentes de datos personalizadas
 sidebar_position: 4
 _i18n_hash: 44f087c7c2308fc7a0c3b8c4c4246531
 ---

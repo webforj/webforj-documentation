@@ -1,6 +1,6 @@
 ---
 sidebar_position: 30
-title: Editing and Refreshing
+title: Bearbeiten und Aktualisieren
 slug: refreshing
 _i18n_hash: 39816123675d62a6dda185187e8d13e2
 ---

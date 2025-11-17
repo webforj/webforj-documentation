@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-title: Transitions & Easing
+title: Transiciones y Easing
 _i18n_hash: d2f7570b46bfa778ca967908d6e7d901
 ---
 Las variables de transición se utilizan para proporcionar duraciones de animación consistentes en toda su aplicación. Controlan cuánto tiempo tarda en completarse una animación.

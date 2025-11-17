@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-title: Navigational Frame Titles
+title: Títulos de Marco de Navegación
 _i18n_hash: 0a4e46f57c88d52966be27b35070a027
 ---
 En webforJ, todas las rutas se renderizan dentro de un Frame, que sirve como un contenedor de nivel superior responsable de mostrar el contenido de la ruta actual. A medida que los usuarios navegan entre diferentes rutas, el Título del Frame se actualiza dinámicamente para reflejar la vista activa, ayudando a proporcionar un contexto claro sobre la ubicación actual del usuario dentro de la aplicación.

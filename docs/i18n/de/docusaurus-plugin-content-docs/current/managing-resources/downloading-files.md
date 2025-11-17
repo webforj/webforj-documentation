@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Downloading Files
+title: Dateien herunterladen
 _i18n_hash: 013e64888b44110c108f80adf492be10
 ---
 webforJ bietet Methoden zum Initiieren von Datei-Downloads, die es einfach machen, Dateien über den Browser an Benutzer auszuliefern. Die <JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page</JavadocLink>-Klasse bietet mehrere Möglichkeiten zum Download von Dateien, unabhängig davon, ob sie aus Eingabeströmen, Byte-Arrays, physischen Dateien oder Ressourcen stammen.

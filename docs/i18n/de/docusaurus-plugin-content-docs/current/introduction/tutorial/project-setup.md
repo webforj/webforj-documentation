@@ -1,5 +1,5 @@
 ---
-title: Project Setup
+title: Projektsetup
 sidebar_position: 1
 _i18n_hash: f8ad0e22acf56c824b05db580be2203b
 ---

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Reporters
+title: Reporteros
 _i18n_hash: c563479cec7e1fe29d483bcd121bb5fc
 ---
 Los reporteros de validación se utilizan para proporcionar retroalimentación sobre el proceso de validación a la interfaz de usuario. Esta función es esencial para informar a los usuarios sobre los resultados de la validación de su entrada, particularmente en formularios complejos o aplicaciones intensivas en datos.

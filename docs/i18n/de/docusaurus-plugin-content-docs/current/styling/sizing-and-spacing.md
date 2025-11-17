@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Sizing and Spacing
+title: Größen und Abstände
 _i18n_hash: 4efe9ef910459481ca90eec87c26ebe0
 ---
 Spacing- und Größen-Token werden verwendet, um konsistente Abstände und Größen in Ihrer App bereitzustellen. Alle Größen- und Abständeigenschaften sind in `rem` definiert.

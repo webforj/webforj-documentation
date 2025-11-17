@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Component Basics
+title: 组件基础
 slug: basics
 draft: false
 _i18n_hash: e4d0cb9dd9f53dabda8bebe6664bf0d3

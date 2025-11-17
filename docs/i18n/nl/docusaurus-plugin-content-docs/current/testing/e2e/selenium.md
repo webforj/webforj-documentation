@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Testing with Selenium
+title: Testing met Selenium
 _i18n_hash: fe85942b4638ef9828b334ef986b4436
 ---
 Deze documentatie beschrijft het proces voor het testen van webforJ-apps met Selenium, met een specifieke focus op de `HelloWorldView` van de `webforj-archetype-hello-world`.

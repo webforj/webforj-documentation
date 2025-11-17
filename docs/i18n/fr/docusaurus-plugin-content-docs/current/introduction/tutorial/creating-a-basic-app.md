@@ -1,5 +1,5 @@
 ---
-title: Creating a Basic App
+title: Créer une application de base
 sidebar_position: 2
 _i18n_hash: c59ff0def84230ed79877cba3d5e5aa4
 ---

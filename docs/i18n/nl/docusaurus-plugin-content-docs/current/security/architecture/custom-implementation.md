@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Custom Implementation Example
+title: Custom Implementatie Voorbeeld
 _i18n_hash: c0e3b67ebd80f907848594a5586ad644
 ---
 Deze gids begeleidt je bij het bouwen van een volledige aangepaste beveiligingsimplementatie met behulp van sessiegebaseerde authenticatie. Je leert hoe de vier kerninterfaces samenwerken door ze vanaf nul te implementeren.

@@ -1,5 +1,5 @@
 ---
-title: Installable Apps
+title: 可安装应用程序
 sidebar_position: 10
 _i18n_hash: 76c2d63a5d5ea13f5ce55431108e6a3d
 ---

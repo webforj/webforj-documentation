@@ -1,6 +1,6 @@
 ---
 sidebar_position: 11
-title: Localization
+title: Lokalisierung
 sidebar_class_name: new-content
 _i18n_hash: 91f5af285113e5e76d50a201a2fbf88f
 ---

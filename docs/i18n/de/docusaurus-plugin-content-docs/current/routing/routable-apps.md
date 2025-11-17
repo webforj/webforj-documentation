@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Routable Apps
+title: Routbare Apps
 _i18n_hash: 6d09e8327e3391cedd4e8059d9390d09
 ---
 Routing in webforJ ist ein optionales Werkzeug. Entwickler können zwischen der webforJ-Routing-Lösung oder einem traditionellen Modell mit `Frame`-Manipulation und ohne tiefes Linking wählen. Um Routing zu aktivieren, muss die **`@Routify`**-Annotation auf der Ebene einer Klasse angewendet werden, die `App` implementiert. Dies gewährt webforJ die Befugnis, den Browserverlauf zu verwalten, auf Navigationsevents zu reagieren und die Komponenten der App basierend auf der URL zu rendern.

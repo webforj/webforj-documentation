@@ -1,5 +1,5 @@
 ---
-title: Validating and Binding Data
+title: Tietojen validointi ja sidonta
 sidebar_position: 5
 pagination_next: null
 _i18n_hash: 11d03e09c4c37172713713649c920e9e
