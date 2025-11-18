@@ -1,14 +1,15 @@
 ---
 title: Login
 sidebar_position: 70
-_i18n_hash: b95b5a072de318071d9d7ecae890a883
+sidebar_class_name: updated-content
+_i18n_hash: cdcad4b5ef5d3ba0bd84e4d9deac49b5
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-login" />
 <DocChip chip='since' label='24.01' />
 <JavadocLink type="login" location="com/webforj/component/login/Login" top='true'/>
 
-Login-komponentti on suunniteltu tarjoamaan käyttäjäystävällinen käyttöliittymä todennusta varten, jolloin käyttäjät voivat kirjautua sisään käyttäjätunnuksen ja salasanan avulla. Se tukee erilaisia mukautuksia käyttäjäkokemuksen parantamiseksi eri laitteilla ja kielillä.
+`Login`-komponentti yksinkertaistaa käyttäjän todennusta tarjoamalla valmiin kirjautumisvalintaikkunan, jossa on käyttäjänimi- ja salasana-kentät. Se sisältää ominaisuuksia, kuten syötteen validointi, muokattavat tarrat ja viestit, salasanan näkyvyysohjaukset sekä tukea lisäkohtaisille kentille.
 
 <ComponentDemo 
 path='/webforj/loginbasic?' 
@@ -16,18 +17,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '450px'
 />
 
-## Käytöt {#usages}
-
-Login-komponentti tarjoaa käyttäjäystävällisen kirjautumislomakkeen käyttöliittymän dialogissa todennusasiakirjojen syöttämistä varten. Se parantaa käyttäjäkokemusta tarjoamalla:
-   >- Selkeät syöttökentät käyttäjätunnukselle ja salasanalle.
-   >- Näkyvyyden vaihto salasanalle syötteen vahvistamiseksi.
-   >- Syöttövalidointipalautetta oikean muotoilun varmistamiseksi ennen lähettämistä.
-
 ## Kirjautumisen lähettäminen {#login-submission}
 
-Kun käyttäjät syöttävät käyttäjätunnuksensa ja salasanansa, kirjautumis komponentti validoi nämä syötteet pakollisina kenttinä. Kun validointi on läpäisty, lomakkeen lähettämistapahtuma laukaistaan, ja syötetyt asiakirjat toimitetaan. Estääkseen useita lähetyksiä `Signin`-painike poistetaan välittömästi käytöstä.
+Kun käyttäjät syöttävät käyttäjänimensä ja salasanansa, `Login`-komponentti validoi nämä syötteet pakollisiksi kentiksi. Kun validointi on onnistunut, lomakkeen lähetys tapahtuu, ja syötetyt tunnistetiedot toimitetaan. Useiden lähetyksien estämiseksi [Kirjaudu sisään] -painike on heti poistettu käytöstä.
 
-Alla oleva demo havainnollistaa perustavanlaatuista lomakkeen lähettämisprosessia. Jos käyttäjätunnus ja salasana on asetettu molemmat arvoksi `"admin"`, kirjautumisdialogi sulkeutuu ja kirjautumisnappi tulee näkyviin. Jos asiakirjat eivät sovi yhteen, kirjautumislomakkeen oletusvirheilmoitus näytetään.
+Seuraavassa kuvataan yksinkertaista `Login`-komponenttia. Jos käyttäjänimi ja salasana on asetettu molemmat arvoksi `"admin"`, kirjautumisvalintaikkuna sulkeutuu, ja [Kirjaudu ulos] -painike ilmestyy. Jos tunnistetiedot eivät täsmää, oletusvirheilmoitus näytetään.
 
 <ComponentDemo 
 path='/webforj/loginsubmission?' 
@@ -35,19 +29,32 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '450px'
 />
 
-:::info Signin-painikkeen poistaminen käytöstä
-Oletuksena kirjautumislomake poistaa välittömästi käytöstä `Signin`-painikkeen, kun komponentti validoi kirjautumissyötteet oikein useiden lähetyksen estämiseksi. Voit ottaa `Signin`-painikkeen uudelleen käyttöön käyttämällä menetelmää `setEnabled(true)`.
+:::info [Kirjaudu sisään] -painikkeen poistaminen käytöstä
+Oletuksena `Login` poistaa heti käytöstä [Kirjaudu sisään] -painikkeen, kun komponentti validoi kirjautumissyötteet oikein useiden lähetyksien estämiseksi. Voit ottaa [Kirjaudu sisään] -painikkeen uudelleen käyttöön käyttämällä `setEnabled(true)` -metodia.
 :::
 
 :::tip Tyhjien salasanojen salliminen
-Tietyissä tilanteissa tyhjät salasanat voivat olla sallittuja, jolloin käyttäjät voivat kirjautua sisään vain käyttäjätunnuksella. Kirjautumisdialogia voidaan määrittää hyväksymään tyhjät salasanat asettamalla `setEmptyPassword(true)`.
+Voit sallia käyttäjien kirjautuvan sisään pelkän käyttäjänimen avulla käyttämällä `setEmptyPassword(true)` -metodia.
 :::
 
-## Kansainvälistäminen (i18n) {#internationalization-i18n}
+## Lomake toiminto <DocChip chip='since' label='25.10' />{#form-action}
 
-Kirjautumiskomponentin otsikot, kuvastot, etiketit ja viestit ovat täysin mukautettavissa käyttämällä `LoginI18n`-luokkaa. Tämä joustavuus antaa sinulle mahdollisuuden räätälöidä kirjautumisen käyttöliittymä vastaamaan erityisiä lokalisointi vaatimuksia tai personointitoiveita.
+`Login`-komponentti voi lähettää lomakedataa suoraan määritettyyn URL-osoitteeseen sen sijaan, että se käsittelisi lähettämistä lomakkeen lähetys tapahtuman kautta. Kun toimint URL on asetettu, lomake suorittaa standardin POST-pyynnön käyttäjänimen ja salasanan muodossa.
 
-Alla oleva demo havainnollistaa, kuinka kirjautumisdialogille voidaan antaa saksankielinen käännös varmistaen, että kaikki käyttöliittymäelementit mukautetaan saksan kielelle parantaakseen käyttäjäkokemusta saksankielisille käyttäjille.
+```java
+Login login = new Login();
+login.setAction("/api/auth");
+```
+
+Kun käytetään `setAction()`, lomakkeen lähetys ohittaa `LoginSubmitEvent`-tapahtuman ja suorittaa sen sijaan perinteisen HTTP POST -pyynnön määritettyyn päätepisteeseen. Käyttäjänimi ja salasana lähetetään lomakkeen parametreina, jotka on nimetty "username" ja "password", vastaavasti. Mukautetut kentät, joilla on nimeämiselementti, sisällytetään myös POST-pyyntöön.
+
+:::tip 
+Jos toimint URL:ää ei ole asetettu, lomakkeen lähetys käsitellään `LoginSubmitEvent`-tapahtuman kautta, jolloin voit käsitellä tunnistetietoja ohjelmallisesti palvelinpuolella.
+:::
+
+## Kansainvälisyys (i18n) {#internationalization-i18n}
+
+`Login`-komponentin otsikot, kuvaukset, tarrat ja viestit ovat täysin mukautettavissa `LoginI18n`-luokan avulla. Tämä joustavuus mahdollistaa kirjautumisliittymän räätälöimisen tiettyjen lokalisointi vaatimusten tai henkilökohtaisten mieltymysten mukaan.
 
 <ComponentDemo 
 path='/webforj/logininternationalization?' 
@@ -57,9 +64,9 @@ height = '500px'
 
 ## Mukautetut kentät {#custom-fields}
 
-Kirjautumiskomponentti sisältää useita slotteja, jotka antavat sinun lisätä ylimääräisiä kenttiä tarpeen mukaan. Tämä ominaisuus tarjoaa enemmän hallintaa tarvittavasta tiedosta onnistuneen todennuksen varmistamiseksi.
+`Login`-komponentti sisältää useita slotteja, jotka mahdollistavat ylimääräisten kenttien lisäämisen tarvittaessa. Mukautetut kentät kerätään automaattisesti, kun lomake lähetetään, ja niitä voidaan käsitellä lähetys tapahtuman datakartalla.
 
-Alla olevassa esimerkissä asiakas-ID-kenttä lisätään kirjautumislomakkeeseen. Käyttäjien on annettava voimassa oleva ID todentamisen suorittamiseksi parantaen turvallisuutta ja varmistaen, että pääsy myönnetään vain kaikkien vaadittavien asiakirjojen vahvistamisen jälkeen.
+Seuraavassa kirjautumisessa on lisätty mukautettu kenttä asiakas-ID:lle. Tämä voi auttaa hallitsemaan yrityksiä tai osastoja, joilla on yhteistä sisältöä useiden käyttäjien kesken.
 
 <ComponentDemo 
 path='/webforj/logincustomfields?' 
@@ -68,15 +75,15 @@ cssURL='/css/login/loginCustomFields.css'
 height = '700px'
 />
 
-:::info Lähetyksen kuorma
-Huomaa, että kirjautumiskomponentti ei automaattisesti tunnista tai sisällä ylimääräisiä kenttiä, jotka on lisätty lomakkeeseen sen lähetyskuormassa. Tämä tarkoittaa, että kehittäjien on nimenomaisesti haettava lisäkenttien arvot asiakassivulta ja käsiteltävä niitä sovelluksen vaatimusten mukaisesti todentamisprosessin loppuunsaattamiseksi.
+:::info Nimi vaaditaan
+Mukautettujen kenttien on oltava nimettyinä `setName()`-metodilla, jotta ne voitaisiin sisällyttää lomakkeen lähetykseen. Nimi käytetään avaimena kentän arvon hakemiseen `event.getData()` -menetelmällä.
 :::
 
 ## Peruuta-painike {#cancel-button}
 
-Tietyissä tilanteissa voi olla toivottavaa lisätä peruuta-painike `Signin`-painikkeen rinnalle. Tämä ominaisuus on erityisen hyödyllinen, kun käyttäjä yrittää päästä rajoitettuun sovelluksen alueeseen ja tarvitsee mahdollisuuden peruuttaa toiminto ja palata edelliseen sijaintiinsa. Kirjautumislomakkeella on oletuksena peruuta-painike, mutta se on piilotettu näkyvistä.
+`Login`-komponentti sisältää [Peruuta]-painikkeen, joka on oletuksena piilotettu. Tämä on erityisen hyödyllistä, kun käyttäjä yrittää päästä sovelluksen rajoitetulle alueelle ja tarvitsee vaihtoehdon palata edelliseen sijaintiinsa ilman kirjautumista.
 
-Jotta peruuta-painike tulee näkyviin, sinun on annettava sille etiketti - kun se on nimetty, se näkyy näytöllä. Voit myös kuunnella peruutustapahtumia vastataksesi käyttäjän toimintaan varmistaaksesi sujuvan ja käyttäjäystävällisen kokemuksen sovelluksessa navigoimisessa.
+Jotta peruuta-painike olisi näkyvissä, anna sille etiketti. Voit myös kuunnella peruuttamistapahtumia käsitelläksesi peruuttamista asianmukaisesti.
 
 <ComponentDemo 
 path='/webforj/logincancelbutton?' 
@@ -85,16 +92,16 @@ height = '450px'
 />
 
 :::tip Elementtien piilottaminen
-Jotta voit piilottaa elementin kirjautumissivulta, aseta sen etiketti vain tyhjään merkkijonoon. Tämä lähestymistapa on erityisen hyödyllinen käyttöliittymäkomponenttien tilapäiseen poistamiseen ilman, että koodipohjaa tarvitsisi pysyvästi muuttaa.
+Jos haluat piilottaa elementin, aseta sen etiketti tyhjään merkkijonoon. Tämä mahdollistaa näkyvyyden vaihtamisen poistamatta komponenttia koodistasi.
 :::
 
 ## Salasananhallintajärjestelmät {#password-managers}
 
-Kirjautumiskomponentti on suunniteltu yhteensopivaksi selainpohjaisten salasananhallintajärjestelmien kanssa, parantaakseen käyttäjäkokemusta yksinkertaistamalla kirjautumisprosessia. Chromium-pohjaisten selainten käyttäjille komponentti integroituu saumattomasti [`PasswordCredential`](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential) API:n kanssa. Tämä integraatio mahdollistaa useita käteviä ominaisuuksia:
+Tämä komponentti toimii selaimen salasanan hallintajärjestelmien kanssa kirjautumisprosessin yksinkertaistamiseksi. Chromium-pohjaisissa selaimissa se integroituu [`PasswordCredential`](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential) API:iin, joka tarjoaa:
 
-- **Automaattinen täyttö**: Selaimessa voi automaattisesti täyttää käyttäjätunnus- ja salasanakentät, jos käyttäjä on tallentanut asiakirjat sivustolle.
-- **Asiakirjojen hallinta**: Kirjautumisen jälkeen selain voi kehottaa käyttäjää tallentamaan uusia asiakirjoja, jolloin tulevat kirjautumiset ovat nopeampia ja helpompia.
-- **Asiakirjojen valinta**: Jos useita asiakirjoja on tallennettuna, selain voi tarjota käyttäjälle mahdollisuuden valita yhdestä tallennetusta asiakirjasta.
+- **Automaattinen täyttö**: Selain saattaa automaattisesti täyttää käyttäjänimi- ja salasanakentät, jos käyttäjällä on tallennettuja tunnistetietoja sivustolle.
+- **Tunnistetietojen hallinta**: Kirjauduttuaan selain voi kehottaa käyttäjää tallentamaan uusia tunnistetietoja, mikä tekee tulevista kirjautumisista nopeampia ja helpompia.
+- **Tunnistetietojen valinta**: Jos useita tunnistetietoja on tallennettu, selain voi tarjota käyttäjälle mahdollisuuden valita yhdestä tallennetuista sarjoista.
 
 ## Tyylittely {#styling}
 

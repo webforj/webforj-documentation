@@ -1,14 +1,15 @@
 ---
 title: Login
 sidebar_position: 70
-_i18n_hash: b95b5a072de318071d9d7ecae890a883
+sidebar_class_name: updated-content
+_i18n_hash: cdcad4b5ef5d3ba0bd84e4d9deac49b5
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-login" />
 <DocChip chip='since' label='24.01' />
 <JavadocLink type="login" location="com/webforj/component/login/Login" top='true'/>
 
-De Login-component is ontworpen om een gebruiksvriendelijke interface voor authenticatie te bieden, waarmee gebruikers kunnen inloggen met een gebruikersnaam en wachtwoord. Het ondersteunt verschillende aanpassingen om de gebruikerservaring op verschillende apparaten en in verschillende regio's te verbeteren.
+De `Login` component vereenvoudigt gebruikersauthenticatie door een kant-en-klaar inlogdialoog te bieden met gebruikersnaam en wachtwoordvelden. Het bevat functies zoals invoervalidatie, aanpasbare labels en berichten, wachtwoordzichtbaarheidscontroles en ondersteuning voor aanvullende aangepaste velden.
 
 <ComponentDemo 
 path='/webforj/loginbasic?' 
@@ -16,18 +17,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '450px'
 />
 
-## Usages {#usages}
+## Inloggen {#login-submission}
 
-De Login-component biedt een gebruiksvriendelijke inlogformulierinterface binnen een dialoog voor het invoeren van authenticatiegegevens. Het verbetert de gebruikerservaring door te bieden:
-   >- Duidelijke invoervelden voor gebruikersnaam en wachtwoord.
-   >- Zichtbaarheidsschakelaar voor wachtwoord om de invoer te verifiëren.
-   >- Invoervalidatiefeedback om het juiste formaat te stimuleren voor indiening.
+Wanneer gebruikers hun gebruikersnaam en wachtwoord invoeren, valideert de `Login` component deze invoeren als verplichte velden. Zodra de validatie is geslaagd, wordt een formulierindieningsevent getriggerd, waarbij de ingevoerde gegevens worden afgeleverd. Om meerdere indieningen te voorkomen, wordt de [Aanmelden] knop onmiddellijk uitgeschakeld.
 
-## Login-indiening {#login-submission}
-
-Wanneer gebruikers hun gebruikersnaam en wachtwoord invoeren, valideert de logincomponent deze invoeren als verplichte velden. Zodra de validatie goedkeurt, wordt een formulierindieningsgebeurtenis getriggerd, die de ingevoerde gegevens aflevert. Om meerdere indieningen te voorkomen, wordt de `Signin`-knop onmiddellijk uitgeschakeld.
-
-De demo hieronder illustreert een basisformulierindieningsproces. Als zowel de gebruikersnaam als het wachtwoord zijn ingesteld op `"admin"`, sluit de inlogdialoog en verschijnt er een uitlogknop. Als de gegevens niet overeenkomen, wordt de standaardfoutmelding van het inlogformulier weergegeven.
+Het volgende illustreert een basale `Login` component. Als de gebruikersnaam en het wachtwoord beide zijn ingesteld op `"admin"`, sluit het inlogdialoogvenster en verschijnt er een [Afmelden] knop. Als de referenties niet overeenkomen, wordt het standaard foutbericht weergegeven.
 
 <ComponentDemo 
 path='/webforj/loginsubmission?' 
@@ -35,19 +29,32 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '450px'
 />
 
-:::info Uitschakelen van de Signin-knop
-Standaard schakelt het inlogformulier de `Signin`-knop onmiddellijk uit zodra de component de inloggegevens valideert als correct, om meerdere indieningen te voorkomen. U kunt de `Signin`-knop opnieuw inschakelen met behulp van de `setEnabled(true)`-methode.
+:::info Uitschakelen van de [Aanmelden] knop
+Standaard schakelt `Login` onmiddellijk de [Aanmelden] knop uit zodra de component de inloginvoeren als correct valideert, om meerdere indieningen te voorkomen. Je kunt de [Aanmelden] knop opnieuw inschakelen met de methode `setEnabled(true)`.
 :::
 
-:::tip Lege wachtwoorden toestaan
-In bepaalde scenario's kunnen lege wachtwoorden toegestaan zijn, waardoor gebruikers alleen met een gebruikersnaam kunnen inloggen. De inlogdialoog kan worden geconfigureerd om lege wachtwoorden te accepteren door `setEmptyPassword(true)` in te stellen.
+:::tip Toestaan van lege wachtwoorden
+Je kunt gebruikers toestaan om in te loggen met alleen een gebruikersnaam door de methode `setEmptyPassword(true)` te gebruiken.
 :::
 
-## Internationalisering (i18n) {#internationalization-i18n}
+## Formuliereactie <DocChip chip='since' label='25.10' />{#form-action}
 
-De titels, beschrijvingen, labels en berichten binnen de inlogcomponent zijn volledig aanpasbaar met behulp van de `LoginI18n`-klasse. Deze flexibiliteit stelt u in staat om de inloginterface aan te passen aan specifieke lokalisatiebehoeften of personalisatievoorkeuren.
+De `Login` component kan formuliergegevens rechtstreeks naar een opgegeven URL indienen in plaats van de indiening via het indieningsevent te verwerken. Wanneer een actie-URL is ingesteld, voert het formulier een standaard POST-verzoek uit met de gebruikersnaam en het wachtwoord als formulierparameters.
 
-De demo hieronder illustreert hoe een Duitse vertaling voor de inlogdialoog kan worden aangeboden, zodat alle interface-elementen zijn aangepast aan de Duitse taal om de gebruikerservaring voor Duitstalige gebruikers te verbeteren.
+```java
+Login login = new Login();
+login.setAction("/api/auth");
+```
+
+Bij gebruik van `setAction()`, omzeilt de formulierindiening het `LoginSubmitEvent` en voert in plaats daarvan een traditionele HTTP POST-aanroep uit naar het opgegeven eindpunt. De gebruikersnaam en het wachtwoord worden verzonden als formulierparameters genaamd "username" en "password", respectievelijk. Aangepaste velden met een naamattribuut worden ook opgenomen in het POST-verzoek.
+
+:::tip 
+Als er geen actie-URL is ingesteld, wordt de formulierindiening afgehandeld via het `LoginSubmitEvent`, zodat je referenties programmatisch op de serverzijde kunt verwerken.
+:::
+
+## Internationalisatie (i18n) {#internationalization-i18n}
+
+De titels, beschrijvingen, labels en berichten binnen de `Login` component zijn volledig aanpasbaar met de `LoginI18n` klasse. Deze flexibiliteit stelt je in staat om de inloginterface aan te passen aan specifieke lokalisatievereisten of personalisatievoorkeuren.
 
 <ComponentDemo 
 path='/webforj/logininternationalization?' 
@@ -57,9 +64,9 @@ height = '500px'
 
 ## Aangepaste velden {#custom-fields}
 
-De inlogcomponent bevat verschillende slots waarmee u indien nodig extra velden kunt toevoegen. Deze functie biedt meer controle over de informatie die vereist is voor succesvolle authenticatie.
+De `Login` component bevat verschillende slots waarmee je extra velden kunt toevoegen zoals nodig. Aangepaste velden worden automatisch verzameld wanneer het formulier wordt ingediend en kunnen worden geopend via de gegevenskaart van het indieningsevent.
 
-In het onderstaande voorbeeld is een Klant-ID-veld toegevoegd aan het inlogformulier. Gebruikers moeten een geldige ID opgeven om de authenticatie te voltooien, wat de beveiliging verbetert en ervoor zorgt dat toegang alleen wordt verleend na verificatie van alle vereiste gegevens.
+De volgende login heeft een aangepast veld toegevoegd voor een klant-ID. Dit kan je helpen om bedrijven of afdelingen met gedeelde inhoud over meerdere gebruikers te beheren.
 
 <ComponentDemo 
 path='/webforj/logincustomfields?' 
@@ -68,15 +75,15 @@ cssURL='/css/login/loginCustomFields.css'
 height = '700px'
 />
 
-:::info Indiening Payload
-Houd er rekening mee dat de inlogcomponent extra velden die aan het formulier zijn toegevoegd niet automatisch herkent of opneemt in zijn indieningspayload. Dit betekent dat ontwikkelaars expliciet de waarde van eventuele extra velden aan de clientzijde moeten ophalen en deze moeten verwerken volgens de eisen van de app om het authenticatieproces te voltooien.
+:::info Naam Vereist
+Aangepaste velden moeten een naam hebben die is ingesteld met `setName()` om opgenomen te worden in de formulierindiening. De naam wordt gebruikt als de sleutel om de waarde van het veld op te halen uit `event.getData()`.
 :::
 
 ## Annuleerknop {#cancel-button}
 
-In bepaalde scenario's kan het wenselijk zijn om een annuleerknop naast de `Signin`-knop toe te voegen. Deze functie is vooral nuttig wanneer een gebruiker probeert toegang te krijgen tot een beperkt gebied van de app en de optie nodig heeft om de actie te annuleren en terug te keren naar zijn vorige locatie. Het inlogformulier bevat standaard een annuleerknop, maar deze is verborgen.
+`Login` omvat een [Annuleren] knop die standaard verborgen is. Dit is bijzonder nuttig wanneer een gebruiker probeert toegang te krijgen tot een beperkt gebied van de app en een optie nodig heeft om terug te keren naar hun vorige locatie zonder de inlog te voltooien.
 
-Om de annuleerknop zichtbaar te maken, moet u er een label aan geven - eenmaal gelabeld, verschijnt deze op het scherm. U kunt ook luisteren naar annuleergebeurtenissen om passend te reageren op gebruikersacties, zodat een soepele en gebruiksvriendelijke ervaring bij het navigeren door de app wordt gegarandeerd.
+Om de annuleren knop zichtbaar te maken, geef een label voor deze op. Je kunt ook luisteren naar annuleringsevents om de annulering op de juiste manier af te handelen.
 
 <ComponentDemo 
 path='/webforj/logincancelbutton?' 
@@ -85,17 +92,17 @@ height = '450px'
 />
 
 :::tip Elementen verbergen
-Om een element van het inlogscherm te verbergen, stelt u eenvoudig het label in op een lege string. Deze benadering is bijzonder nuttig voor het tijdelijk verwijderen van interfacecomponenten zonder de codebase permanent te wijzigen.
+Om een element te verbergen, stel je het label in op een lege string. Dit stelt je in staat om de zichtbaarheid te togglen zonder het component uit je code te verwijderen.
 :::
 
 ## Wachtwoordbeheerders {#password-managers}
 
-De inlogcomponent is ontworpen om compatibel te zijn met browsergebaseerde wachtwoordbeheerders, waardoor de gebruikerservaring wordt verbeterd door het inlogproces te vereenvoudigen. Voor gebruikers van Chromium-gebaseerde browsers integreert de component naadloos met de [`PasswordCredential`](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential) API. Deze integratie maakt verschillende handige functies mogelijk:
+Deze component werkt met op de browser gebaseerde wachtwoordbeheerders om het inlogproces te vereenvoudigen. In op Chromium gebaseerde browsers integreert het met de [`PasswordCredential`](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential) API, die biedt:
 
-- **Auto-invullen**: De browser kan automatisch de velden voor gebruikersnaam en wachtwoord invullen als de gebruiker gemaakte wachtwoorden voor de site heeft opgeslagen.
-- **Beheer van inloggegevens**: Na het inloggen kan de browser de gebruiker vragen om nieuwe inloggegevens op te slaan, waardoor toekomstige inloggen sneller en gemakkelijker wordt.
-- **Selectie van inloggegevens**: Als er meerdere inloggegevens zijn opgeslagen, kan de browser de gebruiker een keuze bieden uit een van de opgeslagen sets.
+- **Auto-fill**: De browser kan automatisch de gebruikersnaam en wachtwoordvelden invullen als de gebruiker referenties voor de site heeft opgeslagen.
+- **Credential Management**: Na het inloggen kan de browser de gebruiker vragen om nieuwe referenties op te slaan, waardoor toekomstige inloggen sneller en gemakkelijker worden.
+- **Credential Selection**: Als er meerdere referenties zijn opgeslagen, kan de browser de gebruiker een keuze bieden uit een van de opgeslagen sets.
 
-## Styling {#styling}
+## Stijl {#styling}
 
 <TableBuilder name="Login" />
