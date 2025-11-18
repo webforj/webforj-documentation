@@ -156,7 +156,7 @@ const config = {
       },
     },
     announcementBar: {
-      id: '25.03',
+      id: `v${webforjVersion}-release`,
       content:
         `We are excited to announce webforJ version ${webforjVersion} is live! Read more about the changes and features <a href=/blog/whats-new-v${webforjVersion}>here.</a>`,
       isCloseable: true,
