@@ -19,7 +19,7 @@ public class SliderViewIT extends BaseTest {
     }
 
     @Test
-    public void testSliderView() {
+    public void testVolumeSlider() {
         sliderPage.getVolumeOffButton().click();
         assertThat(sliderPage.getLowerHandle()).hasAttribute("aria-valuenow", "0.0");
 

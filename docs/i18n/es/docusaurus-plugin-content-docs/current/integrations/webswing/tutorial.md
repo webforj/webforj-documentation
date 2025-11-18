@@ -1,21 +1,27 @@
 ---
 title: Modernization Tutorial
 sidebar_position: 4
-_i18n_hash: 32805132a2cf7b320864275fbbae7889
+_i18n_hash: d4f256ba28ac621f2280bbd31575f6f1
 ---
-Este tutorial muestra cómo modernizar una aplicación Java Swing existente integrándola con webforJ usando el `WebswingConnector`. Aprenderás a hacer que una aplicación de escritorio tradicional sea accesible a través de la web y a añadir características modernas de la web, como diálogos basados en la web y formularios interactivos, utilizando componentes de webforJ.
+Este tutorial te guiará a modernizar una aplicación Java Swing existente integrándola con webforJ utilizando el `WebswingConnector`. Aprenderás a hacer que una aplicación de escritorio tradicional sea accesible por la web y a agregar características modernas de la web de forma incremental, como diálogos basados en la web y formularios interactivos utilizando componentes de webforJ.
 
 :::tip Código fuente
-El código fuente completo de este tutorial está disponible en GitHub: [webforj/webforj-webswing-integration-tutorial](https://github.com/webforj/webforj-webswing-integration-tutorial)
+El código fuente completo para este tutorial está disponible en GitHub: [webforj/webforj-webswing-integration-tutorial](https://github.com/webforj/webforj-webswing-integration-tutorial)
 :::
+
+<div class="videos-container">
+  <video controls preload="metadata">
+    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/webswing/modernization-tutorial.mp4#t=5" type="video/mp4"/>
+  </video>
+</div>
 
 ## El escenario
 
-Imagina que tienes una aplicación de gestión de clientes construida con Swing que ha estado en producción durante años. Funciona bien, pero los usuarios ahora esperan acceso a la web y una interfaz moderna. En lugar de reescribir desde cero, utilizarás Webswing para hacerla accesible a la web de inmediato y luego irás añadiendo características modernas de la web, como diálogos y formularios, utilizando componentes de webforJ.
+Imagina que tienes una aplicación de gestión de clientes construida con Swing que ha estado en producción durante años. Funciona bien, pero los usuarios ahora esperan acceso web y una interfaz moderna. En lugar de reescribir desde cero, utilizarás Webswing para hacerla accesible por la web de inmediato, y luego agregarás características modernas de la web de manera incremental, como diálogos y formularios basados en la web utilizando componentes de webforJ.
 
 ## Punto de partida: la aplicación Swing
 
-La aplicación Swing de ejemplo es una tabla de clientes con operaciones CRUD típicas. Al igual que muchas aplicaciones empresariales de Swing, sigue patrones estándar:
+La aplicación de ejemplo en Swing es una tabla de clientes con operaciones CRUD típicas. Como muchas aplicaciones empresariales de Swing, sigue patrones estándar:
 
 ```java
 public class Application {
@@ -67,9 +73,9 @@ Esta aplicación funciona perfectamente como una aplicación de escritorio, pero
 
 ## Paso 1: haciéndola consciente de Webswing
 
-El primer paso es hacer que la aplicación Swing detecte si se está ejecutando bajo Webswing. Esto le permite adaptar su comportamiento sin romper la compatibilidad de escritorio.
+El primer paso es hacer que la aplicación Swing detecte si está funcionando bajo Webswing. Esto le permite adaptar su comportamiento sin romper la compatibilidad de escritorio.
 
-### Detección del entorno Webswing
+### Detección del entorno de Webswing
 
 Agrega la dependencia de la API de Webswing a tu proyecto Swing:
 
@@ -81,7 +87,7 @@ Agrega la dependencia de la API de Webswing a tu proyecto Swing:
 </dependency>
 ```
 
-Luego modifica tu aplicación para detectar el entorno de ejecución de Webswing:
+Luego, modifica tu aplicación para detectar el tiempo de ejecución de Webswing:
 
 ```java
 private void initWebswing() {
@@ -94,9 +100,9 @@ private void initWebswing() {
 }
 ```
 
-La clave aquí es que `WebswingUtil.getWebswingApi()` devuelve `null` al ejecutarse como una aplicación de escritorio regular, lo que te permite mantener la compatibilidad en modo dual.
+La idea clave aquí es que `WebswingUtil.getWebswingApi()` devuelve `null` cuando se ejecuta como una aplicación de escritorio normal, lo que te permite mantener la compatibilidad en modo dual.
 
-### Adaptando el comportamiento para la implementación web
+### Adaptando el comportamiento para el despliegue web
 
 Con la detección en su lugar, ahora puedes adaptar el comportamiento de la aplicación. El cambio más importante es cómo se manejan las interacciones del usuario:
 
@@ -115,15 +121,15 @@ private void handleDoubleClick(MouseEvent e) {
 }
 ```
 
-Al ramificar el comportamiento de acuerdo al valor de `isWebswing`, el código puede manejar ambos entornos.
+Al ramificar el comportamiento según el valor de `isWebswing`, la base de código puede manejar ambos entornos.
 
-## Paso 2: creando el envoltorio de webforJ
+## Paso 2: creando el wrapper para webforJ
 
-Ahora que la aplicación Swing puede comunicarse a través de eventos, crea una aplicación de webforJ que incruste la aplicación Swing y añada características modernas de la web, como diálogos y formularios basados en la web.
+Ahora que la aplicación Swing puede comunicarse a través de eventos, crea una aplicación webforJ que embebe la aplicación Swing y agregue características modernas de la web, como diálogos y formularios basados en la web.
 
 ### Configurando el conector
 
-El componente `WebswingConnector` incrusta tu aplicación alojada en Webswing dentro de una vista de webforJ:
+El componente `WebswingConnector` embebe tu aplicación alojada en Webswing dentro de una vista de webforJ:
 
 ```java
 @Route("/")
@@ -141,7 +147,7 @@ public class CustomerTableView extends Composite<FlexLayout> {
 
 El conector se conecta a tu servidor Webswing, estableciendo un canal de comunicación bidireccional.
 
-### Manejando eventos desde Swing
+### Manejo de eventos desde Swing
 
 Cuando la aplicación Swing envía eventos (como cuando un usuario hace doble clic en una fila), el conector los recibe:
 
@@ -167,7 +173,7 @@ Ahora, en lugar del diálogo de Swing, los usuarios ven un formulario web modern
 
 ## Paso 3: comunicación bidireccional
 
-La integración se vuelve poderosa cuando la comunicación fluye en ambas direcciones. La aplicación de webforJ puede enviar actualizaciones de vuelta a la aplicación Swing, manteniendo ambas interfaces de usuario sincronizadas.
+La integración se vuelve poderosa cuando la comunicación fluye en ambas direcciones. La aplicación webforJ puede enviar actualizaciones de vuelta a la aplicación Swing, manteniendo ambas interfaces sincronizadas.
 
 ### Enviando actualizaciones a Swing
 
@@ -195,28 +201,28 @@ private void setupWebswingListeners() {
 }
 ```
 
-## Beneficios de arquitectura
+## Beneficios de la arquitectura
 
-Este enfoque ofrece varias ventajas sobre una reescritura completa:
+Este enfoque proporciona varias ventajas sobre una reescritura completa:
 
-### Implementación web inmediata
+### Despliegue web inmediato
 
-Tu aplicación Swing se vuelve accesible a la web de inmediato sin cambios en el código. Los usuarios pueden acceder a ella a través de un navegador mientras trabajas en mejoras.
+Tu aplicación Swing se vuelve accesible por la web de inmediato sin cambios en el código. Los usuarios pueden acceder a ella a través de un navegador mientras trabajas en mejoras.
 
 ### Mejora progresiva
 
-Comienza reemplazando solo el diálogo de edición y luego reemplaza gradualmente más componentes:
+Comienza reemplazando solo el diálogo de edición, luego reemplaza gradualmente más componentes:
 
-1. **Fase 1**: Incrustar toda la aplicación Swing, reemplazar solo el diálogo de edición
-2. **Fase 2**: Agregar navegación y menús de webforJ alrededor de la aplicación incrustada
-3. **Fase 3**: Reemplazar la tabla con una tabla de webforJ, manteniendo Swing para características irremplazables
-4. **Fase 4**: Finalmente reemplazar todos los componentes de Swing
+1. **Fase 1**: Embebe toda la aplicación Swing, reemplaza solo el diálogo de edición.
+2. **Fase 2**: Agrega navegación y menús de webforJ alrededor de la aplicación embebida.
+3. **Fase 3**: Reemplaza la tabla con una tabla de webforJ, manteniendo Swing para características irreemplazables.
+4. **Fase 4**: Eventualmente reemplaza todos los componentes de Swing.
 
 ### Mitigación de riesgos
 
 Dado que la aplicación Swing original sigue siendo funcional, puedes:
 
-- Volver a la implementación de escritorio si es necesario
-- Probar nuevas características junto con las existentes
+- Volver al despliegue de escritorio si es necesario
+- Probar nuevas características junto a las existentes
 - Migrar usuarios gradualmente
 - Mantener la misma lógica de negocio

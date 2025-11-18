@@ -20,9 +20,9 @@ public class DateFieldViewIT extends BaseTest {
         navigateToRoute(DateFieldPage.getRoute());
         dateFieldPage = new DateFieldPage(page);
     }
-
+    
     @Test
-    public void testValidDates() {
+    public void testValidDatesEntered() {
         String departureDate = today.plusDays(3).format(DateTimeFormatter.ISO_LOCAL_DATE);
         String returnDate = today.plusDays(6).format(DateTimeFormatter.ISO_LOCAL_DATE);
 
@@ -34,7 +34,7 @@ public class DateFieldViewIT extends BaseTest {
     }
 
     @Test
-    public void testEarlierReturnDate() {
+    public void testEarlierReturnDateCorrected() {
         String departureDate = today.plusDays(6).format(DateTimeFormatter.ISO_LOCAL_DATE);
         String returnDate = today.plusDays(3).format(DateTimeFormatter.ISO_LOCAL_DATE);
         String correctedReturnDateISOFormat = today.plusDays(6).format(DateTimeFormatter.ISO_LOCAL_DATE);
@@ -46,7 +46,7 @@ public class DateFieldViewIT extends BaseTest {
     }
 
     @Test
-    public void testInvalidString() {
+    public void testInvalidStringIgnored() {
         dateFieldPage.getDepartureDate().click();
         dateFieldPage.getDepartureDate().press("Control+A");
         dateFieldPage.getDepartureDate().pressSequentially("abcd");
@@ -55,7 +55,7 @@ public class DateFieldViewIT extends BaseTest {
     }
 
     @Test
-    public void testSpecialChar() {
+    public void testSpecialCharsIgnored() {
         page.keyboard().press("Tab");
         page.keyboard().press("Tab");
         dateFieldPage.getDepartureDate().pressSequentially("#$%&");

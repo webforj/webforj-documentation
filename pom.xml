@@ -11,7 +11,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
-    <webforj.version>25.03</webforj.version>
+    <webforj.version>25.10</webforj.version>
     <warFileName>${project.artifactId}-${project.version}</warFileName>
     <jetty.version>12.0.14</jetty.version>
     <playwright.version>1.50.0</playwright.version>
@@ -144,6 +144,9 @@
             </goals>
             <phase>generate-resources</phase>
             <configuration>
+              <environmentVariables>
+                <WEBFORJ_VERSION>${webforj.version}</WEBFORJ_VERSION>
+              </environmentVariables>
               <arguments>run build</arguments>
             </configuration>
           </execution>
@@ -249,7 +252,6 @@
           <trimStackTrace>false</trimStackTrace>
           <parallel>both</parallel>
           <threadCount>${threadCount}</threadCount>
-          <perCoreThreadCount>true</perCoreThreadCount>
           <useFile>false</useFile>
           <disableXmlReport>true</disableXmlReport>
           <consoleOutputReporter>

@@ -23,7 +23,7 @@ public class TableMultipleSelectionViewIT extends BaseTest {
     }
 
     @Test
-    public void testSelectAllButton() {
+    public void testSelectAllRecords() {
         List<String> expectedRecords = Arrays.asList(
                 "Mississippi Blues",
                 "Gold - Greatest Hits",
@@ -55,7 +55,7 @@ public class TableMultipleSelectionViewIT extends BaseTest {
     }
 
     @Test
-    public void testMultipleSelection() {
+    public void testMultipleSelectionRecords() {
         multipleSelection.getRowCheckboxes().nth(1).click();
         assertThat(multipleSelection.getRecordItems()).containsText("Mississippi Blues");
 

@@ -3,7 +3,6 @@ sidebar_position: 10
 title: DateField
 slug: datefield
 description: A component that provides a default browser-based date picker for selecting a date through an input field.
-sidebar_class_name: updated-content
 ---
 
 <DocChip chip='shadow' />

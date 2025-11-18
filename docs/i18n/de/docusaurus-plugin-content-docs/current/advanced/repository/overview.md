@@ -1,22 +1,22 @@
 ---
 title: Repository
 sidebar_position: 1
-sidebar_class_name: new-content
-_i18n_hash: dc6f7bbfe82d68565cbe8da6436f080c
+sidebar_class_name: has-new-content
+_i18n_hash: b9a08226a8ace111beea4ab2a03ff79f
 ---
 <!-- vale off -->
 # Repository <DocChip chip='since' label='24.00' />
 <!-- vale on -->
 
 
-Das `Repository`-Muster in webforJ bietet eine standardisierte Möglichkeit, Sammlungen von Entitäten zu verwalten und abzufragen. Es dient als Abstraktionsschicht zwischen Ihren UI-Komponenten und den Daten, wodurch es einfach wird, mit verschiedenen Datenquellen zu arbeiten, während ein konsistentes Verhalten aufrechterhalten wird.
+Das `Repository`-Muster in webforJ bietet eine standardisierte Möglichkeit, Sammlungen von Entitäten zu verwalten und abzufragen. Es fungiert als Abstraktionsschicht zwischen Ihren UI-Komponenten und Daten, sodass Sie problemlos mit verschiedenen Datenquellen arbeiten können, während Sie ein konsistentes Verhalten beibehalten.
 
-## Warum ein Repository verwenden {#why-use-repository}
+## Warum Repository verwenden {#why-use-repository}
 
-`Repository` beseitigt manuelle Aktualisierungen, während Ihre ursprünglichen Daten intakt bleiben:
+`Repository` beseitigt manuelle Aktualisierungen und erhält Ihre ursprünglichen Daten intakt:
 
 ```java
-// Ohne Repository - manuelle Updates
+// Ohne Repository - manuelle Aktualisierungen
 List<Customer> customers = loadCustomers();
 Table<Customer> table = new Table<>();
 table.setItems(customers);
@@ -27,7 +27,7 @@ table.setItems(customers); // Muss alles neu laden
 ```
 
 ```java
-// Mit Repository - automatische Synchronisation
+// Mit Repository - automatische Synchronisierung
 List<Customer> customers = loadCustomers();
 CollectionRepository<Customer> repository = new CollectionRepository<>(customers);
 Table<Customer> table = new Table<>();
@@ -39,9 +39,9 @@ repository.commit(newCustomer); // Aktualisiert nur, was sich geändert hat
 ```
 
 
-## Sammlung-Repository {#collection-repository}
+## Collections-Repository {#collection-repository}
 
-Die <JavadocLink type="data" location="com/webforj/data/repository/CollectionRepository" code="true">CollectionRepository</JavadocLink> ist die häufigste Implementierung und umschließt jede Java-Sammlung:
+Das <JavadocLink type="data" location="com/webforj/data/repository/CollectionRepository" code="true">CollectionRepository</JavadocLink> ist die gängigste Implementierung und wickelt jede Java-Sammlung ein:
 
 ```java
 // Von ArrayList
@@ -58,9 +58,9 @@ CollectionRepository<Employee> employeeRepo = new CollectionRepository<>(employe
 ```
 
 
-## Daten-Synchronisation {#data-synchronization}
+## Daten-Synchronisierung {#data-synchronization}
 
-Das `Repository` fungiert als Brücke zwischen Ihren Daten und den UI-Komponenten. Wenn sich die Daten ändern, benachrichtigen Sie das Repository über die `commit()`-Methode:
+Das `Repository` fungiert als Brücke zwischen Ihren Daten und UI-Komponenten. Wenn sich Daten ändern, benachrichtigen Sie das Repository über die Methode `commit()`:
 
 ```java
 List<Product> products = new ArrayList<>();
@@ -69,9 +69,9 @@ CollectionRepository<Product> repository = new CollectionRepository<>(products);
 // Neues Produkt hinzufügen
 Product newProduct = new Product("P4", "Gizmo", 79.99, 15);
 products.add(newProduct);
-repository.commit(); // Alle verbundenen Komponenten aktualisieren sich
+repository.commit(); // Alle verbundenen Komponenten aktualisieren
 
-// Vorhandenes Produkt aktualisieren  
+// Bestehendes Produkt aktualisieren  
 products.get(0).setPrice(89.99);
 repository.commit(products.get(0)); // Aktualisiert nur diese spezielle Zeile
 
@@ -80,17 +80,17 @@ products.remove(2);
 repository.commit(); // Aktualisiert die Ansicht
 ```
 
-Die commit-Methode hat zwei Signaturen:
+Die Methode commit hat zwei Signaturen:
 - `commit()` - Sagt dem Repository, dass alles aktualisiert werden soll. Es löst ein `RepositoryCommitEvent` mit allen aktuellen Daten aus
-- `commit(entity)` - Zielt auf eine spezifische Entität ab. Das Repository findet diese Entität anhand ihres Schlüssels und aktualisiert nur die betroffenen UI-Elemente
+- `commit(entity)` - Zielt auf eine bestimmte Entität ab. Das Repository findet diese Entität anhand ihres Schlüssels und aktualisiert nur die betroffenen UI-Elemente
 
 :::important Einzelne Entitäten committen
-Dieser Unterschied ist wichtig für die Leistung. Wenn Sie ein Feld in einer 1000-Zeilen-Tabelle aktualisieren, aktualisiert `commit(entity)` nur diese Zelle, während `commit()` alle Zeilen neu laden würde.
+Diese Unterscheidung ist wichtig für die Leistung. Wenn Sie ein Feld in einer Tabelle mit 1000 Zeilen aktualisieren, aktualisiert `commit(entity)` nur diese Zelle, während `commit()` alle Zeilen aktualisieren würde.
 :::
 
 ## Daten filtern {#filtering-data}
 
-Der Filter des Repositories steuert, welche Daten an verbundene Komponenten fließen. Ihre zugrunde liegende Sammlung bleibt unverändert, da der Filter wie eine Linse fungiert:
+Der Filter des Repositories steuert, welche Daten zu verbundenen Komponenten fließen. Ihre zugrunde liegende Sammlung bleibt unverändert, da der Filter als Linse fungiert:
 
 ```java
 // Nach Verfügbarkeit auf Lager filtern
@@ -110,29 +110,33 @@ repository.setBaseFilter(product ->
 repository.setBaseFilter(null);
 ```
 
-Wenn Sie einen Filter setzen, führt das `Repository`:
+Wenn Sie einen Filter festlegen, führt das `Repository` Folgendes aus:
 1. Wendet das Prädikat auf jedes Element in Ihrer Sammlung an
-2. Erstellt einen gefilterten Stream übereinstimmender Elemente
-3. Benachrichtigt verbundene Komponenten, ihre Anzeige zu aktualisieren
+2. Erstellt einen gefilterten Stream von passenden Elementen
+3. Benachrichtigt verbundene Komponenten, dass sie ihre Anzeige aktualisieren sollen
 
 Der Filter bleibt bestehen, bis Sie ihn ändern. Neue Elemente, die zur Sammlung hinzugefügt werden, werden automatisch gegen den aktuellen Filter getestet.
 
 
 ## Arbeiten mit Entitätsschlüsseln {#working-with-entity-keys}
 
-Wenn Ihre Entitäten <JavadocLink type="data" location="com/webforj/data/HasEntityKey" code="true">HasEntityKey</JavadocLink> implementieren, kann das Repository spezifische Elemente anhand ihrer ID finden und aktualisieren:
+Das Repository muss Entitäten eindeutig identifizieren, um Operationen wie `find()` und `commit(entity)` zu unterstützen. Es gibt zwei Möglichkeiten, wie Entitäten identifiziert werden:
+
+### Verwendung des HasEntityKey-Interfaces {#using-hasentitykey}
+
+Implementieren Sie <JavadocLink type="data" location="com/webforj/data/HasEntityKey" code="true">HasEntityKey</JavadocLink> in Ihrer Entitätsklasse:
 
 ```java
 public class Customer implements HasEntityKey {
     private String customerId;
     private String name;
     private String email;
-    
+
     @Override
     public Object getEntityKey() {
         return customerId;
     }
-    
+
     // Konstruktor und Getter/Setter...
 }
 
@@ -142,14 +146,44 @@ Optional<Customer> customer = repository.find("C001");
 // Bestimmten Kunden aktualisieren
 customer.ifPresent(c -> {
     c.setEmail("newemail@example.com");
-    repository.commit(c); // Nur diese Zeile des Kunden wird aktualisiert
+    repository.commit(c); // Aktualisiert nur diese Zeile des Kunden
 });
 ```
 
-Ohne `HasEntityKey`:
-- `repository.find("C001")` findet Ihren Kunden nicht, da es nach einem Objekt sucht, das "C001" entspricht
-- `repository.commit(entity)` funktioniert weiterhin, basiert jedoch auf der Objektgleichheit
-- UI-Komponenten können Elemente nicht nach ID, sondern nur nach Objektreferenz auswählen
+### Verwendung eines benutzerdefinierten Schlüssel-Providers <DocChip chip='since' label='25.10' /> {#using-custom-key-provider} 
+
+Für Entitäten, bei denen Sie `HasEntityKey` nicht implementieren können oder wollen (wie bei JPA-Entitäten), verwenden Sie `setKeyProvider()`:
+
+```java
+@Entity
+public class Product {
+    @Id
+    private Long id;
+    private String name;
+    private double price;
+
+    // Von JPA verwaltete Entität
+}
+
+// Repository so konfigurieren, dass die Methode getId() verwendet wird
+CollectionRepository<Product> repository = new CollectionRepository<>(products);
+repository.setKeyProvider(Product::getId);
+
+// Jetzt funktioniert das Finden mit der ID
+Optional<Product> product = repository.find(123L);
+```
+
+### Auswahl eines Ansatzes {#choosing-approach}
+
+Beide Ansätze funktionieren, aber `setKeyProvider()` wird bevorzugt, wenn:
+- Sie mit JPA-Entitäten arbeiten, die `@Id`-Felder haben
+- Sie die Entitätsklasse nicht ändern können
+- Sie unterschiedliche Schlüsselstrategien für verschiedene Repositories benötigen
+
+Verwenden Sie `HasEntityKey`, wenn:
+- Sie die Entitätsklasse kontrollieren
+- Die Logik zur Schlüsselerfassung komplex ist
+- Sie möchten, dass die Entität ihre eigene Identität definiert
 
 
 ## UI-Integration {#ui-integration}

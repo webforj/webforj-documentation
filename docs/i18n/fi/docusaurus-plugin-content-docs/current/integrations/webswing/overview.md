@@ -3,8 +3,10 @@ title: Webswing
 hide_table_of_contents: true
 hide_giscus_comments: true
 sidebar_class_name: new-content
-_i18n_hash: 8dcd8fdee2734f6b4b243b0ea82fa1c2
+_i18n_hash: e8f61966c5b7d0745f65f23172dd114a
 ---
+# Webswing <DocChip chip='since' label='25.10' />
+
 <Head>
   <style>{`
   .container {
@@ -13,18 +15,18 @@ _i18n_hash: 8dcd8fdee2734f6b4b243b0ea82fa1c2
   `}</style>
 </Head>
 
-Webswing on verkkopalvelinteknologia, joka mahdollistaa Java-työpöytäsovellusten (Swing, JavaFX, SWT) käytön verkkoselaimessa ilman muutoksia alkuperäiseen lähdekoodiin. Se suorittaa työpöytäsovelluksen palvelimella ja suoratoistaa käyttöliittymän selaimeen HTML5-kankaan avulla, käsitellen kaikki käyttäjävuorovaikutukset läpinäkyvästi.
+Webswing on verkkopalvelinteknologia, joka mahdollistaa Java-työpöytäsovellusten (Swing, JavaFX, SWT) suorittamisen verkkoselaimessa ilman muutoksia alkuperäiseen lähdekoodiin. Se renderöi työpöytäsovelluksen palvelimella ja suoratoistaa käyttöliittymän selaimeen HTML5-kankaan avulla, käsitellen kaikki käyttäjäinteraktiot läpinäkyvästi.
 
 ## Mitä Webswing ratkaisee
 
-Monilla organisaatioilla on merkittäviä investointeja Java-työpöytäsovelluksiin, jotka sisältävät kriittistä liiketoimintalogiikkaa, joka on kehitetty vuosien tai jopa vuosikymmenien saatossa. Näitä sovelluksia ei usein voida helposti kirjoittaa uudelleen, koska:
+Monilla organisaatioilla on merkittäviä investointeja Java-työpöytäsovelluksiin, jotka sisältävät vuosien tai jopa vuosikymmenien aikana kehitettyä kriittistä liiketoimintalogikkaa. Näitä sovelluksia ei usein voi helposti kirjoittaa uusiksi seuraavista syistä:
 
-- Monimutkainen alueellinen logiikka, jonka uudelleenluominen olisi riskialtista
-- Integraatio työpöytäkohtaisiin kirjastoihin tai laitteistoihin
-- Aika- ja kustannusrajoitukset täydelle uudelleenkirjoitukselle
+- Monimutkainen domain-logiikka, jonka uudelleen luominen olisi riskialtista
+- Integrointi työpöytätiettyihin kirjastoihin tai laitteisiin
+- Ajan ja kustannusten rajoitteet täydessä kirjoittamisessa
 - Tarve säilyttää ominaisuuspariteetti olemassa olevan toiminnallisuuden kanssa
 
-Webswing mahdollistaa näiden sovellusten verkkopääsyn ilman muutoksia, säilyttäen niiden alkuperäiset toiminteet ja ulkoasun.
+Webswing mahdollistaa näiden sovellusten olevan verkkoselainkäyttöisiä ilman muutoksia, säilyttäen niiden alkuperäisen toiminnallisuuden ja ulkoasun.
 
 ## Integraatio webforJ:n kanssa
 
@@ -32,31 +34,31 @@ webforJ:n Webswing-integraatio tarjoaa `WebswingConnector`-komponentin, joka mah
 
 ### Progressiivinen modernisointi
 
-Sen sijaan, että suoritat kaiken tai ei mitään -uudelleenkirjoitusta, voit:
+Sen sijaan, että suoritat kokonaan uuden kirjoittamisen, voit:
 
-1. Aloittaa upottamalla olemassa olevan Swing-sovelluksesi `WebswingConnector`in kautta
+1. Aloittaa upottamalla nykyisen Swing-sovelluksesi `WebswingConnector`in avulla
 2. Rakentaa uusia ominaisuuksia webforJ:n ympärille upotetun sovelluksen
-3. Vähitellen korvata Swing-komponentit webforJ-vastaavilla
-4. Lopulta poistaa perintösovelluksen kokonaan
+3. Vähitellen korvata Swing-komponentteja webforJ:n vastaavilla
+4. Lopulta poistaa perinteinen sovellus kokonaan
 
 ### Hybridisovellukset
 
-Yhdistä moderni verkkokäyttöliittymä, joka on rakennettu webforJ:llä, erikoistuneeseen työpöytätoteutukseen:
+Yhdistä moderni verkkokäyttöliittymä, joka on rakennettu webforJ:llä, erityisellä työpöytätoiminnallisuudella:
 
-- Käytä webforJ:ta käyttäjille suunnatuissa käyttöliittymissä, hallintapaneeleissa ja raporteissa
-- Hyödynnä Swingiä monimutkaisissa visualisoinneissa tai erikoistoimittimissa
+- Käytä webforJ:tä käyttäjille suunnatuissa käyttöliittymissä, hallintapaneeleissa ja raporteissa
+- Hyödynnä Swingiä monimutkaisissa visualisoinneissa tai erikoiseditorissa
 - Säilytä yksi integroitu sovelluskokemus
 
 ## Kuinka se toimii
 
 Integraatio toimii kolmen kerroksen kautta:
 
-1. **Webswing-palvelin**: suorittaa Java-työpöytäsovellustasi, kaappaamalla sen visuaalisen lähtönsä ja käsitellen käyttäjän syötteen
-2. **WebswingConnector-komponentti**: webforJ-komponentti, joka upottaa Webswing-asiakkaan, hallinnoi yhteyttä ja viestintää palvelimen kanssa
-3. **Viestintäprotokolla**: kaksisuuntainen viestintä, joka sallii webforJ-sovelluksesi lähettää komentoja Swing-sovellukseen ja vastaanottaa tapahtumia takaisin
+1. **Webswing-palvelin**: suorittaa Java-työpöytäsovelluksesi, vangitsee sen visuaalisen ulostulon ja käsittelee käyttäjän syötteen
+2. **WebswingConnector-komponentti**: webforJ-komponentti, joka upottaa Webswing-asiakkaan halliten yhteyttä ja viestintää palvelimen kanssa
+3. **Viestintäprotokolla**: kaksisuuntainen viestintä, joka mahdollistaa webforJ-sovelluksesi lähettää komentoja Swing-sovellukseen ja vastaanottaa tapahtumia takaisin
 
-Kun käyttäjä käyttää webforJ-sovellustasi, `WebswingConnector` luo yhteyden Webswing-palvelimeen. Palvelin luo tai yhdistää sovelluksen instanssin ja alkaa suoratoistaa visuaalista tilaa selaimeen. Käyttäjävuorovaikutukset (hiiri, näppäimistö) kaapataan ja lähetetään palvelimelle, jossa ne toistetaan tosiasiallisessa Swing-sovelluksessa.
+Kun käyttäjä pääsee webforJ-sovellukseesi, `WebswingConnector` luo yhteyden Webswing-palvelimeen. Palvelin luo tai ottaa yhteyden sovellusinstanssiin ja alkaa suoratoistaa visuaalista tilaa selaimeen. Käyttäjäinteraktiot (hiiri, näppäimistö) vangitaan ja lähetetään palvelimelle, jossa ne toistetaan todellisessa Swing-sovelluksessa.
 
-## Aiheita {#topics}
+## Aiheet {#topics}
 
 <DocCardList className="topics-section" />

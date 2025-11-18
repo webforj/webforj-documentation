@@ -23,7 +23,7 @@ public class TableRichContentViewIT extends BaseTest {
     }
 
     @Test
-    public void testMasterCheckbox() {
+    public void testMasterCheckboxRichContent() {
 
         tableRichContent.getMasterCheckBox().click();
 
@@ -40,14 +40,14 @@ public class TableRichContentViewIT extends BaseTest {
     }
 
     @Test
-    public void testIndividualCheckbox() {
+    public void testIndividualCheckboxRichContent() {
         tableRichContent.getMasterCheckBox().click();
 
         assertThat(tableRichContent.getFirstCheckbox()).isChecked();
     }
 
     @Test
-    void testTableImages() {
+    void testTableImagesRichContent() {
         Locator images = tableRichContent.getImages();
         int count = images.count();
 

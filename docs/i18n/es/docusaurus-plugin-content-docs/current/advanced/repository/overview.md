@@ -1,8 +1,8 @@
 ---
 title: Repository
 sidebar_position: 1
-sidebar_class_name: new-content
-_i18n_hash: dc6f7bbfe82d68565cbe8da6436f080c
+sidebar_class_name: has-new-content
+_i18n_hash: b9a08226a8ace111beea4ab2a03ff79f
 ---
 <!-- vale off -->
 # Repositorio <DocChip chip='since' label='24.00' />
@@ -41,7 +41,7 @@ repository.commit(newCustomer); // Solo actualiza lo que cambió
 
 ## Repositorio de colección {#collection-repository}
 
-El <JavadocLink type="data" location="com/webforj/data/repository/CollectionRepository" code="true">CollectionRepository</JavadocLink> es la implementación más común y envuelve cualquier colección de Java:
+El <JavadocLink type="data" location="com/webforj/data/repository/CollectionRepository" code="true">CollectionRepository</JavadocLink> es la implementación más común y envuelve cualquier Colección de Java:
 
 ```java
 // Desde ArrayList
@@ -52,7 +52,7 @@ CollectionRepository<Customer> customerRepo = new CollectionRepository<>(custome
 Set<String> tags = new HashSet<>();
 CollectionRepository<String> tagRepo = new CollectionRepository<>(tags);
 
-// Desde cualquier colección
+// Desde cualquier Colección
 Collection<Employee> employees = getEmployeesFromHR();
 CollectionRepository<Employee> employeeRepo = new CollectionRepository<>(employees);
 ```
@@ -81,14 +81,14 @@ repository.commit(); // Refresca la vista
 ```
 
 El método commit tiene dos firmas:
-- `commit()` - Indica al repositorio que refresque todo. Dispara un `RepositoryCommitEvent` con todos los datos actuales.
-- `commit(entity)` - Apunta a una entidad específica. El repositorio encuentra esta entidad por su clave y actualiza solo los elementos de UI afectados.
+- `commit()` - Indica al repositorio que refresque todo. Dispara un `RepositoryCommitEvent` con todos los datos actuales
+- `commit(entity)` - Apunta a una entidad específica. El repositorio encuentra esta entidad por su clave y actualiza solo los elementos de UI afectados
 
 :::important Comprometiendo entidades individuales
-Esta distinción es importante para el rendimiento. Cuando actualizas un campo en una tabla de 1000 filas, `commit(entity)` actualiza solo esa celda, mientras que `commit()` refrescaría todas las filas.
+Esta distinción importa para el rendimiento. Cuando actualizas un campo en una tabla de 1000 filas, `commit(entity)` actualiza solo esa celda, mientras que `commit()` refrescaría todas las filas.
 :::
 
-## Filtrar datos {#filtering-data}
+## Filtrando datos {#filtering-data}
 
 El filtro del repositorio controla qué datos fluyen hacia los componentes conectados. Tu colección subyacente permanece sin cambios porque el filtro actúa como una lente:
 
@@ -106,33 +106,37 @@ repository.setBaseFilter(product ->
     product.getPrice() < 100.0
 );
 
-// Borrar filtro
+// Limpiar filtro
 repository.setBaseFilter(null);
 ```
 
 Cuando estableces un filtro, el `Repositorio`:
-1. Aplica el predicado a cada elemento en tu colección.
-2. Crea un flujo filtrado de elementos que coinciden.
-3. Notifica a los componentes conectados para que actualicen su visualización.
+1. Aplica el predicado a cada elemento de tu colección
+2. Crea un flujo filtrado de elementos coincidentes
+3. Notifica a los componentes conectados de que actualicen su visualización
 
 El filtro persiste hasta que lo cambies. Los nuevos elementos añadidos a la colección se prueban automáticamente contra el filtro actual.
 
 
 ## Trabajando con claves de entidad {#working-with-entity-keys}
 
-Cuando tus entidades implementan <JavadocLink type="data" location="com/webforj/data/HasEntityKey" code="true">HasEntityKey</JavadocLink>, el repositorio puede encontrar y actualizar elementos específicos por su ID:
+El repositorio necesita identificar entidades de manera única para soportar operaciones como `find()` y `commit(entity)`. Hay dos formas de definir cómo se identifican las entidades:
+
+### Usando la interfaz HasEntityKey {#using-hasentitykey}
+
+Implementa <JavadocLink type="data" location="com/webforj/data/HasEntityKey" code="true">HasEntityKey</JavadocLink> en tu clase de entidad:
 
 ```java
 public class Customer implements HasEntityKey {
     private String customerId;
     private String name;
     private String email;
-    
+
     @Override
     public Object getEntityKey() {
         return customerId;
     }
-    
+
     // Constructor y getters/setters...
 }
 
@@ -146,10 +150,40 @@ customer.ifPresent(c -> {
 });
 ```
 
-Sin `HasEntityKey`:
-- `repository.find("C001")` no encontrará a tu cliente porque busca un objeto que sea igual a "C001".
-- `repository.commit(entity)` sigue funcionando, pero depende de la igualdad de objetos.
-- Los componentes de UI no pueden seleccionar elementos por ID, solo por referencia de objeto.
+### Usando proveedor de clave personalizado <DocChip chip='since' label='25.10' /> {#using-custom-key-provider} 
+
+Para entidades donde no puedes o no quieres implementar `HasEntityKey` (como las entidades JPA), utiliza `setKeyProvider()`:
+
+```java
+@Entity
+public class Product {
+    @Id
+    private Long id;
+    private String name;
+    private double price;
+
+    // Entidad gestionada por JPA
+}
+
+// Configurar repositorio para usar el método getId()
+CollectionRepository<Product> repository = new CollectionRepository<>(products);
+repository.setKeyProvider(Product::getId);
+
+// Ahora find funciona con el ID
+Optional<Product> product = repository.find(123L);
+```
+
+### Elegir un enfoque {#choosing-approach}
+
+Ambos enfoques funcionan, pero `setKeyProvider()` es preferido cuando:
+- Se trabaja con entidades JPA que tienen campos `@Id`
+- No puedes modificar la clase de entidad
+- Necesitas diferentes estrategias de clave para diferentes repositorios
+
+Usa `HasEntityKey` cuando:
+- Controlas la clase de entidad
+- La lógica de extracción de clave es compleja
+- Quieres que la entidad defina su propia identidad
 
 
 ## Integración de UI {#ui-integration}
@@ -165,9 +199,9 @@ Table<Customer> table = new Table<>();
 table.setRepository(repository);
 table.addColumn("ID", Customer::getId);
 table.addColumn("Nombre", Customer::getName);
-table.addColumn("Correo Electrónico", Customer::getEmail);
+table.addColumn("Correo", Customer::getEmail);
 
-// Agregar datos - la tabla se actualiza automáticamente
+// Añadir datos - la tabla se actualiza automáticamente
 customers.add(new Customer("C001", "Alice Johnson", "alice@example.com"));
 repository.commit();
 ```

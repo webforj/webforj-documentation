@@ -19,7 +19,7 @@ public class DonationSliderViewIT extends BaseTest {
     }
 
     @Test
-    public void testDonation() {
+    public void testDonationSlider() {
         sliderPage.getTwentyDollarsOption().click();
         assertThat(sliderPage.getDonationLowerHandle()).hasAttribute("aria-valuenow", "20.0");
 
