@@ -1,7 +1,8 @@
 name: reviewdog
-on: [pull_request]
-paths-ignore:
-  - 'docs/blog/**'
+on:
+  pull_request:
+    paths-ignore:
+      - 'docs/blog/**'
 jobs:
   vale:
     name: runner / vale
