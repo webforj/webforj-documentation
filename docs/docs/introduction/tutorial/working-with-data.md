@@ -1,6 +1,7 @@
 ---
-title: Working with data
+title: Working with Data
 sidebar_position: 3
+description: Step 2 - Learn about Spring Boot.
 ---
 
 
@@ -12,6 +13,19 @@ By the end of this step, the app from the [previous step](./creating-a-basic-app
 
 - Go to the `2-working-with-data` directory
 - Run `mvn spring-boot:run`
+
+```
+webforj-demo-application
+│   .gitignore
+│   LICENSE
+│   README.md
+│
+├───1-creating-a-basic-app  
+// highlight-next-line
+├───2-working-with-data
+├───3-scaling-with-routing-and-composites
+└───4-validating-and-binding-data
+```
 
 <!-- vale off -->
 

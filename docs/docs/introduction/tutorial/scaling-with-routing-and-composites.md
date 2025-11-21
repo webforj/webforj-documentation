@@ -1,8 +1,11 @@
 ---
-title: Scaling with routing and composites
+title: Scaling with Routing and Composites
 sidebar_position: 4
+description: Step 3 - Learn how to add navigation.
 ---
 
+
+<!-- The Application class doesn't contain any additional methods because the configurations are set through annotations, and webforJ handles the app initialization. -->
 
 This step introduces routing so the app can display multiple views and support navigation between features such as editing and creating customer entries. You’ll create views for these features using `Composite` components for modular, reusable layouts.
 
@@ -10,6 +13,19 @@ The app from the [previous step](./working-with-data) is now structured for rout
 
 - Go to the `3-scaling-with-routing-and-composites` directory
 - Run the `mvn spring-boot:run` command
+
+```
+webforj-demo-application
+│   .gitignore
+│   LICENSE
+│   README.md
+│
+├───1-creating-a-basic-app  
+├───2-working-with-data
+// highlight-next-line
+├───3-scaling-with-routing-and-composites
+└───4-validating-and-binding-data
+```
 
 <div class="videos-container">
   <video controls>
