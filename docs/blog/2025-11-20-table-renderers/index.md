@@ -132,7 +132,7 @@ table.addColumn("24h Change", Cryptocurrency::getPriceChange24h)
     .setSortable(true);
 ```
 
-That's it. The column will now use your custom renderer for every cell in that column. The `Cryptocurrency::getPriceChange24h` part tells the column which value to use as the default cell value, but remember—your renderer can access any column's data via `cell.row.getValue()`, so you're not limited to just that one field.
+That's it - the column will now use your custom renderer for every cell in that column. The `Cryptocurrency::getPriceChange24h` part tells the column which value to use as the default cell value.
 
 You can also add a renderer without a value provider if your renderer pulls all the data it needs itself:
 
@@ -141,9 +141,15 @@ table.addColumn("Price Change")
     .setRenderer(new PriceChangeRenderer());
 ```
 
-The table handles the rest—your renderer gets called for each row, receives the current cell data, and returns the formatted HTML.
+The table handles the rest - your renderer gets called for each row, receives the current cell data, and returns the formatted HTML.
 
-<!-- VIDEO #2 Show the full dashboard, zoom in on the table -->
+<!-- Video of the whole app -->
+<!-- 
+<div class="videos-container">
+  <video controls preload="metadata">
+    <source src="" type="video/mp4"/>
+  </video>
+</div> -->
 
 ## Built-in Renderers
 
@@ -161,7 +167,7 @@ table.addColumn("Actions", new ButtonRenderer<>("Delete", event -> {
 table.addColumn("Status", new IconRenderer<>("tabler-check"));
 ```
 
-**ElementRenderer and VoidElementRenderer** - Base classes for creating renderers that wrap HTML elements. Use `ElementRenderer` for tags with content (like `<div>`) and `VoidElementRenderer` for self-closing tags (like `<img>`).
+**ElementRenderer and VoidElementRenderer** - Base classes for creating renderers that wrap HTML elements. Use `ElementRenderer` for tags with content (like `<div>`) and `VoidElementRenderer` for those without content (like `<img>`).
 
 These built-in options handle the most common scenarios, and you can extend them to add custom behavior. But when you need complete control over the rendering logic and HTML output—like we did with the price change formatter—building a custom renderer from scratch is the way to go.
 
@@ -169,7 +175,7 @@ These built-in options handle the most common scenarios, and you can extend them
 
 Want to try this example yourself? The complete source code for the cryptocurrency dashboard is available on GitHub:
 
-🔗 **[View the webforJ Dashboard project on GitHub](https://github.com/webforj/built-with-webforj/tree/main/webforj-dashboard)**
+**[View the webforJ Dashboard project on GitHub](https://github.com/webforj/built-with-webforj/tree/main/webforj-dashboard)**
 
 Clone it, run it, and see how renderers can transform your tables!
 
