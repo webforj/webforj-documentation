@@ -143,6 +143,10 @@ In this example:
 - The `ofPackage` method scans the `com.myapp.admin` package and registers all classes annotated with `@Route`.
 - This is particularly useful for large applications with numerous routes organized by packages.
 
+:::info Custom route discovery
+Starting with 25.11, integration frameworks can provide their own route discovery mechanism through the `RouteRegistryProvider` SPI. This enables framework-specific features like dependency injection for dynamically registered routes. See [Route Registry Provider](/docs/advanced/route-registry-provider) for details.
+:::
+
 ## Retrieving registered routes {#retrieving-registered-routes}
 
 To retrieve a list of all dynamically registered routes, use the `RouteRegistry` class. This is useful when you need to programmatically manage or display available routes.
