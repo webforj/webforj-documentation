@@ -1,14 +1,14 @@
 ---
-title: Customizing Table Cells with Renderers in webforJ
+title: Making Data Display Less Boring in webforJ
 description: Learn how to use custom renderers to display rich, formatted content in webforJ tables
 slug: table-renderers-custom-cells
-date: 2025-11-20
+date: 2025-11-25
 authors: Matthew Hawkins
 tags: [webforJ, Table, Renderers, UI Customization, Data Visualization]
 hide_table_of_contents: false
 ---
 
-<!-- ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/table-renderers/cover.png) -->
+<!-- ![cover image](docs/static/img/renderer-cover.png) -->
 
 Data is the lifeblood of business applications, and displaying it properly can make or break someone's experience using your app. In order to visualize data, most developers quickly turn to tables for displaying that data. Here's the problem: just throwing information into rows and columns doesn't always tell the story clearly enough.
 
@@ -53,7 +53,11 @@ Raw numbers really just don't cut it here. `-1234.56` and `2345.67` look similar
 
 This is where the `PriceChangeRenderer` comes in. It takes those raw numbers and transforms them into color-coded, properly formatted indicators that tell the story at a glance.
 
-<!-- Live Demo of the Dashboard -->
+<ComponentDemo 
+path='/blogs/cryptocurrency-dashboard?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/blogs/renderers/PriceChangeRenderer.java'
+height='300px'
+/>
 
 
 ## Building a Custom Renderer
@@ -113,12 +117,12 @@ Let's break down what's happening here.
 The result? One renderer class that handles all the edge cases, formats data intelligently, and generates styled HTML based on the actual values.
 
 <!-- Video of the renderer only -->
-<!-- 
+
 <div class="videos-container">
   <video controls preload="metadata">
-    <source src="" type="video/mp4"/>
+    <source src="https://github.com/webforj/webforj-documentation/blob/605ec033fe7e4b413be6a67bbd58f1127cff010b/docs/static/img/renderer-video.mp4" type="video/mp4"/>
   </video>
-</div> -->
+</div>
 
 ## Using the Renderer in Your Table
 
@@ -144,12 +148,12 @@ table.addColumn("Price Change")
 The table handles the rest - your renderer gets called for each row, receives the current cell data, and returns the formatted HTML.
 
 <!-- Video of the whole app -->
-<!-- 
+
 <div class="videos-container">
   <video controls preload="metadata">
-    <source src="" type="video/mp4"/>
+    <source src="https://github.com/webforj/webforj-documentation/blob/605ec033fe7e4b413be6a67bbd58f1127cff010b/docs/static/img/final-renderer.mp4" type="video/mp4"/>
   </video>
-</div> -->
+</div>
 
 ## Built-in Renderers
 
