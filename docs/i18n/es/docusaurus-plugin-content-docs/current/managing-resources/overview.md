@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Managing Resources
+title: Gestionando Recursos
 hide_table_of_contents: true
 hide_giscus_comments: true
 _i18n_hash: a18b5fd490eca0891f470c7ccdb44e94

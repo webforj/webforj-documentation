@@ -1,6 +1,6 @@
 ---
 sidebar_position: 40
-title: Interactivity
+title: Interaktiivisuus
 slug: Interactivity
 _i18n_hash: 8ec1ec3ef58f8bfcde31ee8dc9891579
 ---

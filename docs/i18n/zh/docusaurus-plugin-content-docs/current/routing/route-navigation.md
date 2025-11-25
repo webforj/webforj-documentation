@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Route Navigation
+title: 路由导航
 _i18n_hash: 2ca468b09b2ae9e2ab3813119d31bf44
 ---
 在 webforJ 中，通过路由导航是根据用户操作或 URL 更改切换视图和组件的核心机制。导航允许用户在应用的不同部分之间无缝移动，而无需刷新页面。此客户端导航使应用保持响应迅速和平滑，同时保持应用的状态。

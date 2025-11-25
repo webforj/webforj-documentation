@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Importing Assets
+title: Importation des actifs
 _i18n_hash: a2aecab2ea12370f1e494703c2ec05af
 ---
 Les annotations d'actifs fournissent une approche déclarative pour intégrer des ressources externes et en ligne telles que JavaScript et CSS dans une application de manière statique. Ces annotations simplifient la gestion des ressources en s'assurant que les dépendances sont chargées au bon moment d'exécution, réduisant ainsi la configuration manuelle et améliorant la maintenabilité.

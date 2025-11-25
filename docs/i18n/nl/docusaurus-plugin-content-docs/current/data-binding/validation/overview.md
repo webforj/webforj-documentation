@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Validation
+title: Validatie
 hide_giscus_comments: true
 hide_table_of_contents: true
 _i18n_hash: aeb8627a22e6d8e369ba8990e8be1ccb

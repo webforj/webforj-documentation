@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Sizing and Spacing
+title: Maat en Spatiëring
 _i18n_hash: 4efe9ef910459481ca90eec87c26ebe0
 ---
 Spacing- en sizing-tokens worden gebruikt om consistente spacing en sizing in je app te bieden. Alle sizing- en spacing-eigenschappen zijn gedefinieerd in `rem`.

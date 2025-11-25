@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Nested Routes
+title: Verschachtelte Routen
 _i18n_hash: 8c3365b48d048d5bc7c4c47f253acb24
 ---
 Verschachtelte Routen ermöglichen es, untergeordnete Routen innerhalb von übergeordneten Routen darzustellen, wodurch eine modulare und wiederverwendbare Benutzeroberfläche entsteht. Übergeordnete Routen definieren gemeinsame Komponenten, während untergeordnete Routen in spezifische Ausgabestellen innerhalb dieser übergeordneten Komponenten eingefügt werden.

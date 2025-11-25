@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: CSS Variables
+title: CSS-Variablen
 _i18n_hash: b753c1b13cfcc45f72d6712e980ef952
 ---
 CSS-Variablen spielen eine zentrale Rolle bei der Anpassung des Erscheinungsbildes von webforJ-Komponenten. Diese Variablen speichern wiederverwendbare Werte wie Farben, Schriftgrößen und Abstände, die konsistent in Ihrer App angewendet werden können.

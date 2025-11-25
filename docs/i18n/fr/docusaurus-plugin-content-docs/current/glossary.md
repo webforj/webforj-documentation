@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1000
-title: Glossary
+title: Glossaire
 sidebar_class_name: sidebar--item__hidden
 slug: glossary
 _i18n_hash: 2dcc01ead4b8eb721d020a17c8c95a26

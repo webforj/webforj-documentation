@@ -1,6 +1,6 @@
 ---
 sidebar_position: 35
-title: Filtering
+title: Filtrado
 slug: filtering
 sidebar_class_name: updated-content
 _i18n_hash: 008eef50f8ab27ec3f8a455fb5649f41

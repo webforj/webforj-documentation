@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: HTML Element Components
+title: HTML-Elementkomponenten
 _i18n_hash: 86c5e2ee07360ad502e8857eb68cebe2
 ---
 Während die `Element`-Klasse von webforJ es Benutzern ermöglicht, HTML-Elemente in ihren Anwendungen zu erstellen, wurde eine Reihe von Standard-HTML-Elementen mit den Kernkomponenten von webforJ zur einfachen Verwendung bereitgestellt.

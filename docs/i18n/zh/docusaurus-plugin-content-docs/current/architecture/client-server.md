@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Client/Server Interaction
+title: 客户端/服务器交互
 _i18n_hash: e5eafeb3f76c9a412d5a124f2eed2da8
 ---
 以下部分讨论了 webforJ 的各种性能特性和最佳实践，以及框架的实施细节。

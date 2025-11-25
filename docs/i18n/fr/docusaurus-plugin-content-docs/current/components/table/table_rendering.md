@@ -1,6 +1,6 @@
 ---
 sidebar_position: 20
-title: Rendering
+title: Rendu
 slug: rendering
 _i18n_hash: 9bf580ccd6532be7fc66e2825d083724
 ---

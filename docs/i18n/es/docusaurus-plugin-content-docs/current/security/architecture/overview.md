@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Security Architecture
+title: Arquitectura de Seguridad
 hide_table_of_contents: true
 hide_giscus_comments: true
 _i18n_hash: df2f795c6b65edc60adb39b549cb780b

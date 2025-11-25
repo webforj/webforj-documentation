@@ -1,5 +1,5 @@
 ---
-title: Communication
+title: Comunicación
 sidebar_position: 3
 _i18n_hash: 4a12006d21bb2a0bd6e82f2f0ff8fa78
 ---

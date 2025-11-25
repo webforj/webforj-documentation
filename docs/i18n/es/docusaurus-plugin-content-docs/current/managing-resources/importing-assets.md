@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Importing Assets
+title: Importando Activos
 _i18n_hash: a2aecab2ea12370f1e494703c2ec05af
 ---
 Las anotaciones de recursos proporcionan un enfoque declarativo para incrustar recursos externos e internos como JavaScript y CSS dentro de una aplicación de forma estática. Estas anotaciones optimizan la gestión de recursos al garantizar que las dependencias se carguen en la fase de ejecución apropiada, reduciendo la configuración manual y mejorando la capacidad de mantenimiento.

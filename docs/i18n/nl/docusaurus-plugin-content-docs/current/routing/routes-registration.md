@@ -1,6 +1,6 @@
 ---
 sidebar_position: 11
-title: Routes Registration
+title: Routes Registratie
 _i18n_hash: 5075588c497508fc77d7f76b1b412cf4
 ---
 Naast het [registreren van routes met de `@Route` annotaties](./defining-routes), is het mogelijk om routes dynamisch te registreren, bij te werken of te verwijderen tijdens runtime op basis van app-logica, gebruikersrollen of andere voorwaarden. Deze flexibiliteit stelt je in staat om navigatie dynamischer te beheren, in plaats van routes statisch te definiëren tijdens het compileren.

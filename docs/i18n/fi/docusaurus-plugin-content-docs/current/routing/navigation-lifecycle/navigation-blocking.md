@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Navigation Blocking
+title: Navigoinnin estäminen
 _i18n_hash: a08d56654914719e12d1401d263c7956
 ---
 Navigointia estävä lisää yhden tai useamman kerroksen hallintaa koko taustalla olevalle reititin-API:lle. Jos estäviä käsittelijöitä on läsnä, navigointi estetään seuraavasti:

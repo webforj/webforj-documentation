@@ -1,5 +1,5 @@
 ---
-title: Scaling with Routing and Composites
+title: 使用路由和复合组件进行扩展
 sidebar_position: 4
 _i18n_hash: 50cd3b00cb1fb7731b6328708d6d45ba
 ---

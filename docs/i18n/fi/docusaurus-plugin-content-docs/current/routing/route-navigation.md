@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Route Navigation
+title: Reititys navigointi
 _i18n_hash: 2ca468b09b2ae9e2ab3813119d31bf44
 ---
 In webforJ, reitittäminen eri reittien välillä on keskeinen mekanismi näkymien ja komponenttien vaihtamiseen käyttäjän toimien tai URL-muutosten perusteella. Navigointi mahdollistaa käyttäjien siirtymisen saumattomasti sovelluksen eri osien välillä ilman sivun päivittämistä. Tämä asiakaspuolen navigointi pitää sovelluksen responsiivisena ja sujuvana samalla kun se säilyttää sovelluksen tilan.

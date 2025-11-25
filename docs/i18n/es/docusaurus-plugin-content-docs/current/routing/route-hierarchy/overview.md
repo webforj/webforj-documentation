@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Route Hierarchy
+title: Jerarquía de Rutas
 hide_giscus_comments: true
 _i18n_hash: 66716282278634ab574f3620a2a660ce
 ---
