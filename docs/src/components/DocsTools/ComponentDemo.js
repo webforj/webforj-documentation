@@ -364,6 +364,7 @@ export default function ComponentDemo({
           </div>
         </div>
       ) : null}
+      
       <details
         css={detailsStyles}>
           <summary onClick={() => setShowCode(!showCode)}>
@@ -442,6 +443,7 @@ export default function ComponentDemo({
           </Tabs>
         )}
       </details>
+
     </div>
   );
 }
