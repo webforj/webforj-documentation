@@ -8,7 +8,7 @@ tags: [webforJ, Table, Renderers, UI Customization, Data Visualization]
 hide_table_of_contents: false
 ---
 
-<!-- ![cover image](docs/static/img/renderer-cover.png) -->
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/table-renderers/renderer-cover.png)
 
 Data is the lifeblood of business applications, and displaying it properly can make or break someone's experience using your app. In order to visualize data, most developers quickly turn to tables for displaying that data. Here's the problem: just throwing information into rows and columns doesn't always tell the story clearly enough.
 
@@ -45,6 +45,12 @@ The real power? You can apply complex logic and generate rich HTML—all from a 
 
 ## The Scenario: A Cryptocurrency Dashboard
 
+<div class="videos-container">
+  <video autoplay="autoplay" controls muted preload="metadata">
+    <source src="https://cdn.webforj.com/webforj-documentation/blogs/table-renderers/dashboard-full.mp4" type="video/mp4"/>
+  </video>
+</div>
+
 As mentioned, I built a cryptocurrency dashboard that displays real-time market data. It's the perfect use case for renderers because crypto traders need to process information fast - a few seconds of hesitation can mean missing an opportunity.
 
 The table shows the usual suspects, but uses renderers in a few places: coin names, current prices, market cap, and 24-hour trading volume. One of the most important columns is the one showing price changes. That's where users' eyes go first, and it needs to communicate instantly: Am I making money or losing money? How much?
@@ -52,12 +58,6 @@ The table shows the usual suspects, but uses renderers in a few places: coin nam
 Raw numbers really just don't cut it here. `-1234.56` and `2345.67` look similar at a glance, but they mean very different things. One should trigger concern, the other excitement. To help signal this excitement, you can use color to paint a picture. And the formatting matters too - large changes need different decimal precision than small ones, and both the dollar amount and percentage change should be visible.
 
 This is where the `PriceChangeRenderer` comes in. It takes those raw numbers and transforms them into color-coded, properly formatted indicators that tell the story at a glance.
-
-<ComponentDemo 
-path='/blogs/cryptocurrency-dashboard?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/blogs/renderers/PriceChangeRenderer.java'
-height='300px'
-/>
 
 
 ## Building a Custom Renderer
@@ -119,8 +119,8 @@ The result? One renderer class that handles all the edge cases, formats data int
 <!-- Video of the renderer only -->
 
 <div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://github.com/webforj/webforj-documentation/blob/605ec033fe7e4b413be6a67bbd58f1127cff010b/docs/static/img/renderer-video.mp4" type="video/mp4"/>
+  <video autoplay="autoplay" controls muted preload="metadata" width='35%'>
+    <source src="https://cdn.webforj.com/webforj-documentation/blogs/table-renderers/renderer-video.mp4" type="video/mp4"/>
   </video>
 </div>
 
@@ -150,8 +150,8 @@ The table handles the rest - your renderer gets called for each row, receives th
 <!-- Video of the whole app -->
 
 <div class="videos-container">
-  <video controls preload="metadata">
-    <source src="https://github.com/webforj/webforj-documentation/blob/605ec033fe7e4b413be6a67bbd58f1127cff010b/docs/static/img/final-renderer.mp4" type="video/mp4"/>
+  <video autoplay="autoplay" controls muted preload="metadata">
+    <source src="https://cdn.webforj.com/webforj-documentation/blogs/table-renderers/final-renderer.mp4" type="video/mp4"/>
   </video>
 </div>
 
