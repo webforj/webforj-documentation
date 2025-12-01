@@ -1,136 +1,99 @@
 ---
 title: Creating a Basic App
 sidebar_position: 2
+description: Step 1 - Learn how to add components to an app.
 ---
 
-This first step lays the foundation for the customer management app by creating a simple, interactive interface. This demonstrates how to set up a basic webforJ app, with a single button that opens a dialog when clicked. It’s a straightforward implementation that introduces key components and gives you a feel for how webforJ works.
+In [Project Setup](/docs/introduction/tutorial/project-setup), you generated a webforJ project. Now it’s time to create the main class for the project and add an interactive interface using webforJ components. By the end of this step, you’ll learn about:
 
-This step leverages the base app class provided by webforJ to define the structure and behavior of the app. Following through to later steps will transition to a more advanced setup using routing to manage multiple screens, introduced in [Scaling with Routing and Composites](./scaling-with-routing-and-composites).
+- The entry point for webforJ apps
+- webforJ [components](/docs/components/overview)
+- Using CSS to style components
 
-By the end of this step, you’ll have a functioning app that demonstrates basic interaction with components and event handling in webforJ. To run the app:
+<!-- Insert video here -->
 
-- Go to the `1-creating-a-basic-app` directory
-- Run the `mvn jetty:run` command
+## The webforJ entry point {#entry-point}
 
-<div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/creating-a-basic-app.mp4" type="video/mp4"/>
-  </video>
-</div>
+Every webforJ app contains a single class that extends <JavadocLink type="foundation" location="com/webforj/App" code='true'>App</JavadocLink>. For this tutorial, and other published webforJ projects, it's commonly called `Application`. This class is inside a package that's named after the given `groupId`:
 
-## Creating a webforJ app {#creating-a-webforj-app}
+```
+1-creating-a-basic-app 
+│   .editorconfig
+│   .gitignore
+│   pom.xml
+│   README.md
+│
+├───.vscode
+├───src/main/java
+// highlight-next-line
+│   └──com/webforj/demos
+// highlight-next-line
+│       └──Application.java
+└───target
+```
 
-In webforJ, an `App` represents the central hub for defining and managing your project. Every webforJ app starts by creating one class that extends the foundational `App` class, which serves as the core framework to:
 
-- Manage the app lifecycle, including initialization and termination.
-- Handle routing and navigation if enabled.
-- Define the app’s theme, locale, and other overall configurations.
-- Provide essential utilities for interacting with the environment and components.
+### Application annotations {#application-annotations}
 
-### Extending the `App` class {#extending-the-app-class}
+<JavadocLink type="foundation" location="com/webforj/annotation/package-summary">webforJ Annotations</JavadocLink> Gives more options for the main class, like including styling, routing, and more option configurations. This steps adds four annotations to the `Application` class:
 
-For this step, a class called `DemoApplication.java` is created, and extends the `App` class.
+The `@SpringBootApplication` annotation marks this class as the main entry point for a Spring Boot app. It enables auto-configuration, component scanning, and allows Spring Boot to start your app with an embedded server. This means you don't need extra configuration to get your app running. Spring Boot handles it for you.
 
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  @Override
-  public void run() {
-    // Core app logic will go here
+The `@StyleSheet` annotation loads the style sheet, in this case provided by the [webserver-protocol](../../managing-resources/assets-protocols#the-webserver-protocol).
+
+The `@AppTheme` annotation specifies the UI presentation of your app. webforJ components come with different color palettes for both light and dark modes, so components have optimal contrast and are readable in both modes.
+
+Finally, the `@AppTheme` annotation is used to specify various properties of an app, such as its name, display mode, theme color, background color, start URL, and icon sizes. It helps in configuring the app's manifest and how it should be presented to the user.
+
+```java title="Application.java"
+package com.webforj.demos;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.webforj.App;
+import com.webforj.annotation.StyleSheet;
+import com.webforj.annotation.AppTheme;
+import com.webforj.annotation.AppProfile;
+
+@SpringBootApplication
+@StyleSheet("ws://app.css")
+@AppTheme("system")
+@AppProfile(name = "DemoApplication", shortName = "DemoApplication")
+public class Application extends App {
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
   }
 }
 ```
 
-:::tip Key Configuration Properties
+## Adding webforJ components
 
-In this demo app, the `webforj.conf` file is configured with the following two essential properties:
+**Note:** this step uses a single `Application` class that directly hosts the UI content. Routing and separate view classes will be introduced in later steps.
 
-- **`webforj.entry`**: Specifies the fully qualified name of the class extending `App` that acts as the main entry point for your project. For this tutorial, set it to `com.webforj.demos.DemoApplication` to avoid ambiguity during initialization.
-  ```hocon
-  webforj.entry = com.webforj.demos.DemoApplication
-  ```
-- **`webforj.debug`**: Enables debug mode for detailed logs and error visibility during development. Make sure this is set to `true` while working on this tutorial:
-  ```hocon
-  webforj.debug = true
-  ```
 
-For more details on additional configuration options, see the [Configuration Guide](../../configuration/overview).
-:::
+Inside the `run()` method, set up your main UI. For example, add a `Frame`, a `Paragraph`, and a `Button`:
 
-### Overriding the `run()` method {#overriding-the-run-method}
-
-After ensuring correct configuration for the project, the `run()` method in your `App` class is overridden.
-
-The `run()` method is the core of your app in webforJ. It defines what happens after the app is initialized and is the main entry point for your app's features. By overriding the `run()` method, you can implement the logic that creates and manages your app's user interface and behavior.
-
-:::tip Using routing
-When implementing routing within an app, overriding the `run()` method is unnecessary, as the framework automatically handles the initialization of routes and the creation of the initial `Frame`. The `run()` method is invoked after the base route is resolved, ensuring that the app's navigation system is fully initialized before any logic is executed. This tutorial will go further into depth on implementing routing in [step 3](scaling-with-routing-and-composites). More information is also available in the [Routing Article](../../routing/overview).
-:::
-
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  @Override
-  public void run() throws WebforjException {
-    // App logic
-  }
-}
-```
-
-## Adding components {#adding-components}
-
-In webforJ, components are the building blocks of your app’s user interface. These components represent discrete pieces of your app's UI, such as buttons, text fields, dialogs, or tables.
-
-You can think of a UI as a tree of components, with a `Frame` serving as the root. Each component added to the `Frame` becomes a branch or leaf in this tree, contributing to the overall structure and behavior of your app.
-
-:::tip Component catalog
-See [this page](../../components/overview) for a list of the various components available in webforJ.
-:::
-
-### App `Frame` {#app-frame}
-
-The `Frame` class in webforJ represents a non-nestable, top-level window in your app. A `Frame` typically acts as the main containers for UI components, making it an essential building block for constructing the user interface. Every app starts with at least one `Frame`, and you can add components such as buttons, dialogs, or forms to these frames.
-
-A `Frame` within the `run()` method is created in this step - later on, components will be added here.
-
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  @Override
-  public void run() throws WebforjException {
-    Frame mainFrame = new Frame();
-  }
-}
-```
-
-### Server and client side components {#server-and-client-side-components}
-
-Each server-side component in webforJ has a matching client-side web component. Server-side components handle logic and backend interactions, while client-side components like `dwc-button` and `dwc-dialog` manage frontend rendering and styling.
-
-:::tip Composite components
-
-Alongside the core components provided by webforJ, you can design custom composite components by grouping multiple elements into a single reusable unit. This concept will be covered in this step of the tutorial. More information is available in the [Composite Article](../../building-ui/composite-components)
-:::
-
-Components need to be added to a container class that implements the <JavadocLink type="foundation" location="com/webforj/concern/HasComponents" code='true' >HasComponents</JavadocLink> interface. The `Frame` is one such class - for this step, add a `Paragraph` and a `Button` to the `Frame`, which will render in the UI in the browser:
-
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
+```java
+@Override
+public void run() {
+  Frame mainFrame = new Frame();
   Paragraph demo = new Paragraph("Demo Application!");
   Button btn = new Button("Info");
+  mainFrame.addClassName("mainFrame");
 
-  @Override
-  public void run() throws WebforjException {
-    Frame mainFrame = new Frame();
-    btn.setTheme(ButtonTheme.PRIMARY)
-        .addClickListener(e -> showMessageDialog("This is a demo!", "Info"));
-    mainFrame.add(demo, btn);
-  }
+  btn.setTheme(ButtonTheme.PRIMARY)
+     .addClickListener(e -> OptionDialog.showMessageDialog("This is a demo!", "Info"));
+  mainFrame.add(demo, btn);
 }
 ```
 
-Running this should give you a simple styled button enabling a message popping up saying "This is a demo!"
+
+
+- Place your CSS in `src/main/resources/static/app.css` and reference it with `@StyleSheet("ws://app.css")`.
 
 ## Styling with CSS {#styling-with-css}
 
-Styling in webforJ gives you complete flexibility to design your app’s appearance. While the framework supports a cohesive design and style out of the box, it doesn't enforce a specific styling approach, allowing you to apply custom styles that align with your app’s requirements.
+Styling in webforJ can be done from component methods or more broadly by using CSS. While the framework supports a cohesive design and style out of the box, it doesn't enforce a specific styling approach, allowing you to apply custom styles that align with your app’s requirements.
 
 With webforJ, you can dynamically apply class names to components for conditional or interactive styling, use CSS for a consistent and scalable design system, and inject entire inline or external stylesheets.
 
@@ -185,3 +148,24 @@ public class DemoApplication extends App {
 ```
 
 The CSS styles are applied to the main `Frame` and provide structure by arranging components with a [grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout), and adding margin, padding, and border styles to make the UI visually organized.
+
+
+
+## Running the app {#running-the-app}
+
+To see the app in action:
+
+1. Navigate to the top level directory containing the `pom.xml` file, this is `1-creating-a-basic-app` if you're following along with the version on GitHub.
+
+2. Use the following Maven command to run the Spring Boot app locally:
+    ```bash
+    mvn
+    ```
+
+3. Open your browser and go to http://localhost:8080 to view the app.
+
+
+## Next step
+
+With a functional app that has a basic user interface, the next step is to add data logic and display the results in a `Table` component in the [Working with Data](/docs/introduction/tutorial/working-with-data) step.
+
