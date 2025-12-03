@@ -72,11 +72,11 @@ After configuration, your Swing app will be accessible at `http://localhost:8080
 
 When embedding Webswing in a webforJ app running on a different port or domain, you must configure Cross-Origin Resource Sharing (CORS) in Webswing. This allows the browser to load Webswing content from within your webforJ page.
 
-In the Webswing admin console, navigate to your application's configuration and set:
+In the Webswing admin console, navigate to your app's configuration and set:
 
 - **Allowed Origins**: Add your webforJ app's origin (e.g., `http://localhost:8090` or `*` for development)
 
-This setting corresponds to the `allowedCorsOrigins` option in Webswing's application configuration.
+This setting corresponds to the `allowedCorsOrigins` option in Webswing's app configuration.
 
 :::tip Learn More
 For detailed CORS configuration options, see the [Webswing documentation on embedding](https://www.webswing.org/docs/24.2/configure/swing#embedding).
