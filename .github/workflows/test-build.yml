@@ -13,7 +13,7 @@ concurrency:
 jobs:
   test-build-war:
     name: Test WAR Build (No Deployment)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
