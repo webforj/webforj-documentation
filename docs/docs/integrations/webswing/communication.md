@@ -5,7 +5,7 @@ sidebar_position: 3
 
 The `WebswingConnector` provides bidirectional communication between your webforJ app and the embedded Swing app. This enables you to send commands to the Swing app and receive notifications when events occur within it.
 
-## Sending actions to Swing
+## Sending actions to Swing {#sending-actions-to-swing}
 
 The `performAction()` method allows your webforJ app to trigger functionality in the Swing app. This is useful for synchronizing state, triggering updates, or controlling the Swing app's behavior from the web interface.
 
@@ -29,11 +29,11 @@ connector.performAction("uploadDocument", "invoice.pdf", new String(fileContent)
 
 The action names and expected data formats are defined by your Swing app's implementation.
 
-## Receiving events from Swing
+## Receiving events from Swing {#receiving-events-from-swing}
 
 The connector fires three types of events that notify your webforJ app about the Swing app's state and actions.
 
-### Lifecycle events
+### Lifecycle events {#lifecycle-events}
 
 The **initialize event** fires when the Webswing connection is established and ready for communication:
 
@@ -55,7 +55,7 @@ connector.onStart(event -> {
 });
 ```
 
-### Custom action events
+### Custom action events {#custom-action-events}
 
 When your Swing app sends custom actions back to the web interface using the [Webswing Java API](https://www.webswing.org/docs/25.1/integrate/api), these are received as action events:
 

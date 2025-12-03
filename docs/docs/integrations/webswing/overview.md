@@ -18,7 +18,7 @@ sidebar_class_name: new-content
 
 Webswing is a web server technology that allows Java desktop applications (Swing, JavaFX, SWT) to run in a web browser without any modifications to the original source code. It renders the desktop app on the server and streams the interface to the browser using HTML5 canvas, handling all user interactions transparently.
 
-## What Webswing solves
+## What Webswing solves {#what-webswing-solves}
 
 Many organizations have substantial investments in Java desktop applications that contain critical business logic developed over years or decades. These applications often can't be easily rewritten due to:
 
@@ -29,11 +29,11 @@ Many organizations have substantial investments in Java desktop applications tha
 
 Webswing allows these applications to be web-accessible without modification, preserving their original functionality and appearance.
 
-## Integration with webforJ
+## Integration with webforJ {#integration-with-webforj}
 
 The webforJ Webswing integration provides the `WebswingConnector` component, which allows you to embed Webswing-hosted applications directly within your webforJ app. This creates opportunities for:
 
-### Progressive modernization
+### Progressive modernization {#progressive-modernization}
 
 Instead of an all-or-nothing rewrite, you can:
 
@@ -42,7 +42,7 @@ Instead of an all-or-nothing rewrite, you can:
 3. Gradually replace Swing components with webforJ equivalents
 4. Eventually phase out the legacy app entirely
 
-### Hybrid applications
+### Hybrid applications {#hybrid-applications}
 
 Combine modern web UI built with webforJ with specialized desktop functionality:
 
@@ -50,7 +50,7 @@ Combine modern web UI built with webforJ with specialized desktop functionality:
 - Leverage Swing for complex visualizations or specialized editors
 - Maintain a single integrated app experience
 
-## How it works
+## How it works {#how-it-works}
 
 The integration operates through three layers:
 
