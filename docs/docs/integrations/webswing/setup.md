@@ -78,9 +78,6 @@ In the Webswing admin console, navigate to your app's configuration and set:
 
 This setting corresponds to the `allowedCorsOrigins` option in Webswing's app configuration.
 
-:::tip Learn More
-For detailed CORS configuration options, see the [Webswing documentation on embedding](https://www.webswing.org/docs/24.2/configure/swing#embedding).
-:::
 
 ## webforJ integration {#webforj-integration}
 
