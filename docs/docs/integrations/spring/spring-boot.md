@@ -227,8 +227,8 @@ The following webforJ `application.properties` settings are specific to Spring:
 
 | Property | Type | Description | Default|
 |----------|------|-------------|--------|
-| **`webforj.servletMapping`** | String | URL mapping pattern for the webforJ servlet. | `/*` |
-| **`webforj.excludeUrls`** | List | URL patterns that shouldn't be handled by webforJ when mapped to root. When webforJ is mapped to the root context (`/*`), these URL patterns will be excluded from webforJ handling and can be handled by Spring MVC controllers instead. This allows REST endpoints and other Spring MVC mappings to coexist with webforJ routes. | `[]` |
+| **`webforj.servlet-mapping`** | String | URL mapping pattern for the webforJ servlet. | `/*` |
+| **`webforj.exclude-urls`** | List | URL patterns that shouldn't be handled by webforJ when mapped to root. When webforJ is mapped to the root context (`/*`), these URL patterns will be excluded from webforJ handling and can be handled by Spring MVC controllers instead. This allows REST endpoints and other Spring MVC mappings to coexist with webforJ routes. | `[]` |
 
 ### Configuration differences {#configuration-differences}
 
