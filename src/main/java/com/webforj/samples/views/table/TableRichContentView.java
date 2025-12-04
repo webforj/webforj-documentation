@@ -7,6 +7,7 @@ import com.webforj.component.table.renderer.Renderer;
 import com.webforj.annotation.StyleSheet;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
+import com.webforj.component.table.Column;
 
 @StyleSheet("ws://css/table/tableRichContent.css")
 @Route
@@ -17,17 +18,19 @@ public class TableRichContentView extends Composite<Div> {
 
     Table<MusicRecord> table = new Table<>();
     table.addClassName("table");
-
+    
     table.addColumn("Title", MusicRecord::getTitle).setHidden(true);
     table.addColumn("Artist", MusicRecord::getArtist).setHidden(true);
-    table.addColumn("Title & Artist", new AvatarRenderer());
-    table.addColumn("Genre", MusicRecord::getMusicType);
-    table.addColumn("Cost", MusicRecord::getCost).setRenderer(new BadgeRenderer());
-
+    table.addColumn("Title & Artist", new AvatarRenderer()).setFlex(1f).setMinWidth(200f);
+    table.addColumn("Genre", MusicRecord::getMusicType).setPinDirection(Column.PinDirection.RIGHT);
+    table.addColumn("Cost", MusicRecord::getCost).setRenderer(new BadgeRenderer()).setPinDirection(Column.PinDirection.RIGHT);
+    
     table.setRepository(Service.getMusicRecords());
     table.setSelectionMode(Table.SelectionMode.MULTIPLE);
     table.setRowHeight(45);
-
+    
+    table.refreshColumns();
+    
     getBoundComponent().add(table);
   }
 
