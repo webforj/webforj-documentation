@@ -8,7 +8,7 @@ on:
 jobs:
   build-and-deploy:
     name: Build and Deploy WAR
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
