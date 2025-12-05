@@ -9,7 +9,6 @@ const config = {
   tagline: 'webforJ is a robust and flexible web framework that allows you to easily create a modern and engaging user interface using Java.',
   url: 'https://docs.webforj.com/',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
   favicon: 'https://docs.webforj.com/icons/icon.png',
   organizationName: 'webforj',
   projectName: 'webforj-docs',
@@ -139,6 +138,10 @@ const config = {
   themes: ['@docusaurus/theme-mermaid'],
   markdown: {
     mermaid: true,
+     hooks: {
+      onBrokenMarkdownLinks: 'throw',
+      onBrokenMarkdownImages: 'throw',
+    },
   },
   themeConfig: {
     algolia: {
