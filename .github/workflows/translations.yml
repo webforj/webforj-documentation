@@ -15,7 +15,7 @@ on:
 jobs:
   translate:
     name: Run Translation Tool
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     
     steps:
       - name: Checkout Repository
