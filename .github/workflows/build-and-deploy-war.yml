@@ -8,8 +8,7 @@ on:
 jobs:
   build-and-deploy:
     name: Build and Deploy WAR
-    # runs-on: ubuntu-slim
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
 
     steps:
       - name: Checkout Repository
@@ -20,7 +19,11 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-          cache: 'maven'
+
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.9.9
 
       - name: Build with Maven
         run: mvn clean package -Pprod
