@@ -1,36 +1,36 @@
 ---
 title: Setup and Configuration
 sidebar_position: 2
-_i18n_hash: 5d819b2a84de98748b48e7b3b1c9ab66
+_i18n_hash: e3af6f7983bbd6ed7db57428412466c8
 ---
-Integrar Webswing con webforJ implica dos componentes: el servidor Webswing que alberga tu aplicación Swing y el componente `WebswingConnector` en tu aplicación webforJ que lo incrusta.
+Integrar Webswing con webforJ implica dos componentes: el servidor Webswing que aloja tu aplicación Swing y el componente `WebswingConnector` en tu aplicación webforJ que lo incrusta.
 
-## Prerrequisitos
+## Prerrequisitos {#prerequisites}
 
 Antes de comenzar, asegúrate de tener los siguientes prerrequisitos:
 
 - **Aplicación de escritorio Java**: una aplicación Swing, JavaFX o SWT empaquetada como un archivo JAR
-- **Servidor Webswing**: descargar desde [webswing.org](https://webswing.org)
-- **Versión de webforJ `25.10` o posterior**: requerida para el soporte de `WebswingConnector`
+- **Servidor Webswing**: descarga desde [webswing.org](https://webswing.org)
+- **versión webforJ `25.10` o superior**: requerida para el soporte de `WebswingConnector`
 
-## Resumen de la arquitectura
+## Resumen de la arquitectura {#architecture-overview}
 
 La arquitectura de integración consta de:
 
-1. **Servidor Webswing**: ejecuta tu aplicación Swing, captura la representación de la GUI y maneja la entrada del usuario
+1. **Servidor Webswing**: ejecuta tu aplicación Swing, captura el renderizado de la GUI y maneja la entrada del usuario
 2. **Aplicación webforJ**: aloja tu aplicación web con el `WebswingConnector` incrustado
 3. **Cliente del navegador**: muestra tanto la UI de webforJ como la aplicación Swing incrustada
 
-:::important Configuración del puerto
-Webswing y webforJ deben ejecutarse en puertos diferentes para evitar conflictos. Normalmente, tanto webforJ como Webswing se ejecutan en el puerto `8080`. Debes cambiar el puerto de Webswing o el puerto de webforJ.
+:::important Configuración de puertos
+Webswing y webforJ deben ejecutarse en puertos diferentes para evitar conflictos. Tanto webforJ como Webswing normalmente se ejecutan en el puerto `8080`. Debes cambiar el puerto de Webswing o el puerto de webforJ.
 :::
 
-## Configuración del servidor Webswing
+## Configuración del servidor Webswing {#webswing-server-setup}
 
-### Instalación y puesta en marcha
+### Instalación y puesta en marcha {#installation-and-startup}
 
 1. **Descargar Webswing** desde el [sitio web oficial](https://www.webswing.org/en/downloads)
-2. **Extraer el archivo** en tu ubicación preferida (por ejemplo, `/opt/webswing` o `C:\webswing`)
+2. **Extraer el archivo** a tu ubicación preferida (por ejemplo, `/opt/webswing` o `C:\webswing`)
 3. **Iniciar el servidor** utilizando los scripts específicos de la plataforma:
 
 <Tabs>
@@ -53,25 +53,36 @@ Webswing y webforJ deben ejecutarse en puertos diferentes para evitar conflictos
 
 4. **Verificar que el servidor está en funcionamiento** accediendo a `http://localhost:8080`
 
-### Configuración de la aplicación
+### Configuración de la aplicación {#application-configuration}
 
 Una vez que el servidor esté en funcionamiento, accede a la consola de administración en `http://localhost:8080/admin` para agregar y configurar tu aplicación Swing.
 
 En la consola de administración, configura:
 
-- **Nombre de la aplicación**: formará parte de la ruta de URL (por ejemplo, `myapp` → `http://localhost:8080/myapp/`)
+- **Nombre de la aplicación**: forma parte de la ruta de la URL (por ejemplo, `myapp` → `http://localhost:8080/myapp/`)
 - **Clase principal**: el punto de entrada de tu aplicación Swing
-- **Classpath**: ruta a tu JAR de aplicación y dependencias
-- **Argumentos de JVM**: configuraciones de memoria, propiedades del sistema y otras opciones de JVM
+- **Classpath**: ruta a tu archivo JAR de la aplicación y dependencias
+- **Argumentos de la JVM**: configuraciones de memoria, propiedades del sistema y otras opciones de la JVM
 - **Directorio de inicio**: directorio de trabajo para la aplicación
 
-Después de la configuración, tu aplicación Swing será accesible en `http://localhost:8080/[nombre-aplicación]/`
+Después de la configuración, tu aplicación Swing estará accesible en `http://localhost:8080/[nombre-de-la-aplicación]/`
 
-## Integración con webforJ
+### Configuración de CORS {#cors-configuration}
 
-Una vez que tu servidor Webswing esté en funcionamiento con tu aplicación Swing configurada, puedes integrarlo en tu aplicación webforJ. Esto implica agregar la dependencia, configurar el uso compartido de recursos de origen cruzado (CORS) y crear una vista con el componente `WebswingConnector`.
+Al incrustar Webswing en una aplicación webforJ que se ejecute en un puerto o dominio diferente, debes configurar el Intercambio de Recursos de Origen Cruzado (CORS) en Webswing. Esto permite que el navegador cargue contenido de Webswing desde dentro de tu página webforJ.
 
-### Agregar dependencia
+En la consola de administración de Webswing, navega a la configuración de tu aplicación y establece:
+
+- **Orígenes permitidos**: Agrega el origen de tu aplicación webforJ (por ejemplo, `http://localhost:8090` o `*` para desarrollo)
+
+Esta configuración corresponde a la opción `allowedCorsOrigins` en la configuración de la aplicación de Webswing.
+
+
+## Integración con webforJ {#webforj-integration}
+
+Una vez que tu servidor Webswing esté en funcionamiento con tu aplicación Swing configurada y CORS habilitado, puedes integrarlo en tu aplicación webforJ.
+
+### Agregar dependencia {#add-dependency}
 
 Agrega el módulo de integración de Webswing a tu proyecto webforJ. Esto proporciona el componente `WebswingConnector` y clases relacionadas.
 
@@ -82,74 +93,7 @@ Agrega el módulo de integración de Webswing a tu proyecto webforJ. Esto propor
 </dependency>
 ```
 
-### Configuración de CORS
-
-La configuración de Cross-Origin Resource Sharing (CORS) es necesaria cuando Webswing y webforJ se ejecutan en diferentes puertos o dominios. La política de mismo origen del navegador bloquea las solicitudes entre diferentes orígenes sin los encabezados CORS adecuados.
-
-Crea un filtro de servlet para agregar encabezados CORS a tu aplicación webforJ:
-
-```java title="CorsFilter.java"
-package com.example.config;
-
-import java.io.IOException;
-
-import jakarta.servlet.Filter;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.FilterConfig;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
-import jakarta.servlet.http.HttpServletResponse;
-
-public class CorsFilter implements Filter {
-
-  @Override
-  public void init(FilterConfig filterConfig) throws ServletException {
-    // sin operaciones
-  }
-
-  @Override
-  public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-      throws IOException, ServletException {
-    if (response instanceof HttpServletResponse) {
-      HttpServletResponse httpResponse = (HttpServletResponse) response;
-      httpResponse.setHeader("Access-Control-Allow-Origin", "*");
-      httpResponse.setHeader("Access-Control-Allow-Methods",
-          "GET, POST, PUT, DELETE, OPTIONS, HEAD");
-      httpResponse.setHeader("Access-Control-Allow-Headers",
-          "Content-Type, Authorization, X-Requested-With");
-      httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
-    }
-
-    chain.doFilter(request, response);
-  }
-
-  @Override
-  public void destroy() {
-    // sin operaciones
-  }
-}
-```
-
-Registra el filtro en tu `web.xml`:
-
-```xml
-<filter>
-  <filter-name>CorsFilter</filter-name>
-  <filter-class>com.example.config.CorsFilter</filter-class>
-</filter>
-
-<filter-mapping>
-  <filter-name>CorsFilter</filter-name>
-  <url-pattern>/*</url-pattern>
-</filter-mapping>
-```
-
-:::important Acceso en entornos de producción
-Para entornos de producción, reemplaza el comodín (`*`) en `Access-Control-Allow-Origin` con la URL específica de tu servidor Webswing por motivos de seguridad.
-:::
-
-### Implementación básica
+### Implementación básica {#basic-implementation}
 
 Crea una vista que incruste tu aplicación Swing utilizando el `WebswingConnector`:
 
@@ -166,23 +110,23 @@ public class SwingAppView extends Composite<Div> {
   private WebswingConnector connector;
 
   public SwingAppView() {
-    // Inicializa el conector con la URL de tu aplicación Webswing
+    // Inicializar el conector con la URL de tu aplicación Webswing
     connector = new WebswingConnector("http://localhost:8080/myapp/");
 
-    // Establece las dimensiones de visualización
+    // Establecer las dimensiones de visualización
     connector.setSize("100%", "600px");
 
-    // Agrega al contenedor de la vista
+    // Agregar al contenedor de la vista
     getBoundComponent().add(connector);
   }
 }
 ```
 
-El conector establece automáticamente una conexión con el servidor Webswing cuando se agrega al DOM. La interfaz de usuario de la aplicación Swing se renderiza dentro del componente conector.
+El conector establece automáticamente una conexión con el servidor Webswing cuando se agrega al DOM. La UI de la aplicación Swing se renderiza dentro del componente conector.
 
-## Opciones de configuración
+## Opciones de configuración {#configuration-options}
 
-La clase `WebswingOptions` te permite personalizar el comportamiento del conector. Por defecto, el conector se inicia automáticamente cuando se crea y utiliza configuraciones de conexión estándar. Puedes modificar este comportamiento creando una instancia de `WebswingOptions` y aplicándola al conector.
+La clase `WebswingOptions` te permite personalizar el comportamiento del conector. Por defecto, el conector se inicia automáticamente cuando se crea y usa configuraciones de conexión estándar. Puedes modificar este comportamiento creando una instancia de `WebswingOptions` y aplicándola al conector.
 
 Por ejemplo, para ocultar el botón de cierre de sesión en un entorno de producción donde gestionas la autenticación a través de tu aplicación webforJ:
 
@@ -195,13 +139,13 @@ WebswingOptions options = new WebswingOptions()
 connector.setOptions(options);
 ```
 
-O si necesitas control manual sobre cuándo se inicia la conexión:
+O si necesitas control manual sobre cuándo empieza la conexión:
 
 ```java
-// Crear conector sin auto-inicio
+// Crear conector sin inicio automático
 WebswingConnector connector = new WebswingConnector(url, false);
 
-// Configurar e iniciar cuando esté listo
+// Configurar y empezar cuando esté listo
 WebswingOptions options = new WebswingOptions();
 connector.setOptions(options);
 connector.start();

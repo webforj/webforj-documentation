@@ -1,41 +1,41 @@
 ---
 title: Communication
 sidebar_position: 3
-_i18n_hash: 4a12006d21bb2a0bd6e82f2f0ff8fa78
+_i18n_hash: 06bf57e08ee82a4970539b73215c1540
 ---
-Der `WebswingConnector` ermöglicht die bidirektionale Kommunikation zwischen Ihrer webforJ-App und der eingebetteten Swing-App. Dies ermöglicht es Ihnen, Befehle an die Swing-App zu senden und Benachrichtigungen zu erhalten, wenn Ereignisse innerhalb dieser auftreten.
+Der `WebswingConnector` ermöglicht eine bidirektionale Kommunikation zwischen Ihrer webforJ-Anwendung und der eingebetteten Swing-Anwendung. Dies ermöglicht es Ihnen, Befehle an die Swing-Anwendung zu senden und Benachrichtigungen zu erhalten, wenn innerhalb dieser Ereignisse auftreten.
 
-## Aktionen an Swing senden
+## Aktionen an Swing senden {#sending-actions-to-swing}
 
-Die Methode `performAction()` erlaubt es Ihrer webforJ-App, Funktionen in der Swing-App auszulösen. Dies ist nützlich, um den Zustand zu synchronisieren, Aktualisierungen auszulösen oder das Verhalten der Swing-App von der Weboberfläche aus zu steuern.
+Die Methode `performAction()` ermöglicht es Ihrer webforJ-Anwendung, Funktionalitäten in der Swing-Anwendung auszulösen. Dies ist nützlich, um den Zustand zu synchronisieren, Aktualisierungen auszulösen oder das Verhalten der Swing-Anwendung von der Weboberfläche aus zu steuern.
 
-Zum Beispiel, wenn Ihre Swing-App einen benutzerdefinierten Aktionshandler zum Aktualisieren von Daten hat:
+Wenn Ihre Swing-Anwendung beispielsweise einen benutzerdefinierten Aktionshandler für das Aktualisieren von Daten hat:
 
 ```java
-// Trigger a refresh in the Swing application from webforJ
+// Auslösen eines Refresh in der Swing-Anwendung von webforJ
 connector.performAction("refresh");
 ```
 
-Sie können auch Daten zusammen mit der Aktion senden. Die Swing-App empfängt dies über ihre Webswing API-Integration:
+Sie können auch Daten zusammen mit der Aktion senden. Die Swing-Anwendung empfängt dies über ihre Webswing API-Integration:
 
 ```java
-// Send a command with data from webforJ
+// Senden eines Befehls mit Daten von webforJ
 connector.performAction("selectRecord", "12345");
 
-// Send binary data
+// Senden binärer Daten
 byte[] fileContent = Files.readAllBytes(path);
 connector.performAction("uploadDocument", "invoice.pdf", new String(fileContent));
 ```
 
-Die Aktionsnamen und die erwarteten Datenformate werden durch die Implementierung Ihrer Swing-App definiert.
+Die Aktionsnamen und erwarteten Datenformate sind durch die Implementierung Ihrer Swing-Anwendung definiert.
 
-## Ereignisse von Swing empfangen
+## Ereignisse von Swing empfangen {#receiving-events-from-swing}
 
-Der Connector löst drei Arten von Ereignissen aus, die Ihre webforJ-App über den Zustand und die Aktionen der Swing-App informieren.
+Der Connector löst drei Arten von Ereignissen aus, die Ihre webforJ-Anwendung über den Zustand und die Aktionen der Swing-Anwendung informieren.
 
-### Lebenszyklusereignisse
+### Lebenszyklusereignisse {#lifecycle-events}
 
-Das **Initialisierungsereignis** wird ausgelöst, wenn die Webswing-Verbindung hergestellt und bereit für die Kommunikation ist:
+Das **initialisieren Ereignis** wird ausgelöst, wenn die Webswing-Verbindung hergestellt und bereit für die Kommunikation ist:
 
 ```java
 connector.onInitialize(event -> {
@@ -46,18 +46,18 @@ connector.onInitialize(event -> {
 });
 ```
 
-Das **Startereignis** wird ausgelöst, wenn die Swing-App vollständig geladen und aktiv ist:
+Das **start Ereignis** wird ausgelöst, wenn die Swing-Anwendung vollständig geladen und aktiv ist:
 
 ```java
 connector.onStart(event -> {
-  // Die Swing-Anwendung ist jetzt sichtbar und interaktiv
-  console.log("Anwendung bereit für Benutzereingaben");
+  // Swing-Anwendung ist nun sichtbar und interaktiv
+  console.log("Anwendung bereit für Benutzerinteraktion");
 });
 ```
 
-### Benutzerdefinierte Aktionsereignisse
+### Benutzerdefinierte Aktionsereignisse {#custom-action-events}
 
-Wenn Ihre Swing-App benutzerdefinierte Aktionen zurück an die Weboberfläche sendet, indem sie die [Webswing Java API](https://www.webswing.org/docs/25.1/integrate/api) verwendet, werden diese als Aktionsereignisse empfangen:
+Wenn Ihre Swing-Anwendung benutzerdefinierte Aktionen an die Weboberfläche mit der [Webswing Java API](https://www.webswing.org/docs/25.1/integrate/api) sendet, werden diese als Aktionsereignisse empfangen:
 
 ```java
 connector.onAction(event -> {
@@ -66,14 +66,14 @@ connector.onAction(event -> {
   switch(actionName) {
       case "dataUpdated":
         event.getActionData().ifPresent(data -> {
-            // Handle the update notification
+            // Benachrichtigung über die Aktualisierung bearbeiten
             updateWebInterface(data);
         });
         break;
 
       case "fileReady":
         event.getActionBinaryData().ifPresent(data -> {
-            // Binary data
+            // Binäre Daten
             saveFile(fileData);
         });
         break;
