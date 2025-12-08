@@ -8,13 +8,15 @@ draft: false
 <DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/> 
 
-Before building custom components in webforJ, understand the foundational architecture that shapes how components work. This article explains the component hierarchy, lifecycle concepts, and composition patterns.
+Before building custom components in webforJ, it's important to understand the foundational architecture that shapes how components work. This article explains the component hierarchy, lifecycle concepts, and composition patterns.
 
 ## Understanding the component hierarchy
 
+webforJ organizes components into a hierarchy with two groups: framework internal classes you should never extend, and classes designed specifically for building custom components. This section explains why webforJ uses composition over inheritance and what each level of the hierarchy provides.
+
 ### Why composition instead of extension?
 
-In webforJ, built-in components like Button and TextField are final classes—you cannot extend them:
+In webforJ, built-in components like [`Button`](../components/button) and [`TextField`](../components/fields/textfield) are final classes—you can't extend them:
 
 ```java
 // This won't work in webforJ
@@ -23,7 +25,8 @@ public class MyButton extends Button {
 }
 ```
 
-webforJ uses **composition over inheritance**. You create custom components by combining existing components:
+webforJ uses **composition over inheritance**. Instead of extending existing components, you create a class that extends `Composite` and combines components inside it. `Composite` acts as a container that wraps a single component (called the bound component) and lets you add your own components and behavior to it.
+
 
 ```java
 public class SearchBar extends Composite {
@@ -43,26 +46,35 @@ public class SearchBar extends Composite {
 
 ### Why you can't extend built-in components
 
-webforJ components are marked as final to maintain the integrity of the underlying BBj control. Extending webforJ component classes would grant control over the underlying BBj control, which could lead to unintended consequences and break the consistency and predictability of component behavior.
+webforJ components are marked as final to maintain the integrity of the underlying client-side web component. Extending webforJ component classes would grant control over the underlying web component, which could lead to unintended consequences and break the consistency and predictability of component behavior.
 
 For a detailed explanation, see [Final Classes and Extension Restrictions](https://docs.webforj.com/docs/architecture/controls-components#final-classes-and-extension-restrictions) in the architecture documentation.
 
 ### The component hierarchy
-```
-Component (abstract base)
-│
-├── DwcComponent (provides control interaction and property handling)
-│   ├── DwcFocusableComponent
-│   │   ├─ Button
-│   │   ├─ TextField
-│   │   ├─ DateField
-│   │   └─ ComboBox
-│   └─ ... (other built-in components)
-│
-├── Composite (for composition of existing components)
-│
-└── ElementComposite (for web component integration)
-    └── ElementCompositeContainer (for containers with slots)
+
+```mermaid
+graph TD
+    A[ComponentAbstract base - framework internal]
+    
+    A --> B[DwcComponentBuilt-in BBj-backed components]
+    A --> C[Composite Combine webforJ components]
+    A --> D[ElementComposite Wrap web components]
+    
+    B --> E[DwcFocusableComponent]
+    E --> F[Button, TextField,DateField, ComboBox]
+    
+    D --> G[ElementCompositeContainer Components with slots]
+    
+    style A fill:#f5f5f5,stroke:#666
+    style B fill:#ffe6e6,stroke:#cc0000
+    style C fill:#e6ffe6,stroke:#00cc00
+    style D fill:#e6f3ff,stroke:#0066cc
+    style G fill:#e6f3ff,stroke:#0066cc
+    style E fill:#ffe6e6,stroke:#cc0000
+    style F fill:#ffe6e6,stroke:#cc0000
+    
+    classDef userClass stroke-width:3px
+    class C,D,G userClass
 ```
 
 **Classes for developers (use these):**
@@ -71,8 +83,8 @@ Component (abstract base)
 - `**ElementCompositeContainer**`: Work with web components that contain other components via slots
 
 **Internal framework classes (never extend directly):**
-- **Component**: Abstract base class - framework internal, do not extend
-- **DwcComponent**: Base for built-in BBj-backed components - framework internal, all built-in components are final
+- **Component**: Abstract base class - framework internal, don't extend
+- **DwcComponent**: Built-in webforJ components
 
 :::danger[Never extend `Component` or `DwcComponent`]
 Never extend `Component` or `DwcComponent` directly. All built-in components are final. Always use composition patterns with `Composite` or `ElementComposite`.
@@ -82,13 +94,13 @@ Attempting to extend `DwcComponent` will throw a runtime exception.
 
 ### What each level provides
 
-**`Component`:** Lifecycle management, window association, component identity, `whenAttached()` method
+**`Component`:** lifecycle management, window association, component identity, `whenAttached()` method
 
-**`DwcComponent`:** Control interaction, property handling, text/HTML management, CSS classes and styles, visibility and sizing, event dispatching
+**`DwcComponent`:** control interaction, property handling, text/HTML management, CSS classes and styles, visibility and sizing, event dispatching
 
-**`Composite`:** Combine existing webforJ components, encapsulate layout and behavior, hide implementation details, provide clean APIs
+**`Composite`:** combine existing webforJ components, encapsulate layout and behavior, hide implementation details, provide clean APIs
 
-**`ElementComposite`:** Type-safe property management via PropertyDescriptors, custom event handling, direct DOM access via `getElement()`, web component lifecycle integration
+**`ElementComposite`:** type-safe property management via PropertyDescriptors, custom event handling, direct DOM access via `getElement()`, web component lifecycle integration
 
 ### Concern interfaces: Adding capabilities to your components
 
@@ -119,12 +131,12 @@ The composite automatically forwards these calls to the underlying `Div`. No ext
 - `HasFocus` - `focus()`, `setFocusable()`, focus events
 - `HasClassName` - `addClassName()`, `removeClassName()`
 - `HasStyle` - `setStyle()`, inline CSS management
-- `HasVisibility` - `setVisible()`, show/hide functionality
+- `HasVisibility` - `setVisible()`, show/hide capability
 - `HasText` - `setText()`, text content management
 - `HasAttribute` - `setAttribute()`, HTML attribute management
 
 :::warning
-If the underlying component doesn't support the interface functionality, you'll get a runtime exception. Provide your own implementation in that case.
+If the underlying component doesn't support the interface capability, you'll get a runtime exception. Provide your own implementation in that case.
 :::
 
 For a complete list of available concern interfaces, see the [webforJ JavaDoc](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/concern/package-summary.html).
@@ -134,7 +146,6 @@ For a complete list of available concern interfaces, see the [webforJ JavaDoc](h
 **Don't extend Component directly:**
 
 ```java
-// WRONG
 public class MyComponent extends Component {
     @Override
     protected void onCreate(Window window) {
@@ -146,7 +157,6 @@ public class MyComponent extends Component {
 **Don't extend built-in components:**
 
 ```java
-// WRONG
 public class MyButton extends Button {
     // Button is final - cannot be extended
 }
@@ -155,7 +165,6 @@ public class MyButton extends Button {
 **Don't extend DwcComponent:**
 
 ```java
-// WRONG
 public class MyTextField extends DwcComponent {
     // DwcComponent is for framework internals only
 }
@@ -164,7 +173,6 @@ public class MyTextField extends DwcComponent {
 **Do use composition patterns:**
 
 ```java
-// CORRECT
 public class UserProfileCard extends Composite {
     private Avatar avatar;
     private Label nameLabel;
@@ -226,7 +234,7 @@ webforJ maintains two IDs for every component:
 ```java
 // Server ID - available immediately
 Button myButton = new Button("Click me");
-String serverId = myButton.getId(); // Available now
+String serverId = myButton.getComponentId(); // Available now
 
 // Find components server-side
 FlexLayout container = new FlexLayout();
@@ -265,9 +273,9 @@ webforJ manages the component lifecycle automatically:
 1. **Creation** - Component instantiation
 2. **Configuration** - Properties set before attachment
 3. **Attachment** - Added to window/container
-4. **Post-Attachment** - Framework replays configurations
+4. **Post-Attachment** - Framework replays configurations (`onDidCreate()` available)
 5. **Runtime** - Component active and interactive
-6. **Destruction** - Component destroyed with automatic cleanup
+6. **Destruction** - Component destroyed (`onDidDestroy()` available)
 
 For most components, automatic lifecycle management is all you need.
 
@@ -345,7 +353,7 @@ public class AutoRefreshPanel extends Composite {
 }
 ```
 
-### Using whenAttached() for deferred operations
+### Using `whenAttached()` for deferred operations
 
 For operations needing DOM attachment, `whenAttached()` is often cleaner than `onDidCreate()`:
 
