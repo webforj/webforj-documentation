@@ -2,13 +2,13 @@
 sidebar_position: 2
 title: Component Fundamentals
 slug: fundamentals
-draft: false
+sidebar_class_name: new-content
 ---
 
 <DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/> 
 
-Before building custom components in webforJ, it's important to understand the foundational architecture that shapes how components work. This article explains the component hierarchy, lifecycle concepts, and composition patterns.
+Before building custom components in webforJ, it's important to understand the foundational architecture that shapes how components work. This article explains the component hierarchy, component identity, lifecycle concepts, and how concern interfaces provide component capabilities.
 
 ## Understanding the component hierarchy
 
@@ -27,9 +27,8 @@ public class MyButton extends Button {
 
 webforJ uses **composition over inheritance**. Instead of extending existing components, you create a class that extends `Composite` and combines components inside it. `Composite` acts as a container that wraps a single component (called the bound component) and lets you add your own components and behavior to it.
 
-
 ```java
-public class SearchBar extends Composite {
+public class SearchBar extends Composite<FlexLayout> {
     private TextField searchField;
     private Button searchButton;
     
@@ -54,16 +53,16 @@ For a detailed explanation, see [Final Classes and Extension Restrictions](https
 
 ```mermaid
 graph TD
-    A[ComponentAbstract base - framework internal]
+    A[Component<br/><small>Abstract base - framework internal</small>]
     
-    A --> B[DwcComponentBuilt-in BBj-backed components]
-    A --> C[Composite Combine webforJ components]
-    A --> D[ElementComposite Wrap web components]
+    A --> B[DwcComponent<br/><small>Built-in webforJ components</small>]
+    A --> C[Composite<br/><small>Combine webforJ components</small>]
+    A --> D[ElementComposite<br/><small>Wrap web components</small>]
     
     B --> E[DwcFocusableComponent]
-    E --> F[Button, TextField,DateField, ComboBox]
+    E --> F[Button, TextField,<br/>DateField, ComboBox]
     
-    D --> G[ElementCompositeContainer Components with slots]
+    D --> G[ElementCompositeContainer<br/><small>Components with slots</small>]
     
     style A fill:#f5f5f5,stroke:#666
     style B fill:#ffe6e6,stroke:#cc0000
@@ -78,13 +77,13 @@ graph TD
 ```
 
 **Classes for developers (use these):**
-- `**Composite**`: Compose existing webforJ components into reusable business logic units
-- `**ElementComposite**`: Integrate web components with type-safe property management
-- `**ElementCompositeContainer**`: Work with web components that contain other components via slots
+- **Composite**: Compose existing webforJ components into reusable business logic units
+- **ElementComposite**: Integrate web components with type-safe property management
+- **ElementCompositeContainer**: Work with web components that contain other components via slots
 
 **Internal framework classes (never extend directly):**
 - **Component**: Abstract base class - framework internal, don't extend
-- **DwcComponent**: Built-in webforJ components
+- **DwcComponent**: Built-in webforJ components - framework internal, all built-in components are final
 
 :::danger[Never extend `Component` or `DwcComponent`]
 Never extend `Component` or `DwcComponent` directly. All built-in components are final. Always use composition patterns with `Composite` or `ElementComposite`.
@@ -108,7 +107,7 @@ Implementing concern interfaces automatically gives your components the same API
 
 ```java
 // Implement HasSize to get width/height methods automatically
-public class SizedCard extends Composite implements HasSize {
+public class SizedCard extends Composite<Div> implements HasSize<SizedCard> {
     
     public SizedCard() {
         getBoundComponent().setText("Card content");
@@ -140,92 +139,6 @@ If the underlying component doesn't support the interface capability, you'll get
 :::
 
 For a complete list of available concern interfaces, see the [webforJ JavaDoc](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/concern/package-summary.html).
-
-### Anti-patterns to avoid
-
-**Don't extend Component directly:**
-
-```java
-public class MyComponent extends Component {
-    @Override
-    protected void onCreate(Window window) {
-        // Don't extend Component directly!
-    }
-}
-```
-
-**Don't extend built-in components:**
-
-```java
-public class MyButton extends Button {
-    // Button is final - cannot be extended
-}
-```
-
-**Don't extend DwcComponent:**
-
-```java
-public class MyTextField extends DwcComponent {
-    // DwcComponent is for framework internals only
-}
-```
-
-**Do use composition patterns:**
-
-```java
-public class UserProfileCard extends Composite {
-    private Avatar avatar;
-    private Label nameLabel;
-    private Button editButton;
-    
-    public UserProfileCard(String name) {
-        avatar = new Avatar();
-        nameLabel = new Label(name);
-        editButton = new Button("Edit");
-        
-        getBoundComponent()
-            .setDirection(FlexDirection.COLUMN)
-            .add(avatar, nameLabel, editButton);
-    }
-}
-```
-
-## Choosing your component approach
-
-When building custom components, you'll use one of three approaches:
-
-**Composite** - Combine existing webforJ components:
-
-```java
-public class SearchBar extends Composite<FlexLayout> {
-    private TextField searchField;
-    private Button searchButton;
-    // Combines multiple webforJ components
-}
-```
-
-**ElementComposite** - Wrap external web components:
-
-```java
-@NodeName("sl-qr-code")
-public class QRCode extends ElementComposite {
-    // Wraps a Shoelace web component
-}
-```
-
-**ElementCompositeContainer** - Wrap web components with slots:
-
-```java
-@NodeName("custom-card")
-public class CustomCard extends ElementCompositeContainer {
-    // Web component with named slots (header, content, footer)
-}
-```
-
-**Quick guide:**
-- Combining webforJ components? → Composite
-- Wrapping external web component? → ElementComposite  
-- Web component has slots? → ElementCompositeContainer
 
 ## Component identity: Server ID and client ID
 
@@ -264,7 +177,7 @@ myButton.whenAttached().then(button -> {
 
 Most of the time, the framework handles this automatically.
 
-## Component lifecycle - the optional hooks
+## Component lifecycle overview
 
 ### The framework handles everything automatically
 
@@ -273,11 +186,13 @@ webforJ manages the component lifecycle automatically:
 1. **Creation** - Component instantiation
 2. **Configuration** - Properties set before attachment
 3. **Attachment** - Added to window/container
-4. **Post-Attachment** - Framework replays configurations (`onDidCreate()` available)
+4. **Post-Attachment** - Framework replays configurations  
+   *Optional hook: `onDidCreate()` runs here*
 5. **Runtime** - Component active and interactive
-6. **Destruction** - Component destroyed (`onDidDestroy()` available)
+6. **Destruction** - Component destroyed  
+   *Optional hook: `onDidDestroy()` runs here*
 
-For most components, automatic lifecycle management is all you need.
+For most components, automatic lifecycle management is all you need. The optional hooks `onDidCreate()` and `onDidDestroy()` are only necessary when you have specific setup or cleanup requirements.
 
 ### Constructor-first approach (99% of components)
 
@@ -285,7 +200,7 @@ Most components do everything in the constructor:
 
 ```java
 // MOST COMMON - No lifecycle methods needed
-public class UserForm extends Composite {
+public class UserForm extends Composite<FlexLayout> {
     private TextField nameField;
     private TextField emailField;
     private Button submitButton;
@@ -328,7 +243,7 @@ Lifecycle methods (`onDidCreate`, `onDidDestroy`) are **optional hooks**. Use th
 
 ```java
 // RARE CASE - Lifecycle method for cleanup
-public class AutoRefreshPanel extends Composite {
+public class AutoRefreshPanel extends Composite<FlexLayout> {
     private Interval refreshInterval;
     
     public AutoRefreshPanel() {
@@ -359,7 +274,7 @@ For operations needing DOM attachment, `whenAttached()` is often cleaner than `o
 
 ```java
 // PREFERRED - Using whenAttached()
-public class DataGrid extends Composite {
+public class DataGrid extends Composite<FlexLayout> {
     
     public DataGrid() {
         getBoundComponent().setDirection(FlexDirection.COLUMN);
@@ -380,7 +295,7 @@ public class DataGrid extends Composite {
 
 ```java
 // ALTERNATIVE - Using onDidCreate()
-public class DataGridWithHook extends Composite {
+public class DataGridWithHook extends Composite<FlexLayout> {
     
     @Override
     protected void onDidCreate(FlexLayout layout) {
