@@ -37,8 +37,8 @@ public class SecurityConfig {
   SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     return http
         .with(WebforjSecurityConfigurer.webforj(), configurer -> configurer
-            .loginPage(LoginView.class)
-            .accessDeniedPage(AccessDenyView.class)
+            .loginPage(/signin)
+            .accessDeniedPage(/access-denied)
             .logout())
         .build();
   }
