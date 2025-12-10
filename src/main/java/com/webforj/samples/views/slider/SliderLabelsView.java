@@ -62,7 +62,7 @@ public class SliderLabelsView extends Composite<FlexLayout> {
             slider.setTheme(Theme.WARNING);
           }
 
-          if(value >= 75 && value <= 100) {
+          if(value >= 80 && value <= 100) {
             slider.setTheme(Theme.DANGER);
           }
         });
