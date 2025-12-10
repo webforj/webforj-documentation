@@ -57,7 +57,7 @@ This creates a complete Spring Boot project with:
 If you have an existing webforJ app, you can add Spring Boot by modifying your project configuration. This process involves updating your Maven configuration, adding Spring dependencies, and converting your main app class.
 
 :::info[For existing projects only]
-Skip this section if you're creating a new project from scratch.
+Skip this section if you're creating a new project from scratch. This guide assumes **webforJ version 25.11 or later**.
 :::
 
 ### Step 1: Update Maven configuration {#step-1-update-maven-configuration}
@@ -102,11 +102,45 @@ If you already have a parent POM, you'll need to import the Spring Boot Bill of 
 
 ### Step 2: Add Spring dependencies {#step-2-add-spring-dependencies}
 
-Add the webforJ Spring Boot starter to your dependencies. Keep your existing webforJ dependency:
+Add the webforJ Spring Boot starter to your dependencies:
+
+:::info[webforJ 25.11+ simplification]
+Starting from **webforJ version 25.11**, the `webforj-spring-boot-starter` includes all core webforJ dependencies transitively. You no longer need to explicitly add the `com.webforj:webforj` dependency.
+
+For versions **before 25.11**, you must include both dependencies separately.
+:::
+
+**For webforJ 25.11 and later:**
 
 ```xml title="pom.xml"
 <dependencies>
-    <!-- Your existing webforJ dependency -->
+    <!-- Add Spring Boot starter (includes webforJ transitively) -->
+    <dependency>
+        <groupId>com.webforj</groupId>
+        <artifactId>webforj-spring-boot-starter</artifactId>
+        <version>${webforj.version}</version>
+    </dependency>
+
+    <!-- Add devtools -->
+    <dependency>
+      <groupId>com.webforj</groupId>
+      <artifactId>webforj-spring-devtools</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <optional>true</optional>
+    </dependency>
+</dependencies>
+```
+
+**For versions before 25.11:**
+
+```xml title="pom.xml"
+<dependencies>
+    <!-- Explicitly add webforJ dependency -->
     <dependency>
         <groupId>com.webforj</groupId>
         <artifactId>webforj</artifactId>
