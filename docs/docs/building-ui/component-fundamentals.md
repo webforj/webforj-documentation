@@ -65,12 +65,12 @@ graph TD
     D --> G[ElementCompositeContainer<br/><small>Components with slots</small>]
     
     style A fill:#f5f5f5,stroke:#666
-    style B fill:#ffe6e6,stroke:#cc0000
+    style B fill:#fff4e6,stroke:#ff9800
     style C fill:#e6ffe6,stroke:#00cc00
     style D fill:#e6f3ff,stroke:#0066cc
     style G fill:#e6f3ff,stroke:#0066cc
-    style E fill:#ffe6e6,stroke:#cc0000
-    style F fill:#ffe6e6,stroke:#cc0000
+    style E fill:#fff4e6,stroke:#ff9800
+    style F fill:#fff4e6,stroke:#ff9800
     
     classDef userClass stroke-width:3px
     class C,D,G userClass
@@ -85,7 +85,7 @@ graph TD
 - **Component**: Abstract base class - framework internal, don't extend
 - **DwcComponent**: Built-in webforJ components - framework internal, all built-in components are final
 
-:::danger[Never extend `Component` or `DwcComponent`]
+:::warning[Never extend `Component` or `DwcComponent`]
 Never extend `Component` or `DwcComponent` directly. All built-in components are final. Always use composition patterns with `Composite` or `ElementComposite`.
 
 Attempting to extend `DwcComponent` will throw a runtime exception.
@@ -140,176 +140,24 @@ If the underlying component doesn't support the interface capability, you'll get
 
 For a complete list of available concern interfaces, see the [webforJ JavaDoc](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/concern/package-summary.html).
 
-## Component identity: Server ID and client ID
-
-webforJ maintains two IDs for every component:
-
-```java
-// Server ID - available immediately
-Button myButton = new Button("Click me");
-String serverId = myButton.getComponentId(); // Available now
-
-// Find components server-side
-FlexLayout container = new FlexLayout();
-container.add(myButton);
-Component found = container.getComponent(serverId); // Works
-
-// Client ID - only after DOM attachment
-myButton.whenAttached().then(button -> {
-    String clientId = button.getClientComponentId(); // Available after attached
-    // Use with DWC API: objects.get(clientId)
-});
-```
-
-**Server ID:**
-- Created automatically when component is instantiated
-- Used for server-side lookups in containers
-- Available immediately after creation
-
-**Client ID:**
-- Only exists after component attaches to DOM
-- Used for client-side JavaScript and DWC API
-- Access with `objects.get(ID)` in client code
-
-**When to use each:**
-- **Server ID**: Looking up components in containers, server-side logic
-- **Client ID**: Client-side JavaScript, DWC API calls
-
-Most of the time, the framework handles this automatically.
-
 ## Component lifecycle overview
 
-### The framework handles everything automatically
+webforJ manages the component lifecycle automatically. The framework handles component creation, attachment, and destruction without requiring manual intervention.
 
-webforJ manages the component lifecycle automatically:
+**Lifecycle hooks** are available when you need them:
+- `onDidCreate()` - Called after component is attached to the DOM
+- `onDidDestroy()` - Called when component is destroyed
 
-1. **Creation** - Component instantiation
-2. **Configuration** - Properties set before attachment
-3. **Attachment** - Added to window/container
-4. **Post-Attachment** - Framework replays configurations  
-   *Optional hook: `onDidCreate()` runs here*
-5. **Runtime** - Component active and interactive
-6. **Destruction** - Component destroyed  
-   *Optional hook: `onDidDestroy()` runs here*
+These hooks are **optional**. Use them when you need to:
+- Clean up resources (stop intervals, close connections)
+- Initialize components that require DOM attachment
+- Integrate with client-side JavaScript
 
-For most components, automatic lifecycle management is all you need. The optional hooks `onDidCreate()` and `onDidDestroy()` are only necessary when you have specific setup or cleanup requirements.
+For most simple cases, you can initialize components directly in the constructor. Use lifecycle hooks like `onDidCreate()` to defer work when necessary.
 
-### Constructor-first approach (99% of components)
-
-Most components do everything in the constructor:
-
-```java
-// MOST COMMON - No lifecycle methods needed
-public class UserForm extends Composite<FlexLayout> {
-    private TextField nameField;
-    private TextField emailField;
-    private Button submitButton;
-    
-    public UserForm() {
-        // Everything happens in constructor
-        nameField = new TextField("Name");
-        emailField = new TextField("Email");
-        submitButton = new Button("Submit");
-        
-        getBoundComponent()
-            .setDirection(FlexDirection.COLUMN)
-            .add(nameField, emailField, submitButton);
-            
-        // Event handlers work in constructor
-        submitButton.onClick(e -> handleSubmit());
-    }
-    
-    private void handleSubmit() {
-        String name = nameField.getValue();
-        String email = emailField.getValue();
-        // Handle form submission
-    }
-}
-```
-
-**Use constructor for:**
-- Adding child components
-- Setting properties
-- Basic layout setup
-- Event registration
-
-### When you need lifecycle methods (rare cases)
-
-Lifecycle methods (`onDidCreate`, `onDidDestroy`) are **optional hooks**. Use them only when you need:
-
-- Cleanup resources (intervals, connections)
-- Setup requiring DOM attachment
-- JavaScript integration needing DOM presence
-
-```java
-// RARE CASE - Lifecycle method for cleanup
-public class AutoRefreshPanel extends Composite<FlexLayout> {
-    private Interval refreshInterval;
-    
-    public AutoRefreshPanel() {
-        getBoundComponent().add(new Label("Auto-refreshing content"));
-        
-        // Start interval that needs cleanup
-        refreshInterval = new Interval(5f, e -> refresh());
-        refreshInterval.start();
-    }
-    
-    // OPTIONAL - Only needed for cleanup
-    @Override
-    protected void onDidDestroy() {
-        if (refreshInterval != null) {
-            refreshInterval.stop(); // Prevent memory leak
-        }
-    }
-    
-    private void refresh() {
-        // Refresh logic
-    }
-}
-```
-
-### Using `whenAttached()` for deferred operations
-
-For operations needing DOM attachment, `whenAttached()` is often cleaner than `onDidCreate()`:
-
-```java
-// PREFERRED - Using whenAttached()
-public class DataGrid extends Composite<FlexLayout> {
-    
-    public DataGrid() {
-        getBoundComponent().setDirection(FlexDirection.COLUMN);
-        
-        // Load data when attached - no lifecycle method needed
-        whenAttached().then(component -> {
-            loadDataFromServer();
-        });
-    }
-    
-    private void loadDataFromServer() {
-        // Data loading requiring DOM attachment
-    }
-}
-```
-
-**Alternative using lifecycle hook:**
-
-```java
-// ALTERNATIVE - Using onDidCreate()
-public class DataGridWithHook extends Composite<FlexLayout> {
-    
-    @Override
-    protected void onDidCreate(FlexLayout layout) {
-        layout.setDirection(FlexDirection.COLUMN);
-        loadDataFromServer();
-    }
-    
-    private void loadDataFromServer() {
-        // This runs when component is attached
-    }
-}
-```
-
-Both approaches work. `whenAttached()` keeps logic in the constructor.
+:::tip
+You can also use `ComponentLifecycleObserver` to observe lifecycle events from outside the component. This is useful for plugin architectures or when multiple components need to respond to lifecycle events. See [Component Basics](component-basics#observers) for more details.
+:::
 
 ## What's next
 
