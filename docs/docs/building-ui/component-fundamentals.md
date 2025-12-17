@@ -155,10 +155,6 @@ These hooks are **optional**. Use them when you need to:
 
 For most simple cases, you can initialize components directly in the constructor. Use lifecycle hooks like `onDidCreate()` to defer work when necessary.
 
-:::tip
-You can also use `ComponentLifecycleObserver` to observe lifecycle events from outside the component. This is useful for plugin architectures or when multiple components need to respond to lifecycle events. See [Component Basics](component-basics#observers) for more details.
-:::
-
 ## What's next
 
 Ready to build? Start with [Composite Components](composite-components) to create your first custom component.
