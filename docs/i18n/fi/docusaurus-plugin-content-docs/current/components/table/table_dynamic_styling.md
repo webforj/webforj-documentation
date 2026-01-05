@@ -2,24 +2,24 @@
 sidebar_position: 21
 title: Dynamic Styling
 slug: styling
-_i18n_hash: 8e9f61685fbb3a7fb830463f1320e8cf
+_i18n_hash: ab74c802642742faeaa38ee9a2f6e8da
 ---
 <!-- vale off -->
 # Dynaaminen tyylittely <DocChip chip='since' label='25.00' />
 <!-- vale on -->
 
-WebforJ 25:ssä ja sitä uudempissa versioissa on mahdollista tyylittää yksittäisiä rivejä ja soluja taulukossa käyttäen mukautettuja osanimiä. Nämä nimet voidaan määrittää dynaamisesti sovelluksesi logiikan perusteella, mikä antaa sinulle tarkkaa hallintaa taulukon ulkonäöstä.
+WebforJ 25:ssä ja sitä uudemmissa versioissa on mahdollista tyylitellä yksittäisiä rivejä ja soluja taulukossa mukautettujen osan nimien avulla. Nämä nimet voidaan määrittää dynaamisesti sovelluksesi logiikan mukaan, mikä antaa sinulle tarkkaa kontrollia taulukon ulkoasusta.
 
-## Rivin tyylitys {#row-styling}
+## Rivin tyylittely {#row-styling}
 
-`setRowPartProvider()`-metodi määrittää osanimiä koko riveille niiden sisältämän tietoelementin perusteella. Tämä mahdollistaa koko rivien korostamisen, jotka täyttävät tietyt ehdot—esimerkiksi vuorottelevat taustavärit parillisille riveille.
+`setRowPartProvider()`-metodi määrittää osan nimet kokonaisille riveille niiden sisältämän datakohteen perusteella. Tämä mahdollistaa koko rivien korostamisen, jotka täyttävät tietyt ehdot – esimerkiksi vuorottelevat taustavärit parillisille riveille.
 
-Näitä tyylinimiä voidaan kohdistaa `::part()`-valitsimella CSS:ssäsi.
+Nämä tyylinimet voidaan kohdistaa CSS:ssä `::part()`-valitsimella.
 
-:::tip Varjo-osiot
-`::part()`-valitsin on erityinen CSS-ominaisuus, joka mahdollistaa komponentin varjo-DOM:issa olevien elementtien tyylittämisen—niin kauan kuin nämä elementit altistavat `part`-attribuutin. Tämä on erityisen hyödyllistä webforJ-komponenttien sisäisten osien, kuten rivien tai solujen, tyylittämiseen.
+:::tip Varjopartit
+`::part()`-valitsin on erityinen CSS-ominaisuus, joka mahdollistaa komponentin varjo-DOM:in sisällä olevien elementtien tyylittelyn – niin kauan kuin nämä elementit altistavat `part`-attribuutin. Tämä on erityisen hyödyllinen webforJ-komponenttien, kuten taulukon rivien tai solujen, sisäisten osien tyylittelyssä.
 
-Lisätietoja siitä, miten varjo-osat toimivat ja miten niitä määritellään ja kohdistetaan, katso [Tyylittely](../../styling/shadow-parts) -osio.
+Lisätietoa siitä, miten varjopartit toimivat ja miten ne määritellään ja kohdistetaan, katso [Tyylittely](../../styling/shadow-parts) -osiosta.
 :::
 
 
@@ -29,11 +29,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## Solun tyylitys {#cell-styling}
+## Solun tyylittely {#cell-styling}
 
-`setCellPartProvider()`-metodi tyylittää yksittäisiä soluja sekä tiedoelementin että siihen liittyvän sarakkeen perusteella. Tämä tekee siitä ihanteellisen tiettyjen arvojen, kuten ikien korostamisen, kun ne ovat ennen kynnystä tai virheellisiä merkintöjä.
+`setCellPartProvider()`-metodi tyylittelee yksittäisiä soluja sekä datakohteen että niihin kuuluvan sarakkeen perusteella. Tämä on ihanteellinen tyylittämään tiettyjä arvoja, kuten ikien korostamista, jotka ylittävät rajan tai virheellisiä tietoja.
 
-Kuten riviosat, soluosat määritellään nimellä ja niitä kohdistetaan `::part()`-valitsimella.
+Kuten riviosat, soluosat määritellään nimellä ja kohdistetaan käyttämällä `::part()`-valitsinta.
 
 <ComponentDemo 
 path='/webforj/tablecellstyling?' 
@@ -41,9 +41,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## Reagoiminen tietopäivityksiin {#reacting-to-data-updates}
+## Reagoiminen datapäivityksiin {#reacting-to-data-updates}
 
-Jos sovelluksesi muuttaa tietoja ohjelmallisesti, kuten päivittämällä käyttäjän ikää, taulukko arvioi automaattisesti ja soveltaa uudelleen kaikki siihen liittyvät rivin tai solun tyylit, kun päivitettävä kohde on sitoutettu varastoon.
+Jos sovelluksesi muuttaa tietoja ohjelmallisesti, kuten päivittämällä käyttäjän ikää, taulukko arvioi automaattisesti uudelleen ja soveltaa uudelleen kaikkia siihen liittyviä rivin tai solun tyylejä, kun päivitetty kohde on tallennettu varastoon.
+
+Tässä demossa Soluissa Ikä-sarakkeessa on tyyliteltävä rajan mukaan: yli 30-vuotiaat näkyvät vihreinä, kun taas 30 vuotta tai alle näkyvät punaisina. Napsauttamalla painiketta vaihdetaan Alicen ikä 28:n ja 31:n välillä, mikä laukaisee `setCellPartProvider`-metodin, jotta sovelletaan oikeaa tyyliä datan sitoutumisen yhteydessä.
 
 <ComponentDemo 
 path='/webforj/tabledynamicstyling?' 
@@ -53,7 +55,7 @@ height='475px'
 
 ## Raidalliset rivit {#striped-rows}
 
-Ota käyttöön vuorottelevat taustavärit riveille parantaaksesi luettavuutta:
+Ota käyttöön vuorottelevat taustavärit riveille luettavuuden parantamiseksi:
 
 ```java
 // Käytä raidallista rivityylitystä
@@ -62,17 +64,17 @@ table.setStriped(true);
 
 ## Reunat {#borders}
 
-Määritä, mitkä reunat näytetään `Table`:n, sarakkeiden ja rivien ympärillä:
+Määritä, mitkä reunoja näytetään `Table`-aseman, sarakkeiden ja rivien ympärillä:
 
 ```java
-// Ota kaikki reunat käyttöön
+// Ota käyttöön kaikki reunat
 table.setBordersVisible(EnumSet.of(Table.Border.AROUND, Table.Border.COLUMNS, Table.Border.ROWS));
 
 // Poista kaikki reunat
 table.setBordersVisible(EnumSet.noneOf(Table.Border.class));
 ```
 
-Alla oleva demo esittelee yksinkertaisen tavan sovittaa `Table`:n visuaalinen ilme sovelluksesi muuhun osaan käyttäen `setStriped()` ja `setBordersVisible()`.
+Alla oleva demo esittelee yksinkertaisen tavan sovittaa `Table`:n visuaalinen ulkoasu sovelluksen muuhun osaan käyttämällä `setStriped()` ja `setBordersVisible()`.
 
 <ComponentDemo 
 path='/webforj/tablelayoutstyling?' 
@@ -80,6 +82,6 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-:::tip Tietojen hallinta ja kysely
-Lisätietoja `Repository`-mallin käytöstä kokoelmainen hallitsemiseen ja kyselyyn, katso [Repository-artikkelit](/docs/advanced/repository/overview).
+:::tip Datan hallinta ja kysely
+Lisätietoja siitä, miten voit käyttää `Repository`-mallia hallitaksesi ja kysyä kokoelmia, katso [Repository-artikkelit](/docs/advanced/repository/overview).
 :::
