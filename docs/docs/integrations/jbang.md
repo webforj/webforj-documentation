@@ -248,10 +248,6 @@ If your browser doesn't open automatically, check the terminal output for the UR
 jbang -Dwebforj.devtools.browser.open=false HelloWorld.java
 ```
 
-### Firewall prompts {#firewall-prompts}
-
-On first run, your operating system may prompt you to allow network access. This is normal—the embedded server needs to accept browser connections.
-
 ## Transitioning to a full project {#transitioning}
 
 When your prototype grows beyond a single file, create a proper project using [startforJ](https://docs.webforj.com/startforj) or the [Maven archetype](./spring/spring-boot#option-2-using-the-command-line). You can copy your script logic directly into the generated project structure.
