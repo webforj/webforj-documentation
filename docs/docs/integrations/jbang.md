@@ -49,6 +49,15 @@ Verify the installation:
 jbang --version
 ```
 
+:::info Default Java version
+When you run JBang for the first time, and no JDK is found, JBang will try to install a JDK for you. You can control the default JDK version and vendor by setting the `JBANG_DEFAULT_JAVA_VERSION` and `JBANG_JDK_VENDOR` environment variables. It is recommended to use an OpenJDK vendor version of Java to ensure execution without a webforJ watermark. Run these commands prior to installing Jbang:
+
+```bash 
+export JBANG_DEFAULT_JAVA_VERSION=21 
+export JBANG_JDK_VENDOR=openjdk
+```
+:::
+
 :::tip[Learn more about JBang]
 For comprehensive JBang documentation, see:
 - [JBang Getting Started](https://www.jbang.dev/documentation/guide/latest/index.html) - Installation and basics
@@ -225,28 +234,6 @@ JBang scripts don't support hot reload. To see changes:
 3. Run `jbang HelloWorld.java` again
 
 For rapid iteration with hot reload, consider using a [full Maven project with Spring DevTools](./spring/spring-boot).
-
-## Troubleshooting {#troubleshooting}
-
-### First run is slow {#first-run-slow}
-
-The first execution downloads dependencies and may take longer. Subsequent runs use cached dependencies and start faster.
-
-### Port already in use {#port-in-use}
-
-The JBang starter uses a random port by default, so port conflicts are rare. If you need a specific port:
-
-```bash
-jbang -Dserver.port=8080 HelloWorld.java
-```
-
-### Browser doesn't open {#browser-no-open}
-
-If your browser doesn't open automatically, check the terminal output for the URL (usually `http://localhost:<port>`) and open it manually. To disable auto-open:
-
-```bash
-jbang -Dwebforj.devtools.browser.open=false HelloWorld.java
-```
 
 ## Transitioning to a full project {#transitioning}
 
