@@ -13,7 +13,7 @@ hide_table_of_contents: false
 If you're lucky enough to be writing a new web app from scratch, it's easy to see how webforJ could benefit you. 
 webforJ simplifies your deployment and provides a [UI framework of components](../../docs/components/overview) that conforms to web standards and user expectations, all while you enjoy the familiar experience of coding in Java and integrating with the Java ecosystem. 
 But what if you already have a Java desktop app, and you need to deploy it to the web? 
-How do you modernize your legacy code, and how can webforJ help?
+Do you have to rewrite the whole thing, or can you **modernize your legacy Java code into a fully functional web app**?
 Look no further, because webforJ has the answer: deploy your existing Java app to the web quickly with Webswing, and gradually modernize it into a true web app with webforJ.
 
 <!-- truncate -->
@@ -21,13 +21,13 @@ Look no further, because webforJ has the answer: deploy your existing Java app t
 ## What is Webswing?
 ![Webswing logo](./webswing.png)
 [Webswing](https://www.webswing.org/) provides a quick, low-cost way to get your Java app online, whether it's written in Swing, JavaFX, SWT, NetBeans, or Oracle Forms. 
-Essentially, Webswing is a web server that you can use to host your desktop Java apps in a browser, making them available on the web without any code changes. 
-Instead of scrapping your codebase and starting from scratch, you can simply host it in a browser as-is. 
+Essentially, Webswing is a web server that hosts your desktop Java apps, making them available on the web without any code changes. 
+Instead of scrapping your codebase and starting from scratch, you can simply host it with Webswing and run it in a browser as-is. 
 
 Hosting your app on the web comes with a "host" of benefits. 
 For one, users are able to access your app from any device with a browser.
 Users also don't need to download any software or worry about version compatibility and upgrades. 
-By hosting your app, you take care of all of that for them, streamlining their experience so they can focus on the things they care about. 
+By making your app available on the web, you take care of all of that for them, streamlining their experience so they can focus on the things they care about. 
 
 Using Webswing to host your app gives you *speed*, *simplicity*, and *stability*.
 It gets your app online quickly, allowing your users to enjoy the benefits of a web app immediately, without waiting on lengthy development efforts. 
@@ -40,8 +40,8 @@ So what's the next step?
 ## Webswing + webforJ
 
 Although Webswing is available as a standalone option, the story doesn't have to end there. 
-The partnership of webforJ and Webswing provides a complete roadmap for Java app modernization, making web development in Java possible, no matter where you're starting from.
-So, to set yourself up for future success, use Webswing and webforJ together! 
+The partnership of webforJ and Webswing provides a **complete roadmap for Java app modernization**, making web development in Java possible, no matter where you're starting from.
+So, to set yourself up for future success, use Webswing and webforJ together, and be a Java web developer! 
 When you use Webswing with webforJ, in addition to bringing your app immediately to the web, you also crucially create a clear path forward for your future development.
 
 ## Implementation
@@ -52,7 +52,7 @@ See the Webswing integration [Communication](../../docs/integrations/webswing/co
 
 ## Incremental modernization
 
-Once you deploy your app with the WebswingConnector component in webforJ, you can start modernizing it incrementally, while maintaining full functionality. 
+Once you deploy your app with the `WebswingConnector` component in webforJ, you can start modernizing it incrementally, while maintaining full functionality. 
 See the [modernization tutorial](../../docs/integrations/webswing/tutorial) for more information on this process. 
 In short, it's easy to keep everything working while you convert portions of your app to webforJ components.
 Every dialog or menu that you implement in webforJ will improve your users' experience and convey that your app is at home on the web. 
