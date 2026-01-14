@@ -1,0 +1,65 @@
+.avatar-demo__panel {
+  background: var(--dwc-color-white);
+  border-radius: var(--dwc-border-radius-m);
+  box-shadow: var(--dwc-shadow-m);
+  width: 300px;
+  overflow: hidden;
+  border: 1px solid var(--dwc-color-default);
+}
+
+.avatar-demo__project-header {
+  padding: var(--dwc-space-m);
+  border-bottom: 1px solid var(--dwc-color-default);
+}
+
+.avatar-demo__project-header dwc-icon {
+  font-size: 24px;
+  color: var(--dwc-color-primary);
+}
+
+.avatar-demo__project-name {
+  font-weight: 600;
+  font-size: 1em;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.avatar-demo__section-label {
+  display: block;
+  padding: var(--dwc-space-m) var(--dwc-space-m) var(--dwc-space-xs);
+  font-size: 0.75em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--dwc-color-default-text);
+}
+
+.avatar-demo__row {
+  padding: var(--dwc-space-m);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.avatar-demo__row:hover {
+  background-color: var(--dwc-color-default);
+}
+
+.avatar-demo__row:last-child {
+  padding-bottom: var(--dwc-space-m);
+}
+
+.avatar-demo__info {
+  gap: 0 !important;
+}
+
+.avatar-demo__name {
+  font-weight: 500;
+  font-size: 0.9em;
+  line-height: 1.2;
+}
+
+.avatar-demo__role {
+  font-size: 0.85em;
+  color: var(--dwc-color-default-text);
+  line-height: 1.2;
+}
