@@ -1,17 +1,15 @@
 ---
-title: Working with data
+title: Working with Data
 sidebar_position: 3
+description: Step 2 - Learn about creating a Spring data model.
 ---
 
+In this step, you’ll learn how to create a data model using Spring and display that data visually. 
+By the end of this step, the app created in the previous step, [Creating a Basic App](./creating-a-basic-app), will have a table that displays data about customers. Following along will teach you about:
 
-This step adds data management and display capabilities to the demo app. You’ll define a `Customer` entity, use a Spring Data repository and service for data access, and display customer data in a [`Table`](../../components/table/overview) component.
-
-This and all future steps use a H2 database. To use H2 with Spring Boot, add the H2 dependency to your pom.xml and set `spring.datasource.url=jdbc:h2:mem:testdb` in your `application.properties`. Spring Boot will auto-configure and start the H2 database for you.
-
-By the end of this step, the app from the [previous step](./creating-a-basic-app) will display a table with customer data, ready for further extension. To run the app:
-
-- Go to the `2-working-with-data` directory
-- Run `mvn spring-boot:run`
+- Spring annotations
+- Managing data
+- The webforJ `Table` component
 
 <!-- vale off -->
 
@@ -23,15 +21,54 @@ By the end of this step, the app from the [previous step](./creating-a-basic-app
 
 <!-- vale on -->
 
+## Dependencies and configurations {#dependencies-and-configurations}
 
-## Creating a data model
+This tutorial uses [H2 database](https://www.h2database.com/html/main.html) and in a future step, the Jakarta Persistence API (JPA) through
+[Spring Data JPA](https://docs.spring.io/spring-data/jpa/reference/index.html). This requires you to add dependenices to `pom.xml` and update `application.properties`. This will be the last time you’ll need to modify these two files for the rest of the tutorial.
 
-The `Customer` entity is a JPA model class, used with Spring Data and webforJ’s `Table`. It encapsulates customer attributes and provides a unique key for each row.
+In your POM, add the following dependencies:
+
+```xml
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+<dependency>
+  <groupId>com.h2database</groupId>
+  <artifactId>h2</artifactId>
+  <scope>runtime</scope>
+</dependency>
+```
+
+In `application.properties`, inside `src/main/resources`, add the following:
+
+```
+# H2 Database configuration
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+
+# JPA configuration
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=update
+```
+
+:::info Accessing data
+This tutorial uses an in-memory database and the default credentials for accessing data. Go to Spring's [Data Access](https://docs.spring.io/spring-boot/how-to/data-access.html) documentation to learn about specific Spring Boot configuration options.
+:::
+
+## Creating a data model {#creating-a-data-model}
+
+Before visually displaying or creating the data, this tutorial needs a way to represent the data for each customer, including their name, country, and company. Using Spring, this is done with a class that has a `@Entity` annotation.
+
+Create a class in `src/main/java/com/webforj/demos/entity` named `Customer.java`. It should have the `@Entity` annotation and include getter and setter methods for the customer values.
 
 ```java title="Customer.java"
 @Entity
 @Table(name = "customers")
 public class Customer implements HasEntityKey {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -45,29 +82,60 @@ public class Customer implements HasEntityKey {
     UNKNOWN, GERMANY, ENGLAND, ITALY, USA
   }
 
-  // Getters, setters, and getEntityKey() returning id
+  // Getters and setters
+
+  @Override
+  public Object getEntityKey() {
+    return id;
+  }
 }
 ```
 
-
-:::info Using `HasEntityKey` for unique identifiers
-Implementing `HasEntityKey` allows the `Table` to uniquely identify each row using the entity’s primary key (`id`). This is important for correct row management and updates.
+:::note Unique IDs
+The created data model will also need a unique `id` for each entity. That’s done by implementing `HasEntityKey`, adding the `@Id` annotation, and making the `id` a generated value with `GeneratedValue(strategy = GenerationType.IDENTITY)`.
 :::
 
-With the `Customer` data model in place, the next step is to manage and organize these models within the app.
+With the `Customer` data model in place, you can now start adding business logic to your app.
 
+## Managing data {#managing-data}
 
-## Creating a service and repository
+Once you have a data model, adding a repository and a service to your app creates a means to have business logic. This provides you and end-users access to methods that can add, delete, and update customer data as you see fit.
 
-Spring Boot integration lets you use Spring Data repositories and services for data access. The `CustomerService` class provides methods to create, update, delete, and query customers, and exposes a `SpringDataRepository` for use with webforJ’s `Table`.
+### Creating a repository {#creating-a-repository}
 
-Note that there are three spring annotations used here:
+Create a repository interface in `src/main/java/com/webforj/demos/repository` that retrieves `Customer` entities. This interface must also have the Spring `@Repository` annotation:
 
-- `@Service` marks a class as a service component in Spring, making it automatically detected and managed as a bean for business logic or reusable operations.
+```java title="CustomerRepository.java"
+@Repository
+public interface CustomerRepository extends JpaRepository<Customer, Long>, JpaSpecificationExecutor<Customer> {
+}
+```
 
-- `@Transactional` tells Spring to run the method or class within a database transaction, so all operations inside are committed or rolled back together. More detail is available in their official [documentation](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html#page-title).
+This tutorial’s repository extends `JpaRepository` and `JpaSpecificationExecutor` instead of `CrudRepository` because in a future step, [Validating and Binding Data](/docs/introduction/tutorial/validating-and-binding-data), you’ll learn how to use Jakarta validation for the `Customer` entity.
 
-- `@Autowired` tells Spring to automatically inject the required dependency into a field, constructor, or method. This means you don’t have to create the object yourself—Spring finds and supplies it from its app context. More detail is available in their official [documentation](https://docs.spring.io/spring-framework/reference/core/beans/annotation-config/autowired.html).
+Also, `CustomerRepository`, doesn't have declared methods. The actual business logic will reside in a service class.
+
+:::info Spring documentation links
+
+Here are three links to Spring’s documentation that will help you better understand Spring repositories:
+
+- [Working with Spring Data Repositories](https://docs.spring.io/spring-data/commons/reference/repositories.html)
+- [Spring Data JPA Overview](https://docs.spring.io/spring-data/jpa/reference/index.html)
+- [Spring Data JPA Specifications](https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html)
+- [`JpaRepository`](https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html)
+:::
+
+### Creating a service {#creating-a-service}
+
+In `src/main/java/com/webforj/demos/service`, create a `CustomerService` class. This will provide methods to create, update, delete, and query customers, and exposes a `SpringDataRepository` for use within a webforJ `Table` component .
+
+This service class you'll create uses three Spring annotations:
+
+- **`@Service`** - This marks a class as a service component in Spring, making it automatically detected and managed as a bean for business logic or reusable operations.
+
+- **`@Transactional`** - This annotation tells Spring to run the method or class within a database transaction, so all operations inside are committed or rolled back together. More detail is available in Spring’s documentation, [Using @Transactional](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html#page-title).
+
+- **`@Autowired`** Spring uses this annotation to inject required dependencies. For this tutorial, it’s used for a constructor of a Spring component you’ve already defined, `CustomerRepository`. More detail is available in Spring’s documentation, [Using @Autowired](https://docs.spring.io/spring-framework/reference/core/beans/annotation-config/autowired.html).
 
 ```java title="CustomerService.java"
 @Service
@@ -105,16 +173,126 @@ public class CustomerService {
 }
 ```
 
-:::note
-`SpringDataRepository` is a webforJ wrapper that lets you connect UI components directly to Spring Data repositories. It simplifies data binding and CRUD operations by allowing your webforJ tables and forms to work freely with your Spring-managed data layer.
+:::tip Filtering
+Using the `SpringDataRepository` webforJ wrapper lets you connect UI components directly to Spring Data repositories. It simplifies data binding and CRUD operations by allowing your webforJ tables and forms to work freely with your Spring-managed data layer.
 :::
 
+## Loading initial data {#loading-initial-data}
 
-## Displaying data in a table
+For this tutorial, the initial set of customer data comes from a static JSON file.
+For your convience, you can copy the following data and create the static JSON file inside `src/main/resources/static/data`:
 
-The main app class injects the `CustomerService` and configures a `Table<Customer>` to display customer data.
+<!-- vale off -->
+<ExpandableCode title="customers.json" language="json" startLine={1} endLine={13}>
+{`
+[
+  {
+    "firstName": "Alice",
+    "lastName": "Smith",
+    "company": "TechCorp",
+    "country": "GERMANY"
+  },
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "company": "Innovatech",
+    "country": "ITALY"
+  },
+  {
+    "firstName": "Emma",
+    "lastName": "Brown",
+    "company": "SoftSolutions",
+    "country": "ENGLAND"
+  },
+  {
+    "firstName": "Liam",
+    "lastName": "Jones",
+    "company": "FinWise",
+    "country": "UNKNOWN"
+  },
+  {
+    "firstName": "Sophia",
+    "lastName": "Taylor",
+    "company": "DataWorks",
+    "country": "GERMANY"
+  },
+  {
+    "firstName": "Noah",
+    "lastName": "Wilson",
+    "company": "EcoBuild",
+    "country": "ITALY"
+  },
+  {
+    "firstName": "Olivia",
+    "lastName": "Moore",
+    "company": "NextGen",
+    "country": "ENGLAND"
+  },
+  {
+    "firstName": "James",
+    "lastName": "Anderson",
+    "company": "BlueTech",
+    "country": "UNKNOWN"
+  },
+  {
+    "firstName": "Isabella",
+    "lastName": "Thomas",
+    "company": "FutureLogic",
+    "country": "GERMANY"
+  },
+  {
+    "firstName": "Lucas",
+    "lastName": "White",
+    "company": "GreenEnergy",
+    "country": "ITALY"
+  }
+]
+`}
+</ExpandableCode>
+<!-- vale on -->
 
-```java title="Application.java"
+Then, the app needs a way to retrieve this data when it starts. In `src/main/java/com/webforj/demos/config`, create a `DataInitializer` class. Like the service class, this Spring component will also use the `@Autowired` annotation to inject needed dependencies.
+
+Now, when the app runs, if there are no customers detected, it will load customers from the static JSON file:
+
+```java title="DataIntializer.java"
+@Component
+public class DataInitializer implements CommandLineRunner {
+
+  @Autowired
+  private CustomerService customerService;
+
+  @Override
+  public void run(String... args) {
+    if (customerService.getTotalCustomersCount() == 0) {
+      loadCustomersFromJson();
+    }
+  }
+
+  private void loadCustomersFromJson() {
+    ObjectMapper mapper = new ObjectMapper();
+    try (InputStream is = getClass().getResourceAsStream("/static/data/customers.json")) {
+      List<Customer> customers = mapper.readValue(is, new TypeReference<List<Customer>>() {
+      });
+      for (Customer customer : customers) {
+        customerService.createCustomer(customer);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+## Displaying data visually {#displaying-data-visually}
+
+The final part of this step is to use the [`Table`](/docs/components/table/overview) component and connect it to the Spring data.
+
+The table uses methods from the `Customer` entity to create the columns. This allows you to display only certain values for each customer. Then, using the `CustomerService` service retrieves the customer data to populate the table.
+
+The highlighted portions of the `Application` class add the `Table` component, define its columns, and use `CustomerService` to retrieve the repository:
+
+```java title="Application.java" {6-10,21-32,34}
 @SpringBootApplication
 @StyleSheet("ws://css/app.css")
 @AppTheme("system")
@@ -138,20 +316,33 @@ public class Application extends App {
     Table<Customer> table = new Table<>();
 
     mainFrame.addClassName("mainFrame");
-    table.setHeight("294px");
-    table.setWidth(1000);
+    table.setSize("1000px", "294px");
 
-    table.addColumn("First Name", Customer::getFirstName);
-    table.addColumn("Last Name", Customer::getLastName);
-    table.addColumn("Company", Customer::getCompany);
-    table.addColumn("Country", Customer::getCountry);
+    table.addColumn("firstName", Customer::getFirstName).setLabel("First Name");
+    table.addColumn("lastName", Customer::getLastName).setLabel("Last Name");
+    table.addColumn("company", Customer::getCompany).setLabel("Company");
+    table.addColumn("country", Customer::getCountry).setLabel("Country");
+    table.setColumnsToAutoFit();
 
     table.setRepository(customerService.getFilterableRepository());
     btn.setTheme(ButtonTheme.PRIMARY).addClickListener(e -> OptionDialog.showMessageDialog("This is a demo!", "Info"));
     mainFrame.add(demo, btn, table);
   }
+
 }
 ```
 
+## Running the app {#running-the-app}
 
-With these changes, the app loads customer data from the database (or in-memory store), and displays it in a table. The next step will introduce routing and multiple views for editing and adding customers.
+When you’ve finished this step, you can compare it to [2-working-with-data](https://github.com/webforj/webforj-demo-application/tree/main/2-working-with-data) on GitHub. To see the app in action:
+
+1. Navigate to the top level directory containing the `pom.xml` file, this is `2-working-with-data` if you're following along with the version on GitHub.
+
+2. Use the following Maven command to run the Spring Boot app locally:
+    ```bash
+    mvn
+    ```
+
+3. Open your browser and go to http://localhost:8080 to view the app.
+
+With these changes, the app loads customer data from the database (or in-memory store), and displays it in a `Table` component. The next step introduces routing and multiple views for editing and adding customers.

@@ -1,16 +1,25 @@
 ---
-title: Validating and binding data
+title: Validating and Binding Data
 sidebar_position: 5
 pagination_next: null
+description: Step 4 - Learn how to add validation checks.
 ---
-
 
 [Data binding](../../data-binding/overview.md) connects UI components directly with your data model, enabling automatic synchronization of values. This reduces boilerplate and improves reliability. Validation checks that form data follows rules such as being non-empty or matching a pattern. With webforJ and Spring Boot, you can use Jakarta validation annotations and webforJ’s binding system for a user-friendly experience.
 
-To run the app:
 
-- Go to the `4-validating-and-binding-data` directory
-- Run `mvn spring-boot:run`
+```
+webforj-demo-application
+│   .gitignore
+│   LICENSE
+│   README.md
+│
+├───1-creating-a-basic-app  
+├───2-working-with-data
+├───3-scaling-with-routing-and-composites
+// highlight-next-line
+└───4-validating-and-binding-data
+```
 
 <div class="videos-container">
   <video controls>
@@ -110,3 +119,21 @@ private void submitCustomer() {
 ```
 
 With these changes, the app now supports data binding and validation using Spring Boot and webforJ. Form inputs are synchronized with the model and checked against validation rules automatically.
+
+## Running the app {#running-the-app}
+
+When you’ve finished this step, you can compare it to [4-validating-and-binding-data](https://github.com/webforj/webforj-demo-application/tree/main/4-validating-and-binding-data) on GitHub. To see the app in action:
+
+1. Navigate to the top level directory containing the `pom.xml` file, this is `4-validating-and-binding-data` if you're following along with the version on GitHub.
+
+2. Use the following Maven command to run the Spring Boot app locally:
+    ```bash
+    mvn
+    ```
+
+3. Open your browser and go to http://localhost:8080 to view the app.
+
+
+:::info Next steps
+Looking for more ways to improve your app from this tutorial? You can try using the [`AppLayout`](/docs/components/app-layout) component as a wrapper to add your customer table and add more features.
+:::

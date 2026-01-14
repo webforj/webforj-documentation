@@ -1,61 +1,40 @@
 ---
 title: Creating a Basic App
 sidebar_position: 2
+description: Step 1 - Learn how to add components to an app.
 ---
 
+In [Project Setup](/docs/introduction/tutorial/project-setup), you generated a webforJ project. Now it’s time to create the main class for the project and add an interactive interface using webforJ components. By the end of this step, you’ll learn about:
 
-This first step lays the foundation for your customer management app by creating a simple, interactive interface using webforJ with Spring Boot. You’ll set up a minimal Spring Boot project, define your main app class, and build a UI with a button and dialog. This straightforward implementation introduces key components and gives you a feel for how webforJ works.
+- The entry point for apps using webforJ and Spring Boot
+- webforJ and HTML element components
+- Using CSS to style components
 
-**Note:** this step uses a single `Application` class that directly hosts the UI content. Routing and separate view classes will be introduced in later steps.
+<!-- Insert video here -->
 
-By the end of this step, you’ll have a running app that demonstrates basic interaction and is ready for further extension.
+## The entry point {#entry-point}
 
----
+Every webforJ app contains a single class that extends <JavadocLink type="foundation" location="com/webforj/App" code='true'>App</JavadocLink>. For this tutorial, and other published webforJ projects, it's commonly called `Application`. This class is inside a package that's named after the given `groupId`:
 
-## Prerequisites
-
-- Java 17 or 21
-- Maven
-- A Java IDE (e.g., IntelliJ IDEA, Eclipse, VSCode)
-- Web browser
-
----
-
-## 1. Project setup
-
-You can create your project using [startforJ](https://docs.webforj.com/startforj) (choose the “webforJ + Spring Boot” flavor) or with the Maven archetype:
-
-```bash
-mvn -B archetype:generate \
-  -DarchetypeGroupId=com.webforj \
-  -DarchetypeArtifactId=webforj-archetype-hello-world \
-  -DarchetypeVersion=LATEST \
-  -DgroupId=org.example \
-  -DartifactId=my-app \
-  -Dversion=1.0-SNAPSHOT \
-  -Dflavor=webforj-spring
+```
+1-creating-a-basic-app 
+│   .editorconfig
+│   .gitignore
+│   pom.xml
+│   README.md
+│
+├───.vscode
+├───src/main/java
+// highlight-next-line
+│   └──com/webforj/demos
+// highlight-next-line
+│       └──Application.java
+└───target
 ```
 
----
+Inside the `Application` class, the `SpringApplication.run()` method uses the configurations to launch the app. The configurations for the app are derived from the various annotations.
 
-## 2. Main app class
-
-Create a class called `Application.java` that extends `App` and is annotated for Spring Boot and webforJ:
-
-The `@SpringBootApplication` annotation marks this class as the main entry point for a Spring Boot app. It enables auto-configuration, component scanning, and allows Spring Boot to start your app with an embedded server. This means you don't need extra configuration to get your app running. Spring Boot handles it for you.
-
-The `@StyleSheet` annotation loads the style sheet, in this case provided by the [webserver-protocol](../../managing-resources/assets-protocols#the-webserver-protocol).
-
-```java title="Application.java"
-package com.webforj.demos;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import com.webforj.App;
-import com.webforj.annotation.StyleSheet;
-import com.webforj.annotation.AppTheme;
-import com.webforj.annotation.AppProfile;
-
+```java
 @SpringBootApplication
 @StyleSheet("ws://app.css")
 @AppTheme("system")
@@ -64,66 +43,97 @@ public class Application extends App {
   public static void main(String[] args) {
     SpringApplication.run(Application.class, args);
   }
-
-  @Override
-  public void run() {
-    // UI setup goes here
-  }
 }
 ```
 
+### Annotations {#main-class-annotations}
 
+The [`@SpringBootApplication`](https://docs.spring.io/spring-boot/api/java/org/springframework/boot/autoconfigure/SpringBootApplication.html) annotation auto-configures parts of your Spring Boot app. This helps Spring determine when you’re using parts of its framework.
 
----
+`@StyleSheet`, `@AppTheme`, and `@AppTheme` are just a few of the many <JavadocLink type="foundation" location="com/webforj/annotation/package-summary">webforJ annotations</JavadocLink> available when you want to explicitly set configurations or embed JavaScript and CSS resources. `@StyleSheet` will be discussed again later in this step in [Styling with CSS](#styling-with-css).
 
-## 3. Adding components
+## Adding components
 
-Inside the `run()` method, set up your main UI. For example, add a `Frame`, a `Paragraph`, and a `Button`:
+To create your UI, you’ll need to add components. For now, you only have a single-page app, so you'll add components directly to the `Application` class. This is achieved by overriding the `App.run()` method and adding components to a `Frame`.
+
 
 ```java
 @Override
-public void run() {
+public void run() throws WebforjException {
   Frame mainFrame = new Frame();
   Paragraph demo = new Paragraph("Demo Application!");
   Button btn = new Button("Info");
   mainFrame.addClassName("mainFrame");
 
-  btn.setTheme(ButtonTheme.PRIMARY)
-     .addClickListener(e -> OptionDialog.showMessageDialog("This is a demo!", "Info"));
+  btn.setTheme(ButtonTheme.PRIMARY).addClickListener(e -> OptionDialog.showMessageDialog("This is a demo!", "Info"));
   mainFrame.add(demo, btn);
 }
 ```
 
----
+:::tip Multiple pages
+For a more complex app, you’d want to divide the UI into multiple pages for better organization. This concept is taught in a future step in the tutorial, [Scaling with Routing and Composites](/docs/introduction/tutorial/scaling-with-routing-and-composites).
+:::
 
-## 4. Configuration
+### Using webforJ components and HTML elements {#webforj-components-and-html-elements}
 
-- `src/main/resources/application.properties`:
-  ```
-  spring.application.name=DemoApplication
-  server.port=8080
-  webforj.entry = com.webforj.demos.Application
-  webforj.debug=true
-  ```
+Using [webforJ components](/docs/components/overview) makes your app interactive. This step allows the user to take an action with the [Button](/docs/components/button) component, and display a message using the [Message Dialog](/docs/components/option-dialogs/message) component.
 
-- Make sure the spring [dependencies](../../integrations/spring/spring-boot#step-2-add-spring-dependencies) are correctly configured in your POM, if not, add them.
+In the next step, [Working with Data](/docs/introduction/tutorial/working-with-data), you’ll learn how to use the powerful [Table](/docs/components/table/overview) component to visualize data.
 
-- Place your CSS in `src/main/resources/static/app.css` and reference it with `@StyleSheet("ws://app.css")`.
+Additionally, the webforJ framework allows you to easily use standard HTML elements with
+[HTML element components](/docs/building-ui/web-components/html-elements).
+This allows you to add HTML elements to your app by creating Java objects:
 
----
-
-## 5. Running the app
-
-From your project directory, run:
-
-```bash
-mvn spring-boot:run
+```java
+Paragraph demo = new Paragraph("Demo Application!");
 ```
 
-Then open [http://localhost:8080](http://localhost:8080) in your browser.
+## Styling with CSS {#styling-with-css}
 
----
+Using the webforJ framework allows you to add visually appealing components that also come with built-in methods to change styling, like sizing and theming. Additionally, the framework allows you to style using CSS.
 
-## Next steps
+### Referencing a CSS file {#refrencing-a-css-file} 
 
-You now have a working Spring Boot + webforJ app with a simple UI. The next steps will introduce routing, data binding, and more advanced features.
+It's best to have a separate CSS file to keep everything organized and maintainable. Create a file named `app.css` inside `src/main/resources/static`:
+
+```css title="app.css"
+.mainFrame {
+  display: inline-grid;
+  gap: 20px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px dashed;
+  border-radius: 10px;
+}
+```
+
+Then, reference the file in `Application.java`. You’ll do that by using the `@StyleSheet` annotation with the name of the CSS file. For this step, it's `@StyleSheet("ws://app.css")`.
+
+:::tip Webserver protocol
+This tutorial uses a webserver to reference the CSS file. To learn more about how this works, see the [Managing Resources](/docs/managing-resources/overview) section of the documentation.
+:::
+
+### Adding CSS classes to components {#adding-css-classes-to-components}
+
+You can dynamically add or remove class names to components using the `addClassName()` and `removeClassName()` methods. For this tutorial, there’s only one CSS class used:
+
+```java
+mainFrame.addClassName("mainFrame");
+```
+
+## Running the app {#running-the-app}
+
+When you’ve finished this step, you can compare it to [1-creating-a-basic-app](https://github.com/webforj/webforj-demo-application/tree/main/1-creating-a-basic-app) on GitHub. To see the app in action:
+
+1. Navigate to the top level directory containing the `pom.xml` file, this is `1-creating-a-basic-app` if you're following along with the version on GitHub.
+
+2. Use the following Maven command to run the Spring Boot app locally:
+    ```bash
+    mvn
+    ```
+
+3. Open your browser and go to http://localhost:8080 to view the app.
+
+## Next step {#next-step}
+
+After creating a functional app with a basic user interface, the next step is to add a data model and display the results in a `Table` component in [Working with Data](/docs/introduction/tutorial/working-with-data).
