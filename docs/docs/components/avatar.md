@@ -1,6 +1,7 @@
 ---
 title: Avatar
 sidebar_position: 7
+sidebar_class_name: new-content
 ---
 
 <DocChip chip='shadow' />
@@ -85,6 +86,50 @@ avatar.onClick(event -> {
   System.out.println("Avatar clicked!");
 });
 ```
+
+## Themes {#themes}
+
+Themes convey meaning or status—use them to indicate availability, highlight important users, or match your application's design.
+
+The following themes are available:
+
+- `DEFAULT`: Standard appearance
+- `GRAY`: Neutral, subdued appearance
+- `PRIMARY`: Emphasizes primary actions or users
+- `SUCCESS`: Indicates positive status (e.g., online)
+- `WARNING`: Indicates caution (e.g., away)
+- `DANGER`: Indicates error or busy status
+- `INFO`: Provides informational context
+
+Each theme also has an outlined variant for a lighter visual treatment:
+
+<ComponentDemo
+path='/webforj/avatarthemes?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarThemesView.java'
+height='100px'
+/>
+
+## Expanses {#expanses}
+
+Control the avatar size using the `setExpanse()` method. The component supports nine size options ranging from `XXXSMALL` to `XXXLARGE`.
+
+<ComponentDemo
+path='/webforj/avatarexpanses?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarExpansesView.java'
+height='100px'
+/>
+
+## Shapes {#shapes}
+
+Avatars can be displayed as circles or squares. The default shape is `CIRCLE`, which is standard for user avatars. Use `SQUARE` for entities like teams, companies, or applications.
+
+<ComponentDemo
+path='/webforj/avatarshapes?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarShapesView.java'
+height='100px'
+/>
+
+## Team Panel Example {#team-panel-example}
 
 The example below showcases avatars in a team panel context. Each `Avatar` displays either a profile image or auto-generated initials based on the user's name. Clicking an `Avatar` opens a dialog with an enlarged view.
 
