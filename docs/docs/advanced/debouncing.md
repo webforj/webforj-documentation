@@ -40,21 +40,9 @@ When you call `run()` with an action:
 
 The `Debouncer` runs on the UI thread using webforJ's [`Interval`](/docs/advanced/interval) mechanism, so you don't need to wrap UI updates in `Environment.runLater()`.
 
-:::tip
-The delay parameter uses seconds as the unit, not milliseconds. Use `0.3f` for 300ms or `1.5f` for 1.5 seconds.
+:::tip Delay units
+The delay parameter uses seconds as the unit, not milliseconds. Use `0.3f` for 300 ms or `1.5f` for 1.5 seconds.
 :::
-
-## API methods {#api-methods}
-
-The `Debouncer` class provides the following methods:
-
-| Method | Description |
-|--------|-------------|
-| `run(Runnable action)` | Schedules the action to run after the delay. If called again before the delay elapses, the previous action is cancelled and the timer restarts. |
-| `cancel()` | Cancels any pending action without executing it. |
-| `flush()` | Immediately executes the pending action if one exists, then clears it. |
-| `isPending()` | Returns `true` if an action is scheduled but hasn't executed yet. |
-| `getDelay()` | Returns the debounce delay in seconds. |
 
 ## Controlling execution {#controlling-execution}
 
@@ -72,6 +60,21 @@ debounce.run(() -> saveDocument());
 // User navigates away before save executes
 debounce.cancel();
 ```
+
+:::tip Cancelling pending debounces
+Like intervals, it's good practice to cancel pending debounced actions when a component is destroyed. This prevents memory leaks and avoids errors from actions executing on destroyed components:
+
+```java
+public class SearchPanel extends Composite<Div> {
+  private final Debouncer debounce = new Debouncer(0.3f);
+
+  @Override
+  protected void onDidDestroy() {
+    debounce.cancel();
+  }
+}
+```
+:::
 
 ### Forcing immediate execution {#forcing-immediate-execution}
 
@@ -105,53 +108,7 @@ if (debounce.isPending()) {
 }
 ```
 
-## Use cases {#use-cases}
-
-While there are many use cases for the `Debouncer`, the following are some of the most common:
-
-### Search-as-you-type {#search-as-you-type}
-
-One of the most common use cases is delaying search requests until the user pauses typing:
-
-```java
-public class SearchView extends Composite<FlexLayout> {
-  private final Debouncer searchDebounce = new Debouncer(0.3f);
-  private final TextField searchField = new TextField();
-  private final Div results = new Div();
-
-  public SearchView() {
-    searchField.setPlaceholder("Search...");
-    searchField.onModify(e -> {
-      searchDebounce.run(() -> performSearch(searchField.getText()));
-    });
-
-    getBoundComponent().add(searchField, results);
-  }
-
-  private void performSearch(String query) {
-    // Execute search and update results
-    results.setText("Results for: " + query);
-  }
-}
-```
-
-### Auto-save {#auto-save}
-
-Another common scenario is saving changes after the user stops editing, resulting in an auto-save behavior:
-
-```java
-TextArea editor = new TextArea();
-Debouncer saveDebounce = new Debouncer(2f);
-
-editor.onModify(e -> {
-  saveDebounce.run(() -> {
-    saveDocument(editor.getText());
-    showNotification("Document saved");
-  });
-});
-```
-
-## Debouncer vs ElementEventOptions {#debouncer-vs-elementeventoptions}
+## Choosing between `Debouncer` and event debounce options {#choosing-between-debouncer-and-event-debounce-options}
 
 webforJ provides two approaches to debouncing:
 
@@ -172,25 +129,4 @@ options.setDebounce(300);
 element.addEventListener("input", e -> {
   // This handler is debounced on the client
 }, options);
-```
-
-## Best practices {#best-practices}
-
-1. **Choose appropriate delays**: Use shorter delays (200-300ms) for responsive interactions like search, and longer delays (1-2s) for expensive operations like auto-save.
-
-2. **Reuse debouncer instances**: Create one `Debouncer` instance and reuse it rather than creating new instances on each event.
-
-3. **Flush before critical actions**: Call `flush()` before form submission or navigation to ensure pending actions complete.
-
-4. **Cancel on cleanup**: Cancel pending actions when components are destroyed to prevent memory leaks or errors from executing on destroyed components.
-
-```java
-public class SearchPanel extends Composite<Div> {
-  private final Debouncer debounce = new Debouncer(0.3f);
-
-  @Override
-  protected void onDidDestroy() {
-    debounce.cancel();
-  }
-}
 ```

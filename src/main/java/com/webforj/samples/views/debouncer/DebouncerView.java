@@ -42,4 +42,9 @@ public class DebouncerView extends Composite<FlexLayout> {
 
     self.add(input, counter, output);
   }
+
+  @Override
+  protected void onDidDestroy() {
+    debounce.cancel();
+  }
 }
