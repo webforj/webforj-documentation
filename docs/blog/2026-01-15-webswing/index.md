@@ -8,7 +8,7 @@ tags: [Integrations, Modernization, Webswing]
 hide_table_of_contents: false
 ---
 
-![cover image](./blog_webswing_cover.png)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/webswing/blog_webswing_cover.png)
 
 If you're lucky enough to be writing a new web app from scratch, it's easy to see how webforJ could benefit you. 
 webforJ simplifies your deployment and provides a [UI framework of components](../../docs/components/overview) that conforms to web standards and user expectations, all while you enjoy the familiar experience of coding in Java and integrating with the Java ecosystem. 
@@ -19,7 +19,7 @@ Look no further, because webforJ has the answer: deploy your existing Java app t
 <!-- truncate -->
 
 ## What is Webswing?
-![Webswing logo](./webswing.png)
+![Webswing logo](https://cdn.webforj.com/webforj-documentation/blogs/webswing/webswing.png)
 [Webswing](https://www.webswing.org/) provides a quick, low-cost way to get your Java app online, whether it's written in Swing, JavaFX, SWT, NetBeans, or Oracle Forms. 
 Essentially, Webswing is a web server that hosts your desktop Java apps, making them available on the web without any code changes. 
 Instead of scrapping your codebase and starting from scratch, you can simply host it with Webswing and run it in a browser as-is. 
