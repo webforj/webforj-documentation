@@ -2,13 +2,13 @@
 title: "Webswing and webforJ: a modernization roadmap"
 description: "Turn a legacy Java desktop app into a web app by using webforJ and Webswing to deploy it to the web and modernize it incrementally."
 slug: webswing-and-webforj
-date: 2026-01-12
+date: 2026-01-15
 authors: Garrison Osteen
 tags: [Integrations, Modernization, Webswing]
 hide_table_of_contents: false
 ---
 
-![cover image](./cover_webforJ_webswing.png)
+![cover image](./blog_webswing_cover.png)
 
 If you're lucky enough to be writing a new web app from scratch, it's easy to see how webforJ could benefit you. 
 webforJ simplifies your deployment and provides a [UI framework of components](../../docs/components/overview) that conforms to web standards and user expectations, all while you enjoy the familiar experience of coding in Java and integrating with the Java ecosystem. 
