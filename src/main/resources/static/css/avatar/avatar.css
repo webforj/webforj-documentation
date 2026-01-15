@@ -17,16 +17,9 @@
   color: var(--dwc-color-primary);
 }
 
-.avatar-demo__project-name {
-  font-weight: 600;
-  font-size: 1em;
-  margin: 0;
-  line-height: 1.2;
-}
-
 .avatar-demo__section-label {
   display: block;
-  padding: var(--dwc-space-m) var(--dwc-space-m) var(--dwc-space-xs);
+  padding: var(--dwc-space-m);
   font-size: 0.75em;
   font-weight: 600;
   text-transform: uppercase;
@@ -41,21 +34,15 @@
 }
 
 .avatar-demo__row:hover {
-  background-color: var(--dwc-color-default);
-}
-
-.avatar-demo__row:last-child {
-  padding-bottom: var(--dwc-space-m);
+  background-color: var(--dwc-color-primary-alt);
 }
 
 .avatar-demo__info {
-  gap: 0 !important;
+  gap: 0.3em !important;
 }
 
 .avatar-demo__name {
-  font-weight: 500;
   font-size: 0.9em;
-  line-height: 1.2;
 }
 
 .avatar-demo__role {
