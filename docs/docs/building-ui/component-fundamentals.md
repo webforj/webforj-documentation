@@ -1,7 +1,6 @@
 ---
 sidebar_position: 2
-title: Component Fundamentals
-slug: fundamentals
+title: Understanding Components
 sidebar_class_name: new-content
 ---
 
@@ -59,31 +58,29 @@ graph TD
     A --> C[Composite<br/><small>Combine webforJ components</small>]
     A --> D[ElementComposite<br/><small>Wrap web components</small>]
     
-    B --> E[DwcFocusableComponent]
-    E --> F[Button, TextField,<br/>DateField, ComboBox]
+    B --> E[Button, TextField,<br/>DateField, ComboBox]
     
-    D --> G[ElementCompositeContainer<br/><small>Components with slots</small>]
+    D --> F[ElementCompositeContainer<br/><small>Components with slots</small>]
     
     style A fill:#f5f5f5,stroke:#666
     style B fill:#fff4e6,stroke:#ff9800
     style C fill:#e6ffe6,stroke:#00cc00
     style D fill:#e6f3ff,stroke:#0066cc
-    style G fill:#e6f3ff,stroke:#0066cc
     style E fill:#fff4e6,stroke:#ff9800
-    style F fill:#fff4e6,stroke:#ff9800
+    style F fill:#e6f3ff,stroke:#0066cc
     
     classDef userClass stroke-width:3px
-    class C,D,G userClass
+    class C,D,F userClass
 ```
 
 **Classes for developers (use these):**
-- **Composite**: Compose existing webforJ components into reusable business logic units
-- **ElementComposite**: Integrate web components with type-safe property management
-- **ElementCompositeContainer**: Work with web components that contain other components via slots
+- **Composite**
+- **ElementComposite**
+- **ElementCompositeContainer**
 
 **Internal framework classes (never extend directly):**
-- **Component**: Abstract base class - framework internal, don't extend
-- **DwcComponent**: Built-in webforJ components - framework internal, all built-in components are final
+- **Component**
+- **DwcComponent**
 
 :::warning[Never extend `Component` or `DwcComponent`]
 Never extend `Component` or `DwcComponent` directly. All built-in components are final. Always use composition patterns with `Composite` or `ElementComposite`.
@@ -91,19 +88,13 @@ Never extend `Component` or `DwcComponent` directly. All built-in components are
 Attempting to extend `DwcComponent` will throw a runtime exception.
 :::
 
-### What each level provides
+## Concern interfaces: Adding capabilities to your components
 
-**`Component`:** lifecycle management, window association, component identity, `whenAttached()` method
+Concern interfaces are Java interfaces that provide specific capabilities to your components. Each interface adds a set of related methods. For example, `HasSize` adds methods for controlling width and height, while `HasFocus` adds methods for managing focus state.
 
-**`DwcComponent`:** control interaction, property handling, text/HTML management, CSS classes and styles, visibility and sizing, event dispatching
+When you implement a concern interface on your component, you get access to those capabilities without writing any implementation code. The interface provides default implementations that work automatically.
 
-**`Composite`:** combine existing webforJ components, encapsulate layout and behavior, hide implementation details, provide clean APIs
-
-**`ElementComposite`:** type-safe property management via PropertyDescriptors, custom event handling, direct DOM access via `getElement()`, web component lifecycle integration
-
-### Concern interfaces: Adding capabilities to your components
-
-Implementing concern interfaces automatically gives your components the same APIs as built-in webforJ components:
+Implementing concern interfaces gives your custom components the same APIs as built-in webforJ components:
 
 ```java
 // Implement HasSize to get width/height methods automatically
@@ -155,7 +146,4 @@ These hooks are **optional**. Use them when you need to:
 
 For most simple cases, you can initialize components directly in the constructor. Use lifecycle hooks like `onDidCreate()` to defer work when necessary.
 
-## What's next
-
-Ready to build? Start with [Composite Components](composite-components) to create your first custom component.
 
