@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 5
 title: Element Composite
 sidebar_class_name: has-new-content
 slug: element_composite
