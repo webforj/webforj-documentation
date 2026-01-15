@@ -1,5 +1,5 @@
 .avatar-demo__panel {
-  background: var(--dwc-color-white);
+  background: var(--dwc-surface-3);
   border-radius: var(--dwc-border-radius-m);
   box-shadow: var(--dwc-shadow-m);
   width: 300px;
