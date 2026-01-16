@@ -3,6 +3,7 @@
 "AppLayout": "dwc-app-layout",
 "AppNav": "dwc-app-nav",
 "AppNavItem": "dwc-app-nav-item",
+"Avatar": "dwc-avatar",
 "BusyIndicator": "dwc-loading",
 "Button" :"dwc-button",
 "CheckableMenuItem" :"dwc-menuitem",
