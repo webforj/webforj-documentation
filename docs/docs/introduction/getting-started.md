@@ -43,7 +43,7 @@ webforJ comes with several predefined archetypes to help you get started quickly
 Using this information, startforJ will create a basic project from your chosen archetype with your chosen customizations.
 You can choose to download your project as a ZIP file or publish it directly to GitHub.
 
-Once you have downloaded your project, open the project folder in your IDE and move on to [running the app](#running-the-app).
+Once you have downloaded your project, open the project folder in your IDE.
 
 ## Using the command line {#using-the-command-line}
 
