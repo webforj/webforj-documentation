@@ -57,7 +57,7 @@ This creates a complete Spring Boot project with:
 If you have an existing webforJ app, you can add Spring Boot by modifying your project configuration. This process involves updating your Maven configuration, adding Spring dependencies, and converting your main app class.
 
 :::info[For existing projects only]
-Skip this section if you're creating a new project from scratch.
+Skip this section if you're creating a new project from scratch. This guide assumes **webforJ version 25.11 or later**.
 :::
 
 ### Step 1: Update Maven configuration {#step-1-update-maven-configuration}
@@ -102,11 +102,45 @@ If you already have a parent POM, you'll need to import the Spring Boot Bill of 
 
 ### Step 2: Add Spring dependencies {#step-2-add-spring-dependencies}
 
-Add the webforJ Spring Boot starter to your dependencies. Keep your existing webforJ dependency:
+Add the webforJ Spring Boot starter to your dependencies:
+
+:::info[webforJ 25.11+ simplification]
+Starting from **webforJ version 25.11**, the `webforj-spring-boot-starter` includes all core webforJ dependencies transitively. You no longer need to explicitly add the `com.webforj:webforj` dependency.
+
+For versions **before 25.11**, you must include both dependencies separately.
+:::
+
+**For webforJ 25.11 and later:**
 
 ```xml title="pom.xml"
 <dependencies>
-    <!-- Your existing webforJ dependency -->
+    <!-- Add Spring Boot starter (includes webforJ transitively) -->
+    <dependency>
+        <groupId>com.webforj</groupId>
+        <artifactId>webforj-spring-boot-starter</artifactId>
+        <version>${webforj.version}</version>
+    </dependency>
+
+    <!-- Add devtools -->
+    <dependency>
+      <groupId>com.webforj</groupId>
+      <artifactId>webforj-spring-devtools</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <optional>true</optional>
+    </dependency>
+</dependencies>
+```
+
+**For versions before 25.11:**
+
+```xml title="pom.xml"
+<dependencies>
+    <!-- Explicitly add webforJ dependency -->
     <dependency>
         <groupId>com.webforj</groupId>
         <artifactId>webforj</artifactId>
@@ -227,8 +261,8 @@ The following webforJ `application.properties` settings are specific to Spring:
 
 | Property | Type | Description | Default|
 |----------|------|-------------|--------|
-| **`webforj.servletMapping`** | String | URL mapping pattern for the webforJ servlet. | `/*` |
-| **`webforj.excludeUrls`** | List | URL patterns that shouldn't be handled by webforJ when mapped to root. When webforJ is mapped to the root context (`/*`), these URL patterns will be excluded from webforJ handling and can be handled by Spring MVC controllers instead. This allows REST endpoints and other Spring MVC mappings to coexist with webforJ routes. | `[]` |
+| **`webforj.servlet-mapping`** | String | URL mapping pattern for the webforJ servlet. | `/*` |
+| **`webforj.exclude-urls`** | List | URL patterns that shouldn't be handled by webforJ when mapped to root. When webforJ is mapped to the root context (`/*`), these URL patterns will be excluded from webforJ handling and can be handled by Spring MVC controllers instead. This allows REST endpoints and other Spring MVC mappings to coexist with webforJ routes. | `[]` |
 
 ### Configuration differences {#configuration-differences}
 

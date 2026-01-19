@@ -1,37 +1,37 @@
 ---
 title: Setup and Configuration
 sidebar_position: 2
-_i18n_hash: 5d819b2a84de98748b48e7b3b1c9ab66
+_i18n_hash: e3af6f7983bbd6ed7db57428412466c8
 ---
-Webswing integreren met webforJ omvat twee componenten: de Webswing-server die je Swing-app host, en de `WebswingConnector` component in je webforJ-app die deze embed.
+Integreren van Webswing met webforJ omvat twee componenten: de Webswing-server die uw Swing-app host en de `WebswingConnector`-component in uw webforJ-app die deze inbedt.
 
-## Vereisten
+## Voorwaarden {#prerequisites}
 
-Voordat je begint, zorg ervoor dat je de volgende vereisten hebt:
+Voordat u begint, zorg ervoor dat u aan de volgende vereisten voldoet:
 
 - **Java desktopapplicatie**: een Swing-, JavaFX- of SWT-app verpakt als een JAR-bestand
 - **Webswing-server**: download van [webswing.org](https://webswing.org)
-- **webforJ versie `25.10` of later**: vereist voor ondersteuning van `WebswingConnector`
+- **webforJ-versie `25.10` of hoger**: vereist voor ondersteuning van `WebswingConnector`
 
-## Architectuuroverzicht
+## Architectuuroverzicht {#architecture-overview}
 
 De integratiearchitectuur bestaat uit:
 
-1. **Webswing Server**: draait je Swing-app, legt de GUI-rendering vast en verwerkt gebruikersinvoer
-2. **webforJ Applicatie**: host je webapp met de embedded `WebswingConnector`
+1. **Webswing Server**: draait uw Swing-app, vangt de GUI-rendering en verwerkt gebruikersinvoer
+2. **webforJ-toepassing**: host uw webapp met de ingebedde `WebswingConnector`
 3. **Browser Client**: toont zowel de webforJ UI als de ingebedde Swing-app
 
 :::important Poortconfiguratie
-Webswing en webforJ moeten op verschillende poorten draaien om conflicten te voorkomen. Zowel webforJ als Webswing draaien doorgaans op poort `8080`. Je moet ofwel de Webswing-poort of de webforJ-poort wijzigen.
+Webswing en webforJ moeten op verschillende poorten draaien om conflicten te voorkomen. Zowel webforJ als Webswing draaien doorgaans op poort `8080`. U moet ofwel de Webswing-poort of de webforJ-poort wijzigen.
 :::
 
-## Webswing server setup
+## Webswing-serverinstelling {#webswing-server-setup}
 
-### Installatie en opstarten
+### Installatie en opstarten {#installation-and-startup}
 
 1. **Download Webswing** van de [officiële website](https://www.webswing.org/en/downloads)
-2. **Pak het archief uit** op je voorkeurslocatie (bijv. `/opt/webswing` of `C:\webswing`)
-3. **Start de server** met behulp van de platform-specifieke scripts:
+2. **Pak de archiefbestanden uit** naar uw voorkeur locatie (bijv. `/opt/webswing` of `C:\webswing`)
+3. **Start de server** met behulp van de platformspecifieke scripts:
 
 <Tabs>
       <TabItem value="Linux" label="Linux" default>
@@ -51,29 +51,39 @@ Webswing en webforJ moeten op verschillende poorten draaien om conflicten te voo
       </TabItem>
 </Tabs>
 
-4. **Controleer of de server draait** door toegang te krijgen tot `http://localhost:8080`
+4. **Verifieer of de server draait** door `http://localhost:8080` te openen
 
-### Applicatieconfiguratie
+### Toepassingsconfiguratie {#application-configuration}
 
-Zodra de server draait, krijg je toegang tot de adminconsole op `http://localhost:8080/admin` om je Swing-app toe te voegen en te configureren.
+Zodra de server draait, kunt u de adminconsole openen op `http://localhost:8080/admin` om uw Swing-app toe te voegen en te configureren.
 
 Configureer in de adminconsole:
 
-- **Applicatienaam**: wordt onderdeel van het URL-pad (bijv. `myapp` → `http://localhost:8080/myapp/`)
-- **Hoofdkelas**: het toegangspunt van je Swing-app
-- **Classpath**: pad naar je app JAR en afhankelijkheden
-- **JVM-argumenten**: geheugenspecificaties, systeeminstellingen en andere JVM-opties
-- **Thuisdirectory**: werkdirectory voor de app
+- **Applicatienaam**: vormt een deel van het URL-pad (bijv. `myapp` → `http://localhost:8080/myapp/`)
+- **Hoofdklasse**: het toegangspunt van uw Swing-app
+- **Classpath**: pad naar uw app JAR en afhankelijkheden
+- **JVM-argumenten**: geheugensinstellingen, systeemparameters en andere JVM-opties
+- **Huisdirectory**: werkdirectory voor de app
 
-Na configuratie is je Swing-app toegankelijk op `http://localhost:8080/[app-name]/`
+Na configuratie is uw Swing-app toegankelijk op `http://localhost:8080/[app-name]/`
 
-## webforJ Integratie
+### CORS-configuratie {#cors-configuration}
 
-Zodra je Webswing-server draait met je geconfigureerde Swing-app, kun je deze integreren in je webforJ-app. Dit omvat het toevoegen van de afhankelijkheid, het configureren van Cross-Origin Resource Sharing (CORS) en het maken van een weergave met de `WebswingConnector` component.
+Bij het inbedden van Webswing in een webforJ-app die op een andere poort of domein draait, moet u Cross-Origin Resource Sharing (CORS) in Webswing configureren. Dit stelt de browser in staat om Webswing-inhoud vanuit uw webforJ-pagina te laden.
 
-### Voeg afhankelijkheid toe
+Navigeer in de Webswing-adminconsole naar de configuratie van uw app en stel in:
 
-Voeg de Webswing integratiemodule toe aan je webforJ-project. Dit biedt de `WebswingConnector` component en gerelateerde klassen.
+- **Toegestane Oorsprongen**: Voeg de oorsprong van uw webforJ-app toe (bijv. `http://localhost:8090` of `*` voor ontwikkeling)
+
+Deze instelling komt overeen met de optie `allowedCorsOrigins` in de app-configuratie van Webswing.
+
+## webforJ-integratie {#webforj-integration}
+
+Zodra uw Webswing-server draait met uw geconfigureerde Swing-app en CORS is ingeschakeld, kunt u het integreren in uw webforJ-app.
+
+### Voeg afhankelijkheid toe {#add-dependency}
+
+Voeg de Webswing-integratiemodule toe aan uw webforJ-project. Dit biedt de `WebswingConnector`-component en verwante klassen.
 
 ```xml
 <dependency>
@@ -82,76 +92,9 @@ Voeg de Webswing integratiemodule toe aan je webforJ-project. Dit biedt de `Webs
 </dependency>
 ```
 
-### CORS-configuratie
+### Basisimplementatie {#basic-implementation}
 
-Cross-Origin Resource Sharing (CORS) configuratie is vereist wanneer Webswing en webforJ op verschillende poorten of domeinen draaien. Het same-origin beleid van de browser blokkeert aanvragen tussen verschillende oorsprongen zonder de juiste CORS-headers.
-
-Maak een servletfilter om CORS-headers aan je webforJ-app toe te voegen:
-
-```java title="CorsFilter.java"
-package com.example.config;
-
-import java.io.IOException;
-
-import jakarta.servlet.Filter;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.FilterConfig;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
-import jakarta.servlet.http.HttpServletResponse;
-
-public class CorsFilter implements Filter {
-
-  @Override
-  public void init(FilterConfig filterConfig) throws ServletException {
-    // pass
-  }
-
-  @Override
-  public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-      throws IOException, ServletException {
-    if (response instanceof HttpServletResponse) {
-      HttpServletResponse httpResponse = (HttpServletResponse) response;
-      httpResponse.setHeader("Access-Control-Allow-Origin", "*");
-      httpResponse.setHeader("Access-Control-Allow-Methods",
-          "GET, POST, PUT, DELETE, OPTIONS, HEAD");
-      httpResponse.setHeader("Access-Control-Allow-Headers",
-          "Content-Type, Authorization, X-Requested-With");
-      httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
-    }
-
-    chain.doFilter(request, response);
-  }
-
-  @Override
-  public void destroy() {
-    // pass
-  }
-}
-```
-
-Registreer de filter in je `web.xml`:
-
-```xml
-<filter>
-  <filter-name>CorsFilter</filter-name>
-  <filter-class>com.example.config.CorsFilter</filter-class>
-</filter>
-
-<filter-mapping>
-  <filter-name>CorsFilter</filter-name>
-  <url-pattern>/*</url-pattern>
-</filter-mapping>
-```
-
-:::important Toegang in Productieomgevingen
-Voor productieomgevingen, vervang de wildcard (`*`) in `Access-Control-Allow-Origin` met je specifieke Webswing-server URL voor veiligheid.
-:::
-
-### Basisimplementatie
-
-Maak een weergave die je Swing-app embed via de `WebswingConnector`:
+Maak een weergave die uw Swing-app inbedt met de `WebswingConnector`:
 
 ```java title="SwingAppView.java"
 package com.example.views;
@@ -166,10 +109,10 @@ public class SwingAppView extends Composite<Div> {
   private WebswingConnector connector;
 
   public SwingAppView() {
-    // Initialiseer de connector met je Webswing applicatie URL
+    // Initialiseer de connector met uw Webswing-applicatie-URL
     connector = new WebswingConnector("http://localhost:8080/myapp/");
 
-    // Stel de weergavedimensies in
+    // Stel de weergave-afmetingen in
     connector.setSize("100%", "600px");
 
     // Voeg toe aan de weergavecontainer
@@ -178,13 +121,13 @@ public class SwingAppView extends Composite<Div> {
 }
 ```
 
-De connector stelt automatisch een verbinding in met de Webswing-server wanneer deze aan de DOM wordt toegevoegd. De UI van de Swing-app wordt vervolgens binnen de connectorcomponent gerenderd.
+De connector stelt automatisch een verbinding met de Webswing-server tot stand wanneer deze aan de DOM wordt toegevoegd. De UI van de Swing-app wordt vervolgens weergegeven binnen het connectorcomponent.
 
-## Configuratie-opties
+## Configuratieopties {#configuration-options}
 
-De `WebswingOptions` klasse stelt je in staat om het gedrag van de connector aan te passen. Standaard start de connector automatisch wanneer deze wordt aangemaakt en gebruikt deze standaard verbindingsinstellingen. Je kunt dit gedrag aanpassen door een `WebswingOptions` instantie aan te maken en deze toe te passen op de connector.
+De `WebswingOptions`-klasse stelt u in staat om het gedrag van de connector aan te passen. Standaard start de connector automatisch wanneer deze wordt gemaakt en gebruikt deze standaard verbindingsinstellingen. U kunt dit gedrag wijzigen door een `WebswingOptions`-instantie aan te maken en deze op de connector toe te passen.
 
-Bijvoorbeeld, om de uitlogknop te verbergen in een productieomgeving waar je de authenticatie beheert via je webforJ-app:
+Bijvoorbeeld, om de uitlogknop te verbergen in een productiescenario waar u authenticatie beheert via uw webforJ-app:
 
 ```java
 WebswingConnector connector = new WebswingConnector("http://localhost:8080/myapp/");
@@ -195,7 +138,7 @@ WebswingOptions options = new WebswingOptions()
 connector.setOptions(options);
 ```
 
-Of als je handmatige controle nodig hebt over wanneer de verbinding start:
+Of als u handmatige controle nodig heeft over wanneer de verbinding start:
 
 ```java
 // Maak connector zonder automatische start
@@ -207,4 +150,4 @@ connector.setOptions(options);
 connector.start();
 ```
 
-De opties dekken verbiningsbeheer, authenticatie, foutopsporing en monitoring.
+De opties dekken verbindingsbeheer, authenticatie, foutopsporing en monitoring.

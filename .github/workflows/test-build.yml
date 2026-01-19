@@ -13,7 +13,7 @@ concurrency:
 jobs:
   test-build-war:
     name: Test WAR Build (No Deployment)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -23,7 +23,11 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-          cache: 'maven'
+
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.9.9
 
       - name: Build WAR with Maven
         run: mvn clean package -Pen-only

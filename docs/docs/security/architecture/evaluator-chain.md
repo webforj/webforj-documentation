@@ -72,7 +72,7 @@ Four built-in evaluators handle standard annotations:
 | `RolesAllowedEvaluator` | `@RolesAllowed` | Requires authentication and specific role | **Continues chain** (composable) | Runs later |
 
 :::note
-Exact priority numbers are assigned during evaluator registration and differ between implementations. See [Spring Security](/docs/security/getting-started) or [Custom Implementation](/docs/security/architecture/custom-implementation#securityregistrar) for specific values.
+Exact priority numbers are assigned during evaluator registration and differ between implementations. See [Spring Security](/docs/security/getting-started) or [Custom Implementation](/docs/security/architecture/custom-implementation) for specific values.
 :::
 
 ## How evaluators delegate {#how-evaluators-delegate}

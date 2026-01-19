@@ -1,12 +1,16 @@
 ---
 title: Modernization Tutorial
 sidebar_position: 4
-_i18n_hash: d4f256ba28ac621f2280bbd31575f6f1
+_i18n_hash: 97df9e800c5792a1ff22fb6e0e9a33e9
 ---
-Tämä opas käy läpi olemassa olevan Java Swing -sovelluksen modernisointia integroimalla se webforJ:iin käyttäen `WebswingConnector` -komponenttia. Opit tekemään perinteisestä työpöytäsovelluksesta verkkosovelluksen ja lisäämään vähitellen moderneja verkkotoimintoja, kuten verkkopohjaisia dialogeja ja interaktiivisia lomakkeita webforJ-komponenttien avulla.
+Tämä opas käy läpi olemassa olevan Java Swing -sovelluksen modernisoinnin integroimalla se webforJ:hen `WebswingConnector`in avulla. Opit, miten perinteisestä työpöytäsovelluksesta tehdään web-pohjainen, ja lisätään vähitellen moderneja verkkotoimintoja, kuten web-pohjaisia dialogeja ja interaktiivisia lomakkeita webforJ-komponenttien avulla.
+
+:::note Ehdot
+Ennen tämän oppaan aloittamista, suorita [Asetus ja konfigurointi](./setup) -vaiheet Webswing-palvelimen ja CORS-asetusten konfiguroimiseksi.
+:::
 
 :::tip Lähdekoodi
-Tämän oppaan koko lähdekoodi on saatavilla GitHubissa: [webforj/webforj-webswing-integration-tutorial](https://github.com/webforj/webforj-webswing-integration-tutorial)
+Tämän oppaan täydellinen lähdekoodi on saatavilla GitHubissa: [webforj/webforj-webswing-integration-tutorial](https://github.com/webforj/webforj-webswing-integration-tutorial)
 :::
 
 <div class="videos-container">
@@ -15,11 +19,11 @@ Tämän oppaan koko lähdekoodi on saatavilla GitHubissa: [webforj/webforj-websw
   </video>
 </div>
 
-## Tilannekuva
+## Tilannekuva {#the-scenario}
 
-Kuvittele, että sinulla on asiakashallintasovellus, joka on rakennettu Swingillä ja ollut tuotannossa vuosia. Se toimii hyvin, mutta käyttäjät odottavat nyt verkkopääsyä ja modernia käyttöliittymää. Sen sijaan, että kirjoitat sovelluksen alusta alkaen uudelleen, käytät Webswingia tehdäksesi siitä heti verkkosovelluksen, ja lisäät vähitellen moderneja verkkotoimintoja, kuten verkkopohjaisia dialogeja ja lomakkeita webforJ-komponenttien avulla.
+Kuvittele, että sinulla on asiakkuudenhallintasovellus, joka on rakennettu Swingillä ja ollut tuotannossa vuosia. Se toimii hyvin, mutta käyttäjät odottavat nyt verkkopääsyä ja modernia käyttöliittymää. Sen sijaan, että kirjoittaisit sovelluksen kokonaan uusiksi, hyödynnät Webswingiä tehdäksesi siitä heti verkkopohjaisen ja lisäät vähitellen moderneja web-toimintoja, kuten web-pohjaisia dialogeja ja lomakkeita webforJ-komponenttien avulla.
 
-## Aloituskohta: Swing-sovellus
+## Lähtöpiste: Swing-sovellus {#starting-point-the-swing-app}
 
 Esimerkkiswing-sovellus on asiakastaulukko, jossa on tyypilliset CRUD-toiminnot. Kuten monet yritysten Swing-sovellukset, se noudattaa vakiomalleja:
 
@@ -46,7 +50,7 @@ public class Application {
       @Override
       public void mouseClicked(MouseEvent e) {
         if (e.getClickCount() == 2) {
-          // Käsittele kaksoisnapsautus muokkaamista varten
+          // Käsittele kaksoisnapsautus muokkaamiseen
         }
       }
     });
@@ -69,13 +73,13 @@ public class Application {
 }
 ```
 
-Tämä sovellus toimii täydellisesti työpöytäsovelluksena, mutta siitä puuttuu verkkopääsy. Käyttäjien on asennettava Java ja suoritettava JAR-tiedosto paikallisesti.
+Tämä sovellus toimii erinomaisesti työpöytäsovelluksena, mutta sillä ei ole verkkopääsyä. Käyttäjien on asennettava Java ja suoritettava JAR-tiedosto paikallisesti.
 
-## Vaihe 1: tehdä siitä Webswing-tietoinen
+## Vaihe 1: Webswing-tietoisuuden lisääminen {#step-1-making-it-webswing-aware}
 
-Ensimmäinen askel on tehdä Swing-sovelluksesta tietoinen, onko se käynnissä Webswingin alla. Tämä mahdollistaa sen käyttäytymisen mukauttamisen ilman työpöytäsovelluksen yhteensopivuuden rikkoutumista.
+Ensimmäinen askel on tehdä Swing-sovelluksesta tietoinen siitä, onko se käynnissä Webswingissä. Tämä mahdollistaa sen käyttäytymisen mukauttamisen ilman työpöytäyhteensopivuuden rikkomista.
 
-### Webswing-ympäristön tunnistaminen
+### Webswing-ympäristön tunnistaminen {#detecting-the-webswing-environment}
 
 Lisää Webswing API -riippuvuus Swing-projektiisi:
 
@@ -87,7 +91,7 @@ Lisää Webswing API -riippuvuus Swing-projektiisi:
 </dependency>
 ```
 
-Muokkaa sitten sovellustasi tunnistamaan Webswing-suoritusympäristö:
+Muokkaa sitten sovellustasi tunnistamaan Webswing-aika:
 
 ```java
 private void initWebswing() {
@@ -100,11 +104,11 @@ private void initWebswing() {
 }
 ```
 
-Tässä on tärkeä oivallus: `WebswingUtil.getWebswingApi()` palauttaa `null`, kun se suoritetaan tavallisena työpöytäsovelluksena, mikä mahdollistaa kaksimuotisen yhteensopivuuden säilyttämisen.
+Keskeinen oivallus on, että `WebswingUtil.getWebswingApi()` palauttaa `null`, kun sovellus toimii tavallisena työpöytäsovelluksena, mikä mahdollistaa kaksitaitoisen yhteensopivuuden ylläpitämisen.
 
-### Käyttäytymisen mukauttaminen verkkosovellusta varten
+### Käyttäytymisen mukauttaminen verkkodeploytausta varten {#adapting-behavior-for-web-deployment}
 
-Kun tunnistus on paikoillaan, voit nyt mukauttaa sovelluksen käyttäytymistä. Tärkein muutos on, miten käyttäjävuorovaikutuksia käsitellään:
+Kun tunnistus on paikallaan, voit nyt mukauttaa sovelluksen käyttäytymistä. Tärkein muutos on se, miten käyttäjäinteraktiot käsitellään:
 
 ```java
 private void handleDoubleClick(MouseEvent e) {
@@ -121,13 +125,13 @@ private void handleDoubleClick(MouseEvent e) {
 }
 ```
 
-Jakamalla käyttäytymistä `isWebswing`-arvon mukaan koodipohja voi käsitellä molempia ympäristöjä.
+Jakamalla käyttäytymistä `isWebswing`-arvon mukaan, koodipohja voi käsitellä molempia ympäristöjä.
 
-## Vaihe 2: luo webforJ-kääntö
+## Vaihe 2: webforJ-kääreen luominen {#step-2-creating-the-webforj-wrapper}
 
-Nyt kun Swing-sovellus voi kommunikoida tapahtumien kautta, luo webforJ-sovellus, joka upottaa Swing-sovelluksen ja lisää moderneja verkkotoimintoja, kuten verkkopohjaisia dialogeja ja lomakkeita.
+Nyt kun Swing-sovellus voi kommunikoida tapahtumien kautta, luodaan webforJ-sovellus, joka upottaa Swing-sovelluksen ja lisää moderneja web-toimintoja, kuten web-pohjaisia dialogeja ja lomakkeita.
 
-### Liittimen määrittäminen
+### Yhteyden muodostamisen asetukset {#setting-up-the-connector}
 
 `WebswingConnector`-komponentti upottaa Webswingissä isännöidyn sovelluksesi webforJ-näkymään:
 
@@ -145,9 +149,9 @@ public class CustomerTableView extends Composite<FlexLayout> {
 }
 ```
 
-Liitin yhdistää Webswing-palvelimeesi, luoden kaksisuuntaisen viestintäkanavan.
+Liitin yhdistää Webswing-palvelimeesi ja luo kaksisuuntaisen viestintäkanavan.
 
-### Tapahtumien käsittely Swingissä
+### Tapahtumien käsittely Swingistä {#handling-events-from-swing}
 
 Kun Swing-sovellus lähettää tapahtumia (kuten kun käyttäjä kaksoisnapsauttaa riviä), liitin vastaanottaa ne:
 
@@ -169,13 +173,13 @@ connector.onAction(event -> {
 });
 ```
 
-Nyt käyttäjät näkevät nykyaikaisen web-lomakkeen, joka on rakennettu webforJ-komponenteilla sen sijaan, että käyttäisivät Swing-dialogia.
+Nyt käyttäjät näkevät modernin web-lomakkeen, joka on rakennettu webforJ-komponenteilla, sen sijaan että he näkisivät Swing-dioja.
 
-## Vaihe 3: kaksisuuntainen viestintä
+## Vaihe 3: kaksisuuntainen viestintä {#step-3-bidirectional-communication}
 
-Integraatio muuttuu tehokkaaksi, kun viestintä virtaa molempiin suuntiin. WebforJ-sovellus voi lähettää päivityksiä takaisin Swing-sovellukseen, pitäen molemmat käyttöliittymät synkronoituna.
+Integraatiosta tulee voimakas, kun viestintä tapahtuu molempiin suuntiin. WebforJ-sovellus voi lähettää päivityksiä takaisin Swing-sovellukseen, pitäen molemmat käyttöliittymät synkronoituna.
 
-### Päivitysten lähettäminen Swingille
+### Päivitysten lähettäminen Swingiin {#sending-updates-to-swing}
 
 Kun käyttäjä muokkaa asiakasta webforJ-dialogissa:
 
@@ -186,9 +190,9 @@ dialog.onSave(() -> {
 });
 ```
 
-### Päivitysten käsittely Swingissä
+### Päivitysten käsittely Swingissä {#processing-updates-in-swing}
 
-Swing-sovellus kuuntelee näitä päivityksiä ja päivittää näyttöään:
+Swing-sovellus kuuntelee näitä päivityksiä ja päivittää näyttönsä:
 
 ```java
 private void setupWebswingListeners() {
@@ -201,28 +205,28 @@ private void setupWebswingListeners() {
 }
 ```
 
-## Arkkitehtuurin hyödyt
+## Arkkitehtuurin hyödyt {#architecture-benefits}
 
-Tämä lähestymistapa tarjoaa useita etuja täydelliseen uudelleenkirjoitukseen verrattuna:
+Tämä lähestymistapa tarjoaa useita etuja verrattuna täysin uusiksi kirjoittamiseen:
 
-### Välitön verkkosovellus
+### Välitön verkkodeploy {#immediate-web-deployment}
 
-Swing-sovelluksesi on heti verkkopääsyinen ilman koodimuutoksia. Käyttäjät voivat käyttää sitä selaimen kautta samalla, kun työskentelet parannusten parissa.
+Swing-sovelluksesi on heti verkkopohjainen ilman koodimuutoksia. Käyttäjät voivat käyttää sitä selaimen kautta, kun työskentelet parannusten parissa.
 
-### Progressiivinen parannus
+### Vähittäinen parantaminen {#progressive-enhancement}
 
-Aloita vaihtamalla vain muokkausdialogi, ja korvaa vähitellen lisää komponentteja:
+Aloita vain muokkausdialogin korvaamisesta, ja vaihda sitten vähitellen lisää komponentteja:
 
-1. **Vaihe 1**: Upota koko Swing-sovellus, vaihda vain muokkausdialogi
+1. **Vaihe 1**: Upota koko Swing-sovellus, korvaten vain muokkausdialogi
 2. **Vaihe 2**: Lisää webforJ-navigointi ja valikot upotetun sovelluksen ympärille
-3. **Vaihe 3**: Korvaa taulukko webforJ-taulukolla, pitäen Swingin korvaamattomille ominaisuuksille
-4. **Vaihe 4**: Korvaa lopulta kaikki Swing-komponentit
+3. **Vaihe 3**: Korvaa taulukko webforJ-taulukolla, pitäen Swingin korvattavissa ominaisuuksissa
+4. **Vaihe 4**: Lopulta korvata kaikki Swing-komponentit
 
-### Riskien vähentäminen
+### Riskien vähentäminen {#risk-mitigation}
 
 Koska alkuperäinen Swing-sovellus pysyy toiminnassa, voit:
 
-- Palata työpöytätoteutukseen, jos tarvitaan
-- Testata uusia ominaisuuksia rinnakkain olemassa olevien kanssa
+- Palata työpöytädeployantoon tarvittaessa
+- Testata uusia ominaisuuksia olemassa olevien rinnalla
 - Siirtää käyttäjiä vähitellen
-- Säilyttää samat liiketoimintalogiikat
+- Säilyttää saman liiketoimintalogiikan

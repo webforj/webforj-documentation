@@ -18,17 +18,18 @@ import com.webforj.router.annotation.Route;
   dwc-table::part(row-even) {
     background-color: var(--dwc-color-gray-alt);
   }
-
+  
   dwc-table::part(cell-senior) {
     background-color: var(--dwc-color-success-alt);
     color: var(--dwc-color-success-text);
   }
-
+  
   dwc-table::part(cell-junior) {
     background-color: var(--dwc-color-danger-alt);
     color: var(--dwc-color-danger-text);
   }
 """)
+
 public class TableDynamicStylingView extends Composite<FlexLayout> {
 
   private final FlexLayout self = getBoundComponent();
@@ -56,7 +57,7 @@ public class TableDynamicStylingView extends Composite<FlexLayout> {
     table.addColumn("Name", Person::getName).setSortable(true);
     Column<Person, Integer> ageColumn = table.addColumn("Age", Person::getAge).setSortable(true);
     table.addColumn("City", Person::getCity).setSortable(true);
-
+    
     table.setItems(data);
     table.setWidth("100%");
     table.setHeight("400px");
@@ -85,6 +86,7 @@ public class TableDynamicStylingView extends Composite<FlexLayout> {
       Person alice = data.get(0);
       alice.setAge(toggleAge ? 28 : 31);
       toggleAge = !toggleAge;
+      update.setText(toggleAge ? "Decrease Alice Age" : "Increase Alice Age");
       table.getRepository().commit(alice);
     });
 
