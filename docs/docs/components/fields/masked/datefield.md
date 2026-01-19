@@ -95,7 +95,7 @@ For example, assuming that today is `September 15, 2012`, this is how various in
 
 ## Textual date parsing {#textual-date-parsing}
 
-By default, the `MaskedDateField` only accepts numeric input for dates. However, you can enable **textual date parsing** to allow users to enter month and day names in their input. This feature is particularly useful for creating more natural date entry experiences.
+By default, the `MaskedDateField` only accepts numeric input for dates. However, you can enable **textual date parsing** to allow users to enter month and day names in their input. This feature is particularly useful for creating more natural date entry.
 
 To enable textual parsing, use the `setTextualDateParsing()` method:
 
@@ -116,16 +116,17 @@ Month names can appear in any position within the mask, and the field will still
 
 | Mask | Input | Result |
 | ---- | ----- | ------ |
-| `%Ms/%Dz/%Yz` | `Sep/01/25` | ✅ Valid - Parses as September 1, 2025 |
-| `%Ml/%Dz/%Yz` | `September/01/25` | ✅ Valid - Parses as September 1, 2025 |
-| `%Dz/%Ml/%Yz` | `01/September/25` | ✅ Valid - Parses as September 1, 2025 |
-| `%Ms/%Dz/%Yz` | `09/01/25` | ✅ Valid - Numeric fallback still works |
+| `%Ms/%Dz/%Yz` | `Sep/01/25` |  Valid - Parses as September 1, 2025 |
+| `%Ml/%Dz/%Yz` | `September/01/25` |  Valid - Parses as September 1, 2025 |
+| `%Dz/%Ml/%Yz` | `01/September/25` |  Valid - Parses as September 1, 2025 |
+| `%Ms/%Dz/%Yz` | `09/01/25` |  Valid - Numeric fallback still works |
 
+:::info
 All 12 months are supported in both short (Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec) and long (January, February, etc.) forms.
-
+:::
 ### Day name decoration {#day-name-decoration}
 
-Day-of-week names can be included in the input for better readability, but they are **decorative only** and are stripped during parsing. They don't affect the actual date value.
+Day-of-week names can be included in the input for better readability, but they're **decorative only** and are stripped during parsing. They don't affect the actual date value.
 
 - **`%Ds`** - Accepts short day names (Mon, Tue, Wed, etc.)
 - **`%Dl`** - Accepts long day names (Monday, Tuesday, Wednesday, etc.)
@@ -138,9 +139,9 @@ When using day-of-week names (`%Ds` or `%Dl`), your mask **must also include** `
 
 | Mask | Input | Result |
 | ---- | ----- | ------ |
-| `%Ds %Mz/%Dz/%Yz` | `Mon 09/01/25` | ✅ Valid - Day name is decorative |
-| `%Dl %Mz/%Dz/%Yz` | `Monday 09/01/25` | ✅ Valid - Day name is decorative |
-| `%Mz/%Dz/%Yz %Ds` | `09/01/25 Tue` | ✅ Valid - Day name at the end |
+| `%Ds %Mz/%Dz/%Yz` | `Mon 09/01/25` |  Valid - Day name is decorative |
+| `%Dl %Mz/%Dz/%Yz` | `Monday 09/01/25` |  Valid - Day name is decorative |
+| `%Mz/%Dz/%Yz %Ds` | `09/01/25 Tue` |  Valid - Day name at the end |
 | `%Dl/%Mz/%Yz` | `Monday/09/25` | ❌ Invalid - Missing `%Dz` |
 | `%Mz/%Dl/%Yz` | `09/Monday/25` | ❌ Invalid - Missing `%Dz` |
 
@@ -157,12 +158,12 @@ Textual date parsing includes several helpful features:
 
 ### When disabled (default)
 
-If textual date parsing is **not** enabled (the default behavior), text names will not be recognized:
+If textual date parsing is **not** enabled (the default behavior), text names won't be recognized:
 
 | Mask | Input | Result |
 | ---- | ----- | ------ |
 | `%Ms/%Dz/%Yz` | `Sep/01/25` | ❌ Invalid - Names not recognized |
-| `%Ms/%Dz/%Yz` | `09/01/25` | ✅ Valid - Numeric input works |
+| `%Ms/%Dz/%Yz` | `09/01/25` |  Valid - Numeric input works |
 
 
 ## Setting min/max constraints {#setting-minmax-constraints}
