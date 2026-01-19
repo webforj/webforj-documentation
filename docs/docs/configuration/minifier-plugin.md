@@ -7,8 +7,6 @@ title: Minifier Plugin
 
 The webforJ Minifier Plugin automatically optimizes CSS and JavaScript assets during the build process. The plugin discovers assets referenced through webforJ [asset annotations](../managing-resources/importing-assets) and minifies them in place, reducing file sizes and improving load times without manual intervention.
 
-For more information about webforJ performance optimization strategies, see [Client/Server Interaction](../architecture/client-server).
-
 ## Requirements {#requirements}
 
 - Java 17 or higher
@@ -468,24 +466,24 @@ The plugin is designed to never fail your build due to minification errors. When
 3. Review the specific error message for line numbers and details
 4. Consider using `prettyPrint: true` for JavaScript to make debugging easier
 
-### Security Warnings {#security-warnings}
+### Security warnings {#security-warnings}
 
 **Symptoms:**
 ```
 [WARN] Security violation for URL '../../../etc/passwd': Path traversal detected
 ```
-
+<!--Vale off-->
 **Cause:** The URL contains path traversal attempts that could access files outside the resources directory
 
 **Solution:** Use proper webforJ URL protocols (`ws://`, `context://`) and valid relative paths
-
-## Frequently Asked Questions {#frequently-asked-questions}
+<!--Vale on-->
+## Frequently asked questions {#frequently-asked-questions}
 
 ### Why configure the annotation processor separately? {#why-separate-annotation-processor}
 
-Maven 3+ requires explicit annotation processor declarations for security reasons. Since annotation processing occurs during compilation (before the minify plugin runs), it cannot be automatically configured. This is the same requirement for popular tools like Lombok, MapStruct, and Dagger.
+Maven 3+ requires explicit annotation processor declarations for security reasons. Since annotation processing occurs during compilation (before the minify plugin runs), it can't be automatically configured. This is the same requirement for popular tools like Lombok, MapStruct, and Dagger.
 
-### How do I skip specific files? {#how-to-skip-files}
+### How to skip specific files? {#how-to-skip-files}
 
 The built-in minifiers automatically skip already-minified files (`*.min.css`, `*.min.js`). For custom skip logic:
 
