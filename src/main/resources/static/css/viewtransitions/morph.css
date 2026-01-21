@@ -1,0 +1,14 @@
+/* ================================
+   ViewTransitionMorphView
+   ================================ */
+
+h3 {
+  margin-top: var(--dwc-space-l);
+}
+
+.morph-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 450px;
+}

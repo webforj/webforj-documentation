@@ -1,0 +1,30 @@
+/* ==================================
+   ViewTransitionShuffleView
+   ================================== */
+
+.shuffle-list {
+  width: 400px;
+}
+
+/* Shuffle Button
+   ============== */
+.shuffle-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--dwc-surface-3);
+  border: 1px solid var(--dwc-color-default);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  margin-top: var(--dwc-space-m);
+}
+
+.shuffle-btn::part(control) {
+  border-radius: 50%;
+  box-shadow: var(--dwc-shadow-s);
+}
+
+.shuffle-btn:hover {
+  transform: scale(1.05);
+  box-shadow: var(--dwc-shadow-m);
+}
