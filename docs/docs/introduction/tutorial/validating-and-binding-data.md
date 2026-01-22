@@ -7,6 +7,7 @@ description: Step 4 - Learn how to add validation checks.
 
 [Data binding](../../data-binding/overview.md) connects UI components directly with your data model, enabling automatic synchronization of values. This reduces boilerplate and improves reliability. Validation checks that form data follows rules such as being non-empty or matching a pattern. With webforJ and Spring Boot, you can use Jakarta validation annotations and webforJ’s binding system for a user-friendly experience.
 
+Completing this step creates a version of [4-validating-and-binding-data](https://github.com/webforj/webforj-demo-application/tree/main/4-validating-and-binding-data).
 
 ```
 webforj-demo-application
@@ -132,7 +133,6 @@ When you’ve finished this step, you can compare it to [4-validating-and-bindin
     ```
 
 3. Open your browser and go to http://localhost:8080 to view the app.
-
 
 :::info Next steps
 Looking for more ways to improve your app from this tutorial? You can try using the [`AppLayout`](/docs/components/app-layout) component as a wrapper to add your customer table and add more features.
