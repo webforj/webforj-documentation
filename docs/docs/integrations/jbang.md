@@ -27,7 +27,7 @@ The integration includes automatic server shutdown when you close the browser ta
 Choose your preferred installation method:
 
 ```bash
-# Linux/macOS (curl)
+# Universal (Linux/macOS/Windows with bash)
 curl -Ls https://sh.jbang.dev | bash -s - app setup
 
 # SDKMan
@@ -49,8 +49,8 @@ Verify the installation:
 jbang --version
 ```
 
-:::info Default Java version
-When you run JBang for the first time, if no JDK is found, JBang will try to install a JDK for you. You can control the default JDK version and vendor by setting the `JBANG_DEFAULT_JAVA_VERSION` and `JBANG_JDK_VENDOR` environment variables. We recommend you use an OpenJDK vendor version of Java to ensure execution without a webforJ watermark. Run these commands prior to installing JBang:
+:::info[Default Java version]
+When you run JBang for the first time, if no JDK is found, JBang will try to install a JDK for you. You can control the default JDK version and vendor by setting the `JBANG_DEFAULT_JAVA_VERSION` and `JBANG_JDK_VENDOR` environment variables. Using an OpenJDK vendor ensures your app runs without a webforJ watermark, as commercial JDKs may trigger licensing restrictions. Run these commands prior to installing JBang:
 
 ```bash 
 export JBANG_DEFAULT_JAVA_VERSION=21 
@@ -71,47 +71,55 @@ Create a file named `HelloWorld.java` with the following content:
 
 ```java title="HelloWorld.java"
 ///usr/bin/env jbang "$0" "$@" ; exit $?
-//JAVA 21
 //DEPS com.webforj:webforj-jbang-starter:25.11
+//JAVA 21
+
+package bang;
 
 import com.webforj.App;
+import com.webforj.annotation.Routify;
+import com.webforj.component.Composite;
+import com.webforj.component.Theme;
 import com.webforj.component.button.Button;
-import com.webforj.component.field.NumberField;
+import com.webforj.component.button.ButtonTheme;
+import com.webforj.component.field.TextField;
+import com.webforj.component.icons.FeatherIcon;
 import com.webforj.component.layout.flexlayout.FlexDirection;
-import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
-import com.webforj.component.window.Frame;
-import com.webforj.exceptions.WebforjException;
+import com.webforj.component.toast.Toast;
+import com.webforj.router.annotation.Route;
+
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@Routify
 public class HelloWorld extends App {
-
-  int count = 0;
-
-  @Override
-  public void run() throws WebforjException {
-    Frame frame = new Frame();
-    NumberField counter = new NumberField();
-    counter.setReadOnly(true);
-    counter.setValue(0d);
-
-    Button button = new Button("Click me!", e -> {
-      count++;
-      counter.setValue((double) count);
-    });
-
-    FlexLayout layout = FlexLayout.create(button, counter)
-        .vertical()
-        .justify().center()
-        .contentAlign().center()
-        .build();
-    layout.setHeight("100%");
-    layout.setSpacing("var(--dwc-space-m)");
-
-    frame.add(layout);
+  public static void main(String[] args) {
+    SpringApplication.run(HelloWorld.class, args);
   }
 }
+
+@Route("/")
+class MainView extends Composite<FlexLayout> {
+
+  private FlexLayout self = getBoundComponent();
+  private TextField hello = new TextField("What is your name?");
+  private Button btn = new Button("Say Hello");
+
+  public MainView() {
+    self.setDirection(FlexDirection.COLUMN);
+    self.setMaxWidth(300);
+    self.setStyle("margin", "1em auto");
+
+    btn.setPrefixComponent(FeatherIcon.BELL.create())
+        .setTheme(ButtonTheme.PRIMARY)
+        .addClickListener(e -> Toast.show("Welcome to webforJ JBang Starter " + hello.getValue() + "!", Theme.GRAY));
+
+    self.add(hello, btn);
+  }
+}
+
 ```
 
 ### Understanding the script structure {#script-structure}
@@ -129,19 +137,6 @@ The `webforj-jbang-starter` dependency includes everything needed to run a webfo
 :::note[Version]
 Replace `25.11` with the latest webforJ version. Check [Maven Central](https://central.sonatype.com/artifact/com.webforj/webforj-jbang-starter) for the most recent release.
 :::
-
-### Using multiple files {#using-multiple-files}
-
-JBang supports multiple source files using the `//SOURCES` directive:
-
-```java
-///usr/bin/env jbang "$0" "$@" ; exit $?
-//SOURCES Helper.java
-//SOURCES utils/Formatter.java
-```
-
-File locations are relative to the main script, and only the main script can declare `//DEPS` and other directives. For complex multi-file projects, consider using a [Maven or Gradle project](./spring/spring-boot) instead.
-
 ### Adding dependencies {#adding-dependencies}
 
 You can add additional Maven dependencies using multiple `//DEPS` lines:
@@ -186,14 +181,9 @@ This works because of the shebang line at the top of the file.
 
 ## IDE support {#ide-support}
 
-JBang integrates with popular Java IDEs for a better development experience:
+JBang integrates with popular Java IDEs including VS Code, IntelliJ IDEA, Eclipse, and others. These integrations provide features like directive autocomplete, automatic dependency resolution, and the ability to run and debug scripts directly from the IDE.
 
-| IDE | Plugin | Features |
-|-----|--------|----------|
-| VS Code | [JBang extension](https://marketplace.visualstudio.com/items?itemName=jbangdev.jbang-vscode) | Directive autocomplete, dependency resolution, debugging |
-| IntelliJ IDEA | [JBang plugin](https://plugins.jetbrains.com/plugin/18257-jbang) | Directive completion, dependency sync, JDK management, script templates |
-
-These plugins provide features like autocomplete for `//DEPS` and other directives, automatic dependency resolution, and the ability to run and debug scripts directly from the IDE.
+See the [JBang IDE integration documentation](https://www.jbang.dev/documentation/jbang/latest/editing.html) for setup instructions and supported editors.
 
 ## Configuration {#configuration}
 
@@ -205,19 +195,19 @@ By default, the server automatically shuts down when all browser tabs connected 
 
 | Property | Default | Description |
 |----------|---------|-------------|
-| `webforj.jbang.autoShutdown` | `true` | Turn auto-shutdown on or off |
-| `webforj.jbang.idleTimeout` | `5` | Seconds to wait after last browser disconnects before shutting down |
+| `webforj.jbang.auto-shutdown` | `true` | Turn auto-shutdown on or off |
+| `webforj.jbang.idle-timeout` | `5` | Seconds to wait after last browser disconnects before shutting down |
 
 To turn off auto-shutdown:
 
 ```bash
-jbang -Dwebforj.jbang.autoShutdown=false HelloWorld.java
+jbang -Dwebforj.jbang.auto-shutdown=false HelloWorld.java
 ```
 
 To change the idle timeout:
 
 ```bash
-jbang -Dwebforj.jbang.idleTimeout=30 HelloWorld.java
+jbang -Dwebforj.jbang.idle-timeout=30 HelloWorld.java
 ```
 
 ### Default settings {#default-settings}
@@ -233,15 +223,15 @@ The JBang starter configures the following defaults:
 | `logging.level.com.webforj` | `WARN` | Shows only warnings and errors from webforJ |
 | `webforj.devtools.browser.open` | `true` | Automatically opens browser when the app starts |
 
-### Development workflow {#development-workflow}
+### Redeployment and live reload {#development-workflow}
 
-JBang scripts don't support hot reload. To see changes:
+JBang scripts don't support live reload. To see changes:
 
 1. Stop the running script (close the browser tab or press `Ctrl+C`)
 2. Edit your code
 3. Run `jbang HelloWorld.java` again
 
-For rapid iteration with hot reload, consider using a [full Maven project with Spring DevTools](./spring/spring-boot).
+For automatic redeployment during development, consider using a [full Maven project with Spring DevTools](/docs/integrations/spring/spring-boot). See the [live reload documentation](/docs/configuration/deploy-reload/overview) for more details.
 
 ## Transitioning to a full project {#transitioning}
 
