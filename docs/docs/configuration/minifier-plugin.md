@@ -7,12 +7,6 @@ title: Minifier Plugin
 
 The webforJ Minifier Plugin automatically optimizes CSS and JavaScript assets during the build process. The plugin discovers assets referenced through webforJ [asset annotations](../managing-resources/importing-assets) and minifies them in place, reducing file sizes and improving load times without manual intervention.
 
-## Requirements {#requirements}
-
-- Java 17 or higher
-- Maven 3.6+
-- webforJ framework with annotation support
-
 ## Setup {#setup}
 
 The minifier plugin requires two plugins in your Maven configuration: an annotation processor to discover assets during compilation, and a plugin to perform the minification.
@@ -95,74 +89,6 @@ When you build your project with `mvn package`, the plugin automatically:
 2. Minifies the discovered CSS and JavaScript files
 3. Reports the size reduction and processing time
 
-**Build Output:**
-```
-[INFO] Starting webforJ asset minification...
-[INFO] Discovered 2 minifier implementation(s) via SPI
-[INFO] Processing manifest: target/classes/META-INF/webforj-resources.json
-[INFO] Found 2 asset(s) in manifest
-[INFO] Minified app.css: 1200 → 850 bytes (29.2% reduction) in 45 ms
-[INFO] Minified app.js: 3400 → 1800 bytes (47.1% reduction) in 280 ms
-[INFO] Minification complete. Processed 2 file(s) in 335 ms
-```
-
-## How it works {#how-it-works}
-
-The minification process operates through a two-phase approach that integrates with the Maven build lifecycle.
-
-### Asset discovery {#asset-discovery}
-
-During compilation, an annotation processor scans your source code for asset annotations:
-- `@StyleSheet`
-- `@JavaScript`
-- `@InlineStyleSheet`
-- `@InlineJavaScript`
-
-For detailed information about these annotations and how to use them, see [Importing Assets](../managing-resources/importing-assets).
-
-The processor generates a manifest file that records all discovered assets:
-
-```json
-{
-  "version": "1.0",
-  "generatedAt": "2025-10-17T12:00:00Z",
-  "assets": [
-    {
-      "url": "ws://css/app.css",
-      "type": "StyleSheet",
-      "discoveredIn": "com.example.MyApp"
-    }
-  ]
-}
-```
-
-This manifest is stored at `META-INF/webforj-resources.json` in your compiled output.
-
-### Build-time minification {#build-time-minification}
-
-After compilation completes, the Maven plugin executes in the `process-classes` phase:
-
-1. **Loads Minifiers**: Discovers available minifier implementations using Java's Service Provider Interface (SPI)
-2. **Reads Manifest**: Loads the list of assets from the generated manifest file
-3. **Resolves Paths**: Converts webforJ URL protocols to actual filesystem paths
-4. **Minifies Assets**: Processes each file using the appropriate minifier
-5. **Updates Files**: Writes minified content back to the original files in place
-
-For projects with more than 10 files, the plugin automatically processes assets in parallel to improve build performance.
-
-### Protocol resolution {#protocol-resolution}
-
-The plugin understands webforJ's URL protocols and translates them to filesystem locations. For more information about these protocols, see [Assets Protocols](../managing-resources/assets-protocols).
-
-| Protocol | Resolves To | Example |
-|----------|-------------|---------|
-| `ws://` or `webserver://` | `src/main/resources/static/` | `ws://css/app.css` → `static/css/app.css` |
-| `context://` | `src/main/resources/` | `context://styles/app.css` → `styles/app.css` |
-
-:::info Protocol-less URLs
-URLs without a protocol (e.g., `css/app.css`) are treated as `static/` paths for minification purposes. The static directory can be configured using the `webforj.assetsDir` property. See [Configuration Properties](../configuration/properties) for more information.
-:::
-
 ## Configuration options {#configuration-options}
 
 ### Disabling minification {#disabling-minification}
@@ -237,19 +163,6 @@ The JavaScript minifier uses Google Closure Compiler, which offers several confi
 **Pretty Print** (default: `false`)
 - Set to `true` to preserve code formatting for debugging purposes
 
-#### Debug output {#debug-output}
-
-Enable Maven's debug logging to see detailed minification information:
-
-```bash
-mvn clean install -X
-```
-
-This displays:
-- Applied configuration values
-- Compilation level and language settings for each file
-- Which minifier implementations are being used
-
 ### Minifying additional files {#minifying-additional-files}
 
 To minify files not discovered through annotations, create a configuration file that specifies glob patterns:
@@ -270,53 +183,15 @@ To minify files not discovered through annotations, create a configuration file 
 
 The plugin includes two production-ready minifiers for CSS and JavaScript.
 
-### CSS minifier {#css-minifier}
+<!-- vale off -->
+**CSS Minifier:** Powered by ph-css 8.0.0, this minifier optimizes CSS files while preserving capabilities. It automatically skips files ending with `.min.css` to avoid redundant processing.
 
-**Maven Artifact**: `webforj-minify-phcss-css`
-
-Powered by ph-css 8.0.0, this minifier optimizes CSS files while preserving capabilities. It automatically skips files ending with `.min.css` to avoid redundant processing.
-
-**Optimization Features:**
-- Removes comments and unnecessary whitespace
-- Optimizes property values and reduces redundancy
-- Full CSS3 support including @media queries and vendor prefixes
-- Returns original content if parsing fails (graceful error handling)
-
-### JavaScript minifier {#javascript-minifier}
-
-**Maven Artifact**: `webforj-minify-closure-js`
-
-Uses Google Closure Compiler v20250820 to minify and optimize JavaScript. Files ending with `.min.js` or `.mjs` are automatically skipped.
-
-**Default Settings:**
-- Compilation level: `SIMPLE_OPTIMIZATIONS`
-- Input language: `ECMASCRIPT_NEXT`
-- Output language: `ECMASCRIPT5`
-
-**Optimization Features:**
-- Variable renaming and scope reduction
-- Dead code elimination
-- Full ES6+ syntax support with transpilation
-- Returns original content if compilation errors occur (graceful error handling)
+**JavaScript Minifier:** Uses Google Closure Compiler v20250820 to minify and optimize JavaScript. Files ending with `.min.js` or `.mjs` are automatically skipped.
+<!-- vale on -->
 
 ## Custom minifiers {#custom-minifiers}
 
 The plugin supports custom minifiers through Java's Service Provider Interface (SPI), allowing you to add support for additional file types or alternative minification libraries.
-
-### Plugin architecture {#plugin-architecture}
-
-```
-webforj-minify/
-├── webforj-minify-foundation/     # Core interfaces + annotation processor
-│   ├── AssetMinifier              # SPI interface for minifiers
-│   ├── MinifierRegistry           # Thread-safe minifier registry
-│   ├── ResourceResolver           # URL protocol resolver
-│   ├── MinificationException      # Exception type
-│   └── AssetAnnotationProcessor   # Generates manifest at compile time
-├── webforj-minify-phcss-css/      # CSS minifier (ph-css 8.0.0)
-├── webforj-minify-closure-js/     # JavaScript minifier (Closure Compiler)
-└── webforj-minify-maven-plugin/   # Maven plugin
-```
 
 ### Creating a custom minifier {#creating-a-custom-minifier}
 
@@ -390,107 +265,4 @@ Add your minifier as a plugin dependency:
 </plugin>
 ```
 
-## Troubleshooting {#troubleshooting}
-
-### No minifiers found {#no-minifiers-found}
-
-**Symptoms:**
-```
-[WARN] No minifiers registered via SPI. Skipping minification.
-[WARN] Ensure minifier modules are on the classpath.
-```
-<!--vale off-->
-**Solution:** Verify that minifier dependencies are added to the **plugin** configuration, not the project dependencies:
-<!--vale on-->
-```xml
-<plugin>
-  <groupId>com.webforj</groupId>
-  <artifactId>webforj-minify-maven-plugin</artifactId>
-  <dependencies>
-    <dependency>
-      <groupId>com.webforj</groupId>
-      <artifactId>webforj-minify-phcss-css</artifactId>
-      <version>25.10-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>com.webforj</groupId>
-      <artifactId>webforj-minify-closure-js</artifactId>
-      <version>25.10-SNAPSHOT</version>
-    </dependency>
-  </dependencies>
-</plugin>
-```
-
-### Missing asset manifest {#missing-asset-manifest}
-
-<!--vale off-->
-**Symptoms:** Plugin reports it cannot find `META-INF/webforj-resources.json`
-<!--vale on-->
-
-**Common Causes:**
-
-1. **Annotation processor not configured** - Add `webforj-minify-foundation` to `annotationProcessorPaths` in `maven-compiler-plugin`
-2. **No annotations in source code** - Make sure you're using `@StyleSheet` or `@JavaScript` annotations
-3. **Annotation processing disabled** - Remove `<proc>none</proc>` from compiler configuration if present
-
-<!--vale off-->
-**Verification:** After compilation, check that `target/classes/META-INF/webforj-resources.json` exists
-<!--vale on-->
-
-### Asset files not found {#asset-files-not-found}
-
-**Symptoms:**
-```
-[WARN] File not found: /path/to/static/css/app.css
-```
-
-**Solutions:**
-
-1. Verify the file exists at `src/main/resources/static/css/app.css`
-2. Check that the URL protocol matches your directory structure:
-   - `ws://css/app.css` → `static/css/app.css`
-   - `context://css/app.css` → `css/app.css`
-3. Make sure the file isn't excluded by `.gitignore` or build filters
-
-### Minification syntax errors {#minification-syntax-errors}
-
-**Symptoms:**
-```
-[WARN] Error minifying file app.css: Parse error at line 42
-```
-
-:::info Graceful Error Handling
-The plugin is designed to never fail your build due to minification errors. When minification fails, the plugin logs a warning and keeps the original file content unchanged.
-:::
-
-**To resolve:**
-
-1. Validate your CSS/JavaScript syntax using a linter
-2. Check for unsupported language features
-3. Review the specific error message for line numbers and details
-4. Consider using `prettyPrint: true` for JavaScript to make debugging easier
-
-### Security warnings {#security-warnings}
-
-**Symptoms:**
-```
-[WARN] Security violation for URL '../../../etc/passwd': Path traversal detected
-```
-<!--vale off-->
-**Cause:** The URL contains path traversal attempts that could access files outside the resources directory
-
-**Solution:** Use proper webforJ URL protocols (`ws://`, `context://`) and valid relative paths
-<!--vale on-->
-## Frequently asked questions {#frequently-asked-questions}
-
-### Why configure the annotation processor separately? {#why-separate-annotation-processor}
-
-Maven 3+ requires explicit annotation processor declarations for security reasons. Since annotation processing occurs during compilation (before the minify plugin runs), it can't be automatically configured. This is the same requirement for popular tools like Lombok, MapStruct, and Dagger.
-
-### How to skip specific files? {#how-to-skip-files}
-
-The built-in minifiers automatically skip already-minified files (`*.min.css`, `*.min.js`). For custom skip logic:
-
-1. Create exclusion patterns in `META-INF/webforj-minify.txt` using the `!` prefix
-2. Implement custom `shouldMinify()` logic in your own minifier
 
