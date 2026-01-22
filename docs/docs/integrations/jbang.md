@@ -50,7 +50,7 @@ jbang --version
 ```
 
 :::info Default Java version
-When you run JBang for the first time, and no JDK is found, JBang will try to install a JDK for you. You can control the default JDK version and vendor by setting the `JBANG_DEFAULT_JAVA_VERSION` and `JBANG_JDK_VENDOR` environment variables. It is recommended to use an OpenJDK vendor version of Java to ensure execution without a webforJ watermark. Run these commands prior to installing Jbang:
+When you run JBang for the first time, if no JDK is found, JBang will try to install a JDK for you. You can control the default JDK version and vendor by setting the `JBANG_DEFAULT_JAVA_VERSION` and `JBANG_JDK_VENDOR` environment variables. We recommend you use an OpenJDK vendor version of Java to ensure execution without a webforJ watermark. Run these commands prior to installing JBang:
 
 ```bash 
 export JBANG_DEFAULT_JAVA_VERSION=21 
