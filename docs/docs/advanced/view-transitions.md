@@ -26,7 +26,7 @@ This API is marked as experimental since 25.11 and may change in future releases
 
 ## Basic usage {#basic-usage}
 
-To create a view transition, use `Page.getCurrent().startViewTransition()` which returns a builder for configuring the transition:
+To create a view transition, use `Page.getCurrent().startViewTransition()`, which returns a builder for configuring the transition:
 
 ```java
 Page.getCurrent().startViewTransition()
