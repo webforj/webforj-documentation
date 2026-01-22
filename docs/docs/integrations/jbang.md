@@ -5,7 +5,7 @@ sidebar_position: 15
 
 # JBang <DocChip chip='since' label='25.11' />
 
-JBang is a tool that allows you to run Java code as scripts, without build files, project setup, or manual compilation. The webforJ JBang integration enables you to create webforJ apps quickly, best suited for rapid prototyping, learning, and quick demos, without needing the traditional dependencies and infrastructure of a fully fledged Java program.
+[JBang](https://www.jbang.dev/) is a tool that allows you to run Java code as scripts, without build files, project setup, or manual compilation. The webforJ JBang integration enables you to create webforJ apps quickly, best suited for rapid prototyping, learning, and quick demos, without needing the traditional dependencies and infrastructure of a fully fledged Java program.
 
 ## Why use JBang with webforJ {#why-use-jbang}
 
