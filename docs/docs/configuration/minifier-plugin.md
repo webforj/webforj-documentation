@@ -1,9 +1,12 @@
 ---
 sidebar_position: 21
 title: Minifier Plugin
+sidebar_class_name: new-content
 ---
 
 # Minifier plugin
+
+<DocChip chip='since' label='25.11' />
 
 The webforJ Minifier Plugin automatically optimizes CSS and JavaScript assets during the build process. The plugin discovers assets referenced through webforJ [asset annotations](../managing-resources/importing-assets) and minifies them in place, reducing file sizes and improving load times without manual intervention.
 
@@ -115,6 +118,22 @@ mvn package -Dwebforj.minify.skip=true
 
 The JavaScript minifier uses Google Closure Compiler, which offers several configuration options to control optimization behavior.
 
+#### Available options {#available-options}
+
+`compilationLevel` (default: `SIMPLE_OPTIMIZATIONS`)
+- `WHITESPACE_ONLY` - Removes only whitespace and comments
+- `SIMPLE_OPTIMIZATIONS` - Includes variable renaming and dead code removal (recommended)
+- `ADVANCED_OPTIMIZATIONS` - Aggressive optimization with function and property renaming
+
+`languageIn` - Input JavaScript version (default: `ECMASCRIPT_NEXT`)
+- Options: `ECMASCRIPT3`, `ECMASCRIPT5`, `ECMASCRIPT_2015` through `ECMASCRIPT_2021`, `ECMASCRIPT_NEXT`
+
+`languageOut` - Output JavaScript version (default: `ECMASCRIPT5`)
+- Same options as `languageIn`, plus `NO_TRANSPILE` to skip transpilation
+
+`prettyPrint` (default: `false`)
+- Set to `true` to preserve code formatting for debugging purposes
+
 ```xml
 <plugin>
   <groupId>com.webforj</groupId>
@@ -147,29 +166,11 @@ The JavaScript minifier uses Google Closure Compiler, which offers several confi
 </plugin>
 ```
 
-#### Available options {#available-options}
-
-**Compilation Level** (default: `SIMPLE_OPTIMIZATIONS`)
-- `WHITESPACE_ONLY` - Removes only whitespace and comments
-- `SIMPLE_OPTIMIZATIONS` - Includes variable renaming and dead code removal (recommended)
-- `ADVANCED_OPTIMIZATIONS` - Aggressive optimization with function and property renaming
-
-**Language Settings**
-- `languageIn` - Input JavaScript version (default: `ECMASCRIPT_NEXT`)
-  - Options: `ECMASCRIPT3`, `ECMASCRIPT5`, `ECMASCRIPT_2015` through `ECMASCRIPT_2021`, `ECMASCRIPT_NEXT`
-- `languageOut` - Output JavaScript version (default: `ECMASCRIPT5`)
-  - Same options as `languageIn`, plus `NO_TRANSPILE` to skip transpilation
-
-**Pretty Print** (default: `false`)
-- Set to `true` to preserve code formatting for debugging purposes
-
 ### Minifying additional files {#minifying-additional-files}
 
 To minify files not discovered through annotations, create a configuration file that specifies glob patterns:
 
-**File**: `src/main/resources/META-INF/webforj-minify.txt`
-
-```
+```hocon title="src/main/resources/META-INF/webforj-minify.txt"
 # Include patterns
 **/*.css
 **/*.js
@@ -235,9 +236,7 @@ public class SassMinifier implements AssetMinifier {
 
 Create a service provider configuration file:
 
-**File**: `META-INF/services/com.webforj.minify.foundation.AssetMinifier`
-
-```
+```hocon title="META-INF/services/com.webforj.minify.foundation.AssetMinifier"
 com.example.SassMinifier
 ```
 
