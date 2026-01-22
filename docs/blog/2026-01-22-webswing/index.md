@@ -2,7 +2,7 @@
 title: "Webswing and webforJ: a modernization roadmap"
 description: "Turn a legacy Java desktop app into a web app by using webforJ and Webswing to deploy it to the web and modernize it incrementally."
 slug: webswing-and-webforj
-date: 2026-01-15
+date: 2026-01-22
 authors: Garrison Osteen
 tags: [Integrations, Modernization, Webswing]
 hide_table_of_contents: false
@@ -18,16 +18,20 @@ Look no further, because webforJ has the answer: deploy your existing Java app t
 
 <!-- truncate -->
 
+## Why web apps?
+You already have a Java desktop app, so why change? 
+Well, hosting your app on the web comes with a "host" of benefits. 
+For one, users are able to access your app from any device with a browser, and opening it is as simple and familiar as clicking a link. 
+Users also don't need to download any software or worry about version compatibility and upgrades. 
+They don't even need to install Java! By making your app available on the web, you take care of all of that for them, streamlining their experience so they can focus on the things they care about. 
+Accessing an app on the web is more than just a convenience; it's the experience that users expect, and it shows that you can meet their needs.
+
+
 ## What is Webswing?
 ![Webswing logo](https://cdn.webforj.com/webforj-documentation/blogs/webswing/webswing.png)
 [Webswing](https://www.webswing.org/) provides a quick, low-cost way to get your Java app online, whether it's written in Swing, JavaFX, SWT, NetBeans, or Oracle Forms. 
 Essentially, Webswing is a web server that hosts your desktop Java apps, making them available on the web without any code changes. 
 Instead of scrapping your codebase and starting from scratch, you can simply host it with Webswing and run it in a browser as-is. 
-
-Hosting your app on the web comes with a "host" of benefits. 
-For one, users are able to access your app from any device with a browser.
-Users also don't need to download any software or worry about version compatibility and upgrades. 
-By making your app available on the web, you take care of all of that for them, streamlining their experience so they can focus on the things they care about. 
 
 Using Webswing to host your app gives you *speed*, *simplicity*, and *stability*.
 It gets your app online quickly, allowing your users to enjoy the benefits of a web app immediately, without waiting on lengthy development efforts. 
@@ -68,3 +72,4 @@ Your app wants to join the rest of its peers in the browser, and you can bring i
 - [Webswing and webforJ integration setup](../../docs/integrations/webswing/setup)
 - [Webswing and webforJ communication](../../docs/integrations/webswing/communication)
 - [Webswing.org](https://www.webswing.org/)
+- [Webswing integration demo ](https://webswing.webforj.com/)
