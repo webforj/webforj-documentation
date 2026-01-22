@@ -4,16 +4,7 @@ sidebar_position: 1
 description: Discover where to download the tutorial project, how to navigate it, and run the apps within.
 ---
 
-This tutorial is split up into **four steps**:
-
-1. [Creating a Basic App](/docs/introduction/tutorial/creating-a-basic-app)
-2. [Working with Data](/docs/introduction/tutorial/working-with-data)
-3. [Scaling with Routing and Composites](/docs/introduction/tutorial/scaling-with-routing-and-composites)
-4. [Validating and Binding Data](/docs/introduction/tutorial/validating-and-binding-data)
-
-Each step introduces new features as the project progresses. By following along, you’ll gain a clear understanding of how the app evolves and how each feature is implemented.
-
-To begin, you need to establish a designated location for your project where you can manage your classes and resources. The following sections are different ways you can create your webforJ project for this tutorial:
+Beginning this tutorial requires you to establish a designated location for your project where you can manage your classes and resources. The following sections are different ways you can create your webforJ project for this tutorial:
 
 ---
 

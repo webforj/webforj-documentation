@@ -10,6 +10,8 @@ In [Project Setup](/docs/introduction/tutorial/project-setup), you generated a w
 - webforJ and HTML element components
 - Using CSS to style components
 
+Completing this step creates a version of [1-creating-a-basic-app](https://github.com/webforj/webforj-demo-application/tree/main/1-creating-a-basic-app).
+
 <!-- Insert video here -->
 
 ## The entry point {#entry-point}
@@ -34,9 +36,9 @@ Every webforJ app contains a single class that extends <JavadocLink type="founda
 
 Inside the `Application` class, the `SpringApplication.run()` method uses the configurations to launch the app. The configurations for the app are derived from the various annotations.
 
-```java
+```java title="Application.java"
 @SpringBootApplication
-@StyleSheet("ws://app.css")
+@StyleSheet("ws://css/app.css")
 @AppTheme("system")
 @AppProfile(name = "DemoApplication", shortName = "DemoApplication")
 public class Application extends App {
@@ -50,43 +52,53 @@ public class Application extends App {
 
 The [`@SpringBootApplication`](https://docs.spring.io/spring-boot/api/java/org/springframework/boot/autoconfigure/SpringBootApplication.html) annotation auto-configures parts of your Spring Boot app. This helps Spring determine when you’re using parts of its framework.
 
-`@StyleSheet`, `@AppTheme`, and `@AppTheme` are just a few of the many <JavadocLink type="foundation" location="com/webforj/annotation/package-summary">webforJ annotations</JavadocLink> available when you want to explicitly set configurations or embed JavaScript and CSS resources. `@StyleSheet` will be discussed again later in this step in [Styling with CSS](#styling-with-css).
+`@StyleSheet`, `@AppTheme`, and `@AppProfile` are just a few of the many <JavadocLink type="foundation" location="com/webforj/annotation/package-summary">webforJ annotations</JavadocLink> available when you want to explicitly set configurations or embed JavaScript and CSS resources. `@StyleSheet` will be discussed again later in this step in [Styling with CSS](#styling-with-css).
 
-## Adding components
+## Creating a user interface {#creating-a-ui}
 
-To create your UI, you’ll need to add components. For now, you only have a single-page app, so you'll add components directly to the `Application` class. This is achieved by overriding the `App.run()` method and adding components to a `Frame`.
-
+To create your UI, you’ll need to add components. For now, you only have a single-page app, so you'll add components directly to the `Application` class. This is achieved by overriding the `App.run()` method and adding components to a `Frame`. This tutorial uses HTML elements and webforJ components.
 
 ```java
 @Override
 public void run() throws WebforjException {
   Frame mainFrame = new Frame();
-  Paragraph demo = new Paragraph("Demo Application!");
-  Button btn = new Button("Info");
-  mainFrame.addClassName("mainFrame");
-
-  btn.setTheme(ButtonTheme.PRIMARY).addClickListener(e -> OptionDialog.showMessageDialog("This is a demo!", "Info"));
-  mainFrame.add(demo, btn);
+  // Create UI components and add to the frame
 }
 ```
 
-:::tip Multiple pages
-For a more complex app, you’d want to divide the UI into multiple pages for better organization. This concept is taught in a future step in the tutorial, [Scaling with Routing and Composites](/docs/introduction/tutorial/scaling-with-routing-and-composites).
-:::
+### Using HTML elements {#using-html-elements}
 
-### Using webforJ components and HTML elements {#webforj-components-and-html-elements}
-
-Using [webforJ components](/docs/components/overview) makes your app interactive. This step allows the user to take an action with the [Button](/docs/components/button) component, and display a message using the [Message Dialog](/docs/components/option-dialogs/message) component.
-
-In the next step, [Working with Data](/docs/introduction/tutorial/working-with-data), you’ll learn how to use the powerful [Table](/docs/components/table/overview) component to visualize data.
-
-Additionally, the webforJ framework allows you to easily use standard HTML elements with
+The webforJ framework allows you to easily use standard HTML elements with
 [HTML element components](/docs/building-ui/web-components/html-elements).
-This allows you to add HTML elements to your app by creating Java objects:
+This allows you to add HTML elements to your app by creating Java objects. Then, use the `add()` method to make the component visible.
 
 ```java
+// Create the container for the UI elements
+Frame mainFrame = new Frame();
+// Create the HTML component
 Paragraph demo = new Paragraph("Demo Application!");
+// Add the component to the container
+mainFrame.add(demo);
 ```
+
+### Using webforJ components {#webforj-components-and-html-elements}
+
+While HTML elements are suitable for displaying static information, using [webforJ components](/docs/components/overview) makes it easy to create interactive apps by letting you add event listeners.
+
+The step adds a [Button](/docs/components/button) component, changes its appearance, and adds an event listener to create another component, a [Message Dialog](/docs/components/option-dialogs/message). Since the majority of methods in webforJ that change the component returns the component itself, you can chain multiple methods for more compactable code:
+
+```java
+// Create the container for the UI elements
+Frame mainFrame = new Frame();
+// Create the webforJ component
+Button btn = new Button("Info");
+// Modify the webforJ component, and add an event listener
+btn.setTheme(ButtonTheme.PRIMARY).addClickListener(e -> OptionDialog.showMessageDialog("This is a demo!", "Info"));
+// Add the component to the container
+mainFrame.add(btn);
+```
+
+In the next step, [Working with Data](/docs/introduction/tutorial/working-with-data), you’ll learn how to use the powerful [Table](/docs/components/table/overview) component to visualize data.
 
 ## Styling with CSS {#styling-with-css}
 
@@ -94,10 +106,10 @@ Using the webforJ framework allows you to add visually appealing components that
 
 ### Referencing a CSS file {#refrencing-a-css-file} 
 
-It's best to have a separate CSS file to keep everything organized and maintainable. Create a file named `app.css` inside `src/main/resources/static`:
+It's best to have a separate CSS file to keep everything organized and maintainable. Create a file named `app.css` inside `src/main/resources/static/css`:
 
 ```css title="app.css"
-.mainFrame {
+.frame--border {
   display: inline-grid;
   gap: 20px;
   margin: 20px;
@@ -107,7 +119,7 @@ It's best to have a separate CSS file to keep everything organized and maintaina
 }
 ```
 
-Then, reference the file in `Application.java`. You’ll do that by using the `@StyleSheet` annotation with the name of the CSS file. For this step, it's `@StyleSheet("ws://app.css")`.
+Then, reference the file in `Application.java`. You’ll do that by using the `@StyleSheet` annotation with the name of the CSS file. For this step, it's `@StyleSheet("ws://css/app.css")`.
 
 :::tip Webserver protocol
 This tutorial uses a webserver to reference the CSS file. To learn more about how this works, see the [Managing Resources](/docs/managing-resources/overview) section of the documentation.
@@ -118,8 +130,40 @@ This tutorial uses a webserver to reference the CSS file. To learn more about ho
 You can dynamically add or remove class names to components using the `addClassName()` and `removeClassName()` methods. For this tutorial, there’s only one CSS class used:
 
 ```java
-mainFrame.addClassName("mainFrame");
+mainFrame.addClassName("frame--border");
 ```
+
+## Completed `Application` {#completed-application}
+
+Your `Application` class should now look similar to the following:
+
+```java title="Application.java"
+@SpringBootApplication
+@StyleSheet("ws://css/app.css")
+@AppTheme("system")
+@AppProfile(name = "DemoApplication", shortName = "DemoApplication")
+public class Application extends App {
+
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
+  }
+
+  @Override
+  public void run() throws WebforjException {
+    Frame mainFrame = new Frame();
+    Paragraph demo = new Paragraph("Demo Application!");
+    Button btn = new Button("Info");
+    mainFrame.addClassName("frame--border");
+
+    btn.setTheme(ButtonTheme.PRIMARY).addClickListener(e -> OptionDialog.showMessageDialog("This is a demo!", "Info"));
+    mainFrame.add(demo, btn);
+  }
+}
+```
+
+:::tip Multiple pages
+For a more complex app, you’d want to divide the UI into multiple pages for better organization. This concept is taught in a future step in the tutorial, [Scaling with Routing and Composites](/docs/introduction/tutorial/scaling-with-routing-and-composites).
+:::
 
 ## Running the app {#running-the-app}
 

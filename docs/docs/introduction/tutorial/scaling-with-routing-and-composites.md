@@ -10,6 +10,8 @@ Up until now, this tutorial has only been a single-page app. This step will chan
 - Passing parameter values through a URL
 - Lifecycle observers
 
+Completing this step creates a version of [3-scaling-with-routing-and-composites](https://github.com/webforj/webforj-demo-application/tree/main/3-scaling-with-routing-and-composites).
+
 <div class="videos-container">
   <video controls>
     <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/scaling-with-routing-and-composites.mp4" type="video/mp4"/>
@@ -23,20 +25,25 @@ The way this tutorial handles navigation is through [Routing](/docs/routing/over
 
 ### Enabling routing {#enabling-routing}
 
-To enable routing in your app, annotate the class extending the `App` class with [`@Routify`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/Routify.html). In the annotation, specify what package will contain the views. This step also takes out the UI components from the `run()` method, as they will be moved to a separate view class:
+To enable routing in your app, annotate the class extending the `App` class with [`@Routify`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/Routify.html). In the annotation, specify what package will contain the views. This step also takes out the the UI components from the `run()` method and the `@StyleSheet` annotation. You’ll move these parts to a to a separate view class:
 
 ```java title="Application.java" {4}
 @SpringBootApplication
-@StyleSheet("ws://css/app.css")
 @AppTheme("system")
+// Removed `@StyleSheet` annotation
 @Routify(packages = "com.webforj.demos.views")
 @AppProfile(name = "DemoApplication", shortName = "DemoApplication")
 public class Application extends App {
   public static void main(String[] args) {
     SpringApplication.run(Application.class, args);
   }
+// Removed overridden App.run() method
 }
 ```
+
+:::tip Global CSS
+Keeping the `@StyleSheet` annotation in `Application` would apply that CSS to the entire app.
+:::
 
 ## Creating views {#creating-views}
 
@@ -238,7 +245,7 @@ Moving `@StyleSheet` from `Application` means the CSS styling will now only appl
 <!-- vale off -->
 <ExpandableCode title="FormView.java" language="java" startLine={1} endLine={15}>
 {`
-@StyleSheet("ws://css/views/form.css")
+@StyleSheet("ws://css/form.css")
 @Route("customer/:id?")
 @FrameTitle("Customer Form")
 public class FormView extends Composite<Div> implements WillEnterObserver, DidEnterObserver {
