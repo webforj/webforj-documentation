@@ -11,6 +11,8 @@ By the end of this step, the app created in the previous step, [Creating a Basic
 - Managing data
 - The webforJ `Table` component
 
+Completing this step creates a version of [2-working-with-data](https://github.com/webforj/webforj-demo-application/tree/main/2-working-with-data).
+
 <!-- vale off -->
 
 <div class="videos-container">
@@ -315,7 +317,7 @@ public class Application extends App {
     Button btn = new Button("Info");
     Table<Customer> table = new Table<>();
 
-    mainFrame.addClassName("mainFrame");
+    mainFrame.addClassName("frame--border");
     table.setSize("1000px", "294px");
 
     table.addColumn("firstName", Customer::getFirstName).setLabel("First Name");
