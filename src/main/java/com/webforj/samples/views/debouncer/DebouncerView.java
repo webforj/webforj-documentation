@@ -34,6 +34,8 @@ public class DebouncerView extends Composite<FlexLayout> {
 
       debounce.run(() -> {
         output.setText("Debounced: " + e.getText());
+        count = 0;
+        counter.setText("Key events: 0");
       });
     });
 
