@@ -140,7 +140,7 @@ JBang supports multiple source files using the `//SOURCES` directive:
 //SOURCES utils/Formatter.java
 ```
 
-Files are relative to the main script, and only the main script can declare `//DEPS` and other directives. For complex multi-file projects, consider using a [Maven or Gradle project](./spring/spring-boot) instead.
+File locations are relative to the main script, and only the main script can declare `//DEPS` and other directives. For complex multi-file projects, consider using a [Maven or Gradle project](./spring/spring-boot) instead.
 
 ### Adding dependencies {#adding-dependencies}
 
