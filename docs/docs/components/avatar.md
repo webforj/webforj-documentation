@@ -27,10 +27,6 @@ You can also provide explicit initials if you prefer more control over what's di
 Avatar avatar = new Avatar("John Doe", "J");
 ```
 
-:::info Auto-computed Initials
-When you create an `Avatar` with just a label, initials are automatically computed by taking the first character of each word. For example, "John Doe" becomes "JD".
-:::
-
 The example below showcases avatars in a team panel context. Each `Avatar` displays either a profile image or auto-generated initials based on the user's name. Clicking an `Avatar` opens a dialog with an enlarged view.
 
 <ComponentDemo 
@@ -70,6 +66,10 @@ Avatar avatar = new Avatar("Guest User", TablerIcon.create("user"));
 
 The `Avatar` component uses the label for accessibility and tooltip generation. The `setLabel()` and `setText()` methods are aliases that both set the accessible label for the `Avatar`.
 
+:::info Auto-computed Initials
+When you create an `Avatar` with just a label, initials are automatically computed by taking the first character of each word. For example, "John Doe" becomes "JD".
+:::
+
 ```java
 Avatar avatar = new Avatar();
 avatar.setLabel("Jane Smith");  // Sets label and auto-generates tooltip
@@ -91,6 +91,16 @@ avatar.onClick(event -> {
 });
 ```
 
+## Shapes {#shapes}
+
+Avatars can be displayed as circles or squares. The default shape is `CIRCLE`, which is standard for user avatars. Use `SQUARE` for entities like teams, companies, or applications.
+
+<ComponentDemo
+path='/webforj/avatarshapes?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarShapesView.java'
+height='100px'
+/>
+
 ## Themes {#themes}
 
 Themes convey meaning or status, you can use them to indicate availability, highlight important users, or match your app's design.
@@ -110,7 +120,7 @@ Each theme also has an outlined variant for a lighter visual treatment:
 <ComponentDemo
 path='/webforj/avatarthemes?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarThemesView.java'
-height='100px'
+height='120px'
 />
 
 ## Expanses {#expanses}
@@ -123,15 +133,6 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads
 height='100px'
 />
 
-## Shapes {#shapes}
-
-Avatars can be displayed as circles or squares. The default shape is `CIRCLE`, which is standard for user avatars. Use `SQUARE` for entities like teams, companies, or applications.
-
-<ComponentDemo
-path='/webforj/avatarshapes?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-docs-samples/refs/heads/main/src/main/java/com/webforj/samples/views/avatar/AvatarShapesView.java'
-height='100px'
-/>
 
 ## Styling {#styling}
 

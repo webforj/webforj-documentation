@@ -1,7 +1,6 @@
 .avatar-demo__panel {
   background: var(--dwc-surface-3);
-  border-radius: var(--dwc-border-radius-m);
-  box-shadow: var(--dwc-shadow-m);
+  border-radius: var(--dwc-border-radius);
   width: 300px;
   overflow: hidden;
   border: 1px solid var(--dwc-color-default);
@@ -14,7 +13,7 @@
 
 .avatar-demo__project-header dwc-icon {
   font-size: 24px;
-  color: var(--dwc-color-primary);
+  color: var(--dwc-color-gray);
 }
 
 .avatar-demo__section-label {
@@ -29,7 +28,6 @@
 
 .avatar-demo__row {
   padding: var(--dwc-space-m);
-  cursor: pointer;
   transition: background-color 0.15s ease;
 }
 
