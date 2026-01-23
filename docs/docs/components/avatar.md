@@ -9,7 +9,7 @@ sidebar_class_name: new-content
 <DocChip chip='since' label='25.11' />
 <JavadocLink type="avatar" location="com/webforj/component/avatar/Avatar" top='true'/>
 
-The `Avatar` component provides a visual representation of a user or entity. It can display an image, auto-computed or custom initials, or an icon. Avatars are commonly used to identify users in comment sections, navigation menus, chat applications, and contact lists.
+The `Avatar` component provides a visual representation of a user or entity. It can display an image, auto-computed initials, custom initials, or an icon. Avatars are commonly used to identify users in comment sections, navigation menus, chat applications, and contact lists.
 
 ## Creating avatars {#creating-avatars}
 
@@ -103,7 +103,7 @@ height='100px'
 
 ## Themes {#themes}
 
-Themes convey meaning or status, you can use them to indicate availability, highlight important users, or match your app's design.
+Themes convey meaning or status; you can use them to indicate availability, highlight important users, or match your app's design.
 
 The following themes are available:
 
