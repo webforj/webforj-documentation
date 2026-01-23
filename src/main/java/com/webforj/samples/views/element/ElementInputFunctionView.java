@@ -30,7 +30,7 @@ public class ElementInputFunctionView extends Composite<Div> {
     message box when it resolves. */
     PendingResult<Object> result = input.callJsFunctionAsync("click");
     result.thenAccept( e -> {
-      showMessageDialog("This message displays after programmatically clicking the input", "Asynchronous JavaScript function");
+      showMessageDialog("This message displays since the previous input click was fired programatically", "Asynchronous JavaScript function");
     });
   }
 }
