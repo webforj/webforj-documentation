@@ -1,0 +1,68 @@
+/* ==============================
+   BlogCard & BlogDetail
+   ============================== */
+
+.blog-card,
+.blog-detail {
+  border: 1px solid var(--dwc-color-default);
+  border-radius: var(--dwc-border-radius-l);
+  background: var(--dwc-surface-3);
+  box-shadow: var(--dwc-shadow-m);
+}
+
+.blog-card-title,
+.blog-detail-title {
+  margin: 0;
+  font-weight: 600;
+}
+
+.blog-card-excerpt,
+.blog-detail-text {
+  margin: 0;
+  opacity: 0.7;
+  line-height: 1.6;
+}
+
+.blog-image {
+  width: 100%;
+  border-radius: var(--dwc-border-radius-m);
+  background: linear-gradient(
+    135deg,
+    var(--dwc-color-primary-50),
+    var(--dwc-color-primary-30)
+  );
+}
+
+/* BlogCard
+  ========== */
+.blog-card {
+  width: 400px;
+  cursor: pointer;
+}
+
+.blog-card:hover {
+  box-shadow: var(--dwc-shadow-l);
+}
+
+.blog-card .blog-image {
+  height: 140px;
+}
+
+/* BlogDetail */
+.blog-detail {
+  width: 500px;
+}
+
+.blog-detail-title {
+  font-size: var(--dwc-font-size-xl);
+}
+
+.blog-detail .blog-image {
+  height: 200px;
+}
+
+/* View Transition */
+
+::view-transition-old(blog-title) {
+  display: none;
+}

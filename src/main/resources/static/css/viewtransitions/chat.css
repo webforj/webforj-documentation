@@ -1,0 +1,17 @@
+/* ================================
+   ViewTransitionChatView
+   ================================ */
+
+.chat-toggle-btn {
+  animation: breathe 2s ease-in-out infinite;
+}
+
+.chat-toggle-btn dwc-button::part(control) {
+  border-radius: 50%;
+  font-size: var(--dwc-font-size-xl);
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
