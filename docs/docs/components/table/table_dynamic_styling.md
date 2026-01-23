@@ -42,7 +42,9 @@ height='300px'
 
 ## Reacting to data updates {#reacting-to-data-updates}
 
-If your app modifies data programmatically, such as updating a user's age, the table will automatically re-evaluate and reapply any associated row or cell styles once the updated item is committed in the repository 
+If your app modifies data programmatically, such as updating a user's age, the table will automatically re-evaluate and reapply any associated row or cell styles once the updated item is committed in the repository.
+
+In this demo, cells in the Age column are styled based on a threshold: ages over 30 appear green, while ages 30 and under appear red. Clicking the button toggles Alice's age between 28 and 31, triggering the `setCellPartProvider` to reapply the appropriate style when the data is committed.
 
 <ComponentDemo 
 path='/webforj/tabledynamicstyling?' 
