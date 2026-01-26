@@ -1,5 +1,5 @@
 ---
-sidebar_position: 11
+sidebar_position: 21
 title: Debouncing
 slug: debouncing
 draft: false
@@ -13,7 +13,7 @@ Debouncing is a technique that delays executing an action until a specified time
 <ComponentDemo
 path='/webforj/debouncer?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/debouncer/DebouncerDemoView.java'
-height='200px'
+height='265px'
 />
 
 ## Basic usage {#basic-usage}
@@ -98,7 +98,7 @@ submitButton.onClick(e -> {
 
 ### Checking pending status {#checking-pending-status}
 
-Use `isPending()` to check if an action is waiting to execute:
+Use `isPending()` to verify if an action is waiting to execute:
 
 ```java
 Debouncer debounce = new Debouncer(0.3f);
@@ -108,7 +108,7 @@ if (debounce.isPending()) {
 }
 ```
 
-## Choosing between `Debouncer` and event debounce options {#choosing-between-debouncer-and-event-debounce-options}
+## Event level debouncing vs `Debouncer` {#event-level-debouncing-vs-debouncer}
 
 webforJ provides two approaches to debouncing:
 

@@ -2,8 +2,8 @@ package com.webforj.samples.views.debouncer;
 
 import com.webforj.Debouncer;
 import com.webforj.component.Composite;
+import com.webforj.component.field.TextArea;
 import com.webforj.component.field.TextField;
-import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
@@ -15,38 +15,39 @@ public class DebouncerView extends Composite<FlexLayout> {
 
   private final FlexLayout self = getBoundComponent();
   private final TextField input = new TextField();
-  private final Paragraph output = new Paragraph();
-  private final Paragraph counter = new Paragraph();
-  private final Debouncer debounce = new Debouncer(0.5f);
+  private final TextArea output = new TextArea();
+  private final Debouncer debouncer = new Debouncer(0.5f);
   private int count = 0;
 
   public DebouncerView() {
     self.setDirection(FlexDirection.COLUMN)
-        .setStyle("padding", "20px")
-        .setStyle("gap", "10px")
-        .setStyle("maxWidth", "400px");
+        .setMaxWidth("400px")
+        .setMargin("var(--dwc-space-xl) auto")
+        .setPadding("var(--dwc-space-l)")
+        .setSpacing("var(--dwc-space-l)");
 
-    input.setLabel("Type something (debounced 500ms)");
+    input.setLabel("Type something");
     input.setPlaceholder("Start typing...");
+    input.setHelperText("Key events: 0");
     input.onModify(e -> {
       count++;
-      counter.setText("Key events: " + count);
+      input.setHelperText("Key events: " + count);
 
-      debounce.run(() -> {
-        output.setText("Debounced: " + e.getText());
+      debouncer.run(() -> {
+        output.setValue(e.getText());
+        input.setHelperText("Key events: 0");
         count = 0;
-        counter.setText("Key events: 0");
       });
     });
 
-    output.setText("Debounced: (waiting...)");
-    counter.setText("Key events: 0");
+    output.setLabel("Debounced output");
+    output.setReadOnly(true);
 
-    self.add(input, counter, output);
+    self.add(input, output);
   }
 
   @Override
   protected void onDidDestroy() {
-    debounce.cancel();
+    debouncer.cancel();
   }
 }
