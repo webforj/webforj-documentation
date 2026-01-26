@@ -49,3 +49,5 @@ JAAS
 Shiro
 OAuth2
 LDAP
+JBang
+JDK

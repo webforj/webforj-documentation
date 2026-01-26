@@ -1,6 +1,7 @@
 ---
 title: JBang
 sidebar_position: 15
+sidebar_class_name: new-content
 ---
 
 # JBang <DocChip chip='since' label='25.11' />
@@ -50,11 +51,11 @@ jbang --version
 ```
 
 :::info[Default Java version]
-When you run JBang for the first time, if no JDK is found, JBang will try to install a JDK for you. You can control the default JDK version and vendor by setting the `JBANG_DEFAULT_JAVA_VERSION` and `JBANG_JDK_VENDOR` environment variables. Using an OpenJDK vendor ensures your app runs without a webforJ watermark, as commercial JDKs may trigger licensing restrictions. Run these commands prior to installing JBang:
+When you run JBang for the first time without a JDK installed, JBang automatically downloads one. You can set the JDK version and vendor before running JBang:
 
-```bash 
-export JBANG_DEFAULT_JAVA_VERSION=21 
-export JBANG_JDK_VENDOR=openjdk
+```bash
+export JBANG_DEFAULT_JAVA_VERSION=21
+export JBANG_JDK_VENDOR=temurin
 ```
 :::
 
@@ -165,8 +166,6 @@ JBang will:
 2. Compile the script
 3. Start the embedded server on a random available port
 4. Open your default browser to the app
-
-You should see a button and counter field. Click the button to increment the counter.
 
 ### Making the script executable {#executable-script}
 
