@@ -49,3 +49,4 @@ JAAS
 Shiro
 OAuth2
 LDAP
+WARN
