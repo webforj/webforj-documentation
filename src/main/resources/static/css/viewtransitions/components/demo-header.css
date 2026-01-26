@@ -1,0 +1,26 @@
+/* ===========
+   DemoHeader
+   =========== */
+
+.demo-header-desc {
+  margin: 0;
+  opacity: 0.7;
+  text-align: center;
+  padding-bottom: var(--dwc-space-l);
+  position: relative;
+}
+
+.demo-header-desc::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--demo-header-color, var(--dwc-color-primary)),
+    transparent
+  );
+}

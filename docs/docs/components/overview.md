@@ -248,4 +248,11 @@ This category includes components that facilitate user interactions and visually
   <GalleryCard header="Tree" href="tree" image="/img/components/Tree.png">
     <p>A component for displaying hierarchical data, letting users expand, collapse, and interact with nested items.</p>
   </GalleryCard>
+  
+  <GalleryCard header="Avatar" href="avatar" image="/img/components/Avatar.png">
+    <p>A component for displaying user profile pictures or initials, with support for different sizes, shapes, and themes.</p>
+  </GalleryCard>
+  
 </GalleryGrid>
+
+

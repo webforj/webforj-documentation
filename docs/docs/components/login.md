@@ -1,7 +1,6 @@
 ---
 title: Login
 sidebar_position: 70
-sidebar_class_name: updated-content
 ---
 
 <DocChip chip='shadow' />

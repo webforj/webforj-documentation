@@ -1,0 +1,50 @@
+.avatar-demo__panel {
+  background: var(--dwc-surface-3);
+  border-radius: var(--dwc-border-radius);
+  width: 300px;
+  overflow: hidden;
+  border: 1px solid var(--dwc-color-default);
+}
+
+.avatar-demo__project-header {
+  padding: var(--dwc-space-m);
+  border-bottom: 1px solid var(--dwc-color-default);
+}
+
+.avatar-demo__project-header dwc-icon {
+  font-size: 24px;
+  color: var(--dwc-color-gray);
+}
+
+.avatar-demo__section-label {
+  display: block;
+  padding: var(--dwc-space-m);
+  font-size: 0.75em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--dwc-color-default-text);
+}
+
+.avatar-demo__row {
+  padding: var(--dwc-space-m);
+  transition: background-color 0.15s ease;
+}
+
+.avatar-demo__row:hover {
+  background-color: var(--dwc-color-primary-alt);
+}
+
+.avatar-demo__info {
+  gap: 0.3em !important;
+}
+
+.avatar-demo__name {
+  font-size: 0.9em;
+}
+
+.avatar-demo__role {
+  font-size: 0.85em;
+  color: var(--dwc-color-default-text);
+  line-height: 1.2;
+}
