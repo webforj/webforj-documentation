@@ -8,7 +8,7 @@ sidebar_class_name: new-content
 
 <DocChip chip='since' label='25.11' />
 
-The webforJ Minifier Plugin automatically optimizes CSS and JavaScript assets during the build process. The plugin discovers assets referenced through webforJ [asset annotations](../managing-resources/importing-assets) and minifies them in place, reducing file sizes and improving load times without manual intervention.
+The webforJ Minifier Plugin automatically [minifies](https://en.wikipedia.org/wiki/Minification_(programming)) and optimizes CSS and JavaScript assets during the build process. The plugin discovers assets referenced through webforJ [asset annotations](../managing-resources/importing-assets) and minifies them in place, reducing file sizes and improving load times without manual intervention.
 
 ## Setup {#setup}
 
