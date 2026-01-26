@@ -2,7 +2,7 @@
 sidebar_position: 21
 title: Debouncing
 slug: debouncing
-draft: false
+sidebar_class_name: new-content
 ---
 
 <DocChip chip='since' label='25.11' />

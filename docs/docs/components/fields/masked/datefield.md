@@ -1,6 +1,7 @@
 ---
 title: MaskedDateField
 sidebar_position: 5
+sidebar_class_name: updated-content
 ---
 
 <DocChip chip='shadow' />
@@ -93,7 +94,7 @@ For example, assuming that today is `September 15, 2012`, this is how various in
 | <div align="center">`3/4/5`</div>    | April 5, 2012                                                                                                                                                                                      | March 4, 2005                                                                       | April 3, 2005                                                                                                                 |
 
 
-## Textual date parsing {#textual-date-parsing}
+## Textual date parsing <DocChip chip='since' label='25.11' /> {#textual-date-parsing}
 
 By default, the `MaskedDateField` only accepts numeric input for dates. However, you can enable **textual date parsing** to allow users to enter month and day names in their input. This feature is particularly useful for creating more natural date entry.
 
