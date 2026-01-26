@@ -50,3 +50,5 @@ Shiro
 OAuth2
 LDAP
 WARN
+JBang
+JDK
