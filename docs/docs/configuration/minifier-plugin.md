@@ -185,7 +185,7 @@ To minify files not discovered through annotations, create a configuration file 
 The plugin includes two production-ready minifiers for CSS and JavaScript.
 
 <!-- vale off -->
-**CSS Minifier:** Powered by ph-css 8.0.0, this minifier optimizes CSS files while preserving capabilities. It automatically skips files ending with `.min.css` to avoid redundant processing.
+**CSS Minifier:** Powered by ph-css, this minifier optimizes CSS files while preserving capabilities. It automatically skips files ending with `.min.css` to avoid redundant processing.
 
 **JavaScript Minifier:** Uses Google Closure Compiler v20250820 to minify and optimize JavaScript. Files ending with `.min.js` or `.mjs` are automatically skipped.
 <!-- vale on -->
