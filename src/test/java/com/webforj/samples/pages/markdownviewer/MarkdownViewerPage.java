@@ -7,28 +7,34 @@ public class MarkdownViewerPage {
 
   private static final String ROUTE = "markdownviewer";
 
-  private final Locator markdownViewer;
+  private final Locator viewer;
   private final Locator heading;
   private final Locator boldText;
   private final Locator italicText;
-  private final Locator codeText;
+  private final Locator strikethrough;
+  private final Locator inlineCode;
   private final Locator listItems;
+  private final Locator blockquote;
+  private final Locator codeBlock;
 
   public MarkdownViewerPage(Page page) {
-    this.markdownViewer = page.locator("dwc-markdown-viewer");
-    this.heading = markdownViewer.locator("h1");
-    this.boldText = markdownViewer.locator("strong");
-    this.italicText = markdownViewer.locator("em");
-    this.codeText = markdownViewer.locator("code");
-    this.listItems = markdownViewer.locator("li");
+    this.viewer = page.locator("dwc-markdown-viewer");
+    this.heading = viewer.locator("h1");
+    this.boldText = viewer.locator("strong").first();
+    this.italicText = viewer.locator("em").first();
+    this.strikethrough = viewer.locator("s").first();
+    this.inlineCode = viewer.locator("code").first();
+    this.listItems = viewer.locator("li");
+    this.blockquote = viewer.locator("blockquote");
+    this.codeBlock = viewer.locator("pre code");
   }
 
   public static String getRoute() {
     return ROUTE;
   }
 
-  public Locator getMarkdownViewer() {
-    return markdownViewer;
+  public Locator getViewer() {
+    return viewer;
   }
 
   public Locator getHeading() {
@@ -43,11 +49,23 @@ public class MarkdownViewerPage {
     return italicText;
   }
 
-  public Locator getCodeText() {
-    return codeText;
+  public Locator getStrikethrough() {
+    return strikethrough;
+  }
+
+  public Locator getInlineCode() {
+    return inlineCode;
   }
 
   public Locator getListItems() {
     return listItems;
+  }
+
+  public Locator getBlockquote() {
+    return blockquote;
+  }
+
+  public Locator getCodeBlock() {
+    return codeBlock;
   }
 }

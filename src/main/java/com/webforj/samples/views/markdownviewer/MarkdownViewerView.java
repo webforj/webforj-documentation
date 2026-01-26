@@ -1,20 +1,61 @@
 package com.webforj.samples.views.markdownviewer;
 
 import com.webforj.component.Composite;
+import com.webforj.component.html.elements.Div;
 import com.webforj.component.markdown.MarkdownViewer;
+import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
-public class MarkdownViewerView extends Composite<MarkdownViewer> {
+@FrameTitle("MarkdownViewer")
+public class MarkdownViewerView extends Composite<Div> {
 
   public MarkdownViewerView() {
-    getBoundComponent().setContent("""
+    Div self = getBoundComponent();
+    self.setStyle("display", "flex")
+        .setStyle("justifyContent", "center")
+        .setStyle("padding", "var(--dwc-space-l)");
+
+    Div card = new Div();
+    card.setStyle("maxWidth", "600px")
+        .setStyle("width", "100%")
+        .setStyle("padding", "var(--dwc-space-l)")
+        .setStyle("background", "var(--dwc-color-surface-1)")
+        .setStyle("border", "1px solid var(--dwc-color-default)")
+        .setStyle("borderRadius", "var(--dwc-border-radius-l)");
+
+    MarkdownViewer viewer = new MarkdownViewer();
+    viewer.setContent("""
         # Welcome to MarkdownViewer
 
-        Renders **bold**, *italic*, `code`, and links.
+        This component renders **bold**, *italic*, ~~strikethrough~~, and `inline code`.
 
-        - List items work too
-        - With full markdown support 🎉
+        ## Lists
+
+        - First item
+        - Second item
+        - Third item
+
+        ## Blockquote
+
+        > Markdown makes formatting easy
+        > without writing HTML.
+
+        ## Code Block
+
+        ```java
+        MarkdownViewer viewer = new MarkdownViewer();
+        viewer.setContent("# Hello World");
+        ```
+
+        ## Emoticons
+
+        Feeling happy :) or sad :( or surprised :o
+
+        That's awesome! :D
         """);
+
+    card.add(viewer);
+    self.add(card);
   }
 }

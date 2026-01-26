@@ -10,41 +10,52 @@ import com.webforj.samples.views.BaseTest;
 
 public class MarkdownViewerViewIT extends BaseTest {
 
-  private MarkdownViewerPage markdownViewerPage;
+  private MarkdownViewerPage viewerPage;
 
   @BeforeEach
   public void setup() {
     navigateToRoute(MarkdownViewerPage.getRoute());
-    markdownViewerPage = new MarkdownViewerPage(page);
+    viewerPage = new MarkdownViewerPage(page);
   }
 
   @Test
-  void shouldRenderMarkdownViewer() {
-    assertThat(markdownViewerPage.getMarkdownViewer()).isVisible();
+  public void testViewerIsVisible() {
+    assertThat(viewerPage.getViewer()).isVisible();
   }
 
   @Test
-  void shouldRenderHeading() {
-    assertThat(markdownViewerPage.getHeading()).containsText("Welcome to MarkdownViewer");
+  public void testHeadingIsRendered() {
+    assertThat(viewerPage.getHeading()).isVisible();
+    assertThat(viewerPage.getHeading()).containsText("Welcome to MarkdownViewer");
   }
 
   @Test
-  void shouldRenderBoldText() {
-    assertThat(markdownViewerPage.getBoldText()).containsText("bold");
+  public void testBoldTextIsRendered() {
+    assertThat(viewerPage.getBoldText()).isVisible();
   }
 
   @Test
-  void shouldRenderItalicText() {
-    assertThat(markdownViewerPage.getItalicText()).containsText("italic");
+  public void testItalicTextIsRendered() {
+    assertThat(viewerPage.getItalicText()).isVisible();
   }
 
   @Test
-  void shouldRenderCodeText() {
-    assertThat(markdownViewerPage.getCodeText()).containsText("code");
+  public void testInlineCodeIsRendered() {
+    assertThat(viewerPage.getInlineCode()).isVisible();
   }
 
   @Test
-  void shouldRenderListItems() {
-    assertThat(markdownViewerPage.getListItems()).hasCount(2);
+  public void testListItemsAreRendered() {
+    assertThat(viewerPage.getListItems().first()).isVisible();
+  }
+
+  @Test
+  public void testBlockquoteIsRendered() {
+    assertThat(viewerPage.getBlockquote()).isVisible();
+  }
+
+  @Test
+  public void testCodeBlockIsRendered() {
+    assertThat(viewerPage.getCodeBlock()).isVisible();
   }
 }

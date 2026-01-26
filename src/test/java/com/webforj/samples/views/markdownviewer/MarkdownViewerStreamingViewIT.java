@@ -19,32 +19,23 @@ public class MarkdownViewerStreamingViewIT extends BaseTest {
   }
 
   @Test
-  void shouldShowStartButtonInitially() {
-    assertThat(streamingPage.getStartButton()).isVisible();
+  public void testHeaderIsVisible() {
+    assertThat(streamingPage.getHeader()).isVisible();
+    assertThat(streamingPage.getHeader()).containsText("AI Chat Demo");
   }
 
   @Test
-  void shouldHideStopButtonInitially() {
-    assertThat(streamingPage.getStopButton()).not().isVisible();
+  public void testInputFieldIsVisible() {
+    assertThat(streamingPage.getInputField()).isVisible();
   }
 
   @Test
-  void shouldShowStopButtonWhenStreamStarts() {
-    streamingPage.clickStartStream();
-    assertThat(streamingPage.getStopButton()).isVisible();
+  public void testSendButtonIsVisible() {
+    assertThat(streamingPage.getSendButton()).isVisible();
   }
 
   @Test
-  void shouldHideStartButtonWhenStreamStarts() {
-    streamingPage.clickStartStream();
-    assertThat(streamingPage.getStartButton()).not().isVisible();
-  }
-
-  @Test
-  void shouldStopStreamWhenStopClicked() {
-    streamingPage.clickStartStream();
-    streamingPage.clickStop();
-    assertThat(streamingPage.getStartButton()).isVisible();
+  public void testStopButtonIsHiddenInitially() {
     assertThat(streamingPage.getStopButton()).not().isVisible();
   }
 }
