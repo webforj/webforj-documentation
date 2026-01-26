@@ -129,7 +129,7 @@ When you build your project, the plugin automatically:
 
 ### URL protocol resolution {#url-protocol-resolution}
 
-The plugin understands webforJ [URL protocols](/docs/managing-resources/importing-assets#url-protocols) and resolves them to filesystem paths:
+The plugin understands webforJ [URL protocols](/docs/managing-resources/assets-protocols) and resolves them to filesystem paths:
 
 | Protocol | Resolves To | Example |
 |----------|-------------|---------|
