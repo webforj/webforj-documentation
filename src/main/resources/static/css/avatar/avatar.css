@@ -4,6 +4,7 @@
   width: 300px;
   overflow: hidden;
   border: 1px solid var(--dwc-color-default);
+  margin: 0 auto;
 }
 
 .avatar-demo__project-header {
