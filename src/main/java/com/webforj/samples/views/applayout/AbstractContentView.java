@@ -18,6 +18,12 @@ public abstract class AbstractContentView extends Composite<Div> {
     Router.getCurrent().onNavigate(this::onNavigate);
   }
 
+  @Override
+  protected void onDestroy() {
+    Router.getCurrent().removeAllListeners();
+    super.onDestroy();
+  }
+
   private void onNavigate(NavigateEvent ev) {
     ParametersBag parameters = ev.getContext().getRouteParameters();
     parameters.get("name").ifPresent(name -> {
