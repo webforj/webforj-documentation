@@ -2,64 +2,90 @@ package com.webforj.samples.views.avatar;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import com.webforj.samples.pages.SupportedLanguage;
 
 import com.webforj.samples.pages.avatar.AvatarExpansesPage;
 import com.webforj.samples.views.BaseTest;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class AvatarExpansesViewIT extends BaseTest {
 
-    private AvatarExpansesPage avatarPage;
+  private AvatarExpansesPage avatarPage;
 
-    @BeforeEach
-    public void setupAvatarDemo() {
-        navigateToRoute(AvatarExpansesPage.getRoute());
-        avatarPage = new AvatarExpansesPage(page);
-    }
+  public void setupAvatarDemo(SupportedLanguage language) {
+    navigateToRoute(AvatarExpansesPage.getRoute(language));
+    avatarPage = new AvatarExpansesPage(page);
+  }
 
-    @Test
-    public void testXxxsmallAvatarIsVisible() {
-        assertThat(avatarPage.getXxxsmallAvatar()).isVisible();
-    }
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testXxxsmallAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
+    assertThat(avatarPage.getXxxsmallAvatar()).isVisible();
+  }
 
-    @Test
-    public void testXxsmallAvatarIsVisible() {
-        assertThat(avatarPage.getXxsmallAvatar()).isVisible();
-    }
 
-    @Test
-    public void testXsmallAvatarIsVisible() {
-        assertThat(avatarPage.getXsmallAvatar()).isVisible();
-    }
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testXxsmallAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
+    assertThat(avatarPage.getXxsmallAvatar()).isVisible();
+  }
 
-    @Test
-    public void testSmallAvatarIsVisible() {
-        assertThat(avatarPage.getSmallAvatar()).isVisible();
-    }
 
-    @Test
-    public void testMediumAvatarIsVisible() {
-        assertThat(avatarPage.getMediumAvatar()).isVisible();
-    }
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testXsmallAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
+    assertThat(avatarPage.getXsmallAvatar()).isVisible();
+  }
 
-    @Test
-    public void testLargeAvatarIsVisible() {
-        assertThat(avatarPage.getLargeAvatar()).isVisible();
-    }
 
-    @Test
-    public void testXlargeAvatarIsVisible() {
-        assertThat(avatarPage.getXlargeAvatar()).isVisible();
-    }
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testSmallAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
+    assertThat(avatarPage.getSmallAvatar()).isVisible();
+  }
 
-    @Test
-    public void testXxlargeAvatarIsVisible() {
-        assertThat(avatarPage.getXxlargeAvatar()).isVisible();
-    }
 
-    @Test
-    public void testXxxlargeAvatarIsVisible() {
-        assertThat(avatarPage.getXxxlargeAvatar()).isVisible();
-    }
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testMediumAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
+    assertThat(avatarPage.getMediumAvatar()).isVisible();
+  }
+
+
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testLargeAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
+    assertThat(avatarPage.getLargeAvatar()).isVisible();
+  }
+
+
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testXlargeAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
+    assertThat(avatarPage.getXlargeAvatar()).isVisible();
+  }
+
+
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testXxlargeAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
+    assertThat(avatarPage.getXxlargeAvatar()).isVisible();
+  }
+
+
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testXxxlargeAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
+    assertThat(avatarPage.getXxxlargeAvatar()).isVisible();
+  }
 }
