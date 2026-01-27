@@ -25,7 +25,7 @@ public class AppLayoutViewIT extends BaseTest{
         appLayoutPage = new AppLayoutPage(page);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "Dashboard Link with Route: {0}")
     @MethodSource("provideRoutes")
     public void testDashboardLink(String route) {
         setupAppLayout(route);
