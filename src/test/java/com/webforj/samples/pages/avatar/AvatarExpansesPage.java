@@ -2,6 +2,7 @@ package com.webforj.samples.pages.avatar;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class AvatarExpansesPage {
 
@@ -29,8 +30,8 @@ public class AvatarExpansesPage {
         this.xxxlargeAvatar = page.locator("dwc-avatar[expanse='3xl']");
     }
 
-    public static String getRoute() {
-        return ROUTE;
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
     }
 
     public Locator getXxxsmallAvatar() {
