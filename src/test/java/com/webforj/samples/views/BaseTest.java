@@ -11,7 +11,10 @@ import com.microsoft.playwright.options.LoadState;
 import com.webforj.samples.config.RunConfig;
 
 import java.nio.file.Paths;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
+import com.webforj.samples.pages.SupportedLanguage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -93,4 +96,14 @@ public abstract class BaseTest {
         page.waitForLoadState(LoadState.DOMCONTENTLOADED);
 
     }
+
+    protected Stream<String> provideRoutes() {
+        return Stream.of(SupportedLanguage.values())
+                .map(this::getRoute);
+    }
+
+    protected String getRoute(SupportedLanguage language) {
+        return language.getPath("");
+    }
+
 }
