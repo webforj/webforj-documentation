@@ -7,7 +7,7 @@ sidebar_class_name: new-content
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-markdown-viewer" />
 <DocChip chip='since' label='25.11' />
-<JavadocLink type="markdown" location="com/webforj/component/markdown/MarkdownViewer" top='true'/>
+<JavadocLink type="markdown-viewer" location="com/webforj/component/markdown/MarkdownViewer" top='true'/>
 
 The `MarkdownViewer` component renders markdown text as HTML. It supports standard markdown syntax including headers, lists, code blocks, links, images, and emoji rendering. The component also provides progressive rendering, which displays content character-by-character for a typewriter effect.
 
