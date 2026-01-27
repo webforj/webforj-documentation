@@ -3,6 +3,7 @@ package com.webforj.samples.pages.applayout.applayout;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class AppLayoutPage {
 
@@ -15,8 +16,8 @@ public class AppLayoutPage {
 
     }
 
-    public static String getRoute() {
-        return ROUTE;
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
     }
 
     public Locator getDashboardLink() {
