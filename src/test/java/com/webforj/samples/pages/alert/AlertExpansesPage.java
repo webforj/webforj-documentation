@@ -2,6 +2,7 @@ package com.webforj.samples.pages.alert;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class AlertExpansesPage {
 
@@ -17,8 +18,8 @@ public class AlertExpansesPage {
         this.alertXLarge = page.locator("dwc-alert").filter(new Locator.FilterOptions().setHasText("This alert uses the XLARGE expanse."));
     }
 
-    public static String getRoute() {
-        return ROUTE;
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
     }
 
     public Locator getAlertXSmall() {
