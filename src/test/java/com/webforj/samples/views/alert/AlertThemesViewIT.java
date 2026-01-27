@@ -18,20 +18,15 @@ public class AlertThemesViewIT extends BaseTest {
 
     private AlertThemesPage alertThemesPage;
 
-    Stream<String> provideRoutes() {
-        return Stream.of(SupportedLanguage.values())
-                .map(AlertThemesPage::getRoute);
-    }
-
-    public void setupAlertThemes(String route) {
-        navigateToRoute(route);
+    public void setupAlertThemes(SupportedLanguage language) {
+        navigateToRoute(AlertThemesPage.getRoute(language));
         alertThemesPage = new AlertThemesPage(page);
     }
 
     @ParameterizedTest
     @MethodSource("provideRoutes")
-    public void testAlertThemes(String route) {
-        setupAlertThemes(route);
+    public void testAlertThemes(SupportedLanguage language) {
+        setupAlertThemes(language);
         assertThat(alertThemesPage.getSuccessAlert()).hasAttribute("theme", "success");
     }
 

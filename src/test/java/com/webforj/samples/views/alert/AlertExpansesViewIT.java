@@ -18,20 +18,15 @@ public class AlertExpansesViewIT extends BaseTest {
 
     private AlertExpansesPage alertExpansesPage;
 
-    Stream<String> provideRoutes() {
-        return Stream.of(SupportedLanguage.values())
-                .map(AlertExpansesPage::getRoute);
-    }
-
-    public void setupAlertExpanses(String route) {
-        navigateToRoute(route);
+    public void setupAlertExpanses(SupportedLanguage language) {
+        navigateToRoute(AlertExpansesPage.getRoute(language));
         alertExpansesPage = new AlertExpansesPage(page);
     }
 
     @ParameterizedTest
     @MethodSource("provideRoutes")
-    public void testAlertExpanses(String route) {
-        setupAlertExpanses(route);
+    public void testAlertExpanses(SupportedLanguage language) {
+        setupAlertExpanses(language);
         assertThat(alertExpansesPage.getAlertXSmall()).hasAttribute("expanse", "xs");
         assertThat(alertExpansesPage.getAlertMedium()).hasAttribute("expanse", "m");
         assertThat(alertExpansesPage.getAlertXLarge()).hasAttribute("expanse", "xl");
