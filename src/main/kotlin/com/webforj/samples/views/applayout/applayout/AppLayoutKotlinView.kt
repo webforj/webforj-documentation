@@ -10,6 +10,7 @@ import com.webforj.kotlin.dsl.component.layout.applayout.drawer
 import com.webforj.kotlin.dsl.component.layout.applayout.header
 import com.webforj.kotlin.dsl.component.layout.appnav.appNav
 import com.webforj.kotlin.dsl.component.layout.appnav.appNavItem
+import com.webforj.kotlin.dsl.component.layout.appnav.prefix
 import com.webforj.kotlin.dsl.component.toolbar.title
 import com.webforj.kotlin.dsl.component.toolbar.toolbar
 import com.webforj.router.annotation.FrameTitle
@@ -35,25 +36,25 @@ class AppLayoutKotlinView: Composite<AppLayout>() {
           drawerLogo()
           appNav {
             appNavItem("Dashboard", view = AppLayoutContentKotlinView::class, routeParameters = ParametersBag.of("name=Dashboard")) {
-              tablerIcon("dashboard")
+              prefix { tablerIcon("dashboard") }
             }
             appNavItem("Orders", view = AppLayoutContentKotlinView::class, routeParameters = ParametersBag.of("name=Orders")) {
-              tablerIcon("shopping-cart")
+              prefix { tablerIcon("shopping-cart") }
             }
             appNavItem("Customers", view = AppLayoutContentKotlinView::class, routeParameters = ParametersBag.of("name=Customers")) {
-              tablerIcon("user")
+              prefix { tablerIcon("user") }
             }
             appNavItem("Products", view = AppLayoutContentKotlinView::class, routeParameters = ParametersBag.of("name=Products")) {
-              tablerIcon("box")
+              prefix { tablerIcon("box") }
             }
             appNavItem("Documents", view = AppLayoutContentKotlinView::class, routeParameters = ParametersBag.of("name=Documents")) {
-              tablerIcon("files")
+              prefix { tablerIcon("files") }
             }
             appNavItem("Tasks", view = AppLayoutContentKotlinView::class, routeParameters = ParametersBag.of("name=Tasks")) {
-              tablerIcon("checklist")
+              prefix { tablerIcon("checklist") }
             }
             appNavItem("Analytics", view = AppLayoutContentKotlinView::class, routeParameters = ParametersBag.of("name=Analytics")) {
-              tablerIcon("chart-dots-2")
+              prefix { tablerIcon("chart-dots-2") }
             }
           }
         }
