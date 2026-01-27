@@ -19,19 +19,14 @@ import java.util.stream.Stream;
 public class ClosableAlertViewIT extends BaseTest {
 
 
-    Stream<String> provideRoutes() {
-        return Stream.of(SupportedLanguage.values())
-                .map(ClosableAlertPage::getRoute);
-    }
-
-    public void setupClosableAlert(String route) {
-        navigateToRoute(route);
+    public void setupClosableAlert(SupportedLanguage language) {
+        navigateToRoute(ClosableAlertPage.getRoute(language));
     }
 
     @ParameterizedTest
     @MethodSource("provideRoutes")
-    public void testAlertClosesWhenCloseButtonIsClicked(String route) {
-        setupClosableAlert(route);
+    public void testAlertClosesWhenCloseButtonIsClicked(SupportedLanguage language) {
+        setupClosableAlert(language);
         Locator alert = page.getByRole(AriaRole.ALERT);
 
         assertThat(alert).isVisible();
