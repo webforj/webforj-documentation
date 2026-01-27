@@ -1,7 +1,6 @@
 ---
 title: MCP Server
 sidebar_position: 2.5
-sidebar_class_name: new-content
 ---
 
 The webforJ Model Context Protocol (MCP) server provides AI assistants with direct access to official webforJ documentation, verified code examples, and framework-specific patterns, allowing responses with more accurate answers and automated project generation specifically for webforJ development.

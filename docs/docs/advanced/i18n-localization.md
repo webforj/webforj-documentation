@@ -1,7 +1,6 @@
 ---
 sidebar_position: 11
 title: Localization
-sidebar_class_name: new-content
 ---
 
 # Localization <DocChip chip='since' label='25.10' />

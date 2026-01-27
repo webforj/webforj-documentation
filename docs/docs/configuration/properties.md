@@ -1,7 +1,6 @@
 ---
 title: Property Configuration
 sidebar_position: 30
-sidebar_class_name: updated-content
 ---
 
 # Configuring webforJ properties
