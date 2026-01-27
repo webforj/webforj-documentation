@@ -11,7 +11,7 @@ import com.microsoft.playwright.options.LoadState;
 import com.webforj.samples.config.RunConfig;
 
 import java.nio.file.Paths;
-import java.util.function.Function;
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 import com.webforj.samples.pages.SupportedLanguage;
@@ -97,13 +97,8 @@ public abstract class BaseTest {
 
     }
 
-    protected Stream<String> provideRoutes() {
-        return Stream.of(SupportedLanguage.values())
-                .map(this::getRoute);
-    }
-
-    protected String getRoute(SupportedLanguage language) {
-        return language.getPath("");
+    protected Stream<SupportedLanguage> provideRoutes() {
+        return Arrays.stream(SupportedLanguage.values());
     }
 
 }
