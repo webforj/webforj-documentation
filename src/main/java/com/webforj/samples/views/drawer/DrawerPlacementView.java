@@ -30,40 +30,27 @@ public class DrawerPlacementView extends Composite<FlexLayout> {
     RadioButton leftOption = new RadioButton("Left", true);
     RadioButton rightOption = new RadioButton("Right");
 
+    topOption.setUserData("placement", Placement.TOP);
+    topCenterOption.setUserData("placement", Placement.TOP_CENTER);
+    bottomOption.setUserData("placement", Placement.BOTTOM);
+    bottomCenterOption.setUserData("placement", Placement.BOTTOM_CENTER);
+    leftOption.setUserData("placement", Placement.LEFT);
+    rightOption.setUserData("placement", Placement.RIGHT);
+
     RadioButtonGroup placementGroup = new RadioButtonGroup("Placement Options", 
         topOption, topCenterOption, bottomOption, bottomCenterOption, leftOption, rightOption);
 
     FlexLayout groupLayout = new FlexLayout();
     groupLayout.setDirection(FlexDirection.COLUMN)
             .setSpacing("var(--dwc-space-s)")
-            .add(placementGroup, topOption, topCenterOption, bottomOption, bottomCenterOption, 
-                leftOption, rightOption);
+            .add(placementGroup);
 
-    placementGroup.onValueChange(event -> {
-      RadioButton selected = placementGroup.getChecked();
+    placementGroup.onChange(e -> {
+      RadioButton selected = e.getChecked();
       if (selected != null) {
-        switch (selected.getText()) {
-          case "Top":
-            drawer.setPlacement(Placement.TOP);
-            break;
-          case "Top Center":
-            drawer.setPlacement(Placement.TOP_CENTER);
-            break;
-          case "Bottom":
-            drawer.setPlacement(Placement.BOTTOM);
-            break;
-          case "Bottom Center":
-            drawer.setPlacement(Placement.BOTTOM_CENTER);
-            break;
-          case "Right":
-            drawer.setPlacement(Placement.RIGHT);
-            break;
-          default:
-            drawer.setPlacement(Placement.LEFT);
-            break;
+        drawer.setPlacement((Drawer.Placement) selected.getUserData("placement"));
         }
-      }
-    });
+      });
 
     drawer.add(groupLayout);
     drawer.setStyle("--dwc-drawer-max-width", "fit-content");
