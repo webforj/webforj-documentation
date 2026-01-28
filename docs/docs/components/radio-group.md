@@ -8,7 +8,7 @@ sidebar_class_name: updated-content
 <DocChip chip='since' label='23.01' />
 <JavadocLink type="foundation" location="com/webforj/component/optioninput/RadioButtonGroup" top='true'/>
 
-The `RadioButtonGroup` manages a collection of [`RadioButton`](/docs/components/radiobuttongroup) components. Only one `RadioButton` can be selected in a `RadioButtonGroup`. Whenever a user checks a new radio button, the previously selected one in the group is automatically unchecked.
+The `RadioButtonGroup` manages a collection of [`RadioButton`](/docs/components/radiobutton) components. Only one `RadioButton` can be selected in a `RadioButtonGroup`. When a user checks a new radio button, the previously selected one in the group is automatically unchecked.
 
 <ComponentDemo 
 path='/webforj/radiobuttongroup?' 
@@ -17,27 +17,28 @@ height="200px"
 />
 
 :::important `RadioButtonGroup` rendering
-The `RadioButtonGroup` component doesn't render an HTML element. Instead, it's only the app's logic that makes each `RadioButton` behave as part of a group rather than individually.
+The `RadioButtonGroup` component doesn't render an HTML element. It only provides logic to make `RadioButton` components behave as a group rather than individually.
 :::
 
 ## Adding and removing `RadioButton` components {#adding-and-removing-radiobuttons}
 
-You can put `RadioButton` components into a `RadioButtonGroup` during object creation, or after using the `add()` method. Similarly, using the `remove()` method removes the radio buttons from the group.
+You can include `RadioButton` components in the `RadioButtonGroup` constructor to create a group out of the provided components.
+To add or remove a `RadioButton` from an existing `RadioButtonGroup`, use the `add()` or `remove()` methods.
 
-:::tip Finding the Group of a `RadioButton`
-The `RadioButton` component has the `getButtonGroup()` method, which returns what `RadioButtonGroup` it belongs to, or null if it doesn’t have a group.
+:::tip Getting the Group of a `RadioButton`
+The `RadioButton` component has the `getButtonGroup()` method, which returns the `RadioButtonGroup` it belongs to, or `null` if it doesn’t have a group.
 :::
 
 ## Nesting <DocChip chip='since' label='25.11' /> {#nesting}
 
-Like other components, you can nest a `RadioButtonGroup` within a container. This prevents you from having to directly add each individually `RadioButton` into a container.
+Like other components, you can nest a `RadioButtonGroup` within a container, so you don't have to directly add each individual `RadioButton`.
 
 ```java
 RadioButton agree = new RadioButton("Agree");
 RadioButton neutral = new RadioButton("Neutral");
 RadioButton disagree = new RadioButton("Disagree");
 
-RadioButtonGroup group = new RadioButtonGroup("choices", agreee, neutral, disagree);
+RadioButtonGroup group = new RadioButtonGroup("choices", agree, neutral, disagree);
 
 Fieldset fieldset = new Fieldset("Options");
 fieldset.add(group);
@@ -45,7 +46,7 @@ fieldset.add(group);
 
 ## Using `RadioButtonGroupChangeEvent` {#using-radiobuttongroupchangeevent}
 
-Each radio button can have event listeners assigned when a user toggles it. However, the advantage of using a `RadioButtonGroup` is that you can use a single event listener that responds to all the radio buttons in the group with the [`RadioButtonGroupChangeEvent`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/optioninput/event/RadioButtonGroupChangeEvent.html).
+Each `RadioButton` can have its own event listener to detect when a user toggles it. However, one advantage of using a `RadioButtonGroup` is that you can use a single event listener that responds to all the radio buttons in the group with the [`RadioButtonGroupChangeEvent`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/optioninput/event/RadioButtonGroupChangeEvent.html).
 
 **Adding event listeners to each `RadioButton`**
 
@@ -58,11 +59,11 @@ disagree.onValueChange(e -> changeEvent());
 **Adding a single event listener to the `RadioButtonGroup`**
 
 ```java
-RadioButtonGroup group = new RadioButtonGroup("choices", agreee, neutral, disagree);
+RadioButtonGroup group = new RadioButtonGroup("choices", agree, neutral, disagree);
 group.onChange(e -> changeEvent());
 ```
 
-The following sample from [Drawer Placement](/docs/components/drawer#placement) uses the `RadioButtonGroupChangeEvent` to automatically adjust the placement of the `Drawer` component:
+The following sample from [Drawer Placement](/docs/components/drawer#placement) uses the `RadioButtonGroupChangeEvent` to automatically change the placement of the `Drawer` component:
 
 <ComponentDemo
 path='/webforj/drawerplacement?'
@@ -72,4 +73,4 @@ height='600px'
 
 ## Naming {#naming}
 
-The name attribute in a `RadioButtonGroup` groups related RadioButtons together, allowing users to make a single choice from the options provided and enforcing exclusivity among the RadioButtons. The name of a group isn't reflected in the DOM, however, and is a convenience utility for the Java developer.
+The `name` attribute in a `RadioButtonGroup` groups related RadioButtons together, allowing users to make a single choice from the options provided and enforcing exclusivity among the RadioButtons. The name of a group isn't reflected in the DOM, however, and is a convenience utility for the Java developer.

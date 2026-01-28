@@ -9,7 +9,7 @@ sidebar_position: 95
 <DocChip chip='since' label='23.01' />
 <JavadocLink type="foundation" location="com/webforj/component/optioninput/RadioButton" top='true'/>
 
-The `RadioButton` class creates an object that can be selected or deselected, and which displays its state to the user. Radio buttons are commonly used when mutually exclusive options are available, allowing the user to choose a single option from a set of choices.
+The `RadioButton` component is an object that can be selected or deselected, and which displays its state to the user. Radio buttons are commonly used when mutually exclusive options are available, allowing the user to choose a single option from a set of choices.
 
 
 <ComponentDemo 
@@ -19,7 +19,7 @@ height="200px"
 />
 
 :::tip Grouping `RadioButton` components
-Using a [`RadioButtonGroup`](/docs/components/radiobuttongroup) makes it easier to manage a set of radio buttons when you want users to pick a single option.
+Use a [`RadioButtonGroup`](/docs/components/radiobuttongroup) to manage a set of radio buttons when you want users to pick a single option.
 :::
 
 ## Usages {#usages}
