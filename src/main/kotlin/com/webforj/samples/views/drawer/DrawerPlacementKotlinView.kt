@@ -43,24 +43,6 @@ class DrawerPlacementKotlinView: Composite<FlexLayout>() {
                 setUserData("placement", placement)
               }
             }
-            /*radioButton("Top") {
-              setUserData("placement", Placement.TOP)
-            }
-            radioButton("Top Center") {
-              setUserData("placement", Placement.TOP_CENTER)
-            }
-            radioButton("Bottom") {
-              setUserData("placement", Placement.BOTTOM)
-            }
-            radioButton("Bottom Center") {
-              setUserData("placement", Placement.BOTTOM_CENTER)
-            }
-            radioButton("Left", true) {
-              setUserData("placement", Placement.LEFT)
-            }
-            radioButton("Right") {
-              setUserData("placement", Placement.RIGHT)
-            }*/
             onChange { e ->
               e.checked?.let {
                 this@drawer.placement = it.getUserData("placement") as Placement
