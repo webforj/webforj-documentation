@@ -11,7 +11,7 @@ Observers allow components to react to lifecycle events by implementing interfac
 - **`DidEnterObserver`**: Ideal for handling actions after the component has been attached, such as rendering data or triggering animations.
 - **`WillLeaveObserver`**: Provides a way to manage logic before a user leaves a route, such as checking for unsaved changes.
 - **`DidLeaveObserver`**: Used for cleanup actions or other tasks that should run after a component is detached from the DOM.
-- **`ActivateObserver`** (since 25.03): Triggered when a cached component is reactivated, such as when navigating to the same route with different parameters.
+- **`ActivateObserver`**: <DocChip chip='since' label='25.03' /> Triggered when a cached component is reactivated, such as when navigating to the same route with different parameters.
 
 ## Example: authentication with `WillEnterObserver` {#example-authentication-with-willenterobserver}
 
@@ -107,11 +107,7 @@ public class NotificationsView extends Composite<Div> implements DidLeaveObserve
 
 This example clears notifications after the user leaves the `NotificationsView`, using the `DidLeaveObserver` for cleanup.
 
-## Example: Refreshing data with `ActivateObserver` {#example-refreshing-data-with-activateobserver}
-
-:::info Since 25.03
-The `ActivateObserver` and `ActivateEvent` are available starting from webforJ version `25.03`.
-:::
+## Example: Refreshing data with `ActivateObserver` <DocChip chip='since' label='25.03' /> {#example-refreshing-data-with-activateobserver}
 
 ```java
 @Route(value = "product/:id")
