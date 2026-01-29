@@ -10,11 +10,12 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Map;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import com.webforj.samples.pages.SupportedLanguage;
 
 import com.webforj.samples.pages.icon.IconVariationsPage;
 import com.webforj.samples.views.BaseTest;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class IconVariationsViewIT extends BaseTest {
 
@@ -24,13 +25,14 @@ public class IconVariationsViewIT extends BaseTest {
     private final String SOLID_ENVELOPE_ICON_URL = "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/svgs/solid/envelope.svg";
     private final String INSTAGRAM_ICON_URL = "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/svgs/brands/instagram.svg";
 
-    @BeforeEach
-    public void setupIconVariations() {
-        navigateToRoute(IconVariationsPage.getRoute());
+    public void setupIconVariations(SupportedLanguage language) {
+        navigateToRoute(IconVariationsPage.getRoute(language));
     }
 
-    @Test
-    public void testSVGsLoaded() throws IOException, InterruptedException {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testSVGsLoaded(SupportedLanguage language) throws IOException, InterruptedException {
+      setupIconVariations(language);
 
         Map<String, String> svgIcons = Map.of(
                 "calendar", CALENDAR_ICON_URL,
