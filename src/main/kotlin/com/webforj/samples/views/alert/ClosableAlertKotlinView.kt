@@ -18,8 +18,6 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Closable Alert Kotlin")
 class ClosableAlertKotlinView: Composite<FlexLayout>() {
-  private val reopenButton: Button
-  private val alert: Alert
 
   init {
     boundComponent.apply {
@@ -28,15 +26,17 @@ class ClosableAlertKotlinView: Composite<FlexLayout>() {
       alignment = FlexAlignment.CENTER
       justifyContent = FlexJustifyContent.CENTER
       margin = "var(--dwc-space-l)"
-      alert = alert("Heads up! This alert can be dismissed.", Theme.INFO, true) {
+      val alert = alert("Heads up! This alert can be dismissed.", Theme.INFO, true) {
         maxWidth = "400px"
-        onClose { reopenButton.isVisible = true }
       }
-      reopenButton = button("Show Alert", ButtonTheme.PRIMARY) {
+      button("Show Alert", ButtonTheme.PRIMARY) {
         isVisible = false
         onClick {
           alert.open()
           isVisible = false
+        }
+        alert.onClose {
+          isVisible = true
         }
       }
     }
