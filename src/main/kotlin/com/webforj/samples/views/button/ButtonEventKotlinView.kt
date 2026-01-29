@@ -15,26 +15,24 @@ import com.webforj.router.annotation.Route
 @FrameTitle("Button Event")
 class ButtonEventKotlinView: Composite<FlexLayout>() {
   private var counter = 0
-  private lateinit var text: Div
-  private lateinit var payload: Div
 
   init {
       boundComponent.apply {
         direction = FlexDirection.ROW
         spacing = "var(--dwc-space-l)"
         padding = "var(--dwc-space-l)"
-        button("Click Me!") {
+        val button = button("Click Me!") {
           width = "150px"
-          onClick {
-            this@ButtonEventKotlinView.text.text = "Current Counter: ${++counter}"
-            payload.text = "Event payload: ${it.data}"
-          }
         }
         flexLayout {
           vertical()
           spacing = "0px"
-          this@ButtonEventKotlinView.text = div("Current Counter: 0")
-          payload = div("Event Payload: null")
+          val text = div("Current Counter: 0")
+          val payload = div("Event Payload: null")
+          button.onClick {
+            text.text = "Current Counter: ${++counter}"
+            payload.text = "Event payload: ${it.data}"
+          }
         }
       }
   }
