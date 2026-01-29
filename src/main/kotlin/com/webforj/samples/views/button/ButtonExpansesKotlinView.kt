@@ -13,7 +13,6 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Button Expanses")
 class ButtonExpansesKotlinView : Composite<FlexLayout>() {
-  private val demoButton: Button
 
   init {
     boundComponent.apply {
@@ -24,16 +23,17 @@ class ButtonExpansesKotlinView : Composite<FlexLayout>() {
         .filter { it != Expanse.NONE }
         .map { ListItem(it, it.name) }
 
-      choiceBox {
+      val expanses = choiceBox {
         insert(categories)
         selectIndex(0)
         width = "100px"
-        onSelect {
-          demoButton.expanse = selected.key as Expanse
-          demoButton.text = selected.text
+      }
+      button("None") {
+        expanses.onSelect {
+          expanse = it.selectedItem.key as Expanse
+          text = it.selectedItem.text
         }
       }
-      demoButton = button("None")
 
     }
   }
