@@ -3,22 +3,22 @@ sidebar_position: 21
 title: Debouncing
 slug: debouncing
 sidebar_class_name: new-content
-_i18n_hash: be654f5efb68050d8632a27166954583
+_i18n_hash: 89cdcc39e4954963d7e19cb0e5665ca4
 ---
 <DocChip chip='since' label='25.11' />
 <JavadocLink type="foundation" location="com/webforj/Debouncer" top='true'/>
 
-Debonssointi on tekniikka, joka viivästyttää toiminnan suorittamista, kunnes tietty aika on kulunut viimeisestä kutsusta. Jokainen uusi kutsu nollaa ajastimen. Tämä on hyödyllistä skenaarioissa, kuten kirjoittamalla hakua, jossa haluat odottaa, kunnes käyttäjä lopettaa kirjoittamisen ennen kuin suoritat hakukyselyn.
+Debonssi on tekniikka, joka viivästyttää toiminnon suorittamista, kunnes määritetty aika viimeisestä kutsusta on kulunut. Jokainen uusi kutsu nollaa ajastimen. Tämä on hyödyllistä skenaarioissa, kuten etsiessä kirjoittaessa, jossa haluat odottaa, kunnes käyttäjä lopettaa kirjoittamisen, ennen kuin suoritat hakukyselyn.
 
 <ComponentDemo
 path='/webforj/debouncer?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/debouncer/DebouncerDemoView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/debouncer/DebouncerView.java'
 height='265px'
 />
 
 ## Peruskäyttö {#basic-usage}
 
-`Debouncer`-luokka tarjoaa yksinkertaisen tavan debonsoida toimintoja. Luo `Debouncer` viiveellä sekunneissa ja kutsu sitten `run()` -menetelmää sen toiminnan kanssa, jonka haluat debonsoida:
+`Debouncer`-luokka tarjoaa yksinkertaisen tavan debonsoida toimintoja. Luo `Debouncer` viiveellä sekunneissa, ja kutsu sitten `run()` toimintoa varten, jota haluat debonsoida:
 
 ```java
 Debouncer debounce = new Debouncer(0.3f);
@@ -28,41 +28,41 @@ textField.onModify(e -> {
 });
 ```
 
-Tässä esimerkissä `search()`-metodia kutsutaan vain sen jälkeen, kun käyttäjä on lopettanut kirjoittamisen 300 millisekunnin ajan. Jokainen näppäinkosketus nollaa ajastimen `onModify`-tapahtuman kautta, joten nopea kirjoittaminen ei laukaise useita hakuja.
+Tässä esimerkissä `search()`-metodia kutsutaan vain, kun käyttäjä lopettaa kirjoittamisen 300 millisekunnin ajaksi. Jokainen näppäinpainallus nollaa ajastimen `onModify`-tapahtuman kautta, joten nopea kirjoittaminen ei laukaise useita hakuja.
 
-## Miten se toimii {#how-it-works}
+## Kuinka se toimii {#how-it-works}
 
-Kun kutsut `run()`-menetelmää toiminnalla:
+Kun kutsut `run()` toimintoa:
 
-1. Jos mitään toimintoa ei ole odottamassa, `Debouncer` aikatauluttaa toiminnan suoritettavaksi viiveen jälkeen
-2. Jos toiminta on jo odottamassa, edellinen toiminta peruutetaan ja ajastin käynnistetään uudelleen uudella toiminnalla
-3. Kun viive on kulunut ilman toista kutsua, toiminta suoritetaan
+1. Jos toimintoa ei ole odottamassa, `Debouncer` aikatauluttaa toiminnon suoritettavaksi viiveen jälkeen
+2. Jos toiminto on jo odottamassa, aikaisempi toiminto peruutetaan ja ajastin alkaa uudelleen uuden toiminnon kanssa
+3. Kun viive on kulunut ilman uutta kutsua, toiminto suoritetaan
 
-`Debouncer` toimii UI-säikeessä käyttäen webforJ:n [`Interval`](/docs/advanced/interval) mekanismia, joten sinun ei tarvitse kääriä UI-päivityksiä `Environment.runLater()`-menetelmään.
+`Debouncer` toimii UI-säikeessä käyttäen webforJ:n [`Interval`](/docs/advanced/interval) mekanismia, joten sinun ei tarvitse kääriä UI-päivityksiä `Environment.runLater()`-kutsun ympärille.
 
-:::tip Viiveyksiköt
+:::tip Viiveen yksiköt
 Viiveparametri käyttää sekunteja yksikkönä, ei millisekunteja. Käytä `0.3f` 300 ms:lle tai `1.5f` 1.5 sekunnille.
 :::
 
 ## Suorittamisen hallinta {#controlling-execution}
 
-Seuraavia menetelmiä voidaan käyttää tarkempaan toiminnan hallintaan ja `Debouncer`-käyttöön:
+Seuraavia metodeja voidaan käyttää tarkemmin hallitsemaan `Debouncer`in suorittamista ja käyttöä:
 
-### Odottavan toiminnan peruuttaminen {#cancelling-a-pending-action}
+### Odottavan toiminnon peruuttaminen {#cancelling-a-pending-action}
 
-Käytä `cancel()`-menetelmää lopettaaksesi odottavan toiminnan suorittamisen:
+Käytä `cancel()`-metodia estääksesi odottavan toiminnon suorittamisen:
 
 ```java
 Debouncer debounce = new Debouncer(1f);
 
 debounce.run(() -> saveDocument());
 
-// Käyttäjä siirtyy muualle ennen tallennuksen suorittamista
+// Käyttäjä navigoi pois ennen kuin tallennus suoritetaan
 debounce.cancel();
 ```
 
 :::tip Odottavien debonsointien peruuttaminen
-Kuten aikavälit, on hyvä käytäntö peruuttaa odottavat debonsoidut toiminnot, kun komponentti tuhotaan. Tämä estää muistivuodot ja vältää virheitä toiminnan suorittamisessa tuhotuissa komponenteissa:
+Kuten intervallit, on hyvä käytäntö peruuttaa odottavat debonsoidut toiminnot, kun komponentti tuhotaan. Tämä estää muistivuotoja ja virheitä tuotehdolla olevan komponentin suorittamiselta:
 
 ```java
 public class SearchPanel extends Composite<Div> {
@@ -76,9 +76,9 @@ public class SearchPanel extends Composite<Div> {
 ```
 :::
 
-### Pakottaminen välittömään suorittamiseen {#forcing-immediate-execution}
+### Välitön suorittaminen {#forcing-immediate-execution}
 
-Käytä `flush()`-menetelmää suorittaaksesi odottavan toiminnan heti:
+Käytä `flush()`-metodia suorittaaksesi odottava toiminto välittömästi:
 
 ```java
 Debouncer debounce = new Debouncer(0.5f);
@@ -87,7 +87,7 @@ textField.onModify(e -> {
   debounce.run(() -> validateInput(textField.getText()));
 });
 
-// Pakota validoiminen ennen lomakkeen lähettämistä
+// Pakota validointi ennen lomakkeen lähettämistä
 submitButton.onClick(e -> {
   debounce.flush();
   if (isValid()) {
@@ -98,35 +98,35 @@ submitButton.onClick(e -> {
 
 ### Odottavan tilan tarkistaminen {#checking-pending-status}
 
-Käytä `isPending()`-menetelmää tarkistaaksesi, onko toiminta odottamassa suorittamista:
+Käytä `isPending()`-metodia tarkistaaksesi, onko toiminto odottamassa suorittamista:
 
 ```java
 Debouncer debounce = new Debouncer(0.3f);
 
 if (debounce.isPending()) {
-  statusLabel.setText("Käsitellään...");
+  statusLabel.setText("Käsittely...");
 }
 ```
 
 ## Tapahtumatason debonsointi vs `Debouncer` {#event-level-debouncing-vs-debouncer}
 
-webforJ tarjoaa kaksi lähestymistapaa debonsointiin:
+webforJ tarjoaa kaksi lähestymistapaa debonsoimiseen:
 
 | Ominaisuus | `Debouncer` | `ElementEventOptions.setDebounce()` |
 |------------|-------------|-------------------------------------|
-| Laajuus    | Mikä tahansa toiminta | Elementtien tapahtumat vain |
-| Sijainti   | Palvelinpuoli | Asiakaspuoli |
-| Yksikkö    | Sekunnit (float) | Millisekunnit (int) |
-| Joustavuus | Täysi hallinta peruutus/flush | Automaattinen tapahtuman kanssa |
+| Laajuus    | Mikä tahansa toiminto | Vain elementtitapahtumat |
+| Sijainti   | Palvelinpuoli | Asiakaspäässä |
+| Yksikkö    | Sekunteja (float) | Millisekunteja (int) |
+| Joustavuus | Täydellinen hallinta peruuttamiseen/tyhjennykseen | Automaattinen tapahtumalla |
 
-Käytä `Debouncer`-luokkaa, kun tarvitset ohjelmallista hallintaa debonsoinnista, kuten odottavien toimien peruuttamista tai tyhjentämistä. Käytä `ElementEventOptions`-luokkaa, kun haluat yksinkertaista asiakaspuolen debonsointia elementtien tapahtumille ilman lisäpalvelinpyyntöjä.
+Käytä `Debouncer`ia, kun tarvitset ohjelmallista hallintaa debonsoimiseen, kuten odottavien toimintojen peruuttamiseen tai tyhjentämiseen. Käytä `ElementEventOptions`-asetusta, kun haluat yksinkertaista asiakaspään debonsointia elementtitapahtumille ilman lisäpalvelinpyyntöjä.
 
 ```java
-// Käyttäen ElementEventOptions asiakaspuolen debonsointiin
+// Käyttäen ElementEventOptions asiakaspään debonsoimiseen
 ElementEventOptions options = new ElementEventOptions();
 options.setDebounce(300);
 
 element.addEventListener("input", e -> {
-  // Tämä käsittelijä on debonsoitu asiakkaan puolella
+  // Tämä käsittelijä debonsoidaan asiakkaalla
 }, options);
 ```
