@@ -14,10 +14,11 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Button Event")
 class ButtonEventKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
   private var counter = 0
 
   init {
-      boundComponent.apply {
+      self.apply {
         direction = FlexDirection.ROW
         spacing = "var(--dwc-space-l)"
         padding = "var(--dwc-space-l)"
