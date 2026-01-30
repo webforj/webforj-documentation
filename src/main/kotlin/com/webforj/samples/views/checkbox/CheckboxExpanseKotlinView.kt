@@ -12,9 +12,10 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Checkbox Expanses")
 class CheckboxExpanseKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
+     self.apply {
         wrap = FlexWrap.WRAP
         margin = "var(--dwc-space-l)"
         spacing = "50px"
