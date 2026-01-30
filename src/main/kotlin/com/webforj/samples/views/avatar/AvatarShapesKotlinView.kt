@@ -12,9 +12,10 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Avatar Shapes")
 class AvatarShapesKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
+      self.apply {
         spacing = "var(--dwc-space-l)"
         margin = "var(--dwc-space-l)"
         alignment = FlexAlignment.CENTER

@@ -31,9 +31,10 @@ import com.webforj.router.annotation.Route
 @FrameTitle("Team Members")
 @StyleSheet("ws://css/avatar/avatar.css")
 class AvatarKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
+      self.apply {
         direction = FlexDirection.COLUMN
         margin = "var(--dwc-space-l)"
         div {
