@@ -16,9 +16,10 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Checkbox Horizontal Text")
 class CheckboxHorizontalTextKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
+      self.apply {
         direction = FlexDirection.ROW
         wrap = FlexWrap.WRAP
         spacing = "var(--dwc-space-l)"
