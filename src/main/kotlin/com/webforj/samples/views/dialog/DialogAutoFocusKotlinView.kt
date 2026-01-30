@@ -12,9 +12,10 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Dialog Auto-Focus")
 class DialogAutoFocusKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
+      self.apply {
         dialog {
           addToHeader { div("Auto Focus") }
           textField("This Box is Auto Focused")

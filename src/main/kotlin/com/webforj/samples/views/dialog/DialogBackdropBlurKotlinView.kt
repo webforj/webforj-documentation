@@ -25,9 +25,10 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Dialog Backdrop Blur")
 class DialogBackdropBlurKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
+      self.apply {
         dialog {
           addClassName("loginForm")
           addToHeader { div("Background Blur") }

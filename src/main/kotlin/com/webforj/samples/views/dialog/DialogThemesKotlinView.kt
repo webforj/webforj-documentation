@@ -17,9 +17,10 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Dialog Themes")
 class DialogThemesKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
+      self.apply {
         dialog {
           addToHeader { div("Themes") }
           styles["display"] = "flex"
