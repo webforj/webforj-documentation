@@ -13,9 +13,10 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Avatar Themes")
 class AvatarThemesKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-    boundComponent.apply {
+    self.apply {
       direction = FlexDirection.COLUMN
       spacing = "var(--dwc-space-m)"
       margin = "var(--dwc-space-l)"
