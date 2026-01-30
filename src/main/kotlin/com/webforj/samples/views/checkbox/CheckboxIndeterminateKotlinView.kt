@@ -16,12 +16,13 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Checkbox Indeterminate")
 class CheckboxIndeterminateKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
   private lateinit var indeterminate: CheckBox
   private lateinit var child1: CheckBox
   private lateinit var child2: CheckBox
 
   init {
-      boundComponent.apply {
+      self.apply {
         direction = FlexDirection.COLUMN
         margin = "var(--dwc-space-l)"
         flexLayout {
