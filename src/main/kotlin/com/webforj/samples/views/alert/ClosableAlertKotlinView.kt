@@ -18,9 +18,10 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Closable Alert Kotlin")
 class ClosableAlertKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-    boundComponent.apply {
+    self.apply {
       direction = FlexDirection.COLUMN
       spacing = "var(--dwc-space-m)"
       alignment = FlexAlignment.CENTER
