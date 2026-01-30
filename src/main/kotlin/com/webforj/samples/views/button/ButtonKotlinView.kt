@@ -17,12 +17,13 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Button Demo")
 class ButtonKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
   private lateinit var firstName: TextField
   private lateinit var lastName: TextField
   private lateinit var email: TextField
 
   init {
-      boundComponent.apply {
+      self.apply {
         direction = FlexDirection.COLUMN
         spacing = "var(--dwc-space-l)"
         alignment = FlexAlignment.CENTER
