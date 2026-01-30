@@ -12,9 +12,10 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Dialog Sections")
 class DialogSectionsKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
+      self.apply {
         dialog {
           addToHeader { div("Header") }
           div("Content")

@@ -11,9 +11,10 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Dialog Dragging")
 class DialogDraggableKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
+      self.apply {
         dialog {
           addToHeader { div("Snapping") }
           div("This dialog will snap then dragged within 100px of the edge of the display")

@@ -14,9 +14,10 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Dialog Close")
 class DialogCloseKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
+      self.apply {
         val d = dialog {
           addToHeader { div("Closing the Dialog") }
           button("Close Dialog") {

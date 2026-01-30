@@ -15,9 +15,10 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Dialog Positioning")
 class DialogPositioningKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
+      self.apply {
         dialog {
           addToHeader { div("Positioning") }
           val xPos = numberField("X Pixels:") {

@@ -16,9 +16,10 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Dialog Alignments")
 class DialogAlignmentsKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
+      self.apply {
         dialog {
           styles["display"] = "flex"
           styles["justify-content"] = "center"
