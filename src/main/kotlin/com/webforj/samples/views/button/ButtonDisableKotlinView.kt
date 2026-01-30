@@ -15,9 +15,10 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Button Disable")
 class ButtonDisableKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
+      self.apply {
         alignment = FlexAlignment.END
         margin = "var(--dwc-space-l)"
         spacing = "var(--dwc-space-xl)"
