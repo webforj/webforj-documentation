@@ -18,9 +18,10 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Alert Expanses Kotlin")
 class AlertExpansesKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-    boundComponent.apply {
+    self.apply {
       direction = FlexDirection.COLUMN
       justifyContent = FlexJustifyContent.CENTER
       alignment = FlexAlignment.CENTER
