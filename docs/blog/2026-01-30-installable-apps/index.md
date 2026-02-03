@@ -8,7 +8,7 @@ tags: [webforj, installable-apps, annotations]
 hide_table_of_contents: false
 ---
 
-![cover image](../../static/img/installable_apps.png)
+![cover image](./blog_installable_apps_cover.png)
 
 I've been working with webforJ for a while now, mostly on documentation and component demos. But I recently wanted to build something small from scratch to try out a feature I hadn't used yet: installable apps.
 
@@ -35,7 +35,7 @@ public class Application extends App {
 
 The `name` is what shows up in install dialogs and app settings. The `shortName` is for places with limited space, like underneath home screen icons. They can be the same if your app name is already short.
 
-With just this, your app becomes installable. When someone visits it in Chrome (or another browser that supports PWAs), they'll see an install icon in the address bar. Click it, confirm, and the app is installed.
+With just this, your app becomes installable. When someone visits it in a browser that [supports progressive web apps](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable#browser_support), they'll see an install icon in the address bar. Click it, confirm, and the app is installed.
 
 ![app screenshot](../../static/img/streak_install.png)
 
@@ -59,7 +59,7 @@ The `backgroundColor` fills the splash screen. For Streak, I used a dark color (
 The `themeColor` is a bit different. It affects browser and OS UI elements. I set it to an indigo (`#6366f1`) that I was using as an accent color throughout the app.
 
 :::tip Hex Values Only
-These have to be hex values, not CSS variables. The `@AppProfile` annotation generates a web manifest file, which is JSON, so it doesn't understand `var(--dwc-color-primary)`.
+These have to be hex values, not CSS variables. The `@AppProfile` annotation generates a JSON web manifest file, so it doesn't understand `var(--dwc-color-primary)`.
 :::
 
 Getting these colors right matters more than I expected. When they match your app's actual design, the whole experience from icon tap to running app feels cohesive. When they don't match, you get this jarring flash of the wrong color before your UI shows up.
@@ -120,7 +120,7 @@ public class Application extends App {
 Installable apps need to be served over HTTPS. Browsers won't offer the install option if your app is running on plain HTTP.
 
 :::note Localhost Exception
-During development, you can run on `http://localhost:8080` and everything works fine. The browser knows localhost is a development environment and relaxes the restriction.
+During development, you can run on `http://localhost:8080` and everything works fine. The browser knows `localhost` is a development environment and relaxes the restriction.
 :::
 
 When you deploy, you'll need HTTPS. If you're using a platform like Heroku, Render, or most cloud providers, they handle this for you. If you're running your own server, you'll need to set up a certificate.
@@ -147,6 +147,6 @@ I didn't need any of that for a simple demo, but it's there if you're building s
 
 If you want to see an installable webforJ app in action before building your own, check out [Focus Tracker](https://github.com/webforj/built-with-webforj/tree/main/webforj-focustracker) in the built-with-webforj repository. It's a Pomodoro timer that uses `@AppProfile` along with some other PWA features like notifications and badge updates.
 
-Clone it, run `mvn jetty:run`, and try installing it. It's a good way to see the full flow without starting from scratch.
+Clone it, run `mvn spring-boot:run`, and try installing it. It's a good way to see the full flow without starting from scratch.
 
 For the complete list of `@AppProfile` properties and more detailed examples, the [Installable Apps documentation](/docs/configuration/installable-apps) covers everything.
