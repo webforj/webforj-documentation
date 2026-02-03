@@ -29,7 +29,7 @@ class ButtonThemesKotlinView: Composite<FlexLayout>() {
           styles["margin"] = "var(--dwc-space-l)"
           flexLayout(FlexDirection.COLUMN) {
             wrap = FlexWrap.NOWRAP
-            spacing = "var(--dwc-space-s)"
+            spacing = "var(--dwc-space-l)"
             val solidRow = flexLayout(FlexDirection.ROW) {
               wrap = FlexWrap.NOWRAP
               spacing = "var(--dwc-space-s)"
