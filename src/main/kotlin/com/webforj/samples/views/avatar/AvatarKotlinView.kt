@@ -94,7 +94,7 @@ class AvatarKotlinView: Composite<FlexLayout>() {
   }
 
   private fun showProfileDialog(name: String, role: String, imageUrl: String?, theme: AvatarTheme) {
-    boundComponent.apply {
+    self.apply {
       dialog {
         maxWidth = "260px"
         flexLayout(FlexDirection.COLUMN) {
