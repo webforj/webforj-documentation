@@ -4,7 +4,7 @@ sidebar_position: 1
 description: Discover where to download the tutorial project, how to navigate it, and run the apps within.
 ---
 
-Beginning this tutorial requires you to establish a designated location for your project where you can manage your classes and resources. The following sections are different ways you can create your webforJ project for this tutorial:
+To begin this tutorial, you need a location for your project where you can manage your classes and resources. The following sections are different ways you can create your webforJ project for this tutorial.
 
 ---
 
@@ -20,11 +20,11 @@ The easiest way to follow this tutorial is to refer to its source code. You can 
 git clone https://github.com/webforj/webforj-demo-application.git
 ```
 
-<div class="videos-container">
+<!-- <div class="videos-container">
   <video controls>
     <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/project-setup.mp4" type="video/mp4"/>
   </video>
-</div>
+</div> -->
 
 ### Project structure {#project-structure}
 
@@ -117,7 +117,7 @@ webforj.debug=true
 
 To see the app in action as you progress through the tutorial:
 
-1. Navigate to the directory for the desired step. This should be the top level directory for that step, containing the `pom.xml`.
+1. Navigate to the directory for the desired step. This should be the top-level directory for that step, containing the `pom.xml`.
 
 2. Use the following Maven command to run the Spring Boot app locally:
     ```bash
@@ -126,6 +126,6 @@ To see the app in action as you progress through the tutorial:
 <!-- vale Google.WordList = NO -->
 3. Open your browser and go to http://localhost:8080 to view the app.
 :::tip faster deployment
-Adding `webforj.devtools.browser.open=true` to `application.properties` automically opens a browser when running the `mvn` command.
+Adding `webforj.devtools.browser.open=true` to `application.properties` automatically opens a browser when running the `mvn` command.
 :::
 <!-- vale Google.WordList = YES -->
