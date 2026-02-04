@@ -32,7 +32,7 @@ class ButtonEventKotlinView: Composite<FlexLayout>() {
           val payload = div("Event Payload: null")
           button.onClick {
             text.text = "Current Counter: ${++counter}"
-            payload.text = "Event payload: ${it.data}"
+            payload.text = "Event Payload: ${it.data}"
           }
         }
       }
