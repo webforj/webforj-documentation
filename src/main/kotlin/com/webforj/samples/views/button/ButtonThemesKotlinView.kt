@@ -34,7 +34,8 @@ class ButtonThemesKotlinView: Composite<FlexLayout>() {
               wrap = FlexWrap.NOWRAP
               spacing = "var(--dwc-space-s)"
             }
-            val outlinedRow = flexLayout(FlexDirection.ROW) { wrap = FlexWrap.NOWRAP
+            val outlinedRow = flexLayout(FlexDirection.ROW) {
+              wrap = FlexWrap.NOWRAP
               spacing = "var(--dwc-space-s)"
               styles["margin-bottom"] = "var(--dwc-space-l)"
             }

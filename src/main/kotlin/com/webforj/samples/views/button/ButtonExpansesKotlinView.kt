@@ -12,7 +12,7 @@ import com.webforj.router.annotation.Route
 
 @Route
 @FrameTitle("Button Expanses")
-class ButtonExpansesKotlinView : Composite<FlexLayout>() {
+class ButtonExpansesKotlinView: Composite<FlexLayout>() {
   private val self = boundComponent
 
   init {
