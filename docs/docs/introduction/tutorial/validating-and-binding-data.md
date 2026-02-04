@@ -92,7 +92,7 @@ public void onDidEnter(DidEnterEvent event, ParametersBag parameters) {
 
 ## Adding validation to `submitCustomer()` {#adding-validation-to-submitcustomer}
 
-The last change to `FormView` for this step will be adding a safeguard to the `submitCustomer()` method. Writing the current data context to a `ValidationResult` allows the app to perform a final validation before committing those changes to the repository:
+The last change to `FormView` for this step will be adding a safeguard to the `submitCustomer()` method. Writing the current data context to a `ValidationResult` allows the app to perform a final validation before committing those changes to the H2 database:
 
 ```java title="FormView.java" {2-3}
 private void submitCustomer() {

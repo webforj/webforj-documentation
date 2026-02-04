@@ -195,7 +195,7 @@ private void fillCountries() {
 
 ### Adding or editing a customer {#adding-or-editing-a-customer}
 
-Using `CustomerService`, you can update the repository by either adding a customer or modifying an existing one. To tell your app which action to take, add a verification on the customer's `id`. The initial `id` is 0, but gets overwritten with the rest of the properties if there's a valid customer.
+Using `CustomerService`, you can update the H2 database by either adding a customer or modifying an existing one. To tell your app which action to take, add a verification on the customer's `id`. The initial `id` is 0, but gets overwritten with the rest of the properties if there's a valid customer.
 
 ```java
 Button submit = new Button("Submit", ButtonTheme.PRIMARY, e -> submitCustomer());
