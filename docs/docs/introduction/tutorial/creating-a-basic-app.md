@@ -34,7 +34,7 @@ Every webforJ app contains a single class that extends <JavadocLink type="founda
 └───target
 ```
 
-Inside the `Application` class, the `SpringApplication.run()` method uses the configurations to launch the app. The configurations for the app are derived from the various annotations.
+Inside the `Application` class, the `SpringApplication.run()` method uses the configurations to launch the app. The various annotations are for the app's configurations.
 
 ```java title="Application.java"
 @SpringBootApplication
@@ -83,9 +83,9 @@ mainFrame.add(demo);
 
 ### Using webforJ components {#webforj-components-and-html-elements}
 
-While HTML elements are suitable for displaying static information, using [webforJ components](/docs/components/overview) makes it easy to create interactive apps by letting you add event listeners.
+While HTML elements are suitable for displaying static information, using [webforJ components](/docs/components/overview) makes it easy to create interactive apps by allowing you to add event listeners.
 
-The step adds a [Button](/docs/components/button) component, changes its appearance, and adds an event listener to create another component, a [Message Dialog](/docs/components/option-dialogs/message). Since the majority of methods in webforJ that change the component returns the component itself, you can chain multiple methods for more compactable code:
+The step adds a [Button](/docs/components/button) component, changes its appearance, and adds an event listener to create another component, a [Message Dialog](/docs/components/option-dialogs/message). Since the majority of methods in webforJ that change the component returns the component itself, you can chain multiple methods for more compact code:
 
 ```java
 // Create the container for the UI elements
@@ -102,7 +102,7 @@ In the next step, [Working with Data](/docs/introduction/tutorial/working-with-d
 
 ## Styling with CSS {#styling-with-css}
 
-Using the webforJ framework allows you to add visually appealing components that also come with built-in methods to change styling, like sizing and theming. Additionally, the framework allows you to style using CSS.
+Using the webforJ framework allows you to add visually appealing components that include built-in methods for changing styling, such as sizing and theming. Additionally, the framework allows you to style using CSS.
 
 ### Referencing a CSS file {#refrencing-a-css-file} 
 
@@ -169,7 +169,7 @@ For a more complex app, you’d want to divide the UI into multiple pages for be
 
 When you’ve finished this step, you can compare it to [1-creating-a-basic-app](https://github.com/webforj/webforj-demo-application/tree/main/1-creating-a-basic-app) on GitHub. To see the app in action:
 
-1. Navigate to the top level directory containing the `pom.xml` file, this is `1-creating-a-basic-app` if you're following along with the version on GitHub.
+1. Navigate to the top-level directory containing the `pom.xml` file, this is `1-creating-a-basic-app` if you're following along with the version on GitHub.
 
 2. Use the following Maven command to run the Spring Boot app locally:
     ```bash
