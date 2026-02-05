@@ -95,7 +95,7 @@ You'll achieve this by using the customer's `id`. To get the `id`, first set the
 table.setKeyProvider(Customer::getId);
 ```
 
-Now you can get a customer `id` by adding an event listener whenever the user clicks a row which retrieves the key set above:
+Adding an event listener whenever the user clicks a row on the `Table` retrieves the key, which is now the customer `id`:
 
 ```java
 table.addItemClickListener(e -> e.getItemKey());
