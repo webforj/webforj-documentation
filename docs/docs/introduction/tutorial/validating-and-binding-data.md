@@ -143,7 +143,7 @@ private String company = "";
 - `@Past` / `@Future`: Date/time value must be in the past or future.
 - `@Digits(integer=, fraction=)`: Number must have the specified number of integer and fraction digits.
 
-See the [Jakarta Bean Validation constraints reference](https://jakarta.ee/specifications/bean-validation/3.0/apidocs/jakarta/validation/constraints/package-summary.html) for a full list of validations, or check [Jakarta Validation](/docs/data-binding/validation/jakarta-validation) for more webforJ documentation.
+See the [Jakarta Bean Validation constraints reference](https://jakarta.ee/specifications/bean-validation/3.0/apidocs/jakarta/validation/constraints/package-summary.html) for a full list of validations, or read [Jakarta Validation](/docs/data-binding/validation/jakarta-validation) for more webforJ documentation.
 
 With these changes, the app now supports data binding and validation using Spring Boot and webforJ. Form inputs are automatically synchronized with the model and checked against validation rules.
 

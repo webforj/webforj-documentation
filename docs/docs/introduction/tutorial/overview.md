@@ -12,7 +12,7 @@ While you should have a basic understanding of Java and Maven to get the most ou
 
 ## Tutorial concepts {#tutorial-concepts}
 
-The first part of the tutorial is dedicated to [Project setup](docs/introduction/tutorial/project-setup) to prepare your Spring Boot + webforJ environment. Then, there are **four steps** to introduce new features and advance your project. By following along, you’ll gain a clear understanding of how an app evolves as you implement features.
+The first part of the tutorial is dedicated to [Project setup](/docs/introduction/tutorial/project-setup) to prepare your Spring Boot + webforJ environment. Then, there are **four steps** to introduce new features and advance your project. By following along, you’ll gain a clear understanding of how an app evolves as you implement features.
 
 Each step has a corresponding runnable app that’s available on GitHub to look at as you progress through the tutorial:
 
