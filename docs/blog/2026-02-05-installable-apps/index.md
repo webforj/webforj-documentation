@@ -2,13 +2,13 @@
 title: Your Web App Deserves a Spot on the Home Screen
 description: Learn how to turn your webforJ app into an installable, home-screen-ready experience.
 slug: installable-apps
-date: 2026-01-30
+date: 2026-02-05
 authors: Lauren Alamo
-tags: [webforj, installable-apps, annotations]
+tags: [webforj, showcase, annotations]
 hide_table_of_contents: false
 ---
 
-![cover image](./blog_installable_apps_cover.png)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/2026-01-30-installable-apps/blog_installable_apps_cover.png)
 
 I've been working with webforJ for a while now, mostly on documentation and component demos. But I recently wanted to build something small from scratch to try out a feature I hadn't used yet: installable apps.
 
@@ -18,7 +18,7 @@ I built a habit tracker called Streak to test it out. I wanted to see what it ta
 
 <!-- truncate -->
 
-![app screenshot](../../static/img/streak_web.png)
+![app screenshot](https://cdn.webforj.com/webforj-documentation/blogs/2026-01-30-installable-apps/streak_web.png)
 
 ## The one-annotation setup
 
@@ -37,7 +37,7 @@ The `name` is what shows up in install dialogs and app settings. The `shortName`
 
 With just this, your app becomes installable. When someone visits it in a browser that [supports progressive web apps](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable#browser_support), they'll see an install icon in the address bar. Click it, confirm, and the app is installed.
 
-![app screenshot](../../static/img/streak_install.png)
+![app screenshot](https://cdn.webforj.com/webforj-documentation/blogs/2026-01-30-installable-apps/streak_install.png)
 
 But there's more you can configure, and that's where it gets interesting.
 
@@ -113,7 +113,7 @@ public class Application extends App {
 }
 ```
 
-![app screenshot](../../static/img/streak_app.png)
+![app screenshot](https://cdn.webforj.com/webforj-documentation/blogs/2026-01-30-installable-apps/streak_app.png)
 
 ## A note on HTTPS
 
