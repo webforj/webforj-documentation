@@ -171,9 +171,9 @@ This class will need to distinguish between new and existing customers when load
 
 ### Adding components for each property {#adding-components-for-each-property}
 
-Each customer's property, except for the `id`, gets an editable field on the form. Whenever those values change, they're updated in a copy of a customer entity without changing the actual repository. The initial values will be set in a later section of this step, [loading data on the `DidEnterObserver`](#loading-data-on-the-didenterobserver).
+Each customer's property, except for the `id`, gets an editable field on the form. Whenever those values change, they're updated in a copy of a customer entity without changing the actual repository. The initial values will be set in a later section of this step, [Loading data on the `DidEnterObserver`](#loading-data-on-the-didenterobserver).
 
-Naming the components the same as the properties they're representing in the `Customer` entity also makes it easier to bind data in the next step, [validating and Binding Data](/docs/introduction/tutorial/validating-and-binding-data).
+Naming the components the same as the properties they're representing in the `Customer` entity also makes it easier to bind data in the next step, [Validating and Binding Data](/docs/introduction/tutorial/validating-and-binding-data).
 
 ```java
 Customer customer = new Customer();
