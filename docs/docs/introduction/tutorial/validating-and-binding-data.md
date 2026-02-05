@@ -5,7 +5,7 @@ pagination_next: null
 description: Step 4 - Learn how to add validation checks and bind data.
 ---
 
-The `FormView` created in [Scaling with Routing and Composites](/docs/introduction/tutorial/validating-and-binding-data) added a UI for updating a data model. This step uses [Data binding](/docs/data-binding/overview), which connects UI components directly to the data model for automatic value synchronization. This reduces boilerplate in your app and lets you add validation checks to the Spring entity `Customer`, making your users provide complete and accurate information when filling out forms. Here are the concepts for this step:
+The `FormView` created in [Scaling with Routing and Composites](/docs/introduction/tutorial/validating-and-binding-data) added a UI for updating a data model. This step uses [Data binding](/docs/data-binding/overview), which connects UI components directly to the data model for automatic value synchronization. This reduces boilerplate in your app and lets you add validation checks to the Spring entity `Customer`, making your users provide complete and accurate information when filling out forms. This step covers the following concepts:
 
 - Jakarta validation
 - Using the [`BindingContext`](https://javadoc.io/doc/com.webforj/webforj-data/latest/com/webforj/data/binding/BindingContext.html) class
@@ -20,9 +20,9 @@ Completing this step creates a version of [4-validating-and-binding-data](https:
 
 ## Binding the fields {#binding-the-fields}
 
-Before data binding, each field in `FormView` required an event listener to sync with a Spring entity `Customer manually`. Creating a `BindingContext` in `FormView` binds and automatically syncs the `Customer` data model to the UI components.
+Before data binding, each field in `FormView` required an event listener to sync with a Spring entity `Customer` manually. Creating a `BindingContext` in `FormView` binds and automatically syncs the `Customer` data model to the UI components.
 
-Adding a third parameter (`true`) when creating the `BindingContext` enables Jakarta validation. Doing this also allows you to set a validation event that makes the submit button only clickable on valid forms.
+Adding a third parameter (`true`) when creating the `BindingContext` enables Jakarta validation. Doing this also allows you to set a validation event that makes the submit button only clickable on valid forms. Validity can be defined using various Jakarta annotations on the `Customer` class directly.
 
 You’ll add the validation definitions for `Customer` later in this step, at [Defining data validation](#defining-data-validation
 ).
