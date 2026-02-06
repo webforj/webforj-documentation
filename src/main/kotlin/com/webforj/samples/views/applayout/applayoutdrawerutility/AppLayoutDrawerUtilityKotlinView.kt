@@ -28,9 +28,10 @@ import com.webforj.samples.views.applayout.drawerLogo
 @Route
 @FrameTitle("AppLayout")
 class AppLayoutDrawerUtilityKotlinView: Composite<AppLayout>() {
+  private val self = boundComponent
 
   init {
-    boundComponent.apply {
+    self.apply {
       header {
         toolbar {
           start { appDrawerToggle() }
