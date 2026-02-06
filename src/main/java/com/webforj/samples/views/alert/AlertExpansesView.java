@@ -17,10 +17,10 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Alert Expanses")
 public class AlertExpansesView extends Composite<FlexLayout> {
+  FlexLayout self = getBoundComponent();
 
   public AlertExpansesView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN)
+    self.setDirection(FlexDirection.COLUMN)
           .setJustifyContent(FlexJustifyContent.CENTER)
           .setAlignment(FlexAlignment.CENTER)
           .setSpacing("var(--dwc-space-m)")
@@ -38,8 +38,8 @@ public class AlertExpansesView extends Composite<FlexLayout> {
             .setClosable(false)
             .setTheme(Theme.SUCCESS)
             .setWidth("380px");
-      layout.add(alert);
 
+      self.add(alert);
     }
   }
 }
