@@ -4,7 +4,7 @@ sidebar_position: 1
 description: Discover where to download the tutorial project, how to navigate it, and run the apps within.
 ---
 
-To begin this tutorial, you need a location for your project where you can manage your classes and resources. The following sections are different ways you can create your webforJ project for this tutorial.
+To begin this tutorial, you need a location for your project where you can manage your classes and resources. The following sections describe the different ways you can create your webforJ project for this tutorial.
 
 ---
 
@@ -47,18 +47,18 @@ webforj-demo-application
 ## Using startforJ {#using-startforj}
 <!-- vale on -->
 
-If you’d prefer to create a new project, you can use [startforJ](https://docs.webforj.com/startforj) to generate a minimal starter project.
+If you’d prefer to create a new project, you can use [startforJ](https://docs.webforj.com/startforj) to generate a minimal starter project. See [Getting Started](/docs/introduction/getting-started) for more detailed information about using startforJ.
 
 :::note Required settings
-- In the **webforJ version** dropdown, choose a version of webforJ that's 25.10 or higher.
-- In the **Flavor** dropdown, choose the "webforJ + Spring Boot" option. 
+- In the **webforJ version** dropdown, choose webforJ version **25.10 or higher**.
+- In the **Flavor** dropdown, choose **webforJ + Spring Boot**. 
 :::
 
 ---
 
 ## Using the command line {#using-command-line}
 
-You can also generate a new project by using the following command line:
+You can also generate a new project with the following command:
 
 <!-- vale off -->
 <Tabs>
@@ -104,7 +104,7 @@ mvn -B archetype:generate ^
 
 ## Configurations
 
-Using webforJ [archetypes](/docs/building-ui/archetypes/overview) will automatically add the needed configurations to your project, like Spring [dependencies](/docs/integrations/spring/spring-boot#step-2-add-spring-dependencies) to your POM and the following properties in `src/main/resources/application.properties`:
+Both of the above methods for creating a new project use webforJ [archetypes](/docs/building-ui/archetypes/overview), which automatically add the needed configurations to your project, like Spring [dependencies](/docs/integrations/spring/spring-boot#step-2-add-spring-dependencies) to your POM and the following properties in `src/main/resources/application.properties`:
 
 ```
 spring.application.name=DemoApplication
@@ -126,6 +126,6 @@ To see the app in action as you progress through the tutorial:
 <!-- vale Google.WordList = NO -->
 3. Open your browser and go to http://localhost:8080 to view the app.
 :::tip faster deployment
-Adding `webforj.devtools.browser.open=true` to `application.properties` automatically opens a browser when running the `mvn` command.
+Add the line `webforj.devtools.browser.open=true` to the `src/main/resources/application.properties` file to automatically open a browser when you run the `mvn` command.
 :::
 <!-- vale Google.WordList = YES -->
