@@ -46,7 +46,7 @@ class AppLayoutDrawerUtilityKotlinView: Composite<AppLayout>() {
               prefix { tablerIcon("dashboard") }
             }
             appNavItem("Orders", view = AppLayoutDrawerUtilityContentKotlinView::class, routeParameters = ParametersBag.of("name=Orders")) {
-              tablerIcon("shopping-cart")
+              prefix { tablerIcon("shopping-cart") }
             }
             appNavItem("Customers", view = AppLayoutDrawerUtilityContentKotlinView::class, routeParameters = ParametersBag.of("name=Customers")) {
               prefix { tablerIcon("user") }
