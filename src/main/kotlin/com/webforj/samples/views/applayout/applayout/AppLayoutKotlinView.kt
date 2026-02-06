@@ -10,9 +10,9 @@ import com.webforj.kotlin.dsl.component.layout.applayout.drawer
 import com.webforj.kotlin.dsl.component.layout.applayout.header
 import com.webforj.kotlin.dsl.component.layout.appnav.appNav
 import com.webforj.kotlin.dsl.component.layout.appnav.appNavItem
-import com.webforj.kotlin.dsl.component.layout.appnav.prefix
 import com.webforj.kotlin.dsl.component.toolbar.title
 import com.webforj.kotlin.dsl.component.toolbar.toolbar
+import com.webforj.kotlin.extension.prefix
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 import com.webforj.router.history.ParametersBag
