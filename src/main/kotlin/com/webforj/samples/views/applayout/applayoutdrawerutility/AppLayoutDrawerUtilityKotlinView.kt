@@ -3,12 +3,12 @@ package com.webforj.samples.views.applayout.applayoutdrawerutility
 import com.webforj.annotation.StyleSheet
 import com.webforj.component.Composite
 import com.webforj.component.layout.applayout.AppLayout
-import com.webforj.kotlin.dsl.component.drawer.drawer
 import com.webforj.kotlin.dsl.component.html.elements.div
 import com.webforj.kotlin.dsl.component.html.elements.h3
 import com.webforj.kotlin.dsl.component.icons.iconButton
 import com.webforj.kotlin.dsl.component.icons.tablerIcon
 import com.webforj.kotlin.dsl.component.layout.applayout.appDrawerToggle
+import com.webforj.kotlin.dsl.component.layout.applayout.drawer
 import com.webforj.kotlin.dsl.component.layout.applayout.drawerHeaderActions
 import com.webforj.kotlin.dsl.component.layout.applayout.drawerTitle
 import com.webforj.kotlin.dsl.component.layout.applayout.header
