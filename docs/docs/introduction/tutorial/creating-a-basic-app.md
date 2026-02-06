@@ -102,7 +102,7 @@ mainFrame.add(btn);
 ## Styling with CSS {#styling-with-css}
 
 Most webforJ components have built-in methods to make common style changes, such as sizing and theming. In addition to these methods, you can style your app using CSS. 
-See the [Styling](/docs/docs/styling/overview) documentation for detailed information on how to style webforJ components, and see the **Styling** section of any component's documentation page for specific details about its styling.
+See the [Styling](/docs/styling/overview) documentation for detailed information on how to style webforJ components, and see the **Styling** section of any component's documentation page for specific details about its styling.
 
 ### Referencing a CSS file {#refrencing-a-css-file} 
 
