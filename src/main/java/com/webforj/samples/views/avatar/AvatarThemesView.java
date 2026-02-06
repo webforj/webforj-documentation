@@ -12,17 +12,17 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Avatar Themes")
 public class AvatarThemesView extends Composite<FlexLayout> {
+  FlexLayout self = getBoundComponent();
 
   public AvatarThemesView() {
-    FlexLayout self = getBoundComponent();
     self.setDirection(FlexDirection.COLUMN)
         .setSpacing("var(--dwc-space-m)")
         .setMargin("var(--dwc-space-l)")
         .setAlignment(FlexAlignment.CENTER);
 
-    FlexLayout filled = new FlexLayout();
-    filled.setSpacing("var(--dwc-space-m)")
-        .setAlignment(FlexAlignment.CENTER);
+    FlexLayout filled = new FlexLayout()
+            .setSpacing("var(--dwc-space-m)")
+            .setAlignment(FlexAlignment.CENTER);
     filled.add(
         new Avatar("Default").setTheme(AvatarTheme.DEFAULT),
         new Avatar("Gray").setTheme(AvatarTheme.GRAY),
@@ -33,9 +33,9 @@ public class AvatarThemesView extends Composite<FlexLayout> {
         new Avatar("Info").setTheme(AvatarTheme.INFO)
     );
 
-    FlexLayout outlined = new FlexLayout();
-    outlined.setSpacing("var(--dwc-space-m)")
-        .setAlignment(FlexAlignment.CENTER);
+    FlexLayout outlined = new FlexLayout()
+            .setSpacing("var(--dwc-space-m)")
+            .setAlignment(FlexAlignment.CENTER);
     outlined.add(
         new Avatar("Default").setTheme(AvatarTheme.OUTLINED_DEFAULT),
         new Avatar("Gray").setTheme(AvatarTheme.OUTLINED_GRAY),
