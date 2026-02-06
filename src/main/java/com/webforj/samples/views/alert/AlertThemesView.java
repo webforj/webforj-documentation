@@ -16,10 +16,10 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Alert Themes")
 public class AlertThemesView extends Composite<FlexLayout> {
+  FlexLayout self = getBoundComponent();
 
   public AlertThemesView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN)
+    self.setDirection(FlexDirection.COLUMN)
           .setJustifyContent(FlexJustifyContent.CENTER)
           .setAlignment(FlexAlignment.CENTER)
           .setSpacing("var(--dwc-space-m)")
@@ -36,7 +36,7 @@ public class AlertThemesView extends Composite<FlexLayout> {
           .setClosable(false)
           .setWidth("325px");
 
-      layout.add(alert);
+      self.add(alert);
     }
   }
 }
