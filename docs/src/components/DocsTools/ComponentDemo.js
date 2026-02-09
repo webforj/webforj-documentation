@@ -1,14 +1,14 @@
 /** @jsxImportSource @emotion/react */
 
-import { React, useState, useEffect, useRef } from "react";
-import { jsx, css } from "@emotion/react";
+import { useState, useEffect, useRef } from "react";
+import { css } from "@emotion/react";
 import PropTypes from "prop-types";
 import { translate } from '@docusaurus/Translate';
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import CodeBlock from "@theme/CodeBlock";
-import test3 from "../../../static/img/window-maximize.png";
+import windowMaximizeIcon from "../../../static/img/window-maximize.png";
 import { useColorMode } from "@docusaurus/theme-common";
 import GLOBALS from "../../../siteConfig";
 
@@ -44,7 +44,7 @@ export function OpenNewWindowButton({ url }) {
 
   return (
     <button css={buttonStyles} onClick={openNewWindow}>
-      <img css={iconStyles} src={test3} />
+      <img css={iconStyles} src={windowMaximizeIcon} />
     </button>
   );
 }
@@ -53,143 +53,137 @@ export const isLocalhost = typeof window !== "undefined" &&
 window.location.hostname === "localhost" &&
 window.location.port === "3000";
 
-export default function ComponentDemo({
-  path,
-  javaE,
-  urls,
-  cssURL,
-  javaHighlight,
-  height,
-  frame,
-  tabs,
-}) {
-  ComponentDemo.propTypes = {
-    path: PropTypes.string.isRequired,
-    javaE: PropTypes.string,
-    urls: PropTypes.arrayOf(PropTypes.string),
-    cssURL: PropTypes.string,
-    javaHighlight: PropTypes.string,
-    height: PropTypes.string,
-    frame: PropTypes.string,
-    tabs: PropTypes.arrayOf(PropTypes.string),
+function getLanguageFromExtension(extension) {
+  const languageMap = {
+    java: "java",
+    kt: "kotlin",
+    css: "css",
+    js: "javascript",
+    ts: "typescript",
+    json: "json",
+    xml: "xml",
+    html: "html",
+    md: "markdown",
   };
+  return languageMap[extension] || "text";
+}
 
-  const [javaExpand, setJavaExpand] = useState("");
-  const [additionalFiles, setAdditionalFiles] = useState({});
-  const [cssCode, setCssCode] = useState("");
-  const [buttonVisible, setButtonVisible] = useState(false);
-  const [fileNames, setFileNames] = useState({});
+/**
+ * Derives Kotlin URL from Java URL based on naming convention:
+ * - /java/ -> /kotlin/
+ * - View.java -> KotlinView.kt
+ */
+function deriveKotlinUrl(javaUrl) {
+  return javaUrl
+    .replace('/java/', '/kotlin/')
+    .replace('View.java', 'KotlinView.kt');
+}
 
+/**
+ * Derives Kotlin filename from Java filename
+ */
+function deriveKotlinFileName(javaFileName) {
+  return javaFileName.replace('View.java', 'KotlinView.kt');
+}
+
+// Static styles - defined outside component to avoid recreation on each render
+const mainStyles = css`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 16px;
+  @media screen and (max-width: 768px) {
+    width: 100vw;
+    margin-left: -1em;
+  }
+`;
+
+const demoFrameStyles = css`
+  width: 100%;
+  border: 1px solid var(--ifm-toc-border-color);
+  border-right: none;
+  background-color: transparent;
+  display: flex;
+  position: relative;
+`;
+
+const resizeBarStyles = css`
+  display: flex;
+  align-items: center;
+  cursor: ew-resize;
+  border-left: 1px solid var(--ifm-toc-border-color);
+  border-right: 1px solid var(--ifm-toc-border-color);
+  background-color: var(--dwc-surface-3);
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const tabStyles = css`
+  li[aria-selected="true"] {
+    border-color: var(--ifm-color-primary);
+  }
+
+  .tabs__item {
+    padding: 5px 20px -2px 20px;
+    border-radius: 0px;
+  }
+`;
+
+const codeBlockStyles = css`
+  border-radius: 0px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+`;
+
+const languageToggleStyles = css`
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    padding: 8px 20px;
+    border: 1px solid var(--ifm-toc-border-color);
+    border-bottom: none;
+    background: var(--dwc-surface-3);
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+
+    &:first-of-type {
+      border-right: none;
+    }
+
+    &:hover:not(.active) {
+      background-color: var(--ifm-hover-overlay);
+    }
+
+    &.active {
+      background-color: var(--ifm-color-primary);
+      border-color: var(--ifm-color-primary);
+      color: white;
+    }
+  }
+`;
+
+/**
+ * Custom hook for handling resizable iframe behavior
+ * @returns {Object} Resize state, handlers, and refs
+ */
+function useResizable() {
   const [isResizing, setIsResizing] = useState(false);
   const [initialMouseX, setInitialMouseX] = useState(0);
   const [initialWidth, setInitialWidth] = useState(0);
-
   const [initialRight, setInitialRight] = useState(25);
   const [newRight, setNewRight] = useState(25);
   const [originalWidth, setOriginalWidth] = useState(0);
 
-  const [showCode, setShowCode] = useState(false);
-
   const iframeRef = useRef(null);
   const codeButtonRef = useRef(null);
-  const { colorMode } = useColorMode()
 
-  useEffect(() => {
-    if (javaE) {
-      fetch(javaE)
-        .then((response) => response.text())
-        .then((textString) => {
-          setJavaExpand(textString);
-          const parsedUrl = new URL(javaE);
-          const pathname = parsedUrl.pathname;
-          const parts = pathname.split("/");
-          const fileName = parts[parts.length - 1];
-          setFileNames((prevFileNames) => ({
-            ...prevFileNames,
-            javaFile: fileName,
-          }));
-        });
-    }
-    if (cssURL) {
-      const rootPath = isLocalhost
-      ? 'https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static'
-      : GLOBALS.IFRAME_SRC_LIVE;
-      fetch(rootPath + cssURL)
-        .then((response) => response.text())
-        .then((textString) => {
-          setCssCode(textString);
-          const parsedUrl = new URL(rootPath + cssURL);
-          const pathname = parsedUrl.pathname;
-          const parts = pathname.split("/");
-          const fileName = parts[parts.length - 1];
-          setFileNames((prevFileNames) => ({
-            ...prevFileNames,
-            cssFile: fileName,
-          }));
-        });
-    }
-    if (urls) {
-      urls.forEach(fetchAndProcessURL);
-    }
-
-    function fetchAndProcessURL(url) {
-      const parsedUrl = new URL(url);
-      const pathname = parsedUrl.pathname;
-      const parts = pathname.split("/");
-      const fileName = parts[parts.length - 1];
-
-      fetch(url)
-        .then((response) => response.text())
-        .then((textString) => {
-          setAdditionalFile(fileName, textString);
-        });
-    }
-
-    function setAdditionalFile(fileName, textString) {
-      setAdditionalFiles((prevAdditionalFiles) => ({
-        ...prevAdditionalFiles,
-        [fileName]: {
-          fileName: fileName,
-          code: textString,
-        },
-      }));
-    }
+  const initializeWidth = () => {
     setOriginalWidth(iframeRef.current ? iframeRef.current.offsetWidth : 0);
-  }, []);
-
-  useEffect(() => {
-    if (!iframeRef.current) return;
-  
-    const applyThemeToIframe = () => {
-      try {
-        const iframeDoc = iframeRef.current.contentDocument || iframeRef.current.contentWindow.document;
-        if (iframeDoc) {
-          iframeDoc.documentElement.setAttribute("data-app-theme", colorMode);
-        }
-      } catch (error) {
-        console.error("Failed to apply theme to iframe:", error);
-      }
-    };
-  
-    applyThemeToIframe();
-    iframeRef.current.onload = applyThemeToIframe;
-
-  }, [colorMode]);
-  
-
-  function renderCodeBlocks(files, codeBlockStyles, javaHighlight) {
-    return(
-        <CodeBlock
-          css={codeBlockStyles}
-          className="codeDemoBlock"
-          language="java"
-          showLineNumbers
-          metastring={javaHighlight}
-        >
-          {files.code}
-        </CodeBlock>
-    );
-  }
+  };
 
   const startResizing = (e) => {
     e.preventDefault();
@@ -216,26 +210,130 @@ export default function ComponentDemo({
     }
   };
 
-  const mainStyles = css`
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-bottom: 16px;
-    @media screen and (max-width: 768px) {
-      width: 100vw;
-      margin-left: -1em;
+  return {
+    isResizing,
+    iframeRef,
+    codeButtonRef,
+    initializeWidth,
+    startResizing,
+    stopResizing,
+    resize,
+  };
+}
+
+export default function ComponentDemo({
+  path,
+  urls,
+  highlight,
+  height,
+  frame,
+}) {
+  const [files, setFiles] = useState([]);
+  const [buttonVisible, setButtonVisible] = useState(false);
+  const [showCode, setShowCode] = useState(false);
+  const [showKotlin, setShowKotlinState] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('preferKotlin') === 'true';
     }
-  `;
+    return false;
+  });
 
-  const demoFrameStyles = css`
-    width: 100%;
-    border: 1px solid var(--ifm-toc-border-color);
-    border-right: none;
-    background-color: transparent;
-    display: flex;
-    position: relative;
-  `;
+  // Wrapper to sync preference across all ComponentDemo instances on the page
+  const setShowKotlin = (value) => {
+    setShowKotlinState(value);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('preferKotlin', value);
+      window.dispatchEvent(new CustomEvent('kotlinPreferenceChanged', { detail: value }));
+    }
+  };
 
+  const { colorMode } = useColorMode();
+  const {
+    isResizing,
+    iframeRef,
+    codeButtonRef,
+    initializeWidth,
+    startResizing,
+    stopResizing,
+    resize,
+  } = useResizable();
+
+  const iframeSrc = (isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path;
+  const hasAnyKotlin = files.some(f => f.kotlinCode !== null);
+
+  useEffect(() => {
+    if (urls && urls.length > 0) {
+      Promise.all(
+        urls.map(async (url) => {
+          // Fetch Java file
+          const javaResponse = await fetch(url).catch(() => null);
+          if (!javaResponse?.ok) {
+            console.error(`Failed to fetch ${url}: ${javaResponse?.status}`);
+            return null;
+          }
+          const code = await javaResponse.text();
+          const fileName = url.split("/").pop();
+          const extension = fileName.split(".").pop().toLowerCase();
+
+          // Only attempt Kotlin fetch for Java files
+          let kotlinCode = null;
+          let kotlinFileName = null;
+          if (extension === 'java' && fileName.includes('View')) {
+            const kotlinUrl = deriveKotlinUrl(url);
+            kotlinFileName = deriveKotlinFileName(fileName);
+            const kotlinResponse = await fetch(kotlinUrl).catch(() => null);
+            if (kotlinResponse?.ok) {
+              kotlinCode = await kotlinResponse.text();
+            }
+          }
+
+          return {
+            fileName,
+            code,
+            language: getLanguageFromExtension(extension),
+            kotlinFileName,
+            kotlinCode,
+          };
+        })
+      ).then((results) => setFiles(results.filter(Boolean)));
+    }
+    initializeWidth();
+  }, [urls]);
+
+  // Listen for preference changes from other ComponentDemo instances
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const handlePreferenceChange = (e) => {
+      setShowKotlinState(e.detail);
+    };
+
+    window.addEventListener('kotlinPreferenceChanged', handlePreferenceChange);
+    return () => {
+      window.removeEventListener('kotlinPreferenceChanged', handlePreferenceChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!iframeRef.current) return;
+  
+    const applyThemeToIframe = () => {
+      try {
+        const iframeDoc = iframeRef.current.contentDocument || iframeRef.current.contentWindow.document;
+        if (iframeDoc) {
+          iframeDoc.documentElement.setAttribute("data-app-theme", colorMode);
+        }
+      } catch (error) {
+        console.error("Failed to apply theme to iframe:", error);
+      }
+    };
+  
+    applyThemeToIframe();
+    iframeRef.current.onload = applyThemeToIframe;
+
+  }, [colorMode]);
+
+  // Dynamic styles - must be inside component as they depend on state/props
   const iframeStyles = css`
     min-height: 100px;
     height: 100%;
@@ -255,25 +353,12 @@ export default function ComponentDemo({
     right: 25px;
     `;
 
-  const resizeBarStyles = css`
-    display: flex;
-    align-items: center;
-    cursor: ew-resize;
-    border-left: 1px solid var(--ifm-toc-border-color);
-    border-right: 1px solid var(--ifm-toc-border-color);
-    background-color: var(--dwc-surface-3);
-
-    @media screen and (max-width: 768px) {
-      display: none;
-    }
-  `;
-
   const detailsStyles = css`
     overflow: hidden;
     background-color: var(--dwc-surface-3);
     border: 1px solid var(--ifm-toc-border-color);
     ${frame !== "hidden" && "border-top: none;"}
-    margin: ${frame == "hidden"
+    margin: ${frame === "hidden"
       ? "40px 0px 0px 0px"
       : "0px"};
     padding: 0px;
@@ -317,22 +402,6 @@ export default function ComponentDemo({
     margin-top: 2px;
   `;
 
-  const tabStyles = css`
-    li[aria-selected="true"] {
-      border-color: var(--ifm-color-primary);
-    }
-
-    .tabs__item {
-      padding: 5px 20px -2px 20px;
-      border-radius: 0px;
-    }
-  `;
-
-  const codeBlockStyles = css`
-    border-radius: 0px;
-    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
-  `;
-
   return (
     <div
       css={mainStyles}
@@ -340,7 +409,23 @@ export default function ComponentDemo({
       onMouseLeave={stopResizing}
       onMouseMove={resize}
     >
-      {frame != "hidden" ? (
+      {hasAnyKotlin && (
+        <div css={languageToggleStyles}>
+          <button
+            className={!showKotlin ? 'active' : ''}
+            onClick={() => setShowKotlin(false)}
+          >
+            Java
+          </button>
+          <button
+            className={showKotlin ? 'active' : ''}
+            onClick={() => setShowKotlin(true)}
+          >
+            Kotlin
+          </button>
+        </div>
+      )}
+      {frame !== "hidden" ? (
         <div
           onMouseEnter={() => {
             setButtonVisible(true);
@@ -351,13 +436,13 @@ export default function ComponentDemo({
           <iframe
             onMouseUp={stopResizing}
             loading="lazy"
-            src={(isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path}
+            src={iframeSrc}
             css={iframeStyles}
             ref={iframeRef}
             onMouseMove={resize}
           ></iframe>
           <div css={fadeInButton} ref={codeButtonRef}>
-            <OpenNewWindowButton url={(isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path} />
+            <OpenNewWindowButton url={iframeSrc} />
           </div>
           <div css={resizeBarStyles} onMouseDown={startResizing}>
             <DragIndicatorIcon />
@@ -368,7 +453,7 @@ export default function ComponentDemo({
       <details
         css={detailsStyles}>
           <summary onClick={() => setShowCode(!showCode)}>
-            {showCode 
+            {showCode
               ? translate({
                   id: 'componentDemo.hideCode',
                   message: 'Hide Code',
@@ -382,64 +467,32 @@ export default function ComponentDemo({
             }
             <ChevronRightIcon css={showCodeIconStyles}/>
           </summary>
-        {cssURL ? (
-          <Tabs css={tabStyles}>
-            <TabItem
-              value={tabs ? tabs[0] : "Java"}
-              label={tabs ? tabs[0] : fileNames.javaFile}
-              default
-            >
-              <CodeBlock
-                css={codeBlockStyles}
-                className="codeDemoBlock"
-                language="java"
-                showLineNumbers
-                metastring={javaHighlight}
-              >
-                {javaExpand}
-              </CodeBlock>
-            </TabItem>
-            {Object.keys(additionalFiles).map((fileName, index) => (
-              <TabItem key={"tab" + index} value={fileName} label={fileName}>
-                {renderCodeBlocks(additionalFiles[fileName], codeBlockStyles, javaHighlight)}
-              </TabItem>
-            ))}
-            <TabItem
-              value={tabs ? tabs[1] : "CSS"}
-              label={tabs ? tabs[1] : fileNames.cssFile}
-            >
-              <CodeBlock
-                css={codeBlockStyles}
-                className="codeDemoBlock"
-                language="css"
-                showLineNumbers
-              >
-                {cssCode}
-              </CodeBlock>
-            </TabItem>
-          </Tabs>
-        ) : (
-          <Tabs css={tabStyles}>
-            <TabItem
-              value={tabs ? tabs[0] : "Java"}
-              label={tabs ? tabs[0] : fileNames.javaFile}
-              default
-            >
-              <CodeBlock
-                css={codeBlockStyles}
-                className="codeDemoBlock"
-                language="java"
-                showLineNumbers
-                metastring={javaHighlight}
-              >
-                {javaExpand}
-              </CodeBlock>
-            </TabItem>
-            {Object.keys(additionalFiles).map((fileName, index) => (
-              <TabItem key={"tab" + index} value={fileName} label={fileName}>
-                {renderCodeBlocks(additionalFiles[fileName], codeBlockStyles, javaHighlight)}
-              </TabItem>
-            ))}
+        {files.length > 0 && (
+          <Tabs css={tabStyles} defaultValue={files[0].fileName}>
+            {files.map((file, index) => {
+              const useKotlin = showKotlin && file.kotlinCode !== null;
+              const displayFileName = useKotlin ? file.kotlinFileName : file.fileName;
+              const displayCode = useKotlin ? file.kotlinCode : file.code;
+              const displayLanguage = useKotlin ? 'kotlin' : file.language;
+
+              return (
+                <TabItem
+                  key={file.fileName}
+                  value={file.fileName}
+                  label={displayFileName}
+                >
+                  <CodeBlock
+                    css={codeBlockStyles}
+                    className="codeDemoBlock"
+                    language={displayLanguage}
+                    showLineNumbers
+                    metastring={index === 0 ? highlight : undefined}
+                  >
+                    {displayCode}
+                  </CodeBlock>
+                </TabItem>
+              );
+            })}
           </Tabs>
         )}
       </details>
@@ -447,3 +500,11 @@ export default function ComponentDemo({
     </div>
   );
 }
+
+ComponentDemo.propTypes = {
+  path: PropTypes.string.isRequired,
+  urls: PropTypes.arrayOf(PropTypes.string),
+  highlight: PropTypes.string,
+  height: PropTypes.string,
+  frame: PropTypes.string,
+};
