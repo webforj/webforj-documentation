@@ -5,8 +5,7 @@ import com.webforj.component.button.ButtonTheme
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.dialog.dialog
-import com.webforj.kotlin.dsl.component.dialog.addToHeader
-import com.webforj.kotlin.dsl.component.dialog.addToFooter
+import com.webforj.kotlin.dsl.component.dialog.header
 import com.webforj.kotlin.dsl.component.field.numberField
 import com.webforj.kotlin.dsl.component.html.elements.div
 import com.webforj.router.annotation.FrameTitle
@@ -20,14 +19,14 @@ class DialogPositioningKotlinView: Composite<FlexLayout>() {
   init {
       self.apply {
         dialog {
-          addToHeader { div("Positioning") }
+          header { div("Positioning") }
           val xPos = numberField("X Pixels:") {
             min = 0.0
           }
           val yPos = numberField("Y Pixels:") {
             min = 0.0
           }
-          addToFooter {
+          header {
             button("Set Dialog Position", ButtonTheme.PRIMARY) {
               minHeight = "60px"
               onClick {

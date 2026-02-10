@@ -4,7 +4,7 @@ import com.webforj.component.Composite
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.dialog.dialog
-import com.webforj.kotlin.dsl.component.dialog.addToHeader
+import com.webforj.kotlin.dsl.component.dialog.header
 import com.webforj.kotlin.dsl.component.html.elements.div
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
@@ -19,7 +19,7 @@ class DialogCloseKotlinView: Composite<FlexLayout>() {
   init {
       self.apply {
         val d = dialog {
-          addToHeader { div("Closing the Dialog") }
+          header { div("Closing the Dialog") }
           button("Close Dialog") {
             onClick { this@dialog.close() }
           }

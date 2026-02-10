@@ -5,7 +5,7 @@ import com.webforj.component.Composite
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.dialog.dialog
-import com.webforj.kotlin.dsl.component.dialog.addToHeader
+import com.webforj.kotlin.dsl.component.dialog.header
 import com.webforj.kotlin.dsl.component.html.elements.div
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
@@ -31,7 +31,7 @@ class DialogBackdropBlurKotlinView: Composite<FlexLayout>() {
       self.apply {
         dialog {
           addClassName("loginForm")
-          addToHeader { div("Background Blur") }
+          header { div("Background Blur") }
           button("Toggle Background Blur") {
             styles["display"] = "flex"
             styles["justify-content"] = "center"

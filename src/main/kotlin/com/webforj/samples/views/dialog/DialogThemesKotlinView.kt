@@ -2,12 +2,10 @@ package com.webforj.samples.views.dialog
 
 import com.webforj.component.Composite
 import com.webforj.component.Theme
-import com.webforj.component.html.elements.Div
 import com.webforj.component.layout.flexlayout.FlexLayout
-import com.webforj.kotlin.dsl.component.dialog.addToHeader
 import com.webforj.kotlin.dsl.component.dialog.dialog
+import com.webforj.kotlin.dsl.component.dialog.header
 import com.webforj.kotlin.dsl.component.html.elements.div
-import com.webforj.kotlin.dsl.component.html.elements.header
 import com.webforj.kotlin.dsl.component.list.choiceBox
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
@@ -22,7 +20,7 @@ class DialogThemesKotlinView: Composite<FlexLayout>() {
   init {
       self.apply {
         dialog {
-          addToHeader { div("Themes") }
+          header { div("Themes") }
           styles["display"] = "flex"
           styles["justify-content"] = "center"
           choiceBox("Select Theme") {
