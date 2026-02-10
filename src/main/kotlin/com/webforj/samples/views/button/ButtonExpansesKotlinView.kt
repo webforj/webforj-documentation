@@ -7,6 +7,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.component.list.ListItem
 import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.list.choiceBox
+import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
@@ -27,7 +28,7 @@ class ButtonExpansesKotlinView: Composite<FlexLayout>() {
       val expanses = choiceBox {
         insert(categories)
         selectIndex(0)
-        width = "100px"
+        width = 100.px
       }
       button("None") {
         expanses.onSelect {

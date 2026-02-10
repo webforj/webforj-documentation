@@ -8,6 +8,7 @@ import com.webforj.component.layout.flexlayout.FlexWrap
 import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.html.elements.div
 import com.webforj.kotlin.dsl.component.layout.flexlayout.flexLayout
+import com.webforj.kotlin.extension.px
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
 import com.webforj.router.annotation.FrameTitle
@@ -42,13 +43,13 @@ class ButtonThemesKotlinView: Composite<FlexLayout>() {
             ButtonTheme.entries.forEach {
               if ("OUTLINE" !in it.name) {
                 solidRow.button(it.name, it) {
-                  minWidth = "200px"
-                  maxWidth = "200px"
+                  minWidth = 200.px
+                  maxWidth = 200.px
                 }
                 outlinedRow.button("OUTLINED_${it.name}",
                   ButtonTheme.valueOf("OUTLINED_${it.name}")) {
-                  minWidth = "200px"
-                  maxWidth = "200px"
+                  minWidth = 200.px
+                  maxWidth = 200.px
                 }
               }
             }

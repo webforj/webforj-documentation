@@ -8,6 +8,7 @@ import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.html.elements.div
 import com.webforj.kotlin.dsl.component.layout.flexlayout.flexLayout
 import com.webforj.kotlin.dsl.component.layout.flexlayout.vertical
+import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
@@ -23,11 +24,11 @@ class ButtonEventKotlinView: Composite<FlexLayout>() {
         spacing = "var(--dwc-space-l)"
         padding = "var(--dwc-space-l)"
         val button = button("Click Me!") {
-          width = "150px"
+          width = 150.px
         }
         flexLayout {
           vertical()
-          spacing = "0px"
+          spacing = 0.px
           val text = div("Current Counter: 0")
           val payload = div("Event Payload: null")
           button.onClick {
