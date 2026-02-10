@@ -8,6 +8,7 @@ import com.webforj.kotlin.dsl.component.dialog.dialog
 import com.webforj.kotlin.dsl.component.dialog.header
 import com.webforj.kotlin.dsl.component.field.numberField
 import com.webforj.kotlin.dsl.component.html.elements.div
+import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
@@ -33,8 +34,8 @@ class DialogPositioningKotlinView: Composite<FlexLayout>() {
                 val xValue = xPos.value
                 val yValue = yPos.value
                 if (xValue != null && yValue != null && xValue >= 0 && yValue >= 0) {
-                  this@dialog.posx = "${xValue}px"
-                  this@dialog.posy = "${yValue}px"
+                  this@dialog.posx = xValue.px
+                  this@dialog.posy = yValue.px
                 }
               }
             }
@@ -42,7 +43,7 @@ class DialogPositioningKotlinView: Composite<FlexLayout>() {
           isAutoFocus = true
           open()
           setCloseable(false)
-          maxWidth = "200px"
+          maxWidth = 200.px
         }
       }
   }

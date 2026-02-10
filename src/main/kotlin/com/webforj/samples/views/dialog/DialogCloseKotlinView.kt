@@ -6,8 +6,10 @@ import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.dialog.dialog
 import com.webforj.kotlin.dsl.component.dialog.header
 import com.webforj.kotlin.dsl.component.html.elements.div
+import com.webforj.kotlin.extension.px
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
+import com.webforj.kotlin.extension.vw
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
@@ -27,8 +29,8 @@ class DialogCloseKotlinView: Composite<FlexLayout>() {
           open()
         }
         button("Show Dialog") {
-          styles["margin-left"] = "48vw"
-          styles["margin-top"] = "20px"
+          styles["margin-left"] = 48.vw
+          styles["margin-top"] = 20.px
           onClick { d.open() }
         }
       }
