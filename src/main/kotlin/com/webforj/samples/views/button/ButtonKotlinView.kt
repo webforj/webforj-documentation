@@ -9,6 +9,8 @@ import com.webforj.component.optiondialog.OptionDialog.showMessageDialog
 import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.field.textField
 import com.webforj.kotlin.dsl.component.layout.flexlayout.flexLayout
+import com.webforj.kotlin.extension.percent
+import com.webforj.kotlin.extension.px
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
 import com.webforj.router.annotation.FrameTitle
@@ -32,14 +34,14 @@ class ButtonKotlinView: Composite<FlexLayout>() {
           justifyContent = FlexJustifyContent.CENTER
           wrap = FlexWrap.WRAP
           spacing = "var(--dwc-space-l)"
-          width = "50%"
+          width = 50.percent
           addClassName("row")
           firstName = textField("First Name", "Jason", type = Type.TEXT) {
-            width = "25%"
+            width = 25.percent
             styles["flex"] = "1"
           }
           lastName = textField("Last Name", "Turner", type = Type.TEXT) {
-            width = "25%"
+            width = 25.percent
             styles["flex"] = "1"
           }
         }
@@ -47,17 +49,17 @@ class ButtonKotlinView: Composite<FlexLayout>() {
           justifyContent = FlexJustifyContent.CENTER
           wrap = FlexWrap.WRAP
           spacing = "var(--dwc-space-l)"
-          width = "50%"
+          width = 50.percent
           addClassName("row")
           email = textField("E-mail:", "turner.jason@email.com", type = Type.EMAIL) {
-            width = "100%"
+            width = 100.percent
           }
         }
         flexLayout {
           justifyContent = FlexJustifyContent.END
           wrap = FlexWrap.WRAP
           spacing = "var(--dwc-space-l)"
-          width = "50%"
+          width = 50.px
           addClassName("row", "buttons")
           button("Submit", ButtonTheme.PRIMARY) {
             onClick {
