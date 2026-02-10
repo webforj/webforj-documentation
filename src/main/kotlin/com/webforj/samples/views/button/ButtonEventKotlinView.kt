@@ -1,7 +1,6 @@
 package com.webforj.samples.views.button
 
 import com.webforj.component.Composite
-import com.webforj.component.html.elements.Div
 import com.webforj.component.layout.flexlayout.FlexDirection
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.button.button
