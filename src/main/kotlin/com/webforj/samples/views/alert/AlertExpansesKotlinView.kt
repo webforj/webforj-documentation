@@ -12,6 +12,8 @@ import com.webforj.kotlin.dsl.component.html.elements.paragraph
 import com.webforj.kotlin.dsl.component.icons.tablerIcon
 import com.webforj.kotlin.dsl.component.layout.flexlayout.flexLayout
 import com.webforj.kotlin.dsl.component.layout.flexlayout.horizontal
+import com.webforj.kotlin.extension.percent
+import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
@@ -27,7 +29,7 @@ class AlertExpansesKotlinView: Composite<FlexLayout>() {
       alignment = FlexAlignment.CENTER
       spacing = "var(--dwc-space-m)"
       margin = "var(--dwc-space-xl) auto"
-      width = "100%"
+      width = 100.percent
       Expanse.entries.reversed().forEach {
         alert {
           flexLayout {
@@ -39,7 +41,7 @@ class AlertExpansesKotlinView: Composite<FlexLayout>() {
           expanse = it
           isClosable = false
           theme = Theme.SUCCESS
-          width = "380px"
+          width = 380.px
         }
       }
     }
