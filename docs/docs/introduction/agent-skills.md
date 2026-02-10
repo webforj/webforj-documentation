@@ -43,28 +43,6 @@ sidebar_position: 2.6
 - Core principle: all visual values use --dwc-* CSS custom properties
 -->
 
-### How it works
-
-<!--
-- The 5-step workflow: classify → scan → look up → write CSS → validate
-- Brief explanation of each step
--->
-
-### The `component_styles.py` script
-
-<!--
-- Python script that fetches live component data from dwc.style
-- Usage examples (by Java class, by DWC tag, --list, --map)
-- Prerequisites: Python 3, network access, 24-hour cache
--->
-
-### Reference files
-
-<!--
-- Table of reference docs: colors.md, tokens.md, themes.md, component-styling.md, table.md, google-charts.md
-- Brief description of what each contains
--->
-
 ## Using skills with MCP
 
 <!--
