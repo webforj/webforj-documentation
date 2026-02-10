@@ -10,6 +10,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.alert.alert
 import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.html.elements.paragraph
+import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
@@ -27,7 +28,7 @@ class AlertKotlinView: Composite<FlexLayout>() {
       margin = "var(--dwc-space-l)"
       alert {
         theme = Theme.PRIMARY
-        maxWidth = "500px"
+        maxWidth = 500.px
         paragraph("The requested information is ready to be viewed.")
         button("View", ButtonTheme.PRIMARY)
       }
