@@ -12,13 +12,11 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Text Field")
 public class MaskedTextFieldView extends Composite<FlexLayout> {
-
+  FlexLayout self = getBoundComponent();
   MaskedTextField recordCode = new MaskedTextField("Record Code", "", "NE-24-0934");
   MaskedTextField couponCode = new MaskedTextField("Coupon Code", "", "ZZZZ-0000");
 
   public MaskedTextFieldView() {
-    FlexLayout self = getBoundComponent();
-
     recordCode
         .setMask("AA-00-0000")
         .setValue("NE240934")
