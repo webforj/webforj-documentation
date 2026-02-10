@@ -12,6 +12,7 @@ import com.webforj.component.layout.flexlayout.FlexJustifyContent
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.alert.alert
 import com.webforj.kotlin.dsl.component.button.button
+import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
@@ -28,7 +29,7 @@ class ClosableAlertKotlinView: Composite<FlexLayout>() {
       justifyContent = FlexJustifyContent.CENTER
       margin = "var(--dwc-space-l)"
       val alert = alert("Heads up! This alert can be dismissed.", Theme.INFO, true) {
-        maxWidth = "400px"
+        maxWidth = 400.px
       }
       button("Show Alert", ButtonTheme.PRIMARY) {
         isVisible = false
