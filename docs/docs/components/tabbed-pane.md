@@ -2,6 +2,7 @@
 title: TabbedPane
 slug: tabbedpane
 sidebar_position: 125
+sidebar_class_name: updated-content
 ---
 
 <DocChip chip='shadow' />
@@ -9,34 +10,23 @@ sidebar_position: 125
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/tabbedpane/TabbedPane" top='true'/>
 
-The `TabbedPane` class provides a compact and organized way of displaying content that is divided into multiple sections, each associated with a `Tab`. Users can switch between these sections by clicking on the respective tabs, often labeled with text and/or icons. This class simplifies the creation of multifaceted interfaces where different content or forms need to be accessible but not simultaneously visible.
+The `TabbedPane` class provides an organized way of displaying content that's divided into multiple sections, each associated with a `Tab`. Users can switch between them by clicking labeled headers. It’s ideal when you want multiple panels accessible in one place, but only need to show one at a time.
 
-## Usages {#usages}
-
-The `TabbedPane` class is a gives developers a powerful tool for organizing and presenting multiple tabs or sections within a UI. Here are some typical scenarios where you might utilize a `TabbedPane` in your application:
-
-1. **Document Viewer**: Implementing a document viewer where each tab represents a different document or file. Users can easily switch between open documents for efficient multitasking.
-
-2. **Data Management:**: Utilize a `TabbedPane` to organize data management tasks, for instance:
-    >- Different dataset to be displayed in an application
-    >- Various user profiles can be displayed within separate tabs
-    >- Different profiles in a user management system
-
-3. **Module Selection**: A `TabbedPane` can represent different modules or sections. Each tab can encapsulate the functionalities of a specific module, enabling users to focus on one aspect of the application at a time.
-
-4. **Task Management**: Task management applications can use a `TabbedPane` to represent various projects or tasks. Each tab could correspond to a specific project, allowing users to manage and track tasks separately.
-
-5. **Program Navigation**: Within an application that needs to run various programs, a `TabbedPane` could:
-    >- Serve as a sidebar which allows for different applications or programs to be run within a single application, such as what is shown in the [`AppLayout`](./app-layout.md) template
-    >- Create a top bar which can serve a similar purpose, or represent sub-applications within an already selected application.
+<ComponentDemo 
+path='/webforj/tabbedpane?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPaneView.java'
+height="400px"
+/>
   
 ## Tabs {#tabs}
 
-Tabs are UI elements that can be added to tabbed panes to organize and switch between different content views.
+Tabs are the clickable headers that organize and control content switching in a `TabbedPane`. Each `Tab` represents a different section of content that users can access.
 
 :::important
-Tabs are not intended to be used as standalone components. They are meant to be used in conjunction with tabbed panes. This class is not a `Component` and should not be used as such.
+Tabs aren't intended to be used as standalone components. They're meant to be used in conjunction with TabbedPanes. This class isn't a `Component` and shouldn't be used as such.
 :::
+
+You can create a `TabbedPane` with only the tab headers if you need navigation without content panels - simply add `Tab` objects without corresponding content. This is useful for creating tab-based navigation that controls content displayed elsewhere in your app.
 
 ### Properties {#properties}
 
@@ -50,10 +40,11 @@ Tabs are comprised of the following properties, which are then used when adding 
 
 4. **Enabled(`boolean`)**: Represents whether the `Tab` is currently enabled or not. Can be modified with the `setEnabled(boolean enabled)` method.
 
-5. **Closeable(`boolean`)**: Represents whether the `Tab` can be closed. Can be modified with the `setCloseable(boolean enabled)` method. This will add a close button on the `Tab` which can be clicked on by the user, and fires a removal event. The     `TabbedPane` component dictates how to handle the removal.
+5. **Closeable(`boolean`)**: Represents whether the `Tab` can be closed. Can be modified with the `setCloseable(boolean enabled)` method. This will add a close button on the `Tab` which can be clicked on by the user, and fires a removal event. The `TabbedPane` component dictates how to handle the removal.
 
 6. **Slot(`Component`)**: 
-    Slots provide flexible options for improving the capability of a `Tab`. You can have icons, labels, loading spinners, clear/reset capability, avatar/profile pictures, and other beneficial components nested within a `Tab` to further clarify intended meaning to users.
+    Slots let you add extra elements to a `Tab` like icons, labels, spinners, avatars, or even reset buttons. These additions help convey meaning more clearly and give you room to customize the Tab’s appearance and behavior.
+    
     You can add a component to the `prefix` slot of a `Tab` during construction. Alternatively, you can use the `setPrefixComponent()` and `setSuffixComponent()` methods to insert various components before and after the displayed option within a `Tab`.
 
         ```java
@@ -67,7 +58,7 @@ Various methods exist to allow developers to add, insert, remove and manipulate 
 
 ### Adding a `Tab` {#adding-a-tab}
 
-The `addTab()` and `add()` methods exist in different overloaded capacities to allow developers flexibility in adding new tabs to the `TabbedPane`. Adding a `Tab` will place it after any previously existing tabs.
+The `TabbedPane` offers multiple overloaded versions of `addTab()` and `add()` to give you flexibility when adding Tabs. Each new `Tab` is added after the existing ones.
 
 1. **`addTab(String text)`** - Adds a `Tab` to the `TabbedPane` with the specified `String` as the text of the `Tab`.
 2. **`addTab(Tab tab)`** - Adds the `Tab` provided  as a parameter to the `TabbedPane`.
@@ -81,7 +72,7 @@ The `add(Component... component)` determines the name of the passed `Component` 
 
 ### Inserting a `Tab` {#inserting-a-tab}
 
-In addition to adding a `Tab` at the end of the existing tabs, it is also possible to create a new one at a designated position. To do this, multiple overloaded versions of the `insertTab()`. 
+In addition to appending Tabs to the end, the `TabbedPane` also supports inserting Tabs at specific positions. This is achieved through the various overloaded forms of the `insertTab()` method.
 
 1. **`insertTab(int index, String text)`** - Inserts a `Tab` into the `TabbedPane` at the given index with the specified `String` as the text of the `Tab`.
 2. **`insertTab(int index, Tab tab)`** - Inserts the `Tab` provided as a parameter to the `TabbedPane` at the specified index.
@@ -102,31 +93,92 @@ In addition to the two above methods for removal of a single `Tab`, use the **`r
 The `remove()` and `removeAll()` methods do not remove tabs within the component.
 :::
 
-### Tab/Component association {#tabcomponent-association}
+## Content management {#content-management}
 
-To change the `Component` to be displayed for a given `Tab`, call the `setComponentFor()` method, and pass either the instance of the `Tab`, or the index of that Tab within the `TabbedPane`.
+### Associating content with `Tabs`
 
-:::info
-If this method is used on a `Tab` that is already associated with a `Component`, the previously associated `Component` will be destroyed.
-:::
+Each `Tab` can be associated with any webforJ component, from simple text to complex forms, charts, or even `Composite` components. This allows you to organize large interfaces into manageable, sectioned views.
+
+There are several ways to associate content with a Tab:
+
+- Provide both the `Tab` label and component
+
+```java
+TabbedPane pane = new TabbedPane();
+
+// Add tabs with different types of content
+pane.addTab("User Profile", new UserProfileForm());
+pane.addTab("Settings", new SettingsPanel());
+pane.addTab("Analytics", new AnalyticsChart());
+```
+
+- Provide a `Tab` instance and a Component
+
+For more control (e.g., to add a prefix icon or tooltip), you can pass a `Tab` instance along with a component:
+
+```java
+Tab settingsTab = new Tab("Settings", TablerIcon.create("settings"));
+pane.addTab(settingsTab, new SettingsPanel());
+```
+
+- Use `setComponentFor()`
+
+To change or update the content associated with an existing `Tab`, use `setComponentFor()`:
+
+```java
+pane.setComponentFor(settingsTab, new UpdatedSettingsPanel());
+pane.setComponentFor(1, new UpdatedSettingsPanel()); // By index
+```
+
+### Automatic content switching
+
+The `TabbedPane` handles content visibility based on tab selection:
+
+- Clicking a `Tab` shows the corresponding content panel
+- Switching Tabs hides the previous content and displays the new one
+- Keyboard navigation is supported after focusing the tab list. Use the `Tab` key to focus the Tabs, then arrow keys to navigate between them. The visible content updates automatically as you switch Tabs.
+
+## `Tab` events
+
+The `TabbedPane` fires events when users interact with Tabs:
+
+- **`TabSelectEvent`** - Fired when a `Tab` is selected
+- **`TabDeselectEvent`** - Fired when a `Tab` loses selection  
+- **`TabCloseEvent`** - Fired when a closeable Tab's close button is clicked
+
+```java
+tabbedPane.onSelect(event -> {
+   Tab selectedTab = event.getTab();
+   // Handle when a tab becomes active
+});
+
+tabbedPane.onDeselect(event -> {
+   Tab deselectedTab = event.getTab();
+   // Handle when a tab loses focus
+});
+
+tabbedPane.onClose(event -> {
+   Tab closedTab = event.getTab();
+   // Handle close button clicks
+});
+```
 
 ## Configuration and layout {#configuration-and-layout}
 
-The `TabbedPane` class has two constituent parts: a `Tab` that is displayed in a specified location, and a component to be displayed. This can be a single component, or a [`Composite`](../building-ui/composite-components) component, allowing for the display of more complex components within a tab's content section.
+The `TabbedPane` consists of two main areas: the **tab headers** (displayed in a specified location) and the **content body** (where the associated component for the active `Tab` is displayed). The content body can contain any webforJ component or [`Composite`](../building-ui/composite-components) component.
 
 ### Swiping {#swiping}
 
-The `TabbedPane` supports navigating through the various tabs via swiping. This is ideal for a mobile application, but can also be configured via a built-in method to support mouse swiping. Both swiping and mouse swipping are disabled by default, but can be enabled with the `setSwipable(boolean)` and `setSwipableWithMouse(boolean)` methods, respectively. 
+The `TabbedPane` supports swipe-based navigation, making it well-suited for mobile interfaces. You can also enable mouse-based swiping for desktop environments. Both features are disabled by default and can be activated using the `setSwipeable(boolean)` and `setSwipeWithMouse(boolean)` methods.
 
 ### Tab placement {#tab-placement}
 
-The `Tabs` within a `TabbedPane` can be placed in various positions within the component based on the application developers preference. Provided options are set using the provided enum, which has the values of `TOP`, `BOTTOM`, `LEFT`, `RIGHT`, or `HIDDEN`. The default setting is `TOP`.
-
+The Tabs within a `TabbedPane` can be placed in various positions within the component based on the app developer's preference. Provided options are set using the provided enum, which has the values of `TOP`, `BOTTOM`, `LEFT`, `RIGHT`, or `HIDDEN`. The default setting is `TOP`.
 
 <ComponentDemo 
 path='/webforj/tabbedpaneplacement?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/tabbedpane/TabbedPanePlacementView.java'
-height="400px"
+height="300px"
 />
 
 ### Alignment {#alignment}
@@ -143,17 +195,18 @@ height="250px"
 
 ### Border and activity indicator {#border-and-activity-indicator}
 
-The `TabbedPane` will have a border displayed for the tabs within it by default, placed dependant on which `Placement` has been set. This border helps to visualize the space that the various tabs within the pane take up. 
+By default, the `TabbedPane` displays a border around its Tabs, with the border’s position determined by the configured `Placement`. This visual boundary helps distinguish the `Tab` area from the content section.
 
-When a `Tab` is clicked on, by default, an activity indicator is displayed near that `Tab` to help highlight which is the currently selected `Tab`.
+When a `Tab` is selected, an activity indicator appears beneath it to highlight the active state.
 
-Both of these options can be customized by a developer by changing the boolean values using the appropriate setter methods. To change whether or not the border is shown, the `setBorderless(boolean)` method can be used, with `true` hiding the border, and `false`, the default value, displaying the border.
+Both of these features can be customized:
+
+- Use `setBorderless(true)` to hide the tab border. The default value is false, which keeps the border visible.
+- Use `setHideActiveIndicator(true)` to remove the activity indicator from the active Tab. The default value is false.
 
 :::info
-This border doesn't apply to the entirety of the `TabbedPane` component, and merely serves as a separator between the tabs and the content of the component.
+The `Tab` border applies exclusively to the area occupied by the Tabs themselves. It doesn't extend around the full `TabbedPane`, and serves solely to delineate the Tabs from the content section.
 :::
-
-To set the visibility of the active indicator, the `setHideActiveIndicator(boolean)` method can be used. Passing `true` to this method will hide the active indicator beneath an active `Tab`, whereas `false`, the default, keeps the indicator displayed.
 
 <ComponentDemo 
 path='/webforj/tabbedpaneborder?' 
@@ -165,9 +218,9 @@ height="300px"
 
 For more fine-grained control over how the `TabbedPane` behaves when being navigated by the keyboard, the `Activation` mode can be set to specify how the component should behave.
 
-- **`Auto`**: When set to auto, navigating tabs with the arrow keys will instantly show the corresponding tab component.
+- **`Auto`**: When set to auto, navigating Tabs with the arrow keys will instantly show the corresponding tab component.
 
-- **`Manual`**: When set to manual, the tab will receive focus but will not show until the user presses space or enter.
+- **`Manual`**: When set to manual, the `Tab` will receive focus but won't show until the user presses `Space` or `Enter`.
 
 <ComponentDemo 
 path='/webforj/tabbedpaneactivation?' 
@@ -177,7 +230,7 @@ height="250px"
 
 ### Removal options {#removal-options}
 
-Individual `Tab` elements can be set to be closable. Closable tabs will have a close button added to the tab, which fires a close event when clicked. The `TabbedPane` dictates how this behavior is handled.
+Individual `Tab` elements can be set to be closable. Closable tabs will have a close button added to the `Tab`, which fires a close event when clicked. The `TabbedPane` dictates how this behavior is handled.
 
 - **`Manual`**: By default, removal is set to `MANUAL`, which means that the event is fired, but it is up to the developer to handle this event in whatever way they choose.
 
@@ -196,23 +249,3 @@ height="250px"
 />
 
 <TableBuilder name="TabbedPane" />
-
-## Best practices {#best-practices}
-
-The following practices are recommended for utilizing the `TabbedPane` within applications:
-
-- **Logical Grouping**: Use tabs to logically group related content
-    >- Each tab should represent a distinct category or functionality within your application
-    >- Group similar or logical tabs near one another
-
-- **Limited Tabs**: Avoid overwhelming users with too many tabs. Consider using a hierarchical structure or other navigation patterns where applicable for a clean interface
-
-- **Clear Labels**: Clearly label your Tabs for intuitive use
-    >- Provide clear and concise labels for each tab
-    >- Labels should reflect the content or purpose, making it easy for users to understand
-    >- Utilize icons and distinct colors where applicable
-
-- **Keyboard Navigation** Use webforJ's `TabbedPane` keyboard navigation support to make interaction with the `TabbedPane` more seamless and intuitive for the end user
-
-- **Default Tab**: If the default tab is not placed at the beginning of the `TabbedPane`, consider setting this tab as default for essential or commonly used information.
-
