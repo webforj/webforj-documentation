@@ -77,7 +77,7 @@ dwc-drawer {
 }
 ```
 
-## Placement
+## Placement {#placement}
 
 The `setPlacement()` method controls where the `Drawer` appears in the viewport.
 
