@@ -2,16 +2,13 @@
 title: RadioButtonGroup
 slug: radiobuttongroup
 sidebar_position: 100
-_i18n_hash: 91d753e882e3d6d59deef5044ee7bc4c
+sidebar_class_name: updated-content
+_i18n_hash: da7906128f0d003b9ed8c48c99c3aefc
 ---
 <DocChip chip='since' label='23.01' />
 <JavadocLink type="foundation" location="com/webforj/component/optioninput/RadioButtonGroup" top='true'/>
 
-La classe `RadioButtonGroup` est utilisée pour regrouper des boutons radio liés, ce qui aide à établir l'exclusivité mutuelle parmi les options de ce groupe. Les utilisateurs ne peuvent sélectionner qu'un seul bouton radio dans un groupe donné. Lorsqu'un utilisateur sélectionne un bouton radio dans un groupe, tout bouton radio précédemment sélectionné dans le même groupe devient automatiquement désélectionné. Cela garantit qu'une seule option peut être choisie à la fois.
-
-:::tip
-Un composant `RadioButton` stocke le groupe auquel il appartient, qui peut être accessible via la méthode `getButtonGroup()`.
-:::
+Le `RadioButtonGroup` gère une collection de composants [`RadioButton`](/docs/components/radiobutton). Un seul `RadioButton` peut être sélectionné dans un `RadioButtonGroup`. Lorsqu'un utilisateur coche un nouveau bouton radio, l'ancienne sélection dans le groupe est automatiquement décochée.
 
 <ComponentDemo 
 path='/webforj/radiobuttongroup?' 
@@ -19,34 +16,60 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="200px"
 />
 
-:::important
-Le composant `RadioButtonGroup` ne rend pas un élément HTML sur la page. Au contraire, c'est uniquement une logique qui garantit qu'un groupe de boutons radio se comporte comme un groupe et non individuellement.
+:::important Rendu du `RadioButtonGroup`
+Le composant `RadioButtonGroup` ne rend pas un élément HTML. Il fournit uniquement la logique pour faire en sorte que les composants `RadioButton` se comportent en tant que groupe plutôt qu'individuellement.
 :::
 
-## Usages {#usages}
+## Ajouter et supprimer des composants `RadioButton` {#adding-and-removing-radiobuttons}
 
-Le `RadioButtonGroup` est mieux utilisé dans des scénarios où les utilisateurs doivent faire une seule sélection parmi un ensemble prédéfini d'options présentées sous forme de boutons radio. Voici quelques exemples d'utilisation du `RadioButtonGroup` :
+Vous pouvez inclure des composants `RadioButton` dans le constructeur du `RadioButtonGroup` pour créer un groupe à partir des composants fournis. Pour ajouter ou supprimer un `RadioButton` d'un `RadioButtonGroup` existant, utilisez les méthodes `add()` ou `remove()`.
 
-1. **Enquêtes ou Questionnaires** : Les composants `RadioButtonGroup` sont couramment utilisés dans des enquêtes ou des questionnaires où les utilisateurs doivent sélectionner une seule réponse à partir d'une liste d'options.
+:::tip Obtenir le groupe d'un `RadioButton`
+Le composant `RadioButton` a la méthode `getButtonGroup()`, qui retourne le `RadioButtonGroup` auquel il appartient, ou `null` s'il n'a pas de groupe.
+:::
 
-2. **Paramètres de Préférence** : Les applications impliquant des panneaux de préférences ou de paramètres utilisent souvent le composant RadioButtonGroup pour permettre aux utilisateurs de choisir une seule option parmi un ensemble de choix mutuellement exclusifs.
+## Imbriquer <DocChip chip='since' label='25.11' /> {#nesting}
 
-3. **Filtrage ou Tri** : Un `RadioButton` peut être utilisé dans des applications qui nécessitent que les utilisateurs sélectionnent un seul filtre ou option de tri, tel que le tri d'une liste d'éléments selon différents critères.
+Comme d'autres composants, vous pouvez imbriquer un `RadioButtonGroup` dans un conteneur, afin de ne pas avoir à ajouter directement chaque `RadioButton` individuel.
 
-<!-- vale off -->
-## Ajouter et retirer des RadioButtons {#adding-and-removing-radiobuttons}
-<!-- vale on -->
+```java
+RadioButton agree = new RadioButton("D'accord");
+RadioButton neutral = new RadioButton("Neutre");
+RadioButton disagree = new RadioButton("Pas d'accord");
 
-Il est possible d'ajouter et de retirer des objets `RadioButton` uniques ou multiples d'un groupe, en veillant à ce qu'ils présentent un comportement de vérification mutuellement exclusif et soient associés à tout nom qui pourrait appartenir au groupe.
+RadioButtonGroup group = new RadioButtonGroup("choix", agree, neutral, disagree);
+
+Fieldset fieldset = new Fieldset("Options");
+fieldset.add(group);
+```
+
+## Utiliser `RadioButtonGroupChangeEvent` {#using-radiobuttongroupchangeevent}
+
+Chaque `RadioButton` peut avoir son propre écouteur d'événements pour détecter lorsque l'utilisateur le bascule. Cependant, un avantage d'utiliser un `RadioButtonGroup` est que vous pouvez utiliser un seul écouteur d'événements qui répond à tous les boutons radio du groupe avec l'[`RadioButtonGroupChangeEvent`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/optioninput/event/RadioButtonGroupChangeEvent.html).
+
+**Ajouter des écouteurs d'événements à chaque `RadioButton`**
+
+```java 
+agree.onValueChange(e -> changeEvent());
+neutral.onValueChange(e -> changeEvent());
+disagree.onValueChange(e -> changeEvent());
+```
+
+**Ajouter un seul écouteur d'événements au `RadioButtonGroup`**
+
+```java
+RadioButtonGroup group = new RadioButtonGroup("choix", agree, neutral, disagree);
+group.onChange(e -> changeEvent());
+```
+
+L'exemple suivant provenant de [Placement du tiroir](/docs/components/drawer#placement) utilise le `RadioButtonGroupChangeEvent` pour changer automatiquement le placement du composant `Drawer` :
+
+<ComponentDemo
+path='/webforj/drawerplacement?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerPlacementView.java'
+height='600px'
+/>
 
 ## Nommer {#naming}
 
-L'attribut name dans un `RadioButtonGroup` regroupe des RadioButtons liés, permettant aux utilisateurs de faire un choix unique parmi les options fournies et renforçant l'exclusivité parmi les RadioButtons. Le nom d'un groupe n'est toutefois pas reflété dans le DOM et est un utilitaire pratique pour le développeur Java.
-
-## Meilleures pratiques {#best-practices}
-
-Pour garantir une expérience utilisateur optimale lors de l'utilisation du composant RadioButton, envisagez les meilleures pratiques suivantes :
-
-1. **Étiquetez clairement les options** : Fournissez des étiquettes claires et concises pour chaque option `RadioButton` afin de décrire avec précision le choix. Les étiquettes doivent être faciles à comprendre et à distinguer les unes des autres.
-
-2. **Fournissez une sélection par défaut** : Le cas échéant, envisagez de fournir une sélection par défaut pour les boutons radio afin de guider les utilisateurs lorsqu'ils rencontrent d'abord les options. La sélection par défaut doit correspondre au choix le plus courant ou le plus préféré.
+L'attribut `name` dans un `RadioButtonGroup` groupe les RadioButtons associés ensemble, permettant aux utilisateurs de faire un choix unique parmi les options fournies et imposant l'exclusivité parmi les RadioButtons. Le nom d'un groupe n'est pas reflété dans le DOM, cependant, et est un outil de commodité pour le développeur Java.
