@@ -8,6 +8,7 @@ import com.webforj.component.optioninput.CheckBox
 import com.webforj.kotlin.dsl.component.layout.flexlayout.flexLayout
 import com.webforj.kotlin.dsl.component.layout.flexlayout.horizontal
 import com.webforj.kotlin.dsl.component.optioninput.checkBox
+import com.webforj.kotlin.extension.px
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
 import com.webforj.router.annotation.FrameTitle
@@ -34,14 +35,14 @@ class CheckboxIndeterminateKotlinView: Composite<FlexLayout>() {
         }
         flexLayout {
           horizontal()
-          styles["margin-left"] = "30px"
+          styles["margin-left"] = 30.px
           child1 = checkBox("Child 1", false) {
             onToggle(::onCheck)
           }
         }
         flexLayout {
           horizontal()
-          styles["margin-left"] = "30px"
+          styles["margin-left"] = 30.px
           child2 = checkBox("Child 2", true) {
             onToggle(::onCheck)
           }

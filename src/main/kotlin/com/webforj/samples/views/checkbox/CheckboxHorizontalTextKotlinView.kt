@@ -10,6 +10,8 @@ import com.webforj.concern.HasTextPosition.Position
 import com.webforj.kotlin.dsl.component.layout.flexlayout.flexLayout
 import com.webforj.kotlin.dsl.component.layout.flexlayout.vertical
 import com.webforj.kotlin.dsl.component.optioninput.checkBox
+import com.webforj.kotlin.extension.percent
+import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
@@ -26,7 +28,7 @@ class CheckboxHorizontalTextKotlinView: Composite<FlexLayout>() {
         margin = "var(--dwc-space-l)"
         flexLayout {
           vertical()
-          width = "100px"
+          width = 100.percent
           checkBox("Daily", true)
           checkBox("Weekly")
           checkBox("Bi-Weekly")
@@ -36,7 +38,7 @@ class CheckboxHorizontalTextKotlinView: Composite<FlexLayout>() {
         flexLayout {
           vertical()
           alignment = FlexAlignment.END
-          width = "100px"
+          width = 100.px
           checkBox("Daily", true) {
             textPosition = Position.LEFT
           }
