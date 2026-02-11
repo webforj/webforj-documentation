@@ -1,11 +1,12 @@
 ---
 sidebar_position: 2
 title: Validators
+sidebar_class_name: updated-content
 ---
 
-Validators checks data within your UI components against defined constraints before committing this data to the data model. You can apply validators to ensure that data meets certain criteria, such as being within a specified range, matching a pattern, or not being empty.
+Validators validate data within your UI components against defined constraints before committing this data to the data model. You can apply validators to verify that data meets certain criteria, such as being within a specified range, matching a pattern, or not being empty.
 
-Validations are configured per binding, allowing specific rules to apply to each data point individually. This setup ensures that each piece of data undergoes validation according to its own requirements.
+Validations are configured per binding, allowing specific rules to apply to each data point individually. Each piece of data undergoes validation according to its own requirements.
 
 ## Adding validators {#adding-validators}
 
@@ -48,7 +49,7 @@ public class EmailValidator implements Validator<String> {
 }
 ```
 
-## Using validators in bindings {#using-validators-in-bindings}
+### Using validators in bindings {#using-validators-in-bindings}
 
 Once you have defined a validator, you can easily apply it to any relevant bindings within your app. This is particularly useful for components that require common validation rules across different parts of your app, such as user email addresses, or password strength.
 
@@ -61,9 +62,9 @@ context.bind(ageField, "age")
     .add();
 ```
 
-## Overriding validator messages {#overriding-validator-messages}
+### Overriding validator messages {#overriding-validator-messages}
 
-You can customize the error messages of validators at the point of binding to a specific UI component. This allows you to provide more detailed or contextually relevant information to the user if the validation fails. Custom messages are particularly useful when the same validator applies to multiple components but requires different user guidance based on the context in which it is used.
+You can customize the error messages of validators at the point of binding to a specific UI component. This allows you to provide more detailed or contextually relevant information to the user if the validation fails. Custom messages are particularly useful when the same validator applies to multiple components but requires different guidance based on the context in which it's used.
 
 Here's how to override the default message of a reusable validator in a binding:
 
@@ -75,8 +76,47 @@ context.bind(emailField, "email")
     .add();
 ```
 
-In the example above, the code applies the `EmailValidator` to an email field with a custom error message specifically tailored for that field. This allows for a more directed and helpful user experience if the validation fails.
+In the example above, the code applies the `EmailValidator` to an email field with a custom error message specifically tailored for that field.
 
 :::tip Understanding `Validator.from`
 The `Validator.from` method wraps a passed validator with a new one, allowing you to specify a custom error message in case the validator doesn't support customized messages. This technique is particularly useful when you need to apply the same validation logic across multiple components but with distinct, context-specific error messages for each instance.
 :::
+
+### Dynamic validation messages <DocChip chip='since' label='25.12' /> {#dynamic-validation-messages}
+
+By default, validation messages are static strings set once at binding time. In apps that support multiple languages, these static messages won't update when the user switches locales. To solve this, both `useValidator` and the `Validator` factory methods accept a `Supplier<String>` invoked each time validation fails, allowing the message to resolve dynamically.
+
+#### Inline validators with dynamic messages {#inline-validators-with-dynamic-messages}
+
+Pass a `Supplier<String>` instead of a plain `String` to `useValidator`:
+
+```java {2,3}
+context.bind(nameTextField, "name")
+    .useValidator(value -> !value.isEmpty(), () -> t("validation.name.required"))
+    .useValidator(value -> value.length() >= 3, () -> t("validation.name.minLength"))
+    .add();
+```
+
+Each time validation runs and the predicate fails, the supplier calls `t()` which resolves the message for the current locale.
+
+#### Factory methods with dynamic messages {#factory-methods-with-dynamic-messages}
+
+The `Validator.of` and `Validator.from` factory methods also accept suppliers:
+
+```java {4,10}
+// Create a predicate-based validator with a dynamic message
+Validator<String> required = Validator.of(
+    value -> !value.isEmpty(),
+    () -> t("validation.required")
+);
+
+// Wrap an existing validator with a dynamic override message
+Validator<String> email = Validator.from(
+    new EmailValidator(),
+    () -> t("validation.email.invalid")
+);
+```
+
+#### Locale-aware custom validators {#locale-aware-custom-validators}
+
+For reusable validators that need to produce locale-sensitive messages internally, implement the `LocaleAware` interface. When the locale changes via `BindingContext.setLocale()`, the context automatically propagates the new locale to all validators that implement this interface. The next validation run then produces messages in the updated locale.
