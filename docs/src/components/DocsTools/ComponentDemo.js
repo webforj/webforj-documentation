@@ -157,24 +157,83 @@ export default function ComponentDemo({
     setOriginalWidth(iframeRef.current ? iframeRef.current.offsetWidth : 0);
   }, []);
 
+  // Apply theme to iframe whenever colorMode changes, and catch any
+  // iframes that loaded before React hydration attached the onLoad handler.
   useEffect(() => {
     if (!iframeRef.current) return;
-  
-    const applyThemeToIframe = () => {
-      try {
-        const iframeDoc = iframeRef.current.contentDocument || iframeRef.current.contentWindow.document;
-        if (iframeDoc) {
-          iframeDoc.documentElement.setAttribute("data-app-theme", colorMode);
-        }
-      } catch (error) {
-        console.error("Failed to apply theme to iframe:", error);
+    try {
+      const iframeDoc = iframeRef.current.contentDocument || iframeRef.current.contentWindow.document;
+      if (iframeDoc) {
+        iframeDoc.documentElement.setAttribute("data-app-theme", colorMode);
       }
-    };
-  
-    applyThemeToIframe();
-    iframeRef.current.onload = applyThemeToIframe;
+    } catch (error) {
+      console.error("Failed to apply theme to iframe:", error);
+    }
 
+    // If the iframe already loaded before React hydrated and attached the
+    // onLoad handler, apply patches now as a fallback.
+    try {
+      const iframeDoc = iframeRef.current.contentDocument;
+      if (iframeDoc && iframeDoc.readyState === 'complete') {
+        handleIframeLoad();
+      }
+    } catch (e) {
+      // Silently ignore cross-origin errors
+    }
   }, [colorMode]);
+
+  // Called via the onLoad prop on the iframe element. React attaches
+  // onLoad during the commit phase (before paint), so this is guaranteed
+  // to fire even for fast-loading same-origin iframes — unlike useEffect
+  // which runs after paint and can miss early load events.
+  const handleIframeLoad = () => {
+    if (!iframeRef.current) return;
+
+    // Apply theme
+    try {
+      const iframeDoc = iframeRef.current.contentDocument || iframeRef.current.contentWindow.document;
+      if (iframeDoc) {
+        iframeDoc.documentElement.setAttribute("data-app-theme", colorMode);
+      }
+    } catch (error) {
+      console.error("Failed to apply theme to iframe:", error);
+    }
+
+    // Patch scroll-related methods inside the iframe to prevent DWC
+    // components from scrolling the parent documentation page.
+    // The confirmed culprit is scrollIntoViewIfNeeded on DWC-TREE-NODE
+    // elements, but we also patch scrollIntoView and focus defensively.
+    try {
+      const iframeWindow = iframeRef.current.contentWindow;
+
+      if (iframeWindow && iframeWindow.Element) {
+        const originalScrollIntoView = iframeWindow.Element.prototype.scrollIntoView;
+        iframeWindow.Element.prototype.scrollIntoView = function (...args) {
+          const parentScrollX = window.scrollX;
+          const parentScrollY = window.scrollY;
+          originalScrollIntoView.apply(this, args);
+          window.scrollTo(parentScrollX, parentScrollY);
+        };
+
+        if (iframeWindow.Element.prototype.scrollIntoViewIfNeeded) {
+          const originalScrollIntoViewIfNeeded = iframeWindow.Element.prototype.scrollIntoViewIfNeeded;
+          iframeWindow.Element.prototype.scrollIntoViewIfNeeded = function (...args) {
+            const parentScrollX = window.scrollX;
+            const parentScrollY = window.scrollY;
+            originalScrollIntoViewIfNeeded.apply(this, args);
+            window.scrollTo(parentScrollX, parentScrollY);
+          };
+        }
+
+        const originalFocus = iframeWindow.HTMLElement.prototype.focus;
+        iframeWindow.HTMLElement.prototype.focus = function (options) {
+          originalFocus.call(this, { ...options, preventScroll: true });
+        };
+      }
+    } catch (error) {
+      // Silently ignore cross-origin errors
+    }
+  };
   
 
   function renderCodeBlocks(files, codeBlockStyles, javaHighlight) {
@@ -350,6 +409,7 @@ export default function ComponentDemo({
         >
           <iframe
             onMouseUp={stopResizing}
+            onLoad={handleIframeLoad}
             loading="lazy"
             src={(isLocalhost ? GLOBALS.IFRAME_SRC_DEV : GLOBALS.IFRAME_SRC_LIVE) + path}
             css={iframeStyles}
