@@ -2,14 +2,14 @@
 title: RadioButton
 slug: radiobutton
 sidebar_position: 95
-_i18n_hash: efd1171b68ca07b593064abe0366ded7
+_i18n_hash: 0445bb7e995db7e0d725964c66690d19
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-radio" />
 <DocChip chip='since' label='23.01' />
 <JavadocLink type="foundation" location="com/webforj/component/optioninput/RadioButton" top='true'/>
 
-Die Klasse `RadioButton` erstellt ein Objekt, das ausgewählt oder abgewählt werden kann und seinen Zustand dem Benutzer anzeigt. Nach der Konvention kann in einer Gruppe nur ein Radio-Button gleichzeitig ausgewählt sein. Radio-Buttons werden häufig verwendet, wenn sich gegenseitig ausschließende Optionen verfügbar sind, sodass der Benutzer eine einzelne Option aus einer Auswahl wählen kann.
+Die `RadioButton`-Komponente ist ein Objekt, das ausgewählt oder abgewählt werden kann und seinen Status dem Benutzer anzeigt. Radiobuttons werden häufig verwendet, wenn sich gegenseitig ausschließend Optionen verfügbar sind, sodass der Benutzer eine einzelne Option aus einer Reihe von Auswahlmöglichkeiten auswählen kann.
 
 <ComponentDemo 
 path='/webforj/radiobuttongroup?' 
@@ -17,20 +17,24 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="200px"
 />
 
-## Verwendungen {#usages}
+:::tip Gruppierung von `RadioButton`-Komponenten
+Verwenden Sie eine [`RadioButtonGroup`](/docs/components/radiobuttongroup), um eine Gruppe von Radiobuttons zu verwalten, wenn Sie möchten, dass die Benutzer eine einzige Option auswählen.
+:::
 
-Der `RadioButton` wird am besten in Szenarien verwendet, in denen Benutzer eine einzige Auswahl aus einem vordefinierten Satz von Optionen treffen müssen. Hier sind einige Beispiele, wann der `RadioButton` verwendet werden sollte:
+## Verwendung {#usages}
 
-1. **Umfragen oder Fragebögen**: Radio-Buttons werden häufig in Umfragen oder Fragebögen verwendet, in denen Benutzer eine einzige Antwort aus einer Liste von Optionen auswählen müssen.
+Der `RadioButton` wird am besten in Szenarien verwendet, in denen Benutzer eine einzelne Auswahl aus einer vordefinierten Menge von Optionen treffen müssen. Hier sind einige Beispiele, wann der `RadioButton` verwendet werden sollte:
 
-2. **Einstellungen für Präferenzen**: Anwendungen, die Präferenzen oder Einstellungsfenster umfassen, verwenden oft Radio-Buttons, um den Benutzern die Auswahl einer einzigen Option aus einer Gruppe von sich gegenseitig ausschließenden Optionen zu ermöglichen.
+1. **Umfragen oder Fragebögen**: Radiobuttons werden häufig in Umfragen oder Fragebögen verwendet, bei denen Benutzer eine einzige Antwort aus einer Liste von Optionen auswählen müssen.
 
-3. **Filtern oder Sortieren**: Ein `RadioButton` kann in Anwendungen verwendet werden, die es den Benutzern ermöglichen, eine einzelne Filter- oder Sortieroption auszuwählen, z. B. eine Liste von Elementen nach verschiedenen Kriterien zu sortieren.
+2. **Einstellungseinstellungen**: Anwendungen, die Einstellungs- oder Präferenzfenster beinhalten, verwenden häufig Radiobuttons, um den Benutzern zu ermöglichen, eine einzelne Option aus einer Gruppe von sich gegenseitig ausschließenden Auswahlmöglichkeiten zu wählen.
+
+3. **Filtern oder Sortieren**: Ein `RadioButton` kann in Anwendungen verwendet werden, die erfordern, dass Benutzer eine einzelne Filter- oder Sortierungsoption auswählen, wie das Sortieren einer Liste von Elementen nach verschiedenen Kriterien.
 
 ## Text und Positionierung {#text-and-positioning}
 
-Radio-Buttons können die Methode ```setText(String text)``` nutzen, die in der Nähe des Radio-Buttons positioniert wird, gemäß der integrierten `Position`. 
-Radio-Buttons haben eine integrierte Funktionalität, um Text anzuzeigen, der entweder rechts oder links von der Komponente angezeigt wird. Standardmäßig wird der Text rechts von der Komponente angezeigt. Die Positionierung des horizontalen Texts wird durch die Verwendung der `HorizontalAlignment`-Enum-Klasse unterstützt. Unten sind die beiden Einstellungen aufgeführt: <br/>
+Radiobuttons können die Methode ```setText(String text)``` nutzen, die in der Nähe des Radiobuttons positioniert wird, gemäß der integrierten `Position`.
+Radiobuttons verfügen über eine integrierte Funktion, um Text anzuzeigen, der entweder rechts oder links von der Komponente angezeigt wird. Standardmäßig wird der Text rechts von der Komponente angezeigt. Die Positionierung des horizontalen Texts wird durch die Verwendung der Enum-Klasse `HorizontalAlignment` unterstützt. Nachfolgend sind die beiden Einstellungen aufgeführt: <br/>
 
 <ComponentDemo 
 path='/webforj/radiobuttontext?' 
@@ -40,7 +44,7 @@ height="120px"
 
 ## Aktivierung {#activation}
 
-Radio-Buttons können mit zwei Arten von Aktivierung gesteuert werden: manuelle Aktivierung und automatische Aktivierung. Diese bestimmen, wann ein `RadioButton` seinen Zustand ändert.
+Radiobuttons können mit zwei Arten von Aktivierungen gesteuert werden: manuelle Aktivierung und automatische Aktivierung. Diese bestimmen, wann sich ein `RadioButton` in seinem Status ändert.
 
 <ComponentDemo 
 path='/webforj/radiobuttonactivation?' 
@@ -50,24 +54,23 @@ height="175px"
 
 ### Manuelle Aktivierung {#manual-activation}
 
-Wenn ein Radio-Button auf manuelle Aktivierung eingestellt ist, bedeutet dies, dass er nicht automatisch aktiviert wird, wenn er den Fokus erhält. 
-Die manuelle Aktivierung ermöglicht es dem Benutzer, durch die Radio-Button-Optionen mit der Tastatur oder anderen Eingabemethoden zu navigieren, ohne sofort die ausgewählte Option zu ändern.
+Wenn ein Radiobutton auf manuelle Aktivierung eingestellt ist, bedeutet dies, dass er nicht automatisch aktiviert wird, wenn er den Fokus erhält.
+Die manuelle Aktivierung ermöglicht es dem Benutzer, durch die Radiobutton-Optionen mit der Tastatur oder anderen Eingabemethoden zu navigieren, ohne sofort die ausgewählte Option zu ändern.
 
-Wenn der Radio-Button Teil einer Gruppe ist, wird das Auswählen eines anderen Radio-Buttons innerhalb der Gruppe den zuvor ausgewählten Radio-Button automatisch abwählen. 
-Die manuelle Aktivierung bietet eine feinere Kontrolle über den Selektionsprozess, da eine explizite Aktion des Benutzers erforderlich ist, um die ausgewählte Option zu ändern.
+Wenn der Radiobutton Teil einer Gruppe ist, wird das Auswählen eines anderen Radiobuttons innerhalb der Gruppe automatisch den zuvor ausgewählten Radiobutton abwählen.
+Die manuelle Aktivierung bietet eine genauere Kontrolle über den Auswahlprozess, wobei eine ausdrückliche Handlung des Benutzers erforderlich ist, um die ausgewählte Option zu ändern.
 
 ### Automatische Aktivierung {#auto-activation}
 
-Die automatische Aktivierung ist der Standardzustand für einen `RadioButton` und bedeutet, dass der Button aktiviert wird, wenn er aus irgendeinem Grund den Fokus erhält. 
-Das bedeutet, dass nicht nur ein Klick, sondern auch Autofokus oder die Tab-Navigation den Button aktivieren.
+Die automatische Aktivierung ist der Standardzustand für einen `RadioButton` und bedeutet, dass der Button aktiviert wird, wenn er aus irgendeinem Grund den Fokus erhält. Dies bedeutet, dass nicht nur das Klicken, sondern auch das Autofokus oder die Tab-Navigation den Button aktivieren.
 
 :::tip Hinweis
-Der Standardaktivierungswert ist **`MANUELL`** aktivierung.
+Der Standardwert für die Aktivierung ist **`MANUAL`** Aktivierung.
 :::
 
 ## Schalter {#switches}
 
-Ein `RadioButton` kann auch so eingestellt werden, dass er als Schalter angezeigt wird, was eine alternative visuelle Darstellung zur Auswahl von Optionen bietet. Normalerweise sind Radio-Buttons rund oder abgerundet und zeigen eine einzige Wahl aus einer Gruppe von Optionen an.
+Ein `RadioButton` kann auch als Schalter angezeigt werden, der eine alternative visuelle Darstellung für die Auswahl von Optionen bietet. Normalerweise sind Radiobuttons kreisförmig oder abgerundet und zeigen eine einzelne Wahl aus einer Gruppe von Optionen an.
 
 <ComponentDemo 
 path='/webforj/radiobuttonswitch?' 
@@ -75,9 +78,9 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="120px"
 />
 
-Ein `RadioButton` kann in einen Schalter verwandelt werden, der einem Kippschalter oder Schieberegler ähnelt, indem eine der beiden Methoden verwendet wird:
+Ein `RadioButton` kann in einen Schalter umgewandelt werden, der einem Kippschalter oder Schieberegler ähnelt, indem eine von zwei Methoden verwendet wird:
 
-1. **Die Fabrikmethode**: Der RadioButton kann unter Verwendung der folgenden Fabrikmethoden erstellt werden:
+1. **Die Fabrikmethode**: Der Radiobutton kann mit den folgenden Fabrikmethoden erstellt werden:
 
 ```java
 Switch(String text, boolean checked);
@@ -85,7 +88,7 @@ Switch(String text);
 Switch();
 ```
 
-Diese Methoden spiegeln einen `RadioButton`-Konstruktor wider und erstellen die Komponente mit der Schalter-Eigenschaft bereits aktiviert.
+Diese Methoden spiegeln einen `RadioButton`-Konstruktor wider und erstellen die Komponente mit der Schaltereigenschaft, die bereits aktiviert ist.
 
 2. **Setter**: Es ist auch möglich, einen bereits vorhandenen `RadioButton` in einen Schalter zu ändern, indem der entsprechende Setter verwendet wird:
 
@@ -93,30 +96,30 @@ Diese Methoden spiegeln einen `RadioButton`-Konstruktor wider und erstellen die 
 myRadioButton.setSwitch(true);
 ```
 
-Wenn ein `RadioButton` als Schalter angezeigt wird, sieht er typischerweise wie eine längliche Form mit einem Indikator aus, der ein- oder ausgeschaltet werden kann. Diese visuelle Darstellung bietet den Benutzern eine intuitivere und vertrautere Schnittstelle, ähnlich zu physischen Schaltern, die häufig in elektronischen Geräten zu finden sind.
+Wenn ein `RadioButton` als Schalter angezeigt wird, hat er typischerweise eine längliche Form mit einem Indikator, der ein- oder ausgeschaltet werden kann. Diese visuelle Darstellung bietet den Benutzern eine intuitivere und vertrautere Benutzeroberfläche, ähnlich wie physische Schalter, die häufig in elektronischen Geräten zu finden sind.
 
-Einen `RadioButton` so einzustellen, dass er als Schalter angezeigt wird, kann die Benutzererfahrung verbessern, indem eine klare und direkte Möglichkeit zur Auswahl von Optionen bereitgestellt wird. Es kann die visuelle Attraktivität und Benutzbarkeit von Formularen, Einstellungsfenstern oder anderen Schnittstellenelementen, die mehrere Auswahlmöglichkeiten erfordern, steigern.
+Das Einstellen eines `RadioButton` zur Anzeige als Schalter kann die Benutzererfahrung verbessern, indem es eine klare und unkomplizierte Möglichkeit bietet, Optionen auszuwählen. Es kann die visuelle Anziehungskraft und Benutzerfreundlichkeit von Formularen, Einstellungsfenstern oder anderen Benutzerschnittstellenelementen, die mehrere Auswahlmöglichkeiten erfordern, erhöhen.
 
 :::info
-Das Verhalten des `RadioButton` bleibt dasselbe, wenn er als Schalter dargestellt wird, was bedeutet, dass innerhalb einer Gruppe nur eine Option gleichzeitig ausgewählt werden kann. Das schalterartige Erscheinungsbild ist eine visuelle Transformation, die die Funktionalität eines `RadioButton` beibehält.
+Das Verhalten des `RadioButton` bleibt dasselbe, wenn es als Schalter gerendert wird, was bedeutet, dass innerhalb einer Gruppe nur eine Option ausgewählt werden kann. Das schalterähnliche Aussehen ist eine visuelle Transformation, die die Funktionalität eines `RadioButton` beibehält.
 :::
 
 <br/>
 
-## Stilgestaltung {#styling}
+## Styling {#styling}
 
-### Erweiterungen {#expanses}
-Es gibt fünf Checkbox-Erweiterungen, die unterstützt werden und eine schnelle Stilgestaltung ohne CSS ermöglichen.
-Erweiterungen werden durch die Verwendung der `Expanse`-Enum-Klasse unterstützt. Unten sind die unterstützten Erweiterungen für die Checkbox-Komponente aufgeführt: <br/>
+### Ausdehnungen {#expanses}
+Es gibt fünf Checkbox-Ausdehnungen, die unterstützt werden und eine schnelle Stilgestaltung ohne Verwendung von CSS ermöglichen.
+Ausdehnungen werden durch die Verwendung der Enum-Klasse `Expanse` unterstützt. Nachfolgend sind die unterstützten Ausdehnungen für die Checkbox-Komponente aufgeführt: <br/>
 
 <TableBuilder name="RadioButton" />
 
-## Best Practices {#best-practices}
+## Beste Praktiken {#best-practices}
 
-Um eine optimale Benutzererfahrung bei der Verwendung der RadioButton-Komponente sicherzustellen, sollten die folgenden Best Practices berücksichtigt werden:
+Um ein optimales Benutzererlebnis bei der Verwendung der RadioButton-Komponente zu gewährleisten, sollten Sie die folgenden besten Praktiken berücksichtigen:
 
-1. **Optionen klar kennzeichnen**: Stellen Sie klaren und prägnanten Text für jede `RadioButton`-Option bereit, um die Wahl genau zu beschreiben. Der Text sollte leicht verständlich und voneinander zu unterscheiden sein.
+1. **Optionen deutlich kennzeichnen**: Geben Sie klaren und präzisen Text für jede `RadioButton`-Option an, um die Wahl genau zu beschreiben. Der Text sollte leicht verständlich und voneinander zu unterscheiden sein.
 
-2. **Radio-Buttons gruppieren**: Gruppieren Sie verwandte Radio-Buttons, um deren Zugehörigkeit anzuzeigen. Dies hilft den Benutzern zu verstehen, dass innerhalb einer bestimmten Gruppe nur eine Option ausgewählt werden kann. Dies kann effektiv mithilfe der [`RadioButtonGroup`](/docs/components/radiobuttongroup) Komponente durchgeführt werden.
+2. **Radiobuttons gruppieren**: Gruppieren Sie verwandte Radiobuttons, um ihre Zugehörigkeit anzuzeigen. Dies hilft den Benutzern, zu verstehen, dass innerhalb einer bestimmten Gruppe nur eine Option ausgewählt werden kann. Dies kann effektiv mit der [`RadioButtonGroup`](/docs/components/radiobuttongroup) Komponente erreicht werden.
 
-3. **Standardauswahl anbieten**: Falls zutreffend, erwägen Sie, eine Standardauswahl für Radio-Buttons bereitzustellen, um Benutzern bei der ersten Begegnung mit den Optionen zu helfen. Die Standardauswahl sollte mit der häufigsten oder bevorzugten Wahl übereinstimmen.
+3. **Voreingestellte Auswahl bieten**: Wenn anwendbar, sollten Sie in Betracht ziehen, eine voreingestellte Auswahl für Radiobuttons bereitzustellen, um die Benutzer zu leiten, wenn sie zum ersten Mal auf die Optionen stoßen. Die voreingestellte Auswahl sollte mit der häufigsten oder bevorzugten Wahl übereinstimmen.

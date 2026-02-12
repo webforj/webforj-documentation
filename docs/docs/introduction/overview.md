@@ -1,6 +1,5 @@
 ---
 title: Introduction Overview
-sidebar_class_name: has-new-content
 hide_table_of_contents: true
 hide_giscus_comments: true
 ---

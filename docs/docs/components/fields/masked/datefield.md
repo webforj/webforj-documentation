@@ -1,6 +1,7 @@
 ---
 title: MaskedDateField
 sidebar_position: 5
+sidebar_class_name: updated-content
 ---
 
 <DocChip chip='shadow' />
@@ -91,6 +92,70 @@ For example, assuming that today is `September 15, 2012`, this is how various in
 | <div align="center">`8 digits`</div> | Eight digits are interpreted as YYYYMMDD. For example, `20040612` is June 12, 2004.                                                                                                                | Eight digits are interpreted as MMDDYYYY. For example, `06122004` is June 12, 2004. | Eight digits are interpreted as DDMMYYYY. For example, `06122004` is December 6, 2004.                                        |
 | <div align="center">`12/6`</div>     | Two numbers separated by any valid delimiter is interpreted as MM/DD, so this would be December 6, 2012. <br />Note: All characters except for letters and digits are considered valid delimiters. | Same as YMD                                                                         | Two numbers separated by any delimiter is interpreted as DD/MM, so this would be June 12, 2012.                               |
 | <div align="center">`3/4/5`</div>    | April 5, 2012                                                                                                                                                                                      | March 4, 2005                                                                       | April 3, 2005                                                                                                                 |
+
+
+## Textual date parsing <DocChip chip='since' label='25.11' /> {#textual-date-parsing}
+
+By default, the `MaskedDateField` only accepts numeric input for dates. However, you can enable **textual date parsing** to allow users to enter month and day names in their input. This feature is particularly useful for creating more natural date entry.
+
+To enable textual parsing, use the `setTextualDateParsing()` method:
+
+```java
+dateField.setTextualDateParsing(true);
+```
+
+### Month name substitution {#month-name-substitution}
+
+When textual parsing is enabled, you can use special modifiers in your mask to accept month names instead of numeric values:
+
+- **`%Ms`** - Accepts short month names (Jan, Feb, Mar, etc.)
+- **`%Ml`** - Accepts long month names (January, February, March, etc.)
+
+Month names can appear in any position within the mask, and the field will still accept numeric input as a fallback.
+
+#### Examples
+
+| Mask | Input | Result |
+| ---- | ----- | ------ |
+| `%Ms/%Dz/%Yz` | `Sep/01/25` | **Valid** - Parses as September 1, 2025 |
+| `%Ml/%Dz/%Yz` | `September/01/25` | **Valid** - Parses as September 1, 2025 |
+| `%Dz/%Ml/%Yz` | `01/September/25` | **Valid** - Parses as September 1, 2025 |
+| `%Mz/%Dz/%Yz` | `09/01/25` | **Valid** - Numeric fallback still works |
+
+:::info
+All 12 months are supported in both short (Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec) and long (January, February, etc.) forms.
+:::
+### Day name decoration {#day-name-decoration}
+
+Day-of-week names can be included in the input for better readability, but they're **decorative only** and are stripped during parsing. They don't affect the actual date value.
+
+- **`%Ds`** - Accepts short day names (Mon, Tue, Wed, etc.)
+- **`%Dl`** - Accepts long day names (Monday, Tuesday, Wednesday, etc.)
+
+:::warning Day Names Require Numeric Day
+When using day-of-week names (`%Ds` or `%Dl`), your mask **must also include** `%Dz` or `%Dd` to specify the actual day number. Without a numeric day component, the input will be invalid.
+:::
+
+#### Examples
+
+| Mask | Input | Result |
+| ---- | ----- | ------ |
+| `%Ds %Mz/%Dz/%Yz` | `Mon 09/01/25` | **Valid** - Day name is decorative |
+| `%Dl %Mz/%Dz/%Yz` | `Monday 09/01/25` | **Valid** - Day name is decorative |
+| `%Mz/%Dz/%Yz %Ds` | `09/01/25 Tue` | **Valid** - Day name at the end |
+| `%Dl/%Mz/%Yz` | `Monday/09/25` | **Invalid** - Missing `%Dz` |
+| `%Mz/%Dl/%Yz` | `09/Monday/25` | **Invalid** - Missing `%Dz` |
+
+All 7 weekdays are supported in both short (Mon, Tue, Wed, Thu, Fri, Sat, Sun) and long (Monday, Tuesday, etc.) forms.
+
+### Additional parsing rules {#additional-parsing-rules}
+
+Textual date parsing includes several helpful features:
+
+- **Case-insensitive:** Input like `MONDAY 09/01/25`, `monday 09/01/25`, or `Monday 09/01/25` all work the same way.
+- **Locale-aware:** Month and day names must match the field's configured locale. For example, with a French locale, use `septembre` not `September`. English names won't be recognized unless the locale is set to English.
+  - French locale: `septembre/01/25` is recognized as September
+  - German locale: `Montag 09/01/25` is recognized with Monday as the day name
 
 ## Setting min/max constraints {#setting-minmax-constraints}
 
