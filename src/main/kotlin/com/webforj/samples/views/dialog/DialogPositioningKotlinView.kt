@@ -29,7 +29,7 @@ class DialogPositioningKotlinView: Composite<FlexLayout>() {
           }
           header {
             button("Set Dialog Position", ButtonTheme.PRIMARY) {
-              minHeight = "60px"
+              minHeight = 60.px
               onClick {
                 val xValue = xPos.value
                 val yValue = yPos.value
