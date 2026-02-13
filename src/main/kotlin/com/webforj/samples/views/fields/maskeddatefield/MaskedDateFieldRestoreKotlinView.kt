@@ -7,6 +7,8 @@ import com.webforj.component.layout.flexlayout.FlexJustifyContent
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.field.maskedDateField
+import com.webforj.kotlin.dsl.component.field.picker
+import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 import java.time.LocalDate
@@ -26,8 +28,10 @@ class MaskedDateFieldRestoreKotlinView: Composite<FlexLayout>() {
         value = LocalDate.now()
         restoreValue = LocalDate.now().minusDays(1)
         helperText = "Press <kbd>ESC</kbd> to restore the value to yesterday."
-        maxWidth = "300px"
-        picker.isIconVisible = false
+        maxWidth = 300.px
+        picker {
+          isIconVisible = false
+        }
       }
       button("Reset value", ButtonTheme.PRIMARY).onClick {
         eventField.restoreValue()
