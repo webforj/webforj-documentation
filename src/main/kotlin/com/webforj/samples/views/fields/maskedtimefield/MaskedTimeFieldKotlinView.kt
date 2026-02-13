@@ -6,15 +6,14 @@ import com.webforj.component.layout.flexlayout.FlexDirection
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.field.maskedTimeField
 import com.webforj.kotlin.dsl.component.field.picker
-import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 import java.time.LocalTime
 
 @Route
-@FrameTitle("Masked Time Field Picker")
-class MaskedTimeFieldPickerKotlinView: Composite<FlexLayout>() {
-  val self = boundComponent
+@FrameTitle("Masked Time Field")
+class MaskedTimeFieldKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
     self.apply {
@@ -22,16 +21,13 @@ class MaskedTimeFieldPickerKotlinView: Composite<FlexLayout>() {
       alignment = FlexAlignment.CENTER
       margin = "var(--dwc-space-m)";
       maskedTimeField("Meeting Time") {
-        mask = "%hz:%mz %p"
-        value = LocalTime.of(9, 30) // 9:30 AM
-        maxWidth = 300.px
-        helperText = "Click the icon to open the time picker."
-        isAllowCustomValue = false
+        mask = "%h:%mz %p"
+        value = LocalTime.now()
+        maxWidth = "300px"
+        helperText = "Meeting time is formatted as %h:%mz %p."
         picker {
-          isIconVisible = true
-          isAutoOpen = true;
+          isIconVisible = false;
         }
-        whenAttached().thenAccept { picker.open() }
       }
     }
   }
