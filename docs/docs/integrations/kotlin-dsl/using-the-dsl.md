@@ -7,7 +7,7 @@ The Kotlin DSL provides builder functions for webforJ components. Each function 
 
 ## Naming conventions {#naming-conventions}
 
-DSL functions use the component class name in **camelCase**. `Button` becomes `button()`, `TextField` becomes `textField()`, and `FlexLayout` becomes `flexLayout()`.
+DSL functions are provided for all standard webforJ components, including buttons, fields, layouts, dialogs, drawers, lists, and HTML elements. Each function uses the component class name in **camelCase**. `Button` becomes `button()`, `TextField` becomes `textField()`, and `FlexLayout` becomes `flexLayout()`.
 
 ```kotlin
 div {
@@ -18,7 +18,7 @@ div {
     }
 }
 ```
-
+:::important Using the `Break` component
 One exception: `Break` uses backticks because `break` is a Kotlin keyword:
 
 ```kotlin
@@ -28,6 +28,7 @@ div {
     span("Line two")
 }
 ```
+:::
 
 ## Creating components {#creating-components}
 
@@ -78,25 +79,27 @@ flexLayout {
 
 The DSL enforces proper scoping. You can only add children to components that support them, and the compiler prevents accidental references to outer scopes.
 
-## The DSL marker {#the-dsl-marker}
+## Scope safety {#scope-safety}
 
-With nested structures, it's easy to accidentally reference the wrong scope. The `@WebforjDsl` annotation prevents this by restricting access to outer component scopes:
+With nested structures, it's easy to accidentally reference the wrong scope. The DSL prevents this automatically — builder functions from outer scopes aren't accessible inside inner blocks:
 
 ```kotlin
 div {
-    button("Outer") {
-        // This would be confusing - adding to outer div from inside button
-        // button("Accidental") // Won't compile - DSL marker prevents this
+    button("Submit") {
+        // This looks like it adds a paragraph inside the button,
+        // but it would actually add it to the outer div.
+        // The DSL catches this mistake at compile time.
+        paragraph("Submitting...") // Won't compile
     }
 }
 ```
 
-If you need to reference an outer scope explicitly, use labeled `this`:
+If you genuinely need to add to an outer scope, use labeled `this` to make the intent explicit:
 
 ```kotlin
 div {
-    button("Inner") {
-        this@div.add(Paragraph("Added to outer div"))  // Explicit is allowed
+    button("Submit") {
+        this@div.add(Paragraph("Submitting..."))  // Explicit is allowed
     }
 }
 ```
@@ -105,7 +108,7 @@ This keeps UI code predictable by making scope jumps visible.
 
 ## Styling components {#styling-components}
 
-Now that you can build component structures, you'll want to style them. Access the `styles` map to set inline CSS properties:
+Now that you can build component structures, you'll want to style them. The Kotlin DSL provides a `styles` extension property that gives map-like bracket access to CSS properties, equivalent to `setStyle()` and `getStyle()` in Java:
 
 ```kotlin
 button("Styled") {
@@ -113,20 +116,6 @@ button("Styled") {
     styles["color"] = "white"
     styles["padding"] = "12px 24px"
     styles["border-radius"] = "4px"
-}
-```
-
-For multiple styles, you can chain assignments:
-
-```kotlin
-div {
-    styles["display"] = "flex"
-    styles["gap"] = "16px"
-    styles["padding"] = "20px"
-
-    button("One")
-    button("Two")
-    button("Three")
 }
 ```
 
@@ -142,7 +131,7 @@ button("Primary Action") {
 
 ## Event handling {#event-handling}
 
-Styled components need to respond to user interaction. The DSL provides concise event listener syntax using `on` prefix methods that accept lambdas:
+Components almost always need to respond to user interaction. The DSL provides concise event listener syntax using `on` prefix methods that accept lambdas:
 
 ```kotlin
 button("Save") {
@@ -159,17 +148,6 @@ textField("Search") {
 }
 ```
 
-Common event methods include:
-
-| Method | Triggered when |
-|--------|---------------|
-| `onClick` | User clicks the component |
-| `onModify` | Field value changes |
-| `onAttach` | Component attaches to the DOM |
-| `onDetach` | Component detaches from the DOM |
-| `onFocus` | Component gains focus |
-| `onBlur` | Component loses focus |
-
 ## Common parameters {#common-parameters}
 
 You've seen configuration blocks used throughout these examples. Most DSL functions also accept common parameters before the block for frequently-used options:
@@ -185,17 +163,16 @@ textField("Username", placeholder = "Enter username") { }
 passwordField("Password", placeholder = "Enter password") { }
 
 // Value parameters for inputs
-numberField("Quantity", value = 1.0, min = 0.0, max = 100.0) { }
+numberField("Quantity", value = 1.0) {
+    min = 0.0
+    max = 100.0
+}
 ```
 
-These parameters are optional with sensible defaults:
+:::tip Arguments with specified names
+Passing parameters with specified argument names allows them to be passed outside of the order written in the function signature.
+:::
 
-```kotlin
-// All of these work
-button { text = "Set later" }
-button("Immediate text")
-button("Text") { theme = ButtonTheme.DANGER }
-```
 
 ## Building a complete view {#building-a-complete-view}
 
@@ -208,7 +185,6 @@ class ContactView : Composite<Div>() {
     init {
         boundComponent = div {
             styles["max-width"] = "400px"
-            styles["margin"] = "40px auto"
             styles["padding"] = "20px"
 
             h2("Contact Us")
@@ -220,13 +196,10 @@ class ContactView : Composite<Div>() {
 
             val emailField = textField("Email", placeholder = "you@example.com") {
                 styles["width"] = "100%"
-                styles["margin-bottom"] = "16px"
             }
 
             val messageField = textArea("Message", placeholder = "How can we help?") {
                 styles["width"] = "100%"
-                styles["min-height"] = "120px"
-                styles["margin-bottom"] = "16px"
             }
 
             button("Send Message") {
@@ -235,9 +208,9 @@ class ContactView : Composite<Div>() {
 
                 onClick {
                     submitForm(
-                        name = nameField.text,
-                        email = emailField.text,
-                        message = messageField.text
+                        name = nameField.text ?: "",
+                        email = emailField.text ?: "",
+                        message = messageField.text ?: ""
                     )
                 }
             }

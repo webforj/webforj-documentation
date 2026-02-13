@@ -13,23 +13,53 @@ hide_giscus_comments: true
   `}</style>
 </Head>
 
-webforJ provides a Kotlin DSL that lets you build UIs with concise, type-safe syntax. Instead of chaining method calls or nesting constructors, you write declarative code that reads like a description of your UI structure.
+webforJ provides a Kotlin *Domain Specific Language*, or DSL, that lets you build UIs with concise, type-safe syntax. Instead of imperative Java code, you write declarative code that reads like a description *of your UI structure.
 
-```kotlin
-div {
-    h1("Welcome")
-    paragraph("Build UIs with clean, readable Kotlin code.")
-    button("Get Started") {
-        onClick { navigateTo("/dashboard") }
+```java title="Java"
+FlexLayout layout = new FlexLayout();
+layout.setDirection(FlexDirection.COLUMN);
+layout.setSpacing("10px");
+
+TextField name = new TextField();
+name.setLabel("Name");
+name.setPlaceholder("Your name");
+layout.add(name);
+
+Button submit = new Button("Submit", ButtonTheme.PRIMARY);
+submit.onClick(e -> handleSubmit());
+layout.add(submit);
+```
+
+```kotlin title="Kotlin DSL"
+flexLayout {
+    direction = FlexDirection.COLUMN
+    styles["gap"] = "10px"
+
+    textField("Name", placeholder = "Your name")
+    button("Submit", ButtonTheme.PRIMARY) {
+        onClick { handleSubmit() }
     }
 }
 ```
 
-The DSL uses Kotlin's language features - extension functions, lambdas with receivers, and default parameters - to create a natural builder syntax. Components nest inside each other, configuration happens in blocks, and the compiler catches structural mistakes before runtime.
+The DSL uses Kotlin's language features such as extension functions, lambdas with receivers, and default parameters to create a natural builder syntax. Components nest inside each other, configuration happens in blocks, and the compiler catches structural mistakes before runtime.
+
+{/* TODO: Add setup/dependency section once webforj-kotlin is merged and coordinates are finalized. Should cover: Maven/Gradle dependency, required Kotlin version, kotlin-maven-plugin config. */}
+
+:::tip[Java interoperability]
+Kotlin compiles to JVM bytecode, so it works alongside existing Java code. You can use DSL-built Kotlin composites from Java classes, nest standard Java components inside DSL blocks with `add()`, and mix Kotlin and Java files in the same project.
+:::
+
+## Topics {#topics}
+
+The following topics cover using the DSL, as well as extending it to any custom components or composites you create.
+
+<DocCardList className="topics-section" />
 
 ## Kotlin for Java developers {#kotlin-for-java-developers}
 
-If you're coming from Java, here are the key Kotlin features the DSL relies on.
+<details>
+<summary>New to Kotlin? Here are some of the key language features the DSL relies on.</summary>
 
 ### Null safety {#null-safety}
 
@@ -105,8 +135,4 @@ fun button(
 ): Button
 ```
 
-## Topics {#topics}
-
-The following topics cover using the DSL, as well as extending it to any custom components or composites you create.
-
-<DocCardList className="topics-section" />
+</details>
