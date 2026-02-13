@@ -42,6 +42,27 @@ class AppLayoutMultipleHeadersKotlinView: Composite<AppLayout>() {
           start { appDrawerToggle() }
           title { h3("Application") }
         }
+        toolbar {
+          isCompact = true
+          start {
+            tabbedPane {
+              isBorderless = true
+              isBodyHidden = true
+              tab("Sales") {
+                prefix { tabbedPane("report-money") }
+              }
+              tab("Enterprise") {
+                prefix { tabbedPane("building") }
+              }
+              tab("Payments") {
+                prefix { tabbedPane("credit-card") }
+              }
+              tab("History") {
+                prefix { tabbedPane("history") }
+              }
+            }
+          }
+        }
       }
       drawer {
         div {
@@ -68,29 +89,6 @@ class AppLayoutMultipleHeadersKotlinView: Composite<AppLayout>() {
             }
             appNavItem("Analytics", view = AppLayoutMultipleHeaderContentKotlinView::class, routeParameters = ParametersBag.of("name=Analytics")) {
               prefix { tablerIcon("chart-dots-2") }
-            }
-          }
-        }
-      }
-      header {
-        toolbar {
-          isCompact = true
-          start {
-            tabbedPane {
-              isBorderless = true
-              isBodyHidden = true
-              tab("Sales") {
-                prefix { tabbedPane("report-money") }
-              }
-              tab("Enterprise") {
-                prefix { tabbedPane("building") }
-              }
-              tab("Payments") {
-                prefix { tabbedPane("credit-card") }
-              }
-              tab("History") {
-                prefix { tabbedPane("history") }
-              }
             }
           }
         }
