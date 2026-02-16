@@ -18,39 +18,40 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Busy Basics")
 public class BusyDemoView extends Composite<FlexLayout> {
-
-  TextField nameField;
-  TextField emailField;
-  Button submitButton;
-  BusyIndicator busyIndicator;
+  private FlexLayout self = getBoundComponent();
+  private TextField nameField;
+  private TextField emailField;
+  private Button submitButton;
+  private BusyIndicator busyIndicator;
 
   public BusyDemoView() {
-    getBoundComponent().setJustifyContent(FlexJustifyContent.CENTER)
-        .setMargin("var(--dwc-space-l)");
-    
-    nameField = new TextField("Name").setWidth("500px");
-    
-    emailField = new TextField("Email").setWidth("500px");
-    
+    nameField = new TextField("Name")
+            .setWidth("500px");
+
+    emailField = new TextField("Email")
+            .setWidth("500px");
+
     submitButton = new Button("Submit", e -> showBusyIndicator())
-        .setTheme(ButtonTheme.PRIMARY);
-    
-    busyIndicator = App.getBusyIndicator();
+            .setTheme(ButtonTheme.PRIMARY);
 
     FlexLayout form = FlexLayout.create(nameField, emailField, submitButton)
-        .vertical()
-        .build();
-   
-    getBoundComponent().add(form);
+            .vertical()
+            .build();
 
+    self.setJustifyContent(FlexJustifyContent.CENTER)
+            .setMargin("var(--dwc-space-l)")
+            .add(form);
+
+    busyIndicator = App.getBusyIndicator();
     showBusyIndicator();
   }
 
   private void showBusyIndicator() {
     busyIndicator.setText("Submitting form... Please wait.")
-        .setBackdropVisible(true);
-    busyIndicator.getSpinner().setTheme(Theme.PRIMARY);
-    busyIndicator.open();
+            .setBackdropVisible(true)
+            .open()
+            .getSpinner()
+            .setTheme(Theme.PRIMARY);
   }
 }
 
