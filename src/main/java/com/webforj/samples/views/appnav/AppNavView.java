@@ -15,7 +15,9 @@ import com.webforj.router.history.ParametersBag;
 
 @Route
 public class AppNavView extends Composite<AppLayout> {
- private AppLayout self = getBoundComponent();
+  private AppLayout self = getBoundComponent();
+  private Toolbar toolbar = new Toolbar();
+  private AppNav appNav = new AppNav();
 
   public AppNavView() {
     setHeader();
@@ -23,45 +25,43 @@ public class AppNavView extends Composite<AppLayout> {
   }
 
   private void setHeader() {
-    self.setHeaderOffscreen(false);
-    self.setDrawerHeaderVisible(true);
+    self.setHeaderOffscreen(false)
+            .setDrawerHeaderVisible(true)
+            .addToHeader(toolbar);
 
-    Toolbar toolbar = new Toolbar();
-    toolbar.setTheme(Theme.PRIMARY);
-    toolbar.addToStart(new AppDrawerToggle());
-    toolbar.addToTitle(new H1("Application"));
-
-    self.addToHeader(toolbar);
+    toolbar.setTheme(Theme.PRIMARY)
+            .addToStart(new AppDrawerToggle())
+            .addToTitle(new H1("Application"));
   }
 
   private void setDrawer() {
-
-    AppNav appNav = new AppNav();
-    appNav.setAutoOpen(true);
-
-    AppNavItem inbox = new AppNavItem("Inbox");
-    inbox.setPrefixComponent(TablerIcon.create("inbox"));
-    inbox.setSuffixComponent(new Strong("54"));
-    inbox.addItem(new AppNavItem("Primary", AppNavPageView.class, ParametersBag.of("id=Primary"), TablerIcon.create("mailbox")));
-    inbox.addItem(new AppNavItem("Promotions", AppNavPageView.class, ParametersBag.of("id=Promotions"), TablerIcon.create("tag")));
-    inbox.addItem(new AppNavItem("Social", AppNavPageView.class, ParametersBag.of("id=Social"), TablerIcon.create("users")));
-    inbox.addItem(new AppNavItem("Updates", AppNavPageView.class, ParametersBag.of("id=Updates"), TablerIcon.create("bell")));
-    inbox.addItem(new AppNavItem("Forums", AppNavPageView.class, ParametersBag.of("id=Forums"), TablerIcon.create("message-circle")));
-
-    appNav.addItem(inbox);
-    appNav.addItem(new AppNavItem("Sent", AppNavPageView.class, ParametersBag.of("id=Sent"), TablerIcon.create("send")));
-    appNav.addItem(new AppNavItem("Archived", AppNavPageView.class, ParametersBag.of("id=Archived"), TablerIcon.create("archive")));
-    appNav.addItem(new AppNavItem("Trash", AppNavPageView.class, ParametersBag.of("id=Trash"), TablerIcon.create("trash")));
-    appNav.addItem(new AppNavItem("Spam", AppNavPageView.class, ParametersBag.of("id=Spam"), TablerIcon.create("alert-hexagon")));
-
-    AppNavItem about = new AppNavItem("About");
-    about.setPrefixComponent(TablerIcon.create("info-circle"));
-
-    about.addItem(new AppNavItem("webforJ", "https://webforj.com/", TablerIcon.create("external-link")));
-    about.addItem(new AppNavItem("GitHub", "https://github.com/webforj/webforj", TablerIcon.create("brand-github")));
-    about.addItem(new AppNavItem("Documentation", "https://documentation.webforj.com/", TablerIcon.create("book")));
-
-    appNav.addItem(about);
     self.addToDrawer(appNav);
+
+    AppNavItem inbox = new AppNavItem("Inbox")
+            .setPrefixComponent(TablerIcon.create("inbox"))
+            .setSuffixComponent(new Strong("54"))
+            .addItem(createItem("Primary", "mailbox"))
+            .addItem(createItem("Promotions", "tag"))
+            .addItem(createItem("Social", "users"))
+            .addItem(createItem("Updates", "bell"))
+            .addItem(createItem("Forums", "message-circle"));
+
+    AppNavItem about = new AppNavItem("About")
+            .setPrefixComponent(TablerIcon.create("info-circle"))
+            .addItem(new AppNavItem("webforJ", "https://webforj.com/", TablerIcon.create("external-link")))
+            .addItem(new AppNavItem("GitHub", "https://github.com/webforj/webforj", TablerIcon.create("brand-github")))
+            .addItem(new AppNavItem("Documentation", "https://documentation.webforj.com/", TablerIcon.create("book")));
+
+    appNav.setAutoOpen(true)
+            .addItem(inbox)
+            .addItem(createItem("Sent", "send"))
+            .addItem(createItem("Archived", "archive"))
+            .addItem(createItem("Trash", "trash"))
+            .addItem(createItem("Spam", "alert-hexagon"))
+            .addItem(about);
+  }
+
+  private AppNavItem createItem(String text, String icon) {
+    return new AppNavItem(text, AppNavPageView.class, ParametersBag.of("id=" + text), TablerIcon.create(icon));
   }
 }
