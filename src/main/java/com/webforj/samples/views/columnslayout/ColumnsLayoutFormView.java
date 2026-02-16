@@ -17,39 +17,40 @@ import java.util.ArrayList;
 @Route
 @FrameTitle("Columns Layout Form")
 public class ColumnsLayoutFormView extends Composite<Div> {
-  TextField firstName = new TextField("First Name");
-  TextField lastName = new TextField("Last Name");
-  TextField email = new TextField("Email");
-  PasswordField password = new PasswordField("Password");
-  PasswordField passwordConfirm = new PasswordField("Confirm Password");
-  TextField address = new TextField("Address");
-  ChoiceBox states = new ChoiceBox("State");
-  TextField zip = new TextField("Zip");
-  Button submit = new Button("Submit", ButtonTheme.PRIMARY);
-  Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY);
-  ColumnsLayout columnsLayout = new ColumnsLayout(
-      firstName, lastName,
-      email,
-      password, passwordConfirm,
-      address,
-      states, zip,
-      cancel, submit);
+  private Div self = getBoundComponent();
+  private TextField firstName = new TextField("First Name");
+  private TextField lastName = new TextField("Last Name");
+  private TextField email = new TextField("Email");
+  private PasswordField password = new PasswordField("Password");
+  private PasswordField passwordConfirm = new PasswordField("Confirm Password");
+  private TextField address = new TextField("Address");
+  private ChoiceBox states = new ChoiceBox("State");
+  private TextField zip = new TextField("Zip");
+  private Button submit = new Button("Submit", ButtonTheme.PRIMARY);
+  private Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY);
+  private ColumnsLayout columnsLayout = new ColumnsLayout(
+          firstName, lastName,
+          email,
+          password, passwordConfirm,
+          address,
+          states, zip,
+          cancel, submit);
 
   public ColumnsLayoutFormView() {
     populateStates();
 
-    columnsLayout.setSpan(email, 2);
-    columnsLayout.setSpan(address, 2);
-    columnsLayout.setStyle("padding", "var(--dwc-space-xl)");
+    columnsLayout.setSpan(email, 2)
+            .setSpan(address, 2)
+            .setStyle("padding", "var(--dwc-space-xl)");
 
     submit.setStyle("margin-top", "var(--dwc-space-l)");
     cancel.setStyle("margin-top", "var(--dwc-space-l)");
 
-    getBoundComponent().setMaxWidth("600px");
-    getBoundComponent().setStyle("margin", "0 auto");
-    getBoundComponent().setStyle("overflow", "auto");
-    getBoundComponent().setStyle("height", "100dvh");
-    getBoundComponent().add(columnsLayout);
+    self.setMaxWidth("600px")
+            .setStyle("margin", "0 auto")
+            .setStyle("overflow", "auto")
+            .setStyle("height", "100dvh")
+            .add(columnsLayout);
   }
 
   private void populateStates() {
