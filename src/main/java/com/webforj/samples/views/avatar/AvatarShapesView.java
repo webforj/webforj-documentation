@@ -12,7 +12,7 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Avatar Shapes")
 public class AvatarShapesView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
+  private FlexLayout self = getBoundComponent();
 
   public AvatarShapesView() {
     self.setSpacing("var(--dwc-space-l)")

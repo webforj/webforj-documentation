@@ -12,9 +12,9 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Avatar Themes")
 public class AvatarThemesView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
-  FlexLayout filled = new FlexLayout();
-  FlexLayout outlined = new FlexLayout();
+  private FlexLayout self = getBoundComponent();
+  private FlexLayout filled = new FlexLayout();
+  private FlexLayout outlined = new FlexLayout();
 
   public AvatarThemesView() {
     self.setDirection(FlexDirection.COLUMN)
