@@ -13,53 +13,51 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Button Themes")
 public class ButtonThemesView extends Composite<FlexLayout> {
-  
-  FlexLayout layout = getBoundComponent();
-  Div scrollWrapper = new Div();
+  private FlexLayout self = getBoundComponent();
+  private Div scrollWrapper = new Div();
 
   public ButtonThemesView() {
-    layout.setDirection(FlexDirection.COLUMN)
-          .setSpacing("var(--dwc-space-l)")
-          .setMargin("var(--dwc-space-l)");
+    self.setDirection(FlexDirection.COLUMN)
+            .setSpacing("var(--dwc-space-l)")
+            .setMargin("var(--dwc-space-l)")
+            .add(scrollWrapper);
 
-    scrollWrapper.setStyle("overflow-x", "auto");
-    scrollWrapper.setStyle("white-space", "nowrap");
-    scrollWrapper.setStyle("margin","var(--dwc-space-l)");
-    
-    FlexLayout scrollContent = new FlexLayout();
-    scrollContent.setDirection(FlexDirection.COLUMN)
-                 .setSpacing("var(--dwc-space-l)")
-                 .setWrap(FlexWrap.NOWRAP);
+    scrollWrapper.setStyle("overflow-x", "auto")
+            .setStyle("white-space", "nowrap")
+            .setStyle("margin", "var(--dwc-space-l)");
 
-    FlexLayout solidRow = new FlexLayout();
-    solidRow.setDirection(FlexDirection.ROW)
+    FlexLayout solidRow = new FlexLayout()
+            .setDirection(FlexDirection.ROW)
             .setWrap(FlexWrap.NOWRAP)
             .setSpacing("var(--dwc-space-s)");
 
-    FlexLayout outlinedRow = new FlexLayout();
-    outlinedRow.setDirection(FlexDirection.ROW)
-               .setWrap(FlexWrap.NOWRAP)
-               .setSpacing("var(--dwc-space-s)")
-               .setStyle("margin-bottom","var(--dwc-space-l)");
+    FlexLayout outlinedRow = new FlexLayout()
+            .setDirection(FlexDirection.ROW)
+            .setWrap(FlexWrap.NOWRAP)
+            .setSpacing("var(--dwc-space-s)")
+            .setStyle("margin-bottom", "var(--dwc-space-l)");
 
     for (ButtonTheme theme : ButtonTheme.values()) {
-      if (!theme.name().contains("OUTLINE")) {
-        Button solid = new Button(theme.name(), theme)
-            .setMinWidth("200px")
-            .setMaxWidth("200px");
-        solidRow.add(solid);
-
-        Button outlined = new Button("OUTLINED_" + theme.name(),
-            ButtonTheme.valueOf("OUTLINED_" + theme.name()))
-            .setMinWidth("200px")
-            .setMaxWidth("200px");
-        outlinedRow.add(outlined);
+      if (theme.name().startsWith("OUTLINE")) {
+        outlinedRow.add(new Button(theme.name(), theme)
+                .setMinWidth("200px")
+                .setMaxWidth("200px")
+        );
+      } else {
+        solidRow.add(
+                new Button(theme.name(), theme)
+                        .setMinWidth("200px")
+                        .setMaxWidth("200px")
+        );
       }
     }
 
-    scrollContent.add(solidRow, outlinedRow);
-    scrollWrapper.add(scrollContent);
+    FlexLayout scrollContent = FlexLayout.create(solidRow, outlinedRow)
+            .vertical()
+            .nowrap()
+            .build()
+            .setSpacing("var(--dwc-space-l)");
 
-    layout.add(scrollWrapper);
+    scrollWrapper.add(scrollContent);
   }
 }
