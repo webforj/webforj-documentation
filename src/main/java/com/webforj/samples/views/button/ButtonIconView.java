@@ -15,31 +15,26 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Button Icon")
 public class ButtonIconView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
-  Button notifications;
-  Button link;
-  Button imgButton;
-  Icon notificationsIcon;
-  Icon settingsIcon;
-  Icon linkIcon;
-  Img imgIcon;
+  private FlexLayout self = getBoundComponent();
+  private Button notifications;
+  private Button link;
+  private Button imgButton;
 
   public ButtonIconView() {
-    self.setSpacing("var(--dwc-space-l)").setMargin("var(--dwc-space-l)").setStyle("flex-wrap", "wrap")
-        .setWidth("100%");
+    self.setSpacing("var(--dwc-space-l)")
+            .setMargin("var(--dwc-space-l)")
+            .setStyle("flex-wrap", "wrap")
+            .setWidth("100%")
+            .add(notifications, link, imgButton);
 
-    notificationsIcon = TablerIcon.create("bell");
-    notifications = new Button("Notifications");
-    notifications.setPrefixComponent(notificationsIcon);
+    notifications = new Button("Notifications")
+            .setPrefixComponent(TablerIcon.create("bell"));
 
-    linkIcon = TablerIcon.create("external-link");
-    link = new Button("Search");
-    link.setSuffixComponent(linkIcon);
+    link = new Button("Search")
+            .setSuffixComponent(TablerIcon.create("external-link"));
 
-    imgIcon = new Img("https://documentation.webforj.com/img/webforj.svg");
-    imgIcon.setSize("100px", "30px");
+    Img imgIcon = new Img("https://documentation.webforj.com/img/webforj.svg")
+            .setSize("100px", "30px");
     imgButton = new Button(imgIcon);
-
-    self.add(notifications, link, imgButton);
   }
 }
