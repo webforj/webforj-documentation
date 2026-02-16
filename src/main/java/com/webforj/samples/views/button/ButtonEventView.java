@@ -12,28 +12,27 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Button Event")
 public class ButtonEventView extends Composite<FlexLayout> {
-
-  int counter = 0;
-  Div text = new Div("Current Counter: 0");
-  Div payload = new Div("Event Payload: null");
+  private FlexLayout self = getBoundComponent();
+  private int counter = 0;
+  private Div text = new Div("Current Counter: 0");
+  private Div payload = new Div("Event Payload: null");
+  private Button button = new Button("Click Me!");
 
   public ButtonEventView() {
-    getBoundComponent().setDirection(FlexDirection.ROW).setSpacing("var(--dwc-space-l)")
-        .setPadding("var(--dwc-space-l)");
+    button.setWidth("150px")
+            .onClick(e -> {
+              text.setText("Current Counter: " + (++counter));
+              payload.setText("Event payload: " + e.getData());
+            });
 
-    Button button = new Button("Click Me!");
-    button.setWidth("150px");
+    FlexLayout textDisplay = FlexLayout.create(text, payload)
+            .vertical()
+            .build()
+            .setSpacing("0px");
 
-    FlexLayout textDisplay = new FlexLayoutBuilder(text, payload)
-        .vertical()
-        .build()
-        .setSpacing("0px");
-
-    button.addClickListener(e -> {
-      text.setText("Current Counter: " + (++counter));
-      payload.setText("Event payload: " + e.getData().toString());
-    });
-
-    getBoundComponent().add(button, textDisplay);
+    self.setDirection(FlexDirection.ROW)
+            .setSpacing("var(--dwc-space-l)")
+            .setPadding("var(--dwc-space-l)")
+            .add(button, textDisplay);
   }
 }
