@@ -1,6 +1,9 @@
 package com.webforj.samples.views.button;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
+
 import com.webforj.component.Composite;
 import com.webforj.component.Expanse;
 import com.webforj.component.button.Button;
@@ -16,33 +19,31 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Button Expanses")
 public class ButtonExpansesView extends Composite<FlexLayout> {
-	
-  ChoiceBox expanses = new ChoiceBox();
-  Button demoButton = new Button("None");
-	
+  private FlexLayout self = getBoundComponent();
+  private ChoiceBox expanses = new ChoiceBox();
+  private Button demoButton = new Button("None");
+
   public ButtonExpansesView() {
-    getBoundComponent().setSpacing("var(--dwc-space-l)")
-    .setMargin("var(--dwc-space-l)");
-    
-    ArrayList<ListItem> categories = new ArrayList<>();
-    categories.add(new ListItem("XSMALL", "XSMALL"));
-    categories.add(new ListItem("SMALL", "SMALL"));
-    categories.add(new ListItem("MEDIUM", "MEDIUM"));
-    categories.add(new ListItem("LARGE", "LARGE"));
-    categories.add(new ListItem("XLARGE", "XLARGE"));
+    self.setSpacing("var(--dwc-space-l)")
+            .setMargin("var(--dwc-space-l)")
+            .add(expanses, demoButton);
 
-    expanses.insert(categories).selectIndex(0);
-    expanses.setWidth("100px");
+    List<ListItem> categories = Arrays.asList(Expanse.values())
+            .reversed()
+            .stream()
+            .filter(Predicate.not(Predicate.isEqual(Expanse.NONE)))
+            .map(expanse -> new ListItem(expanse, expanse.name()))
+            .toList();
 
-    expanses.addSelectListener(event -> {
-      String selectedValue = (String) expanses.getValue();
-        if (selectedValue != null) {
-            demoButton.setExpanse(Expanse.valueOf(selectedValue));
-            demoButton.setText(selectedValue);
-        }
-    });
-
-    getBoundComponent().add(expanses, demoButton);
-   
+    expanses.insert(categories)
+            .selectIndex(0)
+            .setWidth("100px")
+            .addSelectListener(event -> {
+              Expanse selectedValue = (Expanse) expanses.getSelectedKey();
+              if (selectedValue != null) {
+                demoButton.setExpanse(selectedValue);
+                demoButton.setText(selectedValue.name());
+              }
+            });
   }
 }
