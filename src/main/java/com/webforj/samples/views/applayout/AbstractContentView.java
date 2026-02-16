@@ -11,11 +11,12 @@ import com.webforj.router.history.ParametersBag;
 public abstract class AbstractContentView extends Composite<Div> {
   private final Div self = getBoundComponent();
   protected String name;
-  protected Paragraph contentLabel = new Paragraph("Loading content...");
+  protected Paragraph contentLabel;
 
   public AbstractContentView() {
     self.add(new H1("Application Title"), contentLabel);
     Router.getCurrent().onNavigate(this::onNavigate);
+    contentLabel = new Paragraph("Loading content...");
   }
 
   private void onNavigate(NavigateEvent ev) {

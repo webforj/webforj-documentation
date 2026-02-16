@@ -13,14 +13,15 @@ import com.webforj.component.layout.toolbar.Toolbar;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
+import com.webforj.samples.views.applayout.applayoutdrawerutility.AppLayoutDrawerUtilityContentView;
 
 @Route
 @StyleSheet("ws://css/applayout/applayout.css")
 @FrameTitle("AppLayout Full Navbar")
 public class AppLayoutFullNavbarView extends Composite<AppLayout> {
-
-  AppLayout self = getBoundComponent();
-  Toolbar header = new Toolbar();
+  private AppLayout self = getBoundComponent();
+  private Toolbar header = new Toolbar();
+  private AppNav drawerMenu = new AppNav();
 
   public AppLayoutFullNavbarView() {
     self.setDrawerHeaderVisible(false);
@@ -32,7 +33,6 @@ public class AppLayoutFullNavbarView extends Composite<AppLayout> {
     self.setHeaderOffscreen(false);
 
     // Drawer's Menu
-    AppNav drawerMenu = new AppNav();
     self.addToDrawer(drawerMenu);
 
     // Adding tabs to drawer menu
@@ -44,26 +44,18 @@ public class AppLayoutFullNavbarView extends Composite<AppLayout> {
     Icon tasksIcon = TablerIcon.create("checklist");
     Icon analyticsIcon = TablerIcon.create("chart-dots-2");
 
-    drawerMenu.addItem(
-        new AppNavItem("Dashboard", AppLayoutFullNavbarContentView.class, ParametersBag.of("name=Dashboard"),
-            dashboardIcon));
-    drawerMenu
-        .addItem(new AppNavItem("Orders", AppLayoutFullNavbarContentView.class, ParametersBag.of("name=Orders"),
-            ordersIcon));
-    drawerMenu.addItem(
-        new AppNavItem("Customers", AppLayoutFullNavbarContentView.class, ParametersBag.of("name=Customers"),
-            customersIcon));
-    drawerMenu.addItem(
-        new AppNavItem("Products", AppLayoutFullNavbarContentView.class, ParametersBag.of("name=Products"),
-            productsIcon));
-    drawerMenu.addItem(
-        new AppNavItem("Documents", AppLayoutFullNavbarContentView.class, ParametersBag.of("name=Documents"),
-            documentsIcon));
-    drawerMenu
-        .addItem(
-            new AppNavItem("Tasks", AppLayoutFullNavbarContentView.class, ParametersBag.of("name=Tasks"), tasksIcon));
-    drawerMenu.addItem(
-        new AppNavItem("Analytics", AppLayoutFullNavbarContentView.class, ParametersBag.of("name=Analytics"),
-            analyticsIcon));
+
+    drawerMenu.addItem(createItem("Dashboard", dashboardIcon))
+            .addItem(createItem("Orders", ordersIcon))
+            .addItem(createItem("Customers", customersIcon))
+            .addItem(createItem("Products", productsIcon))
+            .addItem(createItem("Documents", documentsIcon))
+            .addItem(createItem("Tasks", tasksIcon))
+            .addItem(createItem("Analytics", analyticsIcon));
+
+  }
+
+  private AppNavItem createItem(String text, Icon icon) {
+    return new AppNavItem(text, AppLayoutFullNavbarContentView.class, ParametersBag.of("name=" + text), icon);
   }
 }

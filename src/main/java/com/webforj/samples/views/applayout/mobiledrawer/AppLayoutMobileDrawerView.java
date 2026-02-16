@@ -23,19 +23,22 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
 import com.webforj.samples.views.applayout.DrawerLogo;
+import com.webforj.samples.views.applayout.fullnavbar.AppLayoutFullNavbarContentView;
 
 @Route
 @StyleSheet("ws://css/applayout/applayout.css")
 @FrameTitle("AppLayout Mobile Drawer")
 public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
-  AppLayout self = getBoundComponent();
-  Toolbar header = new Toolbar();
-  Div drawer = new Div();
+  private AppLayout self = getBoundComponent();
+  private Toolbar header = new Toolbar();
+  private Div drawer = new Div();
+  private AppNav drawerMenu = new AppNav();
+  private TabbedPane footerMenu = new TabbedPane();
 
   public AppLayoutMobileDrawerView() {
     // Header
     header.addToStart(new AppDrawerToggle())
-        .addToTitle(new H3("Application"));
+            .addToTitle(new H3("Application"));
 
     self.addToHeader(header);
     self.setHeaderReveal(true);
@@ -44,12 +47,8 @@ public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
     self.addToDrawer(drawer);
     drawer.addClassName("app-layout-drawer");
 
-    // Drawer's logo container and logo
-    drawer.add(new DrawerLogo());
-
     // Drawer's Menu
-    AppNav drawerMenu = new AppNav();
-    drawer.add(drawerMenu);
+    drawer.add(new DrawerLogo(), drawerMenu);
 
     // Adding tabs to drawer menu
     Icon dashboardIcon = TablerIcon.create("dashboard");
@@ -60,48 +59,41 @@ public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
     Icon tasksIcon = TablerIcon.create("checklist");
     Icon analyticsIcon = TablerIcon.create("chart-dots-2");
 
-    drawerMenu.addItem(
-        new AppNavItem("Dashboard", AppLayoutMobileDrawerContentView.class, ParametersBag.of("name=Dashboard"),
-            dashboardIcon));
-    drawerMenu
-        .addItem(new AppNavItem("Orders", AppLayoutMobileDrawerContentView.class, ParametersBag.of("name=Orders"),
-            ordersIcon));
-    drawerMenu.addItem(
-        new AppNavItem("Customers", AppLayoutMobileDrawerContentView.class, ParametersBag.of("name=Customers"),
-            customersIcon));
-    drawerMenu.addItem(
-        new AppNavItem("Products", AppLayoutMobileDrawerContentView.class, ParametersBag.of("name=Products"),
-            productsIcon));
-    drawerMenu.addItem(
-        new AppNavItem("Documents", AppLayoutMobileDrawerContentView.class, ParametersBag.of("name=Documents"),
-            documentsIcon));
-    drawerMenu
-        .addItem(
-            new AppNavItem("Tasks", AppLayoutMobileDrawerContentView.class, ParametersBag.of("name=Tasks"), tasksIcon));
-    drawerMenu.addItem(
-        new AppNavItem("Analytics", AppLayoutMobileDrawerContentView.class, ParametersBag.of("name=Analytics"),
-            analyticsIcon));
+    drawerMenu.addItem(createItem("Dashboard", dashboardIcon))
+            .addItem(createItem("Orders", ordersIcon))
+            .addItem(createItem("Customers", customersIcon))
+            .addItem(createItem("Products", productsIcon))
+            .addItem(createItem("Documents", documentsIcon))
+            .addItem(createItem("Tasks", tasksIcon))
+            .addItem(createItem("Analytics", analyticsIcon));
 
     // Content
     self.addToContent(
-        new H1("Application Title"),
-        new Paragraph("Content goes here..."));
+                    new H1("Application Title"),
+                    new Paragraph("Content goes here..."))
+            .addToFooter(footerMenu)
+            .setFooterReveal(true);
 
-    TabbedPane footerMenu = new TabbedPane();
-    self.addToFooter(footerMenu);
-    self.setFooterReveal(true);
-
-    footerMenu.setBodyHidden(true);
-    footerMenu.setBorderless(true);
-    footerMenu.setPlacement(Placement.BOTTOM);
-    footerMenu.setAlignment(Alignment.STRETCH);
-    footerMenu.setExpanse(Expanse.XLARGE);
+    footerMenu.setBodyHidden(true)
+            .setBorderless(true)
+            .setPlacement(Placement.BOTTOM)
+            .setAlignment(Alignment.STRETCH)
+            .setExpanse(Expanse.XLARGE);
 
     // Adding tabs to drawer menu
-    footerMenu.addTab(new Tab("", new IconButton(TablerIcon.create("dashboard"))));
-    footerMenu.addTab(new Tab("", new IconButton(TablerIcon.create("shopping-cart"))));
-    footerMenu.addTab(new Tab("", new IconButton(TablerIcon.create("users"))));
-    footerMenu.addTab(new Tab("", new IconButton(TablerIcon.create("box"))));
-    footerMenu.addTab(new Tab("", new IconButton(TablerIcon.create("files"))));
-}
+    footerMenu.addTab(createTab("dashboard"));
+    footerMenu.addTab(createTab("shopping-card"));
+    footerMenu.addTab(createTab("users"));
+    footerMenu.addTab(createTab("box"));
+    footerMenu.addTab(createTab("files"));
+  }
+
+
+  private AppNavItem createItem(String text, Icon icon) {
+    return new AppNavItem(text, AppLayoutFullNavbarContentView.class, ParametersBag.of("name=" + text), icon);
+  }
+
+  private Tab createTab(String icon) {
+    return new Tab("", new IconButton(TablerIcon.create(icon)));
+  }
 }
