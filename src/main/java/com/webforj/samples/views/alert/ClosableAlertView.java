@@ -16,31 +16,28 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Closable Alert")
 public class ClosableAlertView extends Composite<FlexLayout> {
+  private FlexLayout self = getBoundComponent();
+  private Alert alert = new Alert("Heads up! This alert can be dismissed.");
+  private Button reopenButton = new Button("Show Alert");
 
   public ClosableAlertView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN)
-          .setSpacing("var(--dwc-space-m)")
-          .setAlignment(FlexAlignment.CENTER)
-          .setJustifyContent(FlexJustifyContent.CENTER)
-          .setMargin("var(--dwc-space-l)");
+    self.setDirection(FlexDirection.COLUMN)
+            .setSpacing("var(--dwc-space-m)")
+            .setAlignment(FlexAlignment.CENTER)
+            .setJustifyContent(FlexJustifyContent.CENTER)
+            .setMargin("var(--dwc-space-l)")
+            .add(alert, reopenButton);
 
-    Alert alert = new Alert("Heads up! This alert can be dismissed.")
-        .setTheme(Theme.INFO)
-        .setClosable(true)
-        .setMaxWidth("400px");
+    alert.setTheme(Theme.INFO)
+            .setClosable(true)
+            .setMaxWidth("400px")
+            .onClose(e -> reopenButton.setVisible(true));
 
-    Button reopenButton = new Button("Show Alert");
-    reopenButton.setTheme(ButtonTheme.PRIMARY);
-    reopenButton.setVisible(false);
-
-    alert.onClose((AlertCloseEvent e) -> reopenButton.setVisible(true));
-
-    reopenButton.addClickListener(e -> {
-      alert.open();
-      reopenButton.setVisible(false);
-    });
-
-    layout.add(alert, reopenButton);
+    reopenButton.setTheme(ButtonTheme.PRIMARY)
+            .setVisible(false)
+            .onClick(e -> {
+              alert.open();
+              reopenButton.setVisible(false);
+            });
   }
 }

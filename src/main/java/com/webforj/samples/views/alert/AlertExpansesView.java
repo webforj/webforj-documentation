@@ -17,29 +17,31 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Alert Expanses")
 public class AlertExpansesView extends Composite<FlexLayout> {
+  FlexLayout self = getBoundComponent();
 
   public AlertExpansesView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN)
+    self.setDirection(FlexDirection.COLUMN)
           .setJustifyContent(FlexJustifyContent.CENTER)
           .setAlignment(FlexAlignment.CENTER)
           .setSpacing("var(--dwc-space-m)")
           .setMargin("var(--dwc-space-xl) auto")
           .setWidth("100%");
 
-    for (int i = Expanse.values().length - 1; i >= 0; i--) {
+    Expanse[] expanses = Expanse.values();
+    for (int i = expanses.length - 1; i >= 0; i--) {
       Icon icon = TablerIcon.create("alert-square-rounded");
-      Paragraph text = new Paragraph("This alert uses the " + Expanse.values()[i].name()
-          + " expanse.");
+      Paragraph text = new Paragraph("This alert uses the " + expanses[i] + " expanse.");
 
       Alert alert = new Alert()
-            .addToContent(FlexLayout.create(icon, text).horizontal().align().center().build())
-            .setExpanse(Expanse.values()[i])
+            .addToContent(FlexLayout.create(icon, text)
+                    .horizontal()
+                    .align().center()
+                    .build())
+            .setExpanse(expanses[i])
             .setClosable(false)
             .setTheme(Theme.SUCCESS)
             .setWidth("380px");
-      layout.add(alert);
-
+      self.add(alert);
     }
   }
 }

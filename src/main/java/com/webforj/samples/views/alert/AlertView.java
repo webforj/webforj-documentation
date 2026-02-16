@@ -16,24 +16,21 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Form Confirmation Alert")
 public class AlertView extends Composite<FlexLayout> {
-
-  private final Alert alert = new Alert()
-      .setTheme(Theme.PRIMARY)
-      .setMaxWidth("500px");
+  private FlexLayout self = getBoundComponent();
+  private Button viewButton = new Button("View", ButtonTheme.PRIMARY);
+  private Alert alert = new Alert();
 
   public AlertView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN)
-          .setSpacing("var(--dwc-space-m)")
-          .setAlignment(FlexAlignment.CENTER)
-          .setJustifyContent(FlexJustifyContent.CENTER)
-          .setMargin("var(--dwc-space-l)");
+    self.setDirection(FlexDirection.COLUMN)
+            .setSpacing("var(--dwc-space-m)")
+            .setAlignment(FlexAlignment.CENTER)
+            .setJustifyContent(FlexJustifyContent.CENTER)
+            .setMargin("var(--dwc-space-l)")
+            .add(alert);
 
-    Button viewButton = new Button("View", ButtonTheme.PRIMARY);
 
-    alert.add(new Paragraph("The requested information is ready to be viewed."));
-    alert.addToContent(viewButton);
-
-    layout.add(alert);
+    alert.setTheme(Theme.PRIMARY)
+            .setMaxWidth("500px")
+            .add(new Paragraph("The requested information is ready to be viewed."), viewButton);
   }
 }
