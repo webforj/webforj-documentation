@@ -13,27 +13,24 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Button Disable")
 public class ButtonDisableView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
-  TextField email = new TextField();
-  Button submit = new Button("Submit", ButtonTheme.PRIMARY);
+  private FlexLayout self = getBoundComponent();
+  private TextField email = new TextField();
 
   public ButtonDisableView() {
-    self.setAlignment(FlexAlignment.END).setMargin("var(--dwc-space-l)").setSpacing("var(--dwc-space-xl)").setStyle(
-        "flex-wrap",
-        "wrap");
-    self.add(email, submit);
-    self.setWidth("100%");
+    Button submit = new Button("Submit", ButtonTheme.PRIMARY)
+            .setEnabled(false);
 
     email.setType(Type.EMAIL)
-        .setLabel("Enter an email")
-        .onModify(e -> {
-          if (e.getText().contains("@")) {
-            submit.setEnabled(true);
-          } else {
-            submit.setEnabled(false);
-          }
-        });
+            .setLabel("Enter an email")
+            .onModify(e -> {
+              submit.setEnabled(e.getText().contains("@"));
+            });
 
-    submit.setEnabled(false);
+    self.setAlignment(FlexAlignment.END)
+            .setMargin("var(--dwc-space-l)")
+            .setSpacing("var(--dwc-space-xl)")
+            .setStyle("flex-wrap", "wrap")
+            .setWidth("100%")
+            .add(email, submit);
   }
 }
