@@ -83,7 +83,7 @@ class SearchBox : Composite<Div>() {
     val searchButton: Button
 
     init {
-        boundComponent = div {
+        boundComponent.apply {
             styles["display"] = "flex"
             styles["gap"] = "8px"
 
@@ -99,10 +99,10 @@ class SearchBox : Composite<Div>() {
 
     fun onSearch(handler: (String) -> Unit) {
         searchButton.onClick {
-            handler(searchField.text ?: "")
+            handler(searchField.text)
         }
         searchField.onEnter {
-            handler(searchField.text ?: "")
+            handler(searchField.text)
         }
     }
 }
@@ -161,7 +161,7 @@ class StatusIndicator : Composite<Div>() {
         }
 
     init {
-        boundComponent = div {
+        boundComponent.apply {
             styles["display"] = "flex"
             styles["align-items"] = "center"
             styles["gap"] = "8px"

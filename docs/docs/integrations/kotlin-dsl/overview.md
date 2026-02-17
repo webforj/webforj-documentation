@@ -44,7 +44,85 @@ flexLayout {
 
 The DSL uses Kotlin's language features such as extension functions, lambdas with receivers, and default parameters to create a natural builder syntax. Components nest inside each other, configuration happens in blocks, and the compiler catches structural mistakes before runtime.
 
-{/* TODO: Add setup/dependency section once webforj-kotlin is merged and coordinates are finalized. Should cover: Maven/Gradle dependency, required Kotlin version, kotlin-maven-plugin config. */}
+## Setup {#setup}
+
+No separate Kotlin installation is required. Maven handles compilation through the Kotlin Maven plugin, so any project that already builds with Maven can add Kotlin support with dependency and plugin configuration alone.
+
+### Dependencies {#dependencies}
+
+Add the webforJ Kotlin DSL module and the Kotlin standard library to your `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>com.webforj.kotlin</groupId>
+    <artifactId>webforj-kotlin</artifactId>
+    <version>${webforj.version}</version>
+</dependency>
+
+<dependency>
+    <groupId>org.jetbrains.kotlin</groupId>
+    <artifactId>kotlin-stdlib-jdk8</artifactId>
+    <version>${kotlin.version}</version>
+</dependency>
+```
+
+If you plan to write tests in Kotlin, also add the Kotlin test dependency. It integrates with JUnit:
+
+```xml
+<dependency>
+    <groupId>org.jetbrains.kotlin</groupId>
+    <artifactId>kotlin-test</artifactId>
+    <version>${kotlin.version}</version>
+    <scope>test</scope>
+</dependency>
+```
+
+### Kotlin Maven plugin {#kotlin-maven-plugin}
+
+Add the Kotlin Maven plugin to compile both your Kotlin and Java sources. The `sourceDirs` configuration below allows Kotlin and Java files to coexist in the same project:
+
+```xml
+<plugin>
+    <groupId>org.jetbrains.kotlin</groupId>
+    <artifactId>kotlin-maven-plugin</artifactId>
+    <version>${kotlin.version}</version>
+    <executions>
+        <execution>
+            <id>compile</id>
+            <phase>compile</phase>
+            <goals>
+                <goal>compile</goal>
+            </goals>
+            <configuration>
+                <sourceDirs>
+                    <sourceDir>src/main/java</sourceDir>
+                    <sourceDir>target/generated-sources/annotations</sourceDir>
+                    <sourceDir>src/main/kotlin</sourceDir>
+                </sourceDirs>
+            </configuration>
+        </execution>
+        <execution>
+            <id>test-compile</id>
+            <phase>test-compile</phase>
+            <goals>
+                <goal>test-compile</goal>
+            </goals>
+            <configuration>
+                <sourceDirs>
+                    <sourceDir>src/test/java</sourceDir>
+                    <sourceDir>target/generated-test-sources/test-annotations</sourceDir>
+                    <sourceDir>src/test/kotlin</sourceDir>
+                </sourceDirs>
+            </configuration>
+        </execution>
+    </executions>
+    <configuration>
+        <jvmTarget>${maven.compiler.target}</jvmTarget>
+    </configuration>
+</plugin>
+```
+
+With these additions, `mvn compile` compiles Kotlin sources alongside Java. Kotlin files can go in `src/main/kotlin` or `src/main/java` — the plugin handles both.
 
 :::tip[Java interoperability]
 Kotlin compiles to JVM bytecode, so it works alongside existing Java code. You can use DSL-built Kotlin composites from Java classes, nest standard Java components inside DSL blocks with `add()`, and mix Kotlin and Java files in the same project.

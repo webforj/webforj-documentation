@@ -18,6 +18,10 @@ div {
     }
 }
 ```
+:::important `Header` and `Footer` methods
+The `header` and `footer` DSL methods were renamed to `nativeHeader` and `nativeFooter` to avoid conflicts with header and footer slots of other components.
+:::
+
 :::important Using the `Break` component
 One exception: `Break` uses backticks because `break` is a Kotlin keyword:
 
@@ -120,11 +124,11 @@ button("Styled") {
 ```
 
 :::tip[CSS classes]
-For reusable styles, add CSS classes instead of inline styles:
+For reusable styles, add CSS classes instead of inline styles. The `HasClassName` extension allows adding class names with `+=`:
 
 ```kotlin
 button("Primary Action") {
-    addClassName("btn-primary")
+    classNames += "btn-primary"
 }
 ```
 :::
@@ -154,13 +158,13 @@ You've seen configuration blocks used throughout these examples. Most DSL functi
 
 ```kotlin
 // Text parameter for labels/content
-button("Click me") { }
-h1("Page Title") { }
-paragraph("Body text") { }
+button("Click me")
+h1("Page Title")
+paragraph("Body text")
 
 // Label and placeholder for fields
-textField("Username", placeholder = "Enter username") { }
-passwordField("Password", placeholder = "Enter password") { }
+textField("Username", placeholder = "Enter username")
+passwordField("Password", placeholder = "Enter password")
 
 // Value parameters for inputs
 numberField("Quantity", value = 1.0) {
@@ -183,7 +187,7 @@ With these patterns in hand, here's a complete form that brings them together:
 class ContactView : Composite<Div>() {
 
     init {
-        boundComponent = div {
+        boundComponent.apply {
             styles["max-width"] = "400px"
             styles["padding"] = "20px"
 
@@ -208,9 +212,9 @@ class ContactView : Composite<Div>() {
 
                 onClick {
                     submitForm(
-                        name = nameField.text ?: "",
-                        email = emailField.text ?: "",
-                        message = messageField.text ?: ""
+                        name = nameField.text,
+                        email = emailField.text,
+                        message = messageField.text
                     )
                 }
             }
