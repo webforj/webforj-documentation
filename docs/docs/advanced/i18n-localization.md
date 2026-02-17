@@ -41,11 +41,13 @@ greeting=Hallo {0}, Sie haben {1} neue Nachrichten
 
 The resolver delegates to Java's standard [`ResourceBundle`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/ResourceBundle.html) resolution chain, which handles locale matching and fallback automatically.
 
-### Configuring supported locales
+### Configuring supported locales {#configuring-supported-locales}
 
 The `supported-locales` setting tells webforJ which locales your app supports. This list is used by auto-detection to match the user's browser locale against available translations. The first locale in the list is used as the default fallback when no better match is found. The property key is `webforj.i18n.supported-locales` and accepts a list of [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tags, for example `en, de`.
 
+:::info Mopre info
 See the [Configuration](/docs/configuration/properties) section to learn how to set properties for different environments.
+:::
 
 ## The `t()` method {#the-t-method}
 
