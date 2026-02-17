@@ -203,6 +203,11 @@ export default function ComponentDemo({
     // components from scrolling the parent documentation page.
     // The confirmed culprit is scrollIntoViewIfNeeded on DWC-TREE-NODE
     // elements, but we also patch scrollIntoView and focus defensively.
+    //
+    // Known limitation: these patches apply on iframe load, so a demo
+    // component that calls focus() during initialization (before load
+    // fires) can still cause a one-time scroll jump. Avoid calling
+    // focus() in demo view constructors to prevent this.
     try {
       const iframeWindow = iframeRef.current.contentWindow;
 
