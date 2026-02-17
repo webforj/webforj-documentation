@@ -85,7 +85,7 @@ The DSL enforces proper scoping. You can only add children to components that su
 
 ## Scope safety {#scope-safety}
 
-With nested structures, it's easy to accidentally reference the wrong scope. The DSL prevents this automatically — builder functions from outer scopes aren't accessible inside inner blocks:
+With nested structures, it's easy to accidentally reference the wrong scope. The DSL prevents this automatically - builder functions from outer scopes aren't accessible inside inner blocks:
 
 ```kotlin
 div {
@@ -154,7 +154,7 @@ textField("Search") {
 
 ## Common parameters {#common-parameters}
 
-You've seen configuration blocks used throughout these examples. Most DSL functions also accept common parameters before the block for frequently-used options:
+You've seen configuration blocks used throughout these examples. Most DSL functions also accept common parameters before the block for frequently used options:
 
 ```kotlin
 // Text parameter for labels/content
