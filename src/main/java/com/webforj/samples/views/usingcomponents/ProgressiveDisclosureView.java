@@ -31,57 +31,57 @@ public class ProgressiveDisclosureView extends Composite<FlexLayout> {
   private boolean advancedVisible = false;
   
   public ProgressiveDisclosureView() {
-      initializeComponents();
-      setupLayout();
-      setupHandlers();
+    initializeComponents();
+    setupLayout();
+    setupHandlers();
   }
   
   private void initializeComponents() {
-      emailNotifications = new CheckBox("Email notifications");
-      emailNotifications.setValue(true);
+    emailNotifications = new CheckBox("Email notifications");
+    emailNotifications.setValue(true);
       
-      pushNotifications = new CheckBox("Push notifications");
-      pushNotifications.setValue(false);
+    pushNotifications = new CheckBox("Push notifications");
+    pushNotifications.setValue(false);
       
-      marketingEmails = new CheckBox("Marketing emails");
-      marketingEmails.setValue(false);
+    marketingEmails = new CheckBox("Marketing emails");
+    marketingEmails.setValue(false);
       
-      autoSave = new CheckBox("Auto-save changes");
-      autoSave.setValue(true);
+    autoSave = new CheckBox("Auto-save changes");
+    autoSave.setValue(true);
       
-      enableAdvanced = new Button("Show advanced settings");
-      enableAdvanced.setTheme(ButtonTheme.OUTLINED_DEFAULT);
+    enableAdvanced = new Button("Show advanced settings");
+    enableAdvanced.setTheme(ButtonTheme.OUTLINED_DEFAULT);
       
-      advancedSettings = new Div();
-      advancedSettings.addClassName("advanced-settings");
-      advancedSettings.setStyle("display", "none");
+    advancedSettings = new Div();
+    advancedSettings.addClassName("advanced-settings");
+    advancedSettings.setStyle("display", "none");
       
-      CheckBox debugMode = new CheckBox("Debug mode");
-      CheckBox analytics = new CheckBox("Send analytics");
+    CheckBox debugMode = new CheckBox("Debug mode");
+    CheckBox analytics = new CheckBox("Send analytics");
       
-      advancedSettings.add(debugMode, analytics);
+    advancedSettings.add(debugMode, analytics);
       
-      saveButton = new Button("Save Settings", ButtonTheme.PRIMARY);
-      saveButton.setEnabled(false);
+    saveButton = new Button("Save Settings", ButtonTheme.PRIMARY);
+    saveButton.setEnabled(false);
   }
   
   private void setupLayout() {
-      Paragraph title = new Paragraph("Preferences");
-      title.addClassName("settings-title");
-      title.setStyle("font-size", "1.5rem");
-      title.setStyle("font-weight", "600");
+    Paragraph title = new Paragraph("Preferences");
+    title.addClassName("settings-title");
+    title.setStyle("font-size", "1.5rem");
+    title.setStyle("font-weight", "600");
       
-      Paragraph sectionTitle = new Paragraph("Notifications");
-      sectionTitle.addClassName("section-title");
+    Paragraph sectionTitle = new Paragraph("Notifications");
+    sectionTitle.addClassName("section-title");
       
-      Paragraph generalTitle = new Paragraph("General");
-      generalTitle.addClassName("section-title");
+    Paragraph generalTitle = new Paragraph("General");
+    generalTitle.addClassName("section-title");
       
-      FlexLayout form = new FlexLayout();
-      form.setDirection(FlexDirection.COLUMN);
-      form.setSpacing("var(--dwc-space-s)");
-      form.addClassName("settings-card");
-      form.add(
+    FlexLayout form = new FlexLayout();
+    form.setDirection(FlexDirection.COLUMN);
+    form.setSpacing("var(--dwc-space-s)");
+    form.addClassName("settings-card");
+    form.add(
           title,
           sectionTitle,
           emailNotifications,
@@ -92,40 +92,40 @@ public class ProgressiveDisclosureView extends Composite<FlexLayout> {
           enableAdvanced,
           advancedSettings,
           saveButton
-      );
+    );
 
-      enableAdvanced.setStyle("margin-top", "var(--dwc-space-m)");
-      self.setDirection(FlexDirection.COLUMN);
-      self.setAlignment(FlexAlignment.CENTER);
-      self.addClassName("settings-container");
-      self.add(form);
+    enableAdvanced.setStyle("margin-top", "var(--dwc-space-m)");
+    self.setDirection(FlexDirection.COLUMN);
+    self.setAlignment(FlexAlignment.CENTER);
+    self.addClassName("settings-container");
+    self.add(form);
   }
   
   private void setupHandlers() {
-      emailNotifications.addValueChangeListener(e -> enableSaveButton());
-      pushNotifications.addValueChangeListener(e -> enableSaveButton());
-      marketingEmails.addValueChangeListener(e -> enableSaveButton());
-      autoSave.addValueChangeListener(e -> enableSaveButton());
+    emailNotifications.addValueChangeListener(e -> enableSaveButton());
+    pushNotifications.addValueChangeListener(e -> enableSaveButton());
+    marketingEmails.addValueChangeListener(e -> enableSaveButton());
+    autoSave.addValueChangeListener(e -> enableSaveButton());
       
-      enableAdvanced.onClick(event -> {
-          advancedVisible = !advancedVisible;
+    enableAdvanced.onClick(event -> {
+      advancedVisible = !advancedVisible;
           
-          if (advancedVisible) {
-              advancedSettings.setStyle("display", "flex");
-              enableAdvanced.setText("Hide advanced settings");
-          } else {
-              advancedSettings.setStyle("display", "none");
-              enableAdvanced.setText("Show advanced settings");
-          }
+      if (advancedVisible) {
+        advancedSettings.setStyle("display", "flex");
+        enableAdvanced.setText("Hide advanced settings");
+      } else {
+        advancedSettings.setStyle("display", "none");
+        enableAdvanced.setText("Show advanced settings");
+        }
       });
       
-      saveButton.onClick(e -> {
-          Toast.show("Settings saved successfully");
-          saveButton.setEnabled(false);
+    saveButton.onClick(e -> {
+      Toast.show("Settings saved successfully");
+      saveButton.setEnabled(false);
       });
   }
   
   private void enableSaveButton() {
-      saveButton.setEnabled(true);
+    saveButton.setEnabled(true);
   }
 }

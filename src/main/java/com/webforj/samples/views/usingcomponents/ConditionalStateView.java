@@ -10,9 +10,9 @@ import com.webforj.component.field.TextField;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H2;
 import com.webforj.component.html.elements.Paragraph;
-import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
+import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.toast.Toast;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
@@ -22,74 +22,74 @@ import com.webforj.router.annotation.Route;
 @StyleSheet("ws://usingcomponents/conditionalstate.css")
 public class ConditionalStateView extends Composite<FlexLayout> {
 
-    private final FlexLayout self = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
 
-    private TextField usernameField;
-    private PasswordField passwordField;
-    private Button submitButton;
+  private TextField usernameField;
+  private PasswordField passwordField;
+  private Button submitButton;
 
-    public ConditionalStateView() {
-        initializeComponents();
-        setupLayout();
-        setupEventHandlers();
-    }
+  public ConditionalStateView() {
+    initializeComponents();
+    setupLayout();
+    setupEventHandlers();
+  }
 
-    private void initializeComponents() {
-        usernameField = new TextField("Username");
-        usernameField.setExpanse(Expanse.LARGE);
-        usernameField.setPlaceholder("Enter your username");
+  private void initializeComponents() {
+    usernameField = new TextField("Username");
+    usernameField.setExpanse(Expanse.LARGE);
+    usernameField.setPlaceholder("Enter your username");
 
-        passwordField = new PasswordField("Password");
-        passwordField.setExpanse(Expanse.LARGE);
-        passwordField.setPlaceholder("Enter your password");
+    passwordField = new PasswordField("Password");
+    passwordField.setExpanse(Expanse.LARGE);
+    passwordField.setPlaceholder("Enter your password");
 
-        submitButton = new Button("Sign In", ButtonTheme.PRIMARY);
-        submitButton.setExpanse(Expanse.LARGE);
-        submitButton.setVisible(false);
-    }
+    submitButton = new Button("Sign In", ButtonTheme.PRIMARY);
+    submitButton.setExpanse(Expanse.LARGE);
+    submitButton.setVisible(false);
+  }
 
-    private void setupLayout() {
-        Div card = new Div();
-        card.addClassName("conditional-card");
+  private void setupLayout() {
+    Div card = new Div();
+    card.addClassName("conditional-card");
 
-        H2 title = new H2("Welcome Back");
-        title.addClassName("conditional-title");
+    H2 title = new H2("Welcome Back");
+    title.addClassName("conditional-title");
 
-        Paragraph subtitle = new Paragraph("Sign in to your account");
-        subtitle.addClassName("conditional-subtitle");
+    Paragraph subtitle = new Paragraph("Sign in to your account");
+    subtitle.addClassName("conditional-subtitle");
 
-        FlexLayout form = new FlexLayout();
-        form.setDirection(FlexDirection.COLUMN);
-        form.setSpacing("var(--dwc-space-l)");
-        form.add(usernameField, passwordField, submitButton);
+    FlexLayout form = new FlexLayout();
+    form.setDirection(FlexDirection.COLUMN);
+    form.setSpacing("var(--dwc-space-l)");
+    form.add(usernameField, passwordField, submitButton);
 
-        FlexLayout cardContent = new FlexLayout();
-        cardContent.setDirection(FlexDirection.COLUMN);
-        cardContent.add(title, subtitle, form);
+    FlexLayout cardContent = new FlexLayout();
+    cardContent.setDirection(FlexDirection.COLUMN);
+    cardContent.add(title, subtitle, form);
 
-        card.add(cardContent);
+    card.add(cardContent);
 
-        self.setDirection(FlexDirection.COLUMN);
-        self.setAlignment(FlexAlignment.CENTER);
-        self.addClassName("conditional-container");
-        self.add(card);
-    }
+    self.setDirection(FlexDirection.COLUMN);
+    self.setAlignment(FlexAlignment.CENTER);
+    self.addClassName("conditional-container");
+    self.add(card);
+  }
 
-    private void setupEventHandlers() {
-        usernameField.addValueChangeListener(event -> checkFieldsAndToggleButton());
-        passwordField.addValueChangeListener(event -> checkFieldsAndToggleButton());
+  private void setupEventHandlers() {
+    usernameField.addValueChangeListener(event -> checkFieldsAndToggleButton());
+    passwordField.addValueChangeListener(event -> checkFieldsAndToggleButton());
         
-        submitButton.onClick(e -> {
-            Toast.show("Signed in as " + usernameField.getValue());
-        });
-    }
+    submitButton.onClick(e -> {
+      Toast.show("Signed in as " + usernameField.getValue());
+    });
+  }
 
-    private void checkFieldsAndToggleButton() {
-        String username = usernameField.getValue().trim();
-        String password = passwordField.getValue().trim();
+  private void checkFieldsAndToggleButton() {
+    String username = usernameField.getValue().trim();
+    String password = passwordField.getValue().trim();
 
-        boolean bothFieldsFilled = !username.isEmpty() && !password.isEmpty();
+    boolean bothFieldsFilled = !username.isEmpty() && !password.isEmpty();
 
-        submitButton.setVisible(bothFieldsFilled);
+    submitButton.setVisible(bothFieldsFilled);
     }
 }

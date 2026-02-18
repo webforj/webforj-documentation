@@ -27,66 +27,66 @@ public class FormValidationView extends Composite<FlexLayout> {
   private Button submitButton;
   
   public FormValidationView() {
-      initializeComponents();
-      setupLayout();
-      setupValidation();
+    initializeComponents();
+    setupLayout();
+    setupValidation();
   }
   
   private void initializeComponents() {
-      nameField = new TextField("Name");
-      nameField.setPlaceholder("Your name");
+    nameField = new TextField("Name");
+    nameField.setPlaceholder("Your name");
       
-      emailField = new TextField("Email");
-      emailField.setPlaceholder("you@example.com");
+    emailField = new TextField("Email");
+    emailField.setPlaceholder("you@example.com");
       
-      messageField = new TextArea("Message");
-      messageField.setPlaceholder("How can we help you?");
-      messageField.setMaxHeight("150px");
+    messageField = new TextArea("Message");
+    messageField.setPlaceholder("How can we help you?");
+    messageField.setMaxHeight("150px");
       
-      submitButton = new Button("Send Message", ButtonTheme.PRIMARY);
-      submitButton.setEnabled(false);
+    submitButton = new Button("Send Message", ButtonTheme.PRIMARY);
+    submitButton.setEnabled(false);
   }
   
   private void setupLayout() {
-      Paragraph title = new Paragraph("Contact Us");
-      title.addClassName("contact-title");
-      title.setStyle("font-size", "1.5rem");
-      title.setStyle("font-weight", "600");
+    Paragraph title = new Paragraph("Contact Us");
+    title.addClassName("contact-title");
+    title.setStyle("font-size", "1.5rem");
+    title.setStyle("font-weight", "600");
       
-      Paragraph subtitle = new Paragraph("We'd love to hear from you");
-      subtitle.addClassName("contact-subtitle");
+    Paragraph subtitle = new Paragraph("We'd love to hear from you");
+    subtitle.addClassName("contact-subtitle");
       
-      FlexLayout form = new FlexLayout();
-      form.setDirection(FlexDirection.COLUMN);
-      form.setSpacing("var(--dwc-space-l)");
-      form.addClassName("contact-card");
-      form.add(title, subtitle, nameField, emailField, messageField, submitButton);
+    FlexLayout form = new FlexLayout();
+    form.setDirection(FlexDirection.COLUMN);
+    form.setSpacing("var(--dwc-space-l)");
+    form.addClassName("contact-card");
+    form.add(title, subtitle, nameField, emailField, messageField, submitButton);
       
-      self.setDirection(FlexDirection.COLUMN);
-      self.setAlignment(FlexAlignment.CENTER);
-      self.addClassName("contact-container");
-      self.add(form);
+    self.setDirection(FlexDirection.COLUMN);
+    self.setAlignment(FlexAlignment.CENTER);
+    self.addClassName("contact-container");
+    self.add(form);
   }
   
   private void setupValidation() {
-      nameField.addValueChangeListener(e -> validateForm());
-      emailField.addValueChangeListener(e -> validateForm());
-      messageField.addValueChangeListener(e -> validateForm());
+    nameField.addValueChangeListener(e -> validateForm());
+    emailField.addValueChangeListener(e -> validateForm());
+    messageField.addValueChangeListener(e -> validateForm());
       
-      submitButton.onClick(e -> {
-          Toast.show("Message sent from " + nameField.getValue() + "!");
-      });
+    submitButton.onClick(e -> {
+      Toast.show("Message sent from " + nameField.getValue() + "!");
+    });
   }
   
   private void validateForm() {
-      String name = nameField.getValue();
-      String email = emailField.getValue();
-      String message = messageField.getValue();
+    String name = nameField.getValue();
+    String email = emailField.getValue();
+    String message = messageField.getValue();
       
-      boolean nameValid = !name.isEmpty();
-      boolean emailValid = email.contains("@");
-      boolean messageValid = message.length() >= 10;
+    boolean nameValid = !name.isEmpty();
+    boolean emailValid = email.contains("@");
+    boolean messageValid = message.length() >= 10;
       
-      submitButton.setEnabled(nameValid && emailValid && messageValid);
+    submitButton.setEnabled(nameValid && emailValid && messageValid);
   }
 }
