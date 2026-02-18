@@ -1,184 +1,181 @@
 ---
-sidebar_position: 11
-title: Localization
+sidebar_position: 12
+title: Translation
 sidebar_class_name: new-content
-_i18n_hash: 91f5af285113e5e76d50a201a2fbf88f
+_i18n_hash: 57626c2969592f2378a55eff0dd01d48
 ---
-# 本地化 <DocChip chip='since' label='25.10' />
+# Translation <DocChip chip='since' label='25.12' />
 
-实现 `LocaleObserver` 接口的组件会在语言环境变化时自动接收通知。这使得 UI 元素能够更新其文本、格式和其他特定于语言环境的内容，而无需手动协调。
+webforJ 包含一个内置的翻译系统，通过键查找本地化字符串。该系统由一个翻译解析器组成，该解析器将键映射到本地化文本，一个提供便捷 `t()` 方法的 `HasTranslation` concern 接口，`App.getTranslation()` 用于任何地方的直接访问，从浏览器自动检测语言环境，以及支持自定义翻译源，例如数据库。
 
-## `LocaleObserver` 接口 {#the-localeobserver-interface}
+## 翻译解析器 {#translation-resolver}
 
-```java title="LocaleObserver.java"
-@FunctionalInterface
-public interface LocaleObserver extends Serializable {
-    void onLocaleChange(LocaleEvent event);
-}
-```
+翻译解析器是查找给定键和语言环境的本地化字符串的系统。webforJ 提供一个默认解析器 `BundleTranslationResolver`，它从类路径中的 Java `ResourceBundle` 属性文件加载翻译。这无需额外的依赖即可开箱即用。
 
-当组件实现此接口时，webforJ 会自动：
-- 在创建时注册组件以接收语言环境变化事件
-- 在销毁时注销组件
-- 每当语言环境变化时调用 `onLocaleChange()`
+### 资源包文件
 
-此注册过程在组件生命周期中发生。
+将翻译文件放置在 `src/main/resources` 目录中。默认解析器查找命名为 `messages` 的文件，后缀遵循标准的 Java `ResourceBundle` 命名约定：
 
-## 处理翻译 {#handling-translations}
-
-当调用 `onLocaleChange()` 时，组件会接收到新的语言环境。如何加载和应用翻译取决于开发者。常见的方法包括：
-
-- 使用 Java `ResourceBundle` 和属性文件
-- 数据库查询翻译
-- 自定义翻译提供者
-- 简单情况的硬编码映射
-
-此示例使用 `ResourceBundle`，它将翻译存储在属性文件中：
-
-```
-messages.properties        # 后备/默认
+```text
+messages.properties        # 默认/回退翻译
 messages_en.properties     # 英语
 messages_de.properties     # 德语
+messages_fr_CA.properties  # 法语（加拿大）
 ```
 
-属性文件包含键值对：
+每个文件包含键值对。键是您在代码中使用的标识符，值是翻译后的字符串。您可以包括 [`MessageFormat`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/text/MessageFormat.html) 占位符，如 `{0}`、`{1}` 用于动态值：
 
-```properties title="messages_en.properties"
-app.title=Mailbox
-menu.inbox=Inbox
+```properties title="messages.properties"
+app.title=邮箱
+menu.inbox=收件箱
+menu.outbox=发件箱
+greeting=你好 {0}，您有 {1} 条新消息
 ```
 
 ```properties title="messages_de.properties"
 app.title=Postfach
 menu.inbox=Posteingang
+menu.outbox=Postausgang
+greeting=Hallo {0}, Sie haben {1} neue Nachrichten
 ```
-## 更改语言环境 {#changing-the-locale}
 
-使用 `App.setLocale()` 来更改应用程序语言环境。这会触发对所有注册观察者的通知：
+解析器委托给 Java 的标准 [`ResourceBundle`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/ResourceBundle.html) 解析链，自动处理语言环境匹配和回退。
+
+### 配置支持的语言环境 {#configuring-supported-locales}
+
+`supported-locales` 设置告诉 webforJ 您的应用程序支持哪些语言环境。此列表被自动检测用于将用户的浏览器语言环境与可用翻译进行匹配。列表中的第一个语言环境在没有找到更好匹配时用作默认回退。属性键是 `webforj.i18n.supported-locales`，接受一系列 [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) 语言标签，例如 `en, de`。
+
+:::info 更多信息
+请参阅 [Configuration](/docs/configuration/properties) 部分以了解如何为不同环境设置属性。
+:::
+
+## `t()` 方法 {#the-t-method}
+
+实现 `HasTranslation` concern 接口的组件可以使用 `t()` 方法进行文本翻译。该方法接受一个翻译键，并返回当前应用程序语言环境的本地化字符串：
 
 ```java
-App.setLocale(Locale.GERMAN);
-App.setLocale(Locale.forLanguageTag("fr"));
-```
+public class MainLayout extends Composite<AppLayout> implements HasTranslation {
 
-一种典型的实现可能使用下拉菜单或选择组件：
+  public MainLayout() {
+    // 简单翻译
+    String title = t("app.title");
 
-```java
-ChoiceBox languageSelector = new ChoiceBox();
-languageSelector.add("en", "English");
-languageSelector.add("de", "Deutsch");
-languageSelector.add("fr", "Français");
+    // 带有 MessageFormat 参数的翻译
+    String greeting = t("greeting", userName, messageCount);
 
-languageSelector.onSelect(e -> {
-  String lang = (String) e.getSelectedItem().getKey();
-  Locale newLocale = Locale.forLanguageTag(lang);
-
-  App.setLocale(newLocale);
-});
-```
-
-当用户选择一种语言时，`App.setLocale()` 会触发，所有实现了 `LocaleObserver` 的组件都会接收到更新。
-
-## 实现观察者 {#implementing-observers}
-
-当组件实现 `LocaleObserver` 时，需要处理两种情况：使用当前语言环境的初始渲染和在语言环境变化时的更新。以下示例通过一个显示本地化文本和链接的组件演示此模式。
-
-该组件存储需要翻译更新的元素的引用。构造时，它加载当前语言环境的翻译。当语言环境变化时，`onLocaleChange()` 被触发，允许组件重新加载翻译并更新其显示的文本。
-
-```java title="TranslationService.java"
-import com.webforj.App;
-import org.springframework.context.MessageSource;
-import org.springframework.stereotype.Service;
-
-@Service
-public class TranslationService {
-  private final MessageSource messageSource;
-
-  public TranslationService(MessageSource messageSource) {
-    this.messageSource = messageSource;
-  }
-
-  public String get(String key) {
-    return messageSource.getMessage(key, null, App.getLocale());
+    // 特定语言环境的翻译
+    String germanTitle = t(Locale.GERMAN, "app.title");
   }
 }
 ```
 
-```java title="Explore.java"
-public class Explore extends Composite<FlexLayout> implements LocaleObserver {
-  private final TranslationService i18n;
-  private FlexLayout self = getBoundComponent();
-  private H3 titleElement;
-  private Anchor anchor;
-  private String titleKey;
+您也可以直接使用 `App.getTranslation()`，而无需实现接口：
 
-  public Explore(TranslationService i18n, String titleKey) {
-    this.i18n = i18n;
-    this.titleKey = titleKey;
+```java
+String title = App.getTranslation("app.title");
+```
 
-    self.addClassName("explore-component");
-    self.setStyle("margin", "1em auto");
-    self.setDirection(FlexDirection.COLUMN);
-    self.setAlignment(FlexAlignment.CENTER);
-    self.setMaxWidth(300);
-    self.setSpacing(".3em");
+:::info 优雅的回退
+如果找不到翻译键，`t()` 会返回该键本身，而不是抛出异常。这意味着如果缺少翻译，您的应用程序不会中断。键将原样显示，并记录警告，以便您在开发期间跟踪缺失的翻译。
+:::
 
-    Img img = new Img(String.format("ws://explore/%s.svg", titleKey), "mailbox");
-    img.setMaxWidth(250);
+## 实现翻译组件 {#implementing-translated-components}
 
-    String translatedTitle = i18n.get("menu." + titleKey.toLowerCase());
-    titleElement = new H3(translatedTitle);
+翻译组件通常将 `HasTranslation` 与 [`LocaleObserver`](/docs/advanced/locale-management#the-localeobserver-interface) 结合使用。在创建 UI 元素时使用 `t()` 来设置初始翻译文本。要支持运行时语言切换，实现 `LocaleObserver` 并在 `onLocaleChange()` 中更新相同的文本。
 
-    anchor = new Anchor("https://docs.webforj.com/docs/components/overview", i18n.get("explore.link"));
-    anchor.setTarget("_blank");
+```java title="MainLayout.java"
+@Route
+public class MainLayout extends Composite<AppLayout>
+    implements HasTranslation, LocaleObserver {
 
-    self.add(img, titleElement, anchor);
+  private AppLayout self = getBoundComponent();
+  private AppNavItem inboxItem;
+  private AppNavItem outboxItem;
+
+  public MainLayout() {
+    inboxItem = new AppNavItem(t("menu.inbox"), InboxView.class, TablerIcon.create("inbox"));
+    outboxItem = new AppNavItem(t("menu.outbox"), OutboxView.class, TablerIcon.create("send-2"));
+
+    AppNav appNav = new AppNav();
+    appNav.addItem(inboxItem);
+    appNav.addItem(outboxItem);
+
+    self.addToDrawer(appNav);
   }
 
   @Override
   public void onLocaleChange(LocaleEvent event) {
-    titleElement.setText(i18n.get("menu." + titleKey.toLowerCase()));
-    anchor.setText(i18n.get("explore.link"));
+    inboxItem.setText(t("menu.inbox"));
+    outboxItem.setText(t("menu.outbox"));
   }
 }
 ```
 
-该组件存储显示翻译内容的元素引用（`titleElement` 和 `anchor`）。翻译在构造函数中使用当前语言环境加载。当语言环境变化时，`onLocaleChange()` 仅更新需要翻译的文本。
-
-## 生命周期管理 {#lifecycle-management}
-
-该框架通过组件生命周期钩子自动处理观察者注册：
-
-- **创建时**：实现 `LocaleObserver` 的组件会在 `LocaleObserverRegistry` 中注册
-- **销毁时**：组件会注销以防止内存泄漏
-
-每个应用实例维护其自己的观察者注册表。此自动管理意味着：
-
-- 无需手动调用注册/注销
-- 不会因销毁的组件而导致内存泄漏
-- 线程安全的并发通知
-
-:::info 每个应用的注册表
-每个应用实例维护其自己的观察者注册表。在一个应用中注册的观察者不会接收到同一 JVM 中其他应用的通知。
+:::tip 数据绑定
+数据绑定系统支持使用 `Supplier<String>` 与 `t()` 一起翻译验证和转换消息。请参阅 [动态验证消息](/docs/data-binding/validation/validators#dynamic-validation-messages)、[动态转换器消息](/docs/data-binding/transformation#dynamic-transformer-error-messages) 和 [语言环境感知的 Jakarta 验证](/docs/data-binding/validation/jakarta-validation#locale-aware-validation-messages)。
 :::
 
-## `LocaleEvent` {#localeevent}
+## 自定义翻译解析器 {#custom-translation-resolvers}
 
-传递给 `onLocaleChange()` 的 `LocaleEvent` 提供：
+默认解析器从 Java `ResourceBundle` 属性文件加载翻译。要从不同的源（例如数据库或远程服务）加载翻译，实现 `TranslationResolver`：
 
-| 方法 | 返回 | 描述 |
-|--------|---------|-------------|
-| `getLocale()` | `Locale` | 设置的新语言环境 |
-| `getSource()` | `Object` | 接收到事件的组件 |
+```java title="DatabaseTranslationResolver.java"
+public class DatabaseTranslationResolver implements TranslationResolver {
+  private final TranslationRepository repository;
+  private final List<Locale> supportedLocales;
 
-```java
-@Override
-public void onLocaleChange(LocaleEvent event) {
-  Locale newLocale = event.getLocale();
-  Object source = event.getSource();
+  public DatabaseTranslationResolver(TranslationRepository repository,
+      List<Locale> supportedLocales) {
+    this.repository = repository;
+    this.supportedLocales = List.copyOf(supportedLocales);
+  }
 
-  // 使用新语言环境更新组件
-  ResourceBundle bundle = ResourceBundle.getBundle("messages", newLocale);
-  updateUI(bundle);
+  @Override
+  public String resolve(String key, Locale locale, Object... args) {
+    String value = repository
+        .findByKeyAndLocale(key, locale.getLanguage())
+        .map(Translation::getValue)
+        .orElse(key);
+
+    if (args != null && args.length > 0) {
+      value = new MessageFormat(value, locale).format(args);
+    }
+
+    return value;
+  }
+
+  @Override
+  public List<Locale> getSupportedLocales() {
+    return supportedLocales;
+  }
 }
 ```
+
+### 注册自定义解析器 {#registering-a-custom-resolver}
+
+在普通的 webforJ 应用程序中，在应用程序启动之前设置解析器，例如使用 [应用程序生命周期监听器](/docs/advanced/lifecycle-listeners)：
+
+```java
+App.setTranslationResolver(new DatabaseTranslationResolver(repository, supportedLocales));
+```
+
+在 Spring Boot 应用程序中，将解析器作为 Bean 暴露：
+
+```java title="MessageSourceConfig.java"
+@Configuration
+public class MessageSourceConfig {
+
+  @Bean
+  TranslationResolver translationResolver(TranslationRepository repository,
+      SpringConfigurationProperties properties) {
+    List<Locale> supportedLocales = properties.getI18n().getSupportedLocales().stream()
+        .map(Locale::forLanguageTag)
+        .toList();
+    return new DatabaseTranslationResolver(repository, supportedLocales);
+  }
+}
+```
+
+:::info Spring Boot 中的默认解析器
+当没有定义自定义 `TranslationResolver` Bean 时，Spring 自动配置提供一个默认的 `BundleTranslationResolver`，它根据 `application.properties` 中的支持语言环境进行配置。
+:::
