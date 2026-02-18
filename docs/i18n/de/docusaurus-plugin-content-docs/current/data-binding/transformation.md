@@ -1,19 +1,20 @@
 ---
 sidebar_position: 4
 title: Transformation
-_i18n_hash: fe3acbd17750ab0092cbc3609b967969
+sidebar_class_name: updated-content
+_i18n_hash: 3b1655fdbfa9c303ae1445beee9ee327
 ---
-Datenumwandlungen sind ein entscheidendes Merkmal, das nahtlose Konvertierung zwischen den Datentypen, die in UI-Komponenten verwendet werden, und denen in Ihrem Datenmodell erleichtert. Diese Fähigkeit stellt sicher, dass Datentypen kompatibel und korrekt formatiert sind, wenn Daten zwischen dem Frontend und Backend Ihrer Anwendungen verschoben werden.
+Datenumwandlungen konvertieren zwischen den Datentypen, die in UI-Komponenten verwendet werden, und denen in Ihrem Datenmodell. Dies hält die Datentypen kompatibel und angemessen formatiert, wenn Daten zwischen dem Frontend und dem Backend Ihrer Anwendungen verschoben werden.
 
 :::tip
-Die Einstellung für den Transformator wird am besten verwendet, wenn der Datentyp der Bean-Eigenschaft nicht mit dem Datentyp übereinstimmt, der von den UI-Komponenten verarbeitet wird. Wenn Sie lediglich Daten desselben Typs umwandeln müssen, ist die Konfiguration von [den Gettern und Settern der Bindungen](bindings#binding-getters-and-setters) der bevorzugte Ansatz.
+Die Transformer-Einstellung wird am besten verwendet, wenn der Datentyp der Bean-Eigenschaft nicht mit dem Datentyp übereinstimmt, der von den UI-Komponenten verarbeitet wird. Wenn Sie einfach Daten desselben Typs umwandeln müssen, ist die Konfiguration der [Getter und Setter der Bindungen](bindings#binding-getters-and-setters) der bevorzugte Ansatz.
 :::
 
-## Konfigurieren von Transformatoren {#configuring-transformers}
+## Transformer konfigurieren {#configuring-transformers}
 
 Sie konfigurieren Datenumwandlungen direkt innerhalb Ihrer Bindungen, wodurch Sie definieren können, wie Daten während des Datenbindungsprozesses umgewandelt werden sollen.
 
-Sie können Transformatoren zu einer Bindung hinzufügen, indem Sie die Methode `useTransformer` auf dem `BindingBuilder` verwenden. Transformatoren müssen das `Transformer`-Interface implementieren, das die Definition von Methoden für beide Richtungen des Datenflusses erfordert: vom Modell zur UI und von der UI zum Modell.
+Sie können Transformer zu einer Bindung mit der Methode `useTransformer` auf dem `BindingBuilder` hinzufügen. Transformer müssen das `Transformer`-Interface implementieren, das die Definition von Methoden für beide Richtungen des Datenflusses erfordert: vom Modell zur UI und von der UI zum Modell.
 
 ```java
 context.bind(salaryField, "salary")
@@ -21,15 +22,15 @@ context.bind(salaryField, "salary")
     .add();
 ```
 
-Im obigen Beispiel konfiguriert der Code einen `CurrencyTransformer`, um Konvertierungen zwischen dem Datentyp des Modells (zum Beispiel BigDecimal) und der UI-Darstellung (zum Beispiel, ein formatierter String) zu behandeln.
+Im obigen Beispiel konfiguriert der Code einen `CurrencyTransformer`, um Konvertierungen zwischen dem Datentyp des Modells (zum Beispiel BigDecimal) und der UI-Darstellung (zum Beispiel einem formatierten String) zu handhaben.
 
 :::info
-Jede Bindung ist mit einem einzigen Transformator verbunden. Wenn die Umwandlung eines Wertes mehrere Schritte erfordert, wird empfohlen, Ihren eigenen Transformator für diese Schritte zu implementieren.
+Jede Bindung ist mit einem einzelnen Transformer verbunden. Wenn das Transformieren eines Wertes mehrere Schritte erfordert, wird empfohlen, Ihren eigenen Transformer für diese Schritte zu implementieren.
 :::
 
-## Implementieren eines Transformators {#implementing-a-transformer}
+## Einen Transformer implementieren {#implementing-a-transformer}
 
-Hier ist ein Beispiel für die Implementierung eines einfachen Transformators, der zwischen einem `LocalDate`-Modell und einer `String`-UI-Darstellung konvertiert:
+Hier ist ein Beispiel für die Implementierung eines einfachen Transformers, der zwischen einem `LocalDate`-Modell und einer `String`-UI-Darstellung konvertiert:
 
 ```java
 import java.time.LocalDate;
@@ -61,11 +62,11 @@ public class DateTransformer implements Transformer<LocalDate, String> {
 }
 ```
 
-Dieser Transformator erleichtert den Umgang mit Datumsfeldern, indem sichergestellt wird, dass Daten korrekt formatiert werden, wenn sie in der UI angezeigt werden, und korrekt in das Modell zurückgeparsed werden.
+Dieser Transformer verarbeitet Datumsfelder, formatiert Daten beim Anzeigen in der UI und analysiert sie zurück ins Modell.
 
-## Verwenden von Transformatoren in Bindungen {#using-transformers-in-bindings}
+### Transformer in Bindungen verwenden {#using-transformers-in-bindings}
 
-Sobald Sie einen Transformator definiert haben, können Sie ihn in mehreren Bindungen innerhalb Ihrer App anwenden. Dieser Ansatz ist besonders nützlich für standardisierte Datenformate, die in verschiedenen Teilen Ihrer App konsistent behandelt werden müssen.
+Sobald Sie einen Transformer definiert haben, können Sie ihn über mehrere Bindungen innerhalb Ihrer App anwenden. Dieser Ansatz ist besonders nützlich für standardisierte Datenformate, die in verschiedenen Teilen Ihrer App konsistent behandelt werden müssen.
 
 ```java
 BindingContext<Employee> context = new BindingContext<>(Employee.class);
@@ -74,16 +75,16 @@ context.bind(startDateField, "startDate", String.class)
     .add();
 ```
 
-:::info Angabe des Bean-Eigenschaftstyps
+:::info Den Typ der Bean-Eigenschaft angeben
 
-Im `bind`-Methodenaufruf ist es wichtig, den Typ der Bean-Eigenschaft als drittes Argument anzugeben, wenn es eine Diskrepanz zwischen dem von der UI-Komponente angezeigten Datentyp und dem im Modell verwendeten Datentyp gibt. Wenn die Komponente `startDateField` beispielsweise als Java `LocalDate` innerhalb der Komponente behandelt, aber im Modell als `String` gespeichert wird, stellt die explizite Definition des Typs als `String.class` sicher, dass der Bindemechanismus die Daten genau verarbeitet und zwischen den beiden unterschiedlichen Typen umwandelt, die von der Komponente und der Bean unter Verwendung des bereitgestellten Transformators und Validierern verwendet werden.
+Im `bind`-Methodenaufruf ist es wichtig, den Typ der Bean-Eigenschaft als drittes Argument anzugeben, wenn es eine Diskrepanz zwischen dem Datentyp gibt, der von der UI-Komponente angezeigt wird, und dem Datentyp, der im Modell verwendet wird. Wenn die Komponente `startDateField` als Java `LocalDate` innerhalb der Komponente behandelt, aber als `String` im Modell gespeichert wird, signalisiert die explizite Definition des Typs als `String.class` dem Bindungsmechanismus, die Daten zwischen den beiden unterschiedlichen Typen, die von der Komponente und der Bean verwendet werden, mithilfe des bereitgestellten Transformers und der Validatoren korrekt zu verarbeiten und zu konvertieren.
 :::
 
-## Vereinfachen von Transformationen mit `Transformer.of` {#simplifying-transforms-with-transformerof}
+### Transformationen mit `Transformer.of` vereinfachen {#simplifying-transforms-with-transformerof}
 
-Es ist möglich, die Implementierung solcher Transformationen mithilfe der von `Transformer` bereitgestellten Methode `Transformer.of` zu vereinfachen. Diese Methode ist syntaktischer Zucker und ermöglicht es Ihnen, eine Methode zu schreiben, die Transformationen inline behandelt, anstatt eine Klasse zu übergeben, die das `Transformer`-Interface implementiert.
+Es ist möglich, die Implementierung solcher Transformationen mit der Methode `Transformer.of`, die vom `Transformer` bereitgestellt wird, zu vereinfachen. Diese Methode ist syntaktischer Zucker und ermöglicht es Ihnen, eine Methode zu schreiben, die Transformationen inline behandelt, anstatt eine Klasse zu übergeben, die das `Transformer`-Interface implementiert. 
 
-Im folgenden Beispiel behandelt der Code eine Checkbox-Interaktion innerhalb einer Reise-App, in der Nutzer zusätzliche Dienste wie Mietwagen auswählen können. Der Zustand der Checkbox, `boolean`, muss in eine String-Darstellung `"yes"` oder `"no"` umgewandelt werden, die das Backend-Modell verwendet.
+Im folgenden Beispiel behandelt der Code eine Checkbox-Interaktion in einer Reise-App, in der Benutzer zusätzliche Dienstleistungen wie einen Mietwagen auswählen können. Der Checkbox-Zustand `boolean` muss in eine Zeichenfolgenrepräsentation `"yes"` oder `"no"` umgewandelt werden, die das Backend-Modell verwendet.
 
 ```java
 CheckBox carRental = new CheckBox("Mietwagen");
@@ -91,15 +92,37 @@ BindingContext<Trip> context = new BindingContext<>(Trip.class, true);
 context.bind(carRental, "carRental", String.class)
   .useTransformer(
       Transformer.of(
-        // konvertiert den Komponentenwert in den Modellwert
+        // Komponentenswert in Modellwert umwandeln
         bool -> Boolean.TRUE.equals(bool) ? "yes" : "no",
-        // konvertiert den Modellwert in den Komponentenwert
+        // Modellwert in Komponentenswert umwandeln
         str -> str.equals("yes")
-      ), 
+      ),
 
-      // falls die Transformation fehlschlägt, zeigen Sie die folgende
-      // Nachricht an
-      "Checkbox muss ausgewählt werden"
+      // Falls die Transformation fehlschlägt, folgende
+      // Nachricht anzeigen
+      "Checkbox muss aktiviert sein"
   )
   .add();
 ```
+
+### Dynamische Fehlermeldungen für Transformer <DocChip chip='since' label='25.12' /> {#dynamic-transformer-error-messages}
+
+Standardmäßig wird die Fehlermeldung, die angezeigt wird, wenn eine Transformation fehlschlägt, als statischer String angezeigt. In Apps, die mehrere Sprachen unterstützen, können Sie stattdessen einen `Supplier<String>` übergeben, sodass die Nachricht jedes Mal aufgelöst wird, wenn die Transformation fehlschlägt:
+
+```java {7}
+context.bind(quantityField, "quantity", Integer.class)
+    .useTransformer(
+        Transformer.of(
+            str -> Integer.parseInt(str),
+            val -> String.valueOf(val)
+        ),
+        () -> t("validation.quantity.invalid")
+    )
+    .add();
+```
+
+Der Supplier wird nur aufgerufen, wenn die Transformation eine `TransformationException` wirft. Das bedeutet, die Nachricht spiegelt immer die aktuelle Locale zum Zeitpunkt des Fehlers wider.
+
+#### Locale-bewusste Transformer {#locale-aware-transformers}
+
+Für wiederverwendbare Transformer, die intern Zugriff auf die aktuelle Locale benötigen (zum Beispiel, um Zahlen oder Daten entsprechend regionalen Konventionen zu formatieren), implementieren Sie das `LocaleAware`-Interface. Wenn sich die Locale über `BindingContext.setLocale()` ändert, wird die neue Locale automatisch an Transformer propagiert, die dieses Interface implementieren.
