@@ -1,0 +1,33 @@
+.settings-container {
+    min-height: 100vh;
+    padding: var(--dwc-space-xl);
+}
+
+.settings-card {
+    background: var(--dwc-surface-3);
+    border-radius: var(--dwc-border-radius-l);
+    box-shadow: var(--dwc-shadow-l);
+    padding: var(--dwc-space-2xl);
+    max-width: 400px;
+    width: 100%;
+}
+
+.settings-title {
+    margin: 0 0 var(--dwc-space-xs) 0;
+}
+
+.section-title {
+    margin: var(--dwc-space-m) 0 var(--dwc-space-s) 0;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.advanced-settings {
+    display: flex;
+    flex-direction: column;
+    gap: var(--dwc-space-s);
+    padding: var(--dwc-space-m);
+    background: var(--dwc-surface-3);
+    border-radius: var(--dwc-border-radius-m);
+    margin-top: var(--dwc-space-xs);
+}
