@@ -50,20 +50,24 @@ You can add data attributes for JavaScript integration, ARIA attributes for acce
 
 ### Component IDs {#component-ids}
 
-Every component can have an ID that identifies it in the HTML DOM. Set it with `setId()`:
+You can set an ID on a component's HTML element using `setAttribute()`. This places the `id` attribute directly in the DOM:
 
 ```java
 Button submitButton = new Button("Submit");
-submitButton.setId("submit-btn");
+submitButton.setAttribute("id", "submit-btn");
 
 TextField emailField = new TextField("Email");
-emailField.setId("email-input");
+emailField.setAttribute("id", "email-input");
 ```
 
-IDs are commonly used for test selectors and CSS targeting in your stylesheets.
+These DOM IDs are commonly used for test selectors and CSS targeting in your stylesheets.
 
 :::tip
 Unlike CSS classes, IDs should be unique within your application. If you need to target multiple components, use `addClassName()` instead.
+:::
+
+:::info
+webforJ also assigns automatic identifiers to components internally. The server-side ID (accessed via `getComponentId()`) is used for framework tracking, while the client-side ID (accessed via `getClientComponentId()`) is used for client-server communication. These are separate from the DOM `id` attribute you set with `setAttribute()`.
 :::
 
 ### Styling {#styling}
@@ -261,9 +265,9 @@ You can manage related components together:
 
 ```java
 public class FormCoordinator {
-    private final List<Component> managedComponents = new ArrayList<>();
+    private final List<DwcComponent<?>> managedComponents = new ArrayList<>();
     
-    public void manage(Component component) {
+    public void manage(DwcComponent<?> component) {
         managedComponents.add(component);
         
         component.addLifecycleObserver((comp, event) -> {
@@ -291,14 +295,14 @@ For executing code after a component is attached to the DOM, see `whenAttached()
 
 ## User data {#user-data}
 
-You can attach server-side data to components using `setUserData()` and retrieve it with `getUserData()`. This data stays on the server and is never sent to the client:
+You can attach server-side data to components using `setUserData()` and retrieve it with `getUserData()`. Both methods take a key to identify the data. This data stays on the server and is never sent to the client:
 
 ```java
 Button button = new Button("Process");
-button.setUserData(new ProcessingContext(userId, taskId));
+button.setUserData("context", new ProcessingContext(userId, taskId));
 
 button.onClick(event -> {
-    ProcessingContext context = (ProcessingContext) button.getUserData();
+    ProcessingContext context = (ProcessingContext) button.getUserData("context");
     processTask(context.getUserId(), context.getTaskId());
 });
 ```
