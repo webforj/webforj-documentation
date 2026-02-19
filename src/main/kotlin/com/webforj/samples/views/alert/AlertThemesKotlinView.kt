@@ -17,7 +17,7 @@ import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
 @Route
-@FrameTitle("Alert Themes Kotlin")
+@FrameTitle("Alert Themes")
 class AlertThemesKotlinView: Composite<FlexLayout>() {
   private val self = boundComponent
 
@@ -32,15 +32,17 @@ class AlertThemesKotlinView: Composite<FlexLayout>() {
 
       Theme.entries.forEach {
         alert {
-          flexLayout {
-            tablerIcon("alert-square-rounded")
-            paragraph("This is an alert with the ${it.name} theme!")
-            horizontal()
-            alignment = FlexAlignment.CENTER
-          }
           theme = it
           isClosable = false
           width = 325.px
+
+          flexLayout {
+            horizontal()
+            alignment = FlexAlignment.CENTER
+
+            tablerIcon("alert-square-rounded")
+            paragraph("This is an alert with the ${it.name} theme!")
+          }
         }
       }
     }
