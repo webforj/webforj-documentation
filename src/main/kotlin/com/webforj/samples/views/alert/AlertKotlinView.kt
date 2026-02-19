@@ -15,7 +15,7 @@ import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
 @Route
-@FrameTitle("Form Confirmation Alert Kotlin")
+@FrameTitle("Form Confirmation Alert")
 class AlertKotlinView: Composite<FlexLayout>() {
   private val self = boundComponent
 
@@ -26,9 +26,11 @@ class AlertKotlinView: Composite<FlexLayout>() {
       alignment = FlexAlignment.CENTER
       justifyContent = FlexJustifyContent.CENTER
       margin = "var(--dwc-space-l)"
+
       alert {
         theme = Theme.PRIMARY
         maxWidth = 500.px
+
         paragraph("The requested information is ready to be viewed.")
         button("View", ButtonTheme.PRIMARY)
       }

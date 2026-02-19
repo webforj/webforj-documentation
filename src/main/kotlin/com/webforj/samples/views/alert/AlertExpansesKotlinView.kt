@@ -18,7 +18,7 @@ import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
 @Route
-@FrameTitle("Alert Expanses Kotlin")
+@FrameTitle("Alert Expanses")
 class AlertExpansesKotlinView: Composite<FlexLayout>() {
   private val self = boundComponent
 
@@ -30,18 +30,21 @@ class AlertExpansesKotlinView: Composite<FlexLayout>() {
       spacing = "var(--dwc-space-m)"
       margin = "var(--dwc-space-xl) auto"
       width = 100.percent
+
       Expanse.entries.reversed().forEach {
         alert {
-          flexLayout {
-            tablerIcon("alert-square-rounded")
-            paragraph("This alert uses the ${it.name} expanse.")
-            horizontal()
-            alignment = FlexAlignment.CENTER
-          }
           expanse = it
           isClosable = false
           theme = Theme.SUCCESS
           width = 380.px
+
+          flexLayout {
+            horizontal()
+            alignment = FlexAlignment.CENTER
+
+            tablerIcon("alert-square-rounded")
+            paragraph("This alert uses the ${it.name} expanse.")
+          }
         }
       }
     }

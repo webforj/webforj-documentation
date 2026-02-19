@@ -1,10 +1,7 @@
 package com.webforj.samples.views.alert
 
-import com.basis.bbj.comm.al
 import com.webforj.component.Composite
 import com.webforj.component.Theme
-import com.webforj.component.alert.Alert
-import com.webforj.component.button.Button
 import com.webforj.component.button.ButtonTheme
 import com.webforj.component.layout.flexlayout.FlexAlignment
 import com.webforj.component.layout.flexlayout.FlexDirection
@@ -17,7 +14,7 @@ import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
 @Route
-@FrameTitle("Closable Alert Kotlin")
+@FrameTitle("Closable Alert")
 class ClosableAlertKotlinView: Composite<FlexLayout>() {
   private val self = boundComponent
 
@@ -28,11 +25,13 @@ class ClosableAlertKotlinView: Composite<FlexLayout>() {
       alignment = FlexAlignment.CENTER
       justifyContent = FlexJustifyContent.CENTER
       margin = "var(--dwc-space-l)"
+
       val alert = alert("Heads up! This alert can be dismissed.", Theme.INFO, true) {
         maxWidth = 400.px
       }
       button("Show Alert", ButtonTheme.PRIMARY) {
         isVisible = false
+
         onClick {
           alert.open()
           isVisible = false
