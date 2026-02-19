@@ -19,6 +19,7 @@ class AvatarShapesKotlinView: Composite<FlexLayout>() {
         spacing = "var(--dwc-space-l)"
         margin = "var(--dwc-space-l)"
         alignment = FlexAlignment.CENTER
+
         avatar("John Doe") {
           expanse = AvatarExpanse.XLARGE
           shape = AvatarShape.CIRCLE

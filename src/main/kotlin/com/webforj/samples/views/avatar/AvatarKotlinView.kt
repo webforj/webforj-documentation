@@ -2,16 +2,13 @@ package com.webforj.samples.views.avatar
 
 import com.webforj.annotation.StyleSheet
 import com.webforj.component.Composite
-import com.webforj.component.avatar.Avatar
 import com.webforj.component.avatar.AvatarExpanse
 import com.webforj.component.avatar.AvatarTheme
 import com.webforj.component.button.ButtonTheme
-import com.webforj.component.dialog.Dialog
 import com.webforj.component.html.elements.Div
 import com.webforj.component.layout.flexlayout.FlexAlignment
 import com.webforj.component.layout.flexlayout.FlexDirection
 import com.webforj.component.layout.flexlayout.FlexLayout
-import com.webforj.concern.HasComponents
 import com.webforj.kotlin.dsl.component.avatar.avatar
 import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.dialog.dialog
@@ -22,6 +19,8 @@ import com.webforj.kotlin.dsl.component.html.elements.span
 import com.webforj.kotlin.dsl.component.icons.tablerIcon
 import com.webforj.kotlin.dsl.component.layout.flexlayout.flexLayout
 import com.webforj.kotlin.dsl.component.layout.flexlayout.horizontal
+import com.webforj.kotlin.extension.classNames
+import com.webforj.kotlin.extension.plusAssign
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
 import com.webforj.router.annotation.FrameTitle
@@ -37,16 +36,23 @@ class AvatarKotlinView: Composite<FlexLayout>() {
       self.apply {
         direction = FlexDirection.COLUMN
         margin = "var(--dwc-space-l)"
+
         div {
-          addClassName("avatar-demo__panel")
+          classNames += "avatar-demo__panel"
+
           flexLayout(FlexDirection.ROW) {
-            addClassName("avatar-demo__project-header")
+            classNames += "avatar-demo__project-header"
             spacing = "var(--dwc-space-m)"
             alignment = FlexAlignment.CENTER
+
             tablerIcon("folder")
-            h4("Project Alpha").addClassName("avatar-demo__project-name")
+            h4("Project Alpha") {
+              classNames += "avatar-demo__project-name"
+            }
           }
-          span("Team").addClassName("avatar-demo__section-label")
+          span("Team") {
+            classNames += "avatar-demo__section-label"
+          }
           createMember("Sarah Chen", "Product Lead",
             "ws://img/avatar/avatar1.png", AvatarTheme.SUCCESS)
           createMember("Marcus Johnson", "Developer",
@@ -60,21 +66,28 @@ class AvatarKotlinView: Composite<FlexLayout>() {
       }
   }
 
-  private fun Div.createMember(name: String, role: String, imageUrl: String?, theme: AvatarTheme) {
+  private fun Div.createMember(name: String, role: String, imageUrl: String?, avatarTheme: AvatarTheme) {
     flexLayout {
       horizontal()
       alignment = FlexAlignment.CENTER
-      addClassName("avatar-demo__row")
+      classNames += "avatar-demo__row"
       spacing = "var(--dwc-space-m)"
+
       avatar(name) {
         imageUrl?.let { img(it, name) }
-        setTheme(theme)
-        onClick { showProfileDialog(name, role, imageUrl, theme) }
+        theme = avatarTheme
+
+        onClick { showProfileDialog(name, role, imageUrl, avatarTheme) }
       }
       flexLayout(FlexDirection.COLUMN) {
-        addClassName("avatar-demo__info")
-        span(name).addClassName("avatar-demo__name")
-        span(role).addClassName("avatar-demo__role")
+        classNames += "avatar-demo__info"
+
+        span(name) {
+          classNames += "avatar-demo__name"
+        }
+        span(role) {
+          classNames += "avatar-demo__role"
+        }
       }
     }
   }
@@ -83,31 +96,41 @@ class AvatarKotlinView: Composite<FlexLayout>() {
     flexLayout {
       horizontal()
       alignment = FlexAlignment.CENTER
-      addClassName("avatar-demo__row")
+      classNames += "avatar-demo__row"
       spacing = "var(--dwc-space-m)"
+
       avatar {
-        tablerIcon("user")
         theme = AvatarTheme.OUTLINED_GRAY
+
+        tablerIcon("user")
       }
-      span("Invite Member").addClassName("avatar-demo__name")
+      span("Invite Member") {
+        classNames += "avatar-demo__name"
+      }
     }
   }
 
-  private fun showProfileDialog(name: String, role: String, imageUrl: String?, theme: AvatarTheme) {
+  private fun showProfileDialog(name: String, role: String, imageUrl: String?, avatarTheme: AvatarTheme) {
     self.apply {
       dialog {
         maxWidth = "260px"
+
         flexLayout(FlexDirection.COLUMN) {
           alignment = FlexAlignment.CENTER
           styles["padding"] = "var(--dwc-space-l)"
           spacing = "var(--dwc-space-s)"
+
           avatar(name) {
             imageUrl?.let { img(it, name) }
             expanse = AvatarExpanse.XXLARGE
-            setTheme(theme)
+            theme = avatarTheme
           }
-          h4(name).styles["margin"] = "0"
-          span(role).styles["color"] = "var(--dwc-color-default-text)"
+          h4(name) {
+            styles["margin"] = "0"
+          }
+          span(role) {
+            styles["color"] = "var(--dwc-color-default-text)"
+          }
           button("View Profile", ButtonTheme.PRIMARY)
         }
         open()

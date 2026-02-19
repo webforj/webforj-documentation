@@ -21,9 +21,11 @@ class AvatarThemesKotlinView: Composite<FlexLayout>() {
       spacing = "var(--dwc-space-m)"
       margin = "var(--dwc-space-l)"
       alignment = FlexAlignment.CENTER
+
       flexLayout {
         spacing = "var(--dwc-space-m)"
         alignment = FlexAlignment.CENTER
+
         avatar("Default") { theme = AvatarTheme.DEFAULT }
         avatar("Gray") { theme = AvatarTheme.GRAY }
         avatar("Primary") { theme = AvatarTheme.PRIMARY }
@@ -35,6 +37,7 @@ class AvatarThemesKotlinView: Composite<FlexLayout>() {
       flexLayout {
         spacing = "var(--dwc-space-m)"
         alignment = FlexAlignment.CENTER
+
         avatar("Default") { theme = AvatarTheme.OUTLINED_DEFAULT }
         avatar("Gray") { theme = AvatarTheme.OUTLINED_GRAY }
         avatar("Primary") { theme = AvatarTheme.OUTLINED_PRIMARY }
