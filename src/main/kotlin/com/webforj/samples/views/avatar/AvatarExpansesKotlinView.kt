@@ -9,7 +9,7 @@ import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
 @Route
-@FrameTitle("Avatar Expanses Kotlin")
+@FrameTitle("Avatar Expanses")
 class AvatarExpansesKotlinView: Composite<FlexLayout>() {
   private val self = boundComponent
 
@@ -18,6 +18,7 @@ class AvatarExpansesKotlinView: Composite<FlexLayout>() {
         spacing = "var(--dwc-space-m)"
         margin = "var(--dwc-space-l)"
         alignment = FlexAlignment.CENTER
+
         AvatarExpanse.entries.reversed()
           .filter { it != AvatarExpanse.NONE }
           .forEach {
