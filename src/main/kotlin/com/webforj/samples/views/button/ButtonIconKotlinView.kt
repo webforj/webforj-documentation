@@ -27,6 +27,7 @@ class ButtonIconKotlinView: Composite<FlexLayout>() {
         margin = "var(--dwc-space-l)"
         styles["flex-wrap"] = "wrap"
         width = 100.percent
+
         button("Notifications") {
           prefix { tablerIcon("bell") }
         }

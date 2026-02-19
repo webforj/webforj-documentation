@@ -25,6 +25,7 @@ class ButtonDisableKotlinView: Composite<FlexLayout>() {
         spacing = "var(--dwc-space-xl)"
         styles["flex-wrap"] = "wrap"
         width = 100.percent
+
         val email = textField("Enter an email", type = Type.EMAIL)
         button("Submit", ButtonTheme.PRIMARY) {
           isEnabled = false

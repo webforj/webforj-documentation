@@ -22,12 +22,14 @@ class ButtonEventKotlinView: Composite<FlexLayout>() {
         direction = FlexDirection.ROW
         spacing = "var(--dwc-space-l)"
         padding = "var(--dwc-space-l)"
+
         val button = button("Click Me!") {
           width = 150.px
         }
         flexLayout {
           vertical()
           spacing = 0.px
+
           val text = div("Current Counter: 0")
           val payload = div("Event Payload: null")
           button.onClick {
