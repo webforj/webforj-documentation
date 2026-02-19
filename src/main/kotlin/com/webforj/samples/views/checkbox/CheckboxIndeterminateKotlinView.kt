@@ -26,8 +26,10 @@ class CheckboxIndeterminateKotlinView: Composite<FlexLayout>() {
       self.apply {
         direction = FlexDirection.COLUMN
         margin = "var(--dwc-space-l)"
+
         flexLayout {
           horizontal()
+
           indeterminate = checkBox("Parent") {
             isIndeterminate = true
             onToggle(::indeterminateToggle)
@@ -36,6 +38,7 @@ class CheckboxIndeterminateKotlinView: Composite<FlexLayout>() {
         flexLayout {
           horizontal()
           styles["margin-left"] = 30.px
+
           child1 = checkBox("Child 1", false) {
             onToggle(::onCheck)
           }
@@ -43,6 +46,7 @@ class CheckboxIndeterminateKotlinView: Composite<FlexLayout>() {
         flexLayout {
           horizontal()
           styles["margin-left"] = 30.px
+
           child2 = checkBox("Child 2", true) {
             onToggle(::onCheck)
           }

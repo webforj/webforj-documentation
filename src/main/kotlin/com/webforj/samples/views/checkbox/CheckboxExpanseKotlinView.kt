@@ -23,6 +23,7 @@ class CheckboxExpanseKotlinView: Composite<FlexLayout>() {
         spacing = 50.px
         justifyContent = FlexJustifyContent.CENTER
         width = 100.percent
+
         Expanse.entries.reversed().forEach {
           checkBox(it.name) {
             expanse = it

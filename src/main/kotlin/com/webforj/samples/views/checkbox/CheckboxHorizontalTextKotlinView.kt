@@ -26,9 +26,11 @@ class CheckboxHorizontalTextKotlinView: Composite<FlexLayout>() {
         wrap = FlexWrap.WRAP
         spacing = "var(--dwc-space-l)"
         margin = "var(--dwc-space-l)"
+
         flexLayout {
           vertical()
-          width = 100.percent
+          width = 100.px
+
           checkBox("Daily", true)
           checkBox("Weekly")
           checkBox("Bi-Weekly")
@@ -39,6 +41,7 @@ class CheckboxHorizontalTextKotlinView: Composite<FlexLayout>() {
           vertical()
           alignment = FlexAlignment.END
           width = 100.px
+
           checkBox("Daily", true) {
             textPosition = Position.LEFT
           }
