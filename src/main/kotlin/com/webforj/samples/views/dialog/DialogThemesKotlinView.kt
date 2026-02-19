@@ -20,21 +20,23 @@ class DialogThemesKotlinView: Composite<FlexLayout>() {
   init {
       self.apply {
         dialog {
-          header { div("Themes") }
           styles["display"] = "flex"
           styles["justify-content"] = "center"
+          setCloseable(false)
+
+          header { div("Themes") }
           choiceBox("Select Theme") {
             styles["flex"] = "1"
             Theme.entries.forEach {
               add(it, it.name)
             }
             selectIndex(1)
+
             onSelect {
               this@dialog.theme = it.selectedItem.key as Theme
             }
           }
           open()
-          setCloseable(false)
         }
       }
   }

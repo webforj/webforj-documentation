@@ -17,9 +17,10 @@ class DialogAutoFocusKotlinView: Composite<FlexLayout>() {
   init {
       self.apply {
         dialog {
+          isAutoFocus = true
+
           header { div("Auto Focus") }
           textField("This Box is Auto Focused")
-          isAutoFocus = true
           open()
         }
       }

@@ -16,11 +16,12 @@ class DialogDraggableKotlinView: Composite<FlexLayout>() {
   init {
       self.apply {
         dialog {
-          header { div("Snapping") }
-          div("This dialog will snap then dragged within 100px of the edge of the display")
-          open()
           isSnapToEdge = true
           snapThreshold = 100
+
+          header { div("Snapping") }
+          div("This dialog will snap when dragged within 100px of the edge of the display.")
+          open()
         }
       }
   }

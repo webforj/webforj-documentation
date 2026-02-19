@@ -25,6 +25,7 @@ class DialogAlignmentsKotlinView: Composite<FlexLayout>() {
           styles["display"] = "flex"
           styles["justify-content"] = "center"
           setCloseable(false)
+
           header { div("Alignments") }
           choiceBox("Select Alignment") {
             items(
@@ -33,6 +34,7 @@ class DialogAlignmentsKotlinView: Composite<FlexLayout>() {
               Dialog.Alignment.BOTTOM to "Bottom"
             )
             selectIndex(1)
+
             onSelect {
               this@dialog.alignment = it.selectedItem.key as Dialog.Alignment
             }

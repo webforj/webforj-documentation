@@ -21,16 +21,18 @@ class DialogCloseKotlinView: Composite<FlexLayout>() {
   init {
       self.apply {
         val d = dialog {
+          isCancelOnEscKey = true
+
           header { div("Closing the Dialog") }
           button("Close Dialog") {
             onClick { this@dialog.close() }
           }
-          isCancelOnEscKey = true
           open()
         }
         button("Show Dialog") {
           styles["margin-left"] = 48.vw
           styles["margin-top"] = 20.px
+
           onClick { d.open() }
         }
       }

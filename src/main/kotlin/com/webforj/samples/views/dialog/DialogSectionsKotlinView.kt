@@ -17,10 +17,11 @@ class DialogSectionsKotlinView: Composite<FlexLayout>() {
   init {
       self.apply {
         dialog {
+          setCloseable(false)
+
           header { div("Header") }
           div("Content")
           footer { div("Footer") }
-          setCloseable(false)
           open()
         }
       }

@@ -5,6 +5,7 @@ import com.webforj.component.button.ButtonTheme
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.dialog.dialog
+import com.webforj.kotlin.dsl.component.dialog.footer
 import com.webforj.kotlin.dsl.component.dialog.header
 import com.webforj.kotlin.dsl.component.field.numberField
 import com.webforj.kotlin.dsl.component.html.elements.div
@@ -20,6 +21,10 @@ class DialogPositioningKotlinView: Composite<FlexLayout>() {
   init {
       self.apply {
         dialog {
+          isAutoFocus = true
+          setCloseable(false)
+          maxWidth = 200.px
+
           header { div("Positioning") }
           val xPos = numberField("X Pixels:") {
             min = 0.0
@@ -27,9 +32,10 @@ class DialogPositioningKotlinView: Composite<FlexLayout>() {
           val yPos = numberField("Y Pixels:") {
             min = 0.0
           }
-          header {
+          footer {
             button("Set Dialog Position", ButtonTheme.PRIMARY) {
               minHeight = 60.px
+
               onClick {
                 val xValue = xPos.value
                 val yValue = yPos.value
@@ -40,10 +46,7 @@ class DialogPositioningKotlinView: Composite<FlexLayout>() {
               }
             }
           }
-          isAutoFocus = true
           open()
-          setCloseable(false)
-          maxWidth = 200.px
         }
       }
   }
