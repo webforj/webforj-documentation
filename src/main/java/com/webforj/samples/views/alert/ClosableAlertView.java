@@ -16,10 +16,10 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Closable Alert")
 public class ClosableAlertView extends Composite<FlexLayout> {
+  FlexLayout self = getBoundComponent();
 
   public ClosableAlertView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN)
+    self.setDirection(FlexDirection.COLUMN)
           .setSpacing("var(--dwc-space-m)")
           .setAlignment(FlexAlignment.CENTER)
           .setJustifyContent(FlexJustifyContent.CENTER)
@@ -41,6 +41,6 @@ public class ClosableAlertView extends Composite<FlexLayout> {
       reopenButton.setVisible(false);
     });
 
-    layout.add(alert, reopenButton);
+    self.add(alert, reopenButton);
   }
 }
