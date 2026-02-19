@@ -24,13 +24,16 @@ class ButtonThemesKotlinView: Composite<FlexLayout>() {
         direction = FlexDirection.COLUMN
         spacing = "var(--dwc-space-l)"
         margin = "var(--dwc-space-l)"
+
         div {
           styles["overflow-x"] = "auto"
           styles["white-space"] = "nowrap"
           styles["margin"] = "var(--dwc-space-l)"
+
           flexLayout(FlexDirection.COLUMN) {
             wrap = FlexWrap.NOWRAP
             spacing = "var(--dwc-space-l)"
+
             val solidRow = flexLayout(FlexDirection.ROW) {
               wrap = FlexWrap.NOWRAP
               spacing = "var(--dwc-space-s)"
