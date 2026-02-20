@@ -13,7 +13,7 @@ hide_giscus_comments: true
   `}</style>
 </Head>
 
-webforJ provides a Kotlin *Domain Specific Language*, or DSL, that lets you build UIs with concise, type-safe syntax. Instead of imperative Java code, you write declarative code that reads like a description *of your UI structure.
+webforJ provides a Kotlin *Domain Specific Language*, or DSL, that lets you build UIs with concise, type-safe syntax. Instead of imperative Java code, you write declarative code that reads like a description of your UI structure.
 
 ```java title="Java"
 FlexLayout layout = new FlexLayout();
@@ -42,7 +42,7 @@ flexLayout {
 }
 ```
 
-The DSL uses Kotlin's language features such as extension functions, lambdas with receivers, and default parameters to create a natural builder syntax. Components nest inside each other, configuration happens in blocks, and the compiler catches structural mistakes before runtime.
+The DSL takes advantage of Kotlin extension functions, lambdas with receivers, and default parameters to create a natural builder syntax. Components nest inside each other, configuration happens in blocks, and the compiler catches structural mistakes before runtime.
 
 ## Setup {#setup}
 
