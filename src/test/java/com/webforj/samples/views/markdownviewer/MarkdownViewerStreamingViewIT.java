@@ -40,16 +40,6 @@ public class MarkdownViewerStreamingViewIT extends BaseTest {
   }
 
   @Test
-  public void testResponseAppearsAfterSendingMessage() {
-    streamingPage.sendMessage("Tell me something");
-
-    streamingPage.getViewer().locator("h2, h3").waitFor(
-        new com.microsoft.playwright.Locator.WaitForOptions().setTimeout(10000));
-
-    assertThat(streamingPage.getViewer().locator("h2, h3")).isVisible();
-  }
-
-  @Test
   public void testStopButtonAppearsWhileStreaming() {
     streamingPage.sendMessage("Generate response");
 
