@@ -9,12 +9,15 @@ public class MarkdownViewerProgressivePage {
 
   private final Locator viewer;
   private final Locator startButton;
+  private final Locator stopButton;
   private final Locator speedChoice;
 
   public MarkdownViewerProgressivePage(Page page) {
     this.viewer = page.locator("dwc-markdown-viewer");
     this.startButton = page.getByRole(com.microsoft.playwright.options.AriaRole.BUTTON,
         new Page.GetByRoleOptions().setName("Start"));
+    this.stopButton = page.getByRole(com.microsoft.playwright.options.AriaRole.BUTTON,
+        new Page.GetByRoleOptions().setName("Stop"));
     this.speedChoice = page.locator("dwc-choicebox");
   }
 
@@ -28,6 +31,10 @@ public class MarkdownViewerProgressivePage {
 
   public Locator getStartButton() {
     return startButton;
+  }
+
+  public Locator getStopButton() {
+    return stopButton;
   }
 
   public Locator getSpeedChoice() {

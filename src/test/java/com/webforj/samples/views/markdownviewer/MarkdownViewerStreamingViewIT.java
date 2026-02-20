@@ -19,23 +19,78 @@ public class MarkdownViewerStreamingViewIT extends BaseTest {
   }
 
   @Test
-  public void testHeaderIsVisible() {
-    assertThat(streamingPage.getHeader()).isVisible();
+  public void testInitialState() {
     assertThat(streamingPage.getHeader()).containsText("AI Chat Demo");
-  }
-
-  @Test
-  public void testInputFieldIsVisible() {
     assertThat(streamingPage.getInputField()).isVisible();
-  }
-
-  @Test
-  public void testSendButtonIsVisible() {
     assertThat(streamingPage.getSendButton()).isVisible();
-  }
-
-  @Test
-  public void testStopButtonIsHiddenInitially() {
     assertThat(streamingPage.getStopButton()).not().isVisible();
   }
+
+  @Test
+  public void testSendingMessageShowsUserMessage() {
+    streamingPage.sendMessage("Hello AI");
+    assertThat(streamingPage.getViewer()).containsText("Hello AI");
+  }
+
+  @Test
+  public void testSendingMessageShowsThinkingIndicator() {
+    streamingPage.sendMessage("Test message");
+    assertThat(streamingPage.getThinkingIndicator()).isVisible();
+    assertThat(streamingPage.getThinkingIndicator()).containsText("Thinking...");
+  }
+
+  @Test
+  public void testResponseAppearsAfterSendingMessage() {
+    streamingPage.sendMessage("Tell me something");
+
+    streamingPage.getViewer().locator("h2, h3").waitFor(
+        new com.microsoft.playwright.Locator.WaitForOptions().setTimeout(10000));
+
+    assertThat(streamingPage.getViewer().locator("h2, h3")).isVisible();
+  }
+
+  @Test
+  public void testStopButtonAppearsWhileStreaming() {
+    streamingPage.sendMessage("Generate response");
+
+    streamingPage.getStopButton().waitFor(
+        new com.microsoft.playwright.Locator.WaitForOptions().setTimeout(3000));
+
+    assertThat(streamingPage.getStopButton()).isVisible();
+    assertThat(streamingPage.getSendButton()).not().isVisible();
+  }
+
+  @Test
+  public void testStopButtonStopsStreaming() {
+    streamingPage.sendMessage("Generate response");
+
+    streamingPage.getStopButton().waitFor(
+        new com.microsoft.playwright.Locator.WaitForOptions().setTimeout(3000));
+
+    streamingPage.getStopButton().click();
+
+    assertThat(streamingPage.getSendButton()).isVisible();
+    assertThat(streamingPage.getStopButton()).not().isVisible();
+  }
+
+  @Test
+  public void testInputFieldClearsAfterSending() {
+    streamingPage.getInputField().fill("Test message");
+    streamingPage.getSendButton().click();
+    assertThat(streamingPage.getInputField()).hasValue("");
+  }
+
+  @Test
+  public void testEnterKeySendsMessage() {
+    streamingPage.getInputField().fill("Enter key test");
+    streamingPage.getInputField().press("Enter");
+    assertThat(streamingPage.getViewer()).containsText("Enter key test");
+  }
+
+  @Test
+  public void testEmptyMessageDoesNotSend() {
+    streamingPage.getSendButton().click();
+    assertThat(streamingPage.getThinkingIndicator()).not().isVisible();
+  }
+
 }

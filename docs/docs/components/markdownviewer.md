@@ -19,7 +19,12 @@ Create a `MarkdownViewer` with or without initial content, then update it using 
 MarkdownViewer viewer = new MarkdownViewer("# Hello World");
 
 // Replace content entirely
-viewer.setContent("## New Content\n\n- Item 1\n- Item 2");
+viewer.setContent("""
+    ## New Content
+
+    - Item 1
+    - Item 2
+    """);
 
 // Get current content
 String content = viewer.getContent();
@@ -42,7 +47,7 @@ viewer.append("## New Section\n\n");
 viewer.append("More content here...");
 ```
 
-By default, appended content appears immediately. When progressive rendering is enabled, appended content goes into a buffer and displays character-by-character instead.
+By default, appended content appears immediately. When [progressive rendering](#progressive-rendering) is enabled, appended content goes into a buffer and displays character-by-character instead.
 
 ## Auto-scroll {#auto-scroll}
 
@@ -153,7 +158,7 @@ If progressive rendering is active, `clear()` also stops rendering and completes
 
 ## Syntax highlighting {#syntax-highlighting}
 
-The `MarkdownViewer` supports syntax highlighting for code blocks when Prism.js is available. Add Prism.js to your app using the `@JavaScript` and `@StyleSheet` annotations:
+The `MarkdownViewer` supports syntax highlighting for code blocks when [Prism.js](https://prismjs.com/) is available. Add Prism.js to your app using the `@JavaScript` and `@StyleSheet` annotations:
 
 ```java
 @StyleSheet("https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css")

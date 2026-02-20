@@ -19,43 +19,52 @@ public class MarkdownViewerViewIT extends BaseTest {
   }
 
   @Test
-  public void testViewerIsVisible() {
-    assertThat(viewerPage.getViewer()).isVisible();
-  }
-
-  @Test
-  public void testHeadingIsRendered() {
+  public void testHeadingRendersCorrectText() {
     assertThat(viewerPage.getHeading()).isVisible();
-    assertThat(viewerPage.getHeading()).containsText("Welcome to MarkdownViewer");
+    assertThat(viewerPage.getHeading()).hasText("Welcome to MarkdownViewer");
   }
 
   @Test
-  public void testBoldTextIsRendered() {
+  public void testBoldTextRendersCorrectly() {
     assertThat(viewerPage.getBoldText()).isVisible();
+    assertThat(viewerPage.getBoldText()).hasText("bold");
   }
 
   @Test
-  public void testItalicTextIsRendered() {
+  public void testItalicTextRendersCorrectly() {
     assertThat(viewerPage.getItalicText()).isVisible();
+    assertThat(viewerPage.getItalicText()).hasText("italic");
   }
 
   @Test
-  public void testInlineCodeIsRendered() {
+  public void testStrikethroughRendersCorrectly() {
+    assertThat(viewerPage.getStrikethrough()).isVisible();
+    assertThat(viewerPage.getStrikethrough()).hasText("strikethrough");
+  }
+
+  @Test
+  public void testInlineCodeRendersCorrectly() {
     assertThat(viewerPage.getInlineCode()).isVisible();
+    assertThat(viewerPage.getInlineCode()).hasText("inline code");
   }
 
   @Test
-  public void testListItemsAreRendered() {
-    assertThat(viewerPage.getListItems().first()).isVisible();
+  public void testListRendersAllItems() {
+    assertThat(viewerPage.getListItems()).hasCount(3);
+    assertThat(viewerPage.getListItems().nth(0)).hasText("First item");
+    assertThat(viewerPage.getListItems().nth(1)).hasText("Second item");
+    assertThat(viewerPage.getListItems().nth(2)).hasText("Third item");
   }
 
   @Test
-  public void testBlockquoteIsRendered() {
+  public void testBlockquoteRendersCorrectText() {
     assertThat(viewerPage.getBlockquote()).isVisible();
+    assertThat(viewerPage.getBlockquote()).containsText("Markdown makes formatting easy");
   }
 
   @Test
-  public void testCodeBlockIsRendered() {
+  public void testCodeBlockRendersJavaCode() {
     assertThat(viewerPage.getCodeBlock()).isVisible();
+    assertThat(viewerPage.getCodeBlock()).containsText("MarkdownViewer viewer = new MarkdownViewer()");
   }
 }

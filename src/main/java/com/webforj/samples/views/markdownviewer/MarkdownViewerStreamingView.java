@@ -1,6 +1,6 @@
 package com.webforj.samples.views.markdownviewer;
 
-import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -13,73 +13,17 @@ import com.webforj.component.markdown.MarkdownViewer;
 import com.webforj.component.field.TextField;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-
 import com.webforj.Interval;
+
+import com.webforj.component.event.KeypressEvent;
 
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Route
 @FrameTitle("Streaming Demo")
-@InlineStyleSheet(/* css */ """
-  .chat {
-    height: 450px;
-    max-height: 450px;
-    border: 1px solid var(--dwc-color-default);
-    border-radius: var(--dwc-border-radius-l);
-    background: var(--dwc-color-surface-1);
-    overflow: hidden;
-  }
-
-  .chat__header {
-    padding: var(--dwc-space-m) var(--dwc-space-l);
-    border-bottom: 1px solid var(--dwc-color-default);
-    font-weight: 600;
-    flex-shrink: 0;
-  }
-
-  .chat__messages {
-    flex: 1;
-    overflow-y: auto;
-    padding: var(--dwc-space-l);
-    min-height: 0;
-  }
-
-  .chat__thinking {
-    display: flex;
-    align-items: center;
-    gap: var(--dwc-space-s);
-    color: var(--dwc-color-default-text);
-    font-size: var(--dwc-font-size-s);
-    padding: var(--dwc-space-s) 0;
-  }
-
-  .chat__thinking dwc-icon {
-    animation: spin 1s linear infinite;
-  }
-
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  .chat__input-area {
-    padding: var(--dwc-space-m);
-    border-top: 1px solid var(--dwc-color-default);
-    background: var(--dwc-color-surface-2);
-    flex-shrink: 0;
-  }
-
-  .chat__input-wrapper {
-    display: flex;
-    gap: var(--dwc-space-s);
-    align-items: center;
-  }
-
-  .chat__input-wrapper dwc-field {
-    flex: 1;
-  }
-""")
+@StyleSheet("ws://css/markdownviewer/markdownviewerstreaming.css")
 public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
 
   private static final List<String> RESPONSES = List.of(
@@ -129,43 +73,59 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
       """
   );
 
-  private final FlexLayout self = getBoundComponent();
   private final FlexLayout messagesArea;
   private final MarkdownViewer viewer = new MarkdownViewer();
   private final TextField input = new TextField();
   private final Button sendButton = new Button(TablerIcon.create("send"));
-  private final Button stopButton = new Button(TablerIcon.create("player-stop-filled"));
+  private final Button stopButton = new Button(TablerIcon.create("square-filled"));
 
   private Div thinkingIndicator;
   private Interval streamInterval;
   private Interval delayInterval;
-  private boolean isStreaming = false;
   private final Random random = new Random();
 
   public MarkdownViewerStreamingView() {
+    FlexLayout self = getBoundComponent();
     self.setDirection(FlexDirection.COLUMN)
         .addClassName("chat")
-        .setMaxHeight("450px")
         .setStyle("overflow", "hidden");
 
+    messagesArea = createMessagesArea();
+
+    self.add(createHeader(), messagesArea, createInputArea());
+    self.setItemGrow(1, messagesArea);
+  }
+
+  private Div createHeader() {
     Div header = new Div();
     header.addClassName("chat__header");
-    header.add(new Span("AI Chat Demo"));
+    header.add(TablerIcon.create("message-chatbot"), new Span("AI Chat Demo"));
+    return header;
+  }
 
-    messagesArea = FlexLayout.create(viewer).vertical().build();
-    messagesArea.addClassName("chat__messages");
-    messagesArea.setStyle("overflowY", "auto");
+  private FlexLayout createMessagesArea() {
+    FlexLayout area = FlexLayout.create(viewer).vertical().build();
+    area.addClassName("chat__messages");
+    area.setStyle("overflowY", "auto");
 
     viewer.setProgressiveRender(true)
+        .setAutoScroll(true)
         .setRenderSpeed(6);
 
+    return area;
+  }
+
+  private Div createInputArea() {
     Div inputArea = new Div();
     inputArea.addClassName("chat__input-area");
 
-    Div inputWrapper = new Div();
-    inputWrapper.addClassName("chat__input-wrapper");
-
     input.setPlaceholder("Type a message...");
+    input.setWidth("100%");
+    input.onKeypress(e -> {
+      if (e.getKeyCode().equals(KeypressEvent.Key.ENTER)) {
+        sendMessage();
+      }
+    });
 
     sendButton.setTheme(ButtonTheme.PRIMARY);
     sendButton.onClick(e -> sendMessage());
@@ -174,11 +134,11 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
     stopButton.setVisible(false);
     stopButton.onClick(e -> stopStreaming());
 
-    inputWrapper.add(input, sendButton, stopButton);
-    inputArea.add(inputWrapper);
+    FlexLayout buttonWrapper = FlexLayout.create(sendButton, stopButton).build();
+    input.setSuffixComponent(buttonWrapper);
+    inputArea.add(input);
 
-    self.add(header, messagesArea, inputArea);
-    self.setItemGrow(1, messagesArea);
+    return inputArea;
   }
 
   private void sendMessage() {
@@ -190,8 +150,10 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
     if (!viewer.getContent().isEmpty()) {
       viewer.append("\n\n---\n\n");
     }
-    viewer.append("<p style=\"text-align:right;color:var(--dwc-color-primary);font-weight:500\">" 
-        + message.trim() + "</p>\n\n");
+    viewer.append("""
+        <p style="text-align:right;color:var(--dwc-color-primary);font-weight:500">%s</p>
+
+        """.formatted(message.trim()));
 
     input.setText("");
     showThinking();
@@ -205,22 +167,21 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
   }
 
   private void startStreaming() {
-    isStreaming = true;
     sendButton.setVisible(false);
     stopButton.setVisible(true);
 
     String response = RESPONSES.get(random.nextInt(RESPONSES.size()));
-    final int[] index = {0};
+    AtomicInteger index = new AtomicInteger(0);
 
     streamInterval = new Interval(0.04f, e -> {
-      if (index[0] < response.length()) {
-        int end = Math.min(index[0] + 4 + random.nextInt(4), response.length());
-        viewer.append(response.substring(index[0], end));
-        index[0] = end;
+      int current = index.get();
+      if (current < response.length()) {
+        int end = Math.min(current + 4 + random.nextInt(4), response.length());
+        viewer.append(response.substring(current, end));
+        index.set(end);
       } else {
         streamInterval.stop();
         viewer.whenRenderComplete().thenAccept(v -> {
-          isStreaming = false;
           sendButton.setVisible(true);
           stopButton.setVisible(false);
           input.focus();
@@ -231,12 +192,16 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
   }
 
   private void stopStreaming() {
+    if (delayInterval != null) {
+      delayInterval.stop();
+      delayInterval = null;
+    }
     if (streamInterval != null) {
       streamInterval.stop();
       streamInterval = null;
     }
+    hideThinking();
     viewer.stop();
-    isStreaming = false;
     sendButton.setVisible(true);
     stopButton.setVisible(false);
     input.focus();
@@ -253,6 +218,16 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
     if (thinkingIndicator != null) {
       messagesArea.remove(thinkingIndicator);
       thinkingIndicator = null;
+    }
+  }
+
+  @Override
+  protected void onDestroy() {
+    if (delayInterval != null) {
+      delayInterval.stop();
+    }
+    if (streamInterval != null) {
+      streamInterval.stop();
     }
   }
 }

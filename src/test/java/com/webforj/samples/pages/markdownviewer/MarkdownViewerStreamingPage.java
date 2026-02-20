@@ -12,6 +12,7 @@ public class MarkdownViewerStreamingPage {
   private final Locator inputField;
   private final Locator sendButton;
   private final Locator stopButton;
+  private final Locator thinkingIndicator;
 
   public MarkdownViewerStreamingPage(Page page) {
     this.viewer = page.locator("dwc-markdown-viewer");
@@ -19,6 +20,7 @@ public class MarkdownViewerStreamingPage {
     this.inputField = page.getByPlaceholder("Type a message...");
     this.sendButton = page.locator("dwc-button[theme='primary']");
     this.stopButton = page.locator("dwc-button[theme='danger']");
+    this.thinkingIndicator = page.locator(".chat__thinking");
   }
 
   public static String getRoute() {
@@ -45,4 +47,12 @@ public class MarkdownViewerStreamingPage {
     return stopButton;
   }
 
+  public Locator getThinkingIndicator() {
+    return thinkingIndicator;
+  }
+
+  public void sendMessage(String message) {
+    inputField.fill(message);
+    sendButton.click();
+  }
 }

@@ -51,7 +51,10 @@ public class MarkdownViewerProgressiveView extends Composite<FlexLayout> {
         .setSpacing("var(--dwc-space-m)")
         .setPadding("var(--dwc-space-l)");
 
-    speedChoice.setLabel("Render Speed");
+    speedChoice.setLabel("Render Speed")
+      .setWidth("200px")
+      .setStyle("align-self", "flex-end");
+    
     speedChoice.add("2", "Slow (2)");
     speedChoice.add("4", "Default (4)");
     speedChoice.add("6", "Fast (6)");
@@ -65,6 +68,7 @@ public class MarkdownViewerProgressiveView extends Composite<FlexLayout> {
     viewer.setProgressiveRender(true)
         .setRenderSpeed(4)
         .setMinHeight("350px")
+        .setStyle("background", "var(--dwc-surface-3)")
         .setStyle("border", "1px solid var(--dwc-color-default)")
         .setStyle("border-radius", "var(--dwc-border-radius-m)")
         .setStyle("padding", "var(--dwc-space-m)");
