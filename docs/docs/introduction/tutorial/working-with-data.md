@@ -34,7 +34,6 @@ In your POM, add the following dependencies:
 <dependency>
   <groupId>com.h2database</groupId>
   <artifactId>h2</artifactId>
-  <scope>runtime</scope>
 </dependency>
 ```
 
@@ -66,8 +65,9 @@ Before visually displaying or creating the data, this tutorial needs a way to re
 
 Create a class in `src/main/java/com/webforj/demos/entity` named `Customer.java`. It should have the `@Entity` annotation and include getter and setter methods for the customer values.
 
-```java title="Customer.java"
-@Entity
+<!-- vale off -->
+<ExpandableCode title="Customer.java" language="java" startLine={1} endLine={15}>
+{`@Entity
 @Table(name = "customers")
 public class Customer {
 
@@ -81,16 +81,76 @@ public class Customer {
   private Country country = Country.UNKNOWN;
 
   public enum Country {
-    UNKNOWN, GERMANY, ENGLAND, ITALY, USA
+    UNKNOWN,
+    GERMANY,
+    ENGLAND,
+    ITALY,
+    USA
   }
 
-  // Getters and setters
+  public Customer(String firstName, String lastName, String company, Country country) {
+    setFirstName(firstName).setLastName(lastName).setCompany(company).setCountry(country);
+  }
+
+  public Customer(String firstName, String lastName, String company) {
+    this(firstName, lastName, company, Country.UNKNOWN);
+  }
+
+  public Customer(String firstName, String lastName) {
+    this(firstName, lastName, "");
+  }
+
+  public Customer(String firstName) {
+    this(firstName, "");
+  }
+
+  public Customer() {
+  }
+
+  public Customer setFirstName(String newName) {
+    firstName = newName;
+    return this;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public Customer setLastName(String newName) {
+    lastName = newName;
+    return this;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public Customer setCompany(String newCompany) {
+    company = newCompany;
+    return this;
+  }
+
+  public String getCompany() {
+    return company;
+  }
+
+  public Customer setCountry(Country newCountry) {
+    country = newCountry;
+    return this;
+  }
+
+  public Country getCountry() {
+    return country;
+  }
 
   public Long getId() {
     return id;
   }
+
 }
-```
+`}
+</ExpandableCode>
+<!-- vale on -->
 
 :::note Unique IDs
 The created data model will also need a unique `id` for each entity. Instead of using a creation method for `id` values, use the `@Id` and the `@GeneratedValue` annotations to guarantee every customer gets a unique `id`.
@@ -142,7 +202,7 @@ This service class you'll create uses three Spring annotations:
 
 - **`@Transactional`** - This annotation tells Spring to run the method or class within a database transaction, so all operations inside are committed or rolled back together. More detail is available in Spring’s documentation, [Using @Transactional](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html#page-title).
 
-- **`@Autowired`** Spring uses this annotation to inject required dependencies. For this tutorial, it’s used for a constructor of a Spring component you’ve already defined, `CustomerRepository`. More detail is available in Spring’s documentation, [Using @Autowired](https://docs.spring.io/spring-framework/reference/core/beans/annotation-config/autowired.html).
+- **`@Autowired`** Spring uses this annotation to inject required dependencies. This tutorial uses field injection for a Spring component you’ve already defined, `CustomerRepository`. More detail is available in Spring’s documentation, [Using @Autowired](https://docs.spring.io/spring-framework/reference/core/beans/annotation-config/autowired.html).
 
 ```java title="CustomerService.java"
 @Service
@@ -325,20 +385,34 @@ After adding the columns, you need to specify which repository the `Table` shoul
 table.setRepository(customerService.getFilterableRepository());
 ```
 
-As some final touches for this step, you can use `setSize()` to set the table's size in pixels or other [CSS units](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units), and `setColumnsToAutoFit()` to automatically make each column the same width:
+### Table sizing {#table-sizing}
+
+For the table, you can use `setSize()` to set its size in pixels or other [CSS units](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units). By setting a maximum width relative to the screen’s width, you help your app be  more adaptive to smaller screens.
+
+For the columns, you can set the widths individually, or use one of the `Table` methods like `setColumnsToAutoFit()` to let webforJ handle the widths for you:
 
 ```java
 table.setSize("1000px", "294px");
+table.setMaxWidth("90vw");
 table.setColumnsToAutoFit();
+```
+
+### User interactions {#user-interactions}
+
+The `Table` component also has methods to control how users interact with the columns:
+
+```java
+table.setColumnsToResizable(false);
+table.getColumns().forEach(column -> column.setSortable(true));
 ```
 
 The highlighted portions of the `Application` class add the `Table` component, define its columns, and use `CustomerService` to retrieve the repository:
 
-```java title="Application.java" {6-10,21-32,34}
+```java title="Application.java" {6-10,21,26-35,41}
 @SpringBootApplication
-@StyleSheet("ws://css/app.css")
+@StyleSheet("ws://css/card.css")
 @AppTheme("system")
-@AppProfile(name = "DemoApplication", shortName = "DemoApplication")
+@AppProfile(name = "CustomerApplication", shortName = "CustomerApplication")
 public class Application extends App {
   private final CustomerService customerService;
 
@@ -357,17 +431,24 @@ public class Application extends App {
     Button btn = new Button("Info");
     Table<Customer> table = new Table<>();
 
-    mainFrame.addClassName("frame--border");
-    table.setSize("1000px", "294px");
+    mainFrame.setWidth("fit-content");
+    mainFrame.addClassName("card");
 
+    table.setSize("1000px", "294px");
+    table.setMaxWidth("90vw");
     table.addColumn("firstName", Customer::getFirstName).setLabel("First Name");
     table.addColumn("lastName", Customer::getLastName).setLabel("Last Name");
     table.addColumn("company", Customer::getCompany).setLabel("Company");
     table.addColumn("country", Customer::getCountry).setLabel("Country");
     table.setColumnsToAutoFit();
-
+    table.setColumnsToResizable(false);
+    table.getColumns().forEach(column -> column.setSortable(true));
     table.setRepository(customerService.getFilterableRepository());
-    btn.setTheme(ButtonTheme.PRIMARY).addClickListener(e -> OptionDialog.showMessageDialog("This is a demo!", "Info"));
+
+    btn.setTheme(ButtonTheme.PRIMARY)
+      .setMaxWidth(200)
+      .addClickListener(e -> OptionDialog.showMessageDialog("This is a demo!", "Info"));
+
     mainFrame.add(demo, btn, table);
   }
 
@@ -385,6 +466,6 @@ When you’ve finished this step, you can compare it to [2-working-with-data](ht
     mvn
     ```
 
-3. Open your browser and go to http://localhost:8080 to view the app.
+Running the app automatically opens a new browser at http://localhost:8080.
 
 With these changes, the app loads customer data from the database (or in-memory store), and displays it in a `Table` component. The next step introduces routing and multiple views for editing and adding customers.
