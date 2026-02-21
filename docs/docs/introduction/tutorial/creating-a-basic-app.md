@@ -38,10 +38,11 @@ Inside the `Application` class, the `SpringApplication.run()` method uses the co
 
 ```java title="Application.java"
 @SpringBootApplication
-@StyleSheet("ws://css/app.css")
+@StyleSheet("ws://css/card.css")
 @AppTheme("system")
-@AppProfile(name = "DemoApplication", shortName = "DemoApplication")
+@AppProfile(name = "CustomerApplication", shortName = "CustomerApplication")
 public class Application extends App {
+
   public static void main(String[] args) {
     SpringApplication.run(Application.class, args);
   }
@@ -63,7 +64,9 @@ To do this, override the `App.run()` method and create a `Frame` to add componen
 @Override
 public void run() throws WebforjException {
   Frame mainFrame = new Frame();
+
   // Create UI components and add to the frame
+
 }
 ```
 
@@ -75,8 +78,10 @@ Create a new instance of the component, then use the `add()` method to add it to
 ```java
 // Create the container for the UI elements
 Frame mainFrame = new Frame();
+
 // Create the HTML component
 Paragraph demo = new Paragraph("Demo Application!");
+
 // Add the component to the container
 mainFrame.add(demo);
 ```
@@ -91,35 +96,55 @@ Most webforJ component methods that modify a component return the component itse
 ```java
 // Create the container for the UI elements
 Frame mainFrame = new Frame();
+
 // Create the webforJ component
 Button btn = new Button("Info");
+
 // Modify the webforJ component, and add an event listener
-btn.setTheme(ButtonTheme.PRIMARY).addClickListener(e -> OptionDialog.showMessageDialog("This is a demo!", "Info"));
+btn.setTheme(ButtonTheme.PRIMARY)
+  .addClickListener(e -> OptionDialog.showMessageDialog("This is a demo!", "Info"));
+
 // Add the component to the container
 mainFrame.add(btn);
 ```
 
 ## Styling with CSS {#styling-with-css}
 
-Most webforJ components have built-in methods to make common style changes, such as sizing and theming. In addition to these methods, you can style your app using CSS. 
-See the [Styling](/docs/styling/overview) documentation for detailed information on how to style webforJ components, and see the **Styling** section of any component's documentation page for specific details about its styling.
+Most webforJ components have built-in methods to make common style changes, such as sizing and theming.
 
-### Referencing a CSS file {#refrencing-a-css-file} 
+```java
+//Set the Frame's width using a CSS keyword
+mainFrame.setWidth("fit-content");
 
-It's best to have a separate CSS file to keep everything organized and maintainable. Create a file named `app.css` inside `src/main/resources/static/css`, with the following CSS class definition:
+//Set the Button's max-width using pixels
+btn.setMaxWidth(200);
 
-```css title="app.css"
-.frame--border {
-  display: inline-grid;
-  gap: 20px;
-  margin: 20px;
-  padding: 20px;
-  border: 1px dashed;
-  border-radius: 10px;
+//Set the Button theme to PRIMARY
+btn.setTheme(ButtonTheme.PRIMARY);
+```
+
+In addition to these methods, you can style your app using CSS. The **Styling** section of any component's documentation page has specific details about the relevant CSS properties.
+
+webforJ also comes with a set of designed CSS variables called DWC tokens. See the [Styling](/docs/styling/overview) documentation for detailed information on how to style webforJ components, and how to use the tokens.
+
+### Referencing a CSS file {#referencing-a-css-file} 
+
+It's best to have a separate CSS file to keep everything organized and maintainable. Create a file named `card.css` inside `src/main/resources/static/css`, with the following CSS class definition:
+
+```css title="card.css"
+.card {
+  display: grid;
+  gap: var(--dwc-space-l);
+  padding: var(--dwc-space-l);
+  margin: var(--dwc-space-l) auto;
+  border: thin solid var(--dwc-color-default);
+  border-radius: 16px;
+  background-color: var(--dwc-surface-3);
+  box-shadow: var(--dwc-shadow-xs);
 }
 ```
 
-Then, reference the file in `Application.java` by using the `@StyleSheet` annotation with the name of the CSS file. For this step, it's `@StyleSheet("ws://css/app.css")`.
+Then, reference the file in `Application.java` by using the `@StyleSheet` annotation with the name of the CSS file. For this step, it's `@StyleSheet("ws://css/card.css")`.
 
 :::tip Webserver protocol
 This tutorial uses a webserver to reference the CSS file. To learn more about how this works, see [Managing Resources](/docs/managing-resources/overview).
@@ -130,7 +155,7 @@ This tutorial uses a webserver to reference the CSS file. To learn more about ho
 You can dynamically add or remove class names to components using the `addClassName()` and `removeClassName()` methods. For this tutorial, there’s only one CSS class used:
 
 ```java
-mainFrame.addClassName("frame--border");
+mainFrame.addClassName("card");
 ```
 
 ## Completed `Application` {#completed-application}
@@ -139,9 +164,9 @@ Your `Application` class should now look similar to the following:
 
 ```java title="Application.java"
 @SpringBootApplication
-@StyleSheet("ws://css/app.css")
+@StyleSheet("ws://css/card.css")
 @AppTheme("system")
-@AppProfile(name = "DemoApplication", shortName = "DemoApplication")
+@AppProfile(name = "CustomerApplication", shortName = "CustomerApplication")
 public class Application extends App {
 
   public static void main(String[] args) {
@@ -153,9 +178,14 @@ public class Application extends App {
     Frame mainFrame = new Frame();
     Paragraph demo = new Paragraph("Demo Application!");
     Button btn = new Button("Info");
-    mainFrame.addClassName("frame--border");
 
-    btn.setTheme(ButtonTheme.PRIMARY).addClickListener(e -> OptionDialog.showMessageDialog("This is a demo!", "Info"));
+    mainFrame.setWidth("fit-content");
+    mainFrame.addClassName("card");
+
+    btn.setTheme(ButtonTheme.PRIMARY)
+      .setMaxWidth(200)
+      .addClickListener(e -> OptionDialog.showMessageDialog("This is a demo!", "Info"));
+
     mainFrame.add(demo, btn);
   }
 }
@@ -176,7 +206,7 @@ When you’ve finished this step, you can compare it to [1-creating-a-basic-app]
     mvn
     ```
 
-3. Open your browser and go to http://localhost:8080 to view the app.
+Running the app automatically opens a new browser at http://localhost:8080.
 
 ## Next step {#next-step}
 

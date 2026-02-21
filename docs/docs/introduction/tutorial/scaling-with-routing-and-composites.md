@@ -4,8 +4,9 @@ sidebar_position: 4
 description: Step 3 - Learn how to add navigation.
 ---
 
-Up until now, this tutorial has only been a single-page app. This step changes that. Using the data from [Working with Data](/docs/introduction/tutorial/working-with-data) and applying the following concepts, you'll create an app that's able to navigate between multiple pages and includes concepts such as:
+Up until now, this tutorial has only been a single-page app. This step changes that. Using the data from [Working with Data](/docs/introduction/tutorial/working-with-data) you'll create an app that's able to navigate between multiple pages and able to edit the customer data in the browser by applying these concepts:
 
+- Routing
 - Composite components
 - Passing parameter values through a URL
 - Lifecycle observers
@@ -18,25 +19,28 @@ Completing this step creates a version of [3-scaling-with-routing-and-composites
   </video>
 </div> -->
 
-## Using routing {#using-routing}
+## Allow your app to be routable {#allow-your-app-to-be-routable}
 
-The tutorial uses [Routing](/docs/routing/overview) for navigation. Each page of the app will now be represented as a view, and a defined URL.
+A routable app renders the UI based on the URL. Annotating the class that extends the `App` class with [`@Routify`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/Routify.html) tells webforJ the package that'll contain UI components.
 
-### Enabling routing {#enabling-routing}
+When you're adding the `@Routify` annotation to `Application`, also take out the UI components from the `run()` method and the `@StyleSheet` annotation. You'll move these parts to a class that you'll make in the `com.webforj.demos.views` package:
 
-To enable routing in your app, annotate the class extending the `App` class with [`@Routify`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/Routify.html). In the annotation, specify what directory will contain the views. This step also takes out the UI components from the `run()` method and the `@StyleSheet` annotation. You'll move these parts to a separate view class:
-
-```java title="Application.java" {4}
+```java title="Application.java" {3,5,6,14}
 @SpringBootApplication
 @AppTheme("system")
-// Removed `@StyleSheet` annotation
+// Removed @StyleSheet annotation
+
+//Added @Routify annotation
 @Routify(packages = "com.webforj.demos.views")
-@AppProfile(name = "DemoApplication", shortName = "DemoApplication")
+@AppProfile(name = "CustomerApplication", shortName = "CustomerApplication")
 public class Application extends App {
+
   public static void main(String[] args) {
     SpringApplication.run(Application.class, args);
   }
+
 // Removed overridden App.run() method
+
 }
 ```
 
@@ -46,62 +50,184 @@ Keeping the `@StyleSheet` annotation in `Application` would apply that CSS to th
 
 ## Creating views {#creating-views}
 
-This tutorial will require two views, each represented by a separate class. The first view, `DemoView`, will have the UI components that were initially in the `Application` class. The second view, `FormView`, will be for editing and adding customer data.
+Using the `@Routify` annotation tells webforJ which packages contain UI content. You determine how components map to the URL by setting the [Route Type](/docs/routing/route-hierarchy/route-types).
 
-Both views will have the following:
+There are two [Route Types](/docs/routing/route-hierarchy/route-types) to use for classes with UI content. `View` routes contain UI components directly, while `Layout` routes contain child routes for UI components shared across multiple views. Creating a class that ends in `View` automatically makes it a `View` route.
 
-- **Composite components** - Both views extend the `Composite` component. [Composite components](/docs/building-ui/composite-components) are wrappers that make it easy to create reusable components.
-  This tutorial wraps both views in `Div` elements, but `Composite` components can encapsulate any component, like [`FlexLayout`](/docs/components/flex-layout) or [`AppLayout`](/docs/components/app-layout).
+In `/src/main/java/com/webforj/demos/views`, create two classes:
 
-- **`@Route` annotation** - The [`@Route`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/Route.html) annotation defines URLs to navigate to specific views.
-- **`@FrameTitle` annotation** - The [`@FrameTitle`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/FrameTitle.html) annotation defines what appears in the browser's title or page's tab.
+- **`MainView`** - The view with the UI components that were initially in the `Application` class.
+- **`FormView`** - The view with the new UI for editing and adding customer data.
 
-## Creating `DemoView` {#creating-demoview}
+The next few sections are the shared characteristics between `MainView` and `FormView`.
 
-As mentioned previously, `DemoView` will contain the UI components initially in `Application`. In `/src/main/java/com/webforj/demos/views`, create `DemoView`.
+### Using `Composite` components {#using-composite-components}
 
-### Making `DemoView` the home page {#making-demoview-the-home-page}
+The views needs a wrapper for the UI on each page. When the app was single-paged, you stored the components inside a `Frame`, but moving forward, you'll store the UI in [`Composite` components](/docs/building-ui/composite-components).
 
-By default, adding the `@Route` annotation creates a URL for the view based on the filename. However, setting it to `@Route("/")` makes `DemoView` the root, so it becomes the home page of your app. 
-
-:::tip Default route
-You can specify the root view by simply omitting any parameter in the annotation as well.
-:::
-
-### Navigating from `DemoView` to `FormView` {#navigating-from-demoview-to-formview}
-
-You will use the `Router` class twice to navigate from `DemoView` to `FormView` for adding and editing customer data. To navigate to the `FormView` page, you can add the following line of code into your app, such as in an event:
+`Composite` components are wrappers that make it easy to create reusable components. You use `Composite` components by extending a class with a `Composite` and set a bound component. This tutorial uses `Div` elements as the bound components, but they can be any component, such as [`FlexLayout`](/docs/components/flex-layout) or [`AppLayout`](/docs/components/app-layout).
 
 ```java
-Router.getCurrent().navigate(FormView.class)
+// Extend Composite with a bound component
+public class BasicView extends Composite<Div> {
+
+  // Access the bound component
+  private Div self = getBoundComponent();
+
+  // Create a component UI
+  private Button submit = new Button("Submit");
+
+  public BasicView() {
+
+    // Add the UI component to the bound component
+    self.add(submit);
+
+  }
+}
 ```
 
-**Adding customers**
+### Mapping URLs to components {#mapping-urls-to-components}
 
-In this case, navigation to `FormView` for new customers will occur from a `ButtonClickEvent`:
+While the `@Routify` annotation tells webforJ where viewable components are, using the `@Route` annotation tells webforJ where and when to load the view class based on the given URL segment. For example, Using `@Route("customer")` locally maps the class to [http://localhost:8080/**customer**](http://localhost:8080/customer).
+
+Setting the route for `MainView` to `@Route("/")` to makes it the intital page when your app runs.
+
+Routes can also contain patterns. Adding a [Route Pattern](/docs/routing/route-patterns) lets you add a parameter in the URL, make it optional, and set constraints on valid patterns. `FormView` needs this to get the customer `id` as a number. Here's what setting the route to `customer/:id?<[0-9]+>` does:
+
+- **`customer`** - This loads `FormView` at `/customer`.
+- **`/:id`** - Captures an `id` as a parameter when loading `FormView`, so going to [http://localhost:8080/**customer/6**](http://localhost:8080/customer/6) loads `FormView` with an `id` parameter of `6`.
+- **`?`** - Lets the `id` be an optional parameter.
+- **`<[0-9]+>`** - Constraints the `id`, when present, to be a positive number. If it’s not present, it’ll send the user to a 404 page.
+
+Add the mentioned `@Route` annotations to your view classes.
+
+```java title="MainView.java" {1}
+@Route("/")
+public class MainView extends Composite<Div> {
+
+  private Div self = getBoundComponent();
+
+  public MainView() {
+
+  }
+}
+```
+
+```java title="FormView.java" {1}
+@Route("customer/:id?<[0-9]+>")
+public class FormView extends Composite<Div> {
+
+  private Div self = getBoundComponent();
+
+  public FormView() {
+
+  }
+}
+```
+
+:::tip Default behavior
+If you don’t explicitly assign a value for the `@Route` annotation, the resulting URL segment becomes the class name converted to all lowercase, with the `View` suffix removed.
+
+- `MainView` would map to `/main`
+- `FormView` would map to `/form`
+:::
+
+### Using `CustomerService` {#using-customerservice}
+
+Both views interact with the customer data, so include the `CustomerService` class from [Working with Data](/docs/introduction/tutorial/working-with-data) as a constructor parameter for `MainView` and `FormView`. 
+
+```java {6-7}
+@Route()
+public class BasicView extends Composite<Div> {
+
+  private Div self = getBoundComponent();
+
+  public BasicView(CustomerService customerService) {
+    this.customerService = customerService;
+
+  }
+}
+```
+
+### Setting the frame title {#setting-the-frame-tile}
+
+The last part that the views share is a customer frame title. The [`@FrameTitle`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/FrameTitle.html) annotation defines what appears in the browser's title or page's tab. The rest of this step individually focuses on the views.
+
+```java title="MainView.java" {2}
+@Route("/")
+@FrameTitle("Customer Table")
+public class MainView extends Composite<Div> {
+
+  private Div self = getBoundComponent();
+
+  public MainView(CustomerService customerService) {
+    this.customerService = customerService;
+
+  }
+}
+```
+
+```java title="FormView.java" {2}
+@Route("customer/:id?<[0-9]+>")
+@FrameTitle("Customer Form")
+public class FormView extends Composite<Div> {
+
+  private Div self = getBoundComponent();
+
+  public FormView(CustomerService customerService) {
+    this.customerService = customerService;
+
+  }
+}
+```
+
+## Creating `MainView` {#creating-mainview}
+
+As mentioned previously, `MainView` will contain the UI components initially in `Application`. This class also needs a way to navigate to `FormView` for new and existing customers.
+
+## Moved `@StyleSheet` annotation {#moved-stylesheet-annotation}
+
+Originally, having the `@StyleSheet` annotation in `Application` meant that CSS was accessible to the entire app. Moving the annotation to the view level means the app loads the CSS file only when needed, as `FormView` won’t need the `.card` CSS class.
+
+### Navigating from `MainView` to `FormView` to add customers {#navigating-from-mainview-to-formview-to-add-customers}
+
+The [`Router`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/router/Router.html) class allows you to navigate between different classes by getting a current instance of the `Router` and using the `navigate()` method to navigate from the current class to the desired destination. You'll use this to get from `MainView` to `FormView`. 
+
+```java
+Router.getCurrent().navigate(FormView.class);
+```
+
+You now have a way to programmatically send users to the form that adds new customers. It should be the user’s decision to go from the table to the new form, so it's time to associate the navigation with a user's action.
+
+To allow users to add a new customer, you can either modify or replace the existing info button from the previous step. Instead of opening a message dialog, have the event grab the current `Router`, then send the user to the `FormView` class:
 
 ```java
 private Button add = new Button("Add Customer", ButtonTheme.PRIMARY,
     e -> Router.getCurrent().navigate(FormView.class));
 ```
 
-**Editing customers**
+### Navigating from `MainView` to `FormView` to edit customers {#navigating-from-mainview-to-formview-to-edit-customers}
 
-While `DemoView` shows data for all customers, `FormView` only shows one customer's data at a time. To navigate to `FormView` for an existing customer, the app needs a way to pass along that information.
+Sending a user straight to the `FormView` class with no values is fine for adding a new customer, but how's the app supposed to know when to go to `FormView` for an existing customer?
 
-You'll achieve this by using the customer's `id`. To get the `id`, first set the key provider for the `Table` using the `getId()` method that was made in [Working with Data](/docs/introduction/tutorial/working-with-data):
+You can pass a customer `id` as a [query parameter](/docs/routing/query-parameters), and webforJ sends it in a `ParametersBag`. Query parameters are additional data passed in the URL. You already made a route pattern for `FormView` in [Mapping URLs to components](#mapping-urls-to-components), so `FormView` already expects to get a value for `id`. Now there’s a new question: how to get the `id` of a specific customer? 
+
+Similar to the button, tying the navigation to a user-chosen action lets them decide when to go to `FormView`. Adding an event listener to the
+`Table` lets your app know which customer the user clicked, and sends that customer's `id` to `FormView`.
+
+The `Table` created in [Working with Data](/docs/introduction/tutorial/working-with-data) contains the data of each customer. By using `setKeyProvider()`, associate the data in the cells to the `id` of the customer it came from, without having to visually display it:
 
 ```java
 table.setKeyProvider(Customer::getId);
 ```
 
-Adding an event listener whenever the user clicks a row on the `Table` retrieves the key, which is now the customer `id`:
+Add the event listener whenever the user clicks a row on the `Table` to retrieve the key, which is now the customer `id`:
 
 ```java
 table.addItemClickListener(e -> e.getItemKey());
 ```
 
-Then, using the same type of event listener, you can navigate to `FormView` and put the customer `id` in a `ParametersBag`. The `ParametersBag` passes additional data through URLs, and allows `FormView` to have a [query parameter](/docs/routing/query-parameters):
+Then, using the same type of event listener, navigate to `FormView` with the `id` in the `ParametersBag`. The `ParametersBag` passes additional data through URLs, and allows you to send the query parameter to `FormView`:
 
 ```java
 private void editCustomer(TableItemClickEvent<Customer> e) {
@@ -110,49 +236,70 @@ private void editCustomer(TableItemClickEvent<Customer> e) {
 }
 ```
 
-### Completed `DemoView` {#completed-demoview}
+### Grouping the `Table` methods {#grouping-the-table-methods}
 
-Here's a look at what `DemoView` should look like before moving on to create `FormView`:
+With added navigation, your app is growing more complex. It's a good idea to section parts of your app, so one custom method can make changes to the `Table` together. This custom method should also include the newly added methods that add the event listener and set the key provider:
 
-:::note Cleaner code
-As your app grows more complex, it's a good idea to section parts of your app. The methods for creating the `Table` component were grouped into a single method.
-:::
+```java
+private void buildTable() {
+  table.setSize("1000px", "294px");
+  table.setMaxWidth("90vw");
+  table.addColumn("firstName", Customer::getFirstName).setLabel("First Name");
+  table.addColumn("lastName", Customer::getLastName).setLabel("Last Name");
+  table.addColumn("company", Customer::getCompany).setLabel("Company");
+  table.addColumn("country", Customer::getCountry).setLabel("Country");
+  table.setColumnsToAutoFit();
+  table.getColumns().forEach(column -> column.setSortable(true));
+  table.setRepository(customerService.getFilterableRepository());
+
+  // Methods to get the customer id when navigating to FormView
+  table.setKeyProvider(Customer::getId);
+  table.addItemClickListener(this::editCustomer);
+  }
+```
+
+## Completed `MainView` {#completed-mainview}
+
+With the added navigation features and grouped table methods, here's a look at what `MainView` should look like before moving to `FormView`:
 
 <!-- vale off -->
-<ExpandableCode title="DemoView.java" language="java" startLine={1} endLine={15}>
-{`
+<ExpandableCode title="MainView.java" language="java" startLine={1} endLine={15}>
+{`@StyleSheet("ws://css/card.css")
 @Route("/")
-@FrameTitle("Demo")
-public class DemoView extends Composite<Div> {
+@FrameTitle("Customer Table")
+public class MainView extends Composite<Div> {
 
   private final CustomerService customerService;
 
-  private Table<Customer> table = new Table<>();
   private Div self = getBoundComponent();
+  private Table<Customer> table = new Table<>();
   private Button add = new Button("Add Customer", ButtonTheme.PRIMARY,
       e -> Router.getCurrent().navigate(FormView.class));
 
-  public DemoView(CustomerService customerService) {
+  public MainView(CustomerService customerService) {
     this.customerService = customerService;
 
     add.setWidth(200);
     buildTable();
-    table.setKeyProvider(Customer::getId);
-    table.addItemClickListener(this::editCustomer);
-    FlexLayout layout = FlexLayout.create(table, add)
-        .vertical().contentAlign().center().build().setPadding("var(--dwc-space-l)");
-    self.add(layout);
-  }
 
+    self.setWidth("fit-content")
+      .addClassName("card")
+      .add(table, add);
+  }
+  
   private void buildTable() {
-    table.setHeight("294px");
+    table.setSize("1000px", "294px");
+    table.setMaxWidth("90vw");
     table.addColumn("firstName", Customer::getFirstName).setLabel("First Name");
     table.addColumn("lastName", Customer::getLastName).setLabel("Last Name");
     table.addColumn("company", Customer::getCompany).setLabel("Company");
     table.addColumn("country", Customer::getCountry).setLabel("Country");
     table.setColumnsToAutoFit();
+    table.setColumnsToResizable(false);
     table.getColumns().forEach(column -> column.setSortable(true));
     table.setRepository(customerService.getFilterableRepository());
+    table.setKeyProvider(Customer::getId);
+    table.addItemClickListener(this::editCustomer);
   }
 
   private void editCustomer(TableItemClickEvent<Customer> e) {
@@ -164,28 +311,44 @@ public class DemoView extends Composite<Div> {
 </ExpandableCode>
 <!-- vale on -->
 
-## Creating `FormView` {#creating-formview}
+## Adding a UI to `FormView` {#adding-a-ui-to-formview}
 
-The next view to create in `/src/main/java/com/webforj/demos/views` is `FormView`.
-This class will need to distinguish between new and existing customers when loading and populating the fields as necessary.
+`FormView` will include multiple UI components to edit each customer property. Instead of editing the repository directly, you'll create a new `Customer` instance and initialize it with the same values. The initial data for `FormView` is covered in a later section, [Routing to `FormView`](#routing-to-formview). For now, just focus on adding the UI components.
+
+This new instance acts as a working copy for the form. The UI edits this copy only. The original `Customer` in the repository remains unchanged until you explicitly use the `CustomerService` to update the repository with the `Customer` copy.
 
 ### Adding components for each property {#adding-components-for-each-property}
 
-Each customer's property, except for the `id`, gets an editable field on the form. Whenever those values change, they're updated in a copy of a customer entity without changing the actual repository. The initial values will be set in a later section of this step, [Loading data on the `DidEnterObserver`](#loading-data-on-the-didenterobserver).
+Every customer's property, aside from the `id`, should have a corresponding component on the form. Initially, the `id` on the form will be `0`, but later you’ll add a way to change it, along with the other initial values for each property.
 
-Naming the components the same as the properties they're representing in the `Customer` entity also makes it easier to bind data in the next step, [Validating and Binding Data](/docs/introduction/tutorial/validating-and-binding-data).
+Naming the components the same as the properties they're representing in the `Customer` entity makes it easier to bind data in the next step, [Validating and Binding Data](/docs/introduction/tutorial/validating-and-binding-data).
 
-```java
-Customer customer = new Customer();
-Long customerId = 0L;
-TextField firstName = new TextField("First Name", e -> customer.setFirstName(e.getValue()));
-TextField lastName = new TextField("Last Name", e -> customer.setLastName(e.getValue()));
-TextField company = new TextField("Company", e -> customer.setCompany(e.getValue()));
-ChoiceBox country = new ChoiceBox("Country",
-    e -> customer.setCountry(Country.valueOf(e.getSelectedItem().getText())));
+The first name, last name, and company properties can use the [`TextField`](/docs/components/fields/textfield) component. With this component, you can add a label and an event listener that fires whenever the field value changes. Each event listener should update the `Customer` copy for the corresponding property.
+
+Add declarations for the `Customer`, `id`, and the three `TextField` components:
+
+```java title="FormView.java" {4-5,9-11}
+public class FormView extends Composite<Div> {
+  private final CustomerService customerService;
+
+  private Customer customer = new Customer();
+  private Long customerId = 0L;
+
+  private Div self = getBoundComponent();
+
+  private TextField firstName = new TextField("First Name", e -> customer.setFirstName(e.getValue()));
+  private TextField lastName = new TextField("Last Name", e -> customer.setLastName(e.getValue()));
+  private TextField company = new TextField("Company", e -> customer.setCompany(e.getValue()));
+
+  public FormView(CustomerService customerService) {
+    this.customerService = customerService;
+  }
+}
 ```
 
-Since the list of countries is from a defined list, make a method to add each country for the `ChoiceBox` choices:
+Meanwhile, since you already know the country property can only be one of five values: `UNKNOWN`, `GERMANY`, `ENGLAND`, `ITALY`, and `USA`, that property should be editable in a [`ChoiceBox`](/docs/components/lists/choicebox). The `ChoiceBox` component is good for when you have a predefined list of options.
+
+To add the options to a `ChoiceBox`, create a method that puts the enum values from the `Customer` class into an `ArrayList<ListItem>` and put the `ArrayList<ListItem>` into the `ChoiceBox`.
 
 ```java
 private void fillCountries() {
@@ -197,9 +360,170 @@ private void fillCountries() {
 }
 ```
 
+Like the `TextField` components, add `ChoiceBox` with a label and an event listener to the `ChoiceBox`. This event listener updates the customer's customer whenever a user selects an option from the `ChoiceBox`.
+
+```java title="FormView.java" {10-11,16,20-26}
+public class FormView extends Composite<Div> {
+  private final CustomerService customerService;
+  private Customer customer = new Customer();
+  private Long customerId = 0L;
+  private Div self = getBoundComponent();
+  private TextField firstName = new TextField("First Name", e -> customer.setFirstName(e.getValue()));
+  private TextField lastName = new TextField("Last Name", e -> customer.setLastName(e.getValue()));
+  private TextField company = new TextField("Company", e -> customer.setCompany(e.getValue()));
+
+  private ChoiceBox country = new ChoiceBox("Country",
+      e -> customer.setCountry(Country.valueOf(e.getSelectedItem().getText())));
+
+  public FormView(CustomerService customerService) {
+    this.customerService = customerService;
+
+    fillCountries();
+
+  }
+
+  private void fillCountries() {
+    ArrayList<ListItem> listCountries = new ArrayList<>();
+    for (Country countryItem : Customer.Country.values()) {
+      listCountries.add(new ListItem(countryItem, countryItem.toString()));
+    }
+    country.insert(listCountries);
+  }
+
+}
+```
+
+### Laying out the components {#laying-out-the-components}
+
+Right now, `FormView` has four components for the form's editable parts, but it still needs buttons for submitting and canceling.
+ 
+```java
+private Button submit = new Button("Submit");
+private Button cancel = new Button("Cancel");
+```
+
+You can skip ahead to the next sections to create more detailed events for the buttons, but this section covers how to group and layout the components on the form. Using [`FlexLayout`](/docs/components/flex-layout) and [`ColumnsLayout`](/docs/components/columns-layout) for component placement allows your app to achieve dynamic sizing by avoiding explicit width settings. These layouts control how many columns to use, how to space components, and how components should fit within the layouts.
+
+The buttons will be placed in a [`FlexLayout`](/docs/components/flex-layout). Using the `create()` methods makes a [`FlexLayoutBuilder`](https://javadoc.io/doc/com.webforj/webforj-flexlayout/latest/com/webforj/component/layout/flexlayout/FlexLayoutBuilder.html). That allows you to chain methods together, so the buttons in the following `Flexlayout` will be horizontally aligned and spaced out to have even spacing between the two components: 
+
+```java
+private FlexLayout buttonsLayout = FlexLayout.create(submit, cancel)
+  .horizontal()
+  .justify().between()
+  .build();
+```
+
+Then, you can explicitly set the size of the spacing; here, the tutorial uses a CSS token from DWC:
+
+```java
+buttonsLayout.setSpacing("var(--dwc-space-3xl)");
+```
+
+Once that’s done, you can set how items should grow proportionally to one another. A section in the `FlexLayout` article, [Flex grow/shrink](/docs/components/flex-layout#flex-grow--shrink), goest into more detail, but all you need to know for this tutorial is the following line makes both components the same size:
+
+```java
+buttonsLayout.setItemGrow(1, submit, cancel);
+```
+
+The next layout to use is `ColumnsLayout`. This layout controls how many columns to have at different widths. Here, add all the form components, as well as the layout that contains the buttons: 
+
+```java
+private ColumnsLayout columnsLayout = new ColumnsLayout(
+  firstName, lastName,
+  company, country,
+  buttonsLayout);
+```
+
+To tell when the `ColumnsLayout` should have a certain number of columns, you’d use breakpoints. The
+[Breakpoints](/docs/components/columns-layout#breakpoints) section in the `ColumnsLayout` article explains it in detail, but essentially the following breakpoints make it so the layout allows two components if the layout is larger than 600px in width, otherwise it’ll only have one column:
+
+```java
+List<Breakpoint> breakpoints = List.of(
+  new Breakpoint(0, 1),
+  new Breakpoint(600, 2));
+
+columnsLayout.setBreakpoints(breakpoints);
+```
+
+The `ColumnsLayout` is going to treat the layout with the buttons as one component, but to have it stretch across two columns, you can use `setSpan()`:
+
+```java
+columnsLayout.setSpan(buttonsLayout, 2);
+```
+
+To bring the layouts all together, add the `FlexLayout` to the bound component, and declare a method that handles the configurations for each layout:
+
+```java
+public class FormView extends Composite<Div> implements WillEnterObserver {
+  //Declared components from earlier
+
+  private FlexLayout buttonsLayout = FlexLayout.create(submit, cancel)
+      .horizontal()
+      .justify().between()
+      .build();
+
+  private ColumnsLayout columnsLayout = new ColumnsLayout(
+      firstName, lastName,
+      company, country,
+      buttonsLayout);
+
+  public FormView(CustomerService customerService) {
+    this.customerService = customerService;
+    
+    fillCountries();
+    setLayouts();
+
+    self.setMaxWidth(600)
+      .setHeight("100dvh")
+      .setStyle("margin", "var(--dwc-space-l) auto")
+      .add(columnsLayout);
+  }
+
+  private void setLayouts() {
+    buttonsLayout.setSpacing("var(--dwc-space-3xl)")
+      .setItemGrow(1, submit, cancel)
+      .setMargin("var(--dwc-space-l) 0");
+
+    columnsLayout.setSpacing("var(--dwc-space-3xl)")
+      .setStyle("padding", "var(--dwc-space-l)")
+      .setSpan(buttonsLayout, 2);
+
+    List<Breakpoint> breakpoints = List.of(
+      new Breakpoint(0, 1),
+      new Breakpoint(600, 2));
+    columnsLayout.setBreakpoints(breakpoints);
+  }
+```
+
+### Navigating to `MainView` {#navigating-to-mainview}
+
+In addition to the components that edit customer data, you'll need a button that allows the user to discard their changes. This should return the user to `MainView`.
+
+Since there will be multiple actions that should send the user back to `MainView`, add a method to encapsulate that navigation, allowing you to reuse it in `FormView`:
+
+```java
+private void navigateToMain(){
+  Router.getCurrent().navigate(MainView.class);
+}
+```
+
+After adding the `navigateToMain()` method to `FormView`, and add an event to the cancel button that uses `navigateToMain()`:
+
+```java
+Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
+```
+
 ### Adding or editing a customer {#adding-or-editing-a-customer}
 
-Using `CustomerService`, you can update the H2 database by either adding a customer or modifying an existing one. To tell your app which action to take, add a verification on the customer's `id`. The initial `id` is 0, but gets overwritten with the rest of the properties if there's a valid customer.
+With the `TextField` and `ChoiceBox` components, a user can make changes to a `Customer` that don’t affect the repository directly. When they’re ready to commit those changes, there should be a submit button that uses the `CustomerService` to update the H2 database.
+
+One button can update the H2 database by either adding a customer or modifying an existing one. To tell your app which action to take, you can compare the current `customerId` to the repository using `doesCustomerExist()`.
+
+Initially, `FormView` has a `customerId` value of `0`. If left untouched, the `CustomerService` class should create a new customer in the H2 database, and assigns it a new unique `id`.
+
+However, if the `customerId` value is redefined for an existing customer, the `CustomerService` class should update the H2 database with the contents of the `Customer` copy.
+
+Add an event to the sumbit button with the following logic using the `CustomerService` class:
 
 ```java
 Button submit = new Button("Submit", ButtonTheme.PRIMARY, e -> submitCustomer());
@@ -212,169 +536,188 @@ private void submitCustomer() {
   } else {
     customerService.createCustomer(customer);
   }
-  Router.getCurrent().navigate(DemoView.class);
+  navigateToMain();
 }
 ```
 
-### Navigation outline {#navigation-outline}
+The next section focuses on retrieving the `customerId` value and using it to initialize the values for the  UI components.
 
-Before going over the navigation code for `FormView`, it'll be helpful to outline what needs to happen before the view loads. When entering `FormView`, part of the URL is used to determine which customer data to load. For example, going to http://localhost:8080/customer/5 would load the data for the customer with the `id` of 5.
+## Routing to `FormView` {#routing-to-formview}
 
-While using the UI to navigate from `DemoView` to `FormView` results in a valid URL, putting checks in place prevents errors if a user manually enters a URL to `FromView` that doesn't correlate with an existing customer, like http://localhost:8080/customer/5000 or http://localhost:8080/customer/john-smith. Those invalid URLs will redirect users back to `DemoView`.
+`MainView` will always show the full table for each customer, but the content of `FormView` is dynamic: it’s either showing an existing customer’s details or blank fields to add a new customer.
+
+In this section, you'll focus on using the URL and specific stages of navigating to determine what `Customer` to intitailize for the fields.
+
+### Handling the `id` before entering `FormView` {#handling-the-id-before-entering-formview}
+
+In a previous section of this step, [Mapping URLs to components](#mapping-urls-to-components), you added the route pattern `customer/:id?<[0-9]+>` to `FormView`. This pattern allows users to enter with an optional parameter, but only accepts whole-number values. For example, [http://localhost:8080/customer/**john-smith**](http://localhost:8080/customer/john-smith) won't load `FormView`.
+
+However, `FormView` can still load when a user manually enters a URL for a non-existent customer, like [http://localhost:8080/customer/**5000**](http://localhost:8080/customer/5000). Adding a lifecycle observer before entering `FormView` lets your app determine how to handle the incoming `id` value.
+
+[Lifecycle Observers](/docs/routing/navigation-lifecycle/observers) allow components to react to lifecycle events at specific stages. This tutorial uses `WillEnterObserver`, which occurs before the component's routing finishes. This allows you to redirect invalid requests or fetch data when there's a customer with a matching `id`. The following flowchart lays out how `WillEnterObserver` works for this app:
 
 ```mermaid
 flowchart TD
-    A[Going to FormView] --> B{Is the ParametersBag an integer?}
-    B -->|No| C{Is the ParametersBag empty?}
-    C -->|Yes| D[Go to empty FormView]
-    C -->|No| E[Redirect to DemoView]
-    B -->|Yes| F{Does that integer match a current customer id?}
-    F -->|Yes| G[Go to a filled FormView]
-    F -->|No| E
+    A[Going to FormView] --> B{Does the ParametersBag have an id value?}
+    B -->|No| C[Go to an empty FormView]
+    B -->|Yes| D{Does that id value match with a customer id?}
+    D -->|Yes| E[Go to a filled FormView]
+    D -->|No| F[Redirect to MainView]
 ```
 
-### Going back to `DemoView` {#going-back-to-demoview}
+### Understanding `WillEnterObserver` {#understanding-willenterobserver}
 
-There are multiple actions that should send the user back to `DemoView`, such as when they try to go to `FormView` with an invalid `id`, when they click a cancel button, and in `sumbitCustomer()` from [Adding or editing a customer](#adding-or-editing-a-customer). For those reasons, the navigation process is put into a method that can be used multiple times in `FormView`:
+Each lifecycle observer is implemented as an interface. The one you'll use for this tutorial is `WillEnterObserver`, so include it as part of the declaration for `FormView`:
 
 ```java
-private void navigateToHome(){
-  Router.getCurrent().navigate(DemoView.class);
-}
+public class FormView extends Composite<Div> implements WillEnterObserver {
 ```
 
-### Getting the customer `id` from the URL {#getting-the-customer-id-from-the-url}
+The `WillEnterObserver` observer has the `onWillEnter()` method that webforJ calls before routing to the component. Inside that lifecycle observer method, you can decide to continue routing to the component with `WillEnterEvent.accept()` or stop routing using `WillEnterEvent.reject()`. After rejecting the current route, you need to redirect the user somewhere else.
 
-Using `@Route("customer/:id?")` as the route, you allow the URL to have [Query Parameters](/docs/routing/query-parameters) to take the `id` in the URL and choose what to do next in the [Lifecycle Observers](/docs/routing/navigation-lifecycle/observers) `WillEnterObserver` and `DidEnterObserver`.
-
-Both `onWillEnter()` and `onDidEnter()` will take the `ParametersBag` as an argument that can return an `Optional<Integer>` to use as needed by using the `getInt()` method.
+The following `onWillEnter()` is an example with only two outcomes:
 
 ```java
 @Override
 public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
-  parameters.getInt("id").ifPresentOrElse(id -> {
-  // logic to apply when the id is an integer
-  }, () - > {
-  // logic to apply when the id is null or not an integer
-  });
+
+  //Add conditional logic
+  if (<condition>) {
+
+    //Allow routing to FormView to proceed
+    event.accept();
+
+  } else {
+
+    //Stop routing to FormView
+    event.reject();
+
+    //Send the user to MainView
+    navigateToMain();
+  }
 }
 ```
 
+### Using the `ParametersBag` {#using-the-parametersbag}
 
-### Validating the `id` on the `WillEnterObserver` {#validating-the-id-on-the-WillEnterObserver}
+The conditional logic for `onWillEnter()` in `FormView` will come from the `ParametersBag`. The `onWillEnter()` method, along with other lifecycle observer methods, uses a `ParametersBag`.
 
-The `WillEnterObserver` happens before the view loads, so any actions taken need to reject or accept the current path to `FormView` explicitly. When you reject the event, use `navigateToHome()` to send it back to `DemoView`. 
+The `ParametersBag` object has several query methods to retrieve parameter values, such as `getInt()`, which returns `Optional<Integer>`. The parameter query, used in combination with the `doesCustomerExist()` method from `CustomerService`, gives you three different conditons to plan for:
 
-When the `id` from `ParametersBag` is an integer, the next statement verifies whether it matches an existing customer `id`; otherwise, send it back to `DemoView`.
+**An `id` that matches with a customer `id`**
+
+When given an `id`, you’ll use that value to define `customerId` and use it to look up the corresponding `Customer` in the repository. Then, using the working copy of the `Customer` entity, you can initialize it and the UI components with those same values.
 
 ```java
+// Use the ParametersBag in onWillEnter() to define customerId
 customerId = Long.valueOf(id);
-if (customerService.doesCustomerExist(customerId)) {
-  event.accept();
-} else {
-  event.reject();
-  navigateToHome();
+
+public void fillForm(Long customerId) {
+  customer = customerService.getCustomerByKey(customerId);
+  firstName.setValue(customer.getFirstName());
+  lastName.setValue(customer.getLastName());
+  company.setValue(customer.getCompany());
+  country.selectKey(customer.getCountry());
 }
 ```
 
-When the `id` from `ParametersBag` isn't an integer, verify if it's empty, as an empty `id` would send the user to create a new customer.
+**An `id` that doesn't match with a customer `id`**
+
+For an `id` that doesn't match, you want to reject the routing to `FormView`. Then, redirect users to `MainView`, where they’re more likely to choose an existing customer using the earlier created method, `navigateToMain()`.
+
+**No `id` value present**
+
+When there’s no `id`, it’s for a new customer. The routing can continue to `FormView` with no extra code, as there’s no data to initialize. Submitting changes with this `Customer` creates a new entry for the database.
+
+### Completed `onWillEnter()` {#completed-onwillenter}
+
+Now, add an `onWillEnter()` to `FormView` that uses the `ParametersBag` to either reject or accept the incoming route, and calls other methods to either fill the form or send the user to `MainView`. Putting it all together should look similar to the following:
 
 ```java
-if (parameters.get("id").isEmpty()) {
-  event.accept();
-} else {
-  event.reject();
-  navigateToHome();
-}
-```
-
-All together, `onWillEnter()` should look like the following:
-
-```java title="FormView WillEnterObserver"
 @Override
 public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
+
+  //Determine which parameter to get, and check if it's present or not
   parameters.getInt("id").ifPresentOrElse(id -> {
+
+    //Use the id as a variable
     customerId = Long.valueOf(id);
+
+    //Check if there's a customer with this id
     if (customerService.doesCustomerExist(customerId)) {
-       event.accept();
+
+        //This customer exists, so continue to FormView, and initialize the fields using the id
+        event.accept();
+        fillForm(customerId);
       } else {
+
+        //This customer doesn't exists, so redirect to MainView
         event.reject();
-        navigateToHome();
+        navigateToMain();
       }
 
-  }, () -> {
-    if (parameters.get("id").isEmpty()) {
-      event.accept();
-    } else {
-      event.reject();
-      navigateToHome();
-    }
-  });
+  //No id was present, so continue to FormView for a new customer
+  }, () -> event.accept());
+        
 }
 ```
 
-### Loading data on the `DidEnterObserver` {#loading-data-on-the-didenterobserver}
-
-The next lifecycle, `onDidEnter()`, happens when the `Router` navigates to a view.
-During this part of the lifecycle, the app is told to:
-
-- **Load Data**: Initialize or fetch data required for the view based on route parameters.
-- **Set Up the View**: Update the UI elements based on the context.
-
-```java title="FormView DidEnterObserver"
-@Override
-public void onDidEnter(DidEnterEvent event, ParametersBag parameters) {
-  parameters.getInt("id").ifPresent(id -> {
-    customerId = Long.valueOf(id);
-    customer = customerService.getCustomerByKey(customerId);
-    firstName.setValue(customer.getFirstName());
-    lastName.setValue(customer.getLastName());
-    company.setValue(customer.getCompany());
-    country.selectKey(customer.getCountry());
-  });
-}
-```
-
-### Completed `FormView` {#completed-formview}
+## Completed `FormView` {#completed-formview}
 
 Your `FormView` should now look similar to the following:
 
-:::note Moved `@StyleSheet` annotation
-Moving `@StyleSheet` from `Application` means the CSS styling will now only apply to `FormView` and not the entire app.
-:::
-
 <!-- vale off -->
 <ExpandableCode title="FormView.java" language="java" startLine={1} endLine={15}>
-{`
-@StyleSheet("ws://css/form.css")
-@Route("customer/:id?")
+{`@Route("customer/:id?<[0-9]+>")
 @FrameTitle("Customer Form")
-public class FormView extends Composite<Div> implements WillEnterObserver, DidEnterObserver {
+public class FormView extends Composite<Div> implements WillEnterObserver {
   private final CustomerService customerService;
-  Customer customer = new Customer();
-  Long customerId = 0L;
-  Div self = getBoundComponent();
-  TextField firstName = new TextField("First Name", e -> customer.setFirstName(e.getValue()));
-  TextField lastName = new TextField("Last Name", e -> customer.setLastName(e.getValue()));
-  TextField company = new TextField("Company", e -> customer.setCompany(e.getValue()));
-  ChoiceBox country = new ChoiceBox("Country",
+  private Customer customer = new Customer();
+  private Long customerId = 0L;
+  private Div self = getBoundComponent();
+  private TextField firstName = new TextField("First Name", e -> customer.setFirstName(e.getValue()));
+  private TextField lastName = new TextField("Last Name", e -> customer.setLastName(e.getValue()));
+  private TextField company = new TextField("Company", e -> customer.setCompany(e.getValue()));
+  private ChoiceBox country = new ChoiceBox("Country",
       e -> customer.setCountry(Country.valueOf(e.getSelectedItem().getText())));
-  Button submit = new Button("Submit", ButtonTheme.PRIMARY, e -> submitCustomer());
-  Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToHome());
+  private Button submit = new Button("Submit", ButtonTheme.PRIMARY, e -> submitCustomer());
+  private Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
 
-  ColumnsLayout columnsLayout = new ColumnsLayout(
+  private FlexLayout buttonsLayout = FlexLayout.create(submit, cancel)
+      .horizontal()
+      .justify().between()
+      .build();
+
+  private ColumnsLayout columnsLayout = new ColumnsLayout(
       firstName, lastName,
       company, country,
-      cancel, submit);
+      buttonsLayout);
 
   public FormView(CustomerService customerService) {
     this.customerService = customerService;
-    fillCountries();
 
-    self.setMaxWidth("600px");
-    self.setHeight("100dvh");
-    self.addClassName("form");
-    self.add(columnsLayout);
+    fillCountries();
+    setLayouts();
+
+    self.setMaxWidth(600)
+      .setHeight("100dvh")
+      .setStyle("margin", "var(--dwc-space-l) auto")
+      .add(columnsLayout);
+  }
+
+  private void setLayouts() {
+    buttonsLayout.setSpacing("var(--dwc-space-3xl)")
+      .setItemGrow(1, submit, cancel)
+      .setMargin("var(--dwc-space-l) 0");
+
+    List<Breakpoint> breakpoints = List.of(
+        new Breakpoint(0, 1),
+        new Breakpoint(600, 2));
+
+    columnsLayout.setSpacing("var(--dwc-space-3xl)")
+      .setStyle("padding", "var(--dwc-space-l)")
+      .setSpan(buttonsLayout, 2)
+      .setBreakpoints(breakpoints);
   }
 
   private void fillCountries() {
@@ -391,11 +734,11 @@ public class FormView extends Composite<Div> implements WillEnterObserver, DidEn
     } else {
       customerService.createCustomer(customer);
     }
-    navigateToHome();
+    navigateToMain();
   }
 
-  private void navigateToHome(){
-    Router.getCurrent().navigate(DemoView.class);
+  private void navigateToMain(){
+    Router.getCurrent().navigate(MainView.class);
   }
 
   @Override
@@ -404,32 +747,22 @@ public class FormView extends Composite<Div> implements WillEnterObserver, DidEn
       customerId = Long.valueOf(id);
       if (customerService.doesCustomerExist(customerId)) {
          event.accept();
+         fillForm(customerId);
         } else {
           event.reject();
-          navigateToHome();
+          navigateToMain();
         }
-        event.accept();
 
-    }, () -> {
-      if (parameters.get("id").isEmpty()) {
-        event.accept();
-      } else {
-        event.reject();
-        navigateToHome();
-      }
-    });
+    }, () -> event.accept());
+        
   }
 
-  @Override
-  public void onDidEnter(DidEnterEvent event, ParametersBag parameters) {
-    parameters.getInt("id").ifPresent(id -> {
-      customerId = Long.valueOf(id);
-      customer = customerService.getCustomerByKey(customerId);
-      firstName.setValue(customer.getFirstName());
-      lastName.setValue(customer.getLastName());
-      company.setValue(customer.getCompany());
-      country.selectKey(customer.getCountry());
-    });
+  public void fillForm(Long customerId) {
+    customer = customerService.getCustomerByKey(customerId);
+    firstName.setValue(customer.getFirstName());
+    lastName.setValue(customer.getLastName());
+    company.setValue(customer.getCompany());
+    country.selectKey(customer.getCountry());
   }
 
 }
@@ -448,6 +781,8 @@ When you've finished this step, you can compare it to [3-scaling-with-routing-an
     mvn
     ```
 
-3. Open your browser and go to http://localhost:8080 to view the app.
+Running the app automatically opens a new browser at http://localhost:8080.
 
-With routing and view separation in place, your app is now ready for further scaling, including advanced data binding and validation in the next step.
+## Next step {#next-step}
+
+Now that users can edit customer data directly, your app should validate changes before committing them to the repository. Additionally, binding the data to the UI will allow the components to display error messages when the data is invalid.

@@ -6,8 +6,6 @@ description: Discover where to download the tutorial project, how to navigate it
 
 To begin this tutorial, you need a location for your project where you can manage your classes and resources. The following sections describe the different ways you can create your webforJ project for this tutorial.
 
----
-
 ## Using the source code {#using-source-code}
 
 The easiest way to follow this tutorial is to refer to its source code. You can download the entire project or clone it from GitHub:
@@ -42,7 +40,6 @@ webforj-demo-application
 └───4-validating-and-binding-data
 ```
 
----
 <!-- vale off -->
 ## Using startforJ {#using-startforj}
 <!-- vale on -->
@@ -53,8 +50,6 @@ If you’d prefer to create a new project, you can use [startforJ](https://docs.
 - In the **webforJ version** dropdown, choose webforJ version **25.10 or higher**.
 - In the **Flavor** dropdown, choose **webforJ + Spring Boot**. 
 :::
-
----
 
 ## Using the command line {#using-command-line}
 
@@ -69,7 +64,7 @@ mvn -B archetype:generate \
   -DarchetypeArtifactId=webforj-archetype-hello-world \
   -DarchetypeVersion=LATEST \
   -DgroupId=com.webforj.demos \
-  -DartifactId=my-app \
+  -DartifactId=customer-app \
   -Dversion=1.0-SNAPSHOT \
   -Dflavor=webforj-spring
 ```
@@ -81,7 +76,7 @@ mvn -B archetype:generate `
   -DarchetypeArtifactId="webforj-archetype-hello-world" `
   -DarchetypeVersion="LATEST" `
   -DgroupId="com.webforj.demos" `
-  -DartifactId="my-app" `
+  -DartifactId="customer-app" `
   -Dversion="1.0-SNAPSHOT" `
   -Dflavor="webforj-spring"
 ```
@@ -93,21 +88,20 @@ mvn -B archetype:generate ^
   -DarchetypeArtifactId="webforj-archetype-hello-world" ^
   -DarchetypeVersion="LATEST" ^
   -DgroupId="com.webforj.demos" ^
-  -DartifactId="my-app" ^
+  -DartifactId="customer-app" ^
   -Dversion="1.0-SNAPSHOT" ^
   -Dflavor="webforj-spring"
 ```
   </TabItem>
 </Tabs>
 <!-- vale on -->
----
 
 ## Configurations
 
 Both of the above methods for creating a new project use webforJ [archetypes](/docs/building-ui/archetypes/overview), which automatically add the needed configurations to your project, like Spring [dependencies](/docs/integrations/spring/spring-boot#step-2-add-spring-dependencies) to your POM and the following properties in `src/main/resources/application.properties`:
 
 ```
-spring.application.name=DemoApplication
+spring.application.name=CustomerApplication
 server.port=8080
 webforj.entry = com.webforj.demos.Application
 webforj.debug=true
@@ -123,9 +117,7 @@ To see the app in action as you progress through the tutorial:
     ```bash
     mvn
     ```
+
 <!-- vale Google.WordList = NO -->
-3. Open your browser and go to http://localhost:8080 to view the app.
-:::tip faster deployment
-Add the line `webforj.devtools.browser.open=true` to the `src/main/resources/application.properties` file to automatically open a browser when you run the `mvn` command.
-:::
+Running the app automatically opens a new browser at http://localhost:8080.
 <!-- vale Google.WordList = YES -->
