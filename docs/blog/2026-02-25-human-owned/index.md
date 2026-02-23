@@ -1,12 +1,13 @@
 ---
 title: "webforJ: AI-assisted, human-owned"
-description: webforJ's stance on AI-generated code
+description: An overview of the effect of AI on code quality, and webforJ's relationship with AI
 slug: webforj-human-owned
 date: 2026-02-25
 authors: Garrison Osteen
 tags: [webforj, ai]
 hide_table_of_contents: false
 ---
+![cover image](./webforj-human-owned-cover.png)
 
 As AI coding tools, assistants, and agents become increasingly powerful, professional engineers and casual vibe coders alike can go from concept to compilation faster than ever before.
 On top of that, meta-prompting systems like [get-shit-done](https://github.com/glittercowboy/get-shit-done) and [Auto-Claude](https://github.com/AndyMik90/Auto-Claude) automate entire development workflows, so that the AI doesn't just write the code, but verifies it as well. 
