@@ -17,7 +17,7 @@ class DialogSectionsKotlinView: Composite<FlexLayout>() {
   init {
       self.apply {
         dialog {
-          setCloseable(false)
+          isCloseable = false
 
           header { div("Header") }
           div("Content")

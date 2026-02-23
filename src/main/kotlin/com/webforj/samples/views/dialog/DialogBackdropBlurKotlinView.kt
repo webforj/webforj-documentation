@@ -33,7 +33,7 @@ class DialogBackdropBlurKotlinView: Composite<FlexLayout>() {
       self.apply {
         dialog {
           classNames += "loginForm"
-          setCloseable(false)
+          isCloseable = false
 
           header { div("Background Blur") }
           button("Toggle Background Blur") {

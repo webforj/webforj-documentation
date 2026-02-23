@@ -22,7 +22,7 @@ class DialogPositioningKotlinView: Composite<FlexLayout>() {
       self.apply {
         dialog {
           isAutoFocus = true
-          setCloseable(false)
+          isCloseable = false
           maxWidth = 200.px
 
           header { div("Positioning") }

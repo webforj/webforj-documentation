@@ -24,7 +24,7 @@ class DialogAlignmentsKotlinView: Composite<FlexLayout>() {
         dialog {
           styles["display"] = "flex"
           styles["justify-content"] = "center"
-          setCloseable(false)
+          isCloseable = false
 
           header { div("Alignments") }
           choiceBox("Select Alignment") {
