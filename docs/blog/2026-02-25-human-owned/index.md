@@ -2,7 +2,7 @@
 title: "webforJ: AI-assisted, human-owned"
 description: webforJ's stance on AI-generated code
 slug: webforj-human-owned
-date: 2026-02-12
+date: 2026-02-25
 authors: Garrison Osteen
 tags: [webforj, ai]
 hide_table_of_contents: false
