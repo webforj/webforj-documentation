@@ -21,6 +21,7 @@ import com.webforj.kotlin.dsl.component.layout.flexlayout.flexLayout
 import com.webforj.kotlin.dsl.component.layout.flexlayout.horizontal
 import com.webforj.kotlin.extension.classNames
 import com.webforj.kotlin.extension.plusAssign
+import com.webforj.kotlin.extension.px
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
 import com.webforj.router.annotation.FrameTitle
@@ -113,7 +114,7 @@ class AvatarKotlinView: Composite<FlexLayout>() {
   private fun showProfileDialog(name: String, role: String, imageUrl: String?, avatarTheme: AvatarTheme) {
     self.apply {
       dialog {
-        maxWidth = "260px"
+        maxWidth = 260.px
 
         flexLayout(FlexDirection.COLUMN) {
           alignment = FlexAlignment.CENTER
