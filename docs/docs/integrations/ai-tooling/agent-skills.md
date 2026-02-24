@@ -111,7 +111,7 @@ Use **project scope** when collaborating with a team so everyone on the project 
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>creating-components</code></strong>: Build reusable webforJ components from web component libraries, JavaScript libraries, or existing webforJ components
+    <strong><code>creating-components</code></strong>: build reusable webforJ components from web component libraries, JavaScript libraries, or existing webforJ components
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -134,10 +134,10 @@ The skill defines five paths for creating components, and teaches the AI to sele
 
 For Custom Element wrapping (the most common path), the skill walks the AI through a structured workflow:
 
-1. **Setup**: download third-party JS/CSS into the project's `src/main/resources/static/libs/` directory. The skill instructs the AI to prefer local resources over CDN links for offline reliability
-2. **Extract component data**: use the included `extract_components.mjs` script to parse a Custom Elements Manifest and produce a structured specification of each component's properties, events, slots, and CSS custom properties
-3. **Write Java wrappers**: create `ElementComposite` or `ElementCompositeContainer` classes with `PropertyDescriptor` fields, event classes, slot methods, and concern interfaces, all following webforJ conventions
-4. **Write tests**: generate JUnit 5 tests using `PropertyDescriptorTester` and structured test patterns for properties, slots, and events
+1. **Setup**: download third-party JS/CSS into the project's `src/main/resources/static/libs/` directory. The skill instructs the AI to prefer local resources over CDN links for offline reliability.
+2. **Extract component data**: use the included `extract_components.mjs` script to parse a Custom Elements Manifest and produce a structured specification of each component's properties, events, slots, and CSS custom properties.
+3. **Write Java wrappers**: create `ElementComposite` or `ElementCompositeContainer` classes with `PropertyDescriptor` fields, event classes, slot methods, and concern interfaces, all following webforJ conventions.
+4. **Write tests**: generate JUnit 5 tests using `PropertyDescriptorTester` and structured test patterns for properties, slots, and events.
 
 **Reference material**
 
@@ -149,7 +149,7 @@ The skill includes eight reference documents covering `ElementComposite` pattern
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>styling-apps</code></strong>: Theme and style webforJ applications using the DWC design-token system
+    <strong><code>styling-apps</code></strong>: theme and style webforJ applications using the DWC design-token system
   </AccordionSummary>
   <AccordionDetails>
     <div>
