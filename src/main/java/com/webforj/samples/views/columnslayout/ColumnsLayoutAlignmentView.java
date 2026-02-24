@@ -15,29 +15,28 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Columns Layout Alignment")
 public class ColumnsLayoutAlignmentView extends Composite<Div> {
-
-  TextField firstName = new TextField("First Name");
-  TextField lastName = new TextField("Last Name");
-  TextField email = new TextField("Email");
-  DateField dateOfBirth = new DateField("Date of Birth");
-  TextArea bio = new TextArea("Bio");
-  CheckBox terms = new CheckBox("I agree to the terms and conditions");
-  Button submit = new Button("Submit", ButtonTheme.PRIMARY);
-  ColumnsLayout columnsLayout = new ColumnsLayout(
-      firstName, lastName, email, dateOfBirth, bio, terms, submit);
+  private Div self = getBoundComponent();
+  private TextField firstName = new TextField("First Name");
+  private TextField lastName = new TextField("Last Name");
+  private TextField email = new TextField("Email");
+  private DateField dateOfBirth = new DateField("Date of Birth");
+  private TextArea bio = new TextArea("Bio");
+  private CheckBox terms = new CheckBox("I agree to the terms and conditions");
+  private Button submit = new Button("Submit", ButtonTheme.PRIMARY);
+  private ColumnsLayout columnsLayout = new ColumnsLayout(
+          firstName, lastName, email, dateOfBirth, bio, terms, submit);
 
   public ColumnsLayoutAlignmentView() {
-    columnsLayout.setSpan(bio, 2);
-    columnsLayout.setSpan(terms, 2);
+    columnsLayout.setSpan(bio, 2)
+            .setSpan(terms, 2)
+            .setColumn(submit, 2)
+            .setHorizontalAlignment(submit, ColumnsLayout.Alignment.END)
+            .setStyle("padding", "var(--dwc-space-xl)");
 
-    columnsLayout.setColumn(submit, 2);
-    columnsLayout.setHorizontalAlignment(submit, ColumnsLayout.Alignment.END);
-    columnsLayout.setStyle("padding", "var(--dwc-space-xl)");
-
-    getBoundComponent().setMaxWidth("60em");
-    getBoundComponent().setStyle("margin", "0 auto");
-    getBoundComponent().setStyle("overflow", "auto");
-    getBoundComponent().setStyle("height", "100dvh");
-    getBoundComponent().add(columnsLayout);
+    self.setMaxWidth("60em")
+            .setStyle("margin", "0 auto")
+            .setStyle("overflow", "auto")
+            .setStyle("height", "100dvh")
+            .add(columnsLayout);
   }
 }
