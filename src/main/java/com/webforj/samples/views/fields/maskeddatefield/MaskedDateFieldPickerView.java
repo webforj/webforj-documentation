@@ -13,26 +13,25 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Date Field with Picker")
 public class MaskedDateFieldPickerView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
-  MaskedDateField field = new MaskedDateField("Meeting Date");
+  private FlexLayout self = getBoundComponent();
+  private MaskedDateField field = new MaskedDateField("Meeting Date");
 
   public MaskedDateFieldPickerView() {
     self.setDirection(FlexDirection.COLUMN)
-        .setAlignment(FlexAlignment.CENTER)
-        .setMargin("var(--dwc-space-m)");
+            .setAlignment(FlexAlignment.CENTER)
+            .setMargin("var(--dwc-space-m)")
+            .add(field);
 
-    field
-        .setMask("%Dz/%Mz/%Yl")
-        .setValue(LocalDate.now())
-        .setMaxWidth("300px")
-        .setHelperText("Click the icon to open the date picker.")
-        .setAllowCustomValue(false)
-        .getPicker()
-        .setIconVisible(true)
-        .setAutoOpen(true)
-        .setShowWeeks(true);
+    field.setMask("%Dz/%Mz/%Yl")
+            .setValue(LocalDate.now())
+            .setMaxWidth("300px")
+            .setHelperText("Click the icon to open the date picker.")
+            .setAllowCustomValue(false)
+            .getPicker()
+            .setIconVisible(true)
+            .setAutoOpen(true)
+            .setShowWeeks(true);
 
-    self.add(field);
     whenAttached().thenAccept(c -> field.getPicker().open());
   }
 }

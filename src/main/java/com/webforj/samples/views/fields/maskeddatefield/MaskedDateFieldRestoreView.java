@@ -15,16 +15,15 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Date Field with Restore")
 public class MaskedDateFieldRestoreView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
-  MaskedDateField eventField = new MaskedDateField("Meeting Date:");
+  private FlexLayout self = getBoundComponent();
+  private MaskedDateField eventField = new MaskedDateField("Meeting Date:");
 
   public MaskedDateFieldRestoreView() {
     self.setAlignment(FlexAlignment.CENTER)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setMargin("var(--dwc-space-m) auto");
 
-    eventField
-        .setMask("%Yl-%Mz-%Dz")
+    eventField.setMask("%Yl-%Mz-%Dz")
         .setValue(LocalDate.now())
         .setRestoreValue(LocalDate.now().minusDays(1))
         .setHelperText("Press <kbd>ESC</kbd> to restore the value to yesterday.")

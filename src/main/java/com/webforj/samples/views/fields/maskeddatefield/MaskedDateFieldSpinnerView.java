@@ -14,26 +14,25 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Date Field Spinner")
 public class MaskedDateFieldSpinnerView extends Composite<FlexLayout> {
-  MaskedDateFieldSpinner appointmentField = new MaskedDateFieldSpinner("Available Appointments");
+  private FlexLayout self = getBoundComponent();
+  private MaskedDateFieldSpinner appointmentField = new MaskedDateFieldSpinner("Available Appointments");
 
   public MaskedDateFieldSpinnerView() {
-    FlexLayout self = getBoundComponent();
     self.setDirection(FlexDirection.COLUMN)
-        .setAlignment(FlexAlignment.CENTER)
-        .setSpacing("var(--dwc-space-m)")
-        .setMargin("var(--dwc-space-m)");
+            .setAlignment(FlexAlignment.CENTER)
+            .setSpacing("var(--dwc-space-m)")
+            .setMargin("var(--dwc-space-m)")
+            .add(appointmentField);
 
-    appointmentField
-        .setSpinField(SpinField.DAY)
-        .setMask("%Dz/%Mz/%Yl")
-        .setValue(LocalDate.now())
-        .setMin(LocalDate.now())
-        .setMax(LocalDate.now().plusMonths(6))
-        .setHelperText("<b>Min:</b> today, <b>Max:</b> 6 months from now. Use the spinner to select a date.")
-        .setPlaceholder("DD/MM/YYYY")
-        .setAllowCustomValue(false);
+    appointmentField.setSpinField(SpinField.DAY)
+            .setMask("%Dz/%Mz/%Yl")
+            .setValue(LocalDate.now())
+            .setMin(LocalDate.now())
+            .setMax(LocalDate.now().plusMonths(6))
+            .setHelperText("<b>Min:</b> today, <b>Max:</b> 6 months from now. Use the spinner to select a date.")
+            .setPlaceholder("DD/MM/YYYY")
+            .setAllowCustomValue(false);
 
-    self.add(appointmentField);
 
     whenAttached().thenAccept(c -> appointmentField.getPicker().open());
   }
