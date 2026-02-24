@@ -1,6 +1,7 @@
 package com.webforj.samples.views.fields.colorfield;
 
 import java.awt.Color;
+
 import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
 import com.webforj.component.event.ModifyEvent;
@@ -14,24 +15,25 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@StyleSheet("ws://css/fields/colorfield/colorFieldDemo.css")
 @Route
+@StyleSheet("ws://css/fields/colorfield/colorFieldDemo.css")
 @FrameTitle("Color Field Demo")
 public class ColorFieldView extends Composite<FlexLayout> {
-
-  ColorField colorField;
-  Color[] tetradic = new Color[4];
-  Div[] colors;
+  private FlexLayout self = getBoundComponent();
+  private ColorField colorField;
+  private Div[] colors;
 
   public ColorFieldView() {
-    getBoundComponent().setDirection(FlexDirection.COLUMN).setAlignment(FlexAlignment.CENTER)
-    .setJustifyContent(FlexJustifyContent.CENTER).setSpacing("var(--dwc-space-l")
-    .setMargin("var(--dwc-space-m)");
+    self.setDirection(FlexDirection.COLUMN)
+            .setAlignment(FlexAlignment.CENTER)
+            .setJustifyContent(FlexJustifyContent.CENTER)
+            .setSpacing("var(--dwc-space-l)")
+            .setMargin("var(--dwc-space-m)");
 
     colorField = new ColorField();
     colorField.setWidth("200px")
-        .setLabel("Choose a color:")
-        .onModify(this::tetradicColor);
+            .setLabel("Choose a color:")
+            .onModify(this::tetradicColor);
 
     colors = new Div[4];
     for (int i = 0; i <= 3; i++) {
@@ -40,19 +42,18 @@ public class ColorFieldView extends Composite<FlexLayout> {
     }
 
     FlexLayout colorDisplay = FlexLayout.create(colors)
-        .horizontal()
-        .justify().center()
-        .align().center()
-        .build();
-    
-    colorDisplay.setSpacing("20px");
+            .horizontal()
+            .justify().center()
+            .align().center()
+            .build()
+            .setSpacing("20px");
 
     Paragraph title = new Paragraph("Tetradic complementary colors:");
 
     colorField.setValue(Color.RED);
     tetradicColor(null);
 
-    getBoundComponent().add(colorField, title, colorDisplay);
+    self.add(colorField, title, colorDisplay);
   }
 
   private void tetradicColor(ModifyEvent e) {
@@ -66,10 +67,10 @@ public class ColorFieldView extends Composite<FlexLayout> {
   }
 
   private void setBackgroundColor(Div colorPanel, Color color) {
-    colorPanel.setStyle("background-color", "rgb(" + String.valueOf(color.getRed()) +
-        "," + String.valueOf(color.getGreen()) +
-        "," + String.valueOf(color.getBlue()) +
-        ")");
+    colorPanel.setStyle("background-color", "rgb(" + color.getRed() +
+            "," + color.getGreen() +
+            "," + color.getBlue() +
+            ")");
   }
 
   private static int getHue(Color color) {

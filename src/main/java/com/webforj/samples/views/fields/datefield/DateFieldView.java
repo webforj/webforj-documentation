@@ -17,12 +17,12 @@ public class DateFieldView extends Composite<FlexLayout> {
   private static final LocalDate TODAY = LocalDate.now();
   private static final LocalDate MAX_DATE = TODAY.plusYears(1);
 
+  private final FlexLayout self = getBoundComponent();
   private final DateField departureField = new DateField(TODAY);
   private final DateField returnField = new DateField(TODAY);
 
   public DateFieldView() {
-    getBoundComponent()
-        .setDirection(FlexDirection.ROW)
+    self.setDirection(FlexDirection.ROW)
         .setSpacing("var(--dwc-space-l)")
         .setMargin("var(--dwc-space-m)");
 
@@ -38,7 +38,7 @@ public class DateFieldView extends Composite<FlexLayout> {
         .setMax(MAX_DATE)
         .addValueChangeListener(this::syncDates);
 
-    getBoundComponent().add(departureField, returnField);
+    self.add(departureField, returnField);
   }
 
   private void syncDates(ValueChangeEvent<LocalDate> e) {

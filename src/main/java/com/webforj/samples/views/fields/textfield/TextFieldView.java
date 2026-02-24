@@ -16,33 +16,45 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Text Field Form")
 public class TextFieldView extends Composite<FlexLayout> {
-
-  TextField nameField = new TextField();
-  TextField emailField = new TextField();
-  TextField telField = new TextField();
-  TextField urlField = new TextField();
-  TextField searchField = new TextField();
+  private FlexLayout self = getBoundComponent();
+  private TextField nameField = new TextField();
+  private TextField emailField = new TextField();
+  private TextField telField = new TextField();
+  private TextField urlField = new TextField();
+  private TextField searchField = new TextField();
   
   public TextFieldView() {
-    getBoundComponent().setMargin("var(--dwc-space-l)").setSpacing("var(--dwc-space-l)")
-    .setDirection(FlexDirection.ROW).setWrap(FlexWrap.WRAP);
+    self.setMargin("var(--dwc-space-l)")
+        .setSpacing("var(--dwc-space-l)")
+        .setDirection(FlexDirection.ROW)
+        .setWrap(FlexWrap.WRAP);
         
-    nameField.setPlaceholder("Name").setType(TextField.Type.TEXT).setLabel("Enter Name")
-    .setValue("John Doe");
+    nameField.setPlaceholder("Name")
+        .setType(TextField.Type.TEXT)
+        .setLabel("Enter Name")
+        .setValue("John Doe");
         
-    emailField.setPlaceholder("Email").setType(TextField.Type.EMAIL).setLabel("Enter Email")
-    .setValue("example@email.com");
+    emailField.setPlaceholder("Email")
+        .setType(TextField.Type.EMAIL)
+        .setLabel("Enter Email")
+        .setValue("example@email.com");
         
-    telField.setPlaceholder("Phone Number").setType(TextField.Type.TEL).setLabel("Enter Phone Number")
-    .setValue("(123) 456-7890");
+    telField.setPlaceholder("Phone Number")
+        .setType(TextField.Type.TEL)
+        .setLabel("Enter Phone Number")
+        .setValue("(123) 456-7890");
         
-    urlField.setPlaceholder("URL").setType(TextField.Type.URL).setLabel("Enter URL")
-    .setValue("https://www.example.com");
+    urlField.setPlaceholder("URL")
+        .setType(TextField.Type.URL)
+        .setLabel("Enter URL")
+        .setValue("https://www.example.com");
        
-    searchField.setPlaceholder("Search").setType(TextField.Type.SEARCH).setLabel("Enter Your Search")
-    .setValue("Search...");
+    searchField.setPlaceholder("Search")
+        .setType(TextField.Type.SEARCH)
+        .setLabel("Enter Your Search")
+        .setValue("Search...");
     
-    getBoundComponent().add(nameField, emailField, telField, urlField, searchField);
+    self.add(nameField, emailField, telField, urlField, searchField);
 
   }
 }
