@@ -17,9 +17,9 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Tip Calculator")
 public class MaskedNumberFieldView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
-  MaskedNumberField billAmountField = new MaskedNumberField("Bill Amount");
-  MaskedNumberField tipPercentageField = new MaskedNumberField("Tip Percentage (%)");
+  private FlexLayout self = getBoundComponent();
+  private MaskedNumberField billAmountField = new MaskedNumberField("Bill Amount");
+  private MaskedNumberField tipPercentageField = new MaskedNumberField("Tip Percentage (%)");
 
   public MaskedNumberFieldView() {
     self.setDirection(FlexDirection.COLUMN)

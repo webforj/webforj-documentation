@@ -11,8 +11,8 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Number Field Spinner")
 public class MaskedNumSpinnerView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
-  MaskedNumberFieldSpinner field = new MaskedNumberFieldSpinner("Tip Percentage (%)");
+  private FlexLayout self = getBoundComponent();
+  private MaskedNumberFieldSpinner field = new MaskedNumberFieldSpinner("Tip Percentage (%)");
 
   public MaskedNumSpinnerView() {
     self.setDirection(FlexDirection.COLUMN)
