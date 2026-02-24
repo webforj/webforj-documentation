@@ -82,7 +82,7 @@ public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
 
     // Adding tabs to drawer menu
     footerMenu.addTab(createTab("dashboard"));
-    footerMenu.addTab(createTab("shopping-card"));
+    footerMenu.addTab(createTab("shopping-cart"));
     footerMenu.addTab(createTab("users"));
     footerMenu.addTab(createTab("box"));
     footerMenu.addTab(createTab("files"));
