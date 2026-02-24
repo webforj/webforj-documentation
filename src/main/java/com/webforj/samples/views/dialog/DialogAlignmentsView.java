@@ -11,25 +11,24 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Dialog Alignments")
 public class DialogAlignmentsView extends Composite<FlexLayout> {
-
+  private FlexLayout self = getBoundComponent();
   private Dialog dialog = new Dialog();
   private ChoiceBox options = new ChoiceBox();
 
   public DialogAlignmentsView() {
-    getBoundComponent().add(dialog);
+    self.add(dialog);
     options.add(Dialog.Alignment.TOP, "Top");
     options.add(Dialog.Alignment.CENTER, "Center");
     options.add(Dialog.Alignment.BOTTOM, "Bottom");
     options.setLabel("Select Alignment");
-    options.selectIndex(1);
-    options.onSelect(e -> dialog.setAlignment((Dialog.Alignment) e.getSelectedItem().getKey()));
+    options.selectIndex(1)
+            .onSelect(e -> dialog.setAlignment((Dialog.Alignment) e.getSelectedItem().getKey()));
 
-    dialog.addToHeader(new Div("Alignments"));
-    dialog.addToContent(options)
-        .setStyle("display", "flex")
-        .setStyle("justify-content", "center");
-
-    dialog.open();
-    dialog.setCloseable(false);
+    dialog.addToHeader(new Div("Alignments"))
+            .addToContent(options)
+            .setStyle("display", "flex")
+            .setStyle("justify-content", "center")
+            .open()
+            .setCloseable(false);
   }
 }
