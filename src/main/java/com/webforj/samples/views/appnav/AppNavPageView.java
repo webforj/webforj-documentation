@@ -11,11 +11,12 @@ import com.webforj.router.history.ParametersBag;
 
 @Route(value = ":id", outlet = AppNavView.class)
 public class AppNavPageView extends Composite<Div> {
-  Div self = getBoundComponent();
-  Paragraph text = new Paragraph();
+  private Div self = getBoundComponent();
+  private Paragraph text = new Paragraph();
 
   public AppNavPageView() {
-    self.add(new H1("Application Title"), text);
+    H1 title = new H1("Application Title");
+    self.add(title, text);
     Router.getCurrent().onNavigate(this::onNavigate);
   }
 
