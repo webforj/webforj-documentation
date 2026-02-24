@@ -11,14 +11,13 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Avatar Expanses")
 public class AvatarExpansesView extends Composite<FlexLayout> {
+  FlexLayout self = getBoundComponent();
 
   public AvatarExpansesView() {
-    FlexLayout self = getBoundComponent();
     self.setSpacing("var(--dwc-space-m)")
-        .setMargin("var(--dwc-space-l)")
-        .setAlignment(FlexAlignment.CENTER);
-
-    self.add(
+            .setMargin("var(--dwc-space-l)")
+            .setAlignment(FlexAlignment.CENTER)
+            .add(
         new Avatar("John Doe").setExpanse(AvatarExpanse.XXXSMALL),
         new Avatar("John Doe").setExpanse(AvatarExpanse.XXSMALL),
         new Avatar("John Doe").setExpanse(AvatarExpanse.XSMALL),
