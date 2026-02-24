@@ -14,34 +14,35 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
+import java.util.Arrays;
+
 @Route
 @FrameTitle("Alert Expanses")
 public class AlertExpansesView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
+  private FlexLayout self = getBoundComponent();
 
   public AlertExpansesView() {
     self.setDirection(FlexDirection.COLUMN)
-          .setJustifyContent(FlexJustifyContent.CENTER)
-          .setAlignment(FlexAlignment.CENTER)
-          .setSpacing("var(--dwc-space-m)")
-          .setMargin("var(--dwc-space-xl) auto")
-          .setWidth("100%");
+            .setJustifyContent(FlexJustifyContent.CENTER)
+            .setAlignment(FlexAlignment.CENTER)
+            .setSpacing("var(--dwc-space-m)")
+            .setMargin("var(--dwc-space-xl) auto")
+            .setWidth("100%");
 
-    Expanse[] expanses = Expanse.values();
-    for (int i = expanses.length - 1; i >= 0; i--) {
-      Icon icon = TablerIcon.create("alert-square-rounded");
-      Paragraph text = new Paragraph("This alert uses the " + expanses[i] + " expanse.");
-
-      Alert alert = new Alert()
-            .addToContent(FlexLayout.create(icon, text)
-                    .horizontal()
-                    .align().center()
-                    .build())
-            .setExpanse(expanses[i])
-            .setClosable(false)
-            .setTheme(Theme.SUCCESS)
-            .setWidth("380px");
-      self.add(alert);
-    }
+    Arrays.asList(Expanse.values()).reversed()
+            .forEach(expanse -> {
+              Icon icon = TablerIcon.create("alert-square-rounded");
+              Paragraph text = new Paragraph("This alert uses the " + expanse + " expanse.");
+              Alert alert = new Alert()
+                      .addToContent(FlexLayout.create(icon, text)
+                              .horizontal()
+                              .align().center()
+                              .build())
+                      .setExpanse(expanse)
+                      .setClosable(false)
+                      .setTheme(Theme.SUCCESS)
+                      .setWidth("380px");
+              self.add(alert);
+            });
   }
 }

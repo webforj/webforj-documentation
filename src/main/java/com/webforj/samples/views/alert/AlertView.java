@@ -28,7 +28,6 @@ public class AlertView extends Composite<FlexLayout> {
             .setMargin("var(--dwc-space-l)")
             .add(alert);
 
-
     alert.setTheme(Theme.PRIMARY)
             .setMaxWidth("500px")
             .add(new Paragraph("The requested information is ready to be viewed."), viewButton);

@@ -16,7 +16,7 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Alert Themes")
 public class AlertThemesView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
+  private FlexLayout self = getBoundComponent();
 
   public AlertThemesView() {
     self.setDirection(FlexDirection.COLUMN)
