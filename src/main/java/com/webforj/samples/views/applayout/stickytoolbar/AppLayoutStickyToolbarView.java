@@ -19,8 +19,8 @@ import com.webforj.router.history.ParametersBag;
 import com.webforj.samples.views.applayout.DrawerLogo;
 import com.webforj.samples.views.applayout.fullnavbar.AppLayoutFullNavbarContentView;
 
-@StyleSheet("ws://css/applayout/applayout.css")
 @Route
+@StyleSheet("ws://css/applayout/applayout.css")
 @FrameTitle("AppLayout Sticky Toolbar")
 public class AppLayoutStickyToolbarView extends Composite<AppLayout> {
   private AppLayout self = getBoundComponent();
@@ -61,7 +61,6 @@ public class AppLayoutStickyToolbarView extends Composite<AppLayout> {
             .addItem(createItem("Documents", documentsIcon))
             .addItem(createItem("Tasks", tasksIcon))
             .addItem(createItem("Analytics", analyticsIcon));
-
 
     // Adding the additional toolbar with menu items
     secondToolbar.setCompact(true)
