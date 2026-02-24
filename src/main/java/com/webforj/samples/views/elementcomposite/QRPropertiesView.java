@@ -15,26 +15,25 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("QR Properties")
 public class QRPropertiesView extends Composite<FlexLayout> {
-
-  QRCode qrCode = new QRCode("https://www.webforj.com");
+  private FlexLayout self = getBoundComponent();
+  private QRCode qrCode = new QRCode("https://www.webforj.com");
 
   public QRPropertiesView() {
-    getBoundComponent().setMargin("var(--dwc-space-m)");
-
-    getBoundComponent().add(qrCode);
+    self.setMargin("var(--dwc-space-m)")
+        .add(qrCode);
 
     /* Setting the properties */
-    qrCode.setSize(200);
-    qrCode.setColor("#0059B8");
+    qrCode.setSize(200)
+        .setColor("#0059B8");
   }
 
   /**
    * QRCode Generator using Shoelace QRCode component.
    */
   @JavaScript(value = "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.87/dist/shoelace.js", attributes = {
-      @Attribute(name = "type", value = "module") })
+    @Attribute(name = "type", value = "module") })
   @NodeName("sl-qr-code")
-  public final class QRCode extends ElementComposite {
+  public static final class QRCode extends ElementComposite {
 
     private final PropertyDescriptor<String> descValue = PropertyDescriptor.property("value", "");
     private final PropertyDescriptor<Integer> descSize = PropertyDescriptor.property("size", 128);

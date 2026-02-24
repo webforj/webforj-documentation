@@ -14,24 +14,23 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("QR Code")
 public class QRDemoView extends Composite<FlexLayout> {
-
-  QRCode qrCode = new QRCode();
+  private FlexLayout self = getBoundComponent();
+  private QRCode qrCode = new QRCode();
 
   public QRDemoView() {
-    getBoundComponent().setMargin("20px");
     Div code = new Div();
     code.add(qrCode);
 
-    getBoundComponent().add(code);
+    self.setMargin("20px").add(code);
   }
 
   /**
    * QRCode Generator using Shoelace QRCode component.
    */
   @JavaScript(value = "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.87/dist/shoelace.js", attributes = {
-      @Attribute(name = "type", value = "module") })
+    @Attribute(name = "type", value = "module") })
   @NodeName("sl-qr-code")
-  public final class QRCode extends ElementComposite {
+  public static final class QRCode extends ElementComposite {
 
     /**
      * Create a new QRCode.
