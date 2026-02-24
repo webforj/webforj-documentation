@@ -2,16 +2,13 @@
 title: RadioButtonGroup
 slug: radiobuttongroup
 sidebar_position: 100
-_i18n_hash: 91d753e882e3d6d59deef5044ee7bc4c
+sidebar_class_name: updated-content
+_i18n_hash: da7906128f0d003b9ed8c48c99c3aefc
 ---
 <DocChip chip='since' label='23.01' />
 <JavadocLink type="foundation" location="com/webforj/component/optioninput/RadioButtonGroup" top='true'/>
 
-`RadioButtonGroup` 类用于将相关的单选按钮组在一起，这有助于建立该组内选项之间的互斥性。用户只能在给定的单选组中选择一个单选按钮。当用户在一个组中选择一个单选按钮时，同一组中任何先前选中的单选按钮会自动取消选中。这确保了一次只能选择一个选项。
-
-:::tip
-`RadioButton` 组件存储其所属的组，可以通过 `getButtonGroup()` 方法访问。
-:::
+`RadioButtonGroup` 管理一组 [`RadioButton`](/docs/components/radiobutton) 组件。在 `RadioButtonGroup` 中只能选择一个 `RadioButton`。当用户选中一个新的单选按钮时，组中的之前选中的单选按钮会自动取消选中。
 
 <ComponentDemo 
 path='/webforj/radiobuttongroup?' 
@@ -19,34 +16,61 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="200px"
 />
 
-:::important
-`RadioButtonGroup` 组件不会在页面上渲染 HTML 元素。它只是确保一组 `RadioButton` 按钮作为一个组而不是单独行为的逻辑。
+:::important `RadioButtonGroup` 渲染
+`RadioButtonGroup` 组件不渲染 HTML 元素。它只提供逻辑，使 `RadioButton` 组件作为一个组进行行为，而不是单独的。
 :::
 
-## Usages {#usages}
+## 添加和移除 `RadioButton` 组件 {#adding-and-removing-radiobuttons}
 
-`RadioButtonGroup` 最适用于用户需要从一组预定义的选项中进行单项选择的场景，以下是一些使用 `RadioButtonGroup` 的示例：
+您可以在 `RadioButtonGroup` 构造函数中包含 `RadioButton` 组件，以便创建一个由提供的组件组成的组。
+要从现有的 `RadioButtonGroup` 添加或移除 `RadioButton`，请使用 `add()` 或 `remove()` 方法。
 
-1. **调查或问卷**：`RadioButtonGroup` 组件通常用于调查或问卷中，用户需要从选项列表中选择单个响应。
+:::tip 获取 `RadioButton` 的组
+`RadioButton` 组件具有 `getButtonGroup()` 方法，该方法返回其所属的 `RadioButtonGroup`，如果没有组，则返回 `null`。
+:::
 
-2. **偏好设置**：涉及偏好或设置面板的应用程序经常使用 `RadioButtonGroup` 组件，以允许用户从一组互斥选择中选择单个选项。
+## 嵌套 <DocChip chip='since' label='25.11' /> {#nesting}
 
-3. **过滤或排序**：在需要用户选择单个过滤或排序选项的应用程序中，可以使用 `RadioButton`，例如根据不同标准对项目列表进行排序。
+与其他组件一样，您可以将 `RadioButtonGroup` 嵌套在容器中，这样您就不必直接添加每个单独的 `RadioButton`。
 
-<!-- vale off -->
-## Adding and removing RadioButtons {#adding-and-removing-radiobuttons}
-<!-- vale on -->
+```java
+RadioButton agree = new RadioButton("同意");
+RadioButton neutral = new RadioButton("中立");
+RadioButton disagree = new RadioButton("不同意");
 
-可以向组中添加和删除单个或多个 `RadioButton` 对象，确保它们表现出互斥的选中行为，并与可能属于该组的任何名称相关联。
+RadioButtonGroup group = new RadioButtonGroup("选择", agree, neutral, disagree);
 
-## Naming {#naming}
+Fieldset fieldset = new Fieldset("选项");
+fieldset.add(group);
+```
 
-`RadioButtonGroup` 中的名称属性将相关的 `RadioButton` 组合在一起，允许用户从提供的选项中做出单个选择，同时强制 `RadioButton` 之间的独占性。组的名称不会在 DOM 中反映，但对于 Java 开发者来说，这是一个方便的工具。
+## 使用 `RadioButtonGroupChangeEvent` {#using-radiobuttongroupchangeevent}
 
-## Best practices {#best-practices}
+每个 `RadioButton` 可以有自己的事件监听器，以检测用户何时切换它。然而，使用 `RadioButtonGroup` 的一个优势是，您可以使用一个单一的事件监听器来响应组中所有单选按钮的 [`RadioButtonGroupChangeEvent`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/optioninput/event/RadioButtonGroupChangeEvent.html)。
 
-为确保在使用 `RadioButton` 组件时获得最佳用户体验，请考虑以下最佳实践：
+**为每个 `RadioButton` 添加事件监听器**
 
-1. **清晰标注选项**：为每个 `RadioButton` 选项提供清晰简洁的标签，以准确描述选择。标签应易于理解并且彼此区别明显。
+```java 
+agree.onValueChange(e -> changeEvent());
+neutral.onValueChange(e -> changeEvent());
+disagree.onValueChange(e -> changeEvent());
+```
 
-2. **提供默认选择**：如适用，考虑为单选按钮提供默认选择，以引导用户在首次遇到选项时。默认选择应与最常见或首选的选择一致。
+**为 `RadioButtonGroup` 添加一个单一事件监听器**
+
+```java
+RadioButtonGroup group = new RadioButtonGroup("选择", agree, neutral, disagree);
+group.onChange(e -> changeEvent());
+```
+
+以下来自 [Drawer Placement](/docs/components/drawer#placement) 的示例使用 `RadioButtonGroupChangeEvent` 自动更改 `Drawer` 组件的放置：
+
+<ComponentDemo
+path='/webforj/drawerplacement?'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerPlacementView.java'
+height='600px'
+/>
+
+## 命名 {#naming}
+
+`RadioButtonGroup` 中的 `name` 属性将相关的单选按钮组合在一起，使用户可以从提供的选项中做出单一选择，并强制执行单选按钮之间的排他性。然而，组的名称不会反映在 DOM 中，而是为 Java 开发者提供的便利工具。

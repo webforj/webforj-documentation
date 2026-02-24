@@ -3,7 +3,8 @@ sidebar_position: 1
 title: Validation
 hide_giscus_comments: true
 hide_table_of_contents: true
-_i18n_hash: aeb8627a22e6d8e369ba8990e8be1ccb
+sidebar_class_name: has-new-content
+_i18n_hash: f64d390319483797294e2ceff76c12f8
 ---
 <Head>
   <style>{`
@@ -13,7 +14,7 @@ _i18n_hash: aeb8627a22e6d8e369ba8990e8be1ccb
   `}</style>
 </Head>
 
-Validaties spelen een cruciale rol door bedrijfsregels af te dwingen voordat het systeem gegevens in het model bijwerkt of daarop handelt. webforJ integreert validaties direct in het gegevensbindingproces, waardoor een naadloze manier wordt geboden om gegevensintegriteit te waarborgen naarmate deze tussen UI-componenten en de backend stroomt.
+Validaties handhaven bedrijfsregels voordat het systeem gegevens in het model bijwerkt of daarop handelt. webforJ integreert validaties rechtstreeks in het databindingsproces, waarbij de dataintegriteit wordt gecontroleerd terwijl deze tussen UI-componenten en de backend stroomt.
 
 ## Onderwerpen {#topics}
 

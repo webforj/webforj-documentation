@@ -1,11 +1,12 @@
 ---
 sidebar_position: 6
 title: Jakarta Validation
+sidebar_class_name: updated-content
 ---
 
-[Java Bean Validation](https://beanvalidation.org/) is widely recognized as the standard for integrating validation logic into Java applications. It utilizes a uniform approach to validation by allowing developers to annotate domain model properties with declarative validation constraints. These constraints are enforced at runtime, with options for both built-in and custom-defined rules.
+[Java Bean Validation](https://beanvalidation.org/) is widely recognized as the standard for integrating validation logic into Java applications. It uses a uniform approach to validation by allowing developers to annotate domain model properties with declarative validation constraints. These constraints are enforced at runtime, with options for both built-in and custom-defined rules.
 
-webforJ seamlessly integrates with Bean Validation through the `JakartaValidator` adapter, providing robust support out of the box.
+webforJ integrates with Bean Validation through the `JakartaValidator` adapter, providing full support out of the box.
 
 ## Installation {#installation}
 
@@ -54,10 +55,35 @@ public class Hero {
 }
 ```
 
-Such constraints are as effective as those set programmatically during the binding initialization, ensuring consistent validation outcomes.
+Such constraints are as effective as those set programmatically during the binding initialization and produce consistent validation outcomes.
 
 :::warning
 Currently, the `JakartaValidator` only recognizes constraints that are directly assigned to properties and ignores any validations not directly associated with properties.
 :::
+
+### Locale-aware validation messages <DocChip chip='since' label='25.12' /> {#locale-aware-validation-messages}
+
+Jakarta Validation supports localized constraint messages through standard message interpolation. When you change the app locale, the `JakartaValidator` needs to know the new locale so it can resolve messages in the correct language.
+
+`JakartaValidator` implements the `LocaleAware` interface, which means `BindingContext.setLocale()` automatically propagates the locale to all Jakarta validators in the context. You don't need to update each validator manually.
+
+```java {5}
+BindingContext<Hero> context = new BindingContext<>(Hero.class, true);
+
+// When the locale changes, Jakarta validators automatically
+// produce messages in the new locale
+context.setLocale(Locale.GERMAN);
+```
+
+In a component that implements `LocaleObserver`, call `context.setLocale()` inside `onLocaleChange()` to keep validation messages in sync with the UI language:
+
+```java {3}
+@Override
+public void onLocaleChange(LocaleEvent event) {
+  context.setLocale(event.getLocale());
+}
+```
+
+See [dynamic validation messages](/docs/data-binding/validation/validators#dynamic-validation-messages) for more on locale-aware validators.
 
 

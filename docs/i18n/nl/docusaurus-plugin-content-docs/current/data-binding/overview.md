@@ -3,7 +3,8 @@ sidebar_position: 1
 title: Data Binding
 hide_table_of_contents: true
 hide_giscus_comments: true
-_i18n_hash: 2ce381aec06e45ed4001e7dbfdb22dc0
+sidebar_class_name: has-new-content
+_i18n_hash: ba33283588df8722a31ad0c5fb15892a
 ---
 <Head>
   <style>{`
@@ -20,17 +21,17 @@ import DocCardList from '@theme/DocCardList';
 
 <!-- vale on -->
 
-webforJ bevat een data binding functie die UI-componenten naadloos integreert met backend datamodellen in Java-applicaties. Deze functie overbrugt de kloof tussen de UI en de datalaag, waardoor veranderingen in de UI worden weerspiegeld in het datamodel en vice versa. Dit verbetert de gebruikerservaring en vermindert de complexiteit van event handling en datasynchronisatie.
+webforJ bevat een functie voor gegevensbinding die UI-componenten integreert met backend datamodellen in Java-toepassingen. Deze functie overbrugt de kloof tussen de UI en de datalaag, zodat wijzigingen in de UI worden weerspiegeld in het datamodel en vice versa, waardoor de complexiteit van gebeurtenisafhandeling en gegevenssynchronisatie wordt verminderd.
 
 ## Concept {#concept}
 
-De volgende demonstratie toont een eenvoudige webforJ-app voor het registreren van superhelden met behulp van webforJ data binding. De app bestaat uit twee hoofdonderdelen: `HeroRegistration.java` en `Hero.java`. 
+De volgende demonstratie toont een eenvoudige webforJ-app voor het registreren van superhelden met behulp van webforJ-gegevensbinding. De app bestaat uit twee hoofdonderdelen: `HeroRegistration.java` en `Hero.java`. 
 
 In `HeroRegistration.java` configureert de code de gebruikersinterface met een `TextField` voor het invoeren van de naam van de held, een `ComboBox` om een superkracht te selecteren en een `Button` om de registratie in te dienen.
 
-De `Hero` klasse definieert het datamodel met validatie constraints op de naam en de kracht van de held, wat ervoor zorgt dat invoer geldig is en voldoet aan gespecificeerde criteria zoals lengte en patroon.
+De `Hero`-klasse definieert het datamodel met validatiebeperkingen voor de naam en kracht van de held. Invoeren moeten geldig zijn en voldoen aan gespecificeerde criteria zoals lengte en patroon.
 
-De app gebruikt de `BindingContext` om UI-componenten te koppelen aan de eigenschappen van het `Hero` object. Wanneer een gebruiker op de indienen-knop klikt, schrijft de app de ingevoerde gegevens in het formulier terug naar de `Hero` bean als ze geldig zijn.
+De app gebruikt de `BindingContext` om UI-componenten te koppelen aan de eigenschappen van het `Hero`-object. Wanneer een gebruiker op de verzendknop klikt, schrijft de app de ingevoerde gegevens in het formulier terug naar de `Hero`-bean als ze geldig zijn.
 
 <Tabs>
 <TabItem value="HeroRegistration" label="HeroRegistration.java">
@@ -114,16 +115,16 @@ public class Hero {
 </TabItem>
 </Tabs>
 
-## Key features {#key-features}
+## Belangrijkste functies {#key-features}
 
-- **Bidirectionele Binding:** Ondersteunt bidirectionele data binding, waardoor wijzigingen in het datamodel de UI bijwerken, en gebruikersinteracties in de UI het datamodel bijwerken.
+- **Bidirectionele Binding:** Ondersteunt bidirectionele gegevensbinding, waardoor wijzigingen in het datamodel de UI kunnen bijwerken, en gebruikersinteracties in de UI het datamodel kunnen bijwerken.
 
-- **Validatie Support:** Integreert uitgebreide validatiemechanismen die je kunt aanpassen en uitbreiden. Ontwikkelaars kunnen hun eigen validatieregels implementeren of bestaande validatiekaders zoals Jakarta Validation gebruiken om dataintegriteit te waarborgen voordat ze het model bijwerken.
+- **Ondersteuning voor Validatie:** Integreert uitgebreide validatiemechanismen die u kunt aanpassen en uitbreiden. Ontwikkelaars kunnen hun eigen validatieregels implementeren of bestaande validatiekaders zoals Jakarta Validation gebruiken om de gegevensintegriteit te verifiëren vóór het bijwerken van het model.
 
-- **Uitbreidbaarheid:** Kan eenvoudig worden uitgebreid om verschillende soorten UI-componenten, datatransformaties en complexe validatiescenario's te ondersteunen.
+- **Uitbreidbaarheid:** Kan eenvoudig worden uitgebreid om verschillende soorten UI-componenten, gegevens-transformaties en complexe validatiescenario's te ondersteunen.
 
-- **Annotatie-gedreven Configuratie:** Maakt gebruik van annotaties om boilerplate-code te minimaliseren, waardoor de bindingen tussen UI-componenten en datamodellen declaratief en eenvoudig te beheren zijn.
+- **Annotatie-gedreven Configuratie:** Maakt gebruik van annotaties om de boilerplate-code te minimaliseren, waardoor de bindingen tussen UI-componenten en datamodellen declaratief en eenvoudig te beheren zijn.
 
-# Topics
+# Onderwerpen
 
 <DocCardList className="topics-section" />
