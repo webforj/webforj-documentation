@@ -44,7 +44,6 @@ public class AppLayoutFullNavbarView extends Composite<AppLayout> {
     Icon tasksIcon = TablerIcon.create("checklist");
     Icon analyticsIcon = TablerIcon.create("chart-dots-2");
 
-
     drawerMenu.addItem(createItem("Dashboard", dashboardIcon))
             .addItem(createItem("Orders", ordersIcon))
             .addItem(createItem("Customers", customersIcon))

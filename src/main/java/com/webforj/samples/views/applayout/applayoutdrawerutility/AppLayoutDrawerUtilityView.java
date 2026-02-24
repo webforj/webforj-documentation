@@ -17,8 +17,8 @@ import com.webforj.router.annotation.Route;
 import com.webforj.router.history.ParametersBag;
 import com.webforj.samples.views.applayout.DrawerLogo;
 
-@StyleSheet("ws://css/applayout/applayout.css")
 @Route
+@StyleSheet("ws://css/applayout/applayout.css")
 @FrameTitle("AppLayout")
 public class AppLayoutDrawerUtilityView extends Composite<AppLayout> {
   private AppLayout self = getBoundComponent();
