@@ -14,9 +14,9 @@ public abstract class AbstractContentView extends Composite<Div> {
   protected Paragraph contentLabel;
 
   public AbstractContentView() {
+    contentLabel = new Paragraph("Loading content...");
     self.add(new H1("Application Title"), contentLabel);
     Router.getCurrent().onNavigate(this::onNavigate);
-    contentLabel = new Paragraph("Loading content...");
   }
 
   private void onNavigate(NavigateEvent ev) {
