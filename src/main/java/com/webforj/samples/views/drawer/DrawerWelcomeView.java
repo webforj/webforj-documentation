@@ -27,36 +27,36 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Drawer Welcome App")
 public class DrawerWelcomeView extends Composite<FlexLayout> {
-
-  FlexLayout layout = getBoundComponent();
-  Drawer welcomeDrawer;
-  AppLayout appLayout = new AppLayout();
-  Toolbar header = new Toolbar();
-  Div navigation = new Div();
+  private FlexLayout self = getBoundComponent();
+  private Drawer welcomeDrawer;
+  private AppLayout appLayout = new AppLayout();
+  private Toolbar header = new Toolbar();
+  private Div navigation = new Div();
 
   public DrawerWelcomeView() {
-    layout.add(appLayout);
+    self.add(appLayout);
 
     // Header
     H3 title = new H3("webforJ Application");
-    header.addToStart(new AppDrawerToggle());
-    header.addToTitle(title);
+    header.addToStart(new AppDrawerToggle())
+        .addToTitle(title);
 
-    appLayout.addToHeader(header);
-    appLayout.setHeaderReveal(true);
+    appLayout.addToHeader(header)
+        .setHeaderReveal(true);
 
-    appLayout.addToDrawer(navigation);
-    appLayout.setDrawerPlacement(DrawerPlacement.LEFT);
+    appLayout.addToDrawer(navigation)
+        .setDrawerPlacement(DrawerPlacement.LEFT);
 
     // Drawer's logo container and logo
     Toolbar drawerLogo = new Toolbar();
-    drawerLogo.addClassName("webforJ-logo").setWidth("100%")
+    drawerLogo.addClassName("webforJ-logo")
+        .setWidth("100%")
         .add(new Img("ws://img/webforj_icon.svg", "logo"));
     navigation.add(drawerLogo);
 
     // Drawer's Menu with AppNav
-    AppNav appNav = new AppNav();
-    appNav.setAutoOpen(true);
+    AppNav appNav = new AppNav()
+        .setAutoOpen(true);
     navigation.add(appNav);
 
     // Adding navigation items
@@ -79,20 +79,21 @@ public class DrawerWelcomeView extends Composite<FlexLayout> {
 
     // Welcome Drawer
     welcomeDrawer = new Drawer();
-    layout.add(welcomeDrawer);
+    self.add(welcomeDrawer);
 
     welcomeDrawer.setPlacement(Placement.BOTTOM_CENTER)
-      .addClassName("welcome__drawer")
+        .addClassName("welcome__drawer")
         .open();
 
-    Button getStarted = new Button("Get Started").setTheme(ButtonTheme.PRIMARY);
+    Button getStarted = new Button("Get Started")
+        .setTheme(ButtonTheme.PRIMARY);
     getStarted.onClick(e -> welcomeDrawer.close());
 
     FlexLayout layout = FlexLayout.create(new Img("/fun.svg", "A gathering of people.")
-        .setSize("200px", "200px"),
-      new H2("Welcome to webforJ"),
-      new Paragraph("Lorem Ipsum is simply dummy text of the printing and typesetting industry")
-          .setStyle("text-align", "center"),
+            .setSize("200px", "200px"),
+        new H2("Welcome to webforJ"),
+        new Paragraph("Lorem Ipsum is simply dummy text of the printing and typesetting industry")
+            .setStyle("text-align", "center"),
         getStarted)
         .vertical()
         .align().center()

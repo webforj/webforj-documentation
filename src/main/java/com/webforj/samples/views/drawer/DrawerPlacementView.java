@@ -14,12 +14,11 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Drawer Placement")
 public class DrawerPlacementView extends Composite<FlexLayout> {
-
-  FlexLayout layout = getBoundComponent();
-  Drawer drawer = new Drawer();
+  private FlexLayout self = getBoundComponent();
+  private Drawer drawer = new Drawer();
 
   public DrawerPlacementView() {
-    layout.setMargin("var(--dwc-space-l)");
+    self.setMargin("var(--dwc-space-l)");
 
     drawer.setLabel("Drawer Placement Options");
 
@@ -40,17 +39,17 @@ public class DrawerPlacementView extends Composite<FlexLayout> {
     RadioButtonGroup placementGroup = new RadioButtonGroup("Placement Options", 
         topOption, topCenterOption, bottomOption, bottomCenterOption, leftOption, rightOption);
 
-    FlexLayout groupLayout = new FlexLayout();
-    groupLayout.setDirection(FlexDirection.COLUMN)
-            .setSpacing("var(--dwc-space-s)")
-            .add(placementGroup);
+    FlexLayout groupLayout = new FlexLayout()
+        .setDirection(FlexDirection.COLUMN)
+        .setSpacing("var(--dwc-space-s)");
+    groupLayout.add(placementGroup);
 
     placementGroup.onChange(e -> {
       RadioButton selected = e.getChecked();
       if (selected != null) {
         drawer.setPlacement((Drawer.Placement) selected.getUserData("placement"));
-        }
-      });
+      }
+    });
 
     drawer.add(groupLayout);
     drawer.setStyle("--dwc-drawer-max-width", "fit-content");
@@ -58,7 +57,7 @@ public class DrawerPlacementView extends Composite<FlexLayout> {
     Button openDrawer = new Button("Open Placement");
     openDrawer.onClick(e -> drawer.open());
 
-    layout.add(openDrawer, drawer);    
+    self.add(openDrawer, drawer);
     drawer.open();
   }
 }
