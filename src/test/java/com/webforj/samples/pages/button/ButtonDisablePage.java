@@ -3,6 +3,7 @@ package com.webforj.samples.pages.button;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class ButtonDisablePage {
 
@@ -16,8 +17,8 @@ public class ButtonDisablePage {
         this.emailInput = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Enter an email"));
     }
 
-    public static String getRoute() {
-        return ROUTE;
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
     }
 
     public Locator getSubmitButton() {

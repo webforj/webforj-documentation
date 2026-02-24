@@ -3,6 +3,7 @@ package com.webforj.samples.pages.button;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class ButtonPage{
 
@@ -27,8 +28,8 @@ public class ButtonPage{
         this.welcomeDialog = page.getByText("Welcome to the app Jason");
     }
 
-    public static String getRoute() {
-        return ROUTE;
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
     }
 
     public Locator getFirstName() {

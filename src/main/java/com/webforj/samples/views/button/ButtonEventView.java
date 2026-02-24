@@ -31,7 +31,7 @@ public class ButtonEventView extends Composite<FlexLayout> {
 
     button.addClickListener(e -> {
       text.setText("Current Counter: " + (++counter));
-      payload.setText("Event payload: " + e.getData().toString());
+      payload.setText("Event Payload: " + e.getData().toString());
     });
 
     getBoundComponent().add(button, textDisplay);
