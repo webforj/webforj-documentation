@@ -20,7 +20,7 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("To-Do List")
 @StyleSheet("ws://composite/composite.css")
 public class CompositeView extends Composite<Div> {
-
+  private Div self = getBoundComponent();
   private TextField taskInput;
   private FlexLayout taskContainer;
   private H1 title = new H1("To-do List");
@@ -45,15 +45,15 @@ public class CompositeView extends Composite<Div> {
   }
 
   private void setupLayout() {
-    getBoundComponent()
-        .addClassName("frame")
+   self.addClassName("frame")
         .add(title, taskInput, taskContainer);
   }
 
   private void setupEventHandlers() {
     taskInput.onKeypress(e -> {
-      if (e.getKeyCode().equals(KeypressEvent.Key.ENTER) && !taskInput.getText().trim().isEmpty()) {
-        taskContainer.add(new SimpleTaskItem(taskInput.getText().trim()));
+      String task = taskInput.getText().trim();
+      if (e.getKeyCode() == KeypressEvent.Key.ENTER && !task.isEmpty()) {
+        taskContainer.add(new SimpleTaskItem(task));
         taskInput.setText("");
       }
     });
@@ -66,7 +66,7 @@ public class CompositeView extends Composite<Div> {
   }
 
   public static class SimpleTaskItem extends Composite<FlexLayout> {
-    
+    private FlexLayout self;
     private RadioButton toggleButton;
     private Div taskText;
     private Button deleteButton;
@@ -78,21 +78,20 @@ public class CompositeView extends Composite<Div> {
     }
 
     private void initializeComponents(String text) {
+      self = getBoundComponent();
       toggleButton = RadioButton.Switch();
-      taskText = new Div(text).addClassName("todo-text");
+      taskText = new Div(text)
+              .setStyle("flex-grow", "1")
+              .addClassName("todo-text");
       deleteButton = new Button("Delete", ButtonTheme.DANGER);
     }
 
     private void setupLayout() {
-      getBoundComponent()
-          .setDirection(FlexDirection.ROW)
+      self.setDirection(FlexDirection.ROW)
           .setAlignment(FlexAlignment.CENTER)
           .setSpacing("var(--dwc-space-s)")
           .addClassName("item__todo--display")
-          .add(toggleButton, taskText);
-      
-      taskText.setStyle("flex-grow", "1");
-      getBoundComponent().add(deleteButton);
+          .add(toggleButton, taskText, deleteButton);
     }
 
     private void setupEventHandlers() {
@@ -105,7 +104,7 @@ public class CompositeView extends Composite<Div> {
       });
 
       deleteButton.onClick(e -> {
-        getBoundComponent().setVisible(false);
+        self.setVisible(false);
       });
     }
   }
