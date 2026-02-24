@@ -13,22 +13,20 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Text Field Spinner")
 public class MaskedTextFieldSpinnerView extends Composite<FlexLayout> {
-
+  private FlexLayout self = getBoundComponent();
   private final MaskedTextFieldSpinner field = new MaskedTextFieldSpinner("Project Code:");
 
   public MaskedTextFieldSpinnerView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN)
+    self.setDirection(FlexDirection.COLUMN)
         .setAlignment(FlexAlignment.CENTER)
         .setMargin("var(--dwc-space-m)");
 
     field.setOptions(List.of(
-        "PRJ001", "PRJ002", "PRJ003", "PRJ004"));
-    field
+        "PRJ001", "PRJ002", "PRJ003", "PRJ004"))
         .setMask("AAA-000")
         .setValue("PRJ-002")
         .setHelperText("Select or spin through project codes");
 
-    layout.add(field);
+    self.add(field);
   }
 }

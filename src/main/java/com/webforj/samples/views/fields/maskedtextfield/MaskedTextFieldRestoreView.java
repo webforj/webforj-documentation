@@ -13,7 +13,7 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Text Field with Restore Value")
 public class MaskedTextFieldRestoreView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
+  private FlexLayout self = getBoundComponent();
 
   public MaskedTextFieldRestoreView() {
     self.setAlignment(FlexAlignment.CENTER)
@@ -21,8 +21,7 @@ public class MaskedTextFieldRestoreView extends Composite<FlexLayout> {
         .setMargin("var(--dwc-space-m) auto");
 
     MaskedTextField usernameField = new MaskedTextField(
-        "Postal Code", "85001 PHX", "ex: 85001 PHX");
-    usernameField
+        "Postal Code", "85001 PHX", "ex: 85001 PHX")
         .setWidth(250)
         .setRestoreValue("85001 PHX")
         .setHelperText("Enter ZIP Code in format: 85001 PHX")
