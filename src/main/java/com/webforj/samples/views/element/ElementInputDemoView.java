@@ -7,18 +7,18 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@StyleSheet("ws://css/element/elementInput.css")
 @Route
+@StyleSheet("ws://css/element/elementInput.css")
 @FrameTitle("Input Demo")
 public class ElementInputDemoView extends Composite<Div> {
-  
-  Element input = new Element("input");
+  private Div self = getBoundComponent();
+  private Element input = new Element("input");
 
   public ElementInputDemoView() {
-    getBoundComponent().setStyle("margin", "20px");
-    getBoundComponent().add(input);
+    self.setStyle("margin", "20px")
+        .add(input);
 
-    input.addClassName("element--input");
-    input.setAttribute("placeholder", "Enter some text");
+    input.addClassName("element--input")
+        .setAttribute("placeholder", "Enter some text");
   }
 }

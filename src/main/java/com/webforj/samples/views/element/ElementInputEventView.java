@@ -10,26 +10,26 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@StyleSheet("ws://css/element/elementInputEvent.css")
 @Route
+@StyleSheet("ws://css/element/elementInputEvent.css")
 @FrameTitle("Input Event")
 public class ElementInputEventView extends Composite<Div> {
-
-  Div label = new Div("Enter Text and Press Enter");
-  Element input = new Element("input");
+  private Div self = getBoundComponent();
+  private Div label = new Div("Enter Text and Press Enter");
+  private Element input = new Element("input");
 
   public ElementInputEventView() {
-    getBoundComponent().setStyle("margin", "20px");
-    getBoundComponent().addClassName("frame");
-    getBoundComponent().add(label, input);
+    self.setStyle("margin", "20px")
+        .addClassName("frame")
+            .add(label, input);
 
     label.addClassName("element--label");
     input.addClassName("element--input");
 
-    ElementEventOptions options = new ElementEventOptions();
-    options.addData("theValue", "component.value");
-    options.setFilter("event.key == 'Enter'");
-    options.setCode("event.preventDefault();");
+    ElementEventOptions options = new ElementEventOptions()
+            .addData("theValue", "component.value")
+            .setFilter("event.key == 'Enter'")
+            .setCode("event.preventDefault();");
 
     input.addEventListener("keypress", e -> {
       showMessageDialog(e.getEventMap().get("theValue"),"Input Event");

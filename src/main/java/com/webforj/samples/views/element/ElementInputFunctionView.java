@@ -10,16 +10,16 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@StyleSheet("ws://css/element/elementInput.css")
 @Route
+@StyleSheet("ws://css/element/elementInput.css")
 @FrameTitle("Input Function")
 public class ElementInputFunctionView extends Composite<Div> {
-  
-  Element input = new Element("input");
+  private Div self = getBoundComponent();
+  private Element input = new Element("input");
 
   public ElementInputFunctionView() {
-    getBoundComponent().setStyle("margin", "20px");
-    getBoundComponent().add(input);
+    self.setStyle("margin", "20px")
+        .add(input);
 
     input.addClassName("element--input");
     input.addEventListener("click", e -> {
