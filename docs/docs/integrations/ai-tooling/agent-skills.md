@@ -7,15 +7,17 @@ Agent skills teach AI coding assistants how to build webforJ applications using 
 
 Skills follow the open [Agent Skills](https://agentskills.io/specification) specification and work across multiple AI assistants, including Claude Code, GitHub Copilot in VS Code, and Cursor.
 
+Agent skills for webforJ are available from the GitHub repository [webforj/webforj-agent-skills](https://github.com/webforj/webforJ-agent-skills). 
+
 ## What are agent skills? {#what-are-agent-skills}
 
 A skill is a folder with a defined structure:
 
-- **`SKILL.md`** — the main instruction file that describes the skill's purpose, workflow steps, and decision logic
-- **`references/`** — supporting documentation the AI consults for API details, patterns, and rules
-- **`scripts/`** — helper scripts the AI runs to extract component metadata or look up valid CSS variables
+- **`SKILL.md`**: the main instruction file that describes the skill's purpose, workflow steps, and decision logic
+- **`references/`**: supporting documentation the AI consults for API details, patterns, and rules
+- **`scripts/`**: helper scripts the AI runs to extract component metadata or look up valid CSS variables
 
-The AI loads these files automatically when it detects a relevant task. For example, asking an AI to "theme this app with a blue palette" triggers the `styling-apps` skill, which walks the AI through looking up valid DWC tokens, writing scoped CSS, and validating every variable name before producing output. Next we'll discuss why using these skills in your project is so beneficial.
+The AI loads these files automatically when it detects a relevant task. For example, asking an AI to "theme this app with a blue palette" triggers the `styling-apps` skill, which walks the AI through looking up valid DWC tokens, writing scoped CSS, and validating every variable name before producing output.
 
 ### Why use skills? {#why-use-skills}
 
@@ -41,14 +43,14 @@ Skills and the [webforJ MCP server](./mcp) serve complementary roles. MCP provid
 
 In practice, the two work well together. The MCP server's `webforj-create-theme` tool generates a valid palette from a single color, and the `styling-apps` skill then guides the AI through component-level styling and dark mode validation using that palette.
 
-Skills are static files read from disk — they add no runtime overhead and don't make external API calls. The AI loads a skill's reference material into its context window when relevant, which uses some context tokens, but the resulting output quality for framework-specific work is significantly higher.
+Skills are static files read from disk—they don't add runtime overhead or make external API calls. The AI loads a skill's reference material into its context window when relevant, which uses some context tokens, but the resulting output quality for framework-specific work is significantly higher.
 
 ## Installation {#installation}
 
 Clone the [webforJ agent skills repository](https://github.com/webforj/webforJ-agent-skills), then copy the skill folders into the location your AI tool expects. Each tool supports two scopes:
 
-- **Project scope** — the skill is available only in that project
-- **Personal scope** — the skill is available across all your projects
+- **Project scope**: the skill is available only in that project
+- **Personal scope**: the skill is available across all your projects
 
 <Tabs groupId="ide">
 <TabItem value="claude-code" label="Claude Code" default>
@@ -109,7 +111,7 @@ Use **project scope** when collaborating with a team so everyone on the project 
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>creating-components</code></strong> — Build reusable webforJ components from web component libraries, JavaScript libraries, or existing webforJ components
+    <strong><code>creating-components</code></strong>: Build reusable webforJ components from web component libraries, JavaScript libraries, or existing webforJ components
   </AccordionSummary>
   <AccordionDetails>
     <div>
@@ -132,10 +134,10 @@ The skill defines five paths for creating components, and teaches the AI to sele
 
 For Custom Element wrapping (the most common path), the skill walks the AI through a structured workflow:
 
-1. **Setup** — download third-party JS/CSS into the project's `src/main/resources/static/libs/` directory. The skill instructs the AI to prefer local resources over CDN links for offline reliability
-2. **Extract component data** — use the included `extract_components.mjs` script to parse a Custom Elements Manifest and produce a structured specification of each component's properties, events, slots, and CSS custom properties
-3. **Write Java wrappers** — create `ElementComposite` or `ElementCompositeContainer` classes with `PropertyDescriptor` fields, event classes, slot methods, and concern interfaces, all following webforJ conventions
-4. **Write tests** — generate JUnit 5 tests using `PropertyDescriptorTester` and structured test patterns for properties, slots, and events
+1. **Setup**: download third-party JS/CSS into the project's `src/main/resources/static/libs/` directory. The skill instructs the AI to prefer local resources over CDN links for offline reliability
+2. **Extract component data**: use the included `extract_components.mjs` script to parse a Custom Elements Manifest and produce a structured specification of each component's properties, events, slots, and CSS custom properties
+3. **Write Java wrappers**: create `ElementComposite` or `ElementCompositeContainer` classes with `PropertyDescriptor` fields, event classes, slot methods, and concern interfaces, all following webforJ conventions
+4. **Write tests**: generate JUnit 5 tests using `PropertyDescriptorTester` and structured test patterns for properties, slots, and events
 
 **Reference material**
 
@@ -147,12 +149,12 @@ The skill includes eight reference documents covering `ElementComposite` pattern
 
 <Accordion disableGutters>
   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-    <strong><code>styling-apps</code></strong> — Theme and style webforJ applications using the DWC design-token system
+    <strong><code>styling-apps</code></strong>: Theme and style webforJ applications using the DWC design-token system
   </AccordionSummary>
   <AccordionDetails>
     <div>
 
-[This skill](https://github.com/webforj/webforJ-agent-skills/tree/main/styling-apps) teaches an AI assistant how to style webforJ applications using the DWC design-token system. The core principle: all visual values use `--dwc-*` CSS custom properties. The skill enforces this by providing validation steps and lookup scripts that prevent the AI from inventing token names or hardcoding colors.
+[This skill](https://github.com/webforj/webforJ-agent-skills/tree/main/styling-apps) teaches an AI assistant how to style webforJ applications using the DWC design-token system. The core principle is that all visual values use `--dwc-*` CSS custom properties. The skill enforces this by providing validation steps and lookup scripts that prevent the AI from inventing token names or hardcoding colors.
 
 **What it covers**
 
@@ -170,18 +172,18 @@ The skill includes eight reference documents covering `ElementComposite` pattern
 
 The skill enforces a strict lookup-before-write discipline:
 
-1. **Classify the task** — determine whether this is a palette reskin, component styling, layout work, or a full theme
-2. **Scan the app** — read the Java source to find every component, theme variant, and expanse in use
-3. **Look up every component** — run the included `component_styles.py` script to retrieve the exact CSS variables, `::part()` names, and reflected attributes each component supports. The AI writes no CSS until this step is complete
-4. **Write CSS** — produce nested, compact CSS that follows DWC conventions: global tokens first, then component CSS variables, then `::part()` overrides as a last resort
-5. **Validate** — re-run the lookup script and verify that every token, part name, and selector in the output actually exists. Fix anything that fails
+1. **Classify the task**: determine whether this is a palette reskin, component styling, layout work, or a full theme.
+2. **Scan the app**: read the Java source to find every component, theme variant, and expanse in use.
+3. **Look up every component**: run the included `component_styles.py` script to retrieve the exact CSS variables, `::part()` names, and reflected attributes each component supports. The AI writes no CSS until this step is complete.
+4. **Write CSS**: produce nested, compact CSS that follows DWC conventions: global tokens first, then component CSS variables, then `::part()` overrides as a last resort.
+5. **Validate**: re-run the lookup script and verify that every token, part name, and selector in the output actually exists. Fix anything that fails.
 
 **Key rules the skill enforces**
 
-- **Seven palettes only** — `primary`, `success`, `warning`, `danger`, `info`, `default`, and `gray`. Names like `secondary` or `accent` don't exist in DWC and silently fail
-- **No hardcoded colors** — every color value must be a `var()` reference, including inside `box-shadow` and `border`. Hardcoded values break dark mode
-- **CSS variables over `::part()`** — component CSS variables are the intended styling API. `::part()` is the escape hatch for cases where no variable exists
-- **Scoped selectors** — bare tag selectors on components with `theme` or `expanse` attributes override all variants. The skill requires `:not([theme])` or `[theme~="value"]` scoping
+- **Seven palettes only**: `primary`, `success`, `warning`, `danger`, `info`, `default`, and `gray`. Names like `secondary` or `accent` don't exist in DWC and silently fail.
+- **No hardcoded colors**: every color value must be a `var()` reference, including inside `box-shadow` and `border`. Hardcoded values break dark mode.
+- **CSS variables over `::part()`**: component CSS variables are the intended styling API. `::part()` is the escape hatch for cases where no variable exists.
+- **Scoped selectors**: bare tag selectors on components with `theme` or `expanse` attributes override all variants. The skill requires `:not([theme])` or `[theme~="value"]` scoping.
 
 </div>
   </AccordionDetails>
