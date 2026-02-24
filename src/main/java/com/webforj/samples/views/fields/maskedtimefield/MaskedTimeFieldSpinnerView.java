@@ -14,10 +14,10 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Time Field Spinner")
 public class MaskedTimeFieldSpinnerView extends Composite<FlexLayout> {
-  MaskedTimeFieldSpinner appointmentField = new MaskedTimeFieldSpinner("Available Time Slots");
+  private FlexLayout self = getBoundComponent();
+  private MaskedTimeFieldSpinner appointmentField = new MaskedTimeFieldSpinner("Available Time Slots");
 
   public MaskedTimeFieldSpinnerView() {
-    FlexLayout self = getBoundComponent();
     self.setDirection(FlexDirection.COLUMN)
         .setAlignment(FlexAlignment.CENTER)
         .setSpacing("var(--dwc-space-m)")

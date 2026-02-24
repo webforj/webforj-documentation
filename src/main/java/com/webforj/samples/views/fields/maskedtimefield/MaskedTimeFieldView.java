@@ -13,8 +13,8 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Time Field")
 public class MaskedTimeFieldView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
-  MaskedTimeField field = new MaskedTimeField("Meeting Time");
+  private FlexLayout self = getBoundComponent();
+  private MaskedTimeField field = new MaskedTimeField("Meeting Time");
 
   public MaskedTimeFieldView() {
     self.setDirection(FlexDirection.COLUMN)
