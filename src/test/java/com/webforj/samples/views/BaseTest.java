@@ -88,7 +88,7 @@ public abstract class BaseTest {
     }
 
     protected void navigateToRoute(String route) {
-        page.navigate("http://localhost:8080/" + route);
+        page.navigate("http://localhost:" + RunConfig.getPort() + "/" + route);
         // Wait for the page to be fully loaded
         page.waitForLoadState(LoadState.DOMCONTENTLOADED);
 
