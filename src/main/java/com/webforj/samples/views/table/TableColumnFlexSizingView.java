@@ -10,6 +10,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.layout.flexlayout.FlexWrap;
 import com.webforj.component.table.Column;
 import com.webforj.component.table.Table;
+
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
@@ -125,6 +126,11 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
         .setResizable(false);
 
     table.setRepository(Service.getMusicRecords());
+    table.onColumnResize(e -> {
+      titleFlexField.setValue(Math.round(titleColumn.getWidth() / 10.0) / 10.0);
+      artistFlexField.setValue(Math.round(artistColumn.getWidth() / 10.0) / 10.0);
+      genreFlexField.setValue(Math.round(genreColumn.getWidth() / 10.0) / 10.0);
+    });
 
     return table;
   }
@@ -146,6 +152,7 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
     titleColumn.setFlex(2f);
     artistColumn.setFlex(1.5f);
     genreColumn.setFlex(1f);
+    table.refreshColumns();
   }
 
   private void setEqualFlex() {
@@ -156,5 +163,6 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
     titleColumn.setFlex(1f);
     artistColumn.setFlex(1f);
     genreColumn.setFlex(1f);
+    table.refreshColumns();
   }
 }
