@@ -1,7 +1,7 @@
 ---
 title: Creating a Basic App
 sidebar_position: 2
-description: Step 1 - Learn how to add components to an app.
+description: Step 1 - Add components to an app.
 ---
 
 In [Project Setup](/docs/introduction/tutorial/project-setup), you generated a webforJ project. Now it’s time to create the main class for the project and add an interactive interface using webforJ components. In this step, you’ll learn about:
@@ -192,7 +192,7 @@ public class Application extends App {
 ```
 
 :::tip Multiple pages
-For a more complex app, you can divide the UI into multiple pages for better organization. This concept is covered later in this tutorial in [Scaling with Routing and Composites](/docs/introduction/tutorial/scaling-with-routing-and-composites).
+For a more complex app, you can divide the UI into multiple pages for better organization. This concept is covered later in this tutorial in [Routing and Composites](/docs/introduction/tutorial/routing-and-composites).
 :::
 
 ## Running the app {#running-the-app}
