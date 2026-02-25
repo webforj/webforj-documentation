@@ -12,7 +12,7 @@ No prior Spring Boot or webforJ experience is needed, but you should have a basi
 
 ## Tutorial concepts {#tutorial-concepts}
 
-The first part of the tutorial is dedicated to [project setup](/docs/introduction/tutorial/project-setup) to prepare your Spring Boot + webforJ environment. Then, there are **four steps** to introduce new features and advance your project. By following along, you’ll gain a clear understanding of how an app evolves as you implement features.
+The first part of the tutorial is dedicated to [project setup](/docs/introduction/tutorial/project-setup) to prepare your Spring Boot + webforJ environment. Then, the following steps introduce new features and advance your project. By following along, you’ll gain a clear understanding of how an app evolves as you implement features.
 
 Each step has a corresponding runnable app available on GitHub:
 
@@ -20,8 +20,9 @@ Each step has a corresponding runnable app available on GitHub:
 | ----- | ----- | ----- |
 | 1 | [Creating a Basic App](/docs/introduction/tutorial/creating-a-basic-app)                               | [Step 1 app](https://github.com/webforj/webforj-demo-application/tree/main/1-creating-a-basic-app)
 | 2 | [Working with Data](/docs/introduction/tutorial/working-with-data)                                     | [Step 2 app](https://github.com/webforj/webforj-demo-application/tree/main/2-working-with-data)
-| 3 | [Scaling with Routing and Composites](/docs/introduction/tutorial/scaling-with-routing-and-composites) | [Step 3 app](https://github.com/webforj/webforj-demo-application/tree/main/3-scaling-with-routing-and-composites)
-| 4 | [Validating and Binding Data](/docs/introduction/tutorial/validating-and-binding-data)                 | [Step 4 app](https://github.com/webforj/webforj-demo-application/tree/main/4-validating-and-binding-data)
+| 3 | [Routing and Composites](/docs/introduction/tutorial/routing-and-composites)                           | [Step 3 app](https://github.com/webforj/webforj-demo-application/tree/main/3-routing-and-composites)
+| 4 | [Observers and Route Parameters](/docs/introduction/tutorial/observers-and-route-parameters)           | [Step 4 app](https://github.com/webforj/webforj-demo-application/tree/main/4-observers-and-route-parameters)
+| 5 | [Validating and Binding Data](/docs/introduction/tutorial/validating-and-binding-data)                 | [Step 5 app](https://github.com/webforj/webforj-demo-application/tree/main/5-validating-and-binding-data)
 
 ## Prerequisites {#prerequisites}
 

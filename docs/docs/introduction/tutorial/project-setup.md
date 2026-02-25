@@ -36,8 +36,9 @@ webforj-demo-application
 │
 ├───1-creating-a-basic-app  
 ├───2-working-with-data
-├───3-scaling-with-routing-and-composites
-└───4-validating-and-binding-data
+├───3-routing-and-composites
+├───4-observers-and-route-parameters
+└───5-validating-and-binding-data
 ```
 
 <!-- vale off -->

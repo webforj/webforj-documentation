@@ -1,7 +1,7 @@
 ---
 title: Working with Data
 sidebar_position: 3
-description: Step 2 - Learn about creating a Spring data model.
+description: Step 2 - Use Spring to work with data.
 ---
 
 In this step, you’ll learn how to create a data model using Spring and display that data visually. 
@@ -468,4 +468,6 @@ When you’ve finished this step, you can compare it to [2-working-with-data](ht
 
 Running the app automatically opens a new browser at http://localhost:8080.
 
-With these changes, the app loads customer data from the database (or in-memory store), and displays it in a `Table` component. The next step introduces routing and multiple views for editing and adding customers.
+## Next step {#next-step}
+
+With these changes, the app loads customer data into the database, then displays it in a `Table` component. The next step, [Routing and Composites](/docs/introduction/tutorial/routing-and-composites), introduces routing and multiple views for adding new customers.

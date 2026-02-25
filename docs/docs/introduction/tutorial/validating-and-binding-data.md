@@ -1,8 +1,8 @@
 ---
 title: Validating and Binding Data
-sidebar_position: 5
+sidebar_position: 6
 pagination_next: null
-description: Step 4 - Learn how to add validation checks and bind data.
+description: Step 5 - Add validation checks and bind data to the UI.
 ---
 
 Your app from [Scaling with Routing and Composites](/docs/introduction/tutorial/scaling-with-routing-and-composites) can now support multiple pages, which allowed you to create `FormView`, a UI dedicated to editing and adding customer data. This step uses [Data binding](/docs/data-binding/overview), which connects UI components directly to the data model for automatic value synchronization. This reduces boilerplate in your app and lets you add validation checks to the Spring entity `Customer`, making your users provide complete and accurate information when filling out forms. This step covers the following concepts:
@@ -10,7 +10,7 @@ Your app from [Scaling with Routing and Composites](/docs/introduction/tutorial/
 - [Jakarta validation](https://beanvalidation.org)
 - Using the [`BindingContext`](https://javadoc.io/doc/com.webforj/webforj-data/latest/com/webforj/data/binding/BindingContext.html) class
 
-Completing this step creates a version of [4-validating-and-binding-data](https://github.com/webforj/webforj-demo-application/tree/main/4-validating-and-binding-data).
+Completing this step creates a version of [5-validating-and-binding-data](https://github.com/webforj/webforj-demo-application/tree/main/5-validating-and-binding-data).
 
 <!-- <div class="videos-container">
   <video controls>
@@ -352,9 +352,9 @@ public class FormView extends Composite<Div> implements WillEnterObserver {
 
 ## Running the app {#running-the-app}
 
-When you’ve finished this step, you can compare it to [4-validating-and-binding-data](https://github.com/webforj/webforj-demo-application/tree/main/4-validating-and-binding-data) on GitHub. To see the app in action:
+When you’ve finished this step, you can compare it to [5-validating-and-binding-data](https://github.com/webforj/webforj-demo-application/tree/main/5-validating-and-binding-data) on GitHub. To see the app in action:
 
-1. Navigate to the top-level directory containing the `pom.xml` file, this is `4-validating-and-binding-data` if you're following along with the version on GitHub.
+1. Navigate to the top-level directory containing the `pom.xml` file, this is `5-validating-and-binding-data` if you're following along with the version on GitHub.
 
 2. Use the following Maven command to run the Spring Boot app locally:
     ```bash
