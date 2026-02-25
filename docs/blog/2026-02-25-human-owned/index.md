@@ -7,7 +7,7 @@ authors: Garrison Osteen
 tags: [webforj, ai]
 hide_table_of_contents: false
 ---
-![cover image](./webforj-human-owned-cover.png)
+![cover image](https://cdn.webforj.com/webforj-documentation/blogs/webforj-human-owned/webforj-human-owned-cover.png)
 
 As AI coding tools, assistants, and agents become increasingly powerful, professional engineers and casual vibe coders alike can go from concept to compilation faster than ever before.
 On top of that, meta-prompting systems like [get-shit-done](https://github.com/glittercowboy/get-shit-done) and [Auto-Claude](https://github.com/AndyMik90/Auto-Claude) automate entire development workflows, so that the AI doesn't just write the code, but verifies it as well. 
@@ -67,7 +67,7 @@ Specifically, they found that AI code often contains mistakes in logic and corre
 StackOverflow's survey found that 66% of developers using AI tools had the problem of "AI solutions that are almost right, but not quite," and 45% agreed that "debugging AI-generated code is more time-consuming."
 Only 4% responded that they haven't encountered any problems when using AI tools.
 
-In addition, the METR study [*Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity*](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/) found that experienced developers in large open source codebases took **19% longer** to complete tasks with the help of AI tools than without.
+In addition, the METR study [*Measuring the Impact of Early 2025 AI on Experienced Open-Source Developer Productivity*](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/) found that experienced developers in large open source codebases took **19% longer** to complete tasks with the help of AI tools than without.
 
 ### Maintainability
 
@@ -175,6 +175,10 @@ One of the best ways to start using AI in your webforJ development is with the d
 The [Model Context Protocol](https://en.wikipedia.org/wiki/Model_Context_Protocol) (MCP) is an open standard for integrating LLMs with external data sources.
 The webforJ MCP Server gives your AI direct access to the webforJ documentation and verified code samples, making its responses more relevant and accurate. 
 By integrating it into your workflow, you can avoid many of the pitfalls of AI-generated code and accelerate the development of your own app.
+
+webforJ also provides a collection of [webforJ agent skills](https://github.com/webforj/webforJ-agent-skills/), which can teach AIs to perform webforJ-related tasks correctly. 
+By adding these to your workflow, you can keep your AI tools on track, largely eliminating guesswork and hallucinations.
+Your AI will have clear, explicit instructions and resources to help them do common tasks like modifying webforJ themes or creating custom webforJ components.
 
 Additionally, components like the `MarkdownViewer` make it easier to integrate AI output into your own app, by displaying a stream of text as it's generated.
 
