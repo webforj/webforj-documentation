@@ -89,8 +89,9 @@ Add the Webswing integration module to your webforJ project. This provides the `
 
 ```xml
 <dependency>
-    <groupId>com.webforj</groupId>
-    <artifactId>webforj-webswing</artifactId>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-webswing</artifactId>
+  <version>${webforj.version}</version>
 </dependency>
 ```
 
