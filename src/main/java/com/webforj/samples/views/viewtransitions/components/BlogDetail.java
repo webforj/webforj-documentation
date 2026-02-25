@@ -38,6 +38,7 @@ public class BlogDetail extends Composite<FlexLayout> implements HasClassName<Bl
     heading.setViewTransitionName("blog-title");
 
     closeBtn = new IconButton(FeatherIcon.X.create());
+    closeBtn.addClassName("blog-detail-close");
 
     header.add(heading, closeBtn);
 
