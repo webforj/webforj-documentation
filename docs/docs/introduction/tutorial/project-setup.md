@@ -1,11 +1,15 @@
 ---
 title: Project Setup
 sidebar_position: 1
+description: Discover where to download the tutorial project, how to navigate it, and run the apps within.
 ---
 
-In this tutorial, the app will be structured into **four steps**, each introducing new features as the project progresses. By following along, you’ll gain a clear understanding of how the app evolves and how each feature is implemented.
+To begin this tutorial, you need a location for your project where you can manage your classes and resources. The following sections describe the different ways you can create your webforJ project for this tutorial.
 
-To get started, you can download the entire project or clone it from GitHub:
+## Using the source code {#using-source-code}
+
+The easiest way to follow this tutorial is to refer to its source code. You can download the entire project or clone it from GitHub:
+
 <!-- vale off -->
 - Download ZIP: [webforj-demo-application.zip](https://github.com/webforj/webforj-demo-application/archive/refs/heads/main.zip)
 - GitHub Repository: Clone the project [directly from GitHub](https://github.com/webforj/webforj-demo-application)
@@ -14,45 +18,107 @@ To get started, you can download the entire project or clone it from GitHub:
 git clone https://github.com/webforj/webforj-demo-application.git
 ```
 
-Both the ZIP file and GitHub repository contain the complete project structure with all four steps, so you can start at any point or follow along step by step.
-
-<div class="videos-container">
+<!-- <div class="videos-container">
   <video controls>
     <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/project-setup.mp4" type="video/mp4"/>
   </video>
-</div>
+</div> -->
 
-## Project structure {#project-structure}
+### Project structure {#project-structure}
 
-The project is broken into four discrete directories, each representing a specific stage of the app’s development. These steps allow you to see how the app evolves from a basic setup to a fully functional customer management system.
-
-Inside the project folder, you’ll find four subdirectories, each corresponding to a step in the tutorial:
+The project has four subdirectories, one for each step of the tutorial, and each contains a runnable app. Following along allows you to see how the app progresses from a basic setup to a fully functional customer management system.
 
 ```
 webforj-demo-application
 │   .gitignore
 │   LICENSE
 │   README.md
-│   tree.txt
 │
 ├───1-creating-a-basic-app  
 ├───2-working-with-data
-├───3-scaling-with-routing-and-composites
-└───4-validating-and-binding-data
+├───3-routing-and-composites
+├───4-observers-and-route-parameters
+└───5-validating-and-binding-data
 ```
 
-### Running the app {#running-the-app}
+<!-- vale off -->
+## Using startforJ {#using-startforj}
+<!-- vale on -->
 
-To see the app in action at any stage:
+If you’d prefer to create a new project, you can use [startforJ](https://docs.webforj.com/startforj) to generate a minimal starter project. See [Getting Started](/docs/introduction/getting-started) for more detailed information about using startforJ.
 
-1) Navigate to the directory for the desired step. This should be the top level directory for that step, containing the `pom.xml`
+:::note Required settings
+- In the **webforJ version** dropdown, choose webforJ version **25.10 or higher**.
+- In the **Flavor** dropdown, choose **webforJ + Spring Boot**. 
+:::
 
-2) Use the Maven Jetty plugin to deploy the app locally by running:
+## Using the command line {#using-command-line}
 
+You can also generate a new project with the following command:
+
+<!-- vale off -->
+<Tabs>
+  <TabItem value="bash" label="Bash/Zsh" default>
 ```bash
-mvn jetty:run
+mvn -B archetype:generate \
+  -DarchetypeGroupId=com.webforj \
+  -DarchetypeArtifactId=webforj-archetype-hello-world \
+  -DarchetypeVersion=LATEST \
+  -DgroupId=com.webforj.demos \
+  -DartifactId=customer-app \
+  -Dversion=1.0-SNAPSHOT \
+  -Dflavor=webforj-spring
+```
+  </TabItem>
+  <TabItem value="powershell" label="PowerShell">
+```powershell
+mvn -B archetype:generate `
+  -DarchetypeGroupId="com.webforj" `
+  -DarchetypeArtifactId="webforj-archetype-hello-world" `
+  -DarchetypeVersion="LATEST" `
+  -DgroupId="com.webforj.demos" `
+  -DartifactId="customer-app" `
+  -Dversion="1.0-SNAPSHOT" `
+  -Dflavor="webforj-spring"
+```
+  </TabItem>
+  <TabItem value="cmd" label="Command Prompt">
+```
+mvn -B archetype:generate ^
+  -DarchetypeGroupId="com.webforj" ^
+  -DarchetypeArtifactId="webforj-archetype-hello-world" ^
+  -DarchetypeVersion="LATEST" ^
+  -DgroupId="com.webforj.demos" ^
+  -DartifactId="customer-app" ^
+  -Dversion="1.0-SNAPSHOT" ^
+  -Dflavor="webforj-spring"
+```
+  </TabItem>
+</Tabs>
+<!-- vale on -->
+
+## Configurations
+
+Both of the above methods for creating a new project use webforJ [archetypes](/docs/building-ui/archetypes/overview), which automatically add the needed configurations to your project, like Spring [dependencies](/docs/integrations/spring/spring-boot#step-2-add-spring-dependencies) to your POM and the following properties in `src/main/resources/application.properties`:
+
+```
+spring.application.name=CustomerApplication
+server.port=8080
+webforj.entry = com.webforj.demos.Application
+webforj.debug=true
 ```
 
-3) Open your browser and navigate to http://localhost:8080 to view the app.
+## Running the app {#running-the-app}
 
-Repeat this process for each step as you follow along with the tutorial, allowing you to explore the app’s features as they're added.
+To see the app in action as you progress through the tutorial:
+
+1. Navigate to the directory for the desired step. This should be the top-level directory for that step, containing the `pom.xml`.
+
+2. Use the following Maven command to run the Spring Boot app locally:
+    ```bash
+    mvn
+    ```
+
+<!-- vale Google.WordList = NO -->
+Running the app automatically opens a new browser at http://localhost:8080.
+<!-- vale Google.WordList = YES -->
