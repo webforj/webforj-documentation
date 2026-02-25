@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
-import java.util.Arrays;
 import java.util.List;
 
 import com.webforj.component.table.Column.PinDirection;
@@ -34,7 +33,8 @@ public class DataTableView extends Composite<Div> {
   public DataTableView() {
     List<JsonObject> data = new Gson().fromJson(
         Assets.contentOf(Assets.resolveContextUrl("context://data/olympic-winners.json")),
-        new TypeToken<List<JsonObject>>() {});
+        new TypeToken<List<JsonObject>>() {
+        });
 
     repository = new CollectionRepository<>(data);
     repository.setBaseFilter((JsonObject json) -> {
@@ -76,7 +76,7 @@ public class DataTableView extends Composite<Div> {
     table.setSelectionMode(SelectionMode.MULTIPLE);
     table.setHeaderCheckboxSelection(false);
 
-    List<String> columnsList = Arrays.asList("athlete", "age", "country", "year", "total");
+    List<String> columnsList = List.of("athlete", "age", "country", "year", "total");
 
     for (String column : columnsList) {
       table.addColumn(column, (JsonObject person) -> {
@@ -92,8 +92,6 @@ public class DataTableView extends Composite<Div> {
     table.getColumns().forEach(column -> column.setSortable(true));
     table.getColumnById("athlete").setPinDirection(PinDirection.LEFT).setMinWidth(200f);
     table.getColumnById("total").setPinDirection(PinDirection.RIGHT);
-    
-    
 
     table.setRepository(repository);
 
