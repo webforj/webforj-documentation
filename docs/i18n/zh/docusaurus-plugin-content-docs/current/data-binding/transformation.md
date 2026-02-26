@@ -1,19 +1,20 @@
 ---
 sidebar_position: 4
 title: Transformation
-_i18n_hash: fe3acbd17750ab0092cbc3609b967969
+sidebar_class_name: updated-content
+_i18n_hash: 3b1655fdbfa9c303ae1445beee9ee327
 ---
-数据转换是一个关键功能，使得 UI 组件中使用的数据类型与您数据模型中的数据类型之间的无缝转换成为可能。此功能确保在前端和后端之间移动数据时，数据类型兼容且格式正确。
+数据转换在 UI 组件使用的数据类型与数据模型中的数据类型之间进行转换。这确保在应用程序的前端和后端之间移动数据时，数据类型是兼容的且格式正确。
 
 :::tip
-当 bean 属性的数据类型与 UI 组件处理的数据类型不匹配时，转换器设置的最佳使用场景。如果您只是需要转换相同类型的数据，则配置 [绑定的获取器和设置器](bindings#binding-getters-and-setters) 是首选方法。
+当 bean 属性的数据类型与 UI 组件处理的数据类型不匹配时，转换器设置的使用效果最佳。如果您只需要转换相同类型的数据，配置 [绑定的 getter 和 setter](bindings#binding-getters-and-setters) 是更优的选择。
 :::
 
 ## 配置转换器 {#configuring-transformers}
 
-您可以直接在绑定中配置数据转换，使您能够定义数据在数据绑定过程中的转换方式。
+您可以直接在绑定中配置数据转换，从而定义在数据绑定过程中数据应该如何被转换。
 
-您可以使用 `BindingBuilder` 上的 `useTransformer` 方法为绑定添加转换器。转换器必须实现 `Transformer` 接口，该接口要求为数据流的两个方向（从模型到 UI 和从 UI 到模型）定义方法。
+您可以使用 `BindingBuilder` 上的 `useTransformer` 方法将转换器添加到绑定中。转换器必须实现 `Transformer` 接口，该接口要求为数据流的两个方向定义方法：从模型到 UI 和从 UI 到模型。
 
 ```java
 context.bind(salaryField, "salary")
@@ -21,15 +22,15 @@ context.bind(salaryField, "salary")
     .add();
 ```
 
-在上面的示例中，代码配置了一个 `CurrencyTransformer` 来处理模型数据类型（例如，BigDecimal）与 UI 表示（例如，格式化字符串）之间的转换。
+在上面的示例中，代码配置了 `CurrencyTransformer` 来处理模型数据类型（例如，BigDecimal）和 UI 表示（例如，格式化字符串）之间的转换。
 
 :::info
-每个绑定关联一个转换器。如果转换值需要多个步骤，建议为这些步骤实现您自己的转换器。
+每个绑定与单个转换器关联。如果转换一个值需要多个步骤，建议为这些步骤实现您自己的转换器。
 :::
 
-## 实现一个转换器 {#implementing-a-transformer}
+## 实现转换器 {#implementing-a-transformer}
 
-以下是实现一个简单转换器的示例，该转换器在 `LocalDate` 模型与 `String` UI 表示之间进行转换：
+下面是一个实现简单转换器的示例，该转换器在 `LocalDate` 模型和 `String` UI 表示之间进行转换：
 
 ```java
 import java.time.LocalDate;
@@ -61,11 +62,11 @@ public class DateTransformer implements Transformer<LocalDate, String> {
 }
 ```
 
-此转换器便于处理日期字段，确保在 UI 中显示的日期格式正确，并能够正确解析回模型。
+该转换器处理日期字段，在 UI 中显示日期时格式化这些日期，并将其解析回模型中。
 
-## 在绑定中使用转换器 {#using-transformers-in-bindings}
+### 在绑定中使用转换器 {#using-transformers-in-bindings}
 
-一旦您定义了转换器，您可以在应用程序内的多个绑定中应用它。这种方法对需要在应用程序不同部分进行一致处理的标准数据格式特别有用。
+一旦定义了转换器，您可以在应用中的多个绑定中应用它。这种方法对于需要在应用不同部分一致处理的标准数据格式尤其有用。
 
 ```java
 BindingContext<Employee> context = new BindingContext<>(Employee.class);
@@ -76,17 +77,17 @@ context.bind(startDateField, "startDate", String.class)
 
 :::info 指定 Bean 属性类型
 
-在 `bind` 方法中，当 UI 组件显示的数据类型与模型中使用的数据类型存在差异时，必须将 bean 属性的类型作为第三个参数进行指定。例如，如果组件将 `startDateField` 视为一个 Java `LocalDate`，而在模型中存储为 `String`，则显式定义类型为 `String.class` 确保绑定机制能够准确处理并转换两种由组件和 bean 使用的不同数据类型之间的数据，使用提供的转换器和验证器。
+在 `bind` 方法中，作为第三个参数指定 bean 属性的类型非常重要，当 UI 组件显示的数据类型与模型中使用的数据类型不一致时。例如，如果组件将 `startDateField` 视为 Java `LocalDate`，但在模型中存储为 `String`，则显式定义类型为 `String.class` 告诉绑定机制准确处理和转换组件和 bean 之间的两种不同类型的数据，使用提供的转换器和验证器。
 :::
 
-## 使用 `Transformer.of` 简化转换 {#simplifying-transforms-with-transformerof}
+### 使用 `Transformer.of` 简化转换 {#simplifying-transforms-with-transformerof}
 
-可以使用 `Transformer` 提供的 `Transformer.of` 方法来简化此类转换的实现。此方法是语法糖，允许您编写处理内联转换的方法，而不是传递实现了 `Transformer` 接口的类。
+可以使用 `Transformer` 提供的 `Transformer.of` 方法简化这些转换的实现。此方法是语法糖，允许您编写一个处理内联转换的方法，而不是传递一个实现 `Transformer` 接口的类。
 
-在下面的示例中，代码处理了一个旅行应用中的复选框交互，用户可以选择额外的服务，例如汽车租赁。复选框状态的 `boolean` 需要转换为后端模型使用的字符串表示 `"yes"` 或 `"no"`。
+在以下示例中，代码处理旅行应用中的复选框交互，用户可以选择额外服务，例如租车。复选框状态 `boolean` 需要转换为后端模型使用的字符串表示 `"yes"` 或 `"no"`。
 
 ```java
-CheckBox carRental = new CheckBox("汽车租赁");
+CheckBox carRental = new CheckBox("租车");
 BindingContext<Trip> context = new BindingContext<>(Trip.class, true);
 context.bind(carRental, "carRental", String.class)
   .useTransformer(
@@ -95,10 +96,32 @@ context.bind(carRental, "carRental", String.class)
         bool -> Boolean.TRUE.equals(bool) ? "yes" : "no",
         // 将模型值转换为组件值
         str -> str.equals("yes")
-      ), 
+      ),
 
       // 如果转换失败，显示以下消息
       "复选框必须被选中"
   )
   .add();
 ```
+
+### 动态转换器错误消息 <DocChip chip='since' label='25.12' /> {#dynamic-transformer-error-messages}
+
+默认情况下，当转换失败时显示的错误消息是静态字符串。在支持多种语言的应用中，您可以传递一个 `Supplier<String>`，这样每次转换失败时都会解析消息：
+
+```java {7}
+context.bind(quantityField, "quantity", Integer.class)
+    .useTransformer(
+        Transformer.of(
+            str -> Integer.parseInt(str),
+            val -> String.valueOf(val)
+        ),
+        () -> t("validation.quantity.invalid")
+    )
+    .add();
+```
+
+仅当转换抛出 `TransformationException` 时，才会调用供应者。这意味着消息始终反映在失败时的当前区域设置。
+
+#### 具有区域设置感知的转换器 {#locale-aware-transformers}
+
+对于需要在内部访问当前区域设置的可重用转换器（例如，按照区域惯例格式化数字或日期），请实现 `LocaleAware` 接口。当通过 `BindingContext.setLocale()` 更改区域设置时，上下文会自动将新区域设置传播给实现此接口的转换器。
