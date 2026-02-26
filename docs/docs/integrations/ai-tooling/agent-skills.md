@@ -43,7 +43,7 @@ Skills are static files read from disk—they don't add runtime overhead or make
 Clone the [webforJ agent skills repository](https://github.com/webforj/webforJ-agent-skills), then copy the skill folders into the location your AI tool expects. Each tool supports two scopes:
 
 - **Project scope**: the skill is available only in that project
-- **Personal scope**: the skill is available across all your projects
+- **User scope**: the skill is available across all your projects
 
 <Tabs groupId="ide">
 <TabItem value="claude-code" label="Claude Code" default>
@@ -56,7 +56,7 @@ cd webforJ-agent-skills
 cp -r creating-components /path/to/your/project/.claude/skills/
 cp -r styling-apps /path/to/your/project/.claude/skills/
 
-# Personal scope
+# User scope
 cp -r creating-components ~/.claude/skills/
 cp -r styling-apps ~/.claude/skills/
 ```
@@ -72,7 +72,7 @@ cd webforJ-agent-skills
 cp -r creating-components /path/to/your/project/.github/skills/
 cp -r styling-apps /path/to/your/project/.github/skills/
 
-# Personal scope
+# User scope
 cp -r creating-components ~/.copilot/skills/
 cp -r styling-apps ~/.copilot/skills/
 ```
@@ -88,7 +88,7 @@ cd webforJ-agent-skills
 cp -r creating-components /path/to/your/project/.cursor/skills/
 cp -r styling-apps /path/to/your/project/.cursor/skills/
 
-# Personal scope
+# User scope
 cp -r creating-components ~/.cursor/skills/
 cp -r styling-apps ~/.cursor/skills/
 ```
@@ -97,7 +97,7 @@ cp -r styling-apps ~/.cursor/skills/
 </Tabs>
 
 :::tip[Which scope to use]
-Use **project scope** when collaborating with a team so everyone on the project benefits from the same skills. Use **personal scope** when you work on multiple webforJ projects and want the skills available everywhere without copying them into each repository.
+Use **project scope** when collaborating with a team so everyone on the project benefits from the same skills. Use **user scope** when you work on multiple webforJ projects and want the skills available everywhere without copying them into each repository.
 :::
 
 ## Available skills {#available-skills}
