@@ -32,15 +32,4 @@ public class ViewTransitionShufflePage {
     public Locator getCards() {
         return cards;
     }
-
-    /**
-     * Gets a card by its ID.
-     * 
-     * @param id the item ID (e.g. "1", "2")
-     * @return the locator for the card
-     */
-    public Locator getCardById(String id) {
-        return cards.filter(new Locator.FilterOptions()
-                .setHas(cards.page().locator("css=[style*='view-transition-name: card-" + id + "']")));
-    }
 }

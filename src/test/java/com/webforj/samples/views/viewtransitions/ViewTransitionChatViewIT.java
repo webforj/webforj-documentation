@@ -31,6 +31,9 @@ class ViewTransitionChatViewIT extends BaseTest {
 
         chatPage.getChatToggleBtn().dispatchEvent("click");
         assertThat(chatPage.getChatCard()).isVisible();
+        assertThat(chatPage.getChatName()).hasText("Support Team");
+        assertThat(chatPage.getChatStatus()).hasText("Online");
+        assertThat(chatPage.getChatGreeting()).hasText("👋 Hi there!");
 
         chatPage.getChatToggleBtn().dispatchEvent("click");
         assertThat(chatPage.getChatCard()).isHidden();

@@ -23,6 +23,8 @@ class ViewTransitionEnterExitViewIT extends BaseTest {
     @DisplayName("Should toggle notification check visibility")
     void shouldToggleNotification() {
         assertThat(enterExitPage.getNotificationCard()).isVisible();
+        assertThat(enterExitPage.getNotificationTitle()).hasText("Success!");
+        assertThat(enterExitPage.getNotificationMessage()).hasText("Your changes have been saved successfully.");
 
         enterExitPage.getNotificationDismiss().click();
         assertThat(enterExitPage.getNotificationCard()).isHidden();
