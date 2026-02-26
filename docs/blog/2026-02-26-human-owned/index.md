@@ -2,9 +2,9 @@
 title: "webforJ: AI-assisted, human-owned"
 description: An overview of the effect of AI on code quality, and webforJ's relationship with AI
 slug: webforj-human-owned
-date: 2026-02-25
+date: 2026-02-26
 authors: Garrison Osteen
-tags: [webforj, ai]
+tags: [webforj, ai, integrations]
 hide_table_of_contents: false
 ---
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/webforj-human-owned/webforj-human-owned-cover.png)
