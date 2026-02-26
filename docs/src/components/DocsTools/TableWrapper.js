@@ -20,22 +20,25 @@ export default function TableWrapper({ children, ...props }) {
         setOpen(false);
     };
 
+    const iconButtonSx = {
+        backgroundColor: 'var(--ifm-background-surface-color)',
+        color: 'var(--ifm-color-primary)',
+        border: '1px solid var(--ifm-background-surface-color)',
+        borderRadius: '4px',
+            '&:hover': {
+                color: 'var(--ifm-color-primary-lightest)',
+                border: '1px solid var(--ifm-color-primary-lightest)',
+            }
+    };
+
     return (
-        <div className="table-wrapper" style={{ position: 'relative', marginBottom: '2rem' }}>
+        <div className="table-wrapper" style={{ position: 'relative', marginBottom: '2rem', maxWidth: 'fit-content' }}>
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 1 }}>
                 <Tooltip title="Expand table">
                     <IconButton
                         onClick={handleClickOpen}
                         size="small"
-                        color="primary"
-                        sx={{
-                            backgroundColor: 'var(--ifm-background-surface-color)',
-                            border: '1px solid var(--ifm-contents-border-color)',
-                            borderRadius: '4px',
-                            '&:hover': {
-                                backgroundColor: 'var(--ifm-color-primary-lightest)',
-                            }
-                        }}
+                        sx={iconButtonSx}
                     >
                         <OpenInFullIcon fontSize="small" />
                     </IconButton>
@@ -49,8 +52,7 @@ export default function TableWrapper({ children, ...props }) {
             </div>
 
             <Dialog
-                fullWidth
-                maxWidth="lg"
+                maxWidth="fit-content"
                 open={open}
                 onClose={handleClose}
                 scroll="paper"
@@ -74,21 +76,15 @@ export default function TableWrapper({ children, ...props }) {
                         backgroundColor: 'var(--ifm-background-color)',
                         borderBottom: '1px solid var(--ifm-contents-border-color)'
                     }}
-                >
+                > <Tooltip title="Close window">
                     <IconButton
                         aria-label="close"
                         onClick={handleClose}
-                        sx={{
-                            color: 'var(--ifm-font-color-base)',
-                            opacity: 0.7,
-                            '&:hover': {
-                                opacity: 1,
-                                backgroundColor: 'var(--ifm-color-primary-lightest)',
-                            }
-                        }}
+                        sx={iconButtonSx}
                     >
                         <CloseIcon />
                     </IconButton>
+                </Tooltip>
                 </DialogTitle>
                 <DialogContent
                     sx={{
