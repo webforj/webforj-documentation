@@ -1,6 +1,7 @@
 ---
 title: Agent Skills
 sidebar_position: 10
+sidebar_class_name: new-content
 ---
 
 Agent skills teach AI coding assistants how to build webforJ applications using the correct APIs, design tokens, and component patterns. Instead of guessing at framework conventions, an AI assistant loads a skill and follows its structured workflow to produce code that compiles and follows best practices on the first attempt.
