@@ -29,6 +29,7 @@ So, if webforJ's `FlexLayout` provides the same functionality as CSS Flexbox, ho
 If you've used Flexbox before, `FlexLayout` will be a familiar tool with different syntax.
 Instead of writing CSS like `justify-content: space-between;` you will use object methods and enums to write Java code such as `layout.SetJustifyContent(FlexJustifyContent.BETWEEN);`.
 
+<!-- vale Google.Spacing = NO -->
 <table>
   <tr>
     <th>Function</th>
@@ -58,6 +59,7 @@ Instead of writing CSS like `justify-content: space-between;` you will use objec
   <tr>
   <th>Code Example</th>
   <td>
+<!-- vale Google.Spacing = YES -->
 
   ```CSS
   .flex-container {

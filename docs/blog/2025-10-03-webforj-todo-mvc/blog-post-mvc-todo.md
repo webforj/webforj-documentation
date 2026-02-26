@@ -29,7 +29,9 @@ Before diving into code, let's demystify MVC in case any of you reading this als
 
 - **Model**: Your data and business logic (the brain)
 - **View**: What users see and interact with (the face)
+<!-- vale Google.GenderBias = NO -->
 - **Controller**: The middleman coordinating between them (the nervous system)
+<!-- vale Google.GenderBias = YES -->
 
 There are all sorts of metaphors and analogies relating real-life paradigms to MVC. I'll spare you having to read through more of them here. 
 

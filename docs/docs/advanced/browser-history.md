@@ -6,7 +6,7 @@ sidebar_position: 30
 <DocChip chip='since' label='24.12' />
 <JavadocLink type="foundation" location="com/webforj/router/history/BrowserHistory" top='true'/>
 
-The `BrowserHistory` class in webforJ provides a high-level API to interact with the browser's history. Browser history allows web applications to keep track of the user's navigation within the app. By leveraging browser history, developers can enable features like back and forward navigation, state preservation, and dynamic URL management without requiring full-page reloads.
+The `BrowserHistory` class in webforJ provides a high-level API to interact with the browser's history. Browser history allows web applications to keep track of the user's navigation within the app. By using browser history, developers can enable features like back and forward navigation, state preservation, and dynamic URL management without requiring full-page reloads.
 
 ## Navigating through history {#navigating-through-history}
 
@@ -23,7 +23,7 @@ BrowserHistory history = new BrowserHistory();
 ```
 This approach is suitable for scenarios where you need to manage history explicitly outside of a routing framework.
 
-2) **Retrieving the history from the `Router`** : If your app uses webforJ's [routing solution](../routing/overview), the `Router` component creates and manages a shared `BrowserHistory` instance. You can access this instance directly from the router, ensuring a consistent history management approach across your app.
+2) **Retrieving the history from the `Router`**: If your app uses webforJ's [routing solution](../routing/overview), the `Router` component creates and manages a shared `BrowserHistory` instance. You can access this instance directly from the router for consistent history management approach across your app.
 
 ```java
 BrowserHistory history = Router.getCurrent().getHistory();
