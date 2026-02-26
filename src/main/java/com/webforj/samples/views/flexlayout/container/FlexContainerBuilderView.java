@@ -21,44 +21,45 @@ import com.webforj.router.annotation.Route;
 import com.webforj.samples.components.Box;
 import com.webforj.samples.components.CodeDisplay;
 
-@StyleSheet("ws://css/flexlayout/container/flexContainerBuilder.css")
 @Route
+@StyleSheet("ws://css/flexlayout/container/flexContainerBuilder.css")
 @FrameTitle("Container Builder")
 public class FlexContainerBuilderView extends Composite<Div> {
+  private static final int HUE = 36; // 360 / 10
+  private Div self = getBoundComponent();
+  private MaskedNumberFieldSpinner spinner = new MaskedNumberFieldSpinner();
 
-  MaskedNumberFieldSpinner spinner = new MaskedNumberFieldSpinner();
+  private FlexLayout boxLayout;
+  private ArrayList<Box> boxes;
+  private int numBoxes;
 
-  FlexLayout boxLayout;
-  ArrayList<Box> boxes;
-  float numBoxes;
-
-  String javaCode;
-  CodeDisplay codeWindow = new CodeDisplay();
-  HashMap<String, String> codeSnippetBuilder;
+  private String javaCode;
+  private CodeDisplay codeWindow = new CodeDisplay();
+  private HashMap<String, String> codeSnippetBuilder;
 
   public static final String REGEX = "^(.+?)-";
 
   public FlexContainerBuilderView() {
-    getBoundComponent().addClassName("app__frame");
+    self.addClassName("app__frame");
 
     FlexLayout mainLayout = FlexLayout.create()
-        .horizontal()
-        .build();
+            .horizontal()
+            .build();
 
     boxLayout = FlexLayout.create()
-        .horizontal()
-        .build()
-        .addClassName("button__container");
+            .horizontal()
+            .build()
+            .addClassName("button__container");
 
     FlexLayout flexContainerOptions = FlexLayout.create()
-        .vertical()
-        .build()
-        .addClassName("flex__options");
+            .vertical()
+            .build()
+            .addClassName("flex__options");
 
     spinner.setLabel("Number of Boxes")
-        .setMin((double) 1)
-        .setText("1");
-    spinner.onModify(this::spinnerChange);
+            .setMin(1d)
+            .setText("1")
+            .onModify(this::spinnerChange);
 
     boxes = new ArrayList<>();
     numBoxes = 0;
@@ -67,69 +68,69 @@ public class FlexContainerBuilderView extends Composite<Div> {
     flexContainerOptions.add(spinner);
 
     mainLayout.add(flexContainerOptions, boxLayout);
-    getBoundComponent().add(mainLayout);
+    self.add(mainLayout);
 
-    ChoiceBox directions = new ChoiceBox();
+    ChoiceBox directions = new ChoiceBox()
+            .setLabel("Direction Options");
     directions.onSelect(this::selectDirection);
-    directions.setLabel("Direction Options");
     for (FlexDirection justify : FlexDirection.values()) {
       String label = justify.getValue();
-      directions.add(
-          "." + justify.toString()
-              .toLowerCase() + "()",
-          label.substring(0, 1)
-              .toUpperCase()
-              + label
-                  .substring(1));
+      String key = justify.toString().toLowerCase();
+      String text = label.substring(0, 1).toUpperCase()
+              + label.substring(1);
+      directions.add("." + key + "()", text);
     }
     directions.selectIndex(0);
 
-    ChoiceBox justifications = new ChoiceBox();
+    ChoiceBox justifications = new ChoiceBox()
+            .setLabel("Justification Options");
     justifications.onSelect(this::selectJustification);
-    justifications.setLabel("Justification Options");
     for (FlexJustifyContent justify : FlexJustifyContent.values()) {
-      String label = justify.getValue()
-          .replaceAll(REGEX, "");
-      justifications.add(".justify()." + justify.toString().toLowerCase().replaceAll(REGEX, "") + "()",
-          label.substring(0, 1).toUpperCase() + label.substring(1));
+      String label = justify.getValue().replaceAll(REGEX, "");
+      String key = justify.toString().toLowerCase().replaceAll(REGEX, "");
+      String text = label.substring(0, 1).toUpperCase() + label.substring(1);
+      justifications.add(".justify()." + key + "()", text);
     }
     justifications.selectIndex(0);
 
-    ChoiceBox alignments = new ChoiceBox();
+    ChoiceBox alignments = new ChoiceBox()
+            .setLabel("Alignment Options");
     alignments.onSelect(this::selectAlignment);
-    alignments.setLabel("Alignment Options");
     for (FlexAlignment justify : FlexAlignment.values()) {
       String label = justify.getValue().replaceAll(REGEX, "");
-      alignments.add(".align()." + justify.toString().toLowerCase().replaceAll(REGEX, "") + "()",
-          label.substring(0, 1).toUpperCase() + label.substring(1));
+      String key = justify.toString().toLowerCase().replaceAll(REGEX, "");
+      String text = label.substring(0, 1).toUpperCase() + label.substring(1);
+      alignments.add(".align()." + key + "()", text);
     }
     alignments.selectIndex(0);
 
-    ChoiceBox contentAlignments = new ChoiceBox();
+    ChoiceBox contentAlignments = new ChoiceBox()
+            .setLabel("Content-Alignment Options");
     contentAlignments.onSelect(this::selectAlignContent);
-    contentAlignments.setLabel("Content-Alignment Options");
     for (FlexContentAlignment justify : FlexContentAlignment.values()) {
       String label = justify.getValue().replaceAll(REGEX, "");
-      contentAlignments.add(".contentAlign()." + justify.toString().toLowerCase().replaceAll(REGEX, "") + "()",
-          label.substring(0, 1).toUpperCase() + label.substring(1));
+      String key = justify.toString().toLowerCase().replaceAll(REGEX, "");
+      String text = label.substring(0, 1).toUpperCase() + label.substring(1);
+      contentAlignments.add(".contentAlign()." + key + "()", text);
     }
     contentAlignments.selectIndex(0);
 
-    ChoiceBox wraps = new ChoiceBox();
+    ChoiceBox wraps = new ChoiceBox()
+            .setLabel("Wrap Options");
     wraps.onSelect(this::selectWrap);
-    wraps.setLabel("Wrap Options");
     for (FlexWrap justify : FlexWrap.values()) {
       String label = justify.getValue().replaceAll(REGEX, "");
-      wraps.add(".wrap()." + justify.toString().toLowerCase().replaceAll(REGEX, "") + "()",
-          label.substring(0, 1).toUpperCase() + label.substring(1));
+      String key = justify.toString().toLowerCase().replaceAll(REGEX, "");
+      String text = label.substring(0, 1).toUpperCase() + label.substring(1);
+      wraps.add(".wrap()." + key + "()", text);
     }
     wraps.selectIndex(0);
 
     flexContainerOptions.add(directions, justifications, alignments, contentAlignments, wraps);
 
-    getBoundComponent().add(codeWindow);
+    self.add(codeWindow);
     codeWindow.setLanguage("java")
-        .addClassName("code__block");
+            .addClassName("code__block");
 
     createStrings();
     updateCode();
@@ -146,20 +147,20 @@ public class FlexContainerBuilderView extends Composite<Div> {
 
   private void updateCode() {
     javaCode = "FlexLayout boxLayout = FlexLayout.create() \n" +
-        codeSnippetBuilder.get("FlexDirection") +
-        codeSnippetBuilder.get("FlexJustifyContent") +
-        codeSnippetBuilder.get("FlexAlignment") +
-        codeSnippetBuilder.get("FlexContentAlignment") +
-        codeSnippetBuilder.get("FlexWrap");
+            codeSnippetBuilder.get("FlexDirection") +
+            codeSnippetBuilder.get("FlexJustifyContent") +
+            codeSnippetBuilder.get("FlexAlignment") +
+            codeSnippetBuilder.get("FlexContentAlignment") +
+            codeSnippetBuilder.get("FlexWrap");
     codeWindow.setText(javaCode);
   }
 
   private void spinnerChange(ModifyEvent ev) {
-    if (!spinner.isInvalid() && Integer.valueOf(ev.getText()) > 0) {
-      if (Integer.valueOf(ev.getText()) > numBoxes) {
-        addBox(Integer.valueOf(ev.getText()));
-      } else if (Integer.valueOf(ev.getText()) < numBoxes) {
-        removeBox(Integer.valueOf(ev.getText()));
+    if (!spinner.isInvalid() && Integer.parseInt(ev.getText()) > 0) {
+      if (Integer.parseInt(ev.getText()) > numBoxes) {
+        addBox(Integer.parseInt(ev.getText()));
+      } else if (Integer.parseInt(ev.getText()) < numBoxes) {
+        removeBox(Integer.parseInt(ev.getText()));
       }
     }
   }
@@ -167,8 +168,7 @@ public class FlexContainerBuilderView extends Composite<Div> {
   private void addBox(int newNum) {
     while (newNum > numBoxes) {
       numBoxes++;
-      String hue = String.valueOf((360 / 10) * (int) numBoxes);
-      Box newBox = new Box((int) numBoxes);
+      String hue = String.valueOf(HUE * numBoxes); Box newBox = new Box(numBoxes);
       newBox.setStyle("background", "hsla(" + hue + ", 50%, 75%, 0.25)");
       newBox.setStyle("border", "2px solid " + "hsl(" + hue + ", 50%, 35%)");
       newBox.setStyle("color", "hsl(" + hue + ", 50%, 25%)");
@@ -179,33 +179,26 @@ public class FlexContainerBuilderView extends Composite<Div> {
 
   private void removeBox(int newNum) {
     while (newNum < numBoxes) {
-      boxes.get((int) numBoxes - 1).destroyBox();
-      boxes.remove((int) numBoxes - 1);
+      boxes.get(numBoxes - 1).destroyBox();
+      boxes.remove(numBoxes - 1);
       numBoxes--;
     }
   }
 
-  private void selectDirection(ListSelectEvent ev) {
-    boxLayout.setDirection(FlexDirection.fromValue(ev.getSelectedItem().getText()));
+  private void selectDirection(ListSelectEvent<?> ev) {
+    FlexDirection direction = FlexDirection.fromValue(ev.getSelectedItem().getText());
+    boxLayout.setDirection(direction);
 
-    switch (ev.getSelectedItem().getKey().toString()) {
-      case ".row-reverse()":
-        codeSnippetBuilder.put("FlexDirection", ".horizontalReverse()\n");
-        break;
-      case ".column()":
-        codeSnippetBuilder.put("FlexDirection", ".vertical()\n");
-        break;
-      case ".column-reverse()":
-        codeSnippetBuilder.put("FlexDirection", ".verticalReverse()\n");
-        break;
-      default:
-        codeSnippetBuilder.put("FlexDirection", ".horizontal()\n");
-        break;
+    switch (direction) {
+      case ROW_REVERSE -> codeSnippetBuilder.put("FlexDirection", ".horizontalReverse()\n");
+      case COLUMN -> codeSnippetBuilder.put("FlexDirection", ".vertical()\n");
+      case COLUMN_REVERSE -> codeSnippetBuilder.put("FlexDirection", ".verticalReverse()\n");
+      case ROW -> codeSnippetBuilder.put("FlexDirection", ".horizontal()\n");
     }
     updateCode();
   }
 
-  private void selectJustification(ListSelectEvent ev) {
+  private void selectJustification(ListSelectEvent<?> ev) {
     boxLayout.setJustifyContent(FlexJustifyContent.fromValue(ev.getSelectedItem().getText()));
     if (ev.getSelectedItem().getKey().toString().equals(".justify().start()")) {
       codeSnippetBuilder.put("FlexJustifyContent", "");
@@ -215,7 +208,7 @@ public class FlexContainerBuilderView extends Composite<Div> {
     updateCode();
   }
 
-  private void selectAlignment(ListSelectEvent ev) {
+  private void selectAlignment(ListSelectEvent<?> ev) {
     boxLayout.setAlignment(FlexAlignment.fromValue(ev.getSelectedItem().getText()));
     if (ev.getSelectedItem().getKey().toString().equals(".align().stretch()")) {
       codeSnippetBuilder.put("FlexAlignment", "");
@@ -225,7 +218,7 @@ public class FlexContainerBuilderView extends Composite<Div> {
     updateCode();
   }
 
-  private void selectAlignContent(ListSelectEvent ev) {
+  private void selectAlignContent(ListSelectEvent<?> ev) {
     boxLayout.setAlignContent(FlexContentAlignment.fromValue(ev.getSelectedItem().getText()));
     if (ev.getSelectedItem().getKey().toString().equals(".contentAlign().normal()")) {
       codeSnippetBuilder.put("FlexContentAlignment", "");
@@ -235,7 +228,7 @@ public class FlexContainerBuilderView extends Composite<Div> {
     updateCode();
   }
 
-  private void selectWrap(ListSelectEvent ev) {
+  private void selectWrap(ListSelectEvent<?> ev) {
     if (ev.getSelectedItem().getKey().toString().equals(".wrap().nowrap()")) {
       boxLayout.setWrap(FlexWrap.fromValue(ev.getSelectedItem().getText()));
       codeSnippetBuilder.put("FlexWrap", "");

@@ -14,22 +14,21 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Flex Order")
 public class FlexOrderView extends Composite<Div> {
-
-  FlexLayout boxLayout;
-  Button orderButton;
+  private Div self = getBoundComponent();
+  private FlexLayout boxLayout;
+  private Button orderButton;
 
   public FlexOrderView() {
-
     FlexLayout mainLayout = FlexLayout.create()
-        .horizontal()
-        .align().start()
-        .build();
+            .horizontal()
+            .align().start()
+            .build();
 
     this.boxLayout = FlexLayout.create()
-        .horizontal()
-        .wrap().wrap()
-        .build()
-        .addClassName("button__container--single-row");
+            .horizontal()
+            .wrap().wrap()
+            .build()
+            .addClassName("button__container--single-row");
 
     for (int i = 1; i <= 5; i++) {
       Button newButton = new Button("Order: " + i, ButtonTheme.PRIMARY);
@@ -40,29 +39,30 @@ public class FlexOrderView extends Composite<Div> {
     orderButton.setTheme(ButtonTheme.DANGER);
 
     MaskedNumberField order = new MaskedNumberField("5")
-        .setLabel("Order:")
-        .setWidth("100%");
-    
+            .setLabel("Order:")
+            .setWidth("100%")
+            .setInvalidMessage("Order can not be empty.")
+            .setNegateable(false);
+
     Button submit = new Button("Set Order");
-    order.setInvalidMessage("Order can not be empty.");
-    order.setNegateable(false);
-    submit.setSize("100%","34px")
-        .onClick(e -> {
-          if (order.getText().isEmpty()) {
-            order.setInvalid(true);
-          } else {
-            boxLayout.setItemOrder(Integer.parseInt(order.getText()), orderButton);
-            orderButton.setText("Order: " + order.getText());
-          }
-        });
+    submit.setSize("100%", "34px")
+            .onClick(e -> {
+              if (order.getText().isEmpty()) {
+                order.setInvalid(true);
+              } else {
+                int itemOrder = Integer.parseInt(order.getText());
+                boxLayout.setItemOrder(itemOrder, orderButton);
+                orderButton.setText("Order: " + order.getText());
+              }
+            });
 
     FlexLayout optionLayout = FlexLayout.create(order, submit)
-        .vertical()          
-        .align().stretch()    
-        .build()
-        .addClassName("flex__options");
+            .vertical()
+            .align().stretch()
+            .build()
+            .addClassName("flex__options");
 
-    getBoundComponent().add(mainLayout);
+    self.add(mainLayout);
     mainLayout.add(optionLayout, boxLayout);
   }
 }

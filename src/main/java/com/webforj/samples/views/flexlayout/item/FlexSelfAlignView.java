@@ -11,25 +11,24 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@StyleSheet("ws://css/flexlayout/container/flexContainerBuilder.css")
 @Route
+@StyleSheet("ws://css/flexlayout/container/flexContainerBuilder.css")
 @FrameTitle("Flex Item Self Align")
 public class FlexSelfAlignView extends Composite<Div> {
-
-  FlexLayout boxLayout;
-  Button alignButton;
+  private Div self = getBoundComponent();
+  private FlexLayout boxLayout;
+  private Button alignButton;
 
   public FlexSelfAlignView() {
-
     FlexLayout mainLayout = FlexLayout.create()
-        .horizontal()
-        .build();
+            .horizontal()
+            .build();
 
     this.boxLayout = FlexLayout.create()
-        .horizontal()
-        .wrap().wrap()
-        .build()
-        .addClassName("button__container");
+            .horizontal()
+            .wrap().wrap()
+            .build()
+            .addClassName("button__container");
 
     for (int i = 1; i <= 5; i++) {
       Button newButton = new Button("Button " + i, ButtonTheme.PRIMARY);
@@ -39,26 +38,26 @@ public class FlexSelfAlignView extends Composite<Div> {
     }
     alignButton.setTheme(ButtonTheme.DANGER).setText("Align Me!");
 
-    ChoiceBox alignment = new ChoiceBox();
-    alignment
-        .onSelect(e -> boxLayout.setItemAlignment(FlexAlignment.fromValue(e.getSelectedItem().getText()), alignButton));
-    alignment.addClassName("flex__options");
+    ChoiceBox alignment = new ChoiceBox()
+            .addClassName("flex__options")
+            .setLabel("Self Alignment Options");
+    alignment.onSelect(e -> {
+      FlexAlignment flexAlignment = FlexAlignment.fromValue(e.getSelectedItem().getText());
+      boxLayout.setItemAlignment(flexAlignment, alignButton);
+    });
 
-    alignment.setLabel("Self Alignment Options");
     for (FlexAlignment align : FlexAlignment.values()) {
       String label = align.getValue();
+      String key = align.toString().toLowerCase();
+      String text = label.substring(0, 1).toUpperCase()
+              + label.substring(1);
       alignment.add(
-          "." + align.toString()
-              .toLowerCase() + "()",
-          label.substring(0, 1)
-              .toUpperCase()
-              + label
-                  .substring(1));
+              "." + key + "()", text);
     }
     alignment.selectIndex(0);
 
     boxLayout.setItemAlignment(FlexAlignment.START, alignButton);
-    getBoundComponent().add(mainLayout);
+    self.add(mainLayout);
     mainLayout.add(alignment, boxLayout);
   }
 }

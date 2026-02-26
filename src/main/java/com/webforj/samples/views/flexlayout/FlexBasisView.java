@@ -18,58 +18,57 @@ import java.util.List;
 @Route
 @FrameTitle("Flex Basis")
 public class FlexBasisView extends Composite<Div> {
+  private Div self = getBoundComponent();
+  private FlexLayout mainLayout;
+  private FlexLayout boxLayout;
+  private FlexLayout optionLayout;
+  private List<Button> buttons;
+  private NumberField numberField;
+  private Button basisButton;
+  private Button reset;
 
-  FlexLayout mainLayout;
-  FlexLayout boxLayout;
-  FlexLayout optionLayout;
-  List<Button> buttons;
-  NumberField numberField;
-  Button basisButton;
-  Button reset;
-
-  int selected = 0;
+  private int selected = 0;
 
   public FlexBasisView() {
+    mainLayout = FlexLayout.create()
+            .horizontal()
+            .build()
+            .setPadding("20px")
+            .setItemBasis("100%", boxLayout);
 
-    this.mainLayout = FlexLayout.create()
-        .horizontal()
-        .build();
-    mainLayout.setPadding("20px");
-
-    this.boxLayout = FlexLayout.create()
-        .horizontal()
-        .wrap().wrap()
-        .build()
-        .setPadding("20px")
-        .setStyle("border", "1px solid var(--dwc-color-default)");
+    boxLayout = FlexLayout.create()
+            .horizontal()
+            .wrap().wrap()
+            .build()
+            .setPadding("20px")
+            .setStyle("border", "1px solid var(--dwc-color-default)");
 
     buttons = new ArrayList<>();
 
     for (int i = 1; i <= 5; i++) {
       Button newButton = new Button("Box " + i, ButtonTheme.OUTLINED_PRIMARY, this::onButtonSelect);
-      newButton.setStyle("transition","flex-basis var(--dwc-transition-medium) var(--dwc-ease-inOutExpo)");
+      newButton.setStyle("transition", "flex-basis var(--dwc-transition-medium) var(--dwc-ease-inOutExpo)");
       buttons.add(newButton);
       boxLayout.add(buttons.get(i - 1));
       boxLayout.setItemBasis("75px", buttons.get(i - 1));
     }
 
-    this.numberField = new NumberField("Basis")
-        .setMin(75.0)
-        .setTooltipText("Set the flex basis width (in pixels)")
-        .setRequired(true);
+    numberField = new NumberField("Basis")
+            .setMin(75.0)
+            .setTooltipText("Set the flex basis width (in pixels)")
+            .setRequired(true);
 
-    this.basisButton = new Button("Set basis", this::onSetBasis)
-        .setTooltipText("Select a box item first");
+    basisButton = new Button("Set basis", this::onSetBasis)
+            .setTooltipText("Select a box item first");
 
-    this.reset = new Button("Reset", ButtonTheme.OUTLINED_GRAY, this::onReset);
+    reset = new Button("Reset", ButtonTheme.OUTLINED_GRAY, this::onReset);
 
-    this.optionLayout = FlexLayout.create(numberField, basisButton, reset)
-        .vertical()
-        .build();
+    optionLayout = FlexLayout.create(numberField, basisButton, reset)
+            .vertical()
+            .build();
 
-    getBoundComponent().add(mainLayout);
+    self.add(mainLayout);
     mainLayout.add(optionLayout, boxLayout);
-    mainLayout.setItemBasis("100%", boxLayout);
   }
 
   private void onButtonSelect(ButtonClickEvent e) {
@@ -85,11 +84,11 @@ public class FlexBasisView extends Composite<Div> {
 
   private void onSetBasis(ButtonClickEvent e) {
     if (numberField.getValue() != null) {
-      for (int i = 0; i <= buttons.size() - 1; i++) {
-        if (buttons.get(i).getTheme() == ButtonTheme.PRIMARY) {
-          boxLayout.setItemBasis(numberField.getValue().toString() + "px", buttons.get(i));
+      for (Button button : buttons) {
+        if (button.getTheme() == ButtonTheme.PRIMARY) {
+          boxLayout.setItemBasis(numberField.getValue() + "px", button);
         } else {
-          boxLayout.setItemBasis("75px", buttons.get(i));
+          boxLayout.setItemBasis("75px", button);
         }
       }
     }
@@ -98,9 +97,9 @@ public class FlexBasisView extends Composite<Div> {
   private void onReset(ButtonClickEvent e) {
     basisButton.setTooltipText("Select a box item first");
     selected = 0;
-    for (int i = 0; i <= buttons.size() - 1; i++) {
-      buttons.get(i).setTheme(ButtonTheme.OUTLINED_PRIMARY);
-      boxLayout.setItemBasis("75px", buttons.get(i));
+    for (Button button : buttons) {
+      button.setTheme(ButtonTheme.OUTLINED_PRIMARY);
+      boxLayout.setItemBasis("75px", button);
     }
   }
 }

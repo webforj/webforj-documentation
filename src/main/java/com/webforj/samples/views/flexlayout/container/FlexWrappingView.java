@@ -9,22 +9,24 @@ import com.webforj.component.window.Panel;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
+import java.util.Arrays;
+
 @Route
 @FrameTitle("Flex Wrapping")
 public class FlexWrappingView extends Composite<Div> {
+  private Div self = getBoundComponent();
+
   public FlexWrappingView() {
     Panel container = new Panel();
     container.setWidth("200px")
         .setStyle("border", "1px black dotted");
-    getBoundComponent().add(container);
+    self.add(container);
 
     Button[] buttons = new Button[3];
     for (int i = 0; i < buttons.length; i++) {
       buttons[i] = new Button("Button " + (i + 1));
-      if (i == 0) {
-        buttons[i].setTheme(ButtonTheme.PRIMARY);
-      }
     }
+    buttons[0].setTheme(ButtonTheme.PRIMARY);
 
     FlexLayout buttonsLayout = FlexLayout.create(buttons)
         .horizontal()

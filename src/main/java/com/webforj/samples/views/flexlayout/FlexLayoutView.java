@@ -17,68 +17,66 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Flex Layout")
 public class FlexLayoutView extends Composite<Div> {
-
-  TextField email;
-  PasswordField password;
-  TextField firstName;
-  TextField lastName;
-  TextField address;
-  TextField city;
-  ChoiceBox states;
-  MaskedNumberField zip;
-  Button submit;
-  Button cancel;
+  private Div self = getBoundComponent();
+  private TextField email;
+  private PasswordField password;
+  private TextField firstName;
+  private TextField lastName;
+  private TextField address;
+  private TextField city;
+  private ChoiceBox states;
+  private MaskedNumberField zip;
+  private Button submit;
+  private Button cancel;
 
   public FlexLayoutView() {
-
-    email = new TextField().setLabel("Email");
-    password = new PasswordField().setLabel("Password");
-    firstName = new TextField().setLabel("First Name");
-    lastName = new TextField().setLabel("Last Name");
-    address = new TextField().setLabel("Address");
-    city = new TextField().setLabel("City");
-    states = new ChoiceBox().setLabel("State").setMaxRowCount(7);
-    zip = new MaskedNumberField().setLabel("Zip");
+    email = new TextField("Email");
+    password = new PasswordField("Password");
+    firstName = new TextField("First Name");
+    lastName = new TextField("Last Name");
+    address = new TextField("Address");
+    city = new TextField("City");
+    states = new ChoiceBox("State").setMaxRowCount(7);
+    zip = new MaskedNumberField("Zip").setWidth("150px");
 
     populateStates();
     submit = new Button("Submit", ButtonTheme.PRIMARY);
     cancel = new Button("Cancel", ButtonTheme.DEFAULT);
 
     FlexLayout mainLayout = FlexLayout.create()
-        .vertical()
-        .build()
-        .addClassName("main__layout");
+            .vertical()
+            .build()
+            .addClassName("main__layout");
 
     FlexLayout rowOne = FlexLayout.create(email, password)
-        .horizontal()
-        .wrap()
-        .build();
+            .horizontal()
+            .wrap()
+            .build();
 
     FlexLayout rowTwo = FlexLayout.create(firstName, lastName)
-        .horizontal()
-        .wrap()
-        .build();
+            .horizontal()
+            .wrap()
+            .build();
 
     FlexLayout addressRow = FlexLayout.create(address)
-        .horizontal()
-        .wrap()
-        .build();
+            .horizontal()
+            .wrap()
+            .build();
 
     FlexLayout cityStateZipRow = FlexLayout.create(city, states, zip)
-        .horizontal()
-        .justify().between()
-        .build();
-    cityStateZipRow.setItemBasis("40%", city);
-    cityStateZipRow.setItemBasis("20%", states);
-    cityStateZipRow.setItemBasis("40%", zip);
-    zip.setWidth("150px");
+            .horizontal()
+            .justify().between()
+            .build()
+            .setItemBasis("40%", city)
+            .setItemBasis("20%", states)
+            .setItemBasis("40%", zip);
 
     FlexLayout rowFour = FlexLayout.create(cancel, submit)
-        .horizontalReverse()
-        .build();
+            .horizontalReverse()
+            .build();
 
     mainLayout.add(rowOne, rowTwo, addressRow, cityStateZipRow, rowFour);
-    getBoundComponent().add(mainLayout);
+    self.add(mainLayout);
   }
 
   private void populateStates() {
