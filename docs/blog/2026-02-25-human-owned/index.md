@@ -8,6 +8,7 @@ tags: [webforj, ai]
 hide_table_of_contents: false
 ---
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/webforj-human-owned/webforj-human-owned-cover.png)
+<!-- vale webforJ.BeDirect = NO -->
 
 As AI coding tools, assistants, and agents become increasingly powerful, professional engineers and casual vibe coders alike can go from concept to compilation faster than ever before.
 On top of that, meta-prompting systems like [get-shit-done](https://github.com/glittercowboy/get-shit-done) and [Auto-Claude](https://github.com/AndyMik90/Auto-Claude) automate entire development workflows, so that the AI doesn't just write the code, but verifies it as well. 
@@ -18,7 +19,9 @@ Can the open source ecosystem withstand the flood of AI-generated PRs?
 How can developers use AI without sacrificing understanding and quality?
 
 Research into these questions is still emerging, but the current findings suggest that for anything that requires security, maintainability, and performance, it's best not to put too much trust in AI-written code.
+<!-- vale Google.Colons = NO -->
 This is why we've made a strategic choice at webforJ: **AI-assisted development, but human-owned code.**
+<!-- vale Google.Colons = YES -->
 
 <!-- truncate -->
 
@@ -67,7 +70,9 @@ Specifically, they found that AI code often contains mistakes in logic and corre
 StackOverflow's survey found that 66% of developers using AI tools had the problem of "AI solutions that are almost right, but not quite," and 45% agreed that "debugging AI-generated code is more time-consuming."
 Only 4% responded that they haven't encountered any problems when using AI tools.
 
+<!-- vale Google.Acronyms = NO -->
 In addition, the METR study [*Measuring the Impact of Early 2025 AI on Experienced Open-Source Developer Productivity*](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/) found that experienced developers in large open source codebases took **19% longer** to complete tasks with the help of AI tools than without.
+<!-- vale Google.Acronyms = YES -->
 
 ### Maintainability
 
@@ -170,13 +175,13 @@ This is an area where strict style guides and review processes ensure that, rega
 ## How webforJ supports your use of AI
 
 In addition to our own use of AI, the prevalence of AI tools means that our webforJ users are using AI, too.
-Because of this, we are always looking for ways to improve the experience of developers using webforJ with these tools.
-One of the best ways to start using AI in your webforJ development is with the dedicated [webforJ MCP server](/docs/introduction/mcp).
+Because of this, we're always looking for ways to improve the experience of developers using webforJ with these tools.
+One of the best ways to start using AI in your webforJ development is with the dedicated [webforJ MCP server](/docs/integrations/ai-tooling/mcp).
 The [Model Context Protocol](https://en.wikipedia.org/wiki/Model_Context_Protocol) (MCP) is an open standard for integrating LLMs with external data sources.
 The webforJ MCP Server gives your AI direct access to the webforJ documentation and verified code samples, making its responses more relevant and accurate. 
 By integrating it into your workflow, you can avoid many of the pitfalls of AI-generated code and accelerate the development of your own app.
 
-webforJ also provides a collection of [webforJ agent skills](https://github.com/webforj/webforJ-agent-skills/), which can teach AIs to perform webforJ-related tasks correctly. 
+webforJ also provides a collection of [webforJ agent skills](/docs/integrations/ai-tooling/agent-skills), which can teach AIs to perform webforJ-related tasks correctly. 
 By adding these to your workflow, you can keep your AI tools on track, largely eliminating guesswork and hallucinations.
 Your AI will have clear, explicit instructions and resources to help them do common tasks like modifying webforJ themes or creating custom webforJ components.
 
