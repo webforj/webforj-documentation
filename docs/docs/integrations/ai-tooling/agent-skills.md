@@ -5,21 +5,14 @@ sidebar_position: 10
 
 Agent skills teach AI coding assistants how to build webforJ applications using the correct APIs, design tokens, and component patterns. Instead of guessing at framework conventions, an AI assistant loads a skill and follows its structured workflow to produce code that compiles and follows best practices on the first attempt.
 
-Skills follow the open [Agent Skills](https://agentskills.io/specification) specification and work across multiple AI assistants, including Claude Code, GitHub Copilot in VS Code, and Cursor.
+Skills follow the open [Agent Skills](https://agentskills.io/specification) specification and work across multiple AI assistants, including Claude Code, GitHub Copilot in VS Code, and Cursor. 
+Each skill is a single directory with a `SKILL.md` file describing the skill's purpose and workflow, along with `references/` and `scripts/` directories for supporting documentation and helper scripts.
 
-Agent skills for webforJ are available from the GitHub repository [webforj/webforj-agent-skills](https://github.com/webforj/webforJ-agent-skills). 
+Agent skills for webforJ are available in the GitHub repository [webforj/webforj-agent-skills](https://github.com/webforj/webforJ-agent-skills). 
+With these skills installed, an AI will load these files automatically when it detects a relevant task. 
+For example, asking an AI to "theme this app with a blue palette" triggers the `styling-apps` skill, which walks the AI through looking up valid DWC tokens, writing scoped CSS, and validating every variable name before producing output.
 
-## What are agent skills? {#what-are-agent-skills}
-
-A skill is a folder with a defined structure:
-
-- **`SKILL.md`**: the main instruction file that describes the skill's purpose, workflow steps, and decision logic
-- **`references/`**: supporting documentation the AI consults for API details, patterns, and rules
-- **`scripts/`**: helper scripts the AI runs to extract component metadata or look up valid CSS variables
-
-The AI loads these files automatically when it detects a relevant task. For example, asking an AI to "theme this app with a blue palette" triggers the `styling-apps` skill, which walks the AI through looking up valid DWC tokens, writing scoped CSS, and validating every variable name before producing output.
-
-### Why use skills? {#why-use-skills}
+## Why use skills? {#why-use-skills}
 
 Without skills, AI assistants often produce webforJ code that looks plausible but fails in practice. Common problems include:
 
@@ -31,7 +24,7 @@ Without skills, AI assistants often produce webforJ code that looks plausible bu
 
 Skills eliminate these issues by giving the AI exact decision tables, lookup scripts, and validation checklists for each task type.
 
-### How skills differ from MCP {#how-skills-differ-from-mcp}
+## How skills differ from MCP {#how-skills-differ-from-mcp}
 
 Skills and the [webforJ MCP server](./mcp) serve complementary roles. MCP provides live tools the AI can call at runtime to search documentation or generate projects. Skills provide static knowledge and step-by-step workflows that guide how the AI approaches a task.
 
