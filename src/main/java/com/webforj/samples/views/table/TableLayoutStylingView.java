@@ -14,7 +14,6 @@ import java.util.List;
 @Route
 @FrameTitle("Table Layout Styling")
 public class TableLayoutStylingView extends Composite<FlexLayout> {
-
   private final FlexLayout self = getBoundComponent();
   private final Table<Person> table = new Table<>();
 
@@ -23,6 +22,7 @@ public class TableLayoutStylingView extends Composite<FlexLayout> {
         .setSpacing("var(--dwc-space-l)")
         .setMargin("var(--dwc-space-xl)");
 
+    // Use record instances
     List<Person> data = List.of(
         new Person("Alice", 28, "New York"),
         new Person("Bob", 35, "Chicago"),
@@ -31,6 +31,7 @@ public class TableLayoutStylingView extends Composite<FlexLayout> {
         new Person("Eve", 30, "Boston"),
         new Person("Frank", 45, "Miami"));
 
+    // Use record accessor methods (name, age, city)
     table.addColumn("Name", Person::name).setSortable(true);
     table.addColumn("Age", Person::age).setSortable(true);
     table.addColumn("City", Person::city).setSortable(true);
@@ -43,8 +44,5 @@ public class TableLayoutStylingView extends Composite<FlexLayout> {
     table.setBordersVisible(EnumSet.of(Border.AROUND, Border.ROWS, Border.COLUMNS));
 
     self.add(table);
-  }
-
-  public record Person(String name, int age, String city) {
   }
 }

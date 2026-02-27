@@ -13,28 +13,32 @@ import com.webforj.component.table.Column;
 @Route
 @FrameTitle("Table Rich Content")
 public class TableRichContentView extends Composite<Div> {
+  private final Div self = getBoundComponent();
 
   public TableRichContentView() {
+    Table<MusicRecord> table = new Table<MusicRecord>()
+        .addClassName("table");
 
-    Table<MusicRecord> table = new Table<>();
-    table.addClassName("table");
-    
     table.addColumn("Title", MusicRecord::getTitle).setHidden(true);
     table.addColumn("Artist", MusicRecord::getArtist).setHidden(true);
     table.addColumn("Title & Artist", new AvatarRenderer()).setFlex(1f).setMinWidth(200f);
-    table.addColumn("Genre", MusicRecord::getMusicType).setPinDirection(Column.PinDirection.RIGHT);
-    table.addColumn("Cost", MusicRecord::getCost).setRenderer(new BadgeRenderer()).setPinDirection(Column.PinDirection.RIGHT);
-    
+    table.addColumn("Genre", MusicRecord::getMusicType)
+        .setPinDirection(Column.PinDirection.RIGHT);
+    table.addColumn("Cost", MusicRecord::getCost)
+        .setRenderer(new BadgeRenderer())
+        .setPinDirection(Column.PinDirection.RIGHT);
+
     table.setRepository(Service.getMusicRecords());
     table.setSelectionMode(Table.SelectionMode.MULTIPLE);
     table.setRowHeight(45);
-    
+
     table.refreshColumns();
-    
-    getBoundComponent().add(table);
+
+    self.add(table);
   }
 
-  class AvatarRenderer extends Renderer<MusicRecord> {
+  // Inner renderer class for avatar display
+  static class AvatarRenderer extends Renderer<MusicRecord> {
     @Override
     public String build() {
       return /* html */"""
@@ -57,10 +61,11 @@ public class TableRichContentView extends Composite<Div> {
     }
   }
 
-  class BadgeRenderer extends Renderer<MusicRecord> {
+  // Inner renderer class for cost badge
+  static class BadgeRenderer extends Renderer<MusicRecord> {
     @Override
     public String build() {
-      return /* html */"""
+      return """
           <span part='badge badge-<%= cell.value > 7 ? "high" : "low" %>'>
             <%= cell.value %>
           </span>

@@ -19,7 +19,6 @@ import java.util.List;
       }
     """)
 public class TableRowStylingView extends Composite<FlexLayout> {
-
   private final FlexLayout self = getBoundComponent();
   private final Table<Person> table = new Table<>();
 
@@ -28,6 +27,7 @@ public class TableRowStylingView extends Composite<FlexLayout> {
         .setSpacing("var(--dwc-space-l)")
         .setMargin("var(--dwc-space-xl)");
 
+    // Use record instances with immutable list
     List<Person> data = List.of(
         new Person("Alice", 28, "New York"),
         new Person("Bob", 35, "Chicago"),
@@ -36,16 +36,19 @@ public class TableRowStylingView extends Composite<FlexLayout> {
         new Person("Eve", 30, "Boston"),
         new Person("Frank", 45, "Miami"));
 
-    table.addColumn("Name", Person::getName).setSortable(true);
-    table.addColumn("Age", Person::getAge).setSortable(true);
-    table.addColumn("City", Person::getCity).setSortable(true);
+    // Use record accessor methods
+    table.addColumn("Name", Person::name).setSortable(true);
+    table.addColumn("Age", Person::age).setSortable(true);
+    table.addColumn("City", Person::city).setSortable(true);
 
     table.setItems(data);
     table.setSize("100%", "260px");
 
+    // Dynamic row styling based on age
     table.setRowPartProvider(person -> {
       List<String> parts = new ArrayList<>();
-      if (person.getAge() > 30) {
+      // Use record accessor
+      if (person.age() > 30) {
         parts.add("row-highlight");
       }
 

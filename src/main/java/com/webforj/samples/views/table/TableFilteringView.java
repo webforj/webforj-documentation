@@ -15,31 +15,34 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Table Filtering")
 public class TableFilteringView extends Composite<Div> {
+  private final Div self = getBoundComponent();
+
   private String searchTerm = "";
 
   public TableFilteringView() {
     CollectionRepository<MusicRecord> repository = Service.getMusicRecords();
 
-    repository.setBaseFilter((MusicRecord r) -> {
-      String title = r.getTitle();
-      return title.toLowerCase().contains(this.searchTerm);
-    });
+    repository.setBaseFilter(r -> r.getTitle().toLowerCase().contains(searchTerm));
 
     TextField searchField = buildSearchField(repository);
     Table<MusicRecord> table = buildTable(repository);
 
-    FlexLayout layout =
-        FlexLayout.create().vertical().contentAlign().center().build().setHeight("500px");
+    FlexLayout layout = FlexLayout.create()
+        .vertical()
+        .contentAlign()
+        .center()
+        .build()
+        .setHeight("500px");
     layout.add(searchField, table);
 
-    getBoundComponent().setStyle("padding", "30px").add(layout);
+    self.setStyle("padding", "30px").add(layout);
   }
 
   TextField buildSearchField(Repository<MusicRecord> repository) {
-    TextField search = new TextField(Type.SEARCH, "Search");
-    search.setPlaceholder("Search by title...");
+    TextField search = new TextField(Type.SEARCH, "Search")
+        .setPlaceholder("Search by title...");
     search.onModify(ev -> {
-      this.searchTerm = ev.getText().toLowerCase();
+      searchTerm = ev.getText().toLowerCase();
       repository.commit();
     });
 
@@ -47,7 +50,7 @@ public class TableFilteringView extends Composite<Div> {
   }
 
   Table<MusicRecord> buildTable(Repository<MusicRecord> repository) {
-    Table<MusicRecord> table = new Table<>();
+    Table<MusicRecord> table = new Table<MusicRecord>();
 
     table.addColumn("Title", MusicRecord::getTitle);
     table.addColumn("Artist", MusicRecord::getArtist);

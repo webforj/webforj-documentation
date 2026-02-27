@@ -1,6 +1,7 @@
 package com.webforj.samples.views.table;
 
 import java.util.EventObject;
+
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
@@ -15,29 +16,32 @@ import com.webforj.dispatcher.ListenerRegistration;
 
 /**
  * A component that allows the user to edit a MusicRecord title.
+ * Uses fluent API for component configuration.
  */
 public class TitleEditorComponent extends Composite<Dialog> {
-  private EventDispatcher dispatcher = new EventDispatcher();
-  private TextField titleField = new TextField("New Title");
-  private FlexLayout footer = FlexLayout.create().align().end().build();
+  private final Dialog self = getBoundComponent();
+  private final EventDispatcher dispatcher = new EventDispatcher();
+  private final TextField titleField = new TextField("New Title");
+  private final FlexLayout footer = FlexLayout.create()
+    .align().end()
+    .build();
   private MusicRecord item;
 
   /**
-   * Creates a new TitleEditorComponent.
+   * Creates a new TitleEditorComponent with fluent configuration.
    */
   public TitleEditorComponent() {
-    Dialog dialog = getBoundComponent();
-    dialog.setMaxWidth("400px");
-    dialog.onOpen(ev -> titleField.focus());
+    self.setMaxWidth("400px")
+      .onOpen(ev -> titleField.focus());
 
     Button saveButton = new Button("Save", ButtonTheme.PRIMARY, ev -> save());
+    Button cancelButton = new Button("Cancel", ev -> self.close());
 
-    Button cancelButton = new Button("Cancel", ev -> dialog.close());
     footer.add(saveButton, cancelButton);
 
-    dialog.addToHeader(new H3("Edit Title"));
-    dialog.add(titleField);
-    dialog.addToFooter(footer);
+    self.addToHeader(new H3("Edit Title"))
+      .addToFooter(footer)
+      .add(titleField);
 
     titleField.onKeypress(ev -> {
       if (ev.getKeyCode() == KeypressEvent.Key.ENTER) {
@@ -54,7 +58,7 @@ public class TitleEditorComponent extends Composite<Dialog> {
   public void edit(MusicRecord item) {
     this.item = item;
     titleField.setText(item.getTitle());
-    getBoundComponent().open();
+    self.open();
   }
 
   /**
@@ -69,21 +73,24 @@ public class TitleEditorComponent extends Composite<Dialog> {
 
   private void save() {
     item.setTitle(titleField.getText());
-    getBoundComponent().close();
+    self.close();
     dispatcher.dispatchEvent(new SaveEvent(this));
   }
 
   /**
    * An event that is dispatched when the user saves the title.
    */
-  public class SaveEvent extends EventObject {
+  public static class SaveEvent extends EventObject {
+
+    private final MusicRecord record;
 
     public SaveEvent(Object source) {
       super(source);
+      this.record = ((TitleEditorComponent) source).item;
     }
 
     public MusicRecord getItem() {
-      return ((TitleEditorComponent) getSource()).item;
+      return record;
     }
   }
 }

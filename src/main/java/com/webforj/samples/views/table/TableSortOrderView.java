@@ -10,12 +10,12 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Table Multi Sorting with Sort Order")
 public class TableSortOrderView extends Composite<Div> {
+  private final Div self = getBoundComponent();
 
   public TableSortOrderView() {
-
-    Table<MusicRecord> table = new Table<>();
-    table.setWidth("100vw");
-    table.setHeight("100vh");
+    Table<MusicRecord> table = new Table<MusicRecord>()
+        .setWidth("100vw")
+        .setHeight("100vh");
 
     table.setMultiSorting(true);
 
@@ -31,6 +31,6 @@ public class TableSortOrderView extends Composite<Div> {
         .setSortIndex(2);
 
     table.setRepository(Service.getMusicRecords());
-    getBoundComponent().add(table);
+    self.add(table);
   }
 }

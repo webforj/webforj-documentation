@@ -4,6 +4,7 @@ import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.field.NumberField;
+import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
@@ -16,6 +17,7 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Table Column Flexible Sizing")
 public class TableColumnFlexSizingView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   private Table<MusicRecord> table;
   private Column<MusicRecord, String> titleColumn;
@@ -27,22 +29,17 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
   private NumberField genreFlexField;
 
   public TableColumnFlexSizingView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN)
+    self.setDirection(FlexDirection.COLUMN)
         .setPadding("var(--dwc-space-l)")
         .setSpacing("var(--dwc-space-l)")
         .setHeight("100vh");
 
-    FlexLayout controls = createControls();
-    table = createTable();
-
-    layout.add(controls, table);
+    self.add(createControls(), createTable());
   }
 
   private FlexLayout createControls() {
-    FlexLayout controls = new FlexLayout();
-
-    controls.setDirection(FlexDirection.ROW)
+    FlexLayout controls = new FlexLayout()
+        .setDirection(FlexDirection.ROW)
         .setSpacing("var(--dwc-space-l)")
         .setAlignment(FlexAlignment.END)
         .setWrap(FlexWrap.WRAP);
@@ -70,24 +67,22 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
   }
 
   private FlexLayout createFlexControl(String label, double defaultValue, Runnable onChange) {
-    FlexLayout control = new FlexLayout();
-
-    control.setDirection(FlexDirection.COLUMN)
+    FlexLayout control = new FlexLayout()
+        .setDirection(FlexDirection.COLUMN)
         .setSpacing("5px")
         .setMinWidth("120px");
 
-    com.webforj.component.html.elements.Paragraph labelEl = new com.webforj.component.html.elements.Paragraph(
-        label + " Flex:");
-    labelEl.setStyle("margin", "0");
-    labelEl.setStyle("font-weight", "bold");
-    labelEl.setStyle("font-size", "14px");
+    Paragraph labelEl = new Paragraph(label + " Flex:")
+        .setStyle("margin", "0")
+        .setStyle("font-weight", "bold")
+        .setStyle("font-size", "14px");
 
-    NumberField field = new NumberField();
-    field.setValue(defaultValue);
-    field.setMin(0.1);
-    field.setMax(10.0);
-    field.setStep(0.1);
-    field.setWidth("100px");
+    NumberField field = new NumberField()
+        .setValue(defaultValue)
+        .setMin(0.1)
+        .setMax(10.0)
+        .setStep(0.1)
+        .setWidth("100px");
     field.onModify(e -> onChange.run());
 
     control.add(labelEl, field);
@@ -95,10 +90,10 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
   }
 
   private Table<MusicRecord> createTable() {
-    Table<MusicRecord> table = new Table<>();
-    table.setWidth("100%");
-    table.setHeight("400px");
-    table.setStriped(true);
+    table = new Table<MusicRecord>()
+        .setWidth("100%")
+        .setHeight("400px")
+        .setStriped(true);
 
     table.addColumn("Number", MusicRecord::getNumber)
         .setWidth(80f)

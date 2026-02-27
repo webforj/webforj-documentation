@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
-import java.util.Arrays;
 import java.util.List;
 
 import com.webforj.component.table.Column.PinDirection;
@@ -27,88 +26,115 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Data Table")
 public class DataTableView extends Composite<Div> {
+  private final Div self = getBoundComponent();
+
   private String searchTerm = "";
   private CollectionRepository<JsonObject> repository;
   private Paginator paginator;
 
   public DataTableView() {
+    // Initialize data from JSON asset
     List<JsonObject> data = new Gson().fromJson(
         Assets.contentOf(Assets.resolveContextUrl("context://data/olympic-winners.json")),
         new TypeToken<List<JsonObject>>() {});
 
+    // Setup repository with filter
     repository = new CollectionRepository<>(data);
-    repository.setBaseFilter((JsonObject json) -> {
-      String athlete = json.get("athlete").getAsString();
-      return athlete.toLowerCase().contains(this.searchTerm);
+    repository.setBaseFilter(json -> {
+      JsonElement athlete = json.get("athlete");
+      return athlete != null && !athlete.isJsonNull()
+          && athlete.getAsString().toLowerCase().contains(searchTerm);
     });
 
+    // Setup pagination
     paginator = new Paginator(repository);
     paginator.setMax(5);
 
+    // Build and add layout
     FlexLayout layout = FlexLayout.create(buildTableHeader(), buildTable(), buildTableFooter())
-        .vertical().contentAlign().center().build().setPadding("var(--dwc-space-l)");
+        .vertical()
+        .contentAlign()
+        .center()
+        .build()
+        .setPadding("var(--dwc-space-l)");
 
-    getBoundComponent().add(layout);
+    self.add(layout);
   }
 
-  FlexLayout buildTableHeader() {
-    TextField search = new TextField(Type.SEARCH, "Search");
-    search.setPlaceholder("Search by athlete...");
+  private FlexLayout buildTableHeader() {
+    // Search field with filter callback
+    TextField search = new TextField(Type.SEARCH, "Search")
+        .setPlaceholder("Search by athlete...");
     search.onModify(ev -> {
-      this.searchTerm = ev.getText().toLowerCase();
+      searchTerm = ev.getText().toLowerCase();
       paginator.setCurrent(1);
       repository.commit();
     });
 
-    ChoiceBox pages = new ChoiceBox("Entries per page");
-    pages.insert("10", "25", "50", "100");
-    pages.selectIndex(0);
-    pages.onSelect(e -> {
-      paginator.setSize(Integer.parseInt(e.getSelectedItem().getText()));
-    });
+    // Page size selector
+    ChoiceBox pages = new ChoiceBox("Entries per page")
+      .insert("10", "25", "50", "100")
+      .selectIndex(0);
+    pages.onSelect(e ->
+        paginator.setSize(Integer.parseInt(e.getSelectedItem().getText())));
 
-    return FlexLayout.create(pages, search).horizontal().justify().between().build();
+    return FlexLayout.create(pages, search)
+        .horizontal()
+        .justify()
+        .between()
+        .build();
   }
 
-  Table<JsonObject> buildTable() {
-    Table<JsonObject> table = new Table<>();
-    table.setHeight("400px");
-    table.setSelectionMode(SelectionMode.MULTIPLE);
-    table.setHeaderCheckboxSelection(false);
+  private Table<JsonObject> buildTable() {
+    Table<JsonObject> table = new Table<JsonObject>()
+        .setHeight("400px")
+        .setSelectionMode(SelectionMode.MULTIPLE)
+        .setHeaderCheckboxSelection(false);
 
-    List<String> columnsList = Arrays.asList("athlete", "age", "country", "year", "total");
+    // Define columns using helper method
+    List<String> columnsList = List.of("athlete", "age", "country", "year", "total");
 
     for (String column : columnsList) {
-      table.addColumn(column, (JsonObject person) -> {
-        JsonElement element = person.get(column);
-        if (!element.isJsonNull()) {
-          return element.getAsString();
-        }
-
-        return "";
-      });
+      table.addColumn(column, json -> extractColumnValue(json, column));
     }
 
+    // Configure columns
     table.getColumns().forEach(column -> column.setSortable(true));
-    table.getColumnById("athlete").setPinDirection(PinDirection.LEFT).setMinWidth(200f);
-    table.getColumnById("total").setPinDirection(PinDirection.RIGHT);
-    
-    
+
+    table.getColumnById("athlete")
+        .setPinDirection(PinDirection.LEFT)
+        .setMinWidth(200f);
+
+    table.getColumnById("total")
+        .setPinDirection(PinDirection.RIGHT);
 
     table.setRepository(repository);
 
     return table;
   }
 
-  FlexLayout buildTableFooter() {
-    Navigator pages = new Navigator(paginator, Layout.PAGES);
-    pages.setAutoDisable(true);
+  // Helper method for column value extraction
+  private static String extractColumnValue(JsonObject json, String column) {
+    JsonElement element = json.get(column);
+    if (element == null || element.isJsonNull()) {
+      return "";
+    }
+    return element.getAsString();
+  }
 
-    Navigator preview = new Navigator(paginator, Layout.PREVIEW);
-    preview.setHideMainButtons(true);
-    preview.setStyle("border", "0");
-    preview.setText("`Showing ${startIndex + 1} to ${endIndex + 1} of ${totalItems} entries`");
+  private FlexLayout buildTableFooter() {
+    Navigator pages = new Navigator(paginator, Layout.PAGES)
+        .setAutoDisable(true);
 
-    return FlexLayout.create(pages, preview).horizontal().justify().between().build();
+    Navigator preview = new Navigator(paginator, Layout.PREVIEW)
+        .setHideMainButtons(true)
+        .setStyle("border", "0")
+        .setText("`Showing ${startIndex + 1} to ${endIndex + 1} of ${totalItems} entries`");
+
+    return FlexLayout.create(pages, preview)
+        .horizontal()
+        .justify()
+        .between()
+        .build();
   }
 }
