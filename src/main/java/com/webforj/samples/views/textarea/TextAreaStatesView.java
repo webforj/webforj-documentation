@@ -11,10 +11,9 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("TextArea States")
 public class TextAreaStatesView extends Composite<FlexLayout> {
-
-  FlexLayout self = getBoundComponent();
-  TextArea readonlyArea = new TextArea("Read-Only", "Value");
-  TextArea disabledArea = new TextArea("Disabled", "Value");
+  private final FlexLayout self = getBoundComponent();
+  private final TextArea readonlyArea = new TextArea("Read-Only", "Value");
+  private final TextArea disabledArea = new TextArea("Disabled", "Value");
 
   public TextAreaStatesView() {
     self.setJustifyContent(FlexJustifyContent.CENTER)

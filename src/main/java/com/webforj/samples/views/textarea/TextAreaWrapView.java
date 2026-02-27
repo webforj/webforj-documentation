@@ -16,11 +16,10 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Word Wrap and Line Wrapping Demo")
 public class TextAreaWrapView extends Composite<FlexLayout> {
-
-  FlexLayout self = getBoundComponent();
-  TextArea textArea = new TextArea("Text Preview",
+  private final FlexLayout self = getBoundComponent();
+  private final TextArea textArea = new TextArea("Text Preview",
       "Honorificabilitudinitatibus califragilisticexpialidocious Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu グレートブリテンおよび北アイルランド連合王国という言葉は本当に長い言葉");
-  ChoiceBox styles = new ChoiceBox("Select a word wrap style");
+  private final ChoiceBox styles = new ChoiceBox("Select a word wrap style");
 
   public TextAreaWrapView() {
     self.setDirection(FlexDirection.COLUMN)
