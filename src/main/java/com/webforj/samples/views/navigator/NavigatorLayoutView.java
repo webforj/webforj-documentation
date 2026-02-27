@@ -12,39 +12,36 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Navigator Layout")
 public class NavigatorLayoutView extends Composite<Div> {
-  private Navigator nav = new Navigator(100);
-  private ChoiceBox navLayout = new ChoiceBox();
-  private FlexLayout layout = FlexLayout.create(navLayout, nav).vertical().build();
+  private final Div self = getBoundComponent();
+  // UI Components - initialized at field declaration for layout creation
+  private final Navigator nav = new Navigator(100);
+  private final ChoiceBox navLayout = new ChoiceBox();
+  private final FlexLayout layout = FlexLayout.create(navLayout, nav).vertical().build();
 
   public NavigatorLayoutView() {
-    
+    // Configure navigator and layout
     layout.setMaxWidth("400px");
-    nav.getPaginator().setMax(5);
-    nav.addClassName("nav");
-    
+    nav.addClassName("nav")
+            .getPaginator().setMax(5);
+
+    // Configure layout selector
     navLayout.insert("NONE", "PAGES", "PREVIEW", "QUICK_JUMP");
     navLayout.selectIndex(2);
+
+    // Handle layout selection changes
     navLayout.onSelect(ev -> {
       String selected = ev.getSelectedItem().getText();
-      switch (selected) {
-        case "NONE":
-        nav.setLayout(Layout.NONE);
-        break;
-        case "PAGES":
-        nav.setLayout(Layout.PAGES);
-        break;
-        case "PREVIEW":
-        nav.setLayout(Layout.PREVIEW);
-        break;
-        case "QUICK_JUMP":
-        nav.setLayout(Layout.QUICK_JUMP);
-        break;
-        default:
-        break;
-      }
+      nav.setLayout(switch (selected) {
+        case "NONE" -> Layout.NONE;
+        case "PAGES" -> Layout.PAGES;
+        case "PREVIEW" -> Layout.PREVIEW;
+        case "QUICK_JUMP" -> Layout.QUICK_JUMP;
+        default -> nav.getLayout();
+      });
     });
-    
-    getBoundComponent().setStyle("padding", "20px");
-    getBoundComponent().add(layout);
+
+    // Add layout to container
+    self.setStyle("padding", "20px")
+        .add(layout);
   }
 }
