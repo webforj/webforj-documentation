@@ -11,6 +11,7 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Table Single Selection")
 public class TableSingleSelectionView extends Composite<Div> {
+  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
 
   public TableSingleSelectionView() {

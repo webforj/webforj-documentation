@@ -14,6 +14,7 @@ import java.util.List;
 @Route
 @FrameTitle("Table Layout Styling")
 public class TableLayoutStylingView extends Composite<FlexLayout> {
+  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final Table<Person> table = new Table<>();
 

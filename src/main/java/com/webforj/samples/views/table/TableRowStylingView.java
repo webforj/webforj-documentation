@@ -19,6 +19,7 @@ import java.util.List;
       }
     """)
 public class TableRowStylingView extends Composite<FlexLayout> {
+  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final Table<Person> table = new Table<>();
 

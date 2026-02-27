@@ -9,6 +9,7 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Table Column Comparator")
 public class TableColumnComparatorView extends Composite<Div> {
+  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
 
   public TableColumnComparatorView() {

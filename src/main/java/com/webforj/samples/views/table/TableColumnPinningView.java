@@ -13,6 +13,7 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Table Column Pinning")
 public class TableColumnPinningView extends Composite<Div> {
+  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
 
   public TableColumnPinningView() {

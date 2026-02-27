@@ -31,6 +31,7 @@ import com.webforj.router.annotation.Route;
   """)
 
 public class TableDynamicStylingView extends Composite<FlexLayout> {
+  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final Table<Person> table = new Table<>();
   private final Button update = new Button("Increase Alice Age", ButtonTheme.GRAY);

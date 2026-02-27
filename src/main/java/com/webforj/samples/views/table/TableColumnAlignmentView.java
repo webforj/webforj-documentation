@@ -10,6 +10,7 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Table Column Alignment")
 public class TableColumnAlignmentView extends Composite<Div> {
+  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
 
   public TableColumnAlignmentView() {

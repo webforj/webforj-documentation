@@ -11,6 +11,7 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Table Edit Data")
 public class TableEditDataView extends Composite<Div> {
+  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
   TitleEditorComponent editor = new TitleEditorComponent();
   Table<MusicRecord> table = new Table<>();

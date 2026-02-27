@@ -9,6 +9,7 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Table")
 public class TableBasicView extends Composite<Div> {
+  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
 
   public TableBasicView() {
