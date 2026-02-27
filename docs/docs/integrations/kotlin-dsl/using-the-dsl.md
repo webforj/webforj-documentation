@@ -174,7 +174,7 @@ numberField("Quantity", value = 1.0) {
 ```
 
 :::tip Arguments with specified names
-Passing parameters with specified argument names allows them to be passed outside of the order written in the function signature.
+Named arguments let you pass parameters in any order, regardless of how they appear in the function signature.
 :::
 
 
