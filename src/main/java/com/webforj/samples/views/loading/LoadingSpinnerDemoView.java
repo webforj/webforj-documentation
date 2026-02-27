@@ -13,74 +13,83 @@ import com.webforj.router.annotation.Route;
 /**
  * Demo to showcase the different customization options for the LoadingSpinner.
  */
-
 @Route
 @FrameTitle("Loading Spinners")
 @StyleSheet("ws://css/loadingstyles/loadingspinnerdemo.css")
 public class LoadingSpinnerDemoView extends Composite<Div> {
+  private final Div self = getBoundComponent();
+  // UI Components
+  private final Div parentDiv;
+  private final Loading loading;
+  private final Interval interval;
 
-  int state = 1;
-  Div parentDiv;
-  Loading loading;
-  Interval interval;
+  // State counter for demo progression
+  private int state = 1;
 
   public LoadingSpinnerDemoView() {
+    // Create parent container
+    parentDiv = new Div()
+        .addClassName("card");
 
-    parentDiv = new Div().addClassName("card");
+    // Create loading indicator without backdrop
+    loading = new Loading("Displaying spinner with all themes...")
+        .setBackdropVisible(false);
 
-    loading = new Loading("Displaying spinner with all themes...").setBackdropVisible(false);
-
-    interval = new Interval(3f, event ->  {
-      switch (state) {
-        case 1:
+    // Create interval that cycles through spinner themes and options
+    interval = new Interval(3f, event -> {
+      // Use switch expression for cleaner state handling
+      String text = switch (state) {
+        case 1 -> {
           loading.getSpinner().setTheme(Theme.DEFAULT).setExpanse(SpinnerExpanse.SMALL);
-          loading.setText("Displaying default theme, small expanse");
-          break;
-        case 2:
+          yield "Displaying default theme, small expanse";
+        }
+        case 2 -> {
           loading.getSpinner().setTheme(Theme.DANGER).setExpanse(SpinnerExpanse.MEDIUM);
-          loading.setText("Displaying danger theme, medium expanse");
-          break;
-        case 3:
+          yield "Displaying danger theme, medium expanse";
+        }
+        case 3 -> {
           loading.getSpinner().setTheme(Theme.GRAY).setExpanse(SpinnerExpanse.LARGE);
-          loading.setText("Displaying gray theme, large expanse");
-          break;
-        case 4:
+          yield "Displaying gray theme, large expanse";
+        }
+        case 4 -> {
           loading.getSpinner().setTheme(Theme.INFO).setExpanse(SpinnerExpanse.SMALL);
-          loading.setText("Displaying info theme, small expanse");
-          break;
-        case 5:
+          yield "Displaying info theme, small expanse";
+        }
+        case 5 -> {
           loading.getSpinner().setTheme(Theme.PRIMARY).setExpanse(SpinnerExpanse.MEDIUM);
-          loading.setText("Displaying primary theme, medium expanse");
-          break;
-        case 6:
+          yield "Displaying primary theme, medium expanse";
+        }
+        case 6 -> {
           loading.getSpinner().setTheme(Theme.SUCCESS).setExpanse(SpinnerExpanse.LARGE);
-          loading.setText("Displaying success theme, large expanse");
-          break;
-        case 7:
+          yield "Displaying success theme, large expanse";
+        }
+        case 7 -> {
           loading.getSpinner().setTheme(Theme.WARNING).setExpanse(SpinnerExpanse.SMALL);
-          loading.setText("Displaying warning theme, small expanse");
-          break;
-        case 8:
+          yield "Displaying warning theme, small expanse";
+        }
+        case 8 -> {
           loading.getSpinner().setClockwise(false);
-          loading.setText("Now moving counterclockwise...");
-          break;
-        case 9:
+          yield "Now moving counterclockwise...";
+        }
+        case 9 -> {
           loading.getSpinner().setSpeed(500);
-          loading.setText("Going faster...");
-          break;
-        default:
+          yield "Going faster...";
+        }
+        default -> {
           event.getInterval().stop();
           loading.getSpinner().setTheme(Theme.PRIMARY);
-          loading.setText("Demo complete!");
-    }
+          yield "Demo complete!";
+        }
+      };
+
+      loading.setText(text);
       state++;
     });
 
-    getBoundComponent().add(parentDiv);
+    // Add components and start the demo
+    self.add(parentDiv);
     parentDiv.add(loading);
-
     loading.open();
-
     interval.start();
   }
 }
