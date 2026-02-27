@@ -1,5 +1,6 @@
 package com.webforj.samples.views.refresher;
 
+import java.util.List;
 import java.util.Random;
 
 import com.webforj.annotation.StyleSheet;
@@ -15,27 +16,33 @@ import com.webforj.router.annotation.Route;
 @Route
 @StyleSheet("ws://css/refresher/refresher.css")
 public class RefresherI18nView extends Composite<Div> {
+  // Names for the item list
+  private static final List<String> NAMES = List.of(
+          "John", "Jane", "Alice", "Bob", "Charlie", "Diana",
+          "Ethan", "Fiona", "George", "Hannah", "Ian", "Jill"
+  );
 
+  private final Div self = getBoundComponent();
+
+  // Random generator for selecting names
   private final Random random = new Random();
-  private final String[] names = {
-    "John", "Jane", "Alice", "Bob", "Charlie", "Diana",
-    "Ethan", "Fiona", "George", "Hannah", "Ian", "Jill"
-  };
 
   public RefresherI18nView() {
-    Div self = getBoundComponent();
+    // Create canvas for displaying items
+    Div canvas = new Div()
+        .addClassName("is-canvas");
 
-    Div canvas = new Div().addClassName("is-canvas");
-    self.add(canvas);
-
+    // Create refresher component
     Refresher refresher = new Refresher();
 
+    // Set French internationalization labels
     RefresherI18n i18n = new RefresherI18n();
     i18n.setPull("Tirez pour actualiser");
     i18n.setRelease("Relâchez pour actualiser");
     i18n.setRefresh("Actualisation en cours...");
     refresher.setI18n(i18n);
 
+    // Handle refresh events
     refresher.onRefresh(e -> {
       canvas.removeAll();
       for (int i = 0; i < 8; i++) {
@@ -44,32 +51,48 @@ public class RefresherI18nView extends Composite<Div> {
       refresher.finish();
     });
 
-    self.add(refresher);
-
+    // Add initial items and refresher to container
     for (int i = 0; i < 8; i++) {
       canvas.add(new Item());
     }
+
+    self.add(canvas, refresher);
   }
 
+  /**
+   * Item component representing a single row in the refresher list.
+   */
   class Item extends Composite<Div> {
     public Item() {
       Div self = getBoundComponent();
 
-      String name = names[random.nextInt(names.length)];
+      // Select random name from the list
+      String name = NAMES.get(random.nextInt(NAMES.size()));
 
+      // Create item components with text content
       Div nameDiv = new Div(name).addClassName("item-name");
-      Div excerpt = new Div("Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-          + "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
+      Div excerpt = new Div("""
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.""")
           .addClassName("item-excerpt");
 
-      Icon icon = FeatherIcon.ARROW_RIGHT.create();
-      icon.setMinSize("24px", "24px");
+      // Create arrow icon
+      Icon icon = FeatherIcon.ARROW_RIGHT.create()
+          .setMinSize("24px", "24px");
 
-      self.add(FlexLayout.create(FlexLayout.create(nameDiv, excerpt).vertical().build(), icon)
-          .horizontal()
-          .justify().between()
-          .align().center()
-          .build());
+      // Compose layout with flexbox
+      self.add(
+          FlexLayout.create(
+              FlexLayout.create(nameDiv, excerpt)
+                  .vertical()
+                  .build(),
+              icon
+          )
+              .horizontal()
+              .justify().between()
+              .align().center()
+              .build()
+      );
     }
   }
 }
