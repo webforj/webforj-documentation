@@ -11,7 +11,7 @@ public class RunConfig {
   static {
     // Parse webforj.e2e if provided
     String e2eProps = System.getProperty("webforj.e2e");
-    if (e2eProps != null && !e2eProps.isEmpty()) { 
+    if (e2eProps != null && !e2eProps.isEmpty()) {
       parseE2EProps(e2eProps);
     }
   }
