@@ -1,6 +1,7 @@
 ---
 title: Using the DSL
 sidebar_position: 10
+sidebar_class_name: new-content
 ---
 
 The Kotlin DSL provides builder functions for webforJ components. Each function creates a component, adds it to a parent container, and runs a configuration block. This page covers the patterns and conventions you'll use when building UIs with the DSL.
@@ -36,7 +37,7 @@ div {
 
 ## Creating components {#creating-components}
 
-With the naming pattern in mind, here's how component creation works. Every DSL function follows the same pattern: create a component, add it to the parent, then run the configuration block:
+Create a component by adding its DSL function to a parent block, along with the optional arguments and configuration block, as shown below:
 
 ```kotlin
 div {
@@ -48,19 +49,20 @@ div {
 }
 ```
 
+When you use a component's DSL function, it creates the component, adds it to the parent, and then runs the configuration block.
 The configuration block receives the component as its receiver (`this`), so you can access properties and methods directly:
 
 ```kotlin
 textField("Email") {
     placeholder = "you@example.com"   // this.placeholder
-    required = true                    // this.required
+    required = true                   // this.required
     onModify { validate() }           // this.onModify(...)
 }
 ```
 
 ## Nesting components {#nesting-components}
 
-Once you can create individual components, you'll want to combine them. Components that can contain children accept nested DSL calls inside their block:
+Components that can contain children accept nested DSL calls inside their block:
 
 ```kotlin
 flexLayout {
@@ -81,11 +83,10 @@ flexLayout {
 }
 ```
 
-The DSL enforces proper scoping. You can only add children to components that support them, and the compiler prevents accidental references to outer scopes.
 
-## Scope safety {#scope-safety}
+### Scope safety {#scope-safety}
 
-With nested structures, it's easy to accidentally reference the wrong scope. The DSL prevents this automatically - builder functions from outer scopes aren't accessible inside inner blocks:
+The DSL enforces proper scoping. You can only add children to components that support them, and the compiler prevents accidental references to outer scopes:
 
 ```kotlin
 div {
@@ -98,7 +99,7 @@ div {
 }
 ```
 
-If you genuinely need to add to an outer scope, use labeled `this` to make the intent explicit:
+If you need to add to an outer scope, use labeled `this` to make the intent explicit:
 
 ```kotlin
 div {
@@ -112,7 +113,7 @@ This keeps UI code predictable by making scope jumps visible.
 
 ## Styling components {#styling-components}
 
-Now that you can build component structures, you'll want to style them. The Kotlin DSL provides a `styles` extension property that gives map-like bracket access to CSS properties, equivalent to `setStyle()` and `getStyle()` in Java:
+The Kotlin DSL provides a `styles` extension property that gives map-like bracket access to CSS properties, equivalent to `setStyle()` and `getStyle()` in Java:
 
 ```kotlin
 button("Styled") {
@@ -154,7 +155,7 @@ textField("Search") {
 
 ## Common parameters {#common-parameters}
 
-You've seen configuration blocks used throughout these examples. Most DSL functions also accept common parameters before the block for frequently used options:
+In addition to configuration blocks, most DSL functions also accept common parameters before the block for frequently used options:
 
 ```kotlin
 // Text parameter for labels/content

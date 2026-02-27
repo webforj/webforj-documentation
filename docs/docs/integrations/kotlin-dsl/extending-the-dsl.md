@@ -1,6 +1,7 @@
 ---
 title: Extending the DSL
 sidebar_position: 20
+sidebar_class_name: new-content
 ---
 
 The Kotlin DSL is extensible, allowing the addition of DSL functions for custom components or third-party libraries. You can build composite components that use the DSL internally.

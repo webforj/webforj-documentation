@@ -3,6 +3,7 @@ title: Kotlin DSL
 sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true
+sidebar_class_name: has-new-content
 ---
 
 <Head>
@@ -13,7 +14,7 @@ hide_giscus_comments: true
   `}</style>
 </Head>
 
-webforJ provides a Kotlin *Domain Specific Language*, or DSL, that lets you build UIs with concise, type-safe syntax. Instead of imperative Java code, you write declarative code that reads like a description of your UI structure.
+webforJ provides a [Kotlin](https://kotlinlang.org/) *Domain Specific Language*, or DSL, that lets you build UIs with concise, type-safe syntax. Instead of imperative Java code, you write declarative code that reads like a description of your UI structure.
 
 ```java title="Java"
 FlexLayout layout = new FlexLayout();
@@ -122,7 +123,7 @@ Add the Kotlin Maven plugin to compile both your Kotlin and Java sources. The `s
 </plugin>
 ```
 
-With these additions, `mvn compile` compiles Kotlin sources alongside Java. Kotlin files can go in `src/main/kotlin` or `src/main/java` — the plugin handles both.
+With these additions, `mvn compile` compiles Kotlin sources alongside Java. Kotlin files can go in `src/main/kotlin` or `src/main/java`, and the plugin handles both.
 
 :::tip[Java interoperability]
 Kotlin compiles to JVM bytecode, so it works alongside existing Java code. You can use DSL-built Kotlin composites from Java classes, nest standard Java components inside DSL blocks with `add()`, and mix Kotlin and Java files in the same project.
