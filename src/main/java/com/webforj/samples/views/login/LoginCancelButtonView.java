@@ -10,18 +10,22 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Login Cancel Button")
 public class LoginCancelButtonView extends Composite<Div> {
+  private final Div self = getBoundComponent();
 
   public LoginCancelButtonView() {
+    // Create login with custom cancel button text
     Login login = new Login();
 
     LoginI18n i18n = new LoginI18n();
     i18n.setCancel("Cancel");
     login.setI18n(i18n);
+
+    // Handle cancel action
     login.onCancel(ev -> {
       // Close the login dialog and do something else
     });
-    login.open();
 
-    getBoundComponent().add(login);
+    login.open();
+    self.add(login);
   }
 }
