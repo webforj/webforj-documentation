@@ -12,19 +12,23 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Icon Variations")
 public class IconVariationsView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public IconVariationsView() {
-    getBoundComponent().setDirection(FlexDirection.ROW).setMargin("var(--dwc-space-l)")
-    .setSpacing("var(--dwc-space-m)");
+    // Configure layout with fluent API
+    self.setDirection(FlexDirection.ROW)
+        .setMargin("var(--dwc-space-l)")
+        .setSpacing("var(--dwc-space-m)");
 
-    Icon mail = FontAwesomeIcon.create("envelope");        
-    Icon mailsolid = FontAwesomeIcon.create("envelope", FontAwesomeIcon.Variate.SOLID);
-        
+    // Font Awesome icons with different variations
+    Icon mail = FontAwesomeIcon.create("envelope");
+    Icon mailSolid = FontAwesomeIcon.create("envelope", FontAwesomeIcon.Variate.SOLID);
     Icon instagram = FontAwesomeIcon.create("instagram", FontAwesomeIcon.Variate.BRAND);
-        
-    Icon calendar = TablerIcon.create("calendar");       
-    Icon calendarfilled = TablerIcon.create("calendar", TablerIcon.Variate.FILLED);    
 
-    getBoundComponent().add(mail, mailsolid, instagram, calendar, calendarfilled);
+    // Tabler icons with different variations
+    Icon calendar = TablerIcon.create("calendar");
+    Icon calendarFilled = TablerIcon.create("calendar", TablerIcon.Variate.FILLED);
+
+    self.add(mail, mailSolid, instagram, calendar, calendarFilled);
   }
 }
