@@ -8,15 +8,42 @@ slug: element_composite
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/element/ElementComposite" top='true'/>
 
-The `ElementComposite` class serves as a versatile foundation for managing composite elements in webforJ applications. Its primary purpose is to facilitate the interaction with HTML elements, represented by the `Element` class, by providing a structured approach to handle properties, attributes, and event listeners. It allows for implementation and reuse of elements in an app. Use the `ElementComposite` class when implementing Web Components for use in webforJ applications.
+
+The `ElementComposite` class provides a structured base for building reusable web components in webforJ. It allows you to easily define properties, attributes, and event listeners of the underlying HTML elements in a type-safe, maintainable way. Use `ElementComposite` to encapsulate and integrate custom elements or third-party web components within your app.
+
 
 While using the `ElementComposite` class, using the `getElement()` method will give you access to the underlying `Element` component. Similarly, the `getNodeName()` method gives you the name of that node in the DOM. 
 
 :::tip
-it's possible to do everything with the `Element` class itself, without using `ElementComposite` class. However, the provided methods in the `ElementComposite` give users a way to reuse the work that's being done. 
+While it's possible to do everything with the `Element` class itself, the provided methods in the `ElementComposite` give you a way to reuse the work that's being done. 
 :::
 
-This guide demonstrates how to implement the [Shoelace QR code web component](https://shoelace.style/components/qr-code) using the `ElementComposite` class.
+:::info
+This guide uses the [Shoelace QR code web component](https://shoelace.style/components/qr-code) to show how to integrate third-party web components.
+:::
+
+## Annotations
+
+The `ElementComposite` class supports several annotations to simplify integration with web components:
+
+- **@NodeName**: Defines the custom HTML tag for your component. For example, `@NodeName("sl-qr-code")` will create a `<sl-qr-code>` element in the DOM.
+
+- **@JavaScript**: Loads external JavaScript resources (such as third-party web components):
+
+  ```java
+  @JavaScript(value = "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.87/dist/shoelace.js",
+    attributes = {@Attribute(name = "type", value = "module")})
+  ```
+
+- **@StyleSheet**: Loads external CSS files for your component:
+
+  ```java
+  @StyleSheet(url = "https://cdn.example.com/library.css")
+  ```
+
+:::tip
+These annotations are typically placed on the subclass extending the `ElementComposite` class to make sure it's loaded automatically when the component is used.
+:::
 
 <ComponentDemo 
 path='/webforj/qrdemo?' 
@@ -24,42 +51,95 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='175px'
 />
 
-## Property and attribute descriptors {#property-and-attribute-descriptors}
+## Concern Interfaces
 
-Properties and attributes in web components represent the state of the component. they're often used to manage data or configuration. The `ElementComposite` class provides a convenient way to work with properties and attributes.
+To add common behaviors to your custom element, implement the appropriate concern interfaces. For example:
 
-Properties and attributes can be declared and initialized as `PropertyDescriptor` members of the `ElementComposite` class being written, and then used in the code. To define properties and attributes, use the `set()` method to set the value of a property. For example, `set(PropertyDescriptor<V> property, V value)` sets a property to a specified value. 
+- **`HasText`**: Adds support for getting and setting text content.
+- **`HasClassName`**: Adds support for manipulating CSS class names.
+- **`HasStyle`**: Adds support for inline styles.
 
-:::info
-Properties are accessed and manipulated internally within the component's code and do not reflect in the DOM. Attributes on the other hand are part of the component's external interface and can be used to pass information into a component from the outside, providing a way for external elements or scripts to configure the component.
-:::
+You can implement multiple interfaces to compose the desired capability:
 
 ```java
-// Example property called TITLE in an ElementComposite class
+@NodeName("my-component")
+public final class MyComponent extends ElementComposite
+    implements HasText<MyComponent>, HasClassName<MyComponent>, HasStyle<MyComponent> {
+    // ...
+}
+```
+
+## Property and attribute descriptors {#property-and-attribute-descriptors}
+
+Properties and attributes in web components represent the state and configuration of a component. You can define, set, and get properties and attributes using the <JavadocLink type="foundation" location="com/webforj/component/element/PropertyDescriptor" code='true' >PropertyDescriptor</JavadocLink> class.
+
+### Defining properties and attributes
+
+To define a property or attribute, declare a `PropertyDescriptor` as a field in your `ElementComposite` subclass. Use `PropertyDescriptor.property("name", defaultValue)` for properties and `PropertyDescriptor.attribute("name", defaultValue)` for attributes.
+
+**Syntax:**
+```java
+// For a property (not reflected in the DOM)
+private final PropertyDescriptor<Type> PROPERTY_NAME = PropertyDescriptor.property("property-name", defaultValue);
+
+// For an attribute (reflected in the DOM)
+private final PropertyDescriptor<Type> ATTRIBUTE_NAME = PropertyDescriptor.attribute("attribute-name", defaultValue);
+```
+
+### Defining the type of properties
+
+The generic type parameter `<Type>` specifies the Java type of the property or attribute. This guarantees type safety when setting or getting values.
+
+```java
 private final PropertyDescriptor<String> TITLE = PropertyDescriptor.property("title", "");
-// Example attribute called VALUE in an ElementComposite class
-private final PropertyDescriptor<String> VALUE = PropertyDescriptor.attribute("value", "");
-//...
+private final PropertyDescriptor<Integer> COUNT = PropertyDescriptor.attribute("count", 0);
+```
+
+### Setting and getting values
+
+Use the `set()` method to assign a value, and the `get()` method to retrieve it.
+
+```java
 set(TITLE, "My Title");
-set(VALUE, "My Value");
+String title = get(TITLE);
 ```
 
 In addition to setting a property, use the `get()` method in the `ElementComposite` class to access and read properties. The `get()` method can be passed an optional `boolean` value, which is false by default, to dictate whether the method should make a trip to the client to retrieve the value. This impacts performance, but might be necessary if the property can be modified purely in the client. 
 
-A `Type` can also be passed to the method, which dictates what to cast retrieved result to.
-
-:::tip
-This `Type` isn't overtly necessary, and adds an extra layer of specification as the data is retrieved.
-:::
-
 ```java
-// Example property called TITLE in an ElementComposite class
-private final PropertyDescriptor<String> TITLE = PropertyDescriptor.property("title", "");
-//...
-String title = get(TITLE, false, String);
+String title = get(TITLE, false, String.class);
 ```
 
-In the demo below, properties have been added for the QR code based on the documentation for the web component. Methods have then been implemented which allow users to get and set the various properties that have been implemented.
+### Best practices for validating properties
+
+To guarantee valid values, add validation logic in your setter methods or before calling `set()`:
+
+```java
+public void setCount(int count) {
+    if (count < 0) {
+        throw new IllegalArgumentException("Count must be non-negative");
+    }
+    set(COUNT, count);
+}
+```
+This approach helps prevent an invalid state.
+
+### Enum-style properties
+
+For properties that should only accept a fixed set of values, use Java enums. Define the enum, then use it as the type parameter for your `PropertyDescriptor`.
+
+```java
+public enum Status {
+    ACTIVE, INACTIVE, DISABLED
+}
+
+private final PropertyDescriptor<Status> STATUS = PropertyDescriptor.attribute("status", Status.ACTIVE);
+
+// Usage
+set(STATUS, Status.INACTIVE);
+Status status = get(STATUS);
+```
+
 
 <ComponentDemo 
 path='/webforj/qrproperties?' 
@@ -69,9 +149,7 @@ height='250px'
 
 ## Event registration {#event-registration}
 
-Events enable communication between different parts of your webforJ app. The `ElementComposite` class provides event handling with support for debouncing, throttling, filtering, and custom event data collection.
-
-Register event listeners using the `addEventListener()` method:
+Events enable communication between parts of your app and create interactive components. `ElementComposite` makes event handling straightforward: register listeners for specific event types using `addEventListener()` with the event class, your listener, and optional options.
 
 ```java
 // Example: Adding a click event listener
@@ -81,7 +159,7 @@ addEventListener(ElementClickEvent.class, event -> {
 ```
 
 :::info
-The `ElementComposite` events are different than `Element` events, in that this doesn't allow any class, but only specified `Event` classes.
+The `ElementComposite` events are different from `Element` events, in that this doesn't allow any class, but only specified `Event` classes.
 :::
 
 ### Built-in event classes {#built-in-event-classes}
@@ -163,14 +241,45 @@ ElementEventOptions merged = baseOptions.mergeWith(specificOptions);
 
 ## Interacting with slots {#interacting-with-slots}
 
-Web components often use slots to allow developers to define the structure of a component from the outside. A slot is a placeholder inside a web component that can be filled with content when using the component. In the context of the `ElementComposite` class, slots provide a way to customize the content within a component. The following methods are provided to allow developers to interact with and manipulate slots:
+Web components often use slots to allow developers to define the structure of a component from the outside. A slot is a placeholder inside a web component that can be filled with content when using the component.
 
-1. **`findComponentSlot()`**: This method is used to search for a specific component across all slots in a component system. It returns the name of the slot where the component is located. If the component is not found in any slot, an empty string is returned.
+For web components that have slots (such as headers, footers, or content areas), extend <JavadocLink type="foundation" location="com/webforj/component/element/ElementCompositeContainer" code='true' >ElementCompositeContainer</JavadocLink> instead of `ElementComposite` to manage the child components within the named slots.
+
+`ElementCompositeContainer` provides a structured way to add, remove, and manage components in specific slots:
+
+1. **`findComponentSlot()`**: This method is used to search for a specific component across all slots in a component system. It returns the name of the slot where the component is located. If the component isn't found in any slot, an empty string is returned.
 
 2. **`getComponentsInSlot()`**: This method retrieves the list of components assigned to a given slot in a component system. Optionally, pass a specific class type to filter the results of the method.
 
 3. **`getFirstComponentInSlot()`**: This method is designed to fetch the first component assigned to the slot. Optionally pass a specific class type to filter the results of this method.
 
-it's also possible to use the `add()` method with a `String` parameter to specify the desired slot in which to add the passed component.
+It's also possible to use the `add()` method with a `String` parameter to specify the desired slot in which to add the passed component.
 
-These interactions allow developers to harness the power of web components by providing a clean and straightforward API for manipulating slots, properties, and handling events within the `ElementComposite` class.
+```java
+@NodeName("my-container")
+public final class MyContainer extends ElementCompositeContainer
+    implements HasClassName<MyContainer>, HasStyle<MyContainer> {
+    private static final String HEADER_SLOT = "header";
+    private static final String CONTENT_SLOT = "content";
+    private static final String FOOTER_SLOT = "footer";
+
+    public MyContainer() {
+        super();
+    }
+
+    public MyContainer addToHeader(Component... components) {
+        getElement().add(HEADER_SLOT, components);
+        return this;
+    }
+
+    public MyContainer addToContent(Component... components) {
+        add(components); // Default slot
+        return this;
+    }
+
+    public MyContainer addToFooter(Component... components) {
+        getElement().add(FOOTER_SLOT, components);
+        return this;
+    }
+}
+```
