@@ -11,15 +11,22 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Radio Button Switch")
 public class RadioButtonSwitchView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public RadioButtonSwitchView() {
-    getBoundComponent().setDirection(FlexDirection.ROW).setSpacing("1em").setMargin("20px");
+    // Configure layout
+    self.setDirection(FlexDirection.ROW)
+        .setSpacing("1em")
+        .setMargin("20px");
 
+    // Create normal radio button with extra large expanse
     RadioButton normalButton = new RadioButton("Normal RadioButton")
         .setExpanse(Expanse.XLARGE);
+
+    // Create switch-style radio button with extra large expanse
     RadioButton switchButton = RadioButton.Switch("Switch RadioButton")
         .setExpanse(Expanse.XLARGE);
 
-    getBoundComponent().add(normalButton, switchButton);
+    self.add(normalButton, switchButton);
   }
 }
