@@ -14,7 +14,7 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 /**
- * A simple HelloWorld app.
+ * A simple HelloWorld app demonstrating basic WebForj component usage.
  */
 @InlineStyleSheet(/* css */"""
   .mainFrame {
@@ -27,16 +27,16 @@ import com.webforj.router.annotation.Route;
 @Route("/")
 @FrameTitle("Hello World Java")
 public class HelloWorldJavaView extends Composite<FlexLayout> {
-
-  Paragraph hello = new Paragraph("Hello World!");
-  Button btn = new Button("Say Hello");
+  private final FlexLayout self = getBoundComponent();
+  private final Paragraph hello = new Paragraph("Hello World!");
+  private final Button btn = new Button("Say Hello");
 
   public HelloWorldJavaView() {
     btn.setTheme(ButtonTheme.SUCCESS)
         .setExpanse(Expanse.XLARGE)
         .addClickListener(e -> showMessageDialog("Hello World!", "Do it all in Java"));
 
-    getBoundComponent().setDirection(FlexDirection.COLUMN)
+    self.setDirection(FlexDirection.COLUMN)
         .addClassName("mainFrame")
         .add(hello, btn);
   }

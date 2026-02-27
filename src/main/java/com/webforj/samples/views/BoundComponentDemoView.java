@@ -11,42 +11,37 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Bound Component")
 public class BoundComponentDemoView extends Composite<FlexLayout> {
-
-  TextField text = new TextField("Todo Item");
-  FlexLayout todoDisplay;
+  private final FlexLayout self = getBoundComponent();
+  private final TextField text = new TextField("Todo Item");
+  private FlexLayout todoDisplay;
 
   public BoundComponentDemoView() {
-    getBoundComponent().setMargin("20px").setWidth("50%")
+    self.setMargin("20px")
+        .setWidth("50%")
         .setDirection(FlexDirection.COLUMN)
         .add(new DefaultComposite(), new OverrideComposite());
-
   }
 
   // Uses the default constructor for the FlexLayout class
   public static class DefaultComposite extends Composite<FlexLayout> {
-
-    TextField nameField;
-    Button submit;
+    // self field enables fluent method chaining from the bound component
+    private final FlexLayout self = getBoundComponent();
+    private final TextField nameField = new TextField();
+    private final Button submit = new Button("Submit");
 
     DefaultComposite() {
-      nameField = new TextField();
-      submit = new Button("Submit");
-      getBoundComponent()
-          .setSpacing("3px")
+      self.setSpacing("3px")
           .add(nameField, submit);
     }
   }
 
   // Overrides initBoundComponent() to use a parameterized constructor
   public static class OverrideComposite extends Composite<FlexLayout> {
-
-    TextField nameField;
-    Button submit;
+    private final TextField nameField = new TextField();
+    private final Button submit = new Button("Submit");
 
     @Override
     protected FlexLayout initBoundComponent() {
-      nameField = new TextField();
-      submit = new Button("Submit");
       return new FlexLayout(nameField, submit);
     }
   }
