@@ -13,17 +13,14 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Toast Themes")
 @StyleSheet("ws://css/toast/toastTheme.css")
 public class ToastThemeView extends Composite<FlexLayout> {
-
-  Toast updateToast;
-  Button laterButton;
-  Button updateButton;
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
 
   public ToastThemeView() {
-    getBoundComponent().setMargin("var(--dwc-space-l)");
+    self.setMargin("var(--dwc-space-l)");
 
-    updateToast = new Toast("The application has a new update available", -1, Theme.DEFAULT);
-    updateToast.addClassName("custom-theme");
-    updateToast.open();
+    new Toast("The application has a new update available", -1, Theme.DEFAULT)
+        .addClassName("custom-theme")
+        .open();
   }
-
 }
