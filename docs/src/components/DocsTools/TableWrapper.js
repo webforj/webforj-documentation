@@ -70,6 +70,7 @@ export default function TableWrapper({ children, ...props }) {
                     sx={{
                         m: 0,
                         p: 2,
+                        paddingBottom: 0,
                         display: 'flex',
                         justifyContent: 'flex-end',
                         alignItems: 'center',
