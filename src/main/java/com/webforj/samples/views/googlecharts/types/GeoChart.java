@@ -1,31 +1,28 @@
 package com.webforj.samples.views.googlecharts.types;
 
 import com.webforj.component.googlecharts.GoogleChart;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Arrays;
 
 public class GeoChart {
-  
   private final GoogleChart chart = new GoogleChart(GoogleChart.Type.GEO);
 
   public GeoChart() {
-    
-    Map<String, Object> options = new HashMap<>();
-    options.put("title", "Geo Chart");
-    options.put("colorAxis", Map.of("colors", List.of("#4285f4", "#ab48bc")));
-    options.put("backgroundColor", "transparent");
+    Map<String, Object> options = Map.of(
+        "title", "Geo Chart",
+        "colorAxis", Map.of("colors", List.of("#4285f4", "#ab48bc")),
+        "backgroundColor", "transparent"
+    );
     chart.setOptions(options);
 
-    List<Object> data = new ArrayList<>();
-    data.add(Arrays.asList("Country", "Popularity"));
-    data.add(Arrays.asList("Germany", 200));
-    data.add(Arrays.asList("United States", 300));
-    data.add(Arrays.asList("Brazil", 400));
-    data.add(Arrays.asList("Canada", 500));
-    data.add(Arrays.asList("France", 600));
+    List<Object> data = List.of(
+        List.of("Country", "Popularity"),
+        List.of("Germany", 200),
+        List.of("United States", 300),
+        List.of("Brazil", 400),
+        List.of("Canada", 500),
+        List.of("France", 600)
+    );
     chart.setData(data);
   }
 

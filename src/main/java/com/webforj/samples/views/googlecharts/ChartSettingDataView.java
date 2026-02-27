@@ -7,9 +7,6 @@ import com.webforj.router.annotation.Route;
 import com.webforj.component.Composite;
 import com.webforj.component.html.elements.Div;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,36 +20,33 @@ import java.util.Map;
 @Route
 @FrameTitle("Chart Setting Data")
 public class ChartSettingDataView extends Composite<Div> {
-
-  GoogleChart chart = new GoogleChart(GoogleChart.Type.PIE);
+  private Div self = getBoundComponent();
+  private GoogleChart chart = new GoogleChart(GoogleChart.Type.PIE);
 
   public ChartSettingDataView() {
+    self.addClassName("window");
 
-    getBoundComponent().addClassName("window");
+    chart.setStyle("width", "100vw")
+            .setStyle("height", "100vh");
 
-    chart.setStyle("width", "100vw");
-    chart.setStyle("height", "100vh");
-
-
-    Map<String, Object> options = new HashMap<>();
-    options.put("title", "Sales Distribution by Region");
-    options.put("is3D", "true");
-    options.put(
-        "colors",
-        Arrays.asList("#BBDEFB", "#64B5F6", "#1E88E5", "#0D47A1", "#1565C0", "#82B1FF")
+    Map<String, Object> options = Map.of(
+        "title", "Sales Distribution by Region",
+        "is3D", "true",
+        "colors", List.of("#BBDEFB", "#64B5F6", "#1E88E5", "#0D47A1", "#1565C0", "#82B1FF")
     );
 
-    List<Object> data = new ArrayList<>();
-    data.add(Arrays.asList("Region", "Sales"));
-    data.add(Arrays.asList("North America", 500));
-    data.add(Arrays.asList("Europe", 300));
-    data.add(Arrays.asList("Asia", 200));
-    data.add(Arrays.asList("Latin America", 100));
-    data.add(Arrays.asList("Middle East", 80));
-    data.add(Arrays.asList("Africa", 60));
+    List<Object> data = List.of(
+        List.of("Region", "Sales"),
+        List.of("North America", 500),
+        List.of("Europe", 300),
+        List.of("Asia", 200),
+        List.of("Latin America", 100),
+        List.of("Middle East", 80),
+        List.of("Africa", 60)
+    );
     chart.setData(data);
 
     chart.setOptions(options);
-    getBoundComponent().add(chart);
+    self.add(chart);
   }
 }
