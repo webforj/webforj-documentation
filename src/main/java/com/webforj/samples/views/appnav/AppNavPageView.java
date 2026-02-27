@@ -25,4 +25,10 @@ public class AppNavPageView extends Composite<Div> {
       text.setHtml(String.format("Content for <strong>%s</strong> goes here", id));
     });
   }
+
+  @Override
+  protected void onDestroy() {
+    Router.getCurrent().removeAllListeners();
+    super.onDestroy();
+  }
 }
