@@ -16,27 +16,24 @@ import com.webforj.component.progressbar.ProgressBar;
 @Route
 @FrameTitle("Progressbar in Toolbar")
 public class ToolbarProgressbarView extends Composite<AppLayout> {
-
-  AppLayout self = getBoundComponent();
+  private final AppLayout self = getBoundComponent();
 
   public ToolbarProgressbarView() {
-    self
-        .setDrawerPlacement(AppLayout.DrawerPlacement.HIDDEN)
+    self.setDrawerPlacement(AppLayout.DrawerPlacement.HIDDEN)
         .setStyle("--dwc-app-layout-header-height", "52px")
         .add(new H1("Application Title"), new Paragraph("Content goes here"));
 
-    ProgressBar progressBar = new ProgressBar();
-    progressBar.setStriped(true)
+    ProgressBar progressBar = new ProgressBar()
+        .setStriped(true)
         .setAnimated(true)
         .setValue(75)
         .setTheme(Theme.PRIMARY)
         .setStyle("--dwc-progressbar-height", "5px");
 
-    Toolbar toolbar = new Toolbar();
-    toolbar
+    Toolbar toolbar = new Toolbar()
         .addToTitle(new H3("Application"))
-        .addToStart(new IconButton(TablerIcon.create("menu-2")))
-        .add(progressBar);
+        .addToStart(new IconButton(TablerIcon.create("menu-2")));
+    toolbar.add(progressBar);
 
     self.addToHeader(toolbar);
   }

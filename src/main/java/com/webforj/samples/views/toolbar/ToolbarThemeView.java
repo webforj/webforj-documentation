@@ -15,17 +15,16 @@ import com.webforj.component.layout.toolbar.Toolbar;
 @Route
 @FrameTitle("Toolbar Themes")
 public class ToolbarThemeView extends Composite<FlexLayout> {
-
-  FlexLayout self = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
 
   public ToolbarThemeView() {
     self.setDirection(FlexDirection.COLUMN)
         .setSpacing("var(--dwc-space-m)")
         .setMargin("var(--dwc-space-m) var(--dwc-space-m)");
 
+    // Use enhanced for-each loop with Theme.values()
     for (Theme theme : Theme.values()) {
-      Toolbar toolbar = new Toolbar();
-      toolbar
+      Toolbar toolbar = new Toolbar()
           .setTheme(theme)
           .addToTitle(new H1(theme.name()))
           .addToStart(new IconButton(TablerIcon.create("menu-2")))

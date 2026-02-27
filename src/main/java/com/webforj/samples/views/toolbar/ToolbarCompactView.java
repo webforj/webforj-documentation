@@ -17,25 +17,21 @@ import com.webforj.component.tabbedpane.TabbedPane;
 @Route
 @FrameTitle("Toolbar Compact")
 public class ToolbarCompactView extends Composite<AppLayout> {
-
-  AppLayout self = getBoundComponent();
+  private final AppLayout self = getBoundComponent();
 
   public ToolbarCompactView() {
-    self
-        .setDrawerPlacement(AppLayout.DrawerPlacement.HIDDEN)
+    self.setDrawerPlacement(AppLayout.DrawerPlacement.HIDDEN)
         .setStyle("--dwc-app-layout-header-height", "80px")
         .add(new H1("Application Title"), new Paragraph("Content goes here"));
 
-    Toolbar mainToolbar = new Toolbar();
-    mainToolbar
+    Toolbar mainToolbar = new Toolbar()
         .addToTitle(new H3("Application"))
         .addToStart(new AppDrawerToggle());
 
-    Toolbar secondToolbar = new Toolbar();
-    secondToolbar.setCompact(true);
+    Toolbar secondToolbar = new Toolbar()
+        .setCompact(true);
 
-    TabbedPane menu = new TabbedPane();
-    menu
+    TabbedPane menu = new TabbedPane()
         .setBorderless(true)
         .setBodyHidden(true);
 
