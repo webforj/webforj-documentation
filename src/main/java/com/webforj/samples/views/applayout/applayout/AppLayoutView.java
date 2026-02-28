@@ -20,10 +20,11 @@ import com.webforj.samples.views.applayout.DrawerLogo;
 @StyleSheet("ws://css/applayout/applayout.css")
 @FrameTitle("AppLayout")
 public class AppLayoutView extends Composite<AppLayout> {
-  private AppLayout self = getBoundComponent();
-  private Toolbar header = new Toolbar();
-  private Div drawer = new Div();
-  private AppNav drawerMenu = new AppNav();
+  // self field enables fluent method chaining from the bound component
+  private final AppLayout self = getBoundComponent();
+  private final Toolbar header = new Toolbar();
+  private final Div drawer = new Div();
+  private final AppNav drawerMenu = new AppNav();
 
   public AppLayoutView() {
     // Header
