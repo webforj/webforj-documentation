@@ -13,7 +13,8 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Text Field Spinner")
 public class MaskedTextFieldSpinnerView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
   private final MaskedTextFieldSpinner field = new MaskedTextFieldSpinner("Project Code:");
 
   public MaskedTextFieldSpinnerView() {

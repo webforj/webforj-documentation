@@ -14,10 +14,11 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Date Field Demo")
 public class DateFieldView extends Composite<FlexLayout> {
 
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
   private static final LocalDate TODAY = LocalDate.now();
   private static final LocalDate MAX_DATE = TODAY.plusYears(1);
 
-  private final FlexLayout self = getBoundComponent();
   private final DateField departureField = new DateField(TODAY);
   private final DateField returnField = new DateField(TODAY);
 
@@ -63,8 +64,10 @@ public class DateFieldView extends Composite<FlexLayout> {
   private LocalDate clamp(LocalDate date) {
     if (date == null)
       return null;
-    return date.isBefore(TODAY) ? TODAY
-        : date.isAfter(MAX_DATE) ? MAX_DATE
+    return date.isBefore(TODAY)
+        ? TODAY
+        : date.isAfter(MAX_DATE)
+            ? MAX_DATE
             : date;
   }
 }

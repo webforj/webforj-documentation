@@ -9,17 +9,15 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Date Time Field Demo")
 public class DateTimeFieldView extends Composite<FlexLayout> {
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final DateTimeField departure = new DateTimeField();
 
-  private FlexLayout self = getBoundComponent();
-  private DateTimeField departure = new DateTimeField();
-  
   public DateTimeFieldView() {
-    self.setMargin("var(--dwc-space-m)");
+    self.setMargin("var(--dwc-space-m)")
+        .add(departure);
 
     departure.setLabel("Departure Date and Time:")
         .setWidth("200px");
-
-    self.add(departure);
-
   }
 }

@@ -19,21 +19,16 @@ import com.webforj.router.annotation.Route;
 @StyleSheet("ws://css/fields/colorfield/colorFieldDemo.css")
 @FrameTitle("Color Field Demo")
 public class ColorFieldView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private ColorField colorField;
-  private Div[] colors;
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final ColorField colorField;
+  private final Div[] colors;
 
   public ColorFieldView() {
-    self.setDirection(FlexDirection.COLUMN)
-            .setAlignment(FlexAlignment.CENTER)
-            .setJustifyContent(FlexJustifyContent.CENTER)
-            .setSpacing("var(--dwc-space-l)")
-            .setMargin("var(--dwc-space-m)");
-
     colorField = new ColorField();
     colorField.setWidth("200px")
-            .setLabel("Choose a color:")
-            .onModify(this::tetradicColor);
+        .setLabel("Choose a color:")
+        .onModify(this::tetradicColor);
 
     colors = new Div[4];
     for (int i = 0; i <= 3; i++) {
@@ -42,18 +37,23 @@ public class ColorFieldView extends Composite<FlexLayout> {
     }
 
     FlexLayout colorDisplay = FlexLayout.create(colors)
-            .horizontal()
-            .justify().center()
-            .align().center()
-            .build()
-            .setSpacing("20px");
+        .horizontal()
+        .justify().center()
+        .align().center()
+        .build()
+        .setSpacing("20px");
 
     Paragraph title = new Paragraph("Tetradic complementary colors:");
 
     colorField.setValue(Color.RED);
     tetradicColor(null);
 
-    self.add(colorField, title, colorDisplay);
+    self.setDirection(FlexDirection.COLUMN)
+        .setAlignment(FlexAlignment.CENTER)
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .setSpacing("var(--dwc-space-l)")
+        .setMargin("var(--dwc-space-m)")
+        .add(colorField, title, colorDisplay);
   }
 
   private void tetradicColor(ModifyEvent e) {

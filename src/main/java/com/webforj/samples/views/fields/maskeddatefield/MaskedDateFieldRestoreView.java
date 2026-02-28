@@ -15,8 +15,9 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Date Field with Restore")
 public class MaskedDateFieldRestoreView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private MaskedDateField eventField = new MaskedDateField("Meeting Date:");
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final MaskedDateField eventField = new MaskedDateField("Meeting Date:");
 
   public MaskedDateFieldRestoreView() {
     self.setAlignment(FlexAlignment.CENTER)

@@ -13,16 +13,16 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Number Field with Restore Value")
 public class MaskedNumRestoreView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private MaskedNumberField field = new MaskedNumberField("Project Budget:");
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final MaskedNumberField field = new MaskedNumberField("Project Budget:");
 
   public MaskedNumRestoreView() {
     self.setAlignment(FlexAlignment.CENTER)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setMargin("var(--dwc-space-m) auto");
 
-    field
-        .setMask("$###,###,##0.00")
+    field.setMask("$###,###,##0.00")
         .setValue(1234567d)
         .setRestoreValue(1234567d)
         .setHelperText("Press <kbd>ESC</kbd> to restore the value to default.")

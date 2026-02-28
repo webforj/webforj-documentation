@@ -13,21 +13,21 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Date Field")
 public class MaskedDateFieldView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private MaskedDateField field = new MaskedDateField("Meeting Date");
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final MaskedDateField field = new MaskedDateField("Meeting Date");
 
   public MaskedDateFieldView() {
     self.setDirection(FlexDirection.COLUMN)
-            .setAlignment(FlexAlignment.CENTER)
-            .setMargin("var(--dwc-space-m)")
-            .add(field);
+        .setAlignment(FlexAlignment.CENTER)
+        .setMargin("var(--dwc-space-m)")
+        .add(field);
 
     field.setMask("%Mz/%Dz/%Yz")
-            .setValue(LocalDate.now())
-            .setMaxWidth("300px")
-            .setHelperText("Meeting Date is formatted as %Mz/%Dz/%Yz.")
-            .getPicker()
-            .setIconVisible(false);
-
+        .setValue(LocalDate.now())
+        .setMaxWidth("300px")
+        .setHelperText("Meeting Date is formatted as %Mz/%Dz/%Yz.")
+        .getPicker()
+        .setIconVisible(false);
   }
 }

@@ -9,16 +9,16 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Password Field Demo")
 public class PasswordFieldView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private PasswordField passwordField = new PasswordField();
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final PasswordField passwordField = new PasswordField();
 
   public PasswordFieldView() {
-    self.setMargin("var(--dwc-space-m)");
+    self.setMargin("var(--dwc-space-m)")
+        .add(passwordField);
 
     passwordField.setWidth("200px")
         .setLabel("Enter your Password:")
         .setPlaceholder("Password");
-
-    self.add(passwordField);
   }
 }

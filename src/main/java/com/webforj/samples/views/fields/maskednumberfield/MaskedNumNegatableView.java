@@ -12,9 +12,10 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Number Field with Negateable Option")
 public class MaskedNumNegatableView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private MaskedNumberField field = new MaskedNumberField("Credits");
-  private RadioButton negateable = RadioButton.Switch("Negateable", true);
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final MaskedNumberField field = new MaskedNumberField("Credits");
+  private final RadioButton negateable = RadioButton.Switch("Negateable", true);
 
   public MaskedNumNegatableView() {
     self.setDirection(FlexDirection.COLUMN)
