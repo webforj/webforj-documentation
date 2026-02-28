@@ -19,11 +19,12 @@ import java.util.List;
 @Route
 @FrameTitle("Task Manager Drawer")
 public class DrawerEventView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private Drawer drawer = new Drawer();
-  private List<CheckBox> taskList = new ArrayList<>();
-  private FlexLayout tasks = new FlexLayout();
-  private Button addTaskButton = new Button("Add Task", ButtonTheme.PRIMARY);
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final Drawer drawer = new Drawer();
+  private final List<CheckBox> taskList = new ArrayList<>();
+  private final FlexLayout tasks = new FlexLayout();
+  private final Button addTaskButton = new Button("Add Task", ButtonTheme.PRIMARY);
   private int taskAmount = 0;
 
   public DrawerEventView() {

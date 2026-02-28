@@ -27,11 +27,12 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Drawer Welcome App")
 public class DrawerWelcomeView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private Drawer welcomeDrawer;
-  private AppLayout appLayout = new AppLayout();
-  private Toolbar header = new Toolbar();
-  private Div navigation = new Div();
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final Drawer welcomeDrawer = new Drawer();
+  private final AppLayout appLayout = new AppLayout();
+  private final Toolbar header = new Toolbar();
+  private final Div navigation = new Div();
 
   public DrawerWelcomeView() {
     self.add(appLayout);
@@ -78,7 +79,6 @@ public class DrawerWelcomeView extends Composite<FlexLayout> {
     appNav.addItem(documentsItem);
 
     // Welcome Drawer
-    welcomeDrawer = new Drawer();
     self.add(welcomeDrawer);
 
     welcomeDrawer.setPlacement(Placement.BOTTOM_CENTER)

@@ -21,7 +21,8 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Contact Picker")
 public class DrawerContactView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
 
   public DrawerContactView() {
     Drawer drawer = new Drawer()

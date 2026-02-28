@@ -14,8 +14,9 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Drawer Placement")
 public class DrawerPlacementView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private Drawer drawer = new Drawer();
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final Drawer drawer = new Drawer();
 
   public DrawerPlacementView() {
     self.setMargin("var(--dwc-space-l)");

@@ -19,17 +19,18 @@ import java.util.List;
 @Route
 @FrameTitle("Task Manager Drawer")
 @InlineStyleSheet(/*css */"""
-     dwc-checkbox[checked]::part(label) {
+    dwc-checkbox[checked]::part(label) {
       text-decoration: line-through;
       opacity: 0.6;
-     }
+    }
 """)
 public class DrawerTaskView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private Drawer drawer = new Drawer();
-  private List<CheckBox> taskList = new ArrayList<>();
-  private FlexLayout tasks = new FlexLayout();
-  private Button addTaskButton = new Button("Add Task", ButtonTheme.PRIMARY);
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final Drawer drawer = new Drawer();
+  private final List<CheckBox> taskList = new ArrayList<>();
+  private final FlexLayout tasks = new FlexLayout();
+  private final Button addTaskButton = new Button("Add Task", ButtonTheme.PRIMARY);
   private int taskAmount = 0;
 
   public DrawerTaskView() {
@@ -37,16 +38,16 @@ public class DrawerTaskView extends Composite<FlexLayout> {
             .open();
 
     tasks.setDirection(FlexDirection.COLUMN)
-         .setSpacing("var(--dwc-space-s)")
-         .setStyle("overflow-y", "auto")
-         .setMaxHeight("60vh");
+        .setSpacing("var(--dwc-space-s)")
+        .setStyle("overflow-y", "auto")
+        .setMaxHeight("60vh");
 
     addTask("Finish project documentation");
     addTask("Call John about the meeting");
     addTask("Prepare slides for tomorrow");
 
     TextField newTaskField = new TextField("New Task", "")
-            .setMaxLength(50);
+        .setMaxLength(50);
 
     addTaskButton.onClick(e -> {
       String taskText = newTaskField.getValue();
@@ -60,11 +61,11 @@ public class DrawerTaskView extends Composite<FlexLayout> {
     clearTasksButton.onClick(e -> clearCompletedTasks());
 
     FlexLayout footerContainer = new FlexLayout(newTaskField, addTaskButton, clearTasksButton)
-      .setDirection(FlexDirection.COLUMN)
-      .setSpacing("var(--dwc-space-s)");
+        .setDirection(FlexDirection.COLUMN)
+        .setSpacing("var(--dwc-space-s)");
 
     drawer.addToFooter(footerContainer)
-            .add(tasks);
+        .add(tasks);
 
     Button openDrawerButton = new Button("Open Task Manager");
     openDrawerButton.onClick(e -> drawer.open());
