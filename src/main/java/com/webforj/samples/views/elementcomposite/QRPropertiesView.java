@@ -15,14 +15,15 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("QR Properties")
 public class QRPropertiesView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private QRCode qrCode = new QRCode("https://www.webforj.com");
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final QRCode qrCode = new QRCode("https://www.webforj.com");
 
   public QRPropertiesView() {
     self.setMargin("var(--dwc-space-m)")
         .add(qrCode);
 
-    /* Setting the properties */
+    // Setting the properties
     qrCode.setSize(200)
         .setColor("#0059B8");
   }
@@ -31,7 +32,7 @@ public class QRPropertiesView extends Composite<FlexLayout> {
    * QRCode Generator using Shoelace QRCode component.
    */
   @JavaScript(value = "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.87/dist/shoelace.js", attributes = {
-    @Attribute(name = "type", value = "module") })
+      @Attribute(name = "type", value = "module") })
   @NodeName("sl-qr-code")
   public static final class QRCode extends ElementComposite {
 
@@ -81,7 +82,7 @@ public class QRPropertiesView extends Composite<FlexLayout> {
     }
 
     public QRCode setColor(Color color) {
-      String hex = String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
+      String hex = "#%02x%02x%02x".formatted(color.getRed(), color.getGreen(), color.getBlue());
       set(descColor, hex);
       return this;
     }

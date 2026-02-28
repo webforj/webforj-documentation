@@ -14,8 +14,9 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("QR Code")
 public class QRDemoView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private QRCode qrCode = new QRCode();
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final QRCode qrCode = new QRCode();
 
   public QRDemoView() {
     Div code = new Div();

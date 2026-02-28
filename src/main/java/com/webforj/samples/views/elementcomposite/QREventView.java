@@ -25,9 +25,10 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("QR Events")
 public class QREventView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private Div label = new Div("Click Me!");
-  private QRCode qrCode = new QRCode("https://www.webforj.com");
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final Div label = new Div("Click Me!");
+  private final QRCode qrCode = new QRCode("https://www.webforj.com");
 
   public QREventView() {
     self.setSpacing("10px")
@@ -39,7 +40,7 @@ public class QREventView extends Composite<FlexLayout> {
     qrCode.setSize(200)
         .setColor("#000");
 
-    /* Adding an onClick event */
+    // Adding an onClick event
     qrCode.onClick(e -> showMessageDialog("Client X:" + e.getClientX(), "You clicked the QR code"));
   }
 
@@ -94,7 +95,7 @@ public class QREventView extends Composite<FlexLayout> {
     }
 
     public QRCode setColor(Color color) {
-      String hex = String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
+      String hex = "#%02x%02x%02x".formatted(color.getRed(), color.getGreen(), color.getBlue());
       set(descColor, hex);
       return this;
     }
@@ -104,14 +105,14 @@ public class QREventView extends Composite<FlexLayout> {
       return this;
     }
 
-    /* Adding the onClick registration method */
+    // Adding the onClick registration method
     public ListenerRegistration<ClickEvent> onClick(EventListener<ClickEvent> listener) {
       return addEventListener(ClickEvent.class, listener);
     }
 
   }
 
-  /* Creating a click event. */
+  // Creating a click event.
   @EventName("click")
   @EventOptions(data = { @EventOptions.EventData(key = "clientX", exp = "event.clientX") })
   public static class ClickEvent extends ComponentEvent<QRCode> {
