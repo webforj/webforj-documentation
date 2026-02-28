@@ -13,30 +13,29 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Columns Layout")
 public class ColumnsLayoutView extends Composite<Div> {
-  private Div self = getBoundComponent();
-  private TextField firstName = new TextField("First Name");
-  private TextField lastName = new TextField("Last Name");
-  private TextField email = new TextField("Email");
-  private PasswordField password = new PasswordField("Password");
-  private PasswordField confirmPassword = new PasswordField("Confirm Password");
-  private Button submit = new Button("Submit", ButtonTheme.PRIMARY);
-
-  /*
-   * The layout will position the components in 2 columns by default.
-   */
-  ColumnsLayout columnsLayout = new ColumnsLayout(firstName, lastName, email, password, confirmPassword, submit);
+  // self field enables fluent method chaining from the bound component
+  private final Div self = getBoundComponent();
+  private final TextField firstName = new TextField("First Name");
+  private final TextField lastName = new TextField("Last Name");
+  private final TextField email = new TextField("Email");
+  private final PasswordField password = new PasswordField("Password");
+  private final PasswordField confirmPassword = new PasswordField("Confirm Password");
+  private final Button submit = new Button("Submit", ButtonTheme.PRIMARY);
+  
+  // The layout will position the components in 2 columns by default.
+  private final ColumnsLayout columnsLayout = new ColumnsLayout(firstName, lastName, email, password, confirmPassword, submit);
 
   public ColumnsLayoutView() {
     columnsLayout.setSpan(email, 2)
-            .setSpan(submit, 2)
-            .setStyle("padding", "var(--dwc-space-xl)");
+        .setSpan(submit, 2)
+        .setStyle("padding", "var(--dwc-space-xl)");
 
     submit.setStyle("margin-top", "var(--dwc-space-l)");
 
     self.setMaxWidth("600px")
-            .setStyle("margin", "0 auto")
-            .setStyle("overflow", "auto")
-            .setStyle("height", "100dvh")
-            .add(columnsLayout);
+        .setStyle("margin", "0 auto")
+        .setStyle("overflow", "auto")
+        .setStyle("height", "100dvh")
+        .add(columnsLayout);
   }
 }

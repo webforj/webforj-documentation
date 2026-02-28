@@ -17,43 +17,45 @@ import java.util.List;
 @Route
 @FrameTitle("Columns Layout Form")
 public class ColumnsLayoutFormView extends Composite<Div> {
-  private Div self = getBoundComponent();
-  private TextField firstName = new TextField("First Name");
-  private TextField lastName = new TextField("Last Name");
-  private TextField email = new TextField("Email");
-  private PasswordField password = new PasswordField("Password");
-  private PasswordField passwordConfirm = new PasswordField("Confirm Password");
-  private TextField address = new TextField("Address");
-  private ChoiceBox states = new ChoiceBox("State");
-  private TextField zip = new TextField("Zip");
-  private Button submit = new Button("Submit", ButtonTheme.PRIMARY);
-  private Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY);
-  private ColumnsLayout columnsLayout = new ColumnsLayout(
-          firstName, lastName,
-          email,
-          password, passwordConfirm,
-          address,
-          states, zip,
-          cancel, submit);
+  // self field enables fluent method chaining from the bound component
+  private final Div self = getBoundComponent();
+  private final TextField firstName = new TextField("First Name");
+  private final TextField lastName = new TextField("Last Name");
+  private final TextField email = new TextField("Email");
+  private final PasswordField password = new PasswordField("Password");
+  private final PasswordField passwordConfirm = new PasswordField("Confirm Password");
+  private final TextField address = new TextField("Address");
+  private final ChoiceBox states = new ChoiceBox("State");
+  private final TextField zip = new TextField("Zip");
+  private final Button submit = new Button("Submit", ButtonTheme.PRIMARY);
+  private final Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY);
+  private final ColumnsLayout columnsLayout = new ColumnsLayout(
+      firstName, lastName,
+      email,
+      password, passwordConfirm,
+      address,
+      states, zip,
+      cancel, submit);
 
   public ColumnsLayoutFormView() {
     populateStates();
 
     columnsLayout.setSpan(email, 2)
-            .setSpan(address, 2)
-            .setStyle("padding", "var(--dwc-space-xl)");
+        .setSpan(address, 2)
+        .setStyle("padding", "var(--dwc-space-xl)");
 
     submit.setStyle("margin-top", "var(--dwc-space-l)");
     cancel.setStyle("margin-top", "var(--dwc-space-l)");
 
     self.setMaxWidth("600px")
-            .setStyle("margin", "0 auto")
-            .setStyle("overflow", "auto")
-            .setStyle("height", "100dvh")
-            .add(columnsLayout);
+        .setStyle("margin", "0 auto")
+        .setStyle("overflow", "auto")
+        .setStyle("height", "100dvh")
+        .add(columnsLayout);
   }
 
   private void populateStates() {
+    // Use immutable List.of() for cleaner state list
     List<ListItem> listStates = List.of(
         new ListItem("AL", "Alabama"),
         new ListItem("AK", "Alaska"),
@@ -107,6 +109,6 @@ public class ColumnsLayoutFormView extends Composite<Div> {
         new ListItem("WY", "Wyoming")
     );
 
-    this.states.insert(listStates);
+    states.insert(listStates);
   }
 }

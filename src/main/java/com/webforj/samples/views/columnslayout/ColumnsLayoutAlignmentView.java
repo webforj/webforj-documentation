@@ -15,28 +15,29 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Columns Layout Alignment")
 public class ColumnsLayoutAlignmentView extends Composite<Div> {
-  private Div self = getBoundComponent();
-  private TextField firstName = new TextField("First Name");
-  private TextField lastName = new TextField("Last Name");
-  private TextField email = new TextField("Email");
-  private DateField dateOfBirth = new DateField("Date of Birth");
-  private TextArea bio = new TextArea("Bio");
-  private CheckBox terms = new CheckBox("I agree to the terms and conditions");
-  private Button submit = new Button("Submit", ButtonTheme.PRIMARY);
-  private ColumnsLayout columnsLayout = new ColumnsLayout(
-          firstName, lastName, email, dateOfBirth, bio, terms, submit);
+  // self field enables fluent method chaining from the bound component
+  private final Div self = getBoundComponent();
+  private final TextField firstName = new TextField("First Name");
+  private final TextField lastName = new TextField("Last Name");
+  private final TextField email = new TextField("Email");
+  private final DateField dateOfBirth = new DateField("Date of Birth");
+  private final TextArea bio = new TextArea("Bio");
+  private final CheckBox terms = new CheckBox("I agree to the terms and conditions");
+  private final Button submit = new Button("Submit", ButtonTheme.PRIMARY);
+  private final ColumnsLayout columnsLayout = new ColumnsLayout(
+      firstName, lastName, email, dateOfBirth, bio, terms, submit);
 
   public ColumnsLayoutAlignmentView() {
     columnsLayout.setSpan(bio, 2)
-            .setSpan(terms, 2)
-            .setColumn(submit, 2)
-            .setHorizontalAlignment(submit, ColumnsLayout.Alignment.END)
-            .setStyle("padding", "var(--dwc-space-xl)");
+        .setSpan(terms, 2)
+        .setColumn(submit, 2)
+        .setHorizontalAlignment(submit, ColumnsLayout.Alignment.END)
+        .setStyle("padding", "var(--dwc-space-xl)");
 
     self.setMaxWidth("60em")
-            .setStyle("margin", "0 auto")
-            .setStyle("overflow", "auto")
-            .setStyle("height", "100dvh")
-            .add(columnsLayout);
+        .setStyle("margin", "0 auto")
+        .setStyle("overflow", "auto")
+        .setStyle("height", "100dvh")
+        .add(columnsLayout);
   }
 }
