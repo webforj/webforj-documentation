@@ -20,73 +20,76 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Analytics Card")
 @StyleSheet("ws://composite/analyticscomposite.css")
 public class AnalyticsCardCompositeView extends Composite<Div> {
-  private Div self = getBoundComponent();
+  // self field enables fluent method chaining from the bound component
+  private final Div self = getBoundComponent();
 
   public AnalyticsCardCompositeView() {
     self.addClassName("analytics-card")
-            .add(buildContent());
+        .add(buildContent());
   }
 
   private FlexLayout buildContent() {
     ProgressBar progress = new ProgressBar("75% of monthly goal reached")
-            .setValue(75)
-            .setStyle("margin-top", "var(--dwc-space-xs)");
+        .setValue(75)
+        .setStyle("margin-top", "var(--dwc-space-xs)");
 
     return FlexLayout.create(buildHeader(), buildChangeRow(), progress, buildChart())
-            .vertical()
-            .align().start()
-            .build()
-            .setSpacing("var(--dwc-space-m)");
+        .vertical()
+        .align().start()
+        .build()
+        .setSpacing("var(--dwc-space-m)");
   }
 
   private FlexLayout buildHeader() {
     Paragraph title = new Paragraph("Monthly Sales")
-            .addClassName("analytics-title");
+        .addClassName("analytics-title");
 
     Span value = new Span("$45,000")
-            .addClassName("analytics-value");
+        .addClassName("analytics-value");
 
     return FlexLayout.create(title, value)
-            .vertical()
-            .build()
-            .setSpacing("var(--dwc-space-xs)");
+        .vertical()
+        .build()
+        .setSpacing("var(--dwc-space-xs)");
   }
 
   private FlexLayout buildChangeRow() {
     Span changeText = new Span("12% from last month")
-            .setStyle("color", "var(--dwc-color-success-600)")
-            .setStyle("font-size", "0.9rem");
+        .setStyle("color", "var(--dwc-color-success-600)")
+        .setStyle("font-size", "0.9rem");
 
     Icon upArrow = TablerIcon.create("arrow-up");
 
     return FlexLayout.create(upArrow, changeText)
-            .align().center()
-            .build()
-            .setSpacing("var(--dwc-space-xs)");
+        .align().center()
+        .build()
+        .setSpacing("var(--dwc-space-xs)");
   }
 
   private GoogleChart buildChart() {
+    // Use immutable List.of() for cleaner data definition
     List<Object> data = List.of(
-            List.of("Month", "Sales"),
-            List.of("Jan", 25000),
-            List.of("Feb", 32000),
-            List.of("Mar", 27000),
-            List.of("Apr", 35000),
-            List.of("May", 45000)
+        List.of("Month", "Sales"),
+        List.of("Jan", 25000),
+        List.of("Feb", 32000),
+        List.of("Mar", 27000),
+        List.of("Apr", 35000),
+        List.of("May", 45000)
     );
 
+    // Use immutable Map.of() for options
     Map<String, Object> textStyle = Map.of("color", "#666666");
     Map<String, Object> options = Map.of(
-            "backgroundColor", "transparent",
-            "titleTextStyle", textStyle,
-            "hAxis", Map.of("textStyle", textStyle),
-            "vAxis", Map.of("textStyle", textStyle),
-            "legendTextStyle", textStyle
+        "backgroundColor", "transparent",
+        "titleTextStyle", textStyle,
+        "hAxis", Map.of("textStyle", textStyle),
+        "vAxis", Map.of("textStyle", textStyle),
+        "legendTextStyle", textStyle
     );
 
     return new GoogleChart(GoogleChart.Type.LINE)
-            .setSize("100%", "250px")
-            .setData(data)
-            .setOptions(options);
+        .setSize("100%", "250px")
+        .setData(data)
+        .setOptions(options);
   }
 }
