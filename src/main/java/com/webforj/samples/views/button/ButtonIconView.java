@@ -5,36 +5,33 @@ import com.webforj.component.button.Button;
 import com.webforj.component.html.elements.Img;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.icons.TablerIcon;
-import com.webforj.component.icons.Icon;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-/**
- * Demo application to display icon addition to buttons.
- */
 @Route
 @FrameTitle("Button Icon")
 public class ButtonIconView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private Button notifications;
-  private Button link;
-  private Button imgButton;
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final Button notifications;
+  private final Button link;
+  private final Button imgButton;
 
   public ButtonIconView() {
-    self.setSpacing("var(--dwc-space-l)")
-            .setMargin("var(--dwc-space-l)")
-            .setStyle("flex-wrap", "wrap")
-            .setWidth("100%")
-            .add(notifications, link, imgButton);
-
     notifications = new Button("Notifications")
-            .setPrefixComponent(TablerIcon.create("bell"));
+        .setPrefixComponent(TablerIcon.create("bell"));
 
     link = new Button("Search")
-            .setSuffixComponent(TablerIcon.create("external-link"));
+        .setSuffixComponent(TablerIcon.create("external-link"));
 
     Img imgIcon = new Img("https://documentation.webforj.com/img/webforj.svg")
-            .setSize("100px", "30px");
+        .setSize("100px", "30px");
     imgButton = new Button(imgIcon);
+
+    self.setSpacing("var(--dwc-space-l)")
+        .setMargin("var(--dwc-space-l)")
+        .setStyle("flex-wrap", "wrap")
+        .setWidth("100%")
+        .add(notifications, link, imgButton);
   }
 }

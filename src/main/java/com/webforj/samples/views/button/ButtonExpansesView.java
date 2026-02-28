@@ -1,9 +1,5 @@
 package com.webforj.samples.views.button;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Predicate;
-
 import com.webforj.component.Composite;
 import com.webforj.component.Expanse;
 import com.webforj.component.button.Button;
@@ -13,37 +9,35 @@ import com.webforj.component.list.ListItem;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-/**
- * Simple program to demonstrate the various Button expanse values.
- */
 @Route
 @FrameTitle("Button Expanses")
 public class ButtonExpansesView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private ChoiceBox expanses = new ChoiceBox();
-  private Button demoButton = new Button("None");
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final ChoiceBox expanses = new ChoiceBox();
+  private final Button demoButton = new Button("None");
 
   public ButtonExpansesView() {
     self.setSpacing("var(--dwc-space-l)")
-            .setMargin("var(--dwc-space-l)")
-            .add(expanses, demoButton);
+        .setMargin("var(--dwc-space-l)")
+        .add(expanses, demoButton);
 
-    List<ListItem> categories = Arrays.asList(Expanse.values())
-            .reversed()
-            .stream()
-            .filter(Predicate.not(Predicate.isEqual(Expanse.NONE)))
-            .map(expanse -> new ListItem(expanse, expanse.name()))
-            .toList();
+    // Build list items by iterating in reverse order (excluding NONE)
+    for (int i = Expanse.values().length - 1; i >= 0; i--) {
+      Expanse expanse = Expanse.values()[i];
+      if (expanse != Expanse.NONE) {
+        expanses.add(new ListItem(expanse, expanse.name()));
+      }
+    }
 
-    expanses.insert(categories)
-            .selectIndex(0)
-            .setWidth("100px")
-            .addSelectListener(event -> {
-              Expanse selectedValue = (Expanse) expanses.getSelectedKey();
-              if (selectedValue != null) {
-                demoButton.setExpanse(selectedValue);
-                demoButton.setText(selectedValue.name());
-              }
-            });
+    expanses.selectIndex(0)
+        .setWidth("100px")
+        .addSelectListener(event -> {
+          Expanse selectedValue = (Expanse) expanses.getSelectedKey();
+          if (selectedValue != null) {
+            demoButton.setExpanse(selectedValue);
+            demoButton.setText(selectedValue.name());
+          }
+        });
   }
 }
