@@ -1,7 +1,8 @@
 package com.webforj.samples.views.flexlayout.container;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.webforj.component.Composite;
 import com.webforj.component.event.ModifyEvent;
@@ -26,53 +27,87 @@ import com.webforj.samples.components.CodeDisplay;
 @FrameTitle("Container Builder")
 public class FlexContainerBuilderView extends Composite<Div> {
   private static final int HUE = 36; // 360 / 10
-  private Div self = getBoundComponent();
-  private MaskedNumberFieldSpinner spinner = new MaskedNumberFieldSpinner();
+  // self field enables fluent method chaining from the bound component
+  private final Div self = getBoundComponent();
 
-  private FlexLayout boxLayout;
-  private ArrayList<Box> boxes;
+  private final MaskedNumberFieldSpinner spinner = new MaskedNumberFieldSpinner();
+  private final FlexLayout boxLayout;
+  private final List<Box> boxes;
+  private final CodeDisplay codeWindow = new CodeDisplay();
+
   private int numBoxes;
-
   private String javaCode;
-  private CodeDisplay codeWindow = new CodeDisplay();
-  private HashMap<String, String> codeSnippetBuilder;
+  private Map<String, String> codeSnippetBuilder;
 
   public static final String REGEX = "^(.+?)-";
 
   public FlexContainerBuilderView() {
     self.addClassName("app__frame");
 
-    FlexLayout mainLayout = FlexLayout.create()
-            .horizontal()
-            .build();
-
-    boxLayout = FlexLayout.create()
-            .horizontal()
-            .build()
-            .addClassName("button__container");
-
-    FlexLayout flexContainerOptions = FlexLayout.create()
-            .vertical()
-            .build()
-            .addClassName("flex__options");
-
-    spinner.setLabel("Number of Boxes")
-            .setMin(1d)
-            .setText("1")
-            .onModify(this::spinnerChange);
-
-    boxes = new ArrayList<>();
+    FlexLayout mainLayout = createMainLayout();
+    this.boxLayout = createBoxLayout();
+    this.boxes = new ArrayList<>();
     numBoxes = 0;
+
+    FlexLayout flexContainerOptions = createFlexContainerOptions();
+    spinnerChangeHandler();
     addBox(1);
 
     flexContainerOptions.add(spinner);
-
     mainLayout.add(flexContainerOptions, boxLayout);
     self.add(mainLayout);
 
+    createAndAddChoiceBoxes(flexContainerOptions);
+
+    self.add(codeWindow);
+    codeWindow.setLanguage("java")
+        .addClassName("code__block");
+
+    initializeCodeSnippets();
+    updateCode();
+  }
+
+  private FlexLayout createMainLayout() {
+    return FlexLayout.create()
+        .horizontal()
+        .build();
+  }
+
+  private FlexLayout createBoxLayout() {
+    return FlexLayout.create()
+        .horizontal()
+        .build()
+        .addClassName("button__container");
+  }
+
+  private FlexLayout createFlexContainerOptions() {
+    return FlexLayout.create()
+        .vertical()
+        .build()
+        .addClassName("flex__options");
+  }
+
+  private void spinnerChangeHandler() {
+    spinner.setLabel("Number of Boxes")
+        .setMin(1d)
+        .setText("1")
+        .onModify(this::onSpinnerChange);
+  }
+
+  private void createAndAddChoiceBoxes(FlexLayout flexContainerOptions) {
+    ChoiceBox directions = createDirectionsChoiceBox();
+    ChoiceBox justifications = createJustificationsChoiceBox();
+    ChoiceBox alignments = createAlignmentsChoiceBox();
+    ChoiceBox contentAlignments = createContentAlignmentsChoiceBox();
+    ChoiceBox wraps = createWrapsChoiceBox();
+
+    flexContainerOptions.add(directions, justifications, alignments, contentAlignments, wraps);
+  }
+
+  private ChoiceBox createDirectionsChoiceBox() {
     ChoiceBox directions = new ChoiceBox()
-            .setLabel("Direction Options");
-    directions.onSelect(this::selectDirection);
+        .setLabel("Direction Options");
+    directions.onSelect(this::onDirectionSelect);
     for (FlexDirection justify : FlexDirection.values()) {
       String label = justify.getValue();
       String key = justify.toString().toLowerCase();
@@ -81,10 +116,13 @@ public class FlexContainerBuilderView extends Composite<Div> {
       directions.add("." + key + "()", text);
     }
     directions.selectIndex(0);
+    return directions;
+  }
 
+  private ChoiceBox createJustificationsChoiceBox() {
     ChoiceBox justifications = new ChoiceBox()
-            .setLabel("Justification Options");
-    justifications.onSelect(this::selectJustification);
+        .setLabel("Justification Options");
+    justifications.onSelect(this::onJustificationSelect);
     for (FlexJustifyContent justify : FlexJustifyContent.values()) {
       String label = justify.getValue().replaceAll(REGEX, "");
       String key = justify.toString().toLowerCase().replaceAll(REGEX, "");
@@ -92,10 +130,13 @@ public class FlexContainerBuilderView extends Composite<Div> {
       justifications.add(".justify()." + key + "()", text);
     }
     justifications.selectIndex(0);
+    return justifications;
+  }
 
+  private ChoiceBox createAlignmentsChoiceBox() {
     ChoiceBox alignments = new ChoiceBox()
-            .setLabel("Alignment Options");
-    alignments.onSelect(this::selectAlignment);
+        .setLabel("Alignment Options");
+    alignments.onSelect(this::onAlignmentSelect);
     for (FlexAlignment justify : FlexAlignment.values()) {
       String label = justify.getValue().replaceAll(REGEX, "");
       String key = justify.toString().toLowerCase().replaceAll(REGEX, "");
@@ -103,10 +144,13 @@ public class FlexContainerBuilderView extends Composite<Div> {
       alignments.add(".align()." + key + "()", text);
     }
     alignments.selectIndex(0);
+    return alignments;
+  }
 
+  private ChoiceBox createContentAlignmentsChoiceBox() {
     ChoiceBox contentAlignments = new ChoiceBox()
-            .setLabel("Content-Alignment Options");
-    contentAlignments.onSelect(this::selectAlignContent);
+        .setLabel("Content-Alignment Options");
+    contentAlignments.onSelect(this::onAlignContentSelect);
     for (FlexContentAlignment justify : FlexContentAlignment.values()) {
       String label = justify.getValue().replaceAll(REGEX, "");
       String key = justify.toString().toLowerCase().replaceAll(REGEX, "");
@@ -114,10 +158,13 @@ public class FlexContainerBuilderView extends Composite<Div> {
       contentAlignments.add(".contentAlign()." + key + "()", text);
     }
     contentAlignments.selectIndex(0);
+    return contentAlignments;
+  }
 
+  private ChoiceBox createWrapsChoiceBox() {
     ChoiceBox wraps = new ChoiceBox()
-            .setLabel("Wrap Options");
-    wraps.onSelect(this::selectWrap);
+        .setLabel("Wrap Options");
+    wraps.onSelect(this::onWrapSelect);
     for (FlexWrap justify : FlexWrap.values()) {
       String label = justify.getValue().replaceAll(REGEX, "");
       String key = justify.toString().toLowerCase().replaceAll(REGEX, "");
@@ -125,37 +172,30 @@ public class FlexContainerBuilderView extends Composite<Div> {
       wraps.add(".wrap()." + key + "()", text);
     }
     wraps.selectIndex(0);
-
-    flexContainerOptions.add(directions, justifications, alignments, contentAlignments, wraps);
-
-    self.add(codeWindow);
-    codeWindow.setLanguage("java")
-            .addClassName("code__block");
-
-    createStrings();
-    updateCode();
+    return wraps;
   }
 
-  private void createStrings() {
-    codeSnippetBuilder = new HashMap<>();
-    codeSnippetBuilder.put("FlexDirection", ".horizontal() \n");
-    codeSnippetBuilder.put("FlexJustifyContent", "");
-    codeSnippetBuilder.put("FlexAlignment", "");
-    codeSnippetBuilder.put("FlexContentAlignment", "");
-    codeSnippetBuilder.put("FlexWrap", "");
+  private void initializeCodeSnippets() {
+    codeSnippetBuilder = Map.of(
+        "FlexDirection", ".horizontal() \n",
+        "FlexJustifyContent", "",
+        "FlexAlignment", "",
+        "FlexContentAlignment", "",
+        "FlexWrap", ""
+    );
   }
 
   private void updateCode() {
     javaCode = "FlexLayout boxLayout = FlexLayout.create() \n" +
-            codeSnippetBuilder.get("FlexDirection") +
-            codeSnippetBuilder.get("FlexJustifyContent") +
-            codeSnippetBuilder.get("FlexAlignment") +
-            codeSnippetBuilder.get("FlexContentAlignment") +
-            codeSnippetBuilder.get("FlexWrap");
+        codeSnippetBuilder.get("FlexDirection") +
+        codeSnippetBuilder.get("FlexJustifyContent") +
+        codeSnippetBuilder.get("FlexAlignment") +
+        codeSnippetBuilder.get("FlexContentAlignment") +
+        codeSnippetBuilder.get("FlexWrap");
     codeWindow.setText(javaCode);
   }
 
-  private void spinnerChange(ModifyEvent ev) {
+  private void onSpinnerChange(ModifyEvent ev) {
     if (!spinner.isInvalid() && Integer.parseInt(ev.getText()) > 0) {
       if (Integer.parseInt(ev.getText()) > numBoxes) {
         addBox(Integer.parseInt(ev.getText()));
@@ -168,7 +208,8 @@ public class FlexContainerBuilderView extends Composite<Div> {
   private void addBox(int newNum) {
     while (newNum > numBoxes) {
       numBoxes++;
-      String hue = String.valueOf(HUE * numBoxes); Box newBox = new Box(numBoxes);
+      String hue = String.valueOf(HUE * numBoxes);
+      Box newBox = new Box(numBoxes);
       newBox.setStyle("background", "hsla(" + hue + ", 50%, 75%, 0.25)");
       newBox.setStyle("border", "2px solid " + "hsl(" + hue + ", 50%, 35%)");
       newBox.setStyle("color", "hsl(" + hue + ", 50%, 25%)");
@@ -185,59 +226,138 @@ public class FlexContainerBuilderView extends Composite<Div> {
     }
   }
 
-  private void selectDirection(ListSelectEvent<?> ev) {
+  private void onDirectionSelect(ListSelectEvent<?> ev) {
     FlexDirection direction = FlexDirection.fromValue(ev.getSelectedItem().getText());
     boxLayout.setDirection(direction);
 
-    switch (direction) {
-      case ROW_REVERSE -> codeSnippetBuilder.put("FlexDirection", ".horizontalReverse()\n");
-      case COLUMN -> codeSnippetBuilder.put("FlexDirection", ".vertical()\n");
-      case COLUMN_REVERSE -> codeSnippetBuilder.put("FlexDirection", ".verticalReverse()\n");
-      case ROW -> codeSnippetBuilder.put("FlexDirection", ".horizontal()\n");
-    }
+    codeSnippetBuilder = switch (direction) {
+      case ROW_REVERSE -> Map.ofEntries(
+          Map.entry("FlexDirection", ".horizontalReverse()\n"),
+          Map.entry("FlexJustifyContent", codeSnippetBuilder.get("FlexJustifyContent")),
+          Map.entry("FlexAlignment", codeSnippetBuilder.get("FlexAlignment")),
+          Map.entry("FlexContentAlignment", codeSnippetBuilder.get("FlexContentAlignment")),
+          Map.entry("FlexWrap", codeSnippetBuilder.get("FlexWrap"))
+      );
+      case COLUMN -> Map.ofEntries(
+          Map.entry("FlexDirection", ".vertical()\n"),
+          Map.entry("FlexJustifyContent", codeSnippetBuilder.get("FlexJustifyContent")),
+          Map.entry("FlexAlignment", codeSnippetBuilder.get("FlexAlignment")),
+          Map.entry("FlexContentAlignment", codeSnippetBuilder.get("FlexContentAlignment")),
+          Map.entry("FlexWrap", codeSnippetBuilder.get("FlexWrap"))
+      );
+      case COLUMN_REVERSE -> Map.ofEntries(
+          Map.entry("FlexDirection", ".verticalReverse()\n"),
+          Map.entry("FlexJustifyContent", codeSnippetBuilder.get("FlexJustifyContent")),
+          Map.entry("FlexAlignment", codeSnippetBuilder.get("FlexAlignment")),
+          Map.entry("FlexContentAlignment", codeSnippetBuilder.get("FlexContentAlignment")),
+          Map.entry("FlexWrap", codeSnippetBuilder.get("FlexWrap"))
+      );
+      case ROW -> Map.ofEntries(
+          Map.entry("FlexDirection", ".horizontal()\n"),
+          Map.entry("FlexJustifyContent", codeSnippetBuilder.get("FlexJustifyContent")),
+          Map.entry("FlexAlignment", codeSnippetBuilder.get("FlexAlignment")),
+          Map.entry("FlexContentAlignment", codeSnippetBuilder.get("FlexContentAlignment")),
+          Map.entry("FlexWrap", codeSnippetBuilder.get("FlexWrap"))
+      );
+    };
     updateCode();
   }
 
-  private void selectJustification(ListSelectEvent<?> ev) {
+  private void onJustificationSelect(ListSelectEvent<?> ev) {
     boxLayout.setJustifyContent(FlexJustifyContent.fromValue(ev.getSelectedItem().getText()));
     if (ev.getSelectedItem().getKey().toString().equals(".justify().start()")) {
-      codeSnippetBuilder.put("FlexJustifyContent", "");
+      codeSnippetBuilder = Map.ofEntries(
+          Map.entry("FlexDirection", codeSnippetBuilder.get("FlexDirection")),
+          Map.entry("FlexJustifyContent", ""),
+          Map.entry("FlexAlignment", codeSnippetBuilder.get("FlexAlignment")),
+          Map.entry("FlexContentAlignment", codeSnippetBuilder.get("FlexContentAlignment")),
+          Map.entry("FlexWrap", codeSnippetBuilder.get("FlexWrap"))
+      );
     } else {
-      codeSnippetBuilder.put("FlexJustifyContent", ev.getSelectedItem().getKey().toString() + "\n");
+      codeSnippetBuilder = Map.ofEntries(
+          Map.entry("FlexDirection", codeSnippetBuilder.get("FlexDirection")),
+          Map.entry("FlexJustifyContent", ev.getSelectedItem().getKey().toString() + "\n"),
+          Map.entry("FlexAlignment", codeSnippetBuilder.get("FlexAlignment")),
+          Map.entry("FlexContentAlignment", codeSnippetBuilder.get("FlexContentAlignment")),
+          Map.entry("FlexWrap", codeSnippetBuilder.get("FlexWrap"))
+      );
     }
     updateCode();
   }
 
-  private void selectAlignment(ListSelectEvent<?> ev) {
+  private void onAlignmentSelect(ListSelectEvent<?> ev) {
     boxLayout.setAlignment(FlexAlignment.fromValue(ev.getSelectedItem().getText()));
     if (ev.getSelectedItem().getKey().toString().equals(".align().stretch()")) {
-      codeSnippetBuilder.put("FlexAlignment", "");
+      codeSnippetBuilder = Map.ofEntries(
+          Map.entry("FlexDirection", codeSnippetBuilder.get("FlexDirection")),
+          Map.entry("FlexJustifyContent", codeSnippetBuilder.get("FlexJustifyContent")),
+          Map.entry("FlexAlignment", ""),
+          Map.entry("FlexContentAlignment", codeSnippetBuilder.get("FlexContentAlignment")),
+          Map.entry("FlexWrap", codeSnippetBuilder.get("FlexWrap"))
+      );
     } else {
-      codeSnippetBuilder.put("FlexAlignment", ev.getSelectedItem().getKey().toString() + "\n");
+      codeSnippetBuilder = Map.ofEntries(
+          Map.entry("FlexDirection", codeSnippetBuilder.get("FlexDirection")),
+          Map.entry("FlexJustifyContent", codeSnippetBuilder.get("FlexJustifyContent")),
+          Map.entry("FlexAlignment", ev.getSelectedItem().getKey().toString() + "\n"),
+          Map.entry("FlexContentAlignment", codeSnippetBuilder.get("FlexContentAlignment")),
+          Map.entry("FlexWrap", codeSnippetBuilder.get("FlexWrap"))
+      );
     }
     updateCode();
   }
 
-  private void selectAlignContent(ListSelectEvent<?> ev) {
+  private void onAlignContentSelect(ListSelectEvent<?> ev) {
     boxLayout.setAlignContent(FlexContentAlignment.fromValue(ev.getSelectedItem().getText()));
     if (ev.getSelectedItem().getKey().toString().equals(".contentAlign().normal()")) {
-      codeSnippetBuilder.put("FlexContentAlignment", "");
+      codeSnippetBuilder = Map.ofEntries(
+          Map.entry("FlexDirection", codeSnippetBuilder.get("FlexDirection")),
+          Map.entry("FlexJustifyContent", codeSnippetBuilder.get("FlexJustifyContent")),
+          Map.entry("FlexAlignment", codeSnippetBuilder.get("FlexAlignment")),
+          Map.entry("FlexContentAlignment", ""),
+          Map.entry("FlexWrap", codeSnippetBuilder.get("FlexWrap"))
+      );
     } else {
-      codeSnippetBuilder.put("FlexContentAlignment", ev.getSelectedItem().getKey().toString() + "\n");
+      codeSnippetBuilder = Map.ofEntries(
+          Map.entry("FlexDirection", codeSnippetBuilder.get("FlexDirection")),
+          Map.entry("FlexJustifyContent", codeSnippetBuilder.get("FlexJustifyContent")),
+          Map.entry("FlexAlignment", codeSnippetBuilder.get("FlexAlignment")),
+          Map.entry("FlexContentAlignment", ev.getSelectedItem().getKey().toString() + "\n"),
+          Map.entry("FlexWrap", codeSnippetBuilder.get("FlexWrap"))
+      );
     }
     updateCode();
   }
 
-  private void selectWrap(ListSelectEvent<?> ev) {
-    if (ev.getSelectedItem().getKey().toString().equals(".wrap().nowrap()")) {
+  private void onWrapSelect(ListSelectEvent<?> ev) {
+    String key = ev.getSelectedItem().getKey().toString();
+    if (key.equals(".wrap().nowrap()")) {
       boxLayout.setWrap(FlexWrap.fromValue(ev.getSelectedItem().getText()));
-      codeSnippetBuilder.put("FlexWrap", "");
-    } else if (ev.getSelectedItem().getKey().toString().equals(".wrap().reverse()")) {
+      codeSnippetBuilder = Map.ofEntries(
+          Map.entry("FlexDirection", codeSnippetBuilder.get("FlexDirection")),
+          Map.entry("FlexJustifyContent", codeSnippetBuilder.get("FlexJustifyContent")),
+          Map.entry("FlexAlignment", codeSnippetBuilder.get("FlexAlignment")),
+          Map.entry("FlexContentAlignment", codeSnippetBuilder.get("FlexContentAlignment")),
+          Map.entry("FlexWrap", "")
+      );
+    } else if (key.equals(".wrap().reverse()")) {
       boxLayout.setWrap(FlexWrap.WRAP_REVERSE);
-      codeSnippetBuilder.put("FlexWrap", ev.getSelectedItem().getKey().toString() + "\n");
+      codeSnippetBuilder = Map.ofEntries(
+          Map.entry("FlexDirection", codeSnippetBuilder.get("FlexDirection")),
+          Map.entry("FlexJustifyContent", codeSnippetBuilder.get("FlexJustifyContent")),
+          Map.entry("FlexAlignment", codeSnippetBuilder.get("FlexAlignment")),
+          Map.entry("FlexContentAlignment", codeSnippetBuilder.get("FlexContentAlignment")),
+          Map.entry("FlexWrap", key + "\n")
+      );
     } else {
       boxLayout.setWrap(FlexWrap.fromValue(ev.getSelectedItem().getText()));
-      codeSnippetBuilder.put("FlexWrap", ev.getSelectedItem().getKey().toString() + "\n");
+      codeSnippetBuilder = Map.ofEntries(
+          Map.entry("FlexDirection", codeSnippetBuilder.get("FlexDirection")),
+          Map.entry("FlexJustifyContent", codeSnippetBuilder.get("FlexJustifyContent")),
+          Map.entry("FlexAlignment", codeSnippetBuilder.get("FlexAlignment")),
+          Map.entry("FlexContentAlignment", codeSnippetBuilder.get("FlexContentAlignment")),
+          Map.entry("FlexWrap", key + "\n")
+      );
     }
     updateCode();
   }

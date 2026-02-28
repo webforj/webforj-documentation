@@ -5,34 +5,45 @@ import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexLayout;
-import com.webforj.component.window.Panel;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-
-import java.util.Arrays;
 
 @Route
 @FrameTitle("Flex Wrapping")
 public class FlexWrappingView extends Composite<Div> {
-  private Div self = getBoundComponent();
+  // self field enables fluent method chaining from the bound component
+  private final Div self = getBoundComponent();
 
   public FlexWrappingView() {
-    Panel container = new Panel();
-    container.setWidth("200px")
-        .setStyle("border", "1px black dotted");
-    self.add(container);
+    Div container = createContainer();
+    Button[] buttons = createButtons();
+    FlexLayout buttonsLayout = createButtonsLayout(buttons);
 
+    container.add(buttonsLayout);
+    self.add(container);
+  }
+
+  private Div createContainer() {
+    return new Div()
+        .setWidth("200px")
+        .setStyle("border", "1px black dotted");
+  }
+
+  private Button[] createButtons() {
     Button[] buttons = new Button[3];
     for (int i = 0; i < buttons.length; i++) {
       buttons[i] = new Button("Button " + (i + 1));
+      if (i == 0) {
+        buttons[i].setTheme(ButtonTheme.PRIMARY);
+      }
     }
-    buttons[0].setTheme(ButtonTheme.PRIMARY);
+    return buttons;
+  }
 
-    FlexLayout buttonsLayout = FlexLayout.create(buttons)
+  private FlexLayout createButtonsLayout(Button[] buttons) {
+    return FlexLayout.create(buttons)
         .horizontal()
         .wrap()
         .build();
-
-    container.add(buttonsLayout);
   }
 }

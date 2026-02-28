@@ -3,10 +3,8 @@ package com.webforj.samples.views.flexlayout;
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
-import com.webforj.component.button.DwcButton;
 import com.webforj.component.button.event.ButtonClickEvent;
 import com.webforj.component.field.NumberField;
-import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 
 import com.webforj.router.annotation.FrameTitle;
@@ -17,62 +15,95 @@ import java.util.List;
 
 @Route
 @FrameTitle("Flex Basis")
-public class FlexBasisView extends Composite<Div> {
-  private Div self = getBoundComponent();
-  private FlexLayout mainLayout;
-  private FlexLayout boxLayout;
-  private FlexLayout optionLayout;
-  private List<Button> buttons;
-  private NumberField numberField;
-  private Button basisButton;
-  private Button reset;
+public class FlexBasisView extends Composite<FlexLayout> {
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+
+  private final FlexLayout mainLayout;
+  private final FlexLayout boxLayout;
+  private final FlexLayout optionLayout;
+  private final List<Button> buttons;
+  private final NumberField numberField;
+  private final Button basisButton;
+  private final Button reset;
 
   private int selected = 0;
 
   public FlexBasisView() {
-    mainLayout = FlexLayout.create()
-            .horizontal()
-            .build()
-            .setPadding("20px")
-            .setItemBasis("100%", boxLayout);
+    buttons = createButtons();
+    mainLayout = createMainLayout();
+    boxLayout = createBoxLayout();
+    numberField = createNumberField();
+    basisButton = createBasisButton();
+    reset = createResetButton();
+    optionLayout = createOptionLayout();
 
-    boxLayout = FlexLayout.create()
-            .horizontal()
-            .wrap().wrap()
-            .build()
-            .setPadding("20px")
-            .setStyle("border", "1px solid var(--dwc-color-default)");
+    setupMainLayout();
+  }
 
-    buttons = new ArrayList<>();
-
+  private List<Button> createButtons() {
+    List<Button> buttonList = new ArrayList<>();
     for (int i = 1; i <= 5; i++) {
-      Button newButton = new Button("Box " + i, ButtonTheme.OUTLINED_PRIMARY, this::onButtonSelect);
-      newButton.setStyle("transition", "flex-basis var(--dwc-transition-medium) var(--dwc-ease-inOutExpo)");
-      buttons.add(newButton);
-      boxLayout.add(buttons.get(i - 1));
-      boxLayout.setItemBasis("75px", buttons.get(i - 1));
+      Button button = new Button("Box " + i, ButtonTheme.OUTLINED_PRIMARY, this::onButtonSelect);
+      button.setStyle("transition", "flex-basis var(--dwc-transition-medium) var(--dwc-ease-inOutExpo)");
+      buttonList.add(button);
+    }
+    return buttonList;
+  }
+
+  private FlexLayout createMainLayout() {
+    return FlexLayout.create()
+        .horizontal()
+        .build()
+        .setPadding("20px")
+        .setItemBasis("100%", boxLayout);
+  }
+
+  private FlexLayout createBoxLayout() {
+    FlexLayout layout = FlexLayout.create()
+        .horizontal()
+        .wrap().wrap()
+        .build()
+        .setPadding("20px")
+        .setStyle("border", "1px solid var(--dwc-color-default)");
+
+    for (Button button : buttons) {
+      layout.add(button);
+      layout.setItemBasis("75px", button);
     }
 
-    numberField = new NumberField("Basis")
-            .setMin(75.0)
-            .setTooltipText("Set the flex basis width (in pixels)")
-            .setRequired(true);
+    return layout;
+  }
 
-    basisButton = new Button("Set basis", this::onSetBasis)
-            .setTooltipText("Select a box item first");
+  private NumberField createNumberField() {
+    return new NumberField("Basis")
+        .setMin(75.0)
+        .setTooltipText("Set the flex basis width (in pixels)")
+        .setRequired(true);
+  }
 
-    reset = new Button("Reset", ButtonTheme.OUTLINED_GRAY, this::onReset);
+  private Button createBasisButton() {
+    return new Button("Set basis", this::onSetBasis)
+        .setTooltipText("Select a box item first");
+  }
 
-    optionLayout = FlexLayout.create(numberField, basisButton, reset)
-            .vertical()
-            .build();
+  private Button createResetButton() {
+    return new Button("Reset", ButtonTheme.OUTLINED_GRAY, this::onReset);
+  }
 
+  private FlexLayout createOptionLayout() {
+    return FlexLayout.create(numberField, basisButton, reset)
+        .vertical()
+        .build();
+  }
+
+  private void setupMainLayout() {
     self.add(mainLayout);
     mainLayout.add(optionLayout, boxLayout);
   }
 
   private void onButtonSelect(ButtonClickEvent e) {
-    DwcButton<?> eventButton = e.getComponent();
+    Button eventButton = (Button) e.getComponent();
     if (eventButton.getTheme() == ButtonTheme.OUTLINED_PRIMARY) {
       eventButton.setTheme(ButtonTheme.PRIMARY);
       basisButton.setTooltipText("Set the basis for " + ++selected + " box item(s)");
