@@ -11,8 +11,9 @@ import com.webforj.router.history.ParametersBag;
 
 @Route(value = ":id", outlet = AppNavView.class)
 public class AppNavPageView extends Composite<Div> {
-  private Div self = getBoundComponent();
-  private Paragraph text = new Paragraph();
+  // self field enables fluent method chaining from the bound component
+  private final Div self = getBoundComponent();
+  private final Paragraph text = new Paragraph();
 
   public AppNavPageView() {
     H1 title = new H1("Application Title");
@@ -23,7 +24,8 @@ public class AppNavPageView extends Composite<Div> {
   private void onNavigate(NavigateEvent ev) {
     ParametersBag parameters = ev.getContext().getRouteParameters();
     parameters.get("id").ifPresent(id -> {
-      text.setHtml(String.format("Content for <strong>%s</strong> goes here", id));
+      // Use String.formatted() for cleaner string formatting
+      text.setHtml("Content for <strong>%s</strong> goes here".formatted(id));
     });
   }
 }

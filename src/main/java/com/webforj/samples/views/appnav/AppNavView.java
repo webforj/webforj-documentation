@@ -15,9 +15,10 @@ import com.webforj.router.history.ParametersBag;
 
 @Route
 public class AppNavView extends Composite<AppLayout> {
-  private AppLayout self = getBoundComponent();
-  private Toolbar toolbar = new Toolbar();
-  private AppNav appNav = new AppNav();
+  // self field enables fluent method chaining from the bound component
+  private final AppLayout self = getBoundComponent();
+  private final Toolbar toolbar = new Toolbar();
+  private final AppNav appNav = new AppNav();
 
   public AppNavView() {
     setHeader();
@@ -26,39 +27,39 @@ public class AppNavView extends Composite<AppLayout> {
 
   private void setHeader() {
     self.setHeaderOffscreen(false)
-            .setDrawerHeaderVisible(true)
-            .addToHeader(toolbar);
+        .setDrawerHeaderVisible(true)
+        .addToHeader(toolbar);
 
     toolbar.setTheme(Theme.PRIMARY)
-            .addToStart(new AppDrawerToggle())
-            .addToTitle(new H1("Application"));
+        .addToStart(new AppDrawerToggle())
+        .addToTitle(new H1("Application"));
   }
 
   private void setDrawer() {
     self.addToDrawer(appNav);
 
     AppNavItem inbox = new AppNavItem("Inbox")
-            .setPrefixComponent(TablerIcon.create("inbox"))
-            .setSuffixComponent(new Strong("54"))
-            .addItem(createItem("Primary", "mailbox"))
-            .addItem(createItem("Promotions", "tag"))
-            .addItem(createItem("Social", "users"))
-            .addItem(createItem("Updates", "bell"))
-            .addItem(createItem("Forums", "message-circle"));
+        .setPrefixComponent(TablerIcon.create("inbox"))
+        .setSuffixComponent(new Strong("54"))
+        .addItem(createItem("Primary", "mailbox"))
+        .addItem(createItem("Promotions", "tag"))
+        .addItem(createItem("Social", "users"))
+        .addItem(createItem("Updates", "bell"))
+        .addItem(createItem("Forums", "message-circle"));
 
     AppNavItem about = new AppNavItem("About")
-            .setPrefixComponent(TablerIcon.create("info-circle"))
-            .addItem(new AppNavItem("webforJ", "https://webforj.com/", TablerIcon.create("external-link")))
-            .addItem(new AppNavItem("GitHub", "https://github.com/webforj/webforj", TablerIcon.create("brand-github")))
-            .addItem(new AppNavItem("Documentation", "https://documentation.webforj.com/", TablerIcon.create("book")));
+        .setPrefixComponent(TablerIcon.create("info-circle"))
+        .addItem(new AppNavItem("webforJ", "https://webforj.com/", TablerIcon.create("external-link")))
+        .addItem(new AppNavItem("GitHub", "https://github.com/webforj/webforj", TablerIcon.create("brand-github")))
+        .addItem(new AppNavItem("Documentation", "https://documentation.webforj.com/", TablerIcon.create("book")));
 
     appNav.setAutoOpen(true)
-            .addItem(inbox)
-            .addItem(createItem("Sent", "send"))
-            .addItem(createItem("Archived", "archive"))
-            .addItem(createItem("Trash", "trash"))
-            .addItem(createItem("Spam", "alert-hexagon"))
-            .addItem(about);
+        .addItem(inbox)
+        .addItem(createItem("Sent", "send"))
+        .addItem(createItem("Archived", "archive"))
+        .addItem(createItem("Trash", "trash"))
+        .addItem(createItem("Spam", "alert-hexagon"))
+        .addItem(about);
   }
 
   private AppNavItem createItem(String text, String icon) {
