@@ -11,14 +11,15 @@ import com.webforj.router.annotation.Route;
 @StyleSheet("ws://css/element/elementInput.css")
 @FrameTitle("Element Input Text")
 public class ElementInputTextView extends Composite<Div> {
-  private Div self = getBoundComponent();
-  private Element input = new Element("input");
+  // self field enables fluent method chaining from the bound component
+  private final Div self = getBoundComponent();
+  private final Element input = new Element("input");
 
   public ElementInputTextView() {
     self.setStyle("margin", "20px")
         .add(input);
 
     input.addClassName("element--input")
-            .setText("Here is the set text");
+        .setText("Here is the set text");
   }
 }

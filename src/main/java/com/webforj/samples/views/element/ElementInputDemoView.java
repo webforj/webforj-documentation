@@ -11,8 +11,9 @@ import com.webforj.router.annotation.Route;
 @StyleSheet("ws://css/element/elementInput.css")
 @FrameTitle("Input Demo")
 public class ElementInputDemoView extends Composite<Div> {
-  private Div self = getBoundComponent();
-  private Element input = new Element("input");
+  // self field enables fluent method chaining from the bound component
+  private final Div self = getBoundComponent();
+  private final Element input = new Element("input");
 
   public ElementInputDemoView() {
     self.setStyle("margin", "20px")

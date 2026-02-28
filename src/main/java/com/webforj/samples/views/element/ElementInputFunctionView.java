@@ -14,8 +14,9 @@ import com.webforj.router.annotation.Route;
 @StyleSheet("ws://css/element/elementInput.css")
 @FrameTitle("Input Function")
 public class ElementInputFunctionView extends Composite<Div> {
-  private Div self = getBoundComponent();
-  private Element input = new Element("input");
+  // self field enables fluent method chaining from the bound component
+  private final Div self = getBoundComponent();
+  private final Element input = new Element("input");
 
   public ElementInputFunctionView() {
     self.setStyle("margin", "20px")
@@ -25,12 +26,13 @@ public class ElementInputFunctionView extends Composite<Div> {
     input.addEventListener("click", e -> {
       showMessageDialog("Input click fired", "Event listener");
     });
-    
-    /* Clicks the input, and stores the result in a Pending result. This then displays a
-    message box when it resolves. */
+
+    // Clicks the input, and stores the result in a Pending result. This then displays a
+    // message box when it resolves.
     PendingResult<Object> result = input.callJsFunctionAsync("click");
-    result.thenAccept( e -> {
-      showMessageDialog("This message displays after programmatically clicking the input", "Asynchronous JavaScript function");
+    result.thenAccept(e -> {
+      showMessageDialog("This message displays after programmatically clicking the input",
+          "Asynchronous JavaScript function");
     });
   }
 }

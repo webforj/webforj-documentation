@@ -14,25 +14,26 @@ import com.webforj.router.annotation.Route;
 @StyleSheet("ws://css/element/elementInputEvent.css")
 @FrameTitle("Input Event")
 public class ElementInputEventView extends Composite<Div> {
-  private Div self = getBoundComponent();
-  private Div label = new Div("Enter Text and Press Enter");
-  private Element input = new Element("input");
+  // self field enables fluent method chaining from the bound component
+  private final Div self = getBoundComponent();
+  private final Div label = new Div("Enter Text and Press Enter");
+  private final Element input = new Element("input");
 
   public ElementInputEventView() {
     self.setStyle("margin", "20px")
         .addClassName("frame")
-            .add(label, input);
+        .add(label, input);
 
     label.addClassName("element--label");
     input.addClassName("element--input");
 
     ElementEventOptions options = new ElementEventOptions()
-            .addData("theValue", "component.value")
-            .setFilter("event.key == 'Enter'")
-            .setCode("event.preventDefault();");
+        .addData("theValue", "component.value")
+        .setFilter("event.key == 'Enter'")
+        .setCode("event.preventDefault();");
 
     input.addEventListener("keypress", e -> {
-      showMessageDialog(e.getEventMap().get("theValue"),"Input Event");
+      showMessageDialog(e.getEventMap().get("theValue"), "Input Event");
     }, options);
   }
 }
