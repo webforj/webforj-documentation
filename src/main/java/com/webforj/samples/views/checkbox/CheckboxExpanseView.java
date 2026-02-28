@@ -9,24 +9,23 @@ import com.webforj.component.optioninput.CheckBox;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-import java.util.Arrays;
-
 @Route
 @FrameTitle("Checkbox Expanses")
 public class CheckboxExpanseView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
 
   public CheckboxExpanseView() {
     self.setWrap(FlexWrap.WRAP)
-            .setMargin("var(--dwc-space-l)")
-            .setSpacing("50px")
-            .setJustifyContent(FlexJustifyContent.CENTER)
-            .setWidth("100%");
+        .setMargin("var(--dwc-space-l)")
+        .setSpacing("50px")
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .setWidth("100%");
 
-    Arrays.asList(Expanse.values())
-            .reversed()
-            .stream()
-            .map(expanse -> new CheckBox(expanse.name()).setExpanse(expanse))
-            .forEach(self::add);
+    // Iterate through Expanse values in reverse order
+    for (int i = Expanse.values().length - 1; i >= 0; i--) {
+      Expanse expanse = Expanse.values()[i];
+      self.add(new CheckBox(expanse.name()).setExpanse(expanse));
+    }
   }
 }
