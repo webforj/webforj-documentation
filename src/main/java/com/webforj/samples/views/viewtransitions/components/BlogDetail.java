@@ -18,7 +18,8 @@ import com.webforj.dispatcher.ListenerRegistration;
 
 @StyleSheet("ws://css/viewtransitions/components/blog-card.css")
 public class BlogDetail extends Composite<FlexLayout> implements HasClassName<BlogDetail>, HasStyle<BlogDetail> {
-  private FlexLayout self = getBoundComponent();
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
   private final IconButton closeBtn;
 
   public BlogDetail(String title, String fullText, String transitionName) {

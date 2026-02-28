@@ -10,6 +10,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 
 @StyleSheet("ws://css/viewtransitions/components/shuffle-card.css")
 public class ShuffleCard extends Composite<FlexLayout> {
+  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
 
   public ShuffleCard(String id, String title, String subtitle, String colorClass, FeatherIcon icon, int position) {

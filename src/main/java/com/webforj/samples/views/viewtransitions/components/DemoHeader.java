@@ -12,6 +12,7 @@ import com.webforj.concern.HasClassName;
 
 @StyleSheet("ws://css/viewtransitions/components/demo-header.css")
 public class DemoHeader extends Composite<FlexLayout> implements HasClassName<DemoHeader> {
+  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final FlexLayout actionSlot;
 
