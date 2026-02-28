@@ -11,14 +11,15 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Dialog Auto-Focus")
 public class DialogAutoFocusView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private Dialog dialog = new Dialog();
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final Dialog dialog = new Dialog();
 
   public DialogAutoFocusView() {
     self.add(dialog);
     dialog.addToHeader(new Div("Auto Focus"))
-            .addToContent(new TextField().setLabel("This Box is Auto Focused"))
-            .open()
-            .setAutoFocus(true);
+        .addToContent(new TextField().setLabel("This Box is Auto Focused"))
+        .open()
+        .setAutoFocus(true);
   }
 }

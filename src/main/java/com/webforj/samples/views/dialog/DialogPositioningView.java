@@ -13,11 +13,12 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Dialog Positioning")
 public class DialogPositioningView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private NumberField xPos = new NumberField("X Pixels:");
-  private NumberField yPos = new NumberField("Y Pixels:");
-  private Dialog dialog = new Dialog();
-  private Button setPosition = new Button("Set Dialog Position", ButtonTheme.PRIMARY);
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final NumberField xPos = new NumberField("X Pixels:");
+  private final NumberField yPos = new NumberField("Y Pixels:");
+  private final Dialog dialog = new Dialog();
+  private final Button setPosition = new Button("Set Dialog Position", ButtonTheme.PRIMARY);
 
   public DialogPositioningView() {
     self.add(dialog);
@@ -38,11 +39,11 @@ public class DialogPositioningView extends Composite<FlexLayout> {
     });
 
     dialog.addToHeader(new Div("Positioning"))
-            .addToContent(xPos, yPos)
-            .addToFooter(setPosition)
-            .setAutoFocus(true)
-            .open()
-            .setCloseable(false)
-            .setMaxWidth("200px");
+        .addToContent(xPos, yPos)
+        .addToFooter(setPosition)
+        .setAutoFocus(true)
+        .open()
+        .setCloseable(false)
+        .setMaxWidth("200px");
   }
 }

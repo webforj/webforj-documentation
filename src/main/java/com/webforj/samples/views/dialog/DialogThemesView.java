@@ -12,8 +12,9 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Dialog Themes")
 public class DialogThemesView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private Dialog dialog = new Dialog();
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final Dialog dialog = new Dialog();
 
   public DialogThemesView() {
     self.add(dialog);
@@ -25,16 +26,16 @@ public class DialogThemesView extends Composite<FlexLayout> {
     }
 
     options.setLabel("Select Theme")
-            .setStyle("flex", "1")
-            .selectIndex(1)
-            .onSelect(e -> dialog.setTheme(((Theme) e.getSelectedItem().getKey())));
+        .setStyle("flex", "1")
+        .selectIndex(1)
+        .onSelect(e -> dialog.setTheme(((Theme) e.getSelectedItem().getKey())));
 
     Div header = new Div("Themes");
     dialog.addToHeader(header)
-            .addToContent(options)
-            .setStyle("display", "flex")
-            .setStyle("justify-content", "center")
-            .open()
-            .setCloseable(false);
+        .addToContent(options)
+        .setStyle("display", "flex")
+        .setStyle("justify-content", "center")
+        .open()
+        .setCloseable(false);
   }
 }

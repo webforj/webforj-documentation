@@ -10,17 +10,18 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Dialog Dragging")
 public class DialogDraggableView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private Dialog dialog = new Dialog();
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final Dialog dialog = new Dialog();
 
   public DialogDraggableView() {
     self.add(dialog);
 
     Div content = new Div("This dialog will snap when dragged within 100px of the edge of the display.");
     dialog.addToHeader(new Div("Snapping"))
-            .addToContent(content)
-            .open()
-            .setSnapToEdge(true)
-            .setSnapThreshold(100);
+        .addToContent(content)
+        .open()
+        .setSnapToEdge(true)
+        .setSnapThreshold(100);
   }
 }
