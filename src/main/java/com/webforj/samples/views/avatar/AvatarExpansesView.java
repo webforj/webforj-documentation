@@ -8,25 +8,24 @@ import com.webforj.component.avatar.AvatarExpanse;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-import java.util.Arrays;
-import java.util.function.Predicate;
-
 @Route
 @FrameTitle("Avatar Expanses")
 public class AvatarExpansesView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
 
   public AvatarExpansesView() {
     self.setSpacing("var(--dwc-space-m)")
         .setMargin("var(--dwc-space-l)")
         .setAlignment(FlexAlignment.CENTER);
 
-    Arrays.asList(AvatarExpanse.values())
-            .reversed()
-            .stream()
-            .filter(Predicate.not(Predicate.isEqual(AvatarExpanse.NONE)))
-            .map(expanse -> new Avatar("John Doe")
-                    .setExpanse(expanse))
-            .forEach(self::add);
+    // Iterate through AvatarExpanse values in reverse order (excluding NONE)
+    AvatarExpanse[] expanses = AvatarExpanse.values();
+    for (int i = expanses.length - 1; i >= 0; i--) {
+      AvatarExpanse expanse = expanses[i];
+      if (expanse != AvatarExpanse.NONE) {
+        self.add(new Avatar("John Doe").setExpanse(expanse));
+      }
+    }
   }
 }

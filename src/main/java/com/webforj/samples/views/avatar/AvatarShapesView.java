@@ -12,19 +12,20 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Avatar Shapes")
 public class AvatarShapesView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
 
   public AvatarShapesView() {
     self.setSpacing("var(--dwc-space-l)")
-            .setMargin("var(--dwc-space-l)")
-            .setAlignment(FlexAlignment.CENTER)
-            .add(
-                    new Avatar("John Doe")
-                            .setExpanse(AvatarExpanse.XLARGE)
-                            .setShape(AvatarShape.CIRCLE),
-                    new Avatar("John Doe")
-                            .setExpanse(AvatarExpanse.XLARGE)
-                            .setShape(AvatarShape.SQUARE)
-            );
+        .setMargin("var(--dwc-space-l)")
+        .setAlignment(FlexAlignment.CENTER)
+        .add(
+            new Avatar("John Doe")
+                .setExpanse(AvatarExpanse.XLARGE)
+                .setShape(AvatarShape.CIRCLE),
+            new Avatar("John Doe")
+                .setExpanse(AvatarExpanse.XLARGE)
+                .setShape(AvatarShape.SQUARE)
+        );
   }
 }

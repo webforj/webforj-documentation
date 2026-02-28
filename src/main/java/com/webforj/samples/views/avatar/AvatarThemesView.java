@@ -12,9 +12,10 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Avatar Themes")
 public class AvatarThemesView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private FlexLayout filled = new FlexLayout();
-  private FlexLayout outlined = new FlexLayout();
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final FlexLayout filled = new FlexLayout();
+  private final FlexLayout outlined = new FlexLayout();
 
   public AvatarThemesView() {
     self.setDirection(FlexDirection.COLUMN)
@@ -26,25 +27,25 @@ public class AvatarThemesView extends Composite<FlexLayout> {
     filled.setSpacing("var(--dwc-space-m)")
         .setAlignment(FlexAlignment.CENTER)
         .add(
-        new Avatar("Default").setTheme(AvatarTheme.DEFAULT),
-        new Avatar("Gray").setTheme(AvatarTheme.GRAY),
-        new Avatar("Primary").setTheme(AvatarTheme.PRIMARY),
-        new Avatar("Success").setTheme(AvatarTheme.SUCCESS),
-        new Avatar("Warning").setTheme(AvatarTheme.WARNING),
-        new Avatar("Danger").setTheme(AvatarTheme.DANGER),
-        new Avatar("Info").setTheme(AvatarTheme.INFO)
-    );
+            new Avatar("Default").setTheme(AvatarTheme.DEFAULT),
+            new Avatar("Gray").setTheme(AvatarTheme.GRAY),
+            new Avatar("Primary").setTheme(AvatarTheme.PRIMARY),
+            new Avatar("Success").setTheme(AvatarTheme.SUCCESS),
+            new Avatar("Warning").setTheme(AvatarTheme.WARNING),
+            new Avatar("Danger").setTheme(AvatarTheme.DANGER),
+            new Avatar("Info").setTheme(AvatarTheme.INFO)
+        );
 
     outlined.setSpacing("var(--dwc-space-m)")
         .setAlignment(FlexAlignment.CENTER)
         .add(
-        new Avatar("Default").setTheme(AvatarTheme.OUTLINED_DEFAULT),
-        new Avatar("Gray").setTheme(AvatarTheme.OUTLINED_GRAY),
-        new Avatar("Primary").setTheme(AvatarTheme.OUTLINED_PRIMARY),
-        new Avatar("Success").setTheme(AvatarTheme.OUTLINED_SUCCESS),
-        new Avatar("Warning").setTheme(AvatarTheme.OUTLINED_WARNING),
-        new Avatar("Danger").setTheme(AvatarTheme.OUTLINED_DANGER),
-        new Avatar("Info").setTheme(AvatarTheme.OUTLINED_INFO)
-    );
+            new Avatar("Default").setTheme(AvatarTheme.OUTLINED_DEFAULT),
+            new Avatar("Gray").setTheme(AvatarTheme.OUTLINED_GRAY),
+            new Avatar("Primary").setTheme(AvatarTheme.OUTLINED_PRIMARY),
+            new Avatar("Success").setTheme(AvatarTheme.OUTLINED_SUCCESS),
+            new Avatar("Warning").setTheme(AvatarTheme.OUTLINED_WARNING),
+            new Avatar("Danger").setTheme(AvatarTheme.OUTLINED_DANGER),
+            new Avatar("Info").setTheme(AvatarTheme.OUTLINED_INFO)
+        );
   }
 }
