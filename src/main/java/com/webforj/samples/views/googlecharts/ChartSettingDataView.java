@@ -1,11 +1,11 @@
 package com.webforj.samples.views.googlecharts;
 
 import com.webforj.annotation.InlineStyleSheet;
+import com.webforj.component.Composite;
 import com.webforj.component.googlecharts.GoogleChart;
+import com.webforj.component.html.elements.Div;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.component.Composite;
-import com.webforj.component.html.elements.Div;
 
 import java.util.List;
 import java.util.Map;
@@ -16,18 +16,25 @@ import java.util.Map;
       flex-direction: column;
       align-items: center;
     }
-""")
+    """)
 @Route
 @FrameTitle("Chart Setting Data")
 public class ChartSettingDataView extends Composite<Div> {
-  private Div self = getBoundComponent();
-  private GoogleChart chart = new GoogleChart(GoogleChart.Type.PIE);
+  // self field enables fluent method chaining from the bound component
+  private final Div self = getBoundComponent();
+
+  private final GoogleChart chart = new GoogleChart(GoogleChart.Type.PIE);
 
   public ChartSettingDataView() {
     self.addClassName("window");
 
+    setupChart();
+    self.add(chart);
+  }
+
+  private void setupChart() {
     chart.setStyle("width", "100vw")
-            .setStyle("height", "100vh");
+        .setStyle("height", "100vh");
 
     Map<String, Object> options = Map.of(
         "title", "Sales Distribution by Region",
@@ -44,9 +51,8 @@ public class ChartSettingDataView extends Composite<Div> {
         List.of("Middle East", 80),
         List.of("Africa", 60)
     );
-    chart.setData(data);
 
+    chart.setData(data);
     chart.setOptions(options);
-    self.add(chart);
   }
 }

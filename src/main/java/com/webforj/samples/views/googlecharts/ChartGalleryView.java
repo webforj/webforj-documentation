@@ -10,42 +10,48 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 import com.webforj.samples.views.googlecharts.types.*;
 import java.util.List;
-import java.util.function.Predicate;
 
 @StyleSheet("ws://css/googlecharts/chartGallery.css")
 @Route
 @FrameTitle("Chart Gallery")
 public class ChartGalleryView extends Composite<Div> {
-  private static final String GITHUB_BASE_URL = "https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/";
+  // self field enables fluent method chaining from the bound component
+  private final Div self = getBoundComponent();
 
-  private Div self = getBoundComponent();
+  private static final String GITHUB_BASE_URL = "https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/";
 
   public ChartGalleryView() {
     self.addClassName("chart-gallery");
+    createCharts();
+  }
 
+  private void createCharts() {
     for (String chartKey : getChartKeys()) {
       GoogleChart chart = createChart(chartKey);
 
       if (chart != null) {
-        Div chartDiv = new Div();
-        chartDiv.addClassName("chart-div");
-
-        Paragraph chartName = new Paragraph();
-        String formattedTitle = formatTitle(chartKey);
-        chartName.setText(formattedTitle);
-        chartName.addClassName("chartname");
-        chartDiv.add(chartName);
-
-        chartDiv.add(chart);
-
-        Anchor chartLink = new Anchor();
-        chartLink.setHref(GITHUB_BASE_URL + formattedTitle.replace(" ", "") + ".java");
-        chartLink.setTarget("_blank");
-        chartLink.add(chartDiv);
-
-        self.add(chartLink);
+        self.add(createChartLink(chartKey, chart));
       }
     }
+  }
+
+  private Anchor createChartLink(String chartKey, GoogleChart chart) {
+    String formattedTitle = formatTitle(chartKey);
+
+    Div chartDiv = new Div()
+        .addClassName("chart-div");
+
+    Paragraph chartName = new Paragraph()
+        .setText(formattedTitle)
+        .addClassName("chartname");
+
+    chartDiv.add(chartName, chart);
+
+    Anchor anchor = new Anchor();
+    anchor.setHref(GITHUB_BASE_URL + formattedTitle.replace(" ", "") + ".java");
+    anchor.setTarget("_blank");
+    anchor.add(chartDiv);
+    return anchor;
   }
 
   private List<String> getChartKeys() {

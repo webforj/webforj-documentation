@@ -15,15 +15,27 @@ import java.util.Map;
 @StyleSheet("ws://css/googlecharts/chart.css")
 @FrameTitle("Google Charts")
 public class ChartView extends Composite<Div> {
+  // self field enables fluent method chaining from the bound component
+  private final Div self = getBoundComponent();
+
   private static final String COLOR = "color";
   private static final String TEXT_STYLE = "textStyle";
 
-  private Div self = getBoundComponent();
-  private GoogleChart chart = new GoogleChart(GoogleChart.Type.GEO);
+  private final GoogleChart chart = new GoogleChart(GoogleChart.Type.GEO);
+
+  private static final String[] COUNTRIES = {
+      "Germany", "United States", "Brazil", "Canada",
+      "France", "RU", "Australia", "South Africa",
+      "China", "Egypt"
+  };
 
   public ChartView() {
     self.addClassName("chart-frame");
+    setupChart();
+    self.add(chart);
+  }
 
+  private void setupChart() {
     chart.setStyle("width", "100vw");
     chart.setStyle("height", "100vh");
 
@@ -41,24 +53,22 @@ public class ChartView extends Composite<Div> {
                 COLOR, "#333"),
             "maxLines", 3)
     );
-    chart.setOptions(options);
 
+    List<Object> data = createChartData();
+    chart.setOptions(options);
+    chart.setData(data);
+  }
+
+  private List<Object> createChartData() {
     List<Object> data = new ArrayList<>();
     List<String> cols = List.of("Country", "Revenue");
     data.add(cols);
 
-    String[] countries = new String[] {
-        "Germany", "United States", "Brazil", "Canada",
-        "France", "RU", "Australia", "South Africa",
-        "China", "Egypt"
-    };
-
-    for (String country : countries) {
+    for (String country : COUNTRIES) {
       List<Object> row = List.of(country, Math.random() * 10000);
       data.add(row);
     }
 
-    chart.setData(data);
-    self.add(chart);
+    return data;
   }
 }
