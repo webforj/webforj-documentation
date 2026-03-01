@@ -1,10 +1,10 @@
 ---
-title: Route Registry Provider
+title: RouteRegistryProvider
 sidebar_position: 60
 sidebar_class_name: new-content
 ---
 
-# Route Registry Provider <DocChip chip='since' label='25.11' />
+<DocChip chip='since' label='25.11' />
 
 The `RouteRegistryProvider` is a Service Provider Interface (SPI) that allows integration frameworks to provide custom route discovery mechanisms. This enables frameworks to integrate their own classpath scanning and dependency injection systems with webforJ's routing infrastructure.
 
@@ -14,7 +14,7 @@ webforJ discovers routes by scanning packages for `@Route` annotated components.
 
 Use this SPI when:
 
-- Integrating with dependency injection frameworks (Spring, CDI, ...)
+- Integrating with dependency injection frameworks (Spring, CDI, et al.)
 - Supporting specialized environments (OSGi, custom classloaders, GraalVM)
 - Building framework adapters that need to manage route component lifecycle
 - Reusing existing classpath scans to optimize startup time

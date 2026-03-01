@@ -122,7 +122,7 @@ The filter persists until you change it. New items added to the collection are a
 
 The repository needs to identify entities uniquely to support operations like `find()` and `commit(entity)`. There are two ways to define how entities are identified:
 
-### Using HasEntityKey interface {#using-hasentitykey}
+### Using `HasEntityKey` interface {#using-hasentitykey}
 
 Implement <JavadocLink type="data" location="com/webforj/data/HasEntityKey" code="true">HasEntityKey</JavadocLink> on your entity class:
 

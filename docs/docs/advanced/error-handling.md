@@ -3,7 +3,7 @@ title: Error Handling
 sidebar_position: 5
 ---
 
-Error handling is a crucial aspect of developing robust web apps. In webforJ, error handling is designed to be flexible and customizable, allowing developers to handle exceptions in a way that best suits their app's needs.
+Error handling is a crucial aspect of developing reliable web apps. In webforJ, error handling is designed to be flexible and customizable, allowing developers to handle exceptions in a way that best suits their app's needs.
 
 ## Overview {#overview}
 
@@ -40,7 +40,7 @@ The implementing class must be named after the exception it handles, with the su
 
 ### Registration {#registration}
 
-The custom error handler must be registered in the `META-INF/services/com.webforj.error.ErrorHandler` file so that webforJ can discover and utilize it.
+The custom error handler must be registered in the `META-INF/services/com.webforj.error.ErrorHandler` file so that webforJ can discover and use it.
 
 ## Implementing a custom error handler {#implementing-a-custom-error-handler}
 
@@ -69,7 +69,7 @@ public class NullPointerExceptionErrorHandler implements ErrorHandler {
 ```
 
 :::info `showErrorPage()` method
-The `showErrorPage` method is a utility method that utilizes the webforJ API to send the provided HTML content and page title to the browser, displaying an error page. When an exception occurs and the app is unable to recover, it becomes impossible to use webforJ components to build a custom error page. However, the `Page` API remains accessible, allowing the developer to redirect or display an error page as a final attempt.
+The `showErrorPage` method is a utility method that uses the webforJ API to send the provided HTML content and page title to the browser, displaying an error page. When an exception occurs and the app is unable to recover, it becomes impossible to use webforJ components to build a custom error page. However, the `Page` API remains accessible, allowing the developer to redirect or display an error page as a final attempt.
 :::
 
 ### Step 2: Register the error handler {#step-2-register-the-error-handler}

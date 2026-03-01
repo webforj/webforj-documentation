@@ -17,12 +17,12 @@ Transition variables are used to provide consistent animation durations across y
 
 | **Variable**              | **Default Value** | **Example**                               |
 |---------------------------|-------------------|--------------------------------------------|
-| `--dwc-transition-x-slow` | 1000ms            | <TransitionBox speed="--dwc-transition-x-slow" /> |
-| `--dwc-transition-slow`   | 500ms             | <TransitionBox speed="--dwc-transition-slow" />   |
-| `--dwc-transition-medium` | 250ms             | <TransitionBox speed="--dwc-transition-medium" /> |
-| `--dwc-transition-fast`   | 150ms             | <TransitionBox speed="--dwc-transition-fast" />   |
-| `--dwc-transition-x-fast` | 50ms              | <TransitionBox speed="--dwc-transition-x-fast" /> |
-| `--dwc-transition`        | var(--dwc-transition-medium) | <TransitionBox speed="--dwc-transition" /> |
+| `--dwc-transition-x-slow` | `1000ms`            | <TransitionBox speed="--dwc-transition-x-slow" /> |
+| `--dwc-transition-slow`   | `500ms`             | <TransitionBox speed="--dwc-transition-slow" />   |
+| `--dwc-transition-medium` | `250ms`             | <TransitionBox speed="--dwc-transition-medium" /> |
+| `--dwc-transition-fast`   | `150ms`             | <TransitionBox speed="--dwc-transition-fast" />   |
+| `--dwc-transition-x-fast` | `50ms`              | <TransitionBox speed="--dwc-transition-x-fast" /> |
+| `--dwc-transition`        | `var(--dwc-transition-medium)` | <TransitionBox speed="--dwc-transition" /> |
 
 ---
 

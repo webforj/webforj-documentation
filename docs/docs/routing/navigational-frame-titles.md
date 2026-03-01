@@ -29,7 +29,9 @@ public class DashboardView extends Composite<Div> {
 
 In this example:
 - The `DashboardView` class is annotated with `@Route` to define the route.
+<!-- vale Google.Quotes = NO -->
 - The `@FrameTitle("Dashboard")` annotation sets the frame title to "Dashboard".
+<!-- vale Google.Quotes = YES -->
 - When the user navigates to `/dashboard`, the title of the frame will automatically update to the specified value.
 
 This method is useful for routes that have a static title and don't require frequent updates based on the route’s context.
@@ -66,7 +68,9 @@ public class ProfileView extends Composite<Div> implements HasFrameTitle {
 In this example:
 - The `ProfileView` component implements the `HasFrameTitle` interface.
 - The `getFrameTitle()` method dynamically generates a title using the `id` parameter from the URL.
+<!-- vale Google.Quotes = NO -->
 - If the route is `/profile/123`, the title will be updated to "Profile - User 123".
+<!-- vale Google.Quotes = YES -->
 
 :::tip Combining annotations and dynamic titles
 You can combine both static and dynamic methods. If a route component has both a `@FrameTitle` annotation and implements the `HasFrameTitle` interface, the dynamically provided title from `getFrameTitle()` will take precedence over the static value from the annotation.
