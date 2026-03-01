@@ -1,0 +1,22 @@
+.contact-container {
+    padding: var(--dwc-space-xl);
+}
+
+.contact-card {
+    background: var(--dwc-surface-3); 
+    border-radius: var(--dwc-border-radius-l);
+    box-shadow: var(--dwc-shadow-l);
+    padding: var(--dwc-space-2xl);
+    max-width: 500px;
+    width: 100%;
+}
+
+.contact-title {
+    margin: 0 0 var(--dwc-space-xs) 0;
+    color: var(--dwc-color-on-default);
+}
+
+.contact-subtitle {
+    color: var(--dwc-color-on-default-variant);
+    font-size: 0.9rem;
+}
