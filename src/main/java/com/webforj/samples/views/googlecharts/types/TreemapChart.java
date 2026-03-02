@@ -1,6 +1,9 @@
 package com.webforj.samples.views.googlecharts.types;
 
 import com.webforj.component.googlecharts.GoogleChart;
+
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -27,10 +30,10 @@ public class TreemapChart {
     chart.setOptions(options);
 
     List<Object> data = List.of(
-        List.of("Location", "Parent", 
-            "Market trade volume (size)", 
+        List.of("Location", "Parent",
+            "Market trade volume (size)",
             "Market increase/decrease (color)"),
-        List.of(GLOBAL, null, 0, 0),
+        Arrays.asList(GLOBAL, null, 0, 0),
         List.of(AMERICA, GLOBAL, 0, 0),
         List.of(EUROPE, GLOBAL, 0, 0),
         List.of("Asia", GLOBAL, 0, 0),
