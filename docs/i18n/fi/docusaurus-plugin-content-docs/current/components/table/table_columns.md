@@ -2,42 +2,41 @@
 sidebar_position: 5
 title: Columns
 slug: columns
-sidebar_class_name: new-content
-_i18n_hash: 280a70bb65c45d3b200157f3462d7b10
+_i18n_hash: 59dc1d0f2eff7880d818123654e8febf
 ---
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="table" location="com/webforj/component/table/Column" top='true'/>
 
-Luokka `Table` käyttää sarakeinstansseja määrittelemään ja mukauttamaan, kuinka tietoja näytetään. Sarakkeet hallitsevat, mitä tietoa näytetään, miltä se näyttää ja kuinka käyttäjät voivat vuorovaikuttaa sen kanssa. Tämä sivu käsittelee sarakkeen identiteettiä, esitystä, kokoa, käyttäjävuorovaikutuksia ja niihin liittyviä tapahtumia.
+`Table`-luokka käyttää sarakeinstansseja määrittämään ja mukauttamaan, miten dataa näytetään. Sarakkeet hallitsevat, mitä tietoa näytetään, miltä se näyttää ja miten käyttäjät voivat olla vuorovaikutuksessa sen kanssa. Tämä sivu käsittelee sarakkeen identiteettiä, esitystä, kokoa, käyttäjävuorovaikutuksia ja siihen liittyviä tapahtumia.
 
 ## Sarakkeen identiteetti {#column-identity}
 
-Sarakkeen identiteetti määrittelee, miten sitä tunnistetaan `Table`-komponentissa. Tämä sisältää sen tunnisteen, arvon, jonka se tarjoaa, ja sen, onko se näkyvä tai navigoitava.
+Sarakkeen identiteetti määrittää, miten se tunnistetaan `Table`-komponentissa. Tämä sisältää sen etiketin, tarjoaman arvon ja sen, onko se näkyvä tai navigoitava.
 
-### Tunniste {#label}
+### Etiketti {#label}
 
-Sarakkeen tunniste on sen julkinen tunnistus, joka auttaa selventämään näytettävää tietoa.
+Sarakkeen etiketti on sen julkinen tunniste, joka auttaa selventämään näytettävää tietoa.  
 
-Käytä `setLabel()`-metodia asettaaksesi tai muuttaaksesi tunnistetta.
+Käytä `setLabel()`-metodia asetaksesi tai muokataksesi etikettiä.
 
 :::tip
-Oletusarvoisesti tunniste on sama kuin sarakkeen ID.
+Oletusarvoisesti etiketti on sama kuin sarakkeen ID.
 :::
 
 ```java
-table.addColumn("Tuote ID", Product::getProductId).setLabel("ID");
+table.addColumn("Tuotteen ID", Product::getProductId).setLabel("ID");
 ```
 
 ### Arvon tarjoajat {#value-providers}
 
-Arvon tarjoaja on funktio, joka on vastuussa raakadatasta kääntämisestä taustalla olevalta tietoaineistolta esityskelpoiseen muotoon tietyssä sarakkeessa. Määrittelemäsi funktio saa syötteenä rivi-datatyyppisen instanssin (T) ja palauttaa arvon, joka näytetään kyseisen rivin mukana olevassa sarakkeessa.
+Arvon tarjoaja on funktio, joka vastaa raakadatapohjan kääntämisestä muodoksi, joka on sopiva näytettäväksi tietyssä sarakkeessa. Funktio, jonka määrität, ottaa vastaan rividatatyyppisen instanssin (T) ja palauttaa arvon, joka näytetään yhdessä sarakkeessa kyseiselle riville.
 
-Aseta arvon tarjoaja sarakkeelle käyttämällä yhtä `addColumn()`-menetelmistä `Table`-komponentissa.
+Aseta arvon tarjoaja sarakkeelle käyttämällä yhtä `addColumn()`-metodeista `Table`-komponentissa.
 
-Seuraavassa koodinäytteessä sarake yrittää käyttää tietoa JSON-objektista, ja se renderöidään vain, jos tieto ei ole null.
+Seuraavassa koodinpätkässä sarake yrittää päästä käsiksi dataan JSON-objektista, renderöiden sen vain, jos data ei ole null.
 
 ```java
-    List<String> columnsList = Arrays.asList("urheilija", "ikä", "maa", "vuosi", "laji", "kulta", "hopea", "pronssi", "yhteensä");
+    List<String> columnsList = List.of("urheilija", "ikä", "maa", "vuosi", "laji", "kulta", "hopea", "pronssi", "yhteensä");
 
     for (String column : columnsList) {
       table.addColumn(column, (JsonObject person) -> {
@@ -52,7 +51,7 @@ Seuraavassa koodinäytteessä sarake yrittää käyttää tietoa JSON-objektista
 
 ### Näkyvyys {#visibility}
 
-Voit asettaa sarakkeen näkyvyyden, mikä määrittää, näytetäänkö se `Table`-komponentissa vai ei. Tämä voi olla hyödyllistä, esimerkiksi herkkien tietojen näyttämisen yhteydessä.
+On mahdollista määrittää sarakkeen näkyvyys, mikä määrää, näytetäänkö se vai ei `Table`-komponentissa. Tämä voi olla hyödyllistä muun muassa silloin, kun halutaan päättää, näytetäänkö arkaluontoista tietoa.
 
 ```java
 table.addColumn("Luottokortti", Customer::getCreditCardNumber).setHidden(true);
@@ -60,19 +59,19 @@ table.addColumn("Luottokortti", Customer::getCreditCardNumber).setHidden(true);
 
 ### Navigoitava {#navigable}
 
-Navigoitava-attribuutti määrittää, voivatko käyttäjät vuorovaikuttaa sarakkeen kanssa navigoinnin aikana. Asettaessasi `setSuppressNavigable()` arvoksi true rajoitat käyttäjän vuorovaikutusta sarakkeen kanssa, mikä tarjoaa vain luku -kokemuksen.
+Navigoitava-attribuutti määrittää, voivatko käyttäjät olla vuorovaikutuksessa sarakkeen kanssa navigoinnin aikana. Asettamalla `setSuppressNavigable()` arvoksi true rajoitetaan käyttäjien vuorovaikutusta sarakkeen kanssa, tarjoten vain lukuoikeuden.
 
 ```java
-table.addColumn("Luku Column", Product::getDescription).setSuppressNavigable(true);
+table.addColumn("Vain luku -sarake", Product::getDescription).setSuppressNavigable(true);
 ```
 
 ## Asettelu ja muotoilu {#layout-and-formatting}
 
-Kun sarakkeen identiteetti on määritetty, seuraava askel on hallita, miltä sen sisältö näyttää käyttäjille. Asetteluvaihtoehdot, kuten tasaus ja kiinnitys, määrittävät, missä tiedot sijaitsevat ja kuinka ne pysyvät näkyvissä työskennellessäsi `Table`-yleisessä.
+Kun sarakkeen identiteetti on määritetty, seuraava askel on hallita, miten sen sisältö näkyy käyttäjille. Asetteluvalinnat, kuten kohdistus ja kiinnitys, määrittävät, minne data sijoitetaan ja miten se pysyy näkyvissä työskennellessäsi `Table`-komponentin kanssa.
 
-### Tasaus {#alignment}
+### Kohdistus {#alignment}
 
-Sarakkeen tason asettaminen antaa sinun luoda jäsenneltyjä taulukoita, mikä voi auttaa käyttäjiä tunnistamaan eri osiot `Table`-komponentissa.
+Sarakkeen kohdistaminen auttaa luomaan järjestettyjä taulukoita, mikä voi auttaa käyttäjiä tunnistamaan erilaisia osioita `Table`-komponentissa.
 
 <!-- vale off -->
 <ComponentDemo 
@@ -84,17 +83,17 @@ height='600px'
 />
 <!-- vale on -->
 
-`Table`-komponentti tukee kolmea tasausvaihtoehtoa:
+`Table`-komponentti tukee kolmea kohdistusvaihtoehtoa:
 
-- `Column.Alignment.LEFT`: Sopii tekstimuotoiselle tai kuvailevalle datalle, jossa vasemmalle suuntautuvan virtauksen ylläpitäminen on intuitiivista. Hyödyllinen, kun halutaan korostaa sisällön alkupistettä.
-- `Column.Alignment.CENTER`: Keskitetyt sarakkeet ovat ihanteellisia lyhyille arvoille, kuten merkkikeylle, tilalle tai mille tahansa muulle, joka on tasapainoisesti esitetty.
-- `Column.Alignment.RIGHT`: Harkitse oikealle tasattua saraketta numeeristen arvojen osalta, jotka ovat hyödyllisiä nopeassa silmäilyssä, kuten päivämäärät, summat ja prosenttiosuudet.
+- `Column.Alignment.LEFT`: Sopii tekstuaaliseen tai kuvailevaan dataan, jossa vasemmalle suuntautuvan alkuverkon ylläpitäminen on luonnollista. Hyödyllinen, kun haluat korostaa sisällön aloituspistettä.
+- `Column.Alignment.CENTER`: Keskitetyt sarakkeet sopivat erinomaisesti lyhyille arvoille, kuten kirjainavain, tila tai muulle, jolla on tasapainoinen esitys.
+- `Column.Alignment.RIGHT`: Harkitse oikealle kohdistettua saraketta numeeristen arvojen osalta, jotka ovat hyödyllisiä nopeaan silmäilyyn, kuten päivämäärät, summat ja prosentit.
 
-Edellisessä esimerkissä viimeinen sarake `Hinta` on oikealle tasattu, jotta visuaalinen erottelu olisi selvempää.
+Edellisessä esimerkissä `Kustannus`-sarakkeelle on asetettu oikea kohdistus selvän visuaalisen erottelun aikaansaamiseksi.
 
 ### Kiinnitys {#pinning}
 
-Sarakkeen kiinnitys on ominaisuus, joka mahdollistaa käyttäjien kiinnittävän sarakkeen `Table`-komponentin tiettyyn sivuun. Tämä on hyödyllistä, kun tietyt sarakkeet, kuten tunnistimet tai olennaiset tiedot, on pidettävä näkyvissä, kun selaat vaakasuunnassa taulukkoa.
+Sarakkeen kiinnitys on ominaisuus, joka mahdollistaa käyttäjien kiinnittää tai "kiinnittää" sarakkeen `Table`-komponentin tiettyyn reunaan. Tämä on hyödyllistä, kun tietyt sarakkeet, kuten tunnisteet tai olennaiset tiedot, on pidettävä näkyvissä, kun vieritellään vaakasuunnassa taulukon läpi.
 
 <!-- vale off -->
 <ComponentDemo 
@@ -106,61 +105,61 @@ height='600px'
 />
 <!-- vale on -->
 
-Sarake voidaan kiinnittää kolmeen suuntaan:
+Sarakkeelle on kolme saatavilla olevaa kiinnitysosuussuuntaa:
 
 - `PinDirection.LEFT`: Kiinnittää sarakkeen vasemmalle puolelle.
 - `PinDirection.RIGHT`: Kiinnittää sarakkeen oikealle puolelle.
-- `PinDirection.AUTO`: Sarake näkyy lisäysjärjestyksen mukaan.
+- `PinDirection.AUTO`: Sarake ilmestyy lisäysjärjestyksen mukaan.
 
-Kiinnitys voidaan asettaa ohjelmallisesti, jolloin voit vaihtaa kiinnityssuuntaa käyttäjän vuorovaikutusten tai sovelluksen logiikan perusteella.
+Kiinnitys voidaan asettaa ohjelmallisesti, jolloin voit muuttaa kiinnityssuuntaa käyttäjävuorovaikutusten tai sovelluksen logiikan mukaan.
 
-## Sarakkeen koko <DocChip chip='since' label='25.03' /> {#column-sizing} 
+## Sarakkeiden koko <DocChip chip='since' label='25.03' /> {#column-sizing} 
 
 ### Kiinteä leveys {#fixed-width}
 
-Aseta tarkka leveys sarakkeelle käyttämällä `setWidth()`-metodia, määrittäen halutun leveyden pikseleinä:
+Aseta tarkka leveys sarakkeelle käyttämällä `setWidth()`-metodia, määrittämällä haluttu leveys pikseleinä:
 
 ```java
 table.addColumn("ID", Product::getId).setWidth(80f);
 ```
 
-Leveysominaisuus määrittää halutun alkuperäisen leveyden sarakkeelle. Miten tätä leveyttä käytetään riippuu muista ominaisuuksista ja sarakkeen tyypistä:
+Leveysominaisuus määrittää halutun alkuperäisen leveyden sarakkeelle. Miten tätä leveyttä käytetään, riippuu muista ominaisuuksista ja saraketyypistä:
 
-- **Säännölliset sarakkeet**: Vain leveys asetettuna, sarake renderöidään määritetyn leveyden mukaan, mutta se voi kutistua suhteellisesti, kun säiliö on liian pieni. Alkuperäinen leveys toimii haluttuna leveytenä, mutta ilman eksplisiittisiä minimirajoja sarake voi renderöidä pienemmäksi kuin asetettu leveys.
-- [**Kiinnitetyille sarakkeille**](#pinning): Ovat aina tarkasti niiden leveyden yllä, eivätkä osallistu responsiiviseen kutistumiseen.
-- [**Flex-sarakkeille**](#flex-sizing): Leveyden asettaminen on yhteensopimaton flexin kanssa. Käytä joko leveyttä (kiinteä) tai flexiä (prosentuaalinen), ei molempia.
+- **Tavalliset sarakkeet**: Kun vain leveys asetetaan, sarake renderöidään määritetyn leveydensä, mutta se voi kutistua suhteellisesti, kun säilö on liian pieni. Alkuperäinen leveys toimii haluttuna leveytenä, mutta ilman eksplisiittisiä vähimmäisrajoja sarake voi renderöidä itsensä pienemmäksi kuin asetettu leveys.
+- [**Kiinnitetyt sarakkeet**](#pinning): Pitävät aina tarkan leveyden, eivätkä osallistu responsiiviseen kutistumiseen.
+- [**Flex-sarakkeet**](#flex-sizing): Leveyden asettaminen ei ole sopusoinnussa flexin kanssa. Käytä joko leveyttä (kiinteä) tai flexiä (suhteellinen), älä molempia.
 
-Jos sitä ei ole määritetty, sarake käyttää arvioitua leveyttään perustuen sisältöanalyysiin ensimmäisistä riveistä.
+Jos ei ole määritetty, sarake käyttää arvioitua leveyttään, joka perustuu ensimmäisten rivien sisältöanalyysiin.
 
 ```java
 // Hanki nykyinen leveys
 float currentWidth = column.getWidth();
 ```
 
-### Minimileveys {#minimum-width}
+### Vähimmäisleveys {#minimum-width}
 
-`setMinWidth()`-metodi sallii sinun määrittää sarakkeen minimileveyden. Jos minimileveyttä ei ole annettu, `Table` laskee minimileveyden sarakkeen sisällön perusteella.
+`setMinWidth()`-metodi sallii määrittää sarakkeen vähimmäisleveyden. Jos vähimmäisleveyttä ei anneta, `Table` laskee vähimmäisleveyden sarakkeen sisällön mukaan.
 
 ```java
 table.addColumn("Hinta", Product::getPrice).setMinWidth(100f);
 ```
 
-Annettu arvo edustaa minimileveyttä pikseleinä.
+Annettu arvo edustaa vähimmäisleveyttä pikseleinä.
 
-Minimileveysominaisuus hallitsee pienintä leveyttä, johon sarake voi päästä:
+Vähimmäisleveysominaisuus hallitsee pienintä leveyttä, joka sarakkeella voi olla:
 
-- **Säännölliset sarakkeet**: Vain minimileveys asetettuna, sarake käyttää minimileveyttä sekä haluttuna että minimileveytenä. Leveys + minimileveys -asetuksilla sarake voi kutistua leveydeltään minimileveyteen, mutta ei sen alle.
-- [**Kiinnitetyille sarakkeille**](#pinning): Jos vain minimileveys on asetettu (ei leveyttä), siitä tulee kiinteä leveys.
-- [**Flex-sarakkeille**](#flex-sizing): Estää saraketta kutistumasta tämän leveyden alapuolelle, vaikka säiliön tila olisi rajallinen.
+- **Tavalliset sarakkeet**: Kun vain vähimmäisleveys asetetaan, sarake käyttää vähimmäisleveyttä sekä haluttuna että vähimmäisleveytenä. Kun leveys + vähimmäisleveys, sarake voi kutistua leveydestä vähimmäisleveyteen, mutta ei siihen pidemmälle.
+- [**Kiinnitetyt sarakkeet**](#pinning): Jos vain vähimmäisleveys asetetaan (ilman leveyttä), se muuttuu kiinteäksi leveydellä.
+- [**Flex-sarakkeet**](#flex-sizing): Estää saraketta kutistumasta alle tämän leveyden, vaikka säilötilaa olisi rajoitetusti.
 
 ```java
-// Hanki nykyinen minimileveys
+// Hanki nykyinen vähimmäisleveys
 float minWidth = column.getMinWidth();
 ```
 
-### Maksimileveys {#maximum-width}
+### Enimmäisleveys {#maximum-width}
 
-`setMaxWidth()`-metodi rajoittaa, kuinka leveäksi sarake voi kasvaa, estäen pitkiä sisältöjä sisältävien sarakkeiden kasvamasta liian leveiksi ja vaikuttamasta luettavuuteen:
+`setMaxWidth()`-metodi rajoittaa, kuinka leveä sarake voi kasvaa, estäen pitkän sisällön sisältäviä sarakkeita liian leveiltä ja heikentämästä luettavuutta:
 
 ```java
 table.addColumn("Kuvaus", Product::getDescription)
@@ -168,28 +167,28 @@ table.addColumn("Kuvaus", Product::getDescription)
     .setMaxWidth(300f);
 ```
 
-`maxWidth`-ominaisuus rajoittaa sarakkeen kasvua kaikentyyppisille sarakkeille ja sitä ei koskaan ylitetä, riippumatta sisällöstä, säiliön koosta tai flex-asetuksista.
+`maxWidth`-ominaisuus rajoittaa sarakkeen kasvua kaikille saraketyypeille, eikä sitä koskaan ylitetä sisällöstä, säilön koosta tai flex-asetuksista huolimatta.
 
 ```java
-// Hanki nykyinen maksimileveys
+// Hanki nykyinen enimmäisleveys
 float maxWidth = column.getMaxWidth();
 ```
 
 ### Flex-kokoaminen {#flex-sizing}
 
-`setFlex()`-metodi mahdollistaa suhteellisen sarakkeen koon, jolloin sarakkeet jakavat käytettävissä olevan tilan kiinteäleveydisten sarakkeiden jälkeen:
+`setFlex()`-metodi mahdollistaa suhteellisen sarakkeen koon, jolloin sarakkeet jakavat käytettävissä olevaa tilaa kiinteiden leveysarvojen jälkeen:
 
 ```java
-// Otsikkosarake saa kaksinkertaisen tilan Taiteilija-sarakkeeseen verrattuna
+// Otsikkosarake saa kaksinkertaisen tilan kuin Artistisarake
 table.addColumn("Otsikko", Product::getTitle).setFlex(2f);
-table.addColumn("Taiteilija", Product::getArtist).setFlex(1f);
+table.addColumn("Artisti", Product::getArtist).setFlex(1f);
 ```
 
-Keskeiset flex-käyttäytymiset:
+Tärkeät flex-käyttäytymiset:
 
-- **Flex-arvo**: Määrittää käytettävissä olevan tilan osuuden. Sarake, jonka flex=2, saa kaksinkertaisen tilan sarakkeeseen, jonka flex=1.
-- **Yhteensopimaton leveyden kanssa**: Ei voi käyttää samanaikaisesti leveyden ominaisuuden kanssa. Kun flex on suurempi kuin nolla, se vaikuttaa leveyden asetukseen.
-- **Kunnioittaa rajoja**: Toimii minimileveys/maksimileveys-rajoitusten kanssa. Ilman minimileveyttä flex-sarakkeet voivat kutistua nollaan.
+- **Flex-arvo**: Määrittää käytettävissä olevan tilan osuuden. Sarake, jolla on flex=2, saa kaksi kertaa tilaa kuin sarakkeella, jolla on flex=1.
+- **Yhteensopimattomuus leveyden kanssa**: Ei voi käyttää yhdessä leveyden ominaisuuden kanssa. Kun flex on suurempi kuin nolla, se vaikuttaa leveyden asetukseen.
+- **Kunnioittaa rajoja**: Toimii vähimmäisleveys/enimmäisleveysrajojen kanssa. Ilman vähimmäisleveyttä flex-sarakkeet voivat kutistua nollaan.
 
 <!-- vale off -->
 <ComponentDemo 
@@ -202,40 +201,40 @@ height='550px'
 <!-- vale on -->
 
 :::info Leveys vs Flex
-Leveys- ja flex-ominaisuudet ovat toisiaan pois sulkevia. Yhden asettaminen tyhjentää automaattisesti toisen. Käytä leveyttä tarkkaan kontrolliin tai flexiä responsiiviseen käyttäytymiseen.
+Leveys- ja flex-ominaisuudet ovat keskenään poissulkevia. Yhden asettaminen tyhjentää automaattisesti toisen. Käytä leveyttä tarkalle hallinnalle tai flexiä responsiiviseen käyttäytymiseen.
 :::
 
 ### Automaattinen kokoaminen {#automatic-sizing}
 
-Manuaalisten leveyden ja flex-asetusten lisäksi sarakkeet voidaan myös mitoittaa automaattisesti. Automaattinen kokoaminen mahdollistaa `Table`-komponentin selvittää optimaalisen leveyden joko analysoimalla sisältöä tai jakamalla tilaa suhteellisesti.
+Manuaalisten leveys- ja flex-asetusten lisäksi sarakkeiden koot voivat myös olla automaattisia. Automaattinen kokoaminen antaa `Table`-komponentin määrittää optimaalisen leveyden joko analysoimalla sisältöä tai jakamalla tilaa suhteellisesti.
 
 #### Sisältöön perustuva automaattinen kokoaminen {#content-based-auto-sizing}
 
-Sarakkeet mitoitetaaan automaattisesti niiden sisällön perusteella. `Table` analysoi jokaisen sarakkeen dataa ja laskee optimaalisen leveyden näyttää sisältö katkaisematta.
+Automatisoi sarakkeiden kokoaminen niiden sisällön mukaan. `Table` analysoi kunkin sarakkeen tiedot ja laskee optimaalisen leveyden sisällön näyttämiseksi ilman katkaisemista.
 
 ```java
-// Automaattinen kokoaminen kaikille sarakkeille sisällön mukaan
+// Automaattisesti kokoa kaikki sarakkeet mahtuakseen sisältöön
 table.setColumnsToAutoSize().thenAccept(c -> {
-    // Kokoaminen valmis - sarakkeet nyt sopivat sisältöönsä
+    // Kokoaminen suoritettu - sarakkeet mahtuvat nyt sisältöön
 });
 
-// Automaattinen kokoaminen tietyssä sarakkeessa
+// Automaattisesti kokoa tietty sarake
 table.setColumnToAutoSize("kuvaus");
 ```
 
 #### Suhteellinen automaattinen sovitus {#proportional-auto-fit}
 
-Jaa kaikki sarakkeet suhteellisesti käytettävissä olevan `Table`-leveyden yli. Tämä toimenpide asettaa jokaisen sarakkeen flex=1, jolloin ne jakavat koko `Table`-leveyden tasan, riippumatta niiden sisällön pituudesta. Sarakkeet laajenevat tai supistuvat täyttämään täsmälliset `Table`-mitat ilman jäävää tilaa.
+Jaa kaikki sarakkeet suhteellisesti käytettävissä olevan `Table`-leveyden yli. Tämä operaatio asettaa jokaisen sarakkeen flex=1, jolloin ne jakavat kokonaisleveyden tasaisesti riippumatta niiden sisällön pituudesta. Sarakkeet laajenevat tai kutistuvat täyttääkseen tarkat `Table`-mitat ilman jäljellä olevaa tilaa.
 
 ```java
-// Sopii sarakkeet taulukon leveyteen (vastaa flex=1 asettamista kaikille)
+// Sovita sarakkeet taulukon leveyteen (vastaa flex=1 asettamista kaikille)
 table.setColumnsToAutoFit().thenAccept(ignored -> {
-    // Kaikki sarakkeet jakavat nyt tilan tasaisesti
+    // Kaikki sarakkeet jakavat nyt tilaa yhtä lailla
 });
 ```
 
 :::info Asynkroniset toiminnot
-Automaattiset kokoamismetodit palauttavat `PendingResult<Void>` -koska ne vaativat asiakaspuolen laskelmia. Käytä `thenAccept()` suorittaaksesi koodia kokoamisen jälkeen. Jos et tarvitse odottaa valmistumista, voit kutsua metodeja ilman `thenAccept()`.
+Automaatiokootuottavat menetelmät palauttavat `PendingResult<Void>`-arvon, koska ne tarvitsevat asiakaspääden laskentaa. Käytä `thenAccept()` suorittaaksesi koodia, kun kokoamisen suoritus on valmis. Jos et tarvitse odottaa valmistumista, voit kutsua menetelmiä ilman `thenAccept()`
 :::
 
 <!-- vale off -->
@@ -252,9 +251,9 @@ height='550px'
 
 ### Sarakkeen koon muuttaminen {#column-resizing}
 
-Sarakkeen koon muuttaminen antaa käyttäjille hallinnan siitä, kuinka paljon tilaa kukin sarake vie vetämällä sarakekappaleiden rajoja.
+Sarakkeen koon muuttaminen antaa käyttäjille hallinta oikeuksista, kuinka paljon tilaa kukin sarake vie vetämällä sarakkeen reunoja.
 
-Voit hallita koon muuttamisen käyttäytymistä yksittäisille sarakkeille taulukkoa rakentaessasi:
+Voit hallita koon muuttamiskäyttäytymistä yksittäisissä sarakkeissa rakentaessasi taulukkoasi:
 
 ```java
 // Ota käyttöön käyttäjän koon muuttaminen tälle sarakkeelle
@@ -263,78 +262,78 @@ table.addColumn("Otsikko", Product::getTitle).setResizable(true);
 // Poista koon muuttaminen käytöstä
 table.addColumn("ID", Product::getId).setResizable(false);
 
-// Tarkista nykyinen tila
+// Tarkista nykytila
 boolean canResize = column.isResizable();
 ```
 
-Taulukoissa, joissa haluat johdonmukaisen käyttäytymisen useiden sarakkeiden kesken, käytä joukkokokoonpano-menetelmiä:
+Taulukoissa, joissa haluat johdonmukaisen käyttäytymisen useissa sarakkeissa, käytä suurten asetusten menetelmiä:
 
 ```java
-// Tee kaikki olemassa olevat sarakkeet koon muutettaviksi
+// Tee kaikki olemassa olevat sarakkeet resizeableiksi
 table.setColumnsToResizable(true);
 
-// Lukitse kaikki olemassa olevat sarakkeet koon muuttamisen ulkopuolelle
+// Lukitse kaikki olemassa olevat sarakkeet koon muuttamiselta
 table.setColumnsToResizable(false);
 ```
 
-### Sarakkeen uudelleenjärjestäminen {#column-reordering}
+### Sarakkeen uudelleenjärjestely {#column-reordering}
 
-Sarakkeen uudelleenjärjestäminen mahdollistaa käyttäjien vetää ja pudottaa sarakkeita haluamaansa järjestykseen, henkilökohtaisesti muokaten `Table`-asettelua heidän työnkululleen.
+Sarakkeiden uudelleenjärjestely antaa käyttäjille mahdollisuuden raahata ja pudottaa sarakkeita heidän haluamaansa järjestykseen, mukauttamaan `Table`-asemointia työnkululleen.
 
-Määritä sarakkeen siirtomahdollisuudet, kun asetat taulukkoasi:
+Määritä sarakkeen liikuttamisluvat taulukkoasi luodessasi:
 
 ```java
 // Salli käyttäjien siirtää tätä saraketta
 table.addColumn("Otsikko", Product::getTitle).setMovable(true);
 
-// Estä sarakkeen siirto (hyödyllinen ID:tä tai toimintasarjoja varten)
+// Estä sarakkeen liikuttaminen (hyödyllistä ID- tai toimintasarakkeille)
 table.addColumn("ID", Product::getId).setMovable(false);
 
-// Tarkista nykyinen tila
+// Tarkista nykytila
 boolean canMove = column.isMovable();
 ```
 
-Voit soveltaa liikkuvuusasetuksia useille sarakkeille samanaikaisesti:
+Sovella liikkuvuusasetuksia useisiin sarakkeisiin samanaikaisesti:
 
 ```java
 // Ota käyttöön uudelleenjärjestäminen kaikille olemassa oleville sarakkeille
 table.setColumnsToMovable(true);
 
-// Poista uudelleenjärjestäminen käytöstä kaikille olemassa oleville sarakkeille  
+// Poista uudelleenjärjestäminen kaikilta olemassa olevilta sarakkeilta  
 table.setColumnsToMovable(false);
 ```
 
-:::note Joukkotoiminnot
-`setColumnsToResizable()` ja `setColumnsToMovable()` -metodit vaikuttavat vain olemassa oleviin sarakkeisiin kutsuhetkellä. Ne eivät aseta oletuksia tuleville sarakkeille.
+:::note Suuret toiminnot
+`setColumnsToResizable()`- ja `setColumnsToMovable()`-menetelmät vaikuttavat vain olemassa oleviin sarakkeisiin kutsuhetkellä. Ne eivät aseta oletuksia tuleville sarakkeille.
 :::
 
-### Ohjelmallinen sarakkeen siirto {#programmatic-column-movement}
+### Ohjelmallinen sarakkeen liikuttaminen {#programmatic-column-movement} 
 
-Lisäksi vedä ja pudota-toimintojen ohella voit myös siirtää sarakkeita ohjelmallisesti indeksin tai ID:n perusteella. Huomaa, että indeksi perustuu vain näkyviin sarakkeisiin; piilotettuja sarakkeita ei oteta huomioon asemien laskemiseen.
+Raahauksen lisäksi voit siirtää sarakkeita ohjelmallisesti indeksin tai ID:n mukaan. Muista, että indeksi perustuu vain näkyviin sarakkeisiin; kaikki piilotetut sarakkeet jätetään huomiotta, kun lasketaan asemia.
 
 ```java
-// Siirrä sarake ensimmäiseen sijaintiin
+// Siirrä sarake ensimmäiseen asentoon
 table.moveColumn("otsikko", 0);
 
-// Siirrä sarake viimeiseen sijaintiin
+// Siirrä sarake viimeiseen asentoon
 table.moveColumn(titleColumn, table.getColumns().size() - 1);
 
-// Asynkroninen liike palautteen kanssa
+// Asynkroninen liikuttaminen takaisinsoitolla
 table.moveColumn("kuvaus", 2).thenAccept(c -> {
     // Sarake siirretty onnistuneesti
 });
 ```
 
-## Tapahtumankäsittely {#event-handling}
+## Tapahtumien käsittely {#event-handling}
 
-`Table`-komponentti lähettää tapahtumia, kun käyttäjät vuorovaikuttavat sarakkeiden kanssa, mikä mahdollistaa reagoida asettelun muutoksiin ja tallentaa käyttäjien mieltymyksiä.
+`Table`-komponentti lähettää tapahtumia, kun käyttäjät ovat vuorovaikutuksessa sarakkeiden kanssa, jolloin voit reagoida asettelun muutoksiin ja tallentaa käyttäjien asetuksia.
 
-Tuetut tapahtumat:
+Tuettuja tapahtumia:
 
-- `TableColumnResizeEvent`: Lähetetään, kun käyttäjä muuttaa sarakkeen kokoa vetämällä sen reunaa.
-- `TableColumnMoveEvent`: Lähetetään, kun käyttäjä uudelleenjärjestää sarakkeen vetämällä sen otsikkoa.
+- `TableColumnResizeEvent`: Laukeaa, kun käyttäjä muuttaa sarakkeen kokoa vetämällä sen reunaa.
+- `TableColumnMoveEvent`: Laukeaa, kun käyttäjä järjestää sarakkeen uudelleen vetämällä sen otsikkoa.
 
-Voit liittää kuuntelijoita `Table`-komponenttiin vastataksesi käyttäjien muokkaavia taulukon asettelua.
+Voit liittää kuuntelijoita `Table`-komponenttiin reagoidaksesi, kun käyttäjät muokkaavat taulukon asettelua.
 
 ```java
 Table<Product> table = new Table<>();
@@ -345,7 +344,7 @@ table.onColumnResize(event -> {
 });
 
 table.onColumnMove(event -> {
-  // Käsittele sarakkeen siirtotapahtuma  
+  // Käsittele sarakkeen liikuttamistehtävä  
   // Pääsy: event.getColumn(), event.getOldIndex(), event.getNewIndex()
 });
 ```
