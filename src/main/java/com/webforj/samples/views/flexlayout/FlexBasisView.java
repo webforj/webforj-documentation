@@ -30,13 +30,13 @@ public class FlexBasisView extends Composite<FlexLayout> {
   private int selected = 0;
 
   public FlexBasisView() {
-    buttons = createButtons();
-    mainLayout = createMainLayout();
-    boxLayout = createBoxLayout();
     numberField = createNumberField();
     basisButton = createBasisButton();
     reset = createResetButton();
+    buttons = createButtons();
+    boxLayout = createBoxLayout();
     optionLayout = createOptionLayout();
+    mainLayout = createMainLayout();
 
     setupMainLayout();
   }
@@ -52,7 +52,7 @@ public class FlexBasisView extends Composite<FlexLayout> {
   }
 
   private FlexLayout createMainLayout() {
-    return FlexLayout.create()
+    return FlexLayout.create(optionLayout, boxLayout)
         .horizontal()
         .build()
         .setPadding("20px")
@@ -99,7 +99,6 @@ public class FlexBasisView extends Composite<FlexLayout> {
 
   private void setupMainLayout() {
     self.add(mainLayout);
-    mainLayout.add(optionLayout, boxLayout);
   }
 
   private void onButtonSelect(ButtonClickEvent e) {
