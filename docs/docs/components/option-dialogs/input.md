@@ -1,9 +1,7 @@
 ---
-sidebar_position: 25
 title: Input Dialog
+sidebar_position: 25
 ---
-
-# Input Dialog
 
 <DocChip chip='shadow' />
 <DocChip chip='since' label='24.02' />
@@ -11,16 +9,17 @@ title: Input Dialog
 
 An `InputDialog` is a modal dialog designed to prompt the user for input. The dialog blocks app execution until the user provides the input or closes the dialog.
 
+<!-- INTRO_END -->
+
+## Usages {#usages}
+
+The `InputDialog` provides a way to request input from users, such as text, numbers, or other data, ensuring that they provide necessary information before proceeding.
 
 <ComponentDemo 
 path='/webforj/inputdialogbasic?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/optiondialog/input/InputDialogBasicView.java'
 height = '500px'
 />
-
-## Usages {#usages}
-
-The `InputDialog` provides a way to request input from users, such as text, numbers, or other data, ensuring that they provide necessary information before proceeding.
 
 ## Types {#types}
 

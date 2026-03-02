@@ -10,9 +10,15 @@ description: A component that provides a default browser-based date and time pic
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/DateTimeField" top='true'/>
 
+The `DateTimeField` component lets users input both a date and a time in a single field, covering year, month, day, hours, and minutes. It validates input for accuracy and can present a date-time picker to make selection easier.
+
+<!-- INTRO_END -->
+
+## Using `DateTimeField` {#using-datetimefield}
+
 <ParentLink parent="Field" />
 
-The `DateTimeField` component is designed to allow users to input both a date and a time. This includes specifying the year, month, and day, along with the time in hours and minutes. It provides users with the option to validate their input for accuracy or utilize a dedicated date-time picker interface to streamline the selection process.
+`DateTimeField` extends the shared `Field` class, which provides common functionality across all field components. The following example creates a labeled `DateTimeField` for selecting a departure date and time.
 
 <ComponentDemo 
 path='/webforj/datetimefield?' 

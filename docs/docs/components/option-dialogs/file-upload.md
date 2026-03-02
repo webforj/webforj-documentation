@@ -1,9 +1,7 @@
 ---
-sidebar_position: 20
 title: File Upload
+sidebar_position: 20
 ---
-
-# File Upload Dialog
 
 <DocChip chip='shadow' />
 <DocChip chip='since' label='24.02' />
@@ -11,13 +9,15 @@ title: File Upload
 
 A `FileUploadDialog` is a modal dialog designed to allow the user to upload files from their local file system. The dialog blocks app execution until the user selects files to upload or closes the dialog.
 
-```java
-UploadedFile result = OptionDialog.showFileUploadDialog("Upload a file");
-```
+<!-- INTRO_END -->
 
 ## Usages {#usages}
 
-The `FileUploadDialog` provides a way to select and upload files, enabling users to submit documents, images, or other file types required by the app.
+The `FileUploadDialog` provides a way to select and upload files, enabling users to submit documents, images, or other file types required by the app. Use `showFileUploadDialog()` to display the dialog and capture the uploaded file.
+
+```java
+UploadedFile result = OptionDialog.showFileUploadDialog("Upload a file");
+```
 
 ## Result {#result}
 

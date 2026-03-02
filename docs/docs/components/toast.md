@@ -8,9 +8,9 @@ sidebar_position: 140
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="toast" location="com/webforj/component/toast/Toast" top='true'/>
 
-A `Toast` notification is a subtle and unobtrusive pop-up notification designed to provide users with real-time feedback and information. These notifications are typically used to inform users about operations such as successful actions, warnings, or errors without interrupting their workflow. `Toast` notifications typically disappear after a set amount of time and don't require a user response.
+A `Toast` is a small, temporary notification that appears to give users feedback about an action or event. Toasts surface messages like success confirmations, warnings, or errors without interrupting the current workflow, and automatically disappear after a set duration.
 
-With webforJ's `Toast` component, you can easily implement these notifications to enhance user experience by providing relevant information in a familiar, non-intrusive, and seamless manner. 
+<!-- INTRO_END -->
 
 ## Basics {#basics}
 

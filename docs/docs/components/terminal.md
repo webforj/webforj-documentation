@@ -8,20 +8,24 @@ sidebar_position: 126
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="terminal" location="com/webforj/component/terminal/Terminal" top='true'/>
 
-The `Terminal` component provides an interactive terminal emulator that behaves much like a traditional system console. It allows applications to display and manipulate a text-based interface, handling text output, receiving user input, interpreting control sequences, and maintaining screen buffers.
+The `Terminal` component is an interactive terminal emulator that behaves like a traditional system console. It handles text output, user input, control sequences, and screen buffers, making it suitable for building remote access tools, text dashboards, embedded command shells, or debug consoles.
 
-This terminal is designed to deliver reliable behavior across a range of use cases, such as building remote access tools, text dashboards, embedded command shells, or interactive debug consoles.
+<!-- INTRO_END -->
+
+## Creating a terminal {#creating-a-terminal}
 
 :::info Importing Terminal
 To use the `Terminal` component in your app, ensure that you include the following dependency in your pom.xml.
 
 ```xml
-<dependency>
-  <groupId>com.webforj</groupId>
-  <artifactId>webforj-terminal</artifactId>
-</dependency>
+
+  com.webforj
+  webforj-terminal
+
 ```
 :::
+
+The following example builds an interactive command shell with typed commands, history navigation, and custom output.
 
 <ComponentDemo 
 path='/webforj/terminal?' 

@@ -10,9 +10,15 @@ description: A component that provides a default browser-based input field for e
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/NumberField" top='true' />
 
+You can use the `NumberField` component to accept numerical input from a user. It ensures that only valid numeric values are entered and provides a convenient interface for inputting numbers.
+
+<!-- INTRO_END -->
+
+## Using `NumberField` {#using-numberfield}
+
 <ParentLink parent="Field" />
 
-You can use the `NumberField` component to accept numerical input from a user. It ensures that only valid numeric values are entered and provides a convenient interface for inputting numbers.
+`NumberField` extends the shared `Field` class, which provides common functionality across all field components. The following example creates a `NumberField` with a label and placeholder text.
 
 <ComponentDemo 
 path='/webforj/numberfield?'
