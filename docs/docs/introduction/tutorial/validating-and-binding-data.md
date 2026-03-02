@@ -5,7 +5,7 @@ pagination_next: null
 description: Step 5 - Add validation checks and bind data to the UI.
 ---
 
-Your app from [Scaling with Routing and Composites](/docs/introduction/tutorial/scaling-with-routing-and-composites) can now support multiple pages, which allowed you to create `FormView`, a UI dedicated to editing and adding customer data. This step uses [Data binding](/docs/data-binding/overview), which connects UI components directly to the data model for automatic value synchronization. This reduces boilerplate in your app and lets you add validation checks to the Spring entity `Customer`, making your users provide complete and accurate information when filling out forms. This step covers the following concepts:
+Your app from [Observers and Route Parameters](/docs/introduction/tutorial/observers-and-route-parameters) can use `FormView` to edit existing customer data. This step uses [Data binding](/docs/data-binding/overview), which connects UI components directly to the data model for automatic value synchronization. This reduces boilerplate in your app and lets you add validation checks to the Spring entity `Customer`, making your users provide complete and accurate information when filling out forms. This step covers the following concepts:
 
 - [Jakarta validation](https://beanvalidation.org)
 - Using the [`BindingContext`](https://javadoc.io/doc/com.webforj/webforj-data/latest/com/webforj/data/binding/BindingContext.html) class
