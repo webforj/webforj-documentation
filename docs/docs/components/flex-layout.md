@@ -10,10 +10,10 @@ webforJ provides developers with an efficient and intuitive way to layout their 
 
 ## Flex layout properties {#flex-layout-properties}
 
-Flex layout's properties can be grouped into two categories: properties that apply to the items within a layout, and properties that apply to the layout itself. The flex layout, or the parent element, is a box/container that can contain one or more components. Everything inside a Flex Layout is called an item or child element. The Flex Layout provides some robust alignment capabilities, which can be achieved with the help of either container or item properties.
+Flex layout's properties can be grouped into two categories: properties that apply to the items within a layout, and properties that apply to the layout itself. The flex layout, or the parent element, is a box/container that can contain one or more components. Everything inside a Flex Layout is called an item or child element. The Flex Layout provides some alignment capabilities, which can be achieved with the help of either container or item properties.
 
 :::tip
-webforJ's layout component follows the pattern of [CSS's flexbox layout](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). However, these tools are made to be utilized fully in Java, and do not require the application of CSS outside of the Java API methods provided.
+webforJ's layout component follows the pattern of [CSS's flexbox layout](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). However, these tools are made to be used fully in Java, and don't require the app of CSS outside of the Java API methods provided.
 :::
 
 ## Container properties {#container-properties}
@@ -22,7 +22,7 @@ Container properties will apply to all of the components within a component and 
 
 ### Direction {#direction}
 
-The Flex Layout will add components next to one another according to the direction chosen by the developer - either horizontal or vertical. When using the builder, utilize either the `horizontal()`, `horizontalReverse()`, `vertical()` or `verticalReverse()` methods when calling the `create()` method on a `FlexLayout` object to configure this layout as the object is created.
+The Flex Layout will add components next to one another according to the direction chosen by the developer - either horizontal or vertical. When using the builder, use either the `horizontal()`, `horizontalReverse()`, `vertical()` or `verticalReverse()` methods when calling the `create()` method on a `FlexLayout` object to configure this layout as the object is created.
 
 Alternatively, use the `setDirection()` method. The horizontal options are either `FlexDirection.ROW` (left to right) or `FlexDirection.ROW_REVERSE` (right to left), and the vertical options are either `FlexDirection.COLUMN` (top to bottom) or `FlexDirection.COLUMN_REVERSE` (bottom to top). This is done with the FlexLayout object, as opposed to the builder.
 
@@ -54,7 +54,7 @@ height="375px"
 
 ### Wrapping {#wrapping}
 
-To further customize the Flex Layout component, you can specify the behavior of the flex layout when components that are added no longer fit within the display. To configure this using the builder, utilize the `nowrap()` (default), `wrap()` and `wrapReverse()` methods to configure wrapping.
+To further customize the Flex Layout component, you can specify the behavior of the flex layout when components that are added no longer fit within the display. To configure this using the builder, use the `nowrap()` (default), `wrap()` and `wrapReverse()` methods to configure wrapping.
 
 Alternatively, if your layout already exists, use the `setWrap()` method to dictate how components will behave once they are no longer able to fit on a single line.
 
@@ -164,7 +164,7 @@ Similarly, when a container does not have enough space to accommodate its conten
 The form below demonstrates how `FlexLayout` organizes input fields into a structured layout. 
 
 :::tip
-If you prefer a column-based structure, check out the ColumnsLayout version of this form in the [`ColumnsLayout`](../components/columns-layout) article to see how it compares.
+If you prefer a column-based structure, look at the ColumnsLayout version of this form in the [`ColumnsLayout`](../components/columns-layout) article to see how it compares.
 :::
 
 <ComponentDemo 
