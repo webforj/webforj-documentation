@@ -24,7 +24,7 @@
 
 .filterButton:hover {
   text-decoration: none;
-  border-color: var(--dwc-color-primary);
+  border: 1px solid var(--dwc-color-primary);
   color: var(--dwc-color-primary);
   background-color: color-mix(in srgb, var(--dwc-color-primary) 8%, transparent);
 }
