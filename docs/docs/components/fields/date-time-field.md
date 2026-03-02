@@ -18,7 +18,7 @@ The `DateTimeField` component lets users input both a date and a time in a singl
 
 <ParentLink parent="Field" />
 
-`DateTimeField` extends the shared `Field` class, which provides common functionality across all field components. The following example creates a labeled `DateTimeField` for selecting a departure date and time.
+`DateTimeField` extends the shared `Field` class, which provides common features across all field components. The following example creates a labeled `DateTimeField` for selecting a departure date and time.
 
 <ComponentDemo 
 path='/webforj/datetimefield?' 

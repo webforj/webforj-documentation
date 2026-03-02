@@ -18,7 +18,7 @@ description: A component that provides a default browser-based time picker for s
 
 <ParentLink parent="Field" />
 
-`TimeField` extends the shared `Field` class, which provides common functionality across all field components. The following example creates a reminder `TimeField` initialized to the current time.
+`TimeField` extends the shared `Field` class, which provides common features across all field components. The following example creates a reminder `TimeField` initialized to the current time.
 
 <ComponentDemo 
 path='/webforj/timefield?' 

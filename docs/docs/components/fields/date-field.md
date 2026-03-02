@@ -18,7 +18,7 @@ The `DateField` component lets users input or select a date by year, month, and 
 
 <ParentLink parent="Field" />
 
-`DateField` extends the shared `Field` class, which provides common functionality across all field components. The following example creates departure and return DateFields that stay in sync, with min and max constraints to limit the selectable range.
+`DateField` extends the shared `Field` class, which provides common features across all field components. The following example creates departure and return DateFields that stay in sync, with min and max constraints to limit the selectable range.
 
 <ComponentDemo 
 path='/webforj/datefield?'

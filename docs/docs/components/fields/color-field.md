@@ -18,7 +18,7 @@ The `ColorField` component lets users select a color through the browser's nativ
 
 <ParentLink parent="Field" />
 
-`ColorField` extends the shared `Field` class, which provides common functionality across all field components. The following example lets the user pick a color and displays its tetradic complements.
+`ColorField` extends the shared `Field` class, which provides common features across all field components. The following example lets the user pick a color and displays its tetradic complements.
 
 <ComponentDemo 
 path='/webforj/colorfield?' 

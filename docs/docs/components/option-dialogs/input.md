@@ -13,7 +13,7 @@ An `InputDialog` is a modal dialog designed to prompt the user for input. The di
 
 ## Usages {#usages}
 
-The `InputDialog` provides a way to request input from users, such as text, numbers, or other data, ensuring that they provide necessary information before proceeding.
+The `InputDialog` prompts users for input, such as text, numbers, or other data. Because the dialog is modal, the app waits for the user to respond before continuing:
 
 <ComponentDemo 
 path='/webforj/inputdialogbasic?' 

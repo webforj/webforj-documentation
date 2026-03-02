@@ -18,7 +18,7 @@ The `PasswordField` component allows users to input a password securely. It's di
 
 <ParentLink parent="Field" />
 
-`PasswordField` extends the shared `Field` class, which provides common functionality across all field components. The following example creates a `PasswordField` with a label and placeholder text.
+`PasswordField` extends the shared `Field` class, which provides common features across all field components. The following example creates a `PasswordField` with a label and placeholder text.
 
 <ComponentDemo 
 path='/webforj/passwordfield?' 
