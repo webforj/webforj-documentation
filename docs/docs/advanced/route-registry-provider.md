@@ -1,10 +1,12 @@
 ---
-title: RouteRegistryProvider
+title: Route Registry Provider
 sidebar_position: 60
 sidebar_class_name: new-content
 ---
 
-<DocChip chip='since' label='25.11' />
+<!-- vale Google.Headings = NO -->
+# Route Registry Provider <DocChip chip='since' label='25.11' />
+<!-- vale Google.Headings = YES -->
 
 The `RouteRegistryProvider` is a Service Provider Interface (SPI) that allows integration frameworks to provide custom route discovery mechanisms. This enables frameworks to integrate their own classpath scanning and dependency injection systems with webforJ's routing infrastructure.
 
