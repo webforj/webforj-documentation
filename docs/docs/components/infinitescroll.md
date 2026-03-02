@@ -12,6 +12,12 @@ The `InfiniteScroll` component in webforJ automatically loads more content as us
 
 When users reach the bottom of scrollable content, `InfiniteScroll` triggers an event for loading more data. While new content loads, it displays a [`Spinner`](../components/spinner) with customizable text to indicate more items are on the way.
 
+<!-- INTRO_END -->
+
+## State management {#state-management}
+
+The `InfiniteScroll` component emits events and maintains internal state to help manage how and when content is loaded.
+
 <AppLayoutViewer
 path='/webforj/infinitescroll?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/infinitescroll/InfiniteScrollView.java'
@@ -19,10 +25,6 @@ cssURL='/css/infinitescroll/infinitescroll.css'
 height = '400px'
 mobile='true'
 />
-
-## State management {#state-management}
-
-The `InfiniteScroll` component emits events and maintains internal state to help manage how and when content is loaded.
 
 To fetch more data when the user scrolls, use the `onScroll()` or `addScrollListener()` method to register a listener. Inside the listener, you typically load additional content and call `update()` to refresh the `InfiniteScroll` state.
 

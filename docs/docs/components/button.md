@@ -8,17 +8,9 @@ sidebar_position: 15
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/button/Button" top='true'/>
 
-A `Button` component is a fundamental user interface element used in application development to create interactive elements that trigger actions or events when clicked or activated. It serves as a clickable element that users can interact with to perform various actions within an application or website. 
+A `Button` is a clickable element that triggers an action when pressed. It can display text, icons, or a combination of both. Buttons support multiple visual themes and sizes, and can be disabled to prevent interaction during long-running operations or when certain conditions aren't met.
 
-The primary purpose of the `Button` component is to provide a clear and intuitive call-to-action for users, guiding them to perform specific tasks such as submitting a form, navigating to another page, triggering a function, or initiating a process. Buttons are essential for enhancing user interactions, improving accessibility, and creating a more engaging user experience.
-
-<ComponentDemo 
-path='/webforj/button?' 
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonView.java'
-height='300px'
-/>
-
-<!-- tabs={['ButtonDemo.java', 'demo_styles.css']} -->
+<!-- INTRO_END -->
 
 ## Usages {#usages}
 
@@ -44,6 +36,14 @@ The `Button` class is a versatile component that is commonly used in various sit
   > - "Next" - Takes the user to the next page or section of the current application or page.
   > - "Previous" - Returns the user to the previous page of the application or section they're in.
   > - "Back" Returns the user to the first part of the application or page they're in.
+  
+The following example demonstrates buttons used for form submission and clearing input:
+
+<ComponentDemo 
+path='/webforj/button?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonView.java'
+height='300px'
+/>
 
 ## Adding icons to buttons <DocChip chip='since' label='24.11' /> {#adding-icons-to-buttons-docchip-chipsince-label2411-}
 

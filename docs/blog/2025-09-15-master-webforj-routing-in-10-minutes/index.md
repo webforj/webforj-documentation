@@ -4,7 +4,7 @@ description: Everything you need to know about routing with webforJ in a quick b
 slug: master-webforj-routing-in-10-minutes
 date: 2025-09-15
 authors: Eric Handtke
-tags: [webforJ, Routing, SPA Routing, Web Development]
+tags: [webforJ, Routing, SPA Routing, Web Development, tutorial]
 image: "https://cdn.webforj.com/webforj-documentation/blogs/master-webforj-routing-in-10-minutes/cover.png"
 hide_table_of_contents: false
 ---

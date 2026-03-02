@@ -1,6 +1,6 @@
 ---
 title: MCP Server
-sidebar_position: 2.5
+sidebar_position: 5
 ---
 
 The webforJ Model Context Protocol (MCP) server provides AI assistants with direct access to official webforJ documentation, verified code examples, and framework-specific patterns, allowing responses with more accurate answers and automated project generation specifically for webforJ development.
@@ -167,7 +167,7 @@ Tools are specialized functions that the MCP server provides to AI assistants. W
       - `webforj-spring` - webforJ integrated with Spring Boot for dependency injection and enterprise features
 
       :::tip Available Archetypes
-      webforJ comes with several predefined archetypes to help you get started quickly. For a complete list of available archetypes, see the [archetypes catalog](../building-ui/archetypes/overview).
+      webforJ comes with several predefined archetypes to help you get started quickly. For a complete list of available archetypes, see the [archetypes catalog](/docs/building-ui/archetypes/overview).
       :::
     </div>
   </AccordionDetails>
