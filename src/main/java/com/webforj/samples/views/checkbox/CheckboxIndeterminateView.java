@@ -48,7 +48,7 @@ public class CheckboxIndeterminateView extends Composite<FlexLayout> {
 
   private void onCheck(ToggleEvent e) {
     indeterminate.setChecked(child1.isChecked() && child2.isChecked());
-    indeterminate.setIndeterminate(child1.isIndeterminate() ^ child2.isChecked());
+    indeterminate.setIndeterminate(child1.isChecked() ^ child2.isChecked());
   }
 
   private void indeterminateToggle(ToggleEvent e) {
