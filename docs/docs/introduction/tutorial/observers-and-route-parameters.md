@@ -401,4 +401,4 @@ Running the app automatically opens a new browser at http://localhost:8080.
 
 ## Next step {#next-step}
 
-Now that users can edit customer data directly, your app should validate changes before committing them to the repository. Additionally, binding the data to the UI will allow the components to display error messages when the data is invalid.
+Now that users can edit customer data directly, your app should validate changes before committing them to the repository. In [Validating and Binding Data](/docs/introduction/tutorial/validating-and-binding-data), you’ll create validation rules and directly associate the data model with the UI, allowing the components to display error messages when the data is invalid.
