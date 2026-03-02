@@ -1,0 +1,40 @@
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem 0 1.25rem;
+  grid-column: 1 / -1;
+}
+
+.filterButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.375rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--dwc-color-default);
+  background-color: transparent;
+  color: var(--ifm-font-color-base);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filterButton:hover {
+  text-decoration: none;
+  border-color: var(--dwc-color-primary);
+  color: var(--dwc-color-primary);
+  background-color: color-mix(in srgb, var(--dwc-color-primary) 8%, transparent);
+}
+
+.filterButton.active {
+  background-color: var(--dwc-color-primary);
+  border-color: var(--dwc-color-primary);
+  color: #fff;
+}
+
+.filterButton.active:hover {
+  opacity: 0.9;
+}

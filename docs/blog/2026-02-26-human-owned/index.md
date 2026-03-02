@@ -4,7 +4,7 @@ description: An overview of the effect of AI on code quality, and webforJ's rela
 slug: webforj-human-owned
 date: 2026-02-26
 authors: Garrison Osteen
-tags: [webforj, ai, integrations]
+tags: [webforj, ai, community]
 hide_table_of_contents: false
 ---
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/webforj-human-owned/webforj-human-owned-cover.png)
