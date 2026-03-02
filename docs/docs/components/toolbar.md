@@ -10,6 +10,8 @@ sidebar_position: 145
 
 Toolbars offer users quick access to core actions and navigation elements. The webforJ `Toolbar` component is a horizontal container that can hold a set of action buttons, icons, or other components. It's well-suited for managing page controls and housing key functions like a search bar or a notification button.
 
+<!-- INTRO_END -->
+
 ## Organizing toolbar content {#organizing-toolbar-content}
 
 The `Toolbar` organizes essential components in an easily accessible and consistent layout. By default, it takes the full width of its parent element and provides four placement areas, or _slots_, for organizing components:

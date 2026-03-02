@@ -1,9 +1,7 @@
 ---
-sidebar_position: 15
 title: File Save
+sidebar_position: 15
 ---
-
-# File Save Dialog
 
 <DocChip chip='shadow' />
 <DocChip chip='since' label='24.21' />
@@ -11,9 +9,7 @@ title: File Save
 
 `FileSaveDialog` is a modal dialog designed to allow users to save a file to a specified location on the server file system. The dialog blocks app execution until the user provides a filename and confirms the action or cancels the dialog.
 
-```java
-OptionDialog.showFileSaveDialog("Save your file");
-```
+<!-- INTRO_END -->
 
 ## Usages {#usages}
 

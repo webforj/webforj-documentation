@@ -10,15 +10,22 @@ sidebar_class_name: updated-content
 
 The `RadioButtonGroup` manages a collection of [`RadioButton`](/docs/components/radiobutton) components. Only one `RadioButton` can be selected in a `RadioButtonGroup`. When a user checks a new radio button, the previously selected one in the group is automatically unchecked.
 
+<!-- INTRO_END -->
+
+## Creating a `RadioButtonGroup` {#creating-a-radiobuttongroup}
+
+:::important `RadioButtonGroup` rendering
+The `RadioButtonGroup` component doesn't render an HTML element. It only provides logic to make `RadioButton` components behave as a group rather than individually.
+:::
+
+Create individual `RadioButton` components and pass them to the `RadioButtonGroup` constructor. Only one button in the group can be selected at a time.
+
 <ComponentDemo 
 path='/webforj/radiobuttongroup?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/radiobutton/RadioButtonGroupView.java'
 height="200px"
 />
 
-:::important `RadioButtonGroup` rendering
-The `RadioButtonGroup` component doesn't render an HTML element. It only provides logic to make `RadioButton` components behave as a group rather than individually.
-:::
 
 ## Adding and removing `RadioButton` components {#adding-and-removing-radiobuttons}
 
