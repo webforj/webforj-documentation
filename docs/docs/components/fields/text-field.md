@@ -12,6 +12,8 @@ description: A single-line input component for entering and editing text data.
 
 The `TextField` component allows users to enter and edit text in a single line. You can configure the field to display a specific virtual keyboard, such as a numeric keypad, email input, telephone input, or URL input. The component also provides built-in validation to reject values that don't adhere to the specified type.
 
+<!-- INTRO_END -->
+
 ## Usages {#usages}
 
 <ParentLink parent="Field" />
