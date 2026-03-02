@@ -1,0 +1,23 @@
+release:
+  label: Release
+  description: Version release announcements for the webforJ framework.
+
+tutorial:
+  label: Tutorial
+  description: Step-by-step guides and walkthroughs for building with webforJ.
+
+components:
+  label: Components
+  description: Deep dives into webforJ UI components and their capabilities.
+
+integrations:
+  label: Integrations
+  description: Content about integrating webforJ with third-party tools and frameworks.
+
+styling:
+  label: Styling
+  description: CSS, theming, and design guides for webforJ applications.
+
+community:
+  label: Community
+  description: Community stories, opinions, and announcements from the webforJ team.
