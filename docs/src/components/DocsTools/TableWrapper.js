@@ -9,7 +9,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Box from '@mui/material/Box';
 
 
-export default function TableWrapper({ children, ...props }) {
+export default function TableWrapper({ children, title, ...props }) {
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
@@ -25,24 +25,33 @@ export default function TableWrapper({ children, ...props }) {
         color: 'var(--ifm-color-primary)',
         border: '1px solid var(--ifm-background-surface-color)',
         borderRadius: '4px',
-            '&:hover': {
-                color: 'var(--ifm-color-primary-lightest)',
-                border: '1px solid var(--ifm-color-primary-lightest)',
-            }
+        '&:hover': {
+            color: 'var(--ifm-color-primary-lightest)',
+            border: '1px solid var(--ifm-color-primary-lightest)',
+        }
     };
 
     return (
         <div className="table-wrapper" style={{ position: 'relative', marginBottom: '2rem', maxWidth: 'fit-content' }}>
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 1 }}>
-                <Tooltip title="Expand table">
-                    <IconButton
-                        onClick={handleClickOpen}
-                        size="small"
-                        sx={iconButtonSx}
-                    >
-                        <OpenInFullIcon fontSize="small" />
-                    </IconButton>
-                </Tooltip>
+                <IconButton
+                    onClick={handleClickOpen}
+                    size="small"
+                    aria-label="Expand table"
+                    sx={{
+                        ...iconButtonSx,
+                        gap: '4px',
+                        paddingLeft: '8px',
+                        paddingRight: '8px',
+                        fontSize: '0.75rem',
+                        fontWeight: 600,
+                        letterSpacing: '0.05em',
+                        textTransform: 'uppercase',
+                    }}
+                >
+                    <OpenInFullIcon fontSize="small" />
+                    Expand
+                </IconButton>
             </Box>
 
             <div className="table-container" style={{ overflowX: 'auto' }}>
@@ -72,20 +81,24 @@ export default function TableWrapper({ children, ...props }) {
                         p: 2,
                         paddingBottom: 0,
                         display: 'flex',
-                        justifyContent: 'flex-end',
+                        justifyContent: 'space-between',
                         alignItems: 'center',
                         backgroundColor: 'var(--ifm-background-color)',
                         borderBottom: '1px solid var(--ifm-contents-border-color)'
                     }}
-                > <Tooltip title="Close window">
-                    <IconButton
-                        aria-label="close"
-                        onClick={handleClose}
-                        sx={iconButtonSx}
-                    >
-                        <CloseIcon />
-                    </IconButton>
-                </Tooltip>
+                >
+                    <span style={{ fontWeight: 600, fontSize: '1rem', color: 'var(--ifm-font-color-base)' }}>
+                        {title || ''}
+                    </span>
+                    <Tooltip title="Close window">
+                        <IconButton
+                            aria-label="close"
+                            onClick={handleClose}
+                            sx={iconButtonSx}
+                        >
+                            <CloseIcon />
+                        </IconButton>
+                    </Tooltip>
                 </DialogTitle>
                 <DialogContent
                     sx={{
