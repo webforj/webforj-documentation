@@ -9,15 +9,15 @@ sidebar_class_name: updated-content
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedDateField" top='true'/>
 
-The `MaskedDateField` is a text input control designed for structured date entry. It lets users enter dates as **numbers** and automatically formats the input based on a defined mask when the field loses focus. The mask is a string that specifies the expected date format, guiding both input and display.
+The `MaskedDateField` is a text input that lets users enter dates as numbers and automatically formats the input based on a defined mask when the field loses focus. The mask specifies the expected date format, guiding both input and display. The component supports flexible parsing, validation, localization, and value restoration for consistent, region-specific date handling.
 
-This component supports flexible parsing, validation, localization, and value restoration. It's especially useful in forms like registrations, bookings, and scheduling, where consistent and region-specific date formats are required.
+<!-- INTRO_END -->
+
+## Basics {#basics}
 
 :::tip Looking for time input?
 The `MaskedDateField` is focused solely on **date** values. If you need a similar component for entering and formatting **time**, look into the [`MaskedTimeField`](./timefield) instead.
 :::
-
-## Basics {#basics}
 
 The `MaskedDateField` can be instantiated with or without parameters. You can define an initial value, a label, a placeholder, and an event listener for value changes.
 

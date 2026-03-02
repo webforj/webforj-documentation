@@ -9,11 +9,13 @@ slug: combobox
 <DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/list/ComboBox" top='true'/>
 
-<ParentLink parent="List" />
+The `ComboBox` component combines a dropdown list with a text input, so users can either select from predefined options or type in a custom value. When custom entries need to be allowed alongside a set of suggested options, it fills the gap that `ChoiceBox` doesn't cover.
 
-The `ComboBox` component is a user interface element designed to present users with a list of options or choices, as well as a field for entering their own custom values. Users can select a single option from this list, typically by clicking the `ComboBox`, which triggers the display of a dropdown list containing available choices, or type in a custom value. Users can also interact with the `ComboBox` with the arrow keys. When a user makes a selection, the chosen option is then displayed in the `ComboBox`. 
+<!-- INTRO_END -->
 
 ## Usages {#usages}
+
+<ParentLink parent="List" />
 
 The ComboBox component is a versatile input element that combines the features of both a dropdown list and a text input field. It allows users to select items from a predefined list or enter custom values as needed. This section explores common usages of the ComboBox component in various scenarios:
 

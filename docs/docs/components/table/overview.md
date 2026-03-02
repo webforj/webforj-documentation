@@ -11,6 +11,9 @@ hide_giscus_comments: true
 
 The `Table` class is a versatile component designed for presenting tabular information in a structured and easily understandable manner. Optimized for handling large datasets with high performance, this component offers advanced visualization and a comprehensive suite of events for dynamic user engagement.
 
+<!-- INTRO_END -->
+
+## Creating a `Table` {#creating-a-table}
 
 <!-- vale off -->
 <ComponentDemo 
@@ -19,9 +22,6 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='600px'
 />
 <!-- vale on -->
-
-
-## Creating a `Table` {#creating-a-table}
 
 In order to create and populate a `Table` in an application, the following steps can be taken:
 

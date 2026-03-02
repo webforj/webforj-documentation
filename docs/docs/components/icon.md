@@ -8,15 +8,9 @@ sidebar_position: 55
 <DocChip chip='since' label='24.11' />
 <JavadocLink type="icons" location="com/webforj/component/icons/Icon" top='true'/>
 
-The webforJ `Icon` component allows you to include icons effortlessly in your user interface
-Icons are a fundamental part of enhancing the design of the user interface, making it faster for users to scan the screen for actionable items.
-Using icons in your app creates visual cues for navigation and actions, which can reduce the amount of text needed and simplify the user interface. You can choose from three existing icon pools and webforJ also gives you the option to create new ones from scratch.
+The `Icon` component displays icons that scale to any size without losing quality. You can choose from three built-in icon pools or create custom ones. Icons serve as visual cues for navigation and actions, reducing the need for text labels in your interface.
 
-:::tip Did you know?
-
-Some components, like `PasswordField` and `TimeField`, have built-in icons to help convey meaning to end users.
-
-:::
+<!-- INTRO_END -->
 
 ## Basics {#basics}
 
@@ -31,6 +25,10 @@ path='/webforj/iconbasics?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/icon/IconBasicsView.java'
 height='100px'
 />
+
+:::tip Did you know?
+Some components, like `PasswordField` and `TimeField`, have built-in icons to help convey meaning to end users.
+:::
 
 ### Pools {#pools}
 

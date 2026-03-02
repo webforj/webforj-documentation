@@ -8,9 +8,13 @@ sidebar_position: 30
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="dialog" location="com/webforj/component/dialog/Dialog" top='true'/>
 
-The webforJ dialog component is built to allow a developer to quickly and easily display a dialog on their application, for instances such as a login menu or information box.
+The `Dialog` component displays a popup window that overlays the current view, drawing attention to focused content like forms, confirmations, or informational messages. 
 
-The component is built with three sections, each of which are `Panel` components: the **header**, the **content**, and the **footer**.
+<!-- INTRO_END -->
+
+## `Dialog` structure {#dialog-structure}
+
+The `Dialog` is organized into three sections: a header, a content area, and a footer. Components can be added to each section using `addToHeader()`, `addToContent()`, and `addToFooter()`.
 
 <ComponentDemo 
 path='/webforj/dialogsections?' 
