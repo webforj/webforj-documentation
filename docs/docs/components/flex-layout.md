@@ -22,7 +22,7 @@ Container properties will apply to all of the components within a component and 
 
 ### Direction {#direction}
 
-The Flex Layout will add components next to one another according to the direction chosen by the developer - either horizontal or vertical. When using he builder, utilize either the `horizontal()`, `horizontalReverse()`, `vertical()` or `verticalReverse()` methods when calling the `create()` method on a `FlexLayout` object to configure this layout as the object is created.
+The Flex Layout will add components next to one another according to the direction chosen by the developer - either horizontal or vertical. When using the builder, utilize either the `horizontal()`, `horizontalReverse()`, `vertical()` or `verticalReverse()` methods when calling the `create()` method on a `FlexLayout` object to configure this layout as the object is created.
 
 Alternatively, use the `setDirection()` method. The horizontal options are either `FlexDirection.ROW` (left to right) or `FlexDirection.ROW_REVERSE` (right to left), and the vertical options are either `FlexDirection.COLUMN` (top to bottom) or `FlexDirection.COLUMN_REVERSE` (bottom to top). This is done with the FlexLayout object, as opposed to the builder.
 
@@ -40,9 +40,9 @@ Components that are added horizontally can also be positioned both horizontally 
 Alternatively, on the actual FlexLayout object you can use the `setJustifyContent()` method to position items horizontally, and the `setAlignment()` method to configure vertical positioning. To modify the area around components along the cross axis (y-axis for horizontal layouts), use the `setAlignContent()` method.
 
 :::tip
-The `setAlignment()` method components how items will display along the cross axis as a whole within the container, and is effective for single-line layouts.
+The `setAlignment()` method controls how items will display along the cross axis as a whole within the container, and is effective for single-line layouts.
 
-The `setAlignContent()` methods components the space around the cross axis, and will take effect only when a layout has multiple lines.  
+The `setAlignContent()` method controls the space around the cross axis, and will take effect only when a layout has multiple lines.
 :::
 
 <ComponentDemo 
@@ -54,7 +54,7 @@ height="375px"
 
 ### Wrapping {#wrapping}
 
-To further customize the Flex Layout component, you can specify the behavior of the flex layout when components that are added no longer fit within the display. To configure this using the builder, utilize the utilize the - `nowrap()` (default), `wrap()` and `wrapReverse()` methods to configure wrapping.
+To further customize the Flex Layout component, you can specify the behavior of the flex layout when components that are added no longer fit within the display. To configure this using the builder, utilize the `nowrap()` (default), `wrap()` and `wrapReverse()` methods to configure wrapping.
 
 Alternatively, if your layout already exists, use the `setWrap()` method to dictate how components will behave once they are no longer able to fit on a single line.
 
