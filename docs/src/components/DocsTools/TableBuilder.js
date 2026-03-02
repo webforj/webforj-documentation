@@ -3,6 +3,7 @@ import Link from "@docusaurus/Link";
 import Translate, { translate } from '@docusaurus/Translate';
 import controlMap from '@site/docs/components/_dwc_control_map.json';
 import exclusions from '@site/static/exclusions.json';
+import TableWrapper from './TableWrapper';
 
 /**
  * TableBuilder creates tables of data for webforJ components. It can create the following tables:
@@ -419,7 +420,7 @@ export default function TableBuilder(props) {
 
     // Don't render anything if there is nothing in the table
     // Or if there is only one element without a name (sometimes the case with slots)
-    if (items.length == 0 || items.length == 1 && items[0].name == ""){
+    if (items.length == 0 || items.length == 1 && items[0].name == "") {
       // This doesn't check if all entries were excluded from the Reflected Attributes table.
       // Exclusions are currently pretty minor, but if that ever happens this will need to be updated.
       return null;
@@ -428,60 +429,60 @@ export default function TableBuilder(props) {
     // Now that we know there is content for this section, add to the mini TOC
     addTocEntry(sectionHeading);
 
-    if (table == "dependencies" || table == "dependents"){
+    if (table == "dependencies" || table == "dependents") {
       return (
         <>
-        <h3 class={headerClasses} id={sectionHeading}>{sectionHeading}</h3>
-        <p>{sectionDescription}</p>
-        <ul>
-          {items.map((dependency) => {
-            const clientLink = '/docs/client-components/' + 
-              dependency.replace("dwc-", "")
-              .replace(/^[a-z]/, (char) => char.toUpperCase());
-            return (
-            <li key={dependency}>
-              <Link to={clientLink}>{dependency}</Link>
-            </li>
-            );
-          })}
-        </ul>
+          <h3 class={headerClasses} id={sectionHeading}>{sectionHeading}</h3>
+          <p>{sectionDescription}</p>
+          <ul>
+            {items.map((dependency) => {
+              const clientLink = '/docs/client-components/' +
+                dependency.replace("dwc-", "")
+                  .replace(/^[a-z]/, (char) => char.toUpperCase());
+              return (
+                <li key={dependency}>
+                  <Link to={clientLink}>{dependency}</Link>
+                </li>
+              );
+            })}
+          </ul>
         </>
       );
     }
 
     return (
       <>
-      <h3 class={headerClasses} id={sectionHeading}>{sectionHeading}</h3>
-      <p>{sectionDescription}</p>
-      <table className="custom--table" key={table}>
-        <thead>
-          <tr key="header">
-            {headers.map((header) => (
-              <th key={header}>{header}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {items?.map((item) => {
-            const [key, ...values] = Object.values(item);
-            if (tableExclusions?.includes(key) ) return null;
-            return (
-            <tr key={key}>
-              {key ? (<td><code>{key}</code></td>) : (<td></td>) }
-              {values.map((value, idx) => (
-                <td key={`${key}-${idx}`}>
-                  {headers[idx + 1] === "Attribute" ? (
-                    <code>{formatText(value)}</code>
-                  ) : (
-                    formatText(value)
-                  )}
-                </td>
+        <h3 class={headerClasses} id={sectionHeading}>{sectionHeading}</h3>
+        <p>{sectionDescription}</p>
+        <TableWrapper className="custom--table" key={table}>
+          <thead>
+            <tr key="header">
+              {headers.map((header) => (
+                <th key={header}>{header}</th>
               ))}
             </tr>
-            );
-          })}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {items?.map((item) => {
+              const [key, ...values] = Object.values(item);
+              if (tableExclusions?.includes(key)) return null;
+              return (
+                <tr key={key}>
+                  {key ? (<td><code>{key}</code></td>) : (<td></td>)}
+                  {values.map((value, idx) => (
+                    <td key={`${key}-${idx}`}>
+                      {headers[idx + 1] === "Attribute" ? (
+                        <code>{formatText(value)}</code>
+                      ) : (
+                        formatText(value)
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              );
+            })}
+          </tbody>
+        </TableWrapper>
       </>
     );
   };
@@ -492,7 +493,7 @@ export default function TableBuilder(props) {
     <>
       {tables.map((table) => (
         <React.Fragment key={`table-${table}`}>
-        {renderTable(table)}
+          {renderTable(table)}
         </React.Fragment>
       ))}
     </>
@@ -520,7 +521,7 @@ function formatText(text) {
 
   // Render backticks as <code> tags:
   return lines.map((line, lineIndex) => {
-    const parts = line.split(/(`[^`]+`)/); 
+    const parts = line.split(/(`[^`]+`)/);
 
     const processedLine = parts.map((part, index) =>
       part.startsWith('`') && part.endsWith('`') ? (
@@ -530,7 +531,7 @@ function formatText(text) {
       )
     );
     // Don't render empty lines, and avoid duplicate keys
-    if (processedLine[0].length === 0){
+    if (processedLine[0].length === 0) {
       return null;
     }
     return (
@@ -550,28 +551,28 @@ function formatText(text) {
  * @returns 
  */
 function addTocEntry(entry) {
-    const tocContainer = document.querySelector('.table-of-contents');
-    if (!tocContainer) return;
+  const tocContainer = document.querySelector('.table-of-contents');
+  if (!tocContainer) return;
 
-    const existingEntry = tocContainer.querySelector(`a[href$="#${entry}"]`);
-    if (existingEntry) return;
-    
-    // Find the "Styling" portion of the TOC
-    const stylingListItem = Array.from(tocContainer.querySelectorAll('li a'))
-      .find(a => a.textContent.trim().includes('Styling'))
-      ?.closest('li');
+  const existingEntry = tocContainer.querySelector(`a[href$="#${entry}"]`);
+  if (existingEntry) return;
 
-    if (!stylingListItem) return;
-    
-    // Get <ul> element it has one, if not, create one.
-    const stylingSubList = stylingListItem.querySelector('ul') || stylingListItem.appendChild(document.createElement('ul'));
+  // Find the "Styling" portion of the TOC
+  const stylingListItem = Array.from(tocContainer.querySelectorAll('li a'))
+    .find(a => a.textContent.trim().includes('Styling'))
+    ?.closest('li');
 
-    const link = document.createElement('a');
-    // Todo: convert entry to a better "id" type value
-    link.href = '#' + entry;
-    link.textContent = entry;
-    link.className = 'table-of-contents__link toc-highlight';
-    const listItem = document.createElement('li');
-    listItem.appendChild(link);
-    stylingSubList.appendChild(listItem);
+  if (!stylingListItem) return;
+
+  // Get <ul> element it has one, if not, create one.
+  const stylingSubList = stylingListItem.querySelector('ul') || stylingListItem.appendChild(document.createElement('ul'));
+
+  const link = document.createElement('a');
+  // Todo: convert entry to a better "id" type value
+  link.href = '#' + entry;
+  link.textContent = entry;
+  link.className = 'table-of-contents__link toc-highlight';
+  const listItem = document.createElement('li');
+  listItem.appendChild(link);
+  stylingSubList.appendChild(listItem);
 }

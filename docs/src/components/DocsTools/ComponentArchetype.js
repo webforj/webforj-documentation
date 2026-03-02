@@ -5,6 +5,7 @@ import TabItem from "@theme/TabItem";
 import CodeBlock from "@theme/CodeBlock";
 import Admonition from '@theme/Admonition';
 import { translate } from '@docusaurus/Translate';
+import TableWrapper from './TableWrapper';
 
 export default function ComponentArchetype({ project, flavor = "webforj" }) {
   return (<>
@@ -12,7 +13,7 @@ export default function ComponentArchetype({ project, flavor = "webforj" }) {
       id: 'component.archetype.intro',
       message: 'To create and scaffold a new {project} project, follow these steps:',
       description: 'Introduction text for archetype component'
-    }, {project: <code>{project}</code>})}
+    }, { project: <code>{project}</code> })}
     </p>
     <ol>
       <li><strong>{translate({
@@ -84,7 +85,7 @@ export default function ComponentArchetype({ project, flavor = "webforj" }) {
         </CodeBlock>
       </TabItem>
     </Tabs>
-    <table>
+    <TableWrapper>
       <thead>
         <th>{translate({
           id: 'component.archetype.table.argument',
@@ -147,28 +148,28 @@ export default function ComponentArchetype({ project, flavor = "webforj" }) {
           })}</td>
         </tr>
         {project !== 'bbj-hello-world' && (
-        <tr>
-          <td><code>flavor</code></td>
-          <td>
-            {translate({
-              id: 'component.archetype.table.flavor.desc',
-              message: 'Selects a project flavor:',
-              description: 'flavor description intro'
-            })}
-            <ul>
-            <li><code>webforj</code> - {translate({
-              id: 'component.archetype.table.flavor.webforj',
-              message: 'Standard webforJ app.',
-              description: 'webforj flavor description'
-            })}</li>
-            <li><code>webforj-spring</code> - {translate({
-              id: 'component.archetype.table.flavor.spring',
-              message: 'webforJ app with Spring Boot support (requires webforJ 25.02 or higher).',
-              description: 'webforj-spring flavor description'
-            })}</li>
-            </ul>
-          </td>
-        </tr>
+          <tr>
+            <td><code>flavor</code></td>
+            <td>
+              {translate({
+                id: 'component.archetype.table.flavor.desc',
+                message: 'Selects a project flavor:',
+                description: 'flavor description intro'
+              })}
+              <ul>
+                <li><code>webforj</code> - {translate({
+                  id: 'component.archetype.table.flavor.webforj',
+                  message: 'Standard webforJ app.',
+                  description: 'webforj flavor description'
+                })}</li>
+                <li><code>webforj-spring</code> - {translate({
+                  id: 'component.archetype.table.flavor.spring',
+                  message: 'webforJ app with Spring Boot support (requires webforJ 25.02 or higher).',
+                  description: 'webforj-spring flavor description'
+                })}</li>
+              </ul>
+            </td>
+          </tr>
         )}
         <tr>
           <td><code>appName</code></td>
@@ -179,52 +180,52 @@ export default function ComponentArchetype({ project, flavor = "webforj" }) {
           })}</td>
         </tr>
       </tbody>
-    </table>
+    </TableWrapper>
     <p>{translate({
       id: 'component.archetype.conclusion',
       message: 'After running the command, Maven will generate the project files necessary to run the project.',
       description: 'Conclusion text'
     })}
     </p>
-{project !== 'bbj-hello-world' && (
-  <>
-    <h2>{translate({
-        id: 'running-the-app',
-        message: 'Running the app',
-        description: 'Running the app title'
-    })}</h2>
+    {project !== 'bbj-hello-world' && (
+      <>
+        <h2>{translate({
+          id: 'running-the-app',
+          message: 'Running the app',
+          description: 'Running the app title'
+        })}</h2>
         <p>{translate({
-        id: 'component.archetype.running.app.desc',
-        message: 'Before running your app, install the {prerequisites} if you haven\'t yet. Then, navigate to the project\'s root directory and run the following command:',
-        description: 'Running the app description'
-    }, {prerequisites: <a href="/docs/introduction/prerequisites">prerequisites</a>})}
-    </p>
+          id: 'component.archetype.running.app.desc',
+          message: 'Before running your app, install the {prerequisites} if you haven\'t yet. Then, navigate to the project\'s root directory and run the following command:',
+          description: 'Running the app description'
+        }, { prerequisites: <a href="/docs/introduction/prerequisites">prerequisites</a> })}
+        </p>
         <CodeBlock language="bash">
-{`mvn`}
+          {`mvn`}
         </CodeBlock>
-    <Admonition type="info" title={translate({
-      id: 'component.archetype.mvn.shorthand.title',
-      message: 'Full maven command',
-      description: 'Full maven command note title'
-    })}>
-      <p>{translate({
-        id: 'component.archetype.mvn.command.desc',
-        message: 'The shorthand mvn command works because the archetype\'s POM file includes a {default} configuration that automatically runs the appropriate goal for your project type. If your project doesn\'t have {default}, run the following:',
-        description: 'Full maven command note description'
-      }, {default: <code>&lt;defaultGoal&gt;</code>})}</p>
-        <CodeBlock language="bash">
-{`# for a standard webforJ app
+        <Admonition type="info" title={translate({
+          id: 'component.archetype.mvn.shorthand.title',
+          message: 'Full maven command',
+          description: 'Full maven command note title'
+        })}>
+          <p>{translate({
+            id: 'component.archetype.mvn.command.desc',
+            message: 'The shorthand mvn command works because the archetype\'s POM file includes a {default} configuration that automatically runs the appropriate goal for your project type. If your project doesn\'t have {default}, run the following:',
+            description: 'Full maven command note description'
+          }, { default: <code>&lt;defaultGoal&gt;</code> })}</p>
+          <CodeBlock language="bash">
+            {`# for a standard webforJ app
 mvn jetty:run
 # for a webforJ + Spring Boot app
 mvn spring-boot:run`}
-        </CodeBlock>
-    </Admonition>
-<p>{translate({
-  id: 'component.archetype.browser.desc',
-  message: 'Once the server is running, open your browser and go to {localhost} to view the app.',
-  description: 'running in the browser text'  
-  }, {localhost: <a href="http://localhost:8080">http://localhost:8080</a>})}</p>
+          </CodeBlock>
+        </Admonition>
+        <p>{translate({
+          id: 'component.archetype.browser.desc',
+          message: 'Once the server is running, open your browser and go to {localhost} to view the app.',
+          description: 'running in the browser text'
+        }, { localhost: <a href="http://localhost:8080">http://localhost:8080</a> })}</p>
       </>
-)}
+    )}
   </>);
 }

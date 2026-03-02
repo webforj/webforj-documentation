@@ -16,13 +16,15 @@ export default function DocChip( { chip, label, href, exclude, tooltipText, colo
     margin-right: 0.5em;
     margin-bottom: 1em;
     background-color: var(--chip-background);
+    border: 1px solid var(--dwc-color-primary-85);
     color: var(--chip-text);
     position: relative;
     z-index: 0;
     top: 0.3rem;
-    :hover{
+    :hover,:focus {
       color: inherit;
       background-color: var(--chip-background-hover);
+      border: 1px solid var(--dwc-color-primary-55);
     }
   `;
 
