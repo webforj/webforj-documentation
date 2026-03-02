@@ -45,7 +45,7 @@ Login login = new Login();
 login.setAction("/api/auth");
 ```
 
-When using `setAction()`, the form submission bypasses the `LoginSubmitEvent` and instead performs a traditional HTTP POST request to the specified endpoint. The username and password are sent as form parameters named "username" and "password", respectively. Custom fields with a name attribute are also included in the POST request.
+When using `setAction()`, the form submission bypasses the `LoginSubmitEvent` and instead performs a traditional HTTP POST request to the specified endpoint. The username and password are sent as form parameters named `"username"` and `"password"`, respectively. Custom fields with a name attribute are also included in the POST request.
 
 :::tip 
 If no action URL is set, form submission is handled through the `LoginSubmitEvent`, allowing you to process credentials programmatically on the server side.

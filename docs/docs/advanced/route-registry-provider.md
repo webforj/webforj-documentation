@@ -14,7 +14,7 @@ webforJ discovers routes by scanning packages for `@Route` annotated components.
 
 Use this SPI when:
 
-- Integrating with dependency injection frameworks (Spring, CDI, et al.)
+- Integrating with dependency injection frameworks, such as Spring, or Contexts and Dependency Injection (CDI)
 - Supporting specialized environments (OSGi, custom classloaders, GraalVM)
 - Building framework adapters that need to manage route component lifecycle
 - Reusing existing classpath scans to optimize startup time

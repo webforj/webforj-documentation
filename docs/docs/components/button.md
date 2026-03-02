@@ -79,11 +79,9 @@ path='/webforj/buttondisable?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/button/ButtonDisableView.java'
 />
 
-<br />
-
 Disabling a button can be done at any time in the code by using the <JavadocLink type="foundation" location="com/webforj/component/HasEnable" code='true'>setEnabled(boolean enabled)</JavadocLink> function. For added convenience, a button can also be disabled when clicked using the built-in <JavadocLink type="foundation" location="com/webforj/component/button/Button" code='true' suffix='#setDisableOnClick(java.lang.Boolean)'>setDisabledOnClick(boolean enabled)</JavadocLink> function.
 
-In some applications, clicking a button triggers a long-running action. In most cases, the application might want to ensure that only a single click is processed.  This can be an issue in high-latency environments when the user clicks the button multiple times before the application has had a chance to start processing the resulting action. 
+In some cases, clicking a button triggers a long-running action. Disabling the button until your app process the action prevents the user from clicking the button multiple times, especially in high-latency environments.
 
 :::tip
 Disabling on click not only helps optimize the processing of actions, but also prevents the developer from needing to implement this behavior on their own, as this method has been optimized to reduce round trip communications.
@@ -119,7 +117,7 @@ The following <JavadocLink type="foundation" location="com/webforj/component/Exp
 
 Different sizes are often appropriate for different uses:
   - **Larger** expanse values are suited to buttons which should grab attention, emphasize functionality or are integral to the core functionality of an application or page.
-  - **Medium** expanse buttons, the default size, should be utilized as a "standard size", when a button's behavior is no more or less important than other similar components.
+  - **Medium** expanse buttons, the default size, should be the standard size of buttons. These button’s functions should  be neither more nor less critical than similar components.
   - **Smaller** expanse values should be used for buttons that do not have integral behaviors in the application, and serve a more supplementary or utilitarian role, rather than play an important part in user interaction. This includes `Button` components being used only with icons for utilitarian purposes.
 
 Below are the various expanses supported for the `Button` component: <br/>
