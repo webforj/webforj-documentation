@@ -454,7 +454,7 @@ export default function TableBuilder(props) {
       <>
         <h3 class={headerClasses} id={sectionHeading}>{sectionHeading}</h3>
         <p>{sectionDescription}</p>
-        <TableWrapper className="custom--table" key={table}>
+        <TableWrapper className="custom--table" key={table} title={sectionHeading}>
           <thead>
             <tr key="header">
               {headers.map((header) => (
