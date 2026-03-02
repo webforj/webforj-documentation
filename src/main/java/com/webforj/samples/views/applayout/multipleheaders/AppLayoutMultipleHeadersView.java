@@ -81,6 +81,6 @@ public class AppLayoutMultipleHeadersView extends Composite<AppLayout> {
   }
 
   private AppNavItem createItem(String text, Icon icon) {
-    return new AppNavItem(text, AppLayoutFullNavbarContentView.class, ParametersBag.of("name=" + text), icon);
+    return new AppNavItem(text, AppLayoutMultipleHeaderContentView.class, ParametersBag.of("name=" + text), icon);
   }
 }

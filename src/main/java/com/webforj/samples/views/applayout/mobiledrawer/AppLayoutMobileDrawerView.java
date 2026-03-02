@@ -90,7 +90,7 @@ public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
 
 
   private AppNavItem createItem(String text, Icon icon) {
-    return new AppNavItem(text, AppLayoutFullNavbarContentView.class, ParametersBag.of("name=" + text), icon);
+    return new AppNavItem(text, AppLayoutMobileDrawerContentView.class, ParametersBag.of("name=" + text), icon);
   }
 
   private Tab createTab(String icon) {
