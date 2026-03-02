@@ -10,7 +10,7 @@ description: A single-line input component for securely entering and masking pas
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/PasswordField" top='true'/>
 
-The `PasswordField` component allows users to input a password securely. It's displayed as a single-line text editor where the entered text is obscured, typically replaced with symbols like asterisks (”*”) or dots (”•”). The exact symbol may vary based on the browser and operating system.
+The `PasswordField` component allows users to input a password securely. It's displayed as a single-line text editor where the entered text is obscured, typically replaced with symbols like asterisks ("*") or dots ("•"). The exact symbol may vary based on the browser and operating system.
 
 <!-- INTRO_END -->
 

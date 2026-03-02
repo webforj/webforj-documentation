@@ -17,10 +17,10 @@ The `DesktopNotification` component displays native desktop notifications outsid
 The `DesktopNotification` component is still evolving, and its API may experience changes as it matures. To start using this feature, ensure that you include the following dependency in your pom.xml.
 
 ```xml
-
-  com.webforj
-  webforj-desktop-notification
-
+<dependency>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-desktop-notification</artifactId>
+</dependency>
 ```
 :::
 

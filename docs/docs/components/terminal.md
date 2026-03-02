@@ -18,10 +18,10 @@ The `Terminal` component is an interactive terminal emulator that behaves like a
 To use the `Terminal` component in your app, ensure that you include the following dependency in your pom.xml.
 
 ```xml
-
-  com.webforj
-  webforj-terminal
-
+<dependency>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-terminal</artifactId>
+</dependency>
 ```
 :::
 
