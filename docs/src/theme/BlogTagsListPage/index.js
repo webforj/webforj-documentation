@@ -1,5 +1,4 @@
 import React from 'react';
-import clsx from 'clsx';
 import {
   PageMetadata,
   HtmlClassNameProvider,
@@ -27,19 +26,14 @@ export default function BlogTagsListPage({ tags, sidebar }) {
 
   return (
     <HtmlClassNameProvider
-      className={clsx(
-        ThemeClassNames.wrapper.blogPages,
-        ThemeClassNames.page.blogTagsListPage,
-      )}>
+      className={`${ThemeClassNames.wrapper.blogPages} ${ThemeClassNames.page.blogTagsListPage}`}>
       <PageMetadata title={title} />
       <SearchMetadata tag="blog_tags_list" />
       <BlogLayout sidebar={sidebar}>
-        <div className={styles.header}>
-          <Heading as="h1">{title}</Heading>
-          <p className={styles.subtitle}>
-            Browse all {tags.length} topic{tags.length !== 1 ? 's' : ''} covered in the webforJ blog.
-          </p>
-        </div>
+        <Heading as="h1">{title}</Heading>
+        <p className={styles.subtitle}>
+          Browse all {tags.length} topic{tags.length !== 1 ? 's' : ''} covered in the webforJ blog.
+        </p>
         <div className={styles.tagsGrid}>
           {sortedTags.map((tag) => (
             <TagCard key={tag.permalink} tag={tag} />
