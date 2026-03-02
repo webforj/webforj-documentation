@@ -92,9 +92,9 @@ export default function TableWrapper({ children, title, ...props }) {
                         borderBottom: '1px solid var(--ifm-contents-border-color)'
                     }}
                 >
-                    <span style={{ fontWeight: 600, fontSize: '1rem', color: 'var(--ifm-font-color-base)' }}>
+                    <h2 style={{ margin: 0, color: 'var(--ifm-font-color-base)' }}>
                         {title || ''}
-                    </span>
+                    </h2>
                     <Tooltip title="Close window">
                         <IconButton
                             aria-label="close"
