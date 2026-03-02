@@ -28,6 +28,10 @@ export default function TableWrapper({ children, title, ...props }) {
         '&:hover': {
             color: 'var(--ifm-color-primary-lightest)',
             border: '1px solid var(--ifm-color-primary-lightest)',
+        },
+          '&:focus': {
+            color: 'var(--ifm-color-primary-lightest)',
+            border: '1px solid var(--ifm-color-primary-lightest)',
         }
     };
 
@@ -40,6 +44,7 @@ export default function TableWrapper({ children, title, ...props }) {
                     aria-label="Expand table"
                     sx={{
                         ...iconButtonSx,
+                        disableRipple: true,
                         gap: '4px',
                         paddingLeft: '8px',
                         paddingRight: '8px',
