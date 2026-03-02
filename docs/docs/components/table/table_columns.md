@@ -36,7 +36,7 @@ To set a value provider on a column, use one of the `addColumn()` methods from t
 In the following snippet, a column will attempt to access data from a JSON object, rendering it only if the data isn't null.
 
 ```java
-    List<String> columnsList = Arrays.asList("athlete", "age", "country", "year", "sport", "gold", "silver", "bronze", "total");
+    List<String> columnsList = List.of("athlete", "age", "country", "year", "sport", "gold", "silver", "bronze", "total");
 
     for (String column : columnsList) {
       table.addColumn(column, (JsonObject person) -> {
