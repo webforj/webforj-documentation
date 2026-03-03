@@ -15,25 +15,33 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Spinner Directions")
 public class SpinnerDirectionDemoView extends Composite<FlexLayout> {
-
-  Spinner spinner;
-  Button clockwiseButton;
-  Button counterClockwiseButton;
-  FlexLayout buttonContainer;
+  // Self reference enabling fluent method chaining
+  private final FlexLayout self = getBoundComponent();
+  // UI Components
+  private final Spinner spinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.MEDIUM);
+  private final Button clockwiseButton;
+  private final Button counterClockwiseButton;
+  private final FlexLayout buttonContainer;
 
   public SpinnerDirectionDemoView() {
-    getBoundComponent().setDirection(FlexDirection.COLUMN).setAlignment(FlexAlignment.CENTER)
-        .setJustifyContent(FlexJustifyContent.CENTER).setSpacing("var(--dwc-space-m")
+    // Configure layout
+    self.setDirection(FlexDirection.COLUMN)
+        .setAlignment(FlexAlignment.CENTER)
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .setSpacing("var(--dwc-space-m)")
         .setMargin("var(--dwc-space-l)");
 
-    spinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.MEDIUM);
-    clockwiseButton = new Button("Clockwise", e -> spinner.setClockwise(true)).setWidth("200px");
+    // Create direction control buttons
+    clockwiseButton = new Button("Clockwise", e -> spinner.setClockwise(true))
+        .setWidth("200px");
+
     counterClockwiseButton = new Button("Counterclockwise", e -> spinner.setClockwise(false))
         .setWidth("200px");
-    
-    buttonContainer = new FlexLayout(clockwiseButton, counterClockwiseButton);
-    buttonContainer.setMargin("var(--dwc-space-s)");
 
-    getBoundComponent().add(spinner, buttonContainer);
+    // Create button container
+    buttonContainer = new FlexLayout(clockwiseButton, counterClockwiseButton)
+            .setMargin("var(--dwc-space-s)");
+
+    self.add(spinner, buttonContainer);
   }
 }

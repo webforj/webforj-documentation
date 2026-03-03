@@ -6,43 +6,46 @@ import com.webforj.component.Theme;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H3;
 import com.webforj.component.html.elements.Paragraph;
+import com.webforj.component.icons.Icon;
+import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.spinner.Spinner;
 import com.webforj.component.spinner.SpinnerExpanse;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
-import com.webforj.component.icons.Icon;
-import com.webforj.component.icons.TablerIcon;
 
 @Route
 @FrameTitle("Spinner Basics")
 @StyleSheet("ws://css/spinnerstyles/spinnerdemo.css")
 public class SpinnerDemoView extends Composite<Div> {
-
-  Spinner spinner;
-  H3 title;
-  Icon position;
-  Icon location;
-  Paragraph resume;
+  // Self reference enabling fluent method chaining
+  private final Div self = getBoundComponent();
+  // UI Components
+  private final Spinner spinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.XXXSMALL);
+  private final H3 title = new H3("Complete your job application:");
+  private final Icon position = TablerIcon.create("checks");
+  private final Icon location = TablerIcon.create("checks");
+  private final Paragraph resume = new Paragraph("Uploading your resume");
 
   public SpinnerDemoView() {
-    getBoundComponent().setStyle("margin-left", "20px");
+    // Configure main container
+    self.setStyle("margin-left", "20px");
 
-    spinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.XXXSMALL);
-    title = new H3("Complete your job application:");
-    position = TablerIcon.create("checks");
-    location = TablerIcon.create("checks");
-    resume = new Paragraph("Uploading your resume");
-
+    // Create layout for position selection
     FlexLayout positionLayout = new FlexLayout(position, new Paragraph("Select the position you wish to apply for"));
+
+    // Create layout for location details
     FlexLayout locationLayout = new FlexLayout(location, new Paragraph("Provide your current location details"));
+
+    // Create layout for spinner with resume text
     FlexLayout spinnerLayout = new FlexLayout(spinner, resume);
 
-    FlexLayout items =  FlexLayout.create(title, positionLayout, locationLayout, spinnerLayout)
-    .vertical()
-    .justify().center()
-    .build();
+    // Create vertical layout with all items
+    FlexLayout items = FlexLayout.create(title, positionLayout, locationLayout, spinnerLayout)
+        .vertical()
+        .justify().center()
+        .build();
 
-    getBoundComponent().add(items);
+    self.add(items);
   }
 }
