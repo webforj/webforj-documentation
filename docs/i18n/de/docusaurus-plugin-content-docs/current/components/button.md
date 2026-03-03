@@ -1,16 +1,42 @@
 ---
 title: Button
 sidebar_position: 15
-_i18n_hash: 0282098a1b80b4d494409d4f416caa5d
+_i18n_hash: 6c3425f6d7138e710c5222d2baf84644
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-button" />
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/button/Button" top='true'/>
 
-Eine `Button`-Komponente ist ein grundlegendes Element der Benutzeroberfläche, das in der Anwendungsentwicklung verwendet wird, um interaktive Elemente zu erstellen, die Aktionen oder Ereignisse auslösen, wenn sie angeklickt oder aktiviert werden. Es fungiert als klickbares Element, mit dem Benutzer interagieren können, um verschiedene Aktionen innerhalb einer Anwendung oder Website auszuführen. 
+Ein `Button` ist ein klickbares Element, das eine Aktion auslöst, wenn es gedrückt wird. Er kann Text, Symbole oder eine Kombination aus beidem anzeigen. Buttons unterstützen mehrere visuelle Themen und Größen und können deaktiviert werden, um eine Interaktion während lang laufender Operationen oder wenn bestimmte Bedingungen nicht erfüllt sind, zu verhindern.
 
-Der Hauptzweck der `Button`-Komponente besteht darin, den Benutzern einen klaren und intuitiven Handlungsaufruf zu geben, der sie anleitet, spezifische Aufgaben auszuführen, wie z. B. das Einreichen eines Formulars, die Navigation zu einer anderen Seite, das Auslösen einer Funktion oder den Beginn eines Prozesses. Buttons sind entscheidend, um Benutzerinteraktionen zu verbessern, die Zugänglichkeit zu optimieren und ein ansprechenderes Benutzererlebnis zu schaffen.
+<!-- INTRO_END -->
+
+## Anwendungen {#usages}
+
+Die `Button`-Klasse ist eine vielseitige Komponente, die häufig in verschiedenen Situationen verwendet wird, in denen Benutzerinteraktionen und -aktionen ausgelöst werden müssen. Hier sind einige typische Szenarien, in denen Sie in Ihrer Anwendung einen Button benötigen könnten:
+
+1. **Formularübermittlung**: Buttons werden häufig verwendet, um Formularanmeldedaten zu übermitteln. Zum Beispiel können Sie in einer Anwendung verwenden:
+
+  > - Ein "Absenden"-Button, um Daten an den Server zu senden
+  > - Ein "Löschen"-Button, um alle bereits im Formular vorhandenen Informationen zu entfernen
+
+2. **Benutzeraktionen**: Buttons werden verwendet, um Benutzern zu ermöglichen, spezifische Aktionen innerhalb der Anwendung durchzuführen. Beispielsweise können Sie einen Button mit der Bezeichnung haben:
+
+  > - "Löschen", um die Löschung eines ausgewählten Elements zu initiieren
+  > - "Speichern", um Änderungen an einem Dokument oder einer Seite zu speichern.
+
+3. **Bestätigungsdialoge**: Buttons sind häufig in [`Dialog`](../components/dialog)-Komponenten enthalten, die für verschiedene Zwecke erstellt wurden, um den Benutzern Optionen anzubieten, eine Aktion zu bestätigen oder abzubrechen oder eine andere Funktionalität, die in dem von Ihnen verwendeten [`Dialog`](../components/dialog) integriert ist.
+
+4. **Interaktionsauslöser**: Buttons können als Auslöser für Interaktionen oder Ereignisse innerhalb der Anwendung dienen. Durch Klicken auf einen Button können Benutzer komplexe Aktionen einleiten, Animationen auslösen, Inhalte aktualisieren oder die Anzeige aktualisieren.
+
+5. **Navigation**: Buttons können für Navigationszwecke verwendet werden, z. B. um zwischen verschiedenen Abschnitten oder Seiten innerhalb einer Anwendung zu wechseln. Navigationsbuttons könnten Folgendes umfassen:
+
+  > - "Weiter" - Leitet den Benutzer zur nächsten Seite oder zum nächsten Abschnitt der aktuellen Anwendung oder Seite.
+  > - "Zurück" - Bringt den Benutzer zur vorherigen Seite der Anwendung oder zum Abschnitt, in dem er sich befindet.
+  > - "Zurück" Bringt den Benutzer zum ersten Teil der Anwendung oder Seite, in der er sich befindet.
+
+Das folgende Beispiel zeigt Buttons, die für die Formularübermittlung und das Löschen von Eingaben verwendet werden:
 
 <ComponentDemo 
 path='/webforj/button?' 
@@ -18,42 +44,20 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-## Verwendungen {#usages}
+## Hinzufügen von Symbolen zu Buttons <DocChip chip='since' label='24.11' /> {#adding-icons-to-buttons-docchip-chipsince-label2411-}
 
-Die `Button`-Klasse ist eine vielseitige Komponente, die häufig in verschiedenen Situationen eingesetzt wird, in denen Benutzerinteraktionen und -aktionen ausgelöst werden müssen. Hier sind einige typische Szenarien, in denen Sie einen Button in Ihrer Anwendung benötigen könnten:
+Das Hinzufügen eines Symbols zu einem Button kann das Design Ihrer App erheblich verbessern, da es den Benutzern ermöglicht, schnell umsetzbare Elemente auf dem Bildschirm zu identifizieren. Die [`Icon`](./icon.md)-Komponente bietet eine große Auswahl an Symbolen zur Auswahl.
 
-1. **Formulareinreichung**: Buttons werden oft verwendet, um Formulardaten zu übermitteln. Zum Beispiel können Sie in einer Anwendung:
+Durch die Nutzung der Methoden `setPrefixComponent()` und `setSuffixComponent()` haben Sie die Flexibilität, zu bestimmen, ob ein `Icon` vor oder nach dem Text auf einem Button erscheinen soll. Alternativ kann die Methode `setIcon()` verwendet werden, um ein `Icon` nach dem Text, aber vor dem `suffix`-Slot des Buttons hinzuzufügen.
 
-  > - Ein "Absenden"-Button, um Daten an den Server zu senden
-  > - Ein "Löschen"-Button, um alle bereits im Formular eingegebenen Informationen zu entfernen
-
-
-2. **Benutzeraktionen**: Buttons ermöglichen es Benutzern, spezifische Aktionen innerhalb der Anwendung durchzuführen. Beispielsweise können Sie einen Button mit der Beschriftung haben:
-
-  > - "Löschen", um die Löschung eines ausgewählten Elements einzuleiten
-  > - "Speichern", um Änderungen an einem Dokument oder einer Seite zu speichern.
-
-3. **Bestätigungsdialoge**: Buttons sind oft in [`Dialog`](../components/dialog) Komponenten enthalten, die für verschiedene Zwecke gebaut wurden, um den Benutzern Optionen für die Bestätigung oder Stornierung einer Aktion oder jede andere Funktionalität, die in der verwendeten [`Dialog`](../components/dialog) enthalten ist, zu bieten.
-
-4. **Interaktionsauslöser**: Buttons können als Auslöser für Interaktionen oder Ereignisse innerhalb der Anwendung dienen. Durch Klicken auf einen Button können Benutzer komplexe Aktionen einleiten oder Animationen auslösen, Inhalte aktualisieren oder die Anzeige ändern.
-
-5. **Navigation**: Buttons können für Navigationszwecke verwendet werden, z. B. um zwischen verschiedenen Abschnitten oder Seiten einer Anwendung zu wechseln. Navigationsbuttons könnten Folgendes umfassen:
-
-  > - "Weiter" - Leitet den Benutzer zur nächsten Seite oder zum nächsten Abschnitt der aktuellen Anwendung oder Seite.
-  > - "Zurück" - Bringt den Benutzer zurück zur vorherigen Seite der Anwendung oder zum Abschnitt, in dem er sich befindet.
-  > - "Zurück" - Bringt den Benutzer zum ersten Teil der Anwendung oder der Seite, in der er sich befindet.
-
-## Hinzufügen von Icons zu Buttons <DocChip chip='since' label='24.11' /> {#adding-icons-to-buttons-docchip-chipsince-label2411-}
-
-Das Einfügen eines Icons in einen Button kann das Design Ihrer App erheblich verbessern und es den Benutzern ermöglichen, schnell handlungsrelevante Elemente auf dem Bildschirm zu erkennen. Die [`Icon`](./icon.md) Komponente bietet eine breite Auswahl an Icons zur Auswahl.
-
-Durch die Verwendung der Methoden `setPrefixComponent()` und `setSuffixComponent()` haben Sie die Flexibilität zu bestimmen, ob ein `Icon` vor oder nach dem Text auf einem Button erscheinen soll. Alternativ kann die Methode `setIcon()` verwendet werden, um ein `Icon` nach dem Text, aber vor dem `suffix`-Slot des Buttons hinzuzufügen.
+<!-- Fügen Sie dies wieder hinzu, sobald das Icon zusammengeführt wurde -->
+<!-- Weitere Informationen zur Konfiguration und Anpassung von Icons finden Sie auf der Seite [Icon-Komponente](../components/icon). -->
 
 :::tip
-Standardmäßig erbt ein `Icon` das Theme und die Größe des Buttons.
+Standardmäßig erbt ein `Icon` das Thema und die Ausdehnung des Buttons.
 :::
 
-Nachfolgend sind Beispiele von Buttons mit Text links und rechts sowie ein Button mit nur einem Icon dargestellt:
+Im Folgenden sind Beispiele für Buttons mit Text links und rechts sowie ein Button mit nur einem Symbol aufgeführt:
 
 <ComponentDemo 
 path='/webforj/buttonicon?' 
@@ -63,11 +67,11 @@ height="200px"
 
 ### Namen {#names}
 
-Die `Button`-Komponente verwendet Namen, die für die Zugänglichkeit wichtig sind. Wenn kein Name explizit festgelegt ist, wird das Label des `Button` stattdessen verwendet. Einige Icons haben jedoch keine Labels und zeigen nur nicht-textliche Elemente, wie Icons, an. In diesem Fall ist es sinnvoll, die Methode `setName()` zu verwenden, um sicherzustellen, dass die erstellte `Button`-Komponente den Standards für die Zugänglichkeit entspricht.
+Die `Button`-Komponente verwendet Namen, die für die Barrierefreiheit verwendet werden. Wenn kein Name ausdrücklich festgelegt ist, wird die Bezeichnung des `Button` stattdessen verwendet. Einige Icons verfügen jedoch nicht über Bezeichnungen und zeigen nur nicht-textliche Elemente wie Symbole an. In diesem Fall ist es ratsam, die Methode `setName()` zu verwenden, um sicherzustellen, dass die erstellte `Button`-Komponente den Barrierefreiheitsstandards entspricht.
 
 ## Deaktivieren eines Buttons {#disabling-a-button}
 
-Button-Komponenten können, wie viele andere auch, deaktiviert werden, um dem Benutzer zu signalisieren, dass eine bestimmte Aktion noch nicht oder nicht mehr verfügbar ist. Ein deaktivierter Button verringert die Opazität des Buttons und ist für alle Button-Themen und -Größen verfügbar.
+Button-Komponenten können, wie viele andere auch, deaktiviert werden, um dem Benutzer zu signalisieren, dass eine bestimmte Aktion noch nicht oder nicht mehr verfügbar ist. Ein deaktivierter Button verringert die Opazität des Buttons und ist für alle Button-Themen und -Bereiche verfügbar.
 
 <ComponentDemo 
 path='/webforj/buttondisable?' 
@@ -76,31 +80,31 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 
 <br />
 
-Ein Button kann jederzeit im Code deaktiviert werden, indem die Funktion <JavadocLink type="foundation" location="com/webforj/component/HasEnable" code='true'>setEnabled(boolean enabled)</JavadocLink> verwendet wird. Zur zusätzlichen Bequemlichkeit kann ein Button auch beim Klicken mit der eingebauten <JavadocLink type="foundation" location="com/webforj/component/button/Button" code='true' suffix='#setDisableOnClick(java.lang.Boolean)'>setDisabledOnClick(boolean enabled)</JavadocLink> Funktion deaktiviert werden.
+Ein Button kann jederzeit im Code deaktiviert werden, indem die Funktion <JavadocLink type="foundation" location="com/webforj/component/HasEnable" code='true'>setEnabled(boolean enabled)</JavadocLink> verwendet wird. Zu mehr Komfort kann ein Button auch deaktiviert werden, wenn er geklickt wird, indem die integrierte <JavadocLink type="foundation" location="com/webforj/component/button/Button" code='true' suffix='#setDisableOnClick(java.lang.Boolean)'>setDisabledOnClick(boolean enabled)</JavadocLink>-Funktion verwendet wird.
 
-In einigen Anwendungen löst das Klicken auf einen Button eine lang laufende Aktion aus. In den meisten Fällen möchte die Anwendung sicherstellen, dass nur ein einziger Klick verarbeitet wird. Dies kann in Umgebungen mit hoher Latenz ein Problem darstellen, wenn der Benutzer den Button mehrmals klickt, bevor die Anwendung die Möglichkeit hat, mit der Verarbeitung der resultierenden Aktion zu beginnen. 
+In einigen Anwendungen löst das Klicken auf einen Button eine lang laufende Aktion aus. In den meisten Fällen möchte die Anwendung möglicherweise sicherstellen, dass nur ein Klick verarbeitet wird. Dies kann ein Problem in Umgebungen mit hoher Latenz sein, wenn der Benutzer den Button mehrmals klickt, bevor die Anwendung die Möglichkeit hat, mit der Verarbeitung der resultierenden Aktion zu beginnen.
 
 :::tip
-Das Deaktivieren beim Klicken hilft nicht nur, die Verarbeitung von Aktionen zu optimieren, sondern verhindert auch, dass der Entwickler dieses Verhalten selbst implementieren muss, da diese Methode optimiert wurde, um Rundreisekommunikationen zu reduzieren.
+Das Deaktivieren beim Klicken hilft nicht nur, die Verarbeitung von Aktionen zu optimieren, sondern verhindert auch, dass der Entwickler dieses Verhalten selbst implementieren muss, da diese Methode optimiert wurde, um die Kommunikationsrunden zu reduzieren.
 :::
 
 ## Styling {#styling}
 
 ### Themen {#themes}
 
-`Button`-Komponenten kommen mit <JavadocLink type="foundation" location="com/webforj/component/button/ButtonTheme">14 diskreten Themen</JavadocLink>, die für eine schnelle Gestaltung ohne CSS vordefiniert sind. Diese Themen sind vordefinierte Stile, die auf Buttons angewendet werden können, um deren Erscheinungsbild und visuelle Präsentation zu ändern. Sie bieten eine schnelle und konsistente Möglichkeit, das Aussehen von Buttons in einer Anwendung anzupassen. 
+`Button`-Komponenten verfügen über <JavadocLink type="foundation" location="com/webforj/component/button/ButtonTheme">14 verschiedene Themen </JavadocLink>, die für schnelles Styling ohne die Verwendung von CSS integriert sind. Diese Themen sind vordefinierte Stile, die auf Buttons angewendet werden können, um ihr Erscheinungsbild und ihre visuelle Darstellung zu ändern. Sie bieten eine schnelle und konsistente Möglichkeit, das Aussehen von Buttons in einer Anwendung anzupassen.
 
 Während es viele Anwendungsfälle für jedes der verschiedenen Themen gibt, sind einige Beispiele:
 
-  - **Gefährlich**: Am besten geeignet für Aktionen mit schwerwiegenden Folgen, wie das Löschen ausgefüllter Informationen oder das dauerhafte Löschen eines Kontos/Daten.
-  - **Standard**: Geeignet für Aktionen innerhalb einer Anwendung, die keine besondere Aufmerksamkeit erfordern und generisch sind, wie das Umschalten einer Einstellung.
-  - **Primär**: Geeignet als Haupt-"Handlungsaufruf" auf einer Seite, wie z. B. Anmeldung, Speichern von Änderungen oder Fortfahren zu einer anderen Seite.
-  - **Erfolg**: Ausgezeichnet zur Visualisierung des erfolgreichen Abschlusses eines Elements in einer Anwendung, wie dem Einsenden eines Formulars oder dem Abschluss eines Anmeldevorgangs. Das Erfolgsthema kann programmgesteuert angewendet werden, sobald eine erfolgreiche Aktion abgeschlossen ist.
-  - **Warnung**: Nützlich, um anzuzeigen, dass ein Benutzer dabei ist, eine potenziell riskante Aktion durchzuführen, wie das Navigieren von einer Seite mit nicht gespeicherten Änderungen. Diese Aktionen sind oft weniger Auswirkungen als die, die das Gefahren-Thema verwenden würden.
-  - **Grau**: Gut für subtile Aktionen, wie geringfügige Einstellungen oder Aktionen, die mehr ergänzend zur Seite sind und nicht Teil der Hauptfunktionalität.
-  - **Info**: Gut, um dem Benutzer zusätzliche klärende Informationen bereitzustellen.
+  - **Gefahr**: Am besten für Aktionen mit schwerwiegenden Konsequenzen geeignet, wie das Löschen ausgefüllter Informationen oder das dauerhafte Löschen eines Kontos / von Daten.
+  - **Standard**: Geeignet für Aktionen innerhalb einer Anwendung, die keine besondere Aufmerksamkeit erfordern und allgemein sind, wie das Umschalten einer Einstellung.
+  - **Primär**: Geeignet als "Call-to-Action" auf einer Seite, wie sich anmelden, Änderungen speichern oder zu einer anderen Seite fortfahren.
+  - **Erfolg**: Ausgezeichnet zur Visualisierung des erfolgreichen Abschlusses eines Elements in einer Anwendung, wie z. B. der Einreichung eines Formulars oder dem Abschluss eines Anmeldevorgangs. Das Erfolgsthema kann programmatisch angewendet werden, sobald eine erfolgreiche Aktion abgeschlossen ist.
+  - **Warnung**: Nützlich, um anzuzeigen, dass ein Benutzer kurz davor ist, eine potenziell riskante Aktion auszuführen, z. B. das Verlassen einer Seite mit nicht gespeicherten Änderungen. Diese Aktionen sind oft weniger wirkungsvoll als die, die das Gefahren-Thema verwenden würden.
+  - **Grau**: Gut für subtile Aktionen, wie geringfügige Einstellungen oder Aktionen, die eher ergänzend zu einer Seite sind und nicht Teil der Hauptfunktionalität sind.
+  - **Info**: Gut, um zusätzliche klärende Informationen einem Benutzer bereitzustellen.
 
-Nachfolgend sind Beispiel-Buttons mit jeweils angewendetem Thema dargestellt: <br/>
+Unten sind Beispielbuttons mit jedem der unterstützten Themen aufgeführt: <br/>
 
 <ComponentDemo 
 path='/webforj/buttonthemes?' 
@@ -109,15 +113,15 @@ cssURL='/css/button/buttonThemes.css'
 height='175px'
 />
 
-### Größen {#expanses}
-Die folgenden <JavadocLink type="foundation" location="com/webforj/component/Expanse">Größenwerte</JavadocLink> ermöglichen eine schnelle Gestaltung ohne Verwendung von CSS. Dies ermöglicht die Manipulation der Dimensionen des Buttons, ohne dass diese explizit über Styling festgelegt werden müssen. Neben der Vereinfachung des Stylings trägt es auch dazu bei, eine Einheitlichkeit in Ihrer Anwendung zu schaffen und aufrechtzuerhalten. Die Standardgröße des `Button` ist `Expanse.MEDIUM`.
+### Ausdehnungen {#expanses}
+Die folgenden <JavadocLink type="foundation" location="com/webforj/component/Expanse">Expanses-Werte </JavadocLink> ermöglichen eine schnelle Anpassung des Stylings ohne Verwendung von CSS. Dies ermöglicht die Manipulation der Abmessungen des Buttons, ohne dass diese explizit mit Styles festgelegt werden müssen. Außerdem hilft es, eine Einheitlichkeit in Ihrer Anwendung zu schaffen und aufrechtzuerhalten. Die Standardausdehnung des `Button` ist `Expanse.MEDIUM`.
 
-Unterschiedliche Größen sind oft für unterschiedliche Verwendungen geeignet:
-  - **Größere** Größenwerte eignen sich für Buttons, die Aufmerksamkeit erregen, Funktionalität betonen oder Teil der Hauptfunktionalität einer Anwendung oder Seite sind.
-  - **Medium**-Button, die Standardgröße, sollten als "Standardgröße" verwendet werden, wenn das Verhalten eines Buttons nicht wichtiger oder weniger wichtig ist als bei anderen ähnlichen Komponenten.
-  - **Kleinere** Größenwerte sollten für Buttons verwendet werden, die kein integriertes Verhalten in der Anwendung haben und eine ergänzende oder utilitaristische Rolle spielen, anstatt eine wichtige Rolle in der Benutzerinteraktion zu spielen. Dazu gehören `Button`-Komponenten, die nur mit Icons für utilitaristische Zwecke verwendet werden.
+Verschiedene Größen sind oft für unterschiedliche Verwendungen geeignet:
+  - **Größere** Expanse-Werte eignen sich für Buttons, die Aufmerksamkeit erregen, Funktionalität betonen oder für die Kernfunktionalität einer Anwendung oder Seite von wesentlicher Bedeutung sind.
+  - **Mittlere** Expanse-Buttons, die Standardgröße, sollten als "Standardgröße" verwendet werden, wenn das Verhalten eines Buttons nicht mehr oder weniger wichtig ist als bei anderen ähnlichen Komponenten.
+  - **Kleinere** Expanse-Werte sollten für Buttons verwendet werden, die keine wesentlichen Verhaltensweisen in der Anwendung haben und eine eher ergänzende oder utilitaristische Rolle spielen, anstatt eine wichtige Rolle bei der Benutzerinteraktion zu spielen. Dies umfasst `Button`-Komponenten, die nur mit Symbolen für utilitaristische Zwecke verwendet werden.
 
-Nachfolgend sind die verschiedenen Größe unterstützt für die `Button`-Komponente dargestellt: <br/>
+Im Folgenden sind die verschiedenen unterstützten Expanse für die `Button`-Komponente aufgeführt: <br/>
 
 <ComponentDemo 
 path='/webforj/buttonexpanses?' 
@@ -129,14 +133,15 @@ height='200px'
 
 ## Best Practices {#best-practices}
 
-Um ein optimales Benutzererlebnis bei der Verwendung der `Button`-Komponente zu gewährleisten, beachten Sie bitte die folgenden Best Practices:
+Um ein optimales Benutzererlebnis bei der Verwendung der `Button`-Komponente sicherzustellen, sollten die folgenden Best Practices berücksichtigt werden:
 
-1. **Klarer Text**: Verwenden Sie klaren und prägnanten Text innerhalb Ihrer `Button`-Komponente, um einen klaren Hinweis auf deren Zweck zu geben.
+1. **Eindeutiger Text**: Verwenden Sie klaren und prägnanten Text innerhalb Ihrer `Button`-Komponente, um einen klaren Hinweis auf ihren Zweck zu geben.
 
-2. **Angemessene visuelle Gestaltung**: Berücksichtigen Sie die visuelle Gestaltung und das Thema des `Button`, um Konsistenz mit dem Design Ihrer Anwendung sicherzustellen. Zum Beispiel:
-  > - Ein "Abbrechen"-`Button` sollte mit dem entsprechenden Thema oder CSS-Styling gestaltet werden, um sicherzustellen, dass den Benutzern klar ist, dass sie eine Aktion abbrechen möchten.
-  > - Ein "Bestätigen"-`Button` hätte ein anderes Styling als ein "Abbrechen"-Button, würde aber ebenso hervorstechen, um sicherzustellen, dass die Benutzer wissen, dass dies eine besondere Aktion ist.
+2. **Angemessene visuelle Gestaltung**: Berücksichtigen Sie das visuelle Styling und das Thema des `Button`, um sicherzustellen, dass es mit dem Design Ihrer Anwendung übereinstimmt. Zum Beispiel:
+  > - Ein "Abbrechen"-`Button` sollte mit dem entsprechenden Thema oder CSS-Styling gestaltet werden, um sicherzustellen, dass die Benutzer sicher sind, dass sie eine Aktion abbrechen möchten.
+  > - Ein "Bestätigen"-`Button` sollte sich von einem "Abbrechen"-Button unterscheiden, aber ebenfalls herausstechen, um sicherzustellen, dass die Benutzer wissen, dass dies eine besondere Aktion ist.
 
-3. **Effiziente Ereignisbehandlung**: Behandeln Sie `Button`-Ereignisse effizient und geben Sie den Benutzern angemessenes Feedback. Überprüfen Sie [Ereignisse](../building-ui/events), um effiziente Verhaltensweisen zur Ereignisbehandlung zu überprüfen.
+3. **Effiziente Ereignisbehandlung**: Behandeln Sie `Button`-Ereignisse effizient und bieten Sie den Benutzern angemessenes Feedback. Verweisen Sie auf [Ereignisse](../building-ui/events), um effiziente Ereignisverhaltensweisen zu überprüfen.
 
-4. **Testen und Zugänglichkeit**: Testen Sie das Verhalten des Buttons in verschiedenen Szenarien, z. B. wenn er deaktiviert ist oder den Fokus erhält, um ein reibungsloses Benutzererlebnis zu gewährleisten. Befolgen Sie die Richtlinien zur Barrierefreiheit, um den `Button` für alle Benutzer, einschließlich derjenigen, die auf unterstützende Technologien angewiesen sind, benutzbar zu machen.
+4. **Testen und Barrierefreiheit**: Testen Sie das Verhalten des Buttons in verschiedenen Szenarien, wie z. B. wenn er deaktiviert ist oder den Fokus erhält, um ein reibungsloses Benutzererlebnis zu gewährleisten.
+Befolgen Sie die Richtlinien zur Barrierefreiheit, um den `Button` für alle Benutzer, einschließlich derjenigen, die auf unterstützende Technologien angewiesen sind, nutzbar zu machen.
