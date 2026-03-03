@@ -40,5 +40,7 @@ public class ConfirmDialogOptionsView extends Composite<Div> {
     } else {
       OptionDialog.showMessageDialog("Changes saved", "Saved", "Got it");
     }
+
+    show();
   }
 }
