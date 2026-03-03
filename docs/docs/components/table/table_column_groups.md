@@ -48,7 +48,7 @@ Groups:         Group "G1" [C, A], Group "G2" [E, D]
 Visual order:   C, A, E, D, B
 ```
 
-Ungrouped columns, those not referenced in any group, are not hidden. They appear at their natural position relative to grouped columns, based on the order they were originally added to the `Table`.
+Ungrouped columns, those not referenced in any group, aren't hidden. They appear at their natural position relative to grouped columns, based on the order they were originally added to the `Table`.
 
 In this example, `Number` appears first because it was added before `Title`. `Label` appears between `Genre` and `Cost` because it was added between them in the original column order:
 
@@ -58,7 +58,7 @@ Groups:         Group "Music" [Title, Artist, Genre], Group "Pricing" [Cost]
 Visual order:   Number, Title, Artist, Genre, Label, Cost
 ```
 
-The following demo illustrates this behavior. `Number` and `Label` are not referenced in any group, but they retain their natural positions based on the order they were added to the `Table`.
+The following demo illustrates this behavior. `Number` and `Label` aren't referenced in any group, but they retain their natural positions based on the order they were added to the `Table`.
 
 <!-- vale off -->
 <ComponentDemo 
@@ -79,7 +79,7 @@ To control ungrouped column placement explicitly, include them as top-level colu
 When groups are active, drag-and-drop column movement is constrained to maintain group integrity:
 
 - **Within a group** - A column inside a group can only be moved within its immediate parent group. Dragging it outside the group is rejected, and the column snaps back to its original position.
-- **Ungrouped columns** - An ungrouped column can only move to positions occupied by other ungrouped columns. It cannot be dropped into the middle of a group.
+- **Ungrouped columns** - An ungrouped column can only move to positions occupied by other ungrouped columns. It can't be dropped into the middle of a group.
 - **Reordering groups** - An entire group can be dragged to reorder it among its siblings at the same nesting level.
 
 ```
@@ -170,7 +170,7 @@ dwc-table::part(cell-group-depth-1) {
 
 ## Hidden columns {#hidden-columns}
 
-Hidden columns are excluded from the visual order and the header layout. If a group contains a mix of visible and hidden columns, only the visible ones appear and the group colspan adjusts accordingly. If every column in a group is hidden, the group header is not rendered at all.
+Hidden columns are excluded from the visual order and the header layout. If a group contains a mix of visible and hidden columns, only the visible ones appear and the group colspan adjusts accordingly. If every column in a group is hidden, the group header isn't rendered at all.
 
 <!-- vale off -->
 <ComponentDemo 
