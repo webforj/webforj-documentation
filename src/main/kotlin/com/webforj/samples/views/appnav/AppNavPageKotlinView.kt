@@ -9,7 +9,7 @@ import com.webforj.router.Router
 import com.webforj.router.annotation.Route
 import com.webforj.router.event.NavigateEvent
 
-@Route(value = ":id", outlet = AppNavView::class)
+@Route(value = ":id", outlet = AppNavKotlinView::class)
 class AppNavPageKotlinView: Composite<Div>() {
   private val self = boundComponent
   private val paragraph: Paragraph
