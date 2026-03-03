@@ -15,52 +15,62 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @InlineStyleSheet(/*css */"""
-  .window {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    margin: 20px;
-  }
-""")
+          .window {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            margin: 20px;
+          }
+        """)
 @Route
 @FrameTitle("Tabbed Pane Expanses and Themes")
 public class TabbedPaneExpanseThemeView extends Composite<Div> {
-
-  TabbedPane pane = new TabbedPane();
-  ChoiceBox themes = new ChoiceBox("Themes");
-  ChoiceBox expanses = new ChoiceBox("Expanses");
+  // Self reference enabling fluent method chaining
+  private final Div self = getBoundComponent();
+  // UI Components
+  private final TabbedPane pane = new TabbedPane();
+  private final ChoiceBox themes = new ChoiceBox("Themes");
+  private final ChoiceBox expanses = new ChoiceBox("Expanses");
 
   public TabbedPaneExpanseThemeView() {
-    getBoundComponent().addClassName("window");
+    // Configure main container
+    self.addClassName("window");
+
+    // Create options layout
     FlexLayout options = new FlexLayout();
     options.setSpacing("50px")
-        .add(themes,expanses);
-    getBoundComponent().add(options, pane);
+            .add(themes, expanses);
 
+    self.add(options, pane);
+
+    // Create tab icons
     Icon dashboardIcon = TablerIcon.create("dashboard");
     Icon ordersIcon = TablerIcon.create("shopping-cart");
     Icon customersIcon = TablerIcon.create("users");
     Icon productsIcon = TablerIcon.create("box");
     Icon documentsIcon = TablerIcon.create("files");
 
+    // Add tabs to the pane
     pane.addTab(new Tab("Dashboard", dashboardIcon));
     pane.addTab(new Tab("Orders", ordersIcon));
     pane.addTab(new Tab("Customers", customersIcon));
-		pane.addTab(new Tab("Products", productsIcon));
+    pane.addTab(new Tab("Products", productsIcon));
     pane.addTab(new Tab("Documents", documentsIcon));
-    
-    for(Theme theme : Theme.values()){
+
+    // Populate theme options
+    for (Theme theme : Theme.values()) {
       themes.add(theme.toString());
     }
-    themes.setWidth("200px");
-    themes.selectIndex(1);
-    themes.onSelect( e -> pane.setTheme(Theme.valueOf(e.getSelectedItem().getText())));
+    themes.setWidth("200px")
+            .selectIndex(1)
+            .onSelect(e -> pane.setTheme(Theme.valueOf(e.getSelectedItem().getText())));
 
-    for(Expanse expanse : Expanse.values()){
+    // Populate expanse options
+    for (Expanse expanse : Expanse.values()) {
       expanses.add(expanse.toString());
     }
-    expanses.setWidth("200px");
-    expanses.selectIndex(5);
-    expanses.onSelect( e -> pane.setExpanse(Expanse.valueOf(e.getSelectedItem().getText())));
+    expanses.setWidth("200px")
+            .selectIndex(5)
+            .onSelect(e -> pane.setExpanse(Expanse.valueOf(e.getSelectedItem().getText())));
   }
 }
