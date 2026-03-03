@@ -75,8 +75,6 @@ class AppLayoutDrawerUtilityKotlinView: Composite<AppLayout>() {
           tooltipText = "Buy premium"
         }
       }
-      isDrawerHeaderVisible = true
-      isDrawerOpened = true
     }
   }
 }
