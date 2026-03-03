@@ -16,11 +16,14 @@ Completing this step creates a version of [3-routing-and-composites](https://git
 
 ## Routable apps {#routable-apps}
 
-Previously, your app had a single function: displaying a table of existing customer data. But with an app that can also add new customers, it’s beneficial for long-term design, testing, and maintenance to separate these UIs. You’ll need to make your app routable so webforJ can access and load the two UIs individually.
+Previously, your app had a single function: displaying a table of existing customer data. 
+In this step, your app will also be able to modify the customer data by adding new customers.
+Separating the UIs for display and modification is beneficial for long-term maintenance and testing, so you'll add this feature as a separate page.
+You’ll need to make your app [routable](/docs/routing/overview) so webforJ can access and load the two UIs individually.
 
-A routable app renders the UI based on the URL. Annotating the class that extends the `App` class with [`@Routify`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/Routify.html) tells webforJ the package that'll contain UI components.
+A routable app renders the UI based on the URL. Annotating the class that extends the `App` class with [`@Routify`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/Routify.html) enables routing, and the `packages` element tells webforJ which packages contain UI components.
 
-When you're adding the `@Routify` annotation to `Application`, also take out the UI components from the `run()` method. You'll move the components to a class that you'll make in the `com.webforj.demos.views` package:
+When you add the `@Routify` annotation to `Application`, remove the `run()` method. You'll move the components from that method to a class that you'll make in the `com.webforj.demos.views` package. Your updated `Application.java` file should look like this:
 
 ```java title="Application.java" {5-6,15}
 @SpringBootApplication
@@ -51,7 +54,7 @@ Keeping the `@StyleSheet` annotation in `Application` applies that CSS globally.
 Adding the `@Routify` annotation makes your app routable. Once it's routable, your app will look in the `com.webforj.demos.views` package for routes. 
 You'll need to create the routes for your UIs and also specify their [Route Types](/docs/routing/route-hierarchy/route-types). The route type determines how to map the UI content to the URL.
 
-The first type of route type is `View`. These kinds of routes map directly to a specific URL segment in your app. The UIs for the table and the form for adding customers will both be `View` routes.
+The first type of route type is `View`. These kinds of routes map directly to a specific URL segment in your app. The UIs for the table and the new customer form will both be `View` routes.
 
 The second route type is `Layout`, which contains UI that appears on multiple pages, such as a header or sidebar. Layout routes also wrap child views without contributing to the URL.
 
@@ -59,8 +62,8 @@ Adding the route type as a suffix to the class name specifies the route’s type
 
 To keep the app's two functions separate, your app needs to map the UIs to two unique `View` routes: one for the table and one for the customer form. In `/src/main/java/com/webforj/demos/views`, create two classes with a `View` suffix:
 
-- **`MainView`** - This view will have the `Table` previously in the `Application` class.
-- **`FormView`** - This view will have the form for adding new customers.
+- **`MainView`**: This view will have the `Table` previously in the `Application` class.
+- **`FormView`**: This view will have the form for adding new customers.
 
 ### Mapping URLs to components {#mapping-urls-to-components}
 
@@ -91,7 +94,7 @@ public class FormView {
 ```
 
 :::tip Default behavior
-If you don’t explicitly assign a value for the `@Route` annotation, the resulting URL segment becomes the class name converted to all lowercase, with the `View` suffix removed.
+If you don’t explicitly assign a value for the `@Route` annotation, the URL segment is the class name converted to lowercase, with the `View` suffix removed.
 
 - `MainView` would map to `/main`
 - `FormView` would map to `/form`
@@ -105,11 +108,11 @@ Besides both being view routes, `MainView` and `FormView` share additional chara
 
 When the app was single-paged, you stored the components inside a `Frame`. Moving forward, with an app with multiple views, you'll need to wrap those UI components inside [`Composite` components](/docs/building-ui/composite-components).
 
-`Composite` components are wrappers that make it easy to create reusable components. You use `Composite` components by extending a class with a `Composite` and set a bound component, e.g., `Composite<Button>`. Avoid extending a built-in component directly, as doing so could alter its behavior when it appears in different parts of your app.
+`Composite` components are wrappers that make it easy to create reusable components. You use `Composite` components by extending a class with a `Composite` and setting a bound component, e.g., `Composite<Button>`. Avoid extending a built-in component directly, as doing so could alter its behavior when it appears in different parts of your app.
 
-This tutorial uses `Div` elements as the bound components, but they can be any component, such as [`FlexLayout`](/docs/components/flex-layout) or [`AppLayout`](/docs/components/app-layout). Using the `getBoundComponent()` method, you can reference the bound component and have access to the methods for that type of component. This is helpful when trying to set the sizing, add a CSS class name, add components you want displayed in the `Composite` component, and access to component-specific methods.
+This tutorial uses `Div` elements as the bound components, but they can be any component, such as [`FlexLayout`](/docs/components/flex-layout) or [`AppLayout`](/docs/components/app-layout). Using the `getBoundComponent()` method, you can reference the bound component and have access to the methods for that type of component. This lets you set the sizing, add a CSS class name, add components you want displayed in the `Composite` component, and access component-specific methods.
 
-For `MainView` and `FormView`, have the classes extend a `Composite` component with a `Div` as the bound component. Then, reference that bound component so you can add in the UIs later down the line. Both views should look similar to the following structure:
+For `MainView` and `FormView`, have the classes extend a `Composite` component with `Div` as the bound component. Then, reference that bound component so you can add in the UIs later. Both views should look similar to the following structure:
 
 ```java
 // Extend Composite with a bound component
