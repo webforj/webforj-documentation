@@ -19,19 +19,15 @@ import org.junit.jupiter.params.provider.MethodSource;
     appLayoutPage = new AppLayoutPage(page);
   }
 
-    protected String getRoute(SupportedLanguage language) {
-        return AppLayoutPage.getRoute(language);
-    }
-
-    public void setupAppLayout(String route) {
-        navigateToRoute(route);
+    public void setupAppLayout(SupportedLanguage language) {
+        navigateToRoute(AppLayoutPage.getRoute(language));
         appLayoutPage = new AppLayoutPage(page);
     }
 
-    @ParameterizedTest(name = "Dashboard Link with Route: {0}")
+    @ParameterizedTest
     @MethodSource("provideRoutes")
-    public void testDashboardLink(String route) {
-        setupAppLayout(route);
+    public void testDashboardLink(SupportedLanguage language) {
+        setupAppLayout(language);
         appLayoutPage.getDashboardLink().click();
         assertThat(page.getByText("Content for Dashboard")).isVisible();
     }
