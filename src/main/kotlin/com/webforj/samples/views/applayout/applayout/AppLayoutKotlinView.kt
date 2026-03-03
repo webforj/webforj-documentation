@@ -23,6 +23,7 @@ import com.webforj.samples.views.applayout.drawerLogo
 @StyleSheet("ws://css/applayout/applayout.css")
 @FrameTitle("AppLayout")
 class AppLayoutKotlinView: Composite<AppLayout>() {
+  private val self = boundComponent
 
   init {
     boundComponent.apply {
