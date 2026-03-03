@@ -36,7 +36,8 @@ public class DataTableView extends Composite<Div> {
     // Initialize data from JSON asset
     List<JsonObject> data = new Gson().fromJson(
         Assets.contentOf(Assets.resolveContextUrl("context://data/olympic-winners.json")),
-        new TypeToken<List<JsonObject>>() {});
+        new TypeToken<List<JsonObject>>() {
+        });
 
     // Setup repository with filter
     repository = new CollectionRepository<>(data);
@@ -90,6 +91,7 @@ public class DataTableView extends Composite<Div> {
         .setHeight("400px")
         .setSelectionMode(SelectionMode.MULTIPLE)
         .setHeaderCheckboxSelection(false);
+
 
     // Define columns using helper method
     List<String> columnsList = List.of("athlete", "age", "country", "year", "total");

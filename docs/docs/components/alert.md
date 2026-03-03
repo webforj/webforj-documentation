@@ -12,7 +12,11 @@ The `Alert` component in webforJ provides contextual feedback messages for users
 
 Alerts help draw attention to key information without disrupting the user's workflow. They're perfect for system messages, form validation feedback, or status updates that need to be clearly visible but not intrusive.
 
-Here's an example of an alert component:
+<!-- INTRO_END -->
+
+## Creating alerts {#creating-alerts}
+
+An `Alert` can hold rich content like text, buttons, and other components. Set a theme to visually distinguish the type of message being displayed.
 
 <ComponentDemo 
 path='/webforj/alert?' 

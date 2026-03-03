@@ -10,6 +10,8 @@ sidebar_position: 150
 
 The `Tree` component organizes data as a hierarchy of nodes. Each node holds a unique key and a label. Nodes connect to form parent-child relationships. You can expand or collapse nodes to show or hide their children. Icons clarify what kind of node you’re looking at and whether it’s selected. Selection supports choosing one node or many at once.
 
+<!-- INTRO_END -->
+
 ## Node model and tree structure {#node-model-and-tree-structure}
 
 ### The role of `TreeNode` {#the-role-of-treenode}

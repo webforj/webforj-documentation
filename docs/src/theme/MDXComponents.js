@@ -12,6 +12,7 @@ import ComponentArchetype from '@site/src/components/DocsTools/ComponentArchetyp
 import ExpandableCode from '@site/src/components/DocsTools/ExpandableCode';
 import GiscusComments from '@site/src/components/DocsTools/GiscusComments';
 import AskMenu from '@site/src/components/DocsTools/AskMenu';
+import TableWrapper from '@site/src/components/DocsTools/TableWrapper';
 import DocCardList from '@theme/DocCardList';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -58,6 +59,7 @@ export default {
   ExpandMoreIcon,
   GalleryCard,
   GalleryGrid,
-  ColorPalette
+  ColorPalette,
+  table: TableWrapper
 };
 

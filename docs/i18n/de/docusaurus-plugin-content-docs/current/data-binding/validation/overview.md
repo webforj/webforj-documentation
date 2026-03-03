@@ -3,7 +3,8 @@ sidebar_position: 1
 title: Validation
 hide_giscus_comments: true
 hide_table_of_contents: true
-_i18n_hash: aeb8627a22e6d8e369ba8990e8be1ccb
+sidebar_class_name: has-new-content
+_i18n_hash: f64d390319483797294e2ceff76c12f8
 ---
 <Head>
   <style>{`
@@ -13,7 +14,7 @@ _i18n_hash: aeb8627a22e6d8e369ba8990e8be1ccb
   `}</style>
 </Head>
 
-Validierungen spielen eine entscheidende Rolle, indem sie Geschäftsregeln durchsetzen, bevor das System Daten im Modell aktualisiert oder darauf reagiert. webforJ integriert Validierungen direkt in den Datenbindungsprozess und bietet eine nahtlose Möglichkeit, die Datenintegrität sicherzustellen, während sie zwischen UI-Komponenten und dem Backend fließen.
+Validierungen setzen Geschäftsregeln durch, bevor das System Daten im Modell aktualisiert oder darauf reagiert. webforJ integriert Validierungen direkt in den Datenbindungsprozess und überprüft die Datenintegrität, während sie zwischen UI-Komponenten und dem Backend fließen.
 
 ## Themen {#topics}
 
