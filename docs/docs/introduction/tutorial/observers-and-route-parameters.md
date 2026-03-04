@@ -274,6 +274,7 @@ public class FormView extends Composite<Div> implements WillEnterObserver {
       listCountries.add(new ListItem(countryItem, countryItem.toString()));
     }
     country.insert(listCountries);
+    country.selectIndex(0);
   }
 
   private void submitCustomer() {
@@ -350,18 +351,18 @@ public class MainView extends Composite<Div> {
 
   private Div self = getBoundComponent();
   private Table<Customer> table = new Table<>();
-  private Button add = new Button("Add Customer", ButtonTheme.PRIMARY,
+  private Button addCustomer = new Button("Add Customer", ButtonTheme.PRIMARY,
       e -> Router.getCurrent().navigate(FormView.class));
 
   public MainView(CustomerService customerService) {
     this.customerService = customerService;
 
-    add.setWidth(200);
+    add.CustomersetWidth(200);
     buildTable();
 
     self.setWidth("fit-content")
       .addClassName("card")
-      .add(table, add);
+      .add(table, addCustomer);
   }
   
   private void buildTable() {

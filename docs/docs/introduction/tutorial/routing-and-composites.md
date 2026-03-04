@@ -120,7 +120,7 @@ For `MainView` and `FormView`, extend `Composite` with `Div` as the bound compon
 
 ```java
 // Extend Composite with a bound component
-public class BasicView extends Composite<Div> {
+public class MainView extends Composite<Div> {
 
   // Access the bound component
   private Div self = getBoundComponent();
@@ -128,7 +128,7 @@ public class BasicView extends Composite<Div> {
   // Create a component UI
   private Button submit = new Button("Submit");
 
-  public BasicView() {
+  public MainView() {
 
     // Add the UI component to the bound component
     self.add(submit);
@@ -142,17 +142,36 @@ Now that you can reference the bound component in `MainView` and `FormView`, you
 You can use the CSS from the first step, [Creating a Basic App](/docs/introduction/tutorial/creating-a-basic-app#referencing-a-css-file), to give both views identical UI container styles. 
 Add the CSS class name `card` to the bound component in each view:
 
-```java {7}
-public class BasicView extends Composite<Div> {
+<Tabs>
+  <TabItem value="MainView" label="MainView">
+    ```java {7}
+    @Route("/")
+    public class MainView extends Composite<Div> {
 
-  private Div self = getBoundComponent();
+      private Div self = getBoundComponent();
 
-  public BasicView() {
+      public MainView() {
 
-    self.addClassName("card");
-  }
-}
-```
+        self.addClassName("card");
+      }
+    }
+    ```
+  </TabItem>
+  <TabItem value="FormView" label="FormView">
+    ```java {7}
+    @Route("customer")
+    public class FormView extends Composite<Div> {
+
+      private Div self = getBoundComponent();
+
+      public FormView() {
+
+        self.addClassName("card");
+      }
+    }
+    ```
+  </TabItem>
+</Tabs>
 
 ### Using `CustomerService` {#using-customerservice}
 
@@ -160,18 +179,36 @@ The `Table` in `MainView` displays each customer, while `FormView` adds new cust
 
 The views get access through the Spring service created in [Working with Data](/docs/introduction/tutorial/working-with-data#creating-a-service), `CustomerService`. To use the Spring service in each view, make `CustomerService` a constructor parameter:
 
-```java {6-7}
-@Route()
-public class BasicView extends Composite<Div> {
+<Tabs>
+  <TabItem value="MainView" label="MainView">
+    ```java {6-7}
+    @Route("/")
+    public class MainView extends Composite<Div> {
 
-  private Div self = getBoundComponent();
+      private Div self = getBoundComponent();
 
-  public BasicView(CustomerService customerService) {
-    this.customerService = customerService;
+      public MainView(CustomerService customerService) {
+        this.customerService = customerService;
 
-  }
-}
-```
+      }
+    }
+    ```
+  </TabItem>
+  <TabItem value="FormView" label="FormView">
+    ```java {6-7}
+    @Route("customer")
+    public class FormView extends Composite<Div> {
+
+      private Div self = getBoundComponent();
+
+      public FormView(CustomerService customerService) {
+        this.customerService = customerService;
+
+      }
+    }
+    ```
+  </TabItem>
+</Tabs>
 
 ### Setting the frame title {#setting-the-frame-tile}
 
@@ -179,39 +216,64 @@ The last shared trait for the views is a frame title. When a user has multiple t
 
 The [`@FrameTitle`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/FrameTitle.html) annotation defines what appears in the browser's title or page's tab. For both views, add a frame title using the `@FrameTitle` annotation:
 
-```java title="MainView.java" {2}
-@Route("/")
-@FrameTitle("Customer Table")
-public class MainView extends Composite<Div> {
+<Tabs>
+  <TabItem value="MainView" label="MainView">
+  ```java title="MainView.java" {2}
+  @Route("/")
+  @FrameTitle("Customer Table")
+  public class MainView extends Composite<Div> {
 
-  private Div self = getBoundComponent();
+    private Div self = getBoundComponent();
 
-  public MainView(CustomerService customerService) {
-    this.customerService = customerService;
+    public MainView(CustomerService customerService) {
+      this.customerService = customerService;
 
-    self.addClassName("card");
+      self.addClassName("card");
+    }
   }
-}
-```
+  ```
+  </TabItem>
+  <TabItem value="FormView" label="FormView">
+  ```java title="FormView.java" {2}
+  @Route("customer")
+  @FrameTitle("Customer Form")
+  public class FormView extends Composite<Div> {
 
-```java title="FormView.java" {2}
-@Route("customer")
-@FrameTitle("Customer Form")
-public class FormView extends Composite<Div> {
+    private Div self = getBoundComponent();
 
-  private Div self = getBoundComponent();
+    public FormView(CustomerService customerService) {
+      this.customerService = customerService;
 
-  public FormView(CustomerService customerService) {
-    this.customerService = customerService;
-
-    self.addClassName("card");
+      self.addClassName("card");
+    }
   }
-}
-```
+  ```
+  </TabItem>
+</Tabs>
 
 ## Creating `MainView` {#creating-mainview}
 
 After making your app routable, giving the views `Composite` component wrappers, and including the `CustomerService`, you’re ready to build the UIs unique to each view. As mentioned previously, `MainView` contains the UI components initially in `Application`. This class also needs a way to navigate to `FormView`.
+
+### Grouping the `Table` methods {#grouping-the-table-methods}
+
+As you're moving the components from `Application` to `MainView`, it's a good idea to start sectioning parts of your app, so one custom method can make changes to the `Table` at once. Sectioning your code now makes it more manageable as the app grows more complex.
+
+Now, your `MainView` constructor should only call one `buildTable()` method that adds the columns, sets the sizing, and references the repository:
+
+```java
+private void buildTable() {
+  table.setSize("1000px", "294px");
+  table.setMaxWidth("90vw");
+  table.addColumn("firstName", Customer::getFirstName).setLabel("First Name");
+  table.addColumn("lastName", Customer::getLastName).setLabel("Last Name");
+  table.addColumn("company", Customer::getCompany).setLabel("Company");
+  table.addColumn("country", Customer::getCountry).setLabel("Country");
+  table.setColumnsToAutoFit();
+  table.getColumns().forEach(column -> column.setSortable(true));
+  table.setRepository(customerService.getFilterableRepository());
+}
+```
 
 ### Navigating to `FormView`{#navigating-to-formview}
 
@@ -229,26 +291,8 @@ This code will programmatically send users to the new customer form, but the nav
 To allow users to add a new customer, you can either modify or replace the info button from `Application`. Instead of opening a message dialog, the button can navigate to the `FormView` class:
 
 ```java
-private Button add = new Button("Add Customer", ButtonTheme.PRIMARY,
+private Button addCustomer = new Button("Add Customer", ButtonTheme.PRIMARY,
     e -> Router.getCurrent().navigate(FormView.class));
-```
-
-### Grouping the `Table` methods {#grouping-the-table-methods}
-
-With added navigation, your app is growing more complex. It's a good idea to start sectioning parts of your app, so one custom method can make changes to the `Table` at once. Now, your `MainView` constructor should only call one `buildTable()` method that adds the columns, sets the sizing, and references the repository:
-
-```java
-private void buildTable() {
-  table.setSize("1000px", "294px");
-  table.setMaxWidth("90vw");
-  table.addColumn("firstName", Customer::getFirstName).setLabel("First Name");
-  table.addColumn("lastName", Customer::getLastName).setLabel("Last Name");
-  table.addColumn("company", Customer::getCompany).setLabel("Company");
-  table.addColumn("country", Customer::getCountry).setLabel("Country");
-  table.setColumnsToAutoFit();
-  table.getColumns().forEach(column -> column.setSortable(true));
-  table.setRepository(customerService.getFilterableRepository());
-}
 ```
 
 ## Completed `MainView` {#completed-mainview}
@@ -265,18 +309,18 @@ public class MainView extends Composite<Div> {
 
   private Div self = getBoundComponent();
   private Table<Customer> table = new Table<>();
-  private Button add = new Button("Add Customer", ButtonTheme.PRIMARY,
+  private Button addCustomer = new Button("Add Customer", ButtonTheme.PRIMARY,
       e -> Router.getCurrent().navigate(FormView.class));
 
   public MainView(CustomerService customerService) {
     this.customerService = customerService;
 
-    add.setWidth(200);
+    addCustomer.setWidth(200);
     buildTable();
 
     self.setWidth("fit-content")
       .addClassName("card")
-      .add(table, add);
+      .add(table, addCustomer);
   }
   
   private void buildTable() {
@@ -371,6 +415,9 @@ for (Country countryItem : Customer.Country.values()) {
 
 //Insert the filled ArrayList into the ChoiceBox
 country.insert(listCountries);
+
+//Makes the first `ListItem` the default when the form loads
+country.selectIndex(0);
 ```
 
 Then, when the user selects an option in the `ChoiceBox`, the `Customer` instance should update with the key of the selected item, which is a `Customer.Country` value.
@@ -383,7 +430,7 @@ private ChoiceBox country = new ChoiceBox("Country",
 To keep the code clean, the iterator that creates the `ArrayList<ListItem>` and adds it to the `ChoiceBox` should be in a separate method. 
 After you add a `ChoiceBox` that allows the user to choose the `country` property, `FormView` should look like this:
 
-```java title="FormView.java" {9-10,15,19-25}
+```java title="FormView.java" {9-10,15,19-26}
 public class FormView extends Composite<Div> {
   private final CustomerService customerService;
   private Customer customer = new Customer();
@@ -407,6 +454,7 @@ public class FormView extends Composite<Div> {
       listCountries.add(new ListItem(countryItem, countryItem.toString()));
     }
     country.insert(listCountries);
+    country.selectIndex(0);
   }
 
 }
@@ -558,6 +606,7 @@ public class FormView extends Composite<Div> {
       listCountries.add(new ListItem(countryItem, countryItem.toString()));
     }
     country.insert(listCountries);
+    country.selectIndex(0);
   }
 
   private void submitCustomer() {
