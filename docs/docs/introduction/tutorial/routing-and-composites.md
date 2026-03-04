@@ -303,7 +303,7 @@ public class MainView extends Composite<Div> {
 
 ### Creating a `Customer` instance {#creating-a-customer-instance}
 
-When a user is editing data for a new customer, changes should only be applied to the repository when they are ready to submit the form. Using an instance of the `Customer` object is a convenient way to edit and maintain the new data without editing the repository directly. Create a new `Customer` inside `FormView` to use for the form:
+When a user is editing data for a new customer, changes should only be applied to the repository when they're ready to submit the form. Using an instance of the `Customer` object is a convenient way to edit and maintain the new data without editing the repository directly. Create a new `Customer` inside `FormView` to use for the form:
 
 ```java
 private Customer customer = new Customer();
@@ -434,7 +434,7 @@ private void navigateToMain(){
 
 **Cancel button**
 
-Discarding the changes on the form doesn’t require any additional code for the event beyond returning to `MainView`. However, since canceling is not a primary action, setting the theme of the button to an outline gives the submit button more prominence. 
+Discarding the changes on the form doesn’t require any additional code for the event beyond returning to `MainView`. However, since canceling isn't a primary action, setting the theme of the button to an outline gives the submit button more prominence. 
 The [Themes](/docs/components/button#themes) section of the `Button` component page lists all available themes.
 
 
