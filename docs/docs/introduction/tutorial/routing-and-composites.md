@@ -4,11 +4,13 @@ sidebar_position: 4
 description: Step 3 - Make your app navigable.
 ---
 
-Up until now, this tutorial has only been a single-page app. This step changes that. Using the data from [Working with Data](/docs/introduction/tutorial/working-with-data), you'll create an app that's able to navigate to another page for adding new customers in the browser by applying these concepts:
+Up until now, this tutorial has only been a single-page app. This step changes that. 
+You'll move the UI you created in [Working with Data](/docs/introduction/tutorial/working-with-data) to its own page and create another page for adding new customers.
+Then, you'll connect these pages so your app is able to navigate between them by applying these concepts:
 
-- Routing
-- Composite components
-- Using the [`ColumnsLayout`](/docs/components/columns-layout) component
+- [Routing](/docs/routing/overview)
+- [Composite components](/docs/building-ui/composite-components)
+- The [`ColumnsLayout`](/docs/components/columns-layout) component
 
 Completing this step creates a version of [3-routing-and-composites](https://github.com/webforj/webforj-demo-application/tree/main/3-routing-and-composites).
 
@@ -19,7 +21,7 @@ Completing this step creates a version of [3-routing-and-composites](https://git
 Previously, your app had a single function: displaying a table of existing customer data. 
 In this step, your app will also be able to modify the customer data by adding new customers.
 Separating the UIs for display and modification is beneficial for long-term maintenance and testing, so you'll add this feature as a separate page.
-You’ll need to make your app [routable](/docs/routing/overview) so webforJ can access and load the two UIs individually.
+You’ll make your app [routable](/docs/routing/overview) so webforJ can access and load the two UIs individually.
 
 A routable app renders the UI based on the URL. Annotating the class that extends the `App` class with [`@Routify`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/Routify.html) enables routing, and the `packages` element tells webforJ which packages contain UI components.
 
@@ -54,22 +56,23 @@ Keeping the `@StyleSheet` annotation in `Application` applies that CSS globally.
 Adding the `@Routify` annotation makes your app routable. Once it's routable, your app will look in the `com.webforj.demos.views` package for routes. 
 You'll need to create the routes for your UIs and also specify their [Route Types](/docs/routing/route-hierarchy/route-types). The route type determines how to map the UI content to the URL.
 
-The first type of route type is `View`. These kinds of routes map directly to a specific URL segment in your app. The UIs for the table and the new customer form will both be `View` routes.
+The first route type is `View`. These kinds of routes map directly to a specific URL segment in your app. The UIs for the table and the new customer form will both be `View` routes.
 
 The second route type is `Layout`, which contains UI that appears on multiple pages, such as a header or sidebar. Layout routes also wrap child views without contributing to the URL.
 
-Adding the route type as a suffix to the class name specifies the route’s type for the class. For example, `MainView` is a `View` route type.
+To specify the route type of a class, append the route type to the end of the class name as a suffix.
+For example, `MainView` is a `View` route type.
 
 To keep the app's two functions separate, your app needs to map the UIs to two unique `View` routes: one for the table and one for the customer form. In `/src/main/java/com/webforj/demos/views`, create two classes with a `View` suffix:
 
 - **`MainView`**: This view will have the `Table` previously in the `Application` class.
-- **`FormView`**: This view will have the form for adding new customers.
+- **`FormView`**: This view will have a form for adding new customers.
 
 ### Mapping URLs to components {#mapping-urls-to-components}
 
 Your app is routable and knows to look for two `View` routes, `MainView` and `FormView`, but it doesn't have a specific URL to load them at. Using the `@Route` annotation on a view class, you can tell webforJ where to load it based on a given URL segment. For example, using `@Route("about")` in a view locally maps the class to [http://localhost:8080/**about**](http://localhost:8080/about).
 
-As the name implies, `MainView` is the class you want to initially load when the app runs. To achieve this, add a `@Route` annotation that maps `MainView` to the root of the URL of your app:
+As the name implies, `MainView` is the class you want to initially load when the app runs. To achieve this, add a `@Route` annotation that maps `MainView` to the root URL of your app:
 
 ```java title="MainView.java" {1}
 @Route("/")
@@ -108,11 +111,12 @@ Besides both being view routes, `MainView` and `FormView` share additional chara
 
 When the app was single-paged, you stored the components inside a `Frame`. Moving forward, with an app with multiple views, you'll need to wrap those UI components inside [`Composite` components](/docs/building-ui/composite-components).
 
-`Composite` components are wrappers that make it easy to create reusable components. You use `Composite` components by extending a class with a `Composite` and setting a bound component, e.g., `Composite<Button>`. Avoid extending a built-in component directly, as doing so could alter its behavior when it appears in different parts of your app.
+`Composite` components are wrappers that make it easy to create reusable components. 
+To create a `Composite` component, extend the `Composite` class with a specified bound component that serves as the foundation of the class, e.g., `Composite<FlexLayout>`. 
 
-This tutorial uses `Div` elements as the bound components, but they can be any component, such as [`FlexLayout`](/docs/components/flex-layout) or [`AppLayout`](/docs/components/app-layout). Using the `getBoundComponent()` method, you can reference the bound component and have access to the methods for that type of component. This lets you set the sizing, add a CSS class name, add components you want displayed in the `Composite` component, and access component-specific methods.
+This tutorial uses `Div` elements as the bound components, but they can be any component, such as [`FlexLayout`](/docs/components/flex-layout) or [`AppLayout`](/docs/components/app-layout). Using the `getBoundComponent()` method, you can reference the bound component and have access to its methods. This lets you set the sizing, add a CSS class name, add components you want displayed in the `Composite` component, and access component-specific methods.
 
-For `MainView` and `FormView`, have the classes extend a `Composite` component with `Div` as the bound component. Then, reference that bound component so you can add in the UIs later. Both views should look similar to the following structure:
+For `MainView` and `FormView`, extend `Composite` with `Div` as the bound component. Then, reference that bound component so you can add in the UIs later. Both views should look similar to the following structure:
 
 ```java
 // Extend Composite with a bound component
@@ -134,7 +138,9 @@ public class BasicView extends Composite<Div> {
 
 ### Shared CSS {#shared-css}
 
-Now that you can reference the bound component in `MainView` and `FormView`, you can style it using the CSS. Using the CSS from the first step, [Creating a Basic App](/docs/introduction/tutorial/creating-a-basic-app#referencing-a-css-file), you can have both views use identical UI container styles. For the bound component in each view, add the CSS class name `card`:
+Now that you can reference the bound component in `MainView` and `FormView`, you can style it with CSS. 
+You can use the CSS from the first step, [Creating a Basic App](/docs/introduction/tutorial/creating-a-basic-app#referencing-a-css-file), to give both views identical UI container styles. 
+Add the CSS class name `card` to the bound component in each view:
 
 ```java {7}
 public class BasicView extends Composite<Div> {
@@ -152,7 +158,7 @@ public class BasicView extends Composite<Div> {
 
 The `Table` in `MainView` displays each customer, while `FormView` adds new customers. Since both views interact with customer data, they need access to the app's business logic. 
 
-The views get access by using the Spring service created in [Working with Data](/docs/introduction/tutorial/working-with-data#creating-a-service), `CustomerService`. To use the Spring service in each view, make `CustomerService` a constructor parameter:
+The views get access through the Spring service created in [Working with Data](/docs/introduction/tutorial/working-with-data#creating-a-service), `CustomerService`. To use the Spring service in each view, make `CustomerService` a constructor parameter:
 
 ```java {6-7}
 @Route()
@@ -169,9 +175,9 @@ public class BasicView extends Composite<Div> {
 
 ### Setting the frame title {#setting-the-frame-tile}
 
-The last shared trait for the views is a set frame title. When a user has multiple tabs in the browser, having a unique frame title helps them quickly identify which part of the app they have opened.
+The last shared trait for the views is a frame title. When a user has multiple tabs in their browser, a unique frame title helps them quickly identify which part of the app they have opened.
 
-Using the [`@FrameTitle`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/FrameTitle.html) annotation defines what appears in the browser's title or page's tab. For both views, add a frame title using the `@FrameTitle` annotation:
+The [`@FrameTitle`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/FrameTitle.html) annotation defines what appears in the browser's title or page's tab. For both views, add a frame title using the `@FrameTitle` annotation:
 
 ```java title="MainView.java" {2}
 @Route("/")
@@ -205,23 +211,22 @@ public class FormView extends Composite<Div> {
 
 ## Creating `MainView` {#creating-mainview}
 
-By making your app routable, giving the views `Composite` component wrappers, and including the `CustomerService`, you’re ready to build the UIs unique to each view. As mentioned previously, `MainView` contains the UI components initially in `Application`. This class also needs a way to navigate to `FormView`.
+After making your app routable, giving the views `Composite` component wrappers, and including the `CustomerService`, you’re ready to build the UIs unique to each view. As mentioned previously, `MainView` contains the UI components initially in `Application`. This class also needs a way to navigate to `FormView`.
 
 ### Navigating to `FormView`{#navigating-to-formview}
 
 Users need a way to navigate from `MainView` to `FormView` using the UI.
 
-In webforJ, you can directly navigate to a new view by using a class name. Routing via a class instead of a URL segment guarantees webforJ will take the correct path to load the view. Routing like this in webforJ is possible because it uses the current location to determine the next destination.
+In webforJ, you can directly navigate to a new view by using the view's class. Routing via a class instead of a URL segment guarantees webforJ will take the correct path to load the view. 
 
-The [`Router`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/router/Router.html) class allows you to get the current location with the `getCurrent()` method, then use that as a reference to navigate to a different class using the `navigate()` method.
+To navigate to a different view, use the [`Router`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/router/Router.html) class to get the current location with `getCurrent()`, then use the `navigate()` method with the view's class as a parameter: 
 
 ```java
 Router.getCurrent().navigate(FormView.class);
 ```
 
-You now have a way to programmatically send users to the form that adds new customers. It should be the user’s decision to go from the table to the new form, so it's time to associate the navigation with a user's action.
-
-To allow users to add a new customer, you can either modify or replace the existing info button from `Application`. Instead of opening a message dialog, have the event grab the current `Router`, then send the user to the `FormView` class:
+This code will programmatically send users to the new customer form, but the navigation needs to be connected to a user action.
+To allow users to add a new customer, you can either modify or replace the info button from `Application`. Instead of opening a message dialog, the button can navigate to the `FormView` class:
 
 ```java
 private Button add = new Button("Add Customer", ButtonTheme.PRIMARY,
@@ -230,7 +235,7 @@ private Button add = new Button("Add Customer", ButtonTheme.PRIMARY,
 
 ### Grouping the `Table` methods {#grouping-the-table-methods}
 
-With added navigation, your app is growing more complex. It's a good idea to start sectioning parts of your app, so one custom method can make changes to the `Table` at once. Now, your main `MainView` method should only call one `buildTable()` method that adds the columns, sets the sizing, and references the repository:
+With added navigation, your app is growing more complex. It's a good idea to start sectioning parts of your app, so one custom method can make changes to the `Table` at once. Now, your `MainView` constructor should only call one `buildTable()` method that adds the columns, sets the sizing, and references the repository:
 
 ```java
 private void buildTable() {
@@ -243,7 +248,7 @@ private void buildTable() {
   table.setColumnsToAutoFit();
   table.getColumns().forEach(column -> column.setSortable(true));
   table.setRepository(customerService.getFilterableRepository());
-  }
+}
 ```
 
 ## Completed `MainView` {#completed-mainview}
@@ -294,25 +299,25 @@ public class MainView extends Composite<Div> {
 
 ## Creating `FormView` {#creating-formview}
 
-`FormView` will need a fillable form for new customers. For each customer property, there should be an editable component for users to interact with. Additionally, there needs to be buttons for users to press whenever they’re ready to submit the data, or a cancel button to discard their changes.
+`FormView` will display a form to add new customers. For each customer property, `FormView` will have an editable component for users to interact with. Additionally, it will have a button for users to submit the data and a cancel button to discard it.
 
-### Creating a `Customer` copy {#creating-a-customer-copy}
+### Creating a `Customer` instance {#creating-a-customer-instance}
 
-When users are editing data for a new customer, changes should only be applied to the repository when the user is ready to submit the form. Giving users a working copy of a `Customer` entity lets them use the UI to edit the data without editing the repository directly. Create a new `Customer` inside `FormView` to use for the form:
+When a user is editing data for a new customer, changes should only be applied to the repository when they are ready to submit the form. Using an instance of the `Customer` object is a convenient way to edit and maintain the new data without editing the repository directly. Create a new `Customer` inside `FormView` to use for the form:
 
 ```java
 private Customer customer = new Customer();
 ```
 
-To make the created `Customer` copy editable, each property, except for the `id`, should be associated with an editable component. The changes a user makes in the UI should also be reflected in the `Customer` copy.
+To make the `Customer` instance editable, each property, except for the `id`, should be associated with an editable component. The changes a user makes in the UI should be reflected in the `Customer` instance.
 
 ### Adding `TextField` components {#adding-textfield-components}
 
-The first three editable properties in `Customer` (`firstName`, `lastName`, and `company`) are all `String` values, and should be represented with a common single-line text editor. [`TextField`](/docs/components/fields/textfield) components are a great choice to represent these properties.
+The first three editable properties in `Customer` (`firstName`, `lastName`, and `company`) are all `String` values, and should be represented with a single-line text editor. [`TextField`](/docs/components/fields/textfield) components are a great choice to represent these properties.
 
-With the `TextField` component, you can add a label and an event listener that fires whenever the field value changes. Each event listener should update the `Customer` copy for the corresponding property.
+With the `TextField` component, you can add a label and an event listener that fires whenever the field value changes. Each event listener should update the `Customer` instance for the corresponding property.
 
-Add declarations for three `TextField` components that update the `Customer` copy:
+Add three `TextField` components that update the `Customer` instance:
 
 ```java title="FormView.java" {6-8}
 public class FormView extends Composite<Div> {
@@ -338,17 +343,17 @@ Naming the components the same as the properties they're representing for the `C
 
 Using a `TextField` for the `country` property wouldn’t be ideal, because the property can only be one of five enum values: `UNKNOWN`, `GERMANY`, `ENGLAND`, `ITALY`, and `USA`.
 
-The component that’s better to use for selecting from a predefined list of options is the [`ChoiceBox`](/docs/components/lists/choicebox) component.
+A better component for selecting from a predefined list of options is the [`ChoiceBox`](/docs/components/lists/choicebox).
 
-Each option for a `ChoiceBox` component is contained within a `ListItem`. Each `ListItem` has two values, an `Object` key and a `String` text to display in the UI. Having two values for each option allows you to handle the `Object` internally while simultaneously presenting a more readable option for users in the UI.
+Each option for a `ChoiceBox` component is represented as a `ListItem`. Each `ListItem` has two values, an `Object` key and a `String` text to display in the UI. Having two values for each option allows you to handle the `Object` internally while simultaneously presenting a more readable option for users in the UI.
 
 For example, the `Object` key could be an International Standard Book Number (ISBN), while the `String` text is the book title, which is more human-readable.
 
 ```java
-new ListItem(isbnNumber, bookTitle);
+new ListItem(isbn, bookTitle);
 ```
 
-However, this app deals with a list of country names, not books. For each `ListItem`, you want the `Object` to be the `Customer.Country` enum, while the text can be the enum as a `String`.
+However, this app deals with a list of country names, not books. For each `ListItem`, you want the `Object` to be the `Customer.Country` enum, while the text can be its `String` representation.
 
 To add all the `country` options into a `ChoiceBox`, you can use an iterator to create a `ListItem` for each `Customer.Country` enum, and put them into an `ArrayList<ListItem>`. Then, you can insert that `ArrayList<ListItem>` into a `ChoiceBox` component:
 
@@ -368,14 +373,15 @@ for (Country countryItem : Customer.Country.values()) {
 country.insert(listCountries);
 ```
 
-Then, when the user selects an option in the `ChoiceBox`, the `Customer` copy should update with the key of the selected item, which is a `Customer.Country` value.
+Then, when the user selects an option in the `ChoiceBox`, the `Customer` instance should update with the key of the selected item, which is a `Customer.Country` value.
 
 ```java
 private ChoiceBox country = new ChoiceBox("Country",
     e -> customer.setCountry((Customer.Country) e.getSelectedItem().getKey()));
 ```
 
-To keep the code clean, the iterator that creates the `ArrayList<ListItem>` and adds it to the `ChoiceBox` should be in a separate method. The following is how `FormView` looks when you add a `ChoiceBox` that allows the user to choose the `country` property with the separate method:
+To keep the code clean, the iterator that creates the `ArrayList<ListItem>` and adds it to the `ChoiceBox` should be in a separate method. 
+After you add a `ChoiceBox` that allows the user to choose the `country` property, `FormView` should look like this:
 
 ```java title="FormView.java" {9-10,15,19-25}
 public class FormView extends Composite<Div> {
@@ -393,7 +399,6 @@ public class FormView extends Composite<Div> {
     this.customerService = customerService;
 
     fillCountries();
-
   }
 
   private void fillCountries() {
@@ -409,14 +414,17 @@ public class FormView extends Composite<Div> {
 
 ### Adding `Button` components {#adding-button-components}
 
-Now that you have a fillable form for users to add new customers, they should also have the option to either save the new customer's data or discard their changes. The decisions for the user to either submit the data or cancel should be made by clicking a `Button` component:
+When using the new customer form, users should be able to either save or discard their changes.
+Create two `Button` components to implement this feature:
 
 ```java
 private Button submit = new Button("Submit");
 private Button cancel = new Button("Cancel");
 ```
 
-After submitting or canceling, you should return the user to `MainView`. This allows them to immediately see the results of their action, whether they see a new customer in the table or if it remains unchanged. Since there will be multiple times `FormView` takes users to `MainView`, that navigation should be put into a recallable method:
+Both the submit and cancel buttons should return the user to `MainView`.
+This allows the user to immediately see the results of their action, whether they see a new customer in the table or it remains unchanged. 
+Since multiple inputs in `FormView` take users to `MainView`, the navigation should be put into a recallable method:
 
 ```java
 private void navigateToMain(){
@@ -426,7 +434,8 @@ private void navigateToMain(){
 
 **Cancel button**
 
-Discarding the changes on the form doesn’t require any additional code for the event beyond returning to `MainView`. However, since canceling a secondary action, setting the theme of the button to an outline gives the submit button more prominence. The article for the `Button` component includes a [Themes](/docs/components/button#themes) section that lists out each theme available.
+Discarding the changes on the form doesn’t require any additional code for the event beyond returning to `MainView`. However, since canceling is not a primary action, setting the theme of the button to an outline gives the submit button more prominence. 
+The [Themes](/docs/components/button#themes) section of the `Button` component page lists all available themes.
 
 
 ```java
@@ -436,9 +445,9 @@ private Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY,
 
 **Submit button**
 
-When a user's ready to submit changes for a new customer, the submit button should then use the values in the `Customer` copy to create a new entry in the repository.
+When a user presses the submit button, the values in the `Customer` instance should be used to create a new entry in the repository.
 
-Using the `CustomerService`, you can take the `Customer` copy to update the H2 database. When this happens, a new and unique `id` is assigned to that `Customer`. After updating the repository, you can redirect users to `MainView`, where they can see the new customer in the table.
+Using the `CustomerService`, you can take the `Customer` instance to update the H2 database. When this happens, a new and unique `id` is assigned to that `Customer`. After updating the repository, you can redirect users to `MainView`, where they can see the new customer in the table.
 
 ```java
 private Button submit = new Button("Submit", ButtonTheme.PRIMARY,
@@ -456,8 +465,8 @@ private void submitCustomer() {
 
 By adding the `TextField`, `ChoiceBox`, and `Button` components, you now have all the interactive parts of the form. The last improvement to `FormView` in this step is to visually organize the six components.
 
-This form can use a simple layout that separates the components into two columns.
-Using the [`ColumnsLayout`](/docs/components/columns-layout) can easily achieve this desired layout without having to set the width of any interactive components. To create a `ColumnsLayout`, specify each component that should be inside the layout:
+This form can use a [`ColumnsLayout`](/docs/components/columns-layout) to separate the components into two columns without having to set the width of any interactive components.
+To create a `ColumnsLayout`, specify each component that should be inside the layout:
 
 ```java
 private ColumnsLayout layout = new ColumnsLayout(
@@ -466,7 +475,7 @@ private ColumnsLayout layout = new ColumnsLayout(
   submit, cancel);
 ```
 
-When you want to set the number of columns for a `ColumnsLayout`, you use a `List` of `Breakpoint` objects. Each `Breakpoint` tells the `ColumnsLayout` the minimum width it must have to apply a specified number of columns. By using the `ColumnsLayout`, you’re able to make a form with two columns, but only if the screen is wide enough to display two columns. On smaller screens, the components are displayed in a single column.
+To set the number of columns for a `ColumnsLayout`, use a `List` of `Breakpoint` objects. Each `Breakpoint` tells the `ColumnsLayout` the minimum width it must have to apply a specified number of columns. By using the `ColumnsLayout`, you can make a form with two columns, but only if the screen is wide enough to display two columns. On smaller screens, the components are displayed in a single column.
 
 The [Breakpoints](/docs/components/columns-layout#breakpoints) section in the `ColumnsLayout` article explains breakpoints in more detail.
 
@@ -487,7 +496,7 @@ private void setColumnsLayout() {
 }
 ```
 
-Finally, you can put the newly created `ColumnsLayout` into the bound component of `FormView`, while also setting the max width, and adding the class name from earlier:
+Finally, you can add the newly created `ColumnsLayout` to the bound component of `FormView`, while also setting the max width, and adding the class name from earlier:
 
 ```java
 self.setMaxWidth(600)
@@ -497,14 +506,14 @@ self.setMaxWidth(600)
 
 ## Completed `FormView` {#completed-formview}
 
-After adding a `Customer` copy, the interactive components, and the `ColumnsLayout`, your `FormView` should look like the following:
+After adding a `Customer` instance, the interactive components, and the `ColumnsLayout`, your `FormView` should look like the following:
 
 <!-- vale off -->
 <ExpandableCode title="FormView.java" language="java" startLine={1} endLine={15}>
 {`@Route("customer")
 @FrameTitle("Customer Form")
 public class FormView extends Composite<Div> {
-  private final CustomerService customerService;
+    private final CustomerService customerService;
   private Customer customer = new Customer();
   private Div self = getBoundComponent();
   private TextField firstName = new TextField("First Name", e -> customer.setFirstName(e.getValue()));
@@ -569,7 +578,7 @@ public class FormView extends Composite<Div> {
 
 When you've finished this step, you can compare it to [3-routing-and-composites](https://github.com/webforj/webforj-demo-application/tree/main/3-routing-and-composites) on GitHub. To see the app in action:
 
-1. Navigate to the top-level directory containing the `pom.xml` file, this is `3-routing-and-composites` if you're following along with the version on GitHub.
+1. Navigate to the top-level directory containing the `pom.xml` file; this is `3-routing-and-composites` if you're following along with the version on GitHub.
 
 2. Use the following Maven command to run the Spring Boot app locally:
     ```bash
