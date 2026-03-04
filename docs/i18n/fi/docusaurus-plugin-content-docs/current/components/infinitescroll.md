@@ -1,16 +1,22 @@
 ---
 title: InfiniteScroll
 sidebar_position: 60
-_i18n_hash: 3384cb35d5087561cc9be2c11b95c7e1
+_i18n_hash: b6795a86cf03a60d9ef9e7d89749c9ab
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-infinite-scroll" />
 <DocChip chip='since' label='25.00' />
 <JavadocLink type="infinite-scroll" location="com/webforj/component/infinitescroll/InfiniteScroll" top='true'/>
 
-`InfiniteScroll`-komponentti webforJ:ssä lataa automaattisesti enemmän sisältöä, kun käyttäjät vierittävät alas, poistaen tarpeen sivinavigoinnille. Tämä luo sujuvan kokemuksen listoille, syötteille ja dataraskaalle näkymälle lataamalla sisältöä vain tarpeen mukaan.
+`InfiniteScroll`-komponentti webforJ:ssä lataa automaattisesti lisää sisältöä käyttäjien vierittäessä alaspäin, mikä poistaa tarpeen sivutukselle. Tämä luo sujuvan kokemuksen luetteloille, syötteille ja dataraskaalle näkymille lataamalla sisältöä vain tarpeen mukaan.
 
-Kun käyttäjät saavuttavat vieritettävän sisällön alimman rajan, `InfiniteScroll` laukaisee tapahtuman lisäämään enemmän dataa. Uuden sisällön lataamisen aikana se näyttää [`Spinner`](../components/spinner), jossa on mukautettava teksti, joka ilmoittaa, että lisää kohteita on tulossa.
+Kun käyttäjät saavuttavat vieritettävän sisällön alaosan, `InfiniteScroll` laukaisee tapahtuman lisäämään lisää dataa. Kun uusi sisältö latautuu, se näyttää [`Spinner`](../components/spinner) -komponentin, jossa on mukautettavissa oleva teksti, joka ilmoittaa, että lisää kohteita on tulossa.
+
+<!-- INTRO_END -->
+
+## Tilanhallinta {#state-management}
+
+`InfiniteScroll`-komponentti lähettää tapahtumia ja ylläpitää sisäistä tilaa auttaakseen hallitsemaan, miten ja milloin sisältöä ladataan.
 
 <AppLayoutViewer
 path='/webforj/infinitescroll?' 
@@ -20,11 +26,7 @@ height = '400px'
 mobile='true'
 />
 
-## Tilan hallinta {#state-management}
-
-`InfiniteScroll`-komponentti lähettää tapahtumia ja ylläpitää sisäistä tilaa auttaakseen hallitsemaan, kuinka ja milloin sisältöä ladataan.
-
-Jotta voit hakea lisää dataa, kun käyttäjä vierittää, käytä `onScroll()` tai `addScrollListener()` -menetelmää rekisteröidäksesi kuuntelijan. Kuuntelijan sisällä lataat tyypillisesti lisäsisältöä ja kutsut `update()` päivittääksesi `InfiniteScroll`-tilan.
+Lataaksesi lisää dataa, kun käyttäjä vierittää, käytä `onScroll()` tai `addScrollListener()` -metodia rekisteröidäksesi kuuntelijan. Kuuntelijassa lataat tyypillisesti lisäsisältöä ja kutsut `update()`-metodia päivittääksesi `InfiniteScroll`-tilan.
 
 ```java
 infiniteScroll.onScroll(event -> {
@@ -33,28 +35,28 @@ infiniteScroll.onScroll(event -> {
 });
 ```
 
-Kun kaikki sisältö on ladattu, merkitse vieritys suoritetuksi estääksesi myöhemmät laukaisut. Kun olet asettanut tilan suoritetuksi, muista kutsua `update()` soveltaaksesi uutta tilaa:
+Kun kaikki sisältö on ladattu, merkitse vieritys suoritetuksi estääksesi lisälaikkurit. Kun olet asettanut suoritettu-tilan, muista kutsua `update()` soveltaaksesi uutta tilaa:
 
 ```java
 infiniteScroll.setCompleted(true);
 infiniteScroll.update();
 ```
-Tämä estää lisäinfinite vierityksen toiminnan.
+Tämä estää lisäinfiniittisen vierityskäyttäytymisen.
 
 :::tip Nollaa latauslippu
-Voit nollata tämän lipun käyttämällä `setCompleted(false)`, jos myöhemmin sallitaan käyttäjän ladata lisää sisältöä (esim. päivityksen jälkeen).
+Voit nollata tämän lipun käyttämällä `setCompleted(false)`, jos myöhemmin sallii käyttäjän ladata lisää sisältöä (esim. päivityksen jälkeen).
 :::
 
 ## Latausindikaattorin mukauttaminen {#loading-indicator-customization}
 
-Oletuksena `InfiniteScroll` näyttää sisäänrakennetun latausindikaattorin - pienen animaatio [`Spinner`](../components/spinner) yhdessä “Ladataan dataa” -tekstin kanssa. Voit vaihtaa näytettävää tekstiä välittämällä mukautetun viestin `InfiniteScroll`-konstruktoriin tai käyttämällä `setText()`.
+Oletusarvoisesti `InfiniteScroll` näyttää sisäänrakennetun latausindikaattorin - pienen animaatio[`Spinner`](../components/spinner)in yhdessä "Ladataan dataa" -tekstin kanssa. Voit muuttaa näytettävää tekstiä antamalla mukautetun viestin `InfiniteScroll`-rakentajalle tai käyttämällä `setText()`.
 
 ```java
-InfiniteScroll infiniteScroll = new InfiniteScroll("Haetaan lisää tietueita...");
+InfiniteScroll infiniteScroll = new InfiniteScroll("Ladataan lisää tietueita...");
 infiniteScroll.setText("Ladataan lisää kohteita...");
 ```
 
-Vastaavasti voit mukauttaa lataamisen aikana näytettävää [`Icon`](../components/icon) käyttämällä `setIcon()`.
+Samoin voit mukauttaa [`Icon`](../components/icon), joka näytetään lataamisen aikana käyttämällä `setIcon()`.
 
 <AppLayoutViewer
 path='/webforj/infinitescrollloading?' 
@@ -64,11 +66,11 @@ height = '400px'
 mobile='true'
 />
 
-### Täydellinen mukautus {#full-customization}
+### Täydellinen mukauttaminen {#full-customization}
 
-Jos haluat täysin korvata sekä [`Spinner`](../components/spinner) että tekstin omalla merkinnälläsi, voit lisätä sisältöä suoraan erityiseen sisältöpaikkaan käyttäen `addToContent()`.
+Jos haluat täysin korvata sekä [`Spinner`](../components/spinner)in että tekstin omalla merkinnälläsi, voit lisätä sisältöä suoraan erityiseen sisältöaukkoon käyttämällä `addToContent()`.
 
-Kun täytät sisältöpaikan, se korvataan kokonaan oletuslatauslayoutilla.
+Kun täytät sisältöaukkoa, se korvataan kokonaan oletuslatauslayoutilla.
 
 <AppLayoutViewer
 path='/webforj/infinitescrollcustomloading?' 
