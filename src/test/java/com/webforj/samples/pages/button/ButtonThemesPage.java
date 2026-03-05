@@ -2,6 +2,7 @@ package com.webforj.samples.pages.button;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class ButtonThemesPage {
 
@@ -15,8 +16,8 @@ public class ButtonThemesPage {
         this.outlinedButton = page.locator("dwc-button").filter(new Locator.FilterOptions().setHasText("Outlined Button"));
     }
 
-    public static String getRoute() {
-        return ROUTE;
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
     }
 
     public Locator getSolidButton() {
