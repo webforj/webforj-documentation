@@ -15,7 +15,7 @@ The `FlexLayout` component arranges child components in a row or column using th
 `FlexLayout` properties can be grouped into two categories: properties that apply to the items within a layout, and properties that apply to the layout itself. The `FlexLayout`, or the parent element, is a box/container that can contain one or more components. Everything inside a `FlexLayout` is called an item or child element. The `FlexLayout` provides some alignment capabilities, which can be achieved with the help of either container or item properties.
 
 :::tip
-The `FlexLayout` component follows the pattern of [CSS's flexbox layout](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). However, it is made to be used fully in Java, and doesn't require the use of CSS outside of the Java API methods provided.
+The `FlexLayout` component follows the pattern of [CSS's flexbox layout](https://css-tricks.com/snippets/css/a-guide-to-flexbox/). However, `FlexLayout` is made to be used fully in Java, and doesn't require the use of CSS outside of the Java API methods provided.
 :::
 
 ## Container properties {#container-properties}
@@ -62,7 +62,7 @@ To further customize the `FlexLayout` component, you can specify its behavior wh
 
 In order to apply minimum spacing between items, you can set the `gap` property. It applies that spacing only between items, not on the outer edges. 
 
-The gap property's behavior can be thought of as a minimum distance between, so it will only take effect if it is the largest calculated
+The gap property's behavior can be thought of as a minimum distance between, so it will only take effect if it's the largest calculated
 space between items. If the space between items would otherwise be larger due to another calculated property, such as due to `setAlignContent(FlexContentAlignment.SPACE_BETWEEN)`, then the gap property will be ignored.
 
 ### Flow {#flow}
@@ -89,11 +89,11 @@ height="600px"
 <!-- BIG CODE SNIPPET SHOWING CONTAINER -->
 ## Item properties {#item-properties}
 
-Item properties won't affect any child elements within the `FlexLayout`, but affect the actual layout itself. This is useful for styling a single `FlexLayout` element that is a child of a larger `FlexLayout` element independent of styles applying to all children.
+Item properties won't affect any child elements within the `FlexLayout`, but affect the actual layout itself. This is useful for styling a single `FlexLayout` element that's a child of a larger `FlexLayout` element independent of styles applying to all children.
 
 ### Order {#order}
 
-The `ItemOrder` property determines the order that components are displayed within the `FlexLayout`, and when used on a `FlexLayout` will assign an item that layout's specific order number. This overrides the default "source order" that is built into each item (the order in which a component is added to its parent), and means that it will be shown before items with a higher order, and after items with a lower order.
+The `ItemOrder` property determines the order that components are displayed within the `FlexLayout`, and when used on a `FlexLayout` will assign an item that layout's specific order number. This overrides the default "source order" built into each item (the order in which a component is added to its parent), and means that it will be shown before items with a higher order, and after items with a lower order.
 
 This property accepts a unitless integer value that specifies the relative order of the flex item within the container. The lower the value, the earlier the item appears in the order. For example, an item with an order value of 1 will appear before an item with an order value of 2.
 
