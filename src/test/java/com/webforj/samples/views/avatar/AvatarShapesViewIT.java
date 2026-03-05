@@ -2,29 +2,37 @@ package com.webforj.samples.views.avatar;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
+import com.webforj.samples.pages.SupportedLanguage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.avatar.AvatarShapesPage;
 import com.webforj.samples.views.BaseTest;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class AvatarShapesViewIT extends BaseTest {
 
-    private AvatarShapesPage avatarPage;
+  private AvatarShapesPage avatarPage;
 
-    @BeforeEach
-    public void setupAvatarDemo() {
-        navigateToRoute(AvatarShapesPage.getRoute());
-        avatarPage = new AvatarShapesPage(page);
-    }
+  public void setupAvatarDemo(SupportedLanguage language) {
+    navigateToRoute(AvatarShapesPage.getRoute(language));
+    avatarPage = new AvatarShapesPage(page);
+  }
 
-    @Test
-    public void testCircleAvatarIsVisible() {
-        assertThat(avatarPage.getCircleAvatar()).isVisible();
-    }
 
-    @Test
-    public void testSquareAvatarIsVisible() {
-        assertThat(avatarPage.getSquareAvatar()).isVisible();
-    }
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testCircleAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
+    assertThat(avatarPage.getCircleAvatar()).isVisible();
+  }
+
+
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testSquareAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
+    assertThat(avatarPage.getSquareAvatar()).isVisible();
+  }
 }

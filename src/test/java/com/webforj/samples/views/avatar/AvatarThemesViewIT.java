@@ -2,54 +2,77 @@ package com.webforj.samples.views.avatar;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
+import com.webforj.samples.pages.SupportedLanguage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.avatar.AvatarThemesPage;
 import com.webforj.samples.views.BaseTest;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class AvatarThemesViewIT extends BaseTest {
 
-    private AvatarThemesPage avatarPage;
+  private AvatarThemesPage avatarPage;
 
-    @BeforeEach
-    public void setupAvatarDemo() {
-        navigateToRoute(AvatarThemesPage.getRoute());
-        avatarPage = new AvatarThemesPage(page);
-    }
+  public void setupAvatarDemo(SupportedLanguage language) {
+    navigateToRoute(AvatarThemesPage.getRoute(language));
+    avatarPage = new AvatarThemesPage(page);
+  }
 
-    @Test
-    public void testDefaultThemeAvatarIsVisible() {
-        assertThat(avatarPage.getDefaultAvatar()).isVisible();
-    }
 
-    @Test
-    public void testGrayThemeAvatarIsVisible() {
-        assertThat(avatarPage.getGrayAvatar()).isVisible();
-    }
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testDefaultThemeAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
+    assertThat(avatarPage.getDefaultAvatar()).isVisible();
+  }
 
-    @Test
-    public void testPrimaryThemeAvatarIsVisible() {
-        assertThat(avatarPage.getPrimaryAvatar()).isVisible();
-    }
 
-    @Test
-    public void testSuccessThemeAvatarIsVisible() {
-        assertThat(avatarPage.getSuccessAvatar()).isVisible();
-    }
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testGrayThemeAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
+    assertThat(avatarPage.getGrayAvatar()).isVisible();
+  }
 
-    @Test
-    public void testWarningThemeAvatarIsVisible() {
-        assertThat(avatarPage.getWarningAvatar()).isVisible();
-    }
 
-    @Test
-    public void testDangerThemeAvatarIsVisible() {
-        assertThat(avatarPage.getDangerAvatar()).isVisible();
-    }
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testPrimaryThemeAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
+    assertThat(avatarPage.getPrimaryAvatar()).isVisible();
+  }
 
-    @Test
-    public void testInfoThemeAvatarIsVisible() {
-        assertThat(avatarPage.getInfoAvatar()).isVisible();
-    }
+
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testSuccessThemeAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
+    assertThat(avatarPage.getSuccessAvatar()).isVisible();
+  }
+
+
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testWarningThemeAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
+    assertThat(avatarPage.getWarningAvatar()).isVisible();
+  }
+
+
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testDangerThemeAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
+    assertThat(avatarPage.getDangerAvatar()).isVisible();
+  }
+
+
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testInfoThemeAvatarIsVisible(SupportedLanguage language) {
+    setupAvatarDemo(language);
+    assertThat(avatarPage.getInfoAvatar()).isVisible();
+  }
 }
