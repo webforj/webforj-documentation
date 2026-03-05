@@ -9,6 +9,7 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.H4;
 import com.webforj.component.html.elements.Img;
 import com.webforj.component.html.elements.Span;
+import com.webforj.component.icons.Icon;
 import com.webforj.component.icons.TablerIcon;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
@@ -23,62 +24,61 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Team Members")
 @StyleSheet("ws://css/avatar/avatar.css")
 public class AvatarView extends Composite<FlexLayout> {
+  FlexLayout self = getBoundComponent();
 
   public AvatarView() {
-    FlexLayout self = getBoundComponent();
     self.setDirection(FlexDirection.COLUMN)
         .setMargin("var(--dwc-space-l)");
 
-    Div panel = new Div();
-    panel.addClassName("avatar-demo__panel");
-
-    FlexLayout projectHeader = new FlexLayout();
-    projectHeader.addClassName("avatar-demo__project-header")
-        .setDirection(FlexDirection.ROW)
-        .setSpacing("var(--dwc-space-m)")
-        .setAlignment(FlexAlignment.CENTER);
-
-    H4 projectName = new H4("Project Alpha");
-    projectName.addClassName("avatar-demo__project-name");
-
-    projectHeader.add(TablerIcon.create("folder"), projectName);
-
-    Span sectionLabel = new Span("Team");
-    sectionLabel.addClassName("avatar-demo__section-label");
-
-    panel.add(projectHeader);
-    panel.add(sectionLabel);
-    panel.add(createMember("Sarah Chen", "Product Lead",
-        "ws://img/avatar/avatar1.png", AvatarTheme.SUCCESS));
-    panel.add(createMember("Marcus Johnson", "Developer",
-        null, AvatarTheme.SUCCESS));
-    panel.add(createMember("Elena Rodriguez", "Designer",
-        "ws://img/avatar/avatar2.png", AvatarTheme.WARNING));
-    panel.add(createMember("David Kim", "Developer",
-        null, AvatarTheme.GRAY));
-    panel.add(createInviteMember());
-
+    Div panel = new Div()
+            .addClassName("avatar-demo__panel");
     self.add(panel);
+
+    FlexLayout projectHeader = new FlexLayout()
+            .addClassName("avatar-demo__project-header")
+            .setDirection(FlexDirection.ROW)
+            .setSpacing("var(--dwc-space-m)")
+            .setAlignment(FlexAlignment.CENTER);
+    panel.add(projectHeader);
+    Icon headerIcon = TablerIcon.create("folder");
+    H4 projectName = new H4("Project Alpha")
+            .addClassName("avatar-demo__project-name");
+    projectHeader.add(headerIcon, projectName);
+
+    Span sectionLabel = new Span("Team")
+            .addClassName("avatar-demo__section-label");
+    panel.add(sectionLabel,
+        createMember("Sarah Chen", "Product Lead",
+                "ws://img/avatar/avatar1.png", AvatarTheme.SUCCESS),
+        createMember("Marcus Johnson", "Developer",
+                null, AvatarTheme.SUCCESS),
+        createMember("Elena Rodriguez", "Designer",
+                "ws://img/avatar/avatar2.png", AvatarTheme.WARNING),
+        createMember("David Kim", "Developer",
+                null, AvatarTheme.GRAY),
+        createInviteMember()
+    );
   }
 
   private FlexLayout createMember(String name, String role,
       String imageUrl, AvatarTheme theme) {
     Avatar avatar;
     if (imageUrl != null) {
-      avatar = new Avatar(name, new Img(imageUrl, name));
+      Img avatarImg = new Img(imageUrl, name);
+      avatar = new Avatar(name, avatarImg);
     } else {
       avatar = new Avatar(name);
     }
-    avatar.setTheme(theme);
-    avatar.onClick(e -> showProfileDialog(name, role, imageUrl, theme));
+    avatar.setTheme(theme)
+            .onClick(e -> showProfileDialog(name, role, imageUrl, theme));
 
-    FlexLayout info = new FlexLayout();
-    info.setDirection(FlexDirection.COLUMN)
-        .addClassName("avatar-demo__info");
-    Span nameLabel = new Span(name);
-    nameLabel.addClassName("avatar-demo__name");
-    Span roleLabel = new Span(role);
-    roleLabel.addClassName("avatar-demo__role");
+    FlexLayout info = new FlexLayout()
+            .setDirection(FlexDirection.COLUMN)
+            .addClassName("avatar-demo__info");
+    Span nameLabel = new Span(name)
+            .addClassName("avatar-demo__name");
+    Span roleLabel = new Span(role)
+            .addClassName("avatar-demo__role");
     info.add(nameLabel, roleLabel);
 
     return FlexLayout.create(avatar, info)
@@ -90,11 +90,12 @@ public class AvatarView extends Composite<FlexLayout> {
   }
 
   private FlexLayout createInviteMember() {
-    Avatar avatar = new Avatar("", TablerIcon.create("user"));
-    avatar.setTheme(AvatarTheme.OUTLINED_GRAY);
+    Icon userIcon = TablerIcon.create("user");
+    Avatar avatar = new Avatar("", userIcon)
+            .setTheme(AvatarTheme.OUTLINED_GRAY);
 
-    Span label = new Span("Invite Member");
-    label.addClassName("avatar-demo__name");
+    Span label = new Span("Invite Member")
+            .addClassName("avatar-demo__name");
 
     return FlexLayout.create(avatar, label)
         .horizontal()
@@ -106,34 +107,32 @@ public class AvatarView extends Composite<FlexLayout> {
 
   private void showProfileDialog(String name, String role,
       String imageUrl, AvatarTheme theme) {
-    Dialog dialog = new Dialog();
-    dialog.setMaxWidth("260px");
 
     Avatar largeAvatar;
     if (imageUrl != null) {
-      largeAvatar = new Avatar(name, new Img(imageUrl, name));
+      Img avatarImg = new Img(imageUrl, name);
+      largeAvatar = new Avatar(name, avatarImg);
     } else {
       largeAvatar = new Avatar(name);
     }
-    largeAvatar.setExpanse(AvatarExpanse.XXLARGE);
-    largeAvatar.setTheme(theme);
-
-    FlexLayout content = new FlexLayout();
-    content.setDirection(FlexDirection.COLUMN)
-        .setAlignment(FlexAlignment.CENTER)
-        .setStyle("padding", "var(--dwc-space-l)")
-        .setSpacing("var(--dwc-space-s)");
-
-    H4 nameLabel = new H4(name);
-    nameLabel.setStyle("margin", "0");
-    Span roleLabel = new Span(role);
-    roleLabel.setStyle("color", "var(--dwc-color-default-text)");
-
+    largeAvatar.setExpanse(AvatarExpanse.XXLARGE)
+            .setTheme(theme);
+    H4 nameLabel = new H4(name)
+            .setStyle("margin", "0");
+    Span roleLabel = new Span(role)
+            .setStyle("color", "var(--dwc-color-default-text)");
     Button viewProfile = new Button("View Profile", ButtonTheme.PRIMARY);
 
+    FlexLayout content = new FlexLayout()
+              .setDirection(FlexDirection.COLUMN)
+              .setAlignment(FlexAlignment.CENTER)
+              .setStyle("padding", "var(--dwc-space-l)")
+              .setSpacing("var(--dwc-space-s)");
     content.add(largeAvatar, nameLabel, roleLabel, viewProfile);
+    Dialog dialog = new Dialog()
+              .setMaxWidth("260px");
     dialog.add(content);
-    getBoundComponent().add(dialog);
+    self.add(dialog);
     dialog.open();
   }
 
