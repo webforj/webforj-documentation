@@ -4,7 +4,7 @@ description: "Turn a legacy Java desktop app into a web app by using webforJ and
 slug: webswing-and-webforj
 date: 2026-01-22
 authors: Garrison Osteen
-tags: [integrations, Modernization, Webswing]
+tags: [integrations, modernization, webswing]
 hide_table_of_contents: false
 ---
 
