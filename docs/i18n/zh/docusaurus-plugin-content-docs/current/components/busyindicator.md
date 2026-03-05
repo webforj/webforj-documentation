@@ -1,22 +1,22 @@
 ---
 title: BusyIndicator
 sidebar_position: 10
-_i18n_hash: a61f487d0d763856c6055898a7284011
+_i18n_hash: e8d5c8ba0e26f0cc8fb98a640069347f
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-loading" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/BusyIndicator" top='true'/>
 
-`BusyIndicator` 提供视觉提示，以确保用户意识到正在进行的过程，从而防止他们过早与系统交互。它通常覆盖整个应用界面，适用于全局操作。
+`BusyIndicator` 是一个全屏覆盖，会指示正在进行的过程并在完成之前阻止用户交互。在初始化或数据同步等操作过程中，它覆盖整个界面。而 [`Loading`](../components/loading) 组件则专注于界面中的特定区域，`BusyIndicator` 则是全局适用的。
 
-而 [`Loading`](../components/loading) 组件则专注于应用中的特定区域或组件，`BusyIndicator` 处理全局的、应用范围内的过程，并阻止整个界面的交互。这种范围上的差异使得 [`Loading`](../components/loading) 组件非常适合于更本地化、组件特定的情况，例如在页面的特定部分加载数据。相反，`BusyIndicator` 适合影响整个应用的系统范围操作，例如初始化应用或执行重大数据同步。
+<!-- INTRO_END -->
 
-## Basics {#basics}
+## 基础 {#basics}
 
-`BusyIndicator` 在 webforJ 中显示为一个简单的旋转加载器，使用起来无需配置。然而，您可以通过添加消息、调整加载器的主题或修改可见性设置来进行自定义。这使您能够提供更多的上下文或风格，同时保持功能齐全的开箱即用的解决方案。
+webforJ 中的 `BusyIndicator` 显示为一个简单的旋转图标，使用起来非常方便，无需配置。然而，您可以通过添加消息、调整旋转图标的主题或修改可见性设置来自定义它。这使您可以在保持功能性和开箱即用解决方案的同时提供更多上下文或样式。
 
-在这个例子中，`BusyIndicator` 在操作完成之前会阻止用户在整个界面上的任何操作。
+在这个例子中，`BusyIndicator` 防止用户在整个界面上进行任何操作，直到操作完成。
 
 <ComponentDemo 
 path='/webforj/busydemo?' 
@@ -24,9 +24,9 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '300px'
 />
 
-## Backdrops {#backdrops}
+## 背景 {#backdrops}
 
-webforJ 中的 `BusyIndicator` 组件允许您显示一个背景，以在进程进行时阻止用户交互。默认情况下，组件启用背景，但如果需要，您可以选择将其关闭。
+webforJ 中的 `BusyIndicator` 组件允许您显示背景以阻止用户交互，同时一个过程正在进行。默认情况下，组件启用背景，但您可以选择在需要时关闭它。
 
 `BusyIndicator` 默认显示背景。您可以使用 `setBackdropVisible()` 方法控制背景的可见性，如下所示：
 
@@ -36,14 +36,14 @@ busyIndicator.setBackdropVisible(false);  // 禁用背景
 busyIndicator.open();
 ```
 :::info 关闭背景
-即使您关闭背景，`BusyIndicator` 组件仍然会阻止用户交互，以确保基础进程可以不间断地完成。背景仅控制视觉覆盖，而不是交互阻止行为。
+即使您关闭背景，`BusyIndicator` 组件仍会继续阻止用户交互，以确保底层过程能够不间断完成。背景仅控制可视覆盖，而不影响交互阻止行为。
 :::
 
-## `Spinner` {#spinner}
+## `旋转图标` {#spinner}
 
-webforJ 中的 `BusyIndicator` 组件包含一个 `Spinner`，可视化指示后台操作正在进行。您可以使用多个选项自定义该加载器，包括其大小、速度、方向、主题和可见性。
+webforJ 中的 `BusyIndicator` 组件包含一个 `Spinner`，可视化指示后台操作正在进行。您可以通过多个选项自定义此旋转图标，包括其大小、速度、方向、主题和可见性。
 
-以下是如何在 `BusyIndicator` 组件中自定义加载器的示例：
+以下是如何在 `BusyIndicator` 组件中自定义旋转图标的示例：
 
 <ComponentDemo 
 path='/webforj/busyspinnerdemo?' 
@@ -51,16 +51,16 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '200px'
 />
 
-## Use cases {#use-cases}
-- **全页面处理**  
-   `BusyIndicator` 非常适合较大、全页面的操作，例如当用户启动影响整个页面的任务时，如上传文件或跨多个部分处理数据。它可以告知用户整个应用正在工作，防止在处理完成之前的进一步交互。
+## 使用场景 {#use-cases}
+- **整页处理**  
+   `BusyIndicator` 非常适合更大、全页的操作，例如用户启动影响整个页面的任务时，如上传文件或对多个部分处理数据。它可以告知用户整个应用正在工作，防止在过程完成之前的进一步交互。
 
 - **关键系统操作**  
-   在执行系统关键任务时，如同步数据、应用系统范围的更新或处理敏感信息，`BusyIndicator` 提供清晰的视觉反馈，表明正在进行重大操作，允许用户等待其完成。
+   在执行系统关键任务时，例如同步数据、应用系统范围的更新或处理敏感信息，`BusyIndicator` 提供清晰的视觉反馈，以指示重大操作正在进行，允许用户等待直到操作完成。
 
 - **异步数据加载**  
-   在涉及异步数据处理的场景中，例如调用多个 API 或等待复杂计算时，`BusyIndicator` 组件会积极指示系统正在忙碌，并提示用户在执行其他操作之前等待。
+   在涉及异步数据处理的场景中，如调用多个 API 或等待复杂计算时，`BusyIndicator` 组件积极表明系统繁忙，提示用户在执行其他操作之前等待。
 
-## Styling {#styling}
+## 样式 {#styling}
 
 <TableBuilder name="BusyIndicator" />

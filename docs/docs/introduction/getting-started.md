@@ -15,11 +15,11 @@ Before you begin, review the necessary [prerequisites](./prerequisites) for sett
 
 The simplest way to create a new webforJ app is [startforJ](https://docs.webforj.com/startforj), which generates a minimal starter project based on a chosen webforJ archetype. This starter project includes all required dependencies, configuration files, and a pre-made layout, so you can start building on it right away.
 
-<div class="videos-container">
+<!-- <div class="videos-container">
   <video controls>
     <source src="https://cdn.webforj.com/webforj-documentation/video/archetypes/startforj.mp4" type="video/mp4" />
   </video>
-</div>
+</div> -->
 
 
 ### Customizing with startforJ {#customizing-with-startforj}

@@ -1,16 +1,42 @@
 ---
 title: Button
 sidebar_position: 15
-_i18n_hash: 0282098a1b80b4d494409d4f416caa5d
+_i18n_hash: 6c3425f6d7138e710c5222d2baf84644
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-button" />
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/button/Button" top='true'/>
 
-`Button`-komponentti on perus käyttöliittymäelementti, jota käytetään sovelluskehityksessä luomaan interaktiivisia elementtejä, jotka laukaisevat toimintoja tai tapahtumia, kun niitä napsautetaan tai aktivoidaan. Se toimii napsautettavana elementtinä, jonka kanssa käyttäjät voivat olla vuorovaikutuksessa suorittaakseen erilaisia toimintoja sovelluksessa tai verkkosivustolla.
+`Button` on napsittava elementti, joka laukaisee toiminnon, kun sitä painetaan. Se voi näyttää tekstiä, ikoneita tai molempia yhdistelmänä. Painikkeet tukevat useita visuaalisia teemoja ja kokoja, ja niitä voidaan estää vuorovaikutuksen estämiseksi pitkäkestoisten toimintojen aikana tai kun tietyt ehdot eivät täyty.
 
-`Button`-komponentin ensisijainen tarkoitus on tarjota selkeä ja intuitiivinen toimintakehotus käyttäjille, ohjaten heitä suorittamaan tiettyjä tehtäviä, kuten lomakkeen lähettäminen, siirtyminen toiseen sivuun, toiminnon laukaiseminen tai prosessin aloittaminen. Painikkeet ovat olennaisia käyttäjävuorovaikutusten parantamiseksi, saavutettavuuden parantamiseksi ja houkuttelevamman käyttäjäkokemuksen luomiseksi.
+<!-- INTRO_END -->
+
+## Käyttötapaukset {#usages}
+
+`Button`-luokka on monipuolinen komponentti, jota käytetään yleisesti eri tilanteissa, joissa käyttäjän vuorovaikutuksia ja toimintoja on laukaistava. Tässä on joitakin tyypillisiä skenaarioita, joissa saatat tarvita painiketta sovelluksessasi:
+
+1. **Lomakkeen lähetys**: Painikkeita käytetään usein lomaketietojen lähettämiseen. Esimerkiksi sovelluksessa voit käyttää:
+
+  > - "Lähetä" -painiketta lähettääksesi tiedot palvelimelle
+  > - "Tyhjennä" -painiketta poistaaksesi lomakkeessa jo esillä olevan tiedon
+
+2. **Käyttäjän toiminnot**: Painikkeita käytetään antamaan käyttäjille mahdollisuus suorittaa erityisiä toimintoja sovelluksessa. Esimerkiksi voit olla painike, jonka merkintä on:
+
+  > - "Poista" aloittaaksesi valitun kohteen poistamisen
+  > - "Tallenna" tallentaaksesi tehdyt muutokset asiakirjaan tai sivulle.
+
+3. **Vahvistusdilogit**: Painikkeita sisältyy usein [`Dialog`](../components/dialog) komponentteihin, jotka on rakennettu erilaisiin tarkoituksiin, jotta käyttäjille tarjotaan vaihtoehtoja vahvistaa tai peruuttaa toiminto, tai muu toiminnallisuus, joka on rakennettu käyttämääsi [`Dialog`](../components/dialog).
+
+4. **Vuorovaikutuksen laukaisijat**: Painikkeet voivat toimia laukaisijoina vuorovaikutuksille tai tapahtumille sovelluksessa. Painamalla painiketta käyttäjät voivat aloittaa monimutkaisia toimintoja tai laukaisuja, kuten sisällön päivittämistä tai näytön päivittämistä.
+
+5. **Navigointi**: Painikkeita voidaan käyttää navigointitarkoituksiin, kuten siirtymiseen eri osien tai sivujen välillä sovelluksessa. Navigointipainikkeita voivat olla:
+
+  > - "Seuraava" - vie käyttäjän seuraavalle sivulle tai osioon nykyisessä sovelluksessa tai sivulla.
+  > - "Edellinen" - palauttaa käyttäjän edelliselle sivulle sovelluksessa tai osioon, jossa he ovat.
+  > - "Takaisin" - palauttaa käyttäjän sovelluksen tai sivun ensimmäiseen osaan, jossa he ovat.
+  
+Seuraava esimerkki osoittaa painikkeita, joita käytetään lomakkeen lähettämiseen ja syötteen tyhjentämiseen:
 
 <ComponentDemo 
 path='/webforj/button?' 
@@ -18,40 +44,14 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-<!-- tabs={['ButtonDemo.java', 'demo_styles.css']} -->
-
-## Käyttötarkoitukset {#usages}
-
-`Button`-luokka on monikäyttöinen komponentti, jota käytetään yleisesti erilaisissa tilanteissa, joissa käyttäjävuorovaikutuksia ja toimintoja on laukaistava. Tässä on joitakin tyypillisiä skenaarioita, joissa saatat tarvita painiketta sovelluksessasi:
-
-1. **Lomakkeen lähettäminen**: Painikkeita käytetään usein lomakkeen tietojen lähettämiseen. Esimerkiksi sovelluksessa voit käyttää:
-
-  > - "Lähetä" -painiketta tietojen lähettämiseen palvelimelle
-  > - "Tyhjennä" -painiketta poistaaksesi lomakkeeseen jo syötetyt tiedot
-
-2. **Käyttäjän toiminnot**: Painikkeita käytetään antamaan käyttäjille mahdollisuus suorittaa erityisiä toimintoja sovelluksessa. Esimerkiksi voit käyttää painiketta, joka on nimetty:
-
-  > - "Poista" aloittaakseen valitun kohteen poistamisen
-  > - "Tallenna" tallentaakseen asiakirjaan tai sivulle tehdyt muutokset.
-
-3. **Vahvistusvalinta**: Painikkeita lisätään usein [`Dialog`](../components/dialog) -komponentteihin eri tarkoituksia varten, jotta käyttäjille tarjotaan vaihtoehtoja vahvistaa tai peruuttaa toiminto tai muita toimintoja, joita käytät [`Dialog`](../components/dialog) -komponentissa.
-
-4. **Vuorovaikutuslaukaisijat**: Painikkeet voivat toimia laukaisijoina vuorovaikutuksille tai tapahtumille sovelluksessa. Napsauttamalla painiketta käyttäjät voivat aloittaa monimutkaisia toimintoja tai laukaista animaatioita, päivittää sisältöä tai päivittää näyttöä.
-
-5. **Navigointi**: Painikkeita voidaan käyttää navigointitarkoituksiin, kuten siirtymiseen eri osien tai sivujen välillä sovelluksessa. Navigointipainikkeet voivat sisältää:
-
-  > - "Seuraava" - vie käyttäjän seuraavalle sivulle tai osioon nykyisessä sovelluksessa tai sivussa.
-  > - "Edellinen" - vie käyttäjän takaisin aikaisemmalle sivulle sovelluksessa tai osioon, jossa he ovat.
-  > - "Takaisin" - vie käyttäjän sovelluksen tai sivun ensimmäiseen osaan.
-
 ## Kuvakkeiden lisääminen painikkeisiin <DocChip chip='since' label='24.11' /> {#adding-icons-to-buttons-docchip-chipsince-label2411-}
 
-Kuvakkeen sisällyttäminen painikkeeseen voi parantaa sovelluksesi suunnittelua merkittävästi, jolloin käyttäjät voivat nopeasti tunnistaa toiminnallisia kohteita näytöllä. [`Icon`](./icon.md) -komponentti tarjoaa laajan valikoiman kuvakkeita valittavaksi.
+Kuvakkeen lisääminen painikkeeseen voi parantaa sovelluksesi muotoilua, jolloin käyttäjät voivat nopeasti tunnistaa toiminnalliset tiedot näytöllä. [`Icon`](./icon.md) komponentti tarjoaa laajan valikoiman kuvakkeita valittavaksi.
 
-Hyödyntämällä `setPrefixComponent()` ja `setSuffixComponent()` -menetelmiä sinulla on mahdollisuus määrätä, tuleeko `Icon` kuvake ennen vai jälkeen painikkeen tekstin. Vaihtoehtoisesti `setIcon()`-menetelmää voidaan käyttää lisäämään `Icon` tekstin jälkeen, mutta ennen painikkeen `suffix`-slotia.
+Hyödyntämällä `setPrefixComponent()` ja `setSuffixComponent()` -menetelmiä, sinulla on joustavuutta päättää, tulisiko `Icon` näkyä ennen vai jälkeen painikkeen tekstin. Vaihtoehtoisesti `setIcon()` -menetelmää voidaan käyttää lisäämään `Icon` tekstin jälkeen, mutta ennen painikkeen `suffix`-slotia.
 
-<!-- Lisää tämä takaisin, kun Icon on yhdistetty -->
-<!-- Katso [Icon komponentti](../components/icon) sivua saadaksesi lisätietoja kuvakkeiden määrittelystä ja mukauttamisesta. -->
+<!-- Lisää tämä takaisin, kun kuvake on yhdistetty -->
+<!-- Katso [Icon component](../components/icon) -sivua saadaksesi lisätietoja kuvakkeiden määrittämisestä ja mukauttamisesta. -->
 
 :::tip
 Oletusarvoisesti `Icon` perii painikkeen teeman ja laajuuden.
@@ -67,11 +67,11 @@ height="200px"
 
 ### Nimet {#names}
 
-`Button`-komponentti hyödyntää nimeämistä, jota käytetään saavutettavuuden varmistamiseksi. Kun nimeä ei ole määritetty, painikkeen etiketti käytetään sen sijaan. Kuitenkin, jotkut kuvakkeet eivät sisällä etikettejä ja näyttävät vain ei-tekstielementtejä, kuten kuvakkeita. Tässä tapauksessa on hyödyllistä käyttää `setName()`-menetelmää varmistaaksesi, että luotu `Button`-komponentti noudattaa saavutettavuusstandardeja.
+`Button`-komponentti hyödyntää nimeämistä, jota käytetään esteettömyyden varmistamiseksi. Kun nimeä ei ole nimenomaisesti asetettu, painikkeen merkintää käytetään sen sijaan. Kuitenkin jotkut ikonit eivät sisällä merkintöjä, ja näyttävät vain ei-tekstuaalisia elementtejä, kuten kuvakkeita. Tällöin on hyödyllistä käyttää `setName()` -menetelmää varmistaaksesi, että luotu `Button`-komponentti täyttää esteettömyysstandardit.
 
 ## Painikkeen poistaminen käytöstä {#disabling-a-button}
 
-Painikekomponentit, kuten monet muut, voidaan poistaa käytöstä viestittääkseen käyttäjälle, että tietty toiminto ei ole vielä käytettävissä tai ei ole enää käytettävissä. Poistettu painike vähentää painikkeen läpinäkyvyyttä, ja se on saatavilla kaikille painiketeemoille ja laajuuksille.
+Painike komponentit, kuten monet muut, voidaan poistaa käytöstä, jotta käyttäjä tietää, että tietty toiminto ei ole vielä tai ei ole enää saatavilla. Poistettu painike vähentää painikkeen opasiteettia, ja se on saatavilla kaikille painiketeemoille ja -laajuuksille.
 
 <ComponentDemo 
 path='/webforj/buttondisable?' 
@@ -80,31 +80,31 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 
 <br />
 
-Painikkeen poistaminen käytöstä voidaan tehdä milloin tahansa koodissa käyttämällä <JavadocLink type="foundation" location="com/webforj/component/HasEnable" code='true'>setEnabled(boolean enabled)</JavadocLink> -toimintoa. Lisämukavuuden vuoksi painike voidaan myös poistaa käytöstä napsautettaessa käyttämällä sisäänrakennettua <JavadocLink type="foundation" location="com/webforj/component/button/Button" code='true' suffix='#setDisableOnClick(java.lang.Boolean)'>setDisabledOnClick(boolean enabled)</JavadocLink> -toimintoa.
+Painikkeen poistaminen käytöstä voidaan tehdä milloin tahansa koodissa käyttämällä <JavadocLink type="foundation" location="com/webforj/component/HasEnable" code='true'>setEnabled(boolean enabled)</JavadocLink> -toimintoa. Lisäksi painike voidaan myös poistaa käytöstä napsautettaessa käyttämällä sisäänrakennettua <JavadocLink type="foundation" location="com/webforj/component/button/Button" code='true' suffix='#setDisableOnClick(java.lang.Boolean)'>setDisabledOnClick(boolean enabled)</JavadocLink> -toimintoa.
 
-Jotkin sovellukset laukaisevat pitkään kestävän toiminnon napsautettaessa painiketta. Useimmissa tapauksissa sovelluksen on ehkä varmistettava, että vain yksi napsautus käsitellään. Tämä voi olla ongelma korkean viiveen ympäristöissä, kun käyttäjä napsauttaa painiketta useita kertoja ennen kuin sovellus on saanut mahdollisuuden aloittaa tuloksena olevan toiminnon käsittelyn.
+Joissakin sovelluksissa painikkeen napsauttaminen laukaisee pitkäkestoisen toiminnon. Useimmissa tapauksissa sovellus saattaa haluta varmistaa, että vain yksi napsautus käsitellään. Tämä voi olla ongelma suurten viiveiden ympäristöissä, kun käyttäjä napsauttaa painiketta useita kertoja ennen kuin sovellus ehtii aloittaa tuloksena olevan toiminnon käsittelyn. 
 
 :::tip
-Klikkauksen poistaminen käytöstä ei vain auta optimoimaan toimintojen käsittelyä, vaan myös estää kehittäjää toteuttamasta tätä käyttäytymistä itse, koska tämä menetelmä on optimoitu vähentämään matkaviestintää.
+Poistaminen käytöstä napsautettaessa auttaa optimoimaan toimintojen käsittelyä, mutta myös estää kehittäjää toteuttamasta tätä käyttäytymistä itse, koska tämä menetelmä on optimoitu vähentämään pyörömatka-viestintää.
 :::
 
-## Tyylit {#styling}
+## Tyylittely {#styling}
 
 ### Teemat {#themes}
 
-`Button`-komponenteissa on <JavadocLink type="foundation" location="com/webforj/component/button/ButtonTheme">14 erilaista teemaa</JavadocLink>, jotka mahdollistavat nopean tyylin ilman CSS:n käyttöä. Nämä teemat ovat ennalta määriteltyjä tyylejä, joita voidaan soveltaa painikkeisiin ulkonäön ja visuaalisen esityksen muuttamiseksi. Ne tarjoavat nopean ja johdonmukaisen tavan mukauttaa painikkeiden ulkoasua sovelluksessa.
+`Button`-komponentit tarjoavat <JavadocLink type="foundation" location="com/webforj/component/button/ButtonTheme">14 erillistä teemaa</JavadocLink> nopeaa tyylittelyä varten ilman CSS:n käyttöä. Nämä teemat ovat ennakkoon määriteltyjä tyylejä, joita voidaan soveltaa painikkeisiin niiden ulkoasun ja visuaalisen esityksen muuttamiseksi. Ne tarjoavat nopean ja johdonmukaisen tavan mukauttaa painikkeiden ulkoasua koko sovelluksessa. 
 
-Vaikka eri teemoille on monia käyttötilanteita, joitakin esimerkkejä käyttötarkoituksista ovat:
+Vaikka jokaiselle eri teema käytölle on monia käyttötilanteita, joitakin esimerkkejä käytöstä ovat:
 
-  - **Vaara**: Paras toimille, joilla on vakavia seurauksia, kuten tietojen poistamisen tai tilin/tietojen pysyvä poistaminen.
-  - **Oletus**: Sopiva toimille, jotka eivät vaadi erityistä huomiota ja ovat yleisiä, kuten asetusten vaihtaminen.
-  - **Pääasiallinen**: Sopiva pääasialliseksi "toimintakehotukseksi" sivulla, kuten rekisteröityminen, muutosten tallentaminen tai siirtyminen toiselle sivulle.
-  - **Onnistuminen**: Erinomainen visuaaliseen onnistuneen toiminnon näyttämiseen sovelluksessa, kuten lomakkeen lähettämisen tai rekisteröitymisprosessin loppuunsaattamisen. Onnistuneen teeman voi ohjelmallisesti soveltaa, kun onnistunut toiminto on suoritettu.
-  - **Varoitus**: Hyödyllinen merkkinä siitä, että käyttäjä on tekemässä potentiaalisesti riskialtista toimintoa, kuten siirtymään pois sivulta opiskelmatta muutoksia. Nämä toimet ovat usein vähemmän vaikuttavia kuin ne, jotka käyttäisivät Vaara-teemaa.
-  - **Harmaa**: Hyvä hienovaraisille toimille, kuten vähäisille asetuksille tai toiminnoille, jotka ovat enemmän täydentäviä sivun osia eivätkä osa päätoimintoja.
-  - **Tiedot**: Hyvä käyttäjälle tarjoamaan lisäselventävää tietoa.
+  - **Vaarallinen**: Parhaat toiminnot, joilla on vakavia seurauksia, kuten täytettyjen tietojen tyhjentäminen tai tilin/tietojen pysyvä poistaminen.
+  - **Oletus**: Sopiva toimintoille koko sovelluksessa, jotka eivät vaadi erityistä huomiota ja ovat yleisiä, kuten asetuksen vaihtaminen.
+  - **Päällimmäinen**: Sopii pää "toimintakehotteeseen" sivulla, kuten rekisteröitymiseen, muutosten tallentamiseen tai siirtymiseen toiseen sivuun.
+  - **Onnistuminen**: Erinomainen visualisoimaan onnistunutta toimintoa sovelluksessa, kuten lomakkeen lähettämistä tai rekisteröintiprosessin toteutumista. Onnistumisteema voidaan ohjelmallisesti soveltaa, kun onnistunut toiminto on suoritettu.
+  - **Varoitus**: Hyödyllinen ilmoittaaksesi, että käyttäjä aikoo suorittaa potentiaalisesti riskialttiin toiminnon, kuten siirtymisen pois sivulta, jolla on tallentamattomia muutoksia. Nämä toiminnot ovat usein vähemmän vaikuttavia kuin ne, jotka käyttäisivät vaarateemaa.
+  - **Harmaa**: Hyvä hienovaraisille toiminnoille, kuten vähäisille asetuksille tai toiminnoille, jotka ovat enemmän lisäosa sivulle, eikä ne ole osa päätoimintoja.
+  - **Tietoa**: Hyvä tarjoamaan käyttäjälle lisätietoa selventäviä tietoja.
 
-Alla on esimerkkejä painikkeista, joihin on sovellettu jokainen tuettu teema: <br/>
+Alla on esimerkkejä painikkeista, joihin kaikki tuetut teemat on sovellettu: <br/>
 
 <ComponentDemo 
 path='/webforj/buttonthemes?' 
@@ -114,14 +114,14 @@ height='175px'
 />
 
 ### Laajuudet {#expanses}
-Seuraavat <JavadocLink type="foundation" location="com/webforj/component/Expanse"> Laajuusarvot </JavadocLink> mahdollistavat nopean tyylin ilman CSS:n käyttöä. Tämä mahdollistaa painikkeen mittasuhteiden muokkaamisen ilman, että niitä olisi määritettävä erikseen minkään tyylin avulla. Tyylin yksinkertaistamisen lisäksi se auttaa myös luomaan ja ylläpitämään yhtenäisyyttä sovelluksessasi. Oletusarvoinen `Button`-laajuus on `Expanse.MEDIUM`.
+Seuraavat <JavadocLink type="foundation" location="com/webforj/component/Expanse">Laajuusarvot</JavadocLink> mahdollistavat nopean tyylittelyn ilman CSS:n käyttöä. Tämä mahdollistaa painikkeen mittojen muokkaamisen ilman, että niitä on tarvitsevinaan erikseen määrittää. Styylittelyn yksinkertaistamisen lisäksi se auttaa myös luomaan ja ylläpitämään yhtenäisyyttä sovelluksessa. Oletusarvoinen `Button`-laajuus on `Expanse.MEDIUM`.
 
-Eri kokoja on usein sopivia erilaisiin käyttötarkoituksiin:
-  - **Suuremmat** laajuusarvot soveltuvat painikkeille, jotka tulisi saada enemmän huomiota, korostaa toiminnallisuutta tai ovat keskeisiä sovelluksen tai sivun toiminnalle.
-  - **Keskikokoiset** laajuuspainikkeet, oletuskoko, tulisi käyttää "standardikokoina", kun painikkeen käyttäytyminen ei ole tärkeämpää tai vähemmän tärkeää kuin muilla samankaltaisilla komponenteilla.
-  - **Pienempiä** laajuusarvoja tulisi käyttää painikkeille, jotka eivät omaa olennaisia käyttäytymisiä sovelluksessa, ja jotka palvelevat enemmän täydentävää tai utilitaristista roolia kuin että niillä olisi tärkeä rooli käyttäjävuorovaikutuksessa. Tämä sisältää `Button`-komponentit, jotka käytetään vain kuvakkeiden kanssa utilitaristisiin tarkoituksiin.
+Eri kokoja on usein sopivia eri käyttötarkoituksiin:
+  - **Suuremmat** laajuusarvot soveltuvat painikkeille, jotka tulisi saada huomiota, korostaa toiminnallisuutta tai ovat keskeisiä sovelluksen tai sivun toiminnallisuudelle.
+  - **Keskikokoiset** laajuuspainikkeet, oletuskoko, tulisi käyttää "normaalina kokona", kun painikkeen käyttäytyminen ei ole enemmän tai vähemmän tärkeää kuin muilla samanlaisilla komponenteilla.
+  - **Pienemmän** laajuuden arvot tulisi käyttää painikkeille, joilla ei ole keskeisiä toimintoja sovelluksessa, ja jotka palvelevat enemmän lisäosan tai käytännöllisen roolin, eivätkä pelaa tärkeää roolia käyttäjän vuorovaikutuksessa. Tämä sisältää `Button`-komponentit, joita käytetään vain kuvakkeilla käytännön tarkoituksiin.
 
-Alla on erilaiset laajuudet, joita tuetaan `Button`-komponentille: <br/>
+Alla ovat erilaiset laajuudet, joita tuetaan `Button`-komponentille: <br/>
 
 <ComponentDemo 
 path='/webforj/buttonexpanses?' 
@@ -129,18 +129,18 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='200px'
 />
 
-<TableBuilder name="Button" />
+<TableBuilder name="Painike" />
 
 ## Parhaat käytännöt {#best-practices}
 
-Varmistaaksesi optimaalisen käyttäjäkokemuksen `Button`-komponentin käytössä, harkitse seuraavia parhaita käytäntöjä:
+Jotta varmistat optimaalisen käyttäjäkokemuksen `Button`-komponentin käytössä, harkitse seuraavia parhaita käytäntöjä:
 
-1. **Oikea teksti**: Käytä selkeää ja ytimekästä tekstiä `Button`-komponentissasi, jotta sen tarkoitus on selkeä.
+1. **Oikea teksti**: Käytä selkeää ja tiivistä tekstiä `Button`-komponentissasi, jotta sen tarkoitus on selkeä.
 
-2. **Sopiva visuaalinen tyyli**: Harkitse `Button`-painikkeen visuaalista tyyliä ja teemaa varmistaaksesi, että ne ovat johdonmukaisia sovelluksesi suunnittelun kanssa. Esimerkiksi:
-  > - "Peruuta" `Button`-komponentin tulisi olla tyylitelty sopivalla teemalla tai CSS-tyylillä, jotta käyttäjät ovat varmoja siitä, että he haluavat peruuttaa toiminnon
-  > - "Vahvista" `Button` olisi tyyliltään erilainen kuin "Peruuta" painike, mutta joka myös erottuisi varmistaakseen, että käyttäjät tietävät, että tämä on erityinen toiminto.
+2. **Sopiva visuaalinen tyylittely**: Harkitse painikkeen visuaalista tyylittelyä ja teemaa varmistaaksesi, että se on yhdenmukainen sovelluksesi muotoilun kanssa. Esimerkiksi:
+  > - "Peruuta" `Button`-komponentin tulisi olla tyylitelty asianmukaisella teemalla tai CSS-tyylillä, jotta käyttäjät ovat varmoja, että he haluavat peruuttaa toiminnon
+  > - "Vahvista" `Button` olisi erilaisten tyylien omaava verrattuna "Peruuta" -painikkeeseen, mutta sen tulisi myös erottua varmistaakseen, että käyttäjät tietävät, että tämä on erityinen toiminto.
 
-3. **Tehokas tapahtumien käsittely**: Käsittele `Button`-tapahtumia tehokkaasti ja tarjoa käyttäjille asianmukaista palautetta. Katso [Tapahtumat](../building-ui/events) tarkistaaksesi tehokkaita tapahtumien lisäämiskäytäntöjä.
+3. **Tehokas tapahtumakäsittely**: Käsittele `Button`-tapahtumat tehokkaasti ja tarjoa käyttäjille asianmukaista palautetta. Katso [Tapahtumat](../building-ui/events) tarkistaaksesi tehokkaita tapahtumien lisäämiskäyttäytymisiä.
 
-4. **Testaus ja saavutettavuus**: Testaa painikkeen käyttäytyminen eri skenaarioissa, kuten silloin, kun se on poistettu käytöstä tai saa fokuksen, varmistaaksesi sujuvan käyttäjäkokemuksen. Noudata saavutettavuusohjeita tehdäksesi `Button`-komponentista käytettävän kaikille käyttäjille, mukaan lukien niille, jotka luottavat apuvälineisiin.
+4. **Testaus ja esteettömyys**: Testaa painikkeen käyttäytymistä erilaisissa skenaarioissa, kuten kun se on poistettu käytöstä tai saa fokuksen, varmistaaksesi sujuvan käyttäjäkokemuksen. Seuraa esteettömyysohjeita, jotta `Button` on käytettävissä kaikille käyttäjille, mukaan lukien ne, jotka käyttävät apuvälineitä.

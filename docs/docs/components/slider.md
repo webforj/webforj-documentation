@@ -8,7 +8,9 @@ sidebar_position: 101
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/slider/Slider" top='true'/>
 
-The `Slider` component in webforJ provides an interactive control that allows users to select a value within a specific range by moving a knob. This feature is particularly useful for apps requiring precise or intuitive input, such as selecting volumes, percentages, or other adjustable values.
+The `Slider` component gives users a way to select a numeric value by dragging a knob along a track between a minimum and maximum bound. Step intervals, tick marks, and labels can be configured to guide the selection.
+
+<!-- INTRO_END -->
 
 ## Basics {#basics}
 

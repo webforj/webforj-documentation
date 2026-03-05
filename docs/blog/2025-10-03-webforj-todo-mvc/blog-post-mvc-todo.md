@@ -4,7 +4,7 @@ description: "Building a function todo app with the model-view-controller patter
 slug: webforj-mvc
 date: 2025-10-03
 authors: Matthew Hawkins
-tags: [webforJ, MVC, Spring, Spring Boot, Front End, Back End]
+tags: [mvc, spring, front end, back end, routing, tutorial]
 image: "https://cdn.webforj.com/webforj-documentation/blogs/webforj-todo-mvc/cover.png"
 hide_table_of_contents: true
 ---
