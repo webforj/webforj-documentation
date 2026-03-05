@@ -21,3 +21,179 @@ styling:
 community:
   label: Community
   description: Community stories, opinions, and announcements from the webforJ team.
+
+webforJ:
+  label: webforJ
+  description: Posts related to the webforJ framework.
+
+frontend:
+  label: Frontend
+  description: Frontend development topics and techniques.
+
+ai:
+  label: AI
+  description: Artificial intelligence and AI-assisted development with webforJ.
+
+showcase:
+  label: Showcase
+  description: Real-world examples and demos built with webforJ.
+
+annotations:
+  label: Annotations
+  description: Using Java annotations in webforJ applications.
+
+themes:
+  label: Themes
+  description: Theming and visual customization of webforJ applications.
+
+Modernization:
+  label: Modernization
+  description: Modernizing legacy Java applications.
+
+Webswing:
+  label: Webswing
+  description: Running Swing applications in the browser with Webswing.
+
+Spring:
+  label: Spring
+  description: Integration with the Spring framework.
+
+'Spring Boot':
+  label: Spring Boot
+  description: Integration with Spring Boot.
+
+'Full-Stack':
+  label: Full-Stack
+  description: Full-stack Java web development.
+
+'Web Development':
+  label: Web Development
+  description: General web development topics.
+
+MVC:
+  label: MVC
+  description: Model-View-Controller architecture patterns.
+
+'Front End':
+  label: Front End
+  description: Front-end development with webforJ.
+
+'Back End':
+  label: Back End
+  description: Back-end development topics.
+
+Routing:
+  label: Routing
+  description: Navigation and routing in webforJ applications.
+
+'SPA Routing':
+  label: SPA Routing
+  description: Single-page application routing patterns.
+
+'Responsive Design':
+  label: Responsive Design
+  description: Building responsive layouts with webforJ.
+
+FlexLayout:
+  label: FlexLayout
+  description: Using webforJ's FlexLayout container.
+
+Flexbox:
+  label: Flexbox
+  description: CSS Flexbox layout techniques.
+
+TextField:
+  label: TextField
+  description: Using the webforJ TextField component.
+
+Table:
+  label: Table
+  description: Using the webforJ Table component.
+
+Renderers:
+  label: Renderers
+  description: Custom cell renderers for webforJ Table.
+
+'UI Customization':
+  label: UI Customization
+  description: Customizing the look and behavior of webforJ UI components.
+
+'Data Visualization':
+  label: Data Visualization
+  description: Charts, tables, and visual data presentation.
+
+'REST API':
+  label: REST API
+  description: Building and consuming REST APIs with webforJ.
+
+'Data Loading':
+  label: Data Loading
+  description: Strategies for loading and displaying data in webforJ.
+
+Performance:
+  label: Performance
+  description: Performance optimization techniques for webforJ applications.
+
+'Repository Pattern':
+  label: Repository Pattern
+  description: Using the repository pattern for data access.
+
+v24.00:
+  label: v24.00
+  description: webforJ version 24.00 release.
+
+v24.01:
+  label: v24.01
+  description: webforJ version 24.01 release.
+
+v24.02:
+  label: v24.02
+  description: webforJ version 24.02 release.
+
+v24.10:
+  label: v24.10
+  description: webforJ version 24.10 release.
+
+v24.11:
+  label: v24.11
+  description: webforJ version 24.11 release.
+
+v24.12:
+  label: v24.12
+  description: webforJ version 24.12 release.
+
+v24.20:
+  label: v24.20
+  description: webforJ version 24.20 release.
+
+v24.21:
+  label: v24.21
+  description: webforJ version 24.21 release.
+
+v24.22:
+  label: v24.22
+  description: webforJ version 24.22 release.
+
+v25.00:
+  label: v25.00
+  description: webforJ version 25.00 release.
+
+v25.01:
+  label: v25.01
+  description: webforJ version 25.01 release.
+
+v25.02:
+  label: v25.02
+  description: webforJ version 25.02 release.
+
+v25.03:
+  label: v25.03
+  description: webforJ version 25.03 release.
+
+v25.10:
+  label: v25.10
+  description: webforJ version 25.10 release.
+
+v25.11:
+  label: v25.11
+  description: webforJ version 25.11 release.
