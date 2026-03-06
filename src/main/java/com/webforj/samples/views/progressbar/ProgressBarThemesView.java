@@ -11,21 +11,26 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Progress Bar Themes")
 public class ProgressBarThemesView extends Composite<Div> {
+  private final Div self = getBoundComponent();
 
-  public ProgressBarThemesView () {
-    FlexLayout layout = FlexLayout.create(getBoundComponent()).vertical().build()
+  public ProgressBarThemesView() {
+    // Create vertical layout container
+    FlexLayout layout = FlexLayout.create(self)
+        .vertical()
+        .build()
         .setMaxWidth("320px")
         .setStyle("margin", "0 auto")
         .setStyle("padding", "20px");
-    getBoundComponent().add(layout);
 
+    // Create progress bars for each theme
     for (Theme theme : Theme.values()) {
-      ProgressBar bar = new ProgressBar();
-      bar.setAnimated(true)
+      ProgressBar bar = new ProgressBar()
+          .setAnimated(true)
           .setValue(50)
           .setStriped(true)
-          .setText(theme.name() + " {{x}}%");
-      bar.setTheme(theme);
+          .setText(theme.name() + " {{x}}%")
+          .setTheme(theme);
+
       layout.add(bar);
     }
   }

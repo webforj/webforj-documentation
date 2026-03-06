@@ -10,15 +10,16 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Dialog Sections")
 public class DialogSectionsView extends Composite<FlexLayout> {
-
-  private Dialog dialog = new Dialog();
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final Dialog dialog = new Dialog();
 
   public DialogSectionsView() {
-    getBoundComponent().add(dialog);
-    dialog.addToHeader(new Div("Header"));
-    dialog.addToContent(new Div("Content"));
-    dialog.addToFooter(new Div("Footer"));
-    dialog.setCloseable(false);
-    dialog.open();
+    self.add(dialog);
+    dialog.addToHeader(new Div("Header"))
+        .addToContent(new Div("Content"))
+        .addToFooter(new Div("Footer"))
+        .setCloseable(false)
+        .open();
   }
 }

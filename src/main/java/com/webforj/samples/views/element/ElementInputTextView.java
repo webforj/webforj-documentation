@@ -7,18 +7,19 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@StyleSheet("ws://css/element/elementInput.css")
 @Route
+@StyleSheet("ws://css/element/elementInput.css")
 @FrameTitle("Element Input Text")
 public class ElementInputTextView extends Composite<Div> {
-  
-  Element input = new Element("input");
+  // self field enables fluent method chaining from the bound component
+  private final Div self = getBoundComponent();
+  private final Element input = new Element("input");
 
   public ElementInputTextView() {
-    getBoundComponent().setStyle("margin", "20px");
-    getBoundComponent().add(input);
+    self.setStyle("margin", "20px")
+        .add(input);
 
-    input.addClassName("element--input");
-    input.setText("Here is the set text");
+    input.addClassName("element--input")
+        .setText("Here is the set text");
   }
 }

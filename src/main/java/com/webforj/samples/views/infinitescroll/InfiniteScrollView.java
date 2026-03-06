@@ -1,5 +1,6 @@
 package com.webforj.samples.views.infinitescroll;
 
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -15,64 +16,96 @@ import com.webforj.router.annotation.Route;
 @Route
 @StyleSheet("ws://css/infinitescroll/infinitescroll.css")
 public class InfiniteScrollView extends Composite<Div> {
+  private final Div self = getBoundComponent();
+
+  // Shared names list for all Item instances
+  private static final List<String> NAMES = List.of(
+          "John", "Jane", "Alice", "Bob", "Charlie", "Diana",
+          "Ethan", "Fiona", "George", "Hannah", "Ian", "Jill"
+  );
 
   public InfiniteScrollView() {
-    Div self = getBoundComponent();
-    self.setHeight("100vh");
-    self.setStyle("overflow", "auto");
+    // Configure main container
+    self.setHeight("100vh")
+            .setStyle("overflow", "auto");
 
-    AtomicInteger index = new AtomicInteger();
+    // Create canvas for scrollable content
+    Div canvas = new Div()
+            .setMaxWidth("600px")
+            .addClassName("is-canvas");
 
-    Div canvas = new Div().setMaxWidth("600px")
-        .addClassName("is-canvas");
-
-    InfiniteScroll infiniteScroll = new InfiniteScroll();
-    infiniteScroll.setHeight("100%");
+    // Create and configure infinite scroll component
+    InfiniteScroll infiniteScroll = new InfiniteScroll()
+            .setHeight("100%");
     infiniteScroll.add(canvas);
 
-    infiniteScroll.onScroll(e -> {
-      if (index.get() > 40) {
-        infiniteScroll.setCompleted(true);
-        infiniteScroll.update();
-        return;
-      }
-
-      for (int i = 0; i < 8; i++) {
-        canvas.add(new Item());
-      }
-
-      index.addAndGet(8);
-      infiniteScroll.update();
-    });
+    // Set up scroll handler to load more items
+    AtomicInteger index = new AtomicInteger();
+    infiniteScroll.onScroll(e -> handleScroll(infiniteScroll, canvas, index));
 
     self.add(infiniteScroll);
   }
 
+  /**
+   * Handles scroll events by adding new items to the canvas.
+   */
+  private void handleScroll(InfiniteScroll infiniteScroll, Div canvas, AtomicInteger index) {
+    if (index.get() > 40) {
+      infiniteScroll.setCompleted(true);
+      infiniteScroll.update();
+      return;
+    }
+
+    for (int i = 0; i < 8; i++) {
+      canvas.add(new Item(NAMES));
+    }
+
+    index.addAndGet(8);
+    infiniteScroll.update();
+  }
+
+  /**
+   * Item component representing a single row in the infinite scroll.
+   */
   static class Item extends Composite<Div> {
     private final Random random = new Random();
-    private final String[] names = {
-        "John", "Jane", "Alice", "Bob", "Charlie", "Diana",
-        "Ethan", "Fiona", "George", "Hannah", "Ian", "Jill"
-    };
+    private final List<String> names;
 
-    public Item() {
+    Item(List<String> names) {
+      this.names = names;
+      initialize();
+    }
+
+    private void initialize() {
       Div self = getBoundComponent();
 
-      String name = names[random.nextInt(names.length)];
+      // Select random name from provided list
+      String name = names.get(random.nextInt(names.size()));
 
+      // Create item components with text content
       Div nameDiv = new Div(name).addClassName("item-name");
-      Div excerpt = new Div("Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-          + "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
-          .addClassName("item-excerpt");
+      Div excerpt = new Div("""
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.""")
+              .addClassName("item-excerpt");
 
-      Icon icon = FeatherIcon.ARROW_RIGHT.create();
-      icon.setMinSize("24px", "24px");
+      // Create arrow icon
+      Icon icon = FeatherIcon.ARROW_RIGHT.create()
+              .setMinSize("24px", "24px");
 
-      self.add(FlexLayout.create(FlexLayout.create(nameDiv, excerpt).vertical().build(), icon)
-          .horizontal()
-          .justify().between()
-          .align().center()
-          .build());
+      // Compose layout with flexbox
+      self.add(
+              FlexLayout.create(
+                              FlexLayout.create(nameDiv, excerpt)
+                                      .vertical()
+                                      .build(),
+                              icon
+                      )
+                      .horizontal()
+                      .justify().between()
+                      .align().center()
+                      .build()
+      );
     }
   }
 }

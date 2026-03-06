@@ -21,7 +21,8 @@ import com.webforj.dispatcher.ListenerRegistration;
 
 @StyleSheet("ws://css/viewtransitions/components/chat-card.css")
 public class ChatCard extends Composite<Div> implements HasClassName<ChatCard>, HasStyle<ChatCard> {
-  private Div self = getBoundComponent();
+  // self field enables fluent method chaining from the bound component
+  private final Div self = getBoundComponent();
   private final IconButton closeBtn;
 
   public ChatCard() {

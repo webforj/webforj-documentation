@@ -11,12 +11,13 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Table Single Selection")
 public class TableSingleSelectionView extends Composite<Div> {
+  // self field enables fluent method chaining from the bound component
+  private final Div self = getBoundComponent();
 
   public TableSingleSelectionView() {
-
-    Table<MusicRecord> table = new Table<>();
-    table.setWidth("100vw");
-    table.setHeight("100vh");
+    Table<MusicRecord> table = new Table<MusicRecord>()
+        .setWidth("100vw")
+        .setHeight("100vh");
 
     table.addColumn("Number", MusicRecord::getNumber);
     table.addColumn("Title", MusicRecord::getTitle);
@@ -27,10 +28,11 @@ public class TableSingleSelectionView extends Composite<Div> {
     table.setRepository(Service.getMusicRecords());
     table.setSelectionMode(Table.SelectionMode.SINGLE);
 
-    table.onItemSelect(ev -> showMessageDialog(
-        "You have selected " + ev.getItem().getTitle() + " by " + ev.getItem().getArtist(),
-        "Record Number " + ev.getItem().getNumber()));
+    table.onItemSelect(ev ->
+        showMessageDialog(
+            "You have selected " + ev.getItem().getTitle() + " by " + ev.getItem().getArtist(),
+            "Record Number " + ev.getItem().getNumber()));
 
-    getBoundComponent().add(table);
+    self.add(table);
   }
 }

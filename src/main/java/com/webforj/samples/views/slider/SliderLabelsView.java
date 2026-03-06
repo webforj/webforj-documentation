@@ -2,8 +2,6 @@ package com.webforj.samples.views.slider;
 
 import java.util.Map;
 
-import org.checkerframework.checker.units.qual.t;
-
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
@@ -19,19 +17,20 @@ import static java.util.Map.entry;
 @Route
 @FrameTitle("Slider Tick and Non-Tick Demo")
 public class SliderLabelsView extends Composite<FlexLayout> {
-
-  Slider slider = new Slider(50, 0, 100);
+  private final FlexLayout self = getBoundComponent();
+  // Slider with temperature labels
+  private final Slider slider = new Slider(50, 0, 100);
 
   public SliderLabelsView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN)
+    // Configure layout
+    self.setDirection(FlexDirection.COLUMN)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setSpacing("var(--dwc-space-m)")
         .setMargin("5% auto")
         .setAlignment(FlexAlignment.CENTER);
 
-    slider
-        .setFilled(true)
+    // Configure slider with labels, ticks, and dynamic theming
+    slider.setFilled(true)
         .setTicksVisible(true)
         .setMajorTickSpacing(10)
         .setMinorTickSpacing(2)
@@ -50,23 +49,18 @@ public class SliderLabelsView extends Composite<FlexLayout> {
         .onValueChange(e -> {
           Integer value = e.getValue();
 
-          if(value > 0 && value < 30) {
+          // Change theme based on temperature value
+          if (value > 0 && value < 30) {
             slider.setTheme(Theme.PRIMARY);
-          }
-
-          if(value >= 30 && value < 50) {
+          } else if (value >= 30 && value < 50) {
             slider.setTheme(Theme.SUCCESS);
-          }
-
-          if(value >= 50 && value < 80) {
+          } else if (value >= 50 && value < 80) {
             slider.setTheme(Theme.WARNING);
-          }
-
-          if(value >= 80 && value <= 100) {
+          } else if (value >= 80 && value <= 100) {
             slider.setTheme(Theme.DANGER);
           }
         });
 
-    layout.add(slider);
+    self.add(slider);
   }
 }

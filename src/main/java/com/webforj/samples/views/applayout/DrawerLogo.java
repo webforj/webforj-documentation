@@ -5,10 +5,11 @@ import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.Img;
 
 public class DrawerLogo extends Composite<Div> {
+  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
 
   public DrawerLogo() {
-    self.addClassName("drawer__logo");
-    self.add(new Img("ws://img/webforj_icon.svg", "logo"));
+    self.addClassName("drawer__logo")
+            .add(new Img("ws://img/webforj_icon.svg", "logo"));
   }
 }

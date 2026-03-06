@@ -23,32 +23,38 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Tabbed Pane Activation")
 public class TabbedPaneActivationView extends Composite<Div> {
-
-  TabbedPane pane = new TabbedPane();
-  RadioButton activation = RadioButton.Switch("Manual");
+  // Self reference enabling fluent method chaining
+  private final Div self = getBoundComponent();
+  // UI Components
+  private final TabbedPane pane = new TabbedPane();
+  private final RadioButton activation = RadioButton.Switch("Manual");
 
   public TabbedPaneActivationView() {
-    getBoundComponent().addClassName("window");
-    getBoundComponent().add(activation, pane);
+    // Configure main container
+    self.addClassName("window")
+        .add(activation, pane);
 
+    // Create tab icons
     Icon dashboardIcon = TablerIcon.create("dashboard");
     Icon ordersIcon = TablerIcon.create("shopping-cart");
     Icon customersIcon = TablerIcon.create("users");
     Icon productsIcon = TablerIcon.create("box");
     Icon documentsIcon = TablerIcon.create("files");
 
+    // Add tabs to the pane
     pane.addTab(new Tab("Dashboard", dashboardIcon));
     pane.addTab(new Tab("Orders", ordersIcon));
     pane.addTab(new Tab("Customers", customersIcon));
-		pane.addTab(new Tab("Products", productsIcon));
+    pane.addTab(new Tab("Products", productsIcon));
     pane.addTab(new Tab("Documents", documentsIcon));
-    
-    activation.onCheck( e -> {
+
+    // Toggle between manual and automatic activation
+    activation.onCheck(e -> {
       activation.setText("Automatic");
       pane.setActivation(Activation.AUTO);
     });
-    
-    activation.onUncheck( e -> {
+
+    activation.onUncheck(e -> {
       activation.setText("Manual");
       pane.setActivation(Activation.MANUAL);
     });

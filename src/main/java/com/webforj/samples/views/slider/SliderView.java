@@ -1,5 +1,7 @@
 package com.webforj.samples.views.slider;
 
+import java.util.Map;
+
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.icons.IconButton;
@@ -12,27 +14,27 @@ import com.webforj.component.slider.Slider;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-import java.util.Map;
-
-import org.checkerframework.checker.units.qual.t;
-
 import static java.util.Map.entry;
 
 @Route
 @FrameTitle("Volume Control Demo")
 public class SliderView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
+  // Volume slider component
+  private final Slider volumeSlider = new Slider();
 
-  Slider volumeSlider = new Slider();
-  Integer currentVolume = 50;
-  FlexLayout layout = getBoundComponent();
+  // Current volume state
+  private Integer currentVolume = 50;
 
   public SliderView() {
-    layout.setDirection(FlexDirection.COLUMN)
+    // Configure layout
+    self.setDirection(FlexDirection.COLUMN)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setAlignment(FlexAlignment.CENTER)
         .setSpacing("var(--dwc-space-l)")
         .setMargin("var(--dwc-space-l)");
 
+    // Configure volume slider with labels and ticks
     volumeSlider.setMin(0)
         .setMax(100)
         .setValue(currentVolume)
@@ -51,6 +53,7 @@ public class SliderView extends Composite<FlexLayout> {
         .setTooltipVisibleOnSlideOnly(true)
         .setWidth("300px");
 
+    // Create mute button
     IconButton muteButton = new IconButton(TablerIcon.create("volume-off"));
     muteButton.setTheme(Theme.DANGER)
         .onClick(e -> {
@@ -58,19 +61,21 @@ public class SliderView extends Composite<FlexLayout> {
           volumeSlider.setValue(0);
         });
 
+    // Create max volume button
     IconButton maxVolumeButton = new IconButton(TablerIcon.create("volume-2"));
     maxVolumeButton.onClick(e -> {
       currentVolume = 100;
       volumeSlider.setValue(100);
     });
 
-    FlexLayout sliderContainer = new FlexLayout();
-    sliderContainer.setDirection(FlexDirection.ROW)
-        .setJustifyContent(FlexJustifyContent.CENTER)
-        .setAlignment(FlexAlignment.CENTER)
-        .setSpacing("var(--dwc-space-m)");
-    sliderContainer.add(muteButton, volumeSlider, maxVolumeButton);
+    // Create horizontal slider container
+    FlexLayout sliderContainer = FlexLayout.create(muteButton, volumeSlider, maxVolumeButton)
+            .horizontal()
+            .justify().center()
+            .align().center()
+            .build()
+            .setSpacing("var(--dwc-space-m)");
 
-    layout.add(sliderContainer);
+    self.add(sliderContainer);
   }
 }

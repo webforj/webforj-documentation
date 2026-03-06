@@ -1,5 +1,7 @@
 package com.webforj.samples.views.slider;
 
+import java.util.Map;
+
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.icons.IconButton;
@@ -12,25 +14,27 @@ import com.webforj.component.slider.Slider;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-import java.util.Map;
-
 import static java.util.Map.entry;
 
 @Route
 @FrameTitle("Temperature Selector Demo")
 public class SliderTempView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
+  // Temperature slider component
+  private final Slider temperatureSlider = new Slider();
 
-  Slider temperatureSlider = new Slider();
-  Integer currentTemperature = 72;
-  FlexLayout layout = getBoundComponent();
+  // Current temperature state
+  private Integer currentTemperature = 72;
 
   public SliderTempView() {
-    layout.setDirection(FlexDirection.COLUMN)
+    // Configure layout
+    self.setDirection(FlexDirection.COLUMN)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setSpacing("var(--dwc-space-l)")
         .setMargin("var(--dwc-space-l)")
         .setAlignment(FlexAlignment.CENTER);
 
+    // Configure temperature slider
     temperatureSlider.setMin(60)
         .setMax(90)
         .setValue(currentTemperature)
@@ -47,6 +51,7 @@ public class SliderTempView extends Composite<FlexLayout> {
         .setTooltipVisibleOnSlideOnly(true)
         .setWidth("300px");
 
+    // Create cold (snowflake) button
     IconButton snowflakeButton = new IconButton(TablerIcon.create("snowflake"));
     snowflakeButton.setTheme(Theme.PRIMARY)
         .setStyle("font-size", "1.5rem")
@@ -55,6 +60,7 @@ public class SliderTempView extends Composite<FlexLayout> {
           temperatureSlider.setValue(60);
         });
 
+    // Create hot (sun) button
     IconButton sunButton = new IconButton(TablerIcon.create("sun"));
     sunButton.setTheme(Theme.DANGER)
         .setStyle("font-size", "1.5rem")
@@ -63,14 +69,14 @@ public class SliderTempView extends Composite<FlexLayout> {
           temperatureSlider.setValue(90);
         });
 
-    FlexLayout sliderContainer = new FlexLayout();
-    sliderContainer.setDirection(FlexDirection.ROW)
-        .setJustifyContent(FlexJustifyContent.BETWEEN)
-        .setAlignment(FlexAlignment.CENTER)
-        .setSpacing("var(--dwc-space-m)");
+    // Create horizontal slider container
+    FlexLayout sliderContainer = FlexLayout.create(snowflakeButton, temperatureSlider, sunButton)
+            .horizontal()
+            .justify().between()
+            .align().center()
+            .build()
+            .setSpacing("var(--dwc-space-m)");
 
-    sliderContainer.add(snowflakeButton, temperatureSlider, sunButton);
-
-    layout.add(sliderContainer);
+    self.add(sliderContainer);
   }
 }

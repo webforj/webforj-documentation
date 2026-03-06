@@ -11,12 +11,12 @@ import java.time.LocalTime;
 @Route
 @FrameTitle("Time Field Demo")
 public class TimeFieldView extends Composite<FlexLayout> {
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final TimeField reminder = new TimeField("Set Reminder:", LocalTime.now());
 
-  TimeField reminder = new TimeField("Set Reminder:", LocalTime.now());
-  
   public TimeFieldView() {
-    getBoundComponent().setMargin("var(--dwc-space-m)");
-    getBoundComponent().add(reminder);
+    self.setMargin("var(--dwc-space-m)")
+        .add(reminder);
   }
-
 }

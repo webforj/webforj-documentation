@@ -17,21 +17,21 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Toast Basics")
 public class ToastView extends Composite<Div> {
-  Toast t = new Toast("", -1, Theme.GRAY);
-  
+  private final Toast toast = new Toast("", -1, Theme.GRAY);
+
   public ToastView() {
     FlexLayout toastContent = new FlexLayout()
         .setDirection(FlexDirection.ROW)
         .setAlignment(FlexAlignment.CENTER)
         .setSpacing("var(--dwc-space-m)");
-    
+
     toastContent.add(
         new Spinner(),
         new Paragraph("System update failed. Restoring to the previous state."),
-        new Button("Stop", ButtonTheme.DANGER, e -> t.close())
+        new Button("Stop", ButtonTheme.DANGER, e -> toast.close())
     );
-    
-    t.add(toastContent);
-    t.open();
+
+    toast.add(toastContent);
+    toast.open();
   }
 }

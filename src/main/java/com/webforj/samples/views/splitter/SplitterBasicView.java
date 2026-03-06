@@ -10,12 +10,17 @@ import com.webforj.samples.components.SplitterBox;
 @Route
 @FrameTitle("Splitter Basics")
 public class SplitterBasicView extends Composite<Div> {
+  // Self reference enabling fluent method chaining
+  private final Div self = getBoundComponent();
 
   public SplitterBasicView() {
+    // Create splitter box panels
     SplitterBox master = new SplitterBox("Master", SplitterBox.Theme.INFO);
     SplitterBox detail = new SplitterBox("Detail", SplitterBox.Theme.SUCCESS);
+
+    // Create splitter with the two panels
     Splitter splitter = new Splitter(master, detail);
 
-    getBoundComponent().add(splitter);
+    self.add(splitter);
   }
 }

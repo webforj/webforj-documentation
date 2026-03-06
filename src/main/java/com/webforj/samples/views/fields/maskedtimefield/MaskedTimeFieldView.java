@@ -13,16 +13,16 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Time Field")
 public class MaskedTimeFieldView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
-  MaskedTimeField field = new MaskedTimeField("Meeting Time");
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final MaskedTimeField field = new MaskedTimeField("Meeting Time");
 
   public MaskedTimeFieldView() {
     self.setDirection(FlexDirection.COLUMN)
         .setAlignment(FlexAlignment.CENTER)
         .setMargin("var(--dwc-space-m)");
 
-    field
-        .setMask("%h:%mz %p")
+    field.setMask("%h:%mz %p")
         .setValue(LocalTime.now())
         .setMaxWidth("300px")
         .setHelperText("Meeting time is formatted as %h:%mz %p.")

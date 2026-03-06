@@ -18,12 +18,11 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Feedback TextArea Demo")
 public class TextAreaView extends Composite<FlexLayout> {
-
-  FlexLayout self = getBoundComponent();
-  TextArea feedbackArea = new TextArea("What do you think about this demo?");
-  Paragraph charCount = new Paragraph();
-  Button submitButton = new Button("Submit Feedback", ButtonTheme.GRAY);
-  int maxCharacters = 200;
+  private final FlexLayout self = getBoundComponent();
+  private final TextArea feedbackArea = new TextArea("What do you think about this demo?");
+  private final Paragraph charCount = new Paragraph();
+  private final Button submitButton = new Button("Submit Feedback", ButtonTheme.GRAY);
+  private static final int MAX_CHARACTERS = 200;
 
   public TextAreaView() {
     self.setDirection(FlexDirection.COLUMN)
@@ -36,15 +35,14 @@ public class TextAreaView extends Composite<FlexLayout> {
     feedbackArea.setPlaceholder("Enter your feedback here...")
         .setWidth("100%")
         .setMaxWidth("800px")
-        .setMaxLength(maxCharacters)
+        .setMaxLength(MAX_CHARACTERS)
         .setLineWrap(true)
         .setWrapStyle(TextArea.WrapStyle.WORD_BOUNDARIES)
         .onValueChange(event -> updateCharCount(event.getValue()));
 
     updateCharCount(feedbackArea.getValue());
 
-    charCount
-        .setStyle("font-size", "12px")
+    charCount.setStyle("font-size", "12px")
         .setStyle("color", "var(--dwc-color-gray-text)");
 
     submitButton.onClick(e -> {
@@ -68,6 +66,7 @@ public class TextAreaView extends Composite<FlexLayout> {
   }
 
   private void updateCharCount(String text) {
-    charCount.setText("Characters: " + text.length() + " / " + maxCharacters);
+    // Use text block for cleaner string formatting
+    charCount.setText("Characters: %d / %d".formatted(text.length(), MAX_CHARACTERS));
   }
 }

@@ -9,12 +9,13 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Table Multi Sorting")
 public class TableMultiSortingView extends Composite<Div> {
+  // self field enables fluent method chaining from the bound component
+  private final Div self = getBoundComponent();
 
   public TableMultiSortingView() {
-
-    Table<MusicRecord> table = new Table<>();
-    table.setWidth("100vw");
-    table.setHeight("100vh");
+    Table<MusicRecord> table = new Table<MusicRecord>()
+        .setWidth("100vw")
+        .setHeight("100vh");
 
     table.addColumn("Title", MusicRecord::getTitle);
     table.addColumn("Artist", MusicRecord::getArtist);
@@ -25,6 +26,6 @@ public class TableMultiSortingView extends Composite<Div> {
     table.setMultiSorting(true);
     table.setRepository(Service.getMusicRecords());
 
-    getBoundComponent().add(table);
+    self.add(table);
   }
 }

@@ -20,7 +20,6 @@ import com.webforj.router.annotation.Route;
 @Route()
 @FrameTitle("Tree Selection Example")
 public class TreeSelectionView extends Composite<FlexLayout> {
-
   private final FlexLayout self = getBoundComponent();
   private final Tree tree = new Tree();
   private final Button showSelected = new Button("Show Selected Nodes");
@@ -50,14 +49,20 @@ public class TreeSelectionView extends Composite<FlexLayout> {
 
     showSelected.onClick(e -> {
       List<TreeNode> selectedNodes = tree.getSelectedItems();
-      String msg = "There are no node selected";
 
-      if (!selectedNodes.isEmpty()) {
-        msg = "<html> You have selected the following nodes"
-            + selectedNodes.stream().map(TreeNode::getText).map(title -> "<li>" + title + "</li>")
-                .collect(Collectors.joining("", "<ul>", "</ul>"))
-            + "</html>";
-      }
+      // Use text block for cleaner HTML message formatting
+      String msg = selectedNodes.isEmpty()
+          ? "There are no node selected"
+          : """
+              <html> You have selected the following nodes
+              %s
+              </html>
+              """.formatted(
+                  selectedNodes.stream()
+                      .map(TreeNode::getText)
+                      .map(title -> "<li>" + title + "</li>")
+                      .collect(Collectors.joining("", "<ul>", "</ul>"))
+              );
 
       showMessageDialog(msg, "Node Selection");
     });

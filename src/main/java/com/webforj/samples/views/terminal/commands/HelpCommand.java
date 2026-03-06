@@ -11,30 +11,20 @@ public class HelpCommand implements TerminalCommand {
     this.commands = commands;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public String getName() {
     return "help";
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public String getDescription() {
     return "Show supported commands";
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public void execute(Terminal term, String[] args) {
     term.writeln("Supported commands:");
-    for (TerminalCommand command : commands.values()) {
-      term.writeln("  \u001b[36m" + command.getName() + "\u001b[0m - " + command.getDescription());
-    }
+    // Use forEach with lambda for cleaner iteration
+    commands.values().forEach(command -> command.printInfo(term));
   }
 }
