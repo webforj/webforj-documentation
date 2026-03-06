@@ -1,7 +1,8 @@
 ---
 title: Integrating the AppLayout
-sidebar_position: 6
+sidebar_position: 7
 draft: true
+description: Step 6 - Use the AppLayout component.
 ---
 
 In this step, you will integrate the features implemented in previous steps, such as routing and views, into a cohesive app layout. This structure will provide a unified navigation system and dynamic content areas.
