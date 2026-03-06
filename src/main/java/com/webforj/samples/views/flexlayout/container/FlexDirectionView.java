@@ -32,9 +32,9 @@ public class FlexDirectionView extends Composite<Div> {
     for (int i = 1; i <= 4; i++) {
       String hue = String.valueOf((360 / 10) * i);
       Box newBox = new Box(i);
-      newBox.setStyle("background", "hsla(" + String.valueOf(hue) + ", 50%, 75%, 0.25)");
-      newBox.setStyle("border", "2px solid " + "hsl(" + String.valueOf(hue) + ", 50%, 35%)");
-      newBox.setStyle("color", "hsl(" + String.valueOf(hue) + ", 50%, 25%)");
+      newBox.setStyle("background", "hsla(" + hue + ", 50%, 75%, 0.25)");
+      newBox.setStyle("border", "2px solid " + "hsl(" + hue + ", 50%, 35%)");
+      newBox.setStyle("color", "hsl(" + hue + ", 50%, 25%)");
       boxLayout.add(newBox);
     }
 
