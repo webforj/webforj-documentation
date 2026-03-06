@@ -9,8 +9,13 @@ import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
 import CodeIcon from '@mui/icons-material/Code';
 import ExperimentIcon from '@mui/icons-material/ScienceOutlined';
 import DescriptionIcon from '@mui/icons-material/Description';
+import HourglassTopIcon from '@mui/icons-material/HourglassTop';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 export default function DocChip( { chip, label, href, exclude, tooltipText, color } ) {
+
+  const {siteConfig} = useDocusaurusContext();
+  const webforjVersion = Number(siteConfig.customFields.webforjVersion.split("-")[0]);
 
   const mainStyles = css`
     margin-right: 0.5em;
@@ -51,11 +56,17 @@ export default function DocChip( { chip, label, href, exclude, tooltipText, colo
         }
       icon = <CodeIcon css={iconStyles} />;
     break;
-    // A "Version" chip    
+    // A "Version" chip
     case 'since':
-      tooltipText = `This feature is available for webforJ ${label} and higher.`;
-      href = `https://github.com/webforj/webforj/releases/tag/${label}`;
-      icon = <AddTaskIcon css={iconStyles} />
+      if (webforjVersion >= Number(label) || isNaN(webforjVersion)) {
+        tooltipText = `This feature is available for webforJ ${label} and higher.`;
+        href = `https://github.com/webforj/webforj/releases/tag/${label}`;
+        icon = <AddTaskIcon css={iconStyles} />
+      } else {
+        tooltipText = `This feature will be available in a future release.`;
+        href = `/docs/configuration/snapshots`;
+        icon = <HourglassTopIcon css={iconStyles} />
+      }
     break;
     // A "Scoped" chip
     case 'scoped':
