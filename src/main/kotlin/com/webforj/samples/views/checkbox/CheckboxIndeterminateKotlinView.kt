@@ -55,17 +55,8 @@ class CheckboxIndeterminateKotlinView: Composite<FlexLayout>() {
   }
 
   private fun onCheck(e: ToggleEvent) {
-    if (child1.isChecked && child2.isChecked) {
-      indeterminate.isChecked = true
-    } else {
-      if (child1.isChecked || child2.isChecked) {
-        indeterminate.isChecked = false
-        indeterminate.isIndeterminate = true
-      } else {
-        indeterminate.isIndeterminate = false
-        indeterminate.isChecked = false
-      }
-    }
+    indeterminate.isChecked = child1.isChecked && child2.isChecked
+    indeterminate.isIndeterminate = child1.isChecked xor child2.isChecked
   }
 
   private fun indeterminateToggle(e: ToggleEvent) {
