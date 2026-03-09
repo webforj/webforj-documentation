@@ -51,9 +51,10 @@ The `HasFrameTitle` interface contains a single method `getFrameTitle()`, which 
 ```java
 @Route("profile/:id")
 public class ProfileView extends Composite<Div> implements HasFrameTitle {
+  private Div self = getBoundComponent();
 
   public ProfileView() {
-    getBoundComponent().add(new H1("Profile Page"));
+    self.add(new H1("Profile Page"));
   }
   
   @Override

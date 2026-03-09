@@ -43,10 +43,11 @@ When you need to pass parameters along with the route, webforJ allows you to emb
 ```java
 @Route("user/:id")
 public class UserProfileView extends Composite<Div> implements DidEnterObserver {
+  Div self = getBoundComponent();
   H1 title = new H1();
 
   public UserProfileView() {
-    getBoundComponent().add(title);
+    self.add(title);
   }
 
   public void setTile(String title) {

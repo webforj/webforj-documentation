@@ -32,6 +32,7 @@ Your route classes don't require Spring annotations. The `@Route` annotation alo
 @Route("/dashboard")
 public class DashboardView extends Composite<Div> {
   
+  private Div self = getBoundComponent();
   private final MetricsService metricsService;
   private final UserRepository userRepository;
   
@@ -43,7 +44,7 @@ public class DashboardView extends Composite<Div> {
     Div metricsPanel = new Div();
     metricsPanel.setText(metricsService.getCurrentMetrics());
     
-    getBoundComponent().add(metricsPanel);
+    self.add(metricsPanel);
   }
 }
 ```

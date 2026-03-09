@@ -40,11 +40,11 @@ The `@PermitAll` annotation requires users to be authenticated but doesn't enfor
 @Route(value = "/", outlet = MainLayout.class)
 @PermitAll
 public class InboxView extends Composite<FlexLayout> {
+  private FlexLayout self = getBoundComponent();
 
   public InboxView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setHeight("100%");
-    layout.add(new Explore("Inbox"));
+    self.setHeight("100%");
+    self.add(new Explore("Inbox"));
   }
 }
 ```
@@ -68,11 +68,11 @@ The `@RolesAllowed` annotation restricts access to users with specific roles. Yo
 @Route(value = "/trash", outlet = MainLayout.class)
 @RolesAllowed("ADMIN")
 public class TrashView extends Composite<FlexLayout> {
+  private FlexLayout self = getBoundComponent();
 
   public TrashView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setHeight("100%");
-    layout.add(new Explore("Trash"));
+    self.setHeight("100%");
+    self.add(new Explore("Trash"));
   }
 }
 ```
@@ -87,10 +87,10 @@ In this example:
 @Route(value = "/settings", outlet = MainLayout.class)
 @RolesAllowed({"ADMIN", "MANAGER"})
 public class SettingsView extends Composite<FlexLayout> {
+  private FlexLayout self = getBoundComponent();
 
   public SettingsView() {
-    FlexLayout layout = getBoundComponent();
-    layout.add(new Explore("Settings"));
+    self.add(new Explore("Settings"));
   }
 }
 ```
@@ -111,10 +111,10 @@ The `@DenyAll` annotation blocks access to a route for all users, regardless of 
 @Route(value = "/maintenance", outlet = MainLayout.class)
 @DenyAll
 public class MaintenanceView extends Composite<FlexLayout> {
+  private FlexLayout self = getBoundComponent();
 
   public MaintenanceView() {
-    FlexLayout layout = getBoundComponent();
-    layout.add(new Paragraph("This page is under maintenance."));
+    self.add(new Paragraph("This page is under maintenance."));
   }
 }
 ```
