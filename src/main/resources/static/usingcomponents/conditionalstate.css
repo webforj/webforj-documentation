@@ -1,0 +1,24 @@
+.conditional-container {
+    padding: var(--dwc-space-2xl);
+    min-height: 400px;
+}
+
+.conditional-card {
+    background: var(--dwc-surface-3);
+    border-radius: var(--dwc-border-radius-l);
+    box-shadow: var(--dwc-shadow-l);
+    padding: var(--dwc-space-2xl);
+    width: 400px;
+    max-width: 100%;
+}
+
+.conditional-title {
+    margin: 0 0 var(--dwc-space-xs) 0;
+    text-align: center;
+}
+
+.conditional-subtitle {
+    margin: 0 0 var(--dwc-space-m) 0;
+    text-align: center;
+    font-size: var(--dwc-font-size-m);
+}
