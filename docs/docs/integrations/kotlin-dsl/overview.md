@@ -53,7 +53,7 @@ The DSL takes advantage of Kotlin extension functions, lambdas with receivers, a
 ## Setup {#setup}
 
 :::warning experimental feature
-This feature is still evolving and actively improving.
+This feature is still under active development.
 The API may change in future versions, including possible breaking changes.
 
 You're welcome to try it and share feedback. Your input will help shape the final design.
