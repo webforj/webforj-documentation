@@ -2,8 +2,7 @@ package com.webforj.samples.views.markdownviewer;
 
 import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
-import com.webforj.component.button.Button;
-import com.webforj.component.button.ButtonTheme;
+import com.webforj.component.icons.IconButton;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.Span;
 import com.webforj.component.icons.TablerIcon;
@@ -76,8 +75,8 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
   private final FlexLayout messagesArea;
   private final MarkdownViewer viewer = new MarkdownViewer();
   private final TextField input = new TextField();
-  private final Button sendButton = new Button(TablerIcon.create("send"));
-  private final Button stopButton = new Button(TablerIcon.create("square-filled"));
+  private final IconButton sendButton = new IconButton(TablerIcon.create("send"));
+  private final IconButton stopButton = new IconButton(TablerIcon.create("square", TablerIcon.Variate.FILLED));
 
   private Div thinkingIndicator;
   private Interval streamInterval;
@@ -127,14 +126,15 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
       }
     });
 
-    sendButton.setTheme(ButtonTheme.PRIMARY);
     sendButton.onClick(e -> sendMessage());
 
-    stopButton.setTheme(ButtonTheme.DANGER);
+    stopButton.setStyle("color", "var(--dwc-color-danger-text)");
     stopButton.setVisible(false);
     stopButton.onClick(e -> stopStreaming());
 
     FlexLayout buttonWrapper = FlexLayout.create(sendButton, stopButton).build();
+    buttonWrapper.setStyle("gap", "var(--dwc-space-s)");
+    buttonWrapper.setStyle("padding-right", "var(--dwc-space-xs)");
     input.setSuffixComponent(buttonWrapper);
     inputArea.add(input);
 

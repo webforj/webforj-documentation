@@ -172,3 +172,5 @@ public class Application extends App {
 ```
 
 The autoloader plugin loads language definitions as needed, so code blocks with language hints like ` ```java ` or ` ```python ` get highlighted automatically.
+
+<TableBuilder name="MarkdownViewer" />

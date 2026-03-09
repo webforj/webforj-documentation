@@ -18,8 +18,8 @@ public class MarkdownViewerStreamingPage {
     this.viewer = page.locator("dwc-markdown-viewer");
     this.header = page.locator(".chat__header");
     this.inputField = page.getByPlaceholder("Type a message...");
-    this.sendButton = page.locator("dwc-button[theme='primary']");
-    this.stopButton = page.locator("dwc-button[theme='danger']");
+    this.sendButton = page.locator("dwc-icon-button").first();
+    this.stopButton = page.locator("dwc-icon-button").last();
     this.thinkingIndicator = page.locator(".chat__thinking");
   }
 

@@ -1,8 +1,9 @@
+html, body {
+  background: var(--dwc-surface-3);
+}
+
 .chat {
-  height: 450px;
-  max-height: 450px;
-  border: 1px solid var(--dwc-color-default);
-  border-radius: var(--dwc-border-radius-l);
+  height: 100vh;
   background: var(--dwc-surface-3);
   overflow: hidden;
 }
@@ -28,7 +29,7 @@
   display: flex;
   align-items: center;
   gap: var(--dwc-space-s);
-  color: var(--dwc-color-default-text);
+  color: var(--dwc-color-primary-text);
   font-size: var(--dwc-font-size-s);
   padding: var(--dwc-space-s) 0;
 }
@@ -45,6 +46,6 @@
 .chat__input-area {
   padding: var(--dwc-space-m);
   border-top: 1px solid var(--dwc-color-default);
-  background: var(--dwc-surface-2);
+  background: var(--dwc-surface-3);
   flex-shrink: 0;
 }
