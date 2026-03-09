@@ -75,27 +75,27 @@ Add the following to your `build.gradle`:
 
 ```groovy
 buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "com.webforj:webforj-minify-gradle-plugin:${webforjVersion}"
-    }
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath "com.webforj:webforj-minify-gradle-plugin:${webforjVersion}"
+  }
 }
 
 plugins {
-    id 'java'
+  id 'java'
 }
 
 apply plugin: 'com.webforj.minify'
 
 dependencies {
-    // Annotation processor for discovering assets during compilation
-    annotationProcessor "com.webforj:webforj-minify-foundation:${webforjVersion}"
+  // Annotation processor for discovering assets during compilation
+  annotationProcessor "com.webforj:webforj-minify-foundation:${webforjVersion}"
 
-    // Minifier implementations
-    add "webforjMinifier", "com.webforj:webforj-minify-phcss-css:${webforjVersion}"
-    add "webforjMinifier", "com.webforj:webforj-minify-closure-js:${webforjVersion}"
+  // Minifier implementations
+  add "webforjMinifier", "com.webforj:webforj-minify-phcss-css:${webforjVersion}"
+  add "webforjMinifier", "com.webforj:webforj-minify-closure-js:${webforjVersion}"
 }
 ```
 
@@ -180,7 +180,7 @@ mvn package -Dwebforj.minify.skip=true
 **Via build configuration:**
 ```groovy
 webforjMinify {
-    skip = true
+  skip = true
 }
 ```
 

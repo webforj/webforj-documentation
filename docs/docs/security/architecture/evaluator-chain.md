@@ -44,18 +44,18 @@ When the chain starts, it begins at the first evaluator (lowest priority) and pr
 
 ```mermaid
 flowchart TD
-    Start["Manager starts chain"] --> Eval["Run evaluators<br/>(in priority order)"]
+  Start["Manager starts chain"] --> Eval["Run evaluators<br/>(in priority order)"]
 
-    Eval --> Check{"Evaluator decision?"}
-    Check -->|Grant| Grant["Grant access<br/>STOP"]
-    Check -->|Deny| Deny["Deny access<br/>STOP"]
-    Check -->|Delegate| Next["Next evaluator"]
+  Eval --> Check{"Evaluator decision?"}
+  Check -->|Grant| Grant["Grant access<br/>STOP"]
+  Check -->|Deny| Deny["Deny access<br/>STOP"]
+  Check -->|Delegate| Next["Next evaluator"]
 
-    Next --> Eval
+  Next --> Eval
 
-    Check -->|Chain exhausted| Default{"Secure by default?"}
-    Default -->|Yes AND not authenticated| DenyDefault["Deny authentication<br/>STOP"]
-    Default -->|No OR authenticated| GrantDefault["Grant access<br/>STOP"]
+  Check -->|Chain exhausted| Default{"Secure by default?"}
+  Default -->|Yes AND not authenticated| DenyDefault["Deny authentication<br/>STOP"]
+  Default -->|No OR authenticated| GrantDefault["Grant access<br/>STOP"]
 ```
 
 The chain stops as soon as any evaluator grants or denies access. If all evaluators delegate, the chain exhausts and falls back to secure-by-default behavior.

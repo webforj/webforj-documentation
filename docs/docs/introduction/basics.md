@@ -99,17 +99,17 @@ The constructor sets up the layout and component interactions:
 
 ```java
 public HomeView() {
-    self.addClassName("home-view");
-    self.setDirection(FlexDirection.COLUMN)
-        .setJustifyContent(FlexJustifyContent.CENTER)
-        .setAlignment(FlexAlignment.CENTER)
-        .setSpacing("3em")
-        .setStyle("height", "100dvh");
+  self.addClassName("home-view");
+  self.setDirection(FlexDirection.COLUMN)
+    .setJustifyContent(FlexJustifyContent.CENTER)
+    .setAlignment(FlexAlignment.CENTER)
+    .setSpacing("3em")
+    .setStyle("height", "100dvh");
 
-    counter.setTheme(ButtonTheme.PRIMARY);
-    counter.onClick(e -> counter.setText("Current Count: " + (++count)));
+  counter.setTheme(ButtonTheme.PRIMARY);
+  counter.onClick(e -> counter.setText("Current Count: " + (++count)));
 
-    self.add(image, title, counter, docs);
+  self.add(image, title, counter, docs);
 }
 ```
 

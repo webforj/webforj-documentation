@@ -40,7 +40,7 @@ Components that need to update their content when the locale changes should impl
 ```java title="LocaleObserver.java"
 @FunctionalInterface
 public interface LocaleObserver {
-    void onLocaleChange(LocaleEvent event);
+  void onLocaleChange(LocaleEvent event);
 }
 ```
 

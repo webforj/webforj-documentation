@@ -27,10 +27,10 @@ It is possible to significantly improve responsiveness by avoiding the third cat
 
 ```java
 private void comboBoxSelect(ListSelectEvent ev){
-    ComboBox component = (ComboBox) ev.getComponent();
+  ComboBox component = (ComboBox) ev.getComponent();
 
-    // Goes to the client
-    int selected = component.getSelectedIndex();
+  // Goes to the client
+  int selected = component.getSelectedIndex();
 }
 ```
 
@@ -38,8 +38,8 @@ to the following:
 
 ```java
 private void comboBoxSelect(ListSelectEvent ev){
-    //Gets value from the event
-    int selected = ev.getSelectedIndex();
+  //Gets value from the event
+  int selected = ev.getSelectedIndex();
 }
 ```
 

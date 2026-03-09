@@ -116,7 +116,7 @@ The `addHistoryStateChangeListener(EventListener<HistoryStateChangeEvent> listen
 
 ```java
 history.addHistoryStateChangeListener(event -> {
-    System.out.println("History state changed to: " + event.getLocation().getFullURI());
+  System.out.println("History state changed to: " + event.getLocation().getFullURI());
 });
 ```
 

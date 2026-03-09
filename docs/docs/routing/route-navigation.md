@@ -81,12 +81,12 @@ The `navigate` method accepts a Java `Consumer` that's invoked once navigation i
 
 ```java
 Router.getCurrent().navigate(
-    UserProfileView.class,
-    ParametersBag.of("id=JohnDoe"), (component) -> {
-      component.ifPresent(view -> {
-        console().log("The new title is: " + view.getTitle());
-      });
+  UserProfileView.class,
+  ParametersBag.of("id=JohnDoe"), (component) -> {
+    component.ifPresent(view -> {
+      console().log("The new title is: " + view.getTitle());
     });
+  });
 ```
 
 :::info Null instances
