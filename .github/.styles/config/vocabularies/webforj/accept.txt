@@ -52,3 +52,7 @@ LDAP
 WARN
 JBang
 JDK
+HTTP
+HTTPS
+AI
+AI-assisted

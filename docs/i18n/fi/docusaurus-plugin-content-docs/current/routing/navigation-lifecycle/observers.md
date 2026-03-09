@@ -1,19 +1,18 @@
 ---
 sidebar_position: 2
 title: Lifecycle Observers
-_i18n_hash: 18390849527056ed2780b761ae7919c1
+_i18n_hash: a584e996523ba2b98ecb9d7ab2f366f3
 ---
-Observers mahdollistavat komponenttien reagoinnin elinkaaritapahtumiin toteuttamalla rajapintoja tietyille vaiheille. Tämä malli varmistaa selkeän vastuunjaon ja yksinkertaistaa navigointilogikan käsittelyä.
+Observers allow components to react to lifecycle events by implementing interfaces for specific stages. This pattern ensures a clean separation of concerns and simplifies handling navigation logic.
 
-## Saatavilla olevat observerit {#available-observers}
+## Saatavilla olevat observat
+- **`WillEnterObserver`**: Antaa sinun käsitellä tehtäviä ennen reitin sisään menemistä, kuten tarvittavien tietojen hakemista tai navigoinnin estämistä.
+- **`DidEnterObserver`**: Ihanteellinen toimintojen käsittelyyn komponentin kiinnittämisen jälkeen, kuten tietojen renderöinnissä tai animaatioiden laukaisemisessa.
+- **`WillLeaveObserver`**: Tarjoaa tavan hallita logiikkaa ennen kuin käyttäjä poistuu reitiltä, kuten tarkistaakseen tallentamattomat muutokset.
+- **`DidLeaveObserver`**: Käytetään siivoustoimiin tai muihin tehtäviin, jotka tulisi suorittaa komponentin irrotuksen jälkeen DOM:ista.
+- **`ActivateObserver`**: <DocChip chip='since' label='25.03' /> Laukaisee, kun välimuistissa oleva komponentti aktivoidaan uudelleen, esimerkiksi siirryttäessä samaan reittiin eri parametreilla.
 
-- **`WillEnterObserver`**: Mahdollistaa tehtävien käsittelyn ennen reittiin siirtymistä, kuten välttämättömien tietojen hakemisen tai navigoinnin estämisen.
-- **`DidEnterObserver`**: Ihanteellinen toimien käsittelyyn sen jälkeen, kun komponentti on liitetty, kuten tietojen renderöimiseen tai animaatioiden laukaisemiseen.
-- **`WillLeaveObserver`**: Tarjoaa tavan hallita logiikkaa ennen kuin käyttäjä poistuu reitiltä, kuten tallentamattomien muutosten tarkistamiseksi.
-- **`DidLeaveObserver`**: Käytetään siivoustoimintoihin tai muihin tehtäviin, jotka pitäisi suorittaa sen jälkeen, kun komponentti on irrotettu DOMista.
-- **`ActivateObserver`** (alkaen 25.03): Käynnistyy, kun välimuistissa oleva komponentti aktivoidaan uudelleen, kuten vieraillessa samassa reitissä eri parametreilla.
-
-## Esimerkki: todennus `WillEnterObserver`-objektilla {#example-authentication-with-willenterobserver}
+## Esimerkki: todennus `WillEnterObserver` avulla {#example-authentication-with-willenterobserver}
 
 ```java
 @Route(value = "dashboard")
@@ -31,15 +30,15 @@ public class DashboardView extends Composite<Div> implements WillEnterObserver {
 }
 ```
 
-Tässä `onWillEnter` tarkistaa, onko käyttäjä todennettu. Jos ei, navigointi estetään, mikä estää navigoinnin päättymisen ja ohjaa sen sijaan kirjautumissivulle.
+Tässä `onWillEnter` tarkistaa, onko käyttäjä todennettu. Jos ei, navigointi estetään, jolloin siirto nykyisestä reitistä keskeytetään ja ohjataan kirjautumissivulle.
 
-:::warning Esimerkki todennetuista reiteistä - Ei tuotantovalmiita
-Tämä esimerkki on vain esimerkki siitä, kuinka käyttää todennettuja reittejä.
-Tämä **ei ole** esimerkki siitä, kuinka kirjoittaa tuotantotason todennusjärjestelmä.
-Sinun on otettava käyttöön tässä esimerkissä käytetyt käsitteet ja mallit ja mukautettava ne toimimaan sovelluksesi todennusvirrassa/järjestelmässä.
+:::warning Esimerkki todennetuista reiteistä - ei tuotantovalmiina
+Tämä edellinen on vain esimerkki todennettujen reittien käytöstä.
+Tämä **ei ole** esimerkki siitä, miten kirjoitat tuotantotason todennusjärjestelmän.
+Sinun on otettava tämän esimerkin käsitteet ja mallit käyttöön ja mukautettava ne toimimaan oman todennusvirtaus/järjestelmäsi kanssa sovelluksessasi.
 :::
 
-## Esimerkki: tietojen hakeminen reitin sisäänkäynnillä `DidEnterObserver`-objektilla {#example-fetching-data-on-route-entry-with-didenterobserver}
+## Esimerkki: tietojen hakeminen reittiin siirryttäessä `DidEnterObserver` avulla {#example-fetching-data-on-route-entry-with-didenterobserver}
 
 ```java
 @Route(value = "profile")
@@ -53,14 +52,14 @@ public class ProfileView extends Composite<Div> implements DidEnterObserver {
   }
 
   private void updateProfileUI(Profile profile) {
-    // Koodi käyttöliittymän päivittämiseen profiilitiedoilla
+    // Koodi päivitykseen UI:lle profiilitiedoilla
   }
 }
 ```
 
-Tässä esimerkissä käytetään `DidEnterObserver`-objektia tietojen hakemiseen ja näyttämiseen profiilitietojen saatuaan komponentin liitettyä DOMiin.
+Tämä esimerkki osoittaa `DidEnterObserver` käytön tietojen hakemiseen ja näyttämiseen profiilitiedot komponentin kiinnittämisen jälkeen DOM:iin.
 
-## Esimerkki: tallentamattomien muutosten käsittely `WillLeaveObserver`-objektilla {#example-handling-unsaved-changes-with-willleaveobserver}
+## Esimerkki: tallentamattomien muutosten käsittely `WillLeaveObserver` avulla {#example-handling-unsaved-changes-with-willleaveobserver}
 
 ```java
 @Route(value = "edit-profile")
@@ -77,7 +76,7 @@ public class EditProfileView extends Composite<Div> implements WillLeaveObserver
 
     if(hasUnsavedChanges) {
       ConfirmDialog.Result result = showConfirmDialog(
-          "Tallentamattomia muutoksia on olemassa. Haluatko hylätä vai tallentaa ne?",
+          "On tallentamattomia muutoksia. Haluatko hylätä ne tai tallentaa ne?",
           "Tallentamattomat muutokset",
           ConfirmDialog.OptionType.OK_CANCEL,
           ConfirmDialog.MessageType.WARNING);
@@ -86,13 +85,13 @@ public class EditProfileView extends Composite<Div> implements WillLeaveObserver
 }
 ```
 
-Tässä esimerkissä `onWillLeave` kehottaa käyttäjää vahvistuskeskustelulla, jos tallentamattomia muutoksia on olemassa, estäen navigoinnin, jos käyttäjä valitsee jäädä.
+Tässä esimerkissä `onWillLeave` kysyy käyttäjältä vahvistusvalintaikkunalla, jos on tallentamattomia muutoksia, estäen navigoinnin, jos käyttäjä päättää jäädä.
 
-:::info Navigoinnin estäminen ja vetoaminen
-Lisätietoja navigoinnin estämisestä, katso [Navigoinnin estäminen ja vetoaminen](./navigation-blocking)
+:::info Navigoinnin estäminen ja estäminen
+Lisätietoa navigoinnin estämisestä, katso [Navigoinnin estäminen ja estäminen](./navigation-blocking)
 :::
 
-## Esimerkki: siivous `DidLeaveObserver`-objektilla {#example-cleanup-with-didleaveobserver}
+## Esimerkki: Siivous `DidLeaveObserver` avulla {#example-cleanup-with-didleaveobserver}
 
 ```java
 @Route(value = "notifications")
@@ -105,13 +104,9 @@ public class NotificationsView extends Composite<Div> implements DidLeaveObserve
 }
 ```
 
-Tämä esimerkki tyhjentää ilmoitukset sen jälkeen, kun käyttäjä on poistunut `NotificationsView`:stä, käyttäen `DidLeaveObserver`-objektia siivoukseen.
+Tämä esimerkki tyhjentää ilmoitukset sen jälkeen, kun käyttäjä poistuu `NotificationsView`-näkymästä, käyttäen `DidLeaveObserver` siivoukselle.
 
-## Esimerkki: tietojen päivittäminen `ActivateObserver`-objektilla {#example-refreshing-data-with-activateobserver}
-
-:::info Alkaen 25.03
-`ActivateObserver` ja `ActivateEvent` ovat saatavilla ensimmäistä kertaa webforJ-version `25.03` myötä.
-:::
+## Esimerkki: Datan päivittäminen `ActivateObserver` avulla <DocChip chip='since' label='25.03' /> {#example-refreshing-data-with-activateobserver}
 
 ```java
 @Route(value = "product/:id")
@@ -130,15 +125,15 @@ public class ProductView extends Composite<Div> implements ActivateObserver {
   }
 
   private void refreshProductData(String productId) {
-    // Koodi uuden tuotetiedon hakemiseksi ja näyttämiseksi
+    // Koodi uuden tuotetiedon hakemiseen ja näyttämiseen
     ProductService.fetchProduct(productId).thenAccept(
         product -> updateProductUI(product));
   }
 }
 ```
 
-Tässä esimerkissä käytetään `ActivateObserver`-objektia tietojen päivittämiseen, kun liikkuu samalle reitille eri parametreilla. Komponentti pysyy välimuistissa ja aktivoituu uudelleen sen sijaan, että se luotaisiin uudelleen, joten käyttöliittymä päivitetään näyttämään oikeat tiedot nykyisille parametreille ilman uuden komponentin instanssia.
+Tämä esimerkki osoittaa `ActivateObserver`-käytön tietojen päivittämiseen, kun siirrytään samaan reittiin eri parametreilla. Komponentti pysyy välimuistissa ja aktivoituu uudelleen sen sijaan, että se luotaisiin uudelleen, joten UI päivittyy näyttämään oikeat tiedot nykyisille parametreille ilman uuden komponentin instansointia.
 
-:::tip Aktivointi komponenttieriteissä
-Kun navigoidaan reitille, `Activate`-tapahtuma laukaisee **kaikille välimuistissa oleville komponenteille hierarkiassa**, jotka pysyvät nykyisessä polussa. Esimerkiksi navigoitaessa `/products/123` reitistä `/products/456` reitille, sekä vanhempi `ProductsLayout` -komponentti että lapsi `ProductView` -komponentti saavat `Activate`-tapahtuman, jos ne ovat välimuistissa ja pysyvät reittihierarkiassa.
+:::tip Aktivointi komponenttihierarkioissa
+Kun navigoidaan reittiin, `Activate`-tapahtuma laukaisee **kaikille välimuistissa oleville komponenteille hierarkiassa**, jotka pysyvät nykyisellä polulla. Esimerkiksi, kun navigoidaan reitiltä `/products/123` reitille `/products/456`, sekä vanhempi `ProductsLayout` komponentti että lapsi `ProductView` komponentti saavat `Activate`-tapahtuman, jos ne ovat välimuistissa ja pysyvät reittihierarkiassa.
 :::

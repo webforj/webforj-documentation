@@ -1,15 +1,16 @@
 ---
 sidebar_position: 6
 title: Jakarta Validation
-_i18n_hash: eec00fac283efce49d856b1d40a48252
+sidebar_class_name: updated-content
+_i18n_hash: fa09682ac85db8e2c53ff9eea2d0633e
 ---
-[Java Bean Validation](https://beanvalidation.org/) wordt algemeen erkend als de standaard voor het integreren van validatielogica in Java-toepassingen. Het hanteert een uniforme benadering van validatie door ontwikkelaars in staat te stellen domeinmodel eigenschappen te annoteren met declaratieve validatiebeperkingen. Deze beperkingen worden tijdens runtime gehandhaafd, met opties voor zowel ingebouwde als op maat gedefinieerde regels.
+[Java Bean Validation](https://beanvalidation.org/) wordt breed erkend als de standaard voor het integreren van validatielogica in Java-toepassingen. Het gebruikt een uniforme benadering voor validatie door ontwikkelaars in staat te stellen om domeinmodel-eigenschappen te annoteren met declaratieve validatiebeperkingen. Deze beperkingen worden tijdens runtime afgedwongen, met opties voor zowel ingebouwde als door de gebruiker gedefinieerde regels.
 
-webforJ integreert naadloos met Bean Validation via de `JakartaValidator` adapter, die robuuste ondersteuning biedt vanaf het begin.
+webforJ integreert met Bean Validation via de `JakartaValidator`-adapter, die volledige ondersteuning biedt vanuit de doos.
 
 ## Installatie {#installation}
 
-Het is noodzakelijk om een compatibele implementatie, zoals [Hibernate Validator](https://hibernate.org/validator/), in je classpath op te nemen. Als je omgeving deze implementatie niet standaard bevat, kun je deze handmatig toevoegen met de volgende Maven-afhankelijkheden:
+Het is noodzakelijk om een compatibele implementatie, zoals [Hibernate Validator](https://hibernate.org/validator/), in je classpath op te nemen. Als je omgeving deze implementatie niet standaard bevat, kun je deze handmatig toevoegen door de volgende Maven-afhankelijkheden te gebruiken:
 
 ```xml
 <dependency>
@@ -26,11 +27,11 @@ Het is noodzakelijk om een compatibele implementatie, zoals [Hibernate Validator
 
 ## De `JakartaValidator` {#the-jakartavalidator}
 
-De `JakartaValidator` klasse fungeert als een adapter, die de webforJ binding context verbindt met Jakarta Validation. Deze integratie stelt het gebruik van complexe validatieregels mogelijk via annotaties in de beanklasse.
+De `JakartaValidator`-klasse fungeert als een adapter die de webforJ-bindingscontext verbindt met Jakarta Validation. Deze integratie maakt het mogelijk om complexe validatieregels direct via annotaties in de beanklasse te gebruiken.
 
 ### `JakartaValidator` activeren {#activating-jakartavalidator}
 
-Om de `JakartaValidator` in de hele context te activeren, gebruik je doorgaans de `useJakartaValidator` parameter bij het construeren van de `BindingContext`.
+Om de `JakartaValidator` in de hele context te activeren, gebruik je meestal de parameter `useJakartaValidator` bij het construeren van de `BindingContext`.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class, true);
@@ -46,7 +47,7 @@ public class Hero {
   @Length(min = 3, max = 20)
   private String name;
 
-  @NotEmpty(message = "Onspecificeerde kracht")
+  @NotEmpty(message = "Ongekwalificeerde kracht")
   @Pattern(regexp = "Fly|Invisible|LaserVision|Speed|Teleportation", message = "Ongeldige kracht")
   private String power;
 
@@ -54,8 +55,33 @@ public class Hero {
 }
 ```
 
-Dergelijke beperkingen zijn net zo effectief als die programmatic tijdens de binding-initialisatie zijn ingesteld, wat zorgt voor consistente validatieresultaten.
+Dergelijke beperkingen zijn even effectief als die progammatisch zijn ingesteld tijdens de binding-initialisatie en produceren consistente validatieresultaten.
 
 :::warning
-Momenteel herkent de `JakartaValidator` alleen beperkingen die rechtstreeks zijn toegewezen aan eigenschappen en negeert deze validaties die niet direct aan eigenschappen zijn gekoppeld.
+Momenteel herkent de `JakartaValidator` alleen beperkingen die direct aan eigenschappen zijn toegewezen en negeert elk validatie die niet direct aan eigenschappen is gekoppeld.
 :::
+
+### Locatiebewuste validatieberichten <DocChip chip='since' label='25.12' /> {#locale-aware-validation-messages}
+
+Jakarta Validation ondersteunt gelokaliseerde beperkingberichten via standaard berichtinterpolatie. Wanneer je de app-locatie wijzigt, moet de `JakartaValidator` op de hoogte worden gesteld van de nieuwe locatie, zodat deze berichten in de juiste taal kan oplossen.
+
+`JakartaValidator` implementeert de `LocaleAware`-interface, wat betekent dat `BindingContext.setLocale()` automatisch de locatie doorgeeft aan alle Jakarta-validators in de context. Je hoeft niet elke validator handmatig bij te werken.
+
+```java {5}
+BindingContext<Hero> context = new BindingContext<>(Hero.class, true);
+
+// Wanneer de locatie verandert, produceren Jakarta-validators automatisch
+// berichten in de nieuwe locatie
+context.setLocale(Locale.GERMAN);
+```
+
+In een component die `LocaleObserver` implementeert, roep je `context.setLocale()` aan binnen `onLocaleChange()` om validatieberichten in sync te houden met de UI-taal:
+
+```java {3}
+@Override
+public void onLocaleChange(LocaleEvent event) {
+  context.setLocale(event.getLocale());
+}
+```
+
+Zie [dynamische validatieberichten](/docs/data-binding/validation/validators#dynamic-validation-messages) voor meer informatie over locatiebewuste validators.
