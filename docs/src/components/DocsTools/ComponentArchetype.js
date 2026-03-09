@@ -38,11 +38,11 @@ export default function ComponentArchetype({ project, flavor = "webforj" }) {
       </li>
     </ol>
 
-    <div class="videos-container">
+    {/* <div class="videos-container">
       <video controls>
         <source src={`https://cdn.webforj.com/webforj-documentation/video/archetypes/${project}-archetype.mp4`} type="video/mp4" />
       </video>
-    </div>
+    </div> */}
 
     <Tabs>
       <TabItem value="bash" label="Bash/Zsh" default>

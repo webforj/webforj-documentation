@@ -3,7 +3,7 @@ title: "FlexLayouts Part 2: Getting your Flex Items in Order"
 description: Creating dynamic layouts in Java with webforJ's FlexLayout
 date: 2025-10-23
 authors: Garrison Osteen
-tags: [webforJ, FlexLayout, Flexbox, Responsive Design, components]
+tags: [layout, responsive design, components, front end]
 ---
 
 ![cover image](https://cdn.webforj.com/webforj-documentation/blogs/flexlayout-items/cover.png)

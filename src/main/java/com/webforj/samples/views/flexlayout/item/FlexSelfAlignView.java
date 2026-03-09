@@ -40,7 +40,7 @@ public class FlexSelfAlignView extends Composite<FlexLayout> {
   private FlexLayout createBoxLayout() {
     return FlexLayout.create()
         .horizontal()
-        .wrap().wrap()
+        .wrap()
         .build()
         .addClassName("button__container");
   }

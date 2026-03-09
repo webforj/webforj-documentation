@@ -2,16 +2,18 @@
 sidebar_position: 1
 title: Table
 hide_giscus_comments: true
-sidebar_class_name: has-new-content
-_i18n_hash: 59525ff188c1c03526b8c601a82c7a76
+_i18n_hash: 0d467fd377fff1994c025ba8a95c957f
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-table" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="table" location="com/webforj/component/table/Table" top='true'/>
 
-Die `Table`-Klasse ist eine vielseitige Komponente, die dafür entwickelt wurde, tabellarische Informationen in einer strukturierten und leicht verständlichen Weise darzustellen. Sie ist optimiert für den Umgang mit großen Datensätzen bei hoher Leistung und bietet eine fortschrittliche Visualisierung sowie eine umfassende Suite von Ereignissen für eine dynamische Benutzerinteraktion.
+Die `Table`-Klasse ist eine vielseitige Komponente, die dafür entwickelt wurde, tabellarische Informationen in einer strukturierten und leicht verständlichen Weise darzustellen. Optimiert für die Verarbeitung großer Datensätze mit hoher Leistung bietet diese Komponente fortschrittliche Visualisierung und eine umfassende Suite von Ereignissen für dynamisches Benutzerengagement.
 
+<!-- INTRO_END -->
+
+## Erstellung einer `Table` {#creating-a-table}
 
 <!-- vale off -->
 <ComponentDemo 
@@ -21,14 +23,11 @@ height='600px'
 />
 <!-- vale on -->
 
-
-## Erstellen einer `Table` {#creating-a-table}
-
 Um eine `Table` in einer Anwendung zu erstellen und zu befüllen, können die folgenden Schritte unternommen werden:
 
-### 1. Erstellen Sie eine Entitätsklasse {#1-create-an-entity-class}
+### 1. Erstellen Sie eine Entität Klasse {#1-create-an-entity-class}
 
-Definieren Sie eine Klasse, die die Entitäten (Daten) repräsentiert, die Sie in der Tabelle anzeigen möchten. In diesem Beispiel ist diese Klasse MusicRecord.
+Definieren Sie eine Klasse zur Darstellung der Entitäten (Daten), die Sie in der Tabelle anzeigen möchten. In diesem Beispiel ist diese Klasse MusicRecord.
 
 ```java
 public class MusicRecord {
@@ -38,9 +37,9 @@ public class MusicRecord {
 
 ### 2. Erstellen Sie ein Repository {#2-create-a-repository}
 
-Sobald eine Entitätsklasse erstellt wurde, verwenden Sie diese, um eine Sammlung dieser Entitäten mit den gewünschten Daten zu füllen.
+Sobald eine Entität Klasse erstellt wurde, verwenden Sie diese, um eine Sammlung dieser Entitäten mit den gewünschten Daten zu füllen.
 
-Aus diesen Daten muss ein `Repository` erstellt werden, das innerhalb der `Table` verwendet werden kann. Die Klasse `CollectionRepository` wird bereitgestellt, um jede gültige Java-Sammlung in ein verwendbares `Repository` zu verwandeln, wodurch die Notwendigkeit entfällt, eine eigene `Repository`-Klasse zu implementieren.
+Aus diesen Daten muss ein `Repository` erstellt werden, das innerhalb der `Table` verwendet wird. Die Klasse `CollectionRepository` wird bereitgestellt, um jede gültige Java-Sammlung in ein verwendbares `Repository` zu verwandeln, wodurch die Notwendigkeit entfällt, Ihre eigene `Repository`-Klasse zu implementieren.
 
 ```java
 List<MusicRecord> data = new Gson().fromJson(
@@ -53,7 +52,7 @@ CollectionRepository<MusicRecord> dataRepository = new CollectionRepository<>(da
 ```
 
 :::tip Weitere Informationen
-Für weitere Informationen zum `Repository`-Muster in webforJ, siehe die [Repository-Artikel](/docs/advanced/repository/overview).
+Für weitere Informationen zum `Repository`-Muster in webforJ siehe die [Repository-Artikel](/docs/advanced/repository/overview).
 :::
 
 ### 3. Instanziieren Sie die `Table` und fügen Sie Spalten hinzu {#3-instantiate-table-and-add-columns}
@@ -71,17 +70,17 @@ table.addColumn("Kosten", MusicRecord::getCost);
 
 ### 4. Setzen Sie die Daten der `Table` {#4-set-the-table-data}
 
-Setzen Sie schließlich das `Repository` für die `Table`, die im vorherigen Schritt erstellt wurde:
+Setzen Sie schließlich das `Repository` für die in den vorherigen Schritt erstellte `Table`:
 
 ```java
 table.setRepository(Service.getMusicRecords());
 ```
 
 :::info
-Alternativ kann die Methode `setItems()` mit jeder gültigen Java-Sammlung aufgerufen werden, die unter der Haube ein `CollectionRepository` für Sie erstellt. 
+Alternativ kann die Methode `setItems()` jeder gültigen Java-Sammlung übergeben werden, die im Hintergrund ein `CollectionRepository` für Sie erstellt. 
 :::
 
-Unten ist ein Beispiel der oben genannten Schritte, die implementiert wurden, um eine grundlegende `Table`-Komponente zu erstellen:
+Nachfolgend ein Beispiel der obigen Schritte zur Erstellung einer grundlegenden `Table`-Komponente:
 
 <ComponentDemo 
 path='/webforj/tablebasic?' 
@@ -91,6 +90,6 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/hea
 height='600px'
 />
 
-## Stilgestaltung
+## Styling
 
 <TableBuilder name="Table" />

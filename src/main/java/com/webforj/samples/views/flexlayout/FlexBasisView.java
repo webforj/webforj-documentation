@@ -62,7 +62,7 @@ public class FlexBasisView extends Composite<FlexLayout> {
   private FlexLayout createBoxLayout() {
     FlexLayout layout = FlexLayout.create()
         .horizontal()
-        .wrap().wrap()
+        .wrap()
         .build()
         .setPadding("20px")
         .setStyle("border", "1px solid var(--dwc-color-default)");

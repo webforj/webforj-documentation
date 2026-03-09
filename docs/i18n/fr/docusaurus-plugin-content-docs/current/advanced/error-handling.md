@@ -1,22 +1,22 @@
 ---
 title: Error Handling
-sidebar_position: 25
-_i18n_hash: 15106dd9fa7ccf0d4f722ca675f0d362
+sidebar_position: 5
+_i18n_hash: 7957d907ae8a5bd9e7b3f7c2fdba2623
 ---
-La gestion des erreurs est un aspect crucial du développement d'applications web robustes. Dans webforJ, la gestion des erreurs est conçue pour être flexible et personnalisable, permettant aux développeurs de gérer les exceptions de la manière qui correspond le mieux aux besoins de leur application.
+La gestion des erreurs est un aspect crucial du développement d'applications web fiables. Dans webforJ, la gestion des erreurs est conçue pour être flexible et personnalisable, permettant aux développeurs de gérer les exceptions de la manière qui convient le mieux aux besoins de leur application.
 
-## Aperçu {#overview}
+## Vue d'ensemble {#overview}
 
-Dans webforJ, la gestion des erreurs repose sur l'interface `ErrorHandler`. Cette interface permet aux développeurs de définir comment leur application doit réagir lorsque des exceptions se produisent pendant l'exécution. Par défaut, webforJ fournit un `GlobalErrorHandler` qui gère toutes les exceptions de manière générique. Cependant, les développeurs peuvent créer des gestionnaires d'erreurs personnalisés pour des exceptions spécifiques afin de fournir des réponses plus adaptées.
+Dans webforJ, la gestion des erreurs tourne autour de l'interface `ErrorHandler`. Cette interface permet aux développeurs de définir comment leur application doit réagir lorsque des exceptions se produisent pendant l'exécution. Par défaut, webforJ fournit un `GlobalErrorHandler` qui gère toutes les exceptions de manière générique. Cependant, les développeurs peuvent créer des gestionnaires d'erreurs personnalisés pour des exceptions spécifiques afin de fournir des réponses plus adaptées.
 
 ## Découverte et utilisation des gestionnaires d'erreurs {#discovering-and-using-error-handlers}
 
-webforJ utilise l'interface de fournisseur de services (SPI) de Java pour découvrir et charger les gestionnaires d'erreurs.
+webforJ utilise l'Interface de Fournisseur de Services (SPI) de Java pour découvrir et charger les gestionnaires d'erreurs.
 
 ### Processus de découverte {#discovery-process}
 
-1. **Enregistrement du service** : Les gestionnaires d'erreurs sont enregistrés via le mécanisme `META-INF/services`.
-2. **Chargement du service** : Au démarrage de l'application, webforJ charge toutes les classes mentionnées dans `META-INF/services/com.webforj.error.ErrorHandler`.
+1. **Enregistrement de services** : Les gestionnaires d'erreurs sont enregistrés via le mécanisme `META-INF/services`.
+2. **Chargement de services** : Lors du démarrage de l'application, webforJ charge toutes les classes répertoriées dans `META-INF/services/com.webforj.error.ErrorHandler`.
 3. **Gestion des erreurs** : Lorsqu'une exception se produit, webforJ vérifie si un gestionnaire d'erreurs existe pour cette exception spécifique.
 
 ### Sélection du gestionnaire {#handler-selection}
@@ -27,16 +27,16 @@ webforJ utilise l'interface de fournisseur de services (SPI) de Java pour décou
 
 ## L'interface `ErrorHandler` {#the-errorhandler-interface}
 
-L'interface `ErrorHandler` est conçue pour gérer les erreurs qui se produisent pendant l'exécution d'une application webforJ. Les applications qui souhaitent gérer des exceptions spécifiques doivent implémenter cette interface.
+L'interface `ErrorHandler` est conçue pour gérer les erreurs qui se produisent lors de l'exécution d'une application webforJ. Les applications qui souhaitent gérer des exceptions spécifiques doivent implémenter cette interface.
 
 ### Méthodes {#methods}
 
 - **`onError(Throwable throwable, boolean debug)`** : Appelée lorsqu'une erreur se produit. Cette méthode doit contenir la logique pour gérer l'exception.
-- **`showErrorPage(String title, String content)`** : Une méthode par défaut qui affiche la page d'erreur avec le titre et le contenu fournis.
+- **`showErrorPage(String title, String content)`** : Une méthode par défaut qui affiche la page d'erreur avec le titre et le contenu donnés.
 
 ### Convention de nommage {#naming-convention}
 
-La classe implémentante doit être nommée d'après l'exception qu'elle gère, avec le suffixe `ErrorHandler`. Par exemple, pour gérer `NullPointerException`, la classe doit être nommée `NullPointerExceptionErrorHandler`.
+La classe d'implémentation doit être nommée d'après l'exception qu'elle gère, avec le suffixe `ErrorHandler`. Par exemple, pour gérer `NullPointerException`, la classe doit être nommée `NullPointerExceptionErrorHandler`.
 
 ### Enregistrement {#registration}
 
@@ -46,7 +46,7 @@ Le gestionnaire d'erreurs personnalisé doit être enregistré dans le fichier `
 
 Les étapes suivantes détaillent l'implémentation d'un gestionnaire d'erreurs personnalisé pour une exception spécifique :
 
-### Étape 1 : Créer la classe du gestionnaire d'erreurs {#step-1-create-the-error-handler-class}
+### Étape 1 : Créer la classe de gestionnaire d'erreurs {#step-1-create-the-error-handler-class}
 
 Créez une nouvelle classe qui implémente l'interface `ErrorHandler` et est nommée d'après l'exception qu'elle gère.
 
@@ -59,7 +59,7 @@ public class NullPointerExceptionErrorHandler implements ErrorHandler {
 
   @Override
   public void onError(Throwable throwable, boolean debug) {
-    // Logique de gestion personnalisée pour NullPointerException
+    // Logique de traitement personnalisée pour NullPointerException
     String title = "Exception de pointeur nul";
     String content = "Une valeur nulle a été rencontrée là où un objet est requis.";
 
@@ -69,12 +69,12 @@ public class NullPointerExceptionErrorHandler implements ErrorHandler {
 ```
 
 :::info Méthode `showErrorPage()`
-La méthode `showErrorPage` est une méthode utilitaire qui utilise l'API webforJ pour envoyer le contenu HTML et le titre de la page fournis au navigateur, affichant une page d'erreur. Lorsque se produit une exception et que l'application n'est pas en mesure de récupérer, il devient impossible d'utiliser les composants webforJ pour construire une page d'erreur personnalisée. Cependant, l'API `Page` reste accessible, permettant au développeur de rediriger ou d'afficher une page d'erreur comme ultime tentative.
+La méthode `showErrorPage` est une méthode utilitaire qui utilise l'API webforJ pour envoyer le contenu HTML fourni et le titre de la page au navigateur, affichant une page d'erreur. Lorsqu'une exception se produit et que l'application est incapable de récupérer, il devient impossible d'utiliser les composants webforJ pour construire une page d'erreur personnalisée. Cependant, l'API `Page` reste accessible, permettant au développeur de rediriger ou d'afficher une page d'erreur en ultime recours.
 :::
 
 ### Étape 2 : Enregistrer le gestionnaire d'erreurs {#step-2-register-the-error-handler}
 
-Créez un fichier nommé `com.webforj.error.ErrorHandler` dans le répertoire `META-INF/services` de votre application. Ajoutez le nom complètement qualifié de votre classe de gestionnaire d'erreurs à ce fichier.
+Créez un fichier nommé `com.webforj.error.ErrorHandler` dans le répertoire `META-INF/services` de votre application. Ajoutez le nom complet de votre classe de gestionnaire d'erreurs à ce fichier.
 
 **Fichier** : `META-INF/services/com.webforj.error.ErrorHandler`
 
@@ -82,11 +82,11 @@ Créez un fichier nommé `com.webforj.error.ErrorHandler` dans le répertoire `M
 com.example.error.NullPointerExceptionErrorHandler
 ```
 
-Maintenant, chaque fois qu'une `NullPointerException` est lancée, webforJ sélectionne votre gestionnaire enregistré et exécute sa logique pour gérer l'erreur.
+Maintenant, chaque fois qu'un `NullPointerException` est lancé, webforJ sélectionne votre gestionnaire enregistré et exécute sa logique pour gérer l'erreur.
 
 ## Utilisation de `AutoService` pour simplifier l'enregistrement {#using-autoservice-to-simplify-registration}
 
-Il est facile pour les développeurs d'oublier de mettre à jour ou de spécifier correctement les descripteurs de service. En utilisant `AutoService` de Google, vous pouvez automatiser la génération du fichier `META-INF/services/com.webforj.error.ErrorHandler`. Il vous suffit d'annoter le gestionnaire d'erreurs avec l'annotation `AutoService`. Vous pouvez en savoir plus sur [AutoService ici](https://github.com/google/auto/blob/main/service/README.md).
+Il est facile pour les développeurs d'oublier de mettre à jour ou de préciser correctement les descripteurs de service. En utilisant `AutoService` de Google, vous pouvez automatiser la génération du fichier `META-INF/services/com.webforj.error.ErrorHandler`. Tout ce que vous avez à faire est d'annoter le gestionnaire d'erreurs avec l'annotation `AutoService`. Vous pouvez en savoir plus sur [AutoService ici](https://github.com/google/auto/blob/main/service/README.md).
 
 ```java
 @AutoService(ErrorHandler.class)
@@ -94,7 +94,7 @@ public class NullPointerExceptionErrorHandler implements ErrorHandler {
 
   @Override
   public void onError(Throwable throwable, boolean debug) {
-    // Logique de gestion personnalisée pour NullPointerException
+    // Logique de traitement personnalisée pour NullPointerException
     String title = "Exception de pointeur nul";
     String content = "Une valeur nulle a été rencontrée là où un objet est requis.";
 
@@ -109,13 +109,13 @@ Le `GlobalErrorHandler` est le gestionnaire d'erreurs par défaut fourni par web
 
 ### Comportement {#behavior}
 
-- **Journalisation** : Les erreurs sont enregistrées à la fois dans les consoles serveur et navigateur.
+- **Journalisation** : Les erreurs sont enregistrées dans les consoles du serveur et du navigateur.
 - **Affichage de la page d'erreur** : En fonction du mode de débogage, la page d'erreur affiche la trace de la pile ou un message d'erreur générique.
 
 ### Définir un gestionnaire d'erreurs global personnalisé {#defining-a-custom-global-error-handler}
 
-Pour définir un gestionnaire d'erreurs global, vous devez créer un nouveau gestionnaire d'erreurs nommé `WebforjGlobalErrorHandler`. Ensuite, suivez [les étapes pour enregistrer les gestionnaires d'erreurs](#step-2-register-the-error-handler) comme expliqué précédemment. Dans ce cas, webforJ cherche d'abord les gestionnaires d'erreurs personnalisés pour gérer les exceptions. Si aucun n'est trouvé, webforJ revient au gestionnaire d'erreurs global personnalisé.
+Pour définir un gestionnaire d'erreurs global, vous devez créer un nouveau gestionnaire d'erreurs nommé `WebforjGlobalErrorHandler`, puis suivre [les étapes pour enregistrer des gestionnaires d'erreurs](#step-2-register-the-error-handler) comme expliqué précédemment. Dans ce cas, webforJ recherche d'abord tous les gestionnaires d'erreurs personnalisés pour gérer les exceptions. Si aucun n'est trouvé, webforJ revient au gestionnaire d'erreurs global personnalisé.
 
 :::info
-Si plusieurs `WebforjGlobalErrorHandler` sont enregistrés, alors webforJ sélectionne le premier.
+Si plusieurs `WebforjGlobalErrorHandler` sont enregistrés, alors webforJ sélectionne le premier
 :::

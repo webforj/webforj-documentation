@@ -5,7 +5,7 @@ slug: Full-stack development with webforJ
 date: 2025-07-29
 authors: Matthew Hawkins
 image: "https://cdn.webforj.com/webforj-documentation/blogs/2025-07-24-webforj-crud-spring.png"
-tags: [webforJ, Spring, Spring Boot, Full-Stack, Web Development, tutorial]
+tags: [spring, full-stack, web development, tutorial]
 hide_table_of_contents: false
 ---
 

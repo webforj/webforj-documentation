@@ -1,0 +1,51 @@
+.subtitle {
+  color: var(--ifm-color-emphasis-700);
+  font-size: 1.05rem;
+  margin-top: 0.5rem;
+}
+
+.tagsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.tagCard {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid var(--dwc-color-default);
+  border-radius: var(--dwc-border-radius);
+  background-color: var(--dwc-surface-3);
+  color: var(--ifm-font-color-base);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.tagCard:hover {
+  border: 1px solid var(--dwc-color-primary);
+  color: var(--dwc-color-primary);
+  background-color: var(--dwc-color-primary-alt, var(--dwc-surface-3));
+  text-decoration: none;
+}
+
+.tagLabel {
+  line-height: 1.2;
+}
+
+.tagCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-800);
+  border-radius: 1rem;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  min-width: 1.5rem;
+  text-align: center;
+}

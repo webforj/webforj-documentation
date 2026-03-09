@@ -1,18 +1,22 @@
 ---
 title: Drawer
 sidebar_position: 35
-_i18n_hash: 1ac0b2efc50e748c9fd18f92de8d0e6e
+_i18n_hash: d0c9ff09e591673c99918aa6875af28a
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-drawer" />
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="drawer" location="com/webforj/component/drawer/Drawer" top='true'/>
 
-Der `Drawer`-Komponente in webforJ erstellt ein schiebendes Panel, das von der Kante des Bildschirms erscheint und zusätzlichen Inhalt offenbart, ohne die aktuelle Ansicht zu verlassen. Er wird häufig für Seitennavigation, Filtermenüs, Benutzereinstellungen oder kompakte Benachrichtigungen verwendet, die vorübergehend erscheinen müssen, ohne die Hauptoberfläche zu stören.
+Die `Drawer`-Komponente in webforJ erstellt ein schiebendes Panel, das von der Kante des Bildschirms erscheint und zusätzlichen Inhalt offenbart, ohne die aktuelle Ansicht zu verlassen. Sie wird häufig für Seitennavigation, Filtermenüs, Benutzereinstellungen oder kompakte Benachrichtigungen verwendet, die temporär angezeigt werden müssen, ohne die Hauptschnittstelle zu stören.
 
-`Drawers` stapeln sich automatisch, wenn mehrere geöffnet sind, wodurch sie eine flexible Wahl für raumbegrenzte Schnittstellen darstellen.
+<!-- INTRO_END -->
 
-Das folgende Beispiel zeigt dieses Verhalten innerhalb der [`AppLayout`](../components/app-layout)-Komponente. Der Navigationsschublade, die durch das Hamburger-Menü aktiviert wird, ist in [`AppLayout`](../components/app-layout) integriert, während das Willkommens-Popup am unteren Rand eine eigenständige `Drawer`-Instanz verwendet. Beide koexistieren und stapeln sich unabhängig, was demonstriert, wie `Drawers` in Layout-Komponenten integriert oder als eigenständige Elemente verwendet werden können.
+## Stapeln {#stacking}
+
+Drawers stapeln sich automatisch, wenn mehrere geöffnet werden, was sie zu einer flexiblen Wahl für platzbeschränkte Schnittstellen macht.
+
+Das unten stehende Beispiel zeigt dieses Verhalten innerhalb der [`AppLayout`](../components/app-layout)-Komponente. Der Navigations-Drawer, der durch das Hamburger-Menü ausgelöst wird, ist in [`AppLayout`](../components/app-layout) integriert, während das Willkommens-Popup unten eine eigenständige `Drawer`-Instanz verwendet. Beide coexistieren und stapeln sich unabhängig, was demonstriert, wie Drawers in Layout-Komponenten integriert oder als eigenständige Elemente verwendet werden können.
 
 <AppLayoutViewer path='/webforj/drawerwelcome?' mobile='true'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/drawer/DrawerWelcomeView.java'
@@ -21,7 +25,7 @@ cssURL='/css/drawer/drawerWelcome.css'
 
 ## Autofokus
 
-Die `Drawer`-Komponente unterstützt Autofokus, der den Fokus automatisch auf das erste fokussierbare Element setzt, wenn der `Drawer` geöffnet wird. Dies verbessert die Benutzerfreundlichkeit, indem die Aufmerksamkeit direkt auf das erste handlungsorientierte Element gelenkt wird.
+Die `Drawer`-Komponente unterstützt Autofokus, der automatisch den Fokus auf das erste fokussierbare Element setzt, wenn die `Drawer` geöffnet wird. Dies verbessert die Benutzerfreundlichkeit, indem die Aufmerksamkeit direkt auf das erste handlungsfähige Element gelenkt wird.
 
 <ComponentDemo
 path='/webforj/drawerautofocus?'
@@ -31,24 +35,24 @@ height='600px'
 
 <!-- Beispiel -->
 
-## Label {#label}
+## Etikett {#label}
 
-Die Methode `setLabel()` kann eine aussagekräftige Beschreibung des Inhalts innerhalb eines `Drawer` bereitstellen. Wenn ein Label gesetzt wird, können unterstützende Technologien wie Bildschirmleser es ankündigen, was den Benutzern hilft, den Zweck des `Drawer` zu verstehen, ohne seinen visuellen Inhalt zu sehen.
+Die Methode `setLabel()` kann eine aussagekräftige Beschreibung des Inhalts innerhalb eines `Drawers` bereitstellen. Wenn ein Etikett gesetzt ist, können assistive Technologien wie Bildschirmlesegeräte es ankündigen, was den Benutzern hilft, den Zweck des `Drawers` zu verstehen, ohne dessen visuelle Inhalte zu sehen.
 
 ```java
 Drawer drawer = new Drawer();
 drawer.setLabel("Aufgabenmanager");
 ```
 
-:::tip Beschreibende Labels
-Verwenden Sie prägnante und beschreibende Labels, die den Zweck des `Drawer` widerspiegeln. Vermeiden Sie generische Begriffe wie „Menü“ oder „Panel“, wenn ein spezifischerer Name verwendet werden kann.
+:::tip Beschreibende Etiketten
+Verwenden Sie prägnante und beschreibende Etiketten, die den Zweck des `Drawers` widerspiegeln. Vermeiden Sie generische Begriffe wie „Menü“ oder „Panel“, wenn ein spezifischerer Name verwendet werden kann.
 :::
 
 ## Größe
 
-Um die Größe eines `Drawer` zu steuern, setzen Sie einen Wert für die CSS-Benutzerdefinierte Eigenschaft `--dwc-drawer-size`. Dies setzt die Breite des `Drawer` für links/rechts Platzierung oder die Höhe für oben/unten Platzierung.
+Um die Größe eines `Drawers` zu steuern, setzen Sie einen Wert für die CSS-Custom-Property `--dwc-drawer-size`. Dies legt die Breite des `Drawers` für die links/rechts Platzierung oder die Höhe für die oben/unten Platzierung fest.
 
-Sie können den Wert mit jeder gültigen CSS-Einheit wie Prozent, Pixel oder vw/vh definieren, entweder mit Java oder CSS:
+Sie können den Wert mit jeder gültigen CSS-Einheit wie einem Prozentsatz, Pixeln oder vw/vh definieren, sowohl in Java als auch in CSS:
 
 ```java
 // Java
@@ -62,7 +66,7 @@ dwc-drawer {
 }
 ```
 
-Um zu verhindern, dass der `Drawer` zu groß wird, verwenden Sie `--dwc-drawer-max-size` zusammen mit ihm:
+Um zu verhindern, dass der `Drawer` zu groß wird, verwenden Sie `--dwc-drawer-max-size` zusammen damit:
 
 ```java
 // Java
@@ -80,17 +84,17 @@ dwc-drawer {
 
 ## Platzierung {#placement}
 
-Die Methode `setPlacement()` steuert, wo der `Drawer` im Ansichtsfenster erscheint.
+Die Methode `setPlacement()` steuert, wo der `Drawer` im Ansichtsfenster angezeigt wird.
 
 Verfügbare Platzierungsoptionen:
 
 <!-- vale off -->
-- **OBEN**: Positioniert den Drawer an der oberen Kante des Ansichtsfensters.
+- **OBEN**: Positioniert den Drawer am oberen Rand des Ansichtsfensters.
 - **OBEN_ZENTRAL**: Richtet den Drawer horizontal zentriert am oberen Rand des Ansichtsfensters aus.
 - **UNTEN**: Platziert den Drawer am unteren Rand des Ansichtsfensters.
 - **UNTEN_ZENTRAL**: Zentriert den Drawer horizontal am unteren Rand des Ansichtsfensters.
-- **LINKS**: Positioniert den Drawer am linken Rand des Ansichtsfensters.
-- **RECHTS**: Positioniert den Drawer am rechten Rand des Ansichtsfensters.
+- **LINKS**: Positioniert den Drawer entlang der linken Kante des Ansichtsfensters.
+- **RECHTS**: Positioniert den Drawer entlang der rechten Kante des Ansichtsfensters.
 <!-- vale on -->
 
 <ComponentDemo
@@ -101,32 +105,32 @@ height='600px'
 
 ## Ereignisbehandlung
 
-Die `Drawer`-Komponente gibt Lebenszyklusereignisse aus, die verwendet werden können, um Logik der App als Reaktion auf Änderungen in ihrem offenen oder geschlossenen Status auszulösen. 
+Die `Drawer`-Komponente gibt Lebenszyklusereignisse aus, die verwendet werden können, um App-Logik als Reaktion auf Änderungen im offenen oder geschlossenen Zustand auszulösen.
 
 Unterstützte Ereignisse:
 
 - `DrawerOpenEvent`: Wird ausgelöst, wenn der Drawer vollständig geöffnet ist.
 - `DrawerCloseEvent`: Wird ausgelöst, wenn der Drawer vollständig geschlossen ist.
 
-Sie können Listener an diese Ereignisse anhängen, um Logik auszuführen, wenn sich der Status des `Drawer` ändert.
+Sie können Listener an diesen Ereignissen anhängen, um Logik auszuführen, wenn sich der Zustand des `Drawers` ändert.
 
 ```java
 Drawer drawer = new Drawer();
 
 drawer.addOpenListener(e -> {
-  // Behandlung des geöffneten Drawer-Ereignisses
+  // Handle drawer opened event
 });
 
 drawer.addCloseListener(e -> {
-  // Behandlung des geschlossenen Drawer-Ereignisses
+  // Handle drawer closed event
 });
 ```
 
 ## Beispiel: Kontaktwähler
 
-Die `Drawer`-Komponente zeigt zusätzlichen Inhalt an, ohne die aktuelle Ansicht zu stören. Dieses Beispiel platziert einen Drawer in der unteren Mitte, der eine scrollbare Kontaktliste enthält.
+Die `Drawer`-Komponente gibt zusätzlichen Inhalt ohne Störung der aktuellen Ansicht aus. Dieses Beispiel platziert einen Drawer am unteren Zentrum, der eine scrollbare Kontaktliste enthält.
 
-Jeder Kontakt zeigt ein Avatar, Namen, Standort und eine Schaltfläche für schnellen Zugriff auf Details oder Kommunikation. Dieser Ansatz eignet sich gut zum Erstellen kompakter Werkzeuge wie Kontaktwähler, Einstellungen-Panels oder Benachrichtigungen.
+Jeder Kontakt zeigt ein Avatar, Namen, Standort und Aktionsschaltfläche für schnellen Zugriff auf Details oder Kommunikation an. Dieser Ansatz funktioniert gut für den Aufbau kompakter Werkzeuge wie Kontaktwähler, Einstellungen-Panels oder Benachrichtigungen.
 
 <ComponentDemo
 path='/webforj/drawercontact?'
@@ -137,7 +141,7 @@ height='600px'
 
 ## Beispiel: Aufgabenmanager
 
-Dieses Beispiel verwendet einen `Drawer` als Aufgabenmanager. Sie können Aufgaben hinzufügen, abhaken und erledigte löschen. Die Fußzeile des `Drawer` enthält Formularsteuerelemente zur Interaktion mit der Aufgabenliste, und die „Aufgabe hinzufügen“-[`Button`](../components/button) deaktiviert sich selbst, wenn 50 Aufgaben erreicht sind.
+Dieses Beispiel verwendet einen `Drawer` als Aufgabenmanager. Sie können Aufgaben hinzufügen, abhaken und abgeschlossene löschen. Die Fußzeile des `Drawers` enthält Formularsteuerelemente zur Interaktion mit der Aufgabenliste, und die „Aufgabe hinzufügen“ [`Button`](../components/button) deaktiviert sich selbst, wenn 50 Aufgaben erreicht sind.
 
 <ComponentDemo
 path='/webforj/drawertask?'
