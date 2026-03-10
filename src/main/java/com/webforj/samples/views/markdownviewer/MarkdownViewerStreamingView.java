@@ -2,6 +2,7 @@ package com.webforj.samples.views.markdownviewer;
 
 import com.webforj.annotation.StyleSheet;
 import com.webforj.component.Composite;
+import com.webforj.component.Theme;
 import com.webforj.component.icons.IconButton;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.html.elements.Span;
@@ -128,7 +129,7 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
 
     sendButton.onClick(e -> sendMessage());
 
-    stopButton.setStyle("color", "var(--dwc-color-danger-text)");
+    stopButton.setTheme(Theme.DANGER);
     stopButton.setVisible(false);
     stopButton.onClick(e -> stopStreaming());
 
