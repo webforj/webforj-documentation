@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 7
 title: Event Options
 ---
 <!-- sidebar_class_name: sidebar--item__hidden -->
