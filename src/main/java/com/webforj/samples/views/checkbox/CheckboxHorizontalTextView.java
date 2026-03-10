@@ -12,7 +12,7 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Checkbox Horizontal Text")
 public class CheckboxHorizontalTextView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
 
   public CheckboxHorizontalTextView() {
     FlexLayout rightAligned = FlexLayout.create(

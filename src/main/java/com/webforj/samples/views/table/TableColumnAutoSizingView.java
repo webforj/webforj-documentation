@@ -15,12 +15,13 @@ public class TableColumnAutoSizingView extends Composite<FlexLayout> {
   // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
 
-  private Table<MusicRecord> table;
-  private Column<MusicRecord, ?> numberCol;
-  private Column<MusicRecord, ?> titleCol;
-  private Column<MusicRecord, ?> artistCol;
-  private Column<MusicRecord, ?> genreCol;
-  private Column<MusicRecord, ?> costCol;
+  private final Table<MusicRecord> table = new Table<>();
+  private final Column<MusicRecord, ?> numberCol = table.addColumn("Number", MusicRecord::getNumber);
+  private final Column<MusicRecord, ?> titleCol = table.addColumn("Title", MusicRecord::getTitle);
+  private final Column<MusicRecord, ?> artistCol = table.addColumn("Artist", MusicRecord::getArtist);
+  private final Column<MusicRecord, ?> genreCol = table.addColumn("Genre", MusicRecord::getMusicType);
+  private final Column<MusicRecord, ?> costCol = table.addColumn("Cost", r -> String.format("$%.2f", r.getCost()))
+          .setAlignment(Column.Alignment.RIGHT);
 
   public TableColumnAutoSizingView() {
     self.setDirection(FlexDirection.COLUMN)
@@ -52,17 +53,9 @@ public class TableColumnAutoSizingView extends Composite<FlexLayout> {
   }
 
   private Table<MusicRecord> createTable() {
-    table = new Table<MusicRecord>()
-        .setWidth("100%")
+    table.setWidth("100%")
         .setHeight("450px")
         .setStriped(true);
-
-    numberCol = table.addColumn("Number", MusicRecord::getNumber);
-    titleCol = table.addColumn("Title", MusicRecord::getTitle);
-    artistCol = table.addColumn("Artist", MusicRecord::getArtist);
-    genreCol = table.addColumn("Genre", MusicRecord::getMusicType);
-    costCol = table.addColumn("Cost", r -> String.format("$%.2f", r.getCost()))
-        .setAlignment(Column.Alignment.RIGHT);
 
     applyDefaultColumnSizing();
     table.setRepository(Service.getMusicRecords());

@@ -12,8 +12,6 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Bound Component")
 public class BoundComponentDemoView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
-  private final TextField text = new TextField("Todo Item");
-  private FlexLayout todoDisplay;
 
   public BoundComponentDemoView() {
     self.setMargin("20px")

@@ -19,15 +19,14 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Toast Cookies")
 public class ToastCookiesView extends Composite<Div> {
   private final Div self = getBoundComponent();
-  private Toast cookiesToast;
+  private final Toast cookiesToast = new Toast();
 
   public ToastCookiesView() {
     createAndOpenToast();
   }
 
   private void createAndOpenToast() {
-    cookiesToast = new Toast()
-      .setDuration(-1)
+    cookiesToast.setDuration(-1)
       .setTheme(Theme.DEFAULT)
       .setPlacement(Placement.CENTER);
 

@@ -29,8 +29,8 @@ public class DataTableView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
   private String searchTerm = "";
-  private CollectionRepository<JsonObject> repository;
-  private Paginator paginator;
+  private final CollectionRepository<JsonObject> repository;
+  private final Paginator paginator;
 
   public DataTableView() {
     // Initialize data from JSON asset

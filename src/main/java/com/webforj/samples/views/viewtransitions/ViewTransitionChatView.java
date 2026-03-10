@@ -22,9 +22,9 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Chat Widget")
 @StyleSheet("ws://css/viewtransitions/chat.css")
 public class ViewTransitionChatView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private Div cardContainer;
-  private Button chatButton;
+  private final FlexLayout self = getBoundComponent();
+  private final Div cardContainer;
+  private final Button chatButton;
   private ChatCard currentCard;
   private boolean isOpen = false;
 

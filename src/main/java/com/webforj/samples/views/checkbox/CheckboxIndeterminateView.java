@@ -11,10 +11,10 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Checkbox Indeterminate")
 public class CheckboxIndeterminateView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private CheckBox indeterminate = new CheckBox("Parent");
-  private CheckBox child1 = new CheckBox("Child 1");
-  private CheckBox child2 = new CheckBox("Child 2");
+  private final FlexLayout self = getBoundComponent();
+  private final CheckBox indeterminate = new CheckBox("Parent");
+  private final CheckBox child1 = new CheckBox("Child 1");
+  private final CheckBox child2 = new CheckBox("Child 2");
 
   public CheckboxIndeterminateView() {
     indeterminate.setIndeterminate(true)
