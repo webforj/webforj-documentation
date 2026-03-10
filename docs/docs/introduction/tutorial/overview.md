@@ -18,11 +18,11 @@ Each step has a corresponding runnable app available on GitHub:
 
 | Step | Documentation | GitHub |
 | ----- | ----- | ----- |
-| 1 | [Creating a Basic App](/docs/introduction/tutorial/creating-a-basic-app)                               | [Step 1 app](https://github.com/webforj/webforj-demo-application/tree/main/1-creating-a-basic-app)
-| 2 | [Working with Data](/docs/introduction/tutorial/working-with-data)                                     | [Step 2 app](https://github.com/webforj/webforj-demo-application/tree/main/2-working-with-data)
-| 3 | [Routing and Composites](/docs/introduction/tutorial/routing-and-composites)                           | [Step 3 app](https://github.com/webforj/webforj-demo-application/tree/main/3-routing-and-composites)
-| 4 | [Observers and Route Parameters](/docs/introduction/tutorial/observers-and-route-parameters)           | [Step 4 app](https://github.com/webforj/webforj-demo-application/tree/main/4-observers-and-route-parameters)
-| 5 | [Validating and Binding Data](/docs/introduction/tutorial/validating-and-binding-data)                 | [Step 5 app](https://github.com/webforj/webforj-demo-application/tree/main/5-validating-and-binding-data)
+| 1 | [Creating a Basic App](/docs/introduction/tutorial/creating-a-basic-app)                               | [Step 1 app](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app)
+| 2 | [Working with Data](/docs/introduction/tutorial/working-with-data)                                     | [Step 2 app](https://github.com/webforj/webforj-tutorial/tree/main/2-working-with-data)
+| 3 | [Routing and Composites](/docs/introduction/tutorial/routing-and-composites)                           | [Step 3 app](https://github.com/webforj/webforj-tutorial/tree/main/3-routing-and-composites)
+| 4 | [Observers and Route Parameters](/docs/introduction/tutorial/observers-and-route-parameters)           | [Step 4 app](https://github.com/webforj/webforj-tutorial/tree/main/4-observers-and-route-parameters)
+| 5 | [Validating and Binding Data](/docs/introduction/tutorial/validating-and-binding-data)                 | [Step 5 app](https://github.com/webforj/webforj-tutorial/tree/main/5-validating-and-binding-data)
 
 ## Prerequisites {#prerequisites}
 

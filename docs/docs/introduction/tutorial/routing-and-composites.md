@@ -12,9 +12,22 @@ Then, you'll connect these pages so your app is able to navigate between them by
 - [Composite components](/docs/building-ui/composite-components)
 - The [`ColumnsLayout`](/docs/components/columns-layout) component
 
-Completing this step creates a version of [3-routing-and-composites](https://github.com/webforj/webforj-demo-application/tree/main/3-routing-and-composites).
+Completing this step creates a version of [3-routing-and-composites](https://github.com/webforj/webforj-tutorial/tree/main/3-routing-and-composites).
 
 <!-- Insert video here -->
+
+## Running the app {#running-the-app}
+
+As you develop your app, you can use [3-routing-and-composites](https://github.com/webforj/webforj-tutorial/tree/main/3-routing-and-composites) as a comparison. To see the app in action:
+
+1. Navigate to the top-level directory containing the `pom.xml` file; this is `3-routing-and-composites` if you're following along with the version on GitHub.
+
+2. Use the following Maven command to run the Spring Boot app locally:
+    ```bash
+    mvn
+    ```
+
+Running the app automatically opens a new browser at http://localhost:8080.
 
 ## Routable apps {#routable-apps}
 
@@ -25,7 +38,7 @@ You’ll make your app [routable](/docs/routing/overview) so webforJ can access 
 
 A routable app renders the UI based on the URL. Annotating the class that extends the `App` class with [`@Routify`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/Routify.html) enables routing, and the `packages` element tells webforJ which packages contain UI components.
 
-When you add the `@Routify` annotation to `Application`, remove the `run()` method. You'll move the components from that method to a class that you'll make in the `com.webforj.demos.views` package. Your updated `Application.java` file should look like this:
+When you add the `@Routify` annotation to `Application`, remove the `run()` method. You'll move the components from that method to a class that you'll make in the `com.webforj.tutorial.views` package. Your updated `Application.java` file should look like this:
 
 ```java title="Application.java" {5-6,15}
 @SpringBootApplication
@@ -33,7 +46,7 @@ When you add the `@Routify` annotation to `Application`, remove the `run()` meth
 @AppTheme("system")
 
 //Added @Routify annotation
-@Routify(packages = "com.webforj.demos.views")
+@Routify(packages = "com.webforj.tutorial.views")
 
 @AppProfile(name = "CustomerApplication", shortName = "CustomerApplication")
 public class Application extends App {
@@ -53,7 +66,7 @@ Keeping the `@StyleSheet` annotation in `Application` applies that CSS globally.
 
 ### Creating routes {#creating-routes}
 
-Adding the `@Routify` annotation makes your app routable. Once it's routable, your app will look in the `com.webforj.demos.views` package for routes. 
+Adding the `@Routify` annotation makes your app routable. Once it's routable, your app will look in the `com.webforj.tutorial.views` package for routes. 
 You'll need to create the routes for your UIs and also specify their [Route Types](/docs/routing/route-hierarchy/route-types). The route type determines how to map the UI content to the URL.
 
 The first route type is `View`. These kinds of routes map directly to a specific URL segment in your app. The UIs for the table and the new customer form will both be `View` routes.
@@ -63,7 +76,7 @@ The second route type is `Layout`, which contains UI that appears on multiple pa
 To specify the route type of a class, append the route type to the end of the class name as a suffix.
 For example, `MainView` is a `View` route type.
 
-To keep the app's two functions separate, your app needs to map the UIs to two unique `View` routes: one for the table and one for the customer form. In `/src/main/java/com/webforj/demos/views`, create two classes with a `View` suffix:
+To keep the app's two functions separate, your app needs to map the UIs to two unique `View` routes: one for the table and one for the customer form. In `/src/main/java/com/webforj/tutorial/views`, create two classes with a `View` suffix:
 
 - **`MainView`**: This view will have the `Table` previously in the `Application` class.
 - **`FormView`**: This view will have a form for adding new customers.
@@ -136,16 +149,52 @@ public class MainView extends Composite<Div> {
 }
 ```
 
+### Setting the frame title {#setting-the-frame-tile}
+
+ When a user has multiple tabs in their browser, a unique frame title helps them quickly identify which part of the app they have opened.
+
+The [`@FrameTitle`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/FrameTitle.html) annotation defines what appears in the browser's title or page's tab. For both views, add a frame title using the `@FrameTitle` annotation:
+
+<Tabs>
+  <TabItem value="MainView" label="MainView">
+  ```java title="MainView.java" {2}
+  @Route("/")
+  @FrameTitle("Customer Table")
+  public class MainView extends Composite<Div> {
+
+    private Div self = getBoundComponent();
+
+    public MainView(CustomerService customerService) {
+    }
+  }
+  ```
+  </TabItem>
+  <TabItem value="FormView" label="FormView">
+  ```java title="FormView.java" {2}
+  @Route("customer")
+  @FrameTitle("Customer Form")
+  public class FormView extends Composite<Div> {
+
+    private Div self = getBoundComponent();
+
+    public FormView(CustomerService customerService) {
+    }
+  }
+  ```
+  </TabItem>
+</Tabs>
+
 ### Shared CSS {#shared-css}
 
-Now that you can reference the bound component in `MainView` and `FormView`, you can style it with CSS. 
+With a bound component you can reference in `MainView` and `FormView`, you can style it with CSS. 
 You can use the CSS from the first step, [Creating a Basic App](/docs/introduction/tutorial/creating-a-basic-app#referencing-a-css-file), to give both views identical UI container styles. 
 Add the CSS class name `card` to the bound component in each view:
 
 <Tabs>
   <TabItem value="MainView" label="MainView">
-    ```java {7}
+    ```java {9} title="MainView.java"
     @Route("/")
+    @FrameTitle("Customer Table")
     public class MainView extends Composite<Div> {
 
       private Div self = getBoundComponent();
@@ -158,8 +207,9 @@ Add the CSS class name `card` to the bound component in each view:
     ```
   </TabItem>
   <TabItem value="FormView" label="FormView">
-    ```java {7}
+    ```java {9} title="FormView.java"
     @Route("customer")
+    @FrameTitle("Customer Form")
     public class FormView extends Composite<Div> {
 
       private Div self = getBoundComponent();
@@ -175,79 +225,41 @@ Add the CSS class name `card` to the bound component in each view:
 
 ### Using `CustomerService` {#using-customerservice}
 
+The last shared trait for the views is using the `CustomerService` class.
 The `Table` in `MainView` displays each customer, while `FormView` adds new customers. Since both views interact with customer data, they need access to the app's business logic. 
 
 The views get access through the Spring service created in [Working with Data](/docs/introduction/tutorial/working-with-data#creating-a-service), `CustomerService`. To use the Spring service in each view, make `CustomerService` a constructor parameter:
 
 <Tabs>
   <TabItem value="MainView" label="MainView">
-    ```java {6-7}
+    ```java {7-8} title="MainView.java"
     @Route("/")
+    @FrameTitle("Customer Table")
     public class MainView extends Composite<Div> {
 
       private Div self = getBoundComponent();
 
       public MainView(CustomerService customerService) {
         this.customerService = customerService;
-
+        self.addClassName("card");
       }
     }
     ```
   </TabItem>
   <TabItem value="FormView" label="FormView">
-    ```java {6-7}
+    ```java {7-8} title="FormView.java"
     @Route("customer")
+    @FrameTitle("Customer Form")
     public class FormView extends Composite<Div> {
 
       private Div self = getBoundComponent();
 
       public FormView(CustomerService customerService) {
         this.customerService = customerService;
-
+        self.addClassName("card");
       }
     }
     ```
-  </TabItem>
-</Tabs>
-
-### Setting the frame title {#setting-the-frame-tile}
-
-The last shared trait for the views is a frame title. When a user has multiple tabs in their browser, a unique frame title helps them quickly identify which part of the app they have opened.
-
-The [`@FrameTitle`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/annotation/FrameTitle.html) annotation defines what appears in the browser's title or page's tab. For both views, add a frame title using the `@FrameTitle` annotation:
-
-<Tabs>
-  <TabItem value="MainView" label="MainView">
-  ```java title="MainView.java" {2}
-  @Route("/")
-  @FrameTitle("Customer Table")
-  public class MainView extends Composite<Div> {
-
-    private Div self = getBoundComponent();
-
-    public MainView(CustomerService customerService) {
-      this.customerService = customerService;
-
-      self.addClassName("card");
-    }
-  }
-  ```
-  </TabItem>
-  <TabItem value="FormView" label="FormView">
-  ```java title="FormView.java" {2}
-  @Route("customer")
-  @FrameTitle("Customer Form")
-  public class FormView extends Composite<Div> {
-
-    private Div self = getBoundComponent();
-
-    public FormView(CustomerService customerService) {
-      this.customerService = customerService;
-
-      self.addClassName("card");
-    }
-  }
-  ```
   </TabItem>
 </Tabs>
 
@@ -271,7 +283,7 @@ private void buildTable() {
   table.addColumn("country", Customer::getCountry).setLabel("Country");
   table.setColumnsToAutoFit();
   table.getColumns().forEach(column -> column.setSortable(true));
-  table.setRepository(customerService.getFilterableRepository());
+  table.setRepository(customerService.getRepositoryAdapter());
 }
 ```
 
@@ -302,41 +314,37 @@ With the navigation to `FormView` and grouped table methods, here's what `MainVi
 <!-- vale off -->
 <ExpandableCode title="MainView.java" language="java" startLine={1} endLine={15}>
 {`@Route("/")
-@FrameTitle("Customer Table")
-public class MainView extends Composite<Div> {
+  @FrameTitle("Customer Table")
+  public class MainView extends Composite<Div> {
+    private final CustomerService customerService;
+    private Div self = getBoundComponent();
+    private Table<Customer> table = new Table<>();
+    private Button addCustomer = new Button("Add Customer", ButtonTheme.PRIMARY,
+        e -> Router.getCurrent().navigate(FormView.class));
 
-  private final CustomerService customerService;
+    public MainView(CustomerService customerService) {
+      this.customerService = customerService;
+      addCustomer.setWidth(200);
+      buildTable();
+      self.setWidth("fit-content")
+          .addClassName("card")
+          .add(table, addCustomer);
+    }
 
-  private Div self = getBoundComponent();
-  private Table<Customer> table = new Table<>();
-  private Button addCustomer = new Button("Add Customer", ButtonTheme.PRIMARY,
-      e -> Router.getCurrent().navigate(FormView.class));
+    private void buildTable() {
+      table.setSize("1000px", "294px");
+      table.setMaxWidth("90vw");
+      table.addColumn("firstName", Customer::getFirstName).setLabel("First Name");
+      table.addColumn("lastName", Customer::getLastName).setLabel("Last Name");
+      table.addColumn("company", Customer::getCompany).setLabel("Company");
+      table.addColumn("country", Customer::getCountry).setLabel("Country");
+      table.setColumnsToAutoFit();
+      table.setColumnsToResizable(false);
+      table.getColumns().forEach(column -> column.setSortable(true));
+      table.setRepository(customerService.getRepositoryAdapter());
+    }
 
-  public MainView(CustomerService customerService) {
-    this.customerService = customerService;
-
-    addCustomer.setWidth(200);
-    buildTable();
-
-    self.setWidth("fit-content")
-      .addClassName("card")
-      .add(table, addCustomer);
   }
-  
-  private void buildTable() {
-    table.setSize("1000px", "294px");
-    table.setMaxWidth("90vw");
-    table.addColumn("firstName", Customer::getFirstName).setLabel("First Name");
-    table.addColumn("lastName", Customer::getLastName).setLabel("Last Name");
-    table.addColumn("company", Customer::getCompany).setLabel("Company");
-    table.addColumn("country", Customer::getCountry).setLabel("Country");
-    table.setColumnsToAutoFit();
-    table.setColumnsToResizable(false);
-    table.getColumns().forEach(column -> column.setSortable(true));
-    table.setRepository(customerService.getFilterableRepository());
-  }
-
-}
 `}
 </ExpandableCode>
 <!-- vale on -->
@@ -375,6 +383,7 @@ public class FormView extends Composite<Div> {
 
   public FormView(CustomerService customerService) {
     this.customerService = customerService;
+    self.addClassName("card");
   }
 }
 ```
@@ -430,7 +439,7 @@ private ChoiceBox country = new ChoiceBox("Country",
 To keep the code clean, the iterator that creates the `ArrayList<ListItem>` and adds it to the `ChoiceBox` should be in a separate method. 
 After you add a `ChoiceBox` that allows the user to choose the `country` property, `FormView` should look like this:
 
-```java title="FormView.java" {9-10,15,19-26}
+```java title="FormView.java" {9-10,15,18-25}
 public class FormView extends Composite<Div> {
   private final CustomerService customerService;
   private Customer customer = new Customer();
@@ -444,7 +453,7 @@ public class FormView extends Composite<Div> {
 
   public FormView(CustomerService customerService) {
     this.customerService = customerService;
-
+    self.addClassName("card");
     fillCountries();
   }
 
@@ -559,82 +568,63 @@ After adding a `Customer` instance, the interactive components, and the `Columns
 <!-- vale off -->
 <ExpandableCode title="FormView.java" language="java" startLine={1} endLine={15}>
 {`@Route("customer")
-@FrameTitle("Customer Form")
-public class FormView extends Composite<Div> {
+  @FrameTitle("Customer Form")
+  public class FormView extends Composite<Div> {
     private final CustomerService customerService;
-  private Customer customer = new Customer();
-  private Div self = getBoundComponent();
-  private TextField firstName = new TextField("First Name", e -> customer.setFirstName(e.getValue()));
-  private TextField lastName = new TextField("Last Name", e -> customer.setLastName(e.getValue()));
-  private TextField company = new TextField("Company", e -> customer.setCompany(e.getValue()));
-  private ChoiceBox country = new ChoiceBox("Country",
-      e -> customer.setCountry((Customer.Country) e.getSelectedItem().getKey()));
-  private Button submit = new Button("Submit", ButtonTheme.PRIMARY, e -> submitCustomer());
-  private Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
+    private Customer customer = new Customer();
+    private Div self = getBoundComponent();
+    private TextField firstName = new TextField("First Name", e -> customer.setFirstName(e.getValue()));
+    private TextField lastName = new TextField("Last Name", e -> customer.setLastName(e.getValue()));
+    private TextField company = new TextField("Company", e -> customer.setCompany(e.getValue()));
+    private ChoiceBox country = new ChoiceBox("Country",
+        e -> customer.setCountry((Customer.Country) e.getSelectedItem().getKey()));
+    private Button submit = new Button("Submit", ButtonTheme.PRIMARY, e -> submitCustomer());
+    private Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
+    private ColumnsLayout layout = new ColumnsLayout(
+        firstName, lastName,
+        company, country,
+        submit, cancel);
 
-  private ColumnsLayout layout = new ColumnsLayout(
-    firstName, lastName,
-    company, country,
-    submit, cancel);
-
-  public FormView(CustomerService customerService) {
-    this.customerService = customerService;
-
-    fillCountries();
-    setColumnsLayout();
-
-    self.setMaxWidth(600)
-      .addClassName("card")
-      .add(layout);
-
-    submit.setStyle("margin-top", "var(--dwc-space-l)");
-    cancel.setStyle("margin-top", "var(--dwc-space-l)");
-  }
-
-  private void setColumnsLayout() {
-    List<Breakpoint> breakpoints = List.of(
-      new Breakpoint(0, 1),
-      new Breakpoint(600, 2));
-
-    layout.setSpacing("var(--dwc-space-l)")
-      .setBreakpoints(breakpoints);
-  }
-
-  private void fillCountries() {
-    ArrayList<ListItem> listCountries = new ArrayList<>();
-    for (Country countryItem : Customer.Country.values()) {
-      listCountries.add(new ListItem(countryItem, countryItem.toString()));
+    public FormView(CustomerService customerService) {
+      this.customerService = customerService;
+      fillCountries();
+      setColumnsLayout();
+      self.setMaxWidth(600)
+          .addClassName("card")
+          .add(layout);
+      submit.setStyle("margin-top", "var(--dwc-space-l)");
+      cancel.setStyle("margin-top", "var(--dwc-space-l)");
     }
-    country.insert(listCountries);
-    country.selectIndex(0);
-  }
 
-  private void submitCustomer() {
-    customerService.createCustomer(customer);
-    navigateToMain();
-  }
+    private void setColumnsLayout() {
+      List<Breakpoint> breakpoints = List.of(
+          new Breakpoint(600, 2));
+      layout.setSpacing("var(--dwc-space-l)")
+          .setBreakpoints(breakpoints);
+    }
 
-  private void navigateToMain(){
-    Router.getCurrent().navigate(MainView.class);
-  }
+    private void fillCountries() {
+      ArrayList<ListItem> listCountries = new ArrayList<>();
+      for (Country countryItem : Customer.Country.values()) {
+        listCountries.add(new ListItem(countryItem, countryItem.toString()));
+      }
+      country.insert(listCountries);
+      country.selectIndex(0);
+    }
 
-}
+    private void submitCustomer() {
+      customerService.createCustomer(customer);
+      navigateToMain();
+    }
+
+    private void navigateToMain() {
+      Router.getCurrent().navigate(MainView.class);
+    }
+
+  }
 `}
 </ExpandableCode>
 <!-- vale on -->
-
-## Running the app {#running-the-app}
-
-When you've finished this step, you can compare it to [3-routing-and-composites](https://github.com/webforj/webforj-demo-application/tree/main/3-routing-and-composites) on GitHub. To see the app in action:
-
-1. Navigate to the top-level directory containing the `pom.xml` file; this is `3-routing-and-composites` if you're following along with the version on GitHub.
-
-2. Use the following Maven command to run the Spring Boot app locally:
-    ```bash
-    mvn
-    ```
-
-Running the app automatically opens a new browser at http://localhost:8080.
 
 ## Next step {#next-step}
 

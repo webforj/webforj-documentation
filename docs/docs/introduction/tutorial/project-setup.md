@@ -11,11 +11,11 @@ To begin this tutorial, you need a location for your project where you can manag
 The easiest way to follow this tutorial is to refer to its source code. You can download the entire project or clone it from GitHub:
 
 <!-- vale off -->
-- Download ZIP: [webforj-demo-application.zip](https://github.com/webforj/webforj-demo-application/archive/refs/heads/main.zip)
-- GitHub Repository: Clone the project [directly from GitHub](https://github.com/webforj/webforj-demo-application)
+- Download ZIP: [webforj-tutorial.zip](https://github.com/webforj/webforj-tutorial/archive/refs/heads/main.zip)
+- GitHub Repository: Clone the project [directly from GitHub](https://github.com/webforj/webforj-tutorial)
 <!-- vale on -->
 ```bash
-git clone https://github.com/webforj/webforj-demo-application.git
+git clone https://github.com/webforj/webforj-tutorial.git
 ```
 
 <!-- <div class="videos-container">
@@ -29,7 +29,7 @@ git clone https://github.com/webforj/webforj-demo-application.git
 The project has four subdirectories, one for each step of the tutorial, and each contains a runnable app. Following along allows you to see how the app progresses from a basic setup to a fully functional customer management system.
 
 ```
-webforj-demo-application
+webforj-tutorial
 │   .gitignore
 │   LICENSE
 │   README.md
@@ -64,7 +64,7 @@ mvn -B archetype:generate \
   -DarchetypeGroupId=com.webforj \
   -DarchetypeArtifactId=webforj-archetype-hello-world \
   -DarchetypeVersion=LATEST \
-  -DgroupId=com.webforj.demos \
+  -DgroupId=com.webforj.tutorial \
   -DartifactId=customer-app \
   -Dversion=1.0-SNAPSHOT \
   -Dflavor=webforj-spring
@@ -76,7 +76,7 @@ mvn -B archetype:generate `
   -DarchetypeGroupId="com.webforj" `
   -DarchetypeArtifactId="webforj-archetype-hello-world" `
   -DarchetypeVersion="LATEST" `
-  -DgroupId="com.webforj.demos" `
+  -DgroupId="com.webforj.tutorial" `
   -DartifactId="customer-app" `
   -Dversion="1.0-SNAPSHOT" `
   -Dflavor="webforj-spring"
@@ -88,7 +88,7 @@ mvn -B archetype:generate ^
   -DarchetypeGroupId="com.webforj" ^
   -DarchetypeArtifactId="webforj-archetype-hello-world" ^
   -DarchetypeVersion="LATEST" ^
-  -DgroupId="com.webforj.demos" ^
+  -DgroupId="com.webforj.tutorial" ^
   -DartifactId="customer-app" ^
   -Dversion="1.0-SNAPSHOT" ^
   -Dflavor="webforj-spring"
@@ -104,7 +104,7 @@ Both of the above methods for creating a new project use webforJ [archetypes](/d
 ```
 spring.application.name=CustomerApplication
 server.port=8080
-webforj.entry = com.webforj.demos.Application
+webforj.entry = com.webforj.tutorial.Application
 webforj.debug=true
 ```
 

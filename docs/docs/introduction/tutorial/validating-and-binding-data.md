@@ -10,13 +10,26 @@ Your app from [Observers and Route Parameters](/docs/introduction/tutorial/obser
 - [Jakarta validation](https://beanvalidation.org)
 - Using the [`BindingContext`](https://javadoc.io/doc/com.webforj/webforj-data/latest/com/webforj/data/binding/BindingContext.html) class
 
-Completing this step creates a version of [5-validating-and-binding-data](https://github.com/webforj/webforj-demo-application/tree/main/5-validating-and-binding-data).
+Completing this step creates a version of [5-validating-and-binding-data](https://github.com/webforj/webforj-tutorial/tree/main/5-validating-and-binding-data).
 
 <!-- <div class="videos-container">
   <video controls>
     <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/validating-and-binding-data.mp4" type="video/mp4"/>
   </video>
 </div> -->
+
+## Running the app {#running-the-app}
+
+As you develop your app, you can use [5-validating-and-binding-data](https://github.com/webforj/webforj-tutorial/tree/main/5-validating-and-binding-data) as a comparison. To see the app in action:
+
+1. Navigate to the top-level directory containing the `pom.xml` file, this is `5-validating-and-binding-data` if you're following along with the version on GitHub.
+
+2. Use the following Maven command to run the Spring Boot app locally:
+    ```bash
+    mvn
+    ```
+
+Running the app automatically opens a new browser at http://localhost:8080.
 
 ## Defining validation rules {#defining-validation-rules}
 
@@ -31,98 +44,98 @@ To require that both first and last names are mandatory and contain only letters
 <!-- vale off -->
 <ExpandableCode title="Customer.java" language="java" startLine={8} endLine={28}>
 {`@Entity
-@Table(name = "customers")
-public class Customer {
+  @Table(name = "customers")
+  public class Customer {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-// highlight-next-line
-  @NotEmpty(message = "Customer first name is required")
-// highlight-next-line
-  @Pattern(regexp = "[a-zA-Z]*", message = "Invalid characters")
-  private String firstName = "";
+  // highlight-next-line
+    @NotEmpty(message = "Customer first name is required")
+  // highlight-next-line
+    @Pattern(regexp = "[a-zA-Z]*", message = "Invalid characters")
+    private String firstName = "";
 
-// highlight-next-line
-  @NotEmpty(message = "Customer last name is required")
-// highlight-next-line
-  @Pattern(regexp = "[a-zA-Z]*", message = "Invalid characters")
-  private String lastName = "";
+  // highlight-next-line
+    @NotEmpty(message = "Customer last name is required")
+  // highlight-next-line
+    @Pattern(regexp = "[a-zA-Z]*", message = "Invalid characters")
+    private String lastName = "";
 
-// highlight-next-line
-  @Pattern(regexp = "[a-zA-Z0-9 ]*", message = "Invalid characters")
-  private String company = "";
+  // highlight-next-line
+    @Pattern(regexp = "[a-zA-Z0-9 ]*", message = "Invalid characters")
+    private String company = "";
 
-  private Country country = Country.UNKNOWN;
+    private Country country = Country.UNKNOWN;
 
-  public enum Country {
-    UNKNOWN,
-    GERMANY,
-    ENGLAND,
-    ITALY,
-    USA
+    public enum Country {
+      UNKNOWN,
+      GERMANY,
+      ENGLAND,
+      ITALY,
+      USA
+    }
+
+    public Customer(String firstName, String lastName, String company, Country country) {
+      setFirstName(firstName);
+      setLastName(lastName);
+      setCompany(company);
+      setCountry(country);
+    }
+
+    public Customer(String firstName, String lastName, String company) {
+      this(firstName, lastName, company, Country.UNKNOWN);
+    }
+
+    public Customer(String firstName, String lastName) {
+      this(firstName, lastName, "");
+    }
+
+    public Customer(String firstName) {
+      this(firstName, "");
+    }
+
+    public Customer() {
+    }
+
+    public void setFirstName(String newName) {
+      firstName = newName;
+    }
+
+    public String getFirstName() {
+      return firstName;
+    }
+
+    public void setLastName(String newName) {
+      lastName = newName;
+    }
+
+    public String getLastName() {
+      return lastName;
+    }
+
+    public void setCompany(String newCompany) {
+      company = newCompany;
+    }
+
+    public String getCompany() {
+      return company;
+    }
+
+    public void setCountry(Country newCountry) {
+      country = newCountry;
+    }
+
+    public Country getCountry() {
+      return country;
+    }
+
+    public Long getId() {
+      return id;
+    }
+
   }
-
-  public Customer(String firstName, String lastName, String company, Country country) {
-    setFirstName(firstName);
-    setLastName(lastName);
-    setCompany(company);
-    setCountry(country);
-  }
-
-  public Customer(String firstName, String lastName, String company) {
-    this(firstName, lastName, company, Country.UNKNOWN);
-  }
-
-  public Customer(String firstName, String lastName) {
-    this(firstName, lastName, "");
-  }
-
-  public Customer(String firstName) {
-    this(firstName, "");
-  }
-
-  public Customer() {
-  }
-
-  public void setFirstName(String newName) {
-    firstName = newName;
-  }
-
-  public String getFirstName() {
-    return firstName;
-  }
-
-  public void setLastName(String newName) {
-    lastName = newName;
-  }
-
-  public String getLastName() {
-    return lastName;
-  }
-
-  public void setCompany(String newCompany) {
-    company = newCompany;
-  }
-
-  public String getCompany() {
-    return company;
-  }
-
-  public void setCountry(Country newCountry) {
-    country = newCountry;
-  }
-
-  public Country getCountry() {
-    return country;
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-}
 `}
 </ExpandableCode>
 <!-- vale on -->
@@ -245,123 +258,92 @@ With these changes, here's what `FormView` looks like. The app now supports data
 <!-- vale off -->
 <ExpandableCode title="FormView.java" language="java" startLine={1} endLine={15}>
 {`@Route("customer/:id?<[0-9]+>")
-@FrameTitle("Customer Form")
-public class FormView extends Composite<Div> implements WillEnterObserver {
-  private final CustomerService customerService;
-  private BindingContext<Customer> context;
+  @FrameTitle("Customer Form")
+  public class FormView extends Composite<Div> implements WillEnterObserver {
+    private final CustomerService customerService;
+    private BindingContext<Customer> context;
+    private Customer customer = new Customer();
+    private Long customerId = 0L;
+    private Div self = getBoundComponent();
+    private TextField firstName = new TextField("First Name");
+    private TextField lastName = new TextField("Last Name");
+    private TextField company = new TextField("Company");
+    private ChoiceBox country = new ChoiceBox("Country");
+    private Button submit = new Button("Submit", ButtonTheme.PRIMARY, e -> submitCustomer());
+    private Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
+    private ColumnsLayout layout = new ColumnsLayout(
+        firstName, lastName,
+        company, country,
+        submit, cancel);
 
-  private Customer customer = new Customer();
-  private Long customerId = 0L;
-  private Div self = getBoundComponent();
-  private TextField firstName = new TextField("First Name");
-  private TextField lastName = new TextField("Last Name");
-  private TextField company = new TextField("Company");
-  private ChoiceBox country = new ChoiceBox("Country");
-  private Button submit = new Button("Submit", ButtonTheme.PRIMARY, e -> submitCustomer());
-  private Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
-
-  private FlexLayout buttonsLayout = FlexLayout.create(submit, cancel)
-    .horizontal()
-    .justify().between()
-    .build();
-
-  private ColumnsLayout columnsLayout = new ColumnsLayout(
-    firstName, lastName,
-    company, country,
-    buttonsLayout);
-
-  public FormView(CustomerService customerService) {
-    this.customerService = customerService;
-
-    context = BindingContext.of(this, Customer.class, true);
-    context.onValidate(e -> submit.setEnabled(e.isValid()));
-
-    fillCountries();
-    setLayouts();
-
-    self.setMaxWidth(600)
-      .setHeight("100dvh")
-      .setStyle("margin", "var(--dwc-space-l) auto")
-      .add(columnsLayout);
-  }
-
-  private void setLayouts() {
-    buttonsLayout.setSpacing("var(--dwc-space-3xl)")
-      .setItemGrow(1, submit, cancel)
-      .setMargin("var(--dwc-space-l) 0");
-
-    List<Breakpoint> breakpoints = List.of(
-      new Breakpoint(0, 1),
-      new Breakpoint(600, 2));
-
-    columnsLayout.setSpacing("var(--dwc-space-3xl)")
-      .setStyle("padding", "var(--dwc-space-l)")
-      .setSpan(buttonsLayout, 2)
-      .setBreakpoints(breakpoints);
-  }
-
-  private void fillCountries() {
-    ArrayList<ListItem> listCountries = new ArrayList<>();
-    for (Country countryItem : Customer.Country.values()) {
-      listCountries.add(new ListItem(countryItem, countryItem.toString()));
+    public FormView(CustomerService customerService) {
+      this.customerService = customerService;
+      context = BindingContext.of(this, Customer.class, true);
+      context.onValidate(e -> submit.setEnabled(e.isValid()));
+      fillCountries();
+      setColumnsLayout();
+      self.setMaxWidth(600)
+          .addClassName("card")
+          .add(layout);
+      submit.setStyle("margin-top", "var(--dwc-space-l)");
+      cancel.setStyle("margin-top", "var(--dwc-space-l)");
     }
-    country.insert(listCountries);
-  }
 
-  private void submitCustomer() {
-    ValidationResult results = context.write(customer);
-    if (results.isValid()) {
-      if (customerService.doesCustomerExist(customerId)) {
-        customerService.updateCustomer(customer);
-      } else {
-        customerService.createCustomer(customer);
+    private void setColumnsLayout() {
+      List<Breakpoint> breakpoints = List.of(
+          new Breakpoint(600, 2));
+      layout.setSpacing("var(--dwc-space-l)")
+          .setBreakpoints(breakpoints);
+    }
+
+    private void fillCountries() {
+      ArrayList<ListItem> listCountries = new ArrayList<>();
+      for (Country countryItem : Customer.Country.values()) {
+        listCountries.add(new ListItem(countryItem, countryItem.toString()));
       }
-      navigateToMain();
+      country.insert(listCountries);
+      country.selectIndex(0);
     }
-  }
 
-  private void navigateToMain(){
-    Router.getCurrent().navigate(MainView.class);
-  }
+    private void submitCustomer() {
+      ValidationResult results = context.write(customer);
+      if (results.isValid()) {
+        if (customerService.doesCustomerExist(customerId)) {
+          customerService.updateCustomer(customer);
+        } else {
+          customerService.createCustomer(customer);
+        }
+        navigateToMain();
+      }
+    }
 
-  @Override
-  public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
-    parameters.getInt("id").ifPresentOrElse(id -> {
-      customerId = Long.valueOf(id);
-      if (customerService.doesCustomerExist(customerId)) {
-         event.accept();
-         fillForm(customerId);
+    private void navigateToMain() {
+      Router.getCurrent().navigate(MainView.class);
+    }
+
+    @Override
+    public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
+      parameters.getInt("id").ifPresentOrElse(id -> {
+        customerId = Long.valueOf(id);
+        if (customerService.doesCustomerExist(customerId)) {
+          event.accept();
+          fillForm(customerId);
         } else {
           event.reject();
           navigateToMain();
         }
 
-    }, () -> event.accept());
-        
-  }
-
-  public void fillForm(Long customerId) {
-    customer = customerService.getCustomerByKey(customerId);
-    context.read(customer);
+      }, () -> event.accept());
     }
 
-}
+    public void fillForm(Long customerId) {
+      customer = customerService.getCustomerByKey(customerId);
+      context.read(customer);
+    }
+  }
 `}
 </ExpandableCode>
 <!-- vale on -->
-
-## Running the app {#running-the-app}
-
-When you’ve finished this step, you can compare it to [5-validating-and-binding-data](https://github.com/webforj/webforj-demo-application/tree/main/5-validating-and-binding-data) on GitHub. To see the app in action:
-
-1. Navigate to the top-level directory containing the `pom.xml` file, this is `5-validating-and-binding-data` if you're following along with the version on GitHub.
-
-2. Use the following Maven command to run the Spring Boot app locally:
-    ```bash
-    mvn
-    ```
-
-Running the app automatically opens a new browser at http://localhost:8080.
 
 :::info Next steps
 Looking for more ways to improve your app from this tutorial? You can try using the [`AppLayout`](/docs/components/app-layout) component as a wrapper to add your customer table and add more features.

@@ -10,13 +10,26 @@ The app from [Routing and Composites](/docs/introduction/tutorial/routing-and-co
 - Passing parameter values through a URL
 - Lifecycle observers
 
-Completing this step creates a version of [4-observers-and-route-parameters](https://github.com/webforj/webforj-demo-application/tree/main/4-observers-and-route-parameters).
+Completing this step creates a version of [4-observers-and-route-parameters](https://github.com/webforj/webforj-tutorial/tree/main/4-observers-and-route-parameters).
 
 <!-- <div class="videos-container">
   <video controls>
     <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/scaling-with-routing-and-composites.mp4" type="video/mp4"/>
   </video>
 </div> -->
+
+## Running the app {#running-the-app}
+
+As you develop your app, you can use [4-observers-and-route-parameters](https://github.com/webforj/webforj-tutorial/tree/main/4-observers-and-route-parameters) as a comparison. To see the app in action:
+
+1. Navigate to the top-level directory containing the `pom.xml` file, this is `4-observers-and-route-parameters` if you're following along with the version on GitHub.
+
+2. Use the following Maven command to run the Spring Boot app locally:
+    ```bash
+    mvn
+    ```
+
+Running the app automatically opens a new browser at http://localhost:8080.
 
 ## Using the customer's `id` {#using-the-customers-id}
 
@@ -88,7 +101,7 @@ The `WillEnterObserver` observer has the `onWillEnter()` method that webforJ cal
 
 The `WillEnterEvent` determines whether to continue routing to the component with the `accept()` mehod, or stop routing using the `reject()` method. After rejecting the current route, you need to redirect the user somewhere else.
 
-The `ParametersBag` contains the parameters from the URL. You’ll use the `ParametersBag` in the next section to check the `id` parameter and create the conditional logic for `onWillEnter()`.
+The `ParametersBag` contains the router parameters from the URL. You’ll use the `ParametersBag` in the next section to check the `id` parameter and create the conditional logic for `onWillEnter()`.
 
 The following `onWillEnter()` is an example with only two outcomes:
 
@@ -115,7 +128,7 @@ public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
 
 ### Using the `ParametersBag` {#using-the-parametersbag}
 
-As briefly mentioned in the previous section, the `ParametersBag` is a container of queryable parameters from the URL. Every lifecycle observer has access to this object, and using it in your app allows you to get the `id` value as a [query parameter](/docs/routing/query-parameters).
+As briefly mentioned in the previous section, the `ParametersBag` contains the router parameter from the URL. Every lifecycle observer has access to this object, and using it in your app allows you to get the `id` value.
 
 The `ParametersBag` object provides several query methods to retrieve a parameter as a specific object type. For example, `getInt()` can get you a parameter as an `Integer`.
 
@@ -223,95 +236,88 @@ Here’s how `FormView` should look, now that it can handle editing existing cus
 
 <!-- vale off -->
 <ExpandableCode title="FormView.java" language="java" startLine={1} endLine={15}>
-{`@Route("customer/:id?<[0-9]+>")
-@FrameTitle("Customer Form")
-public class FormView extends Composite<Div> implements WillEnterObserver {
-  private final CustomerService customerService;
-  private Customer customer = new Customer();
-  private Long customerId = 0L;
-  private Div self = getBoundComponent();
-  private TextField firstName = new TextField("First Name", e -> customer.setFirstName(e.getValue()));
-  private TextField lastName = new TextField("Last Name", e -> customer.setLastName(e.getValue()));
-  private TextField company = new TextField("Company", e -> customer.setCompany(e.getValue()));
-  private ChoiceBox country = new ChoiceBox("Country",
-      e -> customer.setCountry((Customer.Country) e.getSelectedItem().getKey()));
-  private Button submit = new Button("Submit", ButtonTheme.PRIMARY, e -> submitCustomer());
-  private Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
+  {`@Route("customer/:id?<[0-9]+>")
+  @FrameTitle("Customer Form")
+  public class FormView extends Composite<Div> implements WillEnterObserver {
+    private final CustomerService customerService;
+    private Customer customer = new Customer();
+    private Long customerId = 0L;
+    private Div self = getBoundComponent();
+    private TextField firstName = new TextField("First Name", e -> customer.setFirstName(e.getValue()));
+    private TextField lastName = new TextField("Last Name", e -> customer.setLastName(e.getValue()));
+    private TextField company = new TextField("Company", e -> customer.setCompany(e.getValue()));
+    private ChoiceBox country = new ChoiceBox("Country",
+        e -> customer.setCountry((Customer.Country) e.getSelectedItem().getKey()));
+    private Button submit = new Button("Submit", ButtonTheme.PRIMARY, e -> submitCustomer());
+    private Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
+    private ColumnsLayout layout = new ColumnsLayout(
+        firstName, lastName,
+        company, country,
+        submit, cancel);
 
-  private ColumnsLayout layout = new ColumnsLayout(
-    firstName, lastName,
-    company, country,
-    submit, cancel);
-
-  public FormView(CustomerService customerService) {
-    this.customerService = customerService;
-
-    fillCountries();
-    setColumnsLayout();
-
-    self.setMaxWidth(600)
-      .addClassName("card")
-      .add(layout);
-
-    submit.setStyle("margin-top", "var(--dwc-space-l)");
-    cancel.setStyle("margin-top", "var(--dwc-space-l)");
-  }
-
-  private void setColumnsLayout() {
-    List<Breakpoint> breakpoints = List.of(
-      new Breakpoint(600, 2));
-
-    layout.setSpacing("var(--dwc-space-l)")
-      .setBreakpoints(breakpoints);
-  }
-
-  private void fillCountries() {
-    ArrayList<ListItem> listCountries = new ArrayList<>();
-    for (Country countryItem : Customer.Country.values()) {
-      listCountries.add(new ListItem(countryItem, countryItem.toString()));
+    public FormView(CustomerService customerService) {
+      this.customerService = customerService;
+      fillCountries();
+      setColumnsLayout();
+      self.setMaxWidth(600)
+          .addClassName("card")
+          .add(layout);
+      submit.setStyle("margin-top", "var(--dwc-space-l)");
+      cancel.setStyle("margin-top", "var(--dwc-space-l)");
     }
-    country.insert(listCountries);
-    country.selectIndex(0);
-  }
 
-  private void submitCustomer() {
-    if (customerService.doesCustomerExist(customerId)) {
-      customerService.updateCustomer(customer);
-    } else {
-      customerService.createCustomer(customer);
+    private void setColumnsLayout() {
+      List<Breakpoint> breakpoints = List.of(
+          new Breakpoint(600, 2));
+      layout.setSpacing("var(--dwc-space-l)")
+          .setBreakpoints(breakpoints);
     }
-    navigateToMain();
-  }
 
-  private void navigateToMain(){
-    Router.getCurrent().navigate(MainView.class);
-  }
+    private void fillCountries() {
+      ArrayList<ListItem> listCountries = new ArrayList<>();
+      for (Country countryItem : Customer.Country.values()) {
+        listCountries.add(new ListItem(countryItem, countryItem.toString()));
+      }
+      country.insert(listCountries);
+      country.selectIndex(0);
+    }
 
-  @Override
-  public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
-    parameters.getInt("id").ifPresentOrElse(id -> {
-      customerId = Long.valueOf(id);
+    private void submitCustomer() {
       if (customerService.doesCustomerExist(customerId)) {
-         event.accept();
-         fillForm(customerId);
+        customerService.updateCustomer(customer);
+      } else {
+        customerService.createCustomer(customer);
+      }
+      navigateToMain();
+    }
+
+    private void navigateToMain() {
+      Router.getCurrent().navigate(MainView.class);
+    }
+
+    @Override
+    public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
+      parameters.getInt("id").ifPresentOrElse(id -> {
+        customerId = Long.valueOf(id);
+        if (customerService.doesCustomerExist(customerId)) {
+          event.accept();
+          fillForm(customerId);
         } else {
           event.reject();
           navigateToMain();
         }
 
-    }, () -> event.accept());
-        
-  }
+      }, () -> event.accept());
+    }
 
-  public void fillForm(Long customerId) {
-    customer = customerService.getCustomerByKey(customerId);
-    firstName.setValue(customer.getFirstName());
-    lastName.setValue(customer.getLastName());
-    company.setValue(customer.getCompany());
-    country.selectKey(customer.getCountry());
+    public void fillForm(Long customerId) {
+      customer = customerService.getCustomerByKey(customerId);
+      firstName.setValue(customer.getFirstName());
+      lastName.setValue(customer.getLastName());
+      company.setValue(customer.getCompany());
+      country.selectKey(customer.getCountry());
+    }
   }
-
-}
 `}
 </ExpandableCode>
 <!-- vale on -->
@@ -339,13 +345,11 @@ table.setKeyProvider(Customer::getId);
 
 In `MainView`, add the `addItemClickListener()` and `setKeyProvider()` methods to `buildTable()`, then add the method that sends the user to `FormView` with a value for the `id` in the  `ParametersBag` based on where on the table the user clicked:
 
-```java title="MainView.java" {34-35,38-41}
+```java title="MainView.java" {30-31,34-37}
 @Route("/")
 @FrameTitle("Customer Table")
 public class MainView extends Composite<Div> {
-
   private final CustomerService customerService;
-
   private Div self = getBoundComponent();
   private Table<Customer> table = new Table<>();
   private Button addCustomer = new Button("Add Customer", ButtonTheme.PRIMARY,
@@ -353,15 +357,13 @@ public class MainView extends Composite<Div> {
 
   public MainView(CustomerService customerService) {
     this.customerService = customerService;
-
-    add.CustomersetWidth(200);
+    addCustomer.setWidth(200);
     buildTable();
-
     self.setWidth("fit-content")
-      .addClassName("card")
-      .add(table, addCustomer);
+        .addClassName("card")
+        .add(table, addCustomer);
   }
-  
+
   private void buildTable() {
     table.setSize("1000px", "294px");
     table.setMaxWidth("90vw");
@@ -372,7 +374,7 @@ public class MainView extends Composite<Div> {
     table.setColumnsToAutoFit();
     table.setColumnsToResizable(false);
     table.getColumns().forEach(column -> column.setSortable(true));
-    table.setRepository(customerService.getFilterableRepository());
+    table.setRepository(customerService.getRepositoryAdapter());
     table.setKeyProvider(Customer::getId);
     table.addItemClickListener(this::editCustomer);
   }
@@ -383,19 +385,6 @@ public class MainView extends Composite<Div> {
   }
 }
 ```
-
-## Running the app {#running-the-app}
-
-When you've finished this step, you can compare it to [4-observers-and-route-parameters](https://github.com/webforj/webforj-demo-application/tree/main/4-observers-and-route-parameters) on GitHub. To see the app in action:
-
-1. Navigate to the top-level directory containing the `pom.xml` file, this is `4-observers-and-route-parameters` if you're following along with the version on GitHub.
-
-2. Use the following Maven command to run the Spring Boot app locally:
-    ```bash
-    mvn
-    ```
-
-Running the app automatically opens a new browser at http://localhost:8080.
 
 ## Next step {#next-step}
 

@@ -10,9 +10,22 @@ In [Project Setup](/docs/introduction/tutorial/project-setup), you generated a w
 - webforJ and HTML element components
 - Using CSS to style components
 
-Completing this step creates a version of [1-creating-a-basic-app](https://github.com/webforj/webforj-demo-application/tree/main/1-creating-a-basic-app).
+Completing this step creates a version of [1-creating-a-basic-app](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app).
 
 <!-- Insert video here -->
+
+## Running the app {#running-the-app}
+
+As you develop your app, you can use [1-creating-a-basic-app](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app) as a comparison. To see the app in action:
+
+1. Navigate to the top-level directory containing the `pom.xml` file, this is `1-creating-a-basic-app` if you're following along with the version on GitHub.
+
+2. Use the following Maven command to run the Spring Boot app locally:
+    ```bash
+    mvn
+    ```
+
+Running the app automatically opens a new browser at http://localhost:8080.
 
 ## The entry point {#entry-point}
 
@@ -28,7 +41,7 @@ Every webforJ app contains a single class that extends <JavadocLink type="founda
 ├───.vscode
 ├───src/main/java
 // highlight-next-line
-│   └──com/webforj/demos
+│   └──com/webforj/tutorial
 // highlight-next-line
 │       └──Application.java
 └───target
@@ -40,7 +53,7 @@ Inside the `Application` class, the `SpringApplication.run()` method uses the co
 @SpringBootApplication
 @StyleSheet("ws://css/card.css")
 @AppTheme("system")
-@AppProfile(name = "CustomerApplication", shortName = "CustomerApplication")
+@AppProfile(name = "Customer Application", shortName = "CustomerApp")
 public class Application extends App {
 
   public static void main(String[] args) {
@@ -49,11 +62,17 @@ public class Application extends App {
 }
 ```
 
-### Annotations {#main-class-annotations}
+### Annotations {#annotations}
 
-The [`@SpringBootApplication`](https://docs.spring.io/spring-boot/api/java/org/springframework/boot/autoconfigure/SpringBootApplication.html) annotation auto-configures parts of your Spring Boot app. This helps Spring determine when you’re using parts of its framework.
+The [`@SpringBootApplication`](https://docs.spring.io/spring-boot/api/java/org/springframework/boot/autoconfigure/SpringBootApplication.html) is a core annotation in Spring Boot. You put this annotation on the main class to mark it as the starting point of your app.
 
-`@StyleSheet`, `@AppTheme`, and `@AppProfile` are just a few of the many <JavadocLink type="foundation" location="com/webforj/annotation/package-summary">webforJ annotations</JavadocLink> available when you want to explicitly set configurations or embed JavaScript and CSS resources. `@StyleSheet` will be discussed in [Styling with CSS](#styling-with-css).
+`@StyleSheet`, `@AppTheme`, and `@AppProfile` are just a few of the many <JavadocLink type="foundation" location="com/webforj/annotation/package-summary">webforJ annotations</JavadocLink> available when you want to explicitly set configurations.
+
+- **`@StyleSheet`** embeds a CSS file into the web page. Further details on how to interact with a specific CSS file can be found later in [Styling with CSS](#styling-with-css).
+
+- **`@AppTheme`** manages the app's visual theme. If set to `system`, the app automatically adopts the user's preferred theme: `light`, `dark`, or `dark-pure`. For information on creating custom themes or overriding the default themes, refer to the [Themes](/docs/styling/themes) article.
+
+- **`@AppProfile`** helps configure how the app presents to the user as an [installable app](/docs/configuration/installable-apps). At minimum, this annotation needs a `name` for the app’s full name and a `shortName` for use when space is limited. The `shortName` shouldn't exceed 12 characters.  
 
 ## Creating a user interface {#creating-a-ui}
 
@@ -80,15 +99,15 @@ Create a new instance of the component, then use the `add()` method to add it to
 Frame mainFrame = new Frame();
 
 // Create the HTML component
-Paragraph demo = new Paragraph("Demo Application!");
+Paragraph tutorial = new Paragraph("Tutorial Application!");
 
 // Add the component to the container
-mainFrame.add(demo);
+mainFrame.add(tutorial);
 ```
 
 ### Using webforJ components {#webforj-components-and-html-elements}
 
-While HTML elements are suitable for displaying static information, [webforJ components](/docs/components/overview) provide more complex and dynamic behavior.
+While HTML elements are useful for structure, semantics, and lightweight UI needs, [webforJ components](/docs/components/overview) provide more complex and dynamic behavior.
 
 The code below adds a [Button](/docs/components/button) component, changes its appearance with the `setTheme()` method, and adds an event listener to create a [Message Dialog](/docs/components/option-dialogs/message) component when the button is clicked.
 Most webforJ component methods that modify a component return the component itself, so you can chain multiple methods for more compact code.
@@ -102,7 +121,7 @@ Button btn = new Button("Info");
 
 // Modify the webforJ component, and add an event listener
 btn.setTheme(ButtonTheme.PRIMARY)
-  .addClickListener(e -> OptionDialog.showMessageDialog("This is a demo!", "Info"));
+  .addClickListener(e -> OptionDialog.showMessageDialog("This is a tutorial!", "Info"));
 
 // Add the component to the container
 mainFrame.add(btn);
@@ -147,7 +166,7 @@ It's best to have a separate CSS file to keep everything organized and maintaina
 Then, reference the file in `Application.java` by using the `@StyleSheet` annotation with the name of the CSS file. For this step, it's `@StyleSheet("ws://css/card.css")`.
 
 :::tip Webserver protocol
-This tutorial uses a webserver to reference the CSS file. To learn more about how this works, see [Managing Resources](/docs/managing-resources/overview).
+This tutorial uses the Webserver protocol to reference the CSS file. To learn more about how this works, see [Managing Resources](/docs/managing-resources/overview).
 :::
 
 ### Adding CSS classes to components {#adding-css-classes-to-components}
@@ -166,7 +185,7 @@ Your `Application` class should now look similar to the following:
 @SpringBootApplication
 @StyleSheet("ws://css/card.css")
 @AppTheme("system")
-@AppProfile(name = "CustomerApplication", shortName = "CustomerApplication")
+@AppProfile(name = "Customer Application", shortName = "CustomerApp")
 public class Application extends App {
 
   public static void main(String[] args) {
@@ -176,37 +195,24 @@ public class Application extends App {
   @Override
   public void run() throws WebforjException {
     Frame mainFrame = new Frame();
-    Paragraph demo = new Paragraph("Demo Application!");
+    Paragraph tutorial = new Paragraph("Tutorial App!");
     Button btn = new Button("Info");
 
-    mainFrame.setWidth("fit-content");
-    mainFrame.addClassName("card");
-
     btn.setTheme(ButtonTheme.PRIMARY)
-      .setMaxWidth(200)
-      .addClickListener(e -> OptionDialog.showMessageDialog("This is a demo!", "Info"));
+        .setMaxWidth(200)
+        .addClickListener(e -> OptionDialog.showMessageDialog("This is a tutorial!", "Info"));
 
-    mainFrame.add(demo, btn);
+    mainFrame.setWidth("fit-content")
+        .addClassName("card")
+        .add(tutorial, btn);
   }
+
 }
 ```
 
 :::tip Multiple pages
 For a more complex app, you can divide the UI into multiple pages for better organization. This concept is covered later in this tutorial in [Routing and Composites](/docs/introduction/tutorial/routing-and-composites).
 :::
-
-## Running the app {#running-the-app}
-
-When you’ve finished this step, you can compare it to [1-creating-a-basic-app](https://github.com/webforj/webforj-demo-application/tree/main/1-creating-a-basic-app) on GitHub. To see the app in action:
-
-1. Navigate to the top-level directory containing the `pom.xml` file, this is `1-creating-a-basic-app` if you're following along with the version on GitHub.
-
-2. Use the following Maven command to run the Spring Boot app locally:
-    ```bash
-    mvn
-    ```
-
-Running the app automatically opens a new browser at http://localhost:8080.
 
 ## Next step {#next-step}
 
