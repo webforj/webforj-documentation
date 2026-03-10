@@ -13,7 +13,7 @@ The following components are available and map to their corresponding HTML eleme
 |:--|:--:|:--|:--:|
 | `Anchor` | `<a>` | Creates a hyperlink to a URL, email address, or in-page location. | ✔️ |
 | `Article` | `<article>` | Represents a self-contained composition such as a blog post, news article, or forum entry. | ✔️ |
-| `Aside` | `<aside>` | Represents content that is indirectly related to the main content, typically rendered as a sidebar. | ✔️ |
+| `Aside` | `<aside>` | Represents content that's indirectly related to the main content, typically rendered as a sidebar. | ✔️ |
 | `Break` | `<hr>` | Represents a thematic break between paragraph-level elements, rendered as a horizontal rule. | ❌ |
 | `Div` | `<div>` | A generic block-level container for grouping and styling content. | ✔️ |
 | `Emphasis` | `<em>` | Marks text with stress emphasis, changing the meaning of a sentence. | ✔️ |
