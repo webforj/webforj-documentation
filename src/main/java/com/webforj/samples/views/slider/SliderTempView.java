@@ -23,9 +23,6 @@ public class SliderTempView extends Composite<FlexLayout> {
   // Temperature slider component
   private final Slider temperatureSlider = new Slider();
 
-  // Current temperature state
-  private Integer currentTemperature = 72;
-
   public SliderTempView() {
     // Configure layout
     self.setDirection(FlexDirection.COLUMN)
@@ -37,7 +34,7 @@ public class SliderTempView extends Composite<FlexLayout> {
     // Configure temperature slider
     temperatureSlider.setMin(60)
         .setMax(90)
-        .setValue(currentTemperature)
+        .setValue(72)
         .setTicksVisible(true)
         .setMajorTickSpacing(10)
         .setMinorTickSpacing(5)
@@ -56,7 +53,6 @@ public class SliderTempView extends Composite<FlexLayout> {
     snowflakeButton.setTheme(Theme.PRIMARY)
         .setStyle("font-size", "1.5rem")
         .onClick(e -> {
-          currentTemperature = 60;
           temperatureSlider.setValue(60);
         });
 
@@ -65,7 +61,6 @@ public class SliderTempView extends Composite<FlexLayout> {
     sunButton.setTheme(Theme.DANGER)
         .setStyle("font-size", "1.5rem")
         .onClick(e -> {
-          currentTemperature = 90;
           temperatureSlider.setValue(90);
         });
 
