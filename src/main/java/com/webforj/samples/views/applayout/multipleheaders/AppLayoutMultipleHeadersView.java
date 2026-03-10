@@ -23,12 +23,12 @@ import com.webforj.samples.views.applayout.fullnavbar.AppLayoutFullNavbarContent
 @StyleSheet("ws://css/applayout/applayout.css")
 @FrameTitle("AppLayout Multiple Headers")
 public class AppLayoutMultipleHeadersView extends Composite<AppLayout> {
-  private AppLayout self = getBoundComponent();
-  private Toolbar header = new Toolbar();
-  private Div drawer = new Div();
-  private AppNav drawerMenu = new AppNav();
-  private Toolbar secondToolbar = new Toolbar();
-  private TabbedPane secondMenu = new TabbedPane();
+  private final AppLayout self = getBoundComponent();
+  private final Toolbar header = new Toolbar();
+  private final Div drawer = new Div();
+  private final AppNav drawerMenu = new AppNav();
+  private final Toolbar secondToolbar = new Toolbar();
+  private final TabbedPane secondMenu = new TabbedPane();
 
   public AppLayoutMultipleHeadersView() {
     self.setDrawerHeaderVisible(false)

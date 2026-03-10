@@ -21,10 +21,10 @@ import com.webforj.samples.views.applayout.DrawerLogo;
 @StyleSheet("ws://css/applayout/applayout.css")
 @FrameTitle("AppLayout")
 public class AppLayoutDrawerUtilityView extends Composite<AppLayout> {
-  private AppLayout self = getBoundComponent();
-  private Toolbar header = new Toolbar();
-  private Div drawer = new Div();
-  private AppNav drawerMenu = new AppNav();
+  private final AppLayout self = getBoundComponent();
+  private final Toolbar header = new Toolbar();
+  private final Div drawer = new Div();
+  private final AppNav drawerMenu = new AppNav();
 
   public AppLayoutDrawerUtilityView() {
     // Header

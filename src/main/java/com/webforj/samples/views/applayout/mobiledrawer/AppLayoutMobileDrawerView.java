@@ -29,11 +29,11 @@ import com.webforj.samples.views.applayout.fullnavbar.AppLayoutFullNavbarContent
 @StyleSheet("ws://css/applayout/applayout.css")
 @FrameTitle("AppLayout Mobile Drawer")
 public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
-  private AppLayout self = getBoundComponent();
-  private Toolbar header = new Toolbar();
-  private Div drawer = new Div();
-  private AppNav drawerMenu = new AppNav();
-  private TabbedPane footerMenu = new TabbedPane();
+  private final AppLayout self = getBoundComponent();
+  private final Toolbar header = new Toolbar();
+  private final Div drawer = new Div();
+  private final AppNav drawerMenu = new AppNav();
+  private final TabbedPane footerMenu = new TabbedPane();
 
   public AppLayoutMobileDrawerView() {
     // Header
