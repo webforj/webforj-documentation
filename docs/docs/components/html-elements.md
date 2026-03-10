@@ -2,7 +2,7 @@
 sidebar_position: 155
 title: HTML Element Components
 ---
-
+<!-- vale Google.EmDash = NO -->
 webforJ ships a set of components that map directly to standard HTML elements, giving you a typed Java API for the most common building blocks of web pages. For a comprehensive reference on each underlying HTML element, see the [MDN HTML element reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element).
 
 ## Available components
