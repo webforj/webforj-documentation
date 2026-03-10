@@ -99,7 +99,7 @@ mvn -B archetype:generate ^
 
 ## Configurations
 
-Both of the above methods for creating a new project use webforJ [archetypes](/docs/building-ui/archetypes/overview), which automatically add the needed configurations to your project, like Spring [dependencies](/docs/integrations/spring/spring-boot#step-2-add-spring-dependencies) to your POM and the following properties in `src/main/resources/application.properties`:
+The two mentioned ways of creating a new project use webforJ [archetypes](/docs/building-ui/archetypes/overview), which automatically add the needed configurations to your project, like Spring [dependencies](/docs/integrations/spring/spring-boot#step-2-add-spring-dependencies) to your POM and the following properties in `src/main/resources/application.properties`:
 
 ```
 spring.application.name=CustomerApplication
