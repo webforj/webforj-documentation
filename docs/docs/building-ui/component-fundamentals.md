@@ -4,7 +4,6 @@ title: Understanding Components
 sidebar_class_name: new-content
 ---
 
-<DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/> 
 
 Before building custom components in webforJ, it's important to understand the foundational architecture that shapes how components work. This article explains the component hierarchy, component identity, lifecycle concepts, and how concern interfaces provide component capabilities.
