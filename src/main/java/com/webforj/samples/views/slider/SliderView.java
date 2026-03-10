@@ -23,9 +23,6 @@ public class SliderView extends Composite<FlexLayout> {
   // Volume slider component
   private final Slider volumeSlider = new Slider();
 
-  // Current volume state
-  private Integer currentVolume = 50;
-
   public SliderView() {
     // Configure layout
     self.setDirection(FlexDirection.COLUMN)
@@ -37,7 +34,6 @@ public class SliderView extends Composite<FlexLayout> {
     // Configure volume slider with labels and ticks
     volumeSlider.setMin(0)
         .setMax(100)
-        .setValue(currentVolume)
         .setTicksVisible(true)
         .setMajorTickSpacing(20)
         .setMinorTickSpacing(10)
@@ -57,14 +53,12 @@ public class SliderView extends Composite<FlexLayout> {
     IconButton muteButton = new IconButton(TablerIcon.create("volume-off"));
     muteButton.setTheme(Theme.DANGER)
         .onClick(e -> {
-          currentVolume = 0;
           volumeSlider.setValue(0);
         });
 
     // Create max volume button
     IconButton maxVolumeButton = new IconButton(TablerIcon.create("volume-2"));
     maxVolumeButton.onClick(e -> {
-      currentVolume = 100;
       volumeSlider.setValue(100);
     });
 
