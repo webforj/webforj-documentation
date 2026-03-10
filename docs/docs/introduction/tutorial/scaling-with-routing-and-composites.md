@@ -87,7 +87,7 @@ For example, `DemoView` extends `Composite<Div>` instead of directly extending `
 
 ```java title="DemoView.java"
 public class DemoView extends Composite<Div> {
-  private Div self = getBoundComponent();
+  private final Div self = getBoundComponent();
   private Table<Customer> table = new Table<>();
   private Button add = new Button("Add Customer", ButtonTheme.PRIMARY);  
 

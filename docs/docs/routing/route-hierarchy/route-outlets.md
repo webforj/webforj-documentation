@@ -28,7 +28,7 @@ public class MainLayout extends Composite<AppLayout> {
 
 @Route(outlet = MainLayout.class)
 public class DashboardView extends Composite<Div> {
-  private Div self = getBoundComponent();
+  private final Div self = getBoundComponent();
 
   public DashboardView() {
     self.add(new H1("Dashboard Content"));
@@ -66,7 +66,7 @@ By implementing `RouteOutlet`, developers can control how routes are injected in
 import com.webforj.router.RouteOutlet;
 
 public class MainLayout extends Composite<AppLayout> implements RouteOutlet {
-  private AppLayout self = getBoundComponent();
+  private final AppLayout self = getBoundComponent();
 
   @Override
   public void showRouteContent(Component component) {

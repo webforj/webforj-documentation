@@ -28,7 +28,7 @@ webforJ uses **composition over inheritance**. Instead of extending existing com
 
 ```java
 public class SearchBar extends Composite<FlexLayout> {
-    private FlexLayout self = getBoundComponent();
+    private final FlexLayout self = getBoundComponent();
     private TextField searchField;
     private Button searchButton;
     
@@ -99,7 +99,7 @@ Implementing concern interfaces gives your custom components the same APIs as bu
 ```java
 // Implement HasSize to get width/height methods automatically
 public class SizedCard extends Composite<Div> implements HasSize<SizedCard> {
-    private Div self = getBoundComponent();
+    private final Div self = getBoundComponent();
     
     public SizedCard() {
         self.setText("Card content");

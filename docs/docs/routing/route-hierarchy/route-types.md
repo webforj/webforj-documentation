@@ -12,7 +12,7 @@ View routes map directly to a URL segment and represent specific pages in your a
 ```java
 @Route(value = "home")
 public class HomeView extends Composite<Div> {
-  private Div self = getBoundComponent();
+  private final Div self = getBoundComponent();
 
   public HomeView() {
     self.add(new H1("Home Page"));
@@ -65,7 +65,7 @@ public class MainLayout extends Composite<AppLayout> {
 // Automatically detected as View
 @Route(outlet = MainLayout.class)
 public class DashboardView extends Composite<Div> {
-  private Div self = getBoundComponent();
+  private final Div self = getBoundComponent();
 
   public DashboardView() {
     self.add(new H1("Dashboard Content"));

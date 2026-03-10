@@ -23,7 +23,7 @@ To define a `Composite` component, extend the `Composite` class and specify the 
 
 ```java title="BasicComposite.java"
 public class BasicComposite extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
 
   public BasicComposite() {
     // Access the bound component to configure it
@@ -72,7 +72,7 @@ webforJ handles all lifecycle management for `Composite` components automaticall
 
 ```java
 public class UserDashboard extends Composite<FlexLayout> {
- private FlexLayout self = getBoundComponent();
+ private final FlexLayout self = getBoundComponent();
  private TextField searchField;
  private Button searchButton;
  private Div resultsContainer;

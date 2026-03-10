@@ -110,7 +110,7 @@ import com.webforj.component.webswing.WebswingConnector;
 
 @Route
 public class SwingAppView extends Composite<Div> {
-  private Div self = getBoundComponent();
+  private final Div self = getBoundComponent();
   private WebswingConnector connector;
 
   public SwingAppView() {

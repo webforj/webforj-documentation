@@ -20,7 +20,7 @@ public class MainLayout extends Composite<AppLayout> {
 
 @Route(outlet = MainLayout.class)
 public class DashboardView extends Composite<Div> {
-  private Div self = getBoundComponent();
+  private final Div self = getBoundComponent();
 
   public DashboardView() {
     self.add(new H1("Dashboard Content"));
@@ -29,7 +29,7 @@ public class DashboardView extends Composite<Div> {
 
 @Route(outlet = DashboardView.class)
 public class SettingsView extends Composite<Div> {
-  private Div self = getBoundComponent();
+  private final Div self = getBoundComponent();
 
   public SettingsView() {
     self.add(new H1("Settings Content"));
