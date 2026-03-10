@@ -1,6 +1,7 @@
 ---
 title: Column Groups
 sidebar_position: 7
+sidebar_class_name: new-content
 ---
 
 Column groups let you organize related columns under shared, multi-row headers. A group label spans across its child columns, making it easier for users to scan and understand the structure of complex tables. Groups can be nested to any depth, and the `Table` automatically renders the correct number of header rows.
@@ -107,6 +108,16 @@ ColumnGroup idInfo = ColumnGroup.of("id-info", "ID Info")
 
 Ungrouped columns retain their own pin direction from their column definition.
 
+<!-- vale off -->
+<ComponentDemo 
+path='/webforj/tablepinnedcolumngroups?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TablePinnedColumnGroupsView.java'
+urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+height='600px'
+/>
+<!-- vale on -->
+
 ## Group header height {#group-header-height}
 
 Group header row height can be controlled independently from regular column headers using `setGroupHeaderHeight()`.
@@ -129,6 +140,16 @@ Group headers and columns expose CSS parts for styling via `::part()`. The follo
 | `cell-column-{ID}` | All cells (header and body) for a given column id |
 | `cell-content-group-{ID}` | Content wrapper within a group header |
 | `cell-label-group-{ID}` | Label within a group header |
+
+<!-- vale off -->
+<ComponentDemo 
+path='/webforj/tablestyledcolumngroups?' 
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableStyledColumnGroupsView.java'
+urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
+height='600px'
+/>
+<!-- vale on -->
 
 ### Styling by group id {#styling-by-group-id}
 

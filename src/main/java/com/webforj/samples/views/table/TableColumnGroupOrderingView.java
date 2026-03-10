@@ -19,23 +19,23 @@ public class TableColumnGroupOrderingView extends Composite<Div> {
     Table<MusicRecord> table = new Table<>();
     table.setWidth("100vw");
     table.setHeight("100vh");
+    table.setStriped(true);
 
     // Columns added in this order:
     // Number, Title, Artist, Genre, Label, Cost
-    table.addColumn("Number", MusicRecord::getNumber);
-    table.addColumn("Title", MusicRecord::getTitle);
-    table.addColumn("Artist", MusicRecord::getArtist);
-    table.addColumn("Genre", MusicRecord::getMusicType);
-    table.addColumn("Label", MusicRecord::getLabel);
+    table.addColumn("Number", MusicRecord::getNumber).setMinWidth(70f);
+    table.addColumn("Title", MusicRecord::getTitle).setMinWidth(120f);
+    table.addColumn("Artist", MusicRecord::getArtist).setMinWidth(120f);
+    table.addColumn("Genre", MusicRecord::getMusicType).setMinWidth(80f);
+    table.addColumn("Label", MusicRecord::getLabel).setMinWidth(80f);
     table.addColumn("Cost", record -> {
       return String.format("$%.2f", record.getCost());
-    }).setAlignment(Column.Alignment.RIGHT);
+    }).setAlignment(Column.Alignment.RIGHT).setMinWidth(70f);
 
-    // Groups only reference Title, Artist, Genre, and Cost.
+    table.setColumnsToAutoFit();
+
     // Number and Label are ungrouped — they keep their
     // natural position relative to the grouped columns.
-    //
-    // Visual order: Number, Title, Artist, Genre, Label, Cost
     ColumnGroup music = ColumnGroup.of("music", "Music")
         .add("Title")
         .add("Artist")

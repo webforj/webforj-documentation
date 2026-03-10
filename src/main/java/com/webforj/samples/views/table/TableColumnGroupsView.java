@@ -19,14 +19,16 @@ public class TableColumnGroupsView extends Composite<Div> {
     Table<MusicRecord> table = new Table<>();
     table.setWidth("100vw");
     table.setHeight("100vh");
+    table.setStriped(true);
 
-    table.addColumn("Number", MusicRecord::getNumber);
-    table.addColumn("Title", MusicRecord::getTitle);
-    table.addColumn("Artist", MusicRecord::getArtist);
-    table.addColumn("Genre", MusicRecord::getMusicType);
+    table.addColumn("Title", MusicRecord::getTitle).setMinWidth(120f);
+    table.addColumn("Artist", MusicRecord::getArtist).setMinWidth(120f);
+    table.addColumn("Genre", MusicRecord::getMusicType).setMinWidth(80f);
     table.addColumn("Cost", record -> {
       return String.format("$%.2f", record.getCost());
-    }).setAlignment(Column.Alignment.RIGHT);
+    }).setAlignment(Column.Alignment.RIGHT).setMinWidth(70f);
+
+    table.setColumnsToAutoFit();
 
     ColumnGroup catalog = ColumnGroup.of("catalog", "Catalog")
         .add("Title")

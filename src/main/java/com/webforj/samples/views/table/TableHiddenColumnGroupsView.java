@@ -20,47 +20,34 @@ public class TableHiddenColumnGroupsView extends Composite<Div> {
 
     Table<MusicRecord> table = new Table<>();
     table.setWidth("100vw");
+    table.setStriped(true);
 
-    table.addColumn("Number", MusicRecord::getNumber);
-    table.addColumn("Title", MusicRecord::getTitle);
-    table.addColumn("Artist", MusicRecord::getArtist);
-    table.addColumn("Genre", MusicRecord::getMusicType);
-    Column<MusicRecord, ?> tracksColumn =
-        table.addColumn("Tracks", MusicRecord::getNumberOfTracks);
-    Column<MusicRecord, ?> playingTimeColumn =
-        table.addColumn("Playing Time", MusicRecord::getPlayingTime);
-    table.addColumn("Cost", record -> {
+    table.addColumn("Title", MusicRecord::getTitle).setMinWidth(120f);
+    table.addColumn("Artist", MusicRecord::getArtist).setMinWidth(120f);
+    table.addColumn("Genre", MusicRecord::getMusicType).setMinWidth(80f);
+    Column<MusicRecord, ?> costColumn = table.addColumn("Cost", record -> {
       return String.format("$%.2f", record.getCost());
-    }).setAlignment(Column.Alignment.RIGHT);
+    });
+    costColumn.setAlignment(Column.Alignment.RIGHT).setMinWidth(70f);
     Column<MusicRecord, ?> retailColumn = table.addColumn("Retail", record -> {
       return String.format("$%.2f", record.getRetail());
     });
-    retailColumn.setAlignment(Column.Alignment.RIGHT);
+    retailColumn.setAlignment(Column.Alignment.RIGHT).setMinWidth(70f);
 
-    tracksColumn.setHidden(true);
-    playingTimeColumn.setHidden(true);
+    table.setColumnsToAutoFit();
+
+    retailColumn.setHidden(true);
 
     ColumnGroup catalog = ColumnGroup.of("catalog", "Catalog")
         .add("Title")
         .add("Artist")
         .add("Genre");
 
-    ColumnGroup details = ColumnGroup.of("details", "Details")
-        .add("Tracks")
-        .add("Playing Time");
-
     ColumnGroup pricing = ColumnGroup.of("pricing", "Pricing")
         .add("Cost")
         .add("Retail");
 
-    table.setColumnGroups(List.of(catalog, details, pricing));
-
-    Button toggleDetails = new Button("Toggle Details Group");
-    toggleDetails.onClick(e -> {
-      tracksColumn.setHidden(!tracksColumn.isHidden());
-      playingTimeColumn.setHidden(!playingTimeColumn.isHidden());
-      table.refreshColumns();
-    });
+    table.setColumnGroups(List.of(catalog, pricing));
 
     Button toggleRetail = new Button("Toggle Retail Column");
     toggleRetail.onClick(e -> {
@@ -68,13 +55,10 @@ public class TableHiddenColumnGroupsView extends Composite<Div> {
       table.refreshColumns();
     });
 
-    FlexLayout toolbar = FlexLayout.create(toggleDetails, toggleRetail)
-        .horizontal().build();
-    toolbar.setSpacing("var(--dwc-space-s)");
+    FlexLayout toolbar = FlexLayout.create(toggleRetail).horizontal().build();
     toolbar.setStyle("padding", "var(--dwc-space-s)");
 
-    FlexLayout layout = FlexLayout.create(toolbar, table)
-        .vertical().build();
+    FlexLayout layout = FlexLayout.create(toolbar, table).vertical().build();
     layout.setHeight("100vh");
 
     table.setRepository(Service.getMusicRecords());
