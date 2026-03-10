@@ -18,12 +18,10 @@ The `AppNav` component is used to create a navigation menu within the app's UI. 
 
 ```java title="MainLayout.java"
 private void setDrawer() {
-  AppLayout layout = getBoundComponent();
-
   AppNav appNav = new AppNav();
   appNav.addItem(new AppNavItem("Dashboard", DemoView.class, FeatherIcon.MESSAGE_CIRCLE.create()));
 
-  layout.addToDrawer(appNav);
+  self.addToDrawer(appNav);
 }
 ```
 

@@ -32,6 +32,7 @@ Your route classes don't require Spring annotations. The `@Route` annotation alo
 @Route("/dashboard")
 public class DashboardView extends Composite<Div> {
   
+  private final Div self = getBoundComponent();
   private final MetricsService metricsService;
   private final UserRepository userRepository;
   
@@ -43,7 +44,7 @@ public class DashboardView extends Composite<Div> {
     Div metricsPanel = new Div();
     metricsPanel.setText(metricsService.getCurrentMetrics());
     
-    getBoundComponent().add(metricsPanel);
+    self.add(metricsPanel);
   }
 }
 ```
@@ -75,7 +76,7 @@ public class RandomNumberService {
 @Route("/")
 public class HelloWorldView extends Composite<FlexLayout> {
 
-  private FlexLayout self = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
   private Button btn = new Button("Generate Random Number");
 
   public HelloWorldView(RandomNumberService service) {
