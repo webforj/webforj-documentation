@@ -101,7 +101,7 @@ The `WillEnterObserver` observer has the `onWillEnter()` method that webforJ cal
 
 The `WillEnterEvent` determines whether to continue routing to the component with the `accept()` mehod, or stop routing using the `reject()` method. After rejecting the current route, you need to redirect the user somewhere else.
 
-The `ParametersBag` contains the router parameters from the URL. You’ll use the `ParametersBag` in the next section to check the `id` parameter and create the conditional logic for `onWillEnter()`.
+The `ParametersBag` contains the router parameters from the URL. You’ll use the `ParametersBag` in the next section to create the conditional logic for `onWillEnter()` using `id` parameter.
 
 The following `onWillEnter()` is an example with only two outcomes:
 
@@ -209,7 +209,7 @@ public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
 
 ## Adding or editing a customer {#adding-or-editing-a-customer}
 
-The previous version of this app only added new customers when the user submitted the form. Now that users can edit existing customers, the `submitCustomer()` method must check whether the customer already exists before updating the database. 
+The previous version of this app only added new customers when the user submitted the form. Now that users can edit existing customers, the `submitCustomer()` method must verify if the customer already exists before updating the database. 
 
 Initially, it was unnecessary to assign a variable for the customer `id` in `FormView`, because new customers are assigned a unique `id` when they’re submitted into the database. However, if you declare `customerId` as an initial variable in `FormView` with an `id` value that's not in use, it remains untouched for new customers, and overwritten in `onWillEnter()` for existing ones.
 
