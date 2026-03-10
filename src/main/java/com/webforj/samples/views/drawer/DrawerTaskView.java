@@ -31,7 +31,6 @@ public class DrawerTaskView extends Composite<FlexLayout> {
   private final List<CheckBox> taskList = new ArrayList<>();
   private final FlexLayout tasks = new FlexLayout();
   private final Button addTaskButton = new Button("Add Task", ButtonTheme.PRIMARY);
-  private int taskAmount = 0;
 
   public DrawerTaskView() {
     drawer.setLabel("Task Manager")
@@ -79,7 +78,6 @@ public class DrawerTaskView extends Composite<FlexLayout> {
     
     taskList.add(task);
     tasks.add(task);
-    taskAmount = taskAmount + 1;
     checkTaskLimit();
   }
 
@@ -90,13 +88,12 @@ public class DrawerTaskView extends Composite<FlexLayout> {
       if (task.isChecked()) {
         iterator.remove();
         tasks.remove(task);
-        taskAmount = taskAmount - 1;
       }
     }
     checkTaskLimit();
   }
 
   private void checkTaskLimit() {
-    addTaskButton.setEnabled(taskAmount < 50);
+    addTaskButton.setEnabled(taskList.size() < 50);
   }
 }
