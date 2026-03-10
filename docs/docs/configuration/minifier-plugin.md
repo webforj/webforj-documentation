@@ -377,7 +377,7 @@ Package your minifier as a separate JAR and add it as a plugin dependency:
     <div>
       ```
       [WARN] No minifiers registered via SPI. Skipping minification.
-      [WARN] Make sure ph-css and/or closure-compiler are on the classpath.
+      [WARN] Ensure ph-css and/or closure-compiler are on the classpath.
       ```
 
       Add minifier module dependencies to the plugin configuration. For CSS, add `webforj-minify-phcss-css`. For JavaScript, add `webforj-minify-closure-js`.
