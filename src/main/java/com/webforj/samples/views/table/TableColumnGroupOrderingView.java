@@ -14,6 +14,8 @@ import java.util.List;
 @FrameTitle("Table Column Group Ordering")
 public class TableColumnGroupOrderingView extends Composite<Div> {
 
+  private Div self = getBoundComponent();
+
   public TableColumnGroupOrderingView() {
 
     Table<MusicRecord> table = new Table<>();
@@ -47,6 +49,6 @@ public class TableColumnGroupOrderingView extends Composite<Div> {
     table.setColumnGroups(List.of(music, pricing));
     table.setRepository(Service.getMusicRecords());
 
-    getBoundComponent().add(table);
+    self.add(table);
   }
 }

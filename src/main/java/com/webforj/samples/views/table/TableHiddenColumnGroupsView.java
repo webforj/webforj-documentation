@@ -16,6 +16,8 @@ import java.util.List;
 @FrameTitle("Table Hidden Columns in Groups")
 public class TableHiddenColumnGroupsView extends Composite<Div> {
 
+  private Div self = getBoundComponent();
+
   public TableHiddenColumnGroupsView() {
 
     Table<MusicRecord> table = new Table<>();
@@ -50,19 +52,18 @@ public class TableHiddenColumnGroupsView extends Composite<Div> {
     table.setColumnGroups(List.of(catalog, pricing));
 
     Button toggleRetail = new Button("Toggle Retail Column");
+    toggleRetail.setStyle("margin-top", "1rem");
+    toggleRetail.setStyle("margin-left", "1rem");
     toggleRetail.onClick(e -> {
       retailColumn.setHidden(!retailColumn.isHidden());
       table.refreshColumns();
     });
 
-    FlexLayout toolbar = FlexLayout.create(toggleRetail).horizontal().build();
-    toolbar.setStyle("padding", "var(--dwc-space-s)");
-
-    FlexLayout layout = FlexLayout.create(toolbar, table).vertical().build();
+    FlexLayout layout = FlexLayout.create(toggleRetail, table).vertical().build();
     layout.setHeight("100vh");
 
     table.setRepository(Service.getMusicRecords());
 
-    getBoundComponent().add(layout);
+    self.add(layout);
   }
 }

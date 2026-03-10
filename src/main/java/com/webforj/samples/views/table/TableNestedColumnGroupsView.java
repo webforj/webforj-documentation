@@ -14,6 +14,8 @@ import java.util.List;
 @FrameTitle("Table Nested Column Groups")
 public class TableNestedColumnGroupsView extends Composite<Div> {
 
+  private Div self = getBoundComponent();
+
   public TableNestedColumnGroupsView() {
 
     Table<MusicRecord> table = new Table<>();
@@ -24,6 +26,8 @@ public class TableNestedColumnGroupsView extends Composite<Div> {
     table.addColumn("Title", MusicRecord::getTitle).setMinWidth(120f);
     table.addColumn("Artist", MusicRecord::getArtist).setMinWidth(120f);
     table.addColumn("Genre", MusicRecord::getMusicType).setMinWidth(80f);
+    table.addColumn("Tracks", MusicRecord::getNumberOfTracks).setMinWidth(60f);
+    table.addColumn("Playing Time", MusicRecord::getPlayingTime).setMinWidth(80f);
     table.addColumn("Cost", record -> {
       return String.format("$%.2f", record.getCost());
     }).setAlignment(Column.Alignment.RIGHT).setMinWidth(70f);
@@ -38,13 +42,13 @@ public class TableNestedColumnGroupsView extends Composite<Div> {
         .add("Artist")
         .add("Genre");
 
-    ColumnGroup pricing = ColumnGroup.of("pricing", "Pricing")
-        .add(ColumnGroup.of("wholesale", "Wholesale").add("Cost"))
-        .add(ColumnGroup.of("retail", "Retail").add("Retail"));
+    ColumnGroup details = ColumnGroup.of("details", "Details")
+        .add(ColumnGroup.of("media", "Media").add("Tracks").add("Playing Time"))
+        .add(ColumnGroup.of("pricing", "Pricing").add("Cost").add("Retail"));
 
-    table.setColumnGroups(List.of(catalog, pricing));
+    table.setColumnGroups(List.of(catalog, details));
     table.setRepository(Service.getMusicRecords());
 
-    getBoundComponent().add(table);
+    self.add(table);
   }
 }

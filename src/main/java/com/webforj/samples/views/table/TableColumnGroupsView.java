@@ -14,6 +14,8 @@ import java.util.List;
 @FrameTitle("Table Column Groups")
 public class TableColumnGroupsView extends Composite<Div> {
 
+  private Div self = getBoundComponent();
+
   public TableColumnGroupsView() {
 
     Table<MusicRecord> table = new Table<>();
@@ -41,6 +43,6 @@ public class TableColumnGroupsView extends Composite<Div> {
     table.setColumnGroups(List.of(catalog, pricing));
     table.setRepository(Service.getMusicRecords());
 
-    getBoundComponent().add(table);
+    self.add(table);
   }
 }

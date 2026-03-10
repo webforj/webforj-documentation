@@ -15,6 +15,8 @@ import java.util.List;
 @FrameTitle("Table Pinned Column Groups")
 public class TablePinnedColumnGroupsView extends Composite<Div> {
 
+  private Div self = getBoundComponent();
+
   public TablePinnedColumnGroupsView() {
 
     Table<MusicRecord> table = new Table<>();
@@ -50,6 +52,6 @@ public class TablePinnedColumnGroupsView extends Composite<Div> {
     table.setColumnGroups(List.of(identity, catalog, pricing));
     table.setRepository(Service.getMusicRecords());
 
-    getBoundComponent().add(table);
+    self.add(table);
   }
 }

@@ -71,7 +71,7 @@ height='600px'
 />
 <!-- vale on -->
 
-:::tip
+:::tip Controlling ungrouped column placement
 To control ungrouped column placement explicitly, include them as top-level column references in the group tree.
 :::
 
@@ -145,6 +145,7 @@ Group headers and columns expose CSS parts for styling via `::part()`. The follo
 <ComponentDemo 
 path='/webforj/tablestyledcolumngroups?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/TableStyledColumnGroupsView.java'
+cssURL='/css/table/tablestyledcolumngroups.css'
 urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/MusicRecord.java', 
 'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/table/Service.java']}
 height='600px'

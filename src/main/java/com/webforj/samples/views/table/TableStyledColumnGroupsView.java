@@ -11,10 +11,12 @@ import com.webforj.router.annotation.Route;
 
 import java.util.List;
 
-@StyleSheet("ws://css/table/tablestyledcolumngroups.css")
+@StyleSheet("ws://css/table/tableStyledColumnGroups.css")
 @Route
 @FrameTitle("Table Styled Column Groups")
 public class TableStyledColumnGroupsView extends Composite<Div> {
+
+  private Div self = getBoundComponent();
 
   public TableStyledColumnGroupsView() {
 
@@ -49,6 +51,6 @@ public class TableStyledColumnGroupsView extends Composite<Div> {
     table.setColumnGroups(List.of(catalog, details));
     table.setRepository(Service.getMusicRecords());
 
-    getBoundComponent().add(table);
+    self.add(table);
   }
 }
