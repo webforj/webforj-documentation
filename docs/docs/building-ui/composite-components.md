@@ -4,7 +4,6 @@ title: Composite Components
 sidebar_class_name: updated-content
 ---
 
-<DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
 
