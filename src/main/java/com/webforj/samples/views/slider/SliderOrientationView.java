@@ -23,9 +23,6 @@ public class SliderOrientationView extends Composite<FlexLayout> {
   // Vertical orientation slider
   private final Slider volumeSlider = new Slider();
 
-  // Current volume state
-  private Integer currentVolume = 50;
-
   public SliderOrientationView() {
     // Configure layout
     self.setDirection(FlexDirection.COLUMN)
@@ -37,7 +34,6 @@ public class SliderOrientationView extends Composite<FlexLayout> {
     // Configure vertical slider with labels
     volumeSlider.setMin(0)
         .setMax(100)
-        .setValue(currentVolume)
         .setFilled(true)
         .setTheme(Theme.GRAY)
         .setOrientation(Slider.Orientation.VERTICAL)
@@ -59,14 +55,12 @@ public class SliderOrientationView extends Composite<FlexLayout> {
     IconButton muteButton = new IconButton(TablerIcon.create("volume-off"));
     muteButton.setTheme(Theme.DANGER)
         .onClick(e -> {
-          currentVolume = 0;
           volumeSlider.setValue(0);
         });
 
     // Create max volume button
     IconButton maxVolumeButton = new IconButton(TablerIcon.create("volume-2"));
     maxVolumeButton.onClick(e -> {
-      currentVolume = 100;
       volumeSlider.setValue(100);
     });
 
