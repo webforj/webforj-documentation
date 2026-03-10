@@ -23,9 +23,6 @@ public class SliderBrightnessView extends Composite<FlexLayout> {
   // Brightness slider component
   private final Slider brightnessSlider = new Slider();
 
-  // Current brightness state
-  private Integer currentBrightness = 50;
-
   public SliderBrightnessView() {
     // Configure layout
     self.setDirection(FlexDirection.COLUMN)
@@ -37,7 +34,6 @@ public class SliderBrightnessView extends Composite<FlexLayout> {
     // Configure brightness slider
     brightnessSlider.setMin(0)
         .setMax(100)
-        .setValue(currentBrightness)
         .setMajorTickSpacing(25)
         .setMinorTickSpacing(5)
         .setTicksVisible(true)
@@ -53,14 +49,12 @@ public class SliderBrightnessView extends Composite<FlexLayout> {
     // Create low brightness button
     IconButton lowBrightnessButton = new IconButton(TablerIcon.create("sun-low"));
     lowBrightnessButton.onClick(e -> {
-      currentBrightness = 0;
       brightnessSlider.setValue(0);
     });
 
     // Create high brightness button
     IconButton highBrightnessButton = new IconButton(TablerIcon.create("sun-high"));
     highBrightnessButton.onClick(e -> {
-      currentBrightness = 100;
       brightnessSlider.setValue(100);
     });
 
