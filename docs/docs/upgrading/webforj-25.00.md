@@ -119,7 +119,7 @@ home.setText("<h1>Home</h1>");
 
 ## HTML containers {#html-containers}
 
-The `com.webforj.component.htmlcontainer` package is no longer in webforJ. Use the more feature-rich `com.webforj.component.element` package instead. For a list of webforJ classes for standard HTML Elements, go to [HTML Element Components](../components/html-elements.md).
+The `com.webforj.component.htmlcontainer` package is no longer in webforJ. Use the more feature-rich `com.webforj.component.element` package instead. For a list of webforJ classes for standard HTML Elements, go to [HTML Element Components](/docs/components/html-elements.md).
 
 ## `Request` changes {#request-changes}
 
