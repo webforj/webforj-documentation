@@ -13,7 +13,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("/buttons")
+@Route
 @FrameTitle("Badge - Buttons")
 public class BadgeButtonsView extends Composite<FlexLayout> {
 

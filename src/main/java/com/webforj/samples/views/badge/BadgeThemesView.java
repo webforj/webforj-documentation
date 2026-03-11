@@ -9,7 +9,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("/themes")
+@Route
 @FrameTitle("Badge - Themes")
 public class BadgeThemesView extends Composite<FlexLayout> {
 

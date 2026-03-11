@@ -10,7 +10,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("/icons")
+@Route
 @FrameTitle("Badge - Icons")
 public class BadgeIconsView extends Composite<FlexLayout> {
 

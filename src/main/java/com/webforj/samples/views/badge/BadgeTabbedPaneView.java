@@ -13,7 +13,7 @@ import com.webforj.component.tabbedpane.TabbedPane;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("/tabbed-pane")
+@Route
 @FrameTitle("Badge - Tabbed Pane")
 public class BadgeTabbedPaneView extends Composite<FlexLayout> {
 
