@@ -1,9 +1,9 @@
 ---
 sidebar_position: 4
 title: Typography
-_i18n_hash: 5eafa3dea127703b4f573da438cbaf57
+_i18n_hash: 86ea072dd194053c5a0195a6e7b7200e
 ---
-Typografie-Tokens werden verwendet, um ein konsistentes Set an Schriftstilen in Ihrer App aufrechtzuerhalten.
+Typografie-Token werden verwendet, um eine konsistente Reihe von Schriftstilen in Ihrer App beizubehalten.
 
 ## Schriftfamilie {#font-family}
 
@@ -16,7 +16,7 @@ Der Systemschriftstapel wird standardmäßig verwendet:
 - `San Francisco` unter macOS und iOS
 - Auf anderen Systemen werden `Helvetica, Arial` als Fallbacks verwendet.
 
-Sie können die Schriftfamilie mit der benutzerdefinierten Eigenschaft `--dwc-font-family` anwenden oder ändern.
+Sie können die Schriftfamilie mithilfe der benutzerdefinierten Eigenschaft `--dwc-font-family` anwenden oder ändern.
 
 ### Beispiel {#example}
 
@@ -28,18 +28,20 @@ Sie können die Schriftfamilie mit der benutzerdefinierten Eigenschaft `--dwc-fo
 
 ### Variablen {#variables}
 
+<!-- vale Google.FirstPerson = NO -->
 | **Variable**             | **Standardwert**                                                                                                                               | **Beispiel**                                                           |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `--dwc-font-family-sans` | -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' | <span style={{ fontFamily: "var(--dwc-font-family-sans)" }}>Sphinx of black quartz, judge my vow.</span> |
 | `--dwc-font-family-mono` | Menlo, Monaco, 'Courier New', monospace                                                                                                         | <span style={{ fontFamily: "var(--dwc-font-family-mono)" }}>Sphinx of black quartz, judge my vow.</span> |
 | `--dwc-font-family`      | `var(--dwc-font-family-sans)`                                                                                                                   | <span style={{ fontFamily: "var(--dwc-font-family)" }}>Sphinx of black quartz, judge my vow.</span>      |
+<!-- vale Google.FirstPerson = YES -->
 
 ## Schriftgröße {#font-size}
 
-Die Eigenschaften der Schriftgröße definieren eine Auswahl von Schriftgrößen. `s` ist die Standardgröße und wird von den meisten Komponenten standardmäßig verwendet. Alle Schriftgrößen werden in `em` definiert.
+Die Eigenschaften der Schriftgröße definieren eine Reihe von Schriftgrößen zur Auswahl. `s` ist die Standardgröße und wird von den meisten Komponenten standardmäßig verwendet. Alle Schriftgrößen sind in `em` definiert.
 
 :::info EM-Einheit
-`em` ist eine relative Längeneinheit. Sie ist relativ zur [Schriftgröße](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) des übergeordneten Elements im Falle typografischer Eigenschaften wie Schriftgröße und zur Schriftgröße des Elements selbst im Falle anderer Eigenschaften wie [Breite](https://developer.mozilla.org/en-US/docs/Web/CSS/width).
+`em` ist eine relative Längeneinheit. Sie bezieht sich auf die [Schriftgröße](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size) des übergeordneten Elements im Fall typografischer Eigenschaften wie font-size und die Schriftgröße des Elements selbst im Fall anderer Eigenschaften wie [width](https://developer.mozilla.org/en-US/docs/Web/CSS/width).
 :::
 
 ### Beispiel {#example-1}
@@ -87,7 +89,7 @@ p {
 
 ## Zeilenhöhe {#line-height}
 
-Die CSS-Eigenschaft für die Zeilenhöhe legt die Höhe eines Zeilenblocks fest. Sie wird häufig verwendet, um den Abstand zwischen Textzeilen einzustellen.
+Die CSS-Eigenschaft line-height legt die Höhe eines Zeilenbox fest. Sie wird häufig verwendet, um den Abstand zwischen Zeilen von Text festzulegen.
 
 ### Beispiel {#example-3}
 
@@ -99,6 +101,7 @@ p {
 
 ### Variablen {#variables-2}
 
+<!-- vale Google.FirstPerson = NO -->
 | **Variable**                 | **Standardwert**             | **Beispiel**                                                                                                |
 | ---------------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | `--dwc-font-line-height-2xs` | 0.95                          | <span style={{ lineHeight: "var(--dwc-font-line-height-2xs)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span> |
@@ -109,3 +112,4 @@ p {
 | `--dwc-font-line-height-xl`  | 1.75                          | <span style={{ lineHeight: "var(--dwc-font-line-height-xl)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>  |
 | `--dwc-font-line-height-2xl` | 2                             | <span style={{ lineHeight: "var(--dwc-font-line-height-2xl)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span> |
 | `--dwc-font-line-height`     | var(--dwc-font-line-height-m) | <span style={{ lineHeight: "var(--dwc-font-line-height)", display: "block" }}>Sphinx of black quartz, judge my vow.<br/>Sphinx of black quartz, judge my vow.</span>     |
+<!-- vale Google.FirstPerson = YES -->

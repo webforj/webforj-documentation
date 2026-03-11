@@ -69,7 +69,7 @@ Avatar avatar = new Avatar("Guest User", TablerIcon.create("user"));
 The `Avatar` component uses the label for accessibility and tooltip generation. The `setLabel()` and `setText()` methods are aliases that both set the accessible label for the `Avatar`.
 
 :::info Auto-computed Initials
-When you create an `Avatar` with just a label, initials are automatically computed by taking the first character of each word. For example, "John Doe" becomes "JD".
+When you create an `Avatar` with just a label, initials are automatically computed by taking the first character of each word. For example, an `Avatar` with the label "John Doe" automatically displays "JD" in the UI.
 :::
 
 ```java

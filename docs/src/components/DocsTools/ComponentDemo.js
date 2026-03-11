@@ -111,9 +111,7 @@ export default function ComponentDemo({
         });
     }
     if (cssURL) {
-      const rootPath = isLocalhost
-      ? 'https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static'
-      : GLOBALS.IFRAME_SRC_LIVE;
+      const rootPath = 'https://raw.githubusercontent.com/webforj/webforj-documentation/main/src/main/resources/static'
       fetch(rootPath + cssURL)
         .then((response) => response.text())
         .then((textString) => {

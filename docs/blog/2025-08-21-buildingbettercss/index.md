@@ -4,7 +4,7 @@ description: "Learning webforJ's styling system from a developer's perspective: 
 slug: building-better-css
 date: 2025-08-21
 authors: Lauren Alamo
-tags: [webforJ, styling, frontend]
+tags: [styling, front end, responsive design, themes]
 image: "https://cdn.webforj.com/webforj-documentation/blogs/buildingbettercss/cover.png"
 hide_table_of_contents: true
 ---
