@@ -8,11 +8,11 @@ sidebar_class_name: new-content
 
 Before building custom components in webforJ, it's important to understand the foundational architecture that shapes how components work. This article explains the component hierarchy, component identity, lifecycle concepts, and how concern interfaces provide component capabilities.
 
-## Understanding the component hierarchy
+## Understanding the component hierarchy {#understanding-the-component-hierarchy}
 
 webforJ organizes components into a hierarchy with two groups: framework internal classes you should never extend, and classes designed specifically for building custom components. This section explains why webforJ uses composition over inheritance and what each level of the hierarchy provides.
 
-### Why composition instead of extension?
+### Why composition instead of extension? {#why-composition-instead-of-extension}
 
 In webforJ, built-in components like [`Button`](../components/button) and [`TextField`](../components/fields/textfield) are final classes—you can't extend them:
 
@@ -41,13 +41,13 @@ public class SearchBar extends Composite<FlexLayout> {
 }
 ```
 
-### Why you can't extend built-in components
+### Why you can't extend built-in components {#why-you-cant-extend-built-in-components}
 
 webforJ components are marked as final to maintain the integrity of the underlying client-side web component. Extending webforJ component classes would grant control over the underlying web component, which could lead to unintended consequences and break the consistency and predictability of component behavior.
 
 For a detailed explanation, see [Final Classes and Extension Restrictions](https://docs.webforj.com/docs/architecture/controls-components#final-classes-and-extension-restrictions) in the architecture documentation.
 
-### The component hierarchy
+### The component hierarchy {#the-component-hierarchy}
 
 ```mermaid
 graph TD
@@ -87,7 +87,7 @@ Never extend `Component` or `DwcComponent` directly. All built-in components are
 Attempting to extend `DwcComponent` will throw a runtime exception.
 :::
 
-## Concern interfaces: Adding capabilities to your components
+## Concern interfaces {#concern-interfaces}
 
 Concern interfaces are Java interfaces that provide specific capabilities to your components. Each interface adds a set of related methods. For example, `HasSize` adds methods for controlling width and height, while `HasFocus` adds methods for managing focus state.
 
@@ -131,7 +131,7 @@ If the underlying component doesn't support the interface capability, you'll get
 
 For a complete list of available concern interfaces, see the [webforJ JavaDoc](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/concern/package-summary.html).
 
-## Component lifecycle overview
+## Component lifecycle overview {#component-lifecycle-overview}
 
 webforJ manages the component lifecycle automatically. The framework handles component creation, attachment, and destruction without requiring manual intervention.
 
