@@ -527,7 +527,7 @@ table.addColumn("custom", MusicRecord::getTitle).setRenderer(renderer);
 
 
 
-**When to use:** Use as a last resort when no built-in renderer covers your case. Prefer a custom `Renderer<T>` subclass for anything non-trivial.
+**When to use:** Use as a last resort when no built-in renderer covers your case. Prefer a custom `Renderer` subclass for anything non-trivial.
 
 </div>
 </AccordionDetails>
@@ -540,7 +540,7 @@ table.addColumn("custom", MusicRecord::getTitle).setRenderer(renderer);
 
 ### Conditional rendering {#conditional-rendering}
 
-`ConditionalRenderer` selects a different renderer per cell based on the cell's value. Conditions are evaluated in order  -  the first match wins. A catch-all fallback can be set with `otherwise()`.
+`ConditionalRenderer` selects a different renderer per cell based on the cell's value. Conditions are evaluated in order; the first match wins. A catch-all fallback can be set with `otherwise()`.
 
 
 The following example shows conditional rendering applied to an invoice status column, switching between `BadgeRenderer` variants based on the value:
@@ -631,15 +631,15 @@ table.addColumn("title", MusicRecord::getTitle).setRenderer(renderer);
 
 ## Custom renderers {#custom-renderers}
 
-When no built-in renderer fits your use case, extend `Renderer<T>` and implement `build()`. The method returns a lodash template string  -  a mix of HTML and JavaScript  -  that runs in the browser for every cell in the column.
+When no built-in renderer fits your use case, extend `Renderer` and implement `build()`. The method returns a lodash template string that runs in the browser for every cell in the column, expressed as a mix of HTML and JavaScript.
 
 ### Lodash template syntax {#lodash-template-syntax}
 
 | Syntax | Purpose |
 |--------|---------|
-| `<%= expr %>` | Interpolate  -  insert the expression's value into the output |
-| `<% code %>` | Execute  -  run arbitrary JavaScript (loops, conditionals, variable declarations) |
-| `<%- expr %>` | Escape  -  like `<%= %>` but HTML-encodes the result to prevent injection attacks |
+| `<%= expr %>` | Interpolate: inserts the expression's value into the output |
+| `<% code %>` | Execute: runs arbitrary JavaScript (loops, conditionals, variable declarations) |
+| `<%- expr %>` | Escape: like `<%= %>` but HTML-encodes the result to prevent injection attacks |
 
 Inside a template, three objects are always available:
 
@@ -651,13 +651,13 @@ Inside a template, three objects are always available:
 
 ### Creating a custom renderer {#creating-a-custom-renderer}
 
-**Step 1**  -  Extend `Renderer<T>` where `T` is your row data type.
+**Step 1:** Extend `Renderer` with your row data type.
 
 ```java
 public class RatingRenderer extends Renderer {
 ```
 
-**Step 2**  -  Override `build()` and return a lodash template string.
+**Step 2:** Override `build()` and return a lodash template string.
 
 ```java
     @Override
@@ -680,7 +680,7 @@ public class RatingRenderer extends Renderer {
 }
 ```
 
-**Step 3**  -  Assign the renderer to a column.
+**Step 3:** Assign the renderer to a column.
 
 ```java
 table.addColumn("rating", MusicRecord::getRating)
@@ -734,7 +734,7 @@ table.addColumn("delete", r -> "").setRenderer(deleteBtn);
 
 <DocChip chip='since' label='25.12' />
 
-For columns that use visually expensive renderers  -  badges, progress bars, avatars, or any web component  -  enable lazy rendering to improve scroll performance.
+For columns that use visually expensive renderers such as badges, progress bars, avatars, or web components, enable lazy rendering to improve scroll performance.
 
 ```java
 table.addColumn("status", Order::getStatus)
