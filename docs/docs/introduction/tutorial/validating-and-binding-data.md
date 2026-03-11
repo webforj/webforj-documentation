@@ -37,7 +37,7 @@ Developing an app with editable data should include validation. Validation check
 
 Since what’s considered valid can differ between properties, you'll need to define what makes each property valid and inform the user if there's something that's invalid. Fortunately, you can easily do this with [Jakarta Validation](https://beanvalidation.org). Jakarta validation allows you to add constraints to properties as annotations.
 
-This tutorial uses two Jakarta annotations, `@NotEmpty` and `@NotPattern`. `@NotEmpty` checks for null and empty strings, while `@NotPattern` checks if the property matches a regular expression that you set. Both annotations allow you to add a message to display when the property becomes invalid.
+This tutorial uses two Jakarta annotations, `@NotEmpty` and `@Pattern`. `@NotEmpty` checks for null and empty strings, while `@Pattern` checks if the property matches a regular expression that you set. Both annotations allow you to add a message to display when the property becomes invalid.
 
 To require that both first and last names are mandatory and contain only letters, while making the company name optional and allowing letters, numbers, and spaces, apply the following annotations to the `Customer` entity:
 
@@ -180,7 +180,7 @@ context = BindingContext.of(this, Customer.class, true);
 context.onValidate(e -> submit.setEnabled(e.isValid()));
 ```
 
-### Removing event listners for components {#removing-event-listners-for-components}
+### Removing event listeners for components {#removing-event-listeners-for-components}
 
 Every UI change is now automatically synced with the `BindingContext`. This means you can now remove the event listeners to each field:
 

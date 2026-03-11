@@ -26,7 +26,7 @@ git clone https://github.com/webforj/webforj-tutorial.git
 
 ### Project structure {#project-structure}
 
-The project has four subdirectories, one for each step of the tutorial, and each contains a runnable app. Following along allows you to see how the app progresses from a basic setup to a fully functional customer management system.
+The project has five subdirectories, one for each step of the tutorial, and each contains a runnable app. Following along allows you to see how the app progresses from a basic setup to a fully functional customer management system.
 
 ```
 webforj-tutorial
