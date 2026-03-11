@@ -22,14 +22,14 @@ Accordions work well for FAQs, settings pages, and step-by-step flows where reve
 
 ## AccordionPanel {#accordion-panel}
 
-`AccordionPanel` is the core building block of the accordion system. Pass a label string to the constructor to set the header text, then add child components to populate the body. A panel works on its own without any surrounding `Accordion` group.
+`AccordionPanel` is the core building block of the accordion system. Pass a label string to the constructor to set the header text, then add child components to populate the body. A panel works on its own without any surrounding `Accordion` group, making it a useful lightweight disclosure widget when you just need a single collapsible section. The no-argument constructor is also available when you prefer to configure the panel entirely after construction.
 
 ```java
 // Label only — add body content separately
 AccordionPanel panel = new AccordionPanel("Section Title");
 panel.add(new Paragraph("Body content goes here."));
 
-// Label with body content in the constructor
+// Label and body content passed directly in the constructor
 AccordionPanel panel = new AccordionPanel("Section Title", new Paragraph("Body content goes here."));
 ```
 
@@ -43,7 +43,7 @@ height='500px'
 
 ### Opening and closing {#opening-and-closing}
 
-Control the open/closed state programmatically at any time:
+Control the open/closed state programmatically at any time. `isOpened()` is useful when you need to read the current state before deciding what to do—for example, toggling a panel to the opposite state or conditionally showing or hiding other parts of the UI.
 
 ```java
 panel.open();                      // Expands the panel
@@ -51,7 +51,7 @@ panel.close();                     // Collapses the panel
 boolean isOpen = panel.isOpened(); // Returns true if currently expanded
 ```
 
-Use `setLabel()` to change the header text after construction. `setText()` is an alias for the same operation:
+Use `setLabel()` to update the header text after construction. `setText()` is an alias for the same operation, so the label can be kept in sync with dynamic data:
 
 ```java
 panel.setLabel("Updated Label");
@@ -59,7 +59,7 @@ panel.setLabel("Updated Label");
 
 ## Accordion groups {#accordion-groups}
 
-Wrapping multiple `AccordionPanel` instances inside an `Accordion` creates a coordinated group. By default the group uses **single mode**: opening one panel automatically collapses all others, keeping only one section visible at a time.
+Wrapping multiple `AccordionPanel` instances inside an `Accordion` creates a coordinated group. By default the group uses **single mode**: opening one panel automatically collapses all others, keeping only one section visible at a time. This default is intentional, it keeps the user focused on one piece of content and prevents the page from becoming visually overwhelming when panels have substantial body content.
 
 ```java
 AccordionPanel panel1 = new AccordionPanel("What is webforJ?");
@@ -79,7 +79,7 @@ height='400px'
 
 ### Multiple mode {#multiple-mode}
 
-Multiple mode allows any number of panels to remain expanded simultaneously. This is useful when users need to compare the content of several sections at once.
+Multiple mode allows any number of panels to remain expanded simultaneously. This is useful when users need to compare the content of several sections at once, or when each panel is short enough that expanding several at once doesn't create a cluttered layout.
 
 ```java
 accordion.setMultiple(true);
@@ -108,7 +108,7 @@ height='500px'
 ## Disabled state {#disabled-state}
 <!-- vale on -->
 
-Individual panels can be disabled to prevent user interaction while still remaining visible. A disabled panel that was already open remains expanded, but its header can no longer be clicked to collapse it. Disabling the `Accordion` group applies the disabled state to all contained panels at once.
+Individual panels can be disabled to prevent user interaction while still remaining visible. This is handy during loading states or when certain sections are conditionally unavailable, showing the panel structure without allowing premature interaction. A disabled panel that was already open remains expanded, but its header can no longer be clicked to collapse it. Disabling the `Accordion` group applies the disabled state to all contained panels at once, so you don't need to loop through panels individually.
 
 ```java
 // Disable a single panel
@@ -146,7 +146,7 @@ Content added via `addToHeader()` fully replaces the default label text. To keep
 
 ## Custom icon {#custom-icon}
 
-The expand/collapse indicator defaults to a chevron. `setIcon()` replaces it with any component. Passing `null` restores the default chevron. `getIcon()` returns the currently set icon, or `null` if the default chevron is in use.
+The expand/collapse indicator defaults to a chevron that is visible in both the open and closed states. `setIcon()` replaces it with any component, useful for branded iconography or when a different visual metaphor fits the content better. Passing `null` restores the default chevron. `getIcon()` returns the currently set icon, or `null` if the default chevron is in use.
 
 ```java
 // Replace the default chevron with a plus icon
@@ -166,7 +166,7 @@ height='500px'
 
 ## Nested accordions {#nested-accordions}
 
-Accordions can be nested inside other accordion panels, which is useful for representing hierarchical content such as categorized settings or multi-level navigation. Add an inner `Accordion` to an outer `AccordionPanel` as any other child component.
+Accordions can be nested inside other accordion panels, which is useful for representing hierarchical content such as categorized settings or multi-level navigation. Add an inner `Accordion` to an outer `AccordionPanel` as any other child component. Keep nesting shallow, one or two levels is usually enough. Deeper hierarchies tend to be harder to navigate and often signal that the content structure itself needs rethinking.
 
 ```java
 AccordionPanel innerA = new AccordionPanel("Inner Panel A");
@@ -187,7 +187,7 @@ height='550px'
 
 ## Events {#events}
 
-`AccordionPanel` fires events at each stage of the toggle lifecycle:
+`AccordionPanel` fires events at each stage of the toggle lifecycle. The three event types cover different moments, so choose based on when your logic needs to run:
 
 | Event | Fires | Notes |
 |-------|-------|-------|
