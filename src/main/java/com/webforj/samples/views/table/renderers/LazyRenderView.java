@@ -17,7 +17,7 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Lazy Render")
 public class LazyRenderView extends Composite<Div> {
 
-  private Div self = getBoundComponent();
+  private final Div self = getBoundComponent();
 
   public LazyRenderView() {
     Table<Server> table = new Table<>();

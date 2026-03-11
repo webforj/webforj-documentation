@@ -4,6 +4,7 @@ import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.badge.BadgeTheme;
 import com.webforj.component.html.elements.Div;
+import com.webforj.component.table.Column;
 import com.webforj.component.table.Column.SortDirection;
 import com.webforj.component.table.Table;
 import com.webforj.component.table.renderer.BadgeRenderer;
@@ -19,7 +20,7 @@ import java.util.Locale;
 @FrameTitle("Product Catalog")
 public class ProductCatalogView extends Composite<Div> {
 
-  private Div self = getBoundComponent();
+  private final Div self = getBoundComponent();
 
   public ProductCatalogView() {
     Table<Product> table = new Table<>();
@@ -34,7 +35,7 @@ public class ProductCatalogView extends Composite<Div> {
     table.addColumn("category", Product::getCategory)
         .setFlex(1.0f)
         .setLabel("Category")
-        .setRenderer(new BadgeRenderer<>(BadgeTheme.OUTLINED_DEFAULT));
+        .setRenderer(new BadgeRenderer<>(BadgeTheme.PRIMARY));
 
     table.addColumn("price", Product::getPrice)
         .setFlex(0.7f)
@@ -45,20 +46,21 @@ public class ProductCatalogView extends Composite<Div> {
     table.addColumn("discount", Product::getDiscount)
         .setFlex(1.0f)
         .setLabel("Discount")
-        .setRenderer(new PercentageRenderer<>(Theme.WARNING));
+        .setRenderer(new PercentageRenderer<>(Theme.SUCCESS));
 
     table.addColumn("rating", Product::getRating)
         .setFlex(1.5f)
         .setLabel("Rating")
         .setRenderer(new ProgressBarRenderer<Product>()
             .setMax(5)
-            .setTheme(Theme.WARNING)
+            .setTheme(Theme.INFO)
             .setTextVisible(true)
             .setText("<%= cell.value %>/5"));
 
     table.addColumn("inStock", Product::isInStock)
         .setFlex(1f)
         .setLabel("In Stock")
+        .setAlignment(Column.Alignment.CENTER)
         .setRenderer(new BooleanRenderer<>());
 
 

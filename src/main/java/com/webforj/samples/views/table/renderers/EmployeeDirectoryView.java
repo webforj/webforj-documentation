@@ -19,7 +19,7 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Employee Directory")
 public class EmployeeDirectoryView extends Composite<Div> {
 
-  private Div self = getBoundComponent();
+  private final Div self = getBoundComponent();
 
   public EmployeeDirectoryView() {
     Table<Employee> table = new Table<>();
