@@ -61,6 +61,8 @@ panel.setLabel("Updated Label");
 
 Wrapping multiple `AccordionPanel` instances inside an `Accordion` creates a coordinated group. By default the group uses **single mode**: opening one panel automatically collapses all others, keeping only one section visible at a time. This default is intentional, it keeps the user focused on one piece of content and prevents the page from becoming visually overwhelming when panels have substantial body content.
 
+Panels are constructed independently and passed to the `Accordion`, so you can configure each one before grouping them. Multiple separate `Accordion` instances can also exist on the same page—each group manages its own state independently, so expanding a panel in one group has no effect on another.
+
 ```java
 AccordionPanel panel1 = new AccordionPanel("What is webforJ?");
 AccordionPanel panel2 = new AccordionPanel("How do grouped panels work?");
@@ -128,7 +130,7 @@ height='600px'
 
 ## Custom header {#custom-header}
 
-A panel's header renders its label as plain text by default. Use `addToHeader()` to replace that text with any component or combination of components, making it straightforward to include icons, badges, status indicators, or other rich markup alongside the panel label.
+A panel's header renders its label as plain text by default. Use `addToHeader()` to replace that text with any component or combination of components, making it straightforward to include icons, badges, status indicators, or other rich markup alongside the panel label. This is particularly useful in dashboards or settings panels where each section header needs to convey extra context at a glance—such as an item count, a warning badge, or a completion status—without requiring the user to expand the panel first.
 
 ```java
 FlexLayout headerContent = FlexLayout.create()
@@ -141,7 +143,7 @@ panel.addToHeader(headerContent);
 ```
 
 :::info Label replacement
-Content added via `addToHeader()` fully replaces the default label text. To keep visible text alongside custom content, include a `Span` within the slotted layout as shown above.
+Content added via `addToHeader()` fully replaces the default label text. To keep visible text alongside custom content, include a `Span` within the slotted layout as shown above. `setLabel()` and `setText()` continue to work alongside `addToHeader()`, but since the header slot takes visual precedence, the label text won't be shown unless you include it explicitly in your slotted content.
 :::
 
 ## Custom icon {#custom-icon}
@@ -195,6 +197,8 @@ height='550px'
 | `AccordionPanelOpenEvent` | After the panel has fully opened | — |
 | `AccordionPanelCloseEvent` | After the panel has fully closed | — |
 
+The most important thing to understand about `AccordionPanelToggleEvent` is that `e.isOpened()` reflects the state being transitioned **to**, not the state the panel is currently in. If the panel is closed and the user clicks to open it, `e.isOpened()` returns `true` before the panel has moved. This makes the toggle event the right choice when you want to react to intent—for example, to lazy-load content before the panel opens, or to track which sections a user visits regardless of direction. Use `onOpen()` and `onClose()` instead when you need to act after the transition is complete, such as updating a summary or triggering an animation.
+
 ```java
 panel.onToggle(e -> {
     // Fires before the panel changes state.
@@ -203,11 +207,11 @@ panel.onToggle(e -> {
 });
 
 panel.onOpen(e -> {
-    // Fires after the panel is fully open.
+    // Fires after the panel is fully open — good for lazy-loading content.
 });
 
 panel.onClose(e -> {
-    // Fires after the panel is fully closed.
+    // Fires after the panel is fully closed — good for cleanup or summary updates.
 });
 ```
 
