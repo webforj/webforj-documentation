@@ -4,7 +4,6 @@ title: Understanding Components
 sidebar_class_name: new-content
 ---
 
-<DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/> 
 
 Before building custom components in webforJ, it's important to understand the foundational architecture that shapes how components work. This article explains the component hierarchy, component identity, lifecycle concepts, and how concern interfaces provide component capabilities.
@@ -28,6 +27,7 @@ webforJ uses **composition over inheritance**. Instead of extending existing com
 
 ```java
 public class SearchBar extends Composite<FlexLayout> {
+    private final FlexLayout self = getBoundComponent();
     private TextField searchField;
     private Button searchButton;
     
@@ -35,8 +35,7 @@ public class SearchBar extends Composite<FlexLayout> {
         searchField = new TextField("Search");
         searchButton = new Button("Go");
         
-        getBoundComponent()
-            .setDirection(FlexDirection.ROW)
+        self.setDirection(FlexDirection.ROW)
             .add(searchField, searchButton);
     }
 }
@@ -99,9 +98,10 @@ Implementing concern interfaces gives your custom components the same APIs as bu
 ```java
 // Implement HasSize to get width/height methods automatically
 public class SizedCard extends Composite<Div> implements HasSize<SizedCard> {
+    private final Div self = getBoundComponent();
     
     public SizedCard() {
-        getBoundComponent().setText("Card content");
+        self.setText("Card content");
     }
     
     // No need to implement these - you get them for free:
