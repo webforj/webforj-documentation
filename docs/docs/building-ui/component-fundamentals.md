@@ -87,7 +87,7 @@ Never extend `Component` or `DwcComponent` directly. All built-in components are
 Attempting to extend `DwcComponent` will throw a runtime exception.
 :::
 
-## Concern interfaces for your components {#concern-interfaces-for-your-components}
+## Concern interfaces {#concern-interfaces}
 
 Concern interfaces are Java interfaces that provide specific capabilities to your components. Each interface adds a set of related methods. For example, `HasSize` adds methods for controlling width and height, while `HasFocus` adds methods for managing focus state.
 
