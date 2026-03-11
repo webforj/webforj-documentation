@@ -38,7 +38,7 @@ Several deprecated `App` methods are removed in 25.00. The following sections ou
 
 ### Console logging {#console-logging}
 
-The utility class [`BrowserConsole`](/docs/advanced/browser-console#instance), dedicated for creating styled logs to the browser console, replaces the `consoleLog()` and `consoleError()` methods. Get the `BrowserConsole` by using the `console()` method:
+The utility class [`BrowserConsole`](/docs/advanced/browser-console), dedicated for creating styled logs to the browser console, replaces the `consoleLog()` and `consoleError()` methods. Get the `BrowserConsole` by using the `console()` method:
 
 ```java
 public class Application extends App{
