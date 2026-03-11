@@ -1,40 +1,60 @@
 ---
-title: Accordion
 sidebar_position: 1
-sidebar_class_name: new-content
+title: Accordion
 ---
 
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-accordion" />
 <DocChip chip='name' label="dwc-accordion-panel" />
 <DocChip chip='since' label='25.12' />
-<JavadocLink type="accordion" location="com/webforj/component/accordion/AccordionPanel" top='true'/>
+<JavadocLink type="accordion" location="com/webforj/component/accordion/Accordion" top='true'/>
+<!-- vale off -->
+<JavadocLink type="accordion" location="com/webforj/component/accordion/AccordionPanel"/>
+<!-- vale on -->
 
-The `Accordion` component provides a vertically stacked set of collapsible panels. Each panel consists of a clickable header that toggles the visibility of its body content. An `AccordionPanel` can be used independently as a standalone disclosure section, or grouped inside an `Accordion` to coordinate expand and collapse behavior across multiple panels.
-
-Accordions are well-suited for FAQs, settings pages, step-by-step instructions, and any layout where showing all content at once would create an overwhelming or cluttered experience.
+The `Accordion` component provides a vertically stacked set of collapsible panels. Each panel has a clickable header that toggles the visibility of its body content. An `AccordionPanel` can be used as a standalone disclosure section, or grouped inside an `Accordion` to coordinate expand and collapse behavior across multiple panels.
 
 <!-- INTRO_END -->
 
+:::tip When to use an accordion
+Accordions work well for FAQs, settings pages, and step-by-step flows where revealing all content at once would create an overwhelming layout. If sections are equally important and users benefit from seeing them simultaneously, consider [tabs](/docs/components/tabbedpane) instead.
+:::
+
 ## AccordionPanel {#accordion-panel}
 
-`AccordionPanel` is the core building block of the accordion system. Pass a title string to the constructor to set the panel's header label, then add child components to populate its body. A panel works on its own without any surrounding `Accordion` group.
+`AccordionPanel` is the core building block of the accordion system. Pass a label string to the constructor to set the header text, then add child components to populate the body. A panel works on its own without any surrounding `Accordion` group.
 
 ```java
+// Label only — add body content separately
 AccordionPanel panel = new AccordionPanel("Section Title");
 panel.add(new Paragraph("Body content goes here."));
+
+// Label with body content in the constructor
+AccordionPanel panel = new AccordionPanel("Section Title", new Paragraph("Body content goes here."));
 ```
 
-{/* TODO: insert AccordionBasicView demo */}
+<!-- vale off -->
+<ComponentDemo
+path='/webforj/basic'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionBasicView.java'
+height='500px'
+/>
+<!-- vale on -->
 
-### Opening and closing
+### Opening and closing {#opening-and-closing}
 
-The open/closed state of a panel can be controlled programmatically at any time:
+Control the open/closed state programmatically at any time:
 
 ```java
 panel.open();                      // Expands the panel
 panel.close();                     // Collapses the panel
 boolean isOpen = panel.isOpened(); // Returns true if currently expanded
+```
+
+Use `setLabel()` to change the header text after construction. `setText()` is an alias for the same operation:
+
+```java
+panel.setLabel("Updated Label");
 ```
 
 ## Accordion groups {#accordion-groups}
@@ -49,11 +69,17 @@ AccordionPanel panel3 = new AccordionPanel("Can I have multiple groups?");
 Accordion accordion = new Accordion(panel1, panel2, panel3);
 ```
 
-{/* TODO: insert AccordionGroupView demo */}
+<!-- vale off -->
+<ComponentDemo
+path='/webforj/group'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionGroupView.java'
+height='400px'
+/>
+<!-- vale on -->
 
-### Multiple mode
+### Multiple mode {#multiple-mode}
 
-When single-mode behavior is too restrictive, multiple mode allows any number of panels to be expanded simultaneously. This is useful when users need to compare the content of several sections at once.
+Multiple mode allows any number of panels to remain expanded simultaneously. This is useful when users need to compare the content of several sections at once.
 
 ```java
 accordion.setMultiple(true);
@@ -66,15 +92,23 @@ accordion.openAll();    // Expands every panel in the group
 accordion.closeAll();   // Collapses every panel in the group
 ```
 
-{/* TODO: insert AccordionMultipleView demo */}
+<!-- vale off -->
+<ComponentDemo
+path='/webforj/multiple'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionMultipleView.java'
+height='500px'
+/>
+<!-- vale on -->
 
 :::info Single mode restriction
-`openAll()` and `closeAll()` only apply when `setMultiple(true)` has been called. In single mode, only one panel can be open at a time regardless of programmatic calls.
+`openAll()` is only available when multiple mode is enabled. Calling it in single mode has no effect. `closeAll()` works in both modes.
 :::
 
+<!-- vale off -->
 ## Disabled state {#disabled-state}
+<!-- vale on -->
 
-Individual panels can be disabled to prevent user interaction while still remaining visible in the layout. A disabled panel that was already open remains visible but can no longer be collapsed by the user. Disabling the `Accordion` group applies the disabled state to all of its panels at once.
+Individual panels can be disabled to prevent user interaction while still remaining visible. A disabled panel that was already open remains expanded, but its header can no longer be clicked to collapse it. Disabling the `Accordion` group applies the disabled state to all contained panels at once.
 
 ```java
 // Disable a single panel
@@ -84,11 +118,17 @@ panel.setEnabled(false);
 accordion.setEnabled(false);
 ```
 
-{/* TODO: insert AccordionDisabledView demo */}
+<!-- vale off -->
+<ComponentDemo
+path='/webforj/disabled'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionDisabledView.java'
+height='600px'
+/>
+<!-- vale on -->
 
 ## Custom header {#custom-header}
 
-By default, a panel's header renders its title as plain text. The header slot replaces that text with any component or combination of components, making it straightforward to include icons, badges, status indicators, or other rich markup alongside the panel label.
+A panel's header renders its label as plain text by default. Use `addToHeader()` to replace that text with any component or combination of components, making it straightforward to include icons, badges, status indicators, or other rich markup alongside the panel label.
 
 ```java
 FlexLayout headerContent = FlexLayout.create()
@@ -101,12 +141,12 @@ panel.addToHeader(headerContent);
 ```
 
 :::info Label replacement
-Content added via `addToHeader()` replaces the default label text entirely. To keep a visible text label alongside custom content, include a `Span` within the slotted layout as shown above.
+Content added via `addToHeader()` fully replaces the default label text. To keep visible text alongside custom content, include a `Span` within the slotted layout as shown above.
 :::
 
 ## Custom icon {#custom-icon}
 
-The expand/collapse indicator defaults to a chevron. `setIcon()` replaces it with any component. Passing `null` restores the original default chevron.
+The expand/collapse indicator defaults to a chevron. `setIcon()` replaces it with any component. Passing `null` restores the default chevron. `getIcon()` returns the currently set icon, or `null` if the default chevron is in use.
 
 ```java
 // Replace the default chevron with a plus icon
@@ -116,11 +156,17 @@ panel.setIcon(FeatherIcon.PLUS.create());
 panel.setIcon(null);
 ```
 
-{/* TODO: insert AccordionSlotsView demo */}
+<!-- vale off -->
+<ComponentDemo
+path='/webforj/slots'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionSlotsView.java'
+height='500px'
+/>
+<!-- vale on -->
 
 ## Nested accordions {#nested-accordions}
 
-Accordions can be nested inside other accordion panels, which is useful for representing hierarchical content such as categorized settings or multi-level navigation. An inner `Accordion` is added to an outer `AccordionPanel` as any other child component.
+Accordions can be nested inside other accordion panels, which is useful for representing hierarchical content such as categorized settings or multi-level navigation. Add an inner `Accordion` to an outer `AccordionPanel` as any other child component.
 
 ```java
 AccordionPanel innerA = new AccordionPanel("Inner Panel A");
@@ -131,13 +177,47 @@ AccordionPanel outer = new AccordionPanel("Outer Panel");
 outer.add(innerAccordion);
 ```
 
-{/* TODO: insert AccordionNestedView demo */}
+<!-- vale off -->
+<ComponentDemo
+path='/webforj/nested'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionNestedView.java'
+height='550px'
+/>
+<!-- vale on -->
 
 ## Events {#events}
 
-`AccordionPanel` fires events at each stage of the toggle lifecycle. `AccordionPanelToggleEvent` fires immediately before the state changes, and its `isOpened()` method returns the state the panel is transitioning to rather than the current one. `AccordionPanelOpenEvent` and `AccordionPanelCloseEvent` fire after the panel has fully opened or closed respectively.
+`AccordionPanel` fires events at each stage of the toggle lifecycle:
 
-{/* TODO: insert AccordionEventsView demo */}
+| Event | Fires | Notes |
+|-------|-------|-------|
+| `AccordionPanelToggleEvent` | Before the state changes | `e.isOpened()` returns `true` when the panel is about to open, `false` when about to close |
+| `AccordionPanelOpenEvent` | After the panel has fully opened | — |
+| `AccordionPanelCloseEvent` | After the panel has fully closed | — |
+
+```java
+panel.onToggle(e -> {
+    // Fires before the panel changes state.
+    // e.isOpened() reflects the state being transitioned to, not the current state.
+    String direction = e.isOpened() ? "opening" : "closing";
+});
+
+panel.onOpen(e -> {
+    // Fires after the panel is fully open.
+});
+
+panel.onClose(e -> {
+    // Fires after the panel is fully closed.
+});
+```
+
+<!-- vale off -->
+<ComponentDemo
+path='/webforj/events'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionEventsView.java'
+height='275px'
+/>
+<!-- vale on -->
 
 ## Styling {#styling}
 
