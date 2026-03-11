@@ -1,0 +1,222 @@
+[
+  {
+    "invoiceNumber": "INV-001",
+    "customer": "Acme Corp",
+    "customerEmail": "billing@acme.com",
+    "issueDate": "01/05/2025",
+    "dueDate": "02/05/2025",
+    "amount": 4200,
+    "tax": 336,
+    "status": "Paid",
+    "paymentMethod": "Credit Card"
+  },
+  {
+    "invoiceNumber": "INV-002",
+    "customer": "Globex Inc",
+    "customerEmail": "accounts@globex.com",
+    "issueDate": "01/12/2025",
+    "dueDate": "02/12/2025",
+    "amount": 1850.5,
+    "tax": 148.04,
+    "status": "Pending",
+    "paymentMethod": "Bank Transfer"
+  },
+  {
+    "invoiceNumber": "INV-003",
+    "customer": "Initech LLC",
+    "customerEmail": "pay@initech.com",
+    "issueDate": "01/20/2025",
+    "dueDate": "02/20/2025",
+    "amount": 920,
+    "tax": 73.6,
+    "status": "Overdue",
+    "paymentMethod": "Credit Card"
+  },
+  {
+    "invoiceNumber": "INV-004",
+    "customer": "Umbrella Ltd",
+    "customerEmail": "finance@umbrella.com",
+    "issueDate": "02/03/2025",
+    "dueDate": "03/03/2025",
+    "amount": 7500,
+    "tax": 600,
+    "status": "Paid",
+    "paymentMethod": "Wire Transfer"
+  },
+  {
+    "invoiceNumber": "INV-005",
+    "customer": "Hooli",
+    "customerEmail": "ap@hooli.com",
+    "issueDate": "02/14/2025",
+    "dueDate": "03/14/2025",
+    "amount": 3300.75,
+    "tax": 264.06,
+    "status": "Pending",
+    "paymentMethod": "Credit Card"
+  },
+  {
+    "invoiceNumber": "INV-006",
+    "customer": "Pied Piper",
+    "customerEmail": "billing@piedpiper.io",
+    "issueDate": "02/22/2025",
+    "dueDate": "03/22/2025",
+    "amount": 1100,
+    "tax": 88,
+    "status": "Overdue",
+    "paymentMethod": "PayPal"
+  },
+  {
+    "invoiceNumber": "INV-007",
+    "customer": "Vandelay Ind",
+    "customerEmail": "vandelay@example.com",
+    "issueDate": "03/01/2025",
+    "dueDate": "04/01/2025",
+    "amount": 6750,
+    "tax": 540,
+    "status": "Paid",
+    "paymentMethod": "Bank Transfer"
+  },
+  {
+    "invoiceNumber": "INV-008",
+    "customer": "Dunder Mifflin",
+    "customerEmail": "michael@dm.com",
+    "issueDate": "03/10/2025",
+    "dueDate": "04/10/2025",
+    "amount": 450,
+    "tax": 36,
+    "status": "Pending",
+    "paymentMethod": "Credit Card"
+  },
+  {
+    "invoiceNumber": "INV-009",
+    "customer": "Sterling Cooper",
+    "customerEmail": "accounts@sc.com",
+    "issueDate": "03/18/2025",
+    "dueDate": "04/18/2025",
+    "amount": 9200,
+    "tax": 736,
+    "status": "Paid",
+    "paymentMethod": "Wire Transfer"
+  },
+  {
+    "invoiceNumber": "INV-010",
+    "customer": "Massive Dynamic",
+    "customerEmail": "pay@massdyn.com",
+    "issueDate": "04/02/2025",
+    "dueDate": "05/02/2025",
+    "amount": 2800,
+    "tax": 224,
+    "status": "Overdue",
+    "paymentMethod": "Credit Card"
+  },
+  {
+    "invoiceNumber": "INV-011",
+    "customer": "Bluth Company",
+    "customerEmail": "lucille@bluth.com",
+    "issueDate": "04/15/2025",
+    "dueDate": "05/15/2025",
+    "amount": 5100.5,
+    "tax": 408.04,
+    "status": "Pending",
+    "paymentMethod": "Bank Transfer"
+  },
+  {
+    "invoiceNumber": "INV-012",
+    "customer": "Oceanic Air",
+    "customerEmail": "finance@oceanic.com",
+    "issueDate": "05/01/2025",
+    "dueDate": "06/01/2025",
+    "amount": 12400,
+    "tax": 992,
+    "status": "Paid",
+    "paymentMethod": "Wire Transfer"
+  },
+  {
+    "invoiceNumber": "INV-013",
+    "customer": "Rekall Corp",
+    "customerEmail": "billing@rekall.com",
+    "issueDate": "05/10/2025",
+    "dueDate": "06/10/2025",
+    "amount": 3750,
+    "tax": 300,
+    "status": "Pending",
+    "paymentMethod": "Credit Card"
+  },
+  {
+    "invoiceNumber": "INV-014",
+    "customer": "Soylent Corp",
+    "customerEmail": "ap@soylent.com",
+    "issueDate": "05/18/2025",
+    "dueDate": "06/18/2025",
+    "amount": 6100,
+    "tax": 488,
+    "status": "Paid",
+    "paymentMethod": "Wire Transfer"
+  },
+  {
+    "invoiceNumber": "INV-015",
+    "customer": "Initech LLC",
+    "customerEmail": "pay@initech.com",
+    "issueDate": "06/02/2025",
+    "dueDate": "07/02/2025",
+    "amount": 2200,
+    "tax": 176,
+    "status": "Overdue",
+    "paymentMethod": "Bank Transfer"
+  },
+  {
+    "invoiceNumber": "INV-016",
+    "customer": "Acme Corp",
+    "customerEmail": "billing@acme.com",
+    "issueDate": "06/12/2025",
+    "dueDate": "07/12/2025",
+    "amount": 8900,
+    "tax": 712,
+    "status": "Paid",
+    "paymentMethod": "Credit Card"
+  },
+  {
+    "invoiceNumber": "INV-017",
+    "customer": "Hooli",
+    "customerEmail": "ap@hooli.com",
+    "issueDate": "06/20/2025",
+    "dueDate": "07/20/2025",
+    "amount": 1450,
+    "tax": 116,
+    "status": "Pending",
+    "paymentMethod": "PayPal"
+  },
+  {
+    "invoiceNumber": "INV-018",
+    "customer": "Globex Inc",
+    "customerEmail": "accounts@globex.com",
+    "issueDate": "07/05/2025",
+    "dueDate": "08/05/2025",
+    "amount": 5500,
+    "tax": 440,
+    "status": "Paid",
+    "paymentMethod": "Wire Transfer"
+  },
+  {
+    "invoiceNumber": "INV-019",
+    "customer": "Dunder Mifflin",
+    "customerEmail": "michael@dm.com",
+    "issueDate": "07/14/2025",
+    "dueDate": "08/14/2025",
+    "amount": 780,
+    "tax": 62.4,
+    "status": "Overdue",
+    "paymentMethod": "Credit Card"
+  },
+  {
+    "invoiceNumber": "INV-020",
+    "customer": "Massive Dynamic",
+    "customerEmail": "pay@massdyn.com",
+    "issueDate": "07/22/2025",
+    "dueDate": "08/22/2025",
+    "amount": 4300,
+    "tax": 344,
+    "status": "Pending",
+    "paymentMethod": "Bank Transfer"
+  }
+]

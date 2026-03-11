@@ -1,0 +1,222 @@
+[
+  {
+    "hostname": "web-01",
+    "os": "Linux",
+    "region": "us-east",
+    "online": true,
+    "status": "Healthy",
+    "cpuUsage": 42,
+    "memoryUsage": 58,
+    "diskUsage": 61,
+    "uptime": 312
+  },
+  {
+    "hostname": "web-02",
+    "os": "Linux",
+    "region": "us-east",
+    "online": true,
+    "status": "Warning",
+    "cpuUsage": 71,
+    "memoryUsage": 83,
+    "diskUsage": 74,
+    "uptime": 298
+  },
+  {
+    "hostname": "web-03",
+    "os": "Linux",
+    "region": "eu-west",
+    "online": true,
+    "status": "Healthy",
+    "cpuUsage": 38,
+    "memoryUsage": 45,
+    "diskUsage": 52,
+    "uptime": 401
+  },
+  {
+    "hostname": "api-01",
+    "os": "Linux",
+    "region": "us-east",
+    "online": true,
+    "status": "Critical",
+    "cpuUsage": 92,
+    "memoryUsage": 88,
+    "diskUsage": 91,
+    "uptime": 87
+  },
+  {
+    "hostname": "api-02",
+    "os": "Linux",
+    "region": "us-west",
+    "online": true,
+    "status": "Warning",
+    "cpuUsage": 67,
+    "memoryUsage": 74,
+    "diskUsage": 68,
+    "uptime": 145
+  },
+  {
+    "hostname": "api-03",
+    "os": "Linux",
+    "region": "eu-west",
+    "online": true,
+    "status": "Healthy",
+    "cpuUsage": 29,
+    "memoryUsage": 41,
+    "diskUsage": 37,
+    "uptime": 502
+  },
+  {
+    "hostname": "db-01",
+    "os": "Linux",
+    "region": "us-east",
+    "online": true,
+    "status": "Healthy",
+    "cpuUsage": 55,
+    "memoryUsage": 69,
+    "diskUsage": 48,
+    "uptime": 730
+  },
+  {
+    "hostname": "db-02",
+    "os": "Linux",
+    "region": "us-east",
+    "online": true,
+    "status": "Critical",
+    "cpuUsage": 88,
+    "memoryUsage": 91,
+    "diskUsage": 95,
+    "uptime": 42
+  },
+  {
+    "hostname": "db-03",
+    "os": "Linux",
+    "region": "ap-south",
+    "online": true,
+    "status": "Warning",
+    "cpuUsage": 73,
+    "memoryUsage": 78,
+    "diskUsage": 82,
+    "uptime": 210
+  },
+  {
+    "hostname": "cache-01",
+    "os": "Linux",
+    "region": "us-west",
+    "online": true,
+    "status": "Healthy",
+    "cpuUsage": 18,
+    "memoryUsage": 32,
+    "diskUsage": 24,
+    "uptime": 365
+  },
+  {
+    "hostname": "cache-02",
+    "os": "Linux",
+    "region": "eu-west",
+    "online": true,
+    "status": "Healthy",
+    "cpuUsage": 22,
+    "memoryUsage": 27,
+    "diskUsage": 31,
+    "uptime": 290
+  },
+  {
+    "hostname": "worker-01",
+    "os": "Windows",
+    "region": "us-east",
+    "online": true,
+    "status": "Warning",
+    "cpuUsage": 76,
+    "memoryUsage": 85,
+    "diskUsage": 55,
+    "uptime": 98
+  },
+  {
+    "hostname": "worker-02",
+    "os": "Windows",
+    "region": "us-west",
+    "online": true,
+    "status": "Healthy",
+    "cpuUsage": 33,
+    "memoryUsage": 44,
+    "diskUsage": 42,
+    "uptime": 183
+  },
+  {
+    "hostname": "worker-03",
+    "os": "Linux",
+    "region": "ap-south",
+    "online": true,
+    "status": "Healthy",
+    "cpuUsage": 47,
+    "memoryUsage": 61,
+    "diskUsage": 38,
+    "uptime": 256
+  },
+  {
+    "hostname": "storage-01",
+    "os": "Linux",
+    "region": "us-east",
+    "online": true,
+    "status": "Healthy",
+    "cpuUsage": 14,
+    "memoryUsage": 28,
+    "diskUsage": 88,
+    "uptime": 620
+  },
+  {
+    "hostname": "storage-02",
+    "os": "Linux",
+    "region": "eu-west",
+    "online": true,
+    "status": "Warning",
+    "cpuUsage": 19,
+    "memoryUsage": 35,
+    "diskUsage": 91,
+    "uptime": 544
+  },
+  {
+    "hostname": "monitor-01",
+    "os": "Linux",
+    "region": "us-east",
+    "online": true,
+    "status": "Healthy",
+    "cpuUsage": 31,
+    "memoryUsage": 39,
+    "diskUsage": 45,
+    "uptime": 418
+  },
+  {
+    "hostname": "proxy-01",
+    "os": "Linux",
+    "region": "us-west",
+    "online": true,
+    "status": "Healthy",
+    "cpuUsage": 44,
+    "memoryUsage": 52,
+    "diskUsage": 33,
+    "uptime": 375
+  },
+  {
+    "hostname": "proxy-02",
+    "os": "Linux",
+    "region": "eu-west",
+    "online": false,
+    "status": "Offline",
+    "cpuUsage": 0,
+    "memoryUsage": 0,
+    "diskUsage": 0,
+    "uptime": 0
+  },
+  {
+    "hostname": "backup-01",
+    "os": "Linux",
+    "region": "ap-south",
+    "online": true,
+    "status": "Healthy",
+    "cpuUsage": 12,
+    "memoryUsage": 18,
+    "diskUsage": 71,
+    "uptime": 800
+  }
+]
