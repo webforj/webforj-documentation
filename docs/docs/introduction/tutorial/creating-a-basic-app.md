@@ -76,7 +76,7 @@ The [`@SpringBootApplication`](https://docs.spring.io/spring-boot/api/java/org/s
 
 ## Creating a user interface {#creating-a-ui}
 
-To create your UI, you’ll need to add [HTML element components](/docs/building-ui/web-components/html-elements) and [webforJ components](/docs/components/overview). For now, you only have a single-page app, so you'll add components directly to the `Application` class. 
+To create your UI, you’ll need to add [HTML element components](/docs/components/html-elements) and [webforJ components](/docs/components/overview). For now, you only have a single-page app, so you'll add components directly to the `Application` class. 
 To do this, override the `App.run()` method and create a `Frame` to add components to. 
 
 ```java
@@ -91,7 +91,7 @@ public void run() throws WebforjException {
 
 ### Using HTML elements {#using-html-elements}
 
-You can add standard HTML elements to your app with [HTML element components](/docs/building-ui/web-components/html-elements).
+You can add standard HTML elements to your app with [HTML element components](/docs/components/html-elements).
 Create a new instance of the component, then use the `add()` method to add it to the `Frame`:
 
 ```java
