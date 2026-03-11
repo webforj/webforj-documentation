@@ -32,7 +32,9 @@ height='600px'
 />
 <!-- vale on -->
 
+<!-- vale Google.OxfordComma = NO -->
 Groups can be set or changed at any time, before or after the `Table` is rendered. Pass `null` or an empty list to `setColumnGroups()` to remove all grouping and return to a single-row header.
+<!-- vale Google.OxfordComma = YES -->
 
 ```java
 // Remove all column groups
@@ -79,9 +81,9 @@ To control ungrouped column placement explicitly, include them as top-level colu
 
 When groups are active, drag-and-drop column movement is constrained to maintain group integrity:
 
-- **Within a group** - A column inside a group can only be moved within its immediate parent group. Dragging it outside the group is rejected, and the column snaps back to its original position.
-- **Ungrouped columns** - An ungrouped column can only move to positions occupied by other ungrouped columns. It can't be dropped into the middle of a group.
-- **Reordering groups** - An entire group can be dragged to reorder it among its siblings at the same nesting level.
+- **Within a group**: a column inside a group can only be moved within its immediate parent group. Dragging it outside the group is rejected, and the column snaps back to its original position.
+- **Ungrouped columns**: an ungrouped column can only move to positions occupied by other ungrouped columns. It can't be dropped into the middle of a group.
+- **Reordering groups**: an entire group can be dragged to reorder it among its siblings at the same nesting level.
 
 ```
 Groups:  Group "G1" [A, B, C], Group "G2" [D, E]
@@ -135,9 +137,9 @@ Group headers and columns expose CSS parts for styling via `::part()`. The follo
 
 | Part | Description |
 | --- | --- |
-| `cell-group-{ID}` | Group header cell, targeted by group id |
+| `cell-group-{ID}` | Group header cell, targeted by group ID |
 | `cell-group-depth-{N}` | Group header cell, targeted by depth (`0` = top-level, `1` = second-level, etc.) |
-| `cell-column-{ID}` | All cells (header and body) for a given column id |
+| `cell-column-{ID}` | All cells (header and body) for a given column ID |
 | `cell-content-group-{ID}` | Content wrapper within a group header |
 | `cell-label-group-{ID}` | Label within a group header |
 
@@ -152,9 +154,9 @@ height='600px'
 />
 <!-- vale on -->
 
-### Styling by group id {#styling-by-group-id}
+### Styling by group ID {#styling-by-group-id}
 
-Use the group id to target specific groups with unique colors or typography.
+Use the group ID to target specific groups with unique colors or typography.
 
 ```css
 dwc-table::part(cell-group-catalog) {
@@ -192,7 +194,7 @@ dwc-table::part(cell-group-depth-1) {
 
 ## Hidden columns {#hidden-columns}
 
-Hidden columns are excluded from the visual order and the header layout. If a group contains a mix of visible and hidden columns, only the visible ones appear and the group colspan adjusts accordingly. If every column in a group is hidden, the group header isn't rendered at all.
+Hidden columns are excluded from the visual order and the header layout. If a group contains a mix of visible and hidden columns, only the visible ones appear and the group `colspan` adjusts accordingly. If every column in a group is hidden, the group header isn't rendered at all.
 
 <!-- vale off -->
 <ComponentDemo 
