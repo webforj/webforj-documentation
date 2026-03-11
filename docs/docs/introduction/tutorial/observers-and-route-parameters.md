@@ -69,7 +69,7 @@ To add the optional route parameter to `FormView`, change the `@Route` annotatio
 
 However, `FormView` can still load when a user manually enters a URL for a non-existent customer, like [http://localhost:8080/customer/**5000**](http://localhost:8080/customer/5000). Adding a lifecycle observer before entering `FormView` lets your app determine how to handle the incoming `id` value.
 
-### Conditional routing {#conditonal-routing}
+### Conditional routing {#conditional-routing}
 
 Lifecycle observers allow components to react to lifecycle events at specific stages. The [Lifecycle Observers](/docs/routing/navigation-lifecycle/observers) article lists available observers, but this step only uses the `WillEnterObserver`.
 
@@ -87,7 +87,7 @@ flowchart TD
     D -->|No| F[Redirect to MainView]
 ```
 
-### Using the `WillEnterObserver` {#using-the-willenterbbserver}
+### Using the `WillEnterObserver` {#using-the-willenterobserver}
 
 Using the lifecycle observer that triggers before the component fully loads, `WillEnterObserver`, allows you to add conditions to determine whether the app should continue to `FormView`, or if it needs to redirect users to `MainView`.
 
@@ -99,7 +99,7 @@ public class FormView extends Composite<Div> implements WillEnterObserver {
 
 The `WillEnterObserver` observer has the `onWillEnter()` method that webforJ calls before routing to the component. This method has two parameters: the `WillEnterEvent` and the `ParametersBag`.
 
-The `WillEnterEvent` determines whether to continue routing to the component with the `accept()` mehod, or stop routing using the `reject()` method. After rejecting the current route, you need to redirect the user somewhere else.
+The `WillEnterEvent` determines whether to continue routing to the component with the `accept()` method, or stop routing using the `reject()` method. After rejecting the current route, you need to redirect the user somewhere else.
 
 The `ParametersBag` contains the router parameters from the URL. You’ll use the `ParametersBag` in the next section to create the conditional logic for `onWillEnter()` using `id` parameter.
 
@@ -324,7 +324,7 @@ Here’s how `FormView` should look, now that it can handle editing existing cus
 
 ## Navigating from `MainView` to `FormView` to edit customers {#navigating-from-mainview-to-formview-to-edit-customers}
 
-Earlier in this step, you used an existing `ParametersBag` to determine the value of an `id`. Creating a new `ParametersBag` lets you navigate between classes directly with the parameters of your your choice. Using the data in the `Table` is a viable option for sending users to `FormView` with a customer `id`.
+Earlier in this step, you used an existing `ParametersBag` to determine the value of an `id`. Creating a new `ParametersBag` lets you navigate between classes directly with the parameters of your choice. Using the data in the `Table` is a viable option for sending users to `FormView` with a customer `id`.
 
 Similar to the button, tying the navigation to a user-chosen action lets them decide when to go to `FormView`. Adding an event listener to the `Table` lets you send the user to `FormView` with a `ParametersBag`:
 
