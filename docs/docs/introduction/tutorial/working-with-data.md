@@ -103,7 +103,10 @@ Create a class in `src/main/java/com/webforj/tutorial/entity` named `Customer.ja
     }
 
     public Customer(String firstName, String lastName, String company, Country country) {
-      setFirstName(firstName).setLastName(lastName).setCompany(company).setCountry(country);
+      setFirstName(firstName);
+      setLastName(lastName);
+      setCompany(company);
+      setCountry(country);
     }
 
     public Customer(String firstName, String lastName, String company) {
@@ -121,36 +124,32 @@ Create a class in `src/main/java/com/webforj/tutorial/entity` named `Customer.ja
     public Customer() {
     }
 
-    public Customer setFirstName(String newName) {
+    public void setFirstName(String newName) {
       firstName = newName;
-      return this;
     }
 
     public String getFirstName() {
       return firstName;
     }
 
-    public Customer setLastName(String newName) {
+    public void setLastName(String newName) {
       lastName = newName;
-      return this;
     }
 
     public String getLastName() {
       return lastName;
     }
 
-    public Customer setCompany(String newCompany) {
+    public void setCompany(String newCompany) {
       company = newCompany;
-      return this;
     }
 
     public String getCompany() {
       return company;
     }
 
-    public Customer setCountry(Country newCountry) {
+    public void setCountry(Country newCountry) {
       country = newCountry;
-      return this;
     }
 
     public Country getCountry() {
