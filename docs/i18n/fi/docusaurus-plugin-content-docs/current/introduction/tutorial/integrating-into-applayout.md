@@ -1,20 +1,34 @@
 ---
 title: Integrating the AppLayout
-sidebar_position: 6
+sidebar_position: 7
 draft: true
-_i18n_hash: c0ed4864dc99a4665aef3f4ff808bc9d
+description: Step 6 - Use the AppLayout component.
+_i18n_hash: fece87dce53e7e41102e122c740f6ea8
 ---
-Tässä vaiheessa integroi aiemmissa vaiheissa toteutetut ominaisuudet, kuten reititys ja näkymät, yhtenäiseen sovelluksen asetteluun. Tämä rakenne tarjoaa yhtenäisen navigointijärjestelmän ja dynaamiset sisältöalueet.
+Tässä vaiheessa integroi käytettävissä olevat ominaisuudet, jotka on toteutettu aiemmissa vaiheissa, kuten reititys ja näkymät, yhtenäiseen sovelluksen ulkoasuun. Tämä rakenne tarjoaa yhtenäisen navigointijärjestelmän ja dynaamiset sisältöalueet.
 
-## Sovelluksen asettelun tarkoitus {#purpose-of-the-app-layout}
+## Sovelluksen suorittaminen {#running-the-app}
 
-`AppLayout` toimii perustana sovelluksesi kokonaisrakenteen ja -kulun hallintaan. Se tarjoaa:
-- **Globaali navigointi**: Konsistentti tapa siirtyä keskeisten osioiden välillä.
-- **Dynaaminen sisällön renderointi**: Keskitetty asettelu reititetyille näkymille.
+Kun kehität sovellustasi, voit käyttää [6-integrating-an-app-layout](https://github.com/webforj/webforj-tutorial/tree/main/6-integrating-an-app-layout) vertailukohtana. Näet sovelluksen toiminnassa:
+
+1. Siirry ylimpään hakemistoon, joka sisältää `pom.xml`-tiedoston, tämä on `6-integrating-an-app-layout`, jos seuraat versiota GitHubissa.
+
+2. Käytä seuraavaa Maven-komentoa suorittaaksesi Spring Boot -sovelluksen paikallisesti:
+    ```bash
+    mvn
+    ```
+
+Sovelluksen suorittaminen avaa automaattisesti uuden selaimen osoitteessa `http://localhost:8080`.
+
+## Sovelluksen ulkoasun tarkoitus {#purpose-of-the-app-layout}
+
+`AppLayout` toimii perustana sovelluksesi yleisen rakenteen ja virtausten hallintaan. Se tarjoaa:
+- **Kansainvälinen navigointi**: Yhtenäinen tapa siirtyä keskeisten osioiden välillä.
+- **Dynaaminen sisällön renderointi**: Keskitetyllä ulkoasulla, joka näyttää reititetyt näkymät.
 
 ## Käyttäen `AppNav` {#using-appnav}
 
-`AppNav` komponenttia käytetään navigaatiovalikon luomiseen sovelluksen käyttöliittymässä. Tämä valikko tarjoaa linkkejä eri näkymiin sovelluksessasi, kuten `DemoView`:
+`AppNav`-komponenttia käytetään navigointivalikon luomiseen sovelluksen käyttöliittymässä. Tämä valikko tarjoaa linkkejä eri näkymiin sovelluksessasi, kuten `DemoView`:
 
 ```java title="MainLayout.java"
 private void setDrawer() {
@@ -27,22 +41,22 @@ private void setDrawer() {
 }
 ```
 
-Esimerkissä:
-- Navigaatiovalikko lisätään sovelluksen laatikkoon.
-- Jokainen valikkokohde on `AppNavItem`, joka määrittelee:
-  - Tunnisteen, esimerkiksi "Koontinäyttö."
-  - Kohdenäkemyksen, esimerkiksi `DemoView`.
-  - Valinnaisen ikonivaihtoehdon, esimerkiksi sarakkeiden ikoni.
+Tässä esimerkissä:
+- Navigointivalikko lisätään sovelluksen laatikkoon.
+- Jokainen valikkokohta on `AppNavItem`, joka määrittää:
+  - Nimen, esimerkiksi "Koontinäyttö."
+  - Kohdevälin, esimerkiksi `DemoView`.
+  - Valinnaisen kuvakkeen, esimerkiksi sarakkeet kuvake.
 
-## Asettelureitit ja ulostulot {#layout-routes-and-outlets}
+## Ulkoasu reitit ja ulostulot {#layout-routes-and-outlets}
 
-Asettelut käyttävät reittejä ja ulostuloja dynaamisesti sisältöjen renderoimiseksi rakennetussa asettelussa. webforJ:ssa:
-- **Reitit** määrittelevät, miten näkymät vastaavat tiettyjä polkuja.
-- **Ulostulot** toimivat paikkamerkkeinä asetteluissa, joissa reititetyt näkymät näytetään.
+Ulkoasu käyttää reittejä ja ulostuloja dynaamisesti renderöidäkseen sisältöä rakenteellisessa ulkoasussa. webforJ:ssä:
+- **Reitit** määrittävät, miten näkymät kartoituvat tiettyihin polkuihin.
+- **Ulostulot** toimivat paikkana ulkoasuissa, joissa reititetyt näkymät näytetään.
 
-### Esimerkki: Asettelureitin määrittäminen {#example-setting-up-a-layout-route}
+### Esimerkki: Ulkoasureitin määrittäminen {#example-setting-up-a-layout-route}
 
-`MainLayout`-luokassa `@Route`-annotaatio määrittelee sen perustasoksi, ja `DemoView` renderoidaan tämän asettelun ulostulon kautta:
+`MainLayout`-luokassa `@Route`-annotaatio määrittää sen perusulkoasuksi, ja `DemoView` renderöidään tämän ulkoasun kautta:
 
 ```java title="MainLayout.java"
 @Route("/")
@@ -54,7 +68,7 @@ public class MainLayout extends Composite<AppLayout> {
 }
 ```
 
-`@Route`-annotaatio `DemoView`lle määrittelee, että se käyttää `MainLayout`-asettelua ulostulona:
+`@Route`-annotaatio `DemoView`-luokassa määrittää, että se käyttää `MainLayout`-ulostuloa:
 
 ```java title="DemoView.java"
 @Route(value = "/demo", outlet = MainLayout.class)
@@ -64,6 +78,6 @@ public class DemoView extends Composite<Div> {
 }
 ```
 
-## Dynaamisen sisällön lisääminen `RouteOutlet`-komponentin avulla {#adding-dynamic-content-with-routeoutlet}
+## Dynaamisen sisällön lisääminen `RouteOutlet`-komponentilla {#adding-dynamic-content-with-routeoutlet}
 
-`RouteOutlet` näyttää dynaamisesti näkymiä aktiivisen reitin mukaan. Asettelussa näkymät kuten `DemoView` renderoidaan `RouteOutlet`in kautta. `RouteOutlet` käsitellään implisiittisesti reittiannotaatioiden ulostulomäärittelyssä.
+`RouteOutlet` näyttää dynaamisesti näkymiä aktiivisen reitin perusteella. Ulkoasussa, näkymiä kuten `DemoView` renderöidään `RouteOutlet`-komponentin kautta. Vaikka `RouteOutlet` käsitellään epäsuorasti reittien annotaation ulostulospesifikaatiossa.

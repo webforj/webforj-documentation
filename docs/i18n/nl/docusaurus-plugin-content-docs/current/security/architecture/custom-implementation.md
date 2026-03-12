@@ -1,24 +1,24 @@
 ---
 sidebar_position: 6
 title: Custom Implementation Example
-_i18n_hash: c0e3b67ebd80f907848594a5586ad644
+_i18n_hash: 9d0d249042bfbbccb42d3ce7a329a8e7
 ---
-Deze gids begeleidt je bij het bouwen van een volledige aangepaste beveiligingsimplementatie met behulp van sessiegebaseerde authenticatie. Je leert hoe de vier kerninterfaces samenwerken door ze vanaf nul te implementeren.
+Deze gids begeleidt je bij het bouwen van een volledige aangepaste beveiligingsimplementatie met sessie-gebaseerde authenticatie. Je leert hoe de vier kerninterfaces samen werken door ze vanaf nul te implementeren.
 
-:::tip[De meeste apps moeten Spring Security gebruiken]
-De [Spring Security-integratie](/docs/security/getting-started) configureert automatisch alles wat hier is getoond. Bouw alleen aangepaste beveiliging als je specifieke vereisten hebt of geen gebruikmaakt van Spring Boot.
+:::tip[De meeste apps zouden Spring Security moeten gebruiken]
+De [Spring Security integratie](/docs/security/getting-started) configureert automatisch alles wat hier wordt weergegeven. Bouw alleen aangepaste beveiliging als je specifieke vereisten hebt of geen gebruik maakt van Spring Boot.
 :::
 
 ## Wat je gaat bouwen {#what-youll-build}
 
 Een werkend beveiligingssysteem met vier klassen:
 
-- **SecurityConfiguration** - Definieert beveiligingsgedrag en omleidingslocaties
+- **SecurityConfiguration** - Definieert beveiligingsgedrag en redirectlocaties
 - **SecurityContext** - Houdt bij wie is ingelogd met behulp van HTTP-sessies
 - **SecurityManager** - Coördineert beveiligingscontroles en biedt inloggen/uitloggen
-- **SecurityRegistrar** - Verbindt alles tijdens de app-opstart
+- **SecurityRegistrar** - Verbindt alles aan het begin van de app
 
-Dit voorbeeld gebruikt sessiegebaseerde opslag, maar je zou dezelfde interfaces kunnen implementeren met behulp van databasequery's, LDAP of een andere authenticatiebackend.
+Dit voorbeeld gebruikt op sessies gebaseerde opslag, maar je kunt dezelfde interfaces implementeren met databasequery's, LDAP of een andere authenticatiebackend.
 
 ## Hoe de onderdelen samenwerken {#how-the-pieces-work-together}
 
@@ -36,29 +36,29 @@ sequenceDiagram
     end
 
     Note over Registrar: Applicatie start
-    Registrar->>Manager: Creëren
-    Registrar->>Evaluators: Registreren
-    Registrar->>Observer: Aan router koppelen
+    Registrar->>Manager: Maak aan
+    Registrar->>Evaluators: Registreer
+    Registrar->>Observer: Koppel aan router
 
     Note over Observer,Config: Gebruiker navigeert naar route
-    Observer->>Manager: Verzoek om beslissing
-    Manager->>Evaluators: Evaluators uitvoeren
-    Evaluators->>Context: Gebruiker controleren
-    Evaluators->>Config: Omleidingen opvragen
+    Observer->>Manager: Vraag beslissing
+    Manager->>Evaluators: Voer evaluatoren uit
+    Evaluators->>Context: Controleer gebruiker
+    Evaluators->>Config: Verkrijg redirects
     Evaluators-->>Manager: Beslissing
-    Manager-->>Observer: Toegestaan of Weigeren
+    Manager-->>Observer: Toestaan of Weigeren
 ```
 
 **Stroom:**
-1. **`SecurityRegistrar`** draait tijdens de opstart, maakt de manager aan, registreert evaluators en koppelt de observer
-2. **`SecurityManager`** coördineert alles - het biedt de context en configuratie aan evaluators
-3. **`SecurityContext`** beantwoordt "Wie is ingelogd?" door uit HTTP-sessies te lezen
-4. **`SecurityConfiguration`** beantwoordt "Waarheen omleiden?" voor inlog- en toegang geweigerd pagina's
-5. **`Evaluators`** nemen toegangbeslissingen met behulp van de context en configuratie
+1. **`SecurityRegistrar`** draait bij het opstarten, maakt de manager aan, registreert evaluatoren en koppelt de observer
+2. **`SecurityManager`** coördineert alles - het biedt de context en configuratie aan evaluatoren
+3. **`SecurityContext`** beantwoordt "Wie is ingelogd?" door te lezen uit HTTP-sessies
+4. **`SecurityConfiguration`** beantwoordt "Waar naartoe redirecten?" voor login- en toegang geweigerd-pagina's
+5. **`Evaluators`** nemen toegangsbeslissingen met behulp van de context en configuratie
 
 ## Stap 1: Definieer beveiligingsconfiguratie {#step-1-define-security-configuration}
 
-De configuratie vertelt het beveiligingssysteem hoe het zich moet gedragen en waar het gebruikers moet omleiden:
+De configuratie vertelt het beveiligingssysteem hoe het zich moet gedragen en waar het gebruikers naartoe moet omleiden:
 
 ```java title="SecurityConfiguration.java"
 package com.securityplain.security;
@@ -99,7 +99,7 @@ public class SecurityConfiguration implements RouteSecurityConfiguration {
 ```
 
 - `isEnabled() = true` - Beveiliging is actief
-- `isSecureByDefault() = false` - Routes zijn openbaar tenzij geannoteerd (gebruik `true` om authenticatie voor alle routes standaard vereist te maken)
+- `isSecureByDefault() = false` - Routes zijn openbaar tenzij geannoteerd ( gebruik `true` om authenticatie voor alle routes standaard vereisen)
 - `/login` - Waar niet-geauthenticeerde gebruikers naartoe gaan
 - `/access-denied` - Waar geauthenticeerde gebruikers zonder machtigingen naartoe gaan
 
@@ -120,10 +120,10 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * Eenvoudige sessiegebaseerde beveiligingscontext.
+ * Eenvoudige sessie-gebaseerde beveiligingscontext.
  *
  * <p>
- * Slaat gebruikersprincipal en rollen op in HTTP-sessie. Dit is een minimale implementatie voor onderwijsdoeleinden.
+ * Slaat gebruikersprincipaal en rollen op in HTTP-sessies. Dit is een minimale implementatie voor onderwijsdoeleinden.
  * </p>
  */
 public class SecurityContext implements RouteSecurityContext {
@@ -223,15 +223,15 @@ public class SecurityContext implements RouteSecurityContext {
 
 **Hoe het werkt:**
 
-- `isAuthenticated()` controleert of een gebruikersprincipal bestaat in de sessie
-- `getPrincipal()` haalt de gebruikersnaam uit de sessiestorage
+- `isAuthenticated()` controleert of een gebruikersprincipaal bestaat in de sessie
+- `getPrincipal()` haalt de gebruikersnaam op uit de sessieopslag
 - `hasRole()` controleert of de rolenset van de gebruiker de opgegeven rol bevat
 - `getAttribute()` / `setAttribute()` beheren aangepaste beveiligingsattributen
-- `Environment.getSessionAccessor()` biedt thread-veilige toegang tot de sessie
+- `Environment.getSessionAccessor()` biedt thread-veilige sessietoegang
 
-## Stap 3: Maak beveiligingsmanager {#step-3-create-security-manager}
+## Stap 3: Maak een beveiligingsmanager {#step-3-create-security-manager}
 
-De manager coördineert beveiligingsbeslissingen. Het breidt `AbstractRouteSecurityManager` uit, dat evaluator-ketens en toegang weigering afhandelt:
+De manager coördineert beveiligingsbeslissingen. Het verlengt `AbstractRouteSecurityManager`, dat evaluator-ketens en toegang weigeringen afhandelt:
 
 <!-- vale off -->
 
@@ -249,7 +249,7 @@ import com.webforj.router.security.RouteSecurityContext;
 import java.util.Set;
 
 /**
- * Eenvoudige implementatie van een beveiligingsmanager.
+ * Eenvoudige beveiligingsmanager implementatie.
  *
  * <p>
  * Biedt statische methoden voor inloggen/uitloggen en beheert de beveiligingscontext.
@@ -296,7 +296,7 @@ public class SecurityManager extends AbstractRouteSecurityManager {
   }
 
   /**
-   * Logt de huidige gebruiker uit en leidt om naar de inlogpagina.
+   * Logt de huidige gebruiker uit en leidt om naar de loginpagina.
    */
   public void logout() {
     SessionObjectTable.clear(SESSION_USER_KEY);
@@ -309,7 +309,7 @@ public class SecurityManager extends AbstractRouteSecurityManager {
   }
 
   /**
-   * Haal de huidige managerinstantie op.
+   * Verkrijg de huidige managerinstantie.
    *
    * @return de huidige managerinstantie
    */
@@ -341,14 +341,14 @@ public class SecurityManager extends AbstractRouteSecurityManager {
 
 **Hoe het werkt:**
 
-- Breidt `AbstractRouteSecurityManager` uit om evaluatorketenlogica te erven
+- Verlengt `AbstractRouteSecurityManager` om evaluator-ketlogic te erven
 - Biedt implementaties voor `getConfiguration()` en `getSecurityContext()`
-- Voegt `login()` toe om gebruikers te authentiseren en referenties in de sessie op te slaan
+- Voegt `login()` toe om gebruikers te authenticeren en referenties in de sessie op te slaan
 - Voegt `logout()` toe om de sessie te wissen en om te leiden naar de inlogpagina
 - Gebruikt [`SessionObjectTable`](/docs/advanced/object-string-tables#sessionobjecttable) voor eenvoudige sessieopslag
-- Slaat zichzelf op in [`ObjectTable`](/docs/advanced/object-string-tables#objecttable) voor app-brede toegang
+- Slaat zichzelf op in [`ObjectTable`](/docs/advanced/object-string-tables#objecttable) voor algemene toegang in de app
 
-## Stap 4: Verbind alles tijdens opstart {#step-4-wire-everything-at-startup}
+## Stap 4: Verbind alles bij opstarten {#step-4-wire-everything-at-startup}
 
 De registrar verbindt alle onderdelen wanneer de app start:
 
@@ -369,7 +369,7 @@ import com.webforj.router.security.evaluator.RolesAllowedEvaluator;
  * Registreert routebeveiligingscomponenten tijdens de opstart van de applicatie.
  *
  * <p>
- * Stelt de beveiligingsmanager en evaluators in met de router.
+ * Stelt beveiligingsmanager en evaluatoren in met de router.
  * </p>
  */
 @AppListenerPriority(1)
@@ -380,17 +380,17 @@ public class SecurityRegistrar implements AppLifecycleListener {
    */
   @Override
   public void onWillRun(App app) {
-    // Maak beveiligingsmanager aan
+    // Maak beveiligingsmanager
     SecurityManager securityManager = new SecurityManager();
     securityManager.saveCurrent(securityManager);
 
-    // Registreer ingebouwde evaluators met prioriteiten
+    // Registreer ingebouwde evaluatoren met prioriteiten
     securityManager.registerEvaluator(new DenyAllEvaluator(), 0);
     securityManager.registerEvaluator(new AnonymousAccessEvaluator(), 1);
     securityManager.registerEvaluator(new PermitAllEvaluator(), 2);
     securityManager.registerEvaluator(new RolesAllowedEvaluator(), 3);
 
-    // Maak beveiligingsobserver aan en koppel deze aan de router
+    // Maak beveiligingsobserver en koppel aan router
     RouteSecurityObserver securityObserver = new RouteSecurityObserver(securityManager);
     Router router = Router.getCurrent();
     if (router != null) {
@@ -408,19 +408,19 @@ Maak `src/main/resources/META-INF/services/com.webforj.AppLifecycleListener` met
 com.securityplain.security.SecurityRegistrar
 ```
 
-Dit registreert je [`AppLifecycleListener`](/docs/advanced/lifecycle-listeners) zodat het wordt uitgevoerd bij de opstart van de app.
+Dit registreert je [`AppLifecycleListener`](/docs/advanced/lifecycle-listeners) zodat het wordt uitgevoerd bij het opstarten van de app.
 
 **Hoe het werkt:**
 
-- Draait vroeg (`@AppListenerPriority(1)`) om beveiliging op te zetten voordat routes worden geladen
+- Draait vroeg (`@AppListenerPriority(1)`) om beveiliging in te stellen voordat routes worden geladen
 - Maakt de beveiligingsmanager aan en slaat deze globaal op
-- Registreert ingebouwde evaluators in prioriteitsvolgorde (lagere nummers draaien eerst)
+- Registreert ingebouwde evaluatoren in volgorde van prioriteit (lagere nummers worden eerst uitgevoerd)
 - Maakt de observer die navigatie onderschept
 - Koppelt de observer aan de router zodat beveiligingscontroles automatisch plaatsvinden
 
 Nadat dit is uitgevoerd, is beveiliging actief voor alle navigatie.
 
-## Gebruik je implementatie {#using-your-implementation}
+## Het gebruiken van je implementatie {#using-your-implementation}
 
 ### Maak een inlogweergave {#create-a-login-view}
 
@@ -442,7 +442,7 @@ import com.webforj.router.security.annotation.AnonymousAccess;
 @FrameTitle("Inloggen")
 @AnonymousAccess
 public class LoginView extends Composite<Login> {
-  private Login self = getBoundComponent();
+  private final Login self = getBoundComponent();
 
   public LoginView() {
     self.onSubmit(e -> {
