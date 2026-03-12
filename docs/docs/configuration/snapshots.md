@@ -5,13 +5,13 @@ sidebar_class_name: new-content
 ---
 
 Every webforJ version release is accompanied by detailed [release notes](https://github.com/webforj/webforj/releases) and a [release blog article](/blog/tags/release).
-Snapshot versions of webforJ give you access to the latest features for testing while development continues for the pre-released version.
+Snapshot versions of webforJ give you access to the latest features for testing while development continues on the pre-released version.
 
 <!-- vale Google.Acronyms = NO -->
 While snapshots aren't publicly listed on Maven repository sites like [Maven Central](https://central.sonatype.com/artifact/com.webforj/webforj/overview) or [MVN Repository](https://mvnrepository.com/artifact/com.webforj/webforj), it's easy to access the name of the snapshot. To find the newest snapshot version, navigate to the [webforJ project](https://github.com/webforj/webforj) on GitHub. From there, find the project's [POM file](https://github.com/webforj/webforj/blob/main/pom.xml) and look for the `version` tag:
 <!-- vale Google.Acronyms = YES -->
 
-```xml {3}
+```xml {3} title="pom.xml"
 <groupId>com.webforj</groupId>
 <artifactId>webforj-parent</artifactId>
 <version>26.00-SNAPSHOT</version>
@@ -19,9 +19,9 @@ While snapshots aren't publicly listed on Maven repository sites like [Maven Cen
 <name>webforj</name>
   ```
 
-Then, to use that snapshot version in your app, use the found value as your `webforj.version` property in the POM file of your app:
+To use that snapshot version in your app, use that value as the `webforj.version` property in your app's POM file:
 
-```xml {2}
+```xml title="pom.xml" {2}
 <properties>
   <webforj.version>26.00-SNAPSHOT</webforj.version>
   <maven.compiler.target>21</maven.compiler.target>
@@ -31,7 +31,7 @@ Then, to use that snapshot version in your app, use the found value as your `web
 </properties>
 ```
 
-Alternatively, if you’re creating a new webforJ app, go to [startforJ](https://docs.webforj.com/startforj/) and from the **webforJ version** dropdown, select the option with `(pre)`.
+Alternatively, if you’re creating a new webforJ app, go to [startforJ](https://docs.webforj.com/startforj/) and choose the webforJ version that ends with `(pre)`.
 
 :::warning
 Snapshot versions are under active development and are subject to change, so they aren’t recommended for use in live production apps.
