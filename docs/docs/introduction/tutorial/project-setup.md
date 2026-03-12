@@ -120,5 +120,5 @@ To see the app in action as you progress through the tutorial:
     ```
 
 <!-- vale Google.WordList = NO -->
-Running the app automatically opens a new browser at http://localhost:8080.
+Running the app automatically opens a new browser at `http://localhost:8080`.
 <!-- vale Google.WordList = YES -->
