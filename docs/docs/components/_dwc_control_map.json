@@ -4,6 +4,7 @@
 "AppNav": "dwc-app-nav",
 "AppNavItem": "dwc-app-nav-item",
 "Avatar": "dwc-avatar",
+"Badge": "dwc-badge",
 "BusyIndicator": "dwc-loading",
 "Button" :"dwc-button",
 "CheckableMenuItem" :"dwc-menuitem",

@@ -19,7 +19,7 @@ Badges work well for notification counts, status labels, and short metadata like
 
 ## Creating a badge {#creating-a-badge}
 
-The simplest `Badge` takes a text string. You can also pass a `BadgeTheme` directly in the constructor to set the visual style right away. If you need to build a badge dynamically, populating the label or content after construction, the no-argument constructor works too.
+The simplest `Badge` takes a text string. You can also pass a `BadgeTheme` directly in the constructor to set the visual style right away. The no-argument constructor is available when you need to build a badge dynamically and configure it after creation.
 
 ```java
 Badge badge = new Badge("New");
@@ -35,7 +35,7 @@ status.setTheme(BadgeTheme.WARNING);
 
 ## Label {#label}
 
-In addition to setting the text of a `Badge` on construction, you can set or update a badge's text content at any time with `setLabel()`. The `setText()` method is an alias for the same operation; use whichever reads more naturally in context. Both have corresponding getters, `getLabel()` and `getText()`, if you need to read the current value.
+You can set or update a badge's text content at any time with `setLabel()`. The `setText()` method is an alias for the same operation; use whichever reads more naturally in context. Both have corresponding getters, `getLabel()` and `getText()`, if you need to read the current value back.
 
 ```java
 Badge badge = new Badge();
@@ -52,7 +52,7 @@ String current = badge.getLabel();
 
 Sometimes a more visual approach is useful when conveying information with a `Badge`. Badges support slotted icon content. Pass an icon alongside text using the `Badge(String, Component...)` constructor, or pass an icon alone to create an icon-only badge. When combined with text, the icon renders to the left of the label.
 
-Icon-only badges work especially well for compact status indicators in dense layouts where a short word would feel cluttered. Pairing an icon with text is a good middle ground when the icon alone might be ambiguous. A status symbol is widely understood on its own in many contexts, but adding a short text label removes guesswork for first-time users. You can pass multiple components to the constructor if you need to compose a richer prefix, though in practice a single icon is the most common pattern.
+Icon-only badges work especially well for compact status indicators in dense layouts where a short word would feel cluttered. Pairing an icon with text is a good middle ground when the icon alone might be ambiguous. A status symbol is widely understood on its own, but adding a short text label removes guesswork for first-time users. You can pass multiple components to the constructor if you need to compose a richer prefix, though in practice a single icon is the most common pattern.
 
 <!-- vale off -->
 <ComponentDemo
@@ -76,7 +76,7 @@ check.setTheme(BadgeTheme.SUCCESS);
 
 ### Buttons {#buttons}
 
-Attach a `Badge` to a `Button` using `setBadge()`. The badge appears at the top-right corner of the button, overlapping the button edge, a common pattern for notification counts on toolbar actions or icon buttons. Because the badge is a standalone component, it's entirely independent of the button's own theme and size. You can pair a primary button with a danger badge, or a ghost button with a success badge, and each side of the combination styles itself without interfering with the other. Updating the count later is as simple as calling `badge.setLabel()` with a new value; the button doesn't need to be touched.
+Attach a `Badge` to a `Button` using `setBadge()`. The badge appears at the top-right corner of the button, overlapping the button edge. This is a common pattern for notification counts on toolbar actions or icon buttons. Because the badge is a standalone component, it's entirely independent of the button's own theme and size. You can pair a primary button with a danger badge, or a ghost button with a success badge, and each side of the combination styles itself without conflict. Updating the count later is as simple as calling `badge.setLabel()` with a new value; the button doesn't need to be touched.
 
 <!-- vale off -->
 <ComponentDemo
@@ -88,7 +88,7 @@ height='200px'
 
 ### Tabbed pane {#tabbed-pane}
 
-Add a `Badge` as a suffix on a `Tab` using `setSuffixComponent()`. This is a natural fit for inbox-style counts or status indicators on each tab, the kind of pattern you see on email clients or task managers where it's important to signal activity on every section at a glance. The badge sits at the trailing edge of the tab label, after any prefix content, and stays visible regardless of which tab is currently active. This persistence is intentional: hiding the badge on inactive tabs would make it harder to know at a glance which sections need attention without switching to each one.
+Add a `Badge` as a suffix on a `Tab` using `setSuffixComponent()`. This is a natural fit for inbox-style counts or status indicators on each tab. It's the kind of pattern you see on email clients or task managers where it's important to signal activity on every section at a glance. The badge sits at the trailing edge of the tab label, after any prefix content, and stays visible regardless of which tab is currently active. This persistence is intentional: hiding the badge on inactive tabs would make it harder to know which sections need attention without switching to each one.
 
 <!-- vale off -->
 <ComponentDemo
@@ -100,11 +100,11 @@ height='220px'
 
 ## Styling {#styling}
 
-To style a `Badge` component to be applicable in various situations or convey different meanings, the following themes, sizes, and other styling info can be used:
+Badges support several styling dimensions: theme colors to convey meaning, an expanse scale to control size, and CSS properties for fine-grained customization.
 
 ### Themes {#themes}
 
-As with many components in webforJ, the `Badge` comes in fourteen themes: seven filled and seven outlined variants. 
+As with many components in webforJ, the `Badge` comes in fourteen themes: seven filled and seven outlined variants.
 
 Filled themes use a solid background and automatically compute a text color that meets contrast requirements. Outlined variants instead use a tinted background with a colored border, making them a subtler option when you want the badge to complement surrounding content rather than dominate it.
 
