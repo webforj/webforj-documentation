@@ -16,3 +16,14 @@ jobs:
           reporter: github-pr-review
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+  check-indentation:
+    name: runner / check-indentation
+    runs-on: ubuntu-slim
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Check code block indentation
+        run: python scripts/check-indentation.py
