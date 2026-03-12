@@ -65,8 +65,8 @@ table.addColumn("completed", Task::isCompleted).setRenderer(renderer);
 
 // Custom icons
 BooleanRenderer<Task> custom = new BooleanRenderer<>(
-    TablerIcon.create("thumb-up").setTheme(Theme.SUCCESS),
-    TablerIcon.create("thumb-down").setTheme(Theme.DANGER)
+  TablerIcon.create("thumb-up").setTheme(Theme.SUCCESS),
+  TablerIcon.create("thumb-down").setTheme(Theme.DANGER)
 );
 table.addColumn("completed", Task::isCompleted).setRenderer(custom);
 ```
@@ -174,25 +174,25 @@ When no built-in renderer fits your use case, extend `Renderer` and implement `b
 **Step 1:** Extend `Renderer` with your row data type.
 
 ```java
-public class RatingRenderer extends Renderer {
+public class RatingRenderer extends Renderer<MusicRecord> {
 ```
 
 **Step 2:** Override `build()` and return a lodash template string.
 
 ```java
-    @Override
-    public String build() {
-        return /* html */"""
-            <%
-              const rating = cell.value;
-              const stars  = Math.round(Math.min(Math.max(rating, 0), 5));
-              const full   = '★'.repeat(stars);
-              const empty  = '☆'.repeat(5 - stars);
-            %>
-            <span><%= full %><%= empty %></span>
-            <span style="color: var(--dwc-color-default-text-muted)">(<%= rating.toFixed(1) %>)</span>
-        """;
-    }
+  @Override
+  public String build() {
+    return /* html */"""
+      <%
+        const rating = Number(cell.value);
+        const stars  = Math.round(Math.min(Math.max(rating, 0), 5));
+        const full   = '★'.repeat(stars);
+        const empty  = '☆'.repeat(5 - stars);
+      %>
+      <span><%= full %><%= empty %></span>
+      <span style="color: var(--dwc-color-body-text)">(<%= rating.toFixed(1) %>)</span>
+    """;
+  }
 }
 ```
 
@@ -203,87 +203,36 @@ table.addColumn("rating", MusicRecord::getRating)
      .setRenderer(new RatingRenderer());
 ```
 
-### Template reference {#template-reference}
-
-The following information is useful when creating custom `Renderer` classes lists what tolls you can use and context you have reference to when building a `Renderer`.
-
-<Accordion disableGutters>
-<AccordionSummary expandIcon={<ExpandMoreIcon />}>
-<strong>Lodash template syntax and context reference</strong>
-</AccordionSummary>
-<AccordionDetails>
-<div>
-
-Every `build()` method returns a lodash template string. The following syntax tags and context objects are available inside every template.
-
-**Template syntax**
-
-| Syntax | Purpose |
-|--------|---------|
-| `<%= expr %>` | Interpolate: inserts the expression's value into the output |
-| `<% code %>` | Execute: runs arbitrary JavaScript (loops, conditionals, variable declarations) |
-| `<%- expr %>` | Escape: like `<%= %>` but HTML-encodes the result to prevent injection attacks |
-
-**`cell` properties**
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `value` | `Object` | The raw cell value from the data source |
-| `index` | `int` | The cell's position within its row |
-| `first` | `boolean` | `true` if this is the first cell in the row |
-| `last` | `boolean` | `true` if this is the last cell in the row |
-| `id` | `String` | The cell's unique ID |
-| `row` | `TableRow` | The parent row object |
-| `column` | `TableColumn` | The parent column object |
-
-**`cell.row` properties**
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `getValue(id)` | `Function` | Returns the value of another column in this row |
-| `index` | `int` | Row position in the table |
-| `first` | `boolean` | `true` for the first row |
-| `last` | `boolean` | `true` for the last row |
-| `even` / `odd` | `boolean` | Row parity, useful for alternating styles |
-| `id` | `String` | Unique row ID |
-| `data` | `Object` | The full row data object provided by the application |
-
-**`cell.column` properties**
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `id` | `String` | Column identifier (matches the field name) |
-| `label` | `String` | The column's header text |
-| `align` | `ColumnAlignment` | `left`, `center`, or `right` |
-| `sortable` | `boolean` | Whether the column can be sorted |
-| `sort` | `SortDirection` | Current sort direction |
-| `minWidth` | `number` | Minimum column width in pixels |
-
-</div>
-</AccordionDetails>
-</Accordion>
+:::tip
+For more information on how Lodash syntax used to access cell information and create informative renderers, see [this reference section](#template-reference).
+:::
 
 ### Accessing multiple columns {#accessing-multiple-columns}
 
 Use `cell.row.getValue("columnId")` to read sibling columns inside the template. This is useful for combining fields, computing deltas, or cross-referencing related data.
 
 ```java
-public class ArtistAvatarRenderer extends Renderer {
-    @Override
-    public String build() {
-        return /* html */"""
-            <%
-              const name     = cell.row.getValue("artist");
-              const initials = name
-                  ? name.split(' ').map(w => w.charAt(0)).join('').substring(0, 2).toUpperCase()
-                  : '?';
-            %>
-            <div style="display: flex; align-items: center; gap: 8px;">
-              <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--dwc-color-primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600;"><%= initials %></div>
-              <span><%= name %></span>
-            </div>
-        """;
-    }
+public class ArtistAvatarRenderer extends Renderer<MusicRecord> {
+  @Override
+  public String build() {
+    return /* html */"""
+      <%
+        const name     = cell.row.getValue("artist");
+        const initials = name
+          ? name.split(' ').map(w => w.charAt(0)).join('').substring(0, 2).toUpperCase()
+          : '?';
+      %>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="width: 28px; height: 28px; border-radius: 50%;
+          background: var(--dwc-color-primary); color: white;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 11px; font-weight: 600;">
+          <%= initials %>
+        </div>
+        <span><%= name %></span>
+      </div>
+    """;
+  }
 }
 ```
 
@@ -293,20 +242,18 @@ public class ArtistAvatarRenderer extends Renderer {
 
 ```java
 IconButtonRenderer<MusicRecord> deleteBtn = new IconButtonRenderer<>(
-    TablerIcon.create("trash").setTheme(Theme.DANGER)
+  TablerIcon.create("trash").setTheme(Theme.DANGER)
 );
 deleteBtn.addClickListener(e -> {
-    MusicRecord record = e.getItem();
-    repository.delete(record);
-    table.refresh();
+  MusicRecord record = e.getItem();
+  repository.delete(record);
+  table.refresh();
 });
 
 table.addColumn("delete", r -> "").setRenderer(deleteBtn);
 ```
 
-## Performance: lazy rendering {#lazy-rendering}
-
-<DocChip chip='since' label='25.12' />
+## Performance: lazy rendering {#lazy-rendering} <DocChip chip='since' label='25.12' />
 
 For columns that use visually expensive renderers such as badges, progress bars, avatars, or web components, enable lazy rendering to improve scroll performance.
 
@@ -332,7 +279,7 @@ Cell renderers create more entities within the DOM, meaning more CPU work during
 Lazy rendering can help reduce the performance impact if a renderer is truly needed. If you only need to change or format the value, and you are not creating a complex DOM, use a value provider instead to transform the value.
 :::
 
-## Built-in renderer reference {#built-in-renderers} <DocChip chip='since' label='25.12' />
+## Built-in renderer reference {#built-in-renderers} 
 
 webforJ ships with a comprehensive set of renderers for the most common use cases. Assign any of them to a column using `column.setRenderer(renderer)`.
 
@@ -436,8 +383,8 @@ table.addColumn("completed", Task::isCompleted).setRenderer(renderer);
 
 // Custom icons
 BooleanRenderer custom = new BooleanRenderer<>(
-    TablerIcon.create("thumb-up").setTheme(Theme.SUCCESS),
-    TablerIcon.create("thumb-down").setTheme(Theme.DANGER)
+  TablerIcon.create("thumb-up").setTheme(Theme.SUCCESS),
+  TablerIcon.create("thumb-down").setTheme(Theme.DANGER)
 );
 ```
 
@@ -507,7 +454,7 @@ table.addColumn("retail", MusicRecord::getRetail)
 
 <DocChip chip='since' label='25.12' />
 
-Displays a numeric value as a percentage. Set the second constructor argument to `true` to render a thin progress bar beside the text.
+Displays a numeric value as a percentage.
 
 ```java
 PercentageRenderer renderer = new PercentageRenderer<>(Theme.PRIMARY, true);
@@ -819,3 +766,75 @@ table.addColumn("custom", MusicRecord::getTitle).setRenderer(renderer);
 </AccordionDetails>
 </Accordion>
 </AccordionGroup>
+
+## Template reference {#template-reference}
+
+Renderers offer a powerful mechanism for customizing the way data is displayed within a `Table`. The primary class, `Renderer`, is designed to be extended to create custom renderers based on lodash templates, enabling dynamic and interactive content rendering. 
+
+Lodash templates enable the insertion of HTML directly into table cells, making them highly effective for rendering complex cell data in a `Table`. This approach allows for the dynamic generation of HTML based on cell data, facilitating rich and interactive table cell content.
+
+### Lodash syntax {#lodash-syntax}
+
+The following section outlines the basics of Lodash syntax. While this is not an exhaustive or comprehensive overview, it can be used to help start using Lodash within the `Table` component. 
+
+#### Syntax overview for lodash templates: {#syntax-overview-for-lodash-templates}
+
+- `<%= ... %>` - Interpolates values, inserting the JavaScript code's result into the template.
+- `<% ... %>` - Executes JavaScript code, allowing loops, conditionals, and more.
+- `<%- ... %>` - Escapes HTML content, ensuring interpolated data is safe from HTML injection attacks.
+
+#### Examples using cell data: {#examples-using-cell-data}
+
+**1. Simple value interpolation**: directly display the cell's value.
+
+`<%= cell.value %>`
+
+**2. Conditional rendering**: use JavaScript logic to conditionally render content.
+
+`<% if (cell.value > 100) { %> 'High' <% } else { %> 'Normal' <% } %>`
+
+**3. Combining data fields**: render content using multiple data fields from the cell.
+
+`<%= cell.row.getValue('firstName') + ' ' + cell.row.getValue('lastName') %>`
+
+**4. Escaping HTML content**: safely render user-generated content.
+
+The renderer has access to detailed cell, row, and column properties in the client side:
+
+**TableCell Properties:**
+
+|Property	|Type	|Description|
+|-|-|-|
+|column|`TableColumn`|The associated column object.|
+|first|`boolean`|Indicates if the cell is the first in the row.|
+|id|`String`|The cell ID.|
+|index|`int`|The cell's index within its row.|
+|last|`boolean`|Indicates if the cell is the last in the row.|
+|row|`TableRow`|The associated row object for the cell.|
+|value|`Object`|The raw value of the cell, directly from the data source.|
+
+**TableRow Properties:**
+
+|Property|Type|Description|
+|-|-|-|
+|cells|`TableCell[]`|The cells within the row.
+|data|`Object`|The data provided by the application for the row.
+|even|`boolean`|Indicates if the row is even-numbered (for styling purposes).
+|first|`boolean`|Indicates if the row is the first in the table.
+|id|`String`|Unique ID for the row.
+|index|`int`|The row index.
+|last|`boolean`|Indicates if the row is the last in the table.
+|odd|`boolean`|Indicates if the row is odd-numbered (for styling purposes).
+
+**TableColumn Properties:**
+
+|Property	|Type	|Description|
+|-|-|-|
+|align|ColumnAlignment|The alignment of the column (left, center, right).
+|id|String|The field of the row object to get the cell's data from.
+|label|String|The name to render in the column header.
+|pinned|ColumnPinDirection|The pin direction of the column (left, right, auto).
+|sortable|boolean|If true, the column can be sorted.
+|sort|SortDirection|The sort order of the column.
+|type|ColumnType|The type of the column (text, number, boolean, etc.).
+|minWidth|number|The minimum width of the column in pixels.
