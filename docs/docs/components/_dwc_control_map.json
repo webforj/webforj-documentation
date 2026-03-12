@@ -1,5 +1,6 @@
 {
 "Accordion": "dwc-accordion",
+"AccordionPanel": "dwc-accordion-panel",
 "Alert": "dwc-alert",
 "AppLayout": "dwc-app-layout",
 "AppNav": "dwc-app-nav",

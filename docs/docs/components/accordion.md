@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Accordion
+sidebar_class_name: new-content
 ---
 
 <DocChip chip='shadow' />
@@ -46,9 +47,14 @@ height='500px'
 Control the open/closed state programmatically at any time. `isOpened()` is useful when you need to read the current state before deciding what to do. For example, you might toggle a panel to the opposite state or conditionally showing or hiding other parts of the UI.
 
 ```java
-panel.open();                      // Expands the panel
-panel.close();                     // Collapses the panel
-boolean isOpen = panel.isOpened(); // Returns true if currently expanded
+// Expand the panel
+panel.open();
+
+// Collapse the panel
+panel.close();                    
+
+// Returns true if currently expanded
+boolean isOpen = panel.isOpened();
 ```
 
 Use `setLabel()` to update the header text after construction. `setText()` is an alias for the same operation, so the label can be kept in sync with dynamic data:
@@ -90,8 +96,11 @@ accordion.setMultiple(true);
 With multiple mode active, all panels in the group can be expanded or collapsed at once using the bulk methods:
 
 ```java
-accordion.openAll();    // Expands every panel in the group
-accordion.closeAll();   // Collapses every panel in the group
+// Expand every panel in the group
+accordion.openAll();
+
+// Collapse every panel in the group
+accordion.closeAll();   
 ```
 
 <!-- vale off -->
@@ -221,4 +230,4 @@ panel.onClose(e -> {
 
 ## Styling {#styling}
 
-<TableBuilder name="Accordion" />
+<TableBuilder name="AccordionPanel" />
