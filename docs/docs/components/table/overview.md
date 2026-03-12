@@ -2,6 +2,7 @@
 sidebar_position: 1
 title: Table
 hide_giscus_comments: true
+sidebar_class_name: has-new-content
 ---
 
 <DocChip chip='shadow' />
