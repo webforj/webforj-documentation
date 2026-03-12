@@ -25,12 +25,12 @@ Accordions work well for FAQs, settings pages, and step-by-step flows where reve
 `AccordionPanel` is the core building block of the accordion system. Pass a label string to the constructor to set the header text, then add child components to populate the body. A panel works on its own without any surrounding `Accordion` group, making it a useful lightweight disclosure widget when you just need a single collapsible section. The no-argument constructor is also available when you prefer to configure the panel entirely after construction.
 
 ```java
-// Label only — add body content separately
+// Label only - add body content separately
 AccordionPanel panel = new AccordionPanel("Section Title");
 panel.add(new Paragraph("Body content goes here."));
 
 // Label and body content passed directly in the constructor
-AccordionPanel panel = new AccordionPanel("Section Title", new Paragraph("Body content goes here."));
+AccordionPanel panel = new AccordionPanel("Title", new Paragraph("Body content."));
 ```
 
 <!-- vale off -->
@@ -43,7 +43,7 @@ height='500px'
 
 ### Opening and closing {#opening-and-closing}
 
-Control the open/closed state programmatically at any time. `isOpened()` is useful when you need to read the current state before deciding what to do—for example, toggling a panel to the opposite state or conditionally showing or hiding other parts of the UI.
+Control the open/closed state programmatically at any time. `isOpened()` is useful when you need to read the current state before deciding what to do. For example, you might toggle a panel to the opposite state or conditionally showing or hiding other parts of the UI.
 
 ```java
 panel.open();                      // Expands the panel
@@ -128,9 +128,13 @@ height='600px'
 />
 <!-- vale on -->
 
-## Custom header {#custom-header}
+## Customizing panels {#customizing-panels}
 
-A panel's header renders its label as plain text by default. Use `addToHeader()` to replace that text with any component or combination of components, making it straightforward to include icons, badges, status indicators, or other rich markup alongside the panel label. This is particularly useful in dashboards or settings panels where each section header needs to convey extra context at a glance—such as an item count, a warning badge, or a completion status—without requiring the user to expand the panel first.
+Beyond labels and basic open/close behavior, each `AccordionPanel` supports richer customization of both its header content and the expand/collapse icon. These options let you tailor the look of each panel without needing external CSS or wrapper components.
+
+### Custom header {#custom-header}
+
+A panel's header renders its label as plain text by default. Use `addToHeader()` to replace that text with any component or combination of components, making it straightforward to include icons, badges, status indicators, or other rich markup alongside the panel label. This is particularly useful in dashboards or settings panels where each section header needs to convey extra context at a glance, such as an item count, a warning badge, or a completion status, without requiring the user to expand the panel first.
 
 ```java
 FlexLayout headerContent = FlexLayout.create()
@@ -146,9 +150,9 @@ panel.addToHeader(headerContent);
 Content added via `addToHeader()` fully replaces the default label text. To keep visible text alongside custom content, include a `Span` within the slotted layout as shown above. `setLabel()` and `setText()` continue to work alongside `addToHeader()`, but since the header slot takes visual precedence, the label text won't be shown unless you include it explicitly in your slotted content.
 :::
 
-## Custom icon {#custom-icon}
+### Custom icon {#custom-icon}
 
-The expand/collapse indicator defaults to a chevron that is visible in both the open and closed states. `setIcon()` replaces it with any component, useful for branded iconography or when a different visual metaphor fits the content better. Passing `null` restores the default chevron. `getIcon()` returns the currently set icon, or `null` if the default chevron is in use.
+The expand/collapse indicator defaults to a chevron that's visible in both the open and closed states. `setIcon()` replaces it with any component, useful for branded iconography or when a different visual metaphor fits the content better. Passing `null` restores the default chevron. `getIcon()` returns the currently set icon, or `null` if the default chevron is in use.
 
 ```java
 // Replace the default chevron with a plus icon
@@ -157,6 +161,8 @@ panel.setIcon(FeatherIcon.PLUS.create());
 // Restore the default chevron
 panel.setIcon(null);
 ```
+
+The following demo shows both a custom header with rich content and a panel with a custom expand/collapse icon:
 
 <!-- vale off -->
 <ComponentDemo
@@ -168,7 +174,7 @@ height='500px'
 
 ## Nested accordions {#nested-accordions}
 
-Accordions can be nested inside other accordion panels, which is useful for representing hierarchical content such as categorized settings or multi-level navigation. Add an inner `Accordion` to an outer `AccordionPanel` as any other child component. Keep nesting shallow, one or two levels is usually enough. Deeper hierarchies tend to be harder to navigate and often signal that the content structure itself needs rethinking.
+Accordions can be nested inside other accordion panels, which is useful for representing hierarchical content such as categorized settings or multi-level navigation. Add an inner `Accordion` to an outer `AccordionPanel` as any other child component. Keep nesting shallow. One or two levels is usually enough. Deeper hierarchies tend to be harder to navigate and often signal that the content structure itself needs rethinking.
 
 ```java
 AccordionPanel innerA = new AccordionPanel("Inner Panel A");
@@ -191,13 +197,11 @@ height='550px'
 
 `AccordionPanel` fires events at each stage of the toggle lifecycle. The three event types cover different moments, so choose based on when your logic needs to run:
 
-| Event | Fires | Notes |
-|-------|-------|-------|
-| `AccordionPanelToggleEvent` | Before the state changes | `e.isOpened()` returns `true` when the panel is about to open, `false` when about to close |
-| `AccordionPanelOpenEvent` | After the panel has fully opened | — |
-| `AccordionPanelCloseEvent` | After the panel has fully closed | — |
-
-The most important thing to understand about `AccordionPanelToggleEvent` is that `e.isOpened()` reflects the state being transitioned **to**, not the state the panel is currently in. If the panel is closed and the user clicks to open it, `e.isOpened()` returns `true` before the panel has moved. This makes the toggle event the right choice when you want to react to intent—for example, to lazy-load content before the panel opens, or to track which sections a user visits regardless of direction. Use `onOpen()` and `onClose()` instead when you need to act after the transition is complete, such as updating a summary or triggering an animation.
+| Event | Fires |
+|-------|-------|
+| `AccordionPanelToggleEvent` | Before the state changes |
+| `AccordionPanelOpenEvent` | After the panel has fully opened |
+| `AccordionPanelCloseEvent` | After the panel has fully closed |
 
 ```java
 panel.onToggle(e -> {
@@ -215,14 +219,6 @@ panel.onClose(e -> {
 });
 ```
 
-<!-- vale off -->
-<ComponentDemo
-path='/webforj/events'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionEventsView.java'
-height='275px'
-/>
-<!-- vale on -->
-
 ## Styling {#styling}
 
-<TableBuilder name="AccordionPanel" />
+<TableBuilder name="Accordion" />
