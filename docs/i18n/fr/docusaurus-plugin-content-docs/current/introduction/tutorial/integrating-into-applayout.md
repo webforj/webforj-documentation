@@ -1,27 +1,41 @@
 ---
 title: Integrating the AppLayout
-sidebar_position: 6
+sidebar_position: 7
 draft: true
-_i18n_hash: c0ed4864dc99a4665aef3f4ff808bc9d
+description: Step 6 - Use the AppLayout component.
+_i18n_hash: fece87dce53e7e41102e122c740f6ea8
 ---
-Dans cette étape, vous allez intégrer les fonctionnalités mises en œuvre dans les étapes précédentes, telles que le routage et les vues, dans une mise en page d'application cohérente. Cette structure fournira un système de navigation unifié et des zones de contenu dynamiques.
+Dans cette étape, vous intégrerez les fonctionnalités mises en œuvre dans les étapes précédentes, telles que le routage et les vues, dans une disposition d'application cohérente. Cette structure fournira un système de navigation unifié et des zones de contenu dynamique.
 
-## Objectif de la mise en page de l'application {#purpose-of-the-app-layout}
+## Exécution de l'application {#running-the-app}
 
-Le `AppLayout` sert de fondation pour gérer la structure globale et le flux de votre application. Il offre :
-- **Navigation Globale** : Un moyen cohérent de passer d'une section clé à une autre.
-- **Rendu Dynamique de Contenu** : Une mise en page centralisée pour afficher les vues routées.
+Au fur et à mesure que vous développez votre application, vous pouvez utiliser [6-integrating-an-app-layout](https://github.com/webforj/webforj-tutorial/tree/main/6-integrating-an-app-layout) comme comparaison. Pour voir l'application en action :
+
+1. Naviguez vers le répertoire de haut niveau contenant le fichier `pom.xml`, c'est `6-integrating-an-app-layout` si vous suivez la version sur GitHub.
+
+2. Utilisez la commande Maven suivante pour exécuter l'application Spring Boot localement :
+    ```bash
+    mvn
+    ```
+
+L'exécution de l'application ouvre automatiquement un nouveau navigateur à `http://localhost:8080`.
+
+## Objectif de la disposition de l'application {#purpose-of-the-app-layout}
+
+Le `AppLayout` sert de fondation pour gérer la structure et le flux global de votre application. Il fournit :
+- **Navigation Globale** : Une manière cohérente de passer entre les sections clés.
+- **Rendu de Contenu Dynamique** : Une mise en page centralisée pour afficher les vues routées.
 
 ## Utilisation de `AppNav` {#using-appnav}
 
-Le composant `AppNav` est utilisé pour créer un menu de navigation dans l'interface utilisateur de l'application. Ce menu fournit des liens vers différentes vues de votre application, comme le `DemoView` :
+Le composant `AppNav` est utilisé pour créer un menu de navigation au sein de l'interface utilisateur de l'application. Ce menu fournit des liens vers différentes vues dans votre application, comme le `DemoView` :
 
 ```java title="MainLayout.java"
 private void setDrawer() {
   AppLayout layout = getBoundComponent();
 
   AppNav appNav = new AppNav();
-  appNav.addItem(new AppNavItem("Tableau de bord", DemoView.class, FeatherIcon.MESSAGE_CIRCLE.create()));
+  appNav.addItem(new AppNavItem("Dashboard", DemoView.class, FeatherIcon.MESSAGE_CIRCLE.create()));
 
   layout.addToDrawer(appNav);
 }
@@ -29,16 +43,16 @@ private void setDrawer() {
 
 Dans cet exemple :
 - Le menu de navigation est ajouté au tiroir de l'application.
-- Chaque élément de menu est un `AppNavItem` qui spécifie :
-  - L'étiquette, par exemple "Tableau de bord."
-  - La vue cible, par exemple `DemoView`.
+- Chaque élément du menu est un `AppNavItem` qui spécifie :
+  - L'étiquette, par exemple "Dashboard".
+  - La vue cible par exemple `DemoView`.
   - Une icône optionnelle par exemple une icône de colonnes.
 
 ## Routes et sorties de mise en page {#layout-routes-and-outlets}
 
-La mise en page utilise des routes et des sorties pour rendre dynamiquement le contenu dans une mise en page structurée. Dans webforJ :
-- **Routes** définissent comment les vues sont mappées à des chemins spécifiques.
-- **Sorties** agissent comme des espaces réservés dans les mises en page où les vues routées sont affichées.
+La mise en page utilise des routes et des sorties pour rendre dynamiquement le contenu dans une disposition structurée. Dans webforJ :
+- **Les Routes** définissent comment les vues se cartographient à des chemins spécifiques.
+- **Les Sorties** agissent comme des espaces réservés dans les mises en page où les vues routées sont affichées.
 
 ### Exemple : Configuration d'une route de mise en page {#example-setting-up-a-layout-route}
 
@@ -54,16 +68,16 @@ public class MainLayout extends Composite<AppLayout> {
 }
 ```
 
-L'annotation `@Route` pour `DemoView` spécifie qu'elle utilise `MainLayout` comme sortie :
+L'annotation `@Route` pour `DemoView` spécifie qu'elle utilise `MainLayout` comme sa sortie :
 
 ```java title="DemoView.java"
 @Route(value = "/demo", outlet = MainLayout.class)
-@FrameTitle("Démonstration")
+@FrameTitle("Demo")
 public class DemoView extends Composite<Div> {
-    // Logique du DemoView
+    // Logique de DemoView
 }
 ```
 
-## Ajout de contenu dynamique avec `RouteOutlet` {#adding-dynamic-content-with-routeoutlet}
+## Ajouter du contenu dynamique avec `RouteOutlet` {#adding-dynamic-content-with-routeoutlet}
 
-Un `RouteOutlet` affiche dynamiquement des vues en fonction de la route active. Dans la mise en page, des vues comme `DemoView` sont rendues via le `RouteOutlet`. Le `RouteOutlet` est implicitement géré par la spécification de sortie dans les annotations de route.
+Un `RouteOutlet` affiche dynamiquement des vues en fonction de la route active. Dans la mise en page, des vues comme `DemoView` sont rendues à travers le `RouteOutlet`. Tandis que le `RouteOutlet` est implicitement géré par la spécification de sortie dans les annotations de route.

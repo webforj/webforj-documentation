@@ -2,65 +2,64 @@
 sidebar_position: 2
 title: Understanding Components
 sidebar_class_name: new-content
-_i18n_hash: abce24ee16a8f383791d857b9039f35b
+_i18n_hash: 9e69e45c2d978b84854066e80e3139e5
 ---
-<DocChip chip='since' label='23.05' />
-<JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/> 
+<JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/>
 
-Bevor Sie benutzerdefinierte Komponenten in webforJ erstellen, ist es wichtig, die grundlegende Architektur zu verstehen, die beeinflusst, wie Komponenten funktionieren. Dieser Artikel erklärt die Komponentenhierarchie, die Identität von Komponenten, Lebenszykluskonzepte und wie Schnittstellen Anliegen Komponentenfähigkeiten bereitstellen.
+Bevor Sie benutzerdefinierte Komponenten in webforJ erstellen, ist es wichtig, die grundlegende Architektur zu verstehen, die die Funktionsweise der Komponenten prägt. Dieser Artikel erklärt die Komponentenhierarchie, die Identität der Komponenten, Lebenszykluskonzepte und wie Concern-Interfaces Komponentenfähigkeiten bereitstellen.
 
-## Verständnis der Komponentenhierarchie
+## Verständnis der Komponentenhierarchie {#understanding-the-component-hierarchy}
 
-webforJ organisiert Komponenten in eine Hierarchie mit zwei Gruppen: interne Klassen des Frameworks, die Sie niemals erweitern sollten, und Klassen, die speziell für den Bau benutzerdefinierter Komponenten entwickelt wurden. In diesem Abschnitt wird erklärt, warum webforJ Komposition anstelle von Vererbung verwendet und was jede Ebene der Hierarchie bereitstellt.
+webforJ organisiert Komponenten in einer Hierarchie mit zwei Gruppen: internen Framework-Klassen, die Sie niemals erweitern sollten, und Klassen, die speziell für den Bau benutzerdefinierter Komponenten entwickelt wurden. In diesem Abschnitt erfahren Sie, warum webforJ Komposition über Vererbung verwendet und was jede Ebene der Hierarchie bietet.
 
-### Warum Komposition statt Erweiterung?
+### Warum Komposition statt Vererbung? {#why-composition-instead-of-extension}
 
 In webforJ sind integrierte Komponenten wie [`Button`](../components/button) und [`TextField`](../components/fields/textfield) finale Klassen – Sie können sie nicht erweitern:
 
 ```java
-// Das wird in webforJ nicht funktionieren
+// Das funktioniert nicht in webforJ
 public class MyButton extends Button {
-    // Button ist final - kann nicht erweitert werden 
+    // Button ist final - kann nicht erweitert werden
 }
 ```
 
-webforJ verwendet **Komposition über Vererbung**. Anstatt vorhandene Komponenten zu erweitern, erstellen Sie eine Klasse, die `Composite` erweitert und Komponenten darin kombiniert. `Composite` fungiert als Container, der eine einzelne Komponente (die gebundene Komponente) umhüllt und es Ihnen ermöglicht, eigene Komponenten und Verhaltensweisen hinzuzufügen.
+webforJ verwendet **Komposition über Vererbung**. Anstatt bestehende Komponenten zu erweitern, erstellen Sie eine Klasse, die `Composite` erweitert und Komponenten darin kombiniert. `Composite` fungiert als Container, der eine einzelne Komponente (die gebundene Komponente) umschließt und es Ihnen ermöglicht, eigene Komponenten und Verhaltensweisen hinzuzufügen.
 
 ```java
 public class SearchBar extends Composite<FlexLayout> {
+    private final FlexLayout self = getBoundComponent();
     private TextField searchField;
     private Button searchButton;
     
     public SearchBar() {
-        searchField = new TextField("Suche");
+        searchField = new TextField("Suchen");
         searchButton = new Button("Los");
         
-        getBoundComponent()
-            .setDirection(FlexDirection.ROW)
+        self.setDirection(FlexDirection.ROW)
             .add(searchField, searchButton);
     }
 }
 ```
 
-### Warum Sie integrierte Komponenten nicht erweitern können
+### Warum Sie integrierte Komponenten nicht erweitern können {#why-you-cant-extend-built-in-components}
 
-webforJ-Komponenten sind als final gekennzeichnet, um die Integrität der zugrunde liegenden clientseitigen Webkomponente zu wahren. Das Erweitern von webforJ-Komponentenklassen würde Kontrolle über die zugrunde liegende Webkomponente gewähren, was zu unbeabsichtigten Konsequenzen führen und die Konsistenz und Vorhersagbarkeit des Verhaltens von Komponenten gefährden könnte.
+webforJ-Komponenten sind als final gekennzeichnet, um die Integrität der zugrunde liegenden clientseitigen Webkomponente zu wahren. Das Erweitern von webforJ-Komponentenklassen würde die Kontrolle über die zugrunde liegende Webkomponente ermöglichen, was zu unbeabsichtigten Konsequenzen führen und die Konsistenz und Vorhersehbarkeit des Verhaltens der Komponenten beeinträchtigen könnte.
 
-Für eine ausführliche Erklärung siehe [Final Classes and Extension Restrictions](https://docs.webforj.com/docs/architecture/controls-components#final-classes-and-extension-restrictions) in der Architekturdokumentation.
+Für eine detaillierte Erklärung siehe [Final Classes and Extension Restrictions](https://docs.webforj.com/docs/architecture/controls-components#final-classes-and-extension-restrictions) in der Architektur-Dokumentation.
 
-### Die Komponentenhierarchie
+### Die Komponentenhierarchie {#the-component-hierarchy}
 
 ```mermaid
 graph TD
     A[Komponente<br/><small>Abstrakte Basis - internes Framework</small>]
     
-    A --> B[DwcKomponente<br/><small>Integrierte webforJ-Komponenten</small>]
-    A --> C[Komposit<br/><small>Kombinieren von webforJ-Komponenten</small>]
-    A --> D[ElementKomposit<br/><small>Webkomponenten umhüllen</small>]
+    A --> B[DwcComponent<br/><small>Integrierte webforJ-Komponenten</small>]
+    A --> C[Composite<br/><small>Kombinieren Sie webforJ-Komponenten</small>]
+    A --> D[ElementComposite<br/><small>Umgang mit Webkomponenten</small>]
     
     B --> E[Button, TextField,<br/>DateField, ComboBox]
     
-    D --> F[ElementKompositContainer<br/><small>Komponenten mit Slots</small>]
+    D --> F[ElementCompositeContainer<br/><small>Komponenten mit Slots</small>]
     
     style A fill:#f5f5f5,stroke:#666
     style B fill:#fff4e6,stroke:#ff9800
@@ -78,70 +77,71 @@ graph TD
 - **ElementComposite**
 - **ElementCompositeContainer**
 
-**Interne Framework-Klassen (niemals direkt erweitern):**
-- **Komponente**
-- **DwcKomponente**
+**Interne Framework-Klassen (nie direkt erweitern):**
+- **Component**
+- **DwcComponent**
 
-:::warning[Niemals `Komponente` oder `DwcKomponente` direkt erweitern]
-Erweitern Sie niemals `Komponente` oder `DwcKomponente` direkt. Alle integrierten Komponenten sind final. Verwenden Sie immer Kompositionsmuster mit `Composite` oder `ElementComposite`.
+:::warning[Niemals `Component` oder `DwcComponent` direkt erweitern]
+Erweitern Sie niemals `Component` oder `DwcComponent` direkt. Alle integrierten Komponenten sind final. Verwenden Sie immer Kompositionsmuster mit `Composite` oder `ElementComposite`.
 
-Versuche, `DwcKomponente` zu erweitern, führen zu einer Laufzeitausnahme.
+Versuche, `DwcComponent` zu erweitern, führen zu einer Laufzeitausnahme.
 :::
 
-## Schnittstellensorgen: Hinzufügen von Fähigkeiten zu Ihren Komponenten
+## Concern-Interfaces {#concern-interfaces}
 
-Schnittstellensorgen sind Java-Schnittstellen, die spezifische Fähigkeiten zu Ihren Komponenten hinzufügen. Jedes Interface fügt eine Gruppe verwandter Methoden hinzu. Zum Beispiel fügt `HasSize` Methoden zur Steuerung von Breite und Höhe hinzu, während `HasFocus` Methoden zum Verwalten des Fokusstatus hinzufügt.
+Concern-Interfaces sind Java-Interfaces, die spezifische Fähigkeiten zu Ihren Komponenten bereitstellen. Jedes Interface fügt eine Reihe von verwandten Methoden hinzu. Zum Beispiel fügt `HasSize` Methoden zur Steuerung von Breite und Höhe hinzu, während `HasFocus` Methoden zur Verwaltung des Fokusstatus hinzufügt.
 
-Wenn Sie eine Schnittstellensorge bei Ihrer Komponente implementieren, erhalten Sie Zugang zu diesen Fähigkeiten, ohne Implementierungscode schreiben zu müssen. Das Interface bietet Standardimplementierungen, die automatisch funktionieren.
+Wenn Sie ein Concern-Interface in Ihrer Komponente implementieren, erhalten Sie Zugriff auf diese Fähigkeiten, ohne Implementierungscode schreiben zu müssen. Das Interface bietet Standardimplementierungen, die automatisch funktionieren.
 
-Die Implementierung von Schnittstellensorgen gibt Ihren benutzerdefinierten Komponenten die gleichen APIs wie integrierte webforJ-Komponenten:
+Die Implementierung von Concern-Interfaces gibt Ihren benutzerdefinierten Komponenten dieselben APIs wie den integrierten webforJ-Komponenten:
 
 ```java
-// Implementieren Sie HasSize, um Breiten-/Höhenmethoden automatisch zu erhalten
+// Implementieren Sie HasSize, um automatisch Breiten-/Höhenmethoden zu erhalten
 public class SizedCard extends Composite<Div> implements HasSize<SizedCard> {
+    private final Div self = getBoundComponent();
     
     public SizedCard() {
-        getBoundComponent().setText("Inhalt der Karte");
+        self.setText("Inhalt der Karte");
     }
     
-    // Keine Notwendigkeit, diese zu implementieren - Sie bekommen sie kostenlos:
+    // Diese müssen nicht implementiert werden - Sie erhalten sie kostenlos:
     // setWidth(), setHeight(), setSize()
 }
 
-// Verwenden Sie es wie jede webforJ-Komponente
+// Verwenden Sie es wie eine beliebige webforJ-Komponente
 SizedCard card = new SizedCard();
 card.setWidth("300px")
     .setHeight("200px");
 ```
 
-Das Composite leitet diese Aufrufe automatisch an das zugrunde liegende `Div` weiter. Kein zusätzlicher Code erforderlich.
+Der Composite leitet diese Aufrufe automatisch an das zugrunde liegende `Div` weiter. Kein zusätzlicher Code erforderlich.
 
-**Häufige Schnittstellensorgen:**
+**Häufige Concern-Interfaces:**
 - `HasSize` - `setWidth()`, `setHeight()`, `setSize()`
 - `HasFocus` - `focus()`, `setFocusable()`, Fokusereignisse
 - `HasClassName` - `addClassName()`, `removeClassName()`
-- `HasStyle` - `setStyle()`, Inline-CSS-Management
-- `HasVisibility` - `setVisible()`, Sichtbar-/Unsichtbarfähigkeit
+- `HasStyle` - `setStyle()`, Inline-CSS-Verwaltung
+- `HasVisibility` - `setVisible()`, Anzeige-/Verstecken-Fähigkeit
 - `HasText` - `setText()`, Textinhaltverwaltung
 - `HasAttribute` - `setAttribute()`, HTML-Attributverwaltung
 
 :::warning
-Wenn die zugrunde liegende Komponente die Schnittstellensorgfähigkeit nicht unterstützt, erhalten Sie eine Laufzeitausnahme. Stellen Sie in diesem Fall Ihre eigene Implementierung bereit.
+Wenn die zugrunde liegende Komponente die Schnittstellenfähigkeit nicht unterstützt, erhalten Sie eine Laufzeitausnahme. Stellen Sie in diesem Fall Ihre eigene Implementierung bereit.
 :::
 
-Für eine vollständige Liste der verfügbaren Schnittstellensorgen siehe die [webforJ JavaDoc](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/concern/package-summary.html).
+Für eine vollständige Liste der verfügbaren Concern-Interfaces siehe die [webforJ JavaDoc](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/concern/package-summary.html).
 
-## Übersicht über den Lebenszyklus der Komponenten
+## Überblick über den Komponentenlebenszyklus {#component-lifecycle-overview}
 
-webforJ verwaltet den Lebenszyklus der Komponenten automatisch. Das Framework kümmert sich um die Erstellung, Anhang und Zerstörung von Komponenten, ohne dass manuelles Eingreifen erforderlich ist.
+webforJ verwaltet den Komponentenlebenszyklus automatisch. Das Framework übernimmt die Erstellung, Anfügung und Zerstörung von Komponenten, ohne dass manuelle Eingriffe erforderlich sind.
 
-**Lebenszyklus-Hooks** sind verfügbar, wenn Sie sie benötigen:
-- `onDidCreate()` - Wird aufgerufen, nachdem die Komponente an das DOM angehängt wurde
+**Lebenszyklus-Hooks** stehen zur Verfügung, wenn Sie sie benötigen:
+- `onDidCreate()` - Wird aufgerufen, nachdem die Komponente dem DOM angefügt wurde
 - `onDidDestroy()` - Wird aufgerufen, wenn die Komponente zerstört wird
 
-Diese Hooks sind **optional**. Verwenden Sie sie, wenn Sie müssen:
-- Ressourcen bereinigen (Intervalle stoppen, Verbindungen schließen)
-- Komponenten initialisieren, die eine DOM-Anbindung benötigen
+Diese Hooks sind **optional**. Verwenden Sie sie, wenn Sie:
+- Ressourcen bereinigen müssen (Intervalle stoppen, Verbindungen schließen)
+- Komponenten initialisieren möchten, die eine DOM-Anfügung erfordern
 - Integrieren mit clientseitigem JavaScript
 
 In den meisten einfachen Fällen können Sie Komponenten direkt im Konstruktor initialisieren. Verwenden Sie Lebenszyklus-Hooks wie `onDidCreate()`, um Arbeiten bei Bedarf zu verzögern.
