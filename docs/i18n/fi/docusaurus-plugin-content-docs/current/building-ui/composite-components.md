@@ -35,7 +35,7 @@ public class BasicComposite extends Composite<FlexLayout> {
 
 `getBoundComponent()`-metodi tarjoaa pääsyn alaosaan, jolloin voit konfiguroida sen ominaisuuksia, lisätä lapsikomponentteja ja hallita sen käyttäytymistä suoraan.
 
-Sidottu komponentti voi olla mikä tahansa [webforJ-komponentti](../components/overview) tai [HTML-elementtikomponentti](/docs/building-ui/web-components/html-elements). Joustavien asettelujen osalta harkitse [`FlexLayout`](../components/flex-layout) tai [`Div`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/html/elements/Div.html) käyttämistä sidottuna komponenttina.
+Sidottu komponentti voi olla mikä tahansa [webforJ-komponentti](../components/overview) tai [HTML-elementtikomponentti](/docs/components/html-elements). Joustavien asettelujen osalta harkitse [`FlexLayout`](../components/flex-layout) tai [`Div`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/html/elements/Div.html) käyttämistä sidottuna komponenttina.
 
 :::note Komponentin laajennus
 Älä koskaan laajenna `Component`- tai `DwcComponent`-luokkaa suoraan. Käytä aina koostumusmalleja `Composite`-komponentin rakentamiseen.

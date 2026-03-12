@@ -35,7 +35,7 @@ public class BasicComposite extends Composite<FlexLayout> {
 
 La méthode `getBoundComponent()` fournit un accès à votre composant sous-jacent, vous permettant de configurer ses propriétés, d'ajouter des composants enfants et de gérer son comportement directement.
 
-Le composant lié peut être n'importe quel [composant webforJ](../components/overview) ou [composant élément HTML](/docs/building-ui/web-components/html-elements). Pour des mises en page flexibles, envisagez d'utiliser [`FlexLayout`](../components/flex-layout) ou [`Div`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/html/elements/Div.html) comme votre composant lié.
+Le composant lié peut être n'importe quel [composant webforJ](../components/overview) ou [composant élément HTML](/docs/components/html-elements). Pour des mises en page flexibles, envisagez d'utiliser [`FlexLayout`](../components/flex-layout) ou [`Div`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/html/elements/Div.html) comme votre composant lié.
 
 :::note Extension de composant
 N'étendez jamais directement `Component` ou `DwcComponent`. Utilisez toujours des modèles de composition avec `Composite` pour créer des composants personnalisés.

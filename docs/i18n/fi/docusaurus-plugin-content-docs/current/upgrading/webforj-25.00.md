@@ -115,7 +115,7 @@ home.setText("<h1>Etusivu</h1>");
 
 ## HTML-kontit {#html-containers}
 
-`com.webforj.component.htmlcontainer` -paketti ei ole enää käytössä webforJ:ssä. Käytä sen sijaan monipuolisempaa `com.webforj.component.element` -pakettia. Saadaksesi luettelon webforJ-luokista standardille HTML-elementille, siirry [HTML Element Components](../building-ui/web-components/html-elements.md).
+`com.webforj.component.htmlcontainer` -paketti ei ole enää käytössä webforJ:ssä. Käytä sen sijaan monipuolisempaa `com.webforj.component.element` -pakettia. Saadaksesi luettelon webforJ-luokista standardille HTML-elementille, siirry [HTML Element Components](/docs/components/html-elements).
 
 ## `Request`-muutokset {#request-changes}
 

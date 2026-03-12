@@ -35,7 +35,7 @@ public class BasicComposite extends Composite<FlexLayout> {
 
 `getBoundComponent()` 方法提供对您底层组件的访问，使您能够直接配置其属性、添加子组件并管理其行为。
 
-绑定组件可以是任何 [webforJ 组件](../components/overview) 或 [HTML 元素组件](/docs/building-ui/web-components/html-elements)。对于灵活布局，请考虑使用 [`FlexLayout`](../components/flex-layout) 或 [`Div`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/html/elements/Div.html) 作为您的绑定组件。
+绑定组件可以是任何 [webforJ 组件](../components/overview) 或 [HTML 元素组件](/docs/components/html-elements)。对于灵活布局，请考虑使用 [`FlexLayout`](../components/flex-layout) 或 [`Div`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/html/elements/Div.html) 作为您的绑定组件。
 
 :::note 组件扩展
 切勿直接扩展 `Component` 或 `DwcComponent`。始终使用 `Composite` 的组合模式构建自定义组件。

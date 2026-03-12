@@ -115,7 +115,7 @@ home.setText("<h1>Accueil</h1>");
 
 ## Conteneurs HTML {#html-containers}
 
-Le package `com.webforj.component.htmlcontainer` n'est plus présent dans webforJ. Utilisez plutôt le package `com.webforj.component.element`, qui dispose de plus de fonctionnalités. Pour une liste des classes webforJ pour les éléments HTML standard, consultez [Composants d'éléments HTML](../building-ui/web-components/html-elements.md).
+Le package `com.webforj.component.htmlcontainer` n'est plus présent dans webforJ. Utilisez plutôt le package `com.webforj.component.element`, qui dispose de plus de fonctionnalités. Pour une liste des classes webforJ pour les éléments HTML standard, consultez [Composants d'éléments HTML](/docs/components/html-elements).
 
 ## Changements dans `Request` {#request-changes}
 

@@ -115,7 +115,7 @@ home.setText("<h1>Startpagina</h1>");
 
 ## HTML-container {#html-containers}
 
-Het `com.webforj.component.htmlcontainer`-pakket is niet langer beschikbaar in webforJ. Gebruik in plaats daarvan het meer uitgebreide `com.webforj.component.element`-pakket. Voor een lijst van webforJ-klassen voor standaard HTML-elementen, ga naar [HTML Element Components](../building-ui/web-components/html-elements.md).
+Het `com.webforj.component.htmlcontainer`-pakket is niet langer beschikbaar in webforJ. Gebruik in plaats daarvan het meer uitgebreide `com.webforj.component.element`-pakket. Voor een lijst van webforJ-klassen voor standaard HTML-elementen, ga naar [HTML Element Components](/docs/components/html-elements).
 
 ## `Request`-wijzigingen {#request-changes}
 

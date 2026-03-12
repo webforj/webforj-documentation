@@ -118,7 +118,7 @@ home.setText("<h1>首页</h1>");
 
 ## HTML 容器 {#html-containers}
 
-`com.webforj.component.htmlcontainer` 包在 webforJ 中不再使用。请改用功能更强大的 `com.webforj.component.element` 包。有关标准 HTML 元素的 webforJ 类列表，请访问 [HTML 元素组件](../building-ui/web-components/html-elements.md)。
+`com.webforj.component.htmlcontainer` 包在 webforJ 中不再使用。请改用功能更强大的 `com.webforj.component.element` 包。有关标准 HTML 元素的 webforJ 类列表，请访问 [HTML 元素组件](/docs/components/html-elements)。
 
 ## `Request` 更改 {#request-changes}
 
