@@ -18,7 +18,7 @@ As you develop your app, you can use [6-integrating-an-app-layout](https://githu
     mvn
     ```
 
-Running the app automatically opens a new browser at http://localhost:8080.
+Running the app automatically opens a new browser at `http://localhost:8080`.
 
 ## Purpose of the app Layout {#purpose-of-the-app-layout}
 

@@ -27,7 +27,7 @@ As you develop your app, you can use [3-routing-and-composites](https://github.c
     mvn
     ```
 
-Running the app automatically opens a new browser at [http://localhost:8080](http://localhost:8080).
+Running the app automatically opens a new browser at `http://localhost:8080`.
 
 ## Routable apps {#routable-apps}
 
@@ -83,7 +83,7 @@ To keep the app's two functions separate, your app needs to map the UIs to two u
 
 ### Mapping URLs to components {#mapping-urls-to-components}
 
-Your app is routable and knows to look for two `View` routes, `MainView` and `FormView`, but it doesn't have a specific URL to load them at. Using the `@Route` annotation on a view class, you can tell webforJ where to load it based on a given URL segment. For example, using `@Route("about")` in a view locally maps the class to [http://localhost:8080/**about**](http://localhost:8080/about).
+Your app is routable and knows to look for two `View` routes, `MainView` and `FormView`, but it doesn't have a specific URL to load them at. Using the `@Route` annotation on a view class, you can tell webforJ where to load it based on a given URL segment. For example, using `@Route("about")` in a view locally maps the class to `http://localhost:8080/about`.
 
 As the name implies, `MainView` is the class you want to initially load when the app runs. To achieve this, add a `@Route` annotation that maps `MainView` to the root URL of your app:
 
@@ -97,7 +97,7 @@ public class MainView {
 }
 ```
 
-For the `FormView`, map the view so it loads when a user goes to [http://localhost:8080/**customer**](http://localhost:8080/customer):
+For the `FormView`, map the view so it loads when a user goes to `http://localhost:8080/customer`:
 
 ```java title="FormView.java" {1}
 @Route("customer")

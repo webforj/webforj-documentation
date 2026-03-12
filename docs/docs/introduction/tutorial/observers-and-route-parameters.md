@@ -29,7 +29,7 @@ As you develop your app, you can use [4-observers-and-route-parameters](https://
     mvn
     ```
 
-Running the app automatically opens a new browser at http://localhost:8080.
+Running the app automatically opens a new browser at `http://localhost:8080`.
 
 ## Using the customer's `id` {#using-the-customers-id}
 
@@ -47,15 +47,15 @@ In this step, you’ll make changes to `FormView` so it uses an `id` as an initi
 
 ## Adding a route pattern to `FormView` {#adding-a-route-pattern}
 
-In the previous step, setting the route in `FormView` to `@Route(customer)` maps the class locally to [http://localhost:8080/**customer**](http://localhost:8080/customer). Adding a route pattern lets you add an `id` as an initial parameter to `FormView`.
+In the previous step, setting the route in `FormView` to `@Route(customer)` maps the class locally to `http://localhost:8080/customer`. Adding a route pattern lets you add an `id` as an initial parameter to `FormView`.
 
 A [Route Pattern](/docs/routing/route-patterns) lets you add a parameter in the URL, make it optional, and set constraints on valid patterns. Using the `@Route` annotation, here’s what makes `id` an optional route parameter for `FormView`:
 
-- **`/:id`** gives the route a named parameter of `id`, so going to [http://localhost:8080/**customer/6**](http://localhost:8080/customer/6) loads `FormView` with an `id` parameter of `6`.
+- **`/:id`** gives the route a named parameter of `id`, so going to `http://localhost:8080/customer/6` loads `FormView` with an `id` parameter of `6`.
 
 - **`?`** makes the `id` parameter optional. By default, parameters are required, but making the `id` optional lets you use `FormView` for adding new customers that don’t have an `id` yet.
 
-- **`<[0-9]+>`** constrains `id` to be a positive number. In angle brackets, `<>`, you can add a constraint as a regular expression to the parameter. If the `id` doesn’t match the constraint, e.g., [http://localhost:8080/customer/**john-smith**](http://localhost:8080/customer/john-smith), it sends the user to a 404 page.
+- **`<[0-9]+>`** constrains `id` to be a positive number. In angle brackets, `<>`, you can add a constraint as a regular expression to the parameter. If the `id` doesn’t match the constraint, e.g., `http://localhost:8080/customer/john-smith`, it sends the user to a 404 page.
 
 To add the optional route parameter to `FormView`, change the `@Route` annotation to this:
 
@@ -67,7 +67,7 @@ To add the optional route parameter to `FormView`, change the `@Route` annotatio
 
 `FormView` now accepts an optional `id` parameter and only loads if the `id` is a whole positive number.
 
-However, `FormView` can still load when a user manually enters a URL for a non-existent customer, like [http://localhost:8080/customer/**5000**](http://localhost:8080/customer/5000). Adding a lifecycle observer before entering `FormView` lets your app determine how to handle the incoming `id` value.
+However, `FormView` can still load when a user manually enters a URL for a non-existent customer, like `http://localhost:8080/customer/5000`. Adding a lifecycle observer before entering `FormView` lets your app determine how to handle the incoming `id` value.
 
 ### Conditional routing {#conditional-routing}
 
