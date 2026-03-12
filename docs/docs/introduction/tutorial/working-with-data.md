@@ -30,7 +30,7 @@ As you develop your app, you can use [2-working-with-data](https://github.com/we
     mvn
     ```
 
-Running the app automatically opens a new browser at http://localhost:8080.
+Running the app automatically opens a new browser at [http://localhost:8080](http://localhost:8080).
 
 ## Dependencies and configurations {#dependencies-and-configurations}
 

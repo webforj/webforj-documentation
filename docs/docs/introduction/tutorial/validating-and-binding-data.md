@@ -29,7 +29,7 @@ As you develop your app, you can use [5-validating-and-binding-data](https://git
     mvn
     ```
 
-Running the app automatically opens a new browser at http://localhost:8080.
+Running the app automatically opens a new browser at [http://localhost:8080](http://localhost:8080).
 
 ## Defining validation rules {#defining-validation-rules}
 

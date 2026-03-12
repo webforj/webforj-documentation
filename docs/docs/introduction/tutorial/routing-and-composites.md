@@ -27,7 +27,7 @@ As you develop your app, you can use [3-routing-and-composites](https://github.c
     mvn
     ```
 
-Running the app automatically opens a new browser at http://localhost:8080.
+Running the app automatically opens a new browser at [http://localhost:8080](http://localhost:8080).
 
 ## Routable apps {#routable-apps}
 
