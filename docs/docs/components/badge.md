@@ -9,12 +9,12 @@ sidebar_class_name: new-content
 <DocChip chip='since' label='25.12' />
 <JavadocLink type="badge" location="com/webforj/component/badge/Badge" top='true'/>
 
-A `Badge` is a compact, visually distinct label used to convey status, counts, or short pieces of contextual information. Whether you need to flag a notification count, mark an item as "New", or call attention to a warning, badges give you a lightweight way to surface that information directly in the UI.
+A `Badge` is a compact, visually distinct label used to convey status, counts, or short pieces of contextual information. Whether you need to flag a notification count, mark an item as "New," or call attention to a warning, badges give you a lightweight way to surface that information directly in the UI.
 
 <!-- INTRO_END -->
 
 :::tip Using a `Badge`
-Badges work well for notification counts, status labels, and short metadata like version tags or release states. Keep badge text brief, one or two words at most, so the label reads at a glance.
+Badges work well for notification counts, status labels, and short metadata like version tags or release states. Keep badge text to one or two words so the label reads at a glance.
 :::
 
 ## Creating a badge {#creating-a-badge}
@@ -50,7 +50,9 @@ String current = badge.getLabel();
 
 ## Icons {#icons}
 
-Sometimes a more visual approach is useful when conveying information with a `Badge`. Badges support slotted icon content, simply pass an icon alongside text using the `Badge(String, Component...)` constructor, or pass an icon alone to create an icon-only badge. When combined with text, the icon renders to the left of the label.
+Sometimes a more visual approach is useful when conveying information with a `Badge`. Badges support slotted icon content. Pass an icon alongside text using the `Badge(String, Component...)` constructor, or pass an icon alone to create an icon-only badge. When combined with text, the icon renders to the left of the label.
+
+Icon-only badges work especially well for compact status indicators in dense layouts where a short word would feel cluttered. Pairing an icon with text is a good middle ground when the icon alone might be ambiguous. A status symbol is widely understood on its own in many contexts, but adding a short text label removes guesswork for first-time users. You can pass multiple components to the constructor if you need to compose a richer prefix, though in practice a single icon is the most common pattern.
 
 <!-- vale off -->
 <ComponentDemo
@@ -74,7 +76,7 @@ check.setTheme(BadgeTheme.SUCCESS);
 
 ### Buttons {#buttons}
 
-Attach a `Badge` to a `Button` using `setBadge()`. The badge appears at the top-right corner of the button, overlapping the button edge—a common pattern for notification counts. The badge is independent of the button's own theme, so you can combine, for example, a primary button with a danger badge without any conflict.
+Attach a `Badge` to a `Button` using `setBadge()`. The badge appears at the top-right corner of the button, overlapping the button edge, a common pattern for notification counts on toolbar actions or icon buttons. Because the badge is a standalone component, it's entirely independent of the button's own theme and size. You can pair a primary button with a danger badge, or a ghost button with a success badge, and each side of the combination styles itself without interfering with the other. Updating the count later is as simple as calling `badge.setLabel()` with a new value; the button doesn't need to be touched.
 
 <!-- vale off -->
 <ComponentDemo
@@ -86,7 +88,7 @@ height='200px'
 
 ### Tabbed pane {#tabbed-pane}
 
-Add a `Badge` as a suffix on a `Tab` using `setSuffixComponent()`. This is a natural fit for inbox-style counts or status indicators on each tab. The badge sits at the trailing edge of the tab label and stays visible regardless of which tab is active.
+Add a `Badge` as a suffix on a `Tab` using `setSuffixComponent()`. This is a natural fit for inbox-style counts or status indicators on each tab, the kind of pattern you see on email clients or task managers where it's important to signal activity on every section at a glance. The badge sits at the trailing edge of the tab label, after any prefix content, and stays visible regardless of which tab is currently active. This persistence is intentional: hiding the badge on inactive tabs would make it harder to know at a glance which sections need attention without switching to each one.
 
 <!-- vale off -->
 <ComponentDemo
@@ -118,7 +120,7 @@ height='220px'
 
 ### Custom color {#custom-color}
 
-If the built-in themes don't match your palette, set a custom seed color using the `--dwc-badge-seed` CSS property. From this single value, the badge automatically derives the background, text, and border colors—ensuring the result stays accessible without requiring you to specify each individually.
+If the built-in themes don't match your palette, set a custom seed color using the `--dwc-badge-seed` CSS property. From this single value, the badge automatically derives the background, text, and border colors, so every combination stays readable without you specifying each one individually. This means you can brand a badge to any color in your design system with confidence. Hue, Saturation, and Lightness (HSL) values are particularly convenient here; swapping the hue alone is enough to produce a completely different color family while keeping contrast intact.
 
 ```java
 Badge badge = new Badge("Custom");
