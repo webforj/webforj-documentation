@@ -128,14 +128,16 @@ public class MarkdownViewerStreamingView extends Composite<FlexLayout> {
     });
 
     sendButton.onClick(e -> sendMessage());
+    sendButton.addClassName("chat__send-button");
 
     stopButton.setTheme(Theme.DANGER);
     stopButton.setVisible(false);
     stopButton.onClick(e -> stopStreaming());
+    stopButton.addClassName("chat__stop-button");
 
     FlexLayout buttonWrapper = FlexLayout.create(sendButton, stopButton).build();
     buttonWrapper.setStyle("gap", "var(--dwc-space-s)");
-    buttonWrapper.setStyle("padding-right", "var(--dwc-space-xs)");
+    buttonWrapper.setStyle("padding", "0 var(--dwc-space-xs)");
     input.setSuffixComponent(buttonWrapper);
     inputArea.add(input);
 

@@ -135,7 +135,7 @@ viewer.whenRenderComplete().thenAccept(v -> {
 If progressive rendering isn't enabled or no content is being rendered, the `PendingResult` completes immediately.
 
 :::tip UI coordination
-When using progressive rendering, don't re-enable input fields based solely on when you finish calling `append()`. The renderer may still be displaying buffered content. Wait for `whenRenderComplete()` to ensure users see everything before they can interact again.
+When using progressive rendering, don't re-enable input fields based solely on when you finish calling `append()`. The renderer may still be displaying buffered content. Wait for `whenRenderComplete()` so all content appears before users can interact again.
 :::
 
 The following demo simulates an AI chat interface using `append()` with progressive rendering enabled:
@@ -143,7 +143,7 @@ The following demo simulates an AI chat interface using `append()` with progress
 <ComponentDemo 
 path='/webforj/markdownviewerstreaming?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerStreamingView.java'
-height='450px'
+height='700px'
 />
 
 ## Clearing content {#clearing-content}
