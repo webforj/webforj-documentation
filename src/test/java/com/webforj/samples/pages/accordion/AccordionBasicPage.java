@@ -5,7 +5,7 @@ import com.microsoft.playwright.Page;
 
 public class AccordionBasicPage {
 
-    private static final String ROUTE = "basic";
+    private static final String ROUTE = "webforj/accordion/basic";
 
     private final Locator sectionOne;
     private final Locator sectionTwo;

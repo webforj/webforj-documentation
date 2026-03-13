@@ -9,9 +9,6 @@ sidebar_class_name: new-content
 <DocChip chip='name' label="dwc-accordion-panel" />
 <DocChip chip='since' label='25.12' />
 <JavadocLink type="accordion" location="com/webforj/component/accordion/Accordion" top='true'/>
-<!-- vale off -->
-<JavadocLink type="accordion" location="com/webforj/component/accordion/AccordionPanel"/>
-<!-- vale on -->
 
 The `Accordion` component provides a vertically stacked set of collapsible panels. Each panel has a clickable header that toggles the visibility of its body content. An `AccordionPanel` can be used as a standalone disclosure section, or grouped inside an `Accordion` to coordinate expand and collapse behavior across multiple panels.
 
@@ -21,7 +18,7 @@ The `Accordion` component provides a vertically stacked set of collapsible panel
 Accordions work well for FAQs, settings pages, and step-by-step flows where revealing all content at once would create an overwhelming layout. If sections are equally important and users benefit from seeing them simultaneously, consider [tabs](/docs/components/tabbedpane) instead.
 :::
 
-## AccordionPanel {#accordion-panel}
+## `AccordionPanel` {#accordion-panel}
 
 `AccordionPanel` is the core building block of the accordion system. Pass a label string to the constructor to set the header text, then add child components to populate the body. A panel works on its own without any surrounding `Accordion` group, making it a useful lightweight disclosure widget when you just need a single collapsible section. The no-argument constructor is also available when you prefer to configure the panel entirely after construction.
 
@@ -36,7 +33,7 @@ AccordionPanel panel = new AccordionPanel("Title", new Paragraph("Body content."
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/basic'
+path='/webforj/accordionbasic'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionBasicView.java'
 height='500px'
 />
@@ -79,7 +76,7 @@ Accordion accordion = new Accordion(panel1, panel2, panel3);
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/group'
+path='/webforj/accordiongroup'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionGroupView.java'
 height='400px'
 />
@@ -105,7 +102,7 @@ accordion.closeAll();
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/multiple'
+path='/webforj/accordionmultiple'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionMultipleView.java'
 height='500px'
 />
@@ -131,7 +128,7 @@ accordion.setEnabled(false);
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/disabled'
+path='/webforj/accordiondisabled'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionDisabledView.java'
 height='600px'
 />
@@ -139,7 +136,7 @@ height='600px'
 
 ## Customizing panels {#customizing-panels}
 
-Beyond labels and basic open/close behavior, each `AccordionPanel` supports richer customization of both its header content and the expand/collapse icon. These options let you tailor the look of each panel without needing external CSS or wrapper components.
+Beyond labels and basic open/close behavior, each `AccordionPanel` supports richer customization of both its header content and the expand/collapse icon.
 
 ### Custom header {#custom-header}
 
@@ -156,12 +153,20 @@ panel.addToHeader(headerContent);
 ```
 
 :::info Label replacement
-Content added via `addToHeader()` fully replaces the default label text. To keep visible text alongside custom content, include a `Span` within the slotted layout as shown above. `setLabel()` and `setText()` continue to work alongside `addToHeader()`, but since the header slot takes visual precedence, the label text won't be shown unless you include it explicitly in your slotted content.
+Content added via `addToHeader()` fully replaces the default label text. `setLabel()` and `setText()` continue to work alongside `addToHeader()`, but since the header slot takes visual precedence, the label text won't be shown unless you include it explicitly in your slotted content.
 :::
+
+<!-- vale off -->
+<ComponentDemo
+path='/webforj/accordioncustomheader'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionCustomHeaderView.java'
+height='300px'
+/>
+<!-- vale on -->
 
 ### Custom icon {#custom-icon}
 
-The expand/collapse indicator defaults to a chevron that's visible in both the open and closed states. `setIcon()` replaces it with any component, useful for branded iconography or when a different visual metaphor fits the content better. Passing `null` restores the default chevron. `getIcon()` returns the currently set icon, or `null` if the default chevron is in use.
+The expand/collapse indicator defaults to a chevron that's visible in both the open and closed states. `setIcon()` replaces it with any [`Icon`](/docs/components/icon) component, useful for branded iconography or when a different visual metaphor fits the content better. Passing `null` restores the default chevron. `getIcon()` returns the currently set icon, or `null` if the default chevron is in use.
 
 ```java
 // Replace the default chevron with a plus icon
@@ -171,13 +176,11 @@ panel.setIcon(FeatherIcon.PLUS.create());
 panel.setIcon(null);
 ```
 
-The following demo shows both a custom header with rich content and a panel with a custom expand/collapse icon:
-
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/slots'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionSlotsView.java'
-height='500px'
+path='/webforj/accordioncustomicon'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionCustomIconView.java'
+height='200px'
 />
 <!-- vale on -->
 
@@ -196,7 +199,7 @@ outer.add(innerAccordion);
 
 <!-- vale off -->
 <ComponentDemo
-path='/webforj/nested'
+path='/webforj/accordionnested'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/accordion/AccordionNestedView.java'
 height='550px'
 />

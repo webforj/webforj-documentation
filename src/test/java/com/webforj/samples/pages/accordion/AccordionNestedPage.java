@@ -5,7 +5,7 @@ import com.microsoft.playwright.Page;
 
 public class AccordionNestedPage {
 
-    private static final String ROUTE = "nested";
+    private static final String ROUTE = "webforj/accordion/nested";
 
     private final Locator outerPanel;
     private final Locator siblingPanel;

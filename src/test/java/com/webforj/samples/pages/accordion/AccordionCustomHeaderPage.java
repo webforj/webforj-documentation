@@ -3,21 +3,18 @@ package com.webforj.samples.pages.accordion;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-public class AccordionSlotsPage {
+public class AccordionCustomHeaderPage {
 
-    private static final String ROUTE = "slots";
+    private static final String ROUTE = "webforj/accordion/customheader";
 
     private final Locator customHeaderPanel;
     private final Locator userSettingsPanel;
-    private final Locator customIconPanel;
 
-    public AccordionSlotsPage(Page page) {
+    public AccordionCustomHeaderPage(Page page) {
         this.customHeaderPanel = page.locator("dwc-accordion-panel").filter(
                 new Locator.FilterOptions().setHasText("Custom Header with Icon"));
         this.userSettingsPanel = page.locator("dwc-accordion-panel").filter(
                 new Locator.FilterOptions().setHasText("User Settings"));
-        this.customIconPanel = page.locator("dwc-accordion-panel").filter(
-                new Locator.FilterOptions().setHasText("Plus Icon Panel"));
     }
 
     public static String getRoute() {
@@ -30,9 +27,5 @@ public class AccordionSlotsPage {
 
     public Locator getUserSettingsPanel() {
         return userSettingsPanel;
-    }
-
-    public Locator getCustomIconPanel() {
-        return customIconPanel;
     }
 }

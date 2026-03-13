@@ -3,16 +3,15 @@ package com.webforj.samples.views.accordion;
 import com.webforj.component.Composite;
 import com.webforj.component.accordion.Accordion;
 import com.webforj.component.accordion.AccordionPanel;
-import com.webforj.component.button.Button;
-import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.html.elements.H3;
 import com.webforj.component.html.elements.Paragraph;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.optioninput.RadioButton;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("/disabled")
+@Route
 @FrameTitle("Accordion - Disabled State")
 public class AccordionDisabledView extends Composite<FlexLayout> {
 
@@ -52,10 +51,9 @@ public class AccordionDisabledView extends Composite<FlexLayout> {
 
     Accordion accordion = new Accordion(panel1, panel2, panel3);
 
-    Button toggle = new Button("Toggle Enabled", e -> {
-      accordion.setEnabled(!accordion.isEnabled());
-    });
-    toggle.setTheme(ButtonTheme.PRIMARY);
+    RadioButton toggle = RadioButton.Switch("Accordion enabled");
+    toggle.setChecked(true);
+    toggle.onToggle(e -> accordion.setEnabled(e.isToggled()));
 
     self.add(toggle, accordion);
   }
