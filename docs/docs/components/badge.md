@@ -82,7 +82,7 @@ Attach a `Badge` to a `Button` using `setBadge()`. The badge appears at the top-
 <ComponentDemo
 path='/webforj/badgebuttons?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeButtonsView.java'
-height='200px'
+height='250px'
 />
 <!-- vale on -->
 
@@ -94,7 +94,7 @@ Add a `Badge` as a suffix on a `Tab` using `setSuffixComponent()`. This is a nat
 <ComponentDemo
 path='/webforj/badgetabbedpane?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeTabbedPaneView.java'
-height='220px'
+height='275px'
 />
 <!-- vale on -->
 
@@ -114,7 +114,7 @@ Apply a theme using `setTheme()` or through the constructor.
 <ComponentDemo
 path='/webforj/badgethemes?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeThemesView.java'
-height='220px'
+height='250px'
 />
 <!-- vale on -->
 
@@ -129,7 +129,7 @@ badge.setStyle("--dwc-badge-seed", "hsl(262, 52%, 47%)");
 
 ### Sizing {#sizing}
 
-Use `setExpanse()` to control badge size. Nine sizes are available, ranging from `XXXSMALL` to `XXXLARGE`, and the default is `SMALL`. When a badge contains exactly one character, it automatically renders as a circle rather than a pill—useful for compact numeric indicators like unread counts.
+Use `setExpanse()` to control badge size. Nine sizes are available, ranging from `XXXSMALL` to `XXXLARGE`, and the default is `SMALL`.
 
 <!-- vale off -->
 <ComponentDemo

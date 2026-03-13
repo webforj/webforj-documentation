@@ -8,8 +8,10 @@ import com.webforj.component.button.Button;
 import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.html.elements.H3;
 import com.webforj.component.icons.FeatherIcon;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.layout.flexlayout.FlexWrap;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
@@ -30,20 +32,26 @@ public class BadgeButtonsView extends Composite<FlexLayout> {
 
     FlexLayout row = FlexLayout.create().horizontal().build();
     row.setSpacing("var(--dwc-space-l)");
-    row.setStyle("flex-wrap", "wrap");
-    row.setStyle("align-items", "center");
+    row.setWrap(FlexWrap.WRAP);
+    row.setAlignment(FlexAlignment.CENTER);
+
+    Badge notifBadge = new Badge("5");
+    notifBadge.setTheme(BadgeTheme.DANGER);
+    notifBadge.setExpanse(BadgeExpanse.XSMALL);
 
     Button notifBtn = new Button("Notifications");
     notifBtn.setPrefixComponent(FeatherIcon.BELL.create());
     notifBtn.setTheme(ButtonTheme.PRIMARY);
-    notifBtn.setBadge(new Badge("5").setTheme(BadgeTheme.DANGER)
-        .setExpanse(BadgeExpanse.XSMALL));
+    notifBtn.setBadge(notifBadge);
+
+    Badge msgBadge = new Badge("12");
+    msgBadge.setTheme(BadgeTheme.PRIMARY);
+    msgBadge.setExpanse(BadgeExpanse.XSMALL);
 
     Button msgBtn = new Button("Messages");
     msgBtn.setPrefixComponent(FeatherIcon.MAIL.create());
     msgBtn.setTheme(ButtonTheme.DEFAULT);
-    msgBtn.setBadge(new Badge("12").setTheme(BadgeTheme.PRIMARY)
-        .setExpanse(BadgeExpanse.XSMALL));
+    msgBtn.setBadge(msgBadge);
 
     row.add(notifBtn, msgBtn);
     self.add(row);
@@ -52,8 +60,8 @@ public class BadgeButtonsView extends Composite<FlexLayout> {
 
     FlexLayout sizeRow = FlexLayout.create().horizontal().build();
     sizeRow.setSpacing("var(--dwc-space-l)");
-    sizeRow.setStyle("flex-wrap", "wrap");
-    sizeRow.setStyle("align-items", "center");
+    sizeRow.setWrap(FlexWrap.WRAP);
+    sizeRow.setAlignment(FlexAlignment.CENTER);
 
     String[] sizes = {"xs", "s", "m", "l", "xl"};
     for (String size : sizes) {
@@ -68,8 +76,11 @@ public class BadgeButtonsView extends Composite<FlexLayout> {
             case "xl" -> "XLARGE";
             default -> "MEDIUM";
           }));
-      btn.setBadge(new Badge("3").setTheme(BadgeTheme.DANGER)
-          .setExpanse(BadgeExpanse.XSMALL));
+
+      Badge sizeBadge = new Badge("3");
+      sizeBadge.setTheme(BadgeTheme.DANGER);
+      sizeBadge.setExpanse(BadgeExpanse.XSMALL);
+      btn.setBadge(sizeBadge);
       sizeRow.add(btn);
     }
 
