@@ -2,6 +2,7 @@ package com.webforj.samples.views.table;
 
 import com.webforj.component.Composite;
 import com.webforj.component.button.Button;
+import com.webforj.component.button.ButtonTheme;
 import com.webforj.component.html.elements.Div;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.table.Column;
@@ -51,7 +52,8 @@ public class TableHiddenColumnGroupsView extends Composite<Div> {
 
     table.setColumnGroups(List.of(catalog, pricing));
 
-    Button toggleRetail = new Button("Toggle Retail Column");
+    Button toggleRetail = new Button("Toggle Retail Column", ButtonTheme.PRIMARY);
+    toggleRetail.setMaxWidth("200px");
     toggleRetail.setStyle("margin-top", "1rem");
     toggleRetail.setStyle("margin-left", "1rem");
     toggleRetail.onClick(e -> {
