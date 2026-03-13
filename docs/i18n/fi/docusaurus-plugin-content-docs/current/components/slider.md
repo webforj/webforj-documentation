@@ -1,139 +1,141 @@
 ---
 title: Slider
 sidebar_position: 101
-_i18n_hash: 47e9254faad15097b580eb4099968fbc
+_i18n_hash: 56140362edd92adde8d6114a8e6652c9
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-slider" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/slider/Slider" top='true'/>
 
-`Slider`-komponentti webforJ:ssä tarjoaa vuorovaikutteisen hallinnan, joka sallii käyttäjien valita arvon tietyllä alueella liikuttamalla nuppia. Tämä ominaisuus on erityisen hyödyllinen sovelluksille, jotka vaativat tarkkaa tai intuitiivista syöttöä, kuten äänenvoimakkuuden, prosenttien tai muiden säädettävien arvojen valitseminen.
+`Slider` -komponentti antaa käyttäjille mahdollisuuden valita numeerinen arvo vetämällä nuppia radalla minimirajan ja maksimin välillä. Askeleen väli, tikkuviivat ja etiketit voidaan määrittää ohjaamaan valintaa.
+
+<!-- INTRO_END -->
 
 ## Perusteet {#basics}
 
-`Slider` on suunniteltu toimimaan heti laatikosta, eikä se vaadi lisäasetuksia toimiakseen tehokkaasti. Oletuksena se kattaa alueen 0–100 ja sen aloitusarvo on 50, mikä tekee siitä ihanteellisen nopeaan integrointiin mihin tahansa sovellukseen. Tarkempia käyttötapauksia varten `Slider`-komponenttia voidaan mukauttaa ominaisuuksilla, kuten suunta, välihuomautukset, etiketit ja työkaluvihjeet.
+`Slider` on suunniteltu toimimaan heti käyttöönottovaiheessa, eikä se vaadi lisäasetuksia toimiakseen tehokkaasti. Oletuksena se kattaa alueen 0–100 aloitusarvolla 50, mikä tekee siitä ihanteellisen nopeaa integrointia mihin tahansa sovellukseen. Tarkempia käyttötapauksia varten `Slider` voidaan mukauttaa ominaisuuksilla, kuten suunta, tikkuviivat, etiketit ja työkaluvihjeet.
 
-Tässä on esimerkki `Slider`-komponentista, joka sallii käyttäjien säätää äänenvoimakkuustasoja ennalta määritellyllä alueella:
+Tässä on esimerkki `Slider`-komponentista, joka mahdollistaa käyttäjien säätää äänenvoimakkuutta ennalta määritellyllä alueella:
 
 <ComponentDemo 
 path='/webforj/slider?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderView.java'
-height = '100px'
+height='100px'
 />
 
 ## `Slider`-arvo {#slider-value}
 
-`Slider`-arvo edustaa nuppia `Slider`-komponentissa ja se määritellään kokonaislukuna `Slider`-alueella. Tämä arvo päivittyy käyttäjän vuorovaikutuksen myötä, mikä tekee siitä olennaisen ominaisuuden käyttäjäsyötteen seuraamiseksi.
+`Slider`-arvo edustaa nuppin nykyistä sijaintia liukusäätimessä, ja se määritellään kokonaislukuna `Slider`-arvovälin sisällä. Tämä arvo päivittyy dynaamisesti, kun käyttäjä vuorovaikuttaa liukusäätimen kanssa, mikä tekee siitä ensisijaisen ominaisuuden käyttäjän syötteen seuraamista varten.
 
 :::tip Oletusarvo
-Oletuksena `Slider` alkaa arvosta 50, olettaen oletusarvoisen alueen 0–100.
+Oletusarvoisesti `Slider` aloittaa arvolla 50, ottaen oletusalueen huomioon, joka on 0–100.
 :::
 
 ### Arvon asettaminen ja hakeminen {#setting-and-getting-the-value}
 
-Voit asettaa `Slider`-komponentin arvon alkuasetuksessa tai päivittää sen myöhemmin käyttämällä `setValue()`-metodia. Hae nykyinen arvo `getValue()`-metodilla.
+Voit asettaa `Slider`-arvon alustusvaiheessa tai päivittää sen myöhemmin käyttäen `setValue()`-menetelmää. Nykyisen arvon hakemiseen käytä `getValue()`-menetelmää.
 
 ```java
 Slider slider = new Slider();  
-slider.setValue(25); // Asettaa slidervalueksi 25
+slider.setValue(25); // Asettaa liukusäätimen arvoon 25
 
 Integer value = slider.getValue();  
 System.out.println("Nykyinen Slider-arvo: " + value);
 ```
 
-## Miniminsuurimmat arvot {#minimum-and-maximum-values}
+## Minimiväli ja maksimiarvot {#minimum-and-maximum-values}
 
-Minimi- ja maksimiarvot määrittävät sallitun `Slider`-arvon alueen, määrittäen rajoja, joissa `Slider`-nuppi voi liikkua. Oletuksena alue on asetettu 0–100, mutta voit mukauttaa näitä arvoja tarpeidesi mukaan.
+Minimi- ja maksimiarvot määrittävät `Slider`-komponentin sallitun alueen, mikä määrää rajat, joilla `Slider`-nuppi voi liikkua. Oletuksena alue on asetettu väliin 0–100, mutta voit mukauttaa näitä arvoja tarpeidesi mukaan.
 
-Välin etäisyydet `Slider`-komponentilla ovat oletusarvoisesti 1, mikä tarkoittaa, että välin määrä määräytyy alueen mukaan. Esimerkiksi:
-- Slider alueella 0–10 sisältää 10 väliä.
-- Slider alueella 0–100 sisältää 100 väliä.
+`Slider`-komponentin askelväli on oletuksena 1, mikä tarkoittaa, että välin määrä määräytyy alueen mukaan. Esimerkiksi:
+- Liukusäädin, jonka alue on 0–10, sisältää 10 askelta.
+- Liukusäädin, jonka alue on 0–100, sisältää 100 askelta.
 
-Nämä välin ovat tasaisesti jakautuneet liukumaton radalla, ja niiden väli riippuu `Slider`-komponentin mitoista.
+Nämä askeleet jakautuvat tasaisesti liukusäätimen radalle, ja niiden välinen etäisyys riippuu `Slider`-komponentin dimensioista.
 
-Alla on esimerkki `Slider`-komponentista, joka on luotu mukautetulla alueella:
+Alla on esimerkki `Slider`-komponentista, jossa on mukautettu alue:
 
 <ComponentDemo 
 path='/webforj/donationslider?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/DonationSliderView.java'
-height = '200px'
+height='200px'
 />
 
-## Välihuomautusten konfigurointi {#tick-configuration}
+## Tiku-asetukset {#tick-configuration}
 
-`Slider`-komponentti tarjoaa joustavan välihuomautusten konfiguroinnin, joka sallii sinun muokata, kuinka välihuomautuksia näytetään ja kuinka `Slider`-nuppi vuorovaikuttaa niiden kanssa. Tämä sisältää suurten ja pienten välihuomautusten välin säätämisen, välihuomautusten näyttämisen/piilottamisen ja "napauttamisen" mahdollistamisen välihuomautuksiin tarkkaa käyttäjäsyöttöä varten.
+`Slider`-komponentti tarjoaa joustavat tikku-asetukset, mikä mahdollistaa tikkuviivojen näyttämisen mukauttamisen ja sen, miten liukusäätimen nuppi toimii niiden kanssa. Tämä sisältää pää- ja väliaskelten välin säätämisen, tikkuviivojen näyttämisen/piilottamisen ja tikkuviivoihin tarttumisen mahdollistamisen tarkkoja käyttäjän syötteitä varten.
 
-### Suurten ja pienten välihuomautusten väli {#major-and-minor-tick-spacing}
+### Pää- ja väliaskelten väli {#major-and-minor-tick-spacing}
 
-Voit määrittää suurten ja pienten välihuomautusten välin, joka määrittää, kuinka usein ne näkyvät `Slider`-radalla:
+Voit määrittää pää- ja väliaskelviivojen välin, mikä määrää, kuinka usein ne näkyvät `Slider`-radalla:
 
-- Suuret välihuomautukset ovat suurempia ja usein merkittyjä avainarvojen esittelyyn.
-- Pienet välihuomautukset ovat pienempiä ja näkyvät suurten välihuomautusten välissä tarjoamaan hienompia välejä.
+- Pääaskelviivat ovat suurempia ja usein merkittyjä avainarvoille.
+- Väliaskelviivat ovat pienempiä ja näkyvät pääaskeliin väliin tarjoten hienompia väliä.
 
-Aseta välihuomautusten väli käyttämällä seuraavia `setMajorTickSpacing()` ja `setMinorTickSpacing()`-metodeja:
+Aseta askelväli seuraavien `setMajorTickSpacing()`- ja `setMinorTickSpacing()`-menetelmien avulla:
 ```java
-slider.setMajorTickSpacing(10); // Suuret välihuomautukset joka 10. yksikölle
-slider.setMinorTickSpacing(2);  // Pienet välihuomautukset joka 2. yksikölle
+slider.setMajorTickSpacing(10); // Pääaskelviivat joka 10. yksikölle
+slider.setMinorTickSpacing(2);  // Väliaskelviivat joka 2. yksikölle
 ```
 
-### Näytä tai piilota välihuomautukset {#show-or-hide-ticks}
+### Tikkien näyttäminen tai piilottaminen {#show-or-hide-ticks}
 
-Voit kytkeä välihuomautusten näkyvyyden käyttämällä `setTicksVisible()`-metodia. Oletuksena välihuomautukset ovat piilotettuina.
-
-```java
-slider.setTicksVisible(true); // Näytä välihuomautukset
-slider.setTicksVisible(false); // Piilota välihuomautukset
-```
-
-### Napauttaminen {#snapping}
-
-Varmistaaksesi, että `Slider`-nuppi kohdistuu lähimpään välihuomautukseen käyttäjän vuorovaikutuksen aikana, mahdollista napauttaminen käyttämällä `setSnapToTicks()`-metodia:
+Voit vaihtaa tikkuviivojen näkyvyyden käyttämällä `setTicksVisible()`-menetelmää. Oletuksena tikkuviivat ovat piilossa.
 
 ```java
-slider.setSnapToTicks(true); // Ota napauttaminen käyttöön
+slider.setTicksVisible(true); // Näytä tikkuviivat
+slider.setTicksVisible(false); // Piilota tikkuviivat
 ```
 
-Tässä on esimerkki täysin konfiguroidusta `Slider`-komponentista, joka näyttää suuria ja pieniä välihuomautusten asetuksia sekä napautusominaisuuden tarkkoja säätöjä varten:
+### Tarttuminen {#snapping}
+
+Jotta `Slider`-nuppi linjautuu lähimmän tikkuviivan kanssa käyttäjän vuorovaikutuksen aikana, ota käyttöön tarttuminen käyttäen `setSnapToTicks()`-menetelmää:
+
+```java
+slider.setSnapToTicks(true); // Ota tarttuminen käyttöön
+```
+
+Tässä on esimerkki täysin konfiguroidusta `Slider`-komponentista, joka näyttää pää- ja väliaskelasetuksia sekä tarttumiskykyä tarkkoja sääntöjä varten:
 
 <ComponentDemo 
 path='/webforj/slidertickspacing?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderTickSpacingView.java'  
-height = '350px'
+height='350px'
 />
 
-## Suunta ja kääntäminen {#orientation-and-inversion}
+## Suunta ja kääntö {#orientation-and-inversion}
 
-`Slider`-komponentti tukee kahta suuntaa: vaakasuora (oletus) ja pystysuora. Voit muuttaa suuntaa sovelluksesi käyttöliittymän asettelun ja tarpeiden mukaan.
+`Slider`-komponentti tukee kahta suuntaa: vaakasuora (oletus) ja pystysuora. Voit muuttaa suuntaa käyttöösi sopivaksi käyttöliittymäasettelussa ja sovellusvaatimuksissa.
 
-Suuntaamisen lisäksi `Slider`-komponenttia voidaan myös kääntää. Oletuksena:
+Lisäksi `Slider` voidaan myös kääntää. Oletuksena:
 
-- Vaakasuora `Slider` kulkee vähimmäisestä (vasen) maksimiin (oikea).
-- Pystysuora `Slider` kulkee vähimmäisestä (ala) maksimiin (ylä).
+- Vaakasuora `Slider` kulkee minimistä (vasen) maksimiin (oikea).
+- Pystysuora `Slider` kulkee minimistä (alhaalla) maksimiin (ylhäällä).
 
-Kun suunta on käännetty, suunta käännetään. Käytä `setInverted(true)`-metodia ottaaksesi kääntäminen käyttöön.
+Kun se on käännetty, tämä suunta muuttuu päinvastaiseksi. Ota kääntö käyttöön `setInverted(true)`-menetelmällä.
 
 <ComponentDemo 
 path='/webforj/sliderorientation?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderOrientationView.java'
-height = '420px'
+height='420px'
 />
 
 ## Etiketit {#labels}
 
-`Slider`-komponentti tukee välihuomautuksissa näkyviä etikettejä, jotka auttavat käyttäjiä tulkitsemaan arvoja helpommin. Voit käyttää oletusnumero-etikettejä tai antaa mukautettuja etikettejä, ja voit kytkeä niiden näkyvyyttä tarpeen mukaan.
+`Slider`-komponentti tukee etikettejä tikkuviivoilla auttaakseen käyttäjiä tulkitsemaan arvoja helpommin. Voit käyttää oletusnumerisia etikettejä tai tarjota mukautettuja etikettejä, ja voit säätää niiden näkyvyyttä tarpeen mukaan.
 
 ### Oletusetiketit {#default-labels}
 
-Oletuksena slidervalue voi näyttää numeerisia etikettejä suurilla välihuomautuksilla. Nämä arvot määräytyvät `setMajorTickSpacing()`-asetuksen mukaan. Ota käyttöön oletusetiketit käyttämällä:
+Oletuksena liukusäädin voi näyttää numerisia etikettejä pääaskelviivoilla. Nämä arvot määräytyvät `setMajorTickSpacing()`-asetuksen mukaan. Ota oletusetiketit käyttöön seuraavasti:
 
 ```java
 slider.setLabelsVisible(true);
 ```
 
-### Mukautetut etiketit {#custom-labels}
+### Mukautetut etikettit {#custom-labels}
 
-Voit korvata oletusnumeraaliset etiketit mukautetulla tekstillä käyttämällä `setLabels()`-metodia. Tämä on hyödyllistä, kun haluat näyttää merkityksellisempia arvoja (esim. lämpötila, valuutta tai kategoriat).
+Voit korvata oletusnumeriset etikettit mukautetulla tekstillä `setLabels()`-menetelmän avulla. Tämä on hyödyllistä, kun haluat näyttää merkityksellisempiä arvoja (esim. lämpötila, valuutta tai kategoriat).
 
 ```java
 Map<Integer, String> customLabels = Map.of(
@@ -148,60 +150,61 @@ slider.setLabels(customLabels);
 slider.setLabelsVisible(true);
 ```
 
-### Etiketin näkyvyyden kytkeminen {#toggling-label-visibility}
+### Etikettien näkyvyyden säätäminen {#toggling-label-visibility}
 
-Olipa kyseessä oletus- tai mukautetut etiketit, voit hallita niiden näkyvyyttä `setLabelsVisible(true)` tai piilottaa ne käyttämällä `setLabelsVisible(false)`.
+Olitpa käyttänyt oletus- tai mukautettuja etikettejä, voit hallita niiden näkyvyyttä `setLabelsVisible(true)`-menetelmällä tai piilottaa ne `setLabelsVisible(false)`-menetelmällä.
 
 <ComponentDemo 
 path='/webforj/sliderlabels?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderLabelsView.java'
-height = '150px'
+height='150px'
 />
 
 ## Työkaluvihjeet {#tooltips}
 
-Työkaluvihjeet parantavat käytettävyyttä näyttämällä `Slider`-arvon suoraan nuppia ylä- tai alapuolella, auttaen käyttäjiä tekemään tarkempia sääntöjä. Voit määrittää työkaluvihjeiden käyttäytymisen, näkyvyyden ja muodon tarpeidesi mukaan.
+Työkaluvihjeet parantavat käytettävyyttä näyttämällä `Slider`-arvon suoraan nuppia ylhäällä tai alhaalla, auttaen käyttäjiä tekemään tarkempia säätöjä. Voit määrittää työkaluvihjeiden toimintaa, näkyvyyttä ja muotoa tarpeidesi mukaan.
 
-Ota käyttöön työkaluvihjeet käyttämällä `setTooltipVisible()`-metodia. Oletuksena työkaluvihjeet ovat pois käytöstä:
+Ota työkaluvihjeet käyttöön käyttämällä `setTooltipVisible()`-menetelmää. Oletuksena työkaluvihjeet ovat pois käytöstä:
 
 ```java
-slider.setTooltipVisible(true); // Ota työkaluvihjeet käyttöön
+slider.setTooltipVisible(true); // Ota käyttöön työkaluvihjeet
 slider.setTooltipVisible(false); // Poista työkaluvihjeet käytöstä
 ```
 
-Työkaluvihjeet voidaan myös määrittää näkymään vain silloin, kun käyttäjä vuorovaikuttaa `Slider`-komponentin kanssa. Käytä `setTooltipVisibleOnSlideOnly()`-metodia ottaaksesi tämän käyttäytymisen käyttöön. Tämä on erityisen hyödyllistä visuaalisen häiriön vähentämiseksi samalla, kun annetaan hyödyllistä palautetta vuorovaikutuksen aikana.
+Työkaluvihjeet voidaan myös määrittää näkyviksi vain, kun käyttäjä vuorovaikuttaa `Slider`-komponentin kanssa. Ota tämä toiminta käyttöön `setTooltipVisibleOnSlideOnly()`-menetelmällä. Tämä on erityisen hyödyllistä visuaalisen häiriön vähentämiseksi samalla kun tarjotaan hyödyllistä palautetta vuorovaikutuksen aikana.
 
-Tässä on esimerkki täysin konfiguroidusta `Slider`-komponentista, jossa on työkaluvihjeet:
-
+Tässä on esimerkki täysin konfiguroidusta `Slider`-komponentista, jossa on työkaluvihjeitä:
 
 ### Työkaluvihjeiden mukauttaminen {#tooltip-customization}
 
-Oletuksena `Slider` näyttää työkaluvihjeen sen nykyisestä arvosta. Jos haluat mukauttaa tätä tekstiä, käytä `setTooltipText()`-metodia. Tämä on hyödyllistä, kun haluat, että työkaluvihje näyttää staattista tai kuvaavaa tekstiä elävän arvon sijaan.
+Oletuksena `Slider` näyttää työkaluvihjeen sen nykyisellä arvolla. Jos haluat mukauttaa tämän tekstin, käytä `setTooltipText()`-menetelmää. Tämä on hyödyllistä, kun haluat, että työkaluvihje näyttää staattista tai kuvaavaa tekstiä eikä elävää arvoa.
 
-Voit myös käyttää JavaScript-lauseketta muotoilla työkaluvihje dynaamisesti. Jos lausekkeesi sisältää `return`-avaimen, sitä käytetään sellaisenaan. Jos ei, se pakataan automaattisesti `return`- ja `;`-lauselmiin, jotta se muodostaa kelvollisen funktion. Esimerkiksi:
+Voit myös käyttää JavaScript-lauseketta muotoillaksesi työkaluvihjeen dynaamisesti. Jos lausekkeesi sisältää `return`-avainsanan, se käytetään sellaisenaan. Jos ei, se kääritään automaattisesti `return`-sanan ja `;`-merkin sisään muodostaen kelvollisen funktion. Esimerkiksi:
 
 ```java
-// Näyttää arvon, jota seuraa dollari
+// Näyttää arvon dollarimerkin perässä
 slider.setTooltipText("return x + '$'"); 
 ```
 
 Tai yksinkertaisesti:
 
 ```java
-// Tulkitsee: return x + ' yksikköä';
+// Tulkitsee seuraavasti: return x + ' yksikköä';
 slider.setTooltipText("x + ' yksikköä'"); 
 ```
 
-## Tyylittely {#styling}
+
+## Tyylit {#styling}
 
 ### Teemat {#themes}
 
-`Slider`-komponentissa on 6 teema, jotka on rakennettu nopeaa tyylittelyä varten ilman CSS:n käyttöä. Teemoja tuetaan sisäänrakennetun enum-luokan avulla. Alla on esimerkkejä liukumista, joihin kukin tuettu teema on sovellettu:
+`Slider`-komponentti sisältää 6 teemoja, joita voidaan käyttää nopeasti tyylittämiseen ilman CSS:n käyttöä. Teemojen käyttö tapahtuu sisäänrakennetun enum-luokan avulla.
+Alla on liukusäätimiä, joihin on sovellettu kutakin tuettua teemaa:
 
 <ComponentDemo 
 path='/webforj/sliderthemes?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/slider/SliderThemesView.java'
-height = '460px'
+height='460px'
 />
 
 <TableBuilder name="Slider" />

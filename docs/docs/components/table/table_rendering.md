@@ -28,19 +28,19 @@ The following section outlines the basics of Lodash syntax. While this is not an
 
 #### Examples using cell data: {#examples-using-cell-data}
 
-**1. Simple value interpolation**: Directly display the cell's value.
+**1. Simple value interpolation**: directly display the cell's value.
 
 `<%= cell.value %>`
 
-**2. Conditional rendering**: Use JavaScript logic to conditionally render content.
+**2. Conditional rendering**: use JavaScript logic to conditionally render content.
 
 `<% if (cell.value > 100) { %> 'High' <% } else { %> 'Normal' <% } %>`
 
-**3. Combining data fields**: Render content using multiple data fields from the cell.
+**3. Combining data fields**: render content using multiple data fields from the cell.
 
 `<%= cell.row.getValue('firstName') + ' ' + cell.row.getValue('lastName') %>`
 
-**4. Escaping HTML content**: Safely render user-generated content.
+**4. Escaping HTML content**: safely render user-generated content.
 
 The renderer has access to detailed cell, row, and column properties in the client side:
 

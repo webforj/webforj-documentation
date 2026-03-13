@@ -3,12 +3,22 @@ title: RadioButtonGroup
 slug: radiobuttongroup
 sidebar_position: 100
 sidebar_class_name: updated-content
-_i18n_hash: da7906128f0d003b9ed8c48c99c3aefc
+_i18n_hash: 564d1d0c46ef2395fb2ad2785ba18d53
 ---
 <DocChip chip='since' label='23.01' />
 <JavadocLink type="foundation" location="com/webforj/component/optioninput/RadioButtonGroup" top='true'/>
 
-Die `RadioButtonGroup` verwaltet eine Sammlung von [`RadioButton`](/docs/components/radiobutton) Komponenten. Nur ein `RadioButton` kann in einer `RadioButtonGroup` ausgewählt werden. Wenn ein Benutzer einen neuen Radio-Button auswählt, wird der zuvor in der Gruppe ausgewählte automatisch abgewählt.
+Die `RadioButtonGroup` verwaltet eine Sammlung von [`RadioButton`](/docs/components/radiobutton) Komponenten. Es kann nur ein `RadioButton` in einer `RadioButtonGroup` ausgewählt werden. Wenn ein Benutzer einen neuen Radiobutton aktiviert, wird der zuvor in der Gruppe ausgewählte automatisch deaktiviert.
+
+<!-- INTRO_END -->
+
+## Erstellung einer `RadioButtonGroup` {#creating-a-radiobuttongroup}
+
+:::important Rendering der `RadioButtonGroup`
+Die `RadioButtonGroup` Komponente rendert kein HTML-Element. Sie bietet lediglich die Logik, damit `RadioButton` Komponenten sich als Gruppe und nicht individuell verhalten.
+:::
+
+Erstellen Sie einzelne `RadioButton` Komponenten und übergeben Sie diese an den Konstruktor der `RadioButtonGroup`. In der Gruppe kann jeweils nur ein Button ausgewählt werden.
 
 <ComponentDemo 
 path='/webforj/radiobuttongroup?' 
@@ -16,13 +26,10 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="200px"
 />
 
-:::important `RadioButtonGroup` Rendering
-Die `RadioButtonGroup` Komponente rendert kein HTML-Element. Sie bietet nur die Logik, um `RadioButton` Komponenten als Gruppe zu behandeln, anstatt einzeln.
-:::
-
 ## Hinzufügen und Entfernen von `RadioButton` Komponenten {#adding-and-removing-radiobuttons}
 
-Sie können `RadioButton` Komponenten im Konstruktor der `RadioButtonGroup` einfügen, um eine Gruppe aus den bereitgestellten Komponenten zu erstellen. Um einen `RadioButton` aus einer vorhandenen `RadioButtonGroup` hinzuzufügen oder zu entfernen, verwenden Sie die Methoden `add()` oder `remove()`.
+Sie können `RadioButton` Komponenten im Konstruktor der `RadioButtonGroup` einfügen, um eine Gruppe aus den bereitgestellten Komponenten zu erstellen.
+Um einen `RadioButton` aus einer bestehenden `RadioButtonGroup` hinzuzufügen oder zu entfernen, verwenden Sie die Methoden `add()` oder `remove()`.
 
 :::tip Abrufen der Gruppe eines `RadioButton`
 Die `RadioButton` Komponente hat die Methode `getButtonGroup()`, die die `RadioButtonGroup` zurückgibt, zu der sie gehört, oder `null`, wenn sie keine Gruppe hat.
@@ -30,7 +37,7 @@ Die `RadioButton` Komponente hat die Methode `getButtonGroup()`, die die `RadioB
 
 ## Verschachtelung <DocChip chip='since' label='25.11' /> {#nesting}
 
-Wie andere Komponenten können Sie eine `RadioButtonGroup` in einen Container einfügen, sodass Sie nicht jeden einzelnen `RadioButton` direkt hinzufügen müssen.
+Wie bei anderen Komponenten können Sie eine `RadioButtonGroup` innerhalb eines Containers verschachteln, sodass Sie nicht jeden einzelnen `RadioButton` direkt hinzufügen müssen.
 
 ```java
 RadioButton agree = new RadioButton("Zustimmen");
@@ -45,9 +52,9 @@ fieldset.add(group);
 
 ## Verwendung von `RadioButtonGroupChangeEvent` {#using-radiobuttongroupchangeevent}
 
-Jeder `RadioButton` kann seinen eigenen Ereignis-Listener haben, um zu erkennen, wann ein Benutzer ihn umschaltet. Ein Vorteil der Verwendung einer `RadioButtonGroup` ist jedoch, dass Sie einen einzigen Ereignis-Listener verwenden können, der auf alle Radio-Buttons in der Gruppe mit dem [`RadioButtonGroupChangeEvent`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/optioninput/event/RadioButtonGroupChangeEvent.html) reagiert.
+Jeder `RadioButton` kann seinen eigenen Ereignislistener haben, um zu erkennen, wann ein Benutzer ihn umschaltet. Ein Vorteil der Verwendung einer `RadioButtonGroup` besteht jedoch darin, dass Sie einen einzigen Ereignislistener verwenden können, der auf alle Radiobuttons in der Gruppe mit dem [`RadioButtonGroupChangeEvent`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/optioninput/event/RadioButtonGroupChangeEvent.html) reagiert.
 
-**Ereignis-Listener zu jedem `RadioButton` hinzufügen**
+**Ereignislistener zu jedem `RadioButton` hinzufügen**
 
 ```java 
 agree.onValueChange(e -> changeEvent());
@@ -55,14 +62,14 @@ neutral.onValueChange(e -> changeEvent());
 disagree.onValueChange(e -> changeEvent());
 ```
 
-**Einen einzigen Ereignis-Listener zur `RadioButtonGroup` hinzufügen**
+**Einen einzelnen Ereignislistener zur `RadioButtonGroup` hinzufügen**
 
 ```java
 RadioButtonGroup group = new RadioButtonGroup("Auswahlmöglichkeiten", agree, neutral, disagree);
 group.onChange(e -> changeEvent());
 ```
 
-Das folgende Beispiel von [Drawer Placement](/docs/components/drawer#placement) verwendet das `RadioButtonGroupChangeEvent`, um automatisch die Platzierung der `Drawer` Komponente zu ändern:
+Das folgende Beispiel aus [Drawer Placement](/docs/components/drawer#placement) verwendet das `RadioButtonGroupChangeEvent`, um die Platzierung der `Drawer` Komponente automatisch zu ändern:
 
 <ComponentDemo
 path='/webforj/drawerplacement?'
@@ -72,4 +79,4 @@ height='600px'
 
 ## Benennung {#naming}
 
-Das `name` Attribut in einer `RadioButtonGroup` gruppiert verwandte RadioButtons zusammen, sodass Benutzer eine einzelne Wahl aus den bereitgestellten Optionen treffen können und die Exklusivität unter den RadioButtons durchgesetzt wird. Der Name einer Gruppe wird jedoch nicht im DOM widergespiegelt und ist ein praktisches Hilfsmittel für den Java-Entwickler.
+Das `name` Attribut in einer `RadioButtonGroup` gruppiert verwandte RadioButtons und ermöglicht es Benutzern, eine einzige Wahl aus den angebotenen Optionen zu treffen und Exklusivität unter den RadioButtons durchzusetzen. Der Name einer Gruppe wird jedoch nicht im DOM widergespiegelt, sondern ist ein praktisches Hilfsmittel für den Java-Entwickler.

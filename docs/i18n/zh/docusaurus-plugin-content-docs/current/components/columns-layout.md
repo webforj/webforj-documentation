@@ -1,22 +1,20 @@
 ---
 title: ColumnsLayout
 sidebar_position: 25
-_i18n_hash: 25558ea9869bae96974e292e7cc1939d
+_i18n_hash: f4d9229ae204894cda7263a6dc09ba0c
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-columns-layout" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="columnslayout" location="com/webforj/component/layout/columnslayout/ColumnsLayout" top='true'/>
 
-`ColumnsLayout` 组件在 webforJ 中允许开发人员使用灵活且响应式的垂直布局创建布局。该布局提供了动态列，可以根据可用宽度进行调整。这个组件通过自动管理断点和对齐方式，简化了多列布局的创建。
+`ColumnsLayout` 组件将项目安排为基于响应式列的布局，布局会根据可用宽度进行调整。断点和对齐方式是自动管理的，因此构建多列表单和内容网格无需自定义响应逻辑。
 
-:::info 水平布局 
-这可以替代或与 [`FlexLayout`](./flex-layout) 组件结合使用，这是一个同样强大的水平布局工具。
-:::
+<!-- INTRO_END -->
 
-## 基础 {#basics}
+## 默认行为 {#default-behavior}
 
-在首次实例化时，`ColumnsLayout` 使用两列来显示添加到布局中的项目。默认情况下，它占据其父元素的全部宽度，并在需要时随着额外内容的增加而增长。通过使用 [`Breakpoint`](./columns-layout#breakpoints) 和 [`Alignment`](./columns-layout#vertical-and-horizontal-item-alignments) 设置，可以进一步校准已添加项目的显示，后续章节将更详细地讨论这些设置。
+默认情况下，`ColumnsLayout` 将项目排列为两列，并占用其父元素的全部宽度。显示方式可以通过下面的部分调整断点和对齐设置。
 
 <ComponentDemo 
 path='/webforj/columnslayout?' 
@@ -24,50 +22,54 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="450px"
 />
 
+:::info 水平布局 
+这可以替代或与 [`FlexLayout`](./flex-layout) 组件结合使用——一个同样强大的水平布局工具。
+:::
+
 ## 断点 {#breakpoints}
 
-`ColumnsLayout` 本质上旨在提供一个流畅的网格系统，该系统能够根据其父容器的宽度进行调整。与传统的固定网格系统不同，该布局允许开发人员在给定宽度下指定列的数量，并根据设定的 `Breakpoint` 对象动态计算显示的列数。
+从本质上讲，`ColumnsLayout` 旨在提供一个流体的、网格状的系统，能够适应其父容器的宽度。与传统的固定网格系统不同，该布局允许开发者在给定宽度下指定列数，并根据设置的 `Breakpoint` 对象动态计算显示的列数。
 
-这使得 `ColumnsLayout` 可以从小屏幕上的受限空间平滑过渡到大屏幕上的更宽区域，为开发人员提供响应式设计，而无需自定义实现。
+这使得 `ColumnsLayout` 能够从小屏幕上更为受限的空间，平滑适应到更大屏幕上的更宽区域，为开发者提供响应式设计，而无需自定义实现。
 
-### 了解 `Breakpoint` {#understanding-a-breakpoint}
+### 理解 `Breakpoint` {#understanding-a-breakpoint}
 
-`Breakpoint` 可以使用 `Breakpoint` 类来指定，该类接受三个参数：
+可以使用 `Breakpoint` 类来指定 `Breakpoint`，该类接受三个参数：
 
 1. **名称（可选）**：
-命名一个断点可以在以后的配置中引用它。
+为断点命名使得您能够在以后的配置中引用它。
 
 2. **最小宽度**：
-每个断点都有一个特定的范围，用于确定何时应用其布局。最小宽度是明确规定的，下一个断点确定最大宽度（如果存在）。您可以使用整数定义最小宽度（以像素为单位），或使用 `String` 指定其他单位，例如 `vw`、`%` 或 `em`。
+每个断点都有一个特定范围，决定何时应用其布局。最小宽度是明确规定的，接下来的断点决定最大宽度（如果存在）。您可以使用整数以像素为单位定义最小宽度，或使用 `String` 指定其他单位，如 `vw`、`%` 或 `em`。
 
 3. **列数**：
-使用该整数指定一个断点应该有多少列。
+使用该整数指定断点应有多少列。
 
 
 :::info `Breakpoint` 评估
-断点按宽度的升序进行评估，这意味着布局将使用第一个匹配的断点。
+断点是按宽度升序评估的，这意味着布局将使用第一个匹配的断点。
 :::
 
 
 ### 应用断点 {#applying-breakpoints}
 
-断点以两种方式应用于 `ColumnsLayout`：在构造期间，或在使用 `setBreakpoints()` 方法的 `List` 中：
+在构造期间，或使用 `setBreakpoints()` 方法在 `List` 中应用断点：
 
 ```java
 ColumnsLayout layout = new ColumnsLayout();
 
 List<Breakpoint> breakpoints = List.of(
-    // 在宽度 >= 0px 时使用一列
+    // 在宽度 >= 0px 时，列数为一列
     new Breakpoint(0, 1),
-    // 在宽度 >= 600px 时使用两列
+    // 在宽度 >= 600px 时，列数为两列
     new Breakpoint(600, 2),
-    // 在宽度 >= 1200px 时使用四列
+    // 在宽度 >= 1200px 时，列数为四列
     new Breakpoint(1200, 4));
 
 layout.setBreakpoints(breakpoints);
 ```
 
-下面的演示展示了如何在构造时设置多个断点的示例，使用断点配置某个组件的 [`Span`](#column-span-and-spans-per-breakpoint)，并演示了在应用程序调整大小时 `ColumnsLayout` 的调整能力：
+下面的演示显示了在构造时设置多个断点的示例，使用断点配置 [`Span`](#column-span-and-spans-per-breakpoint) 组件，以及演示了在调整应用大小时 `ColumnsLayout` 的调整能力：
 
 <ComponentDemo 
 path='/webforj/columnslayoutbreakpoints?' 
@@ -77,24 +79,24 @@ height="375px"
 
 ## 列 `Span` 和每个 `Breakpoint` 的跨度 {#column-span-and-spans-per-breakpoint}
 
-`ColumnsLayout` 中的列跨度允许您控制某个项目占据多少列，使您能够更好地控制在不同宽度下布局的外观。这在您需要某些元素根据屏幕尺寸或设计需求占据更多或更少空间时特别有用。
+`ColumnsLayout` 中的列跨度允许您控制一个项目占据多少列，给您在不同宽度下的布局外观上提供更多控制。这在您需要某些元素根据屏幕大小或设计要求占据更多或更少空间时特别有用。
 
 ### 管理列跨度 {#managing-column-spans}
 
-默认情况下，`ColumnsLayout` 中的每个项目占据正好一列。然而，您可以通过设置单个项目的列跨度来自定义此行为。跨度指定一个项目应该占据的列数。
+默认情况下，`ColumnsLayout` 中的每个项目占用正好一列。然而，您可以通过为单独的项目设置列跨度来自定义此行为。跨度指定项目应占据的列数。
 
 ```java
 Button button = new Button("Click Me");
 layout.addComponent(button);
-// 项目占据两列
+// 项目跨越两列
 layout.setSpan(button, 2);
 ```
 
-在上述示例中，按钮占据两列而不是默认的一个。`setSpan()` 方法允许您指定组件在布局中应跨越多少列。
+在上述示例中，按钮占用了两列，而不是默认的一列。`setSpan()` 方法允许您指定组件在布局中应跨越多少列。
 
 ### 使用断点调整列跨度 {#adjusting-column-spans-with-breakpoints}
 
-您还可以根据断点动态调整列跨度。当您希望一个项目在不同屏幕尺寸下跨越不同数量的列时，此功能非常有用。例如，您可能希望在移动设备上占用单列，但在大屏幕上跨越多个列。
+您还可以根据断点动态调整列跨度。此功能在您希望根据屏幕大小使项目跨越不同数量的列时非常有用。例如，您可能希望某个元素在移动设备上占用一列，但在更大屏幕上跨越多列。
 
 ```java
 TextField email = new TextField("Email");
@@ -111,15 +113,15 @@ columnsLayout.setSpan(email, "medium", 2);
 //...
 ```
 
-这一层次的自定义确保您的布局在不同设备上保持响应式和适当构建。
+这种级别的自定义确保您的布局在不同设备上保持响应和适当结构化。
 
-## 在列内放置项目 {#placing-items-within-columns}
+## 在列中放置项目 {#placing-items-within-columns}
 
-`ColumnsLayout` 提供了在特定列中放置项目的能力，从而增强了元素排列的控制。您可以手动指定项目在布局中的位置，确保重要组件按预期显示。
+`ColumnsLayout` 提供了在特定列中放置项目的能力，进一步控制元素的排布。您可以手动指定一个项目应在布局中的位置，确保重要组件按预期显示。
 
 ### 基本列放置 {#basic-column-placement}
 
-默认情况下，项目按从左到右的方式放置在下一个可用列中。然而，您可以覆盖此行为并指定项目应放置的确切列。要将项目放置在特定列中，请使用 `setColumn()` 方法。在这个示例中，按钮被放置在布局的第二列，无论它与其他组件的添加顺序如何：
+默认情况下，项目放置在下一个可用列中，从左到右填充。然而，您可以覆盖此行为，并指定一个项目应放置的确切列。要在特定列中放置项目，请使用 `setColumn()` 方法。在此示例中，按钮被放置在布局的第二列，无论它相对于其他组件添加的顺序如何：
 
 ```java
 Button button = new Button("Submit");
@@ -128,9 +130,9 @@ layout.addComponent(button);
 layout.setColumn(button, 2);  
 ```
 
-### 根据断点调整放置 {#adjusting-placement-per-breakpoint}
+### 根据断点调整放置位置 {#adjusting-placement-per-breakpoint}
 
-与列跨度一样，您可以使用断点根据屏幕尺寸调整项目的位置。这对于在视口变化时重新排列或移动布局中的元素非常有用。
+就像列跨度一样，您可以使用断点根据屏幕大小调整项目的放置。这在调整布局时很有用，随着视口的变化可以重新排序或重新放置元素。
 
 ```java
 TextField email = new TextField("Email");
@@ -147,7 +149,7 @@ columnsLayout.setColumn(email, "medium", 2);
 //...
 ```
 
-在下面的演示中，请注意，当 `"medium"` 断点被触发时，`email` 字段跨越了两列，而 `confirmPassword` 字段被放置在第一列，而不是其在第二列的默认位置：
+在下面的演示中，请注意当 `"medium"` 断点被触发时，`email` 字段跨越两列，而 `confirmPassword` 字段则放置在第一列，而不是其在第二列的默认位置：
 
 <ComponentDemo 
 path='/webforj/columnslayoutspancolumn?' 
@@ -156,25 +158,25 @@ height="375px"
 />
 
 :::tip 避免冲突
-当多个项目以不同的跨度和/或列指定放置在布局中时，确保一行中项目的总跨度和放置不重叠。布局会尝试自动优雅地管理间距，但仔细设计跨度和断点可防止项目的意外显示。
+当多个项目放置在具有不同跨度和/或列分配的布局中时，确保一行中项目的组合跨度和放置不会重叠。布局尝试自动优雅地管理间距，但仔细设计跨度和断点可以防止意外显示项目。
 :::
 
 ## 垂直和水平项目对齐 {#vertical-and-horizontal-item-alignments}
 
-`ColumnsLayout` 中的每个项目都可以在其列内水平和垂直对齐，从而控制内容在布局内部的位置。
+`ColumnsLayout` 中的每个项目都可以在其列中进行水平和垂直对齐，控制内容在布局中的位置。
 
-项目的 **水平对齐** 由 `setHorizontalAlignment()` 方法控制。该属性确定项目如何在其列内沿水平方向对齐。
+**项目的水平对齐**通过使用 `setHorizontalAlignment()` 方法来控制。此属性决定项目在其列中的水平对齐方式。
 
-**垂直对齐** 指定项目在其列内沿垂直方向的位置。此功能在列具有不同高度时非常有用，您希望控制项目的垂直分布。
+**垂直对齐**指定项目在其列中的垂直定位。这在列具有不同高度时非常有用，因为您希望控制项目的垂直分布。
 
 可用的 `Alignment` 选项包括：
 
-- `START`: 将项目对齐到列的左侧（默认）。
-- `CENTER`: 将项目水平居中对齐于列内。
-- `END`: 将项目对齐到列的右侧。
-- `STRETCH`: 将组件拉伸以填充布局。
-- `BASELINE`: 根据列内文本或内容进行对齐，将项目对齐到文本基线而非其他对齐选项。
-- `AUTO`: 自动对齐。
+- `START`：将项目对齐到列的左侧（默认）。
+- `CENTER`：在列中水平居中。
+- `END`：将项目对齐到列的右侧。
+- `STRETCH`：拉伸组件以填充布局
+- `BASELINE`：基于列中内容的文本或内容进行对齐，将项目对齐到文本基线，而不是其他对齐选项。
+- `AUTO`：自动对齐。
 
 <ComponentDemo 
 path='/webforj/columnslayoutalignment?' 
@@ -182,11 +184,11 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height="500px"
 />
 
-在上面的演示中，`Submit` 按钮被设置为 `ColumnsLayout.Alignment.END`，以确保它出现在其列的末尾（在此情况下是右侧）。
+在上面的演示中，`Submit` 按钮被设置为 `ColumnsLayout.Alignment.END`，以确保它出现在其列的末尾，或者在这种情况下靠右。
 
 ## 项目间距 {#item-spacing}
 
-控制 `ColumnsLayout` 中列与列之间（水平间距）和行与行之间（垂直间距）的空间有助于开发人员微调布局。
+控制 `ColumnsLayout` 中列与列之间（水平间距）和行与行之间（垂直间距）的空间帮助开发者微调布局。
 
 要设置布局的水平间距，请使用 `setHorizontalSpacing()` 方法：
 
@@ -203,12 +205,12 @@ layout.setVerticalSpacing(15);
 ```
 
 :::tip CSS 单位
-您可以使用整数定义以像素为单位的最小宽度，或使用 `String` 指定其他单位，例如 `vw`、`%` 或 `em`。
+您可以使用一个整数定义最小宽度（以像素为单位），或使用 `String` 指定其他单位，如 `vw`、`%` 或 `em`。
 :::
 
 ## 水平和垂直布局 {#horizontal-and-vertical-layouts}
 
-使用 [`FlexLayout`](./flex-layout) 组件和 `ColumnsLayout` 组件，以及两者的组合，可以构建响应式和美观的布局。下面是[在 FlexLayout 中创建的表单](./flex-layout#example-form) 文章的示例，但使用 `ColumnLayout` 方案：
+使用 [`FlexLayout`](./flex-layout) 组件和 `ColumnsLayout` 组件以及两者的组合构建响应式和吸引人的布局是可能的。以下是 [FlexLayout](./flex-layout#example-form) 文章中创建的表单的示例，但使用 `ColumnLayout` 方案：
 
 <ComponentDemo 
 path='/webforj/columnslayoutform?' 

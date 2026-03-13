@@ -62,9 +62,10 @@ Add the annotation to any route component to enable transitions:
 @RouteTransition(enter = ViewTransition.ZOOM, exit = ViewTransition.SLIDE_RIGHT)
 @FrameTitle("Inbox")
 public class InboxView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public InboxView() {
-    getBoundComponent().add(new H1("Inbox"));
+    self.add(new H1("Inbox"));
     // ...
   }
 }

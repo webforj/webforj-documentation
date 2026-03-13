@@ -1,29 +1,29 @@
 ---
 sidebar_position: 5
 title: Client/Server Interaction
-_i18n_hash: e5eafeb3f76c9a412d5a124f2eed2da8
+_i18n_hash: ae7a34d844eee10906ce2230f95a05cc
 ---
-Seuraava osa käsittelee erilaisia suorituskykylaatuja ja parhaita käytäntöjä webforJ:lle, sekä kehysrakenteen toteutustietoja.
+Seuraavassa osiossa käsitellään erilaisia suorituskykyominaisuuksia ja parhaita käytäntöjä webforJ:lle sekä toteutustietoja kehyksestä.
 
-Kun luodaan sovellusta webforJ:ssa, asiakas ja palvelin työskentelevät yhdessä manipuloidakseen tietoja, mikä voidaan jakaa laajoihin kategorioihin:
+Kun luodaan sovellus webforJ:ssä, asiakas ja palvelin työskentelevät yhdessä manipuloidakseen tietoja asiakkaan ja palvelimen välillä. Tämä voidaan jakaa laajoihin kategorioihin:
 
 ## 1. Palvelimelta asiakkaalle {#1-server-to-client}
 
-webforJ-menetelmät, kuten `setText()`, sisältyvät tähän kategoriaan. webforJ-sovellus, joka toimii palvelimella, lähettää tietoja asiakkaalle odottamatta vastausta. webforJ optimoi automaattisesti tämän kategorian operaatioiden erät parantaakseen suorituskykyä.
+webforJ:n menetelmiä, kuten `setText()`, sisältyy tähän kategoriaan. webforJ-sovellus, joka toimii palvelimella, lähettää tietoja asiakkaalle odottamatta vastausta. webforJ optimoi automaattisesti tämän kategorian toimintojen erät parantaakseen suorituskykyä.
 
 ## 2. Asiakkaalta palvelimelle {#2-client-to-server}
 
-Tämä kategoria kattaa tapahtumaliikenteen, kuten `Button.onClick()` -menetelmän. Suurimmaksi osaksi asiakas lähettää tapahtumia palvelimelle odottamatta mitään vastausta. Tapahtumaobjekti sisältää tyypillisesti lisäparametreja, jotka liittyvät tapahtumaan, kuten hashkoodin. Koska tämä tieto toimitetaan palvelimelle osana tapahtuman toimittamista, se on heti käytettävissä ohjelmassa heti, kun tapahtuma vastaanotetaan.
+Tämä kategoria kattaa tapahtumaliikenteen, kuten `Button.onClick()`-menetelmän. Suurimmaksi osaksi asiakas lähettää tapahtumia palvelimelle odottamatta vastausta. Tapahtumaobjekti sisältää tyypillisesti lisäparametreja, jotka liittyvät tapahtumaan, kuten hashtunnuksen. Koska nämä tiedot toimitetaan palvelimelle osana tapahtuman toimitusta, ne ovat heti käytettävissä ohjelmassa heti, kun tapahtuma vastaanotetaan.
 
-## 3. Palvelimelta asiakkaalle ja takaisin palvelimelle (kaksisuuntainen matka) {#3-server-to-client-to-server-round-trip}
+## 3. Palvelimelta asiakkaalle palvelimelle (kahden matkan) {#3-server-to-client-to-server-round-trip}
 
-Kaksisuuntaisia matkoja tehdään, kun sovellus kysyy asiakkaalta dynaamista tietoa, jota ei voida välimuistittaa palvelimella. Menetelmiä, kuten `Label.getText()` ja `Checkbox.isChecked()`, käytetään tässä kategoriassa. Kun webforJ-sovellus suorittaa rivin, kuten `String title = myLabel.getText()`, se pysähtyy kokonaan, kunnes palvelin lähettää tuon pyynnön asiakkaalle ja odottaa sitten asiakkaan vastausta.
+Kahden matkan toteutetaan, kun sovellus kysyy asiakkaalta joitakin dynaamisia tietoja, joita ei voida välimuistittaa palvelimella. Menetelmät, kuten `Label.getText()` ja `Checkbox.isChecked()`, kuuluvat tähän kategoriaan. Kun webforJ-sovellus suorittaa rivin, kuten `String title = myLabel.getText()`, se pysähtyy kokonaan samalla, kun palvelin lähettää tuon pyynnön asiakkaalle ja sitten odottaa asiakkaan vastausta.
 
-Jos sovellus lähettää useita viestejä asiakkaalle, jotka eivät vaadi vastausta (kategoria 1), ja sitten yhden viestin, joka vaatii kaksisuuntaista matkaa (kategoria 3), sovelluksen on odotettava, että asiakas käsittelee kaikki odottavat viestit ja vastaa sitten viimeiseen viestiin, joka vaatii vastausta. Joissakin tapauksissa tämä voi lisätä viivettä. Jos tätä kaksisuuntaista matkaa ei olisi otettu käyttöön, asiakas olisi voinut jatkaa työskentelyä käsitellessään näitä viivästyneitä viestejä samalla kun palvelimella toimiva sovellus siirtyi uusiin tehtäviin.
+Jos sovellus lähettää useita viestejä asiakkaalle, jotka eivät vaadi vastausta (kategoria 1), ja sitten yhden viestin, joka vaatii kahden matkan (kategoria 3), sovelluksen on odotettava asiakkaan käsittelevän kaikki odottavat viestit, ja sitten vastattava viimeiseen viestiin, joka vaatii vastausta. Joissain tapauksissa tämä voi lisätä viivettä. Jos tuota kahden matkan pyyntöä ei olisi esitetty, asiakas olisi voinut jatkaa työntekoa käsittelemällä noita odottavia viestejä, kun palvelimella toimiva sovellus olisi siirtynyt uusiin tehtäviin.
 
 ## Suorituskyvyn parantaminen {#improve-performance}
 
-Sovelluksen reagointikykyä voidaan merkittävästi parantaa välttämällä kolmannen kategorian kaksisuuntaisia matkoja mahdollisimman paljon. Esimerkiksi ComboBoxin onSelect-toiminnallisuuden muuttaminen seuraavaksi:
+Voit merkittävästi parantaa reagointikykyä välttämällä kolmannen kategorian kahden matkan pyyntöjä niin paljon kuin mahdollista. Esimerkiksi muuttamalla ComboBoxin onSelect-toiminnallisuutta seuraavasti:
 
 ```java
 private void comboBoxSelect(ListSelectEvent ev){
@@ -38,19 +38,19 @@ seuraavaksi:
 
 ```java
 private void comboBoxSelect(ListSelectEvent ev){
-    // Hae arvo tapahtumasta
+    //Hae arvo tapahtumasta
     int selected = ev.getSelectedIndex();
 }
 ```
 
-Ensimmäisessä osassa `ComboBox.getSelectedIndex()`, joka suoritetaan komponentilla, pakottaa kaksisuuntaisen matkan takaisin asiakkaalle, mikä aiheuttaa viivettä. Toisessa versiossa tapahtuman `ListSelectEvent.getSelectedIndex()` -menetelmä palauttaa arvon, joka toimitettiin palvelimelle osana alkuperäistä tapahtumaa.
+Ensimmäisessä koodissa `ComboBox.getSelectedIndex()`-toiminnon suorittaminen komponentilla pakottaa kahden matkan paluu asiakkaalle, mikä aiheuttaa viivettä. Toisessa versiossa, käyttämällä tapahtuman `ListSelectEvent.getSelectedIndex()`-menetelmää, saadaan arvo, joka toimitettiin palvelimelle alkuperäisen tapahtuman osana.
 
 ## Välimuisti {#caching}
 
-webforJ optimoi suorituskykyä edelleen hyödyntämällä välimuistia. Yleisesti ottaen tässä kontekstissa on olemassa kahta tyyppiä tietoja: tietoja, joita käyttäjä voi suoraan muuttaa, ja tietoja, joita käyttäjä ei voi muuttaa. Ensimmäisessä tapauksessa, kun haetaan tietoja, joihin käyttäjät suoraan vuorovaikuttavat, on tarpeen kysyä palvelimelta näitä tietoja.
+webforJ optimoi suorituskykyä edelleen hyödyntämällä välimuistia. Yleisesti ottaen tässä kontekstissa on kahta tyyppiä tietoja: tietoja, joita käyttäjä voi suoraan muuttaa, ja tietoja, joita käyttäjä ei voi muuttaa. Ensimmäisessä tapauksessa, kun haetaan tietoja, joihin käyttäjät suoraan vuorovaikuttavat, on tarpeen kysyä palvelimelta näitä tietoja.
 
-Kuitenkin, tietoa, jota käyttäjä ei voi muuttaa, voidaan välimuistittaa, jotta vältetään ylimääräiset suorituskykyhäiriöt. Tämä varmistaa, että kaksisuuntaista matkaa ei tarvitse tehdä tarpeettomasti, mikä tarjoaa tehokkaamman käyttökokemuksen. webforJ optimoi sovelluksia tällä tavalla optimaalisen suorituskyvyn varmistamiseksi.
+Kuitenkin, tietoja, joita käyttäjä ei voi muuttaa, voidaan välimuistittaa lisätilan säästämiseksi. Tämä varmistaa, että kahden matkan pyyntöjä ei tarvitse tehdä tarpeettomasti, mikä tarjoaa tehokkaamman käyttökokemuksen. webforJ optimoi sovelluksia tällä tavalla varmistaakseen optimaalisen suorituskyvyn.
 
 ## Latausaika {#loading-time}
 
-Kun käyttäjä käynnistää webforJ-sovelluksen, se lataa vain pienen määrän (vain noin 2,5 kB gzip) JavaScriptiä istunnon käynnistämiseksi. Tämän jälkeen se lataa dynaamisesti yksittäiset viestit tai JavaScript-osia tarpeen mukaan, kun sovellus käyttää vastaavaa toiminnallisuutta. Esimerkiksi palvelin lähettää asiakkaalle JavaScriptin, joka on tarpeen webforJ `Button`-komponentin rakentamiseen vain kerran — kun sovellus luo ensimmäisen `Button` -komponenttinsa. Tämä parantaa merkittävästi aloituslatausaikaa, mikä parantaa käyttäjäkokemusta.
+Kun käyttäjä käynnistää webforJ-sovelluksen, se lataa vain pienen osan (noin 2,5 kB gzip) JavaScriptistä aloittaakseen istunnon. Tämän jälkeen se lataa dynaamisesti yksittäisiä viestejä tai JavaScript-osia tarpeen mukaan, kun sovellus käyttää vastaavaa toiminnallisuutta. Esimerkiksi palvelin lähettää asiakkaalle JavaScriptin, joka on tarpeen webforJ `Button`:n rakentamiseen vain kerran, kun sovellus luo ensimmäisen `Button`-komponenttinsa. Tämä johtaa havaittaviin parannuksiin aloituslatausajassa, mikä parantaa käyttökokemusta.

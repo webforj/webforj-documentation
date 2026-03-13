@@ -5,58 +5,63 @@ slug: datetimefield
 description: >-
   A component that provides a default browser-based date and time picker for
   selecting both date and time through a single input field.
-sidebar_class_name: updated-content
-_i18n_hash: dd6fe3e8a737f5b016f92629d9767dbb
+_i18n_hash: e90e93f7db172a33b2ce205bfd6a6b3c
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-field" />
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/DateTimeField" top='true'/>
 
+`DateTimeField`-komponentti mahdollistaa käyttäjien syöttää sekä päivämäärän että kellonajan yhdellä kentällä, kattaen vuoden, kuukauden, päivän, tunnit ja minuutit. Se validoi syötteen tarkkuuden ja voi esittää päivämäärä-aikavalitsimen valinnan helpottamiseksi.
+
+<!-- INTRO_END -->
+
+## Using `DateTimeField` {#using-datetimefield}
+
 <ParentLink parent="Field" />
 
-`DateTimeField`-komponentti on suunniteltu mahdollistamaan käyttäjien syöttää sekä päivämäärä että aika. Tämä sisältää vuoden, kuukauden ja päivän määrittämisen sekä ajan tunteina ja minuutteina. Se tarjoaa käyttäjille mahdollisuuden validoida syötteensä tarkkuuden varmistamiseksi tai hyödyntää erillistä päivämäärä-aikavalintainterfacea valintaprosessin sujuvoittamiseksi.
+`DateTimeField` laajentaa jaettua `Field`-luokkaa, joka tarjoaa yhteiset ominaisuudet kaikille kenttäkomponenteille. Seuraava esimerkki luo merkitty `DateTimeField`-kentän lähtöpäivämäärän ja -ajan valitsemiseksi.
 
 <ComponentDemo 
 path='/webforj/datetimefield?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/datetimefield/DateTimeFieldView.java'
 />
 
-## Käyttötapaukset {#usages}
+## Usages {#usages}
 
-`DateTimeField` on parhaiten käytössä tilanteissa, joissa sekä päivämäärän **että** ajan kaappaaminen tai näyttäminen on olennaista sovelluksellesi. Tässä on joitakin esimerkkejä siitä, milloin `DateTimeField`-komponenttia tulisi käyttää:
+`DateTimeField`-komponenttia on parasta käyttää tilanteissa, joissa sekä päivämäärän **että** kellonajan tallentaminen tai esittäminen on tärkeää sovelluksellesi. Tässä on joitakin esimerkkejä siitä, milloin `DateTimeField`-komponenttia tulisi käyttää:
 
-1. **Tapahtumien aikatauluttaminen ja kalenterit**: Anna käyttäjien tehokkaasti aikatauluttaa tapahtumia, varata tapaamisia ja hallita kalentereitaan tarjoamalla heille yksi komponentti, joka mahdollistaa päivämäärän ja ajan valinnan.
+1. **Tapahtumien aikataulutus ja kalenterit**: Anna käyttäjien tehokkaasti aikatauluttaa tapahtumia, varata aikoja ja hallita kalentereitaan tarjoamalla heille yksittäinen komponentti, jonka avulla he voivat valita päivämäärän ja ajan.
 <!-- vale off -->
-2. **Sisään- ja uloskirjautuminen**: Helpota käyttäjien valintaa sisään- ja uloskirjautumisaikojen osalta, kun aikaväli voi kattaa useita päiviä.
+2. **Sisään- ja uloskirjautuminen**: Helpota käyttäjän sisään- ja uloskirjautumisaikojen valintaa, kun jakso voi kestää useita päiviä.
 <!-- vale on -->
-3. **Tietojen lokitus ja aikaleimat**: Hyödynnä `DateTimeField`-komponentteja sovelluksissa, jotka sisältävät tapahtumien päivämäärän ja ajan tallentamisen tai kun käyttäjä lähettää tietoja. 
+3. **Tietojen lokitus ja aikaleimat**: Hyödynnä `DateTimeField`-komponentteja sovelluksissa, joissa tallennetaan päivämäärä ja aika, jolloin tapahtumat tapahtuvat tai kun käyttäjä lähettää tietoja.
 
-4. **Tehtävien hallinta ja määräajat**: `DateTimeField`-komponentit ovat arvokkaita sovelluksissa, jotka sisältävät tehtävien hallintaa tai määräaikojen asettamista, joissa sekä päivämäärä että aika ovat tärkeitä tarkassa aikataulutuksessa.
+4. **Tehtävien hallinta ja määräajat**: `DateTimeField`-komponentit ovat arvokkaita sovelluksissa, jotka liittyvät tehtävien hallintaan tai määräaikojen asettamiseen, joissa sekä päivämäärä että aika ovat tärkeitä tarkassa aikataulutuksessa.
 
-## Kentän arvo (`LocalDateTime`) {#field-value-localdatetime}
+## Field value (`LocalDateTime`) {#field-value-localdatetime}
 
-Sisäisesti `DateTimeField`-komponentti edustaa arvoaan käyttäen `LocalDateTime`-objektia `java.time`-paketista. Tämä tarjoaa tarkkaa hallintaa sekä syötteen päivämäärä- että aikasäännöistä.
+Sisäisesti `DateTimeField`-komponentti edustaa arvoaan käyttäen `LocalDateTime`-objektia `java.time`-paketista. Tämä mahdollistaa tarkan hallinnan sekä päivämäärän että ajan syötekomponenteista.
 
-Vaikka **asiakaspään** arvo renderöidään käyttäjän selaimen alueen mukaan (esim. päivämäärä- ja aikamuodot, jotka vastaavat paikallisia käytäntöjä), **parsing**-arvo seuraa tiukkaa ja ennustettavaa rakennetta: **`yyyy-MM-ddTHH:mm:ss`**.
+Vaikka **asiakaspään** arvo näkyy käyttäjän selaimen alueen mukaan (esim. päivämäärä- ja aikamuodot, jotka vastaavat paikallisia käytäntöjä), **analysoitu** arvo seuraa tiukkaa ja ennakoitavaa rakennetta: **`yyyy-MM-ddTHH:mm:ss`**.
 
-### Arvon hakeminen ja asettaminen {#getting-and-setting-the-value}
+### Getting and setting the value {#getting-and-setting-the-value}
 
-Jotta saat nykyisen arvon, käytä `getValue()`-metodia:
+Nykyisen arvon hakemiseen käytä `getValue()`-metodia:
 
 ```java
 LocalDateTime value = dateTimeField.getValue();
 ```
 
-Aseta arvo ohjelmallisesti käyttämällä `setValue()`-metodia:
+Arvon ohjelmalliseen asettamiseen käytä `setValue()`-metodia:
 
 ```java
 dateTimeField.setValue(LocalDateTime.of(2024, 4, 27, 14, 30, 0));
 ```
 
-### `setText()`-käyttäminen {#using-settext}
+### Using `setText()` {#using-settext}
 
-Jos haluat asettaa arvon raakana merkkijonona, sen on seurattava tarkkaa muotoa `yyyy-MM-ddTHH:mm:ss`.
+Jos haluat asettaa arvon raakana merkkijonona, sen on noudatettava tarkkaa muotoa `yyyy-MM-ddTHH:mm:ss`.
 
 ```java
 dateTimeField.setText("2024-04-27T14:30:00"); // voimassa
@@ -65,47 +70,47 @@ dateTimeField.setText("24-04-27T14:30:00"); // ei voimassa
 ```
 
 :::warning
- Käyttäessäsi `setText()`-metodia `IllegalArgumentException` heitetään, jos komponentti ei voi analysoida syötettä muodossa `yyyy-MM-ddTHH:mm:ss`.
+ Kun käytät `setText()`-metodia, `IllegalArgumentException` heitetään, jos komponentti ei voi analysoida syötettä muodossa `yyyy-MM-ddTHH:mm:ss`.
 :::
 
-## Staattiset apuohjelmat {#static-utilities}
+## Static utilities {#static-utilities}
 
-DateTimeField-luokka tarjoaa myös seuraavat staattiset apuohjelmat:
+`DateTimeField`-luokka tarjoilee myös seuraavat staattiset apumetodit:
 
-- `fromDateTime(String dateTimeAsString)`: Muunna päivämäärä- ja aikatieto merkkijonossa muodossa `yyyy-MM-ddTHH:mm:ss` LocalDateTime-objektiksi, jota voidaan sitten käyttää tässä luokassa tai muualla.
+- `fromDateTime(String dateTimeAsString)`: Muuntaa päivämäärä- ja aikamerkkijonon muodossa `yyyy-MM-ddTHH:mm:ss` `LocalDateTime`-objektiksi, jota voidaan käyttää tämän luokan kanssa tai muualla.
 
-- `toDateTime(LocalDateTime dateTime)`: Muunna LocalDateTime-objekti päivämäärä- ja aikatietomuotoon `yyyy-MM-ddTHH:mm:ss`.
+- `toDateTime(LocalDateTime dateTime)`: Muuntaa `LocalDateTime`-objektin päivämäärä- ja aikamerkkijonoksi muodossa `yyyy-MM-ddTHH:mm:ss`.
 
-- `isValidDateTime(String dateTimeAsString)`: Tarkistaa, onko annettu merkkijono voimassa oleva `yyyy-MM-ddTHH:mm:ss` päivämäärä ja aika. Tämä palauttaa totuusarvon true, jos näin on, muuten false.
+- `isValidDateTime(String dateTimeAsString)`: Tarkistaa, onko annettu merkkijono voimassa oleva `yyyy-MM-ddTHH:mm:ss` päivämäärä ja aika. Tämä palauttaa boolean-arvon true, jos näin on, ja false muuten.
 
-## Minimi- ja maksimimäärä {#min-and-max-value}
+## Min and max value {#min-and-max-value}
 
-### Minimiarvo {#the-min-value}
+### The min value {#the-min-value}
 
-Jos komponenttiin syötetty arvo on aikaisempi kuin määritetty vähimmäis aikaleima, komponentti epäonnistuu rajoitusten validoinnissa. Kun sekä minimi- että maksimimäärät on asetettu, vähimmäisarvon on oltava aikaleima, joka on sama tai aikaisempi kuin maksimimäärä.
+Jos komponenttiin syötetty arvo on aikaisempi kuin määritetty vähimmäisaikatunnus, komponentti epäonnistuu rajoitteen validoinnissa. Kun sekä min- että max-arvot on asetettu, min-arvon on oltava aikaleima, joka on sama tai aikaisempi kuin max-arvo.
 
 ```java
-// Aseta sallittu vähimmäisaikaleima: 1. tammikuuta 2023 klo 08:00
+// Aseta vähimmäis sallittu aikaleima: 1. tammikuuta 2023 klo 08:00
 dateTimeField.setMin(LocalDateTime.of(2023, 1, 1, 8, 0));
 ```
 
-### Maksimimäärä {#the-max-value}
+### The max value {#the-max-value}
 
-Jos komponenttiin syötetty arvo on myöhempi kuin määritetty enimmäis aikaleima, komponentti epäonnistuu rajoitusten validoinnissa. Kun sekä minimi- että maksimimäärät on asetettu, maksimimäärän on oltava aikaleima, joka on sama tai myöhempi kuin vähimmäisarvo.
+Jos komponenttiin syötetty arvo on myöhempi kuin määritetty enimmäisaikatunnus, komponentti epäonnistuu rajoitteen validoinnissa. Kun sekä min- että max-arvot on asetettu, max-arvon on oltava aikaleima, joka on sama tai myöhempi kuin min-arvo.
 
 ```java
-// Aseta sallittu enimmäisaikaleima: 31. joulukuuta 2023 klo 18:00
+// Aseta enimmäis sallittu aikaleima: 31. joulukuuta 2023 klo 18:00
 dateTimeField.setMax(LocalDateTime.of(2023, 12, 31, 18, 0));
 ```
 
-## Parhaat käytännöt {#best-practices}
+## Best practices {#best-practices}
 
-Jotta `DateTimeField`-komponentin käyttö tarjoaisi optimaalisen käyttäjäkokemuksen, harkitse seuraavia parhaita käytäntöjä:
+Parhaan käyttäjäkokemuksen varmistamiseksi `DateTimeField`-komponentin käytössä, harkitse seuraavia parhaita käytäntöjä:
 
-- **Paikallistetun päivämäärän näyttäminen**: Paikallista päivämäärämuoto ja ota huomioon alueelliset mieltymykset varmistaaksesi, että päivämäärät esitetään käyttäjälle tutussa muodossa.
+- **Paikallinen päivämääräesitys**: Paikallista päivämäärämuoto ja ota huomioon alueelliset mieltymykset jotta päivämäärät esitetään käyttäjälle tutussa muodossa.
 
-- **Lisää aikavyöhykkeet**: Jos sovelluksesi käsittelee aikaherkkää tietoa eri aikavyöhykkeillä, harkitse aikavyöhykkeen valinnan sisällyttämistä päivämääräkentän yhteyteen, jotta varmistetaan tarkka päivämäärä-aikojen kuvaus.
+- **Sisällytä aikavyöhykkeet**: Jos sovelluksesi käsittelee aikaherkkiä tietoja eri aikavyöhykkeillä, harkitse aikavyöhykkeen valintaa päivämääräkentän rinnalla varmistaaksesi tarkka päivämäärä-aikakuvasto.
 
-- **Esteettömyys**: Hyödynnä `DateTimeField`-komponenttia esteettömyys huomioiden. Varmista, että se täyttää esteettömyysstandardit, kuten asianmukaisten etikettien tarjoamisen ja yhteensopivuuden apuvälineiden kanssa.
+- **Esteettömyys**: Käytä `DateTimeField`-komponenttia esteettömyys mielessä. Varmista, että se täyttää esteettömyysvaatimukset, kuten oikeiden tunnisteiden tarjoamisen ja yhteensopivuuden apuvälineiden kanssa.
 
-- **Nykyisen päivämäärän automaattinen täyttäminen**: Harkitse vaihtoehdon tarjoamista nykyisen päivämäärän ja ajan automaattiseen täyttämiseen oletusarvona päivämäärä- ja aikakentässä, jos se on sovelluksesi käyttötilanteeseen sopivaa.
+- **Automaattinen nykyisen päivämäärän täydentäminen**: Harkitse mahdollisuutta automaattisesti täydentää nykyinen päivämäärä ja aika oletusarvoksi päivämäärä-aikakenttään, jos se on sovelluksesi käyttötapaukselle sopivaa.
