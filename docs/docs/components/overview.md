@@ -197,6 +197,10 @@ This category includes components that facilitate user interactions and visually
     <p>A component that displays important messages or warnings in a noticeable format to capture user attention.</p>
   </GalleryCard>
 
+  <GalleryCard header="Badge" href="badge" image="/img/components/Badge.png">
+    <p>A small label component for displaying counts, statuses, or short metadata, with support for themes, sizes, and icons.</p>
+  </GalleryCard>
+
   <GalleryCard header="DesktopNotification" href="desktop-notification" image="/img/components/DesktopNotification.png">
     <p>A component that leverages the browser’s native Notification API to alert users with custom desktop notifications.</p>
   </GalleryCard>

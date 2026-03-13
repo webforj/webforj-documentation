@@ -5,8 +5,10 @@ import com.webforj.component.badge.Badge;
 import com.webforj.component.badge.BadgeTheme;
 import com.webforj.component.html.elements.H3;
 import com.webforj.component.icons.FeatherIcon;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.layout.flexlayout.FlexWrap;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
@@ -27,14 +29,19 @@ public class BadgeIconsView extends Composite<FlexLayout> {
 
     FlexLayout iconTextRow = FlexLayout.create().horizontal().build();
     iconTextRow.setSpacing("var(--dwc-space-s)");
-    iconTextRow.setStyle("flex-wrap", "wrap");
-    iconTextRow.setStyle("align-items", "center");
+    iconTextRow.setWrap(FlexWrap.WRAP);
+    iconTextRow.setAlignment(FlexAlignment.CENTER);
 
-    iconTextRow.add(
-        new Badge("Done", FeatherIcon.CHECK_CIRCLE.create()).setTheme(BadgeTheme.SUCCESS),
-        new Badge("Error", FeatherIcon.X_CIRCLE.create()).setTheme(BadgeTheme.DANGER),
-        new Badge("Info", FeatherIcon.INFO.create()).setTheme(BadgeTheme.PRIMARY),
-        new Badge("Warning", FeatherIcon.ALERT_TRIANGLE.create()).setTheme(BadgeTheme.WARNING));
+    Badge doneBadge = new Badge("Done", FeatherIcon.CHECK_CIRCLE.create());
+    doneBadge.setTheme(BadgeTheme.SUCCESS);
+    Badge errorBadge = new Badge("Error", FeatherIcon.X_CIRCLE.create());
+    errorBadge.setTheme(BadgeTheme.DANGER);
+    Badge infoBadge = new Badge("Info", FeatherIcon.INFO.create());
+    infoBadge.setTheme(BadgeTheme.PRIMARY);
+    Badge warningBadge = new Badge("Warning", FeatherIcon.ALERT_TRIANGLE.create());
+    warningBadge.setTheme(BadgeTheme.WARNING);
+
+    iconTextRow.add(doneBadge, errorBadge, infoBadge, warningBadge);
 
     self.add(iconTextRow);
 
@@ -42,13 +49,18 @@ public class BadgeIconsView extends Composite<FlexLayout> {
 
     FlexLayout iconRow = FlexLayout.create().horizontal().build();
     iconRow.setSpacing("var(--dwc-space-s)");
-    iconRow.setStyle("align-items", "center");
+    iconRow.setAlignment(FlexAlignment.CENTER);
 
-    iconRow.add(
-        new Badge(FeatherIcon.CHECK.create()).setTheme(BadgeTheme.SUCCESS),
-        new Badge(FeatherIcon.X.create()).setTheme(BadgeTheme.DANGER),
-        new Badge(FeatherIcon.BELL.create()).setTheme(BadgeTheme.PRIMARY),
-        new Badge(FeatherIcon.STAR.create()).setTheme(BadgeTheme.GRAY));
+    Badge checkBadge = new Badge(FeatherIcon.CHECK.create());
+    checkBadge.setTheme(BadgeTheme.SUCCESS);
+    Badge xBadge = new Badge(FeatherIcon.X.create());
+    xBadge.setTheme(BadgeTheme.DANGER);
+    Badge bellBadge = new Badge(FeatherIcon.BELL.create());
+    bellBadge.setTheme(BadgeTheme.PRIMARY);
+    Badge starBadge = new Badge(FeatherIcon.STAR.create());
+    starBadge.setTheme(BadgeTheme.GRAY);
+
+    iconRow.add(checkBadge, xBadge, bellBadge, starBadge);
 
     self.add(iconRow);
 
@@ -56,15 +68,21 @@ public class BadgeIconsView extends Composite<FlexLayout> {
 
     FlexLayout allThemesRow = FlexLayout.create().horizontal().build();
     allThemesRow.setSpacing("var(--dwc-space-s)");
-    allThemesRow.setStyle("flex-wrap", "wrap");
-    allThemesRow.setStyle("align-items", "center");
+    allThemesRow.setWrap(FlexWrap.WRAP);
+    allThemesRow.setAlignment(FlexAlignment.CENTER);
 
-    allThemesRow.add(
-        new Badge("New", FeatherIcon.STAR.create()).setTheme(BadgeTheme.PRIMARY),
-        new Badge("Live", FeatherIcon.RADIO.create()).setTheme(BadgeTheme.SUCCESS),
-        new Badge("Alert", FeatherIcon.ALERT_CIRCLE.create()).setTheme(BadgeTheme.DANGER),
-        new Badge("Draft", FeatherIcon.EDIT.create()).setTheme(BadgeTheme.GRAY),
-        new Badge("Beta", FeatherIcon.ZAP.create()).setTheme(BadgeTheme.WARNING));
+    Badge newBadge = new Badge("New", FeatherIcon.STAR.create());
+    newBadge.setTheme(BadgeTheme.PRIMARY);
+    Badge liveBadge = new Badge("Live", FeatherIcon.RADIO.create());
+    liveBadge.setTheme(BadgeTheme.SUCCESS);
+    Badge alertBadge = new Badge("Alert", FeatherIcon.ALERT_CIRCLE.create());
+    alertBadge.setTheme(BadgeTheme.DANGER);
+    Badge draftBadge = new Badge("Draft", FeatherIcon.EDIT.create());
+    draftBadge.setTheme(BadgeTheme.GRAY);
+    Badge betaBadge = new Badge("Beta", FeatherIcon.ZAP.create());
+    betaBadge.setTheme(BadgeTheme.WARNING);
+
+    allThemesRow.add(newBadge, liveBadge, alertBadge, draftBadge, betaBadge);
 
     self.add(allThemesRow);
   }

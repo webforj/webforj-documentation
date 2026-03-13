@@ -31,16 +31,19 @@ public class BadgeTabbedPaneView extends Composite<FlexLayout> {
     TabbedPane tabbedPane = new TabbedPane();
 
     Tab inbox = new Tab("Inbox");
-    inbox.setSuffixComponent(new Badge("12", BadgeTheme.PRIMARY)
-        .setExpanse(BadgeExpanse.XSMALL));
+    Badge inboxBadge = new Badge("12", BadgeTheme.PRIMARY);
+    inboxBadge.setExpanse(BadgeExpanse.XSMALL);
+    inbox.setSuffixComponent(inboxBadge);
 
     Tab notifications = new Tab("Notifications");
-    notifications.setSuffixComponent(new Badge("3", BadgeTheme.DANGER)
-        .setExpanse(BadgeExpanse.XSMALL));
+    Badge notifBadge = new Badge("3", BadgeTheme.DANGER);
+    notifBadge.setExpanse(BadgeExpanse.XSMALL);
+    notifications.setSuffixComponent(notifBadge);
 
     Tab drafts = new Tab("Drafts");
-    drafts.setSuffixComponent(new Badge("1", BadgeTheme.GRAY)
-        .setExpanse(BadgeExpanse.XSMALL));
+    Badge draftsBadge = new Badge("1", BadgeTheme.GRAY);
+    draftsBadge.setExpanse(BadgeExpanse.XSMALL);
+    drafts.setSuffixComponent(draftsBadge);
 
     Tab sent = new Tab("Sent");
 
@@ -56,16 +59,19 @@ public class BadgeTabbedPaneView extends Composite<FlexLayout> {
     TabbedPane outlinedPane = new TabbedPane();
 
     Tab tasks = new Tab("Tasks");
-    tasks.setSuffixComponent(new Badge("5", BadgeTheme.OUTLINED_PRIMARY)
-        .setExpanse(BadgeExpanse.XSMALL));
+    Badge tasksBadge = new Badge("5", BadgeTheme.OUTLINED_PRIMARY);
+    tasksBadge.setExpanse(BadgeExpanse.XSMALL);
+    tasks.setSuffixComponent(tasksBadge);
 
     Tab issues = new Tab("Issues");
-    issues.setSuffixComponent(new Badge("8", BadgeTheme.OUTLINED_DANGER)
-        .setExpanse(BadgeExpanse.XSMALL));
+    Badge issuesBadge = new Badge("8", BadgeTheme.OUTLINED_DANGER);
+    issuesBadge.setExpanse(BadgeExpanse.XSMALL);
+    issues.setSuffixComponent(issuesBadge);
 
     Tab done = new Tab("Done");
-    done.setSuffixComponent(new Badge("24", BadgeTheme.OUTLINED_SUCCESS)
-        .setExpanse(BadgeExpanse.XSMALL));
+    Badge doneBadge = new Badge("24", BadgeTheme.OUTLINED_SUCCESS);
+    doneBadge.setExpanse(BadgeExpanse.XSMALL);
+    done.setSuffixComponent(doneBadge);
 
     outlinedPane.addTab(tasks, new Paragraph("Your pending tasks."));
     outlinedPane.addTab(issues, new Paragraph("Open issues that need attention."));

@@ -19,22 +19,24 @@ public class BadgeSizesViewIT extends BaseTest {
     }
 
     @Test
-    public void testXsmallBadgeHasCorrectExpanse() {
-        assertThat(badgeSizesPage.getXsmallBadge()).hasAttribute("expanse", "xs");
+    public void testAllNineSizeBadgesAreRendered() {
+        // 9 size badges + 5 circular badges = 14 total
+        assertThat(badgeSizesPage.getAllSizeBadges()).hasCount(14);
     }
 
     @Test
-    public void testMediumBadgeHasCorrectExpanse() {
-        assertThat(badgeSizesPage.getMediumBadge()).hasAttribute("expanse", "m");
+    public void testSizeBadgesHaveCorrectExpanses() {
+        // Size badges are rendered in order: 3xs, 2xs, xs, s, m, l, xl, 2xl, 3xl
+        assertThat(badgeSizesPage.getSizeBadgeByIndex(0)).hasAttribute("expanse", "3xs");
+        assertThat(badgeSizesPage.getSizeBadgeByIndex(2)).hasAttribute("expanse", "xs");
+        assertThat(badgeSizesPage.getSizeBadgeByIndex(4)).hasAttribute("expanse", "m");
+        assertThat(badgeSizesPage.getSizeBadgeByIndex(6)).hasAttribute("expanse", "xl");
+        assertThat(badgeSizesPage.getSizeBadgeByIndex(8)).hasAttribute("expanse", "3xl");
     }
 
     @Test
-    public void testXlargeBadgeHasCorrectExpanse() {
-        assertThat(badgeSizesPage.getXlargeBadge()).hasAttribute("expanse", "xl");
-    }
-
-    @Test
-    public void testCircularBadgeIsVisible() {
-        assertThat(badgeSizesPage.getCircularBadge()).isVisible();
+    public void testCircularBadgesAreVisible() {
+        assertThat(badgeSizesPage.getAllCircularBadges()).hasCount(5);
+        assertThat(badgeSizesPage.getAllCircularBadges().first()).isVisible();
     }
 }

@@ -35,8 +35,7 @@ public class BadgeIconsViewIT extends BaseTest {
 
     @Test
     public void testIconOnlyAndIconTextBadgesAreRendered() {
-        // The view renders 3 groups of badges (icon+text, icon-only, all themes with icons)
-        // so there should be at least 10 dwc-badge elements on the page
-        assertThat(badgeIconsPage.getAllBadges()).hasCount(11);
+        // The view renders 3 groups: icon+text (4), icon-only (4), all themes (5) = 13
+        assertThat(badgeIconsPage.getAllBadges()).hasCount(13);
     }
 }

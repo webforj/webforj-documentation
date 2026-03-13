@@ -12,11 +12,11 @@ public class BadgeTabbedPanePage {
     private final Locator draftsTab;
 
     public BadgeTabbedPanePage(Page page) {
-        this.inboxTab = page.locator("dwc-tab-panel").filter(
+        this.inboxTab = page.locator("dwc-tab").filter(
                 new Locator.FilterOptions().setHasText("Inbox")).first();
-        this.notificationsTab = page.locator("dwc-tab-panel").filter(
+        this.notificationsTab = page.locator("dwc-tab").filter(
                 new Locator.FilterOptions().setHasText("Notifications")).first();
-        this.draftsTab = page.locator("dwc-tab-panel").filter(
+        this.draftsTab = page.locator("dwc-tab").filter(
                 new Locator.FilterOptions().setHasText("Drafts")).first();
     }
 

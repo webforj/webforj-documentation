@@ -4,8 +4,10 @@ import com.webforj.component.Composite;
 import com.webforj.component.badge.Badge;
 import com.webforj.component.badge.BadgeTheme;
 import com.webforj.component.html.elements.H3;
+import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
+import com.webforj.component.layout.flexlayout.FlexWrap;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
@@ -47,8 +49,8 @@ public class BadgeThemesView extends Composite<FlexLayout> {
   private FlexLayout createRow(Badge... badges) {
     FlexLayout row = FlexLayout.create().horizontal().build();
     row.setSpacing("var(--dwc-space-s)");
-    row.setStyle("flex-wrap", "wrap");
-    row.setStyle("align-items", "center");
+    row.setWrap(FlexWrap.WRAP);
+    row.setAlignment(FlexAlignment.CENTER);
     row.add(badges);
     return row;
   }
