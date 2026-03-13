@@ -8,7 +8,11 @@ sidebar_position: 50
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="googlecharts" location="com/webforj/component/googlecharts/GoogleChart" top='true'/>
 
-<!-- Brief overview of the component and what it is/does -->
+The `GoogleChart` component integrates the [Google Charts](https://developers.google.com/chart) library into webforJ, giving you access to chart types like bar, line, pie, geo, and more. Charts are configured with Java using a type, a data set, and an options map that controls appearance and behavior.
+
+<!-- INTRO_END -->
+
+## Creating a chart {#creating-a-chart}
 
 :::info Importing Google Charts
 To use the `GoogleChart` class in your app, use the following XML in your POM file:
@@ -22,7 +26,9 @@ To use the `GoogleChart` class in your app, use the following XML in your POM fi
 ```
 :::
 
-The `GoogleChart` class is a comprehensive solution for embedding rich, interactive charts within web applications. This class acts as a bridge to the [Google Charts](https://developers.google.com/chart) library, offering a wide variety of chart types suitable for any data visualization task.
+To create a chart, specify a chart type, configure its visual options, and provide the data to display.
+
+This example creates a geo chart that maps revenue data across different countries, with custom colors, legend positioning, and chart area sizing:
 
 <ComponentDemo 
 path='/webforj/chart?' 
@@ -30,7 +36,6 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 cssURL='/css/googlecharts/chart.css'
 height='300px'
 />
-
 
 ## Chart types {#chart-types}
 

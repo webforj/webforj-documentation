@@ -1,16 +1,20 @@
 ---
 title: TextArea
 sidebar_position: 130
-_i18n_hash: f109f006fcd252bf81b6cccb83d38a50
+_i18n_hash: 423b70520e8f64a463d2c7b1d0e35ddc
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-textarea" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/TextArea" top='true'/>
 
-Die `TextArea`-Komponente in webforJ bietet eine Lösung für die Eingabe mehrzeiliger Texte. Endbenutzer können frei Text eingeben und bearbeiten, während Entwickler angemessene Grenzen mit Funktionen wie maximalen Zeichenlimits, Absatzstrukturen und Validierungsregeln festlegen können.
+Der `TextArea`-Komponente bietet ein mehrzeiliges Texteingabefeld, in dem Benutzer längere Textblöcke eingeben und bearbeiten können. Es unterstützt maximale Zeichenlimits, Absatzstruktur, Zeilenumbruch und Validierungsregeln, um zu steuern, wie Eingaben verarbeitet werden.
 
-Hier ist ein Beispiel für eine `TextArea` zur Eingabe mehrzeiliger Texte:
+<!-- INTRO_END -->
+
+## Erstellung eines `TextArea` {#creating-a-textarea}
+
+Erstellen Sie ein `TextArea`, indem Sie ein Label an seinen Konstruktor übergeben. Eigenschaften wie Platzhaltertext, Zeichenbeschränkungen und Umbruchverhalten können über Setter-Methoden konfiguriert werden.
 
 <ComponentDemo 
 path='/webforj/textarea?' 
@@ -20,26 +24,26 @@ height = '300px'
 
 ## Verwaltung von Absätzen {#managing-paragraphs}
 
-Die `TextArea`-Komponente bietet Funktionen zum Umgang mit Textabsätzen, was sie ideal für Anwendungen macht, die Dokumentbearbeitung oder strukturierte Eingaben erfordern.
+Die `TextArea`-Komponente bietet Funktionen zur Handhabung von Textabsätzen, wodurch sie ideal für Anwendungen ist, die Dokumentbearbeitung oder strukturierte Texteingabe erfordern.
 
-Hier ist ein kurzes Beispiel, wie man Absatzinhalte aufbauen und manipulieren kann:
+Hier ist ein kurzes Beispiel, wie Inhalte für Absätze erstellt und bearbeitet werden können:
 
 ```java
 TextArea textArea = new TextArea();
 
-// Fügen Sie einen Absatz am Anfang hinzu
+// Ein Absatz am Anfang einfügen
 textArea.addParagraph(0, "Dies ist der erste Absatz.");
 
-// Fügen Sie einen weiteren Absatz am Ende hinzu
+// Einen weiteren Absatz am Ende anhängen
 textArea.addParagraph("Hier ist ein zweiter Absatz.");
 
-// Fügen Sie zusätzlichen Inhalt zum ersten Absatz hinzu
+// Zusätzlichen Inhalt zum ersten Absatz hinzufügen
 textArea.appendToParagraph(0, " Dieser Satz setzt den ersten fort.");
 
-// Entfernen Sie den zweiten Absatz
+// Den zweiten Absatz entfernen
 textArea.removeParagraph(1);
 
-// Alle aktuellen Absätze abrufen und ausdrucken
+// Alle aktuellen Absätze abrufen und ausgeben
 List<String> paragraphs = textArea.getParagraphs();
 for (int i = 0; i < paragraphs.size(); i++) {
     System.out.println("Absatz " + i + ": " + paragraphs.get(i));
@@ -54,11 +58,11 @@ Die `TextArea`-Komponente unterstützt zwei komplementäre Arten von Validierung
 - `setLineCountLimit(int maxLines)` beschränkt die Anzahl der in der Textarea erlaubten Zeilen.
 - `setParagraphLengthLimit(int maxCharsPerLine)` begrenzt die Anzahl der Zeichen pro Absatz (oder Zeile) und hilft, Lesbarkeit oder Formatierungsstandards durchzusetzen.
 
-**Inhaltsbeschränkungen** hingegen befassen sich mit der gesamten Menge an eingegebenem Text, unabhängig von der Verteilung:
+**Inhaltsbeschränkungen** hingegen betreffen die Gesamtmenge des eingegebenen Textes, unabhängig davon, wie er verteilt ist:
 - `setMaxLength(int maxChars)` begrenzt die Gesamtanzahl der Zeichen, die über alle Absätze hinweg erlaubt sind.
-- `setMinLength(int minChars)` setzt eine Mindestlänge fest, um sicherzustellen, dass genügend Inhalt bereitgestellt wird.
+- `setMinLength(int minChars)` legt eine Mindestlänge fest und stellt sicher, dass genügend Inhalt bereitgestellt wird.
 
-Die folgende Demo ermöglicht es den Benutzern, die Validierungsgrenzen—wie maximale Zeichenanzahl, Absatzlänge und Zeilenanzahl—in Echtzeit anzupassen und zu sehen, wie die `TextArea` reagiert.
+Die folgende Demo ermöglicht es Benutzern, die Validierungsgrenzen—wie die maximale Zeichenanzahl, Absatzzahl und Zeilenanzahl—in Echtzeit anzupassen und zu sehen, wie die `TextArea` darauf reagiert.
 
 <ComponentDemo 
 path='/webforj/textareavalidation?' 
@@ -66,15 +70,15 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '550px'
 />
 
-## Zeilenumbruch und Zeilenumbruchverhalten {#word-wrap-and-line-wrapping}
+## Wort- und Zeilenumbruch {#word-wrap-and-line-wrapping}
 
-Sie können steuern, ob der Text umbricht oder horizontal scrollt, indem Sie `setLineWrap()` verwenden. Wenn das Umbrüche deaktiviert ist, setzen sich die Zeilen horizontal über den sichtbaren Bereich hinaus fort, was Scrollen erforderlich macht. Wenn es aktiviert ist, wird der Text automatisch umgebrochen, wenn er den Rand der Komponente erreicht.
+Sie können steuern, ob der Text umbricht oder horizontal scrollt, indem Sie `setLineWrap()` verwenden. Wenn das Umbrichen deaktiviert ist, setzen sich die Zeilen horizontal über den sichtbaren Bereich hinaus fort, was Scrollen erfordert. Wenn es aktiviert ist, bricht der Text automatisch zur nächsten Zeile um, wenn er den Rand der Komponente erreicht.
 
-Um das Umbruchverhalten weiter zu verfeinern, lässt `setWrapStyle()` Sie zwischen zwei Stilen wählen:
+Um weiter zu verfeinern, wie der Umbruch funktioniert, ermöglicht `setWrapStyle()` die Wahl zwischen zwei Stilen:
 - `WORD_BOUNDARIES` bricht den Text an ganzen Wörtern um und bewahrt den natürlichen Lesefluss.
-- `CHARACTER_BOUNDARIES` bricht an einzelnen Zeichen um, was eine strengere Kontrolle über das Layout ermöglicht, insbesondere in schmalen oder festen Behältern.
+- `CHARACTER_BOUNDARIES` bricht an einzelnen Zeichen um und ermöglicht eine genauere Kontrolle über das Layout, insbesondere in schmalen oder festen Breite-Containern.
 
-Diese Umbruchoptionen arbeiten Hand in Hand mit strukturellen Einschränkungen wie Zeilenanzahl und Absatzlängenlimits. Während das Umbruchverhalten bestimmt, *wie* Text im verfügbaren Raum fließt, definieren die strukturellen Limits, *wie viel* Raum Text einnehmen darf. Zusammen helfen sie, sowohl die visuelle Struktur als auch die Benutzergrenzen für Eingaben aufrechtzuerhalten.
+Diese Umbruchoptionen arbeiten Hand in Hand mit strukturellen Einschränkungen wie Zeilenanzahl und Absatzlängenbeschränkungen. Während der Umbruch bestimmt, *wie* der Text im verfügbaren Raum fließt, definieren die strukturellen Limits, *wie viel* Raum der Text beanspruchen darf. Gemeinsam helfen sie, sowohl die visuelle Struktur als auch die Eingabebeschränkungen der Benutzer aufrechtzuerhalten.
 
 <ComponentDemo 
 path='/webforj/textareawrap?' 
@@ -84,11 +88,11 @@ height = '400px'
 
 ## Vorhergesagter Text {#predicted-text}
 
-Die `TextArea`-Komponente unterstützt intelligente Texteingabevorschläge, um den Benutzern zu helfen, schneller zu tippen und weniger Fehler zu machen. Während Benutzer Text eingeben, erscheinen vorhersagende Vorschläge basierend auf der aktuellen Eingabe, die es ihnen ermöglichen, gängige oder erwartete Phrasen zu vervollständigen.
+Die `TextArea`-Komponente unterstützt intelligente Textvorschläge, um Benutzern zu helfen, schneller und mit weniger Fehlern zu tippen. Während die Benutzer Text eingeben, erscheinen prädiktive Vorschläge basierend auf der aktuellen Eingabe, die es ihnen ermöglichen, gängige oder erwartete Phrasen zu vervollständigen.
 
-Vorhersagen können angenommen werden, indem die `Tab`- oder die `Pfeil-rechts`-Taste gedrückt wird, wodurch der vorgeschlagene Text nahtlos in die Eingabe eingefügt wird. Wenn zu einem bestimmten Zeitpunkt keine geeignete Vorhersage verfügbar ist, bleibt die Eingabe unverändert, und der Benutzer kann ohne Unterbrechung weiter tippen—was sicherstellt, dass die Funktion nie im Weg steht.
+Prognosen können durch Drücken der Tasten `Tab` oder `Pfeil Rechts` akzeptiert werden, wodurch der vorgeschlagene Text nahtlos in die Eingabe eingefügt wird. Wenn zu einem bestimmten Zeitpunkt keine geeignete Vorhersage verfügbar ist, bleibt die Eingabe unverändert und der Benutzer kann ohne Unterbrechung weiter tippen – was sicherstellt, dass die Funktion niemals im Weg steht.
 
-Dieses vorhersagende Verhalten verbessert sowohl die Geschwindigkeit als auch die Genauigkeit, insbesondere in wiederholenden Eingabeszenarien oder Anwendungen, in denen eine Konsistenz der Formulierungen wichtig ist.
+Dieses prädiktive Verhalten verbessert sowohl die Geschwindigkeit als auch die Genauigkeit, insbesondere in wiederholenden Eingabeszenarien oder Anwendungen, in denen Konsistenz der Formulierungen wichtig ist.
 
 <ComponentDemo 
 path='/webforj/textareapredictedtext?' 
@@ -97,18 +101,18 @@ height = '400px'
 />
 
 :::info
-Diese Demo nutzt die [Datamuse API](https://datamuse.com/), um Wortvorschläge basierend auf der Eingabe des Benutzers bereitzustellen. Die Qualität und Relevanz der Vorhersagen hängen vollständig vom Datensatz und dem Bewertungssystem der API ab. Es werden keine KI-Modelle oder großen Sprachmodelle (LLMs) verwendet; die Vorschläge werden von einer leichten, regelbasierten Engine generiert, die sich auf lexikalische Ähnlichkeit konzentriert.
+Diese Demo verwendet die [Datamuse API](https://datamuse.com/), um Wortvorschläge basierend auf der Eingabe des Benutzers bereitzustellen. Die Qualität und Relevanz der Vorhersagen hängen vollständig vom Datensatz und dem Bewertungssystem der API ab. Es werden keine KI-Modelle oder großen Sprachmodelle (LLMs) verwendet; die Vorschläge werden von einer leichten, regelbasierten Engine generiert, die sich auf lexikalische Ähnlichkeit konzentriert.
 :::
 
-## Nur-Lesen- und Deaktiviert-Zustand {#read-only-and-disabled-state}
+## Nur-Lesen- und Deaktivierter Zustand {#read-only-and-disabled-state}
 
-Die `TextArea`-Komponente kann entweder auf Nur-Lese- oder Deaktiviert-Zustand gesetzt werden, um die Benutzerinteraktion zu steuern.
+Die `TextArea`-Komponente kann entweder auf Nur-Lesen oder Deaktiviert gesetzt werden, um die Benutzerinteraktion zu steuern.
 
-Eine **Nur-Lese**-TextArea ermöglicht es Benutzern, den Inhalt anzuzeigen und auszuwählen, aber nicht zu bearbeiten. Dies ist nützlich, um dynamische oder vorausgefüllte Informationen anzuzeigen, die unverändert bleiben sollten.
+Ein **Nur-Lesen**-Textbereich ermöglicht es Benutzern, den Inhalt anzuzeigen und auszuwählen, jedoch nicht zu bearbeiten. Dies ist nützlich, um dynamische oder vorab ausgefüllte Informationen anzuzeigen, die unverändert bleiben sollten.
 
-Eine **deaktivierte** TextArea blockiert hingegen alle Interaktionen - einschließlich Fokus und Textauswahl - und wird typischerweise als inaktiv oder ausgegraut dargestellt.
+Ein **deaktivierter** Textbereich hingegen blockiert jegliche Interaktion – einschließlich Fokus und Textauswahl – und wird normalerweise als inaktiv oder ausgegraut dargestellt.
 
-Verwenden Sie den Nur-Lese-Modus, wenn der Inhalt relevant, aber unveränderlich ist, und den Deaktiviert-Modus, wenn die Eingabe derzeit nicht anwendbar ist oder vorübergehend inaktiv sein sollte.
+Verwenden Sie den Nur-Lesen-Modus, wenn der Inhalt relevant, aber unveränderlich ist, und den deaktivierten Modus, wenn die Eingabe derzeit nicht anwendbar ist oder vorübergehend inaktiv sein sollte.
 
 <ComponentDemo 
 path='/webforj/textareastates?' 
