@@ -4,7 +4,7 @@ import com.webforj.component.Composite
 import com.webforj.component.Theme
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.dialog.dialog
-import com.webforj.kotlin.dsl.component.dialog.header
+import com.webforj.kotlin.dsl.component.dialog.headerSlot
 import com.webforj.kotlin.dsl.component.html.elements.div
 import com.webforj.kotlin.dsl.component.list.choiceBox
 import com.webforj.kotlin.extension.set
@@ -22,9 +22,9 @@ class DialogThemesKotlinView: Composite<FlexLayout>() {
         dialog {
           styles["display"] = "flex"
           styles["justify-content"] = "center"
-          setCloseable(false)
+          isCloseable = false
 
-          header { div("Themes") }
+          headerSlot { div("Themes") }
           choiceBox("Select Theme") {
             styles["flex"] = "1"
             Theme.entries.forEach {

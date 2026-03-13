@@ -4,11 +4,10 @@ import com.webforj.component.Composite
 import com.webforj.component.dialog.Dialog
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.dialog.dialog
-import com.webforj.kotlin.dsl.component.dialog.header
+import com.webforj.kotlin.dsl.component.dialog.headerSlot
 import com.webforj.kotlin.dsl.component.html.elements.div
 import com.webforj.kotlin.dsl.component.list.choiceBox
 import com.webforj.kotlin.dsl.component.list.items
-import com.webforj.kotlin.dsl.component.list.listItem
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
 import com.webforj.router.annotation.FrameTitle
@@ -26,7 +25,7 @@ class DialogAlignmentsKotlinView: Composite<FlexLayout>() {
           styles["justify-content"] = "center"
           isCloseable = false
 
-          header { div("Alignments") }
+          headerSlot { div("Alignments") }
           choiceBox("Select Alignment") {
             items(
               Dialog.Alignment.TOP to "Top",

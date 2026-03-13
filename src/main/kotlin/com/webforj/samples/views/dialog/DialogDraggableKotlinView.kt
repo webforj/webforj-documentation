@@ -3,7 +3,7 @@ package com.webforj.samples.views.dialog
 import com.webforj.component.Composite
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.dialog.dialog
-import com.webforj.kotlin.dsl.component.dialog.header
+import com.webforj.kotlin.dsl.component.dialog.headerSlot
 import com.webforj.kotlin.dsl.component.html.elements.div
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
@@ -19,7 +19,7 @@ class DialogDraggableKotlinView: Composite<FlexLayout>() {
           isSnapToEdge = true
           snapThreshold = 100
 
-          header { div("Snapping") }
+          headerSlot { div("Snapping") }
           div("This dialog will snap when dragged within 100px of the edge of the display.")
           open()
         }

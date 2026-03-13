@@ -4,7 +4,7 @@ import com.webforj.component.Composite
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.dialog.dialog
-import com.webforj.kotlin.dsl.component.dialog.header
+import com.webforj.kotlin.dsl.component.dialog.headerSlot
 import com.webforj.kotlin.dsl.component.html.elements.div
 import com.webforj.kotlin.extension.px
 import com.webforj.kotlin.extension.set
@@ -23,7 +23,7 @@ class DialogCloseKotlinView: Composite<FlexLayout>() {
         val d = dialog {
           isCancelOnEscKey = true
 
-          header { div("Closing the Dialog") }
+          headerSlot { div("Closing the Dialog") }
           button("Close Dialog") {
             onClick { this@dialog.close() }
           }
