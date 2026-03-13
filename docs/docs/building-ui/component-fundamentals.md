@@ -51,14 +51,14 @@ For a detailed explanation, see [Final Classes and Extension Restrictions](https
 
 ```mermaid
 graph TD
-    A[Component<br/><small>Abstract base - framework internal</small>]
+    A[Component<br/><small>Abstract base: framework internal</small>]
     
     A --> B[DwcComponent<br/><small>Built-in webforJ components</small>]
     A --> C[Composite<br/><small>Combine webforJ components</small>]
-    A --> D[ElementComposite<br/><small>Wrap web components</small>]
     
     B --> E[Button, TextField,<br/>DateField, ComboBox]
     
+    C --> D[ElementComposite<br/><small>Wrap web components</small>]
     D --> F[ElementCompositeContainer<br/><small>Components with slots</small>]
     
     style A fill:#f5f5f5,stroke:#666
@@ -72,14 +72,14 @@ graph TD
     class C,D,F userClass
 ```
 
-**Classes for developers (use these):**
-- **Composite**
-- **ElementComposite**
-- **ElementCompositeContainer**
+Classes for developers (use these):
+- `Composite`
+- `ElementComposite`
+- `ElementCompositeContainer`
 
-**Internal framework classes (never extend directly):**
-- **Component**
-- **DwcComponent**
+Internal framework classes (never extend directly):
+- `Component`
+- `DwcComponent`
 
 :::warning[Never extend `Component` or `DwcComponent`]
 Never extend `Component` or `DwcComponent` directly. All built-in components are final. Always use composition patterns with `Composite` or `ElementComposite`.
