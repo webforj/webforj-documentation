@@ -6,31 +6,45 @@ import com.webforj.samples.pages.SupportedLanguage;
 
 public class AlertExpansesPage {
 
-    private static final String ROUTE = "alertexpanses";
+  private static final String ROUTE = "alertexpanses";
 
-    private final Locator alertXSmall;
-    private final Locator alertMedium;
-    private final Locator alertXLarge;
+  private final Locator extraSmallAlert;
+  private final Locator smallAlert;
+  private final Locator mediumAlert;
+  private final Locator largeAlert;
+  private final Locator extraLargeAlert;
 
-    public AlertExpansesPage(Page page) {
-        this.alertXSmall = page.locator("dwc-alert").filter(new Locator.FilterOptions().setHasText("This alert uses the XSMALL expanse."));
-        this.alertMedium = page.locator("dwc-alert").filter(new Locator.FilterOptions().setHasText("This alert uses the MEDIUM expanse."));
-        this.alertXLarge = page.locator("dwc-alert").filter(new Locator.FilterOptions().setHasText("This alert uses the XLARGE expanse."));
-    }
+  public AlertExpansesPage(Page page) {
+    // Alerts are displayed in reverse order (extra-large to extra-small)
+    // The page shows alerts with text "This alert uses the XXX expanse."
+    this.extraSmallAlert = page.locator("dwc-alert[expanse=\"xs\"]").first();
+    this.smallAlert = page.locator("dwc-alert[expanse=\"s\"]").first();
+    this.mediumAlert = page.locator("dwc-alert[expanse=\"m\"]").first();
+    this.largeAlert = page.locator("dwc-alert[expanse=\"l\"]").first();
+    this.extraLargeAlert = page.locator("dwc-alert[expanse=\"xl\"]").first();
+  }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
+  public static String getRoute(SupportedLanguage language) {
+    return language.getPath(ROUTE);
+  }
 
-    public Locator getAlertXSmall() {
-        return alertXSmall;
-    }
+  public Locator getExtraSmallAlert() {
+    return extraSmallAlert;
+  }
 
-    public Locator getAlertMedium() {
-        return alertMedium;
-    }
+  public Locator getSmallAlert() {
+    return smallAlert;
+  }
 
-    public Locator getAlertXLarge() {
-        return alertXLarge;
-    }
+  public Locator getMediumAlert() {
+    return mediumAlert;
+  }
+
+  public Locator getLargeAlert() {
+    return largeAlert;
+  }
+
+  public Locator getExtraLargeAlert() {
+    return extraLargeAlert;
+  }
 }

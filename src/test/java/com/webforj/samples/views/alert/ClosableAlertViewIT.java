@@ -3,36 +3,81 @@ package com.webforj.samples.views.alert;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 import com.webforj.samples.pages.SupportedLanguage;
-import com.webforj.samples.pages.alert.AlertThemesPage;
 import com.webforj.samples.pages.alert.ClosableAlertPage;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.options.AriaRole;
 import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.stream.Stream;
-
 public class ClosableAlertViewIT extends BaseTest {
 
+  private ClosableAlertPage alertPage;
 
-    public void setupClosableAlert(SupportedLanguage language) {
-        navigateToRoute(ClosableAlertPage.getRoute(language));
-    }
+  public void setupClosableAlertDemo(SupportedLanguage language) {
+    navigateToRoute(ClosableAlertPage.getRoute(language));
+    alertPage = new ClosableAlertPage(page);
+  }
 
-    @ParameterizedTest
-    @MethodSource("provideRoutes")
-    public void testAlertClosesWhenCloseButtonIsClicked(SupportedLanguage language) {
-        setupClosableAlert(language);
-        Locator alert = page.getByRole(AriaRole.ALERT);
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testAlertIsVisible(SupportedLanguage language) {
+    setupClosableAlertDemo(language);
+    assertThat(alertPage.getAlert()).isVisible();
+  }
 
-        assertThat(alert).isVisible();
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testAlertTextIsVisible(SupportedLanguage language) {
+    setupClosableAlertDemo(language);
+    assertThat(alertPage.getAlertText()).isVisible();
+  }
 
-        Locator closeButton = page.getByRole(AriaRole.BUTTON).filter().getByLabel("icon x");
-        closeButton.click();
-        assertThat(alert).not().isVisible();
-    }
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testCloseButtonIsVisible(SupportedLanguage language) {
+    setupClosableAlertDemo(language);
+    assertThat(alertPage.getCloseButton()).isVisible();
+  }
+
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testShowAlertButtonIsHiddenInitially(SupportedLanguage language) {
+    setupClosableAlertDemo(language);
+    assertThat(alertPage.getShowAlertButton()).not().isVisible();
+  }
+
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testAlertHasInfoTheme(SupportedLanguage language) {
+    setupClosableAlertDemo(language);
+    assertThat(alertPage.getAlert()).hasAttribute("theme", "info");
+  }
+
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testCloseButtonDismissesAlert(SupportedLanguage language) {
+    setupClosableAlertDemo(language);
+    assertThat(alertPage.getAlert()).isVisible();
+
+    alertPage.getCloseButton().click();
+
+    assertThat(alertPage.getAlert()).not().isVisible();
+    assertThat(alertPage.getShowAlertButton()).isVisible();
+  }
+
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testShowAlertButtonReopensAlert(SupportedLanguage language) {
+    setupClosableAlertDemo(language);
+
+    // Close the alert first
+    alertPage.getCloseButton().click();
+    assertThat(alertPage.getAlert()).not().isVisible();
+    assertThat(alertPage.getShowAlertButton()).isVisible();
+
+    // Reopen the alert
+    alertPage.getShowAlertButton().click();
+
+    assertThat(alertPage.getAlert()).isVisible();
+    assertThat(alertPage.getShowAlertButton()).not().isVisible();
+  }
 }
