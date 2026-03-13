@@ -27,11 +27,11 @@ public class DataTableViewIT extends BaseTest {
     public void testEntriesPerPageAndPaginator() {
         dataTable.getEntriesDropdown().click();
         dataTable.getEntriesTen().click();
-        assertThat(dataTable.getTableRows()).hasCount(10);
+        assertThat(dataTable.getPaginationText("Showing 1 to 10 of 8618")).isVisible();
 
         dataTable.getEntriesDropdown().click();
         dataTable.getEntriesTwentyfive().click();
-        assertThat(dataTable.getTableRows()).hasCount(25);
+        assertThat(dataTable.getPaginationText("Showing 1 to 25 of 8618")).isVisible();
 
         dataTable.getEntriesDropdown().click();
         dataTable.getEntriesHundred().click();
