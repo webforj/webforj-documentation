@@ -24,16 +24,14 @@ public class TablePinnedColumnGroupsView extends Composite<Div> {
     table.setHeight("100vh");
     table.setStriped(true);
 
-    table.addColumn("Number", MusicRecord::getNumber).setMinWidth(70f);
-    table.addColumn("Title", MusicRecord::getTitle).setMinWidth(120f);
-    table.addColumn("Artist", MusicRecord::getArtist).setMinWidth(120f);
-    table.addColumn("Genre", MusicRecord::getMusicType).setMinWidth(80f);
-    table.addColumn("Label", MusicRecord::getLabel).setMinWidth(80f);
+    table.addColumn("Number", MusicRecord::getNumber).setMinWidth(90f);
+    table.addColumn("Title", MusicRecord::getTitle).setMinWidth(200f);
+    table.addColumn("Artist", MusicRecord::getArtist).setMinWidth(200f);
+    table.addColumn("Genre", MusicRecord::getMusicType).setMinWidth(150f);
+    table.addColumn("Label", MusicRecord::getLabel).setMinWidth(150f);
     table.addColumn("Cost", record -> {
       return String.format("$%.2f", record.getCost());
-    }).setAlignment(Column.Alignment.RIGHT).setMinWidth(70f);
-
-    table.setColumnsToAutoFit();
+    }).setAlignment(Column.Alignment.RIGHT).setMinWidth(100f);
 
     ColumnGroup identity = ColumnGroup.of("identity", "Identity")
         .setPinDirection(PinDirection.LEFT)
@@ -46,7 +44,6 @@ public class TablePinnedColumnGroupsView extends Composite<Div> {
         .add("Label");
 
     ColumnGroup pricing = ColumnGroup.of("pricing", "Pricing")
-        .setPinDirection(PinDirection.RIGHT)
         .add("Cost");
 
     table.setColumnGroups(List.of(identity, catalog, pricing));
