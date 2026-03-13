@@ -1,15 +1,17 @@
 package com.webforj.samples.views.alert;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static com.webforj.samples.utils.ThemeUtils.assertTheme;
 
+import com.webforj.component.Theme;
 import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.pages.alert.AlertPage;
+import com.webforj.samples.utils.ThemeUtils;
 import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 public class AlertViewIT extends BaseTest {
-
   private AlertPage alertPage;
 
   public void setupAlertDemo(SupportedLanguage language) {
@@ -36,12 +38,13 @@ public class AlertViewIT extends BaseTest {
   public void testViewButtonIsVisible(SupportedLanguage language) {
     setupAlertDemo(language);
     assertThat(alertPage.getViewButton()).isVisible();
+    assertTheme(alertPage.getViewButton(), Theme.PRIMARY);
   }
 
   @ParameterizedTest
   @MethodSource("provideRoutes")
   public void testAlertHasPrimaryTheme(SupportedLanguage language) {
     setupAlertDemo(language);
-    assertThat(alertPage.getAlert()).hasAttribute("theme", "primary");
+    assertTheme(alertPage.getAlert(), Theme.PRIMARY);
   }
 }

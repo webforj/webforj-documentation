@@ -2,49 +2,27 @@ package com.webforj.samples.pages.alert;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.webforj.component.Expanse;
+import com.webforj.component.alert.Alert;
 import com.webforj.samples.pages.SupportedLanguage;
+import com.webforj.samples.utils.ExpanseUtils;
+import com.webforj.samples.utils.NodeNameUtils;
 
 public class AlertExpansesPage {
-
   private static final String ROUTE = "alertexpanses";
 
-  private final Locator extraSmallAlert;
-  private final Locator smallAlert;
-  private final Locator mediumAlert;
-  private final Locator largeAlert;
-  private final Locator extraLargeAlert;
+  private final Page page;
 
   public AlertExpansesPage(Page page) {
-    // Alerts are displayed in reverse order (extra-large to extra-small)
-    // The page shows alerts with text "This alert uses the XXX expanse."
-    this.extraSmallAlert = page.locator("dwc-alert[expanse=\"xs\"]").first();
-    this.smallAlert = page.locator("dwc-alert[expanse=\"s\"]").first();
-    this.mediumAlert = page.locator("dwc-alert[expanse=\"m\"]").first();
-    this.largeAlert = page.locator("dwc-alert[expanse=\"l\"]").first();
-    this.extraLargeAlert = page.locator("dwc-alert[expanse=\"xl\"]").first();
+    this.page = page;
   }
 
   public static String getRoute(SupportedLanguage language) {
     return language.getPath(ROUTE);
   }
 
-  public Locator getExtraSmallAlert() {
-    return extraSmallAlert;
+  public Locator getAlert(Expanse expanse) {
+    return ExpanseUtils.getLocator(page, NodeNameUtils.getNodeName(Alert.class), expanse);
   }
 
-  public Locator getSmallAlert() {
-    return smallAlert;
-  }
-
-  public Locator getMediumAlert() {
-    return mediumAlert;
-  }
-
-  public Locator getLargeAlert() {
-    return largeAlert;
-  }
-
-  public Locator getExtraLargeAlert() {
-    return extraLargeAlert;
-  }
 }

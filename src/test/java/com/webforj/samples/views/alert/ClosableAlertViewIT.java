@@ -9,7 +9,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 public class ClosableAlertViewIT extends BaseTest {
-
   private ClosableAlertPage alertPage;
 
   public void setupClosableAlertDemo(SupportedLanguage language) {
