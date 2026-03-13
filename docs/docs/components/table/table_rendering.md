@@ -10,7 +10,7 @@ sidebar_class_name: new-content
 
 A renderer controls how every cell in a column is displayed. Instead of showing a raw value, a renderer transforms each cell's data into styled text, icons, badges, links, action buttons, or any other visual that makes the data faster to read and easier to act on.
 
-Rendering happens entirely in the browser. The server sends raw data; the client handles presentation. This makes the `Table` fast regardless of row count — rich visuals without extra network overhead.
+Rendering happens entirely in the browser. The server sends raw data and the client handles presentation, making the 'Table' fast regardless of row count.
 
 Assign a renderer to a column using `setRenderer()`. The renderer applies uniformly to every cell in that column:
 
@@ -22,7 +22,7 @@ table.addColumn("title", MusicRecord::getTitle).setRenderer(renderer);
 ```
 
 :::tip Renderers vs. value providers
-If you only need to transform or format a cell value without producing any DOM structure, use a [value provider](/docs/components/table/columns#value-providers) instead. Renderers create additional DOM elements for every rendered row, which carries a cost at render time. Reserve renderers for visual output — icons, badges, buttons, or any HTML-based presentation.
+If you only need to transform or format a cell value without producing any DOM structure, use a [value provider](/docs/components/table/columns#value-providers) instead. Renderers create additional DOM elements for every rendered row, which carries a cost at render time. Reserve renderers for visual output such as icons, badges, buttons, or any HTML-based presentation.
 :::
 
 webforJ ships with built-in renderers for the most common use cases. For anything specific to your application, extend `Renderer` and implement `build()` to return a lodash template string that runs in the browser for each cell.
@@ -33,7 +33,7 @@ The following examples walk through four frequently used renderers and demonstra
 
 ### TextRenderer {#text-renderer}
 
-Displays cell content as plain or styled text. Apply a theme color or text decoration to a column without changing its structure — for example, highlight a priority field in red or make a key identifier bold.
+Displays cell content as plain or styled text. Apply a theme color or text decoration to a column without changing its structure, such as highlighting a priority field in red or making a key identifier bold.
 
 ```java
 TextRenderer<MusicRecord> renderer = new TextRenderer<>();
@@ -56,7 +56,7 @@ table.addColumn("musicType", MusicRecord::getMusicType).setRenderer(renderer);
 
 ### BooleanRenderer {#boolean-renderer}
 
-Replaces `true`, `false`, and `null` values with icons. Use it for any true/false column — feature flags, active/inactive states, or opt-in fields — where an icon communicates the value faster than text.
+Replaces `true`, `false`, and `null` values with icons. Use it for any true/false column where an icon communicates the value faster than text, such as feature flags, active/inactive states, or opt-in fields.
 
 ```java
 // Default icons
@@ -276,7 +276,7 @@ height='600px'
 :::tip When to Enable Lazy Rendering
 Cell renderers create more entities within the DOM, meaning more CPU work during rendering, no matter what renderer creates it. 
 
-Lazy rendering can help reduce the performance impact if a renderer is truly needed. If you only need to change or format the value, and you are not creating a complex DOM, use a value provider instead to transform the value.
+Lazy rendering can help reduce the performance impact if a renderer is truly needed. If you only need to change or format the value, and you aren't creating a complex DOM, use a value provider instead to transform the value.
 :::
 
 ## Built-in renderer reference {#built-in-renderers} 
@@ -374,7 +374,8 @@ table.addColumn("notes", MusicRecord::getNotes)
 
 <DocChip chip='since' label='25.12' />
 
-Replaces `true`, `false`, and `null` values with icons. Defaults to a check, cross, and dash.
+Replaces `true`, `false`, and `null` values with icons. Defaults to a checkmark, cross, and dash.
+
 
 ```java
 // Default icons
@@ -781,7 +782,7 @@ The following section outlines the basics of Lodash syntax. While this is not an
 
 - `<%= ... %>` - Interpolates values, inserting the JavaScript code's result into the template.
 - `<% ... %>` - Executes JavaScript code, allowing loops, conditionals, and more.
-- `<%- ... %>` - Escapes HTML content, ensuring interpolated data is safe from HTML injection attacks.
+- `<%- ... %>` - Escapes HTML content, making sure interpolated data is safe from HTML injection attacks.
 
 #### Examples using cell data: {#examples-using-cell-data}
 
@@ -818,7 +819,7 @@ The renderer has access to detailed cell, row, and column properties in the clie
 |Property|Type|Description|
 |-|-|-|
 |cells|`TableCell[]`|The cells within the row.
-|data|`Object`|The data provided by the application for the row.
+|data|`Object`|The data provided by the app for the row.
 |even|`boolean`|Indicates if the row is even-numbered (for styling purposes).
 |first|`boolean`|Indicates if the row is the first in the table.
 |id|`String`|Unique ID for the row.
