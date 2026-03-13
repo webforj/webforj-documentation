@@ -1,187 +1,219 @@
 ---
 title: Creating a Basic App
 sidebar_position: 2
-_i18n_hash: c59ff0def84230ed79877cba3d5e5aa4
+description: Step 1 - Add components to an app.
+_i18n_hash: ac74bc5c04bce477a7407c9ff94323a4
 ---
-Deze eerste stap legt de basis voor de klantbeheertoepassing door een eenvoudige, interactieve interface te creëren. Dit toont aan hoe je een basis webforJ-app kunt opzetten, met een enkele knop die een dialoog opent wanneer erop wordt geklikt. Het is een rechttoe rechtaan implementatie die belangrijke componenten introduceert en je een gevoel geeft voor hoe webforJ werkt.
+In [Project Setup](/docs/introduction/tutorial/project-setup) heb je een webforJ-project gegenereerd. Nu is het tijd om de hoofdklasse voor het project te maken en een interactieve interface toe te voegen met behulp van webforJ-componenten. In deze stap leer je over:
 
-Deze stap maakt gebruik van de basisklasse voor de app die door webforJ wordt geleverd om de structuur en het gedrag van de app te definiëren. Door door te gaan naar latere stappen zal je overschakelen naar een meer geavanceerde opzet met routing om meerdere schermen te beheren, zoals geïntroduceerd in [Scaling with Routing and Composites](./scaling-with-routing-and-composites).
+- Het toegangspunt voor apps die gebruik maken van webforJ en Spring Boot
+- webforJ- en HTML-elementcomponenten
+- Het gebruik van CSS om componenten op te maken
 
-Aan het einde van deze stap heb je een functionele app die de basisinteractie met componenten en gebeurtenisafhandeling in webforJ demonstreert. Om de app uit te voeren:
+Het voltooien van deze stap creëert een versie van [1-creating-a-basic-app](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app).
 
-- Ga naar de `1-creating-a-basic-app` directory
-- Voer de opdracht `mvn jetty:run` uit
+<!-- Insert video here -->
 
-<div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/creating-a-basic-app.mp4" type="video/mp4"/>
-  </video>
-</div>
+## De app uitvoeren {#running-the-app}
 
-## Het maken van een webforJ-app {#creating-a-webforj-app}
+Terwijl je je app ontwikkelt, kun je [1-creating-a-basic-app](https://github.com/webforj/webforj-tutorial/tree/main/1-creating-a-basic-app) als vergelijking gebruiken. Om de app in actie te zien:
 
-In webforJ vertegenwoordigt een `App` het centrale knooppunt voor het definiëren en beheren van je project. Elke webforJ-app begint met het creëren van één klasse die de fundamentele `App`-klasse uitbreidt, die als het kernframework dient om:
+1. Navigeer naar de topdirectory die het `pom.xml`-bestand bevat, dit is `1-creating-a-basic-app` als je het volgt met de versie op GitHub.
 
-- De levenscyclus van de app te beheren, inclusief initialisatie en beëindiging.
-- Routing en navigatie af te handelen indien ingeschakeld.
-- Het thema, de locale en andere algemene configuraties van de app te definiëren.
-- Essentiële hulpmiddelen te bieden voor interactie met de omgeving en componenten.
+2. Gebruik de volgende Maven-opdracht om de Spring Boot-app lokaal uit te voeren:
+    ```bash
+    mvn
+    ```
 
-### De `App`-klasse uitbreiden {#extending-the-app-class}
+De app opent automatisch een nieuwe browser op `http://localhost:8080`.
 
-Voor deze stap wordt een klasse genaamd `DemoApplication.java` gemaakt, die de `App`-klasse uitbreidt.
+## Het toegangspunt {#entry-point}
 
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  @Override
-  public void run() {
-    // Kern logica van de app gaat hier
+Elke webforJ-app bevat een enkele klasse die <JavadocLink type="foundation" location="com/webforj/App" code='true'>App</JavadocLink> uitbreidt. Voor deze tutorial, en andere gepubliceerde webforJ-projecten, wordt deze vaak `Application` genoemd. Deze klasse bevindt zich in een pakket dat vernoemd is naar de `groupId` die je gebruikte in [Project Setup](/docs/introduction/tutorial/project-setup):
+
+```
+1-creating-a-basic-app 
+│   .editorconfig
+│   .gitignore
+│   pom.xml
+│   README.md
+│
+├───.vscode
+├───src/main/java
+// highlight-next-line
+│   └──com/webforj/tutorial
+// highlight-next-line
+│       └──Application.java
+└───target
+```
+
+Binnen de `Application`-klasse gebruikt de `SpringApplication.run()`-methode de configuraties om de app te lanceren. De verschillende annotaties zijn voor de configuraties van de app.
+
+```java title="Application.java"
+@SpringBootApplication
+@StyleSheet("ws://css/card.css")
+@AppTheme("system")
+@AppProfile(name = "Klantapplicatie", shortName = "KlantApp")
+public class Application extends App {
+
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
   }
 }
 ```
 
-:::tip Belangrijke configuratie-eigenschappen
+### Annotaties {#annotations}
 
-In deze demo-app is het `webforj.conf`-bestand geconfigureerd met de volgende twee essentiële eigenschappen:
+De [`@SpringBootApplication`](https://docs.spring.io/spring-boot/api/java/org/springframework/boot/autoconfigure/SpringBootApplication.html) is een kernannotatie in Spring Boot. Je plaatst deze annotatie op de hoofdklasse om deze als het startpunt van je app te markeren.
 
-- **`webforj.entry`**: Specificeert de volledig gekwalificeerde naam van de klasse die de `App` uitbreidt en die fungeert als het belangrijkste ingangspunt voor je project. Voor deze tutorial moet je het instellen op `com.webforj.demos.DemoApplication` om ambiguïteit tijdens de initialisatie te voorkomen.
-  ```hocon
-  webforj.entry = com.webforj.demos.DemoApplication
-  ```
-- **`webforj.debug`**: Schakelt de debugmodus in voor gedetailleerde logs en foutzichtbaarheid tijdens de ontwikkeling. Zorg ervoor dat dit is ingesteld op `true` terwijl je aan deze tutorial werkt:
-  ```hocon
-  webforj.debug = true
-  ```
+`@StyleSheet`, `@AppTheme` en `@AppProfile` zijn slechts enkele van de vele <JavadocLink type="foundation" location="com/webforj/annotation/package-summary">webforJ-annotaties</JavadocLink> die beschikbaar zijn wanneer je expliciet configuraties wilt instellen.
 
-Voor meer details over aanvullende configuratiemogelijkheden, zie de [Configuratiehandleiding](../../configuration/overview).
-:::
+- **`@StyleSheet`** embedt een CSS-bestand in de webpagina. Verdere details over hoe te interageren met een specifiek CSS-bestand worden later gevonden in [Styling met CSS](#styling-with-css).
 
-### De `run()`-methode overschrijven {#overriding-the-run-method}
+- **`@AppTheme`** beheert het visuele thema van de app. Als ingesteld op `system`, neemt de app automatisch het door de gebruiker geprefereerde thema aan: `licht`, `donker` of `donker-puur`. Voor informatie over het maken van aangepaste thema's of het overschrijven van de standaardthema's, zie het artikel over [Thema's](/docs/styling/themes).
 
-Nadat je de juiste configuratie voor het project hebt gegarandeerd, wordt de `run()`-methode in je `App`-klasse overschreven.
+- **`@AppProfile`** helpt bij het configureren hoe de app zich aan de gebruiker presenteert als een [installeerbare app](/docs/configuration/installable-apps). Minimaal heeft deze annotatie een `name` voor de volledige naam van de app en een `shortName` voor gebruik wanneer de ruimte beperkt is. De `shortName` mag niet meer dan 12 tekens bevatten.  
 
-De `run()`-methode is de kern van je app in webforJ. Het definieert wat er gebeurt nadat de app is geïnitialiseerd en is het belangrijkste ingangspunt voor de functies van je app. Door de `run()`-methode te overschrijven, kun je de logica implementeren die de gebruikersinterface en het gedrag van je app creëert en beheert.
+## Een gebruikersinterface maken {#creating-a-ui}
 
-:::tip Gebruik van routing
-Wanneer je routing binnen een app implementeert, is het niet nodig om de `run()`-methode te overschrijven, omdat het framework automatisch de initialisatie van routes en de creatie van het initiële `Frame` afhandelt. De `run()`-methode wordt aangeroepen nadat de basismethode is opgelost, zodat het navigatiesysteem van de app volledig is geïnitialiseerd voordat enige logica wordt uitgevoerd. Deze tutorial zal dieper ingaan op het implementeren van routing in [stap 3](scaling-with-routing-and-composites). Meer informatie is ook beschikbaar in het [Routing-artikel](../../routing/overview).
-:::
+Om je UI te maken, moet je [HTML-elementcomponenten](/docs/components/html-elements) en [webforJ-componenten](/docs/components/overview) toevoegen. Voor nu heb je alleen een enkele pagina-app, dus je voegt componenten direct toe aan de `Application`-klasse. 
+Om dit te doen, overschrijf je de `App.run()`-methode en maak je een `Frame` om componenten aan toe te voegen. 
 
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  @Override
-  public void run() throws WebforjException {
-    // App logica
-  }
+```java
+@Override
+public void run() throws WebforjException {
+  Frame mainFrame = new Frame();
+
+  // Maak UI-componenten en voeg ze toe aan het frame
+
 }
 ```
 
-## Componenten toevoegen {#adding-components}
+### HTML-elementen gebruiken {#using-html-elements}
 
-In webforJ zijn componenten de bouwstenen van de gebruikersinterface van je app. Deze componenten vertegenwoordigen discrete delen van de UI van je app, zoals knoppen, tekstvelden, dialoogvensters of tabellen.
+Je kunt standaard HTML-elementen aan je app toevoegen met [HTML-elementcomponenten](/docs/components/html-elements).
+Maak een nieuw exemplaar van de component en gebruik de `add()`-methode om deze aan het `Frame` toe te voegen:
 
-Je kunt een UI beschouwen als een boom van componenten, waarbij een `Frame` als de wortel fungeert. Elke component die aan het `Frame` wordt toegevoegd, wordt een tak of blad in deze boom en draagt bij aan de algehele structuur en het gedrag van je app.
+```java
+// Maak de container voor de UI-elementen
+Frame mainFrame = new Frame();
 
-:::tip Componentencatalogus
-Zie [deze pagina](../../components/overview) voor een lijst van de verschillende componenten die beschikbaar zijn in webforJ.
-:::
+// Maak de HTML-component
+Paragraph tutorial = new Paragraph("Tutorial Applicatie!");
 
-### App `Frame` {#app-frame}
+// Voeg de component toe aan de container
+mainFrame.add(tutorial);
+```
 
-De `Frame`-klasse in webforJ vertegenwoordigt een niet-nestbare, top-level venster in je app. Een `Frame` fungeert typisch als de belangrijkste container voor UI-componenten, waardoor het een essentiële bouwsteen is voor het construeren van de gebruikersinterface. Elke app begint met ten minste één `Frame`, en je kunt componenten zoals knoppen, dialoogvensters of formulieren aan deze frames toevoegen.
+### webforJ-componenten gebruiken {#webforj-components-and-html-elements}
 
-In deze stap wordt een `Frame` binnen de `run()`-methode gemaakt - later zullen hier componenten aan worden toegevoegd.
+Hoewel HTML-elementen nuttig zijn voor structuur, semantiek en lichte UI-behoeften, bieden [webforJ-componenten](/docs/components/overview) complexere en dynamischere gedragingen.
 
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  @Override
-  public void run() throws WebforjException {
-    Frame mainFrame = new Frame();
-  }
+De onderstaande code voegt een [Button](/docs/components/button)-component toe, verandert het uiterlijk met de `setTheme()`-methode en voegt een gebeurtenisluisteraar toe om een [Message Dialog](/docs/components/option-dialogs/message)-component te creëren wanneer de knop wordt ingedrukt.
+De meeste methoden van webforJ-componenten die een component wijzigen, retourneren de component zelf, zodat je meerdere methoden kunt ketenen voor compactere code.
+
+```java
+// Maak de container voor de UI-elementen
+Frame mainFrame = new Frame();
+
+// Maak de webforJ-component
+Button btn = new Button("Info");
+
+// Wijzig de webforJ-component en voeg een gebeurtenisluisteraar toe
+btn.setTheme(ButtonTheme.PRIMARY)
+  .addClickListener(e -> OptionDialog.showMessageDialog("Dit is een tutorial!", "Info"));
+
+// Voeg de component toe aan de container
+mainFrame.add(btn);
+```
+
+## Styling met CSS {#styling-with-css}
+
+De meeste webforJ-componenten hebben ingebouwde methoden om veelvoorkomende stijlwijzigingen aan te brengen, zoals grootte en thema's.
+
+```java
+// Stel de breedte van het Frame in met een CSS-tekenwoord
+mainFrame.setWidth("fit-content");
+
+// Stel de maximale breedte van de knop in met pixels
+btn.setMaxWidth(200);
+
+// Stel het thema van de knop in op PRIMARY
+btn.setTheme(ButtonTheme.PRIMARY);
+```
+
+Naast deze methoden kun je je app stylen met CSS. Het **Styling**-gedeelte van elke documentatiepagina van componenten heeft specifieke details over de relevante CSS-eigenschappen.
+
+webforJ wordt ook geleverd met een set ontworpen CSS-variabelen genaamd DWC-tokens. Zie de [Styling](/docs/styling/overview)-documentatie voor gedetailleerde informatie over het stylen van webforJ-componenten en hoe de tokens te gebruiken.
+
+### Een CSS-bestand refereren {#referencing-a-css-file} 
+
+Het is het beste om een afzonderlijk CSS-bestand te hebben om alles georganiseerd en onderhoudbaar te houden. Maak een bestand genaamd `card.css` in `src/main/resources/static/css`, met de volgende CSS-class-definitie:
+
+```css title="card.css"
+.card {
+  display: grid;
+  gap: var(--dwc-space-l);
+  padding: var(--dwc-space-l);
+  margin: var(--dwc-space-l) auto;
+  border: thin solid var(--dwc-color-default);
+  border-radius: 16px;
+  background-color: var(--dwc-surface-3);
+  box-shadow: var(--dwc-shadow-xs);
 }
 ```
 
-### Server- en client-side componenten {#server-and-client-side-components}
+Verwijs dan naar het bestand in `Application.java` met de `@StyleSheet`-annotatie en de naam van het CSS-bestand. Voor deze stap is het `@StyleSheet("ws://css/card.css")`.
 
-Elke server-side component in webforJ heeft een bijbehorende client-side webcomponent. Server-side componenten verwerken logica en backend-interacties, terwijl client-side componenten zoals `dwc-button` en `dwc-dialog` het frontend-renderen en de opmaak beheren.
-
-:::tip Composite componenten
-
-Naast de kerncomponenten die door webforJ worden aangeboden, kun je aangepaste samengestelde componenten ontwerpen door meerdere elementen te groeperen in een enkele herbruikbare eenheid. Dit concept wordt in deze stap van de tutorial behandeld. Meer informatie is beschikbaar in het [Composite-artikel](../../building-ui/composite-components).
+:::tip Webserverprotocol
+Deze tutorial gebruikt het Webserverprotocol om naar het CSS-bestand te verwijzen. Om meer te leren over hoe dit werkt, zie [Beheer van bronnen](/docs/managing-resources/overview).
 :::
-
-Componenten moeten worden toegevoegd aan een containerklasse die de <JavadocLink type="foundation" location="com/webforj/concern/HasComponents" code='true'>HasComponents</JavadocLink>-interface implementeert. De `Frame` is zo'n klasse - voor deze stap, voeg een `Paragraph` en een `Button` toe aan de `Frame`, die in de UI in de browser zal worden weergegeven:
-
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  Paragraph demo = new Paragraph("Demo-toepassing!");
-  Button btn = new Button("Info");
-
-  @Override
-  public void run() throws WebforjException {
-    Frame mainFrame = new Frame();
-    btn.setTheme(ButtonTheme.PRIMARY)
-        .addClickListener(e -> showMessageDialog("Dit is een demo!", "Info"));
-    mainFrame.add(demo, btn);
-  }
-}
-```
-
-Het uitvoeren hiervan zou je een eenvoudige gestileerde knop moeten geven waarmee een bericht verschijnt met de tekst "Dit is een demo!"
-
-## Stylen met CSS {#styling-with-css}
-
-Stylen in webforJ geeft je volledige flexibiliteit om het uiterlijk van je app te ontwerpen. Terwijl het framework een samenhangend ontwerp en stijl uit de doos ondersteunt, dwingt het geen specifieke stijlaanpak af, waardoor je aangepaste stijlen kunt toepassen die zijn afgestemd op de vereisten van je app.
-
-Met webforJ kun je dynamisch klassenamen aan componenten toepassen voor conditionele of interactieve styling, CSS gebruiken voor een consistent en schaalbaar ontwerpsysteem, en volledige inline of externe stylesheets injecteren.
 
 ### CSS-klassen aan componenten toevoegen {#adding-css-classes-to-components}
 
-Je kunt dynamisch klassenamen aan componenten toevoegen of verwijderen met behulp van de methoden `addClassName()` en `removeClassName()`. Deze methoden stellen je in staat om de stijlen van de component te controleren op basis van de logica van je app. Voeg de klasse `mainFrame` toe aan het `Frame` dat in de vorige stappen is gemaakt door de volgende code in de `run()`-methode op te nemen:
+Je kunt dynamisch klassennamen aan componenten toevoegen of verwijderen met de methoden `addClassName()` en `removeClassName()`. Voor deze tutorial wordt er slechts één CSS-klasse gebruikt:
 
 ```java
-mainFrame.addClassName("mainFrame");
+mainFrame.addClassName("card");
 ```
 
-### CSS-bestanden aanhechten {#attaching-css-files}
+## Voltooide `Application` {#completed-application}
 
-Om je app te stylen, kun je CSS-bestanden in je project opnemen, hetzij door gebruik te maken van asset-annotaties of door de webforJ <JavadocLink type="foundation" location="com/webforj/Page">asset API</JavadocLink> tijdens runtime te benutten. [Zie dit artikel](../../managing-resources/importing-assets) voor meer informatie.
+Je `Application`-klasse zou er nu ongeveer als volgt uit moeten zien:
 
-Bijvoorbeeld, de @StyleSheet-annotatie wordt gebruikt om stijlen uit de resources/static-directory in te voegen. Het genereert automatisch een URL voor het opgegeven bestand en injecteert het in de DOM, zodat de stijlen op je app kunnen worden toegepast. Opmerking: bestanden buiten de statische directory zijn niet toegankelijk.
+```java title="Application.java"
+@SpringBootApplication
+@StyleSheet("ws://css/card.css")
+@AppTheme("system")
+@AppProfile(name = "Klantapplicatie", shortName = "KlantApp")
+public class Application extends App {
 
-```java title="DemoApplication.java"
-@StyleSheet("ws://styles/library.css")
-public class DemoApplication extends App {
-  @Override
-  public void run() {
-    // App logica hier
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
   }
+
+  @Override
+  public void run() throws WebforjException {
+    Frame mainFrame = new Frame();
+    Paragraph tutorial = new Paragraph("Tutorial App!");
+    Button btn = new Button("Info");
+
+    btn.setTheme(ButtonTheme.PRIMARY)
+        .setMaxWidth(200)
+        .addClickListener(e -> OptionDialog.showMessageDialog("Dit is een tutorial!", "Info"));
+
+    mainFrame.setWidth("fit-content")
+        .addClassName("card")
+        .add(tutorial, btn);
+  }
+
 }
 ```
-:::tip Webserver-URL's
-Om ervoor te zorgen dat statische bestanden toegankelijk zijn, moeten ze in de resources/static-map worden geplaatst. Om een statisch bestand op te nemen, kun je de URL construeren met behulp van het webserverprotocol.
+
+:::tip Meerdere pagina's
+Voor een complexere app kun je de UI in meerdere pagina's opdelen voor een betere organisatie. Dit concept wordt later in deze tutorial behandeld in [Routing en Composities](/docs/introduction/tutorial/routing-and-composites).
 :::
 
-### Voorbeeld CSS-code {#sample-css-code}
+## Volgende stap {#next-step}
 
-Een CSS-bestand wordt in je project gebruikt in `resources > static > css > demoApplication.css`, en de volgende CSS wordt gebruikt om enkele basisstijlen op de app toe te passen.
-
-```css
-.mainFrame {
-  display: inline-grid;
-  gap: 20px;
-  margin: 20px;
-  padding: 20px;
-  border: 1px dashed;
-  border-radius: 10px;
-}
-```
-
-Zodra dit is gedaan, moet de volgende annotatie aan je `App`-klasse worden toegevoegd:
-
-```java title="DemoApplication.java"
-@StyleSheet("ws://css/demoApplication.css")
-@AppTitle("Demo Stap 1")
-public class DemoApplication extends App {
-```
-
-De CSS-stijlen worden toegepast op het hoofd `Frame` en bieden structuur door componenten met een [grid-layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout) te rangschikken en marge-, padding- en randstijlen toe te voegen om de UI visueel georganiseerd te maken.
+Na het maken van een functionele app met een basisgebruikersinterface, is de volgende stap om een gegevensmodel toe te voegen en de resultaten in een `Table`-component weer te geven in [Werken met gegevens](/docs/introduction/tutorial/working-with-data).
