@@ -2,20 +2,19 @@
 sidebar_position: 2
 title: Understanding Components
 sidebar_class_name: new-content
-_i18n_hash: abce24ee16a8f383791d857b9039f35b
+_i18n_hash: 9e69e45c2d978b84854066e80e3139e5
 ---
-<DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/> 
 
-Avant de construire des composants personnalisés dans webforJ, il est important de comprendre l'architecture fondamentale qui façonne le fonctionnement des composants. Cet article explique la hiérarchie des composants, l'identité des composants, les concepts du cycle de vie, et comment les interfaces de préoccupation fournissent des capacités aux composants.
+Avant de construire des composants personnalisés dans webforJ, il est important de comprendre l'architecture fondamentale qui façonne le fonctionnement des composants. Cet article explique la hiérarchie des composants, l'identité des composants, les concepts de cycle de vie et comment les interfaces de préoccupation fournissent des capacités aux composants.
 
-## Comprendre la hiérarchie des composants
+## Comprendre la hiérarchie des composants {#understanding-the-component-hierarchy}
 
-webforJ organise les composants en une hiérarchie avec deux groupes : des classes internes au framework que vous ne devez jamais étendre, et des classes conçues spécifiquement pour la construction de composants personnalisés. Cette section explique pourquoi webforJ privilégie la composition à l'héritage et ce que chaque niveau de la hiérarchie fournit.
+webforJ organise les composants en une hiérarchie composée de deux groupes : les classes internes au framework que vous ne devez jamais étendre, et les classes conçues spécifiquement pour créer des composants personnalisés. Cette section explique pourquoi webforJ utilise la composition plutôt que l'héritage et ce que chaque niveau de la hiérarchie fournit.
 
-### Pourquoi la composition plutôt que l'extension ?
+### Pourquoi la composition plutôt que l'extension ? {#why-composition-instead-of-extension}
 
-Dans webforJ, les composants intégrés comme [`Button`](../components/button) et [`TextField`](../components/fields/textfield) sont des classes finales—vous ne pouvez pas les étendre :
+Dans webforJ, les composants intégrés tels que [`Button`](../components/button) et [`TextField`](../components/fields/textfield) sont des classes finales - vous ne pouvez pas les étendre :
 
 ```java
 // Cela ne fonctionnera pas dans webforJ
@@ -28,33 +27,33 @@ webforJ utilise **la composition plutôt que l'héritage**. Au lieu d'étendre d
 
 ```java
 public class SearchBar extends Composite<FlexLayout> {
+    private final FlexLayout self = getBoundComponent();
     private TextField searchField;
     private Button searchButton;
     
     public SearchBar() {
-        searchField = new TextField("Recherche");
+        searchField = new TextField("Rechercher");
         searchButton = new Button("Aller");
         
-        getBoundComponent()
-            .setDirection(FlexDirection.ROW)
+        self.setDirection(FlexDirection.ROW)
             .add(searchField, searchButton);
     }
 }
 ```
 
-### Pourquoi vous ne pouvez pas étendre les composants intégrés
+### Pourquoi vous ne pouvez pas étendre les composants intégrés {#why-you-cant-extend-built-in-components}
 
-Les composants webforJ sont marqués comme finaux pour maintenir l'intégrité du composant web sous-jacent. Étendre les classes de composants webforJ accorderait un contrôle sur le composant web sous-jacent, ce qui pourrait entraîner des conséquences indésirables et compromettre la cohérence et la prévisibilité du comportement des composants.
+Les composants webforJ sont marqués comme finaux pour maintenir l'intégrité du composant web côté client sous-jacent. Étendre les classes de composants webforJ donnerait le contrôle sur le composant web sous-jacent, ce qui pourrait entraîner des conséquences imprévues et rompre la cohérence et la prévisibilité du comportement du composant.
 
-Pour une explication détaillée, voir [Final Classes and Extension Restrictions](https://docs.webforj.com/docs/architecture/controls-components#final-classes-and-extension-restrictions) dans la documentation d'architecture.
+Pour une explication détaillée, voir [Classes finales et restrictions d'extension](https://docs.webforj.com/docs/architecture/controls-components#final-classes-and-extension-restrictions) dans la documentation sur l'architecture.
 
-### La hiérarchie des composants
+### La hiérarchie des composants {#the-component-hierarchy}
 
 ```mermaid
 graph TD
     A[Composant<br/><small>Base abstraite - interne au framework</small>]
     
-    A --> B[DwcComponent<br/><small>Composants intégrés de webforJ</small>]
+    A --> B[DwcComponent<br/><small>Composants intégrés webforJ</small>]
     A --> C[Composite<br/><small>Combiner les composants webforJ</small>]
     A --> D[ElementComposite<br/><small>Envelopper les composants web</small>]
     
@@ -79,32 +78,33 @@ graph TD
 - **ElementCompositeContainer**
 
 **Classes internes au framework (ne jamais étendre directement) :**
-- **Component**
+- **Composant**
 - **DwcComponent**
 
 :::warning[Never extend `Component` or `DwcComponent`]
-Ne jamais étendre directement `Component` ou `DwcComponent`. Tous les composants intégrés sont finaux. Utilisez toujours des modèles de composition avec `Composite` ou `ElementComposite`.
+Ne jamais étendre `Component` ou `DwcComponent` directement. Tous les composants intégrés sont finaux. Utilisez toujours des modèles de composition avec `Composite` ou `ElementComposite`.
 
-Tenter d'étendre `DwcComponent` lèvera une exception à l'exécution.
+Tenter d'étendre `DwcComponent` déclenchera une exception d'exécution.
 :::
 
-## Interfaces de préoccupation : Ajouter des capacités à vos composants
+## Interfaces de préoccupation {#concern-interfaces}
 
-Les interfaces de préoccupation sont des interfaces Java qui fournissent des capacités spécifiques à vos composants. Chaque interface ajoute un ensemble de méthodes liées. Par exemple, `HasSize` ajoute des méthodes pour contrôler la largeur et la hauteur, tandis que `HasFocus` ajoute des méthodes pour gérer l'état de focus.
+Les interfaces de préoccupation sont des interfaces Java qui fournissent des capacités spécifiques à vos composants. Chaque interface ajoute un ensemble de méthodes connexes. Par exemple, `HasSize` ajoute des méthodes pour contrôler la largeur et la hauteur, tandis que `HasFocus` ajoute des méthodes pour gérer l'état de focus.
 
-Lorsque vous implémentez une interface de préoccupation sur votre composant, vous obtenez l'accès à ces capacités sans écrire de code d'implémentation. L'interface fournit des implémentations par défaut qui fonctionnent automatiquement.
+Lorsque vous mettez en œuvre une interface de préoccupation sur votre composant, vous obtenez accès à ces capacités sans écrire de code d'implémentation. L'interface fournit des implémentations par défaut qui fonctionnent automatiquement.
 
-L'implémentation des interfaces de préoccupation donne à vos composants personnalisés les mêmes API que les composants intégrés de webforJ :
+La mise en œuvre des interfaces de préoccupation donne à vos composants personnalisés les mêmes API que les composants intégrés webforJ :
 
 ```java
-// Implémentez HasSize pour obtenir automatiquement les méthodes de largeur/hauteur
+// Implémentez HasSize pour obtenir automatiquement des méthodes de largeur/hauteur
 public class SizedCard extends Composite<Div> implements HasSize<SizedCard> {
+    private final Div self = getBoundComponent();
     
     public SizedCard() {
-        getBoundComponent().setText("Contenu de la carte");
+        self.setText("Contenu de la carte");
     }
     
-    // Pas besoin d'implémenter ces méthodes - vous les obtenez gratuitement :
+    // Pas besoin d'implémenter ceux-ci - vous les obtenez gratuitement :
     // setWidth(), setHeight(), setSize()
 }
 
@@ -120,18 +120,18 @@ Le composite transmet automatiquement ces appels au `Div` sous-jacent. Pas besoi
 - `HasSize` - `setWidth()`, `setHeight()`, `setSize()`
 - `HasFocus` - `focus()`, `setFocusable()`, événements de focus
 - `HasClassName` - `addClassName()`, `removeClassName()`
-- `HasStyle` - `setStyle()`, gestion du CSS en ligne
+- `HasStyle` - `setStyle()`, gestion CSS en ligne
 - `HasVisibility` - `setVisible()`, capacité d'afficher/masquer
 - `HasText` - `setText()`, gestion du contenu textuel
 - `HasAttribute` - `setAttribute()`, gestion des attributs HTML
 
 :::warning
-Si le composant sous-jacent ne prend pas en charge la capacité de l'interface, vous obtiendrez une exception à l'exécution. Fournissez votre propre implémentation dans ce cas.
+Si le composant sous-jacent ne prend pas en charge la capacité de l'interface, vous obtiendrez une exception d'exécution. Fournissez votre propre implémentation dans ce cas.
 :::
 
 Pour une liste complète des interfaces de préoccupation disponibles, voir le [webforJ JavaDoc](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/concern/package-summary.html).
 
-## Aperçu du cycle de vie des composants
+## Aperçu du cycle de vie des composants {#component-lifecycle-overview}
 
 webforJ gère automatiquement le cycle de vie des composants. Le framework s'occupe de la création, de l'attachement et de la destruction des composants sans nécessiter d'intervention manuelle.
 
@@ -140,8 +140,8 @@ webforJ gère automatiquement le cycle de vie des composants. Le framework s'occ
 - `onDidDestroy()` - Appelé lorsque le composant est détruit
 
 Ces hooks sont **optionnels**. Utilisez-les lorsque vous en avez besoin :
-- Libérer des ressources (arrêter des intervalles, fermer des connexions)
-- Initialiser des composants qui nécessitent un attachement au DOM
+- Nettoyer les ressources (arrêter les intervalles, fermer les connexions)
+- Initialiser des composants qui nécessitent une attache au DOM
 - S'intégrer avec JavaScript côté client
 
-Pour la plupart des cas simples, vous pouvez initialiser des composants directement dans le constructeur. Utilisez des hooks de cycle de vie comme `onDidCreate()` pour reporter le travail si nécessaire.
+Pour la plupart des cas simples, vous pouvez initialiser les composants directement dans le constructeur. Utilisez des hooks de cycle de vie comme `onDidCreate()` pour différer le travail si nécessaire.

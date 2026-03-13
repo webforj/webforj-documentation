@@ -2,16 +2,13 @@
 title: Upgrade to 25.00
 description: Upgrade from 24.00 to 25.00
 pagination_next: null
-_i18n_hash: 71f184a02c2552f5af34bfc3ec47c385
+_i18n_hash: cbb2bd70fa3e51df1096018ff2519878
 ---
-Esta documentación sirve como guía para actualizar las aplicaciones de webforJ de 24.00 a 25.00.
-Aquí están los cambios necesarios para que las aplicaciones existentes sigan funcionando sin problemas.
-Como siempre, consulte la [visión general de lanzamientos en GitHub](https://github.com/webforj/webforj/releases) para obtener una lista más completa de cambios entre lanzamientos.
-
+Esta documentación sirve como una guía para actualizar aplicaciones webforJ de 24.00 a 25.00. Aquí están los cambios necesarios para que las aplicaciones existentes continúen funcionando sin problemas. Como siempre, consulte el [resumen de la versión de GitHub](https://github.com/webforj/webforj/releases) para obtener una lista más completa de los cambios entre versiones.
 
 ## Servidores web Jetty 12 {#jetty-12-web-servers}
 
-webforJ 25.00 y superior utilizan Jetty 12, usando la arquitectura de servlet Jakarta EE10. Si está utilizando el complemento Maven de Jetty para desarrollo, migre de Jakarta EE8 a Jakarta EE10. Esta actualización también requerirá reemplazar cualquier cosa que dependa del paquete `javax.servlet` con el paquete `Jakarta.servlet`.
+webforJ 25.00 y superiores utilizan Jetty 12, usando la arquitectura de servlets de Jakarta EE10. Si está utilizando el complemento Maven de Jetty para el desarrollo, migre de Jakarta EE8 a Jakarta EE10. Esta actualización también requerirá reemplazar cualquier cosa que dependiera del paquete `javax.servlet` con el paquete `Jakarta.servlet`.
 
 ### Cambios en el archivo POM {#pom-file-changes}
 
@@ -34,11 +31,11 @@ webforJ 25.00 y superior utilizan Jetty 12, usando la arquitectura de servlet Ja
 
 ## Cambios en la API para la clase `App` {#api-changes-for-the-app-class}
 
-Varios métodos obsoletos de `App` se eliminan en 25.00. Las siguientes secciones describen qué métodos fueron reemplazados y las sustituciones recomendadas.
+Se han eliminado varios métodos obsoletos de la clase `App` en 25.00. Las siguientes secciones describen qué métodos fueron reemplazados y las recomendaciones de reemplazo.
 
-### Registro en consola {#console-logging}
+### Registro en la consola {#console-logging}
 
-La clase utilitaria [`BrowserConsole`](../advanced/browser-console.md), dedicada a crear registros estilizados en la consola del navegador, reemplaza los métodos `consoleLog()` y `consoleError()`. Obtenga el `BrowserConsole` mediante el método `console()`:
+La clase utilitaria [`BrowserConsole`](/docs/advanced/browser-console), dedicada a crear registros con estilo en la consola del navegador, reemplaza los métodos `consoleLog()` y `consoleError()`. Obtenga el `BrowserConsole` utilizando el método `console()`:
 
 ```java
 public class Application extends App{
@@ -53,9 +50,9 @@ public class Application extends App{
 
 ### Almacenamiento web {#web-storage}
 
-Para versiones anteriores a webforJ 25.00, la clase `App` tiene los métodos `getLocalStorage()`, `getSessionStorage()`, y `getCookieStorage()` para obtener instancias de las clases `LocalStorage`, `SessionStorage` y `CookieStorage`, respectivamente. A partir de ahora, cada clase tiene un método `getCurrent()`.
+Para las versiones anteriores a webforJ 25.00, la clase `App` tiene los métodos `getLocalStorage()`, `getSessionStorage()` y `getCookieStorage()` para obtener instancias de las clases `LocalStorage`, `SessionStorage` y `CookieStorage` respectivamente. En adelante, cada clase tiene un método `getCurrent()`.
 
-Consulte [Almacenamiento Web](../advanced/web-storage.md) para obtener más información.
+Consulte [Almacenamiento Web](/docs/advanced/web-storage) para más información.
 
 ### Clase `Request` {#request-class}
 
@@ -67,34 +64,33 @@ La clase `Request` también ha eliminado métodos, salte a [`Request`](#request-
 
 ### Clase `Page` {#page-class}
 
-El método `getPage()` se reemplaza con `Page.getCurrent()` para obtener la instancia de la página actual.
+El método `getPage()` es reemplazado por `Page.getCurrent()` para obtener la instancia de la página actual.
 
 ### Diálogos de opciones {#option-dialogs}
 
-En lugar de usar el método `msgbox()`, utilice [`OptionDialog.showMessageDialog()`](../components/option-dialogs/message) para crear diálogos de mensaje.
+En lugar de usar el método `msgbox()`, use [`OptionDialog.showMessageDialog()`](/docs/components/option-dialogs/message) para crear diálogos de mensaje.
 
 ### Terminación de la aplicación {#app-termination}
 
-El método `cleanup()` ha sido eliminado. Ahora hay dos métodos para terminaciones, `onWillTerminate()` y `onDidTerminate()`.
+El método `cleanup()` ha sido eliminado. Ahora hay dos métodos para las terminaciones, `onWillTerminate()` y `onDidTerminate()`.
 
-Consulte [Hooks para la terminación](../advanced/terminate-and-error-actions.md#hooks-for-termination) para obtener más información.
+Consulte [Hooks para la terminación](/docs/advanced/terminate-and-error-actions#hooks-for-termination) para más información.
 
-## Ordenamiento de tablas {#table-sorting}
+## Ordenación de tablas {#table-sorting}
 
-Para webforJ 25.00 y versiones superiores, las tablas utilizan ordenamiento de una sola columna por defecto. Las columnas solo se ordenarán por la cabecera de columna seleccionada más reciente. Para hacer que una tabla utilice ordenamiento de múltiples columnas, invoque el método [`setMultiSorting()`](../components/table/sorting#multi-sorting):
+Para webforJ 25.00 y superiores, las tablas utilizan ordenación de una sola columna de forma predeterminada. Las columnas solo se ordenarán por el encabezado de columna seleccionado más recientemente. Para hacer que una tabla use ordenación de múltiples columnas, invoque el método [`setMultiSorting()`](/docs/components/table/sorting#multi-sorting):
 
 ```java
 table.setMultiSorting(true);
 ```
 
-## Cuerpo de `TabbedPane` oculto {#hidden-tabbedpane-body}
+## Cuerpo oculto de `TabbedPane` {#hidden-tabbedpane-body}
 
-El método `hideBody()` se reemplaza con `setBodyHidden()` para mantener una convención de nomenclatura consistente para los métodos.
+El método `hideBody()` es reemplazado por `setBodyHidden()` para mantener una convención de nomenclatura consistente para los métodos.
 
-## Renderizando HTML dentro de componentes {#rendering-html-inside-components}
+## Renderización de HTML dentro de componentes {#rendering-html-inside-components}
 
-En webforJ 25.00 y versiones superiores, hay un método `setHtml()` para ayudar a distinguir entre establecer texto literal y HTML dentro de un componente.
-Aún es posible establecer HTML usando el método `setText()`, pero ahora requiere envolverlo explícitamente con etiquetas `<html>`.
+En webforJ 25.00 y superiores, hay un método `setHtml()` para ayudar a distinguir entre establecer texto literal y HTML dentro de un componente. Establecer HTML utilizando el método `setText()` sigue siendo posible, pero ahora requiere explícitamente envolverlo con etiquetas `<html>`.
 
 ```java
 // Usos válidos de setText() y setHtml()
@@ -119,7 +115,7 @@ home.setText("<h1>Inicio</h1>");
 
 ## Contenedores HTML {#html-containers}
 
-El paquete `com.webforj.component.htmlcontainer` ya no está en webforJ. Utilice el paquete más completo `com.webforj.component.element` en su lugar. Para una lista de clases de webforJ para elementos HTML estándar, vaya a [Componentes de Elementos HTML](../building-ui/web-components/html-elements.md).
+El paquete `com.webforj.component.htmlcontainer` ya no está en webforJ. Utilice el paquete más rico en características `com.webforj.component.element` en su lugar. Para una lista de clases de webforJ para elementos HTML estándar, dirígete a [Componentes de Elementos HTML](/docs/components/html-elements).
 
 ## Cambios en `Request` {#request-changes}
 
@@ -129,14 +125,13 @@ El paquete `com.webforj.component.htmlcontainer` ya no está en webforJ. Utilice
 
 ## Cambios en `WebforjBBjBridge` {#webforjbbjbridge-changes}
 
-### Obteniendo una instancia de `WebforjBBjBridge` {#getting-an-instance-of-webforjbbjbridge}
+### Obtener una instancia de `WebforjBBjBridge` {#getting-an-instance-of-webforjbbjbridge}
 
-La clase `Environment` ya no tiene el método `getWebforjHelper()`, por lo que utilice `getBridge()` en su lugar.
+La clase `Environment` ya no tiene el método `getWebforjHelper()`, así que use `getBridge()` en su lugar.
 
 ### Usando el componente `ConfirmDialog` para el método `msgbox()` {#using-the-confirmdialog-component-for-the-msgbox-method}
 
-Versiones anteriores de webforJ usaron cadenas e enteros directamente para el método `msgbox()` de `WebforjBBjBridge`. Sin embargo, los mensajes para `WebforjBBjBridge` en webforJ 25.00 y versiones superiores utilizan el componente [`ConfirmDialog`](../components/option-dialogs/confirm.md). Esto proporciona más control sobre qué botones se muestran y el tipo de mensaje.
-
+Las versiones anteriores de webforJ utilizan cadenas e enteros directamente para el método `msgbox()` de `WebforjBBjBridge`. Sin embargo, los mensajes para `WebforjBBjBridge` en webforJ 25.00 y superiores utilizan el componente [`ConfirmDialog`](/docs/components/option-dialogs/confirm). Esto proporciona más control sobre qué botones se muestran y el tipo de mensaje.
 
 **Antes**
 ```java
@@ -158,16 +153,16 @@ ConfirmDialog dialog = new ConfirmDialog(
 int msgboxResult = bridge.msgbox(dialog);
 ```
 
-<!-- ## Environment.logError eliminado -->
+<!-- ## Error de Environment.logError eliminado -->
 
-## Corrección de tipografía de `PasswordMediation` {#passwordmediation-typo-correction}
+## Corrección de error tipográfico en `PasswordMediation` {#passwordmediation-typo-correction}
 
-La clase enum `PasswordMediation`, utilizada para indicar si se requiere que un usuario inicie sesión en cada visita a una aplicación con un componente `Login`, tiene un error tipográfico en versiones anteriores de webforJ. `SILENT` reemplaza el error tipográfico `SILIENT` para webforJ 25.00 y versiones superiores.
+La clase enum `PasswordMediation`, utilizada para indicar si se requiere que un usuario inicie sesión en cada visita a una aplicación con un componente `Login`, tiene un error tipográfico en versiones anteriores de webfroJ. `SILENT` reemplaza el error tipográfico `SILIENT` para webforJ 25.00 y superiores.
 
-## Métodos de auto-enfoque {#auto-focusing-methods}
+## Métodos de enfoque automático {#auto-focusing-methods}
 
-Para mantener la consistencia de webforJ, métodos como `setAutofocus()` e `isAutofocus()` ahora tienen una capitalización uniforme como la interfaz HasAutoFocus. Así que componentes como `Dialog` y `Drawer` utilizan `setAutoFocus()` e `isAutoFocus()` para 25.00 y versiones superiores.
+Para mantener la consistencia en webforJ, métodos como `setAutofocus()` e `isAutofocus()` ahora tienen una capitalización uniforme al igual que la interfaz HasAutoFocus. Así que componentes como `Dialog` y `Drawer` utilizan `setAutoFocus()` e `isAutoFocus()` para 25.00 y superiores.
 
 ## `BBjWindowAdapter` y `Panel` marcados como `final` {#bbjwindowadapter-and-panel-marked-as-final}
 
-Las clases `BBjWindowAdapter` y `Panel` ahora están declaradas como `final`, lo que significa que ya no se pueden subclasear. Este cambio mejora la estabilidad y refuerza patrones de uso consistentes.
+Las clases `BBjWindowAdapter` y `Panel` ahora están declaradas como `final`, lo que significa que ya no se pueden subclasificar. Este cambio mejora la estabilidad y refuerza patrones de uso consistentes.

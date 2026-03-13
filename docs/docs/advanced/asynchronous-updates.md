@@ -258,7 +258,7 @@ public class LongTaskView extends Composite<FlexLayout> {
   private volatile boolean isCancelled = false;
 
   // UI components
-  private FlexLayout self = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
   private H2 titleLabel = new H2("Background UI Updates Demo");
   private Paragraph descriptionPara = new Paragraph(
       "This demo shows how Environment.runLater() enables safe UI updates from background threads. " +

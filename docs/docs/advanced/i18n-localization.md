@@ -88,7 +88,7 @@ A translated component typically combines `HasTranslation` with [`LocaleObserver
 public class MainLayout extends Composite<AppLayout>
     implements HasTranslation, LocaleObserver {
 
-  private AppLayout self = getBoundComponent();
+  private final AppLayout self = getBoundComponent();
   private AppNavItem inboxItem;
   private AppNavItem outboxItem;
 

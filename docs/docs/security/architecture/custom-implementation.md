@@ -443,7 +443,7 @@ import com.webforj.router.security.annotation.AnonymousAccess;
 @FrameTitle("Login")
 @AnonymousAccess
 public class LoginView extends Composite<Login> {
-  private Login self = getBoundComponent();
+  private final Login self = getBoundComponent();
 
   public LoginView() {
     self.onSubmit(e -> {

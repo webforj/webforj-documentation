@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 7
 title: Event Options
 ---
 <!-- sidebar_class_name: sidebar--item__hidden -->
@@ -16,7 +16,7 @@ Event data is a key feature of `ElementEventOptions`, allowing developers to att
 For instance, consider a scenario where you have a button click event, and you want to pass the current user's username along with the event. Instead on querying a user's username from the client each time, send this information along with the event as data.
 
 :::tip
-For more information, see the [events](../../building-ui/events) and [Client/Server Interaction](../../architecture/client-server) pages.
+For more information, see the [events](/docs/building-ui/events) and [Client/Server Interaction](/docs/architecture/client-server) pages.
 :::
 
 To add data to the event options, you can use the `addData()` method.

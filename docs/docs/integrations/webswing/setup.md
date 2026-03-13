@@ -110,6 +110,7 @@ import com.webforj.component.webswing.WebswingConnector;
 
 @Route
 public class SwingAppView extends Composite<Div> {
+  private final Div self = getBoundComponent();
   private WebswingConnector connector;
 
   public SwingAppView() {
@@ -120,7 +121,7 @@ public class SwingAppView extends Composite<Div> {
     connector.setSize("100%", "600px");
 
     // Add to the view container
-    getBoundComponent().add(connector);
+    self.add(connector);
   }
 }
 ```

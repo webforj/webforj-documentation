@@ -3,8 +3,8 @@ title: Kotlin DSL
 sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true
-sidebar_class_name: has-new-content
-_i18n_hash: 2c5f0dc99b29342a5ae0f1f4774d3a36
+sidebar_class_name: new-content
+_i18n_hash: b27e06c94bdd94dd90f7411523e442f5
 ---
 <Head>
   <style>{`
@@ -14,7 +14,12 @@ _i18n_hash: 2c5f0dc99b29342a5ae0f1f4774d3a36
   `}</style>
 </Head>
 
-webforJ tarjoaa [Kotlin](https://kotlinlang.org/) *Domain Specific Language*, eli DSL, joka mahdollistaa käyttöliittymien rakentamisen tiiviillä, tyyppiturvallisella syntaksilla. Imperatiivisen Java-koodin sijasta kirjoitat deklaratiivista koodia, joka näyttää kuvaukselta käyttöliittymäsi rakenteesta.
+<DocChip chip='since' label='25.12' />
+<DocChip chip='experimental' />
+
+webforJ tarjoaa [Kotlin](https://kotlinlang.org/) *Domain Specific Language*, eli DSL, jonka avulla voit rakentaa käyttöliittymiä tiiviillä, tyyppiturvatuilla syntaksilla. Imperatiivisen Java-koodin sijaan kirjoitat deklaratiivista koodia, joka lukee kuin kuvaus käyttöliittymäsi rakenteesta.
+
+<!-- INTRO_END -->
 
 ```java title="Java"
 FlexLayout layout = new FlexLayout();
@@ -43,15 +48,22 @@ flexLayout {
 }
 ```
 
-DSL hyödyntää Kotlinin laajennustoimintoja, vastaanottajalla varustettuja lambda-lausumia ja oletusparametreja luodakseen luonnollisen rakentajasynnin. Komponentit pesiytyvät toisiinsa, konfigurointi tapahtuu lohkoissa, ja kääntäjä havaitsee rakenteelliset virheet ennen suoritusta.
+DSL hyödyntää Kotalin laajennusfunktioita, vastaanottajalla varustettuja lambdoja ja oletusparametreja luodakseen luonnollisen rakennussyntaksin. Komponentit pesiytyvät toisiinsa, konfigurointi tapahtuu lohkoissa, ja kääntäjä tunnistaa rakenteelliset virheet ennen ajonaikaa.
 
 ## Setup {#setup}
 
-Erillistä Kotlin-asennusta ei tarvita. Maven hoitaa käännön Kotlin Maven -liitännäisen kautta, joten mikä tahansa projekti, joka jo rakentaa Mavenilla, voi lisätä Kotlin-tuen pelkästään riippuvuus- ja liitännäiskonfiguraatiolla.
+:::warning experimental feature
+Tämä ominaisuus on edelleen aktiivisessa kehityksessä.
+Rajapinta voi muuttua tulevissa versioissa, mukaan lukien mahdolliset taaksepäin yhteensopimattomat muutokset.
+
+Olet tervetullut kokeilemaan sitä ja jakamaan palautetta. Panoksesi auttaa muokkaamaan lopullista suunnittelua.
+:::
+
+Eri Kotlin-asennusta ei vaadita. Maven hoitaa käännöksen Kotlin Maven -laajennuksen kautta, joten mikä tahansa projekti, joka jo rakentuu Mavenilla, voi lisätä Kotlin-tuen pelkästään riippuvuus- ja laajennuskonfiguraation avulla.
 
 ### Riippuvuudet {#dependencies}
 
-Lisää webforJ Kotlin DSL -moduuli ja Kotlinin standardikirjasto `pom.xml`:ään:
+Lisää webforJ Kotlin DSL -moduuli ja Kotlinin standardikirjasto `pom.xml`-tiedostoon:
 
 ```xml
 <dependency>
@@ -67,7 +79,7 @@ Lisää webforJ Kotlin DSL -moduuli ja Kotlinin standardikirjasto `pom.xml`:ää
 </dependency>
 ```
 
-Jos aiot kirjoittaa testejä Kotlinilla, lisää myös Kotlin testiriippuvuus. Se integroituu JUnitin kanssa:
+Jos suunnittelet testien kirjoittamista Kotlinilla, lisää myös Kotlin-testiriippuvuus. Se integroituu JUnitiin:
 
 ```xml
 <dependency>
@@ -78,9 +90,9 @@ Jos aiot kirjoittaa testejä Kotlinilla, lisää myös Kotlin testiriippuvuus. S
 </dependency>
 ```
 
-### Kotlin Maven -liitännäinen {#kotlin-maven-plugin}
+### Kotlin Maven -laajennus {#kotlin-maven-plugin}
 
-Lisää Kotlin Maven -liitännäinen sekä Kotlin- että Java-lähdekoodin kääntämiseksi. Alla oleva `sourceDirs`-konfiguraatio mahdollistaa Kotlin- ja Java-tiedostojen olemassaolon samassa projektissa:
+Lisää Kotlin Maven -laajennus kääntämään sekä Kotlin- että Java-lähteesi. Alla oleva `sourceDirs`-konfigurointi mahdollistaa Kotlin- ja Java-tiedostojen rinnakkaisen olemassaolon samassa projektissa:
 
 ```xml
 <plugin>
@@ -123,82 +135,82 @@ Lisää Kotlin Maven -liitännäinen sekä Kotlin- että Java-lähdekoodin kää
 </plugin>
 ```
 
-Näiden lisäysten kanssa `mvn compile` kääntää Kotlin-lähdekoodit yhdessä Javasta. Kotlin-tiedostot voivat olla joko `src/main/kotlin`- tai `src/main/java`-kansiossa, ja liitännäinen käsittelee molemmat.
+Näiden lisäysten avulla `mvn compile` kääntää Kotlin-lähteet yhdessä Java-lähteiden kanssa. Kotlin-tiedostot voivat sijaita `src/main/kotlin` tai `src/main/java`-kansiossa, ja laajennus huolehtii molemmista.
 
 :::tip[Java-yhteensopivuus]
-Kotlin kääntyy JVM-bittikoodiksi, joten se toimii olemassa olevien Java-koodien rinnalla. Voit käyttää DSL:n avulla rakennettuja Kotlin-yhdistelmiä Java-luokista, pesiyttää standardi Java -komponentteja DSL-lohkoihin käyttäen `add()`, ja sekoittaa Kotlin- ja Java-tiedostoja samassa projektissa.
+Kotlin kääntyy JVM-bittikoodiksi, joten se toimii olemassa olevan Java-koodin rinnalla. Voit käyttää DSL:llä rakennettuja Kotlin-yhdistelmiä Java-luokista, pesiyttää standardi Java -komponentteja DSL-lohkojen sisään `add()`-metodilla ja sekoittaa Kotlin- ja Java-tiedostoja samassa projektissa.
 :::
 
-## Aiheita {#topics}
+## Aiheet {#topics}
 
-Seuraavat aiheet käsittelevät DSL:n käyttöä sekä sen laajentamista kaikkiin mukautettuihin komponentteihin tai yhdistelmiin, jotka luot.
+Seuraavat aiheet käsittelevät DSL:n käyttöä sekä sen laajentamista kaikkiin mukautettuihin komponentteihin tai yhdistelmiin, joita luot.
 
 <DocCardList className="topics-section" />
 
 ## Kotlin Java-kehittäjille {#kotlin-for-java-developers}
 
 <details>
-<summary>Uusi Kotlinin parissa? Tässä ovat joitakin keskeisiä kieliominaisuuksia, joihin DSL perustuu.</summary>
+<summary>Uusi Kotlinille? Tässä joitain avainkieliominaisuuksia, joihin DSL perustuu.</summary>
 
 ### Null-turvallisuus {#null-safety}
 
-Kotlin erottelee nollattavissa ja ei-nollattavissa tyypeissä käännösaikana:
+Kotlin erottelee null-referenssit ja ei-null-referenssit käännösaikana:
 
 ```kotlin
-// Java - mikä tahansa viite voi olla null
+// Java - mikä tahansa viittaus voi olla null
 String name = null;
 
-// Kotlin - eksplisiittinen null-kyky
-var name: String? = null        // Nullattavissa, voi olla null
-var safeName: String = "arvo"   // Ei-null, kääntäjä valvoo tätä
+// Kotlin - eksplisiittinen nullability
+var name: String? = null        // Nullable, voi olla null
+var safeName: String = "arvo"  // Ei-null, kääntäjä valvoo tätä
 
 // Turvallinen kutsuoperaattori - palauttaa null, jos name on null
 println(name?.length)
 
 // Elvis-operaattori - tarjoaa oletusarvon, kun null
-println(name ?: "oletusarvo")
+println(name ?: "oletus")
 ```
 
-### Laajennustoiminnot {#extension-functions}
+### Laajennusfunktiot {#extension-functions}
 
-Kotlinissa voit lisätä metodeja olemassa oleviin luokkiin ilman perintää:
+Kotlin sallii metodien lisäämisen olemassa oleviin luokkiin ilman perintöä:
 
 ```kotlin
-// Java-lähestymistapa - staattinen utiliteettiklussi
+// Java-lähestymistapa - staattinen apuluokka
 public class StringUtils {
     public static String addExclamation(String input) {
         return input + "!";
     }
 }
-String result = StringUtils.addExclamation("Hello");
+String result = StringUtils.addExclamation("Hei");
 
-// Kotlin-lähestymistapa - laajennustoiminto
+// Kotlin-lähestymistapa - laajennusfunktio
 fun String.addExclamation(): String = this + "!"
-val result = "Hello".addExclamation()  // Lukee kuin metodikutsu
+val result = "Hei".addExclamation()  // Lukee kuin metodikutsu
 ```
 
-DSL käyttää laajennustoimintoja rakenteiden lisäämiseen komponentteihin.
+DSL käyttää laajennusfunktioita lisätäkseen rakennusmetodeja komponentteihin.
 
-### Lambdat ja jälkimmäinen lambda-syntaksi {#lambdas-and-trailing-lambda-syntax}
+### Lamdat ja jälkimmäinen lambda-syntaksi {#lambdas-and-trailing-lambda-syntax}
 
-Kotlinin lambdat ovat tiiviimpiä kuin Javassa, ja kun lambda on viimeinen parametri, se voi olla ulkopuolella sulkujen:
+Kotlin-lamdat ovat tiiviimpiä kuin Java:n, ja kun lambda on viimeinen parametri, se voi mennä ulos sulkeista:
 
 ```kotlin
 // Java
 button.addClickListener(e -> System.out.println("Klikattu"));
 
-// Kotlin - lambda viimeisenä parametrina menee sulkujen ulkopuolelle
+// Kotlin - lambda viimeisenä parametrina menee sulkeiden ulkopuolelle
 button.onClick { println("Klikattu") }
 
-// Ilman eksplisiittistä parametria
+// Eksplisiittisellä parametrilla
 button.onClick { event -> println("Klikattu: $event") }
 ```
 
-Tämä jälkimmäinen lambda-syntaksi mahdollistaa DSL-lohkot.
+Tämä jälkimmäinen lambda-syntaksi tekee DSL-lohkoista mahdollisia.
 
 ### Oletusparametrit {#default-parameters}
 
-Kotlin-funktioilla voi olla oletusarvot parametreille, mikä vähentää ylikuormitettujen metodien tarvetta:
+Kotlin-funktioilla voi olla oletusarvoisia parametreja, mikä vähentää ylilastausmetodien tarvetta:
 
 ```kotlin
 // Java - useita konstruktoreita tarvitaan
@@ -206,7 +218,7 @@ public Button() {}
 public Button(String text) {}
 public Button(String text, ButtonTheme theme) {}
 
-// Kotlin - yksi funktio oletusarvoilla
+// Kotlin - yksi funktio oletuksilla
 fun button(
     text: String = "",
     theme: ButtonTheme = ButtonTheme.DEFAULT,
