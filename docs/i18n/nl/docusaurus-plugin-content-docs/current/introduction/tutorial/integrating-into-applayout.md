@@ -1,16 +1,30 @@
 ---
 title: Integrating the AppLayout
-sidebar_position: 6
+sidebar_position: 7
 draft: true
-_i18n_hash: c0ed4864dc99a4665aef3f4ff808bc9d
+description: Step 6 - Use the AppLayout component.
+_i18n_hash: fece87dce53e7e41102e122c740f6ea8
 ---
-In deze stap integreer je de functies die in de vorige stappen zijn geïmplementeerd, zoals routing en weergaven, in een samenhangende app-layout. Deze structuur biedt een verenigd navigatiesysteem en dynamische inhoudsgebieden.
+In deze stap ga je de functies die in de vorige stappen zijn geïmplementeerd, zoals routering en weergaven, integreren in een samenhangende app-indeling. Deze structuur biedt een verenigd navigatiesysteem en dynamische inhoudsgebieden.
 
-## Doel van de app-layout {#purpose-of-the-app-layout}
+## De app uitvoeren {#running-the-app}
+
+Terwijl je je app ontwikkelt, kun je [6-integrating-an-app-layout](https://github.com/webforj/webforj-tutorial/tree/main/6-integrating-an-app-layout) als vergelijking gebruiken. Om de app in actie te zien:
+
+1. Navigeer naar de hoofdmap die het `pom.xml`-bestand bevat, dit is `6-integrating-an-app-layout` als je de versie op GitHub volgt.
+
+2. Gebruik de volgende Maven-opdracht om de Spring Boot-app lokaal uit te voeren:
+    ```bash
+    mvn
+    ```
+
+De app wordt automatisch geopend in een nieuwe browser op `http://localhost:8080`.
+
+## Doel van de app-indeling {#purpose-of-the-app-layout}
 
 De `AppLayout` dient als de basis voor het beheren van de algehele structuur en flow van je app. Het biedt:
-- **Wereldwijde Navigatie**: Een consistente manier om tussen belangrijke secties te schakelen.
-- **Dynamische Inhoudsweergave**: Een gecentraliseerde lay-out voor het weergeven van gerouteerde weergaven.
+- **Globale Navigatie**: Een consistente manier om tussen belangrijke secties te schakelen.
+- **Dynamische Inhoud Weergave**: Een gecentraliseerde indeling voor het weergeven van gerouteerde weergaven.
 
 ## Gebruik van `AppNav` {#using-appnav}
 
@@ -32,17 +46,17 @@ In dit voorbeeld:
 - Elk menu-item is een `AppNavItem` dat specificeert:
   - Het label, bijvoorbeeld "Dashboard."
   - De doelweergave, bijvoorbeeld `DemoView`.
-  - Een optioneel pictogram, bijvoorbeeld een kolompictogram.
+  - Een optioneel pictogram, bijvoorbeeld een pictogram van kolommen.
 
-## Layout-routes en uitgangen {#layout-routes-and-outlets}
+## Indelingsroutes en uitgangen {#layout-routes-and-outlets}
 
-De layout gebruikt routes en uitgangen om dynamisch inhoud binnen een gestructureerde lay-out weer te geven. In webforJ:
+De indeling gebruikt routes en uitgangen om dynamisch inhoud binnen een gestructureerde indeling weer te geven. In webforJ:
 - **Routes** definiëren hoe weergaven aan specifieke paden zijn gekoppeld.
-- **Uitgangen** fungeren als plaatsaanduidingen in lay-outs waar de gerouteerde weergaven worden weergegeven.
+- **Uitgangen** fungeren als plaatsaanduidingen in indelingen waar de gerouteerde weergaven worden weergegeven.
 
-### Voorbeeld: Een layoutroute instellen {#example-setting-up-a-layout-route}
+### Voorbeeld: Een indelingsroute instellen {#example-setting-up-a-layout-route}
 
-In de `MainLayout`-klasse definieert de `@Route`-annotatie deze als de basislay-out, en de `DemoView` wordt weergegeven via een uitgang in deze lay-out:
+In de `MainLayout`-klasse definieert de `@Route`-annotatie deze als de basisindeling, en de `DemoView` wordt weergegeven via een uitgang in deze indeling:
 
 ```java title="MainLayout.java"
 @Route("/")
@@ -54,7 +68,7 @@ public class MainLayout extends Composite<AppLayout> {
 }
 ```
 
-De `@Route`-annotatie voor `DemoView` specificeert dat het `MainLayout` als zijn uitgang gebruikt:
+De `@Route`-annotatie voor `DemoView` specificeert dat deze `MainLayout` als uitgang gebruikt:
 
 ```java title="DemoView.java"
 @Route(value = "/demo", outlet = MainLayout.class)
@@ -66,4 +80,4 @@ public class DemoView extends Composite<Div> {
 
 ## Dynamische inhoud toevoegen met `RouteOutlet` {#adding-dynamic-content-with-routeoutlet}
 
-Een `RouteOutlet` toont dynamisch weergaven op basis van de actieve route. In de lay-out worden weergaven zoals `DemoView` weergegeven via de `RouteOutlet`. Terwijl de `RouteOutlet` impliciet wordt behandeld door de uitgangspecificatie in de route-annotaties.
+Een `RouteOutlet` geeft dynamisch weergaven weer op basis van de actieve route. In de indeling worden weergaven zoals `DemoView` weergegeven via de `RouteOutlet`. Terwijl de `RouteOutlet` impliciet wordt afgehandeld door de uitgangspecificatie in de route-annotaties.

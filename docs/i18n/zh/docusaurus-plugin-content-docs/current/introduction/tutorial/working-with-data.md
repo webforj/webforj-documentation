@@ -1,192 +1,308 @@
 ---
-title: Working With Data
+title: Working with Data
 sidebar_position: 3
-_i18n_hash: 42dff7cecf07f976ccbe007e04e78a22
+description: Step 2 - Use Spring to work with data.
+_i18n_hash: eb93bafc77e98de6453cfb0fa0ea60a3
 ---
-这一步骤专注于为演示应用添加数据管理和显示功能。为此，将创建关于各种 `Customer` 对象的示例数据，并更新应用以处理这些数据，并在之前的应用中添加 [`Table`](../../components/table/overview) 进行显示。
+在此步骤中，您将学习如何使用 Spring 创建数据模型并以可视方式展示该数据。
+到本步骤结束时，前一步创建的应用程序 [Creating a Basic App](./creating-a-basic-app) 将有一个显示客户数据的表格。跟随本教程将教您以下内容：
 
-它将概述如何创建 `Customer` 模型类，并将其与一个 `Service` 类集成，以使用存储库的实现来访问和管理所需的数据。接着，将详细说明如何使用检索到的数据在应用中实现 `Table` 组件，以交互和结构化的格式显示客户信息。
+- Spring 注解
+- 管理数据
+- webforJ `Table` 组件
 
-到本步骤结束时，在 [上一步骤](./creating-a-basic-app) 创建的应用将显示一个包含创建数据的表格，后续步骤可以对此进行扩展。要运行应用：
+完成此步骤将创建一个 [2-working-with-data](https://github.com/webforj/webforj-tutorial/tree/main/2-working-with-data) 的版本。
 
-- 转到 `2-working-with-data` 目录
-- 运行 `mvn jetty:run`
+## 运行应用程序 {#running-the-app}
 
-<!-- vale off -->
+在开发应用程序时，您可以使用 [2-working-with-data](https://github.com/webforj/webforj-tutorial/tree/main/2-working-with-data) 作为比较。要查看应用程序的实际运行：
 
-<div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/working-with-data.mp4" type="video/mp4"/>
-  </video>
-</div>
+1. 导航到包含 `pom.xml` 文件的顶层目录，如果您正在按照 GitHub 上的版本进行操作，则该目录为 `2-working-with-data`。
 
-<!-- vale on -->
+2. 使用以下 Maven 命令在本地运行 Spring Boot 应用程序：
+    ```bash
+    mvn
+    ```
+
+运行应用程序会自动在 `http://localhost:8080` 打开一个新的浏览器。
+
+## 依赖关系和配置 {#dependencies-and-configurations}
+
+本教程使用 [H2 数据库](https://www.h2database.com/html/main.html)，在将来的步骤中，通过 [Spring Data JPA](https://docs.spring.io/spring-data/jpa/reference/index.html) 使用 Jakarta 持久性 API (JPA)。这要求您在 `pom.xml` 中添加依赖并更新 `application.properties`。在整个教程的其余部分，这将是您最后一次需要修改这两个文件。
+
+在您的 POM 中，添加以下依赖：
+
+```xml
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+<dependency>
+  <groupId>com.h2database</groupId>
+  <artifactId>h2</artifactId>
+</dependency>
+```
+
+在 `application.properties` 中，位于 `src/main/resources` 目录下，添加以下内容：
+
+```
+# H2 数据库配置
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+
+# JPA 配置
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=update
+```
+
+:::info 访问数据
+本教程使用内存数据库和访问数据的默认凭据。请访问 Spring 的 [Data Access](https://docs.spring.io/spring-boot/how-to/data-access.html) 文档以了解特定 Spring Boot 配置选项。
+:::
+
+## Spring Beans {#spring-beans}
+
+使用 Spring 框架的一个关键部分是理解什么是 Beans。Beans 是具有定义了 Spring 注解的对象，Spring 通过了解类的预期目的来更轻松地配置它们。请访问 Spring 的 [Bean 概述](https://docs.spring.io/spring-framework/reference/core/beans/definition.html) 文档以了解更多信息。
 
 ## 创建数据模型 {#creating-a-data-model}
 
-为了创建一个在主应用中显示数据的 `Table`，需要创建一个 Java bean 类，该类可以与 `Table` 一起使用以显示数据。
+在以可视方式展示或创建数据之前，本教程需要一种表示每个客户数据的方法，包括他们的姓名、国家和公司。使用 Spring，这通过具有 `@Entity` 注解的类来完成。
 
-在该程序中，`src/main/java/com/webforj/demos/data/Customer.java` 中的 `Customer` 类执行此任务。此类作为应用的核心数据模型，封装了与客户相关的属性，例如 `firstName`、`lastName`、`company` 和 `country`。此模型还将包含一个唯一的 ID。
+在 `src/main/java/com/webforj/tutorial/entity` 中创建一个名为 `Customer.java` 的类。它应该具有 `@Entity` 注解，并包括客户值的 getter 和 setter 方法，除了 `id`。为了确保每个客户都有一个唯一的 `id`，请使用 `@Id` 和 `@GeneratedValue` 注解，而不是使用创建方法来生成 `id` 值。
 
-```java title="Customer.java"
-public class Customer implements HasEntityKey {
-  private String firstName = "";
-  private String lastName = "";
-  private String company = "";
-  private Country country = Country.UNKNOWN;
-  private UUID uuid = UUID.randomUUID();
+有了 `Customer` 数据模型，您现在可以开始为您的应用程序添加业务逻辑。
 
-  public enum Country {
+## 管理数据 {#managing-data}
 
-    @SerializedName("Germany")
-    GERMANY,
+在创建数据模型后，您将创建一个仓库和一个服务来管理客户数据。创建这些类型的类使您的应用程序能够执行添加、删除和更新客户记录等操作。
 
-    // 其他国家
+### 创建仓库 {#creating-a-repository}
+
+创建一个仓库使实体的数据可访问，从而使您的应用程序能够包含多个客户。本教程的目标是使数据可编辑、可排序和可验证。您通过使用的 Spring Data 仓库来确定仓库的功能。
+
+在将来的步骤中，您将需要访问 Spring Data JPA 以验证客户属性。因此，合适的仓库是 `JpaRepository`。
+
+在 `src/main/java/com/webforj/tutorial/repository` 中，创建一个具有 Spring `@Repository` 注解的仓库接口并扩展 `JpaRepository`。您还需要指定此仓库中有哪些类型的实体，以及 `id` 是什么类型的对象。为了更好地扩展功能，您还应该扩展 `JpaSpecificationExecutor`。这个附加项允许您在需要时实现高级过滤选项。
+
+```java title="CustomerRepository.java"
+@Repository
+public interface CustomerRepository
+        extends JpaRepository<Customer, Long>,
+        JpaSpecificationExecutor<Customer> {
+}
+```
+
+您刚刚创建的 `CustomerRepository` 将不会有声明的方法。管理数据的方法（应用程序的业务逻辑）将位于服务类中。
+
+:::info Spring 文档链接
+
+以下是四个链接到 Spring 文档的资源，可以帮助您更好地理解 Spring 仓库：
+
+- [使用 Spring Data 仓库](https://docs.spring.io/spring-data/commons/reference/repositories.html)
+- [Spring Data JPA 概述](https://docs.spring.io/spring-data/jpa/reference/index.html)
+- [Spring Data JPA 规范](https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html)
+- [`JpaRepository`](https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html)
+:::
+
+### 创建服务 {#creating-a-service}
+
+在 `src/main/java/com/webforj/tutorial/service` 中，创建一个 `CustomerService` 类。此服务将包含使用 `CustomerRepository` 创建、更新、删除和查询客户的方法。
+
+此外，该服务需要一种机制将 Spring Data 仓库连接到 webforJ 的 UI 组件。使用 `SpringDataRepository` webforJ 类让您创建这个桥梁。它通过允许您的 webforJ 表格和表单与您通过 Spring 管理的数据层自由工作，简化了数据绑定和 CRUD 操作。有关 webforJ 的 Spring 集成的更多信息，请参阅 [Spring Data JPA](/docs/integrations/spring/spring-data-jpa) 文章。
+
+对于此服务类，您将使用两个 Spring 注解：
+
+- **`@Service`** - 此注解标记一个类作为 Spring 中的服务组件，使其自动被检测并作为业务逻辑或可重用操作的 bean 进行管理。
+
+- **`@Transactional`** - 此注解告知 Spring 在数据库事务中运行方法或类，因此所有内部操作将一起提交或回滚。Spring 的文档 [使用 @Transactional](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html#page-title) 提供了更多细节。
+
+```java title="CustomerService.java"
+@Service
+@Transactional
+public class CustomerService {
+  private final CustomerRepository repository;
+
+  public CustomerService(CustomerRepository repository) {
+    this.repository = repository;
   }
 
-    // Getter 和 Setter
+  public Customer createCustomer(Customer customer) {
+    return repository.save(customer);
+  }
+
+  public Customer updateCustomer(Customer customer) {
+    if (!repository.existsById(customer.getId())) {
+      throw new IllegalArgumentException("Customer not found with ID: " + customer.getId());
+    }
+    return repository.save(customer);
+  }
+
+  public void deleteCustomer(Long id) {
+    if (!repository.existsById(id)) {
+      throw new IllegalArgumentException("Customer not found with ID: " + id);
+    }
+    repository.deleteById(id);
+  }
+
+  public long getTotalCustomersCount() {
+    return repository.count();
+  }
+
+  public SpringDataRepository<Customer, Long> getRepositoryAdapter() {
+    return new SpringDataRepository<>(repository);
+  }
+
+  public Customer getCustomerByKey(Long id) {
+    return repository.findById(id)
+        .orElseThrow(() -> new IllegalArgumentException("Customer not found with ID: " + id));
+  }
+
+  public boolean doesCustomerExist(Long id) {
+    return repository.existsById(id);
+  }
+
+}
+```
+
+## 加载初始数据 {#loading-initial-data}
+
+对于本教程，初始客户数据集来自 JSON 文件。为了防止直接通过浏览器访问，该文件资源应该创建在 `src/main/resources/static` 之外。为了方便，您可以在 `src/main/resources/data` 中创建 JSON 文件，使用以下数据：
+
+然后，应用程序需要一种在启动时检索这些数据的方法。在 `src/main/java/com/webforj/tutorial/config` 中，创建一个 `DataInitializer` 类。现在，当应用程序运行时，如果未检测到客户，它将从 JSON 文件加载客户并将其放入 H2 数据库：
+
+```java title="DataInitializer.java"
+@Component
+public class DataInitializer implements CommandLineRunner {
+  private final CustomerService customerService;
+
+  public DataInitializer(CustomerService customerService) {
+    this.customerService = customerService;
+  }
 
   @Override
-  public Object getEntityKey() {
-    return uuid;
+  public void run(String... args) {
+    if (customerService.getTotalCustomersCount() == 0) {
+      loadCustomersFromJson();
+    }
+  }
+
+  private void loadCustomersFromJson() {
+    ObjectMapper mapper = new ObjectMapper();
+    try (InputStream is = getClass().getResourceAsStream("/data/customers.json")) {
+      List<Customer> customers = mapper.readValue(is, new TypeReference<List<Customer>>() {
+      });
+      for (Customer customer : customers) {
+        customerService.createCustomer(customer);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }
 ```
 
-:::info 使用 `HasEntityKey` 进行唯一标识符
+## 以可视方式展示数据 {#displaying-data-visually}
 
-实现 `HasEntityKey` 接口对于管理与 `Table` 一起使用的模型中的唯一标识符至关重要。它确保模型的每个实例都有一个唯一的键，从而允许 `Table` 有效地识别和管理行。
+此步骤的最后部分是使用 [`Table`](/docs/components/table/overview) 组件并将其连接到 Spring 数据。
 
-在此演示中，`getEntityKey()` 方法为每个客户返回一个 UUID，以确保唯一性。虽然在这里使用 UUID 是为了简化，但在实际应用中，数据库主键通常是生成唯一键的更好选择。
-
-如果不实现 `HasEntityKey`，则 `Table` 将默认使用 Java 哈希代码作为键。由于哈希代码不能保证唯一，这可能会导致在 `Table` 中管理行时发生冲突。
-:::
-
-在 `Customer` 数据模型到位后，下一步是在应用中管理和组织这些模型。
-
-## 创建 `Service` 类 {#creating-a-service-class}
-
-作为集中式数据管理器，`Service` 类不仅加载 `Customer` 数据，还提供了一个高效的接口，用于访问和与之交互。
-
-`Service.java` 类是在 `src/main/java/com/webforj/demos/data` 中创建的。`Service` 作为一个共享资源，允许相关方轻松检索和交互数据，而无需在组件或类之间手动传递数据。
-
-在本演示中，`Service` 类从位于 `src/main/resources/data/customers.json` 的 JSON 文件中读取客户数据。数据映射到 `Customer` 对象并存储在一个 `ArrayList` 中，这为表的 `Repository` 打下基础。
-
-在 webforJ 中，`Repository` 类提供了一种结构化的方法来管理和检索实体集合。它在应用及其数据之间充当接口，提供查询、计数和刷新数据的方法，同时保持结构的清晰和一致。`Table` 类可以使用它来显示存储的数据。
-
-虽然 `Repository` 不包括更新或删除实体的方法，但它作为一个结构化的包装器，围绕对象集合提供。这使其非常适合提供有组织、高效的数据访问。
+webforJ `Table` 的一个实例需要一个数据类型才能工作，即之前步骤中创建的实体类：
 
 ```java
-public class Service {
-  private List<Customer> data = new ArrayList<>();
-  private CollectionRepository<Customer> repository;
-
-  private Service() {
-    data = buildDemoList();
-    repository = new CollectionRepository<>(data);
-  }
-
-  // 其余实现
-}
+Table<Customer> table = new Table<>();
 ```
 
-为了填充 `Repository` 数据，`Service` 类作为中央管理器，处理资产的加载和组织。客户数据从 JSON 文件中读取并映射到 `Repository` 中的 `Customer` 对象。
-
-webforJ 中的 `Assets` 工具使得使用上下文 URL 动态加载这些数据变得简单。要在 webforJ 中加载资产和数据，`Service` 类使用带有 `Assets` 工具的上下文 URL。例如，可以通过以下方式从 JSON 文件加载客户数据：
+一旦有了 `Table`，每个客户属性都将有自己的列。对于您添加的每一列，使用属性名称、其在 `Customer` 实体中的 getter 方法和 `setLabel()` 方法来按您希望的顺序显示信息：
 
 ```java
-String content = Assets.contentOf(Assets.resolveContextUrl("context://data/customers.json"));
+table.addColumn("firstName", Customer::getFirstName).setLabel("First Name");
+table.addColumn("lastName", Customer::getLastName).setLabel("Last Name");
+table.addColumn("company", Customer::getCompany).setLabel("Company");
+table.addColumn("country", Customer::getCountry).setLabel("Country");
 ```
 
-:::tip 使用 `ObjectTable`
-`Service` 类使用 `ObjectTable` 动态管理实例，而不是依赖静态字段。此方法解决了使用 servlet 时的一个关键限制：静态字段与服务器的生命周期相关，可能会导致在多个请求或并发会话中出现问题。`ObjectTable` 的作用域限于用户会话，使用它确保了类似单例的行为，没有这些限制，从而实现了一致和可扩展的数据管理。
-:::
+添加列后，您需要指定 `Table` 应该使用哪个仓库来填充其数据。该应用程序从创建的 `CustomerService` 中的 `getRepositoryAdapter()` 方法获取仓库：
 
-```java title="Service.java"
-public class Service {
-
-  private List<Customer> data = new ArrayList<>();
-  private CollectionRepository<Customer> repository;
-
-  // 私有构造函数以强制控制实例化
-  private Service() {
-    // 实现
-  }
-
-  // 检索当前的 Service 实例，如果不存在则创建一个
-  public static Service getCurrent() {
-    // 实现
-  }
-
-  // 从 JSON 文件加载客户数据并映射到 Customer 对象
-  private List<Customer> buildDemoList() {
-    // 实现
-  }
-
-  // Getter...
-}
+```java
+table.setRepository(customerService.getRepositoryAdapter());
 ```
 
-## 创建和使用 `Table` {#creating-and-using-a-table}
+### 表格大小 {#table-sizing}
 
-现在所需的数据已经通过 `Customer` 类正确创建，并可以通过 `Service` 类作为 `Repository` 返回，最后一步是在应用中集成 `Table` 组件以显示客户数据。
+对于表格，您可以使用 `setSize()` 来设置其大小（以像素或其他 [CSS 单位](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units)）。通过设置相对于屏幕宽度的最大宽度，您帮助您的应用程序更适应较小的屏幕。
 
-:::tip 了解更多关于 `Table`
-有关 `Table` 各种功能和行为的更详细概述，请参见 [这篇文章](../../components/table/overview)。
-:::
+对于列，您可以单独设置宽度，或者使用 `Table` 方法之一，例如 `setColumnsToAutoFit()`，让 webforJ 为您处理宽度：
 
-`Table` 提供了一种动态且灵活的方式在应用中显示结构化数据。它被设计成与 `Repository` 类集成，支持数据查询、分页和高效更新等功能。`Table` 高度可配置，允许您定义列、控制其外观，并与数据仓库进行绑定，尽可能少地进行努力。
+```java
+table.setSize("1000px", "294px");
+table.setMaxWidth("90vw");
+table.setColumnsToAutoFit();
+```
 
-### 在应用中实现 `Table` {#implementing-the-table-in-the-app}
+### 用户交互 {#user-interactions}
 
-由于 `Table` 的数据完全通过 `Service` 类处理，因此 `DemoApplication.java` 中的主要任务是配置 `Table` 并将其链接到 `Service` 提供的 `Repository`。
+`Table` 组件还有方法来控制用户如何与列进行交互：
 
-要配置 `Table`：
+```java
+table.setColumnsToResizable(false);
+table.getColumns().forEach(column -> column.setSortable(true));
+```
 
-- 使用 `setHeight()` 和 `setWidth()` 方法为布局目的设置其高度和宽度。
-- 定义列，指定它们的名称和用于获取每列数据的方法。
-- 指定 `Repository` 以动态提供数据。
+`Application` 类中突出显示的部分添加了 `Table` 组件，定义了其列，并使用 `CustomerService` 来检索仓库：
 
-完成这些后，代码将类似于以下代码片段：
+```java title="Application.java" {7-12,24-25,30-40,46-47}
+@SpringBootApplication
+@StyleSheet("ws://css/card.css")
+@AppTheme("system")
+@AppProfile(name = "Customer Application", shortName = "CustomerApp")
+public class Application extends App {
+  
+  // 添加 CustomerService 的构造函数注入
+  private final CustomerService customerService;
 
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  // 第一阶段的其他组件
+  public Application(CustomerService customerService) {
+    this.customerService = customerService;
+  }
 
-  // 用于显示 Customer 数据的 Table 组件
-  Table<Customer> table = new Table<>();
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
+  }
 
   @Override
   public void run() throws WebforjException {
-    // 第一阶段的先前实现
-    buildTable();
-    mainFrame.add(demo, btn, table);
+    Frame mainFrame = new Frame();
+    Paragraph tutorial = new Paragraph("Tutorial App!");
+    Button btn = new Button("Info");
+
+    // 添加 Table 组件
+    Table<Customer> table = new Table<>();
+
+    mainFrame.setWidth("fit-content");
+    mainFrame.addClassName("card");
+
+    // 样式 Table 组件，设置列，并设置仓库
+    table.setSize("1000px", "294px");
+    table.setMaxWidth("90vw");
+    table.addColumn("firstName", Customer::getFirstName).setLabel("First Name");
+    table.addColumn("lastName", Customer::getLastName).setLabel("Last Name");
+    table.addColumn("company", Customer::getCompany).setLabel("Company");
+    table.addColumn("country", Customer::getCountry).setLabel("Country");
+    table.setColumnsToAutoFit();
+    table.setColumnsToResizable(false);
+    table.getColumns().forEach(column -> column.setSortable(true));
+    table.setRepository(customerService.getRepositoryAdapter());
+
+    btn.setTheme(ButtonTheme.PRIMARY)
+        .setMaxWidth(200)
+        .addClickListener(e -> OptionDialog.showMessageDialog("This is a tutorial!", "Info"));
+
+    // 将 Table 添加到 Frame
+    mainFrame.add(tutorial, btn, table);
   }
 
-  private void buildTable() {
-    // 将表的高度设置为 300 像素
-    table.setHeight("300px");
-    // 将表的宽度设置为 1000 像素
-    table.setWidth(1000);
-
-    // 添加各种列标题并分配适当的 getter
-    table.addColumn("First Name", Customer::getFirstName);
-    table.addColumn("Last Name", Customer::getLastName);
-    table.addColumn("Company", Customer::getCompany);
-    table.addColumn("Country", Customer::getCountry);
-
-    // 将 Table 绑定到包含 Customer 数据的 Repository
-    // Repository 通过 Service 类检索
-    table.setRepository(Service.getCurrent().getCustomers());
-  }
 }
 ```
 
-在实现了对应用的更改后，当应用运行时将发生以下步骤：
+## 下一步 {#next-step}
 
-1. `Service` 类从 JSON 文件中检索 `Customer` 数据并存储在 `Repository` 中。
-2. `Table` 集成 `Repository` 以获取数据，并动态填充其行。
-
-随着 `Table` 现在显示 `Customer` 数据，下一步将专注于创建一个新的屏幕以修改客户详细信息，并将路由集成到应用中。
-
-这将使应用的逻辑更有效地组织，从主 `App` 类中移出，并通过路由访问的组成屏幕进行组织。
+通过这些更改，应用程序将客户数据加载到数据库中，然后在 `Table` 组件中显示它。下一步， [Routing and Composites](/docs/introduction/tutorial/routing-and-composites)，将介绍路由和多个视图，用于添加新客户。
