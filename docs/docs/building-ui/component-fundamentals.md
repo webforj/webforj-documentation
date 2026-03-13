@@ -50,7 +50,7 @@ For a detailed explanation, see [Final Classes and Extension Restrictions](https
 
 ```mermaid
 graph TD
-    A[Component<br/><small>Abstract base - framework internal</small>]
+    A[Component<br/><small>Abstract base: framework internal</small>]
     
     A --> B[DwcComponent<br/><small>Built-in webforJ components</small>]
     A --> C[Composite<br/><small>Combine webforJ components</small>]
