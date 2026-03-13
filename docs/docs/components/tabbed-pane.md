@@ -6,6 +6,7 @@ sidebar_position: 125
 
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-tabbed-pane" />
+<DocChip chip='name' label="dwc-tab" />
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/tabbedpane/TabbedPane" top='true'/>
 
@@ -185,7 +186,7 @@ Individual `Tab` elements can be set to be closable. Closable tabs will have a c
 
 - **`Auto`**: Alternatively, `AUTO` can be used which will fire the event, and also remove the `Tab` from the component for the developer, removing the need for the developer to implement this behavior manually. 
 
-## Styling {#styling}
+## Styling for `TabbedPane` {#styling-for-tabbed-pane}
 
 ### Expanse and theme {#expanse-and-theme}
 
@@ -198,6 +199,10 @@ height="250px"
 />
 
 <TableBuilder name="TabbedPane" />
+
+## Styling for `Tab` {#styling-for-tab}
+
+<TableBuilder name="Tab" />
 
 ## Best practices {#best-practices}
 

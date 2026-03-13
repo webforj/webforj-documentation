@@ -198,7 +198,7 @@ bell.onClick(e -> {
 - **Avoid ambiguity:** Avoid using icons if the meaning isn’t clear or widely understood. If users have to guess what the icon represents, it defeats the purpose.
 - **Use icons sparingly:** Too many icons can overwhelm users, so only use icons when they add clarity or reduce complexity.
 
-## Styling
+## Styling for `Icon` {#styling-for-icon}
 An Icon inherits the theme of its direct parent component, but you can override this by applying a theme to an `Icon` directly.
 
 ### Themes
@@ -215,3 +215,7 @@ While there are many use cases for each of the various themes, some examples use
 - `INFO`: Good for providing additional clarifying information to a user.
 
 <TableBuilder name="Icon" />
+
+## Styling for `IconButton` {#styling-for-icon-button}
+
+<TableBuilder name="IconButton" />

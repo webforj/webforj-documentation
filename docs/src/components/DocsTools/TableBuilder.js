@@ -31,7 +31,6 @@ export default function TableBuilder(props) {
   // If the name isn't in the controlMap, use the name as-is. 
   // This allows you to set the tag directly with something like name="dwc-alert"
   const tag = controlMap[props.name] ?? props.name;
-
   const clientComponent = props.clientComponent ? props.clientComponent : false;
 
   // Use a different list of default tables for client component pages:
@@ -427,12 +426,14 @@ export default function TableBuilder(props) {
     }
 
     // Now that we know there is content for this section, add to the mini TOC
-    addTocEntry(sectionHeading);
+    const componentName = props.name;
+    const componentId = encodeURIComponent(`${componentName}-${sectionHeading}`.toLowerCase());
+    addTocEntry(componentId, sectionHeading, componentName);
 
     if (table == "dependencies" || table == "dependents") {
       return (
         <>
-          <h3 class={headerClasses} id={sectionHeading}>{sectionHeading}</h3>
+          <h3 class={headerClasses} id={componentId}>{sectionHeading}</h3>
           <p>{sectionDescription}</p>
           <ul>
             {items.map((dependency) => {
@@ -452,7 +453,7 @@ export default function TableBuilder(props) {
 
     return (
       <>
-        <h3 class={headerClasses} id={sectionHeading}>{sectionHeading}</h3>
+        <h3 class={headerClasses} id={componentId}>{sectionHeading}</h3>
         <p>{sectionDescription}</p>
         <TableWrapper className="custom--table" key={table} title={sectionHeading}>
           <thead>
@@ -550,17 +551,27 @@ function formatText(text) {
  * @param {string} entry 
  * @returns 
  */
-function addTocEntry(entry) {
+function addTocEntry(componentId, entry, componentName) {
   const tocContainer = document.querySelector('.table-of-contents');
   if (!tocContainer) return;
 
-  const existingEntry = tocContainer.querySelector(`a[href$="#${entry}"]`);
+  const existingEntry = tocContainer.querySelector(`a[href$="${componentId}"]`);
   if (existingEntry) return;
 
-  // Find the "Styling" portion of the TOC
-  const stylingListItem = Array.from(tocContainer.querySelectorAll('li a'))
-    .find(a => a.textContent.trim().includes('Styling'))
-    ?.closest('li');
+  // Find the "Styling" portions of the TOC
+  const stylingListItems = Array.from(tocContainer.querySelectorAll('li a'))
+    .filter(a => a.textContent.includes('Styling'));
+  if (stylingListItems.length === 0) return;
+
+  let stylingListItem;
+  
+  // If there's multiple "Styling" portions, pick the one with the component's name
+  if (stylingListItems.length === 1){
+    stylingListItem = stylingListItems[0].closest('li');
+  } else {
+    const regex = new RegExp(`\\b${componentName}\\b`, 'i');
+    stylingListItem = stylingListItems.find(a => regex.test(a.textContent))?.closest('li');
+  }
 
   if (!stylingListItem) return;
 
@@ -569,7 +580,7 @@ function addTocEntry(entry) {
 
   const link = document.createElement('a');
   // Todo: convert entry to a better "id" type value
-  link.href = '#' + entry;
+  link.href = '#' + componentId;
   link.textContent = entry;
   link.className = 'table-of-contents__link toc-highlight';
   const listItem = document.createElement('li');

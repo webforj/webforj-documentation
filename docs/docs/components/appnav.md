@@ -117,6 +117,6 @@ Use `setAutoOpen(true)` on the `AppNav` component to automatically expand nested
 nav.setAutoOpen(true);
 ```
 
-## Styling `AppNavItem` {#styling-appnavitem}
+## Styling for `AppNavItem` {#styling-appnavitem}
 
 <TableBuilder name="AppNavItem" />
