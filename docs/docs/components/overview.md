@@ -59,6 +59,10 @@ The following layout components are designed to handle a wide range of use cases
     <p>A component that provides a pre-built UI for user authentication, typically including fields for username and password along with a submit button.</p>
   </GalleryCard>
 
+  <GalleryCard header="Accordion" href="accordion" image="/img/components/Accordion.png" effect="scale">
+    <p>A collapsible panel component that organizes content into expandable sections, allowing users to show or hide related content.</p>
+  </GalleryCard>
+
   <GalleryCard header="TabbedPane" href="tabbedpane" image="/img/components/TabbedPane.png">
     <p>A container component that organizes content into multiple tabs, allowing users to switch between different views or sections.</p>
   </GalleryCard>
