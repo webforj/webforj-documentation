@@ -1,54 +1,54 @@
 ---
 title: Error Handling
-sidebar_position: 25
-_i18n_hash: 15106dd9fa7ccf0d4f722ca675f0d362
+sidebar_position: 5
+_i18n_hash: 7957d907ae8a5bd9e7b3f7c2fdba2623
 ---
-Virheiden käsittely on tärkeä osa kestävien verkkosovellusten kehittämistä. webforJ:ssä virheiden käsittely on suunniteltu joustavaksi ja mukautettavaksi, jolloin kehittäjät voivat käsitellä poikkeuksia tavalla, joka parhaiten sopii heidän sovelluksensa tarpeisiin.
+Virheiden käsittely on olennainen osa luotettavien verkkosovellusten kehittämistä. webforJ:ssa virheiden käsittely on suunniteltu joustavaksi ja mukautettavaksi, mikä mahdollistaa kehittäjien käsitellä poikkeuksia tavalla, joka parhaiten palvelee sovelluksen tarpeita.
 
-## Yleiskatsaus {#overview}
+## Yleisnäkymä {#overview}
 
-webforJ:ssä virheiden käsittely keskittyy `ErrorHandler` -rajapintaan. Tämä rajapinta mahdollistaa kehittäjien määritellä, miten heidän sovelluksensa reagoi, kun poikkeuksia tapahtuu suorituksen aikana. Oletuksena webforJ tarjoaa `GlobalErrorHandler`in, joka käsittelee kaikki poikkeukset yleisellä tavalla. Kehittäjät voivat kuitenkin luoda mukautettuja virheiden käsittelijöitä tiettyjä poikkeuksia varten tarjotakseen tarkemmin kohdennettuja vastauksia.
+webforJ:ssa virheiden käsittely keskittyy `ErrorHandler` rajapintaan. Tämä rajapinta mahdollistaa kehittäjille määrittää, miten sovelluksen tulisi reagoida, kun poikkeuksia ilmenee suorituksen aikana. Oletuksena webforJ tarjoaa `GlobalErrorHandler`:in, joka käsittelee kaikki poikkeukset yleisellä tavalla. Kehittäjät voivat kuitenkin luoda mukautettuja virheanalyytikoita tietyille poikkeuksille tarjotakseen räätälöityjä vastauksia.
 
-## Virheiden käsittelijöiden löytö ja käyttö {#discovering-and-using-error-handlers}
+## Virheanalyytikoiden löytäminen ja käyttäminen {#discovering-and-using-error-handlers}
 
-webforJ käyttää Java:n Service Provider Interface (SPI) -mekanismia virheiden käsittelijöiden löytämiseen ja lataamiseen.
+webforJ käyttää Java:n Service Provider Interface (SPI) -mekanismia virheanalyytikoiden löytämiseen ja lataamiseen.
 
-### Löytöprosessi {#discovery-process}
+### Löytämisprosessi {#discovery-process}
 
-1. **Palvelun rekisteröinti**: Virheiden käsittelijät rekisteröidään `META-INF/services` -mekanismin avulla.
-2. **Palvelun lataaminen**: Sovelluksen käynnistyessä webforJ lataa kaikki luokat, jotka on lueteltu tiedostossa `META-INF/services/com.webforj.error.ErrorHandler`.
-3. **Virheiden käsittely**: Kun poikkeus tapahtuu, webforJ tarkistaa, onko kyseiselle poikkeukselle olemassa virheiden käsittelijää.
+1. **Palvelun rekisteröinti**: Virheanalyytikot rekisteröidään `META-INF/services` -mekanismin avulla.
+2. **Palvelun lataaminen**: Sovelluksen käynnistyessä webforJ lataa kaikki luokat, jotka on lueteltu `META-INF/services/com.webforj.error.ErrorHandler`.
+3. **Virheiden käsittely**: Kun poikkeus tapahtuu, webforJ tarkistaa, onko olemassa virheanalyytikkoa kyseiselle poikkeukselle.
 
-### Käsittelijän valinta {#handler-selection}
+### Analyytikon valinta {#handler-selection}
 
-- Jos poikkeukselle on olemassa erityinen käsittelijä, sitä käytetään.
-- Jos erityistä käsittelijää ei löydy, mutta mukautettu globaali virheiden käsittelijä `WebforjGlobalErrorHandler` on määritelty, sitä käytetään.
-- Jos kumpaakaan ei löydy, oletusarvoista `GlobalErrorHandler` -käsittelijää käytetään.
+- Jos spesifinen analyytikko kyseiselle poikkeukselle on olemassa, sitä käytetään.
+- Jos spesifistä analyytikkoa ei löydy, mutta mukautettu globaali virheanalyytikko `WebforjGlobalErrorHandler` on määritetty, sitä käytetään.
+- Jos kumpaakaan ei löydy, käytetään oletus `GlobalErrorHandler` -analyytikkoa.
 
-## `ErrorHandler` -rajapinta {#the-errorhandler-interface}
+## `ErrorHandler` rajapinta {#the-errorhandler-interface}
 
-`ErrorHandler` -rajapinta on suunniteltu käsittelemään virheitä, jotka tapahtuvat webforJ-sovelluksen suorituksen aikana. Hakemukset, jotka haluavat hallita tiettyjä poikkeuksia, tulisi toteuttaa tämä rajapinta.
+`ErrorHandler` rajapinta on suunniteltu käsittelemään virheitä, jotka tapahtuvat webforJ-sovelluksen suorituksen aikana. Sovellusten, jotka haluavat hallita tiettyjä poikkeuksia, tulisi toteuttaa tämä rajapinta.
 
 ### Metodit {#methods}
 
-- **`onError(Throwable throwable, boolean debug)`**: Kutsutaan, kun virhe tapahtuu. Tämän metodin tulisi sisältää logiikka virheen käsittelemiseksi.
-- **`showErrorPage(String title, String content)`**: Oletusmetodi, joka näyttää virhesivun annetulla otsikolla ja sisällöllä.
+- **`onError(Throwable throwable, boolean debug)`**: Kutsutaan, kun virhe tapahtuu. Tämän metodin tulisi sisältää logiikka poikkeuksen käsittelyyn.
+- **`showErrorPage(String title, String content)`**: Oletusmetodi, joka näyttää virhesivun annetuilla otsikolla ja sisällöllä.
 
 ### Nimeämiskäytäntö {#naming-convention}
 
-Toteuttavan luokan on oltava nimetty sen käsittelemän poikkeuksen mukaan, ja sen lopussa on oltava `ErrorHandler`. Esimerkiksi, jotta `NullPointerException` -poikkeus voitaisiin käsitellä, luokan on oltava nimeltään `NullPointerExceptionErrorHandler`.
+Toteuttavan luokan tulee olla nimetty virheen mukaan, jota se käsittelee, ja siihen on lisättävä pääte `ErrorHandler`. Esimerkiksi, jos haluat käsitellä `NullPointerException`:ia, luokan tulee olla nimeltään `NullPointerExceptionErrorHandler`.
 
 ### Rekisteröinti {#registration}
 
-Mukautettu virheiden käsittelijä on rekisteröitävä tiedostoon `META-INF/services/com.webforj.error.ErrorHandler`, jotta webforJ voi löytää ja käyttää sitä.
+Mukautettu virheanalyytikko on rekisteröitävä tiedostoon `META-INF/services/com.webforj.error.ErrorHandler`, jotta webforJ voi löytää ja käyttää sitä.
 
-## Mukautetun virheiden käsittelijän toteuttaminen {#implementing-a-custom-error-handler}
+## Mukautetun virheanalyytikon toteuttaminen {#implementing-a-custom-error-handler}
 
-Seuraavat vaiheet kuvaavat mukautetun virheiden käsittelijän toteutusta tiettyä poikkeusta varten:
+Seuraavat vaiheet kuvaavat mukautetun virheanalyytikon toteutusta tietylle poikkeukselle:
 
-### Vaihe 1: Luo virheiden käsittelijäluokka {#step-1-create-the-error-handler-class}
+### Vaihe 1: Luo virheanalyytikkoluokka {#step-1-create-the-error-handler-class}
 
-Luo uusi luokka, joka toteuttaa `ErrorHandler` -rajapinnan ja on nimetty sen käsittelemän poikkeuksen mukaan.
+Luo uusi luokka, joka toteuttaa `ErrorHandler` rajapinnan ja on nimetty käsiteltävän poikkeuksen mukaan.
 
 ```java
 package com.example.error;
@@ -59,22 +59,22 @@ public class NullPointerExceptionErrorHandler implements ErrorHandler {
 
   @Override
   public void onError(Throwable throwable, boolean debug) {
-    // Mukautettu käsittelylogiikka NullPointerExceptionille
+    // Mukautettu käsittelylogiikka NullPointerException:lle
     String title = "Null Pointer Exception";
-    String content = "Virheellisesti käytettiin null-arvoa, missä objekti tarvitaan.";
+    String content = "Null-arvo kohtasi paikan, jossa objekti on vaadittu.";
 
     showErrorPage(title, content);
   }
 }
 ```
 
-:::info `showErrorPage()` -metodi
-`showErrorPage` -metodi on hyödyllinen metodi, joka käyttää webforJ:n API:a lähettääkseen annetun HTML-sisällön ja sivun otsikon selaimelle, jolloin virhesivu näytetään. Kun poikkeus tapahtuu eikä sovellus kykene palautumaan, webforJ:n komponentteja ei voida enää käyttää mukautetun virhesivun luomiseen. Kuitenkin `Page` API pysyy käytettävissä, mikä mahdollistaa kehittäjän ohjata tai näyttää virhesivun viimeisenä yrityksenä.
+:::info `showErrorPage()` metodi
+`showErrorPage` -metodi on utiliittimetodi, joka käyttää webforJ API:a lähettääkseen annetun HTML-sisällön ja sivun otsikon selaimelle, näyttäen virhesivun. Kun poikkeus tapahtuu, eikä sovellus kykene toipumaan, webforJ-komponenttien käyttäminen mukautetun virhesivun luomiseksi muuttuu mahdottomaksi. Kuitenkin `Page` API:in on edelleen käytettävissä, jolloin kehittäjä voi ohjata tai näyttää virhesivun viimeisenä yrityksenä.
 :::
 
-### Vaihe 2: Rekisteröi virheiden käsittelijä {#step-2-register-the-error-handler}
+### Vaihe 2: Rekisteröi virheanalyytikko {#step-2-register-the-error-handler}
 
-Luo tiedosto nimeltä `com.webforj.error.ErrorHandler` sovelluksesi `META-INF/services` -hakemistoon. Lisää tähän tiedostoon virheiden käsittelijäsi täysi nimi.
+Luo tiedosto nimeltä `com.webforj.error.ErrorHandler` sovelluksesi `META-INF/services` -hakemistoon. Lisää tämän tiedoston sisään oma virheanalyytikoluokkasi täysin laadittu nimi.
 
 **Tiedosto**: `META-INF/services/com.webforj.error.ErrorHandler`
 
@@ -82,11 +82,11 @@ Luo tiedosto nimeltä `com.webforj.error.ErrorHandler` sovelluksesi `META-INF/se
 com.example.error.NullPointerExceptionErrorHandler
 ```
 
-Nyt, aina kun `NullPointerException` heitetään, webforJ valitsee rekisteröidyn käsittelijäsi ja suorittaa sen logiikan virheen käsittelemiseksi.
+Nyt, kun `NullPointerException` heitetään, webforJ valitsee rekisteröidyn analyytikkosi ja suorittaa sen logiikan virheen käsittelyyn.
 
-## `AutoService`in käyttäminen rekisteröinnin yksinkertaistamiseksi {#using-autoservice-to-simplify-registration}
+## `AutoService`:n käyttäminen rekisteröinnin yksinkertaistamiseksi {#using-autoservice-to-simplify-registration}
 
-Kehittäjät voivat helposti unohtaa päivittää tai määrittää palvelukuvaajia oikein. Käyttämällä Googlen `AutoService`:a voit automatisoida `META-INF/services/com.webforj.error.ErrorHandler` -tiedoston generaation. Sinun tarvitsee vain merkitä virheiden käsittelijä `AutoService` -annotaatiolla. Voit lukea lisää [AutoService:sta täältä](https://github.com/google/auto/blob/main/service/README.md).
+On helppo unohtaa päivittää tai määrittää palvelukohtia oikein. Käyttämällä Googlen `AutoService`:a voit automatisoida `META-INF/services/com.webforj.error.ErrorHandler` -tiedoston generoinnin. Sinun tarvitsee vain merkitä virheanalyytikkosi `AutoService`-annotaatiolla. Voit oppia lisää [AutoService:sta täällä](https://github.com/google/auto/blob/main/service/README.md).
 
 ```java
 @AutoService(ErrorHandler.class)
@@ -94,28 +94,28 @@ public class NullPointerExceptionErrorHandler implements ErrorHandler {
 
   @Override
   public void onError(Throwable throwable, boolean debug) {
-    // Mukautettu käsittelylogiikka NullPointerExceptionille
+    // Mukautettu käsittelylogiikka NullPointerException:lle
     String title = "Null Pointer Exception";
-    String content = "Virheellisesti käytettiin null-arvoa, missä objekti tarvitaan.";
+    String content = "Null-arvo kohtasi paikan, jossa objekti on vaadittu.";
 
     showErrorPage(title, content);
   }
 }
 ```
 
-## `GlobalErrorHandler` -luokka {#the-globalerrorhandler-class}
+## `GlobalErrorHandler` luokka {#the-globalerrorhandler-class}
 
-`GlobalErrorHandler` on oletusvirheiden käsittelijä, jonka webforJ tarjoaa. Se toteuttaa `ErrorHandler` -rajapinnan ja tarjoaa yleistä virheiden käsittelyä.
+`GlobalErrorHandler` on oletusvirheanalyytikko, jonka webforJ tarjoaa. Se toteuttaa `ErrorHandler` rajapinnan ja tarjoaa yleistä virheiden käsittelyä.
 
 ### Käyttäytyminen {#behavior}
 
-- **Lokitus**: Virheet kirjataan sekä palvelimen että selaimen konsoliin.
-- **Virhesivun näyttäminen**: Riippuen virheen jäljittämismoodista, virhesivu näyttää pinojäljen tai yleisen virheilmoituksen.
+- **Lokitus**: Virheet kirjataan sekä palvelimelle että selaimen konsoliin.
+- **Virhesivun näyttäminen**: Riippuen debug-tilasta, virhesivu näyttää pinon jäljityksen tai yleisen virheilmoituksen.
 
-### Mukautetun globaalin virheiden käsittelijän määrittäminen {#defining-a-custom-global-error-handler}
+### Mukautetun globaalin virheanalyytikon määrittäminen {#defining-a-custom-global-error-handler}
 
-Mukautetun globaalin virheiden käsittelijän määrittämiseksi sinun on luotava uusi virheiden käsittelijä, joka on nimetty `WebforjGlobalErrorHandler`. Seura sitten [vaiheita virheiden käsittelijöiden rekisteröimiseksi](#step-2-register-the-error-handler) kuten aiemmin on selitetty. Tässä tapauksessa webforJ etsii ensin mukautettuja virheiden käsittelijöitä hoitamaan poikkeuksia. Jos niitä ei löydy, webforJ turvautuu mukautettuun globaaliin virheiden käsittelijään.
+Mukautetun globaalin virheanalyytikon määrittämiseksi sinun on luotava uusi virheanalyytikko nimeltä `WebforjGlobalErrorHandler` ja seurattava [virheanalyytikoiden rekisteröintivaiheita](#step-2-register-the-error-handler), kuten aiemmin on selitetty. Tässä tapauksessa webforJ etsii ensin mahdollisia mukautettuja virheanalyytikoita poikkeusten hallitsemiseksi. Jos niitä ei löydy, webforJ palaa mukautettuun globaaliin virheanalyytikkoon.
 
 :::info
-Jos useita `WebforjGlobalErrorHandler` -luokkia on rekisteröity, webforJ valitsee ensimmäisen
+Jos useita `WebforjGlobalErrorHandler`-analyytikkoja on rekisteröity, webforJ valitsee ensimmäisen niistä.
 :::

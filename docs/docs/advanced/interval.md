@@ -8,11 +8,12 @@ title: Interval
 
 The <JavadocLink type="foundation" location="com/webforj/Interval" code='true' >Interval</JavadocLink> class represents a timer that triggers an [event](../building-ui/events) with a fixed time delay between each triggering.
 
-The `Interval` class provides a straightforward way to trigger events after a specified delay. It's possible to start, stop, and restart an `Interval` as needed. Additionally, Intervals can support multiple listeners for the elapsed event.
-Optimized for the webforJ framework, it offers better performance compared to the standard Java timer or the Swing timer.
+The `Interval` class provides a straightforward way to trigger events after a specified delay. It's possible to start, stop, and restart an `Interval` as needed. 
+In webforJ, an `Interval` has better performance compared to a standard Java timer or Swing timer.
+It also supports multiple listeners for the elapsed event.
 
 ## Usages {#usages}
-The `Interval` class triggers event(s) at a fixed time delay. Leveraging Intervals creatively, you can enhance user interaction and engagement on your website while keeping the experience dynamic and interesting.:
+The `Interval` class triggers events at a fixed time delay. By using Intervals creatively, you can create dynamic and interesting experiences in your app:
 
 1. **Check for Inactivity**: Display a [`Dialog`](../components/dialog) component if there hasn't been any interaction on a form within a given time.
 

@@ -138,7 +138,7 @@ The `WebswingConnector` component embeds your Webswing-hosted app within a webfo
 ```java
 @Route("/")
 public class CustomerTableView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
 
   public CustomerTableView(@Value("${webswing.connector.url}") String webswingUrl) {
     WebswingConnector connector = new WebswingConnector(webswingUrl);

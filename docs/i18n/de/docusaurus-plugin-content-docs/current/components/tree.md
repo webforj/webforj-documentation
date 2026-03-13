@@ -1,28 +1,30 @@
 ---
 title: Tree
 sidebar_position: 150
-_i18n_hash: 8f653af18f5e041d09896794f560d30a
+_i18n_hash: 280fb07f73ba1172b33bd0617ded7876
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-tree" />
 <DocChip chip='since' label='25.01' />
 <JavadocLink type="foundation" location="com/webforj/component/tree/Tree" top='true'/>
 
-Die `Tree`-Komponente organisiert Daten als eine Hierarchie von Knoten. Jeder Knoten hat einen einzigartigen Schlüssel und ein Label. Knoten verbinden sich, um Eltern-Kind-Beziehungen zu bilden. Sie können Knoten erweitern oder reduzieren, um deren Kinder anzuzeigen oder auszublenden. Icons verdeutlichen, um welchen Knoten es sich handelt und ob er ausgewählt ist. Die Auswahl unterstützt die Wahl eines einzelnen Knotens oder mehrerer gleichzeitig.
+Die `Tree`-Komponente organisiert Daten als Hierarchie von Knoten. Jeder Knoten hat einen einzigartigen Schlüssel und ein Label. Knoten verbinden sich, um Eltern-Kind-Beziehungen zu bilden. Sie können Knoten erweitern oder reduzieren, um deren Kinder anzuzeigen oder auszublenden. Icons verdeutlichen, um welchen Knotentyp es sich handelt und ob er ausgewählt ist. Die Auswahl unterstützt die Auswahl eines Knotens oder vieler auf einmal.
 
-## Node-Modell und Baumstruktur {#node-model-and-tree-structure}
+<!-- INTRO_END -->
+
+## Knotenmodell und Baumstruktur {#node-model-and-tree-structure}
 
 ### Die Rolle von `TreeNode` {#the-role-of-treenode}
 
-Jedes Datenelement im Baum ist in einem `TreeNode` verpackt. Dieses Objekt speichert den Schlüssel, das Textlabel und Links zu seinen Eltern- und Kindknoten. Der Wurzelknoten ist besonders: Er existiert in jedem Baum, ist jedoch nicht sichtbar. Er dient als Container für alle obersten Knoten und erleichtert die interne Verwaltung der Baumstruktur.
+Jedes Datenstück im Baum ist in einem `TreeNode` eingekapselt. Dieses Objekt enthält den Schlüssel, das Textlabel und Links zu seinen Eltern- und Kindknoten. Der Stammknoten ist etwas Besonderes: Er existiert in jedem Baum, ist aber nicht sichtbar. Er dient als Container für alle Knoten der obersten Ebene und erleichtert die Verwaltung der Baumstruktur intern.
 
-Da Knoten Referenzen zu ihren Eltern und Kindern speichern, ist das Traversieren des Baums unkompliziert. Egal, ob Sie nach oben, unten oder einen bestimmten Knoten nach Schlüssel suchen möchten, die Verbindungen sind immer zugänglich.
+Da Knoten Referenzen zu ihren Eltern und Kindern aufbewahren, ist das Durchqueren des Baums unkompliziert. Egal, ob Sie nach oben, unten oder einen bestimmten Knoten nach Schlüssel suchen möchten, die Verbindungen sind immer zugänglich.
 
 ### Knoten erstellen und verwalten {#node-creation-and-management}
 
-Knoten werden mithilfe einfacher Fabrikmethoden erstellt, entweder durch die Bereitstellung eines Schlüssels und Textes oder nur durch Text (der auch als Schlüssel dient). Dies gewährleistet, dass jeder Knoten gültig und eindeutig identifizierbar ist.
+Knoten werden mit einfachen Fabrikmethoden erstellt, entweder durch Bereitstellung eines Schlüssels und Textes oder nur Text (der auch als Schlüssel dient). Dies garantiert, dass jeder Knoten gültig und eindeutig identifizierbar ist.
 
-Das Hinzufügen von Knoten zum Baum erfolgt durch den Aufruf von `add()` oder `insert()` auf einem Elternknoten. Diese Methoden verwalten die Zuordnung der Elternreferenz und benachrichtigen den Baum, seine Benutzeroberfläche zu aktualisieren.
+Um Knoten zum Baum hinzuzufügen, rufen Sie `add()` oder `insert()` auf einem Elternknoten auf. Diese Methoden handhaben das Zuweisen der Elternreferenz und benachrichtigen den Baum, dass er seine Benutzeroberfläche aktualisieren soll.
 
 Beispiel:
 
@@ -34,7 +36,7 @@ tree.add(parent);
 ```
 
 :::info Nur ein Elternteil
-Ein Versuch, denselben Knoten mehreren Eltern zuzuweisen, führt zu einer Ausnahme. Dieser Schutz stellt sicher, dass der Baum eine ordnungsgemäße Hierarchie aufrechterhält, indem verhindert wird, dass Knoten mehrere Eltern haben, was die Integrität der Struktur brechen und zu unerwartetem Verhalten führen würde.
+Versuche, denselben Knoten mehreren Eltern zuzuweisen, führen zu einer ausgelösten Ausnahme. Diese Schutzmaßnahme stellt sicher, dass der Baum eine korrekte Hierarchie beibehält, indem sie verhindert, dass Knoten mehrere Eltern haben, was die Integrität der Struktur brechen und unerwartetes Verhalten verursachen würde.
 :::
 
 <ComponentDemo 
@@ -43,18 +45,18 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='300px'
 />
 
-### Knoten bearbeiten {#modifying-nodes}
+### Knoten modifizieren {#modifying-nodes}
 
-Sie aktualisieren das Label eines Knotens, indem Sie `setText(String text)` aufrufen. Diese Methode ändert den Text, der für den Knoten im Baum angezeigt wird.
+Sie aktualisieren das Label eines Knotens, indem Sie `setText(String text)` aufrufen. Diese Methode ändert den angezeigten Text für den Knoten im Baum.
 
-Um einen bestimmten untergeordneten Knoten zu entfernen, verwenden Sie `remove(TreeNode child)`. Dadurch wird das Kind von seinem Elternteil abgekoppelt und aus der Baumstruktur entfernt. Es wird auch die Elternreferenz gelöscht.
+Um einen bestimmten Kindknoten zu entfernen, verwenden Sie `remove(TreeNode child)`. Dies trennt das Kind von seinem Elternteil und entfernt es aus der Baumstruktur. Es wird auch die Elternreferenz gelöscht.
 
-Wenn Sie alle Kinder von einem Knoten löschen möchten, rufen Sie `removeAll()` auf. Dies entfernt jeden untergeordneten Knoten, löscht deren Elternreferenzen und leert die Liste der Kinder.
+Wenn Sie alle Kinder von einem Knoten entfernen möchten, rufen Sie `removeAll()` auf. Dies entfernt jeden Kindknoten, löscht deren Elternreferenzen und leert die Liste der Kinder.
 
-Jeder Knoten unterstützt das Speichern zusätzlicher Informationen auf der Serverseite mit `setUserData(Object key, Object data)`. Dies ermöglicht es Ihnen, willkürliche Metadaten oder Referenzen mit dem Knoten zu verknüpfen, ohne diese Daten für den Client oder die Benutzeroberfläche zugänglich zu machen.
+Jeder Knoten unterstützt das Speichern zusätzlicher Informationen auf der Serverseite, indem `setUserData(Object key, Object data)` verwendet wird. Dies ermöglicht es Ihnen, beliebige Metadaten oder Referenzen mit dem Knoten zu verknüpfen, ohne diese Daten dem Client oder der Benutzeroberfläche offenzulegen.
 
-:::tip Verwendung der Demo zum Bearbeiten des Knotentexts
-In der Demo doppelklicken Sie auf einen Knoten, um einen Editor für seinen Text zu öffnen. Geben Sie den neuen Text ein und speichern Sie ihn, um das Label des Knotens im Baum zu aktualisieren.
+:::tip Demo verwenden, um Knotentext zu bearbeiten
+In der Demo doppelklicken Sie auf einen Knoten, um einen Editor für dessen Text zu öffnen. Geben Sie den neuen Text ein und speichern Sie ihn, um das Label des Knotens im Baum zu aktualisieren.
 :::
 
 <ComponentDemo 
@@ -65,7 +67,7 @@ height='320px'
 
 ## Icons {#icons}
 
-Icons bieten visuelle Hinweise darauf, was Knoten darstellen und welchen Zustand sie haben. Sie verbessern die Lesbarkeit, indem sie Knotentypen und den Auswahlstatus auf einen Blick unterscheiden. Die `Tree`-Komponente unterstützt das globale Setzen von Standardicons, das Anpassen von Icons pro Knoten und das Umschalten der Iconsichtbarkeit.
+Icons bieten visuelle Hinweise darauf, was Knoten darstellen und welchen Zustand sie haben. Sie verbessern die Lesbarkeit, indem sie Knotentypen und Auswahlstatus auf einen Blick unterscheiden. Die `Tree`-Komponente unterstützt das globale Festlegen von Standardicons, das Anpassen von Icons pro Knoten und das Umschalten der Icon-Sichtbarkeit.
 
 ### Globale Icons {#global-icons}
 
@@ -81,12 +83,12 @@ tree.setLeafSelectedIcon(TablerIcon.create("file-checked"));
 ```
 
 :::tip Icon-Quellen
-Ein Icon kann jede gültige webforJ [Icon](./icon)-Definition oder eine Ressourcen-Datei sein, die über einen von webforJ [unterstützten Assets-Protokollen](../managing-resources/assets-protocols) geladen wird.
+Ein Icon kann jede gültige webforJ [Icon](./icon)-Definition oder eine Datei sein, die über unterstützte Assets-Protokolle von webforJ geladen wurde. 
 :::
 
-### Pro-Knoten-Icons {#per-node-icons}
+### Icons pro Knoten {#per-node-icons}
 
-Sie können globale Standards überschreiben, indem Sie Icons einzelnen Knoten zuweisen. Dies ist nützlich, wenn bestimmte Knoten unterschiedliche Konzepte darstellen, wie "Projektdokumente" oder spezielle Dateien.
+Sie können globale Standards überschreiben, indem Sie Icons zu einzelnen Knoten zuweisen. Dies ist nützlich, wenn bestimmte Knoten unterschiedliche Konzepte repräsentieren, wie „Projekt“-Ordner oder spezielle Dateien.
 
 Beispiel:
 
@@ -95,9 +97,9 @@ node.setIcon(TablerIcon.create("project"));
 node.setSelectedIcon(TablerIcon.create("project-selected"));
 ```
 
-### Iconsichtbarkeit {#icon-visibility}
+### Icon-Sichtbarkeit {#icon-visibility}
 
-Manchmal möchten Sie möglicherweise Icons für Gruppen oder Blätter ausblenden, um Unordnung zu reduzieren. Die Komponente ermöglicht es Ihnen, die Sichtbarkeit für diese Kategorien global umzuschalten, sodass Sie das Erscheinungsbild des Baums vereinfachen können, ohne die Struktur zu verlieren.
+Manchmal möchten Sie möglicherweise Icons für Gruppen oder Blätter ausblenden, um Unordnung zu reduzieren. Die Komponente ermöglicht es Ihnen, die Sichtbarkeit global für diese Kategorien umzuschalten, sodass Sie das Erscheinungsbild des Baums vereinfachen können, ohne die Struktur zu verlieren.
 
 Beispiel:
 
@@ -114,13 +116,13 @@ height='320px'
 
 ## Knoten erweitern und reduzieren {#node-expansion-and-collapse}
 
-Knoten können erweitert oder reduziert werden, um zu steuern, welche Teile des Baums sichtbar sind. Dies ermöglicht es, sich auf relevante Abschnitte zu konzentrieren und unterstützt Szenarien wie Lazy Loading oder dynamische Datenaktualisierungen.
+Knoten können erweitert oder reduziert werden, um zu steuern, welche Teile des Baums sichtbar sind. Dies ermöglicht die Fokussierung auf relevante Abschnitte und unterstützt Szenarien wie Lazy Loading oder dynamische Datenupdates.
 
-### Erweiterungs- und Reduktionsoperationen {#expand-and-collapse-operations}
+### Expandieren und Reduzieren {#expand-and-collapse-operations}
 
-Der Baum unterstützt das Erweitern und Reduzieren einzelner Knoten entweder nach ihrem Schlüssel oder direkter Referenz. Sie können auch alle Nachfahren eines Knotens auf einmal erweitern oder reduzieren.
+Der Baum unterstützt das Erweitern und Reduzieren einzelner Knoten entweder über deren Schlüssel oder direkte Referenz. Sie können auch alle Nachkommen eines Knotens auf einmal erweitern oder reduzieren.
 
-Diese Operationen ermöglichen es Ihnen zu steuern, wie viel vom Baum sichtbar ist, und unterstützen das Lazy Loading von Daten oder die Fokussierung auf interessante Bereiche.
+Diese Operationen ermöglichen es Ihnen, zu steuern, wie viel des Baums sichtbar ist, und unterstützen das Lazy Loading von Daten oder die Fokussierung auf interessante Bereiche.
 
 Beispiel:
 
@@ -128,20 +130,20 @@ Beispiel:
 tree.expand(node);
 tree.collapse(key);
 
-// reduzieren von Unterbäumen
+// reduzierte Teilbäume
 tree.expandFrom(node);
 tree.collapseFrom(node);
 ```
 
-:::info Reduzierung der Wurzel
-Der Wurzelknoten verankert den Baum, bleibt jedoch verborgen. Das Reduzieren der Wurzel würde normalerweise alles ausblenden, sodass der Baum leer erscheint. Um dies zu vermeiden, reduziert das Reduzieren der Wurzel tatsächlich alle ihre Kinder, behält jedoch die Wurzel intern erweitert bei, sodass der Baum seinen Inhalt korrekt anzeigt.
+:::info Stammreduzierung
+Der Stammknoten verankert den Baum, bleibt jedoch verborgen. Das Reduzieren des Stammes würde normalerweise alles verbergen und den Baum leer erscheinen lassen. Um dies zu vermeiden, reduziert das Zusammenklappen des Stammes tatsächlich alle seine Kinder, lässt den Stamm intern jedoch erweitert, damit der Baum seinen Inhalt weiterhin korrekt anzeigt.
 :::
 
 ### Lazy Loading von Knoten {#lazy-loading-nodes}
 
-Der Baum unterstützt das Lazy Loading von Kindknoten, indem er auf Erweiterungsereignisse reagiert. Wenn ein Benutzer einen Knoten erweitert, kann Ihre Anwendung die Kinder dieses Knotens dynamisch laden oder generieren. Dadurch wird die Leistung verbessert, da nur sichtbare Teile des Baums nach Bedarf geladen werden.
+Der Baum unterstützt das Lazy Loading von Kindknoten, indem er auf Erweiterungsereignisse reagiert. Wenn ein Benutzer einen Knoten erweitert, kann Ihre App die Kinder dieses Knotens dynamisch laden oder generieren. Dies verbessert die Leistung, indem nur die sichtbaren Teile des Baums nach Bedarf geladen werden.
 
-Verwenden Sie das `onExpand`-Ereignis, um zu erkennen, wann ein Knoten erweitert wird. Überprüfen Sie innerhalb des Handlers, ob die Kinder des Knotens Platzhalter sind (zum Beispiel ein Spinner oder ein leerer Knoten), und ersetzen Sie sie durch tatsächliche Daten, sobald sie geladen sind.
+Verwenden Sie das Ereignis `onExpand`, um zu erkennen, wann ein Knoten erweitert wird. Überprüfen Sie im Handler, ob die Kinder des Knotens Platzhalter sind (zum Beispiel ein Spinner oder leerer Knoten) und ersetzen Sie diese durch tatsächliche Daten, sobald sie geladen sind.
 
 <ComponentDemo 
 path='/webforj/treelazyload?'
@@ -155,7 +157,7 @@ Die Auswahl steuert, welche Knoten vom Benutzer ausgewählt werden. Die `Tree`-K
 
 ### Auswahlmodi {#selection-modes}
 
-Sie können wählen, ob der Baum die Auswahl eines einzelnen Knotens oder mehrerer Knoten gleichzeitig erlaubt. Der Wechsel von mehreren zur Einzelauswahl hebt automatisch die Auswahl aller bis auf den ersten ausgewählten Knoten auf.
+Sie können wählen, ob der Baum die Auswahl eines einzelnen Knotens zu einem Zeitpunkt oder die gleichzeitige Auswahl mehrerer Knoten erlaubt. Der Wechsel von mehreren zu einer einzelnen Auswahl hebt automatisch die Auswahl aller bis auf den zuerst ausgewählten Knoten auf.
 
 Beispiel:
 
@@ -163,43 +165,43 @@ Beispiel:
 tree.setSelectionMode(Tree.SelectionMode.SINGLE);
 ```
 
-:::tip Multi-Selection-Interaktion
-Wenn der Baum im Mehrfachauswahlmodus ist, können Benutzer mehr als einen Knoten gleichzeitig auswählen. Wie das funktioniert, hängt vom Gerät ab:
+:::tip Interaktion mit Mehrfachauswahl
+Wenn der Baum auf den Mehrfachauswahlmodus eingestellt ist, können Benutzer mehr als einen Knoten gleichzeitig auswählen. Die Art und Weise, wie dies funktioniert, hängt vom Gerät ab:
 
-* **Desktop (Maus und Tastatur):** Benutzer halten die **Strg**-Taste (oder die **Cmd**-Taste auf macOS) gedrückt und klicken Knoten an, um sie zur aktuellen Auswahl hinzuzufügen oder zu entfernen. Dies ermöglicht das Auswählen mehrerer einzelner Knoten, ohne andere abzuwählen.
-* **Mobile und Touch-Geräte:** Da Modifikatortasten nicht verfügbar sind, tippen Benutzer einfach auf Knoten, um sie auszuwählen oder abzuwählen. Jeder Tap schaltet den Auswahlstatus dieses Knotens um, sodass eine einfache Mehrfachauswahl durch einfache Taps ermöglicht wird.
+* **Desktop (Maus und Tastatur):** Benutzer halten die **Ctrl**-Taste (oder die **Cmd**-Taste auf macOS) gedrückt und klicken auf Knoten, um sie zur aktuellen Auswahl hinzuzufügen oder daraus zu entfernen. Dies ermöglicht die Auswahl mehrerer einzelner Knoten, ohne andere abzuwählen.
+* **Mobile und Touch-Geräte:** Da Modifier-Tasten nicht verfügbar sind, tippen Benutzer einfach auf Knoten, um sie auszuwählen oder abzuwählen. Jeder Tipp wechselt den Auswahlstatus dieses Knotens, sodass eine einfache Mehrfachauswahl durch einfache Taps ermöglicht wird.
 :::
 
 ### Auswählen und Abwählen {#selecting-and-deselecting}
 
-Knoten können durch Referenz, Schlüssel, einzeln oder in Chargen ausgewählt oder abgewählt werden. Sie können auch alle Kinder eines Knotens in einem Aufruf auswählen oder abwählen.
+Knoten können über Referenz, Schlüssel, einzeln oder in Gruppen ausgewählt oder abgewählt werden. Sie können auch alle Kinder eines Knotens in einem Aufruf auswählen oder abwählen.
 
 Beispiel:
 
 ```java
-// Knoten durch Referenz oder Schlüssel auswählen
+// Knoten nach Referenz oder Schlüssel auswählen
 tree.select(node);
 tree.selectKey(key);
 
-// Knoten durch Referenz oder Schlüssel abwählen
+// Knoten nach Referenz oder Schlüssel abwählen
 tree.deselect(node);
 tree.deselectAll();
 
-// Auswählen oder Abwählen von Kinderknoten
+// Auswahl oder Abwahl von Kindknoten
 tree.selectChildren(parentNode);
 tree.deselectChildren(parentNode);
 ```
 
-### Abrufen des Auswahlstatus {#selection-state-retrieval}
+### Auswahlstatus abfragen {#selection-state-retrieval}
 
-Sie können die aktuelle Auswahl erhalten, indem Sie den unten angegebenen Code verwenden:
+Sie können die aktuelle Auswahl mithilfe des folgenden Codes abfragen:
 
 ```java
-// die Referenz des ausgewählten Knotens abrufen
+// Referenz des ausgewählten Knotens erhalten
 TreeNode selected = tree.getSelected();
 List<TreeNode> selectedItems = tree.getSelectedItems();
 
-// den Schlüssel des ausgewählten Knotens abrufen
+// Schlüssel des ausgewählten Knotens erhalten
 Object selectedKey = tree.getSelectedKey();
 List<Object> selectedKeys = tree.getSelectedKeys();
 ```

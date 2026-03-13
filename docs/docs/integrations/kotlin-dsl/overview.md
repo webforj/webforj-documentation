@@ -3,7 +3,7 @@ title: Kotlin DSL
 sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true
-sidebar_class_name: has-new-content
+sidebar_class_name: new-content
 ---
 
 <Head>
@@ -14,7 +14,12 @@ sidebar_class_name: has-new-content
   `}</style>
 </Head>
 
+<DocChip chip='since' label='25.12' />
+<DocChip chip='experimental' />
+
 webforJ provides a [Kotlin](https://kotlinlang.org/) *Domain Specific Language*, or DSL, that lets you build UIs with concise, type-safe syntax. Instead of imperative Java code, you write declarative code that reads like a description of your UI structure.
+
+<!-- INTRO_END -->
 
 ```java title="Java"
 FlexLayout layout = new FlexLayout();
@@ -46,6 +51,13 @@ flexLayout {
 The DSL takes advantage of Kotlin extension functions, lambdas with receivers, and default parameters to create a natural builder syntax. Components nest inside each other, configuration happens in blocks, and the compiler catches structural mistakes before runtime.
 
 ## Setup {#setup}
+
+:::warning experimental feature
+This feature is still under active development.
+The API may change in future versions, including possible breaking changes.
+
+You're welcome to try it and share feedback. Your input will help shape the final design.
+:::
 
 No separate Kotlin installation is required. Maven handles compilation through the Kotlin Maven plugin, so any project that already builds with Maven can add Kotlin support with dependency and plugin configuration alone.
 
