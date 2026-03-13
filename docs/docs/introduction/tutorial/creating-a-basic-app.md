@@ -25,7 +25,7 @@ As you develop your app, you can use [1-creating-a-basic-app](https://github.com
     mvn
     ```
 
-Running the app automatically opens a new browser at http://localhost:8080.
+Running the app automatically opens a new browser at `http://localhost:8080`.
 
 ## The entry point {#entry-point}
 
