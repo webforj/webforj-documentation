@@ -5,6 +5,8 @@ slug: rendering
 sidebar_class_name: new-content
 ---
 
+<!-- vale Google.Headings = NO -->
+<!-- vale Google.Colons = NO -->
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="table" location="com/webforj/component/table/renderer/Renderer" top='true'/>
 
@@ -25,7 +27,7 @@ table.addColumn("title", MusicRecord::getTitle).setRenderer(renderer);
 If you only need to transform or format a cell value without producing any DOM structure, use a [value provider](/docs/components/table/columns#value-providers) instead. Renderers create additional DOM elements for every rendered row, which carries a cost at render time. Reserve renderers for visual output such as icons, badges, buttons, or any HTML-based presentation.
 :::
 
-webforJ ships with built-in renderers for the most common use cases. For anything specific to your application, extend `Renderer` and implement `build()` to return a lodash template string that runs in the browser for each cell.
+webforJ ships with built-in renderers for the most common use cases. For anything specific to your app, extend `Renderer` and implement `build()` to return a lodash template string that runs in the browser for each cell.
 
 ## Common renderers {#common-renderers}
 
