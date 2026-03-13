@@ -104,7 +104,7 @@ public class HelloWorld extends App {
 @Route("/")
 class MainView extends Composite<FlexLayout> {
 
-  private FlexLayout self = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
   private TextField hello = new TextField("What is your name?");
   private Button btn = new Button("Say Hello");
 

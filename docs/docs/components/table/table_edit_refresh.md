@@ -15,7 +15,7 @@ height='600px'
 
 In the above example, the `TitleEditorComponent` class facilitates the editing of the "Title" field for a selected `MusicRecord`. The component includes an input field for the new title, along with "Save" and "Cancel" buttons.
 
-To connect the editing component with the `Table`, an "Edit" button is added to the `Table` via a `VoidElementRenderer`. Clicking this button triggers the `edit()` method of the `TitleEditorComponent`, allowing users to modify the "Title".
+To connect the editing component with the `Table`, an "Edit" button is added to the `Table` via a `VoidElementRenderer`. Clicking this button triggers the `edit()` method of the `TitleEditorComponent`, allowing users to modify the "Title" value.
 
 ## Commit method {#commit-method}
 

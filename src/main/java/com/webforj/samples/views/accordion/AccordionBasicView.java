@@ -9,7 +9,7 @@ import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-@Route("/basic")
+@Route
 @FrameTitle("Accordion - Standalone Panels")
 public class AccordionBasicView extends Composite<FlexLayout> {
 
