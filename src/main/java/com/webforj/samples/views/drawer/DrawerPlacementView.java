@@ -11,6 +11,11 @@ import com.webforj.component.optioninput.RadioButtonGroup;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Route
 @FrameTitle("Drawer Placement")
 public class DrawerPlacementView extends Composite<FlexLayout> {
@@ -23,22 +28,21 @@ public class DrawerPlacementView extends Composite<FlexLayout> {
 
     drawer.setLabel("Drawer Placement Options");
 
-    RadioButton topOption = new RadioButton("Top");
-    RadioButton topCenterOption = new RadioButton("Top Center");
-    RadioButton bottomOption = new RadioButton("Bottom");
-    RadioButton bottomCenterOption = new RadioButton("Bottom Center");
-    RadioButton leftOption = new RadioButton("Left", true);
-    RadioButton rightOption = new RadioButton("Right");
+    List<RadioButton> radioButtons = new ArrayList<>();
 
-    topOption.setUserData("placement", Placement.TOP);
-    topCenterOption.setUserData("placement", Placement.TOP_CENTER);
-    bottomOption.setUserData("placement", Placement.BOTTOM);
-    bottomCenterOption.setUserData("placement", Placement.BOTTOM_CENTER);
-    leftOption.setUserData("placement", Placement.LEFT);
-    rightOption.setUserData("placement", Placement.RIGHT);
+    for (Placement placement: Placement.values()) {
+      // Turn Enum value name into capitalized words
+      String text = Arrays.stream(placement.name().split("_"))
+              .map(s -> s.charAt(0) + s.substring(1).toLowerCase())
+              .collect(Collectors.joining(" "));
+      boolean checked = placement == Placement.LEFT;
+      RadioButton button = new RadioButton(text, checked);
+      button.setUserData("placement", placement);
+      radioButtons.add(button);
+    }
 
     RadioButtonGroup placementGroup = new RadioButtonGroup("Placement Options", 
-        topOption, topCenterOption, bottomOption, bottomCenterOption, leftOption, rightOption);
+        radioButtons.toArray(RadioButton[]::new));
 
     FlexLayout groupLayout = new FlexLayout()
         .setDirection(FlexDirection.COLUMN)
@@ -61,4 +65,5 @@ public class DrawerPlacementView extends Composite<FlexLayout> {
     self.add(openDrawer, drawer);
     drawer.open();
   }
+
 }
