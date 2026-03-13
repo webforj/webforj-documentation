@@ -29,9 +29,9 @@ viewer.setContent("""
 // Get current content
 String content = viewer.getContent();
 ```
-
+:::tip
 The component implements `HasText`, so `setText()` and `getText()` work as aliases for the content methods.
-
+:::
 <ComponentDemo 
 path='/webforj/markdownviewer?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/markdownviewer/MarkdownViewerView.java'
