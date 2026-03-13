@@ -1,5 +1,6 @@
 {
 "Alert": "dwc-alert",
+"AppDrawerToggle": "dwc-app-drawer-toggle",
 "AppLayout": "dwc-app-layout",
 "AppNav": "dwc-app-nav",
 "AppNavItem": "dwc-app-nav-item",
@@ -19,6 +20,7 @@
 "FileChooser" :"dwc-file-chooser",
 "FontChooser" :"dwc-font-chooser",
 "Icon" :"dwc-icon",
+"IconButton" :"dwc-icon-button",
 "InfiniteScroll": "dwc-infinite-scroll",
 "ListBox" :"dwc-listbox",
 "Loading": "dwc-loading",
@@ -44,6 +46,7 @@
 "SplitPane" :"dwc-splitter",
 "Splitter":"dwc-splitter",
 "TabbedPane" :"dwc-tabbed-pane",
+"Tab" :"dwc-tab",
 "Table": "dwc-table",
 "Terminal": "dwc-terminal",
 "TextArea" :"dwc-textarea",
@@ -52,5 +55,6 @@
 "TimeField": "dwc-timefield",
 "Toast": "dwc-toast",
 "Toolbar": "dwc-toolbar",
-"Tree": "dwc-tree"
+"Tree": "dwc-tree",
+"TreeNode": "dwc-tree-node"
 }

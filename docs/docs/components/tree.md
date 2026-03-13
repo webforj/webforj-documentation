@@ -5,6 +5,7 @@ sidebar_position: 150
 
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-tree" />
+<DocChip chip="name" label="dwc-tree-node" />
 <DocChip chip='since' label='25.01' />
 <JavadocLink type="foundation" location="com/webforj/component/tree/Tree" top='true'/>
 
@@ -212,6 +213,10 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='400px'
 />
 
-## Styling {#styling}
+## Styling for `Tree` {#styling-for-tree}
 
 <TableBuilder name="Tree" />
+
+## Styling for `TreeNode` {#styling-for-tree-node}
+
+<TableBuilder name="TreeNode" />
