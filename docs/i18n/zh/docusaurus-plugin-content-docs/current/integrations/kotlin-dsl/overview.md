@@ -3,8 +3,8 @@ title: Kotlin DSL
 sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true
-sidebar_class_name: has-new-content
-_i18n_hash: 2c5f0dc99b29342a5ae0f1f4774d3a36
+sidebar_class_name: new-content
+_i18n_hash: b27e06c94bdd94dd90f7411523e442f5
 ---
 <Head>
   <style>{`
@@ -14,7 +14,12 @@ _i18n_hash: 2c5f0dc99b29342a5ae0f1f4774d3a36
   `}</style>
 </Head>
 
-webforJ 提供了一种 [Kotlin](https://kotlinlang.org/) *领域特定语言*，或 DSL，允许你使用简洁、类型安全的语法构建用户界面。你编写声明式代码，描述你的 UI 结构，而不是使用命令式的 Java 代码。
+<DocChip chip='since' label='25.12' />
+<DocChip chip='experimental' />
+
+webforJ 提供了一种 [Kotlin](https://kotlinlang.org/) *领域特定语言*，简称 DSL，使您可以使用简洁、类型安全的语法构建 UI。您编写的是一种声明式代码，看起来像是对您的 UI 结构的描述，而不是命令式的 Java 代码。
+
+<!-- INTRO_END -->
 
 ```java title="Java"
 FlexLayout layout = new FlexLayout();
@@ -43,15 +48,22 @@ flexLayout {
 }
 ```
 
-该 DSL 利用 Kotlin 扩展函数、带接收者的 lambda 和默认参数创建自然的构建器语法。组件相互嵌套，配置在块中进行，编译器在运行时之前捕捉结构错误。
+该 DSL 利用了 Kotlin 扩展函数、带接收者的 lambda 以及默认参数来创建自然的构建器语法。组件彼此嵌套，配置在块中进行，编译器在运行时之前捕获结构性错误。
 
 ## 设置 {#setup}
 
-无需单独安装 Kotlin。Maven 通过 Kotlin Maven 插件处理编译，因此任何已经使用 Maven 构建的项目只需添加依赖和插件配置即可支持 Kotlin。
+:::warning experimental feature
+此功能仍在积极开发中。
+API 可能会在未来版本中更改，包括可能的重大更改。
 
-### 依赖 {#dependencies}
+欢迎您尝试并提供反馈。您的意见将有助于塑造最终设计。
+:::
 
-将 webforJ Kotlin DSL 模块和 Kotlin 标准库添加到你的 `pom.xml`：
+不需要单独的 Kotlin 安装。Maven 通过 Kotlin Maven 插件处理编译，因此任何已经使用 Maven 构建的项目只需通过依赖项和插件配置即可添加 Kotlin 支持。
+
+### 依赖项 {#dependencies}
+
+将 webforJ Kotlin DSL 模块和 Kotlin 标准库添加到您的 `pom.xml` 中：
 
 ```xml
 <dependency>
@@ -67,7 +79,7 @@ flexLayout {
 </dependency>
 ```
 
-如果你计划在 Kotlin 中编写测试，还需添加 Kotlin 测试依赖。它与 JUnit 集成：
+如果您打算用 Kotlin 编写测试，还需要添加 Kotlin 测试依赖项。它与 JUnit 集成：
 
 ```xml
 <dependency>
@@ -80,7 +92,7 @@ flexLayout {
 
 ### Kotlin Maven 插件 {#kotlin-maven-plugin}
 
-添加 Kotlin Maven 插件以编译你的 Kotlin 和 Java 源代码。下面的 `sourceDirs` 配置允许 Kotlin 和 Java 文件共存于同一项目中：
+添加 Kotlin Maven 插件以编译您的 Kotlin 和 Java 源文件。以下 `sourceDirs` 配置允许 Kotlin 和 Java 文件共存于同一项目中：
 
 ```xml
 <plugin>
@@ -123,48 +135,48 @@ flexLayout {
 </plugin>
 ```
 
-通过这些添加，`mvn compile` 将编译 Kotlin 源代码与 Java 一起。Kotlin 文件可以放在 `src/main/kotlin` 或 `src/main/java` 中，插件可以处理这两者。
+通过这些附加项，`mvn compile` 将同时编译 Kotlin 源文件和 Java 源文件。Kotlin 文件可以放在 `src/main/kotlin` 或 `src/main/java` 中，插件会处理这两者。
 
 :::tip[Java 互操作性]
-Kotlin 编译为 JVM 字节码，因此可以与现有的 Java 代码一起使用。你可以从 Java 类中使用 DSL 构建的 Kotlin 复合体，在 DSL 块内使用 `add()` 嵌套标准 Java 组件，并在同一项目中混合 Kotlin 和 Java 文件。
+Kotlin 编译为 JVM 字节码，因此可以与现有的 Java 代码一起工作。您可以从 Java 类中使用 DSL 构建的 Kotlin 组合，在 DSL 块内嵌套标准 Java 组件，并混合 Kotlin 和 Java 文件在同一项目中。
 :::
 
 ## 主题 {#topics}
 
-以下主题涵盖使用 DSL 以及扩展到你创建的任何自定义组件或复合体。
+以下主题涵盖使用 DSL 的方法，以及扩展到您创建的任何自定义组件或组合的方法。
 
 <DocCardList className="topics-section" />
 
-## Java 开发者的 Kotlin {#kotlin-for-java-developers}
+## 面向 Java 开发人员的 Kotlin {#kotlin-for-java-developers}
 
 <details>
 <summary>对 Kotlin 不熟悉？以下是 DSL 依赖的一些关键语言特性。</summary>
 
 ### 空安全 {#null-safety}
 
-Kotlin 在编译时区分可空和不可空类型：
+Kotlin 在编译时区分可空类型和非空类型：
 
 ```kotlin
-// Java - 任何引用都可以是 null
+// Java - 任何引用都可以为 null
 String name = null;
 
-// Kotlin - 显式空性
-var name: String? = null        // 可空，可以是 null
-var safeName: String = "value"  // 不可空，编译器强制执行这一点
+// Kotlin - 显式的可空性
+var name: String? = null        // 可空，可以为 null
+var safeName: String = "value"  // 非空，编译器强制执行这一点
 
-// 安全调用操作符 - 如果 name 为 null，则返回 null
+// 安全调用操作符 - 当 name 为 null 时返回 null
 println(name?.length)
 
-// Elvis 操作符 - 当为空时提供默认值
+// 埃尔维斯操作符 - 当为 null 时提供默认值
 println(name ?: "default")
 ```
 
 ### 扩展函数 {#extension-functions}
 
-Kotlin 允许你向现有类添加方法而不使用继承：
+Kotlin 让您可以在不进行继承的情况下向现有类添加方法：
 
 ```kotlin
-// Java 方法 - 静态实用类
+// Java 方法 - 静态工具类
 public class StringUtils {
     public static String addExclamation(String input) {
         return input + "!";
@@ -174,27 +186,27 @@ String result = StringUtils.addExclamation("Hello");
 
 // Kotlin 方法 - 扩展函数
 fun String.addExclamation(): String = this + "!"
-val result = "Hello".addExclamation()  // 读起来像一个方法调用
+val result = "Hello".addExclamation()  // 看起来像是方法调用
 ```
 
-该 DSL 使用扩展函数向组件添加构建器方法。
+DSL 使用扩展函数向组件添加构建方法。
 
-### Lambda 和尾随 Lambda 语法 {#lambdas-and-trailing-lambda-syntax}
+### Lambda 和尾 lambda 语法 {#lambdas-and-trailing-lambda-syntax}
 
-Kotlin 的 lambda 比 Java 更为简洁，当 lambda 是最后一个参数时，可以放在括号外：
+Kotlin 的 lambda 比 Java 的更简洁，当 lambda 是最后一个参数时，可以放在括号外：
 
 ```kotlin
 // Java
 button.addClickListener(e -> System.out.println("Clicked"));
 
-// Kotlin - 最后一个参数的 lambda 放在括号外
+// Kotlin - 作为最后参数的 lambda 放在括号外
 button.onClick { println("Clicked") }
 
-// 显式参数
+// 带显式参数
 button.onClick { event -> println("Clicked: $event") }
 ```
 
-这种尾随 lambda 语法正是使 DSL 块成为可能的原因。
+这种尾 lambda 语法使 DSL 块成为可能。
 
 ### 默认参数 {#default-parameters}
 
@@ -206,7 +218,7 @@ public Button() {}
 public Button(String text) {}
 public Button(String text, ButtonTheme theme) {}
 
-// Kotlin - 一个函数带有默认值
+// Kotlin - 一个带默认值的函数
 fun button(
     text: String = "",
     theme: ButtonTheme = ButtonTheme.DEFAULT,

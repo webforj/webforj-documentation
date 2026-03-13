@@ -253,6 +253,10 @@ This category includes components that facilitate user interactions and visually
     <p>A component for displaying user profile pictures or initials, with support for different sizes, shapes, and themes.</p>
   </GalleryCard>
   
+  <GalleryCard header="MarkdownViewer" href="markdownviewer" image="/img/components/MarkdownViewer.png">
+    <p>A component for displaying markdown content with progressive character-by-character rendering, ideal for AI chat interfaces and streaming text.</p>
+  </GalleryCard>
+  
 </GalleryGrid>
 
 
