@@ -253,7 +253,7 @@ deleteBtn.addClickListener(e -> {
 table.addColumn("delete", r -> "").setRenderer(deleteBtn);
 ```
 
-## Performance: lazy rendering {#lazy-rendering} <DocChip chip='since' label='25.12' />
+## Performance: lazy rendering <DocChip chip='since' label='25.12' /> {#lazy-rendering} 
 
 For columns that use visually expensive renderers such as badges, progress bars, avatars, or web components, enable lazy rendering to improve scroll performance.
 
@@ -454,7 +454,7 @@ table.addColumn("retail", MusicRecord::getRetail)
 
 <DocChip chip='since' label='25.12' />
 
-Displays a numeric value as a percentage.
+Displays a numeric value as a percentage. Set the second constructor argument to `false` to prevent rendering a thin progress bar beneath the text.
 
 ```java
 PercentageRenderer renderer = new PercentageRenderer<>(Theme.PRIMARY, true);
