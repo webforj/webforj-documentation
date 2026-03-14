@@ -9,17 +9,25 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("ComboBox Placeholders")
 public class ComboBoxPlaceholderView extends Composite<FlexLayout> {
+  // Categories for the ComboBox
+  private static final String[] CATEGORIES = {
+      "Electronics", "Health and Beauty", "Fashion", "Kitchen", "Furniture",
+      "Pet Supplies", "Toys and Games"
+  };
 
-  ComboBox comboBox = new ComboBox();
+  private final FlexLayout self = getBoundComponent();
+  // ComboBox component without label
+  private final ComboBox comboBox = new ComboBox();
 
   public ComboBoxPlaceholderView() {
-    getBoundComponent().setMargin("20px 0 0 20px").setSpacing("20px");
+    // Configure layout with fluent API
+    self.setMargin("20px 0 0 20px")
+        .setSpacing("20px");
 
-    String[] categories = { "Electronics", "Health and Beauty", "Fashion", "Kitchen", "Furniture",
-        "Pet Supplies", "Toys and Games" };
+    // Set placeholder text and insert categories
+    comboBox.setPlaceholder("Example Placeholder")
+        .insert(CATEGORIES);
 
-    comboBox.setPlaceholder("Example Placeholder");
-    comboBox.insert(categories);
-    getBoundComponent().add(comboBox);
+    self.add(comboBox);
   }
 }

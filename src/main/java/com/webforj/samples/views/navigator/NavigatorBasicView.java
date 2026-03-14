@@ -10,40 +10,41 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Navigator Basics")
 public class NavigatorBasicView extends Composite<Div> {
+  private final Div self = getBoundComponent();
+
+  // Counter state for the navigator
   private int count = 0;
 
   public NavigatorBasicView() {
-    Navigator nav = new Navigator("Value: " + String.valueOf(count));
-    nav.onChange(e -> {
-      NavigatorChangeEvent.Direction direction = e.getDirection();
-      switch (direction) {
-        case NEXT:
-          count++;
-          break;
-        case PREVIOUS:
-          count--;
-          break;
-        case FIRST:
-          count = 0;
-          break;
-        case LAST:
-          count = 10;
-          break;
-        default:
-          break;
-      }
+    // Create navigator with initial value
+    Navigator nav = new Navigator("Value: " + count);
 
-      if (count < 0) {
-        count = 0;
-      } else if (count > 10) {
-        count = 10;
-      }
+    // Handle navigation direction changes
+    nav.onChange(e -> handleNavigation(e, nav));
 
-      nav.setText("Value: " + String.valueOf(count));
-    });
+    // Configure container and add navigator
+    self.setStyle("padding", "20px")
+        .add(nav);
+  }
 
-    getBoundComponent().setStyle("padding", "20px");
-    getBoundComponent().add(nav);
+  /**
+   * Handles navigation events by updating the counter based on direction.
+   */
+  private void handleNavigation(NavigatorChangeEvent e, Navigator nav) {
+    NavigatorChangeEvent.Direction direction = e.getDirection();
+
+    // Update count based on navigation direction using switch expression
+    count = switch (direction) {
+      case NEXT -> count + 1;
+      case PREVIOUS -> count - 1;
+      case FIRST -> 0;
+      case LAST -> 10;
+    };
+
+    // Clamp count to valid range [0, 10]
+    count = Math.max(0, Math.min(10, count));
+
+    nav.setText("Value: " + count);
   }
 }
 

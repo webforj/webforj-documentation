@@ -33,8 +33,7 @@ public class TerminalThemePickerView extends Composite<FlexLayout> {
         .setStyle("margin", "var(--dwc-space-m) auto")
         .setMaxWidth("800px");
 
-    terminal
-        .setStyle("margin", "0px var(--dwc-space-m)")
+    terminal.setStyle("margin", "0px var(--dwc-space-m)")
         .setStyle("border", "1px solid var(--dwc-color-default)")
         .setSize("100%", "400px")
         .writeln(
@@ -82,25 +81,21 @@ public class TerminalThemePickerView extends Composite<FlexLayout> {
   }
 
   private void loadThemes() {
-    Type mapType = new TypeToken<Map<String, TerminalTheme>>() {
-    }.getType();
+    Type mapType = new TypeToken<Map<String, TerminalTheme>>() {}.getType();
     Map<String, TerminalTheme> loadedThemes = new Gson()
         .fromJson(Assets.contentOf(Assets.resolveContextUrl("context://terminal-themes.json")), mapType);
 
     themes.putAll(loadedThemes);
 
-    for (Map.Entry<String, TerminalTheme> entry : loadedThemes.entrySet()) {
-      String key = entry.getKey();
-      TerminalTheme value = entry.getValue();
-      themeChoiceBox.add(value, key);
-    }
+    // Use forEach with lambda for cleaner iteration
+    loadedThemes.forEach((key, value) -> themeChoiceBox.add(value, key));
   }
 
   private void applySelectedTheme(ValueChangeEvent<Object> e) {
-    TerminalTheme selected = (TerminalTheme) e.getValue();
-    if (selected == null)
+    // Use pattern matching for instanceof
+    if (!(e.getValue() instanceof TerminalTheme selected)) {
       return;
-
+    }
     applyTheme(selected);
   }
 

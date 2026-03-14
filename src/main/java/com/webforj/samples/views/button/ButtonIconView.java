@@ -5,41 +5,33 @@ import com.webforj.component.button.Button;
 import com.webforj.component.html.elements.Img;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.icons.TablerIcon;
-import com.webforj.component.icons.Icon;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-/**
- * Demo application to display icon addition to buttons.
- */
 @Route
 @FrameTitle("Button Icon")
 public class ButtonIconView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
-  Button notifications;
-  Button link;
-  Button imgButton;
-  Icon notificationsIcon;
-  Icon settingsIcon;
-  Icon linkIcon;
-  Img imgIcon;
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final Button notifications;
+  private final Button link;
+  private final Button imgButton;
 
   public ButtonIconView() {
-    self.setSpacing("var(--dwc-space-l)").setMargin("var(--dwc-space-l)").setStyle("flex-wrap", "wrap")
-        .setWidth("100%");
+    notifications = new Button("Notifications")
+        .setPrefixComponent(TablerIcon.create("bell"));
 
-    notificationsIcon = TablerIcon.create("bell");
-    notifications = new Button("Notifications");
-    notifications.setPrefixComponent(notificationsIcon);
+    link = new Button("Search")
+        .setSuffixComponent(TablerIcon.create("external-link"));
 
-    linkIcon = TablerIcon.create("external-link");
-    link = new Button("Search");
-    link.setSuffixComponent(linkIcon);
-
-    imgIcon = new Img("https://documentation.webforj.com/img/webforj.svg");
-    imgIcon.setSize("100px", "30px");
+    Img imgIcon = new Img("https://documentation.webforj.com/img/webforj.svg")
+        .setSize("100px", "30px");
     imgButton = new Button(imgIcon);
 
-    self.add(notifications, link, imgButton);
+    self.setSpacing("var(--dwc-space-l)")
+        .setMargin("var(--dwc-space-l)")
+        .setStyle("flex-wrap", "wrap")
+        .setWidth("100%")
+        .add(notifications, link, imgButton);
   }
 }

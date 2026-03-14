@@ -12,22 +12,24 @@ import com.webforj.component.list.ListItem;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Route
 @FrameTitle("Columns Layout Form")
 public class ColumnsLayoutFormView extends Composite<Div> {
-  TextField firstName = new TextField("First Name");
-  TextField lastName = new TextField("Last Name");
-  TextField email = new TextField("Email");
-  PasswordField password = new PasswordField("Password");
-  PasswordField passwordConfirm = new PasswordField("Confirm Password");
-  TextField address = new TextField("Address");
-  ChoiceBox states = new ChoiceBox("State");
-  TextField zip = new TextField("Zip");
-  Button submit = new Button("Submit", ButtonTheme.PRIMARY);
-  Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY);
-  ColumnsLayout columnsLayout = new ColumnsLayout(
+  // self field enables fluent method chaining from the bound component
+  private final Div self = getBoundComponent();
+  private final TextField firstName = new TextField("First Name");
+  private final TextField lastName = new TextField("Last Name");
+  private final TextField email = new TextField("Email");
+  private final PasswordField password = new PasswordField("Password");
+  private final PasswordField passwordConfirm = new PasswordField("Confirm Password");
+  private final TextField address = new TextField("Address");
+  private final ChoiceBox states = new ChoiceBox("State");
+  private final TextField zip = new TextField("Zip");
+  private final Button submit = new Button("Submit", ButtonTheme.PRIMARY);
+  private final Button cancel = new Button("Cancel", ButtonTheme.OUTLINED_PRIMARY);
+  private final ColumnsLayout columnsLayout = new ColumnsLayout(
       firstName, lastName,
       email,
       password, passwordConfirm,
@@ -38,73 +40,75 @@ public class ColumnsLayoutFormView extends Composite<Div> {
   public ColumnsLayoutFormView() {
     populateStates();
 
-    columnsLayout.setSpan(email, 2);
-    columnsLayout.setSpan(address, 2);
-    columnsLayout.setStyle("padding", "var(--dwc-space-xl)");
+    columnsLayout.setSpan(email, 2)
+        .setSpan(address, 2)
+        .setStyle("padding", "var(--dwc-space-xl)");
 
     submit.setStyle("margin-top", "var(--dwc-space-l)");
     cancel.setStyle("margin-top", "var(--dwc-space-l)");
 
-    getBoundComponent().setMaxWidth("600px");
-    getBoundComponent().setStyle("margin", "0 auto");
-    getBoundComponent().setStyle("overflow", "auto");
-    getBoundComponent().setStyle("height", "100dvh");
-    getBoundComponent().add(columnsLayout);
+    self.setMaxWidth("600px")
+        .setStyle("margin", "0 auto")
+        .setStyle("overflow", "auto")
+        .setStyle("height", "100dvh")
+        .add(columnsLayout);
   }
 
   private void populateStates() {
-    ArrayList<ListItem> listStates = new ArrayList<>();
-    states.add(new ListItem("AL", "Alabama"));
-    states.add(new ListItem("AK", "Alaska"));
-    states.add(new ListItem("AZ", "Arizona"));
-    states.add(new ListItem("AR", "Arkansas"));
-    states.add(new ListItem("CA", "California"));
-    states.add(new ListItem("CO", "Colorado"));
-    states.add(new ListItem("CT", "Connecticut"));
-    states.add(new ListItem("DE", "Delaware"));
-    states.add(new ListItem("FL", "Florida"));
-    states.add(new ListItem("GA", "Georgia"));
-    states.add(new ListItem("HI", "Hawaii"));
-    states.add(new ListItem("ID", "Idaho"));
-    states.add(new ListItem("IL", "Illinois"));
-    states.add(new ListItem("IN", "Indiana"));
-    states.add(new ListItem("IA", "Iowa"));
-    states.add(new ListItem("KS", "Kansas"));
-    states.add(new ListItem("KY", "Kentucky"));
-    states.add(new ListItem("LA", "Louisiana"));
-    states.add(new ListItem("ME", "Maine"));
-    states.add(new ListItem("MD", "Maryland"));
-    states.add(new ListItem("MA", "Massachusetts"));
-    states.add(new ListItem("MI", "Michigan"));
-    states.add(new ListItem("MN", "Minnesota"));
-    states.add(new ListItem("MS", "Mississippi"));
-    states.add(new ListItem("MO", "Missouri"));
-    states.add(new ListItem("MT", "Montana"));
-    states.add(new ListItem("NE", "Nebraska"));
-    states.add(new ListItem("NV", "Nevada"));
-    states.add(new ListItem("NH", "New Hampshire"));
-    states.add(new ListItem("NJ", "New Jersey"));
-    states.add(new ListItem("NM", "New Mexico"));
-    states.add(new ListItem("NY", "New York"));
-    states.add(new ListItem("NC", "North Carolina"));
-    states.add(new ListItem("ND", "North Dakota"));
-    states.add(new ListItem("OH", "Ohio"));
-    states.add(new ListItem("OK", "Oklahoma"));
-    states.add(new ListItem("OR", "Oregon"));
-    states.add(new ListItem("PA", "Pennsylvania"));
-    states.add(new ListItem("RI", "Rhode Island"));
-    states.add(new ListItem("SC", "South Carolina"));
-    states.add(new ListItem("SD", "South Dakota"));
-    states.add(new ListItem("TN", "Tennessee"));
-    states.add(new ListItem("TX", "Texas"));
-    states.add(new ListItem("UT", "Utah"));
-    states.add(new ListItem("VT", "Vermont"));
-    states.add(new ListItem("VA", "Virginia"));
-    states.add(new ListItem("WA", "Washington"));
-    states.add(new ListItem("WV", "West Virginia"));
-    states.add(new ListItem("WI", "Wisconsin"));
-    states.add(new ListItem("WY", "Wyoming"));
+    // Use immutable List.of() for cleaner state list
+    List<ListItem> listStates = List.of(
+        new ListItem("AL", "Alabama"),
+        new ListItem("AK", "Alaska"),
+        new ListItem("AZ", "Arizona"),
+        new ListItem("AR", "Arkansas"),
+        new ListItem("CA", "California"),
+        new ListItem("CO", "Colorado"),
+        new ListItem("CT", "Connecticut"),
+        new ListItem("DE", "Delaware"),
+        new ListItem("FL", "Florida"),
+        new ListItem("GA", "Georgia"),
+        new ListItem("HI", "Hawaii"),
+        new ListItem("ID", "Idaho"),
+        new ListItem("IL", "Illinois"),
+        new ListItem("IN", "Indiana"),
+        new ListItem("IA", "Iowa"),
+        new ListItem("KS", "Kansas"),
+        new ListItem("KY", "Kentucky"),
+        new ListItem("LA", "Louisiana"),
+        new ListItem("ME", "Maine"),
+        new ListItem("MD", "Maryland"),
+        new ListItem("MA", "Massachusetts"),
+        new ListItem("MI", "Michigan"),
+        new ListItem("MN", "Minnesota"),
+        new ListItem("MS", "Mississippi"),
+        new ListItem("MO", "Missouri"),
+        new ListItem("MT", "Montana"),
+        new ListItem("NE", "Nebraska"),
+        new ListItem("NV", "Nevada"),
+        new ListItem("NH", "New Hampshire"),
+        new ListItem("NJ", "New Jersey"),
+        new ListItem("NM", "New Mexico"),
+        new ListItem("NY", "New York"),
+        new ListItem("NC", "North Carolina"),
+        new ListItem("ND", "North Dakota"),
+        new ListItem("OH", "Ohio"),
+        new ListItem("OK", "Oklahoma"),
+        new ListItem("OR", "Oregon"),
+        new ListItem("PA", "Pennsylvania"),
+        new ListItem("RI", "Rhode Island"),
+        new ListItem("SC", "South Carolina"),
+        new ListItem("SD", "South Dakota"),
+        new ListItem("TN", "Tennessee"),
+        new ListItem("TX", "Texas"),
+        new ListItem("UT", "Utah"),
+        new ListItem("VT", "Vermont"),
+        new ListItem("VA", "Virginia"),
+        new ListItem("WA", "Washington"),
+        new ListItem("WV", "West Virginia"),
+        new ListItem("WI", "Wisconsin"),
+        new ListItem("WY", "Wyoming")
+    );
 
-    this.states.insert(listStates);
+    states.insert(listStates);
   }
 }

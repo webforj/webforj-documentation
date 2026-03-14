@@ -15,16 +15,16 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Time Field Restore")
 public class MaskedTimeFieldRestoreView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
-  MaskedTimeField eventField = new MaskedTimeField("Meeting Time:");
+  // self field enables fluent method chaining from the bound component
+  private final FlexLayout self = getBoundComponent();
+  private final MaskedTimeField eventField = new MaskedTimeField("Meeting Time:");
 
   public MaskedTimeFieldRestoreView() {
     self.setAlignment(FlexAlignment.CENTER)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setMargin("var(--dwc-space-m) auto");
 
-    eventField
-        .setMask("%hz:%mz %p")
+    eventField.setMask("%hz:%mz %p")
         .setValue(LocalTime.of(15, 30)) // 3:30 PM
         .setRestoreValue(LocalTime.of(14, 0)) // 2:00 PM
         .setHelperText("Press <kbd>ESC</kbd> to restore the value to 2:00 PM.")

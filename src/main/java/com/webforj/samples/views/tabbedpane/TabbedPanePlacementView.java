@@ -13,42 +13,48 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @InlineStyleSheet(/*css */"""
-  .window {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    margin: 20px;
-  }
-""")
+          .window {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            margin: 20px;
+          }
+        """)
 @Route
 @FrameTitle("Tabbed Pane Placement")
-public class TabbedPanePlacementView extends Composite<Div>{
-
-  TabbedPane pane = new TabbedPane();
-  ChoiceBox placements = new ChoiceBox("Placement");
+public class TabbedPanePlacementView extends Composite<Div> {
+  // Self reference enabling fluent method chaining
+  private final Div self = getBoundComponent();
+  // UI Components
+  private final TabbedPane pane = new TabbedPane();
+  private final ChoiceBox placements = new ChoiceBox("Placement");
 
   public TabbedPanePlacementView() {
-    getBoundComponent().addClassName("window");
-    getBoundComponent().add(placements, pane);
+    // Configure main container
+    self.addClassName("window")
+            .add(placements, pane);
 
+    // Create tab icons
     Icon dashboardIcon = TablerIcon.create("dashboard");
     Icon ordersIcon = TablerIcon.create("shopping-cart");
     Icon customersIcon = TablerIcon.create("users");
     Icon productsIcon = TablerIcon.create("box");
     Icon documentsIcon = TablerIcon.create("files");
 
+    // Add tabs to the pane
     pane.addTab(new Tab("Dashboard", dashboardIcon));
     pane.addTab(new Tab("Orders", ordersIcon));
     pane.addTab(new Tab("Customers", customersIcon));
-		pane.addTab(new Tab("Products", productsIcon));
+    pane.addTab(new Tab("Products", productsIcon));
     pane.addTab(new Tab("Documents", documentsIcon));
-    
-    for(Placement placement : Placement.values()){
+
+    // Populate placement options
+    for (Placement placement : Placement.values()) {
       placements.add(placement.toString());
     }
-    placements.setWidth("200px");
-    placements.selectIndex(0);
-
-    placements.onSelect( e -> pane.setPlacement(Placement.valueOf(e.getSelectedItem().getText())));
+    // Handle placement selection
+    placements.setWidth("200px")
+            .selectIndex(0)
+            .onSelect(e -> pane.setPlacement(Placement.valueOf(e.getSelectedItem().getText())));
   }
 }

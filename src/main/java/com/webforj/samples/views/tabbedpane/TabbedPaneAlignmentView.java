@@ -13,42 +13,48 @@ import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @InlineStyleSheet(/*css */"""
-  .window {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    margin: 20px;
-  }
-""")
+          .window {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            margin: 20px;
+          }
+        """)
 @Route
 @FrameTitle("Tabbed Pane Alignment")
 public class TabbedPaneAlignmentView extends Composite<Div> {
-
-  TabbedPane pane = new TabbedPane();
-  ChoiceBox alignments = new ChoiceBox("Alignment");
+  // Self reference enabling fluent method chaining
+  private final Div self = getBoundComponent();
+  // UI Components
+  private final TabbedPane pane = new TabbedPane();
+  private final ChoiceBox alignments = new ChoiceBox("Alignment");
 
   public TabbedPaneAlignmentView() {
-    getBoundComponent().addClassName("window");
-    getBoundComponent().add(alignments, pane);
+    // Configure main container
+    self.addClassName("window")
+            .add(alignments, pane);
 
+    // Create tab icons
     Icon dashboardIcon = TablerIcon.create("dashboard");
     Icon ordersIcon = TablerIcon.create("shopping-cart");
     Icon customersIcon = TablerIcon.create("users");
     Icon productsIcon = TablerIcon.create("box");
     Icon documentsIcon = TablerIcon.create("files");
 
+    // Add tabs to the pane
     pane.addTab(new Tab("Dashboard", dashboardIcon));
     pane.addTab(new Tab("Orders", ordersIcon));
     pane.addTab(new Tab("Customers", customersIcon));
-		pane.addTab(new Tab("Products", productsIcon));
+    pane.addTab(new Tab("Products", productsIcon));
     pane.addTab(new Tab("Documents", documentsIcon));
-    
-    for(Alignment alignment : Alignment.values()){
+
+    // Populate alignment options
+    for (Alignment alignment : Alignment.values()) {
       alignments.add(alignment.toString());
     }
-    alignments.setWidth("200px");
-    alignments.selectIndex(0);
-
-    alignments.onSelect( e -> pane.setAlignment(Alignment.valueOf(e.getSelectedItem().getText())));
+    // Handle alignment selection
+    alignments.setWidth("200px")
+            .selectIndex(0)
+            .onSelect(e -> pane.setAlignment(Alignment.valueOf(e.getSelectedItem().getText())));
   }
 }

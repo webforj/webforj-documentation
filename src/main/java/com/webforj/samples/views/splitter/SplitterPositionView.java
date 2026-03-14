@@ -10,13 +10,18 @@ import com.webforj.samples.components.SplitterBox;
 @Route
 @FrameTitle("Splitter Position")
 public class SplitterPositionView extends Composite<Div> {
+  // Self reference enabling fluent method chaining
+  private final Div self = getBoundComponent();
 
   public SplitterPositionView() {
+    // Create splitter box panels
     SplitterBox master = new SplitterBox("Master", SplitterBox.Theme.INFO);
     SplitterBox detail = new SplitterBox("Detail", SplitterBox.Theme.SUCCESS);
-    Splitter splitter = new Splitter(master, detail);
-    splitter.setPositionRelative(75);
 
-    getBoundComponent().add(splitter);
+    // Create splitter and set initial position to 75%
+    Splitter splitter = new Splitter(master, detail)
+            .setPositionRelative(75);
+
+    self.add(splitter);
   }
 }

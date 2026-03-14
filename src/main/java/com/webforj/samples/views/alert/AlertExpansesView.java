@@ -17,29 +17,32 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Alert Expanses")
 public class AlertExpansesView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public AlertExpansesView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN)
-          .setJustifyContent(FlexJustifyContent.CENTER)
-          .setAlignment(FlexAlignment.CENTER)
-          .setSpacing("var(--dwc-space-m)")
-          .setMargin("var(--dwc-space-xl) auto")
-          .setWidth("100%");
+    self.setDirection(FlexDirection.COLUMN)
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .setAlignment(FlexAlignment.CENTER)
+        .setSpacing("var(--dwc-space-m)")
+        .setMargin("var(--dwc-space-xl) auto")
+        .setWidth("100%");
 
-    for (int i = Expanse.values().length - 1; i >= 0; i--) {
+    Expanse[] expanses = Expanse.values();
+    for (int i = expanses.length - 1; i >= 0; i--) {
+      Expanse expanse = expanses[i];
       Icon icon = TablerIcon.create("alert-square-rounded");
-      Paragraph text = new Paragraph("This alert uses the " + Expanse.values()[i].name()
-          + " expanse.");
-
+      // Use text block for cleaner string formatting
+      Paragraph text = new Paragraph("This alert uses the %s expanse.".formatted(expanse));
       Alert alert = new Alert()
-            .addToContent(FlexLayout.create(icon, text).horizontal().align().center().build())
-            .setExpanse(Expanse.values()[i])
-            .setClosable(false)
-            .setTheme(Theme.SUCCESS)
-            .setWidth("380px");
-      layout.add(alert);
-
+          .addToContent(FlexLayout.create(icon, text)
+              .horizontal()
+              .align().center()
+              .build())
+          .setExpanse(expanse)
+          .setClosable(false)
+          .setTheme(Theme.SUCCESS)
+          .setWidth("380px");
+      self.add(alert);
     }
   }
 }

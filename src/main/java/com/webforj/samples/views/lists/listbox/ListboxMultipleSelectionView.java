@@ -12,22 +12,28 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Listbox Multiple Selection")
 public class ListboxMultipleSelectionView extends Composite<FlexLayout> {
+  // Departments for the ListBox
+  private static final String[] DEPARTMENTS = {
+      "Marketing and Sales", "IT Support", "Management and Admin", "Finance and HR"
+  };
 
-  FlexLayout self = getBoundComponent();
-  ListBox listBox = new ListBox();
-  RadioButton selectionModeToggle = RadioButton.Switch("Multiple Selection");
+  private final FlexLayout self = getBoundComponent();
+  // UI Components
+  private final ListBox listBox = new ListBox();
+  private final RadioButton selectionModeToggle = RadioButton.Switch("Multiple Selection");
 
   public ListboxMultipleSelectionView() {
+    // Configure layout with fluent API
     self.setDirection(FlexDirection.COLUMN)
         .setWidth(200)
         .setMargin("20px 0 0 20px")
         .setSpacing("20px");
-    self.add(listBox, selectionModeToggle);
 
-    String[] departments = { "Marketing and Sales", "IT Support", "Management and Admin", "Finance and HR" };
-    listBox.insert(departments);
-    listBox.setLabel("Select Department(s)");
+    // Configure ListBox with departments and label
+    listBox.insert(DEPARTMENTS)
+        .setLabel("Select Department(s)");
 
+    // Toggle between single and multiple selection mode
     selectionModeToggle.onToggle(e -> {
       if (e.isToggled()) {
         listBox.setSelectionMode(SelectionMode.MULTIPLE);
@@ -35,5 +41,7 @@ public class ListboxMultipleSelectionView extends Composite<FlexLayout> {
         listBox.setSelectionMode(SelectionMode.SINGLE);
       }
     });
+
+    self.add(listBox, selectionModeToggle);
   }
 }

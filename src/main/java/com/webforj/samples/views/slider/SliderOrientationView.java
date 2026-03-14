@@ -1,9 +1,7 @@
 package com.webforj.samples.views.slider;
 
 import java.util.Map;
-import static java.util.Map.entry;
-import com.webforj.router.annotation.FrameTitle;
-import com.webforj.router.annotation.Route;
+
 import com.webforj.component.Composite;
 import com.webforj.component.Theme;
 import com.webforj.component.icons.IconButton;
@@ -13,25 +11,29 @@ import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexJustifyContent;
 import com.webforj.component.layout.flexlayout.FlexLayout;
 import com.webforj.component.slider.Slider;
+import com.webforj.router.annotation.FrameTitle;
+import com.webforj.router.annotation.Route;
+
+import static java.util.Map.entry;
 
 @Route
 @FrameTitle("Slider Orientation")
 public class SliderOrientationView extends Composite<FlexLayout> {
-
-  Slider volumeSlider = new Slider();
-  Integer currentVolume = 50;
-  FlexLayout layout = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
+  // Vertical orientation slider
+  private final Slider volumeSlider = new Slider();
 
   public SliderOrientationView() {
-    layout.setDirection(FlexDirection.COLUMN)
+    // Configure layout
+    self.setDirection(FlexDirection.COLUMN)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setAlignment(FlexAlignment.CENTER)
         .setSpacing("var(--dwc-space-l)")
         .setMargin("var(--dwc-space-l)");
 
+    // Configure vertical slider with labels
     volumeSlider.setMin(0)
         .setMax(100)
-        .setValue(currentVolume)
         .setFilled(true)
         .setTheme(Theme.GRAY)
         .setOrientation(Slider.Orientation.VERTICAL)
@@ -49,26 +51,27 @@ public class SliderOrientationView extends Composite<FlexLayout> {
         .setTooltipVisible(true)
         .setTooltipVisibleOnSlideOnly(true);
 
+    // Create mute button
     IconButton muteButton = new IconButton(TablerIcon.create("volume-off"));
     muteButton.setTheme(Theme.DANGER)
         .onClick(e -> {
-          currentVolume = 0;
           volumeSlider.setValue(0);
         });
 
+    // Create max volume button
     IconButton maxVolumeButton = new IconButton(TablerIcon.create("volume-2"));
     maxVolumeButton.onClick(e -> {
-      currentVolume = 100;
       volumeSlider.setValue(100);
     });
 
-    FlexLayout sliderContainer = new FlexLayout();
-    sliderContainer.setDirection(FlexDirection.COLUMN)
-        .setJustifyContent(FlexJustifyContent.CENTER)
-        .setAlignment(FlexAlignment.CENTER)
-        .setSpacing("var(--dwc-space-m)");
-    sliderContainer.add(maxVolumeButton, volumeSlider, muteButton);
+    // Create vertical slider container
+    FlexLayout sliderContainer = FlexLayout.create(maxVolumeButton, volumeSlider, muteButton)
+            .vertical()
+            .justify().center()
+            .align().center()
+            .build()
+            .setSpacing("var(--dwc-space-m)");
 
-    layout.add(sliderContainer);
+    self.add(sliderContainer);
   }
 }

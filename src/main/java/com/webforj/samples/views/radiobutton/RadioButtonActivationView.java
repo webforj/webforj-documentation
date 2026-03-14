@@ -11,20 +11,26 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Radio Button Activation")
 public class RadioButtonActivationView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public RadioButtonActivationView() {
-    getBoundComponent().setDirection(FlexDirection.COLUMN).setSpacing("1em").setMargin("20px");
+    // Configure layout
+    self.setDirection(FlexDirection.COLUMN)
+        .setSpacing("1em")
+        .setMargin("20px");
 
-    RadioButton autoActivateOne = new RadioButton("Auto Activated");
-    autoActivateOne.setActivation(Activation.AUTO)
+    // Auto-activated radio buttons (select on click)
+    RadioButton autoActivateOne = new RadioButton("Auto Activated")
+        .setActivation(Activation.AUTO)
         .focus();
 
-    RadioButton autoActivateTwo = new RadioButton("Auto Activated");
-    autoActivateTwo.setActivation(Activation.AUTO);
+    RadioButton autoActivateTwo = new RadioButton("Auto Activated")
+        .setActivation(Activation.AUTO);
 
+    // Manual activation radio buttons
     RadioButton manualActivateOne = new RadioButton("Manually Activated");
     RadioButton manualActivateTwo = new RadioButton("Manually Activated");
 
-    getBoundComponent().add(autoActivateOne, autoActivateTwo, manualActivateOne, manualActivateTwo);
+    self.add(autoActivateOne, autoActivateTwo, manualActivateOne, manualActivateTwo);
   }
 }

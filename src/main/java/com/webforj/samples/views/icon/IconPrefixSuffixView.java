@@ -13,19 +13,26 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Icon Action Buttons")
 public class IconPrefixSuffixView extends Composite<FlexLayout> {
-  
+  private final FlexLayout self = getBoundComponent();
+
   public IconPrefixSuffixView() {
-    getBoundComponent().setDirection(FlexDirection.ROW).setMargin("var(--dwc-space-l)")
-    .setSpacing("var(--dwc-space-l)");
-    
+    // Configure layout with fluent API
+    self.setDirection(FlexDirection.ROW)
+        .setMargin("var(--dwc-space-l)")
+        .setSpacing("var(--dwc-space-l)");
+
+    // Create next button with suffix icon (arrow pointing right)
     Icon arrow = TablerIcon.create("arrow-narrow-right");
-    Button nextButton = new Button("Next").setSuffixComponent(arrow)
-    .setTheme(ButtonTheme.PRIMARY);
-    
+    Button nextButton = new Button("Next")
+        .setSuffixComponent(arrow)
+        .setTheme(ButtonTheme.PRIMARY);
+
+    // Create filter button with prefix icon
     Icon filter = TablerIcon.create("filter");
-    Button filterButton = new Button("Filter").setPrefixComponent(filter)
-    .setTheme(ButtonTheme.DEFAULT);
-    
-    getBoundComponent().add(nextButton, filterButton);
+    Button filterButton = new Button("Filter")
+        .setPrefixComponent(filter)
+        .setTheme(ButtonTheme.DEFAULT);
+
+    self.add(nextButton, filterButton);
   }
 }

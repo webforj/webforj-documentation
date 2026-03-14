@@ -9,11 +9,13 @@ import com.webforj.router.event.NavigateEvent;
 import com.webforj.router.history.ParametersBag;
 
 public abstract class AbstractContentView extends Composite<Div> {
+  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
   protected String name;
-  protected Paragraph contentLabel = new Paragraph("Loading content...");
+  protected Paragraph contentLabel;
 
   public AbstractContentView() {
+    contentLabel = new Paragraph("Loading content...");
     self.add(new H1("Application Title"), contentLabel);
     Router.getCurrent().onNavigate(this::onNavigate);
   }

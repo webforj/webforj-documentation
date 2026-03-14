@@ -11,18 +11,24 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Choicebox Dropdown Type")
 public class ChoiceboxDropdownTypeView extends Composite<Div> {
+  // Categories for the ChoiceBox
+  private static final String[] CATEGORIES = {
+      "Electronics", "Health and Beauty", "Fashion", "Kitchen", "Furniture",
+      "Pet Supplies", "Toys and Games"
+  };
 
-  ChoiceBox demoBox = new ChoiceBox("Department");
+  private final Div self = getBoundComponent();
+  // ChoiceBox component with custom dropdown styling
+  private final ChoiceBox demoBox = new ChoiceBox("Department");
 
   public ChoiceboxDropdownTypeView() {
-    getBoundComponent().addClassName("frame");
-    getBoundComponent().add(demoBox);
+    // Configure main container
+    self.addClassName("frame")
+        .add(demoBox);
 
-    String[] categories = { "Electronics", "Health and Beauty", "Fashion", "Kitchen", "Furniture",
-        "Pet Supplies", "Toys and Games" };
-
+    // Set custom dropdown type for styling and insert categories
     demoBox.setDropdownType("demo-dropdown-type");
-    demoBox.insert(categories)
+    demoBox.insert(CATEGORIES)
         .selectIndex(0);
   }
 }
