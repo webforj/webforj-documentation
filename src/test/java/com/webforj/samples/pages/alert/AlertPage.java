@@ -1,41 +1,29 @@
 package com.webforj.samples.pages.alert;
 
-import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.options.AriaRole;
-import com.webforj.component.Theme;
 import com.webforj.component.alert.Alert;
 import com.webforj.component.button.Button;
-import com.webforj.samples.pages.SupportedLanguage;
-import com.webforj.samples.utils.NodeNameUtils;
-import com.webforj.samples.utils.ThemeUtils;
+import com.webforj.samples.pages.AbstractPage;
+import com.webforj.samples.utils.SupportedLanguage;
+import com.webforj.samples.utils.WebforjLocator;
+import com.webforj.samples.views.alert.AlertView;
 
-public class AlertPage {
-  private static final String ROUTE = "alert";
-
-  private final Locator alert;
-  private final Locator alertText;
-  private final Locator viewButton;
+public class AlertPage extends AbstractPage {
 
   public AlertPage(Page page) {
-    this.alert = page.locator(NodeNameUtils.getNodeName(Alert.class)).first();
-    this.alertText = page.getByText("The requested information is ready to be viewed.");
-    this.viewButton = ThemeUtils.getLocator(page, NodeNameUtils.getNodeName(Button.class), Theme.PRIMARY, new Page.LocatorOptions().setHasText("View"));
+    super(page, AlertView.class);
   }
 
-  public static String getRoute(SupportedLanguage language) {
-    return language.getPath(ROUTE);
+  public WebforjLocator getAlert() {
+    return getByClass(Alert.class);
   }
 
-  public Locator getAlert() {
-    return alert;
+  public WebforjLocator getAlertText() {
+    return getByText("The requested information is ready to be viewed.");
   }
 
-  public Locator getAlertText() {
-    return alertText;
+  public WebforjLocator getViewButton() {
+    return getByClass(Button.class);
   }
 
-  public Locator getViewButton() {
-    return viewButton;
-  }
 }

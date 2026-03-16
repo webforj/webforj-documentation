@@ -1,44 +1,33 @@
 package com.webforj.samples.views.alert;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static com.webforj.samples.utils.ExpanseUtils.assertExpanse;
-import static com.webforj.samples.utils.ExpanseUtils.assertForEach;
-import static com.webforj.samples.utils.ThemeUtils.assertTheme;
-
+import com.webforj.component.Expanse;
 import com.webforj.component.Theme;
-import com.webforj.samples.pages.SupportedLanguage;
+import com.webforj.samples.utils.SupportedLanguage;
 import com.webforj.samples.pages.alert.AlertExpansesPage;
 import com.webforj.samples.views.BaseTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 public class AlertExpansesViewIT extends BaseTest {
   private AlertExpansesPage alertPage;
 
-  public void setupAlertExpansesDemo(SupportedLanguage language) {
-    navigateToRoute(AlertExpansesPage.getRoute(language));
+  @BeforeEach
+  public void setupAlertExpansesDemo() {
     alertPage = new AlertExpansesPage(page);
   }
 
   @ParameterizedTest
   @MethodSource("provideRoutes")
-  public void testAlertExpanseIsVisible(SupportedLanguage language) {
-    setupAlertExpansesDemo(language);
-    assertForEach(expanse -> assertThat(alertPage.getAlert(expanse)).isVisible());
-  }
-
-  @ParameterizedTest
-  @MethodSource("provideRoutes")
   public void testAlertHasCorrectExpanse(SupportedLanguage language) {
-    setupAlertExpansesDemo(language);
-    assertForEach(expanse -> assertExpanse(alertPage.getAlert(expanse), expanse));
-  }
-
-  @ParameterizedTest
-  @MethodSource("provideRoutes")
-  public void testAlertsHaveSuccessTheme(SupportedLanguage language) {
-    setupAlertExpansesDemo(language);
-    assertForEach(expanse -> assertTheme(alertPage.getAlert(expanse), Theme.SUCCESS));
+    alertPage.setRoute(language);
+    var expanses = Expanse.values();
+    for (int i = expanses.length - 1, j = 0; i >= 0; i--, j++) {
+      var alert = alertPage.getAlert().nth(i);
+      alert.assertThat().isVisible();
+      alert.assertThat().hasTheme(Theme.SUCCESS);
+      alert.assertThat().hasExpanse(expanses[j]);
+    }
   }
 
 }

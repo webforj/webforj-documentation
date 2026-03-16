@@ -27,7 +27,7 @@ public class WebforjLocator implements Locator {
   }
 
   public WebforjAssertions assertThat() {
-    return new WebforjAssertions(PlaywrightAssertions.assertThat(this), this);
+    return new WebforjAssertions(PlaywrightAssertions.assertThat(locator), locator);
   }
 
   public List<WebforjLocator> allAsWebforj() {

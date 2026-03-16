@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
  * commonly used utility methods for testing webforj applications.
  */
 public abstract class AbstractPage {
-  private final Page page;
+  protected final Page page;
   private final String route;
 
   public AbstractPage(Page page, String route) {
@@ -26,7 +26,7 @@ public abstract class AbstractPage {
   }
 
   public AbstractPage(Page page, Class<? extends Composite<?>> view) {
-    this(page, view.getSimpleName().replace("View", ""));
+    this(page, view.getSimpleName().replace("View", "").toLowerCase());
   }
 
   public void setRoute(SupportedLanguage language) {

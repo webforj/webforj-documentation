@@ -58,10 +58,4 @@ public class WebforjAssertions extends LocatorAssertionsImpl implements LocatorA
     assertions.hasAttribute("expanse", EXPANSE_VALUES.get(expanse));
   }
 
-  public void isVisibleAfterClick(Locator clickTarget) {
-    assertions.not().isVisible();
-    clickTarget.click();
-    assertions.isVisible();
-  }
-
 }

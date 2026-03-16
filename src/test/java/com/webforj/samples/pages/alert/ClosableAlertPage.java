@@ -2,45 +2,32 @@ package com.webforj.samples.pages.alert;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.options.AriaRole;
 import com.webforj.component.alert.Alert;
-import com.webforj.samples.pages.SupportedLanguage;
-import com.webforj.samples.utils.NodeNameUtils;
+import com.webforj.component.button.Button;
+import com.webforj.samples.pages.AbstractPage;
+import com.webforj.samples.utils.WebforjLocator;
+import com.webforj.samples.views.alert.ClosableAlertView;
 
-public class ClosableAlertPage {
-
-  private static final String ROUTE = "closablealert";
-
-  private final Locator alert;
-  private final Locator alertText;
-  private final Locator closeButton;
-  private final Locator showAlertButton;
+public class ClosableAlertPage extends AbstractPage {
 
   public ClosableAlertPage(Page page) {
-    this.alert = page.locator(NodeNameUtils.getNodeName(Alert.class)).first();
-    this.alertText = page.getByText("Heads up! This alert can be dismissed.");
-    this.closeButton = page.locator("dwc-alert button").first();
-    this.showAlertButton = page.getByRole(AriaRole.BUTTON,
-        new Page.GetByRoleOptions().setName("Show Alert"));
+    super(page, ClosableAlertView.class);
   }
 
-  public static String getRoute(SupportedLanguage language) {
-    return language.getPath(ROUTE);
+  public WebforjLocator getAlert() {
+    return getByClass(Alert.class);
   }
 
-  public Locator getAlert() {
-    return alert;
+  public WebforjLocator getAlertText() {
+    return getByText("Heads up! This alert can be dismissed.");
   }
 
-  public Locator getAlertText() {
-    return alertText;
+  public WebforjLocator getCloseButton() {
+    return locator("dwc-alert button");
   }
 
-  public Locator getCloseButton() {
-    return closeButton;
-  }
-
+  // Unsure why, but using a WebforjLocator does not work in this case
   public Locator getShowAlertButton() {
-    return showAlertButton;
+    return page.locator("dwc-button");
   }
 }

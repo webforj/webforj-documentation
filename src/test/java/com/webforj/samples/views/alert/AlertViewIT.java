@@ -1,50 +1,45 @@
 package com.webforj.samples.views.alert;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static com.webforj.samples.utils.ThemeUtils.assertTheme;
-
 import com.webforj.component.Theme;
-import com.webforj.samples.pages.SupportedLanguage;
+import com.webforj.component.button.ButtonTheme;
+import com.webforj.samples.utils.SupportedLanguage;
 import com.webforj.samples.pages.alert.AlertPage;
-import com.webforj.samples.utils.ThemeUtils;
 import com.webforj.samples.views.BaseTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 public class AlertViewIT extends BaseTest {
   private AlertPage alertPage;
 
-  public void setupAlertDemo(SupportedLanguage language) {
-    navigateToRoute(AlertPage.getRoute(language));
+  @BeforeEach
+  public void setupAlertDemo() {
     alertPage = new AlertPage(page);
   }
 
   @ParameterizedTest
   @MethodSource("provideRoutes")
   public void testAlertIsVisible(SupportedLanguage language) {
-    setupAlertDemo(language);
-    assertThat(alertPage.getAlert()).isVisible();
+    alertPage.setRoute(language);
+    var alert = alertPage.getAlert();
+    alert.assertThat().isVisible();
+    alert.assertThat().hasTheme(Theme.PRIMARY);
   }
 
   @ParameterizedTest
   @MethodSource("provideRoutes")
   public void testAlertTextIsVisible(SupportedLanguage language) {
-    setupAlertDemo(language);
-    assertThat(alertPage.getAlertText()).isVisible();
+    alertPage.setRoute(language);
+    alertPage.getAlertText().assertThat().isVisible();
   }
 
   @ParameterizedTest
   @MethodSource("provideRoutes")
   public void testViewButtonIsVisible(SupportedLanguage language) {
-    setupAlertDemo(language);
-    assertThat(alertPage.getViewButton()).isVisible();
-    assertTheme(alertPage.getViewButton(), Theme.PRIMARY);
+    alertPage.setRoute(language);
+    var viewButton = alertPage.getViewButton();
+    viewButton.assertThat().isVisible();
+    viewButton.assertThat().hasTheme(ButtonTheme.PRIMARY);
   }
 
-  @ParameterizedTest
-  @MethodSource("provideRoutes")
-  public void testAlertHasPrimaryTheme(SupportedLanguage language) {
-    setupAlertDemo(language);
-    assertTheme(alertPage.getAlert(), Theme.PRIMARY);
-  }
 }

@@ -1,28 +1,20 @@
 package com.webforj.samples.pages.alert;
 
-import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.webforj.component.Expanse;
 import com.webforj.component.alert.Alert;
-import com.webforj.samples.pages.SupportedLanguage;
-import com.webforj.samples.utils.ExpanseUtils;
-import com.webforj.samples.utils.NodeNameUtils;
+import com.webforj.samples.pages.AbstractPage;
+import com.webforj.samples.utils.SupportedLanguage;
+import com.webforj.samples.utils.WebforjLocator;
+import com.webforj.samples.views.alert.AlertExpansesView;
 
-public class AlertExpansesPage {
-  private static final String ROUTE = "alertexpanses";
-
-  private final Page page;
+public class AlertExpansesPage extends AbstractPage {
 
   public AlertExpansesPage(Page page) {
-    this.page = page;
+    super(page, AlertExpansesView.class);
   }
 
-  public static String getRoute(SupportedLanguage language) {
-    return language.getPath(ROUTE);
-  }
-
-  public Locator getAlert(Expanse expanse) {
-    return ExpanseUtils.getLocator(page, NodeNameUtils.getNodeName(Alert.class), expanse);
+  public WebforjLocator getAlert() {
+    return getByClass(Alert.class);
   }
 
 }
