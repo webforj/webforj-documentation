@@ -62,7 +62,7 @@ You're welcome to try it and share feedback. Your input will help shape the fina
 No separate Kotlin installation is required. Maven handles compilation through the Kotlin Maven plugin, so any project that already builds with Maven can add Kotlin support with dependency and plugin configuration alone.
 
 :::tip Quick start
-The [webforJ Kotlin Starter](https://github.com/webforj/webforj-kotlin-starter) repository provides a pre-configured project with all dependencies and plugin setup ready to go. Clone it to start building with the DSL immediately.
+To get a webforJ project using Kotlin up and running with all the needed configurations out of the box, see [this section on using the webforJ Kotlin starter](#kotlin-starter-project).
 :::
 
 ### Dependencies {#dependencies}
