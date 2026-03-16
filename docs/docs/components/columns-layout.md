@@ -59,12 +59,12 @@ Breakpoints are applied to a `ColumnsLayout` in one of two ways: during construc
 ColumnsLayout layout = new ColumnsLayout();
 
 List<Breakpoint> breakpoints = List.of(
-  // One column at widths >= 0px
-  new Breakpoint(0, 1),
-  // Two columns at widths >= 600px
-  new Breakpoint(600, 2),
-  // Four columns at widths >= 1200px
-  new Breakpoint(1200, 4));
+    // One column at widths >= 0px
+    new Breakpoint(0, 1),
+    // Two columns at widths >= 600px
+    new Breakpoint(600, 2),
+    // Four columns at widths >= 1200px
+    new Breakpoint(1200, 4));
 
 layout.setBreakpoints(breakpoints);
 ```

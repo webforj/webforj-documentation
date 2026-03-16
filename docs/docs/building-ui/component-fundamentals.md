@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 title: Understanding Components
+sidebar_class_name: new-content
 ---
 
 <JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/> 
@@ -18,7 +19,7 @@ In webforJ, built-in components like [`Button`](../components/button) and [`Text
 ```java
 // This won't work in webforJ
 public class MyButton extends Button {
-  // Button is final - cannot be extended 
+    // Button is final - cannot be extended 
 }
 ```
 
@@ -26,17 +27,17 @@ webforJ uses **composition over inheritance**. Instead of extending existing com
 
 ```java
 public class SearchBar extends Composite<FlexLayout> {
-  private final FlexLayout self = getBoundComponent();
-  private TextField searchField;
-  private Button searchButton;
-  
-  public SearchBar() {
-    searchField = new TextField("Search");
-    searchButton = new Button("Go");
+    private final FlexLayout self = getBoundComponent();
+    private TextField searchField;
+    private Button searchButton;
     
-    self.setDirection(FlexDirection.ROW)
-      .add(searchField, searchButton);
-  }
+    public SearchBar() {
+        searchField = new TextField("Search");
+        searchButton = new Button("Go");
+        
+        self.setDirection(FlexDirection.ROW)
+            .add(searchField, searchButton);
+    }
 }
 ```
 
@@ -101,20 +102,20 @@ Implementing concern interfaces gives your custom components the same APIs as bu
 ```java
 // Implement HasSize to get width/height methods automatically
 public class SizedCard extends Composite<Div> implements HasSize<SizedCard> {
-  private final Div self = getBoundComponent();
-  
-  public SizedCard() {
-    self.setText("Card content");
-  }
-  
-  // No need to implement these - you get them for free:
-  // setWidth(), setHeight(), setSize()
+    private final Div self = getBoundComponent();
+    
+    public SizedCard() {
+        self.setText("Card content");
+    }
+    
+    // No need to implement these - you get them for free:
+    // setWidth(), setHeight(), setSize()
 }
 
 // Use it like any webforJ component
 SizedCard card = new SizedCard();
 card.setWidth("300px")
-  .setHeight("200px");
+    .setHeight("200px");
 ```
 
 The composite automatically forwards these calls to the underlying `Div`. No extra code needed.

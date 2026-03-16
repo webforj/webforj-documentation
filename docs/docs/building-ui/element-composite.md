@@ -75,7 +75,7 @@ Register event listeners using the `addEventListener()` method:
 ```java
 // Example: Adding a click event listener
 addEventListener(ElementClickEvent.class, event -> {
-  // Handle the click event
+    // Handle the click event
 });
 ```
 
@@ -113,19 +113,19 @@ height='300px'
 
 ```java
 ElementEventOptions options = new ElementEventOptions()
-  // Collect custom data from the client
-  .addData("query", "component.value")
-  .addData("timestamp", "Date.now()")
-  .addData("isValid", "component.checkValidity()")
-  
-  // Execute JavaScript before event fires
-  .setCode("component.classList.add('processing');")
-  
-  // Only fire if conditions are met
-  .setFilter("component.value.length >= 2")
-  
-  // Delay execution until user stops typing (300ms)
-  .setDebounce(300, DebouncePhase.TRAILING);
+    // Collect custom data from the client
+    .addData("query", "component.value")
+    .addData("timestamp", "Date.now()")
+    .addData("isValid", "component.checkValidity()")
+    
+    // Execute JavaScript before event fires
+    .setCode("component.classList.add('processing');")
+    
+    // Only fire if conditions are met
+    .setFilter("component.value.length >= 2")
+    
+    // Delay execution until user stops typing (300ms)
+    .setDebounce(300, DebouncePhase.TRAILING);
 
 addEventListener("input", this::handleSearch, options);
 ```

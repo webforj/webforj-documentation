@@ -38,13 +38,13 @@ layout.add(submit);
 
 ```kotlin title="Kotlin DSL"
 flexLayout {
-  direction = FlexDirection.COLUMN
-  styles["gap"] = "10px"
+    direction = FlexDirection.COLUMN
+    styles["gap"] = "10px"
 
-  textField("Name", placeholder = "Your name")
-  button("Submit", ButtonTheme.PRIMARY) {
-    onClick { handleSubmit() }
-  }
+    textField("Name", placeholder = "Your name")
+    button("Submit", ButtonTheme.PRIMARY) {
+        onClick { handleSubmit() }
+    }
 }
 ```
 
@@ -67,15 +67,15 @@ Add the webforJ Kotlin DSL module and the Kotlin standard library to your `pom.x
 
 ```xml
 <dependency>
-  <groupId>com.webforj.kotlin</groupId>
-  <artifactId>webforj-kotlin</artifactId>
-  <version>${webforj.version}</version>
+    <groupId>com.webforj.kotlin</groupId>
+    <artifactId>webforj-kotlin</artifactId>
+    <version>${webforj.version}</version>
 </dependency>
 
 <dependency>
-  <groupId>org.jetbrains.kotlin</groupId>
-  <artifactId>kotlin-stdlib-jdk8</artifactId>
-  <version>${kotlin.version}</version>
+    <groupId>org.jetbrains.kotlin</groupId>
+    <artifactId>kotlin-stdlib-jdk8</artifactId>
+    <version>${kotlin.version}</version>
 </dependency>
 ```
 
@@ -83,10 +83,10 @@ If you plan to write tests in Kotlin, also add the Kotlin test dependency. It in
 
 ```xml
 <dependency>
-  <groupId>org.jetbrains.kotlin</groupId>
-  <artifactId>kotlin-test</artifactId>
-  <version>${kotlin.version}</version>
-  <scope>test</scope>
+    <groupId>org.jetbrains.kotlin</groupId>
+    <artifactId>kotlin-test</artifactId>
+    <version>${kotlin.version}</version>
+    <scope>test</scope>
 </dependency>
 ```
 
@@ -96,42 +96,42 @@ Add the Kotlin Maven plugin to compile both your Kotlin and Java sources. The `s
 
 ```xml
 <plugin>
-  <groupId>org.jetbrains.kotlin</groupId>
-  <artifactId>kotlin-maven-plugin</artifactId>
-  <version>${kotlin.version}</version>
-  <executions>
-    <execution>
-      <id>compile</id>
-      <phase>compile</phase>
-      <goals>
-        <goal>compile</goal>
-      </goals>
-      <configuration>
-        <sourceDirs>
-          <sourceDir>src/main/java</sourceDir>
-          <sourceDir>target/generated-sources/annotations</sourceDir>
-          <sourceDir>src/main/kotlin</sourceDir>
-        </sourceDirs>
-      </configuration>
-    </execution>
-    <execution>
-      <id>test-compile</id>
-      <phase>test-compile</phase>
-      <goals>
-        <goal>test-compile</goal>
-      </goals>
-      <configuration>
-        <sourceDirs>
-          <sourceDir>src/test/java</sourceDir>
-          <sourceDir>target/generated-test-sources/test-annotations</sourceDir>
-          <sourceDir>src/test/kotlin</sourceDir>
-        </sourceDirs>
-      </configuration>
-    </execution>
-  </executions>
-  <configuration>
-    <jvmTarget>${maven.compiler.target}</jvmTarget>
-  </configuration>
+    <groupId>org.jetbrains.kotlin</groupId>
+    <artifactId>kotlin-maven-plugin</artifactId>
+    <version>${kotlin.version}</version>
+    <executions>
+        <execution>
+            <id>compile</id>
+            <phase>compile</phase>
+            <goals>
+                <goal>compile</goal>
+            </goals>
+            <configuration>
+                <sourceDirs>
+                    <sourceDir>src/main/java</sourceDir>
+                    <sourceDir>target/generated-sources/annotations</sourceDir>
+                    <sourceDir>src/main/kotlin</sourceDir>
+                </sourceDirs>
+            </configuration>
+        </execution>
+        <execution>
+            <id>test-compile</id>
+            <phase>test-compile</phase>
+            <goals>
+                <goal>test-compile</goal>
+            </goals>
+            <configuration>
+                <sourceDirs>
+                    <sourceDir>src/test/java</sourceDir>
+                    <sourceDir>target/generated-test-sources/test-annotations</sourceDir>
+                    <sourceDir>src/test/kotlin</sourceDir>
+                </sourceDirs>
+            </configuration>
+        </execution>
+    </executions>
+    <configuration>
+        <jvmTarget>${maven.compiler.target}</jvmTarget>
+    </configuration>
 </plugin>
 ```
 
@@ -178,9 +178,9 @@ Kotlin lets you add methods to existing classes without inheritance:
 ```kotlin
 // Java approach - static utility class
 public class StringUtils {
-  public static String addExclamation(String input) {
-    return input + "!";
-  }
+    public static String addExclamation(String input) {
+        return input + "!";
+    }
 }
 String result = StringUtils.addExclamation("Hello");
 
@@ -220,9 +220,9 @@ public Button(String text, ButtonTheme theme) {}
 
 // Kotlin - one function with defaults
 fun button(
-  text: String = "",
-  theme: ButtonTheme = ButtonTheme.DEFAULT,
-  block: Button.() -> Unit = {}
+    text: String = "",
+    theme: ButtonTheme = ButtonTheme.DEFAULT,
+    block: Button.() -> Unit = {}
 ): Button
 ```
 

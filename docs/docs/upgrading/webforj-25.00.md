@@ -152,8 +152,8 @@ Environment environment = Environment.getCurrent();
 WebforjBBjBridge bridge = environment.getBridge();
 
 ConfirmDialog dialog = new ConfirmDialog(
-  "Are you sure you want to delete this file?", "Deletion",
-  ConfirmDialog.OptionType.OK_CANCEL, ConfirmDialog.MessageType.QUESTION);
+      "Are you sure you want to delete this file?", "Deletion",
+      ConfirmDialog.OptionType.OK_CANCEL, ConfirmDialog.MessageType.QUESTION);
 
 int msgboxResult = bridge.msgbox(dialog);
 ```

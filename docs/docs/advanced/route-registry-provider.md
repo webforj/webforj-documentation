@@ -1,6 +1,7 @@
 ---
 title: Route Registry Provider
 sidebar_position: 60
+sidebar_class_name: new-content
 ---
 
 <!-- vale Google.Headings = NO -->

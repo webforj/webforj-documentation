@@ -1,6 +1,7 @@
 ---
 title: JBang
-sidebar_position: 10
+sidebar_position: 15
+sidebar_class_name: new-content
 ---
 
 # JBang <DocChip chip='since' label='25.11' />

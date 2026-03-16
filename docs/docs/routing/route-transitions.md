@@ -1,6 +1,7 @@
 ---
 sidebar_position: 12
 title: Route Transitions
+sidebar_class_name: new-content
 ---
 
 <!-- vale Google.Units = NO -->

@@ -78,10 +78,10 @@ The `ConfirmDialog.Result` enum includes the following possible results:
 
 ```java showLineNumbers
 if (result == ConfirmDialog.Result.FIRST_CUSTOM_BUTTON) {
-  OptionDialog.showMessageDialog("Changes discarded", "Discarded", "Got it");
+    OptionDialog.showMessageDialog("Changes discarded", "Discarded", "Got it");
 } else {
-  OptionDialog.showMessageDialog(
-    "Changes saved", "Saved", "Got it", MessageDialog.MessageType.INFO);
+    OptionDialog.showMessageDialog(
+        "Changes saved", "Saved", "Got it", MessageDialog.MessageType.INFO);
 }
 ```
 
@@ -91,7 +91,7 @@ The `ConfirmDialog` allows you to specify a default button that is preselected w
 
 ```java showLineNumbers
 ConfirmDialog dialog = new ConfirmDialog(
-  "Are you sure?", "Confirm", ConfirmDialog.OptionType.YES_NO);
+    "Are you sure?", "Confirm", ConfirmDialog.OptionType.YES_NO);
 dialog.setDefaultButton(Button.SECOND); // second button
 dialog.show();
 ```
@@ -102,7 +102,7 @@ You can configure the text of the buttons using the `setButtonText(ConfirmDialog
 
 ```java showLineNumbers
 ConfirmDialog dialog = new ConfirmDialog(
-  "Are you sure?", "Confirm", ConfirmDialog.OptionType.CUSTOM);
+    "Are you sure?", "Confirm", ConfirmDialog.OptionType.CUSTOM);
 dialog.setButtonText(ConfirmDialog.Button.FIRST, "Absolutely");
 dialog.setButtonText(ConfirmDialog.Button.SECOND, "Nope");
 dialog.show();
@@ -114,8 +114,8 @@ By default, the confirm dialog processes and renders HTML content. You can turn 
 
 ```java showLineNumbers
 ConfirmDialog dialog = new ConfirmDialog(
-  "<b>Are you sure?</b>", "Confirm",
-  ConfirmDialog.OptionType.YES_NO, ConfirmDialog.MessageType.QUESTION);
+    "<b>Are you sure?</b>", "Confirm",
+    ConfirmDialog.OptionType.YES_NO, ConfirmDialog.MessageType.QUESTION);
 dialog.setRawText(true);
 dialog.show();
 ```

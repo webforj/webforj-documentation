@@ -32,22 +32,22 @@ Tags within the `<configuration>` tag can be changed to configure your app. Edit
 
 ```xml {13-16} showLineNumbers
 <plugin>
-  <groupId>com.webforj</groupId>
-  <artifactId>webforj-install-maven-plugin</artifactId>
-  <version>${webforj.version}</version>
-  <executions>
-    <execution>
-      <goals>
-        <goal>install</goal>
-      </goals>
-  </execution>
-  </executions>
-  <configuration>
-    <deployurl>http://localhost:8888/webforj-install</deployurl>
-    <classname>samples.HelloWorldApp</classname>
-    <publishname>hello-world</publishname>
-    <debug>true</debug>
-  </configuration>
+    <groupId>com.webforj</groupId>
+    <artifactId>webforj-install-maven-plugin</artifactId>
+    <version>${webforj.version}</version>
+    <executions>
+        <execution>
+            <goals>
+                <goal>install</goal>
+            </goals>
+    </execution>
+    </executions>
+    <configuration>
+        <deployurl>http://localhost:8888/webforj-install</deployurl>
+        <classname>samples.HelloWorldApp</classname>
+        <publishname>hello-world</publishname>
+        <debug>true</debug>
+    </configuration>
 </plugin>
 ```
 

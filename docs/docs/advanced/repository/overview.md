@@ -101,9 +101,9 @@ repository.setBaseFilter(product -> "Electronics".equals(product.getCategory()))
 
 // Combine multiple conditions
 repository.setBaseFilter(product -> 
-  product.getCategory().equals("Electronics") && 
-  product.getStock() > 0 && 
-  product.getPrice() < 100.0
+    product.getCategory().equals("Electronics") && 
+    product.getStock() > 0 && 
+    product.getPrice() < 100.0
 );
 
 // Clear filter
@@ -128,16 +128,16 @@ Implement <JavadocLink type="data" location="com/webforj/data/HasEntityKey" code
 
 ```java
 public class Customer implements HasEntityKey {
-  private String customerId;
-  private String name;
-  private String email;
+    private String customerId;
+    private String name;
+    private String email;
 
-  @Override
-  public Object getEntityKey() {
-    return customerId;
-  }
+    @Override
+    public Object getEntityKey() {
+        return customerId;
+    }
 
-  // Constructor and getters/setters...
+    // Constructor and getters/setters...
 }
 
 // Find by key
@@ -145,8 +145,8 @@ Optional<Customer> customer = repository.find("C001");
 
 // Update specific customer
 customer.ifPresent(c -> {
-  c.setEmail("newemail@example.com");
-  repository.commit(c); // Only this customer's row updates
+    c.setEmail("newemail@example.com");
+    repository.commit(c); // Only this customer's row updates
 });
 ```
 
@@ -157,12 +157,12 @@ For entities where you can't or don't want to implement `HasEntityKey` (like JPA
 ```java
 @Entity
 public class Product {
-  @Id
-  private Long id;
-  private String name;
-  private double price;
+    @Id
+    private Long id;
+    private String name;
+    private double price;
 
-  // JPA-managed entity
+    // JPA-managed entity
 }
 
 // Configure repository to use the getId() method

@@ -31,12 +31,12 @@ The resulting string will be returned from the `show()` method, or the equivalen
 
 ```java showLineNumbers
 String result = OptionDialog.showFileChooserDialog(
-  "Select a file", "/home/user", FileChooserDialog.SelectionMode.FILES);
+    "Select a file", "/home/user", FileChooserDialog.SelectionMode.FILES);
 
 if (result != null) {
-  OptionDialog.showMessageDialog("You selected: " + result, "Selection Made");
+    OptionDialog.showMessageDialog("You selected: " + result, "Selection Made");
 } else {
-  OptionDialog.showMessageDialog("No selection made", "Selection Canceled");
+    OptionDialog.showMessageDialog("No selection made", "Selection Canceled");
 }
 ```
 

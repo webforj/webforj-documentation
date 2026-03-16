@@ -25,7 +25,7 @@ The annotation accepts a relative or full path to be loaded in the app. This wil
 
 ```java
 @JavaScript(value = "ws://my-component.js",
-  attributes = {@Attribute(name = "type", value = "module")})
+    attributes = {@Attribute(name = "type", value = "module")})
 ```
 
 :::info
@@ -69,7 +69,7 @@ Declarative CSS inclusion is supported through the `@StyleSheet` annotation, ena
 
 ```java
 @StyleSheet(value = "ws://my-component.css",
-  attributes = {@Attribute(name = "media", value = "screen")})
+    attributes = {@Attribute(name = "media", value = "screen")})
 ```
 
 :::info

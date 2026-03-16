@@ -24,29 +24,29 @@ This example uses session-based storage, but you could implement the same interf
 
 ```mermaid
 sequenceDiagram
-  box Startup Phase
-  participant Registrar as SecurityRegistrar
-  end
-  box Runtime Phase
-  participant Observer as RouteSecurityObserver
-  participant Manager as SecurityManager
-  participant Evaluators
-  participant Context as SecurityContext
-  participant Config as SecurityConfiguration
-  end
+    box Startup Phase
+    participant Registrar as SecurityRegistrar
+    end
+    box Runtime Phase
+    participant Observer as RouteSecurityObserver
+    participant Manager as SecurityManager
+    participant Evaluators
+    participant Context as SecurityContext
+    participant Config as SecurityConfiguration
+    end
 
-  Note over Registrar: Application starts
-  Registrar->>Manager: Create
-  Registrar->>Evaluators: Register
-  Registrar->>Observer: Attach to router
+    Note over Registrar: Application starts
+    Registrar->>Manager: Create
+    Registrar->>Evaluators: Register
+    Registrar->>Observer: Attach to router
 
-  Note over Observer,Config: User navigates to route
-  Observer->>Manager: Request decision
-  Manager->>Evaluators: Run evaluators
-  Evaluators->>Context: Check user
-  Evaluators->>Config: Get redirects
-  Evaluators-->>Manager: Decision
-  Manager-->>Observer: Grant or Deny
+    Note over Observer,Config: User navigates to route
+    Observer->>Manager: Request decision
+    Manager->>Evaluators: Run evaluators
+    Evaluators->>Context: Check user
+    Evaluators->>Config: Get redirects
+    Evaluators-->>Manager: Decision
+    Manager-->>Observer: Grant or Deny
 ```
 
 **Flow:**

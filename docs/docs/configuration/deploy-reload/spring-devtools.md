@@ -28,16 +28,16 @@ Add both Spring DevTools and webforJ DevTools to your project:
 
 ```xml title="pom.xml"
 <dependency>
-  <groupId>org.springframework.boot</groupId>
-  <artifactId>spring-boot-devtools</artifactId>
-  <optional>true</optional>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+    <optional>true</optional>
 </dependency>
 
 <dependency>
-  <groupId>com.webforj</groupId>
-  <artifactId>webforj-spring-devtools</artifactId>
-  <version>${webforj.version}</version>
-  <optional>true</optional>
+    <groupId>com.webforj</groupId>
+    <artifactId>webforj-spring-devtools</artifactId>
+    <version>${webforj.version}</version>
+    <optional>true</optional>
 </dependency>
 ```
 

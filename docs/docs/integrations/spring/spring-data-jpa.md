@@ -40,7 +40,8 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {}
 public interface CustomerRepository extends PagingAndSortingRepository<Customer, Long> {}
 
 // Full featured repository
-public interface CustomerRepository extends JpaRepository<Customer, Long>, JpaSpecificationExecutor<Customer> {}
+public interface CustomerRepository extends JpaRepository<Customer, Long>, 
+                                           JpaSpecificationExecutor<Customer> {}
 ```
 
 `SpringDataRepository` examines which interfaces your repository implements and adapts its behavior accordingly. If your repository supports pagination, the adapter enables paginated queries. If it implements `JpaSpecificationExecutor`, you can use dynamic filtering with specifications.
@@ -65,9 +66,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PersonRepository
-  extends JpaRepository<Person, Long>,
-      JpaSpecificationExecutor<Person> {
-  // Custom query methods can go here
+    extends JpaRepository<Person, Long>,
+            JpaSpecificationExecutor<Person> {
+    // Custom query methods can go here
 }
 ```
 
@@ -124,15 +125,15 @@ To understand how filtering works with webforJ repositories, including base filt
 ```java
 // Filter by city
 Specification<Person> cityFilter = (root, query, cb) -> 
-  cb.equal(root.get("city"), "New York");
+    cb.equal(root.get("city"), "New York");
 repository.setFilter(cityFilter);
 
 // Multiple conditions
 Specification<Person> complexFilter = (root, query, cb) -> 
-  cb.and(
-    cb.equal(root.get("profession"), "Engineer"),
-    cb.greaterThanOrEqualTo(root.get("age"), 25)
-  );
+    cb.and(
+        cb.equal(root.get("profession"), "Engineer"),
+        cb.greaterThanOrEqualTo(root.get("age"), 25)
+    );
 repository.setFilter(complexFilter);
 
 // Clear filter

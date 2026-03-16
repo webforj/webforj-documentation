@@ -2,6 +2,7 @@
 title: RadioButtonGroup
 slug: radiobuttongroup
 sidebar_position: 100
+sidebar_class_name: updated-content
 ---
 
 <DocChip chip='since' label='23.01' />

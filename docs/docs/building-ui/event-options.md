@@ -63,5 +63,5 @@ Consider the following example annotation:
 
 ```java
 @EventOptions(data = {@EventData(key = "value", exp = "component.value")},
-debounce = @DebounceSettings(value = 200))
+      debounce = @DebounceSettings(value = 200))
 ```

@@ -19,9 +19,9 @@ To use the `GoogleChart` class in your app, use the following XML in your POM fi
 
 ```xml
 <dependency>
-  <groupId>com.webforj</groupId>
-  <artifactId>webforj-googlecharts</artifactId>
-  <version>${webforj.version}</version>
+    <groupId>com.webforj</groupId>
+    <artifactId>webforj-googlecharts</artifactId>
+    <version>${webforj.version}</version>
 </dependency>
 ```
 :::
@@ -131,8 +131,8 @@ data.add(Arrays.asList("2016", 1030, 540));
 chart.setData(data);
 
 Map<String, Object> options = new Gson().fromJson(
-  Assets.contentOf("options.json"),
-  new TypeToken<Map<String, Object>>() {}.getType()
+    Assets.contentOf("options.json"),
+    new TypeToken<Map<String, Object>>() {}.getType()
 );
 chart.setOptions(options);
 ```
@@ -164,8 +164,8 @@ Call `getImageUri()` on your chart instance after the chart has been fully rende
 
 ```java
 chart.addReadyListener(e -> {
-  String imageUri = chart.getImageUri();
-  // Now you can use the imageUri, for example, as the src attribute of an img tag
+    String imageUri = chart.getImageUri();
+    // Now you can use the imageUri, for example, as the src attribute of an img tag
 });
 ```
 
@@ -180,14 +180,14 @@ GoogleChart chart = new GoogleChart(GoogleChart.Type.BAR);
 
 // Add the selected listener to the chart
 chart.addSelectedListener(event -> {
-  // Get the selection
-  List<Object> selection = chart.getSelection();
-  
-  // Handle the selected event
-  if (!selection.isEmpty()) {
-    System.out.println("Selected Row: " + selection.get(0));
-    // Further processing based on the row/column of selection
-  }
+    // Get the selection
+    List<Object> selection = chart.getSelection();
+    
+    // Handle the selected event
+    if (!selection.isEmpty()) {
+        System.out.println("Selected Row: " + selection.get(0));
+        // Further processing based on the row/column of selection
+    }
 });
 ```
 
