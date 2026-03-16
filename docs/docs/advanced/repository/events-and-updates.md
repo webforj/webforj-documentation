@@ -15,14 +15,14 @@ Every `commit()` call fires a <JavadocLink type="data" location="com/webforj/dat
 
 ```java
 repository.onCommit(event -> {
-    // Get all committed entities
-    List<Customer> commits = event.getCommits();
-    
-    // Check if single entity update
-    if (event.isSingleCommit()) {
-        Customer updated = event.getFirstCommit();
-        System.out.println("Updated: " + updated.getName());
-    }
+  // Get all committed entities
+  List<Customer> commits = event.getCommits();
+  
+  // Check if single entity update
+  if (event.isSingleCommit()) {
+    Customer updated = event.getFirstCommit();
+    System.out.println("Updated: " + updated.getName());
+  }
 });
 ```
 
@@ -63,15 +63,15 @@ Bulk commits refresh everything. Use them when:
 ```java
 // Auto-updating labels
 repository.onCommit(event -> {
-    double total = sales.stream().mapToDouble(Sale::getAmount).sum();
-    totalLabel.setText(String.format("Total: $%.2f", total));
-    countLabel.setText("Sales: " + sales.size());
+  double total = sales.stream().mapToDouble(Sale::getAmount).sum();
+  totalLabel.setText(String.format("Total: $%.2f", total));
+  countLabel.setText("Sales: " + sales.size());
 });
 
 // Live result counts
 repository.onCommit(e -> {
-    long count = repository.findAll().count();
-    resultsLabel.setText(count + " products found");
+  long count = repository.findAll().count();
+  resultsLabel.setText(count + " products found");
 });
 ```
 
@@ -84,13 +84,13 @@ Event listeners hold references to your components. If you don't remove them, th
 ```java
 // Keep reference to remove later
 ListenerRegistration<RepositoryCommitEvent<Data>> registration = 
-    repository.onCommit(event -> {
-        updateDisplay(event.getCommits());
-    });
+  repository.onCommit(event -> {
+    updateDisplay(event.getCommits());
+  });
 
 // Clean up listener when component is destroyed
 if (registration != null) {
-    registration.remove();
+  registration.remove();
 }
 ```
 

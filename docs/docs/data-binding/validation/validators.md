@@ -14,9 +14,9 @@ Add validators to a binding using the `useValidator` method on the `BindingBuild
 
 ```java
 context.bind(nameTextField, "name")
-    .useValidator(value -> !value.isEmpty(), "Name cannot be empty")
-    .useValidator(value -> value.length() >= 3, "Name must be at least 3 characters long")
-    .add();
+  .useValidator(value -> !value.isEmpty(), "Name cannot be empty")
+  .useValidator(value -> value.length() >= 3, "Name must be at least 3 characters long")
+  .add();
 ```
 
 In the example above, two validators verify that the name isn't empty and that it contains at least three characters.
@@ -58,8 +58,8 @@ To apply the `EmailValidator` to a binding:
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
 context.bind(ageField, "age")
-    .useValidator(new EmailValidator())
-    .add();
+  .useValidator(new EmailValidator())
+  .add();
 ```
 
 ### Overriding validator messages {#overriding-validator-messages}
@@ -71,9 +71,9 @@ Here's how to override the default message of a reusable validator in a binding:
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
 context.bind(emailField, "email")
-    .useValidator(
-        Validator.from(new EmailValidator(), "Custom message for invalid email address"))
-    .add();
+  .useValidator(
+    Validator.from(new EmailValidator(), "Custom message for invalid email address"))
+  .add();
 ```
 
 In the example above, the code applies the `EmailValidator` to an email field with a custom error message specifically tailored for that field.
@@ -92,9 +92,9 @@ Pass a `Supplier<String>` instead of a plain `String` to `useValidator`:
 
 ```java {2,3}
 context.bind(nameTextField, "name")
-    .useValidator(value -> !value.isEmpty(), () -> t("validation.name.required"))
-    .useValidator(value -> value.length() >= 3, () -> t("validation.name.minLength"))
-    .add();
+  .useValidator(value -> !value.isEmpty(), () -> t("validation.name.required"))
+  .useValidator(value -> value.length() >= 3, () -> t("validation.name.minLength"))
+  .add();
 ```
 
 Each time validation runs and the predicate fails, the supplier calls `t()` which resolves the message for the current locale.
@@ -106,14 +106,14 @@ The `Validator.of` and `Validator.from` factory methods also accept suppliers:
 ```java {4,10}
 // Create a predicate-based validator with a dynamic message
 Validator<String> required = Validator.of(
-    value -> !value.isEmpty(),
-    () -> t("validation.required")
+  value -> !value.isEmpty(),
+  () -> t("validation.required")
 );
 
 // Wrap an existing validator with a dynamic override message
 Validator<String> email = Validator.from(
-    new EmailValidator(),
-    () -> t("validation.email.invalid")
+  new EmailValidator(),
+  () -> t("validation.email.invalid")
 );
 ```
 

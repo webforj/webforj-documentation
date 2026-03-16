@@ -54,8 +54,8 @@ When adding an event listener, a `ListenerRegistration` object will be returned.
 ```java
 //Adding the event
 ListenerRegistration listenerRegistration = myComponent.addEventListener(e -> {
-        //Executed when the event fires
-    });
+    //Executed when the event fires
+  });
 
 //Removing the event
 listenerRegistration.remove();

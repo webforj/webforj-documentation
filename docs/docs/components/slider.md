@@ -139,11 +139,11 @@ You can replace the default numeric labels with custom text using the `setLabels
 
 ```java
 Map<Integer, String> customLabels = Map.of(
-    0, "Cold",
-    30, "Cool",
-    50, "Moderate",
-    80, "Warm",
-    100, "Hot"
+  0, "Cold",
+  30, "Cool",
+  50, "Moderate",
+  80, "Warm",
+  100, "Hot"
 );
 
 slider.setLabels(customLabels);
