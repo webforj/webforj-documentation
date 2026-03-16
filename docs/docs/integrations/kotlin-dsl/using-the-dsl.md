@@ -18,9 +18,6 @@ div {
   }
 }
 ```
-:::important `Header` and `Footer` methods
-The `header` and `footer` DSL methods were renamed to `nativeHeader` and `nativeFooter` to avoid conflicts with header and footer slots of other components.
-:::
 
 :::important Using the `Break` component
 One exception: `Break` uses backticks because `break` is a Kotlin keyword:
