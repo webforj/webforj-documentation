@@ -9,11 +9,6 @@ import org.junit.jupiter.api.Test;
 import com.webforj.samples.pages.viewtransitions.ViewTransitionMorphPage;
 import com.webforj.samples.views.BaseTest;
 
-/**
- * Integration tests for the View Transition Morph demo using Page Object Model.
- *
- * @author Hyyan Abou Assali
- */
 class ViewTransitionMorphViewIT extends BaseTest {
 
     private ViewTransitionMorphPage morphPage;
