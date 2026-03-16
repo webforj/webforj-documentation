@@ -18,7 +18,7 @@ In webforJ, built-in components like [`Button`](../components/button) and [`Text
 ```java
 // This won't work in webforJ
 public class MyButton extends Button {
-    // Button is final - cannot be extended 
+  // Button is final - cannot be extended 
 }
 ```
 
@@ -26,17 +26,17 @@ webforJ uses **composition over inheritance**. Instead of extending existing com
 
 ```java
 public class SearchBar extends Composite<FlexLayout> {
-    private final FlexLayout self = getBoundComponent();
-    private TextField searchField;
-    private Button searchButton;
+  private final FlexLayout self = getBoundComponent();
+  private TextField searchField;
+  private Button searchButton;
+  
+  public SearchBar() {
+    searchField = new TextField("Search");
+    searchButton = new Button("Go");
     
-    public SearchBar() {
-        searchField = new TextField("Search");
-        searchButton = new Button("Go");
-        
-        self.setDirection(FlexDirection.ROW)
-            .add(searchField, searchButton);
-    }
+    self.setDirection(FlexDirection.ROW)
+      .add(searchField, searchButton);
+  }
 }
 ```
 
@@ -50,25 +50,25 @@ For a detailed explanation, see [Final Classes and Extension Restrictions](https
 
 ```mermaid
 graph TD
-    A[Component<br/><small>Abstract base - framework internal</small>]
-    
-    A --> B[DwcComponent<br/><small>Built-in webforJ components</small>]
-    A --> C[Composite<br/><small>Combine webforJ components</small>]
-    A --> D[ElementComposite<br/><small>Wrap web components</small>]
-    
-    B --> E[Button, TextField,<br/>DateField, ComboBox]
-    
-    D --> F[ElementCompositeContainer<br/><small>Components with slots</small>]
-    
-    style A fill:#f5f5f5,stroke:#666
-    style B fill:#fff4e6,stroke:#ff9800
-    style C fill:#e6ffe6,stroke:#00cc00
-    style D fill:#e6f3ff,stroke:#0066cc
-    style E fill:#fff4e6,stroke:#ff9800
-    style F fill:#e6f3ff,stroke:#0066cc
-    
-    classDef userClass stroke-width:3px
-    class C,D,F userClass
+  A[Component<br/><small>Abstract base - framework internal</small>]
+  
+  A --> B[DwcComponent<br/><small>Built-in webforJ components</small>]
+  A --> C[Composite<br/><small>Combine webforJ components</small>]
+  A --> D[ElementComposite<br/><small>Wrap web components</small>]
+  
+  B --> E[Button, TextField,<br/>DateField, ComboBox]
+  
+  D --> F[ElementCompositeContainer<br/><small>Components with slots</small>]
+  
+  style A fill:#f5f5f5,stroke:#666
+  style B fill:#fff4e6,stroke:#ff9800
+  style C fill:#e6ffe6,stroke:#00cc00
+  style D fill:#e6f3ff,stroke:#0066cc
+  style E fill:#fff4e6,stroke:#ff9800
+  style F fill:#e6f3ff,stroke:#0066cc
+  
+  classDef userClass stroke-width:3px
+  class C,D,F userClass
 ```
 
 **Classes for developers (use these):**
@@ -97,20 +97,20 @@ Implementing concern interfaces gives your custom components the same APIs as bu
 ```java
 // Implement HasSize to get width/height methods automatically
 public class SizedCard extends Composite<Div> implements HasSize<SizedCard> {
-    private final Div self = getBoundComponent();
-    
-    public SizedCard() {
-        self.setText("Card content");
-    }
-    
-    // No need to implement these - you get them for free:
-    // setWidth(), setHeight(), setSize()
+  private final Div self = getBoundComponent();
+  
+  public SizedCard() {
+    self.setText("Card content");
+  }
+  
+  // No need to implement these - you get them for free:
+  // setWidth(), setHeight(), setSize()
 }
 
 // Use it like any webforJ component
 SizedCard card = new SizedCard();
 card.setWidth("300px")
-    .setHeight("200px");
+  .setHeight("200px");
 ```
 
 The composite automatically forwards these calls to the underlying `Div`. No extra code needed.

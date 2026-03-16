@@ -36,17 +36,16 @@ To set a value provider on a column, use one of the `addColumn()` methods from t
 In the following snippet, a column will attempt to access data from a JSON object, rendering it only if the data isn't null.
 
 ```java
-    List<String> columnsList = List.of("athlete", "age", "country", "year", "sport", "gold", "silver", "bronze", "total");
-
-    for (String column : columnsList) {
-      table.addColumn(column, (JsonObject person) -> {
-        JsonElement element = person.get(column);
-        if (!element.isJsonNull()) {
-          return element.getAsString();
-        }
-        return "";
-      });
+List<String> columnsList = List.of("athlete", "age", "country", "year", "sport", "gold", "silver", "bronze", "total");
+for (String column : columnsList) {
+  table.addColumn(column, (JsonObject person) -> {
+    JsonElement element = person.get(column);
+    if (!element.isJsonNull()) {
+      return element.getAsString();
     }
+    return "";
+  });
+}
 ```
 
 ### Visibility {#visibility}
@@ -163,8 +162,8 @@ The `setMaxWidth()` method limits how wide a column can grow, preventing columns
 
 ```java
 table.addColumn("Description", Product::getDescription)
-    .setMinWidth(100f)
-    .setMaxWidth(300f);
+  .setMinWidth(100f)
+  .setMaxWidth(300f);
 ```
 
 The `maxWidth` property limits column growth for all column types and will never be exceeded regardless of content, container size, or flex settings.
@@ -215,7 +214,7 @@ Automatically size columns based on their content. The `Table` analyzes the data
 ```java
 // Auto-size all columns to fit content
 table.setColumnsToAutoSize().thenAccept(c -> {
-    // Sizing complete - columns now fit their content
+  // Sizing complete - columns now fit their content
 });
 
 // Auto-size specific column
@@ -229,7 +228,7 @@ Distribute all columns proportionally across the available `Table` width. This o
 ```java
 // Fit columns to table width (equivalent to setting flex=1 on all)
 table.setColumnsToAutoFit().thenAccept(ignored -> {
-    // All columns now share space equally
+  // All columns now share space equally
 });
 ```
 
@@ -320,7 +319,7 @@ table.moveColumn(titleColumn, table.getColumns().size() - 1);
 
 // Async movement with callback
 table.moveColumn("description", 2).thenAccept(c -> {
-    // Column moved successfully
+  // Column moved successfully
 });
 ```
 
