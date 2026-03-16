@@ -1,10 +1,31 @@
 // @ts-check
 const lightCodeTheme = require('prism-react-renderer').themes.github;
 const darkCodeTheme = require('prism-react-renderer').themes.dracula;
-const webforjVersion = `${process.env.WEBFORJ_VERSION || 'latest'}`;
 
-/** @type {import('@docusaurus/types').Config} */
-const config = {
+/** Resolves the webforJ version, fetching from GitHub if the build version is a SNAPSHOT. */
+async function resolveWebforjVersion() {
+  const version = process.env.WEBFORJ_VERSION || 'latest';
+  if (!version.toLowerCase().includes('snapshot')) {
+    return version;
+  }
+
+  try {
+    const res = await fetch(
+      'https://api.github.com/repos/webforj/webforj/releases/latest',
+      { headers: { 'User-Agent': 'webforj-docs' }, signal: AbortSignal.timeout(10000) }
+    );
+    const { tag_name } = await res.json();
+    return tag_name ? tag_name.replace(/^v/, '') : version.replace(/-SNAPSHOT$/i, '');
+  } catch {
+    return version.replace(/-SNAPSHOT$/i, '');
+  }
+}
+
+/** @returns {Promise<import('@docusaurus/types').Config>} */
+module.exports = async function createConfig() {
+  const webforjVersion = await resolveWebforjVersion();
+
+  return {
   title: 'webforJ Documentation',
   tagline: 'webforJ is a robust and flexible web framework that allows you to easily create a modern and engaging user interface using Java.',
   url: 'https://docs.webforj.com/',
@@ -309,5 +330,4 @@ const config = {
     },
   }
 };
-
-module.exports = config;
+};
