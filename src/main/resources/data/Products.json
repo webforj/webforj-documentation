@@ -1,0 +1,202 @@
+[
+  {
+    "name": "Wireless Headphones",
+    "sku": "SKU-1001",
+    "category": "Electronics",
+    "price": 79.99,
+    "discount": 10,
+    "rating": 4.5,
+    "inStock": true,
+    "description": "Noise-cancelling over-ear headphones"
+  },
+  {
+    "name": "Mechanical Keyboard",
+    "sku": "SKU-1002",
+    "category": "Electronics",
+    "price": 129.99,
+    "discount": 5,
+    "rating": 4.7,
+    "inStock": true,
+    "description": "TKL layout, Cherry MX Brown switches"
+  },
+  {
+    "name": "USB-C Hub",
+    "sku": "SKU-1003",
+    "category": "Electronics",
+    "price": 34.99,
+    "discount": 20,
+    "rating": 4.2,
+    "inStock": true,
+    "description": null
+  },
+  {
+    "name": "Desk Lamp",
+    "sku": "SKU-1004",
+    "category": "Office",
+    "price": 24.99,
+    "discount": 0,
+    "rating": 3.8,
+    "inStock": false,
+    "description": "LED adjustable arm lamp"
+  },
+  {
+    "name": "Notebook A5",
+    "sku": "SKU-1005",
+    "category": "Stationery",
+    "price": 6.49,
+    "discount": 15,
+    "rating": 4,
+    "inStock": true,
+    "description": "80 pages, dotted grid"
+  },
+  {
+    "name": "Monitor Stand",
+    "sku": "SKU-1006",
+    "category": "Office",
+    "price": 45,
+    "discount": 0,
+    "rating": 4.4,
+    "inStock": true,
+    "description": null
+  },
+  {
+    "name": "Webcam 1080p",
+    "sku": "SKU-1007",
+    "category": "Electronics",
+    "price": 59.99,
+    "discount": 8,
+    "rating": 4.1,
+    "inStock": true,
+    "description": "Built-in mic, auto-focus"
+  },
+  {
+    "name": "Laptop Sleeve 15in",
+    "sku": "SKU-1008",
+    "category": "Accessories",
+    "price": 19.99,
+    "discount": 25,
+    "rating": 4.3,
+    "inStock": true,
+    "description": "Water-resistant neoprene"
+  },
+  {
+    "name": "Ergonomic Mouse",
+    "sku": "SKU-1009",
+    "category": "Electronics",
+    "price": 39.99,
+    "discount": 0,
+    "rating": 4.6,
+    "inStock": false,
+    "description": "Vertical grip, 6 buttons"
+  },
+  {
+    "name": "Standing Desk Mat",
+    "sku": "SKU-1010",
+    "category": "Office",
+    "price": 49.99,
+    "discount": 5,
+    "rating": 4.5,
+    "inStock": true,
+    "description": "Anti-fatigue foam, 90x60cm"
+  },
+  {
+    "name": "Pen Set (12pc)",
+    "sku": "SKU-1011",
+    "category": "Stationery",
+    "price": 8.99,
+    "discount": 0,
+    "rating": 3.9,
+    "inStock": true,
+    "description": null
+  },
+  {
+    "name": "Portable SSD 1TB",
+    "sku": "SKU-1012",
+    "category": "Electronics",
+    "price": 89.99,
+    "discount": 12,
+    "rating": 4.8,
+    "inStock": true,
+    "description": "USB 3.2, 1050MB/s read"
+  },
+  {
+    "name": "Phone Stand",
+    "sku": "SKU-1013",
+    "category": "Accessories",
+    "price": 12.99,
+    "discount": 30,
+    "rating": 3.7,
+    "inStock": true,
+    "description": "Adjustable aluminium stand"
+  },
+  {
+    "name": "HDMI Cable 2m",
+    "sku": "SKU-1014",
+    "category": "Electronics",
+    "price": 9.99,
+    "discount": 0,
+    "rating": 4.2,
+    "inStock": true,
+    "description": "4K 60Hz, gold-plated"
+  },
+  {
+    "name": "Cable Organiser",
+    "sku": "SKU-1015",
+    "category": "Accessories",
+    "price": 14.49,
+    "discount": 10,
+    "rating": 4,
+    "inStock": true,
+    "description": null
+  },
+  {
+    "name": "Laser Pointer",
+    "sku": "SKU-1016",
+    "category": "Stationery",
+    "price": 11.99,
+    "discount": 0,
+    "rating": 3.6,
+    "inStock": false,
+    "description": "Green beam, 200m range"
+  },
+  {
+    "name": "Blue Light Glasses",
+    "sku": "SKU-1017",
+    "category": "Accessories",
+    "price": 22,
+    "discount": 15,
+    "rating": 4.4,
+    "inStock": true,
+    "description": "Anti-glare coating"
+  },
+  {
+    "name": "Desk Organiser",
+    "sku": "SKU-1018",
+    "category": "Office",
+    "price": 29.99,
+    "discount": 0,
+    "rating": 4.1,
+    "inStock": true,
+    "description": "5 compartments, bamboo"
+  },
+  {
+    "name": "Smart Plug (2-pack)",
+    "sku": "SKU-1019",
+    "category": "Electronics",
+    "price": 26.99,
+    "discount": 5,
+    "rating": 4.5,
+    "inStock": true,
+    "description": "Wi-Fi, works with Alexa"
+  },
+  {
+    "name": "Whiteboard 60x45cm",
+    "sku": "SKU-1020",
+    "category": "Office",
+    "price": 38,
+    "discount": 8,
+    "rating": 4.3,
+    "inStock": true,
+    "description": "Magnetic, includes markers"
+  }
+]
