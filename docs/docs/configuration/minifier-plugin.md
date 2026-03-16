@@ -1,7 +1,7 @@
 ---
 sidebar_position: 21
 title: Minifier Plugin
-sidebar_class_name: new-content
+sidebar_class_name: updated-content
 ---
 
 # Minifier plugin <DocChip chip='since' label='25.11' />

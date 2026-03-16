@@ -1,7 +1,6 @@
 ---
 title: Using the DSL
 sidebar_position: 10
-sidebar_class_name: new-content
 ---
 
 The Kotlin DSL provides builder functions for webforJ components. Each function creates a component, adds it to a parent container, and runs a configuration block. This page covers the patterns and conventions you'll use when building UIs with the DSL.

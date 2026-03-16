@@ -1,7 +1,6 @@
 ---
 sidebar_position: 2
 title: Understanding Components
-sidebar_class_name: new-content
 ---
 
 <JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/> 
