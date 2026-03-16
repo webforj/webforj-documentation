@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -11,6 +11,9 @@ import Box from '@mui/material/Box';
 
 export default function TableWrapper({ children, title, ...props }) {
     const [open, setOpen] = useState(false);
+    const [resolvedTitle, setResolvedTitle] = useState(title);
+
+    const tableRef = useRef(null);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -35,8 +38,20 @@ export default function TableWrapper({ children, title, ...props }) {
         }
     };
 
+    useEffect(() => {
+        if (title) return;
+        let prev = tableRef.current?.previousElementSibling;
+        while (prev) {
+            if (prev.tagName === "H2" || prev.tagName === "H3") {
+                setResolvedTitle(prev.textContent);
+                break;
+            }
+            prev = prev.previousElementSibling;
+        }
+    }, [title]);
+
     return (
-        <div className="table-wrapper" style={{ position: 'relative', marginBottom: '2rem', maxWidth: 'fit-content' }}>
+        <div className="table-wrapper" ref={tableRef} style={{ position: 'relative', marginBottom: '2rem', maxWidth: 'fit-content' }}>
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 1 }}>
                 <IconButton
                     onClick={handleClickOpen}
@@ -93,7 +108,7 @@ export default function TableWrapper({ children, title, ...props }) {
                     }}
                 >
                     <h2 style={{ margin: 0, color: 'var(--ifm-font-color-base)' }}>
-                        {title || ''}
+                        {resolvedTitle || ""}
                     </h2>
                     <Tooltip title="Close window">
                         <IconButton

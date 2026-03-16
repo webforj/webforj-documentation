@@ -1,7 +1,6 @@
 ---
 title: MarkdownViewer
 sidebar_position: 74
-sidebar_class_name: new-content
 ---
 
 <DocChip chip='shadow' />

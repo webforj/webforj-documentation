@@ -1,4 +1,5 @@
 {
   "label": "AI Tooling",
-  "position": 15
+  "position": 5,
+  "className": "has-new-content"
 }
