@@ -48,6 +48,7 @@ For a detailed explanation, see [Final Classes and Extension Restrictions](https
 
 ### The component hierarchy {#the-component-hierarchy}
 
+<div style={{textAlign: 'center'}}>
 ```mermaid
 graph TD
   A[Component<br/><small>Abstract base - framework internal</small>]
@@ -70,6 +71,7 @@ graph TD
   classDef userClass stroke-width:3px
   class C,D,F userClass
 ```
+</div>
 
 Classes for developers (use these):
 - `Composite`
