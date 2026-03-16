@@ -94,7 +94,7 @@ Add a `Badge` as a suffix on a `Tab` using `setSuffixComponent()`. This is a nat
 <ComponentDemo
 path='/webforj/badgetabbedpane?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeTabbedPaneView.java'
-height='275px'
+height='325px'
 />
 <!-- vale on -->
 
@@ -114,7 +114,7 @@ Apply a theme using `setTheme()` or through the constructor.
 <ComponentDemo
 path='/webforj/badgethemes?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeThemesView.java'
-height='250px'
+height='260px'
 />
 <!-- vale on -->
 
@@ -135,7 +135,7 @@ Use `setExpanse()` to control badge size. Nine sizes are available, ranging from
 <ComponentDemo
 path='/webforj/badgesizes?'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/badge/BadgeSizesView.java'
-height='250px'
+height='260px'
 />
 <!-- vale on -->
 
