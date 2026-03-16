@@ -25,6 +25,7 @@
 "ListBox" :"dwc-listbox",
 "Loading": "dwc-loading",
 "Login":"dwc-login",
+"MarkdownViewer": "dwc-markdown-viewer",
 "MaskedDateField": "dwc-datefield",
 "MaskedNumberField": "dwc-numberfield",
 "MaskedTextField": "dwc-textfield",

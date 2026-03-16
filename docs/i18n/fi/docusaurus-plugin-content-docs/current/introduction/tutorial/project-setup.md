@@ -1,58 +1,116 @@
 ---
 title: Project Setup
 sidebar_position: 1
-_i18n_hash: f8ad0e22acf56c824b05db580be2203b
+description: >-
+  Discover where to download the tutorial project, how to navigate it, and run
+  the apps within.
+_i18n_hash: f9a028daac660f61634ad84d00cb0130
 ---
-Tässä oppaassa sovellus jaetaan **neljään vaiheeseen**, joista jokainen esittelee uusia ominaisuuksia projektin edetessä. Seuraamalla mukana saat selkeän käsityksen siitä, kuinka sovellus kehittyy ja kuinka kukin ominaisuus toteutetaan.
+Aloita tämä opas luomalla sijainti projektille, jossa voit hallita luokkiasi ja resurssejasi. Seuraavat osiot kuvaavat erilaisia ​​tapoja luoda webforJ-projekti tätä opasta varten.
 
-Aloittaaksesi voit ladata koko projektin tai kloonata sen GitHubista:
+## Lähdekoodin käyttäminen {#using-source-code}
+
+Helpoin tapa seurata tätä opasta on viitata sen lähdekoodiin. Voit ladata koko projektin tai kloonata sen GitHubista:
+
 <!-- vale off -->
-- Lataa ZIP: [webforj-demo-sovellus.zip](https://github.com/webforj/webforj-demo-application/archive/refs/heads/main.zip)
-- GitHub-repositorio: Kloa projektin [suoraan GitHubista](https://github.com/webforj/webforj-demo-application)
+- Lataa ZIP: [webforj-tutorial.zip](https://github.com/webforj/webforj-tutorial/archive/refs/heads/main.zip)
+- GitHub-tietovarasto: Kloonaa projekti [suoraan GitHubista](https://github.com/webforj/webforj-tutorial)
 <!-- vale on -->
 ```bash
-git clone https://github.com/webforj/webforj-demo-application.git
+git clone https://github.com/webforj/webforj-tutorial.git
 ```
 
-Sekä ZIP-tiedosto että GitHub-repositorio sisältävät täydellisen projektirakenteen kaikilla neljällä vaiheella, joten voit aloittaa mistä tahansa tai seurata vaihe vaiheelta.
+### Projektirakenne {#project-structure}
 
-<div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/project-setup.mp4" type="video/mp4"/>
-  </video>
-</div>
-
-## Projektin rakenne {#project-structure}
-
-Projekti on jaettu neljään erilliseen hakemistoon, joista kukin edustaa tiettyä vaihetta sovelluksen kehityksessä. Nämä vaiheet auttavat sinua näkemään, kuinka sovellus kehittyy yksinkertaisesta asetuksesta täysin toimivaksi asiakashallintajärjestelmäksi.
-
-Projektikansion sisällä löydät neljä alihakemistoa, jotka vastaavat oppaan vaiheita:
+Projektissa on viisi alihakemistoa, yksi jokaiselle oppaan vaiheelle, ja jokainen sisältää suoritettavan sovelluksen. Seuraamalla voit nähdä, miten sovellus etenee perusasetuksesta täysin toimivaksi asiakashallintajärjestelmäksi.
 
 ```
-webforj-demo-application
+webforj-tutorial
 │   .gitignore
 │   LICENSE
 │   README.md
-│   tree.txt
 │
 ├───1-creating-a-basic-app  
 ├───2-working-with-data
-├───3-scaling-with-routing-and-composites
-└───4-validating-and-binding-data
+├───3-routing-and-composites
+├───4-observers-and-route-parameters
+└───5-validating-and-binding-data
 ```
 
-### Sovelluksen käynnistäminen {#running-the-app}
+## startforJ:n käyttäminen {#using-startforj}
 
-Nähdäksesi sovelluksen toiminnassa missä tahansa vaiheessa:
+Jos haluat luoda uuden projektin, voit käyttää [startforJ](https://docs.webforj.com/startforj) -työkalua luodaksesi minimaalisen aloitusprojektin. Katso [Aloitus](/docs/introduction/getting-started) saadaksesi tarkempia tietoja startforJ:n käytöstä.
 
-1) Siirry halutun vaiheen hakemistoon. Tämä pitäisi olla kyseisen vaiheen ykkösluokan hakemisto, joka sisältää `pom.xml`-tiedoston.
+:::note Vaaditut asetukset
+- **webforJ-version** pudotusvalikossa valitse webforJ versio **25.10 tai uudempi**.
+- **Flavor**-pudotusvalikossa valitse **webforJ + Spring Boot**.
+:::
 
-2) Käytä Maven Jetty -lisäosaa sovelluksen paikalliseen käyttöönottoon suorittamalla:
+## Komentorivin käyttäminen {#using-command-line}
 
+Voit myös luoda uuden projektin seuraavalla komennolla:
+
+<!-- vale off -->
+<Tabs>
+  <TabItem value="bash" label="Bash/Zsh" default>
 ```bash
-mvn jetty:run
+mvn -B archetype:generate \
+  -DarchetypeGroupId=com.webforj \
+  -DarchetypeArtifactId=webforj-archetype-hello-world \
+  -DarchetypeVersion=LATEST \
+  -DgroupId=com.webforj.tutorial \
+  -DartifactId=customer-app \
+  -Dversion=1.0-SNAPSHOT \
+  -Dflavor=webforj-spring
+```
+  </TabItem>
+  <TabItem value="powershell" label="PowerShell">
+```powershell
+mvn -B archetype:generate `
+  -DarchetypeGroupId="com.webforj" `
+  -DarchetypeArtifactId="webforj-archetype-hello-world" `
+  -DarchetypeVersion="LATEST" `
+  -DgroupId="com.webforj.tutorial" `
+  -DartifactId="customer-app" `
+  -Dversion="1.0-SNAPSHOT" `
+  -Dflavor="webforj-spring"
+```
+  </TabItem>
+  <TabItem value="cmd" label="Komentorivi">
+```
+mvn -B archetype:generate ^
+  -DarchetypeGroupId="com.webforj" ^
+  -DarchetypeArtifactId="webforj-archetype-hello-world" ^
+  -DarchetypeVersion="LATEST" ^
+  -DgroupId="com.webforj.tutorial" ^
+  -DartifactId="customer-app" ^
+  -Dversion="1.0-SNAPSHOT" ^
+  -Dflavor="webforj-spring"
+```
+  </TabItem>
+</Tabs>
+<!-- vale on -->
+
+## Konfiguraatiot
+
+Kaksi mainittua tapaa uuden projektin luomiseen käyttävät webforJ [archetypeja](/docs/building-ui/archetypes/overview), jotka lisäävät automaattisesti tarvittavat asetukset projektiisi, kuten Spring [riippuvuudet](/docs/integrations/spring/spring-boot#step-2-add-spring-dependencies) POM-tiedostoon ja seuraavat ominaisuudet `src/main/resources/application.properties`-tiedostoon:
+
+```
+spring.application.name=CustomerApplication
+server.port=8080
+webforj.entry = com.webforj.tutorial.Application
+webforj.debug=true
 ```
 
-3) Avaa selain ja siirry osoitteeseen http://localhost:8080 nähdäksesi sovelluksen.
+## Sovelluksen suorittaminen {#running-the-app}
 
-Toista tämä prosessi jokaiselle vaiheelle seuratessasi opasta, jolloin voit tutkia sovelluksen ominaisuuksia, kun niitä lisätään.
+Näet sovelluksen toiminnassa edetessäsi oppaassa:
+
+1. Siirry halutun vaiheen hakemistoon. Tämän tulisi olla kyseisen vaiheen ylin hakemisto, joka sisältää `pom.xml`-tiedoston.
+
+2. Käytä seuraavaa Maven-komentoa suorittaaksesi Spring Boot -sovelluksen paikallisesti:
+    ```bash
+    mvn
+    ```
+
+Sovelluksen käynnistäminen avaa automaattisesti uuden selainikkunan osoitteessa `http://localhost:8080`.
