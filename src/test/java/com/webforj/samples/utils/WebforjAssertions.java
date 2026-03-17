@@ -4,7 +4,11 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.assertions.LocatorAssertions;
 import com.microsoft.playwright.impl.LocatorAssertionsImpl;
 import com.webforj.component.Expanse;
+import com.webforj.component.ExpanseBase;
 import com.webforj.component.Theme;
+import com.webforj.component.ThemeBase;
+import com.webforj.component.avatar.AvatarExpanse;
+import com.webforj.component.avatar.AvatarTheme;
 import com.webforj.component.button.ButtonTheme;
 
 import java.util.EnumMap;
@@ -38,6 +42,32 @@ public class WebforjAssertions extends LocatorAssertionsImpl implements LocatorA
     this.locator = locator;
   }
 
+  private static String getExpanseValue(String expanse) {
+    String value = expanse.toLowerCase();
+    if (value.equals("none")) {
+      return "";
+    }
+    int xCount = 0;
+    for (int i = 0; i < value.length() && value.charAt(i) == 'x'; i++) {
+      xCount++;
+    }
+    if (xCount == 0) {
+      return value.substring(0, 1);
+    } else if (xCount == 1) {
+      return value.substring(0, 2);
+    } else {
+      return xCount + "x" + value.charAt(xCount);
+    }
+  }
+
+  public static String getExpanseValue(ExpanseBase expanse) {
+    return getExpanseValue(expanse.toString());
+  }
+
+  public static String getThemeValue(ThemeBase theme) {
+    return theme.toString().toLowerCase().replace("_", "-");
+  }
+
   /**
    * {@inheritDoc}
    */
@@ -46,16 +76,46 @@ public class WebforjAssertions extends LocatorAssertionsImpl implements LocatorA
     return new WebforjAssertions(assertions.not(), locator);
   }
 
+  private void hasTheme(String theme) {
+    String value = theme.toLowerCase().replace("_", "-");
+    assertions.hasAttribute("theme", value);
+  }
+
+  public void hasTheme(ThemeBase theme) {
+    hasTheme(theme.toString());
+  }
+
   public void hasTheme(Theme theme) {
-    assertions.hasAttribute("theme", theme.name().toLowerCase());
+    hasTheme(theme.name());
+  }
+
+  public void hasTheme(AvatarTheme theme) {
+    hasTheme(theme.name());
   }
 
   public void hasTheme(ButtonTheme theme) {
-    assertions.hasAttribute("theme", theme.name().toLowerCase().replace("_", "-"));
+    hasTheme(theme.name());
+  }
+
+  public void hasExpanse(String expanse) {
+    var value = getExpanseValue(expanse);
+    assertions.hasAttribute("expanse", value);
+  }
+
+  public void hasExpanse(ExpanseBase expanse) {
+    hasExpanse(expanse.toString());
   }
 
   public void hasExpanse(Expanse expanse) {
-    assertions.hasAttribute("expanse", EXPANSE_VALUES.get(expanse));
+    hasExpanse(expanse.name());
+  }
+
+  public void hasExpanse(AvatarExpanse expanse) {
+    hasExpanse(expanse.name());
+  }
+
+  public void hasSource(String value) {
+    assertions.hasAttribute("src", value);
   }
 
 }

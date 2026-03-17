@@ -3,12 +3,17 @@ package com.webforj.samples.pages;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.*;
 import com.webforj.component.Composite;
+import com.webforj.component.ExpanseBase;
+import com.webforj.component.ThemeBase;
 import com.webforj.samples.config.RunConfig;
 import com.webforj.samples.utils.NodeNameUtils;
 import com.webforj.samples.utils.SupportedLanguage;
+import com.webforj.samples.utils.WebforjAssertions;
 import com.webforj.samples.utils.WebforjLocator;
 
+import java.util.Arrays;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * Base class for page objects in webforj integration tests.
@@ -35,8 +40,28 @@ public abstract class AbstractPage {
     page.waitForLoadState(LoadState.DOMCONTENTLOADED);
   }
 
+  public WebforjLocator getByClass(Class<?>... klass) {
+    return locator(Arrays.stream(klass)
+      .map(NodeNameUtils::getNodeName)
+      .collect(Collectors.joining(" ")));
+  }
+
   public WebforjLocator getByClass(Class<?> klass) {
     return locator(NodeNameUtils.getNodeName(klass));
+  }
+
+  public WebforjLocator getByAttribute(Class<?> klass, String attribute, String value) {
+    String nodeName = NodeNameUtils.getNodeName(klass);
+    String selector = "%s[%s='%s']".formatted(nodeName, attribute, value);
+    return locator(selector);
+  }
+
+  public WebforjLocator getByTheme(Class<?> klass, ThemeBase theme) {
+    return getByAttribute(klass, "theme", WebforjAssertions.getThemeValue(theme));
+  }
+
+  public WebforjLocator getByExpanse(Class<?> klass, ExpanseBase expanse) {
+    return getByAttribute(klass, "expanse", WebforjAssertions.getExpanseValue(expanse));
   }
 
   public WebforjLocator getByAltText(String text) {

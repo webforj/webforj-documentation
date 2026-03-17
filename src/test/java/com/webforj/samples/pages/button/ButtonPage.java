@@ -1,58 +1,50 @@
 package com.webforj.samples.pages.button;
 
-import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.pages.SupportedLanguage;
+import com.webforj.component.button.Button;
+import com.webforj.component.dialog.Dialog;
+import com.webforj.component.field.TextField;
+import com.webforj.component.html.elements.Div;
+import com.webforj.samples.pages.AbstractPage;
+import com.webforj.samples.utils.WebforjLocator;
+import com.webforj.samples.views.button.ButtonView;
 
-public class ButtonPage{
-
-    private static final String ROUTE = "button";
-
-    private final Locator submitButton;
-    private final Locator clearButton;
-    private final Locator firstName;
-    private final Locator lastName;
-    private final Locator email;
-    private final Locator welcomeDialog;
+public class ButtonPage extends AbstractPage {
 
     public ButtonPage(Page page) {
-
-        this.firstName = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("First Name"));
-        this.lastName = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Last Name"));
-        this.email = page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("E-mail:"));
-
-        this.submitButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Submit"));
-        this.clearButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Clear"));
-
-        this.welcomeDialog = page.getByText("Welcome to the app Jason");
+      super(page, ButtonView.class);
     }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
+    public WebforjLocator getFirstName() {
+        return getByClass(TextField.class).first();
     }
 
-    public Locator getFirstName() {
-        return firstName;
+    public WebforjLocator getLastName() {
+        return getByClass(TextField.class).nth(1);
     }
 
-    public Locator getLastName() {
-        return lastName;
+    public WebforjLocator getEmail() {
+        return getByClass(TextField.class).last();
     }
 
-    public Locator getEmail() {
-        return email;
+    public WebforjLocator getSubmitButton() {
+        return getByClass(Button.class).getByText("Submit");
     }
 
-    public Locator getSubmitButton() {
-        return submitButton;
+    public WebforjLocator getClearButton() {
+      return getByClass(Button.class).getByText("Clear");
+
     }
 
-    public Locator getClearButton() {
-        return clearButton;
+    public WebforjLocator getWelcomeDialog() {
+        return getByClass(Dialog.class);
     }
 
-    public Locator getWelcomeDialog() {
-        return welcomeDialog;
+    public WebforjLocator getOkButton() {
+      return getByClass(Button.class).getByText("OK");
+    }
+
+    public WebforjLocator getDialogContent() {
+      return getByText("Welcome to the app");
     }
 }

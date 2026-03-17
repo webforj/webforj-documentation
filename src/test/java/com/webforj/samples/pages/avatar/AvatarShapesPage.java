@@ -2,29 +2,20 @@ package com.webforj.samples.pages.avatar;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.webforj.samples.pages.SupportedLanguage;
+import com.webforj.component.avatar.Avatar;
+import com.webforj.component.avatar.AvatarShape;
+import com.webforj.samples.pages.AbstractPage;
+import com.webforj.samples.utils.SupportedLanguage;
+import com.webforj.samples.utils.WebforjLocator;
+import com.webforj.samples.views.avatar.AvatarShapesView;
 
-public class AvatarShapesPage {
+public class AvatarShapesPage extends AbstractPage {
 
-    private static final String ROUTE = "avatarshapes";
+  public AvatarShapesPage(Page page) {
+    super(page, AvatarShapesView.class);
+  }
 
-    private final Locator circleAvatar;
-    private final Locator squareAvatar;
-
-    public AvatarShapesPage(Page page) {
-        this.circleAvatar = page.locator("dwc-avatar[shape='circle']");
-        this.squareAvatar = page.locator("dwc-avatar[shape='square']");
-    }
-
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
-
-    public Locator getCircleAvatar() {
-        return circleAvatar;
-    }
-
-    public Locator getSquareAvatar() {
-        return squareAvatar;
-    }
+  public WebforjLocator getAvatar(int index) {
+    return getByClass(Avatar.class).nth(index);
+  }
 }

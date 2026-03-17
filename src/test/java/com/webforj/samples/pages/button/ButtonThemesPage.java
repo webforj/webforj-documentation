@@ -2,7 +2,7 @@ package com.webforj.samples.pages.button;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.webforj.samples.pages.SupportedLanguage;
+import com.webforj.samples.utils.SupportedLanguage;
 
 public class ButtonThemesPage {
 
