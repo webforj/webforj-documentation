@@ -1,31 +1,23 @@
 package com.webforj.samples.pages.button;
 
-import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.options.AriaRole;
-import com.webforj.samples.utils.SupportedLanguage;
+import com.webforj.component.button.Button;
+import com.webforj.samples.pages.AbstractPage;
+import com.webforj.samples.utils.WebforjLocator;
+import com.webforj.samples.views.button.ButtonEventView;
 
-public class ButtonEventPage {
+public class ButtonEventPage extends AbstractPage {
 
-    private static final String ROUTE = "buttonevent";
+  public ButtonEventPage(Page page) {
+    super(page, ButtonEventView.class);
+  }
 
-    private final Locator button;
-    private final Page page;
+  public WebforjLocator getButton() {
+    return getByClass(Button.class).getByText("Click Me!");
+  }
 
-    public ButtonEventPage(Page page) {
-        this.button = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Click Me!"));
-        this.page = page;
-    }
+  public WebforjLocator getCounterText(String text) {
+    return getByText("Current Counter: " + text);
+  }
 
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
-
-    public Locator getButton() {
-        return button;
-    }
-
-    public Locator getCounterText(String text) {
-        return page.getByText("Current Counter: " + text);
-    }
 }

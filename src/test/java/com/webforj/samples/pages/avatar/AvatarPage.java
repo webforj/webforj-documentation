@@ -28,7 +28,7 @@ public class AvatarPage extends AbstractPage {
   }
 
   public WebforjLocator getTeamLabel() {
-    return getByText("Team");
+    return getByText(".avatar-demo__section-label");
   }
 
   public WebforjLocator getAvatarPanel() {
@@ -43,8 +43,8 @@ public class AvatarPage extends AbstractPage {
     return locator(".avatar-demo__name").nth(index);
   }
 
-  public WebforjLocator getDialog() {
-    return getByClass(Dialog.class);
+  public Locator getDialog() {
+    return page.locator("dwc-dialog");
   }
 
   public List<AvatarTheme> getThemes() {

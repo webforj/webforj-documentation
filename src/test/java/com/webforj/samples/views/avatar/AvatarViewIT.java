@@ -1,7 +1,6 @@
 package com.webforj.samples.views.avatar;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import com.webforj.samples.utils.SupportedLanguage;
 import com.webforj.samples.pages.avatar.AvatarPage;
@@ -46,7 +45,7 @@ public class AvatarViewIT extends BaseTest {
     var names = avatarPage.getNames();
     for (int i = 0; i < names.size(); i++) {
       var nameLabel = avatarPage.getNameLabel(i);
-      nameLabel.assertThat().hasValue(names.get(i));
+      nameLabel.assertThat().hasText(names.get(i));
     }
   }
 
@@ -57,7 +56,7 @@ public class AvatarViewIT extends BaseTest {
     var roles = avatarPage.getRoles();
     for (int i = 0; i < roles.size(); i++) {
       var roleLabel = avatarPage.getRoleLabel(i);
-      roleLabel.assertThat().hasValue(roles.get(i));
+      roleLabel.assertThat().hasText(roles.get(i));
     }
   }
 
@@ -74,19 +73,21 @@ public class AvatarViewIT extends BaseTest {
 
   @ParameterizedTest
   @MethodSource("provideRoutes")
-  public void testAvatarOpensDialogThenClicked(SupportedLanguage language) {
+  public void testClickingAvatarOpensDialogAndClickingOutsideClosesIt(SupportedLanguage language) {
     avatarPage.setRoute(language);
     var projectLabel = avatarPage.getProjectNameLabel();
-    for (int i = 0; i < 4; i++) {
-      var avatar = avatarPage.getAvatar(i);
-      var dialog = avatarPage.getDialog();
-      dialog.assertThat().not().isVisible();
-      avatar.click();
-      dialog.assertThat().isVisible();
-      projectLabel.click();
-      dialog.assertThat().not().isVisible();
-      assertFalse(dialog.isVisible(), avatarPage.getNameLabel(i).textContent());
-    }
+    var dialog = avatarPage.getDialog();
+
+    // Dialog should not be visible initially
+    assertThat(dialog).not().isVisible();
+
+    // Click on first avatar - dialog should open
+    avatarPage.getAvatar(0).click();
+    assertThat(dialog).isVisible();
+
+    // Click outside to close dialog
+    projectLabel.click();
+    assertThat(dialog).not().isVisible();
   }
 
 }

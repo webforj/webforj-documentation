@@ -2,30 +2,23 @@ package com.webforj.samples.pages.button;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.webforj.samples.utils.SupportedLanguage;
+import com.webforj.component.button.Button;
+import com.webforj.samples.pages.AbstractPage;
+import com.webforj.samples.utils.WebforjLocator;
+import com.webforj.samples.views.button.ButtonThemesView;
 
-public class ButtonThemesPage {
+public class ButtonThemesPage extends AbstractPage {
 
-    private static final String ROUTE = "buttonthemes";
+  public ButtonThemesPage(Page page) {
+    super(page, ButtonThemesView.class);
+  }
 
-    private final Locator solidButton;
-    private final Locator outlinedButton;
+  public WebforjLocator getSolidButton(String theme) {
+    return getByClass(Button.class).getByText(theme, new Locator.GetByTextOptions().setExact(true));
+  }
 
-    public ButtonThemesPage(Page page) {
-        this.solidButton = page.locator("dwc-button").filter(new Locator.FilterOptions().setHasText("Danger"));
-        this.outlinedButton = page.locator("dwc-button").filter(new Locator.FilterOptions().setHasText("Outlined Button"));
-    }
-
-    public static String getRoute(SupportedLanguage language) {
-        return language.getPath(ROUTE);
-    }
-
-    public Locator getSolidButton() {
-        return solidButton;
-    }
-
-    public Locator getOutlinedButton() {
-        return outlinedButton;
-    }
+  public WebforjLocator getOutlinedButton(String theme) {
+    return getByClass(Button.class).getByText("OUTLINED_" + theme);
+  }
 
 }

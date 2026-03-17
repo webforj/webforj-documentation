@@ -16,15 +16,15 @@ public class ButtonPage extends AbstractPage {
     }
 
     public WebforjLocator getFirstName() {
-        return getByClass(TextField.class).first();
+        return getByClass(TextField.class).first().locator("input");
     }
 
     public WebforjLocator getLastName() {
-        return getByClass(TextField.class).nth(1);
+        return getByClass(TextField.class).nth(1).locator("input");
     }
 
     public WebforjLocator getEmail() {
-        return getByClass(TextField.class).last();
+        return getByClass(TextField.class).last().locator("input");
     }
 
     public WebforjLocator getSubmitButton() {

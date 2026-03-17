@@ -27,7 +27,7 @@ public class ButtonViewIT extends BaseTest {
     buttonPage.getSubmitButton().click();
     var dialog = buttonPage.getWelcomeDialog();
     dialog.assertThat().isVisible();
-    buttonPage.getDialogContent().assertThat().hasValue("Welcome to the app jason Turner!");
+    buttonPage.getDialogContent().assertThat().hasText("Welcome to the app Jason Turner!");
     buttonPage.getOkButton().click();
     dialog.assertThat().not().isVisible();
   }
@@ -58,6 +58,6 @@ public class ButtonViewIT extends BaseTest {
     lastName.clear();
     lastName.fill("123");
     buttonPage.getSubmitButton().click();
-    buttonPage.getDialogContent().assertThat().hasValue("Welcome to the app Test 123!");
+    buttonPage.getDialogContent().assertThat().hasText("Welcome to the app Test 123!");
   }
 }

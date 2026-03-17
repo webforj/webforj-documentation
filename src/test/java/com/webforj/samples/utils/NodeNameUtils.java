@@ -7,6 +7,7 @@ import com.webforj.component.dialog.Dialog;
 import com.webforj.component.field.TextField;
 import com.webforj.component.html.elements.Img;
 import com.webforj.component.icons.Icon;
+import com.webforj.component.list.ChoiceBox;
 
 import java.util.Map;
 
@@ -20,6 +21,7 @@ public final class NodeNameUtils {
     Map.entry(Alert.class, "dwc-alert"),
     Map.entry(Avatar.class, "dwc-avatar"),
     Map.entry(Button.class, "dwc-button"),
+    Map.entry(ChoiceBox.class, "dwc-dropdown"),
     Map.entry(Dialog.class, "dwc-dialog"),
     Map.entry(Icon.class, "dwc-icon"),
     Map.entry(Img.class, "img"),
