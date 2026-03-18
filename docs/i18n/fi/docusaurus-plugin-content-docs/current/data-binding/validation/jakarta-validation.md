@@ -2,36 +2,36 @@
 sidebar_position: 6
 title: Jakarta Validation
 sidebar_class_name: updated-content
-_i18n_hash: fa09682ac85db8e2c53ff9eea2d0633e
+_i18n_hash: 813ccefe385954366010291f50215611
 ---
-[Java Bean Validation](https://beanvalidation.org/) on laajalti tunnustettu standardi validoimisen logiikan integroimiseksi Java-sovelluksiin. Se käyttää yhtenäistä lähestymistapaa validoimiseen sallimalla kehittäjien merkitä kenttämallin ominaisuudet deklaratiivisilla validoimisen rajoitteilla. Nämä rajoitteet pannaan täytäntöön ajonaikana, ja vaihtoehtoja on sekä valmiiksi määriteltyihin että käyttäjän määrittelemille säännöille.
+[Java Bean Validation](https://beanvalidation.org/) on laajalti tunnettu standardina, joka integroi validoimislogiikan Java-sovelluksiin. Se käyttää yhtenäistä lähestymistapaa validointiin sallimalla kehittäjien merkitä domainmallin ominaisuudet deklaratiivisilla validointirajoitteilla. Nämä rajoitteet pakotetaan ajonaikaisesti, ja käytössä on sekä valmiita että käyttäjän määrittämiä sääntöjä.
 
-webforJ integroituu Bean Validationiin `JakartaValidator`-adapterin kautta, mikä mahdollistaa täyden tuen suoraan käyttöönotettavaksi.
+webforJ integroituu Bean Validationiin `JakartaValidator`-sovittimen kautta, tarjoten täyden tuen suoraan käyttöön.
 
 ## Asennus {#installation}
 
-On tarpeen sisällyttää yhteensopiva toteutus, kuten [Hibernate Validator](https://hibernate.org/validator/), luokkateesiisi. Jos ympäristösi ei sisällä tätä toteutusta oletusarvoisesti, voit lisätä sen manuaalisesti käyttämällä seuraavia Maven-riippuvuuksia:
+On tarpeen sisällyttää yhteensopiva toteutus, kuten [Hibernate Validator](https://hibernate.org/validator/), luokkahakemistoon. Jos ympäristössäsi ei ole tätä toteutusta oletuksena, voit lisätä sen manuaalisesti seuraavien Maven-riippuvuuksien avulla:
 
 ```xml
 <dependency>
-    <groupId>org.hibernate.validator</groupId>
-    <artifactId>hibernate-validator</artifactId>
-    <version>8.0.1.Final</version>
+  <groupId>org.hibernate.validator</groupId>
+  <artifactId>hibernate-validator</artifactId>
+  <version>8.0.1.Final</version>
 </dependency>
 <dependency>
-    <groupId>org.glassfish.expressly</groupId>
-    <artifactId>expressly</artifactId>
-    <version>5.0.0</version>
+  <groupId>org.glassfish.expressly</groupId>
+  <artifactId>expressly</artifactId>
+  <version>5.0.0</version>
 </dependency>
 ```
 
 ## `JakartaValidator` {#the-jakartavalidator}
 
-`JakartaValidator`-luokka toimii adapterina, joka yhdistää webforJ-sidontakontekstin Jakarta Validationiin. Tämä integraatio mahdollistaa monimutkaisten validoimissääntöjen käytön suoraan annotaatioiden kautta bean-luokassa.
+`JakartaValidator`-luokka toimii sovittimena, yhdistäen webforJ:n sidontakontekstin Jakarta Validointiin. Tämä integraatio mahdollistaa monimutkaisten validointisääntöjen käytön suoraan anotaatioiden kautta bean-luokassa.
 
 ### `JakartaValidator`-aktivointi {#activating-jakartavalidator}
 
-Aktivoidaksesi `JakartaValidator`-koko kontekstissa käytät tyypillisesti `useJakartaValidator`-parametria `BindingContext`-rakenteessa.
+Aktivoidaksesi `JakartaValidator`in koko kontekstissa, käytät yleensä `useJakartaValidator`-parametria rakentaessasi `BindingContext`ia.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class, true);
@@ -39,7 +39,7 @@ BindingContext<User> context = new BindingContext<>(User.class, true);
 
 ### Rajoitteiden määrittäminen bean-ominaisuuksille {#defining-constraints-for-bean-properties}
 
-Annotaatioihin perustuvat rajoitteet sovelletaan suoraan bean-luokassa validoimisen olosuhteiden määrittämiseksi, kuten alla olevassa esimerkissä:
+Anotaatiopohjaiset rajoitteet sovelletaan suoraan bean-luokassa validoimisolojen määrittämiseksi, kuten alla olevassa esimerkissä on havainnollistettu:
 
 ```java
 public class Hero {
@@ -51,31 +51,31 @@ public class Hero {
   @Pattern(regexp = "Fly|Invisible|LaserVision|Speed|Teleportation", message = "Virheellinen voima")
   private String power;
 
-  // getterit ja setterit
+  // getters and setters
 }
 ```
 
-Tällaiset rajoitteet ovat yhtä tehokkaita kuin ohjelmallisesti asetetut sidornan aloituksessa ja tuottavat johdonmukaisia validoimistuloksia.
+Tällaiset rajoitteet ovat yhtä tehokkaita kuin ohjelmallisesti sidontavaiheessa asetetut, ja tuottavat johdonmukaisia validointituloksia.
 
 :::warning
-Tällä hetkellä `JakartaValidator` tunnistaa vain rajoitteet, jotka on suoraan määritetty ominaisuuksille, eikä huomioi voimassaoloja, jotka eivät ole suoraan yhteydessä ominaisuuksiin.
+Tällä hetkellä `JakartaValidator` tunnistaa vain rajoitteet, jotka on suoraan määritetty ominaisuuksille, ja se ohittaa kaikki validoinnit, jotka eivät ole suoraan liittyneet ominaisuuksiin.
 :::
 
-### Lokalisoinnin mukaiset validoimisviestit <DocChip chip='since' label='25.12' /> {#locale-aware-validation-messages}
+### Paikalliset validointiviestit <DocChip chip='since' label='25.12' /> {#locale-aware-validation-messages}
 
-Jakarta Validation tukee lokalisoituja rajoitusviestejä standardin mukaisella viestien interpoloinnilla. Kun vaihdat sovelluksen lokalisointia, `JakartaValidator`-luokan on tiedettävä uusi lokalisointi, jotta se voi ratkaista viestit oikein kielellä.
+Jakarta Validation tukee lokalisoituja rajoitetiedotteita standardin mukaisen viestin interpoloinnin kautta. Kun vaihdat sovelluksen kieltä, `JakartaValidator`in on tiedettävä uusi kieli, jotta se voi ratkaista viestit oikealla kielellä.
 
-`JakartaValidator` toteuttaa `LocaleAware`-rajapinnan, mikä tarkoittaa, että `BindingContext.setLocale()` levittää automaattisesti lokalisoinnin kaikkiin Jakarta validoijiin kontekstissa. Sinun ei tarvitse päivittää jokaista validoijaa manuaalisesti.
+`JakartaValidator` toteuttaa `LocaleAware`-rajapinnan, mikä tarkoittaa, että `BindingContext.setLocale()` välittää automaattisesti kieliasetuksen kaikille kontekstin Jakarta-validointijoukoille. Sinun ei tarvitse päivittää jokaista validaattoria manuaalisesti.
 
 ```java {5}
 BindingContext<Hero> context = new BindingContext<>(Hero.class, true);
 
-// Kun lokalisointi muuttuu, Jakarta validoijat tuottavat automaattisesti
-// viestejä uudessa lokalisoinnissa
+// Kun kieli muuttuu, Jakarta-validointijoukot automaattisesti
+// tuottavat viestejä uudessa kielessä
 context.setLocale(Locale.GERMAN);
 ```
 
-Komponentissa, joka toteuttaa `LocaleObserver`, kutsu `context.setLocale()`-metodia `onLocaleChange()`-sisällä pitääksesi validoimisviestit synkronoituna käyttöliittymän kielen kanssa:
+Komponentissa, joka toteuttaa `LocaleObserver`, kutsu `context.setLocale()` sisällä `onLocaleChange()`:ssa pitämään validointiviestit synkronoituina käyttöliittymän kielen kanssa:
 
 ```java {3}
 @Override
@@ -84,4 +84,4 @@ public void onLocaleChange(LocaleEvent event) {
 }
 ```
 
-Katso [dynaamiset validoimisviestit](/docs/data-binding/validation/validators#dynamic-validation-messages) lisää tietoa lokalisointiin liittyvistä validoijista.
+Katso [dynaamiset validointiviestit](/docs/data-binding/validation/validators#dynamic-validation-messages) saadaksesi lisätietoja paikallista huomioivia validaattoreita.

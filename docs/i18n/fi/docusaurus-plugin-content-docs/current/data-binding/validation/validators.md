@@ -2,34 +2,34 @@
 sidebar_position: 2
 title: Validators
 sidebar_class_name: updated-content
-_i18n_hash: 4af002debda2abb59282b5c6a1bf01d7
+_i18n_hash: 996b617e97e439660bbe69f15d6355b9
 ---
-Validators validointia tietoja käyttöliittymäkomponenteissasi määriteltyjen rajoitusten mukaan ennen kuin nämä tiedot tallennetaan tietomalliin. Voit käyttää validointia varmistaaksesi, että tiedot täyttävät tietyt kriteerit, kuten ollessaan määritellyssä alueessa, vastaavan mallin mukaisia tai olematta tyhjät.
+Validatorit validoivat tietoja käyttöliittymäkomponenteissasi määriteltyjen rajoitteiden mukaisesti ennen tämän tiedon sitomista tietomalliin. Voit soveltaa validoijia varmistaaksesi, että tiedot täyttävät tietyt kriteerit, kuten olevan tietyn alueen sisällä, vastaavan mallia tai ettei se ole tyhjää.
 
-Validoinnit konfiguroidaan sidontakohtaisesti, jolloin erityiset säännöt voidaan soveltaa jokaiselle datapisteelle erikseen. Jokainen tietopala käy läpi validoinnin sen omien vaatimusten mukaisesti.
+Validoinnit on määritelty sitovia, jolloin tietyt säännöt koskevat kutakin tietopistettä erikseen. Jokainen tietopiste käy läpi validoinnin omien vaatimustensa mukaan.
 
-## Validointien lisääminen {#adding-validators}
+## Adding validators {#adding-validators}
 
-Lisää validointeja sidontaan käyttämällä `useValidator`-metodia `BindingBuilder`:ssä.
+Lisää validoijia sitovaan käyttöön `useValidator`-metodia `BindingBuilder`:issa.
 
 ```java
 context.bind(nameTextField, "name")
-    .useValidator(value -> !value.isEmpty(), "Nimi ei voi olla tyhjää")
-    .useValidator(value -> value.length() >= 3, "Nimen on oltava vähintään 3 merkkiä pitkä")
-    .add();
+  .useValidator(value -> !value.isEmpty(), "Nimi ei saa olla tyhjää")
+  .useValidator(value -> value.length() >= 3, "Nimen on oltava vähintään 3 merkkiä pitkä")
+  .add();
 ```
 
-Yllä olevassa esimerkissä kaksi validointia varmistaa, että nimi ei ole tyhjää ja että se sisältää vähintään kolme merkkiä.
+Yllä olevassa esimerkissä kaksi validoijaa varmistaa, että nimi ei ole tyhjää ja että se sisältää vähintään kolme merkkiä.
 
-:::tip Validointien käsittely
-Sidontaan voi lisätä rajattoman määrän validointeja. Sidonta soveltaa validointeja lisäämisjärjestyksessä ja pysähtyy ensimmäiseen rikkomukseen.
+:::tip Validators processing
+Validoijien määrä, jonka voit lisätä per sitova, ei ole rajattu. Sitova soveltaa validoijia lisäämisjärjestyksessä ja pysähtyy ensimmäiseen rikkomukseen.
 :::
 
-## Validointien toteuttaminen {#implementing-validators}
+## Implementing validators {#implementing-validators}
 
-Voit luoda mukautettuja uudelleenkäytettäviä validointeja toteuttamalla `Validator<T>`-rajapinnan, jossa `T` on validoitavan datan tyyppi. Tämä asettelu sisältää validate-metodin määrittämisen, joka tarkistaa datan ja palauttaa `ValidationResult`:in.
+Voit luoda mukautettuja uudelleenkäytettäviä validoijia toteuttamalla `Validator<T>`-rajapinnan, jossa `T` on se datatyyppi, jota haluat validoida. Tämä asetelma sisältää validate-metodin määrittelemisen, joka tarkistaa datan ja palauttaa `ValidationResult`:in.
 
-Tässä on esimerkki uudelleenkäytettävästä validoinnista, joka tarkistaa, onko käyttäjän sähköpostiosoite voimassa.
+Tässä on esimerkki uudelleenkäytettävästä validoijasta, joka tarkistaa, onko käyttäjän sähköpostiosoite voimassa.
 
 ```java
 import com.webforj.data.validation.server.ValidationResult;
@@ -49,74 +49,74 @@ public class EmailValidator implements Validator<String> {
 }
 ```
 
-### Validointien käyttäminen sidonnoissa {#using-validators-in-bindings}
+### Using validators in bindings {#using-validators-in-bindings}
 
-Kun olet määrittänyt validoinnin, voit helposti soveltaa sitä kaikkiin relevantteihin sidontoihin sovelluksessasi. Tämä on erityisen hyödyllistä komponenteille, jotka vaativat yhteisiä validointisääntöjä eri puolilla sovellustasi, kuten käyttäjän sähköpostiosoitteet tai salasanan vahvuus.
+Kun olet määrittänyt validoijan, voit helposti soveltaa sitä kaikkiin asiaankuuluviin sitoviin sovelluksessasi. Tämä on erityisen hyödyllistä komponenteille, jotka vaativat yhteisiä validointisääntöjä eri osissa sovellustasi, kuten käyttäjän sähköpostiosoitteiden tai salasanojen vahvuuden tarkistamiseen.
 
-Soveltaaksesi `EmailValidator`-validointia sidontaan:
+Sovita `EmailValidator` sitovaan:
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
 context.bind(ageField, "age")
-    .useValidator(new EmailValidator())
-    .add();
+  .useValidator(new EmailValidator())
+  .add();
 ```
 
-### Validointiviestien ylikirjoittaminen {#overriding-validator-messages}
+### Overriding validator messages {#overriding-validator-messages}
 
-Voit mukauttaa validointien virheviestejä sidonnan kohdalla tietylle käyttöliittymäkomponentille. Tämä mahdollistaa yksityiskohtaisempien tai kontekstuaalisesti merkityksellisten tietojen tarjoamisen käyttäjälle, jos validointi epäonnistuu. Mukautetut viestit ovat erityisen hyödyllisiä, kun sama validointi koskee useita komponentteja, mutta vaatii erilaista ohjausta käytön kontekstin mukaan.
+Voit mukauttaa validoijien virheilmoituksia sitomisen kohtaan tiettyyn käyttöliittymäkomponenttiin. Tämä mahdollistaa sen, että voit antaa tarkempaa tai kontekstin mukaisempaa tietoa käyttäjälle, jos validointi epäonnistuu. Mukautetut viestit ovat erityisen hyödyllisiä, kun sama validoija soveltuu useisiin komponentteihin, mutta vaatii erilaista ohjeistusta sen mukaan, missä kontekstissa sitä käytetään.
 
-Tässä on, miten ylikirjoitat uudelleenkäytettävän validoinnin oletusviestin sidonnassa:
+Näin voit ylittää oletusviestin uudelleenkäytettävässä validoijassa sitovassa:
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
 context.bind(emailField, "email")
-    .useValidator(
-        Validator.from(new EmailValidator(), "Mukautettu viesti virheelliselle sähköpostiosoitteelle"))
-    .add();
+  .useValidator(
+    Validator.from(new EmailValidator(), "Mukautettu viesti virheellisestä sähköpostiosoitteesta"))
+  .add();
 ```
 
-Yllä olevassa esimerkissä koodi soveltaa `EmailValidator`-validointia sähköpostikenttään mukautetulla virheviestillä, joka on erityisesti suunniteltu tälle kentälle.
+Yllä olevassa esimerkissä koodi soveltaa `EmailValidator`-validoijaa sähköpostikenttään mukautetulla virheviestillä, joka on erityisesti räätälöity tälle kentälle.
 
-:::tip Ymmärtäminen `Validator.from`
-`Validator.from`-metodi käärii annetun validoinnin uuden ympärille, jolloin voit määrittää mukautetun virheviestin, jos validointi ei tue mukautettuja viestejä. Tämä tekniikka on erityisen hyödyllinen, kun tarvitset samaa validointilogiikkaa useissa komponenteissa, mutta erilaisten, kontekstikohtaisten virheviestien kanssa jokaiselle instanssille.
+:::tip Understanding `Validator.from`
+`Validator.from`-metodi käärii lähetetyn validoijan uudella, mahdollistamalla sen, että voit määrittää mukautetun virheviestin, jos validoija ei tue mukautettuja viestejä. Tämä tekniikka on erityisen hyödyllinen, kun tarvitset saman validointilogiken soveltamista useisiin komponentteihin, mutta erilaisten, kontekstiin liittyvien virheviestien kanssa jokaiselle instanssille.
 :::
 
-### Dynaamiset validointiviestit <DocChip chip='since' label='25.12' /> {#dynamic-validation-messages}
+### Dynamic validation messages <DocChip chip='since' label='25.12' /> {#dynamic-validation-messages}
 
-Oletusarvoisesti validointiviestit ovat staattisia merkkijonoja, jotka asetetaan kerran sidonta-aikana. Sovelluksissa, jotka tukevat useita kieliä, nämä staattiset viestit eivät päivity, kun käyttäjä vaihtaa kieliversioita. Tämän ratkaisemiseksi sekä `useValidator` että `Validator`-tehtävämenetelmät hyväksyvät `Supplier<String>`-tyypin, joka kutsutaan joka kerta, kun validointi epäonnistuu, jolloin viesti voidaan ratkaista dynaamisesti.
+Oletusarvoisesti validointiviestit ovat staattisia merkkijonoja, jotka asetetaan kerran sitomisen ajankohtana. Sovelluksissa, jotka tukevat useita kieliä, nämä staattiset viestit eivät päivity, kun käyttäjä vaihtaa paikallisia asetuksia. Tämän ratkaisemiseksi sekä `useValidator`- että `Validator`-tehdasmetodit hyväksyvät `Supplier<String>`-rajapinnan, joka kutsutaan jokaisen validoinnin epäonnistuessa, jolloin viesti voidaan ratkaista dynaamisesti.
 
-#### Inline-validoinnit dynaamisilla viesteillä {#inline-validators-with-dynamic-messages}
+#### Inline validators with dynamic messages {#inline-validators-with-dynamic-messages}
 
-Anna `Supplier<String>` tavallisen `String`-arvon sijaan `useValidator`:lle:
+Anna `Supplier<String>` tavallisen `String` sijasta `useValidator`-metodille:
 
 ```java {2,3}
 context.bind(nameTextField, "name")
-    .useValidator(value -> !value.isEmpty(), () -> t("validation.name.required"))
-    .useValidator(value -> value.length() >= 3, () -> t("validation.name.minLength"))
-    .add();
+  .useValidator(value -> !value.isEmpty(), () -> t("validation.name.required"))
+  .useValidator(value -> value.length() >= 3, () -> t("validation.name.minLength"))
+  .add();
 ```
 
-Joka kerta, kun validointi suoritetaan ja predikaatti epäonnistuu, toimittaja kutsuu `t()`, joka ratkaisee viestin nykyiselle paikalle.
+Joka kerta, kun validointi suoritetaan ja lauseke epäonnistuu, tarjoaja kutsuu `t()`, joka ratkaisee viestin nykyiselle paikalliselle asetukselle.
 
-#### Tehtävämenetelmät dynaamisilla viesteillä {#factory-methods-with-dynamic-messages}
+#### Factory methods with dynamic messages {#factory-methods-with-dynamic-messages}
 
-`Validator.of` ja `Validator.from`-tehtävämenetelmät hyväksyvät myös toimittajia:
+`Validator.of` ja `Validator.from` tehdasmetodit hyväksyvät myös tarjoajia:
 
 ```java {4,10}
-// Luo predikaattiin perustuva validointi dynaamisella viestillä
+// Luo lausekkeeseen perustuva validoija dynaamisella viestillä
 Validator<String> required = Validator.of(
-    value -> !value.isEmpty(),
-    () -> t("validation.required")
+  value -> !value.isEmpty(),
+  () -> t("validation.required")
 );
 
-// Kääri olemassa oleva validointi dynaamiseen ylikirjoitusviestiin
+// Kääri olemassa oleva validoija dynaamisella ylikirjoitusviestillä
 Validator<String> email = Validator.from(
-    new EmailValidator(),
-    () -> t("validation.email.invalid")
+  new EmailValidator(),
+  () -> t("validation.email.invalid")
 );
 ```
 
-#### Paikallisesti tietoiset mukautetut validoinnit {#locale-aware-custom-validators}
+#### Locale-aware custom validators {#locale-aware-custom-validators}
 
-Uudelleenkäytettäville validoijille, jotka tarvitsevat tuottaa paikalliset viestit sisäisesti, toteuta `LocaleAware`-rajapinta. Kun kieli muuttuu `BindingContext.setLocale()`-kutsun kautta, konteksti propagoi automaattisesti uuden kielen kaikille validoijille, jotka toteuttavat tämän rajapinnan. Seuraava validointisuoritus tuottaa viestejä päivitettynä kielenä.
+Mikäli tarvitset uudelleenkäytettäviä validoijia, jotka tuottavat paikallismuotoisia viestejä sisäisesti, toteuta `LocaleAware`-rajapinta. Kun alue muutetaan `BindingContext.setLocale()`-menetelmällä, konteksti propagoidaan automaattisesti uusi alue kaikille validoijille, jotka toteuttavat tämän rajapinnan. Seuraava validointikierros tuottaa viestejä päivitettyinä alueina.

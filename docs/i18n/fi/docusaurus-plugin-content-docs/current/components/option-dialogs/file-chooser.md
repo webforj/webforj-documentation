@@ -1,19 +1,19 @@
 ---
 title: File Chooser
 sidebar_position: 10
-_i18n_hash: 49a069004ead8d962b32e132183819e8
+_i18n_hash: c8d1ebc420bc1e1749c5c98a9fd3284c
 ---
 <DocChip chip='shadow' />
 <DocChip chip='since' label='24.02' />
 <JavadocLink type="foundation" location="com/webforj/component/optiondialog/FileChooserDialog" top='true'/>
 
-`FileChooserDialog` on modaalinen dialogi, joka on suunniteltu mahdollistamaan käyttäjän valita tiedosto tai hakemisto palvelimen tiedostojärjestelmästä. Dialogi estää sovelluksen suorittamisen, kunnes käyttäjä tekee valinnan tai sulkee dialogin.
+`FileChooserDialog` on muotodialogi, joka on suunniteltu antamaan käyttäjälle mahdollisuus valita tiedosto tai hakemisto palvelimen tiedostojärjestelmästä. Dialogi estää sovelluksen suorittamisen, kunnes käyttäjä on tehnyt valinnan tai sulkenut dialogin.
 
 <!-- INTRO_END -->
 
-## Käyttötarkoitukset {#usages}
+## Käytöt {#usages}
 
-`FileChooserDialog` tarjoaa tavan valita tiedostoja tai hakemistoja tiedostojärjestelmästä, mahdollistaen käyttäjien valita hakemistoja tietojen tallentamista varten tai suorittaa tiedosto-operaatioita.
+`FileChooserDialog` tarjoaa tavan valita tiedostoja tai hakemistoja tiedostojärjestelmästä, mikä mahdollistaa käyttäjien valita hakemistoja tietojen tallentamiseen tai suorittaa tiedosto-operaatioita.
 
 <ComponentDemo 
 path='/webforj/filechooserdialogbasic?' 
@@ -26,23 +26,23 @@ height = '600px'
 `FileChooserDialog` palauttaa valitun tiedoston tai hakemiston merkkijonona. Jos käyttäjä sulkee dialogin ilman valintaa, tulos on `null`.
 
 :::info
-Palautettu merkkijono palautetaan `show()`-metodista tai vastaavasta `OptionDialog`-metodista, kuten alla on esitetty.
+Palautettava merkkijono palautuu `show()`-metodista tai vastaavasta `OptionDialog`-metodista kuten alla on esitetty.
 :::
 
 ```java showLineNumbers
 String result = OptionDialog.showFileChooserDialog(
-    "Valitse tiedosto", "/home/user", FileChooserDialog.SelectionMode.FILES);
+  "Valitse tiedosto", "/home/user", FileChooserDialog.SelectionMode.FILES);
 
 if (result != null) {
-    OptionDialog.showMessageDialog("Valitsit: " + result, "Valinta tehty");
+  OptionDialog.showMessageDialog("Valitsit: " + result, "Valinta tehty");
 } else {
-    OptionDialog.showMessageDialog("Ei valintaa tehty", "Valinta peruutettu");
+  OptionDialog.showMessageDialog("Ei valintaa tehty", "Valinta peruutettu");
 }
 ```
 
 ## Valintatila {#selection-mode}
 
-`FileChooserDialog` tukee erilaisia ​​valintatiloja, jolloin voit räätälöidä valintamenetelmän tarpeidesi mukaan:
+`FileChooserDialog` tukee erilaisia valintatiloja, jolloin voit mukauttaa valintatapaa erityistarpeidesi mukaan:
 
 1. **FILES**: Sallii vain tiedostojen valinnan.
 2. **DIRECTORIES**: Sallii vain hakemistojen valinnan.
@@ -50,7 +50,7 @@ if (result != null) {
 
 ## Alkuperäinen polku {#initial-path}
 
-`FileChooserDialog` mahdollistaa alkuperäisen polun määrittämisen, mihin dialogi avataan näyttämisen yhteydessä. Tämä voi tarjota käyttäjille lähtöpaikan tiedostovalinnalle.
+`FileChooserDialog` sallii sinun määrittää alkuperäisen polun, johon dialogi avautuu näyttämisen yhteydessä. Tämä voi tarjota käyttäjille lähtökohdan tiedoston valintaan.
 
 ```java showLineNumbers
 FileChooserDialog dialog = new FileChooserDialog("Valitse tiedosto", "/home/user");
@@ -59,7 +59,7 @@ String result = dialog.show();
 
 ## Rajoitus {#restriction}
 
-Voit rajoittaa dialogin tiettyyn hakemistoon, estäen käyttäjiä navigoimasta sen ulkopuolelle `setRestricted(boolean restricted)`-metodin avulla.
+Voit rajoittaa dialogia tiettyyn hakemistoon estäen käyttäjiä navigoimasta sen ulkopuolelle käyttämällä `setRestricted(boolean restricted)`-metodia.
 
 ```java showLineNumbers
 FileChooserDialog dialog = new FileChooserDialog("Valitse tiedosto", "/home/user");
@@ -69,7 +69,7 @@ dialog.show();
 
 ## Suodattimet {#filters}
 
-Kun valintatila on `FILES`, `FileChooserDialog` mahdollistaa suodattimien asettamisen rajoittaaksesi lueteltujen tiedostotyyppien määrittämistä. Voit konfiguroida suodattimia käyttämällä `setFilters(List<FileChooserFilter> filters)`-metodia.
+Kun valintatila on `FILES`, `FileChooserDialog` sallii suodattimien asettamisen rajoittaaksesi lueteltavien tiedostojen tyyppejä. Voit määrittää suodattimia käyttämällä `setFilters(List<FileChooserFilter> filters)`-metodia.
 
 <ComponentDemo 
 path='/webforj/filechooserdialogfilters?' 
@@ -79,7 +79,7 @@ height = '600px'
 
 ### Mukautetut suodattimet {#custom-filters}
 
-Voit sallia käyttäjien lisätä mukautettuja suodattimia mahdollistamalla mukautettujen suodattimien ominaisuuden käyttämällä `setCustomFilters(boolean customFilters)`-metodia. Mukautetut suodattimet tallennetaan oletuksena selaimen paikalliseen tallennustilaan ja palautetaan takaisin, kun dialogi näytetään uudelleen.
+Voit antaa käyttäjille mahdollisuuden lisätä mukautettuja suodattimia sallimalla mukautettujen suodattimien ominaisuuden käyttämällä `setCustomFilters(boolean customFilters)`-metodia. Mukautetut suodattimet tallennetaan oletusarvoisesti selaimen paikalliseen tallennustilaan ja palautetaan, kun dialogi näytetään jälleen.
 
 ```java showLineNumbers
 FileChooserDialog dialog = new FileChooserDialog("Valitse tiedosto", "/home/user");
@@ -87,9 +87,9 @@ dialog.setCustomFilters(true);
 String result = dialog.show();
 ```
 
-## Kansainvälisyys (i18n) {#internationalization-i18n}
+## Kansainvälistäminen (i18n) {#internationalization-i18n}
 
-Komponentin otsikot, kuvaukset, tunnisteet ja viestit ovat täysin mukautettavissa käyttämällä `FileChooserI18n`-luokkaa. Tämä joustavuus sallii sinun räätälöidä dialogin käyttöliittymää vastaamaan erityisiä lokalisaatiovaatimuksia tai henkilökohtaisia ​​mieltymyksiä.
+Komponentin otsikot, kuvaukset, merkinnät ja viestit ovat täysin mukautettavissa käyttämällä `FileChooserI18n`-luokkaa. Tämä joustavuus mahdollistaa dialogin käyttöliittymän mukauttamisen erityisten lokalisointivaatimusten tai henkilökohtaisten mieltymysten mukaan.
 
 ```java showLineNumbers
 FileChooserDialog dialog = new FileChooserDialog("Valitse tiedosto", "/Users/habof/bbx");
@@ -101,7 +101,7 @@ dialog.setI18n(i18n);
 
 ## Parhaat käytännöt {#best-practices}
 
-1. **Selkeät ja ytimekkäät kehotteet**: Varmista, että kehotteet selkeästi selittävät, mitä käyttäjältä pyydetään valitsemaan.
-2. **Sopivat valintatilat**: Valitse valintatilat, jotka vastaavat vaadittua käyttäjätoimintoa varmistaaksesi tarkat ja asianmukaiset valinnat.
-3. **Loogiset alkuperäiset polut**: Aseta alkuperäiset polut, jotka tarjoavat käyttäjille hyödyllisen lähtöpaikan valinnalleen.
-4. **Rajoita hakemiston navigointia**: Rajoita dialogi tiettyyn hakemistoon tarpeen mukaan estääksesi käyttäjiä navigoimasta valtuuttamattomiin alueisiin.
+1. **Selkeät ja ytimekkäät kehottajat**: Varmista, että kehotusviesti selkeästi selittää, mitä käyttäjän on määrä valita.
+2. **Sopivat valintatilat**: Valitse valintatiloja, jotka vastaavat vaadittua käyttäjätoimintoa varmistaaksesi tarkat ja relevantit valinnat.
+3. **Loogiset alkuperäiset polut**: Aseta alkuperäiset polut, jotka tarjoavat käyttäjille hyödyllisen lähtökohdan valinnalleen.
+4. **Rajoita hakemiston navigointia**: Rajoita dialogi tiettyyn hakemistoon tarpeen mukaan estääksesi käyttäjiä navigoimasta luvattomiin alueisiin.

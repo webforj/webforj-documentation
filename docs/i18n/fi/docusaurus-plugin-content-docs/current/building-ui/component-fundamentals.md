@@ -1,147 +1,148 @@
 ---
 sidebar_position: 2
 title: Understanding Components
-sidebar_class_name: new-content
-_i18n_hash: 9e69e45c2d978b84854066e80e3139e5
+_i18n_hash: 313ad47b29e1d9b40def363613c66f48
 ---
 <JavadocLink type="foundation" location="com/webforj/component/Component" top='true'/> 
 
-Ennen mukautettujen komponenttien rakentamista webforJ:ssä on tärkeää ymmärtää perustavanlaatuinen arkkitehtuuri, joka muovaa sitä, miten komponentit toimivat. Tämä artikkeli selittää komponenttihierarkian, komponentin identiteetin, elinkaarikonseptit ja miten huolenaiheyliopistot tarjoavat komponentin ominaisuuksia.
+Ennen kuin rakennat mukautettuja komponentteja webforJ:ssä, on tärkeää ymmärtää perustavanlaatuinen arkkitehtuuri, joka muokkaa komponenttien toimintaa. Tämä artikkeli selittää komponenttihierarkian, komponenttien identiteetin, elinkaarikonseptit ja kuinka huolenaiherajapinnat tarjoavat komponenttien ominaisuuksia.
 
 ## Ymmärrä komponenttihierarkia {#understanding-the-component-hierarchy}
 
-webforJ järjestää komponentit hierarkiaan, jossa on kaksi ryhmää: kehyksen sisäiset luokat, joita et koskaan saa laajentaa, ja luokat, jotka on erityisesti suunniteltu mukautettujen komponenttien rakentamiseen. Tämä osa selittää, miksi webforJ käyttää koostumusta perinnön sijaan ja mitä jokainen hierarkian taso tarjoaa.
+webforJ järjestää komponentit hierarkiaan, jossa on kaksi ryhmää: kehyksen sisäiset luokat, joita et koskaan saa laajentaa, ja luokat, jotka on suunniteltu erityisesti mukautettujen komponenttien rakentamiseen. Tämä osio selittää, miksi webforJ käyttää koostumusta perinnön sijaan ja mitä kukin hierarkian taso tarjoaa.
 
-### Miksi koostumus eikä laajennus? {#why-composition-instead-of-extension}
+### Miksi koostumus perinnön sijasta? {#why-composition-instead-of-extension}
 
 webforJ:ssä sisäänrakennetut komponentit, kuten [`Button`](../components/button) ja [`TextField`](../components/fields/textfield), ovat lopullisia luokkia—et voi laajentaa niitä:
 
 ```java
 // Tämä ei toimi webforJ:ssä
 public class MyButton extends Button {
-    // Button on lopullinen - ei voi laajentaa 
+  // Button on lopullinen - sitä ei voida laajentaa 
 }
 ```
 
-webforJ käyttää **koostumusta perinnön ylle**. Sen sijaan, että laajentaisit olemassa olevia komponentteja, luot luokan, joka laajentaa `Composite`-luokkaa ja yhdistää komponentit sen sisälle. `Composite` toimii säiliönä, joka käärii yhden komponentin (kutsutaan sidotuksi komponentiksi) ja antaa sinun lisätä omia komponenttejasi ja käyttäytymistä siihen.
+webforJ käyttää **koostumusta perinnön sijasta**. Sen sijaan, että laajentaisit olemassa olevia komponentteja, luot luokan, joka laajentaa `Composite`-luokkaa ja yhdistää komponentteja sen sisään. `Composite` toimii säiliönä, joka pakkaa yhden komponentin (kutsutaan sidotuksi komponentiksi) ja antaa sinun lisätä omia komponenttejasi ja käyttäytymistä siihen.
 
 ```java
 public class SearchBar extends Composite<FlexLayout> {
-    private final FlexLayout self = getBoundComponent();
-    private TextField searchField;
-    private Button searchButton;
+  private final FlexLayout self = getBoundComponent();
+  private TextField searchField;
+  private Button searchButton;
+  
+  public SearchBar() {
+    searchField = new TextField("Haku");
+    searchButton = new Button("Mene");
     
-    public SearchBar() {
-        searchField = new TextField("Haku");
-        searchButton = new Button("Siirry");
-        
-        self.setDirection(FlexDirection.ROW)
-            .add(searchField, searchButton);
-    }
+    self.setDirection(FlexDirection.ROW)
+      .add(searchField, searchButton);
+  }
 }
 ```
 
 ### Miksi et voi laajentaa sisäänrakennettuja komponentteja {#why-you-cant-extend-built-in-components}
 
-webforJ-komponentit on merkitty lopullisiksi, jotta säilytetään taustalla olevan asiakaspään web-komponentin eheys. webforJ-komponenttiluokkien laajentaminen myöntäisi hallinnan taustalla olevalle web-komponentille, mikä voisi johtaa tahattomiin seurauksiin ja rikkoa komponentin käyttäytymisen johdonmukaisuuden ja ennustettavuuden.
+webforJ-komponentit on merkitty lopullisiksi ylläpitämään perustavanlaatuisen asiakaspuolen web-komponentin eheyttä. webforJ-komponenttiluokkien laajentaminen antaisi hallinnan perustavanlaatuiselle web-komponentille, mikä saattaisi johtaa odottamattomiin seurauksiin ja rikkoa komponentin käyttäytymisen johdonmukaisuuden ja ennustettavuuden.
 
-Yksityiskohtaisen selityksen saat [Lopullisista luokista ja laajennusrajoituksista](https://docs.webforj.com/docs/architecture/controls-components#final-classes-and-extension-restrictions) arkkitehtuuridokumentaatiossa.
+Yksityiskohtaisen selityksen saa lukemalla [Lopulliset luokat ja laajennusrajoitukset](https://docs.webforj.com/docs/architecture/controls-components#final-classes-and-extension-restrictions) arkkitehtuurin dokumentaatiossa.
 
 ### Komponenttihierarkia {#the-component-hierarchy}
 
+<div style={{textAlign: 'center'}}>
 ```mermaid
 graph TD
-    A[Component<br/><small>Abstrakti perus - kehyksen sisäinen</small>]
-    
-    A --> B[DwcComponent<br/><small>Sisäänrakennetut webforJ-komponentit</small>]
-    A --> C[Composite<br/><small>Yhdistä webforJ-komponentteja</small>]
-    A --> D[ElementComposite<br/><small>Kääri web-komponentit</small>]
-    
-    B --> E[Button, TextField,<br/>DateField, ComboBox]
-    
-    D --> F[ElementCompositeContainer<br/><small>Komponentit, joissa on paikkoja</small>]
-    
-    style A fill:#f5f5f5,stroke:#666
-    style B fill:#fff4e6,stroke:#ff9800
-    style C fill:#e6ffe6,stroke:#00cc00
-    style D fill:#e6f3ff,stroke:#0066cc
-    style E fill:#fff4e6,stroke:#ff9800
-    style F fill:#e6f3ff,stroke:#0066cc
-    
-    classDef userClass stroke-width:3px
-    class C,D,F userClass
+  A[Component<br/><small>Abstrakti perus - kehyksen sisäinen</small>]
+  
+  A --> B[DwcComponent<br/><small>Sisäänrakennetut webforJ-komponentit</small>]
+  A --> C[Composite<br/><small>Yhdistä webforJ-komponentteja</small>]
+  
+  B --> E[Button, TextField,<br/>DateField, ComboBox]
+  
+  C --> D[ElementComposite<br/><small>Pakkaa web-komponentteja</small>]
+  D --> F[ElementCompositeContainer<br/><small>Komponentit, joissa on reikiä</small>]
+  
+  style A fill:#f5f5f5,stroke:#666
+  style B fill:#fff4e6,stroke:#ff9800
+  style C fill:#e6ffe6,stroke:#00cc00
+  style D fill:#e6f3ff,stroke:#0066cc
+  style E fill:#fff4e6,stroke:#ff9800
+  style F fill:#e6f3ff,stroke:#0066cc
+  
+  classDef userClass stroke-width:3px
+  class C,D,F userClass
 ```
+</div>
 
-**Luokat kehittäjille (käytä näitä):**
-- **Composite**
-- **ElementComposite**
-- **ElementCompositeContainer**
+Luokat kehittäjille (käytä näitä):
+- `Composite`
+- `ElementComposite`
+- `ElementCompositeContainer`
 
-**Sisäiset kehyksen luokat (älä laajenna suoraan):**
-- **Component**
-- **DwcComponent**
+Sisäiset kehysluokat (älä laajenna suoraan):
+- `Component`
+- `DwcComponent`
 
-:::warning[Älä laajenna `Component` tai `DwcComponent`]
-Älä laajenna `Component` tai `DwcComponent` suoraan. Kaikki sisäänrakennetut komponentit ovat lopullisia. Käytä aina koostumusmalleja `Composite` tai `ElementComposite`.
+:::warning[Älä koskaan laajenna `Component` tai `DwcComponent`]  
+Älä koskaan laajenna `Component` tai `DwcComponent` suoraan. Kaikki sisäänrakennetut komponentit ovat lopullisia. Käytä aina koostumusmalleja `Composite` tai `ElementComposite`.
 
-Yrittäminen laajentaa `DwcComponent` heittää ajonaikaisen poikkeuksen.
+Yritys laajentaa `DwcComponent` heittää ajonaikaisen poikkeuksen.
 :::
 
-## Huolenaiheyliopistot {#concern-interfaces}
+## Huolenaiherajapinnat {#concern-interfaces}
 
-Huolenaiheyliopistot ovat Java-rajapintoja, jotka tarjoavat erityisiä toimintoja komponentillesi. Jokainen rajapinta lisää joukon liittyviä metodeja. Esimerkiksi `HasSize` lisää metodeja leveyden ja korkeuden hallintaan, kun taas `HasFocus` lisää metodeja fokustilan hallintaan.
+Huolenaiherajapinnat ovat Java-rajapintoja, jotka tarjoavat erityisiä ominaisuuksia komponentillesi. Jokainen rajapinta lisää joukon siihen liittyviä metodeja. Esimerkiksi `HasSize` lisää metodeja leveyden ja korkeuden hallintaan, kun taas `HasFocus` lisää metodeja fokus-tilan hallintaan.
 
-Kun toteutat huolenaiheyliopiston komponentissasi, saat käyttöönsä nuo ominaisuudet ilman, että sinun tarvitsee kirjoittaa toteutuskoodia. Rajapinta tarjoaa oletustoteutuksia, jotka toimivat automaattisesti.
+Kun toteutat huolenaiherajapinnan komponentillesi, saat pääsyn näihin ominaisuuksiin ilman, että sinun tarvitsee kirjoittaa mitään toteutuskoodeja. Rajapinta tarjoaa oletustoteutuksia, jotka toimivat automaattisesti.
 
-Huolenaiheyliopistojen toteuttaminen antaa mukautetuille komponenteillesi samat API:t kuin sisäänrakennetuilla webforJ-komponenteilla:
+Huolenaiherajapintojen toteuttaminen antaa mukautetuille komponenteillesi samat rajapinnat kuin sisäänrakennetuille webforJ-komponenteille:
 
 ```java
-// Toteuta HasSize saadaksesi leveyden/korkeuden metodit automaattisesti
+// Toteuta HasSize saadaksesi leveys/korkeus-metodit automaattisesti
 public class SizedCard extends Composite<Div> implements HasSize<SizedCard> {
-    private final Div self = getBoundComponent();
-    
-    public SizedCard() {
-        self.setText("Kortin sisältö");
-    }
-    
-    // Ei tarvitse toteuttaa näitä - saat ne ilmaiseksi:
-    // setWidth(), setHeight(), setSize()
+  private final Div self = getBoundComponent();
+  
+  public SizedCard() {
+    self.setText("Kortin sisältö");
+  }
+  
+  // Ei tarvitse toteuttaa näitä - saat ne ilmaiseksi:
+  // setWidth(), setHeight(), setSize()
 }
 
-// Käytä sitä kuten mitä tahansa webforJ-komponenttia
+// Käytä sitä kuin mitä tahansa webforJ-komponenttia
 SizedCard card = new SizedCard();
 card.setWidth("300px")
-    .setHeight("200px");
+  .setHeight("200px");
 ```
 
-Koostumus välittää nämä kutsut automaattisesti taustalla olevalle `Div`:lle. Ei ylimääräistä koodia tarvitse.
+Koostumus välittää automaattisesti nämä kutsut taustalla olevalle `Div`-komponentille. Ei ylimääräistä koodia tarvita.
 
-**Yleisimmät huolenaiheyliopistot:**
+**Yleisiä huolenaiherajapintoja:**
 - `HasSize` - `setWidth()`, `setHeight()`, `setSize()`
-- `HasFocus` - `focus()`, `setFocusable()`, fokustapahtumat
+- `HasFocus` - `focus()`, `setFocusable()`, fokus-tapahtumat
 - `HasClassName` - `addClassName()`, `removeClassName()`
-- `HasStyle` - `setStyle()`, sisäinen CSS-hallinta
-- `HasVisibility` - `setVisible()`, näyttää/piilottaa-toiminto
-- `HasText` - `setText()`, tekstin sisällön hallinta
+- `HasStyle` - `setStyle()`, inline CSS -hallinta
+- `HasVisibility` - `setVisible()`, näyttää/piilottaa -ominaisuus
+- `HasText` - `setText()`, tekstisisällön hallinta
 - `HasAttribute` - `setAttribute()`, HTML-attribuuttien hallinta
 
-:::warning
-Jos taustalla oleva komponentti ei tue rajapinnan ominaisuutta, saat ajonaikaisen poikkeuksen. Tarjoa oma toteutuksesi tällöin.
+:::warning  
+Jos taustalla oleva komponentti ei tue rajapinnan ominaisuutta, saat ajonaikaisen poikkeuksen. Tarjoa silloin oma toteutuksesi.
 :::
 
-Täydellisen luettelon saatavilla olevista huolenaiheyliopistoista löydät [webforJ JavaDocista](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/concern/package-summary.html).
+Saat täydellisen luettelon käytettävistä huolenaiherajapinnoista [webforJ Javadocista](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/concern/package-summary.html).
 
-## Komponentin elinkaari-yhteenveto {#component-lifecycle-overview}
+## Komponentin elinkaari yleiskatsaus {#component-lifecycle-overview}
 
-webforJ hallitsee komponentin elinkaarta automaattisesti. Kehys hoitaa komponentin luomisen, liittämisen ja tuhoamisen ilman, että manuaalista puuttumista tarvitaan.
+webforJ hallitsee komponentin elinkaarta automaattisesti. Kehys käsittelee komponentin luomisen, liittämisen ja tuhoamisen ilman, että manuaalista väliintuloa tarvitaan.
 
-**Elinkaaren koukut** ovat käytettävissä, kun tarvitset niitä:
-- `onDidCreate()` - Kutsutaan, kun komponentti on liitetty DOM:iin
+**Elinkaarikoukut** ovat käytettävissä tarvittaessa:
+- `onDidCreate()` - Kutsutaan sen jälkeen, kun komponentti on liitetty DOM:iin
 - `onDidDestroy()` - Kutsutaan, kun komponentti tuhotaan
 
-Nämä koukut ovat **valinnaisia**. Käytä niitä, kun tarvitset:
-- Vapauta resursseja (lopeta väliin, sulje yhteydet)
-- Alusta komponentteja, jotka vaativat DOM-liittämistä
-- Integroi asiakaspään JavaScriptin kanssa
+Nämä koukut ovat **valinnaisia**. Käytä niitä tarvittaessa:
+- Siivoa resursseja (lopeta väliin, sulje yhteydet)
+- Alusta komponentit, jotka vaativat DOM:in liittämistä
+- Integroi asiakaspuolen JavaScriptin kanssa
 
-Useimmissa yksinkertaisissa tapauksissa voit alustaa komponentteja suoraan konstruktoriin. Käytä elinkaarikoukkuja kuten `onDidCreate()`, kun työskentelyä on tarpeen viivästyttää.
+Useimmissa yksinkertaisissa tapauksissa voit alustaa komponentit suoraan konstruktorissa. Käytä elinkaarikoukkuja, kuten `onDidCreate()`, siirtääksesi työtä tarvittaessa.

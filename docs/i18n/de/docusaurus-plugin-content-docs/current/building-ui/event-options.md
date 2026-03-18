@@ -1,20 +1,20 @@
 ---
 sidebar_position: 7
 title: Event Options
-_i18n_hash: 4311668d9a6bb9e9cebcf988e515d91a
+_i18n_hash: 64cfa37f974517956ccb3fd75618df50
 ---
 <!-- sidebar_class_name: sidebar--item__hidden -->
 import JavadocLink from '@site/src/components/DocsTools/JavadocLink';
 
 <JavadocLink type="foundation" location="com/webforj/component/element/event/ElementEventOptions" top='true'/>
 
-`ElementEventOptions` ist ein vielseitiges webforJ-Werkzeug, das entwickelt wurde, um Konfigurationseinstellungen für `Element`-Ereignisse in webforJ-Anwendungen zu kapseln und zu verwalten. Als Container für verschiedene Optionen ermöglicht es Entwicklern, präzise festzulegen, wie Ereignisse, die mit Elementen verbunden sind, verarbeitet werden sollen.
+`ElementEventOptions` ist ein vielseitiges webforJ-Tool, das entwickelt wurde, um Konfigurationseinstellungen für `Element`-Ereignisse innerhalb von webforJ-Anwendungen zu kapseln und zu verwalten. Als Container für verschiedene Optionen ermöglicht es Entwicklern, genau festzulegen, wie Ereignisse, die mit Elementen verbunden sind, verarbeitet werden sollen.
 
 ## Ereignisdaten {#event-data}
 
-Ereignisdaten sind ein zentrales Merkmal von `ElementEventOptions`, das es Entwicklern ermöglicht, spezifische Informationen an die Ereignisoptionen anzuhängen. Diese Funktionalität erleichtert das Übertragen von benutzerdefinierten Daten vom Client zum Server, wenn ein Ereignis ausgelöst wird. Diese Fähigkeit ist entscheidend, um zusätzlichen Kontext oder Parameter, die mit dem Ereignis verbunden sind, zu übermitteln und ermöglicht den Zugriff auf Informationen ohne zusätzliche Anfragen vom Client.
+Ereignisdaten sind ein Schlüsselfeature von `ElementEventOptions`, das es Entwicklern ermöglicht, spezifische Informationen an die Ereignisoptionen anzuhängen. Diese Funktionalität erleichtert das Übermitteln von benutzerdefinierten Daten vom Client zum Server, wenn ein Ereignis ausgelöst wird. Diese Fähigkeit ist instrumental, um zusätzlichen Kontext oder Parameter, die mit dem Ereignis verbunden sind, zu vermitteln und ermöglicht den Zugriff und die Nutzung von Informationen, ohne dass zusätzliche Anfragen an den Client gestellt werden müssen.
 
-Betrachten Sie beispielsweise ein Szenario, in dem Sie ein Button-Klick-Ereignis haben und den aktuellen Benutzernamen des Nutzers zusammen mit dem Ereignis übergeben möchten. Anstatt bei jedem Klick den Benutzernamen abzufragen, senden Sie diese Informationen mit dem Ereignis als Daten.
+Betrachten Sie beispielsweise ein Szenario, in dem Sie ein Button-Klick-Ereignis haben und den Benutzernamen des aktuellen Nutzers zusammen mit dem Ereignis übermitteln möchten. Anstatt bei jedem Klick den Benutzernamen vom Client abzufragen, senden Sie diese Information zusammen mit dem Ereignis als Daten.
 
 :::tip
 Für weitere Informationen siehe die Seiten [events](/docs/building-ui/events) und [Client/Server Interaction](/docs/architecture/client-server).
@@ -22,45 +22,47 @@ Für weitere Informationen siehe die Seiten [events](/docs/building-ui/events) u
 
 Um Daten zu den Ereignisoptionen hinzuzufügen, können Sie die Methode `addData()` verwenden.
 
+<!-- ### Beispiel -->
+
 ## Ausführen von JavaScript {#executing-javascript}
 
-Die Klasse `ElementEventOptions` ermöglicht es Entwicklern, JavaScript-Code anzugeben, der auf der Client-Seite evaluiert werden soll, bevor das zugehörige Ereignis ausgelöst wird. Diese Funktion ermöglicht es den Clients, Ereignisdaten vorzubereiten oder zusätzliche Ereignisse nach Bedarf auszulösen. Dies ist in vielen Fällen hilfreich, z. B. wenn Sie Formulardaten auf der Client-Seite validieren möchten, bevor Sie sie über ein Formulareingabeereignis übermitteln.
+Die Klasse `ElementEventOptions` ermöglicht es Entwicklern, JavaScript-Code anzugeben, der auf der Client-Seite ausgewertet wird, bevor das zugehörige Ereignis ausgelöst wird. Diese Funktion ermöglicht es den Clients, Ereignisdaten vorzubereiten oder bei Bedarf zusätzliche Ereignisse auszulösen. Dies ist in vielen Fällen hilfreich, zum Beispiel wenn Sie Formulardaten auf der Client-Seite validieren möchten, bevor Sie sie über ein Formularereignis einreichen.
 
 ### Verwendung {#usage}
 Um den Ereigniscode festzulegen, verwenden Sie die Methode `setCode()`.
 
-## Filterung von Ereignissen {#filtering-events}
+## Filtern von Ereignissen {#filtering-events}
 
-`ElementEventOptions` umfasst eine Funktion zum Festlegen eines Filterausdrucks, der auf dem Client vor dem Auslösen des Ereignisses evaluiert werden soll. Dieser Filterausdruck ermöglicht es dem Client zu bestimmen, ob das Ereignis fortgesetzt oder gestoppt werden soll, basierend auf bestimmten Bedingungen. Betrachten Sie ein Eingabefeld, in dem Sie ein Ereignis nur auslösen möchten, wenn der eingegebene Text spezifischen Kriterien entspricht, wie z. B. einer Mindestlänge.
+`ElementEventOptions` enthält eine Funktion zum Festlegen eines Filterausdrucks, der auf dem Client ausgewertet wird, bevor das Ereignis ausgelöst wird. Dieser Filterausdruck ermöglicht es dem Client zu entscheiden, ob das Ereignis fortfahren oder gestoppt werden soll, basierend auf bestimmten Bedingungen. Betrachten Sie ein Eingabefeld, bei dem Sie ein Ereignis nur auslösen möchten, wenn der eingegebene Text bestimmte Kriterien erfüllt, wie z.B. eine Mindestlänge.
 
 ### Verwendung {#usage-1}
 Um den Ereignisfilter festzulegen, verwenden Sie die Methode `setFilter()`.
 
-## Entprellen und Drosseln {#debouncing-and-throttling}
+## Debouncing und Throttling {#debouncing-and-throttling}
 
 ### Zweck {#purpose}
-`ElementEventOptions` bietet Mechanismen zum Entprellen und Drosseln von Ereignissen. Diese Funktionen sind nützlich, um die Häufigkeit der Ereignis-Listener zu steuern und sicherzustellen, dass sie nur unter bestimmten Bedingungen ausgelöst werden.
+`ElementEventOptions` bietet Mechanismen zum Debouncing und Throttling von Ereignissen. Diese Features sind nützlich, um die Häufigkeit von Ereignis-Listenern zu steuern und sicherzustellen, dass sie nur unter bestimmten Bedingungen ausgelöst werden.
 
 ### Verwendung {#usage-2}
-- Um das Entprellen festzulegen, verwenden Sie die Methode `setDebounce`.
-- Um die Drosselung festzulegen, verwenden Sie die Methode `setThrottle`.
+- Um Debounce festzulegen, verwenden Sie die Methode `setDebounce`.
+- Um Throttle festzulegen, verwenden Sie die Methode `setThrottle`.
 
 ### Beispiel {#example}
-In Szenarien, in denen Sie mit schnellem Benutzereingaben, wie z. B. Suchfeldern, umgehen möchten, können Sie Entprellen verwenden, um die Ausführung zu verzögern, bis der Benutzer mit dem Tippen fertig ist.
+In Szenarien, in denen Sie schnelle Benutzereingaben wie Suchfelder behandeln möchten, können Sie Debounce verwenden, um die Ausführung zu verzögern, bis der Benutzer mit dem Tippen fertig ist.
 
 ## Merging von Ereignisoptionen {#merging-event-options}
 
-Die Klasse `ElementEventOptions` unterstützt das Zusammenführen mit anderen Instanzen, was es Entwicklern ermöglicht, verschiedene Optionen zu aggregieren. Diese Funktion ist hilfreich, um Einstellungen aus verschiedenen Quellen zu kombinieren.
+Die Klasse `ElementEventOptions` unterstützt das Merging mit anderen Instanzen, wodurch Entwicklern ermöglicht wird, verschiedene Optionen zu aggregieren. Dieses Feature ist hilfreich, wenn Einstellungen aus verschiedenen Quellen kombiniert werden.
 
 ## Annotations {#annotations}
 
 ### Zweck {#purpose-1}
-Zur Vereinfachung kann `ElementEventOptions` mithilfe von Annotationen konfiguriert werden. Diese Annotationen bieten eine prägnantere und ausdrucksstärkere Möglichkeit, Ereignisoptionen festzulegen.
+Zur Vereinfachung kann `ElementEventOptions` mithilfe von Annotations konfiguriert werden. Diese Annotations bieten eine prägnantere und ausdrucksvollere Möglichkeit, Ereignisoptionen festzulegen.
 
 ### Beispiel {#example-1}
-Betrachten Sie das folgende Beispiel einer Annotation:
+Betrachten Sie das folgende Beispiel für eine Annotation:
 
 ```java
 @EventOptions(data = {@EventData(key = "value", exp = "component.value")},
-      debounce = @DebounceSettings(value = 200))
+debounce = @DebounceSettings(value = 200))
 ```
