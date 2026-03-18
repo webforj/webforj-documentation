@@ -4,7 +4,7 @@ sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true
 sidebar_class_name: new-content
-_i18n_hash: b27e06c94bdd94dd90f7411523e442f5
+_i18n_hash: 21ef4feee90e5c4f6827a48ce1755d0b
 ---
 <Head>
   <style>{`
@@ -17,7 +17,7 @@ _i18n_hash: b27e06c94bdd94dd90f7411523e442f5
 <DocChip chip='since' label='25.12' />
 <DocChip chip='experimental' />
 
-webforJ biedt een [Kotlin](https://kotlinlang.org/) *Domain Specific Language*, of DSL, waarmee je UI's kunt bouwen met een beknopte, type-veilige syntaxis. In plaats van imperatieve Java-code schrijf je declaratieve code die leest als een beschrijving van de structuur van je UI.
+webforJ biedt een [Kotlin](https://kotlinlang.org/) *Domain Specific Language*, of DSL, waarmee je gebruikersinterfaces kunt bouwen met een compacte, type-veilige syntaxis. In plaats van imperatieve Java-code schrijf je declaratieve code die leest als een beschrijving van de structuur van je gebruikersinterface.
 
 <!-- INTRO_END -->
 
@@ -27,134 +27,142 @@ layout.setDirection(FlexDirection.COLUMN);
 layout.setSpacing("10px");
 
 TextField name = new TextField();
-name.setLabel("Name");
-name.setPlaceholder("Your name");
+name.setLabel("Naam");
+name.setPlaceholder("Je naam");
 layout.add(name);
 
-Button submit = new Button("Submit", ButtonTheme.PRIMARY);
+Button submit = new Button("Verzenden", ButtonTheme.PRIMARY);
 submit.onClick(e -> handleSubmit());
 layout.add(submit);
 ```
 
 ```kotlin title="Kotlin DSL"
 flexLayout {
-    direction = FlexDirection.COLUMN
-    styles["gap"] = "10px"
+  direction = FlexDirection.COLUMN
+  styles["gap"] = "10px"
 
-    textField("Name", placeholder = "Your name")
-    button("Submit", ButtonTheme.PRIMARY) {
-        onClick { handleSubmit() }
-    }
+  textField("Naam", placeholder = "Je naam")
+  button("Verzenden", ButtonTheme.PRIMARY) {
+    onClick { handleSubmit() }
+  }
 }
 ```
 
-De DSL maakt gebruik van Kotlin-extensie-methoden, lambdas met ontvangers en standaardparameters om een natuurlijke bouwer-syntaxis te creëren. Componenten nestelen zich in elkaar, configuratie gebeurt in blokken, en de compiler vangt structurele fouten voor de uitvoering op.
+De DSL maakt gebruik van Kotlin-extensiefuncties, lambdas met ontvangers en standaardparameters om een natuurlijke builder-syntaxis te creëren. Componenten worden binnen elkaar genest, configuratie vindt plaats in blokken en de compiler vangt structurele fouten op vóór de uitvoering.
 
 ## Setup {#setup}
 
-:::warning experimental feature
+:::warning experimentele functie
 Deze functie is nog steeds in actieve ontwikkeling.
-De API kan in toekomstige versies veranderen, inclusief mogelijke breaking changes.
+De API kan in toekomstige versies veranderen, inclusief mogelijke brekende wijzigingen.
 
-Je bent van harte welkom om het uit te proberen en feedback te delen. Jouw input zal helpen de uiteindelijke vormgeving te bepalen.
+Je bent van harte welkom om het uit te proberen en feedback te geven. Je inbreng zal helpen de uiteindelijke vormgeving te bepalen.
 :::
 
-Er is geen aparte Kotlin-installatie nodig. Maven zorgt voor de compilatie via de Kotlin Maven-plugin, zodat elk project dat al met Maven bouwt, Kotlin-ondersteuning kan toevoegen met alleen afhankelijkheid- en pluginconfiguratie.
+Er is geen aparte Kotlin-installatie vereist. Maven beheert de compilatie via de Kotlin Maven-plugin, zodat elk project dat al met Maven bouwt, Kotlin-ondersteuning kan toevoegen met alleen afhankelijkheid en plugin-configuratie.
 
-### Dependencies {#dependencies}
+:::tip Snelle start
+Om een webforJ-project met Kotlin werkend te krijgen met alle benodigde configuraties direct uit de doos, zie [deze sectie over het gebruik van de webforJ Kotlin-starter](#kotlin-starter-project).
+:::
+
+### Afhankelijkheden {#dependencies}
 
 Voeg de webforJ Kotlin DSL-module en de Kotlin-standaardbibliotheek toe aan je `pom.xml`:
 
 ```xml
 <dependency>
-    <groupId>com.webforj.kotlin</groupId>
-    <artifactId>webforj-kotlin</artifactId>
-    <version>${webforj.version}</version>
+  <groupId>com.webforj.kotlin</groupId>
+  <artifactId>webforj-kotlin</artifactId>
+  <version>${webforj.version}</version>
 </dependency>
 
 <dependency>
-    <groupId>org.jetbrains.kotlin</groupId>
-    <artifactId>kotlin-stdlib-jdk8</artifactId>
-    <version>${kotlin.version}</version>
+  <groupId>org.jetbrains.kotlin</groupId>
+  <artifactId>kotlin-stdlib-jdk8</artifactId>
+  <version>${kotlin.version}</version>
 </dependency>
 ```
 
-Als je van plan bent om tests in Kotlin te schrijven, voeg dan ook de Kotlin test-afhankelijkheid toe. Dit integreert met JUnit:
+Als je van plan bent om tests in Kotlin te schrijven, voeg dan ook de Kotlin-testafhankelijkheid toe. Het integreert met JUnit:
 
 ```xml
 <dependency>
-    <groupId>org.jetbrains.kotlin</groupId>
-    <artifactId>kotlin-test</artifactId>
-    <version>${kotlin.version}</version>
-    <scope>test</scope>
+  <groupId>org.jetbrains.kotlin</groupId>
+  <artifactId>kotlin-test</artifactId>
+  <version>${kotlin.version}</version>
+  <scope>test</scope>
 </dependency>
 ```
 
-### Kotlin Maven plugin {#kotlin-maven-plugin}
+### Kotlin Maven-plugin {#kotlin-maven-plugin}
 
-Voeg de Kotlin Maven-plugin toe om zowel je Kotlin- als Java-bronnen te compileren. De configuratie `sourceDirs` hieronder staat Kotlin- en Java-bestanden toe om naast elkaar in hetzelfde project te bestaan:
+Voeg de Kotlin Maven-plugin toe om zowel je Kotlin- als Java-bronnen te compileren. De configuratie `sourceDirs` hieronder staat Kotlin- en Java-bestanden toe om in hetzelfde project te coexistenteren:
 
 ```xml
 <plugin>
-    <groupId>org.jetbrains.kotlin</groupId>
-    <artifactId>kotlin-maven-plugin</artifactId>
-    <version>${kotlin.version}</version>
-    <executions>
-        <execution>
-            <id>compile</id>
-            <phase>compile</phase>
-            <goals>
-                <goal>compile</goal>
-            </goals>
-            <configuration>
-                <sourceDirs>
-                    <sourceDir>src/main/java</sourceDir>
-                    <sourceDir>target/generated-sources/annotations</sourceDir>
-                    <sourceDir>src/main/kotlin</sourceDir>
-                </sourceDirs>
-            </configuration>
-        </execution>
-        <execution>
-            <id>test-compile</id>
-            <phase>test-compile</phase>
-            <goals>
-                <goal>test-compile</goal>
-            </goals>
-            <configuration>
-                <sourceDirs>
-                    <sourceDir>src/test/java</sourceDir>
-                    <sourceDir>target/generated-test-sources/test-annotations</sourceDir>
-                    <sourceDir>src/test/kotlin</sourceDir>
-                </sourceDirs>
-            </configuration>
-        </execution>
-    </executions>
-    <configuration>
-        <jvmTarget>${maven.compiler.target}</jvmTarget>
-    </configuration>
+  <groupId>org.jetbrains.kotlin</groupId>
+  <artifactId>kotlin-maven-plugin</artifactId>
+  <version>${kotlin.version}</version>
+  <executions>
+    <execution>
+      <id>compile</id>
+      <phase>compile</phase>
+      <goals>
+        <goal>compile</goal>
+      </goals>
+      <configuration>
+        <sourceDirs>
+          <sourceDir>src/main/java</sourceDir>
+          <sourceDir>target/generated-sources/annotations</sourceDir>
+          <sourceDir>src/main/kotlin</sourceDir>
+        </sourceDirs>
+      </configuration>
+    </execution>
+    <execution>
+      <id>test-compile</id>
+      <phase>test-compile</phase>
+      <goals>
+        <goal>test-compile</goal>
+      </goals>
+      <configuration>
+        <sourceDirs>
+          <sourceDir>src/test/java</sourceDir>
+          <sourceDir>target/generated-test-sources/test-annotations</sourceDir>
+          <sourceDir>src/test/kotlin</sourceDir>
+        </sourceDirs>
+      </configuration>
+    </execution>
+  </executions>
+  <configuration>
+    <jvmTarget>${maven.compiler.target}</jvmTarget>
+  </configuration>
 </plugin>
 ```
 
-Met deze toevoegingen compileert `mvn compile` Kotlin-bronnen naast Java. Kotlin-bestanden kunnen in `src/main/kotlin` of `src/main/java` worden geplaatst, en de plugin verwerkt beide.
+Met deze aanvullingen compileert `mvn compile` Kotlin-bronnen naast Java. Kotlin-bestanden kunnen worden geplaatst in `src/main/kotlin` of `src/main/java`, en de plugin verwerkt beide.
 
-:::tip[Java interoperability]
-Kotlin compileert naar JVM-bytecode, zodat het samenwerkt met bestaande Java-code. Je kunt DSL-gebouwde Kotlin-composieten vanuit Java-klassen gebruiken, standaard Java-componenten binnen DSL-blokken met `add()` nestelen, en Kotlin- en Java-bestanden in hetzelfde project mixen.
+:::tip[Java-interoperabiliteit]
+Kotlin compileert naar JVM-bytecode, zodat het naast bestaande Java-code kan werken. Je kunt DSL-gebouwde Kotlin-composieten vanuit Java-klassen gebruiken, standaard Java-componenten binnen DSL-blokken nestelen met `add()`, en Kotlin- en Java-bestanden in hetzelfde project mixen.
 :::
 
-## Topics {#topics}
+### Kotlin-starterproject {#kotlin-starter-project}
 
-De volgende onderwerpen behandelen het gebruik van de DSL, evenals het uitbreiden ervan naar aangepaste componenten of composieten die je creëert.
+Als je liever de handmatige installatie overslaat, biedt de [webforJ Kotlin Starter](https://github.com/webforj/webforj-kotlin-starter) repository een kant-en-klaar project met alle afhankelijkheden en plugin-configuratie al ingesteld. Clone het en begin direct met het bouwen met de DSL.
+
+## Onderwerpen {#topics}
+
+De volgende onderwerpen behandelen het gebruik van de DSL, evenals het uitbreiden ervan naar eventuele aangepaste componenten of composieten die je creëert.
 
 <DocCardList className="topics-section" />
 
 ## Kotlin voor Java-ontwikkelaars {#kotlin-for-java-developers}
 
 <details>
-<summary>Nieuw bij Kotlin? Hier zijn enkele van de belangrijkste taalfuncties waarop de DSL zich baseert.</summary>
+<summary>Nieuwe in Kotlin? Hier zijn enkele van de belangrijkste taalkenmerken waarop de DSL vertrouwt.</summary>
 
 ### Null-veiligheid {#null-safety}
 
-Kotlin onderscheidt nullable en non-nullable types tijdens de compileertijd:
+Kotlin maakt onderscheid tussen null- en niet-null-typen tijdens het compileren:
 
 ```kotlin
 // Java - elke referentie kan null zijn
@@ -162,55 +170,55 @@ String name = null;
 
 // Kotlin - expliciete null-veiligheid
 var name: String? = null        // Nullable, kan null zijn
-var safeName: String = "waarde" // Non-null, compiler handhaaft dit
+var safeName: String = "waarde" // Niet-null, de compiler handhaaft dit
 
-// Veilige aanroepoperator - retourneert null als naam null is
+// Veilige aanroepoperator - geeft null terug als name null is
 println(name?.length)
 
 // Elvis-operator - biedt standaardwaarde wanneer null
 println(name ?: "standaard")
 ```
 
-### Extensie-methoden {#extension-functions}
+### Extensiefuncties {#extension-functions}
 
-Kotlin stelt je in staat om methoden aan bestaande klassen toe te voegen zonder overerving:
+Kotlin laat je methoden toevoegen aan bestaande klassen zonder overerving:
 
 ```kotlin
 // Java-aanpak - statische hulpprogrammaklasse
 public class StringUtils {
-    public static String addExclamation(String input) {
-        return input + "!";
-    }
+  public static String addExclamation(String input) {
+    return input + "!";
+  }
 }
 String result = StringUtils.addExclamation("Hallo");
 
-// Kotlin-aanpak - extensiemethode
+// Kotlin-aanpak - extensiefunctie
 fun String.addExclamation(): String = this + "!"
-val resultat = "Hallo".addExclamation()  // Leest als een methodeaanroep
+val result = "Hallo".addExclamation()  // Leest als een method call
 ```
 
-De DSL gebruikt extensie-methoden om bouwer-methoden aan componenten toe te voegen.
+De DSL gebruikt extensiefuncties om builder-methoden aan componenten toe te voegen.
 
 ### Lambdas en trailing lambda-syntaxis {#lambdas-and-trailing-lambda-syntax}
 
-Kotlin-lambdas zijn beknopter dan die van Java, en wanneer een lambda de laatste parameter is, kan deze buiten de haakjes gaan:
+Kotlin-lambdas zijn compacter dan die van Java, en als een lambda de laatste parameter is, kan deze buiten de haakjes gaan:
 
 ```kotlin
 // Java
-button.addClickListener(e -> System.out.println("Klikt"));
+button.addClickListener(e -> System.out.println("Geklikt"));
 
-// Kotlin - lambda als laatste parameter gaat buiten de haakjes
-button.onClick { println("Klikt") }
+// Kotlin - lambda als laatste parameter gaat buiten haakjes
+button.onClick { println("Geklikt") }
 
 // Met expliciete parameter
-button.onClick { event -> println("Klikt: $event") }
+button.onClick { event -> println("Geklikt: $event") }
 ```
 
-Deze trailing lambda-syntaxis maakt DSL-blokken mogelijk.
+Deze trailing lambda-syntaxis maakt het mogelijk om DSL-blokken te creëren.
 
 ### Standaardparameters {#default-parameters}
 
-Kotlin-functies kunnen standaardparameterwaarden hebben, waardoor de behoefte aan overbelaste methoden vermindert:
+Kotlin-functies kunnen standaardparameterwaarden hebben, wat de noodzaak van overbelaste methoden vermindert:
 
 ```kotlin
 // Java - meerdere constructeurs nodig
@@ -220,9 +228,9 @@ public Button(String text, ButtonTheme theme) {}
 
 // Kotlin - één functie met standaardwaarden
 fun button(
-    text: String = "",
-    theme: ButtonTheme = ButtonTheme.DEFAULT,
-    block: Button.() -> Unit = {}
+  text: String = "",
+  theme: ButtonTheme = ButtonTheme.DEFAULT,
+  block: Button.() -> Unit = {}
 ): Button
 ```
 

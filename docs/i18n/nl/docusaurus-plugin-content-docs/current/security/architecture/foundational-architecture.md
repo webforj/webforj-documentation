@@ -1,26 +1,26 @@
 ---
 sidebar_position: 2
 title: Foundational Architecture
-_i18n_hash: 53db76e19a5bfcf2e476ac1efaaa2c48
+_i18n_hash: 0506f859c3bd22ddca70550b6f3e368a
 ---
-Het webforJ beveiligingssysteem is gebouwd op een fundament van kerninterfaces die samenwerken om route-niveau toegangscontrole te bieden. Deze interfaces definiëren de contracten voor beveiligingsgedrag, waardoor verschillende implementaties, of ze nu op sessies zijn gebaseerd, gebaseerd zijn op JSON Web Tokens (JWT), LDAP-geïntegreerd of database-ondersteund, kunnen aansluiten op hetzelfde onderliggende framework.
+Het webforJ-beveiligingssysteem is gebouwd op een fundament van kerninterfaces die samenwerken om toegangscontrole op route-niveau te bieden. Deze interfaces definiëren de contracten voor beveiligingsgedrag, waardoor verschillende implementaties, of ze nu op sessies zijn gebaseerd, op JSON Web Tokens (JWT), LDAP-geïntegreerd of database-ondersteund zijn, in hetzelfde onderliggende framework kunnen worden geïntegreerd.
 
-Het begrijpen van deze architectuur helpt je in te zien hoe beveiligingsannotaties zoals `@RolesAllowed` en `@PermitAll` worden geëvalueerd, hoe navigatie-interceptie werkt en hoe je aangepaste beveiligingsimplementaties kunt bouwen voor jouw specifieke behoeften.
+Het begrijpen van deze architectuur helpt je te zien hoe beveiligingsannotaties zoals `@RolesAllowed` en `@PermitAll` worden geëvalueerd, hoe navigatie-interceptie werkt en hoe je aangepaste beveiligingsimplementaties kunt bouwen voor je specifieke behoeften.
 
 ## De kerninterfaces {#the-four-core-interfaces}
 
-De beveiligingsfundering is opgebouwd uit sleutelabstracties, elk met een specifieke verantwoordelijkheid:
+De beveiligingsbasis is gebouwd op sleutelabstracties, elk met een specifieke verantwoordelijkheid:
 
 ### `RouteSecurityManager` {#routesecuritymanager}
 
-De `RouteSecurityManager` is de centrale coördinator van het beveiligingssysteem. Het beheert beveiligingsevaluatoren, coördineert het evaluatieproces en behandelt toegang weigering door gebruikers naar de juiste pagina's te verwijzen.
+De `RouteSecurityManager` is de centrale coördinator van het beveiligingssysteem. Het beheert beveiligingsevaluators, coördineert het evaluatieproces en behandelt toegangweigeringen door gebruikers naar de juiste pagina's om te leiden.
 
 **Verantwoordelijkheden:**
 
-- Registreren en beheren van beveiligingsevaluatoren met prioriteiten
+- Registreren en beheren van beveiligingsevaluators met prioriteiten
 - Coördineren van het evaluatieproces wanneer een gebruiker naar een route navigeert
-- Toegang weigering behandelen door redirects naar inloggen of toegang geweigerd pagina's te activeren
-- Opslaan en ophalen van pre-authenticatielocaties voor redirects na inloggen
+- Behandelen van toegangweigering door omleidingen naar inlog- of toegang geweigerd-pagina's te activeren
+- Opslaan en ophalen van pre-authenticatielocaties voor omleidingen na inloggen
 
 ```java
 public interface RouteSecurityManager {
@@ -33,15 +33,15 @@ public interface RouteSecurityManager {
 }
 ```
 
-De manager neemt zelf geen beveiligingsbeslissingen, maar delegeert dit aan evaluatoren en configuratie. Het is de lijm die alle beveiligingscomponenten met elkaar verbindt.
+De manager neemt zelf geen beveiligingsbeslissingen, maar delegeert deze aan evaluators en configuratie. Het is de verbinding die alle beveiligingscomponenten verbindt.
 
 ### `RouteSecurityContext` {#routesecuritycontext}
 
-De `RouteSecurityContext` biedt toegang tot de authenticatiestatus van de huidige gebruiker. Het beantwoordt vragen zoals of de gebruiker authenticeerd is, wat hun gebruikersnaam is en of ze de `ADMIN` rol hebben.
+De `RouteSecurityContext` biedt toegang tot de authenticatiestatus van de huidige gebruiker. Het beantwoordt vragen zoals of de gebruiker geauthenticeerd is, wat hun gebruikersnaam is, en of ze de rol `ADMIN` hebben.
 
 **Verantwoordelijkheden:**
 
-- Bepalen of de huidige gebruiker authenticeerd is
+- Bepalen of de huidige gebruiker geauthentiseerd is
 - De principal van de gebruiker bieden (typisch hun gebruikersnaam of gebruikersobject)
 - Controleren of de gebruiker specifieke rollen of autoriteiten heeft
 - Opslaan en ophalen van aangepaste beveiligingsattributen
@@ -57,18 +57,18 @@ public interface RouteSecurityContext {
 }
 ```
 
-Implementaties variëren afhankelijk van het authenticatiesysteem, HTTP-sessiebewaring, JWT-tokens gedecodeerd uit headers, databasequery's, LDAP-zoekopdrachten of andere mechanismen.
+Implementaties variëren op basis van het authenticatiesysteem, HTTP-sessieopslag, JWT-tokens die uit headers zijn gedecodeerd, databasequery's, LDAP-opzoeken of andere mechanismen.
 
 ### `RouteSecurityConfiguration` {#routesecurityconfiguration}
 
-De `RouteSecurityConfiguration` definieert beveiligingsgedrag en redirectlocaties. Het vertelt het beveiligingssysteem waar het gebruikers naartoe moet sturen wanneer authenticatie vereist is of toegang is geweigerd.
+De `RouteSecurityConfiguration` definieert beveiligingsgedrag en omleidingslocaties. Het vertelt het beveiligingssysteem waar het gebruikers naartoe moet sturen wanneer authenticatie vereist is of toegang wordt geweigerd.
 
 **Verantwoordelijkheden:**
 
-- Bepalen of beveiliging is ingeschakeld
-- Specifieke beveiligingsgedragingen opgeven
-- Locatie van de authentificatiepagina bieden (typisch `/login`)
-- Locatie van de toegang geweigerd pagina bieden
+- Definiëren of beveiliging is ingeschakeld
+- Speciferen van veilig-per-default gedrag
+- Bieden van locatie van de inlogpagina (typisch `/login`)
+- Bieden van locatie van de toegang geweigerd-pagina
 
 ```java
 public interface RouteSecurityConfiguration {
@@ -81,18 +81,18 @@ public interface RouteSecurityConfiguration {
 }
 ```
 
-Deze interface scheidt het beveiligingsbeleid van de beveiligingshandhaving. Je kunt redirectlocaties wijzigen of beveiliging standaard inschakelen zonder de manager of evaluatoren te wijzigen.
+Deze interface scheidt het beveiligingsbeleid van de handhaving van beveiliging. Je kunt omleidingslocaties wijzigen of veilig-per-default in- of uitschakelen zonder de manager of evaluators te wijzigen.
 
 ### `RouteSecurityEvaluator` {#routesecurityevaluator}
 
-De `RouteSecurityEvaluator` is waar de daadwerkelijke beveiligingsregels worden gecontroleerd. Elke evaluator bekijkt een route en beslist of toegang moet worden verleend, toegang moet worden geweigerd of de beslissing aan de volgende evaluator in de keten moet worden gedelegeerd.
+De `RouteSecurityEvaluator` is waar feitelijke beveiligingsregels worden gecontroleerd. Elke evaluator onderzoekt een route en beslist of toegang moet worden verleend, toegang moet worden geweigerd of de beslissing moet worden gedelegeerd aan de volgende evaluator in de keten.
 
 **Verantwoordelijkheden:**
 
 - Bepalen of deze evaluator de gegeven route behandelt
 - Beveiligingsannotaties op de routeklasse evalueren
-- Toegang verlenen, toegang weigeren of de delegatie aan de volgende evaluator
-- Deelnemen aan het keten van verantwoordelijkheden patroon
+- Toegang verlenen, toegang weigeren of delegeer naar de volgende evaluator
+- Deelnemen aan het keten van verantwoordelijkhedenpatroon
 
 ```java
 public interface RouteSecurityEvaluator {
@@ -104,66 +104,66 @@ public interface RouteSecurityEvaluator {
 }
 ```
 
-Builtin evaluatoren behandelen standaardannotaties zoals `@RolesAllowed`, `@PermitAll`, `@DenyAll`, en `@AnonymousAccess`. Je kunt aangepaste evaluatoren maken om domeinspecifieke beveiligingslogica te implementeren.
+Ingebouwde evaluators behandelen standaardannotaties zoals `@RolesAllowed`, `@PermitAll`, `@DenyAll` en `@AnonymousAccess`. Je kunt aangepaste evaluators maken om domeinspecifieke beveiligingslogica te implementeren.
 
 ## Hoe de interfaces samenwerken {#how-the-interfaces-work-together}
 
-Deze vier interfaces werken samen tijdens de navigatie om beveiligingsregels af te dwingen:
+Deze vier interfaces werken samen tijdens navigatie om beveiligingsregels af te dwingen:
 
 ```mermaid
 flowchart TB
-    User["Gebruiker navigeert naar route"] --> Observer["RouteSecurityObserver<br/>(intercepteert navigatie)"]
-    Observer --> Manager["RouteSecurityManager<br/>(coördineert evaluatie)"]
+  User["Gebruiker navigeert naar route"] --> Observer["RouteSecurityObserver<br/>(intercepteert navigatie)"]
+  Observer --> Manager["RouteSecurityManager<br/>(coördineert evaluatie)"]
 
-    Manager --> Config["RouteSecurityConfiguration<br/>(biedt instellingen)"]
-    Manager --> Context["RouteSecurityContext<br/>(biedt gebruikersinfo)"]
-    Manager --> Chain["Evaluator Chain<br/>(loopt evaluatoren in volgorde van prioriteit)"]
+  Manager --> Config["RouteSecurityConfiguration<br/>(biedt instellingen)"]
+  Manager --> Context["RouteSecurityContext<br/>(biedt gebruikersinfo)"]
+  Manager --> Chain["Evaluator Chain<br/>(voert evaluators uit in prioriteitsvolgorde)"]
 
-    Chain --> Decision{"Toegangsbeslissing"}
-    Decision -->|"Verleen"| Render["Render component"]
-    Decision -->|"Weiger"| Redirect["RouteSecurityManager.onAccessDenied()<br/>Redirect naar inloggen of geweigerde pagina"]
+  Chain --> Decision{"Toegangsbeslissing"}
+  Decision -->|"Verleen"| Render["Render component"]
+  Decision -->|"Weiger"| Redirect["RouteSecurityManager.onAccessDenied()<br/>Redirect naar inlog- of geweigerde pagina"]
 ```
 
-Wanneer een gebruiker navigeert, wordt de `RouteSecurityObserver` de navigatie onderschept en vraagt de `RouteSecurityManager` om de toegang te evalueren. De manager raadpleegt de `RouteSecurityConfiguration` voor instellingen, verkrijgt gebruikersinformatie van de `RouteSecurityContext`, en voert elke `RouteSecurityEvaluator` in prioriteitsvolgorde uit totdat één een beslissing neemt.
+Wanneer een gebruiker navigeert, onderschept de `RouteSecurityObserver` de navigatie en vraagt de `RouteSecurityManager` om toegang te evalueren. De manager raadpleegt de `RouteSecurityConfiguration` voor instellingen, krijgt gebruikersinformatie van de `RouteSecurityContext` en voert elke `RouteSecurityEvaluator` in prioriteitsvolgorde uit totdat er één een beslissing maakt.
 
 ## Interfaces als contracten {#the-interfaces-as-contracts}
 
-Elke interface definieert een contract, een set vragen die het beveiligingssysteem beantwoord moet krijgen. **Hoe** je deze vragen beantwoordt, is jouw implementatiekeuze:
+Elke interface definieert een contract, een set vragen die het beveiligingssysteem beantwoord wil hebben. **Hoe** je die vragen beantwoordt is jouw implementatiekeuze:
 
-**Contract van `RouteSecurityContext`:**
+**`RouteSecurityContext` contract:**
 
-- "Is de huidige gebruiker authenticeerd?" (`isAuthenticated()`)
+- "Is de huidige gebruiker geauthentiseerd?" (`isAuthenticated()`)
 - "Wie is de gebruiker?" (`getPrincipal()`)
 - "Heeft de gebruiker rol X?" (`hasRole()`)
 
-Je beslist waar deze informatie vandaan komt: HTTP-sessies, JWT-tokens gedecodeerd uit headers, databasezoekopdrachten, LDAP-queries of een andere authenticatiebackend.
+Je beslist waar deze informatie vandaan komt: HTTP-sessies, JWT-tokens die uit headers zijn gedecodeerd, databaseopzoekingen, LDAP-query's of enige andere authenticatie-backend.
 
-**Contract van `RouteSecurityConfiguration`:**
+**`RouteSecurityConfiguration` contract:**
 
 - "Is beveiliging ingeschakeld?" (`isEnabled()`)
-- "Moeten routes standaard beveiligd zijn?" (`isSecureByDefault()`)
-- "Waar moeten niet-geauthenticeerde gebruikers naartoe?" (`getAuthenticationLocation()`)
+- "Moeten routes standaard veilig zijn?" (`isSecureByDefault()`)
+- "Waar moeten niet-geauthenticeerde gebruikers naartoe gaan?" (`getAuthenticationLocation()`)
 
-Je beslist hoe je deze waarden inroept: hardcoded, uit configuratiebestanden, uit omgevingsvariabelen, uit een database of dynamisch berekend.
+Je beslist hoe je deze waarden verwerft: hardcoded, uit configuratiebestanden, uit omgevingsvariabelen, uit een database of dynamisch berekend.
 
-**Contract van `RouteSecurityManager`:**
+**`RouteSecurityManager` contract:**
 
 - "Moet deze gebruiker toegang hebben tot deze route?" (`evaluate()`)
 - "Wat gebeurt er wanneer toegang wordt geweigerd?" (`onAccessDenied()`)
-- "Welke evaluatoren moeten worden uitgevoerd?" (`registerEvaluator()`)
+- "Welke evaluators moeten worden uitgevoerd?" (`registerEvaluator()`)
 
-Je beslist over de authenticatiestroom, waar pre-authenticatielocaties moeten worden opgeslagen, en hoe aangepaste weigering scenario's moeten worden afgehandeld.
+Je beslist de authenticatiestroom, waar pre-authenticatielocaties moeten worden opgeslagen en hoe je omgaat met aangepaste weigeringen.
 
-De fundamentele architectuur definieert deze contracten, maar de implementatie is flexibel. Verschillende systemen kunnen deze interfaces op geheel verschillende manieren implementeren op basis van specifieke vereisten.
+De fundamentarchitectuur definieert deze contracten, maar de implementatie is flexibel. Verschillende systemen kunnen deze interfaces op geheel verschillende manieren implementeren op basis van specifieke vereisten.
 
-## De `AbstractRouteSecurityManager` basisklasse {#the-abstractroutesecuritymanager-base-class}
+## De `AbstractRouteSecurityManager` basisclass {#the-abstractroutesecuritymanager-base-class}
 
-De meeste implementaties implementeren `RouteSecurityManager` niet direct. In plaats daarvan breiden ze `AbstractRouteSecurityManager` uit, welke biedt:
+De meeste implementaties implementeren `RouteSecurityManager` niet direct. In plaats daarvan breiden ze `AbstractRouteSecurityManager` uit, die biedt:
 
-- Evaluatorregistratie en prioriteitsgebaseerde sortering
+- Registratie van evaluators en sorteren op basis van prioriteit
 - Logica voor ketenuitvoering
-- Afhandeling van toegang weigering met automatische redirects
-- Opslag van pre-authenticatielocaties in de HTTP-sessie
-- Standaardbeveiliging fallback gedrag
+- Behandeling van toegangweigering met automatische omleidingen
+- Opslag van pre-authenticatielocaties in HTTP-sessie
+- Veilig-per-default fallback-gedrag
 
-De basisklasse implementeert de `RouteSecurityManager` interface en biedt concrete implementaties voor evaluatorenbeheer, toegangsevaluatie en afhandeling van weigeringen. Subklassen hoeven alleen de beveiligingscontext en configuratie te bieden. De basisklasse zorgt automatisch voor evaluatorenbeheer, ketenuitvoering en afhandeling van weigeringen.
+De basisclass implementeert de `RouteSecurityManager` interface en biedt concrete implementaties voor evaluatormanagement, toegangsevaluatie en weigering behandeling. Subklassen hoeven alleen de beveiligingscontext en configuratie te bieden. De basisclass beheert evaluatormanagement, ketenuitvoering en weigering behandeling automatisch.

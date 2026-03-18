@@ -1,64 +1,64 @@
 ---
 sidebar_position: 6
 title: Custom Implementation Example
-_i18n_hash: 9d0d249042bfbbccb42d3ce7a329a8e7
+_i18n_hash: a04a98c0b17ef9b210aa856eb9e18a87
 ---
-Dieser Leitfaden beschreibt den Aufbau einer vollständigen benutzerdefinierten Sicherheitsimplementierung mithilfe der sitzungsbasierten Authentifizierung. Sie lernen, wie die vier Kernschnittstellen zusammenarbeiten, indem Sie diese von Grund auf implementieren.
+Dieser Leitfaden beschreibt den Aufbau einer vollständigen benutzerdefinierten Sicherheitsimplementierung mit sessionsbasierter Authentifizierung. Sie werden lernen, wie die vier Kernschnittstellen zusammenarbeiten, indem Sie sie von Grund auf implementieren.
 
 :::tip[Die meisten Apps sollten Spring Security verwenden]
 Die [Spring Security-Integration](/docs/security/getting-started) konfiguriert automatisch alles, was hier gezeigt wird. Erstellen Sie eine benutzerdefinierte Sicherheit nur, wenn Sie spezifische Anforderungen haben oder Spring Boot nicht verwenden.
 :::
 
-## Was Sie bauen werden {#what-youll-build}
+## Was Sie erstellen werden {#what-youll-build}
 
 Ein funktionierendes Sicherheitssystem mit vier Klassen:
 
-- **SecurityConfiguration** - Definiert das Sicherheitsverhalten und die Weiterleitungsorte
-- **SecurityContext** - Verfolgt, wer mit HTTP-Sitzungen angemeldet ist
-- **SecurityManager** - Koordiniert Sicherheitsüberprüfungen und bietet Anmelde-/Abmeldefunktionen
-- **SecurityRegistrar** - Verkabelt alles beim Start der App
+- **SecurityConfiguration** - Definiert das Sicherheitsverhalten und die Umleitungsorte
+- **SecurityContext** - Verfolgt, wer in HTTP-Sitzungen angemeldet ist
+- **SecurityManager** - Koordiniert Sicherheitsüberprüfungen und bietet Login/Logout
+- **SecurityRegistrar** - Verbindet alles beim App-Start
 
-Dieses Beispiel verwendet eine sitzungsbasierte Speicherung, aber Sie könnten die gleichen Schnittstellen mit Datenbankabfragen, LDAP oder einem anderen Authentifizierungs-Backend implementieren.
+Dieses Beispiel verwendet sessionsbasierten Speicher, aber Sie können dieselben Schnittstellen auch mithilfe von Datenbankabfragen, LDAP oder einem anderen Authentifizierungsbackend implementieren.
 
-## Wie die einzelnen Teile zusammenarbeiten {#how-the-pieces-work-together}
+## Wie die Teile zusammenarbeiten {#how-the-pieces-work-together}
 
 ```mermaid
 sequenceDiagram
-    box Startup Phase
-    participant Registrar as SecurityRegistrar
-    end
-    box Runtime Phase
-    participant Observer as RouteSecurityObserver
-    participant Manager as SecurityManager
-    participant Evaluators
-    participant Context as SecurityContext
-    participant Config as SecurityConfiguration
-    end
+  box Startup Phase
+  participant Registrar as SecurityRegistrar
+  end
+  box Runtime Phase
+  participant Observer as RouteSecurityObserver
+  participant Manager as SecurityManager
+  participant Evaluators
+  participant Context as SecurityContext
+  participant Config as SecurityConfiguration
+  end
 
-    Note over Registrar: Anwendung startet
-    Registrar->>Manager: Erstellen
-    Registrar->>Evaluators: Registrieren
-    Registrar->>Observer: An Router anhängen
+  Note over Registrar: Anwendung startet
+  Registrar->>Manager: Erstellen
+  Registrar->>Evaluators: Registrieren
+  Registrar->>Observer: An Router anhängen
 
-    Note over Observer,Config: Benutzer navigiert zur Route
-    Observer->>Manager: Entscheidung anfordern
-    Manager->>Evaluators: Evaluatoren ausführen
-    Evaluators->>Context: Benutzer überprüfen
-    Evaluators->>Config: Weiterleitungen abrufen
-    Evaluators-->>Manager: Entscheidung
-    Manager-->>Observer: Gewähren oder Verweigern
+  Note over Observer,Config: Benutzer navigiert zur Route
+  Observer->>Manager: Entscheidung anfordern
+  Manager->>Evaluators: Evaluatoren ausführen
+  Evaluators->>Context: Benutzer überprüfen
+  Evaluators->>Config: Umleitungen abrufen
+  Evaluators-->>Manager: Entscheidung
+  Manager-->>Observer: Gewähren oder Verweigern
 ```
 
 **Ablauf:**
-1. **`SecurityRegistrar`** läuft beim Start, erstellt den Manager, registriert die Evaluatoren und hängt den Observer an
-2. **`SecurityManager`** koordiniert alles - er stellt den Kontext und die Konfiguration für die Evaluatoren bereit
-3. **`SecurityContext`** beantwortet die Frage "Wer ist angemeldet?", indem er aus HTTP-Sitzungen liest
-4. **`SecurityConfiguration`** beantwortet die Frage "Wohin umleiten?" für Anmelde- und Zugriffsverweigerungsseiten
+1. **`SecurityRegistrar`** läuft beim Start, erstellt den Manager, registriert Evaluatoren und attachiert den Beobachter
+2. **`SecurityManager`** koordiniert alles - es stellt den Kontext und die Konfiguration für die Evaluatoren bereit
+3. **`SecurityContext`** beantwortet die Frage "Wer ist angemeldet?" durch Auslesen von HTTP-Sitzungen
+4. **`SecurityConfiguration`** beantwortet die Frage "Wohin umleiten?" für Anmeldeseiten und Seiten mit verweigertem Zugriff
 5. **`Evaluators`** treffen Zugriffsentscheidungen unter Verwendung des Kontexts und der Konfiguration
 
-## Schritt 1: Sicherheitseinstellungen definieren {#step-1-define-security-configuration}
+## Schritt 1: Sicherheitskonfiguration definieren {#step-1-define-security-configuration}
 
-Die Konfiguration gibt dem Sicherheitssystem vor, wie es sich verhalten und wohin es Benutzer weiterleiten soll:
+Die Konfiguration gibt dem Sicherheitssystem vor, wie es sich verhalten soll und wo es die Benutzer umleiten soll:
 
 ```java title="SecurityConfiguration.java"
 package com.securityplain.security;
@@ -68,7 +68,7 @@ import com.webforj.router.security.RouteSecurityConfiguration;
 import java.util.Optional;
 
 /**
- * Sicherheitseinstellungen für die Anwendung.
+ * Sicherheitskonfiguration für die Anwendung.
  *
  * <p>
  * Definiert, wohin Benutzer umgeleitet werden, wenn eine Authentifizierung erforderlich ist oder der Zugriff verweigert wird.
@@ -98,14 +98,14 @@ public class SecurityConfiguration implements RouteSecurityConfiguration {
 }
 ```
 
-- `isEnabled() = true` - Die Sicherheit ist aktiv
-- `isSecureByDefault() = false` - Routen sind öffentlich, es sei denn, sie sind annotiert (verwenden Sie `true`, um standardmäßig eine Authentifizierung auf allen Routen zu verlangen)
+- `isEnabled() = true` - Sicherheit ist aktiv
+- `isSecureByDefault() = false` - Routen sind öffentlich, es sei denn, sie sind annotiert (verwenden Sie `true`, um standardmäßig eine Authentifizierung für alle Routen zu verlangen)
 - `/login` - Wohin nicht authentifizierte Benutzer gehen
 - `/access-denied` - Wohin authentifizierte Benutzer ohne Berechtigungen gehen
 
 ## Schritt 2: Sicherheitskontext implementieren {#step-2-implement-security-context}
 
-Der Kontext verfolgt, wer angemeldet ist. Diese Implementierung verwendet HTTP-Sitzungen zur Speicherung von Benutzerdaten:
+Der Kontext verfolgt, wer angemeldet ist. Diese Implementierung verwendet HTTP-Sitzungen, um Benutzerinformationen zu speichern:
 
 <!-- vale off -->
 
@@ -120,10 +120,10 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * Einfacher sitzungsbasierter Sicherheitskontext.
+ * Einfacher session-basierter Sicherheitskontext.
  *
  * <p>
- * Speichert Benutzerprinzipal und Rollen in HTTP-Sitzungen. Dies ist eine minimale Implementierung zu Lehrzwecken.
+ * Speichert Benutzerprincipal und Rollen in der HTTP-Sitzung. Dies ist eine minimale Implementierung zu Lehrzwecken.
  * </p>
  */
 public class SecurityContext implements RouteSecurityContext {
@@ -166,7 +166,7 @@ public class SecurityContext implements RouteSecurityContext {
    */
   @Override
   public boolean hasAuthority(String authority) {
-    // In dieser einfachen Implementierung sind die Berechtigungen dieselben wie die Rollen
+    // In dieser einfachen Implementierung sind Autoritäten dasselbe wie Rollen
     return hasRole(authority);
   }
 
@@ -221,17 +221,17 @@ public class SecurityContext implements RouteSecurityContext {
 
 <!-- vale on -->
 
-**So funktioniert es:**
+**Wie es funktioniert:**
 
-- `isAuthenticated()` überprüft, ob ein Benutzerprinzipal in der Sitzung vorhanden ist
-- `getPrincipal()` ruft den Benutzernamen aus dem Sitzungspeicher ab
-- `hasRole()` überprüft, ob die Rollensetzung des Benutzers die angegebene Rolle enthält
-- `getAttribute()` / `setAttribute()` verwalten benutzerdefinierte Sicherheitsattribute
-- `Environment.getSessionAccessor()` bietet einen thread-sicheren Zugriff auf die Sitzung
+- `isAuthenticated()` überprüft, ob ein Benutzerprincipal in der Sitzung vorhanden ist
+- `getPrincipal()` ruft den Benutzernamen aus dem Sitzungs-Speicher ab
+- `hasRole()` überprüft, ob die Rollenset des Benutzers die angegebene Rolle enthält
+- `getAttribute()` / `setAttribute()` verwaltet benutzerdefinierte Sicherheitsattribute
+- `Environment.getSessionAccessor()` bietet thread-sicheren Sitzungszugriff
 
-## Schritt 3: Erstellen des Sicherheitsmanagers {#step-3-create-security-manager}
+## Schritt 3: Sicherheitsmanager erstellen {#step-3-create-security-manager}
 
-Der Manager koordiniert Sicherheitsentscheidungen. Er erweitert `AbstractRouteSecurityManager`, das die Evaluatorketten und den Zugriff verweigert:
+Der Manager koordiniert Sicherheitsentscheidungen. Er erweitert `AbstractRouteSecurityManager`, das Evaluator-Ketten und Zugriffsverweigerungen behandelt:
 
 <!-- vale off -->
 
@@ -252,7 +252,7 @@ import java.util.Set;
  * Einfache Implementierung eines Sicherheitsmanagers.
  *
  * <p>
- * Bietet statische Methoden für die Anmeldung/Abmeldung und verwaltet den Sicherheitskontext.
+ * Bietet statische Methoden für Login/Logout und verwaltet den Sicherheitskontext.
  * </p>
  */
 public class SecurityManager extends AbstractRouteSecurityManager {
@@ -309,9 +309,9 @@ public class SecurityManager extends AbstractRouteSecurityManager {
   }
 
   /**
-   * Gibt die aktuelle Managerinstanz zurück.
+   * Holt die aktuelle Manager-Instanz.
    *
-   * @return die aktuelle Managerinstanz
+   * @return die aktuelle Manager-Instanz
    */
   public static SecurityManager getCurrent() {
     String key = SecurityManager.class.getName();
@@ -339,16 +339,16 @@ public class SecurityManager extends AbstractRouteSecurityManager {
 
 <!-- vale on -->
 
-**So funktioniert es:**
+**Wie es funktioniert:**
 
-- Erweitert `AbstractRouteSecurityManager`, um die Logik für Bewertungsreihen zu erben
+- Erweitert `AbstractRouteSecurityManager`, um die Logik der Evaluator-Kette zu erben
 - Bietet Implementierungen für `getConfiguration()` und `getSecurityContext()`
 - Fügt `login()` hinzu, um Benutzer zu authentifizieren und Anmeldeinformationen in der Sitzung zu speichern
 - Fügt `logout()` hinzu, um die Sitzung zu löschen und zur Anmeldeseite weiterzuleiten
-- Verwendet die [`SessionObjectTable`](/docs/advanced/object-string-tables#sessionobjecttable) für eine einfache Sitzungsverwaltung
-- Speichert sich selbst in der [`ObjectTable`](/docs/advanced/object-string-tables#objecttable) für den Zugriff in der gesamten App
+- Verwendet [`SessionObjectTable`](/docs/advanced/object-string-tables#sessionobjecttable) für einfachen Sitzungs-Speicher
+- Speichert sich in [`ObjectTable`](/docs/advanced/object-string-tables#objecttable) für den Zugriff in der gesamten App
 
-## Schritt 4: Alles beim Start verkabeln {#step-4-wire-everything-at-startup}
+## Schritt 4: Alles beim Start verbinden {#step-4-wire-everything-at-startup}
 
 Der Registrar verbindet alle Teile, wenn die App gestartet wird:
 
@@ -366,10 +366,10 @@ import com.webforj.router.security.evaluator.PermitAllEvaluator;
 import com.webforj.router.security.evaluator.RolesAllowedEvaluator;
 
 /**
- * Registriert Routen-Sicherheitskomponenten während des Anwendungsstarts.
+ * Registriert Route-Sicherheitskomponenten während des Anwendungsstarts.
  *
  * <p>
- * richtet Sicherheitsmanager und Evaluatoren mit dem Router ein.
+ * Richtet Sicherheitsmanager und Evaluatoren mit dem Router ein.
  * </p>
  */
 @AppListenerPriority(1)
@@ -380,17 +380,17 @@ public class SecurityRegistrar implements AppLifecycleListener {
    */
   @Override
   public void onWillRun(App app) {
-    // Erstellen des Sicherheitsmanagers
+    // Sicherheitsmanager erstellen
     SecurityManager securityManager = new SecurityManager();
     securityManager.saveCurrent(securityManager);
 
-    // Registrieren der integrierten Evaluatoren mit Prioritäten
+    // Eingebaute Evaluatoren mit Prioritäten registrieren
     securityManager.registerEvaluator(new DenyAllEvaluator(), 0);
     securityManager.registerEvaluator(new AnonymousAccessEvaluator(), 1);
     securityManager.registerEvaluator(new PermitAllEvaluator(), 2);
     securityManager.registerEvaluator(new RolesAllowedEvaluator(), 3);
 
-    // Erstellen des Sicherheitsbeobachters und anschließen an den Router
+    // Sicherheitsbeobachter erstellen und an Router anhängen
     RouteSecurityObserver securityObserver = new RouteSecurityObserver(securityManager);
     Router router = Router.getCurrent();
     if (router != null) {
@@ -410,21 +410,21 @@ com.securityplain.security.SecurityRegistrar
 
 Dies registriert Ihren [`AppLifecycleListener`](/docs/advanced/lifecycle-listeners), damit er beim Start der App ausgeführt wird.
 
-**So funktioniert es:**
+**Wie es funktioniert:**
 
-- Wird früh ausgeführt (`@AppListenerPriority(1)`), um die Sicherheit einzurichten, bevor Routen geladen werden
+- Läuft früh (`@AppListenerPriority(1)`), um die Sicherheit einzurichten, bevor Routen geladen werden
 - Erstellt den Sicherheitsmanager und speichert ihn global
-- Registriert integrierte Evaluatoren in der Prioritätsreihenfolge (niedrigere Zahlen werden zuerst ausgeführt)
+- Registriert eingebaute Evaluatoren in der Prioritätsreihenfolge (kleinere Zahlen werden zuerst ausgeführt)
 - Erstellt den Beobachter, der die Navigation abfängt
-- Hängt den Beobachter an den Router an, sodass Sicherheitsüberprüfungen automatisch erfolgen
+- Hängt den Beobachter an den Router an, damit Sicherheitsüberprüfungen automatisch erfolgen
 
-Nachdem dies ausgeführt wurde, ist die Sicherheit für alle Navigationsvorgänge aktiv.
+Nach diesem Vorgang ist die Sicherheit für alle Navigationen aktiv.
 
 ## Verwendung Ihrer Implementierung {#using-your-implementation}
 
-### Erstellen Sie eine Anmeldeseite {#create-a-login-view}
+### Erstellen Sie eine Anmeldesicht {#create-a-login-view}
 
-Die folgende Ansicht verwendet die [`Login`](/docs/components/login)-Komponente.
+Die folgende Ansicht verwendet die [`Login`](/docs/components/login) Komponente.
 
 ```java title="LoginView.java"
 package com.securityplain.views;

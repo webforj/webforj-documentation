@@ -2,49 +2,49 @@
 sidebar_position: 11
 title: Locale Management
 sidebar_class_name: new-content
-_i18n_hash: cfcad51aaedd77b781334fc048b0a4f1
+_i18n_hash: d3dcb4b1ded50923232cb33225364239
 ---
-# Paikallinen hallinta <DocChip chip='since' label='25.10' />
+# Kieli hallinta <DocChip chip='since' label='25.10' />
 
-webforJ tarjoaa sisäänrakennetun tuen sovelluksen alueen hallitsemiseen. Alue määrittää, mitä kieltä ja alueellista muotoilua käytetään koko sovelluksessa. Komponentit voivat reagoida alueen muutoksiin `LocaleObserver`-rajapinnan kautta, mikä sallii UI:n päivittämisen heti, kun käyttäjä vaihtaa kieliä.
+webforJ tarjoaa sisäänrakennettua tukea sovelluksen kielen hallintaan. Kieli määrittää, mitä kieltä ja alueellista muotoilua käytetään koko sovelluksessa. Komponentit voivat reagoida kielimuutoksiin `LocaleObserver`-rajapinnan kautta, joka mahdollistaa käyttöliittymän päivityksen heti, kun käyttäjä vaihtaa kieltä.
 
-## Oletusalueen asettaminen {#setting-the-default-locale}
+## Oletuskielen asettaminen {#setting-the-default-locale}
 
-Sovelluksen aluetta voidaan konfiguroida käyttämällä ominaisuutta `webforj.locale`. Tämä asettaa alueen, jota sovellus käyttää käynnistyksestä lähtien, vaikuttaen kaikkiin alueherkkiin muotoiluihin ja teksteihin. Kun `webforj.locale` ei ole määritelty, sovellus palautuu palvelimen JVM: n oletusalueeseen. Voit lukea nykyisen alueen milloin tahansa käyttämällä `App.getLocale()`.
+Sovelluksen kieltä voidaan konfiguroida `webforj.locale`-ominaisuudella. Tämä määrittää kielen, jota sovellus käyttää käynnistyksessä, vaikuttaen kaikkiin kielellisesti herkkään muotoiluun ja tekstiin. Kun `webforj.locale` ei ole määritetty, sovellus palautuu palvelimen JVM:n oletuskieleen. Voit lukea nykyisen kielen milloin tahansa käyttämällä `App.getLocale()`.
 
-Katso [Konfigurointi](/docs/configuration/properties) -osio saadaksesi lisätietoja ominaisuuksien asettamisesta eri ympäristöille.
+Katso [Configuration](/docs/configuration/properties) -osiota oppiaksesi, miten määrittää ominaisuuksia eri ympäristöille.
 
-## Alueen muuttaminen {#changing-the-locale}
+## Kielen muuttaminen {#changing-the-locale}
 
-Muuttaaaksesi aluetta ajon aikana, kutsu `App.setLocale()`. Tämä päivittää alueen koko sovelluksessa ja ilmoittaa kaikille komponenteille, jotka toteuttavat `LocaleObserver`-rajapinnan, jolloin UI voi päivittää ilman sivun uudelleenlatausta.
+Muuta kieltä ajonaikaisesti kutsumalla `App.setLocale()`. Tämä päivittää kielen koko sovelluksessa ja ilmoittaa kaikille komponenteille, jotka toteuttavat `LocaleObserver`, mahdollistaen käyttöliittymän päivityksen ilman sivun uudelleenlatausta.
 
 ```java
 App.setLocale(Locale.GERMAN);
 App.setLocale(Locale.forLanguageTag("fr"));
 ```
 
-## Selainalueen tunnistus <DocChip chip='since' label='25.12' /> {#browser-locale-detection}
+## Selaimen kielen tunnistus <DocChip chip='since' label='25.12' /> {#browser-locale-detection}
 
-Kun automaattitunnistus on käytössä, webforJ lukee selaimen suosimat kielet käynnistyksen aikana ja asettaa sovelluksen alueen parhaimpaan vastaavuuteen konfiguroiduista tuetuista alueista. Jos vastaavuutta ei löydy, ensimmäinen tuettu alue käytetään oletuksena.
+Kun automaattinen tunnistus on käytössä, webforJ lukee selaimen suosimat kielet käynnistyksessä ja asettaa sovelluksen kielen parhaaksi vastaavaksi määritellyistä tuetuista kielistä. Jos vastaavuuksia ei löydy, käytetään ensimmäistä tukemista kieltä oletuksena.
 
-Ota automaattitunnistus käyttöön asettamalla `webforj.i18n.auto-detect` arvoon `true` ja määrittelemällä `webforj.i18n.supported-locales` alueilla, joita sovelluksesi tukee. Katso [Konfigurointi](/docs/configuration/properties) -osio saadaksesi lisätietoja ominaisuuksien asettamisesta eri ympäristöille.
+Ota automaattinen tunnistus käyttöön asettamalla `webforj.i18n.auto-detect` arvoon `true` ja määrittämällä `webforj.i18n.supported-locales` sovelluksesi tukemille kielille. Katso [Configuration](/docs/configuration/properties) -osiota oppiaksesi, miten määrittää ominaisuuksia eri ympäristöille.
 
-:::info Edellyttää tuettuja alueita
-Automaattitunnistus edellyttää `supported-locales`-asetusta. Jos lista on tyhjää, automaattitunnistuksella ei ole vaikutusta ja sovellus käyttää oletusaluetta `webforj.locale`-määritelmästä.
+:::info Vaatimukset tuetuille kielille
+Automaattinen tunnistus vaatii `supported-locales` -määrittelyn. Jos luettelo on tyhjällä, automaattinen tunnistus ei vaikuta ja sovellus käyttää `webforj.locale`:n oletuskieltä.
 :::
 
 ## `LocaleObserver`-rajapinta {#the-localeobserver-interface}
 
-Komponenttien, jotka tarvitsevat sisällön päivittämistä alueen muuttuessa, tulisi toteuttaa `LocaleObserver`-rajapinta. webforJ rekisteröi ja poistaa automaattisesti havaitsijat, kun komponentteja luodaan ja tuhotaan.
+Komponenttien, jotka tarvitsevat sisällön päivittämistä kielen muuttuessa, tulisi toteuttaa `LocaleObserver`-rajapinta. webforJ rekisteröi ja poistaa automaattisesti rekisteröitymiset, kun komponentteja luodaan ja tuhotaan.
 
 ```java title="LocaleObserver.java"
 @FunctionalInterface
 public interface LocaleObserver {
-    void onLocaleChange(LocaleEvent event);
+  void onLocaleChange(LocaleEvent event);
 }
 ```
 
-Kun alue muuttuu, `onLocaleChange` kutsutaan uuden alueen kanssa. Tämän metodin sisällä päivitä kaikki alueherkät tekstit tai muotoilut:
+Kun kieli muuttuu, `onLocaleChange` kutsutaan uudella kielellä. Tässä metodissa päivitä kaikki kielellisesti herkät tekstit tai muotoilut:
 
 ```java title="MainLayout.java"
 @Route
@@ -75,21 +75,21 @@ public class MainLayout extends Composite<AppLayout>
 ```
 
 :::tip Sisäänrakennettu käännöstuki
-Alkaen versiosta 25.12, webforJ tarjoaa sisäänrakennetun [käännösjärjestelmän](/docs/advanced/i18n-localization), joka tukee resurssikokoelmia, mukautettuja ratkaisuja, automaattista selaimen alueen tunnistusta ja alueherkkää tietosidontaa.
+Version 25.12 alkaen webforJ tarjoaa sisäänrakennetun [käännösjärjestelmän](/docs/advanced/i18n-localization), joka tukee resurssipaketteja, mukautettuja ratkaisuja, automaattista selaimen kielen tunnistusta ja kielitietoista tietosidontaa.
 :::
 
 ### `LocaleEvent` {#localeevent}
 
-`LocaleEvent`, joka siirretään `onLocaleChange()`-metodille, antaa uuden alueen ja komponentin, joka sai tapahtuman:
+`LocaleEvent`, joka välitetään `onLocaleChange()`-metodiin, tarjoaa uuden kielen ja komponentin, joka sai tapahtuman:
 
-| Metodi | Palauttaa | Kuuvaus |
-|--------|-----------|---------|
-| `getLocale()` | `Locale` | Uusi asetettu alue |
+| Metodi | Palauttaa | Kuvaus |
+|--------|-----------|--------|
+| `getLocale()` | `Locale` | Uusi kieli, joka on asetettu |
 | `getSource()` | `Object` | Komponentti, joka sai tapahtuman |
 
-## Manuaaliset aluepäivitykset {#manual-locale-updates}
+## Manuaaliset kielipäivitykset {#manual-locale-updates}
 
-Kaikki komponentit eivät reagoi automaattisesti alueen muutoksiin. Jotkut komponentit, kuten [Masked Fields](/docs/components/fields/masked/overview), lukevat `App.getLocale()` vain kerran luomisen aikana määrittääkseen alueherkän muotoilun, mutta eivät toteuta `LocaleObserver`-rajapintaa. Kun alue muuttuu ajon aikana, nämä on päivitettävä erikseen `onLocaleChange()`-käsittelijässäsi:
+Kaikki komponentit eivät reagoi kielen muutoksiin automaattisesti. Jotkin komponentit, kuten [Masked Fields](/docs/components/fields/masked/overview), lukevat `App.getLocale()` kerran luontivaiheessa konfiguroidakseen kielellisesti herkkää muotoilua, mutta eivät toteuta `LocaleObserver`-rajapintaa. Kun kieli muuttuu ajonaikaisesti, nämä on päivitettävä nimenomaan `onLocaleChange()`-käsittelijässäsi:
 
 ```java
 public class OrderForm extends Composite<FlexLayout> implements LocaleObserver {
@@ -106,5 +106,5 @@ public class OrderForm extends Composite<FlexLayout> implements LocaleObserver {
 ```
 
 :::tip Tietosidonta
-`BindingContext` tukee alueherkkiä validoinnin ja muunnoksen viestejä. Katso [dynaamiset validointiviestit](/docs/data-binding/validation/validators#dynamic-validation-messages) ja [alueherkkä Jakarta-validointi](/docs/data-binding/validation/jakarta-validation#locale-aware-validation-messages).
+`BindingContext` tukee kielellisesti tietoisia validointi- ja muuntoviestejä. Katso [dynaamiset validointiviestit](/docs/data-binding/validation/validators#dynamic-validation-messages) ja [kielellisesti tietoinen Jakarta Validation](/docs/data-binding/validation/jakarta-validation#locale-aware-validation-messages).
 :::
