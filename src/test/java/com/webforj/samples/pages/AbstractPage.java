@@ -54,10 +54,6 @@ public abstract class AbstractPage {
     return getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName(text));
   }
 
-  public WebforjLocator getCheckbox(String text) {
-    return getByRole(AriaRole.CHECKBOX, new Page.GetByRoleOptions().setName(text));
-  }
-
   public WebforjLocator getByAttribute(Class<?> klass, String attribute, String value) {
     String nodeName = NodeNameUtils.getNodeName(klass);
     String selector = "%s[%s='%s']".formatted(nodeName, attribute, value);

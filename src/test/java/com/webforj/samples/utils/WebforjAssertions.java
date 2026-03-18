@@ -78,6 +78,14 @@ public class WebforjAssertions extends LocatorAssertionsImpl implements LocatorA
     return theme.toString().toLowerCase().replace("_", "-");
   }
 
+  public static void hasHorizontalAlignment(LocatorAssertions assertions, HasHorizontalAlignment.Alignment alignment) {
+    switch (alignment) {
+      case LEFT -> assertions.hasClass("(^|\\\\s)bbj-reverse-order(\\\\s|$)");
+      case MIDDLE -> {} // ?
+      case RIGHT -> assertions.not().hasClass("(^|\\\\s)bbj-reverse-order(\\\\s|$)");
+    }
+  }
+
   /**
    * {@inheritDoc}
    */
@@ -129,11 +137,7 @@ public class WebforjAssertions extends LocatorAssertionsImpl implements LocatorA
   }
 
   public void hasHorizontalAlignment(HasHorizontalAlignment.Alignment alignment) {
-    switch (alignment) {
-      case LEFT -> assertions.hasClass(".bbj-reverse-order");
-      case MIDDLE -> {} // ?
-      case RIGHT -> assertions.not().hasClass(".bbj-reverse-order");
-    }
+    hasHorizontalAlignment(assertions, alignment);
   }
 
   @Override
@@ -146,25 +150,11 @@ public class WebforjAssertions extends LocatorAssertionsImpl implements LocatorA
     }
 
     if (options.indeterminate != null && options.indeterminate) {
+      // When checking for indeterminate state, check for the indeterminate attribute
       assertions.hasAttribute("indeterminate", "", attributeOptions);
-      // When checking for indeterminate state
-      /*if (isNegated) {
-        // Not indeterminate means: does not have indeterminate="" attribute
-        assertions.not().hasAttribute("indeterminate", "", attributeOptions);
-      } else {
-        // Is indeterminate means: has indeterminate="" attribute
-        assertions.hasAttribute("indeterminate", "", attributeOptions);
-      }*/
     } else {
+      // When checking for checked state, check for the checked attribute
       assertions.hasAttribute("checked", "", attributeOptions);
-      // When checking for checked state (not indeterminate)
-      /*if (isNegated) {
-        // Not checked means: does not have checked="" attribute
-        assertions.not().hasAttribute("checked", "", attributeOptions);
-      } else {
-        // Is checked means: has checked="" attribute
-        assertions.hasAttribute("checked", "", attributeOptions);
-      }*/
     }
   }
 }

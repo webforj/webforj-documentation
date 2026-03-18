@@ -23,7 +23,7 @@ public final class NodeNameUtils {
     Map.entry(Alert.class, "dwc-alert"),
     Map.entry(Avatar.class, "dwc-avatar"),
     Map.entry(CheckBox.class, "dwc-checkbox"),
-    Map.entry(ChoiceBox.class, "dwc-dropdown"),
+    Map.entry(ChoiceBox.class, "dwc-choicebox"),
     Map.entry(Dialog.class, "dwc-dialog"),
     Map.entry(Icon.class, "dwc-icon"),
     Map.entry(Img.class, "img"),
