@@ -28,7 +28,7 @@ public class AvatarPage extends AbstractPage {
   }
 
   public WebforjLocator getTeamLabel() {
-    return getByText(".avatar-demo__section-label");
+    return locator(".avatar-demo__section-label");
   }
 
   public WebforjLocator getAvatarPanel() {

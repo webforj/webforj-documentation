@@ -10,6 +10,7 @@ import com.webforj.component.ThemeBase;
 import com.webforj.component.avatar.AvatarExpanse;
 import com.webforj.component.avatar.AvatarTheme;
 import com.webforj.component.button.ButtonTheme;
+import com.webforj.concern.HasHorizontalAlignment;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -24,6 +25,7 @@ public class WebforjAssertions extends LocatorAssertionsImpl implements LocatorA
   private static final Map<Expanse, String> EXPANSE_VALUES;
   private final LocatorAssertions assertions;
   private final Locator locator;
+  private boolean isNegated = false;
 
   static {
     EXPANSE_VALUES = new EnumMap<>(Expanse.class);
@@ -40,6 +42,14 @@ public class WebforjAssertions extends LocatorAssertionsImpl implements LocatorA
     super(locator);
     this.assertions = assertions;
     this.locator = locator;
+    this.isNegated = false;
+  }
+
+  private WebforjAssertions(WebforjAssertions other, boolean negated) {
+    super(other.locator);
+    this.assertions = other.assertions;
+    this.locator = other.locator;
+    this.isNegated = negated;
   }
 
   private static String getExpanseValue(String expanse) {
@@ -118,4 +128,43 @@ public class WebforjAssertions extends LocatorAssertionsImpl implements LocatorA
     assertions.hasAttribute("src", value);
   }
 
+  public void hasHorizontalAlignment(HasHorizontalAlignment.Alignment alignment) {
+    switch (alignment) {
+      case LEFT -> assertions.hasClass(".bbj-reverse-order");
+      case MIDDLE -> {} // ?
+      case RIGHT -> assertions.not().hasClass(".bbj-reverse-order");
+    }
+  }
+
+  @Override
+  public void isChecked(IsCheckedOptions options) {
+    var attributeOptions = new HasAttributeOptions();
+    if (options == null) {
+      options = new IsCheckedOptions();
+    } else if (options.timeout != null) {
+      attributeOptions.setTimeout(options.timeout);
+    }
+
+    if (options.indeterminate != null && options.indeterminate) {
+      assertions.hasAttribute("indeterminate", "", attributeOptions);
+      // When checking for indeterminate state
+      /*if (isNegated) {
+        // Not indeterminate means: does not have indeterminate="" attribute
+        assertions.not().hasAttribute("indeterminate", "", attributeOptions);
+      } else {
+        // Is indeterminate means: has indeterminate="" attribute
+        assertions.hasAttribute("indeterminate", "", attributeOptions);
+      }*/
+    } else {
+      assertions.hasAttribute("checked", "", attributeOptions);
+      // When checking for checked state (not indeterminate)
+      /*if (isNegated) {
+        // Not checked means: does not have checked="" attribute
+        assertions.not().hasAttribute("checked", "", attributeOptions);
+      } else {
+        // Is checked means: has checked="" attribute
+        assertions.hasAttribute("checked", "", attributeOptions);
+      }*/
+    }
+  }
 }

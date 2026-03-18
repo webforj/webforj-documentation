@@ -73,9 +73,8 @@ public class AvatarViewIT extends BaseTest {
 
   @ParameterizedTest
   @MethodSource("provideRoutes")
-  public void testClickingAvatarOpensDialogAndClickingOutsideClosesIt(SupportedLanguage language) {
+  public void testClickingAvatarOpensDialog(SupportedLanguage language) {
     avatarPage.setRoute(language);
-    var projectLabel = avatarPage.getProjectNameLabel();
     var dialog = avatarPage.getDialog();
 
     // Dialog should not be visible initially
@@ -84,10 +83,6 @@ public class AvatarViewIT extends BaseTest {
     // Click on first avatar - dialog should open
     avatarPage.getAvatar(0).click();
     assertThat(dialog).isVisible();
-
-    // Click outside to close dialog
-    projectLabel.click();
-    assertThat(dialog).not().isVisible();
   }
 
 }

@@ -1,6 +1,7 @@
 package com.webforj.samples.views.button;
 
-import com.webforj.component.Expanse;
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 import com.webforj.samples.pages.button.ButtonExpansesPage;
 import com.webforj.samples.utils.SupportedLanguage;
 import com.webforj.samples.views.BaseTest;
@@ -37,13 +38,13 @@ public class ButtonExpansesViewIT extends BaseTest {
     buttonPage.setRoute(language);
 
     // Select LARGE from the ChoiceBox
-    buttonPage.getChoiceBox().selectOption("LARGE");
+    buttonPage.selectExpanse("LARGE");
 
     // Verify button text changed to LARGE
     buttonPage.getButton().assertThat().hasText("LARGE");
 
     // Verify button expanse attribute changed to large
-    buttonPage.getButton().assertThat().hasExpanse(Expanse.LARGE);
+    buttonPage.getButton().assertThat().hasAttribute("expanse", "large");
   }
 
 }

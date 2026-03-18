@@ -14,7 +14,7 @@ public class ButtonDisablePage extends AbstractPage {
   }
 
   public WebforjLocator getSubmitButton() {
-    return getByClass(Button.class).getByText("Submit");
+    return getButton("Submit");
   }
 
   public WebforjLocator getEmailInput() {
