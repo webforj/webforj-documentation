@@ -2,11 +2,10 @@ package com.webforj.samples.pages.accordion;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 
 public class AccordionDisabledPage {
-
-    private static final String ROUTE = "webforj/accordion/disabled";
-
+    private static final String ROUTE = "accordiondisabled";
     private final Locator disabledPanel;
     private final Locator disabledOpenedPanel;
     private final Locator toggleButton;
@@ -19,8 +18,8 @@ public class AccordionDisabledPage {
                 new Locator.FilterOptions().setHasText("This panel is disabled"));
         this.disabledOpenedPanel = page.locator("dwc-accordion-panel").filter(
                 new Locator.FilterOptions().setHasText("Disabled but opened"));
-        this.toggleButton = page.locator("dwc-radio-button").filter(
-                new Locator.FilterOptions().setHasText("Accordion enabled"));
+        this.toggleButton = page.getByRole(AriaRole.RADIO,
+                new Page.GetByRoleOptions().setName("Accordion enabled"));
         this.groupPanelOne = page.locator("dwc-accordion-panel").filter(
                 new Locator.FilterOptions().setHasText("Panel One"));
     }

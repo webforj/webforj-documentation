@@ -6,7 +6,7 @@ import com.microsoft.playwright.options.AriaRole;
 
 public class AccordionMultiplePage {
 
-    private static final String ROUTE = "webforj/accordion/multiple";
+    private static final String ROUTE = "accordionmultiple";
 
     private final Locator panelA;
     private final Locator panelB;
