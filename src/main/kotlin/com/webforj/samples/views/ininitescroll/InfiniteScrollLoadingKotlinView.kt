@@ -6,8 +6,13 @@ import com.webforj.component.html.elements.Div
 import com.webforj.component.icons.TablerIcon
 import com.webforj.kotlin.dsl.component.html.elements.div
 import com.webforj.kotlin.dsl.component.infiniitescroll.infiniteScroll
+import com.webforj.kotlin.extension.classNames
+import com.webforj.kotlin.extension.percent
+import com.webforj.kotlin.extension.plus
+import com.webforj.kotlin.extension.px
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
+import com.webforj.kotlin.extension.vh
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
@@ -15,17 +20,18 @@ import com.webforj.router.annotation.Route
 @FrameTitle("Custom Loading Indicator")
 @StyleSheet("ws://css/infinitescroll/infinitescroll.css")
 class InfiniteScrollLoadingKotlinView: Composite<Div>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
-        height = "100vh"
+      self.apply {
+        height = 100.vh
         styles["overflow"] = "auto"
         infiniteScroll("Fetching more records...") {
-          addClassName("is")
-          height = "100%"
+          classNames + "is"
+          height = 100.percent
           val canvas = div {
-            maxWidth = "600px"
-            addClassName("is-canvas")
+            maxWidth = 600.px
+            classNames + "is-canvas"
           }
           setIcon(TablerIcon.create("cloud-download"))
           var index = 0
