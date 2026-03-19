@@ -2,6 +2,7 @@
 sidebar_position: 1
 title: Table
 hide_giscus_comments: true
+sidebar_class_name: has-new-content
 ---
 
 <DocChip chip='shadow' />
@@ -31,7 +32,7 @@ Define a class to represent the entities (data) you want to display in the table
 
 ```java
 public class MusicRecord {
-    // Fields and methods to represent the attributes of each record
+  // Fields and methods to represent the attributes of each record
 }
 ```
 
@@ -43,9 +44,9 @@ From this data, a `Repository` needs to be created for use within the `Table`. T
 
 ```java
 List<MusicRecord> data = new Gson().fromJson(
-    Assets.contentOf(
-        Assets.resolveContextUrl("context://data/CDStore.json")
-    ), new TypeToken<List<MusicRecord>>() {}
+  Assets.contentOf(
+    Assets.resolveContextUrl("context://data/CDStore.json")
+  ), new TypeToken<List<MusicRecord>>() {}
 );
 
 CollectionRepository<MusicRecord> dataRepository = new CollectionRepository<>(data);

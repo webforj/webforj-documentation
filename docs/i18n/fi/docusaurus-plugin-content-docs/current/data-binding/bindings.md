@@ -1,41 +1,41 @@
 ---
 sidebar_position: 2
 title: Bindings
-_i18n_hash: 0afea0971d509f25324b46172b5e020e
+_i18n_hash: c567705312942e83f5e83a77f1d510a4
 ---
-A binding in webforJ linkittää tietyn Java Bean -ominaisuuden UI-komponenttiin. Tämä linkitys mahdollistaa automaattiset päivitykset UI:n ja taustamallin välillä. Jokainen binding voi käsitellä datan synkronointia, validointia, muunnosta ja tapahtumien hallintaa.
+A binding webforJ:ssä linkittää java-beanin tietyn ominaisuuden käyttöliittymäkomponenttiin. Tämä liitos mahdollistaa automaattiset päivitykset käyttöliittymän ja taustamallin välillä. Jokainen binding voi käsitellä tietosynkronointia, validointia, muuntamista ja tapahtumahallintaa.
 
-Voit aloittaa bindingit vain `BindingContext`in kautta. Se hallitsee kokoelmaa binding-instansseja, jotka linkittävät UI-komponentin beanin ominaisuuteen. Se helpottaa ryhmätoimintoja bindingeillä, kuten validointia ja synkronointia UI-komponenttien ja beanin ominaisuuksien välillä. Se toimii aggregaattorina, joka mahdollistaa kollektiiviset toimet useille bindingeille, näin ollen virtaviivaistaa datan hallintaa sovelluksissa.
+Voit aloittaa bindingsien luomisen vain `BindingContext`in kautta. Se hallinnoi kokoelmaa binding-instansseja, jotka jokainen linkittävät käyttöliittymäkomponentin beanin ominaisuuteen. Se helpottaa ryhmätoimintoja bindingsien osalta, kuten validointia ja synkronointia käyttöliittymäkomponenttien ja beanin ominaisuuksien välillä. Se toimii aggregaattorina, mikä mahdollistaa kollektiiviset toimet useiden bindingsien osalta, näinollen virtaviivaistaen datan hallintaa sovelluksissa.
 
-:::tip Automaattinen binding
-Tässä osassa esitellään manuaalisten bindingien perusasetukset. Voit myös luoda bindingeja automaattisesti UI-komponenttien perusteella lomakkeessasi. Kun hallitset perusasiat, voit syventää tietämystäsi lukemalla [Automaattinen Binding](./automatic-binding) -osiota.
+:::tip Automaattinen Binding
+Tässä osiossa esitellään bindingien manuaalisen konfiguroinnin perusteet. Voit myös luoda bindingit automaattisesti käyttöliittymäkomponenttien perusteella lomakkeessasi. Kun ymmärrät perusteet, opi lisää lukemalla [Automaattinen Binding](./automatic-binding) -osio.
 :::
 
-## Määritä bindingit {#configure-bindings}
+## Määritä bindings {#configure-bindings}
 
-Aloita luomalla uusi `BindingContext`-instanssi, joka hallitsee kaikkia bindingeja tietyssä mallissa. Tämä konteksti varmistaa, että kaikki bindingit voidaan validoida ja päivittää yhdessä.
+Aloita luomalla uusi `BindingContext`-instanssi, joka hallinnoi kaikkia bindingsia tietylle mallille. Tämä konteksti varmistaa, että kaikki bindings voidaan validoida ja päivittää kollektiivisesti.
 
 ```java
 BindingContext<Hero> context = new BindingContext<>(Hero.class);
 ```
 
 :::info
-Jokaisessa lomakkeessa tulisi olla vain yksi `BindingContext`-instanssi, ja sinun tulisi käyttää tätä instanssia kaikille lomakkeen komponenteille.
+Jokaisella lomakkeella tulisi olla vain yksi `BindingContext`-instanssi, ja sinun tulisi käyttää tätä instanssia kaikille lomakkeen komponenteille.
 :::
 
 ### Sidottu ominaisuus {#the-bound-property}
 
-Sidottu ominaisuus on tietty kenttä tai attribuutti Java Beanissa, joka voidaan linkittää UI-komponenttiin sovelluksessasi. 
-Tämä linkitys mahdollistaa muutokset UI:ssa vaikuttamaan suoraan vastaavaan datamallin ominaisuuteen ja päinvastoin, 
+Sidottu ominaisuus on tietty kenttä tai attribuutti Java Beanissa, joka voidaan liittää käyttöliittymäkomponenttiin sovelluksessasi. 
+Tämä liitos mahdollistaa käyttöliittymän muutosten vaikuttavan suoraan vastaavaan datamallin ominaisuuteen ja päinvastoin, 
 helpottaen reaktiivista käyttäjäkokemusta.
 
-Bindingia asetettaessa sinun tulisi antaa ominaisuuden nimi merkkijonona. Tämän nimen on vastattava kentän nimeä Java Bean -luokassa. Tässä on yksinkertainen esimerkki:
+Bindingin määrittämisessä sinun tulee antaa ominaisuuden nimi merkkijonona. Tämän nimen on vastattava kentän nimeä Java Bean -luokassa. Tässä on yksinkertainen esimerkki:
 
 ```java
 BindingContext<Hero> context = new BindingContext<>(Hero.class, true);
 context
-    .bind(textField, "power")
-    .add();
+  .bind(textField, "power")
+  .add()
 ```
 
 ```java
@@ -47,16 +47,16 @@ public class Hero  {
 }
 ```
 
-`bind`-metodi palauttaa `BindingBuilder`-objektin, joka luo `Binding`-objektin ja jonka avulla voit konfiguroida bindingin useita asetuksia, `add`-metodi on se, joka todella lisää bindingin kontekstiin.
+`bind`-metodit palauttavat `BindingBuilder`-objektin, joka luo `Binding`-objektin, jonka voit käyttää bindingin eri asetusten määrittämiseen, ja `add`-metodi on se, joka todella lisää bindingin kontekstiin.
 
 ### Sidottu komponentti {#the-bound-component}
 
-Bindingin toinen puoli on sidottu komponentti, joka viittaa UI-komponenttiin, joka vuorovaikuttaa Java Beanin ominaisuuden kanssa. 
-Sidottu komponentti voi olla mikä tahansa UI-komponentti, joka tukee käyttäjävuorovaikutusta ja näyttöä, kuten tekstikenttiä, yhdistelmätaiheita, valintaruutuja tai 
+Bindingin toinen puoli on sidottu komponentti, joka viittaa käyttöliittymäkomponenttiin, joka vuorovaikuttaa Java Beanin ominaisuuden kanssa. 
+Sidottu komponentti voi olla mikä tahansa käyttöliittymäkomponentti, joka tukee käyttäjätapahtumaa ja näyttöä, kuten tekstikentät, valintaruudut, valintalaatikot tai 
 mikä tahansa mukautettu komponentti, joka toteuttaa `ValueAware`-rajapinnan.
 
 Sidottu komponentti toimii käyttäjän vuorovaikutuspisteenä taustalla olevan datamallin kanssa. 
-Se näyttää tietoa käyttäjälle ja myös tallentaa käyttäjän syötteitä, jotka sitten välitetään takaisin malliin.
+Se näyttää tietoa käyttäjälle, ja myös kerää käyttäjän syötteet, jotka sitten välitetään takaisin malliin.
 
 ```java
 TextField nameTextField = new TextField("Nimi");
@@ -68,33 +68,32 @@ context.bind(nameTextField, "name").add();
 
 ### Datan lukeminen {#reading-data}
 
-Datan lukeminen sisältää UI-komponenttien täyttämisen arvoilla datamallista. 
-Tämä tehdään tyypillisesti, kun lomake näytetään ensimmäisen kerran, tai kun sinun on ladattava data uudelleen taustamallin muutosten vuoksi. 
-`read`-metodi, jonka `BindingContext` tarjoaa, tekee tämän prosessin suoraviivaiseksi.
+Datan lukeminen tarkoittaa käyttöliittymäkomponenttien täyttämistä arvoilla datamallista. 
+Tämä tehdään tyypillisesti, kun lomake näytetään ensimmäisen kerran, tai kun sinun tarvitsee ladata data uudelleen taustamallissa tapahtuneiden muutosten vuoksi. 
+`read`-metodi, jonka `BindingContext` tarjoaa, tekee tämän prosessin yksinkertaiseksi.
 
 ```java
-// Oleta, että Hero-objekti on instansioitu ja alustettu
+// Oletetaan, että Hero-objekti on instanssoitu ja alustettu
 Hero hero = new Hero("Clark Kent", "Lentäminen");
 
-// BindingContext on jo konfiguroitu bindingeilla
+// BindingContext on jo konfiguroitu bindingsilla
 context.read(hero);
 ```
 
- Tässä esimerkissä `read`-metodi ottaa vastaan `Hero`-instanssin ja päivittää kaikki sidotut UI-komponentit hejon ominaisuuksien mukaisesti. 
-Jos hejon nimi tai voima muuttuu, vastaavat UI-komponentit (kuten `TextField` nimelle ja `ComboBox` voimille) 
-näyttävät nämä uudet arvot.
+Tässä esimerkissä `read`-metodi ottaa `Hero`-instanssin ja päivittää kaikki sidotut käyttöliittymäkomponentit hepun ominaisuuksien mukaisiksi. 
+Jos hepun nimi tai voima muuttuu, vastaavat käyttöliittymäkomponentit (kuten `TextField` nimelle ja `ComboBox` voimille) näyttävät nämä uudet arvot.
 
 ### Datan kirjoittaminen {#writing-data}
 
-Datan kirjoittaminen tarkoittaa arvojen keräämistä UI-komponenteista ja datamallin päivittämistä. 
-Tämä tapahtuu tyypillisesti, kun käyttäjä lähettää lomakkeen. `write`-metodi käsittelee validointia ja mallin päivittämistä yhdellä kertaa.
+Datan kirjoittaminen tarkoittaa arvojen keräämistä käyttöliittymäkomponenteista ja datamallin päivittämistä. 
+Tämä tapahtuu tyypillisesti, kun käyttäjä lähettää lomakkeen. `write`-metodi käsittelee validointia ja mallin päivittämistä yhdessä vaiheessa.
 
 ```java
-// Tämä voisi käynnistyä lomakkeen lähetysehdosta
+// Tämä voisi laukaista lomakkeen lähettämistapahtuma
 submit.onClick(event -> {
   ValidationResult results = context.write(hero);
   if (results.isValid()) {
-    // Data on voimassa, ja hero-objekti on päivitetty
+    // Data on voimassa, ja hero-objektia on päivitetty
     // repository.save(hero); 
   } else {
     // Käsittele validointivirheitä
@@ -104,91 +103,91 @@ submit.onClick(event -> {
 ```
 
 Yllä olevassa koodissa, kun käyttäjä napsauttaa lähetyspainiketta, `write`-metodia kutsutaan. 
-Se suorittaa kaikki määritellyt validoinnit ja, jos data läpäisee kaikki tarkastukset, päivittää `Hero`-objektin 
-uuden tiedon perustella sidotuista komponenteista. 
-Jos data on voimassa, voit tallentaa sen tietokantaan tai käsitellä edelleen. Jos esiintyy validointivirheitä, 
-sinun tulee käsitellä ne asianmukaisesti, tyypillisesti näyttämällä virheilmoituksia käyttäjälle.
+Se suorittaa kaikki konfiguroidut validoinnit ja, jos data läpäisee kaikki tarkistukset, päivittää `Hero`-objektin 
+uuden arvot sidotuista komponenteista. 
+Jos data on voimassa, voit tallentaa sen tietokantaan tai käsitellä sitä edelleen. Jos löytyy validointivirheitä, 
+sinun tulee käsitellä niitä asianmukaisesti, tyypillisesti näyttämällä virheilmoituksia käyttäjälle.
 
-:::tip Validointivirheiden raportointi
-Kaikilla webforJ:n ydinkomponenteilla on oletusasetukset, jotka automaattisesti raportoivat validointivirheitä, joko inline tai popoverin kautta. Voit mukauttaa tätä käyttäen [Raportteja](./validation/reporters.md).
+:::tip Validointivirheiden Raportointi
+Kaikilla core-komponenteilla webforJ:ssä on oletusasetukset, jotka automaattisesti raportoivat validointivirheitä, joko inline tai popoverin kautta. Voit mukauttaa tätä käyttäen [Raportteja](./validation/reporters.md).
 :::
 
 <!-- vale off -->
-## Lukuoikeudettomat tiedot {#readonly-data}
+## Vain luku -data {#readonly-data}
 <!-- vale on -->
 
-Tietyissä tilanteissa saatat haluta sovelluksesi näyttävän tietoja ilman, että loppukäyttäjälle annetaan mahdollisuutta muuttaa niitä suoraan UI:n kautta. 
-Tässä lukuoikeudettomat tiedot -bindingit tulevat tärkeiksi. webforJ tukee bindingien konfigurointia niin, että ne ovat lukuoikeudettomia, varmistaen, että 
-voit näyttää tietoja, mutta et muokata niitä sidottujen UI-komponenttien kautta.
+Tietyissä skenaarioissa saatat haluta, että sovelluksesi näyttää dataa ilman, että loppukäyttäjä voi muuttaa sitä suoraan käyttöliittymän kautta. 
+Tässä lukkiutumattomat databindings tulevat tärkeiksi. webforJ tukee bindingsien konfigurointia vain luku -tilassa, varmistaen, että 
+voit näyttää dataa, mutta et muuttaa sitä sidottujen käyttöliittymäkomponenttien kautta.
 
-### Lukuoikeudettomien bindingien määrittäminen {#configuring-readonly-bindings}
+### Vain luku -bindingsin konfigurointi {#configuring-readonly-bindings}
 
-Asettaaksesi lukuoikeudettoman bindingin, voit konfiguroida bindingin sulkemaan pois tai sivuuttamaan UI-komponentin syötteen. 
-Tämä varmistaa, että data pysyy muuttumattomana UI:n näkökulmasta, vaikka sitä päivitettäisiin ohjelmallisesti tarvittaessa.
+Asettaaksesi vain luku -bindingin, voit konfiguroida bindingin estämään tai jättämään huomiotta käyttöliittymäkomponentin syötteen. 
+Tämä varmistaa, että data pysyy muuttumattomana käyttöliittymän näkökulmasta, vaikka sitä päivitetään ohjelmallisesti tarvittaessa.
 
 ```java
-// Määrittää tekstikentän lukuoikeudettomaksi binding-kontekstissa
+// Konfiguroimalla tekstikenttä vain luku -tilassa binding-kontekstissa
 BindingContext<Hero> context = new BindingContext<>(Hero.class);
 context.bind(nameTextField, "name")
-    .readOnly()
-    .add();
+  .readOnly()
+  .add();
 ```
 
-Tässä konfiguraatiossa `readOnly` varmistaa, että `nameTextField` ei hyväksy käyttäjän syötteitä, tehden näin tekstikentästä näyttävän 
-dataa ilman muokkausmahdollisuuksia.
+Tässä konfiguraatiossa `readOnly` varmistaa, että `nameTextField` ei hyväksy käyttäjän syöttöä, tehden tekstikentästä vain näyttävän datan ilman muutosten mahdollisuutta.
 
 :::info
-Binding voi merkitä komponentin lukuoikeudettomaksi vain, jos UI-komponentti toteuttaa `ReadOnlyAware` -rajapinnan.
+Binding voi merkitä komponentin vain luku -tilaiseksi vain, jos käyttöliittymäkomponentti toteuttaa `ReadOnlyAware` -rajapinnan.
 :::
 
-:::tip Komponentin lukuoikeus vs Bindingin lukuoikeus
-On tärkeää erottaa lukuoikeudettomiksi määritellyt bindingit ja UI-komponentit, jotka asetetaan näyttämään lukuoikeudettomilta. 
-Kun merkitset bindingin lukuoikeudettomaksi, se vaikuttaa siihen, miten binding hallitsee dataa kirjoitusprosessin aikana, ei vain UI-käyttäytymiseen.
+:::tip Komponentin vain luku vs Bindingin vain luku
+On tärkeää erottaa toisistaan bindingsit, jotka konfiguroit vain luku -tilaan, ja käyttöliittymäkomponentit, jotka asetat näyttämään vain luku -tilassa. 
+Kun merkitset bindingin vain luku -tilaksi, se vaikuttaa siihen, miten binding hallitsee dataa kirjoitusprosessin aikana, ei vain käyttöliittymän käyttäytymiseen.
 
-Kun merkitset bindingin lukuoikeudettomaksi, järjestelmä ohittaa data päivitykset. Kaikki muutokset UI-komponentissa eivät siirry takaisin datamalliin. 
-Tämä varmistaa, että jopa jos UI-komponentti saa jotenkin käyttäjän syötteen, se ei päivitä taustalla olevaa datamallia. 
-Tämän erottelun ylläpitäminen on ratkaisevan tärkeää datan eheyden säilyttämiseksi tilanteissa, joissa käyttäjän toimenpiteet eivät saisi muuttaa dataa.
+Kun merkitset bindingin vain luku -tilaiseksi, järjestelmä ohittaa tietopäivitykset. Kaikki muutokset käyttöliittymäkomponenttiin eivät välity taustalla olevaan datamalliin. 
+Tämä varmistaa, että vaikka käyttöliittymäkomponentti jollain tavalla saisi käyttäjän syötteen, se ei päivitä alhaista datamallia. 
+Tämän erottelun säilyttäminen on tärkeää datan eheyden suojelemiseksi skenaarioissa, joissa käyttäjän toimet eivät saisi muuttaa dataa.
 
-Sen sijaan, kun asetat UI-komponentin lukuoikeudettomaksi, ilman että konfiguroit bindingia itsessään lukuoikeudettomaksi, se vain estää käyttäjän tekemästä muutoksia 
-UI-komponenttiin, mutta ei estä bindingiä päivittämästä datamallia, jos muutoksia tapahtuu ohjelmallisesti tai muilla tavoin.
+Sitä vastoin, asettamalla käyttöliittymäkomponentti vain luku -tilaan, ilman että binding itsessään on konfiguroitu vain luku -tilaksi, yksinkertaisesti estää käyttäjää tekemästä muutoksia 
+käyttöliittymäkomponenttiin, mutta ei estä bindingia päivittämästä datamallia, jos muutoksia tapahtuu ohjelmallisesti tai muista syistä.
 :::
 
-## Bindingin getterit ja setterit {#binding-getters-and-setters}
+## Bindingien getterit ja setterit {#binding-getters-and-setters}
 
-Setterit ja getterit ovat Java-metodeja, jotka asettavat ja saavat ominaisuuksien arvot. 
-Data bindingin yhteydessä niitä käytetään määrittämään, miten ominaisuuksia päivitetään ja haetaan binding-kehyksessä.
+Setterit ja getterit ovat metodeja Javassa, jotka asettavat ja saavat ominaisuuksien arvot vastaavasti. 
+Databindingin kontekstissa niitä käytetään määrittämään, miten ominaisuuksia päivitetään ja haetaan binding-kehyksessä.
 
-### Getterien ja setterien mukauttaminen {#customizing-setters-and-getters}
+### Mukauttaminen setterit ja getterit {#customizing-setters-and-getters}
 
-Vaikka webforJ voi automaattisesti käyttää standardeja JavaBean-nimityskäytänteitä (esimerkiksi `getName()`, `setName()` omaisuudelle `name`), saatat tarvita mukautettua käyttäytymistä. 
-Tämä on tarpeen, kun ominaisuus ei noudata tavanomaista nimeämistä tai kun datan käsittely vaatii lisälokikkaa.
+Vaikka webforJ voi automaattisesti käyttää standardijavabean-nimikehakemistoa
+(esimerkiksi `getName()`, `setName()` ominaisuudelle `name`), saatat tarvita räätälöityä käyttäytymistä. 
+Tämä on tarpeellista, kun ominaisuus ei noudata tavanomaista nimeämistä tai kun datankäsittelyssä tarvitaan lisälokiikkaa.
 
 ### Mukautettujen getterien käyttäminen {#using-custom-getters}
 
-Mukautettuja gettereitä käytetään, kun arvon hakuprosessi sisältää enemmän kuin pelkän ominaisuuden palauttamisen. 
-Esimerkiksi saatat haluta muotoilla merkkijonon, laskea arvon tai kirjata tiettyjä toimia, kun ominaisuutta käytetään.
+Mukautettuja gettereitä käytetään silloin, kun arvojen hakuprosessi sisältää enemmän kuin pelkän ominaisuuden palauttamisen. 
+Esimerkiksi saatat haluta muotoilla merkkijonon, laskea arvon tai kirjata tiettyjä toimintoja, kun ominaisuutta haetaan.
 
 ```java
 BindingContext<Hero> context = new BindingContext<>(Hero.class);
 context
-    .bind(textField, "power")
-    .useGetter(hero -> {
-        String name = hero.getName();
-        return name.toUpperCase(); // Mukautettu logiikka: muutetaan nimi isoiksi kirjaimiksi
-    });
+  .bind(textField, "power")
+  .useGetter(hero -> {
+    String name = hero.getName();
+    return name.toUpperCase(); // Mukautettu logiikka: muunna nimi isoiksi kirjaimiksi
+  });
 ```
 
 ### Mukautettujen setterien käyttäminen {#using-custom-setters}
 
-Mukautetut setterit tulevat peliin, kun ominaisuuden asettamiseen liittyy lisätoimintoja, kuten validointi, muuntaminen tai sivuvaikutukset, 
-kuten kirjaaminen tai muiden osien ilmoittaminen sovelluksessa.
+Mukautetut setterit astuvat kuvaan, kun ominaisuuden asettaminen sisältää lisätoimintoja, kuten validointia, muuntamista tai sivuvaikutuksia
+kuten lokitusta tai muiden osien ilmoittamista sovelluksestasi.
 
 ```java
 BindingContext<Hero> context = new BindingContext<>(Hero.class);
 context
-    .bind(textField, "power")
-    .useSetter((hero, name) -> {
-        System.out.println("Päivitetään nimeä " + hero.getName() + " nimeksi " + name);
-        hero.setName(name); // Lisätoiminto: kirjaaminen
-    });
+  .bind(textField, "power")
+  .useSetter((hero, name) -> {
+    System.out.println("Päivitetään nimeä " + hero.getName() + " -> " + name);
+    hero.setName(name); // Lisätoiminto: lokitus
+  });
 ```

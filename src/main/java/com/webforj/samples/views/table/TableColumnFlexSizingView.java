@@ -92,8 +92,7 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
         .setStriped(true);
 
     table.addColumn("Number", MusicRecord::getNumber)
-        .setWidth(80f)
-        .setResizable(false);
+        .setWidth(80f);
 
     titleColumn.setFlex(2f)
         .setMinWidth(120f)
@@ -109,10 +108,10 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
 
     table.addColumn("Cost", record -> String.format("$%.2f", record.getCost()))
         .setWidth(80f)
-        .setAlignment(Column.Alignment.RIGHT)
-        .setResizable(false);
+        .setAlignment(Column.Alignment.RIGHT);
 
     table.setRepository(Service.getMusicRecords());
+    table.setColumnsToResizable(false);
 
     return table;
   }
@@ -134,6 +133,7 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
     titleColumn.setFlex(2f);
     artistColumn.setFlex(1.5f);
     genreColumn.setFlex(1f);
+    table.refreshColumns();
   }
 
   private void setEqualFlex() {
@@ -144,5 +144,6 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
     titleColumn.setFlex(1f);
     artistColumn.setFlex(1f);
     genreColumn.setFlex(1f);
+    table.refreshColumns();
   }
 }

@@ -110,6 +110,7 @@ import com.webforj.component.webswing.WebswingConnector;
 
 @Route
 public class SwingAppView extends Composite<Div> {
+  private final Div self = getBoundComponent();
   private WebswingConnector connector;
 
   public SwingAppView() {
@@ -120,7 +121,7 @@ public class SwingAppView extends Composite<Div> {
     connector.setSize("100%", "600px");
 
     // Add to the view container
-    getBoundComponent().add(connector);
+    self.add(connector);
   }
 }
 ```
@@ -137,7 +138,7 @@ For example, to hide the logout button in a production environment where you man
 WebswingConnector connector = new WebswingConnector("http://localhost:8080/myapp/");
 
 WebswingOptions options = new WebswingOptions()
-    .setDisableLogout(true);  // Hide the logout button
+  .setDisableLogout(true);  // Hide the logout button
 
 connector.setOptions(options);
 ```

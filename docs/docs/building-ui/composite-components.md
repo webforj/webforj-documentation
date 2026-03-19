@@ -1,10 +1,8 @@
 ---
 sidebar_position: 4
 title: Composite Components
-sidebar_class_name: updated-content
 ---
 
-<DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/Composite" top='true'/>
 
 
@@ -23,11 +21,11 @@ To define a `Composite` component, extend the `Composite` class and specify the 
 
 ```java title="BasicComposite.java"
 public class BasicComposite extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
   public BasicComposite() {
     // Access the bound component to configure it
-    getBoundComponent()
-      .setDirection(FlexDirection.COLUMN)
+    self.setDirection(FlexDirection.COLUMN)
       .setSpacing("3px")
       .add(new TextField(), new Button("Submit"));
   }
@@ -36,7 +34,7 @@ public class BasicComposite extends Composite<FlexLayout> {
 
 The `getBoundComponent()` method provides access to your underlying component, allowing you to configure its properties, add child components, and manage its behavior directly.
 
-The bound component can be any [webforJ component](../components/overview) or [HTML element component](/docs/building-ui/web-components/html-elements). For flexible layouts, consider using [`FlexLayout`](../components/flex-layout) or [`Div`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/html/elements/Div.html) as your bound component.
+The bound component can be any [webforJ component](/docs/components/overview) or [HTML element component](/docs/components/html-elements). For flexible layouts, consider using [`FlexLayout`](/docs/components/flex-layout) or [`Div`](https://javadoc.io/doc/com.webforj/webforj-foundation/latest/com/webforj/component/html/elements/Div.html) as your bound component.
 
 :::note Component Extension
 Never extend `Component` or `DwcComponent` directly. Always use composition patterns with `Composite` to build custom components.
@@ -72,6 +70,7 @@ webforJ handles all lifecycle management for `Composite` components automaticall
 
 ```java
 public class UserDashboard extends Composite<FlexLayout> {
+ private final FlexLayout self = getBoundComponent();
  private TextField searchField;
  private Button searchButton;
  private Div resultsContainer;

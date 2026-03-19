@@ -1,19 +1,19 @@
 ---
 title: File Chooser
 sidebar_position: 10
-_i18n_hash: 49a069004ead8d962b32e132183819e8
+_i18n_hash: c8d1ebc420bc1e1749c5c98a9fd3284c
 ---
 <DocChip chip='shadow' />
 <DocChip chip='since' label='24.02' />
 <JavadocLink type="foundation" location="com/webforj/component/optiondialog/FileChooserDialog" top='true'/>
 
-`FileChooserDialog` is een modale dialoog ontworpen om de gebruiker in staat te stellen een bestand of een map van het serversysteem te selecteren. De dialoog blokkeert de uitvoering van de app totdat de gebruiker een keuze maakt of de dialoog sluit.
+`FileChooserDialog` is een modaal dialoogvenster dat is ontworpen om de gebruiker in staat te stellen een bestand of een map uit het besturingssysteem van de server te selecteren. Het dialoogvenster blokkeert de uitvoering van de app totdat de gebruiker een keuze maakt of het dialoogvenster sluit.
 
 <!-- INTRO_END -->
 
-## Gebruik {#usages}
+## Usages {#usages}
 
-De `FileChooserDialog` biedt een manier om bestanden of mappen van het bestandssysteem te selecteren, waardoor gebruikers mappen kunnen kiezen voor het opslaan van gegevens of bestandoperaties kunnen uitvoeren.
+De `FileChooserDialog` biedt een manier om bestanden of mappen uit het bestandssysteem te selecteren, zodat gebruikers mappen kunnen kiezen voor het opslaan van gegevens of bestandbewerkingen kunnen uitvoeren.
 
 <ComponentDemo 
 path='/webforj/filechooserdialogbasic?' 
@@ -21,9 +21,9 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '600px'
 />
 
-## Resultaat {#result}
+## Result {#result}
 
-De `FileChooserDialog` retourneert het geselecteerde bestand of de geselecteerde map als een string. Als de gebruiker de dialoog sluit zonder een selectie te maken, zal het resultaat `null` zijn.
+De `FileChooserDialog` retourneert het geselecteerde bestand of de map als een string. Als de gebruiker het dialoogvenster sluit zonder een selectie te maken, is het resultaat `null`.
 
 :::info
 De resulterende string wordt geretourneerd vanuit de `show()`-methode, of de equivalente `OptionDialog`-methode zoals hieronder weergegeven. 
@@ -31,35 +31,35 @@ De resulterende string wordt geretourneerd vanuit de `show()`-methode, of de equ
 
 ```java showLineNumbers
 String result = OptionDialog.showFileChooserDialog(
-    "Selecteer een bestand", "/home/user", FileChooserDialog.SelectionMode.FILES);
+  "Selecteer een bestand", "/home/user", FileChooserDialog.SelectionMode.FILES);
 
 if (result != null) {
-    OptionDialog.showMessageDialog("U heeft geselecteerd: " + result, "Selectie gemaakt");
+  OptionDialog.showMessageDialog("Je hebt geselecteerd: " + result, "Selectie gemaakt");
 } else {
-    OptionDialog.showMessageDialog("Geen selectie gemaakt", "Selectie geannuleerd");
+  OptionDialog.showMessageDialog("Geen selectie gemaakt", "Selectie geannuleerd");
 }
 ```
 
-## Selectiemodus {#selection-mode}
+## Selection mode {#selection-mode}
 
-De `FileChooserDialog` ondersteunt verschillende selectiemodi, zodat u de selectiemethode kunt afstemmen op uw specifieke behoeften:
+De `FileChooserDialog` ondersteunt verschillende selectiemodi, zodat je de selectiemethode kunt afstemmen op je specifieke behoeften:
 
-1. **BESTANDEN**: Sta alleen de selectie van bestanden toe.
-2. **MAPPEN**: Sta alleen de selectie van mappen toe.
-3. **BESTANDEN_EN_MAPPEN**: Sta de selectie van zowel bestanden als mappen toe.
+1. **FILES**: Staat alleen de selectie van bestanden toe.
+2. **DIRECTORIES**: Staat alleen de selectie van mappen toe.
+3. **FILES_AND_DIRECTORIES**: Staat de selectie van zowel bestanden als mappen toe.
 
-## Aanvangspad {#initial-path}
+## Initial path {#initial-path}
 
-De `FileChooserDialog` stelt u in staat om een aanvangspad op te geven waar de dialoog naartoe opent wanneer deze wordt weergegeven. Dit kan gebruikers een startpunt bieden voor hun bestandselectie.
+De `FileChooserDialog` stelt je in staat om een initiële pad op te geven waar het dialoogvenster naar opent wanneer het wordt weergegeven. Dit kan gebruikers een startpunt bieden voor hun bestandselectie.
 
 ```java showLineNumbers
 FileChooserDialog dialog = new FileChooserDialog("Selecteer een bestand", "/home/user");
 String result = dialog.show();
 ```
 
-## Beperking {#restriction}
+## Restriction {#restriction}
 
-U kunt de dialoog beperken tot een specifieke map, zodat gebruikers niet buiten deze map kunnen navigeren met de `setRestricted(boolean restricted)`-methode.
+Je kunt het dialoogvenster beperken tot een specifieke map, zodat gebruikers niet buiten deze map kunnen navigeren met de `setRestricted(boolean restricted)`-methode.
 
 ```java showLineNumbers
 FileChooserDialog dialog = new FileChooserDialog("Selecteer een bestand", "/home/user");
@@ -69,7 +69,7 @@ dialog.show();
 
 ## Filters {#filters}
 
-Wanneer de selectiemodus `BESTANDEN` is, staat de `FileChooserDialog` u toe filters in te stellen om de soorten bestanden te beperken die worden vermeld. U kunt filters configureren met de `setFilters(List<FileChooserFilter> filters)`-methode.
+Wanneer de selectiemodus `FILES` is, staat de `FileChooserDialog` je toe om filters in te stellen om de soorten bestanden die worden weergegeven te beperken. Je kunt filters configureren met de `setFilters(List<FileChooserFilter> filters)`-methode.
 
 <ComponentDemo 
 path='/webforj/filechooserdialogfilters?' 
@@ -77,9 +77,9 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '600px'
 />
 
-### Aangepaste filters {#custom-filters}
+### Custom filters {#custom-filters}
 
-U kunt gebruikers toestaan om aangepaste filters toe te voegen door de functie voor aangepaste filters in te schakelen met de `setCustomFilters(boolean customFilters)`-methode. Aangepaste filters worden standaard opgeslagen in de lokale opslag van de browser en hersteld wanneer de dialoog opnieuw wordt weergegeven.
+Je kunt gebruikers in staat stellen om aangepaste filters toe te voegen door de functie voor aangepaste filters in te schakelen met de `setCustomFilters(boolean customFilters)`-methode. Aangepaste filters worden standaard opgeslagen in de lokale opslag van de browser en hersteld wanneer het dialoogvenster opnieuw wordt weergegeven.
 
 ```java showLineNumbers
 FileChooserDialog dialog = new FileChooserDialog("Selecteer een bestand", "/home/user");
@@ -87,21 +87,21 @@ dialog.setCustomFilters(true);
 String result = dialog.show();
 ```
 
-## Internationalisering (i18n) {#internationalization-i18n}
+## Internationalization (i18n) {#internationalization-i18n}
 
-De titels, beschrijvingen, labels en berichten binnen de component zijn volledig aanpasbaar met de `FileChooserI18n`-klasse. Deze flexibiliteit stelt u in staat om de dialooginterface aan te passen aan specifieke lokalisatie-eisen of personalisatievoorkeuren.
+De titels, beschrijvingen, labels en berichten binnen de component zijn volledig aanpasbaar met de `FileChooserI18n`-klasse. Deze flexibiliteit stelt je in staat om de interface van het dialoogvenster af te stemmen op specifieke lokalisatievereisten of personalisatievoorkeuren.
 
 ```java showLineNumbers
-FileChooserDialog dialog = new FileChooserDialog("Selecteer een bestand", "/Users/habof/bbx");
+FileChooserDialog dialog = new FileChooserDialog("Kies een bestand", "/Users/habof/bbx");
 FileChooserI18n i18n = new FileChooserI18n();
-i18n.setChoose("Kies");
+i18n.setChoose("Kiezen");
 i18n.setCancel("Annuleren");
 dialog.setI18n(i18n);
 ```
 
 ## Best practices {#best-practices}
 
-1. **Duidelijke en beknopte aanwijzingen**: Zorg ervoor dat de aanwijzing duidelijk uitlegt wat de gebruiker wordt gevraagd te selecteren.
-2. **Geschikte selectiemodi**: Kies selectiemodi die overeenkomen met de vereiste gebruikersactie om nauwkeurige en relevante selecties te garanderen.
-3. **Logische aanvangspaden**: Stel aanvangspaden in die gebruikers een nuttig startpunt bieden voor hun selectie.
-4. **Beperk directory-navigatie**: Beperk de dialoog tot een specifieke map wanneer dat nodig is om te voorkomen dat gebruikers naar onbevoegde gebieden navigeren.
+1. **Duidelijke en Bondige Berichten**: Zorg ervoor dat het bericht de gebruiker duidelijk uitlegt wat er wordt gevraagd.
+2. **Geschikte Selectiemodi**: Kies selectiemodi die overeenkomen met de benodigde gebruikersactie om nauwkeurige en relevante selecties te waarborgen.
+3. **Logische Initiële Paden**: Stel initiële paden in die gebruikers een nuttig startpunt bieden voor hun selectie.
+4. **Beperk Navigatie in Mappen**: Beperk het dialoogvenster tot een specifieke map wanneer nodig om te voorkomen dat gebruikers naar ongeoorloofde gebieden navigeren.

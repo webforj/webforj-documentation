@@ -59,6 +59,10 @@ The following layout components are designed to handle a wide range of use cases
     <p>A component that provides a pre-built UI for user authentication, typically including fields for username and password along with a submit button.</p>
   </GalleryCard>
 
+  <GalleryCard header="Accordion" href="accordion" image="/img/components/Accordion.png">
+    <p>A vertically stacked set of collapsible panels, each with a clickable header that toggles the visibility of its body content.</p>
+  </GalleryCard>
+
   <GalleryCard header="TabbedPane" href="tabbedpane" image="/img/components/TabbedPane.png">
     <p>A container component that organizes content into multiple tabs, allowing users to switch between different views or sections.</p>
   </GalleryCard>
@@ -197,6 +201,10 @@ This category includes components that facilitate user interactions and visually
     <p>A component that displays important messages or warnings in a noticeable format to capture user attention.</p>
   </GalleryCard>
 
+  <GalleryCard header="Badge" href="badge" image="/img/components/Badge.png">
+    <p>A small label component for displaying counts, statuses, or short metadata, with support for themes, sizes, and icons.</p>
+  </GalleryCard>
+
   <GalleryCard header="DesktopNotification" href="desktop-notification" image="/img/components/DesktopNotification.png">
     <p>A component that leverages the browser’s native Notification API to alert users with custom desktop notifications.</p>
   </GalleryCard>
@@ -251,6 +259,10 @@ This category includes components that facilitate user interactions and visually
   
   <GalleryCard header="Avatar" href="avatar" image="/img/components/Avatar.png">
     <p>A component for displaying user profile pictures or initials, with support for different sizes, shapes, and themes.</p>
+  </GalleryCard>
+  
+  <GalleryCard header="MarkdownViewer" href="markdownviewer" image="/img/components/MarkdownViewer.png">
+    <p>A component for displaying markdown content with progressive character-by-character rendering, ideal for AI chat interfaces and streaming text.</p>
   </GalleryCard>
   
 </GalleryGrid>

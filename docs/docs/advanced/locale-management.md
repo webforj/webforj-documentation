@@ -40,7 +40,7 @@ Components that need to update their content when the locale changes should impl
 ```java title="LocaleObserver.java"
 @FunctionalInterface
 public interface LocaleObserver {
-    void onLocaleChange(LocaleEvent event);
+  void onLocaleChange(LocaleEvent event);
 }
 ```
 
@@ -51,7 +51,7 @@ When the locale changes, `onLocaleChange` is called with the new locale. Inside 
 public class MainLayout extends Composite<AppLayout>
     implements HasTranslation, LocaleObserver {
 
-  private AppLayout self = getBoundComponent();
+  private final AppLayout self = getBoundComponent();
   private AppNavItem inboxItem;
   private AppNavItem outboxItem;
 

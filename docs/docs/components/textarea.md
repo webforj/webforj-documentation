@@ -46,7 +46,7 @@ textArea.removeParagraph(1);
 // Retrieve and print all current paragraphs
 List<String> paragraphs = textArea.getParagraphs();
 for (int i = 0; i < paragraphs.size(); i++) {
-    System.out.println("Paragraph " + i + ": " + paragraphs.get(i));
+  System.out.println("Paragraph " + i + ": " + paragraphs.get(i));
 }
 ```
 

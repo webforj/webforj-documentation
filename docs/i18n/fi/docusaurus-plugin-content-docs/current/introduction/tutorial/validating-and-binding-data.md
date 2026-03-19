@@ -1,106 +1,338 @@
 ---
 title: Validating and Binding Data
-sidebar_position: 5
+sidebar_position: 6
 pagination_next: null
-_i18n_hash: 11d03e09c4c37172713713649c920e9e
+description: Step 5 - Add validation checks and bind data to the UI.
+_i18n_hash: dd158594bca6d722983b03ecf8321f90
 ---
-Data binding on mekanismi, joka yhdistää sovelluksesi käyttöliittymän komponentit suoraan taustalla olevaan datamalliin, mikä mahdollistaa arvojen automaattisen synkronoinnin niiden välillä. Tämä poistanee tarpeen toistuville getter- ja setter-kutsuille, vähentäen kehitysaikaa ja parantaen koodin luotettavuutta.
+Sovelluksesi [Observers and Route Parameters](/docs/introduction/tutorial/observers-and-route-parameters) voi käyttää `FormView`-komponenttia muokataksesi olemassa olevia asiakastietoja. Tämä vaihe hyödyntää [Data binding](/docs/data-binding/overview), joka yhdistää käyttöliittymäkomponentit suoraan datamalliin automaattista arvon synkronointia varten. Tämä vähentää boilerplate-koodia sovelluksessasi ja antaa sinun lisätä validoimisvaatimuksia Spring-entiteetille `Customer`, mikä saa käyttäjäsi antamaan täydellisiä ja tarkkoja tietoja lomakkeita täyttäessään. Tämä vaihe kattaa seuraavat käsitteet:
 
-Validointi tässä kontekstissa varmistaa, että lomakkeeseen syötetty data noudattaa ennalta määrättyjä sääntöjä, kuten olemista tyhjättynä tai tietyn muodon mukaista. Yhdistämällä data bindingin validointiin voit virtaviivaistaa käyttäjäkokemusta samalla kun ylläpidät datan eheyttä ilman laajojen manuaalisten tarkistusten kirjoittamista.
+- [Jakarta validation](https://beanvalidation.org)
+- [`BindingContext`](https://javadoc.io/doc/com.webforj/webforj-data/latest/com/webforj/data/binding/BindingContext.html) -luokan käyttäminen
 
-Lisätietoja data bindingista löytyy [tästä artikkelista.](../../data-binding/overview) Suorittaaksesi sovelluksen:
+Tämän vaiheen lopettaminen luo version [5-validating-and-binding-data](https://github.com/webforj/webforj-tutorial/tree/main/5-validating-and-binding-data).
 
-- Siirry hakemistoon `4-validating-and-binding-data`
-- Suorita komento `mvn jetty:run`
+## Sovelluksen ajaminen {#running-the-app}
 
-<div class="videos-container">
-  <video controls>
-    <source src="https://cdn.webforj.com/webforj-documentation/video/tutorials/validating-and-binding-data.mp4" type="video/mp4"/>
-  </video>
-</div>
+Sovelluksesi kehittämisen aikana voit käyttää [5-validating-and-binding-data](https://github.com/webforj/webforj-tutorial/tree/main/5-validating-and-binding-data) -versiota vertailua varten. Näet sovelluksen toiminnassa:
 
-### Kenttien liittäminen {#binding-the-fields}
+1. Siirry ylimmän tason hakemistoon, joka sisältää `pom.xml`-tiedoston; tämä on `5-validating-and-binding-data`, jos seuraat GitHubissa olevaa versiota.
 
-Data binding -asetukset alkavat `BindingContext`-alkuperäisen mallin `Customer` alustamisesta. `BindingContext` yhdistää mallin ominaisuudet lomakekenttiin, mahdollistaen automaattisen datan synkronoinnin. Tämä asetus tehdään `FormView`-konstruktorissa.
+2. Käytä seuraavaa Maven-komentoa ajaaksesi Spring Boot -sovellusta paikallisesti:
+    ```bash
+    mvn
+    ```
 
-```java title="FormView.java"
-BindingContext<Customer> context;
+Sovelluksen ajaminen avaa automaattisesti uuden selaimen osoitteessa `http://localhost:8080`.
+
+## Validointisääntöjen määrittäminen {#defining-validation-rules}
+
+Muokattavilla tiedoilla varustetun sovelluksen kehittämisen tulisi sisältää validointia. Validointitarkastukset auttavat ylläpitämään merkityksellisiä ja tarkkoja käyttäjän syöttämiä tietoja. Jos niitä ei tarkisteta, se voi johtaa ongelmiin, joten on tärkeää saada kiinni virheistä, joita käyttäjät voivat tehdä lomaketta täyttäessään reaaliajassa.
+
+Koska se, mikä lasketaan voimassa olevaksi, voi vaihdella ominaisuuksien välillä, sinun täytyy määritellä, mitä kunkin ominaisuuden tekeminen voimassa olevaksi tarkoittaa ja tiedottaa käyttäjää, jos jokin ei ole voimassa. Onneksi voit tehdä tämän helposti [Jakarta Validation](https://beanvalidation.org) -kirjaston avulla. Jakarta-validointi sallii sinun lisätä rajoituksia ominaisuuksiin annotaatioiden avulla.
+
+Tämä opas käyttää kahta Jakarta-annotaatiota, `@NotEmpty` ja `@Pattern`. `@NotEmpty` tarkistaa, onko arvo null tai tyhjää merkkijonoa, kun taas `@Pattern` tarkistaa, vastaako ominaisuus asettamaasi säännöllistä lauseketta. Molemmat annotaatiot sallivat sinun lisätä viestin, joka näytetään, kun ominaisuus muuttuu virheelliseksi.
+
+Vaatimuksena on, että sekä etunimeä että sukunimeä on pakollinen ja niiden on sisällettävä vain kirjaimia, kun taas yrityksen nimi on valinnainen ja sallii kirjaimet, numerot ja välilyönnit. Käytä seuraavia annotaatioita `Customer`-entiteetillä:
+
+<ExpandableCode title="Customer.java" language="java" startLine={8} endLine={28}>
+{`@Entity
+  @Table(name = "customers")
+  public class Customer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+  // highlight-next-line
+    @NotEmpty(message = "Asiakkaan etunimi on pakollinen")
+  // highlight-next-line
+    @Pattern(regexp = "[a-zA-Z]*", message = "Virheellisiä merkkejä")
+    private String firstName = "";
+
+  // highlight-next-line
+    @NotEmpty(message = "Asiakkaan sukunimi on pakollinen")
+  // highlight-next-line
+    @Pattern(regexp = "[a-zA-Z]*", message = "Virheellisiä merkkejä")
+    private String lastName = "";
+
+  // highlight-next-line
+    @Pattern(regexp = "[a-zA-Z0-9 ]*", message = "Virheellisiä merkkejä")
+    private String company = "";
+
+    private Country country = Country.UNKNOWN;
+
+    public enum Country {
+      UNKNOWN,
+      GERMANY,
+      ENGLAND,
+      ITALY,
+      USA
+    }
+
+    public Customer(String firstName, String lastName, String company, Country country) {
+      setFirstName(firstName);
+      setLastName(lastName);
+      setCompany(company);
+      setCountry(country);
+    }
+
+    public Customer(String firstName, String lastName, String company) {
+      this(firstName, lastName, company, Country.UNKNOWN);
+    }
+
+    public Customer(String firstName, String lastName) {
+      this(firstName, lastName, "");
+    }
+
+    public Customer(String firstName) {
+      this(firstName, "");
+    }
+
+    public Customer() {
+    }
+
+    public void setFirstName(String newName) {
+      firstName = newName;
+    }
+
+    public String getFirstName() {
+      return firstName;
+    }
+
+    public void setLastName(String newName) {
+      lastName = newName;
+    }
+
+    public String getLastName() {
+      return lastName;
+    }
+
+    public void setCompany(String newCompany) {
+      company = newCompany;
+    }
+
+    public String getCompany() {
+      return company;
+    }
+
+    public void setCountry(Country newCountry) {
+      country = newCountry;
+    }
+
+    public Country getCountry() {
+      return country;
+    }
+
+    public Long getId() {
+      return id;
+    }
+
+  }
+`}
+</ExpandableCode>
+
+Katso [Jakarta Bean Validation](https://jakarta.ee/specifications/bean-validation/3.0/apidocs/jakarta/validation/constraints/package-summary.html) rajoitusten täyttämiseksi tai lue lisää [webforJ Jakarta Validation -artikkelista](/docs/data-binding/validation/jakarta-validation).
+
+## Kenttien sitominen {#binding-the-fields}
+
+Käytä `Customer`-luokan validoimisvaatimuksia käyttöliittymässä `FormView`-komponentissa luomalla `BindingContext` datan sitomista varten. Ennen datan sitomista jokainen kenttä `FormView`-komponentissa vaati tapahtumakuuntelijan synkronoimaan sen Spring-entiteettiin `Customer` manuaalisesti. `BindingContext`-luokan luominen `FormView`-komponentissa sitoo ja synkronoi `Customer`-datan automaattisesti käyttöliittymäkomponenttien kanssa.
+
+### `BindingContext`-instanssin luominen {#creating-a-bindingcontext}
+
+`BindingContext`-instanssi tarvitsee Spring-beanin, jonka kanssa sitomiset synkronoidaan. `FormView`-komponentissa julista `BindingContext` käyttäen `Customer`-entiteettiä:
+
+```java title="FormView.java" {4}
+public class FormView extends Composite<Div> implements WillEnterObserver {
+  private final CustomerService customerService;
+
+  private BindingContext<Customer> context;
+
+  Customer customer = new Customer();
+```
+
+Sitten, sitoaaksesi käyttöliittymäkomponentit automaattisesti bean-ominaisuuksiin niiden nimien perusteella, käytä `BindingContext.of()` seuraavilla parametreilla:
+
+- **`this`** : Aiemmin julistit `context`-muuttujan `BindingContext`:ksi. Ensimmäinen parametri määrittää, mikä objekti sisältää sidottavat komponentit.
+- **`Customer.class`** : Toinen parametri on luokan bean, jota käytetään sitomiseen.
+- **`true`** : Kolmas parametri mahdollistaa Jakarta-validoinnin, mikä sallii kontekstin käyttää `Customer`:lle asettamiasi validoimisvaatimuksia. Tämä muuttaa virheellisten komponenttien tyyliä ja näyttää asetetut viestit.
+
+Yhteenvetona se näyttää seuraavalta koodiriviltä:
+
+```java
 context = BindingContext.of(this, Customer.class, true);
 ```
 
-`BindingContext.of(this, Customer.class, true)` alustaa liittämiskontekstin `Customer`-luokalle. Kolmas parametri, `true`, mahdollistaa [jakarta validoinnin](https://beanvalidation.org/).
+### Lomakkeen responsiivisuuden tekeminen {#making-the-form-responsive}
 
-:::info
-Tämä toteutus käyttää automaattista liittämistä, kuten on kuvattu [Data Binding Artikkelissa](../../data-binding/automatic-binding). Tämä toimii, jos datamallin `Customer` kentät on nimetty samoin kuin vastaavat kentät `FormView`:ssä.
+Datan sitomisen avulla sovelluksesi suorittaa nyt automaattisesti validoimisvaatimuksia. Lisäämällä tapahtumakuuntelijan tarkastuksiin voit estää käyttäjiä lähettämästä virheellistä lomaketta. Lisää seuraava koodi, jotta lähetyspainike on aktiivinen vain, kun lomake on voimassa:
 
-Jos kentät eivät ole nimetty samoin, voit lisätä `UseProperty`-annotaation lomakkeeseen kentän päälle, jonka haluat liittää, jotta tiedetään, mihin datakenttiin viitataan.
-:::
+```java {2}
+context = BindingContext.of(this, Customer.class, true);
+context.onValidate(e -> submit.setEnabled(e.isValid()));
+```
 
-### Data binding `onDidEnter()`-menetelmällä {#data-binding-with-ondidenter}
+### Tapahtumakuuntelijoiden poistaminen komponenteilta {#removing-event-listeners-for-components}
 
-`onDidEnter`-metodi hyödyntää data binding -asetuksia helpottaakseen lomakekenttien täyttämisprosessia. Sen sijaan, että arvoja asetettaisiin manuaalisesti jokaiselle kentälle, data synkronoi nyt automaattisesti `BindingContextin` kanssa.
+Jokainen käyttöliittymän muutos synkronoituu nyt automaattisesti `BindingContext`:in kanssa. Tämä tarkoittaa, että voit nyt poistaa tapahtumakuuntelijat jokaiselta kentältä:
 
-```java {7}
-@Override
-  public void onDidEnter(DidEnterEvent event, ParametersBag parameters) {
-    parameters.get("id").ifPresent(id -> {
-      customer = Service.getCurrent().getCustomerByKey(UUID.fromString(id));
-      customerId = id;
-    });
+**Ennen**
+```java title="FormView.java"
+// Ilman datan sitomista
+TextField firstName = new TextField("Etunimi", e -> customer.setFirstName(e.getValue()));
+TextField lastName = new TextField("Sukunimi", e -> customer.setLastName(e.getValue()));
+TextField company = new TextField("Yritys", e -> customer.setCompany(e.getValue()));
+ChoiceBox country = new ChoiceBox("Maa", e -> customer.setCountry(Country.valueOf(e.getSelectedItem().getText())));
+```
+
+**Jälkeen**
+```java title="FormView.java"
+// Datan sitomisen kanssa
+TextField firstName = new TextField("Etunimi");
+TextField lastName = new TextField("Sukunimi");
+TextField company = new TextField("Yritys");
+ChoiceBox country = new ChoiceBox("Maa");
+```
+
+### Sitominen ominaisuuden nimien mukaan {#binding-by-property-names}
+
+Koska jokaisen komponentin nimi vastaa datamallia, webforJ sovelsi [Automaattista sitomista](/docs/data-binding/automatic-binding). Jos nimet eivät vastanneet, voit käyttää `@UseProperty` -annotaatiota karttaaksesi ne.
+
+```java
+@UseProperty("firstName")
+TextField firstNameField = new TextField("Etunimi");
+```
+
+### Datan lukeminen `fillForm()`-metodissa {#reading-data-in-the-fillForm()-method}
+
+Aiemmin `fillForm()`-metodissa aloitit jokaisen komponentin arvon asettamisen manuaalisesti noutamalla tiedot `Customer`-kopiosta. Nyt, koska käytät `BindingContext`:ia, voit käyttää `read()`-metodia. Tämä metodi täyttää jokaisen sidotun komponentin tietyn ominaisuuden avulla datasta `Customer`-kopiosta.
+
+`fillForm()`-metodissa korvaa `setValue()`-metodit `read()`-metodilla:
+
+```java title="FormView.java" {6}
+public void fillForm(Long customerId) {
+  customer = customerService.getCustomerByKey(customerId);
+  
+  // Poistettu jokainen setValue() -metodi käyttöliittymäkomponenteilta
+    
     context.read(customer);
   }
 ```
 
-`context.read`-metodi webforJ:n data binding -järjestelmässä synkronoi käyttöliittymäkomponentin kentät datamallin arvojen kanssa. Sitä käytetään tässä tapauksessa täyttämään lomakekenttiä olemassa olevasta mallista, varmistaen, että käyttöliittymä heijastaa datan nykyistä tilaa.
+### Validoinnin lisääminen `submitCustomer()`-metodiin {#adding-validation-to-submitcustomer}
 
-## Datan validointi {#validating-data}
+Viimeinen muutos `FormView`:ssa tälle vaiheelle on lisätä turvatoimi `submitCustomer()`-metodiin. Ennen muutosten sitomista H2-tietokantaan sovellus suorittaa lopullisen validoinnin sidotun kontekstin tulosten perusteella `write()`-metodilla.
 
-Validointi varmistaa, että lomakkeeseen syötetty data noudattaa määriteltyjä sääntöjä, parantaen datan laatua ja estäen virheelliset lähetykset. Data bindingin myötä validointia ei enää tarvitse toteuttaa manuaalisesti, vaan se voidaan yksinkertaisesti konfiguroida, jolloin käyttäjän syötteistä saadaan reaaliaikaista palautetta.
+`write()`-metodi päivittää beanin ominaisuudet käyttäen `BindingContext`:issa sidottuja käyttöliittymäkomponentteja ja palauttaa `ValidationResult`-olion.
 
-### Validointisääntöjen määrittäminen {#defining-validation-rules}
+Käytä `write()`-metodia kirjoittaaksesi `Customer`:in kopioon sidottujen komponenttien avulla `FormView`:ssa. Jos palautettu `ValidationResult` on voimassa, päivitä H2-tietokanta kirjoitetuilla tiedoilla.
 
-Käyttämällä [Jakartaa](https://beanvalidation.org) ja säännöllisiä lausekkeita voit pakottaa lukuisia sääntöjä kentälle. Usein käytettyjä esimerkkejä ovat sen varmistaminen, että kenttä ei ole tyhjänä tai null, tai noudattaa tiettyä kaavaa.
-Annotaatioiden avulla asiakaskin luokassa voit antaa jakarta validointiparametreja kentälle.
-
-:::info
-Lisätietoja validoinnin asetuksesta on saatavilla [täältä](../../data-binding/validation/jakarta-validation.md#installation).
-:::
-
-```java
-  @NotEmpty(message = "Nimi ei voi olla tyhjö")
-  @Pattern(regexp = "[a-zA-Z]*", message = "Virheelliset merkit")
-  private String firstName = "";
-```
-
-`onValidate`-metodi lisätään ohjaamaan `Submit`-painikkeen tilaa lomakekenttien voimassaolon perusteella. Tämä varmistaa, että vain voimassa oleva data voidaan lähettää.
-
-```java title="FormView.java"
-context.onValidate(e -> submit.setEnabled(e.isValid()));
-```
-
-`e.isValid()` palauttaa true, jos kaikki kentät ovat voimassa, ja false, jos eivät. Tämä tarkoittaa, että `Submit`-painike on käytössä niin kauan kuin kaikki kentät ovat voimassa. Muussa tapauksessa se pysyy pois päältä, estäen lähetyksen ennen korjausten tekemistä.
-
-### Kannan lisääminen ja muokkaaminen validoinnin kanssa {#adding-and-editing-entries-with-validation}
-
-`submitCustomer()`-metodi validoi nyt dataa käyttämällä `BindingContext`-kontekstia ennen lisäys- tai muokkaustoimintoja. Tämä lähestymistapa poistaa tarpeen manuaalisille validointitarkistuksille, hyödyntäen kontekstin sisäänrakennettuja mekanismeja varmistaakseen, että vain voimassa oleva data käsitellään.
-
-- **Lisäystila**: Jos `id`:tä ei ole annettu, lomake on lisäämistilassa. Vahvistettu data kirjoitetaan `Customer`-malliin ja lisätään varastoon `Service.getCurrent().addCustomer(customer)`-kutsun kautta.
-- **Muokkaustila**: Jos `id` on läsnä, metodi noutaa vastaavat asiakastiedot, päivittää ne vahvistetuilla syötteillä ja tallentaa muutokset varastoon.
-
-Kutsumalla `context.write(customer)` palautuu `ValidationResult`:in instanssi. Tämä luokka ilmoittaa, oliko validointi onnistunutta vai ei, ja tallentaa kaikki tähän tulokseen liittyvät viestit.
-
-Tämä koodi varmistaa, että kaikki muutokset validoidaan ja sovelletaan automaattisesti malliin ennen uuden lisäämistä tai olemassa olevan `Customer`-muokkaamista.
-
-```java title="FormView.java"
+```java title="FormView.java" {2-3}
 private void submitCustomer() {
   ValidationResult results = context.write(customer);
   if (results.isValid()) {
-    if (customerId.isEmpty()) {
-      Service.getCurrent().addCustomer(customer);
+    if (customerService.doesCustomerExist(customerId)) {
+      customerService.updateCustomer(customer);
+    } else {
+      customerService.createCustomer(customer);
     }
-    Router.getCurrent().navigate(DemoView.class);
+    navigateToMain();
   }
 }
 ```
 
-Suorittamalla tämän vaiheen sovellus tukee nyt data bindingia ja validointia, varmistaen, että lomake syötteet synkronoidaan mallin kanssa ja noudattavat ennalta määrättyjä sääntöjä.
+### Valmis `FormView`
+
+Näiden muutosten myötä `FormView` näyttää tältä. Sovelluksesi tukee nyt datan sitomista ja validoimista käyttämällä Spring Bootia ja webforJ:ta. Lomakkeen syötteet synkronoidaan automaattisesti mallin kanssa ja tarkastetaan validointisääntöjä vastaan.
+
+<ExpandableCode title="FormView.java" language="java" startLine={1} endLine={15}>
+{`@Route("customer/:id?<[0-9]+>")
+  @FrameTitle("Asiakastietolomake")
+  public class FormView extends Composite<Div> implements WillEnterObserver {
+    private final CustomerService customerService;
+    private BindingContext<Customer> context;
+    private Customer customer = new Customer();
+    private Long customerId = 0L;
+    private Div self = getBoundComponent();
+    private TextField firstName = new TextField("Etunimi");
+    private TextField lastName = new TextField("Sukunimi");
+    private TextField company = new TextField("Yritys");
+    private ChoiceBox country = new ChoiceBox("Maa");
+    private Button submit = new Button("Lähetä", ButtonTheme.PRIMARY, e -> submitCustomer());
+    private Button cancel = new Button("Peruuta", ButtonTheme.OUTLINED_PRIMARY, e -> navigateToMain());
+    private ColumnsLayout layout = new ColumnsLayout(
+        firstName, lastName,
+        company, country,
+        submit, cancel);
+
+    public FormView(CustomerService customerService) {
+      this.customerService = customerService;
+      context = BindingContext.of(this, Customer.class, true);
+      context.onValidate(e -> submit.setEnabled(e.isValid()));
+      fillCountries();
+      setColumnsLayout();
+      self.setMaxWidth(600)
+          .addClassName("card")
+          .add(layout);
+      submit.setStyle("margin-top", "var(--dwc-space-l)");
+      cancel.setStyle("margin-top", "var(--dwc-space-l)");
+    }
+
+    private void setColumnsLayout() {
+      List<Breakpoint> breakpoints = List.of(
+          new Breakpoint(600, 2));
+      layout.setSpacing("var(--dwc-space-l)")
+          .setBreakpoints(breakpoints);
+    }
+
+    private void fillCountries() {
+      ArrayList<ListItem> listCountries = new ArrayList<>();
+      for (Country countryItem : Customer.Country.values()) {
+        listCountries.add(new ListItem(countryItem, countryItem.toString()));
+      }
+      country.insert(listCountries);
+      country.selectIndex(0);
+    }
+
+    private void submitCustomer() {
+      ValidationResult results = context.write(customer);
+      if (results.isValid()) {
+        if (customerService.doesCustomerExist(customerId)) {
+          customerService.updateCustomer(customer);
+        } else {
+          customerService.createCustomer(customer);
+        }
+        navigateToMain();
+      }
+    }
+
+    private void navigateToMain() {
+      Router.getCurrent().navigate(MainView.class);
+    }
+
+    @Override
+    public void onWillEnter(WillEnterEvent event, ParametersBag parameters) {
+      parameters.getInt("id").ifPresentOrElse(id -> {
+        customerId = Long.valueOf(id);
+        if (customerService.doesCustomerExist(customerId)) {
+          event.accept();
+          fillForm(customerId);
+        } else {
+          event.reject();
+          navigateToMain();
+        }
+
+      }, () -> event.accept());
+    }
+
+    public void fillForm(Long customerId) {
+      customer = customerService.getCustomerByKey(customerId);
+      context.read(customer);
+    }
+  }
+`}
+</ExpandableCode>
+
+:::info Seuraavat askeleet
+Etsitkö lisää tapoja parantaa sovellustasi tästä oppaasta? Voit kokeilla käyttää [`AppLayout`](/docs/components/app-layout) -komponenttia kehikkona asiakastietotaulukkosi lisäämiseksi ja uusien ominaisuuksien lisäämiseksi.
+:::

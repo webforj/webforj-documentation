@@ -40,10 +40,10 @@ By default, webforJ stores uploaded files in a temporary folder which is regular
 ```java showLineNumbers
 UploadedFile uploadedFile = OptionDialog.showFileUploadDialog("Select a file to upload");
 try {
-    File file = uploadedFile.move("my/full/path/" + uploadedFile.getSanitizedClientName());
-    // ... do something with the file
+  File file = uploadedFile.move("my/full/path/" + uploadedFile.getSanitizedClientName());
+  // ... do something with the file
 } catch (IOException e) {
-    // handle the exception
+  // handle the exception
 }
 ```
 :::tip Sanitized Client Name
@@ -56,8 +56,8 @@ The `FileUploadDialog` allows you to set filters to limit the types of files tha
 
 ```java showLineNumbers
 FileUploadDialog dialog = new FileUploadDialog(
-    "Upload a file", 
-    Arrays.asList(new FileChooserFilter("Text Files", "*.txt")));
+  "Upload a file", 
+  Arrays.asList(new FileChooserFilter("Text Files", "*.txt")));
 UploadedFile result = dialog.show();
 ```
 
