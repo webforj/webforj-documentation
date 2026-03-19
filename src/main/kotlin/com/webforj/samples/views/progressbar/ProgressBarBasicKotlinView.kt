@@ -1,16 +1,16 @@
 package com.webforj.samples.views.progressbar
 
-import com.basis.bbj.processor.instruction.ba
 import com.webforj.Interval
 import com.webforj.component.Composite
 import com.webforj.component.button.Button
 import com.webforj.component.html.elements.Div
 import com.webforj.kotlin.dsl.component.button.button
-import com.webforj.kotlin.dsl.component.button.prefix
 import com.webforj.kotlin.dsl.component.icons.tablerIcon
 import com.webforj.kotlin.dsl.component.layout.flexlayout.flexLayout
 import com.webforj.kotlin.dsl.component.layout.flexlayout.vertical
 import com.webforj.kotlin.dsl.component.progressbar.progressBar
+import com.webforj.kotlin.extension.prefixSlot
+import com.webforj.kotlin.extension.px
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
 import com.webforj.router.annotation.FrameTitle
@@ -19,26 +19,27 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Progress Bar Basics")
 class ProgressBarBasicKotlinView: Composite<Div>() {
+  private val self = boundComponent
   private lateinit var start: Button
   private lateinit var pause: Button
   private lateinit var reset: Button
 
   init {
-      boundComponent.apply {
+      self.apply {
         flexLayout {
           vertical()
-          maxWidth = "320px"
+          maxWidth = 320.px
           styles["margin"] = "0 auto"
-          styles["padding"] = "20px"
+          styles["padding"] = 20.px
           flexLayout {
             start = button("Start") {
-              prefix { tablerIcon("player-play") }
+              prefixSlot { tablerIcon("player-play") }
             }
             pause = button("Pause") {
-              prefix { tablerIcon("player-pause") }
+              prefixSlot { tablerIcon("player-pause") }
             }
             reset = button("Reset") {
-              prefix { tablerIcon("refresh") }
+              prefixSlot { tablerIcon("refresh") }
             }
           }
           val bar = progressBar(text = "Progress {{x}}% - value: {{value}}") {

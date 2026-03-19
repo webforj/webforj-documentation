@@ -5,15 +5,15 @@ import com.webforj.component.Composite
 import com.webforj.component.Theme
 import com.webforj.component.button.Button
 import com.webforj.component.html.elements.Div
-import com.webforj.component.progressbar.ProgressBar
 import com.webforj.component.progressbar.ProgressBar.Orientation
 import com.webforj.kotlin.dsl.component.button.button
-import com.webforj.kotlin.dsl.component.button.prefix
 import com.webforj.kotlin.dsl.component.icons.tablerIcon
 import com.webforj.kotlin.dsl.component.layout.flexlayout.flexLayout
 import com.webforj.kotlin.dsl.component.layout.flexlayout.horizontal
 import com.webforj.kotlin.dsl.component.layout.flexlayout.vertical
 import com.webforj.kotlin.dsl.component.progressbar.progressBar
+import com.webforj.kotlin.extension.prefixSlot
+import com.webforj.kotlin.extension.px
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
 import com.webforj.router.annotation.FrameTitle
@@ -22,32 +22,33 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Progress Bar Orientation")
 class ProgressBarOrientationKotlinView: Composite<Div>() {
+  private val self = boundComponent
   private lateinit var start: Button
   private lateinit var pause: Button
   private lateinit var reset: Button
 
   init {
-      boundComponent.apply {
+      self.apply {
         flexLayout {
           horizontal()
-          styles["max-width"] = "320px"
+          styles["max-width"] = 320.px
           styles["margin"] = "0 auto"
-          styles["padding"] = "20px"
+          styles["padding"] = 20.px
           flexLayout {
             vertical()
             start = button("Start") {
-              prefix { tablerIcon("player-play") }
+              prefixSlot { tablerIcon("player-play") }
             }
             pause = button("Pause") {
-              prefix { tablerIcon("player-pause") }
+              prefixSlot { tablerIcon("player-pause") }
             }
             reset = button("Reset") {
-              prefix { tablerIcon("refresh") }
+              prefixSlot { tablerIcon("refresh") }
             }
           }
           val bar = progressBar(15, text = "Reactor Heating Up: {{x}}%") {
-            styles["--dwc-progressbar-width"] = "160px"
-            styles["--dwc-progressbar-height"] = "125px"
+            styles["--dwc-progressbar-width"] = 160.px
+            styles["--dwc-progressbar-height"] = 125.px
             theme = Theme.SUCCESS
             value = 25
             orientation = Orientation.VERTICAL
