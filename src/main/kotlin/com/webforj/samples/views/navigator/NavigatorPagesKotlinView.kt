@@ -6,6 +6,7 @@ import com.webforj.component.navigator.Navigator
 import com.webforj.component.navigator.Navigator.Layout
 import com.webforj.kotlin.dsl.component.html.elements.paragraph
 import com.webforj.kotlin.dsl.component.navigator.navigator
+import com.webforj.kotlin.extension.px
 import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
 import com.webforj.router.annotation.FrameTitle
@@ -14,10 +15,11 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Navigator Pagination")
 class NavigatorPagesKotlinView: Composite<Div>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
-        styles["padding"] = "20px"
+      self.apply {
+        styles["padding"] = 20.px
         val text = paragraph("Navigate with the buttons below")
         navigator(totalItems = 100, layout = Layout.PAGES) {
           paginator.max = 5
