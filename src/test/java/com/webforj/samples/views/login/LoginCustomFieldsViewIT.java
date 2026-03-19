@@ -2,73 +2,85 @@ package com.webforj.samples.views.login;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
+import com.webforj.samples.pages.SupportedLanguage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.webforj.samples.pages.login.LoginCustomFieldsPage;
 import com.webforj.samples.views.BaseTest;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class LoginCustomFieldsViewIT extends BaseTest {
 
-    private LoginCustomFieldsPage login;
+  private LoginCustomFieldsPage login;
 
-    @BeforeEach
-    public void setupLoginCustomFields() {
-        navigateToRoute(LoginCustomFieldsPage.getRoute());
-        login = new LoginCustomFieldsPage(page);
-    }
+  public void setupLoginCustomFields(SupportedLanguage language) {
+    navigateToRoute(LoginCustomFieldsPage.getRoute(language));
+    login = new LoginCustomFieldsPage(page);
+  }
 
-    @Test
-    public void testSuccessfulLoginWithValidCredentials() {
-        login.getCustomderID().fill("Tesla");
-        login.getUsername().fill("admin");
-        login.getPassword().fill("admin");
-        login.getSignInButton().click();
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testSuccessfulLoginWithValidCredentials(SupportedLanguage language) {
+    setupLoginCustomFields(language);
+    login.getCustomderID().fill("Tesla");
+    login.getUsername().fill("admin");
+    login.getPassword().fill("admin");
+    login.getSignInButton().click();
 
-        assertThat(login.getLogoutButton()).isVisible();
-        login.getLogoutButton().click();
+    assertThat(login.getLogoutButton()).isVisible();
+    login.getLogoutButton().click();
 
-        assertThat(login.getUsername()).isVisible();
-    }
+    assertThat(login.getUsername()).isVisible();
+  }
 
-    @Test
-    public void testInvalidCustomerIDIgnored() {
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testInvalidCustomerIDIgnored(SupportedLanguage language) {
+    setupLoginCustomFields(language);
 
-        login.getCustomderID().fill("Toyota");
-        login.getUsername().fill("admin");
-        login.getPassword().fill("admin");
-        login.getSignInButton().click();
+    login.getCustomderID().fill("Toyota");
+    login.getUsername().fill("admin");
+    login.getPassword().fill("admin");
+    login.getSignInButton().click();
 
-        assertThat(login.getLogoutButton()).not().isVisible();
-    }
+    assertThat(login.getLogoutButton()).not().isVisible();
+  }
 
-    @Test
-    public void testValidCustomerIDAndBlankInputsIgnored() {
-        login.getCustomderID().fill("Tesla");
-        login.getUsername().fill(" ");
-        login.getPassword().fill(" ");
-        login.getSignInButton().click();
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testValidCustomerIDAndBlankInputsIgnored(SupportedLanguage language) {
+    setupLoginCustomFields(language);
+    login.getCustomderID().fill("Tesla");
+    login.getUsername().fill(" ");
+    login.getPassword().fill(" ");
+    login.getSignInButton().click();
 
-        assertThat(login.getLogoutButton()).not().isVisible();
-    }
+    assertThat(login.getLogoutButton()).not().isVisible();
+  }
 
-    @Test
-    public void testValidCustomerIDAndInvalidInputsIgnored() {
-        login.getCustomderID().fill("Tesla");
-        login.getUsername().fill("user1");
-        login.getPassword().fill("wrongpass");
-        login.getSignInButton().click();
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testValidCustomerIDAndInvalidInputsIgnored(SupportedLanguage language) {
+    setupLoginCustomFields(language);
+    login.getCustomderID().fill("Tesla");
+    login.getUsername().fill("user1");
+    login.getPassword().fill("wrongpass");
+    login.getSignInButton().click();
 
-        assertThat(login.getLogoutButton()).not().isVisible();
-    }
+    assertThat(login.getLogoutButton()).not().isVisible();
+  }
 
-    @Test
-    public void testBlankCustomerIDAndValidInputsIgnored() {
-        login.getCustomderID().fill(" ");
-        login.getUsername().fill("admin");
-        login.getPassword().fill("admin");
-        login.getSignInButton().click();
+  @ParameterizedTest
+  @MethodSource("provideRoutes")
+  public void testBlankCustomerIDAndValidInputsIgnored(SupportedLanguage language) {
+    setupLoginCustomFields(language);
+    login.getCustomderID().fill(" ");
+    login.getUsername().fill("admin");
+    login.getPassword().fill("admin");
+    login.getSignInButton().click();
 
-        assertThat(login.getLogoutButton()).not().isVisible();
-    }
+    assertThat(login.getLogoutButton()).not().isVisible();
+  }
 }
