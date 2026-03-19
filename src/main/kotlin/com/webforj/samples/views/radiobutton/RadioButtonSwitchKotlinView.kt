@@ -6,6 +6,8 @@ import com.webforj.component.layout.flexlayout.FlexDirection
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.optioninput.radioButton
 import com.webforj.kotlin.dsl.component.optioninput.switch
+import com.webforj.kotlin.extension.em
+import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
@@ -16,8 +18,8 @@ class RadioButtonSwitchKotlinView: Composite<FlexLayout>() {
   init {
       boundComponent.apply {
         direction = FlexDirection.ROW
-        spacing = "1em"
-        margin = "20px"
+        spacing = 1.em
+        margin = 20.px
         radioButton("Normal RadioButton") {
           expanse = Expanse.XLARGE
         }
