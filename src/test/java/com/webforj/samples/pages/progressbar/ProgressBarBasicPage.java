@@ -3,6 +3,7 @@ package com.webforj.samples.pages.progressbar;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class ProgressBarBasicPage {
 
@@ -14,15 +15,15 @@ public class ProgressBarBasicPage {
     private final Locator resetButton;
 
     public ProgressBarBasicPage(Page page) {
-        
+
         this.progressBar = page.locator("dwc-progressbar");
         this.startButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Start"));
         this.pauseButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Pause"));
         this.resetButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Reset"));
     }
 
-    public static String getRoute() {
-        return ROUTE;
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
     }
 
     public Locator getProgressBar() {
