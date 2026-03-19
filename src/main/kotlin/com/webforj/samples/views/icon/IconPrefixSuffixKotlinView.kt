@@ -7,7 +7,9 @@ import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.icons.tablerIcon
 import com.webforj.kotlin.extension.prefix
+import com.webforj.kotlin.extension.prefixSlot
 import com.webforj.kotlin.extension.suffix
+import com.webforj.kotlin.extension.suffixSlot
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
@@ -22,10 +24,10 @@ class IconPrefixSuffixKotlinView: Composite<FlexLayout>() {
         margin = "var(--dwc-space-l)"
         spacing = "var(--dwc-space-l)"
         button("Next", ButtonTheme.PRIMARY) {
-          suffix { tablerIcon("arrow-narrow-right") }
+          suffixSlot { tablerIcon("arrow-narrow-right") }
         }
         button("Filter") {
-          prefix { tablerIcon("filter") }
+          prefixSlot { tablerIcon("filter") }
         }
       }
   }
