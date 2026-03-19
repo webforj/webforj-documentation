@@ -13,9 +13,10 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Icon Variations")
 class IconVariationsKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
+      self.apply {
         direction = FlexDirection.ROW
         margin = "var(--dwc-space-l)"
         spacing = "var(--dwc-space-m)"
