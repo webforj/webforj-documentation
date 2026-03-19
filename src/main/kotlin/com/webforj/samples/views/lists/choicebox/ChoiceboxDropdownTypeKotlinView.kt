@@ -4,6 +4,8 @@ import com.webforj.annotation.StyleSheet
 import com.webforj.component.Composite
 import com.webforj.component.html.elements.Div
 import com.webforj.kotlin.dsl.component.list.choiceBox
+import com.webforj.kotlin.extension.classNames
+import com.webforj.kotlin.extension.plus
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
@@ -11,10 +13,11 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Choicebox Dropdown Type")
 class ChoiceboxDropdownTypeKotlinView: Composite<Div>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
-        addClassName("frame")
+      self.apply {
+        classNames + "frame"
         choiceBox("Department") {
           dropdownType = "demo-dropdown-type"
           val categories = arrayOf(

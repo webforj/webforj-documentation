@@ -7,19 +7,21 @@ import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.field.numberField
 import com.webforj.kotlin.dsl.component.list.choiceBox
+import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
 @Route
 @FrameTitle("Choicebox Max Rows")
 class ChoiceboxMaxRowKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
+      self.apply {
         direction = FlexDirection.COLUMN
         margin = "20px 0 0 20px"
-        spacing = "20px"
-        setWidth(200f)
+        spacing = 20.px
+        width = 200.px
         val choiceBox = choiceBox("States") {
           val states = arrayOf("Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware",
             "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana",
