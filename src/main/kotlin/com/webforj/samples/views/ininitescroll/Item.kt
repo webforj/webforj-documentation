@@ -10,31 +10,40 @@ import com.webforj.kotlin.dsl.component.icons.featherIcon
 import com.webforj.kotlin.dsl.component.layout.flexlayout.flexLayout
 import com.webforj.kotlin.dsl.component.layout.flexlayout.horizontal
 import com.webforj.kotlin.dsl.component.layout.flexlayout.vertical
+import com.webforj.kotlin.extension.classNames
+import com.webforj.kotlin.extension.minSize
+import com.webforj.kotlin.extension.plus
+import com.webforj.kotlin.extension.px
 import kotlin.random.Random
 
 class Item: Composite<Div>() {
-  val random = Random.Default
-  val names = arrayOf(
+  private val self = boundComponent
+  private val random = Random.Default
+  private val names = arrayOf(
     "John", "Jane", "Alice", "Bob", "Charlie", "Diana",
     "Ethan", "Fiona", "George", "Hannah", "Ian", "Jill"
   );
 
   init {
-      boundComponent.apply {
+      self.apply {
         flexLayout {
           horizontal()
           justifyContent = FlexJustifyContent.BETWEEN
           alignment = FlexAlignment.CENTER
           flexLayout {
             vertical()
-            div(names.random()).addClassName("item-name")
+            div(names.random()) {
+              classNames + "item-name"
+            }
             div {
-              addClassName("item-excerpt")
+              classNames + "item-excerpt"
               text = ("Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
                 + "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
             }
           }
-          featherIcon(FeatherIcon.ARROW_RIGHT).setMinSize("24px", "24px")
+          featherIcon(FeatherIcon.ARROW_RIGHT) {
+            minSize = 24.px to 24.px
+          }
         }
       }
   }
