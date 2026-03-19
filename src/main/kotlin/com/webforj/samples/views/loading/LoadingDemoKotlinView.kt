@@ -12,6 +12,8 @@ import com.webforj.kotlin.dsl.component.html.elements.div
 import com.webforj.kotlin.dsl.component.html.elements.paragraph
 import com.webforj.kotlin.dsl.component.icons.featherIcon
 import com.webforj.kotlin.dsl.component.loading.loading
+import com.webforj.kotlin.extension.classNames
+import com.webforj.kotlin.extension.plus
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
@@ -19,26 +21,31 @@ import com.webforj.router.annotation.Route
 @FrameTitle("Loading Basics")
 @StyleSheet("ws://css/loadingstyles/loadingdemo.css")
 class LoadingDemoKotlinView: Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-    boundComponent.apply {
+    self.apply {
       direction = FlexDirection.ROW
       margin = "var(--dwc-space-l)"
       div {
-        addClassName("card")
+        classNames + "card"
         paragraph("User Guide")
-        featherIcon(FeatherIcon.BOOK).addClassName("icon")
+        featherIcon(FeatherIcon.BOOK) {
+          classNames + "icon"
+        }
         button("Buy", ButtonTheme.PRIMARY)
       }
       div {
-        addClassName("card")
+        classNames + "card"
         paragraph("Video Lessons")
-        featherIcon(FeatherIcon.YOUTUBE).addClassName("icon")
+        featherIcon(FeatherIcon.YOUTUBE) {
+          classNames + "icon"
+        }
         button("Buy", ButtonTheme.PRIMARY)
         loading("Loading... Please wait.") {
-          spinner.theme = Theme.PRIMARY
-          addClassName("loading-overlay")
+          classNames + "loading-overlay"
           open()
+          spinner.theme = Theme.PRIMARY
         }
       }
     }

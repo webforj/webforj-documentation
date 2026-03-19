@@ -3,13 +3,13 @@ package com.webforj.samples.views.loading
 import com.webforj.Interval
 import com.webforj.annotation.StyleSheet
 import com.webforj.component.Composite
-import com.webforj.component.Expanse
 import com.webforj.component.Theme
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.component.spinner.SpinnerExpanse
 import com.webforj.kotlin.dsl.component.html.elements.div
 import com.webforj.kotlin.dsl.component.loading.loading
-import com.webforj.kotlin.dsl.component.spinner.spinner
+import com.webforj.kotlin.extension.classNames
+import com.webforj.kotlin.extension.plus
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 
@@ -17,11 +17,12 @@ import com.webforj.router.annotation.Route
 @FrameTitle("Loading Spinners")
 @StyleSheet("ws://css/loadingstyles/loadingspinnerdemo.css")
 class LoadingSpinnerDemoKotlinView : Composite<FlexLayout>() {
+  private val self = boundComponent
 
   init {
-    boundComponent.apply {
+    self.apply {
       div {
-        addClassName("card")
+        classNames + "card"
         loading("Displaying spinner with all themes...") {
           isBackdropVisible = false
           var state = 1
