@@ -11,9 +11,10 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Login Submission")
 class LoginSubmissionKotlinView: Composite<Div>() {
+  private val self = boundComponent
 
   init {
-    boundComponent.apply {
+    self.apply {
       login {
         open()
         onSubmit {

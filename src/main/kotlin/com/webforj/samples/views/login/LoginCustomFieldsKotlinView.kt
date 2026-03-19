@@ -19,10 +19,11 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Login Custom Fields")
 class LoginCustomFieldsKotlinView: Composite<Div>() {
+  private val self = boundComponent
   private lateinit var customerId: TextField
 
   init {
-    boundComponent.apply {
+    self.apply {
       login {
         addClassName("login-form")
         beforeForm {
@@ -51,7 +52,7 @@ class LoginCustomFieldsKotlinView: Composite<Div>() {
             it.password == "admin" &&
             id == "Tesla") {
             close()
-            boundComponent.apply {
+            self.apply {
               button("Logout").onClick {
                 Page.getCurrent().reload()
               }

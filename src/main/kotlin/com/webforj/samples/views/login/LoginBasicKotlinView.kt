@@ -9,9 +9,10 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Login Basics")
 class LoginBasicKotlinView: Composite<Div>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
+      self.apply {
         login().open()
       }
   }

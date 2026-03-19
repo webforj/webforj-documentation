@@ -10,15 +10,16 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Login Cancel Button")
 class LoginCancelButtonKotlinView: Composite<Div>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
+      self.apply {
         login {
           loginI18n {
             cancel = "Cancel"
           }
           onCancel {
-
+            // Close the login dialog and do something else
           }
           open()
         }

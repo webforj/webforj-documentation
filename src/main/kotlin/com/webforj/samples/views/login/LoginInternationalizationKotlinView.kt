@@ -11,9 +11,10 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Login Internationalization")
 class LoginInternationalizationKotlinView: Composite<Div>() {
+  private val self = boundComponent
 
   init {
-      boundComponent.apply {
+      self.apply {
         login {
           loginI18n {
             title = "Authentifizierung"
