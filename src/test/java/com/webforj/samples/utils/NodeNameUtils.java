@@ -22,6 +22,7 @@ public final class NodeNameUtils {
   private static final Map<Class<?>, String> NODE_NAMES = Map.ofEntries(
     Map.entry(Alert.class, "dwc-alert"),
     Map.entry(Avatar.class, "dwc-avatar"),
+    Map.entry(Button.class, "dwc-button"),
     Map.entry(CheckBox.class, "dwc-checkbox"),
     Map.entry(ChoiceBox.class, "dwc-choicebox"),
     Map.entry(Dialog.class, "dwc-dialog"),

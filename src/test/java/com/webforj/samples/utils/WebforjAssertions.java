@@ -99,6 +99,10 @@ public class WebforjAssertions extends LocatorAssertionsImpl implements LocatorA
     assertions.hasAttribute("theme", value);
   }
 
+  public void isDisabled() {
+    assertions.hasAttribute("disabled", "");
+  }
+
   public void hasTheme(ThemeBase theme) {
     hasTheme(theme.toString());
   }
