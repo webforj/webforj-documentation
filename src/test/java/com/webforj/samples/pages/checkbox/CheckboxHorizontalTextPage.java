@@ -3,13 +3,13 @@ package com.webforj.samples.pages.checkbox;
 import com.microsoft.playwright.Page;
 import com.webforj.component.optioninput.CheckBox;
 import com.webforj.samples.pages.AbstractPage;
-import com.webforj.samples.utils.WebforjLocator;
+import com.webforj.samples.utils.components.CheckboxComponent;
 import com.webforj.samples.views.checkbox.CheckboxHorizontalTextView;
 
 import java.util.List;
 
 public class CheckboxHorizontalTextPage extends AbstractPage {
-    
+
     // Index mapping for checkboxes in CheckboxHorizontalTextView:
     // Index 0: Daily (first column, checked, no bbj-reverse-order)
     // Index 1: Weekly (first column)
@@ -21,7 +21,7 @@ public class CheckboxHorizontalTextPage extends AbstractPage {
     // Index 7: Bi-Weekly (second column, has bbj-reverse-order)
     // Index 8: Monthly (second column, has bbj-reverse-order)
     // Index 9: Annually (second column, has bbj-reverse-order)
-    
+
     public CheckboxHorizontalTextPage(Page page) {
       super(page, CheckboxHorizontalTextView.class);
     }
@@ -32,11 +32,11 @@ public class CheckboxHorizontalTextPage extends AbstractPage {
      *
      * @param name the label text of the checkbox
      * @param isLeftColumn true for first column (indices 0-4), false for second column (indices 5-9)
-     * @return a locator for the checkbox element
+     * @return a CheckboxComponent for the checkbox element
      */
-    private WebforjLocator getCheckboxByNameAndColumn(String name, boolean isLeftColumn) {
+    private CheckboxComponent getCheckboxByNameAndColumn(String name, boolean isLeftColumn) {
         // Map checkbox names to their indices in each column
-        int indexOffset = isLeftColumn ? 0 : 5;
+/*        int indexOffset = isLeftColumn ? 0 : 5;
         int index = switch (name) {
             case "Daily" -> 0;
             case "Weekly" -> 1;
@@ -44,21 +44,22 @@ public class CheckboxHorizontalTextPage extends AbstractPage {
             case "Monthly" -> 3;
             case "Annually" -> 4;
             default -> throw new IllegalArgumentException("Unknown checkbox name: " + name);
-        };
-        return getByClass(CheckBox.class).nth(indexOffset + index);
+        };*/
+        var locator = getByText(name);
+        return new CheckboxComponent(isLeftColumn ? locator.first() : locator.last());
     }
-    
+
     /**
      * Gets the checkbox from the first column (left-aligned, no bbj-reverse-order).
      */
-    public WebforjLocator getFirstColumnCheckbox(String name) {
+    public CheckboxComponent getFirstColumnCheckbox(String name) {
         return getCheckboxByNameAndColumn(name, true);
     }
-    
+
     /**
      * Gets the checkbox from the second column (right-aligned, has bbj-reverse-order).
      */
-    public WebforjLocator getSecondColumnCheckbox(String name) {
+    public CheckboxComponent getSecondColumnCheckbox(String name) {
         return getCheckboxByNameAndColumn(name, false);
     }
 

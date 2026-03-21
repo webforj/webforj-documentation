@@ -1,7 +1,5 @@
 package com.webforj.samples.views.checkbox;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 import com.webforj.component.Expanse;
 import com.webforj.samples.pages.checkbox.CheckboxExpansePage;
 import com.webforj.samples.utils.SupportedLanguage;
@@ -20,12 +18,12 @@ public class CheckboxExpanseViewIT extends BaseTest {
 
   @ParameterizedTest
   @MethodSource("provideRoutes")
-  public void testAllCheckboxesAreVisible(SupportedLanguage language) {
+  public void testAllCheckboxesHaveCorrectExpanse(SupportedLanguage language) {
     checkboxPage.setRoute(language);
     var expanses = Expanse.values();
     for (int i = expanses.length - 1, j = 0; i >= 0; i--, j++) {
       var checkbox = checkboxPage.getCheckbox(i);
-      checkbox.assertThat().hasExpanse(expanses[j]);
+      checkbox.assertExpanse(expanses[j]);
     }
   }
 

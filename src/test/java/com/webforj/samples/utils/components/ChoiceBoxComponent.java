@@ -52,7 +52,7 @@ public class ChoiceBoxComponent extends ButtonComponent {
    * @return a locator targeting the control part
    */
   public WebforjLocator getControl() {
-    return getShadowPart("control");
+    return getShadowPart("button");
   }
 
   /**

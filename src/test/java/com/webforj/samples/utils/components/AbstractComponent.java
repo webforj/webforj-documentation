@@ -33,6 +33,7 @@ public abstract class AbstractComponent {
    * @return a locator targeting the specified shadow part
    */
   protected WebforjLocator getShadowPart(String partName) {
+
     return locator.locator("part=['" + partName + "']");
   }
 

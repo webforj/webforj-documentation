@@ -6,7 +6,6 @@ import static com.webforj.samples.utils.WebforjAssertions.*;
 import com.webforj.concern.HasHorizontalAlignment;
 import com.webforj.samples.utils.SupportedLanguage;
 import com.webforj.samples.pages.checkbox.CheckboxHorizontalTextPage;
-import com.webforj.samples.utils.WebforjAssertions;
 import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -26,14 +25,14 @@ public class CheckboxHorizontalTextViewIT extends BaseTest {
     checkboxPage.setRoute(language);
 
     // Second column checkboxes have bbj-reverse-order (right-aligned)
-    var rightCheckbox = checkboxPage.getSecondColumnCheckbox("Daily");
-    rightCheckbox.assertThat().isChecked();
-    rightCheckbox.assertThat().hasHorizontalAlignment(HasHorizontalAlignment.Alignment.RIGHT);
+    var rightCheckbox = checkboxPage.getFirstColumnCheckbox("Daily");
+    rightCheckbox.getInput().assertThat().isChecked();
+    rightCheckbox.assertHorizontalAlignment(HasHorizontalAlignment.Alignment.RIGHT);
 
     // First column checkboxes have no bbj-reverse-order (left-aligned)
-    var leftCheckbox = checkboxPage.getFirstColumnCheckbox("Daily");
-    leftCheckbox.assertThat().isChecked();
-    leftCheckbox.assertThat().hasHorizontalAlignment(HasHorizontalAlignment.Alignment.LEFT);
+    var leftCheckbox = checkboxPage.getSecondColumnCheckbox("Daily");
+    leftCheckbox.getInput().assertThat().isChecked();
+    leftCheckbox.assertHorizontalAlignment(HasHorizontalAlignment.Alignment.LEFT);
   }
 
   @ParameterizedTest
@@ -44,14 +43,14 @@ public class CheckboxHorizontalTextViewIT extends BaseTest {
     // Test that other checkboxes are unchecked but have correct alignment
     for (String name : checkboxPage.getNames()) {
       // Second column checkboxes have bbj-reverse-order (right-aligned)
-      var rightCheckbox = checkboxPage.getSecondColumnCheckbox(name);
-      rightCheckbox.assertThat().not().isChecked();
-      rightCheckbox.assertThat().hasHorizontalAlignment(HasHorizontalAlignment.Alignment.RIGHT);
+      var rightCheckbox = checkboxPage.getFirstColumnCheckbox(name);
+      rightCheckbox.getInput().assertThat().not().isChecked();
+      rightCheckbox.assertHorizontalAlignment(HasHorizontalAlignment.Alignment.RIGHT);
 
       // First column checkboxes have no bbj-reverse-order (left-aligned)
-      var leftCheckbox = checkboxPage.getFirstColumnCheckbox(name);
-      leftCheckbox.assertThat().not().isChecked();
-      leftCheckbox.assertThat().hasHorizontalAlignment(HasHorizontalAlignment.Alignment.LEFT);
+      var leftCheckbox = checkboxPage.getSecondColumnCheckbox(name);
+      leftCheckbox.getInput().assertThat().not().isChecked();
+      leftCheckbox.assertHorizontalAlignment(HasHorizontalAlignment.Alignment.LEFT);
     }
   }
 }

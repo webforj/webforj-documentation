@@ -13,8 +13,8 @@ public class ButtonExpansesPage extends AbstractPage {
     super(page, ButtonExpansesView.class);
   }
 
-  public ButtonComponent getButton() {
-    return new ButtonComponent(getByText("None"));
+  public ButtonComponent getButton(String text) {
+    return new ButtonComponent(getByText(text));
   }
 
   public ChoiceBoxComponent getChoiceBox() {

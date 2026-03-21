@@ -14,6 +14,7 @@ import com.webforj.concern.HasHorizontalAlignment;
 
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * A delegating {@link LocatorAssertions} implementation that wraps Playwright's assertions to provide
@@ -80,9 +81,9 @@ public class WebforjAssertions extends LocatorAssertionsImpl implements LocatorA
 
   public static void hasHorizontalAlignment(LocatorAssertions assertions, HasHorizontalAlignment.Alignment alignment) {
     switch (alignment) {
-      case LEFT -> assertions.hasClass("(^|\\\\s)bbj-reverse-order(\\\\s|$)");
+      case LEFT -> assertions.hasClass(Pattern.compile("(^|\\s)bbj-reverse-order(\\s|$)"));
       case MIDDLE -> {} // ?
-      case RIGHT -> assertions.not().hasClass("(^|\\\\s)bbj-reverse-order(\\\\s|$)");
+      case RIGHT -> assertions.not().hasClass(Pattern.compile("(^|\\s)bbj-reverse-order(\\s|$)"));
     }
   }
 
@@ -144,7 +145,7 @@ public class WebforjAssertions extends LocatorAssertionsImpl implements LocatorA
     hasHorizontalAlignment(assertions, alignment);
   }
 
-  @Override
+  /*@Override
   public void isChecked(IsCheckedOptions options) {
     var attributeOptions = new HasAttributeOptions();
     if (options == null) {
@@ -160,5 +161,5 @@ public class WebforjAssertions extends LocatorAssertionsImpl implements LocatorA
       // When checking for checked state, check for the checked attribute
       assertions.hasAttribute("checked", "", attributeOptions);
     }
-  }
+  }*/
 }

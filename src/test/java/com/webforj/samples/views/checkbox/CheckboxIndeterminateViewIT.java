@@ -1,8 +1,5 @@
 package com.webforj.samples.views.checkbox;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
-import com.microsoft.playwright.assertions.LocatorAssertions;
 import com.webforj.samples.pages.checkbox.CheckboxIndeterminatePage;
 import com.webforj.samples.utils.SupportedLanguage;
 import com.webforj.samples.views.BaseTest;
@@ -22,16 +19,16 @@ public class CheckboxIndeterminateViewIT extends BaseTest {
   @MethodSource("provideRoutes")
   public void testAllCheckboxesAreVisible(SupportedLanguage language) {
     checkboxPage.setRoute(language);
-    assertThat(checkboxPage.getParentCheckbox()).isVisible();
-    assertThat(checkboxPage.getChild1Checkbox()).isVisible();
-    assertThat(checkboxPage.getChild2Checkbox()).isVisible();
+    checkboxPage.getParentCheckbox().assertIsVisible();
+    checkboxPage.getChild1Checkbox().assertIsVisible();
+    checkboxPage.getChild2Checkbox().assertIsVisible();
   }
 
   @ParameterizedTest
   @MethodSource("provideRoutes")
   public void testParentIndeterminate(SupportedLanguage language) {
     checkboxPage.setRoute(language);
-    assertThat(checkboxPage.getParentCheckbox()).isChecked(new LocatorAssertions.IsCheckedOptions().setIndeterminate(true));
+    checkboxPage.getParentCheckbox().assertIndeterminate(true);
   }
 
 
@@ -39,7 +36,7 @@ public class CheckboxIndeterminateViewIT extends BaseTest {
   @MethodSource("provideRoutes")
   public void testChild1Unchecked(SupportedLanguage language) {
     checkboxPage.setRoute(language);
-    assertThat(checkboxPage.getChild1Checkbox()).not().isChecked();
+    checkboxPage.getChild1Checkbox().assertChecked(false);
   }
 
 
@@ -47,7 +44,7 @@ public class CheckboxIndeterminateViewIT extends BaseTest {
   @MethodSource("provideRoutes")
   public void testChild2Checked(SupportedLanguage language) {
     checkboxPage.setRoute(language);
-    assertThat(checkboxPage.getChild2Checkbox()).isChecked();
+    checkboxPage.getChild2Checkbox().assertChecked(true);
   }
 
   @ParameterizedTest
@@ -60,31 +57,35 @@ public class CheckboxIndeterminateViewIT extends BaseTest {
     var child2 = checkboxPage.getChild2Checkbox();
 
     // Initially: Child1 unchecked, Child2 checked, Parent indeterminate
-    assertThat(child1).not().isChecked();
-    assertThat(child2).isChecked();
-    assertThat(parent).isChecked(new LocatorAssertions.IsCheckedOptions().setIndeterminate(true));
+    child1.assertChecked(false);
+    child2.assertChecked(true);
+    parent.assertIndeterminate(true);
 
     // Check Child1 should make parent checked
     child1.click();
-    assertThat(parent).isChecked();
+    parent.assertChecked(true);
+    parent.assertIndeterminate(false);
+    parent.assertChecked(true);
 
     // Uncheck Child2 should make Parent indeterminate
     child2.click();
-    assertThat(parent).isChecked(new LocatorAssertions.IsCheckedOptions().setIndeterminate(true));
+    parent.assertIndeterminate(true);
 
     // Uncheck Child1 should make Parent unchecked
     child1.click();
-    assertThat(parent).not().isChecked();
+    parent.assertChecked(false);
+    parent.assertIndeterminate(false);
+    parent.assertChecked(false);
 
     // Click parent - should check both children
     parent.click();
-    assertThat(child1).isChecked();
-    assertThat(child2).isChecked();
+    child1.assertChecked(true);
+    child2.assertChecked(true);
 
     // Click parent again - should uncheck both children
     parent.click();
-    assertThat(child1).not().isChecked();
-    assertThat(child2).not().isChecked();
+    child1.assertChecked(false);
+    child2.assertChecked(false);
   }
 
 }
