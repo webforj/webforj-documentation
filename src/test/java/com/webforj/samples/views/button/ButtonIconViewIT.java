@@ -1,5 +1,6 @@
 package com.webforj.samples.views.button;
 
+import com.webforj.samples.utils.components.ButtonComponent;
 import com.webforj.samples.utils.SupportedLanguage;
 import com.webforj.samples.pages.button.ButtonIconPage;
 import com.webforj.samples.views.BaseTest;
@@ -19,16 +20,16 @@ public class ButtonIconViewIT extends BaseTest {
   @MethodSource("provideRoutes")
   public void testAllButtonsWithIconsAreVisible(SupportedLanguage language) {
     buttonIconPage.setRoute(language);
-    var notificationsButton = buttonIconPage.getButtons(0);
-    notificationsButton.assertThat().isVisible();
-    notificationsButton.assertThat().hasText("Notifications");
+    ButtonComponent notificationsButton = buttonIconPage.getButtons(0);
+    notificationsButton.assertIsVisible();
+    notificationsButton.assertText("Notifications");
 
-    var searchButton = buttonIconPage.getButtons(1);
-    searchButton.assertThat().isVisible();
-    searchButton.assertThat().hasText("Search");
+    ButtonComponent searchButton = buttonIconPage.getButtons(1);
+    searchButton.assertIsVisible();
+    searchButton.assertText("Search");
 
-    var imageButton = buttonIconPage.getButtons(2);
-    imageButton.assertThat().isVisible();
+    ButtonComponent imageButton = buttonIconPage.getButtons(2);
+    imageButton.assertIsVisible();
   }
 
 }

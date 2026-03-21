@@ -21,9 +21,8 @@ public class AlertViewIT extends BaseTest {
   @MethodSource("provideRoutes")
   public void testAlertIsVisible(SupportedLanguage language) {
     alertPage.setRoute(language);
-    var alert = alertPage.getAlert();
-    alert.assertThat().isVisible();
-    alert.assertThat().hasTheme(Theme.PRIMARY);
+    alertPage.getAlert().assertThat().isVisible();
+    alertPage.getAlert().assertThat().hasTheme(Theme.PRIMARY);
   }
 
   @ParameterizedTest
@@ -37,9 +36,8 @@ public class AlertViewIT extends BaseTest {
   @MethodSource("provideRoutes")
   public void testViewButtonIsVisible(SupportedLanguage language) {
     alertPage.setRoute(language);
-    var viewButton = alertPage.getViewButton();
-    viewButton.assertThat().isVisible();
-    viewButton.assertThat().hasTheme(ButtonTheme.PRIMARY);
+    alertPage.getViewButton().assertThat().isVisible();
+    alertPage.getViewButton().assertThat().hasTheme(ButtonTheme.PRIMARY);
   }
 
 }

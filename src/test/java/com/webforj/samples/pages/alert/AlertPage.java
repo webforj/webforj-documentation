@@ -5,6 +5,7 @@ import com.webforj.component.alert.Alert;
 import com.webforj.component.button.Button;
 import com.webforj.samples.pages.AbstractPage;
 import com.webforj.samples.utils.WebforjLocator;
+import com.webforj.samples.utils.components.AlertComponent;
 import com.webforj.samples.views.alert.AlertView;
 
 public class AlertPage extends AbstractPage {
@@ -15,6 +16,10 @@ public class AlertPage extends AbstractPage {
 
   public WebforjLocator getAlert() {
     return getByClass(Alert.class);
+  }
+
+  public AlertComponent getAlertComponent() {
+    return new AlertComponent(getByClass(Alert.class));
   }
 
   public WebforjLocator getAlertText() {

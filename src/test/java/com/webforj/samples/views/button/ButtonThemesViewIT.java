@@ -1,8 +1,7 @@
 package com.webforj.samples.views.button;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 import com.webforj.component.button.ButtonTheme;
+import com.webforj.samples.utils.components.ButtonComponent;
 import com.webforj.samples.utils.SupportedLanguage;
 import com.webforj.samples.pages.button.ButtonThemesPage;
 import com.webforj.samples.views.BaseTest;
@@ -24,9 +23,9 @@ public class ButtonThemesViewIT extends BaseTest {
     buttonPage.setRoute(language);
     for (ButtonTheme theme : ButtonTheme.values()) {
       if (!theme.name().contains("OUTLINE")) {
-        var button = buttonPage.getSolidButton(theme.name());
-        button.assertThat().isVisible();
-        button.assertThat().hasTheme(theme);
+        ButtonComponent button = buttonPage.getSolidButton(theme.name());
+        button.assertIsVisible();
+        button.assertTheme(theme);
       }
     }
   }
@@ -37,8 +36,8 @@ public class ButtonThemesViewIT extends BaseTest {
     buttonPage.setRoute(language);
     for (ButtonTheme theme : ButtonTheme.values()) {
       if (!theme.name().contains("OUTLINE")) {
-        var button = buttonPage.getOutlinedButton(theme.name());
-        button.assertThat().isVisible();
+        ButtonComponent button = buttonPage.getOutlinedButton(theme.name());
+        button.assertIsVisible();
       }
     }
   }

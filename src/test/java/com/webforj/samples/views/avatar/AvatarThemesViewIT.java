@@ -23,7 +23,7 @@ public class AvatarThemesViewIT extends BaseTest {
   public void testAllAvatarThemesAreVisible(SupportedLanguage language) {
     avatarPage.setRoute(language);
     for (AvatarTheme theme : AvatarTheme.values()) {
-      avatarPage.getAvatar(theme).assertThat().isVisible();
+      avatarPage.getAvatar(theme).getLocator().assertThat().isVisible();
     }
   }
 

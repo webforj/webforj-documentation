@@ -4,18 +4,12 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.webforj.component.avatar.Avatar;
 import com.webforj.component.avatar.AvatarTheme;
-import com.webforj.component.dialog.Dialog;
-import com.webforj.component.html.elements.Div;
-import com.webforj.component.html.elements.Img;
-import com.webforj.component.icons.Icon;
 import com.webforj.samples.pages.AbstractPage;
-import com.webforj.samples.utils.SupportedLanguage;
-import com.webforj.samples.utils.NodeNameUtils;
 import com.webforj.samples.utils.WebforjLocator;
+import com.webforj.samples.utils.components.AvatarComponent;
 import com.webforj.samples.views.avatar.AvatarView;
 
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class AvatarPage extends AbstractPage {
 
@@ -35,8 +29,8 @@ public class AvatarPage extends AbstractPage {
     return locator(".avatar-demo__panel");
   }
 
-  public WebforjLocator getAvatar(int index)  {
-    return getByClass(Avatar.class).nth(index);
+  public AvatarComponent getAvatar(int index) {
+    return new AvatarComponent(getByClass(Avatar.class).nth(index));
   }
 
   public WebforjLocator getNameLabel(int index) {

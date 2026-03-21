@@ -25,8 +25,8 @@ public class AvatarShapesViewIT extends BaseTest {
     var shapes = AvatarShape.values();
     for (int i = 0; i < shapes.length; i++) {
       var avatar = avatarPage.getAvatar(i);
-      avatar.assertThat().isVisible();
-      avatar.assertThat().hasAttribute("shape", shapes[i].name().toLowerCase());
+      avatar.getLocator().assertThat().isVisible();
+      avatar.getLocator().assertThat().hasAttribute("shape", shapes[i].name().toLowerCase());
     }
   }
 

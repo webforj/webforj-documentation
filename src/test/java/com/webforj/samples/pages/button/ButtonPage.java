@@ -4,8 +4,8 @@ import com.microsoft.playwright.Page;
 import com.webforj.component.button.Button;
 import com.webforj.component.dialog.Dialog;
 import com.webforj.component.field.TextField;
-import com.webforj.component.html.elements.Div;
 import com.webforj.samples.pages.AbstractPage;
+import com.webforj.samples.utils.components.ButtonComponent;
 import com.webforj.samples.utils.WebforjLocator;
 import com.webforj.samples.views.button.ButtonView;
 
@@ -27,21 +27,20 @@ public class ButtonPage extends AbstractPage {
         return getByClass(TextField.class).last().locator("input");
     }
 
-    public WebforjLocator getSubmitButton() {
-        return getByClass(Button.class).getByText("Submit");
+    public ButtonComponent getSubmitButton() {
+        return new ButtonComponent(getByClass(Button.class).getByText("Submit"));
     }
 
-    public WebforjLocator getClearButton() {
-      return getByClass(Button.class).getByText("Clear");
-
+    public ButtonComponent getClearButton() {
+      return new ButtonComponent(getByClass(Button.class).getByText("Clear"));
     }
 
     public WebforjLocator getWelcomeDialog() {
         return getByClass(Dialog.class);
     }
 
-    public WebforjLocator getOkButton() {
-      return getByClass(Button.class).getByText("OK");
+    public ButtonComponent getOkButton() {
+      return new ButtonComponent(getByClass(Button.class).getByText("OK"));
     }
 
     public WebforjLocator getDialogContent() {

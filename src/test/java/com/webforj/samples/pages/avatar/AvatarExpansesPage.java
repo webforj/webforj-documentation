@@ -4,7 +4,7 @@ import com.microsoft.playwright.Page;
 import com.webforj.component.avatar.Avatar;
 import com.webforj.component.avatar.AvatarExpanse;
 import com.webforj.samples.pages.AbstractPage;
-import com.webforj.samples.utils.WebforjLocator;
+import com.webforj.samples.utils.components.AvatarComponent;
 import com.webforj.samples.views.avatar.AvatarExpansesView;
 
 public class AvatarExpansesPage extends AbstractPage {
@@ -13,8 +13,8 @@ public class AvatarExpansesPage extends AbstractPage {
     super(page, AvatarExpansesView.class);
   }
 
-  public WebforjLocator getAvatar(AvatarExpanse expanse) {
-    return getByExpanse(Avatar.class, expanse);
+  public AvatarComponent getAvatar(AvatarExpanse expanse) {
+    return new AvatarComponent(getByExpanse(Avatar.class, expanse));
   }
 
 }

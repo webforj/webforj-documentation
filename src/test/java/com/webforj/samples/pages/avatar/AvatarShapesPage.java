@@ -1,12 +1,9 @@
 package com.webforj.samples.pages.avatar;
 
-import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.webforj.component.avatar.Avatar;
-import com.webforj.component.avatar.AvatarShape;
 import com.webforj.samples.pages.AbstractPage;
-import com.webforj.samples.utils.SupportedLanguage;
-import com.webforj.samples.utils.WebforjLocator;
+import com.webforj.samples.utils.components.AvatarComponent;
 import com.webforj.samples.views.avatar.AvatarShapesView;
 
 public class AvatarShapesPage extends AbstractPage {
@@ -15,7 +12,7 @@ public class AvatarShapesPage extends AbstractPage {
     super(page, AvatarShapesView.class);
   }
 
-  public WebforjLocator getAvatar(int index) {
-    return getByClass(Avatar.class).nth(index);
+  public AvatarComponent getAvatar(int index) {
+    return new AvatarComponent(getByClass(Avatar.class).nth(index));
   }
 }

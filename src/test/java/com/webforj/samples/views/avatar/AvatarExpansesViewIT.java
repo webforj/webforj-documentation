@@ -28,7 +28,7 @@ public class AvatarExpansesViewIT extends BaseTest {
         continue;
       }
       var avatar = avatarPage.getAvatar(expanse);
-      avatar.assertThat().isVisible();
+      avatar.getLocator().assertThat().isVisible();
     }
   }
 

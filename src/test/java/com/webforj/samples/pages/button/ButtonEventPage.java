@@ -3,6 +3,7 @@ package com.webforj.samples.pages.button;
 import com.microsoft.playwright.Page;
 import com.webforj.component.button.Button;
 import com.webforj.samples.pages.AbstractPage;
+import com.webforj.samples.utils.components.ButtonComponent;
 import com.webforj.samples.utils.WebforjLocator;
 import com.webforj.samples.views.button.ButtonEventView;
 
@@ -12,8 +13,8 @@ public class ButtonEventPage extends AbstractPage {
     super(page, ButtonEventView.class);
   }
 
-  public WebforjLocator getButton() {
-    return getByClass(Button.class).getByText("Click Me!");
+  public ButtonComponent getButton() {
+    return new ButtonComponent(getByClass(Button.class).getByText("Click Me!"));
   }
 
   public WebforjLocator getCounterText(String text) {

@@ -1,7 +1,5 @@
 package com.webforj.samples.views.button;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 import com.webforj.samples.utils.SupportedLanguage;
 
 import com.webforj.samples.pages.button.ButtonPage;

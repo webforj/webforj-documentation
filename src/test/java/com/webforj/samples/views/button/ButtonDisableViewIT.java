@@ -1,7 +1,5 @@
 package com.webforj.samples.views.button;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 import com.webforj.samples.utils.SupportedLanguage;
 import com.webforj.samples.pages.button.ButtonDisablePage;
 import com.webforj.samples.views.BaseTest;
@@ -23,7 +21,7 @@ public class ButtonDisableViewIT extends BaseTest {
   public void testSubmitButtonIsDisabledWhenEmailInputIsNotValid(SupportedLanguage language) {
     buttonDisablePage.setRoute(language);
     buttonDisablePage.getEmailInput().fill("invalid-email");
-    buttonDisablePage.getSubmitButton().assertThat().isDisabled();
+    buttonDisablePage.getSubmitButton().assertDisabled();
   }
 
   @ParameterizedTest
@@ -31,7 +29,7 @@ public class ButtonDisableViewIT extends BaseTest {
   public void testSubmitButtonIsEnabledWhenEmailInputIsValid(SupportedLanguage language) {
     buttonDisablePage.setRoute(language);
     buttonDisablePage.getEmailInput().fill("valid-email@example.com");
-    buttonDisablePage.getSubmitButton().assertThat().isEnabled();
+    buttonDisablePage.getSubmitButton().assertEnabled();
   }
 
 }

@@ -4,6 +4,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 import com.webforj.samples.utils.SupportedLanguage;
 import com.webforj.samples.pages.avatar.AvatarPage;
+import com.webforj.samples.utils.components.AvatarComponent;
 import com.webforj.samples.views.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -42,10 +43,8 @@ public class AvatarViewIT extends BaseTest {
   @MethodSource("provideRoutes")
   public void testNameLabelHaveCorrectValues(SupportedLanguage language) {
     avatarPage.setRoute(language);
-    var names = avatarPage.getNames();
-    for (int i = 0; i < names.size(); i++) {
-      var nameLabel = avatarPage.getNameLabel(i);
-      nameLabel.assertThat().hasText(names.get(i));
+    for (int i = 0; i < avatarPage.getNames().size(); i++) {
+      avatarPage.getNameLabel(i).assertThat().hasText(avatarPage.getNames().get(i));
     }
   }
 
@@ -53,10 +52,8 @@ public class AvatarViewIT extends BaseTest {
   @MethodSource("provideRoutes")
   public void testRoleLabelHaveCorrectValues(SupportedLanguage language) {
     avatarPage.setRoute(language);
-    var roles = avatarPage.getRoles();
-    for (int i = 0; i < roles.size(); i++) {
-      var roleLabel = avatarPage.getRoleLabel(i);
-      roleLabel.assertThat().hasText(roles.get(i));
+    for (int i = 0; i < avatarPage.getRoles().size(); i++) {
+      avatarPage.getRoleLabel(i).assertThat().hasText(avatarPage.getRoles().get(i));
     }
   }
 
@@ -64,10 +61,9 @@ public class AvatarViewIT extends BaseTest {
   @MethodSource("provideRoutes")
   public void testAvatarHaveCorrectThemes(SupportedLanguage language) {
     avatarPage.setRoute(language);
-    var themes = avatarPage.getThemes();
-    for (int i = 0; i < themes.size(); i++) {
-      var avatar = avatarPage.getAvatar(i);
-      avatar.assertThat().hasTheme(themes.get(i));
+    for (int i = 0; i < avatarPage.getThemes().size(); i++) {
+      AvatarComponent avatar = avatarPage.getAvatar(i);
+      avatar.assertTheme(avatarPage.getThemes().get(i));
     }
   }
 
@@ -75,14 +71,12 @@ public class AvatarViewIT extends BaseTest {
   @MethodSource("provideRoutes")
   public void testClickingAvatarOpensDialog(SupportedLanguage language) {
     avatarPage.setRoute(language);
-    var dialog = avatarPage.getDialog();
-
     // Dialog should not be visible initially
-    assertThat(dialog).not().isVisible();
+    assertThat(avatarPage.getDialog()).not().isVisible();
 
     // Click on first avatar - dialog should open
     avatarPage.getAvatar(0).click();
-    assertThat(dialog).isVisible();
+    assertThat(avatarPage.getDialog()).isVisible();
   }
 
 }

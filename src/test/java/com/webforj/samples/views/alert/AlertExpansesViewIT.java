@@ -21,12 +21,11 @@ public class AlertExpansesViewIT extends BaseTest {
   @MethodSource("provideRoutes")
   public void testAlertHasCorrectExpanse(SupportedLanguage language) {
     alertPage.setRoute(language);
-    var expanses = Expanse.values();
+    Expanse[] expanses = Expanse.values();
     for (int i = expanses.length - 1, j = 0; i >= 0; i--, j++) {
-      var alert = alertPage.getAlert().nth(i);
-      alert.assertThat().isVisible();
-      alert.assertThat().hasTheme(Theme.SUCCESS);
-      alert.assertThat().hasExpanse(expanses[j]);
+      alertPage.getAlertComponent(i).assertIsVisible();
+      alertPage.getAlertComponent(i).assertTheme(Theme.SUCCESS);
+      alertPage.getAlertComponent(i).assertExpanse(expanses[j]);
     }
   }
 

@@ -22,30 +22,28 @@ public class ClosableAlertViewIT extends BaseTest {
   @MethodSource("provideRoutes")
   public void testAlertIsVisible(SupportedLanguage language) {
     alertPage.setRoute(language);
-    var alert = alertPage.getAlert();
-    alert.assertThat().isVisible();
-    alert.assertThat().hasTheme(Theme.INFO);
+    alertPage.getAlert().assertThat().isVisible();
+    alertPage.getAlert().assertThat().hasTheme(Theme.INFO);
   }
 
   @ParameterizedTest
   @MethodSource("provideRoutes")
   public void testAlertTextIsVisible(SupportedLanguage language) {
     alertPage.setRoute(language);
-    alertPage.getAlertText().isVisible();
+    alertPage.getAlertText().assertThat().isVisible();
   }
 
   @ParameterizedTest
   @MethodSource("provideRoutes")
   public void testCloseButtonIsVisible(SupportedLanguage language) {
     alertPage.setRoute(language);
-    alertPage.getCloseButton().isVisible();
+    alertPage.getCloseButton().assertThat().isVisible();
   }
 
   @ParameterizedTest
   @MethodSource("provideRoutes")
   public void testShowAlertButtonIsHiddenInitially(SupportedLanguage language) {
     alertPage.setRoute(language);
-//    alertPage.getShowAlertButton().assertThat().not().isVisible();
     assertThat(alertPage.getShowAlertButton()).not().isVisible();
   }
 
@@ -53,13 +51,9 @@ public class ClosableAlertViewIT extends BaseTest {
   @MethodSource("provideRoutes")
   public void testCloseButtonDismissesAlert(SupportedLanguage language) {
     alertPage.setRoute(language);
-    var alert = alertPage.getAlert();
-
-    alert.assertThat().isVisible();
+    alertPage.getAlert().assertThat().isVisible();
     alertPage.getCloseButton().click();
-    alert.assertThat().not().isVisible();
-
-//    alertPage.getShowAlertButton().isVisible();
+    alertPage.getAlert().assertThat().not().isVisible();
     assertThat(alertPage.getShowAlertButton()).isVisible();
   }
 
@@ -67,22 +61,16 @@ public class ClosableAlertViewIT extends BaseTest {
   @MethodSource("provideRoutes")
   public void testShowAlertButtonReopensAlert(SupportedLanguage language) {
     alertPage.setRoute(language);
-    var alert = alertPage.getAlert();
-    alert.assertThat().isVisible();
+    alertPage.getAlert().assertThat().isVisible();
 
     // Close the alert first
     alertPage.getCloseButton().click();
-    alert.assertThat().not().isVisible();
-    var showButton = alertPage.getShowAlertButton();
-    assertThat(showButton).isVisible();
-//    var showButton = alertPage.getShowAlertButton();
-//    showButton.assertThat().isVisible();
+    alertPage.getAlert().assertThat().not().isVisible();
+    assertThat(alertPage.getShowAlertButton()).isVisible();
 
     // Reopen the alert
-    showButton.click();
-    alert.assertThat().isVisible();
-
-//    showButton.assertThat().not().isVisible();
-    assertThat(showButton).not().isVisible();
+    alertPage.getShowAlertButton().click();
+    alertPage.getAlert().assertThat().isVisible();
+    assertThat(alertPage.getShowAlertButton()).not().isVisible();
   }
 }

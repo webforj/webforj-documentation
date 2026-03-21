@@ -20,11 +20,10 @@ public class AlertThemesViewIT extends BaseTest {
   @MethodSource("provideRoutes")
   public void testAlertThemeHasCorrectTheme(SupportedLanguage language) {
     alertPage.setRoute(language);
-    var themes = Theme.values();
+    Theme[] themes = Theme.values();
     for (int i = 0; i < themes.length; i++) {
-      var alert = alertPage.getAlert().nth(i);
-      alert.assertThat().isVisible();
-      alert.assertThat().hasTheme(themes[i]);
+      alertPage.getAlertComponent(i).assertIsVisible();
+      alertPage.getAlertComponent(i).assertTheme(themes[i]);
     }
   }
 

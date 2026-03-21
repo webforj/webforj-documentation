@@ -3,9 +3,9 @@ package com.webforj.samples.pages.alert;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.webforj.component.alert.Alert;
-import com.webforj.component.button.Button;
 import com.webforj.samples.pages.AbstractPage;
 import com.webforj.samples.utils.WebforjLocator;
+import com.webforj.samples.utils.components.AlertComponent;
 import com.webforj.samples.views.alert.ClosableAlertView;
 
 public class ClosableAlertPage extends AbstractPage {
@@ -16,6 +16,10 @@ public class ClosableAlertPage extends AbstractPage {
 
   public WebforjLocator getAlert() {
     return getByClass(Alert.class);
+  }
+
+  public AlertComponent getAlertComponent() {
+    return new AlertComponent(getByClass(Alert.class));
   }
 
   public WebforjLocator getAlertText() {
