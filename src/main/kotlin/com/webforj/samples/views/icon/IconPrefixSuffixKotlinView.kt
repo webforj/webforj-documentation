@@ -6,9 +6,7 @@ import com.webforj.component.layout.flexlayout.FlexDirection
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.icons.tablerIcon
-import com.webforj.kotlin.extension.prefix
 import com.webforj.kotlin.extension.prefixSlot
-import com.webforj.kotlin.extension.suffix
 import com.webforj.kotlin.extension.suffixSlot
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
