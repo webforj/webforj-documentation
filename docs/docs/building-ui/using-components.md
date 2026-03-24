@@ -13,7 +13,7 @@ This guide focuses on those day-to-day operations: not the internals of how comp
 
 ## Component properties {#component-properties}
 
-Every component exposes properties that control its content, appearance, and behavior. Most of these have dedicated, typed Java methods (`setText()`, `setTheme()`, `setExpanse()`, and so on), which is the primary way you'll configure components in webforJ. The sections below cover the ones that apply broadly across component types.
+Every component exposes properties that control its content, appearance, and behavior. Most of these have dedicated, typed Java methods (`setText()`, `setTheme()`, `setExpanse()`, and so on), which is the primary way you'll configure components in webforJ. The sections below cover the properties and methods that apply broadly across component types.
 
 ### Text content {#text-content}
 
@@ -75,7 +75,8 @@ webforJ also assigns automatic identifiers to components internally. The server-
 
 ### Styling {#styling}
 
-Two methods cover most styling needs: `setStyle()` for individual CSS property values, and `addClassName()` to apply CSS classes defined in your stylesheets. Use `setStyle()` for values that are computed or change at runtime; use CSS classes for anything static or reusable.
+Three methods cover most styling needs: `setStyle()` for individual CSS property values, and `addClassName()` and `removeClassName()` to apply or remove CSS classes defined in your stylesheets. 
+Use `setStyle()` for values that are computed or change at runtime; use CSS classes for anything static or reusable.
 
 ```java
 Div container = new Div();
