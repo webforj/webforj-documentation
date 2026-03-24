@@ -6,8 +6,8 @@
 .settings-card {
     background: var(--dwc-surface-3);
     border-radius: var(--dwc-border-radius-l);
-    box-shadow: var(--dwc-shadow-l);
-    padding: var(--dwc-space-2xl);
+    border: 1px solid var(--dwc-border-color);
+    padding: var(--dwc-space-m);
     max-width: 400px;
     width: 100%;
 }
@@ -26,8 +26,8 @@
     display: flex;
     flex-direction: column;
     gap: var(--dwc-space-s);
-    padding: var(--dwc-space-m);
-    background: var(--dwc-surface-3);
+    padding: var(--dwc-space-s);
     border-radius: var(--dwc-border-radius-m);
+    border: 1px solid var(--dwc-border-color);
     margin-top: var(--dwc-space-xs);
 }

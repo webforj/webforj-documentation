@@ -6,8 +6,8 @@
 .conditional-card {
     background: var(--dwc-surface-3);
     border-radius: var(--dwc-border-radius-l);
-    box-shadow: var(--dwc-shadow-l);
-    padding: var(--dwc-space-2xl);
+    border: 1px solid var(--dwc-border-color);
+    padding: var(--dwc-space-l);
     width: 400px;
     max-width: 100%;
 }

@@ -23,7 +23,6 @@ import com.webforj.router.annotation.Route;
 public class ConditionalStateView extends Composite<FlexLayout> {
 
   private final FlexLayout self = getBoundComponent();
-
   private TextField usernameField;
   private PasswordField passwordField;
   private Button submitButton;
@@ -45,7 +44,7 @@ public class ConditionalStateView extends Composite<FlexLayout> {
 
     submitButton = new Button("Sign In", ButtonTheme.PRIMARY);
     submitButton.setExpanse(Expanse.LARGE);
-    submitButton.setVisible(false);
+    submitButton.setEnabled(false);
   }
 
   private void setupLayout() {
@@ -76,20 +75,17 @@ public class ConditionalStateView extends Composite<FlexLayout> {
   }
 
   private void setupEventHandlers() {
-    usernameField.addValueChangeListener(event -> checkFieldsAndToggleButton());
-    passwordField.addValueChangeListener(event -> checkFieldsAndToggleButton());
-        
+    usernameField.addValueChangeListener(event -> checkFieldsAndUpdateButton());
+    passwordField.addValueChangeListener(event -> checkFieldsAndUpdateButton());
+
     submitButton.onClick(e -> {
       Toast.show("Signed in as " + usernameField.getValue());
     });
   }
 
-  private void checkFieldsAndToggleButton() {
+  private void checkFieldsAndUpdateButton() {
     String username = usernameField.getValue().trim();
     String password = passwordField.getValue().trim();
-
-    boolean bothFieldsFilled = !username.isEmpty() && !password.isEmpty();
-
-    submitButton.setVisible(bothFieldsFilled);
-    }
+    submitButton.setEnabled(!username.isEmpty() && !password.isEmpty());
+  }
 }
