@@ -48,22 +48,22 @@ Any thread created from within an `Environment` thread automatically has access 
 ```java
 @Route
 public class DataView extends Composite<Div> {
-    private final ExecutorService executor = Executors.newCachedThreadPool();
+  private final ExecutorService executor = Executors.newCachedThreadPool();
+  
+  public DataView() {
+    // This thread has Environment context
     
-    public DataView() {
-        // This thread has Environment context
-        
-        // Child threads inherit the context automatically
-        executor.submit(() -> {
-            String data = fetchRemoteData();
-            
-            // Can use runLater because context was inherited
-            Environment.runLater(() -> {
-                dataLabel.setText(data);
-                loadingSpinner.setVisible(false);
-            });
-        });
-    }
+    // Child threads inherit the context automatically
+    executor.submit(() -> {
+      String data = fetchRemoteData();
+      
+      // Can use runLater because context was inherited
+      Environment.runLater(() -> {
+        dataLabel.setText(data);
+        loadingSpinner.setVisible(false);
+      });
+    });
+  }
 }
 ```
 
@@ -74,24 +74,24 @@ Threads created outside the `Environment` context can't use `runLater()` and wil
 ```java
 // Static initializer - no Environment context
 static {
-    new Thread(() -> {
-        Environment.runLater(() -> {});  // Throws IllegalStateException
-    }).start();
+  new Thread(() -> {
+    Environment.runLater(() -> {});  // Throws IllegalStateException
+  }).start();
 }
 
 // System timer threads - no Environment context  
 Timer timer = new Timer();
 timer.schedule(new TimerTask() {
-    public void run() {
-        Environment.runLater(() -> {});  // Throws IllegalStateException
-    }
+  public void run() {
+    Environment.runLater(() -> {});  // Throws IllegalStateException
+  }
 }, 1000);
 
 // External library threads - no Environment context
 httpClient.sendAsync(request, responseHandler)
-    .thenAccept(response -> {
-        Environment.runLater(() -> {});  // Throws IllegalStateException
-    });
+  .thenAccept(response -> {
+    Environment.runLater(() -> {});  // Throws IllegalStateException
+  });
 ```
 
 ## Execution behavior {#execution-behavior}
@@ -104,14 +104,14 @@ When called from the `Environment` thread itself, tasks execute **synchronously 
 
 ```java
 button.onClick(e -> {
-    System.out.println("Before: " + Thread.currentThread().getName());
-    
-    PendingResult<String> result = Environment.runLater(() -> {
-        System.out.println("Inside: " + Thread.currentThread().getName());
-        return "completed";
-    });
-    
-    System.out.println("After: " + result.isDone());  // true
+  System.out.println("Before: " + Thread.currentThread().getName());
+  
+  PendingResult<String> result = Environment.runLater(() -> {
+    System.out.println("Inside: " + Thread.currentThread().getName());
+    return "completed";
+  });
+  
+  System.out.println("After: " + result.isDone());  // true
 });
 ```
 
@@ -124,19 +124,19 @@ When called from a background thread, tasks are **queued for asynchronous execut
 ```java
 @Override
 public void onDidCreate() {
-    CompletableFuture.runAsync(() -> {
-        // This runs on ForkJoinPool thread
-        System.out.println("Background: " + Thread.currentThread().getName());
-        
-        PendingResult<Void> result = Environment.runLater(() -> {
-            // This runs on Environment thread
-            System.out.println("UI Update: " + Thread.currentThread().getName());
-            statusLabel.setText("Processing complete");
-        });
-        
-        // result.isDone() would be false here
-        // The task is queued and will execute asynchronously
+  CompletableFuture.runAsync(() -> {
+    // This runs on ForkJoinPool thread
+    System.out.println("Background: " + Thread.currentThread().getName());
+    
+    PendingResult<Void> result = Environment.runLater(() -> {
+      // This runs on Environment thread
+      System.out.println("UI Update: " + Thread.currentThread().getName());
+      statusLabel.setText("Processing complete");
     });
+    
+    // result.isDone() would be false here
+    // The task is queued and will execute asynchronously
+  });
 }
 ```
 
@@ -150,12 +150,12 @@ The <JavadocLink type="foundation" location="com/webforj/PendingResult" code='tr
 
 ```java
 PendingResult<Void> result = Environment.runLater(() -> {
-    updateUI();
+  updateUI();
 });
 
 // Cancel if not yet executed
 if (!result.isDone()) {
-    result.cancel();
+  result.cancel();
 }
 ```
 
@@ -165,38 +165,38 @@ When performing long-running operations with frequent UI updates, track all pend
 
 ```java
 public class LongRunningTask {
-    private final List<PendingResult<?>> pendingUpdates = new ArrayList<>();
-    private volatile boolean isCancelled = false;
-    
-    public void startTask() {
-        CompletableFuture.runAsync(() -> {
-            for (int i = 0; i <= 100; i++) {
-                if (isCancelled) return;
-                
-                final int progress = i;
-                PendingResult<Void> update = Environment.runLater(() -> {
-                    progressBar.setValue(progress);
-                });
-                
-                // Track for potential cancellation
-                pendingUpdates.add(update);
-                
-                Thread.sleep(100);
-            }
-        });
-    }
-    
-    public void cancelTask() {
-        isCancelled = true;
+  private final List<PendingResult<?>> pendingUpdates = new ArrayList<>();
+  private volatile boolean isCancelled = false;
+  
+  public void startTask() {
+    CompletableFuture.runAsync(() -> {
+      for (int i = 0; i <= 100; i++) {
+        if (isCancelled) return;
         
-        // Cancel all pending UI updates
-        for (PendingResult<?> pending : pendingUpdates) {
-            if (!pending.isDone()) {
-                pending.cancel();
-            }
-        }
-        pendingUpdates.clear();
+        final int progress = i;
+        PendingResult<Void> update = Environment.runLater(() -> {
+          progressBar.setValue(progress);
+        });
+        
+        // Track for potential cancellation
+        pendingUpdates.add(update);
+        
+        Thread.sleep(100);
+      }
+    });
+  }
+  
+  public void cancelTask() {
+    isCancelled = true;
+    
+    // Cancel all pending UI updates
+    for (PendingResult<?> pending : pendingUpdates) {
+      if (!pending.isDone()) {
+        pending.cancel();
+      }
     }
+    pendingUpdates.clear();
+  }
 }
 ```
 
@@ -207,20 +207,20 @@ When components are destroyed (e.g., during navigation), cancel all pending upda
 ```java
 @Route
 public class CleanupView extends Composite<Div> {
-    private final List<PendingResult<?>> pendingUpdates = new ArrayList<>();
+  private final List<PendingResult<?>> pendingUpdates = new ArrayList<>();
+  
+  @Override
+  protected void onDestroy() {
+    super.onDestroy();
     
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        
-        // Cancel all pending updates to prevent memory leaks
-        for (PendingResult<?> pending : pendingUpdates) {
-            if (!pending.isDone()) {
-                pending.cancel();
-            }
-        }
-        pendingUpdates.clear();
+    // Cancel all pending updates to prevent memory leaks
+    for (PendingResult<?> pending : pendingUpdates) {
+      if (!pending.isDone()) {
+        pending.cancel();
+      }
     }
+    pendingUpdates.clear();
+  }
 }
 ```
 
@@ -258,7 +258,7 @@ public class LongTaskView extends Composite<FlexLayout> {
   private volatile boolean isCancelled = false;
 
   // UI components
-  private FlexLayout self = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
   private H2 titleLabel = new H2("Background UI Updates Demo");
   private Paragraph descriptionPara = new Paragraph(
       "This demo shows how Environment.runLater() enables safe UI updates from background threads. " +
@@ -451,9 +451,9 @@ This implementation demonstrates several critical patterns:
 #### 1. Thread pool management {#1-thread-pool-management}
 ```java
 private final ExecutorService executor = Executors.newSingleThreadExecutor(r -> {
-    Thread t = new Thread(r, "LongTaskView-Worker");
-    t.setDaemon(true);
-    return t;
+  Thread t = new Thread(r, "LongTaskView-Worker");
+  t.setDaemon(true);
+  return t;
 });
 ```
 - Uses a **single thread executor** to prevent resource exhaustion
@@ -481,10 +481,10 @@ The background thread checks this flag at each iteration, enabling:
 ```java
 @Override
 protected void onDestroy() {
-    super.onDestroy();
-    cancelTask();  // Reuses cancellation logic
-    currentTask = null;
-    executor.shutdown();
+  super.onDestroy();
+  cancelTask();  // Reuses cancellation logic
+  currentTask = null;
+  executor.shutdown();
 }
 ```
 Critical for preventing memory leaks by:
@@ -495,8 +495,8 @@ Critical for preventing memory leaks by:
 #### 5. UI responsiveness testing {#5-ui-responsiveness-testing}
 ```java
 testButton.onClick(e -> {
-    int count = clickCount.incrementAndGet();
-    showToast("Click #" + count + " - UI is responsive!", Theme.GRAY);
+  int count = clickCount.incrementAndGet();
+  showToast("Click #" + count + " - UI is responsive!", Theme.GRAY);
 });
 ```
 Demonstrates that the UI thread remains responsive during background operations.

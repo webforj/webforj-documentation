@@ -1,7 +1,7 @@
 ---
 title: AppNav
 sidebar_position: 6
-_i18n_hash: faa14d827865b1697b369a9787315dcd
+_i18n_hash: d4756db6bed23bc005fbcd2be222b4ea
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-app-nav" />
@@ -9,11 +9,13 @@ _i18n_hash: faa14d827865b1697b369a9787315dcd
 <DocChip chip='since' label='24.12' />
 <JavadocLink type="appnav" location="com/webforj/component/appnav/AppNav" top='true'/> 
 
-El componente `AppNav` en webforJ proporciona un menú de navegación lateral flexible y organizado con soporte para estructuras planas y jerárquicas. Cada entrada es un `AppNavItem`, que puede representar un enlace simple o un grupo que contiene subelementos. Los elementos pueden estar vinculados a vistas internas o recursos externos, mejorados con íconos, insignias u otros componentes.
+El componente `AppNav` crea un menú de navegación lateral a partir de entradas de `AppNavItem`. Los elementos pueden enlazar a vistas internas o recursos externos, anidarse bajo elementos principales para formar menús jerárquicos, y llevar iconos, insignias u otros componentes para dar a los usuarios más contexto de un vistazo.
+
+<!-- INTRO_END -->
 
 ## Agregar y anidar elementos {#adding-and-nesting-items}
 
-Las instancias de `AppNavItem` se utilizan para poblar la estructura de `AppNav`. Estos elementos pueden ser enlaces simples o encabezados de grupo anidados que contienen elementos hijos. Los encabezados de grupo sin enlaces actúan como contenedores expandibles.
+Las instancias de `AppNavItem` se utilizan para poblar la estructura de `AppNav`. Estos elementos pueden ser enlaces simples o encabezados de grupo anidados que contienen elementos secundarios. Los encabezados de grupo sin enlaces actúan como contenedores expandibles.
 
 Utiliza `addItem()` para incluir elementos en la navegación:
 
@@ -28,10 +30,10 @@ nav.addItem(dashboard);
 nav.addItem(admin);
 ```
 
-:::tip Vinculación de Elementos de Grupo
-Los elementos de nivel superior en un árbol de navegación generalmente están destinados a ser expandibles, no enlaces clicables. Establecer un `path` en tales elementos puede confundir a los usuarios que esperan que revelen subelementos en lugar de navegar a otro lugar.
+:::tip Enlazando Elementos de Grupo
+Los elementos de nivel superior en un árbol de navegación normalmente están destinados a ser expandibles, no enlaces clicables. Establecer un `path` en tales elementos puede confundir a los usuarios que esperan que revelen sub-elementos en lugar de navegar a otro lugar.
 
-Si deseas que el encabezado del grupo active una acción personalizada (como abrir documentación externa), mantén la ruta del grupo vacía y, en su lugar, agrega un control interactivo como un [`IconButton`](./icon#icon-buttons) al sufijo del elemento. Esto mantiene la experiencia de usuario consistente y limpia.
+Si deseas que el encabezado del grupo desencadene una acción personalizada (como abrir documentos externos), mantén el path del grupo vacío y en su lugar agrega un control interactivo como un [`IconButton`](./icon#icon-buttons) al sufijo del elemento. Esto mantiene la experiencia del usuario consistente y limpia.
 :::
 
 <!--vale off-->
@@ -42,9 +44,9 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/hea
 />
 <!--vale on-->
 
-## Vinculación de Elementos {#linking-items}
+## Enlazando Elementos {#linking-items}
 
-Cada `AppNavItem` puede navegar a una vista interna o a un enlace externo. Puedes definir esto usando rutas estáticas o clases de vista registradas.
+Cada `AppNavItem` puede navegar a una vista interna o a un enlace externo. Puedes definir esto utilizando rutas estáticas o clases de vista registradas.
 
 ### Rutas estáticas {#static-paths}
 
@@ -57,13 +59,13 @@ AppNavItem help = new AppNavItem("Help", "https://support.example.com");
 
 ### Vistas registradas {#registered-views}
 
-Si tus vistas están registradas con el [router](../routing/overview), puedes pasar la clase en lugar de una URL codificada:
+Si tus vistas están registradas con el [enrutador](../routing/overview), puedes pasar la clase en lugar de una URL codificada:
 
 ```java
 AppNavItem settings = new AppNavItem("Settings", SettingsView.class);
 ```
 
-Si tu ruta anotada admite [parámetros de ruta](../routing/route-patterns#named-parameters), también puedes pasar un `ParametersBag`:
+Si tu ruta anotada soporta [parámetros de ruta](../routing/route-patterns#named-parameters), también puedes pasar un `ParametersBag`:
 
 ```java
 ParametersBag params = ParametersBag.of("id=123");
@@ -80,26 +82,26 @@ AppNavItem advanced = new AppNavItem("Advanced", SettingsView.class, params);
 advanced.setQueryParameters(params);
 ```
 
-## Comportamiento de destino {#target-behavior}
+## Comportamiento objetivo {#target-behavior}
 
 Controla cómo se abren los enlaces utilizando `setTarget()`. Esto es especialmente útil para enlaces externos o vistas emergentes.
 
-- **`SELF`** (predeterminado): Se abre en la vista actual.
-- **`BLANK`**: Se abre en una nueva pestaña o ventana.
-- **`PARENT`**: Se abre en el contexto de navegación padre.
-- **`TOP`**: Se abre en el contexto de navegación de nivel superior.
+- **`SELF`** (predeterminado): Abre en la vista actual.
+- **`BLANK`**: Abre en una nueva pestaña o ventana.
+- **`PARENT`**: Abre en el contexto de navegación padre.
+- **`TOP`**: Abre en el contexto de navegación de nivel superior.
 
 ```java
 AppNavItem help = new AppNavItem("Help", "https://support.example.com");
 help.setTarget(AppNavItem.NavigationTarget.BLANK);
 ```
 
-## Prefijo y sufijo {#prefix-and-suffix}
+## Prefijos y sufijos {#prefix-and-suffix}
 
-`AppNavItem` admite componentes de prefijo y sufijo. Utiliza estos para proporcionar claridad visual con íconos, insignias o botones.
+`AppNavItem` admite componentes de prefijo y sufijo. Utiliza estos para proporcionar claridad visual con iconos, insignias o botones.
 
-- **Prefijo**: aparece antes de la etiqueta, útil para íconos.
-- **Sufijo**: aparece después de la etiqueta, excelente para insignias o acciones.
+- **Prefijo**: aparece antes de la etiqueta, útil para iconos.
+- **Sufijo**: aparece después de la etiqueta, ideal para insignias o acciones.
 
 ```java
 AppNavItem notifications = new AppNavItem("Alerts");
@@ -107,9 +109,9 @@ notifications.setPrefixComponent(TablerIcon.create("alert"));
 notifications.setSuffixComponent(TablerIcon.create("link"));
 ```
 
-## Grupos de apertura automática {#auto-opening-groups}
+## Grupos de auto-apertura {#auto-opening-groups}
 
-Utiliza `setAutoOpen(true)` en el componente `AppNav` para expandir automáticamente los grupos anidados cuando se actualiza la aplicación.
+Utiliza `setAutoOpen(true)` en el componente `AppNav` para expandir automáticamente los grupos anidados cuando la aplicación se actualiza.
 
 ```java
 nav.setAutoOpen(true);

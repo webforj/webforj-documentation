@@ -138,5 +138,13 @@
   "sidebar.documentationSidebar.category.security-architecture": {
     "message": "Architecture",
     "description": "The label for category Architecture in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.AI Tooling": {
+    "message": "AI Tooling",
+    "description": "The label for category AI Tooling in sidebar documentationSidebar"
+  },
+  "sidebar.documentationSidebar.category.Kotlin DSL": {
+    "message": "Kotlin DSL",
+    "description": "The label for category Kotlin DSL in sidebar documentationSidebar"
   }
 }

@@ -8,9 +8,9 @@ sidebar_position: 101
 <DocChip chip='since' label='25.00' />
 <JavadocLink type="refresher" location="com/webforj/component/refresher/Refresher" top='true'/>
 
-The `Refresher` component in webforJ enables a pull-to-refresh interaction within scrollable containers—ideal for dynamic data loading in mobile or tap-friendly interfaces. As users swipe downward past a configurable threshold, the refresher transitions through visual states: `pull`, `release`, and `refreshing`. Each state presents a customizable icon and localized text to clearly communicate feedback.
+Pull-to-refresh is a common pattern in mobile and tap-friendly interfaces, and the `Refresher` component brings it to scrollable containers in webforJ. As users swipe downward past a configurable threshold, it transitions through visual states: `pull`, `release`, and `refreshing`, each with a customizable icon and localized text. It pairs well with [`InfiniteScroll`](../components/infinitescroll) for reloading or resetting content through gesture-based input.
 
-You can use `Refresher` in tandem with components like [`InfiniteScroll`](../components/infinitescroll) to reload content or reset state via simple gesture-based input. The component is fully configurable in terms of interaction behavior, appearance, localization, and integration with the rest of your UI.
+<!-- INTRO_END -->
 
 ## Instantiation and internationalization {#instantiation-and-internationalization}
 

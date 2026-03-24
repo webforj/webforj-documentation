@@ -30,7 +30,7 @@ public class FlexContainerBuilderView extends Composite<Div> {
 
   FlexLayout boxLayout;
   ArrayList<Box> boxes;
-  float numBoxes;
+  int numBoxes;
 
   String javaCode;
   CodeDisplay codeWindow = new CodeDisplay();
@@ -167,8 +167,8 @@ public class FlexContainerBuilderView extends Composite<Div> {
   private void addBox(int newNum) {
     while (newNum > numBoxes) {
       numBoxes++;
-      String hue = String.valueOf((360 / 10) * (int) numBoxes);
-      Box newBox = new Box((int) numBoxes);
+      String hue = String.valueOf((360 / 10) * numBoxes);
+      Box newBox = new Box(numBoxes);
       newBox.setStyle("background", "hsla(" + hue + ", 50%, 75%, 0.25)");
       newBox.setStyle("border", "2px solid " + "hsl(" + hue + ", 50%, 35%)");
       newBox.setStyle("color", "hsl(" + hue + ", 50%, 25%)");
@@ -179,8 +179,8 @@ public class FlexContainerBuilderView extends Composite<Div> {
 
   private void removeBox(int newNum) {
     while (newNum < numBoxes) {
-      boxes.get((int) numBoxes - 1).destroyBox();
-      boxes.remove((int) numBoxes - 1);
+      boxes.get(numBoxes - 1).destroyBox();
+      boxes.remove(numBoxes - 1);
       numBoxes--;
     }
   }

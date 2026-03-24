@@ -1,16 +1,20 @@
 ---
 title: Dialog
 sidebar_position: 30
-_i18n_hash: e0d440fddf7ad6be7a78958ae1ddde1a
+_i18n_hash: 4896ea2a90b7c5155fe9ef291e69b2ad
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-dialog" />
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="dialog" location="com/webforj/component/dialog/Dialog" top='true'/>
 
-WebforJ-dialogikomponentti on rakennettu mahdollistamaan kehittäjälle nopea ja helppo tapa näyttää dialogi sovelluksessaan, esimerkkeinä kirjautumisvalikko tai tietoruutu.
+`Dialog`-komponentti näyttää ponnahdusikkunan, joka peittää nykyisen näkymän, kiinnittäen huomiota keskittyneeseen sisältöön, kuten lomakkeisiin, vahvistuksiin tai tiedotusviesteihin.
 
-Komponentti koostuu kolmesta osasta, joista jokainen on `Panel`-komponentti: **otsikko**, **sisältö** ja **alatunniste**.
+<!-- INTRO_END -->
+
+## `Dialog` rakenne {#dialog-structure}
+
+`Dialog` on järjestetty kolmeen osaan: otsikkoon, sisältöalueeseen ja alatunnisteeseen. Komponentteja voidaan lisätä jokaiselle osalle käyttämällä `addToHeader()`, `addToContent()` ja `addToFooter()`.
 
 <ComponentDemo 
 path='/webforj/dialogsections?' 
@@ -18,26 +22,26 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '225px'
 />
 
-## Käyttöesimerkit {#usages}
+## Käyttötarkoitukset {#usages}
 
-1. **Käyttäjäpalautteet ja vahvistus**: `Dialog`-komponentteja käytetään usein palautteen antamiseen tai käyttäjän vahvistuksen pyytämiseen. Ne voivat näyttää käyttäjälle erilaisia tärkeitä palautteita, kuten:
+1. **Käyttäjäpalaute ja vahvistus**: `Dialog`-komponentteja käytetään usein palautteen antamiseen tai käyttäjän vahvistuksen kysymiseen. Ne voivat näyttää erilaisia tärkeitä palautteita käyttäjälle, kuten:
 
   >- Onnistumisviestit 
-  >- Virheilmoitukset
+  >- Virhevaroitukset
   >- Vahvistuslähetykset
 
-2. **Lomake Syöttö ja Muokkaus**: Voit käyttää dialogeja kerätäksesi käyttäjän syötettä tai sallia heidän muokata tietoja hallitussa ja keskittyneessä ympäristössä. Esimerkiksi dialogi voi pompahtaa muokkaamaan käyttäjäprofiilin tietoja tai viimeistelemään monivaiheista lomaketta.
+2. **Lomake syöte ja muokkaus**: Voit käyttää dialogeja kerätäksesi käyttäjäsyötteitä tai salliaksesi heidän muokata tietoja hallitulla ja keskittyneellä tavalla. Esimerkiksi, dialogi voi ilmestyä muokataksesi käyttäjäprofiilin tietoja tai viimeistelläksesi monivaiheista lomaketta.
 
-3. **Kontekstuaalinen Tieto**: Lisäkontekstuaalisen tiedon tai työkaluvihjeiden näyttäminen dialogissa voi auttaa käyttäjiä ymmärtämään monimutkaisia ominaisuuksia tai tietoja. Dialogit voivat tarjota syvällisiä selityksiä, kaavioita tai ohjeasiakirjoja.
+3. **Kontekstuaalinen tieto**: Lisäkontekstuaalisen tiedon tai työkaluvihjeiden näyttäminen dialogissa voi auttaa käyttäjiä ymmärtämään monimutkaisempia ominaisuuksia tai tietoja. Dialogit voivat tarjota syvällisiä selityksiä, kaavioita tai apudokumentaatiota.
 
-4. **Kuvan ja Mediankatselu**: Kun käyttäjät tarvitsevat mediasisältöjen katsomista, `Dialog`-komponenttia voidaan käyttää näyttämään suurempia esikatseluja tai gallerioita, kuten vuorovaikutuksessa:
+4. **Kuvan ja median esikatselut**: Kun käyttäjät tarvitsevat medioiden tarkastelua, `Dialog` voi toimia suurempien esikatselujen tai gallerioiden näyttämiseen, kuten vuorovaikutuksessa:
   >- Kuvien
   >- Videoiden
   >- Muiden medioiden
 
-## Taustakuva ja sumennus {#backdrop-and-blur}
+## Taustakuva ja sumeus {#backdrop-and-blur}
 
-Oma taustakuva-ominaisuus webforJ `Dialog` -komponentissa mahdollistaa taustakuvan näyttämisen dialogin taustalla. Lisäksi, kun se on käytössä, dialogin sumennusominaisuus sumentaa dialogin taustaa. Näiden asetusten muokkaaminen voi auttaa käyttäjiä tarjoamalla syvyyksiä, visuaalista hierarkiaa ja kontekstia, mikä johtaa selvempään ohjaukseen käyttäjälle.
+Ottamalla käyttöön webforJ `Dialog`-komponentin taustakuvan attribuutin, taustakuva näytetään `Dialog`in taustalla. Lisäksi, kun se on käytössä, Dialogin sumea attribuutti sumentaa `Dialog`in taustakuvaa. Näiden asetusten muuttaminen voi auttaa käyttäjiä tarjoamalla syvyyttä, visuaalista hierarkiaa ja kontekstia, mikä johtaa selkeämmän ohjeistuksen antamiseen käyttäjälle.
 
 <ComponentDemo 
 path='/webforj/dialogbackdropblur?' 
@@ -45,14 +49,14 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '300px'
 />
 
-## Dialogin avaus ja sulkeminen {#opening-and-closing-the-dialog}
+## `Dialog`in avaaminen ja sulkeminen {#opening-and-closing-the-dialog}
 
-Uuden `Dialog`-objektin luomisen jälkeen käytä `open()`-metodia dialogin näyttämiseen. Tämän jälkeen `Dialog`-komponentti voidaan sulkea seuraavilla tavoilla:
+Uuden `Dialog`-objektin luomisen jälkeen käytä `open()`-metodia näyttämään dialogi. Sitten `Dialog`-komponentti voidaan sulkea jollakin seuraavista toiminnoista:
 - Käyttämällä `close()`-metodia
-- Painamalla <kbd>ESC</kbd>-näppäintä
-- Napsauttamalla dialogin ulkopuolelle
+- Paina <kbd>ESC</kbd> -näppäintä
+- Klikkaamalla dialogin ulkopuolella
 
-Kehittäjät voivat valita, mitkä toiminnot sulkevat `Dialog`-komponentin käyttäen `setCancelOnEscKey()` ja `setCancelOnOutsideClick()` -metodeja. Lisäksi `setClosable()`-metodi voi estää tai sallia sekä <kbd>ESC</kbd>-näppäimen painamisen että napsauttamisen dialogin ulkopuolella komponentin sulkemiseksi.
+Kehittäjät voivat valita, mitkä vuorovaikutukset sulkevat `Dialog`in käyttäen `setCancelOnEscKey()` ja `setCancelOnOutsideClick()`. Lisäksi, `setClosable()`-metodi voi estää tai sallia sekä <kbd>ESC</kbd> -näppäimen painamisen että klikkauksen dialogin ulkopuolella sulkemaan komponentin.
 
 <ComponentDemo 
 path='/webforj/dialogclose?' 
@@ -60,9 +64,9 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '350px'
 />
 
-## Automaattinen fokus {#auto-focus}
+## Automaattinen tarkennus {#auto-focus}
 
-Kun automaattinen fokus on käytössä, se antaa automaattisesti fokuksen dialogin ensimmäiselle fokusoitavalle elementille. Tämä auttaa ohjaamaan käyttäjien huomion, ja sen voi mukauttaa `setAutoFocus()`-metodin avulla.
+Kun se on käytössä, automaattinen tarkennus antaa automaattisesti tarkennuksen ensimmäiselle elementille dialogissa, joka voi saada tarkennuksen. Tämä on hyödyllistä käyttäjien huomion ohjaamisessa ja se on mukautettavissa `setAutoFocus()`-metodin avulla.
 
 <ComponentDemo 
 path='/webforj/dialogautofocus?' 
@@ -72,10 +76,10 @@ height = '350px'
 
 ## Vedettävä {#draggable}
 
-`Dialog`-komponentti on rakennettu vedettäväksi, mikä mahdollistaa käyttäjän siirtää `Dialog`-ikkunaa napsauttamalla ja vetämällä. Dialogin sijaintia voidaan muuttaa mistä tahansa sen kentistä: otsikosta, sisällöstä tai alatunnisteesta.
+`Dialog`-komponentilla on sisäänrakennettu toiminnallisuus olla vedettävä, mikä sallii käyttäjän siirtää `Dialog`-ikkunaa klikkaamalla ja vetämällä. `Dialog`in sijaintia voidaan muokata mistä tahansa kentästä sen sisällä: otsikosta, sisällöstä tai alatunnisteesta.
 
-### Reunaan tarttuminen {#snap-to-edge}
-On myös mahdollista säätää tätä käyttäytymistä siten, että se tarttuu näytön reunoihin, mikä tarkoittaa, että `Dialog` asettuu automaattisesti näytön reunaan, kun se vapautetaan vetämisestä. Tarttumista voidaan muuttaa `setSnapToEdge()`-metodin avulla. `setSnapThreshold()`-metodi ottaa kuvapisteitä, mikä määrittää, kuinka kaukana dialogin pitäisi olla näytön reunoista, ennen kuin se tarttuu automaattisesti reunoihin.
+### Reunaan napsauttaminen {#snap-to-edge}
+On myös mahdollista kalibroida tämä käyttäytyminen napsauttamaan näytön reunaan, mikä tarkoittaa, että `Dialog` asettuu automaattisesti näyttölaitteen reunalle, kun se vapautetaan vedolta. Napsautus voidaan muuttaa `setSnapToEdge()`-metodin avulla. `setSnapThreshold()` ottaa määrän pikseleitä, mikä määrittää, kuinka kaukana `Dialog`in tulisi olla näytön reunoista ennen kuin se automaattisesti napsauttaa reunoihin.  
 
 <ComponentDemo 
 path='/webforj/dialogdraggable?' 
@@ -83,9 +87,9 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '350px'
 />
 
-## Asettelu {#positioning}
+## Sijoittaminen {#positioning}
 
-Dialogin sijaintia voidaan muuttaa käyttämällä sisäänrakennettuja `setPosx()` ja `setPosy()` -metodeja. Nämä menetelmät ottavat merkkijonon argumenttina, joka voi edustaa mitä tahansa soveltuvaa CSS-pituusyksikköä, kuten pikseleitä tai näkymän korkeutta/leveyttä. Luettelo näistä mittasuhteista [löytyy tältä linkiltä](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#numbers_lengths_and_percentages).
+Dialogin sijaintia voidaan muokata sisäänrakennetuilla `setPosx()` ja `setPosy()` -metodeilla. Nämä metodit ottavat merkkijonon argumenttina, joka voi edustaa mitä tahansa soveltuvaa CSS-mittayksikköä, kuten pikseleitä tai näkymän korkeutta/leveyttä. Lista näistä mittauksista [löytyy tästä linkistä](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#numbers_lengths_and_percentages).
 
 <ComponentDemo 
 path='/webforj/dialogpositioning?' 
@@ -95,7 +99,7 @@ height = '350px'
 
 ### Pystysuora kohdistus {#vertical-alignment}
 
-Manuaalisen dialogin X- ja Y-asetuksen lisäksi dialogin sisäänrakennettua enum-luokkaa voidaan käyttää `Dialog`-komponentin kohdistamiseen. Kolme mahdollista arvoa ovat `TOP`, `CENTER` ja `BOTTOM`, joita voidaan käyttää `setAlignment()`-metodin kanssa.
+Manuaalisen määrityksen lisäksi dialogin X- ja Y-sijainnille, on mahdollista käyttää dialogin sisäänrakennettua enum-luokkaa kohdistamaan `Dialog`. On kolme mahdollista arvoa, `TOP`, `CENTER` ja `BOTTOM`, joista kutakin voidaan käyttää `setAlignment()`-metodin kanssa. 
 
 <ComponentDemo 
 path='/webforj/dialogalignments?' 
@@ -103,25 +107,25 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '550px'
 />
 
-### Koko näyttö ja katkaisupisteet {#full-screen-and-breakpoints}
+### Koko näyttö ja murtopisteet {#full-screen-and-breakpoints}
 
-`Dialog` voidaan asettaa koko näyttötilaan. Kun koko näyttö on käytössä, `Dialog`-komponenttia ei voi siirtää tai asettaa. Tätä tilaa voidaan säätää `Dialog`-komponentin katkaisupisteominaisuudella. Katkaisupiste on media-kysely, joka määrittelee, milloin `Dialog` kääntyy automaattisesti koko näyttöön. Kun kysely vastaa, `Dialog` muuttuu koko näyttötilaan - muuten se on sijoitettu.
+`Dialog` voidaan asettaa siirtymään koko näyttö -tilaan. Kun koko näyttö on käytössä, `Dialog`ia ei voi siirtää tai sijoittaa. Tätä tilaa voidaan muuttaa `Dialog`in murtopisteattribuutilla. Murtopiste on media kysely, joka määrittää, milloin `Dialog` siirtyy automaattisesti koko näyttö -tilaan. Kun kysely täsmää, `Dialog` muuttuu koko näyttöön - muuten se on sijoitettu.
 
-## Tyylit {#styling}
+## Tyylittely {#styling}
 
 ### Teemat {#themes}
 
-`Dialog`-komponentit tulevat <JavadocLink type="foundation" location="com/webforj/component/dialog/Dialog.Theme.html">7 erillisen teeman </JavadocLink> kanssa, jonka avulla voidaan nopeasti muotoilla ilman CSS:n käyttöä. Nämä teemat ovat ennakkoon määriteltyjä tyylejä, joita voidaan soveltaa painikkeisiin niiden ulkonäön ja visuaalisen esityksen muuttamiseksi. Ne tarjoavat nopean ja johdonmukaisen tavan mukauttaa painikkeiden ilmettä koko sovelluksessa.
+`Dialog`-komponenteissa on <JavadocLink type="foundation" location="com/webforj/component/dialog/Dialog.Theme.html">7 erilaista teemaa </JavadocLink>, jotka mahdollistavat nopean tyylittelyn ilman CSS:ää. Nämä teemat ovat ennalta määriteltäviä tyylejä, joita voidaan soveltaa painikkeisiin niiden ulkoasun ja visuaalisen esityksen muuttamiseksi. Ne tarjoavat nopean ja johdonmukaisen tavan muokata painikkeiden ulkoasua koko sovelluksessa.
 
-Vaikka jokaiselle erilaista teemoille on monia käyttötapauksia, joitakin esimerkkejä käyttötapauksista ovat:
+Vaikka jokaiselle eri teeman käyttötarkoituksille on monia mahdollisuuksia, joitain esimerkkejä käytöstä ovat:
 
-  - **Vaarallinen**: Toimet, joilla on vakavia seurauksia, kuten täytettyjen tietojen tyhjentäminen tai tilin/tietojen pysyvä poistaminen, edustavat hyvää käyttötapausta vaarallisten teemojen dialogeille.
-  - **Oletus**: Oletusteema on sopiva sovelluksen toiminnoille, jotka eivät vaadi erityistä huomiota ja jotka ovat yleisiä, kuten asetuksen vaihtaminen.
-  - **Pääteema**: Tämä teema on sopiva "kutsu-toimintaan" sivulla, kuten ilmoittautuminen, muutosten tallentaminen tai siirtyminen toiselle sivulle.
-  - **Onnistuminen**: Onnistumisteemalla varustetut dialogit ovat erinomaisia visualisoimaan onnistuneita toimintoja sovelluksessa, kuten lomakkeen lähettämistä tai kirjautumisprosessin loppuun saattamista. Onnistumisteemaa voidaan ohjelmallisesti soveltaa heti, kun onnistunut toiminto on suoritettu.
-  - **Varoitus**: Varoitusdialogit ovat hyödyllisiä ilmoittamaan käyttäjille, että he ovat suorittamassa mahdollisesti riskialtista toimintoa, kuten siirtymissä sivulle, jossa on tallentamattomia muutoksia. Nämä toiminnot ovat usein vähemmän vaikuttavia kuin ne, joille käytetään vaarallista teemaa.
-  - **Harmaa**: Hyvä hienovaraisille toimille, kuten pienille asetuksille tai toimille, jotka ovat lisättäviä sivulle, eivätkä osa päätoimintoja.
-  - **Tieto**: Tietoteema on hyvä valinta tarjota selventävää, lisätietoa käyttäjälle tarpeen mukaan.
+  - **Vaara**: Toimet, joilla on vakavia seurauksia, kuten täytettyjen tietojen tyhjentäminen tai tilin/tietojen pysyvä poistaminen, edustavat hyvää käyttötilannetta Vaara-teemalla varustetuille dialogeille.
+  - **Oletus**: Oletusteema on sopiva toimiin koko sovelluksessa, jotka eivät vaadi erityistä huomiota ja ovat geneerisiä, kuten asetuksen vaihtaminen.
+  - **Pääasiallinen**: Tämä teema on sopiva pää "toimintakehotteeksi" sivulla, kuten rekisteröityminen, muutosten tallentaminen tai siirtyminen toiselle sivulle.
+  - **Onnistuminen**: Onnistumistason dialogit ovat erinomaisia visualisoimaan onnistumisen päätöstä sovelluksessa, kuten lomakkeen lähettämiseen tai rekisteröitymisprosessin täydentämiseen. Onnistumistason voidaan ohjelmallisesti soveltaa, kun onnistunut toimi on suoritettu.
+  - **Varoitus**: Varoitusdialogit ovat hyödyllisiä ilmoittamaan käyttäjille, että he ovat tekemässä mahdollisesti riskialtista toimintoa, kuten siirtyessään sivulta, jolla on tallentamattomia muutoksia. Nämä toimet ovat usein vähemmän vaikutusvaltaisia kuin ne, jotka käyttävät Vaara-teemaa.
+  - **Harmaa**: Hyvä hienovaraisille toiminnoille, kuten pienille asetuksille tai toiminnoille, jotka ovat enemmän lisäyksiä sivulle eikä päätoiminnallisuudelle.
+  - **Tieto**: Tietoteema on hyvä valinta tarjota selventävää, lisätietoa käyttäjälle tarvittaessa.
 
 <ComponentDemo 
 path='/webforj/dialogthemes?' 

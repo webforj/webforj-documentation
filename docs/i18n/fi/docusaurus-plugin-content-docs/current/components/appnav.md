@@ -1,7 +1,7 @@
 ---
 title: AppNav
 sidebar_position: 6
-_i18n_hash: faa14d827865b1697b369a9787315dcd
+_i18n_hash: d4756db6bed23bc005fbcd2be222b4ea
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-app-nav" />
@@ -9,13 +9,15 @@ _i18n_hash: faa14d827865b1697b369a9787315dcd
 <DocChip chip='since' label='24.12' />
 <JavadocLink type="appnav" location="com/webforj/component/appnav/AppNav" top='true'/> 
 
-`AppNav` -komponentti webforJ:ssä tarjoaa joustavan ja järjestelmällisen sivunavigaatiovalikon, joka tukee sekä tasaisia että hierarkisia rakenteita. Jokainen merkintä on `AppNavItem`, joka voi edustaa yksinkertaista linkkiä tai ryhmää, joka sisältää alakohtia. Kohteita voidaan linkittää sisäisiin näkymiin tai ulkoisiin resursseihin, ja ne voidaan rikastuttaa ikoneilla, merkillä tai muilla komponenteilla.
+`AppNav`-komponentti luo sivuvalikon `AppNavItem`-kohdista. Kohteet voivat linkittää sisäisiin näkymiin tai ulkoisiin resursseihin, pesiytyä vanhempien kohteiden alle muodostaen hierarkkisia valikoita sekä sisältää ikoneita, merkkejä tai muita komponentteja, jotka antavat käyttäjille enemmän kontekstia yhdellä silmäyksellä.
 
-## Lisääminen ja ryhmittely {#adding-and-nesting-items}
+<!-- INTRO_END -->
 
-`AppNavItem`-instansseja käytetään `AppNav`-rakenteen täyttämiseen. Nämä kohteet voivat olla yksinkertaisia linkkejä tai sisäkkäisiä ryhmäotsikoita, jotka sisältävät lapsohjeita. Ryhmäotsikot ilman linkkejä toimivat laajennettavina säiliöinä.
+## Kohteiden lisääminen ja pesiminen {#adding-and-nesting-items}
 
-Käytä `addItem()` lisätäksesi kohteita navigaatioon:
+`AppNavItem`-instansseja käytetään `AppNav`-rakenteen täyttämiseen. Nämä kohteet voivat olla yksinkertaisia linkkejä tai pesityviä ryhmäotsikoita, jotka sisältävät lapsikohteita. Ryhmäotsikot ilman linkkejä toimivat laajennettavina säilytin.
+
+Käytä `addItem()`-metodia lisätäksesi kohteita valikkoon:
 
 ```java
 AppNavItem dashboard = new AppNavItem("Dashboard", "/dashboard");
@@ -28,10 +30,10 @@ nav.addItem(dashboard);
 nav.addItem(admin);
 ```
 
-:::tip Ryhmien kohteiden linkittäminen
-Ylimmän tason kohteet navigaatiopuussa on yleensä tarkoitettu laajennettavaksi — eivät klikattaviksi linkeiksi. Tällaisille kohteille asetettu `path` voi hämmentää käyttäjiä, jotka odottavat niiden paljastavan alakohtia sen sijaan, että ne navigoisivat muualle.
+:::tip Ryhmän kohteiden linkittäminen
+Ylhäällä olevat kohteet navigointipuussa ovat tyypillisesti tarkoitettu laajennettaviksi – eivät klikattaviksi linkeiksi. `path`-asetuksen asettaminen tällaisille kohteille voi hämmentää käyttäjiä, jotka odottavat niiden paljastavan alikohteita sen sijaan, että navigoisivat muualle.
 
-Jos haluat, että ryhmäotsikko laukaisee mukautetun toiminnon (kuten avaa ulkoisia asiakirjoja), pidä ryhmän polku tyhjänä ja lisää sen sijaan interaktiivinen ohjaus, kuten [`IconButton`](./icon#icon-buttons) kohteen liitteenä. Tämä pitää käyttäjäkokemuksen johdonmukaisena ja siistinä.
+Jos haluat, että ryhmäotsikko laukaisee mukautetun toiminnon (kuten ulkoisten asiakirjojen avaamisen), pidä ryhmän polku tyhjänä ja lisää sen sijaan interaktiivinen ohjaus, kuten [`IconButton`](./icon#icon-buttons), kohteen liitteeksi. Tämä pitää käyttäjäkokemuksen johdonmukaisena ja siistinä.
 :::
 
 <!--vale off-->
@@ -44,7 +46,7 @@ urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/hea
 
 ## Kohteiden linkittäminen {#linking-items}
 
-Jokainen `AppNavItem` voi navigoida sisäiseen näkymään tai ulkoiseen linkkiin. Voit määrittää tämän käyttämällä staattisia polkuja tai rekisteröityjä näkemyksiä.
+Jokainen `AppNavItem` voi navigoida sisäiseen näkymään tai ulkoiseen linkkiin. Voit määrittää tämän käyttämällä staattisia polkuja tai rekisteröityjä näkaluokkia.
 
 ### Staattiset polut {#static-paths}
 
@@ -57,13 +59,13 @@ AppNavItem help = new AppNavItem("Help", "https://support.example.com");
 
 ### Rekisteröidyt näkymät {#registered-views}
 
-Jos näkymäsi on rekisteröity [reitittimelle](../routing/overview), voit siirtää luokan sen sijaan, että käyttäisit kiinteää URL:ia:
+Jos näkymäsi on rekisteröity [reitittimellä](../routing/overview), voit siirtää luokan sijasta kovakoodattua URL-osoitetta:
 
 ```java
 AppNavItem settings = new AppNavItem("Settings", SettingsView.class);
 ```
 
-Jos merkitty reittisi tukee [reitityksen parametreja](../routing/route-patterns#named-parameters), voit myös siirtää `ParametersBag`:in:
+Jos annotoitut reitit tukevat [reitin parametreja](../routing/route-patterns#named-parameters), voit myös siirtää `ParametersBag`:in:
 
 ```java
 ParametersBag params = ParametersBag.of("id=123");
@@ -72,7 +74,7 @@ AppNavItem advanced = new AppNavItem("User", UserView.class, params);
 
 ### Kyselyparametrien kanssa {#with-query-parameters}
 
-Siirrä `ParametersBag`, jotta voit sisällyttää kyselymerkit:
+Siirrä `ParametersBag` sisältääksesi kyselymerkkijonot:
 
 ```java
 ParametersBag params = ParametersBag.of("param1=value1&param2=value2");
@@ -82,24 +84,24 @@ advanced.setQueryParameters(params);
 
 ## Kohteen käyttäytyminen {#target-behavior}
 
-Säädä, kuinka linkit avautuvat käyttämällä `setTarget()`. Tämä on erityisen hyödyllistä ulkoisille linkeille tai pop-out-näkymille.
+Hallitse, miten linkit avautuvat käyttämällä `setTarget()`. Tämä on erityisen hyödyllistä ulkoisille linkeille tai ponnahtaville näkymille.
 
-- **`SELF`** (oletus): Avaa nykyisessä näkymässä.
-- **`BLANK`**: Avaa uudessa välilehdessä tai ikkunassa.
-- **`PARENT`**: Avaa ylätason selauskontekstissa.
-- **`TOP`**: Avaa ylimmässä selauskontekstissa.
+- **`SELF`** (oletus): Avautuu nykyisessä näkymässä.
+- **`BLANK`**: Avautuu uudessa välilehdessä tai ikkunassa.
+- **`PARENT`**: Avautuu vanhemmassa selauskontekstissa.
+- **`TOP`**: Avautuu ylimmällä selauskontekstissa.
 
 ```java
 AppNavItem help = new AppNavItem("Help", "https://support.example.com");
 help.setTarget(AppNavItem.NavigationTarget.BLANK);
 ```
 
-## Etuliite ja jälkiliite {#prefix-and-suffix}
+## Etuliite ja suffix {#prefix-and-suffix}
 
-`AppNavItem` tukee etuliite- ja jälkiliitekomponentteja. Käytä näitä tarjoamaan visuaalista selkeyttä ikoneilla, merkeillä tai painikkeilla.
+`AppNavItem` tukee etuliite- ja suffiksi-komponentteja. Käytä näitä antaaksesi visuaalista selkeyttä ikoneilla, merkeillä tai painikkeilla.
 
-- **Etuliite**: ilmestyy ennen merkintää, hyödyllinen ikoneille.
-- **Jälkiliite**: ilmestyy merkin jälkeen, loistava merkeille tai toimille.
+- **Etuliite**: ilmestyy ennen etikettiä, hyödyllinen ikoneille.
+- **Suffiksi**: ilmestyy etikettiä jälkeen, loistava merkeille tai toiminnoille.
 
 ```java
 AppNavItem notifications = new AppNavItem("Alerts");
@@ -107,14 +109,14 @@ notifications.setPrefixComponent(TablerIcon.create("alert"));
 notifications.setSuffixComponent(TablerIcon.create("link"));
 ```
 
-## Automaattisesti avautuvat ryhmät {#auto-opening-groups}
+## Ryhmien automaattinen avaus {#auto-opening-groups}
 
-Käytä `setAutoOpen(true)` `AppNav` -komponentissa, jotta sisäkkäiset ryhmät avautuvat automaattisesti, kun sovellus päivitetään.
+Käytä `setAutoOpen(true)`-asetusta `AppNav`-komponentissa, jotta pesityt ryhmät avautuvat automaattisesti, kun sovellus käynnistetään uudelleen.
 
 ```java
 nav.setAutoOpen(true);
 ```
 
-## Tyylitys `AppNavItem` {#styling-appnavitem}
+## `AppNavItem`-komponentin muotoilu {#styling-appnavitem}
 
 <TableBuilder name="AppNavItem" />

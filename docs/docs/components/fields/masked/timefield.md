@@ -8,15 +8,15 @@ sidebar_position: 20
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedTimeField" top='true'/>
 
-The `MaskedTimeField` is a text input control designed for precise, structured time entry. It lets users enter times as **numbers** and automatically formats the input based on a defined mask when the field loses focus. The mask is a string that specifies the expected time format, guiding both input and display.
+The `MaskedTimeField` is a text input that lets users enter times as **numbers** and automatically formats the input based on a defined mask when the field loses focus. The mask specifies the expected time format, guiding both input and display. The component supports flexible parsing, validation, localization, and value restoration for consistent time handling.
 
-This component supports flexible parsing, validation, localization, and value restoration. It's especially useful in time-sensitive forms like schedules, timesheets, and reservations.
+<!-- INTRO_END -->
+
+## Basics {#basics}
 
 :::tip Looking for date input?
 The `MaskedTimeField` is built for **time-only** input. If you’re looking for a component to handle **dates** with similar mask-based formatting, take a look at the [`MaskedDateField`](./datefield.md).
 :::
-
-## Basics {#basics}
 
 The `MaskedTimeField` can be instantiated with or without parameters. You can define an initial value, a label, a placeholder, and an event listener for value changes.
 

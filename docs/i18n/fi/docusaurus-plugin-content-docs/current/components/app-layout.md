@@ -1,51 +1,51 @@
 ---
 title: AppLayout
 sidebar_position: 5
-_i18n_hash: 7bc8b2a8bfc772644cf2107199615515
+_i18n_hash: 8b9351e865e2651e84f0ae16ef5efc21
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-app-layout" />
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="applayout" location="com/webforj/component/layout/applayout/AppLayout" top='true'/>
 
-`AppLayout` on kattava responsiivinen asettelukomponentti, joka tarjoaa yläpalkin, alatunnisteen, laatikon ja sisältöalueen. Yläpalkki ja alatunniste ovat kiinteitä, laatikko liukuu näkymän sisään ja ulos, ja sisältö on vieritettävää.
+`AppLayout`-komponentti tarjoaa valmiin sivurakenteen kiinteällä yläpalkilla ja alatunnisteella, liukuvalle laatikolle, joka avautuu ja sulkeutuu, sekä vieritettävälle sisältöalueelle. Nämä osiot kattavat hallintapaneelien, hallintapaneelien ja useimpien moniosioisten käyttöliittymien asettelutarpeet.
 
-Tätä komponenttia voidaan käyttää yleisten sovellusten asettelujen, kuten hallintapaneelin, rakentamiseen.
+<!-- INTRO_END -->
 
 ## Ominaisuudet {#features}
 
-webforJ App Layout on komponentti, joka mahdollistaa yleisten sovellusasetusten rakentamisen.
+webforJ App Layout on komponentti, joka mahdollistaa yleisten sovellusten asettelujen rakentamisen.
 
 <ul>
-    <li>Helppokäyttöinen ja mukautettavissa</li>
+    <li>Helppo käyttää ja mukauttaa</li>
     <li>Responsiivinen muotoilu</li>
-    <li>Useita asetteluoptioita</li>
-    <li>Toimii webforJ Tummassa Tilassa</li>
+    <li>Useita asettelu vaihtoehtoja</li>
+    <li>Toimii webforJ Tumma tila -toiminnon kanssa</li>
 </ul>
 
-Se tarjoaa yläpalkin, alatunnisteen, laatikon ja sisältöalueen, jotka kaikki on rakennettu responsiiviseen komponenttiin, jota voidaan helposti mukauttaa yleisten sovellusten, kuten hallintapaneelin, nopeassa rakentamisessa. Yläpalkki ja alatunniste ovat kiinteitä, laatikko liukuu näkymän sisään ja ulos, ja sisältö on vieritettävää.
+Se tarjoaa yläpalkin, alatunnisteen, laatikon ja sisältöosaston, jotka kaikki on rakennettu responsiiviseen komponenttiin, jota voidaan helposti mukauttaa yleisten sovellusten asettelujen, kuten hallintapaneelien, nopeaan rakentamiseen. Yläpalkki ja alatunniste ovat kiinteitä, laatikko liukuu näkymän sisälle ja ulos, ja sisältö on vieritettävää.
 
-Jokainen osa asettelusta on `Div`, joka voi sisältää mitä tahansa kelvollista webforJ-ohjainta. Parhaan tuloksen saavuttamiseksi sovelluksen tulisi sisältää näkymämeta-tag, joka sisältää viewport-fit=cover. Meta-tag saa näkymän skaalautumaan täyttämään laitteen näytön.
+Jokainen asettelun osa on `Div`, joka voi sisältää mitä tahansa kelvollista webforJ-ohjainta. Parhaita tuloksia varten sovelluksen tulisi sisältää näkymämeta-tunniste, joka sisältää viewport-fit=cover. Meta-tunniste saa näkymän muunnettavaksi täyttämään laitteen näytön.
 
 ```java
 @AppMeta(name = "viewport", content = "width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no")
 ```
 
-## Yhteenveto {#overview}
+## Yleiskatsaus {#overview}
 
-Seuraava koodiesimerkki tuottaa sovelluksen, jossa on taitettava sivupalkki, joka sisältää logon ja välilehtiä eri sisältövaihtoehdoille sekä yläpalkin. Esimerkki käyttää dwc-icon-button web-komponenttia laatikon kytkentäpainikkeen luomiseen. Painikkeessa on data-drawer-toggle-attribuutti, joka ohjeistaa DwcAppLayoutia kuuntelemaan napsautustapahtumia tuosta komponentista vaihtamaan laatikon tilaa.
+Seuraavan koodiesimerkin tuloksena on sovellus, jossa on taitettava sivupalkki, joka sisältää logon ja välilehdet eri sisältövaihtoehdoille sekä yläpalkin. Demo käyttää dwc-icon-button-web-komponenttia luodakseen laatikon vaihtonapin. Nappi sisältää data-drawer-toggle -attribuutin, joka ohjaa DwcAppLayoutin kuuntelemaan kyseisestä komponentista tulevia napsautustapahtumia, jotta laatikon tila vaihtuu.
 
 <!--vale off-->
 <AppLayoutViewer path='/webforj/applayout/content/Dashboard?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/applayout/AppLayoutView.java'
 cssURL='/css/applayout/applayout.css'
 urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
-'https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
 <!--vale on-->
 
-## Kokonainen leveä navigointipalkki {#full-width-navbar}
+## Täysleveä navigointipalkki {#full-width-navbar}
 
-Oletusarvoisesti AppLayout renderoi yläpalkin ja alatunnisteen näkymän ulkopuolella. Näkymän ulkopuolella tarkoittaa, että yläpalkin ja alatunnisteen sijainti siirtyy sopimaan avattuun laatikkoon. Tämän tilan poistaminen käytöstä saa yläpalkin ja alatunnisteen viemään koko saatavilla olevan tilan ja siirtämään laatikon ylä- ja alaosaa sopimaan yläpalkin ja alatunnisteen kanssa.
+Oletuksena AppLayout renderöi yläpalkin ja alatunnisteen off-screen-tilassa. Off-screen-tila tarkoittaa, että yläpalkin ja alatunnisteen sijaintia siirretään sopimaan avattavan laatikon viereen. Tämän tilan poistaminen käytöstä aiheuttaa yläpalkin ja alatunnisteen täyttävän koko käytettävissä olevan tilan ja siirtämään laatikon ylä- ja alareunat sopimaan yläpalkin ja alatunnisteen kanssa.
 
 ```java showLineNumbers
 AppLayout myApp = new AppLayout();
@@ -58,131 +58,131 @@ myApp.setFooterOffscreen(false);
 <AppLayoutViewer path='/webforj/applayoutfullnavbar/content/Dashboard?' mobile='false'
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/fullnavbar/AppLayoutFullNavbarView.java'
 cssURL='/css/applayout/applayout.css'
-urls={['https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/fullnavbar/AppLayoutFullNavbarContentView.java',
-'https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
+urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/fullnavbar/AppLayoutFullNavbarContentView.java',
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
 <!--vale on-->
 
 ## Useita työkaluja {#multiple-toolbars}
 
-Navigointipalkissa ei ole rajaa työkaluilla, joita voit lisätä. `Toolbar` on vaakasuuntainen säiliökomponentti, joka sisältää joukon toimintopainikkeita, kuvakkeita tai muita ohjaimia. Lisätäksesi toisen työkalupalkin, käytä yksinkertaisesti `addToHeader()`-menetelmää lisätäksesi toisen `Toolbar`-komponentin.
+Navigointipalkilla ei ole rajoituksia työkaluja, joita voit lisätä. `Toolbar` on vaakasuuntainen säilytysosa, joka sisältää joukon toimintopainikkeita, kuvakkeita tai muita ohjaimia. Lisätäksesi ylimääräisen työkalun, käytä vain `addToHeader()` -menetelmää lisätäksesi toinen `Toolbar`-komponentti.
 
-Seuraava esimerkki näyttää kuinka käyttää kahta työkalupalkkia. Ensimmäinen sisältää laatikon kytkentäpainikkeen ja sovelluksen osoitteen. Toinen työkalupalkki sisältää toissijaisen navigointivalikon.
+Seuraava demo näyttää, miten käyttää kahta työkalua. Ensimmäinen sisältää laatikon vaihtonapin ja sovelluksen nimen. Toinen työkalu sisältää toisen tason valikkorakenteen.
 
 <!--vale off-->
 <AppLayoutViewer path='/webforj/applayoutmultipleheaders/content/Dashboard?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/multipleheaders/AppLayoutMultipleHeadersView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/multipleheaders/AppLayoutMultipleHeadersView.java'
 cssURL='/css/applayout/applayout.css'
-urls={['https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
-'https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/multipleheaders/AppLayoutMultipleHeaderContentView.java',
-'https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
+urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/multipleheaders/AppLayoutMultipleHeaderContentView.java',
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
 <!--vale on-->
 
-## Kiinteät työkalupalkit {#sticky-toolbars}
+## Liikkuvat työkalut {#sticky-toolbars}
 
-Kiinteä työkalupalkki on työkalupalkki, joka pysyy näkyvänä sivun yläosassa, kun käyttäjä vierittää alas, mutta navigointipalkin korkeus on romahtanut, jotta sivun sisällölle on saatavilla enemmän tilaa. Tällaisessa työkalupalkissa on yleensä kiinteä navigointivalikko, joka liittyy nykyiseen sivuun.
+Kiinteä työkalu on työkalu, joka pysyy näkyvissä sivun yläosassa, kun käyttäjä vierittää alas, mutta navigointipalkin korkeus romahtaa, jotta sivun sisällölle saadaan enemmän tilaa. Yleensä tällaisessa työkalussa on kiinteä navigointivalikko, joka liittyy nykyiseen sivuun.
 
-Voit luoda kiinteitä työkalupalkkeja käyttämällä CSS:n mukautettua ominaisuutta `--dwc-app-layout-header-collapse-height` ja `AppLayout.setHeaderReveal()`-vaihtoehtoa.
+On mahdollista luoda liikuteltavia työkaluja käyttämällä CSS:n mukautettua ominaisuutta `--dwc-app-layout-header-collapse-height` ja `AppLayout.setHeaderReveal()` -vaihtoehtoa.
 
-Kun `AppLayout.setHeaderReveal(true)` asetetaan, yläpalkki on näkyvissä ensimmäisellä renderöinnillä, ja se piilotetaan, kun käyttäjä alkaa vierittää alas. Kun käyttäjä alkaa vierittää ylöspäin, yläpalkki paljastuu.
+Kun `AppLayout.setHeaderReveal(true)` on asetettu, yläpalkki on näkyvissä ensimmäisessä renderöinnissä ja sitten piilotettu, kun käyttäjä alkaa vierittää alas. Kun käyttäjä alkaa vierittää ylös, yläpalkki paljastuu jälleen.
 
-CSS:n mukautetun ominaisuuden `--dwc-app-layout-header-collapse-height` avulla voit hallita, kuinka paljon yläpalkin navigointipalkista piilotetaan.
+CSS:n mukautetun ominaisuuden `--dwc-app-layout-header-collapse-height` avulla voidaan hallita, kuinka paljon yläpalkin navigointipalkista piilotetaan.
 
 <!--vale off-->
 <AppLayoutViewer path='/webforj/applayoutstickytoolbar/content/Dashboard?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/stickytoolbar/AppLayoutStickyToolbarView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/stickytoolbar/AppLayoutStickyToolbarView.java'
 cssURL='/css/applayout/applayout.css'
-urls={['https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
-'https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/stickytoolbar/AppLayoutStickyToolbarContentView.java',
+urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/stickytoolbar/AppLayoutStickyToolbarContentView.java',
 'https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
 <!--vale on-->
 
-## Mobiiliviimeistely {#mobile-navigation-layout}
+## Mobiilinavigaatioasettelu {#mobile-navigation-layout}
 
-Alatunnisteen navigointipalkkia voidaan käyttää tarjoamaan erilainen versio navigoinnista sovelluksen alareunassa. Tällainen navigointi on erityisen suosittua mobiilisovelluksissa.
+Alareunan navigointipalkkia voidaan käyttää tarjoamaan erilainen versio navigoinnista sovelluksen alareunassa. Tämän tyyppinen navigointi on erityisen suosittua mobiilisovelluksissa.
 
 Huomaa, että laatikko on piilotettu seuraavassa demossa. AppLayout-widget tukee kolmea laatikon sijaintia: `DrawerPlacement.LEFT`, `DrawerPlacement.RIGHT` ja `DrawerPlacement.HIDDEN`.
 
-Samoin kuin `AppLayout.setHeaderReveal()`, `AppLayout.setFooterReveal()` on tuettu. Kun `AppLayout.setFooterReveal(true)` kutsutaan, alatunniste on näkyvissä ensimmäisellä renderöinnillä ja sitten piilotetaan, kun käyttäjä alkaa vierittää ylöspäin. Kun käyttäjä alkaa vierittää alas, alatunniste paljastuu.
+Samoin kuin `AppLayout.setHeaderReveal()`, `AppLayout.setFooterReveal()` on tuettu. Kun `AppLayout.setFooterReveal(true)` kutsutaan, alatunniste on näkyvissä ensimmäisessä renderöinnissä ja sitten piilotettu, kun käyttäjä alkaa vierittää ylös. Kun käyttäjä alkaa vierittää alas jälleen, alatunniste paljastuu.
 
-Oletusarvoisesti, kun näytön leveys on 800 pikseliä tai vähemmän, laatikko vaihtuu popover-tilaan. Tätä kutsutaan katkaisualueeksi. Popover-tila tarkoittaa, että laatikko pomppaa sisällön alueelle peitteen kanssa. Katkaisualueen voi konfiguroida käyttämällä `setDrawerBreakpoint()`-menetelmää, ja katkaisualueen on oltava voimassa oleva [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries).
+Oletuksena, kun näytön leveys on 800 px tai vähemmän, laatikko siirtyy popover-tilaan. Tämä tunnetaan katkaisupisteenä. Popover-tila tarkoittaa, että laatikko ilmestyy sisällön alueen päälle ylikalusteella. Katkaisupisteet voidaan määrittää käyttämällä `setDrawerBreakpoint()` -menetelmää, ja katkaisupisteen on oltava kelvollinen [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries).
 
 <!--vale off-->
 <AppLayoutViewer path='/webforj/applayoutmobiledrawer/?' mobile='true'
-javaE='https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/mobiledrawer/AppLayoutMobileDrawerView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/mobiledrawer/AppLayoutMobileDrawerView.java'
 cssURL='/css/applayout/applayout.css'
-urls={['https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
-'https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/mobiledrawer/AppLayoutMobileDrawerContentView.java',
-'https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
+urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/mobiledrawer/AppLayoutMobileDrawerContentView.java',
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
 <!--vale on-->
 
 ## Laatikkotyökalut {#drawer-utilities}
 
-`AppLayout` laatikkotyökalut on suunniteltu integroituun navigointiin ja kontekstuaalisiin valikoihin pääsovelluksen asettelussa, kun taas itsenäiset [`Drawer`](https://docs.webforj.com/docs/components/drawer) komponentit tarjoavat joustavia, itsenäisiä liukupaneeleja, joita voidaan käyttää missä tahansa sovelluksessasi lisäsisällön, suodattimien tai ilmoitusten esittämiseen. Tämä osio keskittyy AppLayoutin tarjoamiin sisäänrakennettuihin laatikkotoimintoihin ja -työkaluihin.
+`AppLayout`-laatikon työkalut on suunniteltu integroiduksi navigointiin ja kontekstuaalisiin valikoihin pääsovelluksen asettelussa, kun taas itsenäiset [`Drawer`](https://docs.webforj.com/docs/components/drawer) -komponentit tarjoavat joustavia, itsenäisiä liuku-paneloita, joita voidaan käyttää missä tahansa sovelluksessa lisäsisältöön, suodattimiin tai ilmoituksiin. Tämä osio keskittyy AppLayoutin tarjoamiin sisäänrakennettuihin laatikoiden ominaisuuksiin ja työkaluihin.
 
-### Laatikkokatkaisu {#drawer-breakpoint}
+### Laatikon katkaisupiste {#drawer-breakpoint}
 
-Oletusarvoisesti, kun näytön leveys on 800 pikseliä tai vähemmän, laatikko vaihtuu popover-tilaan. Tätä kutsutaan katkaisualueeksi. Popover-tila tarkoittaa, että laatikko pomppaa sisällön alueelle peitteen kanssa. Katkaisualueen voi konfiguroida käyttämällä `setDrawerBreakpoint()`-menetelmää, ja katkaisualueen on oltava voimassa oleva media query.
+Oletuksena, kun näytön leveys on 800 px tai vähemmän, laatikko siirtyy popover-tilaan. Tämä tunnetaan katkaisupisteenä. Popover-tila tarkoittaa, että laatikko ilmestyy sisällön alueen päälle ylikalusteella. Katkaisupiste voidaan konfiguroida käyttämällä `setDrawerBreakpoint()` -menetelmää, ja katkaisupisteen on oltava kelvollinen media query.
 
-Esimerkiksi seuraavassa esimerkissä laatikkokatkaisu on määritetty 500 pikseliksi tai vähemmäksi.
+Esimerkiksi seuraavassa esimerkissä laatikon katkaisupiste on määritetty 500 px tai vähemmän.
 
 ```java
 AppLayout demo = new AppLayout();
 demo.setDrawerBreakpoint("(max-width:500px)");
 ```
 
-### Laatikkonimi {#drawer-title}
+### Laatikon otsikko {#drawer-title}
 
-`AppLayout` komponentti tarjoaa `addToDrawerTitle()`-menetelmän määrittelemään mukautetun nimen näytettäväksi laatikon yläosassa.
+`AppLayout`-komponentti tarjoaa `addToDrawerTitle()` -menetelmän mukautetun otsikon määrittämiseksi, joka näytetään laatikon otsikossa. 
 
 ```java
 layout.addToDrawerTitle(new Div("Valikko"));
 ```
 
-### Laatikkotoimet {#drawer-actions}
+### Laatikon toiminnot {#drawer-actions}
 
-`AppLayout` komponentti sallii mukautettujen komponenttien, kuten painikkeiden tai kuvakkeiden, sijoittamisen **laatikon yläpalkin toimintojen alueeseen** käyttämällä `addToDrawerHeaderActions()`-menetelmää.
-
-```java
-layout.addToDrawerHeaderActions(
-    new IconButton(TablerIcon.create("bell")),
-);
-```
-
-On mahdollista siirtää useita komponentteja argumentteina:
+`AppLayout`-komponentti mahdollistaa mukautettujen komponenttien, kuten painikkeiden tai kuvakkeiden, sijoittamisen **laatikon yläpalkkiin** käyttäen `addToDrawerHeaderActions()` -menetelmää.
 
 ```java
 layout.addToDrawerHeaderActions(
-    new IconButton(TablerIcon.create("bell")),
-    new Button("Profiili")
+  new IconButton(TablerIcon.create("bell")),
 );
 ```
 
-Laatikkotoimet näkyvät laatikon yläpalkin **oikealla puolella**.
+Useita komponentteja voidaan välittää argumentteina:
+
+```java
+layout.addToDrawerHeaderActions(
+  new IconButton(TablerIcon.create("bell")),
+  new Button("Profiili")
+);
+```
+
+Laatikon toiminnot näkyvät **oikealla puolella** laatikon yläpalkissa.
 
 <!--vale off-->
 <AppLayoutViewer path='/webforj/applayoutdrawerutility/content/Dashboard/?' mobile='false'
-javaE='https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/applayoutdrawerutility/AppLayoutDrawerUtilityView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/applayoutdrawerutility/AppLayoutDrawerUtilityView.java'
 cssURL='/css/applayout/applayout.css'
-urls={['https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
-'https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/applayoutdrawerutility/AppLayoutDrawerUtilityContentView.java',
-'https://raw.githubusercontent.com/webforj/webforj/documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
+urls={['https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/DrawerLogo.java',
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/applayoutdrawerutility/AppLayoutDrawerUtilityContentView.java',
+'https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/applayout/AbstractContentView.java']}/>
 <!--vale on-->
 
 
 ## `AppDrawerToggle` <DocChip chip='since' label='24.12' /> {#appdrawertoggle-docchip-chipsince-label2412-}
 
-[`AppDrawerToggle`](https://javadoc.io/doc/com.webforj/webforj-applayout/latest/com/webforj/component/layout/applayout/AppDrawerToggle.html) komponentti on palvelinpuolen webforJ-luokka, joka edustaa painiketta, jota käytetään navigointilaatikon näkyvyyden vaihtamiseen `AppLayout`-sovelluksessa. Se vastaa asiakaspuolen `<dwc-app-drawer-toggle>`-elementtiä ja on oletuksena tyylitelty käyttäytymään perinteisen hampurilaisvalikon kuvakkeen tapaan, tätä käyttäytymistä voidaan mukauttaa.
+[`AppDrawerToggle`](https://javadoc.io/doc/com.webforj/webforj-applayout/latest/com/webforj/component/layout/applayout/AppDrawerToggle.html)-komponentti on palvelinpuolen webforJ-luokka, joka edustaa painiketta, jota käytetään navigointilaatikon näkyvyyden vaihtamiseen `AppLayout`:ssa. Se vastaa asiakaspuolen `<dwc-app-drawer-toggle>`-elementtiä ja on oletuksena tyylitelty käyttäytymään kuin perinteinen hampurilaisvalikkokuvake, tätä käyttäytymistä voidaan mukauttaa.
 
-### Yhteenveto {#overview-1}
+### Yleiskatsaus {#overview-1}
 
-`AppDrawerToggle` laajentaa `IconButton`-luokkaa ja käyttää oletuksena Tabler-kuvakesarjasta "menu-2" -kuvaketta. Se soveltaa automaattisesti `data-drawer-toggle`-attribuuttia integroidakseen asiakaspuolen laatikkokäyttäytymiseen.
+`AppDrawerToggle` laajentaa `IconButton`-komponenttia ja käyttää oletuksena "menu-2" -kuvaketta Tabler-kuvastoista. Se lisää automaattisesti `data-drawer-toggle` -attribuutin integroitumaan asiakaspuolen laatikon käyttäytymiseen.
 
 ```java
-// Ei vaadi tapahtuman rekisteröintiä:
+// Ei tarvita tapahtuman rekisteröintiä:
 AppLayout layout = new AppLayout();
 layout.addToHeader(new AppDrawerToggle());
-// Laatikkokytkin toimii suoraan—ei tarvitse manuaalisia tapahtumakuuntelijoita.
+// Laatikkon vaihto toimii suoraan—ei tarvita manuaalisia tapahtumakuuntelijoita.
 ```
-## Tyylit {#styling}
+## Tyylitys {#styling}
 
 <TableBuilder name="AppLayout" />

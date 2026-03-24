@@ -9,11 +9,14 @@ slug: choicebox
 <DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/list/ChoiceBox" top='true'/>
 
-<ParentLink parent="List" />
+The `ChoiceBox` component presents a dropdown list from which users select a single option. When a selection is made, the chosen value is displayed in the button. It's a good fit when users need to pick from a fixed set of predefined choices, and arrow keys can be used to navigate the list.
 
-The `ChoiceBox` component is a user interface element designed to present users with a list of options or choices. Users can select a single option from this list, typically by clicking the `ChoiceBox`, which triggers the display of a dropdown list containing available choices. Users can also interact with the `ChoiceBox` with the arrow keys. When a user makes a selection, the chosen option is then displayed in the `ChoiceBox` button.
+<!-- INTRO_END -->
 
 ## Usages {#usages}
+
+<ParentLink parent="List" />
+
 `ChoiceBox` components are used for various purposes, such as selecting items from a menu, choosing from a list of categories, or picking options from predefined sets. They provide an organized and visually pleasing way for users to make selections, particularly when there are multiple options available. Common usages include:
 
 1. **User Selection of Options**: The primary purpose of a `ChoiceBox` is to allow users to select a single option from a list. This is valuable in applications that require users to make choices, such as:

@@ -1,47 +1,47 @@
 ---
 sidebar_position: 5
 title: Triggers
-_i18n_hash: b158a924f67b7141be94d56b9be8bba3
+_i18n_hash: 97f59b66c18e6a2d02174c1ba99f88f1
 ---
-By default, bindings automatically revalidate components when users modify their data, such as entering new text, checking a checkbox, or selecting a new option in a radio button. If you prefer to turn off automatic validations and only report them when writing to the data model, you can configure the binding to turn them off. This gives you control over when and how validations occur, allowing you to manage validations according to specific app needs or user interactions.
+Oletuksena sidokset vahvistavat automaattisesti komponentteja, kun käyttäjät muokkaavat niiden tietoja, kuten syöttämällä uutta tekstiä, tarkistamalla valintaruudun tai valitsemalla uuden vaihtoehdon radiopainikkeessa. Jos haluat poistaa automaattiset vahvistukset käytöstä ja raportoida ne vain tietomalliin kirjoitettaessa, voit määrittää sidonnan poistamaan ne käytöstä. Tämä antaa sinulle hallintaa siitä, milloin ja miten vahvistukset tapahtuvat, jolloin voit hallita vahvistuksia sovelluksen erityisten tarpeiden tai käyttäjäinteraktioiden mukaan.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
 context.bind(emailField, "email")
-    .useValidator(
-        Validator.from(new EmailValidator(), "Mukautettu viesti virheelliselle sähköpostiosoitteelle"))
-    .autoValidate(false)
-    .add();
+  .useValidator(
+    Validator.from(new EmailValidator(), "Mukautettu viesti virheelliselle sähköpostiosoitteelle"))
+  .autoValidate(false)
+  .add();
 ```
 
-It's also possible to turn off the auto-validations for the whole context.
+On myös mahdollista poistaa automaattiset vahvistukset koko kontekstilta.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
 context.setAutoValidate(false);
 ```
 
-:::tip Arvomuutostila
-Some components, like the field components, implement the `ValueChangeModeAware` interface, which lets you control when the system reports a `ValueChangeEvent`. For instance, you can set field components to report value changes only on blur. This configuration reduces the frequency of validations, optimizing performance and enhancing the user experience by focusing validations on moments when the user completes an input session, rather than during active typing.
+:::tip Arvon Muutos Tila
+Jotkut komponentit, kuten kenttäkomponentit, toteuttavat `ValueChangeModeAware`-rajapinnan, joka antaa sinulle hallintaa siitä, milloin järjestelmä raportoi `ValueChangeEvent`:in. Esimerkiksi voit asettaa kenttäkomponentit raportoimaan arvomuutos vain häipymisen yhteydessä. Tämä konfiguraatio vähentää vahvistusten tiheyttä, optimoi suorituskykyä ja parantaa käyttäjäkokemusta keskittymällä vahvistuksiin hetkinä, jolloin käyttäjä viimeistelee syöttösession, sen sijaan että vahvistuksia suoritetaan aktiivisen kirjoittamisen aikana.
 
 ```java
  emailField.setValueChangeMode(ValueChangeMode.ON_BLUR);
 ```
 :::
 
-## Uudelleentarkastus {#revalidation}
+## Uusintavahvistus {#revalidation}
 
-While validations typically trigger automatically during data writing, you can also invoke them manually to verify the state of data without attempting to write it to the model. This manual approach is particularly useful in scenarios where you want to enable or turn off features based on the validity of the form data without making an update.
+Vaikka vahvistukset käynnistyvät tyypillisesti automaattisesti tietojen kirjoittamisen aikana, voit myös kutsua niitä manuaalisesti tarkistaaksesi tietojen tilan ilman, että yrität kirjoittaa sitä malliin. Tämä manuaalinen lähestymistapa on erityisesti hyödyllinen tilanteissa, joissa haluat mahdollistaa tai poistaa käytöstä ominaisuuksia lomakedatan voimassaolon mukaan ilman päivityksen tekemistä.
 
-Consider a classic example of a Trip Date Chooser, where a user must select two dates: the start date and the end date of a trip. It's not valid to choose an end date that occurs before the start date, or a start date that occurs after the end date. You can resolve these dependencies by triggering validations manually:
+Kuvitellaan klassinen esimerkki Matkapäivävalitsijasta, jossa käyttäjän on valittava kaksi päivämäärää: matkan aloituspäivä ja lopetuspäivä. Ei ole pätevä valita lopetuspäivää, joka tapahtuu ennen aloituspäivää, tai aloituspäivää, joka tapahtuu lopetuspäivän jälkeen. Voit ratkaista nämä riippuvuudet käynnistämällä vahvistukset manuaalisesti:
 
 <Tabs>
 <TabItem value="TripBooking" label="TripBooking.java">
 
 ```java showLineNumbers
 public class TripBooking extends App {
-  DateTimeField startDateField = new DateTimeField("Alku päivä");
-  DateTimeField endDateField = new DateTimeField("Loppu päivä");
+  DateTimeField startDateField = new DateTimeField("Aloituspäivä");
+  DateTimeField endDateField = new DateTimeField("Lopetuspäivä");
   FlexLayout layout = FlexLayout.create(startDateField, endDateField).vertical().build().setStyle("margin", "20px auto")
       .setMaxWidth("400px");
 
@@ -52,15 +52,15 @@ public class TripBooking extends App {
   public void run() throws WebforjException {
     BindingContext<Trip> context = new BindingContext<>(Trip.class);
     context.bind(startDateField, "startDate")
-        .useValidator(Objects::nonNull, "Alku päivämäärä on pakollinen")
+        .useValidator(Objects::nonNull, "Aloituspäivä on pakollinen")
         .useValidator(value -> endDate != null && value.isBefore(endDate),
-            "Alku päivämäärän on oltava ennen loppu päivämäärää")
+            "Aloituspäivän on oltava ennen lopetuspäivää")
         .add();
 
     context.bind(endDateField, "endDate")
-        .useValidator(Objects::nonNull, "Loppu päivämäärä on pakollinen")
+        .useValidator(Objects::nonNull, "Lopetuspäivä on pakollinen")
         .useValidator(value -> startDate != null && value.isAfter(startDate),
-            "Loppu päivämäärän on oltava jälkeen alku päivämäärästä")
+            "Lopetuspäivän on oltava jälkeen aloituspäivän")
         .add();
 
     startDateField.setValueChangeMode(ValueChangeMode.ON_BLUR);

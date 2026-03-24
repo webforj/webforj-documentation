@@ -1,7 +1,7 @@
 ---
 title: InfiniteScroll
 sidebar_position: 60
-_i18n_hash: 3384cb35d5087561cc9be2c11b95c7e1
+_i18n_hash: b41c992436f501c03ae93b1dfc2c254b
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-infinite-scroll" />
@@ -10,7 +10,13 @@ _i18n_hash: 3384cb35d5087561cc9be2c11b95c7e1
 
 El componente `InfiniteScroll` en webforJ carga automáticamente más contenido a medida que los usuarios se desplazan hacia abajo, eliminando la necesidad de paginación. Esto crea una experiencia fluida para listas, feeds y vistas con muchos datos al cargar contenido solo cuando es necesario.
 
-Cuando los usuarios llegan al final del contenido desplazable, `InfiniteScroll` desencadena un evento para cargar más datos. Mientras se cargan nuevos contenidos, muestra un [`Spinner`](../components/spinner) con texto personalizable para indicar que más elementos están en camino.
+Cuando los usuarios llegan al final del contenido desplazable, `InfiniteScroll` activa un evento para cargar más datos. Mientras se carga nuevo contenido, muestra un [`Spinner`](../components/spinner) con texto personalizable para indicar que más elementos están en camino.
+
+<!-- INTRO_END -->
+
+## Gestión del estado {#state-management}
+
+El componente `InfiniteScroll` emite eventos y mantiene un estado interno para ayudar a gestionar cómo y cuándo se carga el contenido.
 
 <AppLayoutViewer
 path='/webforj/infinitescroll?' 
@@ -20,20 +26,16 @@ height = '400px'
 mobile='true'
 />
 
-## Gestión de estado {#state-management}
-
-El componente `InfiniteScroll` emite eventos y mantiene un estado interno para ayudar a gestionar cómo y cuándo se carga el contenido.
-
-Para obtener más datos cuando el usuario se desplaza, utiliza el método `onScroll()` o `addScrollListener()` para registrar un oyente. Dentro del oyente, normalmente cargas contenido adicional y llamas a `update()` para refrescar el estado de `InfiniteScroll`.
+Para recuperar más datos cuando el usuario se desplaza, utiliza el método `onScroll()` o `addScrollListener()` para registrar un oyente. Dentro del oyente, normalmente cargas contenido adicional y llamas a `update()` para actualizar el estado de `InfiniteScroll`.
 
 ```java
 infiniteScroll.onScroll(event -> {
-    infiniteScroll.add(new Paragraph("Elemento cargado"));
-    infiniteScroll.update();
+  infiniteScroll.add(new Paragraph("Elemento cargado"));
+  infiniteScroll.update();
 });
 ```
 
-Una vez que todo el contenido ha sido cargado, marca el desplazamiento como completado para prevenir más activaciones. Después de establecer completado, recuerda llamar a `update()` para aplicar el nuevo estado:
+Una vez que todo el contenido ha sido cargado, marca el desplazamiento como completo para evitar más activaciones. Después de establecer como completado, recuerda llamar a `update()` para aplicar el nuevo estado:
 
 ```java
 infiniteScroll.setCompleted(true);
@@ -42,7 +44,7 @@ infiniteScroll.update();
 Esto desactiva el comportamiento de desplazamiento infinito.
 
 :::tip Restablecer la bandera de carga
-Puedes restablecer esta bandera utilizando `setCompleted(false)` si más tarde permites al usuario cargar más contenido (por ejemplo, después de una actualización).
+Puedes restablecer esta bandera usando `setCompleted(false)` si más tarde permites al usuario cargar más contenido (por ejemplo, después de una actualización).
 :::
 
 
@@ -51,11 +53,11 @@ Puedes restablecer esta bandera utilizando `setCompleted(false)` si más tarde p
 Por defecto, `InfiniteScroll` muestra un indicador de carga integrado: un pequeño [`Spinner`](../components/spinner) animado junto con un texto de “Cargando datos”. Puedes cambiar el texto mostrado pasando un mensaje personalizado al constructor de `InfiniteScroll` o utilizando `setText()`.
 
 ```java
-InfiniteScroll infiniteScroll = new InfiniteScroll("Cargando más registros...");
+InfiniteScroll infiniteScroll = new InfiniteScroll("Buscando más registros...");
 infiniteScroll.setText("Cargando más elementos...");
 ```
 
-De manera similar, puedes personalizar el [`Icon`](../components/icon) que se muestra durante la carga utilizando `setIcon()`.
+Del mismo modo, puedes personalizar el [`Icon`](../components/icon) que se muestra durante la carga utilizando `setIcon()`.
 
 <AppLayoutViewer
 path='/webforj/infinitescrollloading?' 
@@ -67,10 +69,9 @@ mobile='true'
 
 ### Personalización completa {#full-customization}
 
-Si deseas reemplazar completamente tanto el [`Spinner`](../components/spinner) como el texto con tu propio marcado,
-puedes agregar contenido directamente en el slot de contenido especial utilizando `addToContent()`.
+Si deseas reemplazar completamente tanto el [`Spinner`](../components/spinner) como el texto con tu propio marcado, puedes agregar contenido directamente en el espacio de contenido especial utilizando `addToContent()`.
 
-Cuando populas el slot de contenido, reemplazas completamente el diseño de carga predeterminado.
+Cuando llenas el espacio de contenido, reemplaza completamente el diseño de carga predeterminado.
 
 <AppLayoutViewer
 path='/webforj/infinitescrollcustomloading?' 
@@ -80,6 +81,6 @@ height = '400px'
 mobile='true'
 />
 
-## Estilización {#styling}
+## Estilo {#styling}
 
 <TableBuilder name="InfiniteScroll" />

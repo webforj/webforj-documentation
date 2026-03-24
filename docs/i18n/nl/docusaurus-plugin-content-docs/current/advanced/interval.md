@@ -1,44 +1,45 @@
 ---
-sidebar_position: 15
+sidebar_position: 20
 title: Interval
-_i18n_hash: dc02bb8f8bb43ee67f300071d3ab4ec7
+_i18n_hash: a220fb1607867630d6bfc03a1ce5d3e9
 ---
 <DocChip chip='since' label='24.02' />
 <JavadocLink type="foundation" location="com/webforj/Interval" top='true'/>
 
-De <JavadocLink type="foundation" location="com/webforj/Interval" code='true' >Interval</JavadocLink> klasse vertegenwoordigt een timer die een [event](../building-ui/events) met een vaste tijdsverloop tussen elke trigger aanroept.
+De <JavadocLink type="foundation" location="com/webforj/Interval" code='true' >Interval</JavadocLink> klasse vertegenwoordigt een timer die een [evenement](../building-ui/events) met een vaste tijdsvertraging tussen elke triggering activeert.
 
-De `Interval` klasse biedt een eenvoudige manier om events na een gespecificeerde vertraging te triggeren. Het is mogelijk om een `Interval` te starten, stoppen en opnieuw te starten indien nodig. Daarnaast kunnen Intervals meerdere luisteraars voor het verstrijken van het event ondersteunen. Geoptimaliseerd voor het webforJ-framework, biedt het betere prestaties in vergelijking met de standaard Java-timer of de Swing-timer.
+De `Interval` klasse biedt een eenvoudige manier om evenementen te activeren na een opgegeven vertraging. Het is mogelijk om een `Interval` te starten, stoppen en opnieuw te starten wanneer nodig. In webforJ heeft een `Interval` een betere prestatie in vergelijking met een standaard Java-timer of Swing-timer. Het ondersteunt ook meerdere luisteraars voor het verstreken evenement.
 
 ## Usages {#usages}
-De `Interval` klasse triggert event(s) met een vaste tijdsverloop. Door Intervals creatief te benutten, kun je de interactie en betrokkenheid van gebruikers op je website verbeteren en tegelijkertijd de ervaring dynamisch en interessant houden:
+De `Interval` klasse activeert evenementen met een vaste tijdsvertraging. Door Intervals creatief te gebruiken, kun je dynamische en interessante ervaringen in je app creëren:
 
-1. **Controleer op Inactiviteit**: Toon een [`Dialog`](../components/dialog) component als er gedurende een bepaalde tijd geen interactie met een formulier heeft plaatsgevonden.
+1. **Controle op Inactiviteit**: Toon een [`Dialog`](../components/dialog) component als er gedurende een bepaalde tijd geen interactie met een formulier heeft plaatsgevonden.
 
-2. **Uitgelichte Inhoud**: Roteren door uitgelichte artikelen, producten of aanbiedingen op je homepage bij elke Interval. Dit houdt de inhoud dynamisch en boeiend.
+2. **Uitgelichte Inhoud**: Wissel tussen uitgelichte artikelen, producten of promoties op jehomepage bij elke Interval. Dit houdt de inhoud dynamisch en boeiend.
 
-3. **Live Gegevens**: Vernieuw gegevens op je app, zoals aandelenprijzen, nieuwsfeeds of weersupdates, bij elke Interval om de gegevens actueel te houden.
+3. **Live Gegevens**: Vernieuw gegevens in je app, zoals aandelenprijzen, nieuwsfeeds of weersupdates, bij elke Interval om de gegevens actueel te houden.
 
-## Beheren van `Interval`-statussen: starten, stoppen en opnieuw starten {#managing-interval-states-starting-stopping-and-restart}
-Een Interval vereist handmatige activatie; gebruik de `start()` methode om deze te starten. Gebruik de `stop()` methode om een Interval te stoppen. De `restart()` methode kan worden gebruikt om de Interval opnieuw te starten.
+## Beheren van `Interval` staten: starten, stoppen en opnieuw starten {#managing-interval-states-starting-stopping-and-restart}
+Een Interval vereist handmatige activatie; gebruik de `start()` methode om deze te initiëren. Om een Interval te stoppen, gebruik de `stop()` methode. De `restart()` methode kan worden gebruikt om de Interval opnieuw te starten.
 
 ## Aanpassen van de `Interval` vertraging {#adjusting-the-interval-delay}
 
-Om de vertraging van een Interval te wijzigen, gebruik de `setDelay(float delay)` methode. De nieuwe vertragingwaarde wordt toegepast nadat de Interval is gestopt of opnieuw gestart.
+Om de vertraging van een Interval te wijzigen, gebruik de `setDelay(float delay)` methode. De nieuwe vertragingwaarde wordt toegepast nadat de Interval ofwel is gestopt of opnieuw is gestart.
+
 
 ```java
-//Veranderen van de Vertraging
+//Verandering van de Vertraging
 Interval.setDelay(2f);
 Interval.restart();
 ```
 
 :::tip
-De vertraging kan fractie-seconden zijn tot milliseconde-resolutie, maar een zeer kleine time-outwaarde veroorzaakt een overvloed aan events sneller dan het programma erop kan reageren.
+De vertraging kan fracties van een seconde zijn met een resolutie tot milliseconden, maar een zeer kleine time-outwaarde kan een overvloed aan evenementen veroorzaken die sneller zijn dan het programma kan reageren.
 :::
 
 ## Luisteraars toevoegen {#adding-listeners}
 
-Je kunt extra luisteraars aan een Interval koppelen met behulp van de `addElapsedListener(EventListener\<Interval.ElapsedEvent\> listener)` methode. Zodra een luisteraar is toegevoegd, wordt deze automatisch geactiveerd bij de volgende interval als de Interval al actief is.
+Je kunt extra luisteraars aan een Interval toevoegen met behulp van de `addElapsedListener(EventListener\<Interval.ElapsedEvent\> listener)` methode. Zodra een luisteraar is toegevoegd, wordt deze automatisch geactiveerd bij de volgende interval als de Interval al actief is.
 
 ```java
 // Luisteraars Toevoegen

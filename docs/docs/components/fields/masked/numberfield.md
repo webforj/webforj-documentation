@@ -12,6 +12,8 @@ The `MaskedNumberField` is a text input designed for structured numeric entry. I
 
 This component supports number formatting, localization of decimal/grouping characters, and optional value constraints like minimums or maximums.
 
+<!-- INTRO_END -->
+
 ## Basics {#basics}
 
 The `MaskedNumberField` can be instantiated with or without parameters. It supports setting an initial value, a label, a placeholder, and an event listener to react to value changes.
