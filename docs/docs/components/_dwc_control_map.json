@@ -22,6 +22,7 @@
 "FileChooser" :"dwc-file-chooser",
 "FontChooser" :"dwc-font-chooser",
 "Icon" :"dwc-icon",
+"IconButton" :"dwc-icon-button",
 "InfiniteScroll": "dwc-infinite-scroll",
 "ListBox" :"dwc-listbox",
 "Loading": "dwc-loading",
@@ -47,6 +48,7 @@
 "SpinnerNumberField" :"dwc-numberfield-spinner",
 "SplitPane" :"dwc-splitter",
 "Splitter":"dwc-splitter",
+"Tab": "dwc-tab",
 "TabbedPane" :"dwc-tabbed-pane",
 "Table": "dwc-table",
 "Terminal": "dwc-terminal",
@@ -56,5 +58,6 @@
 "TimeField": "dwc-timefield",
 "Toast": "dwc-toast",
 "Toolbar": "dwc-toolbar",
-"Tree": "dwc-tree"
+"Tree": "dwc-tree",
+"TreeNode": "dwc-tree-node"
 }

@@ -107,7 +107,7 @@ export default function TableWrapper({ children, title, ...props }) {
                         borderBottom: '1px solid var(--ifm-contents-border-color)'
                     }}
                 >
-                    <h2 style={{ margin: 0, color: 'var(--ifm-font-color-base)' }}>
+                    <h2 style={{ margin: '0 20px 0 0', color: 'var(--ifm-font-color-base)' }}>
                         {resolvedTitle || ""}
                     </h2>
                     <Tooltip title="Close window">
