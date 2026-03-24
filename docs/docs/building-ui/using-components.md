@@ -76,7 +76,7 @@ webforJ also assigns automatic identifiers to components internally. The server-
 ### Styling {#styling}
 
 Three methods cover most styling needs: `setStyle()` for individual CSS property values, and `addClassName()` and `removeClassName()` to apply or remove CSS classes defined in your stylesheets. 
-Use `setStyle()` for values that are computed or change at runtime; use CSS classes for anything static or reusable.
+Use `setStyle()` for minor or one-off styling adjustments, and use CSS classes to apply larger or reusable styling.
 
 ```java
 Div container = new Div();
