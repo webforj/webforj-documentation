@@ -8,7 +8,7 @@ import com.webforj.component.html.elements.Div
 import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.field.textField
 import com.webforj.kotlin.dsl.component.html.elements.paragraph
-import com.webforj.kotlin.dsl.component.login.beforeForm
+import com.webforj.kotlin.dsl.component.login.beforeFormSlot
 import com.webforj.kotlin.dsl.component.login.login
 import com.webforj.kotlin.dsl.component.login.loginErrorI18n
 import com.webforj.kotlin.dsl.component.login.loginI18n
@@ -26,7 +26,7 @@ class LoginCustomFieldsKotlinView: Composite<Div>() {
     self.apply {
       login {
         addClassName("login-form")
-        beforeForm {
+        beforeFormSlot {
           paragraph("Please enter your customer ID, email address and password to enter the customer portal.")
           customerId = textField("Customer ID") {
             name = "customer-id"
