@@ -66,7 +66,6 @@ public class AnalyticsCardCompositeView extends Composite<Div> {
   }
 
   private GoogleChart buildChart() {
-    // Use immutable List.of() for cleaner data definition
     List<Object> data = List.of(
         List.of("Month", "Sales"),
         List.of("Jan", 25000),
@@ -76,7 +75,6 @@ public class AnalyticsCardCompositeView extends Composite<Div> {
         List.of("May", 45000)
     );
 
-    // Use immutable Map.of() for options
     Map<String, Object> textStyle = Map.of("color", "#666666");
     Map<String, Object> options = Map.of(
         "backgroundColor", "transparent",
