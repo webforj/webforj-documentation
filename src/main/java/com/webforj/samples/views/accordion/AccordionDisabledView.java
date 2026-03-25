@@ -14,47 +14,50 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Accordion - Disabled State")
 public class AccordionDisabledView extends Composite<FlexLayout> {
-
   private final FlexLayout self = getBoundComponent();
+  private final Accordion accordion;
 
   public AccordionDisabledView() {
-    self.setDirection(FlexDirection.COLUMN);
-    self.setMaxWidth("700px");
-    self.setStyle("margin", "0 auto");
-    self.setPadding("var(--dwc-space-l)");
-    self.setSpacing("var(--dwc-space-m)");
+    self.setDirection(FlexDirection.COLUMN)
+      .setSpacing("var(--dwc-space-m)")
+      .setPadding("var(--dwc-space-l)")
+      .setMargin("0 auto")
+      .setMaxWidth("700px");
 
-    self.add(new H3("Disabled Panels"));
+    accordion = createAccordionGroup();
 
-    AccordionPanel disabled = new AccordionPanel("This panel is disabled");
-    disabled.add(new Paragraph("You should not be able to see this content."));
-    disabled.setEnabled(false);
-
-    AccordionPanel disabledOpened = new AccordionPanel("Disabled but opened");
-    disabledOpened.add(new Paragraph("This content is visible but the header cannot be clicked to collapse."));
-    disabledOpened.open();
-    disabledOpened.setEnabled(false);
-
-    self.add(disabled, disabledOpened);
-
-    self.add(new H3("Disable entire accordion group"));
-
-    AccordionPanel panel1 = new AccordionPanel("Panel One");
-    panel1.add(new Paragraph("Content for panel one."));
-    panel1.open();
-
-    AccordionPanel panel2 = new AccordionPanel("Panel Two");
-    panel2.add(new Paragraph("Content for panel two."));
-
-    AccordionPanel panel3 = new AccordionPanel("Panel Three");
-    panel3.add(new Paragraph("Content for panel three."));
-
-    Accordion accordion = new Accordion(panel1, panel2, panel3);
-
-    RadioButton toggle = RadioButton.Switch("Accordion enabled");
-    toggle.setChecked(true);
+    RadioButton toggle = RadioButton.Switch("Accordion enabled")
+      .setChecked(true);
     toggle.onToggle(e -> accordion.setEnabled(e.isToggled()));
 
-    self.add(toggle, accordion);
+    self.add(new H3("Disabled Panels"),
+      createDisabledPanel("This panel is disabled", false),
+      createDisabledPanel("Disabled but opened", true),
+      new H3("Disable entire accordion group"),
+      toggle, accordion);
+  }
+
+  private AccordionPanel createDisabledPanel(String title, boolean initiallyOpened) {
+    AccordionPanel panel = new AccordionPanel(title,
+      new Paragraph("You should not be able to see this content."));
+    if (initiallyOpened) {
+      panel.open();
+    }
+    panel.setEnabled(false);
+    return panel;
+  }
+
+  private Accordion createAccordionGroup() {
+    AccordionPanel panel1 = new AccordionPanel("Panel One",
+      new Paragraph("Content for panel one."));
+    panel1.open();
+
+    AccordionPanel panel2 = new AccordionPanel("Panel Two",
+      new Paragraph("Content for panel two."));
+
+    AccordionPanel panel3 = new AccordionPanel("Panel Three",
+      new Paragraph("Content for panel three."));
+
+    return new Accordion(panel1, panel2, panel3);
   }
 }

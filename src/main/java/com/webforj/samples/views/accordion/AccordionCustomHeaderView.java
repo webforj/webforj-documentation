@@ -13,30 +13,30 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Accordion - Custom Header")
 public class AccordionCustomHeaderView extends Composite<FlexLayout> {
-
   private final FlexLayout self = getBoundComponent();
 
   public AccordionCustomHeaderView() {
-    self.setDirection(FlexDirection.COLUMN);
-    self.setMaxWidth("700px");
-    self.setStyle("margin", "0 auto");
-    self.setPadding("var(--dwc-space-l)");
-    self.setSpacing("var(--dwc-space-m)");
+    self.setDirection(FlexDirection.COLUMN)
+      .setSpacing("var(--dwc-space-m)")
+      .setPadding("var(--dwc-space-l)")
+      .setMargin("0 auto")
+      .setMaxWidth("700px")
+      .add(createCustomHeaderPanel(FeatherIcon.SETTINGS, "Custom Header with Icon",
+          "The header slot lets you fully customize the header content."),
+        createCustomHeaderPanel(FeatherIcon.USER, "User Settings",
+          "Another panel with a custom header using the user icon.")
+      );
+  }
 
-    AccordionPanel customHeader = new AccordionPanel();
-    FlexLayout headerContent = FlexLayout.create().horizontal().build()
-        .setSpacing("var(--dwc-space-s)");
-    headerContent.add(FeatherIcon.SETTINGS.create(), new Span("Custom Header with Icon"));
-    customHeader.addToHeader(headerContent);
-    customHeader.add(new Paragraph("The header slot lets you fully customize the header content."));
+  private AccordionPanel createCustomHeaderPanel(FeatherIcon icon, String title, String content) {
+    FlexLayout headerContent = new FlexLayout(icon.create(), new Span(title))
+      .setDirection(FlexDirection.ROW)
+      .setSpacing("var(--dwc-space-s)");
 
-    AccordionPanel customHeader2 = new AccordionPanel();
-    FlexLayout headerContent2 = FlexLayout.create().horizontal().build()
-        .setSpacing("var(--dwc-space-s)");
-    headerContent2.add(FeatherIcon.USER.create(), new Span("User Settings"));
-    customHeader2.addToHeader(headerContent2);
-    customHeader2.add(new Paragraph("Another panel with a custom header using the user icon."));
+    AccordionPanel panel = new AccordionPanel()
+      .addToHeader(headerContent);
+    panel.add(new Paragraph(content));
 
-    self.add(customHeader, customHeader2);
+    return panel;
   }
 }

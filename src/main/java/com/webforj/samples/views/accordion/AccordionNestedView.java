@@ -17,33 +17,38 @@ public class AccordionNestedView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 
   public AccordionNestedView() {
-    self.setDirection(FlexDirection.COLUMN);
-    self.setMaxWidth("700px");
-    self.setStyle("margin", "0 auto");
-    self.setPadding("var(--dwc-space-l)");
-    self.setSpacing("var(--dwc-space-m)");
+    self.setDirection(FlexDirection.COLUMN)
+      .setSpacing("var(--dwc-space-m)")
+      .setPadding("var(--dwc-space-l)")
+      .setMargin("0 auto")
+      .setMaxWidth("700px")
+      .add(new H3("Nested Accordions"),
+        new Paragraph("Accordions can be nested inside other accordion panels."),
+        createOuterPanel(), createSiblingPanel());
+  }
 
-    self.add(new H3("Nested Accordions"));
-    self.add(new Paragraph("Accordions can be nested inside other accordion panels."));
-
-    AccordionPanel innerA = new AccordionPanel("Inner Panel A");
-    innerA.add(new Paragraph("Nested content A"));
-
-    AccordionPanel innerB = new AccordionPanel("Inner Panel B");
-    innerB.add(new Paragraph("Nested content B"));
-
-    AccordionPanel innerC = new AccordionPanel("Inner Panel C");
-    innerC.add(new Paragraph("Nested content C"));
-
-    Accordion innerAccordion = new Accordion(innerA, innerB, innerC);
-
+  private AccordionPanel createOuterPanel() {
     AccordionPanel outer = new AccordionPanel("Outer Panel (contains nested accordion)");
-    outer.add(innerAccordion);
+    outer.add(createInnerAccordion());
     outer.open();
+    return outer;
+  }
 
-    AccordionPanel sibling = new AccordionPanel("Sibling Panel");
-    sibling.add(new Paragraph("This is a sibling of the outer panel."));
+  private AccordionPanel createSiblingPanel() {
+    return new AccordionPanel("Sibling Panel",
+      new Paragraph("This is a sibling of the outer panel."));
+  }
 
-    self.add(outer, sibling);
+  private Accordion createInnerAccordion() {
+    AccordionPanel innerA = new AccordionPanel("Inner Panel A",
+      new Paragraph("Nested content A"));
+
+    AccordionPanel innerB = new AccordionPanel("Inner Panel B",
+      new Paragraph("Nested content B"));
+
+    AccordionPanel innerC = new AccordionPanel("Inner Panel C",
+      new Paragraph("Nested content C"));
+
+    return new Accordion(innerA, innerB, innerC);
   }
 }

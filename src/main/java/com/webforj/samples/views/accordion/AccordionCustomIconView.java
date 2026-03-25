@@ -12,20 +12,19 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Accordion - Custom Icon")
 public class AccordionCustomIconView extends Composite<FlexLayout> {
-
   private final FlexLayout self = getBoundComponent();
 
   public AccordionCustomIconView() {
-    self.setDirection(FlexDirection.COLUMN);
-    self.setMaxWidth("700px");
-    self.setStyle("margin", "0 auto");
-    self.setPadding("var(--dwc-space-l)");
-    self.setSpacing("var(--dwc-space-m)");
+    self.setDirection(FlexDirection.COLUMN)
+      .setSpacing("var(--dwc-space-m)")
+      .setPadding("var(--dwc-space-l)")
+      .setMargin("0 auto")
+      .setMaxWidth("700px");
 
-    AccordionPanel customIcon = new AccordionPanel("Plus Icon Panel");
-    customIcon.setIcon(FeatherIcon.PLUS.create());
-    customIcon.add(new Paragraph("This panel uses a custom expand/collapse icon via the icon slot."));
+    AccordionPanel panel = new AccordionPanel("Plus Icon Panel",
+      new Paragraph("This panel uses a custom expand/collapse icon via the icon slot."))
+      .setIcon(FeatherIcon.PLUS.create());
 
-    self.add(customIcon);
+    self.add(panel);
   }
 }

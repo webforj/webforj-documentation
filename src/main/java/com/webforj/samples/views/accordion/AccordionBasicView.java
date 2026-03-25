@@ -12,29 +12,28 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Accordion - Standalone Panels")
 public class AccordionBasicView extends Composite<FlexLayout> {
-
   private final FlexLayout self = getBoundComponent();
 
   public AccordionBasicView() {
-    self.setDirection(FlexDirection.COLUMN);
-    self.setMaxWidth("700px");
-    self.setStyle("margin", "0 auto");
-    self.setPadding("var(--dwc-space-l)");
-    self.setSpacing("var(--dwc-space-m)");
+    self.setDirection(FlexDirection.COLUMN)
+      .setSpacing("var(--dwc-space-m)")
+      .setPadding("var(--dwc-space-l)")
+      .setMargin("0 auto")
+      .setMaxWidth("700px")
+      .add(
+        new H3("Standalone Panels"),
+        new Paragraph("Each panel works independently without a group wrapper."),
+        createPanel("Section One", "This panel starts opened. Each panel operates independently.", true),
+        createPanel("Section Two", "Content for section two. Click the header to expand.", false),
+        createPanel("Section Three", "Content for section three.", false)
+      );
+  }
 
-    self.add(new H3("Standalone Panels"));
-    self.add(new Paragraph("Each panel works independently without a group wrapper."));
-
-    AccordionPanel panel1 = new AccordionPanel("Section One");
-    panel1.add(new Paragraph("This panel starts opened. Each panel operates independently."));
-    panel1.open();
-
-    AccordionPanel panel2 = new AccordionPanel("Section Two");
-    panel2.add(new Paragraph("Content for section two. Click the header to expand."));
-
-    AccordionPanel panel3 = new AccordionPanel("Section Three");
-    panel3.add(new Paragraph("Content for section three."));
-
-    self.add(panel1, panel2, panel3);
+  private AccordionPanel createPanel(String label, String content, boolean opened) {
+    AccordionPanel panel = new AccordionPanel(label, new Paragraph(content));
+    if (opened) {
+      panel.open();
+    }
+    return panel;
   }
 }
