@@ -23,7 +23,6 @@ public class AppNavPageView extends Composite<Div> {
   private void onNavigate(NavigateEvent ev) {
     ParametersBag parameters = ev.getContext().getRouteParameters();
     parameters.get("id").ifPresent(id -> {
-      // Use String.formatted() for cleaner string formatting
       text.setHtml("Content for <strong>%s</strong> goes here".formatted(id));
     });
   }
