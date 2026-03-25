@@ -1,11 +1,11 @@
 ---
 sidebar_position: 1
 title: Importing Assets
-_i18n_hash: a2aecab2ea12370f1e494703c2ec05af
+_i18n_hash: 0256f553c96c490015f9e19b1eeea533
 ---
-Les annotations d'actifs fournissent une approche déclarative pour intégrer des ressources externes et en ligne telles que JavaScript et CSS dans une application de manière statique. Ces annotations simplifient la gestion des ressources en s'assurant que les dépendances sont chargées au bon moment d'exécution, réduisant ainsi la configuration manuelle et améliorant la maintenabilité.
+Les annotations d'assets fournissent une approche déclarative pour intégrer des ressources externes et en ligne telles que JavaScript et CSS dans une application de façon statique. Ces annotations simplifient la gestion des ressources en garantissant que les dépendances sont chargées au bon moment d'exécution, réduisant la configuration manuelle et améliorant la maintenabilité.
 
-## Importation de fichiers JavaScript {#importing-javascript-files}
+## Importation des fichiers JavaScript {#importing-javascript-files}
 
 L'inclusion déclarative de JavaScript est prise en charge par l'annotation `@JavaScript`, permettant un chargement automatique des dépendances. L'annotation peut être appliquée à la fois au niveau du composant et au niveau de l'application.
 
@@ -14,18 +14,18 @@ L'inclusion déclarative de JavaScript est prise en charge par l'annotation `@Ja
 @JavaScript("https://cdn.example.com/library.js")
 ```
 
-L'annotation accepte un chemin relatif ou complet à charger dans l'application. Cela sera inséré dans le DOM sous forme de balise [`<script>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script). De plus, l'annotation prend en charge les propriétés suivantes :
+L'annotation accepte un chemin relatif ou complet à charger dans l'application. Cela sera inséré dans le DOM sous la forme d'une balise [`<script>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script). De plus, l'annotation prend en charge les propriétés suivantes :
 
 | Propriété    | Type    | Description                                                                                                                                       | Par défaut |
-| ------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| `top`        | Boolean | Spécifie si le script doit être injecté dans la fenêtre de niveau supérieur                                                                     | `false`    |
-| `attributes` | Object  | Un ensemble d'<JavadocLink type="foundation" location="com/webforj/annotation/Attribute" code='true'>attributs</JavadocLink> à appliquer au script. | `{}`       |
+| ------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `top`        | Boolean | Spécifie si le script doit être injecté dans la fenêtre de niveau supérieur                                                                      | `false`     |
+| `attributes` | Object  | Un ensemble d'<JavadocLink type="foundation" location="com/webforj/annotation/Attribute" code='true'>attributs</JavadocLink> à appliquer au script. | `{}`        |
 
 #### Exemple : {#example}
 
 ```java
 @JavaScript(value = "ws://my-component.js",
-    attributes = {@Attribute(name = "type", value = "module")})
+  attributes = {@Attribute(name = "type", value = "module")})
 ```
 
 :::info
@@ -34,24 +34,24 @@ Les fichiers ne sont chargés que lorsque le composant déclarant l'annotation e
 
 ## Injection de JavaScript {#injecting-javascript}
 
-Dans certains cas, vous souhaiterez peut-être injecter du code JavaScript directement dans le DOM au lieu de fournir un chemin JavaScript. L'annotation `InlineJavaScript` vous permet d'injecter du contenu JavaScript.
+Dans certains cas, vous souhaiterez peut-être injecter directement du code JavaScript dans le DOM au lieu de fournir un chemin JavaScript. L'annotation `InlineJavaScript` vous permet d'injecter du contenu JavaScript.
 
 ```java
 @InlineJavaScript("alert('Je suis un script en ligne !');")
 @JavaScript("context://js/app.js")
 ```
 
-| Propriété    | Type    | Description                                                               | Par défaut |
-| ------------ | ------- | ------------------------------------------------------------------------- | ---------- |
-| `top`        | `Boolean` | Spécifie si le script doit être injecté dans la fenêtre de niveau supérieur | `false`    |
-| `attributes` | `Object`  | Attributs à appliquer au script                                         | `{}`       |
-| `id`         | `String`  | Un identifiant unique de ressource pour garantir une seule injection    | `""`       |
+| Propriété    | Type    | Description                                                                | Par défaut |
+| ------------ | ------- | -------------------------------------------------------------------------- | ----------- |
+| `top`        | `Boolean` | Spécifie si le script doit être injecté dans la fenêtre de niveau supérieur | `false`     |
+| `attributes` | `Object`  | Attributs à appliquer au script                                          | `{}`        |
+| `id`         | `String`  | Un identifiant de ressource unique pour garantir une seule injection      | `""`        |
 
 :::warning
-Les scripts peuvent être injectés plusieurs fois à l'aide de `InlineJavaScript` à moins qu'un identifiant spécifique ne soit assigné en utilisant la propriété `id`.
+Les scripts peuvent être injectés plusieurs fois en utilisant `InlineJavaScript` à moins qu'un ID spécifique ne soit assigné en utilisant la propriété `id`.
 :::
 
-## Importation de fichiers CSS {#importing-css-files}
+## Importation des fichiers CSS {#importing-css-files}
 
 L'inclusion déclarative de CSS est prise en charge par l'annotation `@StyleSheet`, permettant un chargement automatique des dépendances. L'annotation peut être appliquée à la fois au niveau du composant et au niveau de l'application.
 
@@ -61,15 +61,15 @@ L'inclusion déclarative de CSS est prise en charge par l'annotation `@StyleShee
 ```
 
 | Propriété    | Type    | Description                                                                   | Par défaut |
-| ------------ | ------- | ----------------------------------------------------------------------------- | ---------- |
-| `top`        | Boolean | Spécifie si le StyleSheet doit être injecté dans la fenêtre de niveau supérieur | `false`    |
-| `attributes` | Object  | Attributs à appliquer au StyleSheet                                         | `{}`       |
+| ------------ | ------- | ----------------------------------------------------------------------------- | ----------- |
+| `top`        | Boolean | Spécifie si la feuille de style doit être injectée dans la fenêtre de niveau supérieur | `false`     |
+| `attributes` | Object  | Attributs à appliquer à la feuille de style                                   | `{}`        |
 
 #### Exemple : {#example-1}
 
 ```java
 @StyleSheet(value = "ws://my-component.css",
-    attributes = {@Attribute(name = "media", value = "screen")})
+  attributes = {@Attribute(name = "media", value = "screen")})
 ```
 
 :::info
@@ -78,7 +78,7 @@ Les fichiers ne sont chargés que lorsque le composant déclarant l'annotation e
 
 ## Injection de CSS {#injecting-css}
 
-L'annotation `InlineStyleSheet` vous permet d'injecter du contenu CSS directement dans une page Web à la fois au niveau du composant et au niveau de l'application.
+L'annotation `InlineStyleSheet` vous permet d'injecter directement du contenu CSS dans une page web à la fois au niveau du composant et au niveau de l'application.
 
 ```java
 @InlineStyleSheet("body { background-color: lightblue; }")
@@ -86,28 +86,28 @@ L'annotation `InlineStyleSheet` vous permet d'injecter du contenu CSS directemen
 ```
 
 | Propriété    | Type    | Description                                                                                                               | Par défaut |
-| ------------ | ------- | ------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| `top`        | Boolean | Spécifie si le StyleSheet doit être injecté dans la fenêtre de niveau supérieur de la page.                              | `false`    |
-| `attributes` | Object  | Un ensemble d'[attributs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style) à appliquer à l'élément de style. | `{}`       |
-| `id`         | String  | Un identifiant unique de ressource. Si plusieurs ressources ont le même ID, elles seront regroupées dans un seul élément de style. | `""`       |
-| `once`       | Boolean | Détermine si le StyleSheet doit être injecté dans la page une seule fois, indépendamment des instances multiples du composant. | `true`     |
+| ------------ | ------- | ------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `top`        | Boolean | Spécifie si la feuille de style doit être injectée dans la fenêtre de niveau supérieur de la page.                       | `false`     |
+| `attributes` | Object  | Un ensemble d'[attributs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style) à appliquer à l'élément de style. | `{}`        |
+| `id`         | String  | Un identifiant de ressource unique. Si plusieurs ressources ont le même ID, elles seront regroupées dans un seul élément de style. | `""`        |
+| `once`       | Boolean | Détermine si la feuille de style doit être injectée dans la page une seule fois, quel que soit le nombre d'instances de composants. | `true`      |
 
 :::tip 
-Pour une meilleure coloration syntaxique lors de l'écriture de CSS en ligne pour vos composants, vous pouvez utiliser l'extension webforJ pour VS Code : [Java HTML CSS Syntax Highlighting](https://marketplace.visualstudio.com/items?itemName=BEU.vscode-java-html).
+Pour un meilleur surlignage de la syntaxe lors de l'écriture de CSS en ligne pour vos composants, vous pouvez utiliser l'extension webforJ VS Code : [Java HTML CSS Syntax Highlighting](https://marketplace.visualstudio.com/items?itemName=BEU.vscode-java-html).
 :::
 
-## Actifs dynamiques à l'exécution {#dynamic-assets-at-runtime}
+## Ressources dynamiques à l'exécution {#dynamic-assets-at-runtime}
 
 La gestion dynamique des ressources est possible grâce à l'injection programmatique de JavaScript et CSS à l'exécution. Vous pouvez charger ou injecter des ressources en fonction du contexte d'exécution.
 
 ### Chargement et injection de JavaScript {#loading-and-injecting-javascript}
 
-Chargez ou injectez dynamiquement du JavaScript à l'exécution en utilisant l'<JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page API</JavadocLink>. Cela vous permet de charger des scripts à partir d'URLs ou d'injecter des scripts en ligne directement dans le DOM.
+Chargez ou injectez dynamiquement du JavaScript à l'exécution en utilisant l'<JavadocLink type="foundation" location="com/webforj/Page" code='true'>API Page</JavadocLink>. Cela vous permet de charger des scripts depuis des URL ou d'injecter des scripts en ligne directement dans le DOM.
 
 ```java
 Page page = Page.getCurrent();
 
-// Chargement de fichiers JavaScript
+// Chargement des fichiers JavaScript
 page.addJavaScript("ws://js/app.js");
 page.addJavaScript("https://cdn.example.com/library.js");
 
@@ -118,18 +118,18 @@ page.addInlineJavaScript("alert('Ce script s'exécute en ligne');");
 
 | Paramètre    | Description                                                                                                             |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------- |
-| `script`     | L'URL ou le contenu du script en ligne à injecter. Les URLs commençant par `context://` se résolvent dans le dossier des ressources de l'application. |
-| `top`        | Détermine si le script doit être injecté en haut de la page.                                                         |
-| `attributes` | Une carte d'attributs à définir pour le script.                                                                        |
+| `script`     | Le contenu du script URL ou en ligne à injecter. Les URLs commençant par `context://` se résolvent dans le dossier racine des ressources de l'application. |
+| `top`        | Détermine si le script doit être injecté en haut de la page.                                                            |
+| `attributes` | Une carte d'attributs à définir pour le script.                                                                         |
 
 ### Chargement et injection de CSS {#loading-and-injecting-css}
 
-Chargez ou injectez dynamiquement du CSS à l'exécution à l'aide de l'<JavadocLink type="foundation" location="com/webforj/Page" code='true'>Page API</JavadocLink>. Cela vous permet de charger des feuilles de style à partir d'URLs ou d'injecter des styles en ligne directement dans le DOM.
+Chargez ou injectez dynamiquement du CSS à l'exécution en utilisant l'<JavadocLink type="foundation" location="com/webforj/Page" code='true'>API Page</JavadocLink>. Cela vous permet de charger des feuilles de style depuis des URL ou d'injecter des styles en ligne directement dans le DOM.
 
 ```java
 Page page = Page.getCurrent();
 
-// Chargement de fichiers CSS
+// Chargement des fichiers CSS
 page.addStyleSheet("ws://css/app.css");
 page.addStyleSheet("https://cdn.example.com/library.css");
 
@@ -140,6 +140,6 @@ page.addInlineStyleSheet("h1 { font-size: 24px; color: navy; }");
 
 | Paramètre    | Description                                                                                                                 |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------- |
-| `stylesheet` | L'URL ou le contenu de StyleSheet en ligne à injecter. Les URLs commençant par `context://` se résolvent dans le dossier des ressources de l'application. |
-| `top`        | Détermine si le StyleSheet doit être injecté en haut de la page.                                                          |
-| `attributes` | Une carte d'attributs à définir pour le StyleSheet.                                                                         |
+| `stylesheet` | Le contenu de la feuille de style URL ou en ligne à injecter. Les URLs commençant par `context://` se résolvent dans le dossier racine des ressources de l'application. |
+| `top`        | Détermine si la feuille de style doit être injectée en haut de la page.                                                    |
+| `attributes` | Une carte d'attributs à définir pour la feuille de style.                                                                    |
