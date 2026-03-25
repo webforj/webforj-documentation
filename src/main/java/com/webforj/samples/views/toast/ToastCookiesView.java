@@ -18,7 +18,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Toast Cookies")
 public class ToastCookiesView extends Composite<Div> {
-  private final Div self = getBoundComponent();
   private final Toast cookiesToast = new Toast();
 
   public ToastCookiesView() {
