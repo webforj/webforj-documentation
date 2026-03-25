@@ -22,11 +22,9 @@ public class ChoiceboxDropdownTypeView extends Composite<Div> {
   private final ChoiceBox demoBox = new ChoiceBox("Department");
 
   public ChoiceboxDropdownTypeView() {
-    // Configure main container
     self.addClassName("frame")
         .add(demoBox);
 
-    // Set custom dropdown type for styling and insert categories
     demoBox.setDropdownType("demo-dropdown-type");
     demoBox.insert(CATEGORIES)
         .selectIndex(0);

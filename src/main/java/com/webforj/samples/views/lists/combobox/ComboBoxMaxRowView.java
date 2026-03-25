@@ -35,20 +35,16 @@ public class ComboBoxMaxRowView extends Composite<FlexLayout> {
         .setSpacing("20px")
         .setWidth(200);
 
-    // Configure number field with validation constraints
     numberField.setStep(1.0)
         .setMax(50.0)
         .setMin(0.0)
         .setRequired(true)
         .setValue((double) comboBox.getMaxRowCount());
 
-    // Enable/disable apply button based on field validity
     numberField.onValueChange(e -> select.setEnabled(!numberField.isInvalid()));
 
-    // Apply max row count when button is clicked
     select.onClick(e -> comboBox.setMaxRowCount(numberField.getValue().intValue()));
 
-    // Insert states into combo box
     comboBox.insert(STATES);
 
     self.add(comboBox, numberField, select);

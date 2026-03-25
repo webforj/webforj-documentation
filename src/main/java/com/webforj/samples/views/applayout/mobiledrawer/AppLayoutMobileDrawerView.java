@@ -50,7 +50,6 @@ public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
     // Drawer's Menu
     drawer.add(new DrawerLogo(), drawerMenu);
 
-    // Adding tabs to drawer menu
     Icon dashboardIcon = TablerIcon.create("dashboard");
     Icon ordersIcon = TablerIcon.create("shopping-cart");
     Icon customersIcon = TablerIcon.create("users");
@@ -80,7 +79,6 @@ public class AppLayoutMobileDrawerView extends Composite<AppLayout> {
             .setAlignment(Alignment.STRETCH)
             .setExpanse(Expanse.XLARGE);
 
-    // Adding tabs to drawer menu
     footerMenu.addTab(createTab("dashboard"));
     footerMenu.addTab(createTab("shopping-cart"));
     footerMenu.addTab(createTab("users"));

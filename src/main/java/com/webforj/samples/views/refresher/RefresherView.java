@@ -27,14 +27,11 @@ public class RefresherView extends Composite<Div> {
   private final Random random = new Random();
 
   public RefresherView() {
-    // Create canvas for displaying items
     Div canvas = new Div()
         .addClassName("is-canvas");
 
-    // Create refresher component
     Refresher refresher = new Refresher();
 
-    // Handle refresh events
     refresher.onRefresh(e -> {
       canvas.removeAll();
       for (int i = 0; i < 8; i++) {
@@ -43,7 +40,6 @@ public class RefresherView extends Composite<Div> {
       refresher.finish();
     });
 
-    // Add initial items and refresher to container
     for (int i = 0; i < 8; i++) {
       canvas.add(new Item());
     }
@@ -61,18 +57,15 @@ public class RefresherView extends Composite<Div> {
       // Select random name from the list
       String name = NAMES.get(random.nextInt(NAMES.size()));
 
-      // Create item components with text content
       Div nameDiv = new Div(name).addClassName("item-name");
       Div excerpt = new Div("""
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
               Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.""")
           .addClassName("item-excerpt");
 
-      // Create arrow icon
       Icon icon = FeatherIcon.ARROW_RIGHT.create()
           .setMinSize("24px", "24px");
 
-      // Compose layout with flexbox
       itemSelf.add(
           FlexLayout.create(
               FlexLayout.create(nameDiv, excerpt)

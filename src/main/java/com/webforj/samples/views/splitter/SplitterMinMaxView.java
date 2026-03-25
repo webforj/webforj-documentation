@@ -13,14 +13,11 @@ public class SplitterMinMaxView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
   public SplitterMinMaxView() {
-    // Create splitter box panels
     SplitterBox master = new SplitterBox("Master", SplitterBox.Theme.INFO);
     SplitterBox detail = new SplitterBox("Detail", SplitterBox.Theme.SUCCESS);
 
-    // Create splitter with the two panels
     Splitter splitter = new Splitter(master, detail);
 
-    // Set minimum and maximum size constraints for master panel
     splitter.setMasterMinSize("200px")
         .setMasterMaxSize("75%");
 

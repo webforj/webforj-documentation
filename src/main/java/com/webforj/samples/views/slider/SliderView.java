@@ -24,14 +24,12 @@ public class SliderView extends Composite<FlexLayout> {
   private final Slider volumeSlider = new Slider();
 
   public SliderView() {
-    // Configure layout
     self.setDirection(FlexDirection.COLUMN)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setAlignment(FlexAlignment.CENTER)
         .setSpacing("var(--dwc-space-l)")
         .setMargin("var(--dwc-space-l)");
 
-    // Configure volume slider with labels and ticks
     volumeSlider.setMin(0)
         .setMax(100)
         .setTicksVisible(true)
@@ -49,20 +47,17 @@ public class SliderView extends Composite<FlexLayout> {
         .setTooltipVisibleOnSlideOnly(true)
         .setWidth("300px");
 
-    // Create mute button
     IconButton muteButton = new IconButton(TablerIcon.create("volume-off"));
     muteButton.setTheme(Theme.DANGER)
         .onClick(e -> {
           volumeSlider.setValue(0);
         });
 
-    // Create max volume button
     IconButton maxVolumeButton = new IconButton(TablerIcon.create("volume-2"));
     maxVolumeButton.onClick(e -> {
       volumeSlider.setValue(100);
     });
 
-    // Create horizontal slider container
     FlexLayout sliderContainer = FlexLayout.create(muteButton, volumeSlider, maxVolumeButton)
             .horizontal()
             .justify().center()

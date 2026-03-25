@@ -48,7 +48,6 @@ public class ButtonView extends Composite<FlexLayout> {
       email.setText("");
     });
 
-    // Build and add rows
     FlexLayout firstRow = FlexLayout.create(firstName, lastName)
         .justify().center()
         .wrap()

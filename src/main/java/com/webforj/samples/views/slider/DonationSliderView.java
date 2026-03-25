@@ -43,14 +43,12 @@ public class DonationSliderView extends Composite<FlexLayout> {
   private Integer currentDonationValue = 50;
 
   public DonationSliderView() {
-    // Configure layout
     self.setDirection(FlexDirection.COLUMN)
             .setJustifyContent(FlexJustifyContent.CENTER)
             .setSpacing("var(--dwc-space-l)")
             .setMargin("var(--dwc-space-l)")
             .setAlignment(FlexAlignment.CENTER);
 
-    // Configure donation slider
     donationSlider.setMax(80)
             .setMin(0)
             .setTicksVisible(true)
@@ -63,7 +61,6 @@ public class DonationSliderView extends Composite<FlexLayout> {
             .setLabels(LABELS)
             .addValueChangeListener(event -> currentDonationValue = event.getValue());
 
-    // Create confirm donation button
     Button confirmButton = new Button(
             "Confirm Donation",
             ButtonTheme.GRAY,

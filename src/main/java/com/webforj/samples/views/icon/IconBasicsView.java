@@ -18,7 +18,6 @@ public class IconBasicsView extends Composite<FlexLayout> {
         .setMargin("var(--dwc-space-l)")
         .setSpacing("var(--dwc-space-m)");
 
-    // Create icons using Tabler Icons
     Icon message = TablerIcon.create("message");
     Icon trash = TablerIcon.create("trash");
     Icon edit = TablerIcon.create("edit");

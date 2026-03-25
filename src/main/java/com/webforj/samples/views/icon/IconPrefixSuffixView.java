@@ -20,13 +20,11 @@ public class IconPrefixSuffixView extends Composite<FlexLayout> {
         .setMargin("var(--dwc-space-l)")
         .setSpacing("var(--dwc-space-l)");
 
-    // Create next button with suffix icon (arrow pointing right)
     Icon arrow = TablerIcon.create("arrow-narrow-right");
     Button nextButton = new Button("Next")
         .setSuffixComponent(arrow)
         .setTheme(ButtonTheme.PRIMARY);
 
-    // Create filter button with prefix icon
     Icon filter = TablerIcon.create("filter");
     Button filterButton = new Button("Filter")
         .setPrefixComponent(filter)

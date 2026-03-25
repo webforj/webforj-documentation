@@ -33,7 +33,6 @@ public class ToastCookiesView extends Composite<Div> {
       .setStyle("width", "100px")
       .setStyle("height", "100px");
 
-    // Use text block for cleaner multi-line text
     Paragraph toastText = new Paragraph("""
       We use cookies to improve your experience.
       By clicking 'Accept all cookies', you agree to our """);

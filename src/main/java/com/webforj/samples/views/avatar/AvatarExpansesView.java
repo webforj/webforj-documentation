@@ -18,7 +18,6 @@ public class AvatarExpansesView extends Composite<FlexLayout> {
         .setMargin("var(--dwc-space-l)")
         .setAlignment(FlexAlignment.CENTER);
 
-    // Iterate through AvatarExpanse values in reverse order (excluding NONE)
     AvatarExpanse[] expanses = AvatarExpanse.values();
     for (int i = expanses.length - 1; i >= 0; i--) {
       AvatarExpanse expanse = expanses[i];

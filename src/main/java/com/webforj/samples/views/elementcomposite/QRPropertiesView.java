@@ -22,7 +22,6 @@ public class QRPropertiesView extends Composite<FlexLayout> {
     self.setMargin("var(--dwc-space-m)")
         .add(qrCode);
 
-    // Setting the properties
     qrCode.setSize(200)
         .setColor("#0059B8");
   }

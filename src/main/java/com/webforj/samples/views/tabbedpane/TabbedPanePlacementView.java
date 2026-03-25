@@ -29,29 +29,24 @@ public class TabbedPanePlacementView extends Composite<Div> {
   private final ChoiceBox placements = new ChoiceBox("Placement");
 
   public TabbedPanePlacementView() {
-    // Configure main container
     self.addClassName("window")
             .add(placements, pane);
 
-    // Create tab icons
     Icon dashboardIcon = TablerIcon.create("dashboard");
     Icon ordersIcon = TablerIcon.create("shopping-cart");
     Icon customersIcon = TablerIcon.create("users");
     Icon productsIcon = TablerIcon.create("box");
     Icon documentsIcon = TablerIcon.create("files");
 
-    // Add tabs to the pane
     pane.addTab(new Tab("Dashboard", dashboardIcon));
     pane.addTab(new Tab("Orders", ordersIcon));
     pane.addTab(new Tab("Customers", customersIcon));
     pane.addTab(new Tab("Products", productsIcon));
     pane.addTab(new Tab("Documents", documentsIcon));
 
-    // Populate placement options
     for (Placement placement : Placement.values()) {
       placements.add(placement.toString());
     }
-    // Handle placement selection
     placements.setWidth("200px")
             .selectIndex(0)
             .onSelect(e -> pane.setPlacement(Placement.valueOf(e.getSelectedItem().getText())));

@@ -32,31 +32,26 @@ public class TabbedPaneExpanseThemeView extends Composite<Div> {
   private final ChoiceBox expanses = new ChoiceBox("Expanses");
 
   public TabbedPaneExpanseThemeView() {
-    // Configure main container
     self.addClassName("window");
 
-    // Create options layout
     FlexLayout options = new FlexLayout();
     options.setSpacing("50px")
             .add(themes, expanses);
 
     self.add(options, pane);
 
-    // Create tab icons
     Icon dashboardIcon = TablerIcon.create("dashboard");
     Icon ordersIcon = TablerIcon.create("shopping-cart");
     Icon customersIcon = TablerIcon.create("users");
     Icon productsIcon = TablerIcon.create("box");
     Icon documentsIcon = TablerIcon.create("files");
 
-    // Add tabs to the pane
     pane.addTab(new Tab("Dashboard", dashboardIcon));
     pane.addTab(new Tab("Orders", ordersIcon));
     pane.addTab(new Tab("Customers", customersIcon));
     pane.addTab(new Tab("Products", productsIcon));
     pane.addTab(new Tab("Documents", documentsIcon));
 
-    // Populate theme options
     for (Theme theme : Theme.values()) {
       themes.add(theme.toString());
     }
@@ -64,7 +59,6 @@ public class TabbedPaneExpanseThemeView extends Composite<Div> {
             .selectIndex(1)
             .onSelect(e -> pane.setTheme(Theme.valueOf(e.getSelectedItem().getText())));
 
-    // Populate expanse options
     for (Expanse expanse : Expanse.values()) {
       expanses.add(expanse.toString());
     }

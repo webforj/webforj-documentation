@@ -15,7 +15,6 @@ public class RadioButtonTextView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 
   public RadioButtonTextView() {
-    // Configure layout
     self.setDirection(FlexDirection.COLUMN)
         .setSpacing("1em")
         .setMargin("20px");

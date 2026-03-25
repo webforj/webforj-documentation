@@ -21,7 +21,6 @@ public class CheckboxExpanseView extends Composite<FlexLayout> {
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setWidth("100%");
 
-    // Iterate through Expanse values in reverse order
     for (int i = Expanse.values().length - 1; i >= 0; i--) {
       Expanse expanse = Expanse.values()[i];
       self.add(new CheckBox(expanse.name()).setExpanse(expanse));

@@ -21,20 +21,16 @@ public class LoginCustomFieldsView extends Composite<Div> {
   private final TextField customerId = new TextField("Customer ID");
 
   public LoginCustomFieldsView() {
-    // Configure custom field
     customerId.setName("customer-id")
         .setRequired(true);
 
-    // Create login and add custom fields
     Login login = new Login();
     login.addClassName("login-form");
 
-    // Add instruction text and custom field before the form
     login.addToBeforeForm(
         new Paragraph("Please enter your customer ID, email address and password to enter the customer portal."));
     login.addToBeforeForm(customerId);
 
-    // Set custom error messages using text block
     LoginI18n i18n = new LoginI18n();
     i18n.getError().setTitle("Incorrect Customer ID, username or password");
     i18n.getError().setMessage("""
@@ -46,7 +42,6 @@ public class LoginCustomFieldsView extends Composite<Div> {
         """);
     login.setI18n(i18n);
 
-    // Handle form submission
     login.onSubmit(ev -> {
       String id = (String) ev.getData().get("customer-id");
       String username = ev.getUsername();

@@ -45,7 +45,6 @@ public class AppLayoutMultipleHeadersView extends Composite<AppLayout> {
     drawer.addClassName("app-layout-drawer")
             .add(new DrawerLogo(), drawerMenu);
 
-    // Adding tabs to drawer menu
     Icon dashboardIcon = TablerIcon.create("dashboard");
     Icon ordersIcon = TablerIcon.create("shopping-cart");
     Icon customersIcon = TablerIcon.create("users");
@@ -62,7 +61,6 @@ public class AppLayoutMultipleHeadersView extends Composite<AppLayout> {
             .addItem(createItem("Tasks", tasksIcon))
             .addItem(createItem("Analytics", analyticsIcon));
 
-    // Adding the additional toolbar with menu items
     secondToolbar.setCompact(true);
 
     secondToolbar.addToStart(secondMenu);

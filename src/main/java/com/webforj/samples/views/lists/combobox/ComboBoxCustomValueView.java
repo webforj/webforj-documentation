@@ -32,7 +32,6 @@ public class ComboBoxCustomValueView extends Composite<FlexLayout> {
     customValue.insert(CATEGORIES)
         .setAllowCustomValue(false);
 
-    // Toggle custom value setting when switch is toggled
     toggle.onToggle(e -> customValue.setAllowCustomValue(!customValue.isAllowCustomValue()));
 
     self.add(customValue, toggle);

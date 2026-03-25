@@ -31,7 +31,6 @@ public class AlertExpansesView extends Composite<FlexLayout> {
     for (int i = expanses.length - 1; i >= 0; i--) {
       Expanse expanse = expanses[i];
       Icon icon = TablerIcon.create("alert-square-rounded");
-      // Use text block for cleaner string formatting
       Paragraph text = new Paragraph("This alert uses the %s expanse.".formatted(expanse));
       Alert alert = new Alert()
           .addToContent(FlexLayout.create(icon, text)

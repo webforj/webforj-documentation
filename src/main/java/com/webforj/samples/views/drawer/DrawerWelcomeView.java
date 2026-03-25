@@ -59,7 +59,6 @@ public class DrawerWelcomeView extends Composite<FlexLayout> {
         .setAutoOpen(true);
     navigation.add(appNav);
 
-    // Adding navigation items
     AppNavItem dashboardItem = new AppNavItem("Dashboard", "/drawerwelcome");
     dashboardItem.setPrefixComponent(TablerIcon.create("dashboard"));
     AppNavItem ordersItem = new AppNavItem("Orders", "/drawerwelcome");

@@ -33,13 +33,11 @@ public class DataTableView extends Composite<Div> {
   private final Paginator paginator;
 
   public DataTableView() {
-    // Initialize data from JSON asset
     List<JsonObject> data = new Gson().fromJson(
         Assets.contentOf(Assets.resolveContextUrl("context://data/olympic-winners.json")),
         new TypeToken<List<JsonObject>>() {
         });
 
-    // Setup repository with filter
     repository = new CollectionRepository<>(data);
     repository.setBaseFilter(json -> {
       JsonElement athlete = json.get("athlete");
@@ -47,11 +45,9 @@ public class DataTableView extends Composite<Div> {
           && athlete.getAsString().toLowerCase().contains(searchTerm);
     });
 
-    // Setup pagination
     paginator = new Paginator(repository);
     paginator.setMax(5);
 
-    // Build and add layout
     FlexLayout layout = FlexLayout.create(buildTableHeader(), buildTable(), buildTableFooter())
         .vertical()
         .contentAlign()
@@ -93,14 +89,12 @@ public class DataTableView extends Composite<Div> {
         .setHeaderCheckboxSelection(false);
 
 
-    // Define columns using helper method
     List<String> columnsList = List.of("athlete", "age", "country", "year", "total");
 
     for (String column : columnsList) {
       table.addColumn(column, json -> extractColumnValue(json, column));
     }
 
-    // Configure columns
     table.getColumns().forEach(column -> column.setSortable(true));
 
     table.getColumnById("athlete")

@@ -36,7 +36,6 @@ public class LoadingDemoView extends Composite<FlexLayout> {
     self.setDirection(FlexDirection.ROW)
             .setMargin("var(--dwc-space-l)");
 
-    // Create first card with guide icon
     card1 = new Div()
             .addClassName("card");
 
@@ -46,7 +45,6 @@ public class LoadingDemoView extends Composite<FlexLayout> {
     buyButton1 = new Button("Buy")
             .setTheme(ButtonTheme.PRIMARY);
 
-    // Create second card with video icon
     card2 = new Div()
             .addClassName("card");
 
@@ -56,16 +54,13 @@ public class LoadingDemoView extends Composite<FlexLayout> {
     buyButton2 = new Button("Buy")
             .setTheme(ButtonTheme.PRIMARY);
 
-    // Create loading indicator with primary theme
     loading = new Loading("Loading... Please wait.")
             .addClassName("loading-overlay");
     loading.getSpinner().setTheme(Theme.PRIMARY);
 
-    // Add content to cards
     card1.add(new Paragraph("User Guide"), guideIcon, buyButton1);
     card2.add(new Paragraph("Video Lessons"), videoIcon, buyButton2, loading);
 
-    // Open loading overlay and add cards to layout
     loading.open();
     self.add(card1, card2);
   }

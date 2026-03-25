@@ -36,12 +36,10 @@ public class ProgressBarOrientationView extends Composite<Div> {
       .setStyle("padding", "20px");
 
   public ProgressBarOrientationView() {
-    // Configure button icons
     start.setPrefixComponent(startIcon);
     pause.setPrefixComponent(pauseIcon);
     reset.setPrefixComponent(resetIcon);
 
-    // Create interval that updates the progress bar
     Interval interval = new Interval(0.1f, event -> {
       Integer progress = bar.getValue() + 1;
       bar.setValue(progress);
@@ -54,7 +52,6 @@ public class ProgressBarOrientationView extends Composite<Div> {
       }
     });
 
-    // Configure progress bar with vertical orientation
     bar.setStyle("--dwc-progressbar-width", "160px")
         .setStyle("--dwc-progressbar-height", "125px")
         .setTheme(Theme.SUCCESS)

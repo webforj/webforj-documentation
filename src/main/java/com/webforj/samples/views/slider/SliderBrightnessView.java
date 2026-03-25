@@ -24,14 +24,12 @@ public class SliderBrightnessView extends Composite<FlexLayout> {
   private final Slider brightnessSlider = new Slider();
 
   public SliderBrightnessView() {
-    // Configure layout
     self.setDirection(FlexDirection.COLUMN)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setSpacing("var(--dwc-space-l)")
         .setMargin("var(--dwc-space-l)")
         .setAlignContent(FlexContentAlignment.CENTER);
 
-    // Configure brightness slider
     brightnessSlider.setMin(0)
         .setMax(100)
         .setMajorTickSpacing(25)
@@ -46,19 +44,16 @@ public class SliderBrightnessView extends Composite<FlexLayout> {
         .setTooltipVisibleOnSlideOnly(true)
         .setWidth("300px");
 
-    // Create low brightness button
     IconButton lowBrightnessButton = new IconButton(TablerIcon.create("sun-low"));
     lowBrightnessButton.onClick(e -> {
       brightnessSlider.setValue(0);
     });
 
-    // Create high brightness button
     IconButton highBrightnessButton = new IconButton(TablerIcon.create("sun-high"));
     highBrightnessButton.onClick(e -> {
       brightnessSlider.setValue(100);
     });
 
-    // Create horizontal slider container
     FlexLayout sliderContainer = FlexLayout.create(lowBrightnessButton, brightnessSlider, highBrightnessButton)
             .horizontal()
             .justify().center()

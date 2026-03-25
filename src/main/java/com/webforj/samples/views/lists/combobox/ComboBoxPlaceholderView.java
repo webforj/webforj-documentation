@@ -23,7 +23,6 @@ public class ComboBoxPlaceholderView extends Composite<FlexLayout> {
     self.setMargin("20px 0 0 20px")
         .setSpacing("20px");
 
-    // Set placeholder text and insert categories
     comboBox.setPlaceholder("Example Placeholder")
         .insert(CATEGORIES);
 

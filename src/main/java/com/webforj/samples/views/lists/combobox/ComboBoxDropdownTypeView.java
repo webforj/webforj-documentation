@@ -22,11 +22,9 @@ public class ComboBoxDropdownTypeView extends Composite<Div> {
   private final ComboBox comboBox = new ComboBox("Department");
 
   public ComboBoxDropdownTypeView() {
-    // Configure main container
     self.addClassName("frame")
         .add(comboBox);
 
-    // Set custom dropdown type for styling and insert categories
     comboBox.setDropdownType("demo-dropdown-type")
         .insert(CATEGORIES)
         .selectIndex(0);

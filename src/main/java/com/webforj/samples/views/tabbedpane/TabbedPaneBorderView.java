@@ -29,28 +29,23 @@ public class TabbedPaneBorderView extends Composite<Div> {
   private final RadioButton active = RadioButton.Switch("Hide Active Indicator");
 
   public TabbedPaneBorderView() {
-    // Configure main container
     self.addClassName("window")
         .add(border, active, pane);
 
-    // Create tab icons
     Icon dashboardIcon = TablerIcon.create("dashboard");
     Icon ordersIcon = TablerIcon.create("shopping-cart");
     Icon customersIcon = TablerIcon.create("users");
     Icon productsIcon = TablerIcon.create("box");
     Icon documentsIcon = TablerIcon.create("files");
 
-    // Add tabs to the pane
     pane.addTab(new Tab("Dashboard", dashboardIcon));
     pane.addTab(new Tab("Orders", ordersIcon));
     pane.addTab(new Tab("Customers", customersIcon));
     pane.addTab(new Tab("Products", productsIcon));
     pane.addTab(new Tab("Documents", documentsIcon));
 
-    // Toggle border visibility
     border.onToggle(e -> pane.setBorderless(!pane.isBorderless()));
 
-    // Toggle active indicator visibility
     active.onToggle(e -> pane.setHideActiveIndicator(!pane.isHideActiveIndicator()));
   }
 }

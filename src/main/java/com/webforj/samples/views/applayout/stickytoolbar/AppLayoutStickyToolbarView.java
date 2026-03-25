@@ -45,7 +45,6 @@ public class AppLayoutStickyToolbarView extends Composite<AppLayout> {
     // Drawer's Menu
     drawer.add(drawerMenu);
 
-    // Adding tabs to drawer menu
     Icon dashboardIcon = TablerIcon.create("dashboard");
     Icon ordersIcon = TablerIcon.create("shopping-cart");
     Icon customersIcon = TablerIcon.create("users");
@@ -62,7 +61,6 @@ public class AppLayoutStickyToolbarView extends Composite<AppLayout> {
             .addItem(createItem("Tasks", tasksIcon))
             .addItem(createItem("Analytics", analyticsIcon));
 
-    // Adding the additional toolbar with menu items
     secondToolbar.setCompact(true)
             .addToStart(secondMenu);
 

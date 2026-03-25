@@ -22,7 +22,6 @@ public class SliderThemesView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 
   public SliderThemesView() {
-    // Configure layout
     self.setDirection(FlexDirection.COLUMN)
         .setAlignment(FlexAlignment.CENTER)
         .setMargin("var(--dwc-space-l)");

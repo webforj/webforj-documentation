@@ -66,7 +66,6 @@ public class TextAreaView extends Composite<FlexLayout> {
   }
 
   private void updateCharCount(String text) {
-    // Use text block for cleaner string formatting
     charCount.setText("Characters: %d / %d".formatted(text.length(), MAX_CHARACTERS));
   }
 }

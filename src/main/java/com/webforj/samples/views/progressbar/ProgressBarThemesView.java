@@ -14,7 +14,6 @@ public class ProgressBarThemesView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
   public ProgressBarThemesView() {
-    // Create vertical layout container
     FlexLayout layout = FlexLayout.create(self)
         .vertical()
         .build()
@@ -22,7 +21,6 @@ public class ProgressBarThemesView extends Composite<Div> {
         .setStyle("margin", "0 auto")
         .setStyle("padding", "20px");
 
-    // Create progress bars for each theme
     for (Theme theme : Theme.values()) {
       ProgressBar bar = new ProgressBar()
           .setAnimated(true)

@@ -27,19 +27,14 @@ public class SpinnerDemoView extends Composite<Div> {
   private final Paragraph resume = new Paragraph("Uploading your resume");
 
   public SpinnerDemoView() {
-    // Configure main container
     self.setStyle("margin-left", "20px");
 
-    // Create layout for position selection
     FlexLayout positionLayout = new FlexLayout(position, new Paragraph("Select the position you wish to apply for"));
 
-    // Create layout for location details
     FlexLayout locationLayout = new FlexLayout(location, new Paragraph("Provide your current location details"));
 
-    // Create layout for spinner with resume text
     FlexLayout spinnerLayout = new FlexLayout(spinner, resume);
 
-    // Create vertical layout with all items
     FlexLayout items = FlexLayout.create(title, positionLayout, locationLayout, spinnerLayout)
         .vertical()
         .justify().center()

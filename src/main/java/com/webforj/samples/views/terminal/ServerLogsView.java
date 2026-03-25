@@ -121,7 +121,6 @@ public class ServerLogsView extends Composite<FlexLayout> {
   }
 
   private void printHelp() {
-    // Use text block for multi-line help output
     terminal.writeln("""
         \u001B[1;36mServer Log Stream Demo\u001B[0m
 

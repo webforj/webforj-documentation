@@ -14,10 +14,8 @@ public class LoginSubmissionView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
   public LoginSubmissionView() {
-    // Create login component
     Login login = new Login();
 
-    // Handle form submission
     login.onSubmit(ev -> {
       String username = ev.getUsername();
       String password = ev.getPassword();

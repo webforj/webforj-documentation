@@ -15,7 +15,6 @@ public class ConfirmDialogOptionsView extends Composite<Div> {
   private final ConfirmDialog dialog;
 
   public ConfirmDialogOptionsView() {
-    // Create confirm dialog with custom options
     dialog = new ConfirmDialog(
             "There are unsaved changes. Do you want to discard or save them?",
             "Unsaved changes",
@@ -34,7 +33,6 @@ public class ConfirmDialogOptionsView extends Composite<Div> {
   private void show() {
     ConfirmDialog.Result result = dialog.show();
 
-    // Show appropriate message based on button clicked
     if (result == ConfirmDialog.Result.FIRST_CUSTOM_BUTTON) {
       OptionDialog.showMessageDialog("Changes discarded", "Discarded", "Got it");
     } else {

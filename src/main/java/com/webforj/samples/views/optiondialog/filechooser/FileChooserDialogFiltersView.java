@@ -18,14 +18,12 @@ public class FileChooserDialogFiltersView extends Composite<Div> {
   private final FileChooserDialog dialog;
 
   public FileChooserDialogFiltersView() {
-    // Create list of file filters
     List<FileChooserFilter> filters = List.of(
             new FileChooserFilter("All Files", "*.*"),
             new FileChooserFilter("Text Files (*.txt)", "*.txt"),
             new FileChooserFilter("Java Files (*.java)", "*.java"),
             new FileChooserFilter("Image Files (*.png, *.jpg, *.jpeg)", "*.png;*.jpg;*.jpeg"));
 
-    // Create file chooser dialog with filters
     dialog = new FileChooserDialog(
             "Choose a file to download",
             System.getProperty("filechooser-files.path"),

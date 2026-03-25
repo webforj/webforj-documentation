@@ -15,7 +15,6 @@ public class FileSaveDialogBasicView extends Composite<Div> {
   private final FileSaveDialog dialog;
 
   public FileSaveDialogBasicView() {
-    // Create file save dialog with default path and filename
     dialog = new FileSaveDialog("Save As", "/usr2/bbx/demos", "report.xls");
     dialog.setRestricted(true);
 

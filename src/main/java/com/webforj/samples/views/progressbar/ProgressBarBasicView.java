@@ -34,12 +34,10 @@ public class ProgressBarBasicView extends Composite<Div> {
       .setStyle("padding", "20px");
 
   public ProgressBarBasicView() {
-    // Configure button icons
     start.setPrefixComponent(startIcon);
     pause.setPrefixComponent(pauseIcon);
     reset.setPrefixComponent(resetIcon);
 
-    // Create interval that updates the progress bar
     Interval interval = new Interval(0.1f, event -> {
       Integer progress = bar.getValue() + 1;
       bar.setValue(progress);
@@ -52,7 +50,6 @@ public class ProgressBarBasicView extends Composite<Div> {
       }
     });
 
-    // Configure progress bar
     bar.setStriped(true)
         .setAnimated(true);
 

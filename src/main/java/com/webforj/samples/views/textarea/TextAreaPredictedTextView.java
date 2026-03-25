@@ -22,7 +22,6 @@ public class TextAreaPredictedTextView extends Composite<FlexLayout> {
         .setMargin("50px auto")
         .setMaxWidth("400px");
 
-    // Use text block for cleaner multi-line helper text
     textArea.setHeight("200px")
         .setHelperText("""
             Type something to see suggestions, for instance, type 'Sky is'.

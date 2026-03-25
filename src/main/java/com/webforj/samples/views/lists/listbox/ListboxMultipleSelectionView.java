@@ -28,11 +28,9 @@ public class ListboxMultipleSelectionView extends Composite<FlexLayout> {
         .setMargin("20px 0 0 20px")
         .setSpacing("20px");
 
-    // Configure ListBox with departments and label
     listBox.insert(DEPARTMENTS)
         .setLabel("Select Department(s)");
 
-    // Toggle between single and multiple selection mode
     selectionModeToggle.onToggle(e -> {
       if (e.isToggled()) {
         listBox.setSelectionMode(SelectionMode.MULTIPLE);

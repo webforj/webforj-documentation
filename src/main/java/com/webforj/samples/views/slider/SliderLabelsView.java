@@ -22,14 +22,12 @@ public class SliderLabelsView extends Composite<FlexLayout> {
   private final Slider slider = new Slider(50, 0, 100);
 
   public SliderLabelsView() {
-    // Configure layout
     self.setDirection(FlexDirection.COLUMN)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setSpacing("var(--dwc-space-m)")
         .setMargin("5% auto")
         .setAlignment(FlexAlignment.CENTER);
 
-    // Configure slider with labels, ticks, and dynamic theming
     slider.setFilled(true)
         .setTicksVisible(true)
         .setMajorTickSpacing(10)

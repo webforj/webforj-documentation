@@ -20,7 +20,6 @@ public class BoundComponentDemoView extends Composite<FlexLayout> {
         .add(new DefaultComposite(), new OverrideComposite());
   }
 
-  // Uses the default constructor for the FlexLayout class
   public static class DefaultComposite extends Composite<FlexLayout> {
     private final FlexLayout self = getBoundComponent();
     private final TextField nameField = new TextField();

@@ -92,7 +92,6 @@ public class TextAreaValidationView extends Composite<FlexLayout> {
     whenAttached().thenAccept(e -> updateStatus());
   }
 
-  // Use pattern matching and lambda for cleaner numeric validation
   private void handleNumericChange(Double value, int min, int max, IntConsumer updater) {
     if (value != null && value >= min && value <= max) {
       updater.accept(value.intValue());
@@ -109,7 +108,6 @@ public class TextAreaValidationView extends Composite<FlexLayout> {
     String text = textArea.getValue();
     List<String> paragraphs = textArea.getParagraphs();
 
-    // Use text block for cleaner multi-line string formatting
     String paragraphSizes = paragraphs.isEmpty() ? "[]" : paragraphs.stream()
         .map(p -> "[" + paragraphs.indexOf(p) + "=" + p.length() + "]")
         .reduce("", String::concat);

@@ -12,7 +12,6 @@ public class LoginBasicView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
   public LoginBasicView() {
-    // Create and open the login component
     Login login = new Login();
     login.open();
 

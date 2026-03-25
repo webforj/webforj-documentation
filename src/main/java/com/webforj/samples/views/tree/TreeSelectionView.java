@@ -50,7 +50,6 @@ public class TreeSelectionView extends Composite<FlexLayout> {
     showSelected.onClick(e -> {
       List<TreeNode> selectedNodes = tree.getSelectedItems();
 
-      // Use text block for cleaner HTML message formatting
       String msg = selectedNodes.isEmpty()
           ? "There are no node selected"
           : """

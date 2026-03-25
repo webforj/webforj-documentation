@@ -21,7 +21,6 @@ public class ButtonExpansesView extends Composite<FlexLayout> {
         .setMargin("var(--dwc-space-l)")
         .add(expanses, demoButton);
 
-    // Build list items by iterating in reverse order (excluding NONE)
     for (int i = Expanse.values().length - 1; i >= 0; i--) {
       Expanse expanse = Expanse.values()[i];
       if (expanse != Expanse.NONE) {

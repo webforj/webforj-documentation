@@ -24,14 +24,12 @@ public class SliderTempView extends Composite<FlexLayout> {
   private final Slider temperatureSlider = new Slider();
 
   public SliderTempView() {
-    // Configure layout
     self.setDirection(FlexDirection.COLUMN)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setSpacing("var(--dwc-space-l)")
         .setMargin("var(--dwc-space-l)")
         .setAlignment(FlexAlignment.CENTER);
 
-    // Configure temperature slider
     temperatureSlider.setMin(60)
         .setMax(90)
         .setValue(72)
@@ -48,7 +46,6 @@ public class SliderTempView extends Composite<FlexLayout> {
         .setTooltipVisibleOnSlideOnly(true)
         .setWidth("300px");
 
-    // Create cold (snowflake) button
     IconButton snowflakeButton = new IconButton(TablerIcon.create("snowflake"));
     snowflakeButton.setTheme(Theme.PRIMARY)
         .setStyle("font-size", "1.5rem")
@@ -56,7 +53,6 @@ public class SliderTempView extends Composite<FlexLayout> {
           temperatureSlider.setValue(60);
         });
 
-    // Create hot (sun) button
     IconButton sunButton = new IconButton(TablerIcon.create("sun"));
     sunButton.setTheme(Theme.DANGER)
         .setStyle("font-size", "1.5rem")
@@ -64,7 +60,6 @@ public class SliderTempView extends Composite<FlexLayout> {
           temperatureSlider.setValue(90);
         });
 
-    // Create horizontal slider container
     FlexLayout sliderContainer = FlexLayout.create(snowflakeButton, temperatureSlider, sunButton)
             .horizontal()
             .justify().between()

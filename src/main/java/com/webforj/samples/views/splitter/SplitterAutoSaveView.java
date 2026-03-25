@@ -18,26 +18,22 @@ public class SplitterAutoSaveView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
   public SplitterAutoSaveView() {
-    // Create top splitter with left and right panels
     SplitterBox topLeft = new SplitterBox("Top Left", SplitterBox.Theme.PRIMARY);
     SplitterBox topRight = new SplitterBox("Top Right", SplitterBox.Theme.INFO);
     Splitter topSplitter = new Splitter("topSplitter", topLeft, topRight)
             .setPositionRelative(30)
             .setAutosave(true);
 
-    // Create bottom splitter with left and right panels
     SplitterBox bottomLeft = new SplitterBox("Bottom Left", SplitterBox.Theme.SUCCESS);
     SplitterBox bottomRight = new SplitterBox("Bottom Right", SplitterBox.Theme.WARNING);
     Splitter bottomSplitter = new Splitter("bottomSplitter", bottomLeft, bottomRight)
             .setPositionRelative(75)
             .setAutosave(true);
 
-    // Create master splitter with top and bottom nested splitters
     Splitter masterSplitter = new Splitter("masterSplitter", topSplitter, bottomSplitter)
             .setOrientation(Splitter.Orientation.VERTICAL)
             .setAutosave(true);
 
-    // Create clear state button
     Button clearState = new Button("Clear State", e -> {
       topSplitter.cleanState();
       bottomSplitter.cleanState();
@@ -45,13 +41,11 @@ public class SplitterAutoSaveView extends Composite<Div> {
       Page.getCurrent().reload();
     });
 
-    // Create reload button
     Element reload = new Element("dwc-icon-button")
             .setAttribute("name", "reload")
             .setAttribute("theme", "primary");
     reload.addEventListener("click", e -> Page.getCurrent().reload());
 
-    // Create toolbar and main layout
     FlexLayout toolbar = FlexLayout.create(reload, clearState)
             .horizontal()
             .build();

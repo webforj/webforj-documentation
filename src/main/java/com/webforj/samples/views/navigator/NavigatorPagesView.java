@@ -14,11 +14,9 @@ public class NavigatorPagesView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
   public NavigatorPagesView() {
-    // Create instruction text and navigator with pages layout
     Paragraph text = new Paragraph("Navigate with the buttons below");
     Navigator nav = new Navigator(100, Layout.PAGES);
 
-    // Configure paginator and handle change events
     nav.getPaginator().setMax(5);
     nav.onChange(e -> {
       int start = e.getStartIndex();
@@ -34,7 +32,6 @@ public class NavigatorPagesView extends Composite<Div> {
       text.setText(formattedText);
     });
 
-    // Add components to container
     self.setStyle("padding", "20px")
         .add(text, nav);
   }

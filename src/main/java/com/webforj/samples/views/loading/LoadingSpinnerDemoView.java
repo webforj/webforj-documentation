@@ -27,15 +27,12 @@ public class LoadingSpinnerDemoView extends Composite<Div> {
   private int state = 1;
 
   public LoadingSpinnerDemoView() {
-    // Create parent container
     parentDiv = new Div()
         .addClassName("card");
 
-    // Create loading indicator without backdrop
     loading = new Loading("Displaying spinner with all themes...")
         .setBackdropVisible(false);
 
-    // Create interval that cycles through spinner themes and options
     interval = new Interval(3f, event -> {
       String text = switch (state) {
         case 1 -> {
@@ -85,7 +82,6 @@ public class LoadingSpinnerDemoView extends Composite<Div> {
       state++;
     });
 
-    // Add components and start the demo
     self.add(parentDiv);
     parentDiv.add(loading);
     loading.open();

@@ -25,14 +25,12 @@ public class SpinnerThemeDemoView extends Composite<FlexLayout> {
   );
 
   public SpinnerThemeDemoView() {
-    // Configure layout
     self.setDirection(FlexDirection.ROW)
         .setAlignment(FlexAlignment.CENTER)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setSpacing("var(--dwc-space-m)")
         .setMargin("var(--dwc-space-l)");
 
-    // Create spinners with different themes
     THEMES.forEach(theme -> {
       Spinner spinner = new Spinner(theme, SpinnerExpanse.MEDIUM);
       self.add(spinner);

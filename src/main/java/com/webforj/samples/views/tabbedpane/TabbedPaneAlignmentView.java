@@ -29,29 +29,24 @@ public class TabbedPaneAlignmentView extends Composite<Div> {
   private final ChoiceBox alignments = new ChoiceBox("Alignment");
 
   public TabbedPaneAlignmentView() {
-    // Configure main container
     self.addClassName("window")
             .add(alignments, pane);
 
-    // Create tab icons
     Icon dashboardIcon = TablerIcon.create("dashboard");
     Icon ordersIcon = TablerIcon.create("shopping-cart");
     Icon customersIcon = TablerIcon.create("users");
     Icon productsIcon = TablerIcon.create("box");
     Icon documentsIcon = TablerIcon.create("files");
 
-    // Add tabs to the pane
     pane.addTab(new Tab("Dashboard", dashboardIcon));
     pane.addTab(new Tab("Orders", ordersIcon));
     pane.addTab(new Tab("Customers", customersIcon));
     pane.addTab(new Tab("Products", productsIcon));
     pane.addTab(new Tab("Documents", documentsIcon));
 
-    // Populate alignment options
     for (Alignment alignment : Alignment.values()) {
       alignments.add(alignment.toString());
     }
-    // Handle alignment selection
     alignments.setWidth("200px")
             .selectIndex(0)
             .onSelect(e -> pane.setAlignment(Alignment.valueOf(e.getSelectedItem().getText())));

@@ -18,14 +18,12 @@ public class FileSaveDialogFiltersView extends Composite<Div> {
   private final FileSaveDialog dialog;
 
   public FileSaveDialogFiltersView() {
-    // Create list of file filters
     List<FileChooserFilter> filters = List.of(
         new FileChooserFilter("All Files", "*.*"),
         new FileChooserFilter("Text Files", "*.txt"),
         new FileChooserFilter("CSV Files", "*.csv"),
         new FileChooserFilter("Excel Files", "*.xls;*.xlsx"));
 
-    // Create file save dialog with filters
     dialog = new FileSaveDialog("Save As", "/usr2/bbx/demos", "export.txt", filters);
     dialog.setRestricted(true);
 

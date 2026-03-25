@@ -16,7 +16,6 @@ public class FileUploadDialogBasicView extends Composite<Div> {
   private final FileUploadDialog dialog;
 
   public FileUploadDialogBasicView() {
-    // Create file upload dialog
     dialog = new FileUploadDialog("Upload a file")
             .setFileSystemAccess(false);
 
@@ -30,7 +29,6 @@ public class FileUploadDialogBasicView extends Composite<Div> {
     UploadedFile file = dialog.show();
 
     if (file != null) {
-      // Process the uploaded file (delete for demo purposes)
       file.delete();
       OptionDialog.showMessageDialog("File uploaded successfully", "File Uploaded");
     } else {

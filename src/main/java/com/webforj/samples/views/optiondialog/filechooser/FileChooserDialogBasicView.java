@@ -15,7 +15,6 @@ public class FileChooserDialogBasicView extends Composite<Div> {
   private final FileChooserDialog dialog;
 
   public FileChooserDialogBasicView() {
-    // Create directory chooser dialog
     dialog = new FileChooserDialog(
             "Choose Directory to save",
             System.getProperty("filechooser-files.path"),

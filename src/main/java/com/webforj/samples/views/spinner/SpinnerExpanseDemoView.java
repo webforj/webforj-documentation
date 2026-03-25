@@ -22,7 +22,6 @@ public class SpinnerExpanseDemoView extends Composite<FlexLayout> {
   private final Spinner largeSpinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.LARGE);
 
   public SpinnerExpanseDemoView() {
-    // Configure layout
     self.setDirection(FlexDirection.ROW)
         .setAlignment(FlexAlignment.CENTER)
         .setJustifyContent(FlexJustifyContent.CENTER)

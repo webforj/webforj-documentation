@@ -23,21 +23,18 @@ public class SpinnerDirectionDemoView extends Composite<FlexLayout> {
   private final FlexLayout buttonContainer;
 
   public SpinnerDirectionDemoView() {
-    // Configure layout
     self.setDirection(FlexDirection.COLUMN)
         .setAlignment(FlexAlignment.CENTER)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setSpacing("var(--dwc-space-m)")
         .setMargin("var(--dwc-space-l)");
 
-    // Create direction control buttons
     clockwiseButton = new Button("Clockwise", e -> spinner.setClockwise(true))
         .setWidth("200px");
 
     counterClockwiseButton = new Button("Counterclockwise", e -> spinner.setClockwise(false))
         .setWidth("200px");
 
-    // Create button container
     buttonContainer = new FlexLayout(clockwiseButton, counterClockwiseButton)
             .setMargin("var(--dwc-space-s)");
 

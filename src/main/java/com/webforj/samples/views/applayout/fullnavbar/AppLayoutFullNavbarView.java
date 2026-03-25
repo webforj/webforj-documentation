@@ -35,7 +35,6 @@ public class AppLayoutFullNavbarView extends Composite<AppLayout> {
     // Drawer's Menu
     self.addToDrawer(drawerMenu);
 
-    // Adding tabs to drawer menu
     Icon dashboardIcon = TablerIcon.create("dashboard");
     Icon ordersIcon = TablerIcon.create("shopping-cart");
     Icon customersIcon = TablerIcon.create("users");

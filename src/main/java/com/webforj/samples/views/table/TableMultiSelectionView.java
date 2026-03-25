@@ -34,7 +34,6 @@ public class TableMultiSelectionView extends Composite<Div> {
       String msg = "There are no records selected";
 
       if (!records.isEmpty()) {
-        // Use text block for multi-line HTML
         msg = """
             <html> You have selected the following records
             %s

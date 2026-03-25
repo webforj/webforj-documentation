@@ -13,11 +13,9 @@ public class SplitterPositionView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
   public SplitterPositionView() {
-    // Create splitter box panels
     SplitterBox master = new SplitterBox("Master", SplitterBox.Theme.INFO);
     SplitterBox detail = new SplitterBox("Detail", SplitterBox.Theme.SUCCESS);
 
-    // Create splitter and set initial position to 75%
     Splitter splitter = new Splitter(master, detail)
             .setPositionRelative(75);
 

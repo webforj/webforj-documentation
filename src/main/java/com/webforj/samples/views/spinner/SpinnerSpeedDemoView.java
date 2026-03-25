@@ -26,20 +26,17 @@ public class SpinnerSpeedDemoView extends Composite<FlexLayout> {
   private final Button pauseResumeButton;
 
   public SpinnerSpeedDemoView() {
-    // Configure layout
     self.setDirection(FlexDirection.COLUMN)
         .setAlignment(FlexAlignment.CENTER)
         .setJustifyContent(FlexJustifyContent.CENTER)
         .setSpacing("var(--dwc-space-m)")
         .setMargin("var(--dwc-space-l)");
 
-    // Create speed control buttons
     slowButton = new Button("Slow", e -> setSpinnerSpeed(spinner, 1000));
     mediumButton = new Button("Medium", e -> setSpinnerSpeed(spinner, 500));
     fastButton = new Button("Fast", e -> setSpinnerSpeed(spinner, 200));
     pauseResumeButton = new Button("Pause", ButtonTheme.PRIMARY, e -> spinner.setPaused(true));
 
-    // Create button container
     FlexLayout buttons = new FlexLayout(slowButton, mediumButton, fastButton, pauseResumeButton)
             .setMargin("var(--dwc-space-s)");
 

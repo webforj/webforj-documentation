@@ -19,16 +19,13 @@ public class NavigatorLayoutView extends Composite<Div> {
   private final FlexLayout layout = FlexLayout.create(navLayout, nav).vertical().build();
 
   public NavigatorLayoutView() {
-    // Configure navigator and layout
     layout.setMaxWidth("400px");
     nav.addClassName("nav")
             .getPaginator().setMax(5);
 
-    // Configure layout selector
     navLayout.insert("NONE", "PAGES", "PREVIEW", "QUICK_JUMP");
     navLayout.selectIndex(2);
 
-    // Handle layout selection changes
     navLayout.onSelect(ev -> {
       String selected = ev.getSelectedItem().getText();
       nav.setLayout(switch (selected) {
@@ -40,7 +37,6 @@ public class NavigatorLayoutView extends Composite<Div> {
       });
     });
 
-    // Add layout to container
     self.setStyle("padding", "20px")
         .add(layout);
   }

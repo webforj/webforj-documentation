@@ -13,11 +13,9 @@ public class SplitterBasicView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
   public SplitterBasicView() {
-    // Create splitter box panels
     SplitterBox master = new SplitterBox("Master", SplitterBox.Theme.INFO);
     SplitterBox detail = new SplitterBox("Detail", SplitterBox.Theme.SUCCESS);
 
-    // Create splitter with the two panels
     Splitter splitter = new Splitter(master, detail);
 
     self.add(splitter);

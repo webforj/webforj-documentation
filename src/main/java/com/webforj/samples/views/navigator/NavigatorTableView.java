@@ -19,20 +19,16 @@ public class NavigatorTableView extends Composite<Div> {
   private final Div self = getBoundComponent();
 
   public NavigatorTableView() {
-    // Get repository for music records
     Repository<MusicRecord> repo = Service.getMusicRecords();
 
-    // Create and configure navigator with pagination
     Navigator nav = new Navigator(repo, Layout.PAGES)
     .setAutoDisable(true)
     .setStyle("margin-right", "20px");
     nav.getPaginator().setMax(5);
 
-    // Create and configure table
     Table<MusicRecord> table = new Table<>();
     table.setHeight("400px");
 
-    // Add columns to the table
     table.addColumn("Number", MusicRecord::getNumber);
     table.addColumn("Title", MusicRecord::getTitle);
     table.addColumn("Artist", MusicRecord::getArtist);
@@ -40,7 +36,6 @@ public class NavigatorTableView extends Composite<Div> {
     table.addColumn("Cost", MusicRecord::getCost);
     table.setRepository(repo);
 
-    // Create vertical layout with table and navigator
     FlexLayout layout = FlexLayout.create(table, nav)
         .vertical()
         .build();

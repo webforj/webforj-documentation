@@ -16,7 +16,6 @@ public class InputDialogBasicView extends Composite<Div> {
   private static final String CONFIRMATION_CODE = "7ANfB";
 
   public InputDialogBasicView() {
-    // Build the warning message with HTML
     String message = """
         <dwc-alert theme='warning'>
           <b style='color: inherit'>Unexpected bad things will happen if you don't read this!</b>
@@ -27,7 +26,6 @@ public class InputDialogBasicView extends Composite<Div> {
         <br/><br/>
         To confirm, type <b>""" + CONFIRMATION_CODE + "</b> in the box below";
 
-    // Create input dialog
     InputDialog dialog = new InputDialog(message, "Delete Repository", InputDialog.MessageType.ERROR)
     .setMessageType(InputDialog.MessageType.PLAIN)
         .setFirstButtonText("Delete Repository")

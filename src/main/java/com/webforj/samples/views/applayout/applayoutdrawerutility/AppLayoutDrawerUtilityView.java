@@ -43,7 +43,6 @@ public class AppLayoutDrawerUtilityView extends Composite<AppLayout> {
     // Drawer's Menu
     drawer.add(new DrawerLogo(), drawerMenu);
 
-    // Adding tabs to drawer menu
     Icon dashboardIcon = TablerIcon.create("dashboard");
     Icon ordersIcon = TablerIcon.create("shopping-cart");
     Icon customersIcon = TablerIcon.create("users");

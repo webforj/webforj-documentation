@@ -16,7 +16,6 @@ public class InputDialogTypeView extends Composite<Div> {
   private final InputDialog dialog;
 
   public InputDialogTypeView() {
-    // Create password input dialog
     dialog = new InputDialog(
             "This page is restricted. Please enter your password to continue.",
             "Restricted access.",

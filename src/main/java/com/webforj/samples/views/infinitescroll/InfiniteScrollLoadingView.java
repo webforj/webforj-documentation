@@ -28,26 +28,21 @@ public class InfiniteScrollLoadingView extends Composite<Div> {
   );
 
   public InfiniteScrollLoadingView() {
-    // Configure main container
     self.setHeight("100vh")
             .setStyle("overflow", "auto");
 
-    // Create canvas for scrollable content
     Div canvas = new Div()
             .setMaxWidth("600px")
             .addClassName("is-canvas");
 
-    // Create infinite scroll with custom loading text
     InfiniteScroll infiniteScroll = new InfiniteScroll("Fetching more records...")
             .addClassName("is")
             .setHeight("100%");
     infiniteScroll.add(canvas);
 
-    // Set custom loading icon
     Icon refreshIcon = TablerIcon.create("cloud-download");
     infiniteScroll.setIcon(refreshIcon);
 
-    // Set up scroll handler to load more items
     AtomicInteger index = new AtomicInteger();
     infiniteScroll.onScroll(e -> handleScroll(infiniteScroll, canvas, index));
 
@@ -90,18 +85,15 @@ public class InfiniteScrollLoadingView extends Composite<Div> {
       // Select random name from provided list
       String name = names.get(random.nextInt(names.size()));
 
-      // Create item components with text content
       Div nameDiv = new Div(name).addClassName("item-name");
       Div excerpt = new Div("""
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
               Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.""")
               .addClassName("item-excerpt");
 
-      // Create arrow icon
       Icon icon = FeatherIcon.ARROW_RIGHT.create()
               .setMinSize("24px", "24px");
 
-      // Compose layout with flexbox
       self.add(
               FlexLayout.create(
                               FlexLayout.create(nameDiv, excerpt)

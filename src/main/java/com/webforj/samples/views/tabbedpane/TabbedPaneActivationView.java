@@ -29,25 +29,21 @@ public class TabbedPaneActivationView extends Composite<Div> {
   private final RadioButton activation = RadioButton.Switch("Manual");
 
   public TabbedPaneActivationView() {
-    // Configure main container
     self.addClassName("window")
         .add(activation, pane);
 
-    // Create tab icons
     Icon dashboardIcon = TablerIcon.create("dashboard");
     Icon ordersIcon = TablerIcon.create("shopping-cart");
     Icon customersIcon = TablerIcon.create("users");
     Icon productsIcon = TablerIcon.create("box");
     Icon documentsIcon = TablerIcon.create("files");
 
-    // Add tabs to the pane
     pane.addTab(new Tab("Dashboard", dashboardIcon));
     pane.addTab(new Tab("Orders", ordersIcon));
     pane.addTab(new Tab("Customers", customersIcon));
     pane.addTab(new Tab("Products", productsIcon));
     pane.addTab(new Tab("Documents", documentsIcon));
 
-    // Toggle between manual and automatic activation
     activation.onCheck(e -> {
       activation.setText("Automatic");
       pane.setActivation(Activation.AUTO);

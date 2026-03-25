@@ -15,7 +15,6 @@ public class ConfirmDialogConstructorView extends Composite<Div> {
   private final ConfirmDialog dialog;
 
   public ConfirmDialogConstructorView() {
-    // Create confirm dialog with OK/CANCEL and question message type
     dialog = new ConfirmDialog(
             "Are you sure you want to delete this file? This action cannot be reverted.",
             "Deletion",

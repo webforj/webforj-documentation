@@ -20,18 +20,15 @@ public class SliderTickSpacingView extends Composite<FlexLayout> {
   // Input fields for tick spacing
   private final NumberField majorTickInput = new NumberField("Major Tick", 20d);
   private final NumberField minorTickInput = new NumberField("Minor Tick", 10d);
-  // Toggle switches
   private final RadioButton snapToTicks = RadioButton.Switch("Snap to Ticks", false);
   private final RadioButton showTicks = RadioButton.Switch("Show Ticks", true);
 
   public SliderTickSpacingView() {
-    // Configure layout
     self.setDirection(FlexDirection.COLUMN)
         .setMaxWidth("400px")
         .setSpacing("var(--dwc-space-m)")
         .setMargin("var(--dwc-space-m) auto");
 
-    // Configure slider
     slider.setMin(0)
         .setMax(100)
         .setValue(0)
@@ -45,25 +42,21 @@ public class SliderTickSpacingView extends Composite<FlexLayout> {
 
     double range = slider.getMax() - slider.getMin();
 
-    // Configure major tick input
     majorTickInput.setMin(1d)
         .setMax(range)
         .setInvalidMessage("Must be between 1 and " + range)
         .setPlaceholder("Enter major tick spacing (e.g., 10)")
         .onValueChange(this::updateTickSpacing);
 
-    // Configure minor tick input
     minorTickInput.setMin(1d)
         .setMax(range)
         .setInvalidMessage("Must be between 1 and " + range)
         .setPlaceholder("Enter minor tick spacing (e.g., 2)")
         .onValueChange(this::updateTickSpacing);
 
-    // Configure toggle switches
     snapToTicks.onToggle(ev -> slider.setSnapToTicks(ev.isToggled()));
     showTicks.onToggle(ev -> slider.setTicksVisible(ev.isToggled()));
 
-    // Add components to layout
     self.add(
         slider,
         FlexLayout.create(

@@ -16,13 +16,10 @@ public class NavigatorBasicView extends Composite<Div> {
   private int count = 0;
 
   public NavigatorBasicView() {
-    // Create navigator with initial value
     Navigator nav = new Navigator("Value: " + count);
 
-    // Handle navigation direction changes
     nav.onChange(e -> handleNavigation(e, nav));
 
-    // Configure container and add navigator
     self.setStyle("padding", "20px")
         .add(nav);
   }
@@ -33,7 +30,6 @@ public class NavigatorBasicView extends Composite<Div> {
   private void handleNavigation(NavigatorChangeEvent e, Navigator nav) {
     NavigatorChangeEvent.Direction direction = e.getDirection();
 
-    // Update count based on navigation direction using switch expression
     count = switch (direction) {
       case NEXT -> count + 1;
       case PREVIOUS -> count - 1;

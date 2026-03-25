@@ -28,7 +28,6 @@ public class AlertThemesView extends Composite<FlexLayout> {
 
     for (Theme theme : Theme.values()) {
       Icon icon = TablerIcon.create("alert-square-rounded");
-      // Use text block for cleaner string formatting
       Paragraph text = new Paragraph("This is an alert with the %s theme!".formatted(theme));
 
       Alert alert = new Alert()
