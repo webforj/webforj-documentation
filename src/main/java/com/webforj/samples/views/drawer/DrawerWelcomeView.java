@@ -27,7 +27,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Drawer Welcome App")
 public class DrawerWelcomeView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final Drawer welcomeDrawer = new Drawer();
   private final AppLayout appLayout = new AppLayout();

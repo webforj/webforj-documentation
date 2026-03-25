@@ -19,7 +19,6 @@ import com.webforj.samples.views.applayout.applayoutdrawerutility.AppLayoutDrawe
 @StyleSheet("ws://css/applayout/applayout.css")
 @FrameTitle("AppLayout Full Navbar")
 public class AppLayoutFullNavbarView extends Composite<AppLayout> {
-  // self field enables fluent method chaining from the bound component
   private final AppLayout self = getBoundComponent();
   private final Toolbar header = new Toolbar();
   private final AppNav drawerMenu = new AppNav();

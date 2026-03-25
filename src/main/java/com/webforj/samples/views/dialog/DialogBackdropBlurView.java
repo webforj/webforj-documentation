@@ -20,7 +20,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Dialog Backdrop Blur")
 public class DialogBackdropBlurView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final Dialog dialog = new Dialog();
   private final Button backgroundBlur = new Button("Toggle Background Blur");

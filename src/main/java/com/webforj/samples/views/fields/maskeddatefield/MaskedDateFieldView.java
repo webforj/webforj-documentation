@@ -13,7 +13,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Date Field")
 public class MaskedDateFieldView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final MaskedDateField field = new MaskedDateField("Meeting Date");
 

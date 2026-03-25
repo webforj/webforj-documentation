@@ -17,7 +17,6 @@ import com.webforj.samples.components.Box;
 @FrameTitle("Flex Positioning")
 public class FlexPositioningView extends Composite<Div> {
   private static final int HUE = 36; // 360 / 10
-  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
   private final FlexLayout boxLayout;
 

@@ -13,7 +13,6 @@ import com.webforj.component.table.Column;
 @Route
 @FrameTitle("Table Rich Content")
 public class TableRichContentView extends Composite<Div> {
-  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
 
   public TableRichContentView() {

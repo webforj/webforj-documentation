@@ -13,7 +13,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Busy Indicator")
 public class BusyIndicatorView extends Composite<Div> {
-  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
   private int retry = 1;
   private final BusyIndicator indicator = App.getBusyIndicator();

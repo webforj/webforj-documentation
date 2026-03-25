@@ -11,7 +11,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Button Event")
 public class ButtonEventView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private int counter = 0;
   private final Div text = new Div("Current Counter: 0");

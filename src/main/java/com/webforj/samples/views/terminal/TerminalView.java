@@ -28,7 +28,6 @@ import java.util.Map;
     }
   """)
 public class TerminalView extends Composite<Terminal> {
-  // self field enables fluent method chaining from the bound component
   private final Terminal self = getBoundComponent();
   private final StringBuilder commandBuffer = new StringBuilder();
   private final List<String> commandHistory = new ArrayList<>();

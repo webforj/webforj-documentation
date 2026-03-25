@@ -13,7 +13,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Predicted Text Demo")
 public class TextAreaPredictedTextView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final TextArea textArea = new TextArea("Predicted Text");
 

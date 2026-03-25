@@ -12,7 +12,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Button Expanses")
 public class ButtonExpansesView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final ChoiceBox expanses = new ChoiceBox();
   private final Button demoButton = new Button("None");

@@ -15,7 +15,6 @@ import java.util.List;
 @Route
 @FrameTitle("Chart Gallery")
 public class ChartGalleryView extends Composite<Div> {
-  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
 
   private static final String GITHUB_BASE_URL = "https://github.com/webforj/webforj-documentation/blob/main/src/main/java/com/webforj/samples/views/googlecharts/types/";

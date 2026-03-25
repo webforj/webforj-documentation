@@ -11,7 +11,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Dialog Auto-Focus")
 public class DialogAutoFocusView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final Dialog dialog = new Dialog();
 

@@ -13,7 +13,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Time Field Picker")
 public class MaskedTimeFieldPickerView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final MaskedTimeField field = new MaskedTimeField("Meeting Time");
 

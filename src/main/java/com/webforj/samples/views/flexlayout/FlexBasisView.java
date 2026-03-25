@@ -16,7 +16,6 @@ import java.util.List;
 @Route
 @FrameTitle("Flex Basis")
 public class FlexBasisView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
 
   private final FlexLayout mainLayout;

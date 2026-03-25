@@ -13,7 +13,6 @@ import java.util.List;
 @Route
 @FrameTitle("Columns Layout Breakpoints")
 public class ColumnsLayoutBreakpointsView extends Composite<Div> {
-  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
   private final TextField firstName = new TextField("First Name");
   private final TextField lastName = new TextField("Last Name");

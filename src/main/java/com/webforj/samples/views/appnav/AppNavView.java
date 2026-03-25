@@ -15,7 +15,6 @@ import com.webforj.router.history.ParametersBag;
 
 @Route
 public class AppNavView extends Composite<AppLayout> {
-  // self field enables fluent method chaining from the bound component
   private final AppLayout self = getBoundComponent();
   private final Toolbar toolbar = new Toolbar();
   private final AppNav appNav = new AppNav();

@@ -19,7 +19,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Button Demo")
 public class ButtonView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final TextField firstName = new TextField(Type.TEXT, "First Name", "Jason")
       .setWidth("25%")

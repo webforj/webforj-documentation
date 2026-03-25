@@ -24,7 +24,6 @@ import java.util.Map;
 @Route
 @FrameTitle("Chart Redraw")
 public class ChartRedrawView extends Composite<Div> {
-  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
 
   private static final String COLOR = "color";

@@ -25,7 +25,6 @@ import java.util.List;
     }
 """)
 public class DrawerTaskView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final Drawer drawer = new Drawer();
   private final List<CheckBox> taskList = new ArrayList<>();

@@ -13,7 +13,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Dialog Positioning")
 public class DialogPositioningView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final NumberField xPos = new NumberField("X Pixels:");
   private final NumberField yPos = new NumberField("Y Pixels:");

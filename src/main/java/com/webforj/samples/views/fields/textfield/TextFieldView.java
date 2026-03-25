@@ -11,7 +11,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Text Field Form")
 public class TextFieldView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final TextField nameField = new TextField();
   private final TextField emailField = new TextField();

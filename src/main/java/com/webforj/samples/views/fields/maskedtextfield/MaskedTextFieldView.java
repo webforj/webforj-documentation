@@ -12,7 +12,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Text Field")
 public class MaskedTextFieldView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final MaskedTextField recordCode = new MaskedTextField("Record Code", "", "NE-24-0934");
   private final MaskedTextField couponCode = new MaskedTextField("Coupon Code", "", "ZZZZ-0000");

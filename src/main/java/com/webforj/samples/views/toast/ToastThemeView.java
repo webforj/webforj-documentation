@@ -13,7 +13,6 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Toast Themes")
 @StyleSheet("ws://css/toast/toastTheme.css")
 public class ToastThemeView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
 
   public ToastThemeView() {

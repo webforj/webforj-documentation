@@ -14,7 +14,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Time Field Spinner")
 public class MaskedTimeFieldSpinnerView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final MaskedTimeFieldSpinner appointmentField = new MaskedTimeFieldSpinner("Available Time Slots");
 

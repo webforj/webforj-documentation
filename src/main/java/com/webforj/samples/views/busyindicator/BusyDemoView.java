@@ -18,7 +18,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Busy Basics")
 public class BusyDemoView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final TextField nameField = new TextField("Name");
   private final TextField emailField = new TextField("Email");

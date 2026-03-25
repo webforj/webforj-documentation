@@ -14,7 +14,6 @@ import com.webforj.router.annotation.Route;
 @StyleSheet("ws://css/element/elementInput.css")
 @FrameTitle("Input Function")
 public class ElementInputFunctionView extends Composite<Div> {
-  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
   private final Element input = new Element("input");
 

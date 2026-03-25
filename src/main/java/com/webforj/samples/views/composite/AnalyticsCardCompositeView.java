@@ -20,7 +20,6 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Analytics Card")
 @StyleSheet("ws://composite/analyticscomposite.css")
 public class AnalyticsCardCompositeView extends Composite<Div> {
-  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
 
   public AnalyticsCardCompositeView() {

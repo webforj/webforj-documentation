@@ -19,7 +19,6 @@ import com.webforj.router.annotation.Route;
 @StyleSheet("ws://css/fields/colorfield/colorFieldDemo.css")
 @FrameTitle("Color Field Demo")
 public class ColorFieldView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final ColorField colorField;
   private final Div[] colors;

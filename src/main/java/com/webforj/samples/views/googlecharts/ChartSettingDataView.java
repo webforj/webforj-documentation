@@ -20,7 +20,6 @@ import java.util.Map;
 @Route
 @FrameTitle("Chart Setting Data")
 public class ChartSettingDataView extends Composite<Div> {
-  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
 
   private final GoogleChart chart = new GoogleChart(GoogleChart.Type.PIE);

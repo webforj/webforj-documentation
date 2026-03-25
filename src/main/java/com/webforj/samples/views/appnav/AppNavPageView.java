@@ -11,7 +11,6 @@ import com.webforj.router.history.ParametersBag;
 
 @Route(value = ":id", outlet = AppNavView.class)
 public class AppNavPageView extends Composite<Div> {
-  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
   private final Paragraph text = new Paragraph();
 

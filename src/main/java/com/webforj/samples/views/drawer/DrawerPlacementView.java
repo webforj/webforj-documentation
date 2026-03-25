@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 @Route
 @FrameTitle("Drawer Placement")
 public class DrawerPlacementView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final Drawer drawer = new Drawer();
 

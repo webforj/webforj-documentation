@@ -11,7 +11,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Dialog Close")
 public class DialogCloseView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final Dialog dialog = new Dialog();
   private final Button showDialog = new Button("Show Dialog");

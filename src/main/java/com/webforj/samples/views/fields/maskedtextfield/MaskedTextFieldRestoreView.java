@@ -13,7 +13,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Masked Text Field with Restore Value")
 public class MaskedTextFieldRestoreView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
 
   public MaskedTextFieldRestoreView() {

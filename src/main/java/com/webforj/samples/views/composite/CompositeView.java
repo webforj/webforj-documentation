@@ -20,7 +20,6 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("To-Do List")
 @StyleSheet("ws://composite/composite.css")
 public class CompositeView extends Composite<Div> {
-  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
   private final TextField taskInput = new TextField();
   private final FlexLayout taskContainer = new FlexLayout();
@@ -65,7 +64,6 @@ public class CompositeView extends Composite<Div> {
   }
 
   public static class SimpleTaskItem extends Composite<FlexLayout> {
-    // self field enables fluent method chaining from the bound component
     private final FlexLayout self = getBoundComponent();
     private final RadioButton toggleButton = RadioButton.Switch();
     private final Div taskText = new Div();

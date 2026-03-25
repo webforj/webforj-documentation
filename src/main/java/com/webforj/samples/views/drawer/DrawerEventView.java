@@ -19,7 +19,6 @@ import java.util.List;
 @Route
 @FrameTitle("Task Manager Drawer")
 public class DrawerEventView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final Drawer drawer = new Drawer();
   private final List<CheckBox> taskList = new ArrayList<>();

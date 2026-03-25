@@ -14,7 +14,6 @@ import com.webforj.router.annotation.Route;
 @StyleSheet("ws://css/flexlayout/container/flexContainerBuilder.css")
 @FrameTitle("Flex Item Self Align")
 public class FlexSelfAlignView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
 
   private final FlexLayout boxLayout;

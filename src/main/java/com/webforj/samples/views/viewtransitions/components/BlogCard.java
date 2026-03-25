@@ -15,7 +15,6 @@ import com.webforj.dispatcher.ListenerRegistration;
 
 @StyleSheet("ws://css/viewtransitions/components/blog-card.css")
 public class BlogCard extends Composite<FlexLayout> implements HasClassName<BlogCard>, HasStyle<BlogCard> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
 
   public BlogCard(String title, String excerpt, String transitionName) {

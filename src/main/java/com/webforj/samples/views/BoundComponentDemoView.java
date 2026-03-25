@@ -22,7 +22,6 @@ public class BoundComponentDemoView extends Composite<FlexLayout> {
 
   // Uses the default constructor for the FlexLayout class
   public static class DefaultComposite extends Composite<FlexLayout> {
-    // self field enables fluent method chaining from the bound component
     private final FlexLayout self = getBoundComponent();
     private final TextField nameField = new TextField();
     private final Button submit = new Button("Submit");

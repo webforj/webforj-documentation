@@ -14,7 +14,6 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Date Field Demo")
 public class DateFieldView extends Composite<FlexLayout> {
 
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private static final LocalDate TODAY = LocalDate.now();
   private static final LocalDate MAX_DATE = TODAY.plusYears(1);

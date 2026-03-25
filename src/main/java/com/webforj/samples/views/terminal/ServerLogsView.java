@@ -18,7 +18,6 @@ import com.webforj.router.annotation.FrameTitle;
 @Route
 @FrameTitle("Server Logs Stream")
 public class ServerLogsView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final Terminal terminal = new Terminal();
   private final Button startButton = new Button("Start Log Stream", ButtonTheme.PRIMARY);

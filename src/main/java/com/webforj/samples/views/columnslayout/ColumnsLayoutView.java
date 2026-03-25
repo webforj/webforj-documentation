@@ -13,7 +13,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Columns Layout")
 public class ColumnsLayoutView extends Composite<Div> {
-  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
   private final TextField firstName = new TextField("First Name");
   private final TextField lastName = new TextField("Last Name");

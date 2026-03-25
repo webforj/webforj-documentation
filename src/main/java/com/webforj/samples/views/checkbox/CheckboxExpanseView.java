@@ -12,7 +12,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Checkbox Expanses")
 public class CheckboxExpanseView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
 
   public CheckboxExpanseView() {

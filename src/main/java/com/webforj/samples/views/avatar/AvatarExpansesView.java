@@ -11,7 +11,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Avatar Expanses")
 public class AvatarExpansesView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
 
   public AvatarExpansesView() {

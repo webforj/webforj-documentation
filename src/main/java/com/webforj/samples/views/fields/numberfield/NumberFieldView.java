@@ -9,7 +9,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Number Field Demo")
 public class NumberFieldView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final NumberField numField = new NumberField("Quantity:");
 

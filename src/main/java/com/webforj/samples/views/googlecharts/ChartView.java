@@ -15,7 +15,6 @@ import java.util.Map;
 @StyleSheet("ws://css/googlecharts/chart.css")
 @FrameTitle("Google Charts")
 public class ChartView extends Composite<Div> {
-  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
 
   private static final String COLOR = "color";

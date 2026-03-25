@@ -16,7 +16,6 @@ import com.webforj.utilities.Assets;
 @Route
 @FrameTitle("Olympic Winners Table")
 public class TableOlympicWinnersView extends Composite<Div> {
-  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
 
   public TableOlympicWinnersView() {

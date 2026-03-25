@@ -25,7 +25,6 @@ import java.util.Objects;
 @FrameTitle("Team Members")
 @StyleSheet("ws://css/avatar/avatar.css")
 public class AvatarView extends Composite<FlexLayout> {
-  // self field enables fluent method chaining from the bound component
   private final FlexLayout self = getBoundComponent();
   private final Div panel = new Div();
 

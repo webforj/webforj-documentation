@@ -14,7 +14,6 @@ import com.webforj.router.annotation.Route;
 @StyleSheet("ws://css/element/elementInputEvent.css")
 @FrameTitle("Input Event")
 public class ElementInputEventView extends Composite<Div> {
-  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
   private final Div label = new Div("Enter Text and Press Enter");
   private final Element input = new Element("input");

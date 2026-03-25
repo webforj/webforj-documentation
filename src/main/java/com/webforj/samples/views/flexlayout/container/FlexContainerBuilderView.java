@@ -27,7 +27,6 @@ import com.webforj.samples.components.CodeDisplay;
 @FrameTitle("Container Builder")
 public class FlexContainerBuilderView extends Composite<Div> {
   private static final int HUE = 36; // 360 / 10
-  // self field enables fluent method chaining from the bound component
   private final Div self = getBoundComponent();
 
   private final MaskedNumberFieldSpinner spinner = new MaskedNumberFieldSpinner();
