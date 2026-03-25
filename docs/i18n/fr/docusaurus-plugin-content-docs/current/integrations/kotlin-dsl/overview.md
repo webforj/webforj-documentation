@@ -4,7 +4,7 @@ sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true
 sidebar_class_name: new-content
-_i18n_hash: 21ef4feee90e5c4f6827a48ce1755d0b
+_i18n_hash: 36366a03c9784b451033e5161bdc7359
 ---
 <Head>
   <style>{`
@@ -17,7 +17,7 @@ _i18n_hash: 21ef4feee90e5c4f6827a48ce1755d0b
 <DocChip chip='since' label='25.12' />
 <DocChip chip='experimental' />
 
-webforJ fournit un [Kotlin](https://kotlinlang.org/) *Langage Spécifique au Domaine*, ou DSL, qui vous permet de créer des interfaces utilisateur avec une syntaxe concise et sécurisée. Au lieu d'écrire du code Java impératif, vous écrivez un code déclaratif qui se lit comme une description de la structure de votre interface utilisateur.
+webforJ fournit un [Kotlin](https://kotlinlang.org/) *Langage Spécifique au Domaine*, ou DSL, qui vous permet de construire des interfaces utilisateur avec une syntaxe concise et sécurisée par type. Au lieu d'un code Java impératif, vous écrivez un code déclaratif qui se lit comme une description de la structure de votre interface utilisateur.
 
 <!-- INTRO_END -->
 
@@ -48,26 +48,26 @@ flexLayout {
 }
 ```
 
-Le DSL tire parti des fonctions d'extension Kotlin, des lambdas avec récepteurs et des paramètres par défaut pour créer une syntaxe de constructeur naturelle. Les composants s'imbriquent les uns dans les autres, la configuration se fait dans des blocs et le compilateur détecte les erreurs structurelles avant l'exécution.
+Le DSL tire parti des fonctions d'extension Kotlin, des lambdas avec des récepteurs et des paramètres par défaut pour créer une syntaxe de constructeur naturelle. Les composants s'imbriquent les uns dans les autres, la configuration se fait dans des blocs, et le compilateur détecte les erreurs structurelles avant l'exécution.
 
 ## Configuration {#setup}
 
-:::warning fonction expérimentale
-Cette fonction est encore en développement actif.
-L'API peut changer dans les versions futures, y compris des changements potentiellement disruptifs.
+:::warning fonctionnalité expérimentale
+Cette fonctionnalité est encore en cours de développement actif.
+L'API peut changer dans les versions futures, y compris des changements potentiellement perturbateurs.
 
-Vous êtes invité à l'essayer et à partager vos retours. Vos commentaires aideront à façonner le design final.
+Vous êtes invités à l'essayer et à donner vos retours. Vos commentaires aideront à façonner le design final.
 :::
 
-Aucune installation Kotlin séparée n'est requise. Maven gère la compilation via le plugin Maven Kotlin, donc tout projet qui se construit déjà avec Maven peut ajouter le support Kotlin avec la seule configuration de dépendance et de plugin.
+Aucune installation Kotlin distincte n'est requise. Maven gère la compilation via le plugin Maven Kotlin, donc tout projet qui se construit déjà avec Maven peut ajouter le support Kotlin avec la configuration de dépendance et de plugin seule.
 
 :::tip Démarrage rapide
-Pour démarrer un projet webforJ utilisant Kotlin avec toutes les configurations nécessaires dès le départ, consultez [cette section sur l'utilisation du starter webforJ Kotlin](#kotlin-starter-project).
+Pour démarrer un projet webforJ utilisant Kotlin avec toutes les configurations nécessaires prêtes à l'emploi, voir [cette section sur l'utilisation du démarrage Kotlin webforJ](#kotlin-starter-project).
 :::
 
 ### Dépendances {#dependencies}
 
-Ajoutez le module webforJ Kotlin DSL et la bibliothèque standard Kotlin à votre `pom.xml`:
+Ajoutez le module webforJ Kotlin DSL et la bibliothèque standard Kotlin à votre `pom.xml` :
 
 ```xml
 <dependency>
@@ -83,7 +83,7 @@ Ajoutez le module webforJ Kotlin DSL et la bibliothèque standard Kotlin à votr
 </dependency>
 ```
 
-Si vous prévoyez d'écrire des tests en Kotlin, ajoutez également la dépendance de test Kotlin. Elle s'intègre avec JUnit:
+Si vous prévoyez d'écrire des tests en Kotlin, ajoutez également la dépendance de test Kotlin. Elle s'intègre avec JUnit :
 
 ```xml
 <dependency>
@@ -96,7 +96,7 @@ Si vous prévoyez d'écrire des tests en Kotlin, ajoutez également la dépendan
 
 ### Plugin Maven Kotlin {#kotlin-maven-plugin}
 
-Ajoutez le plugin Maven Kotlin pour compiler vos sources Kotlin et Java. La configuration `sourceDirs` ci-dessous permet aux fichiers Kotlin et Java de coexister dans le même projet:
+Ajoutez le plugin Maven Kotlin pour compiler à la fois vos sources Kotlin et Java. La configuration `sourceDirs` ci-dessous permet aux fichiers Kotlin et Java de coexister dans le même projet :
 
 ```xml
 <plugin>
@@ -139,99 +139,18 @@ Ajoutez le plugin Maven Kotlin pour compiler vos sources Kotlin et Java. La conf
 </plugin>
 ```
 
-Avec ces ajouts, `mvn compile` compile les sources Kotlin aux côtés de Java. Les fichiers Kotlin peuvent aller dans `src/main/kotlin` ou `src/main/java`, et le plugin gère les deux.
+Avec ces ajouts, `mvn compile` compile les sources Kotlin aux côtés de Java. Les fichiers Kotlin peuvent être placés dans `src/main/kotlin` ou `src/main/java`, et le plugin gère les deux.
 
 :::tip[Interopérabilité Java]
-Kotlin compile en bytecode JVM, donc il fonctionne aux côtés du code Java existant. Vous pouvez utiliser des composites Kotlin construits avec DSL depuis des classes Java, imbriquer des composants Java standard à l'intérieur de blocs DSL avec `add()`, et mélanger des fichiers Kotlin et Java dans le même projet.
+Kotlin se compile en bytecode JVM, donc il fonctionne aux côtés du code Java existant. Vous pouvez utiliser des composites Kotlin construits avec DSL depuis des classes Java, imbriquer des composants Java standard à l'intérieur des blocs DSL avec `add()`, et mélanger des fichiers Kotlin et Java dans le même projet.
 :::
 
 ### Projet de démarrage Kotlin {#kotlin-starter-project}
 
-Si vous préférez sauter la configuration manuelle, le [WebforJ Kotlin Starter](https://github.com/webforj/webforj-kotlin-starter) fournit un projet prêt à l'emploi avec toutes les dépendances et configurations de plugins déjà en place. Clonez-le et commencez à construire avec le DSL dès que possible.
+Si vous préférez sauter la configuration manuelle, le [démarrage Kotlin webforJ](https://github.com/webforj/webforj-kotlin-starter) fournit un projet prêt à l'emploi avec toutes les dépendances et configurations de plugin déjà en place. Clonez-le et commencez à construire avec le DSL dès maintenant.
 
 ## Sujets {#topics}
 
-Les sujets suivants couvrent l'utilisation du DSL, ainsi que son extension à tous les composants ou composites personnalisés que vous créez.
+Les sujets suivants couvrent l'utilisation du DSL, ainsi que son extension pour tous les composants ou composites personnalisés que vous créez.
 
 <DocCardList className="topics-section" />
-
-## Kotlin pour les développeurs Java {#kotlin-for-java-developers}
-
-<details>
-<summary>Vous débutez avec Kotlin ? Voici quelques-unes des principales fonctionnalités du langage sur lesquelles le DSL repose.</summary>
-
-### Sécurité nulle {#null-safety}
-
-Kotlin distingue les types nullable et non-nullable au moment de la compilation:
-
-```kotlin
-// Java - toute référence peut être nulle
-String name = null;
-
-// Kotlin - nullabilité explicite
-var name: String? = null        // Nullable, peut être nul
-var safeName: String = "value"  // Non-null, le compilateur impose cela
-
-// Opérateur d'appel sécurisé - retourne null si name est nul
-println(name?.length)
-
-// Opérateur Elvis - fournit un défaut quand nul
-println(name ?: "default")
-```
-
-### Fonctions d'extension {#extension-functions}
-
-Kotlin vous permet d'ajouter des méthodes aux classes existantes sans héritage:
-
-```kotlin
-// Approche Java - classe utilitaire statique
-public class StringUtils {
-  public static String addExclamation(String input) {
-    return input + "!";
-  }
-}
-String result = StringUtils.addExclamation("Hello");
-
-// Approche Kotlin - fonction d'extension
-fun String.addExclamation(): String = this + "!"
-val result = "Hello".addExclamation()  // Se lit comme un appel de méthode
-```
-
-Le DSL utilise des fonctions d'extension pour ajouter des méthodes de construction aux composants.
-
-### Lambdas et syntaxe lambda finale {#lambdas-and-trailing-lambda-syntax}
-
-Les lambdas Kotlin sont plus concises que celles de Java, et lorsqu'une lambda est le dernier paramètre, elle peut sortir des parenthèses:
-
-```kotlin
-// Java
-button.addClickListener(e -> System.out.println("Cliqué"));
-
-// Kotlin - lambda comme dernier paramètre sort des parenthèses
-button.onClick { println("Cliqué") }
-
-// Avec paramètre explicite
-button.onClick { event -> println("Cliqué : $event") }
-```
-
-Cette syntaxe de lambda finale permet de rendre possibles les blocs de DSL.
-
-### Paramètres par défaut {#default-parameters}
-
-Les fonctions Kotlin peuvent avoir des valeurs de paramètre par défaut, ce qui réduit le besoin de méthodes surchargées:
-
-```kotlin
-// Java - plusieurs constructeurs nécessaires
-public Button() {}
-public Button(String text) {}
-public Button(String text, ButtonTheme theme) {}
-
-// Kotlin - une fonction avec des défauts
-fun button(
-  text: String = "",
-  theme: ButtonTheme = ButtonTheme.DEFAULT,
-  block: Button.() -> Unit = {}
-): Button
-```
-
-</details>
