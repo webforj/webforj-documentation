@@ -59,7 +59,7 @@ public class RefresherIconView extends Composite<Div> {
    */
   class Item extends Composite<Div> {
     public Item() {
-      Div self = getBoundComponent();
+      Div itemSelf = getBoundComponent();
 
       // Select random name from the list
       String name = NAMES.get(random.nextInt(NAMES.size()));
@@ -76,7 +76,7 @@ public class RefresherIconView extends Composite<Div> {
           .setMinSize("24px", "24px");
 
       // Compose layout with flexbox
-      self.add(
+      itemSelf.add(
           FlexLayout.create(
               FlexLayout.create(nameDiv, excerpt)
                   .vertical()
