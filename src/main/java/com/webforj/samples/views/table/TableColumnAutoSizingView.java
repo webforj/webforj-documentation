@@ -20,24 +20,23 @@ public class TableColumnAutoSizingView extends Composite<FlexLayout> {
   private final Column<MusicRecord, ?> artistCol = table.addColumn("Artist", MusicRecord::getArtist);
   private final Column<MusicRecord, ?> genreCol = table.addColumn("Genre", MusicRecord::getMusicType);
   private final Column<MusicRecord, ?> costCol = table.addColumn("Cost", r -> String.format("$%.2f", r.getCost()))
-          .setAlignment(Column.Alignment.RIGHT);
+    .setAlignment(Column.Alignment.RIGHT);
 
   public TableColumnAutoSizingView() {
     self.setDirection(FlexDirection.COLUMN)
-        .setPadding("var(--dwc-space-l)")
-        .setSpacing("var(--dwc-space-l)")
-        .setHeight("100vh")
-        .setStyle("box-sizing", "border-box");
-
-    self.add(createControls(), createTable());
+      .setPadding("var(--dwc-space-l)")
+      .setSpacing("var(--dwc-space-l)")
+      .setHeight("100vh")
+      .setStyle("box-sizing", "border-box")
+      .add(createControls(), createTable());
   }
 
   private FlexLayout createControls() {
     FlexLayout controls = new FlexLayout()
-        .setDirection(FlexDirection.ROW)
-        .setStyle("gap", "15px")
-        .setStyle("align-items", "center")
-        .setStyle("flex-wrap", "wrap");
+      .setDirection(FlexDirection.ROW)
+      .setStyle("gap", "15px")
+      .setStyle("align-items", "center")
+      .setStyle("flex-wrap", "wrap");
 
     Button autoSizeAllBtn = new Button("Auto-Size All Columns", e -> autoSizeAllColumns());
 
@@ -53,11 +52,11 @@ public class TableColumnAutoSizingView extends Composite<FlexLayout> {
 
   private Table<MusicRecord> createTable() {
     table.setWidth("100%")
-        .setHeight("450px")
-        .setStriped(true);
+      .setHeight("450px")
+      .setStriped(true)
+      .setRepository(Service.getMusicRecords());
 
     applyDefaultColumnSizing();
-    table.setRepository(Service.getMusicRecords());
     return table;
   }
 

@@ -17,7 +17,10 @@ public class TableEditDataView extends Composite<Div> {
 
   public TableEditDataView() {
     table.setWidth("100vw")
-      .setHeight("100vh");
+      .setHeight("100vh")
+      .setRepository(Service.getMusicRecords())
+      .setRowHeight(42);
+
     table.addColumn("Number", MusicRecord::getNumber)
       .setPinDirection(Column.PinDirection.LEFT);
     table.addColumn("Title", MusicRecord::getTitle);
@@ -31,9 +34,6 @@ public class TableEditDataView extends Composite<Div> {
     table.addColumn(editRenderer)
       .setAlignment(Column.Alignment.CENTER)
       .setPinDirection(Column.PinDirection.RIGHT);
-
-    table.setRepository(Service.getMusicRecords())
-      .setRowHeight(42);
 
     editor.onSave(ev -> table.getRepository().commit(ev.getItem()));
 

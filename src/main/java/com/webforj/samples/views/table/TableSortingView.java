@@ -13,8 +13,9 @@ public class TableSortingView extends Composite<Div> {
 
   public TableSortingView() {
     Table<MusicRecord> table = new Table<MusicRecord>()
-        .setWidth("100vw")
-        .setHeight("100vh");
+      .setWidth("100vw")
+      .setHeight("100vh")
+      .setRepository(Service.getMusicRecords());
 
     table.addColumn("Title", MusicRecord::getTitle);
     table.addColumn("Artist", MusicRecord::getArtist);
@@ -22,7 +23,6 @@ public class TableSortingView extends Composite<Div> {
     table.addColumn("Cost", MusicRecord::getCost);
 
     table.getColumns().forEach(column -> column.setSortable(true));
-    table.setRepository(Service.getMusicRecords());
 
     self.add(table);
   }

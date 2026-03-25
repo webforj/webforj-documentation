@@ -14,23 +14,22 @@ public class TableSortOrderView extends Composite<Div> {
 
   public TableSortOrderView() {
     Table<MusicRecord> table = new Table<MusicRecord>()
-        .setWidth("100vw")
-        .setHeight("100vh");
-
-    table.setMultiSorting(true);
+      .setWidth("100vw")
+      .setHeight("100vh")
+      .setRepository(Service.getMusicRecords())
+      .setMultiSorting(true);
 
     table.addColumn("Title", MusicRecord::getTitle).setSortable(true);
     table.addColumn("Artist", MusicRecord::getArtist)
-        .setSortable(true)
-        .setSortDirection(SortDirection.ASC)
-        .setSortIndex(1);
+      .setSortable(true)
+      .setSortDirection(SortDirection.ASC)
+      .setSortIndex(1);
     table.addColumn("Genre", MusicRecord::getMusicType).setSortable(true);
     table.addColumn("Cost", MusicRecord::getCost)
-        .setSortable(true)
-        .setSortDirection(SortDirection.DESC)
-        .setSortIndex(2);
+      .setSortable(true)
+      .setSortDirection(SortDirection.DESC)
+      .setSortIndex(2);
 
-    table.setRepository(Service.getMusicRecords());
     self.add(table);
   }
 }

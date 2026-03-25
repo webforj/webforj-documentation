@@ -15,8 +15,10 @@ public class TableSingleSelectionView extends Composite<Div> {
 
   public TableSingleSelectionView() {
     Table<MusicRecord> table = new Table<MusicRecord>()
-        .setWidth("100vw")
-        .setHeight("100vh");
+      .setWidth("100vw")
+      .setHeight("100vh")
+      .setRepository(Service.getMusicRecords())
+      .setSelectionMode(Table.SelectionMode.SINGLE);
 
     table.addColumn("Number", MusicRecord::getNumber);
     table.addColumn("Title", MusicRecord::getTitle);
@@ -24,13 +26,10 @@ public class TableSingleSelectionView extends Composite<Div> {
     table.addColumn("Genre", MusicRecord::getMusicType);
     table.addColumn("Cost", MusicRecord::getCost);
 
-    table.setRepository(Service.getMusicRecords());
-    table.setSelectionMode(Table.SelectionMode.SINGLE);
-
     table.onItemSelect(ev ->
-        showMessageDialog(
-            "You have selected " + ev.getItem().getTitle() + " by " + ev.getItem().getArtist(),
-            "Record Number " + ev.getItem().getNumber()));
+      showMessageDialog(
+        "You have selected " + ev.getItem().getTitle() + " by " + ev.getItem().getArtist(),
+        "Record Number " + ev.getItem().getNumber()));
 
     self.add(table);
   }

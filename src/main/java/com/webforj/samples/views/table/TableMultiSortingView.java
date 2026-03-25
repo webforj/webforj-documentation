@@ -13,8 +13,10 @@ public class TableMultiSortingView extends Composite<Div> {
 
   public TableMultiSortingView() {
     Table<MusicRecord> table = new Table<MusicRecord>()
-        .setWidth("100vw")
-        .setHeight("100vh");
+      .setWidth("100vw")
+      .setHeight("100vh")
+      .setMultiSorting(true)
+      .setRepository(Service.getMusicRecords());
 
     table.addColumn("Title", MusicRecord::getTitle);
     table.addColumn("Artist", MusicRecord::getArtist);
@@ -22,8 +24,6 @@ public class TableMultiSortingView extends Composite<Div> {
     table.addColumn("Cost", MusicRecord::getCost);
 
     table.getColumns().forEach(column -> column.setSortable(true));
-    table.setMultiSorting(true);
-    table.setRepository(Service.getMusicRecords());
 
     self.add(table);
   }

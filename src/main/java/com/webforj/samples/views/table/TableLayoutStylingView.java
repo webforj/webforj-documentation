@@ -19,28 +19,26 @@ public class TableLayoutStylingView extends Composite<FlexLayout> {
 
   public TableLayoutStylingView() {
     self.setDirection(FlexDirection.COLUMN)
-        .setSpacing("var(--dwc-space-l)")
-        .setMargin("var(--dwc-space-xl)");
+      .setSpacing("var(--dwc-space-l)")
+      .setMargin("var(--dwc-space-xl)")
+      .add(table);
 
     List<Person> data = List.of(
-        new Person("Alice", 28, "New York"),
-        new Person("Bob", 35, "Chicago"),
-        new Person("Charlie", 25, "Los Angeles"),
-        new Person("David", 40, "San Francisco"),
-        new Person("Eve", 30, "Boston"),
-        new Person("Frank", 45, "Miami"));
+      new Person("Alice", 28, "New York"),
+      new Person("Bob", 35, "Chicago"),
+      new Person("Charlie", 25, "Los Angeles"),
+      new Person("David", 40, "San Francisco"),
+      new Person("Eve", 30, "Boston"),
+      new Person("Frank", 45, "Miami"));
 
-    table.addColumn("Name", Person::name).setSortable(true);
-    table.addColumn("Age", Person::age).setSortable(true);
-    table.addColumn("City", Person::city).setSortable(true);
+    // Use record accessor methods (name, age, city)
+    table.addColumn("Name", Person::getName).setSortable(true);
+    table.addColumn("Age", Person::getAge).setSortable(true);
+    table.addColumn("City", Person::getCity).setSortable(true);
 
-    table.setItems(data);
-    table.setSize("100%", "260px");
-
-    table.setStriped(true);
-
-    table.setBordersVisible(EnumSet.of(Border.AROUND, Border.ROWS, Border.COLUMNS));
-
-    self.add(table);
+    table.setItems(data)
+      .setSize("100%", "260px")
+      .setStriped(true)
+      .setBordersVisible(EnumSet.of(Border.AROUND, Border.ROWS, Border.COLUMNS));
   }
 }

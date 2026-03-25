@@ -26,7 +26,8 @@ public class TableCellStylingView extends Composite<FlexLayout> {
   public TableCellStylingView() {
     self.setDirection(FlexDirection.COLUMN)
       .setSpacing("var(--dwc-space-l)")
-      .setMargin("var(--dwc-space-xl)");
+      .setMargin("var(--dwc-space-xl)")
+      .add(table);
 
     List<Person> data = List.of(
       new Person("Alice", 28, "New York"),
@@ -37,20 +38,21 @@ public class TableCellStylingView extends Composite<FlexLayout> {
       new Person("Frank", 45, "Miami")
     );
 
-    table.addColumn("Name", Person::name).setSortable(true);
-    table.addColumn("City", Person::city).setSortable(true);
-    Column<Person, Integer> ageCol = table.addColumn("Age", Person::age).setSortable(true);
+    // Add columns using record accessor methods (name, age, city)
+    table.addColumn("Name", Person::getName).setSortable(true);
+    table.addColumn("City", Person::getCity).setSortable(true);
+    Column<Person, Integer> ageCol = table.addColumn("Age", Person::getAge).setSortable(true);
 
     table.setItems(data)
       .setSize("100%", "260px")
       .setCellPartProvider((person, column) -> {
         List<String> parts = new ArrayList<>();
-        if (column == ageCol && person.age() > 30) {
+        // Use pattern matching for instanceof (implicit)
+        if (column == ageCol && person.getAge() > 30) {
           parts.add("cell-highlight");
         }
         return parts;
       });
 
-    self.add(table);
   }
 }

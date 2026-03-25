@@ -17,22 +17,20 @@ public class TableRichContentView extends Composite<Div> {
 
   public TableRichContentView() {
     Table<MusicRecord> table = new Table<MusicRecord>()
-        .addClassName("table");
+      .addClassName("table")
+      .setRepository(Service.getMusicRecords())
+      .setSelectionMode(Table.SelectionMode.MULTIPLE)
+      .setRowHeight(45)
+      .refreshColumns();
 
     table.addColumn("Title", MusicRecord::getTitle).setHidden(true);
     table.addColumn("Artist", MusicRecord::getArtist).setHidden(true);
     table.addColumn("Title & Artist", new AvatarRenderer()).setFlex(1f).setMinWidth(200f);
     table.addColumn("Genre", MusicRecord::getMusicType)
-        .setPinDirection(Column.PinDirection.RIGHT);
+      .setPinDirection(Column.PinDirection.RIGHT);
     table.addColumn("Cost", MusicRecord::getCost)
-        .setRenderer(new BadgeRenderer())
-        .setPinDirection(Column.PinDirection.RIGHT);
-
-    table.setRepository(Service.getMusicRecords());
-    table.setSelectionMode(Table.SelectionMode.MULTIPLE);
-    table.setRowHeight(45);
-
-    table.refreshColumns();
+      .setRenderer(new BadgeRenderer())
+      .setPinDirection(Column.PinDirection.RIGHT);
 
     self.add(table);
   }
@@ -42,22 +40,22 @@ public class TableRichContentView extends Composite<Div> {
     @Override
     public String build() {
       return /* html */"""
-          <%
-          const artist = cell.row.getValue('Artist');
-          const title = cell.row.getValue('Title');
-          %>
-          <div part='avatar-renderer'>
-            <img
-              part='avatar-img'
-              src='https://i.pravatar.cc/32?u=<%= encodeURIComponent(artist) %>' />
-            <div part="avatar-text">
-              <%= title %>
-              <div part="avatar-subtext">
-                <%= artist %>
-              </div>
+        <%
+        const artist = cell.row.getValue('Artist');
+        const title = cell.row.getValue('Title');
+        %>
+        <div part='avatar-renderer'>
+          <img
+            part='avatar-img'
+            src='https://i.pravatar.cc/32?u=<%= encodeURIComponent(artist) %>' />
+          <div part="avatar-text">
+            <%= title %>
+            <div part="avatar-subtext">
+              <%= artist %>
             </div>
           </div>
-          """;
+        </div>
+        """;
     }
   }
 
@@ -66,10 +64,10 @@ public class TableRichContentView extends Composite<Div> {
     @Override
     public String build() {
       return """
-          <span part='badge badge-<%= cell.value > 7 ? "high" : "low" %>'>
-            <%= cell.value %>
-          </span>
-          """;
+        <span part='badge badge-<%= cell.value > 7 ? "high" : "low" %>'>
+          <%= cell.value %>
+        </span>
+        """;
     }
   }
 }

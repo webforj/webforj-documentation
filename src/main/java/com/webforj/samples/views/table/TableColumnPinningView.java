@@ -19,7 +19,10 @@ public class TableColumnPinningView extends Composite<Div> {
     Table<MusicRecord> table = new Table<MusicRecord>()
       .setWidth("100vw")
       .setHeight("100vh")
-      .setColumnsToMovable(false);
+      .setColumnsToMovable(false)
+      .setRepository(Service.getMusicRecords())
+      .setRowHeight(42);
+
 
     table.addColumn("Number", MusicRecord::getNumber)
       .setPinDirection(Column.PinDirection.LEFT);
@@ -37,9 +40,6 @@ public class TableColumnPinningView extends Composite<Div> {
     table.addColumn(editRenderer)
       .setAlignment(Column.Alignment.CENTER)
       .setPinDirection(Column.PinDirection.RIGHT);
-
-    table.setRepository(Service.getMusicRecords())
-      .setRowHeight(42);
 
     self.add(table);
   }

@@ -39,7 +39,8 @@ public class TableDynamicStylingView extends Composite<FlexLayout> {
   public TableDynamicStylingView() {
     self.setDirection(FlexDirection.COLUMN)
       .setMaxWidth(760)
-      .setStyle("margin", "1em auto");
+      .setStyle("margin", "1em auto")
+      .add(update, table);
 
     List<Person> data = List.of(
       new Person("Alice", 28, "New York"),
@@ -53,42 +54,42 @@ public class TableDynamicStylingView extends Composite<FlexLayout> {
       new Person("Frank", 30, "Boston"),
       new Person("Grace", 27, "Seattle"));
 
-    table.addColumn("Name", Person::name).setSortable(true);
-    Column<Person, Integer> ageColumn = table.addColumn("Age", Person::age).setSortable(true);
-    table.addColumn("City", Person::city).setSortable(true);
+    // Use record accessor methods
+    table.addColumn("Name", Person::getName).setSortable(true);
+    table.addColumn("City", Person::getCity).setSortable(true);
+    Column<Person, Integer> ageColumn = table.addColumn("Age", Person::getAge).setSortable(true);
 
     table.setItems(data)
       .setWidth("100%")
-      .setHeight("400px");
-
-    table.setRowPartProvider(p -> {
-      List<String> parts = new ArrayList<>();
-      int index = data.indexOf(p);
-      parts.add(index % 2 == 0 ? "row-even" : "row-odd");
-      return parts;
-    });
-
-    table.setCellPartProvider((person, column) -> {
-      List<String> parts = new ArrayList<>();
-      if (column == ageColumn) {
-        if (person.age() > 30) {
-          parts.add("cell-senior");
-        } else {
-          parts.add("cell-junior");
+      .setHeight("400px")
+      // Dynamic row styling
+      .setRowPartProvider(p -> {
+        List<String> parts = new ArrayList<>();
+        int index = data.indexOf(p);
+        parts.add(index % 2 == 0 ? "row-even" : "row-odd");
+        return parts;
+      })
+      // Dynamic cell styling based on age
+      .setCellPartProvider((person, column) -> {
+        List<String> parts = new ArrayList<>();
+        if (column == ageColumn) {
+          // Use record accessor
+          if (person.getAge() > 30) {
+            parts.add("cell-senior");
+          } else {
+            parts.add("cell-junior");
+          }
         }
-      }
-      return parts;
-    });
+        return parts;
+      });
 
     update.setMaxWidth(200)
       .onClick(e -> {
-        Person oldAlice = data.get(0);
-        Person newAlice = new Person(oldAlice.name(), toggleAge ? 28 : 31, oldAlice.city());
+        Person alice = data.get(0);
+        alice.setAge(toggleAge ? 28 : 31);
         toggleAge = !toggleAge;
         update.setText(toggleAge ? "Decrease Alice Age" : "Increase Alice Age");
-        table.refresh();
+        table.getRepository().commit(alice);
       });
-
-    self.add(update, table);
   }
 }

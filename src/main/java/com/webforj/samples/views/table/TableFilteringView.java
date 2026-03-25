@@ -50,7 +50,7 @@ public class TableFilteringView extends Composite<Div> {
   }
 
   Table<MusicRecord> buildTable(Repository<MusicRecord> repository) {
-    Table<MusicRecord> table = new Table<MusicRecord>();
+    Table<MusicRecord> table = new Table<>();
 
     table.addColumn("Title", MusicRecord::getTitle);
     table.addColumn("Artist", MusicRecord::getArtist);
