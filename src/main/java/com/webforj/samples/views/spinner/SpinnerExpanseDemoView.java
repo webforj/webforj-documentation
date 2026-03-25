@@ -14,7 +14,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Spinner Expanses")
 public class SpinnerExpanseDemoView extends Composite<FlexLayout> {
-  // Self reference enabling fluent method chaining
   private final FlexLayout self = getBoundComponent();
 
   // Spinners with different sizes

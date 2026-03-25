@@ -16,7 +16,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Spinner Themes")
 public class SpinnerThemeDemoView extends Composite<FlexLayout> {
-  // Self reference enabling fluent method chaining
   private final FlexLayout self = getBoundComponent();
 
   // Available themes

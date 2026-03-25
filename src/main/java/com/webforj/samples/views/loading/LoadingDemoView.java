@@ -33,7 +33,6 @@ public class LoadingDemoView extends Composite<FlexLayout> {
   private final Loading loading;
 
   public LoadingDemoView() {
-    // Configure layout with fluent API
     self.setDirection(FlexDirection.ROW)
             .setMargin("var(--dwc-space-l)");
 

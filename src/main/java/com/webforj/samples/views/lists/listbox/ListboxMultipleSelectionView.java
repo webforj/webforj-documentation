@@ -23,7 +23,6 @@ public class ListboxMultipleSelectionView extends Composite<FlexLayout> {
   private final RadioButton selectionModeToggle = RadioButton.Switch("Multiple Selection");
 
   public ListboxMultipleSelectionView() {
-    // Configure layout with fluent API
     self.setDirection(FlexDirection.COLUMN)
         .setWidth(200)
         .setMargin("20px 0 0 20px")

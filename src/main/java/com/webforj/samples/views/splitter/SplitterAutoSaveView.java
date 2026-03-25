@@ -15,7 +15,6 @@ import com.webforj.samples.components.SplitterBox;
 @Route
 @FrameTitle("Splitter Auto Save")
 public class SplitterAutoSaveView extends Composite<Div> {
-  // Self reference enabling fluent method chaining
   private final Div self = getBoundComponent();
 
   public SplitterAutoSaveView() {

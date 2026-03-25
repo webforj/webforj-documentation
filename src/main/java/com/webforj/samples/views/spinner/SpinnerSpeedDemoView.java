@@ -16,7 +16,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Spinner Speeds")
 public class SpinnerSpeedDemoView extends Composite<FlexLayout> {
-  // Self reference enabling fluent method chaining
   private final FlexLayout self = getBoundComponent();
 
   // UI Components

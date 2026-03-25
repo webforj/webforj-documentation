@@ -10,7 +10,6 @@ import com.webforj.samples.components.SplitterBox;
 @Route
 @FrameTitle("Splitter Nested")
 public class SplitterNestedView extends Composite<Div> {
-  // Self reference enabling fluent method chaining
   private final Div self = getBoundComponent();
 
   public SplitterNestedView() {

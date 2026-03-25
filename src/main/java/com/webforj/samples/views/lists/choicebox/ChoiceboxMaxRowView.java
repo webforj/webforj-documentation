@@ -30,7 +30,6 @@ public class ChoiceboxMaxRowView extends Composite<FlexLayout> {
   private final Button select = new Button("Apply", ButtonTheme.PRIMARY);
 
   public ChoiceboxMaxRowView() {
-    // Configure layout with fluent API
     self.setDirection(FlexDirection.COLUMN)
         .setMargin("20px 0 0 20px")
         .setSpacing("20px")

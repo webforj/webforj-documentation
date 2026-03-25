@@ -14,7 +14,6 @@ public class IconBasicsView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 
   public IconBasicsView() {
-    // Configure layout with fluent API
     self.setDirection(FlexDirection.ROW)
         .setMargin("var(--dwc-space-l)")
         .setSpacing("var(--dwc-space-m)");

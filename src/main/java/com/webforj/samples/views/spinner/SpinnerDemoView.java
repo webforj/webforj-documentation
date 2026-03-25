@@ -18,7 +18,6 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Spinner Basics")
 @StyleSheet("ws://css/spinnerstyles/spinnerdemo.css")
 public class SpinnerDemoView extends Composite<Div> {
-  // Self reference enabling fluent method chaining
   private final Div self = getBoundComponent();
   // UI Components
   private final Spinner spinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.XXXSMALL);

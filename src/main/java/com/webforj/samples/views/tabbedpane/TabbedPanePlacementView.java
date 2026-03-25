@@ -23,7 +23,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Tabbed Pane Placement")
 public class TabbedPanePlacementView extends Composite<Div> {
-  // Self reference enabling fluent method chaining
   private final Div self = getBoundComponent();
   // UI Components
   private final TabbedPane pane = new TabbedPane();

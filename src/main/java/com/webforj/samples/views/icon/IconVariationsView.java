@@ -15,7 +15,6 @@ public class IconVariationsView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 
   public IconVariationsView() {
-    // Configure layout with fluent API
     self.setDirection(FlexDirection.ROW)
         .setMargin("var(--dwc-space-l)")
         .setSpacing("var(--dwc-space-m)");

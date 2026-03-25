@@ -16,7 +16,6 @@ public class IconPrefixSuffixView extends Composite<FlexLayout> {
   private final FlexLayout self = getBoundComponent();
 
   public IconPrefixSuffixView() {
-    // Configure layout with fluent API
     self.setDirection(FlexDirection.ROW)
         .setMargin("var(--dwc-space-l)")
         .setSpacing("var(--dwc-space-l)");

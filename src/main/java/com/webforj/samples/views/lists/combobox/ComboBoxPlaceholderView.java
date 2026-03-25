@@ -20,7 +20,6 @@ public class ComboBoxPlaceholderView extends Composite<FlexLayout> {
   private final ComboBox comboBox = new ComboBox();
 
   public ComboBoxPlaceholderView() {
-    // Configure layout with fluent API
     self.setMargin("20px 0 0 20px")
         .setSpacing("20px");
 

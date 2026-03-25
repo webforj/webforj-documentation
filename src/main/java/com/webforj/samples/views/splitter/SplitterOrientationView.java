@@ -11,7 +11,6 @@ import com.webforj.samples.components.SplitterBox;
 @FrameTitle("Splitter Orientation")
 public class SplitterOrientationView extends Composite<Div> {
 
-  // Self reference enabling fluent method chaining
   private final Div self = getBoundComponent();
 
   public SplitterOrientationView() {

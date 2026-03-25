@@ -23,7 +23,6 @@ public class ComboBoxCustomValueView extends Composite<FlexLayout> {
   private final RadioButton toggle = RadioButton.Switch("Toggle Custom Value");
 
   public ComboBoxCustomValueView() {
-    // Configure layout with fluent API
     self.setDirection(FlexDirection.COLUMN)
         .setMargin("20px 0 0 20px")
         .setSpacing("20px")
