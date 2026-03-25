@@ -11,15 +11,14 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Dialog Sections")
 public class DialogSectionsView extends Composite<FlexLayout> {
 
-  private FlexLayout self = getBoundComponent();
   private Dialog dialog = new Dialog();
 
   public DialogSectionsView() {
-    self.add(dialog);
-    dialog.addToHeader(new Div("Header"))
-          .addToContent(new Div("Content"))
-          .addToFooter(new Div("Footer"))
-          .setCloseable(false)
-          .open();
+    getBoundComponent().add(dialog);
+    dialog.addToHeader(new Div("Header"));
+    dialog.addToContent(new Div("Content"));
+    dialog.addToFooter(new Div("Footer"));
+    dialog.setCloseable(false);
+    dialog.open();
   }
 }

@@ -21,17 +21,16 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Dialog Backdrop Blur")
 public class DialogBackdropBlurView extends Composite<FlexLayout> {
 
-  private FlexLayout self = getBoundComponent();
   private Dialog dialog = new Dialog();
   private Button backgroundBlur = new Button("Toggle Background Blur");
 
   public DialogBackdropBlurView() {
-    self.add(dialog);
-    dialog.addClassName("loginForm")
-    .addToHeader(new Div("Background Blur"))
-    .addToContent(backgroundBlur)
-    .setCloseable(false)
-    .open();
+    getBoundComponent().add(dialog);
+    dialog.addClassName("loginForm");
+    dialog.addToHeader(new Div("Background Blur"));
+    dialog.addToContent(backgroundBlur);
+    dialog.setCloseable(false);
+    dialog.open();
     backgroundBlur.setStyle("display", "flex")
         .setStyle("justify-content", "center")
         .onClick(e -> dialog.setBlurred(!dialog.isBlurred()));
