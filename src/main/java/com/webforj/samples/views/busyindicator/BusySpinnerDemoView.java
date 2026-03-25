@@ -17,7 +17,6 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Busy Spinners")
 public class BusySpinnerDemoView extends Composite<Div> {
-  private final Div self = getBoundComponent();
   private int state = 1;
   private final BusyIndicator indicator;
   private final Interval interval;
