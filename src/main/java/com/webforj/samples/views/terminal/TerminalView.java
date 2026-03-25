@@ -86,7 +86,6 @@ public class TerminalView extends Composite<Terminal> {
     String input = e.getValue();
     boolean isPrintable = input.chars().allMatch(c -> (c >= 0x20 && c <= 0x7E) || c >= 0xA0);
 
-    // Use enhanced switch with pattern matching for cleaner input handling
     switch (input) {
       case "\r" -> {
         self.write("\r\n");

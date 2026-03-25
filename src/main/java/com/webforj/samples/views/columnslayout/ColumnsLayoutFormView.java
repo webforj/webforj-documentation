@@ -54,7 +54,6 @@ public class ColumnsLayoutFormView extends Composite<Div> {
   }
 
   private void populateStates() {
-    // Use immutable List.of() for cleaner state list
     List<ListItem> listStates = List.of(
         new ListItem("AL", "Alabama"),
         new ListItem("AK", "Alaska"),

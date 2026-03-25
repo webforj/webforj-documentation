@@ -24,7 +24,6 @@ public class HelpCommand implements TerminalCommand {
   @Override
   public void execute(Terminal term, String[] args) {
     term.writeln("Supported commands:");
-    // Use forEach with lambda for cleaner iteration
     commands.values().forEach(command -> command.printInfo(term));
   }
 }

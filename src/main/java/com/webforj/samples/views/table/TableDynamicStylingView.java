@@ -41,7 +41,6 @@ public class TableDynamicStylingView extends Composite<FlexLayout> {
       .setMaxWidth(760)
       .setStyle("margin", "1em auto");
 
-    // Create immutable data list with records
     List<Person> data = List.of(
       new Person("Alice", 28, "New York"),
       new Person("Tom", 32, "Chicago"),
@@ -54,7 +53,6 @@ public class TableDynamicStylingView extends Composite<FlexLayout> {
       new Person("Frank", 30, "Boston"),
       new Person("Grace", 27, "Seattle"));
 
-    // Use record accessor methods
     table.addColumn("Name", Person::name).setSortable(true);
     Column<Person, Integer> ageColumn = table.addColumn("Age", Person::age).setSortable(true);
     table.addColumn("City", Person::city).setSortable(true);
@@ -63,7 +61,6 @@ public class TableDynamicStylingView extends Composite<FlexLayout> {
       .setWidth("100%")
       .setHeight("400px");
 
-    // Dynamic row styling
     table.setRowPartProvider(p -> {
       List<String> parts = new ArrayList<>();
       int index = data.indexOf(p);
@@ -71,11 +68,9 @@ public class TableDynamicStylingView extends Composite<FlexLayout> {
       return parts;
     });
 
-    // Dynamic cell styling based on age
     table.setCellPartProvider((person, column) -> {
       List<String> parts = new ArrayList<>();
       if (column == ageColumn) {
-        // Use record accessor
         if (person.age() > 30) {
           parts.add("cell-senior");
         } else {
@@ -87,13 +82,10 @@ public class TableDynamicStylingView extends Composite<FlexLayout> {
 
     update.setMaxWidth(200)
       .onClick(e -> {
-        // Since Person is immutable, we create a new instance
         Person oldAlice = data.get(0);
         Person newAlice = new Person(oldAlice.name(), toggleAge ? 28 : 31, oldAlice.city());
         toggleAge = !toggleAge;
         update.setText(toggleAge ? "Decrease Alice Age" : "Increase Alice Age");
-        // Note: With immutable records, we'd need to update the repository differently
-        // For now, just refresh the table
         table.refresh();
       });
 

@@ -27,7 +27,6 @@ public class BusyIndicatorView extends Composite<Div> {
   }
 
   private void handleElapsedEvent(Interval.ElapsedEvent event) {
-    // Use enhanced switch expression for cleaner logic
     switch (retry) {
       case 1 -> {
         indicator.getSpinner().setTheme(Theme.WARNING).setSpeed(200)

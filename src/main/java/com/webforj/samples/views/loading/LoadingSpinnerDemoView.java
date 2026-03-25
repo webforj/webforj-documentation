@@ -37,7 +37,6 @@ public class LoadingSpinnerDemoView extends Composite<Div> {
 
     // Create interval that cycles through spinner themes and options
     interval = new Interval(3f, event -> {
-      // Use switch expression for cleaner state handling
       String text = switch (state) {
         case 1 -> {
           loading.getSpinner().setTheme(Theme.DEFAULT).setExpanse(SpinnerExpanse.SMALL);

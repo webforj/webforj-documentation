@@ -28,7 +28,6 @@ public class TableCellStylingView extends Composite<FlexLayout> {
       .setSpacing("var(--dwc-space-l)")
       .setMargin("var(--dwc-space-xl)");
 
-    // Use immutable list with record instances
     List<Person> data = List.of(
       new Person("Alice", 28, "New York"),
       new Person("Bob", 35, "Chicago"),
@@ -43,12 +42,10 @@ public class TableCellStylingView extends Composite<FlexLayout> {
     table.addColumn("City", Person::city).setSortable(true);
     Column<Person, Integer> ageCol = table.addColumn("Age", Person::age).setSortable(true);
 
-    // Dynamic cell styling based on age
     table.setItems(data)
       .setSize("100%", "260px")
       .setCellPartProvider((person, column) -> {
         List<String> parts = new ArrayList<>();
-        // Use pattern matching for instanceof (implicit)
         if (column == ageCol && person.age() > 30) {
           parts.add("cell-highlight");
         }

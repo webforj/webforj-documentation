@@ -31,7 +31,6 @@ public class BusySpinnerDemoView extends Composite<Div> {
   }
 
   private void handleElapsedEvent(Interval.ElapsedEvent event) {
-    // Use enhanced switch expression for cleaner logic
     switch (state) {
       case 1 -> updateIndicator(Theme.DEFAULT, SpinnerExpanse.SMALL,
           "Displaying default theme, small expanse");

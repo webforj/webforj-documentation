@@ -30,7 +30,6 @@ public class ToastPlacementView extends Composite<FlexLayout> {
 
     ChoiceBox placementChoiceBox = new ChoiceBox();
 
-    // Use immutable List.of() for placement options
     placementChoiceBox.insert(List.of(
         new ListItem(Placement.TOP, "TOP"),
         new ListItem(Placement.TOP_LEFT, "TOP_LEFT"),

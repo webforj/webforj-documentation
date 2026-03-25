@@ -87,12 +87,10 @@ public class TerminalThemePickerView extends Composite<FlexLayout> {
 
     themes.putAll(loadedThemes);
 
-    // Use forEach with lambda for cleaner iteration
     loadedThemes.forEach((key, value) -> themeChoiceBox.add(value, key));
   }
 
   private void applySelectedTheme(ValueChangeEvent<Object> e) {
-    // Use pattern matching for instanceof
     if (!(e.getValue() instanceof TerminalTheme selected)) {
       return;
     }

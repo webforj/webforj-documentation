@@ -109,7 +109,6 @@ public class ServerLogsView extends Composite<FlexLayout> {
     String timestamp = LocalTime.now().toString();
     String message = "Simulated log message...";
 
-    // Use enhanced switch expression for cleaner log level formatting
     String coloredLevel = switch (level) {
       case "INFO"  -> "\u001B[32mINFO\u001B[0m";
       case "WARN"  -> "\u001B[33mWARN\u001B[0m";

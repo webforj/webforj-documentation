@@ -36,7 +36,6 @@ public class TableRowStylingView extends Composite<FlexLayout> {
         new Person("Eve", 30, "Boston"),
         new Person("Frank", 45, "Miami"));
 
-    // Use record accessor methods
     table.addColumn("Name", Person::name).setSortable(true);
     table.addColumn("Age", Person::age).setSortable(true);
     table.addColumn("City", Person::city).setSortable(true);
@@ -44,10 +43,8 @@ public class TableRowStylingView extends Composite<FlexLayout> {
     table.setItems(data);
     table.setSize("100%", "260px");
 
-    // Dynamic row styling based on age
     table.setRowPartProvider(person -> {
       List<String> parts = new ArrayList<>();
-      // Use record accessor
       if (person.age() > 30) {
         parts.add("row-highlight");
       }

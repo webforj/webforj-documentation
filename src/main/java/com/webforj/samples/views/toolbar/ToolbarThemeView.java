@@ -22,7 +22,6 @@ public class ToolbarThemeView extends Composite<FlexLayout> {
         .setSpacing("var(--dwc-space-m)")
         .setMargin("var(--dwc-space-m) var(--dwc-space-m)");
 
-    // Use enhanced for-each loop with Theme.values()
     for (Theme theme : Theme.values()) {
       Toolbar toolbar = new Toolbar()
           .setTheme(theme)
