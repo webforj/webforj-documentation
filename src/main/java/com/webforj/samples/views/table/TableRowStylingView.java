@@ -27,7 +27,6 @@ public class TableRowStylingView extends Composite<FlexLayout> {
         .setSpacing("var(--dwc-space-l)")
         .setMargin("var(--dwc-space-xl)");
 
-    // Use record instances with immutable list
     List<Person> data = List.of(
         new Person("Alice", 28, "New York"),
         new Person("Bob", 35, "Chicago"),

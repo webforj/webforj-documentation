@@ -25,7 +25,6 @@ public class ViewTransitionShuffleView extends Composite<FlexLayout> {
   private final FlexLayout listContainer;
   private final List<CardData> items;
 
-  // Using Java record for immutable card data
   record CardData(String id, String title, String subtitle, String color, FeatherIcon icon) { }
 
   public ViewTransitionShuffleView() {
