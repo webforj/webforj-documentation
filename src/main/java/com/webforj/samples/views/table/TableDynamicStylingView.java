@@ -54,7 +54,6 @@ public class TableDynamicStylingView extends Composite<FlexLayout> {
       new Person("Frank", 30, "Boston"),
       new Person("Grace", 27, "Seattle"));
 
-    // Use record accessor methods
     table.addColumn("Name", Person::getName).setSortable(true);
     table.addColumn("City", Person::getCity).setSortable(true);
     Column<Person, Integer> ageColumn = table.addColumn("Age", Person::getAge).setSortable(true);
@@ -62,18 +61,15 @@ public class TableDynamicStylingView extends Composite<FlexLayout> {
     table.setItems(data)
       .setWidth("100%")
       .setHeight("400px")
-      // Dynamic row styling
       .setRowPartProvider(p -> {
         List<String> parts = new ArrayList<>();
         int index = data.indexOf(p);
         parts.add(index % 2 == 0 ? "row-even" : "row-odd");
         return parts;
       })
-      // Dynamic cell styling based on age
       .setCellPartProvider((person, column) -> {
         List<String> parts = new ArrayList<>();
         if (column == ageColumn) {
-          // Use record accessor
           if (person.getAge() > 30) {
             parts.add("cell-senior");
           } else {

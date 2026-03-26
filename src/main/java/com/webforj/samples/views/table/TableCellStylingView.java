@@ -38,7 +38,6 @@ public class TableCellStylingView extends Composite<FlexLayout> {
       new Person("Frank", 45, "Miami")
     );
 
-    // Add columns using record accessor methods (name, age, city)
     table.addColumn("Name", Person::getName).setSortable(true);
     table.addColumn("City", Person::getCity).setSortable(true);
     Column<Person, Integer> ageCol = table.addColumn("Age", Person::getAge).setSortable(true);
@@ -47,7 +46,6 @@ public class TableCellStylingView extends Composite<FlexLayout> {
       .setSize("100%", "260px")
       .setCellPartProvider((person, column) -> {
         List<String> parts = new ArrayList<>();
-        // Use pattern matching for instanceof (implicit)
         if (column == ageCol && person.getAge() > 30) {
           parts.add("cell-highlight");
         }

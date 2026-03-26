@@ -31,7 +31,6 @@ public class TableLayoutStylingView extends Composite<FlexLayout> {
       new Person("Eve", 30, "Boston"),
       new Person("Frank", 45, "Miami"));
 
-    // Use record accessor methods (name, age, city)
     table.addColumn("Name", Person::getName).setSortable(true);
     table.addColumn("Age", Person::getAge).setSortable(true);
     table.addColumn("City", Person::getCity).setSortable(true);
