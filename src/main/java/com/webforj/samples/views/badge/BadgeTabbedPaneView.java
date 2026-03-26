@@ -16,67 +16,64 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Badge - Tabbed Pane")
 public class BadgeTabbedPaneView extends Composite<FlexLayout> {
-
   private final FlexLayout self = getBoundComponent();
 
   public BadgeTabbedPaneView() {
-    self.setDirection(FlexDirection.COLUMN);
-    self.setMaxWidth("700px");
-    self.setStyle("margin", "0 auto");
-    self.setPadding("var(--dwc-space-l)");
-    self.setSpacing("var(--dwc-space-m)");
+    self.setDirection(FlexDirection.COLUMN)
+        .setSpacing("var(--dwc-space-m)")
+        .setPadding("var(--dwc-space-l)")
+        .setMargin("0 auto")
+        .setMaxWidth("700px");
 
     self.add(new H3("Badge in Tabbed Pane"));
+    self.add(createFilledBadgePane());
 
-    TabbedPane tabbedPane = new TabbedPane();
+    self.add(new H3("Outlined Badges in Tabs"));
+    self.add(createOutlinedBadgePane());
+  }
 
-    Tab inbox = new Tab("Inbox");
-    Badge inboxBadge = new Badge("12", BadgeTheme.PRIMARY);
-    inboxBadge.setExpanse(BadgeExpanse.XSMALL);
-    inbox.setSuffixComponent(inboxBadge);
+  private TabbedPane createFilledBadgePane() {
+    TabbedPane pane = new TabbedPane();
 
-    Tab notifications = new Tab("Notifications");
-    Badge notifBadge = new Badge("3", BadgeTheme.DANGER);
-    notifBadge.setExpanse(BadgeExpanse.XSMALL);
-    notifications.setSuffixComponent(notifBadge);
+    Tab inbox = new Tab("Inbox")
+      .setSuffixComponent(createBadge("12", BadgeTheme.PRIMARY, BadgeExpanse.XSMALL));
 
-    Tab drafts = new Tab("Drafts");
-    Badge draftsBadge = new Badge("1", BadgeTheme.GRAY);
-    draftsBadge.setExpanse(BadgeExpanse.XSMALL);
-    drafts.setSuffixComponent(draftsBadge);
+    Tab notifications = new Tab("Notifications")
+      .setSuffixComponent(createBadge("3", BadgeTheme.DANGER, BadgeExpanse.XSMALL));
+
+    Tab drafts = new Tab("Drafts")
+      .setSuffixComponent(createBadge("1", BadgeTheme.GRAY, BadgeExpanse.XSMALL));
 
     Tab sent = new Tab("Sent");
 
-    tabbedPane.addTab(inbox, new Paragraph("You have 12 messages in your inbox."));
-    tabbedPane.addTab(notifications, new Paragraph("You have 3 unread notifications."));
-    tabbedPane.addTab(drafts, new Paragraph("You have 1 draft saved."));
-    tabbedPane.addTab(sent, new Paragraph("Your sent messages."));
+    pane.addTab(inbox, new Paragraph("You have 12 messages in your inbox."));
+    pane.addTab(notifications, new Paragraph("You have 3 unread notifications."));
+    pane.addTab(drafts, new Paragraph("You have 1 draft saved."));
+    pane.addTab(sent, new Paragraph("Your sent messages."));
 
-    self.add(tabbedPane);
+    return pane;
+  }
 
-    self.add(new H3("Outlined Badges in Tabs"));
+  private TabbedPane createOutlinedBadgePane() {
+    TabbedPane pane = new TabbedPane();
 
-    TabbedPane outlinedPane = new TabbedPane();
+    Tab tasks = new Tab("Tasks")
+      .setSuffixComponent(createBadge("5", BadgeTheme.OUTLINED_PRIMARY, BadgeExpanse.XSMALL));
 
-    Tab tasks = new Tab("Tasks");
-    Badge tasksBadge = new Badge("5", BadgeTheme.OUTLINED_PRIMARY);
-    tasksBadge.setExpanse(BadgeExpanse.XSMALL);
-    tasks.setSuffixComponent(tasksBadge);
+    Tab issues = new Tab("Issues")
+      .setSuffixComponent(createBadge("8", BadgeTheme.OUTLINED_DANGER, BadgeExpanse.XSMALL));
 
-    Tab issues = new Tab("Issues");
-    Badge issuesBadge = new Badge("8", BadgeTheme.OUTLINED_DANGER);
-    issuesBadge.setExpanse(BadgeExpanse.XSMALL);
-    issues.setSuffixComponent(issuesBadge);
+    Tab done = new Tab("Done")
+      .setSuffixComponent(createBadge("24", BadgeTheme.OUTLINED_SUCCESS, BadgeExpanse.XSMALL));
 
-    Tab done = new Tab("Done");
-    Badge doneBadge = new Badge("24", BadgeTheme.OUTLINED_SUCCESS);
-    doneBadge.setExpanse(BadgeExpanse.XSMALL);
-    done.setSuffixComponent(doneBadge);
+    pane.addTab(tasks, new Paragraph("Your pending tasks."));
+    pane.addTab(issues, new Paragraph("Open issues that need attention."));
+    pane.addTab(done, new Paragraph("Completed items."));
 
-    outlinedPane.addTab(tasks, new Paragraph("Your pending tasks."));
-    outlinedPane.addTab(issues, new Paragraph("Open issues that need attention."));
-    outlinedPane.addTab(done, new Paragraph("Completed items."));
+    return pane;
+  }
 
-    self.add(outlinedPane);
+  private Badge createBadge(String text, BadgeTheme theme, BadgeExpanse expanse) {
+    return new Badge(text).setTheme(theme).setExpanse(expanse);
   }
 }

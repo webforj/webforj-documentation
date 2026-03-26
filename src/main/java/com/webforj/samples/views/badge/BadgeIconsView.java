@@ -8,82 +8,53 @@ import com.webforj.component.icons.FeatherIcon;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
-import com.webforj.component.layout.flexlayout.FlexWrap;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("Badge - Icons")
 public class BadgeIconsView extends Composite<FlexLayout> {
-
   private final FlexLayout self = getBoundComponent();
 
   public BadgeIconsView() {
-    self.setDirection(FlexDirection.COLUMN);
-    self.setMaxWidth("700px");
-    self.setStyle("margin", "0 auto");
-    self.setPadding("var(--dwc-space-l)");
-    self.setSpacing("var(--dwc-space-m)");
+    self.setDirection(FlexDirection.COLUMN)
+      .setSpacing("var(--dwc-space-m)")
+      .setPadding("var(--dwc-space-l)")
+      .setMargin("0 auto")
+      .setMaxWidth("700px")
+      .add(new H3("Icon + Text (label prop)"),
+        createIconTextRow(),
+        new H3("Icon Only"),
+        createIconOnlyRow(),
+        new H3("All Themes with Icon + Text"),
+        createAllThemesRow());
+  }
 
-    self.add(new H3("Icon + Text (label prop)"));
+  private FlexLayout createIconTextRow() {
+    return FlexLayout.create(
+      new Badge("Done", FeatherIcon.CHECK_CIRCLE.create()).setTheme(BadgeTheme.SUCCESS),
+      new Badge("Error", FeatherIcon.X_CIRCLE.create()).setTheme(BadgeTheme.DANGER),
+      new Badge("Info", FeatherIcon.INFO.create()).setTheme(BadgeTheme.PRIMARY),
+      new Badge("Warning", FeatherIcon.ALERT_TRIANGLE.create()).setTheme(BadgeTheme.WARNING)
+    ).horizontal().wrap().build().setSpacing("var(--dwc-space-s)").setAlignment(FlexAlignment.CENTER);
+  }
 
-    FlexLayout iconTextRow = FlexLayout.create().horizontal().build();
-    iconTextRow.setSpacing("var(--dwc-space-s)");
-    iconTextRow.setWrap(FlexWrap.WRAP);
-    iconTextRow.setAlignment(FlexAlignment.CENTER);
+  private FlexLayout createIconOnlyRow() {
+    return FlexLayout.create(
+      new Badge(FeatherIcon.CHECK.create()).setTheme(BadgeTheme.SUCCESS),
+      new Badge(FeatherIcon.X.create()).setTheme(BadgeTheme.DANGER),
+      new Badge(FeatherIcon.BELL.create()).setTheme(BadgeTheme.PRIMARY),
+      new Badge(FeatherIcon.STAR.create()).setTheme(BadgeTheme.GRAY)
+    ).horizontal().build().setSpacing("var(--dwc-space-s)").setAlignment(FlexAlignment.CENTER);
+  }
 
-    Badge doneBadge = new Badge("Done", FeatherIcon.CHECK_CIRCLE.create());
-    doneBadge.setTheme(BadgeTheme.SUCCESS);
-    Badge errorBadge = new Badge("Error", FeatherIcon.X_CIRCLE.create());
-    errorBadge.setTheme(BadgeTheme.DANGER);
-    Badge infoBadge = new Badge("Info", FeatherIcon.INFO.create());
-    infoBadge.setTheme(BadgeTheme.PRIMARY);
-    Badge warningBadge = new Badge("Warning", FeatherIcon.ALERT_TRIANGLE.create());
-    warningBadge.setTheme(BadgeTheme.WARNING);
-
-    iconTextRow.add(doneBadge, errorBadge, infoBadge, warningBadge);
-
-    self.add(iconTextRow);
-
-    self.add(new H3("Icon Only"));
-
-    FlexLayout iconRow = FlexLayout.create().horizontal().build();
-    iconRow.setSpacing("var(--dwc-space-s)");
-    iconRow.setAlignment(FlexAlignment.CENTER);
-
-    Badge checkBadge = new Badge(FeatherIcon.CHECK.create());
-    checkBadge.setTheme(BadgeTheme.SUCCESS);
-    Badge xBadge = new Badge(FeatherIcon.X.create());
-    xBadge.setTheme(BadgeTheme.DANGER);
-    Badge bellBadge = new Badge(FeatherIcon.BELL.create());
-    bellBadge.setTheme(BadgeTheme.PRIMARY);
-    Badge starBadge = new Badge(FeatherIcon.STAR.create());
-    starBadge.setTheme(BadgeTheme.GRAY);
-
-    iconRow.add(checkBadge, xBadge, bellBadge, starBadge);
-
-    self.add(iconRow);
-
-    self.add(new H3("All Themes with Icon + Text"));
-
-    FlexLayout allThemesRow = FlexLayout.create().horizontal().build();
-    allThemesRow.setSpacing("var(--dwc-space-s)");
-    allThemesRow.setWrap(FlexWrap.WRAP);
-    allThemesRow.setAlignment(FlexAlignment.CENTER);
-
-    Badge newBadge = new Badge("New", FeatherIcon.STAR.create());
-    newBadge.setTheme(BadgeTheme.PRIMARY);
-    Badge liveBadge = new Badge("Live", FeatherIcon.RADIO.create());
-    liveBadge.setTheme(BadgeTheme.SUCCESS);
-    Badge alertBadge = new Badge("Alert", FeatherIcon.ALERT_CIRCLE.create());
-    alertBadge.setTheme(BadgeTheme.DANGER);
-    Badge draftBadge = new Badge("Draft", FeatherIcon.EDIT.create());
-    draftBadge.setTheme(BadgeTheme.GRAY);
-    Badge betaBadge = new Badge("Beta", FeatherIcon.ZAP.create());
-    betaBadge.setTheme(BadgeTheme.WARNING);
-
-    allThemesRow.add(newBadge, liveBadge, alertBadge, draftBadge, betaBadge);
-
-    self.add(allThemesRow);
+  private FlexLayout createAllThemesRow() {
+    return FlexLayout.create(
+      new Badge("New", FeatherIcon.STAR.create()).setTheme(BadgeTheme.PRIMARY),
+      new Badge("Live", FeatherIcon.RADIO.create()).setTheme(BadgeTheme.SUCCESS),
+      new Badge("Alert", FeatherIcon.ALERT_CIRCLE.create()).setTheme(BadgeTheme.DANGER),
+      new Badge("Draft", FeatherIcon.EDIT.create()).setTheme(BadgeTheme.GRAY),
+      new Badge("Beta", FeatherIcon.ZAP.create()).setTheme(BadgeTheme.WARNING)
+    ).horizontal().wrap().build().setSpacing("var(--dwc-space-s)").setAlignment(FlexAlignment.CENTER);
   }
 }

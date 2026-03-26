@@ -23,13 +23,14 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Tabbed Pane Activation")
 public class TabbedPaneActivationView extends Composite<Div> {
-
-  TabbedPane pane = new TabbedPane();
-  RadioButton activation = RadioButton.Switch("Manual");
+  private final Div self = getBoundComponent();
+  // UI Components
+  private final TabbedPane pane = new TabbedPane();
+  private final RadioButton activation = RadioButton.Switch("Manual");
 
   public TabbedPaneActivationView() {
-    getBoundComponent().addClassName("window");
-    getBoundComponent().add(activation, pane);
+    self.addClassName("window")
+        .add(activation, pane);
 
     Icon dashboardIcon = TablerIcon.create("dashboard");
     Icon ordersIcon = TablerIcon.create("shopping-cart");
@@ -40,15 +41,15 @@ public class TabbedPaneActivationView extends Composite<Div> {
     pane.addTab(new Tab("Dashboard", dashboardIcon));
     pane.addTab(new Tab("Orders", ordersIcon));
     pane.addTab(new Tab("Customers", customersIcon));
-		pane.addTab(new Tab("Products", productsIcon));
+    pane.addTab(new Tab("Products", productsIcon));
     pane.addTab(new Tab("Documents", documentsIcon));
-    
-    activation.onCheck( e -> {
+
+    activation.onCheck(e -> {
       activation.setText("Automatic");
       pane.setActivation(Activation.AUTO);
     });
-    
-    activation.onUncheck( e -> {
+
+    activation.onUncheck(e -> {
       activation.setText("Manual");
       pane.setActivation(Activation.MANUAL);
     });

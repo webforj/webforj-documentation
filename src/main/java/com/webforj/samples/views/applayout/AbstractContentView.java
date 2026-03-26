@@ -11,9 +11,10 @@ import com.webforj.router.history.ParametersBag;
 public abstract class AbstractContentView extends Composite<Div> {
   private final Div self = getBoundComponent();
   protected String name;
-  protected Paragraph contentLabel = new Paragraph("Loading content...");
+  protected Paragraph contentLabel;
 
-  public AbstractContentView() {
+  protected AbstractContentView() {
+    contentLabel = new Paragraph("Loading content...");
     self.add(new H1("Application Title"), contentLabel);
     Router.getCurrent().onNavigate(this::onNavigate);
   }
@@ -26,9 +27,9 @@ public abstract class AbstractContentView extends Composite<Div> {
 
   private void onNavigate(NavigateEvent ev) {
     ParametersBag parameters = ev.getContext().getRouteParameters();
-    parameters.get("name").ifPresent(name -> {
-      this.name = name;
-      contentLabel.setText(String.format("Content for %s goes here", name));
+    parameters.get("name").ifPresent(n -> {
+      this.name = n;
+      contentLabel.setText(String.format("Content for %s goes here", n));
     });
   }
 }

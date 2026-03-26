@@ -1,6 +1,7 @@
 package com.webforj.samples.views.badge;
 
 import com.webforj.component.Composite;
+import com.webforj.component.Expanse;
 import com.webforj.component.badge.Badge;
 import com.webforj.component.badge.BadgeExpanse;
 import com.webforj.component.badge.BadgeTheme;
@@ -11,79 +12,70 @@ import com.webforj.component.icons.FeatherIcon;
 import com.webforj.component.layout.flexlayout.FlexAlignment;
 import com.webforj.component.layout.flexlayout.FlexDirection;
 import com.webforj.component.layout.flexlayout.FlexLayout;
-import com.webforj.component.layout.flexlayout.FlexWrap;
 import com.webforj.router.annotation.FrameTitle;
 import com.webforj.router.annotation.Route;
 
 @Route
 @FrameTitle("Badge - Buttons")
 public class BadgeButtonsView extends Composite<FlexLayout> {
-
   private final FlexLayout self = getBoundComponent();
 
   public BadgeButtonsView() {
-    self.setDirection(FlexDirection.COLUMN);
-    self.setMaxWidth("700px");
-    self.setStyle("margin", "0 auto");
-    self.setPadding("var(--dwc-space-l)");
-    self.setSpacing("var(--dwc-space-m)");
+    self.setDirection(FlexDirection.COLUMN)
+      .setSpacing("var(--dwc-space-m)")
+      .setPadding("var(--dwc-space-l)")
+      .setMargin("0 auto")
+      .setMaxWidth("700px")
+      .add(new H3("Badge on Buttons"),
+        createNotificationRow(),
+        new H3("Button Sizes with Badge"),
+        createButtonSizesRow());
+  }
 
-    self.add(new H3("Badge on Buttons"));
+  private FlexLayout createNotificationRow() {
+    Button notifBtn = new Button("Notifications")
+      .setPrefixComponent(FeatherIcon.BELL.create())
+      .setTheme(ButtonTheme.PRIMARY)
+      .setBadge(createBadge("5", BadgeTheme.DANGER, BadgeExpanse.XSMALL));
 
-    FlexLayout row = FlexLayout.create().horizontal().build();
-    row.setSpacing("var(--dwc-space-l)");
-    row.setWrap(FlexWrap.WRAP);
-    row.setAlignment(FlexAlignment.CENTER);
+    Button msgBtn = new Button("Messages")
+      .setPrefixComponent(FeatherIcon.MAIL.create())
+      .setTheme(ButtonTheme.DEFAULT)
+      .setBadge(createBadge("12", BadgeTheme.PRIMARY, BadgeExpanse.XSMALL));
 
-    Badge notifBadge = new Badge("5");
-    notifBadge.setTheme(BadgeTheme.DANGER);
-    notifBadge.setExpanse(BadgeExpanse.XSMALL);
+    return FlexLayout.create(notifBtn, msgBtn)
+      .horizontal()
+      .wrap()
+      .build()
+      .setSpacing("var(--dwc-space-l)")
+      .setAlignment(FlexAlignment.CENTER);
+  }
 
-    Button notifBtn = new Button("Notifications");
-    notifBtn.setPrefixComponent(FeatherIcon.BELL.create());
-    notifBtn.setTheme(ButtonTheme.PRIMARY);
-    notifBtn.setBadge(notifBadge);
+  private FlexLayout createButtonSizesRow() {
+    FlexLayout row = FlexLayout.create()
+      .horizontal()
+      .wrap()
+      .build()
+      .setSpacing("var(--dwc-space-l)")
+      .setAlignment(FlexAlignment.CENTER);
 
-    Badge msgBadge = new Badge("12");
-    msgBadge.setTheme(BadgeTheme.PRIMARY);
-    msgBadge.setExpanse(BadgeExpanse.XSMALL);
+    for (Expanse expanse : Expanse.values()) {
+      String size = expanse.name()
+        .toLowerCase()
+        .transform(s -> s.startsWith("x") ? s.substring(0, 2) : s.substring(0, 1));
 
-    Button msgBtn = new Button("Messages");
-    msgBtn.setPrefixComponent(FeatherIcon.MAIL.create());
-    msgBtn.setTheme(ButtonTheme.DEFAULT);
-    msgBtn.setBadge(msgBadge);
-
-    row.add(notifBtn, msgBtn);
-    self.add(row);
-
-    self.add(new H3("Button Sizes with Badge"));
-
-    FlexLayout sizeRow = FlexLayout.create().horizontal().build();
-    sizeRow.setSpacing("var(--dwc-space-l)");
-    sizeRow.setWrap(FlexWrap.WRAP);
-    sizeRow.setAlignment(FlexAlignment.CENTER);
-
-    String[] sizes = {"xs", "s", "m", "l", "xl"};
-    for (String size : sizes) {
-      Button btn = new Button(size);
-      btn.setTheme(ButtonTheme.PRIMARY);
-      btn.setExpanse(com.webforj.component.Expanse.valueOf(
-          switch (size) {
-            case "xs" -> "XSMALL";
-            case "s" -> "SMALL";
-            case "m" -> "MEDIUM";
-            case "l" -> "LARGE";
-            case "xl" -> "XLARGE";
-            default -> "MEDIUM";
-          }));
-
-      Badge sizeBadge = new Badge("3");
-      sizeBadge.setTheme(BadgeTheme.DANGER);
-      sizeBadge.setExpanse(BadgeExpanse.XSMALL);
-      btn.setBadge(sizeBadge);
-      sizeRow.add(btn);
+      Button btn = new Button(size)
+        .setTheme(ButtonTheme.PRIMARY)
+        .setExpanse(expanse)
+        .setBadge(createBadge("3", BadgeTheme.DANGER, BadgeExpanse.XSMALL));
     }
 
-    self.add(sizeRow);
+    return row;
+  }
+
+  private Badge createBadge(String text, BadgeTheme theme, BadgeExpanse expanse) {
+    return new Badge(text)
+      .setTheme(theme)
+      .setExpanse(expanse);
   }
 }
