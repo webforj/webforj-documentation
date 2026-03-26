@@ -5,7 +5,7 @@ import com.microsoft.playwright.Page;
 
 public class AccordionCustomHeaderPage {
 
-    private static final String ROUTE = "webforj/accordion/customheader";
+    private static final String ROUTE = "accordioncustomheader";
 
     private final Locator customHeaderPanel;
     private final Locator userSettingsPanel;

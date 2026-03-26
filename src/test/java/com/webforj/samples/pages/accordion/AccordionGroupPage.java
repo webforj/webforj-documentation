@@ -5,7 +5,7 @@ import com.microsoft.playwright.Page;
 
 public class AccordionGroupPage {
 
-    private static final String ROUTE = "webforj/accordion/group";
+    private static final String ROUTE = "accordiongroup";
 
     private final Locator panelWebforJ;
     private final Locator panelGrouped;

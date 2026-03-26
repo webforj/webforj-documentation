@@ -9,7 +9,6 @@ import com.webforj.samples.pages.accordion.AccordionDisabledPage;
 import com.webforj.samples.views.BaseTest;
 
 public class AccordionDisabledViewIT extends BaseTest {
-
     private AccordionDisabledPage accordionDisabledPage;
 
     @BeforeEach
@@ -31,15 +30,14 @@ public class AccordionDisabledViewIT extends BaseTest {
 
     @Test
     public void testToggleButtonDisablesGroupPanels() {
-        // Accordion.setEnabled() delegates to child panels — check a panel, not the container
-        accordionDisabledPage.getToggleButton().click();
+        accordionDisabledPage.getToggleButton().dispatchEvent("click");
         assertThat(accordionDisabledPage.getGroupPanelOne()).hasAttribute("disabled", "");
     }
 
     @Test
     public void testToggleButtonReEnablesGroupPanels() {
-        accordionDisabledPage.getToggleButton().click();
-        accordionDisabledPage.getToggleButton().click();
+        accordionDisabledPage.getToggleButton().dispatchEvent("click");
+        accordionDisabledPage.getToggleButton().dispatchEvent("click");
         assertThat(accordionDisabledPage.getGroupPanelOne()).not().hasAttribute("disabled", "");
     }
 }

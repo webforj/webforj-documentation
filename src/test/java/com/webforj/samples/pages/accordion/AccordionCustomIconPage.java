@@ -5,7 +5,7 @@ import com.microsoft.playwright.Page;
 
 public class AccordionCustomIconPage {
 
-    private static final String ROUTE = "webforj/accordion/customicon";
+    private static final String ROUTE = "accordioncustomicon";
 
     private final Locator customIconPanel;
 
