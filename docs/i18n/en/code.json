@@ -836,5 +836,37 @@
   "theme.SearchModal.footer.backToSearchText": {
     "message": "Back to search",
     "description": "The back to search text for footer"
+  },
+  "chip.tooltipText.shadow": {
+    "message": "This component renders with a shadow DOM, an API built into the browser that facilitates encapsulation.",
+    "description": "Hover text for components that render with a shadow DOM (document object model)"
+  },
+  "chip.label.shadow": {
+    "message": "Shadow",
+    "description": "Label to indicate a shadow DOM (document object model)"
+  },
+  "chip.tooltipText.name": {
+    "message": "The name of this web component as it appears in the DOM.",
+    "description": "Hover text to explain what version of webforJ you need to use the feature."
+  },
+  "chip.tooltipText.webforJ.version.snapshot": {
+    "message": "This feature will be available in a future release.",
+    "description": "Hover text to explain this feature is only available in a snapshot version of webforJ."
+  },
+  "chip.tooltipText.scoped": {
+    "message": "This component uses scoped components, an alternative approach to the shadow DOM, a browser API that enables encapsulation. These components scope their styles to avoid leaks or conflicts instead of relying on the native shadow DOM.",
+    "description": "Hover text to explain this component is scoped, an alternative approach to the shadow DOM (document object model)."
+  },
+  "chip.label.scoped": {
+    "message": "Scoped",
+    "description": "Label to show this component uses scoped components."
+  },
+  "chip.tooltipText.experimental": {
+    "message": "This is an experimental feature and may change in future releases.",
+    "description": "Hover text to explain this feature is experimental and subject to change."
+  },
+  "chip.label.experimental": {
+    "message": "Experimental",
+    "description": "Label to show this component is experimental."
   }
 }
