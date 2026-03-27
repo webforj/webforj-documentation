@@ -8,9 +8,13 @@ sidebar_position: 130
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/TextArea" top='true'/>
 
-The `TextArea` component in webforJ offers a solution for multi-line text input. End-users can freely type and edit text, while developers can set reasonable boundaries using features like maximum character limits, paragraph structure, and validation rules.
+The `TextArea` component provides a multi-line text input field where users can type and edit longer blocks of text. It supports maximum character limits, paragraph structure, line wrapping, and validation rules to control how input is handled.
 
-Here's an example of a `TextArea` for entering multi-line text:
+<!-- INTRO_END -->
+
+## Creating a `TextArea` {#creating-a-textarea}
+
+Create a `TextArea` by passing a label to its constructor. Properties like placeholder text, character limits, and wrapping behavior can be configured through setter methods.
 
 <ComponentDemo 
 path='/webforj/textarea?' 

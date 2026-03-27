@@ -1,14 +1,26 @@
 ---
 title: ProgressBar
 sidebar_position: 90
-_i18n_hash: 9b2f9ec23124d60ab5f8fca18e561acb
+_i18n_hash: 7612411ef90d5344a2bab79b7e221141
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-progressbar" />
 <DocChip chip='since' label='24.02' />
 <JavadocLink type="foundation" location="com/webforj/component/progressbar/ProgressBar" top='true'/>
 
-Der ProgressBar ist eine Komponente, die visuell den Fortschritt einer Aufgabe anzeigt. Während die Aufgabe dem Abschluss näher kommt, zeigt die Fortschrittsanzeige den Prozentsatz des Abschlusses der Aufgabe an. Dieser Prozentsatz wird visuell durch ein Rechteck dargestellt, das zu Beginn leer ist und allmählich gefüllt wird, während die Aufgabe voranschreitet. Zusätzlich kann die Fortschrittsanzeige eine textuelle Darstellung dieses Prozentsatzes anzeigen.
+Die `ProgressBar`-Komponente stellt den Abschlussstatus eines Vorgangs visuell dar. Während der Arbeit wird ein Rechteck allmählich gefüllt, um den aktuellen Prozentsatz widerzuspiegeln. Die Leiste kann auch eine textliche Darstellung ihres Wertes anzeigen und unterstützt sowohl bestimmte als auch unbestimmte Zustände für Aufgaben mit bekanntem oder unbekanntem Zeitraum.
+
+<!-- INTRO_END -->
+
+## Verwendungen {#usages}
+
+Die `ProgressBar`-Komponente ist nützlich, um den Abschlussstatus von Aufgaben zu visualisieren. Sie unterstützt:
+
+- Konfigurierbare Mindest- und Höchstwerte.
+- Unbestimmten Modus für laufende Aufgaben ohne definitives Ende.
+- Optionen für die Sichtbarkeit von Text, Animation und gestreifte Designs für bessere visuelle Rückmeldung.
+
+Das folgende Beispiel zeigt eine gestreifte, animierte Fortschrittsleiste mit Start-, Pause- und Zurücksetzen-Bedienelementen:
 
 <ComponentDemo 
 path='/webforj/progressbarbasic?' 
@@ -16,17 +28,9 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height='150px'
 />
 
-## Verwendungen {#usages}
-
-Die `ProgressBar`-Komponente ist nützlich, um den Fertigstellungsstatus von Aufgaben zu visualisieren. Sie unterstützt:
-
-- Konfigurierbare Mindest- und Höchstwerte.
-- Unbestimmten Modus für laufende Aufgaben ohne definitives Ende.
-- Optionen für die Textsichtbarkeit, Animation und gestreifte Designs für ein besseres visuelles Feedback.
-
 ## Werte festlegen {#setting-values}
 
-Die ProgressBar-Komponente ermöglicht das Setzen und Abrufen ihres aktuellen Wertes, Mindest- und Höchstwerte.
+Die ProgressBar-Komponente ermöglicht das Festlegen und Abrufen ihres aktuellen Wertes, der Mindest- und Höchstgrenzen.
 
 ```java showLineNumbers
 ProgressBar bar = new ProgressBar();
@@ -35,9 +39,9 @@ bar.setMax(100);
 bar.setValue(50);
 ```
 
-## Ausrichtung {#orientation}
+## Orientierung {#orientation}
 
-Die `ProgressBar` kann horizontal oder vertikal ausgerichtet werden.
+Die `ProgressBar` kann horizontal oder vertikal ausgerichtet sein.
 
 <ComponentDemo 
 path='/webforj/progressbarorientation?' 
@@ -57,7 +61,7 @@ height='25px'
 
 ## Text und Textsichtbarkeit {#text-and-text-visibility}
 
-Standardmäßig zeigt die Fortschrittsanzeige beim Erstellen den Prozentsatz des Abschlusses im Format `XX%` an. Mit der Methode `setText()` können Sie den Platzhalter `{{x}}` verwenden, um den aktuellen Wert als Prozentsatz zu erhalten. Darüber hinaus können Sie den Platzhalter `{{value}}` verwenden, um den aktuellen Rohwert zu erhalten.
+Standardmäßig zeigt die Fortschrittsleiste beim Erstellen den Prozentsatz des Abschlusses im Format `XX%` an. Mit der Methode `setText()` können Sie den Platzhalter `{{x}}` verwenden, um den aktuellen Wert als Prozentsatz abzurufen. Zusätzlich können Sie den Platzhalter `{{value}}` verwenden, um den aktuellen Wert zu erhalten.
 
 ```java
 ProgressBar bar = new ProgressBar(15, "Herunterladen: {{x}}%");
@@ -67,7 +71,7 @@ ProgressBar bar = new ProgressBar(15, "Herunterladen: {{x}}%");
 
 ### Themen {#themes}
 
-Die `ProgressBar`-Komponente verfügt über <JavadocLink type="foundation" location="com/webforj/component/Theme"> Themen </JavadocLink>, die für eine schnelle Gestaltung ohne CSS eingebaut sind. Diese Themen sind vordefinierte Stile, die auf Schaltflächen angewendet werden können, um ihr Aussehen und ihre visuelle Präsentation zu ändern. Sie bieten eine schnelle und konsistente Möglichkeit, das Erscheinungsbild von ProgressBars in einer App anzupassen.
+Die `ProgressBar`-Komponente enthält <JavadocLink type="foundation" location="com/webforj/component/Theme"> Themen </JavadocLink>, die für schnelles Styling ohne CSS eingebaut sind. Diese Themen sind vordefinierte Stile, die auf Schaltflächen angewendet werden können, um ihr Erscheinungsbild und ihre visuelle Präsentation zu ändern. Sie bieten eine schnelle und konsistente Möglichkeit, das Aussehen von ProgressBars in einer App anzupassen.
 
 <ComponentDemo 
 path='/webforj/progressbarthemes?' 
@@ -79,7 +83,7 @@ height='320px'
 
 ## Best Practices {#best-practices}
 
-- **Verwenden Sie geeignete Mindest- und Höchstwerte**: Setzen Sie die Mindest- und Höchstwerte, um den Aufgabenbereich genau widerzuspiegeln.
-- **Aktualisieren Sie den Fortschritt regelmäßig**: Aktualisieren Sie den Fortschrittswert kontinuierlich, um den Benutzern zeitnahe Rückmeldungen zu geben.
-- **Nutzen Sie den unbestimmten Zustand für unbekannte Dauer**: Verwenden Sie den unbestimmten Zustand für Aufgaben mit unvorhersehbaren Dauern, um fortlaufenden Fortschritt anzuzeigen.
-- **Zeigen Sie Text für besseres Benutzerfeedback an**: Zeigen Sie Text auf der Fortschrittsanzeige an, um zusätzlichen Kontext zum Fortschritt der Aufgabe zu bieten.
+- **Verwenden Sie geeignete Mindest- und Höchstwerte**: Setzen Sie die Mindest- und Höchstwerte, um den Bereich der Aufgabe genau widerzuspiegeln.
+- **Aktualisieren Sie den Fortschritt regelmäßig**: Aktualisieren Sie den Fortschrittswert kontinuierlich, um den Benutzern Echtzeit-Feedback zu geben.
+- **Nutzen Sie den unbestimmten Zustand für unbekannte Dauer**: Verwenden Sie den unbestimmten Zustand für Aufgaben mit unvorhersehbaren Dauer, um den laufenden Fortschritt anzuzeigen.
+- **Zeigen Sie Text für bessere Benutzerfeedback an**: Stellen Sie Text auf der Fortschrittsleiste zur Verfügung, um zusätzlichen Kontext über den Fortschritt der Aufgabe zu bieten.

@@ -5,17 +5,22 @@ slug: datefield
 description: >-
   A component that provides a default browser-based date picker for selecting a
   date through an input field.
-sidebar_class_name: updated-content
-_i18n_hash: 9f7f8e2c82305667ea1ace187df17915
+_i18n_hash: bf6829e0fafbd0c69a49a5563e8a298b
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-field" />
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/DateField" top='true'/>
 
+De `DateField` component stelt gebruikers in staat om een datum in te voeren of te selecteren per jaar, maand en dag. Het behandelt validatie automatisch, zodat verkeerd geformatteerde datums worden opgemerkt voordat het formulier wordt ingediend.
+
+<!-- INTRO_END -->
+
+## Gebruik van `DateField` {#using-datefield}
+
 <ParentLink parent="Field" />
 
-De `DateField` is een veldcomponent waarmee gebruikers data kunnen invoeren of selecteren op basis van jaar, maand en dag. Het biedt een intuïtieve en efficiënte manier om met datagerelateerde informatie in verschillende apps om te gaan en biedt de flexibiliteit om de invoer van de gebruiker te valideren.
+`DateField` breidt de gedeelde `Field` klasse uit, die gemeenschappelijke functies biedt voor alle veldcomponenten. Het volgende voorbeeld creëert vertrek- en retour-DateFields die gesynchroniseerd blijven, met minimum- en maximumbeperkingen om het selecteerbare bereik te beperken.
 
 <ComponentDemo 
 path='/webforj/datefield?'
@@ -24,21 +29,21 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 
 ## Veldwaarde (`LocalDate`) {#field-value-localdate}
 
-De `DateField`-component slaat zijn waarde intern op als een `LocalDate`-object, dat een datum zonder tijd- of tijdzone-informatie vertegenwoordigt. Dit maakt een nauwkeurige verwerking van op de kalender gebaseerde invoer over verschillende systemen mogelijk.
+De `DateField` component slaat zijn waarde intern op als een `LocalDate` object, dat een datum zonder tijd- of tijdzone-informatie vertegenwoordigt. Dit maakt nauwkeurige verwerking van kalendervoorzieningen mogelijk in verschillende systemen.
 
-:::info Weergegeven waarde VS geparste waarde 
-Terwijl de **weergegeven waarde** zich aanpast aan de browserlocatie van de gebruiker, waardoor regionaal bekende opmaak wordt gegarandeerd (bijv. `MM/DD/YYYY` in de Verenigde Staten of `DD.MM.YYYY` in Europa), vertrouwt de **geparste waarde** altijd op het vaste formaat van `yyyy-MM-dd`.
+:::info Weergegeven waarde VS geparsed waarde 
+Hoewel de **weergegeven waarde** zich aanpast aan de browser-locale van de gebruiker, waardoor regionaal vertrouwde opmaak wordt gegarandeerd (bijv. `MM/DD/YYYY` in de Verenigde Staten of `DD.MM.YYYY` in Europa), is de **geparsed waarde** altijd afhankelijk van het vaste formaat van `yyyy-MM-dd`.
 :::
 
-### Het `LocalDate`-waarde verkrijgen en instellen {#getting-and-setting-the-localdate-value}
+### Het ophalen en instellen van de `LocalDate` waarde {#getting-and-setting-the-localdate-value}
 
-Om de huidige waarde op te halen, gebruik je de methode `getValue()`:
+Om de huidige waarde op te halen, gebruik de `getValue()` methode:
 
 ```java
 LocalDate value = dateField.getValue();
 ```
 
-Om de waarde programmatically in te stellen, gebruik je de methode `setValue()`:
+Om de waarde programmatisch in te stellen, gebruik de `setValue()` methode:
 
 ```java
 dateField.setValue(LocalDate.of(2024, 4, 27));
@@ -46,7 +51,7 @@ dateField.setValue(LocalDate.of(2024, 4, 27));
 
 ### Gebruik van `setText()` {#using-settext}
 
-Je kunt ook een waarde toewijzen via een ruwe tekst, maar deze moet het exacte `yyyy-MM-dd`-formaat volgen:
+Je kunt ook een waarde toewijzen met een ruwe string, maar deze moet het exacte `yyyy-MM-dd` formaat volgen:
 
 ```java
 dateField.setText("2024-04-27"); // geldig
@@ -55,51 +60,51 @@ dateField.setText("04/27/2024"); // ongeldig
 ```
 
 :::warning
- Wanneer de `setText()`-methode wordt gebruikt, zal een `IllegalArgumentException` worden opgegooid als de component de invoer niet kan parseren in het `yyyy-MM-dd`-formaat.
+ Bij het gebruik van de `setText()` methode wordt een `IllegalArgumentException` opgeworpen als de component de invoer niet kan parseren in het `yyyy-MM-dd` formaat.
 :::
 
 ## Toepassingen {#usages}
 
-De `DateField` is ideaal voor het kiezen en weergeven van data in je app. Hier zijn enkele voorbeelden van wanneer je de `DateField` zou moeten gebruiken:
+De `DateField` is ideaal voor het kiezen en weergeven van datums in je app. Hier zijn enkele voorbeelden van wanneer je de `DateField` moet gebruiken:
 
-1. **Evenementplanning en Kalenders**: Datumvelden zijn essentieel in apps die het plannen van evenementen, het boeken van afspraken of het bijhouden van belangrijke data omvatten.
+1. **Evenementplanning en Agenda's**: Datumvelden zijn essentieel in apps die betrokken zijn bij het plannen van evenementen, het boeken van afspraken, of het bijhouden van belangrijke datums.
 
-2. **Formuliervelden**: Vereenvoudig het proces van datuminvoer voor een gebruiker die een formulier invult dat een datum vereist, zoals een verjaardag.
+2. **Formulierinvoer**: Vereenvoudig het datumselectieproces voor een gebruiker die een formulier invult dat een datum vereist, zoals een verjaardag.
 
-3. **Boeking- en Reserveringssystemen**: Apps die inhouden dat gebruikers specifieke data moeten invoeren bij boekingen en reserveringen, profiteren vaak van een datumveld. Dit stroomlijnt het proces en zorgt voor een nauwkeurige datuminvoer.
+3. **Boekings- en Reserveringssystemen**: Apps die betrokken zijn bij boekings- en reserveringssystemen vereisen vaak dat gebruikers specifieke datums invoeren. Een datumveld stroomlijnt het proces en zorgt voor nauwkeurige datumselectie.
 
-4. **Taakbeheer en Deadlines**: Datumvelden zijn waardevol in apps die taakinformatie of deadlines omvatten. Gebruikers kunnen eenvoudig vervaldatums, startdatums of andere tijdgevoelige informatie opgeven.
+4. **Taakbeheer en Deadlines**: Datumvelden zijn waardevol in apps die betrokken zijn bij taakbeheer of het stellen van deadlines. Gebruikers kunnen eenvoudig vervaldata, startdata of andere tijdgevoelige informatie specificeren.
 
 ## Min- en maxwaarde {#min-and-max-value}
 
 ### De minwaarde {#the-min-value}
-De methode `setMin()` definieert de vroegste datum die een gebruiker in de component kan invoeren. Als de invoer eerder is dan de opgegeven minimumwaarde, zal de validatie van de beperking falen. Wanneer deze wordt gebruikt samen met `setMax()`, moet de minimumwaarde een datum zijn die hetzelfde of eerder is dan de maximumwaarde.
+De `setMin()` methode definieert de vroegste datum die een gebruiker in de component kan invoeren. Als de invoer eerder is dan het opgegeven minimum, zal het falen bij de validatie van de beperkingen. Wanneer deze samen met `setMax()` wordt gebruikt, moet het minimum een datum zijn die hetzelfde is als of eerder dan het maximum.
 
 ```java
-dateField.setMin(LocalDate.of(2023, 1, 1)); // Minimale toegestane waarde: 1 januari 2023
+dateField.setMin(LocalDate.of(2023, 1, 1)); // Minimum toegestaan: 1 januari 2023
 ```
 
 ### De maxwaarde {#the-max-value}
-De methode `setMax()` definieert de laatste datum die de component accepteert. Als de ingevoerde datum later is dan de opgegeven maximumwaarde, is de invoer ongeldig. Wanneer beide waarden zijn gedefinieerd, moet de maximumwaarde een datum zijn die hetzelfde of later is dan de minimumwaarde.
+De `setMax()` methode definieert de laatst toegestane datum die de component accepteert. Als de ingevoerde datum later is dan het opgegeven maximum, is de invoer ongeldig. Wanneer beide waarden zijn gedefinieerd, moet het maximum een datum zijn die hetzelfde is als of later dan het minimum.
 
 ```java
-dateField.setMax(LocalDate.of(2023, 12, 31)); // Maximale toegestane waarde: 31 december 2023
+dateField.setMax(LocalDate.of(2023, 12, 31)); // Maximum toegestaan: 31 december 2023
 ```
 
 ## Statische hulpprogramma's {#static-utilities}
 
-De `DateField`-klasse biedt ook de volgende statische hulpprogramma's:
+De `DateField` klasse biedt ook de volgende statische hulpprogramma's:
 
-- `fromDate(String dateAsString)`: Converteert een datumstring in `yyyy-MM-dd`-formaat naar een `LocalDate`-object dat vervolgens kan worden gebruikt met dit veld, of elders.
+- `fromDate(String dateAsString)`: Converteer een datumstring in `yyyy-MM-dd` formaat naar een `LocalDate` object dat vervolgens kan worden gebruikt met dit veld, of elders.
 
-- `toDate(LocalDate date)`: Converteert een `LocalDate`-object naar een datumstring in `yyyy-MM-dd`-formaat.
+- `toDate(LocalDate date)`: Converteer een `LocalDate` object naar een datumstring in `yyyy-MM-dd` formaat.
 
-- `isValidDate(String dateAsString)`: Controleert of de gegeven string een geldige `yyyy-MM-dd`-datum is.
+- `isValidDate(String dateAsString)`: Controleert of de gegeven string een geldige `yyyy-MM-dd` datum is.
 
 ## Beste praktijken {#best-practices}
 
-Om een optimale gebruikerservaring te waarborgen bij het gebruiken van de `DateField`-component, overweeg je de volgende beste praktijken:
+Om een optimale gebruikerservaring te waarborgen bij het gebruik van de `DateField` component, overweeg de volgende beste praktijken:
 
-- **Toegankelijkheid**: Gebruik geschikte labels om ervoor te zorgen dat gebruikers met ondersteunende technologieën gemakkelijk kunnen navigeren naar en gebruik maken van de datumvelden in je app.
+- **Toegankelijkheid**: Gebruik geschikte labels om ervoor te zorgen dat gebruikers met assistieve technologieën eenvoudig kunnen navigeren naar en gebruik maken van de datumvelden in je app.
 
-- **Auto-vul Huidige Datum**: Vul, indien passend voor de use case van je app, het datumveld automatisch met de huidige datum.
+- **Automatisch vullen met de huidige datum**: Vul indien relevant voor het gebruiksdoel van je app het datumveld automatisch in met de huidige datum.

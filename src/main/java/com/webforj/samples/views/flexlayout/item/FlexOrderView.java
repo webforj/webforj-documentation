@@ -27,7 +27,7 @@ public class FlexOrderView extends Composite<Div> {
 
     this.boxLayout = FlexLayout.create()
         .horizontal()
-        .wrap().wrap()
+        .wrap()
         .build()
         .addClassName("button__container--single-row");
 

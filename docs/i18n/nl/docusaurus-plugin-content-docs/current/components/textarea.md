@@ -1,16 +1,20 @@
 ---
 title: TextArea
 sidebar_position: 130
-_i18n_hash: f109f006fcd252bf81b6cccb83d38a50
+_i18n_hash: 423b70520e8f64a463d2c7b1d0e35ddc
 ---
 <DocChip chip="shadow" />
 <DocChip chip="name" label="dwc-textarea" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/TextArea" top='true'/>
 
-De `TextArea`-component in webforJ biedt een oplossing voor invoer van meerregels tekst. Eindgebruikers kunnen vrij typen en tekst bewerken, terwijl ontwikkelaars redelijke grenzen kunnen stellen met functies zoals maximaal aantal tekens, paragraafstructuur en validatieregels.
+De `TextArea` component biedt een multi-regel tekstinvoerveld waar gebruikers langere tekstblokken kunnen typen en bewerken. Het ondersteunt maximale tekenlimieten, paragraafstructuur, regelomsluiting en validatieregels om te controleren hoe invoer wordt behandeld.
 
-Hier is een voorbeeld van een `TextArea` voor het invoeren van meerregels tekst:
+<!-- INTRO_END -->
+
+## Het creëren van een `TextArea` {#creating-a-textarea}
+
+Maak een `TextArea` door een label aan de constructor door te geven. Eigenschappen zoals tijdelijke tekst, tekenlimieten en gedrag van omsluiting kunnen worden geconfigureerd via settermethoden.
 
 <ComponentDemo 
 path='/webforj/textarea?' 
@@ -20,26 +24,26 @@ height = '300px'
 
 ## Beheren van paragrafen {#managing-paragraphs}
 
-De `TextArea`-component biedt functies voor het omgaan met tekstparagrafen, waardoor het ideaal is voor toepassingen die documentbewerkingen of gestructureerde tekstinvoer vereisen.
+De `TextArea` component biedt mogelijkheden voor het omgaan met tekstparagrafen, waardoor het ideaal is voor applicaties die documentbewerking of gestructureerde tekstinvoer vereisen.
 
-Hier is een snel voorbeeld van hoe u paragraafinhoud kunt opbouwen en manipuleren:
+Hier is een snel voorbeeld van hoe je inhoud van paragrafen kunt opbouwen en manipuleren:
 
 ```java
 TextArea textArea = new TextArea();
 
-// Voeg een paragraaf aan het begin toe
+// Voeg een paragraaf toe aan het begin
 textArea.addParagraph(0, "Dit is de eerste paragraaf.");
 
-// Voeg een andere paragraaf aan het einde toe
+// Voeg een andere paragraaf toe aan het einde
 textArea.addParagraph("Hier is een tweede paragraaf.");
 
-// Voeg extra inhoud toe aan de eerste paragraaf
+// Voeg aanvullende inhoud toe aan de eerste paragraaf
 textArea.appendToParagraph(0, " Deze zin vervolgt de eerste.");
 
 // Verwijder de tweede paragraaf
 textArea.removeParagraph(1);
 
-// Haal alle huidige paragrafen op en print ze
+// Haal alle huidige paragrafen op en druk ze af
 List<String> paragraphs = textArea.getParagraphs();
 for (int i = 0; i < paragraphs.size(); i++) {
     System.out.println("Paragraaf " + i + ": " + paragraphs.get(i));
@@ -48,17 +52,17 @@ for (int i = 0; i < paragraphs.size(); i++) {
 
 ## Validatie {#validation}
 
-De `TextArea`-component ondersteunt twee aanvullende soorten validatie: structurele beperkingen en inhoudelijke beperkingen.
+De `TextArea` component ondersteunt twee complementaire typen validatie: structurele beperkingen en inhoudsbeperkingen.
 
-**Structurele beperkingen** richten zich op hoe de tekst is georganiseerd en visueel is ingedeeld. Bijvoorbeeld:
+**Structurele beperkingen** richten zich op hoe de tekst is georganiseerd en visueel is gerangschikt. Bijvoorbeeld:
 - `setLineCountLimit(int maxLines)` beperkt het aantal regels dat is toegestaan in het tekstgebied.
-- `setParagraphLengthLimit(int maxCharsPerLine)` beperkt het aantal tekens per paragraaf (of regel), wat helpt om leesbaarheid of opmaakstandaarden te handhaven.
+- `setParagraphLengthLimit(int maxCharsPerLine)` beperkt het aantal tekens per paragraaf (of regel), wat helpt om leesbaarheid of opmaakstandaarden af te dwingen.
 
-**Inhoudelijke beperkingen** hebben daarentegen betrekking op de totale hoeveelheid tekst die is ingevoerd, ongeacht hoe deze is verdeeld:
-- `setMaxLength(int maxChars)` stelt een maximum aantal tekens vast dat is toegestaan over alle paragrafen.
-- `setMinLength(int minChars)` handhaaft een minimumlengte, zodat er voldoende inhoud wordt geleverd.
+**Inhoudsbeperkingen** daarentegen, houden zich bezig met de totale hoeveelheid tekst die wordt ingevoerd, ongeacht hoe deze is verdeeld:
+- `setMaxLength(int maxChars)` legt een maximum aantal toegestane tekens over alle paragrafen op.
+- `setMinLength(int minChars)` dwingt een minimale lengte af, zodat er voldoende inhoud wordt aangeboden.
 
-De volgende demo stelt gebruikers in staat om validatiegrenzen aan te passen—zoals maximaal aantal tekens, paragraaflengte en regel aantal—in realtime en te zien hoe de `TextArea` reageert.
+De volgende demo stelt gebruikers in staat om validatielimieten aan te passen - zoals het maximum aantal tekens, paragraaflengte en regelnummer - in realtime en te zien hoe de `TextArea` reageert.
 
 <ComponentDemo 
 path='/webforj/textareavalidation?' 
@@ -66,15 +70,15 @@ javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/head
 height = '550px'
 />
 
-## Woordomsluiting en Regeloмsluiting {#word-wrap-and-line-wrapping}
+## Woordomsluiting en regelomsluiting {#word-wrap-and-line-wrapping}
 
-U kunt controleren of tekst omgevouwen of horizontaal scrolt met behulp van `setLineWrap()`. Wanneer omvouwen is uitgeschakeld, blijven regels horizontaal doorgaan buiten het zichtbare gebied, wat scrollen vereist. Wanneer het is ingeschakeld, wordt tekst automatisch omgevouwen naar de volgende regel wanneer deze de rand van de component bereikt.
+Je kunt controleren of tekst omgevouwen of horizontaal gescrold wordt met `setLineWrap()`. Wanneer omsluiting is uitgeschakeld, gaan regels horizontaal verder dan het zichtbare gebied, wat scrollen vereist. Wanneer deze is ingeschakeld, wordt tekst automatisch omgevouwen naar de volgende regel wanneer deze de rand van de component bereikt.
 
-Om verder te verfijnen hoe omvouwen werkt, laat `setWrapStyle()` u kiezen tussen twee stijlen:
-- `WORD_BOUNDARIES` vouwt tekst bij hele woorden om, waardoor de natuurlijke leesflow wordt behouden.
-- `CHARACTER_BOUNDARIES` vouwt bij individuele tekens om, wat een strakkere controle over het ontwerp mogelijk maakt, vooral in smalle of vaste breedte containers.
+Om verder te verfijnen hoe omsluiting zich gedraagt, laat `setWrapStyle()` je kiezen tussen twee stijlen:
+- `WORD_BOUNDARIES` vouwt tekst op bij hele woorden, waardoor de natuurlijke leesstroom behouden blijft.
+- `CHARACTER_BOUNDARIES` vouwt bij individuele tekens, waardoor strakkere controle over de lay-out mogelijk is, vooral in smalle of vaste breedtecontainers.
 
-Deze omvouwopties werken hand in hand met structurele beperkingen zoals lijn- en paragraaflengte-limieten. Terwijl omvouwen bepaalt *hoe* tekst binnen de beschikbare ruimte stroomt, definiëren de structurele limieten *hoeveel* ruimte tekst mag innemen. Samen helpen ze zowel visuele structuur als grenzen van gebruikersinvoer te behouden.
+Deze omsluitingsopties werken hand in hand met structurele beperkingen zoals limieten voor het aantal regels en paragraaflengte. Terwijl omsluiting bepaalt *hoe* tekst stroomt binnen de beschikbare ruimte, definiëren de structurele limieten *hoeveel* ruimte tekst mag innemen. Samen helpen ze zowel de visuele structuur als de grenzen van gebruikersinvoer te behouden.
 
 <ComponentDemo 
 path='/webforj/textareawrap?' 
@@ -84,11 +88,11 @@ height = '400px'
 
 ## Voorspelde tekst {#predicted-text}
 
-De `TextArea`-component ondersteunt slimme tekstsuggesties om gebruikers te helpen sneller en met minder fouten te typen. Terwijl gebruikers tekst invoeren, verschijnen voorspellende suggesties op basis van de huidige invoer, waardoor ze veelvoorkomende of verwachte zinnen kunnen voltooien.
+De `TextArea` component ondersteunt slimme tekstsuggesties om gebruikers te helpen sneller te typen en minder fouten te maken. Terwijl gebruikers tekst invoeren, verschijnen er voorspellende suggesties op basis van de huidige invoer, waarmee ze veelvoorkomende of verwachte zinnen kunnen aanvullen.
 
-Voorspellingen kunnen worden geaccepteerd door op de `Tab`- of `ArrowRight`-toets te drukken, waardoor de voorgestelde tekst naadloos in de invoer wordt geplaatst. Als er op dat moment geen geschikte voorspelling beschikbaar is, blijft de invoer onveranderd en kan de gebruiker doorgaan met typen zonder onderbreking—wat ervoor zorgt dat de functie nooit in de weg staat.
+Voorspellingen kunnen worden geaccepteerd door op de `Tab` of `ArrowRight` toets te drukken, waarbij de voorgestelde tekst naadloos in de invoer wordt ingevoegd. Als op een bepaald moment geen geschikte voorspelling beschikbaar is, blijft de invoer ongewijzigd en kan de gebruiker zonder onderbreking doorgaan met typen - waardoor wordt gegarandeerd dat de functie de gebruiker niet in de weg zit.
 
-Dit voorspellende gedrag verbetert zowel de snelheid als de nauwkeurigheid, vooral in repetitieve invoerscenario's of toepassingen waar consistentie van formulering belangrijk is.
+Dit voorspellend gedrag verbetert zowel de snelheid als de nauwkeurigheid, vooral in scenario's met herhaalde invoer of applicaties waarin consistentie van formulering belangrijk is.
 
 <ComponentDemo 
 path='/webforj/textareapredictedtext?' 
@@ -97,16 +101,16 @@ height = '400px'
 />
 
 :::info
-Deze demo maakt gebruik van de [Datamuse API](https://datamuse.com/) om woord suggesties te bieden op basis van de invoer van de gebruiker. De kwaliteit en relevantie van de voorspellingen zijn volledig afhankelijk van de dataset en scoringmechanisme van de API. Het maakt geen gebruik van AI-modellen of grote taalmodellen (LLM); de suggesties worden gegenereerd vanuit een lichtgewicht, op regels gebaseerde engine gericht op lexicale gelijkenis.
+Deze demo maakt gebruik van de [Datamuse API](https://datamuse.com/) om woordsuggesties te bieden op basis van de invoer van de gebruiker. De kwaliteit en relevantie van de voorspellingen hangen volledig af van de dataset en het scoringsmechanisme van de API. Het maakt geen gebruik van AI-modellen of grote taalmodellen (LLM's); de suggesties worden gegenereerd vanuit een lichte, op regels gebaseerde motor die zich richt op lexicale gelijkheid.
 :::
 
-## Alleen-lezen en gedeactiveerde status {#read-only-and-disabled-state}
+## Alleen-lezen en gedeactiveerde toestand {#read-only-and-disabled-state}
 
-De `TextArea`-component kan zo worden ingesteld dat deze alleen-lezen of gedeactiveerd is om de gebruikersinteractie te beheersen.
+De `TextArea` component kan worden ingesteld op alleen-lezen of gedeactiveerd om gebruikersinteractie te beheersen.
 
-Een **alleen-lezen** tekstgebied stelt gebruikers in staat om de inhoud te bekijken en te selecteren, maar niet te bewerken. Dit is nuttig voor het weergeven van dynamische of vooraf ingevulde informatie die onveranderd moet blijven.
+Een **alleen-lezen** tekstgebied staat gebruikers toe de inhoud te bekijken en te selecteren, maar niet te bewerken. Dit is handig voor het weergeven van dynamische of vooraf ingevulde informatie die onveranderd moet blijven.
 
-Een **gedeactiveerd** tekstgebied blokkeert daarentegen alle interactie—waaronder focus en tekstselectie—en is doorgaans gestyled als inactief of vervaagd.
+Een **gedeactiveerd** tekstgebied daarentegen blokkeert alle interactie - inclusief focus en tekstselectie - en wordt meestal gestileerd als inactief of grijs.
 
 Gebruik de alleen-lezen modus wanneer de inhoud relevant maar onveranderlijk is, en de gedeactiveerde modus wanneer de invoer momenteel niet van toepassing is of tijdelijk inactief moet zijn.
 

@@ -10,6 +10,12 @@ sidebar_position: 70
 
 The `Login` component simplifies user authentication by providing a ready-to-use login dialog with username and password fields. It includes features like input validation, customizable labels and messages, password visibility controls, and support for additional custom fields.
 
+<!-- INTRO_END -->
+
+## Creating a `Login` dialog {#creating-a-login-dialog}
+
+Create a `Login` dialog by instantiating the component and calling `open()` to display it. The dialog includes username and password fields, input validation, and a sign-in button by default.
+
 <ComponentDemo 
 path='/webforj/loginbasic?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/login/LoginBasicView.java'
@@ -45,7 +51,7 @@ Login login = new Login();
 login.setAction("/api/auth");
 ```
 
-When using `setAction()`, the form submission bypasses the `LoginSubmitEvent` and instead performs a traditional HTTP POST request to the specified endpoint. The username and password are sent as form parameters named "username" and "password", respectively. Custom fields with a name attribute are also included in the POST request.
+When using `setAction()`, the form submission bypasses the `LoginSubmitEvent` and instead performs a traditional HTTP POST request to the specified endpoint. The username and password are sent as form parameters named `"username"` and `"password"`, respectively. Custom fields with a name attribute are also included in the POST request.
 
 :::tip 
 If no action URL is set, form submission is handled through the `LoginSubmitEvent`, allowing you to process credentials programmatically on the server side.

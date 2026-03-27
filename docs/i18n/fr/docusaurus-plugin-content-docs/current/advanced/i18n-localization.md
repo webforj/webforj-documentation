@@ -1,184 +1,181 @@
 ---
-sidebar_position: 11
-title: Localization
+sidebar_position: 12
+title: Translation
 sidebar_class_name: new-content
-_i18n_hash: 91f5af285113e5e76d50a201a2fbf88f
+_i18n_hash: 57626c2969592f2378a55eff0dd01d48
 ---
-# Localization <DocChip chip='since' label='25.10' />
+# Traduction <DocChip chip='since' label='25.12' />
 
-Les composants implémentant l'interface `LocaleObserver` reçoivent des notifications automatiques lorsque la locale change. Cela permet aux éléments de l'interface utilisateur de mettre à jour leur texte, leur formatage et d'autres contenus spécifiques à la locale sans coordination manuelle.
+webforJ inclut un système de traduction intégré pour rechercher des chaînes localisées par clé. Le système se compose d'un résolveur de traduction qui associe les clés à des textes localisés, d'une interface de préoccupation `HasTranslation` qui fournit une méthode pratique `t()`, `App.getTranslation()` pour un accès direct partout, la détection automatique de la langue à partir du navigateur, et un support pour des sources de traduction personnalisées telles que des bases de données.
 
-## L'interface `LocaleObserver` {#the-localeobserver-interface}
+## Résolveur de traduction {#translation-resolver}
 
-```java title="LocaleObserver.java"
-@FunctionalInterface
-public interface LocaleObserver extends Serializable {
-    void onLocaleChange(LocaleEvent event);
-}
-```
+Le résolveur de traduction est le système qui recherche des chaînes localisées pour une clé et une locale données. webforJ fournit un résolveur par défaut, `BundleTranslationResolver`, qui charge les traductions à partir de fichiers de propriétés Java `ResourceBundle` sur le classpath. Cela fonctionne hors de la boîte sans dépendances supplémentaires.
 
-Lorsqu'un composant implémente cette interface, webforJ enregistre automatiquement :
-- Le composant lors de sa création pour recevoir les événements de changement de locale
-- Désenregistre le composant lors de sa destruction
-- Appelle `onLocaleChange()` chaque fois que la locale est changée
+### Fichiers de bundles de ressources
 
-Cette inscription se fait à travers le cycle de vie du composant.
+Placez vos fichiers de traduction dans le répertoire `src/main/resources`. Le résolveur par défaut recherche des fichiers nommés `messages` avec des suffixes de locale suivant la convention de nommage standard de Java `ResourceBundle` :
 
-## Gestion des traductions {#handling-translations}
-
-Lorsque `onLocaleChange()` est appelé, les composants reçoivent la nouvelle locale. Comment ils chargent et appliquent les traductions dépend du développeur. Les approches courantes incluent :
-
-- Java `ResourceBundle` avec des fichiers de propriétés
-- Requêtes en base de données pour les traductions
-- Fournisseurs de traductions personnalisés
-- Cartes codées en dur pour des cas simples
-
-Cet exemple utilise `ResourceBundle`, qui stocke les traductions dans des fichiers de propriétés :
-
-```
-messages.properties        # Sauvegarde/par défaut
+```text
+messages.properties        # Traductions par défaut/de repli
 messages_en.properties     # Anglais
 messages_de.properties     # Allemand
+messages_fr_CA.properties  # Français (Canada)
 ```
 
-Les fichiers de propriétés contiennent des paires clé-valeur :
+Chaque fichier contient des paires clé-valeur. Les clés sont des identifiants que vous utilisez dans le code et les valeurs sont les chaînes traduites. Vous pouvez inclure des espaces réservés [`MessageFormat`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/text/MessageFormat.html) comme `{0}`, `{1}` pour des valeurs dynamiques :
 
-```properties title="messages_en.properties"
-app.title=Mailbox
-menu.inbox=Inbox
+```properties title="messages.properties"
+app.title=Boîte aux lettres
+menu.inbox=Boîte de réception
+menu.outbox=Boîte d'envoi
+greeting=Bonjour {0}, vous avez {1} nouveaux messages
 ```
 
 ```properties title="messages_de.properties"
 app.title=Postfach
 menu.inbox=Posteingang
+menu.outbox=Postausgang
+greeting=Hallo {0}, Sie haben {1} neue Nachrichten
 ```
-## Changer la locale {#changing-the-locale}
 
-Utilisez `App.setLocale()` pour changer la locale de l'application. Cela déclenche des notifications à tous les observateurs enregistrés :
+Le résolveur délègue à la chaîne de résolution standard de Java [`ResourceBundle`](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/ResourceBundle.html), qui gère automatiquement la correspondance des locales et le repli.
+
+### Configuration des locales supportées {#configuring-supported-locales}
+
+Le paramètre `supported-locales` indique à webforJ quelles locales votre application prend en charge. Cette liste est utilisée par la détection automatique pour faire correspondre la locale du navigateur de l'utilisateur avec les traductions disponibles. La première locale de la liste est utilisée comme fallback par défaut lorsqu'aucune meilleure correspondance n'est trouvée. La clé de propriété est `webforj.i18n.supported-locales` et accepte une liste de balises de langue [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag), par exemple `en, de`.
+
+:::info Plus d'infos
+Voir la section [Configuration](/docs/configuration/properties) pour apprendre à définir des propriétés pour différents environnements.
+:::
+
+## La méthode `t()` {#the-t-method}
+
+Les composants qui implémentent l'interface de préoccupation `HasTranslation` ont accès à la méthode `t()` pour traduire du texte. La méthode prend une clé de traduction et renvoie la chaîne localisée pour la locale actuelle de l'application :
 
 ```java
-App.setLocale(Locale.GERMAN);
-App.setLocale(Locale.forLanguageTag("fr"));
-```
+public class MainLayout extends Composite<AppLayout> implements HasTranslation {
 
-Une implémentation typique pourrait utiliser un composant de sélection ou de choix :
+  public MainLayout() {
+    // Traduction simple
+    String title = t("app.title");
 
-```java
-ChoiceBox languageSelector = new ChoiceBox();
-languageSelector.add("en", "English");
-languageSelector.add("de", "Deutsch");
-languageSelector.add("fr", "Français");
+    // Traduction avec des paramètres MessageFormat
+    String greeting = t("greeting", userName, messageCount);
 
-languageSelector.onSelect(e -> {
-  String lang = (String) e.getSelectedItem().getKey();
-  Locale newLocale = Locale.forLanguageTag(lang);
-
-  App.setLocale(newLocale);
-});
-```
-
-Lorsque l'utilisateur sélectionne une langue, `App.setLocale()` est appelé, et tous les composants implémentant `LocaleObserver` reçoivent la mise à jour.
-
-## Implémentation des observateurs {#implementing-observers}
-
-Lorsqu'un composant implémente `LocaleObserver`, il doit gérer deux scénarios : le rendu initial avec la locale actuelle et la mise à jour lorsque la locale change. L'exemple suivant illustre ce modèle avec un composant qui affiche du texte localisé et des liens.
-
-Le composant stocke des références aux éléments qui nécessitent des mises à jour de traduction. Lors de sa construction, il charge les traductions de la locale actuelle. Lorsque la locale change, `onLocaleChange()` est appelé, permettant au composant de recharger les traductions et de mettre à jour son texte affiché.
-
-```java title="TranslationService.java"
-import com.webforj.App;
-import org.springframework.context.MessageSource;
-import org.springframework.stereotype.Service;
-
-@Service
-public class TranslationService {
-  private final MessageSource messageSource;
-
-  public TranslationService(MessageSource messageSource) {
-    this.messageSource = messageSource;
-  }
-
-  public String get(String key) {
-    return messageSource.getMessage(key, null, App.getLocale());
+    // Traduction pour une locale spécifique
+    String germanTitle = t(Locale.GERMAN, "app.title");
   }
 }
 ```
 
-```java title="Explore.java"
-public class Explore extends Composite<FlexLayout> implements LocaleObserver {
-  private final TranslationService i18n;
-  private FlexLayout self = getBoundComponent();
-  private H3 titleElement;
-  private Anchor anchor;
-  private String titleKey;
+Vous pouvez également utiliser `App.getTranslation()` directement n'importe où sans implémenter l'interface :
 
-  public Explore(TranslationService i18n, String titleKey) {
-    this.i18n = i18n;
-    this.titleKey = titleKey;
+```java
+String title = App.getTranslation("app.title");
+```
 
-    self.addClassName("explore-component");
-    self.setStyle("margin", "1em auto");
-    self.setDirection(FlexDirection.COLUMN);
-    self.setAlignment(FlexAlignment.CENTER);
-    self.setMaxWidth(300);
-    self.setSpacing(".3em");
+:::info Repli gracieux
+Si une clé de traduction n'est pas trouvée, `t()` renvoie la clé elle-même plutôt que de lancer une exception. Cela signifie que votre application ne se cassera pas si une traduction est manquante. La clé est affichée telle quelle et un avertissement est enregistré afin que vous puissiez suivre les traductions manquantes pendant le développement.
+:::
 
-    Img img = new Img(String.format("ws://explore/%s.svg", titleKey), "mailbox");
-    img.setMaxWidth(250);
+## Mise en œuvre de composants traduits {#implementing-translated-components}
 
-    String translatedTitle = i18n.get("menu." + titleKey.toLowerCase());
-    titleElement = new H3(translatedTitle);
+Un composant traduit combine généralement `HasTranslation` avec [`LocaleObserver`](/docs/advanced/locale-management#the-localeobserver-interface). Utilisez `t()` lors de la création d'éléments d'interface utilisateur pour définir le texte traduit initial. Pour prendre en charge le changement de langue à l'exécution, implémentez `LocaleObserver` et mettez à jour le même texte dans `onLocaleChange()`.
 
-    anchor = new Anchor("https://docs.webforj.com/docs/components/overview", i18n.get("explore.link"));
-    anchor.setTarget("_blank");
+```java title="MainLayout.java"
+@Route
+public class MainLayout extends Composite<AppLayout>
+    implements HasTranslation, LocaleObserver {
 
-    self.add(img, titleElement, anchor);
+  private AppLayout self = getBoundComponent();
+  private AppNavItem inboxItem;
+  private AppNavItem outboxItem;
+
+  public MainLayout() {
+    inboxItem = new AppNavItem(t("menu.inbox"), InboxView.class, TablerIcon.create("inbox"));
+    outboxItem = new AppNavItem(t("menu.outbox"), OutboxView.class, TablerIcon.create("send-2"));
+
+    AppNav appNav = new AppNav();
+    appNav.addItem(inboxItem);
+    appNav.addItem(outboxItem);
+
+    self.addToDrawer(appNav);
   }
 
   @Override
   public void onLocaleChange(LocaleEvent event) {
-    titleElement.setText(i18n.get("menu." + titleKey.toLowerCase()));
-    anchor.setText(i18n.get("explore.link"));
+    inboxItem.setText(t("menu.inbox"));
+    outboxItem.setText(t("menu.outbox"));
   }
 }
 ```
 
-Le composant stocke des références aux éléments qui affichent du contenu traduit (`titleElement` et `anchor`). Les traductions sont chargées dans le constructeur en utilisant la locale actuelle. Lorsque la locale change, `onLocaleChange()` met à jour uniquement le texte nécessitant une traduction.
-
-## Gestion du cycle de vie {#lifecycle-management}
-
-Le framework gère automatiquement l'enregistrement des observateurs à travers les hooks du cycle de vie du composant :
-
-- **À la création** : Les composants implémentant `LocaleObserver` sont enregistrés dans `LocaleObserverRegistry`
-- **À la destruction** : Les composants sont désenregistrés pour prévenir les fuites de mémoire
-
-Chaque instance d'application maintient son propre registre d'observateurs. Cette gestion automatique signifie :
-
-- Pas d'appels manuels d'enregistrement/désenregistrement
-- Pas de fuites de mémoire provenant des composants détruits
-- Notifications concurrentes thread-safe
-
-:::info Registre par application
-Chaque instance d'application maintient son propre registre d'observateurs. Les observateurs enregistrés dans une application ne reçoivent pas de notifications d'autres applications s'exécutant dans la même JVM.
+:::tip Liaison de données
+Le système de liaison de données prend en charge les messages de validation et de transformation traduits utilisant `Supplier<String>` avec `t()`. Voir [messages de validation dynamiques](/docs/data-binding/validation/validators#dynamic-validation-messages), [messages de transformation dynamiques](/docs/data-binding/transformation#dynamic-transformer-error-messages), et [validation Jakarta consciente de la locale](/docs/data-binding/validation/jakarta-validation#locale-aware-validation-messages).
 :::
 
-## `LocaleEvent` {#localeevent}
+## Résolveurs de traduction personnalisés {#custom-translation-resolvers}
 
-L'`LocaleEvent` passé à `onLocaleChange()` fournit :
+Le résolveur par défaut charge les traductions à partir de fichiers de propriétés Java `ResourceBundle`. Pour charger des traductions à partir d'une autre source, comme une base de données ou un service distant, implémentez `TranslationResolver` :
 
-| Méthode | Renvoie | Description |
-|---------|---------|-------------|
-| `getLocale()` | `Locale` | La nouvelle locale qui a été définie |
-| `getSource()` | `Object` | Le composant qui a reçu l'événement |
+```java title="DatabaseTranslationResolver.java"
+public class DatabaseTranslationResolver implements TranslationResolver {
+  private final TranslationRepository repository;
+  private final List<Locale> supportedLocales;
 
-```java
-@Override
-public void onLocaleChange(LocaleEvent event) {
-  Locale newLocale = event.getLocale();
-  Object source = event.getSource();
+  public DatabaseTranslationResolver(TranslationRepository repository,
+      List<Locale> supportedLocales) {
+    this.repository = repository;
+    this.supportedLocales = List.copyOf(supportedLocales);
+  }
 
-  // Mettre à jour le composant en utilisant la nouvelle locale
-  ResourceBundle bundle = ResourceBundle.getBundle("messages", newLocale);
-  updateUI(bundle);
+  @Override
+  public String resolve(String key, Locale locale, Object... args) {
+    String value = repository
+        .findByKeyAndLocale(key, locale.getLanguage())
+        .map(Translation::getValue)
+        .orElse(key);
+
+    if (args != null && args.length > 0) {
+      value = new MessageFormat(value, locale).format(args);
+    }
+
+    return value;
+  }
+
+  @Override
+  public List<Locale> getSupportedLocales() {
+    return supportedLocales;
+  }
 }
 ```
+
+### Enregistrement d'un résolveur personnalisé {#registering-a-custom-resolver}
+
+Dans une application webforJ classique, définissez le résolveur avant que l'application ne démarre, par exemple en utilisant un [écouteur de cycle de vie de l'application](/docs/advanced/lifecycle-listeners) :
+
+```java
+App.setTranslationResolver(new DatabaseTranslationResolver(repository, supportedLocales));
+```
+
+Dans une application Spring Boot, exposez le résolveur en tant que bean :
+
+```java title="MessageSourceConfig.java"
+@Configuration
+public class MessageSourceConfig {
+
+  @Bean
+  TranslationResolver translationResolver(TranslationRepository repository,
+      SpringConfigurationProperties properties) {
+    List<Locale> supportedLocales = properties.getI18n().getSupportedLocales().stream()
+        .map(Locale::forLanguageTag)
+        .toList();
+    return new DatabaseTranslationResolver(repository, supportedLocales);
+  }
+}
+```
+
+:::info Résolveur par défaut dans Spring Boot
+Lorsque aucun bean `TranslationResolver` personnalisé n'est défini, la configuration automatique de Spring fournit un `BundleTranslationResolver` par défaut configuré avec les locales prises en charge provenant de `application.properties`.
+:::

@@ -2,17 +2,17 @@
 title: Repository
 sidebar_position: 1
 sidebar_class_name: has-new-content
-_i18n_hash: b9a08226a8ace111beea4ab2a03ff79f
+_i18n_hash: c285de15c19063af40c61f15cebf4dc1
 ---
 <!-- vale off -->
 # Repository <DocChip chip='since' label='24.00' />
 <!-- vale on -->
 
-`Repository`-malli webforJ:ssä tarjoaa standardoidun tavan hallita ja kysyä entiteettikokoelmia. Se toimii abstraktiokerroksena käyttöliittymäkomponenttiesi ja datan välillä, mikä helpottaa erilaisten tietolähteiden kanssa työskentelyä säilyttäen samalla johdonmukaisen käyttäytymisen.
+`Repository`-malli webforJ:ssä tarjoaa standardoidun tavan hallita ja kysyä kokoelmia entiteeteistä. Se toimii abstraktiokerroksena UI-komponenttiesi ja datan välillä, mikä tekee erilaisten tietolähteiden käytöstä helppoa samalla kun käyttäytyminen pysyy johdonmukaisena.
 
 ## Miksi käyttää repositorya {#why-use-repository}
 
-`Repository` eliminoi manuaaliset päivitykset samalla pitäen alkuperäisen datan muuttumattomana:
+`Repository` eliminoi manuaaliset päivitykset pitäen alkuperäiset datat ehjänä:
 
 ```java
 // Ilman Repositorya - manuaaliset päivitykset
@@ -20,9 +20,9 @@ List<Customer> customers = loadCustomers();
 Table<Customer> table = new Table<>();
 table.setItems(customers);
 
-// Lisääminen vaatii täydellisen lataamisen
+// Lisäys vaatii täydellisen latauksen
 customers.add(newCustomer);
-table.setItems(customers); // Kaikki täytyy ladata uudelleen
+table.setItems(customers); // Täytyy ladata kaikki uudelleen
 ```
 
 ```java
@@ -32,14 +32,14 @@ CollectionRepository<Customer> repository = new CollectionRepository<>(customers
 Table<Customer> table = new Table<>();
 table.setRepository(repository);
 
-// Lisääminen synkronoi automaattisesti
+// Lisäys synkronoituu automaattisesti
 customers.add(newCustomer);
-repository.commit(newCustomer); // Vain mitä on muuttunut
+repository.commit(newCustomer); // Päivittää vain muuttuneet
 ```
 
-## Kokoelmarepository {#collection-repository}
+## Kokoelman repository {#collection-repository}
 
-<JavadocLink type="data" location="com/webforj/data/repository/CollectionRepository" code="true">CollectionRepository</JavadocLink> on yleisin toteutus, ja se käärii minkä tahansa Java-kokoelman:
+<JavadocLink type="data" location="com/webforj/data/repository/CollectionRepository" code="true">CollectionRepository</JavadocLink> on yleisin toteutus ja se käärii minkä tahansa Java Collectionin:
 
 ```java
 // ArrayListista
@@ -50,14 +50,14 @@ CollectionRepository<Customer> customerRepo = new CollectionRepository<>(custome
 Set<String> tags = new HashSet<>();
 CollectionRepository<String> tagRepo = new CollectionRepository<>(tags);
 
-// Mistä tahansa kokoelmasta
+// Minkä tahansa kokoelman kautta
 Collection<Employee> employees = getEmployeesFromHR();
 CollectionRepository<Employee> employeeRepo = new CollectionRepository<>(employees);
 ```
 
 ## Datan synkronointi {#data-synchronization}
 
-`Repository` toimii siltoina datasi ja käyttöliittymäkomponenttiesi välillä. Kun data muuttuu, ilmoitat repositorylle `commit()`-menetelmää käyttämällä:
+`Repository` toimii siltana datasi ja UI-komponenttien välillä. Kun data muuttuu, ilmoitat repositorylle `commit()`-metodin kautta:
 
 ```java
 List<Product> products = new ArrayList<>();
@@ -70,30 +70,30 @@ repository.commit(); // Kaikki liitetyt komponentit päivittyvät
 
 // Päivitä olemassa oleva tuote  
 products.get(0).setPrice(89.99);
-repository.commit(products.get(0)); // Vain tämä tietty rivi päivittyy
+repository.commit(products.get(0)); // Päivittää vain tämän tietyn rivin
 
 // Poista tuote
 products.remove(2);
 repository.commit(); // Päivittää näkymän
 ```
 
-Commit-menetelmällä on kaksi allekirjoitusta:
-- `commit()` - Kertoo repositorylle, että kaikessa tulee päivittää. Se laukaisee `RepositoryCommitEvent`:n kaikella nykyisellä datalla
-- `commit(entity)` - Kohdistaa tiettyyn entiteettiin. Repository löytää tämän entiteetin sen avaimen mukaan ja päivittää vain vaikuttavat käyttöliittymäelementit
+Commit-metodilla on kaksi allekirjoitusta:
+- `commit()` - Ilmoittaa repositorylle, että kaikkea on päivitettävä. Se laukaisee `RepositoryCommitEvent`:in kaikkien nykyisten tietojen kanssa
+- `commit(entity)` - Tavoittaa tietyn entiteetin. Repository löytää tämän entiteetin sen avaimen perusteella ja päivittää vain vaikuttavat UI-elementit
 
-:::important Yksittäisten entiteettien vahvistaminen
-Tämä erottelu on tärkeä suorituskyvyn kannalta. Kun päivität yhden kentän 1000 rivin taulukossa, `commit(entity)` päivittää vain sen solun, kun taas `commit()` päivittäisi kaikki rivit.
+:::important Yksittäisten entiteettien sitominen
+Tämä ero on tärkeä suorituskyvyn kannalta. Kun päivität yhden kentän 1000 rivin taulukossa, `commit(entity)` päivittää vain sen solun, kun taas `commit()` päivittää kaikki rivit.
 :::
 
-## Datan suodattaminen {#filtering-data}
+## Datan suodatus {#filtering-data}
 
-Repositoryn suodatin hallitsee, mitä dataa siirtyy liitettyihin komponentteihin. Alkuperäinen kokoelmasi pysyy muuttumattomana, koska suodatin toimii objektiivina:
+Repositoryn suodatin hallitsee sitä, mitä dataa välitetään liitettyihin komponentteihin. Alkuperäinen kokoelmasi pysyy muuttumattomana, koska suodatin toimii linssinä:
 
 ```java
-// Suodata varastontilanteen mukaan
+// Suodata varaston saatavuuden mukaan
 repository.setBaseFilter(product -> product.getStock() > 0);
 
-// Suodata kategorian mukaan
+// Suodata kategoriakohtaisesti
 repository.setBaseFilter(product -> "Electronics".equals(product.getCategory()));
 
 // Yhdistä useita ehtoja
@@ -103,23 +103,22 @@ repository.setBaseFilter(product ->
     product.getPrice() < 100.0
 );
 
-// Poista suodatin
+// Tyhjennä suodatin
 repository.setBaseFilter(null);
 ```
 
-Kun asetat suotimen, `Repository`:
-1. Soveltaa ennustetta jokaiseen kokoelman kohteeseen
-2. Luo suodatetun virran vastaavista kohteista
-3. Ilmoittaa liitetyille komponenteille, että niiden näyttö tulee päivittää
+Kun asetat suodattimen, `Repository`:
+1. Soveltaa ehdon jokaiselle kohteelle kokoelmassasi
+2. Luo suodatetun streamin vastaavista kohteista
+3. Ilmoittaa liitetyille komponenteille, että niiden näyttö on päivitettävä
 
-Suodatin pysyy voimassa, kunnes muutat sen. Uudet kohteet, jotka lisätään kokoelmaan, testataan automaattisesti nykyistä suodatinta vastaan.
+Suodatin pysyy voimassa, kunnes muutat sen. Uudet kokoelmaan lisätyt kohteet testataan automaattisesti nykyisen suodattimen perusteella.
 
+## Työskentely entiteettiavainten kanssa {#working-with-entity-keys}
 
-## Työskentely entiteettiavaimilla {#working-with-entity-keys}
+Repository tarvitsee pystyäkseen tunnistamaan entiteetit ainutlaatuisesti tukeakseen toimintoja kuten `find()` ja `commit(entity)`. On kaksi tapaa määrittää, miten entiteettejä tunnistetaan:
 
-Repository tarvitsee tunnistaa entiteetit ainutlaatuisesti tukemaan toimintoja, kuten `find()` ja `commit(entity)`. On kaksi tapaa määrittää, miten entiteettejä identifioidaan:
-
-### HasEntityKey-rajapinnan käyttäminen {#using-hasentitykey}
+### Käyttämällä `HasEntityKey`-rajapintaa {#using-hasentitykey}
 
 Toteuta <JavadocLink type="data" location="com/webforj/data/HasEntityKey" code="true">HasEntityKey</JavadocLink> entiteettiklassissasi:
 
@@ -134,7 +133,7 @@ public class Customer implements HasEntityKey {
         return customerId;
     }
 
-    // Konstruktori ja getterit/setterit...
+    // Konstruktori ja gettterit/setterit...
 }
 
 // Etsi avaimen mukaan
@@ -147,9 +146,9 @@ customer.ifPresent(c -> {
 });
 ```
 
-### Mukautetun avaimen tarjoajan käyttö <DocChip chip='since' label='25.10' /> {#using-custom-key-provider}
+### Käyttämällä mukautettua avainhallintaa <DocChip chip='since' label='25.10' /> {#using-custom-key-provider}
 
-Entiteeteille, joissa et voi tai et halua toteuttaa `HasEntityKey`:a (kuten JPA-entiteetit), käytä `setKeyProvider()`:
+Entiteeteille, joissa et voi tai et halua toteuttaa `HasEntityKey`:ta (kuten JPA-entiteetit), käytä `setKeyProvider()`:
 
 ```java
 @Entity
@@ -162,7 +161,7 @@ public class Product {
     // JPA-hallittu entiteetti
 }
 
-// Määrittele repository käyttämään getId()-metodia
+// Määritä repository käyttämään getId()-metodia
 CollectionRepository<Product> repository = new CollectionRepository<>(products);
 repository.setKeyProvider(Product::getId);
 
@@ -170,22 +169,21 @@ repository.setKeyProvider(Product::getId);
 Optional<Product> product = repository.find(123L);
 ```
 
-### Lähestymistavan valitseminen {#choosing-approach}
+### Lähestymistavan valinta {#choosing-approach}
 
-Molemmat lähestymistavat toimivat, mutta `setKeyProvider()` on suositeltava, kun:
+Molemmat lähestymistavat toimivat, mutta `setKeyProvider()` on suositeltavampi silloin, kun:
 - Työskentelet JPA-entiteettien kanssa, joilla on `@Id`-kenttiä
 - Et voi muuttaa entiteettiklassia
-- Tarvitset erilaisia avainestrategioita eri repositorien varten
+- Tarvitset erilaisia avainstrategioita eri repositorioille
 
-Käytä `HasEntityKey`:a, kun:
+Käytä `HasEntityKey`a silloin, kun:
 - Hallitset entiteettiklassia
-- Avaimen erottelulogiikka on monimutkaista
-- Halut, että entiteetti määrittelee oman identiteettinsä
+- Avaimen poimintalogiikka on monimutkainen
+- Haluat entiteetin määrittävän oman identiteettinsä
 
+## UI-integraatio {#ui-integration}
 
-## Käyttöliittymän integrointi {#ui-integration}
-
-`Repository` integroidaan datatietoisiksi komponentteiksi:
+`Repository` integroituu datatietoisiin komponentteihin:
 
 ```java
 // Luo repository ja taulukko
@@ -198,7 +196,7 @@ table.addColumn("ID", Customer::getId);
 table.addColumn("Nimi", Customer::getName);
 table.addColumn("Sähköposti", Customer::getEmail);
 
-// Lisää dataa - taulukko päivittyy automaattisesti
+// Lisää data - taulukko päivittyy automaattisesti
 customers.add(new Customer("C001", "Alice Johnson", "alice@example.com"));
 repository.commit();
 ```
