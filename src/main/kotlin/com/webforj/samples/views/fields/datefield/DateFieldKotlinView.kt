@@ -6,6 +6,7 @@ import com.webforj.component.layout.flexlayout.FlexDirection
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.data.event.ValueChangeEvent
 import com.webforj.kotlin.dsl.component.field.dateField
+import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 import java.time.LocalDate
@@ -28,13 +29,13 @@ class DateFieldKotlinView: Composite<FlexLayout>() {
       spacing = "var(--dwc-space-l)"
       margin = "var(--dwc-space-m)"
       departureField = dateField("Departure Date:", TODAY) {
-        width = "200px"
+        width = 200.px
         min = TODAY
         max = MAX_DATE
         onValueChange(::syncDates)
       }
       returnField = dateField("Return Date:", MAX_DATE) {
-        width = "200px"
+        width = 200.px
         min = TODAY
         max = MAX_DATE
         onValueChange(::syncDates)
