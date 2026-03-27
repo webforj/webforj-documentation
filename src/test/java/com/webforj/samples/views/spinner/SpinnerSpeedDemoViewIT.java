@@ -2,24 +2,26 @@ package com.webforj.samples.views.spinner;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
+import com.webforj.samples.pages.SupportedLanguage;
 import com.webforj.samples.pages.spinner.SpinnerSpeedDemoPage;
 import com.webforj.samples.views.BaseTest;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class SpinnerSpeedDemoViewIT extends BaseTest {
 
     private SpinnerSpeedDemoPage spinnerPage;
 
-    @BeforeEach
-    public void setupSpinnerSpeeds() {
-        navigateToRoute(SpinnerSpeedDemoPage.getRoute());
+    public void setupSpinnerSpeeds(SupportedLanguage language) {
+        navigateToRoute(SpinnerSpeedDemoPage.getRoute(language));
         spinnerPage = new SpinnerSpeedDemoPage(page);
     }
 
-    @Test
-    public void testSpinnerSpeedIsSet() {
+    @ParameterizedTest
+    @MethodSource("provideRoutes")
+    public void testSpinnerSpeedIsSet(SupportedLanguage language) {
+        setupSpinnerSpeeds(language);
 
         spinnerPage.getPauseButton().click();
         assertThat(spinnerPage.getSpinner()).hasAttribute("paused", "");
