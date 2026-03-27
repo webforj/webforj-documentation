@@ -1,9 +1,7 @@
 ---
-sidebar_position: 5
 title: Confirm
+sidebar_position: 5
 ---
-
-# Confirm Dialog
 
 <DocChip chip='shadow' />
 <DocChip chip='since' label='24.02' />
@@ -11,13 +9,7 @@ title: Confirm
 
 A `ConfirmDialog` is a modal dialog designed to allow the user to choose one of a set of up to 3 options. The dialog blocks app execution until the user interacts with it or it closes due to a timeout.
 
-```java
-ConfirmDialog.Result result = OptionDialog.showConfirmDialog(
-    "Do you confirm?",
-    "Confirmation",
-    ConfirmDialog.OptionType.OK_CANCEL,
-    ConfirmDialog.MessageType.QUESTION);
-```
+<!-- INTRO_END -->
 
 ## Usages {#usages}
 

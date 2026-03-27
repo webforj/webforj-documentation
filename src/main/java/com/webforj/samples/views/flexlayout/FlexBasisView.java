@@ -38,7 +38,7 @@ public class FlexBasisView extends Composite<Div> {
 
     this.boxLayout = FlexLayout.create()
         .horizontal()
-        .wrap().wrap()
+        .wrap()
         .build()
         .setPadding("20px")
         .setStyle("border", "1px solid var(--dwc-color-default)");
@@ -85,7 +85,7 @@ public class FlexBasisView extends Composite<Div> {
 
   private void onSetBasis(ButtonClickEvent e) {
     if (numberField.getValue() != null) {
-      for (int i = 0; i <= buttons.size() - 1; i++) {
+      for (int i = 0; i < buttons.size(); i++) {
         if (buttons.get(i).getTheme() == ButtonTheme.PRIMARY) {
           boxLayout.setItemBasis(numberField.getValue().toString() + "px", buttons.get(i));
         } else {
@@ -98,7 +98,7 @@ public class FlexBasisView extends Composite<Div> {
   private void onReset(ButtonClickEvent e) {
     basisButton.setTooltipText("Select a box item first");
     selected = 0;
-    for (int i = 0; i <= buttons.size() - 1; i++) {
+    for (int i = 0; i < buttons.size(); i++) {
       buttons.get(i).setTheme(ButtonTheme.OUTLINED_PRIMARY);
       boxLayout.setItemBasis("75px", buttons.get(i));
     }

@@ -8,9 +8,9 @@ sidebar_position: 20
 <DocChip chip='since' label='23.01' />
 <JavadocLink type="foundation" location="com/webforj/component/optioninput/CheckBox" top='true'/>
 
-The `CheckBox` class creates a component that can be selected or deselected, and which displays its state to the user. When clicked, a check mark appears inside the box, to indicate an affirmative choice (on). When clicked again, the check mark disappears, indicating a negative choice (off).
+A `CheckBox` can be selected or deselected, and displays its current state as a check mark. Checkboxes work well for toggling individual settings or letting users pick multiple options from a set.
 
-By providing a clear and straightforward visual indication of selection status, checkboxes enhance user interaction and decision-making, making them an essential element in modern user interfaces.
+<!-- INTRO_END -->
 
 ## Usages {#usages}
 

@@ -2,100 +2,101 @@
 title: MaskedDateField
 sidebar_position: 5
 sidebar_class_name: updated-content
-_i18n_hash: 93973075b9f8f9bcc3eddf18e8b01017
+_i18n_hash: 981d5cd2686c83144433a0135b1222dc
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-datefield" />
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="foundation" location="com/webforj/component/field/MaskedDateField" top='true'/>
 
-Le `MaskedDateField` est un contrôle d'entrée de texte conçu pour la saisie de dates structurées. Il permet aux utilisateurs d'entrer des dates sous forme de **nombres** et formate automatiquement l'entrée en fonction d'un masque défini lorsque le champ perd le focus. Le masque est une chaîne qui spécifie le format de date attendu, guidant à la fois l'entrée et l'affichage.
+Le `MaskedDateField` est un champ de texte qui permet aux utilisateurs de saisir des dates sous forme de chiffres et formate automatiquement l'entrée en fonction d'un masque défini lorsque le champ perd le focus. Le masque spécifie le format de date attendu, guidant à la fois la saisie et l'affichage. Le composant prend en charge un parsing flexible, la validation, la localisation et la restauration de valeurs pour un traitement des dates cohérent et spécifique à la région.
 
-Ce composant prend en charge le parsing flexible, la validation, la localisation et la restauration des valeurs. Il est particulièrement utile dans des formulaires tels que les enregistrements, les réservations et la planification, où des formats de date cohérents et spécifiques à la région sont nécessaires.
+<!-- INTRO_END -->
 
-:::tip Vous recherchez une entrée de temps ?
-Le `MaskedDateField` est uniquement axé sur les valeurs de **date**. Si vous avez besoin d'un composant similaire pour entrer et formater des **heures**, consultez le [`MaskedTimeField`](./timefield) à la place.
+## Bases {#basics}
+
+:::tip Vous cherchez une saisie de temps ?
+Le `MaskedDateField` est uniquement axé sur les valeurs **date**. Si vous avez besoin d'un composant similaire pour saisir et formater du **temps**, consultez le [`MaskedTimeField`](./timefield) à la place.
 :::
-
-## Basics {#basics}
 
 Le `MaskedDateField` peut être instancié avec ou sans paramètres. Vous pouvez définir une valeur initiale, une étiquette, un espace réservé et un écouteur d'événements pour les changements de valeur.
 
 <ComponentDemo path='/webforj/maskeddatefield?' javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldView.java' height='120px'/>
 
-## Mask rules {#mask-rules}
+## Règles de masque {#mask-rules}
 
-Le `MaskedDateField` prend en charge plusieurs formats de date utilisés dans le monde, qui varient selon l'ordre du jour, du mois et de l'année. Les motifs communs incluent :
+Le `MaskedDateField` prend en charge plusieurs formats de date utilisés dans le monde, qui varient en fonction de l'ordre jour, mois et année. Les modèles courants incluent :
 
-- **Jour/Mois/Année** (utilisé dans la plupart de l'Europe)
+- **Jour/Mois/Année** (utilisé dans la plupart des pays européens)
 - **Mois/Jour/Année** (utilisé aux États-Unis)
-- **Année/Mois/Jour** (utilisé en Chine, au Japon et en Corée ; également la norme ISO : `YYYY-MM-DD`)
+- **Année/Mois/Jour** (utilisé en Chine, au Japon et en Corée ; également norme ISO : `YYYY-MM-DD`)
 
-Dans ces formats, les variations locales incluent le choix du séparateur (par exemple, `-`, `/` ou `.`), que les années soient de deux ou quatre chiffres, et si les mois ou les jours à un chiffre sont complétés par des zéros de tête.
+Dans ces formats, les variations locales incluent le choix de séparateur (par exemple, `-`, `/` ou `.`), si les années sont de deux ou quatre chiffres, et si les mois ou jours à un chiffre sont complétés par des zéros non significatifs.
 
-Pour gérer cette diversité, le `MaskedDateField` utilise des indicateurs de format, chacun commençant par `%`, suivi d'une lettre qui représente une partie spécifique de la date. Ces indicateurs définissent comment l'entrée est analysée et comment la date est affichée.
+Pour gérer cette diversité, le `MaskedDateField` utilise des indicateurs de format, chacun commençant par `%`, suivi d'une lettre représentant une partie spécifique de la date. Ces indicateurs définissent comment l'entrée est analysée et comment la date est affichée.
 
-### Date format indicators {#date-format-indicators}
+### Indicateurs de format de date {#date-format-indicators}
 
 | Format | Description |
 | ------ | ----------- |
-| `%Y`   | Année      |
-| `%M`   | Mois       |
-| `%D`   | Jour       |
+| `%Y`   | Année       |
+| `%M`   | Mois        |
+| `%D`   | Jour        |
 
-### Modifiers {#modifiers}
+### Modificateurs {#modifiers}
 
-Les modificateurs permettent un meilleur contrôle sur la façon dont les composants de la date sont formatés :
+Les modificateurs permettent un meilleur contrôle sur la manière dont les composants de la date sont formatés :
 
 | Modificateur | Description               |
 | ------------ | ------------------------- |
-| `z`          | Rembourrage à zéro       |
+| `z`          | Remplissage à zéro       |
 | `s`          | Représentation textuelle courte |
 | `l`          | Représentation textuelle longue  |
-| `p`          | Nombre compressé              |
+| `p`          | Nombre groupé            |
 | `d`          | Décimal (format par défaut)  |
 
 Ceux-ci peuvent être combinés pour construire une grande variété de masques de date.
 
-## Date format localization {#date-format-localization}
+## Localisation du format de date {#date-format-localization}
 
-Le `MaskedDateField` s'adapte aux formats de date régionaux en définissant la locale appropriée. Cela garantit que les dates sont affichées et analysées d'une manière qui correspond aux attentes des utilisateurs.
+Le `MaskedDateField` s'adapte aux formats de date régionaux en définissant la locale appropriée. Cela garantit que les dates sont affichées et analysées de manière à correspondre aux attentes des utilisateurs.
 
 | Région        | Format     | Exemple      |
 | ------------- | ---------- | ------------ |
-| États-Unis    | MM/DD/YYYY | `07/04/2023` |
-| Europe        | DD/MM/YYYY | `04/07/2023` |
-| Norme ISO     | YYYY-MM-DD | `2023-07-04` |
+| États-Unis    | MM/JJ/AAAA | `07/04/2023` |
+| Europe        | JJ/MM/AAAA | `04/07/2023` |
+| Norme ISO     | AAAA-MM-JJ | `2023-07-04` |
 
-Pour appliquer la localisation, utilisez la méthode `setLocale()`. Elle accepte un [`java.util.Locale`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Locale.html) et ajuste automatiquement à la fois le formatage et l'analyse :
+Pour appliquer la localisation, utilisez la méthode `setLocale()`. Elle accepte une [`java.util.Locale`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Locale.html) et ajuste automatiquement à la fois le formatage et l'analyse :
 
 ```java
 dateField.setLocale(Locale.FRANCE);
 ```
 
-## Parsing logic {#parsing-logic}
+## Logique de parsing {#parsing-logic}
 
-Le `MaskedDateField` analyse l'entrée de l'utilisateur en fonction du masque de date défini. Il accepte à la fois des entrées numériques complètes et abrégées avec ou sans délimiteurs, permettant une entrée flexible tout en garantissant des dates valides. 
-Le comportement d'analyse dépend de l'ordre du format défini par le masque (par exemple, `%Mz/%Dz/%Yz` pour mois/jour/année). Ce format détermine comment les séquences numériques sont interprétées.
+Le `MaskedDateField` analyse les entrées utilisateurs en fonction du masque de date défini. Il accepte les entrées numériques complètes et abrégées avec ou sans délimiteurs, permettant une saisie flexible tout en garantissant des dates valides.
+Le comportement d'analyse dépend de l'ordre des formats défini par le masque (par exemple, `%Mz/%Dz/%Yz` pour mois/jour/année). Ce format détermine comment les séquences numériques sont interprétées.
 
-Par exemple, supposons qu'aujourd'hui soit le `15 septembre 2012`, voici comment diverses entrées seraient interprétées :
+Par exemple, en supposant qu'aujourd'hui soit le `15 septembre 2012`, voici comment différentes entrées seraient interprétées :
 
-### Example parsing scenarios {#example-parsing-scenarios}
+### Scénarios d'analyse d'exemple {#example-parsing-scenarios}
 
 | Entrée                                | YMD (ISO)                                                                                                                                                                                          | MDY (US)                                                                            | DMY (EU)                                                                                                                     |
 | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| <div align="center">`1`</div>         | Un seul chiffre est toujours interprété comme un numéro de jour dans le mois en cours, donc cela serait le 1er septembre 2012.                                                                                 | Même que YMD                                                                         | Même que YMD                                                                                                                  |
-| <div align="center">`12`</div>        | Deux chiffres sont toujours interprétés comme un numéro de jour dans le mois en cours, donc cela serait le 12 septembre 2012.                                                                                   | Même que YMD                                                                         | Même que YMD                                                                                                                  |
-| <div align="center">`112`</div>       | Trois chiffres sont interprétés comme un numéro de mois à 1 chiffre suivi d'un numéro de jour à 2 chiffres, donc cela serait le 12 janvier 2012.                                                                        | Même que YMD                                                                         | Trois chiffres sont interprétés comme un numéro de jour à 1 chiffre suivi d'un numéro de mois à 2 chiffres, donc cela serait le 1er décembre 2012. |
-| <div align="center">`1004`</div>      | Quatre chiffres sont interprétés comme MMDD, donc cela serait le 4 octobre 2012.                                                                                                                             | Même que YMD                                                                         | Quatre chiffres sont interprétés comme DDMM, donc cela serait le 10 avril 2012.                                                         |
-| <div align="center">`020304`</div>    | Six chiffres sont interprétés comme YYMMDD, donc cela serait le 4 mars 2002.                                                                                                                              | Six chiffres sont interprétés comme MMDDYY, donc cela serait le 3 février 2004.            | Six chiffres sont interprétés comme DDMMYY, donc cela serait le 2 mars 2004.                                                         |
-| <div align="center">`8 digits`</div>  | Huit chiffres sont interprétés comme YYYYMMDD. Par exemple, `20040612` est le 12 juin 2004.                                                                                                                | Huit chiffres sont interprétés comme MMDDYYYY. Par exemple, `06122004` est le 12 juin 2004. | Huit chiffres sont interprétés comme DDMMYYYY. Par exemple, `06122004` est le 6 décembre 2004.                                        |
-| <div align="center">`12/6`</div>      | Deux nombres séparés par un délimiteur valide sont interprétés comme MM/DD, donc cela serait le 6 décembre 2012. <br />Remarque : Tous les caractères sauf les lettres et les chiffres sont considérés comme des délimiteurs valides. | Même que YMD                                                                         | Deux nombres séparés par un délimiteur sont interprétés comme DD/MM, donc cela serait le 12 juin 2012.                               |
+| <div align="center">`1`</div>         | Un seul chiffre est toujours interprété comme un numéro de jour dans le mois courant, donc ce serait le 1er septembre 2012.                                                                          | Idem à YMD                                                                         | Idem à YMD                                                                                                                  |
+| <div align="center">`12`</div>        | Deux chiffres sont toujours interprétés comme un numéro de jour dans le mois courant, donc ce serait le 12 septembre 2012.                                                                         | Idem à YMD                                                                         | Idem à YMD                                                                                                                  |
+| <div align="center">`112`</div>       | Trois chiffres sont interprétés comme un numéro de mois à un chiffre suivi d'un numéro de jour à deux chiffres, donc ce serait le 12 janvier 2012.                                                 | Idem à YMD                                                                         | Trois chiffres sont interprétés comme un numéro de jour à un chiffre suivi d'un numéro de mois à deux chiffres, donc ce serait le 1er décembre 2012. |
+| <div align="center">`1004`</div>      | Quatre chiffres sont interprétés comme MMJJ, donc ce serait le 4 octobre 2012.                                                                                                                     | Idem à YMD                                                                         | Quatre chiffres sont interprétés comme JJMM, donc ce serait le 10 avril 2012.                                                         |
+| <div align="center">`020304`</div>    | Six chiffres sont interprétés comme YYMMJJ, donc ce serait le 4 mars 2002.                                                                                                                        | Six chiffres sont interprétés comme MMJJYY, donc ce serait le 3 février 2004.            | Six chiffres sont interprétés comme JJMMYY, donc ce serait le 2 mars 2004.                                                         |
+| <div align="center">`8 digits`</div>  | Huit chiffres sont interprétés comme AAAAMMJJ. Par exemple, `20040612` est le 12 juin 2004.                                                                                                         | Huit chiffres sont interprétés comme MMJJAAAA. Par exemple, `06122004` est le 12 juin 2004. | Huit chiffres sont interprétés comme JJMMAAAA. Par exemple, `06122004` est le 6 décembre 2004.                                        |
+| <div align="center">`12/6`</div>      | Deux nombres séparés par tout délimiteur valide sont interprétés comme MM/JJ, donc ce serait le 6 décembre 2012. <br />Remarque : Tous les caractères sauf les lettres et les chiffres sont considérés comme des délimiteurs valides. | Idem à YMD                                                                         | Deux nombres séparés par tout délimiteur sont interprétés comme JJ/MM, donc ce serait le 12 juin 2012.                               |
 | <div align="center">`3/4/5`</div>     | 5 avril 2012                                                                                                                                                                                      | 4 mars 2005                                                                       | 3 avril 2005                                                                                                                 |
 
-## Textual date parsing <DocChip chip='since' label='25.11' /> {#textual-date-parsing}
 
-Par défaut, le `MaskedDateField` n'accepte que des entrées numériques pour les dates. Cependant, vous pouvez activer le **parsing de date textuelle** pour permettre aux utilisateurs d'entrer des noms de mois et de jours dans leur entrée. Cette fonctionnalité est particulièrement utile pour créer une saisie de date plus naturelle.
+## Analyse des dates textuelles <DocChip chip='since' label='25.11' /> {#textual-date-parsing}
+
+Par défaut, le `MaskedDateField` n'accepte que des entrées numériques pour les dates. Cependant, vous pouvez activer l'**analyse de dates textuelles** pour permettre aux utilisateurs de saisir des noms de mois et de jours dans leur entrée. Cette fonctionnalité est particulièrement utile pour créer une saisie de date plus naturelle.
 
 Pour activer le parsing textuel, utilisez la méthode `setTextualDateParsing()` :
 
@@ -103,60 +104,60 @@ Pour activer le parsing textuel, utilisez la méthode `setTextualDateParsing()` 
 dateField.setTextualDateParsing(true);
 ```
 
-### Month name substitution {#month-name-substitution}
+### Substitution des noms de mois {#month-name-substitution}
 
-Lorsque le parsing textuel est activé, vous pouvez utiliser des modificateurs spéciaux dans votre masque pour accepter les noms de mois plutôt que des valeurs numériques :
+Lorsque le parsing textuel est activé, vous pouvez utiliser des modificateurs spéciaux dans votre masque pour accepter des noms de mois au lieu de valeurs numériques :
 
-- **`%Ms`** - Accepte les noms de mois courts (Jan, Fév, Mar, etc.)
-- **`%Ml`** - Accepte les noms de mois longs (Janvier, Février, Mars, etc.)
+- **`%Ms`** - Accepte les noms de mois courts (Jan, Feb, Mar, etc.)
+- **`%Ml`** - Accepte les noms de mois longs (janvier, février, mars, etc.)
 
-Les noms de mois peuvent apparaître à n'importe quelle position dans le masque, et le champ acceptera toujours une entrée numérique comme solution de secours.
+Les noms de mois peuvent apparaître à n'importe quelle position dans le masque, et le champ acceptera toujours les entrées numériques comme secours.
 
-#### Examples
+#### Exemples
 
-| Masque | Input | Résultat |
-| ---- | ----- | ------ |
-| `%Ms/%Dz/%Yz` | `Sep/01/25` | **Valide** - Analyse comme le 1er septembre 2025 |
-| `%Ml/%Dz/%Yz` | `Septembre/01/25` | **Valide** - Analyse comme le 1er septembre 2025 |
-| `%Dz/%Ml/%Yz` | `01/Septembre/25` | **Valide** - Analyse comme le 1er septembre 2025 |
-| `%Mz/%Dz/%Yz` | `09/01/25` | **Valide** - La solution numérique de secours fonctionne toujours |
+| Masque           | Entrée            | Résultat |
+| ---------------- | ------------------ | -------- |
+| `%Ms/%Dz/%Yz`    | `Sep/01/25`        | **Valide** - Analyse comme le 1er septembre 2025 |
+| `%Ml/%Dz/%Yz`    | `September/01/25`  | **Valide** - Analyse comme le 1er septembre 2025 |
+| `%Dz/%Ml/%Yz`    | `01/September/25`  | **Valide** - Analyse comme le 1er septembre 2025 |
+| `%Mz/%Dz/%Yz`    | `09/01/25`        | **Valide** - Le secours numérique fonctionne toujours |
 
 :::info
-Tous les 12 mois sont supportés, à la fois en forme courte (Jan, Fév, Mar, Avr, Mai, Jun, Jul, Aoû, Sep, Oct, Nov, Déc) et en forme longue (Janvier, Février, etc.).
+Tous les 12 mois sont pris en charge sous forme courte (Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec) et longue (janvier, février, etc.).
 :::
-### Day name decoration {#day-name-decoration}
+### Décoration des noms de jour {#day-name-decoration}
 
-Les noms de jour de la semaine peuvent être inclus dans l'entrée pour une meilleure lisibilité, mais ils sont **uniquement décoratifs** et sont retirés lors de l'analyse. Ils n'affectent pas la valeur de date réelle.
+Les noms des jours de la semaine peuvent être inclus dans l'entrée pour une meilleure lisibilité, mais ils sont **uniques pour la décoration** et sont supprimés lors de l'analyse. Ils n'affectent pas la valeur réelle de la date.
 
-- **`%Ds`** - Accepte les noms de jour courts (Lun, Mar, Mer, etc.)
-- **`%Dl`** - Accepte les noms de jour longs (Lundi, Mardi, Mercredi, etc.)
+- **`%Ds`** - Accepte les noms de jours courts (Mon, Tue, Wed, etc.)
+- **`%Dl`** - Accepte les noms de jours longs (lundi, mardi, mercredi, etc.)
 
-:::warning Les noms de jour nécessitent un jour numérique
-Lors de l'utilisation des noms de jour de la semaine (`%Ds` ou `%Dl`), votre masque **doit également inclure** `%Dz` ou `%Dd` pour spécifier le numéro de jour réel. Sans un composant de jour numérique, l'entrée sera invalide.
+:::warning Les noms de jour exigent un jour numérique
+Lorsque vous utilisez des noms de jours de la semaine (`%Ds` ou `%Dl`), votre masque **doit également inclure** `%Dz` ou `%Dd` pour spécifier le numéro de jour réel. Sans un composant de jour numérique, l'entrée sera invalide.
 :::
 
-#### Examples
+#### Exemples
 
-| Masque | Input | Résultat |
-| ---- | ----- | ------ |
-| `%Ds %Mz/%Dz/%Yz` | `Lun 09/01/25` | **Valide** - Le nom du jour est décoratif |
-| `%Dl %Mz/%Dz/%Yz` | `Lundi 09/01/25` | **Valide** - Le nom du jour est décoratif |
-| `%Mz/%Dz/%Yz %Ds` | `09/01/25 Mar` | **Valide** - Le nom du jour à la fin |
-| `%Dl/%Mz/%Yz` | `Lundi/09/25` | **Invalide** - `%Dz` manquant |
-| `%Mz/%Dl/%Yz` | `09/Lundi/25` | **Invalide** - `%Dz` manquant |
+| Masque           | Entrée            | Résultat |
+| ---------------- | ---------------   | ------   |
+| `%Ds %Mz/%Dz/%Yz`| `Mon 09/01/25`    | **Valide** - Le nom du jour est décoratif |
+| `%Dl %Mz/%Dz/%Yz`| `Monday 09/01/25` | **Valide** - Le nom du jour est décoratif |
+| `%Mz/%Dz/%Yz %Ds`| `09/01/25 Tue`    | **Valide** - Le nom du jour à la fin |
+| `%Dl/%Mz/%Yz`    | `Monday/09/25`    | **Invalide** - `%Dz` manquant |
+| `%Mz/%Dl/%Yz`    | `09/Monday/25`    | **Invalide** - `%Dz` manquant |
 
-Tous les 7 jours de la semaine sont supportés en forme courte (Lun, Mar, Mer, Jeu, Ven, Sam, Dim) et en forme longue (Lundi, Mardi, etc.).
+Les 7 jours de la semaine sont pris en charge à la fois sous forme courte (Mon, Tue, Wed, Thu, Fri, Sat, Sun) et longue (lundi, mardi, etc.).
 
-### Additional parsing rules {#additional-parsing-rules}
+### Règles de parsing supplémentaires {#additional-parsing-rules}
 
-Le parsing textuel de date comprend plusieurs fonctionnalités utiles :
+L'analyse de dates textuelles inclut plusieurs fonctionnalités utiles :
 
 - **Insensible à la casse :** Des entrées comme `LUNDI 09/01/25`, `lundi 09/01/25` ou `Lundi 09/01/25` fonctionnent toutes de la même manière.
-- **Sensible à la locale :** Les noms des mois et des jours doivent correspondre à la locale configurée du champ. Par exemple, avec une locale française, utilisez `septembre` et non `September`. Les noms anglais ne seront pas reconnus à moins que la locale soit définie sur l'anglais.
+- **Consciente de la locale :** Les noms de mois et de jours doivent correspondre à la locale configurée du champ. Par exemple, avec une locale française, utilisez `septembre` et non `September`. Les noms anglais ne seront pas reconnus à moins que la locale soit définie sur l'anglais.
   - Locale française : `septembre/01/25` est reconnu comme septembre.
-  - Locale allemande : `Montag 09/01/25` est reconnu avec lundi comme nom du jour.
+  - Locale allemande : `Montag 09/01/25` est reconnu avec lundi comme nom de jour.
 
-## Setting min/max constraints {#setting-minmax-constraints}
+## Définir des contraintes min/max {#setting-minmax-constraints}
 
 Vous pouvez restreindre la plage de dates autorisées dans un `MaskedDateField` en utilisant les méthodes `setMin()` et `setMax()` :
 
@@ -167,28 +168,28 @@ dateField.setMax(LocalDate.of(2030, 12, 31));
 
 Les deux méthodes acceptent des valeurs de type [`java.time.LocalDate`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html). Les entrées en dehors de la plage définie seront considérées comme invalides.
 
-## Restoring the value {#restoring-the-value}
+## Restauration de la valeur {#restoring-the-value}
 
-Le `MaskedDateField` comprend une fonctionnalité de restauration qui réinitialise la valeur du champ à un état prédéfini ou original. Cela est utile pour revenir à l'entrée de l'utilisateur ou réinitialiser à une date par défaut.
+Le `MaskedDateField` inclut une fonctionnalité de restauration qui réinitialise la valeur du champ à un état prédéfini ou d'origine. Cela est utile pour revenir à une saisie utilisateur ou réinitialiser à une date par défaut.
 
 ```java
 dateField.setRestoreValue(LocalDate.of(2025, 1, 1));
 dateField.restoreValue();
 ```
 
-### Ways to restore the value {#ways-to-restore-the-value}
+### Méthodes pour restaurer la valeur {#ways-to-restore-the-value}
 
-- **Programmé,** en appelant `restoreValue()`
-- **Via le clavier,** en appuyant sur <kbd>ESC</kbd> (c'est la touche de restauration par défaut à moins d'être remplacée par un écouteur d'événements)
+- **Par programmation**, en appelant `restoreValue()`
+- **Via le clavier**, en appuyant sur <kbd>ESC</kbd> (c'est la touche de restauration par défaut à moins qu'elle ne soit remplacée par un écouteur d'événements)
 
-Vous pouvez définir la valeur à restaurer avec `setRestoreValue()`, en passant une instance [`LocalDate`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html).
+Vous pouvez définir la valeur à restaurer avec `setRestoreValue()`, en passant une instance de [`LocalDate`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html).
 
 <ComponentDemo 
 path='/webforj/maskeddatefieldrestore?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldRestoreView.java' 
 height='120px'/>
 
-## Validation patterns {#validation-patterns}
+## Modèles de validation {#validation-patterns}
 
 Vous pouvez appliquer des règles de validation côté client à l'aide d'expressions régulières avec la méthode `setPattern()` :
 
@@ -196,35 +197,35 @@ Vous pouvez appliquer des règles de validation côté client à l'aide d'expres
 dateField.setPattern("^\\d{2}/\\d{2}/\\d{4}$");
 ```
 
-Ce motif garantit que seuls les valeurs correspondant au format `MM/DD/YYYY` (deux chiffres, barre oblique, deux chiffres, barre oblique, quatre chiffres) sont considérées comme valides.
+Ce modèle garantit que seules les valeurs correspondant au format `MM/JJ/AAAA` (deux chiffres, barre oblique, deux chiffres, barre oblique, quatre chiffres) sont considérées comme valides.
 
-:::tip Format d'expressions régulières
-Le motif doit suivre la syntaxe des RegExp de JavaScript comme documenté [ici](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions).
+:::tip Format d'expression régulière
+Le modèle doit suivre la syntaxe des RegExp de JavaScript comme documenté [ici](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions).
 :::
 
 :::warning Remarques sur la gestion des entrées
-Le champ essaie d'analyser et de formater les entrées numériques de date en fonction du masque actuel. Cependant, les utilisateurs peuvent toujours entrer manuellement des valeurs qui ne correspondent pas au format attendu. Si l'entrée est syntaxiquement valide mais sémantiquement incorrecte ou impossible à analyser (par exemple, `99/99/9999`), elle peut passer les vérifications de motif mais échouer à la validation logique.
-Vous devez toujours valider la valeur d'entrée dans la logique de votre application, même si un motif d'expression régulière est défini, pour garantir que la date est à la fois correctement formatée et significative.
+Le champ tente d'analyser et de formater les entrées numériques de date en fonction du masque actuel. Cependant, les utilisateurs peuvent toujours saisir manuellement des valeurs qui ne correspondent pas au format attendu. Si l'entrée est syntaxiquement valide mais sémantiquement incorrecte ou non analysable (par exemple `99/99/9999`), elle peut passer les vérifications de motif mais échouer à la validation logique.
+Vous devez toujours valider la valeur d'entrée dans votre logique applicative, même si un modèle d'expression régulière est défini, pour garantir que la date est à la fois correctement formatée et significative.
 ::::
 
-## Date picker {#date-picker}
+## Sélecteur de date {#date-picker}
 
-Le `MaskedDateField` comprend un sélecteur de calendrier intégré qui permet aux utilisateurs de sélectionner une date visuellement, plutôt que de la taper. Cela améliore l'utilité pour les utilisateurs moins techniques ou lorsque des entrées précises sont nécessaires.
+Le `MaskedDateField` inclut un sélecteur de calendrier intégré qui permet aux utilisateurs de sélectionner une date visuellement, plutôt que de la taper. Cela améliore l'ergonomie pour les utilisateurs moins techniques ou lorsque des saisies précises sont requises.
 
 <ComponentDemo 
 path='/webforj/maskeddatefieldpicker?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldPickerView.java' 
 height='450px'/>
 
-### Accessing the picker {#accessing-the-picker}
+### Accéder au sélecteur {#accessing-the-picker}
 
-Vous pouvez accéder au sélecteur de date en utilisant `getPicker()` :
+Vous pouvez accéder au sélecteur de dates en utilisant `getPicker()` :
 
 ```java
 DatePicker picker = dateField.getPicker();
 ```
 
-### Show/hide the picker icon {#showhide-the-picker-icon}
+### Afficher/masquer l'icône de sélecteur {#showhide-the-picker-icon}
 
 Utilisez `setIconVisible()` pour afficher ou masquer l'icône de calendrier à côté du champ :
 
@@ -232,28 +233,28 @@ Utilisez `setIconVisible()` pour afficher ou masquer l'icône de calendrier à c
 picker.setIconVisible(true); // affiche l'icône
 ```
 
-### Auto-open behavior {#auto-open-behavior}
+### Comportement d'ouverture automatique {#auto-open-behavior}
 
-Vous pouvez configurer le sélecteur pour qu'il s'ouvre automatiquement lorsque l'utilisateur interagit avec le champ (par exemple, clique, appuie sur Entrée ou sur les touches fléchées) :
+Vous pouvez configurer le sélecteur pour qu'il s'ouvre automatiquement lorsque l'utilisateur interagit avec le champ (par exemple, en cliquant, en appuyant sur Entrée ou sur des touches fléchées) :
 
 ```java
 picker.setAutoOpen(true);
 ```
 
 :::tip Imposer la sélection via le sélecteur
-Pour garantir que les utilisateurs ne peuvent sélectionner une date qu'à l'aide du sélecteur de calendrier (et non en la tapant manuellement), combinez les deux paramètres suivants :
+Pour garantir que les utilisateurs ne peuvent sélectionner une date qu'en utilisant le sélecteur de calendrier (et non en saisissant manuellement), combinez les deux réglages suivants :
 
 ```java
-dateField.getPicker().setAutoOpen(true); // Ouvre le sélecteur à l'interaction de l'utilisateur
-dateField.setAllowCustomValue(false);    // Désactive la saisie manuelle de texte
+dateField.getPicker().setAutoOpen(true); // Ouvre le sélecteur lors de l'interaction de l'utilisateur
+dateField.setAllowCustomValue(false);    // Désactive la saisie de texte manuelle
 ```
 
-Cette configuration garantit que toutes les entrées de date proviennent de l'interface utilisateur du sélecteur, ce qui est utile lorsque vous souhaitez un contrôle de format strict et éliminer les problèmes d'analyse des entrées tapées.
+Cette configuration garantit que toutes les saisies de date proviennent de l'interface utilisateur du sélecteur, ce qui est utile lorsque vous souhaitez contrôler rigoureusement le format et éliminer les problèmes d'analyse liés à une saisie manuelle.
 :::
 
-### Manually open the calendar {#manually-open-the-calendar}
+### Ouvrir manuellement le calendrier {#manually-open-the-calendar}
 
-Pour ouvrir le calendrier de manière programmatique :
+Pour ouvrir le calendrier par programme :
 
 ```java
 picker.open();
@@ -262,12 +263,12 @@ picker.open();
 Ou utilisez l'alias :
 
 ```java
-picker.show(); // équivalent à open()
+picker.show(); // identique à ouvrir()
 ```
 
-### Show weeks in the calendar {#show-weeks-in-the-calendar}
+### Afficher les semaines dans le calendrier {#show-weeks-in-the-calendar}
 
-Le sélecteur peut afficher en option les numéros de semaine dans la vue du calendrier :
+Le sélecteur peut afficher éventuellement les numéros de semaine dans la vue du calendrier :
 
 ```java
 picker.setShowWeeks(true);
@@ -275,42 +276,43 @@ picker.setShowWeeks(true);
 
 ## `MaskedDateFieldSpinner` {#maskeddatefieldspinner}
 
-Le `MaskedDateFieldSpinner` étend [`MaskedDateField`](#basics) en ajoutant des contrôles de spinner qui permettent aux utilisateurs d'incrémenter ou de décrémenter la date à l'aide des touches fléchées ou de boutons d'interface. Il offre un style d'interaction plus guidé, particulièrement utile dans les applications de style bureau.
+Le `MaskedDateFieldSpinner` étend le [`MaskedDateField`](#basics) en ajoutant des contrôles de type spinner qui permettent aux utilisateurs d'incrémenter ou de décrémenter la date à l'aide des touches fléchées ou des boutons de l'interface utilisateur. Cela fournit un style d'interaction plus guidé, particulièrement utile dans les applications de type bureau.
 
 <ComponentDemo 
 path='/webforj/maskeddatefieldspinner?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/fields/maskeddatefield/MaskedDateFieldSpinnerView.java' 
 height='450px'/>
 
-### Key features {#key-features}
+### Principales fonctionnalités {#key-features}
 
-- **Pas à Pas de Date Interactif :**  
-  Utilisez les touches fléchées ou les boutons de rotation pour incrémenter ou décrémenter la valeur de la date.
+- **Avancement interactif de la date :**  
+  Utilisez les touches fléchées ou les boutons pour incrémenter ou décrémenter la valeur de la date.
 
-- **Unité de Pas Personnalisable :**  
-  Choisissez quelle partie de la date modifier en utilisant `setSpinField()` :
+- **Unité d'étape personnalisable :**  
+  Choisissez quelle partie de la date modifier à l'aide de `setSpinField()` :
 
   ```java
   spinner.setSpinField(MaskedDateFieldSpinner.SpinField.MONTH);
   ```
 
-  Les options incluent `DAY`, `WEEK`, `MONTH`, et `YEAR`.
+  Les options incluent `DAY`, `WEEK`, `MONTH` et `YEAR`.
 
 - **Limites Min/Max :**  
-  Hérite du support des dates minimales et maximales autorisées à l'aide de `setMin()` et `setMax()`.
+  Hérite du support pour les dates minimales et maximales autorisées à l'aide de `setMin()` et `setMax()`.
 
-- **Sortie Formatée :**  
-  Entièrement compatible avec les masques et les paramètres de localisation du `MaskedDateField`.
+- **Sortie formatée :**  
+  Entièrement compatible avec les masques et les paramètres de localisation de `MaskedDateField`.
 
-### Example: Configure weekly stepping {#example-configure-weekly-stepping}
+### Exemple : Configuration de l'avancement hebdomadaire {#example-configure-weekly-stepping}
 
 ```java
 MaskedDateFieldSpinner spinner = new MaskedDateFieldSpinner();
 spinner.setSpinField(MaskedDateFieldSpinner.SpinField.WEEK);
 ```
 
-Cela fait que chaque étape de rotation avance ou recule la date d'une semaine.
+Cela fait que chaque étape d'avancement déplace la date d'une semaine.
 
-## Styling {#styling}
+
+## Stylisation {#styling}
 
 <TableBuilder name="MaskedDateField" />

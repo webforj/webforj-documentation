@@ -8,9 +8,9 @@ sidebar_position: 75
 <DocChip chip='since' label='24.00' />
 <JavadocLink type="foundation" location="com/webforj/component/navigator/Navigator" top='true'/>
 
-The `Navigator` component is a customizable pagination component designed to navigate through data sets, supporting multiple layouts. You can configure it to display various navigation controls such as first, last, next, and previous buttons, along with page numbers or a quick jump field depending on the layout setting. 
+The `Navigator` component adds pagination controls for navigating through data sets. It can display first, last, next, and previous buttons along with page numbers or a quick-jump field, and automatically disables controls when they aren't applicable. It binds to a `Paginator` instance to manage the underlying pagination logic.
 
-It supports automatic disabling of navigation buttons based on the current page and total items, and offers customization options for text and tooltips for different parts of the navigator. Additionally, you can bind it to a `Paginator` instance to manage the data set's pagination logic and reflect changes in the navigation controls. 
+<!-- INTRO_END -->
 
 ## Binding to repositories {#binding-to-repositories}
 

@@ -49,7 +49,7 @@ While efforts are made to maintain compatibility, major releases may include cha
 - Security is a priority, and critical vulnerabilities are addressed in patch releases as soon as possible.
 
 :::tip Snapshot builds
-Snapshot builds are available before most releases. Users are encouraged to test against them to identify issues early and provide feedback.
+Snapshot builds are available before most releases. Users are encouraged to test against them to identify issues early and provide feedback. See the [Snapshots](/docs/configuration/snapshots) article to learn how to use webforJ snapshots and where to get them.
 :::
 
 ## How to stay updated {#how-to-stay-updated}

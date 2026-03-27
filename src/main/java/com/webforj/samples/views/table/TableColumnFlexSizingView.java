@@ -146,6 +146,7 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
     titleColumn.setFlex(2f);
     artistColumn.setFlex(1.5f);
     genreColumn.setFlex(1f);
+    table.refreshColumns();
   }
 
   private void setEqualFlex() {
@@ -156,5 +157,6 @@ public class TableColumnFlexSizingView extends Composite<FlexLayout> {
     titleColumn.setFlex(1f);
     artistColumn.setFlex(1f);
     genreColumn.setFlex(1f);
+    table.refreshColumns();
   }
 }

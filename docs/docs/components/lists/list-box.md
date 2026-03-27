@@ -9,11 +9,13 @@ slug: listbox
 <DocChip chip='since' label='23.05' />
 <JavadocLink type="foundation" location="com/webforj/component/list/ListBox" top='true'/>
 
-<ParentLink parent="List" />
+The `ListBox` component displays a scrollable list of items that stays visible without needing to open a dropdown. It supports both single and multiple selection, and works well when users need to see all available options at once.
 
-The `ListBox` component is a user interface element designed to display a scrollable list of objects and allows users to select single or multiple items from the list. Users can also interact with the `ListBox` with the arrow keys. 
+<!-- INTRO_END -->
 
 ## Usages {#usages}
+
+<ParentLink parent="List" />
 
 1. **User Role Assignment**: In applications with user access control, administrators can use a `ListBox` to assign roles and permissions to users. Users are selected from a list, and the roles or permissions are assigned based on their selection. This ensures precise and controlled access to different features and data within the application.
 

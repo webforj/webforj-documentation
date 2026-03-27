@@ -85,12 +85,14 @@ Once your Webswing server is running with your Swing app configured and CORS ena
 
 ### Add dependency {#add-dependency}
 
-Add the Webswing integration module to your webforJ project. This provides the `WebswingConnector` component and related classes.
+Webswing integration depends on webforJ's Webswing integration module, which provides the `WebswingConnector` component and related classes.
+Add the following to your `pom.xml` file:
 
 ```xml
 <dependency>
-    <groupId>com.webforj</groupId>
-    <artifactId>webforj-webswing</artifactId>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-webswing</artifactId>
+  <version>${webforj.version}</version>
 </dependency>
 ```
 
@@ -108,6 +110,7 @@ import com.webforj.component.webswing.WebswingConnector;
 
 @Route
 public class SwingAppView extends Composite<Div> {
+  private final Div self = getBoundComponent();
   private WebswingConnector connector;
 
   public SwingAppView() {
@@ -118,7 +121,7 @@ public class SwingAppView extends Composite<Div> {
     connector.setSize("100%", "600px");
 
     // Add to the view container
-    getBoundComponent().add(connector);
+    self.add(connector);
   }
 }
 ```
