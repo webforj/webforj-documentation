@@ -144,12 +144,12 @@ These interfaces manage what a component displays, including text, HTML, labels,
 
 ### State {#concern-interfaces-state}
 
-These interfaces control the interactive state of a component — whether it's enabled, editable, required, or focused on load.
+These interfaces control the interactive state of a component, including whether it's enabled, editable, required, or focused on load.
 
 | Interface | Description |
 |---|---|
 | `HasEnablement` | Enables or disables the component. |
-| `HasReadOnly` | Puts the component into a read-only state where the value is visible but cannot be changed. |
+| `HasReadOnly` | Puts the component into a read-only state where the value is visible but can't be changed. |
 | `HasRequired` | Marks the component as required, typically for form validation. |
 | `HasAutoFocus` | Moves focus to the component automatically when the page loads. |
 
@@ -173,7 +173,7 @@ These interfaces define what values a component accepts, including the current v
 | `HasMin` | Sets a minimum allowed value. |
 | `HasMax` | Sets a maximum allowed value. |
 | `HasStep` | Sets the step increment for numeric or range inputs. |
-| `HasPattern` | Applies a regex pattern to constrain accepted input. |
+| `HasPattern` | Applies a regular expression pattern to constrain accepted input. |
 | `HasMinLength` | Sets the minimum number of characters required in the component's value. |
 | `HasMaxLength` | Sets the maximum number of characters allowed in the component's value. |
 | `HasMask` | Applies a format mask to the input. Used by masked field components. |
@@ -184,7 +184,7 @@ These interfaces define what values a component accepts, including the current v
 
 ### Validation {#concern-interfaces-validation}
 
-These interfaces add client-side validation behavior — marking components invalid, displaying error messages, and controlling when validation runs.
+These interfaces add client-side validation behavior, including marking components invalid, displaying error messages, and controlling when validation runs.
 
 | Interface | Description |
 |---|---|
