@@ -6,6 +6,7 @@ import com.webforj.component.layout.flexlayout.FlexDirection
 import com.webforj.component.layout.flexlayout.FlexLayout
 import com.webforj.kotlin.dsl.component.field.maskedDateField
 import com.webforj.kotlin.dsl.component.field.picker
+import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
 import java.time.LocalDate
@@ -23,7 +24,7 @@ class MaskedDateFieldKotlinView: Composite<FlexLayout>() {
       maskedDateField("Meeting Date") {
         mask = "%Mz/%Dz/%Yz"
         value = LocalDate.now()
-        maxWidth = "300px"
+        maxWidth = 300.px
         helperText = "Meeting Date is formatted as %Mz/%Dz/%Yz."
         picker {
           isIconVisible = false
