@@ -60,16 +60,13 @@ graph TD
   
   C --> D[ElementComposite<br/><small>Wrap web components</small>]
   D --> F[ElementCompositeContainer<br/><small>Components with slots</small>]
-  
-  style A fill:#f5f5f5,stroke:#666
-  style B fill:#fff4e6,stroke:#ff9800
-  style C fill:#e6ffe6,stroke:#00cc00
-  style D fill:#e6f3ff,stroke:#0066cc
-  style E fill:#fff4e6,stroke:#ff9800
-  style F fill:#e6f3ff,stroke:#0066cc
-  
-  classDef userClass stroke-width:3px
-  class C,D,F userClass
+
+  classDef internal stroke-dasharray:6 4,stroke-width:1px
+  classDef primary stroke-width:3px
+  classDef secondary stroke-width:2px,stroke-dasharray:2 2
+  class A,B,E internal
+  class C primary
+  class D,F secondary
 ```
 </div>
 
@@ -117,14 +114,101 @@ card.setWidth("300px")
 
 The composite automatically forwards these calls to the underlying `Div`. No extra code needed.
 
-**Common concern interfaces:**
-- `HasSize` - `setWidth()`, `setHeight()`, `setSize()`
-- `HasFocus` - `focus()`, `setFocusable()`, focus events
-- `HasClassName` - `addClassName()`, `removeClassName()`
-- `HasStyle` - `setStyle()`, inline CSS management
-- `HasVisibility` - `setVisible()`, show/hide capability
-- `HasText` - `setText()`, text content management
-- `HasAttribute` - `setAttribute()`, HTML attribute management
+### Appearance {#concern-interfaces-appearance}
+
+These interfaces control the visual presentation of a component, including its dimensions, visibility, styling, and theme.
+
+| Interface | Description |
+|---|---|
+| `HasSize` | Controls width and height, including min and max constraints. Extends `HasWidth`, `HasHeight`, and their min/max variants. |
+| `HasVisibility` | Shows or hides the component without removing it from the layout. |
+| `HasClassName` | Manages CSS class names on the component's root element. |
+| `HasStyle` | Applies and removes inline CSS styles. |
+| `HasHorizontalAlignment` | Controls how content is aligned horizontally within the component. |
+| `HasExpanse` | Sets the component's size variant using the standard expanse tokens (`XSMALL` through `XLARGE`). |
+| `HasTheme` | Applies a theme variant such as `DEFAULT`, `PRIMARY`, or `DANGER`. |
+| `HasPrefixAndSuffix` | Adds components to the prefix or suffix slot inside the component. |
+
+### Content {#concern-interfaces-content}
+
+These interfaces manage what a component displays, including text, HTML, labels, hints, and other descriptive content.
+
+| Interface | Description |
+|---|---|
+| `HasText` | Sets and retrieves the component's plain text content. |
+| `HasHtml` | Sets and retrieves the component's inner HTML. |
+| `HasLabel` | Adds a descriptive label associated with the component, used for accessibility. |
+| `HasHelperText` | Displays secondary hint text below the component. |
+| `HasPlaceholder` | Sets placeholder text shown when the component has no value. |
+| `HasTooltip` | Attaches a tooltip that appears on hover. |
+
+### State {#concern-interfaces-state}
+
+These interfaces control the interactive state of a component — whether it's enabled, editable, required, or focused on load.
+
+| Interface | Description |
+|---|---|
+| `HasEnablement` | Enables or disables the component. |
+| `HasReadOnly` | Puts the component into a read-only state where the value is visible but cannot be changed. |
+| `HasRequired` | Marks the component as required, typically for form validation. |
+| `HasAutoFocus` | Moves focus to the component automatically when the page loads. |
+
+### Focus {#concern-interfaces-focus}
+
+These interfaces manage how a component receives and responds to keyboard focus.
+
+| Interface | Description |
+|---|---|
+| `HasFocus` | Manages focus state and whether the component can receive focus. |
+| `HasFocusStatus` | Checks whether the component currently has focus. Requires a round-trip to the client. |
+| `HasHighlightOnFocus` | Controls whether the component's content is highlighted when it receives focus, and how (`KEY`, `MOUSE`, `KEY_MOUSE`, `ALL`, and so on). |
+
+### Input constraints {#concern-interfaces-input-constraints}
+
+These interfaces define what values a component accepts, including the current value, allowed ranges, length limits, formatting masks, and locale-specific behavior.
+
+| Interface | Description |
+|---|---|
+| `HasValue` | Gets and sets the component's current value. |
+| `HasMin` | Sets a minimum allowed value. |
+| `HasMax` | Sets a maximum allowed value. |
+| `HasStep` | Sets the step increment for numeric or range inputs. |
+| `HasPattern` | Applies a regex pattern to constrain accepted input. |
+| `HasMinLength` | Sets the minimum number of characters required in the component's value. |
+| `HasMaxLength` | Sets the maximum number of characters allowed in the component's value. |
+| `HasMask` | Applies a format mask to the input. Used by masked field components. |
+| `HasTypingMode` | Controls whether typed characters are inserted or overwrite existing characters (`INSERT` or `OVERWRITE`). Used by masked fields and `TextArea`. |
+| `HasRestoreValue` | Defines a value the component resets to when the user presses Escape or calls `restoreValue()`. Used by masked fields. |
+| `HasLocale` | Stores a per-component locale for locale-sensitive formatting. Used by masked date and time fields. |
+| `HasPredictedText` | Sets a predicted or auto-complete text value. Used by `TextArea` to support inline suggestions. |
+
+### Validation {#concern-interfaces-validation}
+
+These interfaces add client-side validation behavior — marking components invalid, displaying error messages, and controlling when validation runs.
+
+| Interface | Description |
+|---|---|
+| `HasClientValidation` | Marks a component invalid, sets the error message, and attaches a client-side validator. |
+| `HasClientAutoValidation` | Controls whether the component validates automatically as the user types. |
+| `HasClientAutoValidationOnLoad` | Controls whether the component validates when it first loads. |
+| `HasClientValidationStyle` | Controls how validation messages are displayed: `INLINE` (below the component) or `POPOVER`. |
+
+### DOM access {#concern-interfaces-dom-access}
+
+These interfaces provide low-level access to the component's underlying HTML element and client-side properties.
+
+| Interface | Description |
+|---|---|
+| `HasAttribute` | Reads and writes arbitrary HTML attributes on the component's element. |
+| `HasProperty` | Reads and writes DWC component properties directly on the client element. |
+
+### i18n {#concern-interfaces-i18n}
+
+This interface provides translation support for components that need to display localized text.
+
+| Interface | Description |
+|---|---|
+| `HasTranslation` | Provides the `t()` helper method for resolving translation keys to localized strings using the app's current locale. |
 
 :::warning
 If the underlying component doesn't support the interface capability, you'll get a runtime exception. Provide your own implementation in that case.
@@ -137,8 +221,8 @@ For a complete list of available concern interfaces, see the [webforJ JavaDoc](h
 webforJ manages the component lifecycle automatically. The framework handles component creation, attachment, and destruction without requiring manual intervention.
 
 **Lifecycle hooks** are available when you need them:
-- `onDidCreate()` - Called after component is attached to the DOM
-- `onDidDestroy()` - Called when component is destroyed
+- `onDidCreate(T container)` - Called after the component is attached to the DOM
+- `onDidDestroy()` - Called when the component is destroyed
 
 These hooks are **optional**. Use them when you need to:
 - Clean up resources (stop intervals, close connections)
@@ -146,5 +230,3 @@ These hooks are **optional**. Use them when you need to:
 - Integrate with client-side JavaScript
 
 For most simple cases, you can initialize components directly in the constructor. Use lifecycle hooks like `onDidCreate()` to defer work when necessary.
-
-
