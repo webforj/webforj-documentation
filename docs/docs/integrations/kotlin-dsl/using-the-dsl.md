@@ -183,8 +183,10 @@ With these patterns in hand, here's a complete form that brings them together:
 @Route("contact")
 class ContactView : Composite<Div>() {
 
+  private val self = boundComponent
+
   init {
-    boundComponent.apply {
+    self.apply {
       styles["max-width"] = "400px"
       styles["padding"] = "20px"
 
