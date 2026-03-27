@@ -19,7 +19,6 @@ To create a `Spinner`, you can specify the theme and expanse. The basic syntax i
 <ComponentDemo 
 path='/webforj/spinnerdemo?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/spinner/SpinnerDemoView.java'
-cssURL='/css/spinnerstyles/spinnerdemo.css'
 height = '225px'
 />
 
