@@ -3,6 +3,7 @@ package com.webforj.samples.pages.login;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class LoginCancelButtonPage {
 
@@ -12,13 +13,13 @@ public class LoginCancelButtonPage {
     private final Locator signInButton;
 
     public LoginCancelButtonPage(Page page) {
-        
+
         cancelButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Cancel"));
         signInButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign in"));
     }
 
-    public static String getRoute() {
-        return ROUTE;
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
     }
 
     public Locator getCancelButton() {
