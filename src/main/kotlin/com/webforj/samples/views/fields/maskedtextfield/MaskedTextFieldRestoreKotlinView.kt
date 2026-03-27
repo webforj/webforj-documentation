@@ -14,7 +14,7 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Masked Text Field with Restore Value")
 class MaskedTextFieldRestoreKotlinView: Composite<FlexLayout>() {
-  val self = boundComponent
+  private val self = boundComponent
 
   init {
     self.apply {
