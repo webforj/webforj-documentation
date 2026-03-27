@@ -13,7 +13,7 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Masked Text Field")
 class MaskedTextFieldKotlinView: Composite<FlexLayout>() {
-  val self = boundComponent
+  private val self = boundComponent
 
   init {
     self.apply {

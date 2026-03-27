@@ -11,7 +11,7 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Masked Text Field Spinner")
 class MaskedTextFieldSpinnerKotlinView: Composite<FlexLayout>() {
-  val self = boundComponent
+  private val self = boundComponent
 
   init {
     self.apply {
