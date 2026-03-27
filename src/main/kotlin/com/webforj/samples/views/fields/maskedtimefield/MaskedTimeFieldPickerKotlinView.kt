@@ -14,7 +14,7 @@ import java.time.LocalTime
 @Route
 @FrameTitle("Masked Time Field Picker")
 class MaskedTimeFieldPickerKotlinView: Composite<FlexLayout>() {
-  val self = boundComponent
+  private val self = boundComponent
 
   init {
     self.apply {
