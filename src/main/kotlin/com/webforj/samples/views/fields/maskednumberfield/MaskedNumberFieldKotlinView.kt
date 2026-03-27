@@ -12,7 +12,7 @@ import com.webforj.component.toast.Toast
 import com.webforj.kotlin.dsl.component.button.button
 import com.webforj.kotlin.dsl.component.field.maskedNumberField
 import com.webforj.kotlin.dsl.component.icons.tablerIcon
-import com.webforj.kotlin.extension.prefix
+import com.webforj.kotlin.extension.prefixSlot
 import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
@@ -31,19 +31,19 @@ class MaskedNumberFieldKotlinView: Composite<FlexLayout>() {
       alignment = FlexAlignment.CENTER
       margin = "var(--dwc-space-m)"
       billAmountField = maskedNumberField("Bill Amount") {
-        mask = "\$######.##"
+        mask = "$######.##"
         value = 300.0
         width = 250.px
-        prefix { tablerIcon("file-invoice") }
+        prefixSlot { tablerIcon("file-invoice") }
       }
       tipPercentageField = maskedNumberField("Tip Percentage (%)") {
         mask = "###%"
         value = 15.0
         width = 250.px
-        prefix { tablerIcon("circle-percentage") }
+        prefixSlot { tablerIcon("circle-percentage") }
       }
       button("Calculate Tip", ButtonTheme.PRIMARY) {
-        prefix { tablerIcon("calculator") }
+        prefixSlot { tablerIcon("calculator") }
         onClick { handleCalculation() }
       }
     }
