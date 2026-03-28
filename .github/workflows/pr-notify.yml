@@ -1,0 +1,51 @@
+name: Notify Google Chat on PR Activity
+
+on:
+  pull_request_review:
+    types: [submitted]
+  pull_request_review_comment:
+    types: [created]
+  issue_comment:
+    types: [created]
+  workflow_dispatch: # allows manual triggering for testing
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo (needed to read chat-users.json)
+        uses: actions/checkout@v4
+
+      - name: Build message with mentions
+        id: msg
+        run: |
+          # Load the mapping
+          MAPPING=$(cat .github/chat-users.json)
+
+          # Who is the PR author?
+          PR_AUTHOR="${{ github.event.pull_request.user.login }}"
+          REVIEWER="${{ github.event.sender.login }}"
+
+          # Look up Google Chat IDs
+          AUTHOR_ID=$(echo $MAPPING | jq -r --arg u "$PR_AUTHOR" '.[$u] // empty')
+
+          # Build mention strings (empty string if user not in map)
+          AUTHOR_MENTION=""
+          [ -n "$AUTHOR_ID" ] && AUTHOR_MENTION="<users/$AUTHOR_ID>"
+
+          STATE="${{ github.event.review.state }}"
+          if [ "$STATE" == "changes_requested" ]; then
+            TEXT="🔴 *$REVIEWER* requested changes on your PR $AUTHOR_MENTION: ${{ github.event.pull_request.html_url }}"
+          elif [ "$STATE" == "approved" ]; then
+            TEXT="✅ *$REVIEWER* approved your PR $AUTHOR_MENTION: ${{ github.event.pull_request.html_url }}"
+          else
+            TEXT="💬 *$REVIEWER* commented on your PR $AUTHOR_MENTION: ${{ github.event.issue.html_url }}"
+          fi
+
+          echo "text=$TEXT" >> $GITHUB_OUTPUT
+
+      - name: Send to Google Chat
+        run: |
+          curl -X POST '${{ secrets.GOOGLE_CHAT_WEBHOOK_URL }}' \
+            -H 'Content-Type: application/json' \
+            -d "{\"text\": \"${{ steps.msg.outputs.text }}\"}"
