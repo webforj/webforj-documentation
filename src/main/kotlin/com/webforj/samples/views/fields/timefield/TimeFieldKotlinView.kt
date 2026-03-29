@@ -15,7 +15,7 @@ class TimeFieldKotlinView: Composite<FlexLayout>() {
   init {
     self.apply {
       margin = "var(--dwc-space-m)"
-      timeField("Set Reminder", LocalTime.now())
+      timeField("Set Reminder:", LocalTime.now())
     }
   }
 }
