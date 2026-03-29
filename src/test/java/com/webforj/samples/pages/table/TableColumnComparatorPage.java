@@ -3,6 +3,7 @@ package com.webforj.samples.pages.table;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.webforj.samples.pages.SupportedLanguage;
 
 public class TableColumnComparatorPage {
     private static final String ROUTE = "tablecolumncomparator";
@@ -18,8 +19,8 @@ public class TableColumnComparatorPage {
                 .locator("div[part='cell-label']");
     }
 
-    public static String getRoute() {
-        return ROUTE;
+    public static String getRoute(SupportedLanguage language) {
+        return language.getPath(ROUTE);
     }
 
     public Locator getNumberColumnHeader() {
