@@ -1,27 +1,27 @@
 ---
 sidebar_position: 4
 title: Evaluator Chain
-_i18n_hash: a07a90cf71f4f5ed37489e4062ff5280
+_i18n_hash: 5055a72d450daf8b98bdb995380a2e13
 ---
-La chaîne des évaluateurs est le cœur du système de sécurité de webforJ. C'est une séquence d'évaluateurs ordonnée par priorité qui examine les routes et prend des décisions d'accès en utilisant le motif de conception de la chaîne de responsabilité. Comprendre comment la chaîne fonctionne vous aide à créer des évaluateurs personnalisés et à résoudre les refus d'accès inattendus.
+La chaîne d'évaluateurs est le cœur du système de sécurité de webforJ. C'est une séquence d'évaluateurs ordonnée par priorité qui examine les routes et prend des décisions d'accès en utilisant le modèle de conception de la chaîne de responsabilité. Comprendre comment fonctionne la chaîne vous aide à créer des évaluateurs personnalisés et à résoudre des refus d'accès inattendus.
 
-## Le motif de la chaîne de responsabilité {#the-chain-of-responsibility-pattern}
+## Le modèle de chaîne de responsabilité {#the-chain-of-responsibility-pattern}
 
-La chaîne des évaluateurs utilise le motif de la chaîne de responsabilité, où chaque évaluateur de la séquence peut soit traiter une demande de navigation, soit la transmettre au prochain évaluateur. Cela crée un système où la logique de sécurité est distribuée entre plusieurs évaluateurs spécialisés plutôt que centralisée dans un seul vérificateur monolithique.
+La chaîne d'évaluateurs utilise le modèle de chaîne de responsabilité, où chaque évaluateur de la séquence peut soit traiter une demande de navigation, soit la passer à l'évaluateur suivant. Cela crée un système où la logique de sécurité est répartie sur plusieurs évaluateurs spécialisés plutôt que centralisée dans un seul vérificateur monolithique.
 
-Lorsqu'une route nécessite une évaluation, le responsable de la sécurité crée une chaîne et la commence au premier évaluateur. Cet évaluateur examine la route et prend l'une des trois décisions :
+Lorsqu'une route nécessite une évaluation, le gestionnaire de sécurité crée une chaîne et la démarre au premier évaluateur. Cet évaluateur examine la route et fait l'un des trois choix suivants :
 
 1. **Accorder l'accès :** L'évaluateur approuve la route et retourne immédiatement. Aucun autre évaluateur n'est exécuté.
-2. **Nier l'accès :** L'évaluateur bloque la route et retourne immédiatement. Aucun autre évaluateur n'est exécuté.
-3. **Déléguer :** L'évaluateur ne prend pas de décision et appelle `chain.evaluate()` pour passer le contrôle au prochain évaluateur.
+2. **Refuser l'accès :** L'évaluateur bloque la route et retourne immédiatement. Aucun autre évaluateur n'est exécuté.
+3. **Déléguer :** L'évaluateur ne prend pas de décision et appelle `chain.evaluate()` pour passer le contrôle à l'évaluateur suivant.
 
-Ce motif permet aux évaluateurs de se concentrer sur des cas spécifiques. Chaque évaluateur implémente `supports(Class<?> routeClass)` pour indiquer quelles routes il traite. Par exemple, `AnonymousAccessEvaluator` ne s'exécute que pour les routes marquées avec `@AnonymousAccess`, le responsable ne l'invoque jamais pour d'autres routes.
+Ce modèle permet aux évaluateurs de se concentrer sur des cas spécifiques. Chaque évaluateur implémente `supports(Class<?> routeClass)` pour indiquer quelles routes il traite. Par exemple, `AnonymousAccessEvaluator` ne s'exécute que pour les routes marquées avec `@AnonymousAccess`, le gestionnaire ne l'invoque jamais pour d'autres routes.
 
 ## Comment la chaîne est construite {#how-the-chain-is-built}
 
-Le responsable de la sécurité maintient une liste d'évaluateurs enregistrés, chacun avec une priorité associée. Lorsqu'une route nécessite une évaluation, le responsable trie les évaluateurs par priorité (numéros plus bas en premier) et crée une chaîne.
+Le gestionnaire de sécurité maintient une liste d'évaluateurs enregistrés, chacun avec une priorité associée. Lorsqu'une route nécessite une évaluation, le gestionnaire trie les évaluateurs par priorité (nombres plus bas en premier) et crée une chaîne.
 
-Les évaluateurs sont enregistrés en utilisant la méthode `registerEvaluator()` du responsable :
+Les évaluateurs sont enregistrés en utilisant la méthode `registerEvaluator()` du gestionnaire :
 
 ```java
 // Enregistrer les évaluateurs intégrés
@@ -34,9 +34,9 @@ securityManager.registerEvaluator(new RolesAllowedEvaluator(), 3);
 securityManager.registerEvaluator(new SubscriptionEvaluator(), 10);
 ```
 
-La priorité détermine l'ordre d'évaluation. Les priorités plus basses s'exécutent en premier, leur donnant la première opportunité de prendre des décisions d'accès. Cela est important pour la sécurité car cela permet aux évaluateurs critiques de bloquer l'accès avant que les évaluateurs permissifs ne puissent l'accorder.
+La priorité détermine l'ordre d'évaluation. Les priorités plus basses s'exécutent en premier, leur donnant la première occasion de prendre des décisions d'accès. Cela est important pour la sécurité car cela permet aux évaluateurs critiques de bloquer l'accès avant que les évaluateurs permissifs ne puissent l'accorder.
 
-La chaîne est sans état et créée de manière fraîche pour chaque demande de navigation afin qu'une évaluation d'une navigation n'affecte pas une autre.
+La chaîne est sans état et créée fraîche pour chaque demande de navigation afin qu'une évaluation de navigation n'affecte pas une autre.
 
 ## Flux d'exécution de la chaîne {#chain-execution-flow}
 
@@ -44,68 +44,68 @@ Lorsque la chaîne commence, elle débute au premier évaluateur (priorité la p
 
 ```mermaid
 flowchart TD
-    Start["Le responsable commence la chaîne"] --> Eval["Exécuter les évaluateurs<br/>(dans l'ordre de priorité)"]
+  Start["Le gestionnaire démarre la chaîne"] --> Eval["Exécuter les évaluateurs<br/>(dans l'ordre de priorité)"]
 
-    Eval --> Check{"Décision de l'évaluateur ?"}
-    Check -->|Accorder| Grant["Accorder l'accès<br/>STOP"]
-    Check -->|Nier| Deny["Nier l'accès<br/>STOP"]
-    Check -->|Déléguer| Next["Prochain évaluateur"]
+  Eval --> Check{"Décision de l'évaluateur ?"}
+  Check -->|Accorder| Grant["Accorder l'accès<br/>STOP"]
+  Check -->|Refuser| Deny["Refuser l'accès<br/>STOP"]
+  Check -->|Déléguer| Next["Prochain évaluateur"]
 
-    Next --> Eval
+  Next --> Eval
 
-    Check -->|Chaîne épuisée| Default{"Sécuriser par défaut ?"}
-    Default -->|Oui ET non authentifié| DenyDefault["Nier l'authentification<br/>STOP"]
-    Default -->|Non OU authentifié| GrantDefault["Accorder l'accès<br/>STOP"]
+  Check -->|Chaîne épuisée| Default{"Sécurisé par défaut ?"}
+  Default -->|Oui ET pas authentifié| DenyDefault["Refuser l'authentification<br/>STOP"]
+  Default -->|Non OU authentifié| GrantDefault["Accorder l'accès<br/>STOP"]
 ```
 
-La chaîne s'arrête dès qu'un évaluateur accorde ou nie l'accès. Si tous les évaluateurs délèguent, la chaîne s'épuise et revient à un comportement sécurisé par défaut.
+La chaîne s'arrête dès qu'un évaluateur accorde ou refuse l'accès. Si tous les évaluateurs délèguent, la chaîne s'épuise et retombe sur un comportement sécurisé par défaut.
 
-## Ordonnancement des évaluateurs intégrés {#built-in-evaluator-ordering}
+## Ordre des évaluateurs intégrés {#built-in-evaluator-ordering}
 
 Quatre évaluateurs intégrés traitent les annotations standard :
 
 | Évaluateur | Annotation | Comportement | Comportement de la chaîne | Ordre typique |
-|------------|------------|--------------|---------------------------|---------------|
+|-----------|------------|----------|----------------|---------------|
 | `DenyAllEvaluator` | `@DenyAll` | Bloque toujours l'accès | Arrête la chaîne (terminal) | S'exécute en premier |
-| `AnonymousAccessEvaluator` | `@AnonymousAccess` | Autorise tout le monde (authentifié ou non) | Arrête la chaîne (terminal) | S'exécute tôt |
+| `AnonymousAccessEvaluator` | `@AnonymousAccess` | Permet à tout le monde (authentifié ou non) | Arrête la chaîne (terminal) | S'exécute tôt |
 | `PermitAllEvaluator` | `@PermitAll` | Nécessite une authentification, permet à tous les utilisateurs authentifiés | Arrête la chaîne (terminal) | S'exécute au milieu de la chaîne |
-| `RolesAllowedEvaluator` | `@RolesAllowed` | Nécessite une authentification et un rôle spécifique | **Continuer la chaîne** (composable) | S'exécute plus tard |
+| `RolesAllowedEvaluator` | `@RolesAllowed` | Nécessite une authentification et un rôle spécifique | **Continue la chaîne** (composable) | S'exécute plus tard |
 
 :::note
-Les numéros de priorité exacts sont attribués lors de l'enregistrement de l'évaluateur et diffèrent entre les implémentations. Voir [Spring Security](/docs/security/getting-started) ou [Implémentation personnalisée](/docs/security/architecture/custom-implementation) pour des valeurs spécifiques.
+Les numéros de priorité exacts sont attribués lors de l'enregistrement des évaluateurs et diffèrent entre les implémentations. Consultez [Spring Security](/docs/security/getting-started) ou [Implémentation Personnalisée](/docs/security/architecture/custom-implementation) pour des valeurs spécifiques.
 :::
 
 ## Comment les évaluateurs délèguent {#how-evaluators-delegate}
 
-Avant d'invoquer un évaluateur, le responsable appelle sa méthode `supports(Class<?> routeClass)`. Seuls les évaluateurs retournant `true` sont invoqués. Ce filtrage oblige les évaluateurs à ne s'exécuter que pour les routes qu'ils sont conçus pour traiter.
+Avant d'invoquer un évaluateur, le gestionnaire appelle sa méthode `supports(Class<?> routeClass)`. Seuls les évaluateurs renvoyant `true` sont invoqués. Ce filtrage oblige les évaluateurs à ne s'exécuter que pour les routes qu'ils sont conçus pour traiter.
 
 Lorsqu'un évaluateur est invoqué, il peut soit :
-- **Prendre une décision** : Retourner accorder ou nier pour arrêter la chaîne
-- **Déléguer** : Appeler `chain.evaluate()` pour passer le contrôle au prochain évaluateur dans la séquence de priorité
+- **Prendre une décision :** Retourner accorder ou refuser pour arrêter la chaîne
+- **Déléguer :** Appeler `chain.evaluate()` pour passer le contrôle à l'évaluateur suivant dans la séquence de priorité
 
-Par exemple, `RolesAllowedEvaluator` vérifie si l'utilisateur a le rôle requis. Si oui, il appelle `chain.evaluate()` pour autoriser d'autres vérifications par des évaluateurs de priorité plus élevée. Cette délégation active permet la composition des évaluateurs.
+Par exemple, `RolesAllowedEvaluator` vérifie si l'utilisateur a le rôle requis. Si c'est le cas, il appelle `chain.evaluate()` pour permettre des vérifications supplémentaires par des évaluateurs de priorité supérieure. Cette délégation active permet la composition des évaluateurs.
 
-Les évaluateurs terminaux comme `PermitAllEvaluator` prennent des décisions finales sans appeler la chaîne, empêchant toute évaluation ultérieure.
+Les évaluateurs terminaux comme `PermitAllEvaluator` prennent des décisions finales sans appeler la chaîne, empêchant ainsi une évaluation ultérieure.
 
-## Lorsque la chaîne est épuisée {#when-the-chain-exhausts}
+## Lorsque la chaîne s'épuise {#when-the-chain-exhausts}
 
-Si chaque évaluateur délègue et qu'aucun ne prend de décision, la chaîne s'épuise, il n'y a plus d'évaluateurs à exécuter. À ce stade, le système de sécurité applique un retour en fonction de la configuration `isSecureByDefault()` :
+Si chaque évaluateur délègue et qu'aucun ne prend de décision, la chaîne s'épuise, il n'y a plus d'évaluateurs à exécuter. À ce stade, le système de sécurité applique un retour basé sur la configuration `isSecureByDefault()` :
 
-**Sécuriser par défaut activé** (`isSecureByDefault() == true`):
+**Sécurisé par défaut activé** (`isSecureByDefault() == true`) :
 - Si l'utilisateur est authentifié : Accorder l'accès
-- Si l'utilisateur n'est pas authentifié : Nier avec authentification requise
+- Si l'utilisateur n'est pas authentifié : Refuser avec authentification requise
 
-**Sécuriser par défaut désactivé** (`isSecureByDefault() == false`):
+**Sécurisé par défaut désactivé** (`isSecureByDefault() == false`) :
 - Accorder l'accès indépendamment de l'authentification
 
-Les routes sans annotations de sécurité ont toujours un comportement défini. Avec la sécurisation par défaut activée, les routes non annotées nécessitent une authentification. Avec cela désactivé, les routes non annotées sont publiques.
+Les routes sans annotations de sécurité ont tout de même un comportement défini. Avec la sécurité par défaut activée, les routes non annotées nécessitent une authentification. Avec elle désactivée, les routes non annotées sont publiques.
 
 ## Priorités des évaluateurs personnalisés {#custom-evaluator-priorities}
 
-Lors de la création d'évaluateurs personnalisés, choisissez les priorités avec soin :
+Lors de la création d'évaluateurs personnalisés, choisissez soigneusement les priorités :
 
-- **0-9** : Réservé aux évaluateurs du cœur du framework. Évitez d'utiliser ces priorités à moins de remplacer les évaluateurs intégrés.
-- **10-99** : Recommandé pour les évaluateurs de logique métier personnalisée. Ceux-ci s'exécutent après les évaluateurs de base mais avant les retours génériques.
+- **0-9** : Réservé aux évaluateurs du framework de base. Évitez d'utiliser ces priorités à moins de remplacer des évaluateurs intégrés.
+- **10-99** : Recommandé pour les évaluateurs de logique métier personnalisés. Ceux-ci s'exécutent après les évaluateurs de base mais avant les solutions de repli génériques.
 
 Exemple :
 
@@ -127,28 +127,28 @@ public class SubscriptionEvaluator implements RouteSecurityEvaluator {
     boolean hasSubscription = checkSubscription(securityContext);
 
     if (!hasSubscription) {
-      return RouteAccessDecision.deny("Abonnement actif requis");
+      return RouteAccessDecision.deny("Un abonnement actif est requis");
     }
 
-    // L'utilisateur a un abonnement - continuer la chaîne pour d'autres vérifications
+    // L'utilisateur a un abonnement - continuer la chaîne pour des vérifications supplémentaires
     return chain.evaluate(routeClass, context, securityContext);
   }
 }
 ```
 
-Cet évaluateur s'exécute à la priorité 10, après les évaluateurs de base. Si l'utilisateur a un abonnement actif, il délègue à la chaîne, permettant la composition avec d'autres évaluateurs.
+Cet évaluateur s'exécute avec la priorité 10, après les évaluateurs de base. Si l'utilisateur a un abonnement actif, il délègue à la chaîne, permettant la composition avec d'autres évaluateurs.
 
 ## Composition des évaluateurs {#evaluator-composition}
 
 La plupart des évaluateurs intégrés sont **terminaux**, ils prennent une décision finale et arrêtent la chaîne. Seul `RolesAllowedEvaluator` continue la chaîne après avoir accordé l'accès, permettant la composition avec des évaluateurs personnalisés.
 
 **Évaluateurs terminaux (ne peuvent pas être composés) :**
-- `@DenyAll` : Nier toujours, arrêter la chaîne
-- `@AnonymousAccess` : Toujours accorder, arrêter la chaîne
-- `@PermitAll` : Accorde aux utilisateurs authentifiés, arrêter la chaîne
+- `@DenyAll` : Refuse toujours, arrête la chaîne
+- `@AnonymousAccess` : Accorde toujours, arrête la chaîne
+- `@PermitAll` : Accorde aux utilisateurs authentifiés, arrête la chaîne
 
 **Évaluateurs composables :**
-- `@RolesAllowed` : Si l'utilisateur a le rôle, **continue la chaîne** pour permettre d'autres vérifications
+- `@RolesAllowed` : Si l'utilisateur a le rôle, **continue la chaîne** pour permettre des vérifications supplémentaires
 
 ### Composition qui fonctionne {#composition-that-works}
 
@@ -166,8 +166,8 @@ public class PremiumAdminView extends Composite<Div> {
 Flux :
 1. `RolesAllowedEvaluator` vérifie si l'utilisateur a le rôle `ADMIN`
 2. Si oui, appelle `chain.evaluate()` pour continuer
-3. `SubscriptionEvaluator` vérifie le statut d'abonnement (s'exécute plus tard dans la chaîne)
-4. Si l'abonnement est actif, l'accès est accordé ; sinon, il est refusé
+3. `SubscriptionEvaluator` vérifie l'état de l'abonnement (s'exécute plus tard dans la chaîne)
+4. Si l'abonnement est actif, accorde l'accès ; sinon refuse
 
 ### Composition qui ne fonctionne pas {#composition-that-does-not-work}
 
@@ -183,4 +183,4 @@ public class WrongView extends Composite<Div> {
 }
 ```
 
-`PermitAllEvaluator` s'exécute en premier (enregistré avec une priorité plus basse), accorde l'accès à tout utilisateur authentifié et retourne sans appeler `chain.evaluate()`. L'`RolesAllowedEvaluator` ne s'exécute jamais.
+`PermitAllEvaluator` s'exécute en premier (enregistré avec une priorité plus basse), accorde l'accès à tout utilisateur authentifié, et retourne sans appeler `chain.evaluate()`. L'`RolesAllowedEvaluator` ne s'exécute jamais.

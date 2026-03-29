@@ -12,15 +12,19 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Avatar Shapes")
 public class AvatarShapesView extends Composite<FlexLayout> {
-  FlexLayout self = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
 
   public AvatarShapesView() {
     self.setSpacing("var(--dwc-space-l)")
-            .setMargin("var(--dwc-space-l)")
-            .setAlignment(FlexAlignment.CENTER)
-            .add(
-        new Avatar("John Doe").setExpanse(AvatarExpanse.XLARGE).setShape(AvatarShape.CIRCLE),
-        new Avatar("John Doe").setExpanse(AvatarExpanse.XLARGE).setShape(AvatarShape.SQUARE)
+        .setMargin("var(--dwc-space-l)")
+        .setAlignment(FlexAlignment.CENTER)
+        .add(
+            new Avatar("John Doe")
+                .setExpanse(AvatarExpanse.XLARGE)
+                .setShape(AvatarShape.CIRCLE),
+            new Avatar("John Doe")
+                .setExpanse(AvatarExpanse.XLARGE)
+                .setShape(AvatarShape.SQUARE)
         );
   }
 }

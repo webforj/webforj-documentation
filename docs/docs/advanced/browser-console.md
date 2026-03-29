@@ -120,11 +120,11 @@ It's possible to mix and match methods for a custom logging display.
 ```java
 // A variety of options for custom logging display
 console()
-    .weight().bolder()
-    .size().larger()
-    .color().gray()
-    .style().italic()
-    .transform().uppercase()
-    .background().blue()
-    .warn("Mixing styles");
+  .weight().bolder()
+  .size().larger()
+  .color().gray()
+  .style().italic()
+  .transform().uppercase()
+  .background().blue()
+  .warn("Mixing styles");
 ```

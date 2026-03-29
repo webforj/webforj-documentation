@@ -1,27 +1,24 @@
 ---
 title: Spring DevTools
 sidebar_position: 30
-sidebar_class_name: updated-content
-_i18n_hash: 147474b17005c532723aacd8af9391ea
+_i18n_hash: 8feae38bceaabbc49e058a8d2f56f3ba
 ---
-Spring DevTools biedt automatische herstarts van de applicatie wanneer de code verandert. webforJ DevTools voegt automatische browservernieuwing toe - wanneer Spring je applicatie herstart, ververst de browser automatisch via de LiveReload-server van webforJ.
+Spring DevTools biedt automatische herstarts van de app wanneer codewijzigingen plaatsvinden. webforJ DevTools voegt automatische browserverversing toe - wanneer Spring je app herstart, ververst de browser automatisch via de LiveReload-server van webforJ.
 
-Verschillende bestandstypen activeren verschillende herlaadgedragingen. Wijzigingen in Java-code zorgen voor een volledige Spring-herstart en browservernieuwing. CSS- en afbeeldingswijzigingen worden bijgewerkt zonder een pagina-herlaad, waardoor formuliergegevens en de staat van de applicatie behouden blijven.
+Verschillende bestandstypen veroorzaken verschillende herlaadgewoonten. Wijzigingen in Java-code veroorzaken een volledige Spring-herstart en browserverversing. Wijzigingen in CSS en afbeeldingen worden bijgewerkt zonder een pagina-herlaad, waardoor formuliergegevens en de status van de app behouden blijven.
 
-<!-- vale off -->
-## Understanding webforJ DevTools {#understanding-webforj-devtools}
-<!-- vale on -->
+## Begrijpen van webforJ DevTools {#understanding-webforj-devtools}
 
-webforJ breidt Spring DevTools uit met browsersynchronisatie. Wanneer Spring bestandswijzigingen detecteert en herstart, ververst webforJ DevTools automatisch je browser.
+webforJ breidt Spring DevTools uit met browsersynchronisatie. Wanneer Spring bestandwijzigingen detecteert en opnieuw start, vernieuwt webforJ DevTools automatisch je browser.
 
-### Herlaadgedrag {#reload-behavior}
+### Herlaadgewoonten {#reload-behavior}
 
-Verschillende bestandstypen activeren verschillende herlaadstrategieën:
+Verschillende bestandstypen veroorzaken verschillende herlaadstrategieën:
 
 - **Java-bestanden**: Volledige browserpagina-herlaad na Spring-herstart
 - **JavaScript-bestanden**: Volledige browserpagina-herlaad na Spring-herstart
 - **CSS-bestanden**: Stijlupdates zonder pagina-herlaad  
-- **Afbeeldingen**: Vernieuwen ter plaatse zonder pagina-herlaad
+- **Afbeeldingen**: Ververs in plaats zonder pagina-herlaad
 
 ## Afhankelijkheden {#dependencies}
 
@@ -29,16 +26,16 @@ Voeg zowel Spring DevTools als webforJ DevTools toe aan je project:
 
 ```xml title="pom.xml"
 <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-devtools</artifactId>
-    <optional>true</optional>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-devtools</artifactId>
+  <optional>true</optional>
 </dependency>
 
 <dependency>
-    <groupId>com.webforj</groupId>
-    <artifactId>webforj-spring-devtools</artifactId>
-    <version>${webforj.version}</version>
-    <optional>true</optional>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-spring-devtools</artifactId>
+  <version>${webforj.version}</version>
+  <optional>true</optional>
 </dependency>
 ```
 
@@ -47,16 +44,16 @@ Voeg zowel Spring DevTools als webforJ DevTools toe aan je project:
 Schakel webforJ DevTools in je `application.properties`-bestand in:
 
 ```Ini title="application.properties"
-# Schakel webforJ browser auto-herlaad in
+# Schakel webforJ browser auto-verversing in
 webforj.devtools.livereload.enabled=true
 
-# Schakel onmiddellijke beëindiging in voor snellere herstarts
+# Schakel onmiddellijke afsluiting in voor snellere herstarts
 server.shutdown=immediate
 ```
 
 ### Geavanceerde configuratie {#advanced-configuration}
 
-Configureer WebSocket-verbinding en herlaadgedrag:
+Configureer WebSocket-verbinding en herlaadgewoonten:
 
 ```Ini title="application.properties"
 # WebSocket serverpoort (standaard: 35730)
@@ -65,10 +62,10 @@ webforj.devtools.livereload.websocket-port=35730
 # WebSocket eindpunt pad (standaard: /webforj-devtools-ws)
 webforj.devtools.livereload.websocket-path=/webforj-devtools-ws
 
-# Hartslaginterval in milliseconden (standaard: 30000)
+# Heartbeat-interval in milliseconden (standaard: 30000)
 webforj.devtools.livereload.heartbeat-interval=30000
 
-# Schakel hot reload in voor statische bronnen (standaard: true)
+# Schakel hot reload in voor statische middelen (standaard: true)
 webforj.devtools.livereload.static-resources-enabled=true
 ```
 

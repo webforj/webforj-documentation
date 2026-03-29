@@ -22,7 +22,7 @@
   white-space: nowrap;
 }
 
-.filterButton:hover {
+.filterButton:hover, .filterButton:focus {
   text-decoration: none;
   border: 1px solid var(--dwc-color-primary);
   color: var(--dwc-color-primary);
@@ -35,6 +35,6 @@
   color: #fff;
 }
 
-.filterButton.active:hover {
+.filterButton.active:hover, .filterButton.active:focus {
   opacity: 0.9;
 }
