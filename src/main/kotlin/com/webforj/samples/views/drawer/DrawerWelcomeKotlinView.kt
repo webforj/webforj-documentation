@@ -65,7 +65,7 @@ class DrawerWelcomeKotlinView: Composite<FlexLayout>() {
         drawerSlot {
           div {
             toolbar {
-              classNames + "webforj-logo"
+              classNames + "webforJ-logo"
               width = 100.percent
               img("ws://img/webforj_icon.svg", "logo")
             }
@@ -80,7 +80,7 @@ class DrawerWelcomeKotlinView: Composite<FlexLayout>() {
           }
         }
       }
-      drawer {
+      val drawer = drawer {
         placement = Drawer.Placement.BOTTOM_CENTER
         classNames + "welcome__drawer"
         open()
@@ -99,13 +99,13 @@ class DrawerWelcomeKotlinView: Composite<FlexLayout>() {
             onClick { this@drawer.close() }
           }
         }
-        openWelcome?.onClick { open() }
       }
+      openWelcome?.onClick { drawer.open() }
     }
   }
 
   private fun AppNav.addAppNavItem(text: String, icon: String) {
-    appNavItem(text, path = "/drawercelcome") {
+    appNavItem(text, path = "/drawercwelcome") {
       prefixSlot { tablerIcon(icon) }
     }
   }

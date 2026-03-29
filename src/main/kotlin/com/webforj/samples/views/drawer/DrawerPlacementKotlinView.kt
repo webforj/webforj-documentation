@@ -24,10 +24,9 @@ class DrawerPlacementKotlinView: Composite<FlexLayout>() {
     self.apply {
       margin = "var(--dwc-space-l)"
       val openDrawer = button("Open Placement")
-      drawer("Drawer Placement Options") {
+      val drawer = drawer("Drawer Placement Options") {
         open()
         styles["--dwc-drawer-max-width"] = "fit-content"
-        openDrawer.onClick { open() }
         flexLayout(FlexDirection.COLUMN) {
           spacing = "var(--dwc-space-s)"
           radioButtonGroup("Placement Options") {
@@ -51,6 +50,7 @@ class DrawerPlacementKotlinView: Composite<FlexLayout>() {
           }
         }
       }
+      openDrawer.onClick { drawer.open() }
     }
   }
 }

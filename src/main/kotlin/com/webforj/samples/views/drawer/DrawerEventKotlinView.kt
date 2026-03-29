@@ -25,23 +25,23 @@ class DrawerEventKotlinView: Composite<FlexLayout>() {
 
   init {
     self.apply {
-      margin = "var(--dwc-space-l)";
+      margin = "var(--dwc-space-l)"
       val openDrawerButton = button("Open Task Manager")
-      drawer("Task Manager") {
+      val drawer = drawer("Task Manager") {
         open()
         onOpen { Toast.show("Drawer Opened", 3000) }
         onClose { Toast.show("Drawer Closed", 3000) }
         val tasks = flexLayout(FlexDirection.COLUMN) {
           spacing = "var(--dwc-space-s)"
           styles["overflow-y"] = "auto"
-          maxHeight = 60.vh;
+          maxHeight = 60.vh
           checkBox("Finish project documentation")
           checkBox("Call John about the meeting")
           checkBox("Prepare slides for tomorrow")
         }
         footerSlot {
           flexLayout(FlexDirection.COLUMN) {
-            spacing = "var(--dwc-space-s)";
+            spacing = "var(--dwc-space-s)"
             val newTaskField = textField("New Task") {
               maxLength = 50
             }
@@ -67,8 +67,8 @@ class DrawerEventKotlinView: Composite<FlexLayout>() {
             }
           }
         }
-        openDrawerButton.onClick { open() }
       }
+      openDrawerButton.onClick { drawer.open() }
     }
   }
 

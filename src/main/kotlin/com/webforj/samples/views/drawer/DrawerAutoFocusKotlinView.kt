@@ -22,11 +22,11 @@ class DrawerAutoFocusKotlinView: Composite<FlexLayout>() {
     self.apply {
       margin = "var(--dwc-space-m)"
       val openDrawerButton = button("Open Preferences")
-      drawer {
+      val drawer = drawer("Notification Preferences") {
         isAutoFocus = true
         open()
         flexLayout(FlexDirection.COLUMN) {
-          spacing = "var(--dwc-space-s)";
+          spacing = "var(--dwc-space-s)"
           checkBox("Email Notifications")
           checkBox("SMS Notifications")
           checkBox("Push Notifications")
@@ -36,10 +36,9 @@ class DrawerAutoFocusKotlinView: Composite<FlexLayout>() {
             width = 100.percent
           }
         }
-        openDrawerButton.onClick {
-          open()
-        }
+
       }
+      openDrawerButton.onClick { drawer.open() }
     }
   }
 }

@@ -32,7 +32,7 @@ class DrawerContactKotlinView: Composite<FlexLayout>() {
     self.apply {
       margin = "var(--dwc-space-l)";
       val openDrawerButton = button("Open Contacts")
-      drawer("Contacts") {
+      val drawer = drawer("Contacts") {
         placement = Placement.BOTTOM_CENTER
         open()
         flexLayout(FlexDirection.COLUMN) {
@@ -45,8 +45,8 @@ class DrawerContactKotlinView: Composite<FlexLayout>() {
           createContact("Dave Strum", "US - Hagerstown", "DS", "#b88bfa")
           createContact("Dr. Jane Booker", "US - Hagerstown", "DB", "#4c7c4b")
         }
-        openDrawerButton.onClick { open() }
       }
+      openDrawerButton.onClick { drawer.open() }
     }
   }
 
