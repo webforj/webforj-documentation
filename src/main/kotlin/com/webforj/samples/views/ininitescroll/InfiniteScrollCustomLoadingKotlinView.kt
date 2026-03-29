@@ -56,7 +56,7 @@ class InfiniteScrollCustomLoadingKotlinView: Composite<Div>() {
               canvas.add(Item())
             }
 
-            index++
+            index += 8
             update()
           }
         }
