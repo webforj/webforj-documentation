@@ -33,7 +33,7 @@ class TextAreaWrapKotlinView : Composite<FlexLayout>() {
           TextArea.WrapStyle.WORD_BOUNDARIES to "Word Boundaries",
           TextArea.WrapStyle.CHARACTER_BOUNDARIES to "Character Boundaries"
         )
-        selectIndex(0)
+        selectIndex(1)
       }
       textArea("Text Preview") {
         value =
