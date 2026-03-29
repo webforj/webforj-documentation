@@ -23,7 +23,7 @@ class MaskedDateFieldSpinnerKotlinView: Composite<FlexLayout>() {
       margin = "var(--dwc-space-m)"
       maskedDateFieldSpinner("Available Appointments") {
         spinField = MaskedDateFieldSpinner.SpinField.DAY
-        mask = "%Dz/%Mz%Yl"
+        mask = "%Dz/%Mz/%Yl"
         value = LocalDate.now()
         min = LocalDate.now()
         max = LocalDate.now().plusMonths(6)
