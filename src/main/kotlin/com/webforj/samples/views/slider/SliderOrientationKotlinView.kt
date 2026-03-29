@@ -33,7 +33,7 @@ class SliderOrientationKotlinView : Composite<FlexLayout>() {
         alignment = FlexAlignment.CENTER
         spacing = "var(--dwc-space-m)"
         val maxVolumeButton = iconButton("volume-2", "tabler")
-        val volumeSlider = slider(min = 0, max = 100) {
+        val volumeSlider = slider(50, 0, 100) {
           isFilled = true
           theme = Theme.GRAY
           orientation = Slider.Orientation.VERTICAL
@@ -51,9 +51,9 @@ class SliderOrientationKotlinView : Composite<FlexLayout>() {
           isLabelsVisible = true
           isTooltipVisible = true
           isTooltipVisibleOnSlideOnly = true
-          maxVolumeButton.onClick { value = 100 }
         }
-        val muteButton = iconButton("volume-off", "tabler") {
+        maxVolumeButton.onClick { volumeSlider.value = 100 }
+        iconButton("volume-off", "tabler") {
           theme = Theme.DANGER
           onClick { volumeSlider.value = 0 }
         }

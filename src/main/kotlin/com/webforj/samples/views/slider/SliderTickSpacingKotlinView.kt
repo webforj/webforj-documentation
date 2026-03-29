@@ -17,6 +17,7 @@ import com.webforj.kotlin.extension.set
 import com.webforj.kotlin.extension.styles
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
+import kotlin.math.min
 
 @Route
 @FrameTitle("Slider Major and Minor Tick Spacing Demo")
@@ -72,9 +73,9 @@ class SliderTickSpacingKotlinView : Composite<FlexLayout>() {
 
   private fun updateTickSpacing(ev: ValueChangeEvent<Double>) {
     ev.value?.let {
-      if (ev.source == majorTickInput && !minorTickInput.isInvalid) {
+      if (ev.source == majorTickInput && !majorTickInput.isInvalid) {
         slider.majorTickSpacing = it.toInt()
-      } else if (ev.source == minorTickInput && !majorTickInput.isInvalid) {
+      } else if (ev.source == minorTickInput && !minorTickInput.isInvalid) {
         slider.minorTickSpacing = it.toInt()
       }
     }

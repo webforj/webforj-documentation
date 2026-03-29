@@ -43,7 +43,7 @@ class SliderLabelsKotlinView : Composite<FlexLayout>() {
         width = 500.px
         onValueChange {
           theme = when(it.value) {
-            in 0..<30 -> Theme.PRIMARY
+            in 1..<30 -> Theme.PRIMARY
             in 30..<50 -> Theme.SUCCESS
             in 50..<80 -> Theme.WARNING
             in 80..100 -> Theme.DANGER

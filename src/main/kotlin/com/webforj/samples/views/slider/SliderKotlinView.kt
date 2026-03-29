@@ -1,6 +1,7 @@
 package com.webforj.samples.views.slider
 
 import com.webforj.component.Composite
+import com.webforj.component.Theme
 import com.webforj.component.layout.flexlayout.FlexAlignment
 import com.webforj.component.layout.flexlayout.FlexDirection
 import com.webforj.component.layout.flexlayout.FlexJustifyContent
@@ -12,7 +13,6 @@ import com.webforj.kotlin.extension.percent
 import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
-import java.util.Map
 
 @Route
 @FrameTitle("Volume Control Demo")
@@ -31,8 +31,10 @@ class SliderKotlinView: Composite<FlexLayout>() {
           justifyContent = FlexJustifyContent.CENTER
           alignment = FlexAlignment.CENTER
           spacing = "var(--dwc-space-m)"
-          val muteButton = iconButton("volume-off", "tabler")
-          val volumeSlider = slider(min = 0, max = 100) {
+          val muteButton = iconButton("volume-off", "tabler") {
+            theme = Theme.DANGER
+          }
+          val volumeSlider = slider(50, 0, 100) {
             isTicksVisible = true
             majorTickSpacing = 20
             minorTickSpacing = 10
@@ -48,8 +50,8 @@ class SliderKotlinView: Composite<FlexLayout>() {
             isTooltipVisible = true
             isTooltipVisibleOnSlideOnly = true
             width = 300.px
-            muteButton.onClick { value = 0 }
           }
+          muteButton.onClick { volumeSlider.value = 0 }
           iconButton("volume-2", "tabler") {
             onClick { volumeSlider.value = 100 }
           }
