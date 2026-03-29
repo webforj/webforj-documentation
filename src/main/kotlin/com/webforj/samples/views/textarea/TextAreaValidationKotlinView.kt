@@ -44,6 +44,7 @@ class TextAreaValidationKotlinView : Composite<FlexLayout>() {
         paragraphLengthLimit = maxParagraphLength
         lineCountLimit = maxLines
         height = 200.px
+        onValueChange { updateStatus() }
       }
       flexLayout {
         horizontal()
@@ -97,6 +98,7 @@ class TextAreaValidationKotlinView : Composite<FlexLayout>() {
         isReadOnly = true
       }
     }
+    whenAttached().thenAccept { updateStatus() }
   }
 
   private fun handleNumericChange(
