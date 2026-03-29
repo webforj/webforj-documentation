@@ -8,7 +8,9 @@ import com.webforj.kotlin.dsl.component.layout.flexlayout.flexLayout
 import com.webforj.kotlin.dsl.component.layout.flexlayout.vertical
 import com.webforj.kotlin.dsl.component.optioninput.radioButton
 import com.webforj.kotlin.dsl.component.optioninput.radioButtonGroup
+import com.webforj.kotlin.extension.classNames
 import com.webforj.kotlin.extension.em
+import com.webforj.kotlin.extension.plus
 import com.webforj.kotlin.extension.px
 import com.webforj.router.annotation.FrameTitle
 import com.webforj.router.annotation.Route
@@ -25,13 +27,13 @@ class RadioButtonGroupKotlinView: Composite<FlexLayout>() {
         flexLayout {
           vertical()
           wrap = FlexWrap.WRAP
-          addClassName("layout")
+          classNames + "layout"
           radioButtonGroup {
-            radioButton("Strongly Agree")
-            radioButton("Agree")
-            radioButton("Neutral")
-            radioButton("Disagree")
             radioButton("Strongly Disagree")
+            radioButton("Disagree")
+            radioButton("Neutral")
+            radioButton("Agree")
+            radioButton("Strongly Agree")
           }
         }
       }

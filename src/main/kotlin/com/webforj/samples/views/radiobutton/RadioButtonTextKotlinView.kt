@@ -14,7 +14,7 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Radio Button Text")
 class RadioButtonTextKotlinView: Composite<FlexLayout>() {
-  private val self = boundComponent;
+  private val self = boundComponent
 
   init {
     self.apply {
