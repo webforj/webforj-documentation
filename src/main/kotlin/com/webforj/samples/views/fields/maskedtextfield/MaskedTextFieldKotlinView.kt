@@ -22,16 +22,16 @@ class MaskedTextFieldKotlinView: Composite<FlexLayout>() {
       alignment = FlexAlignment.CENTER
       spacing = "var(--dwc-space-m)"
       margin = "var(--dwc-space-m)"
-      maskedTextField("Record Code", placeholder = "NE-24-0934") {
-        mask = "AA-00-0000"
-        value = "NE240934"
-        helperText = "Mask: AA-00-0000 - for example: NE-24-0934"
-        width = 300.px
-      }
       maskedTextField("Coupon Code", placeholder = "ZZZZ-0000") {
         mask = "ZZZZ-0000"
         value = "SAVE2025"
         helperText = "Mask: ZZZZ-0000 - for example: SAVE-2025"
+        width = 300.px
+      }
+      maskedTextField("Record Code", placeholder = "NE-24-0934") {
+        mask = "AA-00-0000"
+        value = "NE240934"
+        helperText = "Mask: AA-00-0000 - for example: NE-24-0934"
         width = 300.px
       }
     }

@@ -21,14 +21,14 @@ class MaskedTextFieldRestoreKotlinView: Composite<FlexLayout>() {
       alignment = FlexAlignment.CENTER
       justifyContent = FlexJustifyContent.CENTER
       margin = "var(--dwc-space-m) auto"
-      val usernameField = maskedTextField("Postal Code", "85001 PHX", "ex: 85001") {
+      val usernameField = maskedTextField("Postal Code", "85001 PHX", "ex: 85001 PHX") {
         width = 250.px
         restoreValue = "85001 PHX"
         helperText = "Enter ZIP Code in format: 85001 PHX"
         pattern = "[0-9]{5} [A-Z]{3}"
       }
-      button("Restore", ButtonTheme.PRIMARY).onClick {
-        usernameField.restoreValue()
+      button("Restore", ButtonTheme.PRIMARY) {
+        onClick { usernameField.restoreValue() }
       }
     }
   }
