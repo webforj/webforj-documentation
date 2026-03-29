@@ -3,8 +3,8 @@ title: Kotlin DSL
 sidebar_position: 0
 hide_table_of_contents: true
 hide_giscus_comments: true
-sidebar_class_name: has-new-content
-_i18n_hash: 2c5f0dc99b29342a5ae0f1f4774d3a36
+sidebar_class_name: new-content
+_i18n_hash: 36366a03c9784b451033e5161bdc7359
 ---
 <Head>
   <style>{`
@@ -14,7 +14,12 @@ _i18n_hash: 2c5f0dc99b29342a5ae0f1f4774d3a36
   `}</style>
 </Head>
 
-webforJ tarjoaa [Kotlin](https://kotlinlang.org/) *Domain Specific Language*, eli DSL, joka mahdollistaa käyttöliittymien rakentamisen tiiviillä, tyyppiturvallisella syntaksilla. Imperatiivisen Java-koodin sijasta kirjoitat deklaratiivista koodia, joka näyttää kuvaukselta käyttöliittymäsi rakenteesta.
+<DocChip chip='since' label='25.12' />
+<DocChip chip='experimental' />
+
+webforJ tarjoaa [Kotlin](https://kotlinlang.org/) *Domäänikohtaisen kielin*, eli DSL:n, joka mahdollistaa käyttöliittymien rakentamisen tiiviillä ja tyypitetyllä syntaksilla. Imperatiivisen Java-koodin sijaan kirjoitat deklaratiivista koodia, joka lukee kuin kuvaus käyttöliittymän rakenteesta.
+
+<!-- INTRO_END -->
 
 ```java title="Java"
 FlexLayout layout = new FlexLayout();
@@ -33,185 +38,119 @@ layout.add(submit);
 
 ```kotlin title="Kotlin DSL"
 flexLayout {
-    direction = FlexDirection.COLUMN
-    styles["gap"] = "10px"
+  direction = FlexDirection.COLUMN
+  styles["gap"] = "10px"
 
-    textField("Nimi", placeholder = "Nimesi")
-    button("Lähetä", ButtonTheme.PRIMARY) {
-        onClick { handleSubmit() }
-    }
+  textField("Nimi", placeholder = "Nimesi")
+  button("Lähetä", ButtonTheme.PRIMARY) {
+    onClick { handleSubmit() }
+  }
 }
 ```
 
-DSL hyödyntää Kotlinin laajennustoimintoja, vastaanottajalla varustettuja lambda-lausumia ja oletusparametreja luodakseen luonnollisen rakentajasynnin. Komponentit pesiytyvät toisiinsa, konfigurointi tapahtuu lohkoissa, ja kääntäjä havaitsee rakenteelliset virheet ennen suoritusta.
+DSL hyödyntää Kotlinin laajennusfunktioita, vastaanottajalla varustettuja lambdoja ja oletusparametreja luonnollisen rakennussyntaksin luomiseksi. Komponentit upotetaan toisiinsa, konfigurointi tapahtuu lohkoissa, ja kääntäjä tunnistaa rakenteelliset virheet ennen ajonaikaa.
 
 ## Setup {#setup}
 
-Erillistä Kotlin-asennusta ei tarvita. Maven hoitaa käännön Kotlin Maven -liitännäisen kautta, joten mikä tahansa projekti, joka jo rakentaa Mavenilla, voi lisätä Kotlin-tuen pelkästään riippuvuus- ja liitännäiskonfiguraatiolla.
+:::warning experimental feature
+Tämä ominaisuus on edelleen aktiivisessa kehityksessä.
+API saattaa muuttua tulevissa versioissa, mukaan lukien mahdollisia taaksepäin yhteensopimattomia muutoksia.
 
-### Riippuvuudet {#dependencies}
+Olet tervetullut kokeilemaan sitä ja jakamaan palautetta. Palaute auttaa muokkaamaan lopullista suunnittelua.
+:::
 
-Lisää webforJ Kotlin DSL -moduuli ja Kotlinin standardikirjasto `pom.xml`:ään:
+Erillistä Kotlin-asennusta ei tarvita. Maven hoitaa käännön Kotlin Maven -laajennuksen kautta, joten mikä tahansa projekti, joka jo kääntää Mavenilla, voi lisätä Kotlin-tuen riippuvuuden ja laajennuksen konfiguroinnin avulla.
 
-```xml
-<dependency>
-    <groupId>com.webforj.kotlin</groupId>
-    <artifactId>webforj-kotlin</artifactId>
-    <version>${webforj.version}</version>
-</dependency>
+:::tip Quick start
+Jos haluat saada webforJ-projektin, joka käyttää Kotlinia, käynnistettäväksi kaikkine tarvittavine konfiguraatioineen suoraan, katso [tätä osiota webforJ Kotlin -käynnistyksestä](#kotlin-starter-project).
+:::
 
-<dependency>
-    <groupId>org.jetbrains.kotlin</groupId>
-    <artifactId>kotlin-stdlib-jdk8</artifactId>
-    <version>${kotlin.version}</version>
-</dependency>
-```
+### Dependencies {#dependencies}
 
-Jos aiot kirjoittaa testejä Kotlinilla, lisää myös Kotlin testiriippuvuus. Se integroituu JUnitin kanssa:
+Lisää webforJ Kotlin DSL -moduuli ja Kotlinin standardikirjasto `pom.xml`-tiedostoon:
 
 ```xml
 <dependency>
-    <groupId>org.jetbrains.kotlin</groupId>
-    <artifactId>kotlin-test</artifactId>
-    <version>${kotlin.version}</version>
-    <scope>test</scope>
+  <groupId>com.webforj.kotlin</groupId>
+  <artifactId>webforj-kotlin</artifactId>
+  <version>${webforj.version}</version>
+</dependency>
+
+<dependency>
+  <groupId>org.jetbrains.kotlin</groupId>
+  <artifactId>kotlin-stdlib-jdk8</artifactId>
+  <version>${kotlin.version}</version>
 </dependency>
 ```
 
-### Kotlin Maven -liitännäinen {#kotlin-maven-plugin}
+Jos aiot kirjoittaa testejä Kotlinilla, lisää myös Kotlin-testiriippuvuus. Se integroituu JUnitin kanssa:
 
-Lisää Kotlin Maven -liitännäinen sekä Kotlin- että Java-lähdekoodin kääntämiseksi. Alla oleva `sourceDirs`-konfiguraatio mahdollistaa Kotlin- ja Java-tiedostojen olemassaolon samassa projektissa:
+```xml
+<dependency>
+  <groupId>org.jetbrains.kotlin</groupId>
+  <artifactId>kotlin-test</artifactId>
+  <version>${kotlin.version}</version>
+  <scope>test</scope>
+</dependency>
+```
+
+### Kotlin Maven plugin {#kotlin-maven-plugin}
+
+Lisää Kotlin Maven -laajennus, jotta voit kääntää sekä Kotlin- että Java-lähdekoodisi. Alla oleva `sourceDirs`-konfiguraatio sallii Kotlin- ja Java-tiedostojen esiintyä samassa projektissa:
 
 ```xml
 <plugin>
-    <groupId>org.jetbrains.kotlin</groupId>
-    <artifactId>kotlin-maven-plugin</artifactId>
-    <version>${kotlin.version}</version>
-    <executions>
-        <execution>
-            <id>compile</id>
-            <phase>compile</phase>
-            <goals>
-                <goal>compile</goal>
-            </goals>
-            <configuration>
-                <sourceDirs>
-                    <sourceDir>src/main/java</sourceDir>
-                    <sourceDir>target/generated-sources/annotations</sourceDir>
-                    <sourceDir>src/main/kotlin</sourceDir>
-                </sourceDirs>
-            </configuration>
-        </execution>
-        <execution>
-            <id>test-compile</id>
-            <phase>test-compile</phase>
-            <goals>
-                <goal>test-compile</goal>
-            </goals>
-            <configuration>
-                <sourceDirs>
-                    <sourceDir>src/test/java</sourceDir>
-                    <sourceDir>target/generated-test-sources/test-annotations</sourceDir>
-                    <sourceDir>src/test/kotlin</sourceDir>
-                </sourceDirs>
-            </configuration>
-        </execution>
-    </executions>
-    <configuration>
-        <jvmTarget>${maven.compiler.target}</jvmTarget>
-    </configuration>
+  <groupId>org.jetbrains.kotlin</groupId>
+  <artifactId>kotlin-maven-plugin</artifactId>
+  <version>${kotlin.version}</version>
+  <executions>
+    <execution>
+      <id>compile</id>
+      <phase>compile</phase>
+      <goals>
+        <goal>compile</goal>
+      </goals>
+      <configuration>
+        <sourceDirs>
+          <sourceDir>src/main/java</sourceDir>
+          <sourceDir>target/generated-sources/annotations</sourceDir>
+          <sourceDir>src/main/kotlin</sourceDir>
+        </sourceDirs>
+      </configuration>
+    </execution>
+    <execution>
+      <id>test-compile</id>
+      <phase>test-compile</phase>
+      <goals>
+        <goal>test-compile</goal>
+      </goals>
+      <configuration>
+        <sourceDirs>
+          <sourceDir>src/test/java</sourceDir>
+          <sourceDir>target/generated-test-sources/test-annotations</sourceDir>
+          <sourceDir>src/test/kotlin</sourceDir>
+        </sourceDirs>
+      </configuration>
+    </execution>
+  </executions>
+  <configuration>
+    <jvmTarget>${maven.compiler.target}</jvmTarget>
+  </configuration>
 </plugin>
 ```
 
-Näiden lisäysten kanssa `mvn compile` kääntää Kotlin-lähdekoodit yhdessä Javasta. Kotlin-tiedostot voivat olla joko `src/main/kotlin`- tai `src/main/java`-kansiossa, ja liitännäinen käsittelee molemmat.
+Näiden lisäysten myötä `mvn compile` kääntää Kotlin-lähdekoodit yhdessä Javankaltaisten kanssa. Kotlin-tiedostot voivat olla `src/main/kotlin` tai `src/main/java`, ja laajennus hoitaa molemmat.
 
-:::tip[Java-yhteensopivuus]
-Kotlin kääntyy JVM-bittikoodiksi, joten se toimii olemassa olevien Java-koodien rinnalla. Voit käyttää DSL:n avulla rakennettuja Kotlin-yhdistelmiä Java-luokista, pesiyttää standardi Java -komponentteja DSL-lohkoihin käyttäen `add()`, ja sekoittaa Kotlin- ja Java-tiedostoja samassa projektissa.
+:::tip[Java interoperability]
+Kotlin käännetään JVM-bittikoodiksi, joten se toimii yhdessä olemassa olevan Java-koodin kanssa. Voit käyttää DSL:llä rakennettuja Kotlin-komposiitteja Java-luokista, upottaa standardi Java-komponentteja DSL-lohkoihin `add()`-menetelmällä ja sekoittaa Kotlin- ja Java-tiedostoja samassa projektissa.
 :::
 
-## Aiheita {#topics}
+### Kotlin starter project {#kotlin-starter-project}
 
-Seuraavat aiheet käsittelevät DSL:n käyttöä sekä sen laajentamista kaikkiin mukautettuihin komponentteihin tai yhdistelmiin, jotka luot.
+Jos haluat ohittaa manuaalisen asennuksen, [webforJ Kotlin Starter](https://github.com/webforj/webforj-kotlin-starter) -rekisteri tarjoaa valmiiksi toimivan projektin, jossa kaikki riippuvuudet ja laajennuskokoonpanot on jo paikallaan. Klonaa se ja ala rakentaa DSL:ää heti.
+
+## Topics {#topics}
+
+Seuraavat aiheet käsittelevät DSL:n käyttöä sekä sen laajentamista kaikilla mukautetuilla komponenteilla tai komposiiteilla, joita luot.
 
 <DocCardList className="topics-section" />
-
-## Kotlin Java-kehittäjille {#kotlin-for-java-developers}
-
-<details>
-<summary>Uusi Kotlinin parissa? Tässä ovat joitakin keskeisiä kieliominaisuuksia, joihin DSL perustuu.</summary>
-
-### Null-turvallisuus {#null-safety}
-
-Kotlin erottelee nollattavissa ja ei-nollattavissa tyypeissä käännösaikana:
-
-```kotlin
-// Java - mikä tahansa viite voi olla null
-String name = null;
-
-// Kotlin - eksplisiittinen null-kyky
-var name: String? = null        // Nullattavissa, voi olla null
-var safeName: String = "arvo"   // Ei-null, kääntäjä valvoo tätä
-
-// Turvallinen kutsuoperaattori - palauttaa null, jos name on null
-println(name?.length)
-
-// Elvis-operaattori - tarjoaa oletusarvon, kun null
-println(name ?: "oletusarvo")
-```
-
-### Laajennustoiminnot {#extension-functions}
-
-Kotlinissa voit lisätä metodeja olemassa oleviin luokkiin ilman perintää:
-
-```kotlin
-// Java-lähestymistapa - staattinen utiliteettiklussi
-public class StringUtils {
-    public static String addExclamation(String input) {
-        return input + "!";
-    }
-}
-String result = StringUtils.addExclamation("Hello");
-
-// Kotlin-lähestymistapa - laajennustoiminto
-fun String.addExclamation(): String = this + "!"
-val result = "Hello".addExclamation()  // Lukee kuin metodikutsu
-```
-
-DSL käyttää laajennustoimintoja rakenteiden lisäämiseen komponentteihin.
-
-### Lambdat ja jälkimmäinen lambda-syntaksi {#lambdas-and-trailing-lambda-syntax}
-
-Kotlinin lambdat ovat tiiviimpiä kuin Javassa, ja kun lambda on viimeinen parametri, se voi olla ulkopuolella sulkujen:
-
-```kotlin
-// Java
-button.addClickListener(e -> System.out.println("Klikattu"));
-
-// Kotlin - lambda viimeisenä parametrina menee sulkujen ulkopuolelle
-button.onClick { println("Klikattu") }
-
-// Ilman eksplisiittistä parametria
-button.onClick { event -> println("Klikattu: $event") }
-```
-
-Tämä jälkimmäinen lambda-syntaksi mahdollistaa DSL-lohkot.
-
-### Oletusparametrit {#default-parameters}
-
-Kotlin-funktioilla voi olla oletusarvot parametreille, mikä vähentää ylikuormitettujen metodien tarvetta:
-
-```kotlin
-// Java - useita konstruktoreita tarvitaan
-public Button() {}
-public Button(String text) {}
-public Button(String text, ButtonTheme theme) {}
-
-// Kotlin - yksi funktio oletusarvoilla
-fun button(
-    text: String = "",
-    theme: ButtonTheme = ButtonTheme.DEFAULT,
-    block: Button.() -> Unit = {}
-): Button
-```
-
-</details>

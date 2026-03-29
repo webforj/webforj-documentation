@@ -16,15 +16,17 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Login Custom Fields")
 public class LoginCustomFieldsView extends Composite<Div> {
-  TextField customerId = new TextField("Customer ID");
+  private final Div self = getBoundComponent();
+  // Custom field for customer ID
+  private final TextField customerId = new TextField("Customer ID");
 
   public LoginCustomFieldsView() {
-    customerId.setName("customer-id");
-    customerId.setRequired(true);
+    customerId.setName("customer-id")
+        .setRequired(true);
 
     Login login = new Login();
-    getBoundComponent().add(login);
     login.addClassName("login-form");
+
     login.addToBeforeForm(
         new Paragraph("Please enter your customer ID, email address and password to enter the customer portal."));
     login.addToBeforeForm(customerId);
@@ -39,23 +41,24 @@ public class LoginCustomFieldsView extends Composite<Div> {
         </ul>
         """);
     login.setI18n(i18n);
-    login.open();
 
     login.onSubmit(ev -> {
       String id = (String) ev.getData().get("customer-id");
       String username = ev.getUsername();
       String password = ev.getPassword();
 
-      if (username.equals("admin") &&
-          password.equals("admin") &&
-          id.equals("Tesla")) {
+      // Validate credentials: admin/admin with customer ID "Tesla"
+      if (username.equals("admin") && password.equals("admin") && id.equals("Tesla")) {
         login.close();
-        getBoundComponent().add(new Button("Logout", e -> Page.getCurrent().reload()));
+        self.add(new Button("Logout", e -> Page.getCurrent().reload()));
       } else {
-        login.setError(true);
-        login.setEnabled(true);
+        login.setError(true)
+            .setEnabled(true);
         customerId.focus();
       }
     });
+
+    login.open();
+    self.add(login);
   }
 }

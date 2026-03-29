@@ -15,14 +15,14 @@ When your data lives outside your app - in a REST API, database, or external ser
 
 ```java
 DelegatingRepository<User, UserFilter> repository = new DelegatingRepository<>(
-    // 1. Find function - returns filtered/sorted/paginated data
-    criteria -> userService.findUsers(criteria),
-    
-    // 2. Count function - returns total count for the filter
-    criteria -> userService.countUsers(criteria),
-    
-    // 3. Find by key function - returns single entity by ID
-    userId -> userService.findById(userId)
+  // 1. Find function - returns filtered/sorted/paginated data
+  criteria -> userService.findUsers(criteria),
+  
+  // 2. Count function - returns total count for the filter
+  criteria -> userService.countUsers(criteria),
+  
+  // 3. Find by key function - returns single entity by ID
+  userId -> userService.findById(userId)
 );
 ```
 
@@ -45,9 +45,9 @@ When integrating with a REST API, you need to convert the repository criteria in
 
 ```java
 public class UserFilter {
-    private String department;
-    private String status;
-    // getters and setters...
+  private String department;
+  private String status;
+  // getters and setters...
 }
 ```
 
@@ -57,21 +57,21 @@ Create the repository with functions that translate criteria to API calls:
 
 ```java
 DelegatingRepository<User, UserFilter> apiRepository = new DelegatingRepository<>(
-    // Find users
-    criteria -> {
-        Map<String, String> params = buildParams(criteria);
-        List<User> users = restClient.get("/users", params);
-        return users.stream();
-    },
-    
-    // Count users
-    criteria -> {
-        Map<String, String> filterParams = buildFilterParams(criteria.getFilter());
-        return restClient.getCount("/users/count", filterParams);
-    },
-    
-    // Find by ID
-    userId -> restClient.getById("/users/" + userId)
+  // Find users
+  criteria -> {
+    Map<String, String> params = buildParams(criteria);
+    List<User> users = restClient.get("/users", params);
+    return users.stream();
+  },
+  
+  // Count users
+  criteria -> {
+    Map<String, String> filterParams = buildFilterParams(criteria.getFilter());
+    return restClient.getCount("/users/count", filterParams);
+  },
+  
+  // Find by ID
+  userId -> restClient.getById("/users/" + userId)
 );
 ```
 
@@ -83,23 +83,23 @@ Database integration follows a similar pattern but converts criteria to SQL quer
 
 ```java
 DelegatingRepository<Customer, CustomerFilter> dbRepository = new DelegatingRepository<>(
-    // Query with filter, sort, pagination
-    criteria -> {
-        String sql = buildQuery(criteria);
-        return jdbcTemplate.queryForStream(sql, rowMapper);
-    },
-    
-    // Count matching records
-    criteria -> {
-        String countSql = buildCountQuery(criteria.getFilter());
-        return jdbcTemplate.queryForObject(countSql, Integer.class);
-    },
-    
-    // Find by primary key
-    customerId -> {
-        String sql = "SELECT * FROM customers WHERE id = ?";
-        return jdbcTemplate.queryForObject(sql, rowMapper, customerId);
-    }
+  // Query with filter, sort, pagination
+  criteria -> {
+    String sql = buildQuery(criteria);
+    return jdbcTemplate.queryForStream(sql, rowMapper);
+  },
+  
+  // Count matching records
+  criteria -> {
+    String countSql = buildCountQuery(criteria.getFilter());
+    return jdbcTemplate.queryForObject(countSql, Integer.class);
+  },
+  
+  // Find by primary key
+  customerId -> {
+    String sql = "SELECT * FROM customers WHERE id = ?";
+    return jdbcTemplate.queryForObject(sql, rowMapper, customerId);
+  }
 );
 ```
 
@@ -139,25 +139,25 @@ If you need custom methods or complex initialization, extend <JavadocLink type="
 
 ```java
 public class CustomUserRepository extends AbstractQueryableRepository<User, UserFilter> {
-    @Override
-    public Stream<User> findBy(RepositoryCriteria<User, UserFilter> criteria) {
-        // Implementation
-    }
-    
-    @Override
-    public int size(RepositoryCriteria<User, UserFilter> criteria) {
-        // Implementation
-    }
-    
-    @Override
-    public Optional<User> find(Object key) {
-        // Implementation
-    }
-    
-    // Add custom methods
-    public List<User> findActiveManagers() {
-        // Custom query logic
-    }
+  @Override
+  public Stream<User> findBy(RepositoryCriteria<User, UserFilter> criteria) {
+    // Implementation
+  }
+  
+  @Override
+  public int size(RepositoryCriteria<User, UserFilter> criteria) {
+    // Implementation
+  }
+  
+  @Override
+  public Optional<User> find(Object key) {
+    // Implementation
+  }
+  
+  // Add custom methods
+  public List<User> findActiveManagers() {
+    // Custom query logic
+  }
 }
 ```
 

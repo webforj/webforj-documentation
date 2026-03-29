@@ -1,182 +1,459 @@
 ---
-title: Working With Data
+title: Working with Data
 sidebar_position: 3
-_i18n_hash: 42dff7cecf07f976ccbe007e04e78a22
+description: Step 2 - Use Spring to work with data.
+_i18n_hash: eb93bafc77e98de6453cfb0fa0ea60a3
 ---
-Dieser Schritt konzentriert sich darauf, Datenmanagement- und Anzeige-Funktionen zur Demo-App hinzuzufügen. Dazu werden Dummy-Daten über verschiedene `Customer`-Objekte erstellt, und die App wird aktualisiert, um diese Daten zu verarbeiten und in einer [`Table`](../../components/table/overview), die zur vorherigen App hinzugefügt wurde, anzuzeigen.
+In diesem Schritt lernen Sie, wie Sie ein Datenmodell mit Spring erstellen und diese Daten visuell anzeigen. 
+Am Ende dieses Schrittes wird die im vorherigen Schritt erstellte App, [Creating a Basic App](./creating-a-basic-app), über eine Tabelle verfügen, die Daten zu Kunden anzeigt. Mit dem folgenden Verlauf erfahren Sie mehr über:
 
-Es wird erläutert, wie eine `Customer`-Modellklasse erstellt wird und wie sie mit einer `Service`-Klasse integriert wird, um auf die erforderlichen Daten über die Implementierung eines Repositories zuzugreifen und diese zu verwalten. Anschließend wird detailliert beschrieben, wie die abgerufenen Daten verwendet werden, um eine `Table`-Komponente in der App zu implementieren, die Kundeninformationen in einem interaktiven und strukturierten Format anzeigt.
+- Spring-Anmerkungen
+- Datenverwaltung
+- Die webforJ `Table`-Komponente
 
-Am Ende dieses Schrittes wird die in dem [vorherigen Schritt](./creating-a-basic-app) erstellte App eine Tabelle mit den erstellten Daten anzeigen, die dann in den folgenden Schritten erweitert werden kann. Um die App auszuführen:
+Die Fertigstellung dieses Schrittes erstellt eine Version von [2-working-with-data](https://github.com/webforj/webforj-tutorial/tree/main/2-working-with-data).
 
-- Gehe zum Verzeichnis `2-working-with-data`
-- Führe `mvn jetty:run` aus
+## Die App ausführen {#running-the-app}
+
+Während Sie Ihre App entwickeln, können Sie [2-working-with-data](https://github.com/webforj/webforj-tutorial/tree/main/2-working-with-data) als Vergleich verwenden. Um die App in Aktion zu sehen:
+
+1. Navigieren Sie zum obersten Verzeichnis, das die Datei `pom.xml` enthält, dies ist `2-working-with-data`, wenn Sie der Version auf GitHub folgen.
+
+2. Verwenden Sie den folgenden Maven-Befehl, um die Spring Boot-App lokal zu starten:
+    ```bash
+    mvn
+    ```
+
+Das Ausführen der App öffnet automatisch einen neuen Browser unter `http://localhost:8080`.
+
+## Abhängigkeiten und Konfigurationen {#dependencies-and-configurations}
+
+Dieses Tutorial verwendet [H2-Datenbank](https://www.h2database.com/html/main.html) und in einem zukünftigen Schritt die Jakarta Persistence API (JPA) über [Spring Data JPA](https://docs.spring.io/spring-data/jpa/reference/index.html). Dies erfordert, dass Sie Abhängigkeiten zu `pom.xml` hinzufügen und `application.properties` aktualisieren. Dies wird das letzte Mal sein, dass Sie diese beiden Dateien für den Rest des Tutorials ändern müssen.
+
+Fügen Sie in Ihrem POM die folgenden Abhängigkeiten hinzu:
+
+```xml
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+<dependency>
+  <groupId>com.h2database</groupId>
+  <artifactId>h2</artifactId>
+</dependency>
+```
+
+Fügen Sie in `application.properties` im Verzeichnis `src/main/resources` Folgendes hinzu:
+
+```
+# H2-Datenbankkonfiguration
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+
+# JPA-Konfiguration
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=update
+```
+
+:::info Datenzugriff
+Dieses Tutorial verwendet eine In-Memory-Datenbank und die Standardanmeldeinformationen für den Datenzugriff. Gehen Sie zur Spring [Datenzugriffs](https://docs.spring.io/spring-boot/how-to/data-access.html) Dokumentation, um spezifische Spring Boot-Konfigurationsoptionen zu lernen.
+:::
+
+## Spring Beans {#spring-beans}
+
+Ein wichtiger Teil der Verwendung des Spring-Frameworks besteht darin, zu verstehen, was Beans sind. Beans sind Objekte mit definierten Spring-Anmerkungen, die es Spring erleichtern, sie zu konfigurieren, indem es den beabsichtigten Zweck der Klasse kennt. Gehen Sie zur Spring [Bean-Übersicht](https://docs.spring.io/spring-framework/reference/core/beans/definition.html) Dokumentation, um mehr zu erfahren.
 
 ## Erstellen eines Datenmodells {#creating-a-data-model}
 
-Um eine `Table` zu erstellen, die Daten in der Haupt-App anzeigt, muss eine Java-Bean-Klasse erstellt werden, die mit der `Table` verwendet werden kann, um Daten anzuzeigen.
+Bevor Sie die Daten visuell anzeigen oder erstellen, benötigt dieses Tutorial eine Möglichkeit, die Daten jedes Kunden darzustellen, einschließlich ihres Namens, Landes und Unternehmens. Dies wird mit Spring durch eine Klasse erreicht, die eine `@Entity`-Annotation hat.
 
-In diesem Programm übernimmt die `Customer`-Klasse in `src/main/java/com/webforj/demos/data/Customer.java` diese Aufgabe. Diese Klasse dient als das zentrale Datenmodell für die App und kapselt kundenbezogene Attribute wie `firstName`, `lastName`, `company` und `country`. Dieses Modell wird auch eine eindeutige ID enthalten.
+Erstellen Sie eine Klasse in `src/main/java/com/webforj/tutorial/entity` mit dem Namen `Customer.java`. Sie sollte die `@Entity`-Annotation enthalten und Getter- und Setter-Methoden für die Kundenwerte besitzen, mit Ausnahme des `id`. Anstatt eine Erstellungsmetode für `id`-Werte zu verwenden, verwenden Sie die Annotations `@Id` und `@GeneratedValue`, um sicherzustellen, dass jeder Kunde eine eindeutige `id` erhält.
 
-```java title="Customer.java"
-public class Customer implements HasEntityKey {
-  private String firstName = "";
-  private String lastName = "";
-  private String company = "";
-  private Country country = Country.UNKNOWN;
-  private UUID uuid = UUID.randomUUID();
+<ExpandableCode title="Customer.java" language="java" startLine={1} endLine={15}>
+{`@Entity
+  @Table(name = "customers")
+  public class Customer {
 
-  public enum Country {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @SerializedName("Germany")
-    GERMANY,
+    private String firstName = "";
+    private String lastName = "";
+    private String company = "";
+    private Country country = Country.UNKNOWN;
 
-    // Weitere Länder
+    public enum Country {
+      UNKNOWN,
+      GERMANY,
+      ENGLAND,
+      ITALY,
+      USA
+    }
+
+    public Customer(String firstName, String lastName, String company, Country country) {
+      setFirstName(firstName);
+      setLastName(lastName);
+      setCompany(company);
+      setCountry(country);
+    }
+
+    public Customer(String firstName, String lastName, String company) {
+      this(firstName, lastName, company, Country.UNKNOWN);
+    }
+
+    public Customer(String firstName, String lastName) {
+      this(firstName, lastName, "");
+    }
+
+    public Customer(String firstName) {
+      this(firstName, "");
+    }
+
+    public Customer() {
+    }
+
+    public void setFirstName(String newName) {
+      firstName = newName;
+    }
+
+    public String getFirstName() {
+      return firstName;
+    }
+
+    public void setLastName(String newName) {
+      lastName = newName;
+    }
+
+    public String getLastName() {
+      return lastName;
+    }
+
+    public void setCompany(String newCompany) {
+      company = newCompany;
+    }
+
+    public String getCompany() {
+      return company;
+    }
+
+    public void setCountry(Country newCountry) {
+      country = newCountry;
+    }
+
+    public Country getCountry() {
+      return country;
+    }
+
+    public Long getId() {
+      return id;
+    }
+
   }
 
-    // Getter und Setter
+`}
+</ExpandableCode>
+
+Mit dem `Customer`-Datenmodell können Sie nun beginnen, Geschäftslogik in Ihre App zu integrieren.
+
+## Datenverwaltung {#managing-data}
+
+Nach der Erstellung eines Datenmodells erstellen Sie ein Repository und einen Dienst, um die Kundendaten zu verwalten. Das Erstellen dieser Typen von Klassen in Ihrer App ermöglicht es Ihnen, Operationen wie das Hinzufügen, Löschen und Aktualisieren von Kundenaufzeichnungen einzuschließen.
+
+### Erstellen eines Repositories {#creating-a-repository}
+
+Das Erstellen eines Repositories macht die Daten der Entitäten zugänglich, damit Ihre App mehrere Kunden enthalten kann. Das Ziel dieses Tutorials ist es, die Daten editierbar, sortierbar und validierbar zu machen. Sie bestimmen die Möglichkeiten eines Repositories durch das verwendete Spring Data Repository.
+
+In einem zukünftigen Schritt, [Validating and Binding Data](/docs/introduction/tutorial/validating-and-binding-data), werden Sie Zugriff auf Spring Data JPA benötigen, um die Eigenschaften von Kunden zu validieren. Daher ist das passende Repository, das Sie verwenden sollten, `JpaRepository`.
+
+Erstellen Sie in `src/main/java/com/webforj/tutorial/repository` ein Repository-Interface, das die Spring `@Repository`-Annotation hat und `JpaRepository` erweitert. Sie müssen angeben, welche Art von Entitäten sich in diesem Repository befinden und welche Art von Objekt die `id` ist. Zum guten Maß erweitern Sie auch `JpaSpecificationExecutor`. Diese Ergänzung ermöglicht es Ihnen, bei Bedarf später erweiterte Filteroptionen zu implementieren.
+
+```java title="CustomerRepository.java"
+@Repository
+public interface CustomerRepository
+        extends JpaRepository<Customer, Long>,
+        JpaSpecificationExecutor<Customer> {
+}
+```
+
+Das `CustomerRepository`, das Sie gerade erstellt haben, wird keine deklarierten Methoden haben. Die Methoden zur Verwaltung der Daten (die Geschäftslogik der App) werden in einer Dienstklasse beheimatet sein.
+
+:::info Links zur Spring-Dokumentation
+
+Hier sind vier Links zur Spring-Dokumentation, die Ihnen helfen werden, Spring-Repositories besser zu verstehen:
+
+- [Arbeiten mit Spring Data Repositories](https://docs.spring.io/spring-data/commons/reference/repositories.html)
+- [Überblick über Spring Data JPA](https://docs.spring.io/spring-data/jpa/reference/index.html)
+- [Spring Data JPA-Spezifikationen](https://docs.spring.io/spring-data/jpa/reference/jpa/specifications.html)
+- [`JpaRepository`](https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html)
+:::
+
+### Erstellen eines Dienstes {#creating-a-service}
+
+Erstellen Sie in `src/main/java/com/webforj/tutorial/service` eine Klasse `CustomerService`. Dieser Dienst wird Methoden enthalten, um Kunden zu erstellen, zu aktualisieren, zu löschen und abzufragen, indem Sie `CustomerRepository` verwenden.
+
+Darüber hinaus benötigt dieser Dienst einen Mechanismus, um Spring Data-Repositories mit den UI-Komponenten von webforJ zu verbinden. Die Verwendung der `SpringDataRepository`-Klasse von webforJ ermöglicht es Ihnen, diese Brücke zu schaffen. Es vereinfacht die Datenbindung und CRUD-Operationen, wodurch Ihre webforJ-Tabellen und -Formulare problemlos mit Ihrer von Spring verwalteten Datenebene funktionieren. Weitere Informationen zur Spring-Integration von webforJ finden Sie im Artikel [Spring Data JPA](/docs/integrations/spring/spring-data-jpa).
+
+Für diese Dienstklasse verwenden Sie zwei Spring-Anmerkungen:
+
+- **`@Service`** - Dies kennzeichnet eine Klasse als Dienstkomponente in Spring, wodurch sie automatisch erkannt und als Bean für Geschäftslogik oder wiederverwendbare Operationen verwaltet wird.
+
+- **`@Transactional`** - Diese Annotation weist Spring an, die Methode oder Klasse innerhalb einer Datenbanktransaktion auszuführen, sodass alle internen Operationen zusammen bestätigt oder zurückgerollt werden. Weitere Details finden Sie in der Spring-Dokumentation, [Verwendung von @Transactional](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html#page-title).
+
+```java title="CustomerService.java"
+@Service
+@Transactional
+public class CustomerService {
+  private final CustomerRepository repository;
+
+  public CustomerService(CustomerRepository repository) {
+    this.repository = repository;
+  }
+
+  public Customer createCustomer(Customer customer) {
+    return repository.save(customer);
+  }
+
+  public Customer updateCustomer(Customer customer) {
+    if (!repository.existsById(customer.getId())) {
+      throw new IllegalArgumentException("Kunde nicht gefunden mit ID: " + customer.getId());
+    }
+    return repository.save(customer);
+  }
+
+  public void deleteCustomer(Long id) {
+    if (!repository.existsById(id)) {
+      throw new IllegalArgumentException("Kunde nicht gefunden mit ID: " + id);
+    }
+    repository.deleteById(id);
+  }
+
+  public long getTotalCustomersCount() {
+    return repository.count();
+  }
+
+  public SpringDataRepository<Customer, Long> getRepositoryAdapter() {
+    return new SpringDataRepository<>(repository);
+  }
+
+  public Customer getCustomerByKey(Long id) {
+    return repository.findById(id)
+        .orElseThrow(() -> new IllegalArgumentException("Kunde nicht gefunden mit ID: " + id));
+  }
+
+  public boolean doesCustomerExist(Long id) {
+    return repository.existsById(id);
+  }
+
+}
+```
+
+## Laden von Anfangsdaten {#loading-initial-data}
+
+Für dieses Tutorial stammt das anfängliche Kundendatenset aus einer JSON-Datei. Um einen direkten Browserzugriff zu verhindern, sollte die Dateiressource außerhalb von `src/main/resources/static` erstellt werden. Zu Ihrer Bequemlichkeit können Sie die JSON-Datei im Verzeichnis `src/main/resources/data` mit den folgenden Daten erstellen:
+
+<ExpandableCode title="customers.json" language="json" startLine={1} endLine={13}>
+{`[
+    {
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "company": "TechCorp",
+      "country": "GERMANY"
+    },
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "company": "Innovatech",
+      "country": "ITALY"
+    },
+    {
+      "firstName": "Emma",
+      "lastName": "Brown",
+      "company": "SoftSolutions",
+      "country": "ENGLAND"
+    },
+    {
+      "firstName": "Liam",
+      "lastName": "Jones",
+      "company": "FinWise",
+      "country": "UNKNOWN"
+    },
+    {
+      "firstName": "Sophia",
+      "lastName": "Taylor",
+      "company": "DataWorks",
+      "country": "GERMANY"
+    },
+    {
+      "firstName": "Noah",
+      "lastName": "Wilson",
+      "company": "EcoBuild",
+      "country": "ITALY"
+    },
+    {
+      "firstName": "Olivia",
+      "lastName": "Moore",
+      "company": "NextGen",
+      "country": "ENGLAND"
+    },
+    {
+      "firstName": "James",
+      "lastName": "Anderson",
+      "company": "BlueTech",
+      "country": "UNKNOWN"
+    },
+    {
+      "firstName": "Isabella",
+      "lastName": "Thomas",
+      "company": "FutureLogic",
+      "country": "GERMANY"
+    },
+    {
+      "firstName": "Lucas",
+      "lastName": "White",
+      "company": "GreenEnergy",
+      "country": "ITALY"
+    }
+  ]
+`}
+</ExpandableCode>
+
+Anschließend benötigt die App eine Möglichkeit, diese Daten beim Start abzurufen. Erstellen Sie in `src/main/java/com/webforj/tutorial/config` eine Klasse `DataInitializer`. Wenn die App ausgeführt wird und keine Kunden erkannt werden, lädt sie die Kunden aus der JSON-Datei und speichert sie in der H2-Datenbank:
+
+```java title="DataInitializer.java"
+@Component
+public class DataInitializer implements CommandLineRunner {
+  private final CustomerService customerService;
+
+  public DataInitializer(CustomerService customerService) {
+    this.customerService = customerService;
+  }
 
   @Override
-  public Object getEntityKey() {
-    return uuid;
+  public void run(String... args) {
+    if (customerService.getTotalCustomersCount() == 0) {
+      loadCustomersFromJson();
+    }
+  }
+
+  private void loadCustomersFromJson() {
+    ObjectMapper mapper = new ObjectMapper();
+    try (InputStream is = getClass().getResourceAsStream("/data/customers.json")) {
+      List<Customer> customers = mapper.readValue(is, new TypeReference<List<Customer>>() {
+      });
+      for (Customer customer : customers) {
+        customerService.createCustomer(customer);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }
 ```
 
-:::info Verwendung von `HasEntityKey` für eindeutige Identifikatoren
+## Daten visuell anzeigen {#displaying-data-visually}
 
-Die Implementierung des `HasEntityKey`-Interfaces ist entscheidend für die Verwaltung eindeutiger Identifikatoren in Modellen, die mit einer `Table` verwendet werden. Es stellt sicher, dass jede Instanz des Modells über einen eindeutigen Schlüssel verfügt, wodurch die `Table` in der Lage ist, Zeilen effektiv zu identifizieren und zu verwalten.
+Der letzte Teil dieses Schrittes besteht darin, die [`Table`](/docs/components/table/overview)-Komponente zu verwenden und sie mit den Spring-Daten zu verbinden.
 
-Für dieses Demo gibt die Methode `getEntityKey()` für jeden Kunden eine UUID zurück, die eine eindeutige Identifizierung gewährleistet. Während hier UUIDs der Einfachheit halber verwendet werden, ist in realen Anwendungen oft ein Primärschlüssel einer Datenbank die bessere Wahl für die Generierung eindeutiger Schlüssel.
-
-Wenn `HasEntityKey` nicht implementiert ist, wird die `Table` standardmäßig den Java-Hashcode als Schlüssel verwenden. Da Hashcodes nicht garantiert eindeutig sind, kann dies zu Konflikten bei der Verwaltung von Zeilen in der `Table` führen.
-:::
-
-Mit dem `Customer`-Datenmodell an Ort und Stelle besteht der nächste Schritt darin, diese Modelle innerhalb der App zu verwalten und zu organisieren.
-
-## Erstellen einer `Service`-Klasse {#creating-a-service-class}
-
-Die `Service`-Klasse fungiert als zentraler Datenmanager, der nicht nur `Customer`-Daten lädt, sondern auch eine effiziente Schnittstelle für den Zugriff auf und die Interaktion mit diesen bietet.
-
-Die Klasse `Service.java` wird in `src/main/java/com/webforj/demos/data` erstellt. Anstatt Daten manuell zwischen Komponenten oder Klassen zu übergeben, fungiert der `Service` als gemeinsame Ressource, die es interessierten Parteien ermöglicht, Daten einfach abzurufen und damit zu interagieren.
-
-In dieser Demo liest die `Service`-Klasse Kundendaten aus einer JSON-Datei, die sich unter `src/main/resources/data/customers.json` befindet. Die Daten werden auf `Customer`-Objekte abgebildet und in einer `ArrayList` gespeichert, die die Grundlage für das `Repository` der Tabelle bildet.
-
-In webforJ bietet die `Repository`-Klasse eine strukturierte Möglichkeit, Sammlungen von Entitäten zu verwalten und abzurufen. Sie fungiert als Schnittstelle zwischen deiner App und ihren Daten und bietet Methoden zum Abfragen, Zählen und Aktualisieren von Daten, während sie eine saubere und konsistente Struktur aufrechterhält. Sie wird von der `Table`-Klasse verwendet, um die darin gespeicherten Daten anzuzeigen.
-
-Obwohl das `Repository` keine Methoden zum Aktualisieren oder Löschen von Entitäten enthält, dient es als strukturierter Wrapper um eine Sammlung von Objekten. Dies macht es ideal für den organisierten, effizienten Datenzugriff.
+Eine Instanz einer webforJ `Table` benötigt einen Datentyp, um zu funktionieren, das ist die zuvor in diesem Schritt erstellte Entitätsklasse:
 
 ```java
-public class Service {
-  private List<Customer> data = new ArrayList<>();
-  private CollectionRepository<Customer> repository;
-
-  private Service() {
-    data = buildDemoList();
-    repository = new CollectionRepository<>(data);
-  }
-
-  // Weitere Implementierung
-}
+Table<Customer> table = new Table<>();
 ```
 
-Um das `Repository` mit Daten zu befüllen, fungiert die `Service`-Klasse als zentraler Manager, der das Laden und Organisieren von Ressourcen in der App verwaltet. Kundendaten werden aus einer JSON-Datei gelesen und den `Customer`-Objekten im `Repository` zugeordnet. 
-
-Das `Assets`-Hilfsprogramm in webforJ erleichtert das dynamische Laden dieser Daten mithilfe von Kontext-URLs. Um Ressourcen und Daten in webforJ zu laden, verwendet die `Service`-Klasse Kontext-URLs mit dem `Assets`-Hilfsprogramm. Beispielsweise können Kundendaten aus der JSON-Datei wie folgt geladen werden:
+Sobald Sie eine `Table` haben, erhält jede Kundenproperty ihre eigene Spalte. Für jede Spalte, die Sie hinzufügen, verwenden Sie den Eigenschaftsnamen, die Getter-Methode in der `Customer`-Entität und die `setLabel()`-Methode, um die Informationen in der von Ihnen gewünschten Reihenfolge anzuzeigen:
 
 ```java
-String content = Assets.contentOf(Assets.resolveContextUrl("context://data/customers.json"));
+table.addColumn("firstName", Customer::getFirstName).setLabel("Vorname");
+table.addColumn("lastName", Customer::getLastName).setLabel("Nachname");
+table.addColumn("company", Customer::getCompany).setLabel("Unternehmen");
+table.addColumn("country", Customer::getCountry).setLabel("Land");
 ```
 
-:::tip Verwendung der `ObjectTable`
-Die `Service`-Klasse verwendet die `ObjectTable`, um Instanzen dynamisch zu verwalten, anstatt sich auf statische Felder zu verlassen. Dieser Ansatz behebt eine wesentliche Einschränkung bei der Verwendung von Servlets: Statische Felder sind an den Lebenszyklus des Servers gebunden und können in Umgebungen mit mehreren Anfragen oder gleichzeitigen Sitzungen zu Problemen führen. Die `ObjectTable` ist auf die Benutzersitzung beschränkt, und ihre Verwendung garantiert ein Singleton-ähnliches Verhalten ohne diese Einschränkungen, was eine konsistente und skalierbare Datenverwaltung ermöglicht.
-:::
+Nachdem Sie die Spalten hinzugefügt haben, müssen Sie angeben, welches Repository die `Table` verwenden soll, um ihre Daten zu befüllen. Diese App erhält das Repository aus der Methode `getRepositoryAdapter()` im erstellten `CustomerService`:
 
-```java title="Service.java"
-public class Service {
-
-  private List<Customer> data = new ArrayList<>();
-  private CollectionRepository<Customer> repository;
-
-  // Privater Konstruktor zur Durchsetzung kontrollierter Instanziierung
-  private Service() {
-    // Implementierung
-  }
-
-  // Gibt die aktuelle Instanz von Service zurück oder erstellt eine, wenn sie nicht existiert
-  public static Service getCurrent() {
-    // Implementierung
-  }
-
-  // Lädt Kundendaten aus der JSON-Datei und mappt sie auf Customer-Objekte
-  private List<Customer> buildDemoList() {
-    // Implementierung
-  }
-
-  // Getter...
-}
+```java
+table.setRepository(customerService.getRepositoryAdapter());
 ```
 
-## Erstellen und Verwenden einer `Table` {#creating-and-using-a-table}
+### Tabellenanpassung {#table-sizing}
 
-Jetzt, da die benötigten Daten über die `Customer`-Klasse richtig erstellt wurden und über die `Service`-Klasse als ein `Repository` zurückgegeben werden können, besteht die letzte Aufgabe in diesem Schritt darin, die `Table`-Komponente in die App zu integrieren, um Kundendaten anzuzeigen.
+Für die Tabelle können Sie `setSize()` verwenden, um ihre Größe in Pixeln oder anderen [CSS-Einheiten](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units) festzulegen. Wenn Sie eine maximale Breite im Verhältnis zur Breite des Bildschirms festlegen, helfen Sie Ihrer App, sich besser an kleinere Bildschirme anzupassen.
 
-:::tip Mehr über die `Table`
-Für einen detaillierteren Überblick über die verschiedenen Funktionen und Verhaltensweisen der `Table`, siehe [diesen Artikel](../../components/table/overview).
-:::
+Für die Spalten können Sie die Breiten einzeln festlegen oder eine der Methoden `Table` wie `setColumnsToAutoFit()` verwenden, damit webforJ die Breiten für Sie verwaltet:
 
-Die `Table` bietet eine dynamische und flexible Möglichkeit, strukturierte Daten in deiner App anzuzeigen. Sie wurde entwickelt, um sich mit der `Repository`-Klasse zu integrieren, um Funktionen wie Datenabfrage, Paginierung und effiziente Aktualisierungen zu ermöglichen. Eine `Table` ist hochgradig konfigurierbar und ermöglicht es dir, Spalten zu definieren, ihr Erscheinungsbild zu steuern und sie mit Daten-Repositories mit minimalem Aufwand zu verbinden.
+```java
+table.setSize("1000px", "294px");
+table.setMaxWidth("90vw");
+table.setColumnsToAutoFit();
+```
 
-### Implementierung der `Table` in der App {#implementing-the-table-in-the-app}
+### Benutzerinteraktionen {#user-interactions}
 
-Da die Daten für die `Table` vollständig über die `Service`-Klasse verwaltet werden, besteht die Hauptaufgabe in `DemoApplication.java` darin, die `Table` zu konfigurieren und sie mit dem vom `Service` bereitgestellten `Repository` zu verknüpfen.
+Die `Table`-Komponente hat auch Methoden, um zu steuern, wie Benutzer mit den Spalten interagieren:
 
-Um die `Table` zu konfigurieren:
+```java
+table.setColumnsToResizable(false);
+table.getColumns().forEach(column -> column.setSortable(true));
+```
 
-- Setze ihre Breite und Höhe für Layoutzwecke mithilfe der Methoden `setHeight()` und `setWidth()`.
-- Definiere die Spalten, indem du ihre Namen und die Methoden angibst, um die Daten für jede zu holen.
-- Weise das `Repository` zu, um Daten dynamisch bereitzustellen.
+Die herausgestellten Teile der `Application`-Klasse fügen die `Table`-Komponente hinzu, definieren ihre Spalten und verwenden `CustomerService`, um das Repository abzurufen:
 
-Nachdem dies erledigt ist, sieht der Code ungefähr so aus:
+```java title="Application.java" {7-12,24-25,30-40,46-47}
+@SpringBootApplication
+@StyleSheet("ws://css/card.css")
+@AppTheme("system")
+@AppProfile(name = "Customer Application", shortName = "CustomerApp")
+public class Application extends App {
+  
+  //Fügen Sie eine Konstruktorinjektion für CustomerService hinzu
+  private final CustomerService customerService;
 
-```java title="DemoApplication.java"
-public class DemoApplication extends App {
-  // Weitere Komponenten aus Schritt eins
+  public Application(CustomerService customerService) {
+    this.customerService = customerService;
+  }
 
-  // Die Table-Komponente zum Anzeigen von Kundendaten
-  Table<Customer> table = new Table<>();
+  public static void main(String[] args) {
+    SpringApplication.run(Application.class, args);
+  }
 
   @Override
   public void run() throws WebforjException {
-    // Vorherige Implementierung aus Schritt eins
-    buildTable();
-    mainFrame.add(demo, btn, table);
+    Frame mainFrame = new Frame();
+    Paragraph tutorial = new Paragraph("Tutorial-App!");
+    Button btn = new Button("Info");
+
+    //Fügen Sie die Table-Komponente hinzu
+    Table<Customer> table = new Table<>();
+
+    mainFrame.setWidth("fit-content");
+    mainFrame.addClassName("card");
+
+    //Gestalten Sie die Table-Komponente, legen Sie die Spalten fest und setzen Sie das Repository
+    table.setSize("1000px", "294px");
+    table.setMaxWidth("90vw");
+    table.addColumn("firstName", Customer::getFirstName).setLabel("Vorname");
+    table.addColumn("lastName", Customer::getLastName).setLabel("Nachname");
+    table.addColumn("company", Customer::getCompany).setLabel("Unternehmen");
+    table.addColumn("country", Customer::getCountry).setLabel("Land");
+    table.setColumnsToAutoFit();
+    table.setColumnsToResizable(false);
+    table.getColumns().forEach(column -> column.setSortable(true));
+    table.setRepository(customerService.getRepositoryAdapter());
+
+    btn.setTheme(ButtonTheme.PRIMARY)
+        .setMaxWidth(200)
+        .addClickListener(e -> OptionDialog.showMessageDialog("Das ist ein Tutorial!", "Info"));
+
+    //Fügen Sie die Tabelle zum Frame hinzu
+    mainFrame.add(tutorial, btn, table);
   }
 
-  private void buildTable() {
-    // Setze die Höhe der Tabelle auf 300 Pixel
-    table.setHeight("300px");
-    // Setze die Breite der Tabelle auf 1000 Pixel
-    table.setWidth(1000);
-
-    // Füge die verschiedenen Spaltennamen hinzu und weise die entsprechenden Getter zu
-    table.addColumn("Vorname", Customer::getFirstName);
-    table.addColumn("Nachname", Customer::getLastName);
-    table.addColumn("Unternehmen", Customer::getCompany);
-    table.addColumn("Land", Customer::getCountry);
-
-    // Binde die Table an ein Repository, das Kundendaten enthält
-    // Das Repository wird über die Service-Klasse abgerufen
-    table.setRepository(Service.getCurrent().getCustomers());
-  }
 }
 ```
 
-Mit den abgeschlossenen Änderungen, die in die App implementiert wurden, werden folgende Schritte ausgeführt, wenn die App ausgeführt wird:
+## Nächster Schritt {#next-step}
 
-1. Die `Service`-Klasse ruft `Customer`-Daten aus der JSON-Datei ab und speichert sie in einem `Repository`.
-2. Die `Table` integriert das `Repository` für Daten und füllt ihre Zeilen dynamisch.
-
-Mit der nun die `Customer`-Daten anzeigenden `Table` wird der nächste Schritt darin bestehen, einen neuen Bildschirm zu erstellen, um Kundendetails zu bearbeiten und das Routing in die App zu integrieren.
-
-Dies wird es ermöglichen, die Logik der App effektiver zu organisieren, indem sie aus der Hauptklasse `App` heraus und in konstituierende Bildschirme verlagert wird, die über Routen zugänglich sind.
+Mit diesen Änderungen lädt die App Kundendaten in die Datenbank und zeigt sie anschließend in einer `Table`-Komponente an. Der nächste Schritt, [Routing and Composites](/docs/introduction/tutorial/routing-and-composites), führt das Routing und mehrere Ansichten zum Hinzufügen neuer Kunden ein.

@@ -10,15 +10,17 @@ import com.webforj.samples.components.SplitterBox;
 @Route
 @FrameTitle("Splitter Min/Max")
 public class SplitterMinMaxView extends Composite<Div> {
+  private final Div self = getBoundComponent();
 
   public SplitterMinMaxView() {
     SplitterBox master = new SplitterBox("Master", SplitterBox.Theme.INFO);
     SplitterBox detail = new SplitterBox("Detail", SplitterBox.Theme.SUCCESS);
+
     Splitter splitter = new Splitter(master, detail);
 
-    splitter.setMasterMinSize("200px");
-    splitter.setMasterMaxSize("75%");
+    splitter.setMasterMinSize("200px")
+        .setMasterMaxSize("75%");
 
-    getBoundComponent().add(splitter);
+    self.add(splitter);
   }
 }

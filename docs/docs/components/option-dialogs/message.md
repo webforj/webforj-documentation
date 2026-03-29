@@ -23,7 +23,7 @@ For more control over the dialog's appearance and behavior, create a `MessageDia
 
 ```java showLineNumbers
 MessageDialog dialog = new MessageDialog(
-    "Hello World", "Hello World", MessageDialog.MessageType.INFO);
+  "Hello World", "Hello World", MessageDialog.MessageType.INFO);
 dialog.setBlurred(true);
 dialog.setAlignment(MessageDialog.Alignment.TOP);
 dialog.show();
@@ -65,7 +65,7 @@ By default, the message dialog processes and renders HTML content. You can turn 
 
 ```java showLineNumbers
 MessageDialog dialog = new MessageDialog(
-    "<b>Hello World</b>", "Hello World", MessageDialog.MessageType.INFO);
+  "<b>Hello World</b>", "Hello World", MessageDialog.MessageType.INFO);
 dialog.setRawText(true);
 dialog.show();
 ```

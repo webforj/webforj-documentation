@@ -16,35 +16,38 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Spinner Speeds")
 public class SpinnerSpeedDemoView extends Composite<FlexLayout> {
-  
-  Spinner spinner;
-  Button slowButton;
-  Button mediumButton;
-  Button fastButton;
-  
-  Button pauseResumeButton;
+  private final FlexLayout self = getBoundComponent();
+
+  // UI Components
+  private final Spinner spinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.MEDIUM);
+  private final Button slowButton;
+  private final Button mediumButton;
+  private final Button fastButton;
+  private final Button pauseResumeButton;
 
   public SpinnerSpeedDemoView() {
-    getBoundComponent().setDirection(FlexDirection.COLUMN).setAlignment(FlexAlignment.CENTER)
-    .setJustifyContent(FlexJustifyContent.CENTER).setSpacing("var(--dwc-space-m)")
-    .setMargin("var(--dwc-space-l)");
-    
-    spinner = new Spinner(Theme.PRIMARY, SpinnerExpanse.MEDIUM);
+    self.setDirection(FlexDirection.COLUMN)
+        .setAlignment(FlexAlignment.CENTER)
+        .setJustifyContent(FlexJustifyContent.CENTER)
+        .setSpacing("var(--dwc-space-m)")
+        .setMargin("var(--dwc-space-l)");
+
     slowButton = new Button("Slow", e -> setSpinnerSpeed(spinner, 1000));
     mediumButton = new Button("Medium", e -> setSpinnerSpeed(spinner, 500));
     fastButton = new Button("Fast", e -> setSpinnerSpeed(spinner, 200));
-    pauseResumeButton = new Button("Pause", e ->  spinner.setPaused(true))
-        .setTheme(ButtonTheme.PRIMARY);
-    
-    FlexLayout buttons = new FlexLayout(slowButton, mediumButton, fastButton, pauseResumeButton);
-    buttons.setMargin("var(--dwc-space-s)");
+    pauseResumeButton = new Button("Pause", ButtonTheme.PRIMARY, e -> spinner.setPaused(true));
 
-    getBoundComponent().add(spinner, buttons);
+    FlexLayout buttons = new FlexLayout(slowButton, mediumButton, fastButton, pauseResumeButton)
+            .setMargin("var(--dwc-space-s)");
+
+    self.add(spinner, buttons);
   }
 
+  /**
+   * Sets the spinner speed and resumes animation.
+   */
   private void setSpinnerSpeed(Spinner spinner, int speed) {
     spinner.setSpeed(speed);
     spinner.setPaused(false);
   }
-
 }

@@ -1,50 +1,50 @@
 ---
 sidebar_position: 5
 title: Triggers
-_i18n_hash: b158a924f67b7141be94d56b9be8bba3
+_i18n_hash: 97f59b66c18e6a2d02174c1ba99f88f1
 ---
-Importiert Tabs von '@theme/Tabs';
-import TabItem von '@theme/TabItem';
+Importe Tabs de '@theme/Tabs';  
+Importe TabItem de '@theme/TabItem';
 
-Standardmäßig validieren Bindungen automatisch Komponenten, wenn Benutzer ihre Daten ändern, wie z. B. beim Eingeben von neuem Text, Ankreuzen eines Kontrollkästchens oder Auswählen einer neuen Option in einer Optionsschaltfläche. Wenn Sie die automatischen Validierungen deaktivieren und sie nur dann melden möchten, wenn Sie in das Datenmodell schreiben, können Sie die Bindung so konfigurieren, dass sie deaktiviert wird. Dies gibt Ihnen die Kontrolle darüber, wann und wie Validierungen stattfinden, sodass Sie Validierungen gemäß den spezifischen Anforderungen der App oder Benutzerinteraktionen verwalten können.
+Por defecto, las vinculaciones revalidan automáticamente los componentes cuando los usuarios modifican sus datos, como ingresar nuevo texto, marcar una casilla de verificación o seleccionar una nueva opción en un botón de radio. Si prefieres desactivar las validaciones automáticas y solo reportarlas al escribir en el modelo de datos, puedes configurar la vinculación para desactivarlas. Esto te da control sobre cuándo y cómo ocurren las validaciones, permitiéndote gestionar las validaciones según las necesidades específicas de la aplicación o las interacciones del usuario.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
 context.bind(emailField, "email")
-    .useValidator(
-        Validator.from(new EmailValidator(), "Benutzerdefinierte Nachricht für ungültige E-Mail-Adresse"))
-    .autoValidate(false)
-    .add();
+  .useValidator(
+    Validator.from(new EmailValidator(), "Mensaje personalizado para dirección de correo electrónico no válida"))
+  .autoValidate(false)
+  .add();
 ```
 
-Es ist auch möglich, die automatischen Validierungen für den gesamten Kontext auszuschalten.
+También es posible desactivar las auto-validaciones para todo el contexto.
 
 ```java
 BindingContext<User> context = new BindingContext<>(User.class);
 context.setAutoValidate(false);
 ```
 
-:::tip Änderungsmodus für Werte
-Einige Komponenten, wie die Feldkomponenten, implementieren das `ValueChangeModeAware`-Interface, das es Ihnen ermöglicht, zu steuern, wann das System ein `ValueChangeEvent` meldet. Sie können beispielsweise die Feldkomponenten so einstellen, dass sie Wertänderungen nur beim Verlassen des Feldes melden. Diese Konfiguration reduziert die Häufigkeit der Validierungen, optimiert die Leistung und verbessert die Benutzererfahrung, indem sie die Validierungen auf Momente konzentriert, in denen der Benutzer eine Eingabesitzung abgeschlossen hat, anstatt während des aktiven Tippens.
+:::tip Modo de Cambio de Valor  
+Algunos componentes, como los componentes de campo, implementan la interfaz `ValueChangeModeAware`, que te permite controlar cuándo el sistema reporta un `ValueChangeEvent`. Por ejemplo, puedes configurar los componentes de campo para que reporten cambios de valor solo cuando el campo pierde el foco. Esta configuración reduce la frecuencia de las validaciones, optimizando el rendimiento y mejorando la experiencia del usuario al concentrar las validaciones en momentos en que el usuario completa una sesión de entrada, en lugar de durante la escritura activa.
 
 ```java
-emailField.setValueChangeMode(ValueChangeMode.ON_BLUR);
+ emailField.setValueChangeMode(ValueChangeMode.ON_BLUR);
 ```
 :::
 
-## Neuvalidierung {#revalidation}
+## Revalidación {#revalidation}
 
-Während Validierungen typischerweise automatisch beim Schreiben von Daten ausgelöst werden, können Sie sie auch manuell aufrufen, um den Status der Daten zu überprüfen, ohne zu versuchen, sie in das Modell zu schreiben. Dieser manuelle Ansatz ist besonders nützlich in Szenarien, in denen Sie Funktionen aktivieren oder deaktivieren möchten, basierend auf der Gültigkeit der Formulardaten, ohne eine Aktualisierung vorzunehmen.
+Si bien las validaciones generalmente se desencadenan automáticamente durante la escritura de datos, también puedes invocarlas manualmente para verificar el estado de los datos sin intentar escribirlo en el modelo. Este enfoque manual es particularmente útil en escenarios donde deseas habilitar o desactivar características basadas en la validez de los datos del formulario sin realizar una actualización.
 
-Betrachten Sie ein klassisches Beispiel für einen Reisedatum-Wähler, bei dem ein Benutzer zwei Daten auswählen muss: das Startdatum und das Enddatum einer Reise. Es ist ungültig, ein Enddatum zu wählen, das vor dem Startdatum liegt, oder ein Startdatum, das nach dem Enddatum liegt. Sie können diese Abhängigkeiten lösen, indem Sie Validierungen manuell auslösen:
+Considera un ejemplo clásico de un Selector de Fechas de Viaje, donde un usuario debe seleccionar dos fechas: la fecha de inicio y la fecha de finalización de un viaje. No es válido elegir una fecha de finalización que ocurra antes de la fecha de inicio, o una fecha de inicio que ocurra después de la fecha de finalización. Puedes resolver estas dependencias desencadenando validaciones manualmente:
 
-<Tabs>
+<Tabs>  
 <TabItem value="TripBooking" label="TripBooking.java">
 
 ```java showLineNumbers
 public class TripBooking extends App {
-  DateTimeField startDateField = new DateTimeField("Startdatum");
-  DateTimeField endDateField = new DateTimeField("Enddatum");
+  DateTimeField startDateField = new DateTimeField("Fecha de Inicio");
+  DateTimeField endDateField = new DateTimeField("Fecha de Finalización");
   FlexLayout layout = FlexLayout.create(startDateField, endDateField).vertical().build().setStyle("margin", "20px auto")
       .setMaxWidth("400px");
 
@@ -55,15 +55,15 @@ public class TripBooking extends App {
   public void run() throws WebforjException {
     BindingContext<Trip> context = new BindingContext<>(Trip.class);
     context.bind(startDateField, "startDate")
-        .useValidator(Objects::nonNull, "Startdatum ist erforderlich")
+        .useValidator(Objects::nonNull, "La fecha de inicio es necesaria")
         .useValidator(value -> endDate != null && value.isBefore(endDate),
-            "Startdatum muss vor dem Enddatum liegen")
+            "La fecha de inicio debe ser anterior a la fecha de finalización")
         .add();
 
     context.bind(endDateField, "endDate")
-        .useValidator(Objects::nonNull, "Enddatum ist erforderlich")
+        .useValidator(Objects::nonNull, "La fecha de finalización es necesaria")
         .useValidator(value -> startDate != null && value.isAfter(startDate),
-            "Enddatum muss nach dem Startdatum liegen")
+            "La fecha de finalización debe ser posterior a la fecha de inicio")
         .add();
 
     startDateField.setValueChangeMode(ValueChangeMode.ON_BLUR);
@@ -84,7 +84,7 @@ public class TripBooking extends App {
 }
 ```
 
-</TabItem>
+</TabItem>  
 <TabItem value="Trip" label="Trip.java">
 
 ```java showLineNumbers
@@ -110,5 +110,5 @@ public class Trip {
 }
 ```
 
-</TabItem>
+</TabItem>  
 </Tabs>

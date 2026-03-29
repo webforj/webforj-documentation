@@ -6,25 +6,19 @@ import com.webforj.component.optiondialog.InputDialog;
 import com.webforj.component.terminal.Terminal;
 
 public class PromptCommand implements TerminalCommand {
-  /**
-   * {@inheritDoc}
-   */
+  private static final String NAME = "prompt";
+  private static final String DESCRIPTION = "Prompt the user with custom text";
+
   @Override
   public String getName() {
-    return "prompt";
+    return NAME;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public String getDescription() {
-    return "Prompt the user with custom text";
+    return DESCRIPTION;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public void execute(Terminal term, String[] args) {
     if (args.length < 2) {

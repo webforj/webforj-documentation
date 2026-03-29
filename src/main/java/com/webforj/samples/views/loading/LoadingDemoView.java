@@ -18,53 +18,51 @@ import com.webforj.router.annotation.Route;
 /**
  * Demo to show Loading basics.
  */
-
 @Route
 @FrameTitle("Loading Basics")
 @StyleSheet("ws://css/loadingstyles/loadingdemo.css")
 public class LoadingDemoView extends Composite<FlexLayout> {
-
-  Div card1;
-  Div card2;
-  Icon guideIcon;
-  Icon videoIcon;
-  Button buyButton1;
-  Button buyButton2;
-  Loading loading;
+  private final FlexLayout self = getBoundComponent();
+  // UI Components
+  private final Div card1;
+  private final Div card2;
+  private final Icon guideIcon;
+  private final Icon videoIcon;
+  private final Button buyButton1;
+  private final Button buyButton2;
+  private final Loading loading;
 
   public LoadingDemoView() {
-    getBoundComponent().setDirection(FlexDirection.ROW)
-        .setMargin("var(--dwc-space-l)");
+    self.setDirection(FlexDirection.ROW)
+            .setMargin("var(--dwc-space-l)");
 
     card1 = new Div()
-        .addClassName("card");
+            .addClassName("card");
 
     guideIcon = FeatherIcon.BOOK.create()
-        .addClassName("icon");
+            .addClassName("icon");
 
     buyButton1 = new Button("Buy")
-        .setTheme(ButtonTheme.PRIMARY);
+            .setTheme(ButtonTheme.PRIMARY);
 
     card2 = new Div()
-        .addClassName("card");
+            .addClassName("card");
 
     videoIcon = FeatherIcon.YOUTUBE.create()
-        .addClassName("icon");
+            .addClassName("icon");
 
     buyButton2 = new Button("Buy")
-        .setTheme(ButtonTheme.PRIMARY);
+            .setTheme(ButtonTheme.PRIMARY);
 
-    loading = new Loading("Loading... Please wait.");
+    loading = new Loading("Loading... Please wait.")
+            .addClassName("loading-overlay");
     loading.getSpinner().setTheme(Theme.PRIMARY);
-    loading.addClassName("loading-overlay");
 
     card1.add(new Paragraph("User Guide"), guideIcon, buyButton1);
     card2.add(new Paragraph("Video Lessons"), videoIcon, buyButton2, loading);
 
     loading.open();
-
-    getBoundComponent().add(card1, card2);
+    self.add(card1, card2);
   }
 }
-
 

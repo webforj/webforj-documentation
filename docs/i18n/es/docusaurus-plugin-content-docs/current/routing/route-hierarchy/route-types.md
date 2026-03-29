@@ -1,9 +1,9 @@
 ---
 sidebar_position: 1
 title: Route Types
-_i18n_hash: ff067ccd8461640c772c1f8fa0dcc856
+_i18n_hash: 75cb67715544b94ca99fc81c736ebcc7
 ---
-Las rutas se clasifican en dos tipos principales, **Rutas de Vista** y **Rutas de Diseño**. La elección del tipo de ruta determina cómo se mapean los componentes a las URLs y cómo interactúan con otras partes de tu aplicación.
+Las rutas se clasifican en dos tipos principales, **Rutas de Vista** y **Rutas de Diseño**. La elección del tipo de ruta determina cómo se mapean los componentes a las URL y cómo interactúan con otras partes de tu aplicación.
 
 ## Rutas de vista {#view-routes}
 
@@ -12,9 +12,10 @@ Las rutas de vista se mapean directamente a un segmento de URL y representan pá
 ```java
 @Route(value = "home")
 public class HomeView extends Composite<Div> {
+  private final Div self = getBoundComponent();
+
   public HomeView() {
-    Div content = getBoundComponent();
-    content.add(new H1("Página de inicio"));
+    self.add(new H1("Página de Inicio"));
   }
 }
 ```
@@ -26,7 +27,7 @@ En este ejemplo, navegar a `/home` renderiza el componente `HomeView`.
 
 ## Rutas de diseño {#layout-routes}
 
-Las rutas de diseño envuelven vistas secundarias sin contribuir a la URL. Los diseños proporcionan elementos de interfaz de usuario compartidos, como encabezados o barras laterales que son consistentes en varias vistas. Las rutas secundarias se renderizan dentro del área de contenido del diseño.
+Las rutas de diseño envuelven vistas secundarias sin contribuir a la URL. Los diseños proporcionan elementos de UI compartidos, como encabezados o barras laterales, que son consistentes en múltiples vistas. Las rutas secundarias se renderizan dentro del área de contenido del diseño.
 
 ```java
 @Route(type = Route.Type.LAYOUT)
@@ -38,16 +39,16 @@ public class MainLayout extends Composite<AppLayout> {
 }
 ```
 
-En este caso, `MainLayout` es una ruta de diseño que envuelve vistas secundarias. Define elementos de UI comunes como un encabezado y un cajón. Las rutas secundarias asociadas con este diseño se inyectarán en el área de contenido del componente `AppLayout`.
+En este caso, `MainLayout` es una ruta de diseño que envuelve vistas secundarias. Define elementos de UI comunes, como un encabezado y un cajón. Las rutas secundarias asociadas con este diseño se inyectarán en el área de contenido del componente `AppLayout`.
 
-## Detección automática de tipos de rutas {#auto-detection-of-route-types}
+## Detección automática de tipos de ruta {#auto-detection-of-route-types}
 
-Por defecto, el tipo de ruta se detecta automáticamente, ya sea que la ruta sea una **vista** o un **diseño** basado en el nombre de la clase:
+Por defecto, el tipo de ruta se detecta automáticamente, ya sea que la ruta sea **vista** o **diseño**, según el nombre de la clase:
 
 - Las clases que terminan en `Layout` se tratan como **rutas de diseño**.
 - Las clases que terminan en `View` se tratan como **rutas de vista**.
 
-Alternativamente, los desarrolladores pueden especificar manualmente el tipo de ruta estableciendo `Route.Type` en la anotación `@Route`.
+Alternativamente, los desarrolladores pueden especificar manualmente el tipo de ruta configurando `Route.Type` en la anotación `@Route`.
 
 ```java
 // Detectado automáticamente como Layout
@@ -64,9 +65,10 @@ public class MainLayout extends Composite<AppLayout> {
 // Detectado automáticamente como View
 @Route(outlet = MainLayout.class)
 public class DashboardView extends Composite<Div> {
+  private final Div self = getBoundComponent();
+
   public DashboardView() {
-    Div content = getBoundComponent();
-    content.add(new H1("Contenido del Dashboard"));
+    self.add(new H1("Contenido del Tablero"));
   }
 }
 ```

@@ -1,44 +1,43 @@
 ---
 title: Spring DevTools
 sidebar_position: 30
-sidebar_class_name: updated-content
-_i18n_hash: 147474b17005c532723aacd8af9391ea
+_i18n_hash: 8feae38bceaabbc49e058a8d2f56f3ba
 ---
-Spring DevTools 提供代码更改时自动重启应用程序的功能。webforJ DevTools 添加了自动浏览器刷新 - 当 Spring 重启您的应用程序时，浏览器通过 webforJ 的 LiveReload 服务器自动刷新。
+Spring DevTools 提供了在代码更改时自动重启应用程序的功能。webforJ DevTools 添加了自动浏览器刷新 - 当 Spring 重启您的应用时，浏览器会通过 webforJ 的 LiveReload 服务器自动刷新。
 
-不同的文件类型会触发不同的重载行为。Java 代码更改会导致全量 Spring 重启和浏览器刷新。CSS 和图像更改在不重新加载页面的情况下更新，保留表单数据和应用状态。
+不同类型的文件会触发不同的重载行为。Java 代码更改会导致 Spring 完全重启和浏览器刷新。CSS 和图片更改则无需页面重载，保留表单数据和应用状态。
 
 <!-- vale off -->
 ## 理解 webforJ DevTools {#understanding-webforj-devtools}
 <!-- vale on -->
 
-webforJ 扩展了 Spring DevTools，提供浏览器同步功能。当 Spring 检测到文件更改并重启时，webforJ DevTools 会自动刷新您的浏览器。
+webforJ 扩展了 Spring DevTools，实现了浏览器同步。当 Spring 检测到文件更改并重启时，webforJ DevTools 会自动刷新您的浏览器。
 
 ### 重载行为 {#reload-behavior}
 
-不同的文件类型触发不同的重载策略：
+不同类型的文件触发不同的重载策略：
 
-- **Java 文件**：Spring 重启后全量浏览器网页重载
-- **JavaScript 文件**：Spring 重启后全量浏览器网页重载
-- **CSS 文件**：样式更新无需重新加载页面  
-- **图像**：就地刷新，无需重新加载页面
+- **Java 文件**：在 Spring 重启后完全刷新浏览器页面
+- **JavaScript 文件**：在 Spring 重启后完全刷新浏览器页面
+- **CSS 文件**：样式更新而无需页面重载  
+- **图片**：在不重载页面的情况下刷新
 
-## 依赖项 {#dependencies}
+## 依赖关系 {#dependencies}
 
 将 Spring DevTools 和 webforJ DevTools 添加到您的项目中：
 
 ```xml title="pom.xml"
 <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-devtools</artifactId>
-    <optional>true</optional>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-devtools</artifactId>
+  <optional>true</optional>
 </dependency>
 
 <dependency>
-    <groupId>com.webforj</groupId>
-    <artifactId>webforj-spring-devtools</artifactId>
-    <version>${webforj.version}</version>
-    <optional>true</optional>
+  <groupId>com.webforj</groupId>
+  <artifactId>webforj-spring-devtools</artifactId>
+  <version>${webforj.version}</version>
+  <optional>true</optional>
 </dependency>
 ```
 
@@ -50,7 +49,7 @@ webforJ 扩展了 Spring DevTools，提供浏览器同步功能。当 Spring 检
 # 启用 webforJ 浏览器自动重载
 webforj.devtools.livereload.enabled=true
 
-# 启用即时关闭以加快重启速度
+# 启用立即关闭以加快重启速度
 server.shutdown=immediate
 ```
 
@@ -72,12 +71,12 @@ webforj.devtools.livereload.heartbeat-interval=30000
 webforj.devtools.livereload.static-resources-enabled=true
 ```
 
-<DocChip chip='since' label='25.03' /> 配置应用启动时浏览器打开的选项：
+<DocChip chip='since' label='25.03' /> 配置应用启动时打开浏览器：
 
 ```Ini title="application.properties"
-# 启用浏览器打开（默认：false）
+# 启用打开浏览器（默认：false）
 webforj.devtools.browser.open=true
 
-# localhost、主机名或 IP 地址（默认：localhost）
+# 本地主机、主机名或 IP 地址（默认：localhost）
 webforj.devtools.browser.host=localhost
 ```

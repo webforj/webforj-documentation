@@ -22,37 +22,36 @@ import com.webforj.router.annotation.Route;
 @FrameTitle("Chat Widget")
 @StyleSheet("ws://css/viewtransitions/chat.css")
 public class ViewTransitionChatView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
-  private Div cardContainer;
-  private Button chatButton;
+  private final FlexLayout self = getBoundComponent();
+  private final Div cardContainer;
+  private final Button chatButton;
   private ChatCard currentCard;
   private boolean isOpen = false;
 
   public ViewTransitionChatView() {
     self.setDirection(FlexDirection.COLUMN)
-        .setAlignment(FlexAlignment.CENTER)
-        .setJustifyContent(FlexJustifyContent.CENTER)
-        .setSpacing("var(--dwc-space-l)")
-        .setHeight("100vh");
+      .setAlignment(FlexAlignment.CENTER)
+      .setJustifyContent(FlexJustifyContent.CENTER)
+      .setSpacing("var(--dwc-space-l)")
+      .setHeight("100vh");
 
     DemoHeader header = new DemoHeader(
-        "Chat Widget",
-        "Click the button to toggle the chat panel with zoom transitions.",
-        "--dwc-color-primary"
+      "Chat Widget",
+      "Click the button to toggle the chat panel with zoom transitions.",
+      "--dwc-color-primary"
     );
 
     cardContainer = new Div();
     cardContainer.setMinHeight("200px");
 
     chatButton = new Button(FeatherIcon.MESSAGE_CIRCLE.create());
-    chatButton
-        .setExpanse(Expanse.NONE)
-        .setTheme(ButtonTheme.PRIMARY)
-        .setSize(65, 65)
-        .onClick(e -> toggleChat());
+    chatButton.setExpanse(Expanse.NONE)
+      .setTheme(ButtonTheme.PRIMARY)
+      .setSize(65, 65)
+      .onClick(e -> toggleChat());
 
-    Div buttonWrapper = new Div();
-    buttonWrapper.addClassName("chat-toggle-btn");
+    Div buttonWrapper = new Div()
+      .addClassName("chat-toggle-btn");
     buttonWrapper.add(chatButton);
 
     self.add(header, cardContainer, buttonWrapper);
@@ -75,13 +74,13 @@ public class ViewTransitionChatView extends Composite<FlexLayout> {
     currentCard.onClose(e -> closeChat());
 
     Page.getCurrent().startViewTransition()
-        .enter(currentCard, ViewTransition.ZOOM)
-        .onUpdate(done -> {
-          cardContainer.add(currentCard);
-          isOpen = true;
-          done.run();
-        })
-        .start();
+      .enter(currentCard, ViewTransition.ZOOM)
+      .onUpdate(done -> {
+        cardContainer.add(currentCard);
+        isOpen = true;
+        done.run();
+      })
+      .start();
   }
 
   private void closeChat() {
@@ -91,13 +90,13 @@ public class ViewTransitionChatView extends Composite<FlexLayout> {
     ChatCard cardToRemove = currentCard;
 
     Page.getCurrent().startViewTransition()
-        .exit(cardToRemove, ViewTransition.ZOOM)
-        .onUpdate(done -> {
-          cardContainer.remove(cardToRemove);
-          currentCard = null;
-          isOpen = false;
-          done.run();
-        })
-        .start();
+      .exit(cardToRemove, ViewTransition.ZOOM)
+      .onUpdate(done -> {
+        cardContainer.remove(cardToRemove);
+        currentCard = null;
+        isOpen = false;
+        done.run();
+      })
+      .start();
   }
 }

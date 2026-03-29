@@ -16,7 +16,7 @@ import com.webforj.component.layout.toolbar.Toolbar;
 @FrameTitle("Toolbar Slots")
 @InlineStyleSheet(
 /* css */"""
-      dwc-toolbar {
+    dwc-toolbar {
       --dwc-toolbar-background: hsl(265, 100%, 47%);
       --dwc-toolbar-color: white;
       --dwc-icon-button-hover-color: var(--dwc-toolbar-color);
@@ -24,17 +24,14 @@ import com.webforj.component.layout.toolbar.Toolbar;
     }
     """)
 public class ToolbarSlotsView extends Composite<AppLayout> {
-
-  AppLayout self = getBoundComponent();
+  private final AppLayout self = getBoundComponent();
 
   public ToolbarSlotsView() {
-    self
-        .setDrawerPlacement(AppLayout.DrawerPlacement.HIDDEN)
+    self.setDrawerPlacement(AppLayout.DrawerPlacement.HIDDEN)
         .setStyle("--dwc-app-layout-header-height", "52px")
         .add(new H1("Application Title"), new Paragraph("Content goes here"));
 
-    Toolbar toolbar = new Toolbar();
-    toolbar
+    Toolbar toolbar = new Toolbar()
         .addToTitle(new H3("Application"))
         .addToStart(new IconButton(TablerIcon.create("menu-2")))
         .addToEnd(
