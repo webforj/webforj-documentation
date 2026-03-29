@@ -15,7 +15,7 @@ import com.webforj.router.annotation.Route
 @Route
 @FrameTitle("Progress Bar Themes")
 class ProgressBarThemesKotlinView: Composite<Div>() {
-  private val self = boundComponent;
+  private val self = boundComponent
 
   init {
       self.apply {

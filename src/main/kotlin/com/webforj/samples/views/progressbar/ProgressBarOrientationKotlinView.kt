@@ -40,6 +40,7 @@ class ProgressBarOrientationKotlinView: Composite<Div>() {
               prefixSlot { tablerIcon("player-play") }
             }
             pause = button("Pause") {
+              isEnabled = false
               prefixSlot { tablerIcon("player-pause") }
             }
             reset = button("Reset") {
