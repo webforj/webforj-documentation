@@ -51,8 +51,8 @@ class MaskedNumberFieldKotlinView: Composite<FlexLayout>() {
 
   private fun handleCalculation() {
     try {
-      val billAmount = billAmountField.value
-      val tipPercentage = tipPercentageField.value
+      val billAmount = billAmountField.value ?: 0.0
+      val tipPercentage = tipPercentageField.value ?: 0.0
       if (billAmount <= 0 || tipPercentage <= 0) {
         Toast.show("Please enter valid positive values.", Theme.DANGER)
         return

@@ -26,8 +26,8 @@ class MaskedNumNegatableKotlinView: Composite<FlexLayout>() {
         isNegateable = true
         value = 123.0
       }
-      switch("Negateable", true).onToggle {
-        field.isNegateable = it.isToggled
+      switch("Negateable", true) {
+        onToggle { field.isNegateable = it.isToggled }
       }
     }
   }

@@ -28,8 +28,8 @@ class MaskedNumRestoreKotlinView: Composite<FlexLayout>() {
         helperText = "Press <kbd>ESC</kbd> to restore the value to default."
         maxWidth = 300.px
       }
-      button("Reset value", ButtonTheme.PRIMARY).onClick {
-        field.restoreValue()
+      button("Reset value", ButtonTheme.PRIMARY) {
+        onClick { field.restoreValue() }
       }
     }
   }
