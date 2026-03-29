@@ -26,19 +26,19 @@ public class ViewTransitionEnterExitView extends Composite<FlexLayout> {
 
   public ViewTransitionEnterExitView() {
     self.setDirection(FlexDirection.COLUMN)
-        .setAlignment(FlexAlignment.CENTER)
-        .setJustifyContent(FlexJustifyContent.CENTER)
-        .setSpacing("var(--dwc-space-l)")
-        .setHeight("100vh");
+      .setAlignment(FlexAlignment.CENTER)
+      .setJustifyContent(FlexJustifyContent.CENTER)
+      .setSpacing("var(--dwc-space-l)")
+      .setHeight("100vh");
 
     DemoHeader header = new DemoHeader(
-        "Custom Transitions",
-        "Custom CSS animations: 3D flip on enter, blur on exit.",
-        "--dwc-color-success"
+      "Custom Transitions",
+      "Custom CSS animations: 3D flip on enter, blur on exit.",
+      "--dwc-color-success"
     );
 
-    stage = new Div();
-    stage.addClassName("notification-stage");
+    stage = new Div()
+      .addClassName("notification-stage");
 
     IconButton triggerBtn = new IconButton(FeatherIcon.BELL.create());
     triggerBtn.addClassName("trigger-btn");
@@ -60,20 +60,20 @@ public class ViewTransitionEnterExitView extends Composite<FlexLayout> {
     if (isVisible) return;
 
     currentNotification = new NotificationCard(
-        FeatherIcon.CHECK_CIRCLE,
-        "Success!",
-        "Your changes have been saved successfully."
+      FeatherIcon.CHECK_CIRCLE,
+      "Success!",
+      "Your changes have been saved successfully."
     );
     currentNotification.onClose(e -> hide());
 
     Page.getCurrent().startViewTransition()
-        .enter(currentNotification, "flip-in")
-        .onUpdate(done -> {
-          stage.add(currentNotification);
-          isVisible = true;
-          done.run();
-        })
-        .start();
+      .enter(currentNotification, "flip-in")
+      .onUpdate(done -> {
+        stage.add(currentNotification);
+        isVisible = true;
+        done.run();
+      })
+      .start();
   }
 
   private void hide() {
@@ -82,13 +82,13 @@ public class ViewTransitionEnterExitView extends Composite<FlexLayout> {
     NotificationCard toRemove = currentNotification;
 
     Page.getCurrent().startViewTransition()
-        .exit(toRemove, "blur-out")
-        .onUpdate(done -> {
-          stage.remove(toRemove);
-          currentNotification = null;
-          isVisible = false;
-          done.run();
-        })
-        .start();
+      .exit(toRemove, "blur-out")
+      .onUpdate(done -> {
+        stage.remove(toRemove);
+        currentNotification = null;
+        isVisible = false;
+        done.run();
+      })
+      .start();
   }
 }

@@ -18,41 +18,39 @@ import java.util.List;
     color: var(--dwc-color-warning-text);
     font-weight: bold;
   }
-""")
+  """)
 public class TableCellStylingView extends Composite<FlexLayout> {
-
   private final FlexLayout self = getBoundComponent();
   private final Table<Person> table = new Table<>();
 
   public TableCellStylingView() {
     self.setDirection(FlexDirection.COLUMN)
-        .setSpacing("var(--dwc-space-l)")
-        .setMargin("var(--dwc-space-xl)");
+      .setSpacing("var(--dwc-space-l)")
+      .setMargin("var(--dwc-space-xl)")
+      .add(table);
 
     List<Person> data = List.of(
-        new Person("Alice", 28, "New York"),
-        new Person("Bob", 35, "Chicago"),
-        new Person("Charlie", 25, "Los Angeles"),
-        new Person("David", 40, "San Francisco"),
-        new Person("Eve", 30, "Boston"),
-        new Person("Frank", 45, "Miami")
+      new Person("Alice", 28, "New York"),
+      new Person("Bob", 35, "Chicago"),
+      new Person("Charlie", 25, "Los Angeles"),
+      new Person("David", 40, "San Francisco"),
+      new Person("Eve", 30, "Boston"),
+      new Person("Frank", 45, "Miami")
     );
 
-    Column<Person, String> nameCol = table.addColumn("Name", Person::getName).setSortable(true);
+    table.addColumn("Name", Person::getName).setSortable(true);
+    table.addColumn("City", Person::getCity).setSortable(true);
     Column<Person, Integer> ageCol = table.addColumn("Age", Person::getAge).setSortable(true);
-    Column<Person, String> cityCol = table.addColumn("City", Person::getCity).setSortable(true);
 
-    table.setItems(data);
-    table.setSize("100%", "260px");
+    table.setItems(data)
+      .setSize("100%", "260px")
+      .setCellPartProvider((person, column) -> {
+        List<String> parts = new ArrayList<>();
+        if (column == ageCol && person.getAge() > 30) {
+          parts.add("cell-highlight");
+        }
+        return parts;
+      });
 
-    table.setCellPartProvider((person, column) -> {
-      List<String> parts = new ArrayList<>();
-      if (column == ageCol && person.getAge() > 30) {
-        parts.add("cell-highlight");
-      }
-      return parts;
-    });
-
-    self.add(table);
   }
 }

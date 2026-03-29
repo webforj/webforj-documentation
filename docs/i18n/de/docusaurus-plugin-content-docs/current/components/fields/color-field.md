@@ -5,18 +5,22 @@ slug: colorfield
 description: >-
   A component that provides a default browser-based color picker, allowing users
   to select a color from an input field.
-_i18n_hash: 4c7128082457a29ae8c0bf3afed1f666
+_i18n_hash: 42e1e3270076a584d052295db1602298
 ---
 <DocChip chip='shadow' />
 <DocChip chip='name' label="dwc-color-chooser" />
 <DocChip chip='since' label='23.02' />
 <JavadocLink type="foundation" location="com/webforj/component/field/ColorField" top='true'/>
 
+Die `ColorField`-Komponente ermöglicht es Benutzern, eine Farbe über den nativen Farbwähler des Browsers auszuwählen. Da sie auf der integrierten Implementierung des Browsers basiert, variiert ihr Erscheinungsbild je nach Browser und Plattform. Sie kann als einfaches Texteingabefeld, als plattformstandardmäßiger Farbwähler oder als benutzeroberflächenangepasste Picker-Oberfläche angezeigt werden. Diese Variation kommt dem Benutzer zugute, da die Steuerung mit dem übereinstimmt, was er bereits kennt.
+
+<!-- INTRO_END -->
+
+## Verwendung von `ColorField` {#using-colorfield}
+
 <ParentLink parent="Field" />
 
-Die `ColorField`-Komponente ist ein vielseitiges Werkzeug, das es Benutzern ermöglicht, Farben interaktiv innerhalb Ihrer App zu erkunden und auszuwählen. Sie bietet einen nahtlosen Ansatz, damit Benutzer den perfekten Farbton, die Sättigung und die Helligkeit finden können, um ihrer kreativen Vision zu entsprechen.
-
-Die `ColorField`-Komponente wird als native Browserfunktion implementiert, sodass die Darstellung je nach Browser und Plattform stark variieren kann. Diese Variation ist jedoch vorteilhaft, da sie mit der gewohnten Umgebung des Benutzers übereinstimmt. Es könnte als einfaches Texteingabefeld erscheinen, um sicherzustellen, dass ein korrekt formatierter Farbwert eingegeben wird, als plattformstandardmäßiger Farbwähler oder sogar als benutzerdefiniertes Farbwähler-Interface.
+`ColorField` erweitert die gemeinsame `Field`-Klasse, die gemeinsame Funktionen für alle Feldkomponenten bereitstellt. Das folgende Beispiel ermöglicht es dem Benutzer, eine Farbe auszuwählen und ihre tetradischen Ergänzungen anzuzeigen.
 
 <ComponentDemo 
 path='/webforj/colorfield?' 
@@ -25,40 +29,38 @@ cssURL='/css/fields/colorfield/colorFieldDemo.css'
 height='300px'
 />
 
-## Anwendungen {#usages}
+Das `ColorField` eignet sich am besten für Szenarien, in denen die Farbauswahl ein entscheidender Bestandteil der Benutzeroberfläche oder der Anwendungsoberfläche ist. Hier sind einige Szenarien, in denen Sie ein `ColorField` effektiv verwenden können:
 
-Das `ColorField` eignet sich am besten in Szenarien, in denen die Farbauswahl ein entscheidender Teil der Benutzeroberfläche oder der App-Oberfläche ist. Hier sind einige Szenarien, in denen Sie ein `ColorField` effektiv nutzen können:
+1. **Grafikdesign- und Bildbearbeitungstools**: Farbfelder sind in Anwendungen, die Anpassungen über Farbauswahl ermöglichen, unerlässlich.
 
-1. **Grafikdesign- und Bildbearbeitungswerkzeuge**: Farbfelder sind unerlässlich in Apps, die Anpassungen über die Farbauswahl ermöglichen.
+2. **Themenanpassung**: Wenn Ihre App den Benutzern ermöglicht, Themen anzupassen, können sie mit einem Farbfeld Farben für verschiedene UI-Elemente wie Hintergründe, Text, Schaltflächen usw. auswählen.
 
-2. **Themenanpassung**: Wenn Ihre App es Benutzern ermöglicht, Themen anzupassen, können Sie mit einem Farbfeld Farben für verschiedene UI-Elemente wie Hintergründe, Texte, Schaltflächen usw. auswählen.
-
-3. **Datenvisualisierung**: Geben Sie den Benutzern ein Farbfeld, um Farben für Diagramme, Grafiken, Heatmaps und andere visuelle Darstellungen auszuwählen.
+3. **Datenvisualisierung**: Stellen Sie den Benutzern ein Farbfeld zur Verfügung, um Farben für Diagramme, Grafiken, Heatmaps und andere visuelle Darstellungen auszuwählen.
 
 ## Wert {#value}
 
-Das `ColorField` verwendet die [`java.awt.Color`](https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Color.html)-Klasse, um Farben über die Methoden `setValue()` und `getValue()` festzulegen und abzurufen. Während die clientseitige Komponente ausschließlich vollständig undurchsichtige RGB-Farben in hexadezimaler Notation verarbeitet, vereinfacht webforJ den Prozess, indem `Color`-Werte automatisch in das richtige Format konvertiert werden.
+Das `ColorField` verwendet die [`java.awt.Color`](https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/java/awt/Color.html) Klasse zum Setzen und Abrufen von Farben über die Methoden `setValue()` und `getValue()`. Während die clientseitige Komponente ausschließlich vollständig undurchsichtige RGB-Farben in hexadezimaler Notation verarbeitet, vereinfacht webforJ den Prozess, indem es `Color`-Werte automatisch in das korrekte Format konvertiert.
 
 :::tip Hexadezimale Analyse
-Beim Verwenden der Methode `setText()`, um einen Wert zuzuweisen, wird das `ColorField` versuchen, die Eingabe als hexadezimale Farbe zu analysieren. Bei einem Fehlschlag der Analyse wird eine `IllegalArgumentException` ausgelöst.
+Wenn Sie die Methode `setText()` verwenden, um einen Wert zuzuweisen, wird das `ColorField` versuchen, die Eingabe als hexadezimale Farbe zu analysieren. Wenn die Analyse fehlschlägt, wird eine `IllegalArgumentException` ausgelöst.
 :::
 
 ## Statische Hilfsmittel {#static-utilities}
 
-Die Klasse `ColorField` bietet auch folgende statische Hilfsmethoden:
+Die `ColorField`-Klasse bietet auch die folgenden statischen Hilfsmittelmethoden:
 
-- `fromHex(String hex)`: Konvertiert einen Farbstring im Hex-Format in ein `Color`-Objekt, das dann mit dieser Klasse oder anderswo verwendet werden kann.
+- `fromHex(String hex)`: Konvertiert einen Farbstring im Hexformat in ein `Color`-Objekt, das dann mit dieser Klasse oder anderswo verwendet werden kann.
 
-- `toHex(Color color)`: Konvertiert den gegebenen Wert in die entsprechende hexadezimale Darstellung.
+- `toHex(Color color)`: Wandelt den gegebenen Wert in die entsprechende hexadezimale Darstellung um.
 
-- `isValidHexColor(String hex)`: Überprüft, ob der gegebene Wert eine gültige 7-stellige hexadezimale Farbe ist.
+- `isValidHexColor(String hex)`: Überprüft, ob der angegebene Wert eine gültige 7-stellige hexadezimale Farbe ist.
 
 ## Beste Praktiken {#best-practices}
 
-Um ein optimales Benutzererlebnis bei der Verwendung der `ColorField`-Komponente zu gewährleisten, sollten Sie die folgenden besten Praktiken berücksichtigen:
+Um ein optimales Benutzererlebnis bei der Verwendung der `ColorField`-Komponente zu gewährleisten, sollten Sie die folgenden bewährten Praktiken beachten:
 
-- **Kontextuelle Unterstützung**: Bieten Sie kontextuelle Unterstützung wie Tooltips oder ein Etikett an, um klarzustellen, dass Benutzer eine Farbe auswählen können und deren Zweck zu verstehen.
+- **Kontextuelle Unterstützung**: Bieten Sie kontextuelle Unterstützung, wie Tooltips oder ein Etikett, um zu verdeutlichen, dass Benutzer eine Farbe auswählen können und deren Zweck verstehen.
 
-- **Standardfarbe bereitstellen**: Haben Sie eine Standardfarbe, die im Kontext Ihrer App sinnvoll ist.
+- **Bereitstellung einer Standardfarbe**: Haben Sie eine Standardfarbe, die im Kontext Ihrer Anwendung sinnvoll ist.
 
-- **Vorgegebene Farben anbieten**: Fügen Sie eine Palette häufig verwendeter oder markenspezifischer Farben neben dem Farbfeld für eine schnelle Auswahl hinzu.
+- **Angebot von Voreingestellten Farben**: Fügen Sie eine Palette häufig verwendeter oder markenbindender Farben neben dem Farbfeld für eine schnelle Auswahl hinzu.

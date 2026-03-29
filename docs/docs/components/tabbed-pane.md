@@ -9,7 +9,9 @@ sidebar_position: 125
 <DocChip chip='since' label='23.06' />
 <JavadocLink type="foundation" location="com/webforj/component/tabbedpane/TabbedPane" top='true'/>
 
-The `TabbedPane` class provides a compact and organized way of displaying content that is divided into multiple sections, each associated with a `Tab`. Users can switch between these sections by clicking on the respective tabs, often labeled with text and/or icons. This class simplifies the creation of multifaceted interfaces where different content or forms need to be accessible but not simultaneously visible.
+Multiple sections of content can be organized under a single `TabbedPane`, where each section is tied to a clickable `Tab`. Only one section is visible at a time, and tabs can display text, icons, or both to help users navigate between them.
+
+<!-- INTRO_END -->
 
 ## Usages {#usages}
 

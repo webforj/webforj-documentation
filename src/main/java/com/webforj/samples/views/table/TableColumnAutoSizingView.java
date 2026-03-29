@@ -12,65 +12,51 @@ import com.webforj.router.annotation.Route;
 @Route
 @FrameTitle("Table Column Auto-Sizing")
 public class TableColumnAutoSizingView extends Composite<FlexLayout> {
+  private final FlexLayout self = getBoundComponent();
 
-  private Table<MusicRecord> table;
-  private Column<MusicRecord, ?> numberCol;
-  private Column<MusicRecord, ?> titleCol;
-  private Column<MusicRecord, ?> artistCol;
-  private Column<MusicRecord, ?> genreCol;
-  private Column<MusicRecord, ?> costCol;
+  private final Table<MusicRecord> table = new Table<>();
+  private final Column<MusicRecord, ?> numberCol = table.addColumn("Number", MusicRecord::getNumber);
+  private final Column<MusicRecord, ?> titleCol = table.addColumn("Title", MusicRecord::getTitle);
+  private final Column<MusicRecord, ?> artistCol = table.addColumn("Artist", MusicRecord::getArtist);
+  private final Column<MusicRecord, ?> genreCol = table.addColumn("Genre", MusicRecord::getMusicType);
+  private final Column<MusicRecord, ?> costCol = table.addColumn("Cost", r -> String.format("$%.2f", r.getCost()))
+    .setAlignment(Column.Alignment.RIGHT);
 
   public TableColumnAutoSizingView() {
-    FlexLayout layout = getBoundComponent();
-    layout.setDirection(FlexDirection.COLUMN)
+    self.setDirection(FlexDirection.COLUMN)
       .setPadding("var(--dwc-space-l)")
       .setSpacing("var(--dwc-space-l)")
-      .setHeight("100vh");
-    layout.setStyle("box-sizing", "border-box");
-
-    FlexLayout controls = createControls();
-    table = createTable();
-    layout.add(controls, table);
+      .setHeight("100vh")
+      .setStyle("box-sizing", "border-box")
+      .add(createControls(), createTable());
   }
 
   private FlexLayout createControls() {
-    FlexLayout controls = new FlexLayout();
-    controls.setDirection(FlexDirection.ROW);
-    controls.setStyle("gap", "15px");
-    controls.setStyle("align-items", "center");
-    controls.setStyle("flex-wrap", "wrap");
+    FlexLayout controls = new FlexLayout()
+      .setDirection(FlexDirection.ROW)
+      .setStyle("gap", "15px")
+      .setStyle("align-items", "center")
+      .setStyle("flex-wrap", "wrap");
 
-    Button autoSizeAllBtn = new Button("Auto-Size All Columns");
-    autoSizeAllBtn.onClick(e -> autoSizeAllColumns());
+    Button autoSizeAllBtn = new Button("Auto-Size All Columns", e -> autoSizeAllColumns());
 
-    Button autoFitBtn = new Button("Auto-Fit to Table Width");
-    autoFitBtn.onClick(e -> autoFitColumns());
+    Button autoFitBtn = new Button("Auto-Fit to Table Width", e -> autoFitColumns());
 
-    Button autoSizeTitleBtn = new Button("Auto-Size Title Only");
-    autoSizeTitleBtn.onClick(e -> autoSizeTitleColumn());
+    Button autoSizeTitleBtn = new Button("Auto-Size Title Only", e -> autoSizeTitleColumn());
 
-    Button resetBtn = new Button("Reset to Default");
-    resetBtn.onClick(e -> resetToDefaults());
+    Button resetBtn = new Button("Reset to Default", e -> resetToDefaults());
 
     controls.add(autoSizeAllBtn, autoFitBtn, autoSizeTitleBtn, resetBtn);
     return controls;
   }
 
   private Table<MusicRecord> createTable() {
-    Table<MusicRecord> table = new Table<>();
-    table.setWidth("100%");
-    table.setHeight("450px");
-    table.setStriped(true);
-
-    numberCol = table.addColumn("Number", MusicRecord::getNumber);
-    titleCol = table.addColumn("Title", MusicRecord::getTitle);
-    artistCol = table.addColumn("Artist", MusicRecord::getArtist);
-    genreCol = table.addColumn("Genre", MusicRecord::getMusicType);
-    costCol = table.addColumn("Cost", r -> String.format("$%.2f", r.getCost()))
-        .setAlignment(Column.Alignment.RIGHT);
+    table.setWidth("100%")
+      .setHeight("450px")
+      .setStriped(true)
+      .setRepository(Service.getMusicRecords());
 
     applyDefaultColumnSizing();
-    table.setRepository(Service.getMusicRecords());
     return table;
   }
 

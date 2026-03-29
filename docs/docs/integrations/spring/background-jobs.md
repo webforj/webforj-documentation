@@ -97,15 +97,15 @@ Completion handling requires the same careful thread management:
 
 ```java
 currentTask.whenComplete((result, error) -> {
-    Environment.runLater(() -> {
-        asyncBtn.setEnabled(true);
-        progressBar.setVisible(false);
-        if (error != null) {
-            Toast.show("Task failed: " + error.getMessage(), Theme.DANGER);
-        } else {
-            Toast.show(result, Theme.SUCCESS);
-        }
-    });
+  Environment.runLater(() -> {
+    asyncBtn.setEnabled(true);
+    progressBar.setVisible(false);
+    if (error != null) {
+      Toast.show("Task failed: " + error.getMessage(), Theme.DANGER);
+    } else {
+      Toast.show(result, Theme.SUCCESS);
+    }
+  });
 });
 ```
 
@@ -132,10 +132,10 @@ When the view is destroyed, it cancels any running task:
 ```java
 @Override
 protected void onDestroy() {
-    // Cancel the task if view is destroyed
-    if (currentTask != null && !currentTask.isDone()) {
-        currentTask.cancel(true);
-    }
+  // Cancel the task if view is destroyed
+  if (currentTask != null && !currentTask.isDone()) {
+    currentTask.cancel(true);
+  }
 }
 ```
 

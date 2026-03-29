@@ -170,7 +170,7 @@ When a user navigates to a route, Spring Security intercepts the navigation and 
 // Inbox - accessible to all authenticated users
 @Route(value = "/", outlet = MainLayout.class)
 public class InboxView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
 
   public InboxView() {
     self.setHeight("100%");
@@ -185,7 +185,7 @@ public class InboxView extends Composite<FlexLayout> {
 @Route(value = "/teams", outlet = MainLayout.class)
 @RolesAllowed("ADMIN")
 public class TeamsView extends Composite<FlexLayout> {
-  private FlexLayout self = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
 
   public TeamsView() {
     self.setHeight("100%");

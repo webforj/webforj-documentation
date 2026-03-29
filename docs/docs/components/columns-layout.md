@@ -8,21 +8,23 @@ sidebar_position: 25
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="columnslayout" location="com/webforj/component/layout/columnslayout/ColumnsLayout" top='true'/>
 
-The `ColumnsLayout` component in webforJ allows developers to create layouts using a flexible and responsive vertical layout. This layout provides dynamic columns that adjust based on the available width. This component simplifies the creation of multi-column layouts by automatically managing breakpoints and alignments.
+The `ColumnsLayout` component arranges items into a responsive column-based layout that adjusts based on available width. Breakpoints and alignments are managed automatically, so building multi-column forms and content grids doesn't require custom responsive logic.
 
-:::info Horizontal Layouts 
-This can be used in place of, or in combination with, the [`FlexLayout`](./flex-layout) component - an equally powerful tool for horizontal layouts.
-:::
+<!-- INTRO_END -->
 
-## Basics {#basics}
+## Default behavior {#default-behavior}
 
-When first instantiated, the `ColumnsLayout` uses two columns to display items added to the layout. By default, it takes the full width of its parent elements and grows as needed to fit additional content. The display of added items can be further calibrated with the use of [`Breakpoint`](./columns-layout#breakpoints) and [`Alignment`](./columns-layout#vertical-and-horizontal-item-alignments) settings, which are discussed in the following sections in more detail.
+By default, a `ColumnsLayout` arranges items in two columns and takes the full width of its parent. The display can be further adjusted with breakpoints and alignment settings, covered in the sections below.
 
 <ComponentDemo 
 path='/webforj/columnslayout?' 
 javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/columnslayout/ColumnsLayoutView.java'
 height="450px"
 />
+
+:::info Horizontal Layouts 
+This can be used in place of, or in combination with, the [`FlexLayout`](./flex-layout) component - an equally powerful tool for horizontal layouts.
+:::
 
 ## Breakpoints {#breakpoints}
 
@@ -57,12 +59,12 @@ Breakpoints are applied to a `ColumnsLayout` in one of two ways: during construc
 ColumnsLayout layout = new ColumnsLayout();
 
 List<Breakpoint> breakpoints = List.of(
-    // One column at widths >= 0px
-    new Breakpoint(0, 1),
-    // Two columns at widths >= 600px
-    new Breakpoint(600, 2),
-    // Four columns at widths >= 1200px
-    new Breakpoint(1200, 4));
+  // One column at widths >= 0px
+  new Breakpoint(0, 1),
+  // Two columns at widths >= 600px
+  new Breakpoint(600, 2),
+  // Four columns at widths >= 1200px
+  new Breakpoint(1200, 4));
 
 layout.setBreakpoints(breakpoints);
 ```

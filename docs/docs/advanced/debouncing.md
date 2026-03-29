@@ -2,7 +2,6 @@
 sidebar_position: 21
 title: Debouncing
 slug: debouncing
-sidebar_class_name: new-content
 ---
 
 <DocChip chip='since' label='25.11' />
@@ -12,7 +11,7 @@ Debouncing is a technique that delays executing an action until a specified time
 
 <ComponentDemo
 path='/webforj/debouncer?'
-javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/debouncer/DebouncerDemoView.java'
+javaE='https://raw.githubusercontent.com/webforj/webforj-documentation/refs/heads/main/src/main/java/com/webforj/samples/views/debouncer/DebouncerView.java'
 height='265px'
 />
 

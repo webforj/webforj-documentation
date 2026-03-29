@@ -1,23 +1,19 @@
 ---
-sidebar_position: 15
 title: File Save
-_i18n_hash: 9f5ecfb61386cfa8c4eb3c31305b1838
+sidebar_position: 15
+_i18n_hash: 728fd2b9211c993aed9b00abddb29b3e
 ---
-# Dateidialog zum Speichern
-
 <DocChip chip='shadow' />
 <DocChip chip='since' label='24.21' />
 <JavadocLink type="foundation" location="com/webforj/component/optiondialog/FileSaveDialog" top='true'/>
 
-`FileSaveDialog` ist ein modaler Dialog, der es den Benutzern ermöglicht, eine Datei an einem bestimmten Speicherort im Server-Dateisystem zu speichern. Der Dialog blockiert die Ausführung der Anwendung, bis der Benutzer einen Dateinamen angibt und die Aktion bestätigt oder den Dialog abbricht.
+`FileSaveDialog` ist ein modales Dialogfeld, das Benutzern die Möglichkeit bietet, eine Datei an einem bestimmten Ort im Dateisystem des Servers zu speichern. Der Dialog blockiert die Ausführung der Anwendung, bis der Benutzer einen Dateiname angibt und die Aktion bestätigt oder den Dialog abbricht.
 
-```java
-OptionDialog.showFileSaveDialog("Speichern Sie Ihre Datei");
-```
+<!-- INTRO_END -->
 
-## Verwendungen {#usages}
+## Verwendungszwecke {#usages}
 
-Der `FileSaveDialog` bietet eine vereinfachte Methode zum Speichern von Dateien im Dateisystem und bietet benutzerkonfigurierbare Optionen für das Benennen von Dateien und den Umgang mit vorhandenen Dateien.
+Das `FileSaveDialog` bietet eine unkomplizierte Methode zum Speichern von Dateien im Dateisystem und bietet benutzerkonfigurierte Optionen für die Benennung von Dateien und den Umgang mit vorhandenen Dateien.
 
 <ComponentDemo 
 path='/webforj/filesavedialogbasic?' 
@@ -27,19 +23,19 @@ height = '800px'
 
 ## Ergebnis {#result}
 
-Der `FileSaveDialog` gibt den ausgewählten Pfad als String zurück. Wenn der Benutzer den Dialog abbricht, wird das Ergebnis `null` sein.
+Das `FileSaveDialog` gibt den ausgewählten Pfad als String zurück. Wenn der Benutzer den Dialog abbricht, wird das Ergebnis `null` sein.
 
 :::important Zweck des Dialogs
-Dieser Dialog führt tatsächlich keine Dateien zu speichern, sondern gibt den Dateinamen zurück, den der Benutzer ausgewählt hat.
+Dieser Dialog speichert tatsächlich keine Dateien, sondern gibt den vom Benutzer ausgewählten Dateinamen zurück.
 :::
 
 :::info
-Der resultierende String wird von der Methode `show()` oder der entsprechenden Methode `OptionDialog` zurückgegeben, wie im Folgenden gezeigt.
+Der resultierende String wird aus der Methode `show()` oder der entsprechenden Methode von `OptionDialog` zurückgegeben, wie unten gezeigt.
 :::
 
 ```java showLineNumbers
 String result = OptionDialog.showFileSaveDialog(
-    "Speichern Sie Ihre Datei", "/home/user/documents", "report.xls");
+    "Speichern Sie Ihre Datei", "/home/user/documents", "bericht.xls");
 
 if (result != null) {
   OptionDialog.showMessageDialog("Datei gespeichert unter: " + path, "Ausgewählter Pfad");
@@ -49,63 +45,63 @@ if (result != null) {
 }
 ```
 
-## Aktion bei Existenz {#exists-action}
+## Exists-Aktion {#exists-action}
 
-Der `FileSaveDialog` bietet konfigurierbares Verhalten, wenn eine Datei mit dem angegebenen Namen bereits existiert:
+Das `FileSaveDialog` bietet konfigurierbares Verhalten, wenn eine Datei mit dem angegebenen Namen bereits existiert:
 
-* **ACCEPT_WITHOUT_ACTION**: Die Auswahl wird ohne zusätzliche Benutzeraktion akzeptiert.
-* **ERROR_DIALOGUE**: Dem Benutzer wird ein Fehlermeldungsdialog angezeigt; die Auswahl ist nicht erlaubt.
-* **CONFIRMATION_DIALOGUE**: Dem Benutzer wird ein Dialog zur Bestätigungsanfrage angezeigt. Dies ist die Standardoption.
+* **ACCEPT_WITHOUT_ACTION**: Die Auswahl wird akzeptiert, ohne dass der Benutzer weitere Aktionen durchführen muss.
+* **ERROR_DIALOGUE**: Der Benutzer erhält ein Fehlerdialogfeld; die Auswahl ist nicht erlaubt.
+* **CONFIRMATION_DIALOGUE**: Der Benutzer erhält ein Dialogfeld, das um Bestätigung bittet. Dies ist die Standardeinstellung.
 
 ```java showLineNumbers
 FileSaveDialog dialog = new FileSaveDialog(
-  "Speichern Sie Ihre Datei", "/home/user/documents", "report.xls");
+  "Speichern Sie Ihre Datei", "/home/user/documents", "bericht.xls");
 dialog.setExistsAction(FileSaveDialog.ExistsAction.ERROR_DIALOGUE);
 String result = dialog.show();
 ```
 
 ## Auswahlmodus {#selection-mode}
 
-Der `FileSaveDialog` unterstützt verschiedene Auswahlmodi, die es Ihnen ermöglichen, die Auswahlmethode an Ihre spezifischen Bedürfnisse anzupassen:
+Das `FileSaveDialog` unterstützt verschiedene Auswahlmodi, die es Ihnen ermöglichen, die Auswahlmethode an Ihre spezifischen Bedürfnisse anzupassen:
 
-1. **DATEIEN**: Erlaubt nur die Auswahl von Dateien.
-2. **VERZEICHNISSE**: Erlaubt nur die Auswahl von Verzeichnissen.
+1. **DATEIEN**: Erlaubt die Auswahl von Dateien.
+2. **VERZEICHNISSE**: Erlaubt die Auswahl von Verzeichnissen.
 3. **DATEIEN UND VERZEICHNISSE**: Erlaubt die Auswahl von sowohl Dateien als auch Verzeichnissen.
 
 ## Anfangspfad {#initial-path}
 
-Geben Sie das Verzeichnis an, in dem der Dialog geöffnet wird, indem Sie den Anfangspfad festlegen. Dies hilft den Benutzern, in einem logischen Verzeichnis für ihre Speicheroperation zu beginnen.
+Geben Sie das Verzeichnis an, in dem der Dialog geöffnet wird, und helfen Sie Benutzern, mit einer sinnvollen Verzeichnisstruktur für ihren Speicherbetrieb zu beginnen.
 
 ```java showLineNumbers
 FileSaveDialog dialog = new FileSaveDialog(
-  "Speichern Sie Ihre Datei", "/home/user/documents", "report.xls");
+  "Speichern Sie Ihre Datei", "/home/user/documents", "bericht.xls");
 String result = dialog.show();
 ```
 
 ## Einschränkung {#restriction}
 
-Sie können den Dialog auf ein bestimmtes Verzeichnis beschränken, um zu verhindern, dass Benutzer außerhalb davon navigieren, indem Sie die Methode `setRestricted(boolean restricted)` verwenden.
+Sie können den Dialog auf ein bestimmtes Verzeichnis beschränken, um zu verhindern, dass Benutzer außerhalb navigieren, indem Sie die Methode `setRestricted(boolean restricted)` verwenden.
 
 ```java showLineNumbers
 FileSaveDialog dialog = new FileSaveDialog(
-  "Speichern Sie Ihre Datei", "/home/user/documents", "report.xls");
+  "Speichern Sie Ihre Datei", "/home/user/documents", "bericht.xls");
 dialog.setRestricted(true);
 dialog.show();
 ```
 
 ## Dateiname {#filename}
 
-Setzen Sie einen Standarddateinamen für die Speicheroperation, um den Benutzern zu helfen und Fehler zu minimieren.
+Setzen Sie einen Standarddateinamen für den Speicherbetrieb, um Benutzern zu helfen und Fehler zu minimieren.
 
 ```java showLineNumbers
 FileSaveDialog dialog = new FileSaveDialog("Speichern Sie Ihre Datei");
-dialog.setName("report.xls");
+dialog.setName("bericht.xls");
 String result = dialog.show();
 ```
 
 ## Internationalisierung (i18n) {#internationalization-i18n}
 
-Die Titel, Beschreibungen, Beschriftungen und Nachrichten innerhalb der Komponente sind vollständig anpassbar, indem die Klasse `FileSaveI18n` verwendet wird. Dadurch kann der Dialog an verschiedene Lokalisierungs- oder Personalisierungsanforderungen angepasst werden.
+Die Titel, Beschreibungen, Labels und Nachrichten innerhalb der Komponente sind vollständig anpassbar über die Klasse `FileSaveI18n`. Dies stellt sicher, dass der Dialog an verschiedene Lokalisierungs- oder Personalisierungsanforderungen angepasst werden kann.
 
 ```java showLineNumbers
 FileSaveDialog dialog = new FileSaveDialog("Speichern Sie Ihre Datei");
@@ -117,7 +113,7 @@ dialog.setI18n(i18n);
 
 ## Filter {#filters}
 
-Der `FileSaveDialog` ermöglicht es Ihnen, Filter festzulegen, um die Arten von Dateien zu beschränken, die gespeichert werden können, indem Sie die Methode `setFilters(List<FileSaveFilter> filters)` verwenden.
+Das `FileSaveDialog` ermöglicht es Ihnen, Filter festzulegen, um die Arten von Dateien zu begrenzen, die gespeichert werden können, über die Methode `setFilters(List<FileSaveFilter> filters)`.
 
 <ComponentDemo 
 path='/webforj/filesavedialogfilters?' 
@@ -127,7 +123,7 @@ height = '800px'
 
 ### Benutzerdefinierte Filter {#custom-filters}
 
-Sie können benutzerdefinierte Filter aktivieren, um den Benutzern zu ermöglichen, ihre eigenen Dateifilter mithilfe der Methode `setCustomFilters(boolean customFilters)` zu definieren. Filter werden standardmäßig im lokalen Speicher gespeichert und bei nachfolgenden Dialogaufrufen wiederhergestellt.
+Sie können benutzerdefinierte Filter aktivieren, um Benutzern zu ermöglichen, ihre eigenen Datei-Filter über die Methode `setCustomFilters(boolean customFilters)` zu definieren. Filter werden standardmäßig im lokalen Speicher gespeichert und bei nachfolgenden Aufrufen des Dialogs wiederhergestellt.
 
 ```java showLineNumbers
 FileSaveDialog dialog = new FileSaveDialog("Speichern Sie Ihre Datei", "/home/user/documents");
@@ -135,10 +131,10 @@ dialog.setCustomFilters(true);
 String result = dialog.show();
 ```
 
-## Best Practices {#best-practices}
+## Beste Praktiken {#best-practices}
 
-* **Vordefinierte Dateinamen**: Stellen Sie einen logischen Standarddateinamen bereit, wo dies zutreffend ist.
+* **Vordefinierte Dateinamen**: Stellen Sie einen logischen Standarddateinamen zur Verfügung, wo dies zutreffend ist.
 * **Bestätigen Sie Überschreibungen**: Verwenden Sie `CONFIRMATION_DIALOGUE` für `ExistsAction`, um versehentliche Überschreibungen zu verhindern.
-* **Intuitiver Anfangspfad**: Setzen Sie einen Anfangspfad, der den Erwartungen der Benutzer entspricht.
-* **Internationalisierung**: Passen Sie den Text des Dialogs an, um die Benutzerfreundlichkeit für internationale Zielgruppen zu verbessern.
-* **Dateitypfilter**: Nutzen Sie Filter, um die Dateitypen einzuschränken und Benutzer zu gültigen Dateierweiterungen zu führen.
+* **Intuitiver Anfangspfad**: Setzen Sie einen Anfangspfad, der mit den Erwartungen der Benutzer übereinstimmt.
+* **Internationalisierung**: Passen Sie den Dialogtext an, um die Benutzerfreundlichkeit für internationale Benutzer zu verbessern.
+* **Dateityp-Filter**: Nutzen Sie Filter, um Dateitypen zu beschränken und Benutzer zu validen Dateierweiterungen zu leiten.

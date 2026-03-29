@@ -8,7 +8,9 @@ sidebar_position: 65
 <DocChip chip='since' label='24.10' />
 <JavadocLink type="loading" location="com/webforj/component/loading/Loading" top='true'/>
 
-The `Loading` component in webforJ displays an overlay that signals the processing of an operation, temporarily preventing user interaction until the task is complete. This feature improves the user experience, especially in situations where tasks like data loading, computations, or background processes may take some time. For global, app-wide processes, consider using the [`BusyIndicator`](../components/busyindicator) component, which blocks interaction across the entire interface.
+The `Loading` component displays an overlay on a specific component or area, signaling that an operation is in progress and temporarily blocking interaction. It works well for tasks like data loading, computations, or background processes. For global, app-wide processes, the [`BusyIndicator`](../components/busyindicator) component covers the entire interface instead.
+
+<!-- INTRO_END -->
 
 ## Basics {#basics}
 

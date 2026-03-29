@@ -54,7 +54,7 @@ The `HomeView` class defines a simple view component that serves as the homepage
 @Route("/")
 public class HelloWorldView extends Composite<FlexLayout> {
 
-  private FlexLayout self = getBoundComponent();
+  private final FlexLayout self = getBoundComponent();
   private TextField hello = new TextField("What is your name?");
   private Button btn = new Button("Say Hello");
 
@@ -79,7 +79,7 @@ public class HelloWorldView extends Composite<FlexLayout> {
 Inside the class, several UI elements are initialized and declared:
 
 ```java
-private FlexLayout self = getBoundComponent();
+private final FlexLayout self = getBoundComponent();
 private Img image = new Img("context://images/logo.svg");
 private H1 title = new H1("Welcome to webforJ");
 private Button counter = new Button("Count is 0");
@@ -99,17 +99,17 @@ The constructor sets up the layout and component interactions:
 
 ```java
 public HomeView() {
-    self.addClassName("home-view");
-    self.setDirection(FlexDirection.COLUMN)
-        .setJustifyContent(FlexJustifyContent.CENTER)
-        .setAlignment(FlexAlignment.CENTER)
-        .setSpacing("3em")
-        .setStyle("height", "100dvh");
+  self.addClassName("home-view");
+  self.setDirection(FlexDirection.COLUMN)
+    .setJustifyContent(FlexJustifyContent.CENTER)
+    .setAlignment(FlexAlignment.CENTER)
+    .setSpacing("3em")
+    .setStyle("height", "100dvh");
 
-    counter.setTheme(ButtonTheme.PRIMARY);
-    counter.onClick(e -> counter.setText("Current Count: " + (++count)));
+  counter.setTheme(ButtonTheme.PRIMARY);
+  counter.onClick(e -> counter.setText("Current Count: " + (++count)));
 
-    self.add(image, title, counter, docs);
+  self.add(image, title, counter, docs);
 }
 ```
 
@@ -122,7 +122,7 @@ public HomeView() {
 Inside the class, several UI elements are initialized and declared:
 
 ```java
-private FlexLayout self = getBoundComponent();
+private final FlexLayout self = getBoundComponent();
 private TextField hello = new TextField("What is your name?");
 private Button btn = new Button("Say Hello");
 ```

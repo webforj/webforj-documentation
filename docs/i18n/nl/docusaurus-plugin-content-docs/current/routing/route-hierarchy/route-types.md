@@ -1,20 +1,21 @@
 ---
 sidebar_position: 1
 title: Route Types
-_i18n_hash: ff067ccd8461640c772c1f8fa0dcc856
+_i18n_hash: 75cb67715544b94ca99fc81c736ebcc7
 ---
-Routes worden ingedeeld in twee hoofdtypen, **View Routes** en **Layout Routes**. De keuze voor het type route bepaalt hoe componenten aan URL's worden toegewezen en hoe ze interageren met andere delen van je app.
+Routes zijn ingedeeld in twee hoofdtypen, **View Routes** en **Layout Routes**. De keuze van het roettype bepaalt hoe componenten aan URL's worden gekoppeld en hoe ze interactie hebben met andere delen van uw app.
 
 ## View routes {#view-routes}
 
-View routes zijn direct gekoppeld aan een URL-segment en vertegenwoordigen specifieke pagina's in je app. Deze routes worden weerspiegeld in de URL van de browser en worden doorgaans gebruikt voor afzonderlijke weergaven of pagina's.
+View routes worden direct aan een URL-segment gekoppeld en vertegenwoordigen specifieke pagina's in uw app. Deze routes worden weerspiegeld in de URL van de browser en worden doorgaans gebruikt voor afzonderlijke weergaven of pagina's.
 
 ```java
 @Route(value = "home")
 public class HomeView extends Composite<Div> {
+  private final Div self = getBoundComponent();
+
   public HomeView() {
-    Div content = getBoundComponent();
-    content.add(new H1("Home Pagina"));
+    self.add(new H1("Home Pagina"));
   }
 }
 ```
@@ -22,11 +23,11 @@ public class HomeView extends Composite<Div> {
 - **URL**: `/home`
 - **Gerenderde Component**: `HomeView`
 
-In dit voorbeeld rendert navigeren naar `/home` de `HomeView` component.
+In dit voorbeeld, het navigeren naar `/home` rendert de `HomeView` component.
 
 ## Layout routes {#layout-routes}
 
-Layout routes omhullen kindweergaven zonder bij te dragen aan de URL. Layouts bieden gedeelde UI-elementen zoals kopteksten of zijbalken die consistent zijn over meerdere weergaven. Kindroutes worden binnen het inhoudsgebied van de lay-out gerenderd.
+Layout routes omhullen kinderweergaven zonder bij te dragen aan de URL. Layouts bieden gedeelde UI-elementen zoals kopteksten of zijbalken die consistent zijn over meerdere weergaven. Kinderoutes worden gerenderd binnen het inhoudsgebied van de layout.
 
 ```java
 @Route(type = Route.Type.LAYOUT)
@@ -38,16 +39,16 @@ public class MainLayout extends Composite<AppLayout> {
 }
 ```
 
-In dit geval is `MainLayout` een layout route die kindweergaven omhult. Het definieert gemeenschappelijke UI-elementen zoals een koptekst en lade. Kindroutes die aan deze lay-out zijn gekoppeld, worden geïnjecteerd in het inhoudsgebied van de `AppLayout` component.
+In dit geval is `MainLayout` een layout route die om kinderweergaven heen is gewikkeld. Het definieert gemeenschappelijke UI-elementen zoals een koptekst en lade. Kinderoutes die aan deze layout zijn gekoppeld, worden geïnjecteerd in het inhoudsgebied van de `AppLayout` component.
 
-## Auto-detectie van routetypes {#auto-detection-of-route-types}
+## Auto-detectie van roettypen {#auto-detection-of-route-types}
 
-Standaard wordt het routetype automatisch gedetecteerd, of de route nu een **view** of **layout** is, op basis van de class-naam:
+Standaard wordt het roettype automatisch gedetecteerd of de route een **view** of **layout** is op basis van de klassenaam:
 
-- Klassen die eindigen op `Layout` worden behandeld als **layout routes**.
-- Klassen die eindigen op `View` worden behandeld als **view routes**.
+- Klassen eindigend op `Layout` worden behandeld als **layout routes**.
+- Klassen eindigend op `View` worden behandeld als **view routes**.
 
-Als alternatief kunnen ontwikkelaars handmatig het routetype specificeren door `Route.Type` in de `@Route` annotatie in te stellen.
+Als alternatief kunnen ontwikkelaars handmatig het roettype specificeren door `Route.Type` in de `@Route` annotatie in te stellen.
 
 ```java
 // Automatisch gedetecteerd als Layout
@@ -64,9 +65,10 @@ public class MainLayout extends Composite<AppLayout> {
 // Automatisch gedetecteerd als View
 @Route(outlet = MainLayout.class)
 public class DashboardView extends Composite<Div> {
+  private final Div self = getBoundComponent();
+
   public DashboardView() {
-    Div content = getBoundComponent();
-    content.add(new H1("Dashboard Inhoud"));
+    self.add(new H1("Dashboard Inhoud"));
   }
 }
 ```
